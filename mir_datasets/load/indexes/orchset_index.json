@@ -1,0 +1,1252 @@
+{
+  "Beethoven-S3-I-ex1": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S3-I",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex1",
+    "melody_path": "Orchset/GT/Beethoven-S3-I-ex1.mel"
+  },
+  "Beethoven-S3-I-ex2": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S3-I",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex2",
+    "melody_path": "Orchset/GT/Beethoven-S3-I-ex2.mel"
+  },
+  "Beethoven-S3-I-ex3": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S3-I",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex3",
+    "melody_path": "Orchset/GT/Beethoven-S3-I-ex3.mel"
+  },
+  "Beethoven-S3-I-ex5": {
+    "predominant_melodic_instruments-raw": "string+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S3-I",
+    "excerpt": "5",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex5.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex5",
+    "melody_path": "Orchset/GT/Beethoven-S3-I-ex5.mel"
+  },
+  "Beethoven-S3-I-ex6": {
+    "predominant_melodic_instruments-raw": "string+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S3-I",
+    "excerpt": "6",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex6.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex6",
+    "melody_path": "Orchset/GT/Beethoven-S3-I-ex6.mel"
+  },
+  "Beethoven-S5-I-ex1": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S5-I",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S5-I-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-I-ex1",
+    "melody_path": "Orchset/GT/Beethoven-S5-I-ex1.mel"
+  },
+  "Beethoven-S5-II-ex1": {
+    "predominant_melodic_instruments-raw": "winds+brass+combination with string",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "winds",
+      "combination with string"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S5-II",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S5-II-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-II-ex1",
+    "melody_path": "Orchset/GT/Beethoven-S5-II-ex1.mel"
+  },
+  "Beethoven-S5-II-ex2": {
+    "predominant_melodic_instruments-raw": "string+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S5-II",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S5-II-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-II-ex2",
+    "melody_path": "Orchset/GT/Beethoven-S5-II-ex2.mel"
+  },
+  "Beethoven-S5-II-ex3": {
+    "predominant_melodic_instruments-raw": "Winds+string",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S5-II",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S5-II-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-II-ex3",
+    "melody_path": "Orchset/GT/Beethoven-S5-II-ex3.mel"
+  },
+  "Beethoven-S7-II-ex2": {
+    "predominant_melodic_instruments-raw": "Winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds"
+    ],
+    "alternating_melody": false,
+    "contains_winds": false,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": true,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S7-II",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S7-II-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S7-II-ex2",
+    "melody_path": "Orchset/GT/Beethoven-S7-II-ex2.mel"
+  },
+  "Beethoven-S9-II-ex1": {
+    "predominant_melodic_instruments-raw": "strings+brass",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S9-II",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S9-II-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S9-II-ex1",
+    "melody_path": "Orchset/GT/Beethoven-S9-II-ex1.mel"
+  },
+  "Beethoven-S9-II-ex2": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S9-II",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S9-II-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S9-II-ex2",
+    "melody_path": "Orchset/GT/Beethoven-S9-II-ex2.mel"
+  },
+  "Beethoven-S9-II-ex3": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Beethoven",
+    "work": "S9-II",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S9-II-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S9-II-ex3",
+    "melody_path": "Orchset/GT/Beethoven-S9-II-ex3.mel"
+  },
+  "Brahms-HungarianDance-n5-ex1": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Brahms",
+    "work": "HungarianDance-n5",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Brahms-HungarianDance-n5-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Brahms-HungarianDance-n5-ex1",
+    "melody_path": "Orchset/GT/Brahms-HungarianDance-n5-ex1.mel"
+  },
+  "Brahms-S3-III-ex1": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Brahms",
+    "work": "S3-III",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Brahms-S3-III-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Brahms-S3-III-ex1",
+    "melody_path": "Orchset/GT/Brahms-S3-III-ex1.mel"
+  },
+  "Brahms-S3-III-ex2": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Brahms",
+    "work": "S3-III",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Brahms-S3-III-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Brahms-S3-III-ex2",
+    "melody_path": "Orchset/GT/Brahms-S3-III-ex2.mel"
+  },
+  "Brahms-S3-III-ex3": {
+    "predominant_melodic_instruments-raw": "winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds"
+    ],
+    "alternating_melody": false,
+    "contains_winds": false,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": true,
+    "only_brass": false,
+    "composer": "Brahms",
+    "work": "S3-III",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Brahms-S3-III-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Brahms-S3-III-ex3",
+    "melody_path": "Orchset/GT/Brahms-S3-III-ex3.mel"
+  },
+  "Dvorak-S9-IV-ex1": {
+    "predominant_melodic_instruments-raw": "brass",
+    "predominant_melodic_instruments-normalized": [
+      "brass"
+    ],
+    "alternating_melody": false,
+    "contains_winds": false,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": true,
+    "composer": "Dvorak",
+    "work": "S9-IV",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Dvorak-S9-IV-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex1",
+    "melody_path": "Orchset/GT/Dvorak-S9-IV-ex1.mel"
+  },
+  "Dvorak-S9-IV-ex3": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Dvorak",
+    "work": "S9-IV",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Dvorak-S9-IV-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex3",
+    "melody_path": "Orchset/GT/Dvorak-S9-IV-ex3.mel"
+  },
+  "Dvorak-S9-IV-ex4": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Dvorak",
+    "work": "S9-IV",
+    "excerpt": "4",
+    "audio_path_stereo": "Orchset/audio/stereo/Dvorak-S9-IV-ex4.wav",
+    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex4",
+    "melody_path": "Orchset/GT/Dvorak-S9-IV-ex4.mel"
+  },
+  "Dvorak-S9-IV-ex5": {
+    "predominant_melodic_instruments-raw": "brass",
+    "predominant_melodic_instruments-normalized": [
+      "brass"
+    ],
+    "alternating_melody": false,
+    "contains_winds": false,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": true,
+    "composer": "Dvorak",
+    "work": "S9-IV",
+    "excerpt": "5",
+    "audio_path_stereo": "Orchset/audio/stereo/Dvorak-S9-IV-ex5.wav",
+    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex5",
+    "melody_path": "Orchset/GT/Dvorak-S9-IV-ex5.mel"
+  },
+  "Grieg-PeerGynt-HallMountainKing-ex1": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Grieg",
+    "work": "PeerGynt-HallMountainKing",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Grieg-PeerGynt-HallMountainKing-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Grieg-PeerGynt-HallMountainKing-ex1",
+    "melody_path": "Orchset/GT/Grieg-PeerGynt-HallMountainKing-ex1.mel"
+  },
+  "Grieg-PeerGynt-MorningMood-ex1": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Grieg",
+    "work": "PeerGynt-MorningMood",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Grieg-PeerGynt-MorningMood-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Grieg-PeerGynt-MorningMood-ex1",
+    "melody_path": "Orchset/GT/Grieg-PeerGynt-MorningMood-ex1.mel"
+  },
+  "Grieg-PeerGynt-MorningMood-ex2": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Grieg",
+    "work": "PeerGynt-MorningMood",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Grieg-PeerGynt-MorningMood-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Grieg-PeerGynt-MorningMood-ex2",
+    "melody_path": "Orchset/GT/Grieg-PeerGynt-MorningMood-ex2.mel"
+  },
+  "Haydn-S94-Andante-ex2": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Haydn",
+    "work": "S94-Andante",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Haydn-S94-Andante-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Haydn-S94-Andante-ex2",
+    "melody_path": "Orchset/GT/Haydn-S94-Andante-ex2.mel"
+  },
+  "Haydn-S94-Menuet-ex1": {
+    "predominant_melodic_instruments-raw": "string+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Haydn",
+    "work": "S94-Menuet",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Haydn-S94-Menuet-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Haydn-S94-Menuet-ex1",
+    "melody_path": "Orchset/GT/Haydn-S94-Menuet-ex1.mel"
+  },
+  "Haydn-S94-Menuet-ex2": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Haydn",
+    "work": "S94-Menuet",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Haydn-S94-Menuet-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Haydn-S94-Menuet-ex2",
+    "melody_path": "Orchset/GT/Haydn-S94-Menuet-ex2.mel"
+  },
+  "Holst-ThePlanets-Jupiter-ex1": {
+    "predominant_melodic_instruments-raw": "brass+woodwinds+strings",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "woodwinds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Holst",
+    "work": "ThePlanets-Jupiter",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Holst-ThePlanets-Jupiter-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex1",
+    "melody_path": "Orchset/GT/Holst-ThePlanets-Jupiter-ex1.mel"
+  },
+  "Holst-ThePlanets-Jupiter-ex2": {
+    "predominant_melodic_instruments-raw": "brass+strings",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Holst",
+    "work": "ThePlanets-Jupiter",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Holst-ThePlanets-Jupiter-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex2",
+    "melody_path": "Orchset/GT/Holst-ThePlanets-Jupiter-ex2.mel"
+  },
+  "Holst-ThePlanets-Jupiter-ex3": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Holst",
+    "work": "ThePlanets-Jupiter",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Holst-ThePlanets-Jupiter-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex3",
+    "melody_path": "Orchset/GT/Holst-ThePlanets-Jupiter-ex3.mel"
+  },
+  "Holst-ThePlanets-Jupiter-ex4": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Holst",
+    "work": "ThePlanets-Jupiter",
+    "excerpt": "4",
+    "audio_path_stereo": "Orchset/audio/stereo/Holst-ThePlanets-Jupiter-ex4.wav",
+    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex4",
+    "melody_path": "Orchset/GT/Holst-ThePlanets-Jupiter-ex4.mel"
+  },
+  "Musorgski-Ravel-PicturesExhibition-ex4": {
+    "predominant_melodic_instruments-raw": "strings,strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Musorgski-Ravel",
+    "work": "PicturesExhibition",
+    "excerpt": "4",
+    "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex4.wav",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex4",
+    "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex4.mel"
+  },
+  "Musorgski-Ravel-PicturesExhibition-ex5": {
+    "predominant_melodic_instruments-raw": "string,strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Musorgski-Ravel",
+    "work": "PicturesExhibition",
+    "excerpt": "5",
+    "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex5.wav",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex5",
+    "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex5.mel"
+  },
+  "Musorgski-Ravel-PicturesExhibition-ex6": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Musorgski-Ravel",
+    "work": "PicturesExhibition",
+    "excerpt": "6",
+    "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex6.wav",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex6",
+    "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex6.mel"
+  },
+  "Musorgski-Ravel-PicturesExhibition-ex7": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Musorgski-Ravel",
+    "work": "PicturesExhibition",
+    "excerpt": "7",
+    "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex7.wav",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex7",
+    "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex7.mel"
+  },
+  "Musorgski-Ravel-PicturesExhibition-ex8": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Musorgski-Ravel",
+    "work": "PicturesExhibition",
+    "excerpt": "8",
+    "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex8.wav",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex8",
+    "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex8.mel"
+  },
+  "Musorgski-Ravel-PicturesExhibition-ex10": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Musorgski-Ravel",
+    "work": "PicturesExhibition",
+    "excerpt": "10",
+    "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex10.wav",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex10",
+    "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex10.mel"
+  },
+  "Musorgski-Ravel-PicturesExhibition-ex11": {
+    "predominant_melodic_instruments-raw": "brass,winds+strings",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Musorgski-Ravel",
+    "work": "PicturesExhibition",
+    "excerpt": "11",
+    "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex11.wav",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex11",
+    "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex11.mel"
+  },
+  "Musorgski-Ravel-PicturesExhibition-Promenade1-ex1": {
+    "predominant_melodic_instruments-raw": "brass",
+    "predominant_melodic_instruments-normalized": [
+      "brass"
+    ],
+    "alternating_melody": false,
+    "contains_winds": false,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": true,
+    "composer": "Musorgski-Ravel",
+    "work": "PicturesExhibition-Promenade1",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1",
+    "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1.mel"
+  },
+  "Musorgski-Ravel-PicturesExhibition-Promenade1-ex2": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Musorgski-Ravel",
+    "work": "PicturesExhibition-Promenade1",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2",
+    "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2.mel"
+  },
+  "Profofiev-Romeo&Juliet-DanceKnights-ex1": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Profofiev",
+    "work": "Romeo&Juliet-DanceKnights",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Profofiev-Romeo&Juliet-DanceKnights-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Profofiev-Romeo&Juliet-DanceKnights-ex1",
+    "melody_path": "Orchset/GT/Profofiev-Romeo&Juliet-DanceKnights-ex1.mel"
+  },
+  "Profofiev-Romeo&Juliet-DanceKnights-ex2": {
+    "predominant_melodic_instruments-raw": "brass+strings",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Profofiev",
+    "work": "Romeo&Juliet-DanceKnights",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Profofiev-Romeo&Juliet-DanceKnights-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Profofiev-Romeo&Juliet-DanceKnights-ex2",
+    "melody_path": "Orchset/GT/Profofiev-Romeo&Juliet-DanceKnights-ex2.mel"
+  },
+  "Ravel-Bolero-ex1": {
+    "predominant_melodic_instruments-raw": "winds+strings",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Ravel",
+    "work": "Bolero",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Ravel-Bolero-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Ravel-Bolero-ex1",
+    "melody_path": "Orchset/GT/Ravel-Bolero-ex1.mel"
+  },
+  "Ravel-Bolero-ex2": {
+    "predominant_melodic_instruments-raw": "winds+strings",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Ravel",
+    "work": "Bolero",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Ravel-Bolero-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Ravel-Bolero-ex2",
+    "melody_path": "Orchset/GT/Ravel-Bolero-ex2.mel"
+  },
+  "Ravel-Bolero-ex3": {
+    "predominant_melodic_instruments-raw": "brass",
+    "predominant_melodic_instruments-normalized": [
+      "brass"
+    ],
+    "alternating_melody": false,
+    "contains_winds": false,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": true,
+    "composer": "Ravel",
+    "work": "Bolero",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Ravel-Bolero-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Ravel-Bolero-ex3",
+    "melody_path": "Orchset/GT/Ravel-Bolero-ex3.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-Kalender-ex1": {
+    "predominant_melodic_instruments-raw": "winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds"
+    ],
+    "alternating_melody": false,
+    "contains_winds": false,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": true,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-Kalender",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Kalender-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex1",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Kalender-ex1.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-Kalender-ex2": {
+    "predominant_melodic_instruments-raw": "brass,strings,brass",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-Kalender",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Kalender-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex2",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Kalender-ex2.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-Kalender-ex3": {
+    "predominant_melodic_instruments-raw": "brass,strings",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-Kalender",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Kalender-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex3",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Kalender-ex3.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1": {
+    "predominant_melodic_instruments-raw": "brass+strings",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-Sea-SinbadShip",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-Sea-SinbadShip",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5": {
+    "predominant_melodic_instruments-raw": "winds+strings",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-Sea-SinbadShip",
+    "excerpt": "5",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-YoungPrincePrincess",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-YoungPrincePrincess",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-YoungPrincePrincess",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3.mel"
+  },
+  "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Rimski-Korsakov",
+    "work": "Scheherazade-YoungPrincePrincess",
+    "excerpt": "4",
+    "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4.wav",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4",
+    "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4.mel"
+  },
+  "Schubert-S8-II-ex2": {
+    "predominant_melodic_instruments-raw": "winds (solo)",
+    "predominant_melodic_instruments-normalized": [
+      "winds"
+    ],
+    "alternating_melody": false,
+    "contains_winds": false,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": true,
+    "only_brass": false,
+    "composer": "Schubert",
+    "work": "S8-II",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Schubert-S8-II-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Schubert-S8-II-ex2",
+    "melody_path": "Orchset/GT/Schubert-S8-II-ex2.mel"
+  },
+  "Smetana-MaVlast-Vltava-ex1": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Smetana",
+    "work": "MaVlast-Vltava",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Smetana-MaVlast-Vltava-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Smetana-MaVlast-Vltava-ex1",
+    "melody_path": "Orchset/GT/Smetana-MaVlast-Vltava-ex1.mel"
+  },
+  "Smetana-MaVlast-Vltava-ex4": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Smetana",
+    "work": "MaVlast-Vltava",
+    "excerpt": "4",
+    "audio_path_stereo": "Orchset/audio/stereo/Smetana-MaVlast-Vltava-ex4.wav",
+    "audio_path_mono": "Orchset/audio/mono/Smetana-MaVlast-Vltava-ex4",
+    "melody_path": "Orchset/GT/Smetana-MaVlast-Vltava-ex4.mel"
+  },
+  "Strauss-BlueDanube-ex1": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Strauss",
+    "work": "BlueDanube",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Strauss-BlueDanube-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Strauss-BlueDanube-ex1",
+    "melody_path": "Orchset/GT/Strauss-BlueDanube-ex1.mel"
+  },
+  "Strauss-BlueDanube-ex2": {
+    "predominant_melodic_instruments-raw": "strings+winds",
+    "predominant_melodic_instruments-normalized": [
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": true,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": false,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Strauss",
+    "work": "BlueDanube",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Strauss-BlueDanube-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Strauss-BlueDanube-ex2",
+    "melody_path": "Orchset/GT/Strauss-BlueDanube-ex2.mel"
+  },
+  "Strauss-BlueDanube-ex3": {
+    "predominant_melodic_instruments-raw": "winds+brass+strings",
+    "predominant_melodic_instruments-normalized": [
+      "brass",
+      "winds",
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": true,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Strauss",
+    "work": "BlueDanube",
+    "excerpt": "3",
+    "audio_path_stereo": "Orchset/audio/stereo/Strauss-BlueDanube-ex3.wav",
+    "audio_path_mono": "Orchset/audio/mono/Strauss-BlueDanube-ex3",
+    "melody_path": "Orchset/GT/Strauss-BlueDanube-ex3.mel"
+  },
+  "Tchaikovsky-SwanLake-Scene-ex1": {
+    "predominant_melodic_instruments-raw": "Brass",
+    "predominant_melodic_instruments-normalized": [
+      "brass"
+    ],
+    "alternating_melody": false,
+    "contains_winds": false,
+    "contains_strings": false,
+    "contains_brass": true,
+    "only_strings": false,
+    "only_winds": false,
+    "only_brass": true,
+    "composer": "Tchaikovsky",
+    "work": "SwanLake-Scene",
+    "excerpt": "1",
+    "audio_path_stereo": "Orchset/audio/stereo/Tchaikovsky-SwanLake-Scene-ex1.wav",
+    "audio_path_mono": "Orchset/audio/mono/Tchaikovsky-SwanLake-Scene-ex1",
+    "melody_path": "Orchset/GT/Tchaikovsky-SwanLake-Scene-ex1.mel"
+  },
+  "Tchaikovsky-SwanLake-Scene-ex2": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Tchaikovsky",
+    "work": "SwanLake-Scene",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Tchaikovsky-SwanLake-Scene-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Tchaikovsky-SwanLake-Scene-ex2",
+    "melody_path": "Orchset/GT/Tchaikovsky-SwanLake-Scene-ex2.mel"
+  },
+  "Wagner-Tannhauser-Act2-ex2": {
+    "predominant_melodic_instruments-raw": "strings",
+    "predominant_melodic_instruments-normalized": [
+      "strings"
+    ],
+    "alternating_melody": false,
+    "contains_winds": true,
+    "contains_strings": false,
+    "contains_brass": false,
+    "only_strings": true,
+    "only_winds": false,
+    "only_brass": false,
+    "composer": "Wagner",
+    "work": "Tannhauser-Act2",
+    "excerpt": "2",
+    "audio_path_stereo": "Orchset/audio/stereo/Wagner-Tannhauser-Act2-ex2.wav",
+    "audio_path_mono": "Orchset/audio/mono/Wagner-Tannhauser-Act2-ex2",
+    "melody_path": "Orchset/GT/Wagner-Tannhauser-Act2-ex2.mel"
+  }
+}
