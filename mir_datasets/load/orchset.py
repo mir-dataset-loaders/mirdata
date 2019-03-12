@@ -7,8 +7,8 @@ import json
 import numpy as np
 import os
 
-from ..utils import abs_path
-from ..utils import F0Data
+from .utils import abs_path
+from .utils import F0Data
 
 INDEX_PATH = os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "indexes/orchset_index.json")
@@ -63,3 +63,25 @@ def load_orchset_melody(melody_path):
     melody_data = F0Data(
         np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
+
+
+def cite():
+    print("="*20 + "MLA" + "="*20)
+    print(
+        'Bosch, J., Marxer, R., Gomez, E., “Evaluation and Combination of '
+        'Pitch Estimation Methods for Melody Extraction in Symphonic '
+        'Classical Music”, Journal of New Music Research (2016)'
+    )
+    print("="*20 + "Bibtex" + "="*20)
+    print(
+"""@article{bosch2016evaluation,
+      title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
+      author={Bosch, Juan J and Marxer, Ricard and G{\'o}mez, Emilia},
+      journal={Journal of New Music Research},
+      volume={45},
+      number={2},
+      pages={101--117},
+      year={2016},
+      publisher={Taylor \& Francis}
+}"""
+    )
