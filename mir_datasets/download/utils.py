@@ -1,8 +1,11 @@
 from collections import namedtuple
 import hashlib
 import os
+import tarfile
 import urllib
 import zipfile
+
+from tqdm import tqdm
 
 from .. import MIR_DATASETS_DIR
 
@@ -16,6 +19,13 @@ def md5(fname):
         for chunk in iter(lambda: fhandle.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
+
+
+class DownloadProgressBar(tqdm):
+    def update_to(self, b=1, bsize=1, tsize=None):
+        if tsize is not None:
+            self.total = tsize
+        self.update(b * bsize - self.n)
 
 
 def download_from_remote(remote, data_home=None):
@@ -44,7 +54,13 @@ def download_from_remote(remote, data_home=None):
         os.path.join(MIR_DATASETS_DIR, remote.filename) if data_home is None
         else os.path.join(data_home, remote.filename)
     )
-    urllib.request.urlretrieve(remote.url, download_path)
+
+    with DownloadProgressBar(unit='B', unit_scale=True,
+                             miniters=1, desc=remote.url.split('/')[-1]) as t:
+        urllib.request.urlretrieve(
+            remote.url, filename=download_path, reporthook=t.update_to)
+
+    # urllib.request.urlretrieve(remote.url, download_path)
     checksum = md5(download_path)
     if remote.checksum != checksum:
         raise IOError("{} has an MD5 checksum ({}) "
@@ -60,3 +76,11 @@ def unzip(zip_path, save_dir, cleanup=True):
     zfile.close()
     if cleanup:
         os.remove(zip_path)
+
+
+def untar(tar_path, save_dir, cleanup=True):
+    tfile = tarfile.TarFile(tar_path, 'r')
+    tfile.extractall(save_dir)
+    tfile.close()
+    if cleanup:
+        os.remove(tar_path)

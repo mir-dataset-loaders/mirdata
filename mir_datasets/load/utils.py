@@ -1,7 +1,7 @@
 from collections import namedtuple
 import os
 
-from . import MIR_DATASETS_DIR
+from .. import MIR_DATASETS_DIR
 
 
 def abs_path(rel_path, data_home):
