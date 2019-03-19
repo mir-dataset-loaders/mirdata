@@ -15,7 +15,7 @@ INDEX_PATH = os.path.join(
 ORCHSET_INDEX = json.load(open(INDEX_PATH, 'r'))
 
 OrchsetTrack = namedtuple(
-    'IKalaTrack',
+    'OrchsetTrack',
     ['track_id', 'melody', 'audio_path_mono', 'audio_path_stereo', 'composer',
      'work', 'excerpt', 'predominant_melodic_instruments',
      'alternating_melody', 'contains_winds', 'contains_strings',
@@ -39,8 +39,8 @@ def load_orchset_track(track_id, data_home=None):
         abs_path(track_data['melody_path'], data_home))
     mel_insts = track_data['predominant_melodic_instruments-normalized']
     return OrchsetTrack(track_id, melody_data, track_data['audio_path_mono'],
-                        track_data['audio_path_stereo'], track_data['work'],
-                        track_data['excerpt'], mel_insts,
+                        track_data['audio_path_stereo'], track_data['composer'],
+                        track_data['work'], track_data['excerpt'], mel_insts,
                         track_data['alternating_melody'],
                         track_data['contains_winds'],
                         track_data['contains_strings'],

@@ -17,6 +17,8 @@ def download_orchset(data_home=None):
         os.makedirs(data_home)
 
     save_path = MIR_DATASETS_DIR if data_home is None else data_home
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
     # orchset_path = os.path.join(save_path, ORCHSET_DIR)
 
     download_path = utils.download_from_remote(ORCHSET_META)
