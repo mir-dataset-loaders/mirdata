@@ -18,11 +18,11 @@ install:
   - pip install -e .
 
 # command to run tests
-script: nosetests --with-coverage --cover-erase --cover-package=mir_datasets -v -w tests/
+script: nosetests --with-coverage --cover-erase --cover-package=mir_dataset_loaders -v -w tests/
 
 after_success:
     - coveralls
-    - pip uninstall -y mir_datasets
+    - pip uninstall -y mir_dataset_loaders
 
 after_failure:
-    - pip uninstall -y mir_datasets
+    - pip uninstall -y mir_dataset_loaders
