@@ -10,8 +10,6 @@ if __name__ == "__main__":
         name='mir_dataset_loaders',
         version=version.version,
         description='Common loaders for MIR datasets.',
-        author='Rachel Bittner',
-        author_email='rachel.bittner@gmail.com',
         url='https://github.com/mir-dataset-loaders/mir-dataset-loaders',
         download_url='http://github.com/rabitt/mir-dataset-loaders/releases',
         packages=['mir_dataset_loaders'],
@@ -20,6 +18,9 @@ if __name__ == "__main__":
         keywords='mir dataset loader audio',
         license='BSD-3-Clause',
         install_requires=[
+            'tqdm',
+            'librosa',
+            'numpy',
         ],
         extras_require={
             'tests': [

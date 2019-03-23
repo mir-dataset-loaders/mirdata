@@ -16,7 +16,7 @@
     "work": "S3-I",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex1.wav",
     "melody_path": "Orchset/GT/Beethoven-S3-I-ex1.mel"
   },
   "Beethoven-S3-I-ex2": {
@@ -36,7 +36,7 @@
     "work": "S3-I",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex2.wav",
     "melody_path": "Orchset/GT/Beethoven-S3-I-ex2.mel"
   },
   "Beethoven-S3-I-ex3": {
@@ -55,7 +55,7 @@
     "work": "S3-I",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex3.wav",
     "melody_path": "Orchset/GT/Beethoven-S3-I-ex3.mel"
   },
   "Beethoven-S3-I-ex5": {
@@ -75,7 +75,7 @@
     "work": "S3-I",
     "excerpt": "5",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex5.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex5",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex5.wav",
     "melody_path": "Orchset/GT/Beethoven-S3-I-ex5.mel"
   },
   "Beethoven-S3-I-ex6": {
@@ -95,7 +95,7 @@
     "work": "S3-I",
     "excerpt": "6",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S3-I-ex6.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex6",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S3-I-ex6.wav",
     "melody_path": "Orchset/GT/Beethoven-S3-I-ex6.mel"
   },
   "Beethoven-S5-I-ex1": {
@@ -114,14 +114,14 @@
     "work": "S5-I",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S5-I-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-I-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-I-ex1.wav",
     "melody_path": "Orchset/GT/Beethoven-S5-I-ex1.mel"
   },
   "Beethoven-S5-II-ex1": {
     "predominant_melodic_instruments-raw": "winds+brass+combination with string",
     "predominant_melodic_instruments-normalized": [
-      "brass",
       "winds",
+      "brass",
       "combination with string"
     ],
     "alternating_melody": true,
@@ -135,7 +135,7 @@
     "work": "S5-II",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S5-II-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-II-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-II-ex1.wav",
     "melody_path": "Orchset/GT/Beethoven-S5-II-ex1.mel"
   },
   "Beethoven-S5-II-ex2": {
@@ -155,7 +155,7 @@
     "work": "S5-II",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S5-II-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-II-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-II-ex2.wav",
     "melody_path": "Orchset/GT/Beethoven-S5-II-ex2.mel"
   },
   "Beethoven-S5-II-ex3": {
@@ -175,7 +175,7 @@
     "work": "S5-II",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S5-II-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-II-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S5-II-ex3.wav",
     "melody_path": "Orchset/GT/Beethoven-S5-II-ex3.mel"
   },
   "Beethoven-S7-II-ex2": {
@@ -194,7 +194,7 @@
     "work": "S7-II",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S7-II-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S7-II-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S7-II-ex2.wav",
     "melody_path": "Orchset/GT/Beethoven-S7-II-ex2.mel"
   },
   "Beethoven-S9-II-ex1": {
@@ -214,7 +214,7 @@
     "work": "S9-II",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S9-II-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S9-II-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S9-II-ex1.wav",
     "melody_path": "Orchset/GT/Beethoven-S9-II-ex1.mel"
   },
   "Beethoven-S9-II-ex2": {
@@ -234,7 +234,7 @@
     "work": "S9-II",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S9-II-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S9-II-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S9-II-ex2.wav",
     "melody_path": "Orchset/GT/Beethoven-S9-II-ex2.mel"
   },
   "Beethoven-S9-II-ex3": {
@@ -253,7 +253,7 @@
     "work": "S9-II",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Beethoven-S9-II-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Beethoven-S9-II-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Beethoven-S9-II-ex3.wav",
     "melody_path": "Orchset/GT/Beethoven-S9-II-ex3.mel"
   },
   "Brahms-HungarianDance-n5-ex1": {
@@ -273,7 +273,7 @@
     "work": "HungarianDance-n5",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Brahms-HungarianDance-n5-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Brahms-HungarianDance-n5-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Brahms-HungarianDance-n5-ex1.wav",
     "melody_path": "Orchset/GT/Brahms-HungarianDance-n5-ex1.mel"
   },
   "Brahms-S3-III-ex1": {
@@ -292,7 +292,7 @@
     "work": "S3-III",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Brahms-S3-III-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Brahms-S3-III-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Brahms-S3-III-ex1.wav",
     "melody_path": "Orchset/GT/Brahms-S3-III-ex1.mel"
   },
   "Brahms-S3-III-ex2": {
@@ -311,7 +311,7 @@
     "work": "S3-III",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Brahms-S3-III-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Brahms-S3-III-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Brahms-S3-III-ex2.wav",
     "melody_path": "Orchset/GT/Brahms-S3-III-ex2.mel"
   },
   "Brahms-S3-III-ex3": {
@@ -330,7 +330,7 @@
     "work": "S3-III",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Brahms-S3-III-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Brahms-S3-III-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Brahms-S3-III-ex3.wav",
     "melody_path": "Orchset/GT/Brahms-S3-III-ex3.mel"
   },
   "Dvorak-S9-IV-ex1": {
@@ -349,7 +349,7 @@
     "work": "S9-IV",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Dvorak-S9-IV-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex1.wav",
     "melody_path": "Orchset/GT/Dvorak-S9-IV-ex1.mel"
   },
   "Dvorak-S9-IV-ex3": {
@@ -368,7 +368,7 @@
     "work": "S9-IV",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Dvorak-S9-IV-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex3.wav",
     "melody_path": "Orchset/GT/Dvorak-S9-IV-ex3.mel"
   },
   "Dvorak-S9-IV-ex4": {
@@ -387,7 +387,7 @@
     "work": "S9-IV",
     "excerpt": "4",
     "audio_path_stereo": "Orchset/audio/stereo/Dvorak-S9-IV-ex4.wav",
-    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex4",
+    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex4.wav",
     "melody_path": "Orchset/GT/Dvorak-S9-IV-ex4.mel"
   },
   "Dvorak-S9-IV-ex5": {
@@ -406,7 +406,7 @@
     "work": "S9-IV",
     "excerpt": "5",
     "audio_path_stereo": "Orchset/audio/stereo/Dvorak-S9-IV-ex5.wav",
-    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex5",
+    "audio_path_mono": "Orchset/audio/mono/Dvorak-S9-IV-ex5.wav",
     "melody_path": "Orchset/GT/Dvorak-S9-IV-ex5.mel"
   },
   "Grieg-PeerGynt-HallMountainKing-ex1": {
@@ -425,7 +425,7 @@
     "work": "PeerGynt-HallMountainKing",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Grieg-PeerGynt-HallMountainKing-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Grieg-PeerGynt-HallMountainKing-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Grieg-PeerGynt-HallMountainKing-ex1.wav",
     "melody_path": "Orchset/GT/Grieg-PeerGynt-HallMountainKing-ex1.mel"
   },
   "Grieg-PeerGynt-MorningMood-ex1": {
@@ -444,7 +444,7 @@
     "work": "PeerGynt-MorningMood",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Grieg-PeerGynt-MorningMood-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Grieg-PeerGynt-MorningMood-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Grieg-PeerGynt-MorningMood-ex1.wav",
     "melody_path": "Orchset/GT/Grieg-PeerGynt-MorningMood-ex1.mel"
   },
   "Grieg-PeerGynt-MorningMood-ex2": {
@@ -464,7 +464,7 @@
     "work": "PeerGynt-MorningMood",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Grieg-PeerGynt-MorningMood-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Grieg-PeerGynt-MorningMood-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Grieg-PeerGynt-MorningMood-ex2.wav",
     "melody_path": "Orchset/GT/Grieg-PeerGynt-MorningMood-ex2.mel"
   },
   "Haydn-S94-Andante-ex2": {
@@ -484,7 +484,7 @@
     "work": "S94-Andante",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Haydn-S94-Andante-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Haydn-S94-Andante-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Haydn-S94-Andante-ex2.wav",
     "melody_path": "Orchset/GT/Haydn-S94-Andante-ex2.mel"
   },
   "Haydn-S94-Menuet-ex1": {
@@ -504,7 +504,7 @@
     "work": "S94-Menuet",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Haydn-S94-Menuet-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Haydn-S94-Menuet-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Haydn-S94-Menuet-ex1.wav",
     "melody_path": "Orchset/GT/Haydn-S94-Menuet-ex1.mel"
   },
   "Haydn-S94-Menuet-ex2": {
@@ -523,7 +523,7 @@
     "work": "S94-Menuet",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Haydn-S94-Menuet-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Haydn-S94-Menuet-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Haydn-S94-Menuet-ex2.wav",
     "melody_path": "Orchset/GT/Haydn-S94-Menuet-ex2.mel"
   },
   "Holst-ThePlanets-Jupiter-ex1": {
@@ -544,7 +544,7 @@
     "work": "ThePlanets-Jupiter",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Holst-ThePlanets-Jupiter-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex1.wav",
     "melody_path": "Orchset/GT/Holst-ThePlanets-Jupiter-ex1.mel"
   },
   "Holst-ThePlanets-Jupiter-ex2": {
@@ -564,7 +564,7 @@
     "work": "ThePlanets-Jupiter",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Holst-ThePlanets-Jupiter-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex2.wav",
     "melody_path": "Orchset/GT/Holst-ThePlanets-Jupiter-ex2.mel"
   },
   "Holst-ThePlanets-Jupiter-ex3": {
@@ -583,7 +583,7 @@
     "work": "ThePlanets-Jupiter",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Holst-ThePlanets-Jupiter-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex3.wav",
     "melody_path": "Orchset/GT/Holst-ThePlanets-Jupiter-ex3.mel"
   },
   "Holst-ThePlanets-Jupiter-ex4": {
@@ -602,7 +602,7 @@
     "work": "ThePlanets-Jupiter",
     "excerpt": "4",
     "audio_path_stereo": "Orchset/audio/stereo/Holst-ThePlanets-Jupiter-ex4.wav",
-    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex4",
+    "audio_path_mono": "Orchset/audio/mono/Holst-ThePlanets-Jupiter-ex4.wav",
     "melody_path": "Orchset/GT/Holst-ThePlanets-Jupiter-ex4.mel"
   },
   "Musorgski-Ravel-PicturesExhibition-ex4": {
@@ -622,7 +622,7 @@
     "work": "PicturesExhibition",
     "excerpt": "4",
     "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex4.wav",
-    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex4",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex4.wav",
     "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex4.mel"
   },
   "Musorgski-Ravel-PicturesExhibition-ex5": {
@@ -642,7 +642,7 @@
     "work": "PicturesExhibition",
     "excerpt": "5",
     "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex5.wav",
-    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex5",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex5.wav",
     "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex5.mel"
   },
   "Musorgski-Ravel-PicturesExhibition-ex6": {
@@ -661,7 +661,7 @@
     "work": "PicturesExhibition",
     "excerpt": "6",
     "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex6.wav",
-    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex6",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex6.wav",
     "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex6.mel"
   },
   "Musorgski-Ravel-PicturesExhibition-ex7": {
@@ -680,7 +680,7 @@
     "work": "PicturesExhibition",
     "excerpt": "7",
     "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex7.wav",
-    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex7",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex7.wav",
     "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex7.mel"
   },
   "Musorgski-Ravel-PicturesExhibition-ex8": {
@@ -699,7 +699,7 @@
     "work": "PicturesExhibition",
     "excerpt": "8",
     "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex8.wav",
-    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex8",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex8.wav",
     "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex8.mel"
   },
   "Musorgski-Ravel-PicturesExhibition-ex10": {
@@ -719,14 +719,14 @@
     "work": "PicturesExhibition",
     "excerpt": "10",
     "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex10.wav",
-    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex10",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex10.wav",
     "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex10.mel"
   },
   "Musorgski-Ravel-PicturesExhibition-ex11": {
     "predominant_melodic_instruments-raw": "brass,winds+strings",
     "predominant_melodic_instruments-normalized": [
-      "brass",
       "winds",
+      "brass",
       "strings"
     ],
     "alternating_melody": true,
@@ -740,7 +740,7 @@
     "work": "PicturesExhibition",
     "excerpt": "11",
     "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-ex11.wav",
-    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex11",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-ex11.wav",
     "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-ex11.mel"
   },
   "Musorgski-Ravel-PicturesExhibition-Promenade1-ex1": {
@@ -759,7 +759,7 @@
     "work": "PicturesExhibition-Promenade1",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1.wav",
     "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1.mel"
   },
   "Musorgski-Ravel-PicturesExhibition-Promenade1-ex2": {
@@ -778,7 +778,7 @@
     "work": "PicturesExhibition-Promenade1",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2.wav",
     "melody_path": "Orchset/GT/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2.mel"
   },
   "Profofiev-Romeo&Juliet-DanceKnights-ex1": {
@@ -797,7 +797,7 @@
     "work": "Romeo&Juliet-DanceKnights",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Profofiev-Romeo&Juliet-DanceKnights-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Profofiev-Romeo&Juliet-DanceKnights-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Profofiev-Romeo&Juliet-DanceKnights-ex1.wav",
     "melody_path": "Orchset/GT/Profofiev-Romeo&Juliet-DanceKnights-ex1.mel"
   },
   "Profofiev-Romeo&Juliet-DanceKnights-ex2": {
@@ -817,7 +817,7 @@
     "work": "Romeo&Juliet-DanceKnights",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Profofiev-Romeo&Juliet-DanceKnights-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Profofiev-Romeo&Juliet-DanceKnights-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Profofiev-Romeo&Juliet-DanceKnights-ex2.wav",
     "melody_path": "Orchset/GT/Profofiev-Romeo&Juliet-DanceKnights-ex2.mel"
   },
   "Ravel-Bolero-ex1": {
@@ -837,7 +837,7 @@
     "work": "Bolero",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Ravel-Bolero-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Ravel-Bolero-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Ravel-Bolero-ex1.wav",
     "melody_path": "Orchset/GT/Ravel-Bolero-ex1.mel"
   },
   "Ravel-Bolero-ex2": {
@@ -857,7 +857,7 @@
     "work": "Bolero",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Ravel-Bolero-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Ravel-Bolero-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Ravel-Bolero-ex2.wav",
     "melody_path": "Orchset/GT/Ravel-Bolero-ex2.mel"
   },
   "Ravel-Bolero-ex3": {
@@ -876,7 +876,7 @@
     "work": "Bolero",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Ravel-Bolero-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Ravel-Bolero-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Ravel-Bolero-ex3.wav",
     "melody_path": "Orchset/GT/Ravel-Bolero-ex3.mel"
   },
   "Rimski-Korsakov-Scheherazade-Kalender-ex1": {
@@ -895,7 +895,7 @@
     "work": "Scheherazade-Kalender",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Kalender-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex1.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Kalender-ex1.mel"
   },
   "Rimski-Korsakov-Scheherazade-Kalender-ex2": {
@@ -915,7 +915,7 @@
     "work": "Scheherazade-Kalender",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Kalender-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex2.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Kalender-ex2.mel"
   },
   "Rimski-Korsakov-Scheherazade-Kalender-ex3": {
@@ -935,7 +935,7 @@
     "work": "Scheherazade-Kalender",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Kalender-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex3.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Kalender-ex3.mel"
   },
   "Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1": {
@@ -955,7 +955,7 @@
     "work": "Scheherazade-Sea-SinbadShip",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1.mel"
   },
   "Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2": {
@@ -974,7 +974,7 @@
     "work": "Scheherazade-Sea-SinbadShip",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2.mel"
   },
   "Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5": {
@@ -994,7 +994,7 @@
     "work": "Scheherazade-Sea-SinbadShip",
     "excerpt": "5",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5.mel"
   },
   "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1": {
@@ -1013,7 +1013,7 @@
     "work": "Scheherazade-YoungPrincePrincess",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1.mel"
   },
   "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2": {
@@ -1032,7 +1032,7 @@
     "work": "Scheherazade-YoungPrincePrincess",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2.mel"
   },
   "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3": {
@@ -1051,7 +1051,7 @@
     "work": "Scheherazade-YoungPrincePrincess",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3.mel"
   },
   "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4": {
@@ -1071,7 +1071,7 @@
     "work": "Scheherazade-YoungPrincePrincess",
     "excerpt": "4",
     "audio_path_stereo": "Orchset/audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4.wav",
-    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4",
+    "audio_path_mono": "Orchset/audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4.wav",
     "melody_path": "Orchset/GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4.mel"
   },
   "Schubert-S8-II-ex2": {
@@ -1090,7 +1090,7 @@
     "work": "S8-II",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Schubert-S8-II-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Schubert-S8-II-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Schubert-S8-II-ex2.wav",
     "melody_path": "Orchset/GT/Schubert-S8-II-ex2.mel"
   },
   "Smetana-MaVlast-Vltava-ex1": {
@@ -1109,7 +1109,7 @@
     "work": "MaVlast-Vltava",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Smetana-MaVlast-Vltava-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Smetana-MaVlast-Vltava-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Smetana-MaVlast-Vltava-ex1.wav",
     "melody_path": "Orchset/GT/Smetana-MaVlast-Vltava-ex1.mel"
   },
   "Smetana-MaVlast-Vltava-ex4": {
@@ -1128,7 +1128,7 @@
     "work": "MaVlast-Vltava",
     "excerpt": "4",
     "audio_path_stereo": "Orchset/audio/stereo/Smetana-MaVlast-Vltava-ex4.wav",
-    "audio_path_mono": "Orchset/audio/mono/Smetana-MaVlast-Vltava-ex4",
+    "audio_path_mono": "Orchset/audio/mono/Smetana-MaVlast-Vltava-ex4.wav",
     "melody_path": "Orchset/GT/Smetana-MaVlast-Vltava-ex4.mel"
   },
   "Strauss-BlueDanube-ex1": {
@@ -1148,7 +1148,7 @@
     "work": "BlueDanube",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Strauss-BlueDanube-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Strauss-BlueDanube-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Strauss-BlueDanube-ex1.wav",
     "melody_path": "Orchset/GT/Strauss-BlueDanube-ex1.mel"
   },
   "Strauss-BlueDanube-ex2": {
@@ -1168,14 +1168,14 @@
     "work": "BlueDanube",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Strauss-BlueDanube-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Strauss-BlueDanube-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Strauss-BlueDanube-ex2.wav",
     "melody_path": "Orchset/GT/Strauss-BlueDanube-ex2.mel"
   },
   "Strauss-BlueDanube-ex3": {
     "predominant_melodic_instruments-raw": "winds+brass+strings",
     "predominant_melodic_instruments-normalized": [
-      "brass",
       "winds",
+      "brass",
       "strings"
     ],
     "alternating_melody": false,
@@ -1189,7 +1189,7 @@
     "work": "BlueDanube",
     "excerpt": "3",
     "audio_path_stereo": "Orchset/audio/stereo/Strauss-BlueDanube-ex3.wav",
-    "audio_path_mono": "Orchset/audio/mono/Strauss-BlueDanube-ex3",
+    "audio_path_mono": "Orchset/audio/mono/Strauss-BlueDanube-ex3.wav",
     "melody_path": "Orchset/GT/Strauss-BlueDanube-ex3.mel"
   },
   "Tchaikovsky-SwanLake-Scene-ex1": {
@@ -1208,7 +1208,7 @@
     "work": "SwanLake-Scene",
     "excerpt": "1",
     "audio_path_stereo": "Orchset/audio/stereo/Tchaikovsky-SwanLake-Scene-ex1.wav",
-    "audio_path_mono": "Orchset/audio/mono/Tchaikovsky-SwanLake-Scene-ex1",
+    "audio_path_mono": "Orchset/audio/mono/Tchaikovsky-SwanLake-Scene-ex1.wav",
     "melody_path": "Orchset/GT/Tchaikovsky-SwanLake-Scene-ex1.mel"
   },
   "Tchaikovsky-SwanLake-Scene-ex2": {
@@ -1227,7 +1227,7 @@
     "work": "SwanLake-Scene",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Tchaikovsky-SwanLake-Scene-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Tchaikovsky-SwanLake-Scene-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Tchaikovsky-SwanLake-Scene-ex2.wav",
     "melody_path": "Orchset/GT/Tchaikovsky-SwanLake-Scene-ex2.mel"
   },
   "Wagner-Tannhauser-Act2-ex2": {
@@ -1246,7 +1246,7 @@
     "work": "Tannhauser-Act2",
     "excerpt": "2",
     "audio_path_stereo": "Orchset/audio/stereo/Wagner-Tannhauser-Act2-ex2.wav",
-    "audio_path_mono": "Orchset/audio/mono/Wagner-Tannhauser-Act2-ex2",
+    "audio_path_mono": "Orchset/audio/mono/Wagner-Tannhauser-Act2-ex2.wav",
     "melody_path": "Orchset/GT/Wagner-Tannhauser-Act2-ex2.mel"
   }
 }

@@ -25,3 +25,7 @@ def validate():
 
 def load():
     raise NotImplementedError()
+
+
+def cite():
+    raise NotImplementedError()

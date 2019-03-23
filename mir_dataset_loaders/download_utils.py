@@ -5,7 +5,7 @@ import tarfile
 import urllib
 import zipfile
 
-from tqdm import tqdm
+# from tqdm import tqdm
 
 from . import MIR_DATASETS_DIR
 
@@ -33,11 +33,11 @@ def md5(fname):
     return hash_md5.hexdigest()
 
 
-class DownloadProgressBar(tqdm):
-    def update_to(self, b=1, bsize=1, tsize=None):
-        if tsize is not None:
-            self.total = tsize
-        self.update(b * bsize - self.n)
+# class DownloadProgressBar(tqdm):
+#     def update_to(self, b=1, bsize=1, tsize=None):
+#         if tsize is not None:
+#             self.total = tsize
+#         self.update(b * bsize - self.n)
 
 
 def download_from_remote(remote, data_home=None, clobber=False):
@@ -68,11 +68,13 @@ def download_from_remote(remote, data_home=None, clobber=False):
 
     if not os.path.exists(download_path) or clobber:
         # If file doesn't exist or we want to overwrite, download it
-        with DownloadProgressBar(unit='B', unit_scale=True,
-                                 miniters=1,
-                                 desc=remote.url.split('/')[-1]) as t:
-            urllib.request.urlretrieve(
-                remote.url, filename=download_path, reporthook=t.update_to)
+        # with DownloadProgressBar(unit='B', unit_scale=True,
+        #                          miniters=1,
+        #                          desc=remote.url.split('/')[-1]) as t:
+        #     urllib.request.urlretrieve(
+        #         remote.url, filename=download_path, reporthook=t.update_to)
+        urllib.request.urlretrieve(
+                remote.url, filename=download_path)
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
