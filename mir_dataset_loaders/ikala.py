@@ -8,8 +8,8 @@ import librosa
 import numpy as np
 import os
 
-from ..utils import get_local_path
-from ..utils import F0Data, LyricsData
+from .load_utils import get_local_path, F0Data, LyricsData
+
 
 IKALA_TIME_STEP = 0.032  # seconds
 INDEX_PATH = os.path.join(
@@ -19,27 +19,45 @@ IKALA_INDEX = json.load(open(INDEX_PATH, 'r'))
 
 IKalaTrack = namedtuple(
     'IKalaTrack',
-    ['track_id', 'f0', 'lyrics', 'audio_path',
-     'singer_id', 'song_id', 'section']
+    [
+        'track_id',
+        'f0',
+        'lyrics',
+        'audio_path',
+        'singer_id',
+        'song_id',
+        'section'
+    ]
 )
 
 
-def load_ikala(data_home=None):
+def download():
+    raise NotImplementedError(
+        "Unfortunately the iKala dataset is not availalbe for download.")
+
+
+def validate():
+    # TODO: write this, check if loader can be called successfully
+    pass
+
+
+def load(data_home=None):
+    validate()
     ikala_data = {}
     for key in IKALA_INDEX.keys():
-        ikala_data[key] = load_ikala_track(key, data_home=data_home)
+        ikala_data[key] = load_track(key, data_home=data_home)
     return ikala_data
 
 
-def load_ikala_track(track_id, data_home=None):
+def load_track(track_id, data_home=None):
     if track_id not in IKALA_INDEX.keys():
         raise ValueError(
             "{} is not a valid track ID in IKala".format(track_id))
 
     track_data = IKALA_INDEX[track_id]
-    f0_data = load_ikala_f0(
+    f0_data = load_f0(
         get_local_path(track_data['pitch_path'], data_home))
-    lyrics_data = load_ikala_lyrics(
+    lyrics_data = load_lyrics(
         get_local_path(track_data['lyrics_path'], data_home))
     return IKalaTrack(
         track_id, f0_data, lyrics_data, track_data['audio_path'],
@@ -47,7 +65,7 @@ def load_ikala_track(track_id, data_home=None):
     )
 
 
-def load_ikala_f0(f0_path):
+def load_f0(f0_path):
     with open(f0_path) as fhandle:
         lines = fhandle.readlines()
     f0_midi = np.array([float(line) for line in lines])
@@ -58,7 +76,7 @@ def load_ikala_f0(f0_path):
     return f0_data
 
 
-def load_ikala_lyrics(lyrics_path):
+def load_lyrics(lyrics_path):
     # input: start time (ms), end time (ms), lyric, [pronounciation]
     with open(lyrics_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=' ')
