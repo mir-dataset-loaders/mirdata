@@ -43,7 +43,7 @@ def track_ids():
 
 
 def load(data_home=None):
-    validate()
+    validate(data_home)
     ikala_data = {}
     for key in IKALA_INDEX.keys():
         ikala_data[key] = load_track(key, data_home=data_home)
@@ -65,7 +65,7 @@ def load_track(track_id, data_home=None):
         track_id,
         f0_data,
         lyrics_data,
-        get_local_path(track_data['audio_path']),
+        get_local_path(track_data['audio_path'], data_home),
         track_data['singer_id'],
         track_data['song_id'],
         track_data['section']
