@@ -7,15 +7,18 @@ import json
 import numpy as np
 import os
 
-from .utils import abs_path
+from .utils import get_local_path
 from .utils import F0Data
+
+from download.orchset import load
+from load impq
 
 INDEX_PATH = os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "indexes/orchset_index.json")
 ORCHSET_INDEX = json.load(open(INDEX_PATH, 'r'))
 
 OrchsetTrack = namedtuple(
-    'IKalaTrack',
+    'OrchsetTrack',
     ['track_id', 'melody', 'audio_path_mono', 'audio_path_stereo', 'composer',
      'work', 'excerpt', 'predominant_melodic_instruments',
      'alternating_melody', 'contains_winds', 'contains_strings',
@@ -36,7 +39,7 @@ def load_orchset_track(track_id, data_home=None):
             "{} is not a valid track ID in Orchset".format(track_id))
     track_data = ORCHSET_INDEX[track_id]
     melody_data = load_orchset_melody(
-        abs_path(track_data['melody_path'], data_home))
+        get_local_path(track_data['melody_path'], data_home))
     mel_insts = track_data['predominant_melodic_instruments-normalized']
     return OrchsetTrack(track_id, melody_data, track_data['audio_path_mono'],
                         track_data['audio_path_stereo'], track_data['work'],
@@ -65,7 +68,8 @@ def load_orchset_melody(melody_path):
     return melody_data
 
 
-def cite():
+def cite(): 
+    # TODO ALL IN ONE BIG TRIPLE QUOTE VAR and print
     print("="*20 + "MLA" + "="*20)
     print(
         'Bosch, J., Marxer, R., Gomez, E., “Evaluation and Combination of '

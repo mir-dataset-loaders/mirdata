@@ -8,7 +8,7 @@ import librosa
 import numpy as np
 import os
 
-from ..utils import abs_path
+from ..utils import get_local_path
 from ..utils import F0Data, LyricsData
 
 IKALA_TIME_STEP = 0.032  # seconds
@@ -38,9 +38,9 @@ def load_ikala_track(track_id, data_home=None):
 
     track_data = IKALA_INDEX[track_id]
     f0_data = load_ikala_f0(
-        abs_path(track_data['pitch_path'], data_home))
+        get_local_path(track_data['pitch_path'], data_home))
     lyrics_data = load_ikala_lyrics(
-        abs_path(track_data['lyrics_path'], data_home))
+        get_local_path(track_data['lyrics_path'], data_home))
     return IKalaTrack(
         track_id, f0_data, lyrics_data, track_data['audio_path'],
         track_data['singer_id'], track_data['song_id'], track_data['section']
