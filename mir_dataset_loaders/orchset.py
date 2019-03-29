@@ -74,13 +74,13 @@ def load_track(track_id, data_home=None):
     track_data = ORCHSET_INDEX[track_id]
 
     melody_data = load_melody(
-        get_local_path(track_data['melody_path'], data_home))
+        get_local_path(data_home, track_data['melody_path']))
 
     return OrchsetTrack(
         track_id,
         melody_data,
-        get_local_path(track_data['audio_path_mono'], data_home),
-        get_local_path(track_data['audio_path_stereo'], data_home),
+        get_local_path(data_home, track_data['audio_path_mono']),
+        get_local_path(data_home, track_data['audio_path_stereo']),
         track_data['composer'],
         track_data['work'],
         track_data['excerpt'],

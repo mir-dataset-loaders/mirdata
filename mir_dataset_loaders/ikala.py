@@ -29,7 +29,7 @@ IKalaTrack = namedtuple(
 
 def download():
     raise NotImplementedError(
-        "Unfortunately the iKala dataset is not availalbe for download.")
+        "Unfortunately the iKala dataset is not available for download.")
 
 
 def validate(data_home):
@@ -57,15 +57,15 @@ def load_track(track_id, data_home=None):
 
     track_data = IKALA_INDEX[track_id]
     f0_data = load_f0(
-        get_local_path(track_data['pitch_path'], data_home))
+        get_local_path(data_home, track_data['pitch_path']))
     lyrics_data = load_lyrics(
-        get_local_path(track_data['lyrics_path'], data_home))
+        get_local_path(data_home, track_data['lyrics_path']))
 
     return IKalaTrack(
         track_id,
         f0_data,
         lyrics_data,
-        get_local_path(track_data['audio_path'], data_home),
+        get_local_path(data_home, track_data['audio_path']),
         track_data['singer_id'],
         track_data['song_id'],
         track_data['section']

@@ -4,7 +4,7 @@ import os
 from . import MIR_DATASETS_DIR
 
 
-def get_local_path(rel_path, data_home):
+def get_local_path(data_home, rel_path):
     if data_home is None:
         return os.path.join(MIR_DATASETS_DIR, rel_path)
     else:
