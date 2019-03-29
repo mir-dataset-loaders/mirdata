@@ -1,5 +1,18 @@
 # mir_dataset_loaders
-common loaders for mir datasets
+common loaders for mir datasets.
+
+This library provides tools for working with common MIR datasets, including tools for:
+* downloading datasets to a common location and format
+* validating that the files for a dataset are all present
+* loading annotation files to a common format, consistent with the format required by [mir_eval](https://github.com/craffel/mir_eval)
+* parsing track level metadata for detailed evaluations
+
+
+## Dataset Location
+By default, all datasets tracked by this library are stored in `~/mir_datasets`,
+(defined as `MIR_DATASETS_DIR` in `mir_dataset_loaders/__init__.py`).
+Data can alternatively be stored in another location by specifying `data_home`
+within a relevant function, e.g. `mir_datasets.orchset.download(data_home='my_custom_path')`
 
 
 ## Examples
@@ -25,7 +38,7 @@ import mir_dataset_loaders as mdl
 orchset_data = mdl.orchset.load()
 ```
 
-### See what data is availalbe for a track
+### See what data is available for a track
 ```python
 import mir_dataset_loaders as mdl
 
@@ -109,73 +122,136 @@ ids of the datset. The values should be a dictionary of metadata, and the keys
 of these dictionaries should be identical across the dataset.
 
 Any file path included should be relative to the top level directory of the dataset.
+For example, if a dataset has the structure:
+```
+> Example_Dataset/
+    > audio/
+        track1.wav
+        track2.wav
+        track3.wav
+    > annotations/
+        track1.csv
+        Track2.csv
+        track3.csv
+```
+The top level directory is `Example_Dataset` and the relative path for `track1.wav`
+should be `Example_Dataset/audio/track1.wav`.
 
 Any unavailable field should be indicated with `null`.
 
-For example:
+A possible index file for this example would be:
 ```json
 {
-    'track1': {
-        'audio_path': 'Unicorn/track1.wav',
-        'color': 'red',
-        'genre': 'Electronica',
-        'sign': 'positive'
+    "track1": {
+        "audio_path": "Example_Dataset/audio/track1.wav",
+        "annotation_path": "Example_Dataset/annotations/track1.csv",
+        "genre": "Electronica"
     },
-    'track2': {
-        'audio_path': 'Unicorn/track2.wav',
-        'color': 'green',
-        'genre': 'Free Jazz',
-        'sign': 'negative'
+    "track2": {
+        "audio_path": "Example_Dataset/audio/track2.wav",
+        "annotation_path": "Example_Dataset/annotations/Track2.csv",
+        "genre": "Free Jazz"
     },
-    'track3': {
-        'audio_path': 'Unicorn/track3.wav',
-        'color': 'purple',
-        'genre': 'Rockabilly',
-        'sign': null
+    "track3": {
+        "audio_path": "Example_Dataset/audio/track3.wav",
+        "annotation_path": "Example_Dataset/annotations/track3.csv",
+        "genre": null
     }
 }
 ```
+
+In this example there is a (purposeful) mismatch between the name of the audio file
+`track2.wav` and its corresponding annotation file, `Track2.csv`, compared with
+the other pairs. *This mismatch should be included in the index*. This type of
+slight difference in filenames happens often in publicly available datasets, makes
+pairing audio and annotation files more difficult. We introduce use a fixed,
+version controlled index to account for this kind of mismatch, rather than relying
+on string parsing on load.
 
 Notebooks used to create some of the dataset indexes are in the [notebooks]() folder.
 
 
 ### Creating a module.
 
-copy paste this template and fill it in for your dataset:
+Copy and paste this template and fill it in for your dataset:
 
 ```python
 
 from collections import namedtuple
 import json
 
-from . import UNICORN_INDEX_PATH
+from . import EXAMPLE_INDEX_PATH
 from .load_utils import validator
 
-UNICORN_INDEX = json.load(open(UNICORN_INDEX_PATH, 'r'))
+EXAMPLE_INDEX = json.load(open(EXAMPLE_INDEX_PATH, 'r'))
 
-UnicornTrack = namedtuple(
-    'UnicornTrack',
+ExampleTrack = namedtuple(
+    'ExampleTrack',
     ['track_id',
-     'TODO']
+     'audio_path',
+     'annotation_path',
+     'genre']
 )
 
 
 def download(data_home=None, clobber=False):
-    # TODO, write this, see orchset.py for an example
-    pass
+    """Download the dataset to a subfolder of `data_home`.
+    If a dataset cannot be directly downloaded through public link, but instead
+    requires authorization (e.g. zenodo restricted access) or if the dataset is
+    shared manually, instead print instructions for how to access the dataset,
+    and where to put it when it is downloaded.
+
+    Parameters
+    ----------
+    data_home: str or None, default=None
+        Download the dataset to a subfolder of this folder.
+        If None, uses the default location specified by MIR_DATASETS_DIR.
+    clobber: bool, default=False
+        If True, overwrites an existing copy of the dataset with the downloaded
+        version.
+        If False, if the dataset already exists, does not overwrite.
+    """
+    pass  # see orchset.py for a specific example
 
 
 def validate(data_home):
-    file_keys = [TODO]  # keys in UNICORN_INDEX that are filepaths
-    missing_files = validator(UNICORN_INDEX, file_keys, data_home)
+    """Check that all of the files referenced in the index exist on disk.
+
+    Returns
+    -------
+    missing_files : list
+        List of expected absolute paths of missing files.
+    """
+    # keys in EXAMPLE_INDEX which map to filepaths
+    file_keys = ['audio_path', 'annotation_path']
+    missing_files = validator(EXAMPLE_INDEX, file_keys, data_home)
     return missing_files
 
 
 def track_ids():
-    return list(UNICORN_INDEX.keys())
+    """Get a list of the dataset's track IDs.
+
+    Returns
+    -------
+    List of the dataset's track IDs
+    """
+    return list(EXAMPLE_INDEX.keys())
 
 
 def load(data_home=None):
+    """Load the dataset to a dictionary of track objects.
+
+    Parameters
+    ----------
+    data_home: str or None, default=None
+        Path where the dataset is stored.
+        If None, uses the default MIR_DATASETS_DIR.
+
+    Returns
+    -------
+    data_dict: dict
+        Dictionary keyed by track ID with instances of ExampleTrack as values.
+    """
     validate(data_home)
     data_dict = {}
     for key in track_ids():
@@ -184,24 +260,43 @@ def load(data_home=None):
 
 
 def load_track(track_id, data_home=None):
-    if track_id not in UNICORN_INDEX.keys():
-        raise ValueError(
-            "{} is not a valid track ID in Unicorn".format(track_id))
-    track_data = UNICORN_INDEX[track_id]
+    """Load a track for a given track ID.
 
-    return UnicornTrack(
+    Parameters
+    ----------
+    track_id: str
+        Unique identifier for the track.
+    data_home: str or None, default=None
+        Path where the dataset is stored.
+        If None, uses the default MIR_DATASETS_DIR.
+
+    Returns
+    -------
+    example_track: ExampleTrack
+        An instance of ExampleTrack with the relevant data filled in.
+    """
+    if track_id not in EXAMPLE_INDEX.keys():
+        raise ValueError(
+            "{} is not a valid track ID in Example".format(track_id))
+    track_data = EXAMPLE_INDEX[track_id]
+
+    return ExampleTrack(
         track_id,
-        TODO
+        track_data['audio_path'],
+        track_data['annotation_path'],
+        track_data['genre']
     )
 
 
 def cite():
+    """Print citation data in two formats.
+    """
     cite_data = """
 ===========  MLA ===========
-TODO: The MLA citation here
+TODO: The MLA format citation here
 
 ========== Bibtex ==========
-TODO: The Bibtex citation here
+TODO: The Bibtex format citation here
 """
 
     print(cite_data)
