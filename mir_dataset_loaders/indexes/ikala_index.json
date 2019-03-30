@@ -1,2018 +1,2270 @@
 {
   "10161_chorus": {
     "singer_id": "1",
+    "song_id": "10161",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/10161_chorus.wav",
     "pitch_path": "iKala/PitchLabel/10161_chorus.pv",
     "lyrics_path": "iKala/Lyrics/10161_chorus.lab",
-    "song_id": "10161",
-    "section": "chorus"
+    "audio_checksum": "278ae003cb0d323e99b9a643c0f2eeda"
   },
   "10161_verse": {
     "singer_id": "1",
+    "song_id": "10161",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/10161_verse.wav",
     "pitch_path": "iKala/PitchLabel/10161_verse.pv",
     "lyrics_path": "iKala/Lyrics/10161_verse.lab",
-    "song_id": "10161",
-    "section": "verse"
+    "audio_checksum": "f487648f9ba54664eedd7f674920b6c7"
   },
   "10164_chorus": {
     "singer_id": "1&3",
+    "song_id": "10164",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/10164_chorus.wav",
     "pitch_path": "iKala/PitchLabel/10164_chorus.pv",
     "lyrics_path": "iKala/Lyrics/10164_chorus.lab",
-    "song_id": "10164",
-    "section": "chorus"
+    "audio_checksum": "405668078aaac12149817000199f4268"
   },
   "10170_chorus": {
     "singer_id": "3",
+    "song_id": "10170",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/10170_chorus.wav",
     "pitch_path": "iKala/PitchLabel/10170_chorus.pv",
     "lyrics_path": "iKala/Lyrics/10170_chorus.lab",
-    "song_id": "10170",
-    "section": "chorus"
+    "audio_checksum": "87a1a467534e353fffba0d8ef0e9f8a4"
   },
   "10171_chorus": {
     "singer_id": "3",
+    "song_id": "10171",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/10171_chorus.wav",
     "pitch_path": "iKala/PitchLabel/10171_chorus.pv",
     "lyrics_path": "iKala/Lyrics/10171_chorus.lab",
-    "song_id": "10171",
-    "section": "chorus"
+    "audio_checksum": "26b0dc4e520e7e63a7b187c3e017779c"
   },
   "10171_verse": {
     "singer_id": "3",
+    "song_id": "10171",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/10171_verse.wav",
     "pitch_path": "iKala/PitchLabel/10171_verse.pv",
     "lyrics_path": "iKala/Lyrics/10171_verse.lab",
-    "song_id": "10171",
-    "section": "verse"
+    "audio_checksum": "fc5a41876c223bda51856094f443be0d"
   },
   "10174_chorus": {
     "singer_id": "3",
+    "song_id": "10174",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/10174_chorus.wav",
     "pitch_path": "iKala/PitchLabel/10174_chorus.pv",
     "lyrics_path": "iKala/Lyrics/10174_chorus.lab",
-    "song_id": "10174",
-    "section": "chorus"
+    "audio_checksum": "6228fc5687226584019b189074fac8d5"
   },
   "10174_verse": {
     "singer_id": "3",
+    "song_id": "10174",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/10174_verse.wav",
     "pitch_path": "iKala/PitchLabel/10174_verse.pv",
     "lyrics_path": "iKala/Lyrics/10174_verse.lab",
-    "song_id": "10174",
-    "section": "verse"
+    "audio_checksum": "7d89acf2718e7f8ac56ad5c6e7ccca1c"
   },
   "21025_chorus": {
     "singer_id": "1",
+    "song_id": "21025",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21025_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21025_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21025_chorus.lab",
-    "song_id": "21025",
-    "section": "chorus"
+    "audio_checksum": "c3961223181200ffc01436790faa496d"
   },
   "21025_verse": {
     "singer_id": "1",
+    "song_id": "21025",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21025_verse.wav",
     "pitch_path": "iKala/PitchLabel/21025_verse.pv",
     "lyrics_path": "iKala/Lyrics/21025_verse.lab",
-    "song_id": "21025",
-    "section": "verse"
+    "audio_checksum": "61b6c2da0a6a10a692cf8ced3461bfd8"
   },
   "21031_verse": {
     "singer_id": "5",
+    "song_id": "21031",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21031_verse.wav",
     "pitch_path": "iKala/PitchLabel/21031_verse.pv",
     "lyrics_path": "iKala/Lyrics/21031_verse.lab",
-    "song_id": "21031",
-    "section": "verse"
+    "audio_checksum": "983ee2eca86c069e9a7f13e423576234"
   },
   "21032_verse": {
     "singer_id": "1",
+    "song_id": "21032",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21032_verse.wav",
     "pitch_path": "iKala/PitchLabel/21032_verse.pv",
     "lyrics_path": "iKala/Lyrics/21032_verse.lab",
-    "song_id": "21032",
-    "section": "verse"
+    "audio_checksum": "aeda8a4c2d735848f2a88825bb81df74"
   },
   "21033_chorus": {
     "singer_id": "3",
+    "song_id": "21033",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21033_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21033_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21033_chorus.lab",
-    "song_id": "21033",
-    "section": "chorus"
+    "audio_checksum": "b67fe8d7c26f1220a74d759484d838ef"
   },
   "21033_verse": {
     "singer_id": "3",
+    "song_id": "21033",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21033_verse.wav",
     "pitch_path": "iKala/PitchLabel/21033_verse.pv",
     "lyrics_path": "iKala/Lyrics/21033_verse.lab",
-    "song_id": "21033",
-    "section": "verse"
+    "audio_checksum": "b061308077ddc8dc0d0fba147ec6eb0a"
   },
   "21035_chorus": {
     "singer_id": "3",
+    "song_id": "21035",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21035_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21035_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21035_chorus.lab",
-    "song_id": "21035",
-    "section": "chorus"
+    "audio_checksum": "8e3f3b766d46cf403789647b26be1142"
   },
   "21035_verse": {
     "singer_id": "3",
+    "song_id": "21035",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21035_verse.wav",
     "pitch_path": "iKala/PitchLabel/21035_verse.pv",
     "lyrics_path": "iKala/Lyrics/21035_verse.lab",
-    "song_id": "21035",
-    "section": "verse"
+    "audio_checksum": "1fcc4a46357255dd9530580ae4f5affc"
   },
   "21038_chorus": {
     "singer_id": "6",
+    "song_id": "21038",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21038_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21038_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21038_chorus.lab",
-    "song_id": "21038",
-    "section": "chorus"
+    "audio_checksum": "51fbdc8b42132df873aa262d7cb00e62"
   },
   "21038_verse": {
     "singer_id": "6",
+    "song_id": "21038",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21038_verse.wav",
     "pitch_path": "iKala/PitchLabel/21038_verse.pv",
     "lyrics_path": "iKala/Lyrics/21038_verse.lab",
-    "song_id": "21038",
-    "section": "verse"
+    "audio_checksum": "ff5f388aad6b66d3af2ef57eab4e5af6"
   },
   "21039_verse": {
     "singer_id": "1",
+    "song_id": "21039",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21039_verse.wav",
     "pitch_path": "iKala/PitchLabel/21039_verse.pv",
     "lyrics_path": "iKala/Lyrics/21039_verse.lab",
-    "song_id": "21039",
-    "section": "verse"
+    "audio_checksum": "134b7bd1628d010f03f7e22cc527d641"
   },
   "21040_chorus": {
     "singer_id": "1",
+    "song_id": "21040",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21040_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21040_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21040_chorus.lab",
-    "song_id": "21040",
-    "section": "chorus"
+    "audio_checksum": "356f66f0fbfb9508f575be695dcb3d6c"
   },
   "21040_verse": {
     "singer_id": "1",
+    "song_id": "21040",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21040_verse.wav",
     "pitch_path": "iKala/PitchLabel/21040_verse.pv",
     "lyrics_path": "iKala/Lyrics/21040_verse.lab",
-    "song_id": "21040",
-    "section": "verse"
+    "audio_checksum": "8308ce1dd5f898d068650c5195293049"
   },
   "21045_chorus": {
     "singer_id": "4",
+    "song_id": "21045",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21045_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21045_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21045_chorus.lab",
-    "song_id": "21045",
-    "section": "chorus"
+    "audio_checksum": "e4b634c6e49c9b0fed01a797b1aab632"
   },
   "21045_verse": {
     "singer_id": "4",
+    "song_id": "21045",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21045_verse.wav",
     "pitch_path": "iKala/PitchLabel/21045_verse.pv",
     "lyrics_path": "iKala/Lyrics/21045_verse.lab",
-    "song_id": "21045",
-    "section": "verse"
+    "audio_checksum": "192eee733c20ad117bfd4c042fa5fe34"
   },
   "21054_chorus": {
     "singer_id": "3",
+    "song_id": "21054",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21054_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21054_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21054_chorus.lab",
-    "song_id": "21054",
-    "section": "chorus"
+    "audio_checksum": "391ebbd58e36ff14438c74a30be3051d"
   },
   "21054_verse": {
     "singer_id": "3",
+    "song_id": "21054",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21054_verse.wav",
     "pitch_path": "iKala/PitchLabel/21054_verse.pv",
     "lyrics_path": "iKala/Lyrics/21054_verse.lab",
-    "song_id": "21054",
-    "section": "verse"
+    "audio_checksum": "fd728851f14b90486cc2389e033efe53"
   },
   "21055_verse": {
     "singer_id": "1",
+    "song_id": "21055",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21055_verse.wav",
     "pitch_path": "iKala/PitchLabel/21055_verse.pv",
     "lyrics_path": "iKala/Lyrics/21055_verse.lab",
-    "song_id": "21055",
-    "section": "verse"
+    "audio_checksum": "d7b76bdd9c25d788fdbaf1777e969f87"
   },
   "21056_chorus": {
     "singer_id": "1",
+    "song_id": "21056",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21056_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21056_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21056_chorus.lab",
-    "song_id": "21056",
-    "section": "chorus"
+    "audio_checksum": "3c58c302d10102240de8e67ac188b88d"
   },
   "21057_chorus": {
     "singer_id": "1",
+    "song_id": "21057",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21057_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21057_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21057_chorus.lab",
-    "song_id": "21057",
-    "section": "chorus"
+    "audio_checksum": "e1182e760c38010d6907e2e110edb370"
   },
   "21058_chorus": {
     "singer_id": "3",
+    "song_id": "21058",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21058_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21058_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21058_chorus.lab",
-    "song_id": "21058",
-    "section": "chorus"
+    "audio_checksum": "40ecf5ecccd6ba4a25edd6ab2b8fee52"
   },
   "21058_verse": {
     "singer_id": "3",
+    "song_id": "21058",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21058_verse.wav",
     "pitch_path": "iKala/PitchLabel/21058_verse.pv",
     "lyrics_path": "iKala/Lyrics/21058_verse.lab",
-    "song_id": "21058",
-    "section": "verse"
+    "audio_checksum": "5fc1cb3599b7eb5b06dd40a40ec0d38f"
   },
   "21059_chorus": {
     "singer_id": "3",
+    "song_id": "21059",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21059_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21059_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21059_chorus.lab",
-    "song_id": "21059",
-    "section": "chorus"
+    "audio_checksum": "a99a6782e191f65f440a54dce0c54c12"
   },
   "21059_verse": {
     "singer_id": "3",
+    "song_id": "21059",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21059_verse.wav",
     "pitch_path": "iKala/PitchLabel/21059_verse.pv",
     "lyrics_path": "iKala/Lyrics/21059_verse.lab",
-    "song_id": "21059",
-    "section": "verse"
+    "audio_checksum": "1953938fb77da744eff9a7b03885d4d9"
   },
   "21060_verse": {
     "singer_id": "6",
+    "song_id": "21060",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21060_verse.wav",
     "pitch_path": "iKala/PitchLabel/21060_verse.pv",
     "lyrics_path": "iKala/Lyrics/21060_verse.lab",
-    "song_id": "21060",
-    "section": "verse"
+    "audio_checksum": "64840ad7543eebe996154bb9241031cc"
   },
   "21061_chorus": {
     "singer_id": "4",
+    "song_id": "21061",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21061_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21061_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21061_chorus.lab",
-    "song_id": "21061",
-    "section": "chorus"
+    "audio_checksum": "afeb88e4e6e5938076936a4fdbe932fe"
   },
   "21061_verse": {
     "singer_id": "4",
+    "song_id": "21061",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21061_verse.wav",
     "pitch_path": "iKala/PitchLabel/21061_verse.pv",
     "lyrics_path": "iKala/Lyrics/21061_verse.lab",
-    "song_id": "21061",
-    "section": "verse"
+    "audio_checksum": "e353bcb101e7069ee3b656a3fec3ceb6"
   },
   "21062_verse": {
     "singer_id": "1",
+    "song_id": "21062",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21062_verse.wav",
     "pitch_path": "iKala/PitchLabel/21062_verse.pv",
     "lyrics_path": "iKala/Lyrics/21062_verse.lab",
-    "song_id": "21062",
-    "section": "verse"
+    "audio_checksum": "74ca9f4f6639fb5c2534f33a9cdd3b69"
   },
   "21063_chorus": {
     "singer_id": "1",
+    "song_id": "21063",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21063_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21063_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21063_chorus.lab",
-    "song_id": "21063",
-    "section": "chorus"
+    "audio_checksum": "1c989a8c0168508eb9d358bb7e936190"
   },
   "21063_verse": {
     "singer_id": "1",
+    "song_id": "21063",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21063_verse.wav",
     "pitch_path": "iKala/PitchLabel/21063_verse.pv",
     "lyrics_path": "iKala/Lyrics/21063_verse.lab",
-    "song_id": "21063",
-    "section": "verse"
+    "audio_checksum": "709d5380119eff695838167b79b0458e"
   },
   "21064_verse": {
     "singer_id": "1",
+    "song_id": "21064",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21064_verse.wav",
     "pitch_path": "iKala/PitchLabel/21064_verse.pv",
     "lyrics_path": "iKala/Lyrics/21064_verse.lab",
-    "song_id": "21064",
-    "section": "verse"
+    "audio_checksum": "70b287f293c1cbb5e8fc09f53cbaecbb"
   },
   "21068_chorus": {
     "singer_id": "3",
+    "song_id": "21068",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21068_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21068_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21068_chorus.lab",
-    "song_id": "21068",
-    "section": "chorus"
+    "audio_checksum": "87b05276f4f88252b3a43376e5394962"
   },
   "21068_verse": {
     "singer_id": "3",
+    "song_id": "21068",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21068_verse.wav",
     "pitch_path": "iKala/PitchLabel/21068_verse.pv",
     "lyrics_path": "iKala/Lyrics/21068_verse.lab",
-    "song_id": "21068",
-    "section": "verse"
+    "audio_checksum": "7402ad3363f51a75df761ac572d8d10d"
   },
   "21069_verse": {
     "singer_id": "3",
+    "song_id": "21069",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21069_verse.wav",
     "pitch_path": "iKala/PitchLabel/21069_verse.pv",
     "lyrics_path": "iKala/Lyrics/21069_verse.lab",
-    "song_id": "21069",
-    "section": "verse"
+    "audio_checksum": "f36f5cce1e6d6602b235a3dda53779b5"
   },
   "21071_verse": {
     "singer_id": "2",
+    "song_id": "21071",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21071_verse.wav",
     "pitch_path": "iKala/PitchLabel/21071_verse.pv",
     "lyrics_path": "iKala/Lyrics/21071_verse.lab",
-    "song_id": "21071",
-    "section": "verse"
+    "audio_checksum": "55b20d9b5590fe9ca95592fd7da97f11"
   },
   "21073_chorus": {
     "singer_id": "3",
+    "song_id": "21073",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21073_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21073_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21073_chorus.lab",
-    "song_id": "21073",
-    "section": "chorus"
+    "audio_checksum": "46761f0cf1b046e94bad9667123d0791"
   },
   "21073_verse": {
     "singer_id": "3",
+    "song_id": "21073",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21073_verse.wav",
     "pitch_path": "iKala/PitchLabel/21073_verse.pv",
     "lyrics_path": "iKala/Lyrics/21073_verse.lab",
-    "song_id": "21073",
-    "section": "verse"
+    "audio_checksum": "ca8e4dd8f9fc0a018c638ae9ae5ad52d"
   },
   "21074_chorus": {
     "singer_id": "2",
+    "song_id": "21074",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21074_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21074_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21074_chorus.lab",
-    "song_id": "21074",
-    "section": "chorus"
+    "audio_checksum": "ef0645775b6956f0f1df5607c339ac83"
   },
   "21075_chorus": {
     "singer_id": "2",
+    "song_id": "21075",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21075_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21075_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21075_chorus.lab",
-    "song_id": "21075",
-    "section": "chorus"
+    "audio_checksum": "fbb4a8b53b61f6ccd7a9284eedf8aa00"
   },
   "21075_verse": {
     "singer_id": "2",
+    "song_id": "21075",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21075_verse.wav",
     "pitch_path": "iKala/PitchLabel/21075_verse.pv",
     "lyrics_path": "iKala/Lyrics/21075_verse.lab",
-    "song_id": "21075",
-    "section": "verse"
+    "audio_checksum": "454571b3a8512f4a3d80a79dbb9cd0c1"
   },
   "21076_verse": {
     "singer_id": "2",
+    "song_id": "21076",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21076_verse.wav",
     "pitch_path": "iKala/PitchLabel/21076_verse.pv",
     "lyrics_path": "iKala/Lyrics/21076_verse.lab",
-    "song_id": "21076",
-    "section": "verse"
+    "audio_checksum": "3379340031ed241e32dc73c39d32f9fa"
   },
   "21083_chorus": {
     "singer_id": "3",
+    "song_id": "21083",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21083_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21083_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21083_chorus.lab",
-    "song_id": "21083",
-    "section": "chorus"
+    "audio_checksum": "ef0a25ee795516e8da7c4b214d4111c3"
   },
   "21084_chorus": {
     "singer_id": "3&2",
+    "song_id": "21084",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21084_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21084_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21084_chorus.lab",
-    "song_id": "21084",
-    "section": "chorus"
+    "audio_checksum": "c4a37cd7e38a43e39c91da4518f99191"
   },
   "21084_verse": {
     "singer_id": "3&2",
+    "song_id": "21084",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21084_verse.wav",
     "pitch_path": "iKala/PitchLabel/21084_verse.pv",
     "lyrics_path": "iKala/Lyrics/21084_verse.lab",
-    "song_id": "21084",
-    "section": "verse"
+    "audio_checksum": "171caf03b9e0edad24a20f090b0aaaaf"
   },
   "21086_chorus": {
     "singer_id": "3",
+    "song_id": "21086",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/21086_chorus.wav",
     "pitch_path": "iKala/PitchLabel/21086_chorus.pv",
     "lyrics_path": "iKala/Lyrics/21086_chorus.lab",
-    "song_id": "21086",
-    "section": "chorus"
+    "audio_checksum": "e7655a58f7705d9463c60dc3bbedeca7"
   },
   "21086_verse": {
     "singer_id": "3",
+    "song_id": "21086",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/21086_verse.wav",
     "pitch_path": "iKala/PitchLabel/21086_verse.pv",
     "lyrics_path": "iKala/Lyrics/21086_verse.lab",
-    "song_id": "21086",
-    "section": "verse"
+    "audio_checksum": "16e85658b6c5da84bacf354418db32b0"
   },
   "31047_chorus": {
     "singer_id": "1",
+    "song_id": "31047",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31047_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31047_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31047_chorus.lab",
-    "song_id": "31047",
-    "section": "chorus"
+    "audio_checksum": "44822d1bb9de8fee07181dcb3cff5c05"
   },
   "31075_chorus": {
     "singer_id": "4",
+    "song_id": "31075",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31075_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31075_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31075_chorus.lab",
-    "song_id": "31075",
-    "section": "chorus"
+    "audio_checksum": "5fa3857c3044d9b99ac70d3f548011ff"
   },
   "31081_verse": {
     "singer_id": "6",
+    "song_id": "31081",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31081_verse.wav",
     "pitch_path": "iKala/PitchLabel/31081_verse.pv",
     "lyrics_path": "iKala/Lyrics/31081_verse.lab",
-    "song_id": "31081",
-    "section": "verse"
+    "audio_checksum": "a67483ec61e26ec7161b4c3d5cd63e87"
   },
   "31083_chorus": {
     "singer_id": "6",
+    "song_id": "31083",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31083_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31083_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31083_chorus.lab",
-    "song_id": "31083",
-    "section": "chorus"
+    "audio_checksum": "914eb5cdd2b97c1b9ec9ea84cbd1408b"
   },
   "31083_verse": {
     "singer_id": "6",
+    "song_id": "31083",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31083_verse.wav",
     "pitch_path": "iKala/PitchLabel/31083_verse.pv",
     "lyrics_path": "iKala/Lyrics/31083_verse.lab",
-    "song_id": "31083",
-    "section": "verse"
+    "audio_checksum": "2efc6d02ccf2b248ea8b5d5e5181ac02"
   },
   "31092_chorus": {
     "singer_id": "6",
+    "song_id": "31092",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31092_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31092_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31092_chorus.lab",
-    "song_id": "31092",
-    "section": "chorus"
+    "audio_checksum": "4070d2847d67021c063ba4e8bf5df4fa"
   },
   "31092_verse": {
     "singer_id": "6",
+    "song_id": "31092",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31092_verse.wav",
     "pitch_path": "iKala/PitchLabel/31092_verse.pv",
     "lyrics_path": "iKala/Lyrics/31092_verse.lab",
-    "song_id": "31092",
-    "section": "verse"
+    "audio_checksum": "afde1bd50e1db95e7c20a177bc279c28"
   },
   "31093_chorus": {
     "singer_id": "1",
+    "song_id": "31093",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31093_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31093_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31093_chorus.lab",
-    "song_id": "31093",
-    "section": "chorus"
+    "audio_checksum": "df5e1f234e79eb7f28d5ce3bf3e7c5d0"
   },
   "31099_verse": {
     "singer_id": "4",
+    "song_id": "31099",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31099_verse.wav",
     "pitch_path": "iKala/PitchLabel/31099_verse.pv",
     "lyrics_path": "iKala/Lyrics/31099_verse.lab",
-    "song_id": "31099",
-    "section": "verse"
+    "audio_checksum": "4311e62782152124b0d3efe2057345fd"
   },
   "31100_chorus": {
     "singer_id": "4",
+    "song_id": "31100",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31100_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31100_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31100_chorus.lab",
-    "song_id": "31100",
-    "section": "chorus"
+    "audio_checksum": "45a6e5679520c6b27d3c10986dfbb8e3"
   },
   "31101_chorus": {
     "singer_id": "1",
+    "song_id": "31101",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31101_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31101_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31101_chorus.lab",
-    "song_id": "31101",
-    "section": "chorus"
+    "audio_checksum": "06bfe17e307b9bc99838b6c803c1a44f"
   },
   "31101_verse": {
     "singer_id": "1",
+    "song_id": "31101",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31101_verse.wav",
     "pitch_path": "iKala/PitchLabel/31101_verse.pv",
     "lyrics_path": "iKala/Lyrics/31101_verse.lab",
-    "song_id": "31101",
-    "section": "verse"
+    "audio_checksum": "62e8347d5f0758cf96487ab2257c4453"
   },
   "31103_chorus": {
     "singer_id": "1",
+    "song_id": "31103",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31103_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31103_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31103_chorus.lab",
-    "song_id": "31103",
-    "section": "chorus"
+    "audio_checksum": "b83e4f3c5b4b4350de431a87b5fbc9bc"
   },
   "31104_verse": {
     "singer_id": "1",
+    "song_id": "31104",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31104_verse.wav",
     "pitch_path": "iKala/PitchLabel/31104_verse.pv",
     "lyrics_path": "iKala/Lyrics/31104_verse.lab",
-    "song_id": "31104",
-    "section": "verse"
+    "audio_checksum": "4af836759aeb0037e379f0a7a85bf00d"
   },
   "31107_verse": {
     "singer_id": "3",
+    "song_id": "31107",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31107_verse.wav",
     "pitch_path": "iKala/PitchLabel/31107_verse.pv",
     "lyrics_path": "iKala/Lyrics/31107_verse.lab",
-    "song_id": "31107",
-    "section": "verse"
+    "audio_checksum": "19e183ad6855aab50ed71268431f93ff"
   },
   "31109_chorus": {
     "singer_id": "3",
+    "song_id": "31109",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31109_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31109_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31109_chorus.lab",
-    "song_id": "31109",
-    "section": "chorus"
+    "audio_checksum": "a249d6e53ea65891e19ebab68ed7e86b"
   },
   "31109_verse": {
     "singer_id": "3",
+    "song_id": "31109",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31109_verse.wav",
     "pitch_path": "iKala/PitchLabel/31109_verse.pv",
     "lyrics_path": "iKala/Lyrics/31109_verse.lab",
-    "song_id": "31109",
-    "section": "verse"
+    "audio_checksum": "c97cddbfed1b36f1d8812ff268fe66c8"
   },
   "31112_chorus": {
     "singer_id": "4&3",
+    "song_id": "31112",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31112_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31112_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31112_chorus.lab",
-    "song_id": "31112",
-    "section": "chorus"
+    "audio_checksum": "b644d7656250ba01cb85f44572a67c16"
   },
   "31113_chorus": {
     "singer_id": "1",
+    "song_id": "31113",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31113_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31113_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31113_chorus.lab",
-    "song_id": "31113",
-    "section": "chorus"
+    "audio_checksum": "e6747f911db2c3a57d5121ed680b0f38"
   },
   "31113_verse": {
     "singer_id": "1",
+    "song_id": "31113",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31113_verse.wav",
     "pitch_path": "iKala/PitchLabel/31113_verse.pv",
     "lyrics_path": "iKala/Lyrics/31113_verse.lab",
-    "song_id": "31113",
-    "section": "verse"
+    "audio_checksum": "3f18d007f4a077af56ec377287b9d6ef"
   },
   "31114_verse": {
     "singer_id": "3",
+    "song_id": "31114",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31114_verse.wav",
     "pitch_path": "iKala/PitchLabel/31114_verse.pv",
     "lyrics_path": "iKala/Lyrics/31114_verse.lab",
-    "song_id": "31114",
-    "section": "verse"
+    "audio_checksum": "945939dd81bfb495abef8d6ae6033f52"
   },
   "31115_chorus": {
     "singer_id": "1",
+    "song_id": "31115",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31115_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31115_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31115_chorus.lab",
-    "song_id": "31115",
-    "section": "chorus"
+    "audio_checksum": "058a0c0a1cc79801bacc8596026b2285"
   },
   "31116_chorus": {
     "singer_id": "4",
+    "song_id": "31116",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31116_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31116_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31116_chorus.lab",
-    "song_id": "31116",
-    "section": "chorus"
+    "audio_checksum": "47db51efac7f0fcdd815008832ecce16"
   },
   "31117_verse": {
     "singer_id": "1",
+    "song_id": "31117",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31117_verse.wav",
     "pitch_path": "iKala/PitchLabel/31117_verse.pv",
     "lyrics_path": "iKala/Lyrics/31117_verse.lab",
-    "song_id": "31117",
-    "section": "verse"
+    "audio_checksum": "3aba07156af2ea6cfcacf1607a369e92"
   },
   "31118_chorus": {
     "singer_id": "4",
+    "song_id": "31118",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31118_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31118_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31118_chorus.lab",
-    "song_id": "31118",
-    "section": "chorus"
+    "audio_checksum": "2bc8754b932b28d818dab9bede026318"
   },
   "31119_verse": {
     "singer_id": "1",
+    "song_id": "31119",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31119_verse.wav",
     "pitch_path": "iKala/PitchLabel/31119_verse.pv",
     "lyrics_path": "iKala/Lyrics/31119_verse.lab",
-    "song_id": "31119",
-    "section": "verse"
+    "audio_checksum": "e8ba9f554347e84eb8fda54354e88aa2"
   },
   "31126_chorus": {
     "singer_id": "1",
+    "song_id": "31126",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31126_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31126_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31126_chorus.lab",
-    "song_id": "31126",
-    "section": "chorus"
+    "audio_checksum": "82ac0cebda8570f270abe1ed9f0dded8"
   },
   "31129_chorus": {
     "singer_id": "3",
+    "song_id": "31129",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31129_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31129_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31129_chorus.lab",
-    "song_id": "31129",
-    "section": "chorus"
+    "audio_checksum": "8268f5bb3a2cbf7f38da7e02a4c6d05f"
   },
   "31129_verse": {
     "singer_id": "3",
+    "song_id": "31129",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31129_verse.wav",
     "pitch_path": "iKala/PitchLabel/31129_verse.pv",
     "lyrics_path": "iKala/Lyrics/31129_verse.lab",
-    "song_id": "31129",
-    "section": "verse"
+    "audio_checksum": "9afb408205180ddbacf192c3f42f9ec9"
   },
   "31132_verse": {
     "singer_id": "1",
+    "song_id": "31132",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31132_verse.wav",
     "pitch_path": "iKala/PitchLabel/31132_verse.pv",
     "lyrics_path": "iKala/Lyrics/31132_verse.lab",
-    "song_id": "31132",
-    "section": "verse"
+    "audio_checksum": "e883b951ad55566d08658296eb3f4143"
   },
   "31134_chorus": {
     "singer_id": "1",
+    "song_id": "31134",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31134_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31134_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31134_chorus.lab",
-    "song_id": "31134",
-    "section": "chorus"
+    "audio_checksum": "a27fd95a8a8477ef9a3592c36a5bc6ac"
   },
   "31134_verse": {
     "singer_id": "1",
+    "song_id": "31134",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31134_verse.wav",
     "pitch_path": "iKala/PitchLabel/31134_verse.pv",
     "lyrics_path": "iKala/Lyrics/31134_verse.lab",
-    "song_id": "31134",
-    "section": "verse"
+    "audio_checksum": "a1dfe142940302c06dc00b6ae958d846"
   },
   "31135_chorus": {
     "singer_id": "1",
+    "song_id": "31135",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31135_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31135_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31135_chorus.lab",
-    "song_id": "31135",
-    "section": "chorus"
+    "audio_checksum": "57f48d0fcf41b65c828e562103bc6b64"
   },
   "31135_verse": {
     "singer_id": "1",
+    "song_id": "31135",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31135_verse.wav",
     "pitch_path": "iKala/PitchLabel/31135_verse.pv",
     "lyrics_path": "iKala/Lyrics/31135_verse.lab",
-    "song_id": "31135",
-    "section": "verse"
+    "audio_checksum": "9f85f3133dcec9d8e103a1fe4bbe840e"
   },
   "31136_verse": {
     "singer_id": "3",
+    "song_id": "31136",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31136_verse.wav",
     "pitch_path": "iKala/PitchLabel/31136_verse.pv",
     "lyrics_path": "iKala/Lyrics/31136_verse.lab",
-    "song_id": "31136",
-    "section": "verse"
+    "audio_checksum": "4eaba11cadb96f67963f16ed4cb215d4"
   },
   "31137_chorus": {
     "singer_id": "1",
+    "song_id": "31137",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31137_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31137_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31137_chorus.lab",
-    "song_id": "31137",
-    "section": "chorus"
+    "audio_checksum": "51e53801bd786b828509aa7182d8bf31"
   },
   "31137_verse": {
     "singer_id": "1",
+    "song_id": "31137",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31137_verse.wav",
     "pitch_path": "iKala/PitchLabel/31137_verse.pv",
     "lyrics_path": "iKala/Lyrics/31137_verse.lab",
-    "song_id": "31137",
-    "section": "verse"
+    "audio_checksum": "dd8f2142a6cf682f8b2183f257f8423c"
   },
   "31139_chorus": {
     "singer_id": "3",
+    "song_id": "31139",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31139_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31139_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31139_chorus.lab",
-    "song_id": "31139",
-    "section": "chorus"
+    "audio_checksum": "36c2235994e1b2529b131bf3fa082f34"
   },
   "31139_verse": {
     "singer_id": "3",
+    "song_id": "31139",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31139_verse.wav",
     "pitch_path": "iKala/PitchLabel/31139_verse.pv",
     "lyrics_path": "iKala/Lyrics/31139_verse.lab",
-    "song_id": "31139",
-    "section": "verse"
+    "audio_checksum": "f19b0ae6c6fa79353d2096f594b9ead3"
   },
   "31142_verse": {
     "singer_id": "3",
+    "song_id": "31142",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31142_verse.wav",
     "pitch_path": "iKala/PitchLabel/31142_verse.pv",
     "lyrics_path": "iKala/Lyrics/31142_verse.lab",
-    "song_id": "31142",
-    "section": "verse"
+    "audio_checksum": "b3f867cc5b8edaf6ff7de8a2d36d912b"
   },
   "31143_chorus": {
     "singer_id": "2",
+    "song_id": "31143",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/31143_chorus.wav",
     "pitch_path": "iKala/PitchLabel/31143_chorus.pv",
     "lyrics_path": "iKala/Lyrics/31143_chorus.lab",
-    "song_id": "31143",
-    "section": "chorus"
+    "audio_checksum": "4e8cf18962d997ec08d9336f79be5586"
   },
   "31143_verse": {
     "singer_id": "2",
+    "song_id": "31143",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31143_verse.wav",
     "pitch_path": "iKala/PitchLabel/31143_verse.pv",
     "lyrics_path": "iKala/Lyrics/31143_verse.lab",
-    "song_id": "31143",
-    "section": "verse"
+    "audio_checksum": "369b5b35ad85205dd4588b9705859106"
   },
   "31144_verse": {
     "singer_id": "2",
+    "song_id": "31144",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/31144_verse.wav",
     "pitch_path": "iKala/PitchLabel/31144_verse.pv",
     "lyrics_path": "iKala/Lyrics/31144_verse.lab",
-    "song_id": "31144",
-    "section": "verse"
+    "audio_checksum": "84ba5f092ebaafd778b4433468832b69"
   },
   "45305_chorus": {
     "singer_id": "1",
+    "song_id": "45305",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45305_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45305_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45305_chorus.lab",
-    "song_id": "45305",
-    "section": "chorus"
+    "audio_checksum": "0789b92136f0d5c00e7a57bd333b6192"
   },
   "45305_verse": {
     "singer_id": "1",
+    "song_id": "45305",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45305_verse.wav",
     "pitch_path": "iKala/PitchLabel/45305_verse.pv",
     "lyrics_path": "iKala/Lyrics/45305_verse.lab",
-    "song_id": "45305",
-    "section": "verse"
+    "audio_checksum": "b076fdfcac7f61d830d4eb6983abea57"
   },
   "45358_chorus": {
     "singer_id": "1",
+    "song_id": "45358",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45358_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45358_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45358_chorus.lab",
-    "song_id": "45358",
-    "section": "chorus"
+    "audio_checksum": "2718b50331f9cb5ced58da5ceec06eb8"
   },
   "45358_verse": {
     "singer_id": "1",
+    "song_id": "45358",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45358_verse.wav",
     "pitch_path": "iKala/PitchLabel/45358_verse.pv",
     "lyrics_path": "iKala/Lyrics/45358_verse.lab",
-    "song_id": "45358",
-    "section": "verse"
+    "audio_checksum": "a4bba038468eff12999b72f539795ecd"
   },
   "45359_verse": {
     "singer_id": "1",
+    "song_id": "45359",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45359_verse.wav",
     "pitch_path": "iKala/PitchLabel/45359_verse.pv",
     "lyrics_path": "iKala/Lyrics/45359_verse.lab",
-    "song_id": "45359",
-    "section": "verse"
+    "audio_checksum": "a2ac5134892227a604779b9358b7b495"
   },
   "45361_chorus": {
     "singer_id": "1",
+    "song_id": "45361",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45361_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45361_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45361_chorus.lab",
-    "song_id": "45361",
-    "section": "chorus"
+    "audio_checksum": "b775709e73ba5e2c586ec0bcc1cb68a3"
   },
   "45362_verse": {
     "singer_id": "3",
+    "song_id": "45362",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45362_verse.wav",
     "pitch_path": "iKala/PitchLabel/45362_verse.pv",
     "lyrics_path": "iKala/Lyrics/45362_verse.lab",
-    "song_id": "45362",
-    "section": "verse"
+    "audio_checksum": "91f23b3fa8ada8989b7d617a2a08bcdb"
   },
   "45363_chorus": {
     "singer_id": "3",
+    "song_id": "45363",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45363_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45363_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45363_chorus.lab",
-    "song_id": "45363",
-    "section": "chorus"
+    "audio_checksum": "5bd65cc4093d83b8e5e053200c737263"
   },
   "45367_chorus": {
     "singer_id": "1",
+    "song_id": "45367",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45367_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45367_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45367_chorus.lab",
-    "song_id": "45367",
-    "section": "chorus"
+    "audio_checksum": "189898d57c08a28a8a9f9e29cfeb772e"
   },
   "45367_verse": {
     "singer_id": "1",
+    "song_id": "45367",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45367_verse.wav",
     "pitch_path": "iKala/PitchLabel/45367_verse.pv",
     "lyrics_path": "iKala/Lyrics/45367_verse.lab",
-    "song_id": "45367",
-    "section": "verse"
+    "audio_checksum": "21a52c63e860440c9a33e70536d4a98f"
   },
   "45368_chorus": {
     "singer_id": "1",
+    "song_id": "45368",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45368_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45368_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45368_chorus.lab",
-    "song_id": "45368",
-    "section": "chorus"
+    "audio_checksum": "1093a1f9ce1dc128d96f2ba9d7d0b63b"
   },
   "45368_verse": {
     "singer_id": "1",
+    "song_id": "45368",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45368_verse.wav",
     "pitch_path": "iKala/PitchLabel/45368_verse.pv",
     "lyrics_path": "iKala/Lyrics/45368_verse.lab",
-    "song_id": "45368",
-    "section": "verse"
+    "audio_checksum": "38f7591fd6fdb3bf4720d5ce27622ddb"
   },
   "45369_chorus": {
     "singer_id": "1",
+    "song_id": "45369",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45369_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45369_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45369_chorus.lab",
-    "song_id": "45369",
-    "section": "chorus"
+    "audio_checksum": "ff46b82702db624015720d56e7d97ba1"
   },
   "45369_verse": {
     "singer_id": "1",
+    "song_id": "45369",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45369_verse.wav",
     "pitch_path": "iKala/PitchLabel/45369_verse.pv",
     "lyrics_path": "iKala/Lyrics/45369_verse.lab",
-    "song_id": "45369",
-    "section": "verse"
+    "audio_checksum": "d589440b4351aed93ebb760ed600a4b9"
   },
   "45378_chorus": {
     "singer_id": "4",
+    "song_id": "45378",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45378_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45378_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45378_chorus.lab",
-    "song_id": "45378",
-    "section": "chorus"
+    "audio_checksum": "aca0041dc5b72d0128214de8cdc1cd9e"
   },
   "45378_verse": {
     "singer_id": "4",
+    "song_id": "45378",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45378_verse.wav",
     "pitch_path": "iKala/PitchLabel/45378_verse.pv",
     "lyrics_path": "iKala/Lyrics/45378_verse.lab",
-    "song_id": "45378",
-    "section": "verse"
+    "audio_checksum": "551d72521033804e8d047c67d95a6025"
   },
   "45381_chorus": {
     "singer_id": "4",
+    "song_id": "45381",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45381_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45381_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45381_chorus.lab",
-    "song_id": "45381",
-    "section": "chorus"
+    "audio_checksum": "ad34889a3989cd97067342f642851da1"
   },
   "45381_verse": {
     "singer_id": "4",
+    "song_id": "45381",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45381_verse.wav",
     "pitch_path": "iKala/PitchLabel/45381_verse.pv",
     "lyrics_path": "iKala/Lyrics/45381_verse.lab",
-    "song_id": "45381",
-    "section": "verse"
+    "audio_checksum": "ca4f4164fb9cfdfe0a4536ee2f9ba8d3"
   },
   "45382_chorus": {
     "singer_id": "4",
+    "song_id": "45382",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45382_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45382_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45382_chorus.lab",
-    "song_id": "45382",
-    "section": "chorus"
+    "audio_checksum": "83be4d9bcd2f6ac93bd4d32b48e78fd7"
   },
   "45382_verse": {
     "singer_id": "4",
+    "song_id": "45382",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45382_verse.wav",
     "pitch_path": "iKala/PitchLabel/45382_verse.pv",
     "lyrics_path": "iKala/Lyrics/45382_verse.lab",
-    "song_id": "45382",
-    "section": "verse"
+    "audio_checksum": "4cb2c47ee52c53cd0afd0bcdbfe837aa"
   },
   "45384_chorus": {
     "singer_id": "4",
+    "song_id": "45384",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45384_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45384_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45384_chorus.lab",
-    "song_id": "45384",
-    "section": "chorus"
+    "audio_checksum": "2d4c3f7d303a65eaac851a807a2b4a82"
   },
   "45384_verse": {
     "singer_id": "4",
+    "song_id": "45384",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45384_verse.wav",
     "pitch_path": "iKala/PitchLabel/45384_verse.pv",
     "lyrics_path": "iKala/Lyrics/45384_verse.lab",
-    "song_id": "45384",
-    "section": "verse"
+    "audio_checksum": "c64ffe43af0514957b2e595db9ea0d6a"
   },
   "45385_chorus": {
     "singer_id": "1",
+    "song_id": "45385",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45385_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45385_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45385_chorus.lab",
-    "song_id": "45385",
-    "section": "chorus"
+    "audio_checksum": "ae8613453314028b42068adc0e600d09"
   },
   "45386_chorus": {
     "singer_id": "1",
+    "song_id": "45386",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45386_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45386_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45386_chorus.lab",
-    "song_id": "45386",
-    "section": "chorus"
+    "audio_checksum": "717537cdf3e3762cb6194bd114cfa89d"
   },
   "45386_verse": {
     "singer_id": "1",
+    "song_id": "45386",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45386_verse.wav",
     "pitch_path": "iKala/PitchLabel/45386_verse.pv",
     "lyrics_path": "iKala/Lyrics/45386_verse.lab",
-    "song_id": "45386",
-    "section": "verse"
+    "audio_checksum": "6dc8186aead3b06294745cc8e019abd2"
   },
   "45387_chorus": {
     "singer_id": "3",
+    "song_id": "45387",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45387_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45387_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45387_chorus.lab",
-    "song_id": "45387",
-    "section": "chorus"
+    "audio_checksum": "3f92dba9ee0fb23a785cd9ba8401f053"
   },
   "45387_verse": {
     "singer_id": "3",
+    "song_id": "45387",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45387_verse.wav",
     "pitch_path": "iKala/PitchLabel/45387_verse.pv",
     "lyrics_path": "iKala/Lyrics/45387_verse.lab",
-    "song_id": "45387",
-    "section": "verse"
+    "audio_checksum": "4d7d6a294644eb5f1ee218e1304ad7ac"
   },
   "45388_verse": {
     "singer_id": "3",
+    "song_id": "45388",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45388_verse.wav",
     "pitch_path": "iKala/PitchLabel/45388_verse.pv",
     "lyrics_path": "iKala/Lyrics/45388_verse.lab",
-    "song_id": "45388",
-    "section": "verse"
+    "audio_checksum": "ecaf76b0e1ccd7bc98c92f382f071298"
   },
   "45389_chorus": {
     "singer_id": "4",
+    "song_id": "45389",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45389_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45389_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45389_chorus.lab",
-    "song_id": "45389",
-    "section": "chorus"
+    "audio_checksum": "8a83bf3a7b398a33456871462cf38fcb"
   },
   "45389_verse": {
     "singer_id": "4",
+    "song_id": "45389",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45389_verse.wav",
     "pitch_path": "iKala/PitchLabel/45389_verse.pv",
     "lyrics_path": "iKala/Lyrics/45389_verse.lab",
-    "song_id": "45389",
-    "section": "verse"
+    "audio_checksum": "40b628dd49d451cb79c3df93036a7da4"
   },
   "45390_verse": {
     "singer_id": "4",
+    "song_id": "45390",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45390_verse.wav",
     "pitch_path": "iKala/PitchLabel/45390_verse.pv",
     "lyrics_path": "iKala/Lyrics/45390_verse.lab",
-    "song_id": "45390",
-    "section": "verse"
+    "audio_checksum": "d6b936ef366de604024e5b75bbe9079d"
   },
   "45391_verse": {
     "singer_id": "1",
+    "song_id": "45391",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45391_verse.wav",
     "pitch_path": "iKala/PitchLabel/45391_verse.pv",
     "lyrics_path": "iKala/Lyrics/45391_verse.lab",
-    "song_id": "45391",
-    "section": "verse"
+    "audio_checksum": "eb42fd76b26efb8de97d7e91b86d2e3e"
   },
   "45392_chorus": {
     "singer_id": "4",
+    "song_id": "45392",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45392_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45392_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45392_chorus.lab",
-    "song_id": "45392",
-    "section": "chorus"
+    "audio_checksum": "c4c045ff5a64c5feab48790488579524"
   },
   "45392_verse": {
     "singer_id": "4",
+    "song_id": "45392",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45392_verse.wav",
     "pitch_path": "iKala/PitchLabel/45392_verse.pv",
     "lyrics_path": "iKala/Lyrics/45392_verse.lab",
-    "song_id": "45392",
-    "section": "verse"
+    "audio_checksum": "c982ea54f1586fc8aa7e200cd9ae1698"
   },
   "45393_verse": {
     "singer_id": "3",
+    "song_id": "45393",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45393_verse.wav",
     "pitch_path": "iKala/PitchLabel/45393_verse.pv",
     "lyrics_path": "iKala/Lyrics/45393_verse.lab",
-    "song_id": "45393",
-    "section": "verse"
+    "audio_checksum": "98d41090b66b6d1294d2bb07fb95ce34"
   },
   "45398_chorus": {
     "singer_id": "3",
+    "song_id": "45398",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45398_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45398_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45398_chorus.lab",
-    "song_id": "45398",
-    "section": "chorus"
+    "audio_checksum": "25720d4d17d7d3e820547ec9757eaa5f"
   },
   "45398_verse": {
     "singer_id": "3",
+    "song_id": "45398",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45398_verse.wav",
     "pitch_path": "iKala/PitchLabel/45398_verse.pv",
     "lyrics_path": "iKala/Lyrics/45398_verse.lab",
-    "song_id": "45398",
-    "section": "verse"
+    "audio_checksum": "6efd58fc95eef439176cac41b53c0520"
   },
   "45400_verse": {
     "singer_id": "1",
+    "song_id": "45400",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45400_verse.wav",
     "pitch_path": "iKala/PitchLabel/45400_verse.pv",
     "lyrics_path": "iKala/Lyrics/45400_verse.lab",
-    "song_id": "45400",
-    "section": "verse"
+    "audio_checksum": "701e017a9ff2e5abed37c11d3d1d74bc"
   },
   "45404_verse": {
     "singer_id": "1&3",
+    "song_id": "45404",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45404_verse.wav",
     "pitch_path": "iKala/PitchLabel/45404_verse.pv",
     "lyrics_path": "iKala/Lyrics/45404_verse.lab",
-    "song_id": "45404",
-    "section": "verse"
+    "audio_checksum": "ead343e9cce76e33cae75fe08a645a6a"
   },
   "45406_chorus": {
     "singer_id": "1",
+    "song_id": "45406",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45406_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45406_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45406_chorus.lab",
-    "song_id": "45406",
-    "section": "chorus"
+    "audio_checksum": "8d631311eb8332dc880035aee5a656be"
   },
   "45409_verse": {
     "singer_id": "1",
+    "song_id": "45409",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45409_verse.wav",
     "pitch_path": "iKala/PitchLabel/45409_verse.pv",
     "lyrics_path": "iKala/Lyrics/45409_verse.lab",
-    "song_id": "45409",
-    "section": "verse"
+    "audio_checksum": "b60271ee1c11a877ffc73e02f3a8d57f"
   },
   "45410_verse": {
     "singer_id": "1",
+    "song_id": "45410",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45410_verse.wav",
     "pitch_path": "iKala/PitchLabel/45410_verse.pv",
     "lyrics_path": "iKala/Lyrics/45410_verse.lab",
-    "song_id": "45410",
-    "section": "verse"
+    "audio_checksum": "138e37e313de7a8d94859b4eeeba8049"
   },
   "45412_chorus": {
     "singer_id": "1",
+    "song_id": "45412",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45412_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45412_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45412_chorus.lab",
-    "song_id": "45412",
-    "section": "chorus"
+    "audio_checksum": "93fc2e054cd73073e5af9e523b92bde4"
   },
   "45412_verse": {
     "singer_id": "1",
+    "song_id": "45412",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45412_verse.wav",
     "pitch_path": "iKala/PitchLabel/45412_verse.pv",
     "lyrics_path": "iKala/Lyrics/45412_verse.lab",
-    "song_id": "45412",
-    "section": "verse"
+    "audio_checksum": "52a52155c2f2334be5a6255632e423e1"
   },
   "45413_chorus": {
     "singer_id": "3&1",
+    "song_id": "45413",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45413_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45413_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45413_chorus.lab",
-    "song_id": "45413",
-    "section": "chorus"
+    "audio_checksum": "be95722b2537355b905fd13e9adb53a6"
   },
   "45414_verse": {
     "singer_id": "1",
+    "song_id": "45414",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45414_verse.wav",
     "pitch_path": "iKala/PitchLabel/45414_verse.pv",
     "lyrics_path": "iKala/Lyrics/45414_verse.lab",
-    "song_id": "45414",
-    "section": "verse"
+    "audio_checksum": "5c22317ec72210d051fb7e2df923c120"
   },
   "45415_chorus": {
     "singer_id": "1",
+    "song_id": "45415",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45415_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45415_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45415_chorus.lab",
-    "song_id": "45415",
-    "section": "chorus"
+    "audio_checksum": "706dda52ab2fe68370e00d46c4ca863b"
   },
   "45415_verse": {
     "singer_id": "1",
+    "song_id": "45415",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45415_verse.wav",
     "pitch_path": "iKala/PitchLabel/45415_verse.pv",
     "lyrics_path": "iKala/Lyrics/45415_verse.lab",
-    "song_id": "45415",
-    "section": "verse"
+    "audio_checksum": "7f01834bba2abc778e56a62305cb663b"
   },
   "45416_chorus": {
     "singer_id": "1",
+    "song_id": "45416",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45416_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45416_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45416_chorus.lab",
-    "song_id": "45416",
-    "section": "chorus"
+    "audio_checksum": "d45fc6d391e600d20a4c9cef4b47a014"
   },
   "45416_verse": {
     "singer_id": "1",
+    "song_id": "45416",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45416_verse.wav",
     "pitch_path": "iKala/PitchLabel/45416_verse.pv",
     "lyrics_path": "iKala/Lyrics/45416_verse.lab",
-    "song_id": "45416",
-    "section": "verse"
+    "audio_checksum": "5868d5633156f1c28ad0794bf5d97709"
   },
   "45417_verse": {
     "singer_id": "3",
+    "song_id": "45417",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45417_verse.wav",
     "pitch_path": "iKala/PitchLabel/45417_verse.pv",
     "lyrics_path": "iKala/Lyrics/45417_verse.lab",
-    "song_id": "45417",
-    "section": "verse"
+    "audio_checksum": "0f61b8c20dc6b4b08154d5fa37dea2a5"
   },
   "45418_verse": {
     "singer_id": "3&1",
+    "song_id": "45418",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45418_verse.wav",
     "pitch_path": "iKala/PitchLabel/45418_verse.pv",
     "lyrics_path": "iKala/Lyrics/45418_verse.lab",
-    "song_id": "45418",
-    "section": "verse"
+    "audio_checksum": "858c3fa76b2cde59720440d37869071e"
   },
   "45419_chorus": {
     "singer_id": "3",
+    "song_id": "45419",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45419_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45419_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45419_chorus.lab",
-    "song_id": "45419",
-    "section": "chorus"
+    "audio_checksum": "aee3e3ca836be4f1eb6dd3c8f30cac73"
   },
   "45421_verse": {
     "singer_id": "3&1",
+    "song_id": "45421",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45421_verse.wav",
     "pitch_path": "iKala/PitchLabel/45421_verse.pv",
     "lyrics_path": "iKala/Lyrics/45421_verse.lab",
-    "song_id": "45421",
-    "section": "verse"
+    "audio_checksum": "3a3a663acf74a0a0c2a16f5287a86c6a"
   },
   "45422_chorus": {
     "singer_id": "3",
+    "song_id": "45422",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45422_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45422_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45422_chorus.lab",
-    "song_id": "45422",
-    "section": "chorus"
+    "audio_checksum": "65151aa0069b843e90e456227813c659"
   },
   "45422_verse": {
     "singer_id": "3",
+    "song_id": "45422",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45422_verse.wav",
     "pitch_path": "iKala/PitchLabel/45422_verse.pv",
     "lyrics_path": "iKala/Lyrics/45422_verse.lab",
-    "song_id": "45422",
-    "section": "verse"
+    "audio_checksum": "13ac0b74691496274195f2337ef9788e"
   },
   "45423_verse": {
     "singer_id": "3",
+    "song_id": "45423",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45423_verse.wav",
     "pitch_path": "iKala/PitchLabel/45423_verse.pv",
     "lyrics_path": "iKala/Lyrics/45423_verse.lab",
-    "song_id": "45423",
-    "section": "verse"
+    "audio_checksum": "bc2c5f9ccfd29245c3d9a08e1a0e12fd"
   },
   "45424_chorus": {
     "singer_id": "1",
+    "song_id": "45424",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45424_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45424_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45424_chorus.lab",
-    "song_id": "45424",
-    "section": "chorus"
+    "audio_checksum": "05646e04e39bf92dc294b82ae37e6004"
   },
   "45425_chorus": {
     "singer_id": "3",
+    "song_id": "45425",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45425_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45425_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45425_chorus.lab",
-    "song_id": "45425",
-    "section": "chorus"
+    "audio_checksum": "9ae5ab58d9eb97b4089799bcbb214fbb"
   },
   "45428_chorus": {
     "singer_id": "3",
+    "song_id": "45428",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45428_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45428_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45428_chorus.lab",
-    "song_id": "45428",
-    "section": "chorus"
+    "audio_checksum": "1ae0c4918eaba5ee55d30938f6d2f7c1"
   },
   "45428_verse": {
     "singer_id": "3",
+    "song_id": "45428",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45428_verse.wav",
     "pitch_path": "iKala/PitchLabel/45428_verse.pv",
     "lyrics_path": "iKala/Lyrics/45428_verse.lab",
-    "song_id": "45428",
-    "section": "verse"
+    "audio_checksum": "c388c2b5869da0dad5bdb0f5ef1bd678"
   },
   "45429_chorus": {
     "singer_id": "2",
+    "song_id": "45429",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45429_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45429_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45429_chorus.lab",
-    "song_id": "45429",
-    "section": "chorus"
+    "audio_checksum": "28730b8c447648520f332840f133e687"
   },
   "45429_verse": {
     "singer_id": "2",
+    "song_id": "45429",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45429_verse.wav",
     "pitch_path": "iKala/PitchLabel/45429_verse.pv",
     "lyrics_path": "iKala/Lyrics/45429_verse.lab",
-    "song_id": "45429",
-    "section": "verse"
+    "audio_checksum": "673c4c9923374246413153cd8b3555bf"
   },
   "45431_verse": {
     "singer_id": "2",
+    "song_id": "45431",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45431_verse.wav",
     "pitch_path": "iKala/PitchLabel/45431_verse.pv",
     "lyrics_path": "iKala/Lyrics/45431_verse.lab",
-    "song_id": "45431",
-    "section": "verse"
+    "audio_checksum": "5db2aaa616b3120e70cfae571166027c"
   },
   "45434_verse": {
     "singer_id": "2",
+    "song_id": "45434",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45434_verse.wav",
     "pitch_path": "iKala/PitchLabel/45434_verse.pv",
     "lyrics_path": "iKala/Lyrics/45434_verse.lab",
-    "song_id": "45434",
-    "section": "verse"
+    "audio_checksum": "a2c7ca6895d452d06a74aacef18ac38f"
   },
   "45435_chorus": {
     "singer_id": "2",
+    "song_id": "45435",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/45435_chorus.wav",
     "pitch_path": "iKala/PitchLabel/45435_chorus.pv",
     "lyrics_path": "iKala/Lyrics/45435_chorus.lab",
-    "song_id": "45435",
-    "section": "chorus"
+    "audio_checksum": "310c7ed0a28726d462ffd0b610f83db0"
   },
   "45435_verse": {
     "singer_id": "2",
+    "song_id": "45435",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/45435_verse.wav",
     "pitch_path": "iKala/PitchLabel/45435_verse.pv",
     "lyrics_path": "iKala/Lyrics/45435_verse.lab",
-    "song_id": "45435",
-    "section": "verse"
+    "audio_checksum": "a3a5fb45dbb84ba579562508185f6128"
   },
   "54016_verse": {
     "singer_id": "1",
+    "song_id": "54016",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54016_verse.wav",
     "pitch_path": "iKala/PitchLabel/54016_verse.pv",
     "lyrics_path": "iKala/Lyrics/54016_verse.lab",
-    "song_id": "54016",
-    "section": "verse"
+    "audio_checksum": "133ece478b33b60373b5e9d6c5af7923"
   },
   "54173_chorus": {
     "singer_id": "1",
+    "song_id": "54173",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54173_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54173_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54173_chorus.lab",
-    "song_id": "54173",
-    "section": "chorus"
+    "audio_checksum": "3d21a05e99d1f82c6c33542140388355"
   },
   "54173_verse": {
     "singer_id": "1",
+    "song_id": "54173",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54173_verse.wav",
     "pitch_path": "iKala/PitchLabel/54173_verse.pv",
     "lyrics_path": "iKala/Lyrics/54173_verse.lab",
-    "song_id": "54173",
-    "section": "verse"
+    "audio_checksum": "9e86476ddae51406d86f2fe65e1defae"
   },
   "54183_chorus": {
     "singer_id": "1",
+    "song_id": "54183",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54183_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54183_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54183_chorus.lab",
-    "song_id": "54183",
-    "section": "chorus"
+    "audio_checksum": "8c5805845315944c82623ac21a0f6b89"
   },
   "54186_verse": {
     "singer_id": "5",
+    "song_id": "54186",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54186_verse.wav",
     "pitch_path": "iKala/PitchLabel/54186_verse.pv",
     "lyrics_path": "iKala/Lyrics/54186_verse.lab",
-    "song_id": "54186",
-    "section": "verse"
+    "audio_checksum": "4c327d0a0cce42015fbf4586c807a9cd"
   },
   "54189_chorus": {
     "singer_id": "1",
+    "song_id": "54189",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54189_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54189_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54189_chorus.lab",
-    "song_id": "54189",
-    "section": "chorus"
+    "audio_checksum": "e688f4edf3f3078b0ff21796d1f46797"
   },
   "54189_verse": {
     "singer_id": "1",
+    "song_id": "54189",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54189_verse.wav",
     "pitch_path": "iKala/PitchLabel/54189_verse.pv",
     "lyrics_path": "iKala/Lyrics/54189_verse.lab",
-    "song_id": "54189",
-    "section": "verse"
+    "audio_checksum": "3bfdd1c4b016badf1845e0647529073f"
   },
   "54190_chorus": {
     "singer_id": "3",
+    "song_id": "54190",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54190_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54190_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54190_chorus.lab",
-    "song_id": "54190",
-    "section": "chorus"
+    "audio_checksum": "42575721be48dd8bd132cf359583ca51"
   },
   "54190_verse": {
     "singer_id": "3",
+    "song_id": "54190",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54190_verse.wav",
     "pitch_path": "iKala/PitchLabel/54190_verse.pv",
     "lyrics_path": "iKala/Lyrics/54190_verse.lab",
-    "song_id": "54190",
-    "section": "verse"
+    "audio_checksum": "525ef4efffc7762805b31eedd71541e4"
   },
   "54191_verse": {
     "singer_id": "3",
+    "song_id": "54191",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54191_verse.wav",
     "pitch_path": "iKala/PitchLabel/54191_verse.pv",
     "lyrics_path": "iKala/Lyrics/54191_verse.lab",
-    "song_id": "54191",
-    "section": "verse"
+    "audio_checksum": "03127e748c90988bad3dfa9f4d44f418"
   },
   "54192_chorus": {
     "singer_id": "1",
+    "song_id": "54192",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54192_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54192_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54192_chorus.lab",
-    "song_id": "54192",
-    "section": "chorus"
+    "audio_checksum": "68720b053a8e72f8972e164369c2ed5d"
   },
   "54192_verse": {
     "singer_id": "1",
+    "song_id": "54192",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54192_verse.wav",
     "pitch_path": "iKala/PitchLabel/54192_verse.pv",
     "lyrics_path": "iKala/Lyrics/54192_verse.lab",
-    "song_id": "54192",
-    "section": "verse"
+    "audio_checksum": "171bd9f0c0ed1389a62ecfb77ed0433f"
   },
   "54194_chorus": {
     "singer_id": "1",
+    "song_id": "54194",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54194_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54194_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54194_chorus.lab",
-    "song_id": "54194",
-    "section": "chorus"
+    "audio_checksum": "d42be80cb08fabcd52e635e7e25f0ed4"
   },
   "54194_verse": {
     "singer_id": "1",
+    "song_id": "54194",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54194_verse.wav",
     "pitch_path": "iKala/PitchLabel/54194_verse.pv",
     "lyrics_path": "iKala/Lyrics/54194_verse.lab",
-    "song_id": "54194",
-    "section": "verse"
+    "audio_checksum": "a36c473f3e1687c501ae0194e58bc643"
   },
   "54202_chorus": {
     "singer_id": "3&4",
+    "song_id": "54202",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54202_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54202_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54202_chorus.lab",
-    "song_id": "54202",
-    "section": "chorus"
+    "audio_checksum": "a30f317f0289fa65d8ea51e036f55a16"
   },
   "54205_verse": {
     "singer_id": "3&4",
+    "song_id": "54205",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54205_verse.wav",
     "pitch_path": "iKala/PitchLabel/54205_verse.pv",
     "lyrics_path": "iKala/Lyrics/54205_verse.lab",
-    "song_id": "54205",
-    "section": "verse"
+    "audio_checksum": "c1b0757999e2381aae22f0e2e677f76e"
   },
   "54210_chorus": {
     "singer_id": "1",
+    "song_id": "54210",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54210_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54210_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54210_chorus.lab",
-    "song_id": "54210",
-    "section": "chorus"
+    "audio_checksum": "c7004fe206d7b0b5e2b33189c9593fb0"
   },
   "54211_chorus": {
     "singer_id": "1",
+    "song_id": "54211",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54211_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54211_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54211_chorus.lab",
-    "song_id": "54211",
-    "section": "chorus"
+    "audio_checksum": "a723fbf4e4baeea517449d7bbc05ed10"
   },
   "54212_chorus": {
     "singer_id": "3",
+    "song_id": "54212",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54212_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54212_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54212_chorus.lab",
-    "song_id": "54212",
-    "section": "chorus"
+    "audio_checksum": "1407f9b59dba5e981d67789ade61689e"
   },
   "54213_chorus": {
     "singer_id": "1",
+    "song_id": "54213",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54213_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54213_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54213_chorus.lab",
-    "song_id": "54213",
-    "section": "chorus"
+    "audio_checksum": "2a2c964bb0e5a6e9183465c08f367ffc"
   },
   "54213_verse": {
     "singer_id": "1",
+    "song_id": "54213",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54213_verse.wav",
     "pitch_path": "iKala/PitchLabel/54213_verse.pv",
     "lyrics_path": "iKala/Lyrics/54213_verse.lab",
-    "song_id": "54213",
-    "section": "verse"
+    "audio_checksum": "11ead08ffe50c02e02047354ad78f63b"
   },
   "54216_verse": {
     "singer_id": "3",
+    "song_id": "54216",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54216_verse.wav",
     "pitch_path": "iKala/PitchLabel/54216_verse.pv",
     "lyrics_path": "iKala/Lyrics/54216_verse.lab",
-    "song_id": "54216",
-    "section": "verse"
+    "audio_checksum": "d35575b82ca11722084fa1e25b2aa508"
   },
   "54219_verse": {
     "singer_id": "1&3",
+    "song_id": "54219",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54219_verse.wav",
     "pitch_path": "iKala/PitchLabel/54219_verse.pv",
     "lyrics_path": "iKala/Lyrics/54219_verse.lab",
-    "song_id": "54219",
-    "section": "verse"
+    "audio_checksum": "4cd7d062bf8d12b0298ec6a5a5e44c65"
   },
   "54220_chorus": {
     "singer_id": "1",
+    "song_id": "54220",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54220_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54220_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54220_chorus.lab",
-    "song_id": "54220",
-    "section": "chorus"
+    "audio_checksum": "8f54a97881e2e10fc8d682d3718e451a"
   },
   "54221_chorus": {
     "singer_id": "4",
+    "song_id": "54221",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54221_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54221_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54221_chorus.lab",
-    "song_id": "54221",
-    "section": "chorus"
+    "audio_checksum": "65fb1e173293d40c096325473b678d23"
   },
   "54223_chorus": {
     "singer_id": "1",
+    "song_id": "54223",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54223_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54223_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54223_chorus.lab",
-    "song_id": "54223",
-    "section": "chorus"
+    "audio_checksum": "e72ded5aea7fe940c23c272c6c080aa8"
   },
   "54223_verse": {
     "singer_id": "1",
+    "song_id": "54223",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54223_verse.wav",
     "pitch_path": "iKala/PitchLabel/54223_verse.pv",
     "lyrics_path": "iKala/Lyrics/54223_verse.lab",
-    "song_id": "54223",
-    "section": "verse"
+    "audio_checksum": "ed37663a29cf3d3f7fcc15b753d14c75"
   },
   "54226_chorus": {
     "singer_id": "1",
+    "song_id": "54226",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54226_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54226_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54226_chorus.lab",
-    "song_id": "54226",
-    "section": "chorus"
+    "audio_checksum": "9e204c8fb653f1959e249079d381cd34"
   },
   "54226_verse": {
     "singer_id": "1",
+    "song_id": "54226",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54226_verse.wav",
     "pitch_path": "iKala/PitchLabel/54226_verse.pv",
     "lyrics_path": "iKala/Lyrics/54226_verse.lab",
-    "song_id": "54226",
-    "section": "verse"
+    "audio_checksum": "5b8016cc3fb6b2f1310bed6502815c77"
   },
   "54227_chorus": {
     "singer_id": "1",
+    "song_id": "54227",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54227_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54227_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54227_chorus.lab",
-    "song_id": "54227",
-    "section": "chorus"
+    "audio_checksum": "67a1acef208200bb3d0a06ed2c83e5d4"
   },
   "54227_verse": {
     "singer_id": "1",
+    "song_id": "54227",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54227_verse.wav",
     "pitch_path": "iKala/PitchLabel/54227_verse.pv",
     "lyrics_path": "iKala/Lyrics/54227_verse.lab",
-    "song_id": "54227",
-    "section": "verse"
+    "audio_checksum": "d21e850b4300115db25108de4e995077"
   },
   "54228_chorus": {
     "singer_id": "3",
+    "song_id": "54228",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54228_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54228_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54228_chorus.lab",
-    "song_id": "54228",
-    "section": "chorus"
+    "audio_checksum": "0250e89aa483a854179d3bb6fb1e6716"
   },
   "54233_chorus": {
     "singer_id": "3",
+    "song_id": "54233",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54233_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54233_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54233_chorus.lab",
-    "song_id": "54233",
-    "section": "chorus"
+    "audio_checksum": "2e677455f1e2ee1f9505348b9cf94902"
   },
   "54233_verse": {
     "singer_id": "3",
+    "song_id": "54233",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54233_verse.wav",
     "pitch_path": "iKala/PitchLabel/54233_verse.pv",
     "lyrics_path": "iKala/Lyrics/54233_verse.lab",
-    "song_id": "54233",
-    "section": "verse"
+    "audio_checksum": "69f2035d92119a090f38941af01ee2c4"
   },
   "54236_chorus": {
     "singer_id": "2",
+    "song_id": "54236",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54236_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54236_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54236_chorus.lab",
-    "song_id": "54236",
-    "section": "chorus"
+    "audio_checksum": "3545c9269cf79b032907706703e832b6"
   },
   "54239_chorus": {
     "singer_id": "3",
+    "song_id": "54239",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54239_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54239_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54239_chorus.lab",
-    "song_id": "54239",
-    "section": "chorus"
+    "audio_checksum": "81d9adbfd1eed38c8a23bf81611124a7"
   },
   "54242_verse": {
     "singer_id": "2",
+    "song_id": "54242",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54242_verse.wav",
     "pitch_path": "iKala/PitchLabel/54242_verse.pv",
     "lyrics_path": "iKala/Lyrics/54242_verse.lab",
-    "song_id": "54242",
-    "section": "verse"
+    "audio_checksum": "7ffedb1c61bfca797dabdd841ddb8233"
   },
   "54243_chorus": {
     "singer_id": "2",
+    "song_id": "54243",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54243_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54243_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54243_chorus.lab",
-    "song_id": "54243",
-    "section": "chorus"
+    "audio_checksum": "e1e7b3302c081ec814893228b90a7f6b"
   },
   "54243_verse": {
     "singer_id": "2",
+    "song_id": "54243",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54243_verse.wav",
     "pitch_path": "iKala/PitchLabel/54243_verse.pv",
     "lyrics_path": "iKala/Lyrics/54243_verse.lab",
-    "song_id": "54243",
-    "section": "verse"
+    "audio_checksum": "758e50eb78b8472a35c85eb0fc947db0"
   },
   "54245_chorus": {
     "singer_id": "3",
+    "song_id": "54245",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54245_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54245_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54245_chorus.lab",
-    "song_id": "54245",
-    "section": "chorus"
+    "audio_checksum": "23eddb70b7704443324b81a682516c89"
   },
   "54245_verse": {
     "singer_id": "3",
+    "song_id": "54245",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54245_verse.wav",
     "pitch_path": "iKala/PitchLabel/54245_verse.pv",
     "lyrics_path": "iKala/Lyrics/54245_verse.lab",
-    "song_id": "54245",
-    "section": "verse"
+    "audio_checksum": "23b0bad956c7e0543ae60fe83eb0f0fe"
   },
   "54246_chorus": {
     "singer_id": "2",
+    "song_id": "54246",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54246_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54246_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54246_chorus.lab",
-    "song_id": "54246",
-    "section": "chorus"
+    "audio_checksum": "6dd3e4a2dac8537d8f32e5f581987486"
   },
   "54246_verse": {
     "singer_id": "2",
+    "song_id": "54246",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54246_verse.wav",
     "pitch_path": "iKala/PitchLabel/54246_verse.pv",
     "lyrics_path": "iKala/Lyrics/54246_verse.lab",
-    "song_id": "54246",
-    "section": "verse"
+    "audio_checksum": "50f82b7a75571817fe7b46b4ab8ed370"
   },
   "54247_verse": {
     "singer_id": "2",
+    "song_id": "54247",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54247_verse.wav",
     "pitch_path": "iKala/PitchLabel/54247_verse.pv",
     "lyrics_path": "iKala/Lyrics/54247_verse.lab",
-    "song_id": "54247",
-    "section": "verse"
+    "audio_checksum": "83c1bb99d4638d0545fa0e5a3eda2f06"
   },
   "54249_chorus": {
     "singer_id": "3",
+    "song_id": "54249",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/54249_chorus.wav",
     "pitch_path": "iKala/PitchLabel/54249_chorus.pv",
     "lyrics_path": "iKala/Lyrics/54249_chorus.lab",
-    "song_id": "54249",
-    "section": "chorus"
+    "audio_checksum": "10c181c803465b4f2b77f1a8b44c99d9"
   },
   "54249_verse": {
     "singer_id": "3",
+    "song_id": "54249",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54249_verse.wav",
     "pitch_path": "iKala/PitchLabel/54249_verse.pv",
     "lyrics_path": "iKala/Lyrics/54249_verse.lab",
-    "song_id": "54249",
-    "section": "verse"
+    "audio_checksum": "89c51eff6db073a01c088e47367475e9"
   },
   "54251_verse": {
     "singer_id": "2",
+    "song_id": "54251",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/54251_verse.wav",
     "pitch_path": "iKala/PitchLabel/54251_verse.pv",
     "lyrics_path": "iKala/Lyrics/54251_verse.lab",
-    "song_id": "54251",
-    "section": "verse"
+    "audio_checksum": "81f4c83b335cf98403c516466fffaa9f"
   },
   "61647_chorus": {
     "singer_id": "1",
+    "song_id": "61647",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/61647_chorus.wav",
     "pitch_path": "iKala/PitchLabel/61647_chorus.pv",
     "lyrics_path": "iKala/Lyrics/61647_chorus.lab",
-    "song_id": "61647",
-    "section": "chorus"
+    "audio_checksum": "5c563d422143e1d91a08cbdb154474ff"
   },
   "61647_verse": {
     "singer_id": "1",
+    "song_id": "61647",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/61647_verse.wav",
     "pitch_path": "iKala/PitchLabel/61647_verse.pv",
     "lyrics_path": "iKala/Lyrics/61647_verse.lab",
-    "song_id": "61647",
-    "section": "verse"
+    "audio_checksum": "46476e80dff99f60ca6752557a23dc05"
   },
   "61670_verse": {
     "singer_id": "1",
+    "song_id": "61670",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/61670_verse.wav",
     "pitch_path": "iKala/PitchLabel/61670_verse.pv",
     "lyrics_path": "iKala/Lyrics/61670_verse.lab",
-    "song_id": "61670",
-    "section": "verse"
+    "audio_checksum": "d18e6e43bf01369da1799b940945985b"
   },
   "61671_chorus": {
     "singer_id": "1",
+    "song_id": "61671",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/61671_chorus.wav",
     "pitch_path": "iKala/PitchLabel/61671_chorus.pv",
     "lyrics_path": "iKala/Lyrics/61671_chorus.lab",
-    "song_id": "61671",
-    "section": "chorus"
+    "audio_checksum": "d4932252aeb8b609d15734f95634eb9e"
   },
   "61671_verse": {
     "singer_id": "1",
+    "song_id": "61671",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/61671_verse.wav",
     "pitch_path": "iKala/PitchLabel/61671_verse.pv",
     "lyrics_path": "iKala/Lyrics/61671_verse.lab",
-    "song_id": "61671",
-    "section": "verse"
+    "audio_checksum": "bcf1a991e29b10c99ab3eebb57eab8e8"
   },
   "61673_verse": {
     "singer_id": "3",
+    "song_id": "61673",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/61673_verse.wav",
     "pitch_path": "iKala/PitchLabel/61673_verse.pv",
     "lyrics_path": "iKala/Lyrics/61673_verse.lab",
-    "song_id": "61673",
-    "section": "verse"
+    "audio_checksum": "fe50049deed0ad314be4b68c8c1d9087"
   },
   "61674_verse": {
     "singer_id": "4",
+    "song_id": "61674",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/61674_verse.wav",
     "pitch_path": "iKala/PitchLabel/61674_verse.pv",
     "lyrics_path": "iKala/Lyrics/61674_verse.lab",
-    "song_id": "61674",
-    "section": "verse"
+    "audio_checksum": "53b7563fc10de612cc794e68399cadc4"
   },
   "61676_chorus": {
     "singer_id": "4",
+    "song_id": "61676",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/61676_chorus.wav",
     "pitch_path": "iKala/PitchLabel/61676_chorus.pv",
     "lyrics_path": "iKala/Lyrics/61676_chorus.lab",
-    "song_id": "61676",
-    "section": "chorus"
+    "audio_checksum": "6bbbe3f3b31aba32c6215347e32e3759"
   },
   "61677_chorus": {
     "singer_id": "4",
+    "song_id": "61677",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/61677_chorus.wav",
     "pitch_path": "iKala/PitchLabel/61677_chorus.pv",
     "lyrics_path": "iKala/Lyrics/61677_chorus.lab",
-    "song_id": "61677",
-    "section": "chorus"
+    "audio_checksum": "3f7e309adfacdda15ad996bd471f2579"
   },
   "66556_chorus": {
     "singer_id": "1",
+    "song_id": "66556",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/66556_chorus.wav",
     "pitch_path": "iKala/PitchLabel/66556_chorus.pv",
     "lyrics_path": "iKala/Lyrics/66556_chorus.lab",
-    "song_id": "66556",
-    "section": "chorus"
+    "audio_checksum": "1f39636e114b34f975ba966e122fdaf2"
   },
   "66556_verse": {
     "singer_id": "1",
+    "song_id": "66556",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/66556_verse.wav",
     "pitch_path": "iKala/PitchLabel/66556_verse.pv",
     "lyrics_path": "iKala/Lyrics/66556_verse.lab",
-    "song_id": "66556",
-    "section": "verse"
+    "audio_checksum": "bf8dca1b47912bbff2270c9987218c5a"
   },
   "66557_chorus": {
     "singer_id": "1",
+    "song_id": "66557",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/66557_chorus.wav",
     "pitch_path": "iKala/PitchLabel/66557_chorus.pv",
     "lyrics_path": "iKala/Lyrics/66557_chorus.lab",
-    "song_id": "66557",
-    "section": "chorus"
+    "audio_checksum": "cb56d1a5c510b6086c938e0dfc4049ad"
   },
   "66558_verse": {
     "singer_id": "3",
+    "song_id": "66558",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/66558_verse.wav",
     "pitch_path": "iKala/PitchLabel/66558_verse.pv",
     "lyrics_path": "iKala/Lyrics/66558_verse.lab",
-    "song_id": "66558",
-    "section": "verse"
+    "audio_checksum": "830aee3a0ecd44b8d1443323cd908408"
   },
   "66559_chorus": {
     "singer_id": "1",
+    "song_id": "66559",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/66559_chorus.wav",
     "pitch_path": "iKala/PitchLabel/66559_chorus.pv",
     "lyrics_path": "iKala/Lyrics/66559_chorus.lab",
-    "song_id": "66559",
-    "section": "chorus"
+    "audio_checksum": "f2a63a615ddf92131858a1b3232022b3"
   },
   "66559_verse": {
     "singer_id": "1",
+    "song_id": "66559",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/66559_verse.wav",
     "pitch_path": "iKala/PitchLabel/66559_verse.pv",
     "lyrics_path": "iKala/Lyrics/66559_verse.lab",
-    "song_id": "66559",
-    "section": "verse"
+    "audio_checksum": "090e839e60a994dd0397cfd27d3af371"
   },
   "66560_verse": {
     "singer_id": "1",
+    "song_id": "66560",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/66560_verse.wav",
     "pitch_path": "iKala/PitchLabel/66560_verse.pv",
     "lyrics_path": "iKala/Lyrics/66560_verse.lab",
-    "song_id": "66560",
-    "section": "verse"
+    "audio_checksum": "d3a827702707f7f58c562bc8b1f06687"
   },
   "66561_chorus": {
     "singer_id": "3",
+    "song_id": "66561",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/66561_chorus.wav",
     "pitch_path": "iKala/PitchLabel/66561_chorus.pv",
     "lyrics_path": "iKala/Lyrics/66561_chorus.lab",
-    "song_id": "66561",
-    "section": "chorus"
+    "audio_checksum": "ee193b514b91590f56e233173ac70e94"
   },
   "66563_chorus": {
     "singer_id": "3",
+    "song_id": "66563",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/66563_chorus.wav",
     "pitch_path": "iKala/PitchLabel/66563_chorus.pv",
     "lyrics_path": "iKala/Lyrics/66563_chorus.lab",
-    "song_id": "66563",
-    "section": "chorus"
+    "audio_checksum": "66ae4d02786c27b4bf96a3bedd23c598"
   },
   "66563_verse": {
     "singer_id": "3",
+    "song_id": "66563",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/66563_verse.wav",
     "pitch_path": "iKala/PitchLabel/66563_verse.pv",
     "lyrics_path": "iKala/Lyrics/66563_verse.lab",
-    "song_id": "66563",
-    "section": "verse"
+    "audio_checksum": "ead540636b5803e58d5f1e0cf29bba29"
   },
   "66564_verse": {
     "singer_id": "3",
+    "song_id": "66564",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/66564_verse.wav",
     "pitch_path": "iKala/PitchLabel/66564_verse.pv",
     "lyrics_path": "iKala/Lyrics/66564_verse.lab",
-    "song_id": "66564",
-    "section": "verse"
+    "audio_checksum": "91a6307983db6384850d9eeaf8a2a84d"
   },
   "66565_verse": {
     "singer_id": "3",
+    "song_id": "66565",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/66565_verse.wav",
     "pitch_path": "iKala/PitchLabel/66565_verse.pv",
     "lyrics_path": "iKala/Lyrics/66565_verse.lab",
-    "song_id": "66565",
-    "section": "verse"
+    "audio_checksum": "5b0eb16216e929bc8e37a4c3d84fa861"
   },
   "66566_verse": {
     "singer_id": "2",
+    "song_id": "66566",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/66566_verse.wav",
     "pitch_path": "iKala/PitchLabel/66566_verse.pv",
     "lyrics_path": "iKala/Lyrics/66566_verse.lab",
-    "song_id": "66566",
-    "section": "verse"
+    "audio_checksum": "0abce980a9ec97fd81c2b4eaf3e4255b"
   },
   "71706_verse": {
     "singer_id": "1",
+    "song_id": "71706",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/71706_verse.wav",
     "pitch_path": "iKala/PitchLabel/71706_verse.pv",
     "lyrics_path": "iKala/Lyrics/71706_verse.lab",
-    "song_id": "71706",
-    "section": "verse"
+    "audio_checksum": "ff6f507a858c490e1945b8b246eb5f56"
   },
   "71710_chorus": {
     "singer_id": "1",
+    "song_id": "71710",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/71710_chorus.wav",
     "pitch_path": "iKala/PitchLabel/71710_chorus.pv",
     "lyrics_path": "iKala/Lyrics/71710_chorus.lab",
-    "song_id": "71710",
-    "section": "chorus"
+    "audio_checksum": "676bcf695336d3f136df194d90223294"
   },
   "71710_verse": {
     "singer_id": "1",
+    "song_id": "71710",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/71710_verse.wav",
     "pitch_path": "iKala/PitchLabel/71710_verse.pv",
     "lyrics_path": "iKala/Lyrics/71710_verse.lab",
-    "song_id": "71710",
-    "section": "verse"
+    "audio_checksum": "17f01d2ab13345caedd5074221faf8ed"
   },
   "71711_chorus": {
     "singer_id": "3",
+    "song_id": "71711",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/71711_chorus.wav",
     "pitch_path": "iKala/PitchLabel/71711_chorus.pv",
     "lyrics_path": "iKala/Lyrics/71711_chorus.lab",
-    "song_id": "71711",
-    "section": "chorus"
+    "audio_checksum": "cd19dd57ac514d9d58855304317e9a4a"
   },
   "71711_verse": {
     "singer_id": "3",
+    "song_id": "71711",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/71711_verse.wav",
     "pitch_path": "iKala/PitchLabel/71711_verse.pv",
     "lyrics_path": "iKala/Lyrics/71711_verse.lab",
-    "song_id": "71711",
-    "section": "verse"
+    "audio_checksum": "48d2352a148dbbdc95130061940605c8"
   },
   "71712_verse": {
     "singer_id": "1",
+    "song_id": "71712",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/71712_verse.wav",
     "pitch_path": "iKala/PitchLabel/71712_verse.pv",
     "lyrics_path": "iKala/Lyrics/71712_verse.lab",
-    "song_id": "71712",
-    "section": "verse"
+    "audio_checksum": "f2c29428626b0d97cfb33183f00d6378"
   },
   "71716_chorus": {
     "singer_id": "1",
+    "song_id": "71716",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/71716_chorus.wav",
     "pitch_path": "iKala/PitchLabel/71716_chorus.pv",
     "lyrics_path": "iKala/Lyrics/71716_chorus.lab",
-    "song_id": "71716",
-    "section": "chorus"
+    "audio_checksum": "5748c35b07268cfbfff8761c1f04b8ef"
   },
   "71719_chorus": {
     "singer_id": "3",
+    "song_id": "71719",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/71719_chorus.wav",
     "pitch_path": "iKala/PitchLabel/71719_chorus.pv",
     "lyrics_path": "iKala/Lyrics/71719_chorus.lab",
-    "song_id": "71719",
-    "section": "chorus"
+    "audio_checksum": "b7837be8b1010bfdcea747016905702b"
   },
   "71719_verse": {
     "singer_id": "3",
+    "song_id": "71719",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/71719_verse.wav",
     "pitch_path": "iKala/PitchLabel/71719_verse.pv",
     "lyrics_path": "iKala/Lyrics/71719_verse.lab",
-    "song_id": "71719",
-    "section": "verse"
+    "audio_checksum": "976fd7af57aff62c17c6bd6fc3019980"
   },
   "71720_chorus": {
     "singer_id": "1",
+    "song_id": "71720",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/71720_chorus.wav",
     "pitch_path": "iKala/PitchLabel/71720_chorus.pv",
     "lyrics_path": "iKala/Lyrics/71720_chorus.lab",
-    "song_id": "71720",
-    "section": "chorus"
+    "audio_checksum": "7680c9ebc65a663ff1c27cdd858df625"
   },
   "71720_verse": {
     "singer_id": "1",
+    "song_id": "71720",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/71720_verse.wav",
     "pitch_path": "iKala/PitchLabel/71720_verse.pv",
     "lyrics_path": "iKala/Lyrics/71720_verse.lab",
-    "song_id": "71720",
-    "section": "verse"
+    "audio_checksum": "bd38244ba764778424c9bfbe1b3573e7"
   },
   "71723_verse": {
     "singer_id": "3",
+    "song_id": "71723",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/71723_verse.wav",
     "pitch_path": "iKala/PitchLabel/71723_verse.pv",
     "lyrics_path": "iKala/Lyrics/71723_verse.lab",
-    "song_id": "71723",
-    "section": "verse"
+    "audio_checksum": "bfd4a85110aa12d0fbb946f8f5365e50"
   },
   "71726_chorus": {
     "singer_id": "2",
+    "song_id": "71726",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/71726_chorus.wav",
     "pitch_path": "iKala/PitchLabel/71726_chorus.pv",
     "lyrics_path": "iKala/Lyrics/71726_chorus.lab",
-    "song_id": "71726",
-    "section": "chorus"
+    "audio_checksum": "65148b8c1d3236ec82113262d9d2d86c"
   },
   "80612_verse": {
     "singer_id": "4",
+    "song_id": "80612",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/80612_verse.wav",
     "pitch_path": "iKala/PitchLabel/80612_verse.pv",
     "lyrics_path": "iKala/Lyrics/80612_verse.lab",
-    "song_id": "80612",
-    "section": "verse"
+    "audio_checksum": "c44befad7d31a98dc8641168fce2e6bd"
   },
   "80614_verse": {
     "singer_id": "3&1",
+    "song_id": "80614",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/80614_verse.wav",
     "pitch_path": "iKala/PitchLabel/80614_verse.pv",
     "lyrics_path": "iKala/Lyrics/80614_verse.lab",
-    "song_id": "80614",
-    "section": "verse"
+    "audio_checksum": "f55be3fe59014eb37a342af8102cd5e4"
   },
   "80616_verse": {
     "singer_id": "1",
+    "song_id": "80616",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/80616_verse.wav",
     "pitch_path": "iKala/PitchLabel/80616_verse.pv",
     "lyrics_path": "iKala/Lyrics/80616_verse.lab",
-    "song_id": "80616",
-    "section": "verse"
+    "audio_checksum": "925c9129d1a9384e981d537531b71978"
   },
   "90586_chorus": {
     "singer_id": "3",
+    "song_id": "90586",
+    "section": "chorus",
     "audio_path": "iKala/Wavfile/90586_chorus.wav",
     "pitch_path": "iKala/PitchLabel/90586_chorus.pv",
     "lyrics_path": "iKala/Lyrics/90586_chorus.lab",
-    "song_id": "90586",
-    "section": "chorus"
+    "audio_checksum": "7f5cc4d2b9d926370ad9ea8baa0ee5ab"
   },
   "90586_verse": {
     "singer_id": "3",
+    "song_id": "90586",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/90586_verse.wav",
     "pitch_path": "iKala/PitchLabel/90586_verse.pv",
     "lyrics_path": "iKala/Lyrics/90586_verse.lab",
-    "song_id": "90586",
-    "section": "verse"
+    "audio_checksum": "7ab6184e630c3c72dd207f1c5de5ce43"
   },
   "90587_verse": {
     "singer_id": "3",
+    "song_id": "90587",
+    "section": "verse",
     "audio_path": "iKala/Wavfile/90587_verse.wav",
     "pitch_path": "iKala/PitchLabel/90587_verse.pv",
     "lyrics_path": "iKala/Lyrics/90587_verse.lab",
-    "song_id": "90587",
-    "section": "verse"
+    "audio_checksum": "335173766f679e93ce8d8348c0978541"
   }
 }
