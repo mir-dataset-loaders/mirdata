@@ -3,10 +3,31 @@ import csv
 import os
 import glob
 import json
+import hashlib
 from urllib import request
 
 ID_MAPPING_URL = "http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt"
 IKALA_INDEX_PATH = "../mir_dataset_loaders/indexes/ikala_index.json"
+
+
+def md5(file_path):
+    """Get md5 hash of a file.
+
+    Parameters
+    ----------
+    file_path: str
+        File path.
+
+    Returns
+    -------
+    md5_hash: str
+        md5 hash of data in file_path
+    """
+    hash_md5 = hashlib.md5()
+    with open(file_path, "rb") as fhandle:
+        for chunk in iter(lambda: fhandle.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
 
 
 def make_ikala_index(ikala_data_path):
@@ -37,6 +58,11 @@ def make_ikala_index(ikala_data_path):
         ikala_index[key]['pitch_path'] = "iKala/PitchLabel/{}.pv".format(key)
         ikala_index[key]['lyrics_path'] = "iKala/Lyrics/{}.lab".format(key)
 
+        audio_checksum = md5(os.path.join(
+            ikala_data_path, "Wavfile/{}.wav".format(key)))
+
+        ikala_index[key]['audio_checksum'] = audio_checksum
+
     with open(IKALA_INDEX_PATH, 'w') as fhandle:
         json.dump(ikala_index, fhandle, indent=2)
 
@@ -45,7 +71,7 @@ def main(args):
     make_ikala_index(args.ikala_data_path)
 
 
-with __name__ == "__main__":
+if __name__ == "__main__":
     PARSER = argparse.ArgumentParser(
         description="Make IKala index file.")
     PARSER.add_argument("ikala_data_path",
