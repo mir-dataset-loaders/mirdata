@@ -7,7 +7,7 @@ import numpy as np
 import os
 
 from . import MEDLEYDB_PITCH_INDEX_PATH
-from .load_utils import get_local_path, validator, F0Data
+from .utils import get_local_path, validator, F0Data, get_save_path
 
 
 MEDLEYDB_PITCH_INDEX = json.load(open(MEDLEYDB_PITCH_INDEX_PATH, 'r'))
@@ -27,6 +27,7 @@ MedleydbPitchTrack = namedtuple(
 
 
 def download(data_home=None):
+    save_path = get_save_path(data_home)
     print("""
       To Download this dataset, visit:
       https://zenodo.org/record/2620624#.XKLgURNKh24
@@ -35,7 +36,7 @@ def download(data_home=None):
       Once downloaded, unzip the file MedleyDB-Pitch.zip
       and place the result in:
       {}
-    """.format(data_home))
+    """.format(save_path))
 
 
 def validate(data_home):

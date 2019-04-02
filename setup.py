@@ -3,7 +3,8 @@ from setuptools import setup
 
 import imp
 
-version = imp.load_source('mir_dataset_loaders.version', 'mir_dataset_loaders/version.py')
+version = imp.load_source(
+    'mir_dataset_loaders.version', 'mir_dataset_loaders/version.py')
 
 if __name__ == "__main__":
     setup(
@@ -29,7 +30,7 @@ if __name__ == "__main__":
                 'pytest-pep8',
             ],
             'docs': [
-                'sphinx==1.2.3',  # autodoc was broken in 1.3.1
+                'sphinx',
                 'sphinxcontrib-napoleon',
                 'sphinx_rtd_theme',
                 'numpydoc',

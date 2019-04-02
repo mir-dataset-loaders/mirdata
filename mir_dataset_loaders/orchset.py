@@ -7,10 +7,8 @@ import numpy as np
 import os
 
 from . import ORCHSET_INDEX_PATH
-from .load_utils import get_local_path, validator, F0Data
-from .download_utils import (
-    download_from_remote, unzip, RemoteFileMetadata, get_save_path
-)
+from .utils import (get_local_path, validator, F0Data, download_from_remote,
+                    unzip, RemoteFileMetadata, get_save_path)
 
 ORCHSET_INDEX = json.load(open(ORCHSET_INDEX_PATH, 'r'))
 

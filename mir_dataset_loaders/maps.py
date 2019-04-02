@@ -1,5 +1,5 @@
 
-from .download_utils import (
+from .utils import (
     download_from_remote, untar, RemoteFileMetadata, get_save_path
 )
 
