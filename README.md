@@ -2,6 +2,7 @@
 common loaders for mir datasets.
 
 *WORK IN PROGRESS, USE AT YOUR OWN RISK!*
+[![CircleCI](https://circleci.com/gh/mir-dataset-loaders/mir-dataset-loaders.svg?style=svg)](https://circleci.com/gh/mir-dataset-loaders/mir-dataset-loaders)
 
 This library provides tools for working with common MIR datasets, including tools for:
 * downloading datasets to a common location and format
