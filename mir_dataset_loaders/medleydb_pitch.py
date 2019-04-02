@@ -29,7 +29,7 @@ MedleydbPitchTrack = namedtuple(
 def download(data_home=None):
     save_path = get_save_path(data_home)
     print("""
-      To Download this dataset, visit:
+      To download this dataset, visit:
       https://zenodo.org/record/2620624#.XKLgURNKh24
       and request access.
 
@@ -39,9 +39,8 @@ def download(data_home=None):
     """.format(save_path))
 
 
-def validate(data_home):
-    file_keys = ['melody_path', 'audio_path_mono', 'audio_path_stereo']
-    missing_files = validator(MEDLEYDB_PITCH_INDEX, file_keys, data_home)
+def validate(data_home=None):
+    missing_files = validator(MEDLEYDB_PITCH_INDEX, data_home)
     return missing_files
 
 
@@ -60,7 +59,7 @@ def load(data_home=None):
 def load_track(track_id, data_home=None):
     if track_id not in MEDLEYDB_PITCH_INDEX.keys():
         raise ValueError(
-            "{} is not a valid track ID in Orchset".format(track_id))
+            "{} is not a valid track ID in MedleyDB-Pitch".format(track_id))
     track_data = MEDLEYDB_PITCH_INDEX[track_id]
 
     if (MEDLEYDB_METADATA is None or
@@ -108,7 +107,9 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = get_local_path(data_home, "medleydb_pitch_metadata.json")
+    metadata_path = get_local_path(
+        data_home,
+        os.path.join(MEDLEYDB_PITCH_DIR, "medleydb_pitch_metadata.json"))
     if not os.path.exists(metadata_path):
         return None
     with open(metadata_path, 'r') as fhandle:
@@ -127,11 +128,11 @@ In Proceedings of the 15th International Society for Music Information Retrieval
 
 ========== Bibtex ==========
 @inproceedings{bittner2014medleydb,
-  Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
-  Booktitle = {International Society of Music Information Retrieval (ISMIR)},
-  Month = {October},
-  Title = {Medley{DB}: A Multitrack Dataset for Annotation-Intensive {MIR} Research},
-  Year = {2014}
+    Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
+    Booktitle = {International Society of Music Information Retrieval (ISMIR)},
+    Month = {October},
+    Title = {Medley{DB}: A Multitrack Dataset for Annotation-Intensive {MIR} Research},
+    Year = {2014}
 }
 """
 

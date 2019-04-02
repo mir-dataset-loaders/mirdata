@@ -48,7 +48,7 @@ def download(data_home=None, clobber=False):
     validate(data_home)
 
 
-def validate(data_home):
+def validate(data_home=None):
     missing_files, invalid_checksums = validator(ORCHSET_INDEX, data_home)
     return missing_files, invalid_checksums
 
@@ -77,7 +77,7 @@ def load_track(track_id, data_home=None):
             raise EnvironmentError("Could not find Orchset metadata file")
 
     melody_data = _load_melody(
-        get_local_path(data_home, track_data['melody_path']))
+        get_local_path(data_home, track_data['melody'][0]))
 
     track_metadata = ORCHSET_METADATA[track_id]
 
@@ -118,8 +118,9 @@ def _load_melody(melody_path):
 
 def _load_metadata(data_home):
 
-    predominant_inst_path = get_local_path(
-        data_home, "Orchset - Predominant Melodic Instruments.csv")
+    predominant_inst_path = get_local_path(data_home, os.path.join(
+        ORCHSET_DIR,
+        "Orchset - Predominant Melodic Instruments.csv"))
 
     if not os.path.exists(predominant_inst_path):
         return None
@@ -187,14 +188,14 @@ Classical Music", Journal of New Music Research (2016)
 
 ========== Bibtex ==========
 @article{bosch2016evaluation,
-  title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
-  author={Bosch, Juan J and Marxer, Ricard and G{\'o}mez, Emilia},
-  journal={Journal of New Music Research},
-  volume={45},
-  number={2},
-  pages={101--117},
-  year={2016},
-  publisher={Taylor \& Francis}
+    title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
+    author={Bosch, Juan J and Marxer, Ricard and G{\'o}mez, Emilia},
+    journal={Journal of New Music Research},
+    volume={45},
+    number={2},
+    pages={101--117},
+    year={2016},
+    publisher={Taylor \& Francis}
 """
 
     print(cite_data)
