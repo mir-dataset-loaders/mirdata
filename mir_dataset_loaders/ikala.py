@@ -16,6 +16,7 @@ from .utils import get_local_path, validator, F0Data, LyricsData
 IKALA_TIME_STEP = 0.032  # seconds
 IKALA_INDEX = json.load(open(IKALA_INDEX_PATH, 'r'))
 IKALA_METADATA = None
+IKALA_DIR = 'iKala'
 ID_MAPPING_URL = "http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt"
 
 
@@ -36,7 +37,7 @@ def download():
         "Unfortunately the iKala dataset is not available for download.")
 
 
-def validate(data_home):
+def validate(data_home=None):
     missing_files, invalid_checksums = validator(IKALA_INDEX, data_home)
     return missing_files, invalid_checksums
 
@@ -74,7 +75,7 @@ def load_track(track_id, data_home=None):
         track_id,
         f0_data,
         lyrics_data,
-        get_local_path(data_home, track_data['audio_path']),
+        get_local_path(data_home, track_data['audio'][0]),
         IKALA_METADATA[song_id],
         song_id,
         section
@@ -122,7 +123,8 @@ def _reload_metadata(data_home):
 
 def _load_metadata(data_home):
 
-    id_map_path = os.path.join(data_home, "id_mapping.txt")
+    id_map_path = get_local_path(
+        data_home, os.path.join(IKALA_DIR, "id_mapping.txt"))
     if not os.path.exists(id_map_path):
         request.urlretrieve(ID_MAPPING_URL, filename=id_map_path)
 

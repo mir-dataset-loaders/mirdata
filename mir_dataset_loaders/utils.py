@@ -33,17 +33,27 @@ def md5(file_path):
 def validator(dataset_index, data_home):
     missing_files = {}
     invalid_checksums = {}
+
+    # loop over track ids
     for track_id, track in dataset_index.items():
-        missing_files[track_id] = []
+        # loop over each data file for this track id
         for key in track.keys():
             filepath = track[key][0]
             checksum = track[key][1]
             local_path = get_local_path(data_home, filepath)
+            # validate that the file exists on disk
             if not os.path.exists(local_path):
+                if track_id not in missing_files.keys():
+                    missing_files[track_id] = []
                 missing_files[track_id].append(local_path)
+            # validate that the checksum matches
             elif md5(local_path) != checksum:
+                if track_id not in invalid_checksums.keys():
+                    invalid_checksums[track_id] = []
                 invalid_checksums[track_id].append(local_path)
 
+    # print path of any missing files
+    # TODO: Handle this silently?
     for track_id in missing_files.keys():
         if len(missing_files[track_id]) > 0:
             print("Files missing for {}:".format(track_id))
@@ -51,10 +61,11 @@ def validator(dataset_index, data_home):
                 print(fpath)
             print("-" * 20)
 
+    # print path of any invalid checksums
     for track_id in invalid_checksums.keys():
-        if len(missing_files[track_id]) > 0:
+        if len(invalid_checksums[track_id]) > 0:
             print("Invalid checksums for {}:".format(track_id))
-            for fpath in missing_files[track_id]:
+            for fpath in invalid_checksums[track_id]:
                 print(fpath)
             print("-" * 20)
 
