@@ -1,6 +1,8 @@
 # mir_dataset_loaders
 common loaders for mir datasets.
 
+*WORK IN PROGRESS, USE AT YOUR OWN RISK!*
+
 This library provides tools for working with common MIR datasets, including tools for:
 * downloading datasets to a common location and format
 * validating that the files for a dataset are all present
@@ -17,12 +19,12 @@ within a relevant function, e.g. `mir_datasets.orchset.download(data_home='my_cu
 
 ## Examples
 
-### List available datasets
+<!-- ### List available datasets
 ```python
 import mir_dataset_loaders as mdl
 
 mdl.list_datasets()
-```
+``` -->
 
 ### Download the Orchset Dataset
 ```python
@@ -118,8 +120,8 @@ To add a new dataset loader:
 ### Creating an index
 
 The index should be a json file where the top level keys are the unique track
-ids of the datset. The values should be a dictionary of metadata, and the keys
-of these dictionaries should be identical across the dataset.
+ids of the datset. The values should be a dictionary of files associated with
+the track id, along with their checksums.
 
 Any file path included should be relative to the top level directory of the dataset.
 For example, if a dataset has the structure:
@@ -143,20 +145,35 @@ A possible index file for this example would be:
 ```json
 {
     "track1": {
-        "audio_path": "Example_Dataset/audio/track1.wav",
-        "annotation_path": "Example_Dataset/annotations/track1.csv",
-        "genre": "Electronica"
+        "audio": [
+            "Example_Dataset/audio/track1.wav",
+            "912ec803b2ce49e4a541068d495ab570"
+        ],
+        "annotation": [
+            "Example_Dataset/annotations/track1.csv",
+            "2cf33591c3b28b382668952e236cccd5"
+        ]
     },
     "track2": {
-        "audio_path": "Example_Dataset/audio/track2.wav",
-        "annotation_path": "Example_Dataset/annotations/Track2.csv",
-        "genre": "Free Jazz"
+        "audio": [
+            "Example_Dataset/audio/track2.wav",
+            "65d671ec9787b32cfb7e33188be32ff7"
+        ],
+        "annotation": [
+            "Example_Dataset/annotations/Track2.csv",
+            "e1964798cfe86e914af895f8d0291812"
+        ]
     },
     "track3": {
-        "audio_path": "Example_Dataset/audio/track3.wav",
-        "annotation_path": "Example_Dataset/annotations/track3.csv",
-        "genre": null
-    }
+        "audio": [
+            "Example_Dataset/audio/track3.wav",
+            "60edeb51dc4041c47c031c4bfb456b76"
+        ],
+        "annotation": [
+            "Example_Dataset/annotations/track3.csv",
+            "06cb006cc7b61de6be6361ff904654b3"
+        ]
+  }
 }
 ```
 
@@ -168,7 +185,7 @@ pairing audio and annotation files more difficult. We introduce use a fixed,
 version controlled index to account for this kind of mismatch, rather than relying
 on string parsing on load.
 
-Notebooks used to create some of the dataset indexes are in the [notebooks]() folder.
+Scripts used to create the dataset indexes are in the [scripts](https://github.com/mir-dataset-loaders/mir-dataset-loaders/tree/medleydb-loaders/scripts) folder.
 
 
 ### Creating a module.
@@ -221,11 +238,13 @@ def validate(data_home):
     -------
     missing_files : list
         List of expected absolute paths of missing files.
+    invalid_checksums : list
+        List of absolute paths where checksums do not match.
     """
     # keys in EXAMPLE_INDEX which map to filepaths
-    file_keys = ['audio_path', 'annotation_path']
-    missing_files = validator(EXAMPLE_INDEX, file_keys, data_home)
-    return missing_files
+    missing_files, invalid_checksums = validator(
+        EXAMPLE_INDEX, data_home)
+    return missing_files, invalid_checksums
 
 
 def track_ids():
