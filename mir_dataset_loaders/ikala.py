@@ -10,7 +10,7 @@ import os
 from urllib import request
 
 from . import IKALA_INDEX_PATH
-from .load_utils import get_local_path, validator, F0Data, LyricsData
+from .utils import get_local_path, validator, F0Data, LyricsData
 
 
 IKALA_TIME_STEP = 0.032  # seconds

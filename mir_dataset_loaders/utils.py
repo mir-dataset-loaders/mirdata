@@ -1,4 +1,5 @@
 from collections import namedtuple
+import hashlib
 import os
 import tarfile
 from urllib import request
@@ -7,10 +8,75 @@ import zipfile
 from tqdm import tqdm
 
 from . import MIR_DATASETS_DIR
-from . import md5
 
-RemoteFileMetadata = namedtuple('RemoteFileMetadata',
-                                ['filename', 'url', 'checksum'])
+
+def md5(file_path):
+    """Get md5 hash of a file.
+
+    Parameters
+    ----------
+    file_path: str
+        File path.
+
+    Returns
+    -------
+    md5_hash: str
+        md5 hash of data in file_path
+    """
+    hash_md5 = hashlib.md5()
+    with open(file_path, "rb") as fhandle:
+        for chunk in iter(lambda: fhandle.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
+
+def validator(dataset_index, data_home):
+    missing_files = {}
+    invalid_checksums = {}
+    for track_id, track in dataset_index.items():
+        missing_files[track_id] = []
+        for key in track.keys():
+            filepath = track[key][0]
+            checksum = track[key][1]
+            local_path = get_local_path(data_home, filepath)
+            if not os.path.exists(local_path):
+                missing_files[track_id].append(local_path)
+            elif md5(local_path) != checksum:
+                invalid_checksums[track_id].append(local_path)
+
+    for track_id in missing_files.keys():
+        if len(missing_files[track_id]) > 0:
+            print("Files missing for {}:".format(track_id))
+            for fpath in missing_files[track_id]:
+                print(fpath)
+            print("-" * 20)
+
+    for track_id in invalid_checksums.keys():
+        if len(missing_files[track_id]) > 0:
+            print("Invalid checksums for {}:".format(track_id))
+            for fpath in missing_files[track_id]:
+                print(fpath)
+            print("-" * 20)
+
+    return missing_files, invalid_checksums
+
+
+F0Data = namedtuple(
+    'F0Data',
+    ['times', 'frequencies', 'confidence']
+)
+
+LyricsData = namedtuple(
+    'LyricsData',
+    ['start_time', 'end_time', 'lyric', 'pronounciation']
+)
+
+
+def get_local_path(data_home, rel_path):
+    if data_home is None:
+        return os.path.join(MIR_DATASETS_DIR, rel_path)
+    else:
+        return os.path.join(data_home, rel_path)
 
 
 def get_save_path(data_home):
@@ -37,6 +103,10 @@ def get_save_path(data_home):
         os.makedirs(save_path)
 
     return save_path
+
+
+RemoteFileMetadata = namedtuple('RemoteFileMetadata',
+                                ['filename', 'url', 'checksum'])
 
 
 class DownloadProgressBar(tqdm):
@@ -128,3 +198,4 @@ def untar(tar_path, save_dir, cleanup=False):
     tfile.close()
     if cleanup:
         os.remove(tar_path)
+
