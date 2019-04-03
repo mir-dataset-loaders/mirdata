@@ -40,17 +40,19 @@ def validator(dataset_index, data_home):
         for key in track.keys():
             filepath = track[key][0]
             checksum = track[key][1]
-            local_path = get_local_path(data_home, filepath)
-            # validate that the file exists on disk
-            if not os.path.exists(local_path):
-                if track_id not in missing_files.keys():
-                    missing_files[track_id] = []
-                missing_files[track_id].append(local_path)
-            # validate that the checksum matches
-            elif md5(local_path) != checksum:
-                if track_id not in invalid_checksums.keys():
-                    invalid_checksums[track_id] = []
-                invalid_checksums[track_id].append(local_path)
+            print(filepath)
+            if not filepath == None:  # TODO: needed for empty entries salami, @rabitt ok with this?
+                local_path = get_local_path(data_home, filepath)
+                # validate that the file exists on disk
+                if not os.path.exists(local_path):
+                    if track_id not in missing_files.keys():
+                        missing_files[track_id] = []
+                    missing_files[track_id] = [local_path]
+                # validate that the checksum matches
+                elif md5(local_path) != checksum:
+                    if track_id not in invalid_checksums.keys():
+                        invalid_checksums[track_id] = []
+                    invalid_checksums[track_id] = [local_path]
 
     # print path of any missing files
     # TODO: Handle this silently?
@@ -82,6 +84,10 @@ LyricsData = namedtuple(
     ['start_time', 'end_time', 'lyric', 'pronounciation']
 )
 
+SectionsData = namedtuple(
+    'SectionsData',
+    ['start_time', 'end_time', 'section']
+)
 
 def get_local_path(data_home, rel_path):
     if data_home is None:
