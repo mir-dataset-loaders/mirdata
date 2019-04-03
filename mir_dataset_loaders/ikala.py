@@ -10,7 +10,7 @@ import os
 from urllib import request
 
 from . import IKALA_INDEX_PATH
-from .utils import get_local_path, validator, F0Data, LyricsData
+from .utils import get_save_path, get_local_path, validator, F0Data, LyricsData
 
 
 IKALA_TIME_STEP = 0.032  # seconds
@@ -32,9 +32,18 @@ IKalaTrack = namedtuple(
 )
 
 
-def download():
-    raise NotImplementedError(
-        "Unfortunately the iKala dataset is not available for download.")
+def download(data_home=None):
+    save_path = get_save_path(data_home)
+    print("""
+        Unfortunately the iKala dataset is not available for download.
+        If you have the iKala dataset, place the contents into a folder called
+        iKala with the following structure:
+            > iKala/
+                > Lyrics/
+                > PitchLabel/
+                > Wavfile/
+        and copy the iKala folder to {}
+    """.format(save_path))
 
 
 def validate(data_home=None):
@@ -44,14 +53,6 @@ def validate(data_home=None):
 
 def track_ids():
     return list(IKALA_INDEX.keys())
-
-
-def audio_filepaths(data_home=None):
-    ikala_data = load(data_home=data_home)
-    filepaths = []
-    for track in ikala_data:
-        filepaths.append(track.audio_path)
-    return filepaths
 
 
 def load(data_home=None):
