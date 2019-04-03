@@ -30,7 +30,12 @@ def md5(file_path):
     return hash_md5.hexdigest()
 
 
-def validator(dataset_index, data_home):
+def log_message(message, silence=False):
+    if not silence:
+        print(message)
+
+
+def validator(dataset_index, data_home, silence=False):
     missing_files = {}
     invalid_checksums = {}
 
@@ -53,21 +58,20 @@ def validator(dataset_index, data_home):
                 invalid_checksums[track_id].append(local_path)
 
     # print path of any missing files
-    # TODO: Handle this silently?
     for track_id in missing_files.keys():
         if len(missing_files[track_id]) > 0:
-            print("Files missing for {}:".format(track_id))
+            log_message("Files missing for {}:".format(track_id), silence)
             for fpath in missing_files[track_id]:
-                print(fpath)
-            print("-" * 20)
+                log_message(fpath, silence)
+            log_message("-" * 20, silence)
 
     # print path of any invalid checksums
     for track_id in invalid_checksums.keys():
         if len(invalid_checksums[track_id]) > 0:
-            print("Invalid checksums for {}:".format(track_id))
+            log_message("Invalid checksums for {}:".format(track_id), silence)
             for fpath in invalid_checksums[track_id]:
-                print(fpath)
-            print("-" * 20)
+                log_message(fpath, silence)
+            log_message("-" * 20, silence)
 
     return missing_files, invalid_checksums
 
