@@ -82,7 +82,30 @@ def load_track(track_id, data_home=None):
     )
 
 
+def load_ikala_vocal_audio(ikalatrack):
+    audio_path = ikalatrack.audio_path
+    audio, sr = librosa.load(audio_path, sr=None, mono=False)
+    vocal_channel = audio[1, :]
+    return vocal_channel, sr
+
+
+def load_ikala_instrumental_audio(ikalatrack):
+    audio_path = ikalatrack.audio_path
+    audio, sr = librosa.load(audio_path, sr=None, mono=False)
+    instrumental_channel = audio[0, :]
+    return instrumental_channel, sr
+
+
+def load_ikala_mix_audio(ikalatrack):
+    audio_path = ikalatrack.audio_path
+    mixed_audio, sr = librosa.load(audio_path, sr=None, mono=True)
+    return mixed_audio, sr
+
+
 def _load_f0(f0_path):
+    if not os.path.exists(f0_path):
+        return None
+
     with open(f0_path) as fhandle:
         lines = fhandle.readlines()
     f0_midi = np.array([float(line) for line in lines])
@@ -94,6 +117,8 @@ def _load_f0(f0_path):
 
 
 def _load_lyrics(lyrics_path):
+    if not os.path.exits(lyrics_path):
+        return None
     # input: start time (ms), end time (ms), lyric, [pronounciation]
     with open(lyrics_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=' ')
