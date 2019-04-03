@@ -46,6 +46,14 @@ def track_ids():
     return list(IKALA_INDEX.keys())
 
 
+def audio_filepaths(data_home=None):
+    ikala_data = load(data_home=data_home)
+    filepaths = []
+    for track in ikala_data:
+        filepaths.append(track.audio_path)
+    return filepaths
+
+
 def load(data_home=None):
     validate(data_home)
     ikala_data = {}
