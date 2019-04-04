@@ -126,7 +126,7 @@ def _load_f0(f0_path):
 
 
 def _load_lyrics(lyrics_path):
-    if not os.path.exits(lyrics_path):
+    if not os.path.exists(lyrics_path):
         return None
     # input: start time (ms), end time (ms), lyric, [pronounciation]
     with open(lyrics_path, 'r') as fhandle:
@@ -176,4 +176,20 @@ def _load_metadata(data_home):
 
 
 def cite():
-    raise NotImplementedError()
+    cite_data = """
+===========  MLA ===========
+Chan, Tak-Shing, et al.
+"Vocal activity informed singing voice separation with the iKala dataset."
+2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2015.
+
+========== Bibtex ==========
+@inproceedings{chan2015vocal,
+    title={Vocal activity informed singing voice separation with the iKala dataset},
+    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and Jang, Roger},
+    booktitle={2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+    pages={718--722},
+    year={2015},
+    organization={IEEE}
+}
+"""
+    print(cite_data)
