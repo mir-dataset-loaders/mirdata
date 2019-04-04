@@ -24,5 +24,3 @@ if __name__ == '__main__':
     print(salami_data['2'])  # only one annotator
     print(salami_data['2'][1][0][0])
     print(salami_data['2'][1][0][1])
-    print(salami_data['4'][1][0][2])
-    print(salami_data['55'][3])

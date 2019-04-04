@@ -44,10 +44,13 @@ def make_salami_index(data_path):
         # using existing annotations (version 2.0)
         for f in ['uppercase.txt', 'lowercase.txt']:
             for a in ['1', '2']:
-                if os.path.exists(os.path.join(annotations_dir, track_id, 'parsed', 'textfile'+a+'_'+f)):
+                if os.path.exists(os.path.join(annotations_dir, track_id, 'parsed',
+                                               'textfile{}_{}'.format(a , f))):
                     annot_checksum.append(md5(os.path.join(
                     annotations_dir, track_id, 'parsed', 'textfile'+a+'_'+f)))
-                    annot_rels.append(os.path.join('annotations', track_id, 'parsed', 'textfile'+a+'_'+f))
+                    annot_rels.append(os.path.join('salami-data-public-master',
+                                                   'annotations', track_id, 'parsed',
+                                                   'textfile{}_{}'.format(a , f)))
                 else:
                     annot_checksum.append(None)
                     annot_rels.append(None)

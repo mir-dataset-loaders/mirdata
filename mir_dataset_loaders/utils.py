@@ -46,12 +46,12 @@ def validator(dataset_index, data_home):
                 if not os.path.exists(local_path):
                     if track_id not in missing_files.keys():
                         missing_files[track_id] = []
-                    missing_files[track_id] = [local_path]
+                    missing_files[track_id].append(local_path)
                 # validate that the checksum matches
                 elif md5(local_path) != checksum:
                     if track_id not in invalid_checksums.keys():
                         invalid_checksums[track_id] = []
-                    invalid_checksums[track_id] = [local_path]
+                    invalid_checksums[track_id].append(local_path)
 
     # print path of any missing files
     # TODO: Handle this silently?

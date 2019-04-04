@@ -175,7 +175,7 @@ Smith, Jordan Bennett Louis, et al.,
 12th International Society for Music Information Retrieval Conference (2011)
 
 ========== Bibtex ==========
-@inproceedings{smith2011design,
+@inproceedings{smith2011salami,
   title={Design and creation of a large-scale database of structural annotations.},
   author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and 
           Fujinaga, Ichiro and De Roure, David and Downie, J Stephen},
