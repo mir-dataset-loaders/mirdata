@@ -15,4 +15,4 @@ def index_path(index_file):
 ORCHSET_INDEX_PATH = index_path("orchset_index.json")
 IKALA_INDEX_PATH = index_path("ikala_index.json")
 MEDLEYDB_PITCH_INDEX_PATH = index_path("medleydb_pitch_index.json")
-
+MEDLEYDB_MELODY_INDEX_PATH = index_path("medleydb_melody_index.json")
