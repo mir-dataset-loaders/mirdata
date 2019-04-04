@@ -170,20 +170,21 @@ def _reload_metadata(data_home):
 def cite():
     cite_data = """
 ===========  MLA ===========
-Smith, Jordan Bennett Louis, et al. 
-"Design and creation of a large-scale database of structural annotations." 
-ISMIR. Vol. 11. 2011.
+Smith, Jordan Bennett Louis, et al., 
+"Design and creation of a large-scale database of structural annotations", 
+12th International Society for Music Information Retrieval Conference (2011)
 
 ========== Bibtex ==========
 @inproceedings{smith2011design,
   title={Design and creation of a large-scale database of structural annotations.},
   author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and 
           Fujinaga, Ichiro and De Roure, David and Downie, J Stephen},
-  booktitle={ISMIR},
+  booktitle={12th International Society for Music Information Retrieval Conference},
   volume={11},
   pages={555--560},
   year={2011},
-  organization={Miami, FL}
+  organization={Miami, FL},
+  series = {ISMIR}, 
 }
 """
 

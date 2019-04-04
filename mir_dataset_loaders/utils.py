@@ -40,8 +40,7 @@ def validator(dataset_index, data_home):
         for key in track.keys():
             filepath = track[key][0]
             checksum = track[key][1]
-            print(filepath)
-            if not filepath == None:  # TODO: needed for empty entries salami, @rabitt ok with this?
+            if filepath is not None:
                 local_path = get_local_path(data_home, filepath)
                 # validate that the file exists on disk
                 if not os.path.exists(local_path):
