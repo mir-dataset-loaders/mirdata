@@ -30,7 +30,7 @@ def download(data_home=None):
     save_path = get_save_path(data_home)
     print("""
       To download this dataset, visit:
-      https://zenodo.org/record/2620624#.XKLgURNKh24
+      https://zenodo.org/record/2620624#.XKZc7hNKh24
       and request access.
 
       Once downloaded, unzip the file MedleyDB-Pitch.zip
