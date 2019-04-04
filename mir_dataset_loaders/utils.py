@@ -88,6 +88,22 @@ SectionsData = namedtuple(
     ['start_time', 'end_time', 'section']
 )
 
+BeatsData = namedtuple(
+    'BeatsData',
+    ['beats_times', 'beats_positions']
+)
+
+ChordsData = namedtuple(
+    'ChordsData',
+    ['start_time', 'end_time', 'chords']
+)
+
+KeyData = namedtuple(
+    'KeyData',
+    ['start_time', 'end_time', 'key']
+)
+
+
 def get_local_path(data_home, rel_path):
     if data_home is None:
         return os.path.join(MIR_DATASETS_DIR, rel_path)

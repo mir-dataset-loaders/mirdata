@@ -59,7 +59,6 @@ def load_track(track_id, data_home=None):
     if track_id not in SALAMI_INDEX.keys():
         raise ValueError(
             "{} is not a valid track ID in Salami".format(track_id))
-    track_data = SALAMI_INDEX[track_id]
 
     if SALAMI_METADATA is None or SALAMI_METADATA['data_home'] != data_home:
         _reload_metadata(data_home)

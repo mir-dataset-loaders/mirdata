@@ -29,7 +29,7 @@ def md5(file_path):
 def make_salami_index(data_path):
     annotations_dir = os.path.join(data_path, 'salami-data-public-master',
                                    'annotations')
-    audio_dir = os.path.join(data_path, 'salami_audios')
+    audio_dir = os.path.join(data_path, 'audio')
     annotations_files = os.listdir(annotations_dir)
     track_ids = sorted(
         [os.path.basename(f).split('.')[0] for f in annotations_files])
