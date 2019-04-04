@@ -71,7 +71,7 @@ def load_track(track_id, data_home=None):
 
     track_metadata = MEDLEYDB_METADATA[track_id]
 
-    pitch_data = load_pitch(
+    pitch_data = _load_pitch(
         get_local_path(data_home, track_data['pitch'][0]))
 
     return MedleydbPitchTrack(
@@ -85,7 +85,9 @@ def load_track(track_id, data_home=None):
     )
 
 
-def load_pitch(pitch_path):
+def _load_pitch(pitch_path):
+    if not os.path.exists(pitch_path):
+        return None
     times = []
     freqs = []
     confidence = []
