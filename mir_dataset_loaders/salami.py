@@ -69,6 +69,7 @@ def load_track(track_id, data_home=None):
     if track_id in SALAMI_METADATA.keys():
         track_metadata = SALAMI_METADATA[track_id]
     else:
+        # annotations with missing metadata
         track_metadata = {'source': None, 'annotator_1_id': None, 'annotator_2_id': None, 'duration_sec': None,
                           'title': None, 'artist': None, 'annotator_1_time': None, 'annotator_2_time': None,
                           'class': None, 'genre': None}
@@ -103,14 +104,16 @@ def _load_sections(sections_path, annotators):
         times, secs = [], []
         for f in ['uppercase.txt', 'lowercase.txt']:
             if annotators[a]:
-                file_path = os.path.join(sections_path, 'parsed', 'textfile'+str(a+1)+'_'+f)
+                file_path = os.path.join(sections_path, 'parsed',
+                                         'textfile{}_{}'.format(str(a + 1), f))
                 with open(file_path, 'r') as fhandle:
                     reader = csv.reader(fhandle, delimiter='\t')
                     for line in reader:
                         times.append(float(line[0]))
                         secs.append(line[1])
 
-                sections_data.append(SectionsData(np.array(times)[:-1], np.array(times)[1:], np.array(secs)))
+                sections_data.append(SectionsData(np.array(times)[:-1],
+                                                  np.array(times)[1:], np.array(secs)))
 
             else:
                 times, secs = None, None
@@ -121,7 +124,8 @@ def _load_sections(sections_path, annotators):
 
 def _load_metadata(data_home):
 
-    metadata_relative_path = os.path.join('salami-data-public-master','metadata', 'metadata.csv')
+    metadata_relative_path = os.path.join('salami-data-public-master',
+                                          'metadata', 'metadata.csv')
     metadata_path = get_local_path(
         data_home, metadata_relative_path)
 
@@ -173,7 +177,8 @@ ISMIR. Vol. 11. 2011.
 ========== Bibtex ==========
 @inproceedings{smith2011design,
   title={Design and creation of a large-scale database of structural annotations.},
-  author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and Fujinaga, Ichiro and De Roure, David and Downie, J Stephen},
+  author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and 
+          Fujinaga, Ichiro and De Roure, David and Downie, J Stephen},
   booktitle={ISMIR},
   volume={11},
   pages={555--560},
