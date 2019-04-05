@@ -101,6 +101,9 @@ def load_track(track_id, data_home=None):
 
 
 def _load_melody(melody_path):
+    if not os.path.exists(melody_path):
+        return None
+
     times = []
     freqs = []
     confidence = []

@@ -17,4 +17,4 @@ IKALA_INDEX_PATH = index_path("ikala_index.json")
 MEDLEYDB_PITCH_INDEX_PATH = index_path("medleydb_pitch_index.json")
 SALAMI_INDEX_PATH = index_path("salami_index.json")
 BEATLES_INDEX_PATH = index_path("beatles_index.json")
-
+MEDLEYDB_MELODY_INDEX_PATH = index_path("medleydb_melody_index.json")

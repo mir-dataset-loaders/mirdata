@@ -10,7 +10,7 @@ import os
 from urllib import request
 
 from . import IKALA_INDEX_PATH
-from .utils import get_local_path, validator, F0Data, LyricsData
+from .utils import get_save_path, get_local_path, validator, F0Data, LyricsData
 
 
 IKALA_TIME_STEP = 0.032  # seconds
@@ -32,9 +32,18 @@ IKalaTrack = namedtuple(
 )
 
 
-def download():
-    raise NotImplementedError(
-        "Unfortunately the iKala dataset is not available for download.")
+def download(data_home=None):
+    save_path = get_save_path(data_home)
+    print("""
+        Unfortunately the iKala dataset is not available for download.
+        If you have the iKala dataset, place the contents into a folder called
+        iKala with the following structure:
+            > iKala/
+                > Lyrics/
+                > PitchLabel/
+                > Wavfile/
+        and copy the iKala folder to {}
+    """.format(save_path))
 
 
 def validate(data_home=None):
@@ -82,7 +91,30 @@ def load_track(track_id, data_home=None):
     )
 
 
+def load_ikala_vocal_audio(ikalatrack):
+    audio_path = ikalatrack.audio_path
+    audio, sr = librosa.load(audio_path, sr=None, mono=False)
+    vocal_channel = audio[1, :]
+    return vocal_channel, sr
+
+
+def load_ikala_instrumental_audio(ikalatrack):
+    audio_path = ikalatrack.audio_path
+    audio, sr = librosa.load(audio_path, sr=None, mono=False)
+    instrumental_channel = audio[0, :]
+    return instrumental_channel, sr
+
+
+def load_ikala_mix_audio(ikalatrack):
+    audio_path = ikalatrack.audio_path
+    mixed_audio, sr = librosa.load(audio_path, sr=None, mono=True)
+    return mixed_audio, sr
+
+
 def _load_f0(f0_path):
+    if not os.path.exists(f0_path):
+        return None
+
     with open(f0_path) as fhandle:
         lines = fhandle.readlines()
     f0_midi = np.array([float(line) for line in lines])
@@ -94,6 +126,8 @@ def _load_f0(f0_path):
 
 
 def _load_lyrics(lyrics_path):
+    if not os.path.exists(lyrics_path):
+        return None
     # input: start time (ms), end time (ms), lyric, [pronounciation]
     with open(lyrics_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=' ')
@@ -142,4 +176,20 @@ def _load_metadata(data_home):
 
 
 def cite():
-    raise NotImplementedError()
+    cite_data = """
+===========  MLA ===========
+Chan, Tak-Shing, et al.
+"Vocal activity informed singing voice separation with the iKala dataset."
+2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2015.
+
+========== Bibtex ==========
+@inproceedings{chan2015vocal,
+    title={Vocal activity informed singing voice separation with the iKala dataset},
+    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and Jang, Roger},
+    booktitle={2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+    pages={718--722},
+    year={2015},
+    organization={IEEE}
+}
+"""
+    print(cite_data)
