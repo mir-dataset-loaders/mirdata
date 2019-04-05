@@ -21,4 +21,3 @@ if __name__ == '__main__':
     print('Load dataset ===')
     print(beatles_data.keys())
     print(beatles_data[list(beatles_data.keys())[0]])  # both annotators
-    print(beatles_data[beatles_data.keys()[1]])
