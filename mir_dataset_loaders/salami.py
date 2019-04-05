@@ -105,15 +105,19 @@ def _load_sections(sections_path, annotators):
             if annotators[a]:
                 file_path = os.path.join(sections_path, 'parsed',
                                          'textfile{}_{}'.format(str(a + 1), f))
-                with open(file_path, 'r') as fhandle:
-                    reader = csv.reader(fhandle, delimiter='\t')
-                    for line in reader:
-                        times.append(float(line[0]))
-                        secs.append(line[1])
+                if os.path.exists(file_path):
 
-                sections_data.append(SectionsData(np.array(times)[:-1],
-                                                  np.array(times)[1:], np.array(secs)))
+                    with open(file_path, 'r') as fhandle:
+                            reader = csv.reader(fhandle, delimiter='\t')
+                            for line in reader:
+                                times.append(float(line[0]))
+                                secs.append(line[1])
 
+                    sections_data.append(SectionsData(np.array(times)[:-1],
+                                                      np.array(times)[1:], np.array(secs)))
+                else:
+                    times, secs = None, None
+                    sections_data.append(None)
             else:
                 times, secs = None, None
                 sections_data.append(None)
