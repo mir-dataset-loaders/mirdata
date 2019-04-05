@@ -3,6 +3,7 @@
 from collections import namedtuple
 import json
 import numpy as np
+import os
 
 from . import BEATLES_INDEX_PATH
 from .utils import (get_local_path, validator, BeatsData, ChordsData, SectionsData, KeyData)
@@ -72,6 +73,9 @@ def load_track(track_id, data_home=None):
     )
 
 def _load_beats(beats_path):
+    if not os.path.exists(beats_path):
+        return None
+
     # TODO: fix new points, ignored now - @rabbit, should we ignore, fix or keep those values with no label?
     with open(beats_path) as fhandle:
         lines = fhandle.readlines()
@@ -85,6 +89,8 @@ def _load_beats(beats_path):
     return beats_data
 
 def _load_chords(chords_path):
+    if not os.path.exists(chords_path):
+        return None
 
     with open(chords_path) as fhandle:
         lines = fhandle.readlines()
@@ -97,6 +103,8 @@ def _load_chords(chords_path):
     return chords_data
 
 def _load_key(key_path):
+    if not os.path.exists(key_path):
+        return None
 
     with open(key_path) as fhandle:
         lines = fhandle.readlines()
@@ -109,6 +117,8 @@ def _load_key(key_path):
     return key_data
 
 def _load_sections(sections_path):
+    if not os.path.exists(sections_path):
+        return None
 
     with open(sections_path) as fhandle:
         lines = fhandle.readlines()
