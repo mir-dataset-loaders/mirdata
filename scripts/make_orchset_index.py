@@ -4,7 +4,7 @@ import hashlib
 import json
 import os
 
-ORCHSET_INDEX_PATH = "../mir_dataset_loaders/indexes/orchset_index.json"
+ORCHSET_INDEX_PATH = "../mirdata/indexes/orchset_index.json"
 
 
 def md5(file_path):

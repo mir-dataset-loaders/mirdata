@@ -1,13 +1,26 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 from collections import namedtuple
 import hashlib
 import os
+import json
 import tarfile
-from urllib import request
+try:
+    from urllib.request import urlopen  # py3
+except ImportError:
+    from urllib2 import urlopen  # py2
+try:
+    from urllib.request import urlretrieve  # py3
+except ImportError:
+    from urllib import urlretrieve  # py2
 import zipfile
-
 from tqdm import tqdm
 
-from . import MIR_DATASETS_DIR
+MIR_DATASETS_DIR = os.path.join(os.environ["HOME"], "mir_datasets")
 
 
 def md5(file_path):
@@ -165,7 +178,7 @@ def download_from_remote(remote, data_home=None, clobber=False):
         with DownloadProgressBar(unit='B', unit_scale=True,
                                  miniters=1,
                                  desc=remote.url.split('/')[-1]) as t:
-            request.urlretrieve(
+            urlretrieve(
                 remote.url, filename=download_path, reporthook=t.update_to)
 
     checksum = md5(download_path)
@@ -214,3 +227,8 @@ def untar(tar_path, save_dir, cleanup=False):
     if cleanup:
         os.remove(tar_path)
 
+
+def load_json_index(filename):
+    CWD = os.path.dirname(os.path.realpath(__file__))
+    with open(os.path.join(CWD, 'indexes', filename)) as f:
+        return json.load(f)

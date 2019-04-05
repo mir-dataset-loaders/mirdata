@@ -5,7 +5,7 @@ import json
 import os
 
 
-IKALA_INDEX_PATH = "../mir_dataset_loaders/indexes/ikala_index.json"
+IKALA_INDEX_PATH = "../mirdata/indexes/ikala_index.json"
 
 
 def md5(file_path):

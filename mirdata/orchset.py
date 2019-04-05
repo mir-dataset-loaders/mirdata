@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 """Orchset Dataset Loader
 """
 from collections import namedtuple
@@ -6,11 +12,10 @@ import json
 import numpy as np
 import os
 
-from . import ORCHSET_INDEX_PATH
 from .utils import (get_local_path, validator, F0Data, download_from_remote,
-                    unzip, RemoteFileMetadata, get_save_path)
+                    unzip, RemoteFileMetadata, get_save_path, load_json_index)
 
-ORCHSET_INDEX = json.load(open(ORCHSET_INDEX_PATH, 'r'))
+ORCHSET_INDEX = load_json_index('orchset_index.json')
 
 ORCHSET_META = RemoteFileMetadata(
     filename='Orchset_dataset_0.zip',

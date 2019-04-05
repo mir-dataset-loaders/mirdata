@@ -5,7 +5,7 @@ import os
 
 
 MEDLEYDB_MELODY_INDEX_PATH = \
-    "../mir_dataset_loaders/indexes/medleydb_melody_index.json"
+    "../mirdata/indexes/medleydb_melody_index.json"
 
 
 def md5(file_path):
