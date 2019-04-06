@@ -1,20 +1,20 @@
 """ Setup script for mir_datasets. """
-from setuptools import setup
+from setuptools import setup, find_packages
 
-import imp
+# import imp
 
-version = imp.load_source(
-    'mir_dataset_loaders.version', 'mir_dataset_loaders/version.py')
+# version = imp.load_source(
+#     'mirdata.version', 'mirdata/version.py')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     setup(
-        name='mir_dataset_loaders',
-        version=version.version,
+        name='mirdata',
+        version='0.0.1',  # version.version,
         description='Common loaders for MIR datasets.',
-        url='https://github.com/mir-dataset-loaders/mir-dataset-loaders',
-        download_url='http://github.com/rabitt/mir-dataset-loaders/releases',
-        packages=['mir_dataset_loaders'],
-        package_data={'mir_dataset_loaders': []},
+        url='https://github.com/mir-dataset-loaders/mirdata',
+        packages=find_packages(exclude=['test', '*.test', '*.test.*']),
+        download_url='http://github.com/mir-dataset-loaders/mirdata/releases',
+        package_data={'mirdata': ['indexes/*']},
         long_description="""Common loaders for MIR datasets.""",
         keywords='mir dataset loader audio',
         license='BSD-3-Clause',

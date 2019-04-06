@@ -1,4 +1,4 @@
-# mir_dataset_loaders
+# mirdata
 common loaders for mir datasets.
 
 *WORK IN PROGRESS, USE AT YOUR OWN RISK!*
@@ -14,7 +14,7 @@ This library provides tools for working with common MIR datasets, including tool
 
 ## Dataset Location
 By default, all datasets tracked by this library are stored in `~/mir_datasets`,
-(defined as `MIR_DATASETS_DIR` in `mir_dataset_loaders/__init__.py`).
+(defined as `MIR_DATASETS_DIR` in `mirdata/__init__.py`).
 Data can alternatively be stored in another location by specifying `data_home`
 within a relevant function, e.g. `mir_datasets.orchset.download(data_home='my_custom_path')`
 
@@ -23,28 +23,28 @@ within a relevant function, e.g. `mir_datasets.orchset.download(data_home='my_cu
 
 <!-- ### List available datasets
 ```python
-import mir_dataset_loaders as mdl
+import mirdata as mdl
 
 mdl.list_datasets()
 ``` -->
 
 ### Download the Orchset Dataset
 ```python
-import mir_dataset_loaders as mdl
+import mirdata as mdl
 
-mdl.orchset.dowload()
+mdl.orchset.download()
 ```
 
 ### Load the Orchset Dataset
 ```python
-import mir_dataset_loaders as mdl
+import mirdata as mdl
 
 orchset_data = mdl.orchset.load()
 ```
 
 ### See what data is available for a track
 ```python
-import mir_dataset_loaders as mdl
+import mirdata as mdl
 
 orchset_ids = mdl.orchset.track_ids()
 orchset_data = mdl.orchset.load()
@@ -75,7 +75,7 @@ print(example_track)
 ### Evaluate a melody extraction algorithm on Orchset
 ```python
 import mir_eval
-import mir_dataset_loaders as mdl
+import mirdata as mdl
 import numpy as np
 import sox
 
@@ -115,8 +115,8 @@ for track_id, track_data in orchset_data.items():
 ## Contributing a new dataset loader
 
 To add a new dataset loader:
-1. Create an index in `mir_dataset_loaders/indexes`, e.g. `unicorn_index.json`
-2. Create a module in `mir_dataset_loaders`, .e.g `unicorn.py`
+1. Create an index in `mirdata/indexes`, e.g. `unicorn_index.json`
+2. Create a module in `mirdata`, .e.g `unicorn.py`
 
 
 ### Creating an index
