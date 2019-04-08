@@ -7,39 +7,56 @@ import numpy as np
 import os
 
 from . import SALAMI_INDEX_PATH
-from .utils import (get_local_path, validator, SectionsData)
+from .utils import (get_local_path, validator, SectionData, get_save_path, download_from_remote,
+                    unzip, RemoteFileMetadata)
 
 SALAMI_INDEX = json.load(open(SALAMI_INDEX_PATH, 'r'))
 SALAMI_METADATA = None
-
+SALAMI_DIR = 'Salami'
+SALAMI_ANNOT_REMOTE = RemoteFileMetadata(
+    filename=os.path.join(SALAMI_DIR, 'salami-data-public-master.zip'),
+    url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
+    checksum='b01d6eb5b71cca1f3163fae4b2cd4c61')  # TODO: @rabbit this are the annotations, do especific data type?
 
 SalamiTrack = namedtuple(
     'SalamiTrack',
     ['track_id',
-     'sections_annotator_1_lowercase',
      'sections_annotator_1_uppercase',
-     'sections_annotator_2_lowercase',
+     'sections_annotator_1_lowercase',
      'sections_annotator_2_uppercase',
+     'sections_annotator_2_lowercase',
      'source',
      'annotator_1_id',
      'annotator_2_id',
      'duration_sec',
      'title',
-      'artist',
-      'annotator_1_time',
-      'annotator_2_time',
-      'broad_genre',
-      'genre']
+     'artist',
+     'annotator_1_time',
+     'annotator_2_time',
+     'broad_genre',
+     'genre']
 )
 
 
-def download():
-    raise NotImplementedError(
-        "Unfortunately the Salami dataset is not available for download.")
+def download(data_home=None, clobber=False):
+    save_path = get_save_path(data_home)
+    save_path = get_save_path(os.path.join(save_path, SALAMI_DIR))
+    download_path = download_from_remote(SALAMI_ANNOT_REMOTE, data_home=data_home, clobber=clobber)
+    unzip(download_path, save_path, cleanup=True)
+    validate(data_home, silence=True)
+    print("""
+            Unfortunately the audio files of the Salami dataset are not available for download.
+            If you have the Salami dataset, place the contents into a folder called
+            Salami with the following structure:
+                > Salami/
+                    > salami-data-public-master/
+                    > audio/
+            and copy the Salami folder to {}
+        """.format(save_path))
 
 
-def validate(data_home):
-    missing_files, invalid_checksums = validator(SALAMI_INDEX, data_home)
+def validate(data_home, silence):
+    missing_files, invalid_checksums = validator(SALAMI_INDEX, data_home, silence=silence)
     return missing_files, invalid_checksums
 
 
@@ -47,8 +64,8 @@ def track_ids():
     return list(SALAMI_INDEX.keys())
 
 
-def load(data_home=None):
-    validate(data_home)  # TODO: when missing files should avoid loading them
+def load(data_home=None, silence=True):
+    validate(data_home, silence)
     salami_data = {}
     for key in track_ids():
         salami_data[key] = load_track(key, data_home=data_home)
@@ -73,17 +90,17 @@ def load_track(track_id, data_home=None):
                           'title': None, 'artist': None, 'annotator_1_time': None, 'annotator_2_time': None,
                           'class': None, 'genre': None}
 
-    annotations_dir = os.path.join(data_home, 'salami-data-public-master','annotations')
+    annotations_dir = os.path.join(data_home, SALAMI_DIR, 'salami-data-public-master', 'annotations')
     annotators = [any(SALAMI_INDEX[track_id]['annotator_1_uppercase']),
                   any(SALAMI_INDEX[track_id]['annotator_2_uppercase'])]
-    sections_data = _load_sections(get_local_path(annotations_dir, track_id), annotators)
+    all_annotators_section_data = _load_sections(get_local_path(annotations_dir, track_id), annotators)
 
     return SalamiTrack(
         track_id,
-        sections_data[0],
-        sections_data[1],
-        sections_data[2],
-        sections_data[3],
+        all_annotators_section_data[0],
+        all_annotators_section_data[1],
+        all_annotators_section_data[2],
+        all_annotators_section_data[3],
         track_metadata['source'],
         track_metadata['annotator_1_id'],
         track_metadata['annotator_2_id'],
@@ -98,10 +115,10 @@ def load_track(track_id, data_home=None):
 
 
 def _load_sections(sections_path, annotators):
-    sections_data = []
+    all_annotators_section_data = []
     for a in range(len(annotators)):
-        times, secs = [], []
         for f in ['uppercase.txt', 'lowercase.txt']:
+            times, secs = [], []
             if annotators[a]:
                 file_path = os.path.join(sections_path, 'parsed',
                                          'textfile{}_{}'.format(str(a + 1), f))
@@ -112,23 +129,26 @@ def _load_sections(sections_path, annotators):
                             for line in reader:
                                 times.append(float(line[0]))
                                 secs.append(line[1])
-
-                    sections_data.append(SectionsData(np.array(times)[:-1],
-                                                      np.array(times)[1:], np.array(secs)))
+                    times, secs = np.array(times), np.array(secs)
+                    times_ = np.delete(times, np.where(np.diff(times) == 0))
+                    secs = np.delete(secs, np.where(np.diff(times) == 0))
+                    # append the 'End' time
+                    # times.append(float(line[0]))
+                    all_annotators_section_data.append(SectionData(np.array(times_[:-1]),
+                                                       np.array(times_)[1:], np.array(secs)[:-1]))
                 else:
-                    times, secs = None, None
-                    sections_data.append(None)
+                    all_annotators_section_data.append(None)
             else:
-                times, secs = None, None
-                sections_data.append(None)
+                all_annotators_section_data.append(None)
 
-    return sections_data
+    return all_annotators_section_data
 
 
 def _load_metadata(data_home):
 
-    metadata_relative_path = os.path.join('salami-data-public-master',
-                                          'metadata', 'metadata.csv')
+    metadata_relative_path = get_local_path(data_home, os.path.join(SALAMI_DIR,
+                                                                    'salami-data-public-master',
+                                                                    'metadata', 'metadata.csv'))
     metadata_path = get_local_path(
         data_home, metadata_relative_path)
 
@@ -183,10 +203,7 @@ Smith, Jordan Bennett Louis, et al.,
   author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and 
           Fujinaga, Ichiro and De Roure, David and Downie, J Stephen},
   booktitle={12th International Society for Music Information Retrieval Conference},
-  volume={11},
-  pages={555--560},
   year={2011},
-  organization={Miami, FL},
   series = {ISMIR}, 
 }
 """

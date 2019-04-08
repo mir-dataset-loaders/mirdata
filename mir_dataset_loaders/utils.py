@@ -87,17 +87,17 @@ LyricsData = namedtuple(
     ['start_time', 'end_time', 'lyric', 'pronounciation']
 )
 
-SectionsData = namedtuple(
+SectionData = namedtuple(
     'SectionsData',
     ['start_time', 'end_time', 'section']
 )
 
-BeatsData = namedtuple(
+BeatData = namedtuple(
     'BeatsData',
     ['beats_times', 'beats_positions']
 )
 
-ChordsData = namedtuple(
+ChordData = namedtuple(
     'ChordsData',
     ['start_time', 'end_time', 'chords']
 )
@@ -109,6 +109,8 @@ KeyData = namedtuple(
 
 
 def get_local_path(data_home, rel_path):
+    if rel_path is None:
+        return None
     if data_home is None:
         return os.path.join(MIR_DATASETS_DIR, rel_path)
     else:
@@ -180,8 +182,7 @@ def download_from_remote(remote, data_home=None, clobber=False):
         os.path.join(MIR_DATASETS_DIR, remote.filename) if data_home is None
         else os.path.join(data_home, remote.filename)
     )
-
-    if not os.path.exists(download_path) or clobber:
+    if not os.path.exists(download_path) or clobber:  # TODO: @rabitt checking for the right file?
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(unit='B', unit_scale=True,
                                  miniters=1,
@@ -229,7 +230,10 @@ def untar(tar_path, save_dir, cleanup=False):
     cleanup: bool, default=False
         If True, remove tarfile after untarring.
     """
-    tfile = tarfile.TarFile(tar_path, 'r')
+    if (tar_path.endswith("tar.gz")):
+        tfile = tarfile.open(tar_path, "r:gz")
+    else:
+        tfile = tarfile.TarFile(tar_path, 'r')
     tfile.extractall(save_dir)
     tfile.close()
     if cleanup:

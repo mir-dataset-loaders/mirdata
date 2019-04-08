@@ -6,6 +6,7 @@ import os
 
 BEATLES_INDEX_PATH = "../mir_dataset_loaders/indexes/beatles_index.json"
 
+
 def md5(file_path):
     """Get md5 hash of a file.
 
@@ -27,16 +28,16 @@ def md5(file_path):
 
 
 def make_beatles_index(data_path):
-    annotations_dir = os.path.join(data_path, 'The Beatles Annotations')
+    annotations_dir = os.path.join(data_path, 'Beatles', 'annotations')
     cds_dir = os.path.join(annotations_dir, 'all', 'The Beatles')
-    audio_dir = os.path.join(data_path, 'audio')
+    audio_dir = os.path.join(data_path, 'Beatles', 'audio')
     cds = os.listdir(cds_dir)
     track_ids = []
     beatles_index = {}
     totfiles = []
     for c in cds:
 
-        for t in sorted(os.listdir(os.path.join(cds_dir,c))):
+        for t in sorted(os.listdir(os.path.join(cds_dir, c))):
             if 'ttl' in t:
                 totfiles.append(t)
 
@@ -44,12 +45,12 @@ def make_beatles_index(data_path):
                                          os.path.basename(t).split('_')[0])
                 if 'CD' in t:
                     track_id = '10{}{}'.format(os.path.basename(c).split('_')[0][-1],
-                                         os.path.basename(t).split('_')[2][:2])
+                                               os.path.basename(t).split('_')[2][:2])
                 track_ids.append(track_id)
 
                 # checksum
                 audio_checksum = md5(os.path.join(audio_dir, c, "{}.wav".format(t[:-4])))
-                audio_path = "{}/{}".format('audio', os.path.join(c, "{}.wav".format(t[:-4])))
+                audio_path = "{}/{}".format(os.path.join('Beatles', 'audio'), os.path.join(c, "{}.wav".format(t[:-4])))
 
                 annot_checksum, annot_rels = [], []
 
@@ -63,12 +64,11 @@ def make_beatles_index(data_path):
 
                     if os.path.exists(os.path.join(annot_path, annot_file)):
                         annot_checksum.append(md5(os.path.join(annot_path, annot_file)))
-                        annot_rels.append(os.path.join('The Beatles Annotations', annot_type,
+                        annot_rels.append(os.path.join('Beatles', 'annotations', annot_type,
                                                        'The Beatles', c, annot_file))
                     else:
                         annot_checksum.append(None)
                         annot_rels.append(None)
-
 
                 beatles_index[track_id] = {
                     'audio': (
@@ -94,8 +94,6 @@ def make_beatles_index(data_path):
                 }
     with open(BEATLES_INDEX_PATH, 'w') as fhandle:
         json.dump(beatles_index, fhandle, indent=2)
-
-
 
 
 def main(args):
