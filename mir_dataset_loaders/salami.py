@@ -130,10 +130,9 @@ def _load_sections(sections_path, annotators):
                                 times.append(float(line[0]))
                                 secs.append(line[1])
                     times, secs = np.array(times), np.array(secs)
+                    # remove sections with length == 0
                     times_ = np.delete(times, np.where(np.diff(times) == 0))
                     secs = np.delete(secs, np.where(np.diff(times) == 0))
-                    # append the 'End' time
-                    # times.append(float(line[0]))
                     all_annotators_section_data.append(SectionData(np.array(times_[:-1]),
                                                        np.array(times_)[1:], np.array(secs)[:-1]))
                 else:
