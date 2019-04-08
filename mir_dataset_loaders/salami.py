@@ -14,7 +14,7 @@ SALAMI_INDEX = json.load(open(SALAMI_INDEX_PATH, 'r'))
 SALAMI_METADATA = None
 SALAMI_DIR = 'Salami'
 SALAMI_ANNOT_REMOTE = RemoteFileMetadata(
-    filename=os.path.join(SALAMI_DIR, 'salami-data-public-master.zip'),
+    filename='salami-data-public-master.zip',
     url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
     checksum='b01d6eb5b71cca1f3163fae4b2cd4c61')  # TODO: @rabbit this are the annotations, do especific data type?
 
@@ -40,10 +40,12 @@ SalamiTrack = namedtuple(
 
 def download(data_home=None, clobber=False):
     save_path = get_save_path(data_home)
-    save_path = get_save_path(os.path.join(save_path, SALAMI_DIR))
     download_path = download_from_remote(SALAMI_ANNOT_REMOTE, data_home=data_home, clobber=clobber)
-    unzip(download_path, save_path, cleanup=True)
-    validate(data_home, silence=True)
+    salami_annotations_path = os.path.join(save_path, SALAMI_DIR)
+    if not os.path.exists(salami_annotations_path):
+        os.makedirs(salami_annotations_path)
+    unzip(download_path, salami_annotations_path, cleanup=True)
+    validate(data_home)
     print("""
             Unfortunately the audio files of the Salami dataset are not available for download.
             If you have the Salami dataset, place the contents into a folder called
@@ -55,8 +57,8 @@ def download(data_home=None, clobber=False):
         """.format(save_path))
 
 
-def validate(data_home, silence):
-    missing_files, invalid_checksums = validator(SALAMI_INDEX, data_home, silence=silence)
+def validate(data_home=None):
+    missing_files, invalid_checksums = validator(SALAMI_INDEX, data_home)
     return missing_files, invalid_checksums
 
 
@@ -64,8 +66,8 @@ def track_ids():
     return list(SALAMI_INDEX.keys())
 
 
-def load(data_home=None, silence=True):
-    validate(data_home, silence)
+def load(data_home=None):
+    validate(data_home)
     salami_data = {}
     for key in track_ids():
         salami_data[key] = load_track(key, data_home=data_home)

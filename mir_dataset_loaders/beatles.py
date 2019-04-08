@@ -12,8 +12,8 @@ from .utils import (get_save_path, get_local_path, validator, BeatData, ChordDat
 
 BEATLES_DIR = 'Beatles'
 BEATLES_INDEX = json.load(open(BEATLES_INDEX_PATH, 'r'))
-BEATLES_ANNOT_REMOTE = RemoteFileMetadata(  # TODO: @rabbit this is not metadata but the annotations, do especific data type?
-    filename= os.path.join(BEATLES_DIR,'The Beatles Annotations.tar.gz'),
+BEATLES_ANNOT_REMOTE = RemoteFileMetadata(
+    filename= 'The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/'
         'The%20Beatles%20Annotations.tar.gz',
     checksum='62425c552d37c6bb655a78e4603828cc')
@@ -30,11 +30,13 @@ BeatlesTrack = namedtuple(
 
 
 def download(data_home=None, clobber=False):
-    save_path = get_save_path(data_home)  # TODO: @rabitt have to do this so it work with data_home always, better idea?
-    save_path = get_save_path(os.path.join(save_path, BEATLES_DIR, 'annotations'))
+    save_path = get_save_path(data_home)
     download_path = download_from_remote(BEATLES_ANNOT_REMOTE, data_home=data_home, clobber=clobber)
-    untar(download_path, save_path, cleanup=True)
-    validate(data_home, silence=True)
+    beatles_annotations_path = os.path.join(save_path, BEATLES_DIR, 'annotations')
+    if not os.path.exists(beatles_annotations_path):
+        os.makedirs(beatles_annotations_path)
+    untar(download_path, beatles_annotations_path, cleanup=True)
+    validate(data_home)
     print("""
             Unfortunately the audio files of the Beatles dataset are not available for download.
             If you have the Beatles dataset, place the contents into a folder called
@@ -46,8 +48,8 @@ def download(data_home=None, clobber=False):
         """.format(save_path))
 
 
-def validate(data_home, silence):
-    missing_files, invalid_checksums = validator(BEATLES_INDEX, data_home, silence=silence)
+def validate(data_home=None):
+    missing_files, invalid_checksums = validator(BEATLES_INDEX, data_home)
     return missing_files, invalid_checksums
 
 
@@ -55,8 +57,8 @@ def track_ids():
     return list(BEATLES_INDEX.keys())
 
 
-def load(data_home=None, silence=False):
-    validate(data_home, silence)
+def load(data_home=None):
+    validate(data_home)
     beatles_data = {}
     for key in track_ids():
         beatles_data[key] = load_track(key, data_home=data_home)
@@ -97,12 +99,8 @@ def _load_beats(beats_path):
         for line in reader:
             beat_times.append(float(line[0]))
             beat_positions.append(line[-1])
-            if line[-1] == 'New Point':
-                print(beats_path)
-    if np.any(beat_positions=='New Point'):
-        print(beats_path)
 
-    beat_positions = fix_newpoint(np.array(beat_positions))
+    beat_positions = _fix_newpoint(np.array(beat_positions))
 
     beat_data = BeatData(np.array(beat_times), np.array(beat_positions))
 
@@ -136,7 +134,7 @@ def _load_key(key_path):
     with open(key_path, 'r') as f:
         reader = csv.reader(f, delimiter='\t')
         for line in reader:
-            if 'Key' in line[2]:
+            if line[2] == 'Key':
                 start_times.append(float(line[0]))
                 end_times.append(line[1])
                 keys.append(line[3])
@@ -163,8 +161,7 @@ def _load_sections(sections_path):
     return section_data
 
 
-def fix_newpoint(beat_positions):
-
+def _fix_newpoint(beat_positions):
     while np.any(beat_positions == 'New Point'):
         idxs = np.where(beat_positions == 'New Point')[0]
         for i in idxs:
