@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 """Orchset Dataset Loader
 """
 from collections import namedtuple
@@ -6,11 +12,12 @@ import json
 import numpy as np
 import os
 
-from . import MEDLEYDB_PITCH_INDEX_PATH
-from .utils import get_local_path, validator, F0Data, get_save_path
+from .utils import (
+    get_local_path, validator, F0Data, get_save_path, load_json_index
+)
 
 
-MEDLEYDB_PITCH_INDEX = json.load(open(MEDLEYDB_PITCH_INDEX_PATH, 'r'))
+MEDLEYDB_PITCH_INDEX = load_json_index('medleydb_pitch_index.json')
 MEDLEYDB_PITCH_DIR = "MedleyDB-Pitch"
 MEDLEYDB_METADATA = None
 

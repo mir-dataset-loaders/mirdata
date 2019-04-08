@@ -1,20 +1,29 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 """ikala dataset loader
 """
 from collections import namedtuple
 
 import csv
-import json
 import librosa
 import numpy as np
 import os
-from urllib import request
+try:
+    from urllib.request import urlretrieve  # py3
+except ImportError:
+    from urllib import urlretrieve  # py2
 
-from . import IKALA_INDEX_PATH
-from .utils import get_save_path, get_local_path, validator, F0Data, LyricsData
-
+from .utils import (
+    get_save_path, get_local_path, validator, F0Data,
+    LyricsData, load_json_index
+)
 
 IKALA_TIME_STEP = 0.032  # seconds
-IKALA_INDEX = json.load(open(IKALA_INDEX_PATH, 'r'))
+IKALA_INDEX = load_json_index('ikala_index.json')
 IKALA_METADATA = None
 IKALA_DIR = 'iKala'
 ID_MAPPING_URL = "http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt"
@@ -160,7 +169,7 @@ def _load_metadata(data_home):
     id_map_path = get_local_path(
         data_home, os.path.join(IKALA_DIR, "id_mapping.txt"))
     if not os.path.exists(id_map_path):
-        request.urlretrieve(ID_MAPPING_URL, filename=id_map_path)
+        urlretrieve(ID_MAPPING_URL, filename=id_map_path)
 
     with open(id_map_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')

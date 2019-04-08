@@ -2,21 +2,20 @@
 """
 from collections import namedtuple
 import csv
-import json
 import numpy as np
 import os
 
-from . import SALAMI_INDEX_PATH
-from .utils import (get_local_path, validator, SectionData, get_save_path, download_from_remote,
-                    unzip, RemoteFileMetadata)
+from .utils import (get_local_path, validator, SectionData, get_save_path,
+                    download_from_remote, load_json_index, unzip,
+                    RemoteFileMetadata)
 
-SALAMI_INDEX = json.load(open(SALAMI_INDEX_PATH, 'r'))
+SALAMI_INDEX = load_json_index("salami_index.json")
 SALAMI_METADATA = None
 SALAMI_DIR = 'Salami'
 SALAMI_ANNOT_REMOTE = RemoteFileMetadata(
     filename='salami-data-public-master.zip',
     url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
-    checksum='b01d6eb5b71cca1f3163fae4b2cd4c61')  # TODO: @rabbit this are the annotations, do especific data type?
+    checksum='b01d6eb5b71cca1f3163fae4b2cd4c61')
 
 SalamiTrack = namedtuple(
     'SalamiTrack',
@@ -40,21 +39,22 @@ SalamiTrack = namedtuple(
 
 def download(data_home=None, clobber=False):
     save_path = get_save_path(data_home)
-    download_path = download_from_remote(SALAMI_ANNOT_REMOTE, data_home=data_home, clobber=clobber)
+    download_path = download_from_remote(
+        SALAMI_ANNOT_REMOTE, data_home=data_home, clobber=clobber)
     salami_annotations_path = os.path.join(save_path, SALAMI_DIR)
     if not os.path.exists(salami_annotations_path):
         os.makedirs(salami_annotations_path)
     unzip(download_path, salami_annotations_path, cleanup=True)
     validate(data_home)
     print("""
-            Unfortunately the audio files of the Salami dataset are not available for download.
-            If you have the Salami dataset, place the contents into a folder called
-            Salami with the following structure:
-                > Salami/
-                    > salami-data-public-master/
-                    > audio/
-            and copy the Salami folder to {}
-        """.format(save_path))
+        Unfortunately the audio files of the Salami dataset are not available
+        for download. If you have the Salami dataset, place the contents into a
+        folder called Salami with the following structure:
+            > Salami/
+                > salami-data-public-master/
+                > audio/
+        and copy the Salami folder to {}
+    """.format(save_path))
 
 
 def validate(data_home=None):
@@ -88,14 +88,19 @@ def load_track(track_id, data_home=None):
         track_metadata = SALAMI_METADATA[track_id]
     else:
         # annotations with missing metadata
-        track_metadata = {'source': None, 'annotator_1_id': None, 'annotator_2_id': None, 'duration_sec': None,
-                          'title': None, 'artist': None, 'annotator_1_time': None, 'annotator_2_time': None,
-                          'class': None, 'genre': None}
+        track_metadata = {
+            'source': None, 'annotator_1_id': None, 'annotator_2_id': None,
+            'duration_sec': None, 'title': None, 'artist': None,
+            'annotator_1_time': None, 'annotator_2_time': None, 'class': None,
+            'genre': None
+        }
 
-    annotations_dir = os.path.join(data_home, SALAMI_DIR, 'salami-data-public-master', 'annotations')
+    annotations_dir = os.path.join(
+        data_home, SALAMI_DIR, 'salami-data-public-master', 'annotations')
     annotators = [any(SALAMI_INDEX[track_id]['annotator_1_uppercase']),
                   any(SALAMI_INDEX[track_id]['annotator_2_uppercase'])]
-    all_annotators_section_data = _load_sections(get_local_path(annotations_dir, track_id), annotators)
+    all_annotators_section_data = _load_sections(
+        get_local_path(annotations_dir, track_id), annotators)
 
     return SalamiTrack(
         track_id,
@@ -133,10 +138,15 @@ def _load_sections(sections_path, annotators):
                                 secs.append(line[1])
                     times, secs = np.array(times), np.array(secs)
                     # remove sections with length == 0
-                    times_revised = np.delete(times, np.where(np.diff(times) == 0))
-                    secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
-                    all_annotators_section_data.append(SectionData(np.array(times_revised[:-1]),
-                                                       np.array(times_revised)[1:], np.array(secs_revised)[:-1]))
+                    times_revised = np.delete(
+                        times, np.where(np.diff(times) == 0))
+                    secs_revised = np.delete(
+                        secs, np.where(np.diff(times) == 0))
+                    all_annotators_section_data.append(
+                        SectionData(np.array(times_revised[:-1]),
+                                    np.array(times_revised)[1:],
+                                    np.array(secs_revised)[:-1])
+                    )
                 else:
                     all_annotators_section_data.append(None)
             else:
@@ -147,8 +157,11 @@ def _load_sections(sections_path, annotators):
 
 def _load_metadata(data_home):
 
-    metadata_path = get_local_path(data_home, os.path.join(SALAMI_DIR,
-                                                           'salami-data-public-master', 'metadata', 'metadata.csv'))
+    metadata_path = get_local_path(
+        data_home, os.path.join(
+            SALAMI_DIR, 'salami-data-public-master', 'metadata', 'metadata.csv'
+        )
+    )
 
     if not os.path.exists(metadata_path):
         return None
@@ -197,12 +210,12 @@ Smith, Jordan Bennett Louis, et al.,
 
 ========== Bibtex ==========
 @inproceedings{smith2011salami,
-  title={Design and creation of a large-scale database of structural annotations.},
-  author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and 
+    title={Design and creation of a large-scale database of structural annotations.},
+    author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and 
           Fujinaga, Ichiro and De Roure, David and Downie, J Stephen},
-  booktitle={12th International Society for Music Information Retrieval Conference},
-  year={2011},
-  series = {ISMIR}, 
+    booktitle={12th International Society for Music Information Retrieval Conference},
+    year={2011},
+    series = {ISMIR}, 
 }
 """
 

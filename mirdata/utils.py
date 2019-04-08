@@ -1,13 +1,26 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 from collections import namedtuple
 import hashlib
 import os
+import json
 import tarfile
-from urllib import request
+try:
+    from urllib.request import urlopen  # py3
+except ImportError:
+    from urllib2 import urlopen  # py2
+try:
+    from urllib.request import urlretrieve  # py3
+except ImportError:
+    from urllib import urlretrieve  # py2
 import zipfile
-
 from tqdm import tqdm
 
-from . import MIR_DATASETS_DIR
+MIR_DATASETS_DIR = os.path.join(os.environ["HOME"], "mir_datasets")
 
 
 def md5(file_path):
@@ -182,12 +195,12 @@ def download_from_remote(remote, data_home=None, clobber=False):
         os.path.join(MIR_DATASETS_DIR, remote.filename) if data_home is None
         else os.path.join(data_home, remote.filename)
     )
-    if not os.path.exists(download_path) or clobber:  # TODO: @rabitt checking for the right file?
+    if not os.path.exists(download_path) or clobber:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(unit='B', unit_scale=True,
                                  miniters=1,
                                  desc=remote.url.split('/')[-1]) as t:
-            request.urlretrieve(
+            urlretrieve(
                 remote.url, filename=download_path, reporthook=t.update_to)
 
     checksum = md5(download_path)
@@ -230,7 +243,7 @@ def untar(tar_path, save_dir, cleanup=False):
     cleanup: bool, default=False
         If True, remove tarfile after untarring.
     """
-    if (tar_path.endswith("tar.gz")):
+    if tar_path.endswith("tar.gz"):
         tfile = tarfile.open(tar_path, "r:gz")
     else:
         tfile = tarfile.TarFile(tar_path, 'r')
@@ -239,3 +252,8 @@ def untar(tar_path, save_dir, cleanup=False):
     if cleanup:
         os.remove(tar_path)
 
+
+def load_json_index(filename):
+    CWD = os.path.dirname(os.path.realpath(__file__))
+    with open(os.path.join(CWD, 'indexes', filename)) as f:
+        return json.load(f)
