@@ -133,10 +133,10 @@ def _load_sections(sections_path, annotators):
                                 secs.append(line[1])
                     times, secs = np.array(times), np.array(secs)
                     # remove sections with length == 0
-                    times_ = np.delete(times, np.where(np.diff(times) == 0))
-                    secs = np.delete(secs, np.where(np.diff(times) == 0))
-                    all_annotators_section_data.append(SectionData(np.array(times_[:-1]),
-                                                       np.array(times_)[1:], np.array(secs)[:-1]))
+                    times_revised = np.delete(times, np.where(np.diff(times) == 0))
+                    secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
+                    all_annotators_section_data.append(SectionData(np.array(times_revised[:-1]),
+                                                       np.array(times_revised)[1:], np.array(secs_revised)[:-1]))
                 else:
                     all_annotators_section_data.append(None)
             else:
@@ -147,11 +147,8 @@ def _load_sections(sections_path, annotators):
 
 def _load_metadata(data_home):
 
-    metadata_relative_path = get_local_path(data_home, os.path.join(SALAMI_DIR,
-                                                                    'salami-data-public-master',
-                                                                    'metadata', 'metadata.csv'))
-    metadata_path = get_local_path(
-        data_home, metadata_relative_path)
+    metadata_path = get_local_path(data_home, os.path.join(SALAMI_DIR,
+                                                           'salami-data-public-master', 'metadata', 'metadata.csv'))
 
     if not os.path.exists(metadata_path):
         return None
