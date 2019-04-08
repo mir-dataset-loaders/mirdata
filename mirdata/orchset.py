@@ -8,7 +8,6 @@ from __future__ import print_function
 """
 from collections import namedtuple
 import csv
-import json
 import numpy as np
 import os
 

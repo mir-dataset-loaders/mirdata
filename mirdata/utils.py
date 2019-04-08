@@ -58,17 +58,18 @@ def validator(dataset_index, data_home, silence=False):
         for key in track.keys():
             filepath = track[key][0]
             checksum = track[key][1]
-            local_path = get_local_path(data_home, filepath)
-            # validate that the file exists on disk
-            if not os.path.exists(local_path):
-                if track_id not in missing_files.keys():
-                    missing_files[track_id] = []
-                missing_files[track_id].append(local_path)
-            # validate that the checksum matches
-            elif md5(local_path) != checksum:
-                if track_id not in invalid_checksums.keys():
-                    invalid_checksums[track_id] = []
-                invalid_checksums[track_id].append(local_path)
+            if filepath is not None:
+                local_path = get_local_path(data_home, filepath)
+                # validate that the file exists on disk
+                if not os.path.exists(local_path):
+                    if track_id not in missing_files.keys():
+                        missing_files[track_id] = []
+                    missing_files[track_id].append(local_path)
+                # validate that the checksum matches
+                elif md5(local_path) != checksum:
+                    if track_id not in invalid_checksums.keys():
+                        invalid_checksums[track_id] = []
+                    invalid_checksums[track_id].append(local_path)
 
     # print path of any missing files
     for track_id in missing_files.keys():
@@ -99,8 +100,30 @@ LyricsData = namedtuple(
     ['start_time', 'end_time', 'lyric', 'pronounciation']
 )
 
+SectionData = namedtuple(
+    'SectionsData',
+    ['start_time', 'end_time', 'section']
+)
+
+BeatData = namedtuple(
+    'BeatsData',
+    ['beats_times', 'beats_positions']
+)
+
+ChordData = namedtuple(
+    'ChordsData',
+    ['start_time', 'end_time', 'chords']
+)
+
+KeyData = namedtuple(
+    'KeyData',
+    ['start_time', 'end_time', 'key']
+)
+
 
 def get_local_path(data_home, rel_path):
+    if rel_path is None:
+        return None
     if data_home is None:
         return os.path.join(MIR_DATASETS_DIR, rel_path)
     else:
@@ -172,7 +195,6 @@ def download_from_remote(remote, data_home=None, clobber=False):
         os.path.join(MIR_DATASETS_DIR, remote.filename) if data_home is None
         else os.path.join(data_home, remote.filename)
     )
-
     if not os.path.exists(download_path) or clobber:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(unit='B', unit_scale=True,
@@ -221,7 +243,10 @@ def untar(tar_path, save_dir, cleanup=False):
     cleanup: bool, default=False
         If True, remove tarfile after untarring.
     """
-    tfile = tarfile.TarFile(tar_path, 'r')
+    if tar_path.endswith("tar.gz"):
+        tfile = tarfile.open(tar_path, "r:gz")
+    else:
+        tfile = tarfile.TarFile(tar_path, 'r')
     tfile.extractall(save_dir)
     tfile.close()
     if cleanup:
