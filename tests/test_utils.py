@@ -42,3 +42,12 @@ def test_validator(test_index,
 ])
 def test_get_local_path(data_home, rel_path, expected_path):
     assert expected_path == utils.get_local_path(data_home, rel_path)
+
+
+def test_get_save_path(tmpdir):
+    with mock.patch("mirdata.utils.MIR_DATASETS_DIR", tmpdir):
+        assert tmpdir == utils.get_save_path(None)
+
+
+def test_get_save_path_with_data_home():
+    assert "data_home" == utils.get_save_path("data_home")
