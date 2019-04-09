@@ -51,3 +51,44 @@ def test_get_save_path(tmpdir):
 
 def test_get_save_path_with_data_home():
     assert "data_home" == utils.get_save_path("data_home")
+
+
+def test_download_from_remote(httpserver, tmpdir):
+    httpserver.serve_content(open('tests/resources/remote.wav').read())
+
+    TEST_META = utils.RemoteFileMetadata(
+        filename="remote.wav",
+        url=httpserver.url,
+        checksum=("3f77d0d69dc41b3696f074ad6bf2852f")
+    )
+
+    download_path = utils.download_from_remote(TEST_META, tmpdir)
+    expected_download_path = os.path.join(tmpdir, "remote.wav")
+    assert expected_download_path == download_path
+
+
+def test_download_from_remote_raises_IOError(httpserver, tmpdir):
+    httpserver.serve_content(open('tests/resources/remote.wav').read())
+
+    TEST_META = utils.RemoteFileMetadata(
+        filename="remote.wav",
+        url=httpserver.url,
+        checksum=("1234")
+    )
+
+    with pytest.raises(IOError):
+        utils.download_from_remote(TEST_META, tmpdir)
+
+
+def test_unzip(tmpdir):
+    utils.unzip("tests/resources/remote.zip", tmpdir)
+
+    expected_file_location = os.path.join(tmpdir, "remote.wav")
+    assert os.path.exists(expected_file_location)
+
+
+def test_untar(tmpdir):
+    utils.unzip("tests/resources/remote.tar", tmpdir)
+
+    expected_file_location = os.path.join(tmpdir, "remote.wav")
+    assert os.path.exists(expected_file_location)
