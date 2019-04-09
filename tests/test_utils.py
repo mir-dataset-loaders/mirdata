@@ -33,3 +33,12 @@ def test_validator(test_index,
 
     assert expected_missing == len(missing_files)
     assert expected_inv_checksum == len(invalid_checksums)
+
+
+@pytest.mark.parametrize("data_home,rel_path,expected_path", [
+    ("tests/", None, None),
+    (None, "tests/", os.path.join(utils.MIR_DATASETS_DIR, "tests/")),
+    ("tests/", "shoop", "tests/shoop")
+])
+def test_get_local_path(data_home, rel_path, expected_path):
+    assert expected_path == utils.get_local_path(data_home, rel_path)
