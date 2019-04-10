@@ -4,14 +4,13 @@ from collections import namedtuple
 import numpy as np
 import os
 import csv
+import json
 
-from .utils import (get_save_path, get_local_path, validator, BeatData,
-                    ChordData, SectionData, KeyData, load_json_index,
-                    download_from_remote, RemoteFileMetadata, untar)
+import mirdata.utils as utils
 
 BEATLES_DIR = 'Beatles'
-BEATLES_INDEX = load_json_index("beatles_index.json")
-BEATLES_ANNOT_REMOTE = RemoteFileMetadata(
+BEATLES_INDEX = utils.load_json_index("beatles_index.json")
+BEATLES_ANNOT_REMOTE = utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/'
         'The%20Beatles%20Annotations.tar.gz',
@@ -30,28 +29,42 @@ BeatlesTrack = namedtuple(
 
 
 def download(data_home=None, clobber=False):
-    save_path = get_save_path(data_home)
-    download_path = download_from_remote(
+    save_path = utils.get_save_path(data_home)
+    dataset_path = os.path.join(save_path, BEATLES_DIR)
+
+    if clobber:
+        utils.clobber_all(BEATLES_ANNOT_REMOTE,
+                          dataset_path,
+                          data_home)
+
+    if utils.check_validated(dataset_path):
+        print("""
+                The {} dataset has already been downloaded and validated.
+                Skipping download of dataset. If you feel this is a mistake please
+                rerun and set clobber to true
+                """.format(BEATLES_DIR))
+        return
+
+    download_path = utils.download_from_remote(
         BEATLES_ANNOT_REMOTE, data_home=data_home, clobber=clobber)
-    beatles_annotations_path = os.path.join(
-        save_path, BEATLES_DIR, 'annotations')
-    if not os.path.exists(beatles_annotations_path):
-        os.makedirs(beatles_annotations_path)
-    untar(download_path, beatles_annotations_path, cleanup=True)
-    validate(data_home)
-    print("""
-        Unfortunately the audio files of the Beatles dataset are not available
-        for download. If you have the Beatles dataset, place the contents into
-        a folder called Beatles with the following structure:
-            > Beatles/
-                > annotations/
-                > audio/
-        and copy the Beatles folder to {}
-    """.format(save_path))
+    if not os.path.exists(dataset_path):
+        os.makedirs(dataset_path)
+    utils.untar(download_path, dataset_path, cleanup=True)
+    missing_files, invalid_checksums = validate(dataset_path, data_home)
+    if missing_files or invalid_checksums:
+        print("""
+            Unfortunately the audio files of the Beatles dataset are not available
+            for download. If you have the Beatles dataset, place the contents into
+            a folder called Beatles with the following structure:
+                > Beatles/
+                    > annotations/
+                    > audio/
+            and copy the Beatles folder to {}
+        """.format(save_path))
 
 
-def validate(data_home=None):
-    missing_files, invalid_checksums = validator(BEATLES_INDEX, data_home)
+def validate(dataset_path, data_home=None):
+    missing_files, invalid_checksums = utils.validator(BEATLES_INDEX, data_home, dataset_path)
     return missing_files, invalid_checksums
 
 
@@ -74,16 +87,16 @@ def load_track(track_id, data_home=None):
 
     track_data = BEATLES_INDEX[track_id]
 
-    beat_data = _load_beats(get_local_path(data_home, track_data['beat'][0]))
+    beat_data = _load_beats(utils.get_local_path(data_home, track_data['beat'][0]))
     chord_data = _load_chords(
-        get_local_path(data_home, track_data['chords'][0]))
-    key_data = _load_key(get_local_path(data_home, track_data['keys'][0]))
+        utils.get_local_path(data_home, track_data['chords'][0]))
+    key_data = _load_key(utils.get_local_path(data_home, track_data['keys'][0]))
     section_data = _load_sections(
-        get_local_path(data_home, track_data['sections'][0]))
+        utils.get_local_path(data_home, track_data['sections'][0]))
 
     return BeatlesTrack(
         track_id,
-        get_local_path(data_home, track_data['audio'][0]),
+        utils.get_local_path(data_home, track_data['audio'][0]),
         beat_data,
         chord_data,
         key_data,
@@ -107,7 +120,7 @@ def _load_beats(beats_path):
 
     beat_positions = _fix_newpoint(np.array(beat_positions))
 
-    beat_data = BeatData(np.array(beat_times), np.array(beat_positions))
+    beat_data = utils.BeatData(np.array(beat_times), np.array(beat_positions))
 
     return beat_data
 
@@ -126,7 +139,7 @@ def _load_chords(chords_path):
             end_times.append(float(line[1]))
             chords.append(line[2])
 
-    chord_data = ChordData(
+    chord_data = utils.ChordData(
         np.array(start_times), np.array(end_times), np.array(chords))
 
     return chord_data
@@ -145,7 +158,7 @@ def _load_key(key_path):
                 end_times.append(line[1])
                 keys.append(line[3])
 
-    key_data = KeyData(
+    key_data = utils.KeyData(
         np.array(start_times), np.array(end_times), np.array(keys))
 
     return key_data
@@ -163,7 +176,7 @@ def _load_sections(sections_path):
             end_times.append(line[1])
             sections.append(line[3])
 
-    section_data = SectionData(
+    section_data = utils.SectionData(
         np.array(start_times), np.array(end_times), np.array(sections))
 
     return section_data
@@ -198,7 +211,7 @@ Mauch, Matthias, et al.
 ========== Bibtex ==========
 @inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
-    author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte, 
+    author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte,
     Christopher and Kolozali, Sefki and Tidhar, Dan and Sandler, Mark},
     booktitle={12th International Society for Music Information Retrieval Conference},
     year={2009},
