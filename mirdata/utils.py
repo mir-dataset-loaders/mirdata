@@ -9,6 +9,7 @@ import hashlib
 import os
 import json
 import tarfile
+import shutil
 try:
     from urllib.request import urlopen  # py3
 except ImportError:
@@ -21,6 +22,8 @@ import zipfile
 from tqdm import tqdm
 
 MIR_DATASETS_DIR = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
+VALIDATED_FILE_NAME = '_VALIDATED'
+INVALID_FILE_NAME = '_INVALID.json'
 
 
 def md5(file_path):
@@ -48,7 +51,7 @@ def log_message(message, silence=False):
         print(message)
 
 
-def validator(dataset_index, data_home, silence=False):
+def check_index(dataset_index, data_home, silence=False):
     missing_files = {}
     invalid_checksums = {}
 
@@ -71,6 +74,15 @@ def validator(dataset_index, data_home, silence=False):
                         invalid_checksums[track_id] = []
                     invalid_checksums[track_id].append(local_path)
 
+    return missing_files, invalid_checksums
+
+
+def validator(dataset_index, data_home, dataset_path, silence=False):
+    if check_validated(dataset_path):
+        return {}, {}
+
+    missing_files, invalid_checksums = check_index(dataset_index, data_home, silence)
+
     # print path of any missing files
     for track_id in missing_files.keys():
         if len(missing_files[track_id]) > 0:
@@ -86,6 +98,11 @@ def validator(dataset_index, data_home, silence=False):
             for fpath in invalid_checksums[track_id]:
                 log_message(fpath, silence)
             log_message("-" * 20, silence)
+
+    if missing_files or invalid_checksums:
+        create_invalid(dataset_path, missing_files, invalid_checksums)
+    else:
+        create_validated(dataset_path)
 
     return missing_files, invalid_checksums
 
@@ -257,3 +274,31 @@ def load_json_index(filename):
     CWD = os.path.dirname(os.path.realpath(__file__))
     with open(os.path.join(CWD, 'indexes', filename)) as f:
         return json.load(f)
+
+
+def check_validated(dataset_path):
+    return os.path.exists(os.path.join(dataset_path, VALIDATED_FILE_NAME))
+
+
+def create_validated(dataset_path):
+    open(os.path.join(dataset_path, VALIDATED_FILE_NAME), 'a').close()
+
+
+def create_invalid(dataset_path, missing_files, invalid_checksums):
+    with open(os.path.join(dataset_path, INVALID_FILE_NAME), 'w') as f:
+        json.dump({'missing_files': missing_files,
+                   'invalid_checksums': invalid_checksums}, f, indent=2)
+
+
+def clobber_all(remote, dataset_path, data_home=None):
+    if remote:
+        download_path = (
+            os.path.join(MIR_DATASETS_DIR, remote.filename) if data_home is None
+            else os.path.join(data_home, remote.filename)
+        )
+        os.remove(download_path)
+
+    if dataset_path:
+        shutil.rmtree(dataset_path)
+
+
