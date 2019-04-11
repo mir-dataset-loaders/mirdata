@@ -9,3 +9,4 @@ from . import medleydb_pitch
 from . import orchset
 from . import ikala
 from . import beatles
+from . import salami
