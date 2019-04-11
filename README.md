@@ -81,7 +81,7 @@ import sox
 
 def very_bad_melody_extractor(audio_path):
     duration = sox.file_info.duration(audio_path)
-    time_stamps = np.linspace(0, duration, 0.01)
+    time_stamps = np.arange(0, duration, 0.01)
     melody_f0 = np.random.uniform(low=80.0, high=800.0, size=time_stamps.shape)
     return time_stamps, melody_f0
 
