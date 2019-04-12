@@ -16,7 +16,7 @@ This library provides tools for working with common MIR datasets, including tool
 By default, all datasets tracked by this library are stored in `~/mir_datasets`,
 (defined as `MIR_DATASETS_DIR` in `mirdata/__init__.py`).
 Data can alternatively be stored in another location by specifying `data_home`
-within a relevant function, e.g. `mir_datasets.orchset.download(data_home='my_custom_path')`
+within a relevant function, e.g. `mirdata.orchset.download(data_home='my_custom_path')`
 
 
 ## Examples
