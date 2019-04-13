@@ -20,7 +20,7 @@ except ImportError:
 import zipfile
 from tqdm import tqdm
 
-MIR_DATASETS_DIR = os.path.join(os.environ["HOME"], "mir_datasets")
+MIR_DATASETS_DIR = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
 
 
 def md5(file_path):
