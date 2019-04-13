@@ -20,6 +20,7 @@ SALAMI_ANNOT_REMOTE = RemoteFileMetadata(
 SalamiTrack = namedtuple(
     'SalamiTrack',
     ['track_id',
+     'audio_path',
      'sections_annotator_1_uppercase',
      'sections_annotator_1_lowercase',
      'sections_annotator_2_uppercase',
@@ -104,6 +105,7 @@ def load_track(track_id, data_home=None):
 
     return SalamiTrack(
         track_id,
+        get_local_path(data_home, track_metadata['audio'][0]),
         all_annotators_section_data[0],
         all_annotators_section_data[1],
         all_annotators_section_data[2],
