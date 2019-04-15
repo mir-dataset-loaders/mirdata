@@ -97,12 +97,12 @@ F0Data = namedtuple(
 
 LyricsData = namedtuple(
     'LyricsData',
-    ['start_time', 'end_time', 'lyric', 'pronounciation']
+    ['start_times', 'end_times', 'lyrics', 'pronounciations']
 )
 
 SectionData = namedtuple(
     'SectionsData',
-    ['start_time', 'end_time', 'section']
+    ['start_times', 'end_times', 'sections']
 )
 
 BeatData = namedtuple(
@@ -112,12 +112,12 @@ BeatData = namedtuple(
 
 ChordData = namedtuple(
     'ChordsData',
-    ['start_time', 'end_time', 'chords']
+    ['start_times', 'end_times', 'chords']
 )
 
 KeyData = namedtuple(
     'KeyData',
-    ['start_time', 'end_time', 'key']
+    ['start_times', 'end_times', 'keys']
 )
 
 
