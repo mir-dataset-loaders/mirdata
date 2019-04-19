@@ -11,6 +11,13 @@ This library provides tools for working with common MIR datasets, including tool
 * loading annotation files to a common format, consistent with the format required by [mir_eval](https://github.com/craffel/mir_eval)
 * parsing track level metadata for detailed evaluations
 
+## Installation
+
+To install, simply run:
+
+```python
+pip install mirdata
+```
 
 ## Dataset Location
 By default, all datasets tracked by this library are stored in `~/mir_datasets`,
