@@ -3,7 +3,7 @@ common loaders for mir datasets.
 
 *WORK IN PROGRESS, USE AT YOUR OWN RISK!*
 
-[![CircleCI](https://circleci.com/gh/mir-dataset-loaders/mir-dataset-loaders.svg?style=svg)](https://circleci.com/gh/mir-dataset-loaders/mir-dataset-loaders)
+[![CircleCI](https://circleci.com/gh/mir-dataset-loaders/mirdata.svg?style=svg)](https://circleci.com/gh/mir-dataset-loaders/mirdata)
 
 This library provides tools for working with common MIR datasets, including tools for:
 * downloading datasets to a common location and format
@@ -23,38 +23,38 @@ pip install mirdata
 By default, all datasets tracked by this library are stored in `~/mir_datasets`,
 (defined as `MIR_DATASETS_DIR` in `mirdata/__init__.py`).
 Data can alternatively be stored in another location by specifying `data_home`
-within a relevant function, e.g. `mir_datasets.orchset.download(data_home='my_custom_path')`
+within a relevant function, e.g. `mirdata.orchset.download(data_home='my_custom_path')`
 
 
 ## Examples
 
 <!-- ### List available datasets
 ```python
-import mirdata as mdl
+import mirdata
 
-mdl.list_datasets()
+mirdata.list_datasets()
 ``` -->
 
 ### Download the Orchset Dataset
 ```python
-import mirdata as mdl
+import mirdata
 
-mdl.orchset.download()
+mirdata.orchset.download()
 ```
 
 ### Load the Orchset Dataset
 ```python
-import mirdata as mdl
+import mirdata
 
-orchset_data = mdl.orchset.load()
+orchset_data = mirdata.orchset.load()
 ```
 
 ### See what data is available for a track
 ```python
-import mirdata as mdl
+import mirdata
 
-orchset_ids = mdl.orchset.track_ids()
-orchset_data = mdl.orchset.load()
+orchset_ids = mirdata.orchset.track_ids()
+orchset_data = mirdata.orchset.load()
 
 example_track = orchset_data[orchset_ids[0]]
 print(example_track)
@@ -82,7 +82,7 @@ print(example_track)
 ### Evaluate a melody extraction algorithm on Orchset
 ```python
 import mir_eval
-import mirdata as mdl
+import mirdata
 import numpy as np
 import sox
 
@@ -94,7 +94,7 @@ def very_bad_melody_extractor(audio_path):
 
 # Evaluate on the full dataset
 orchset_scores = {}
-orchset_data = mdl.orchset.load()
+orchset_data = mirdata.orchset.load()
 for track_id, track_data in orchset_data.items():
     est_times, est_freqs = very_bad_melody_extractor(track_data.audio_path_mono)
 
@@ -122,8 +122,8 @@ for track_id, track_data in orchset_data.items():
 ## Contributing a new dataset loader
 
 To add a new dataset loader:
-1. Create an index in `mirdata/indexes`, e.g. `unicorn_index.json`
-2. Create a module in `mirdata`, .e.g `unicorn.py`
+1. Create an index in `mirdata/indexes`, e.g. `my_dataset_index.json`
+2. Create a module in `mirdata`, .e.g `my_dataset.py`
 
 
 ### Creating an index
@@ -194,7 +194,7 @@ pairing audio and annotation files more difficult. We introduce use a fixed,
 version controlled index to account for this kind of mismatch, rather than relying
 on string parsing on load.
 
-Scripts used to create the dataset indexes are in the [scripts](https://github.com/mir-dataset-loaders/mir-dataset-loaders/tree/medleydb-loaders/scripts) folder.
+Scripts used to create the dataset indexes are in the [scripts](https://github.com/mir-dataset-loaders/mirdata/tree/master/scripts) folder.
 
 
 ### Creating a module.
