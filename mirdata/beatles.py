@@ -20,6 +20,7 @@ BEATLES_ANNOT_REMOTE = RemoteFileMetadata(
 BeatlesTrack = namedtuple(
     'BeatlesTrack',
     ['track_id',
+     'audio_path',
      'beats',
      'chords',
      'key',
@@ -82,6 +83,7 @@ def load_track(track_id, data_home=None):
 
     return BeatlesTrack(
         track_id,
+        get_local_path(data_home, track_data['audio'][0]),
         beat_data,
         chord_data,
         key_data,
@@ -121,7 +123,7 @@ def _load_chords(chords_path):
         reader = csv.reader(f, dialect)
         for line in reader:
             start_times.append(float(line[0]))
-            end_times.append(line[1])
+            end_times.append(float(line[1]))
             chords.append(line[2])
 
     chord_data = ChordData(
