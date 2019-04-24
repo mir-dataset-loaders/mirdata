@@ -11,12 +11,11 @@ import csv
 import numpy as np
 import os
 
-from .utils import (get_local_path, validator, F0Data, download_from_remote,
-                    unzip, RemoteFileMetadata, get_save_path, load_json_index)
+import mirdata.utils as utils
 
-ORCHSET_INDEX = load_json_index('orchset_index.json')
+ORCHSET_INDEX = utils.load_json_index('orchset_index.json')
 
-ORCHSET_META = RemoteFileMetadata(
+ORCHSET_META = utils.RemoteFileMetadata(
     filename='Orchset_dataset_0.zip',
     url='https://zenodo.org/record/1289786/files/'
         'Orchset_dataset_0.zip?download=1',
@@ -46,14 +45,29 @@ OrchsetTrack = namedtuple(
 
 
 def download(data_home=None, clobber=False):
-    save_path = get_save_path(data_home)
-    download_path = download_from_remote(ORCHSET_META, clobber=clobber)
-    unzip(download_path, save_path)
-    validate(data_home)
+    save_path = utils.get_save_path(data_home)
+    dataset_path = os.path.join(save_path, ORCHSET_DIR)
+
+    if clobber:
+        utils.clobber_all(ORCHSET_META,
+                          dataset_path,
+                          data_home)
+
+    if utils.check_validated(dataset_path):
+        print("""
+                The {} dataset has already been downloaded and validated.
+                Skipping download of dataset. If you feel this is a mistake please
+                rerun and set clobber to true
+                """.format(ORCHSET_DIR))
+        return
+
+    download_path = utils.download_from_remote(ORCHSET_META, clobber=clobber)
+    utils.unzip(download_path, save_path, dataset_path)
+    validate(dataset_path, data_home)
 
 
-def validate(data_home=None):
-    missing_files, invalid_checksums = validator(ORCHSET_INDEX, data_home)
+def validate(dataset_path, data_home=None):
+    missing_files, invalid_checksums = utils.validator(ORCHSET_INDEX, data_home, dataset_path)
     return missing_files, invalid_checksums
 
 
@@ -81,15 +95,15 @@ def load_track(track_id, data_home=None):
             raise EnvironmentError("Could not find Orchset metadata file")
 
     melody_data = _load_melody(
-        get_local_path(data_home, track_data['melody'][0]))
+        utils.get_local_path(data_home, track_data['melody'][0]))
 
     track_metadata = ORCHSET_METADATA[track_id]
 
     return OrchsetTrack(
         track_id,
         melody_data,
-        get_local_path(data_home, track_data['audio_mono'][0]),
-        get_local_path(data_home, track_data['audio_stereo'][0]),
+        utils.get_local_path(data_home, track_data['audio_mono'][0]),
+        utils.get_local_path(data_home, track_data['audio_stereo'][0]),
         track_metadata['composer'],
         track_metadata['work'],
         track_metadata['excerpt'],
@@ -118,14 +132,14 @@ def _load_melody(melody_path):
             freqs.append(float(line[1]))
             confidence.append(0 if line[1] == '0' else 1)
 
-    melody_data = F0Data(
+    melody_data = utils.F0Data(
         np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
 
 
 def _load_metadata(data_home):
 
-    predominant_inst_path = get_local_path(data_home, os.path.join(
+    predominant_inst_path = utils.get_local_path(data_home, os.path.join(
         ORCHSET_DIR,
         "Orchset - Predominant Melodic Instruments.csv"))
 
@@ -202,7 +216,7 @@ Classical Music", Journal of New Music Research (2016)
     number={2},
     pages={101--117},
     year={2016},
-    publisher={Taylor \& Francis}
+    publisher={Taylor \\& Francis}
 """
 
     print(cite_data)
