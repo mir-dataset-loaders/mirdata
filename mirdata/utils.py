@@ -39,7 +39,7 @@ except ImportError:
         request = Request(url)
         request.get_method = lambda : 'HEAD'
         try:
-            response = urllib2.urlopen(request)
+            response = urlopen(request)
             contents = response.read()
             return response.getcode()
         except HTTPError:
