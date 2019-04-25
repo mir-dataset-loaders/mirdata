@@ -3,7 +3,9 @@ common loaders for mir datasets.
 
 *WORK IN PROGRESS, USE AT YOUR OWN RISK!*
 
-[![CircleCI](https://circleci.com/gh/mir-dataset-loaders/mirdata.svg?style=svg)](https://circleci.com/gh/mir-dataset-loaders/mirdata) [![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
+[![CircleCI](https://circleci.com/gh/mir-dataset-loaders/mirdata.svg?style=svg)](https://circleci.com/gh/mir-dataset-loaders/mirdata) 
+[![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
+![GitHub](https://img.shields.io/github/license/mir-dataset-loaders/mirdata.svg)
 
 This library provides tools for working with common MIR datasets, including tools for:
 * downloading datasets to a common location and format
