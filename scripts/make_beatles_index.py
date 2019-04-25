@@ -5,6 +5,7 @@ import os
 
 
 BEATLES_INDEX_PATH = "../mir_dataset_loaders/indexes/beatles_index.json"
+BEATLES_ANNOTATION_SCHEMA = ['beat', 'chordlab', 'keylab', 'seglab']
 
 
 def md5(file_path):
@@ -54,7 +55,7 @@ def make_beatles_index(data_path):
 
                 annot_checksum, annot_rels = [], []
 
-                for annot_type in ['beat', 'chordlab', 'keylab', 'seglab']:
+                for annot_type in BEATLES_ANNOTATION_SCHEMA:
                     cds_dir = os.path.join(annotations_dir, annot_type, 'The Beatles')
                     annot_path = os.path.join(cds_dir, c)
                     if annot_type is 'beat':

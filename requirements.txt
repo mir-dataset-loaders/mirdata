@@ -1,5 +1,4 @@
 coveralls>=1.7.0
-nose>=1.3.7
 six
 testcontainers
 future==0.17.1
