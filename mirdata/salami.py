@@ -79,6 +79,7 @@ def load_track(track_id, data_home=None):
     if track_id not in SALAMI_INDEX.keys():
         raise ValueError(
             "{} is not a valid track ID in Salami".format(track_id))
+    track_data = SALAMI_INDEX[track_id]
 
     if SALAMI_METADATA is None or SALAMI_METADATA['data_home'] != data_home:
         _reload_metadata(data_home)
@@ -95,9 +96,9 @@ def load_track(track_id, data_home=None):
             'annotator_1_time': None, 'annotator_2_time': None, 'class': None,
             'genre': None
         }
-
-    annotations_dir = os.path.join(
-        data_home, SALAMI_DIR, 'salami-data-public-master', 'annotations')
+    salami_path = get_local_path(data_home, SALAMI_DIR)
+    annotations_dir = os.path.join(salami_path,
+                                   'salami-data-public-master', 'annotations')
     annotators = [any(SALAMI_INDEX[track_id]['annotator_1_uppercase']),
                   any(SALAMI_INDEX[track_id]['annotator_2_uppercase'])]
     all_annotators_section_data = _load_sections(
@@ -105,7 +106,7 @@ def load_track(track_id, data_home=None):
 
     return SalamiTrack(
         track_id,
-        get_local_path(data_home, track_metadata['audio'][0]),
+        get_local_path(data_home, track_data['audio'][0]),
         all_annotators_section_data[0],
         all_annotators_section_data[1],
         all_annotators_section_data[2],
