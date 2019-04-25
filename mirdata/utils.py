@@ -20,7 +20,7 @@ except ImportError:
 try:
     from urllib.request import Request  # py3
 except ImportError:
-    from urllib import Request  # py2
+    from urllib2 import Request  # py2
 try:
     from urllib.error import HTTPError # py3
 except ImportError:
