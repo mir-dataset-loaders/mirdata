@@ -9,6 +9,7 @@ import hashlib
 import os
 import json
 import tarfile
+
 try:
     from urllib.request import urlopen  # py3
 except ImportError:
@@ -18,13 +19,31 @@ try:
 except ImportError:
     from urllib import urlretrieve  # py2
 try:
-    from urllib.request import Request  # py3
-except ImportError:
-    from urllib2 import Request  # py2
-try:
     from urllib.error import HTTPError # py3
 except ImportError:
     from urllib2 import HTTPError # py2
+
+try:
+    from urllib.request import Request  # py3
+    def get_head_status(url):
+        req = Request(url, method='HEAD')
+        try:
+            res = urlopen(req)
+            return res.status
+        except HTTPError:
+            return 404
+
+except ImportError:
+    from urllib2 import Request  # py2
+    def get_head_status(url):
+        request = Request(url)
+        request.get_method = lambda : 'HEAD'
+        try:
+            response = urllib2.urlopen(request)
+            contents = response.read()
+            return response.getcode()
+        except HTTPError:
+            return 404
 
 import zipfile
 from tqdm import tqdm
@@ -193,14 +212,10 @@ def check_remote(remote):
         True if file exists.
         False otherwise.
     """
-    req = Request(remote.url, method='HEAD')
-    try:
-        res = urlopen(req)
-        if res.status >= 200 and res.status < 300:
-            file_exists = True
-        else:
-            file_exists = False
-    except HTTPError:
+    status = get_head_status(remote.url)
+    if status >= 200 and status < 300:
+        file_exists = True
+    else:
         file_exists = False
 
     return file_exists
