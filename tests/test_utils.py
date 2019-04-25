@@ -60,6 +60,29 @@ def test_get_save_path(mocker, tmpdir):
 def test_get_save_path_with_data_home():
     assert "data_home" == utils.get_save_path("data_home")
 
+def test_check_remote_exists(httpserver):
+    httpserver.serve_content(open('tests/resources/remote.wav').read())
+
+    TEST_META = utils.RemoteFileMetadata(
+        filename='remote.wav',
+        url=httpserver.url,
+        checksum=('3f77d0d69dc41b3696f074ad6bf2852f')
+    )
+
+    file_exists = utils.check_remote(TEST_META)
+    assert file_exists == True
+
+def test_check_remote_does_not_exist(httpserver):
+    httpserver.serve_content('File not found!', 404)
+
+    TEST_META = utils.RemoteFileMetadata(
+        filename='remote.wav',
+        url=httpserver.url,
+        checksum=('3f77d0d69dc41b3696f074ad6bf2852f')
+    )
+
+    file_exists = utils.check_remote(TEST_META)
+    assert file_exists == False
 
 def test_download_from_remote(httpserver, tmpdir):
     httpserver.serve_content(open('tests/resources/remote.wav').read())

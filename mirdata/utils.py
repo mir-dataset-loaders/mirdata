@@ -17,6 +17,15 @@ try:
     from urllib.request import urlretrieve  # py3
 except ImportError:
     from urllib import urlretrieve  # py2
+try:
+    from urllib.request import Request  # py3
+except ImportError:
+    from urllib import Request  # py2
+try:
+    from urllib.error import HTTPError # py3
+except ImportError:
+    from urllib2 import HTTPError # py2
+
 import zipfile
 from tqdm import tqdm
 
@@ -167,6 +176,36 @@ class DownloadProgressBar(tqdm):
         self.update(b * bsize - self.n)
 
 
+def check_remote(remote):
+    """Check to see if a file exists at the url of the given RemoteFileMetaDatata.
+    Sends a HEAD request, and returns True for a 2**, and False for anything else.
+    Does not consider checksums - so any file at the given url will return True.
+
+    Parameters
+    ----------
+    remote: RemoteFileMetadata
+        Named tuple containing remote dataset meta information: url, filename
+        and checksum.
+
+    Returns
+    -------
+    file_exists: bool
+        True if file exists.
+        False otherwise.
+    """
+    req = Request(remote.url, method='HEAD')
+    try:
+        res = urlopen(req)
+        if res.status >= 200 and res.status < 300:
+            file_exists = True
+        else:
+            file_exists = False
+    except HTTPError:
+        file_exists = False
+
+    return file_exists
+
+
 def download_from_remote(remote, data_home=None, clobber=False):
     """Download a remote dataset into path
     Fetch a dataset pointed by remote's url, save into path using remote's
@@ -200,8 +239,7 @@ def download_from_remote(remote, data_home=None, clobber=False):
         with DownloadProgressBar(unit='B', unit_scale=True,
                                  miniters=1,
                                  desc=remote.url.split('/')[-1]) as t:
-            urlretrieve(
-                remote.url, filename=download_path, reporthook=t.update_to)
+            urlretrieve(remote.url, filename=download_path, reporthook=t.update_to)
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
