@@ -178,14 +178,13 @@ class DownloadProgressBar(tqdm):
         self.update(b * bsize - self.n)
 
 
-def download_large_file(url, download_path, callback=None):
+def download_large_file(url, download_path, callback=lambda: None):
     response = requests.get(url)
     response.raise_for_status()
     with open(download_path, 'wb') as handle:
         for block in response.iter_content(1024):
             handle.write(block)
-            if callback:
-                callback()
+            callback()
     return download_path
 
 
