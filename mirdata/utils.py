@@ -12,6 +12,7 @@ import tarfile
 import shutil
 import zipfile
 import requests
+from requests.exceptions import HTTPError
 from tqdm import tqdm
 
 MIR_DATASETS_DIR = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
@@ -223,14 +224,15 @@ def download_from_remote(remote, data_home=None, clobber=False):
                                  desc=remote.url.split('/')[-1]) as t:
             try:
                 download_large_file(remote.url, download_path, t.update_to)
-            except requests.exceptions.HTTPError:
-                error_msg = 'mirdata failed to download {}! \
-                             Please try again in a few minutes. \
-                             If this error persists, please raise an issue at \
-                             https://github.com/mir-dataset-loaders/mirdata, \
-                             and tag it with "broken-link". \
-                             '.format(remote.filename)
-                raise IOError(error_msg)
+            except HTTPError:
+                error_msg = """
+                            mirdata failed to download the dataset!
+                            Please try again in a few minutes.
+                            If this error persists, please raise an issue at
+                            https://github.com/mir-dataset-loaders/mirdata,
+                            and tag it with "broken-link".
+                            """
+                raise HTTPError(error_msg)
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
@@ -312,5 +314,3 @@ def clobber_all(remote, dataset_path, data_home=None):
 
     if dataset_path:
         shutil.rmtree(dataset_path)
-
-

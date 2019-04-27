@@ -176,7 +176,7 @@ def _load_metadata(data_home):
     id_map_path = utils.get_local_path(
         data_home, os.path.join(IKALA_DIR, "id_mapping.txt"))
     if not os.path.exists(id_map_path):
-        utils.downlad_large_file(ID_MAPPING_URL, id_map_path)
+        utils.download_large_file(ID_MAPPING_URL, id_map_path)
 
     with open(id_map_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
