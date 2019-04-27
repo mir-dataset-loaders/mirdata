@@ -182,7 +182,7 @@ def download_large_file(url, download_path, callback=lambda: None):
     response = requests.get(url)
     response.raise_for_status()
     with open(download_path, 'wb') as handle:
-        for block in response.iter_content(1024):
+        for block in response.iter_content(4096):
             handle.write(block)
             callback()
     return download_path
