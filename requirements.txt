@@ -1,5 +1,6 @@
 coveralls>=1.7.0
 six
+requests=2.21.0
 testcontainers
 future==0.17.1
 pytest>=4.4.0
