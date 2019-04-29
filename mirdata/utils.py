@@ -10,15 +10,9 @@ import os
 import json
 import tarfile
 import shutil
-try:
-    from urllib.request import urlopen  # py3
-except ImportError:
-    from urllib2 import urlopen  # py2
-try:
-    from urllib.request import urlretrieve  # py3
-except ImportError:
-    from urllib import urlretrieve  # py2
 import zipfile
+import requests
+from requests.exceptions import HTTPError
 from tqdm import tqdm
 
 MIR_DATASETS_DIR = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
@@ -184,6 +178,16 @@ class DownloadProgressBar(tqdm):
         self.update(b * bsize - self.n)
 
 
+def download_large_file(url, download_path, callback=lambda: None):
+    response = requests.get(url)
+    response.raise_for_status()
+    with open(download_path, 'wb') as handle:
+        for block in response.iter_content(4096):
+            handle.write(block)
+            callback()
+    return download_path
+
+
 def download_from_remote(remote, data_home=None, clobber=False):
     """Download a remote dataset into path
     Fetch a dataset pointed by remote's url, save into path using remote's
@@ -217,8 +221,17 @@ def download_from_remote(remote, data_home=None, clobber=False):
         with DownloadProgressBar(unit='B', unit_scale=True,
                                  miniters=1,
                                  desc=remote.url.split('/')[-1]) as t:
-            urlretrieve(
-                remote.url, filename=download_path, reporthook=t.update_to)
+            try:
+                download_large_file(remote.url, download_path, t.update_to)
+            except HTTPError:
+                error_msg = """
+                            mirdata failed to download the dataset!
+                            Please try again in a few minutes.
+                            If this error persists, please raise an issue at
+                            https://github.com/mir-dataset-loaders/mirdata,
+                            and tag it with "broken-link".
+                            """
+                raise HTTPError(error_msg)
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
@@ -300,5 +313,3 @@ def clobber_all(remote, dataset_path, data_home=None):
 
     if dataset_path:
         shutil.rmtree(dataset_path)
-
-

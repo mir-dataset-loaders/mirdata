@@ -164,7 +164,7 @@ def test_download_from_remote(httpserver, tmpdir):
 
 
 def test_download_from_remote_raises_IOError(httpserver, tmpdir):
-    httpserver.serve_content(open('tests/resources/remote.wav').read())
+    httpserver.serve_content('File not found!', 404)
 
     TEST_META = utils.RemoteFileMetadata(
         filename="remote.wav",
@@ -244,4 +244,3 @@ def test_clobber_all_nonempty_data_home(httpserver, tmpdir):
     utils.clobber_all(TEST_META, tmpdir_str, tmpdir_str)
     assert not os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert not os.path.exists(tmpdir_str)
-

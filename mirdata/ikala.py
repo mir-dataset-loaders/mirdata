@@ -9,13 +9,9 @@ from __future__ import print_function
 from collections import namedtuple
 
 import csv
+import os
 import librosa
 import numpy as np
-import os
-try:
-    from urllib.request import urlretrieve  # py3
-except ImportError:
-    from urllib import urlretrieve  # py2
 
 import mirdata.utils as utils
 
@@ -177,11 +173,10 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-
     id_map_path = utils.get_local_path(
         data_home, os.path.join(IKALA_DIR, "id_mapping.txt"))
     if not os.path.exists(id_map_path):
-        urlretrieve(ID_MAPPING_URL, filename=id_map_path)
+        utils.download_large_file(ID_MAPPING_URL, id_map_path)
 
     with open(id_map_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
