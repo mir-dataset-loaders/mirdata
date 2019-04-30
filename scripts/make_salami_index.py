@@ -47,7 +47,7 @@ def make_salami_index(data_path):
                 if os.path.exists(os.path.join(annotations_dir, track_id, 'parsed',
                                                'textfile{}_{}'.format(a, f))):
                     annot_checksum.append(md5(os.path.join(annotations_dir, track_id,
-                                                           'parsed', 'textfile'+a+'_'+f)))
+                                                           'parsed', 'textfile{}_{}'.format(a, f))))
                     annot_rels.append(os.path.join('Salami', 'salami-data-public-master',
                                                    'annotations', track_id, 'parsed',
                                                    'textfile{}_{}'.format(a, f)))
