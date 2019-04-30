@@ -1,9 +1,11 @@
 from __future__ import absolute_import
 
 import os
-
 import pytest
-
+try:
+    from mock import MagicMock  # py2
+except ImportError:
+    from unittest.mock import MagicMock  # py3
 from mirdata import salami, utils
 from tests.test_utils import (mock_validated, mock_download, mock_unzip,
                               mock_validator, mock_clobber_all)
@@ -119,10 +121,38 @@ def test_load_track_no_metadata():
         salami.load_track('10')
 
 
-def test_load_track_wrong_metadat():
+def test_load_track_wrong_metadata():
     with pytest.raises(EnvironmentError):
         salami.SALAMI_METADATA = {'data_home': 'test'}
         salami.load_track('10', 'wrong_data_home')
+
+
+def test_load_track_missing_metadata():
+    data_home = 'fake-data-home'
+    salami.SALAMI_METADATA = {'data_home': data_home}
+    salami.load_sections = MagicMock(return_value=['a', 'b', 'c', 'd'])
+
+    expected_track = salami.SalamiTrack(
+        '10',
+        'fake-data-home/Salami/audio/10.mp3',
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    )
+
+    actual_track = salami.load_track('10', data_home)
+    assert actual_track == expected_track
 
 
 def test_track_ids():

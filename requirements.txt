@@ -5,5 +5,6 @@ coveralls>=1.7.0
 requests>=2.21.0
 pytest>=4.4.0
 pytest-mock>=1.10.1
+mock>=2.0.0
 pytest-localserver>=0.5.0
 pytest-cov>=2.6.1
