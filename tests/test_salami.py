@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 import os
-import json
 
 import pytest
 
@@ -107,3 +106,24 @@ def test_validate_valid(dataset_path, mocker, mock_validator):
     missing_files, invalid_checksums = salami.validate(dataset_path)
     assert not (missing_files or invalid_checksums)
     mock_validator.assert_called_once()
+
+
+def test_load_track_invalid_track_id():
+    with pytest.raises(ValueError):
+        salami.load_track('a_fake_track')
+
+
+def test_load_track_no_metadata():
+    with pytest.raises(EnvironmentError):
+        salami.SALAMI_METADATA = None
+        salami.load_track('10')
+
+
+def test_load_track_wrong_metadat():
+    with pytest.raises(EnvironmentError):
+        salami.SALAMI_METADATA = {'data_home': 'test'}
+        salami.load_track('10', 'wrong_data_home')
+
+
+def test_track_ids():
+    assert salami.track_ids() == list(salami.SALAMI_INDEX.keys())
