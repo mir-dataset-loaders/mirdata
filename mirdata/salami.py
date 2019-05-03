@@ -81,7 +81,10 @@ def track_ids():
 
 
 def load(data_home=None):
-    validate(data_home)
+    save_path = utils.get_save_path(data_home)
+    dataset_path = os.path.join(save_path, SALAMI_DIR)
+
+    validate(dataset_path, data_home)
     salami_data = {}
     for key in track_ids():
         salami_data[key] = load_track(key, data_home=data_home)
