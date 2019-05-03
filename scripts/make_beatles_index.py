@@ -4,7 +4,7 @@ import json
 import os
 
 
-BEATLES_INDEX_PATH = '../mir_dataset_loaders/indexes/beatles_index.json'
+BEATLES_INDEX_PATH = "../mirdata/indexes/beatles_index.json"
 BEATLES_ANNOTATION_SCHEMA = ['beat', 'chordlab', 'keylab', 'seglab']
 
 

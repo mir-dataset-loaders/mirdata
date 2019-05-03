@@ -4,7 +4,7 @@ import json
 import os
 
 
-SALAMI_INDEX_PATH = '../mir_dataset_loaders/indexes/salami_index.json'
+SALAMI_INDEX_PATH = "../mirdata/indexes/salami_index.json"
 
 
 def md5(file_path):
