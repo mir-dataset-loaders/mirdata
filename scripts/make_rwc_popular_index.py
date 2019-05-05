@@ -48,7 +48,7 @@ def make_rwc_popular_index(data_path):
                                            'AIST.RWC-MDB-P-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))):
                 annot_checksum.append(md5(os.path.join(annotations_dir,
                                            'AIST.RWC-MDB-P-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))))
-                annot_rels.append(os.path.join(annotations_dir,
+                annot_rels.append(os.path.join('RWC-Popular', 'annotations',
                                            'AIST.RWC-MDB-P-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f)))
             else:
                 annot_checksum.append(None)

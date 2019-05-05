@@ -48,7 +48,7 @@ def make_rwc_genre_index(data_path):
                                            'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))):
                 annot_checksum.append(md5(os.path.join(annotations_dir,
                                            'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))))
-                annot_rels.append(os.path.join(annotations_dir,
+                annot_rels.append(os.path.join('RWC-Genre', 'annotations',
                                            'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f)))
             else:
                 annot_checksum.append(None)
