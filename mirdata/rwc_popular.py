@@ -95,7 +95,9 @@ def track_ids():
 
 
 def load(data_home=None):
-    validate(data_home)
+    save_path = utils.get_save_path(data_home)
+    dataset_path = os.path.join(save_path, RWC_POPULAR_DIR, 'annotations')
+    validate(dataset_path, data_home)
     rwc_popular_data = {}
     for key in track_ids():
         rwc_popular_data[key] = load_track(key, data_home=data_home)
@@ -165,11 +167,11 @@ def _load_sections(sections_path, track_id):
 
 
 def _load_beats(beats_path, track_id):
-    None
+    pass
 
 def _load_metadata(data_home):
 
-    None
+    pass
     # metadata_path = utils.get_local_path(
     #     data_home, os.path.join(
     #         RWC_POPULAR_DIR, 'rwc_popular-data-public-master', 'metadata', 'metadata.csv'
