@@ -172,7 +172,10 @@ def _load_beats(beats_path, track_id):
 def _load_metadata(data_home):
 
     pass
+<<<<<<< HEAD
 
+=======
+>>>>>>> properly use validate
     # metadata_path = utils.get_local_path(
     #     data_home, os.path.join(
     #         RWC_CLASSICAL_DIR, 'rwc_classical-data-public-master', 'metadata', 'metadata.csv'
