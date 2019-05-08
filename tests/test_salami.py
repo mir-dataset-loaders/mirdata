@@ -11,6 +11,10 @@ from tests.test_utils import (mock_validated, mock_download, mock_unzip,
 def mock_validate(mocker):
     return mocker.patch.object(salami, 'validate')
 
+@pytest.fixture
+def mock_load_sections(mocker):
+  return mocker.patch.object(salami, '_load_sections')
+
 
 @pytest.fixture
 def data_home(tmpdir):
@@ -123,18 +127,18 @@ def test_load_track_wrong_metadata():
         salami.load_track('10', 'wrong_data_home')
 
 
-def test_load_track_missing_metadata(mocker):
+def test_load_track_missing_metadata(mock_load_sections):
     data_home = 'fake-data-home'
     salami.SALAMI_METADATA = {'data_home': data_home}
-    salami.load_sections = mocker.MagicMock(return_value=['a', 'b', 'c', 'd'])
+    mock_load_sections.return_value = ['a', 'b', 'c', 'd']
 
     expected_track = salami.SalamiTrack(
         '10',
         'fake-data-home/Salami/audio/10.mp3',
-        None,
-        None,
-        None,
-        None,
+        'a',
+        'b',
+        'c',
+        'd',
         None,
         None,
         None,
@@ -151,7 +155,7 @@ def test_load_track_missing_metadata(mocker):
     assert actual_track == expected_track
 
 
-def test_load_track_with_metadata(mocker):
+def test_load_track_with_metadata(mock_load_sections):
     track_metadata = {
         'source': 'source', 'annotator_1_id': 'aid-1', 'annotator_2_id': 'aid-2',
         'duration_sec': 60, 'title': 'title', 'artist': 'artist',
@@ -160,15 +164,15 @@ def test_load_track_with_metadata(mocker):
     }
     data_home = 'fake-data-home'
     salami.SALAMI_METADATA = {'data_home': data_home, '10': track_metadata}
-    salami.load_sections = mocker.MagicMock(return_value=['a', 'b', 'c', 'd'])
+    mock_load_sections.return_value = ['a', 'b', 'c', 'd']
 
     expected_track = salami.SalamiTrack(
         '10',
         'fake-data-home/Salami/audio/10.mp3',
-        None,
-        None,
-        None,
-        None,
+        'a',
+        'b',
+        'c',
+        'd',
         'source',
         'aid-1',
         'aid-2',
