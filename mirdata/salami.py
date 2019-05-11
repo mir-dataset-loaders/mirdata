@@ -112,7 +112,7 @@ def load_track(track_id, data_home=None):
             'annotator_1_time': None, 'annotator_2_time': None, 'class': None,
             'genre': None
         }
-    salami_path = get_local_path(data_home, SALAMI_DIR)
+    salami_path = utils.get_local_path(data_home, SALAMI_DIR)
     annotations_dir = os.path.join(salami_path,
                                    'salami-data-public-master', 'annotations')
     annotators = [any(SALAMI_INDEX[track_id]['annotator_1_uppercase']),
