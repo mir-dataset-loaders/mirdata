@@ -1,8 +1,8 @@
 from __future__ import absolute_import
 
 import os
-import json
 
+import numpy as np
 import pytest
 
 from mirdata import beatles, utils
@@ -107,3 +107,32 @@ def test_validate_valid(dataset_path, mocker, mock_validator):
     missing_files, invalid_checksums = beatles.validate(dataset_path)
     assert not (missing_files or invalid_checksums)
     mock_validator.assert_called_once()
+
+
+def test_track_ids():
+    assert beatles.track_ids() == list(beatles.BEATLES_INDEX.keys())
+
+
+def test_load_track_invalid_track_id():
+    with pytest.raises(ValueError):
+        beatles.load_track('a-fake-track-id')
+
+
+def test_load_track_valid_track_id():
+    expected = beatles.BeatlesTrack(
+        '0401',
+        '/tmp/mir_datasets/Beatles/audio/04_-_Beatles_for_Sale/01_-_No_Reply.wav',
+        beats=None,
+        chords=None,
+        key=None,
+        sections=None,
+        title='01_-_No_Reply')
+    assert beatles.load_track('0401') == expected
+
+
+def test_fix_newpoint():
+    beat_positions = np.asarray(['1', '2', 'New Point', '4'])
+
+    actual = beatles._fix_newpoint(beat_positions)
+    expected = np.asarray(['1', '2', '3', '4'])
+    assert np.array_equal(actual, expected)
