@@ -7,7 +7,7 @@ import os
 
 import mirdata.utils as utils
 
-SALAMI_INDEX = utils.load_json_index("salami_index.json")
+SALAMI_INDEX = utils.load_json_index('salami_index.json')
 SALAMI_METADATA = None
 SALAMI_DIR = 'Salami'
 SALAMI_ANNOT_REMOTE = utils.RemoteFileMetadata(
@@ -105,13 +105,13 @@ def load(data_home=None):
 
 def load_track(track_id, data_home=None):
     if track_id not in SALAMI_INDEX.keys():
-        raise ValueError("{} is not a valid track ID in Salami".format(track_id))
+        raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
     track_data = SALAMI_INDEX[track_id]
 
     if SALAMI_METADATA is None or SALAMI_METADATA['data_home'] != data_home:
         _reload_metadata(data_home)
         if SALAMI_METADATA is None:
-            raise EnvironmentError("Could not find Salami metadata file")
+            raise EnvironmentError('Could not find Salami metadata file')
 
     if track_id in SALAMI_METADATA.keys():
         track_metadata = SALAMI_METADATA[track_id]

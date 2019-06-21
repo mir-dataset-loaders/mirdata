@@ -19,7 +19,7 @@ IKALA_TIME_STEP = 0.032  # seconds
 IKALA_INDEX = utils.load_json_index('ikala_index.json')
 IKALA_METADATA = None
 IKALA_DIR = 'iKala'
-ID_MAPPING_URL = "http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt"
+ID_MAPPING_URL = 'http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt'
 
 
 IKalaTrack = namedtuple(
@@ -84,7 +84,7 @@ def load(data_home=None):
 
 def load_track(track_id, data_home=None):
     if track_id not in IKALA_INDEX.keys():
-        raise ValueError("{} is not a valid track ID in IKala".format(track_id))
+        raise ValueError('{} is not a valid track ID in IKala'.format(track_id))
 
     if IKALA_METADATA is None or IKALA_METADATA['data_home'] != data_home:
         _reload_metadata(data_home)
@@ -172,7 +172,7 @@ def _reload_metadata(data_home):
 
 def _load_metadata(data_home):
     id_map_path = utils.get_local_path(
-        data_home, os.path.join(IKALA_DIR, "id_mapping.txt")
+        data_home, os.path.join(IKALA_DIR, 'id_mapping.txt')
     )
     if not os.path.exists(id_map_path):
         utils.download_large_file(ID_MAPPING_URL, id_map_path)

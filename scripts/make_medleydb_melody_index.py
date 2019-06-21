@@ -5,7 +5,7 @@ import os
 
 
 MEDLEYDB_MELODY_INDEX_PATH = \
-    "../mirdata/indexes/medleydb_melody_index.json"
+    '../mirdata/indexes/medleydb_melody_index.json'
 
 
 def md5(file_path):
@@ -22,15 +22,15 @@ def md5(file_path):
         md5 hash of data in file_path
     """
     hash_md5 = hashlib.md5()
-    with open(file_path, "rb") as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b""):
+    with open(file_path, 'rb') as fhandle:
+        for chunk in iter(lambda: fhandle.read(4096), b''):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
 
 def make_medleydb_melody_index(data_path):
     metadata_path = os.path.join(
-        data_path, "MedleyDB-Melody", "medleydb_melody_metadata.json")
+        data_path, 'MedleyDB-Melody', 'medleydb_melody_metadata.json')
     with open(metadata_path, 'r') as fhandle:
         metadata = json.load(fhandle)
 
@@ -78,11 +78,11 @@ def main(args):
     make_medleydb_melody_index(args.mdb_melody_data_path)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     PARSER = argparse.ArgumentParser(
-        description="Make MedleyDB-Melody index file.")
-    PARSER.add_argument("mdb_melody_data_path",
+        description='Make MedleyDB-Melody index file.')
+    PARSER.add_argument('mdb_melody_data_path',
                         type=str,
-                        help="Path to MedleyDB-Melody data folder.")
+                        help='Path to MedleyDB-Melody data folder.')
 
     main(PARSER.parse_args())

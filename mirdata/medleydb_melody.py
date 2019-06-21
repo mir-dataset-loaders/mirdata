@@ -15,7 +15,7 @@ import os
 import mirdata.utils as utils
 
 MEDLEYDB_MELODY_INDEX = utils.load_json_index('medleydb_melody_index.json')
-MEDLEYDB_MELODY_DIR = "MedleyDB-Melody"
+MEDLEYDB_MELODY_DIR = 'MedleyDB-Melody'
 MEDLEYDB_METADATA = None
 
 MedleydbMelodyTrack = namedtuple(
@@ -95,14 +95,14 @@ def load(data_home=None):
 def load_track(track_id, data_home=None):
     if track_id not in MEDLEYDB_MELODY_INDEX.keys():
         raise ValueError(
-            "{} is not a valid track ID in MedleyDB-Melody".format(track_id)
+            '{} is not a valid track ID in MedleyDB-Melody'.format(track_id)
         )
     track_data = MEDLEYDB_MELODY_INDEX[track_id]
 
     if MEDLEYDB_METADATA is None or MEDLEYDB_METADATA['data_home'] != data_home:
         _reload_metadata(data_home)
         if MEDLEYDB_METADATA is None:
-            raise EnvironmentError("Could not find MedleyDB-Melody metadata file")
+            raise EnvironmentError('Could not find MedleyDB-Melody metadata file')
 
     track_metadata = MEDLEYDB_METADATA[track_id]
 
@@ -172,7 +172,7 @@ def _reload_metadata(data_home):
 
 def _load_metadata(data_home):
     metadata_path = utils.get_local_path(
-        data_home, os.path.join(MEDLEYDB_MELODY_DIR, "medleydb_melody_metadata.json")
+        data_home, os.path.join(MEDLEYDB_MELODY_DIR, 'medleydb_melody_metadata.json')
     )
     if not os.path.exists(metadata_path):
         return None

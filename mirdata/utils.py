@@ -15,7 +15,7 @@ import requests
 from requests.exceptions import HTTPError
 from tqdm import tqdm
 
-MIR_DATASETS_DIR = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
+MIR_DATASETS_DIR = os.path.join(os.getenv('HOME', '/tmp'), 'mir_datasets')
 VALIDATED_FILE_NAME = '_VALIDATED'
 INVALID_FILE_NAME = '_INVALID.json'
 
@@ -34,8 +34,8 @@ def md5(file_path):
         md5 hash of data in file_path
     """
     hash_md5 = hashlib.md5()
-    with open(file_path, "rb") as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b""):
+    with open(file_path, 'rb') as fhandle:
+        for chunk in iter(lambda: fhandle.read(4096), b''):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
@@ -80,18 +80,18 @@ def validator(dataset_index, data_home, dataset_path, silence=False):
     # print path of any missing files
     for track_id in missing_files.keys():
         if len(missing_files[track_id]) > 0:
-            log_message("Files missing for {}:".format(track_id), silence)
+            log_message('Files missing for {}:'.format(track_id), silence)
             for fpath in missing_files[track_id]:
                 log_message(fpath, silence)
-            log_message("-" * 20, silence)
+            log_message('-' * 20, silence)
 
     # print path of any invalid checksums
     for track_id in invalid_checksums.keys():
         if len(invalid_checksums[track_id]) > 0:
-            log_message("Invalid checksums for {}:".format(track_id), silence)
+            log_message('Invalid checksums for {}:'.format(track_id), silence)
             for fpath in invalid_checksums[track_id]:
                 log_message(fpath, silence)
-            log_message("-" * 20, silence)
+            log_message('-' * 20, silence)
 
     if missing_files or invalid_checksums:
         create_invalid(dataset_path, missing_files, invalid_checksums)
@@ -213,16 +213,16 @@ def download_from_remote(remote, data_home=None, force_overwrite=False):
                             Please try again in a few minutes.
                             If this error persists, please raise an issue at
                             https://github.com/mir-dataset-loaders/mirdata,
-                            and tag it with "broken-link".
+                            and tag it with 'broken-link'.
                             """
                 raise HTTPError(error_msg)
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
         raise IOError(
-            "{} has an MD5 checksum ({}) "
-            "differing from expected ({}), "
-            "file may be corrupted.".format(download_path, checksum, remote.checksum)
+            '{} has an MD5 checksum ({}) '
+            'differing from expected ({}), '
+            'file may be corrupted.'.format(download_path, checksum, remote.checksum)
         )
     return download_path
 
@@ -258,8 +258,8 @@ def untar(tar_path, save_dir, cleanup=False):
     cleanup: bool, default=False
         If True, remove tarfile after untarring.
     """
-    if tar_path.endswith("tar.gz"):
-        tfile = tarfile.open(tar_path, "r:gz")
+    if tar_path.endswith('tar.gz'):
+        tfile = tarfile.open(tar_path, 'r:gz')
     else:
         tfile = tarfile.TarFile(tar_path, 'r')
     tfile.extractall(save_dir)

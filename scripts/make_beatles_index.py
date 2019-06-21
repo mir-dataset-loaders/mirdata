@@ -4,7 +4,7 @@ import json
 import os
 
 
-BEATLES_INDEX_PATH = "../mir_dataset_loaders/indexes/beatles_index.json"
+BEATLES_INDEX_PATH = '../mir_dataset_loaders/indexes/beatles_index.json'
 BEATLES_ANNOTATION_SCHEMA = ['beat', 'chordlab', 'keylab', 'seglab']
 
 
@@ -22,8 +22,8 @@ def md5(file_path):
         md5 hash of data in file_path
     """
     hash_md5 = hashlib.md5()
-    with open(file_path, "rb") as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b""):
+    with open(file_path, 'rb') as fhandle:
+        for chunk in iter(lambda: fhandle.read(4096), b''):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
@@ -50,8 +50,8 @@ def make_beatles_index(data_path):
                 track_ids.append(track_id)
 
                 # checksum
-                audio_checksum = md5(os.path.join(audio_dir, c, "{}.wav".format(t[:-4])))
-                audio_path = "{}/{}".format(os.path.join('Beatles', 'audio'), os.path.join(c, "{}.wav".format(t[:-4])))
+                audio_checksum = md5(os.path.join(audio_dir, c, '{}.wav'.format(t[:-4])))
+                audio_path = '{}/{}'.format(os.path.join('Beatles', 'audio'), os.path.join(c, '{}.wav'.format(t[:-4])))
 
                 annot_checksum, annot_rels = [], []
 
@@ -59,9 +59,9 @@ def make_beatles_index(data_path):
                     cds_dir = os.path.join(annotations_dir, annot_type, 'The Beatles')
                     annot_path = os.path.join(cds_dir, c)
                     if annot_type is 'beat':
-                        annot_file = "{}.txt".format(t[:-4])
+                        annot_file = '{}.txt'.format(t[:-4])
                     else:
-                        annot_file = "{}.lab".format(t[:-4])
+                        annot_file = '{}.lab'.format(t[:-4])
 
                     if os.path.exists(os.path.join(annot_path, annot_file)):
                         annot_checksum.append(md5(os.path.join(annot_path, annot_file)))
@@ -101,11 +101,11 @@ def main(args):
     make_beatles_index(args.beatles_data_path)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     PARSER = argparse.ArgumentParser(
-        description="Make Beatles index file.")
-    PARSER.add_argument("beatles_data_path",
+        description='Make Beatles index file.')
+    PARSER.add_argument('beatles_data_path',
                         type=str,
-                        help="Path to Beatles data folder.")
+                        help='Path to Beatles data folder.')
 
     main(PARSER.parse_args())
