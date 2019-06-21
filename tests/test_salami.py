@@ -3,17 +3,18 @@ from __future__ import absolute_import
 import os
 import pytest
 from mirdata import salami, utils
-from tests.test_utils import (mock_validated, mock_download, mock_unzip,
-                              mock_validator, mock_force_overwrite_all)
+from tests.test_utils import (mock_download, mock_unzip,
+                              mock_validator, mock_force_delete_all)
 
 
 @pytest.fixture
 def mock_validate(mocker):
     return mocker.patch.object(salami, 'validate')
 
+
 @pytest.fixture
 def mock_load_sections(mocker):
-  return mocker.patch.object(salami, '_load_sections')
+    return mocker.patch.object(salami, '_load_sections')
 
 
 @pytest.fixture
@@ -27,22 +28,27 @@ def save_path(data_home):
 
 
 @pytest.fixture
+def mock_salami_exists(mocker):
+    return mocker.patch.object(salami, 'exists')
+
+
+@pytest.fixture
 def dataset_path(save_path):
     return os.path.join(save_path, salami.SALAMI_DIR)
 
 
-def test_download_already_valid(data_home, mocker,
-                                mock_force_overwrite_all,
-                                mock_validated,
-                                mock_validator,
-                                mock_download,
-                                mock_unzip):
-    mock_validated.return_value = True
+def test_download_already_exists(data_home, mocker,
+                                 mock_force_delete_all,
+                                 mock_salami_exists,
+                                 mock_validator,
+                                 mock_download,
+                                 mock_unzip):
+    mock_salami_exists.return_value = True
 
     salami.download(data_home)
 
-    mock_force_overwrite_all.assert_not_called()
-    mock_validated.assert_called_once()
+    mock_force_delete_all.assert_not_called()
+    mock_salami_exists.assert_called_once()
     mock_download.assert_not_called()
     mock_unzip.assert_not_called()
     mock_validator.assert_not_called()
@@ -51,21 +57,21 @@ def test_download_already_valid(data_home, mocker,
 def test_download_clean(data_home,
                         dataset_path,
                         mocker,
-                        mock_force_overwrite_all,
-                        mock_validated,
+                        mock_force_delete_all,
+                        mock_salami_exists,
                         mock_download,
                         mock_unzip,
                         mock_validate):
 
-    mock_validated.return_value = False
+    mock_salami_exists.return_value = False
     mock_download.return_value = 'foobar'
     mock_unzip.return_value = ''
     mock_validate.return_value = (False, False)
 
     salami.download(data_home)
 
-    mock_force_overwrite_all.assert_not_called()
-    mock_validated.assert_called_once()
+    mock_force_delete_all.assert_not_called()
+    mock_salami_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_unzip.assert_called_once_with(mock_download.return_value, dataset_path, cleanup=True)
     mock_validate.assert_called_once_with(dataset_path, data_home)
@@ -74,21 +80,21 @@ def test_download_clean(data_home,
 def test_download_force_overwrite(data_home,
                           dataset_path,
                           mocker,
-                          mock_force_overwrite_all,
-                          mock_validated,
+                          mock_force_delete_all,
+                          mock_salami_exists,
                           mock_download,
                           mock_unzip,
                           mock_validate):
 
-    mock_validated.return_value = False
+    mock_salami_exists.return_value = False
     mock_download.return_value = 'foobar'
     mock_unzip.return_value = ''
     mock_validate.return_value = (False, False)
 
     salami.download(data_home, force_overwrite=True)
 
-    mock_force_overwrite_all.assert_called_once_with(salami.SALAMI_ANNOT_REMOTE, dataset_path, data_home)
-    mock_validated.assert_called_once()
+    mock_force_delete_all.assert_called_once_with(salami.SALAMI_ANNOT_REMOTE, dataset_path=None, data_home=data_home)
+    mock_salami_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_unzip.assert_called_once_with(mock_download.return_value, dataset_path, cleanup=True)
     mock_validate.assert_called_once_with(dataset_path, data_home)

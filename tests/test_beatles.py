@@ -7,7 +7,7 @@ import pytest
 
 from mirdata import beatles, utils
 from tests.test_utils import (mock_validated, mock_download, mock_untar,
-                              mock_validator, mock_force_overwrite_all)
+                              mock_validator, mock_force_delete_all)
 
 
 @pytest.fixture
@@ -30,18 +30,22 @@ def dataset_path(save_path):
     return os.path.join(save_path, beatles.BEATLES_DIR)
 
 
-def test_download_already_valid(data_home, mocker,
-                                mock_force_overwrite_all,
-                                mock_validated,
-                                mock_validator,
-                                mock_download,
-                                mock_untar):
-    mock_validated.return_value = True
+@pytest.fixture
+def mock_beatles_exists(mocker):
+    return mocker.patch.object(beatles, 'exists')
+
+
+def test_download_already_exists(data_home, mocker,
+                                 mock_force_delete_all,
+                                 mock_beatles_exists,
+                                 mock_validator,
+                                 mock_download,
+                                 mock_untar):
+    mock_beatles_exists.return_value = True
 
     beatles.download(data_home)
 
-    mock_force_overwrite_all.assert_not_called()
-    mock_validated.assert_called_once()
+    mock_force_delete_all.assert_not_called()
     mock_download.assert_not_called()
     mock_untar.assert_not_called()
     mock_validator.assert_not_called()
@@ -50,44 +54,44 @@ def test_download_already_valid(data_home, mocker,
 def test_download_clean(data_home,
                         dataset_path,
                         mocker,
-                        mock_force_overwrite_all,
-                        mock_validated,
+                        mock_force_delete_all,
+                        mock_beatles_exists,
                         mock_download,
                         mock_untar,
                         mock_validate):
 
-    mock_validated.return_value = False
+    mock_beatles_exists.return_value = False
     mock_download.return_value = 'foobar'
     mock_untar.return_value = ''
     mock_validate.return_value = (False, False)
 
     beatles.download(data_home)
 
-    mock_force_overwrite_all.assert_not_called()
-    mock_validated.assert_called_once()
+    mock_force_delete_all.assert_not_called()
+    mock_beatles_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_untar.assert_called_once_with(mock_download.return_value, dataset_path, cleanup=True)
     mock_validate.assert_called_once_with(dataset_path, data_home)
 
 
 def test_download_force_overwrite(data_home,
-                          dataset_path,
-                          mocker,
-                          mock_force_overwrite_all,
-                          mock_validated,
-                          mock_download,
-                          mock_untar,
-                          mock_validate):
+                                  dataset_path,
+                                  mocker,
+                                  mock_force_delete_all,
+                                  mock_beatles_exists,
+                                  mock_download,
+                                  mock_untar,
+                                  mock_validate):
 
-    mock_validated.return_value = False
+    mock_beatles_exists.return_value = False
     mock_download.return_value = 'foobar'
     mock_untar.return_value = ''
     mock_validate.return_value = (False, False)
 
     beatles.download(data_home, force_overwrite=True)
 
-    mock_force_overwrite_all.assert_called_once_with(beatles.BEATLES_ANNOT_REMOTE, dataset_path, data_home)
-    mock_validated.assert_called_once()
+    mock_force_delete_all.assert_called_once_with(beatles.BEATLES_ANNOT_REMOTE, dataset_path=None, data_home=data_home)
+    mock_beatles_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_untar.assert_called_once_with(mock_download.return_value, dataset_path, cleanup=True)
     mock_validate.assert_called_once_with(dataset_path, data_home)

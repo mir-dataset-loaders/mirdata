@@ -28,39 +28,23 @@ IKalaTrack = namedtuple(
 )
 
 
-def download(data_home=None, force_overwrite=False):
+def download(data_home=None):
     save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, IKALA_DIR)
 
-    if force_overwrite:
-        utils.force_overwrite_all(IKALA_METADATA, dataset_path, data_home)
-    if utils.check_validated(dataset_path):
-        print(
-            """
-                The {} dataset has already been validated.
-                If you feel this is a mistake please rerun and set force_overwrite to true.
-                """.format(
-                IKALA_DIR
-            )
+    print(
+        """
+        Unfortunately the iKala dataset is not available for download.
+        If you have the iKala dataset, place the contents into a folder called
+        {ikala_dir} with the following structure:
+            > {ikala_dir}/
+                > Lyrics/
+                > PitchLabel/
+                > Wavfile/
+        and copy the {ikala_dir} folder to {save_path}
+    """.format(
+            ikala_dir=IKALA_DIR, save_path=save_path
         )
-        return
-
-    missing_files, invalid_checksums = validate(dataset_path, data_home)
-    if missing_files or invalid_checksums:
-        print(
-            """
-            Unfortunately the iKala dataset is not available for download.
-            If you have the iKala dataset, place the contents into a folder called
-            iKala with the following structure:
-                > iKala/
-                    > Lyrics/
-                    > PitchLabel/
-                    > Wavfile/
-            and copy the iKala folder to {}
-        """.format(
-                save_path
-            )
-        )
+    )
 
 
 def validate(dataset_path, data_home=None):

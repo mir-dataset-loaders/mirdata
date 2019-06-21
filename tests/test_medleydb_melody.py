@@ -6,7 +6,7 @@ import json
 import pytest
 
 from mirdata import medleydb_melody, utils
-from tests.test_utils import mock_validated, mock_validator, mock_force_overwrite_all
+from tests.test_utils import mock_validated, mock_validator
 
 
 @pytest.fixture
@@ -27,55 +27,6 @@ def save_path(data_home):
 @pytest.fixture
 def dataset_path(save_path):
     return os.path.join(save_path, medleydb_melody.MEDLEYDB_MELODY_DIR)
-
-
-def test_download_already_valid(data_home, mocker,
-                                mock_force_overwrite_all,
-                                mock_validated,
-                                mock_validator):
-    mock_validated.return_value = True
-
-    medleydb_melody.download(data_home)
-
-    mock_force_overwrite_all.assert_not_called()
-    mock_validated.assert_called_once()
-    mock_validator.assert_not_called()
-
-
-def test_download_clean(data_home,
-                        save_path,
-                        dataset_path,
-                        mocker,
-                        mock_force_overwrite_all,
-                        mock_validated,
-                        mock_validate):
-
-    mock_validated.return_value = False
-    mock_validate.return_value = (False, False)
-
-    medleydb_melody.download(data_home)
-
-    mock_force_overwrite_all.assert_not_called()
-    mock_validated.assert_called_once()
-    mock_validate.assert_called_once_with(dataset_path, data_home)
-
-
-def test_download_force_overwrite(data_home,
-                          save_path,
-                          dataset_path,
-                          mocker,
-                          mock_force_overwrite_all,
-                          mock_validated,
-                          mock_validate):
-
-    mock_validated.return_value = False
-    mock_validate.return_value = (False, False)
-
-    medleydb_melody.download(data_home, force_overwrite=True)
-
-    mock_force_overwrite_all.assert_called_once_with(medleydb_melody.MEDLEYDB_METADATA, dataset_path, data_home)
-    mock_validated.assert_called_once()
-    mock_validate.assert_called_once_with(dataset_path, data_home)
 
 
 def test_validate_invalid(dataset_path, mocker, mock_validator):
