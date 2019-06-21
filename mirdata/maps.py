@@ -12,9 +12,9 @@ MAPS_META = RemoteFileMetadata(
 MAPS_DIR = "MAPS"
 
 
-def download(data_home=None, clobber=False):
+def download(data_home=None, force_overwrite=False):
     save_path = get_save_path(data_home)
-    download_path = download_from_remote(MAPS_META, clobber=clobber)
+    download_path = download_from_remote(MAPS_META, force_overwrite=force_overwrite)
     untar(download_path, save_path)
     validate()
 

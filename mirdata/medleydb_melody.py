@@ -34,18 +34,18 @@ MedleydbMelodyTrack = namedtuple(
 )
 
 
-def download(data_home=None, clobber=False):
+def download(data_home=None, force_overwrite=False):
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, MEDLEYDB_MELODY_DIR)
 
-    if clobber:
-        utils.clobber_all(MEDLEYDB_METADATA,
+    if force_overwrite:
+        utils.force_overwrite_all(MEDLEYDB_METADATA,
                           dataset_path,
                           data_home)
     if utils.check_validated(dataset_path):
         print("""
                 The {} dataset has already been validated.
-                If you feel this is a mistake please rerun and set clobber to true.
+                If you feel this is a mistake please rerun and set force_overwrite to true.
                 """.format(MEDLEYDB_MELODY_DIR))
         return
 
