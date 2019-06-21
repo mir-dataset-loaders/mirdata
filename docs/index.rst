@@ -1,10 +1,27 @@
-.. mirdata documentation master file, created by
-   sphinx-quickstart on Fri Jun 21 09:09:24 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 mirdata
 =======
+common loaders for mir datasets.
+
+`ismir 2019 paper <http://paper_url>`_ 
+
+Installation
+------------
+```
+pip install mirdata
+```
+
+API documentation
+-----------------
+
+.. toctree::
+   :maxdepth: 1
+
+.. automodule:: mirdata.utils
+.. automodule:: mirdata.ikala
+.. automodule:: mirdata.beatles
+
+
+
 
 .. toctree::
    :maxdepth: 2
