@@ -21,7 +21,7 @@ ORCHSET_META = utils.RemoteFileMetadata(
     checksum=('cf6fe52d64624f61ee116c752fb318ca'),
 )
 
-ORCHSET_DIR = "Orchset"
+ORCHSET_DIR = 'Orchset'
 ORCHSET_METADATA = None
 
 OrchsetTrack = namedtuple(
@@ -96,13 +96,13 @@ def load(data_home=None):
 
 def load_track(track_id, data_home=None):
     if track_id not in ORCHSET_INDEX.keys():
-        raise ValueError("{} is not a valid track ID in Orchset".format(track_id))
+        raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))
     track_data = ORCHSET_INDEX[track_id]
 
     if ORCHSET_METADATA is None or ORCHSET_METADATA['data_home'] != data_home:
         _reload_metadata(data_home)
         if ORCHSET_METADATA is None:
-            raise EnvironmentError("Could not find Orchset metadata file")
+            raise EnvironmentError('Could not find Orchset metadata file')
 
     melody_data = _load_melody(utils.get_local_path(data_home, track_data['melody'][0]))
 
@@ -149,7 +149,7 @@ def _load_metadata(data_home):
 
     predominant_inst_path = utils.get_local_path(
         data_home,
-        os.path.join(ORCHSET_DIR, "Orchset - Predominant Melodic Instruments.csv"),
+        os.path.join(ORCHSET_DIR, 'Orchset - Predominant Melodic Instruments.csv'),
     )
 
     if not os.path.exists(predominant_inst_path):

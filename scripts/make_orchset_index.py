@@ -4,7 +4,7 @@ import hashlib
 import json
 import os
 
-ORCHSET_INDEX_PATH = "../mirdata/indexes/orchset_index.json"
+ORCHSET_INDEX_PATH = '../mirdata/indexes/orchset_index.json'
 
 
 def md5(file_path):
@@ -21,8 +21,8 @@ def md5(file_path):
         md5 hash of data in file_path
     """
     hash_md5 = hashlib.md5()
-    with open(file_path, "rb") as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b""):
+    with open(file_path, 'rb') as fhandle:
+        for chunk in iter(lambda: fhandle.read(4096), b''):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
@@ -66,11 +66,11 @@ def main(args):
     make_orchset_index(args.orchset_data_path)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     PARSER = argparse.ArgumentParser(
-        description="Make Orchset index file.")
-    PARSER.add_argument("orchset_data_path",
+        description='Make Orchset index file.')
+    PARSER.add_argument('orchset_data_path',
                         type=str,
-                        help="Path to Orchset data folder.")
+                        help='Path to Orchset data folder.')
 
     main(PARSER.parse_args())

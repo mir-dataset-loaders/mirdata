@@ -57,8 +57,8 @@ def test_download_clean(data_home,
                         mock_validate):
 
     mock_validated.return_value = False
-    mock_download.return_value = "foobar"
-    mock_untar.return_value = ""
+    mock_download.return_value = 'foobar'
+    mock_untar.return_value = ''
     mock_validate.return_value = (False, False)
 
     beatles.download(data_home)
@@ -80,8 +80,8 @@ def test_download_force_overwrite(data_home,
                           mock_validate):
 
     mock_validated.return_value = False
-    mock_download.return_value = "foobar"
-    mock_untar.return_value = ""
+    mock_download.return_value = 'foobar'
+    mock_untar.return_value = ''
     mock_validate.return_value = (False, False)
 
     beatles.download(data_home, force_overwrite=True)
