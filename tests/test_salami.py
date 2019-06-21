@@ -4,7 +4,7 @@ import os
 import pytest
 from mirdata import salami, utils
 from tests.test_utils import (mock_validated, mock_download, mock_unzip,
-                              mock_validator, mock_clobber_all)
+                              mock_validator, mock_force_overwrite_all)
 
 
 @pytest.fixture
@@ -32,7 +32,7 @@ def dataset_path(save_path):
 
 
 def test_download_already_valid(data_home, mocker,
-                                mock_clobber_all,
+                                mock_force_overwrite_all,
                                 mock_validated,
                                 mock_validator,
                                 mock_download,
@@ -41,7 +41,7 @@ def test_download_already_valid(data_home, mocker,
 
     salami.download(data_home)
 
-    mock_clobber_all.assert_not_called()
+    mock_force_overwrite_all.assert_not_called()
     mock_validated.assert_called_once()
     mock_download.assert_not_called()
     mock_unzip.assert_not_called()
@@ -51,7 +51,7 @@ def test_download_already_valid(data_home, mocker,
 def test_download_clean(data_home,
                         dataset_path,
                         mocker,
-                        mock_clobber_all,
+                        mock_force_overwrite_all,
                         mock_validated,
                         mock_download,
                         mock_unzip,
@@ -64,17 +64,17 @@ def test_download_clean(data_home,
 
     salami.download(data_home)
 
-    mock_clobber_all.assert_not_called()
+    mock_force_overwrite_all.assert_not_called()
     mock_validated.assert_called_once()
     mock_download.assert_called_once()
     mock_unzip.assert_called_once_with(mock_download.return_value, dataset_path, cleanup=True)
     mock_validate.assert_called_once_with(dataset_path, data_home)
 
 
-def test_download_clobber(data_home,
+def test_download_force_overwrite(data_home,
                           dataset_path,
                           mocker,
-                          mock_clobber_all,
+                          mock_force_overwrite_all,
                           mock_validated,
                           mock_download,
                           mock_unzip,
@@ -85,9 +85,9 @@ def test_download_clobber(data_home,
     mock_unzip.return_value = ""
     mock_validate.return_value = (False, False)
 
-    salami.download(data_home, clobber=True)
+    salami.download(data_home, force_overwrite=True)
 
-    mock_clobber_all.assert_called_once_with(salami.SALAMI_ANNOT_REMOTE, dataset_path, data_home)
+    mock_force_overwrite_all.assert_called_once_with(salami.SALAMI_ANNOT_REMOTE, dataset_path, data_home)
     mock_validated.assert_called_once()
     mock_download.assert_called_once()
     mock_unzip.assert_called_once_with(mock_download.return_value, dataset_path, cleanup=True)

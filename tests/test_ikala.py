@@ -6,7 +6,7 @@ import json
 import pytest
 
 from mirdata import ikala, utils
-from tests.test_utils import mock_validated, mock_validator, mock_clobber_all
+from tests.test_utils import mock_validated, mock_validator, mock_force_overwrite_all
 
 
 @pytest.fixture
@@ -30,14 +30,14 @@ def dataset_path(save_path):
 
 
 def test_download_already_valid(data_home, mocker,
-                                mock_clobber_all,
+                                mock_force_overwrite_all,
                                 mock_validated,
                                 mock_validator):
     mock_validated.return_value = True
 
     ikala.download(data_home)
 
-    mock_clobber_all.assert_not_called()
+    mock_force_overwrite_all.assert_not_called()
     mock_validated.assert_called_once()
     mock_validator.assert_not_called()
 
@@ -46,7 +46,7 @@ def test_download_clean(data_home,
                         save_path,
                         dataset_path,
                         mocker,
-                        mock_clobber_all,
+                        mock_force_overwrite_all,
                         mock_validated,
                         mock_validate):
 
@@ -55,25 +55,25 @@ def test_download_clean(data_home,
 
     ikala.download(data_home)
 
-    mock_clobber_all.assert_not_called()
+    mock_force_overwrite_all.assert_not_called()
     mock_validated.assert_called_once()
     mock_validate.assert_called_once_with(dataset_path, data_home)
 
 
-def test_download_clobber(data_home,
+def test_download_force_overwrite(data_home,
                           save_path,
                           dataset_path,
                           mocker,
-                          mock_clobber_all,
+                          mock_force_overwrite_all,
                           mock_validated,
                           mock_validate):
 
     mock_validated.return_value = False
     mock_validate.return_value = (False, False)
 
-    ikala.download(data_home, clobber=True)
+    ikala.download(data_home, force_overwrite=True)
 
-    mock_clobber_all.assert_called_once_with(ikala.IKALA_METADATA, dataset_path, data_home)
+    mock_force_overwrite_all.assert_called_once_with(ikala.IKALA_METADATA, dataset_path, data_home)
     mock_validated.assert_called_once()
     mock_validate.assert_called_once_with(dataset_path, data_home)
 

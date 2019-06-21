@@ -36,12 +36,12 @@ SalamiTrack = namedtuple(
 )
 
 
-def download(data_home=None, clobber=False):
+def download(data_home=None, force_overwrite=False):
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, SALAMI_DIR)
 
-    if clobber:
-        utils.clobber_all(SALAMI_ANNOT_REMOTE,
+    if force_overwrite:
+        utils.force_overwrite_all(SALAMI_ANNOT_REMOTE,
                           dataset_path,
                           data_home)
 
@@ -49,12 +49,12 @@ def download(data_home=None, clobber=False):
         print("""
                 The {} dataset has already been downloaded and validated.
                 Skipping download of dataset. If you feel this is a mistake please
-                rerun and set clobber to true
+                rerun and set force_overwrite to true
                 """.format(SALAMI_DIR))
         return
 
     download_path = utils.download_from_remote(
-        SALAMI_ANNOT_REMOTE, data_home=data_home, clobber=clobber)
+        SALAMI_ANNOT_REMOTE, data_home=data_home, force_overwrite=force_overwrite)
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path)
     utils.unzip(download_path, dataset_path, cleanup=True)

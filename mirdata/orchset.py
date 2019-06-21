@@ -44,12 +44,12 @@ OrchsetTrack = namedtuple(
 )
 
 
-def download(data_home=None, clobber=False):
+def download(data_home=None, force_overwrite=False):
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, ORCHSET_DIR)
 
-    if clobber:
-        utils.clobber_all(ORCHSET_META,
+    if force_overwrite:
+        utils.force_overwrite_all(ORCHSET_META,
                           dataset_path,
                           data_home)
 
@@ -57,11 +57,11 @@ def download(data_home=None, clobber=False):
         print("""
                 The {} dataset has already been downloaded and validated.
                 Skipping download of dataset. If you feel this is a mistake please
-                rerun and set clobber to true
+                rerun and set force_overwrite to true
                 """.format(ORCHSET_DIR))
         return
 
-    download_path = utils.download_from_remote(ORCHSET_META, clobber=clobber)
+    download_path = utils.download_from_remote(ORCHSET_META, force_overwrite=force_overwrite)
     utils.unzip(download_path, save_path, dataset_path)
     validate(dataset_path, data_home)
 

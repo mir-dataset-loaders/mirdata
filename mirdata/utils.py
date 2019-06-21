@@ -188,7 +188,7 @@ def download_large_file(url, download_path, callback=lambda: None):
     return download_path
 
 
-def download_from_remote(remote, data_home=None, clobber=False):
+def download_from_remote(remote, data_home=None, force_overwrite=False):
     """Download a remote dataset into path
     Fetch a dataset pointed by remote's url, save into path using remote's
     filename and ensure its integrity based on the MD5 Checksum of the
@@ -203,7 +203,7 @@ def download_from_remote(remote, data_home=None, clobber=False):
         and checksum
     data_home: string
         Directory to save the file to.
-    clobber: bool
+    force_overwrite: bool
         If True, overwrite existing file with the downloaded file.
         If False, does not overwrite, but checks that checksum is consistent.
 
@@ -216,7 +216,7 @@ def download_from_remote(remote, data_home=None, clobber=False):
         os.path.join(MIR_DATASETS_DIR, remote.filename) if data_home is None
         else os.path.join(data_home, remote.filename)
     )
-    if not os.path.exists(download_path) or clobber:
+    if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(unit='B', unit_scale=True,
                                  miniters=1,
@@ -303,7 +303,7 @@ def create_invalid(dataset_path, missing_files, invalid_checksums):
                    'invalid_checksums': invalid_checksums}, f, indent=2)
 
 
-def clobber_all(remote, dataset_path, data_home=None):
+def force_overwrite_all(remote, dataset_path, data_home=None):
     if remote:
         download_path = (
             os.path.join(MIR_DATASETS_DIR, remote.filename) if data_home is None
