@@ -11,7 +11,7 @@ if sys.version_info[0] >= 3:
 
     @pytest.fixture
     def file_server():
-        container = DockerContainer("test-container:latest")
+        container = DockerContainer('test-container:latest')
         container.with_bind_ports(8000, 8000)
         container.start()
 
@@ -26,9 +26,9 @@ if sys.version_info[0] >= 3:
         sleep(3)
 
         # This is the container we are running locally hence local IP
-        url = "http://127.0.0.1:%s" % exposed_port
+        url = 'http://127.0.0.1:%s' % exposed_port
 
-        file_path = os.path.join(tmpdir, "song1.mp3")
+        file_path = os.path.join(tmpdir, 'song1.mp3')
 
         urllib.request.urlretrieve(url, filename=file_path)
 """

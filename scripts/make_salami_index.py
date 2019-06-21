@@ -4,7 +4,7 @@ import json
 import os
 
 
-SALAMI_INDEX_PATH = "../mir_dataset_loaders/indexes/salami_index.json"
+SALAMI_INDEX_PATH = '../mir_dataset_loaders/indexes/salami_index.json'
 
 
 def md5(file_path):
@@ -21,8 +21,8 @@ def md5(file_path):
         md5 hash of data in file_path
     """
     hash_md5 = hashlib.md5()
-    with open(file_path, "rb") as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b""):
+    with open(file_path, 'rb') as fhandle:
+        for chunk in iter(lambda: fhandle.read(4096), b''):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
@@ -38,7 +38,7 @@ def make_salami_index(data_path):
     salami_index = {}
     for track_id in track_ids:
         # audio
-        audio_checksum = md5(os.path.join(audio_dir, "{}.mp3".format(track_id)))
+        audio_checksum = md5(os.path.join(audio_dir, '{}.mp3'.format(track_id)))
         annot_checksum, annot_rels = [], []
 
         # using existing annotations (version 2.0)
@@ -57,7 +57,7 @@ def make_salami_index(data_path):
 
         salami_index[track_id] = {
             'audio': (
-                os.path.join('Salami', 'audio', "{}.mp3".format(track_id)),
+                os.path.join('Salami', 'audio', '{}.mp3'.format(track_id)),
                 audio_checksum
             ),
             'annotator_1_uppercase': (
@@ -86,11 +86,11 @@ def main(args):
     make_salami_index(args.salami_data_path)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     PARSER = argparse.ArgumentParser(
-        description="Make Salami index file.")
-    PARSER.add_argument("salami_data_path",
+        description='Make Salami index file.')
+    PARSER.add_argument('salami_data_path',
                         type=str,
-                        help="Path to Salami data folder.")
+                        help='Path to Salami data folder.')
 
     main(PARSER.parse_args())

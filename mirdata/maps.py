@@ -7,7 +7,7 @@ MAPS_META = RemoteFileMetadata(
     checksum=('9a8b89a7897b0ad95a505b4daa788302'),
 )
 
-MAPS_DIR = "MAPS"
+MAPS_DIR = 'MAPS'
 
 
 def download(data_home=None, force_overwrite=False):

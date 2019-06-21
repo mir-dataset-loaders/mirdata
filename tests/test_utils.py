@@ -60,35 +60,35 @@ def mock_create_validated(mocker):
 
 
 def test_md5(mocker):
-    audio_file = b"audio1234"
+    audio_file = b'audio1234'
 
-    expected_checksum = "6dc00d1bac757abe4ea83308dde68aab"
+    expected_checksum = '6dc00d1bac757abe4ea83308dde68aab'
 
-    mocker.patch("%s.open" % builtin_module_name, new=mocker.mock_open(read_data=audio_file))
+    mocker.patch('%s.open' % builtin_module_name, new=mocker.mock_open(read_data=audio_file))
 
-    md5_checksum = utils.md5("test_file_path")
+    md5_checksum = utils.md5('test_file_path')
     assert expected_checksum == md5_checksum
 
 
-@pytest.mark.parametrize("test_index,expected_missing,expected_inv_checksum", [
-    ("test_index_valid.json", {}, {}),
-    ("test_index_missing_file.json", {'10161_chorus': ['tests/resources/10162_chorus.wav']}, {}),
-    ("test_index_invalid_checksum.json", {}, {'10161_chorus': ['tests/resources/10161_chorus.wav']}),
+@pytest.mark.parametrize('test_index,expected_missing,expected_inv_checksum', [
+    ('test_index_valid.json', {}, {}),
+    ('test_index_missing_file.json', {'10161_chorus': ['tests/resources/10162_chorus.wav']}, {}),
+    ('test_index_invalid_checksum.json', {}, {'10161_chorus': ['tests/resources/10161_chorus.wav']}),
 ])
 def test_check_index(test_index,
                      expected_missing,
                      expected_inv_checksum):
-    index_path = os.path.join("tests/indexes", test_index)
+    index_path = os.path.join('tests/indexes', test_index)
     with open(index_path) as index_file:
         test_index = json.load(index_file)
 
-    missing_files, invalid_checksums = utils.check_index(test_index, "tests/resources/", True)
+    missing_files, invalid_checksums = utils.check_index(test_index, 'tests/resources/', True)
 
     assert expected_missing == missing_files
     assert expected_inv_checksum == invalid_checksums
 
 
-@pytest.mark.parametrize("missing_files,invalid_checksums", [
+@pytest.mark.parametrize('missing_files,invalid_checksums', [
     ({}, {}),
     ({'10161_chorus': ['tests/resources/10162_chorus.wav']}, {}),
     ({}, {'10161_chorus': ['tests/resources/10161_chorus.wav']}),
@@ -103,16 +103,16 @@ def test_validator(mocker,
     mock_validated.return_value = False
     mock_check_index.return_value = missing_files, invalid_checksums
 
-    m, c = utils.validator("foo", "bar", "baz", True)
+    m, c = utils.validator('foo', 'bar', 'baz', True)
     assert m == missing_files
     assert c == invalid_checksums
-    mock_validated.assert_called_once_with("baz")
-    mock_check_index.assert_called_once_with("foo", "bar", True)
+    mock_validated.assert_called_once_with('baz')
+    mock_check_index.assert_called_once_with('foo', 'bar', True)
 
     if missing_files or invalid_checksums:
-        mock_create_invalid.assert_called_once_with("baz", missing_files, invalid_checksums)
+        mock_create_invalid.assert_called_once_with('baz', missing_files, invalid_checksums)
     else:
-        mock_create_validated.assert_called_once_with("baz")
+        mock_create_validated.assert_called_once_with('baz')
 
 
 def test_validator_already_validated(mocker,
@@ -122,44 +122,44 @@ def test_validator_already_validated(mocker,
                                      mock_create_validated):
     mock_validated.return_value = True
 
-    m, c = utils.validator("foo", "bar", "baz", True)
+    m, c = utils.validator('foo', 'bar', 'baz', True)
     assert m == {}
     assert c == {}
-    mock_validated.assert_called_once_with("baz")
+    mock_validated.assert_called_once_with('baz')
     mock_check_index.assert_not_called()
     mock_create_invalid.assert_not_called()
     mock_create_validated.assert_not_called()
 
 
-@pytest.mark.parametrize("data_home,rel_path,expected_path", [
-    ("tests/", None, None),
-    (None, "tests/", os.path.join(utils.MIR_DATASETS_DIR, "tests/")),
-    ("tests/", "shoop", "tests/shoop")
+@pytest.mark.parametrize('data_home,rel_path,expected_path', [
+    ('tests/', None, None),
+    (None, 'tests/', os.path.join(utils.MIR_DATASETS_DIR, 'tests/')),
+    ('tests/', 'shoop', 'tests/shoop')
 ])
 def test_get_local_path(data_home, rel_path, expected_path):
     assert expected_path == utils.get_local_path(data_home, rel_path)
 
 
 def test_get_save_path(mocker, tmpdir):
-    mocker.patch("mirdata.utils.MIR_DATASETS_DIR", str(tmpdir))
+    mocker.patch('mirdata.utils.MIR_DATASETS_DIR', str(tmpdir))
     assert tmpdir == utils.get_save_path(None)
 
 
 def test_get_save_path_with_data_home():
-    assert "data_home" == utils.get_save_path("data_home")
+    assert 'data_home' == utils.get_save_path('data_home')
 
 
 def test_download_from_remote(httpserver, tmpdir):
     httpserver.serve_content(open('tests/resources/remote.wav').read())
 
     TEST_META = utils.RemoteFileMetadata(
-        filename="remote.wav",
+        filename='remote.wav',
         url=httpserver.url,
-        checksum=("3f77d0d69dc41b3696f074ad6bf2852f")
+        checksum=('3f77d0d69dc41b3696f074ad6bf2852f')
     )
 
     download_path = utils.download_from_remote(TEST_META, str(tmpdir))
-    expected_download_path = os.path.join(str(tmpdir), "remote.wav")
+    expected_download_path = os.path.join(str(tmpdir), 'remote.wav')
     assert expected_download_path == download_path
 
 
@@ -167,9 +167,9 @@ def test_download_from_remote_raises_IOError(httpserver, tmpdir):
     httpserver.serve_content('File not found!', 404)
 
     TEST_META = utils.RemoteFileMetadata(
-        filename="remote.wav",
+        filename='remote.wav',
         url=httpserver.url,
-        checksum=("1234")
+        checksum=('1234')
     )
 
     with pytest.raises(IOError):
@@ -177,16 +177,16 @@ def test_download_from_remote_raises_IOError(httpserver, tmpdir):
 
 
 def test_unzip(tmpdir):
-    utils.unzip("tests/resources/remote.zip", str(tmpdir))
+    utils.unzip('tests/resources/remote.zip', str(tmpdir))
 
-    expected_file_location = os.path.join(str(tmpdir), "remote.wav")
+    expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
     assert os.path.exists(expected_file_location)
 
 
 def test_untar(tmpdir):
-    utils.untar("tests/resources/remote.tar.gz", str(tmpdir))
+    utils.untar('tests/resources/remote.tar.gz', str(tmpdir))
 
-    expected_file_location = os.path.join(str(tmpdir), "remote.wav")
+    expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
     assert os.path.exists(expected_file_location)
 
 
@@ -207,10 +207,10 @@ def test_create_validated(tmpdir):
     assert os.path.exists(expected_validated_path)
     with open(expected_validated_path, 'r') as f:
         # Yes we could do not f.read(), but the intentions here are clearer
-        assert f.read() == ""
+        assert f.read() == ''
 
 
-@pytest.mark.parametrize("missing_files,invalid_checksums", [
+@pytest.mark.parametrize('missing_files,invalid_checksums', [
     ({'10161_chorus': ['tests/resources/10162_chorus.wav']}, {}),
     ({}, {'10161_chorus': ['tests/resources/10161_chorus.wav']}),
 ])
@@ -228,17 +228,17 @@ def test_create_invalid(tmpdir,
 
 def test_force_overwrite_all_nonempty_data_home(httpserver, tmpdir):
     tmpdir_str = str(tmpdir)
-    remote_filename = "remote.wav"
+    remote_filename = 'remote.wav'
     TEST_META = utils.RemoteFileMetadata(
         filename=remote_filename,
         url=httpserver.url,
-        checksum=("1234")
+        checksum=('1234')
     )
 
     with pytest.raises(IOError):
         utils.download_from_remote(TEST_META, tmpdir_str)
 
-    utils.untar("tests/resources/remote.tar.gz", tmpdir_str)
+    utils.untar('tests/resources/remote.tar.gz', tmpdir_str)
     assert os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert os.path.exists(tmpdir_str)
     utils.force_overwrite_all(TEST_META, tmpdir_str, tmpdir_str)

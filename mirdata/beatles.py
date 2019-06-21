@@ -9,7 +9,7 @@ import json
 import mirdata.utils as utils
 
 BEATLES_DIR = 'Beatles'
-BEATLES_INDEX = utils.load_json_index("beatles_index.json")
+BEATLES_INDEX = utils.load_json_index('beatles_index.json')
 BEATLES_ANNOT_REMOTE = utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/' 'The%20Beatles%20Annotations.tar.gz',
@@ -88,7 +88,7 @@ def load(data_home=None):
 
 def load_track(track_id, data_home=None):
     if track_id not in BEATLES_INDEX.keys():
-        raise ValueError("{} is not a valid track ID in Beatles".format(track_id))
+        raise ValueError('{} is not a valid track ID in Beatles'.format(track_id))
 
     track_data = BEATLES_INDEX[track_id]
 
