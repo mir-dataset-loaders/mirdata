@@ -291,7 +291,7 @@ def create_invalid(dataset_path, missing_files, invalid_checksums):
         )
 
 
-def force_overwrite_all(remote, dataset_path, data_home=None):
+def force_delete_all(remote, dataset_path, data_home=None):
     if remote:
         download_path = (
             os.path.join(MIR_DATASETS_DIR, remote.filename)
