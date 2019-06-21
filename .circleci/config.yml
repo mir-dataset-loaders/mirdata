@@ -2,43 +2,75 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.4
 jobs:
-  buildpy2:
+  buildpy27:
     docker:
       - image: python:2.7
     steps:
       - checkout
-      - run: 
+      - run:
           name: Install wget
           command: apt-get update && apt-get install -y wget
-      - run: 
-          name: Install tox 
+      - run:
+          name: Install tox
           command: pip install tox
       - run:
           name: Run tests
           command: tox -e py27
       - codecov/upload:
           file: coverage.xml
-  buildpy3:
+  buildpy36:
     docker:
-      - image: python:3
+      - image: python:3.6
     steps:
       - checkout
-      - run: 
+      - run:
           name: Install wget
           command: apt-get update && apt-get install -y wget
-      - run: 
-          name: Install tox 
+      - run:
+          name: Install tox
           command: pip install tox
       - run:
           name: Run tests
-          command: tox -e py3
+          command: tox -e py36
+      - codecov/upload:
+          file: coverage.xml
+  buildpy37:
+    docker:
+      - image: python:3.7
+    steps:
+      - checkout
+      - run:
+          name: Install wget
+          command: apt-get update && apt-get install -y wget
+      - run:
+          name: Install tox
+          command: pip install tox
+      - run:
+          name: Run tests
+          command: tox -e py37
+      - codecov/upload:
+          file: coverage.xml
+  black:
+    docker:
+      - image: python:3.7
+    steps:
+      - checkout
+      - run:
+          name: Install wget
+          command: apt-get update && apt-get install -y wget
+      - run:
+          name: Install tox
+          command: pip install tox
+      - run:
+          name: Run black check
+          command: tox -e black
       - codecov/upload:
           file: coverage.xml
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - buildpy2
-      - buildpy3
-
-
+      - buildpy27
+      - buildpy36
+      - buildpy37
+      - black

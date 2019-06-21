@@ -40,8 +40,8 @@ def mock_validator(mocker):
 
 
 @pytest.fixture
-def mock_clobber_all(mocker):
-    return mocker.patch.object(utils, 'clobber_all')
+def mock_force_overwrite_all(mocker):
+    return mocker.patch.object(utils, 'force_overwrite_all')
 
 
 @pytest.fixture
@@ -226,7 +226,7 @@ def test_create_invalid(tmpdir,
                                    'invalid_checksums': invalid_checksums}
 
 
-def test_clobber_all_nonempty_data_home(httpserver, tmpdir):
+def test_force_overwrite_all_nonempty_data_home(httpserver, tmpdir):
     tmpdir_str = str(tmpdir)
     remote_filename = "remote.wav"
     TEST_META = utils.RemoteFileMetadata(
@@ -241,6 +241,6 @@ def test_clobber_all_nonempty_data_home(httpserver, tmpdir):
     utils.untar("tests/resources/remote.tar.gz", tmpdir_str)
     assert os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert os.path.exists(tmpdir_str)
-    utils.clobber_all(TEST_META, tmpdir_str, tmpdir_str)
+    utils.force_overwrite_all(TEST_META, tmpdir_str, tmpdir_str)
     assert not os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert not os.path.exists(tmpdir_str)
