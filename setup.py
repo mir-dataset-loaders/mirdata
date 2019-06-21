@@ -22,13 +22,18 @@ if __name__ == '__main__':
             'tqdm',
             'librosa',
             'numpy',
+            'six',
         ],
         extras_require={
             'tests': [
-                'pytest',
-                'pytest-cov',
-                'pytest-pep8',
-                'testcontainers'
+                'pytest>=4.4.0',
+                'pytest-cov>=2.6.1',
+                'pytest-pep8>=1.0.0',
+                'pytest-mock>=1.10.1',
+                'pytest-localserver>=0.5.0',
+                'testcontainers>=2.3',
+                'future==0.17.1',
+                'coveralls>=1.7.0',
             ],
             'docs': [
                 'sphinx',

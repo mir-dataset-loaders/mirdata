@@ -12,19 +12,13 @@ BEATLES_DIR = 'Beatles'
 BEATLES_INDEX = utils.load_json_index("beatles_index.json")
 BEATLES_ANNOT_REMOTE = utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
-    url='http://isophonics.net/files/annotations/'
-        'The%20Beatles%20Annotations.tar.gz',
-    checksum='62425c552d37c6bb655a78e4603828cc')
+    url='http://isophonics.net/files/annotations/' 'The%20Beatles%20Annotations.tar.gz',
+    checksum='62425c552d37c6bb655a78e4603828cc',
+)
 
 BeatlesTrack = namedtuple(
     'BeatlesTrack',
-    ['track_id',
-     'audio_path',
-     'beats',
-     'chords',
-     'key',
-     'sections',
-     'title']
+    ['track_id', 'audio_path', 'beats', 'chords', 'key', 'sections', 'title'],
 )
 
 
@@ -33,26 +27,30 @@ def download(data_home=None, force_overwrite=False):
     dataset_path = os.path.join(save_path, BEATLES_DIR)
 
     if force_overwrite:
-        utils.force_overwrite_all(BEATLES_ANNOT_REMOTE,
-                          dataset_path,
-                          data_home)
+        utils.force_overwrite_all(BEATLES_ANNOT_REMOTE, dataset_path, data_home)
 
     if utils.check_validated(dataset_path):
-        print("""
+        print(
+            """
                 The {} dataset has already been downloaded and validated.
                 Skipping download of dataset. If you feel this is a mistake please
                 rerun and set force_overwrite to true
-                """.format(BEATLES_DIR))
+                """.format(
+                BEATLES_DIR
+            )
+        )
         return
 
     download_path = utils.download_from_remote(
-        BEATLES_ANNOT_REMOTE, data_home=data_home, force_overwrite=force_overwrite)
+        BEATLES_ANNOT_REMOTE, data_home=data_home, force_overwrite=force_overwrite
+    )
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path)
     utils.untar(download_path, dataset_path, cleanup=True)
     missing_files, invalid_checksums = validate(dataset_path, data_home)
     if missing_files or invalid_checksums:
-        print("""
+        print(
+            """
             Unfortunately the audio files of the Beatles dataset are not available
             for download. If you have the Beatles dataset, place the contents into
             a folder called Beatles with the following structure:
@@ -60,11 +58,16 @@ def download(data_home=None, force_overwrite=False):
                     > annotations/
                     > audio/
             and copy the Beatles folder to {}
-        """.format(save_path))
+        """.format(
+                save_path
+            )
+        )
 
 
 def validate(dataset_path, data_home=None):
-    missing_files, invalid_checksums = utils.validator(BEATLES_INDEX, data_home, dataset_path)
+    missing_files, invalid_checksums = utils.validator(
+        BEATLES_INDEX, data_home, dataset_path
+    )
     return missing_files, invalid_checksums
 
 
@@ -85,17 +88,16 @@ def load(data_home=None):
 
 def load_track(track_id, data_home=None):
     if track_id not in BEATLES_INDEX.keys():
-        raise ValueError(
-            "{} is not a valid track ID in Beatles".format(track_id))
+        raise ValueError("{} is not a valid track ID in Beatles".format(track_id))
 
     track_data = BEATLES_INDEX[track_id]
 
     beat_data = _load_beats(utils.get_local_path(data_home, track_data['beat'][0]))
-    chord_data = _load_chords(
-        utils.get_local_path(data_home, track_data['chords'][0]))
+    chord_data = _load_chords(utils.get_local_path(data_home, track_data['chords'][0]))
     key_data = _load_key(utils.get_local_path(data_home, track_data['keys'][0]))
     section_data = _load_sections(
-        utils.get_local_path(data_home, track_data['sections'][0]))
+        utils.get_local_path(data_home, track_data['sections'][0])
+    )
 
     return BeatlesTrack(
         track_id,
@@ -104,7 +106,7 @@ def load_track(track_id, data_home=None):
         chord_data,
         key_data,
         section_data,
-        os.path.basename(track_data['sections'][0]).split('.')[0]
+        os.path.basename(track_data['sections'][0]).split('.')[0],
     )
 
 
@@ -143,7 +145,8 @@ def _load_chords(chords_path):
             chords.append(line[2])
 
     chord_data = utils.ChordData(
-        np.array(start_times), np.array(end_times), np.array(chords))
+        np.array(start_times), np.array(end_times), np.array(chords)
+    )
 
     return chord_data
 
@@ -161,8 +164,7 @@ def _load_key(key_path):
                 end_times.append(line[1])
                 keys.append(line[3])
 
-    key_data = utils.KeyData(
-        np.array(start_times), np.array(end_times), np.array(keys))
+    key_data = utils.KeyData(np.array(start_times), np.array(end_times), np.array(keys))
 
     return key_data
 
@@ -180,7 +182,8 @@ def _load_sections(sections_path):
             sections.append(line[3])
 
     section_data = utils.SectionData(
-        np.array(start_times), np.array(end_times), np.array(sections))
+        np.array(start_times), np.array(end_times), np.array(sections)
+    )
 
     return section_data
 
@@ -191,12 +194,10 @@ def _fix_newpoint(beat_positions):
         for i in idxs:
             if i < len(beat_positions) - 1:
                 if not beat_positions[i + 1] == 'New Point':
-                    beat_positions[i] = str(
-                        np.mod(int(beat_positions[i + 1]) - 1, 4))
+                    beat_positions[i] = str(np.mod(int(beat_positions[i + 1]) - 1, 4))
             if i == len(beat_positions) - 1:
                 if not beat_positions[i - 1] == 'New Point':
-                    beat_positions[i] = str(
-                        np.mod(int(beat_positions[i - 1]) + 1, 4))
+                    beat_positions[i] = str(np.mod(int(beat_positions[i - 1]) + 1, 4))
     beat_positions[beat_positions == '0'] = '4'
 
     return beat_positions

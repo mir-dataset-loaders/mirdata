@@ -13,26 +13,29 @@ SALAMI_DIR = 'Salami'
 SALAMI_ANNOT_REMOTE = utils.RemoteFileMetadata(
     filename='salami-data-public-master.zip',
     url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
-    checksum='b01d6eb5b71cca1f3163fae4b2cd4c61')
+    checksum='b01d6eb5b71cca1f3163fae4b2cd4c61',
+)
 
 SalamiTrack = namedtuple(
     'SalamiTrack',
-    ['track_id',
-     'audio_path',
-     'sections_annotator_1_uppercase',
-     'sections_annotator_1_lowercase',
-     'sections_annotator_2_uppercase',
-     'sections_annotator_2_lowercase',
-     'source',
-     'annotator_1_id',
-     'annotator_2_id',
-     'duration_sec',
-     'title',
-     'artist',
-     'annotator_1_time',
-     'annotator_2_time',
-     'broad_genre',
-     'genre']
+    [
+        'track_id',
+        'audio_path',
+        'sections_annotator_1_uppercase',
+        'sections_annotator_1_lowercase',
+        'sections_annotator_2_uppercase',
+        'sections_annotator_2_lowercase',
+        'source',
+        'annotator_1_id',
+        'annotator_2_id',
+        'duration_sec',
+        'title',
+        'artist',
+        'annotator_1_time',
+        'annotator_2_time',
+        'broad_genre',
+        'genre',
+    ],
 )
 
 
@@ -41,26 +44,30 @@ def download(data_home=None, force_overwrite=False):
     dataset_path = os.path.join(save_path, SALAMI_DIR)
 
     if force_overwrite:
-        utils.force_overwrite_all(SALAMI_ANNOT_REMOTE,
-                          dataset_path,
-                          data_home)
+        utils.force_overwrite_all(SALAMI_ANNOT_REMOTE, dataset_path, data_home)
 
     if utils.check_validated(dataset_path):
-        print("""
+        print(
+            """
                 The {} dataset has already been downloaded and validated.
                 Skipping download of dataset. If you feel this is a mistake please
                 rerun and set force_overwrite to true
-                """.format(SALAMI_DIR))
+                """.format(
+                SALAMI_DIR
+            )
+        )
         return
 
     download_path = utils.download_from_remote(
-        SALAMI_ANNOT_REMOTE, data_home=data_home, force_overwrite=force_overwrite)
+        SALAMI_ANNOT_REMOTE, data_home=data_home, force_overwrite=force_overwrite
+    )
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path)
     utils.unzip(download_path, dataset_path, cleanup=True)
     missing_files, invalid_checksums = validate(dataset_path, data_home)
     if missing_files or invalid_checksums:
-        print("""
+        print(
+            """
             Unfortunately the audio files of the Salami dataset are not available
             for download. If you have the Salami dataset, place the contents into a
             folder called Salami with the following structure:
@@ -68,11 +75,16 @@ def download(data_home=None, force_overwrite=False):
                     > salami-data-public-master/
                     > audio/
             and copy the Salami folder to {}
-        """.format(save_path))
+        """.format(
+                save_path
+            )
+        )
 
 
 def validate(dataset_path, data_home=None):
-    missing_files, invalid_checksums = utils.validator(SALAMI_INDEX, data_home, dataset_path)
+    missing_files, invalid_checksums = utils.validator(
+        SALAMI_INDEX, data_home, dataset_path
+    )
     return missing_files, invalid_checksums
 
 
@@ -93,8 +105,7 @@ def load(data_home=None):
 
 def load_track(track_id, data_home=None):
     if track_id not in SALAMI_INDEX.keys():
-        raise ValueError(
-            "{} is not a valid track ID in Salami".format(track_id))
+        raise ValueError("{} is not a valid track ID in Salami".format(track_id))
     track_data = SALAMI_INDEX[track_id]
 
     if SALAMI_METADATA is None or SALAMI_METADATA['data_home'] != data_home:
@@ -107,18 +118,28 @@ def load_track(track_id, data_home=None):
     else:
         # annotations with missing metadata
         track_metadata = {
-            'source': None, 'annotator_1_id': None, 'annotator_2_id': None,
-            'duration_sec': None, 'title': None, 'artist': None,
-            'annotator_1_time': None, 'annotator_2_time': None, 'class': None,
-            'genre': None
+            'source': None,
+            'annotator_1_id': None,
+            'annotator_2_id': None,
+            'duration_sec': None,
+            'title': None,
+            'artist': None,
+            'annotator_1_time': None,
+            'annotator_2_time': None,
+            'class': None,
+            'genre': None,
         }
     salami_path = utils.get_local_path(data_home, SALAMI_DIR)
-    annotations_dir = os.path.join(salami_path,
-                                   'salami-data-public-master', 'annotations')
-    annotators = [any(SALAMI_INDEX[track_id]['annotator_1_uppercase']),
-                  any(SALAMI_INDEX[track_id]['annotator_2_uppercase'])]
+    annotations_dir = os.path.join(
+        salami_path, 'salami-data-public-master', 'annotations'
+    )
+    annotators = [
+        any(SALAMI_INDEX[track_id]['annotator_1_uppercase']),
+        any(SALAMI_INDEX[track_id]['annotator_2_uppercase']),
+    ]
     all_annotators_section_data = _load_sections(
-        utils.get_local_path(annotations_dir, track_id), annotators)
+        utils.get_local_path(annotations_dir, track_id), annotators
+    )
 
     return SalamiTrack(
         track_id,
@@ -136,7 +157,7 @@ def load_track(track_id, data_home=None):
         track_metadata['annotator_1_time'],
         track_metadata['annotator_2_time'],
         track_metadata['class'],
-        track_metadata['genre']
+        track_metadata['genre'],
     )
 
 
@@ -146,25 +167,26 @@ def _load_sections(sections_path, annotators):
         for f in ['uppercase.txt', 'lowercase.txt']:
             times, secs = [], []
             if annotators[a]:
-                file_path = os.path.join(sections_path, 'parsed',
-                                         'textfile{}_{}'.format(str(a + 1), f))
+                file_path = os.path.join(
+                    sections_path, 'parsed', 'textfile{}_{}'.format(str(a + 1), f)
+                )
                 if os.path.exists(file_path):
 
                     with open(file_path, 'r') as fhandle:
-                            reader = csv.reader(fhandle, delimiter='\t')
-                            for line in reader:
-                                times.append(float(line[0]))
-                                secs.append(line[1])
+                        reader = csv.reader(fhandle, delimiter='\t')
+                        for line in reader:
+                            times.append(float(line[0]))
+                            secs.append(line[1])
                     times, secs = np.array(times), np.array(secs)
                     # remove sections with length == 0
-                    times_revised = np.delete(
-                        times, np.where(np.diff(times) == 0))
-                    secs_revised = np.delete(
-                        secs, np.where(np.diff(times) == 0))
+                    times_revised = np.delete(times, np.where(np.diff(times) == 0))
+                    secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
                     all_annotators_section_data.append(
-                        utils.SectionData(np.array(times_revised[:-1]),
-                                    np.array(times_revised)[1:],
-                                    np.array(secs_revised)[:-1])
+                        utils.SectionData(
+                            np.array(times_revised[:-1]),
+                            np.array(times_revised)[1:],
+                            np.array(secs_revised)[:-1],
+                        )
                     )
                 else:
                     all_annotators_section_data.append(None)
@@ -177,9 +199,10 @@ def _load_sections(sections_path, annotators):
 def _load_metadata(data_home):
 
     metadata_path = utils.get_local_path(
-        data_home, os.path.join(
+        data_home,
+        os.path.join(
             SALAMI_DIR, 'salami-data-public-master', 'metadata', 'metadata.csv'
-        )
+        ),
     )
 
     if not os.path.exists(metadata_path):

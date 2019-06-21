@@ -101,35 +101,19 @@ def validator(dataset_index, data_home, dataset_path, silence=False):
     return missing_files, invalid_checksums
 
 
-F0Data = namedtuple(
-    'F0Data',
-    ['times', 'frequencies', 'confidence']
-)
+F0Data = namedtuple('F0Data', ['times', 'frequencies', 'confidence'])
 
 LyricsData = namedtuple(
-    'LyricsData',
-    ['start_times', 'end_times', 'lyrics', 'pronounciations']
+    'LyricsData', ['start_times', 'end_times', 'lyrics', 'pronounciations']
 )
 
-SectionData = namedtuple(
-    'SectionsData',
-    ['start_times', 'end_times', 'sections']
-)
+SectionData = namedtuple('SectionsData', ['start_times', 'end_times', 'sections'])
 
-BeatData = namedtuple(
-    'BeatsData',
-    ['beats_times', 'beats_positions']
-)
+BeatData = namedtuple('BeatsData', ['beats_times', 'beats_positions'])
 
-ChordData = namedtuple(
-    'ChordsData',
-    ['start_times', 'end_times', 'chords']
-)
+ChordData = namedtuple('ChordsData', ['start_times', 'end_times', 'chords'])
 
-KeyData = namedtuple(
-    'KeyData',
-    ['start_times', 'end_times', 'keys']
-)
+KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
 
 
 def get_local_path(data_home, rel_path):
@@ -167,8 +151,7 @@ def get_save_path(data_home):
     return save_path
 
 
-RemoteFileMetadata = namedtuple('RemoteFileMetadata',
-                                ['filename', 'url', 'checksum'])
+RemoteFileMetadata = namedtuple('RemoteFileMetadata', ['filename', 'url', 'checksum'])
 
 
 class DownloadProgressBar(tqdm):
@@ -213,14 +196,15 @@ def download_from_remote(remote, data_home=None, force_overwrite=False):
         Full path of the created file.
     """
     download_path = (
-        os.path.join(MIR_DATASETS_DIR, remote.filename) if data_home is None
+        os.path.join(MIR_DATASETS_DIR, remote.filename)
+        if data_home is None
         else os.path.join(data_home, remote.filename)
     )
     if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
-        with DownloadProgressBar(unit='B', unit_scale=True,
-                                 miniters=1,
-                                 desc=remote.url.split('/')[-1]) as t:
+        with DownloadProgressBar(
+            unit='B', unit_scale=True, miniters=1, desc=remote.url.split('/')[-1]
+        ) as t:
             try:
                 download_large_file(remote.url, download_path, t.update_to)
             except HTTPError:
@@ -235,10 +219,11 @@ def download_from_remote(remote, data_home=None, force_overwrite=False):
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
-        raise IOError("{} has an MD5 checksum ({}) "
-                      "differing from expected ({}), "
-                      "file may be corrupted.".format(download_path, checksum,
-                                                      remote.checksum))
+        raise IOError(
+            "{} has an MD5 checksum ({}) "
+            "differing from expected ({}), "
+            "file may be corrupted.".format(download_path, checksum, remote.checksum)
+        )
     return download_path
 
 
@@ -299,14 +284,18 @@ def create_validated(dataset_path):
 
 def create_invalid(dataset_path, missing_files, invalid_checksums):
     with open(os.path.join(dataset_path, INVALID_FILE_NAME), 'w') as f:
-        json.dump({'missing_files': missing_files,
-                   'invalid_checksums': invalid_checksums}, f, indent=2)
+        json.dump(
+            {'missing_files': missing_files, 'invalid_checksums': invalid_checksums},
+            f,
+            indent=2,
+        )
 
 
 def force_overwrite_all(remote, dataset_path, data_home=None):
     if remote:
         download_path = (
-            os.path.join(MIR_DATASETS_DIR, remote.filename) if data_home is None
+            os.path.join(MIR_DATASETS_DIR, remote.filename)
+            if data_home is None
             else os.path.join(data_home, remote.filename)
         )
         os.remove(download_path)

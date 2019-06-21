@@ -20,13 +20,7 @@ MEDLEYDB_METADATA = None
 
 MedleydbPitchTrack = namedtuple(
     'MedleydbPitchTrack',
-    ['track_id',
-     'pitch',
-     'audio_path',
-     'instrument',
-     'artist',
-     'title',
-     'genre']
+    ['track_id', 'pitch', 'audio_path', 'instrument', 'artist', 'title', 'genre'],
 )
 
 
@@ -35,19 +29,22 @@ def download(data_home=None, force_overwrite=False):
     dataset_path = os.path.join(save_path, MEDLEYDB_PITCH_DIR)
 
     if force_overwrite:
-        utils.force_overwrite_all(MEDLEYDB_METADATA,
-                          dataset_path,
-                          data_home)
+        utils.force_overwrite_all(MEDLEYDB_METADATA, dataset_path, data_home)
     if utils.check_validated(dataset_path):
-        print("""
+        print(
+            """
                 The {} dataset has already been validated.
                 If you feel this is a mistake please rerun and set force_overwrite to true.
-                """.format(MEDLEYDB_PITCH_DIR))
+                """.format(
+                MEDLEYDB_PITCH_DIR
+            )
+        )
         return
 
     missing_files, invalid_checksums = validate(dataset_path, data_home)
     if missing_files or invalid_checksums:
-        print("""
+        print(
+            """
             To download this dataset, visit:
             https://zenodo.org/record/2620624#.XKZc7hNKh24
             and request access.
@@ -55,11 +52,16 @@ def download(data_home=None, force_overwrite=False):
             Once downloaded, unzip the file MedleyDB-Pitch.zip
             and place the result in:
             {}
-        """.format(save_path))
+        """.format(
+                save_path
+            )
+        )
 
 
 def validate(dataset_path, data_home=None):
-    missing_files, invalid_checksums = utils.validator(MEDLEYDB_PITCH_INDEX, data_home, dataset_path)
+    missing_files, invalid_checksums = utils.validator(
+        MEDLEYDB_PITCH_INDEX, data_home, dataset_path
+    )
     return missing_files, invalid_checksums
 
 
@@ -81,20 +83,18 @@ def load(data_home=None):
 def load_track(track_id, data_home=None):
     if track_id not in MEDLEYDB_PITCH_INDEX.keys():
         raise ValueError(
-            "{} is not a valid track ID in MedleyDB-Pitch".format(track_id))
+            "{} is not a valid track ID in MedleyDB-Pitch".format(track_id)
+        )
     track_data = MEDLEYDB_PITCH_INDEX[track_id]
 
-    if (MEDLEYDB_METADATA is None or
-            MEDLEYDB_METADATA['data_home'] != data_home):
+    if MEDLEYDB_METADATA is None or MEDLEYDB_METADATA['data_home'] != data_home:
         _reload_metadata(data_home)
         if MEDLEYDB_METADATA is None:
-            raise EnvironmentError(
-                "Could not find MedleyDB-Pitch metadata file")
+            raise EnvironmentError("Could not find MedleyDB-Pitch metadata file")
 
     track_metadata = MEDLEYDB_METADATA[track_id]
 
-    pitch_data = _load_pitch(
-        utils.get_local_path(data_home, track_data['pitch'][0]))
+    pitch_data = _load_pitch(utils.get_local_path(data_home, track_data['pitch'][0]))
 
     return MedleydbPitchTrack(
         track_id,
@@ -103,7 +103,7 @@ def load_track(track_id, data_home=None):
         track_metadata['instrument'],
         track_metadata['artist'],
         track_metadata['title'],
-        track_metadata['genre']
+        track_metadata['genre'],
     )
 
 
@@ -120,8 +120,7 @@ def _load_pitch(pitch_path):
             freqs.append(float(line[1]))
             confidence.append(0 if line[1] == '0' else 1)
 
-    melody_data = utils.F0Data(
-        np.array(times), np.array(freqs), np.array(confidence))
+    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
 
 
@@ -132,8 +131,8 @@ def _reload_metadata(data_home):
 
 def _load_metadata(data_home):
     metadata_path = utils.get_local_path(
-        data_home,
-        os.path.join(MEDLEYDB_PITCH_DIR, "medleydb_pitch_metadata.json"))
+        data_home, os.path.join(MEDLEYDB_PITCH_DIR, "medleydb_pitch_metadata.json")
+    )
     if not os.path.exists(metadata_path):
         return None
     with open(metadata_path, 'r') as fhandle:

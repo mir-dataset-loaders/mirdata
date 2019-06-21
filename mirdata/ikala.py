@@ -24,13 +24,7 @@ ID_MAPPING_URL = "http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt"
 
 IKalaTrack = namedtuple(
     'IKalaTrack',
-    ['track_id',
-     'f0',
-     'lyrics',
-     'audio_path',
-     'singer_id',
-     'song_id',
-     'section']
+    ['track_id', 'f0', 'lyrics', 'audio_path', 'singer_id', 'song_id', 'section'],
 )
 
 
@@ -39,19 +33,22 @@ def download(data_home=None, force_overwrite=False):
     dataset_path = os.path.join(save_path, IKALA_DIR)
 
     if force_overwrite:
-        utils.force_overwrite_all(IKALA_METADATA,
-                          dataset_path,
-                          data_home)
+        utils.force_overwrite_all(IKALA_METADATA, dataset_path, data_home)
     if utils.check_validated(dataset_path):
-        print("""
+        print(
+            """
                 The {} dataset has already been validated.
                 If you feel this is a mistake please rerun and set force_overwrite to true.
-                """.format(IKALA_DIR))
+                """.format(
+                IKALA_DIR
+            )
+        )
         return
 
     missing_files, invalid_checksums = validate(dataset_path, data_home)
     if missing_files or invalid_checksums:
-        print("""
+        print(
+            """
             Unfortunately the iKala dataset is not available for download.
             If you have the iKala dataset, place the contents into a folder called
             iKala with the following structure:
@@ -60,11 +57,16 @@ def download(data_home=None, force_overwrite=False):
                     > PitchLabel/
                     > Wavfile/
             and copy the iKala folder to {}
-        """.format(save_path))
+        """.format(
+                save_path
+            )
+        )
 
 
 def validate(dataset_path, data_home=None):
-    missing_files, invalid_checksums = utils.validator(IKALA_INDEX, data_home, dataset_path)
+    missing_files, invalid_checksums = utils.validator(
+        IKALA_INDEX, data_home, dataset_path
+    )
     return missing_files, invalid_checksums
 
 
@@ -82,17 +84,14 @@ def load(data_home=None):
 
 def load_track(track_id, data_home=None):
     if track_id not in IKALA_INDEX.keys():
-        raise ValueError(
-            "{} is not a valid track ID in IKala".format(track_id))
+        raise ValueError("{} is not a valid track ID in IKala".format(track_id))
 
     if IKALA_METADATA is None or IKALA_METADATA['data_home'] != data_home:
         _reload_metadata(data_home)
 
     track_data = IKALA_INDEX[track_id]
-    f0_data = _load_f0(
-        utils.get_local_path(data_home, track_data['pitch'][0]))
-    lyrics_data = _load_lyrics(
-        utils.get_local_path(data_home, track_data['lyrics'][0]))
+    f0_data = _load_f0(utils.get_local_path(data_home, track_data['pitch'][0]))
+    lyrics_data = _load_lyrics(utils.get_local_path(data_home, track_data['lyrics'][0]))
 
     song_id = track_id.split('_')[0]
     section = track_id.split('_')[1]
@@ -104,7 +103,7 @@ def load_track(track_id, data_home=None):
         utils.get_local_path(data_home, track_data['audio'][0]),
         IKALA_METADATA[song_id],
         song_id,
-        section
+        section,
     )
 
 
@@ -153,13 +152,12 @@ def _load_lyrics(lyrics_path):
         lyrics = []
         pronounciations = []
         for line in reader:
-            start_times.append(float(line[0]) / 1000.)
-            end_times.append(float(line[1]) / 1000.)
+            start_times.append(float(line[0]) / 1000.0)
+            end_times.append(float(line[1]) / 1000.0)
             lyrics.append(line[2])
             if len(line) > 2:
                 pronounciation = ' '.join(line[3:])
-                pronounciations.append(
-                    pronounciation if pronounciation != '' else None)
+                pronounciations.append(pronounciation if pronounciation != '' else None)
             else:
                 pronounciations.append(None)
 
@@ -174,7 +172,8 @@ def _reload_metadata(data_home):
 
 def _load_metadata(data_home):
     id_map_path = utils.get_local_path(
-        data_home, os.path.join(IKALA_DIR, "id_mapping.txt"))
+        data_home, os.path.join(IKALA_DIR, "id_mapping.txt")
+    )
     if not os.path.exists(id_map_path):
         utils.download_large_file(ID_MAPPING_URL, id_map_path)
 

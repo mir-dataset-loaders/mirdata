@@ -20,17 +20,19 @@ MEDLEYDB_METADATA = None
 
 MedleydbMelodyTrack = namedtuple(
     'MedleydbMelodyTrack',
-    ['track_id',
-     'melody1',
-     'melody2',
-     'melody3',
-     'audio_path',
-     'artist',
-     'title',
-     'genre',
-     'is_excerpt',
-     'is_instrumental',
-     'n_sources']
+    [
+        'track_id',
+        'melody1',
+        'melody2',
+        'melody3',
+        'audio_path',
+        'artist',
+        'title',
+        'genre',
+        'is_excerpt',
+        'is_instrumental',
+        'n_sources',
+    ],
 )
 
 
@@ -39,19 +41,22 @@ def download(data_home=None, force_overwrite=False):
     dataset_path = os.path.join(save_path, MEDLEYDB_MELODY_DIR)
 
     if force_overwrite:
-        utils.force_overwrite_all(MEDLEYDB_METADATA,
-                          dataset_path,
-                          data_home)
+        utils.force_overwrite_all(MEDLEYDB_METADATA, dataset_path, data_home)
     if utils.check_validated(dataset_path):
-        print("""
+        print(
+            """
                 The {} dataset has already been validated.
                 If you feel this is a mistake please rerun and set force_overwrite to true.
-                """.format(MEDLEYDB_MELODY_DIR))
+                """.format(
+                MEDLEYDB_MELODY_DIR
+            )
+        )
         return
 
     missing_files, invalid_checksums = validate(dataset_path, data_home)
     if missing_files or invalid_checksums:
-        print("""
+        print(
+            """
             To download this dataset, visit:
             https://zenodo.org/record/2628782#.XKZdABNKh24
             and request access.
@@ -59,11 +64,16 @@ def download(data_home=None, force_overwrite=False):
             Once downloaded, unzip the file MedleyDB-Melody.zip
             and place the result in:
             {}
-        """.format(save_path))
+        """.format(
+                save_path
+            )
+        )
 
 
 def validate(dataset_path, data_home=None):
-    missing_files, invalid_checksums = utils.validator(MEDLEYDB_MELODY_INDEX, data_home, dataset_path)
+    missing_files, invalid_checksums = utils.validator(
+        MEDLEYDB_MELODY_INDEX, data_home, dataset_path
+    )
     return missing_files, invalid_checksums
 
 
@@ -85,24 +95,26 @@ def load(data_home=None):
 def load_track(track_id, data_home=None):
     if track_id not in MEDLEYDB_MELODY_INDEX.keys():
         raise ValueError(
-            "{} is not a valid track ID in MedleyDB-Melody".format(track_id))
+            "{} is not a valid track ID in MedleyDB-Melody".format(track_id)
+        )
     track_data = MEDLEYDB_MELODY_INDEX[track_id]
 
-    if (MEDLEYDB_METADATA is None or
-            MEDLEYDB_METADATA['data_home'] != data_home):
+    if MEDLEYDB_METADATA is None or MEDLEYDB_METADATA['data_home'] != data_home:
         _reload_metadata(data_home)
         if MEDLEYDB_METADATA is None:
-            raise EnvironmentError(
-                "Could not find MedleyDB-Melody metadata file")
+            raise EnvironmentError("Could not find MedleyDB-Melody metadata file")
 
     track_metadata = MEDLEYDB_METADATA[track_id]
 
     melody1_data = _load_melody(
-        utils.get_local_path(data_home, track_data['melody1'][0]))
+        utils.get_local_path(data_home, track_data['melody1'][0])
+    )
     melody2_data = _load_melody(
-        utils.get_local_path(data_home, track_data['melody2'][0]))
+        utils.get_local_path(data_home, track_data['melody2'][0])
+    )
     melody3_data = _load_melody3(
-        utils.get_local_path(data_home, track_data['melody3'][0]))
+        utils.get_local_path(data_home, track_data['melody3'][0])
+    )
 
     return MedleydbMelodyTrack(
         track_id,
@@ -115,7 +127,7 @@ def load_track(track_id, data_home=None):
         track_metadata['genre'],
         track_metadata['is_excerpt'],
         track_metadata['is_instrumental'],
-        track_metadata['n_sources']
+        track_metadata['n_sources'],
     )
 
 
@@ -132,8 +144,7 @@ def _load_melody(melody_path):
             freqs.append(float(line[1]))
             confidence.append(0 if line[1] == '0' else 1)
 
-    melody_data = utils.F0Data(
-        np.array(times), np.array(freqs), np.array(confidence))
+    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
 
 
@@ -150,8 +161,7 @@ def _load_melody3(melody_path):
             freqs.append([float(v) for v in line[1:]])
             confidence.append(0 if line[1] == '0' else 1)
 
-    melody_data = utils.F0Data(
-        np.array(times), np.array(freqs), np.array(confidence))
+    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
 
 
@@ -162,8 +172,8 @@ def _reload_metadata(data_home):
 
 def _load_metadata(data_home):
     metadata_path = utils.get_local_path(
-        data_home,
-        os.path.join(MEDLEYDB_MELODY_DIR, "medleydb_melody_metadata.json"))
+        data_home, os.path.join(MEDLEYDB_MELODY_DIR, "medleydb_melody_metadata.json")
+    )
     if not os.path.exists(metadata_path):
         return None
     with open(metadata_path, 'r') as fhandle:
