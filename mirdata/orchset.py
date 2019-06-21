@@ -17,30 +17,32 @@ ORCHSET_INDEX = utils.load_json_index('orchset_index.json')
 
 ORCHSET_META = utils.RemoteFileMetadata(
     filename='Orchset_dataset_0.zip',
-    url='https://zenodo.org/record/1289786/files/'
-        'Orchset_dataset_0.zip?download=1',
-    checksum=('cf6fe52d64624f61ee116c752fb318ca'))
+    url='https://zenodo.org/record/1289786/files/' 'Orchset_dataset_0.zip?download=1',
+    checksum=('cf6fe52d64624f61ee116c752fb318ca'),
+)
 
 ORCHSET_DIR = "Orchset"
 ORCHSET_METADATA = None
 
 OrchsetTrack = namedtuple(
     'OrchsetTrack',
-    ['track_id',
-     'melody',
-     'audio_path_mono',
-     'audio_path_stereo',
-     'composer',
-     'work',
-     'excerpt',
-     'predominant_melodic_instruments',
-     'alternating_melody',
-     'contains_winds',
-     'contains_strings',
-     'contains_brass',
-     'only_strings',
-     'only_winds',
-     'only_brass']
+    [
+        'track_id',
+        'melody',
+        'audio_path_mono',
+        'audio_path_stereo',
+        'composer',
+        'work',
+        'excerpt',
+        'predominant_melodic_instruments',
+        'alternating_melody',
+        'contains_winds',
+        'contains_strings',
+        'contains_brass',
+        'only_strings',
+        'only_winds',
+        'only_brass',
+    ],
 )
 
 
@@ -49,25 +51,31 @@ def download(data_home=None, force_overwrite=False):
     dataset_path = os.path.join(save_path, ORCHSET_DIR)
 
     if force_overwrite:
-        utils.force_overwrite_all(ORCHSET_META,
-                          dataset_path,
-                          data_home)
+        utils.force_overwrite_all(ORCHSET_META, dataset_path, data_home)
 
     if utils.check_validated(dataset_path):
-        print("""
+        print(
+            """
                 The {} dataset has already been downloaded and validated.
                 Skipping download of dataset. If you feel this is a mistake please
                 rerun and set force_overwrite to true
-                """.format(ORCHSET_DIR))
+                """.format(
+                ORCHSET_DIR
+            )
+        )
         return
 
-    download_path = utils.download_from_remote(ORCHSET_META, force_overwrite=force_overwrite)
+    download_path = utils.download_from_remote(
+        ORCHSET_META, force_overwrite=force_overwrite
+    )
     utils.unzip(download_path, save_path, dataset_path)
     validate(dataset_path, data_home)
 
 
 def validate(dataset_path, data_home=None):
-    missing_files, invalid_checksums = utils.validator(ORCHSET_INDEX, data_home, dataset_path)
+    missing_files, invalid_checksums = utils.validator(
+        ORCHSET_INDEX, data_home, dataset_path
+    )
     return missing_files, invalid_checksums
 
 
@@ -88,8 +96,7 @@ def load(data_home=None):
 
 def load_track(track_id, data_home=None):
     if track_id not in ORCHSET_INDEX.keys():
-        raise ValueError(
-            "{} is not a valid track ID in Orchset".format(track_id))
+        raise ValueError("{} is not a valid track ID in Orchset".format(track_id))
     track_data = ORCHSET_INDEX[track_id]
 
     if ORCHSET_METADATA is None or ORCHSET_METADATA['data_home'] != data_home:
@@ -97,8 +104,7 @@ def load_track(track_id, data_home=None):
         if ORCHSET_METADATA is None:
             raise EnvironmentError("Could not find Orchset metadata file")
 
-    melody_data = _load_melody(
-        utils.get_local_path(data_home, track_data['melody'][0]))
+    melody_data = _load_melody(utils.get_local_path(data_home, track_data['melody'][0]))
 
     track_metadata = ORCHSET_METADATA[track_id]
 
@@ -117,7 +123,7 @@ def load_track(track_id, data_home=None):
         track_metadata['contains_brass'],
         track_metadata['only_strings'],
         track_metadata['only_winds'],
-        track_metadata['only_brass']
+        track_metadata['only_brass'],
     )
 
 
@@ -135,16 +141,16 @@ def _load_melody(melody_path):
             freqs.append(float(line[1]))
             confidence.append(0 if line[1] == '0' else 1)
 
-    melody_data = utils.F0Data(
-        np.array(times), np.array(freqs), np.array(confidence))
+    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
 
 
 def _load_metadata(data_home):
 
-    predominant_inst_path = utils.get_local_path(data_home, os.path.join(
-        ORCHSET_DIR,
-        "Orchset - Predominant Melodic Instruments.csv"))
+    predominant_inst_path = utils.get_local_path(
+        data_home,
+        os.path.join(ORCHSET_DIR, "Orchset - Predominant Melodic Instruments.csv"),
+    )
 
     if not os.path.exists(predominant_inst_path):
         return None
@@ -169,8 +175,9 @@ def _load_metadata(data_home):
             id_split.pop(1)
 
         melodic_instruments = [s.split(',') for s in line[1].split('+')]
-        melodic_instruments = [item.lower() for sublist in melodic_instruments
-                               for item in sublist]
+        melodic_instruments = [
+            item.lower() for sublist in melodic_instruments for item in sublist
+        ]
         for i, inst in enumerate(melodic_instruments):
             if inst == 'string':
                 melodic_instruments[i] = 'strings'
