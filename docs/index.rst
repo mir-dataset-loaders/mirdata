@@ -2,19 +2,18 @@ mirdata
 =======
 common loaders for mir datasets.
 
-`ismir 2019 paper <http://paper_url>`_ 
+`ismir 2019 paper tbd <http://paper_url>`_ 
 
 Installation
 ------------
-```
-pip install mirdata
-```
+``pip install mirdata``
+
 
 API documentation
 -----------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
 .. automodule:: mirdata.utils
 .. automodule:: mirdata.ikala
