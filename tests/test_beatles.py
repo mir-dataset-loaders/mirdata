@@ -27,7 +27,7 @@ def save_path(data_home):
 
 @pytest.fixture
 def dataset_path(save_path):
-    return os.path.join(save_path, beatles.DIR)
+    return os.path.join(save_path, beatles.DATASET_DIR)
 
 
 @pytest.fixture
@@ -119,7 +119,7 @@ def test_track_ids():
 
 def test_load_track_invalid_track_id():
     with pytest.raises(ValueError):
-        beatles.load_track('a-fake-track-id')
+        beatles.Track('a-fake-track-id')
 
 
 def test_fix_newpoint():
