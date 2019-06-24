@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Beatles Dataset Loader
 
 Beatles Dataset includes beat and metric position, chord, key, and segmentation
@@ -101,11 +102,13 @@ def validate(dataset_path, data_home=None):
 
     Args:
         dataset_path (str): Beatles dataset local path
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local home path that the dataset is being stored
 
     Returns:
-        missing_files (list): TODO
-        invalid_checksums (list): TODO
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
 
     """
     missing_files, invalid_checksums = utils.validator(
@@ -152,7 +155,7 @@ def load_track(track_id, data_home=None):
 
     Returns:
         BeatlesTrack (namedtuple): a named tuple for track_id, audio path, beat_data,
-            chord_data, key_data, section_data, and TODO (what is this)
+            chord_data, key_data, section_data.
 
     """
     if track_id not in BEATLES_INDEX.keys():

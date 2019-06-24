@@ -1,4 +1,24 @@
-"""Salami Dataset Loader
+# -*- coding: utf-8 -*-
+"""SALAMI Dataset Loader
+
+SALAMI Dataset.
+Details can be found at http://ddmal.music.mcgill.ca/research/salami/annotations
+
+
+Attributes:
+    SALAMI_DIR (str): The directory name for SALAMI dataset. Set to `'Salami'`.
+
+    SALAMI_INDEX (dict): {track_id: track_data}.
+        track_data is a `BeatlesTrack` namedtuple.
+
+    SALAMI_METADATA (None): (todo?)
+
+    SALAMI_ANNOT_REMOTE (RemoteFileMetadata (namedtuple)): metadata
+        of SALAMI dataset. It includes the annotation file name, annotation
+        file url, and checksum of the file.
+
+    SalamiTrack (namedtuple): (todo)
+
 """
 from collections import namedtuple
 import csv
@@ -40,6 +60,14 @@ SalamiTrack = namedtuple(
 
 
 def download(data_home=None, force_overwrite=False):
+    """Download SALAMI Dataset (annotations).
+    The audio files are not provided.
+
+    Args:
+        data_home (str): Local home path to store the dataset
+        force_overwrite (bool): whether to overwrite the existing downloaded data
+
+    """
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, SALAMI_DIR)
 
@@ -73,12 +101,35 @@ def download(data_home=None, force_overwrite=False):
 
 
 def exists(data_home=None):
+    """Return if SALAMI dataset folder exists
+
+    Args:
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        (bool): True if SALAMI dataset folder exists
+
+    """
+
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, SALAMI_DIR)
     return os.path.exists(dataset_path)
 
 
 def validate(dataset_path, data_home=None):
+    """Validate if the stored dataset is a valid version
+
+    Args:
+        dataset_path (str): SALAMI dataset local path
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
     missing_files, invalid_checksums = utils.validator(
         SALAMI_INDEX, data_home, dataset_path
     )
@@ -86,10 +137,25 @@ def validate(dataset_path, data_home=None):
 
 
 def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
+
     return list(SALAMI_INDEX.keys())
 
 
 def load(data_home=None):
+    """Load SALAMI dataset
+
+    Args:
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        (dict): {`track_id`: track data}
+
+    """
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, SALAMI_DIR)
 
@@ -101,6 +167,16 @@ def load(data_home=None):
 
 
 def load_track(track_id, data_home=None):
+    """Load a track data
+
+    Args:
+        track_id (str):
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        SalamiTrack (todo)
+
+    """
     if track_id not in SALAMI_INDEX.keys():
         raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
     track_data = SALAMI_INDEX[track_id]
@@ -241,6 +317,8 @@ def _reload_metadata(data_home):
 
 
 def cite():
+    """Print the reference"""
+
     cite_data = """
 ===========  MLA ===========
 Smith, Jordan Bennett Louis, et al.,

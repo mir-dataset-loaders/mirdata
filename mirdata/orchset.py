@@ -1,11 +1,30 @@
 # -*- coding: utf-8 -*-
+"""ORCHSET Dataset Loader
 
+Orchset is intended to be used as a dataset for the development and
+evaluation of melody extraction algorithms. This collection contains
+64 audio excerpts focused on symphonic music with their corresponding
+annotation of the melody.
+
+Details can be found at https://zenodo.org/record/1289786#.XREpzaeZPx6
+
+
+Attributes:
+    ORCHSET_INDEX (dict): {track_id: track_data}.
+        track_data is a `OrchsetTrack` namedtuple.
+
+    ORCHSET_DIR (str): The directory name for ORCHSET.
+        Set to `'Orchset'`.
+
+    ORCHSET_META
+
+    OrchsetTrack (namedtuple): namedtuple to store the metadata of a track
+
+"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-"""Orchset Dataset Loader
-"""
 from collections import namedtuple
 import csv
 import numpy as np
@@ -47,6 +66,13 @@ OrchsetTrack = namedtuple(
 
 
 def download(data_home=None, force_overwrite=False):
+    """Download ORCHSET Dataset.
+
+    Args:
+        data_home (str): Local home path to store the dataset
+        force_overwrite (bool): whether to overwrite the existing downloaded data
+
+    """
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, ORCHSET_DIR)
 
@@ -63,12 +89,36 @@ def download(data_home=None, force_overwrite=False):
 
 
 def exists(data_home=None):
+    """Return if ORCHSET folder exists
+
+    Args:
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        (bool): True if ORCHSET folder exists
+
+    """
+
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, ORCHSET_DIR)
     return os.path.exists(dataset_path)
 
 
 def validate(dataset_path, data_home=None):
+    """Validate if the stored dataset is a valid version
+
+    Args:
+        dataset_path (str): ORCHSET dataset local path
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
+
     missing_files, invalid_checksums = utils.validator(
         ORCHSET_INDEX, data_home, dataset_path
     )
@@ -76,10 +126,26 @@ def validate(dataset_path, data_home=None):
 
 
 def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
+
     return list(ORCHSET_INDEX.keys())
 
 
 def load(data_home=None):
+    """Load ORCHSET dataset
+
+    Args:
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        (dict): {`track_id`: track data}
+
+    """
+
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, ORCHSET_DIR)
 
@@ -91,6 +157,17 @@ def load(data_home=None):
 
 
 def load_track(track_id, data_home=None):
+    """Load a track data
+
+    Args:
+        track_id (str):
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        OrchsetTrack (todo)
+
+    """
+
     if track_id not in ORCHSET_INDEX.keys():
         raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))
     track_data = ORCHSET_INDEX[track_id]
@@ -207,6 +284,8 @@ def _reload_metadata(data_home):
 
 
 def cite():
+    """Print the reference"""
+
     cite_data = """
 ===========  MLA ===========
 Bosch, J., Marxer, R., Gomez, E., "Evaluation and Combination of

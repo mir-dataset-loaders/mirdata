@@ -1,11 +1,33 @@
 # -*- coding: utf-8 -*-
+"""MedleyDB melody Dataset Loader
 
+MedleyDB is a dataset of annotated, royalty-free multitrack recordings.
+MedleyDB was curated primarily to support research on melody extraction,
+addressing important shortcomings of existing collections. For each song
+we provide melody f0 annotations as well as instrument activations for
+evaluating automatic instrument recognition.
+
+Details can be found at https://medleydb.weebly.com
+
+
+Attributes:
+    MEDLEYDB_MELODY_INDEX (dict): {track_id: track_data}.
+        track_data is a `MedleydbMelodyTrack` namedtuple.
+
+    MEDLEYDB_MELODY_DIR (str): The directory name for MedleyDB melody dataset.
+        Set to `'MedleyDB-Melody'`.
+
+    MEDLEYDB_METADATA (None): TODO
+
+    MedleydbMelodyTrack (namedtuple): namedtuple to store the metadata of a MedleyDB track (melody).
+        Tuple names: `'track_id', 'melody1', 'melody2', 'melody3', 'audio_path',
+            'artist', 'title', 'genre', 'is_excerpt', 'is_instrumental', 'n_sources'`.
+
+"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-"""Orchset Dataset Loader
-"""
 from collections import namedtuple
 import csv
 import json
@@ -37,6 +59,15 @@ MedleydbMelodyTrack = namedtuple(
 
 
 def download(data_home=None):
+    """MedleyDB is not available for downloading directly.
+    This function prints a helper message to download MedleyDB
+    through zenodo.org.
+
+    Args:
+        data_home (str): Local home path to store the dataset
+
+    """
+
     save_path = utils.get_save_path(data_home)
 
     print(
@@ -55,6 +86,19 @@ def download(data_home=None):
 
 
 def validate(dataset_path, data_home=None):
+    """Validate if the stored dataset is a valid version
+
+    Args:
+        dataset_path (str): MedleyDB melody dataset local path
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
     missing_files, invalid_checksums = utils.validator(
         MEDLEYDB_MELODY_INDEX, data_home, dataset_path
     )
@@ -62,10 +106,25 @@ def validate(dataset_path, data_home=None):
 
 
 def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
     return list(MEDLEYDB_MELODY_INDEX.keys())
 
 
 def load(data_home=None):
+    """Load MedleyDB melody dataset
+
+    Args:
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        (dict): {`track_id`: track data}
+
+    """
+
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, MEDLEYDB_MELODY_DIR)
 
@@ -77,6 +136,17 @@ def load(data_home=None):
 
 
 def load_track(track_id, data_home=None):
+    """Load a track data
+
+    Args:
+        track_id (str): track id to load
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        MedleydbMelodyTrack (todo)
+
+    """
+
     if track_id not in MEDLEYDB_MELODY_INDEX.keys():
         raise ValueError(
             '{} is not a valid track ID in MedleyDB-Melody'.format(track_id)
@@ -168,6 +238,8 @@ def _load_metadata(data_home):
 
 
 def cite():
+    """Print the reference"""
+
     cite_data = """
 ===========  MLA ===========
 Bittner, Rachel, et al.

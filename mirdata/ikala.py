@@ -1,11 +1,37 @@
 # -*- coding: utf-8 -*-
+"""iKala Dataset Loader
+
+The iKala dataset comprises of 252 30-second excerpts sampled from 206 iKala
+songs (plus 100 hidden excerpts reserved for MIREX).
+The music accompaniment and the singing voice are recorded at the left and right
+channels respectively and can be found under the Wavfile directory.
+In addition, the human-labeled pitch contours and timestamped lyrics can be
+found under PitchLabel and Lyrics respectively.
+
+Details can be found at http://mac.citi.sinica.edu.tw/ikala/
+
+
+Attributes:
+    IKALA_TIME_STEP (float): Time step unit (in second) (TODO: hop length?)
+
+    IKALA_INDEX (dict): {track_id: track_data}.
+        track_data is a `IKalaTrack` namedtuple.
+
+    IKALA_METADATA (None): TODO
+
+    IKALA_DIR (str): The directory name for iKala dataset. Set to `'iKala'`.
+
+    ID_MAPPING_URL (str): URL to get id-to-url mapping text file
+
+    IKalaTrack (namedtuple): namedtuple to store the metadata of a iKala track.
+        Tuple names: `'track_id', 'f0', 'lyrics', 'audio_path', 'singer_id', 'song_id', 'section'`.
+
+"""
 
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-"""ikala dataset loader
-"""
 from collections import namedtuple
 
 import csv
@@ -29,6 +55,14 @@ IKalaTrack = namedtuple(
 
 
 def download(data_home=None):
+    """Download iKala Dataset. However, iKala dataset is not available for
+    download anymore. This function prints a helper message to organize
+    pre-downloaded iKala dataset.
+
+    Args:
+        data_home (str): Local home path to store the dataset
+
+    """
     save_path = utils.get_save_path(data_home)
 
     print(
@@ -48,6 +82,19 @@ def download(data_home=None):
 
 
 def validate(dataset_path, data_home=None):
+    """Validate if the stored dataset is a valid version
+
+    Args:
+        dataset_path (str): iKala dataset local path
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
     missing_files, invalid_checksums = utils.validator(
         IKALA_INDEX, data_home, dataset_path
     )
@@ -55,10 +102,25 @@ def validate(dataset_path, data_home=None):
 
 
 def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
     return list(IKALA_INDEX.keys())
 
 
 def load(data_home=None):
+    """Load iKala dataset
+
+    Args:
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        (dict): {`track_id`: track data}
+
+    """
+
     validate(data_home)
     ikala_data = {}
     for key in IKALA_INDEX.keys():
@@ -67,6 +129,16 @@ def load(data_home=None):
 
 
 def load_track(track_id, data_home=None):
+    """Load a track data
+
+    Args:
+        track_id (str): track id to load
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        IKalaTrack (todo):
+
+    """
     if track_id not in IKALA_INDEX.keys():
         raise ValueError('{} is not a valid track ID in IKala'.format(track_id))
 
@@ -92,6 +164,15 @@ def load_track(track_id, data_home=None):
 
 
 def load_ikala_vocal_audio(ikalatrack):
+    """Load iKala vocal audio
+
+    Args:
+        ikalatrack: ikalatrack instance
+
+    Returns:
+        vocal_channel (np.array): vocal audio. size of `(N, )`
+        sr (int): sampling rate of the audio file
+    """
     audio_path = ikalatrack.audio_path
     audio, sr = librosa.load(audio_path, sr=None, mono=False)
     vocal_channel = audio[1, :]
@@ -99,6 +180,15 @@ def load_ikala_vocal_audio(ikalatrack):
 
 
 def load_ikala_instrumental_audio(ikalatrack):
+    """Load iKala instrumental audio
+
+    Args:
+        ikalatrack: ikalatrack instance
+
+    Returns:
+        instrumental_channel (np.array): vocal audio. size of `(N, )`
+        sr (int): sampling rate of the audio file
+    """
     audio_path = ikalatrack.audio_path
     audio, sr = librosa.load(audio_path, sr=None, mono=False)
     instrumental_channel = audio[0, :]
@@ -106,6 +196,15 @@ def load_ikala_instrumental_audio(ikalatrack):
 
 
 def load_ikala_mix_audio(ikalatrack):
+    """Load iKala mixture audio
+
+    Args:
+        ikalatrack: ikalatrack instance
+
+    Returns:
+        mixed_audio (np.array): vocal audio. size of `(2, N)`
+        sr (int): sampling rate of the audio file
+    """
     audio_path = ikalatrack.audio_path
     mixed_audio, sr = librosa.load(audio_path, sr=None, mono=True)
     return mixed_audio, sr
@@ -175,6 +274,8 @@ def _load_metadata(data_home):
 
 
 def cite():
+    """Print the reference"""
+
     cite_data = """
 ===========  MLA ===========
 Chan, Tak-Shing, et al.

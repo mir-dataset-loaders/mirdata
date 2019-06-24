@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
+"""Utility functions for mirdata
 
+Attributes:
+    MIR_DATASETS_DIR (str): home folder for MIR datasets
+
+"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -23,15 +28,12 @@ INVALID_FILE_NAME = '_INVALID.json'
 def md5(file_path):
     """Get md5 hash of a file.
 
-    Parameters
-    ----------
-    file_path: str
-        File path.
+    Args:
+        file_path (str): File path
 
-    Returns
-    -------
-    md5_hash: str
-        md5 hash of data in file_path
+    Returns:
+        md5_hash (str): md5 hash of data in file_path
+
     """
     hash_md5 = hashlib.md5()
     with open(file_path, 'rb') as fhandle:
@@ -41,11 +43,31 @@ def md5(file_path):
 
 
 def log_message(message, silence=False):
+    """Helper function to log message
+
+    Args:
+        message (str): message to log
+        silence (bool): if true, the message is not logged
+    """
     if not silence:
         print(message)
 
 
 def check_index(dataset_index, data_home, silence=False):
+    """check index to find out missing files and files with invalid checksum
+
+    Args:
+        dataset_index (list): dataset indices
+        data_home (str): Local home path that the dataset is being stored
+        silence (bool)
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
     missing_files = {}
     invalid_checksums = {}
 
@@ -72,6 +94,7 @@ def check_index(dataset_index, data_home, silence=False):
 
 
 def validator(dataset_index, data_home, dataset_path, silence=False):
+    """validate.. (todo: what does it do?) """
     if check_validated(dataset_path):
         return {}, {}
 
@@ -129,16 +152,14 @@ def get_save_path(data_home):
     """Get path to save a file given value of `data_home`, and create it if it
     does not exist.
 
-    Parameters
-    ----------
-    data_home: str or None
-        If string, `save_path` is set to data_home.
-        If None, `save_path` is set to the default MIR_DATASETS_DIR value.
+    Args:
+        data_home (str or None)
+            If string, `save_path` is set to data_home.
+            If None, `save_path` is set to the default MIR_DATASETS_DIR value.
 
-    Returns
-    ------_
-    save_path: str
-        Path to save data.
+    Returns:
+
+        save_path (str): Path to save data.
     """
     if data_home is None:
         save_path = MIR_DATASETS_DIR
@@ -155,6 +176,7 @@ RemoteFileMetadata = namedtuple('RemoteFileMetadata', ['filename', 'url', 'check
 
 
 class DownloadProgressBar(tqdm):
+    """Wrap `tqdm` to show download progress"""
     def update_to(self, b=1, bsize=1, tsize=None):
         if tsize is not None:
             self.total = tsize
@@ -162,6 +184,7 @@ class DownloadProgressBar(tqdm):
 
 
 def download_large_file(url, download_path, callback=lambda: None):
+    """download large file stably (todo: ??)"""
     response = requests.get(url)
     response.raise_for_status()
     with open(download_path, 'wb') as handle:
@@ -292,6 +315,8 @@ def create_invalid(dataset_path, missing_files, invalid_checksums):
 
 
 def force_delete_all(remote, dataset_path, data_home=None):
+    """todo
+    """
     if remote:
         download_path = (
             os.path.join(MIR_DATASETS_DIR, remote.filename)
