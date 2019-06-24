@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 import os
-import json
 
 import pytest
 
@@ -26,7 +25,7 @@ def save_path(data_home):
 
 @pytest.fixture
 def dataset_path(save_path):
-    return os.path.join(save_path, medleydb_pitch.MEDLEYDB_PITCH_DIR)
+    return os.path.join(save_path, medleydb_pitch.DATASET_DIR)
 
 
 def test_validate_valid(dataset_path, mocker, mock_validator):
