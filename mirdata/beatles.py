@@ -26,20 +26,11 @@ def download(data_home=None, force_overwrite=False):
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, BEATLES_DIR)
 
-    if force_overwrite:
-        utils.force_overwrite_all(BEATLES_ANNOT_REMOTE, dataset_path, data_home)
-
-    if utils.check_validated(dataset_path):
-        print(
-            """
-                The {} dataset has already been downloaded and validated.
-                Skipping download of dataset. If you feel this is a mistake please
-                rerun and set force_overwrite to true
-                """.format(
-                BEATLES_DIR
-            )
-        )
+    if exists(data_home) and not force_overwrite:
         return
+
+    if force_overwrite:
+        utils.force_delete_all(BEATLES_ANNOT_REMOTE, dataset_path=None, data_home=data_home)
 
     download_path = utils.download_from_remote(
         BEATLES_ANNOT_REMOTE, data_home=data_home, force_overwrite=force_overwrite
@@ -62,6 +53,12 @@ def download(data_home=None, force_overwrite=False):
                 save_path
             )
         )
+
+
+def exists(data_home=None):
+    save_path = utils.get_save_path(data_home)
+    dataset_path = os.path.join(save_path, BEATLES_DIR)
+    return os.path.exists(dataset_path)
 
 
 def validate(dataset_path, data_home=None):
