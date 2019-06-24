@@ -13,18 +13,9 @@ API documentation
 -----------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-.. automodule:: mirdata.utils
-.. automodule:: mirdata.ikala
-.. automodule:: mirdata.beatles
-
-
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   source/mirdata
 
 
 

@@ -1,20 +1,21 @@
 """Beatles Dataset Loader
 
 Beatles Dataset includes beat and metric position, chord, key, and segmentation
-annotations for 179 Beatles songs. Details can be found in the
-[original paper](http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf).
+annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf
 
 
 Attributes:
-    BEATLES_DIR (str): 'Beatles', the directory name for Beatles dataset
-    BEATLES_INDEX (dict): {track_id: track_data}. track_data is defined
-        by `BeatlesTrack` namedtuple.
+    BEATLES_DIR (str): The directory name for Beatles dataset. Set to `'Beatles'`.
+
+    BEATLES_INDEX (dict): {track_id: track_data}.
+        track_data is a `BeatlesTrack` namedtuple.
+
     BEATLES_ANNOT_REMOTE (RemoteFileMetadata (namedtuple)): metadata
         of Beatles dataset. It includes the annotation file name, annotation
         file url, and checksum of the file.
 
     BeatlesTrack (namedtuple): namedtuple to store the metadata of a Beatles track.
-        tuple names: `'track_id', 'audio_path', 'beats', 'chords', 'key', 'sections', 'title'`.
+        Tuple names: `'track_id', 'audio_path', 'beats', 'chords', 'key', 'sections', 'title'`.
 
 """
 from collections import namedtuple
