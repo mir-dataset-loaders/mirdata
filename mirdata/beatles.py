@@ -1,4 +1,21 @@
 """Beatles Dataset Loader
+
+Beatles Dataset includes beat and metric position, chord, key, and segmentation
+annotations for 179 Beatles songs. Details can be found in the
+[original paper](http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf).
+
+
+Attributes:
+    BEATLES_DIR (str): 'Beatles', the directory name for Beatles dataset
+    BEATLES_INDEX (dict): {track_id: track_data}. track_data is defined
+        by `BeatlesTrack` namedtuple.
+    BEATLES_ANNOT_REMOTE (RemoteFileMetadata (namedtuple)): metadata
+        of Beatles dataset. It includes the annotation file name, annotation
+        file url, and checksum of the file.
+
+    BeatlesTrack (namedtuple): namedtuple to store the metadata of a Beatles track.
+        tuple names: `'track_id', 'audio_path', 'beats', 'chords', 'key', 'sections', 'title'`.
+
 """
 from collections import namedtuple
 import numpy as np
@@ -23,6 +40,14 @@ BeatlesTrack = namedtuple(
 
 
 def download(data_home=None, force_overwrite=False):
+    """Download Beatles Dataset (annotations).
+    The audio files are not provided due to the copyright.
+
+    Args:
+        data_home (str): Local home path to store the dataset
+        force_overwrite (bool): whether to overwrite the existing downloaded data
+
+    """
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, BEATLES_DIR)
 
@@ -56,12 +81,32 @@ def download(data_home=None, force_overwrite=False):
 
 
 def exists(data_home=None):
+    """Return if Beatles dataset folder exists
+
+    Args:
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        (bool): True if Beatles dataset folder exists
+
+    """
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, BEATLES_DIR)
     return os.path.exists(dataset_path)
 
 
 def validate(dataset_path, data_home=None):
+    """Validate if the stored dataset is a valid version
+
+    Args:
+        dataset_path (str): Beatles dataset local path
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        missing_files (list): TODO
+        invalid_checksums (list): TODO
+
+    """
     missing_files, invalid_checksums = utils.validator(
         BEATLES_INDEX, data_home, dataset_path
     )
@@ -69,10 +114,24 @@ def validate(dataset_path, data_home=None):
 
 
 def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
     return list(BEATLES_INDEX.keys())
 
 
 def load(data_home=None):
+    """Load Beatles dataset
+
+    Args:
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        (dict): {`track_id`: track data}
+
+    """
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, BEATLES_DIR)
 
@@ -84,6 +143,17 @@ def load(data_home=None):
 
 
 def load_track(track_id, data_home=None):
+    """Load a track data
+
+    Args:
+        track_id (str):
+        data_home (str): Local home path that the dataset is being stored.
+
+    Returns:
+        BeatlesTrack (namedtuple): a named tuple for track_id, audio path, beat_data,
+            chord_data, key_data, section_data, and TODO (what is this)
+
+    """
     if track_id not in BEATLES_INDEX.keys():
         raise ValueError('{} is not a valid track ID in Beatles'.format(track_id))
 
@@ -108,6 +178,12 @@ def load_track(track_id, data_home=None):
 
 
 def _load_beats(beats_path):
+    """Private function to load beat data for a track
+
+    Args:
+        beats_path (str):
+
+    """
     if beats_path is None or not os.path.exists(beats_path):
         return None
 
@@ -128,6 +204,12 @@ def _load_beats(beats_path):
 
 
 def _load_chords(chords_path):
+    """Private function to load chord data for a track
+
+    Args:
+        chords_path (str):
+
+    """
     if chords_path is None or not os.path.exists(chords_path):
         return None
 
@@ -149,6 +231,12 @@ def _load_chords(chords_path):
 
 
 def _load_key(key_path):
+    """Private function to load key data for a track
+
+    Args:
+        key_path (str):
+
+    """
     if key_path is None or not os.path.exists(key_path):
         return None
 
@@ -167,6 +255,13 @@ def _load_key(key_path):
 
 
 def _load_sections(sections_path):
+    """Private function to load section data for a track
+
+    Args:
+        sections_path (str):
+
+    """
+
     if sections_path is None or not os.path.exists(sections_path):
         return None
 
@@ -186,6 +281,8 @@ def _load_sections(sections_path):
 
 
 def _fix_newpoint(beat_positions):
+    """(placeholder)
+    """
     while np.any(beat_positions == 'New Point'):
         idxs = np.where(beat_positions == 'New Point')[0]
         for i in idxs:
@@ -201,6 +298,7 @@ def _fix_newpoint(beat_positions):
 
 
 def cite():
+    """Print the reference"""
 
     cite_data = """
 ===========  MLA ===========
