@@ -84,7 +84,7 @@ def test_download_force_overwrite(data_home,
 
     orchset.download(data_home, force_overwrite=True)
 
-    mock_force_delete_all.assert_called_once_with(orchset.META, dataset_path, data_home)
+    mock_force_delete_all.assert_called_once_with(orchset.REMOTE, dataset_path, data_home)
     mock_orchset_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_unzip.assert_called_once_with(mock_download.return_value, save_path, dataset_path)
