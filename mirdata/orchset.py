@@ -14,7 +14,7 @@ import mirdata.utils as utils
 
 INDEX = utils.load_json_index('orchset_index.json')
 
-META = utils.RemoteFileMetadata(
+REMOTE = utils.RemoteFileMetadata(
     filename='Orchset_dataset_0.zip',
     url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
     checksum=('cf6fe52d64624f61ee116c752fb318ca'),
@@ -26,12 +26,12 @@ METADATA = None
 
 class Track(object):
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX.keys():
+        if track_id not in INDEX:
             raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_data = INDEX[track_id]
+        self._track_paths = INDEX[track_id]
 
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
@@ -39,9 +39,9 @@ class Track(object):
         self._track_metadata = METADATA[track_id]
 
         self.audio_path_mono = utils.get_local_path(
-            self._data_home, self._track_data['audio_mono'][0])
+            self._data_home, self._track_paths['audio_mono'][0])
         self.audio_path_stereo = utils.get_local_path(
-            self._data_home, self._track_data['audio_stereo'][0])
+            self._data_home, self._track_paths['audio_stereo'][0])
         self.composer = self._track_metadata['composer']
         self.work = self._track_metadata['work']
         self.excerpt = self._track_metadata['excerpt']
@@ -58,7 +58,7 @@ class Track(object):
     @utils.cached_property
     def melody(self):
         return _load_melody(utils.get_local_path(
-            self._data_home, self._track_data['melody'][0]))
+            self._data_home, self._track_paths['melody'][0]))
 
 
 def download(data_home=None, force_overwrite=False):
@@ -69,10 +69,10 @@ def download(data_home=None, force_overwrite=False):
         return
 
     if force_overwrite:
-        utils.force_delete_all(META, dataset_path, data_home)
+        utils.force_delete_all(REMOTE, dataset_path, data_home)
 
     download_path = utils.download_from_remote(
-        META, force_overwrite=force_overwrite
+        REMOTE, force_overwrite=force_overwrite
     )
     utils.unzip(download_path, save_path, dataset_path)
 
@@ -131,7 +131,7 @@ def _load_metadata(data_home):
     )
 
     if not os.path.exists(predominant_inst_path):
-        raise EnvironmentError('Could not find Orchset metadata file')
+        raise OSError('Could not find Orchset metadata file')
 
     with open(predominant_inst_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')

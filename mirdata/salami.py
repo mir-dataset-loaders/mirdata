@@ -9,7 +9,7 @@ import mirdata.utils as utils
 INDEX = utils.load_json_index('salami_index.json')
 METADATA = None
 DATASET_DIR = 'Salami'
-ANNOT_REMOTE = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE = utils.RemoteFileMetadata(
     filename='salami-data-public-master.zip',
     url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
     checksum='b01d6eb5b71cca1f3163fae4b2cd4c61',
@@ -18,12 +18,12 @@ ANNOT_REMOTE = utils.RemoteFileMetadata(
 
 class Track(object):
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX.keys():
+        if track_id not in INDEX:
             raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_data = INDEX[track_id]
+        self._track_paths = INDEX[track_id]
 
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
@@ -46,7 +46,7 @@ class Track(object):
             }
 
         self.audio_path = utils.get_local_path(
-            self._data_home, self._track_data['audio'][0])
+            self._data_home, self._track_paths['audio'][0])
 
         self.source = self._track_metadata['source']
         self.annotator_1_id = self._track_metadata['annotator_1_id']
@@ -62,22 +62,22 @@ class Track(object):
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
         return _load_sections(utils.get_local_path(
-            self._data_home, self._track_data['annotator_1_uppercase']))
+            self._data_home, self._track_paths['annotator_1_uppercase']))
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
         return _load_sections(utils.get_local_path(
-            self._data_home, self._track_data['annotator_1_lowercase']))
+            self._data_home, self._track_paths['annotator_1_lowercase']))
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
         return _load_sections(utils.get_local_path(
-            self._data_home, self._track_data['annotator_2_uppercase']))
+            self._data_home, self._track_paths['annotator_2_uppercase']))
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
         return _load_sections(utils.get_local_path(
-            self._data_home, self._track_data['annotator_2_lowercase']))
+            self._data_home, self._track_paths['annotator_2_lowercase']))
 
 
 def download(data_home=None, force_overwrite=False):
@@ -88,10 +88,10 @@ def download(data_home=None, force_overwrite=False):
         return
 
     if force_overwrite:
-        utils.force_delete_all(ANNOT_REMOTE, dataset_path=None, data_home=data_home)
+        utils.force_delete_all(ANNOTATIONS_REMOTE, dataset_path=None, data_home=data_home)
 
     download_path = utils.download_from_remote(
-        ANNOT_REMOTE, data_home=data_home, force_overwrite=force_overwrite
+        ANNOTATIONS_REMOTE, data_home=data_home, force_overwrite=force_overwrite
     )
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path)
@@ -145,13 +145,15 @@ def _load_sections(sections_path):
     if sections_path is None:
         return None
 
-    times, secs = [], []
+    times = []
+    secs = []
     with open(sections_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
             times.append(float(line[0]))
             secs.append(line[1])
-    times, secs = np.array(times), np.array(secs)
+    times = np.array(times)
+    secs = np.array(secs)
 
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
@@ -173,7 +175,7 @@ def _load_metadata(data_home):
     )
 
     if not os.path.exists(metadata_path):
-        raise EnvironmentError('Could not find Salami metadata file')
+        raise OSError('Could not find Salami metadata file')
 
     with open(metadata_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')

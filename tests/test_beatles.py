@@ -90,7 +90,7 @@ def test_download_force_overwrite(data_home,
 
     beatles.download(data_home, force_overwrite=True)
 
-    mock_force_delete_all.assert_called_once_with(beatles.ANNOT_REMOTE, dataset_path=None, data_home=data_home)
+    mock_force_delete_all.assert_called_once_with(beatles.ANNOTATIONS_REMOTE, dataset_path=None, data_home=data_home)
     mock_beatles_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_untar.assert_called_once_with(mock_download.return_value, dataset_path, cleanup=True)

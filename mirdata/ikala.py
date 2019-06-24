@@ -22,7 +22,7 @@ ID_MAPPING_URL = 'http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt'
 
 class Track(object):
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX.keys():
+        if track_id not in INDEX:
             raise ValueError(
                 '{} is not a valid track ID in iKala'.format(track_id))
 
@@ -31,10 +31,10 @@ class Track(object):
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_data = INDEX[track_id]
+        self._track_paths = INDEX[track_id]
 
         self.audio_path = utils.get_local_path(
-            self._data_home, self._track_data['audio'][0])
+            self._data_home, self._track_paths['audio'][0])
         self.song_id = track_id.split('_')[0]
         self.section = track_id.split('_')[0]
         self.singer_id = METADATA[self.song_id]
@@ -42,12 +42,12 @@ class Track(object):
     @utils.cached_property
     def f0(self):
         return _load_f0(utils.get_local_path(
-            self._data_home, self._track_data['pitch'][0]))
+            self._data_home, self._track_paths['pitch'][0]))
 
     @utils.cached_property
     def lyrics(self):
         return _load_lyrics(utils.get_local_path(
-            self._data_home, self._track_data['lyrics'][0]))
+            self._data_home, self._track_paths['lyrics'][0]))
 
 
 def download(data_home=None):

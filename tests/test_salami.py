@@ -93,7 +93,7 @@ def test_download_force_overwrite(data_home,
 
     salami.download(data_home, force_overwrite=True)
 
-    mock_force_delete_all.assert_called_once_with(salami.ANNOT_REMOTE, dataset_path=None, data_home=data_home)
+    mock_force_delete_all.assert_called_once_with(salami.ANNOTATIONS_REMOTE, dataset_path=None, data_home=data_home)
     mock_salami_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_unzip.assert_called_once_with(mock_download.return_value, dataset_path, cleanup=True)
@@ -122,13 +122,13 @@ def test_load_track_invalid_track_id():
 
 
 def test_load_track_no_metadata():
-    with pytest.raises(EnvironmentError):
+    with pytest.raises(OSError):
         salami.METADATA = None
         salami.Track('10')
 
 
 def test_load_track_wrong_metadata():
-    with pytest.raises(EnvironmentError):
+    with pytest.raises(OSError):
         salami.METADATA = {'data_home': 'test'}
         salami.Track('10', 'wrong_data_home')
 

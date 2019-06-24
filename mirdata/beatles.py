@@ -8,7 +8,7 @@ import mirdata.utils as utils
 
 DATASET_DIR = 'Beatles'
 INDEX = utils.load_json_index('beatles_index.json')
-ANNOT_REMOTE = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE = utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
     checksum='62425c552d37c6bb655a78e4603828cc',
@@ -17,40 +17,40 @@ ANNOT_REMOTE = utils.RemoteFileMetadata(
 
 class Track(object):
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX.keys():
+        if track_id not in INDEX:
             raise ValueError(
                 '{} is not a valid track ID in Beatles'.format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_data = INDEX[track_id]
+        self._track_paths = INDEX[track_id]
 
         self.audio_path = utils.get_local_path(
-            self._data_home, self._track_data['audio'][0])
+            self._data_home, self._track_paths['audio'][0])
 
         self.title = os.path.basename(
-            self._track_data['sections'][0]).split('.')[0]
+            self._track_paths['sections'][0]).split('.')[0]
 
     @utils.cached_property
     def beats(self):
         return _load_beats(utils.get_local_path(
-            self._data_home, self._track_data['beat'][0]))
+            self._data_home, self._track_paths['beat'][0]))
 
     @utils.cached_property
     def chords(self):
         return _load_chords(utils.get_local_path(
-            self._data_home, self._track_data['chords'][0]))
+            self._data_home, self._track_paths['chords'][0]))
 
     @utils.cached_property
     def key(self):
         return _load_key(utils.get_local_path(
-            self._data_home, self._track_data['keys'][0]))
+            self._data_home, self._track_paths['keys'][0]))
 
     @utils.cached_property
     def sections(self):
         return _load_sections(utils.get_local_path(
-            self._data_home, self._track_data['sections'][0]))
+            self._data_home, self._track_paths['sections'][0]))
 
 
 def download(data_home=None, force_overwrite=False):
@@ -61,10 +61,10 @@ def download(data_home=None, force_overwrite=False):
         return
 
     if force_overwrite:
-        utils.force_delete_all(ANNOT_REMOTE, dataset_path=None, data_home=data_home)
+        utils.force_delete_all(ANNOTATIONS_REMOTE, dataset_path=None, data_home=data_home)
 
     download_path = utils.download_from_remote(
-        ANNOT_REMOTE, data_home=data_home, force_overwrite=force_overwrite
+        ANNOTATIONS_REMOTE, data_home=data_home, force_overwrite=force_overwrite
     )
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path)

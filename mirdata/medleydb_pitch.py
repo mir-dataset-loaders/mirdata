@@ -20,14 +20,14 @@ METADATA = None
 
 class Track(object):
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX.keys():
+        if track_id not in INDEX:
             raise ValueError(
                 '{} is not a valid track ID in MedleyDB-Pitch'.format(track_id)
             )
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_data = INDEX[track_id]
+        self._track_paths = INDEX[track_id]
 
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
@@ -35,7 +35,7 @@ class Track(object):
         self._track_metadata = METADATA[track_id]
 
         self.audio_path = utils.get_local_path(
-            self._data_home, self._track_data['audio'][0])
+            self._data_home, self._track_paths['audio'][0])
         self.instrument = self._track_metadata['instrument']
         self.artist = self._track_metadata['artist']
         self.title = self._track_metadata['title']
@@ -44,7 +44,7 @@ class Track(object):
     @utils.cached_property
     def pitch(self):
         return _load_pitch(utils.get_local_path(
-            self._data_home, self._track_data['pitch'][0]))
+            self._data_home, self._track_paths['pitch'][0]))
 
 
 def download(data_home=None):
@@ -114,7 +114,7 @@ def _load_metadata(data_home):
         data_home, os.path.join(DATASET_DIR, 'medleydb_pitch_metadata.json')
     )
     if not os.path.exists(metadata_path):
-        raise EnvironmentError('Could not find MedleyDB-Pitch metadata file')
+        raise OSError('Could not find MedleyDB-Pitch metadata file')
     with open(metadata_path, 'r') as fhandle:
         metadata = json.load(fhandle)
 
