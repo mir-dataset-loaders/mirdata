@@ -26,7 +26,7 @@ def save_path(data_home):
 
 @pytest.fixture
 def dataset_path(save_path):
-    return os.path.join(save_path, medleydb_melody.MEDLEYDB_MELODY_DIR)
+    return os.path.join(save_path, medleydb_melody.DATASET_DIR)
 
 
 def test_validate_invalid(dataset_path, mocker, mock_validator):

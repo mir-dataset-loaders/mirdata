@@ -27,7 +27,7 @@ def save_path(data_home):
 
 @pytest.fixture
 def dataset_path(save_path):
-    return os.path.join(save_path, beatles.BEATLES_DIR)
+    return os.path.join(save_path, beatles.DATASET_DIR)
 
 
 @pytest.fixture
@@ -90,7 +90,7 @@ def test_download_force_overwrite(data_home,
 
     beatles.download(data_home, force_overwrite=True)
 
-    mock_force_delete_all.assert_called_once_with(beatles.BEATLES_ANNOT_REMOTE, dataset_path=None, data_home=data_home)
+    mock_force_delete_all.assert_called_once_with(beatles.ANNOTATIONS_REMOTE, dataset_path=None, data_home=data_home)
     mock_beatles_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_untar.assert_called_once_with(mock_download.return_value, dataset_path, cleanup=True)
@@ -114,24 +114,12 @@ def test_validate_valid(dataset_path, mocker, mock_validator):
 
 
 def test_track_ids():
-    assert beatles.track_ids() == list(beatles.BEATLES_INDEX.keys())
+    assert beatles.track_ids() == list(beatles.INDEX.keys())
 
 
 def test_load_track_invalid_track_id():
     with pytest.raises(ValueError):
-        beatles.load_track('a-fake-track-id')
-
-
-def test_load_track_valid_track_id():
-    expected = beatles.BeatlesTrack(
-        '0401',
-        '/tmp/mir_datasets/Beatles/audio/04_-_Beatles_for_Sale/01_-_No_Reply.wav',
-        beats=None,
-        chords=None,
-        key=None,
-        sections=None,
-        title='01_-_No_Reply')
-    assert beatles.load_track('0401') == expected
+        beatles.Track('a-fake-track-id')
 
 
 def test_fix_newpoint():
