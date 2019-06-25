@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """iKala Dataset Loader
 
-The iKala dataset comprises of 252 30-second excerpts sampled from 206 iKala
+The iKala dataset is comprised of 252 30-second excerpts sampled from 206 iKala
 songs (plus 100 hidden excerpts reserved for MIREX).
 The music accompaniment and the singing voice are recorded at the left and right
 channels respectively and can be found under the Wavfile directory.
@@ -12,14 +12,14 @@ Details can be found at http://mac.citi.sinica.edu.tw/ikala/
 
 
 Attributes:
-    TIME_STEP (float): Time step unit (in second) (TODO: hop length?)
+    DATASET_DIR (str): The directory name for iKala dataset. Set to `'iKala'`.
 
     INDEX (dict): {track_id: track_data}.
         track_data is a `IKalaTrack` namedtuple.
 
-    METADATA (None): TODO
+    TIME_STEP (float): Time step unit (in second) (TODO: what is this? hop length? window?)
 
-    DIR (str): The directory name for iKala dataset. Set to `'iKala'`.
+    METADATA (None): TODO
 
     ID_MAPPING_URL (str): URL to get id-to-url mapping text file
 
@@ -37,10 +37,10 @@ import numpy as np
 
 import mirdata.utils as utils
 
-TIME_STEP = 0.032  # seconds
-INDEX = utils.load_json_index('ikala_index.json')
-METADATA = None
 DATASET_DIR = 'iKala'
+INDEX = utils.load_json_index('ikala_index.json')
+TIME_STEP = 0.032  # seconds
+METADATA = None
 ID_MAPPING_URL = 'http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt'
 
 
@@ -49,7 +49,8 @@ class Track(object):
 
     Args:
         track_id (str): track id of the track
-        data_home (str): data home folder path
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
         track_id (str): track id
@@ -57,8 +58,8 @@ class Track(object):
         song_id (str): song id of the track
         section (str): section (todo)
         singer_id (str): singer id
-        f0 (list): pitch
-        lyrics (list): lyrics
+        f0 (F0Data): pitch
+        lyrics (LyricData): lyrics
 
     """
     def __init__(self, track_id, data_home=None):
@@ -96,7 +97,8 @@ def download(data_home=None):
     pre-downloaded iKala dataset.
 
     Args:
-        data_home (str): Local home path to store the dataset
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     """
     save_path = utils.get_save_path(data_home)
@@ -122,7 +124,8 @@ def validate(dataset_path, data_home=None):
 
     Args:
         dataset_path (str): iKala dataset local path
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
         missing_files (list): List of file paths that are in the dataset index
@@ -150,7 +153,8 @@ def load(data_home=None):
     """Load iKala dataset
 
     Args:
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
         (dict): {`track_id`: track data}

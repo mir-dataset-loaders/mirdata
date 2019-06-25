@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 """Beatles Dataset Loader
 
-Beatles Dataset includes beat and metric position, chord, key, and segmentation
+The Beatles Dataset includes beat and metric position, chord, key, and segmentation
 annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf
 
 
 Attributes:
-    DIR (str): The directory name for Beatles dataset. Set to `'Beatles'`.
+    DATASET_DIR (str): The directory name for Beatles dataset. Set to `'Beatles'`.
 
     INDEX (dict): {track_id: track_data}.
-        track_data is a `BeatlesTrack` namedtuple.
+        track_data is a jason data loaded from `index/`
 
-    ANNOT_REMOTE (RemoteFileMetadata (namedtuple)): metadata
+    ANNOTATIONS_REMOTE (RemoteFileMetadata (namedtuple)): metadata
         of Beatles dataset. It includes the annotation file name, annotation
         file url, and checksum of the file.
 
@@ -36,16 +36,17 @@ class Track(object):
 
     Args:
         track_id (str): track id of the track
-        data_home (str): data home folder path
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
         track_id (str): track id
         audio_path (str): track audio path
         title (str): title of the track
-        beats: beats beat annotation
-        chords: chords annotation
-        key: key annotation
-        sections: sections annotation
+        beats (BeatData): beat annotation
+        chords (ChordData): chords annotation
+        key (KeyData): key annotation
+        sections (SectionData): sections annotation
 
     """
     def __init__(self, track_id, data_home=None):
@@ -86,12 +87,13 @@ class Track(object):
 
 
 def download(data_home=None, force_overwrite=False):
-    """Download Beatles Dataset (annotations).
+    """Download the Beatles Dataset (annotations).
     The audio files are not provided due to the copyright.
 
     Args:
-        data_home (str): Local home path to store the dataset
-        force_overwrite (bool): whether to overwrite the existing downloaded data
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool): Whether to overwrite the existing downloaded data
 
     """
     save_path = utils.get_save_path(data_home)
@@ -127,13 +129,14 @@ def download(data_home=None, force_overwrite=False):
 
 
 def exists(data_home=None):
-    """Return if Beatles dataset folder exists
+    """Check if the Beatles dataset folder exists
 
     Args:
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
-        (bool): True if Beatles dataset folder exists
+        (bool): True if the Beatles dataset folder exists
 
     """
     save_path = utils.get_save_path(data_home)
@@ -142,17 +145,18 @@ def exists(data_home=None):
 
 
 def validate(dataset_path, data_home=None):
-    """Validate if the stored dataset is a valid version
+    """Validate if a local version of this dataset is consistent
 
     Args:
-        dataset_path (str): Beatles dataset local path
-        data_home (str): Local home path that the dataset is being stored
+        dataset_path (str): the Beatles dataset local path
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
         missing_files (list): List of file paths that are in the dataset index
             but missing locally
-        invalid_checksums (list): List of file paths that file exists in the dataset
-            index but has a different checksum compare to the reference checksum
+        invalid_checksums (list): List of file paths where the expected file exists locally
+            but has a different checksum than the reference
 
     """
     missing_files, invalid_checksums = utils.validator(
@@ -162,7 +166,7 @@ def validate(dataset_path, data_home=None):
 
 
 def track_ids():
-    """Return track ids
+    """Get the list of track IDs for this dataset
 
     Returns:
         (list): A list of track ids
@@ -174,7 +178,8 @@ def load(data_home=None):
     """Load Beatles dataset
 
     Args:
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
         (dict): {`track_id`: track data}
@@ -191,7 +196,7 @@ def load(data_home=None):
 
 
 def _load_beats(beats_path):
-    """Private function to load beat data for a track
+    """Private function to load Beatles format beat data from a file
 
     Args:
         beats_path (str):
@@ -217,7 +222,7 @@ def _load_beats(beats_path):
 
 
 def _load_chords(chords_path):
-    """Private function to load chord data for a track
+    """Private function to load Beatles format chord data from a file
 
     Args:
         chords_path (str):
@@ -244,7 +249,7 @@ def _load_chords(chords_path):
 
 
 def _load_key(key_path):
-    """Private function to load key data for a track
+    """Private function to load Beatles format key data from a file
 
     Args:
         key_path (str):
@@ -268,7 +273,7 @@ def _load_key(key_path):
 
 
 def _load_sections(sections_path):
-    """Private function to load section data for a track
+    """Private function to load Beatles format sections data from a file
 
     Args:
         sections_path (str):
@@ -294,7 +299,9 @@ def _load_sections(sections_path):
 
 
 def _fix_newpoint(beat_positions):
-    """(placeholder)
+    """Fills in missing beat position labels by inferring the beat position
+        from neighboring beats.
+
     """
     while np.any(beat_positions == 'New Point'):
         idxs = np.where(beat_positions == 'New Point')[0]

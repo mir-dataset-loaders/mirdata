@@ -11,7 +11,7 @@ Details can be found at https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 Attributes:
     INDEX (dict): {track_id: track_data}.
-        track_data is a `OrchsetTrack` namedtuple.
+        track_data is a jason data loaded from `index/`
 
     DIR (str): The directory name for ORCHSET.
         Set to `'Orchset'`.
@@ -41,11 +41,12 @@ METADATA = None
 
 
 class Track(object):
-    """ORCHSET track class
+    """ORCHSET Track class
 
     Args:
-        track_id (str): track id of the track
-        data_home (str): data home folder path
+        track_id (str): track id of the Track
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
         track_id (str): track id
@@ -61,8 +62,7 @@ class Track(object):
         only_strings
         only_winds
         only_brass
-        melody: melody annotation
-
+        melody (F0Data): melody annotation
 
     """
     def __init__(self, track_id, data_home=None):
@@ -105,7 +105,8 @@ def download(data_home=None, force_overwrite=False):
     """Download ORCHSET Dataset.
 
     Args:
-        data_home (str): Local home path to store the dataset
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
         force_overwrite (bool): whether to overwrite the existing downloaded data
 
     """
@@ -128,7 +129,8 @@ def exists(data_home=None):
     """Return if ORCHSET folder exists
 
     Args:
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
         (bool): True if ORCHSET folder exists
@@ -145,7 +147,8 @@ def validate(dataset_path, data_home=None):
 
     Args:
         dataset_path (str): ORCHSET dataset local path
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
         missing_files (list): List of file paths that are in the dataset index
@@ -174,7 +177,8 @@ def load(data_home=None):
     """Load ORCHSET dataset
 
     Args:
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
         (dict): {`track_id`: track data}

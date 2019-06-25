@@ -12,6 +12,7 @@ Details can be found at https://medleydb.weebly.com
 
 Attributes:
     INDEX (dict): {track_id: track_data}.
+        track_data is a jason data loaded from `index/`
 
     DATASET_DIR (str): The directory name for MedleyDB melody dataset.
         Set to `'MedleyDB-Melody'`.
@@ -36,11 +37,12 @@ METADATA = None
 
 
 class Track(object):
-    """MedleyDB melody track class
+    """MedleyDB melody Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): data home folder path
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
         track_id (str): track id
@@ -51,9 +53,9 @@ class Track(object):
         is_excerpt (bool):
         is_instrumental (bool)
         n_sources (int):
-        melody1:
-        melody2:
-        melody3
+        melody1 (F0Data):
+        melody2 (F0Data):
+        melody3 (F0Data):
 
     """
     def __init__(self, track_id, data_home=None):
@@ -102,8 +104,8 @@ def download(data_home=None):
     through zenodo.org.
 
     Args:
-        data_home (str): Local home path to store the dataset
-
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
     """
 
     save_path = utils.get_save_path(data_home)
@@ -128,7 +130,8 @@ def validate(dataset_path, data_home=None):
 
     Args:
         dataset_path (str): MedleyDB melody dataset local path
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
         missing_files (list): List of file paths that are in the dataset index
@@ -156,7 +159,8 @@ def load(data_home=None):
     """Load MedleyDB melody dataset
 
     Args:
-        data_home (str): Local home path that the dataset is being stored.
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
         (dict): {`track_id`: track data}
