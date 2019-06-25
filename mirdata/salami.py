@@ -1,56 +1,97 @@
 """Salami Dataset Loader
 """
-from collections import namedtuple
 import csv
 import numpy as np
 import os
 
 import mirdata.utils as utils
 
-SALAMI_INDEX = utils.load_json_index('salami_index.json')
-SALAMI_METADATA = None
-SALAMI_DIR = 'Salami'
-SALAMI_ANNOT_REMOTE = utils.RemoteFileMetadata(
+INDEX = utils.load_json_index('salami_index.json')
+METADATA = None
+DATASET_DIR = 'Salami'
+ANNOTATIONS_REMOTE = utils.RemoteFileMetadata(
     filename='salami-data-public-master.zip',
     url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
     checksum='b01d6eb5b71cca1f3163fae4b2cd4c61',
 )
 
-SalamiTrack = namedtuple(
-    'SalamiTrack',
-    [
-        'track_id',
-        'audio_path',
-        'sections_annotator_1_uppercase',
-        'sections_annotator_1_lowercase',
-        'sections_annotator_2_uppercase',
-        'sections_annotator_2_lowercase',
-        'source',
-        'annotator_1_id',
-        'annotator_2_id',
-        'duration_sec',
-        'title',
-        'artist',
-        'annotator_1_time',
-        'annotator_2_time',
-        'broad_genre',
-        'genre',
-    ],
-)
+
+class Track(object):
+    def __init__(self, track_id, data_home=None):
+        if track_id not in INDEX:
+            raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
+
+        self.track_id = track_id
+        self._data_home = data_home
+        self._track_paths = INDEX[track_id]
+
+        if METADATA is None or METADATA['data_home'] != data_home:
+            _reload_metadata(data_home)
+
+        if track_id in METADATA.keys():
+            self._track_metadata = METADATA[track_id]
+        else:
+            # annotations with missing metadata
+            self._track_metadata = {
+                'source': None,
+                'annotator_1_id': None,
+                'annotator_2_id': None,
+                'duration_sec': None,
+                'title': None,
+                'artist': None,
+                'annotator_1_time': None,
+                'annotator_2_time': None,
+                'class': None,
+                'genre': None,
+            }
+
+        self.audio_path = utils.get_local_path(
+            self._data_home, self._track_paths['audio'][0])
+
+        self.source = self._track_metadata['source']
+        self.annotator_1_id = self._track_metadata['annotator_1_id']
+        self.annotator_2_id = self._track_metadata['annotator_2_id']
+        self.duration_sec = self._track_metadata['duration_sec']
+        self.title = self._track_metadata['title']
+        self.artist = self._track_metadata['artist']
+        self.annotator_1_time = self._track_metadata['annotator_1_time']
+        self.annotator_2_time = self._track_metadata['annotator_2_time']
+        self.broad_genre = self._track_metadata['class']
+        self.genre = self._track_metadata['genre']
+
+    @utils.cached_property
+    def sections_annotator_1_uppercase(self):
+        return _load_sections(utils.get_local_path(
+            self._data_home, self._track_paths['annotator_1_uppercase']))
+
+    @utils.cached_property
+    def sections_annotator_1_lowercase(self):
+        return _load_sections(utils.get_local_path(
+            self._data_home, self._track_paths['annotator_1_lowercase']))
+
+    @utils.cached_property
+    def sections_annotator_2_uppercase(self):
+        return _load_sections(utils.get_local_path(
+            self._data_home, self._track_paths['annotator_2_uppercase']))
+
+    @utils.cached_property
+    def sections_annotator_2_lowercase(self):
+        return _load_sections(utils.get_local_path(
+            self._data_home, self._track_paths['annotator_2_lowercase']))
 
 
 def download(data_home=None, force_overwrite=False):
     save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, SALAMI_DIR)
+    dataset_path = os.path.join(save_path, DATASET_DIR)
 
     if exists(data_home) and not force_overwrite:
         return
 
     if force_overwrite:
-        utils.force_delete_all(SALAMI_ANNOT_REMOTE, dataset_path=None, data_home=data_home)
+        utils.force_delete_all(ANNOTATIONS_REMOTE, dataset_path=None, data_home=data_home)
 
     download_path = utils.download_from_remote(
-        SALAMI_ANNOT_REMOTE, data_home=data_home, force_overwrite=force_overwrite
+        ANNOTATIONS_REMOTE, data_home=data_home, force_overwrite=force_overwrite
     )
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path)
@@ -74,123 +115,54 @@ def download(data_home=None, force_overwrite=False):
 
 def exists(data_home=None):
     save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, SALAMI_DIR)
+    dataset_path = os.path.join(save_path, DATASET_DIR)
     return os.path.exists(dataset_path)
 
 
 def validate(dataset_path, data_home=None):
     missing_files, invalid_checksums = utils.validator(
-        SALAMI_INDEX, data_home, dataset_path
+        INDEX, data_home, dataset_path
     )
     return missing_files, invalid_checksums
 
 
 def track_ids():
-    return list(SALAMI_INDEX.keys())
+    return list(INDEX.keys())
 
 
 def load(data_home=None):
     save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, SALAMI_DIR)
+    dataset_path = os.path.join(save_path, DATASET_DIR)
 
     validate(dataset_path, data_home)
     salami_data = {}
     for key in track_ids():
-        salami_data[key] = load_track(key, data_home=data_home)
+        salami_data[key] = Track(key, data_home=data_home)
     return salami_data
 
 
-def load_track(track_id, data_home=None):
-    if track_id not in SALAMI_INDEX.keys():
-        raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
-    track_data = SALAMI_INDEX[track_id]
+def _load_sections(sections_path):
+    if sections_path is None:
+        return None
 
-    if SALAMI_METADATA is None or SALAMI_METADATA['data_home'] != data_home:
-        _reload_metadata(data_home)
-        if SALAMI_METADATA is None:
-            raise EnvironmentError('Could not find Salami metadata file')
+    times = []
+    secs = []
+    with open(sections_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
+        for line in reader:
+            times.append(float(line[0]))
+            secs.append(line[1])
+    times = np.array(times)
+    secs = np.array(secs)
 
-    if track_id in SALAMI_METADATA.keys():
-        track_metadata = SALAMI_METADATA[track_id]
-    else:
-        # annotations with missing metadata
-        track_metadata = {
-            'source': None,
-            'annotator_1_id': None,
-            'annotator_2_id': None,
-            'duration_sec': None,
-            'title': None,
-            'artist': None,
-            'annotator_1_time': None,
-            'annotator_2_time': None,
-            'class': None,
-            'genre': None,
-        }
-    salami_path = utils.get_local_path(data_home, SALAMI_DIR)
-    annotations_dir = os.path.join(
-        salami_path, 'salami-data-public-master', 'annotations'
+    # remove sections with length == 0
+    times_revised = np.delete(times, np.where(np.diff(times) == 0))
+    secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
+    return utils.SectionData(
+        np.array(times_revised[:-1]),
+        np.array(times_revised)[1:],
+        np.array(secs_revised)[:-1],
     )
-    annotators = [
-        any(SALAMI_INDEX[track_id]['annotator_1_uppercase']),
-        any(SALAMI_INDEX[track_id]['annotator_2_uppercase']),
-    ]
-    all_annotators_section_data = _load_sections(
-        utils.get_local_path(annotations_dir, track_id), annotators
-    )
-
-    return SalamiTrack(
-        track_id,
-        utils.get_local_path(data_home, track_data['audio'][0]),
-        all_annotators_section_data[0],
-        all_annotators_section_data[1],
-        all_annotators_section_data[2],
-        all_annotators_section_data[3],
-        track_metadata['source'],
-        track_metadata['annotator_1_id'],
-        track_metadata['annotator_2_id'],
-        track_metadata['duration_sec'],
-        track_metadata['title'],
-        track_metadata['artist'],
-        track_metadata['annotator_1_time'],
-        track_metadata['annotator_2_time'],
-        track_metadata['class'],
-        track_metadata['genre'],
-    )
-
-
-def _load_sections(sections_path, annotators):
-    all_annotators_section_data = []
-    for a in range(len(annotators)):
-        for f in ['uppercase.txt', 'lowercase.txt']:
-            times, secs = [], []
-            if annotators[a]:
-                file_path = os.path.join(
-                    sections_path, 'parsed', 'textfile{}_{}'.format(str(a + 1), f)
-                )
-                if os.path.exists(file_path):
-
-                    with open(file_path, 'r') as fhandle:
-                        reader = csv.reader(fhandle, delimiter='\t')
-                        for line in reader:
-                            times.append(float(line[0]))
-                            secs.append(line[1])
-                    times, secs = np.array(times), np.array(secs)
-                    # remove sections with length == 0
-                    times_revised = np.delete(times, np.where(np.diff(times) == 0))
-                    secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
-                    all_annotators_section_data.append(
-                        utils.SectionData(
-                            np.array(times_revised[:-1]),
-                            np.array(times_revised)[1:],
-                            np.array(secs_revised)[:-1],
-                        )
-                    )
-                else:
-                    all_annotators_section_data.append(None)
-            else:
-                all_annotators_section_data.append(None)
-
-    return all_annotators_section_data
 
 
 def _load_metadata(data_home):
@@ -198,12 +170,12 @@ def _load_metadata(data_home):
     metadata_path = utils.get_local_path(
         data_home,
         os.path.join(
-            SALAMI_DIR, 'salami-data-public-master', 'metadata', 'metadata.csv'
+            DATASET_DIR, 'salami-data-public-master', 'metadata', 'metadata.csv'
         ),
     )
 
     if not os.path.exists(metadata_path):
-        return None
+        raise OSError('Could not find Salami metadata file')
 
     with open(metadata_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
@@ -236,8 +208,8 @@ def _load_metadata(data_home):
 
 
 def _reload_metadata(data_home):
-    global SALAMI_METADATA
-    SALAMI_METADATA = _load_metadata(data_home=data_home)
+    global METADATA
+    METADATA = _load_metadata(data_home=data_home)
 
 
 def cite():

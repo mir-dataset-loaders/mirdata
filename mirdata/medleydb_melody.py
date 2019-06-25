@@ -6,7 +6,6 @@ from __future__ import print_function
 
 """Orchset Dataset Loader
 """
-from collections import namedtuple
 import csv
 import json
 import numpy as np
@@ -14,26 +13,50 @@ import os
 
 import mirdata.utils as utils
 
-MEDLEYDB_MELODY_INDEX = utils.load_json_index('medleydb_melody_index.json')
-MEDLEYDB_MELODY_DIR = 'MedleyDB-Melody'
-MEDLEYDB_METADATA = None
+INDEX = utils.load_json_index('medleydb_melody_index.json')
+DATASET_DIR = 'MedleyDB-Melody'
+METADATA = None
 
-MedleydbMelodyTrack = namedtuple(
-    'MedleydbMelodyTrack',
-    [
-        'track_id',
-        'melody1',
-        'melody2',
-        'melody3',
-        'audio_path',
-        'artist',
-        'title',
-        'genre',
-        'is_excerpt',
-        'is_instrumental',
-        'n_sources',
-    ],
-)
+
+class Track(object):
+    def __init__(self, track_id, data_home=None):
+        if track_id not in INDEX:
+            raise ValueError(
+                '{} is not a valid track ID in MedleyDB-Melody'.format(track_id)
+            )
+
+        self.track_id = track_id
+        self._data_home = data_home
+        self._track_paths = INDEX[track_id]
+
+        if METADATA is None or METADATA['data_home'] != data_home:
+            _reload_metadata(data_home)
+
+        self._track_metadata = METADATA[track_id]
+
+        self.audio_path = utils.get_local_path(
+            self._data_home, self._track_paths['audio'][0])
+        self.artist = self._track_metadata['artist']
+        self.title = self._track_metadata['title']
+        self.genre = self._track_metadata['genre']
+        self.is_excerpt = self._track_metadata['is_excerpt']
+        self.is_instrumental = self._track_metadata['is_instrumental']
+        self.n_sources = self._track_metadata['n_sources']
+
+    @utils.cached_property
+    def melody1(self):
+        return _load_melody(utils.get_local_path(
+            self._data_home, self._track_paths['melody1'][0]))
+
+    @utils.cached_property
+    def melody2(self):
+        return _load_melody(utils.get_local_path(
+            self._data_home, self._track_paths['melody2'][0]))
+
+    @utils.cached_property
+    def melody3(self):
+        return _load_melody3(utils.get_local_path(
+            self._data_home, self._track_paths['melody3'][0]))
 
 
 def download(data_home=None):
@@ -56,63 +79,24 @@ def download(data_home=None):
 
 def validate(dataset_path, data_home=None):
     missing_files, invalid_checksums = utils.validator(
-        MEDLEYDB_MELODY_INDEX, data_home, dataset_path
+        INDEX, data_home, dataset_path
     )
     return missing_files, invalid_checksums
 
 
 def track_ids():
-    return list(MEDLEYDB_MELODY_INDEX.keys())
+    return list(INDEX.keys())
 
 
 def load(data_home=None):
     save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, MEDLEYDB_MELODY_DIR)
+    dataset_path = os.path.join(save_path, DATASET_DIR)
 
     validate(dataset_path, data_home)
     medleydb_melody_data = {}
     for key in track_ids():
-        medleydb_melody_data[key] = load_track(key, data_home=data_home)
+        medleydb_melody_data[key] = Track(key, data_home=data_home)
     return medleydb_melody_data
-
-
-def load_track(track_id, data_home=None):
-    if track_id not in MEDLEYDB_MELODY_INDEX.keys():
-        raise ValueError(
-            '{} is not a valid track ID in MedleyDB-Melody'.format(track_id)
-        )
-    track_data = MEDLEYDB_MELODY_INDEX[track_id]
-
-    if MEDLEYDB_METADATA is None or MEDLEYDB_METADATA['data_home'] != data_home:
-        _reload_metadata(data_home)
-        if MEDLEYDB_METADATA is None:
-            raise EnvironmentError('Could not find MedleyDB-Melody metadata file')
-
-    track_metadata = MEDLEYDB_METADATA[track_id]
-
-    melody1_data = _load_melody(
-        utils.get_local_path(data_home, track_data['melody1'][0])
-    )
-    melody2_data = _load_melody(
-        utils.get_local_path(data_home, track_data['melody2'][0])
-    )
-    melody3_data = _load_melody3(
-        utils.get_local_path(data_home, track_data['melody3'][0])
-    )
-
-    return MedleydbMelodyTrack(
-        track_id,
-        melody1_data,
-        melody2_data,
-        melody3_data,
-        utils.get_local_path(data_home, track_data['audio'][0]),
-        track_metadata['artist'],
-        track_metadata['title'],
-        track_metadata['genre'],
-        track_metadata['is_excerpt'],
-        track_metadata['is_instrumental'],
-        track_metadata['n_sources'],
-    )
 
 
 def _load_melody(melody_path):
@@ -150,16 +134,16 @@ def _load_melody3(melody_path):
 
 
 def _reload_metadata(data_home):
-    global MEDLEYDB_METADATA
-    MEDLEYDB_METADATA = _load_metadata(data_home=data_home)
+    global METADATA
+    METADATA = _load_metadata(data_home=data_home)
 
 
 def _load_metadata(data_home):
     metadata_path = utils.get_local_path(
-        data_home, os.path.join(MEDLEYDB_MELODY_DIR, 'medleydb_melody_metadata.json')
+        data_home, os.path.join(DATASET_DIR, 'medleydb_melody_metadata.json')
     )
     if not os.path.exists(metadata_path):
-        return None
+        raise OSError('Could not find MedleyDB-Melody metadata file')
     with open(metadata_path, 'r') as fhandle:
         metadata = json.load(fhandle)
 

@@ -6,7 +6,6 @@ from __future__ import print_function
 
 """Orchset Dataset Loader
 """
-from collections import namedtuple
 import csv
 import json
 import numpy as np
@@ -14,14 +13,38 @@ import os
 
 import mirdata.utils as utils
 
-MEDLEYDB_PITCH_INDEX = utils.load_json_index('medleydb_pitch_index.json')
-MEDLEYDB_PITCH_DIR = 'MedleyDB-Pitch'
-MEDLEYDB_METADATA = None
+INDEX = utils.load_json_index('medleydb_pitch_index.json')
+DATASET_DIR = 'MedleyDB-Pitch'
+METADATA = None
 
-MedleydbPitchTrack = namedtuple(
-    'MedleydbPitchTrack',
-    ['track_id', 'pitch', 'audio_path', 'instrument', 'artist', 'title', 'genre'],
-)
+
+class Track(object):
+    def __init__(self, track_id, data_home=None):
+        if track_id not in INDEX:
+            raise ValueError(
+                '{} is not a valid track ID in MedleyDB-Pitch'.format(track_id)
+            )
+
+        self.track_id = track_id
+        self._data_home = data_home
+        self._track_paths = INDEX[track_id]
+
+        if METADATA is None or METADATA['data_home'] != data_home:
+            _reload_metadata(data_home)
+
+        self._track_metadata = METADATA[track_id]
+
+        self.audio_path = utils.get_local_path(
+            self._data_home, self._track_paths['audio'][0])
+        self.instrument = self._track_metadata['instrument']
+        self.artist = self._track_metadata['artist']
+        self.title = self._track_metadata['title']
+        self.genre = self._track_metadata['genre']
+
+    @utils.cached_property
+    def pitch(self):
+        return _load_pitch(utils.get_local_path(
+            self._data_home, self._track_paths['pitch'][0]))
 
 
 def download(data_home=None):
@@ -44,51 +67,24 @@ def download(data_home=None):
 
 def validate(dataset_path, data_home=None):
     missing_files, invalid_checksums = utils.validator(
-        MEDLEYDB_PITCH_INDEX, data_home, dataset_path
+        INDEX, data_home, dataset_path
     )
     return missing_files, invalid_checksums
 
 
 def track_ids():
-    return list(MEDLEYDB_PITCH_INDEX.keys())
+    return list(INDEX.keys())
 
 
 def load(data_home=None):
     save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, MEDLEYDB_PITCH_DIR)
+    dataset_path = os.path.join(save_path, DATASET_DIR)
 
     validate(dataset_path, data_home)
     medleydb_pitch_data = {}
     for key in track_ids():
         medleydb_pitch_data[key] = load_track(key, data_home=data_home)
     return medleydb_pitch_data
-
-
-def load_track(track_id, data_home=None):
-    if track_id not in MEDLEYDB_PITCH_INDEX.keys():
-        raise ValueError(
-            '{} is not a valid track ID in MedleyDB-Pitch'.format(track_id)
-        )
-    track_data = MEDLEYDB_PITCH_INDEX[track_id]
-
-    if MEDLEYDB_METADATA is None or MEDLEYDB_METADATA['data_home'] != data_home:
-        _reload_metadata(data_home)
-        if MEDLEYDB_METADATA is None:
-            raise EnvironmentError('Could not find MedleyDB-Pitch metadata file')
-
-    track_metadata = MEDLEYDB_METADATA[track_id]
-
-    pitch_data = _load_pitch(utils.get_local_path(data_home, track_data['pitch'][0]))
-
-    return MedleydbPitchTrack(
-        track_id,
-        pitch_data,
-        utils.get_local_path(data_home, track_data['audio'][0]),
-        track_metadata['instrument'],
-        track_metadata['artist'],
-        track_metadata['title'],
-        track_metadata['genre'],
-    )
 
 
 def _load_pitch(pitch_path):
@@ -109,16 +105,16 @@ def _load_pitch(pitch_path):
 
 
 def _reload_metadata(data_home):
-    global MEDLEYDB_METADATA
-    MEDLEYDB_METADATA = _load_metadata(data_home=data_home)
+    global METADATA
+    METADATA = _load_metadata(data_home=data_home)
 
 
 def _load_metadata(data_home):
     metadata_path = utils.get_local_path(
-        data_home, os.path.join(MEDLEYDB_PITCH_DIR, 'medleydb_pitch_metadata.json')
+        data_home, os.path.join(DATASET_DIR, 'medleydb_pitch_metadata.json')
     )
     if not os.path.exists(metadata_path):
-        return None
+        raise OSError('Could not find MedleyDB-Pitch metadata file')
     with open(metadata_path, 'r') as fhandle:
         metadata = json.load(fhandle)
 

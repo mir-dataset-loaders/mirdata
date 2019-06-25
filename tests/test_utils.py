@@ -152,13 +152,13 @@ def test_get_save_path_with_data_home():
 def test_download_from_remote(httpserver, tmpdir):
     httpserver.serve_content(open('tests/resources/remote.wav').read())
 
-    TEST_META = utils.RemoteFileMetadata(
+    TEST_REMOTE = utils.RemoteFileMetadata(
         filename='remote.wav',
         url=httpserver.url,
         checksum=('3f77d0d69dc41b3696f074ad6bf2852f')
     )
 
-    download_path = utils.download_from_remote(TEST_META, str(tmpdir))
+    download_path = utils.download_from_remote(TEST_REMOTE, str(tmpdir))
     expected_download_path = os.path.join(str(tmpdir), 'remote.wav')
     assert expected_download_path == download_path
 
@@ -166,14 +166,14 @@ def test_download_from_remote(httpserver, tmpdir):
 def test_download_from_remote_raises_IOError(httpserver, tmpdir):
     httpserver.serve_content('File not found!', 404)
 
-    TEST_META = utils.RemoteFileMetadata(
+    TEST_REMOTE = utils.RemoteFileMetadata(
         filename='remote.wav',
         url=httpserver.url,
         checksum=('1234')
     )
 
     with pytest.raises(IOError):
-        utils.download_from_remote(TEST_META, str(tmpdir))
+        utils.download_from_remote(TEST_REMOTE, str(tmpdir))
 
 
 def test_unzip(tmpdir):
@@ -229,18 +229,18 @@ def test_create_invalid(tmpdir,
 def test_force_delete_all_nonempty_data_home(httpserver, tmpdir):
     tmpdir_str = str(tmpdir)
     remote_filename = 'remote.wav'
-    TEST_META = utils.RemoteFileMetadata(
+    TEST_REMOTE = utils.RemoteFileMetadata(
         filename=remote_filename,
         url=httpserver.url,
         checksum=('1234')
     )
 
     with pytest.raises(IOError):
-        utils.download_from_remote(TEST_META, tmpdir_str)
+        utils.download_from_remote(TEST_REMOTE, tmpdir_str)
 
     utils.untar('tests/resources/remote.tar.gz', tmpdir_str)
     assert os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert os.path.exists(tmpdir_str)
-    utils.force_delete_all(TEST_META, tmpdir_str, tmpdir_str)
+    utils.force_delete_all(TEST_REMOTE, tmpdir_str, tmpdir_str)
     assert not os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert not os.path.exists(tmpdir_str)
