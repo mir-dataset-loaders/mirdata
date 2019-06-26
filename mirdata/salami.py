@@ -108,22 +108,22 @@ class Track(object):
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
         return _load_sections(utils.get_local_path(
-            self._data_home, self._track_paths['annotator_1_uppercase']))
+            self._data_home, self._track_paths['annotator_1_uppercase'][0]))
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
         return _load_sections(utils.get_local_path(
-            self._data_home, self._track_paths['annotator_1_lowercase']))
+            self._data_home, self._track_paths['annotator_1_lowercase'][0]))
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
         return _load_sections(utils.get_local_path(
-            self._data_home, self._track_paths['annotator_2_uppercase']))
+            self._data_home, self._track_paths['annotator_2_uppercase'][0]))
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
         return _load_sections(utils.get_local_path(
-            self._data_home, self._track_paths['annotator_2_lowercase']))
+            self._data_home, self._track_paths['annotator_2_lowercase'][0]))
 
 
 def download(data_home=None, force_overwrite=False):

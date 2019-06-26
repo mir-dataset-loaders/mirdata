@@ -138,6 +138,8 @@ ChordData = namedtuple('ChordsData', ['start_times', 'end_times', 'chords'])
 
 KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
 
+ActivityData = namedtuple('ActivityData', ['start_times', 'end_times', 'activity'])
+
 
 def get_local_path(data_home, rel_path):
     if rel_path is None:
@@ -223,6 +225,7 @@ def download_from_remote(remote, data_home=None, force_overwrite=False):
         if data_home is None
         else os.path.join(data_home, remote.filename)
     )
+    print(download_path)
     if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
