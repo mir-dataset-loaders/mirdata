@@ -1,11 +1,27 @@
 # -*- coding: utf-8 -*-
+"""ORCHSET Dataset Loader
 
+Orchset is intended to be used as a dataset for the development and
+evaluation of melody extraction algorithms. This collection contains
+64 audio excerpts focused on symphonic music with their corresponding
+annotation of the melody.
+
+Details can be found at https://zenodo.org/record/1289786#.XREpzaeZPx6
+
+
+Attributes:
+    INDEX (dict): {track_id: track_data}.
+        track_data is a jason data loaded from `index/`
+
+    DIR (str): The directory name for ORCHSET.
+        Set to `'Orchset'`.
+
+    METADATA
+
+"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
-"""Orchset Dataset Loader
-"""
 import csv
 import numpy as np
 import os
@@ -25,6 +41,30 @@ METADATA = None
 
 
 class Track(object):
+    """ORCHSET Track class
+
+    Args:
+        track_id (str): track id of the Track
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Attributes:
+        track_id (str): track id
+        audio_path_mono (str): mono audio path of the track
+        audio_path_stereo (str): stereo audio path of the track
+        composer (str): composer
+        work (str):
+        predominant_melodic_instruments (str):
+        alternating_melody
+        contains_winds (bool?)
+        contains_strings
+        contains_brass
+        only_strings
+        only_winds
+        only_brass
+        melody (F0Data): melody annotation
+
+    """
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))
@@ -62,6 +102,14 @@ class Track(object):
 
 
 def download(data_home=None, force_overwrite=False):
+    """Download ORCHSET Dataset.
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool): whether to overwrite the existing downloaded data
+
+    """
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, DATASET_DIR)
 
@@ -78,12 +126,38 @@ def download(data_home=None, force_overwrite=False):
 
 
 def exists(data_home=None):
+    """Return if ORCHSET folder exists
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        (bool): True if ORCHSET folder exists
+
+    """
+
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, DATASET_DIR)
     return os.path.exists(dataset_path)
 
 
 def validate(dataset_path, data_home=None):
+    """Validate if the stored dataset is a valid version
+
+    Args:
+        dataset_path (str): ORCHSET dataset local path
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
+
     missing_files, invalid_checksums = utils.validator(
         INDEX, data_home, dataset_path
     )
@@ -91,10 +165,26 @@ def validate(dataset_path, data_home=None):
 
 
 def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
     return list(INDEX.keys())
 
 
 def load(data_home=None):
+    """Load ORCHSET dataset
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        (dict): {`track_id`: track data}
+
+    """
+
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, DATASET_DIR)
 
@@ -189,6 +279,8 @@ def _reload_metadata(data_home):
 
 
 def cite():
+    """Print the reference"""
+
     cite_data = """
 ===========  MLA ===========
 Bosch, J., Marxer, R., Gomez, E., "Evaluation and Combination of
