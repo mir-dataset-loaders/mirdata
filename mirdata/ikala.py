@@ -1,11 +1,35 @@
 # -*- coding: utf-8 -*-
+"""iKala Dataset Loader
+
+The iKala dataset is comprised of 252 30-second excerpts sampled from 206 iKala
+songs (plus 100 hidden excerpts reserved for MIREX).
+The music accompaniment and the singing voice are recorded at the left and right
+channels respectively and can be found under the Wavfile directory.
+In addition, the human-labeled pitch contours and timestamped lyrics can be
+found under PitchLabel and Lyrics respectively.
+
+Details can be found at http://mac.citi.sinica.edu.tw/ikala/
+
+
+Attributes:
+    DATASET_DIR (str): The directory name for iKala dataset. Set to `'iKala'`.
+
+    INDEX (dict): {track_id: track_data}.
+        track_data is a `IKalaTrack` namedtuple.
+
+    TIME_STEP (float): Time step unit (in second) (TODO: what is this? hop length? window?)
+
+    METADATA (None): TODO
+
+    ID_MAPPING_URL (str): URL to get id-to-url mapping text file
+
+"""
 
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-"""ikala dataset loader
-"""
+
 import csv
 import os
 import librosa
@@ -13,14 +37,31 @@ import numpy as np
 
 import mirdata.utils as utils
 
-TIME_STEP = 0.032  # seconds
-INDEX = utils.load_json_index('ikala_index.json')
-METADATA = None
 DATASET_DIR = 'iKala'
+INDEX = utils.load_json_index('ikala_index.json')
+TIME_STEP = 0.032  # seconds
+METADATA = None
 ID_MAPPING_URL = 'http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt'
 
 
 class Track(object):
+    """iKala track class
+
+    Args:
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Attributes:
+        track_id (str): track id
+        audio_path (str): track audio path
+        song_id (str): song id of the track
+        section (str): section (todo)
+        singer_id (str): singer id
+        f0 (F0Data): pitch
+        lyrics (LyricData): lyrics
+
+    """
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError(
@@ -51,6 +92,15 @@ class Track(object):
 
 
 def download(data_home=None):
+    """Download iKala Dataset. However, iKala dataset is not available for
+    download anymore. This function prints a helper message to organize
+    pre-downloaded iKala dataset.
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    """
     save_path = utils.get_save_path(data_home)
 
     print(
@@ -70,6 +120,20 @@ def download(data_home=None):
 
 
 def validate(dataset_path, data_home=None):
+    """Validate if the stored dataset is a valid version
+
+    Args:
+        dataset_path (str): iKala dataset local path
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
     missing_files, invalid_checksums = utils.validator(
         INDEX, data_home, dataset_path
     )
@@ -77,10 +141,26 @@ def validate(dataset_path, data_home=None):
 
 
 def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
     return list(INDEX.keys())
 
 
 def load(data_home=None):
+    """Load iKala dataset
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        (dict): {`track_id`: track data}
+
+    """
+
     validate(data_home)
     ikala_data = {}
     for key in INDEX.keys():
@@ -89,6 +169,15 @@ def load(data_home=None):
 
 
 def load_ikala_vocal_audio(ikalatrack):
+    """Load iKala vocal audio
+
+    Args:
+        ikalatrack: ikalatrack instance
+
+    Returns:
+        vocal_channel (np.array): vocal audio. size of `(N, )`
+        sr (int): sampling rate of the audio file
+    """
     audio_path = ikalatrack.audio_path
     audio, sr = librosa.load(audio_path, sr=None, mono=False)
     vocal_channel = audio[1, :]
@@ -96,6 +185,15 @@ def load_ikala_vocal_audio(ikalatrack):
 
 
 def load_ikala_instrumental_audio(ikalatrack):
+    """Load iKala instrumental audio
+
+    Args:
+        ikalatrack: ikalatrack instance
+
+    Returns:
+        instrumental_channel (np.array): vocal audio. size of `(N, )`
+        sr (int): sampling rate of the audio file
+    """
     audio_path = ikalatrack.audio_path
     audio, sr = librosa.load(audio_path, sr=None, mono=False)
     instrumental_channel = audio[0, :]
@@ -103,6 +201,15 @@ def load_ikala_instrumental_audio(ikalatrack):
 
 
 def load_ikala_mix_audio(ikalatrack):
+    """Load iKala mixture audio
+
+    Args:
+        ikalatrack: ikalatrack instance
+
+    Returns:
+        mixed_audio (np.array): vocal audio. size of `(2, N)`
+        sr (int): sampling rate of the audio file
+    """
     audio_path = ikalatrack.audio_path
     mixed_audio, sr = librosa.load(audio_path, sr=None, mono=True)
     return 2.0 * mixed_audio, sr
@@ -172,6 +279,8 @@ def _load_metadata(data_home):
 
 
 def cite():
+    """Print the reference"""
+
     cite_data = """
 ===========  MLA ===========
 Chan, Tak-Shing, et al.

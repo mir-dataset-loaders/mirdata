@@ -1,11 +1,28 @@
 # -*- coding: utf-8 -*-
+"""MedleyDB pitch Dataset Loader
 
+MedleyDB is a dataset of annotated, royalty-free multitrack recordings.
+MedleyDB was curated primarily to support research on melody extraction,
+addressing important shortcomings of existing collections. For each song
+we provide melody f0 annotations as well as instrument activations for
+evaluating automatic instrument recognition.
+
+Details can be found at https://medleydb.weebly.com
+
+
+Attributes:
+    INDEX (dict): {track_id: track_data}.
+        track_data is a jason data loaded from `index/`
+
+    DATASET_DIR (str): The directory name for MedleyDB melody dataset.
+        Set to `'MedleyDB-Pitch'`.
+
+    METADATA (None): TODO
+
+"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
-"""Orchset Dataset Loader
-"""
 import csv
 import json
 import numpy as np
@@ -19,6 +36,22 @@ METADATA = None
 
 
 class Track(object):
+    """MedleyDB pitch track class
+
+    Args:
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Attributes:
+        track_id (str): track id
+        audio_path (str): track audio path
+        instrument (str): instrument of the track
+        title (str): title of the track
+        genre (str): genre of the track
+        pitch (PitchData): pitch annotation
+
+    """
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError(
@@ -48,6 +81,15 @@ class Track(object):
 
 
 def download(data_home=None):
+    """MedleyDB is not available for downloading directly.
+    This function prints a helper message to download MedleyDB
+    through zenodo.org.
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+    """
+
     save_path = utils.get_save_path(data_home)
 
     print(
@@ -66,6 +108,21 @@ def download(data_home=None):
 
 
 def validate(dataset_path, data_home=None):
+    """Validate if the stored dataset is a valid version
+
+    Args:
+        dataset_path (str): MedleyDB pitch dataset local path
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
+
     missing_files, invalid_checksums = utils.validator(
         INDEX, data_home, dataset_path
     )
@@ -73,10 +130,26 @@ def validate(dataset_path, data_home=None):
 
 
 def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
     return list(INDEX.keys())
 
 
 def load(data_home=None):
+    """Load MedleyDB pitch dataset
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        (dict): {`track_id`: track data}
+
+    """
+
     save_path = utils.get_save_path(data_home)
     dataset_path = os.path.join(save_path, DATASET_DIR)
 
@@ -123,6 +196,8 @@ def _load_metadata(data_home):
 
 
 def cite():
+    """Print the reference"""
+
     cite_data = """
 ===========  MLA ===========
 Bittner, Rachel, et al.
