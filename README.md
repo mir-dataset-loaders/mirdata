@@ -52,7 +52,7 @@ import mirdata
 orchset_data = mirdata.orchset.load()
 ```
 
-### See what data is available for a track
+### See what data are available for a track
 ```python
 import mirdata
 
