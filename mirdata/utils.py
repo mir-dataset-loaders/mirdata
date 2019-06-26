@@ -130,6 +130,8 @@ ChordData = namedtuple('ChordData', ['start_times', 'end_times', 'chords'])
 
 KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
 
+ActivityData = namedtuple('ActivityData', ['start_times', 'end_times', 'activity'])
+
 
 def get_default_dataset_path(dataset_name):
     """Get the default path for a dataset given it's name
