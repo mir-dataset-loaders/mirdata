@@ -225,7 +225,6 @@ def download_from_remote(remote, data_home=None, force_overwrite=False):
         if data_home is None
         else os.path.join(data_home, remote.filename)
     )
-    print(download_path)
     if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
