@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """RWC Popular Dataset Loader
 """
 import csv
@@ -104,12 +105,14 @@ def download(data_home=None, force_overwrite=False):
     annotations_path = os.path.join(save_path, DATASET_DIR, 'annotations')
     metadata_path = os.path.join(save_path, DATASET_DIR)
 
+    if exists(data_home) and not force_overwrite:
+        return
+
     # Downloading multiple annotations
     for annotations_remote in [ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2,
                                ANNOTATIONS_REMOTE_3, ANNOTATIONS_REMOTE_4]:
 
-        # if exists(data_home) and not force_overwrite:
-        #     return
+
 
         if force_overwrite:
             utils.force_delete_all(annotations_remote, dataset_path=None, data_home=data_home)
@@ -181,11 +184,8 @@ def _load_sections(sections_path):
                 begs.append(float(line[0])/100.0)
                 ends.append(float(line[1])/100.0)
                 secs.append(line[2])
-    begs = np.array(begs)
-    ends = np.array(ends)
-    secs = np.array(secs)
 
-    return utils.SectionData(begs, ends, secs)
+    return utils.SectionData(np.array(begs), np.array(ends), np.array(secs))
 
 
 def _load_beats(beats_path):
@@ -218,14 +218,8 @@ def _load_chords(chords_path):
                     begs.append(float(line[0]))
                     ends.append(float(line[1]))
                     chords.append(line[2])
-        begs = np.array(begs)
-        ends = np.array(ends)
-        chords = np.array(chords)
-        data = utils.ChordData(begs, ends, chords)
-    else:
-        data = None
 
-    return data
+    return utils.ChordData(np.array(begs), np.array(ends), np.array(chords))
 
 
 def _load_voca_inst(voca_inst_path):
@@ -233,7 +227,7 @@ def _load_voca_inst(voca_inst_path):
         return None
     begs = []  # timestamps of vocal-instrument activity beginnings
     ends = []  # timestamps of vocal-instrument activity endings
-    event = []  # vocal-instrument activity labels
+    events = []  # vocal-instrument activity labels
 
     with open(voca_inst_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
@@ -247,17 +241,13 @@ def _load_voca_inst(voca_inst_path):
         if raw_data[i] != raw_data[-1]:
             begs.append(float(raw_data[i][0]))
             ends.append(float(raw_data[i+1][0]))
-            event.append(raw_data[i][1])
+            events.append(raw_data[i][1])
         else:
             begs.append(float(raw_data[i][0]))
             ends.append(float(raw_data[i][0]))
-            event.append(raw_data[i][1])
+            events.append(raw_data[i][1])
 
-    begs = np.array(begs)
-    ends = np.array(ends)
-    event = np.array(event)
-
-    return utils.EventData(begs, ends, event)
+    return utils.EventData(np.array(begs), np.array(ends), np.array(events))
 
 
 def _load_metadata(data_home):
@@ -271,7 +261,7 @@ def _load_metadata(data_home):
     if not os.path.exists(metadata_path):
         raise OSError('Could not find {}'.format(metadata_path))
 
-    with open(metadata_path, 'r', encoding='latin') as fhandle:
+    with open(metadata_path, 'r', encoding='utf-8') as fhandle:
         dialect = csv.Sniffer().sniff(fhandle.read(1024))
         fhandle.seek(0)
         reader = csv.reader(fhandle, dialect)

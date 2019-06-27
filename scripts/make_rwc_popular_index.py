@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import argparse
 import hashlib
 import json
@@ -35,7 +36,7 @@ def make_rwc_popular_index(data_path):
     annotations_files = os.listdir(os.path.join(annotations_dir,
                                                 'AIST.RWC-MDB-P-2001.CHORUS'))
     metadata_file = os.path.join(metadata_dir, 'rwc-p.csv')
-    with open(metadata_file, 'r', encoding='latin') as fhandle:
+    with open(metadata_file, 'r', encoding='utf-8') as fhandle:
         dialect = csv.Sniffer().sniff(fhandle.read(1024))
         fhandle.seek(0)
         reader = csv.reader(fhandle, dialect)

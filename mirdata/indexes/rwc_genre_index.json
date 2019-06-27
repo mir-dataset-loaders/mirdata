@@ -1,0 +1,1402 @@
+{
+  "RM-G001": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/1.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G001.CHORUS.TXT",
+      "2b1474b109bd33a83c7f0042df01f36b"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G001.BEAT.TXT",
+      "afefa45dcec914f7842cd1047804d158"
+    ]
+  },
+  "RM-G002": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/2.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G002.CHORUS.TXT",
+      "695fe2a90e8b5250f0570b968047b46f"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G002.BEAT.TXT",
+      "62c5ec60312f41ba4d1e74d0b04c4e8f"
+    ]
+  },
+  "RM-G003": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/3.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G003.CHORUS.TXT",
+      "44636b7d5bea62f8b3beff94451e0435"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G003.BEAT.TXT",
+      "1bdea198946234457a75f1ebe604513b"
+    ]
+  },
+  "RM-G004": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/4.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G004.CHORUS.TXT",
+      "c1e28fbec14be66dda670fc9bd829ed8"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G004.BEAT.TXT",
+      "66175d82646dc25edcf587f2ab3a861f"
+    ]
+  },
+  "RM-G005": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/5.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G005.CHORUS.TXT",
+      "ff0ac326653396269ef994dc7f96dcdf"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G005.BEAT.TXT",
+      "0a62b6f50530fac123bedb6d2dd8ed40"
+    ]
+  },
+  "RM-G006": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/6.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G006.CHORUS.TXT",
+      "bec02c720fe7b115d07e6a0345bb5f8e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G006.BEAT.TXT",
+      "d6155e05d3cd1ae5c4c01ee777e0baca"
+    ]
+  },
+  "RM-G007": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/7.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G007.CHORUS.TXT",
+      "266ef716d0b250cd2cd02097840ce566"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G007.BEAT.TXT",
+      "3670ea58a62b37802bd83aa70d31e651"
+    ]
+  },
+  "RM-G008": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/8.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G008.CHORUS.TXT",
+      "a3b04b606baf295ddec7ceca6f2cc633"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G008.BEAT.TXT",
+      "2157f56997c182a154c4c99e78fbc585"
+    ]
+  },
+  "RM-G009": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/9.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G009.CHORUS.TXT",
+      "7f68cfd08a232cc73b78f58103cc5f92"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G009.BEAT.TXT",
+      "0d6e75f078582c1bb9107f120cc7247c"
+    ]
+  },
+  "RM-G010": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/10.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G010.CHORUS.TXT",
+      "4d8cb6182f60eca4c6bda66755c7197a"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G010.BEAT.TXT",
+      "3dfade5a5deab157c591cec3b5a7454d"
+    ]
+  },
+  "RM-G011": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/11.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G011.CHORUS.TXT",
+      "f05970d43e54241ee872da4fbf80ad52"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G011.BEAT.TXT",
+      "4d4fddd16de75e399f3faae7e30cf40a"
+    ]
+  },
+  "RM-G012": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m01/12.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G012.CHORUS.TXT",
+      "91f0085ef6a072bc5db09742f232c998"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G012.BEAT.TXT",
+      "e50ca5184d8c72067c88ad9a7a52264e"
+    ]
+  },
+  "RM-G013": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/1.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G013.CHORUS.TXT",
+      "c45c3703042074ebb624a478c31dcea6"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G013.BEAT.TXT",
+      "3e8e7b34f895a16aeb1f61a1ff2e28ac"
+    ]
+  },
+  "RM-G014": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/2.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G014.CHORUS.TXT",
+      "c4ba076ae193924e3e63afba0094cf25"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G014.BEAT.TXT",
+      "a16721ed8a18c22ce6b54d401036f00f"
+    ]
+  },
+  "RM-G015": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/3.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G015.CHORUS.TXT",
+      "8213de4e68aa1d7c1ba514b281464be9"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G015.BEAT.TXT",
+      "61960a4f57c16b79c57f33395bd16467"
+    ]
+  },
+  "RM-G016": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/4.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G016.CHORUS.TXT",
+      "b647add32098e2de48fb161eee874755"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G016.BEAT.TXT",
+      "794380b12777c0315f1aa40d68a7e578"
+    ]
+  },
+  "RM-G017": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/5.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G017.CHORUS.TXT",
+      "04ae485112e7344a3578be6a3a9d89e3"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G017.BEAT.TXT",
+      "adfe0e521ab7d9e9419c941f4e12ba12"
+    ]
+  },
+  "RM-G018": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/6.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G018.CHORUS.TXT",
+      "03bc8b88f8a68a732de769a71aee6a87"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G018.BEAT.TXT",
+      "6ce8d413774d0286f466ee6ed9c00c3d"
+    ]
+  },
+  "RM-G019": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/7.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G019.CHORUS.TXT",
+      "edd3bf2daeffc6fec57e06e484a83bfe"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G019.BEAT.TXT",
+      "f7e89b7670f643b8ded9908a2d39c033"
+    ]
+  },
+  "RM-G020": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/8.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G020.CHORUS.TXT",
+      "d07af5f292fa3fce004516bc41922430"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G020.BEAT.TXT",
+      "d5db18da110cd0942e2471a379fa76ce"
+    ]
+  },
+  "RM-G021": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/9.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G021.CHORUS.TXT",
+      "313c00b37efd6866df99b5c4b0508373"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G021.BEAT.TXT",
+      "200ae38624312b1ff81a1f91ed91da11"
+    ]
+  },
+  "RM-G022": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/10.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G022.CHORUS.TXT",
+      "ba3075764e34d86d33bf00445c55fe01"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G022.BEAT.TXT",
+      "a819be02c9f184fbeda96c449efe46cd"
+    ]
+  },
+  "RM-G023": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/11.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G023.CHORUS.TXT",
+      "276c2dbb51c81299bc81bf5453d0599d"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G023.BEAT.TXT",
+      "b7c5eb4ac16cf13a6bc140028be9e690"
+    ]
+  },
+  "RM-G024": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/12.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G024.CHORUS.TXT",
+      "773ad92207bb3ee364e1e69cac3e507b"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G024.BEAT.TXT",
+      "b56ad2b6178406cffb6dced9a3282080"
+    ]
+  },
+  "RM-G025": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/13.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G025.CHORUS.TXT",
+      "80a53d40e5ce976453933b81ae0ee4fd"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G025.BEAT.TXT",
+      "9c4cb975dc41ce4de0353fd5e80ec0d8"
+    ]
+  },
+  "RM-G026": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/14.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G026.CHORUS.TXT",
+      "7586f7d669ed2bd576f2d920c8398ade"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G026.BEAT.TXT",
+      "715c196892ba43d67372b67b7916fb32"
+    ]
+  },
+  "RM-G027": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m02/15.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G027.CHORUS.TXT",
+      "bf0cce65fee353cd48c871fe1c623ada"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G027.BEAT.TXT",
+      "7a3b115c8ebf3236d2c22b50a9ce1382"
+    ]
+  },
+  "RM-G028": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m03/1.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G028.CHORUS.TXT",
+      "209e3163fae0eaa72b0a4f2d5ba534c0"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G028.BEAT.TXT",
+      "0bb021d6250eb2535873ca9766ebfe4e"
+    ]
+  },
+  "RM-G029": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m03/2.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G029.CHORUS.TXT",
+      "9c2b44853449cd7fb76335d524eee9e7"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G029.BEAT.TXT",
+      "f0b9ce6018ac89695057709f1be6717b"
+    ]
+  },
+  "RM-G030": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m03/3.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G030.CHORUS.TXT",
+      "4c07d604f7cd852af36ad074cfb2b7d1"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G030.BEAT.TXT",
+      "c3b6d31f52450f5571f500866ccc1ce8"
+    ]
+  },
+  "RM-G031": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m03/4.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G031.CHORUS.TXT",
+      "e9afb796839c5f27950f1536e79f9816"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G031.BEAT.TXT",
+      "26f3a96db378b12a33196ee5b82f7fe1"
+    ]
+  },
+  "RM-G032": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m03/5.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G032.CHORUS.TXT",
+      "9e7814706c3ccc68998871545c64e8fa"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G032.BEAT.TXT",
+      "a8e4db34d26ab1a9b96277f5b9de8577"
+    ]
+  },
+  "RM-G033": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m03/6.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G033.CHORUS.TXT",
+      "b30624245c658313c91d560d580b6479"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G033.BEAT.TXT",
+      "e8f1ed66dd5fb5a7a0c058aa6a60926e"
+    ]
+  },
+  "RM-G034": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m03/7.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G034.CHORUS.TXT",
+      "ada8440101d2c921a860cb2fcbf26466"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G034.BEAT.TXT",
+      "6999d1f0166c718b1891ee6bf6f89137"
+    ]
+  },
+  "RM-G035": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m03/8.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G035.CHORUS.TXT",
+      "76262cde37cbc3b8fd9c654f038b07c5"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G035.BEAT.TXT",
+      "52bcf2100aa6070706714a590376eaba"
+    ]
+  },
+  "RM-G036": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m03/9.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G036.CHORUS.TXT",
+      "696989e49e692cb25cac4ea5583078e3"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G036.BEAT.TXT",
+      "a3ca4a0da9d8c4ef803e2bf45b24f4da"
+    ]
+  },
+  "RM-G037": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/1.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G037.CHORUS.TXT",
+      "75ec357e0f99ef778ea3c2f5ab51a15f"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G037.BEAT.TXT",
+      "2e67c5182b242686474068f2910d327f"
+    ]
+  },
+  "RM-G038": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/2.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G038.CHORUS.TXT",
+      "96a13c0d5f471208ea8177404d387a5c"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G038.BEAT.TXT",
+      "acbf7e618ffc0bd985e4fd2fbbf1d252"
+    ]
+  },
+  "RM-G039": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/3.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G039.CHORUS.TXT",
+      "c56f698662411f8b218eef370d2e1312"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G039.BEAT.TXT",
+      "0b6d4b20deabb4cfff6e98b29ec8eb96"
+    ]
+  },
+  "RM-G040": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/4.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G040.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G040.BEAT.TXT",
+      "e5a7ad7fa1a9a3e4389984f6976a60b8"
+    ]
+  },
+  "RM-G041": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/5.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G041.CHORUS.TXT",
+      "81931784f9c3087601439e0d679ded47"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G041.BEAT.TXT",
+      "278f8115d2ed293f53c49c1fd2460d33"
+    ]
+  },
+  "RM-G042": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/6.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G042.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G042.BEAT.TXT",
+      "cf6e5106df18ceefa801514fd4260105"
+    ]
+  },
+  "RM-G043": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/7.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G043.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G043.BEAT.TXT",
+      "d9a7028d339eceb7be28fa5d91669c71"
+    ]
+  },
+  "RM-G044": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/8.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G044.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G044.BEAT.TXT",
+      "09f583a1d46219f994a6c155371d7a69"
+    ]
+  },
+  "RM-G045": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/9.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G045.CHORUS.TXT",
+      "f0f0c00d8426e78eb2fd44ae6be33275"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G045.BEAT.TXT",
+      "c33cc643ec3d611187352ecc7ec8e916"
+    ]
+  },
+  "RM-G046": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/10.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G046.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G046.BEAT.TXT",
+      "7cef950797427e3c310ad7978d33e9bd"
+    ]
+  },
+  "RM-G047": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/11.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G047.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G047.BEAT.TXT",
+      "f7a4247af19ce74142124928056d24b4"
+    ]
+  },
+  "RM-G048": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m04/12.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G048.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G048.BEAT.TXT",
+      "64dfc34fba258640e010097fdc4da019"
+    ]
+  },
+  "RM-G049": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m05/1.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G049.CHORUS.TXT",
+      "6a9b1757bd46ef596dc089b0998ffc28"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G049.BEAT.TXT",
+      "1b9e7e97fbfd1dcb85b418884eee626a"
+    ]
+  },
+  "RM-G050": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m05/2.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G050.CHORUS.TXT",
+      "77ab6f8886c3961e14fb861c1cf9e24f"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G050.BEAT.TXT",
+      "5bf071a92c144a74fa188bd781b55cfe"
+    ]
+  },
+  "RM-G051": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m05/3.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G051.CHORUS.TXT",
+      "4bb4789acd0731419ce6266fc3669d88"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G051.BEAT.TXT",
+      "4d528119aad045df4732ef16ea5bfee1"
+    ]
+  },
+  "RM-G052": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m05/4.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G052.CHORUS.TXT",
+      "474e4bf340dc22bdb3b8c2ce3e55fde7"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G052.BEAT.TXT",
+      "fc58854aa6c95757aedf91767640519d"
+    ]
+  },
+  "RM-G053": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m05/5.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G053.CHORUS.TXT",
+      "27c7c15dd0262f5050f639fd9c033cdf"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G053.BEAT.TXT",
+      "dd9364e10df4c988b01d97cf30efe8eb"
+    ]
+  },
+  "RM-G054": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m05/6.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G054.CHORUS.TXT",
+      "f119c926155d52a2a95244c2fea9c9be"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G054.BEAT.TXT",
+      "c3aee7962a30cf8ec810052dd11d967b"
+    ]
+  },
+  "RM-G055": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m05/7.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G055.CHORUS.TXT",
+      "40a6643f92da5c8548957e343c935454"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G055.BEAT.TXT",
+      "2adae627aab50d6786d246e83020e611"
+    ]
+  },
+  "RM-G056": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m05/8.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G056.CHORUS.TXT",
+      "8b4f3bb559a8bdc44a3adcce59f634ea"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G056.BEAT.TXT",
+      "67535747b5c9fbe6fd857f6fd3381c83"
+    ]
+  },
+  "RM-G057": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m06/1.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G057.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G057.BEAT.TXT",
+      "92c8235268bf3e1dd9ffb3a12804f757"
+    ]
+  },
+  "RM-G058": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m06/4.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G058_C.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G058_C.BEAT.TXT",
+      "1a2f1827eab24afa3a7937b6f01defd1"
+    ]
+  },
+  "RM-G059": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m06/5.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G059.CHORUS.TXT",
+      "c02e501e31d5765dccc29782e7dfd66a"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G059.BEAT.TXT",
+      "ff527c7e7fb2890d1649811b92de13f4"
+    ]
+  },
+  "RM-G060": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m06/6.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G060.CHORUS.TXT",
+      "b3de53e14a0602c270b25692a41dbf2f"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G060.BEAT.TXT",
+      "703fd3e4f1542f985bed121e4fe08cc7"
+    ]
+  },
+  "RM-G061": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m06/7.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G061.CHORUS.TXT",
+      "18e4fe75cf3d571fd9ded737e564f73a"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G061.BEAT.TXT",
+      "ee25ca5f8271c663334c07a5ddb70960"
+    ]
+  },
+  "RM-G062": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m06/8.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G062.CHORUS.TXT",
+      "f754c78b618e4467dc2f7e5d766a62cf"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G062.BEAT.TXT",
+      "21cc0f212c969222398ab8e5490a4ba9"
+    ]
+  },
+  "RM-G063": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m06/9.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G063.CHORUS.TXT",
+      "7fcb894ef113e8a28143c13e0eef3f09"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G063.BEAT.TXT",
+      "ca1a34c43738df851553fbfdfb23f418"
+    ]
+  },
+  "RM-G064": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/1.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G064.CHORUS.TXT",
+      "49455db90996d023b37f505ca1281c64"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G064.BEAT.TXT",
+      "1d9ba7d45c07e4bfb4e62156c5248a8c"
+    ]
+  },
+  "RM-G065": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/2.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G065.CHORUS.TXT",
+      "e1758f04a56f636dffbafd18673cd9a4"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G065.BEAT.TXT",
+      "1761902c91458458708dad8a6b43e97d"
+    ]
+  },
+  "RM-G066": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/3.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G066.CHORUS.TXT",
+      "98ae41a59b8f5a6c6be8d785ccad0990"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G066.BEAT.TXT",
+      "bb5029d9bedd4b342e8cc8acdc6f14c3"
+    ]
+  },
+  "RM-G067": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/4.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G067.CHORUS.TXT",
+      "f9c400c69314b291766aa177e17ecc18"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G067.BEAT.TXT",
+      "d786094617820f18991bd5a63785b64f"
+    ]
+  },
+  "RM-G068": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/5.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G068.CHORUS.TXT",
+      "446e7490c50cf53addd5c4c6e6a64531"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G068.BEAT.TXT",
+      "8e26d0b15468d2d60947887a51d998cd"
+    ]
+  },
+  "RM-G069": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/6.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G069.CHORUS.TXT",
+      "6d0de09f7386bd2976f62f08637e8a9f"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G069.BEAT.TXT",
+      "5315238d081c127d2f9e2a4e501b1437"
+    ]
+  },
+  "RM-G070": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/7.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G070.CHORUS.TXT",
+      "b201a583d112a09f6155e90768cc27db"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G070.BEAT.TXT",
+      "768bdfe5c12be904d12e689ec37a7c4f"
+    ]
+  },
+  "RM-G071": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/8.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G071.CHORUS.TXT",
+      "09dc90b3d0622f9713ced3acf412b888"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G071.BEAT.TXT",
+      "962b49d266aae5c8a328cb2f9834d569"
+    ]
+  },
+  "RM-G072": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/9.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G072.CHORUS.TXT",
+      "b1b173535bc94d1dc1152420f4bfd59e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G072.BEAT.TXT",
+      "a1654a3425cb0cd829b5c66ca9add740"
+    ]
+  },
+  "RM-G073": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/10.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G073.CHORUS.TXT",
+      "2345da4f58628073a98f95f3d22e4b0c"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G073.BEAT.TXT",
+      "60c6aaa1a8431a5ebfcaa1f19e16be54"
+    ]
+  },
+  "RM-G074": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/11.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G074.CHORUS.TXT",
+      "87f1559657d51401c74c1d0945084131"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G074.BEAT.TXT",
+      "4efe199931a5b23d42024f3189c511ee"
+    ]
+  },
+  "RM-G075": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m07/12.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G075.CHORUS.TXT",
+      "c58fc57fd13e50d34d99ba6c208c5561"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G075.BEAT.TXT",
+      "bd39280136a48e544fc049da211be876"
+    ]
+  },
+  "RM-G076": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/1.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G076.CHORUS.TXT",
+      "a884ebee310264fdd6f104295c3b6d99"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G076.BEAT.TXT",
+      "b9b3a1ad4e6c3d4d9d6f8ced8b8f83cf"
+    ]
+  },
+  "RM-G077": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/2.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G077.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G077.BEAT.TXT",
+      "f48f8c965a7d25996b53dd63385f7a43"
+    ]
+  },
+  "RM-G078": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/3.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G078.CHORUS.TXT",
+      "b37cbab6c75577e71d075707c7eab885"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G078.BEAT.TXT",
+      "13d91727fd691f2c28639724126166f0"
+    ]
+  },
+  "RM-G079": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/4.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G079.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G079.BEAT.TXT",
+      "929699dda7ce6ad5e892d3e114a9726f"
+    ]
+  },
+  "RM-G080": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/5.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G080.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G080.BEAT.TXT",
+      "f576f294f1f10e87070c4c4d0fc7fa6f"
+    ]
+  },
+  "RM-G081": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/6.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G081.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G081.BEAT.TXT",
+      "d60dde7af370361a19e9d96328f0de7f"
+    ]
+  },
+  "RM-G082": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/7.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G082.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G082.BEAT.TXT",
+      "c8aa991722b42c01a74db72bc5271c25"
+    ]
+  },
+  "RM-G083": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/8.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G083.CHORUS.TXT",
+      "dc6179849bd5f7b1d725e77e097ffa76"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G083.BEAT.TXT",
+      "5fcf491d81b5d07985a8308324c3fada"
+    ]
+  },
+  "RM-G084": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/9.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G084.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G084.BEAT.TXT",
+      "564286344292413b934f2cfb9bed1d5e"
+    ]
+  },
+  "RM-G085": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/10.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G085.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G085.BEAT.TXT",
+      "80d524ba121da1bfe1f516f0d046b612"
+    ]
+  },
+  "RM-G086": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/11.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G086.CHORUS.TXT",
+      "b971bb1d90b8d33e151f31c3105bbfde"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G086.BEAT.TXT",
+      "b8ad3a1cab3c9c2e60c86879f3658bca"
+    ]
+  },
+  "RM-G087": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/12.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G087.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G087.BEAT.TXT",
+      "6f85b871d0b49ccd2d8240b725c04b0b"
+    ]
+  },
+  "RM-G088": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/13.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G088.CHORUS.TXT",
+      "9e7b99eb5c0cc3bd1c19f34a308ac9c8"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G088.BEAT.TXT",
+      "1bca49ad6c02673236914e959231d16a"
+    ]
+  },
+  "RM-G089": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/14.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G089.CHORUS.TXT",
+      "171493fd586e62defe1217b7719c0d54"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G089.BEAT.TXT",
+      "f92c09e672c80ea1586da5a665778c13"
+    ]
+  },
+  "RM-G090": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m08/15.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G090.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G090.BEAT.TXT",
+      "3caba5a4d7260fd2b349b34000796544"
+    ]
+  },
+  "RM-G091": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/1.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G091.CHORUS.TXT",
+      "610839e338524154e35c0048f5e9aff1"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G091.BEAT.TXT",
+      "72d4e381ff7c6606eed86c9fb416aa96"
+    ]
+  },
+  "RM-G092": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/2.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G092.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G092.BEAT.TXT",
+      "cfb74959c6b6f27541dc94bbb26af22f"
+    ]
+  },
+  "RM-G093": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/3.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G093.CHORUS.TXT",
+      "92d7630b216293e4b412c02a77571c2a"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G093.BEAT.TXT",
+      "82410bb3b641f1cc5b023c80da4b262c"
+    ]
+  },
+  "RM-G094": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/4.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G094.CHORUS.TXT",
+      "1f0e565ec5ce4f727b07435ad73cc772"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G094.BEAT.TXT",
+      "98be415b5632433b01e13e3b4ad002dd"
+    ]
+  },
+  "RM-G095": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/5.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G095.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G095.BEAT.TXT",
+      "4cc58fb6bc373726daa9e578c117c3b5"
+    ]
+  },
+  "RM-G096": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/6.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G096.CHORUS.TXT",
+      "45c9f6eb4da311b51d088c4960174074"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G096.BEAT.TXT",
+      "d66a0b4b4337a12022dd573e6c3286fd"
+    ]
+  },
+  "RM-G097": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/7.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G097.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G097.BEAT.TXT",
+      "5cc9208b151f7e37ae026669851f658e"
+    ]
+  },
+  "RM-G098": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/8.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G098.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G098.BEAT.TXT",
+      "b36d83a07448847262fc59ef10b2ec92"
+    ]
+  },
+  "RM-G099": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/9.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G099.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G099.BEAT.TXT",
+      "6fd474a8f7a7e1d7170d852b19742567"
+    ]
+  },
+  "RM-G100": {
+    "audio": [
+      "RWC-Genre/audio/rwc-g-m09/10.wav",
+      null
+    ],
+    "sections": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G100.CHORUS.TXT",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    "beats": [
+      "RWC-Genre/annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G100.BEAT.TXT",
+      "7b42c25359aaa551ac482c01193ca1f8"
+    ]
+  }
+}
