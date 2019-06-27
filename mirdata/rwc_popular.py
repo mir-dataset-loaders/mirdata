@@ -278,7 +278,6 @@ def _load_metadata(data_home):
             if line[0] != 'Piece No.':
                 raw_data.append(line)
 
-    print(raw_data)
     metadata_index = {}
     for line in raw_data:
         if line[0] == 'Piece No.':
