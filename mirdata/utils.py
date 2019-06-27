@@ -138,7 +138,7 @@ ChordData = namedtuple('ChordsData', ['start_times', 'end_times', 'chords'])
 
 KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
 
-ActivityData = namedtuple('ActivityData', ['start_times', 'end_times', 'activity'])
+EventData = namedtuple('EventData', ['start_times', 'end_times', 'event'])
 
 
 def get_local_path(data_home, rel_path):
