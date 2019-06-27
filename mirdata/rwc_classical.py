@@ -1,40 +1,64 @@
+# -*- coding: utf-8 -*-
 """RWC Classical Dataset Loader
 """
-from collections import namedtuple
 import csv
 import numpy as np
 import os
 
 import mirdata.utils as utils
 
-RWC_CLASSICAL_INDEX = utils.load_json_index("rwc_classical_index.json")
-RWC_CLASSICAL_METADATA = utils.RemoteFileMetadata(
-    filename='rwc-mdb-j.html',
-    url='view-source:https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html',
+INDEX = utils.load_json_index("rwc_classical_index.json")
+METADATA = None
+METADATA_REMOTE = utils.RemoteFileMetadata(
+    filename='rwc-g.csv',
+    url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum=None)
-RWC_CLASSICAL_DIR = 'RWC-Classical'
-RWC_CLASSICAL_ANNOT_REMOTE_1 = utils.RemoteFileMetadata(
+DATASET_DIR = 'RWC-Classical'
+ANNOTATIONS_REMOTE_1 = utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
     checksum='e8ee05854833cbf5eb7280663f71c29b')
-RWC_CLASSICAL_ANNOT_REMOTE_2 =  utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_2 =  utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
     checksum='f77bd527510376f59f5a2eed8fd7feb3')
 
 
-RWCClassicalTrack = namedtuple(
-    'RWCClassicalTrack',
-    ['track_id',
-     'audio_path',
-     'sections',
-     'beats',
-     'duration_sec',
-     'title',
-     'artist',
-     'variation',
-     'instruments']
-)
+class Track(object):
+    def __init__(self, track_id, data_home=None):
+        if track_id not in INDEX:
+            raise ValueError('{} is not a valid track ID in RWC-Classical'.format(track_id))
+
+        self.track_id = track_id
+        self._data_home = data_home
+        self._track_paths = INDEX[track_id]
+
+        if METADATA is None or METADATA['data_home'] != data_home:
+            _reload_metadata(data_home)
+
+        self._track_metadata = METADATA[track_id]
+
+        self.audio_path = utils.get_local_path(
+            self._data_home, self._track_paths['audio'][0])
+
+        self.piece_number = self._track_metadata['piece_number']
+        self.suffix = self._track_metadata['suffix']
+        self.track_number = self._track_metadata['track_number']
+        self.title = self._track_metadata['title']
+        self.artist = self._track_metadata['artist']
+        self.track_duration_sec = self._track_metadata['track_duration_sec']
+        self.variation = self._track_metadata['variation']
+        self.instruments = self._track_metadata['instruments']
+
+    @utils.cached_property
+    def sections(self):
+        return _load_sections(utils.get_local_path(
+                self._data_home, self._track_paths['sections'][0]))
+
+    @utils.cached_property
+    def beats(self):
+        return _load_beats(utils.get_local_path(
+                self._data_home, self._track_paths['beats'][0]))
 
 
 def download(data_home=None, clobber=False):
