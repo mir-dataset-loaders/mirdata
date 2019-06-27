@@ -59,6 +59,7 @@ class Track(object):
                 'artist': None,
                 'singer_information': None,
                 'track_duration_sec': None,
+                'tempo': None,
                 'instruments': None,
                 'drum_information': None,
             }
@@ -73,6 +74,7 @@ class Track(object):
         self.artist = self._track_metadata['artist']
         self.singer_information = self._track_metadata['singer_information']
         self.track_duration_sec = self._track_metadata['track_duration_sec']
+        self.tempo = self._track_metadata['tempo']
         self.instruments = self._track_metadata['instruments']
         self.drum_information = self._track_metadata['drum_information']
 
@@ -282,7 +284,8 @@ def _load_metadata(data_home):
     for line in raw_data:
         if line[0] == 'Piece No.':
             continue
-        track_id = line[0]
+        p = '00' + line[0].split('.')[1][1:]
+        track_id = 'RM-P{}'.format(p[len(p) - 3:])
 
         metadata_index[track_id] = {
             'piece_number': line[0],
@@ -292,8 +295,9 @@ def _load_metadata(data_home):
             'artist': line[4],
             'singer_information': line[5],
             'track_duration_sec': line[6],
-            'instruments': line[7],
-            'drum_information': line[8],
+            'tempo': line[7],
+            'instruments': line[8],
+            'drum_information': line[9],
         }
 
     metadata_index['data_home'] = data_home
