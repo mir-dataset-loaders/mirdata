@@ -1,0 +1,1265 @@
+{
+  "invalid_checksums": {}, 
+  "missing_files": {
+    "21084_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21084_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21084_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21084_chorus.lab"
+    ], 
+    "61674_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/61674_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/61674_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/61674_verse.lab"
+    ], 
+    "10161_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/10161_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/10161_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/10161_chorus.lab"
+    ], 
+    "61677_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/61677_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/61677_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/61677_chorus.lab"
+    ], 
+    "31139_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31139_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31139_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31139_chorus.lab"
+    ], 
+    "45382_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45382_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45382_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45382_chorus.lab"
+    ], 
+    "21040_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21040_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21040_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21040_verse.lab"
+    ], 
+    "45423_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45423_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45423_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45423_verse.lab"
+    ], 
+    "45398_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45398_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45398_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45398_verse.lab"
+    ], 
+    "21063_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21063_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21063_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21063_chorus.lab"
+    ], 
+    "21075_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21075_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21075_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21075_verse.lab"
+    ], 
+    "31119_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31119_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31119_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31119_verse.lab"
+    ], 
+    "31126_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31126_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31126_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31126_chorus.lab"
+    ], 
+    "45412_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45412_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45412_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45412_verse.lab"
+    ], 
+    "66559_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/66559_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66559_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66559_chorus.lab"
+    ], 
+    "71706_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/71706_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71706_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71706_verse.lab"
+    ], 
+    "45387_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45387_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45387_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45387_verse.lab"
+    ], 
+    "21069_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21069_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21069_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21069_verse.lab"
+    ], 
+    "66565_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/66565_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66565_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66565_verse.lab"
+    ], 
+    "90586_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/90586_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/90586_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/90586_chorus.lab"
+    ], 
+    "61647_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/61647_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/61647_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/61647_chorus.lab"
+    ], 
+    "66556_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/66556_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66556_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66556_verse.lab"
+    ], 
+    "31112_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31112_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31112_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31112_chorus.lab"
+    ], 
+    "21045_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21045_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21045_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21045_chorus.lab"
+    ], 
+    "31092_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31092_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31092_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31092_verse.lab"
+    ], 
+    "31142_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31142_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31142_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31142_verse.lab"
+    ], 
+    "45368_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45368_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45368_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45368_verse.lab"
+    ], 
+    "21038_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21038_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21038_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21038_chorus.lab"
+    ], 
+    "54192_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54192_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54192_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54192_verse.lab"
+    ], 
+    "31134_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31134_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31134_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31134_verse.lab"
+    ], 
+    "45367_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45367_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45367_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45367_chorus.lab"
+    ], 
+    "54189_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54189_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54189_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54189_verse.lab"
+    ], 
+    "31107_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31107_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31107_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31107_verse.lab"
+    ], 
+    "45422_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45422_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45422_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45422_verse.lab"
+    ], 
+    "31118_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31118_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31118_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31118_chorus.lab"
+    ], 
+    "21025_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21025_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21025_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21025_verse.lab"
+    ], 
+    "21068_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21068_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21068_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21068_chorus.lab"
+    ], 
+    "54173_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54173_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54173_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54173_verse.lab"
+    ], 
+    "31104_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31104_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31104_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31104_verse.lab"
+    ], 
+    "45387_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45387_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45387_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45387_chorus.lab"
+    ], 
+    "45390_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45390_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45390_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45390_verse.lab"
+    ], 
+    "71711_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/71711_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71711_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71711_verse.lab"
+    ], 
+    "31134_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31134_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31134_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31134_chorus.lab"
+    ], 
+    "21073_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21073_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21073_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21073_verse.lab"
+    ], 
+    "71723_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/71723_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71723_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71723_verse.lab"
+    ], 
+    "21035_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21035_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21035_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21035_chorus.lab"
+    ], 
+    "21063_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21063_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21063_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21063_verse.lab"
+    ], 
+    "21073_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21073_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21073_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21073_chorus.lab"
+    ], 
+    "10174_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/10174_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/10174_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/10174_chorus.lab"
+    ], 
+    "21056_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21056_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21056_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21056_chorus.lab"
+    ], 
+    "21083_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21083_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21083_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21083_chorus.lab"
+    ], 
+    "21084_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21084_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21084_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21084_verse.lab"
+    ], 
+    "10171_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/10171_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/10171_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/10171_chorus.lab"
+    ], 
+    "31101_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31101_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31101_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31101_verse.lab"
+    ], 
+    "71720_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/71720_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71720_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71720_verse.lab"
+    ], 
+    "45416_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45416_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45416_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45416_verse.lab"
+    ], 
+    "21086_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21086_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21086_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21086_verse.lab"
+    ], 
+    "31083_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31083_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31083_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31083_chorus.lab"
+    ], 
+    "45421_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45421_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45421_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45421_verse.lab"
+    ], 
+    "71719_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/71719_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71719_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71719_chorus.lab"
+    ], 
+    "21061_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21061_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21061_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21061_verse.lab"
+    ], 
+    "54183_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54183_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54183_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54183_chorus.lab"
+    ], 
+    "66557_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/66557_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66557_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66557_chorus.lab"
+    ], 
+    "45429_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45429_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45429_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45429_chorus.lab"
+    ], 
+    "21068_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21068_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21068_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21068_verse.lab"
+    ], 
+    "54223_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54223_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54223_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54223_chorus.lab"
+    ], 
+    "54236_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54236_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54236_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54236_chorus.lab"
+    ], 
+    "31143_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31143_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31143_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31143_verse.lab"
+    ], 
+    "21075_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21075_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21075_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21075_chorus.lab"
+    ], 
+    "45362_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45362_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45362_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45362_verse.lab"
+    ], 
+    "45369_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45369_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45369_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45369_verse.lab"
+    ], 
+    "21057_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21057_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21057_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21057_chorus.lab"
+    ], 
+    "54233_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54233_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54233_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54233_chorus.lab"
+    ], 
+    "10170_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/10170_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/10170_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/10170_chorus.lab"
+    ], 
+    "54189_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54189_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54189_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54189_chorus.lab"
+    ], 
+    "66556_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/66556_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66556_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66556_chorus.lab"
+    ], 
+    "10161_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/10161_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/10161_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/10161_verse.lab"
+    ], 
+    "21035_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21035_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21035_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21035_verse.lab"
+    ], 
+    "21055_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21055_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21055_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21055_verse.lab"
+    ], 
+    "45410_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45410_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45410_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45410_verse.lab"
+    ], 
+    "54246_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54246_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54246_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54246_verse.lab"
+    ], 
+    "45384_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45384_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45384_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45384_verse.lab"
+    ], 
+    "45428_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45428_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45428_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45428_chorus.lab"
+    ], 
+    "31101_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31101_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31101_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31101_chorus.lab"
+    ], 
+    "45434_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45434_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45434_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45434_verse.lab"
+    ], 
+    "54190_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54190_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54190_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54190_verse.lab"
+    ], 
+    "54239_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54239_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54239_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54239_chorus.lab"
+    ], 
+    "31099_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31099_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31099_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31099_verse.lab"
+    ], 
+    "31113_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31113_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31113_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31113_verse.lab"
+    ], 
+    "45358_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45358_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45358_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45358_chorus.lab"
+    ], 
+    "31135_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31135_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31135_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31135_verse.lab"
+    ], 
+    "45386_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45386_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45386_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45386_verse.lab"
+    ], 
+    "54247_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54247_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54247_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54247_verse.lab"
+    ], 
+    "61671_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/61671_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/61671_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/61671_verse.lab"
+    ], 
+    "54243_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54243_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54243_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54243_verse.lab"
+    ], 
+    "31139_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31139_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31139_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31139_verse.lab"
+    ], 
+    "21039_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21039_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21039_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21039_verse.lab"
+    ], 
+    "66559_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/66559_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66559_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66559_verse.lab"
+    ], 
+    "21086_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21086_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21086_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21086_chorus.lab"
+    ], 
+    "66563_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/66563_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66563_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66563_verse.lab"
+    ], 
+    "45389_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45389_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45389_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45389_verse.lab"
+    ], 
+    "71710_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/71710_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71710_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71710_verse.lab"
+    ], 
+    "45359_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45359_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45359_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45359_verse.lab"
+    ], 
+    "31115_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31115_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31115_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31115_chorus.lab"
+    ], 
+    "21059_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21059_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21059_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21059_verse.lab"
+    ], 
+    "45393_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45393_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45393_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45393_verse.lab"
+    ], 
+    "45386_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45386_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45386_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45386_chorus.lab"
+    ], 
+    "21060_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21060_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21060_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21060_verse.lab"
+    ], 
+    "71711_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/71711_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71711_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71711_chorus.lab"
+    ], 
+    "21045_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21045_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21045_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21045_verse.lab"
+    ], 
+    "80616_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/80616_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/80616_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/80616_verse.lab"
+    ], 
+    "31075_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31075_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31075_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31075_chorus.lab"
+    ], 
+    "54226_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54226_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54226_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54226_verse.lab"
+    ], 
+    "45384_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45384_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45384_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45384_chorus.lab"
+    ], 
+    "45435_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45435_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45435_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45435_verse.lab"
+    ], 
+    "45305_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45305_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45305_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45305_verse.lab"
+    ], 
+    "45369_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45369_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45369_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45369_chorus.lab"
+    ], 
+    "31109_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31109_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31109_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31109_chorus.lab"
+    ], 
+    "45413_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45413_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45413_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45413_chorus.lab"
+    ], 
+    "21031_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21031_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21031_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21031_verse.lab"
+    ], 
+    "71710_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/71710_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71710_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71710_chorus.lab"
+    ], 
+    "21038_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21038_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21038_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21038_verse.lab"
+    ], 
+    "21074_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21074_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21074_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21074_chorus.lab"
+    ], 
+    "54219_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54219_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54219_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54219_verse.lab"
+    ], 
+    "66564_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/66564_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66564_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66564_verse.lab"
+    ], 
+    "31109_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31109_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31109_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31109_verse.lab"
+    ], 
+    "45305_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45305_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45305_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45305_chorus.lab"
+    ], 
+    "21062_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21062_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21062_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21062_verse.lab"
+    ], 
+    "54211_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54211_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54211_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54211_chorus.lab"
+    ], 
+    "45400_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45400_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45400_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45400_verse.lab"
+    ], 
+    "45385_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45385_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45385_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45385_chorus.lab"
+    ], 
+    "54245_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54245_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54245_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54245_verse.lab"
+    ], 
+    "31113_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31113_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31113_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31113_chorus.lab"
+    ], 
+    "45367_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45367_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45367_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45367_verse.lab"
+    ], 
+    "45361_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45361_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45361_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45361_chorus.lab"
+    ], 
+    "45414_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45414_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45414_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45414_verse.lab"
+    ], 
+    "54190_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54190_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54190_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54190_chorus.lab"
+    ], 
+    "31114_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31114_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31114_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31114_verse.lab"
+    ], 
+    "45435_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45435_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45435_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45435_chorus.lab"
+    ], 
+    "31081_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31081_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31081_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31081_verse.lab"
+    ], 
+    "54205_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54205_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54205_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54205_verse.lab"
+    ], 
+    "21033_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21033_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21033_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21033_chorus.lab"
+    ], 
+    "54202_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54202_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54202_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54202_chorus.lab"
+    ], 
+    "80612_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/80612_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/80612_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/80612_verse.lab"
+    ], 
+    "45419_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45419_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45419_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45419_chorus.lab"
+    ], 
+    "21033_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21033_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21033_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21033_verse.lab"
+    ], 
+    "66566_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/66566_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66566_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66566_verse.lab"
+    ], 
+    "45391_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45391_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45391_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45391_verse.lab"
+    ], 
+    "45418_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45418_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45418_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45418_verse.lab"
+    ], 
+    "45415_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45415_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45415_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45415_chorus.lab"
+    ], 
+    "31129_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31129_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31129_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31129_verse.lab"
+    ], 
+    "54194_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54194_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54194_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54194_chorus.lab"
+    ], 
+    "31103_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31103_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31103_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31103_chorus.lab"
+    ], 
+    "31135_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31135_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31135_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31135_chorus.lab"
+    ], 
+    "21076_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21076_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21076_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21076_verse.lab"
+    ], 
+    "31137_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31137_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31137_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31137_chorus.lab"
+    ], 
+    "54192_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54192_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54192_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54192_chorus.lab"
+    ], 
+    "45409_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45409_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45409_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45409_verse.lab"
+    ], 
+    "45378_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45378_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45378_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45378_verse.lab"
+    ], 
+    "31136_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31136_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31136_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31136_verse.lab"
+    ], 
+    "61673_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/61673_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/61673_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/61673_verse.lab"
+    ], 
+    "21054_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21054_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21054_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21054_chorus.lab"
+    ], 
+    "66563_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/66563_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66563_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66563_chorus.lab"
+    ], 
+    "54216_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54216_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54216_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54216_verse.lab"
+    ], 
+    "45429_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45429_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45429_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45429_verse.lab"
+    ], 
+    "31047_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31047_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31047_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31047_chorus.lab"
+    ], 
+    "71716_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/71716_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71716_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71716_chorus.lab"
+    ], 
+    "54246_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54246_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54246_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54246_chorus.lab"
+    ], 
+    "61670_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/61670_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/61670_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/61670_verse.lab"
+    ], 
+    "31092_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31092_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31092_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31092_chorus.lab"
+    ], 
+    "45381_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45381_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45381_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45381_chorus.lab"
+    ], 
+    "54243_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54243_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54243_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54243_chorus.lab"
+    ], 
+    "80614_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/80614_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/80614_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/80614_verse.lab"
+    ], 
+    "45398_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45398_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45398_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45398_chorus.lab"
+    ], 
+    "10164_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/10164_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/10164_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/10164_chorus.lab"
+    ], 
+    "54249_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54249_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54249_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54249_chorus.lab"
+    ], 
+    "71712_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/71712_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71712_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71712_verse.lab"
+    ], 
+    "31100_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31100_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31100_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31100_chorus.lab"
+    ], 
+    "31132_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31132_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31132_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31132_verse.lab"
+    ], 
+    "54227_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54227_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54227_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54227_chorus.lab"
+    ], 
+    "21054_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21054_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21054_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21054_verse.lab"
+    ], 
+    "45368_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45368_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45368_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45368_chorus.lab"
+    ], 
+    "54191_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54191_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54191_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54191_verse.lab"
+    ], 
+    "66560_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/66560_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66560_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66560_verse.lab"
+    ], 
+    "54212_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54212_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54212_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54212_chorus.lab"
+    ], 
+    "21025_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21025_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21025_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21025_chorus.lab"
+    ], 
+    "45415_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45415_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45415_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45415_verse.lab"
+    ], 
+    "54227_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54227_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54227_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54227_verse.lab"
+    ], 
+    "45431_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45431_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45431_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45431_verse.lab"
+    ], 
+    "31093_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31093_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31093_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31093_chorus.lab"
+    ], 
+    "71726_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/71726_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71726_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71726_chorus.lab"
+    ], 
+    "71720_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/71720_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71720_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71720_chorus.lab"
+    ], 
+    "21032_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21032_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21032_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21032_verse.lab"
+    ], 
+    "45358_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45358_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45358_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45358_verse.lab"
+    ], 
+    "21061_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21061_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21061_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21061_chorus.lab"
+    ], 
+    "45412_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45412_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45412_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45412_chorus.lab"
+    ], 
+    "31117_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31117_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31117_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31117_verse.lab"
+    ], 
+    "21064_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21064_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21064_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21064_verse.lab"
+    ], 
+    "54228_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54228_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54228_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54228_chorus.lab"
+    ], 
+    "61676_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/61676_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/61676_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/61676_chorus.lab"
+    ], 
+    "10171_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/10171_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/10171_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/10171_verse.lab"
+    ], 
+    "54173_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54173_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54173_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54173_chorus.lab"
+    ], 
+    "45392_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45392_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45392_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45392_verse.lab"
+    ], 
+    "31144_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31144_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31144_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31144_verse.lab"
+    ], 
+    "45417_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45417_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45417_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45417_verse.lab"
+    ], 
+    "90586_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/90586_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/90586_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/90586_verse.lab"
+    ], 
+    "45388_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45388_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45388_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45388_verse.lab"
+    ], 
+    "54223_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54223_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54223_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54223_verse.lab"
+    ], 
+    "90587_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/90587_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/90587_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/90587_verse.lab"
+    ], 
+    "66561_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/66561_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66561_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66561_chorus.lab"
+    ], 
+    "54221_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54221_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54221_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54221_chorus.lab"
+    ], 
+    "45416_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45416_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45416_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45416_chorus.lab"
+    ], 
+    "21040_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21040_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21040_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21040_chorus.lab"
+    ], 
+    "54186_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54186_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54186_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54186_verse.lab"
+    ], 
+    "54210_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54210_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54210_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54210_chorus.lab"
+    ], 
+    "31143_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31143_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31143_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31143_chorus.lab"
+    ], 
+    "21058_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21058_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21058_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21058_chorus.lab"
+    ], 
+    "71719_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/71719_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/71719_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/71719_verse.lab"
+    ], 
+    "45404_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45404_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45404_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45404_verse.lab"
+    ], 
+    "45389_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45389_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45389_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45389_chorus.lab"
+    ], 
+    "54242_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54242_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54242_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54242_verse.lab"
+    ], 
+    "61671_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/61671_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/61671_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/61671_chorus.lab"
+    ], 
+    "54251_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54251_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54251_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54251_verse.lab"
+    ], 
+    "54226_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54226_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54226_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54226_chorus.lab"
+    ], 
+    "61647_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/61647_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/61647_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/61647_verse.lab"
+    ], 
+    "45381_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45381_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45381_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45381_verse.lab"
+    ], 
+    "54213_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54213_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54213_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54213_chorus.lab"
+    ], 
+    "45422_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45422_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45422_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45422_chorus.lab"
+    ], 
+    "54249_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54249_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54249_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54249_verse.lab"
+    ], 
+    "54245_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54245_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54245_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54245_chorus.lab"
+    ], 
+    "54220_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/54220_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54220_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54220_chorus.lab"
+    ], 
+    "54016_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54016_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54016_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54016_verse.lab"
+    ], 
+    "31083_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31083_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31083_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31083_verse.lab"
+    ], 
+    "21071_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21071_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21071_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21071_verse.lab"
+    ], 
+    "31129_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31129_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31129_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31129_chorus.lab"
+    ], 
+    "45382_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45382_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45382_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45382_verse.lab"
+    ], 
+    "54194_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54194_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54194_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54194_verse.lab"
+    ], 
+    "31116_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/31116_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31116_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31116_chorus.lab"
+    ], 
+    "45424_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45424_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45424_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45424_chorus.lab"
+    ], 
+    "66558_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/66558_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/66558_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/66558_verse.lab"
+    ], 
+    "54213_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54213_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54213_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54213_verse.lab"
+    ], 
+    "45428_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/45428_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45428_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45428_verse.lab"
+    ], 
+    "21058_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/21058_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21058_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21058_verse.lab"
+    ], 
+    "21059_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/21059_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/21059_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/21059_chorus.lab"
+    ], 
+    "45392_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45392_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45392_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45392_chorus.lab"
+    ], 
+    "45406_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45406_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45406_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45406_chorus.lab"
+    ], 
+    "31137_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/31137_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/31137_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/31137_verse.lab"
+    ], 
+    "45378_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45378_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45378_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45378_chorus.lab"
+    ], 
+    "54233_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/54233_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/54233_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/54233_verse.lab"
+    ], 
+    "45363_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45363_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45363_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45363_chorus.lab"
+    ], 
+    "45425_chorus": [
+      "/tmp/mir_datasets/iKala/Wavfile/45425_chorus.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/45425_chorus.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/45425_chorus.lab"
+    ], 
+    "10174_verse": [
+      "/tmp/mir_datasets/iKala/Wavfile/10174_verse.wav", 
+      "/tmp/mir_datasets/iKala/PitchLabel/10174_verse.pv", 
+      "/tmp/mir_datasets/iKala/Lyrics/10174_verse.lab"
+    ]
+  }
+}
