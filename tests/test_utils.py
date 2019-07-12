@@ -100,33 +100,19 @@ def test_validator(mocker,
                    invalid_checksums):
     mock_check_index.return_value = missing_files, invalid_checksums
 
-    m, c = utils.validator('foo', 'bar', 'baz', True)
+    m, c = utils.validator('foo', 'bar', True)
     assert m == missing_files
     assert c == invalid_checksums
     mock_check_index.assert_called_once_with('foo', 'bar', True)
 
-    if missing_files or invalid_checksums:
-        mock_create_invalid.assert_called_once_with('baz', missing_files, invalid_checksums)
-    else:
-        mock_create_validated.assert_called_once_with('baz')
+    # if missing_files or invalid_checksums:
+    #     mock_create_invalid.assert_called_once_with(missing_files, invalid_checksums)
+    # else:
+    #     mock_create_validated.assert_called_once_with('baz')
 
 
-@pytest.mark.parametrize('data_home,rel_path,expected_path', [
-    ('tests/', None, None),
-    (None, 'tests/', os.path.join(utils.MIR_DATASETS_DIR, 'tests/')),
-    ('tests/', 'shoop', 'tests/shoop')
-])
-def test_get_local_path(data_home, rel_path, expected_path):
-    assert expected_path == utils.get_local_path(data_home, rel_path)
-
-
-def test_get_save_path(mocker, tmpdir):
-    mocker.patch('mirdata.utils.MIR_DATASETS_DIR', str(tmpdir))
-    assert tmpdir == utils.get_save_path(None)
-
-
-def test_get_save_path_with_data_home():
-    assert 'data_home' == utils.get_save_path('data_home')
+def test_get_default_dataset_path():
+    assert '/tmp/mir_datasets/data_home' == utils.get_default_dataset_path('data_home')
 
 
 def test_download_from_remote(httpserver, tmpdir):
@@ -221,6 +207,6 @@ def test_force_delete_all_nonempty_data_home(httpserver, tmpdir):
     utils.untar('tests/resources/remote.tar.gz', tmpdir_str)
     assert os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert os.path.exists(tmpdir_str)
-    utils.force_delete_all(TEST_REMOTE, tmpdir_str, tmpdir_str)
+    utils.force_delete_all(TEST_REMOTE, tmpdir_str)
     assert not os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert not os.path.exists(tmpdir_str)

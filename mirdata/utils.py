@@ -78,7 +78,7 @@ def check_index(dataset_index, data_home, silence=False):
             filepath = track[key][0]
             checksum = track[key][1]
             if filepath is not None:
-                local_path = get_local_path(data_home, filepath)
+                local_path = os.path.join(data_home, filepath)
                 # validate that the file exists on disk
                 if not os.path.exists(local_path):
                     if track_id not in missing_files.keys():
