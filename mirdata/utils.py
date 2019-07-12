@@ -93,7 +93,7 @@ def check_index(dataset_index, data_home, silence=False):
     return missing_files, invalid_checksums
 
 
-def validator(dataset_index, data_home, dataset_path, silence=False):
+def validator(dataset_index, data_home, silence=False):
     """validate.. (todo: what does it do?) """
     missing_files, invalid_checksums = check_index(dataset_index, data_home, silence)
 
@@ -114,9 +114,9 @@ def validator(dataset_index, data_home, dataset_path, silence=False):
             log_message('-' * 20, silence)
 
     if missing_files or invalid_checksums:
-        create_invalid(dataset_path, missing_files, invalid_checksums)
+        create_invalid(data_home, missing_files, invalid_checksums)
     else:
-        create_validated(dataset_path)
+        create_validated(data_home)
 
     return missing_files, invalid_checksums
 
@@ -136,37 +136,17 @@ ChordData = namedtuple('ChordsData', ['start_times', 'end_times', 'chords'])
 KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
 
 
-def get_local_path(data_home, rel_path):
-    if rel_path is None:
-        return None
-    if data_home is None:
-        return os.path.join(MIR_DATASETS_DIR, rel_path)
-    else:
-        return os.path.join(data_home, rel_path)
-
-
-def get_save_path(data_home):
-    """Get path to save a file given value of `data_home`, and create it if it
-    does not exist.
+def get_default_dataset_path(dataset_name):
+    """Get the default path for a dataset given it's name
 
     Args:
-        data_home (str or None)
-            If string, `save_path` is set to data_home.
-            If None, `save_path` is set to the default MIR_DATASETS_DIR value.
+        dataset_name (str or None)
+            The name of the dataset folder, e.g. 'Orchset'
 
     Returns:
-
-        save_path (str): Path to save data.
+        save_path (str): Local path to the dataset
     """
-    if data_home is None:
-        save_path = MIR_DATASETS_DIR
-    else:
-        save_path = data_home
-
-    if not os.path.exists(save_path):
-        os.makedirs(save_path)
-
-    return save_path
+    return os.path.join(MIR_DATASETS_DIR, dataset_name)
 
 
 RemoteFileMetadata = namedtuple('RemoteFileMetadata', ['filename', 'url', 'checksum'])
@@ -191,7 +171,7 @@ def download_large_file(url, download_path, callback=lambda: None):
     return download_path
 
 
-def download_from_remote(remote, data_home=None, force_overwrite=False):
+def download_from_remote(remote, data_home, force_overwrite=False):
     """Download a remote dataset into path
     Fetch a dataset pointed by remote's url, save into path using remote's
     filename and ensure its integrity based on the MD5 Checksum of the
@@ -215,11 +195,7 @@ def download_from_remote(remote, data_home=None, force_overwrite=False):
     file_path: string
         Full path of the created file.
     """
-    download_path = (
-        os.path.join(MIR_DATASETS_DIR, remote.filename)
-        if data_home is None
-        else os.path.join(data_home, remote.filename)
-    )
+    download_path = os.path.join(data_home, remote.filename)
     if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
@@ -311,19 +287,14 @@ def create_invalid(dataset_path, missing_files, invalid_checksums):
         )
 
 
-def force_delete_all(remote, dataset_path, data_home=None):
+def force_delete_all(remote, data_home):
     """todo
     """
     if remote:
-        download_path = (
-            os.path.join(MIR_DATASETS_DIR, remote.filename)
-            if data_home is None
-            else os.path.join(data_home, remote.filename)
-        )
+        download_path = os.path.join(data_home, remote.filename)
         os.remove(download_path)
 
-    if dataset_path:
-        shutil.rmtree(dataset_path)
+    shutil.rmtree(data_home)
 
 
 class cached_property(object):
