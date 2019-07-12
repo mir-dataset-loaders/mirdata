@@ -95,9 +95,6 @@ def check_index(dataset_index, data_home, silence=False):
 
 def validator(dataset_index, data_home, dataset_path, silence=False):
     """validate.. (todo: what does it do?) """
-    if check_validated(dataset_path):
-        return {}, {}
-
     missing_files, invalid_checksums = check_index(dataset_index, data_home, silence)
 
     # print path of any missing files
