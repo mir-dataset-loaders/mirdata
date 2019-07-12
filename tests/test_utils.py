@@ -89,46 +89,26 @@ def test_check_index(test_index,
 
 
 @pytest.mark.parametrize('missing_files,invalid_checksums', [
-    ({}, {}),
     ({'10161_chorus': ['tests/resources/10162_chorus.wav']}, {}),
     ({}, {'10161_chorus': ['tests/resources/10161_chorus.wav']}),
 ])
 def test_validator(mocker,
-                   mock_validated,
                    mock_check_index,
                    mock_create_invalid,
                    mock_create_validated,
                    missing_files,
                    invalid_checksums):
-    mock_validated.return_value = False
     mock_check_index.return_value = missing_files, invalid_checksums
 
     m, c = utils.validator('foo', 'bar', 'baz', True)
     assert m == missing_files
     assert c == invalid_checksums
-    mock_validated.assert_called_once_with('baz')
     mock_check_index.assert_called_once_with('foo', 'bar', True)
 
     if missing_files or invalid_checksums:
         mock_create_invalid.assert_called_once_with('baz', missing_files, invalid_checksums)
     else:
         mock_create_validated.assert_called_once_with('baz')
-
-
-def test_validator_already_validated(mocker,
-                                     mock_validated,
-                                     mock_check_index,
-                                     mock_create_invalid,
-                                     mock_create_validated):
-    mock_validated.return_value = True
-
-    m, c = utils.validator('foo', 'bar', 'baz', True)
-    assert m == {}
-    assert c == {}
-    mock_validated.assert_called_once_with('baz')
-    mock_check_index.assert_not_called()
-    mock_create_invalid.assert_not_called()
-    mock_create_validated.assert_not_called()
 
 
 @pytest.mark.parametrize('data_home,rel_path,expected_path', [
