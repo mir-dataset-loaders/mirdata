@@ -93,7 +93,8 @@ class Track(object):
         return _load_lyrics(utils.get_local_path(
             self._data_home, self._track_paths['lyrics'][0]))
 
-    def load_vocal_audio(self):
+    @property
+    def vocal_audio(self):
         """Load iKala vocal audio
 
         Returns:
@@ -104,7 +105,8 @@ class Track(object):
         vocal_channel = audio[1, :]
         return vocal_channel, sr
 
-    def load_instrumental_audio(self):
+    @property
+    def instrumental_audio(self):
         """Load iKala instrumental audio
 
         Returns:
@@ -115,7 +117,8 @@ class Track(object):
         instrumental_channel = audio[0, :]
         return instrumental_channel, sr
 
-    def load_mix_audio(self):
+    @property
+    def mix_audio(self):
         """Load iKala mixture audio
 
         Returns:
@@ -238,7 +241,9 @@ def _load_lyrics(lyrics_path):
             else:
                 pronunciations.append(None)
 
-    lyrics_data = utils.LyricData(start_times, end_times, lyrics, pronunciations)
+    lyrics_data = utils.LyricData(
+        np.array(start_times), np.array(end_times),
+        np.array(lyrics), np.array(pronunciations))
     return lyrics_data
 
 

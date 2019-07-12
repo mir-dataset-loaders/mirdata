@@ -35,22 +35,23 @@ def test_track():
     assert track.singer_id == '1'
 
     # test that cached properties don't fail and have the expected type
-    assert type(track.f0) == utils.F0Data
-    assert type(track.lyrics) == utils.LyricData
+    assert type(track.f0) is utils.F0Data
+    assert type(track.lyrics) is utils.LyricData
 
     # test audio loading functions
-    vocal, sr_vocal = track.load_vocal_audio()
+    vocal, sr_vocal = track.vocal_audio
     assert sr_vocal == 44100
     assert vocal.shape == (44100 * 2, )
 
-    instrumental, sr_instrumental = track.load_instrumental_audio()
+    instrumental, sr_instrumental = track.instrumental_audio
     assert sr_instrumental == 44100
     assert instrumental.shape == (44100 * 2, )
 
-    # in this example, the vocals start after the instrumental
+    # make sure we loaded the correct channels to vocal/instrumental
+    # (in this example, the first quarter second has only instrumentals)
     assert np.mean(np.abs(vocal[:8820])) < np.mean(np.abs(instrumental[:8820]))
 
-    mix, sr_mix = track.load_mix_audio()
+    mix, sr_mix = track.mix_audio
     assert sr_mix == 44100
     assert mix.shape == (44100 * 2, )
     assert np.array_equal(mix, instrumental + vocal)
@@ -58,21 +59,29 @@ def test_track():
 
 def test_track_ids():
     track_ids = ikala.track_ids()
+    assert type(track_ids) is list
     assert len(track_ids) == 252
 
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/'
     ikala_data = ikala.load(data_home=data_home, silence_validator=True)
-    assert type(ikala_data) == dict
-    assert len(ikala_data.keys()) == 252
+    assert type(ikala_data) is dict
+    assert len(ikala_data.keys()) is 252
 
 
 def test_load_f0():
     # load a file which exists
     f0_path = 'tests/resources/mir_datasets/iKala/PitchLabel/10161_chorus.pv'
     f0_data = ikala._load_f0(f0_path)
+
+    # check types
     assert type(f0_data) == utils.F0Data
+    assert type(f0_data.times) is np.ndarray
+    assert type(f0_data.frequencies) is np.ndarray
+    assert type(f0_data.confidence) is np.ndarray
+
+    # check values
     assert np.array_equal(f0_data.times, np.array([0.016, 0.048]))
     assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.946404518887]))
     assert np.array_equal(f0_data.confidence, np.array([0.0, 1.0]))
@@ -86,7 +95,15 @@ def test_load_lyrics():
     # load a file without pronounciations
     lyrics_path_simple = 'tests/resources/mir_datasets/iKala/Lyrics/10161_chorus.lab'
     lyrics_data_simple = ikala._load_lyrics(lyrics_path_simple)
-    assert type(lyrics_data_simple) == utils.LyricData
+
+    #check types
+    assert type(lyrics_data_simple) is utils.LyricData
+    assert type(lyrics_data_simple.start_times) is np.ndarray
+    assert type(lyrics_data_simple.end_times) is np.ndarray
+    assert type(lyrics_data_simple.lyrics) is np.ndarray
+    assert type(lyrics_data_simple.pronounciations) is np.ndarray
+
+    # check values
     assert np.array_equal(lyrics_data_simple.start_times, np.array([0.027, 0.232]))
     assert np.array_equal(lyrics_data_simple.end_times, np.array([0.232, 0.968]))
     assert np.array_equal(lyrics_data_simple.lyrics, np.array(['JUST', 'WANNA']))
@@ -95,7 +112,15 @@ def test_load_lyrics():
     # load a file with pronounciations
     lyrics_path_pronun = 'tests/resources/mir_datasets/iKala/Lyrics/10164_chorus.lab'
     lyrics_data_pronun = ikala._load_lyrics(lyrics_path_pronun)
-    assert type(lyrics_data_pronun) == utils.LyricData
+
+    # check types
+    assert type(lyrics_data_pronun) is utils.LyricData
+    assert type(lyrics_data_pronun.start_times) is np.ndarray
+    assert type(lyrics_data_pronun.end_times) is np.ndarray
+    assert type(lyrics_data_pronun.lyrics) is np.ndarray
+    assert type(lyrics_data_pronun.pronounciations) is np.ndarray
+
+    # check values
     assert np.array_equal(lyrics_data_pronun.start_times, np.array([0.021, 0.571]))
     assert np.array_equal(lyrics_data_pronun.end_times, np.array([0.189, 1.415]))
     assert np.array_equal(lyrics_data_pronun.lyrics, np.array(['ASDF', 'EVERYBODY']))
