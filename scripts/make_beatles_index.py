@@ -51,7 +51,7 @@ def make_beatles_index(data_path):
 
                 # checksum
                 audio_checksum = md5(os.path.join(audio_dir, c, '{}.wav'.format(t[:-4])))
-                audio_path = '{}/{}'.format(os.path.join('Beatles', 'audio'), os.path.join(c, '{}.wav'.format(t[:-4])))
+                audio_path = '{}/{}'.format('audio', os.path.join(c, '{}.wav'.format(t[:-4])))
 
                 annot_checksum, annot_rels = [], []
 
@@ -65,7 +65,7 @@ def make_beatles_index(data_path):
 
                     if os.path.exists(os.path.join(annot_path, annot_file)):
                         annot_checksum.append(md5(os.path.join(annot_path, annot_file)))
-                        annot_rels.append(os.path.join('Beatles', 'annotations', annot_type,
+                        annot_rels.append(os.path.join('annotations', annot_type,
                                                        'The Beatles', c, annot_file))
                     else:
                         annot_checksum.append(None)
