@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 if __name__ == '__main__':
     setup(
         name='mirdata',
-        version='0.0.3',  # version.version,
+        version='0.0.4',  # version.version,
         description='Common loaders for MIR datasets.',
         url='https://github.com/mir-dataset-loaders/mirdata',
         packages=find_packages(exclude=['test', '*.test', '*.test.*']),
@@ -20,8 +20,8 @@ if __name__ == '__main__':
         license='BSD-3-Clause',
         install_requires=[
             'tqdm',
-            'librosa',
-            'numpy',
+            'librosa<0.7.0',  # not using 0.7 for now because of sndfile
+            'numpy>=1.16',
             'six',
         ],
         extras_require={

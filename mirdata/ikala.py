@@ -77,8 +77,11 @@ class Track(object):
         self.audio_path = utils.get_local_path(
             self._data_home, self._track_paths['audio'][0])
         self.song_id = track_id.split('_')[0]
-        self.section = track_id.split('_')[0]
-        self.singer_id = METADATA[self.song_id]
+        self.section = track_id.split('_')[1]
+        if self.song_id in METADATA:
+            self.singer_id = METADATA[self.song_id]
+        else:
+            self.singer_id = None
 
     @utils.cached_property
     def f0(self):
@@ -89,6 +92,42 @@ class Track(object):
     def lyrics(self):
         return _load_lyrics(utils.get_local_path(
             self._data_home, self._track_paths['lyrics'][0]))
+
+    @property
+    def vocal_audio(self):
+        """Load iKala vocal audio
+
+        Returns:
+            vocal_channel (np.array): vocal audio. size of `(N, )`
+            sr (int): sampling rate of the audio file
+        """
+        audio, sr = librosa.load(self.audio_path, sr=None, mono=False)
+        vocal_channel = audio[1, :]
+        return vocal_channel, sr
+
+    @property
+    def instrumental_audio(self):
+        """Load iKala instrumental audio
+
+        Returns:
+            instrumental_channel (np.array): vocal audio. size of `(N, )`
+            sr (int): sampling rate of the audio file
+        """
+        audio, sr = librosa.load(self.audio_path, sr=None, mono=False)
+        instrumental_channel = audio[0, :]
+        return instrumental_channel, sr
+
+    @property
+    def mix_audio(self):
+        """Load iKala mixture audio
+
+        Returns:
+            mixed_audio (np.array): vocal audio. size of `(2, N)`
+            sr (int): sampling rate of the audio file
+        """
+        mixed_audio, sr = librosa.load(self.audio_path, sr=None, mono=True)
+        # multipy by 2 because librosa averages the left and right channel.
+        return 2.0 * mixed_audio, sr
 
 
 def download(data_home=None):
@@ -119,7 +158,7 @@ def download(data_home=None):
     )
 
 
-def validate(dataset_path, data_home=None):
+def validate(dataset_path, data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
     Args:
@@ -135,7 +174,7 @@ def validate(dataset_path, data_home=None):
 
     """
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, dataset_path
+        INDEX, data_home, dataset_path, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -149,7 +188,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None):
+def load(data_home=None, silence_validator=False):
     """Load iKala dataset
 
     Args:
@@ -161,58 +200,11 @@ def load(data_home=None):
 
     """
 
-    validate(data_home)
+    validate(data_home, silence=silence_validator)
     ikala_data = {}
     for key in INDEX.keys():
         ikala_data[key] = Track(key, data_home=data_home)
     return ikala_data
-
-
-def load_ikala_vocal_audio(ikalatrack):
-    """Load iKala vocal audio
-
-    Args:
-        ikalatrack: ikalatrack instance
-
-    Returns:
-        vocal_channel (np.array): vocal audio. size of `(N, )`
-        sr (int): sampling rate of the audio file
-    """
-    audio_path = ikalatrack.audio_path
-    audio, sr = librosa.load(audio_path, sr=None, mono=False)
-    vocal_channel = audio[1, :]
-    return vocal_channel, sr
-
-
-def load_ikala_instrumental_audio(ikalatrack):
-    """Load iKala instrumental audio
-
-    Args:
-        ikalatrack: ikalatrack instance
-
-    Returns:
-        instrumental_channel (np.array): vocal audio. size of `(N, )`
-        sr (int): sampling rate of the audio file
-    """
-    audio_path = ikalatrack.audio_path
-    audio, sr = librosa.load(audio_path, sr=None, mono=False)
-    instrumental_channel = audio[0, :]
-    return instrumental_channel, sr
-
-
-def load_ikala_mix_audio(ikalatrack):
-    """Load iKala mixture audio
-
-    Args:
-        ikalatrack: ikalatrack instance
-
-    Returns:
-        mixed_audio (np.array): vocal audio. size of `(2, N)`
-        sr (int): sampling rate of the audio file
-    """
-    audio_path = ikalatrack.audio_path
-    mixed_audio, sr = librosa.load(audio_path, sr=None, mono=True)
-    return 2.0 * mixed_audio, sr
 
 
 def _load_f0(f0_path):
@@ -223,7 +215,7 @@ def _load_f0(f0_path):
         lines = fhandle.readlines()
     f0_midi = np.array([float(line) for line in lines])
     f0_hz = librosa.midi_to_hz(f0_midi) * (f0_midi > 0)
-    confidence = (f0_hz > 0).astype(int)
+    confidence = (f0_hz > 0).astype(float)
     times = (np.arange(len(f0_midi)) * TIME_STEP) + (TIME_STEP / 2.0)
     f0_data = utils.F0Data(times, f0_hz, confidence)
     return f0_data
@@ -249,7 +241,9 @@ def _load_lyrics(lyrics_path):
             else:
                 pronunciations.append(None)
 
-    lyrics_data = utils.LyricData(start_times, end_times, lyrics, pronunciations)
+    lyrics_data = utils.LyricData(
+        np.array(start_times), np.array(end_times),
+        np.array(lyrics), np.array(pronunciations))
     return lyrics_data
 
 
@@ -282,7 +276,7 @@ def cite():
     """Print the reference"""
 
     cite_data = """
-===========  MLA ===========
+=========== MLA ===========
 Chan, Tak-Shing, et al.
 "Vocal activity informed singing voice separation with the iKala dataset."
 2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2015.
