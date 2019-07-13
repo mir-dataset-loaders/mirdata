@@ -58,6 +58,7 @@ class Track(object):
         melody3 (F0Data):
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError(
@@ -77,8 +78,7 @@ class Track(object):
 
         self._track_metadata = METADATA[track_id]
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.artist = self._track_metadata['artist']
         self.title = self._track_metadata['title']
         self.genre = self._track_metadata['genre']
@@ -86,20 +86,36 @@ class Track(object):
         self.is_instrumental = self._track_metadata['is_instrumental']
         self.n_sources = self._track_metadata['n_sources']
 
+    def __repr__(self):
+        repr_string = "MedleyDb-Melody Track(track_id={}, audio_path={}, artist={}, title={}, genre={}, is_excerpt={}, is_instrumental={}, n_sources={}, melody1=F0Data('times', 'frequencies', confidence'), melody2=F0Data('times', 'frequencies', confidence') melody3=F0Data('times', 'frequencies', confidence'))"
+        return repr_string.format(
+            self.track_id,
+            self.audio_path,
+            self.artist,
+            self.title,
+            self.genre,
+            self.is_excerpt,
+            self.is_instrumental,
+            self.n_sources,
+        )
+
     @utils.cached_property
     def melody1(self):
-        return _load_melody(os.path.join(
-            self._data_home, self._track_paths['melody1'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody1'][0])
+        )
 
     @utils.cached_property
     def melody2(self):
-        return _load_melody(os.path.join(
-            self._data_home, self._track_paths['melody2'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody2'][0])
+        )
 
     @utils.cached_property
     def melody3(self):
-        return _load_melody3(os.path.join(
-            self._data_home, self._track_paths['melody3'][0]))
+        return _load_melody3(
+            os.path.join(self._data_home, self._track_paths['melody3'][0])
+        )
 
 
 def download(data_home=None):
@@ -147,9 +163,7 @@ def validate(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
-    )
+    missing_files, invalid_checksums = utils.validator(INDEX, data_home)
     return missing_files, invalid_checksums
 
 
@@ -224,9 +238,7 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, 'medleydb_melody_metadata.json'
-    )
+    metadata_path = os.path.join(data_home, 'medleydb_melody_metadata.json')
     if not os.path.exists(metadata_path):
         raise OSError('Could not find MedleyDB-Melody metadata file')
     with open(metadata_path, 'r') as fhandle:

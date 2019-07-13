@@ -62,10 +62,10 @@ class Track(object):
         lyrics (LyricData): lyrics
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
-            raise ValueError(
-                '{} is not a valid track ID in iKala'.format(track_id))
+            raise ValueError('{} is not a valid track ID in iKala'.format(track_id))
 
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
@@ -78,8 +78,7 @@ class Track(object):
         self._data_home = data_home
         self._track_paths = INDEX[track_id]
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.song_id = track_id.split('_')[0]
         self.section = track_id.split('_')[1]
         if self.song_id in METADATA:
@@ -87,15 +86,21 @@ class Track(object):
         else:
             self.singer_id = None
 
+    def __repr__(self):
+        repr_string = "iKala Track(track_id={}, audio_path={}, song_id={}, section={}, singer_id={}, f0=F0Data('times', 'frequencies', 'confidence'), lyrics=LyricData('start_times', 'end_times', 'lyrics', 'pronounciations'))"
+        return repr_string.format(
+            self.track_id, self.audio_path, self.song_id, self.section, self.singer_id
+        )
+
     @utils.cached_property
     def f0(self):
-        return _load_f0(os.path.join(
-            self._data_home, self._track_paths['pitch'][0]))
+        return _load_f0(os.path.join(self._data_home, self._track_paths['pitch'][0]))
 
     @utils.cached_property
     def lyrics(self):
-        return _load_lyrics(os.path.join(
-            self._data_home, self._track_paths['lyrics'][0]))
+        return _load_lyrics(
+            os.path.join(self._data_home, self._track_paths['lyrics'][0])
+        )
 
     @property
     def vocal_audio(self):
@@ -252,8 +257,11 @@ def _load_lyrics(lyrics_path):
                 pronunciations.append(None)
 
     lyrics_data = utils.LyricData(
-        np.array(start_times), np.array(end_times),
-        np.array(lyrics), np.array(pronunciations))
+        np.array(start_times),
+        np.array(end_times),
+        np.array(lyrics),
+        np.array(pronunciations),
+    )
     return lyrics_data
 
 

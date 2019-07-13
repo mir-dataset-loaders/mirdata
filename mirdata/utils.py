@@ -149,6 +149,7 @@ RemoteFileMetadata = namedtuple('RemoteFileMetadata', ['filename', 'url', 'check
 
 class DownloadProgressBar(tqdm):
     """Wrap `tqdm` to show download progress"""
+
     def update_to(self, b=1, bsize=1, tsize=None):
         if tsize is not None:
             self.total = tsize

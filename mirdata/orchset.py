@@ -25,6 +25,7 @@ from __future__ import print_function
 import csv
 import numpy as np
 import os
+
 try:
     from pathlib import Path
 except ImportError:
@@ -69,6 +70,7 @@ class Track(object):
         melody (F0Data): melody annotation
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))
@@ -87,14 +89,17 @@ class Track(object):
         self._track_metadata = METADATA[track_id]
 
         self.audio_path_mono = os.path.join(
-            self._data_home, self._track_paths['audio_mono'][0])
+            self._data_home, self._track_paths['audio_mono'][0]
+        )
         self.audio_path_stereo = os.path.join(
-            self._data_home, self._track_paths['audio_stereo'][0])
+            self._data_home, self._track_paths['audio_stereo'][0]
+        )
         self.composer = self._track_metadata['composer']
         self.work = self._track_metadata['work']
         self.excerpt = self._track_metadata['excerpt']
-        self.predominant_melodic_instruments = \
-            self._track_metadata['predominant_melodic_instruments-normalized']
+        self.predominant_melodic_instruments = self._track_metadata[
+            'predominant_melodic_instruments-normalized'
+        ]
         self.alternating_melody = self._track_metadata['alternating_melody']
         self.contains_winds = self._track_metadata['contains_winds']
         self.contains_strings = self._track_metadata['contains_strings']
@@ -103,10 +108,30 @@ class Track(object):
         self.only_winds = self._track_metadata['only_winds']
         self.only_brass = self._track_metadata['only_brass']
 
+    def __repr__(self):
+        repr_string = "Orchset Track(track_id={}, audio_path_stereo={}, audio_path_mono={}, composer={}, work={}, excerpt={}, predominant_melodic_instruments={}, alternating_melody={}, contains_winds={}, contains_strings={}, contains_brass={}, only_strings={}, only_winds={}, only_brass={}, melody=F0Data('times', 'frequencies', 'confidence'))"
+        return repr_string.format(
+            self.track_id,
+            self.audio_path_stereo,
+            self.audio_path_mono,
+            self.composer,
+            self.work,
+            self.excerpt,
+            self.predominant_melodic_instruments,
+            self.alternating_melody,
+            self.contains_winds,
+            self.contains_strings,
+            self.contains_brass,
+            self.only_strings,
+            self.only_winds,
+            self.only_brass,
+        )
+
     @utils.cached_property
     def melody(self):
-        return _load_melody(os.path.join(
-            self._data_home, self._track_paths['melody'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody'][0])
+        )
 
 
 def download(data_home=None, force_overwrite=False):
@@ -129,9 +154,7 @@ def download(data_home=None, force_overwrite=False):
 
     Path(data_home).mkdir(exist_ok=True)
 
-    download_path = utils.download_from_remote(
-        REMOTE, force_overwrite=force_overwrite
-    )
+    download_path = utils.download_from_remote(REMOTE, force_overwrite=force_overwrite)
     utils.unzip(download_path, data_home)
 
 
@@ -151,9 +174,7 @@ def validate(data_home=None):
 
     """
 
-    missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
-    )
+    missing_files, invalid_checksums = utils.validator(INDEX, data_home)
     return missing_files, invalid_checksums
 
 
@@ -209,8 +230,7 @@ def _load_melody(melody_path):
 def _load_metadata(data_home):
 
     predominant_inst_path = os.path.join(
-        data_home,
-        'Orchset - Predominant Melodic Instruments.csv',
+        data_home, 'Orchset - Predominant Melodic Instruments.csv'
     )
 
     if not os.path.exists(predominant_inst_path):

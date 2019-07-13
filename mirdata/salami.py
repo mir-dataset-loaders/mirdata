@@ -22,6 +22,7 @@ Attributes:
 import csv
 import numpy as np
 import os
+
 try:
     from pathlib import Path
 except ImportError:
@@ -67,6 +68,7 @@ class Track(object):
 
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
@@ -99,8 +101,7 @@ class Track(object):
                 'genre': None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
         self.source = self._track_metadata['source']
         self.annotator_1_id = self._track_metadata['annotator_1_id']
@@ -113,25 +114,46 @@ class Track(object):
         self.broad_genre = self._track_metadata['class']
         self.genre = self._track_metadata['genre']
 
+    def __repr__(self):
+        repr_string = "Salami Track(track_id={}, audio_path={}, source={}, title={}, artist={}, duration_sec={}, annotator_1_id={}, annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, broad_genre={}, genre={}, sectionds_annotator_1_uppercase=Annotation, sections_annotator_1_lowercase=Annotation, sections_annotator_2_uppercase=Annotation, sections_annotator_2_lowercase=Annotation)"
+        return repr_string.format(
+            self.track_id,
+            self.audio_path,
+            self.source,
+            self.title,
+            self.artist,
+            self.duration_sec,
+            self.annotator_1_id,
+            self.annotator_2_id,
+            self.annotator_1_time,
+            self.annotator_2_time,
+            self.broad_genre,
+            self.genre,
+        )
+
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_1_uppercase']))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_1_uppercase'])
+        )
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_1_lowercase']))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_1_lowercase'])
+        )
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_2_uppercase']))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_2_uppercase'])
+        )
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_2_lowercase']))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_2_lowercase'])
+        )
 
 
 def download(data_home=None, force_overwrite=False):
@@ -172,7 +194,9 @@ def download(data_home=None, force_overwrite=False):
                     > salami-data-public-master/
                     > audio/
             and copy the Salami folder to {}
-        """.format(data_home)
+        """.format(
+                data_home
+            )
         )
 
 
@@ -193,9 +217,7 @@ def validate(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
-    )
+    missing_files, invalid_checksums = utils.validator(INDEX, data_home)
     return missing_files, invalid_checksums
 
 
@@ -256,10 +278,7 @@ def _load_sections(sections_path):
 def _load_metadata(data_home):
 
     metadata_path = os.path.join(
-        data_home,
-        os.path.join(
-            'salami-data-public-master', 'metadata', 'metadata.csv'
-        ),
+        data_home, os.path.join('salami-data-public-master', 'metadata', 'metadata.csv')
     )
 
     if not os.path.exists(metadata_path):

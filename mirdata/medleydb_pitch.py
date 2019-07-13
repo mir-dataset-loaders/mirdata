@@ -52,6 +52,7 @@ class Track(object):
         pitch (PitchData): pitch annotation
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError(
@@ -71,17 +72,26 @@ class Track(object):
 
         self._track_metadata = METADATA[track_id]
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.instrument = self._track_metadata['instrument']
         self.artist = self._track_metadata['artist']
         self.title = self._track_metadata['title']
         self.genre = self._track_metadata['genre']
 
+    def __repr__(self):
+        repr_string = "MedleyDb-Pitch Track(track_id={}, audio_path={}, artist={}, title={}, genre={}, instrument={}, pitch=PitchData('times', 'pitches', 'confidence'))"
+        return repr_string.format(
+            self.track_id,
+            self.audio_path,
+            self.artist,
+            self.title,
+            self.genre,
+            self.instrument,
+        )
+
     @utils.cached_property
     def pitch(self):
-        return _load_pitch(os.path.join(
-            self._data_home, self._track_paths['pitch'][0]))
+        return _load_pitch(os.path.join(self._data_home, self._track_paths['pitch'][0]))
 
 
 def download(data_home=None):
@@ -129,9 +139,7 @@ def validate(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
-    )
+    missing_files, invalid_checksums = utils.validator(INDEX, data_home)
     return missing_files, invalid_checksums
 
 
@@ -188,9 +196,7 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, 'medleydb_pitch_metadata.json'
-    )
+    metadata_path = os.path.join(data_home, 'medleydb_pitch_metadata.json')
     if not os.path.exists(metadata_path):
         raise OSError('Could not find MedleyDB-Pitch metadata file')
     with open(metadata_path, 'r') as fhandle:
