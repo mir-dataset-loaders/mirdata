@@ -163,11 +163,10 @@ def download(data_home=None):
     )
 
 
-def validate(dataset_path, data_home=None, silence=False):
+def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
     Args:
-        dataset_path (str): iKala dataset local path
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 

@@ -150,11 +150,10 @@ def download(data_home=None, force_overwrite=False):
 #     return os.path.exists(data_home)
 
 
-def validate(dataset_path, data_home=None):
+def validate(data_home=None):
     """Validate if a local version of this dataset is consistent
 
     Args:
-        dataset_path (str): the Beatles dataset local path
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 

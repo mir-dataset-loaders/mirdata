@@ -21,7 +21,7 @@ def data_home(tmpdir):
 
 @pytest.fixture
 def save_path(data_home):
-    return utils.get_save_path(data_home)
+    return utils.get_default_dataset_path(data_home)
 
 
 @pytest.fixture
