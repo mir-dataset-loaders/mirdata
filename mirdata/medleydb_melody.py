@@ -134,7 +134,6 @@ def validate(data_home=None):
     """Validate if the stored dataset is a valid version
 
     Args:
-        dataset_path (str): MedleyDB melody dataset local path
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
@@ -225,8 +224,8 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = utils.get_local_path(
-        data_home, os.path.join(DATASET_DIR, 'medleydb_melody_metadata.json')
+    metadata_path = os.path.join(
+        data_home, 'medleydb_melody_metadata.json'
     )
     if not os.path.exists(metadata_path):
         raise OSError('Could not find MedleyDB-Melody metadata file')
