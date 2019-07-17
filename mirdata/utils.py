@@ -113,11 +113,6 @@ def validator(dataset_index, data_home, silence=False):
                 log_message(fpath, silence)
             log_message('-' * 20, silence)
 
-    if missing_files or invalid_checksums:
-        create_invalid(data_home, missing_files, invalid_checksums)
-    else:
-        create_validated(data_home)
-
     return missing_files, invalid_checksums
 
 
@@ -268,23 +263,6 @@ def load_json_index(filename):
     CWD = os.path.dirname(os.path.realpath(__file__))
     with open(os.path.join(CWD, 'indexes', filename)) as f:
         return json.load(f)
-
-
-def check_validated(dataset_path):
-    return os.path.exists(os.path.join(dataset_path, VALIDATED_FILE_NAME))
-
-
-def create_validated(dataset_path):
-    open(os.path.join(dataset_path, VALIDATED_FILE_NAME), 'a').close()
-
-
-def create_invalid(dataset_path, missing_files, invalid_checksums):
-    with open(os.path.join(dataset_path, INVALID_FILE_NAME), 'w') as f:
-        json.dump(
-            {'missing_files': missing_files, 'invalid_checksums': invalid_checksums},
-            f,
-            indent=2,
-        )
 
 
 def force_delete_all(remote, data_home):
