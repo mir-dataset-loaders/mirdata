@@ -135,22 +135,6 @@ def download(data_home=None, force_overwrite=False):
         )
 
 
-# def exists(data_home=None):
-#     """Check if the Beatles dataset folder exists
-
-#     Args:
-#         data_home (str): Local path where the dataset is stored.
-#             If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-#     Returns:
-#         (bool): True if the Beatles dataset folder exists
-
-#     """
-#     if data_home is None:
-#         data_home = utils.get_default_dataset_path(DATASET_DIR)
-#     return os.path.exists(data_home)
-
-
 def validate(data_home=None):
     """Validate if a local version of this dataset is consistent
 
