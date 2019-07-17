@@ -45,15 +45,15 @@ def make_orchset_index(data_path):
 
         index[track_id] = {
             'audio_stereo': (
-                'Orchset/audio/stereo/{}.wav'.format(track_id),
+                'audio/stereo/{}.wav'.format(track_id),
                 audio_stereo_checksum
             ),
             'audio_mono': (
-                'Orchset/audio/mono/{}.wav'.format(track_id),
+                'audio/mono/{}.wav'.format(track_id),
                 audio_mono_checksum
             ),
             'melody': (
-                'Orchset/GT/{}.mel'.format(track_id),
+                'GT/{}.mel'.format(track_id),
                 melody_checksum
             )
         }
