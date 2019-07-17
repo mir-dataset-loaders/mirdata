@@ -45,15 +45,15 @@ def make_ikala_index(ikala_data_path):
 
         ikala_index[track_id] = {
             'audio': (
-                'iKala/Wavfile/{}.wav'.format(track_id),
+                'Wavfile/{}.wav'.format(track_id),
                 audio_checksum
             ),
             'pitch': (
-                'iKala/PitchLabel/{}.pv'.format(track_id),
+                'PitchLabel/{}.pv'.format(track_id),
                 pitch_checksum
             ),
             'lyrics': (
-                'iKala/Lyrics/{}.lab'.format(track_id),
+                'Lyrics/{}.lab'.format(track_id),
                 lyrics_checksum
             )
         }
