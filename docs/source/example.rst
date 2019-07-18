@@ -44,14 +44,14 @@ The ID's and annotation data can be loaded as below.
 
     # Load the dataset
     orchset_data = mirdata.orchset.load()
-
     orchset_ids = mirdata.orchset.track_ids()
-    orchset_data = mirdata.orchset.load()
 
     # todo: add __str__() method and print(orchset_data)
 
 
-A more end-to-end example would be like this.
+If we wanted to use Orchset to evaluate the performance of a melody extraction algorithm
+(in our case, `very_bad_melody_extractor`), and then split the scores based on the
+metadata, we could do the following:
 
 .. code-block:: python
     :linenos:
@@ -117,3 +117,5 @@ This is the result of the example above.
                ('Raw Pitch Accuracy', 0.03685636856368564),
                ('Raw Chroma Accuracy', 0.08997289972899729),
                ('Overall Accuracy', 0.036657681940700806)])}}
+
+`very_bad_melody_extractor` performs very badly!
