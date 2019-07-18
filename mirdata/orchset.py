@@ -25,6 +25,10 @@ from __future__ import print_function
 import csv
 import numpy as np
 import os
+try:
+    from pathlib import Path
+except ImportError:
+    from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
 
@@ -123,8 +127,7 @@ def download(data_home=None, force_overwrite=False):
     if force_overwrite:
         utils.force_delete_all(REMOTE, data_home)
 
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
+    Path(data_home).mkdir(exist_ok=True)
 
     download_path = utils.download_from_remote(
         REMOTE, force_overwrite=force_overwrite
