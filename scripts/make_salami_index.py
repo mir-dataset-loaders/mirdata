@@ -48,7 +48,7 @@ def make_salami_index(data_path):
                                                'textfile{}_{}'.format(a, f))):
                     annot_checksum.append(md5(os.path.join(annotations_dir, track_id,
                                                            'parsed', 'textfile'+a+'_'+f)))
-                    annot_rels.append(os.path.join('Salami', 'salami-data-public-master',
+                    annot_rels.append(os.path.join('salami-data-public-master',
                                                    'annotations', track_id, 'parsed',
                                                    'textfile{}_{}'.format(a, f)))
                 else:
@@ -57,7 +57,7 @@ def make_salami_index(data_path):
 
         salami_index[track_id] = {
             'audio': (
-                os.path.join('Salami', 'audio', '{}.mp3'.format(track_id)),
+                os.path.join('audio', '{}.mp3'.format(track_id)),
                 audio_checksum
             ),
             'annotator_1_uppercase': (

@@ -8,7 +8,7 @@ from mirdata import ikala, utils
 
 
 def test_track():
-    data_home = 'tests/resources/mir_datasets/'
+    data_home = 'tests/resources/mir_datasets/iKala'
     track = ikala.Track('10161_chorus', data_home=data_home)
 
     # test attributes are loaded as expected
@@ -16,15 +16,15 @@ def test_track():
     assert track._data_home == data_home
     assert track._track_paths == {
         "audio": [
-            "iKala/Wavfile/10161_chorus.wav",
+            "Wavfile/10161_chorus.wav",
             "278ae003cb0d323e99b9a643c0f2eeda"
         ],
         "pitch": [
-            "iKala/PitchLabel/10161_chorus.pv",
+            "PitchLabel/10161_chorus.pv",
             "0d93a011a9e668fd80673049089bbb14"
         ],
         "lyrics": [
-            "iKala/Lyrics/10161_chorus.lab",
+            "Lyrics/10161_chorus.lab",
             "79bbeb72b422056fd43be4e8d63319ce"
         ]
     }
@@ -64,7 +64,7 @@ def test_track_ids():
 
 
 def test_load():
-    data_home = 'tests/resources/mir_datasets/'
+    data_home = 'tests/resources/mir_datasets/iKala'
     ikala_data = ikala.load(data_home=data_home, silence_validator=True)
     assert type(ikala_data) is dict
     assert len(ikala_data.keys()) is 252
@@ -132,7 +132,7 @@ def test_load_lyrics():
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/'
+    data_home = 'tests/resources/mir_datasets/iKala'
     metadata = ikala._load_metadata(data_home)
     assert metadata['data_home'] == data_home
     assert metadata['10161'] == '1'

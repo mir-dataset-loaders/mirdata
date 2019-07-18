@@ -71,10 +71,14 @@ class Track(object):
             _reload_metadata(data_home)
 
         self.track_id = track_id
+
+        if data_home is None:
+            data_home = utils.get_default_dataset_path(DATASET_DIR)
+
         self._data_home = data_home
         self._track_paths = INDEX[track_id]
 
-        self.audio_path = utils.get_local_path(
+        self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
         self.song_id = track_id.split('_')[0]
         self.section = track_id.split('_')[1]
@@ -85,12 +89,12 @@ class Track(object):
 
     @utils.cached_property
     def f0(self):
-        return _load_f0(utils.get_local_path(
+        return _load_f0(os.path.join(
             self._data_home, self._track_paths['pitch'][0]))
 
     @utils.cached_property
     def lyrics(self):
-        return _load_lyrics(utils.get_local_path(
+        return _load_lyrics(os.path.join(
             self._data_home, self._track_paths['lyrics'][0]))
 
     @property
@@ -140,7 +144,8 @@ def download(data_home=None):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     """
-    save_path = utils.get_save_path(data_home)
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     print(
         """
@@ -153,16 +158,15 @@ def download(data_home=None):
                 > Wavfile/
         and copy the {ikala_dir} folder to {save_path}
     """.format(
-            ikala_dir=DATASET_DIR, save_path=save_path
+            ikala_dir=DATASET_DIR, save_path=data_home
         )
     )
 
 
-def validate(dataset_path, data_home=None, silence=False):
+def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
     Args:
-        dataset_path (str): iKala dataset local path
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
@@ -173,8 +177,11 @@ def validate(dataset_path, data_home=None, silence=False):
             index but has a different checksum compare to the reference checksum
 
     """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, dataset_path, silence=silence
+        INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -199,6 +206,9 @@ def load(data_home=None, silence_validator=False):
         (dict): {`track_id`: track data}
 
     """
+
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     validate(data_home, silence=silence_validator)
     ikala_data = {}
@@ -253,9 +263,10 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    id_map_path = utils.get_local_path(
-        data_home, os.path.join(DATASET_DIR, 'id_mapping.txt')
-    )
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    id_map_path = os.path.join(data_home, 'id_mapping.txt')
     if not os.path.exists(id_map_path):
         utils.download_large_file(ID_MAPPING_URL, id_map_path)
 
