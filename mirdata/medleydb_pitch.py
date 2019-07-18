@@ -59,6 +59,10 @@ class Track(object):
             )
 
         self.track_id = track_id
+
+        if data_home is None:
+            data_home = utils.get_default_dataset_path(DATASET_DIR)
+
         self._data_home = data_home
         self._track_paths = INDEX[track_id]
 
@@ -67,7 +71,7 @@ class Track(object):
 
         self._track_metadata = METADATA[track_id]
 
-        self.audio_path = utils.get_local_path(
+        self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
         self.instrument = self._track_metadata['instrument']
         self.artist = self._track_metadata['artist']
@@ -76,7 +80,7 @@ class Track(object):
 
     @utils.cached_property
     def pitch(self):
-        return _load_pitch(utils.get_local_path(
+        return _load_pitch(os.path.join(
             self._data_home, self._track_paths['pitch'][0]))
 
 
@@ -90,7 +94,8 @@ def download(data_home=None):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
     """
 
-    save_path = utils.get_save_path(data_home)
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     print(
         """
@@ -99,19 +104,18 @@ def download(data_home=None):
         and request access.
 
         Once downloaded, unzip the file MedleyDB-Pitch.zip
-        and place the result in:
-        {save_path}
+        and copy the result to:
+        {data_home}
     """.format(
-            save_path=save_path
+            data_home=data_home
         )
     )
 
 
-def validate(dataset_path, data_home=None):
+def validate(data_home=None):
     """Validate if the stored dataset is a valid version
 
     Args:
-        dataset_path (str): MedleyDB pitch dataset local path
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
@@ -122,9 +126,11 @@ def validate(dataset_path, data_home=None):
             index but has a different checksum compare to the reference checksum
 
     """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, dataset_path
+        INDEX, data_home
     )
     return missing_files, invalid_checksums
 
@@ -149,11 +155,10 @@ def load(data_home=None):
         (dict): {`track_id`: track data}
 
     """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
-
-    validate(dataset_path, data_home)
+    validate(data_home)
     medleydb_pitch_data = {}
     for key in track_ids():
         medleydb_pitch_data[key] = load_track(key, data_home=data_home)
@@ -183,8 +188,8 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = utils.get_local_path(
-        data_home, os.path.join(DATASET_DIR, 'medleydb_pitch_metadata.json')
+    metadata_path = os.path.join(
+        data_home, 'medleydb_pitch_metadata.json'
     )
     if not os.path.exists(metadata_path):
         raise OSError('Could not find MedleyDB-Pitch metadata file')

@@ -28,6 +28,10 @@ def md5(file_path):
     return hash_md5.hexdigest()
 
 
+def strip_first_dir(full_path):
+    return os.path.join(*(full_path.split(os.path.sep)[1:]))
+
+
 def make_medleydb_melody_index(data_path):
     metadata_path = os.path.join(
         data_path, 'MedleyDB-Melody', 'medleydb_melody_metadata.json')
@@ -53,19 +57,19 @@ def make_medleydb_melody_index(data_path):
 
         melody_index[trackid] = {
             'audio': (
-                metadata[trackid]['audio_path'],
+                strip_first_dir(metadata[trackid]['audio_path']),
                 audio_checksum
             ),
             'melody1': (
-                metadata[trackid]['melody1_path'],
+                strip_first_dir(metadata[trackid]['melody1_path']),
                 mel1_checksum
             ),
             'melody2': (
-                metadata[trackid]['melody2_path'],
+                strip_first_dir(metadata[trackid]['melody2_path']),
                 mel2_checksum
             ),
             'melody3': (
-                metadata[trackid]['melody3_path'],
+                strip_first_dir(metadata[trackid]['melody3_path']),
                 mel3_checksum
             )
         }
