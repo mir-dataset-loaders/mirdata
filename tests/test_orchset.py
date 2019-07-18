@@ -9,6 +9,34 @@ from tests.test_utils import (mock_validated, mock_download, mock_unzip,
                               mock_validator, mock_force_delete_all)
 
 
+def test_track():
+    data_home = 'tests/resources/mir_datasets/Orchset'
+    track = orchset.Track('Beethoven-S3-I-ex1', data_home=data_home)
+
+    # test attributes
+    pass
+
+
+def test_track_ids():
+    pass
+
+
+def test_load():
+    pass
+
+
+def test_load_melody():
+    pass
+
+
+def test_load_metadta():
+    pass
+
+
+def test_cite():
+    pass
+
+
 @pytest.fixture
 def mock_validate(mocker):
     return mocker.patch.object(orchset, 'validate')
