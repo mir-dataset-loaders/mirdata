@@ -28,6 +28,10 @@ def md5(file_path):
     return hash_md5.hexdigest()
 
 
+def strip_first_dir(full_path):
+    return os.path.join(*(full_path.split(os.path.sep)[1:]))
+
+
 def make_medleydb_pitch_index(data_path):
     metadata_path = os.path.join(
         data_path, 'MedleyDB-Pitch', 'medleydb_pitch_metadata.json')
@@ -46,11 +50,11 @@ def make_medleydb_pitch_index(data_path):
         fullid = os.path.basename(audio_path).split('.')[0]
         pitch_index[fullid] = {
             'audio': (
-                metadata[trackid]['audio_path'],
+                strip_first_dir(metadata[trackid]['audio_path']),
                 audio_checksum
             ),
             'pitch': (
-                metadata[trackid]['pitch_path'],
+                strip_first_dir(metadata[trackid]['pitch_path']),
                 pitch_checksum
             )
         }

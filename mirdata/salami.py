@@ -22,6 +22,10 @@ Attributes:
 import csv
 import numpy as np
 import os
+try:
+    from pathlib import Path
+except ImportError:
+    from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
 
@@ -68,6 +72,10 @@ class Track(object):
             raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
 
         self.track_id = track_id
+
+        if data_home is None:
+            data_home = utils.get_default_dataset_path(DATASET_DIR)
+
         self._data_home = data_home
         self._track_paths = INDEX[track_id]
 
@@ -91,7 +99,7 @@ class Track(object):
                 'genre': None,
             }
 
-        self.audio_path = utils.get_local_path(
+        self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
 
         self.source = self._track_metadata['source']
@@ -107,22 +115,22 @@ class Track(object):
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
-        return _load_sections(utils.get_local_path(
+        return _load_sections(os.path.join(
             self._data_home, self._track_paths['annotator_1_uppercase']))
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
-        return _load_sections(utils.get_local_path(
+        return _load_sections(os.path.join(
             self._data_home, self._track_paths['annotator_1_lowercase']))
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
-        return _load_sections(utils.get_local_path(
+        return _load_sections(os.path.join(
             self._data_home, self._track_paths['annotator_2_uppercase']))
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
-        return _load_sections(utils.get_local_path(
+        return _load_sections(os.path.join(
             self._data_home, self._track_paths['annotator_2_lowercase']))
 
 
@@ -137,22 +145,23 @@ def download(data_home=None, force_overwrite=False):
         force_overwrite (bool): whether to overwrite the existing downloaded data
 
     """
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    if exists(data_home) and not force_overwrite:
+    if os.path.exists(data_home) and not force_overwrite:
         return
 
     if force_overwrite:
-        utils.force_delete_all(ANNOTATIONS_REMOTE, dataset_path=None, data_home=data_home)
+        utils.force_delete_all(ANNOTATIONS_REMOTE, data_home=data_home)
+
+    Path(data_home).mkdir(exist_ok=True)
 
     download_path = utils.download_from_remote(
         ANNOTATIONS_REMOTE, data_home=data_home, force_overwrite=force_overwrite
     )
-    if not os.path.exists(dataset_path):
-        os.makedirs(dataset_path)
-    utils.unzip(download_path, dataset_path, cleanup=True)
-    missing_files, invalid_checksums = validate(dataset_path, data_home)
+
+    utils.unzip(download_path, data_home, cleanup=True)
+    missing_files, invalid_checksums = validate(data_home)
     if missing_files or invalid_checksums:
         print(
             """
@@ -163,34 +172,14 @@ def download(data_home=None, force_overwrite=False):
                     > salami-data-public-master/
                     > audio/
             and copy the Salami folder to {}
-        """.format(
-                save_path
-            )
+        """.format(data_home)
         )
 
 
-def exists(data_home=None):
-    """Return if SALAMI dataset folder exists
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        (bool): True if SALAMI dataset folder exists
-
-    """
-
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
-    return os.path.exists(dataset_path)
-
-
-def validate(dataset_path, data_home=None):
+def validate(data_home=None):
     """Validate if the stored dataset is a valid version
 
     Args:
-        dataset_path (str): SALAMI dataset local path
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
@@ -201,8 +190,11 @@ def validate(dataset_path, data_home=None):
             index but has a different checksum compare to the reference checksum
 
     """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, dataset_path
+        INDEX, data_home
     )
     return missing_files, invalid_checksums
 
@@ -227,10 +219,10 @@ def load(data_home=None):
         (dict): {`track_id`: track data}
 
     """
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(dataset_path, data_home)
+    validate(data_home)
     salami_data = {}
     for key in track_ids():
         salami_data[key] = Track(key, data_home=data_home)
@@ -263,10 +255,10 @@ def _load_sections(sections_path):
 
 def _load_metadata(data_home):
 
-    metadata_path = utils.get_local_path(
+    metadata_path = os.path.join(
         data_home,
         os.path.join(
-            DATASET_DIR, 'salami-data-public-master', 'metadata', 'metadata.csv'
+            'salami-data-public-master', 'metadata', 'metadata.csv'
         ),
     )
 

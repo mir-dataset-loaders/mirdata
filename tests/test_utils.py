@@ -94,39 +94,23 @@ def test_check_index(test_index,
 ])
 def test_validator(mocker,
                    mock_check_index,
-                   mock_create_invalid,
-                   mock_create_validated,
                    missing_files,
                    invalid_checksums):
     mock_check_index.return_value = missing_files, invalid_checksums
 
-    m, c = utils.validator('foo', 'bar', 'baz', True)
+    m, c = utils.validator('foo', 'bar', True)
     assert m == missing_files
     assert c == invalid_checksums
     mock_check_index.assert_called_once_with('foo', 'bar', True)
 
-    if missing_files or invalid_checksums:
-        mock_create_invalid.assert_called_once_with('baz', missing_files, invalid_checksums)
-    else:
-        mock_create_validated.assert_called_once_with('baz')
+    # if missing_files or invalid_checksums:
+    #     mock_create_invalid.assert_called_once_with(missing_files, invalid_checksums)
+    # else:
+    #     mock_create_validated.assert_called_once_with('baz')
 
 
-@pytest.mark.parametrize('data_home,rel_path,expected_path', [
-    ('tests/', None, None),
-    (None, 'tests/', os.path.join(utils.MIR_DATASETS_DIR, 'tests/')),
-    ('tests/', 'shoop', 'tests/shoop')
-])
-def test_get_local_path(data_home, rel_path, expected_path):
-    assert expected_path == utils.get_local_path(data_home, rel_path)
-
-
-def test_get_save_path(mocker, tmpdir):
-    mocker.patch('mirdata.utils.MIR_DATASETS_DIR', str(tmpdir))
-    assert tmpdir == utils.get_save_path(None)
-
-
-def test_get_save_path_with_data_home():
-    assert 'data_home' == utils.get_save_path('data_home')
+def test_get_default_dataset_path():
+    assert '/tmp/mir_datasets/data_home' == utils.get_default_dataset_path('data_home')
 
 
 def test_download_from_remote(httpserver, tmpdir):
@@ -170,40 +154,40 @@ def test_untar(tmpdir):
     assert os.path.exists(expected_file_location)
 
 
-def test_check_validated(tmpdir):
-    tmpdir_str = str(tmpdir)
-    assert not utils.check_validated(tmpdir_str)
+# def test_check_validated(tmpdir):
+#     tmpdir_str = str(tmpdir)
+#     assert not utils.check_validated(tmpdir_str)
 
-    utils.create_validated(tmpdir_str)
-    assert utils.check_validated(tmpdir_str)
-
-
-def test_create_validated(tmpdir):
-    tmpdir_str = str(tmpdir)
-    expected_validated_path = os.path.join(tmpdir_str, utils.VALIDATED_FILE_NAME)
-    assert not os.path.exists(expected_validated_path)
-
-    utils.create_validated(tmpdir_str)
-    assert os.path.exists(expected_validated_path)
-    with open(expected_validated_path, 'r') as f:
-        # Yes we could do not f.read(), but the intentions here are clearer
-        assert f.read() == ''
+#     utils.create_validated(tmpdir_str)
+#     assert utils.check_validated(tmpdir_str)
 
 
-@pytest.mark.parametrize('missing_files,invalid_checksums', [
-    ({'10161_chorus': ['tests/resources/10162_chorus.wav']}, {}),
-    ({}, {'10161_chorus': ['tests/resources/10161_chorus.wav']}),
-])
-def test_create_invalid(tmpdir,
-                        missing_files,
-                        invalid_checksums):
-    tmpdir_str = str(tmpdir)
-    utils.create_invalid(tmpdir_str, missing_files, invalid_checksums)
+# def test_create_validated(tmpdir):
+#     tmpdir_str = str(tmpdir)
+#     expected_validated_path = os.path.join(tmpdir_str, utils.VALIDATED_FILE_NAME)
+#     assert not os.path.exists(expected_validated_path)
 
-    with open(os.path.join(tmpdir_str, utils.INVALID_FILE_NAME)) as f:
-        invalid_content = json.load(f)
-        assert invalid_content == {'missing_files': missing_files,
-                                   'invalid_checksums': invalid_checksums}
+#     utils.create_validated(tmpdir_str)
+#     assert os.path.exists(expected_validated_path)
+#     with open(expected_validated_path, 'r') as f:
+#         # Yes we could do not f.read(), but the intentions here are clearer
+#         assert f.read() == ''
+
+
+# @pytest.mark.parametrize('missing_files,invalid_checksums', [
+#     ({'10161_chorus': ['tests/resources/10162_chorus.wav']}, {}),
+#     ({}, {'10161_chorus': ['tests/resources/10161_chorus.wav']}),
+# ])
+# def test_create_invalid(tmpdir,
+#                         missing_files,
+#                         invalid_checksums):
+#     tmpdir_str = str(tmpdir)
+#     utils.create_invalid(tmpdir_str, missing_files, invalid_checksums)
+
+#     with open(os.path.join(tmpdir_str, utils.INVALID_FILE_NAME)) as f:
+#         invalid_content = json.load(f)
+#         assert invalid_content == {'missing_files': missing_files,
+#                                    'invalid_checksums': invalid_checksums}
 
 
 def test_force_delete_all_nonempty_data_home(httpserver, tmpdir):
@@ -221,6 +205,6 @@ def test_force_delete_all_nonempty_data_home(httpserver, tmpdir):
     utils.untar('tests/resources/remote.tar.gz', tmpdir_str)
     assert os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert os.path.exists(tmpdir_str)
-    utils.force_delete_all(TEST_REMOTE, tmpdir_str, tmpdir_str)
+    utils.force_delete_all(TEST_REMOTE, tmpdir_str)
     assert not os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert not os.path.exists(tmpdir_str)

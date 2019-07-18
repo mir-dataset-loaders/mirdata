@@ -19,27 +19,17 @@ def data_home(tmpdir):
     return str(tmpdir)
 
 
-@pytest.fixture
-def save_path(data_home):
-    return utils.get_save_path(data_home)
-
-
-@pytest.fixture
-def dataset_path(save_path):
-    return os.path.join(save_path, medleydb_melody.DATASET_DIR)
-
-
-def test_validate_invalid(dataset_path, mocker, mock_validator):
+def test_validate_invalid(data_home, mocker, mock_validator):
     mock_validator.return_value = (True, True)
 
-    missing_files, invalid_checksums = medleydb_melody.validate(dataset_path)
+    missing_files, invalid_checksums = medleydb_melody.validate(data_home)
     assert missing_files and invalid_checksums
     mock_validator.assert_called_once()
 
 
-def test_validate_valid(dataset_path, mocker, mock_validator):
+def test_validate_valid(data_home, mocker, mock_validator):
     mock_validator.return_value = (False, False)
 
-    missing_files, invalid_checksums = medleydb_melody.validate(dataset_path)
+    missing_files, invalid_checksums = medleydb_melody.validate(data_home)
     assert not (missing_files or invalid_checksums)
     mock_validator.assert_called_once()
