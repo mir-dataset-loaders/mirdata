@@ -28,7 +28,7 @@ When this is not possible, (e.g. for data that is no longer available), find as 
 ### Creating an index
 
 The index should be a json file where the top level keys are the unique track
-ids of the datset. The values should be a dictionary of files associated with
+ids of the dataset. The values should be a dictionary of files associated with
 the track id, along with their checksums.
 
 Any file path included should be relative to the top level directory of the dataset.
@@ -197,14 +197,14 @@ def download(data_home=None):
         """
         Unfortunately the Example dataset is not available for download.
         If you have the Example dataset, place the contents into a folder called
-        {ikala_dir} with the following structure:
-            > {ikala_dir}/
+        {dataset_dir} with the following structure:
+            > {dataset_dir}/
                 > Lyrics/
                 > PitchLabel/
                 > Wavfile/
-        and copy the {ikala_dir} folder to {save_path}
+        and copy the {dataset_dir} folder to {data_home}
     """.format(
-            ikala_dir=DATASET_DIR, save_path=data_home
+            dataset_dir=DATASET_DIR, data_home=data_home
         )
     )
 
@@ -245,29 +245,27 @@ def load(data_home=None, silence_validator=False):
     Returns:
         (dict): {`track_id`: track data}
     """
-
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     validate(data_home, silence=silence_validator)
-    ikala_data = {}
+    example_data = {}
     for key in INDEX.keys():
-        ikala_data[key] = Track(key, data_home=data_home)
-    return ikala_data
+        example_data[key] = Track(key, data_home=data_home)
+    return example_data
 
 
 def _load_annotation(annotation_path):
     if not os.path.exists(annotation_path):
         return None
-    # input: start time (ms), end time (ms), lyric, [pronunciation]
     with open(annotation_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=' ')
         start_times = []
         end_times = []
         annotation = []
         for line in reader:
-            start_times.append(float(line[0]) / 1000.0)
-            end_times.append(float(line[1]) / 1000.0)
+            start_times.append(float(line[0]))
+            end_times.append(float(line[1]))
             annotation.append(line[2])
 
     annotation_data = utils.EventData(
@@ -285,12 +283,10 @@ def _load_metadata(data_home):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    metadata_path = os.path.join(data_home, 'id_mapping.txt')
+    # load metadata however makes sense for your dataset
+    metadata_path = os.path.join(data_home, 'example_metadata.json')
     with open(metadata_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
-        metadata = {}
-        for line in reader:
-            metadata[line[1]] = line[0]
+        metadata = json.load(fhandle)
 
     metadata['data_home'] = data_home
 
@@ -314,4 +310,4 @@ Bibtex format citations/s here
 ## Adding tests to your dataset
 
 1. Make a fake version of the dataset in the tests folder `tests/resources/mir_datasets/my_dataset/`, so you can test against that data.
-2. Test all of the dataset specific code, e.g. the Track object, any of the load functions, and so forth – see the Example dataset for reference.
+2. Test all of the dataset specific code, e.g. the Track object, any of the load functions, and so forth – see the ikala dataset tests (`tests/test_ikala.py`) for reference.
