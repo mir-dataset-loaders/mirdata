@@ -9,6 +9,10 @@ from mirdata import ikala, utils
 
 def test_track():
     data_home = 'tests/resources/mir_datasets/iKala'
+
+    with pytest.raises(ValueError):
+        ikala.Track('asdfasdf', data_home=data_home)
+
     track = ikala.Track('10161_chorus', data_home=data_home)
 
     # test attributes are loaded as expected
