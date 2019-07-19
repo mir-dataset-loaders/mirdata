@@ -73,7 +73,7 @@ def make_rwc_classical_index(data_path):
                 annot_checksum.append(md5(os.path.join(annotations_dir,
                                                        'AIST.RWC-MDB-C-2001.{}'.format(f),
                                                        '{}.{}.TXT'.format(track_id, f))))
-                annot_rels.append(os.path.join('RWC-Classical', 'annotations',
+                annot_rels.append(os.path.join('annotations',
                                                'AIST.RWC-MDB-C-2001.{}'.format(f),
                                                '{}.{}.TXT'.format(track_id, f)))
             else:
@@ -82,7 +82,7 @@ def make_rwc_classical_index(data_path):
 
         rwc_classical_index[track_id[:7]] = {
             'audio': (
-                os.path.join('RWC-Classical', 'audio', audio_folder,
+                os.path.join('audio', audio_folder,
                              "{}.wav".format(audio_track)),
                 audio_checksum
             ),

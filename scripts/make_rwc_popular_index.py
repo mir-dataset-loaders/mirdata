@@ -80,7 +80,7 @@ def make_rwc_popular_index(data_path):
                                                'N{}-M{}-T{}.lab'.format(track_id[-3:],
                                                 mapping_folder[track_id[-3:]],
                                                 mapping_track[track_id[-3:]]))))
-                    annot_rels.append(os.path.join('RWC-Popular', 'annotations',
+                    annot_rels.append(os.path.join('annotations',
                                                'AIST.RWC-MDB-P-2001.{}'.format(f), 'RWC_Pop_Chords',
                                                'N{}-M{}-T{}.lab'.format(track_id[-3:],
                                                 mapping_folder[track_id[-3:]],
@@ -93,7 +93,7 @@ def make_rwc_popular_index(data_path):
                                                'AIST.RWC-MDB-P-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))):
                     annot_checksum.append(md5(os.path.join(annotations_dir,
                                                'AIST.RWC-MDB-P-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))))
-                    annot_rels.append(os.path.join('RWC-Popular', 'annotations',
+                    annot_rels.append(os.path.join('annotations',
                                                'AIST.RWC-MDB-P-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f)))
                 else:
                     annot_checksum.append(None)
@@ -101,7 +101,7 @@ def make_rwc_popular_index(data_path):
 
         rwc_popular_index[track_id] = {
             'audio': (
-                os.path.join('RWC-Popular', 'audio', audio_folder,
+                os.path.join('audio', audio_folder,
                              "{}.wav".format(audio_track)),
                 audio_checksum
             ),

@@ -59,10 +59,8 @@ def make_rwc_genre_index(data_path):
     rwc_genre_index = {}
     # skipping for now the missing audio files
     skip = ['RM-G09{}'.format(i) for i in range(1,10)] + ['RM-G100']
-    print(skip)
     for track_id in track_ids:
         if not track_id in skip:
-            print(track_id)
             # audio
             audio_folder = 'rwc-g-m{}'.format(mapping_folder[track_id[4:7]])
             audio_path = os.path.join(audio_dir, audio_folder)
@@ -78,7 +76,7 @@ def make_rwc_genre_index(data_path):
                                                'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))):
                     annot_checksum.append(md5(os.path.join(annotations_dir,
                                                'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))))
-                    annot_rels.append(os.path.join('RWC-Genre', 'annotations',
+                    annot_rels.append(os.path.join('annotations',
                                                'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f)))
                 else:
                     annot_checksum.append(None)
@@ -86,7 +84,7 @@ def make_rwc_genre_index(data_path):
 
             rwc_genre_index[track_id[:7]] = {
                 'audio': (
-                    os.path.join('RWC-Genre', 'audio', audio_folder,
+                    os.path.join('audio', audio_folder,
                                  "{}.wav".format(audio_track)),
                     audio_checksum
                 ),

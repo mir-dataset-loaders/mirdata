@@ -72,7 +72,7 @@ def make_rwc_jazz_index(data_path):
                                            'AIST.RWC-MDB-J-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))):
                 annot_checksum.append(md5(os.path.join(annotations_dir,
                                            'AIST.RWC-MDB-J-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))))
-                annot_rels.append(os.path.join('RWC-Jazz', 'annotations',
+                annot_rels.append(os.path.join('annotations',
                                            'AIST.RWC-MDB-J-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f)))
             else:
                 annot_checksum.append(None)
@@ -80,7 +80,7 @@ def make_rwc_jazz_index(data_path):
 
         rwc_jazz_index[track_id] = {
             'audio': (
-                os.path.join('RWC-Jazz', 'audio', audio_folder,
+                os.path.join('audio', audio_folder,
                              "{}.wav".format(audio_track)),
                 audio_checksum
             ),
