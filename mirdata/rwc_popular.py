@@ -4,6 +4,10 @@
 import csv
 import numpy as np
 import os
+try:
+    from pathlib import Path
+except ImportError:
+    from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
 
@@ -42,7 +46,11 @@ class Track(object):
             raise ValueError('{} is not a valid track ID in RWC-Popular'.format(track_id))
 
         self.track_id = track_id
+
+        if data_home is None:
+            data_home = utils.get_default_dataset_path(DATASET_DIR)
         self._data_home = data_home
+
         self._track_paths = INDEX[track_id]
 
         if METADATA is None or METADATA['data_home'] != data_home:
@@ -65,7 +73,7 @@ class Track(object):
                 'drum_information': None,
             }
 
-        self.audio_path = utils.get_local_path(
+        self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
 
         self.piece_number = self._track_metadata['piece_number']
@@ -81,32 +89,36 @@ class Track(object):
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(utils.get_local_path(
+        return _load_sections(os.path.join(
                 self._data_home, self._track_paths['sections'][0]))
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(utils.get_local_path(
+        return _load_beats(os.path.join(
                 self._data_home, self._track_paths['beats'][0]))
 
     @utils.cached_property
     def chords(self):
-        return _load_chords(utils.get_local_path(
+        return _load_chords(os.path.join(
                 self._data_home, self._track_paths['chords'][0]))
 
     @utils.cached_property
     def vocal_instrument_activity(self):
-        return _load_voca_inst(utils.get_local_path(
+        return _load_voca_inst(os.path.join(
                 self._data_home, self._track_paths['voca_inst'][0]))
 
 
 def download(data_home=None, force_overwrite=False):
-    save_path = utils.get_save_path(data_home)
-    annotations_path = os.path.join(save_path, DATASET_DIR, 'annotations')
-    metadata_path = os.path.join(save_path, DATASET_DIR)
+    annotations_path = os.path.join(data_home, 'annotations')
+    metadata_path = data_home
 
-    if exists(data_home) and not force_overwrite:
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    if os.path.exists(data_home) and not force_overwrite:
         return
+
+    Path(data_home).mkdir(exist_ok=True)
 
     # Downloading multiple annotations
     for annotations_remote in [ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2,
@@ -115,7 +127,7 @@ def download(data_home=None, force_overwrite=False):
 
 
         if force_overwrite:
-            utils.force_delete_all(annotations_remote, dataset_path=None, data_home=data_home)
+            utils.force_delete_all(annotations_remote, data_home=data_home)
 
         download_path = utils.download_from_remote(
             annotations_remote, data_home=data_home, force_overwrite=force_overwrite
@@ -137,7 +149,7 @@ def download(data_home=None, force_overwrite=False):
                     > audio/rwc-p-m0i with i in [1 .. 7]
                     > metadata-master/
             and copy the RWC-Popular folder to {}
-        """.format(save_path))
+        """.format(data_home))
 
     # metadata
     download_path = utils.download_from_remote(
@@ -145,26 +157,53 @@ def download(data_home=None, force_overwrite=False):
     utils.unzip(download_path, metadata_path, cleanup=True)
 
 
-def exists(data_home=None):
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
-    return os.path.exists(dataset_path)
+def validate(data_home=None):
+    """Validate if the stored dataset is a valid version
 
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
-def validate(dataset_path, data_home=None):
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, dataset_path)
+        INDEX, data_home
+    )
     return missing_files, invalid_checksums
 
 
 def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
     return list(INDEX.keys())
 
 
 def load(data_home=None):
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
-    validate(dataset_path, data_home)
+    """Load RWC-Genre dataset
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        (dict): {`track_id`: track data}
+
+    """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    validate(data_home)
     rwc_popular_data = {}
     for key in track_ids():
         rwc_popular_data[key] = Track(key, data_home=data_home)
@@ -276,11 +315,7 @@ def _load_voca_inst(voca_inst_path):
 
 def _load_metadata(data_home):
 
-    metadata_path = utils.get_local_path(
-        data_home, os.path.join(
-            DATASET_DIR, 'metadata-master', 'rwc-p.csv'
-        )
-    )
+    metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-p.csv')
 
     if not os.path.exists(metadata_path):
         raise OSError('Could not find {}'.format(metadata_path))
