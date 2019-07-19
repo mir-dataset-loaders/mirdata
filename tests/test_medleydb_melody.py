@@ -22,21 +22,21 @@ def test_track():
     assert track.track_id == 'MusicDelta_Beethoven'
     assert track._data_home == data_home
     assert track._track_paths == {
-        "audio": [
-            "audio/MusicDelta_Beethoven_MIX.wav",
-            "4c6081420a506b438a851c2807fc28ea"
+        'audio': [
+            'audio/MusicDelta_Beethoven_MIX.wav',
+            '4c6081420a506b438a851c2807fc28ea'
         ],
-        "melody1": [
-            "melody1/MusicDelta_Beethoven_MELODY1.csv",
-            "67dca3f4a9bf0517dd8a1287d091791e"
+        'melody1': [
+            'melody1/MusicDelta_Beethoven_MELODY1.csv',
+            '67dca3f4a9bf0517dd8a1287d091791e'
         ],
-        "melody2": [
-            "melody2/MusicDelta_Beethoven_MELODY2.csv",
-            "67dca3f4a9bf0517dd8a1287d091791e"
+        'melody2': [
+            'melody2/MusicDelta_Beethoven_MELODY2.csv',
+            '67dca3f4a9bf0517dd8a1287d091791e'
         ],
-        "melody3": [
-            "melody3/MusicDelta_Beethoven_MELODY3.csv",
-            "340f647c4f12d7e1ecf2421d0dfd509f"
+        'melody3': [
+            'melody3/MusicDelta_Beethoven_MELODY3.csv',
+            '340f647c4f12d7e1ecf2421d0dfd509f'
         ]
     }
     assert track.audio_path == 'tests/resources/mir_datasets/' + \
