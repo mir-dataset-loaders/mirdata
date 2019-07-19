@@ -4,83 +4,75 @@ API documentation
 .. toctree::
    :maxdepth: 2
 
-   mirdata
-
-
-Test
----------
-mirdata
-^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata
    :members:
 
+.. Dataset Loaders
+.. ---------------
 
-Dataset Loaders
----------------
+.. mirdata.beatles
+.. ^^^^^^^^^^^^^^^
 
-mirdata.beatles
-^^^^^^^^^^^^^^^
+.. .. automodule:: mirdata.beatles
+..    :members:
 
-.. automodule:: mirdata.beatles
-   :members:
+.. mirdata.ikala
+.. ^^^^^^^^^^^^^^^
 
-mirdata.ikala
-^^^^^^^^^^^^^^^
+.. .. automodule:: mirdata.ikala
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
 
-.. automodule:: mirdata.ikala
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. mirdata.maps
+.. ^^^^^^^^^^^^^^^
 
-mirdata.maps
-^^^^^^^^^^^^^^^
+.. .. automodule:: mirdata.maps
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
 
-.. automodule:: mirdata.maps
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. mirdata.medleydb\_melody
+.. ^^^^^^^^^^^^^^^
 
-mirdata.medleydb\_melody
-^^^^^^^^^^^^^^^
+.. .. automodule:: mirdata.medleydb_melody
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
 
-.. automodule:: mirdata.medleydb_melody
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. mirdata.medleydb\_pitch
+.. ^^^^^^^^^^^^^^^
 
-mirdata.medleydb\_pitch
-^^^^^^^^^^^^^^^
+.. .. automodule:: mirdata.medleydb_pitch
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
 
-.. automodule:: mirdata.medleydb_pitch
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. mirdata.orchset
+.. ^^^^^^^^^^^^^^^
 
-mirdata.orchset
-^^^^^^^^^^^^^^^
+.. .. automodule:: mirdata.orchset
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
 
-.. automodule:: mirdata.orchset
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. mirdata.salami
+.. ^^^^^^^^^^^^^^^
 
-mirdata.salami
-^^^^^^^^^^^^^^^
+.. .. automodule:: mirdata.salami
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
 
-.. automodule:: mirdata.salami
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. Utilities
+.. ----------
 
-Utilities
-----------
+.. mirdata.utils
+.. ^^^^^^^^^^^^^^^
 
-mirdata.utils
-^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.utils
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. .. automodule:: mirdata.utils
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
 
