@@ -32,7 +32,7 @@ INDEX = utils.load_json_index('beatles_index.json')
 ANNOTATIONS_REMOTE = utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
-    checksum='62425c552d37c6bb655a78e4603828cc',
+    checksum='c3b7d505e033ea9ff0d7a1d57871f2ee',
 )
 
 
@@ -296,8 +296,8 @@ def _load_sections(sections_path):
 
 def _fix_newpoint(beat_positions):
     """Fills in missing beat position labels by inferring the beat position
-        from neighboring beats.
-
+        from neighboring beats. This code is fixing labels on a few tracks
+        whose time signature is 4/4.
     """
     while np.any(beat_positions == 'New Point'):
         idxs = np.where(beat_positions == 'New Point')[0]

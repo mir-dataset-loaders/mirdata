@@ -73,7 +73,7 @@ def make_rwc_classical_index(data_path):
                 annot_checksum.append(md5(os.path.join(annotations_dir,
                                                        'AIST.RWC-MDB-C-2001.{}'.format(f),
                                                        '{}.{}.TXT'.format(track_id, f))))
-                annot_rels.append(os.path.join('RWC-Jazz', 'annotations',
+                annot_rels.append(os.path.join('RWC-Classical', 'annotations',
                                                'AIST.RWC-MDB-C-2001.{}'.format(f),
                                                '{}.{}.TXT'.format(track_id, f)))
             else:

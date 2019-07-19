@@ -57,43 +57,48 @@ def make_rwc_genre_index(data_path):
          if not f == 'README.TXT'])
 
     rwc_genre_index = {}
+    # skipping for now the missing audio files
+    skip = ['RM-G09{}'.format(i) for i in range(1,10)] + ['RM-G100']
+    print(skip)
     for track_id in track_ids:
-        # audio
-        audio_folder = 'rwc-g-m{}'.format(mapping_folder[track_id[4:7]])
-        audio_path = os.path.join(audio_dir, audio_folder)
-        audio_track = str(int(mapping_track[track_id[4:7]]))
-        # Skip audio checksums now, missing rwc-g-m09
-        audio_checksum = None # md5(os.path.join(audio_path,
-        #                                   "{}.wav".format(audio_track)))
-        annot_checksum = []
-        annot_rels = []
+        if not track_id in skip:
+            print(track_id)
+            # audio
+            audio_folder = 'rwc-g-m{}'.format(mapping_folder[track_id[4:7]])
+            audio_path = os.path.join(audio_dir, audio_folder)
+            audio_track = str(int(mapping_track[track_id[4:7]]))
+            # Skip audio checksums now, missing rwc-g-m09
+            audio_checksum = md5(os.path.join(audio_path,
+                                              "{}.wav".format(audio_track)))
+            annot_checksum = []
+            annot_rels = []
 
-        for f in ['CHORUS', 'BEAT']:
-            if os.path.exists(os.path.join(annotations_dir,
-                                           'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))):
-                annot_checksum.append(md5(os.path.join(annotations_dir,
-                                           'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))))
-                annot_rels.append(os.path.join('RWC-Genre', 'annotations',
-                                           'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f)))
-            else:
-                annot_checksum.append(None)
-                annot_rels.append(None)
+            for f in ['CHORUS', 'BEAT']:
+                if os.path.exists(os.path.join(annotations_dir,
+                                               'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))):
+                    annot_checksum.append(md5(os.path.join(annotations_dir,
+                                               'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f))))
+                    annot_rels.append(os.path.join('RWC-Genre', 'annotations',
+                                               'AIST.RWC-MDB-G-2001.{}'.format(f), '{}.{}.TXT'.format(track_id, f)))
+                else:
+                    annot_checksum.append(None)
+                    annot_rels.append(None)
 
-        rwc_genre_index[track_id[:7]] = {
-            'audio': (
-                os.path.join('RWC-Genre', 'audio', audio_folder,
-                             "{}.wav".format(audio_track)),
-                audio_checksum
-            ),
-            'sections': (
-                annot_rels[0],
-                annot_checksum[0]
-            ),
-            'beats': (
-                annot_rels[1],
-                annot_checksum[1]
-            )
-        }
+            rwc_genre_index[track_id[:7]] = {
+                'audio': (
+                    os.path.join('RWC-Genre', 'audio', audio_folder,
+                                 "{}.wav".format(audio_track)),
+                    audio_checksum
+                ),
+                'sections': (
+                    annot_rels[0],
+                    annot_checksum[0]
+                ),
+                'beats': (
+                    annot_rels[1],
+                    annot_checksum[1]
+                )
+            }
 
     with open(RWC_GENRE_INDEX_PATH, 'w') as fhandle:
         json.dump(rwc_genre_index, fhandle, indent=2)

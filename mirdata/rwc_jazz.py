@@ -146,18 +146,42 @@ def _load_sections(sections_path):
     return utils.SectionData(np.array(begs), np.array(ends), np.array(secs))
 
 
+def _position_in_bar(beat_positions):
+    """
+    Mapping to beat position in bar (e.g. 1, 2, 3, 4).
+    """
+    # Remove -1
+    beat_positions = np.array(beat_positions)
+    beat_positions = np.delete(beat_positions, np.where(beat_positions==-1))
+    # Create corrected array with downbeat positions
+    beat_positions_corrected = np.zeros((len(beat_positions),))
+    downbeat_positions = np.where(np.diff(beat_positions)<0)[0] + 1
+    beat_positions_corrected[downbeat_positions] = 1
+    # Propagate positions
+    for b in range(1, len(beat_positions)):
+        if beat_positions[b] > beat_positions[b-1]:
+            beat_positions_corrected[b] = beat_positions_corrected[b-1] + 1
+    # Beginning (in case track doesn't start in a downbeat)
+    if not downbeat_positions[0] == 0:
+        timesig_next_bar = beat_positions_corrected[downbeat_positions[2]-1]
+        for b in range(1, downbeat_positions[0]+1):
+            beat_positions_corrected[downbeat_positions[0] - b] = timesig_next_bar - b + 1
+
+    return beat_positions_corrected
+
+
 def _load_beats(beats_path):
     if not os.path.exists(beats_path):
         return None
     beat_times = []   # timestamps of beat interval beginnings
     beat_positions = []  # beat position inside the bar
-    mapping_positions = {'48': '1', '96': '2', '144': '3', '384': '4'}
 
     with open(beats_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
             beat_times.append(float(line[0])/100.0)
-            beat_positions.append(mapping_positions[line[2]])
+            beat_positions.append(int(line[2]))
+    beat_positions = _position_in_bar(beat_positions)
 
     return utils.BeatData(np.array(beat_times), np.array(beat_positions))
 
