@@ -36,7 +36,7 @@ class Mock(MagicMock):
 
 
 MOCK_MODULES = [
-    'librosa', 'numpy', 'six'
+    'librosa', 'numpy', 'six', 'hashlib'
 ]
 
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
