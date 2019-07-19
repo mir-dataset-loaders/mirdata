@@ -17,6 +17,7 @@ Attributes:
 
 """
 import csv
+import librosa
 import os
 
 try:
@@ -93,6 +94,10 @@ class Track(object):
         return _load_sections(os.path.join(
             self._data_home, self._track_paths['sections'][0]))
 
+    @property
+    def audio(self):
+        return librosa.load(self.audio_path, sr=None, mono=True)
+
 
 def download(data_home=None, force_overwrite=False):
     """Download the Beatles Dataset (annotations).
@@ -139,7 +144,7 @@ def download(data_home=None, force_overwrite=False):
         )
 
 
-def validate(data_home=None):
+def validate(data_home=None, silence=False):
     """Validate if a local version of this dataset is consistent
 
     Args:
@@ -157,7 +162,7 @@ def validate(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
+        INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -171,7 +176,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None):
+def load(data_home=None, silence_validator=False):
     """Load Beatles dataset
 
     Args:
@@ -185,7 +190,7 @@ def load(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home)
+    validate(data_home, silence=silence_validator)
     beatles_data = {}
     for key in track_ids():
         beatles_data[key] = Track(key, data_home=data_home)
@@ -261,7 +266,7 @@ def _load_key(key_path):
         for line in reader:
             if line[2] == 'Key':
                 start_times.append(float(line[0]))
-                end_times.append(line[1])
+                end_times.append(float(line[1]))
                 keys.append(line[3])
 
     key_data = utils.KeyData(np.array(start_times), np.array(end_times), np.array(keys))
@@ -284,7 +289,7 @@ def _load_sections(sections_path):
         reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
             start_times.append(float(line[0]))
-            end_times.append(line[1])
+            end_times.append(float(line[1]))
             sections.append(line[3])
 
     section_data = utils.SectionData(
