@@ -39,11 +39,7 @@ if __name__ == '__main__':
                 'sphinx',
                 'sphinxcontrib-napoleon',
                 'sphinx_rtd_theme',
-                'numpydoc',
-                'tqdm',
-                'librosa<0.7.0',  # not using 0.7 for now because of sndfile
-                'numpy>=1.16',
-                'six',
+                'numpydoc'
             ],
         }
     )

@@ -20,15 +20,35 @@ project = 'mirdata'
 copyright = '2019, Rachel Bittner, Magdalena Fuentes, David Rubinstein, Andreas Jansson, Keunwoo Choi, Thor Kell'
 author = 'Rachel Bittner, Magdalena Fuentes, David Rubinstein, Andreas Jansson, Keunwoo Choi, Thor Kell'
 
+# -- Mock dependencies -------------------------------------------------------
+
+# Mock the dependencies
+if six.PY3:
+    from unittest.mock import MagicMock
+else:
+    from mock import Mock as MagicMock
+
+class Mock(MagicMock):
+    @classmethod
+    def __getattr__(cls, name):
+        return MagicMock()
+
+
+MOCK_MODULES = [
+    'librosa', 'numpy', 'six'
+]
+
+sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+
 
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['recommonmark', 
-              'sphinx.ext.autodoc', 
-              'sphinx.ext.coverage', 
+extensions = ['recommonmark',
+              'sphinx.ext.autodoc',
+              'sphinx.ext.coverage',
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
 ]
