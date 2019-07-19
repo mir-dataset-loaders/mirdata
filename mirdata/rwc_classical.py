@@ -46,7 +46,7 @@ class Track(object):
 
         self._track_metadata = METADATA[track_id]
 
-        self.audio_path = utils.get_local_path(
+        self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
 
         self.piece_number = self._track_metadata['piece_number']
@@ -70,8 +70,6 @@ class Track(object):
 
 
 def download(data_home=None, force_overwrite=False):
-    annotations_path = os.path.join(data_home, 'annotations')
-    metadata_path = data_home
 
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
@@ -80,6 +78,9 @@ def download(data_home=None, force_overwrite=False):
         return
 
     Path(data_home).mkdir(exist_ok=True)
+
+    annotations_path = os.path.join(data_home, 'annotations')
+    metadata_path = data_home
 
     # Downloading multiple annotations
     for annotations_remote in [ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2]:

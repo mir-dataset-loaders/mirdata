@@ -133,9 +133,7 @@ def download(data_home=None, force_overwrite=False):
                     > annotations/
                     > audio/
             and copy the Beatles folder to {}
-        """.format(
-                data_home
-            )
+        """.format(data_home)
         )
 
 
