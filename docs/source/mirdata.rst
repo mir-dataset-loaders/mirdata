@@ -5,84 +5,71 @@ API documentation
    :maxdepth: 2
 
 
-Submodules
-----------
+Dataset Loaders
+---------------
 
-mirdata.beatles module
-----------------------
+mirdata.beatles
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.beatles
    :members:
 
-mirdata.ikala module
---------------------
+mirdata.ikala
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.ikala
    :members:
    :undoc-members:
    :show-inheritance:
 
-mirdata.maps module
--------------------
+mirdata.maps
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.maps
    :members:
    :undoc-members:
    :show-inheritance:
 
-mirdata.medleydb\_melody module
--------------------------------
+mirdata.medleydb\_melody
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.medleydb_melody
    :members:
    :undoc-members:
    :show-inheritance:
 
-mirdata.medleydb\_pitch module
-------------------------------
+mirdata.medleydb\_pitch
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.medleydb_pitch
    :members:
    :undoc-members:
    :show-inheritance:
 
-mirdata.orchset module
-----------------------
+mirdata.orchset
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.orchset
    :members:
    :undoc-members:
    :show-inheritance:
 
-mirdata.salami module
----------------------
+mirdata.salami
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.salami
    :members:
    :undoc-members:
    :show-inheritance:
 
-mirdata.utils module
---------------------
+Utilities
+----------
+
+mirdata.utils
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.utils
    :members:
    :undoc-members:
    :show-inheritance:
 
-mirdata.version module
-----------------------
-
-.. automodule:: mirdata.version
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: mirdata
-   :members:
-   :undoc-members:
-   :show-inheritance:
