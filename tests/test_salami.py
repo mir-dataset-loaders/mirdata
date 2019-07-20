@@ -5,10 +5,16 @@ import os
 import pytest
 from mirdata import salami, utils
 from tests.test_utils import (mock_download, mock_unzip,
-                              mock_validator, mock_force_delete_all)
+                              mock_validator, mock_force_delete_all,
+                              DEFAULT_DATA_HOME)
 
 
 def test_track():
+    # test data home None
+    track_default = salami.Track('2')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'Salami')
+
+    # test specific data home
     data_home = 'tests/resources/mir_datasets/Salami'
 
     with pytest.raises(ValueError):
@@ -79,6 +85,11 @@ def test_load():
     assert type(salami_data) is dict
     assert len(salami_data.keys()) == 1359
 
+    # data home default
+    salami_data_default = salami.load(silence_validator=True)
+    assert type(salami_data_default) is dict
+    assert len(salami_data_default.keys()) == 1359
+
 
 def test_load_sections():
     # load a file which exists
@@ -105,7 +116,7 @@ def test_load_sections():
     assert section_data_none is None
 
     # load none
-    section_data_none2 = salami._load_sections(None)
+    section_data_none2 = salami._load_sections('asdf/asdf')
     assert section_data_none2 is None
 
 
@@ -125,6 +136,9 @@ def test_load_metadata():
         'class': 'popular',
         'genre': 'Alternative_Pop___Rock',
     }
+
+    none_metadata = salami._load_metadata('asdf/asdf')
+    assert none_metadata is None
 
 
 def test_cite():
@@ -231,80 +245,6 @@ def test_validate_valid(data_home, mocker, mock_validator):
 def test_load_track_invalid_track_id():
     with pytest.raises(ValueError):
         salami.Track('a_fake_track')
-
-
-def test_load_track_no_metadata():
-    with pytest.raises(OSError):
-        salami.METADATA = None
-        salami.Track('10')
-
-
-def test_load_track_wrong_metadata():
-    with pytest.raises(OSError):
-        salami.METADATA = {'data_home': 'test'}
-        salami.Track('10', 'wrong_data_home')
-
-
-# def test_load_track_missing_metadata(mock_load_sections):
-#     data_home = 'fake-data-home'
-#     salami.METADATA = {'data_home': data_home}
-#     mock_load_sections.return_value = ['a', 'b', 'c', 'd']
-
-#     expected_track = salami.SalamiTrack(
-#         '10',
-#         'fake-data-home/Salami/audio/10.mp3',
-#         'a',
-#         'b',
-#         'c',
-#         'd',
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#     )
-
-#     actual_track = salami.load_track('10', data_home)
-#     assert actual_track == expected_track
-
-
-# def test_load_track_with_metadata(mock_load_sections):
-#     track_metadata = {
-#         'source': 'source', 'annotator_1_id': 'aid-1', 'annotator_2_id': 'aid-2',
-#         'duration_sec': 60, 'title': 'title', 'artist': 'artist',
-#         'annotator_1_time': None, 'annotator_2_time': None, 'class': 'class',
-#         'genre': 'genre'
-#     }
-#     data_home = 'fake-data-home'
-#     salami.METADATA = {'data_home': data_home, '10': track_metadata}
-#     mock_load_sections.return_value = ['a', 'b', 'c', 'd']
-
-#     expected_track = salami.SalamiTrack(
-#         '10',
-#         'fake-data-home/Salami/audio/10.mp3',
-#         'a',
-#         'b',
-#         'c',
-#         'd',
-#         'source',
-#         'aid-1',
-#         'aid-2',
-#         60,
-#         'title',
-#         'artist',
-#         None,
-#         None,
-#         'class',
-#         'genre',
-#     )
-
-#     actual_track = salami.load_track('10', data_home)
-#     assert actual_track == expected_track
 
 
 def test_track_ids():

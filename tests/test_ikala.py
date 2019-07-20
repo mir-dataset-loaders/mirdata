@@ -2,12 +2,19 @@ from __future__ import absolute_import
 
 import numpy as np
 
+import os
 import pytest
 
 from mirdata import ikala, utils
+from tests.test_utils import DEFAULT_DATA_HOME
 
 
 def test_track():
+    # test data home None
+    track_default = ikala.Track('10161_chorus')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'iKala')
+
+    # test data_home where the test data lives
     data_home = 'tests/resources/mir_datasets/iKala'
 
     with pytest.raises(ValueError):
@@ -72,6 +79,10 @@ def test_load():
     ikala_data = ikala.load(data_home=data_home, silence_validator=True)
     assert type(ikala_data) is dict
     assert len(ikala_data.keys()) == 252
+
+    ikala_data_default = ikala.load(silence_validator=True)
+    assert type(ikala_data_default) is dict
+    assert len(ikala_data_default.keys()) == 252
 
 
 def test_load_f0():
@@ -141,6 +152,9 @@ def test_load_metadata():
     assert metadata['data_home'] == data_home
     assert metadata['10161'] == '1'
     assert metadata['21025'] == '1'
+
+    metadata_none = ikala._load_metadata('asdf/asdf')
+    assert metadata_none is None
 
 
 def test_cite():

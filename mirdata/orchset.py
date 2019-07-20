@@ -85,7 +85,7 @@ class Track(object):
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
 
-        if track_id in METADATA:
+        if METADATA is not None and track_id in METADATA:
             self._track_metadata = METADATA[track_id]
         else:
             self._track_metadata = {
@@ -239,7 +239,8 @@ def _load_metadata(data_home):
     )
 
     if not os.path.exists(predominant_inst_path):
-        raise OSError('Could not find Orchset metadata file')
+        print("Warning: metadata file {} not found.".format(predominant_inst_path))
+        return None
 
     with open(predominant_inst_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')

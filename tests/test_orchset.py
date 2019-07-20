@@ -7,10 +7,15 @@ import pytest
 
 from mirdata import orchset, utils
 from tests.test_utils import (mock_validated, mock_download, mock_unzip,
-                              mock_validator, mock_force_delete_all)
+                              mock_validator, mock_force_delete_all,
+                              DEFAULT_DATA_HOME)
 
 
 def test_track():
+    # test data home None
+    track_default = orchset.Track('Beethoven-S3-I-ex1')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'Orchset')
+
     data_home = 'tests/resources/mir_datasets/Orchset'
 
     with pytest.raises(ValueError):
@@ -73,6 +78,10 @@ def test_load():
     orchset_data = orchset.load(data_home=data_home, silence_validator=True)
     assert type(orchset_data) is dict
     assert len(orchset_data.keys()) is 64
+
+    orchset_data_default = orchset.load(silence_validator=True)
+    assert type(orchset_data_default) is dict
+    assert len(orchset_data_default.keys()) is 64
 
 
 def test_load_melody():
@@ -170,6 +179,9 @@ def test_load_metadata():
         'work': 'S8-II',
         'excerpt': '2',
     }
+
+    metadata_none = orchset._load_metadata('asdf/asdf')
+    assert metadata_none is None
 
 
 def test_cite():

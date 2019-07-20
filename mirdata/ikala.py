@@ -29,11 +29,15 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-
 import csv
 import os
 import librosa
 import numpy as np
+
+try:
+    from pathlib import Path
+except ImportError:
+    from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
 
@@ -82,7 +86,7 @@ class Track(object):
             self._data_home, self._track_paths['audio'][0])
         self.song_id = track_id.split('_')[0]
         self.section = track_id.split('_')[1]
-        if self.song_id in METADATA:
+        if METADATA is not None and self.song_id in METADATA:
             self.singer_id = METADATA[self.song_id]
         else:
             self.singer_id = None
@@ -134,7 +138,7 @@ class Track(object):
         return 2.0 * mixed_audio, sr
 
 
-def download(data_home=None):
+def download(data_home=None, force_overwrite=False):
     """Download iKala Dataset. However, iKala dataset is not available for
     download anymore. This function prints a helper message to organize
     pre-downloaded iKala dataset.
@@ -146,6 +150,18 @@ def download(data_home=None):
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    if os.path.exists(data_home) and not force_overwrite:
+        return
+
+    if force_overwrite:
+        utils.force_delete_all(None, data_home=data_home)
+
+    Path(data_home).mkdir(exist_ok=True)
+
+    id_map_path = os.path.join(data_home, 'id_mapping.txt')
+    if not os.path.exists(id_map_path):
+        utils.download_large_file(ID_MAPPING_URL, id_map_path)
 
     print(
         """
@@ -268,7 +284,9 @@ def _load_metadata(data_home):
 
     id_map_path = os.path.join(data_home, 'id_mapping.txt')
     if not os.path.exists(id_map_path):
-        utils.download_large_file(ID_MAPPING_URL, id_map_path)
+        print("Warning: metadata file {} not found.".format(id_map_path))
+        print("You can download the metadata file for ikala by running ikala.download")
+        return None
 
     with open(id_map_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
@@ -285,7 +303,6 @@ def _load_metadata(data_home):
 
 def cite():
     """Print the reference"""
-
     cite_data = """
 =========== MLA ===========
 Chan, Tak-Shing, et al.

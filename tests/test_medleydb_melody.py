@@ -7,10 +7,14 @@ import json
 import pytest
 
 from mirdata import medleydb_melody, utils
-from tests.test_utils import mock_validated, mock_validator
+from tests.test_utils import mock_validated, mock_validator, DEFAULT_DATA_HOME
 
 
 def test_track():
+    # test data home None
+    track_default = medleydb_melody.Track('MusicDelta_Beethoven')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'MedleyDB-Melody')
+
     data_home = 'tests/resources/mir_datasets/MedleyDB-Melody'
 
     with pytest.raises(ValueError):
@@ -69,6 +73,10 @@ def test_load():
         data_home=data_home, silence_validator=True)
     assert type(medleydb_melody_data) is dict
     assert len(medleydb_melody_data.keys()) is 108
+
+    medleydb_melody_data_default = medleydb_melody.load(silence_validator=True)
+    assert type(medleydb_melody_data_default) is dict
+    assert len(medleydb_melody_data_default.keys()) is 108
 
 
 def test_load_melody():
@@ -146,6 +154,9 @@ def test_load_metadata():
         'is_instrumental': True,
         'n_sources': 18
     }
+
+    metadata_none = medleydb_melody._load_metadata('asdf/asdf')
+    assert metadata_none is None
 
 
 def test_cite():

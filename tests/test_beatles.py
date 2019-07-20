@@ -7,10 +7,15 @@ import pytest
 
 from mirdata import beatles, utils
 from tests.test_utils import (mock_validated, mock_download, mock_untar,
-                              mock_validator, mock_force_delete_all)
+                              mock_validator, mock_force_delete_all,
+                              DEFAULT_DATA_HOME)
 
 
 def test_track():
+    # test data home None
+    track_default = beatles.Track('0111')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'Beatles')
+
     data_home = 'tests/resources/mir_datasets/Beatles'
 
     with pytest.raises(ValueError):
@@ -65,6 +70,10 @@ def test_load():
     beatles_data = beatles.load(data_home=data_home, silence_validator=True)
     assert type(beatles_data) is dict
     assert len(beatles_data.keys()) == 180
+
+    beatles_data_default = beatles.load(silence_validator=True)
+    assert type(beatles_data_default) is dict
+    assert len(beatles_data_default.keys()) == 180
 
 
 def test_load_beats():

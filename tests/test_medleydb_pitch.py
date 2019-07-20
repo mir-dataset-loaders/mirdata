@@ -6,10 +6,14 @@ import os
 import pytest
 
 from mirdata import medleydb_pitch, utils
-from tests.test_utils import mock_validated, mock_validator
+from tests.test_utils import mock_validated, mock_validator, DEFAULT_DATA_HOME
 
 
 def test_track():
+    # test data home None
+    track_default = medleydb_pitch.Track('AClassicEducation_NightOwl_STEM_08')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'MedleyDB-Pitch')
+
     data_home = 'tests/resources/mir_datasets/MedleyDB-Pitch'
 
     with pytest.raises(ValueError):
@@ -58,6 +62,10 @@ def test_load():
     assert type(medleydb_pitch_data) is dict
     assert len(medleydb_pitch_data.keys()) is 103
 
+    medleydb_pitch_data_default = medleydb_pitch.load(silence_validator=True)
+    assert type(medleydb_pitch_data_default) is dict
+    assert len(medleydb_pitch_data_default.keys()) is 103
+
 
 def test_load_pitch():
     # load a file which exists
@@ -95,6 +103,9 @@ def test_load_metadata():
         'title': 'NightOwl',
         'genre': 'Singer/Songwriter',
     }
+
+    metadata_none = medleydb_pitch._load_metadata('asdf/asdf')
+    assert metadata_none is None
 
 
 def test_cite():

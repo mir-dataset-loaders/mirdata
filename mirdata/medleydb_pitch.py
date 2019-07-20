@@ -70,7 +70,7 @@ class Track(object):
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
 
-        if track_id in METADATA:
+        if METADATA is not None and track_id in METADATA:
             self._track_metadata = METADATA[track_id]
         else:
             self._track_metadata = {
@@ -205,8 +205,11 @@ def _load_metadata(data_home):
     metadata_path = os.path.join(
         data_home, 'medleydb_pitch_metadata.json'
     )
+
     if not os.path.exists(metadata_path):
-        raise OSError('Could not find MedleyDB-Pitch metadata file')
+        print("Warning: metadata file {} not found.".format(metadata_path))
+        return None
+
     with open(metadata_path, 'r') as fhandle:
         metadata = json.load(fhandle)
 
