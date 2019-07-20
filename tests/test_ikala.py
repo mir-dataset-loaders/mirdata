@@ -19,17 +19,17 @@ def test_track():
     assert track.track_id == '10161_chorus'
     assert track._data_home == data_home
     assert track._track_paths == {
-        "audio": [
-            "Wavfile/10161_chorus.wav",
-            "278ae003cb0d323e99b9a643c0f2eeda"
+        'audio': [
+            'Wavfile/10161_chorus.wav',
+            '278ae003cb0d323e99b9a643c0f2eeda'
         ],
-        "pitch": [
-            "PitchLabel/10161_chorus.pv",
-            "0d93a011a9e668fd80673049089bbb14"
+        'pitch': [
+            'PitchLabel/10161_chorus.pv',
+            '0d93a011a9e668fd80673049089bbb14'
         ],
-        "lyrics": [
-            "Lyrics/10161_chorus.lab",
-            "79bbeb72b422056fd43be4e8d63319ce"
+        'lyrics': [
+            'Lyrics/10161_chorus.lab',
+            '79bbeb72b422056fd43be4e8d63319ce'
         ]
     }
     assert track.audio_path == 'tests/resources/mir_datasets/iKala/' + \
@@ -71,7 +71,7 @@ def test_load():
     data_home = 'tests/resources/mir_datasets/iKala'
     ikala_data = ikala.load(data_home=data_home, silence_validator=True)
     assert type(ikala_data) is dict
-    assert len(ikala_data.keys()) is 252
+    assert len(ikala_data.keys()) == 252
 
 
 def test_load_f0():
