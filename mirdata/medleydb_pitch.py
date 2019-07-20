@@ -53,6 +53,7 @@ class Track(object):
         pitch (PitchData): pitch annotation
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError(
@@ -77,11 +78,10 @@ class Track(object):
                 'instrument': None,
                 'artist': None,
                 'title': None,
-                'genre': None
+                'genre': None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.instrument = self._track_metadata['instrument']
         self.artist = self._track_metadata['artist']
         self.title = self._track_metadata['title']
@@ -102,8 +102,7 @@ class Track(object):
 
     @utils.cached_property
     def pitch(self):
-        return _load_pitch(os.path.join(
-            self._data_home, self._track_paths['pitch'][0]))
+        return _load_pitch(os.path.join(self._data_home, self._track_paths['pitch'][0]))
 
     @property
     def audio(self):
@@ -215,9 +214,7 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, 'medleydb_pitch_metadata.json'
-    )
+    metadata_path = os.path.join(data_home, 'medleydb_pitch_metadata.json')
 
     if not os.path.exists(metadata_path):
         print("Warning: metadata file {} not found.".format(metadata_path))

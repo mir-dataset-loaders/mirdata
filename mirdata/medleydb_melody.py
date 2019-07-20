@@ -59,6 +59,7 @@ class Track(object):
         melody3 (F0Data):
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError(
@@ -85,11 +86,10 @@ class Track(object):
                 'genre': None,
                 'is_excerpt': None,
                 'is_instrumental': None,
-                'n_sources': None
+                'n_sources': None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.artist = self._track_metadata['artist']
         self.title = self._track_metadata['title']
         self.genre = self._track_metadata['genre']
@@ -117,23 +117,25 @@ class Track(object):
 
     @utils.cached_property
     def melody1(self):
-        return _load_melody(os.path.join(
-            self._data_home, self._track_paths['melody1'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody1'][0])
+        )
 
     @utils.cached_property
     def melody2(self):
-        return _load_melody(os.path.join(
-            self._data_home, self._track_paths['melody2'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody2'][0])
+        )
 
     @utils.cached_property
     def melody3(self):
-        return _load_melody3(os.path.join(
-            self._data_home, self._track_paths['melody3'][0]))
+        return _load_melody3(
+            os.path.join(self._data_home, self._track_paths['melody3'][0])
+        )
 
     @property
     def audio(self):
         return librosa.load(self.audio_path, sr=None, mono=True)
-
 
 
 def download(data_home=None):
@@ -260,9 +262,7 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, 'medleydb_melody_metadata.json'
-    )
+    metadata_path = os.path.join(data_home, 'medleydb_melody_metadata.json')
 
     if not os.path.exists(metadata_path):
         print("Warning: metadata file {} not found.".format(metadata_path))

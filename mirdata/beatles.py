@@ -55,10 +55,10 @@ class Track(object):
         sections (SectionData): sections annotation
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
-            raise ValueError(
-                '{} is not a valid track ID in Beatles'.format(track_id))
+            raise ValueError('{} is not a valid track ID in Beatles'.format(track_id))
 
         self.track_id = track_id
 
@@ -68,11 +68,9 @@ class Track(object):
         self._data_home = data_home
         self._track_paths = INDEX[track_id]
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
-        self.title = os.path.basename(
-            self._track_paths['sections'][0]).split('.')[0]
+        self.title = os.path.basename(self._track_paths['sections'][0]).split('.')[0]
 
     def __repr__(self):
         repr_string = "Beatles Track(track_id={}, audio_path={}, title={}, " + \
@@ -84,23 +82,23 @@ class Track(object):
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(
-            self._data_home, self._track_paths['beat'][0]))
+        return _load_beats(os.path.join(self._data_home, self._track_paths['beat'][0]))
 
     @utils.cached_property
     def chords(self):
-        return _load_chords(os.path.join(
-            self._data_home, self._track_paths['chords'][0]))
+        return _load_chords(
+            os.path.join(self._data_home, self._track_paths['chords'][0])
+        )
 
     @utils.cached_property
     def key(self):
-        return _load_key(os.path.join(
-            self._data_home, self._track_paths['keys'][0]))
+        return _load_key(os.path.join(self._data_home, self._track_paths['keys'][0]))
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['sections'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['sections'][0])
+        )
 
     @property
     def audio(self):

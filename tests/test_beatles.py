@@ -6,9 +6,14 @@ import numpy as np
 import pytest
 
 from mirdata import beatles, utils
-from tests.test_utils import (mock_validated, mock_download, mock_untar,
-                              mock_validator, mock_force_delete_all,
-                              DEFAULT_DATA_HOME)
+from tests.test_utils import (
+    mock_validated,
+    mock_download,
+    mock_untar,
+    mock_validator,
+    mock_force_delete_all,
+    DEFAULT_DATA_HOME,
+)
 
 
 def test_track():
@@ -27,27 +32,30 @@ def test_track():
     assert track._track_paths == {
         'audio': [
             'audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav',
-            '1b57c2f78ae0f19eed1ae7fbf747e12d'
+            '1b57c2f78ae0f19eed1ae7fbf747e12d',
         ],
         'beat': [
             'annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt',
-            'f698ad2d802bf62fe10f59ea8b4af9f6'
+            'f698ad2d802bf62fe10f59ea8b4af9f6',
         ],
         'chords': [
             'annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
-            '24f12726a510c0321aa06cac95f27915'
+            '24f12726a510c0321aa06cac95f27915',
         ],
         'keys': [
             'annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
-            'ca194503b783ed20521a1429411f3094'
+            'ca194503b783ed20521a1429411f3094',
         ],
         'sections': [
             'annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
-            '509125d527dae09cdee832fc0a6e0580'
-        ]
+            '509125d527dae09cdee832fc0a6e0580',
+        ],
     }
-    assert track.audio_path == 'tests/resources/mir_datasets/Beatles/' + \
-        'audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav'
+    assert (
+        track.audio_path
+        == 'tests/resources/mir_datasets/Beatles/'
+        + 'audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav'
+    )
     assert track.title == '11_-_Do_You_Want_To_Know_A_Secret'
     assert type(track.beats) == utils.BeatData
     assert type(track.chords) == utils.ChordData
@@ -56,7 +64,7 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 44100
-    assert audio.shape == (44100 * 2, )
+    assert audio.shape == (44100 * 2,)
 
     repr_string = "Beatles Track(track_id=0111, " + \
         "audio_path=tests/resources/mir_datasets/Beatles/audio/" + \
@@ -87,18 +95,23 @@ def test_load():
 
 
 def test_load_beats():
-    beats_path = 'tests/resources/mir_datasets/Beatles/annotations/beat/' + \
-        'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt'
+    beats_path = (
+        'tests/resources/mir_datasets/Beatles/annotations/beat/'
+        + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt'
+    )
     beat_data = beatles._load_beats(beats_path)
 
     assert type(beat_data) == utils.BeatData
     assert type(beat_data.beat_times) == np.ndarray
     assert type(beat_data.beat_positions) == np.ndarray
 
-    assert np.array_equal(beat_data.beat_times, np.array(
-        [13.249, 13.959, 14.416, 14.965, 15.453, 15.929, 16.428]))
-    assert np.array_equal(beat_data.beat_positions, np.array(
-        ['2', '3', '4', '1', '2', '3', '4']))
+    assert np.array_equal(
+        beat_data.beat_times,
+        np.array([13.249, 13.959, 14.416, 14.965, 15.453, 15.929, 16.428]),
+    )
+    assert np.array_equal(
+        beat_data.beat_positions, np.array(['2', '3', '4', '1', '2', '3', '4'])
+    )
 
     # load a file which doesn't exist
     beat_none = beatles._load_beats('fake/file/path')
@@ -106,8 +119,10 @@ def test_load_beats():
 
 
 def test_load_chords():
-    chords_path = 'tests/resources/mir_datasets/Beatles/annotations/chordlab/' + \
-        'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
+    chords_path = (
+        'tests/resources/mir_datasets/Beatles/annotations/chordlab/'
+        + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
+    )
     chord_data = beatles._load_chords(chords_path)
 
     assert type(chord_data) == utils.ChordData
@@ -115,12 +130,13 @@ def test_load_chords():
     assert type(chord_data.end_times) == np.ndarray
     assert type(chord_data.chords) == np.ndarray
 
-    assert np.array_equal(chord_data.start_times, np.array(
-        [0.000000, 4.586464, 6.989730]))
-    assert np.array_equal(chord_data.end_times, np.array(
-        [0.497838, 6.989730, 9.985104]))
-    assert np.array_equal(chord_data.chords, np.array(
-        ['N', 'E:min', 'G']))
+    assert np.array_equal(
+        chord_data.start_times, np.array([0.000000, 4.586464, 6.989730])
+    )
+    assert np.array_equal(
+        chord_data.end_times, np.array([0.497838, 6.989730, 9.985104])
+    )
+    assert np.array_equal(chord_data.chords, np.array(['N', 'E:min', 'G']))
 
     # load a file which doesn't exist
     chord_none = beatles._load_chords('fake/file/path')
@@ -128,8 +144,10 @@ def test_load_chords():
 
 
 def test_load_key():
-    key_path = 'tests/resources/mir_datasets/Beatles/annotations/keylab/' + \
-        'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
+    key_path = (
+        'tests/resources/mir_datasets/Beatles/annotations/keylab/'
+        + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
+    )
     key_data = beatles._load_key(key_path)
 
     assert type(key_data) == utils.KeyData
@@ -145,8 +163,10 @@ def test_load_key():
 
 
 def test_load_sections():
-    sections_path = 'tests/resources/mir_datasets/Beatles/annotations/seglab/' + \
-        'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
+    sections_path = (
+        'tests/resources/mir_datasets/Beatles/annotations/seglab/'
+        + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
+    )
     section_data = beatles._load_sections(sections_path)
 
     assert type(section_data) == utils.SectionData
@@ -154,12 +174,9 @@ def test_load_sections():
     assert type(section_data.end_times) == np.ndarray
     assert type(section_data.sections) == np.ndarray
 
-    assert np.array_equal(section_data.start_times, np.array(
-        [0.000000, 0.465]))
-    assert np.array_equal(section_data.end_times, np.array(
-        [0.465, 14.931]))
-    assert np.array_equal(section_data.sections, np.array(
-        ['silence', 'intro']))
+    assert np.array_equal(section_data.start_times, np.array([0.000000, 0.465]))
+    assert np.array_equal(section_data.end_times, np.array([0.465, 14.931]))
+    assert np.array_equal(section_data.sections, np.array(['silence', 'intro']))
 
     # load a file which doesn't exist
     section_none = beatles._load_sections('fake/file/path')
@@ -199,11 +216,9 @@ def mock_beatles_exists(mocker):
     return mocker.patch.object(os.path, 'exists')
 
 
-def test_download_already_exists(data_home, mocker,
-                                 mock_force_delete_all,
-                                 mock_validator,
-                                 mock_download,
-                                 mock_untar):
+def test_download_already_exists(
+    data_home, mocker, mock_force_delete_all, mock_validator, mock_download, mock_untar
+):
     mock_beatles_exists.return_value = True
 
     beatles.download(data_home)
@@ -214,13 +229,15 @@ def test_download_already_exists(data_home, mocker,
     mock_validator.assert_not_called()
 
 
-def test_download_clean(data_home,
-                        mocker,
-                        mock_force_delete_all,
-                        mock_beatles_exists,
-                        mock_download,
-                        mock_untar,
-                        mock_validate):
+def test_download_clean(
+    data_home,
+    mocker,
+    mock_force_delete_all,
+    mock_beatles_exists,
+    mock_download,
+    mock_untar,
+    mock_validate,
+):
 
     mock_beatles_exists.return_value = False
     mock_download.return_value = 'foobar'
@@ -232,17 +249,21 @@ def test_download_clean(data_home,
     mock_force_delete_all.assert_not_called()
     mock_beatles_exists.assert_called_once()
     mock_download.assert_called_once()
-    mock_untar.assert_called_once_with(mock_download.return_value, data_home, cleanup=True)
+    mock_untar.assert_called_once_with(
+        mock_download.return_value, data_home, cleanup=True
+    )
     mock_validate.assert_called_once_with(data_home)
 
 
-def test_download_force_overwrite(data_home,
-                                  mocker,
-                                  mock_force_delete_all,
-                                  mock_beatles_exists,
-                                  mock_download,
-                                  mock_untar,
-                                  mock_validate):
+def test_download_force_overwrite(
+    data_home,
+    mocker,
+    mock_force_delete_all,
+    mock_beatles_exists,
+    mock_download,
+    mock_untar,
+    mock_validate,
+):
 
     mock_beatles_exists.return_value = False
     mock_download.return_value = 'foobar'
@@ -251,10 +272,14 @@ def test_download_force_overwrite(data_home,
 
     beatles.download(data_home, force_overwrite=True)
 
-    mock_force_delete_all.assert_called_once_with(beatles.ANNOTATIONS_REMOTE, data_home=data_home)
+    mock_force_delete_all.assert_called_once_with(
+        beatles.ANNOTATIONS_REMOTE, data_home=data_home
+    )
     mock_beatles_exists.assert_called_once()
     mock_download.assert_called_once()
-    mock_untar.assert_called_once_with(mock_download.return_value, data_home, cleanup=True)
+    mock_untar.assert_called_once_with(
+        mock_download.return_value, data_home, cleanup=True
+    )
     mock_validate.assert_called_once_with(data_home)
 
 

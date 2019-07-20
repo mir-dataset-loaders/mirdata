@@ -23,6 +23,7 @@ import csv
 import librosa
 import numpy as np
 import os
+
 try:
     from pathlib import Path
 except ImportError:
@@ -68,6 +69,7 @@ class Track(object):
 
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
@@ -100,8 +102,7 @@ class Track(object):
                 'genre': None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
         self.source = self._track_metadata['source']
         self.annotator_1_id = self._track_metadata['annotator_1_id']
@@ -140,23 +141,27 @@ class Track(object):
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_1_uppercase'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_1_uppercase'][0])
+        )
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_1_lowercase'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_1_lowercase'][0])
+        )
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_2_uppercase'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_2_uppercase'][0])
+        )
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_2_lowercase'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_2_lowercase'][0])
+        )
 
     @property
     def audio(self):
@@ -201,7 +206,9 @@ def download(data_home=None, force_overwrite=False):
                     > salami-data-public-master/
                     > audio/
             and copy the Salami folder to {}
-        """.format(data_home)
+        """.format(
+                data_home
+            )
         )
 
 
@@ -285,10 +292,7 @@ def _load_sections(sections_path):
 def _load_metadata(data_home):
 
     metadata_path = os.path.join(
-        data_home,
-        os.path.join(
-            'salami-data-public-master', 'metadata', 'metadata.csv'
-        ),
+        data_home, os.path.join('salami-data-public-master', 'metadata', 'metadata.csv')
     )
 
     if not os.path.exists(metadata_path):

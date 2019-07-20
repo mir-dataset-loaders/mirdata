@@ -26,6 +26,7 @@ import csv
 import librosa
 import numpy as np
 import os
+
 try:
     from pathlib import Path
 except ImportError:
@@ -70,6 +71,7 @@ class Track(object):
         melody (F0Data): melody annotation
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))
@@ -104,14 +106,17 @@ class Track(object):
             }
 
         self.audio_path_mono = os.path.join(
-            self._data_home, self._track_paths['audio_mono'][0])
+            self._data_home, self._track_paths['audio_mono'][0]
+        )
         self.audio_path_stereo = os.path.join(
-            self._data_home, self._track_paths['audio_stereo'][0])
+            self._data_home, self._track_paths['audio_stereo'][0]
+        )
         self.composer = self._track_metadata['composer']
         self.work = self._track_metadata['work']
         self.excerpt = self._track_metadata['excerpt']
-        self.predominant_melodic_instruments = \
-            self._track_metadata['predominant_melodic_instruments-normalized']
+        self.predominant_melodic_instruments = self._track_metadata[
+            'predominant_melodic_instruments-normalized'
+        ]
         self.alternating_melody = self._track_metadata['alternating_melody']
         self.contains_winds = self._track_metadata['contains_winds']
         self.contains_strings = self._track_metadata['contains_strings']
@@ -146,8 +151,9 @@ class Track(object):
 
     @utils.cached_property
     def melody(self):
-        return _load_melody(os.path.join(
-            self._data_home, self._track_paths['melody'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody'][0])
+        )
 
     @property
     def audio_mono(self):
@@ -178,9 +184,7 @@ def download(data_home=None, force_overwrite=False):
 
     Path(data_home).mkdir(exist_ok=True)
 
-    download_path = utils.download_from_remote(
-        REMOTE, force_overwrite=force_overwrite
-    )
+    download_path = utils.download_from_remote(REMOTE, force_overwrite=force_overwrite)
     utils.unzip(download_path, data_home)
 
 
@@ -258,8 +262,7 @@ def _load_melody(melody_path):
 def _load_metadata(data_home):
 
     predominant_inst_path = os.path.join(
-        data_home,
-        'Orchset - Predominant Melodic Instruments.csv',
+        data_home, 'Orchset - Predominant Melodic Instruments.csv'
     )
 
     if not os.path.exists(predominant_inst_path):

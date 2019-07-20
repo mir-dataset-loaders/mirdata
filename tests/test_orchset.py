@@ -6,9 +6,14 @@ import os
 import pytest
 
 from mirdata import orchset, utils
-from tests.test_utils import (mock_validated, mock_download, mock_unzip,
-                              mock_validator, mock_force_delete_all,
-                              DEFAULT_DATA_HOME)
+from tests.test_utils import (
+    mock_validated,
+    mock_download,
+    mock_unzip,
+    mock_validator,
+    mock_force_delete_all,
+    DEFAULT_DATA_HOME,
+)
 
 
 def test_track():
@@ -29,21 +34,23 @@ def test_track():
     assert track._track_paths == {
         "audio_stereo": [
             "audio/stereo/Beethoven-S3-I-ex1.wav",
-            "f819c86bba06120a19bd495f819cd0ef"
+            "f819c86bba06120a19bd495f819cd0ef",
         ],
         "audio_mono": [
             "audio/mono/Beethoven-S3-I-ex1.wav",
-            "7bb7a2492dcf9e1eaad9e82f8550219a"
+            "7bb7a2492dcf9e1eaad9e82f8550219a",
         ],
-        "melody": [
-            "GT/Beethoven-S3-I-ex1.mel",
-            "8bbf6716337a2b5f7afcc611ad66e91a"
-        ]
+        "melody": ["GT/Beethoven-S3-I-ex1.mel", "8bbf6716337a2b5f7afcc611ad66e91a"],
     }
-    assert track.audio_path_mono == 'tests/resources/mir_datasets/' + \
-        'Orchset/audio/mono/Beethoven-S3-I-ex1.wav'
-    assert track.audio_path_stereo == 'tests/resources/mir_datasets/' + \
-        'Orchset/audio/stereo/Beethoven-S3-I-ex1.wav'
+    assert (
+        track.audio_path_mono
+        == 'tests/resources/mir_datasets/' + 'Orchset/audio/mono/Beethoven-S3-I-ex1.wav'
+    )
+    assert (
+        track.audio_path_stereo
+        == 'tests/resources/mir_datasets/'
+        + 'Orchset/audio/stereo/Beethoven-S3-I-ex1.wav'
+    )
     assert track.composer == 'Beethoven'
     assert track.work == 'S3-I'
     assert track.excerpt == '1'
@@ -60,7 +67,7 @@ def test_track():
 
     y_mono, sr_mono = track.audio_mono
     assert sr_mono == 44100
-    assert y_mono.shape == (44100 * 2, )
+    assert y_mono.shape == (44100 * 2,)
 
     y_stereo, sr_stereo = track.audio_stereo
     assert sr_stereo == 44100
@@ -214,11 +221,14 @@ def mock_orchset_exists(mocker):
     return mocker.patch.object(os.path, 'exists')
 
 
-def test_download_already_exists(data_home, mocker,
-                                 mock_force_delete_all,
-                                 mock_orchset_exists,
-                                 mock_download,
-                                 mock_unzip):
+def test_download_already_exists(
+    data_home,
+    mocker,
+    mock_force_delete_all,
+    mock_orchset_exists,
+    mock_download,
+    mock_unzip,
+):
     mock_orchset_exists.return_value = True
 
     orchset.download(data_home)
@@ -228,12 +238,14 @@ def test_download_already_exists(data_home, mocker,
     mock_download.assert_not_called()
 
 
-def test_download_clean(data_home,
-                        mocker,
-                        mock_force_delete_all,
-                        mock_download,
-                        mock_unzip,
-                        mock_orchset_exists):
+def test_download_clean(
+    data_home,
+    mocker,
+    mock_force_delete_all,
+    mock_download,
+    mock_unzip,
+    mock_orchset_exists,
+):
 
     mock_orchset_exists.return_value = False
     mock_download.return_value = 'foobar'
@@ -247,12 +259,14 @@ def test_download_clean(data_home,
     mock_unzip.assert_called_once_with(mock_download.return_value, data_home)
 
 
-def test_download_force_overwrite(data_home,
-                          mocker,
-                          mock_force_delete_all,
-                          mock_orchset_exists,
-                          mock_download,
-                          mock_unzip):
+def test_download_force_overwrite(
+    data_home,
+    mocker,
+    mock_force_delete_all,
+    mock_orchset_exists,
+    mock_download,
+    mock_unzip,
+):
 
     mock_orchset_exists.return_value = False
     mock_download.return_value = 'foobar'

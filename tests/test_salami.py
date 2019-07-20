@@ -4,9 +4,13 @@ import numpy as np
 import os
 import pytest
 from mirdata import salami, utils
-from tests.test_utils import (mock_download, mock_unzip,
-                              mock_validator, mock_force_delete_all,
-                              DEFAULT_DATA_HOME)
+from tests.test_utils import (
+    mock_download,
+    mock_unzip,
+    mock_validator,
+    mock_force_delete_all,
+    DEFAULT_DATA_HOME,
+)
 
 
 def test_track():
@@ -26,29 +30,25 @@ def test_track():
     assert track.track_id == '2'
     assert track._data_home == data_home
     assert track._track_paths == {
-        'audio': [
-            'audio/2.mp3',
-            '76789a17bda0dd4d1d7e77424099c814'
-        ],
+        'audio': ['audio/2.mp3', '76789a17bda0dd4d1d7e77424099c814'],
         'annotator_1_uppercase': [
             'salami-data-public-master/annotations/2/parsed/textfile1_uppercase.txt',
-            '54ba0804f720d85d195dcd7ffaec0794'
+            '54ba0804f720d85d195dcd7ffaec0794',
         ],
         'annotator_1_lowercase': [
             'salami-data-public-master/annotations/2/parsed/textfile1_lowercase.txt',
-            '30ff127ff68c61039b94a44ab6ddda34'
+            '30ff127ff68c61039b94a44ab6ddda34',
         ],
         'annotator_2_uppercase': [
             'salami-data-public-master/annotations/2/parsed/textfile2_uppercase.txt',
-            'e9dca8577f028d3505ff1e5801397b2f'
+            'e9dca8577f028d3505ff1e5801397b2f',
         ],
         'annotator_2_lowercase': [
             'salami-data-public-master/annotations/2/parsed/textfile2_lowercase.txt',
-            '546a783c7b8bf96f2d718c7a4f114699'
-        ]
+            '546a783c7b8bf96f2d718c7a4f114699',
+        ],
     }
-    assert track.audio_path == 'tests/resources/mir_datasets/Salami/' + \
-        'audio/2.mp3'
+    assert track.audio_path == 'tests/resources/mir_datasets/Salami/' + 'audio/2.mp3'
 
     assert track.source == 'Codaich'
     assert track.annotator_1_id == '5'
@@ -105,8 +105,10 @@ def test_load():
 
 def test_load_sections():
     # load a file which exists
-    sections_path = 'tests/resources/mir_datasets/Salami/' + \
-        'salami-data-public-master/annotations/2/parsed/textfile1_uppercase.txt'
+    sections_path = (
+        'tests/resources/mir_datasets/Salami/'
+        + 'salami-data-public-master/annotations/2/parsed/textfile1_uppercase.txt'
+    )
     section_data = salami._load_sections(sections_path)
 
     # check types
@@ -116,12 +118,17 @@ def test_load_sections():
     assert type(section_data.sections) is np.ndarray
 
     # check valuess
-    assert np.array_equal(section_data.start_times, np.array(
-        [0.0, 0.464399092, 14.379863945, 263.205419501]))
-    assert np.array_equal(section_data.end_times, np.array(
-        [0.464399092, 14.379863945, 263.205419501, 264.885215419]))
-    assert np.array_equal(section_data.sections, np.array(
-        ['Silence', 'A', 'B', 'Silence']))
+    assert np.array_equal(
+        section_data.start_times,
+        np.array([0.0, 0.464399092, 14.379863945, 263.205419501]),
+    )
+    assert np.array_equal(
+        section_data.end_times,
+        np.array([0.464399092, 14.379863945, 263.205419501, 264.885215419]),
+    )
+    assert np.array_equal(
+        section_data.sections, np.array(['Silence', 'A', 'B', 'Silence'])
+    )
 
     # load a file which doesn't exist
     section_data_none = salami._load_sections('fake/file/path')
@@ -177,12 +184,15 @@ def mock_salami_exists(mocker):
     return mocker.patch.object(os.path, 'exists')
 
 
-def test_download_already_exists(data_home, mocker,
-                                 mock_force_delete_all,
-                                 mock_salami_exists,
-                                 mock_validator,
-                                 mock_download,
-                                 mock_unzip):
+def test_download_already_exists(
+    data_home,
+    mocker,
+    mock_force_delete_all,
+    mock_salami_exists,
+    mock_validator,
+    mock_download,
+    mock_unzip,
+):
     mock_salami_exists.return_value = True
 
     salami.download(data_home)
@@ -194,13 +204,15 @@ def test_download_already_exists(data_home, mocker,
     mock_validator.assert_not_called()
 
 
-def test_download_clean(data_home,
-                        mocker,
-                        mock_force_delete_all,
-                        mock_salami_exists,
-                        mock_download,
-                        mock_unzip,
-                        mock_validate):
+def test_download_clean(
+    data_home,
+    mocker,
+    mock_force_delete_all,
+    mock_salami_exists,
+    mock_download,
+    mock_unzip,
+    mock_validate,
+):
 
     mock_salami_exists.return_value = False
     mock_download.return_value = 'foobar'
@@ -212,17 +224,21 @@ def test_download_clean(data_home,
     mock_force_delete_all.assert_not_called()
     mock_salami_exists.assert_called_once()
     mock_download.assert_called_once()
-    mock_unzip.assert_called_once_with(mock_download.return_value, data_home, cleanup=True)
+    mock_unzip.assert_called_once_with(
+        mock_download.return_value, data_home, cleanup=True
+    )
     mock_validate.assert_called_once_with(data_home)
 
 
-def test_download_force_overwrite(data_home,
-                          mocker,
-                          mock_force_delete_all,
-                          mock_salami_exists,
-                          mock_download,
-                          mock_unzip,
-                          mock_validate):
+def test_download_force_overwrite(
+    data_home,
+    mocker,
+    mock_force_delete_all,
+    mock_salami_exists,
+    mock_download,
+    mock_unzip,
+    mock_validate,
+):
 
     mock_salami_exists.return_value = False
     mock_download.return_value = 'foobar'
@@ -231,10 +247,14 @@ def test_download_force_overwrite(data_home,
 
     salami.download(data_home, force_overwrite=True)
 
-    mock_force_delete_all.assert_called_once_with(salami.ANNOTATIONS_REMOTE, data_home=data_home)
+    mock_force_delete_all.assert_called_once_with(
+        salami.ANNOTATIONS_REMOTE, data_home=data_home
+    )
     mock_salami_exists.assert_called_once()
     mock_download.assert_called_once()
-    mock_unzip.assert_called_once_with(mock_download.return_value, data_home, cleanup=True)
+    mock_unzip.assert_called_once_with(
+        mock_download.return_value, data_home, cleanup=True
+    )
     mock_validate.assert_called_once_with(data_home)
 
 
