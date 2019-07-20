@@ -114,6 +114,23 @@ class Track(object):
         self.broad_genre = self._track_metadata['class']
         self.genre = self._track_metadata['genre']
 
+    def __repr__(self):
+        repr_string = "Salami Track(track_id={}, audio_path={}, source={}, title={}, artist={}, duration_sec={}, annotator_1_id={}, annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, broad_genre={}, genre={}, sectionds_annotator_1_uppercase=Annotation, sections_annotator_1_lowercase=Annotation, sections_annotator_2_uppercase=Annotation, sections_annotator_2_lowercase=Annotation)"
+        return repr_string.format(
+            self.track_id,
+            self.audio_path,
+            self.source,
+            self.title,
+            self.artist,
+            self.duration_sec,
+            self.annotator_1_id,
+            self.annotator_2_id,
+            self.annotator_1_time,
+            self.annotator_2_time,
+            self.broad_genre,
+            self.genre,
+        )
+
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
         return _load_sections(os.path.join(
