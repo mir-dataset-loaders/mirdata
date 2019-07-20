@@ -14,6 +14,9 @@ jobs:
           name: Install libsndfile
           command: apt-get install -y libsndfile1
       - run:
+          name: Install mp3 packages
+          command: apt-get install -y ffmpeg libavcodec-extra-52
+      - run:
           name: Install tox
           command: pip install tox
       - run:
