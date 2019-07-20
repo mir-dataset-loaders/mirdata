@@ -11,6 +11,9 @@ jobs:
           name: Install wget
           command: apt-get update && apt-get install -y wget
       - run:
+          name: Install libsndfile
+          command: apt-get install -y libsndfile
+      - run:
           name: Install tox
           command: pip install tox
       - run:
