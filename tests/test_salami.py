@@ -67,10 +67,10 @@ def test_track():
     assert type(track.sections_annotator_2_uppercase) is utils.SectionData
     assert type(track.sections_annotator_2_lowercase) is utils.SectionData
 
-    # test audio loading functions
-    y, sr = track.audio
-    assert sr == 44100
-    assert y.shape == (89856, )
+    # # test audio loading functions
+    # y, sr = track.audio
+    # assert sr == 44100
+    # assert y.shape == (89856, )
 
 
 def test_track_ids():
