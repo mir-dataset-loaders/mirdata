@@ -20,7 +20,7 @@ if __name__ == '__main__':
         license='BSD-3-Clause',
         install_requires=[
             'tqdm',
-            'librosa<0.7.0',  # not using 0.7 for now because of sndfile
+            'librosa',
             'numpy>=1.16',
             'six',
         ],
