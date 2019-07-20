@@ -124,7 +124,7 @@ LyricData = namedtuple(
 
 SectionData = namedtuple('SectionData', ['start_times', 'end_times', 'sections'])
 
-BeatData = namedtuple('BeatData', ['beats_times', 'beats_positions'])
+BeatData = namedtuple('BeatData', ['beat_times', 'beat_positions'])
 
 ChordData = namedtuple('ChordData', ['start_times', 'end_times', 'chords'])
 

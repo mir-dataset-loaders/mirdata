@@ -13,6 +13,8 @@ if sys.version_info.major == 3:
 else:
     builtin_module_name = '__builtin__'
 
+DEFAULT_DATA_HOME = os.path.join(os.getenv('HOME', '/tmp'), 'mir_datasets')
+
 
 @pytest.fixture
 def mock_validated(mocker):

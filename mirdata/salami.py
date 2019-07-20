@@ -20,6 +20,7 @@ Attributes:
 
 """
 import csv
+import librosa
 import numpy as np
 import os
 try:
@@ -82,7 +83,7 @@ class Track(object):
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
 
-        if track_id in METADATA.keys():
+        if METADATA is not None and track_id in METADATA:
             self._track_metadata = METADATA[track_id]
         else:
             # annotations with missing metadata
@@ -116,22 +117,26 @@ class Track(object):
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
         return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_1_uppercase']))
+            self._data_home, self._track_paths['annotator_1_uppercase'][0]))
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
         return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_1_lowercase']))
+            self._data_home, self._track_paths['annotator_1_lowercase'][0]))
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
         return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_2_uppercase']))
+            self._data_home, self._track_paths['annotator_2_uppercase'][0]))
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
         return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_2_lowercase']))
+            self._data_home, self._track_paths['annotator_2_lowercase'][0]))
+
+    @property
+    def audio(self):
+        return librosa.load(self.audio_path, sr=None, mono=True)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -176,7 +181,7 @@ def download(data_home=None, force_overwrite=False):
         )
 
 
-def validate(data_home=None):
+def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
     Args:
@@ -194,7 +199,7 @@ def validate(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
+        INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -208,7 +213,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None):
+def load(data_home=None, silence_validator=False):
     """Load SALAMI dataset
 
     Args:
@@ -222,7 +227,7 @@ def load(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home)
+    validate(data_home, silence=silence_validator)
     salami_data = {}
     for key in track_ids():
         salami_data[key] = Track(key, data_home=data_home)
@@ -230,7 +235,7 @@ def load(data_home=None):
 
 
 def _load_sections(sections_path):
-    if sections_path is None:
+    if sections_path is None or not os.path.exists(sections_path):
         return None
 
     times = []
@@ -263,7 +268,8 @@ def _load_metadata(data_home):
     )
 
     if not os.path.exists(metadata_path):
-        raise OSError('Could not find Salami metadata file')
+        print("Warning: metadata file {} not found.".format(metadata_path))
+        return None
 
     with open(metadata_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')

@@ -2,30 +2,41 @@ from __future__ import absolute_import
 
 import numpy as np
 
+import os
 import pytest
 
 from mirdata import ikala, utils
+from tests.test_utils import DEFAULT_DATA_HOME
 
 
 def test_track():
+    # test data home None
+    track_default = ikala.Track('10161_chorus')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'iKala')
+
+    # test data_home where the test data lives
     data_home = 'tests/resources/mir_datasets/iKala'
+
+    with pytest.raises(ValueError):
+        ikala.Track('asdfasdf', data_home=data_home)
+
     track = ikala.Track('10161_chorus', data_home=data_home)
 
     # test attributes are loaded as expected
     assert track.track_id == '10161_chorus'
     assert track._data_home == data_home
     assert track._track_paths == {
-        "audio": [
-            "Wavfile/10161_chorus.wav",
-            "278ae003cb0d323e99b9a643c0f2eeda"
+        'audio': [
+            'Wavfile/10161_chorus.wav',
+            '278ae003cb0d323e99b9a643c0f2eeda'
         ],
-        "pitch": [
-            "PitchLabel/10161_chorus.pv",
-            "0d93a011a9e668fd80673049089bbb14"
+        'pitch': [
+            'PitchLabel/10161_chorus.pv',
+            '0d93a011a9e668fd80673049089bbb14'
         ],
-        "lyrics": [
-            "Lyrics/10161_chorus.lab",
-            "79bbeb72b422056fd43be4e8d63319ce"
+        'lyrics': [
+            'Lyrics/10161_chorus.lab',
+            '79bbeb72b422056fd43be4e8d63319ce'
         ]
     }
     assert track.audio_path == 'tests/resources/mir_datasets/iKala/' + \
@@ -67,7 +78,11 @@ def test_load():
     data_home = 'tests/resources/mir_datasets/iKala'
     ikala_data = ikala.load(data_home=data_home, silence_validator=True)
     assert type(ikala_data) is dict
-    assert len(ikala_data.keys()) is 252
+    assert len(ikala_data.keys()) == 252
+
+    ikala_data_default = ikala.load(silence_validator=True)
+    assert type(ikala_data_default) is dict
+    assert len(ikala_data_default.keys()) == 252
 
 
 def test_load_f0():
@@ -137,6 +152,9 @@ def test_load_metadata():
     assert metadata['data_home'] == data_home
     assert metadata['10161'] == '1'
     assert metadata['21025'] == '1'
+
+    metadata_none = ikala._load_metadata('asdf/asdf')
+    assert metadata_none is None
 
 
 def test_cite():

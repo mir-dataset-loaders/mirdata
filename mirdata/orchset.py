@@ -23,6 +23,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 import csv
+import librosa
 import numpy as np
 import os
 try:
@@ -84,7 +85,23 @@ class Track(object):
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
 
-        self._track_metadata = METADATA[track_id]
+        if METADATA is not None and track_id in METADATA:
+            self._track_metadata = METADATA[track_id]
+        else:
+            self._track_metadata = {
+                'predominant_melodic_instruments-raw': None,
+                'predominant_melodic_instruments-normalized': None,
+                'alternating_melody': None,
+                'contains_winds': None,
+                'contains_strings': None,
+                'contains_brass': None,
+                'only_strings': None,
+                'only_winds': None,
+                'only_brass': None,
+                'composer': None,
+                'work': None,
+                'excerpt': None,
+            }
 
         self.audio_path_mono = os.path.join(
             self._data_home, self._track_paths['audio_mono'][0])
@@ -107,6 +124,14 @@ class Track(object):
     def melody(self):
         return _load_melody(os.path.join(
             self._data_home, self._track_paths['melody'][0]))
+
+    @property
+    def audio_mono(self):
+        return librosa.load(self.audio_path_mono, sr=None)
+
+    @property
+    def audio_stereo(self):
+        return librosa.load(self.audio_path_stereo, sr=None, mono=False)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -135,7 +160,7 @@ def download(data_home=None, force_overwrite=False):
     utils.unzip(download_path, data_home)
 
 
-def validate(data_home=None):
+def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
     Args:
@@ -152,7 +177,7 @@ def validate(data_home=None):
     """
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
+        INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -166,7 +191,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None):
+def load(data_home=None, silence_validator=False):
     """Load ORCHSET dataset
 
     Args:
@@ -181,7 +206,7 @@ def load(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home)
+    validate(data_home, silence=silence_validator)
     orchset_data = {}
     for key in track_ids():
         orchset_data[key] = Track(key, data_home=data_home)
@@ -200,7 +225,7 @@ def _load_melody(melody_path):
         for line in reader:
             times.append(float(line[0]))
             freqs.append(float(line[1]))
-            confidence.append(0 if line[1] == '0' else 1)
+            confidence.append(0.0 if line[1] == '0' else 1.0)
 
     melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
@@ -214,7 +239,8 @@ def _load_metadata(data_home):
     )
 
     if not os.path.exists(predominant_inst_path):
-        raise OSError('Could not find Orchset metadata file')
+        print("Warning: metadata file {} not found.".format(predominant_inst_path))
+        return None
 
     with open(predominant_inst_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
@@ -244,7 +270,7 @@ def _load_metadata(data_home):
                 melodic_instruments[i] = 'strings'
             elif inst == 'winds (solo)':
                 melodic_instruments[i] = 'winds'
-        melodic_instruments = list(set(melodic_instruments))
+        melodic_instruments = sorted(list(set(melodic_instruments)))
 
         metadata_index[track_id] = {
             'predominant_melodic_instruments-raw': line[1],

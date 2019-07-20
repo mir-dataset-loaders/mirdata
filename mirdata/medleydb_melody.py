@@ -26,6 +26,7 @@ from __future__ import print_function
 
 import csv
 import json
+import librosa
 import numpy as np
 import os
 
@@ -75,7 +76,17 @@ class Track(object):
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
 
-        self._track_metadata = METADATA[track_id]
+        if METADATA is not None and track_id in METADATA:
+            self._track_metadata = METADATA[track_id]
+        else:
+            self._track_metadata = {
+                'artist': None,
+                'title': None,
+                'genre': None,
+                'is_excerpt': None,
+                'is_instrumental': None,
+                'n_sources': None
+            }
 
         self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
@@ -100,6 +111,11 @@ class Track(object):
     def melody3(self):
         return _load_melody3(os.path.join(
             self._data_home, self._track_paths['melody3'][0]))
+
+    @property
+    def audio(self):
+        return librosa.load(self.audio_path, sr=None, mono=True)
+
 
 
 def download(data_home=None):
@@ -130,7 +146,7 @@ def download(data_home=None):
     )
 
 
-def validate(data_home=None):
+def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
     Args:
@@ -148,7 +164,7 @@ def validate(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
+        INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -162,7 +178,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None):
+def load(data_home=None, silence_validator=False):
     """Load MedleyDB melody dataset
 
     Args:
@@ -177,7 +193,7 @@ def load(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home)
+    validate(data_home, silence=silence_validator)
     medleydb_melody_data = {}
     for key in track_ids():
         medleydb_melody_data[key] = Track(key, data_home=data_home)
@@ -189,15 +205,16 @@ def _load_melody(melody_path):
         return None
     times = []
     freqs = []
-    confidence = []
     with open(melody_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
         for line in reader:
             times.append(float(line[0]))
             freqs.append(float(line[1]))
-            confidence.append(0 if line[1] == '0' else 1)
 
-    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
+    times = np.array(times)
+    freqs = np.array(freqs)
+    confidence = (freqs > 0).astype(float)
+    melody_data = utils.F0Data(times, freqs, confidence)
     return melody_data
 
 
@@ -206,15 +223,16 @@ def _load_melody3(melody_path):
         return None
     times = []
     freqs = []
-    confidence = []
     with open(melody_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
         for line in reader:
             times.append(float(line[0]))
             freqs.append([float(v) for v in line[1:]])
-            confidence.append(0 if line[1] == '0' else 1)
 
-    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
+    times = np.array(times)
+    freqs = np.array(freqs)
+    confidence = (freqs > 0).astype(float)
+    melody_data = utils.F0Data(times, freqs, confidence)
     return melody_data
 
 
@@ -227,8 +245,11 @@ def _load_metadata(data_home):
     metadata_path = os.path.join(
         data_home, 'medleydb_melody_metadata.json'
     )
+
     if not os.path.exists(metadata_path):
-        raise OSError('Could not find MedleyDB-Melody metadata file')
+        print("Warning: metadata file {} not found.".format(metadata_path))
+        return None
+
     with open(metadata_path, 'r') as fhandle:
         metadata = json.load(fhandle)
 

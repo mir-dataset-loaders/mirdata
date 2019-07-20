@@ -1,0 +1,6 @@
+excerpt,Predominant melodic instrument(s) description,Alternating,containsstrings,containswinds,containsbrass,Onlystrings,Onlywinds,Onlybrass
+Beethoven-S3-I-ex1.wav,strings+winds,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+Haydn-S94-Menuet-ex1.wav,string+winds,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+Musorgski-Ravel-PicturesExhibition-Promenade1-ex2,strings,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4.wav,strings+winds,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+Schubert-S8-II-ex2.wav,winds (solo),FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE
