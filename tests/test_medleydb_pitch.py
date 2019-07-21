@@ -48,6 +48,13 @@ def test_track():
     assert sr == 44100
     assert y.shape == (44100 * 2, )
 
+    repr_string = "MedleyDb-Pitch Track(track_id=AClassicEducation_NightOwl_STEM_08, " + \
+        "audio_path=tests/resources/mir_datasets/MedleyDB-Pitch/audio/" + \
+        "AClassicEducation_NightOwl_STEM_08.wav, " + \
+        "artist=AClassicEducation, title=NightOwl, genre=Singer/Songwriter, " + \
+        "instrument=male singer, pitch=PitchData('times', 'pitches', 'confidence'))"
+    assert track.__repr__() == repr_string
+
 
 def test_track_ids():
     track_ids = medleydb_pitch.track_ids()
