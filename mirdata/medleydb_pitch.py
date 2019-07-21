@@ -88,9 +88,11 @@ class Track(object):
         self.genre = self._track_metadata['genre']
 
     def __repr__(self):
-        repr_string = "MedleyDb-Pitch Track(track_id={}, audio_path={}, " + \
-            "artist={}, title={}, genre={}, instrument={}, " + \
-            "pitch=PitchData('times', 'pitches', 'confidence'))"
+        repr_string = (
+            "MedleyDb-Pitch Track(track_id={}, audio_path={}, "
+            + "artist={}, title={}, genre={}, instrument={}, "
+            + "pitch=PitchData('times', 'pitches', 'confidence'))"
+        )
         return repr_string.format(
             self.track_id,
             self.audio_path,

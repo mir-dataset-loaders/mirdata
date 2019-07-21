@@ -98,12 +98,14 @@ class Track(object):
         self.n_sources = self._track_metadata['n_sources']
 
     def __repr__(self):
-        repr_string = "MedleyDb-Melody Track(track_id={}, audio_path={}, " + \
-            "artist={}, title={}, genre={}, is_excerpt={}, " + \
-            "is_instrumental={}, n_sources={}, " + \
-            "melody1=F0Data('times', 'frequencies', confidence'), " + \
-            "melody2=F0Data('times', 'frequencies', confidence'), " + \
-            "melody3=F0Data('times', 'frequencies', confidence'))"
+        repr_string = (
+            "MedleyDb-Melody Track(track_id={}, audio_path={}, "
+            + "artist={}, title={}, genre={}, is_excerpt={}, "
+            + "is_instrumental={}, n_sources={}, "
+            + "melody1=F0Data('times', 'frequencies', confidence'), "
+            + "melody2=F0Data('times', 'frequencies', confidence'), "
+            + "melody3=F0Data('times', 'frequencies', confidence'))"
+        )
         return repr_string.format(
             self.track_id,
             self.audio_path,

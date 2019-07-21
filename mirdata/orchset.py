@@ -126,12 +126,14 @@ class Track(object):
         self.only_brass = self._track_metadata['only_brass']
 
     def __repr__(self):
-        repr_string = "Orchset Track(track_id={}, audio_path_stereo={}, " + \
-            "audio_path_mono={}, composer={}, work={}, excerpt={}, " + \
-            "predominant_melodic_instruments={}, alternating_melody={}, " + \
-            "contains_winds={}, contains_strings={}, contains_brass={}, " + \
-            "only_strings={}, only_winds={}, only_brass={}, " + \
-            "melody=F0Data('times', 'frequencies', 'confidence'))"
+        repr_string = (
+            "Orchset Track(track_id={}, audio_path_stereo={}, "
+            + "audio_path_mono={}, composer={}, work={}, excerpt={}, "
+            + "predominant_melodic_instruments={}, alternating_melody={}, "
+            + "contains_winds={}, contains_strings={}, contains_brass={}, "
+            + "only_strings={}, only_winds={}, only_brass={}, "
+            + "melody=F0Data('times', 'frequencies', 'confidence'))"
+        )
         return repr_string.format(
             self.track_id,
             self.audio_path_stereo,
