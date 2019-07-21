@@ -115,7 +115,14 @@ class Track(object):
         self.genre = self._track_metadata['genre']
 
     def __repr__(self):
-        repr_string = "Salami Track(track_id={}, audio_path={}, source={}, title={}, artist={}, duration_sec={}, annotator_1_id={}, annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, broad_genre={}, genre={}, sectionds_annotator_1_uppercase=Annotation, sections_annotator_1_lowercase=Annotation, sections_annotator_2_uppercase=Annotation, sections_annotator_2_lowercase=Annotation)"
+        repr_string = "Salami Track(track_id={}, audio_path={}, source={}, " + \
+            "title={}, artist={}, duration_sec={}, annotator_1_id={}, " + \
+            "annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, " + \
+            "broad_genre={}, genre={}, " + \
+            "sections_annotator_1_uppercase=SectionData('start_times', 'end_times', 'sections'), " + \
+            "sections_annotator_1_lowercase=SectionData('start_times', 'end_times', 'sections'), " + \
+            "sections_annotator_2_uppercase=SectionData('start_times', 'end_times', 'sections'), " + \
+            "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
         return repr_string.format(
             self.track_id,
             self.audio_path,
