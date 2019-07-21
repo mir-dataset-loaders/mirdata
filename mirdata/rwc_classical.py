@@ -2,6 +2,7 @@
 """RWC Classical Dataset Loader
 """
 import csv
+import librosa
 import numpy as np
 import os
 try:
@@ -44,7 +45,19 @@ class Track(object):
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
 
-        self._track_metadata = METADATA[track_id]
+        if METADATA is not None and self.track_id in METADATA:
+            self._track_metadata = METADATA[track_id]
+        else:
+            self._track_metadata = {
+                'piece_number': None,
+                'suffix': None,
+                'track_number': None,
+                'title': None,
+                'composer': None,
+                'artist': None,
+                'track_duration_sec': None,
+                'category': None,
+            }
 
         self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
@@ -58,15 +71,31 @@ class Track(object):
         self.track_duration_sec = self._track_metadata['track_duration_sec']
         self.category = self._track_metadata['category']
 
+    def __repr__(self):
+        repr_string = "RWC-Classical Track(track_id={}, audio_path={}, " + \
+            "piece_number={}, suffix={}, track_number={}, title={}, composer={}, " + \
+            "artist={}, track_duration_sec={}, category={}" + \
+            "sections=SectionData('start_times', 'end_times', 'sections'), " + \
+            "beats=BeatData('beat_times', 'beat_positions'))"
+        return repr_string.format(
+            self.track_id, self.audio_path, self.piece_number, self.suffix,
+            self.track_number, self.title, self.composer, self.artist,
+            self.track_duration_sec, self.category
+        )
+
     @utils.cached_property
     def sections(self):
         return _load_sections(os.path.join(
-                self._data_home, self._track_paths['sections'][0]))
+            self._data_home, self._track_paths['sections'][0]))
 
     @utils.cached_property
     def beats(self):
         return _load_beats(os.path.join(
-                self._data_home, self._track_paths['beats'][0]))
+            self._data_home, self._track_paths['beats'][0]))
+
+    @property
+    def audio(self):
+        return librosa.load(self.audio_path, sr=None, mono=True)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -116,7 +145,7 @@ def download(data_home=None, force_overwrite=False):
     utils.unzip(download_path, metadata_path, cleanup=True)
 
 
-def validate(data_home=None):
+def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
     Args:
@@ -134,7 +163,7 @@ def validate(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
+        INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -148,7 +177,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None):
+def load(data_home=None, silence_validator=False):
     """Load RWC-Classical dataset
 
         Args:
@@ -162,7 +191,7 @@ def load(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home)
+    validate(data_home, silence=silence_validator)
     rwc_classical_data = {}
     for key in track_ids():
         rwc_classical_data[key] = Track(key, data_home=data_home)
@@ -179,35 +208,40 @@ def _load_sections(sections_path):
     with open(sections_path, 'r') as fhandle:
             reader = csv.reader(fhandle, delimiter='\t')
             for line in reader:
-                begs.append(float(line[0])/100.0)
-                ends.append(float(line[1])/100.0)
+                begs.append(float(line[0]) / 100.0)
+                ends.append(float(line[1]) / 100.0)
                 secs.append(line[2])
 
     return utils.SectionData(np.array(begs), np.array(ends), np.array(secs))
 
 
-def _position_in_bar(beat_positions):
+def _position_in_bar(beat_positions, beat_times):
     """
     Mapping to beat position in bar (e.g. 1, 2, 3, 4).
     """
     # Remove -1
-    beat_positions = np.array(beat_positions)
-    beat_positions = np.delete(beat_positions, np.where(beat_positions==-1))
-    # Create corrected array with downbeat positions
-    beat_positions_corrected = np.zeros((len(beat_positions),))
-    downbeat_positions = np.where(np.diff(beat_positions)<0)[0] + 1
-    beat_positions_corrected[downbeat_positions] = 1
-    # Propagate positions
-    for b in range(1, len(beat_positions)):
-        if beat_positions[b] > beat_positions[b-1]:
-            beat_positions_corrected[b] = beat_positions_corrected[b-1] + 1
-    # Beginning (in case track doesn't start in a downbeat)
-    if not downbeat_positions[0] == 0:
-        timesig_next_bar = beat_positions_corrected[downbeat_positions[2]-1]
-        for b in range(1, downbeat_positions[0]+1):
-            beat_positions_corrected[downbeat_positions[0] - b] = timesig_next_bar - b + 1
+    _beat_positions = np.delete(beat_positions, np.where(beat_positions == -1))
+    beat_times_corrected = np.delete(beat_times, np.where(beat_positions == -1))
 
-    return beat_positions_corrected
+    # Create corrected array with downbeat positions
+    beat_positions_corrected = np.zeros((len(_beat_positions),))
+    downbeat_positions = np.where(_beat_positions == np.max(_beat_positions))[0]
+    _beat_positions[downbeat_positions] = 1
+    beat_positions_corrected[downbeat_positions] = 1
+
+    # Propagate positions
+    for b in range(0, len(_beat_positions)):
+        if _beat_positions[b] > _beat_positions[b - 1]:
+            beat_positions_corrected[b] = beat_positions_corrected[b - 1] + 1
+
+    # fill in the first beat position if it isn't a downbeat
+    if beat_positions_corrected[0] == 0:
+        beat_positions_corrected[0] = beat_positions_corrected[1] - 1
+    # if it's still zero, it's the last beat
+    if beat_positions_corrected[0] == 0:
+        beat_positions_corrected[0] = np.max(beat_positions_corrected)
+
+    return beat_positions_corrected, beat_times_corrected
 
 
 def _load_beats(beats_path):
@@ -219,11 +253,12 @@ def _load_beats(beats_path):
     with open(beats_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
-            beat_times.append(float(line[0])/100.0)
+            beat_times.append(float(line[0]) / 100.0)
             beat_positions.append(int(line[2]))
-    beat_positions = _position_in_bar(beat_positions)
+    beat_positions, beat_times = _position_in_bar(
+        np.array(beat_positions), np.array(beat_times))
 
-    return utils.BeatData(np.array(beat_times), np.array(beat_positions))
+    return utils.BeatData(beat_times, beat_positions)
 
 
 def _load_metadata(data_home):
@@ -231,9 +266,11 @@ def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-c.csv')
 
     if not os.path.exists(metadata_path):
-        raise OSError('Could not find {}'.format(metadata_path))
+        print("Warning: metadata file {} not found.".format(metadata_path))
+        print("You can download the metadata file by running download()")
+        return None
 
-    with open(metadata_path, 'r', encoding='utf-8') as fhandle:
+    with open(metadata_path, 'r') as fhandle:
         dialect = csv.Sniffer().sniff(fhandle.read(1024))
         fhandle.seek(0)
         reader = csv.reader(fhandle, dialect)
@@ -274,7 +311,7 @@ def cite():
     cite_data = """
 ===========  MLA ===========
 
-Goto, Masataka, et al., 
+Goto, Masataka, et al.,
 "RWC Music Database: Popular, Classical and Jazz Music Databases.",
 3rd International Society for Music Information Retrieval Conference (2002)
 
