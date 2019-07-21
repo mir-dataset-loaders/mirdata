@@ -91,6 +91,15 @@ class Track(object):
         else:
             self.singer_id = None
 
+    def __repr__(self):
+        repr_string = "iKala Track(track_id={}, audio_path={}, song_id={}, " + \
+            "section={}, singer_id={}, " + \
+            "f0=F0Data('times', 'frequencies', 'confidence'), " + \
+            "lyrics=LyricData('start_times', 'end_times', 'lyrics', 'pronounciations'))"
+        return repr_string.format(
+            self.track_id, self.audio_path, self.song_id, self.section, self.singer_id
+        )
+
     @utils.cached_property
     def f0(self):
         return _load_f0(os.path.join(
