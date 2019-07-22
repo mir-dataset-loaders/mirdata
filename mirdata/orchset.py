@@ -26,10 +26,6 @@ import csv
 import librosa
 import numpy as np
 import os
-try:
-    from pathlib import Path
-except ImportError:
-    from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
 

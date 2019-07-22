@@ -19,11 +19,6 @@ Attributes:
 import csv
 import librosa
 import os
-
-try:
-    from pathlib import Path
-except ImportError:
-    from pathlib2 import Path  # python 2 backport
 import numpy as np
 
 import mirdata.utils as utils
@@ -122,34 +117,19 @@ def download(data_home=None, force_overwrite=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    if os.path.exists(data_home) and not force_overwrite:
-        return
+    download_message = """
+        Unfortunately the audio files of the Beatles dataset are not available
+        for download. If you have the Beatles dataset, place the contents into
+        a folder called Beatles with the following structure:
+            > Beatles/
+                > annotations/
+                > audio/
+        and copy the Beatles folder to {}
+    """.format(data_home)
 
-    if force_overwrite:
-        utils.force_delete_all(ANNOTATIONS_REMOTE, data_home=data_home)
-
-    Path(data_home).mkdir(exist_ok=True)
-
-    download_path = utils.download_from_remote(
-        ANNOTATIONS_REMOTE, data_home=data_home, force_overwrite=force_overwrite
-    )
-    utils.untar(download_path, data_home, cleanup=True)
-
-    missing_files, invalid_checksums = validate(data_home)
-    if missing_files or invalid_checksums:
-        print(
-            """
-            Unfortunately the audio files of the Beatles dataset are not available
-            for download. If you have the Beatles dataset, place the contents into
-            a folder called Beatles with the following structure:
-                > Beatles/
-                    > annotations/
-                    > audio/
-            and copy the Beatles folder to {}
-        """.format(
-                data_home
-            )
-        )
+    utils.downloader(data_home, tar_downloads=[ANNOTATIONS_REMOTE],
+                     info_message=download_message,
+                     force_overwrite=force_overwrite)
 
 
 def validate(data_home=None, silence=False):
