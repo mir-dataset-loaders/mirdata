@@ -72,6 +72,18 @@ def test_track():
     # assert sr == 44100
     # assert y.shape == (89856, )
 
+    repr_string = "Salami Track(track_id=2, " + \
+        "audio_path=tests/resources/mir_datasets/Salami/audio/2.mp3, " + \
+        "source=Codaich, title=For_God_And_Country, " + \
+        "artist=The_Smashing_Pumpkins, duration_sec=264, annotator_1_id=5, " + \
+        "annotator_2_id=8, annotator_1_time=37, annotator_2_time=45, " + \
+        "broad_genre=popular, genre=Alternative_Pop___Rock, " + \
+        "sections_annotator_1_uppercase=SectionData('start_times', 'end_times', 'sections'), " + \
+        "sections_annotator_1_lowercase=SectionData('start_times', 'end_times', 'sections'), " + \
+        "sections_annotator_2_uppercase=SectionData('start_times', 'end_times', 'sections'), " + \
+        "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
+    assert track.__repr__() == repr_string
+
 
 def test_track_ids():
     track_ids = salami.track_ids()

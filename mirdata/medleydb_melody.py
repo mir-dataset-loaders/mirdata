@@ -97,6 +97,24 @@ class Track(object):
         self.is_instrumental = self._track_metadata['is_instrumental']
         self.n_sources = self._track_metadata['n_sources']
 
+    def __repr__(self):
+        repr_string = "MedleyDb-Melody Track(track_id={}, audio_path={}, " + \
+            "artist={}, title={}, genre={}, is_excerpt={}, " + \
+            "is_instrumental={}, n_sources={}, " + \
+            "melody1=F0Data('times', 'frequencies', confidence'), " + \
+            "melody2=F0Data('times', 'frequencies', confidence'), " + \
+            "melody3=F0Data('times', 'frequencies', confidence'))"
+        return repr_string.format(
+            self.track_id,
+            self.audio_path,
+            self.artist,
+            self.title,
+            self.genre,
+            self.is_excerpt,
+            self.is_instrumental,
+            self.n_sources,
+        )
+
     @utils.cached_property
     def melody1(self):
         return _load_melody(os.path.join(

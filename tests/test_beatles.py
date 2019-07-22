@@ -58,6 +58,16 @@ def test_track():
     assert sr == 44100
     assert audio.shape == (44100 * 2, )
 
+    repr_string = "Beatles Track(track_id=0111, " + \
+        "audio_path=tests/resources/mir_datasets/Beatles/audio/" + \
+        "01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav, " + \
+        "title=11_-_Do_You_Want_To_Know_A_Secret, " + \
+        "beats=BeatData('beat_times, 'beat_positions'), " + \
+        "chords=ChordData('start_times', 'end_times', 'chords'), " + \
+        "key=KeyData('start_times', 'end_times', 'keys'), " + \
+        "sections=SectionData('start_times', 'end_times', 'sections'))"
+    assert track.__repr__() == repr_string
+
 
 def test_track_ids():
     track_ids = beatles.track_ids()

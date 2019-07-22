@@ -74,6 +74,14 @@ class Track(object):
         self.title = os.path.basename(
             self._track_paths['sections'][0]).split('.')[0]
 
+    def __repr__(self):
+        repr_string = "Beatles Track(track_id={}, audio_path={}, title={}, " + \
+            "beats=BeatData('beat_times, 'beat_positions'), " + \
+            "chords=ChordData('start_times', 'end_times', 'chords'), " + \
+            "key=KeyData('start_times', 'end_times', 'keys'), " + \
+            "sections=SectionData('start_times', 'end_times', 'sections'))"
+        return repr_string.format(self.track_id, self.audio_path, self.title)
+
     @utils.cached_property
     def beats(self):
         return _load_beats(os.path.join(
