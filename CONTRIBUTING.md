@@ -19,8 +19,9 @@ To add a new dataset loader:
 1. Create a script in `scripts/`, e.g. `make_my_dataset_index.py`, which generates an index file. (See below for what an index file is!)
 2. Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`. (Also see below for what we mean by "canonical"!)
 3. Create a module in mirdata, e.g. `mirdata/my_dataset.py`
-4. Create tests for your loader in tests/, e.g. `test_my_dataset.py`
-5. Add your module to docs/source/mirdata.rst
+4. Create tests for your loader in `tests/`, e.g. `test_my_dataset.py`
+5. Add your module to `docs/source/mirdata.rst`
+6. Add the module to `mirdata/__init__.py`
 
 ### Canonical datasets
 Whenever possible, this should be the official release of the dataset as published by the dataset creators.
