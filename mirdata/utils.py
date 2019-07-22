@@ -147,6 +147,27 @@ def get_default_dataset_path(dataset_name):
 RemoteFileMetadata = namedtuple('RemoteFileMetadata', ['filename', 'url', 'checksum'])
 
 
+def downloader(data_home, zip_downloads=None, tar_downloads=None,
+               file_downloads=None, info_message=None):
+
+    if zip_downloads is not None:
+        for zip_download in zip_downloads:
+            zip_download_path = download_from_remote(zip_download)
+            unzip(zip_download_path, data_home)
+
+    if tar_downloads is not None:
+        for tar_download in tar_downloads:
+            tar_download_path = download_from_remote(tar_download)
+            untar(tar_download_path, data_home)
+
+    if file_downloads is not None:
+        for file_download in file_downloads:
+            file_download_path = download_from_remote(file_download)
+
+    if info_message is not None:
+        print(info_message)
+
+
 class DownloadProgressBar(tqdm):
     """Wrap `tqdm` to show download progress"""
     def update_to(self, b=1, bsize=1, tsize=None):
