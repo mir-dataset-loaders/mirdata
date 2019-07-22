@@ -234,9 +234,6 @@ def _position_in_bar(beat_positions, beat_times):
         if _beat_positions[b] > _beat_positions[b - 1]:
             beat_positions_corrected[b] = beat_positions_corrected[b - 1] + 1
 
-    print(beat_positions_corrected)
-    print(downbeat_positions)
-
     if not downbeat_positions[0] == 0:
         timesig_next_bar = beat_positions_corrected[downbeat_positions[1] - 1]
         for b in range(1, downbeat_positions[0] + 1):
