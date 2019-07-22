@@ -140,21 +140,29 @@ class Track(object):
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
+        if self._track_paths['annotator_1_uppercase'][0] is None:
+            return None
         return _load_sections(os.path.join(
             self._data_home, self._track_paths['annotator_1_uppercase'][0]))
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
+        if self._track_paths['annotator_1_lowercase'][0] is None:
+            return None
         return _load_sections(os.path.join(
             self._data_home, self._track_paths['annotator_1_lowercase'][0]))
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
+        if self._track_paths['annotator_2_uppercase'][0] is None:
+            return None
         return _load_sections(os.path.join(
             self._data_home, self._track_paths['annotator_2_uppercase'][0]))
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
+        if self._track_paths['annotator_2_lowercase'][0] is None:
+            return None
         return _load_sections(os.path.join(
             self._data_home, self._track_paths['annotator_2_lowercase'][0]))
 

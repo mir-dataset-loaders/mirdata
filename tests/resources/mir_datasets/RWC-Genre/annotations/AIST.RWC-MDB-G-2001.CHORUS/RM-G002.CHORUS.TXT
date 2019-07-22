@@ -1,0 +1,5 @@
+17	1040	"intro"
+1040	3530	"verse A"
+3530	5281	"verse B"
+5281	5865	"pre-chorus"
+22969	26063	"ending"

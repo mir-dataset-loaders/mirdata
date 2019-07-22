@@ -19,7 +19,9 @@ To add a new dataset loader:
 1. Create a script in `scripts/`, e.g. `make_my_dataset_index.py`, which generates an index file. (See below for what an index file is!)
 2. Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`. (Also see below for what we mean by "canonical"!)
 3. Create a module in mirdata, e.g. `mirdata/my_dataset.py`
-4. Create tests for your loader in tests/, e.g. `test_my_dataset.py`
+4. Create tests for your loader in `tests/`, e.g. `test_my_dataset.py`
+5. Add your module to `docs/source/mirdata.rst`
+6. Add the module to `mirdata/__init__.py`
 
 ### Canonical datasets
 Whenever possible, this should be the official release of the dataset as published by the dataset creators.
@@ -158,6 +160,20 @@ class Track(object):
         # add any dataset specific attributes here, e.g.
         self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
+
+        # if the user doesn't have a metadata file, load None
+        if METADATA is not None and track_id in METADATA:
+            self.some_metadata = METADATA[track_id]['some_metadata']
+        else:
+            self.some_metadata = None
+
+    # this lets users run `print(Track)` and get actual information
+    def __repr__(self):
+        repr_string = "Example Track(track_id={}, audio_path={}, " + \
+            "some_metadata{}, "
+            "annotation=AnnotationData('start_times', 'end_times', 'annotation'), " + \
+        return repr_string.format(
+            self.track_id, self.audio_path, self.some_metadata)
 
     # `annotation` will behave like an attribute, but it will only be loaded
     # and saved when someone accesses it. Useful when loading slightly
