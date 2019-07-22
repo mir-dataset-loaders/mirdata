@@ -30,6 +30,7 @@ import numpy as np
 import os
 
 import mirdata.utils as utils
+from mirdata.web_downloader import downloader
 
 INDEX = utils.load_json_index('medleydb_pitch_index.json')
 DATASET_DIR = 'MedleyDB-Pitch'
@@ -133,7 +134,7 @@ def download(data_home=None):
         {data_home}
     """.format(data_home=data_home)
 
-    utils.downloader(info_message=info_message)
+    downloader(info_message=info_message)
 
 
 def validate(data_home=None, silence=False):

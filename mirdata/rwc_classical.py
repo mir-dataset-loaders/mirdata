@@ -5,12 +5,10 @@ import csv
 import librosa
 import numpy as np
 import os
-try:
-    from pathlib import Path
-except ImportError:
-    from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
+from mirdata.web_downloader import downloader
+
 
 INDEX = utils.load_json_index("rwc_classical_index.json")
 METADATA = None
@@ -104,9 +102,9 @@ def download(data_home=None, force_overwrite=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     annotations_path = os.path.join(data_home, 'annotations')
-    utils.downloader(annotations_path,
-                     zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
-                     force_overwrite=force_overwrite)
+    downloader(annotations_path,
+               zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
+               force_overwrite=force_overwrite)
 
     info_message = """
         Unfortunately the audio files of the RWC-Jazz dataset are not available

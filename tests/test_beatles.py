@@ -6,9 +6,8 @@ import numpy as np
 import pytest
 
 from mirdata import beatles, utils
-from tests.test_utils import (mock_validated, mock_download, mock_untar,
-                              mock_validator, mock_force_delete_all,
-                              DEFAULT_DATA_HOME)
+from tests.test_utils import (mock_validated, mock_validator, DEFAULT_DATA_HOME)
+from tests.test_web_downloader import (mock_download, mock_untar, mock_force_delete_all)
 
 
 def test_track():
@@ -181,7 +180,7 @@ def test_fix_newpoint():
 
 
 def test_cite():
-    pass
+    beatles.cite()
 
 
 @pytest.fixture
@@ -229,8 +228,6 @@ def test_download_clean(data_home,
 
     beatles.download(data_home)
 
-    mock_force_delete_all.assert_not_called()
-    mock_beatles_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_untar.assert_called_once_with(mock_download.return_value, data_home, cleanup=True)
     mock_validate.assert_called_once_with(data_home)
@@ -250,9 +247,6 @@ def test_download_force_overwrite(data_home,
     mock_validate.return_value = (False, False)
 
     beatles.download(data_home, force_overwrite=True)
-
-    mock_force_delete_all.assert_called_once_with(beatles.ANNOTATIONS_REMOTE, data_home=data_home)
-    mock_beatles_exists.assert_called_once()
     mock_download.assert_called_once()
     mock_untar.assert_called_once_with(mock_download.return_value, data_home, cleanup=True)
     mock_validate.assert_called_once_with(data_home)

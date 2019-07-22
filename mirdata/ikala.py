@@ -35,6 +35,7 @@ import librosa
 import numpy as np
 
 import mirdata.utils as utils
+from mirdata.web_downloader import downloader
 
 DATASET_DIR = 'iKala'
 INDEX = utils.load_json_index('ikala_index.json')
@@ -171,7 +172,7 @@ def download(data_home=None, force_overwrite=False):
         and copy the {ikala_dir} folder to {save_path}
     """.format(ikala_dir=DATASET_DIR, save_path=data_home)
 
-    utils.downloader(data_home, file_downloads=[ID_MAPPING_REMOTE],
+    downloader(data_home, file_downloads=[ID_MAPPING_REMOTE],
                      info_message=download_message,
                      force_overwrite=force_overwrite)
 

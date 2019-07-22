@@ -22,6 +22,7 @@ import os
 import numpy as np
 
 import mirdata.utils as utils
+from mirdata.web_downloader import downloader
 
 DATASET_DIR = 'Beatles'
 INDEX = utils.load_json_index('beatles_index.json')
@@ -127,7 +128,7 @@ def download(data_home=None, force_overwrite=False):
         and copy the Beatles folder to {}
     """.format(data_home)
 
-    utils.downloader(data_home, tar_downloads=[ANNOTATIONS_REMOTE],
+    downloader(data_home, tar_downloads=[ANNOTATIONS_REMOTE],
                      info_message=download_message,
                      force_overwrite=force_overwrite)
 

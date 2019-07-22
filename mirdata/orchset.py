@@ -28,6 +28,7 @@ import numpy as np
 import os
 
 import mirdata.utils as utils
+from mirdata.web_downloader import downloader
 
 INDEX = utils.load_json_index('orchset_index.json')
 
@@ -166,7 +167,7 @@ def download(data_home=None, force_overwrite=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    utils.downloader(
+    downloader(
         data_home, zip_downloads=[REMOTE], force_overwrite=force_overwrite)
 
 
