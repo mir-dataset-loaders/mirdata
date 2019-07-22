@@ -54,6 +54,39 @@ mirdata.orchset
    :undoc-members:
    :show-inheritance:
 
+mirdata.rwc_classical
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.rwc_classical
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mirdata.rwc_genre
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.rwc_genre
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mirdata.rwc_jazz
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.rwc_jazz
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mirdata.rwc_popular
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.rwc_popular
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 mirdata.salami
 ^^^^^^^^^^^^^^^
 
