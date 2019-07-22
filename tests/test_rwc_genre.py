@@ -62,9 +62,9 @@ def test_track():
 
     repr_string = "RWC-Genre Track(track_id=RM-G002, " + \
         "audio_path=tests/resources/mir_datasets/RWC-Genre/audio/rwc-g-m01/2.wav, " + \
-        "piece_number=No. 2, suffix=M01, track_number=Tr. 02, category=Pop " + \
+        "piece_number=No. 2, suffix=M01, track_number=Tr. 02, category=Pop, " + \
         "sub_category=Pop, title=Forget about It, composer=Shinya Iguchi, " + \
-        "artist=Shinya Iguchi (Male), track_duration_sec=04:22" + \
+        "artist=Shinya Iguchi (Male), track_duration_sec=04:22, " + \
         "sections=SectionData('start_times', 'end_times', 'sections'), " + \
         "beats=BeatData('beat_times', 'beat_positions'))"
     assert track.__repr__() == repr_string
