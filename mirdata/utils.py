@@ -152,12 +152,12 @@ def get_default_dataset_path(dataset_name):
 RemoteFileMetadata = namedtuple('RemoteFileMetadata', ['filename', 'url', 'checksum'])
 
 
-def downloader(data_home, zip_downloads=None, tar_downloads=None,
+def downloader(save_dir, zip_downloads=None, tar_downloads=None,
                file_downloads=None, info_message=None, force_overwrite=False):
-    """Download data to `data_home` and optionally print a message.
+    """Download data to `save_dir` and optionally print a message.
 
     Args:
-        data_home (str):
+        save_dir (str):
             The directory to download the data
         zip_downloads (list or None):
             A list of RemoteFileMetadata tuples of data in zip format.
@@ -175,24 +175,24 @@ def downloader(data_home, zip_downloads=None, tar_downloads=None,
             If True, existing files are overwritten by the downloaded files.
 
     """
-    Path(data_home).mkdir(exist_ok=True)
+    Path(save_dir).mkdir(exist_ok=True)
 
     if zip_downloads is not None:
         for zip_download in zip_downloads:
             zip_download_path = download_from_remote(
-                zip_download, data_home, force_overwrite)
-            unzip(zip_download_path, data_home)
+                zip_download, save_dir, force_overwrite)
+            unzip(zip_download_path, save_dir)
 
     if tar_downloads is not None:
         for tar_download in tar_downloads:
             tar_download_path = download_from_remote(
-                tar_download, data_home, force_overwrite)
-            untar(tar_download_path, data_home)
+                tar_download, save_dir, force_overwrite)
+            untar(tar_download_path, save_dir)
 
     if file_downloads is not None:
         for file_download in file_downloads:
             download_from_remote(
-                file_download, data_home, force_overwrite)
+                file_download, save_dir, force_overwrite)
 
     if info_message is not None:
         print(info_message)
