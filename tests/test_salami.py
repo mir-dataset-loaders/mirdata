@@ -115,8 +115,12 @@ def test_track():
             'salami-data-public-master/annotations/192/parsed/textfile1_lowercase.txt',
             '6640237e7844d0d9d37bf21cf96a2690'
         ],
-        'annotator_2_uppercase': [None, None],
-        'annotator_2_lowercase': [None, None]}
+        'annotator_2_uppercase': [
+            None, None
+        ],
+        'annotator_2_lowercase': [
+            None, None
+        ]}
 
     # test that cached properties don't fail and have the expected type
     assert type(track.sections_annotator_1_uppercase) is utils.SectionData
@@ -124,6 +128,34 @@ def test_track():
     assert track.sections_annotator_2_uppercase  is None
     assert track.sections_annotator_2_lowercase is None
 
+    # Test file with missing annotations
+    track = salami.Track('1015', data_home=data_home)
+
+    assert track._track_paths == {
+        'audio': [
+            'audio/1015.mp3',
+            '811a4a6b46f0c15a61bfb299b21ebdc4'
+        ],
+        'annotator_1_uppercase': [
+            None, None
+        ],
+        'annotator_1_lowercase': [
+            None, None
+        ],
+        'annotator_2_uppercase': [
+            'salami-data-public-master/annotations/1015/parsed/textfile2_uppercase.txt',
+            'e4a268342a45fdffd8ec9c3b8287ad8b'
+        ],
+        'annotator_2_lowercase': [
+            'salami-data-public-master/annotations/1015/parsed/textfile2_lowercase.txt',
+            '201642fcea4a27c60f7b48de46a82234'
+        ]}
+
+    # test that cached properties don't fail and have the expected type
+    assert track.sections_annotator_1_uppercase is None
+    assert track.sections_annotator_1_lowercase is None
+    assert type(track.sections_annotator_2_uppercase)  is utils.SectionData
+    assert type(track.sections_annotator_2_lowercase) is utils.SectionData
 
 def test_track_ids():
     track_ids = salami.track_ids()
