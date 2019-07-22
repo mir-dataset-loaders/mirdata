@@ -123,8 +123,7 @@ def download(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    print(
-        """
+    info_message = """
         To download this dataset, visit:
         https://zenodo.org/record/2620624#.XKZc7hNKh24
         and request access.
@@ -132,10 +131,9 @@ def download(data_home=None):
         Once downloaded, unzip the file MedleyDB-Pitch.zip
         and copy the result to:
         {data_home}
-    """.format(
-            data_home=data_home
-        )
-    )
+    """.format(data_home=data_home)
+
+    utils.downloader(info_message=info_message)
 
 
 def validate(data_home=None, silence=False):

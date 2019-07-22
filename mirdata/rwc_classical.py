@@ -103,46 +103,25 @@ def download(data_home=None, force_overwrite=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    if os.path.exists(data_home) and not force_overwrite:
-        return
-
-    Path(data_home).mkdir(exist_ok=True)
-
     annotations_path = os.path.join(data_home, 'annotations')
-    metadata_path = data_home
+    utils.downloader(annotations_path,
+                     zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
+                     force_overwrite=force_overwrite)
 
-    # Downloading multiple annotations
-    for annotations_remote in [ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2]:
+    info_message = """
+        Unfortunately the audio files of the RWC-Jazz dataset are not available
+        for download. If you have the RWC-Classical dataset, place the contents into a
+        folder called RWC-Classical with the following structure:
+            > RWC-Classical/
+                > annotations/
+                > audio/rwc-c-m0i with i in [1 .. 6]
+                > metadata-master/
+        and copy the RWC-Classical folder to {}
+    """.format(data_home)
 
-        if force_overwrite:
-            utils.force_delete_all(annotations_remote, data_home=data_home)
-
-        download_path = utils.download_from_remote(
-            annotations_remote, data_home=data_home, force_overwrite=force_overwrite
-        )
-
-        if not os.path.exists(annotations_path):
-            os.makedirs(annotations_path)
-
-        utils.unzip(download_path, annotations_path, cleanup=True)
-
-    missing_files, invalid_checksums = validate(data_home)
-    if missing_files or invalid_checksums:
-        print("""
-            Unfortunately the audio files of the RWC-Jazz dataset are not available
-            for download. If you have the RWC-Classical dataset, place the contents into a
-            folder called RWC-Classical with the following structure:
-                > RWC-Classical/
-                    > annotations/
-                    > audio/rwc-c-m0i with i in [1 .. 6]
-                    > metadata-master/
-            and copy the RWC-Classical folder to {}
-        """.format(data_home))
-
-    # metadata
-    download_path = utils.download_from_remote(
-            METADATA_REMOTE, data_home=annotations_path, force_overwrite=force_overwrite)
-    utils.unzip(download_path, metadata_path, cleanup=True)
+    utils.downloader(data_home, zip_downloads=[METADATA_REMOTE],
+                     info_message=info_message,
+                     force_overwrite=force_overwrite)
 
 
 def validate(data_home=None, silence=False):

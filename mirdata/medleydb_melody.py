@@ -135,7 +135,6 @@ class Track(object):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
 
-
 def download(data_home=None):
     """MedleyDB is not available for downloading directly.
     This function prints a helper message to download MedleyDB
@@ -149,8 +148,7 @@ def download(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    print(
-        """
+    info_message = """
         To download this dataset, visit:
         https://zenodo.org/record/2628782#.XKZdABNKh24
         and request access.
@@ -158,10 +156,9 @@ def download(data_home=None):
         Once downloaded, unzip the file MedleyDB-Melody.zip
         and copy the result to:
         {data_home}
-    """.format(
-            data_home=data_home
-        )
-    )
+    """.format(data_home=data_home)
+
+    utils.downloader(info_message=info_message)
 
 
 def validate(data_home=None, silence=False):
