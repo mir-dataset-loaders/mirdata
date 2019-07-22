@@ -161,6 +161,20 @@ class Track(object):
         self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
 
+        # if the user doesn't have a metadata file, load None
+        if METADATA is not None and track_id in METADATA:
+            self.some_metadata = METADATA[track_id]['some_metadata']
+        else:
+            self.some_metadata = None
+
+    # this lets users run `print(Track)` and get actual information
+    def __repr__(self):
+        repr_string = "Example Track(track_id={}, audio_path={}, " + \
+            "some_metadata{}, "
+            "annotation=AnnotationData('start_times', 'end_times', 'annotation'), " + \
+        return repr_string.format(
+            self.track_id, self.audio_path, self.some_metadata)
+
     # `annotation` will behave like an attribute, but it will only be loaded
     # and saved when someone accesses it. Useful when loading slightly
     # bigger files or for bigger datasets. By default, we make any time
