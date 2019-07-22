@@ -4,9 +4,8 @@ import numpy as np
 import os
 import pytest
 from mirdata import salami, utils
-from tests.test_utils import (mock_download, mock_unzip,
-                              mock_validator, mock_force_delete_all,
-                              DEFAULT_DATA_HOME)
+from tests.test_utils import (mock_validator, DEFAULT_DATA_HOME)
+from tests.test_web_downloader import (mock_download, mock_unzip, mock_force_delete_all)
 
 
 def test_track():
@@ -88,7 +87,7 @@ def test_track():
     # Test file with missing annotations
     track = salami.Track('192', data_home=data_home)
 
-    # test attributes 
+    # test attributes
     assert track.source == 'Codaich'
     assert track.annotator_1_id == '16'
     assert track.annotator_2_id == '14'

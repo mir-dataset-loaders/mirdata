@@ -28,11 +28,11 @@ import numpy as np
 import os
 
 import mirdata.utils as utils
-from mirdata.web_downloader import downloader
+import mirdata.web_downloader as web_downloader
 
 INDEX = utils.load_json_index('orchset_index.json')
 
-REMOTE = utils.RemoteFileMetadata(
+REMOTE = web_downloader.RemoteFileMetadata(
     filename='Orchset_dataset_0.zip',
     url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
     checksum='cf6fe52d64624f61ee116c752fb318ca',
@@ -167,7 +167,7 @@ def download(data_home=None, force_overwrite=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    downloader(
+    web_downloader.downloader(
         data_home, zip_downloads=[REMOTE], force_overwrite=force_overwrite)
 
 

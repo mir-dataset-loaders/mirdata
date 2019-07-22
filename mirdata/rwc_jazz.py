@@ -10,21 +10,23 @@ except ImportError:
     from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
+import mirdata.web_downloader as web_downloader
+
 # these functions are identical for all rwc datasets
 from mirdata.rwc_classical import _load_beats, _load_sections
 
 INDEX = utils.load_json_index('rwc_jazz_index.json')
 METADATA = None
-METADATA_REMOTE = utils.RemoteFileMetadata(
+METADATA_REMOTE = web_downloader.RemoteFileMetadata(
     filename='rwc-j.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030')
 DATASET_DIR = 'RWC-Jazz'
-ANNOTATIONS_REMOTE_1 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_1 = web_downloader.RemoteFileMetadata(
     filename='AIST.RWC-MDB-J-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.BEAT.zip',
     checksum='b483853da05d0fff3992879f7729bcb4')
-ANNOTATIONS_REMOTE_2 =  utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_2 =  web_downloader.RemoteFileMetadata(
     filename='AIST.RWC-MDB-J-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.CHORUS.zip',
     checksum='44afcf7f193d7e48a7d99e7a6f3ed39d')

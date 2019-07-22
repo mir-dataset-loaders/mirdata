@@ -6,9 +6,12 @@ import os
 import pytest
 
 from mirdata import orchset, utils
-from tests.test_utils import (mock_validated, mock_download, mock_unzip,
-                              mock_validator, mock_force_delete_all,
+from tests.test_utils import (mock_validated,
+                              mock_validator,
                               DEFAULT_DATA_HOME)
+from tests.test_web_downloader import (mock_download,
+                                       mock_unzip,
+                                       mock_force_delete_all)
 
 
 def test_track():

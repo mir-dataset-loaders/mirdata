@@ -11,32 +11,34 @@ except ImportError:
     from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
+import mirdata.web_downloader as web_downloader
+
 # these functions are identical for all rwc datasets
 from mirdata.rwc_classical import _load_beats, _load_sections
 
 INDEX = utils.load_json_index('rwc_popular_index.json')
 METADATA = None
-METADATA_REMOTE = utils.RemoteFileMetadata(
+METADATA_REMOTE = web_downloader.RemoteFileMetadata(
     filename='rwc-p.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030')
 DATASET_DIR = 'RWC-Popular'
-ANNOTATIONS_REMOTE_1 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_1 = web_downloader.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip',
     checksum='3858aa989535bd7196b3cd07b512b5b6'
 )
-ANNOTATIONS_REMOTE_2 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_2 = web_downloader.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip',
     checksum='f76b3a32701fbd9bf78baa608f692a77'
 )
-ANNOTATIONS_REMOTE_3 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_3 = web_downloader.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.CHORD.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip',
     checksum='68379c88bc8ec3f1907b32a3579197c5'
 )
-ANNOTATIONS_REMOTE_4 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_4 = web_downloader.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.VOCA_INST.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip',
     checksum='47ded648a496407ef49dba9c8bf80e87'
