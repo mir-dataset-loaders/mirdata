@@ -20,9 +20,12 @@ import requests
 from requests.exceptions import HTTPError
 from tqdm import tqdm
 
+try:
+    from pathlib import Path
+except ImportError:
+    from pathlib2 import Path  # python 2 backport
+
 MIR_DATASETS_DIR = os.path.join(os.getenv('HOME', '/tmp'), 'mir_datasets')
-VALIDATED_FILE_NAME = '_VALIDATED'
-INVALID_FILE_NAME = '_INVALID.json'
 
 
 def md5(file_path):
@@ -148,21 +151,46 @@ RemoteFileMetadata = namedtuple('RemoteFileMetadata', ['filename', 'url', 'check
 
 
 def downloader(data_home, zip_downloads=None, tar_downloads=None,
-               file_downloads=None, info_message=None):
+               file_downloads=None, info_message=None, force_overwrite=False):
+    """Download data to `data_home` and optionally print a message.
+
+    Args:
+        data_home (str):
+            The directory to download the data
+        zip_downloads (list or None):
+            A list of RemoteFileMetadata tuples of data in zip format.
+            If None, there is no zip data to download
+        tar_downloads (list or None):
+            A list of RemoteFileMetadata tuples of data in tar format.
+            If None, there is no tar data to download
+        file_downloads (list or None):
+            A list of  RemoteFileMetadata tuples of uncompressed data.
+            If None, there is no uncompressed data to download.
+        info_message (str or None):
+            A string of info to print when this function is called.
+            If None, no string is printed.
+        force_overwrite (bool):
+            If True, existing files are overwritten by the downloaded files.
+
+    """
+    Path(data_home).mkdir(exist_ok=True)
 
     if zip_downloads is not None:
         for zip_download in zip_downloads:
-            zip_download_path = download_from_remote(zip_download)
+            zip_download_path = download_from_remote(
+                zip_download, data_home, force_overwrite)
             unzip(zip_download_path, data_home)
 
     if tar_downloads is not None:
         for tar_download in tar_downloads:
-            tar_download_path = download_from_remote(tar_download)
+            tar_download_path = download_from_remote(
+                tar_download, data_home, force_overwrite)
             untar(tar_download_path, data_home)
 
     if file_downloads is not None:
         for file_download in file_downloads:
-            file_download_path = download_from_remote(file_download)
+            download_from_remote(
+                file_download, data_home, force_overwrite)
 
     if info_message is not None:
         print(info_message)
@@ -176,7 +204,7 @@ class DownloadProgressBar(tqdm):
         self.update(b * bsize - self.n)
 
 
-def download_large_file(url, download_path, callback=lambda: None):
+def _download_large_file(url, download_path, callback=lambda: None):
     """download large file stably (todo: ??)"""
     response = requests.get(url)
     response.raise_for_status()
@@ -218,7 +246,7 @@ def download_from_remote(remote, data_home, force_overwrite=False):
             unit='B', unit_scale=True, miniters=1, desc=remote.url.split('/')[-1]
         ) as t:
             try:
-                download_large_file(remote.url, download_path, t.update_to)
+                _download_large_file(remote.url, download_path, t.update_to)
             except HTTPError:
                 error_msg = """
                             mirdata failed to download the dataset!
