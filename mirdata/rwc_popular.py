@@ -2,6 +2,7 @@
 """RWC Popular Dataset Loader
 """
 import csv
+import librosa
 import numpy as np
 import os
 try:
@@ -10,6 +11,8 @@ except ImportError:
     from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
+# these functions are identical for all rwc datasets
+from mirdata.rwc_classical import _load_beats, _load_sections
 
 INDEX = utils.load_json_index('rwc_popular_index.json')
 METADATA = None
@@ -56,7 +59,7 @@ class Track(object):
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
 
-        if track_id in METADATA.keys():
+        if METADATA is not None and track_id in METADATA:
             self._track_metadata = METADATA[track_id]
         else:
             # annotations with missing metadata
@@ -87,6 +90,19 @@ class Track(object):
         self.instruments = self._track_metadata['instruments']
         self.drum_information = self._track_metadata['drum_information']
 
+    def __repr__(self):
+        repr_string = "RWC-Popular Track(track_id={}, audio_path={}, " + \
+            "piece_number={}, suffix={}, track_number={}, title={}, " + \
+            "artist={}, singer_information={}, track_duration_sec={}, " + \
+            "tempo={}, instruments={}, drum_information={}, " + \
+            "sections=SectionData('start_times', 'end_times', 'sections'), " + \
+            "beats=BeatData('beat_times', 'beat_positions'))"
+        return repr_string.format(
+            self.track_id, self.audio_path, self.piece_number, self.suffix,
+            self.track_number, self.title, self.artist, self.singer_information,
+            self.track_duration_sec, self.tempo, self.instruments, self.drum_information
+        )
+
     @utils.cached_property
     def sections(self):
         return _load_sections(os.path.join(
@@ -107,6 +123,11 @@ class Track(object):
         return _load_voca_inst(os.path.join(
                 self._data_home, self._track_paths['voca_inst'][0]))
 
+    @property
+    def audio(self):
+        return librosa.load(self.audio_path, sr=None, mono=True)
+
+
 
 def download(data_home=None, force_overwrite=False):
 
@@ -124,8 +145,6 @@ def download(data_home=None, force_overwrite=False):
     # Downloading multiple annotations
     for annotations_remote in [ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2,
                                ANNOTATIONS_REMOTE_3, ANNOTATIONS_REMOTE_4]:
-
-
 
         if force_overwrite:
             utils.force_delete_all(annotations_remote, data_home=data_home)
@@ -158,7 +177,7 @@ def download(data_home=None, force_overwrite=False):
     utils.unzip(download_path, metadata_path, cleanup=True)
 
 
-def validate(data_home=None):
+def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
     Args:
@@ -176,7 +195,7 @@ def validate(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home
+        INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -190,7 +209,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None):
+def load(data_home=None, silence_validator=False):
     """Load RWC-Genre dataset
 
     Args:
@@ -204,68 +223,11 @@ def load(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home)
+    validate(data_home, silence=silence_validator)
     rwc_popular_data = {}
     for key in track_ids():
         rwc_popular_data[key] = Track(key, data_home=data_home)
     return rwc_popular_data
-
-
-def _load_sections(sections_path):
-    if not os.path.exists(sections_path):
-        return None
-    begs = []  # timestamps of section beginnings
-    ends = []  # timestamps of section endings
-    secs = []  # section labels
-
-    with open(sections_path, 'r') as fhandle:
-            reader = csv.reader(fhandle, delimiter='\t')
-            for line in reader:
-                begs.append(float(line[0])/100.0)
-                ends.append(float(line[1])/100.0)
-                secs.append(line[2])
-
-    return utils.SectionData(np.array(begs), np.array(ends), np.array(secs))
-
-
-def _position_in_bar(beat_positions):
-    """
-    Mapping to beat position in bar (e.g. 1, 2, 3, 4).
-    """
-    # Remove -1
-    beat_positions = np.array(beat_positions)
-    beat_positions = np.delete(beat_positions, np.where(beat_positions==-1))
-    # Create corrected array with downbeat positions
-    beat_positions_corrected = np.zeros((len(beat_positions),))
-    downbeat_positions = np.where(np.diff(beat_positions)<0)[0] + 1
-    beat_positions_corrected[downbeat_positions] = 1
-    # Propagate positions
-    for b in range(1, len(beat_positions)):
-        if beat_positions[b] > beat_positions[b-1]:
-            beat_positions_corrected[b] = beat_positions_corrected[b-1] + 1
-    # Beginning (in case track doesn't start in a downbeat)
-    if not downbeat_positions[0] == 0:
-        timesig_next_bar = beat_positions_corrected[downbeat_positions[2]-1]
-        for b in range(1, downbeat_positions[0]+1):
-            beat_positions_corrected[downbeat_positions[0] - b] = timesig_next_bar - b + 1
-
-    return beat_positions_corrected
-
-
-def _load_beats(beats_path):
-    if not os.path.exists(beats_path):
-        return None
-    beat_times = []   # timestamps of beat interval beginnings
-    beat_positions = []  # beat position inside the bar
-
-    with open(beats_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
-        for line in reader:
-            beat_times.append(float(line[0])/100.0)
-            beat_positions.append(int(line[2]))
-    beat_positions = _position_in_bar(beat_positions)
-
-    return utils.BeatData(np.array(beat_times), np.array(beat_positions))
 
 
 def _load_chords(chords_path):
@@ -304,11 +266,7 @@ def _load_voca_inst(voca_inst_path):
         # Parsing vocal-instrument activity as intervals (beg, end, event)
         if raw_data[i] != raw_data[-1]:
             begs.append(float(raw_data[i][0]))
-            ends.append(float(raw_data[i+1][0]))
-            events.append(raw_data[i][1])
-        else:
-            begs.append(float(raw_data[i][0]))
-            ends.append(float(raw_data[i][0]))
+            ends.append(float(raw_data[i + 1][0]))
             events.append(raw_data[i][1])
 
     return utils.EventData(np.array(begs), np.array(ends), np.array(events))
@@ -319,9 +277,11 @@ def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-p.csv')
 
     if not os.path.exists(metadata_path):
-        raise OSError('Could not find {}'.format(metadata_path))
+        print("Warning: metadata file {} not found.".format(metadata_path))
+        print("You can download the metadata file by running download()")
+        return None
 
-    with open(metadata_path, 'r', encoding='utf-8') as fhandle:
+    with open(metadata_path, 'r') as fhandle:
         dialect = csv.Sniffer().sniff(fhandle.read(1024))
         fhandle.seek(0)
         reader = csv.reader(fhandle, dialect)
@@ -366,7 +326,7 @@ def cite():
 
 If using beat and section annotations please cite:
 
-Goto, Masataka, et al., 
+Goto, Masataka, et al.,
 "RWC Music Database: Popular, Classical and Jazz Music Databases.",
 3rd International Society for Music Information Retrieval Conference (2002)
 
@@ -376,7 +336,7 @@ Cho, Taemin, and Juan P. Bello.,
 "A feature smoothing method for chord recognition using recurrence plots.",
 12th International Society for Music Information Retrieval Conference (2011)
 
-If using vocal-instrument activity annotations please cite: 
+If using vocal-instrument activity annotations please cite:
 
 Mauch, Matthias, et al.,
 "Timbre and Melody Features for the Recognition of Vocal Activity and Instrumental Solos in Polyphonic Music.",
