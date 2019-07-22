@@ -234,12 +234,13 @@ def _position_in_bar(beat_positions, beat_times):
         if _beat_positions[b] > _beat_positions[b - 1]:
             beat_positions_corrected[b] = beat_positions_corrected[b - 1] + 1
 
-    # fill in the first beat position if it isn't a downbeat
-    if beat_positions_corrected[0] == 0:
-        beat_positions_corrected[0] = beat_positions_corrected[1] - 1
-    # if it's still zero, it's the last beat
-    if beat_positions_corrected[0] == 0:
-        beat_positions_corrected[0] = np.max(beat_positions_corrected)
+    print(beat_positions_corrected)
+    print(downbeat_positions)
+
+    if not downbeat_positions[0] == 0:
+        timesig_next_bar = beat_positions_corrected[downbeat_positions[1] - 1]
+        for b in range(1, downbeat_positions[0] + 1):
+            beat_positions_corrected[downbeat_positions[0] - b] = timesig_next_bar - b + 1
 
     return beat_positions_corrected, beat_times_corrected
 
