@@ -1,38 +1,94 @@
-import pytest
+from __future__ import absolute_import
 
 import os
-from time import sleep
 import sys
 
-"""
-if sys.version_info[0] >= 3:
-    import urllib.request
-    from testcontainers.core.container import DockerContainer
+from mirdata import download
 
-    @pytest.fixture
-    def file_server():
-        container = DockerContainer('test-container:latest')
-        container.with_bind_ports(8000, 8000)
-        container.start()
+import pytest
 
-        yield container
-
-        container.stop()
-
-    def test_sample(file_server, tmpdir):
-        exposed_port = file_server.get_exposed_port(8000)
-
-        # We do this because the web server in the container is not immediately available
-        sleep(3)
-
-        # This is the container we are running locally hence local IP
-        url = 'http://127.0.0.1:%s' % exposed_port
-
-        file_path = os.path.join(tmpdir, 'song1.mp3')
-
-        urllib.request.urlretrieve(url, filename=file_path)
-"""
+if sys.version_info.major == 3:
+    builtin_module_name = 'builtins'
+else:
+    builtin_module_name = '__builtin__'
 
 
-def test_foobar():
-    pass
+@pytest.fixture
+def mock_download(mocker):
+    return mocker.patch.object(download, 'download_from_remote')
+
+
+@pytest.fixture
+def mock_untar(mocker):
+    return mocker.patch.object(download, 'untar')
+
+
+@pytest.fixture
+def mock_unzip(mocker):
+    return mocker.patch.object(download, 'unzip')
+
+
+@pytest.fixture
+def mock_force_delete_all(mocker):
+    return mocker.patch.object(download, 'force_delete_all')
+
+
+def test_download_from_remote(httpserver, tmpdir):
+    httpserver.serve_content(open('tests/resources/remote.wav').read())
+
+    TEST_REMOTE = download.RemoteFileMetadata(
+        filename='remote.wav',
+        url=httpserver.url,
+        checksum=('3f77d0d69dc41b3696f074ad6bf2852f')
+    )
+
+    download_path = download.download_from_remote(TEST_REMOTE, str(tmpdir))
+    expected_download_path = os.path.join(str(tmpdir), 'remote.wav')
+    assert expected_download_path == download_path
+
+
+def test_download_from_remote_raises_IOError(httpserver, tmpdir):
+    httpserver.serve_content('File not found!', 404)
+
+    TEST_REMOTE = download.RemoteFileMetadata(
+        filename='remote.wav',
+        url=httpserver.url,
+        checksum=('1234')
+    )
+
+    with pytest.raises(IOError):
+        download.download_from_remote(TEST_REMOTE, str(tmpdir))
+
+
+def test_unzip(tmpdir):
+    download.unzip('tests/resources/remote.zip', str(tmpdir))
+
+    expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
+    assert os.path.exists(expected_file_location)
+
+
+def test_untar(tmpdir):
+    download.untar('tests/resources/remote.tar.gz', str(tmpdir))
+
+    expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
+    assert os.path.exists(expected_file_location)
+
+
+def test_force_delete_all_nonempty_data_home(httpserver, tmpdir):
+    tmpdir_str = str(tmpdir)
+    remote_filename = 'remote.wav'
+    TEST_REMOTE = download.RemoteFileMetadata(
+        filename=remote_filename,
+        url=httpserver.url,
+        checksum=('1234')
+    )
+
+    with pytest.raises(IOError):
+        download.download_from_remote(TEST_REMOTE, tmpdir_str)
+
+    download.untar('tests/resources/remote.tar.gz', tmpdir_str)
+    assert os.path.exists(os.path.join(tmpdir_str, remote_filename))
+    assert os.path.exists(tmpdir_str)
+    download.force_delete_all(TEST_REMOTE, tmpdir_str)
+    assert not os.path.exists(os.path.join(tmpdir_str, remote_filename))
+    assert not os.path.exists(tmpdir_str)
