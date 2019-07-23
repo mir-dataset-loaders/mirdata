@@ -22,11 +22,11 @@ import os
 import numpy as np
 
 import mirdata.utils as utils
-import mirdata.download as download
+import mirdata.download_utils as download_utils
 
 DATASET_DIR = 'Beatles'
 INDEX = utils.load_json_index('beatles_index.json')
-ANNOTATIONS_REMOTE = download.RemoteFileMetadata(
+ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
     checksum='62425c552d37c6bb655a78e4603828cc',
@@ -128,7 +128,7 @@ def download(data_home=None, force_overwrite=False):
         and copy the Beatles folder to {}
     """.format(data_home)
 
-    download.downloader(
+    download_utils.downloader(
         data_home, tar_downloads=[ANNOTATIONS_REMOTE],
         info_message=download_message, force_overwrite=force_overwrite)
 

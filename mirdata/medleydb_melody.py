@@ -31,7 +31,7 @@ import numpy as np
 import os
 
 import mirdata.utils as utils
-import mirdata.download as download
+import mirdata.download_utils as download_utils
 
 INDEX = utils.load_json_index('medleydb_melody_index.json')
 DATASET_DIR = 'MedleyDB-Melody'
@@ -159,7 +159,7 @@ def download(data_home=None):
         {data_home}
     """.format(data_home=data_home)
 
-    download.downloader(info_message=info_message)
+    download_utils.downloader(info_message=info_message)
 
 
 def validate(data_home=None, silence=False):

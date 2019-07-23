@@ -8,7 +8,6 @@ from __future__ import print_function
 from collections import namedtuple
 import os
 import tarfile
-import shutil
 import zipfile
 import requests
 from requests.exceptions import HTTPError
@@ -189,13 +188,3 @@ def untar(tar_path, save_dir, cleanup=False):
     tfile.close()
     if cleanup:
         os.remove(tar_path)
-
-
-def force_delete_all(remote, data_home):
-    """todo
-    """
-    if remote:
-        download_path = os.path.join(data_home, remote.filename)
-        os.remove(download_path)
-
-    shutil.rmtree(data_home)

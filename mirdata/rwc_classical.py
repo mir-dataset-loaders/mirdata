@@ -7,20 +7,20 @@ import numpy as np
 import os
 
 import mirdata.utils as utils
-import mirdata.download as download
+import mirdata.download_utils as download_utils
 
 INDEX = utils.load_json_index("rwc_classical_index.json")
 METADATA = None
-METADATA_REMOTE = download.RemoteFileMetadata(
+METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-c.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030')
 DATASET_DIR = 'RWC-Classical'
-ANNOTATIONS_REMOTE_1 = download.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
     checksum='e8ee05854833cbf5eb7280663f71c29b')
-ANNOTATIONS_REMOTE_2 = download.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
     checksum='f77bd527510376f59f5a2eed8fd7feb3')
@@ -101,10 +101,8 @@ def download(data_home=None, force_overwrite=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     annotations_path = os.path.join(data_home, 'annotations')
-    download.downloader(
-        annotations_path,
-        zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
-        force_overwrite=force_overwrite)
+    download_utils.downloader(annotations_path, force_overwrite=force_overwrite,
+                              zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2])
 
     info_message = """
         Unfortunately the audio files of the RWC-Jazz dataset are not available
@@ -117,9 +115,8 @@ def download(data_home=None, force_overwrite=False):
         and copy the RWC-Classical folder to {}
     """.format(data_home)
 
-    download.downloader(
-        data_home, zip_downloads=[METADATA_REMOTE], info_message=info_message,
-        force_overwrite=force_overwrite)
+    download_utils.downloader(data_home, zip_downloads=[METADATA_REMOTE],
+                              info_message=info_message, force_overwrite=force_overwrite)
 
 
 def validate(data_home=None, silence=False):

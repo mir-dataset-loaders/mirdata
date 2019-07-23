@@ -23,6 +23,7 @@ Attributes:
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+
 import csv
 import json
 import librosa
@@ -30,7 +31,7 @@ import numpy as np
 import os
 
 import mirdata.utils as utils
-import mirdata.download as download
+import mirdata.download_utils as download_utils
 
 INDEX = utils.load_json_index('medleydb_pitch_index.json')
 DATASET_DIR = 'MedleyDB-Pitch'
