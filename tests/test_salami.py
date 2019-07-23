@@ -5,7 +5,7 @@ import os
 import pytest
 from mirdata import salami, utils
 from tests.test_utils import (mock_validator, DEFAULT_DATA_HOME)
-from tests.test_web_downloader import (mock_download, mock_unzip, mock_force_delete_all)
+from tests.test_download import (mock_download, mock_unzip, mock_force_delete_all)
 
 
 def test_track():

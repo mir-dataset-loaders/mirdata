@@ -35,13 +35,13 @@ import librosa
 import numpy as np
 
 import mirdata.utils as utils
-import mirdata.web_downloader as web_downloader
+import mirdata.download as download
 
 DATASET_DIR = 'iKala'
 INDEX = utils.load_json_index('ikala_index.json')
 TIME_STEP = 0.032  # seconds
 METADATA = None
-ID_MAPPING_REMOTE = web_downloader.RemoteFileMetadata(
+ID_MAPPING_REMOTE = download.RemoteFileMetadata(
     filename='id_mapping.txt',
     url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
     checksum='81097b587804ce93e56c7a331ba06abc'
@@ -172,7 +172,7 @@ def download(data_home=None, force_overwrite=False):
         and copy the {ikala_dir} folder to {save_path}
     """.format(ikala_dir=DATASET_DIR, save_path=data_home)
 
-    web_downloader.downloader(data_home, file_downloads=[ID_MAPPING_REMOTE],
+    download.downloader(data_home, file_downloads=[ID_MAPPING_REMOTE],
                      info_message=download_message,
                      force_overwrite=force_overwrite)
 

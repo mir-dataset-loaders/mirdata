@@ -29,12 +29,12 @@ except ImportError:
     from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
-import mirdata.web_downloader as web_downloader
+import mirdata.download as download
 
 INDEX = utils.load_json_index('salami_index.json')
 METADATA = None
 DATASET_DIR = 'Salami'
-ANNOTATIONS_REMOTE = web_downloader.RemoteFileMetadata(
+ANNOTATIONS_REMOTE = download.RemoteFileMetadata(
     filename='salami-data-public-master.zip',
     url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
     checksum='b01d6eb5b71cca1f3163fae4b2cd4c61',

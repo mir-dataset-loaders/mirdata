@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import os
 import sys
 
-from mirdata import web_downloader
+from mirdata import download
 
 import pytest
 
@@ -15,34 +15,34 @@ else:
 
 @pytest.fixture
 def mock_download(mocker):
-    return mocker.patch.object(web_downloader, 'download_from_remote')
+    return mocker.patch.object(download, 'download_from_remote')
 
 
 @pytest.fixture
 def mock_untar(mocker):
-    return mocker.patch.object(web_downloader, 'untar')
+    return mocker.patch.object(download, 'untar')
 
 
 @pytest.fixture
 def mock_unzip(mocker):
-    return mocker.patch.object(web_downloader, 'unzip')
+    return mocker.patch.object(download, 'unzip')
 
 
 @pytest.fixture
 def mock_force_delete_all(mocker):
-    return mocker.patch.object(web_downloader, 'force_delete_all')
+    return mocker.patch.object(download, 'force_delete_all')
 
 
 def test_download_from_remote(httpserver, tmpdir):
     httpserver.serve_content(open('tests/resources/remote.wav').read())
 
-    TEST_REMOTE = web_downloader.RemoteFileMetadata(
+    TEST_REMOTE = download.RemoteFileMetadata(
         filename='remote.wav',
         url=httpserver.url,
         checksum=('3f77d0d69dc41b3696f074ad6bf2852f')
     )
 
-    download_path = web_downloader.download_from_remote(TEST_REMOTE, str(tmpdir))
+    download_path = download.download_from_remote(TEST_REMOTE, str(tmpdir))
     expected_download_path = os.path.join(str(tmpdir), 'remote.wav')
     assert expected_download_path == download_path
 
@@ -50,25 +50,25 @@ def test_download_from_remote(httpserver, tmpdir):
 def test_download_from_remote_raises_IOError(httpserver, tmpdir):
     httpserver.serve_content('File not found!', 404)
 
-    TEST_REMOTE = web_downloader.RemoteFileMetadata(
+    TEST_REMOTE = download.RemoteFileMetadata(
         filename='remote.wav',
         url=httpserver.url,
         checksum=('1234')
     )
 
     with pytest.raises(IOError):
-        web_downloader.download_from_remote(TEST_REMOTE, str(tmpdir))
+        download.download_from_remote(TEST_REMOTE, str(tmpdir))
 
 
 def test_unzip(tmpdir):
-    web_downloader.unzip('tests/resources/remote.zip', str(tmpdir))
+    download.unzip('tests/resources/remote.zip', str(tmpdir))
 
     expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
     assert os.path.exists(expected_file_location)
 
 
 def test_untar(tmpdir):
-    web_downloader.untar('tests/resources/remote.tar.gz', str(tmpdir))
+    download.untar('tests/resources/remote.tar.gz', str(tmpdir))
 
     expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
     assert os.path.exists(expected_file_location)
@@ -77,18 +77,18 @@ def test_untar(tmpdir):
 def test_force_delete_all_nonempty_data_home(httpserver, tmpdir):
     tmpdir_str = str(tmpdir)
     remote_filename = 'remote.wav'
-    TEST_REMOTE = web_downloader.RemoteFileMetadata(
+    TEST_REMOTE = download.RemoteFileMetadata(
         filename=remote_filename,
         url=httpserver.url,
         checksum=('1234')
     )
 
     with pytest.raises(IOError):
-        web_downloader.download_from_remote(TEST_REMOTE, tmpdir_str)
+        download.download_from_remote(TEST_REMOTE, tmpdir_str)
 
-    web_downloader.untar('tests/resources/remote.tar.gz', tmpdir_str)
+    download.untar('tests/resources/remote.tar.gz', tmpdir_str)
     assert os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert os.path.exists(tmpdir_str)
-    web_downloader.force_delete_all(TEST_REMOTE, tmpdir_str)
+    download.force_delete_all(TEST_REMOTE, tmpdir_str)
     assert not os.path.exists(os.path.join(tmpdir_str, remote_filename))
     assert not os.path.exists(tmpdir_str)

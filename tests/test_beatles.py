@@ -7,7 +7,7 @@ import pytest
 
 from mirdata import beatles, utils
 from tests.test_utils import (mock_validated, mock_validator, DEFAULT_DATA_HOME)
-from tests.test_web_downloader import (mock_download, mock_untar, mock_force_delete_all)
+from tests.test_download import (mock_download, mock_untar, mock_force_delete_all)
 
 
 def test_track():
