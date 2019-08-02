@@ -7,7 +7,7 @@ import pytest
 
 from mirdata import orchset, utils
 from tests.test_utils import mock_validated, mock_validator, DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_download, mock_unzip
+from tests.test_download_utils import mock_file, mock_unzip
 
 
 def test_track():
