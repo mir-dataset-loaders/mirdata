@@ -98,7 +98,7 @@ def test_load_beats():
     assert np.array_equal(beat_data.beat_times, np.array(
         [13.249, 13.959, 14.416, 14.965, 15.453, 15.929, 16.428]))
     assert np.array_equal(beat_data.beat_positions, np.array(
-        ['2', '3', '4', '1', '2', '3', '4']))
+        [2, 3, 4, 1, 2, 3, 4]))
 
     # load a file which doesn't exist
     beat_none = beatles._load_beats('fake/file/path')
