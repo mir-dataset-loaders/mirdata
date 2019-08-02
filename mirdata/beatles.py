@@ -225,6 +225,8 @@ def _load_beats(beats_path):
             beat_positions.append(line[-1])
 
     beat_positions = _fix_newpoint(np.array(beat_positions))
+    # After fixing New Point labels convert positions to int
+    beat_positions = [int(b) for b in beat_positions]
 
     beat_data = utils.BeatData(np.array(beat_times), np.array(beat_positions))
 
