@@ -68,6 +68,11 @@ def test_track():
         "sections=SectionData('start_times', 'end_times', 'sections'))"
     assert track.__repr__() == repr_string
 
+    track = beatles.Track('10212')
+    assert track.beats == utils.BeatData(None, None)
+    assert track.key == utils.KeyData(None, None, None)
+
+
 
 def test_track_ids():
     track_ids = beatles.track_ids()
