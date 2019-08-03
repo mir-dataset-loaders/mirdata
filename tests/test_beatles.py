@@ -69,8 +69,8 @@ def test_track():
     assert track.__repr__() == repr_string
 
     track = beatles.Track('10212')
-    assert track.beats == utils.BeatData(None, None)
-    assert track.key == utils.KeyData(None, None, None)
+    assert track.beats == None
+    assert track.key == None
 
 
 

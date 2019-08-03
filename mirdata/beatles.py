@@ -87,7 +87,7 @@ class Track(object):
         if not self._track_paths['beat'][0] is None:
             return _load_beats(os.path.join(
                 self._data_home, self._track_paths['beat'][0]))
-        return utils.BeatData(None, None)
+        return None
 
     @utils.cached_property
     def chords(self):
@@ -99,7 +99,7 @@ class Track(object):
         if not self._track_paths['keys'][0] is None:
             return _load_key(os.path.join(
                 self._data_home, self._track_paths['keys'][0]))
-        return utils.KeyData(None, None, None)
+        return None
 
     @utils.cached_property
     def sections(self):
