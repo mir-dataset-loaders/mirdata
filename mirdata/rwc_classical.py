@@ -5,25 +5,22 @@ import csv
 import librosa
 import numpy as np
 import os
-try:
-    from pathlib import Path
-except ImportError:
-    from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
+import mirdata.download_utils as download_utils
 
 INDEX = utils.load_json_index("rwc_classical_index.json")
 METADATA = None
-METADATA_REMOTE = utils.RemoteFileMetadata(
+METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-c.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030')
 DATASET_DIR = 'RWC-Classical'
-ANNOTATIONS_REMOTE_1 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
     checksum='e8ee05854833cbf5eb7280663f71c29b')
-ANNOTATIONS_REMOTE_2 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
     checksum='f77bd527510376f59f5a2eed8fd7feb3')
@@ -103,46 +100,23 @@ def download(data_home=None, force_overwrite=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    if os.path.exists(data_home) and not force_overwrite:
-        return
-
-    Path(data_home).mkdir(exist_ok=True)
-
     annotations_path = os.path.join(data_home, 'annotations')
-    metadata_path = data_home
+    download_utils.downloader(annotations_path, force_overwrite=force_overwrite,
+                              zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2])
 
-    # Downloading multiple annotations
-    for annotations_remote in [ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2]:
+    info_message = """
+        Unfortunately the audio files of the RWC-Jazz dataset are not available
+        for download. If you have the RWC-Classical dataset, place the contents into a
+        folder called RWC-Classical with the following structure:
+            > RWC-Classical/
+                > annotations/
+                > audio/rwc-c-m0i with i in [1 .. 6]
+                > metadata-master/
+        and copy the RWC-Classical folder to {}
+    """.format(data_home)
 
-        if force_overwrite:
-            utils.force_delete_all(annotations_remote, data_home=data_home)
-
-        download_path = utils.download_from_remote(
-            annotations_remote, data_home=data_home, force_overwrite=force_overwrite
-        )
-
-        if not os.path.exists(annotations_path):
-            os.makedirs(annotations_path)
-
-        utils.unzip(download_path, annotations_path, cleanup=True)
-
-    missing_files, invalid_checksums = validate(data_home)
-    if missing_files or invalid_checksums:
-        print("""
-            Unfortunately the audio files of the RWC-Jazz dataset are not available
-            for download. If you have the RWC-Classical dataset, place the contents into a
-            folder called RWC-Classical with the following structure:
-                > RWC-Classical/
-                    > annotations/
-                    > audio/rwc-c-m0i with i in [1 .. 6]
-                    > metadata-master/
-            and copy the RWC-Classical folder to {}
-        """.format(data_home))
-
-    # metadata
-    download_path = utils.download_from_remote(
-            METADATA_REMOTE, data_home=annotations_path, force_overwrite=force_overwrite)
-    utils.unzip(download_path, metadata_path, cleanup=True)
+    download_utils.downloader(data_home, zip_downloads=[METADATA_REMOTE],
+                              info_message=info_message, force_overwrite=force_overwrite)
 
 
 def validate(data_home=None, silence=False):

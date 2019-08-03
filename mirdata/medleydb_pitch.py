@@ -23,6 +23,7 @@ Attributes:
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+
 import csv
 import json
 import librosa
@@ -30,6 +31,7 @@ import numpy as np
 import os
 
 import mirdata.utils as utils
+import mirdata.download_utils as download_utils
 
 INDEX = utils.load_json_index('medleydb_pitch_index.json')
 DATASET_DIR = 'MedleyDB-Pitch'
@@ -123,8 +125,7 @@ def download(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    print(
-        """
+    info_message = """
         To download this dataset, visit:
         https://zenodo.org/record/2620624#.XKZc7hNKh24
         and request access.
@@ -132,10 +133,9 @@ def download(data_home=None):
         Once downloaded, unzip the file MedleyDB-Pitch.zip
         and copy the result to:
         {data_home}
-    """.format(
-            data_home=data_home
-        )
-    )
+    """.format(data_home=data_home)
+
+    download.downloaderdownloader(info_message=info_message)
 
 
 def validate(data_home=None, silence=False):

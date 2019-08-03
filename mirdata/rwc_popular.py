@@ -5,38 +5,36 @@ import csv
 import librosa
 import numpy as np
 import os
-try:
-    from pathlib import Path
-except ImportError:
-    from pathlib2 import Path  # python 2 backport
 
 import mirdata.utils as utils
+import mirdata.download_utils as download_utils
+
 # these functions are identical for all rwc datasets
 from mirdata.rwc_classical import _load_beats, _load_sections
 
 INDEX = utils.load_json_index('rwc_popular_index.json')
 METADATA = None
-METADATA_REMOTE = utils.RemoteFileMetadata(
+METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-p.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030')
 DATASET_DIR = 'RWC-Popular'
-ANNOTATIONS_REMOTE_1 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip',
     checksum='3858aa989535bd7196b3cd07b512b5b6'
 )
-ANNOTATIONS_REMOTE_2 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip',
     checksum='f76b3a32701fbd9bf78baa608f692a77'
 )
-ANNOTATIONS_REMOTE_3 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_3 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.CHORD.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip',
     checksum='68379c88bc8ec3f1907b32a3579197c5'
 )
-ANNOTATIONS_REMOTE_4 = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE_4 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.VOCA_INST.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip',
     checksum='47ded648a496407ef49dba9c8bf80e87'
@@ -128,53 +126,33 @@ class Track(object):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
 
-
 def download(data_home=None, force_overwrite=False):
 
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    if os.path.exists(data_home) and not force_overwrite:
-        return
-
-    Path(data_home).mkdir(exist_ok=True)
-
     annotations_path = os.path.join(data_home, 'annotations')
-    metadata_path = data_home
 
-    # Downloading multiple annotations
-    for annotations_remote in [ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2,
-                               ANNOTATIONS_REMOTE_3, ANNOTATIONS_REMOTE_4]:
+    download_utils.downloader(
+        annotations_path,
+        zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2,
+                       ANNOTATIONS_REMOTE_3, ANNOTATIONS_REMOTE_4],
+        force_overwrite=force_overwrite
+    )
 
-        if force_overwrite:
-            utils.force_delete_all(annotations_remote, data_home=data_home)
+    info_message = """
+        Unfortunately the audio files of the RWC-Popular dataset are not available
+        for download. If you have the RWC-Popular dataset, place the contents into a
+        folder called RWC-Popular with the following structure:
+            > RWC-Popular/
+                > annotations/
+                > audio/rwc-p-m0i with i in [1 .. 7]
+                > metadata-master/
+        and copy the RWC-Popular folder to {}
+    """.format(data_home)
 
-        download_path = utils.download_from_remote(
-            annotations_remote, data_home=data_home, force_overwrite=force_overwrite
-        )
-
-        if not os.path.exists(annotations_path):
-            os.makedirs(annotations_path)
-
-        utils.unzip(download_path, annotations_path, cleanup=True)
-
-    missing_files, invalid_checksums = validate(annotations_path, data_home)
-    if missing_files or invalid_checksums:
-        print("""
-            Unfortunately the audio files of the RWC-Popular dataset are not available
-            for download. If you have the RWC-Popular dataset, place the contents into a
-            folder called RWC-Popular with the following structure:
-                > RWC-Popular/
-                    > annotations/
-                    > audio/rwc-p-m0i with i in [1 .. 7]
-                    > metadata-master/
-            and copy the RWC-Popular folder to {}
-        """.format(data_home))
-
-    # metadata
-    download_path = utils.download_from_remote(
-            METADATA_REMOTE, data_home=annotations_path, force_overwrite=force_overwrite)
-    utils.unzip(download_path, metadata_path, cleanup=True)
+    download_utils.downloader(data_home, zip_downloads=[METADATA_REMOTE],
+                              info_message=info_message, force_overwrite=force_overwrite)
 
 
 def validate(data_home=None, silence=False):
