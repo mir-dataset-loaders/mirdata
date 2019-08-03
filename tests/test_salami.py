@@ -4,9 +4,8 @@ import numpy as np
 import os
 import pytest
 from mirdata import salami, utils
-from tests.test_utils import (mock_download, mock_unzip,
-                              mock_validator, mock_force_delete_all,
-                              DEFAULT_DATA_HOME)
+from tests.test_utils import (mock_validator, DEFAULT_DATA_HOME)
+from tests.test_download_utils import (mock_file, mock_unzip)
 
 
 def test_track():
@@ -84,11 +83,10 @@ def test_track():
         "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
     assert track.__repr__() == repr_string
 
-
     # Test file with missing annotations
     track = salami.Track('192', data_home=data_home)
 
-    # test attributes 
+    # test attributes
     assert track.source == 'Codaich'
     assert track.annotator_1_id == '16'
     assert track.annotator_2_id == '14'
@@ -156,6 +154,7 @@ def test_track():
     assert track.sections_annotator_1_lowercase is None
     assert type(track.sections_annotator_2_uppercase)  is utils.SectionData
     assert type(track.sections_annotator_2_lowercase) is utils.SectionData
+
 
 def test_track_ids():
     track_ids = salami.track_ids()
@@ -235,79 +234,8 @@ def mock_validate(mocker):
 
 
 @pytest.fixture
-def mock_load_sections(mocker):
-    return mocker.patch.object(salami, '_load_sections')
-
-
-@pytest.fixture
 def data_home(tmpdir):
     return str(tmpdir)
-
-
-@pytest.fixture
-def mock_salami_exists(mocker):
-    return mocker.patch.object(os.path, 'exists')
-
-
-def test_download_already_exists(data_home, mocker,
-                                 mock_force_delete_all,
-                                 mock_salami_exists,
-                                 mock_validator,
-                                 mock_download,
-                                 mock_unzip):
-    mock_salami_exists.return_value = True
-
-    salami.download(data_home)
-
-    mock_force_delete_all.assert_not_called()
-    mock_salami_exists.assert_called_once()
-    mock_download.assert_not_called()
-    mock_unzip.assert_not_called()
-    mock_validator.assert_not_called()
-
-
-def test_download_clean(data_home,
-                        mocker,
-                        mock_force_delete_all,
-                        mock_salami_exists,
-                        mock_download,
-                        mock_unzip,
-                        mock_validate):
-
-    mock_salami_exists.return_value = False
-    mock_download.return_value = 'foobar'
-    mock_unzip.return_value = ''
-    mock_validate.return_value = (False, False)
-
-    salami.download(data_home)
-
-    mock_force_delete_all.assert_not_called()
-    mock_salami_exists.assert_called_once()
-    mock_download.assert_called_once()
-    mock_unzip.assert_called_once_with(mock_download.return_value, data_home, cleanup=True)
-    mock_validate.assert_called_once_with(data_home)
-
-
-def test_download_force_overwrite(data_home,
-                          mocker,
-                          mock_force_delete_all,
-                          mock_salami_exists,
-                          mock_download,
-                          mock_unzip,
-                          mock_validate):
-
-    mock_salami_exists.return_value = False
-    mock_download.return_value = 'foobar'
-    mock_unzip.return_value = ''
-    mock_validate.return_value = (False, False)
-
-    salami.download(data_home, force_overwrite=True)
-
-    mock_force_delete_all.assert_called_once_with(salami.ANNOTATIONS_REMOTE, data_home=data_home)
-    mock_salami_exists.assert_called_once()
-    mock_download.assert_called_once()
-    mock_unzip.assert_called_once_with(mock_download.return_value, data_home, cleanup=True)
-    mock_validate.assert_called_once_with(data_home)
 
 
 def test_validate_invalid(data_home, mocker, mock_validator):
@@ -324,12 +252,3 @@ def test_validate_valid(data_home, mocker, mock_validator):
     missing_files, invalid_checksums = salami.validate(data_home)
     assert not (missing_files or invalid_checksums)
     mock_validator.assert_called_once()
-
-
-def test_load_track_invalid_track_id():
-    with pytest.raises(ValueError):
-        salami.Track('a_fake_track')
-
-
-def test_track_ids():
-    assert salami.track_ids() == list(salami.INDEX.keys())
