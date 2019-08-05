@@ -47,7 +47,7 @@ def test_track():
     assert track.title == 'Symphony no.5 in C minor, op.67. 1st mvmt.'
     assert track.composer == 'Beethoven, Ludwig van'
     assert track.artist == 'Tokyo City Philharmonic Orchestra'
-    assert track.track_duration_sec == '7:15'
+    assert track.duration_sec == '7:15'
     assert track.category == 'Symphony'
 
     # test that cached properties don't fail and have the expected type
@@ -63,7 +63,7 @@ def test_track():
         "audio_path=tests/resources/mir_datasets/RWC-Classical/audio/rwc-c-m01/3.wav, " + \
         "piece_number=No. 3, suffix=M01, track_number=Tr. 03, " + \
         "title=Symphony no.5 in C minor, op.67. 1st mvmt., composer=Beethoven, Ludwig van, " + \
-        "artist=Tokyo City Philharmonic Orchestra, track_duration_sec=7:15, category=Symphony" + \
+        "artist=Tokyo City Philharmonic Orchestra, duration_sec=7:15, category=Symphony" + \
         "sections=SectionData('start_times', 'end_times', 'sections'), " + \
         "beats=BeatData('beat_times', 'beat_positions'))"
     assert track.__repr__() == repr_string
@@ -187,7 +187,7 @@ def test_load_metadata():
         'title': 'Symphony no.5 in C minor, op.67. 1st mvmt.',
         'composer': 'Beethoven, Ludwig van',
         'artist': 'Tokyo City Philharmonic Orchestra',
-        'track_duration_sec': '7:15',
+        'duration_sec': '7:15',
         'category': 'Symphony',
     }
 

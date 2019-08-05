@@ -68,7 +68,7 @@ class Track(object):
                 'title': None,
                 'artist': None,
                 'singer_information': None,
-                'track_duration_sec': None,
+                'duration_sec': None,
                 'tempo': None,
                 'instruments': None,
                 'drum_information': None,
@@ -83,7 +83,7 @@ class Track(object):
         self.title = self._track_metadata['title']
         self.artist = self._track_metadata['artist']
         self.singer_information = self._track_metadata['singer_information']
-        self.track_duration_sec = self._track_metadata['track_duration_sec']
+        self.duration_sec = self._track_metadata['duration_sec']
         self.tempo = self._track_metadata['tempo']
         self.instruments = self._track_metadata['instruments']
         self.drum_information = self._track_metadata['drum_information']
@@ -91,14 +91,14 @@ class Track(object):
     def __repr__(self):
         repr_string = "RWC-Popular Track(track_id={}, audio_path={}, " + \
             "piece_number={}, suffix={}, track_number={}, title={}, " + \
-            "artist={}, singer_information={}, track_duration_sec={}, " + \
+            "artist={}, singer_information={}, duration_sec={}, " + \
             "tempo={}, instruments={}, drum_information={}, " + \
             "sections=SectionData('start_times', 'end_times', 'sections'), " + \
             "beats=BeatData('beat_times', 'beat_positions'))"
         return repr_string.format(
             self.track_id, self.audio_path, self.piece_number, self.suffix,
             self.track_number, self.title, self.artist, self.singer_information,
-            self.track_duration_sec, self.tempo, self.instruments, self.drum_information
+            self.duration_sec, self.tempo, self.instruments, self.drum_information
         )
 
     @utils.cached_property
@@ -282,7 +282,7 @@ def _load_metadata(data_home):
             'title': line[3],
             'artist': line[4],
             'singer_information': line[5],
-            'track_duration_sec': line[6],
+            'duration_sec': line[6],
             'tempo': line[7],
             'instruments': line[8],
             'drum_information': line[9],
