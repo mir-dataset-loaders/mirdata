@@ -67,6 +67,11 @@ def test_track():
         "sections=SectionData('start_times', 'end_times', 'sections'))"
     assert track.__repr__() == repr_string
 
+    track = beatles.Track('10212')
+    assert track.beats == None
+    assert track.key == None
+
+
 
 def test_track_ids():
     track_ids = beatles.track_ids()
@@ -97,7 +102,7 @@ def test_load_beats():
     assert np.array_equal(beat_data.beat_times, np.array(
         [13.249, 13.959, 14.416, 14.965, 15.453, 15.929, 16.428]))
     assert np.array_equal(beat_data.beat_positions, np.array(
-        ['2', '3', '4', '1', '2', '3', '4']))
+        [2, 3, 4, 1, 2, 3, 4]))
 
     # load a file which doesn't exist
     beat_none = beatles._load_beats('fake/file/path')

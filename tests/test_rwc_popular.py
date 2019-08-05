@@ -54,7 +54,7 @@ def test_track():
     assert track.title == 'Eien no replica'
     assert track.artist == 'Kazuo Nishi'
     assert track.singer_information == 'Male'
-    assert track.track_duration_sec == '03:29'
+    assert track.duration_sec == '03:29'
     assert track.tempo == '135'
     assert track.instruments == 'Gt'
     assert track.drum_information == 'Drum sequences'
@@ -73,7 +73,7 @@ def test_track():
     repr_string = "RWC-Popular Track(track_id=RM-P001, " + \
         "audio_path=tests/resources/mir_datasets/RWC-Popular/audio/rwc-p-m01/1.wav, " + \
         "piece_number=No. 1, suffix=M01, track_number=Tr. 01, title=Eien no replica, " + \
-        "artist=Kazuo Nishi, singer_information=Male, track_duration_sec=03:29, " + \
+        "artist=Kazuo Nishi, singer_information=Male, duration_sec=03:29, " + \
         "tempo=135, instruments=Gt, drum_information=Drum sequences, " + \
         "sections=SectionData('start_times', 'end_times', 'sections'), " + \
         "beats=BeatData('beat_times', 'beat_positions'))"
@@ -159,7 +159,7 @@ def test_load_metadata():
         'title': 'Eien no replica',
         'artist': 'Kazuo Nishi',
         'singer_information': 'Male',
-        'track_duration_sec': '03:29',
+        'duration_sec': '03:29',
         'tempo': '135',
         'instruments': 'Gt',
         'drum_information': 'Drum sequences'

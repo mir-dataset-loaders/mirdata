@@ -80,8 +80,10 @@ class Track(object):
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(
-            self._data_home, self._track_paths['beat'][0]))
+        if not self._track_paths['beat'][0] is None:
+            return _load_beats(os.path.join(
+                self._data_home, self._track_paths['beat'][0]))
+        return None
 
     @utils.cached_property
     def chords(self):
@@ -90,8 +92,10 @@ class Track(object):
 
     @utils.cached_property
     def key(self):
-        return _load_key(os.path.join(
-            self._data_home, self._track_paths['keys'][0]))
+        if not self._track_paths['keys'][0] is None:
+            return _load_key(os.path.join(
+                self._data_home, self._track_paths['keys'][0]))
+        return None
 
     @utils.cached_property
     def sections(self):
@@ -206,6 +210,8 @@ def _load_beats(beats_path):
             beat_positions.append(line[-1])
 
     beat_positions = _fix_newpoint(np.array(beat_positions))
+    # After fixing New Point labels convert positions to int
+    beat_positions = [int(b) for b in beat_positions]
 
     beat_data = utils.BeatData(np.array(beat_times), np.array(beat_positions))
 

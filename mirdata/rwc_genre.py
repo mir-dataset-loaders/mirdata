@@ -56,7 +56,7 @@ class Track(object):
                 'title': None,
                 'composer': None,
                 'artist': None,
-                'track_duration_sec': None,
+                'duration_sec': None,
             }
 
         self.audio_path = os.path.join(
@@ -70,19 +70,19 @@ class Track(object):
         self.title = self._track_metadata['title']
         self.composer = self._track_metadata['composer']
         self.artist = self._track_metadata['artist']
-        self.track_duration_sec = self._track_metadata['track_duration_sec']
+        self.duration_sec = self._track_metadata['duration_sec']
 
     def __repr__(self):
         repr_string = "RWC-Genre Track(track_id={}, audio_path={}, " + \
             "piece_number={}, suffix={}, track_number={}, category={}, " + \
             "sub_category={}, title={}, composer={}, " + \
-            "artist={}, track_duration_sec={}, " + \
+            "artist={}, duration_sec={}, " + \
             "sections=SectionData('start_times', 'end_times', 'sections'), " + \
             "beats=BeatData('beat_times', 'beat_positions'))"
         return repr_string.format(
             self.track_id, self.audio_path, self.piece_number, self.suffix,
             self.track_number, self.category, self.sub_category, self.title,
-            self.composer, self.artist, self.track_duration_sec
+            self.composer, self.artist, self.duration_sec
         )
 
     @utils.cached_property
@@ -212,7 +212,7 @@ def _load_metadata(data_home):
             'title': line[5],
             'composer': line[6],
             'artist': line[7],
-            'track_duration_sec': line[8],
+            'duration_sec': line[8],
         }
 
     metadata_index['data_home'] = data_home
