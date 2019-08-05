@@ -34,18 +34,18 @@ import os
 import librosa
 import numpy as np
 
-try:
-    from pathlib import Path
-except ImportError:
-    from pathlib2 import Path  # python 2 backport
-
 import mirdata.utils as utils
+import mirdata.download_utils as download_utils
 
 DATASET_DIR = 'iKala'
 INDEX = utils.load_json_index('ikala_index.json')
 TIME_STEP = 0.032  # seconds
 METADATA = None
-ID_MAPPING_URL = 'http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt'
+ID_MAPPING_REMOTE = download_utils.RemoteFileMetadata(
+    filename='id_mapping.txt',
+    url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
+    checksum='81097b587804ce93e56c7a331ba06abc'
+)
 
 
 class Track(object):
@@ -155,25 +155,13 @@ def download(data_home=None, force_overwrite=False):
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-
+        force_overwrite (bool): If True, existing files are overwritten by the
+            downloaded files.
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    if os.path.exists(data_home) and not force_overwrite:
-        return
-
-    if force_overwrite:
-        utils.force_delete_all(None, data_home=data_home)
-
-    Path(data_home).mkdir(exist_ok=True)
-
-    id_map_path = os.path.join(data_home, 'id_mapping.txt')
-    if not os.path.exists(id_map_path):
-        utils.download_large_file(ID_MAPPING_URL, id_map_path)
-
-    print(
-        """
+    download_message = """
         Unfortunately the iKala dataset is not available for download.
         If you have the iKala dataset, place the contents into a folder called
         {ikala_dir} with the following structure:
@@ -182,10 +170,10 @@ def download(data_home=None, force_overwrite=False):
                 > PitchLabel/
                 > Wavfile/
         and copy the {ikala_dir} folder to {save_path}
-    """.format(
-            ikala_dir=DATASET_DIR, save_path=data_home
-        )
-    )
+    """.format(ikala_dir=DATASET_DIR, save_path=data_home)
+
+    download_utils.downloader(data_home, file_downloads=[ID_MAPPING_REMOTE],
+                              info_message=download_message, force_overwrite=force_overwrite)
 
 
 def validate(data_home=None, silence=False):
