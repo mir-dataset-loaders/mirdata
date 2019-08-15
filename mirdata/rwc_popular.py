@@ -17,34 +17,37 @@ METADATA = None
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-p.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
-    checksum='7dbe87fedbaaa1f348625a2af1d78030')
+    checksum='7dbe87fedbaaa1f348625a2af1d78030',
+)
 DATASET_DIR = 'RWC-Popular'
 ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip',
-    checksum='3858aa989535bd7196b3cd07b512b5b6'
+    checksum='3858aa989535bd7196b3cd07b512b5b6',
 )
 ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip',
-    checksum='f76b3a32701fbd9bf78baa608f692a77'
+    checksum='f76b3a32701fbd9bf78baa608f692a77',
 )
 ANNOTATIONS_REMOTE_3 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.CHORD.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip',
-    checksum='68379c88bc8ec3f1907b32a3579197c5'
+    checksum='68379c88bc8ec3f1907b32a3579197c5',
 )
 ANNOTATIONS_REMOTE_4 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.VOCA_INST.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip',
-    checksum='47ded648a496407ef49dba9c8bf80e87'
+    checksum='47ded648a496407ef49dba9c8bf80e87',
 )
 
 
 class Track(object):
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
-            raise ValueError('{} is not a valid track ID in RWC-Popular'.format(track_id))
+            raise ValueError(
+                '{} is not a valid track ID in RWC-Popular'.format(track_id)
+            )
 
         self.track_id = track_id
 
@@ -74,8 +77,7 @@ class Track(object):
                 'drum_information': None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
         self.piece_number = self._track_metadata['piece_number']
         self.suffix = self._track_metadata['suffix']
@@ -89,37 +91,50 @@ class Track(object):
         self.drum_information = self._track_metadata['drum_information']
 
     def __repr__(self):
-        repr_string = "RWC-Popular Track(track_id={}, audio_path={}, " + \
-            "piece_number={}, suffix={}, track_number={}, title={}, " + \
-            "artist={}, singer_information={}, duration_sec={}, " + \
-            "tempo={}, instruments={}, drum_information={}, " + \
-            "sections=SectionData('start_times', 'end_times', 'sections'), " + \
-            "beats=BeatData('beat_times', 'beat_positions'))"
+        repr_string = (
+            "RWC-Popular Track(track_id={}, audio_path={}, "
+            + "piece_number={}, suffix={}, track_number={}, title={}, "
+            + "artist={}, singer_information={}, duration_sec={}, "
+            + "tempo={}, instruments={}, drum_information={}, "
+            + "sections=SectionData('start_times', 'end_times', 'sections'), "
+            + "beats=BeatData('beat_times', 'beat_positions'))"
+        )
         return repr_string.format(
-            self.track_id, self.audio_path, self.piece_number, self.suffix,
-            self.track_number, self.title, self.artist, self.singer_information,
-            self.duration_sec, self.tempo, self.instruments, self.drum_information
+            self.track_id,
+            self.audio_path,
+            self.piece_number,
+            self.suffix,
+            self.track_number,
+            self.title,
+            self.artist,
+            self.singer_information,
+            self.duration_sec,
+            self.tempo,
+            self.instruments,
+            self.drum_information,
         )
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(os.path.join(
-                self._data_home, self._track_paths['sections'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['sections'][0])
+        )
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(
-                self._data_home, self._track_paths['beats'][0]))
+        return _load_beats(os.path.join(self._data_home, self._track_paths['beats'][0]))
 
     @utils.cached_property
     def chords(self):
-        return _load_chords(os.path.join(
-                self._data_home, self._track_paths['chords'][0]))
+        return _load_chords(
+            os.path.join(self._data_home, self._track_paths['chords'][0])
+        )
 
     @utils.cached_property
     def vocal_instrument_activity(self):
-        return _load_voca_inst(os.path.join(
-                self._data_home, self._track_paths['voca_inst'][0]))
+        return _load_voca_inst(
+            os.path.join(self._data_home, self._track_paths['voca_inst'][0])
+        )
 
     @property
     def audio(self):
@@ -135,9 +150,13 @@ def download(data_home=None, force_overwrite=False):
 
     download_utils.downloader(
         annotations_path,
-        zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2,
-                       ANNOTATIONS_REMOTE_3, ANNOTATIONS_REMOTE_4],
-        force_overwrite=force_overwrite
+        zip_downloads=[
+            ANNOTATIONS_REMOTE_1,
+            ANNOTATIONS_REMOTE_2,
+            ANNOTATIONS_REMOTE_3,
+            ANNOTATIONS_REMOTE_4,
+        ],
+        force_overwrite=force_overwrite,
     )
 
     info_message = """
@@ -149,10 +168,16 @@ def download(data_home=None, force_overwrite=False):
                 > audio/rwc-p-m0i with i in [1 .. 7]
                 > metadata-master/
         and copy the RWC-Popular folder to {}
-    """.format(data_home)
+    """.format(
+        data_home
+    )
 
-    download_utils.downloader(data_home, zip_downloads=[METADATA_REMOTE],
-                              info_message=info_message, force_overwrite=force_overwrite)
+    download_utils.downloader(
+        data_home,
+        zip_downloads=[METADATA_REMOTE],
+        info_message=info_message,
+        force_overwrite=force_overwrite,
+    )
 
 
 def validate(data_home=None, silence=False):
@@ -217,11 +242,11 @@ def _load_chords(chords_path):
 
     if os.path.exists(chords_path):
         with open(chords_path, 'r') as fhandle:
-                reader = csv.reader(fhandle, delimiter='\t')
-                for line in reader:
-                    begs.append(float(line[0]))
-                    ends.append(float(line[1]))
-                    chords.append(line[2])
+            reader = csv.reader(fhandle, delimiter='\t')
+            for line in reader:
+                begs.append(float(line[0]))
+                ends.append(float(line[1]))
+                chords.append(line[2])
 
     return utils.ChordData(np.array(begs), np.array(ends), np.array(chords))
 
@@ -273,7 +298,7 @@ def _load_metadata(data_home):
         if line[0] == 'Piece No.':
             continue
         p = '00' + line[0].split('.')[1][1:]
-        track_id = 'RM-P{}'.format(p[len(p) - 3:])
+        track_id = 'RM-P{}'.format(p[len(p) - 3 :])
 
         metadata_index[track_id] = {
             'piece_number': line[0],

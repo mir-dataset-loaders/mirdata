@@ -128,6 +128,7 @@ def test_download_zip_file(mocker, mock_file, mock_unzip):
     mock_file.assert_called_once_with("a", "b", True)
     mock_unzip.assert_called_once_with("foo", "b", cleanup=False)
 
+
 def test_download_tar_file(mocker, mock_file, mock_untar):
     mock_file.return_value = "foo"
     download_utils.download_tar_file("a", "b", True)
