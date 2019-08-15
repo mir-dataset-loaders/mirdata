@@ -31,31 +31,24 @@ def md5(file_path):
 def make_ikala_index(ikala_data_path):
     lyrics_dir = os.path.join(ikala_data_path, 'Lyrics')
     lyrics_files = glob.glob(os.path.join(lyrics_dir, '*.lab'))
-    track_ids = sorted(
-        [os.path.basename(f).split('.')[0] for f in lyrics_files])
+    track_ids = sorted([os.path.basename(f).split('.')[0] for f in lyrics_files])
 
     ikala_index = {}
     for track_id in track_ids:
-        audio_checksum = md5(os.path.join(
-            ikala_data_path, 'Wavfile/{}.wav'.format(track_id)))
-        pitch_checksum = md5(os.path.join(
-            ikala_data_path, 'PitchLabel/{}.pv'.format(track_id)))
-        lyrics_checksum = md5(os.path.join(
-            ikala_data_path, 'Lyrics/{}.lab'.format(track_id)))
+        audio_checksum = md5(
+            os.path.join(ikala_data_path, 'Wavfile/{}.wav'.format(track_id))
+        )
+        pitch_checksum = md5(
+            os.path.join(ikala_data_path, 'PitchLabel/{}.pv'.format(track_id))
+        )
+        lyrics_checksum = md5(
+            os.path.join(ikala_data_path, 'Lyrics/{}.lab'.format(track_id))
+        )
 
         ikala_index[track_id] = {
-            'audio': (
-                'Wavfile/{}.wav'.format(track_id),
-                audio_checksum
-            ),
-            'pitch': (
-                'PitchLabel/{}.pv'.format(track_id),
-                pitch_checksum
-            ),
-            'lyrics': (
-                'Lyrics/{}.lab'.format(track_id),
-                lyrics_checksum
-            )
+            'audio': ('Wavfile/{}.wav'.format(track_id), audio_checksum),
+            'pitch': ('PitchLabel/{}.pv'.format(track_id), pitch_checksum),
+            'lyrics': ('Lyrics/{}.lab'.format(track_id), lyrics_checksum),
         }
 
     with open(IKALA_INDEX_PATH, 'w') as fhandle:
@@ -67,10 +60,7 @@ def main(args):
 
 
 if __name__ == '__main__':
-    PARSER = argparse.ArgumentParser(
-        description='Make IKala index file.')
-    PARSER.add_argument('ikala_data_path',
-                        type=str,
-                        help='Path to IKala data folder.')
+    PARSER = argparse.ArgumentParser(description='Make IKala index file.')
+    PARSER.add_argument('ikala_data_path', type=str, help='Path to IKala data folder.')
 
     main(PARSER.parse_args())

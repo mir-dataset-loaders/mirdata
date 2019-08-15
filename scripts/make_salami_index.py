@@ -28,12 +28,12 @@ def md5(file_path):
 
 
 def make_salami_index(data_path):
-    annotations_dir = os.path.join(data_path, 'Salami', 'salami-data-public-master',
-                                   'annotations')
+    annotations_dir = os.path.join(
+        data_path, 'Salami', 'salami-data-public-master', 'annotations'
+    )
     audio_dir = os.path.join(data_path, 'Salami', 'audio')
     annotations_files = os.listdir(annotations_dir)
-    track_ids = sorted(
-        [os.path.basename(f).split('.')[0] for f in annotations_files])
+    track_ids = sorted([os.path.basename(f).split('.')[0] for f in annotations_files])
 
     salami_index = {}
     for track_id in track_ids:
@@ -44,38 +44,43 @@ def make_salami_index(data_path):
         # using existing annotations (version 2.0)
         for f in ['uppercase.txt', 'lowercase.txt']:
             for a in ['1', '2']:
-                if os.path.exists(os.path.join(annotations_dir, track_id, 'parsed',
-                                               'textfile{}_{}'.format(a, f))):
-                    annot_checksum.append(md5(os.path.join(annotations_dir, track_id,
-                                                           'parsed', 'textfile'+a+'_'+f)))
-                    annot_rels.append(os.path.join('salami-data-public-master',
-                                                   'annotations', track_id, 'parsed',
-                                                   'textfile{}_{}'.format(a, f)))
+                if os.path.exists(
+                    os.path.join(
+                        annotations_dir,
+                        track_id,
+                        'parsed',
+                        'textfile{}_{}'.format(a, f),
+                    )
+                ):
+                    annot_checksum.append(
+                        md5(
+                            os.path.join(
+                                annotations_dir,
+                                track_id,
+                                'parsed',
+                                'textfile' + a + '_' + f,
+                            )
+                        )
+                    )
+                    annot_rels.append(
+                        os.path.join(
+                            'salami-data-public-master',
+                            'annotations',
+                            track_id,
+                            'parsed',
+                            'textfile{}_{}'.format(a, f),
+                        )
+                    )
                 else:
                     annot_checksum.append(None)
                     annot_rels.append(None)
 
         salami_index[track_id] = {
-            'audio': (
-                os.path.join('audio', '{}.mp3'.format(track_id)),
-                audio_checksum
-            ),
-            'annotator_1_uppercase': (
-                annot_rels[0],
-                annot_checksum[0]
-            ),
-            'annotator_1_lowercase': (
-                annot_rels[2],
-                annot_checksum[2]
-            ),
-            'annotator_2_uppercase': (
-                annot_rels[1],
-                annot_checksum[1]
-            ),
-            'annotator_2_lowercase': (
-                annot_rels[3],
-                annot_checksum[3]
-            )
+            'audio': (os.path.join('audio', '{}.mp3'.format(track_id)), audio_checksum),
+            'annotator_1_uppercase': (annot_rels[0], annot_checksum[0]),
+            'annotator_1_lowercase': (annot_rels[2], annot_checksum[2]),
+            'annotator_2_uppercase': (annot_rels[1], annot_checksum[1]),
+            'annotator_2_lowercase': (annot_rels[3], annot_checksum[3]),
         }
 
     with open(SALAMI_INDEX_PATH, 'w') as fhandle:
@@ -87,10 +92,9 @@ def main(args):
 
 
 if __name__ == '__main__':
-    PARSER = argparse.ArgumentParser(
-        description='Make Salami index file.')
-    PARSER.add_argument('salami_data_path',
-                        type=str,
-                        help='Path to Salami data folder.')
+    PARSER = argparse.ArgumentParser(description='Make Salami index file.')
+    PARSER.add_argument(
+        'salami_data_path', type=str, help='Path to Salami data folder.'
+    )
 
     main(PARSER.parse_args())

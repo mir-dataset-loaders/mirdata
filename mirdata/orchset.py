@@ -67,6 +67,7 @@ class Track(object):
         melody (F0Data): melody annotation
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))
@@ -101,14 +102,17 @@ class Track(object):
             }
 
         self.audio_path_mono = os.path.join(
-            self._data_home, self._track_paths['audio_mono'][0])
+            self._data_home, self._track_paths['audio_mono'][0]
+        )
         self.audio_path_stereo = os.path.join(
-            self._data_home, self._track_paths['audio_stereo'][0])
+            self._data_home, self._track_paths['audio_stereo'][0]
+        )
         self.composer = self._track_metadata['composer']
         self.work = self._track_metadata['work']
         self.excerpt = self._track_metadata['excerpt']
-        self.predominant_melodic_instruments = \
-            self._track_metadata['predominant_melodic_instruments-normalized']
+        self.predominant_melodic_instruments = self._track_metadata[
+            'predominant_melodic_instruments-normalized'
+        ]
         self.alternating_melody = self._track_metadata['alternating_melody']
         self.contains_winds = self._track_metadata['contains_winds']
         self.contains_strings = self._track_metadata['contains_strings']
@@ -118,12 +122,14 @@ class Track(object):
         self.only_brass = self._track_metadata['only_brass']
 
     def __repr__(self):
-        repr_string = "Orchset Track(track_id={}, audio_path_stereo={}, " + \
-            "audio_path_mono={}, composer={}, work={}, excerpt={}, " + \
-            "predominant_melodic_instruments={}, alternating_melody={}, " + \
-            "contains_winds={}, contains_strings={}, contains_brass={}, " + \
-            "only_strings={}, only_winds={}, only_brass={}, " + \
-            "melody=F0Data('times', 'frequencies', 'confidence'))"
+        repr_string = (
+            "Orchset Track(track_id={}, audio_path_stereo={}, "
+            + "audio_path_mono={}, composer={}, work={}, excerpt={}, "
+            + "predominant_melodic_instruments={}, alternating_melody={}, "
+            + "contains_winds={}, contains_strings={}, contains_brass={}, "
+            + "only_strings={}, only_winds={}, only_brass={}, "
+            + "melody=F0Data('times', 'frequencies', 'confidence'))"
+        )
         return repr_string.format(
             self.track_id,
             self.audio_path_stereo,
@@ -143,8 +149,9 @@ class Track(object):
 
     @utils.cached_property
     def melody(self):
-        return _load_melody(os.path.join(
-            self._data_home, self._track_paths['melody'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody'][0])
+        )
 
     @property
     def audio_mono(self):
@@ -168,7 +175,8 @@ def download(data_home=None, force_overwrite=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
-        data_home, zip_downloads=[REMOTE], force_overwrite=force_overwrite)
+        data_home, zip_downloads=[REMOTE], force_overwrite=force_overwrite
+    )
 
 
 def validate(data_home=None, silence=False):
@@ -245,8 +253,7 @@ def _load_melody(melody_path):
 def _load_metadata(data_home):
 
     predominant_inst_path = os.path.join(
-        data_home,
-        'Orchset - Predominant Melodic Instruments.csv',
+        data_home, 'Orchset - Predominant Melodic Instruments.csv'
     )
 
     if not os.path.exists(predominant_inst_path):

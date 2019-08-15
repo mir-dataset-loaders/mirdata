@@ -28,21 +28,23 @@ def test_track():
     assert track._track_paths == {
         "audio_stereo": [
             "audio/stereo/Beethoven-S3-I-ex1.wav",
-            "f819c86bba06120a19bd495f819cd0ef"
+            "f819c86bba06120a19bd495f819cd0ef",
         ],
         "audio_mono": [
             "audio/mono/Beethoven-S3-I-ex1.wav",
-            "7bb7a2492dcf9e1eaad9e82f8550219a"
+            "7bb7a2492dcf9e1eaad9e82f8550219a",
         ],
-        "melody": [
-            "GT/Beethoven-S3-I-ex1.mel",
-            "8bbf6716337a2b5f7afcc611ad66e91a"
-        ]
+        "melody": ["GT/Beethoven-S3-I-ex1.mel", "8bbf6716337a2b5f7afcc611ad66e91a"],
     }
-    assert track.audio_path_mono == 'tests/resources/mir_datasets/' + \
-        'Orchset/audio/mono/Beethoven-S3-I-ex1.wav'
-    assert track.audio_path_stereo == 'tests/resources/mir_datasets/' + \
-        'Orchset/audio/stereo/Beethoven-S3-I-ex1.wav'
+    assert (
+        track.audio_path_mono
+        == 'tests/resources/mir_datasets/' + 'Orchset/audio/mono/Beethoven-S3-I-ex1.wav'
+    )
+    assert (
+        track.audio_path_stereo
+        == 'tests/resources/mir_datasets/'
+        + 'Orchset/audio/stereo/Beethoven-S3-I-ex1.wav'
+    )
     assert track.composer == 'Beethoven'
     assert track.work == 'S3-I'
     assert track.excerpt == '1'
@@ -59,21 +61,23 @@ def test_track():
 
     y_mono, sr_mono = track.audio_mono
     assert sr_mono == 44100
-    assert y_mono.shape == (44100 * 2, )
+    assert y_mono.shape == (44100 * 2,)
 
     y_stereo, sr_stereo = track.audio_stereo
     assert sr_stereo == 44100
     assert y_stereo.shape == (2, 44100 * 2)
 
-    repr_string = "Orchset Track(track_id=Beethoven-S3-I-ex1, " + \
-        "audio_path_stereo=tests/resources/mir_datasets/Orchset/audio/" + \
-        "stereo/Beethoven-S3-I-ex1.wav, " + \
-        "audio_path_mono=tests/resources/mir_datasets/Orchset/audio/" + \
-        "mono/Beethoven-S3-I-ex1.wav, composer=Beethoven, work=S3-I, " + \
-        "excerpt=1, predominant_melodic_instruments=['strings', 'winds'], " + \
-        "alternating_melody=True, contains_winds=True, contains_strings=True, " + \
-        "contains_brass=False, only_strings=False, only_winds=False, " + \
-        "only_brass=False, melody=F0Data('times', 'frequencies', 'confidence'))"
+    repr_string = (
+        "Orchset Track(track_id=Beethoven-S3-I-ex1, "
+        + "audio_path_stereo=tests/resources/mir_datasets/Orchset/audio/"
+        + "stereo/Beethoven-S3-I-ex1.wav, "
+        + "audio_path_mono=tests/resources/mir_datasets/Orchset/audio/"
+        + "mono/Beethoven-S3-I-ex1.wav, composer=Beethoven, work=S3-I, "
+        + "excerpt=1, predominant_melodic_instruments=['strings', 'winds'], "
+        + "alternating_melody=True, contains_winds=True, contains_strings=True, "
+        + "contains_brass=False, only_strings=False, only_winds=False, "
+        + "only_brass=False, melody=F0Data('times', 'frequencies', 'confidence'))"
+    )
     assert track.__repr__() == repr_string
 
 

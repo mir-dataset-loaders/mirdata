@@ -42,16 +42,24 @@ def make_beatles_index(data_path):
             if 'ttl' in t:
                 totfiles.append(t)
 
-                track_id = '{}{}'.format(os.path.basename(c).split('_')[0][:2],
-                                         os.path.basename(t).split('_')[0])
+                track_id = '{}{}'.format(
+                    os.path.basename(c).split('_')[0][:2],
+                    os.path.basename(t).split('_')[0],
+                )
                 if 'CD' in t:
-                    track_id = '10{}{}'.format(os.path.basename(c).split('_')[0][-1],
-                                               os.path.basename(t).split('_')[2][:2])
+                    track_id = '10{}{}'.format(
+                        os.path.basename(c).split('_')[0][-1],
+                        os.path.basename(t).split('_')[2][:2],
+                    )
                 track_ids.append(track_id)
 
                 # checksum
-                audio_checksum = md5(os.path.join(audio_dir, c, '{}.wav'.format(t[:-4])))
-                audio_path = '{}/{}'.format('audio', os.path.join(c, '{}.wav'.format(t[:-4])))
+                audio_checksum = md5(
+                    os.path.join(audio_dir, c, '{}.wav'.format(t[:-4]))
+                )
+                audio_path = '{}/{}'.format(
+                    'audio', os.path.join(c, '{}.wav'.format(t[:-4]))
+                )
 
                 annot_checksum, annot_rels = [], []
 
@@ -65,33 +73,21 @@ def make_beatles_index(data_path):
 
                     if os.path.exists(os.path.join(annot_path, annot_file)):
                         annot_checksum.append(md5(os.path.join(annot_path, annot_file)))
-                        annot_rels.append(os.path.join('annotations', annot_type,
-                                                       'The Beatles', c, annot_file))
+                        annot_rels.append(
+                            os.path.join(
+                                'annotations', annot_type, 'The Beatles', c, annot_file
+                            )
+                        )
                     else:
                         annot_checksum.append(None)
                         annot_rels.append(None)
 
                 beatles_index[track_id] = {
-                    'audio': (
-                        audio_path,
-                        audio_checksum
-                    ),
-                    'beat': (
-                        annot_rels[0],
-                        annot_checksum[0]
-                    ),
-                    'chords': (
-                        annot_rels[1],
-                        annot_checksum[1]
-                    ),
-                    'keys': (
-                        annot_rels[2],
-                        annot_checksum[2]
-                    ),
-                    'sections': (
-                        annot_rels[3],
-                        annot_checksum[3]
-                    )
+                    'audio': (audio_path, audio_checksum),
+                    'beat': (annot_rels[0], annot_checksum[0]),
+                    'chords': (annot_rels[1], annot_checksum[1]),
+                    'keys': (annot_rels[2], annot_checksum[2]),
+                    'sections': (annot_rels[3], annot_checksum[3]),
                 }
     with open(BEATLES_INDEX_PATH, 'w') as fhandle:
         json.dump(beatles_index, fhandle, indent=2)
@@ -102,10 +98,9 @@ def main(args):
 
 
 if __name__ == '__main__':
-    PARSER = argparse.ArgumentParser(
-        description='Make Beatles index file.')
-    PARSER.add_argument('beatles_data_path',
-                        type=str,
-                        help='Path to Beatles data folder.')
+    PARSER = argparse.ArgumentParser(description='Make Beatles index file.')
+    PARSER.add_argument(
+        'beatles_data_path', type=str, help='Path to Beatles data folder.'
+    )
 
     main(PARSER.parse_args())

@@ -26,21 +26,20 @@ def test_track():
     assert track.track_id == 'RM-G002'
     assert track._data_home == data_home
     assert track._track_paths == {
-        'audio': [
-            'audio/rwc-g-m01/2.wav',
-            'bc17b325501ee23e5729202cc599d6e8'
-        ],
+        'audio': ['audio/rwc-g-m01/2.wav', 'bc17b325501ee23e5729202cc599d6e8'],
         'sections': [
             'annotations/AIST.RWC-MDB-G-2001.CHORUS/RM-G002.CHORUS.TXT',
-            '695fe2a90e8b5250f0570b968047b46f'
+            '695fe2a90e8b5250f0570b968047b46f',
         ],
         'beats': [
             'annotations/AIST.RWC-MDB-G-2001.BEAT/RM-G002.BEAT.TXT',
-            '62c5ec60312f41ba4d1e74d0b04c4e8f'
-        ]
+            '62c5ec60312f41ba4d1e74d0b04c4e8f',
+        ],
     }
-    assert track.audio_path == 'tests/resources/mir_datasets/RWC-Genre/' + \
-        'audio/rwc-g-m01/2.wav'
+    assert (
+        track.audio_path
+        == 'tests/resources/mir_datasets/RWC-Genre/' + 'audio/rwc-g-m01/2.wav'
+    )
     assert track.piece_number == 'No. 2'
     assert track.suffix == 'M01'
     assert track.track_number == 'Tr. 02'
@@ -58,15 +57,17 @@ def test_track():
     # test audio loading functions
     y, sr = track.audio
     assert sr == 44100
-    assert y.shape == (44100 * 2, )
+    assert y.shape == (44100 * 2,)
 
-    repr_string = "RWC-Genre Track(track_id=RM-G002, " + \
-        "audio_path=tests/resources/mir_datasets/RWC-Genre/audio/rwc-g-m01/2.wav, " + \
-        "piece_number=No. 2, suffix=M01, track_number=Tr. 02, category=Pop, " + \
-        "sub_category=Pop, title=Forget about It, composer=Shinya Iguchi, " + \
-        "artist=Shinya Iguchi (Male), duration_sec=04:22, " + \
-        "sections=SectionData('start_times', 'end_times', 'sections'), " + \
-        "beats=BeatData('beat_times', 'beat_positions'))"
+    repr_string = (
+        "RWC-Genre Track(track_id=RM-G002, "
+        + "audio_path=tests/resources/mir_datasets/RWC-Genre/audio/rwc-g-m01/2.wav, "
+        + "piece_number=No. 2, suffix=M01, track_number=Tr. 02, category=Pop, "
+        + "sub_category=Pop, title=Forget about It, composer=Shinya Iguchi, "
+        + "artist=Shinya Iguchi (Male), duration_sec=04:22, "
+        + "sections=SectionData('start_times', 'end_times', 'sections'), "
+        + "beats=BeatData('beat_times', 'beat_positions'))"
+    )
     assert track.__repr__() == repr_string
 
 
@@ -78,8 +79,7 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/RWC-Genre'
-    rwc_genre_data = rwc_genre.load(
-        data_home=data_home, silence_validator=True)
+    rwc_genre_data = rwc_genre.load(data_home=data_home, silence_validator=True)
     assert type(rwc_genre_data) is dict
     assert len(rwc_genre_data.keys()) == 90  # missing 10 files
 
@@ -101,7 +101,7 @@ def test_load_metadata():
         'title': 'Forget about It',
         'composer': 'Shinya Iguchi',
         'artist': 'Shinya Iguchi (Male)',
-        'duration_sec': '04:22'
+        'duration_sec': '04:22',
     }
 
     metadata_none = rwc_genre._load_metadata('asdf/asdf')

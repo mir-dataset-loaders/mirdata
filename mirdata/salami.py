@@ -65,6 +65,7 @@ class Track(object):
 
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
@@ -97,8 +98,7 @@ class Track(object):
                 'genre': None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
         self.source = self._track_metadata['source']
         self.annotator_1_id = self._track_metadata['annotator_1_id']
@@ -112,14 +112,16 @@ class Track(object):
         self.genre = self._track_metadata['genre']
 
     def __repr__(self):
-        repr_string = "Salami Track(track_id={}, audio_path={}, source={}, " + \
-            "title={}, artist={}, duration_sec={}, annotator_1_id={}, " + \
-            "annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, " + \
-            "broad_genre={}, genre={}, " + \
-            "sections_annotator_1_uppercase=SectionData('start_times', 'end_times', 'sections'), " + \
-            "sections_annotator_1_lowercase=SectionData('start_times', 'end_times', 'sections'), " + \
-            "sections_annotator_2_uppercase=SectionData('start_times', 'end_times', 'sections'), " + \
-            "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
+        repr_string = (
+            "Salami Track(track_id={}, audio_path={}, source={}, "
+            + "title={}, artist={}, duration_sec={}, annotator_1_id={}, "
+            + "annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, "
+            + "broad_genre={}, genre={}, "
+            + "sections_annotator_1_uppercase=SectionData('start_times', 'end_times', 'sections'), "
+            + "sections_annotator_1_lowercase=SectionData('start_times', 'end_times', 'sections'), "
+            + "sections_annotator_2_uppercase=SectionData('start_times', 'end_times', 'sections'), "
+            + "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
+        )
         return repr_string.format(
             self.track_id,
             self.audio_path,
@@ -139,29 +141,33 @@ class Track(object):
     def sections_annotator_1_uppercase(self):
         if self._track_paths['annotator_1_uppercase'][0] is None:
             return None
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_1_uppercase'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_1_uppercase'][0])
+        )
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
         if self._track_paths['annotator_1_lowercase'][0] is None:
             return None
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_1_lowercase'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_1_lowercase'][0])
+        )
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
         if self._track_paths['annotator_2_uppercase'][0] is None:
             return None
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_2_uppercase'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_2_uppercase'][0])
+        )
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
         if self._track_paths['annotator_2_lowercase'][0] is None:
             return None
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['annotator_2_lowercase'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['annotator_2_lowercase'][0])
+        )
 
     @property
     def audio(self):
@@ -190,10 +196,16 @@ def download(data_home=None, force_overwrite=False):
                 > salami-data-public-master/
                 > audio/
         and copy the Salami folder to {}
-    """.format(data_home)
+    """.format(
+        data_home
+    )
 
-    download_utils.downloader(data_home, zip_downloads=[ANNOTATIONS_REMOTE],
-                              info_message=info_message, force_overwrite=force_overwrite)
+    download_utils.downloader(
+        data_home,
+        zip_downloads=[ANNOTATIONS_REMOTE],
+        info_message=info_message,
+        force_overwrite=force_overwrite,
+    )
 
 
 def validate(data_home=None, silence=False):
@@ -276,10 +288,7 @@ def _load_sections(sections_path):
 def _load_metadata(data_home):
 
     metadata_path = os.path.join(
-        data_home,
-        os.path.join(
-            'salami-data-public-master', 'metadata', 'metadata.csv'
-        ),
+        data_home, os.path.join('salami-data-public-master', 'metadata', 'metadata.csv')
     )
 
     if not os.path.exists(metadata_path):
