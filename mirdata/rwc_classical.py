@@ -14,22 +14,27 @@ METADATA = None
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-c.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
-    checksum='7dbe87fedbaaa1f348625a2af1d78030')
+    checksum='7dbe87fedbaaa1f348625a2af1d78030',
+)
 DATASET_DIR = 'RWC-Classical'
 ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
-    checksum='e8ee05854833cbf5eb7280663f71c29b')
+    checksum='e8ee05854833cbf5eb7280663f71c29b',
+)
 ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
-    checksum='f77bd527510376f59f5a2eed8fd7feb3')
+    checksum='f77bd527510376f59f5a2eed8fd7feb3',
+)
 
 
 class Track(object):
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
-            raise ValueError('{} is not a valid track ID in RWC-Classical'.format(track_id))
+            raise ValueError(
+                '{} is not a valid track ID in RWC-Classical'.format(track_id)
+            )
 
         self.track_id = track_id
 
@@ -56,8 +61,7 @@ class Track(object):
                 'category': None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
         self.piece_number = self._track_metadata['piece_number']
         self.suffix = self._track_metadata['suffix']
@@ -69,26 +73,35 @@ class Track(object):
         self.category = self._track_metadata['category']
 
     def __repr__(self):
-        repr_string = "RWC-Classical Track(track_id={}, audio_path={}, " + \
-            "piece_number={}, suffix={}, track_number={}, title={}, composer={}, " + \
-            "artist={}, duration_sec={}, category={}" + \
-            "sections=SectionData('start_times', 'end_times', 'sections'), " + \
-            "beats=BeatData('beat_times', 'beat_positions'))"
+        repr_string = (
+            "RWC-Classical Track(track_id={}, audio_path={}, "
+            + "piece_number={}, suffix={}, track_number={}, title={}, composer={}, "
+            + "artist={}, duration_sec={}, category={}"
+            + "sections=SectionData('start_times', 'end_times', 'sections'), "
+            + "beats=BeatData('beat_times', 'beat_positions'))"
+        )
         return repr_string.format(
-            self.track_id, self.audio_path, self.piece_number, self.suffix,
-            self.track_number, self.title, self.composer, self.artist,
-            self.duration_sec, self.category
+            self.track_id,
+            self.audio_path,
+            self.piece_number,
+            self.suffix,
+            self.track_number,
+            self.title,
+            self.composer,
+            self.artist,
+            self.duration_sec,
+            self.category,
         )
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['sections'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['sections'][0])
+        )
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(
-            self._data_home, self._track_paths['beats'][0]))
+        return _load_beats(os.path.join(self._data_home, self._track_paths['beats'][0]))
 
     @property
     def audio(self):
@@ -101,8 +114,11 @@ def download(data_home=None, force_overwrite=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     annotations_path = os.path.join(data_home, 'annotations')
-    download_utils.downloader(annotations_path, force_overwrite=force_overwrite,
-                              zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2])
+    download_utils.downloader(
+        annotations_path,
+        force_overwrite=force_overwrite,
+        zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
+    )
 
     info_message = """
         Unfortunately the audio files of the RWC-Jazz dataset are not available
@@ -113,10 +129,16 @@ def download(data_home=None, force_overwrite=False):
                 > audio/rwc-c-m0i with i in [1 .. 6]
                 > metadata-master/
         and copy the RWC-Classical folder to {}
-    """.format(data_home)
+    """.format(
+        data_home
+    )
 
-    download_utils.downloader(data_home, zip_downloads=[METADATA_REMOTE],
-                              info_message=info_message, force_overwrite=force_overwrite)
+    download_utils.downloader(
+        data_home,
+        zip_downloads=[METADATA_REMOTE],
+        info_message=info_message,
+        force_overwrite=force_overwrite,
+    )
 
 
 def validate(data_home=None, silence=False):
@@ -180,11 +202,11 @@ def _load_sections(sections_path):
     secs = []  # section labels
 
     with open(sections_path, 'r') as fhandle:
-            reader = csv.reader(fhandle, delimiter='\t')
-            for line in reader:
-                begs.append(float(line[0]) / 100.0)
-                ends.append(float(line[1]) / 100.0)
-                secs.append(line[2])
+        reader = csv.reader(fhandle, delimiter='\t')
+        for line in reader:
+            begs.append(float(line[0]) / 100.0)
+            ends.append(float(line[1]) / 100.0)
+            secs.append(line[2])
 
     return utils.SectionData(np.array(begs), np.array(ends), np.array(secs))
 
@@ -211,7 +233,9 @@ def _position_in_bar(beat_positions, beat_times):
     if not downbeat_positions[0] == 0:
         timesig_next_bar = beat_positions_corrected[downbeat_positions[1] - 1]
         for b in range(1, downbeat_positions[0] + 1):
-            beat_positions_corrected[downbeat_positions[0] - b] = timesig_next_bar - b + 1
+            beat_positions_corrected[downbeat_positions[0] - b] = (
+                timesig_next_bar - b + 1
+            )
 
     return beat_positions_corrected, beat_times_corrected
 
@@ -219,7 +243,7 @@ def _position_in_bar(beat_positions, beat_times):
 def _load_beats(beats_path):
     if not os.path.exists(beats_path):
         return None
-    beat_times = []   # timestamps of beat interval beginnings
+    beat_times = []  # timestamps of beat interval beginnings
     beat_positions = []  # beat position inside the bar
 
     with open(beats_path, 'r') as fhandle:
@@ -228,7 +252,8 @@ def _load_beats(beats_path):
             beat_times.append(float(line[0]) / 100.0)
             beat_positions.append(int(line[2]))
     beat_positions, beat_times = _position_in_bar(
-        np.array(beat_positions), np.array(beat_times))
+        np.array(beat_positions), np.array(beat_times)
+    )
 
     return utils.BeatData(beat_times, beat_positions)
 
@@ -256,7 +281,7 @@ def _load_metadata(data_home):
         if line[0] == 'Piece No.':
             continue
         p = '00' + line[0].split('.')[1][1:]
-        track_id = 'RM-C{}'.format(p[len(p) - 3:])
+        track_id = 'RM-C{}'.format(p[len(p) - 3 :])
 
         metadata_index[track_id] = {
             'piece_number': line[0],

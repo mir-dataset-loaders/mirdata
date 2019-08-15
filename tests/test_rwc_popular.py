@@ -25,29 +25,28 @@ def test_track():
     assert track.track_id == 'RM-P001'
     assert track._data_home == data_home
     assert track._track_paths == {
-        'audio': [
-            'audio/rwc-p-m01/1.wav',
-            '110ac7edb20dbe9a75ffe81b2bfeecef'
-        ],
+        'audio': ['audio/rwc-p-m01/1.wav', '110ac7edb20dbe9a75ffe81b2bfeecef'],
         'sections': [
             'annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT',
-            '2d735867d44c4f8677b48746b5eb324d'
+            '2d735867d44c4f8677b48746b5eb324d',
         ],
         'beats': [
             'annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT',
-            '523231aebfea1cc62bad575cda3f704b'
+            '523231aebfea1cc62bad575cda3f704b',
         ],
         'chords': [
             'annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab',
-            '2a8b1d320bb88f710be3bff4339db99b'
+            '2a8b1d320bb88f710be3bff4339db99b',
         ],
         'voca_inst': [
             'annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT',
-            'f3ee36598a8bb9e367d25e0ff99850c7'
-        ]
+            'f3ee36598a8bb9e367d25e0ff99850c7',
+        ],
     }
-    assert track.audio_path == 'tests/resources/mir_datasets/RWC-Popular/' + \
-        'audio/rwc-p-m01/1.wav'
+    assert (
+        track.audio_path
+        == 'tests/resources/mir_datasets/RWC-Popular/' + 'audio/rwc-p-m01/1.wav'
+    )
     assert track.piece_number == 'No. 1'
     assert track.suffix == 'M01'
     assert track.track_number == 'Tr. 01'
@@ -68,15 +67,17 @@ def test_track():
     # test audio loading functions
     y, sr = track.audio
     assert sr == 44100
-    assert y.shape == (44100 * 2, )
+    assert y.shape == (44100 * 2,)
 
-    repr_string = "RWC-Popular Track(track_id=RM-P001, " + \
-        "audio_path=tests/resources/mir_datasets/RWC-Popular/audio/rwc-p-m01/1.wav, " + \
-        "piece_number=No. 1, suffix=M01, track_number=Tr. 01, title=Eien no replica, " + \
-        "artist=Kazuo Nishi, singer_information=Male, duration_sec=03:29, " + \
-        "tempo=135, instruments=Gt, drum_information=Drum sequences, " + \
-        "sections=SectionData('start_times', 'end_times', 'sections'), " + \
-        "beats=BeatData('beat_times', 'beat_positions'))"
+    repr_string = (
+        "RWC-Popular Track(track_id=RM-P001, "
+        + "audio_path=tests/resources/mir_datasets/RWC-Popular/audio/rwc-p-m01/1.wav, "
+        + "piece_number=No. 1, suffix=M01, track_number=Tr. 01, title=Eien no replica, "
+        + "artist=Kazuo Nishi, singer_information=Male, duration_sec=03:29, "
+        + "tempo=135, instruments=Gt, drum_information=Drum sequences, "
+        + "sections=SectionData('start_times', 'end_times', 'sections'), "
+        + "beats=BeatData('beat_times', 'beat_positions'))"
+    )
     assert track.__repr__() == repr_string
 
 
@@ -88,8 +89,7 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/RWC-Popular'
-    rwc_popular_data = rwc_popular.load(
-        data_home=data_home, silence_validator=True)
+    rwc_popular_data = rwc_popular.load(data_home=data_home, silence_validator=True)
     assert type(rwc_popular_data) is dict
     assert len(rwc_popular_data.keys()) == 100
 
@@ -99,8 +99,10 @@ def test_load():
 
 
 def test_load_chords():
-    chords_path = 'tests/resources/mir_datasets/RWC-Popular/' + \
-        'annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab'
+    chords_path = (
+        'tests/resources/mir_datasets/RWC-Popular/'
+        + 'annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab'
+    )
     chord_data = rwc_popular._load_chords(chords_path)
 
     # check types
@@ -110,12 +112,15 @@ def test_load_chords():
     assert type(chord_data.chords) is np.ndarray
 
     # check values
-    assert np.array_equal(chord_data.start_times, np.array(
-        [0.000, 0.104, 3.646, 43.992, 44.494]))
-    assert np.array_equal(chord_data.end_times, np.array(
-        [0.104, 1.858, 5.387, 44.494, 47.636]))
-    assert np.array_equal(chord_data.chords, np.array(
-        ['N', 'Ab:min', 'E:maj', 'Bb:maj(*3)', 'C:min7']))
+    assert np.array_equal(
+        chord_data.start_times, np.array([0.000, 0.104, 3.646, 43.992, 44.494])
+    )
+    assert np.array_equal(
+        chord_data.end_times, np.array([0.104, 1.858, 5.387, 44.494, 47.636])
+    )
+    assert np.array_equal(
+        chord_data.chords, np.array(['N', 'Ab:min', 'E:maj', 'Bb:maj(*3)', 'C:min7'])
+    )
 
     # load a file which doesn't exist
     chord_data_none = rwc_popular._load_chords('fake/path')
@@ -123,8 +128,10 @@ def test_load_chords():
 
 
 def test_load_voca_inst():
-    vocinst_path = 'tests/resources/mir_datasets/RWC-Popular/' + \
-        'annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT'
+    vocinst_path = (
+        'tests/resources/mir_datasets/RWC-Popular/'
+        + 'annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT'
+    )
     vocinst_data = rwc_popular._load_voca_inst(vocinst_path)
 
     # check types
@@ -134,14 +141,42 @@ def test_load_voca_inst():
     assert type(vocinst_data.event) is np.ndarray
 
     # check values
-    assert np.array_equal(vocinst_data.start_times, np.array(
-        [0.000, 10.293061224, 11.883492063, 12.087845804, 13.587460317,
-         13.819387755, 20.668707482, 20.832653061]))
-    assert np.array_equal(vocinst_data.end_times, np.array(
-        [10.293061224, 11.883492063, 12.087845804, 13.587460317,
-         13.819387755, 20.668707482, 20.832653061, 26.465306122]))
-    assert np.array_equal(vocinst_data.event, np.array(
-        ['b', 'm:withm', 'b', 'm:withm', 'b', 'm:withm', 'b', 's:electricguitar']))
+    assert np.array_equal(
+        vocinst_data.start_times,
+        np.array(
+            [
+                0.000,
+                10.293061224,
+                11.883492063,
+                12.087845804,
+                13.587460317,
+                13.819387755,
+                20.668707482,
+                20.832653061,
+            ]
+        ),
+    )
+    assert np.array_equal(
+        vocinst_data.end_times,
+        np.array(
+            [
+                10.293061224,
+                11.883492063,
+                12.087845804,
+                13.587460317,
+                13.819387755,
+                20.668707482,
+                20.832653061,
+                26.465306122,
+            ]
+        ),
+    )
+    assert np.array_equal(
+        vocinst_data.event,
+        np.array(
+            ['b', 'm:withm', 'b', 'm:withm', 'b', 'm:withm', 'b', 's:electricguitar']
+        ),
+    )
 
     # load a file which doesn't exist
     vocainst_data_none = rwc_popular._load_voca_inst('fake/path')
@@ -162,7 +197,7 @@ def test_load_metadata():
         'duration_sec': '03:29',
         'tempo': '135',
         'instruments': 'Gt',
-        'drum_information': 'Drum sequences'
+        'drum_information': 'Drum sequences',
     }
 
     metadata_none = rwc_popular._load_metadata('asdf/asdf')

@@ -4,8 +4,8 @@ import numpy as np
 import os
 import pytest
 from mirdata import salami, utils
-from tests.test_utils import (mock_validator, DEFAULT_DATA_HOME)
-from tests.test_download_utils import (mock_file, mock_unzip)
+from tests.test_utils import mock_validator, DEFAULT_DATA_HOME
+from tests.test_download_utils import mock_file, mock_unzip
 
 
 def test_track():
@@ -25,29 +25,25 @@ def test_track():
     assert track.track_id == '2'
     assert track._data_home == data_home
     assert track._track_paths == {
-        'audio': [
-            'audio/2.mp3',
-            '76789a17bda0dd4d1d7e77424099c814'
-        ],
+        'audio': ['audio/2.mp3', '76789a17bda0dd4d1d7e77424099c814'],
         'annotator_1_uppercase': [
             'salami-data-public-master/annotations/2/parsed/textfile1_uppercase.txt',
-            '54ba0804f720d85d195dcd7ffaec0794'
+            '54ba0804f720d85d195dcd7ffaec0794',
         ],
         'annotator_1_lowercase': [
             'salami-data-public-master/annotations/2/parsed/textfile1_lowercase.txt',
-            '30ff127ff68c61039b94a44ab6ddda34'
+            '30ff127ff68c61039b94a44ab6ddda34',
         ],
         'annotator_2_uppercase': [
             'salami-data-public-master/annotations/2/parsed/textfile2_uppercase.txt',
-            'e9dca8577f028d3505ff1e5801397b2f'
+            'e9dca8577f028d3505ff1e5801397b2f',
         ],
         'annotator_2_lowercase': [
             'salami-data-public-master/annotations/2/parsed/textfile2_lowercase.txt',
-            '546a783c7b8bf96f2d718c7a4f114699'
-        ]
+            '546a783c7b8bf96f2d718c7a4f114699',
+        ],
     }
-    assert track.audio_path == 'tests/resources/mir_datasets/Salami/' + \
-        'audio/2.mp3'
+    assert track.audio_path == 'tests/resources/mir_datasets/Salami/' + 'audio/2.mp3'
 
     assert track.source == 'Codaich'
     assert track.annotator_1_id == '5'
@@ -71,16 +67,18 @@ def test_track():
     # assert sr == 44100
     # assert y.shape == (89856, )
 
-    repr_string = "Salami Track(track_id=2, " + \
-        "audio_path=tests/resources/mir_datasets/Salami/audio/2.mp3, " + \
-        "source=Codaich, title=For_God_And_Country, " + \
-        "artist=The_Smashing_Pumpkins, duration_sec=264, annotator_1_id=5, " + \
-        "annotator_2_id=8, annotator_1_time=37, annotator_2_time=45, " + \
-        "broad_genre=popular, genre=Alternative_Pop___Rock, " + \
-        "sections_annotator_1_uppercase=SectionData('start_times', 'end_times', 'sections'), " + \
-        "sections_annotator_1_lowercase=SectionData('start_times', 'end_times', 'sections'), " + \
-        "sections_annotator_2_uppercase=SectionData('start_times', 'end_times', 'sections'), " + \
-        "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
+    repr_string = (
+        "Salami Track(track_id=2, "
+        + "audio_path=tests/resources/mir_datasets/Salami/audio/2.mp3, "
+        + "source=Codaich, title=For_God_And_Country, "
+        + "artist=The_Smashing_Pumpkins, duration_sec=264, annotator_1_id=5, "
+        + "annotator_2_id=8, annotator_1_time=37, annotator_2_time=45, "
+        + "broad_genre=popular, genre=Alternative_Pop___Rock, "
+        + "sections_annotator_1_uppercase=SectionData('start_times', 'end_times', 'sections'), "
+        + "sections_annotator_1_lowercase=SectionData('start_times', 'end_times', 'sections'), "
+        + "sections_annotator_2_uppercase=SectionData('start_times', 'end_times', 'sections'), "
+        + "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
+    )
     assert track.__repr__() == repr_string
 
     # Test file with missing annotations
@@ -101,58 +99,46 @@ def test_track():
     assert track._data_home == data_home
 
     assert track._track_paths == {
-        'audio': [
-            'audio/192.mp3',
-            'd954d5dc9f17d66155d3310d838756b8'
-        ],
+        'audio': ['audio/192.mp3', 'd954d5dc9f17d66155d3310d838756b8'],
         'annotator_1_uppercase': [
             'salami-data-public-master/annotations/192/parsed/textfile1_uppercase.txt',
-            '4d268cfd27fe011dbe579f25f8d125ce'
+            '4d268cfd27fe011dbe579f25f8d125ce',
         ],
         'annotator_1_lowercase': [
             'salami-data-public-master/annotations/192/parsed/textfile1_lowercase.txt',
-            '6640237e7844d0d9d37bf21cf96a2690'
+            '6640237e7844d0d9d37bf21cf96a2690',
         ],
-        'annotator_2_uppercase': [
-            None, None
-        ],
-        'annotator_2_lowercase': [
-            None, None
-        ]}
+        'annotator_2_uppercase': [None, None],
+        'annotator_2_lowercase': [None, None],
+    }
 
     # test that cached properties don't fail and have the expected type
     assert type(track.sections_annotator_1_uppercase) is utils.SectionData
     assert type(track.sections_annotator_1_lowercase) is utils.SectionData
-    assert track.sections_annotator_2_uppercase  is None
+    assert track.sections_annotator_2_uppercase is None
     assert track.sections_annotator_2_lowercase is None
 
     # Test file with missing annotations
     track = salami.Track('1015', data_home=data_home)
 
     assert track._track_paths == {
-        'audio': [
-            'audio/1015.mp3',
-            '811a4a6b46f0c15a61bfb299b21ebdc4'
-        ],
-        'annotator_1_uppercase': [
-            None, None
-        ],
-        'annotator_1_lowercase': [
-            None, None
-        ],
+        'audio': ['audio/1015.mp3', '811a4a6b46f0c15a61bfb299b21ebdc4'],
+        'annotator_1_uppercase': [None, None],
+        'annotator_1_lowercase': [None, None],
         'annotator_2_uppercase': [
             'salami-data-public-master/annotations/1015/parsed/textfile2_uppercase.txt',
-            'e4a268342a45fdffd8ec9c3b8287ad8b'
+            'e4a268342a45fdffd8ec9c3b8287ad8b',
         ],
         'annotator_2_lowercase': [
             'salami-data-public-master/annotations/1015/parsed/textfile2_lowercase.txt',
-            '201642fcea4a27c60f7b48de46a82234'
-        ]}
+            '201642fcea4a27c60f7b48de46a82234',
+        ],
+    }
 
     # test that cached properties don't fail and have the expected type
     assert track.sections_annotator_1_uppercase is None
     assert track.sections_annotator_1_lowercase is None
-    assert type(track.sections_annotator_2_uppercase)  is utils.SectionData
+    assert type(track.sections_annotator_2_uppercase) is utils.SectionData
     assert type(track.sections_annotator_2_lowercase) is utils.SectionData
 
 
@@ -176,8 +162,10 @@ def test_load():
 
 def test_load_sections():
     # load a file which exists
-    sections_path = 'tests/resources/mir_datasets/Salami/' + \
-        'salami-data-public-master/annotations/2/parsed/textfile1_uppercase.txt'
+    sections_path = (
+        'tests/resources/mir_datasets/Salami/'
+        + 'salami-data-public-master/annotations/2/parsed/textfile1_uppercase.txt'
+    )
     section_data = salami._load_sections(sections_path)
 
     # check types
@@ -187,12 +175,17 @@ def test_load_sections():
     assert type(section_data.sections) is np.ndarray
 
     # check valuess
-    assert np.array_equal(section_data.start_times, np.array(
-        [0.0, 0.464399092, 14.379863945, 263.205419501]))
-    assert np.array_equal(section_data.end_times, np.array(
-        [0.464399092, 14.379863945, 263.205419501, 264.885215419]))
-    assert np.array_equal(section_data.sections, np.array(
-        ['Silence', 'A', 'B', 'Silence']))
+    assert np.array_equal(
+        section_data.start_times,
+        np.array([0.0, 0.464399092, 14.379863945, 263.205419501]),
+    )
+    assert np.array_equal(
+        section_data.end_times,
+        np.array([0.464399092, 14.379863945, 263.205419501, 264.885215419]),
+    )
+    assert np.array_equal(
+        section_data.sections, np.array(['Silence', 'A', 'B', 'Silence'])
+    )
 
     # load a file which doesn't exist
     section_data_none = salami._load_sections('fake/file/path')

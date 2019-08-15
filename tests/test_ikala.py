@@ -26,21 +26,14 @@ def test_track():
     assert track.track_id == '10161_chorus'
     assert track._data_home == data_home
     assert track._track_paths == {
-        'audio': [
-            'Wavfile/10161_chorus.wav',
-            '278ae003cb0d323e99b9a643c0f2eeda'
-        ],
-        'pitch': [
-            'PitchLabel/10161_chorus.pv',
-            '0d93a011a9e668fd80673049089bbb14'
-        ],
-        'lyrics': [
-            'Lyrics/10161_chorus.lab',
-            '79bbeb72b422056fd43be4e8d63319ce'
-        ]
+        'audio': ['Wavfile/10161_chorus.wav', '278ae003cb0d323e99b9a643c0f2eeda'],
+        'pitch': ['PitchLabel/10161_chorus.pv', '0d93a011a9e668fd80673049089bbb14'],
+        'lyrics': ['Lyrics/10161_chorus.lab', '79bbeb72b422056fd43be4e8d63319ce'],
     }
-    assert track.audio_path == 'tests/resources/mir_datasets/iKala/' + \
-        'Wavfile/10161_chorus.wav'
+    assert (
+        track.audio_path
+        == 'tests/resources/mir_datasets/iKala/' + 'Wavfile/10161_chorus.wav'
+    )
     assert track.song_id == '10161'
     assert track.section == 'chorus'
     assert track.singer_id == '1'
@@ -52,11 +45,11 @@ def test_track():
     # test audio loading functions
     vocal, sr_vocal = track.vocal_audio
     assert sr_vocal == 44100
-    assert vocal.shape == (44100 * 2, )
+    assert vocal.shape == (44100 * 2,)
 
     instrumental, sr_instrumental = track.instrumental_audio
     assert sr_instrumental == 44100
-    assert instrumental.shape == (44100 * 2, )
+    assert instrumental.shape == (44100 * 2,)
 
     # make sure we loaded the correct channels to vocal/instrumental
     # (in this example, the first quarter second has only instrumentals)
@@ -64,15 +57,17 @@ def test_track():
 
     mix, sr_mix = track.mix_audio
     assert sr_mix == 44100
-    assert mix.shape == (44100 * 2, )
+    assert mix.shape == (44100 * 2,)
     assert np.array_equal(mix, instrumental + vocal)
 
-    repr_string = "iKala Track(track_id=10161_chorus, " + \
-        "audio_path=tests/resources/mir_datasets/iKala/Wavfile/" + \
-        "10161_chorus.wav, song_id=10161, section=chorus, singer_id=1, " + \
-        "f0=F0Data('times', 'frequencies', 'confidence'), " + \
-        "lyrics=LyricData('start_times', 'end_times', 'lyrics', " + \
-        "'pronounciations'))"
+    repr_string = (
+        "iKala Track(track_id=10161_chorus, "
+        + "audio_path=tests/resources/mir_datasets/iKala/Wavfile/"
+        + "10161_chorus.wav, song_id=10161, section=chorus, singer_id=1, "
+        + "f0=F0Data('times', 'frequencies', 'confidence'), "
+        + "lyrics=LyricData('start_times', 'end_times', 'lyrics', "
+        + "'pronounciations'))"
+    )
     assert track.__repr__() == repr_string
 
 
@@ -119,7 +114,7 @@ def test_load_lyrics():
     lyrics_path_simple = 'tests/resources/mir_datasets/iKala/Lyrics/10161_chorus.lab'
     lyrics_data_simple = ikala._load_lyrics(lyrics_path_simple)
 
-    #check types
+    # check types
     assert type(lyrics_data_simple) is utils.LyricData
     assert type(lyrics_data_simple.start_times) is np.ndarray
     assert type(lyrics_data_simple.end_times) is np.ndarray
@@ -147,7 +142,9 @@ def test_load_lyrics():
     assert np.array_equal(lyrics_data_pronun.start_times, np.array([0.021, 0.571]))
     assert np.array_equal(lyrics_data_pronun.end_times, np.array([0.189, 1.415]))
     assert np.array_equal(lyrics_data_pronun.lyrics, np.array(['ASDF', 'EVERYBODY']))
-    assert np.array_equal(lyrics_data_pronun.pronounciations, np.array(['t i au', None]))
+    assert np.array_equal(
+        lyrics_data_pronun.pronounciations, np.array(['t i au', None])
+    )
 
     # load a file which doesn't exist
     lyrics_data_none = ikala._load_lyrics('fake/path')

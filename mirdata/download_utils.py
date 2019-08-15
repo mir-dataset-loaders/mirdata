@@ -24,8 +24,14 @@ from mirdata.utils import md5
 RemoteFileMetadata = namedtuple('RemoteFileMetadata', ['filename', 'url', 'checksum'])
 
 
-def downloader(save_dir, zip_downloads=None, tar_downloads=None,
-               file_downloads=None, info_message=None, force_overwrite=False):
+def downloader(
+    save_dir,
+    zip_downloads=None,
+    tar_downloads=None,
+    file_downloads=None,
+    info_message=None,
+    force_overwrite=False,
+):
     """Download data to `save_dir` and optionally print a message.
 
     Args:
@@ -59,8 +65,7 @@ def downloader(save_dir, zip_downloads=None, tar_downloads=None,
 
     if file_downloads is not None:
         for file_download in file_downloads:
-            download_from_remote(
-                file_download, save_dir, force_overwrite)
+            download_from_remote(file_download, save_dir, force_overwrite)
 
     if info_message is not None:
         print(info_message)
@@ -68,6 +73,7 @@ def downloader(save_dir, zip_downloads=None, tar_downloads=None,
 
 class DownloadProgressBar(tqdm):
     """Wrap `tqdm` to show download progress"""
+
     def update_to(self, b=1, bsize=1, tsize=None):
         if tsize is not None:
             self.total = tsize
@@ -138,8 +144,7 @@ def download_from_remote(remote, data_home, force_overwrite=False):
 
 
 def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=False):
-    zip_download_path = download_from_remote(
-        zip_remote, save_dir, force_overwrite)
+    zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite)
     unzip(zip_download_path, save_dir, cleanup=cleanup)
 
 
@@ -163,8 +168,7 @@ def unzip(zip_path, save_dir, cleanup=False):
 
 
 def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=False):
-    tar_download_path = download_from_remote(
-        tar_remote, save_dir, force_overwrite)
+    tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite)
     untar(tar_download_path, save_dir, cleanup=cleanup)
 
 

@@ -60,6 +60,7 @@ class Track(object):
         melody3 (F0Data):
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError(
@@ -86,11 +87,10 @@ class Track(object):
                 'genre': None,
                 'is_excerpt': None,
                 'is_instrumental': None,
-                'n_sources': None
+                'n_sources': None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.artist = self._track_metadata['artist']
         self.title = self._track_metadata['title']
         self.genre = self._track_metadata['genre']
@@ -99,12 +99,14 @@ class Track(object):
         self.n_sources = self._track_metadata['n_sources']
 
     def __repr__(self):
-        repr_string = "MedleyDb-Melody Track(track_id={}, audio_path={}, " + \
-            "artist={}, title={}, genre={}, is_excerpt={}, " + \
-            "is_instrumental={}, n_sources={}, " + \
-            "melody1=F0Data('times', 'frequencies', confidence'), " + \
-            "melody2=F0Data('times', 'frequencies', confidence'), " + \
-            "melody3=F0Data('times', 'frequencies', confidence'))"
+        repr_string = (
+            "MedleyDb-Melody Track(track_id={}, audio_path={}, "
+            + "artist={}, title={}, genre={}, is_excerpt={}, "
+            + "is_instrumental={}, n_sources={}, "
+            + "melody1=F0Data('times', 'frequencies', confidence'), "
+            + "melody2=F0Data('times', 'frequencies', confidence'), "
+            + "melody3=F0Data('times', 'frequencies', confidence'))"
+        )
         return repr_string.format(
             self.track_id,
             self.audio_path,
@@ -118,18 +120,21 @@ class Track(object):
 
     @utils.cached_property
     def melody1(self):
-        return _load_melody(os.path.join(
-            self._data_home, self._track_paths['melody1'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody1'][0])
+        )
 
     @utils.cached_property
     def melody2(self):
-        return _load_melody(os.path.join(
-            self._data_home, self._track_paths['melody2'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody2'][0])
+        )
 
     @utils.cached_property
     def melody3(self):
-        return _load_melody3(os.path.join(
-            self._data_home, self._track_paths['melody3'][0]))
+        return _load_melody3(
+            os.path.join(self._data_home, self._track_paths['melody3'][0])
+        )
 
     @property
     def audio(self):
@@ -157,7 +162,9 @@ def download(data_home=None):
         Once downloaded, unzip the file MedleyDB-Melody.zip
         and copy the result to:
         {data_home}
-    """.format(data_home=data_home)
+    """.format(
+        data_home=data_home
+    )
 
     download_utils.downloader(info_message=info_message)
 
@@ -258,9 +265,7 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, 'medleydb_melody_metadata.json'
-    )
+    metadata_path = os.path.join(data_home, 'medleydb_melody_metadata.json')
 
     if not os.path.exists(metadata_path):
         print("Warning: metadata file {} not found.".format(metadata_path))

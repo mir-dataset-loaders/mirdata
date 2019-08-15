@@ -16,16 +16,19 @@ METADATA = None
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-j.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
-    checksum='7dbe87fedbaaa1f348625a2af1d78030')
+    checksum='7dbe87fedbaaa1f348625a2af1d78030',
+)
 DATASET_DIR = 'RWC-Jazz'
 ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-J-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.BEAT.zip',
-    checksum='b483853da05d0fff3992879f7729bcb4')
-ANNOTATIONS_REMOTE_2 =  download_utils.RemoteFileMetadata(
+    checksum='b483853da05d0fff3992879f7729bcb4',
+)
+ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-J-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.CHORUS.zip',
-    checksum='44afcf7f193d7e48a7d99e7a6f3ed39d')
+    checksum='44afcf7f193d7e48a7d99e7a6f3ed39d',
+)
 
 
 class Track(object):
@@ -58,8 +61,7 @@ class Track(object):
                 'instruments': None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
         self.piece_number = self._track_metadata['piece_number']
         self.suffix = self._track_metadata['suffix']
@@ -71,26 +73,35 @@ class Track(object):
         self.instruments = self._track_metadata['instruments']
 
     def __repr__(self):
-        repr_string = "RWC-Jazz Track(track_id={}, audio_path={}, " + \
-            "piece_number={}, suffix={}, track_number={}, title={}, " + \
-            "artist={}, duration_sec={}, variation={}, instruments={}, " + \
-            "sections=SectionData('start_times', 'end_times', 'sections'), " + \
-            "beats=BeatData('beat_times', 'beat_positions'))"
+        repr_string = (
+            "RWC-Jazz Track(track_id={}, audio_path={}, "
+            + "piece_number={}, suffix={}, track_number={}, title={}, "
+            + "artist={}, duration_sec={}, variation={}, instruments={}, "
+            + "sections=SectionData('start_times', 'end_times', 'sections'), "
+            + "beats=BeatData('beat_times', 'beat_positions'))"
+        )
         return repr_string.format(
-            self.track_id, self.audio_path, self.piece_number, self.suffix,
-            self.track_number, self.title, self.artist, self.duration_sec,
-            self.variation, self.instruments
+            self.track_id,
+            self.audio_path,
+            self.piece_number,
+            self.suffix,
+            self.track_number,
+            self.title,
+            self.artist,
+            self.duration_sec,
+            self.variation,
+            self.instruments,
         )
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(os.path.join(
-            self._data_home, self._track_paths['sections'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['sections'][0])
+        )
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(
-            self._data_home, self._track_paths['beats'][0]))
+        return _load_beats(os.path.join(self._data_home, self._track_paths['beats'][0]))
 
     @property
     def audio(self):
@@ -104,8 +115,11 @@ def download(data_home=None, force_overwrite=False):
 
     annotations_path = os.path.join(data_home, 'annotations')
 
-    download_utils.downloader(annotations_path, force_overwrite=force_overwrite,
-                              zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2])
+    download_utils.downloader(
+        annotations_path,
+        force_overwrite=force_overwrite,
+        zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
+    )
 
     info_message = """
         Unfortunately the audio files of the RWC-Jazz dataset are not available
@@ -116,11 +130,16 @@ def download(data_home=None, force_overwrite=False):
                 > audio/rwc-j-m0i with i in [1 .. 4]
                 > metadata-master/
         and copy the RWC-Jazz folder to {}
-    """.format(data_home)
+    """.format(
+        data_home
+    )
 
-    download_utils.downloader(data_home, zip_downloads=[METADATA_REMOTE],
-                              info_message=info_message, force_overwrite=force_overwrite)
-
+    download_utils.downloader(
+        data_home,
+        zip_downloads=[METADATA_REMOTE],
+        info_message=info_message,
+        force_overwrite=force_overwrite,
+    )
 
 
 def validate(data_home=None, silence=False):
@@ -199,7 +218,7 @@ def _load_metadata(data_home):
         if line[0] == 'Piece No.':
             continue
         p = '00' + line[0].split('.')[1][1:]
-        track_id = 'RM-J{}'.format(p[len(p) - 3:])
+        track_id = 'RM-J{}'.format(p[len(p) - 3 :])
 
         metadata_index[track_id] = {
             'piece_number': line[0],

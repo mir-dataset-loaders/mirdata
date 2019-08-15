@@ -20,7 +20,8 @@ def test_track():
         medleydb_pitch.Track('asdfasdf', data_home=data_home)
 
     track = medleydb_pitch.Track(
-        'AClassicEducation_NightOwl_STEM_08', data_home=data_home)
+        'AClassicEducation_NightOwl_STEM_08', data_home=data_home
+    )
 
     # test attributes
     assert track.track_id == 'AClassicEducation_NightOwl_STEM_08'
@@ -28,15 +29,18 @@ def test_track():
     assert track._track_paths == {
         'audio': [
             'audio/AClassicEducation_NightOwl_STEM_08.wav',
-            '6cfb976517cf377863ba0ef6c66c6a07'
+            '6cfb976517cf377863ba0ef6c66c6a07',
         ],
         'pitch': [
             'pitch/AClassicEducation_NightOwl_STEM_08.csv',
-            '67009ae37766c37d3c29146bf763e06d'
-        ]
+            '67009ae37766c37d3c29146bf763e06d',
+        ],
     }
-    assert track.audio_path == 'tests/resources/mir_datasets/' + \
-        'MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav'
+    assert (
+        track.audio_path
+        == 'tests/resources/mir_datasets/'
+        + 'MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav'
+    )
     assert track.instrument == 'male singer'
     assert track.artist == 'AClassicEducation'
     assert track.title == 'NightOwl'
@@ -46,13 +50,15 @@ def test_track():
 
     y, sr = track.audio
     assert sr == 44100
-    assert y.shape == (44100 * 2, )
+    assert y.shape == (44100 * 2,)
 
-    repr_string = "MedleyDb-Pitch Track(track_id=AClassicEducation_NightOwl_STEM_08, " + \
-        "audio_path=tests/resources/mir_datasets/MedleyDB-Pitch/audio/" + \
-        "AClassicEducation_NightOwl_STEM_08.wav, " + \
-        "artist=AClassicEducation, title=NightOwl, genre=Singer/Songwriter, " + \
-        "instrument=male singer, pitch=PitchData('times', 'pitches', 'confidence'))"
+    repr_string = (
+        "MedleyDb-Pitch Track(track_id=AClassicEducation_NightOwl_STEM_08, "
+        + "audio_path=tests/resources/mir_datasets/MedleyDB-Pitch/audio/"
+        + "AClassicEducation_NightOwl_STEM_08.wav, "
+        + "artist=AClassicEducation, title=NightOwl, genre=Singer/Songwriter, "
+        + "instrument=male singer, pitch=PitchData('times', 'pitches', 'confidence'))"
+    )
     assert track.__repr__() == repr_string
 
 
@@ -65,7 +71,8 @@ def test_track_ids():
 def test_load():
     data_home = 'tests/resources/mir_datasets/MedleyDB-Pitch'
     medleydb_pitch_data = medleydb_pitch.load(
-        data_home=data_home, silence_validator=True)
+        data_home=data_home, silence_validator=True
+    )
     assert type(medleydb_pitch_data) is dict
     assert len(medleydb_pitch_data.keys()) is 103
 
@@ -76,8 +83,10 @@ def test_load():
 
 def test_load_pitch():
     # load a file which exists
-    pitch_path = 'tests/resources/mir_datasets/MedleyDB-Pitch/' + \
-        'pitch/AClassicEducation_NightOwl_STEM_08.csv'
+    pitch_path = (
+        'tests/resources/mir_datasets/MedleyDB-Pitch/'
+        + 'pitch/AClassicEducation_NightOwl_STEM_08.csv'
+    )
     pitch_data = medleydb_pitch._load_pitch(pitch_path)
 
     # check types
@@ -88,9 +97,9 @@ def test_load_pitch():
 
     # check values
     assert np.array_equal(
-        pitch_data.times, np.array([0.06965986394557823, 0.07546485260770976]))
-    assert np.array_equal(
-        pitch_data.frequencies, np.array([0.0, 191.877]))
+        pitch_data.times, np.array([0.06965986394557823, 0.07546485260770976])
+    )
+    assert np.array_equal(pitch_data.frequencies, np.array([0.0, 191.877]))
     assert np.array_equal(pitch_data.confidence, np.array([0.0, 1.0]))
 
     # load a file which doesn't exist
