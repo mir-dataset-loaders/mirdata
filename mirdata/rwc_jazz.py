@@ -203,7 +203,8 @@ def _load_metadata(data_home):
     if not os.path.exists(metadata_path):
         logging.info(
             'Metadata file {} not found.'.format(metadata_path)
-            + 'You can download the metadata file by running download()')
+            + 'You can download the metadata file by running download()'
+        )
         return None
 
     with open(metadata_path, 'r') as fhandle:
