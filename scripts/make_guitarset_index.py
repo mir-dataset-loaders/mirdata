@@ -58,10 +58,10 @@ def make_guitarset_index(guitarset_data_path):
         )
 
         guitarset_index[track_id] = {
-            'audio_hex_cln': ('audio_hex-pickup_debleeded/{}.wav'.format(track_id), audio_hex_cln_checksum),
-            'audio_hex': ('audio_hex-pickup_original/{}.wav'.format(track_id), audio_hex_checksum),
-            'audio_mic': ('audio_mono-mic/{}.wav'.format(track_id), audio_mic_checksum),
-            'audio_mix': ('audio_mono-pickup_mix/{}.wav'.format(track_id), audio_mix_checksum),
+            'audio_hex_cln': ('audio_hex-pickup_debleeded/{}_hex_cln.wav'.format(track_id), audio_hex_cln_checksum),
+            'audio_hex': ('audio_hex-pickup_original/{}_hex.wav'.format(track_id), audio_hex_checksum),
+            'audio_mic': ('audio_mono-mic/{}_mic.wav'.format(track_id), audio_mic_checksum),
+            'audio_mix': ('audio_mono-pickup_mix/{}_mix.wav'.format(track_id), audio_mix_checksum),
             'jams': ('annotation/{}.jams'.format(track_id), annotation_checksum)
         }
 

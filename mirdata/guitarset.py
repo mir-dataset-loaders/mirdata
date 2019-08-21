@@ -21,6 +21,12 @@ Attributes:
 
     INDEX (dict): {track_id: track_data}.
         track_data is a `GuitarSet` namedtuple.
+
+    ANNOTATION_REMOTE (RemoteFileMetadata)
+    AUDIO_HEX_CLN_REMOTE (RemoteFileMetadata)
+    AUDIO_HEX_REMOTE (RemoteFileMetadata)
+    AUDIO_MIC_REMOTE (RemoteFileMetadata)
+    AUDIO_MIX_REMOTE (RemoteFileMetadata)
 """
 
 from __future__ import absolute_import
@@ -31,13 +37,49 @@ from __future__ import print_function
 import numpy as np
 import os
 import librosa
+import jams
+import logging
+import soundfile as sf
 
 import mirdata.utils as utils
+import mirdata.download_utils as download_utils
 
 DATASET_DIR = 'GuitarSet'
 INDEX = utils.load_json_index('guitarset_index.json')
-STYLE_DICT = {'Jazz':'Jazz', 'BN':'Bossa Nova', 'Rock':'Rock', 
-              'SS':'Singer-Songwriter', 'Funk':'Funk'}
+
+ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
+    filename='annotation.zip',
+    url='https://zenodo.org/record/3371780/files/annotation.zip?download=1',
+    checksum='b39b78e63d3446f2e54ddb7a54df9b10',
+)
+AUDIO_HEX_CLN_REMOTE = download_utils.RemoteFileMetadata(
+    filename='audio_hex-pickup_debleeded.zip',
+    url='https://zenodo.org/record/3371780/files/audio_hex-pickup_debleeded.zip?download=1',
+    checksum='c31d97279464c9a67e640cb9061fb0c6',
+)
+AUDIO_HEX_REMOTE = download_utils.RemoteFileMetadata(
+    filename='audio_hex-pickup_original.zip',
+    url='https://zenodo.org/record/3371780/files/audio_hex-pickup_original.zip?download=1',
+    checksum='f9911bf217cb40e9e68edf3726ef86cc',
+)
+AUDIO_MIC_REMOTE = download_utils.RemoteFileMetadata(
+    filename='audio_mono-mic.zip',
+    url='https://zenodo.org/record/3371780/files/audio_mono-mic.zip?download=1',
+    checksum='275966d6610ac34999b58426beb119c3',
+)
+AUDIO_MIX_REMOTE = download_utils.RemoteFileMetadata(
+    filename='audio_mono-pickup_mix.zip',
+    url='https://zenodo.org/record/3371780/files/audio_mono-pickup_mix.zip?download=1',
+    checksum='aecce79f425a44e2055e46f680e10f6a',
+)
+
+_STYLE_DICT = {
+    'Jazz': 'Jazz',
+    'BN': 'Bossa Nova',
+    'Rock': 'Rock',
+    'SS': 'Singer-Songwriter',
+    'Funk': 'Funk',
+}
 
 
 class Track(object):
@@ -46,7 +88,7 @@ class Track(object):
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
+            If `None`, looks for the data in the default directory, `~/mir_datasets/GuitarSet`
 
     Attributes:
         track_id (str): track id
@@ -75,11 +117,12 @@ class Track(object):
         notes (list): [(NoteData)s]
             a list that contains 6 `NoteData`s. 
             From Low E string to high e string.
+        audio (tuple): (np.ndarray, sr)
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
-            raise ValueError(
-                '{} is not a valid track ID in Example'.format(track_id))
+            raise ValueError('{} is not a valid track ID in GuitarSet'.format(track_id))
 
         self.track_id = track_id
 
@@ -90,28 +133,30 @@ class Track(object):
         self._track_paths = INDEX[track_id]
 
         self.audio_hex_cln_path = os.path.join(
-            self._data_home, self._track_paths['audio_hex_cln'][0])
+            self._data_home, self._track_paths['audio_hex_cln'][0]
+        )
         self.audio_hex_path = os.path.join(
-            self._data_home, self._track_paths['audio_hex'][0])
+            self._data_home, self._track_paths['audio_hex'][0]
+        )
         self.audio_mic_path = os.path.join(
-            self._data_home, self._track_paths['audio_hex_cln'][0])
+            self._data_home, self._track_paths['audio_mic'][0]
+        )
         self.audio_mix_path = os.path.join(
-            self._data_home, self._track_paths['audio_hex_cln'][0])
-        self.jams_path = os.path.join(
-            self._data_home, self._track_paths['jams'][0])
+            self._data_home, self._track_paths['audio_mix'][0]
+        )
+        self.jams_path = os.path.join(self._data_home, self._track_paths['jams'][0])
 
-        title_list = track_id.split('_') # [PID, S-T-K, mode, rec_mode]
-        style, tempo, _ = title_list[1].split('-') # [style, tempo, key]
+        title_list = track_id.split('_')  # [PID, S-T-K, mode, rec_mode]
+        style, tempo, _ = title_list[1].split('-')  # [style, tempo, key]
         self.player_id = title_list[0]
         self.mode = title_list[2]
-        self.tempo = tempo
-        self.style = STYLE_DICT[style[:-1]]
-
+        self.tempo = float(tempo)
+        self.style = _STYLE_DICT[style[:-1]]
 
     # this lets users run `print(Track)` and get actual information
     def __repr__(self):
-        repr_string = "GuitarSet Track(track_id={})"
-        return repr_string.format(self.track_id)
+        repr_string = "GuitarSet Track(track_id={}, jams_path={})"
+        return repr_string.format(self.track_id, self.jams_path)
 
     # `annotation` will behave like an attribute, but it will only be loaded
     # and saved when someone accesses it. Useful when loading slightly
@@ -119,39 +164,54 @@ class Track(object):
     # series data loaded from a file a cached property
     @utils.cached_property
     def beats(self):
-        return _load_annotation(os.path.join(
-            self._data_home, self._track_paths['annotation'][0]))
-    
+        return _load_beats(self.jams_path)
+
     @utils.cached_property
     def leadsheet_chords(self):
-        return _load_annotation(os.path.join(
-            self._data_home, self._track_paths['annotation'][0]))
+        if self.mode == 'solo':
+            logging.info(
+                'Chord annotations for solo excerpts are the same with the comp excerpt.'
+            )
+        return _load_chords(self.jams_path, leadsheet_version=True)
 
     @utils.cached_property
     def infered_chords(self):
-        return _load_annotation(os.path.join(
-            self._data_home, self._track_paths['annotation'][0]))
+        if self.mode == 'solo':
+            logging.info(
+                'Chord annotations for solo excerpts are the same with the comp excerpt.'
+            )
+        return _load_chords(self.jams_path, leadsheet_version=False)
 
     @utils.cached_property
     def key_mode(self):
-        return _load_annotation(os.path.join(
-            self._data_home, self._track_paths['annotation'][0]))
+        return _load_key_mode(self.jams_path)
 
     @utils.cached_property
     def pitch_contours(self):
-        return _load_annotation(os.path.join(
-            self._data_home, self._track_paths['annotation'][0]))
+        contours = []
+        # iterate over 6 strings
+        for i in range(6):
+            contours.append(_load_pitch_contour(self.jams_path, i))
+        return contours
 
     @utils.cached_property
     def notes(self):
-        return _load_annotation(os.path.join(
-            self._data_home, self._track_paths['annotation'][0]))
+        notes = []
+        # iterate over 6 strings
+        for i in range(6):
+            notes.append(_load_note_ann(self.jams_path, i))
+        return notes
 
     # `audio` will behave like an attribute, but it will only be loaded
     # when someone accesses it and it won't be stored. By default, we make
     # any memory heavy information (like audio) properties
     @property
-    def audio(self, version='mic'):
+    def audio(self):
+        """Load the default audio version (mic) of the GuitarSet Track.
+        """
+        return self.load_audio()
+
+    def load_audio(self, version='mic'):
         """Load GuitarSet audio
 
         Parameters:
@@ -160,15 +220,23 @@ class Track(object):
             audio (np.array): audio. size of `(N, )`
             sr (int): sampling rate of the audio file
         """
-        audio_path = 'TODO'
-        audio, sr = librosa.load(audio_path, sr=None, mono=True)
+        if version == 'mic':
+            audio, sr = librosa.load(self.audio_mic_path, sr=None)
+        elif version == 'mix':
+            audio, sr = librosa.load(self.audio_mix_path, sr=None)
+        elif version == 'hex':
+            audio, sr = sf.read(self.audio_hex_path)
+        elif version == 'hex_cln':
+            audio, sr = sf.read(self.audio_hex_cln_path)
+        else:
+            logging.info('{} is a unrecognized version string.'.format(version))
+            return None, None
         return audio, sr
 
 
 def download(data_home=None):
-    """Download Example Dataset. However, Example dataset is not available for
-    download anymore. This function prints a helper message to organize
-    pre-downloaded Example dataset.
+    """Download GuitarSet.
+    
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
@@ -176,19 +244,15 @@ def download(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    print(
-        """
-        Unfortunately the Example dataset is not available for download.
-        If you have the Example dataset, place the contents into a folder called
-        {dataset_dir} with the following structure:
-            > {dataset_dir}/
-                > Lyrics/
-                > PitchLabel/
-                > Wavfile/
-        and copy the {dataset_dir} folder to {data_home}
-    """.format(
-            dataset_dir=DATASET_DIR, data_home=data_home
-        )
+    download_utils.downloader(
+        data_home,
+        zip_downloads=[
+            ANNOTATION_REMOTE,
+            AUDIO_HEX_CLN_REMOTE,
+            AUDIO_HEX_REMOTE,
+            AUDIO_MIC_REMOTE,
+            AUDIO_MIX_REMOTE,
+        ],
     )
 
 
@@ -238,14 +302,91 @@ def load(data_home=None, silence_validator=False):
     return guitarset_data
 
 
+def _load_beats(jams_path):
+    jam = jams.load(jams_path)
+    anno = jam.search(namespace='beat_position')[0]
+    times, values = anno.to_event_values()
+    positions = [int(v['position']) for v in values]
+    return utils.BeatData(times, positions)
+
+
+def _load_chords(jams_path, leadsheet_version=True):
+    """
+    Parameters:
+    -----------
+    jams_path : str
+        path of the jams annotation file
+    leadsheet_version : Bool
+        Whether or not to load the leadsheet version of the chord annotation
+        If False, load the infered version.
+    """
+    jam = jams.load(jams_path)
+    if leadsheet_version:
+        anno = jam.search(namespace='chord')[0]
+    else:
+        anno = jam.search(namespace='chord')[1]
+    intervals, values = anno.to_interval_values()
+    return utils.ChordData(intervals[:, 0], intervals[:, 1], values)
+
+
+def _load_key_mode(jams_path):
+    jam = jams.load(jams_path)
+    anno = jam.search(namespace='key_mode')[0]
+    intervals, values = anno.to_interval_values()
+    return utils.KeyData(intervals[:, 0], intervals[:, 1], values)
+
+
+def _load_pitch_contour(jams_path, string_num):
+    '''
+    Parameters:
+    -----------
+    jams_path : str
+        path of the jams annotation file
+    string_num : int, in range(6)
+        Which string to load. 
+        0 being the Low E string, 5 is the high e string.
+    '''
+    jam = jams.load(jams_path)
+    anno_arr = jam.search(namespace='pitch_contour')
+    anno = anno_arr.search(data_source=str(string_num))[0]
+    times, values = anno.to_event_values()
+    frequencies = [v['frequency'] for v in values]
+    return utils.F0Data(times, frequencies, np.ones_like(times))
+
+
+def _load_note_ann(jams_path, string_num):
+    '''
+    Parameters:
+    -----------
+    jams_path : str
+        path of the jams annotation file
+    string_num : int, in range(6)
+        Which string to load. 
+        0 being the Low E string, 5 is the high e string.
+    '''
+    jam = jams.load(jams_path)
+    anno_arr = jam.search(namespace='note_midi')
+    anno = anno_arr.search(data_source=str(string_num))[0]
+    intervals, values = anno.to_interval_values()
+    return utils.NoteData(
+        intervals[:, 0], intervals[:, 1], values, np.ones_like(values)
+    )
+
 
 def cite():
     """Print the reference"""
 
     cite_data = """
 =========== MLA ===========
-MLA format citation/s here
+Xi, Qingyang, et al. 
+"GuitarSet: A Dataset for Guitar Transcription."
+In Proceedings of the 19th International Society for Music Information Retrieval Conference (ISMIR). 2018.
 ========== Bibtex ==========
-Bibtex format citations/s here
+@inproceedings{xi2018guitarset,
+    title={GuitarSet: A Dataset for Guitar Transcription},
+    author={Xi, Qingyang and Bittner, Rachel M and Ye, Xuzhou and Pauwels, Johan and Bello, Juan P},
+    booktitle={International Society of Music Information Retrieval (ISMIR)},
+    year={2018}
+}
 """
     print(cite_data)
