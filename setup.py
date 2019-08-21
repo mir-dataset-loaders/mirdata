@@ -18,7 +18,7 @@ if __name__ == '__main__':
         long_description="""Common loaders for MIR datasets.""",
         keywords='mir dataset loader audio',
         license='BSD-3-Clause',
-        install_requires=['tqdm', 'librosa < 0.7.0', 'numpy>=1.16', 'six', 'jams', 'pysoundfile'],
+        install_requires=['tqdm', 'librosa < 0.7.0', 'numpy>=1.16', 'six', 'jams', 'soundfile'],
         extras_require={
             'tests': [
                 'pytest>=4.4.0',
