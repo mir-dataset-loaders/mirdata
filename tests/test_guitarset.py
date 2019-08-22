@@ -63,10 +63,10 @@ def test_audio():
     assert y.shape == (44100 * 2,)
     y, sr = track.load_audio(version='hex')
     assert sr == 44100
-    assert y.shape == (44100 * 0.5, 6)
+    assert y.shape == (6, 44100 * 0.5)
     y, sr = track.load_audio(version='hex_cln')
     assert sr == 44100
-    assert y.shape == (44100 * 0.5, 6)
+    assert y.shape == (6, 44100 * 0.5)
     y, sr = track.load_audio(version='bad_version')
     assert sr is None
     assert y is None

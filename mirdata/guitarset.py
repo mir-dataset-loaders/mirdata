@@ -39,7 +39,6 @@ import os
 import librosa
 import jams
 import logging
-import soundfile as sf
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
@@ -225,9 +224,9 @@ class Track(object):
         elif version == 'mix':
             audio, sr = librosa.load(self.audio_mix_path, sr=None)
         elif version == 'hex':
-            audio, sr = sf.read(self.audio_hex_path)
+            audio, sr = librosa.load(self.audio_hex_path, sr=None, mono=False)
         elif version == 'hex_cln':
-            audio, sr = sf.read(self.audio_hex_cln_path)
+            audio, sr = librosa.load(self.audio_hex_cln_path, sr=None, mono=False)
         else:
             logging.info('{} is a unrecognized version string.'.format(version))
             return None, None
