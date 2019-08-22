@@ -33,7 +33,6 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-# import whatever you need here
 import numpy as np
 import os
 import librosa
@@ -79,6 +78,7 @@ _STYLE_DICT = {
     'SS': 'Singer-Songwriter',
     'Funk': 'Funk',
 }
+_GUITAR_STRINGS = ['E', 'A', 'D', 'G', 'B', 'e']
 
 
 class Track(object):
@@ -108,15 +108,30 @@ class Track(object):
             one of ['Jazz', 'Bossa Nova', 'Rock', 'Singer-Songwriter', 'Funk']
         beats (BeatData)
         leadsheet_chords (ChordData)
-        infered_chords (ChordData)
+        inferred_chords (ChordData)
         key_mode (KeyData)
-        pitch_contours (list): [(F0Data)s]
-            a list that contains 6 `F0Data`s. 
+        pitch_contours (dict):
+            {
+                'E': F0Data(...),
+                'A': F0Data(...),
+                ...
+                'e': F0Data(...)
+            }
+            a dict that contains 6 `F0Data`s. 
             From Low E string to high e string.
-        notes (list): [(NoteData)s]
-            a list that contains 6 `NoteData`s. 
+        notes (list): (dict):
+            {
+                'E': NoteData(...),
+                'A': NoteData(...),
+                ...
+                'e': NoteData(...)
+            }
+            a dict that contains 6 `NoteData`s. 
             From Low E string to high e string.
-        audio (tuple): (np.ndarray, sr)
+        audio_mic (tuple): (np.ndarray, sr)
+        audio_mix (tuple): (np.ndarray, sr)
+        audio_hex (tuple): (np.ndarray, sr)
+        audio_hex_cln (tuple): (np.ndarray, sr)
     """
 
     def __init__(self, track_id, data_home=None):
@@ -152,15 +167,20 @@ class Track(object):
         self.tempo = float(tempo)
         self.style = _STYLE_DICT[style[:-1]]
 
-    # this lets users run `print(Track)` and get actual information
     def __repr__(self):
-        repr_string = "GuitarSet Track(track_id={}, jams_path={})"
-        return repr_string.format(self.track_id, self.jams_path)
+        repr_string = (
+            'GuitarSet Track('
+            + 'track_id={}, jams_path={},\n'.format(self.track_id, self.jams_path)
+            + 'tempo={}, mode={}, style={},\n'.format(self.tempo, self.mode, self.style)
+            + "beats=BeatData('beat_times', 'beat_positions'),\n"
+            + "leadsheet_chords=ChordData('start_times', 'end_times', 'chords'),\n"
+            + "inferred_chords=ChordData('start_times', 'end_times', 'chords'),\n"
+            + "key_mode=KeyData('start_times', 'end_times', 'keys'),\n"
+            + "pitch_contours=dict(F0Data('times', 'frequencies', 'confidence')),\n"
+            + "notes=dict(NoteData('start_times', 'end_times', 'notes', 'confidence')))"
+        )
+        return repr_string
 
-    # `annotation` will behave like an attribute, but it will only be loaded
-    # and saved when someone accesses it. Useful when loading slightly
-    # bigger files or for bigger datasets. By default, we make any time
-    # series data loaded from a file a cached property
     @utils.cached_property
     def beats(self):
         return _load_beats(self.jams_path)
@@ -174,7 +194,7 @@ class Track(object):
         return _load_chords(self.jams_path, leadsheet_version=True)
 
     @utils.cached_property
-    def infered_chords(self):
+    def inferred_chords(self):
         if self.mode == 'solo':
             logging.info(
                 'Chord annotations for solo excerpts are the same with the comp excerpt.'
@@ -187,50 +207,49 @@ class Track(object):
 
     @utils.cached_property
     def pitch_contours(self):
-        contours = []
+        contours = {}
         # iterate over 6 strings
         for i in range(6):
-            contours.append(_load_pitch_contour(self.jams_path, i))
+            contours[_GUITAR_STRINGS[i]] = _load_pitch_contour(self.jams_path, i)
         return contours
 
     @utils.cached_property
     def notes(self):
-        notes = []
+        notes = {}
         # iterate over 6 strings
         for i in range(6):
-            notes.append(_load_note_ann(self.jams_path, i))
+            notes[_GUITAR_STRINGS[i]] = _load_note_ann(self.jams_path, i)
         return notes
 
-    # `audio` will behave like an attribute, but it will only be loaded
-    # when someone accesses it and it won't be stored. By default, we make
-    # any memory heavy information (like audio) properties
     @property
-    def audio(self):
-        """Load the default audio version (mic) of the GuitarSet Track.
+    def audio_mic(self):
+        """Load the audio for the 'mic' version of the GuitarSet Track.
         """
-        return self.load_audio()
-
-    def load_audio(self, version='mic'):
-        """Load GuitarSet audio
-
-        Parameters:
-            version (str): one of ['mic', 'mix', 'hex', 'hex_cln']
-        Returns:
-            audio (np.array): audio. size of `(N, )`
-            sr (int): sampling rate of the audio file
-        """
-        if version == 'mic':
-            audio, sr = librosa.load(self.audio_mic_path, sr=None)
-        elif version == 'mix':
-            audio, sr = librosa.load(self.audio_mix_path, sr=None)
-        elif version == 'hex':
-            audio, sr = librosa.load(self.audio_hex_path, sr=None, mono=False)
-        elif version == 'hex_cln':
-            audio, sr = librosa.load(self.audio_hex_cln_path, sr=None, mono=False)
-        else:
-            logging.info('{} is a unrecognized version string.'.format(version))
-            return None, None
+        audio, sr = librosa.load(self.audio_mic_path, sr=None)
         return audio, sr
+
+    @property
+    def audio_mix(self):
+        """Load the audio for the 'mix' version of the GuitarSet Track.
+        """
+        audio, sr = librosa.load(self.audio_mix_path, sr=None)
+        return audio, sr
+
+    @property
+    def audio_hex(self):
+        """Load the audio for the 'hex' version of the GuitarSet Track.
+        """
+        raise (NotImplementedError)
+        # audio, sr = librosa.load(self.audio_hex_path, sr=None)
+        # return audio, sr
+
+    @property
+    def audio_hex_cln(self):
+        """Load the audio for the 'hex_cln' version of the GuitarSet Track.
+        """
+        raise (NotImplementedError)
+        # audio, sr = librosa.load(self.audio_hex_cln_path, sr=None)
+        # return audio, sr
 
 
 def download(data_home=None):
