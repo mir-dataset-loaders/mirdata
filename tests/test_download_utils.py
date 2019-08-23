@@ -41,12 +41,12 @@ def test_downloader(mocker, mock_path):
     mock_file = mocker.patch.object(download_utils, 'download_from_remote')
     # Zip only
     download_utils.downloader('a', zip_downloads=['foo'])
-    mock_zip.assert_called_once_with('foo', 'a', False)
+    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
     mocker.resetall()
 
     # tar only
     download_utils.downloader('a', tar_downloads=['foo'])
-    mock_tar.assert_called_once_with('foo', 'a', False)
+    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
     mocker.resetall()
 
     # file only
@@ -56,19 +56,19 @@ def test_downloader(mocker, mock_path):
 
     # zip and tar
     download_utils.downloader('a', zip_downloads=['foo'], tar_downloads=['foo'])
-    mock_zip.assert_called_once_with('foo', 'a', False)
-    mock_tar.assert_called_once_with('foo', 'a', False)
+    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
+    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
     mocker.resetall()
 
     # zip and file
     download_utils.downloader('a', zip_downloads=['foo'], file_downloads=['foo'])
-    mock_zip.assert_called_once_with('foo', 'a', False)
+    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
     mock_file.assert_called_once_with('foo', 'a', False)
     mocker.resetall()
 
     # tar and file
     download_utils.downloader('a', tar_downloads=['foo'], file_downloads=['foo'])
-    mock_tar.assert_called_once_with('foo', 'a', False)
+    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
     mock_file.assert_called_once_with('foo', 'a', False)
     mocker.resetall()
 
@@ -76,9 +76,9 @@ def test_downloader(mocker, mock_path):
     download_utils.downloader(
         'a', zip_downloads=['foo'], tar_downloads=['foo'], file_downloads=['foo']
     )
-    mock_zip.assert_called_once_with('foo', 'a', False)
+    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
     mock_file.assert_called_once_with('foo', 'a', False)
-    mock_tar.assert_called_once_with('foo', 'a', False)
+    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
     mock_file.assert_called_once_with('foo', 'a', False)
 
 

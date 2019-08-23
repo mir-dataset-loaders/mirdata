@@ -31,6 +31,8 @@ def downloader(
     file_downloads=None,
     info_message=None,
     force_overwrite=False,
+    cleanup=False,
+    use_subdir=False,
 ):
     """Download data to `save_dir` and optionally print a message.
 
@@ -51,17 +53,34 @@ def downloader(
             If None, no string is printed.
         force_overwrite (bool):
             If True, existing files are overwritten by the downloaded files.
+        cleanup (bool): default=False
+            If True, remove tarfile and zipfile after untarring/unzipping.
+        use_subdir (bool):
+            Whether or not to unzip or untar into a subdirectory that has
+            the same name as the archive file.
 
     """
     Path(save_dir).mkdir(exist_ok=True)
 
     if zip_downloads is not None:
         for zip_download in zip_downloads:
-            download_zip_file(zip_download, save_dir, force_overwrite)
+            download_zip_file(
+                zip_download,
+                save_dir,
+                force_overwrite,
+                cleanup=cleanup,
+                use_subdir=use_subdir,
+            )
 
     if tar_downloads is not None:
         for tar_download in tar_downloads:
-            download_tar_file(tar_download, save_dir, force_overwrite)
+            download_tar_file(
+                tar_download,
+                save_dir,
+                force_overwrite,
+                cleanup=cleanup,
+                use_subdir=use_subdir,
+            )
 
     if file_downloads is not None:
         for file_download in file_downloads:
@@ -143,8 +162,12 @@ def download_from_remote(remote, data_home, force_overwrite=False):
     return download_path
 
 
-def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=False):
+def download_zip_file(
+    zip_remote, save_dir, force_overwrite, cleanup=False, use_subdir=False
+):
     zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite)
+    if use_subdir:
+        save_dir = os.path.join(save_dir, zip_remote.filename.split('.')[0])
     unzip(zip_download_path, save_dir, cleanup=cleanup)
 
 
@@ -167,8 +190,12 @@ def unzip(zip_path, save_dir, cleanup=False):
         os.remove(zip_path)
 
 
-def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=False):
+def download_tar_file(
+    tar_remote, save_dir, force_overwrite, cleanup=False, use_subdir=False
+):
     tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite)
+    if use_subdir:
+        save_dir = os.path.join(save_dir, tar_remote.filename.split('.')[0])
     untar(tar_download_path, save_dir, cleanup=cleanup)
 
 

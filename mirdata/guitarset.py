@@ -271,6 +271,8 @@ def download(data_home=None):
             AUDIO_MIC_REMOTE,
             AUDIO_MIX_REMOTE,
         ],
+        cleanup=True,
+        use_subdir=True,
     )
 
 
