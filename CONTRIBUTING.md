@@ -128,7 +128,7 @@ DATASET_DIR = 'Example'
 INDEX = utils.load_json_index('example_index.json')
 METADATA = None  # -- This is set to None initially and loaded when accessed
 # -- info for any files that need to be downloaded
-REMOTE_ZIP1 = download_utils.RemoteFileMetadata(
+REMOTE_ZIP = download_utils.RemoteFileMetadata(
     filename='a_zip_file.zip',
     url='http://website/hosting/the/zipfile.zip',
     checksum='00000000000000000000000000000000',  # -- the md5 checksum
@@ -166,7 +166,7 @@ class Track(object):
         self._data_home = data_home
         self._track_paths = INDEX[track_id]
 
-        # -- add any dataset specific attributes here, e.g.
+        # -- add any dataset specific attributes here
         self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
 
@@ -228,7 +228,7 @@ def download(data_home=None, force_overwrite=False):
         force_overwrite=force_overwrite,
         # -- download any freely accessible zip files by adding them to this list
         # -- this function also unzips them
-        zip_downloads=[REMOTE_ZIP1, REMOTE_ZIP2],
+        zip_downloads=[REMOTE_ZIP],
         # -- download any freely accessible tar files by adding them to this list
         # -- this function also untarrs them
         tar_downloads=[...],
@@ -241,7 +241,7 @@ def download(data_home=None, force_overwrite=False):
 
     # -- if the files need to be organized in a particular way, you can call
     # -- download_utils.downloader multiple times and change `data_home` to be
-    # -- e.g. a specifically names subfolder of data_home.
+    # -- e.g. a subfolder of data_home.
 
 
 # -- keep this function exactly as it is
@@ -293,7 +293,7 @@ def load(data_home=None, silence_validator=False):
     return data
 
 
-# -- Write any necesasry loader functions for loading the dataset's data
+# -- Write any necessary loader functions for loading the dataset's data
 def _load_annotation(annotation_path):
     if not os.path.exists(annotation_path):
         return None
