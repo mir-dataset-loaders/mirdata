@@ -3,6 +3,7 @@
 """
 import csv
 import librosa
+import logging
 import os
 
 import mirdata.utils as utils
@@ -11,7 +12,7 @@ import mirdata.download_utils as download_utils
 # these functions are identical for all rwc datasets
 from mirdata.rwc_classical import _load_beats, _load_sections
 
-INDEX = utils.load_json_index("rwc_genre_index.json")
+INDEX = utils.load_json_index('rwc_genre_index.json')
 METADATA = None
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-g.csv',
@@ -204,8 +205,10 @@ def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-g.csv')
 
     if not os.path.exists(metadata_path):
-        print("Warning: metadata file {} not found.".format(metadata_path))
-        print("You can download the metadata file by running download()")
+        logging.info(
+            'Metadata file {} not found.'.format(metadata_path)
+            + 'You can download the metadata file by running download()'
+        )
         return None
 
     with open(metadata_path, 'r') as fhandle:
