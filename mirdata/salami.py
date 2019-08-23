@@ -21,6 +21,7 @@ Attributes:
 """
 import csv
 import librosa
+import logging
 import numpy as np
 import os
 
@@ -292,7 +293,7 @@ def _load_metadata(data_home):
     )
 
     if not os.path.exists(metadata_path):
-        print("Warning: metadata file {} not found.".format(metadata_path))
+        logging.info('Metadata file {} not found.'.format(metadata_path))
         return None
 
     with open(metadata_path, 'r') as fhandle:

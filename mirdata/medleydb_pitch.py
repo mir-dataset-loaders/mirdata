@@ -27,6 +27,7 @@ from __future__ import print_function
 import csv
 import json
 import librosa
+import logging
 import numpy as np
 import os
 
@@ -221,7 +222,7 @@ def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, 'medleydb_pitch_metadata.json')
 
     if not os.path.exists(metadata_path):
-        print("Warning: metadata file {} not found.".format(metadata_path))
+        logging.info('Metadata file {} not found.'.format(metadata_path))
         return None
 
     with open(metadata_path, 'r') as fhandle:

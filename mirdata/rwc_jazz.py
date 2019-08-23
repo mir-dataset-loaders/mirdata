@@ -3,6 +3,7 @@
 """
 import csv
 import librosa
+import logging
 import os
 
 import mirdata.utils as utils
@@ -200,8 +201,10 @@ def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-j.csv')
 
     if not os.path.exists(metadata_path):
-        print("Warning: metadata file {} not found.".format(metadata_path))
-        print("You can download the metadata file by running download()")
+        logging.info(
+            'Metadata file {} not found.'.format(metadata_path)
+            + 'You can download the metadata file by running download()'
+        )
         return None
 
     with open(metadata_path, 'r') as fhandle:

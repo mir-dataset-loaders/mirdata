@@ -32,6 +32,7 @@ from __future__ import print_function
 import csv
 import os
 import librosa
+import logging
 import numpy as np
 
 import mirdata.utils as utils
@@ -291,8 +292,10 @@ def _load_metadata(data_home):
 
     id_map_path = os.path.join(data_home, 'id_mapping.txt')
     if not os.path.exists(id_map_path):
-        print("Warning: metadata file {} not found.".format(id_map_path))
-        print("You can download the metadata file for ikala by running ikala.download")
+        logging.info(
+            'Metadata file {} not found.'.format(id_map_path)
+            + 'You can download the metadata file for ikala by running ikala.download'
+        )
         return None
 
     with open(id_map_path, 'r') as fhandle:
