@@ -44,9 +44,19 @@ def test_downloader(mocker, mock_path):
     mock_zip.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
     mocker.resetall()
 
+    # Zip and using sub_dir flag
+    download_utils.downloader('a', zip_downloads=['foo'], cleanup=True, use_subdir=True)
+    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=True, use_subdir=True)
+    mocker.resetall()
+
     # tar only
     download_utils.downloader('a', tar_downloads=['foo'])
     mock_tar.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
+    mocker.resetall()
+
+    # Zip and using sub_dir flag
+    download_utils.downloader('a', tar_downloads=['foo'], cleanup=True, use_subdir=True)
+    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=True, use_subdir=True)
     mocker.resetall()
 
     # file only
