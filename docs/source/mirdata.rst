@@ -14,6 +14,14 @@ mirdata.beatles
 .. automodule:: mirdata.beatles
    :members:
 
+mirdata.guitarset
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.guitarset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 mirdata.ikala
 ^^^^^^^^^^^^^^^
 
