@@ -109,6 +109,8 @@ def validator(dataset_index, data_home, silence=False):
     return missing_files, invalid_checksums
 
 
+NoteData = namedtuple('NoteData', ['start_times', 'end_times', 'notes', 'confidence'])
+
 F0Data = namedtuple('F0Data', ['times', 'frequencies', 'confidence'])
 
 LyricData = namedtuple(
