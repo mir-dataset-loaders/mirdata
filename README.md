@@ -1,7 +1,5 @@
 # mirdata
-common loaders for mir datasets.
-
-*WORK IN PROGRESS, USE AT YOUR OWN RISK!*
+common loaders for mir datasets. Find the API documentation [here](https://mirdata.readthedocs.io/en/latest/).
 
 [![CircleCI](https://circleci.com/gh/mir-dataset-loaders/mirdata.svg?style=svg)](https://circleci.com/gh/mir-dataset-loaders/mirdata)
 [![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
