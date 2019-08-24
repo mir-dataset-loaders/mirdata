@@ -35,28 +35,24 @@ def mock_path(mocker, mock_file):
     return mocker.patch.object(Path, 'mkdir')
 
 
+@pytest.fixture(params=[True, False])
+def TO_DIR(request):
+    return request.param
+
+
+
 def test_downloader(mocker, mock_path):
     mock_zip = mocker.patch.object(download_utils, 'download_zip_file')
     mock_tar = mocker.patch.object(download_utils, 'download_tar_file')
     mock_file = mocker.patch.object(download_utils, 'download_from_remote')
     # Zip only
     download_utils.downloader('a', zip_downloads=['foo'])
-    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
-    mocker.resetall()
-
-    # Zip and using sub_dir flag
-    download_utils.downloader('a', zip_downloads=['foo'], cleanup=True, use_subdir=True)
-    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=True, use_subdir=True)
+    mock_zip.assert_called_once_with('foo', 'a', False, False, False)
     mocker.resetall()
 
     # tar only
     download_utils.downloader('a', tar_downloads=['foo'])
-    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
-    mocker.resetall()
-
-    # Zip and using sub_dir flag
-    download_utils.downloader('a', tar_downloads=['foo'], cleanup=True, use_subdir=True)
-    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=True, use_subdir=True)
+    mock_tar.assert_called_once_with('foo', 'a', False, False, False)
     mocker.resetall()
 
     # file only
@@ -66,19 +62,19 @@ def test_downloader(mocker, mock_path):
 
     # zip and tar
     download_utils.downloader('a', zip_downloads=['foo'], tar_downloads=['foo'])
-    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
-    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
+    mock_zip.assert_called_once_with('foo', 'a', False, False, False)
+    mock_tar.assert_called_once_with('foo', 'a', False, False, False)
     mocker.resetall()
 
     # zip and file
     download_utils.downloader('a', zip_downloads=['foo'], file_downloads=['foo'])
-    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
+    mock_zip.assert_called_once_with('foo', 'a', False, False, False)
     mock_file.assert_called_once_with('foo', 'a', False)
     mocker.resetall()
 
     # tar and file
     download_utils.downloader('a', tar_downloads=['foo'], file_downloads=['foo'])
-    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
+    mock_tar.assert_called_once_with('foo', 'a', False, False, False)
     mock_file.assert_called_once_with('foo', 'a', False)
     mocker.resetall()
 
@@ -86,9 +82,9 @@ def test_downloader(mocker, mock_path):
     download_utils.downloader(
         'a', zip_downloads=['foo'], tar_downloads=['foo'], file_downloads=['foo']
     )
-    mock_zip.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
+    mock_zip.assert_called_once_with('foo', 'a', False, False, False)
     mock_file.assert_called_once_with('foo', 'a', False)
-    mock_tar.assert_called_once_with('foo', 'a', False, cleanup=False, use_subdir=False)
+    mock_tar.assert_called_once_with('foo', 'a', False, False, False)
     mock_file.assert_called_once_with('foo', 'a', False)
 
 
@@ -117,17 +113,25 @@ def test_download_from_remote_raises_IOError(httpserver, tmpdir):
         download_utils.download_from_remote(TEST_REMOTE, str(tmpdir))
 
 
-def test_unzip(tmpdir):
-    download_utils.unzip('tests/resources/remote.zip', str(tmpdir))
+def test_unzip(tmpdir, TO_DIR):
+    download_utils.unzip('tests/resources/remote.zip', str(tmpdir), to_dir=TO_DIR)
 
-    expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
+    if TO_DIR:
+        expected_file_location = os.path.join(str(tmpdir), 'remote/remote.wav')
+    else:
+        expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
+
     assert os.path.exists(expected_file_location)
 
 
-def test_untar(tmpdir):
-    download_utils.untar('tests/resources/remote.tar.gz', str(tmpdir))
+def test_untar(tmpdir, TO_DIR):
+    download_utils.untar('tests/resources/remote.tar.gz', str(tmpdir), to_dir=TO_DIR)
 
-    expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
+    if TO_DIR:
+        expected_file_location = os.path.join(str(tmpdir), 'remote/remote.wav')
+    else:
+        expected_file_location = os.path.join(str(tmpdir), 'remote.wav')
+
     assert os.path.exists(expected_file_location)
 
 
@@ -136,7 +140,7 @@ def test_download_zip_file(mocker, mock_file, mock_unzip):
     download_utils.download_zip_file("a", "b", True)
 
     mock_file.assert_called_once_with("a", "b", True)
-    mock_unzip.assert_called_once_with("foo", "b", cleanup=False)
+    mock_unzip.assert_called_once_with("foo", "b", cleanup=False, to_dir=False)
 
 
 def test_download_tar_file(mocker, mock_file, mock_untar):
@@ -144,4 +148,4 @@ def test_download_tar_file(mocker, mock_file, mock_untar):
     download_utils.download_tar_file("a", "b", True)
 
     mock_file.assert_called_once_with("a", "b", True)
-    mock_untar.assert_called_once_with("foo", "b", cleanup=False)
+    mock_untar.assert_called_once_with("foo", "b", cleanup=False, to_dir=False)

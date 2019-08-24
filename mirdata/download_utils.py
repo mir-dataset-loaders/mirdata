@@ -32,7 +32,7 @@ def downloader(
     info_message=None,
     force_overwrite=False,
     cleanup=False,
-    use_subdir=False,
+    to_dir=False,
 ):
     """Download data to `save_dir` and optionally print a message.
 
@@ -54,33 +54,20 @@ def downloader(
         force_overwrite (bool):
             If True, existing files are overwritten by the downloaded files.
         cleanup (bool):
-            If True, remove tarfile and zipfile after untarring/unzipping.
-        use_subdir (bool):
-            Whether or not to unzip or untar into a subdirectory that has
-            the same name as the archive file.
+            Whether to delete the zip/tar file after extracting.
+        to_dir (bool):
+            Whether to extract tip/tar files into a sub_directory named after the archive
 
     """
     Path(save_dir).mkdir(exist_ok=True)
 
     if zip_downloads is not None:
         for zip_download in zip_downloads:
-            download_zip_file(
-                zip_download,
-                save_dir,
-                force_overwrite,
-                cleanup=cleanup,
-                use_subdir=use_subdir,
-            )
+            download_zip_file(zip_download, save_dir, force_overwrite, cleanup, to_dir)
 
     if tar_downloads is not None:
         for tar_download in tar_downloads:
-            download_tar_file(
-                tar_download,
-                save_dir,
-                force_overwrite,
-                cleanup=cleanup,
-                use_subdir=use_subdir,
-            )
+            download_tar_file(tar_download, save_dir, force_overwrite, cleanup, to_dir)
 
     if file_downloads is not None:
         for file_download in file_downloads:
@@ -163,15 +150,13 @@ def download_from_remote(remote, data_home, force_overwrite=False):
 
 
 def download_zip_file(
-    zip_remote, save_dir, force_overwrite, cleanup=False, use_subdir=False
+    zip_remote, save_dir, force_overwrite, cleanup=False, to_dir=False
 ):
     zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite)
-    if use_subdir:
-        save_dir = os.path.join(save_dir, zip_remote.filename.split('.')[0])
-    unzip(zip_download_path, save_dir, cleanup=cleanup)
+    unzip(zip_download_path, save_dir, cleanup=cleanup, to_dir=False)
 
 
-def unzip(zip_path, save_dir, cleanup=False):
+def unzip(zip_path, save_dir, cleanup=False, to_dir=False):
     """Unzip a zip file to a specified save location.
 
     Parameters
@@ -182,8 +167,13 @@ def unzip(zip_path, save_dir, cleanup=False):
         Path to save unzipped data
     cleanup: bool, default=False
         If True, remove zipfile after unzipping.
+    to_dir: bool, default=False
+        If True, create a directory and extract files to there.
     """
     zfile = zipfile.ZipFile(zip_path, 'r')
+    if to_dir:
+        save_dir = os.path.join(save_dir, os.path.basename(zip_path).split('.')[0])
+        os.makedirs(save_dir)
     zfile.extractall(save_dir)
     zfile.close()
     if cleanup:
@@ -191,15 +181,13 @@ def unzip(zip_path, save_dir, cleanup=False):
 
 
 def download_tar_file(
-    tar_remote, save_dir, force_overwrite, cleanup=False, use_subdir=False
+    tar_remote, save_dir, force_overwrite, cleanup=False, to_dir=False
 ):
     tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite)
-    if use_subdir:
-        save_dir = os.path.join(save_dir, tar_remote.filename.split('.')[0])
-    untar(tar_download_path, save_dir, cleanup=cleanup)
+    untar(tar_download_path, save_dir, cleanup=cleanup, to_dir=False)
 
 
-def untar(tar_path, save_dir, cleanup=False):
+def untar(tar_path, save_dir, cleanup=False, to_dir=False):
     """Untar a tar file to a specified save location.
 
     Parameters
@@ -210,11 +198,16 @@ def untar(tar_path, save_dir, cleanup=False):
         Path to save untarred data
     cleanup: bool, default=False
         If True, remove tarfile after untarring.
+    to_dir: bool, default=False
+        If True, create a directory and extract files to there.
     """
     if tar_path.endswith('tar.gz'):
         tfile = tarfile.open(tar_path, 'r:gz')
     else:
         tfile = tarfile.TarFile(tar_path, 'r')
+    if to_dir:
+        save_dir = os.path.join(save_dir, os.path.basename(tar_path).split('.')[0])
+        os.makedirs(save_dir)
     tfile.extractall(save_dir)
     tfile.close()
     if cleanup:

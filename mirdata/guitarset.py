@@ -272,7 +272,7 @@ def download(data_home=None):
             AUDIO_MIX_REMOTE,
         ],
         cleanup=True,
-        use_subdir=True,
+        to_dir=True,
     )
 
 
