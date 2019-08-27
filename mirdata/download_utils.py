@@ -57,8 +57,6 @@ def downloader(
             If True, existing files are overwritten by the downloaded files.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
-        to_dir (bool):
-            Whether to extract tip/tar files into a sub_directory named after the archive
 
     """
     Path(save_dir).mkdir(exist_ok=True)
