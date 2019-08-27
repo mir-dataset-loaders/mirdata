@@ -132,6 +132,7 @@ REMOTE_ZIP = download_utils.RemoteFileMetadata(
     filename='a_zip_file.zip',
     url='http://website/hosting/the/zipfile.zip',
     checksum='00000000000000000000000000000000',  # -- the md5 checksum
+    destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
 )
 
 

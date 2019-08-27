@@ -30,6 +30,7 @@ ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
     checksum='62425c552d37c6bb655a78e4603828cc',
+    destination_dir=None,
 )
 
 

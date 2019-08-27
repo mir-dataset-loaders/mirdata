@@ -38,12 +38,9 @@ def make_guitarset_index(guitarset_data_path):
     jams_files = glob.glob(os.path.join(anno_dir, '*.jams'))
     track_ids = sorted([os.path.basename(f).split('.')[0] for f in jams_files])
 
-
     guitarset_index = {}
     for track_id in track_ids:
-        annotation_checksum = md5(
-            os.path.join(anno_dir, '{}.jams'.format(track_id))
-        )
+        annotation_checksum = md5(os.path.join(anno_dir, '{}.jams'.format(track_id)))
         audio_hex_cln_checksum = md5(
             os.path.join(audio_hex_cln_dir, '{}_hex_cln.wav'.format(track_id))
         )
@@ -58,11 +55,23 @@ def make_guitarset_index(guitarset_data_path):
         )
 
         guitarset_index[track_id] = {
-            'audio_hex_cln': ('audio_hex-pickup_debleeded/{}_hex_cln.wav'.format(track_id), audio_hex_cln_checksum),
-            'audio_hex': ('audio_hex-pickup_original/{}_hex.wav'.format(track_id), audio_hex_checksum),
-            'audio_mic': ('audio_mono-mic/{}_mic.wav'.format(track_id), audio_mic_checksum),
-            'audio_mix': ('audio_mono-pickup_mix/{}_mix.wav'.format(track_id), audio_mix_checksum),
-            'jams': ('annotation/{}.jams'.format(track_id), annotation_checksum)
+            'audio_hex_cln': (
+                'audio_hex-pickup_debleeded/{}_hex_cln.wav'.format(track_id),
+                audio_hex_cln_checksum,
+            ),
+            'audio_hex': (
+                'audio_hex-pickup_original/{}_hex.wav'.format(track_id),
+                audio_hex_checksum,
+            ),
+            'audio_mic': (
+                'audio_mono-mic/{}_mic.wav'.format(track_id),
+                audio_mic_checksum,
+            ),
+            'audio_mix': (
+                'audio_mono-pickup_mix/{}_mix.wav'.format(track_id),
+                audio_mix_checksum,
+            ),
+            'jams': ('annotation/{}.jams'.format(track_id), annotation_checksum),
         }
 
     with open(GUITARSET_INDEX_PATH, 'w') as fhandle:
@@ -75,6 +84,8 @@ def main(args):
 
 if __name__ == '__main__':
     PARSER = argparse.ArgumentParser(description='Make GuitarSet index file.')
-    PARSER.add_argument('guitarset_data_path', type=str, help='Path to GuitarSet data folder.')
+    PARSER.add_argument(
+        'guitarset_data_path', type=str, help='Path to GuitarSet data folder.'
+    )
 
     main(PARSER.parse_args())

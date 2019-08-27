@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 """GuitarSet Loader
 
-Intr​oducing GuitarSet, a dataset that provides high quality guitar 
+Intr​oducing GuitarSet, a dataset that provides high quality guitar
 recordings alongside rich annotations and metadata.
-In particular, by recording guitars using a hexaphonic pickup, we 
-are able to not only provide recordings of the individual strings 
-but also to largely automate the expensive annotation process, 
+In particular, by recording guitars using a hexaphonic pickup, we
+are able to not only provide recordings of the individual strings
+but also to largely automate the expensive annotation process,
 therefore providing rich annotation.
 
-The dataset contains recordings of a variety of musical excerpts 
-played on an acoustic guitar, along with time-aligned annotations 
-including pitch contours, string and fret positions, chords, beats, 
+The dataset contains recordings of a variety of musical excerpts
+played on an acoustic guitar, along with time-aligned annotations
+including pitch contours, string and fret positions, chords, beats,
 downbeats, and keys.
 
 Details can be found at http://github.com/marl/guitarset/
 
 Attributes:
-    DATASET_DIR (str): 
+    DATASET_DIR (str):
         The directory name for GuitarSet. Set to `'GuitarSet'`.
 
     INDEX (dict): {track_id: track_data}.
@@ -49,26 +49,31 @@ ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename='annotation.zip',
     url='https://zenodo.org/record/3371780/files/annotation.zip?download=1',
     checksum='b39b78e63d3446f2e54ddb7a54df9b10',
+    destination_dir='annotation',
 )
 AUDIO_HEX_CLN_REMOTE = download_utils.RemoteFileMetadata(
     filename='audio_hex-pickup_debleeded.zip',
     url='https://zenodo.org/record/3371780/files/audio_hex-pickup_debleeded.zip?download=1',
     checksum='c31d97279464c9a67e640cb9061fb0c6',
+    destination_dir='audio_hex-pickup_debleeded',
 )
 AUDIO_HEX_REMOTE = download_utils.RemoteFileMetadata(
     filename='audio_hex-pickup_original.zip',
     url='https://zenodo.org/record/3371780/files/audio_hex-pickup_original.zip?download=1',
     checksum='f9911bf217cb40e9e68edf3726ef86cc',
+    destination_dir='audio_hex-pickup_original',
 )
 AUDIO_MIC_REMOTE = download_utils.RemoteFileMetadata(
     filename='audio_mono-mic.zip',
     url='https://zenodo.org/record/3371780/files/audio_mono-mic.zip?download=1',
     checksum='275966d6610ac34999b58426beb119c3',
+    destination_dir='audio_mono-mic',
 )
 AUDIO_MIX_REMOTE = download_utils.RemoteFileMetadata(
     filename='audio_mono-pickup_mix.zip',
     url='https://zenodo.org/record/3371780/files/audio_mono-pickup_mix.zip?download=1',
     checksum='aecce79f425a44e2055e46f680e10f6a',
+    destination_dir='audio_mono-pickup_mix',
 )
 
 _STYLE_DICT = {
@@ -97,14 +102,14 @@ class Track(object):
         audio_mix_path (str): path to the mono wave via downmixing hex pickup
         jams_path (str): path to the jams file
         player_id (str):
-            ID of the different players. 
+            ID of the different players.
             one of ['00', '01', ... , '05']
         tempo (float): BPM of the track
         mode (str):
             one of ['solo', 'comp']
             For each excerpt, players are asked to first play in 'comp' mode
             and later play a 'solo' version on top of the already recorded comp.
-        style (str): 
+        style (str):
             one of ['Jazz', 'Bossa Nova', 'Rock', 'Singer-Songwriter', 'Funk']
         beats (BeatData)
         leadsheet_chords (ChordData)
@@ -117,7 +122,7 @@ class Track(object):
                 ...
                 'e': F0Data(...)
             }
-            a dict that contains 6 `F0Data`s. 
+            a dict that contains 6 `F0Data`s.
             From Low E string to high e string.
         notes (list): (dict):
             {
@@ -126,7 +131,7 @@ class Track(object):
                 ...
                 'e': NoteData(...)
             }
-            a dict that contains 6 `NoteData`s. 
+            a dict that contains 6 `NoteData`s.
             From Low E string to high e string.
         audio_mic (tuple): (np.ndarray, sr)
         audio_mix (tuple): (np.ndarray, sr)
@@ -254,7 +259,7 @@ class Track(object):
 
 def download(data_home=None):
     """Download GuitarSet.
-    
+
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
@@ -271,6 +276,7 @@ def download(data_home=None):
             AUDIO_MIC_REMOTE,
             AUDIO_MIX_REMOTE,
         ],
+        cleanup=True,
     )
 
 
@@ -361,7 +367,7 @@ def _load_pitch_contour(jams_path, string_num):
     jams_path : str
         path of the jams annotation file
     string_num : int, in range(6)
-        Which string to load. 
+        Which string to load.
         0 being the Low E string, 5 is the high e string.
     '''
     jam = jams.load(jams_path)
@@ -379,7 +385,7 @@ def _load_note_ann(jams_path, string_num):
     jams_path : str
         path of the jams annotation file
     string_num : int, in range(6)
-        Which string to load. 
+        Which string to load.
         0 being the Low E string, 5 is the high e string.
     '''
     jam = jams.load(jams_path)
@@ -396,7 +402,7 @@ def cite():
 
     cite_data = """
 =========== MLA ===========
-Xi, Qingyang, et al. 
+Xi, Qingyang, et al.
 "GuitarSet: A Dataset for Guitar Transcription."
 In Proceedings of the 19th International Society for Music Information Retrieval Conference (ISMIR). 2018.
 ========== Bibtex ==========

@@ -16,17 +16,20 @@ METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-c.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030',
+    destination_dir=None,
 )
 DATASET_DIR = 'RWC-Classical'
 ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
     checksum='e8ee05854833cbf5eb7280663f71c29b',
+    destination_dir='annotations',
 )
 ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
     checksum='f77bd527510376f59f5a2eed8fd7feb3',
+    destination_dir='annotations',
 )
 
 
@@ -114,13 +117,6 @@ def download(data_home=None, force_overwrite=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    annotations_path = os.path.join(data_home, 'annotations')
-    download_utils.downloader(
-        annotations_path,
-        force_overwrite=force_overwrite,
-        zip_downloads=[ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
-    )
-
     info_message = """
         Unfortunately the audio files of the RWC-Jazz dataset are not available
         for download. If you have the RWC-Classical dataset, place the contents into a
@@ -136,7 +132,7 @@ def download(data_home=None, force_overwrite=False):
 
     download_utils.downloader(
         data_home,
-        zip_downloads=[METADATA_REMOTE],
+        zip_downloads=[METADATA_REMOTE, ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
         info_message=info_message,
         force_overwrite=force_overwrite,
     )

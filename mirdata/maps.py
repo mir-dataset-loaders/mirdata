@@ -5,6 +5,7 @@ REMOTE = RemoteFileMetadata(
     filename='MAPS.tar',
     url='https://amubox.univ-amu.fr/s/iNG0xc5Td1Nv4rR/download',
     checksum=('9a8b89a7897b0ad95a505b4daa788302'),
+    destination_dir=None,
 )
 
 DATASET_DIR = 'MAPS'

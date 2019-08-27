@@ -21,7 +21,10 @@ except ImportError:
 from mirdata.utils import md5
 
 
-RemoteFileMetadata = namedtuple('RemoteFileMetadata', ['filename', 'url', 'checksum'])
+# destination dir should be a relative path to save the file/s, or None
+RemoteFileMetadata = namedtuple(
+    'RemoteFileMetadata', ['filename', 'url', 'checksum', 'destination_dir']
+)
 
 
 def downloader(
@@ -31,6 +34,7 @@ def downloader(
     file_downloads=None,
     info_message=None,
     force_overwrite=False,
+    cleanup=False,
 ):
     """Download data to `save_dir` and optionally print a message.
 
@@ -51,17 +55,19 @@ def downloader(
             If None, no string is printed.
         force_overwrite (bool):
             If True, existing files are overwritten by the downloaded files.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
 
     """
     Path(save_dir).mkdir(exist_ok=True)
 
     if zip_downloads is not None:
         for zip_download in zip_downloads:
-            download_zip_file(zip_download, save_dir, force_overwrite)
+            download_zip_file(zip_download, save_dir, force_overwrite, cleanup)
 
     if tar_downloads is not None:
         for tar_download in tar_downloads:
-            download_tar_file(tar_download, save_dir, force_overwrite)
+            download_tar_file(tar_download, save_dir, force_overwrite, cleanup)
 
     if file_downloads is not None:
         for file_download in file_downloads:
@@ -91,7 +97,7 @@ def _download_large_file(url, download_path, callback=lambda: None):
     return download_path
 
 
-def download_from_remote(remote, data_home, force_overwrite=False):
+def download_from_remote(remote, save_dir, force_overwrite=False):
     """Download a remote dataset into path
     Fetch a dataset pointed by remote's url, save into path using remote's
     filename and ensure its integrity based on the MD5 Checksum of the
@@ -104,8 +110,8 @@ def download_from_remote(remote, data_home, force_overwrite=False):
     remote: RemoteFileMetadata
         Named tuple containing remote dataset meta information: url, filename
         and checksum
-    data_home: string
-        Directory to save the file to.
+    save_dir: string
+        Directory to save the file to. Usually `data_home`
     force_overwrite: bool
         If True, overwrite existing file with the downloaded file.
         If False, does not overwrite, but checks that checksum is consistent.
@@ -115,7 +121,15 @@ def download_from_remote(remote, data_home, force_overwrite=False):
     file_path: string
         Full path of the created file.
     """
-    download_path = os.path.join(data_home, remote.filename)
+    if remote.destination_dir is None:
+        download_dir = save_dir
+    else:
+        download_dir = os.path.join(save_dir, remote.destination_dir)
+
+    if not os.path.exists(download_dir):
+        os.makedirs(download_dir)
+
+    download_path = os.path.join(download_dir, remote.filename)
     if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
@@ -144,43 +158,65 @@ def download_from_remote(remote, data_home, force_overwrite=False):
 
 
 def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=False):
+    """Download and unzip a zip file.
+
+    Parameters
+    ----------
+    zip_remote: RemoteFileMetadata
+        Object containing download information
+    save_dir: str
+        Path to save downloaded file
+    force_overwrite: bool
+        If True, overwrites existing files
+    cleanup: bool, default=False
+        If True, remove zipfile after unziping.
+    """
     zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite)
-    unzip(zip_download_path, save_dir, cleanup=cleanup)
+    unzip(zip_download_path, cleanup=cleanup)
 
 
-def unzip(zip_path, save_dir, cleanup=False):
-    """Unzip a zip file to a specified save location.
+def unzip(zip_path, cleanup=False):
+    """Unzip a zip file inside it's current directory.
 
     Parameters
     ----------
     zip_path: str
         Path to zip file
-    save_dir: str
-        Path to save unzipped data
     cleanup: bool, default=False
         If True, remove zipfile after unzipping.
     """
     zfile = zipfile.ZipFile(zip_path, 'r')
-    zfile.extractall(save_dir)
+    zfile.extractall(os.path.dirname(zip_path))
     zfile.close()
     if cleanup:
         os.remove(zip_path)
 
 
 def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=False):
+    """Download and untar a tar file.
+
+    Parameters
+    ----------
+    tar_remote: RemoteFileMetadata
+        Object containing download information
+    save_dir: str
+        Path to save downloaded file
+    force_overwrite: bool
+        If True, overwrites existing files
+    cleanup: bool, default=False
+        If True, remove tarfile after untarring.
+    """
     tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite)
-    untar(tar_download_path, save_dir, cleanup=cleanup)
+    untar(tar_download_path, cleanup=cleanup)
 
 
-def untar(tar_path, save_dir, cleanup=False):
-    """Untar a tar file to a specified save location.
+def untar(tar_path, cleanup=False):
+    """Untar a tar file inside it's current directory.
 
     Parameters
     ----------
     tar_path: str
         Path to tar file
-    save_dir: str
-        Path to save untarred data
     cleanup: bool, default=False
         If True, remove tarfile after untarring.
     """
@@ -188,7 +224,7 @@ def untar(tar_path, save_dir, cleanup=False):
         tfile = tarfile.open(tar_path, 'r:gz')
     else:
         tfile = tarfile.TarFile(tar_path, 'r')
-    tfile.extractall(save_dir)
+    tfile.extractall(os.path.dirname(tar_path))
     tfile.close()
     if cleanup:
         os.remove(tar_path)
