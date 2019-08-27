@@ -23,10 +23,12 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 import csv
+import glob
 import librosa
 import logging
 import numpy as np
 import os
+import shutil
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
@@ -37,6 +39,7 @@ REMOTE = download_utils.RemoteFileMetadata(
     filename='Orchset_dataset_0.zip',
     url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
     checksum='cf6fe52d64624f61ee116c752fb318ca',
+    destination_dir=None,
 )
 
 DATASET_DIR = 'Orchset'
@@ -178,6 +181,13 @@ def download(data_home=None, force_overwrite=False):
     download_utils.downloader(
         data_home, zip_downloads=[REMOTE], force_overwrite=force_overwrite
     )
+
+    # files get downloaded to a folder called Orchset - move everything up a level
+    duplicated_orchset_dir = os.path.join(data_home, 'Orchset')
+    orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, '*'))
+    for fpath in orchset_files:
+        shutil.move(fpath, data_home)
+    os.removedirs(duplicated_orchset_dir)
 
 
 def validate(data_home=None, silence=False):

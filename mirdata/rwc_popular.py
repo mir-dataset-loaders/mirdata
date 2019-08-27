@@ -19,27 +19,32 @@ METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-p.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030',
+    destination_dir=None,
 )
 DATASET_DIR = 'RWC-Popular'
 ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip',
     checksum='3858aa989535bd7196b3cd07b512b5b6',
+    destination_dir='annotations',
 )
 ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip',
     checksum='f76b3a32701fbd9bf78baa608f692a77',
+    destination_dir='annotations',
 )
 ANNOTATIONS_REMOTE_3 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.CHORD.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip',
     checksum='68379c88bc8ec3f1907b32a3579197c5',
+    destination_dir='annotations',
 )
 ANNOTATIONS_REMOTE_4 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.VOCA_INST.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip',
     checksum='47ded648a496407ef49dba9c8bf80e87',
+    destination_dir='annotations',
 )
 
 
@@ -147,19 +152,6 @@ def download(data_home=None, force_overwrite=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    annotations_path = os.path.join(data_home, 'annotations')
-
-    download_utils.downloader(
-        annotations_path,
-        zip_downloads=[
-            ANNOTATIONS_REMOTE_1,
-            ANNOTATIONS_REMOTE_2,
-            ANNOTATIONS_REMOTE_3,
-            ANNOTATIONS_REMOTE_4,
-        ],
-        force_overwrite=force_overwrite,
-    )
-
     info_message = """
         Unfortunately the audio files of the RWC-Popular dataset are not available
         for download. If you have the RWC-Popular dataset, place the contents into a
@@ -175,7 +167,13 @@ def download(data_home=None, force_overwrite=False):
 
     download_utils.downloader(
         data_home,
-        zip_downloads=[METADATA_REMOTE],
+        zip_downloads=[
+            METADATA_REMOTE,
+            ANNOTATIONS_REMOTE_1,
+            ANNOTATIONS_REMOTE_2,
+            ANNOTATIONS_REMOTE_3,
+            ANNOTATIONS_REMOTE_4,
+        ],
         info_message=info_message,
         force_overwrite=force_overwrite,
     )

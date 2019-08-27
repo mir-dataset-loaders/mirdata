@@ -46,6 +46,7 @@ ID_MAPPING_REMOTE = download_utils.RemoteFileMetadata(
     filename='id_mapping.txt',
     url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
     checksum='81097b587804ce93e56c7a331ba06abc',
+    destination_dir=None,
 )
 
 
