@@ -220,10 +220,10 @@ def untar(tar_path, cleanup=False):
     cleanup: bool, default=False
         If True, remove tarfile after untarring.
     """
-    if tar_path.endswith('tar.gz'):
-        tfile = tarfile.open(tar_path, 'r:gz')
-    else:
-        tfile = tarfile.TarFile(tar_path, 'r')
+    # if tar_path.endswith('tar.gz'):
+    #    tfile = tarfile.open(tar_path, 'r:gz')
+    # else:
+    tfile = tarfile.open(tar_path, 'r')
     tfile.extractall(os.path.dirname(tar_path))
     tfile.close()
     if cleanup:
