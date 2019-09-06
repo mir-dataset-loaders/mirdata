@@ -13,11 +13,6 @@ import requests
 from requests.exceptions import HTTPError
 from tqdm import tqdm
 
-try:
-    from pathlib import Path
-except ImportError:
-    from pathlib2 import Path  # python 2 backport
-
 from mirdata.utils import md5
 
 
