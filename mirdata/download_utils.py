@@ -59,7 +59,8 @@ def downloader(
             Whether to delete the zip/tar file after extracting.
 
     """
-    Path(save_dir).mkdir(exist_ok=True)
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
 
     if zip_downloads is not None:
         for zip_download in zip_downloads:
