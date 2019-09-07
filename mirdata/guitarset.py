@@ -244,17 +244,15 @@ class Track(object):
     def audio_hex(self):
         """Load the audio for the 'hex' version of the GuitarSet Track.
         """
-        raise (NotImplementedError)
-        # audio, sr = librosa.load(self.audio_hex_path, sr=None)
-        # return audio, sr
+        audio, sr = librosa.load(self.audio_hex_path, sr=None, mono=False)
+        return audio, sr
 
     @property
     def audio_hex_cln(self):
         """Load the audio for the 'hex_cln' version of the GuitarSet Track.
         """
-        raise (NotImplementedError)
-        # audio, sr = librosa.load(self.audio_hex_cln_path, sr=None)
-        # return audio, sr
+        audio, sr = librosa.load(self.audio_hex_cln_path, sr=None, mono=False)
+        return audio, sr
 
 
 def download(data_home=None):

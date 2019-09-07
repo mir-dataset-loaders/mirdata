@@ -130,14 +130,12 @@ def test_audio_mono():
     assert y.shape == (44100 * 2,)
 
 
-@pytest.mark.xfail(raises=NotImplementedError)
 def test_audio_hex():
     y, sr = TRACK.audio_hex
     assert sr == 44100
     assert y.shape == (6, int(44100 * 0.5))
 
 
-@pytest.mark.xfail(raises=NotImplementedError)
 def test_audio_hex_cln():
     y, sr = TRACK.audio_hex_cln
     assert sr == 44100
