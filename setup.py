@@ -1,15 +1,10 @@
 """ Setup script for mir_datasets. """
 from setuptools import setup, find_packages
 
-# import imp
-
-# version = imp.load_source(
-#     'mirdata.version', 'mirdata/version.py')
-
 if __name__ == '__main__':
     setup(
         name='mirdata',
-        version='0.0.14',
+        version='0.0.15',
         description='Common loaders for MIR datasets.',
         url='https://github.com/mir-dataset-loaders/mirdata',
         packages=find_packages(exclude=['test', '*.test', '*.test.*']),
