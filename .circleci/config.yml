@@ -8,14 +8,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install wget
-          command: apt-get update && apt-get install -y wget
-      - run:
-          name: Install libsndfile
-          command: apt-get install -y libsndfile1
-      - run:
-          name: Install mp3 packages
-          command: apt-get install -y libsox-fmt-mp3
+          name: Install dependencies
+          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3
       - run:
           name: Install tox
           command: pip install tox
@@ -31,8 +25,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install wget
-          command: apt-get update && apt-get install -y wget
+          name: Install dependencies
+          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3
       - run:
           name: Install tox
           command: pip install tox
@@ -48,8 +42,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install wget
-          command: apt-get update && apt-get install -y wget
+          name: Install dependencies
+          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3
       - run:
           name: Install tox
           command: pip install tox

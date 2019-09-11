@@ -1,11 +1,6 @@
 """ Setup script for mir_datasets. """
 from setuptools import setup, find_packages
 
-# import imp
-
-# version = imp.load_source(
-#     'mirdata.version', 'mirdata/version.py')
-
 if __name__ == '__main__':
     setup(
         name='mirdata',
@@ -18,7 +13,7 @@ if __name__ == '__main__':
         long_description="""Common loaders for MIR datasets.""",
         keywords='mir dataset loader audio',
         license='BSD-3-Clause',
-        install_requires=['tqdm', 'librosa < 0.7.0', 'numpy>=1.16', 'six', 'jams'],
+        install_requires=['tqdm', 'librosa >= 0.7.0', 'numpy>=1.16', 'six', 'jams'],
         extras_require={
             'tests': [
                 'pytest>=4.4.0',
