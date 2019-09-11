@@ -34,7 +34,7 @@ DATASET_DIR = 'Salami'
 ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
     filename='salami-data-public-master.zip',
     url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
-    checksum='b01d6eb5b71cca1f3163fae4b2cd4c61',
+    checksum='f88b3455f1f2443458d094f603c0c1c7',
     destination_dir=None,
 )
 

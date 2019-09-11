@@ -252,7 +252,7 @@ def _load_beats(beats_path):
         np.array(beat_positions), np.array(beat_times)
     )
 
-    return utils.BeatData(beat_times, beat_positions)
+    return utils.BeatData(beat_times, beat_positions.astype(int))
 
 
 def _load_metadata(data_home):
