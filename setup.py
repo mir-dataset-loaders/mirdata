@@ -1,11 +1,6 @@
 """ Setup script for mir_datasets. """
 from setuptools import setup, find_packages
 
-# import imp
-
-# version = imp.load_source(
-#     'mirdata.version', 'mirdata/version.py')
-
 if __name__ == '__main__':
     setup(
         name='mirdata',

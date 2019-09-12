@@ -13,11 +13,6 @@ import requests
 from requests.exceptions import HTTPError
 from tqdm import tqdm
 
-try:
-    from pathlib import Path
-except ImportError:
-    from pathlib2 import Path  # python 2 backport
-
 from mirdata.utils import md5
 
 
@@ -59,7 +54,8 @@ def downloader(
             Whether to delete the zip/tar file after extracting.
 
     """
-    Path(save_dir).mkdir(exist_ok=True)
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
 
     if zip_downloads is not None:
         for zip_download in zip_downloads:
@@ -220,10 +216,7 @@ def untar(tar_path, cleanup=False):
     cleanup: bool, default=False
         If True, remove tarfile after untarring.
     """
-    if tar_path.endswith('tar.gz'):
-        tfile = tarfile.open(tar_path, 'r:gz')
-    else:
-        tfile = tarfile.TarFile(tar_path, 'r')
+    tfile = tarfile.open(tar_path, 'r')
     tfile.extractall(os.path.dirname(tar_path))
     tfile.close()
     if cleanup:
