@@ -57,7 +57,7 @@ def make_medley_solos_db_index(medley_solos_db_data_path):
             audio_checksum = md5(audio_path)
             medley_solos_db_index[wav_name] = {
                 "audio": (
-                    audio_path,
+                    wav_name,
                     audio_checksum
                 ),
             }
