@@ -47,14 +47,14 @@ def make_medley_solos_db_index(medley_solos_db_data_path):
         csv_reader = csv.reader(csv_file)
         next(csv_reader)
         for row in csv_reader:
-            subset, instrument, instrument_id, track_id, uuid4 = row
+            subset, _, instrument_id, _, uuid4 = row
             wav_name = "_".join([
                 "Medley-solos-DB",
                 subset + "-" + str(instrument_id),
                 uuid4]) + ".wav.wav"
             audio_path = os.path.join(medley_solos_db_data_path, wav_name)
             audio_checksum = md5(audio_path)
-            medley_solos_db_index[track_id] = {
+            medley_solos_db_index[wav_name] = {
                 "audio": (
                     audio_path,
                     audio_checksum
