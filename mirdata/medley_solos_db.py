@@ -147,3 +147,12 @@ def download(data_home=None):
         ],
         cleanup=True,
     )
+
+
+def track_ids():
+    """Return track ids
+    Returns:
+        (list): A list of track ids
+    """
+    return list(INDEX.keys())
+
