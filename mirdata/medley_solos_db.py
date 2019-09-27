@@ -75,8 +75,8 @@ class Track(object):
     Attributes:
         instrument (str): instrument encoded by its English name
         instrument_id (int): instrument encoded as an integer
+        song_id (int): song encoded as an integer
         subset (str): either equal to 'train', 'validation', or 'test'
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -102,23 +102,26 @@ class Track(object):
             self._track_metadata = {
                 'instrument': None,
                 'instrument_id': None,
+                'song': None,
                 'subset': None,
             }
 
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.instrument = self._track_metadata['instrument']
         self.instrument_id = self._track_metadata['instrument_id']
+        self.song_id = self._track_metadata['song_id']
         self.subset = self._track_metadata['subset']
 
     def __repr__(self):
         repr_string = (
             "Medley-solos-DB Track(track_id={}, audio_path={}, "
-            + "instrument={}, subset={})"
+            + "instrument={}, song_id={}, subset={})"
         )
         return repr_string.format(
             self.track_id,
             self.audio_path,
             self.instrument,
+            self.song_id,
             self.subset
         )
 
