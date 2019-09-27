@@ -45,6 +45,7 @@ def make_medley_solos_db_index(medley_solos_db_data_path):
 
     with open(anno_path, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
+        next(csv_reader)
         for row in csv_reader:
             subset, instrument, instrument_id, track_id, uuid4 = row
             wav_name = "_".join([
