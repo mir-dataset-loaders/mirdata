@@ -174,3 +174,21 @@ def load(data_home=None, silence_validator=False):
         medley_solos_db_data[key] = Track(key, data_home=data_home)
     return medley_solos_db_data
 
+
+def cite():
+    """Print the reference"""
+
+    cite_data = """
+=========== MLA ===========
+Lostanlen, Vincent and Cella, Carmine Emanuele.
+"Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition."
+In Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR). 2016.
+========== Bibtex ==========
+@inproceedings{lostanlen2019ismir,
+    title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
+    author={Lostanlen, Vincent and Cella, Carmine Emanuele},
+    booktitle={International Society of Music Information Retrieval (ISMIR)},
+    year={2016}
+}
+"""
+    print(cite_data)
