@@ -13,6 +13,7 @@ from collections import namedtuple
 import hashlib
 import os
 import json
+import jams
 
 
 MIR_DATASETS_DIR = os.path.join(os.getenv('HOME', '/tmp'), 'mir_datasets')
@@ -164,3 +165,72 @@ class cached_property(object):
             return self
         value = obj.__dict__[self.func.__name__] = self.func(obj)
         return value
+
+
+def to_jams(track):
+
+    # jam object per track
+    jam = jams.JAMS()
+
+    # metadata
+    if hasattr(track, 'artist'):
+        jam.file_metadata.artist = track.artist
+    if hasattr(track, 'title'):
+        jam.file_metadata.title = track.title
+    if hasattr(track, 'duration_sec'):
+        jam.file_metadata.duration = track.duration_sec
+
+    # converting annotations
+
+    # beats
+    if hasattr(track, 'beats'):
+        jannot = jams.Annotation(namespace='beat')
+        jannot.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+        for t, p in zip(track.beats.beat_times, track.beats.beat_positions):
+            jannot.append(time=t, duration=0.0, value=p)
+        jam.annotations.append(jannot)
+
+    # sections
+    if hasattr(track, 'sections'):
+        jannot = jams.Annotation(namespace='segment')
+        jannot.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+        for beg, end, seg in zip(track.sections.start_times,
+                                 track.sections.end_times,
+                                 track.sections.sections):
+            jannot.append(time=beg, duration=end - beg, value=seg)
+        jam.annotations.append(jannot)
+
+        # sections with multiple annotators and multiple level annotations
+    if hasattr(track, 'sections_annotator_1_uppercase') and (track.sections_annotator_1_uppercase != None):
+        jannot = jams.Annotation(namespace='multi_segment')
+        jannot.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+        jannot.annotation_metadata = jams.AnnotationMetadata(annotator={'name': '1'})
+        # upper level
+        for beg, end, seg in zip(track.sections_annotator_1_uppercase.start_times,
+                                 track.sections_annotator_1_uppercase.end_times,
+                                 track.sections_annotator_1_uppercase.sections):
+            jannot.append(time=beg, duration=end - beg, value={'label': seg, 'level': 0})
+        # lower level
+        for beg, end, seg in zip(track.sections_annotator_1_lowercase.start_times,
+                                 track.sections_annotator_1_lowercase.end_times,
+                                 track.sections_annotator_1_lowercase.sections):
+            jannot.append(time=beg, duration=end - beg, value={'label': seg, 'level': 0})
+        jam.annotations.append(jannot)
+
+    if hasattr(track, 'sections_annotator_2_uppercase') and (track.sections_annotator_2_uppercase != None):
+        jannot = jams.Annotation(namespace='multi_segment')
+        jannot.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+        jannot.annotation_metadata = jams.AnnotationMetadata(annotator={'name': '2'})
+        # upper level
+        for beg, end, seg in zip(track.sections_annotator_2_uppercase.start_times,
+                                 track.sections_annotator_2_uppercase.end_times,
+                                 track.sections_annotator_2_uppercase.sections):
+            jannot.append(time=beg, duration=end - beg, value={'label': seg, 'level': 1})
+        # lower level
+        for beg, end, seg in zip(track.sections_annotator_2_lowercase.start_times,
+                                 track.sections_annotator_2_lowercase.end_times,
+                                 track.sections_annotator_2_lowercase.sections):
+            jannot.append(time=beg, duration=end - beg, value={'label': seg, 'level': 1})
+        jam.annotations.append(jannot)
+
+    return jam
