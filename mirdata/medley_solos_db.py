@@ -156,3 +156,21 @@ def track_ids():
     """
     return list(INDEX.keys())
 
+
+def load(data_home=None, silence_validator=False):
+    """Load Medley-solos-DB
+    Args:
+        data_home (str): Local path where Medley-solos-DB is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+    Returns:
+        (dict): {`track_id`: track data}
+    """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    validate(data_home, silence=silence_validator)
+    medley_solos_db_data = {}
+    for key in INDEX.keys():
+        medley_solos_db_data[key] = Track(key, data_home=data_home)
+    return medley_solos_db_data
+
