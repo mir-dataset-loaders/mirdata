@@ -214,6 +214,13 @@ def _reload_metadata(data_home):
     METADATA = _load_metadata(data_home=data_home)
 
 
+def _load_metadata(data_home):
+    metadata_path = os.path.join(data_home, "Medley-solos-DB_metadata.csv")
+
+    if not os.path.exists(metadata_path):
+        logging.info('Metadata file {} not found.'.format(metadata_path))
+        return None
+
 def cite():
     """Print the reference"""
 
