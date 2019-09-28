@@ -209,6 +209,11 @@ def load(data_home=None, silence_validator=False):
     return medley_solos_db_data
 
 
+def _reload_metadata(data_home):
+    global METADATA
+    METADATA = _load_metadata(data_home=data_home)
+
+
 def cite():
     """Print the reference"""
 
