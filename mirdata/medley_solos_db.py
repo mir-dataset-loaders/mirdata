@@ -180,6 +180,17 @@ def validate(data_home=None, silence=False):
         INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
+
+
+def track_ids():
+    """Return track ids
+
+    Returns:
+        (list): A list of track ids
+    """
+    return list(INDEX.keys())
+    
+
 def load(data_home=None, silence_validator=False):
     """Load Medley-solos-DB
     Args:
