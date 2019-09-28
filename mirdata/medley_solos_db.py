@@ -102,8 +102,9 @@ class Track(object):
             self._track_metadata = {
                 'instrument': None,
                 'instrument_id': None,
-                'song': None,
+                'song_id': None,
                 'subset': None,
+                'track_id': None
             }
 
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
