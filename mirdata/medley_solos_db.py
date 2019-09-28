@@ -161,6 +161,25 @@ def track_ids():
     return list(INDEX.keys())
 
 
+def validate(data_home=None, silence=False):
+    """Validate if the stored dataset is a valid version
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally
+        invalid_checksums (list): List of file paths that file exists in the dataset
+            index but has a different checksum compare to the reference checksum
+
+    """
+
+    missing_files, invalid_checksums = utils.validator(
+        INDEX, data_home, silence=silence
+    )
+    return missing_files, invalid_checksums
 def load(data_home=None, silence_validator=False):
     """Load Medley-solos-DB
     Args:
