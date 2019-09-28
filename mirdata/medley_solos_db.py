@@ -51,7 +51,7 @@ DATASET_DIR = 'Medley-solos-DB'
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename='Medley-solos-DB_metadata.csv',
     url='https://zenodo.org/record/2582103/files/Medley-solos-DB_metadata.csv?download=1',
-    checksum='5da9775d2b9bbcc351eccb97400314746',
+    checksum='5da9775d2b9bbcc351eccb9740031474',
     destination_dir='annotation',
 )
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
