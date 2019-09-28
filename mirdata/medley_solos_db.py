@@ -221,6 +221,24 @@ def _load_metadata(data_home):
         logging.info('Metadata file {} not found.'.format(metadata_path))
         return None
 
+    metadata_index = {}
+    with open(metadata_path, 'r') as fhandle:
+        csv_reader = csv.reader(fhandle, delimiter=',')
+        next(csv_reader)
+        for row in csv_reader:
+            subset, instrument_str, instrument_id, song_id, track_id = row
+            metadata_index[str(track_id)] = {
+                "subset": str(subset),
+                "instrument": str(instrument_str),
+                "instrument_id": int(instrument_id),
+                "song_id": int(song_id)
+            }
+
+    metadata_index['data_home'] = data_home
+
+    return metadata_index
+
+
 def cite():
     """Print the reference"""
 
