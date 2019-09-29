@@ -35,10 +35,8 @@ from __future__ import division
 from __future__ import print_function
 
 import csv
-import json
 import librosa
 import logging
-import numpy as np
 import os
 
 import mirdata.utils as utils
@@ -167,6 +165,8 @@ def validate(data_home=None, silence=False):
             index but has a different checksum compare to the reference checksum
 
     """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
         INDEX, data_home, silence=silence
@@ -174,16 +174,7 @@ def validate(data_home=None, silence=False):
     return missing_files, invalid_checksums
 
 
-def track_ids():
-    """Return track ids
-
-    Returns:
-        (list): A list of track ids
-    """
-    return list(INDEX.keys())
-
-
-def load(data_home=None, silence_validator=False):
+def load(data_home=None):
     """Load Medley-solos-DB
     Args:
         data_home (str): Local path where Medley-solos-DB is stored.
@@ -194,7 +185,6 @@ def load(data_home=None, silence_validator=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home, silence=silence_validator)
     medley_solos_db_data = {}
     for key in INDEX.keys():
         medley_solos_db_data[key] = Track(key, data_home=data_home)

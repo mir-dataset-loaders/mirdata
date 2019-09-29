@@ -205,6 +205,8 @@ def validate(data_home=None, silence=False):
             index but has a different checksum compare to the reference checksum
 
     """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
         INDEX, data_home, silence=silence
@@ -221,7 +223,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None, silence_validator=False):
+def load(data_home=None):
     """Load ORCHSET dataset
 
     Args:
@@ -236,7 +238,6 @@ def load(data_home=None, silence_validator=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home, silence=silence_validator)
     orchset_data = {}
     for key in track_ids():
         orchset_data[key] = Track(key, data_home=data_home)

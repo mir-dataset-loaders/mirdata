@@ -89,11 +89,11 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/RWC-Popular'
-    rwc_popular_data = rwc_popular.load(data_home=data_home, silence_validator=True)
+    rwc_popular_data = rwc_popular.load(data_home=data_home)
     assert type(rwc_popular_data) is dict
     assert len(rwc_popular_data.keys()) == 100
 
-    rwc_popular_data_default = rwc_popular.load(silence_validator=True)
+    rwc_popular_data_default = rwc_popular.load()
     assert type(rwc_popular_data_default) is dict
     assert len(rwc_popular_data_default.keys()) == 100
 
@@ -202,6 +202,11 @@ def test_load_metadata():
 
     metadata_none = rwc_popular._load_metadata('asdf/asdf')
     assert metadata_none is None
+
+
+def test_validate():
+    rwc_popular.validate()
+    rwc_popular.validate(silence=True)
 
 
 def test_cite():

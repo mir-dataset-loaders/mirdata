@@ -174,7 +174,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None, silence_validator=False):
+def load(data_home=None):
     """Load MedleyDB pitch dataset
 
     Args:
@@ -188,7 +188,6 @@ def load(data_home=None, silence_validator=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home, silence=silence_validator)
     medleydb_pitch_data = {}
     for key in track_ids():
         medleydb_pitch_data[key] = Track(key, data_home=data_home)

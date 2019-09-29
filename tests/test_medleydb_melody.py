@@ -85,13 +85,11 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/MedleyDB-Melody'
-    medleydb_melody_data = medleydb_melody.load(
-        data_home=data_home, silence_validator=True
-    )
+    medleydb_melody_data = medleydb_melody.load(data_home=data_home)
     assert type(medleydb_melody_data) is dict
     assert len(medleydb_melody_data.keys()) is 108
 
-    medleydb_melody_data_default = medleydb_melody.load(silence_validator=True)
+    medleydb_melody_data_default = medleydb_melody.load()
     assert type(medleydb_melody_data_default) is dict
     assert len(medleydb_melody_data_default.keys()) is 108
 
@@ -194,31 +192,10 @@ def test_load_metadata():
     assert metadata_none is None
 
 
+def test_validate():
+    medleydb_melody.validate()
+    medleydb_melody.validate(silence=True)
+
+
 def test_cite():
     medleydb_melody.cite()
-
-
-@pytest.fixture
-def mock_validate(mocker):
-    return mocker.patch.object(medleydb_melody, 'validate')
-
-
-@pytest.fixture
-def data_home(tmpdir):
-    return str(tmpdir)
-
-
-def test_validate_invalid(data_home, mocker, mock_validator):
-    mock_validator.return_value = (True, True)
-
-    missing_files, invalid_checksums = medleydb_melody.validate(data_home)
-    assert missing_files and invalid_checksums
-    mock_validator.assert_called_once()
-
-
-def test_validate_valid(data_home, mocker, mock_validator):
-    mock_validator.return_value = (False, False)
-
-    missing_files, invalid_checksums = medleydb_melody.validate(data_home)
-    assert not (missing_files or invalid_checksums)
-    mock_validator.assert_called_once()

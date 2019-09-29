@@ -150,12 +150,12 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/Salami'
-    salami_data = salami.load(data_home=data_home, silence_validator=True)
+    salami_data = salami.load(data_home=data_home)
     assert type(salami_data) is dict
     assert len(salami_data.keys()) == 1359
 
     # data home default
-    salami_data_default = salami.load(silence_validator=True)
+    salami_data_default = salami.load()
     assert type(salami_data_default) is dict
     assert len(salami_data_default.keys()) == 1359
 
@@ -217,31 +217,10 @@ def test_load_metadata():
     assert none_metadata is None
 
 
+def test_validate():
+    salami.validate()
+    salami.validate(silence=True)
+
+
 def test_cite():
     salami.cite()
-
-
-@pytest.fixture
-def mock_validate(mocker):
-    return mocker.patch.object(salami, 'validate')
-
-
-@pytest.fixture
-def data_home(tmpdir):
-    return str(tmpdir)
-
-
-def test_validate_invalid(data_home, mocker, mock_validator):
-    mock_validator.return_value = (True, True)
-
-    missing_files, invalid_checksums = salami.validate(data_home)
-    assert missing_files and invalid_checksums
-    mock_validator.assert_called_once()
-
-
-def test_validate_valid(data_home, mocker, mock_validator):
-    mock_validator.return_value = (False, False)
-
-    missing_files, invalid_checksums = salami.validate(data_home)
-    assert not (missing_files or invalid_checksums)
-    mock_validator.assert_called_once()

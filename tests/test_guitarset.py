@@ -149,13 +149,18 @@ def test_track_ids():
 
 
 def test_load():
-    guitarset_data = guitarset.load(data_home=TEST_DATA_HOME, silence_validator=True)
+    guitarset_data = guitarset.load(data_home=TEST_DATA_HOME)
     assert isinstance(guitarset_data, dict)
     assert len(guitarset_data.keys()) == 360
 
-    guitarset_data_default = guitarset.load(silence_validator=True)
+    guitarset_data_default = guitarset.load()
     assert isinstance(guitarset_data_default, dict)
     assert len(guitarset_data_default.keys()) == 360
+
+
+def test_validate():
+    guitarset.validate()
+    guitarset.validate(silence=True)
 
 
 def test_cite():

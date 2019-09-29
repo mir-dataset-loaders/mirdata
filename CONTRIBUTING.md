@@ -276,7 +276,7 @@ def track_ids():
 
 
 # -- keep this function as it is
-def load(data_home=None, silence_validator=False):
+def load(data_home=None):
     """Load Example dataset
     Args:
         data_home (str): Local path where the dataset is stored.
@@ -287,7 +287,6 @@ def load(data_home=None, silence_validator=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home, silence=silence_validator)
     data = {}
     for key in INDEX.keys():
         data[key] = Track(key, data_home=data_home)

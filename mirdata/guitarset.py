@@ -306,7 +306,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None, silence_validator=False):
+def load(data_home=None):
     """Load GuitarSet
     Args:
         data_home (str): Local path where GuitarSet is stored.
@@ -317,7 +317,6 @@ def load(data_home=None, silence_validator=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home, silence=silence_validator)
     guitarset_data = {}
     for key in INDEX.keys():
         guitarset_data[key] = Track(key, data_home=data_home)
