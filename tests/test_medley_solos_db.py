@@ -20,6 +20,37 @@ def test_track():
     with pytest.raises(ValueError):
         medley_solos_db.Track('asdfasdf', data_home=data_home)
 
+    track = medley_solos_db.Track(
+        'd07b1fc0-567d-52c2-fef4-239f31c9d40e', data_home=data_home)
+
+    assert track.track_id == 'd07b1fc0-567d-52c2-fef4-239f31c9d40e'
+    assert track._data_home == data_home
+    assert track._track_paths == {
+        'audio': ['audio/Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav',
+        '53ed28731399b67425775be598b50d1c']
+    }
+    assert (
+        track.audio_path
+        == 'tests/resources/mir_datasets/Medley-solos-DB/audio/'
+        + 'Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav')
+    assert track.instrument == 'flute'
+    assert track.instrument_id == 3
+    assert track.song_id == 210
+    assert track.subset == "validation"
+
+    y, sr = track.audio
+    assert y.shape == (65536,)
+    assert sr == 22050
+
+    repr_string = (
+        'Medley-solos-DB Track(track_id=d07b1fc0-567d-52c2-fef4-239f31c9d40e, '
+        + 'audio_path=tests/resources/mir_datasets/Medley-solos-DB/audio/'
+        + 'Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav, '
+        + 'instrument=flute, song_id=210, subset=validation)'
+    )
+    assert track.__repr__() == repr_string
+
+
 
 def test_track_ids():
     track_ids = medley_solos_db.track_ids()
