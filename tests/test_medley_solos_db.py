@@ -6,6 +6,8 @@ import os
 import pytest
 
 from mirdata import medley_solos_db, utils
+from tests.test_utils import DEFAULT_DATA_HOME
+
 
 
 def test_track():
@@ -21,7 +23,7 @@ def test_track():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/Medley-solos-DB'
-    msdb_data = orchset.load(data_home=data_home, silence_validator=True)
+    msdb_data = medley_solos_db.load(data_home=data_home)
     assert type(msdb_data) is dict
     assert len(msdb_data.keys()) == 1
 
