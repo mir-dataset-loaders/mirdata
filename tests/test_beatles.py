@@ -85,11 +85,11 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/Beatles'
-    beatles_data = beatles.load(data_home=data_home, silence_validator=True)
+    beatles_data = beatles.load(data_home=data_home)
     assert type(beatles_data) is dict
     assert len(beatles_data.keys()) == 180
 
-    beatles_data_default = beatles.load(silence_validator=True)
+    beatles_data_default = beatles.load()
     assert type(beatles_data_default) is dict
     assert len(beatles_data_default.keys()) == 180
 
@@ -195,31 +195,10 @@ def test_fix_newpoint():
     assert np.array_equal(new_beat_positions3, np.array(['1', '2', '3']))
 
 
+def test_validate():
+    beatles.validate()
+    beatles.validate(silence=True)
+
+
 def test_cite():
     beatles.cite()
-
-
-@pytest.fixture
-def mock_validate(mocker):
-    return mocker.patch.object(beatles, 'validate')
-
-
-@pytest.fixture
-def data_home(tmpdir):
-    return str(tmpdir)
-
-
-def test_validate_invalid(data_home, mocker, mock_validator):
-    mock_validator.return_value = (True, True)
-
-    missing_files, invalid_checksums = beatles.validate(data_home)
-    assert missing_files and invalid_checksums
-    mock_validator.assert_called_once()
-
-
-def test_validate_valid(data_home, mocker, mock_validator):
-    mock_validator.return_value = (False, False)
-
-    missing_files, invalid_checksums = beatles.validate(data_home)
-    assert not (missing_files or invalid_checksums)
-    mock_validator.assert_called_once()

@@ -79,11 +79,11 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/iKala'
-    ikala_data = ikala.load(data_home=data_home, silence_validator=True)
+    ikala_data = ikala.load(data_home=data_home)
     assert type(ikala_data) is dict
     assert len(ikala_data.keys()) == 252
 
-    ikala_data_default = ikala.load(silence_validator=True)
+    ikala_data_default = ikala.load()
     assert type(ikala_data_default) is dict
     assert len(ikala_data_default.keys()) == 252
 
@@ -160,6 +160,11 @@ def test_load_metadata():
 
     metadata_none = ikala._load_metadata('asdf/asdf')
     assert metadata_none is None
+
+
+def test_validate():
+    ikala.validate()
+    ikala.validate(silence=True)
 
 
 def test_cite():
