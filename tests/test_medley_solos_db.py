@@ -35,5 +35,4 @@ def test_load():
 
 
 def test_cite():
-    cite_str = orchset.cite()
-    assert len(cite_str) > 0
+    cite_str = medley_solos_db.cite()
