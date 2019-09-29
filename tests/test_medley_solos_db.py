@@ -23,9 +23,9 @@ def test_track():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/Medley-solos-DB'
-    msdb_data = medley_solos_db.load(data_home=data_home)
+    msdb_data = medley_solos_db.load(data_home=data_home, silence_validator=True)
     assert type(msdb_data) is dict
-    assert len(msdb_data.keys()) == 1
+    assert len(msdb_data.keys()) == 21571
 
 
 def test_cite():
