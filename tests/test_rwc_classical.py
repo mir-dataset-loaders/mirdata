@@ -78,11 +78,11 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/RWC-Classical'
-    rwc_classical_data = rwc_classical.load(data_home=data_home, silence_validator=True)
+    rwc_classical_data = rwc_classical.load(data_home=data_home)
     assert type(rwc_classical_data) is dict
     assert len(rwc_classical_data.keys()) == 50
 
-    rwc_classical_data_default = rwc_classical.load(silence_validator=True)
+    rwc_classical_data_default = rwc_classical.load()
     assert type(rwc_classical_data_default) is dict
     assert len(rwc_classical_data_default.keys()) == 50
 
@@ -203,6 +203,11 @@ def test_load_metadata():
 
     metadata_none = rwc_classical._load_metadata('asdf/asdf')
     assert metadata_none is None
+
+
+def test_validate():
+    rwc_classical.validate()
+    rwc_classical.validate(silence=True)
 
 
 def test_cite():
