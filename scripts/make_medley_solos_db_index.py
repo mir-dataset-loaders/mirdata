@@ -53,7 +53,7 @@ def make_medley_solos_db_index(medley_solos_db_data_path):
             wav_name = "_".join([
                 "Medley-solos-DB",
                 subset + "-" + str(instrument_id),
-                uuid4]) + ".wav.wav"
+                uuid4]) + ".wav"
             audio_path = os.path.join(medley_solos_db_data_path, wav_name)
             audio_checksum = md5(audio_path)
             medley_solos_db_index[uuid4] = {
