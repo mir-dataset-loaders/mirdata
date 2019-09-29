@@ -91,7 +91,7 @@ class Track(object):
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
-        self._track_path = INDEX[track_id]
+        self._track_paths = INDEX[track_id]
 
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
