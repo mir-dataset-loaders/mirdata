@@ -129,7 +129,7 @@ class Track(object):
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=None, mono=True)
+        return librosa.load(self.audio_path, sr=22050, mono=True)
 
 
 def download(data_home=None):
