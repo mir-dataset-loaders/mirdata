@@ -50,14 +50,14 @@ DATASET_DIR = 'Medley-solos-DB'
 
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename='Medley-solos-DB_metadata.csv',
-    url='https://zenodo.org/record/2582103/files/Medley-solos-DB_metadata.csv?download=1',
-    checksum='5da9775d2b9bbcc351eccb9740031474',
+    url='https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1',
+    checksum='fda6a589c56785f2195c9227809c521a',
     destination_dir='annotation',
 )
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
-    filename='Medley-solos-DB.zip',
-    url='https://zenodo.org/record/2582103/files/Medley-solos-DB.zip?download=1',
-    checksum='5bfdd8681ff791253f76a2fb9d2420ba',
+    filename='Medley-solos-DB.tar.gz',
+    url='https://zenodo.org/record/3464194/files/Medley-solos-DB.tar.gz?download=1',
+    checksum='f5facf398793ef5c1f80c013afdf3e5f',
     destination_dir='audio',
 )
 
@@ -143,7 +143,7 @@ def download(data_home=None):
 
     download_utils.downloader(
         data_home,
-        zip_downloads=[
+        tar_downloads=[
             AUDIO_REMOTE
         ],
         file_downloads=[
@@ -189,7 +189,7 @@ def track_ids():
         (list): A list of track ids
     """
     return list(INDEX.keys())
-    
+
 
 def load(data_home=None, silence_validator=False):
     """Load Medley-solos-DB
