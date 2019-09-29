@@ -44,21 +44,21 @@ import os
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
-INDEX = utils.load_json_index('medley_solos_db_index.json')
-DATASET_DIR = 'Medley-solos-DB'
+INDEX = utils.load_json_index("medley_solos_db_index.json")
+DATASET_DIR = "Medley-solos-DB"
 
 
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
-    filename='Medley-solos-DB_metadata.csv',
-    url='https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1',
-    checksum='fda6a589c56785f2195c9227809c521a',
-    destination_dir='annotation',
+    filename="Medley-solos-DB_metadata.csv",
+    url="https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1",
+    checksum="fda6a589c56785f2195c9227809c521a",
+    destination_dir="annotation",
 )
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
-    filename='Medley-solos-DB.tar.gz',
-    url='https://zenodo.org/record/3464194/files/Medley-solos-DB.tar.gz?download=1',
-    checksum='f5facf398793ef5c1f80c013afdf3e5f',
-    destination_dir='audio',
+    filename="Medley-solos-DB.tar.gz",
+    url="https://zenodo.org/record/3464194/files/Medley-solos-DB.tar.gz?download=1",
+    checksum="f5facf398793ef5c1f80c013afdf3e5f",
+    destination_dir="audio",
 )
 
 METADATA = None
@@ -82,7 +82,7 @@ class Track(object):
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError(
-                '{} is not a valid track ID in Medley-solos-DB'.format(track_id)
+                "{} is not a valid track ID in Medley-solos-DB".format(track_id)
             )
 
         self.track_id = track_id
@@ -93,26 +93,25 @@ class Track(object):
         self._data_home = data_home
         self._track_paths = INDEX[track_id]
 
-        if METADATA is None or METADATA['data_home'] != data_home:
+        if METADATA is None or METADATA["data_home"] != data_home:
             _reload_metadata(data_home)
 
         if METADATA is not None and track_id in METADATA:
             self._track_metadata = METADATA[track_id]
         else:
             self._track_metadata = {
-                'instrument': None,
-                'instrument_id': None,
-                'song_id': None,
-                'subset': None,
-                'track_id': None
+                "instrument": None,
+                "instrument_id": None,
+                "song_id": None,
+                "subset": None,
+                "track_id": None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
-        self.instrument = self._track_metadata['instrument']
-        self.instrument_id = self._track_metadata['instrument_id']
-        self.song_id = self._track_metadata['song_id']
-        self.subset = self._track_metadata['subset']
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.instrument = self._track_metadata["instrument"]
+        self.instrument_id = self._track_metadata["instrument_id"]
+        self.song_id = self._track_metadata["song_id"]
+        self.subset = self._track_metadata["subset"]
 
     def __repr__(self):
         repr_string = (
@@ -120,11 +119,7 @@ class Track(object):
             + "instrument={}, song_id={}, subset={})"
         )
         return repr_string.format(
-            self.track_id,
-            self.audio_path,
-            self.instrument,
-            self.song_id,
-            self.subset
+            self.track_id, self.audio_path, self.instrument, self.song_id, self.subset
         )
 
     @property
@@ -144,12 +139,8 @@ def download(data_home=None):
 
     download_utils.downloader(
         data_home,
-        tar_downloads=[
-            AUDIO_REMOTE
-        ],
-        file_downloads=[
-            ANNOTATION_REMOTE
-        ],
+        tar_downloads=[AUDIO_REMOTE],
+        file_downloads=[ANNOTATION_REMOTE],
         cleanup=True,
     )
 
@@ -217,15 +208,16 @@ def _reload_metadata(data_home):
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(
-        data_home, "annotation", "Medley-solos-DB_metadata.csv")
+        data_home, "annotation", "Medley-solos-DB_metadata.csv"
+    )
 
     if not os.path.exists(metadata_path):
-        logging.info('Metadata file {} not found.'.format(metadata_path))
+        logging.info("Metadata file {} not found.".format(metadata_path))
         return None
 
     metadata_index = {}
-    with open(metadata_path, 'r') as fhandle:
-        csv_reader = csv.reader(fhandle, delimiter=',')
+    with open(metadata_path, "r") as fhandle:
+        csv_reader = csv.reader(fhandle, delimiter=",")
         next(csv_reader)
         for row in csv_reader:
             subset, instrument_str, instrument_id, song_id, track_id = row
@@ -233,10 +225,10 @@ def _load_metadata(data_home):
                 "subset": str(subset),
                 "instrument": str(instrument_str),
                 "instrument_id": int(instrument_id),
-                "song_id": int(song_id)
+                "song_id": int(song_id),
             }
 
-    metadata_index['data_home'] = data_home
+    metadata_index["data_home"] = data_home
 
     return metadata_index
 
