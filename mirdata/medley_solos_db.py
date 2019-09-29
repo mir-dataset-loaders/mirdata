@@ -216,7 +216,8 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "Medley-solos-DB_metadata.csv")
+    metadata_path = os.path.join(
+        data_home, "annotation", "Medley-solos-DB_metadata.csv")
 
     if not os.path.exists(metadata_path):
         logging.info('Metadata file {} not found.'.format(metadata_path))
