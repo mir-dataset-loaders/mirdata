@@ -107,7 +107,8 @@ class Track(object):
                 'track_id': None
             }
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(
+            self._data_home, self._track_paths['audio'][0])
         self.instrument = self._track_metadata['instrument']
         self.instrument_id = self._track_metadata['instrument_id']
         self.song_id = self._track_metadata['song_id']
