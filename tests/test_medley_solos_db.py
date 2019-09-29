@@ -7,6 +7,18 @@ import pytest
 
 from mirdata import medley_solos_db, utils
 
+
+def test_track():
+    # test data home None
+    track_default = medley_solos_db.Track('d07b1fc0-567d-52c2-fef4-239f31c9d40e')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'Medley-solos-DB')
+
+    data_home = 'tests/resources/mir_datasets/Medley-solos-DB'
+
+    with pytest.raises(ValueError):
+        orchset.Track('asdfasdf', data_home=data_home)
+
+
 def test_load():
     data_home = 'tests/resources/mir_datasets/Medley-solos-DB'
     msdb_data = orchset.load(data_home=data_home, silence_validator=True)
