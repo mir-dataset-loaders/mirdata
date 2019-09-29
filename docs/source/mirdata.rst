@@ -54,6 +54,16 @@ mirdata.medleydb\_pitch
    :undoc-members:
    :show-inheritance:
 
+
+mirdata.medley_solos_db
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.medley_solos_db
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 mirdata.orchset
 ^^^^^^^^^^^^^^^
 
