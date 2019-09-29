@@ -18,7 +18,7 @@ def test_track():
     data_home = 'tests/resources/mir_datasets/Medley-solos-DB'
 
     with pytest.raises(ValueError):
-        orchset.Track('asdfasdf', data_home=data_home)
+        medley_solos_db.Track('asdfasdf', data_home=data_home)
 
 
 def test_load():
