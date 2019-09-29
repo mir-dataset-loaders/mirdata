@@ -21,6 +21,12 @@ def test_track():
         medley_solos_db.Track('asdfasdf', data_home=data_home)
 
 
+def test_track_ids():
+    track_ids = medley_solos_db.track_ids()
+    assert type(track_ids) is list
+    assert len(track_ids) == 21571
+
+
 def test_load():
     data_home = 'tests/resources/mir_datasets/Medley-solos-DB'
     msdb_data = medley_solos_db.load(data_home=data_home, silence_validator=True)
