@@ -120,10 +120,10 @@ class Track(object):
             + "title={}, artist={}, duration_sec={}, annotator_1_id={}, "
             + "annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, "
             + "broad_genre={}, genre={}, "
-            + "sections_annotator_1_uppercase=SectionData('start_times', 'end_times', 'sections'), "
-            + "sections_annotator_1_lowercase=SectionData('start_times', 'end_times', 'sections'), "
-            + "sections_annotator_2_uppercase=SectionData('start_times', 'end_times', 'sections'), "
-            + "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
+            + "sections_annotator_1_uppercase=SectionData('intervals', 'labels'), "
+            + "sections_annotator_1_lowercase=SectionData('intervals', 'labels'), "
+            + "sections_annotator_2_uppercase=SectionData('intervals', 'labels'), "
+            + "sections_annotator_2_lowercase=SectionData('intervals', 'labels'))"
         )
         return repr_string.format(
             self.track_id,
@@ -206,7 +206,7 @@ def download(data_home=None, force_overwrite=False):
         for download. If you have the Salami dataset, place the contents into a
         folder called Salami with the following structure:
             > Salami/
-                > salami-data-public-master/
+                > salami-data-public-hierarchy-corrections/
                 > audio/
         and copy the Salami folder to {}
     """.format(
@@ -291,17 +291,13 @@ def _load_sections(sections_path):
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
-    return utils.SectionData(
-        np.array(times_revised[:-1]),
-        np.array(times_revised)[1:],
-        np.array(secs_revised)[:-1],
-    )
-
+    return utils.SectionData(np.array([times_revised[:-1], times_revised[1:]]).T,
+                             list(secs_revised[:-1]))
 
 def _load_metadata(data_home):
 
     metadata_path = os.path.join(
-        data_home, os.path.join('salami-data-public-master', 'metadata', 'metadata.csv')
+        data_home, os.path.join('salami-data-public-hierarchy-corrections', 'metadata', 'metadata.csv')
     )
 
     if not os.path.exists(metadata_path):
@@ -312,19 +308,22 @@ def _load_metadata(data_home):
         reader = csv.reader(fhandle, delimiter=',')
         raw_data = []
         for line in reader:
-            if line[0] == 'SONG ID':
-                continue
-            raw_data.append(line)
+            if line != []:
+                if line[0] == 'SONG_ID':
+                    continue
+                raw_data.append(line)
 
     metadata_index = {}
     for line in raw_data:
         track_id = line[0]
-
+        duration = None
+        if line[5] != '':
+            duration = float(line[5])
         metadata_index[track_id] = {
             'source': line[1],
             'annotator_1_id': line[2],
             'annotator_2_id': line[3],
-            'duration_sec': line[5],
+            'duration_sec': duration,
             'title': line[7],
             'artist': line[8],
             'annotator_1_time': line[10],

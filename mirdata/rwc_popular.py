@@ -9,9 +9,10 @@ import os
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 # these functions are identical for all rwc datasets
-from mirdata.rwc_classical import _load_beats, _load_sections
+from mirdata.rwc_classical import _load_beats, _load_sections, _duration_to_sec
 
 INDEX = utils.load_json_index('rwc_popular_index.json')
 METADATA = None
@@ -102,7 +103,7 @@ class Track(object):
             + "piece_number={}, suffix={}, track_number={}, title={}, "
             + "artist={}, singer_information={}, duration_sec={}, "
             + "tempo={}, instruments={}, drum_information={}, "
-            + "sections=SectionData('start_times', 'end_times', 'sections'), "
+            + "sections=SectionData('intervals', 'labels'), "
             + "beats=BeatData('beat_times', 'beat_positions'))"
         )
         return repr_string.format(
@@ -145,6 +146,11 @@ class Track(object):
     @property
     def audio(self):
         return librosa.load(self.audio_path, sr=None, mono=True)
+
+    def to_jams(self):
+        return jams_utils.jams_converter(beat_data=[(self.beats, None)], section_data=[(self.sections, None)],
+                   chord_data=[(self.chords, None)],
+                   artist=self.artist, title=self.title, duration=self.duration_sec)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -247,7 +253,7 @@ def _load_chords(chords_path):
                 ends.append(float(line[1]))
                 chords.append(line[2])
 
-    return utils.ChordData(np.array(begs), np.array(ends), np.array(chords))
+    return utils.ChordData(np.array(begs), np.array(ends), chords)
 
 
 def _load_voca_inst(voca_inst_path):
@@ -308,7 +314,7 @@ def _load_metadata(data_home):
             'title': line[3],
             'artist': line[4],
             'singer_information': line[5],
-            'duration_sec': line[6],
+            'duration_sec': _duration_to_sec(line[6]),
             'tempo': line[7],
             'instruments': line[8],
             'drum_information': line[9],

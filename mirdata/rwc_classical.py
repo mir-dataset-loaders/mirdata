@@ -9,6 +9,7 @@ import os
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 INDEX = utils.load_json_index('rwc_classical_index.json')
 METADATA = None
@@ -81,7 +82,7 @@ class Track(object):
             "RWC-Classical Track(track_id={}, audio_path={}, "
             + "piece_number={}, suffix={}, track_number={}, title={}, composer={}, "
             + "artist={}, duration_sec={}, category={}"
-            + "sections=SectionData('start_times', 'end_times', 'sections'), "
+            + "sections=SectionData('intervals', 'labels'), "
             + "beats=BeatData('beat_times', 'beat_positions'))"
         )
         return repr_string.format(
@@ -110,6 +111,10 @@ class Track(object):
     @property
     def audio(self):
         return librosa.load(self.audio_path, sr=None, mono=True)
+
+    def to_jams(self):
+        return jams_utils.jams_converter(beat_data=[(self.beats, None)], section_data=[(self.sections, None)],
+                   artist=self.artist, title=self.title, duration=self.duration_sec)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -205,7 +210,7 @@ def _load_sections(sections_path):
             ends.append(float(line[1]) / 100.0)
             secs.append(line[2])
 
-    return utils.SectionData(np.array(begs), np.array(ends), np.array(secs))
+    return utils.SectionData(np.array([begs, ends]).T, secs)
 
 
 def _position_in_bar(beat_positions, beat_times):
@@ -255,8 +260,19 @@ def _load_beats(beats_path):
     return utils.BeatData(beat_times, beat_positions.astype(int))
 
 
-def _load_metadata(data_home):
+def _duration_to_sec(duration):
+    if type(duration) == str:
+        if ':' in duration:
+            if len(duration.split(':')) <= 2:
+                minutes, secs = duration.split(':')
+            else:
+                minutes, secs, _ = duration.split(':')  # mistake in annotation in RM-J044
+            total_secs = float(minutes)*60 + float(secs)
+            return total_secs
+        else:
+            return float(duration)
 
+def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-c.csv')
 
     if not os.path.exists(metadata_path):
@@ -289,7 +305,7 @@ def _load_metadata(data_home):
             'title': line[3],
             'composer': line[4],
             'artist': line[5],
-            'duration_sec': line[6],
+            'duration_sec': _duration_to_sec(line[6]),
             'category': line[7],
         }
 

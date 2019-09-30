@@ -11,7 +11,7 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 # these functions are identical for all rwc datasets
-from mirdata.rwc_classical import _load_beats, _load_sections
+from mirdata.rwc_classical import _load_beats, _load_sections, _duration_to_sec
 
 INDEX = utils.load_json_index('rwc_jazz_index.json')
 METADATA = None
@@ -82,7 +82,7 @@ class Track(object):
             "RWC-Jazz Track(track_id={}, audio_path={}, "
             + "piece_number={}, suffix={}, track_number={}, title={}, "
             + "artist={}, duration_sec={}, variation={}, instruments={}, "
-            + "sections=SectionData('start_times', 'end_times', 'sections'), "
+            + "sections=SectionData('intervals', 'labels'), "
             + "beats=BeatData('beat_times', 'beat_positions'))"
         )
         return repr_string.format(
@@ -113,7 +113,7 @@ class Track(object):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
     def to_jams(self):
-        return jams_utils.jams_converter(beat_data=[self.beats], section_data=[self.sections],
+        return jams_utils.jams_converter(beat_data=[(self.beats, None)], section_data=[(self.sections, None)],
                    artist=self.artist, title=self.title, duration=self.duration_sec)
 
 
@@ -229,7 +229,7 @@ def _load_metadata(data_home):
             'track_number': line[2],
             'title': line[3],
             'artist': line[4],
-            'duration_sec': line[5],
+            'duration_sec': _duration_to_sec(line[5]),
             'variation': line[6],
             'instruments': line[7],
         }
