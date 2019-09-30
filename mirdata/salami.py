@@ -27,14 +27,15 @@ import os
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 INDEX = utils.load_json_index('salami_index.json')
 METADATA = None
 DATASET_DIR = 'Salami'
 ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
-    filename='salami-data-public-master.zip',
-    url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
-    checksum='f88b3455f1f2443458d094f603c0c1c7',
+    filename='salami-data-public-hierarchy-corrections.zip',
+    url='https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip',
+    checksum='194add2601c09a7279a7433288de81fd',
     destination_dir=None,
 )
 
@@ -174,6 +175,16 @@ class Track(object):
     @property
     def audio(self):
         return librosa.load(self.audio_path, sr=None, mono=True)
+
+    def to_jams(self):
+        return jams_utils.jams_converter(multi_section_data=[(
+                                         [(self.sections_annotator_1_uppercase, 0),
+                                          (self.sections_annotator_1_lowercase, 1)], 'annotator_1'),
+                                         (
+                                         [(self.sections_annotator_2_uppercase, 0),
+                                         (self.sections_annotator_2_lowercase, 1)], 'annotator_2'),
+                                         ],
+                                         artist=self.artist, title=self.title, duration=self.duration_sec)
 
 
 def download(data_home=None, force_overwrite=False):
