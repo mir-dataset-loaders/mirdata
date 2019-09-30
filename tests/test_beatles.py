@@ -68,7 +68,7 @@ def test_track():
         + "beats=BeatData('beat_times, 'beat_positions'), "
         + "chords=ChordData('start_times', 'end_times', 'chords'), "
         + "key=KeyData('start_times', 'end_times', 'keys'), "
-        + "sections=SectionData('start_times', 'end_times', 'sections'))"
+        + "sections=SectionData('intervals', 'labels'))"
     )
     assert track.__repr__() == repr_string
 
@@ -126,7 +126,7 @@ def test_load_chords():
     assert type(chord_data) == utils.ChordData
     assert type(chord_data.start_times) == np.ndarray
     assert type(chord_data.end_times) == np.ndarray
-    assert type(chord_data.chords) == np.ndarray
+    assert type(chord_data.chords) == list
 
     assert np.array_equal(
         chord_data.start_times, np.array([0.000000, 4.586464, 6.989730])
@@ -168,13 +168,12 @@ def test_load_sections():
     section_data = beatles._load_sections(sections_path)
 
     assert type(section_data) == utils.SectionData
-    assert type(section_data.start_times) == np.ndarray
-    assert type(section_data.end_times) == np.ndarray
-    assert type(section_data.sections) == np.ndarray
+    assert type(section_data.intervals) == np.ndarray
+    assert type(section_data.labels) == list
 
-    assert np.array_equal(section_data.start_times, np.array([0.000000, 0.465]))
-    assert np.array_equal(section_data.end_times, np.array([0.465, 14.931]))
-    assert np.array_equal(section_data.sections, np.array(['silence', 'intro']))
+    assert np.array_equal(section_data.intervals[:, 0], np.array([0.000000, 0.465]))
+    assert np.array_equal(section_data.intervals[:, 1], np.array([0.465, 14.931]))
+    assert np.array_equal(section_data.labels, np.array(['silence', 'intro']))
 
     # load a file which doesn't exist
     section_none = beatles._load_sections('fake/file/path')

@@ -43,7 +43,7 @@ def test_track():
     assert track.track_number == 'Tr. 04'
     assert track.title == 'Crescent Serenade (Piano Solo)'
     assert track.artist == 'Makoto Nakamura'
-    assert track.duration_sec == '02:47'
+    assert track.duration_sec == 167
     assert track.variation == 'Instrumentation 1'
     assert track.instruments == 'Pf'
 
@@ -61,8 +61,8 @@ def test_track():
         + "audio_path=tests/resources/mir_datasets/RWC-Jazz/audio/rwc-j-m01/4.wav, "
         + "piece_number=No. 4, suffix=M01, track_number=Tr. 04, "
         + "title=Crescent Serenade (Piano Solo), artist=Makoto Nakamura, "
-        + "duration_sec=02:47, variation=Instrumentation 1, instruments=Pf, "
-        + "sections=SectionData('start_times', 'end_times', 'sections'), "
+        + "duration_sec=167.0, variation=Instrumentation 1, instruments=Pf, "
+        + "sections=SectionData('intervals', 'labels'), "
         + "beats=BeatData('beat_times', 'beat_positions'))"
     )
     assert track.__repr__() == repr_string
@@ -95,7 +95,7 @@ def test_load_metadata():
         'track_number': 'Tr. 04',
         'title': 'Crescent Serenade (Piano Solo)',
         'artist': 'Makoto Nakamura',
-        'duration_sec': '02:47',
+        'duration_sec': 167,
         'variation': 'Instrumentation 1',
         'instruments': 'Pf',
     }

@@ -27,19 +27,19 @@ def test_track():
     assert track._track_paths == {
         'audio': ['audio/2.mp3', '76789a17bda0dd4d1d7e77424099c814'],
         'annotator_1_uppercase': [
-            'salami-data-public-master/annotations/2/parsed/textfile1_uppercase.txt',
+            'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt',
             '54ba0804f720d85d195dcd7ffaec0794',
         ],
         'annotator_1_lowercase': [
-            'salami-data-public-master/annotations/2/parsed/textfile1_lowercase.txt',
+            'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt',
             '30ff127ff68c61039b94a44ab6ddda34',
         ],
         'annotator_2_uppercase': [
-            'salami-data-public-master/annotations/2/parsed/textfile2_uppercase.txt',
+            'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt',
             'e9dca8577f028d3505ff1e5801397b2f',
         ],
         'annotator_2_lowercase': [
-            'salami-data-public-master/annotations/2/parsed/textfile2_lowercase.txt',
+            'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt',
             '546a783c7b8bf96f2d718c7a4f114699',
         ],
     }
@@ -48,7 +48,7 @@ def test_track():
     assert track.source == 'Codaich'
     assert track.annotator_1_id == '5'
     assert track.annotator_2_id == '8'
-    assert track.duration_sec == '264'
+    assert track.duration_sec == 264
     assert track.title == 'For_God_And_Country'
     assert track.artist == 'The_Smashing_Pumpkins'
     assert track.annotator_1_time == '37'
@@ -71,13 +71,13 @@ def test_track():
         "Salami Track(track_id=2, "
         + "audio_path=tests/resources/mir_datasets/Salami/audio/2.mp3, "
         + "source=Codaich, title=For_God_And_Country, "
-        + "artist=The_Smashing_Pumpkins, duration_sec=264, annotator_1_id=5, "
+        + "artist=The_Smashing_Pumpkins, duration_sec=264.0, annotator_1_id=5, "
         + "annotator_2_id=8, annotator_1_time=37, annotator_2_time=45, "
         + "broad_genre=popular, genre=Alternative_Pop___Rock, "
-        + "sections_annotator_1_uppercase=SectionData('start_times', 'end_times', 'sections'), "
-        + "sections_annotator_1_lowercase=SectionData('start_times', 'end_times', 'sections'), "
-        + "sections_annotator_2_uppercase=SectionData('start_times', 'end_times', 'sections'), "
-        + "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
+        + "sections_annotator_1_uppercase=SectionData('intervals', 'labels'), "
+        + "sections_annotator_1_lowercase=SectionData('intervals', 'labels'), "
+        + "sections_annotator_2_uppercase=SectionData('intervals', 'labels'), "
+        + "sections_annotator_2_lowercase=SectionData('intervals', 'labels'))"
     )
     assert track.__repr__() == repr_string
 
@@ -88,7 +88,7 @@ def test_track():
     assert track.source == 'Codaich'
     assert track.annotator_1_id == '16'
     assert track.annotator_2_id == '14'
-    assert track.duration_sec == '209'
+    assert track.duration_sec == 209
     assert track.title == 'Sull__aria'
     assert track.artist == 'Compilations'
     assert track.annotator_1_time == '20'
@@ -101,11 +101,11 @@ def test_track():
     assert track._track_paths == {
         'audio': ['audio/192.mp3', 'd954d5dc9f17d66155d3310d838756b8'],
         'annotator_1_uppercase': [
-            'salami-data-public-master/annotations/192/parsed/textfile1_uppercase.txt',
+            'salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_uppercase.txt',
             '4d268cfd27fe011dbe579f25f8d125ce',
         ],
         'annotator_1_lowercase': [
-            'salami-data-public-master/annotations/192/parsed/textfile1_lowercase.txt',
+            'salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_lowercase.txt',
             '6640237e7844d0d9d37bf21cf96a2690',
         ],
         'annotator_2_uppercase': [None, None],
@@ -126,11 +126,11 @@ def test_track():
         'annotator_1_uppercase': [None, None],
         'annotator_1_lowercase': [None, None],
         'annotator_2_uppercase': [
-            'salami-data-public-master/annotations/1015/parsed/textfile2_uppercase.txt',
+            'salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_uppercase.txt',
             'e4a268342a45fdffd8ec9c3b8287ad8b',
         ],
         'annotator_2_lowercase': [
-            'salami-data-public-master/annotations/1015/parsed/textfile2_lowercase.txt',
+            'salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_lowercase.txt',
             '201642fcea4a27c60f7b48de46a82234',
         ],
     }
@@ -164,27 +164,26 @@ def test_load_sections():
     # load a file which exists
     sections_path = (
         'tests/resources/mir_datasets/Salami/'
-        + 'salami-data-public-master/annotations/2/parsed/textfile1_uppercase.txt'
+        + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt'
     )
     section_data = salami._load_sections(sections_path)
 
     # check types
     assert type(section_data) == utils.SectionData
-    assert type(section_data.start_times) is np.ndarray
-    assert type(section_data.end_times) is np.ndarray
-    assert type(section_data.sections) is np.ndarray
+    assert type(section_data.intervals) is np.ndarray
+    assert type(section_data.labels) is list
 
     # check valuess
     assert np.array_equal(
-        section_data.start_times,
+        section_data.intervals[:, 0],
         np.array([0.0, 0.464399092, 14.379863945, 263.205419501]),
     )
     assert np.array_equal(
-        section_data.end_times,
+        section_data.intervals[:, 1],
         np.array([0.464399092, 14.379863945, 263.205419501, 264.885215419]),
     )
     assert np.array_equal(
-        section_data.sections, np.array(['Silence', 'A', 'B', 'Silence'])
+        section_data.labels, np.array(['Silence', 'A', 'B', 'Silence'])
     )
 
     # load a file which doesn't exist
@@ -204,7 +203,7 @@ def test_load_metadata():
         'source': 'Codaich',
         'annotator_1_id': '5',
         'annotator_2_id': '8',
-        'duration_sec': '264',
+        'duration_sec': 264,
         'title': 'For_God_And_Country',
         'artist': 'The_Smashing_Pumpkins',
         'annotator_1_time': '37',

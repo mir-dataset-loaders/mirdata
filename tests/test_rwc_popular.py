@@ -53,7 +53,7 @@ def test_track():
     assert track.title == 'Eien no replica'
     assert track.artist == 'Kazuo Nishi'
     assert track.singer_information == 'Male'
-    assert track.duration_sec == '03:29'
+    assert track.duration_sec == 209
     assert track.tempo == '135'
     assert track.instruments == 'Gt'
     assert track.drum_information == 'Drum sequences'
@@ -73,9 +73,9 @@ def test_track():
         "RWC-Popular Track(track_id=RM-P001, "
         + "audio_path=tests/resources/mir_datasets/RWC-Popular/audio/rwc-p-m01/1.wav, "
         + "piece_number=No. 1, suffix=M01, track_number=Tr. 01, title=Eien no replica, "
-        + "artist=Kazuo Nishi, singer_information=Male, duration_sec=03:29, "
+        + "artist=Kazuo Nishi, singer_information=Male, duration_sec=209.0, "
         + "tempo=135, instruments=Gt, drum_information=Drum sequences, "
-        + "sections=SectionData('start_times', 'end_times', 'sections'), "
+        + "sections=SectionData('intervals', 'labels'), "
         + "beats=BeatData('beat_times', 'beat_positions'))"
     )
     assert track.__repr__() == repr_string
@@ -109,7 +109,7 @@ def test_load_chords():
     assert type(chord_data) is utils.ChordData
     assert type(chord_data.start_times) is np.ndarray
     assert type(chord_data.end_times) is np.ndarray
-    assert type(chord_data.chords) is np.ndarray
+    assert type(chord_data.chords) is list
 
     # check values
     assert np.array_equal(
@@ -119,7 +119,7 @@ def test_load_chords():
         chord_data.end_times, np.array([0.104, 1.858, 5.387, 44.494, 47.636])
     )
     assert np.array_equal(
-        chord_data.chords, np.array(['N', 'Ab:min', 'E:maj', 'Bb:maj(*3)', 'C:min7'])
+        chord_data.chords, ['N', 'Ab:min', 'E:maj', 'Bb:maj(*3)', 'C:min7']
     )
 
     # load a file which doesn't exist
@@ -194,7 +194,7 @@ def test_load_metadata():
         'title': 'Eien no replica',
         'artist': 'Kazuo Nishi',
         'singer_information': 'Male',
-        'duration_sec': '03:29',
+        'duration_sec': 209,
         'tempo': '135',
         'instruments': 'Gt',
         'drum_information': 'Drum sequences',

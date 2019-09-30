@@ -46,7 +46,7 @@ def test_track():
     assert track.title == 'Symphony no.5 in C minor, op.67. 1st mvmt.'
     assert track.composer == 'Beethoven, Ludwig van'
     assert track.artist == 'Tokyo City Philharmonic Orchestra'
-    assert track.duration_sec == '7:15'
+    assert track.duration_sec == 435
     assert track.category == 'Symphony'
 
     # test that cached properties don't fail and have the expected type
@@ -63,8 +63,8 @@ def test_track():
         + "audio_path=tests/resources/mir_datasets/RWC-Classical/audio/rwc-c-m01/3.wav, "
         + "piece_number=No. 3, suffix=M01, track_number=Tr. 03, "
         + "title=Symphony no.5 in C minor, op.67. 1st mvmt., composer=Beethoven, Ludwig van, "
-        + "artist=Tokyo City Philharmonic Orchestra, duration_sec=7:15, category=Symphony"
-        + "sections=SectionData('start_times', 'end_times', 'sections'), "
+        + "artist=Tokyo City Philharmonic Orchestra, duration_sec=435.0, category=Symphony"
+        + "sections=SectionData('intervals', 'labels'), "
         + "beats=BeatData('beat_times', 'beat_positions'))"
     )
     assert track.__repr__() == repr_string
@@ -97,14 +97,13 @@ def test_load_sections():
 
     # check types
     assert type(section_data) == utils.SectionData
-    assert type(section_data.start_times) is np.ndarray
-    assert type(section_data.end_times) is np.ndarray
-    assert type(section_data.sections) is np.ndarray
+    assert type(section_data.intervals) is np.ndarray
+    assert type(section_data.labels) is list
 
     # check values
-    assert np.array_equal(section_data.start_times, np.array([0.29, 419.96]))
-    assert np.array_equal(section_data.end_times, np.array([46.14, 433.71]))
-    assert np.array_equal(section_data.sections, np.array(['chorus A', 'ending']))
+    assert np.array_equal(section_data.intervals[:, 0], np.array([0.29, 419.96]))
+    assert np.array_equal(section_data.intervals[:, 1], np.array([46.14, 433.71]))
+    assert np.array_equal(section_data.labels, np.array(['chorus A', 'ending']))
 
     # load a file which doesn't exist
     section_data_none = rwc_classical._load_sections('fake/file/path')
@@ -197,7 +196,7 @@ def test_load_metadata():
         'title': 'Symphony no.5 in C minor, op.67. 1st mvmt.',
         'composer': 'Beethoven, Ludwig van',
         'artist': 'Tokyo City Philharmonic Orchestra',
-        'duration_sec': '7:15',
+        'duration_sec': 435,
         'category': 'Symphony',
     }
 
