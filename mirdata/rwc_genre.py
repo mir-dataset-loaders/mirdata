@@ -118,7 +118,8 @@ class Track(object):
 
     def to_jams(self):
         return jams_utils.jams_converter(beat_data=[(self.beats, None)], section_data=[(self.sections, None)],
-                   artist=self.artist, title=self.title, duration=self.duration_sec)
+                                         metadata={key: self._track_metadata[key]
+                                                   for key in self._track_metadata.keys()})
 
 
 def download(data_home=None, force_overwrite=False):

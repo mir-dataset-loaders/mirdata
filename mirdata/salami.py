@@ -2,8 +2,10 @@
 """SALAMI Dataset Loader
 
 SALAMI Dataset.
-Details can be found at http://ddmal.music.mcgill.ca/research/salami/annotations
 
+We are using the **corrected** version of the 2.0 annotations:
+Details can be found at https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections and
+https://github.com/DDMAL/salami-data-public/pull/15.
 
 Attributes:
     DIR (str): The directory name for SALAMI dataset. Set to `'Salami'`.
@@ -11,7 +13,8 @@ Attributes:
     INDEX (dict): {track_id: track_data}.
         track_data is a jason data loaded from `index/`
 
-    METADATA (None): (todo?)
+    METADATA (None):
+        metadata is included in the annotations folder.
 
     ANNOT_REMOTE (RemoteFileMetadata (namedtuple)): metadata
         of SALAMI dataset. It includes the annotation file name, annotation
@@ -184,7 +187,8 @@ class Track(object):
                                          [(self.sections_annotator_2_uppercase, 0),
                                          (self.sections_annotator_2_lowercase, 1)], 'annotator_2'),
                                          ],
-                                         artist=self.artist, title=self.title, duration=self.duration_sec)
+                                         metadata={key: self._track_metadata[key]
+                                                   for key in self._track_metadata.keys()})
 
 
 def download(data_home=None, force_overwrite=False):
