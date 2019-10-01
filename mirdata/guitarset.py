@@ -254,6 +254,9 @@ class Track(object):
         audio, sr = librosa.load(self.audio_hex_cln_path, sr=None, mono=False)
         return audio, sr
 
+    def to_jams(self):
+        return jams.load(self.jams_path)
+
 
 def download(data_home=None):
     """Download GuitarSet.
