@@ -9,9 +9,10 @@ from collections import namedtuple
 import os
 import tarfile
 import zipfile
-import requests
-from requests.exceptions import HTTPError
 from tqdm import tqdm
+from six.moves import urllib
+import six
+import sys
 
 from mirdata.utils import md5
 
@@ -82,17 +83,6 @@ class DownloadProgressBar(tqdm):
         self.update(b * bsize - self.n)
 
 
-def _download_large_file(url, download_path, callback=lambda: None):
-    """download large file stably (todo: ??)"""
-    response = requests.get(url)
-    response.raise_for_status()
-    with open(download_path, 'wb') as handle:
-        for block in response.iter_content(4096):
-            handle.write(block)
-            callback()
-    return download_path
-
-
 def download_from_remote(remote, save_dir, force_overwrite=False):
     """Download a remote dataset into path
     Fetch a dataset pointed by remote's url, save into path using remote's
@@ -129,11 +119,16 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
-            unit='B', unit_scale=True, miniters=1, desc=remote.url.split('/')[-1]
+            unit='B', unit_scale=True, unit_divisor=1024, miniters=1
         ) as t:
             try:
-                _download_large_file(remote.url, download_path, t.update_to)
-            except HTTPError:
+                urllib.request.urlretrieve(
+                    remote.url,
+                    filename=download_path,
+                    reporthook=t.update_to,
+                    data=None,
+                )
+            except Exception as e:
                 error_msg = """
                             mirdata failed to download the dataset!
                             Please try again in a few minutes.
@@ -141,7 +136,8 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
                             https://github.com/mir-dataset-loaders/mirdata,
                             and tag it with 'broken-link'.
                             """
-                raise HTTPError(error_msg)
+                print(error_msg)
+                raise e
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
