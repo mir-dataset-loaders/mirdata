@@ -30,6 +30,9 @@ def test_beats():
     beat_data_5 = [(utils.BeatData(np.array([0.0, 0.3]), np.array([1,2])), 'beats_1'),
                    [utils.BeatData(np.array([0.5, 0.13]), np.array([4, 3])), 'beats_2']]
     beat_data_6 = [(None, None)]
+    beat_data_7 = [(utils.EventData(np.array([0.2, 0.3]),
+                                    np.array([0.3, 0.4]),
+                                    np.array(['event A', 'event B'])), None)]
 
     jam_1 = jams_utils.jams_converter(beat_data=beat_data_1)
     jam_2 = jams_utils.jams_converter(beat_data=beat_data_2)
@@ -69,6 +72,8 @@ def test_beats():
         jams_utils.jams_converter(beat_data=beat_data_4)
     with pytest.raises(TypeError):
             jams_utils.jams_converter(beat_data=beat_data_5)
+    with pytest.raises(TypeError):
+            jams_utils.jams_converter(beat_data=beat_data_7)
 
 
 
@@ -97,6 +102,9 @@ def test_chords():
                                      np.array(['A', 'B', 'C'])), 'chords_2')
                     ]
     chord_data_6 = [(None, None)]
+    chord_data_7 = [(utils.EventData(np.array([0.2, 0.3]),
+                                    np.array([0.3, 0.4]),
+                                    np.array(['event A', 'event B'])), None)]
 
 
     jam_1 = jams_utils.jams_converter(chord_data=chord_data_1)
@@ -136,6 +144,8 @@ def test_chords():
         jams_utils.jams_converter(chord_data=chord_data_4)
     with pytest.raises(TypeError):
         jams_utils.jams_converter(chord_data=chord_data_5)
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(chord_data=chord_data_7)
 
 
 def test_sections():
@@ -170,6 +180,9 @@ def test_sections():
                                      'sections_2')
                     ]
     section_data_6 = [(None, None)]
+    section_data_7 = [(utils.EventData(np.array([0.2, 0.3]),
+                                    np.array([0.3, 0.4]),
+                                    np.array(['event A', 'event B'])), None)]
 
     jam_1 = jams_utils.jams_converter(section_data=section_data_1)
     jam_2 = jams_utils.jams_converter(section_data=section_data_2)
@@ -208,6 +221,8 @@ def test_sections():
         jams_utils.jams_converter(section_data=section_data_4)
     with pytest.raises(TypeError):
         jams_utils.jams_converter(section_data=section_data_5)
+    with pytest.raises(TypeError):
+            jams_utils.jams_converter(section_data=section_data_7)
 
 
 def test_multi_sections():
@@ -262,6 +277,13 @@ def test_multi_sections():
                                                  np.array(['verse a', 'verse b', 'verse a'])), None)),
                             None)]
     multi_section_data_7 = [([(None, None), (None, None)], None)]
+    multi_section_data_8 = [([(utils.EventData(np.array([0.2, 0.3]),
+                                    np.array([0.3, 0.4]),
+                                    np.array(['event A', 'event B'])), None),
+                              (utils.EventData(np.array([0.2, 0.3]),
+                                               np.array([0.3, 0.4]),
+                                               np.array(['event A', 'event B'])), None)
+                              ], None)]
 
     jam_1 = jams_utils.jams_converter(multi_section_data=multi_section_data_1)
     jam_2 = jams_utils.jams_converter(multi_section_data=multi_section_data_2)
@@ -279,7 +301,7 @@ def test_multi_sections():
                      {'label': 'verse a', 'level': None}]
     assert confidence == [None, None, None, None, None, None]
 
-    # assert jam_2.annotations[0]['annotation_metadata']['annotator']['name'] == 'annotator_1'
+    assert jam_2.annotations[0]['annotation_metadata']['annotator']['name'] == 'annotator_1'
 
     time, duration, value, confidence = get_jam_data(jam_3, 'multi_segment', 0)
     assert time == [0.0, 0.0, 10.0, 15.0, 20.0, 20.0]
@@ -317,6 +339,8 @@ def test_multi_sections():
         jams_utils.jams_converter(multi_section_data=multi_section_data_5)
     with pytest.raises(TypeError):
         jams_utils.jams_converter(multi_section_data=multi_section_data_6)
+    with pytest.raises(TypeError):
+            jams_utils.jams_converter(multi_section_data=multi_section_data_8)
 
 
 def test_keys():
@@ -344,6 +368,9 @@ def test_keys():
                                    np.array(['B'])), 'keys_2')
                   ]
     key_data_6 = [(None, None)]
+    key_data_7 = [(utils.EventData(np.array([0.2, 0.3]),
+                                    np.array([0.3, 0.4]),
+                                    np.array(['event A', 'event B'])), None)]
 
     jam_1 = jams_utils.jams_converter(key_data=key_data_1)
     jam_2 = jams_utils.jams_converter(key_data=key_data_2)
@@ -382,6 +409,8 @@ def test_keys():
         jams_utils.jams_converter(key_data=key_data_4)
     with pytest.raises(TypeError):
         jams_utils.jams_converter(key_data=key_data_5)
+    with pytest.raises(TypeError):
+            jams_utils.jams_converter(key_data=key_data_7)
 
 
 def test_f0s():
@@ -409,6 +438,9 @@ def test_f0s():
                                np.array([0.0, 1.0])), 'f0s_2')
                  ]
     f0_data_6 = [(None, None)]
+    f0_data_7 = [(utils.EventData(np.array([0.2, 0.3]),
+                                    np.array([0.3, 0.4]),
+                                    np.array(['event A', 'event B'])), None)]
 
     jam_1 = jams_utils.jams_converter(f0_data=f0_data_1)
     jam_2 = jams_utils.jams_converter(f0_data=f0_data_2)
@@ -447,6 +479,8 @@ def test_f0s():
         jams_utils.jams_converter(f0_data=f0_data_4)
     with pytest.raises(TypeError):
         jams_utils.jams_converter(f0_data=f0_data_5)
+    with pytest.raises(TypeError):
+            jams_utils.jams_converter(f0_data=f0_data_7)
 
 
 def test_lyrics():
@@ -481,6 +515,9 @@ def test_lyrics():
                                    np.array([None, None])), 'lyrics_2']
                      ]
     lyrics_data_6= [(None, None)]
+    lyrics_data_7 = [(utils.EventData(np.array([0.2, 0.3]),
+                                    np.array([0.3, 0.4]),
+                                    np.array(['event A', 'event B'])), None)]
 
     jam_1 = jams_utils.jams_converter(lyrics_data=lyrics_data_1)
     jam_2 = jams_utils.jams_converter(lyrics_data=lyrics_data_2)
@@ -519,3 +556,34 @@ def test_lyrics():
         jams_utils.jams_converter(lyrics_data=lyrics_data_4)
     with pytest.raises(TypeError):
         jams_utils.jams_converter(lyrics_data=lyrics_data_5)
+    with pytest.raises(TypeError):
+            jams_utils.jams_converter(lyrics_data=lyrics_data_7)
+
+
+def test_metadata():
+    metadata_1 = {
+                'duration_sec': 1.5,
+                'artist' : 'Meatloaf',
+                'title': 'Le ciel est blue',
+                'favourite_color': 'rainbow'
+                }
+    metadata_2 = {
+                'duration': 1.5,
+                'Artist': 'Fromage',
+                'Title': 'et jai faim',
+                'instruments': 'guitar'
+                 }
+    jam_1 = jams_utils.jams_converter(lyrics_data=[(None, None)],
+                                      metadata=metadata_1)
+    jam_2 = jams_utils.jams_converter(lyrics_data=[(None, None)],
+                                      metadata=metadata_2)
+
+    assert jam_1['file_metadata']['title'] == 'Le ciel est blue'
+    assert jam_1['file_metadata']['artist'] == 'Meatloaf'
+    assert jam_1['file_metadata']['duration'] == 1.5
+    assert jam_1['sandbox']['favourite_color'] == 'rainbow'
+
+    assert jam_2['file_metadata']['title'] == 'et jai faim'
+    assert jam_2['file_metadata']['artist'] == 'Fromage'
+    assert jam_2['file_metadata']['duration'] == 1.5
+    assert jam_2['sandbox']['instruments'] == 'guitar'
