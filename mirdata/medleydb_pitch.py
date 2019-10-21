@@ -33,6 +33,7 @@ import os
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 INDEX = utils.load_json_index('medleydb_pitch_index.json')
 DATASET_DIR = 'MedleyDB-Pitch'
@@ -112,6 +113,10 @@ class Track(object):
     @property
     def audio(self):
         return librosa.load(self.audio_path, sr=None, mono=True)
+
+    def to_jams(self):
+        return jams_utils.jams_converter(f0_data=[(self.pitch, None)],
+                                         metadata=self._track_metadata)
 
 
 def download(data_home=None):
