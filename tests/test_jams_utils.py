@@ -133,9 +133,9 @@ def test_chords():
     assert type(jam_1) == jams.JAMS
 
     with pytest.raises(TypeError):
-        jams_utils.jams_converter(beat_data=chord_data_4)
+        jams_utils.jams_converter(chord_data=chord_data_4)
     with pytest.raises(TypeError):
-        jams_utils.jams_converter(beat_data=chord_data_5)
+        jams_utils.jams_converter(chord_data=chord_data_5)
 
 
 def test_sections():
@@ -205,9 +205,9 @@ def test_sections():
     assert type(jam_1) == jams.JAMS
 
     with pytest.raises(TypeError):
-        jams_utils.jams_converter(beat_data=section_data_4)
+        jams_utils.jams_converter(section_data=section_data_4)
     with pytest.raises(TypeError):
-        jams_utils.jams_converter(beat_data=section_data_5)
+        jams_utils.jams_converter(section_data=section_data_5)
 
 
 def test_multi_sections():
@@ -318,3 +318,204 @@ def test_multi_sections():
     with pytest.raises(TypeError):
         jams_utils.jams_converter(multi_section_data=multi_section_data_6)
 
+
+def test_keys():
+    key_data_1 = [(utils.KeyData(np.array([0.]),
+                                     np.array([100.0]),
+                                     np.array(['A'])), None)]
+    key_data_2 = [(utils.KeyData(np.array([0.]),
+                                   np.array([100.0]),
+                                   np.array(['A'])), 'keys_1')]
+    key_data_3 = [(utils.KeyData(np.array([0.]),
+                                   np.array([100.0]),
+                                   np.array(['A'])), 'keys_1'),
+                  (utils.KeyData(np.array([0.]),
+                                   np.array([50.0]),
+                                   np.array(['B'])), 'keys_2')
+                  ]
+    key_data_4 = ((utils.KeyData(np.array([0.]),
+                                   np.array([100.0]),
+                                   np.array(['A'])), 'keys_1'))
+    key_data_5 = [[utils.KeyData(np.array([0.]),
+                                   np.array([100.0]),
+                                   np.array(['A'])), 'keys_1'],
+                  (utils.KeyData(np.array([0.]),
+                                   np.array([50.0]),
+                                   np.array(['B'])), 'keys_2')
+                  ]
+    key_data_6 = [(None, None)]
+
+    jam_1 = jams_utils.jams_converter(key_data=key_data_1)
+    jam_2 = jams_utils.jams_converter(key_data=key_data_2)
+    jam_3 = jams_utils.jams_converter(key_data=key_data_3)
+    jam_6 = jams_utils.jams_converter(key_data=key_data_6)
+
+    time, duration, value, confidence = get_jam_data(jam_1, 'key', 0)
+    assert time == [0.]
+    assert duration == [100.0]
+    assert value == ['A']
+    assert confidence == [None]
+
+    assert jam_2.annotations[0]['sandbox']['name'] == 'keys_1'
+
+    time, duration, value, confidence = get_jam_data(jam_3, 'key', 0)
+    assert time == [0.]
+    assert duration == [100.0]
+    assert value == ['A']
+    assert confidence == [None]
+
+    time, duration, value, confidence = get_jam_data(jam_3, 'key', 1)
+    assert time == [0.]
+    assert duration == [50.0]
+    assert value == ['B']
+    assert confidence == [None]
+
+    time, duration, value, confidence = get_jam_data(jam_6, 'key', 0)
+    assert time == []
+    assert duration == []
+    assert value == []
+    assert confidence == []
+
+    assert type(jam_1) == jams.JAMS
+
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(key_data=key_data_4)
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(key_data=key_data_5)
+
+
+def test_f0s():
+    f0_data_1 = [(utils.F0Data(np.array([0.016, 0.048]),
+                                     np.array([0.0, 260.9]),
+                                     np.array([0.0, 1.0])), None)]
+    f0_data_2 = [(utils.F0Data(np.array([0.016, 0.048]),
+                               np.array([0.0, 260.9]),
+                               np.array([0.0, 1.0])), 'f0s_1')]
+    f0_data_3 = [(utils.F0Data(np.array([0.016, 0.048]),
+                               np.array([0.0, 260.9]),
+                               np.array([0.0, 1.0])), 'f0s_1'),
+                 (utils.F0Data(np.array([0.003, 0.012]),
+                               np.array([0.0, 230.5]),
+                               np.array([0.0, 1.0])), 'f0s_2')
+                 ]
+    f0_data_4 = ((utils.F0Data(np.array([0.016, 0.048]),
+                               np.array([0.0, 260.9]),
+                               np.array([0.0, 1.0])), 'f0s_1'))
+    f0_data_5 = [[utils.F0Data(np.array([0.016, 0.048]),
+                               np.array([0.0, 260.9]),
+                               np.array([0.0, 1.0])), 'f0s_1'],
+                 (utils.F0Data(np.array([0.003, 0.012]),
+                               np.array([0.0, 230.5]),
+                               np.array([0.0, 1.0])), 'f0s_2')
+                 ]
+    f0_data_6 = [(None, None)]
+
+    jam_1 = jams_utils.jams_converter(f0_data=f0_data_1)
+    jam_2 = jams_utils.jams_converter(f0_data=f0_data_2)
+    jam_3 = jams_utils.jams_converter(f0_data=f0_data_3)
+    jam_6 = jams_utils.jams_converter(f0_data=f0_data_6)
+
+    time, duration, value, confidence = get_jam_data(jam_1, 'pitch_contour', 0)
+    assert time == [0.016, 0.048]
+    assert duration == [0.0, 0.0]
+    assert value == [0.0, 260.9]
+    assert confidence == [0.0, 1.0]
+
+    assert jam_2.annotations[0]['sandbox']['name'] == 'f0s_1'
+
+    time, duration, value, confidence = get_jam_data(jam_3, 'pitch_contour', 0)
+    assert time == [0.016, 0.048]
+    assert duration == [0.0, 0.0]
+    assert value == [0.0, 260.9]
+    assert confidence == [0.0, 1.0]
+
+    time, duration, value, confidence = get_jam_data(jam_3, 'pitch_contour', 1)
+    assert time == [0.003, 0.012]
+    assert duration == [0.0, 0.0]
+    assert value == [0.0, 230.5]
+    assert confidence == [0.0, 1.0]
+
+    time, duration, value, confidence = get_jam_data(jam_6, 'pitch_contour', 0)
+    assert time == []
+    assert duration == []
+    assert value == []
+    assert confidence == []
+
+    assert type(jam_1) == jams.JAMS
+
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(f0_data=f0_data_4)
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(f0_data=f0_data_5)
+
+
+def test_lyrics():
+    lyrics_data_1 = [(utils.LyricData(np.array([0.027, 0.232]),
+                                     np.array([0.227, 0.742]),
+                                     np.array(['The', 'Test']),
+                                     np.array([None, None])), None)]
+    lyrics_data_2 = [(utils.LyricData(np.array([0.027, 0.232]),
+                                   np.array([0.227, 0.742]),
+                                   np.array(['The', 'Test']),
+                                   np.array([None, None])), 'lyrics_1')]
+    lyrics_data_3 = [(utils.LyricData(np.array([0.027, 0.232]),
+                                   np.array([0.227, 0.742]),
+                                   np.array(['The', 'Test']),
+                                   np.array([None, None])), 'lyrics_1'),
+                     (utils.LyricData(np.array([0.0, 0.232]),
+                                   np.array([0.227, 0.742]),
+                                   np.array(['is', 'cool']),
+                                   np.array([None, None])), 'lyrics_2')
+                     ]
+    lyrics_data_4 = ((utils.LyricData(np.array([0.027, 0.232]),
+                                   np.array([0.227, 0.742]),
+                                   np.array(['The', 'Test']),
+                                   np.array([None, None])), 'lyrics_1'))
+    lyrics_data_5 = [(utils.LyricData(np.array([0.027, 0.232]),
+                                   np.array([0.227, 0.742]),
+                                   np.array(['The', 'Test']),
+                                   np.array([None, None])), 'lyrics_1'),
+                     [utils.LyricData(np.array([0.0, 0.232]),
+                                   np.array([0.227, 0.742]),
+                                   np.array(['is', 'cool']),
+                                   np.array([None, None])), 'lyrics_2']
+                     ]
+    lyrics_data_6= [(None, None)]
+
+    jam_1 = jams_utils.jams_converter(lyrics_data=lyrics_data_1)
+    jam_2 = jams_utils.jams_converter(lyrics_data=lyrics_data_2)
+    jam_3 = jams_utils.jams_converter(lyrics_data=lyrics_data_3)
+    jam_6 = jams_utils.jams_converter(lyrics_data=lyrics_data_6)
+
+    time, duration, value, confidence = get_jam_data(jam_1, 'lyrics', 0)
+    assert time == [0.027, 0.232]
+    assert duration == [0.2, 0.51]
+    assert value == ['The', 'Test']
+    assert confidence == [None, None]
+
+    assert jam_2.annotations[0]['sandbox']['name'] == 'lyrics_1'
+
+    time, duration, value, confidence = get_jam_data(jam_3, 'lyrics', 0)
+    assert time == [0.027, 0.232]
+    assert duration == [0.2, 0.51]
+    assert value == ['The', 'Test']
+    assert confidence == [None, None]
+
+    time, duration, value, confidence = get_jam_data(jam_3, 'lyrics', 1)
+    assert time == [0.0, 0.232]
+    assert duration == [0.227, 0.51]
+    assert value == ['is', 'cool']
+    assert confidence == [None, None]
+
+    time, duration, value, confidence = get_jam_data(jam_6, 'lyrics', 0)
+    assert time == []
+    assert duration == []
+    assert value == []
+    assert confidence == []
+
+    assert type(jam_1) == jams.JAMS
+
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(lyrics_data=lyrics_data_4)
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(lyrics_data=lyrics_data_5)
