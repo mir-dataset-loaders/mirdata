@@ -6,7 +6,7 @@ from __future__ import division
 from __future__ import print_function
 
 import jams
-
+import mirdata.utils as utils
 
 def jams_converter(
         beat_data=None,
@@ -51,6 +51,10 @@ def jams_converter(
     if metadata is not None:
         if 'duration_sec' in metadata.keys():  # match name to jams attribute
             metadata['duration'] = metadata.pop('duration_sec')
+        if 'Title' in metadata.keys():  # match name to jams attribute
+            metadata['title'] = metadata.pop('Title')
+        if 'Artist' in metadata.keys():  # match name to jams attribute
+            metadata['artist'] = metadata.pop('Artist')
         for key in metadata:
             if hasattr(jam.file_metadata, key):
                 setattr(jam.file_metadata, key, metadata[key])
@@ -90,7 +94,6 @@ def jams_converter(
                 raise TypeError(
                     'multi_section_data should be a list of tuples, '
                     + 'but is a list of something else')
-            # if sections[0][0][0] is not None:
             if (type(sections[0]) != list) or (type(sections[0][0]) != tuple):
                 raise TypeError(
                     'tuples in multi_section_data should contain a '
@@ -155,6 +158,9 @@ def beats_to_jams(beats):
     jannot_beat = jams.Annotation(namespace='beat')
     jannot_beat.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if beats[0] is not None:
+        if type(beats[0]) != utils.BeatData:
+            raise TypeError(
+                'Type shoud be BeatData.')
         for t, p in zip(beats[0].beat_times, beats[0].beat_positions):
             jannot_beat.append(time=t, duration=0.0, value=p)
         if beats[1] is not None:
@@ -166,6 +172,9 @@ def sections_to_jams(sections):
     jannot_seg = jams.Annotation(namespace='segment_open')
     jannot_seg.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if sections[0] is not None:
+        if type(sections[0]) != utils.SectionData:
+            raise TypeError(
+                'Type shoud be SectionData.')
         for inter, seg in zip(sections[0].intervals,
                           sections[0].labels):
             jannot_seg.append(time=inter[0], duration=inter[1] - inter[0], value=seg)
@@ -178,6 +187,9 @@ def chords_to_jams(chords):
     jannot_chord = jams.Annotation(namespace='chord')
     jannot_chord.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if chords[0] is not None:
+        if type(chords[0]) != utils.ChordData:
+            raise TypeError(
+                'Type shoud be ChordData.')
         for beg, end, ch in zip(chords[0].start_times,
                             chords[0].end_times,
                             chords[0].chords):
@@ -191,6 +203,9 @@ def keys_to_jams(keys):
     jannot_key = jams.Annotation(namespace='key_mode')
     jannot_key.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if keys[0] is not None:
+        if type(keys[0]) != utils.KeyData:
+            raise TypeError(
+                'Type shoud be KeyData.')
         for beg, end, key in zip(keys[0].start_times,
                              keys[0].end_times,
                              keys[0].keys):
@@ -204,9 +219,12 @@ def multi_sections_to_jams(multi_sections):
     # sections with multiple annotators and multiple level annotations
     jannot_multi = jams.Annotation(namespace='multi_segment')
     jannot_multi.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
-    # jannot_multi.annotation_metadata = jams.AnnotationMetadata(annotator={'name': multi_sections[1]})
+    jannot_multi.annotation_metadata = jams.AnnotationMetadata(annotator={'name': multi_sections[1]})
     for sections in multi_sections[0]:
         if sections[0] is not None:
+            if type(sections[0]) != utils.SectionData:
+                raise TypeError(
+                    'Type shoud be SectionData.')
             for inter, seg in zip(sections[0].intervals,
                                      sections[0].labels):
                 jannot_multi.append(time=inter[0], duration=inter[1] - inter[0],
@@ -218,6 +236,9 @@ def f0s_to_jams(f0s):
     jannot_key = jams.Annotation(namespace='pitch_contour')
     jannot_key.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if f0s[0] is not None:
+        if type(f0s[0]) != utils.F0Data:
+            raise TypeError(
+                'Type shoud be F0Data.')
         for t, f, c in zip(f0s[0].times,
                        f0s[0].frequencies,
                        f0s[0].confidence):
@@ -231,6 +252,9 @@ def lyrics_to_jams(lyrics):
     jannot_lyric = jams.Annotation(namespace='lyrics')
     jannot_lyric.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if lyrics[0] is not None:
+        if type(lyrics[0]) != utils.LyricData:
+            raise TypeError(
+                'Type shoud be LyricData.')
         for beg, end, lyric in zip(lyrics[0].start_times,
                                lyrics[0].end_times,
                                lyrics[0].lyrics):
