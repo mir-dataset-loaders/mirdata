@@ -79,11 +79,11 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/RWC-Genre'
-    rwc_genre_data = rwc_genre.load(data_home=data_home, silence_validator=True)
+    rwc_genre_data = rwc_genre.load(data_home=data_home)
     assert type(rwc_genre_data) is dict
     assert len(rwc_genre_data.keys()) == 90  # missing 10 files
 
-    rwc_genre_data_default = rwc_genre.load(silence_validator=True)
+    rwc_genre_data_default = rwc_genre.load()
     assert type(rwc_genre_data_default) is dict
     assert len(rwc_genre_data_default.keys()) == 90  # missing 10 files
 
@@ -106,6 +106,11 @@ def test_load_metadata():
 
     metadata_none = rwc_genre._load_metadata('asdf/asdf')
     assert metadata_none is None
+
+
+def test_validate():
+    rwc_genre.validate()
+    rwc_genre.validate(silence=True)
 
 
 def test_cite():

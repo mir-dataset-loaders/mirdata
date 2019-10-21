@@ -218,7 +218,7 @@ def track_ids():
     return list(INDEX.keys())
 
 
-def load(data_home=None, silence_validator=False):
+def load(data_home=None):
     """Load RWC-Genre dataset
 
     Args:
@@ -232,7 +232,6 @@ def load(data_home=None, silence_validator=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(data_home, silence=silence_validator)
     rwc_popular_data = {}
     for key in track_ids():
         rwc_popular_data[key] = Track(key, data_home=data_home)

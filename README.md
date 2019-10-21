@@ -44,6 +44,13 @@ import mirdata
 mirdata.orchset.download()
 ```
 
+### Validate the data
+```python
+import mirdata
+
+mirdata.orchset.validate()
+```
+
 ### Load the Orchset Dataset
 ```python
 import mirdata

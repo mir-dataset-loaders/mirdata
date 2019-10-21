@@ -76,11 +76,11 @@ def test_track_ids():
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/RWC-Jazz'
-    rwc_jazz_data = rwc_jazz.load(data_home=data_home, silence_validator=True)
+    rwc_jazz_data = rwc_jazz.load(data_home=data_home)
     assert type(rwc_jazz_data) is dict
     assert len(rwc_jazz_data.keys()) == 50
 
-    rwc_jazz_data_default = rwc_jazz.load(silence_validator=True)
+    rwc_jazz_data_default = rwc_jazz.load()
     assert type(rwc_jazz_data_default) is dict
     assert len(rwc_jazz_data_default.keys()) == 50
 
@@ -102,6 +102,11 @@ def test_load_metadata():
 
     metadata_none = rwc_jazz._load_metadata('asdf/asdf')
     assert metadata_none is None
+
+
+def test_validate():
+    rwc_jazz.validate()
+    rwc_jazz.validate(silence=True)
 
 
 def test_cite():
