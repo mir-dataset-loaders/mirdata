@@ -216,7 +216,7 @@ def f0s_to_jams(f0s):
     for t, f, c in zip(f0s[0].times,
                        f0s[0].frequencies,
                        f0s[0].confidence):
-        jannot_key.append(time=t, value=f, confidence=c)
+        jannot_key.append(time=t, duration=0.0, value=f, confidence=c)
     if f0s[1] is not None:
         jannot_key.sandbox = jams.Sandbox(name=f0s[1])
     return jannot_key
@@ -228,7 +228,7 @@ def lyrics_to_jams(lyrics):
     for beg, end, lyric in zip(lyrics[0].start_times,
                                lyrics[0].end_times,
                                lyrics[0].lyrics):
-        jannot_lyric.append(time=beg, duration=end - beg, value=lyrics)
+        jannot_lyric.append(time=beg, duration=end - beg, value=lyric)
     if lyrics[1] is not None:
         jannot_lyric.sandbox = jams.Sandbox(name=lyrics[1])
     return jannot_lyric
