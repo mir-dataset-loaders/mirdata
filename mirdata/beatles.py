@@ -16,18 +16,21 @@ Attributes:
         file url, and checksum of the file.
 
 """
-import numpy as np
-import os
 import csv
+import librosa
+import os
+import numpy as np
 
 import mirdata.utils as utils
+import mirdata.download_utils as download_utils
 
 DATASET_DIR = 'Beatles'
 INDEX = utils.load_json_index('beatles_index.json')
-ANNOTATIONS_REMOTE = utils.RemoteFileMetadata(
+ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
-    checksum='62425c552d37c6bb655a78e4603828cc',
+    checksum='c3b7d505e033ea9ff0d7a1d57871f2ee',
+    destination_dir='annotations',
 )
 
 
@@ -49,41 +52,64 @@ class Track(object):
         sections (SectionData): sections annotation
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
-            raise ValueError(
-                '{} is not a valid track ID in Beatles'.format(track_id))
+            raise ValueError('{} is not a valid track ID in Beatles'.format(track_id))
 
         self.track_id = track_id
+
+        if data_home is None:
+            data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
         self._track_paths = INDEX[track_id]
 
-        self.audio_path = utils.get_local_path(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
-        self.title = os.path.basename(
-            self._track_paths['sections'][0]).split('.')[0]
+        self.title = os.path.basename(self._track_paths['sections'][0]).split('.')[0]
+
+    def __repr__(self):
+        repr_string = (
+            "Beatles Track(track_id={}, audio_path={}, title={}, "
+            + "beats=BeatData('beat_times, 'beat_positions'), "
+            + "chords=ChordData('start_times', 'end_times', 'chords'), "
+            + "key=KeyData('start_times', 'end_times', 'keys'), "
+            + "sections=SectionData('start_times', 'end_times', 'sections'))"
+        )
+        return repr_string.format(self.track_id, self.audio_path, self.title)
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(utils.get_local_path(
-            self._data_home, self._track_paths['beat'][0]))
+        if not self._track_paths['beat'][0] is None:
+            return _load_beats(
+                os.path.join(self._data_home, self._track_paths['beat'][0])
+            )
+        return None
 
     @utils.cached_property
     def chords(self):
-        return _load_chords(utils.get_local_path(
-            self._data_home, self._track_paths['chords'][0]))
+        return _load_chords(
+            os.path.join(self._data_home, self._track_paths['chords'][0])
+        )
 
     @utils.cached_property
     def key(self):
-        return _load_key(utils.get_local_path(
-            self._data_home, self._track_paths['keys'][0]))
+        if not self._track_paths['keys'][0] is None:
+            return _load_key(
+                os.path.join(self._data_home, self._track_paths['keys'][0])
+            )
+        return None
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(utils.get_local_path(
-            self._data_home, self._track_paths['sections'][0]))
+        return _load_sections(
+            os.path.join(self._data_home, self._track_paths['sections'][0])
+        )
+
+    @property
+    def audio(self):
+        return librosa.load(self.audio_path, sr=None, mono=True)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -96,59 +122,35 @@ def download(data_home=None, force_overwrite=False):
         force_overwrite (bool): Whether to overwrite the existing downloaded data
 
     """
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
 
-    if exists(data_home) and not force_overwrite:
-        return
+    # use the default location: ~/mir_datasets/Beatles
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    if force_overwrite:
-        utils.force_delete_all(ANNOTATIONS_REMOTE, dataset_path=None, data_home=data_home)
-
-    download_path = utils.download_from_remote(
-        ANNOTATIONS_REMOTE, data_home=data_home, force_overwrite=force_overwrite
+    download_message = """
+        Unfortunately the audio files of the Beatles dataset are not available
+        for download. If you have the Beatles dataset, place the contents into
+        a folder called Beatles with the following structure:
+            > Beatles/
+                > annotations/
+                > audio/
+        and copy the Beatles folder to {}
+    """.format(
+        data_home
     )
-    if not os.path.exists(dataset_path):
-        os.makedirs(dataset_path)
-    utils.untar(download_path, dataset_path, cleanup=True)
-    missing_files, invalid_checksums = validate(dataset_path, data_home)
-    if missing_files or invalid_checksums:
-        print(
-            """
-            Unfortunately the audio files of the Beatles dataset are not available
-            for download. If you have the Beatles dataset, place the contents into
-            a folder called Beatles with the following structure:
-                > Beatles/
-                    > annotations/
-                    > audio/
-            and copy the Beatles folder to {}
-        """.format(
-                save_path
-            )
-        )
+
+    download_utils.downloader(
+        data_home,
+        tar_downloads=[ANNOTATIONS_REMOTE],
+        info_message=download_message,
+        force_overwrite=force_overwrite,
+    )
 
 
-def exists(data_home=None):
-    """Check if the Beatles dataset folder exists
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        (bool): True if the Beatles dataset folder exists
-
-    """
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
-    return os.path.exists(dataset_path)
-
-
-def validate(dataset_path, data_home=None):
+def validate(data_home=None, silence=False):
     """Validate if a local version of this dataset is consistent
 
     Args:
-        dataset_path (str): the Beatles dataset local path
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
@@ -159,8 +161,11 @@ def validate(dataset_path, data_home=None):
             but has a different checksum than the reference
 
     """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, dataset_path
+        INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -185,10 +190,9 @@ def load(data_home=None):
         (dict): {`track_id`: track data}
 
     """
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(dataset_path, data_home)
     beatles_data = {}
     for key in track_ids():
         beatles_data[key] = Track(key, data_home=data_home)
@@ -215,6 +219,8 @@ def _load_beats(beats_path):
             beat_positions.append(line[-1])
 
     beat_positions = _fix_newpoint(np.array(beat_positions))
+    # After fixing New Point labels convert positions to int
+    beat_positions = [int(b) for b in beat_positions]
 
     beat_data = utils.BeatData(np.array(beat_times), np.array(beat_positions))
 
@@ -264,7 +270,7 @@ def _load_key(key_path):
         for line in reader:
             if line[2] == 'Key':
                 start_times.append(float(line[0]))
-                end_times.append(line[1])
+                end_times.append(float(line[1]))
                 keys.append(line[3])
 
     key_data = utils.KeyData(np.array(start_times), np.array(end_times), np.array(keys))
@@ -279,7 +285,6 @@ def _load_sections(sections_path):
         sections_path (str):
 
     """
-
     if sections_path is None or not os.path.exists(sections_path):
         return None
 
@@ -288,7 +293,7 @@ def _load_sections(sections_path):
         reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
             start_times.append(float(line[0]))
-            end_times.append(line[1])
+            end_times.append(float(line[1]))
             sections.append(line[3])
 
     section_data = utils.SectionData(

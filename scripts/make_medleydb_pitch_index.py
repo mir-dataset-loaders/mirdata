@@ -4,8 +4,7 @@ import json
 import os
 
 
-MEDLEYDB_PITCH_INDEX_PATH = \
-    '../mirdata/indexes/medleydb_pitch_index.json'
+MEDLEYDB_PITCH_INDEX_PATH = '../mirdata/indexes/medleydb_pitch_index.json'
 
 
 def md5(file_path):
@@ -28,9 +27,14 @@ def md5(file_path):
     return hash_md5.hexdigest()
 
 
+def strip_first_dir(full_path):
+    return os.path.join(*(full_path.split(os.path.sep)[1:]))
+
+
 def make_medleydb_pitch_index(data_path):
     metadata_path = os.path.join(
-        data_path, 'MedleyDB-Pitch', 'medleydb_pitch_metadata.json')
+        data_path, 'MedleyDB-Pitch', 'medleydb_pitch_metadata.json'
+    )
     with open(metadata_path, 'r') as fhandle:
         metadata = json.load(fhandle)
 
@@ -38,21 +42,13 @@ def make_medleydb_pitch_index(data_path):
     for trackid in metadata.keys():
         audio_path = os.path.join(data_path, metadata[trackid]['audio_path'])
         audio_checksum = md5(audio_path)
-        local_pitch_path = os.path.join(
-            data_path, metadata[trackid]['pitch_path']
-        )
+        local_pitch_path = os.path.join(data_path, metadata[trackid]['pitch_path'])
         pitch_checksum = md5(local_pitch_path)
 
         fullid = os.path.basename(audio_path).split('.')[0]
         pitch_index[fullid] = {
-            'audio': (
-                metadata[trackid]['audio_path'],
-                audio_checksum
-            ),
-            'pitch': (
-                metadata[trackid]['pitch_path'],
-                pitch_checksum
-            )
+            'audio': (strip_first_dir(metadata[trackid]['audio_path']), audio_checksum),
+            'pitch': (strip_first_dir(metadata[trackid]['pitch_path']), pitch_checksum),
         }
 
     with open(MEDLEYDB_PITCH_INDEX_PATH, 'w') as fhandle:
@@ -64,10 +60,9 @@ def main(args):
 
 
 if __name__ == '__main__':
-    PARSER = argparse.ArgumentParser(
-        description='Make MedleyDB-Pitch index file.')
-    PARSER.add_argument('mdb_pitch_data_path',
-                        type=str,
-                        help='Path to MedleyDB-Pitch data folder.')
+    PARSER = argparse.ArgumentParser(description='Make MedleyDB-Pitch index file.')
+    PARSER.add_argument(
+        'mdb_pitch_data_path', type=str, help='Path to MedleyDB-Pitch data folder.'
+    )
 
     main(PARSER.parse_args())

@@ -26,10 +26,13 @@ from __future__ import print_function
 
 import csv
 import json
+import librosa
+import logging
 import numpy as np
 import os
 
 import mirdata.utils as utils
+import mirdata.download_utils as download_utils
 
 INDEX = utils.load_json_index('medleydb_melody_index.json')
 DATASET_DIR = 'MedleyDB-Melody'
@@ -58,6 +61,7 @@ class Track(object):
         melody3 (F0Data):
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
             raise ValueError(
@@ -65,16 +69,29 @@ class Track(object):
             )
 
         self.track_id = track_id
+
+        if data_home is None:
+            data_home = utils.get_default_dataset_path(DATASET_DIR)
+
         self._data_home = data_home
         self._track_paths = INDEX[track_id]
 
         if METADATA is None or METADATA['data_home'] != data_home:
             _reload_metadata(data_home)
 
-        self._track_metadata = METADATA[track_id]
+        if METADATA is not None and track_id in METADATA:
+            self._track_metadata = METADATA[track_id]
+        else:
+            self._track_metadata = {
+                'artist': None,
+                'title': None,
+                'genre': None,
+                'is_excerpt': None,
+                'is_instrumental': None,
+                'n_sources': None,
+            }
 
-        self.audio_path = utils.get_local_path(
-            self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.artist = self._track_metadata['artist']
         self.title = self._track_metadata['title']
         self.genre = self._track_metadata['genre']
@@ -82,20 +99,47 @@ class Track(object):
         self.is_instrumental = self._track_metadata['is_instrumental']
         self.n_sources = self._track_metadata['n_sources']
 
+    def __repr__(self):
+        repr_string = (
+            "MedleyDb-Melody Track(track_id={}, audio_path={}, "
+            + "artist={}, title={}, genre={}, is_excerpt={}, "
+            + "is_instrumental={}, n_sources={}, "
+            + "melody1=F0Data('times', 'frequencies', confidence'), "
+            + "melody2=F0Data('times', 'frequencies', confidence'), "
+            + "melody3=F0Data('times', 'frequencies', confidence'))"
+        )
+        return repr_string.format(
+            self.track_id,
+            self.audio_path,
+            self.artist,
+            self.title,
+            self.genre,
+            self.is_excerpt,
+            self.is_instrumental,
+            self.n_sources,
+        )
+
     @utils.cached_property
     def melody1(self):
-        return _load_melody(utils.get_local_path(
-            self._data_home, self._track_paths['melody1'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody1'][0])
+        )
 
     @utils.cached_property
     def melody2(self):
-        return _load_melody(utils.get_local_path(
-            self._data_home, self._track_paths['melody2'][0]))
+        return _load_melody(
+            os.path.join(self._data_home, self._track_paths['melody2'][0])
+        )
 
     @utils.cached_property
     def melody3(self):
-        return _load_melody3(utils.get_local_path(
-            self._data_home, self._track_paths['melody3'][0]))
+        return _load_melody3(
+            os.path.join(self._data_home, self._track_paths['melody3'][0])
+        )
+
+    @property
+    def audio(self):
+        return librosa.load(self.audio_path, sr=None, mono=True)
 
 
 def download(data_home=None):
@@ -108,28 +152,28 @@ def download(data_home=None):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
     """
 
-    save_path = utils.get_save_path(data_home)
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    print(
-        """
+    info_message = """
         To download this dataset, visit:
         https://zenodo.org/record/2628782#.XKZdABNKh24
         and request access.
 
         Once downloaded, unzip the file MedleyDB-Melody.zip
-        and place the result in:
-        {save_path}
+        and copy the result to:
+        {data_home}
     """.format(
-            save_path=save_path
-        )
+        data_home=data_home
     )
 
+    download_utils.downloader(info_message=info_message)
 
-def validate(dataset_path, data_home=None):
+
+def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
     Args:
-        dataset_path (str): MedleyDB melody dataset local path
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
@@ -140,8 +184,11 @@ def validate(dataset_path, data_home=None):
             index but has a different checksum compare to the reference checksum
 
     """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, dataset_path
+        INDEX, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -167,10 +214,9 @@ def load(data_home=None):
 
     """
 
-    save_path = utils.get_save_path(data_home)
-    dataset_path = os.path.join(save_path, DATASET_DIR)
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    validate(dataset_path, data_home)
     medleydb_melody_data = {}
     for key in track_ids():
         medleydb_melody_data[key] = Track(key, data_home=data_home)
@@ -182,15 +228,16 @@ def _load_melody(melody_path):
         return None
     times = []
     freqs = []
-    confidence = []
     with open(melody_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
         for line in reader:
             times.append(float(line[0]))
             freqs.append(float(line[1]))
-            confidence.append(0 if line[1] == '0' else 1)
 
-    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
+    times = np.array(times)
+    freqs = np.array(freqs)
+    confidence = (freqs > 0).astype(float)
+    melody_data = utils.F0Data(times, freqs, confidence)
     return melody_data
 
 
@@ -199,15 +246,16 @@ def _load_melody3(melody_path):
         return None
     times = []
     freqs = []
-    confidence = []
     with open(melody_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
         for line in reader:
             times.append(float(line[0]))
             freqs.append([float(v) for v in line[1:]])
-            confidence.append(0 if line[1] == '0' else 1)
 
-    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
+    times = np.array(times)
+    freqs = np.array(freqs)
+    confidence = (freqs > 0).astype(float)
+    melody_data = utils.F0Data(times, freqs, confidence)
     return melody_data
 
 
@@ -217,11 +265,12 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = utils.get_local_path(
-        data_home, os.path.join(DATASET_DIR, 'medleydb_melody_metadata.json')
-    )
+    metadata_path = os.path.join(data_home, 'medleydb_melody_metadata.json')
+
     if not os.path.exists(metadata_path):
-        raise OSError('Could not find MedleyDB-Melody metadata file')
+        logging.info('Metadata file {} not found.'.format(metadata_path))
+        return None
+
     with open(metadata_path, 'r') as fhandle:
         metadata = json.load(fhandle)
 
