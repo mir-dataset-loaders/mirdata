@@ -31,19 +31,17 @@ def make_dali_index(data_path):
     dali_index = {}
     for trackid in dali_metadata.keys():
         dali_index[trackid] = {}
-        dali_index[trackid]['audio'] = ['DALI/audio/'+trackid+'.mp3']
+        dali_index[trackid]['audio'] = ['audio/'+trackid+'.mp3']
         audio_checksum = md5(
             os.path.join(data_path, 'audio/', '{}.mp3'.format(trackid)))
         dali_index[trackid]['audio'].append(audio_checksum)
-        dali_index[trackid]['annot'] = ['DALI/annotations/'+trackid+'.gz']
+        dali_index[trackid]['annot'] = ['annotations/'+trackid+'.gz']
         annot_checksum = md5(
             os.path.join(data_path, 'annotations/', '{}.gz'.format(trackid)))
         dali_index[trackid]['annot'].append(annot_checksum)
 
     with open(DALI_INDEX_PATH, 'w') as fhandle:
         json.dump(dali_index, fhandle, indent=2)
-
-    return
 
 
 def main(args):
