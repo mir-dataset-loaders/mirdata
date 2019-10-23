@@ -151,12 +151,16 @@ class Track(object):
         return 2.0 * mixed_audio, sr
 
     def to_jams(self):
-        return jams_utils.jams_converter(f0_data=[(self.f0, None)], lyrics_data=[(self.lyrics, None)],
-                                         metadata={'section': self.section,
-                                                   'singer_id': self.singer_id,
-                                                   'track_id': self.track_id,
-                                                   'song_id': self.song_id
-                                                   })
+        return jams_utils.jams_converter(
+            f0_data=[(self.f0, None)],
+            lyrics_data=[(self.lyrics, None)],
+            metadata={
+                'section': self.section,
+                'singer_id': self.singer_id,
+                'track_id': self.track_id,
+                'song_id': self.song_id,
+            },
+        )
 
 
 def download(data_home=None, force_overwrite=False):

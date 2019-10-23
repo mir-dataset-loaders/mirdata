@@ -180,15 +180,27 @@ class Track(object):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
     def to_jams(self):
-        return jams_utils.jams_converter(multi_section_data=[(
-                                         [(self.sections_annotator_1_uppercase, 0),
-                                          (self.sections_annotator_1_lowercase, 1)], 'annotator_1'),
-                                         (
-                                         [(self.sections_annotator_2_uppercase, 0),
-                                         (self.sections_annotator_2_lowercase, 1)], 'annotator_2'),
-                                         ],
-                                         metadata={key: self._track_metadata[key]
-                                                   for key in self._track_metadata.keys()})
+        return jams_utils.jams_converter(
+            multi_section_data=[
+                (
+                    [
+                        (self.sections_annotator_1_uppercase, 0),
+                        (self.sections_annotator_1_lowercase, 1),
+                    ],
+                    'annotator_1',
+                ),
+                (
+                    [
+                        (self.sections_annotator_2_uppercase, 0),
+                        (self.sections_annotator_2_lowercase, 1),
+                    ],
+                    'annotator_2',
+                ),
+            ],
+            metadata={
+                key: self._track_metadata[key] for key in self._track_metadata.keys()
+            },
+        )
 
 
 def download(data_home=None, force_overwrite=False):
@@ -294,13 +306,18 @@ def _load_sections(sections_path):
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
-    return utils.SectionData(np.array([times_revised[:-1], times_revised[1:]]).T,
-                             list(secs_revised[:-1]))
+    return utils.SectionData(
+        np.array([times_revised[:-1], times_revised[1:]]).T, list(secs_revised[:-1])
+    )
+
 
 def _load_metadata(data_home):
 
     metadata_path = os.path.join(
-        data_home, os.path.join('salami-data-public-hierarchy-corrections', 'metadata', 'metadata.csv')
+        data_home,
+        os.path.join(
+            'salami-data-public-hierarchy-corrections', 'metadata', 'metadata.csv'
+        ),
     )
 
     if not os.path.exists(metadata_path):

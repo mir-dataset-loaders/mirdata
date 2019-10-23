@@ -113,9 +113,13 @@ class Track(object):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
     def to_jams(self):
-        return jams_utils.jams_converter(beat_data=[(self.beats, None)], section_data=[(self.sections, None)],
-                                         chord_data=[(self.chords, None)], key_data=[(self.key, None)],
-                                         metadata={'artist':'The Beatles', 'title':self.title})
+        return jams_utils.jams_converter(
+            beat_data=[(self.beats, None)],
+            section_data=[(self.sections, None)],
+            chord_data=[(self.chords, None)],
+            key_data=[(self.key, None)],
+            metadata={'artist': 'The Beatles', 'title': self.title},
+        )
 
 
 def download(data_home=None, force_overwrite=False):
@@ -253,9 +257,7 @@ def _load_chords(chords_path):
             end_times.append(float(line[1]))
             chords.append(line[2])
 
-    chord_data = utils.ChordData(
-        np.array(start_times), np.array(end_times), chords
-    )
+    chord_data = utils.ChordData(np.array(start_times), np.array(end_times), chords)
 
     return chord_data
 
@@ -302,8 +304,7 @@ def _load_sections(sections_path):
             end_times.append(float(line[1]))
             sections.append(line[3])
 
-    section_data = utils.SectionData(
-        np.array([start_times, end_times]).T, sections)
+    section_data = utils.SectionData(np.array([start_times, end_times]).T, sections)
 
     return section_data
 

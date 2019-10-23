@@ -113,8 +113,11 @@ class Track(object):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
     def to_jams(self):
-        return jams_utils.jams_converter(beat_data=[(self.beats, None)], section_data=[(self.sections, None)],
-                                         metadata=self._track_metadata)
+        return jams_utils.jams_converter(
+            beat_data=[(self.beats, None)],
+            section_data=[(self.sections, None)],
+            metadata=self._track_metadata,
+        )
 
 
 def download(data_home=None, force_overwrite=False):
@@ -265,11 +268,14 @@ def _duration_to_sec(duration):
             if len(duration.split(':')) <= 2:
                 minutes, secs = duration.split(':')
             else:
-                minutes, secs, _ = duration.split(':')  # mistake in annotation in RM-J044
-            total_secs = float(minutes)*60 + float(secs)
+                minutes, secs, _ = duration.split(
+                    ':'
+                )  # mistake in annotation in RM-J044
+            total_secs = float(minutes) * 60 + float(secs)
             return total_secs
         else:
             return float(duration)
+
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-c.csv')

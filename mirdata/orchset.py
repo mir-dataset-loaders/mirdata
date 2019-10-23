@@ -167,8 +167,9 @@ class Track(object):
         return librosa.load(self.audio_path_stereo, sr=None, mono=False)
 
     def to_jams(self):
-        return jams_utils.jams_converter(f0_data=[(self.melody, None)],
-                                         metadata=self._track_metadata)
+        return jams_utils.jams_converter(
+            f0_data=[(self.melody, None)], metadata=self._track_metadata
+        )
 
 
 def download(data_home=None, force_overwrite=False):

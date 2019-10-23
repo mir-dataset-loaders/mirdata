@@ -115,8 +115,9 @@ class Track(object):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
     def to_jams(self):
-        return jams_utils.jams_converter(f0_data=[(self.pitch, None)],
-                                         metadata=self._track_metadata)
+        return jams_utils.jams_converter(
+            f0_data=[(self.pitch, None)], metadata=self._track_metadata
+        )
 
 
 def download(data_home=None):
