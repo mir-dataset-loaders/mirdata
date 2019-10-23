@@ -52,9 +52,7 @@ class Track(object):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in INDEX:
-            raise ValueError(
-                '{} is not a valid track ID in DALI'.format(track_id)
-            )
+            raise ValueError('{} is not a valid track ID in DALI'.format(track_id))
 
         if data_home is None:
             data_home = utils.get_default_dataset_path(DATASET_DIR)
@@ -67,8 +65,10 @@ class Track(object):
             _reload_metadata(data_home)
 
         self._track_metadata = METADATA[track_id]
-        self.audio_metadata = {'url': self._track_metadata['audio']['url'],
-                               'working': self._track_metadata['audio']['working']}
+        self.audio_metadata = {
+            'url': self._track_metadata['audio']['url'],
+            'working': self._track_metadata['audio']['working'],
+        }
         self.ground_truth = self._track_metadata['ground-truth']
         self.artist = self._track_metadata['artist']
         self.title = self._track_metadata['title']
@@ -85,38 +85,41 @@ class Track(object):
                     setattr(self, key, value)
                 elif key == 'audio':
                     self.audio_metadata = {
-                        'url': value['url'], 'working': value['working']}
+                        'url': value['url'],
+                        'working': value['working'],
+                    }
                 elif key == 'ground-truth':
                     self.ground_truth = value
 
     @utils.cached_property
     def notes(self):
         return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]),
-            'notes')
+            os.path.join(self._data_home, self._track_paths['annot'][0]), 'notes'
+        )
 
     @utils.cached_property
     def words(self):
         return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]),
-            'words')
+            os.path.join(self._data_home, self._track_paths['annot'][0]), 'words'
+        )
 
     @utils.cached_property
     def lines(self):
         return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]),
-            'lines')
+            os.path.join(self._data_home, self._track_paths['annot'][0]), 'lines'
+        )
 
     @utils.cached_property
     def paragraphs(self):
         return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]),
-            'paragraphs')
+            os.path.join(self._data_home, self._track_paths['annot'][0]), 'paragraphs'
+        )
 
     @utils.cached_property
     def annotation_object(self):
         return _load_annotations_class(
-            os.path.join(self._data_home, self._track_paths['annot'][0]))
+            os.path.join(self._data_home, self._track_paths['annot'][0])
+        )
 
     @property
     def audio(self):
@@ -151,7 +154,7 @@ def download(data_home=None):
 
     """.format(
             save_path=os.path.join(data_home, DATASET_DIR, 'annotatios'),
-            audio_path=os.path.join(data_home, DATASET_DIR, 'audio')
+            audio_path=os.path.join(data_home, DATASET_DIR, 'audio'),
         )
     )
 
@@ -214,8 +217,9 @@ def _reload_metadata(data_home):
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home,
-                                 os.path.join(DATASET_DIR, 'dali_metadata.json'))
+    metadata_path = os.path.join(
+        data_home, os.path.join(DATASET_DIR, 'dali_metadata.json')
+    )
     if not os.path.exists(metadata_path):
         raise OSError('Could not find DALI metadata file')
     with open(metadata_path, 'r') as fhandle:
