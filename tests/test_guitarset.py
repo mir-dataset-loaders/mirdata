@@ -57,12 +57,12 @@ def test_load_beats():
 
 
 def test_load_chords():
-    assert np.allclose(TRACK.leadsheet_chords.intervals[0, :], [0])
-    assert np.allclose(TRACK.leadsheet_chords.intervals[1, :], [2])
+    assert np.allclose(TRACK.leadsheet_chords.intervals[:, 0], [0])
+    assert np.allclose(TRACK.leadsheet_chords.intervals[:, 1], [2])
     assert TRACK.leadsheet_chords.labels == ['G:maj']
 
-    assert np.allclose(TRACK.inferred_chords.intervals[0, :], [0])
-    assert np.allclose(TRACK.inferred_chords.intervals[1, :], [2])
+    assert np.allclose(TRACK.inferred_chords.intervals[:, 0], [0])
+    assert np.allclose(TRACK.inferred_chords.intervals[:, 1], [2])
     assert TRACK.inferred_chords.labels == ['G:maj7/1']
 
 
