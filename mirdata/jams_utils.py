@@ -51,12 +51,6 @@ def jams_converter(
 
     # metadata
     if metadata is not None:
-        if 'duration_sec' in metadata.keys():  # match name to jams attribute
-            metadata['duration'] = metadata.pop('duration_sec')
-        if 'Title' in metadata.keys():  # match name to jams attribute
-            metadata['title'] = metadata.pop('Title')
-        if 'Artist' in metadata.keys():  # match name to jams attribute
-            metadata['artist'] = metadata.pop('Artist')
         for key in metadata:
             if hasattr(jam.file_metadata, key):
                 setattr(jam.file_metadata, key, metadata[key])
@@ -164,8 +158,8 @@ def beats_to_jams(beats):
             raise TypeError('Type should be BeatData.')
         for t, p in zip(beats[0].beat_times, beats[0].beat_positions):
             jannot_beat.append(time=t, duration=0.0, value=p)
-        if beats[1] is not None:
-            jannot_beat.sandbox = jams.Sandbox(name=beats[1])
+    if beats[1] is not None:
+        jannot_beat.sandbox = jams.Sandbox(name=beats[1])
     return jannot_beat
 
 
@@ -186,12 +180,13 @@ def chords_to_jams(chords):
     jannot_chord = jams.Annotation(namespace='chord')
     jannot_chord.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if chords[0] is not None:
-        if type(chords[0]) != utils.ChordData:
-            raise TypeError('Type should be ChordData.')
-        for beg, end, ch in zip(
-            chords[0].start_times, chords[0].end_times, chords[0].chords
-        ):
-            jannot_chord.append(time=beg, duration=end - beg, value=ch)
+        if chords[0] is not None:
+            if type(chords[0]) != utils.ChordData:
+                raise TypeError('Type should be ChordData.')
+            for beg, end, ch in zip(
+                chords[0].intervals[:, 0], chords[0].intervals[:, 1], chords[0].labels
+            ):
+                jannot_chord.append(time=beg, duration=end - beg, value=ch)
     if chords[1] is not None:
         jannot_chord.sandbox = jams.Sandbox(name=chords[1])
     return jannot_chord

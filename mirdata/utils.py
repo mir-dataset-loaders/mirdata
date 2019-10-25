@@ -121,7 +121,7 @@ SectionData = namedtuple('SectionData', ['intervals', 'labels'])
 
 BeatData = namedtuple('BeatData', ['beat_times', 'beat_positions'])
 
-ChordData = namedtuple('ChordData', ['start_times', 'end_times', 'chords'])
+ChordData = namedtuple('ChordData', ['intervals', 'labels'])
 
 KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
 

@@ -48,7 +48,7 @@ def test_track():
     assert track.title == 'Forget about It'
     assert track.composer == 'Shinya Iguchi'
     assert track.artist == 'Shinya Iguchi (Male)'
-    assert track.duration_sec == 262
+    assert track.duration == 262
 
     # test that cached properties don't fail and have the expected type
     assert type(track.sections) is utils.SectionData
@@ -64,7 +64,7 @@ def test_track():
         + "audio_path=tests/resources/mir_datasets/RWC-Genre/audio/rwc-g-m01/2.wav, "
         + "piece_number=No. 2, suffix=M01, track_number=Tr. 02, category=Pop, "
         + "sub_category=Pop, title=Forget about It, composer=Shinya Iguchi, "
-        + "artist=Shinya Iguchi (Male), duration_sec=262.0, "
+        + "artist=Shinya Iguchi (Male), duration=262.0, "
         + "sections=SectionData('intervals', 'labels'), "
         + "beats=BeatData('beat_times', 'beat_positions'))"
     )
@@ -101,7 +101,7 @@ def test_load_metadata():
         'title': 'Forget about It',
         'composer': 'Shinya Iguchi',
         'artist': 'Shinya Iguchi (Male)',
-        'duration_sec': 262,
+        'duration': 262,
     }
 
     metadata_none = rwc_genre._load_metadata('asdf/asdf')

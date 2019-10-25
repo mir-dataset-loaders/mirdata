@@ -78,7 +78,7 @@ class Track(object):
                 'title': None,
                 'artist': None,
                 'singer_information': None,
-                'duration_sec': None,
+                'duration': None,
                 'tempo': None,
                 'instruments': None,
                 'drum_information': None,
@@ -92,7 +92,7 @@ class Track(object):
         self.title = self._track_metadata['title']
         self.artist = self._track_metadata['artist']
         self.singer_information = self._track_metadata['singer_information']
-        self.duration_sec = self._track_metadata['duration_sec']
+        self.duration = self._track_metadata['duration']
         self.tempo = self._track_metadata['tempo']
         self.instruments = self._track_metadata['instruments']
         self.drum_information = self._track_metadata['drum_information']
@@ -101,10 +101,12 @@ class Track(object):
         repr_string = (
             "RWC-Popular Track(track_id={}, audio_path={}, "
             + "piece_number={}, suffix={}, track_number={}, title={}, "
-            + "artist={}, singer_information={}, duration_sec={}, "
+            + "artist={}, singer_information={}, duration={}, "
             + "tempo={}, instruments={}, drum_information={}, "
             + "sections=SectionData('intervals', 'labels'), "
             + "beats=BeatData('beat_times', 'beat_positions'))"
+            + "chords=ChordData('intervals', 'labels'), "
+            + "vocal_instrument_activity=EventData('start_times', 'end_times', 'event')"
         )
         return repr_string.format(
             self.track_id,
@@ -115,7 +117,7 @@ class Track(object):
             self.title,
             self.artist,
             self.singer_information,
-            self.duration_sec,
+            self.duration,
             self.tempo,
             self.instruments,
             self.drum_information,
@@ -255,7 +257,7 @@ def _load_chords(chords_path):
                 ends.append(float(line[1]))
                 chords.append(line[2])
 
-    return utils.ChordData(np.array(begs), np.array(ends), chords)
+    return utils.ChordData(np.array([begs, ends]).T, chords)
 
 
 def _load_voca_inst(voca_inst_path):
@@ -316,7 +318,7 @@ def _load_metadata(data_home):
             'title': line[3],
             'artist': line[4],
             'singer_information': line[5],
-            'duration_sec': _duration_to_sec(line[6]),
+            'duration': _duration_to_sec(line[6]),
             'tempo': line[7],
             'instruments': line[8],
             'drum_information': line[9],

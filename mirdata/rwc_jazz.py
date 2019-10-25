@@ -61,7 +61,7 @@ class Track(object):
                 'track_number': None,
                 'title': None,
                 'artist': None,
-                'duration_sec': None,
+                'duration': None,
                 'variation': None,
                 'instruments': None,
             }
@@ -73,7 +73,7 @@ class Track(object):
         self.track_number = self._track_metadata['track_number']
         self.title = self._track_metadata['title']
         self.artist = self._track_metadata['artist']
-        self.duration_sec = self._track_metadata['duration_sec']
+        self.duration = self._track_metadata['duration']
         self.variation = self._track_metadata['variation']
         self.instruments = self._track_metadata['instruments']
 
@@ -81,7 +81,7 @@ class Track(object):
         repr_string = (
             "RWC-Jazz Track(track_id={}, audio_path={}, "
             + "piece_number={}, suffix={}, track_number={}, title={}, "
-            + "artist={}, duration_sec={}, variation={}, instruments={}, "
+            + "artist={}, duration={}, variation={}, instruments={}, "
             + "sections=SectionData('intervals', 'labels'), "
             + "beats=BeatData('beat_times', 'beat_positions'))"
         )
@@ -93,7 +93,7 @@ class Track(object):
             self.track_number,
             self.title,
             self.artist,
-            self.duration_sec,
+            self.duration,
             self.variation,
             self.instruments,
         )
@@ -231,7 +231,7 @@ def _load_metadata(data_home):
             'track_number': line[2],
             'title': line[3],
             'artist': line[4],
-            'duration_sec': _duration_to_sec(line[5]),
+            'duration': _duration_to_sec(line[5]),
             'variation': line[6],
             'instruments': line[7],
         }

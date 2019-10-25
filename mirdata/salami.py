@@ -57,7 +57,7 @@ class Track(object):
         source
         annotator_1_id
         annotator_2_id
-        duration_sec
+        duration
         title
         artist
         annotator_1_time
@@ -95,7 +95,7 @@ class Track(object):
                 'source': None,
                 'annotator_1_id': None,
                 'annotator_2_id': None,
-                'duration_sec': None,
+                'duration': None,
                 'title': None,
                 'artist': None,
                 'annotator_1_time': None,
@@ -109,7 +109,7 @@ class Track(object):
         self.source = self._track_metadata['source']
         self.annotator_1_id = self._track_metadata['annotator_1_id']
         self.annotator_2_id = self._track_metadata['annotator_2_id']
-        self.duration_sec = self._track_metadata['duration_sec']
+        self.duration = self._track_metadata['duration']
         self.title = self._track_metadata['title']
         self.artist = self._track_metadata['artist']
         self.annotator_1_time = self._track_metadata['annotator_1_time']
@@ -120,7 +120,7 @@ class Track(object):
     def __repr__(self):
         repr_string = (
             "Salami Track(track_id={}, audio_path={}, source={}, "
-            + "title={}, artist={}, duration_sec={}, annotator_1_id={}, "
+            + "title={}, artist={}, duration={}, annotator_1_id={}, "
             + "annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, "
             + "broad_genre={}, genre={}, "
             + "sections_annotator_1_uppercase=SectionData('intervals', 'labels'), "
@@ -134,7 +134,7 @@ class Track(object):
             self.source,
             self.title,
             self.artist,
-            self.duration_sec,
+            self.duration,
             self.annotator_1_id,
             self.annotator_2_id,
             self.annotator_1_time,
@@ -197,9 +197,7 @@ class Track(object):
                     'annotator_2',
                 ),
             ],
-            metadata={
-                key: self._track_metadata[key] for key in self._track_metadata.keys()
-            },
+            metadata=self._track_metadata,
         )
 
 
@@ -343,7 +341,7 @@ def _load_metadata(data_home):
             'source': line[1],
             'annotator_1_id': line[2],
             'annotator_2_id': line[3],
-            'duration_sec': duration,
+            'duration': duration,
             'title': line[7],
             'artist': line[8],
             'annotator_1_time': line[10],

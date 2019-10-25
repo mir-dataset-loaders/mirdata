@@ -9,11 +9,12 @@ from mirdata import medley_solos_db, utils
 from tests.test_utils import DEFAULT_DATA_HOME
 
 
-
 def test_track():
     # test data home None
     track_default = medley_solos_db.Track('d07b1fc0-567d-52c2-fef4-239f31c9d40e')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'Medley-solos-DB')
+    assert track_default._data_home == os.path.join(
+        DEFAULT_DATA_HOME, 'Medley-solos-DB'
+    )
 
     data_home = 'tests/resources/mir_datasets/Medley-solos-DB'
 
@@ -21,18 +22,22 @@ def test_track():
         medley_solos_db.Track('asdfasdf', data_home=data_home)
 
     track = medley_solos_db.Track(
-        'd07b1fc0-567d-52c2-fef4-239f31c9d40e', data_home=data_home)
+        'd07b1fc0-567d-52c2-fef4-239f31c9d40e', data_home=data_home
+    )
 
     assert track.track_id == 'd07b1fc0-567d-52c2-fef4-239f31c9d40e'
     assert track._data_home == data_home
     assert track._track_paths == {
-        'audio': ['audio/Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav',
-        '53ed28731399b67425775be598b50d1c']
+        'audio': [
+            'audio/Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav',
+            '53ed28731399b67425775be598b50d1c',
+        ]
     }
     assert (
         track.audio_path
         == 'tests/resources/mir_datasets/Medley-solos-DB/audio/'
-        + 'Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav')
+        + 'Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav'
+    )
     assert track.instrument == 'flute'
     assert track.instrument_id == 3
     assert track.song_id == 210

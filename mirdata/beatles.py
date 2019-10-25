@@ -74,7 +74,7 @@ class Track(object):
         repr_string = (
             "Beatles Track(track_id={}, audio_path={}, title={}, "
             + "beats=BeatData('beat_times, 'beat_positions'), "
-            + "chords=ChordData('start_times', 'end_times', 'chords'), "
+            + "chords=ChordData('intervals', 'labels'), "
             + "key=KeyData('start_times', 'end_times', 'keys'), "
             + "sections=SectionData('intervals', 'labels'))"
         )
@@ -257,7 +257,7 @@ def _load_chords(chords_path):
             end_times.append(float(line[1]))
             chords.append(line[2])
 
-    chord_data = utils.ChordData(np.array(start_times), np.array(end_times), chords)
+    chord_data = utils.ChordData(np.array([start_times, end_times]).T, chords)
 
     return chord_data
 

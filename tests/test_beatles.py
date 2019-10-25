@@ -66,7 +66,7 @@ def test_track():
         + "01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav, "
         + "title=11_-_Do_You_Want_To_Know_A_Secret, "
         + "beats=BeatData('beat_times, 'beat_positions'), "
-        + "chords=ChordData('start_times', 'end_times', 'chords'), "
+        + "chords=ChordData('intervals', 'labels'), "
         + "key=KeyData('start_times', 'end_times', 'keys'), "
         + "sections=SectionData('intervals', 'labels'))"
     )
@@ -124,17 +124,16 @@ def test_load_chords():
     chord_data = beatles._load_chords(chords_path)
 
     assert type(chord_data) == utils.ChordData
-    assert type(chord_data.start_times) == np.ndarray
-    assert type(chord_data.end_times) == np.ndarray
-    assert type(chord_data.chords) == list
+    assert type(chord_data.intervals) == np.ndarray
+    assert type(chord_data.labels) == list
 
     assert np.array_equal(
-        chord_data.start_times, np.array([0.000000, 4.586464, 6.989730])
+        chord_data.intervals[:, 0], np.array([0.000000, 4.586464, 6.989730])
     )
     assert np.array_equal(
-        chord_data.end_times, np.array([0.497838, 6.989730, 9.985104])
+        chord_data.intervals[:, 1], np.array([0.497838, 6.989730, 9.985104])
     )
-    assert np.array_equal(chord_data.chords, np.array(['N', 'E:min', 'G']))
+    assert np.array_equal(chord_data.labels, np.array(['N', 'E:min', 'G']))
 
     # load a file which doesn't exist
     chord_none = beatles._load_chords('fake/file/path')

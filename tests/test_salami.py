@@ -48,7 +48,7 @@ def test_track():
     assert track.source == 'Codaich'
     assert track.annotator_1_id == '5'
     assert track.annotator_2_id == '8'
-    assert track.duration_sec == 264
+    assert track.duration == 264
     assert track.title == 'For_God_And_Country'
     assert track.artist == 'The_Smashing_Pumpkins'
     assert track.annotator_1_time == '37'
@@ -71,7 +71,7 @@ def test_track():
         "Salami Track(track_id=2, "
         + "audio_path=tests/resources/mir_datasets/Salami/audio/2.mp3, "
         + "source=Codaich, title=For_God_And_Country, "
-        + "artist=The_Smashing_Pumpkins, duration_sec=264.0, annotator_1_id=5, "
+        + "artist=The_Smashing_Pumpkins, duration=264.0, annotator_1_id=5, "
         + "annotator_2_id=8, annotator_1_time=37, annotator_2_time=45, "
         + "broad_genre=popular, genre=Alternative_Pop___Rock, "
         + "sections_annotator_1_uppercase=SectionData('intervals', 'labels'), "
@@ -88,7 +88,7 @@ def test_track():
     assert track.source == 'Codaich'
     assert track.annotator_1_id == '16'
     assert track.annotator_2_id == '14'
-    assert track.duration_sec == 209
+    assert track.duration == 209
     assert track.title == 'Sull__aria'
     assert track.artist == 'Compilations'
     assert track.annotator_1_time == '20'
@@ -203,7 +203,7 @@ def test_load_metadata():
         'source': 'Codaich',
         'annotator_1_id': '5',
         'annotator_2_id': '8',
-        'duration_sec': 264,
+        'duration': 264,
         'title': 'For_God_And_Country',
         'artist': 'The_Smashing_Pumpkins',
         'annotator_1_time': '37',
