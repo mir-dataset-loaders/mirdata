@@ -47,6 +47,7 @@ ID_MAPPING_REMOTE = download_utils.RemoteFileMetadata(
     destination_dir=None,
 )
 
+
 def _load_metadata(data_home):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)

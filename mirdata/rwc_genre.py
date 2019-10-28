@@ -59,7 +59,7 @@ def _load_metadata(data_home):
             continue
 
         p = '00' + line[0].split('.')[1][1:]
-        track_id = 'RM-G{}'.format(p[len(p) - 3:])
+        track_id = 'RM-G{}'.format(p[len(p) - 3 :])
         metadata_index[track_id] = {
             'piece_number': line[0],
             'suffix': line[1],
