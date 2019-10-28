@@ -22,13 +22,13 @@ musical instrument recognition in the publications of Lostanlen and Cella
 (ISMIR 2016) and Andén et al. (IEEE TSP 2019).
 
 Attributes:
-    INDEX (dict): {track_id: track_data}.
+    DATA.index (dict): {track_id: track_data}.
         track_id is a JSON data loaded from 'index/'
 
     DATASET_DIR (str): The directory name for Medley-solos-DB.
         Set to `'Medley-solos-DB'`.
 
-    METADATA (dict): The metadata of Medley-solos-DB.
+    DATA.metadata (dict): The metadata of Medley-solos-DB.
 """
 from __future__ import absolute_import
 from __future__ import division
@@ -42,10 +42,7 @@ import os
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
-INDEX = utils.load_json_index("medley_solos_db_index.json")
 DATASET_DIR = "Medley-solos-DB"
-
-
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename="Medley-solos-DB_metadata.csv",
     url="https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1",
@@ -59,7 +56,35 @@ AUDIO_REMOTE = download_utils.RemoteFileMetadata(
     destination_dir="audio",
 )
 
-METADATA = None
+
+def _load_metadata(data_home):
+    metadata_path = os.path.join(
+        data_home, "annotation", "Medley-solos-DB_metadata.csv"
+    )
+
+    if not os.path.exists(metadata_path):
+        logging.info("Metadata file {} not found.".format(metadata_path))
+        return None
+
+    metadata_index = {}
+    with open(metadata_path, "r") as fhandle:
+        csv_reader = csv.reader(fhandle, delimiter=",")
+        next(csv_reader)
+        for row in csv_reader:
+            subset, instrument_str, instrument_id, song_id, track_id = row
+            metadata_index[str(track_id)] = {
+                "subset": str(subset),
+                "instrument": str(instrument_str),
+                "instrument_id": int(instrument_id),
+                "song_id": int(song_id),
+            }
+
+    metadata_index["data_home"] = data_home
+
+    return metadata_index
+
+
+DATA = utils.LargeData("medley_solos_db_index.json", _load_metadata)
 
 
 class Track(object):
@@ -78,7 +103,7 @@ class Track(object):
     """
 
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError(
                 "{} is not a valid track ID in Medley-solos-DB".format(track_id)
             )
@@ -89,13 +114,11 @@ class Track(object):
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
-        if METADATA is None or METADATA["data_home"] != data_home:
-            _reload_metadata(data_home)
-
-        if METADATA is not None and track_id in METADATA:
-            self._track_metadata = METADATA[track_id]
+        metadata = DATA.metadata(data_home)
+        if metadata is not None and track_id in metadata:
+            self._track_metadata = metadata[track_id]
         else:
             self._track_metadata = {
                 "instrument": None,
@@ -148,7 +171,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 def validate(data_home=None, silence=False):
@@ -169,7 +192,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -186,41 +209,9 @@ def load(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     medley_solos_db_data = {}
-    for key in INDEX.keys():
+    for key in DATA.index.keys():
         medley_solos_db_data[key] = Track(key, data_home=data_home)
     return medley_solos_db_data
-
-
-def _reload_metadata(data_home):
-    global METADATA
-    METADATA = _load_metadata(data_home=data_home)
-
-
-def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, "annotation", "Medley-solos-DB_metadata.csv"
-    )
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata_index = {}
-    with open(metadata_path, "r") as fhandle:
-        csv_reader = csv.reader(fhandle, delimiter=",")
-        next(csv_reader)
-        for row in csv_reader:
-            subset, instrument_str, instrument_id, song_id, track_id = row
-            metadata_index[str(track_id)] = {
-                "subset": str(subset),
-                "instrument": str(instrument_str),
-                "instrument_id": int(instrument_id),
-                "song_id": int(song_id),
-            }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
 
 
 def cite():

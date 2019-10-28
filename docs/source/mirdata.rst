@@ -124,3 +124,11 @@ mirdata.utils
    :undoc-members:
    :show-inheritance:
 
+
+mirdata.download_utils
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.download_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
