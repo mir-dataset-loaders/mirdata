@@ -164,3 +164,22 @@ class cached_property(object):
             return self
         value = obj.__dict__[self.func.__name__] = self.func(obj)
         return value
+
+
+class LargeData(object):
+    def __init__(self, index_path, metadata_load_fn=None):
+        self._metadata = None
+        self.index_path = index_path
+        self.metadata_load_fn = metadata_load_fn
+
+    @cached_property
+    def index(self):
+        return load_json_index(self.index_path)
+
+    def metadata(self, data_home):
+        if self.metadata_load_fn is None:
+            raise NotImplementedError
+
+        if self._metadata is None or self._metadata['data_home'] != data_home:
+            self._metadata = self.metadata_load_fn(data_home)
+        return self._metadata
