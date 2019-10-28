@@ -8,10 +8,10 @@ Details can be found at http://ddmal.music.mcgill.ca/research/salami/annotations
 Attributes:
     DIR (str): The directory name for SALAMI dataset. Set to `'Salami'`.
 
-    INDEX (dict): {track_id: track_data}.
+    DATA.index (dict): {track_id: track_data}.
         track_data is a jason data loaded from `index/`
 
-    METADATA (None): (todo?)
+    DATA.metadata (None): (todo?)
 
     ANNOT_REMOTE (RemoteFileMetadata (namedtuple)): metadata
         of SALAMI dataset. It includes the annotation file name, annotation
@@ -28,8 +28,6 @@ import os
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
-INDEX = utils.load_json_index('salami_index.json')
-METADATA = None
 DATASET_DIR = 'Salami'
 ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
     filename='salami-data-public-master.zip',
@@ -37,6 +35,49 @@ ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
     checksum='f88b3455f1f2443458d094f603c0c1c7',
     destination_dir=None,
 )
+
+
+def _load_metadata(data_home):
+
+    metadata_path = os.path.join(
+        data_home, os.path.join('salami-data-public-master', 'metadata', 'metadata.csv')
+    )
+
+    if not os.path.exists(metadata_path):
+        logging.info('Metadata file {} not found.'.format(metadata_path))
+        return None
+
+    with open(metadata_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=',')
+        raw_data = []
+        for line in reader:
+            if line[0] == 'SONG ID':
+                continue
+            raw_data.append(line)
+
+    metadata_index = {}
+    for line in raw_data:
+        track_id = line[0]
+
+        metadata_index[track_id] = {
+            'source': line[1],
+            'annotator_1_id': line[2],
+            'annotator_2_id': line[3],
+            'duration_sec': line[5],
+            'title': line[7],
+            'artist': line[8],
+            'annotator_1_time': line[10],
+            'annotator_2_time': line[11],
+            'class': line[14],
+            'genre': line[15],
+        }
+
+    metadata_index['data_home'] = data_home
+
+    return metadata_index
+
+
+DATA = utils.LargeData('salami_index.json', _load_metadata)
 
 
 class Track(object):
@@ -69,7 +110,7 @@ class Track(object):
     """
 
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
 
         self.track_id = track_id
@@ -78,13 +119,11 @@ class Track(object):
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
-        if METADATA is None or METADATA['data_home'] != data_home:
-            _reload_metadata(data_home)
-
-        if METADATA is not None and track_id in METADATA:
-            self._track_metadata = METADATA[track_id]
+        metadata = DATA.metadata(data_home)
+        if metadata is not None and track_id in metadata:
+            self._track_metadata = metadata[track_id]
         else:
             # annotations with missing metadata
             self._track_metadata = {
@@ -228,7 +267,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -239,7 +278,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 def load(data_home=None):
@@ -284,51 +323,6 @@ def _load_sections(sections_path):
         np.array(times_revised)[1:],
         np.array(secs_revised)[:-1],
     )
-
-
-def _load_metadata(data_home):
-
-    metadata_path = os.path.join(
-        data_home, os.path.join('salami-data-public-master', 'metadata', 'metadata.csv')
-    )
-
-    if not os.path.exists(metadata_path):
-        logging.info('Metadata file {} not found.'.format(metadata_path))
-        return None
-
-    with open(metadata_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=',')
-        raw_data = []
-        for line in reader:
-            if line[0] == 'SONG ID':
-                continue
-            raw_data.append(line)
-
-    metadata_index = {}
-    for line in raw_data:
-        track_id = line[0]
-
-        metadata_index[track_id] = {
-            'source': line[1],
-            'annotator_1_id': line[2],
-            'annotator_2_id': line[3],
-            'duration_sec': line[5],
-            'title': line[7],
-            'artist': line[8],
-            'annotator_1_time': line[10],
-            'annotator_2_time': line[11],
-            'class': line[14],
-            'genre': line[15],
-        }
-
-    metadata_index['data_home'] = data_home
-
-    return metadata_index
-
-
-def _reload_metadata(data_home):
-    global METADATA
-    METADATA = _load_metadata(data_home=data_home)
 
 
 def cite():

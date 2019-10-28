@@ -10,13 +10,13 @@ Details can be found at https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 
 Attributes:
-    INDEX (dict): {track_id: track_data}.
+    DATA.index (dict): {track_id: track_data}.
         track_data is a jason data loaded from `index/`
 
     DIR (str): The directory name for ORCHSET.
         Set to `'Orchset'`.
 
-    METADATA
+    DATA.metadata
 
 """
 from __future__ import absolute_import
@@ -33,7 +33,6 @@ import shutil
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
-INDEX = utils.load_json_index('orchset_index.json')
 
 REMOTE = download_utils.RemoteFileMetadata(
     filename='Orchset_dataset_0.zip',
@@ -43,7 +42,69 @@ REMOTE = download_utils.RemoteFileMetadata(
 )
 
 DATASET_DIR = 'Orchset'
-METADATA = None
+
+
+def _load_metadata(data_home):
+
+    predominant_inst_path = os.path.join(
+        data_home, 'Orchset - Predominant Melodic Instruments.csv'
+    )
+
+    if not os.path.exists(predominant_inst_path):
+        logging.info('Metadata file {} not found.'.format(predominant_inst_path))
+        return None
+
+    with open(predominant_inst_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=',')
+        raw_data = []
+        for line in reader:
+            if line[0] == 'excerpt':
+                continue
+            raw_data.append(line)
+
+    tf_dict = {'TRUE': True, 'FALSE': False}
+
+    metadata_index = {}
+    for line in raw_data:
+        track_id = line[0].split('.')[0]
+
+        id_split = track_id.split('.')[0].split('-')
+        if id_split[0] == 'Musorgski' or id_split[0] == 'Rimski':
+            id_split[0] = '-'.join(id_split[:2])
+            id_split.pop(1)
+
+        melodic_instruments = [s.split(',') for s in line[1].split('+')]
+        melodic_instruments = [
+            item.lower() for sublist in melodic_instruments for item in sublist
+        ]
+        for i, inst in enumerate(melodic_instruments):
+            if inst == 'string':
+                melodic_instruments[i] = 'strings'
+            elif inst == 'winds (solo)':
+                melodic_instruments[i] = 'winds'
+        melodic_instruments = sorted(list(set(melodic_instruments)))
+
+        metadata_index[track_id] = {
+            'predominant_melodic_instruments-raw': line[1],
+            'predominant_melodic_instruments-normalized': melodic_instruments,
+            'alternating_melody': tf_dict[line[2]],
+            'contains_winds': tf_dict[line[3]],
+            'contains_strings': tf_dict[line[4]],
+            'contains_brass': tf_dict[line[5]],
+            'only_strings': tf_dict[line[6]],
+            'only_winds': tf_dict[line[7]],
+            'only_brass': tf_dict[line[8]],
+            'composer': id_split[0],
+            'work': '-'.join(id_split[1:-1]),
+            'excerpt': id_split[-1][2:],
+        }
+
+    metadata_index['data_home'] = data_home
+
+    return metadata_index
+
+
+DATA = utils.LargeData('orchset_index.json', _load_metadata)
 
 
 class Track(object):
@@ -73,7 +134,7 @@ class Track(object):
     """
 
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))
 
         self.track_id = track_id
@@ -82,13 +143,11 @@ class Track(object):
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
-        if METADATA is None or METADATA['data_home'] != data_home:
-            _reload_metadata(data_home)
-
-        if METADATA is not None and track_id in METADATA:
-            self._track_metadata = METADATA[track_id]
+        metadata = DATA.metadata(data_home)
+        if metadata is not None and track_id in metadata:
+            self._track_metadata = metadata[track_id]
         else:
             self._track_metadata = {
                 'predominant_melodic_instruments-raw': None,
@@ -209,7 +268,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -220,7 +279,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 def load(data_home=None):
@@ -260,71 +319,6 @@ def _load_melody(melody_path):
 
     melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
-
-
-def _load_metadata(data_home):
-
-    predominant_inst_path = os.path.join(
-        data_home, 'Orchset - Predominant Melodic Instruments.csv'
-    )
-
-    if not os.path.exists(predominant_inst_path):
-        logging.info('Metadata file {} not found.'.format(predominant_inst_path))
-        return None
-
-    with open(predominant_inst_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=',')
-        raw_data = []
-        for line in reader:
-            if line[0] == 'excerpt':
-                continue
-            raw_data.append(line)
-
-    tf_dict = {'TRUE': True, 'FALSE': False}
-
-    metadata_index = {}
-    for line in raw_data:
-        track_id = line[0].split('.')[0]
-
-        id_split = track_id.split('.')[0].split('-')
-        if id_split[0] == 'Musorgski' or id_split[0] == 'Rimski':
-            id_split[0] = '-'.join(id_split[:2])
-            id_split.pop(1)
-
-        melodic_instruments = [s.split(',') for s in line[1].split('+')]
-        melodic_instruments = [
-            item.lower() for sublist in melodic_instruments for item in sublist
-        ]
-        for i, inst in enumerate(melodic_instruments):
-            if inst == 'string':
-                melodic_instruments[i] = 'strings'
-            elif inst == 'winds (solo)':
-                melodic_instruments[i] = 'winds'
-        melodic_instruments = sorted(list(set(melodic_instruments)))
-
-        metadata_index[track_id] = {
-            'predominant_melodic_instruments-raw': line[1],
-            'predominant_melodic_instruments-normalized': melodic_instruments,
-            'alternating_melody': tf_dict[line[2]],
-            'contains_winds': tf_dict[line[3]],
-            'contains_strings': tf_dict[line[4]],
-            'contains_brass': tf_dict[line[5]],
-            'only_strings': tf_dict[line[6]],
-            'only_winds': tf_dict[line[7]],
-            'only_brass': tf_dict[line[8]],
-            'composer': id_split[0],
-            'work': '-'.join(id_split[1:-1]),
-            'excerpt': id_split[-1][2:],
-        }
-
-    metadata_index['data_home'] = data_home
-
-    return metadata_index
-
-
-def _reload_metadata(data_home):
-    global METADATA
-    METADATA = _load_metadata(data_home=data_home)
 
 
 def cite():
