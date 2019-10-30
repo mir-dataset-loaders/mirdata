@@ -5,7 +5,7 @@ import os
 import pytest
 from mirdata import salami, utils
 from tests.test_utils import mock_validator, DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_file, mock_unzip
+from tests.test_download_utils import mock_downloader
 
 
 def test_track():
@@ -215,6 +215,11 @@ def test_load_metadata():
 
     none_metadata = salami._load_metadata('asdf/asdf')
     assert none_metadata is None
+
+
+def test_download(mock_downloader):
+    salami.download()
+    mock_downloader.assert_called()
 
 
 def test_validate():

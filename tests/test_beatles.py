@@ -7,7 +7,7 @@ import pytest
 
 from mirdata import beatles, utils
 from tests.test_utils import mock_validated, mock_validator, DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_file, mock_untar
+from tests.test_download_utils import mock_downloader
 
 
 def test_track():
@@ -193,6 +193,11 @@ def test_fix_newpoint():
     beat_positions3 = np.array(['New Point', '2', '3'])
     new_beat_positions3 = beatles._fix_newpoint(beat_positions3)
     assert np.array_equal(new_beat_positions3, np.array(['1', '2', '3']))
+
+
+def test_download(mock_downloader):
+    beatles.download()
+    mock_downloader.assert_called()
 
 
 def test_validate():

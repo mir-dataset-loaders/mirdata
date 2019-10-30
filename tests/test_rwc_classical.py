@@ -7,6 +7,7 @@ import pytest
 
 from mirdata import rwc_classical, utils
 from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_download_utils import mock_downloader
 
 
 def test_track():
@@ -203,6 +204,11 @@ def test_load_metadata():
 
     metadata_none = rwc_classical._load_metadata('asdf/asdf')
     assert metadata_none is None
+
+
+def test_download(mock_downloader):
+    rwc_classical.download()
+    mock_downloader.assert_called()
 
 
 def test_validate():

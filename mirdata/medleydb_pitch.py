@@ -68,7 +68,8 @@ class Track(object):
         instrument (str): instrument of the track
         title (str): title of the track
         genre (str): genre of the track
-        pitch (PitchData): pitch annotation
+        pitch (F0Data): pitch annotation
+        audio (np.array, float): tuple of audio data and sample rate
 
     """
 
@@ -127,7 +128,7 @@ class Track(object):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
 
-def download(data_home=None):
+def download(data_home=None, force_overwrite=False):
     """MedleyDB is not available for downloading directly.
     This function prints a helper message to download MedleyDB
     through zenodo.org.
@@ -152,7 +153,9 @@ def download(data_home=None):
         data_home=data_home
     )
 
-    download_utils.downloader(info_message=info_message)
+    download_utils.downloader(
+        data_home, info_message=info_message, force_overwrite=force_overwrite
+    )
 
 
 def validate(data_home=None, silence=False):
