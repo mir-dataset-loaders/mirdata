@@ -154,9 +154,7 @@ def download(data_home=None, force_overwrite=False):
     )
 
     download_utils.downloader(
-        data_home,
-        info_message=info_message,
-        force_overwrite=force_overwrite,
+        data_home, info_message=info_message, force_overwrite=force_overwrite
     )
 
 
