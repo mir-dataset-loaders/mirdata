@@ -244,9 +244,12 @@ def download(data_home=None, force_overwrite=False):
     # files get downloaded to a folder called Orchset - move everything up a level
     duplicated_orchset_dir = os.path.join(data_home, 'Orchset')
     orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, '*'))
+
     for fpath in orchset_files:
         shutil.move(fpath, data_home)
-    os.removedirs(duplicated_orchset_dir)
+
+    if os.path.exists(duplicated_orchset_dir):
+        os.removedirs(duplicated_orchset_dir)
 
 
 def validate(data_home=None, silence=False):
