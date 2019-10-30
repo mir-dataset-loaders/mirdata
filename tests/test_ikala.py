@@ -7,6 +7,7 @@ import pytest
 
 from mirdata import ikala, utils
 from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_download_utils import mock_downloader
 
 
 def test_track():
@@ -160,6 +161,11 @@ def test_load_metadata():
 
     metadata_none = ikala._load_metadata('asdf/asdf')
     assert metadata_none is None
+
+
+def test_download(mock_downloader):
+    ikala.download()
+    mock_downloader.assert_called()
 
 
 def test_validate():
