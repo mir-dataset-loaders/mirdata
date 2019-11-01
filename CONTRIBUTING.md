@@ -109,10 +109,10 @@ You can also remove any comments beginning with `# --`
 Attributes:
     DATASET_DIR (str): The directory name for Example dataset. Set to `'Example'`.
 
-    INDEX (dict): {track_id: track_data}.
+    DATA.index (dict): {track_id: track_data}.
         track_data is a `Track` namedtuple.
 
-    METADATA (dict): Dictionary of track metadata
+    DATA.metadata (dict): Dictionary of track metadata
 """
 
 from __future__ import absolute_import
@@ -125,8 +125,6 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
 DATASET_DIR = 'Example'
-INDEX = utils.load_json_index('example_index.json')
-METADATA = None  # -- This is set to None initially and loaded when accessed
 # -- info for any files that need to be downloaded
 REMOTE_ZIP = download_utils.RemoteFileMetadata(
     filename='a_zip_file.zip',
@@ -134,6 +132,26 @@ REMOTE_ZIP = download_utils.RemoteFileMetadata(
     checksum='00000000000000000000000000000000',  # -- the md5 checksum
     destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
 )
+
+
+# -- change this to load any top-level metadata
+## delete this function if you don't have global metadata
+def _load_metadata(data_home):
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    # load metadata however makes sense for your dataset
+    metadata_path = os.path.join(data_home, 'example_metadata.json')
+    with open(metadata_path, 'r') as fhandle:
+        metadata = json.load(fhandle)
+
+    metadata['data_home'] = data_home
+
+    return metadata
+
+
+DATA = utils.LargeData('example_index.json', _load_metadata)
+# DATA = utils.LargeData('example_index.json')  ## use this if your dataset has no metadata
 
 
 class Track(object):
@@ -150,14 +168,9 @@ class Track(object):
 
     """
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError(
                 '{} is not a valid track ID in Example'.format(track_id))
-
-        # -- Not necessary for all datasets, but if yours has metadata,
-        # -- load it like this
-        if METADATA is None or METADATA['data_home'] != data_home:
-            _reload_metadata(data_home)
 
         self.track_id = track_id
 
@@ -165,15 +178,16 @@ class Track(object):
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
         # -- add any dataset specific attributes here
         self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
 
         # -- if the user doesn't have a metadata file, load None
-        if METADATA is not None and track_id in METADATA:
-            self.some_metadata = METADATA[track_id]['some_metadata']
+        metadata = DATA.metadata(data_home)
+        if metadata is not None and track_id in metadata:
+            self.some_metadata = metadata[track_id]['some_metadata']
         else:
             self.some_metadata = None
 
@@ -261,7 +275,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -272,7 +286,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 # -- keep this function as it is
@@ -288,7 +302,7 @@ def load(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     data = {}
-    for key in INDEX.keys():
+    for key in DATA.index.keys():
         data[key] = Track(key, data_home=data_home)
     return data
 
@@ -311,27 +325,6 @@ def _load_annotation(annotation_path):
         np.array(start_times), np.array(end_times),
         np.array(annotation))
     return annotation_data
-
-
-# -- keep this function as it is if you have metadata
-def _reload_metadata(data_home):
-    global METADATA
-    METADATA = _load_metadata(data_home=data_home)
-
-
-# -- change this to load any top-level metadata
-def _load_metadata(data_home):
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    # load metadata however makes sense for your dataset
-    metadata_path = os.path.join(data_home, 'example_metadata.json')
-    with open(metadata_path, 'r') as fhandle:
-        metadata = json.load(fhandle)
-
-    metadata['data_home'] = data_home
-
-    return metadata
 
 
 def cite():

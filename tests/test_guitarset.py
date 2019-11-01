@@ -7,6 +7,7 @@ import pytest
 
 from mirdata import guitarset, utils
 from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_download_utils import mock_downloader
 
 TEST_DATA_HOME = 'tests/resources/mir_datasets/GuitarSet'
 TRACK = guitarset.Track('03_BN3-119-G_solo', data_home=TEST_DATA_HOME)
@@ -156,6 +157,11 @@ def test_load():
     guitarset_data_default = guitarset.load()
     assert isinstance(guitarset_data_default, dict)
     assert len(guitarset_data_default.keys()) == 360
+
+
+def test_download(mock_downloader):
+    guitarset.download()
+    mock_downloader.assert_called()
 
 
 def test_validate():

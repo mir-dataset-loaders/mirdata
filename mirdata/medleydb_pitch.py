@@ -11,7 +11,7 @@ Details can be found at https://medleydb.weebly.com
 
 
 Attributes:
-    INDEX (dict): {track_id: track_data}.
+    DATA.index (dict): {track_id: track_data}.
         track_data is a jason data loaded from `index/`
 
     DATASET_DIR (str): The directory name for MedleyDB melody dataset.
@@ -35,9 +35,24 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
-INDEX = utils.load_json_index('medleydb_pitch_index.json')
 DATASET_DIR = 'MedleyDB-Pitch'
-METADATA = None
+
+
+def _load_metadata(data_home):
+    metadata_path = os.path.join(data_home, 'medleydb_pitch_metadata.json')
+
+    if not os.path.exists(metadata_path):
+        logging.info('Metadata file {} not found.'.format(metadata_path))
+        return None
+
+    with open(metadata_path, 'r') as fhandle:
+        metadata = json.load(fhandle)
+
+    metadata['data_home'] = data_home
+    return metadata
+
+
+DATA = utils.LargeData('medleydb_pitch_index.json', _load_metadata)
 
 
 class Track(object):
@@ -54,12 +69,13 @@ class Track(object):
         instrument (str): instrument of the track
         title (str): title of the track
         genre (str): genre of the track
-        pitch (PitchData): pitch annotation
+        pitch (F0Data): pitch annotation
+        audio (np.array, float): tuple of audio data and sample rate
 
     """
 
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError(
                 '{} is not a valid track ID in MedleyDB-Pitch'.format(track_id)
             )
@@ -70,13 +86,11 @@ class Track(object):
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
-        if METADATA is None or METADATA['data_home'] != data_home:
-            _reload_metadata(data_home)
-
-        if METADATA is not None and track_id in METADATA:
-            self._track_metadata = METADATA[track_id]
+        metadata = DATA.metadata(data_home)
+        if metadata is not None and track_id in metadata:
+            self._track_metadata = metadata[track_id]
         else:
             self._track_metadata = {
                 'instrument': None,
@@ -120,7 +134,7 @@ class Track(object):
         )
 
 
-def download(data_home=None):
+def download(data_home=None, force_overwrite=False):
     """MedleyDB is not available for downloading directly.
     This function prints a helper message to download MedleyDB
     through zenodo.org.
@@ -145,7 +159,9 @@ def download(data_home=None):
         data_home=data_home
     )
 
-    download.downloaderdownloader(info_message=info_message)
+    download_utils.downloader(
+        data_home, info_message=info_message, force_overwrite=force_overwrite
+    )
 
 
 def validate(data_home=None, silence=False):
@@ -166,7 +182,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -177,7 +193,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 def load(data_home=None):
@@ -216,25 +232,6 @@ def _load_pitch(pitch_path):
     confidence = (freqs > 0).astype(float)
     pitch_data = utils.F0Data(times, freqs, confidence)
     return pitch_data
-
-
-def _reload_metadata(data_home):
-    global METADATA
-    METADATA = _load_metadata(data_home=data_home)
-
-
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, 'medleydb_pitch_metadata.json')
-
-    if not os.path.exists(metadata_path):
-        logging.info('Metadata file {} not found.'.format(metadata_path))
-        return None
-
-    with open(metadata_path, 'r') as fhandle:
-        metadata = json.load(fhandle)
-
-    metadata['data_home'] = data_home
-    return metadata
 
 
 def cite():
