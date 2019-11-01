@@ -68,6 +68,31 @@ def test_track():
     )
     assert track.__repr__() == repr_string
 
+    print(track.to_jams())
+
+
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/RWC-Jazz'
+    track = rwc_jazz.Track('RM-J004', data_home=data_home)
+    jam = track.to_jams()
+
+    beats = jam.search(namespace='beat')[0]['data']
+    print([beat.time for beat in beats])
+    assert [beat.time for beat in beats] == [0.05, 0.86, 1.67, 2.48, 3.29, 4.1, 4.91, 5.72, 6.53, 7.34]
+    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    assert [beat.value for beat in beats] == [1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+    assert [beat.confidence for beat in beats] == [None, None, None, None, None, None, None, None, None, None]
+
+    segments = jam.search(namespace='segment')[0]['data']
+    assert [segment.time for segment in segments] == [0.05, 6.53, 152.06]
+    assert [segment.duration for segment in segments] == [6.48, 13.099999999999998, 13.319999999999993]
+    assert [segment.value for segment in segments] == ['nothing', 'chorus A', 'chorus B']
+    assert [segment.confidence for segment in segments] == [None, None, None]
+
+    assert jam['file_metadata']['title'] == 'Crescent Serenade (Piano Solo)'
+    assert jam['file_metadata']['artist'] == 'Makoto Nakamura'
+
 
 def test_track_ids():
     track_ids = rwc_jazz.track_ids()
@@ -99,6 +124,16 @@ def test_load_metadata():
         'duration': 167,
         'variation': 'Instrumentation 1',
         'instruments': 'Pf',
+    }
+    assert metadata['RM-J044'] == {
+        'piece_number': 'No. 44',
+        'suffix': 'M04',
+        'track_number': 'Tr. 09',
+        'title': 'Joyful, Joyful, We Adore Thee',
+        'artist': 'K’s Band',
+        'duration': 270,
+        'variation': 'Style (Free jazz)',
+        'instruments': 'Pf & Bs & Dr & Gt & Ts & Fl & Bar',
     }
 
     metadata_none = rwc_jazz._load_metadata('asdf/asdf')
