@@ -9,6 +9,7 @@ from mirdata import medley_solos_db, utils
 from tests.test_utils import DEFAULT_DATA_HOME
 from tests.test_download_utils import mock_downloader
 
+
 def test_track():
     # test data home None
     track_default = medley_solos_db.Track('d07b1fc0-567d-52c2-fef4-239f31c9d40e')

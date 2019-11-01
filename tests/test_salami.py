@@ -64,7 +64,7 @@ def test_track():
     # test audio loading functions
     y, sr = track.audio
     assert sr == 44100
-    assert y.shape == (89856, )
+    assert y.shape == (89856,)
 
     repr_string = (
         "Salami Track(track_id=2, "

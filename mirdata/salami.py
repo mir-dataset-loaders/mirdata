@@ -43,7 +43,10 @@ ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
 def _load_metadata(data_home):
 
     metadata_path = os.path.join(
-        data_home, os.path.join('salami-data-public-hierarchy-corrections', 'metadata', 'metadata.csv')
+        data_home,
+        os.path.join(
+            'salami-data-public-hierarchy-corrections', 'metadata', 'metadata.csv'
+        ),
     )
     if not os.path.exists(metadata_path):
         logging.info('Metadata file {} not found.'.format(metadata_path))
