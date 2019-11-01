@@ -66,7 +66,7 @@ def _load_metadata(data_home):
             'title': line[3],
             'composer': line[4],
             'artist': line[5],
-            'duration_sec': line[6],
+            'duration': _duration_to_sec(line[6]),
             'category': line[7],
         }
 

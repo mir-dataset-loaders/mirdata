@@ -44,7 +44,6 @@ def test_track():
         ],
     }
     assert track.audio_path == 'tests/resources/mir_datasets/Salami/' + 'audio/2.mp3'
-
     assert track.source == 'Codaich'
     assert track.annotator_1_id == '5'
     assert track.annotator_2_id == '8'
@@ -62,10 +61,10 @@ def test_track():
     assert type(track.sections_annotator_2_uppercase) is utils.SectionData
     assert type(track.sections_annotator_2_lowercase) is utils.SectionData
 
-    # # test audio loading functions
-    # y, sr = track.audio
-    # assert sr == 44100
-    # assert y.shape == (89856, )
+    # test audio loading functions
+    y, sr = track.audio
+    assert sr == 44100
+    assert y.shape == (89856, )
 
     repr_string = (
         "Salami Track(track_id=2, "
