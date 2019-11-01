@@ -123,6 +123,7 @@ from __future__ import print_function
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = 'Example'
 # -- info for any files that need to be downloaded
