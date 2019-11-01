@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
 """DALI Dataset Loader
+
 DALI Dataset.
+
 Details can be found at https://github.com/gabolsgabs/DALI
+
 Attributes:
     DATASET_DIR (str): The directory name for DALI dataset. Set to `'DALI'`.
-    INDEX (dict): {track_id: track_data}.
+
+    DATA.index (dict): {track_id: track_data}.
         track_data is a jason data loaded from `index/`
-    METADATA (None): (todo?)
+
+    DATA.metadata (dict): #TODO
+
+
 """
 
 from __future__ import absolute_import
@@ -18,13 +25,28 @@ import gzip
 import pickle
 import os
 import librosa
+import logging
+import DALI  # this is the package, needed to load the annotations
+import numpy as np
 
 import mirdata.utils as utils
-import mirdata.download_utils as download_utils
 
-INDEX = utils.load_json_index('dali_index.json')
-METADATA = None
 DATASET_DIR = 'DALI'
+
+
+def _load_metadata(data_home):
+    metadata_path = os.path.join(data_home, os.path.join('dali_metadata.json'))
+    if not os.path.exists(metadata_path):
+        logging.info('Metadata file {} not found.'.format(metadata_path))
+        return None
+    with open(metadata_path, 'r') as fhandle:
+        metadata_index = json.load(fhandle)
+
+    metadata_index['data_home'] = data_home
+    return metadata_index
+
+
+DATA = utils.LargeData('dali_index.json', _load_metadata)
 
 
 class Track(object):
@@ -51,7 +73,7 @@ class Track(object):
     """
 
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in DALI'.format(track_id))
 
         if data_home is None:
@@ -59,37 +81,52 @@ class Track(object):
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
-        if METADATA is None or METADATA['data_home'] != data_home:
-            _reload_metadata(data_home)
+        metadata = DATA.metadata(data_home)
+        if metadata is not None and track_id in metadata:
+            self._track_metadata = metadata[track_id]
+            self._track_metadata['album'] = metadata[track_id]['metadata']['album']
+            self._track_metadata['release_date'] = metadata[track_id]['metadata'][
+                'release_date'
+            ]
+            self._track_metadata['language'] = metadata[track_id]['metadata'][
+                'language'
+            ]
+            self.audio_url = (self._track_metadata['audio']['url'],)
+            self.url_working = (self._track_metadata['audio']['working'],)
+            self.ground_truth = self._track_metadata['ground-truth']
+            self.artist = self._track_metadata['artist']
+            self.title = self._track_metadata['title']
+            self.dataset_version = self._track_metadata['dataset_version']
+            self.scores = self._track_metadata['scores']
+            self.album = self._track_metadata['album']
+            self.release_date = self._track_metadata['release_date']
+            self.language = self._track_metadata['language']
+            self.audio_path = os.path.join(
+                self._data_home, self._track_paths['audio'][0]
+            )
 
-        self._track_metadata = METADATA[track_id]
-        self.audio_metadata = {
-            'url': self._track_metadata['audio']['url'],
-            'working': self._track_metadata['audio']['working'],
-        }
-        self.ground_truth = self._track_metadata['ground-truth']
-        self.artist = self._track_metadata['artist']
-        self.title = self._track_metadata['title']
-        self.dataset_version = self._track_metadata['dataset_version']
-        self.scorea = self._track_metadata['scorea']
-        self.album = self._track_metadata['album']
-        self.release_date = self._track_metadata['release_date']
-        self.language = self._track_metadata['language']
-        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
-
-        for key, value in self._track_metadata.items():
-            if key != 'id':
-                if key not in ['audio', 'ground-truth']:
-                    setattr(self, key, value)
-                elif key == 'audio':
-                    self.audio_metadata = {
-                        'url': value['url'],
-                        'working': value['working'],
-                    }
-                elif key == 'ground-truth':
-                    self.ground_truth = value
+    def __repr__(self):
+        repr_string = (
+            "DALI Track(track_id={}, audio_path={}, "
+            + "audio_url={}, audio_working={}, ground_truth={}, artist={}, title={},"
+            + "dataset_version={}, scores={}, album={}, release_date={}, language={})"
+        )
+        return repr_string.format(
+            self.track_id,
+            self.audio_path,
+            self.audio_url,
+            self.url_working,
+            self.ground_truth,
+            self.artist,
+            self.title,
+            self.dataset_version,
+            self.scores,
+            self.album,
+            self.release_date,
+            self.language,
+        )
 
     @utils.cached_property
     def notes(self):
@@ -177,7 +214,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -188,7 +225,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 def load(data_home=None):
@@ -211,32 +248,36 @@ def load(data_home=None):
     return dali_data
 
 
-def _reload_metadata(data_home):
-    global METADATA
-    METADATA = _load_metadata(data_home=data_home)
-
-
-def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, os.path.join(DATASET_DIR, 'dali_metadata.json')
-    )
-    if not os.path.exists(metadata_path):
-        raise OSError('Could not find DALI metadata file')
-    with open(metadata_path, 'r') as fhandle:
-        metadata = json.load(fhandle)
-
-    metadata['data_home'] = data_home
-    return metadata
-
-
 def _load_annotations_granularity(annotations_path, granularity):
     try:
         with gzip.open(annotations_path, 'rb') as f:
             output = pickle.load(f)
     except Exception as e:
+        if not os.path.exists(annotations_path):
+            return None
         with gzip.open(annotations_path, 'r') as f:
             output = pickle.load(f)
-    return output.annotations['annot'][granularity]
+    text = []
+    notes = []
+    time_notes = []
+    begs = []
+    ends = []
+    for annot in output.annotations['annot'][granularity]:
+        notes.extend([annot['freq'][0], annot['freq'][1]])
+        time_notes.extend([annot['time'][0], annot['time'][1]])
+        begs.append(annot['time'][0])
+        ends.append(annot['time'][1])
+        text.append(annot['text'])
+    if granularity == 'notes':
+        time_notes.append(annot['time'][1])  # duration of last note unknown
+        annotation = utils.NoteData(
+            np.array(begs), np.array(ends)[:1], np.array(notes), None
+        )
+    else:
+        annotation = utils.LyricData(
+            np.array(begs), np.array(ends), np.array(text), None
+        )
+    return annotation
 
 
 def _load_annotations_class(annotations_path):
@@ -244,6 +285,8 @@ def _load_annotations_class(annotations_path):
         with gzip.open(annotations_path, 'rb') as f:
             output = pickle.load(f)
     except Exception as e:
+        if not os.path.exists(annotations_path):
+            return None
         with gzip.open(annotations_path, 'r') as f:
             output = pickle.load(f)
     return output
