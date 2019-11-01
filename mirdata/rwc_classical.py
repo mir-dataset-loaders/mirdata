@@ -315,8 +315,6 @@ def _duration_to_sec(duration):
                 )  # mistake in annotation in RM-J044
             total_secs = float(minutes) * 60 + float(secs)
             return total_secs
-        else:
-            return float(duration)
 
 
 def _load_metadata(data_home):
