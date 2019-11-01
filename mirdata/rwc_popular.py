@@ -13,8 +13,6 @@ import mirdata.download_utils as download_utils
 # these functions are identical for all rwc datasets
 from mirdata.rwc_classical import _load_beats, _load_sections
 
-INDEX = utils.load_json_index('rwc_popular_index.json')
-METADATA = None
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-p.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
@@ -48,9 +46,57 @@ ANNOTATIONS_REMOTE_4 = download_utils.RemoteFileMetadata(
 )
 
 
+def _load_metadata(data_home):
+
+    metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-p.csv')
+
+    if not os.path.exists(metadata_path):
+        logging.info(
+            'Metadata file {} not found.'.format(metadata_path)
+            + 'You can download the metadata file by running download()'
+        )
+        return None
+
+    with open(metadata_path, 'r') as fhandle:
+        dialect = csv.Sniffer().sniff(fhandle.read(1024))
+        fhandle.seek(0)
+        reader = csv.reader(fhandle, dialect)
+        raw_data = []
+        for line in reader:
+            if line[0] != 'Piece No.':
+                raw_data.append(line)
+
+    metadata_index = {}
+    for line in raw_data:
+        if line[0] == 'Piece No.':
+            continue
+        p = '00' + line[0].split('.')[1][1:]
+        track_id = 'RM-P{}'.format(p[len(p) - 3 :])
+
+        metadata_index[track_id] = {
+            'piece_number': line[0],
+            'suffix': line[1],
+            'track_number': line[2],
+            'title': line[3],
+            'artist': line[4],
+            'singer_information': line[5],
+            'duration_sec': line[6],
+            'tempo': line[7],
+            'instruments': line[8],
+            'drum_information': line[9],
+        }
+
+    metadata_index['data_home'] = data_home
+
+    return metadata_index
+
+
+DATA = utils.LargeData('rwc_popular_index.json', _load_metadata)
+
+
 class Track(object):
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError(
                 '{} is not a valid track ID in RWC-Popular'.format(track_id)
             )
@@ -61,13 +107,11 @@ class Track(object):
             data_home = utils.get_default_dataset_path(DATASET_DIR)
         self._data_home = data_home
 
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
-        if METADATA is None or METADATA['data_home'] != data_home:
-            _reload_metadata(data_home)
-
-        if METADATA is not None and track_id in METADATA:
-            self._track_metadata = METADATA[track_id]
+        metadata = DATA.metadata(data_home)
+        if metadata is not None and track_id in metadata:
+            self._track_metadata = metadata[track_id]
         else:
             # annotations with missing metadata
             self._track_metadata = {
@@ -197,7 +241,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -208,7 +252,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 def load(data_home=None):
@@ -271,56 +315,6 @@ def _load_voca_inst(voca_inst_path):
             events.append(raw_data[i][1])
 
     return utils.EventData(np.array(begs), np.array(ends), np.array(events))
-
-
-def _load_metadata(data_home):
-
-    metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-p.csv')
-
-    if not os.path.exists(metadata_path):
-        logging.info(
-            'Metadata file {} not found.'.format(metadata_path)
-            + 'You can download the metadata file by running download()'
-        )
-        return None
-
-    with open(metadata_path, 'r') as fhandle:
-        dialect = csv.Sniffer().sniff(fhandle.read(1024))
-        fhandle.seek(0)
-        reader = csv.reader(fhandle, dialect)
-        raw_data = []
-        for line in reader:
-            if line[0] != 'Piece No.':
-                raw_data.append(line)
-
-    metadata_index = {}
-    for line in raw_data:
-        if line[0] == 'Piece No.':
-            continue
-        p = '00' + line[0].split('.')[1][1:]
-        track_id = 'RM-P{}'.format(p[len(p) - 3 :])
-
-        metadata_index[track_id] = {
-            'piece_number': line[0],
-            'suffix': line[1],
-            'track_number': line[2],
-            'title': line[3],
-            'artist': line[4],
-            'singer_information': line[5],
-            'duration_sec': line[6],
-            'tempo': line[7],
-            'instruments': line[8],
-            'drum_information': line[9],
-        }
-
-    metadata_index['data_home'] = data_home
-
-    return metadata_index
-
-
-def _reload_metadata(data_home):
-    global METADATA
-    METADATA = _load_metadata(data_home=data_home)
 
 
 def cite():

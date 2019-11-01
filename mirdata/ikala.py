@@ -14,12 +14,12 @@ Details can be found at http://mac.citi.sinica.edu.tw/ikala/
 Attributes:
     DATASET_DIR (str): The directory name for iKala dataset. Set to `'iKala'`.
 
-    INDEX (dict): {track_id: track_data}.
+    DATA.index (dict): {track_id: track_data}.
         track_data is a `IKalaTrack` namedtuple.
 
     TIME_STEP (float): Time step unit (in second) (TODO: what is this? hop length? window?)
 
-    METADATA (None): TODO
+    DATA.metadata (None): TODO
 
     ID_MAPPING_URL (str): URL to get id-to-url mapping text file
 
@@ -39,15 +39,41 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
 DATASET_DIR = 'iKala'
-INDEX = utils.load_json_index('ikala_index.json')
 TIME_STEP = 0.032  # seconds
-METADATA = None
 ID_MAPPING_REMOTE = download_utils.RemoteFileMetadata(
     filename='id_mapping.txt',
     url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
     checksum='81097b587804ce93e56c7a331ba06abc',
     destination_dir=None,
 )
+
+
+def _load_metadata(data_home):
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    id_map_path = os.path.join(data_home, 'id_mapping.txt')
+    if not os.path.exists(id_map_path):
+        logging.info(
+            'Metadata file {} not found.'.format(id_map_path)
+            + 'You can download the metadata file for ikala by running ikala.download'
+        )
+        return None
+
+    with open(id_map_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
+        singer_map = {}
+        for line in reader:
+            if line[0] == 'singer':
+                continue
+            singer_map[line[1]] = line[0]
+
+    singer_map['data_home'] = data_home
+
+    return singer_map
+
+
+DATA = utils.LargeData('ikala_index.json', _load_metadata)
 
 
 class Track(object):
@@ -70,25 +96,25 @@ class Track(object):
     """
 
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in iKala'.format(track_id))
-
-        if METADATA is None or METADATA['data_home'] != data_home:
-            _reload_metadata(data_home)
 
         self.track_id = track_id
 
         if data_home is None:
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
+        metadata = DATA.metadata(data_home)
+
         self._data_home = data_home
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.song_id = track_id.split('_')[0]
         self.section = track_id.split('_')[1]
-        if METADATA is not None and self.song_id in METADATA:
-            self.singer_id = METADATA[self.song_id]
+
+        if metadata is not None and self.song_id in metadata:
+            self.singer_id = metadata[self.song_id]
         else:
             self.singer_id = None
 
@@ -203,7 +229,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -214,7 +240,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 def load(data_home=None):
@@ -233,7 +259,7 @@ def load(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     ikala_data = {}
-    for key in INDEX.keys():
+    for key in track_ids():
         ikala_data[key] = Track(key, data_home=data_home)
     return ikala_data
 
@@ -279,36 +305,6 @@ def _load_lyrics(lyrics_path):
         np.array(pronunciations),
     )
     return lyrics_data
-
-
-def _reload_metadata(data_home):
-    global METADATA
-    METADATA = _load_metadata(data_home=data_home)
-
-
-def _load_metadata(data_home):
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    id_map_path = os.path.join(data_home, 'id_mapping.txt')
-    if not os.path.exists(id_map_path):
-        logging.info(
-            'Metadata file {} not found.'.format(id_map_path)
-            + 'You can download the metadata file for ikala by running ikala.download'
-        )
-        return None
-
-    with open(id_map_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
-        singer_map = {}
-        for line in reader:
-            if line[0] == 'singer':
-                continue
-            singer_map[line[1]] = line[0]
-
-    singer_map['data_home'] = data_home
-
-    return singer_map
 
 
 def cite():

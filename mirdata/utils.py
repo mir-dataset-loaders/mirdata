@@ -164,3 +164,35 @@ class cached_property(object):
             return self
         value = obj.__dict__[self.func.__name__] = self.func(obj)
         return value
+
+
+class LargeData(object):
+    def __init__(self, index_file, metadata_load_fn=None):
+        """Object which loads and caches large data the first time it's
+        accessed.
+
+        Parameters
+        ----------
+        index_file: str
+            File name of checksum index file to be passed to `load_json_index`
+        metadata_load_fn: function
+            Function which returns a metadata dictionary.
+            If None, assume the dataset has no metadata. When the
+            `metadata` attribute is called, raises a NotImplementedError
+
+        """
+        self._metadata = None
+        self.index_file = index_file
+        self.metadata_load_fn = metadata_load_fn
+
+    @cached_property
+    def index(self):
+        return load_json_index(self.index_file)
+
+    def metadata(self, data_home):
+        if self.metadata_load_fn is None:
+            raise NotImplementedError
+
+        if self._metadata is None or self._metadata['data_home'] != data_home:
+            self._metadata = self.metadata_load_fn(data_home)
+        return self._metadata

@@ -8,7 +8,7 @@ annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.
 Attributes:
     DATASET_DIR (str): The directory name for Beatles dataset. Set to `'Beatles'`.
 
-    INDEX (dict): {track_id: track_data}.
+    DATA.index (dict): {track_id: track_data}.
         track_data is a jason data loaded from `index/`
 
     ANNOTATIONS_REMOTE (RemoteFileMetadata (namedtuple)): metadata
@@ -25,13 +25,14 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
 DATASET_DIR = 'Beatles'
-INDEX = utils.load_json_index('beatles_index.json')
 ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
     checksum='c3b7d505e033ea9ff0d7a1d57871f2ee',
     destination_dir='annotations',
 )
+
+DATA = utils.LargeData('beatles_index.json')
 
 
 class Track(object):
@@ -54,7 +55,7 @@ class Track(object):
     """
 
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in Beatles'.format(track_id))
 
         self.track_id = track_id
@@ -63,7 +64,7 @@ class Track(object):
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
@@ -165,7 +166,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -176,7 +177,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 def load(data_home=None):

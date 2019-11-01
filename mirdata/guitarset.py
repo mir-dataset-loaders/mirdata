@@ -19,7 +19,7 @@ Attributes:
     DATASET_DIR (str):
         The directory name for GuitarSet. Set to `'GuitarSet'`.
 
-    INDEX (dict): {track_id: track_data}.
+    DATA.index (dict): {track_id: track_data}.
         track_data is a `GuitarSet` namedtuple.
 
     ANNOTATION_REMOTE (RemoteFileMetadata)
@@ -43,7 +43,6 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
 DATASET_DIR = 'GuitarSet'
-INDEX = utils.load_json_index('guitarset_index.json')
 
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename='annotation.zip',
@@ -75,7 +74,6 @@ AUDIO_MIX_REMOTE = download_utils.RemoteFileMetadata(
     checksum='aecce79f425a44e2055e46f680e10f6a',
     destination_dir='audio_mono-pickup_mix',
 )
-
 _STYLE_DICT = {
     'Jazz': 'Jazz',
     'BN': 'Bossa Nova',
@@ -84,6 +82,7 @@ _STYLE_DICT = {
     'Funk': 'Funk',
 }
 _GUITAR_STRINGS = ['E', 'A', 'D', 'G', 'B', 'e']
+DATA = utils.LargeData('guitarset_index.json')
 
 
 class Track(object):
@@ -140,7 +139,7 @@ class Track(object):
     """
 
     def __init__(self, track_id, data_home=None):
-        if track_id not in INDEX:
+        if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in GuitarSet'.format(track_id))
 
         self.track_id = track_id
@@ -149,7 +148,7 @@ class Track(object):
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
-        self._track_paths = INDEX[track_id]
+        self._track_paths = DATA.index[track_id]
 
         self.audio_hex_cln_path = os.path.join(
             self._data_home, self._track_paths['audio_hex_cln'][0]
@@ -293,7 +292,7 @@ def validate(data_home=None, silence=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     missing_files, invalid_checksums = utils.validator(
-        INDEX, data_home, silence=silence
+        DATA.index, data_home, silence=silence
     )
     return missing_files, invalid_checksums
 
@@ -303,7 +302,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(INDEX.keys())
+    return list(DATA.index.keys())
 
 
 def load(data_home=None):
@@ -318,7 +317,7 @@ def load(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     guitarset_data = {}
-    for key in INDEX.keys():
+    for key in DATA.index.keys():
         guitarset_data[key] = Track(key, data_home=data_home)
     return guitarset_data
 

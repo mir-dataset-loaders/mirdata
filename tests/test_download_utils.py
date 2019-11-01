@@ -21,6 +21,11 @@ def mock_file(mocker):
 
 
 @pytest.fixture
+def mock_downloader(mocker):
+    return mocker.patch.object(download_utils, 'downloader')
+
+
+@pytest.fixture
 def mock_untar(mocker):
     return mocker.patch.object(download_utils, 'untar')
 
