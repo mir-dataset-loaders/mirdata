@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import numpy as np
@@ -47,7 +48,7 @@ def test_track():
     assert track.title == 'Symphony no.5 in C minor, op.67. 1st mvmt.'
     assert track.composer == 'Beethoven, Ludwig van'
     assert track.artist == 'Tokyo City Philharmonic Orchestra'
-    assert track.duration_sec == '7:15'
+    assert track.duration == 435
     assert track.category == 'Symphony'
 
     # test that cached properties don't fail and have the expected type
@@ -64,11 +65,51 @@ def test_track():
         + "audio_path=tests/resources/mir_datasets/RWC-Classical/audio/rwc-c-m01/3.wav, "
         + "piece_number=No. 3, suffix=M01, track_number=Tr. 03, "
         + "title=Symphony no.5 in C minor, op.67. 1st mvmt., composer=Beethoven, Ludwig van, "
-        + "artist=Tokyo City Philharmonic Orchestra, duration_sec=7:15, category=Symphony"
-        + "sections=SectionData('start_times', 'end_times', 'sections'), "
+        + "artist=Tokyo City Philharmonic Orchestra, duration=435.0, category=Symphony"
+        + "sections=SectionData('intervals', 'labels'), "
         + "beats=BeatData('beat_times', 'beat_positions'))"
     )
     assert track.__repr__() == repr_string
+
+
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/RWC-Classical'
+    track = rwc_classical.Track('RM-C003', data_home=data_home)
+    jam = track.to_jams()
+
+    beats = jam.search(namespace='beat')[0]['data']
+    assert [beat.time for beat in beats] == [
+        1.65,
+        2.58,
+        2.95,
+        3.33,
+        3.71,
+        4.09,
+        5.18,
+        6.28,
+    ]
+    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    assert [beat.value for beat in beats] == [2, 1, 2, 1, 2, 1, 2, 1]
+    assert [beat.confidence for beat in beats] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
+
+    segments = jam.search(namespace='segment')[0]['data']
+    assert [segment.time for segment in segments] == [0.29, 419.96]
+    assert [segment.duration for segment in segments] == [45.85, 13.75]
+    assert [segment.value for segment in segments] == ['chorus A', 'ending']
+    assert [segment.confidence for segment in segments] == [None, None]
+
+    assert jam['file_metadata']['title'] == 'Symphony no.5 in C minor, op.67. 1st mvmt.'
+    assert jam['file_metadata']['artist'] == 'Tokyo City Philharmonic Orchestra'
 
 
 def test_track_ids():
@@ -98,14 +139,13 @@ def test_load_sections():
 
     # check types
     assert type(section_data) == utils.SectionData
-    assert type(section_data.start_times) is np.ndarray
-    assert type(section_data.end_times) is np.ndarray
-    assert type(section_data.sections) is np.ndarray
+    assert type(section_data.intervals) is np.ndarray
+    assert type(section_data.labels) is list
 
     # check values
-    assert np.array_equal(section_data.start_times, np.array([0.29, 419.96]))
-    assert np.array_equal(section_data.end_times, np.array([46.14, 433.71]))
-    assert np.array_equal(section_data.sections, np.array(['chorus A', 'ending']))
+    assert np.array_equal(section_data.intervals[:, 0], np.array([0.29, 419.96]))
+    assert np.array_equal(section_data.intervals[:, 1], np.array([46.14, 433.71]))
+    assert np.array_equal(section_data.labels, np.array(['chorus A', 'ending']))
 
     # load a file which doesn't exist
     section_data_none = rwc_classical._load_sections('fake/file/path')
@@ -198,7 +238,7 @@ def test_load_metadata():
         'title': 'Symphony no.5 in C minor, op.67. 1st mvmt.',
         'composer': 'Beethoven, Ludwig van',
         'artist': 'Tokyo City Philharmonic Orchestra',
-        'duration_sec': '7:15',
+        'duration': 435,
         'category': 'Symphony',
     }
 

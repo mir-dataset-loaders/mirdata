@@ -9,9 +9,10 @@ import os
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 # these functions are identical for all rwc datasets
-from mirdata.rwc_classical import _load_beats, _load_sections
+from mirdata.rwc_classical import _load_beats, _load_sections, _duration_to_sec
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-p.csv',
@@ -80,7 +81,7 @@ def _load_metadata(data_home):
             'title': line[3],
             'artist': line[4],
             'singer_information': line[5],
-            'duration_sec': line[6],
+            'duration': _duration_to_sec(line[6]),
             'tempo': line[7],
             'instruments': line[8],
             'drum_information': line[9],
@@ -121,7 +122,7 @@ class Track(object):
                 'title': None,
                 'artist': None,
                 'singer_information': None,
-                'duration_sec': None,
+                'duration': None,
                 'tempo': None,
                 'instruments': None,
                 'drum_information': None,
@@ -135,7 +136,7 @@ class Track(object):
         self.title = self._track_metadata['title']
         self.artist = self._track_metadata['artist']
         self.singer_information = self._track_metadata['singer_information']
-        self.duration_sec = self._track_metadata['duration_sec']
+        self.duration = self._track_metadata['duration']
         self.tempo = self._track_metadata['tempo']
         self.instruments = self._track_metadata['instruments']
         self.drum_information = self._track_metadata['drum_information']
@@ -144,10 +145,12 @@ class Track(object):
         repr_string = (
             "RWC-Popular Track(track_id={}, audio_path={}, "
             + "piece_number={}, suffix={}, track_number={}, title={}, "
-            + "artist={}, singer_information={}, duration_sec={}, "
+            + "artist={}, singer_information={}, duration={}, "
             + "tempo={}, instruments={}, drum_information={}, "
-            + "sections=SectionData('start_times', 'end_times', 'sections'), "
+            + "sections=SectionData('intervals', 'labels'), "
             + "beats=BeatData('beat_times', 'beat_positions'))"
+            + "chords=ChordData('intervals', 'labels'), "
+            + "vocal_instrument_activity=EventData('start_times', 'end_times', 'event')"
         )
         return repr_string.format(
             self.track_id,
@@ -158,7 +161,7 @@ class Track(object):
             self.title,
             self.artist,
             self.singer_information,
-            self.duration_sec,
+            self.duration,
             self.tempo,
             self.instruments,
             self.drum_information,
@@ -189,6 +192,14 @@ class Track(object):
     @property
     def audio(self):
         return librosa.load(self.audio_path, sr=None, mono=True)
+
+    def to_jams(self):
+        return jams_utils.jams_converter(
+            beat_data=[(self.beats, None)],
+            section_data=[(self.sections, None)],
+            chord_data=[(self.chords, None)],
+            metadata=self._track_metadata,
+        )
 
 
 def download(data_home=None, force_overwrite=False):
@@ -290,7 +301,7 @@ def _load_chords(chords_path):
                 ends.append(float(line[1]))
                 chords.append(line[2])
 
-    return utils.ChordData(np.array(begs), np.array(ends), np.array(chords))
+    return utils.ChordData(np.array([begs, ends]).T, chords)
 
 
 def _load_voca_inst(voca_inst_path):

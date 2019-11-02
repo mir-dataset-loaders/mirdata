@@ -253,6 +253,9 @@ class Track(object):
         audio, sr = librosa.load(self.audio_hex_cln_path, sr=None, mono=False)
         return audio, sr
 
+    def to_jams(self):
+        return jams.load(self.jams_path)
+
 
 def download(data_home=None):
     """Download GuitarSet.
@@ -346,7 +349,7 @@ def _load_chords(jams_path, leadsheet_version=True):
     else:
         anno = jam.search(namespace='chord')[1]
     intervals, values = anno.to_interval_values()
-    return utils.ChordData(intervals[:, 0], intervals[:, 1], values)
+    return utils.ChordData(intervals, values)
 
 
 def _load_key_mode(jams_path):

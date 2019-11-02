@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import numpy as np
@@ -70,6 +71,25 @@ def test_track():
         + "'pronounciations'))"
     )
     assert track.__repr__() == repr_string
+
+
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/iKala'
+    track = ikala.Track('10161_chorus', data_home=data_home)
+    jam = track.to_jams()
+
+    lyrics = jam.search(namespace='lyric')[0]['data']
+    assert [lyric.time for lyric in lyrics] == [0.027, 0.232]
+    assert [lyric.duration for lyric in lyrics] == [0.20500000000000002, 0.736]
+    assert [lyric.value for lyric in lyrics] == ['JUST', 'WANNA']
+    assert [lyric.confidence for lyric in lyrics] == [None, None]
+
+    f0s = jam.search(namespace='pitch_contour')[0]['data']
+    assert [f0.time for f0 in f0s] == [0.016, 0.048]
+    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
+    assert [f0.value for f0 in f0s] == [0.0, 260.946404518887]
+    assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
 
 
 def test_track_ids():

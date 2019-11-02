@@ -2,8 +2,10 @@
 """SALAMI Dataset Loader
 
 SALAMI Dataset.
-Details can be found at http://ddmal.music.mcgill.ca/research/salami/annotations
 
+We are using the **corrected** version of the 2.0 annotations:
+Details can be found at https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections and
+https://github.com/DDMAL/salami-data-public/pull/15.
 
 Attributes:
     DIR (str): The directory name for SALAMI dataset. Set to `'Salami'`.
@@ -27,12 +29,13 @@ import os
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = 'Salami'
 ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
-    filename='salami-data-public-master.zip',
-    url='https://github.com/DDMAL/salami-data-public/archive/master.zip',
-    checksum='f88b3455f1f2443458d094f603c0c1c7',
+    filename='salami-data-public-hierarchy-corrections.zip',
+    url='https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip',
+    checksum='194add2601c09a7279a7433288de81fd',
     destination_dir=None,
 )
 
@@ -40,9 +43,11 @@ ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
 def _load_metadata(data_home):
 
     metadata_path = os.path.join(
-        data_home, os.path.join('salami-data-public-master', 'metadata', 'metadata.csv')
+        data_home,
+        os.path.join(
+            'salami-data-public-hierarchy-corrections', 'metadata', 'metadata.csv'
+        ),
     )
-
     if not os.path.exists(metadata_path):
         logging.info('Metadata file {} not found.'.format(metadata_path))
         return None
@@ -51,19 +56,22 @@ def _load_metadata(data_home):
         reader = csv.reader(fhandle, delimiter=',')
         raw_data = []
         for line in reader:
-            if line[0] == 'SONG ID':
-                continue
-            raw_data.append(line)
+            if line != []:
+                if line[0] == 'SONG_ID':
+                    continue
+                raw_data.append(line)
 
     metadata_index = {}
     for line in raw_data:
         track_id = line[0]
-
+        duration = None
+        if line[5] != '':
+            duration = float(line[5])
         metadata_index[track_id] = {
             'source': line[1],
             'annotator_1_id': line[2],
             'annotator_2_id': line[3],
-            'duration_sec': line[5],
+            'duration': duration,
             'title': line[7],
             'artist': line[8],
             'annotator_1_time': line[10],
@@ -94,7 +102,7 @@ class Track(object):
         source
         annotator_1_id
         annotator_2_id
-        duration_sec
+        duration
         title
         artist
         annotator_1_time
@@ -122,7 +130,7 @@ class Track(object):
         self._track_paths = DATA.index[track_id]
 
         metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
+        if metadata is not None and track_id in metadata.keys():
             self._track_metadata = metadata[track_id]
         else:
             # annotations with missing metadata
@@ -130,7 +138,7 @@ class Track(object):
                 'source': None,
                 'annotator_1_id': None,
                 'annotator_2_id': None,
-                'duration_sec': None,
+                'duration': None,
                 'title': None,
                 'artist': None,
                 'annotator_1_time': None,
@@ -138,13 +146,11 @@ class Track(object):
                 'class': None,
                 'genre': None,
             }
-
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
-
         self.source = self._track_metadata['source']
         self.annotator_1_id = self._track_metadata['annotator_1_id']
         self.annotator_2_id = self._track_metadata['annotator_2_id']
-        self.duration_sec = self._track_metadata['duration_sec']
+        self.duration = self._track_metadata['duration']
         self.title = self._track_metadata['title']
         self.artist = self._track_metadata['artist']
         self.annotator_1_time = self._track_metadata['annotator_1_time']
@@ -155,13 +161,13 @@ class Track(object):
     def __repr__(self):
         repr_string = (
             "Salami Track(track_id={}, audio_path={}, source={}, "
-            + "title={}, artist={}, duration_sec={}, annotator_1_id={}, "
+            + "title={}, artist={}, duration={}, annotator_1_id={}, "
             + "annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, "
             + "broad_genre={}, genre={}, "
-            + "sections_annotator_1_uppercase=SectionData('start_times', 'end_times', 'sections'), "
-            + "sections_annotator_1_lowercase=SectionData('start_times', 'end_times', 'sections'), "
-            + "sections_annotator_2_uppercase=SectionData('start_times', 'end_times', 'sections'), "
-            + "sections_annotator_2_lowercase=SectionData('start_times', 'end_times', 'sections')"
+            + "sections_annotator_1_uppercase=SectionData('intervals', 'labels'), "
+            + "sections_annotator_1_lowercase=SectionData('intervals', 'labels'), "
+            + "sections_annotator_2_uppercase=SectionData('intervals', 'labels'), "
+            + "sections_annotator_2_lowercase=SectionData('intervals', 'labels'))"
         )
         return repr_string.format(
             self.track_id,
@@ -169,7 +175,7 @@ class Track(object):
             self.source,
             self.title,
             self.artist,
-            self.duration_sec,
+            self.duration,
             self.annotator_1_id,
             self.annotator_2_id,
             self.annotator_1_time,
@@ -214,6 +220,27 @@ class Track(object):
     def audio(self):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
+    def to_jams(self):
+        return jams_utils.jams_converter(
+            multi_section_data=[
+                (
+                    [
+                        (self.sections_annotator_1_uppercase, 0),
+                        (self.sections_annotator_1_lowercase, 1),
+                    ],
+                    'annotator_1',
+                ),
+                (
+                    [
+                        (self.sections_annotator_2_uppercase, 0),
+                        (self.sections_annotator_2_lowercase, 1),
+                    ],
+                    'annotator_2',
+                ),
+            ],
+            metadata=self._track_metadata,
+        )
+
 
 def download(data_home=None, force_overwrite=False):
     """Download SALAMI Dataset (annotations).
@@ -234,7 +261,7 @@ def download(data_home=None, force_overwrite=False):
         for download. If you have the Salami dataset, place the contents into a
         folder called Salami with the following structure:
             > Salami/
-                > salami-data-public-master/
+                > salami-data-public-hierarchy-corrections/
                 > audio/
         and copy the Salami folder to {}
     """.format(
@@ -319,9 +346,7 @@ def _load_sections(sections_path):
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
     return utils.SectionData(
-        np.array(times_revised[:-1]),
-        np.array(times_revised)[1:],
-        np.array(secs_revised)[:-1],
+        np.array([times_revised[:-1], times_revised[1:]]).T, list(secs_revised[:-1])
     )
 
 

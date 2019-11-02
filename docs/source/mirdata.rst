@@ -133,3 +133,12 @@ mirdata.download_utils
    :members:
    :undoc-members:
    :show-inheritance:
+
+
+mirdata.jams_utils
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.jams_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

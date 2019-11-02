@@ -123,6 +123,7 @@ from __future__ import print_function
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = 'Example'
 # -- info for any files that need to be downloaded
@@ -223,6 +224,17 @@ class Track(object):
         # -- change this if it doesn't make sense for your dataset.
         audio, sr = librosa.load(self.audio_path, sr=None, mono=True)
         return audio, sr
+
+    # -- we use the to_jams function to convert all the annotations in the JAMS format.
+    # -- The converter takes as input all the annotations in the proper format (e.g. beats
+    # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
+    # -- object with the annotations.
+    def to_jams(self):
+        return jams_utils.jams_convertrer(
+            annotation_data=[(self.annotation, None)],
+            metadata=metadata},
+        )
+
 
 
 def download(data_home=None, force_overwrite=False):
@@ -347,4 +359,4 @@ Bibtex format citations/s here
   a. Include all audio and annotation files for one track of the dataset
   b. For each audio/annotation file, reduce the audio length to a few seconds and remove all but a few of the annotations.
   c. If the dataset has a metadata file, reduce the length to a few lines to make it trival to test.
-2. Test all of the dataset specific code, e.g. the Track object, any of the load functions, and so forth – see the ikala dataset tests (`tests/test_ikala.py`) for reference.
+2. Test all of the dataset specific code, e.g. the Track object, any of the load functions, and so forth. See the ikala dataset tests (`tests/test_ikala.py`) for reference.
