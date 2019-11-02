@@ -105,6 +105,15 @@ mirdata.salami
    :undoc-members:
    :show-inheritance:
 
+
+mirdata.dali
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.dali
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Utilities
 ----------
 
