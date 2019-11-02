@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 """RWC Popular Dataset Loader
+
+Attributes:
+    METADATA_REMOTE (RemoteFileMetadata): Metadata of the remote file
+    DATASET_DIR (str): The directory name for iKala dataset. Set to `'RWC-Pop'`.
+
 """
 import csv
 import librosa
@@ -95,6 +100,29 @@ DATA = utils.LargeData('rwc_popular_index.json', _load_metadata)
 
 
 class Track(object):
+    """RWC Popular Track class
+
+    Args:
+        track_id (str): Track id of the Track
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Attributes:
+        track_id (str): Track id
+        audio_path (str): Audio path of this Track
+        piece_number (str): Piece number of this Track, [1-50]
+        suffix (str): M01-M04
+        track_number: CD track number of this Track
+        title (str): Title of The track.
+        artist (str): Artist name with the vocal's gender
+            E.g., 'Makoto Nakamura'
+        duration_sec: Duration of the track in seconds
+        tempo: Tempo of the track in BPM
+        instruments: List of used instruments
+        drum_information: If the drum is 'Drum sequences', 'Live drums',
+            or 'Drum loops'
+    """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(

@@ -94,18 +94,17 @@ class Track(object):
         source
         annotator_1_id
         annotator_2_id
-        duration_sec
-        title
+        duration_sec: duration of the track
+        title: Title of the track
         artist
         annotator_1_time
         annotator_2-time
         broad_genre
-        genre: (todo: somewhat separate metadata and annotation)
+        genre:
         sections_annotator_1_uppercase: annotation
         sections_annotator_1_lowercase: annotation
         sections_annotator_2_uppercase: annotation
         sections_annotator_2_lowercase: annotation
-
 
     """
 

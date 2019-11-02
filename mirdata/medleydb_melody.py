@@ -69,7 +69,7 @@ class Track(object):
         title (str): title of the track
         genre (str): genre of the track
         is_excerpt (bool):
-        is_instrumental (bool)
+        is_instrumental (bool):
         n_sources (int):
         melody1 (F0Data):
         melody2 (F0Data):
@@ -224,7 +224,6 @@ def load(data_home=None):
 
     Returns:
         (dict): {`track_id`: track data}
-
     """
 
     if data_home is None:

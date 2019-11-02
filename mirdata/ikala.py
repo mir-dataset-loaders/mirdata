@@ -88,7 +88,7 @@ class Track(object):
         track_id (str): track id
         audio_path (str): track audio path
         song_id (str): song id of the track
-        section (str): section (todo)
+        section (str): section
         singer_id (str): singer id
         f0 (F0Data): pitch
         lyrics (LyricData): lyrics
