@@ -41,6 +41,7 @@ import os
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = "Medley-solos-DB"
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
@@ -146,6 +147,9 @@ class Track(object):
     @property
     def audio(self):
         return librosa.load(self.audio_path, sr=22050, mono=True)
+
+    def to_jams(self):
+        return jams_utils.jams_converter(metadata=self._track_metadata)
 
 
 def download(data_home=None):

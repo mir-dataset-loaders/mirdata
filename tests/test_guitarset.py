@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import numpy as np
 
 import os
 import pytest
+import jams
 
 from mirdata import guitarset, utils
 from tests.test_utils import DEFAULT_DATA_HOME
@@ -58,13 +60,13 @@ def test_load_beats():
 
 
 def test_load_chords():
-    assert np.allclose(TRACK.leadsheet_chords.start_times, [0])
-    assert np.allclose(TRACK.leadsheet_chords.end_times, [2])
-    assert TRACK.leadsheet_chords.chords == ['G:maj']
+    assert np.allclose(TRACK.leadsheet_chords.intervals[:, 0], [0])
+    assert np.allclose(TRACK.leadsheet_chords.intervals[:, 1], [2])
+    assert TRACK.leadsheet_chords.labels == ['G:maj']
 
-    assert np.allclose(TRACK.inferred_chords.start_times, [0])
-    assert np.allclose(TRACK.inferred_chords.end_times, [2])
-    assert TRACK.inferred_chords.chords == ['G:maj7/1']
+    assert np.allclose(TRACK.inferred_chords.intervals[:, 0], [0])
+    assert np.allclose(TRACK.inferred_chords.intervals[:, 1], [2])
+    assert TRACK.inferred_chords.labels == ['G:maj7/1']
 
 
 def test_load_keys():
@@ -157,6 +159,15 @@ def test_load():
     guitarset_data_default = guitarset.load()
     assert isinstance(guitarset_data_default, dict)
     assert len(guitarset_data_default.keys()) == 360
+
+
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/GuitarSet'
+    track = guitarset.Track('03_BN3-119-G_solo', data_home=data_home)
+    jam = track.to_jams()
+
+    assert type(jam) == jams.JAMS
 
 
 def test_download(mock_downloader):

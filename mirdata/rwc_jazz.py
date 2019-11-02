@@ -8,9 +8,10 @@ import os
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 # these functions are identical for all rwc datasets
-from mirdata.rwc_classical import _load_beats, _load_sections
+from mirdata.rwc_classical import _load_beats, _load_sections, _duration_to_sec
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-j.csv',
@@ -66,7 +67,7 @@ def _load_metadata(data_home):
             'track_number': line[2],
             'title': line[3],
             'artist': line[4],
-            'duration_sec': line[5],
+            'duration': _duration_to_sec(line[5]),
             'variation': line[6],
             'instruments': line[7],
         }
@@ -102,7 +103,7 @@ class Track(object):
                 'track_number': None,
                 'title': None,
                 'artist': None,
-                'duration_sec': None,
+                'duration': None,
                 'variation': None,
                 'instruments': None,
             }
@@ -114,7 +115,7 @@ class Track(object):
         self.track_number = self._track_metadata['track_number']
         self.title = self._track_metadata['title']
         self.artist = self._track_metadata['artist']
-        self.duration_sec = self._track_metadata['duration_sec']
+        self.duration = self._track_metadata['duration']
         self.variation = self._track_metadata['variation']
         self.instruments = self._track_metadata['instruments']
 
@@ -122,8 +123,8 @@ class Track(object):
         repr_string = (
             "RWC-Jazz Track(track_id={}, audio_path={}, "
             + "piece_number={}, suffix={}, track_number={}, title={}, "
-            + "artist={}, duration_sec={}, variation={}, instruments={}, "
-            + "sections=SectionData('start_times', 'end_times', 'sections'), "
+            + "artist={}, duration={}, variation={}, instruments={}, "
+            + "sections=SectionData('intervals', 'labels'), "
             + "beats=BeatData('beat_times', 'beat_positions'))"
         )
         return repr_string.format(
@@ -134,7 +135,7 @@ class Track(object):
             self.track_number,
             self.title,
             self.artist,
-            self.duration_sec,
+            self.duration,
             self.variation,
             self.instruments,
         )
@@ -152,6 +153,13 @@ class Track(object):
     @property
     def audio(self):
         return librosa.load(self.audio_path, sr=None, mono=True)
+
+    def to_jams(self):
+        return jams_utils.jams_converter(
+            beat_data=[(self.beats, None)],
+            section_data=[(self.sections, None)],
+            metadata=self._track_metadata,
+        )
 
 
 def download(data_home=None, force_overwrite=False):

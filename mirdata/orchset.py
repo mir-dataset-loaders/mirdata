@@ -32,6 +32,7 @@ import shutil
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 
 REMOTE = download_utils.RemoteFileMetadata(
@@ -223,6 +224,11 @@ class Track(object):
     @property
     def audio_stereo(self):
         return librosa.load(self.audio_path_stereo, sr=None, mono=False)
+
+    def to_jams(self):
+        return jams_utils.jams_converter(
+            f0_data=[(self.melody, None)], metadata=self._track_metadata
+        )
 
 
 def download(data_home=None, force_overwrite=False):

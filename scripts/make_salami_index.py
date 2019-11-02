@@ -4,7 +4,7 @@ import json
 import os
 
 
-SALAMI_INDEX_PATH = '../mir_dataset_loaders/indexes/salami_index.json'
+SALAMI_INDEX_PATH = '../mirdata/indexes/salami_index.json'
 
 
 def md5(file_path):
@@ -29,7 +29,7 @@ def md5(file_path):
 
 def make_salami_index(data_path):
     annotations_dir = os.path.join(
-        data_path, 'Salami', 'salami-data-public-master', 'annotations'
+        data_path, 'Salami', 'salami-data-public-hierarchy-corrections', 'annotations'
     )
     audio_dir = os.path.join(data_path, 'Salami', 'audio')
     annotations_files = os.listdir(annotations_dir)
@@ -64,7 +64,7 @@ def make_salami_index(data_path):
                     )
                     annot_rels.append(
                         os.path.join(
-                            'salami-data-public-master',
+                            'salami-data-public-hierarchy-corrections',
                             'annotations',
                             track_id,
                             'parsed',

@@ -23,6 +23,7 @@ import numpy as np
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = 'Beatles'
 ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
@@ -74,9 +75,9 @@ class Track(object):
         repr_string = (
             "Beatles Track(track_id={}, audio_path={}, title={}, "
             + "beats=BeatData('beat_times, 'beat_positions'), "
-            + "chords=ChordData('start_times', 'end_times', 'chords'), "
+            + "chords=ChordData('intervals', 'labels'), "
             + "key=KeyData('start_times', 'end_times', 'keys'), "
-            + "sections=SectionData('start_times', 'end_times', 'sections'))"
+            + "sections=SectionData('intervals', 'labels'))"
         )
         return repr_string.format(self.track_id, self.audio_path, self.title)
 
@@ -111,6 +112,15 @@ class Track(object):
     @property
     def audio(self):
         return librosa.load(self.audio_path, sr=None, mono=True)
+
+    def to_jams(self):
+        return jams_utils.jams_converter(
+            beat_data=[(self.beats, None)],
+            section_data=[(self.sections, None)],
+            chord_data=[(self.chords, None)],
+            key_data=[(self.key, None)],
+            metadata={'artist': 'The Beatles', 'title': self.title},
+        )
 
 
 def download(data_home=None, force_overwrite=False):
@@ -248,9 +258,7 @@ def _load_chords(chords_path):
             end_times.append(float(line[1]))
             chords.append(line[2])
 
-    chord_data = utils.ChordData(
-        np.array(start_times), np.array(end_times), np.array(chords)
-    )
+    chord_data = utils.ChordData(np.array([start_times, end_times]).T, chords)
 
     return chord_data
 
@@ -297,9 +305,7 @@ def _load_sections(sections_path):
             end_times.append(float(line[1]))
             sections.append(line[3])
 
-    section_data = utils.SectionData(
-        np.array(start_times), np.array(end_times), np.array(sections)
-    )
+    section_data = utils.SectionData(np.array([start_times, end_times]).T, sections)
 
     return section_data
 

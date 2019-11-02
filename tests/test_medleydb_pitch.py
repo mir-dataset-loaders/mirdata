@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import numpy as np
@@ -61,6 +62,24 @@ def test_track():
         + "instrument=male singer, pitch=PitchData('times', 'pitches', 'confidence'))"
     )
     assert track.__repr__() == repr_string
+
+
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/MedleyDB-Pitch'
+    track = medleydb_pitch.Track(
+        'AClassicEducation_NightOwl_STEM_08', data_home=data_home
+    )
+    jam = track.to_jams()
+
+    f0s = jam.search(namespace='pitch_contour')[0]['data']
+    assert [f0.time for f0 in f0s] == [0.06965986394557823, 0.07546485260770976]
+    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
+    assert [f0.value for f0 in f0s] == [0.0, 191.877]
+    assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
+
+    assert jam['file_metadata']['title'] == 'NightOwl'
+    assert jam['file_metadata']['artist'] == 'AClassicEducation'
 
 
 def test_track_ids():
