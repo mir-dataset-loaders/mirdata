@@ -93,8 +93,8 @@ class Track(object):
             self._track_metadata['language'] = metadata[track_id]['metadata'][
                 'language'
             ]
-            self.audio_url = (self._track_metadata['audio']['url'],)
-            self.url_working = (self._track_metadata['audio']['working'],)
+            self.audio_url = self._track_metadata['audio']['url']
+            self.url_working = self._track_metadata['audio']['working']
             self.ground_truth = self._track_metadata['ground-truth']
             self.artist = self._track_metadata['artist']
             self.title = self._track_metadata['title']
