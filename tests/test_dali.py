@@ -50,7 +50,7 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 48000
-    assert audio.shape == (12585899,)
+    assert audio.shape == (94208,)
 
     repr_string = (
         "DALI Track(track_id=4b196e6c99574dd49ad00d56e132712b, "
