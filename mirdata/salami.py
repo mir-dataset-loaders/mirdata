@@ -102,8 +102,8 @@ class Track(object):
         source
         annotator_1_id
         annotator_2_id
-        duration
-        title
+        duration: duration of the track
+        title: title of the track
         artist
         annotator_1_time
         annotator_2-time
