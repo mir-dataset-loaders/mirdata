@@ -112,25 +112,25 @@ class Track(object):
     """ORCHSET Track class
 
     Args:
-        track_id (str): track id of the Track
+        track_id (str): Track id of the Track
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
-        audio_path_mono (str): mono audio path of the track
-        audio_path_stereo (str): stereo audio path of the track
-        composer (str): composer
-        work (str):
-        predominant_melodic_instruments (str):
-        alternating_melody
-        contains_winds (bool?)
-        contains_strings
-        contains_brass
-        only_strings
-        only_winds
-        only_brass
-        melody (F0Data): melody annotation
+        track_id (str): Track id
+        audio_path_mono (str): Mono audio path of the track
+        audio_path_stereo (str): Stereo audio path of the track
+        composer (str): Composer of the track
+        work (str): The musical work
+        predominant_melodic_instruments ([str]): List of instruments which play the melody
+        alternating_melody (bool): True if the melody alternates between instruments
+        contains_winds (bool): True if the track contains any wind instrument
+        contains_strings (bool): True if the track contains any string instrument
+        contains_brass (bool): True if the track contains any brass instrument
+        only_strings (bool): True if the track contains string instruments only
+        only_winds (bool): True if the track contains wind instruments only
+        only_brass (bool): True if the track contains brass instruments only
+        melody (F0Data): Melody annotation
 
     """
 
@@ -237,7 +237,7 @@ def download(data_home=None, force_overwrite=False):
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool): whether to overwrite the existing downloaded data
+        force_overwrite (bool): Whether to overwrite the existing downloaded data
 
     """
     if data_home is None:

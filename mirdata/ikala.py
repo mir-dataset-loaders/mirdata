@@ -89,7 +89,7 @@ class Track(object):
         track_id (str): track id
         audio_path (str): track audio path
         song_id (str): song id of the track
-        section (str): section (todo)
+        section (str): section. Either 'verse' or 'chorus'
         singer_id (str): singer id
         f0 (F0Data): pitch
         lyrics (LyricData): lyrics
@@ -124,7 +124,7 @@ class Track(object):
             "iKala Track(track_id={}, audio_path={}, song_id={}, "
             + "section={}, singer_id={}, "
             + "f0=F0Data('times', 'frequencies', 'confidence'), "
-            + "lyrics=LyricData('start_times', 'end_times', 'lyrics', 'pronounciations'))"
+            + "lyrics=LyricData('start_times', 'end_times', 'lyrics', 'pronunciations'))"
         )
         return repr_string.format(
             self.track_id, self.audio_path, self.song_id, self.section, self.singer_id

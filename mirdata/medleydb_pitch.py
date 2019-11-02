@@ -17,8 +17,6 @@ Attributes:
     DATASET_DIR (str): The directory name for MedleyDB melody dataset.
         Set to `'MedleyDB-Pitch'`.
 
-    METADATA (None): TODO
-
 """
 from __future__ import absolute_import
 from __future__ import division
@@ -176,7 +174,6 @@ def validate(data_home=None, silence=False):
             but missing locally
         invalid_checksums (list): List of file paths that file exists in the dataset
             index but has a different checksum compare to the reference checksum
-
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)

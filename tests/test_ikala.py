@@ -68,7 +68,7 @@ def test_track():
         + "10161_chorus.wav, song_id=10161, section=chorus, singer_id=1, "
         + "f0=F0Data('times', 'frequencies', 'confidence'), "
         + "lyrics=LyricData('start_times', 'end_times', 'lyrics', "
-        + "'pronounciations'))"
+        + "'pronunciations'))"
     )
     assert track.__repr__() == repr_string
 
@@ -131,7 +131,7 @@ def test_load_f0():
 
 
 def test_load_lyrics():
-    # load a file without pronounciations
+    # load a file without pronunciations
     lyrics_path_simple = 'tests/resources/mir_datasets/iKala/Lyrics/10161_chorus.lab'
     lyrics_data_simple = ikala._load_lyrics(lyrics_path_simple)
 
@@ -140,15 +140,15 @@ def test_load_lyrics():
     assert type(lyrics_data_simple.start_times) is np.ndarray
     assert type(lyrics_data_simple.end_times) is np.ndarray
     assert type(lyrics_data_simple.lyrics) is np.ndarray
-    assert type(lyrics_data_simple.pronounciations) is np.ndarray
+    assert type(lyrics_data_simple.pronunciations) is np.ndarray
 
     # check values
     assert np.array_equal(lyrics_data_simple.start_times, np.array([0.027, 0.232]))
     assert np.array_equal(lyrics_data_simple.end_times, np.array([0.232, 0.968]))
     assert np.array_equal(lyrics_data_simple.lyrics, np.array(['JUST', 'WANNA']))
-    assert np.array_equal(lyrics_data_simple.pronounciations, np.array([None, None]))
+    assert np.array_equal(lyrics_data_simple.pronunciations, np.array([None, None]))
 
-    # load a file with pronounciations
+    # load a file with pronunciations
     lyrics_path_pronun = 'tests/resources/mir_datasets/iKala/Lyrics/10164_chorus.lab'
     lyrics_data_pronun = ikala._load_lyrics(lyrics_path_pronun)
 
@@ -157,14 +157,14 @@ def test_load_lyrics():
     assert type(lyrics_data_pronun.start_times) is np.ndarray
     assert type(lyrics_data_pronun.end_times) is np.ndarray
     assert type(lyrics_data_pronun.lyrics) is np.ndarray
-    assert type(lyrics_data_pronun.pronounciations) is np.ndarray
+    assert type(lyrics_data_pronun.pronunciations) is np.ndarray
 
     # check values
     assert np.array_equal(lyrics_data_pronun.start_times, np.array([0.021, 0.571]))
     assert np.array_equal(lyrics_data_pronun.end_times, np.array([0.189, 1.415]))
     assert np.array_equal(lyrics_data_pronun.lyrics, np.array(['ASDF', 'EVERYBODY']))
     assert np.array_equal(
-        lyrics_data_pronun.pronounciations, np.array(['t i au', None])
+        lyrics_data_pronun.pronunciations, np.array(['t i au', None])
     )
 
     # load a file which doesn't exist

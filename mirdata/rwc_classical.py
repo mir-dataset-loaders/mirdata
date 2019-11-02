@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """RWC Classical Dataset Loader
+
+More details are on https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html .
+
+Attributes:
+    METADATA_REMOTE (RemoteFileMetadata): Metadata of the remote file
+    DATASET_DIR (str): The directory name for iKala dataset. Set to `'RWC-Classical'`.
+
 """
 import csv
 import librosa
@@ -79,6 +86,29 @@ DATA = utils.LargeData('rwc_classical_index.json', _load_metadata)
 
 
 class Track(object):
+    """RWC Classical Track class
+
+    Args:
+        track_id (str): Track id of the Track
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Attributes:
+        track_id (str): Track id
+        audio_path (str): Audio path of this Track
+        piece_number (str): Piece number of this Track, [1-50]
+        suffix (str): M01-M06
+        track_number: CD track number of this Track
+        title (str): Title of The track.
+            E.g., 'Symphony no.94 in G major, Hob.I-94 `The Surprise'. 1st mvmt.'
+        composer (str): Composer of this Track.
+            E.g., 'Haydn, Franz Joseph'
+        artist (str): E.g., 'Tokyo City Philharmonic Orchestra'
+        duration_sec (float): Duration of the track in seconds
+        category (str): 'Symphony', 'Concerto', 'Orchestral',
+            'Solo', 'Chamber', 'Vocal', or blank.\
+    """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(

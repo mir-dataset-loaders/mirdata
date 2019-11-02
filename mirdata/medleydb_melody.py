@@ -59,22 +59,22 @@ class Track(object):
     """MedleyDB melody Track class
 
     Args:
-        track_id (str): track id of the track
+        track_id (str): Track id of the track
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
-        audio_path (str): track audio path
-        artist (str): artist of the track
-        title (str): title of the track
-        genre (str): genre of the track
-        is_excerpt (bool):
-        is_instrumental (bool)
-        n_sources (int):
-        melody1 (F0Data):
-        melody2 (F0Data):
-        melody3 (F0Data):
+        track_id (str): Track id
+        audio_path (str): Track audio path
+        artist (str): Artist of the track
+        title (str): Title of the track
+        genre (str): Genre of the track
+        is_excerpt (bool): True if the track is an excerpt
+        is_instrumental (bool): True of the track does not contain vocals
+        n_sources (int): Number of instruments in the track
+        melody1 (F0Data): The pitch of the single most predominant source (often the voice)
+        melody2 (F0Data): The pitch of the predominant source for each point in time
+        melody3 (F0Data): The pitch of any melodic source. Allows for more than one f0 value at a time.
 
     """
 
@@ -235,7 +235,6 @@ def load(data_home=None):
 
     Returns:
         (dict): {`track_id`: track data}
-
     """
 
     if data_home is None:

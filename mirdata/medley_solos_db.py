@@ -8,14 +8,15 @@ the MedleyDB dataset (Bittner et al., ISMIR 2014) as well as a test set of
 3-second clips, which are extracted from the solosDB dataset (Essid et al.,
 IEEE TASLP 2009).
 Each of these clips contains a single instrument among a taxonomy of eight:
-0. clarinet,
-1. distorted electric guitar,
-2. female singer,
-3. flute,
-4. piano,
-5. tenor saxophone,
-6. trumpet, and
-7. violin.
+
+    0. clarinet,
+    1. distorted electric guitar,
+    2. female singer,
+    3. flute,
+    4. piano,
+    5. tenor saxophone,
+    6. trumpet, and
+    7. violin.
 
 The Medley-solos-DB dataset is the dataset that is used in the benchmarks of
 musical instrument recognition in the publications of Lostanlen and Cella
@@ -172,6 +173,7 @@ def download(data_home=None):
 
 def track_ids():
     """Return track ids
+
     Returns:
         (list): A list of track ids
     """
@@ -190,7 +192,6 @@ def validate(data_home=None, silence=False):
             but missing locally
         invalid_checksums (list): List of file paths that file exists in the dataset
             index but has a different checksum compare to the reference checksum
-
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
