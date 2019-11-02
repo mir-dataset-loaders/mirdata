@@ -1,0 +1,30 @@
+{  
+  "4b196e6c99574dd49ad00d56e132712b": {
+    "dataset_version": 1,
+    "ground-truth": false,
+    "artist": "System Of A Down",
+    "title": "B.Y.O.B.",
+    "scores": {
+      "NCC": 0.9644769596900552,
+      "manual": 0
+    },
+    "audio": {
+      "url": "zUzd9KyIDrM",
+      "path": "None",
+      "working": true
+    },
+    "id": "4b196e6c99574dd49ad00d56e132712b",
+    "metadata": {
+      "album": "Mezmerize",
+      "release_date": "2005",
+      "cover": "https://e-cdns-images.dzcdn.net/images/cover/b89e903033fd096f9d0a2df1d5003826/1000x1000-000000-80-0-0.jpg",
+      "genres": [
+        "Pop",
+        "Rock",
+        "Hard Rock",
+        "Metal"
+      ],
+      "language": "english"
+    }
+  }
+}

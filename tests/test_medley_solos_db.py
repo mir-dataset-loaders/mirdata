@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import numpy as np
@@ -55,6 +56,20 @@ def test_track():
         + 'instrument=flute, song_id=210, subset=validation)'
     )
     assert track.__repr__() == repr_string
+
+
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/Medley-solos-DB'
+    track = medley_solos_db.Track(
+        'd07b1fc0-567d-52c2-fef4-239f31c9d40e', data_home=data_home
+    )
+    jam = track.to_jams()
+
+    assert jam['sandbox']['instrument'] == 'flute'
+    assert jam['sandbox']['instrument_id'] == 3
+    assert jam['sandbox']['song_id'] == 210
+    assert jam['sandbox']['subset'] == 'validation'
 
 
 def test_track_ids():

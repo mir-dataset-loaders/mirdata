@@ -37,6 +37,7 @@ import numpy as np
 
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
+import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = 'iKala'
 TIME_STEP = 0.032  # seconds
@@ -174,6 +175,18 @@ class Track(object):
         mixed_audio, sr = librosa.load(self.audio_path, sr=None, mono=True)
         # multipy by 2 because librosa averages the left and right channel.
         return 2.0 * mixed_audio, sr
+
+    def to_jams(self):
+        return jams_utils.jams_converter(
+            f0_data=[(self.f0, None)],
+            lyrics_data=[(self.lyrics, None)],
+            metadata={
+                'section': self.section,
+                'singer_id': self.singer_id,
+                'track_id': self.track_id,
+                'song_id': self.song_id,
+            },
+        )
 
 
 def download(data_home=None, force_overwrite=False):

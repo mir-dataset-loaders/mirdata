@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import os
@@ -66,15 +67,69 @@ def test_track():
         + "01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav, "
         + "title=11_-_Do_You_Want_To_Know_A_Secret, "
         + "beats=BeatData('beat_times, 'beat_positions'), "
-        + "chords=ChordData('start_times', 'end_times', 'chords'), "
+        + "chords=ChordData('intervals', 'labels'), "
         + "key=KeyData('start_times', 'end_times', 'keys'), "
-        + "sections=SectionData('start_times', 'end_times', 'sections'))"
+        + "sections=SectionData('intervals', 'labels'))"
     )
     assert track.__repr__() == repr_string
 
     track = beatles.Track('10212')
     assert track.beats == None
     assert track.key == None
+
+
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/Beatles'
+    track = beatles.Track('0111', data_home=data_home)
+    jam = track.to_jams()
+
+    beats = jam.search(namespace='beat')[0]['data']
+    assert [beat.time for beat in beats] == [
+        13.249,
+        13.959,
+        14.416,
+        14.965,
+        15.453,
+        15.929,
+        16.428,
+    ]
+    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    assert [beat.value for beat in beats] == [2, 3, 4, 1, 2, 3, 4]
+    assert [beat.confidence for beat in beats] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
+
+    segments = jam.search(namespace='segment')[0]['data']
+    assert [segment.time for segment in segments] == [0.0, 0.465]
+    assert [segment.duration for segment in segments] == [0.465, 14.466]
+    assert [segment.value for segment in segments] == ['silence', 'intro']
+    assert [segment.confidence for segment in segments] == [None, None]
+
+    chords = jam.search(namespace='chord')[0]['data']
+    assert [chord.time for chord in chords] == [0.0, 4.586464, 6.98973]
+    assert [chord.duration for chord in chords] == [
+        0.497838,
+        2.4032659999999995,
+        2.995374,
+    ]
+    assert [chord.value for chord in chords] == ['N', 'E:min', 'G']
+    assert [chord.confidence for chord in chords] == [None, None, None]
+
+    keys = jam.search(namespace='key')[0]['data']
+    assert [key.time for key in keys] == [0.0]
+    assert [key.duration for key in keys] == [119.333]
+    assert [key.value for key in keys] == ['E']
+    assert [key.confidence for key in keys] == [None]
+
+    assert jam['file_metadata']['title'] == '11_-_Do_You_Want_To_Know_A_Secret'
+    assert jam['file_metadata']['artist'] == 'The Beatles'
 
 
 def test_track_ids():
@@ -124,17 +179,16 @@ def test_load_chords():
     chord_data = beatles._load_chords(chords_path)
 
     assert type(chord_data) == utils.ChordData
-    assert type(chord_data.start_times) == np.ndarray
-    assert type(chord_data.end_times) == np.ndarray
-    assert type(chord_data.chords) == np.ndarray
+    assert type(chord_data.intervals) == np.ndarray
+    assert type(chord_data.labels) == list
 
     assert np.array_equal(
-        chord_data.start_times, np.array([0.000000, 4.586464, 6.989730])
+        chord_data.intervals[:, 0], np.array([0.000000, 4.586464, 6.989730])
     )
     assert np.array_equal(
-        chord_data.end_times, np.array([0.497838, 6.989730, 9.985104])
+        chord_data.intervals[:, 1], np.array([0.497838, 6.989730, 9.985104])
     )
-    assert np.array_equal(chord_data.chords, np.array(['N', 'E:min', 'G']))
+    assert np.array_equal(chord_data.labels, np.array(['N', 'E:min', 'G']))
 
     # load a file which doesn't exist
     chord_none = beatles._load_chords('fake/file/path')
@@ -168,13 +222,12 @@ def test_load_sections():
     section_data = beatles._load_sections(sections_path)
 
     assert type(section_data) == utils.SectionData
-    assert type(section_data.start_times) == np.ndarray
-    assert type(section_data.end_times) == np.ndarray
-    assert type(section_data.sections) == np.ndarray
+    assert type(section_data.intervals) == np.ndarray
+    assert type(section_data.labels) == list
 
-    assert np.array_equal(section_data.start_times, np.array([0.000000, 0.465]))
-    assert np.array_equal(section_data.end_times, np.array([0.465, 14.931]))
-    assert np.array_equal(section_data.sections, np.array(['silence', 'intro']))
+    assert np.array_equal(section_data.intervals[:, 0], np.array([0.000000, 0.465]))
+    assert np.array_equal(section_data.intervals[:, 1], np.array([0.465, 14.931]))
+    assert np.array_equal(section_data.labels, np.array(['silence', 'intro']))
 
     # load a file which doesn't exist
     section_none = beatles._load_sections('fake/file/path')
