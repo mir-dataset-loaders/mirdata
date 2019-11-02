@@ -4,6 +4,22 @@
 Attributes:
     MIR_DATASETS_DIR (str): home folder for MIR datasets
 
+    NoteData (namedtuple): `start_times`, `end_times`, `notes`, `confidence`
+
+    F0Data (namedtuple): `times`, `frequencies`, `confidence`
+
+    LyricData (namedtuple): `start_times`, `end_times`, `lyrics`, `pronounciations`
+
+    SectionData (namedtuple): `start_times`, `end_times`, `sections`
+
+    BeatData (namedtuple): `beat_times`, `beat_positions`
+
+    ChordData (namedtuple): `start_times`, `end_times`, `chords`
+
+    KeyData (namedtuple): `start_times`, '`end_times`, `keys`
+
+    EventData (namedtuple): `start_times`, `end_times`, `event`
+
 """
 from __future__ import absolute_import
 from __future__ import division
