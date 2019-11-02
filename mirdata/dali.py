@@ -99,7 +99,8 @@ class Track(object):
             self.artist = self._track_metadata['artist']
             self.title = self._track_metadata['title']
             self.dataset_version = self._track_metadata['dataset_version']
-            self.scores = self._track_metadata['scores']
+            self.scores_ncc = self._track_metadata['scores']['NCC']
+            self.scores_manual = self._track_metadata['scores']['manual']
             self.album = self._track_metadata['album']
             self.release_date = self._track_metadata['release_date']
             self.language = self._track_metadata['language']
@@ -111,7 +112,7 @@ class Track(object):
         repr_string = (
             "DALI Track(track_id={}, audio_path={}, "
             + "audio_url={}, audio_working={}, ground_truth={}, artist={}, title={},"
-            + "dataset_version={}, scores={}, album={}, release_date={}, language={})"
+            + "dataset_version={}, scores_ncc={}, scores_manual={}, album={}, release_date={}, language={})"
         )
         return repr_string.format(
             self.track_id,
@@ -122,7 +123,8 @@ class Track(object):
             self.artist,
             self.title,
             self.dataset_version,
-            self.scores,
+            self.scores_ncc,
+            self.scores_manual,
             self.album,
             self.release_date,
             self.language,
