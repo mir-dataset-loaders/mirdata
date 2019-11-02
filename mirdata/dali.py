@@ -259,19 +259,16 @@ def _load_annotations_granularity(annotations_path, granularity):
             output = pickle.load(f)
     text = []
     notes = []
-    time_notes = []
     begs = []
     ends = []
     for annot in output.annotations['annot'][granularity]:
-        notes.extend([annot['freq'][0], annot['freq'][1]])
-        time_notes.extend([annot['time'][0], annot['time'][1]])
-        begs.append(annot['time'][0])
-        ends.append(annot['time'][1])
+        notes.append(round(annot['freq'][0], 3))
+        begs.append(round(annot['time'][0], 3))
+        ends.append(round(annot['time'][1], 3))
         text.append(annot['text'])
     if granularity == 'notes':
-        time_notes.append(annot['time'][1])  # duration of last note unknown
         annotation = utils.NoteData(
-            np.array(begs), np.array(ends)[:1], np.array(notes), None
+            np.array(begs), np.array(ends), np.array(notes), None
         )
     else:
         annotation = utils.LyricData(

@@ -91,9 +91,9 @@ def test_load_notes():
     assert type(note_data.end_times) == np.ndarray
     assert type(note_data.notes) == np.ndarray
 
-    # assert np.array_equal(note_data.start_times, np.array([]))
-    # assert np.array_equal(note_data.end_times, np.array([]))
-    # assert np.array_equal(note_data.notes, np.array([]))
+    assert np.array_equal(note_data.start_times, np.array([24.125, 24.273, 24.420]))
+    assert np.array_equal(note_data.end_times, np.array([24.273, 24.420, 24.568]))
+    assert np.array_equal(note_data.notes, np.array([1108.731, 1108.731, 1108.731]))
 
     # load a file which doesn't exist
     notes_none = dali._load_annotations_granularity('fake/file/path', 'notes')
@@ -112,9 +112,9 @@ def test_load_words():
     assert type(word_data.end_times) == np.ndarray
     assert type(word_data.lyrics) == np.ndarray
 
-    # assert np.array_equal(word_data.start_times, np.array([]))
-    # assert np.array_equal(word_data.end_times, np.array([]))
-    # assert np.array_equal(word_data.notes, np.array([]))
+    assert np.array_equal(word_data.start_times, np.array([24.125, 24.273, 24.42]))
+    assert np.array_equal(word_data.end_times, np.array([24.273, 24.42, 24.568]))
+    assert np.array_equal(word_data.lyrics, np.array(['why', 'do', 'they']))
 
     # load a file which doesn't exist
     words_none = dali._load_annotations_granularity('fake/file/path', 'words')
@@ -133,9 +133,9 @@ def test_load_paragraphs():
     assert type(par_data.end_times) == np.ndarray
     assert type(par_data.lyrics) == np.ndarray
 
-    # assert np.array_equal(par_data.start_times, np.array([]))
-    # assert np.array_equal(par_data.end_times, np.array([]))
-    # assert np.array_equal(par_data.notes, np.array([]))
+    assert np.array_equal(par_data.start_times, np.array([24.125, 24.420]))
+    assert np.array_equal(par_data.end_times, np.array([24.420, 24.568]))
+    assert np.array_equal(par_data.lyrics, np.array(['why do', 'they']))
 
     # load a file which doesn't exist
     pars_none = dali._load_annotations_granularity('fake/file/path', 'paragraphs')
@@ -150,7 +150,72 @@ def test_load_dali_object():
     dali_data = dali._load_annotations_class(data_path)
 
     assert type(dali_data) == DALI.Annotations
-    # TODO: check dictionaries when have small test files
+    assert dali_data.annotations['annot']['notes'] == [
+        {
+            'text': 'why',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.12471002069169, 24.272507833284063],
+            'index': 0,
+        },
+        {
+            'text': 'do',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.272507833284063, 24.42030564587644],
+            'index': 1,
+        },
+        {
+            'text': 'they',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.42030564587644, 24.568103458468812],
+            'index': 2,
+        },
+    ]
+    assert dali_data.annotations['annot']['words'] == [
+        {
+            'text': 'why',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.12471002069169, 24.272507833284063],
+            'index': 0,
+        },
+        {
+            'text': 'do',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.272507833284063, 24.42030564587644],
+            'index': 0,
+        },
+        {
+            'text': 'they',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.42030564587644, 24.568103458468812],
+            'index': 1,
+        },
+    ]
+    assert dali_data.annotations['annot']['lines'] == [
+        {
+            'text': 'why do',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.12471002069169, 24.42030564587644],
+            'index': 0,
+        },
+        {
+            'text': 'they',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.42030564587644, 24.568103458468812],
+            'index': 1,
+        },
+    ]
+    assert dali_data.annotations['annot']['paragraphs'] == [
+        {
+            'text': 'why do',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.12471002069169, 24.42030564587644],
+        },
+        {
+            'text': 'they',
+            'freq': [1108.7305239074883, 1108.7305239074883],
+            'time': [24.42030564587644, 24.568103458468812],
+        },
+    ]
 
     # load a file which doesn't exist
     dali_none = dali._load_annotations_class('fake/file/path')
