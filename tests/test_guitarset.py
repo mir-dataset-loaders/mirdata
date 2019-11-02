@@ -5,6 +5,7 @@ import numpy as np
 
 import os
 import pytest
+import jams
 
 from mirdata import guitarset, utils
 from tests.test_utils import DEFAULT_DATA_HOME
@@ -158,6 +159,15 @@ def test_load():
     guitarset_data_default = guitarset.load()
     assert isinstance(guitarset_data_default, dict)
     assert len(guitarset_data_default.keys()) == 360
+
+
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/GuitarSet'
+    track = guitarset.Track('03_BN3-119-G_solo', data_home=data_home)
+    jam = track.to_jams()
+
+    assert type(jam) == jams.JAMS
 
 
 def test_download(mock_downloader):

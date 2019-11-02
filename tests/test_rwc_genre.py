@@ -73,6 +73,85 @@ def test_track():
     assert track.__repr__() == repr_string
 
 
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/RWC-Genre'
+    track = rwc_genre.Track('RM-G002', data_home=data_home)
+    jam = track.to_jams()
+
+    beats = jam.search(namespace='beat')[0]['data']
+    assert [beat.time for beat in beats] == [
+        0.17,
+        0.91,
+        1.65,
+        2.39,
+        3.14,
+        3.86,
+        4.58,
+        5.3,
+        6.03,
+        6.76,
+        7.49,
+        8.22,
+    ]
+    assert [beat.duration for beat in beats] == [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+    ]
+    assert [beat.value for beat in beats] == [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+    assert [beat.confidence for beat in beats] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
+
+    segments = jam.search(namespace='segment')[0]['data']
+    assert [segment.time for segment in segments] == [0.17, 10.4, 35.3, 52.81, 229.69]
+    assert [segment.duration for segment in segments] == [
+        10.23,
+        24.9,
+        17.510000000000005,
+        5.839999999999996,
+        30.939999999999998,
+    ]
+    assert [segment.value for segment in segments] == [
+        'intro',
+        'verse A',
+        'verse B',
+        'pre-chorus',
+        'ending',
+    ]
+    assert [segment.confidence for segment in segments] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
+
+    assert jam['file_metadata']['title'] == 'Forget about It'
+    assert jam['file_metadata']['artist'] == 'Shinya Iguchi (Male)'
+
+
 def test_track_ids():
     track_ids = rwc_genre.track_ids()
     assert type(track_ids) is list

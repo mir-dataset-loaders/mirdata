@@ -79,6 +79,22 @@ def test_track():
     assert track.__repr__() == repr_string
 
 
+def test_to_jams():
+
+    data_home = 'tests/resources/mir_datasets/MedleyDB-Melody'
+    track = medleydb_melody.Track('MusicDelta_Beethoven', data_home=data_home)
+    jam = track.to_jams()
+
+    f0s = jam.search(namespace='pitch_contour')[1]['data']
+    assert [f0.time for f0 in f0s] == [0.046439909297052155, 0.052244897959183675]
+    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
+    assert [f0.value for f0 in f0s] == [0.0, 965.992]
+    assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
+
+    assert jam['file_metadata']['title'] == 'Beethoven'
+    assert jam['file_metadata']['artist'] == 'MusicDelta'
+
+
 def test_track_ids():
     track_ids = medleydb_melody.track_ids()
     assert type(track_ids) is list

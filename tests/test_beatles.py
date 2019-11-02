@@ -85,10 +85,26 @@ def test_to_jams():
     jam = track.to_jams()
 
     beats = jam.search(namespace='beat')[0]['data']
-    assert [beat.time for beat in beats] == [13.249, 13.959, 14.416, 14.965, 15.453, 15.929, 16.428]
+    assert [beat.time for beat in beats] == [
+        13.249,
+        13.959,
+        14.416,
+        14.965,
+        15.453,
+        15.929,
+        16.428,
+    ]
     assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     assert [beat.value for beat in beats] == [2, 3, 4, 1, 2, 3, 4]
-    assert [beat.confidence for beat in beats] == [None, None, None, None, None, None, None]
+    assert [beat.confidence for beat in beats] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
 
     segments = jam.search(namespace='segment')[0]['data']
     assert [segment.time for segment in segments] == [0.0, 0.465]
@@ -98,12 +114,16 @@ def test_to_jams():
 
     chords = jam.search(namespace='chord')[0]['data']
     assert [chord.time for chord in chords] == [0.0, 4.586464, 6.98973]
-    assert [chord.duration for chord in chords]== [0.497838, 2.4032659999999995, 2.995374]
+    assert [chord.duration for chord in chords] == [
+        0.497838,
+        2.4032659999999995,
+        2.995374,
+    ]
     assert [chord.value for chord in chords] == ['N', 'E:min', 'G']
-    assert [chord.confidence for chord in chords]== [None, None, None]
+    assert [chord.confidence for chord in chords] == [None, None, None]
 
     keys = jam.search(namespace='key')[0]['data']
-    assert [key.time for key in keys]== [0.0]
+    assert [key.time for key in keys] == [0.0]
     assert [key.duration for key in keys] == [119.333]
     assert [key.value for key in keys] == ['E']
     assert [key.confidence for key in keys] == [None]
