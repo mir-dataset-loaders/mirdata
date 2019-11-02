@@ -282,9 +282,11 @@ def download(data_home=None):
 
 def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
+
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
+
     Returns:
         missing_files (list): List of file paths that are in the dataset index
             but missing locally
@@ -302,6 +304,7 @@ def validate(data_home=None, silence=False):
 
 def track_ids():
     """Return track ids
+    
     Returns:
         (list): A list of track ids
     """
@@ -310,9 +313,11 @@ def track_ids():
 
 def load(data_home=None):
     """Load GuitarSet
+    
     Args:
         data_home (str): Local path where GuitarSet is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
+
     Returns:
         (dict): {`track_id`: track data}
     """
@@ -335,13 +340,11 @@ def _load_beats(jams_path):
 
 def _load_chords(jams_path, leadsheet_version=True):
     """
-    Parameters:
-    -----------
-    jams_path : str
-        path of the jams annotation file
-    leadsheet_version : Bool
-        Whether or not to load the leadsheet version of the chord annotation
-        If False, load the infered version.
+    Args:
+        jams_path (str): Path of the jams annotation file
+        leadsheet_version (Bool)
+            Whether or not to load the leadsheet version of the chord annotation
+            If False, load the infered version.
     """
     jam = jams.load(jams_path)
     if leadsheet_version:
@@ -360,15 +363,13 @@ def _load_key_mode(jams_path):
 
 
 def _load_pitch_contour(jams_path, string_num):
-    '''
-    Parameters:
-    -----------
-    jams_path : str
-        path of the jams annotation file
-    string_num : int, in range(6)
-        Which string to load.
-        0 being the Low E string, 5 is the high e string.
-    '''
+    """
+    Args:
+        jams_path (str): Path of the jams annotation file
+
+    string_num (int), in range(6): Which string to load.
+        0 is the Low E string, 5 is the high e string.
+    """
     jam = jams.load(jams_path)
     anno_arr = jam.search(namespace='pitch_contour')
     anno = anno_arr.search(data_source=str(string_num))[0]
@@ -378,15 +379,13 @@ def _load_pitch_contour(jams_path, string_num):
 
 
 def _load_note_ann(jams_path, string_num):
-    '''
-    Parameters:
-    -----------
-    jams_path : str
-        path of the jams annotation file
-    string_num : int, in range(6)
-        Which string to load.
-        0 being the Low E string, 5 is the high e string.
-    '''
+    """
+    Args:
+        jams_path (str): Path of the jams annotation file
+
+    string_num (int), in range(6): Which string to load.
+        0 is the Low E string, 5 is the high e string.
+    """
     jam = jams.load(jams_path)
     anno_arr = jam.search(namespace='note_midi')
     anno = anno_arr.search(data_source=str(string_num))[0]
