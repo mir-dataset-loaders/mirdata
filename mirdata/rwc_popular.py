@@ -122,7 +122,6 @@ class Track(object):
         drum_information: If the drum is 'Drum sequences', 'Live drums',
             or 'Drum loops'
     """
-
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(

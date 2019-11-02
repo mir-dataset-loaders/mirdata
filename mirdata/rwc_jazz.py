@@ -105,7 +105,6 @@ class Track(object):
         variation:
         instruments: list of used instruments.
     """
-
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in RWC-Jazz'.format(track_id))

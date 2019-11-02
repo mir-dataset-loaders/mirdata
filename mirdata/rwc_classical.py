@@ -107,7 +107,6 @@ class Track(object):
         category (str): 'Symphony', 'Concerto', 'Orchestral',
             'Solo', 'Chamber', 'Vocal', or blank.\
     """
-
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(
