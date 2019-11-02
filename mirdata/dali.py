@@ -123,7 +123,7 @@ class Track(object):
             self.artist,
             self.title,
             self.dataset_version,
-            self.scores_ncc,
+            round(self.scores_ncc, 4),
             self.scores_manual,
             self.album,
             self.release_date,
