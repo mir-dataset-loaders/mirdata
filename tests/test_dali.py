@@ -121,6 +121,31 @@ def test_load_words():
     assert words_none is None
 
 
+def test_load_lines():
+    data_path = (
+        'tests/resources/mir_datasets/DALI/annotations/'
+        + '4b196e6c99574dd49ad00d56e132712b.gz'
+    )
+    line_data = dali._load_annotations_granularity(data_path, 'lines')
+
+    assert type(line_data) == utils.LyricData
+    assert type(line_data.start_times) == np.ndarray
+    assert type(line_data.end_times) == np.ndarray
+    assert type(line_data.lyrics) == np.ndarray
+
+    print(line_data.start_times)
+    print(line_data.end_times)
+    print(line_data.lyrics)
+
+    assert np.array_equal(line_data.start_times, np.array([24.125, 24.42]))
+    assert np.array_equal(line_data.end_times, np.array([24.42,  24.568]))
+    assert np.array_equal(line_data.lyrics, np.array(['why do', 'they']))
+
+    # load a file which doesn't exist
+    line_none = dali._load_annotations_granularity('fake/file/path', 'lines')
+    assert line_none is None
+
+
 def test_load_paragraphs():
     data_path = (
         'tests/resources/mir_datasets/DALI/annotations/'

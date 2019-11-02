@@ -251,12 +251,12 @@ def load(data_home=None):
 
 
 def _load_annotations_granularity(annotations_path, granularity):
+    if not os.path.exists(annotations_path):
+        return None
     try:
         with gzip.open(annotations_path, 'rb') as f:
             output = pickle.load(f)
     except Exception as e:
-        if not os.path.exists(annotations_path):
-            return None
         with gzip.open(annotations_path, 'r') as f:
             output = pickle.load(f)
     text = []
@@ -280,12 +280,12 @@ def _load_annotations_granularity(annotations_path, granularity):
 
 
 def _load_annotations_class(annotations_path):
+    if not os.path.exists(annotations_path):
+        return None
     try:
         with gzip.open(annotations_path, 'rb') as f:
             output = pickle.load(f)
     except Exception as e:
-        if not os.path.exists(annotations_path):
-            return None
         with gzip.open(annotations_path, 'r') as f:
             output = pickle.load(f)
     return output
