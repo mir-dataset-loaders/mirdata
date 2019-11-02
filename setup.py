@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 if __name__ == '__main__':
     setup(
         name='mirdata',
-        version='0.0.22',
+        version='0.0.23',
         description='Common loaders for MIR datasets.',
         url='https://github.com/mir-dataset-loaders/mirdata',
         packages=find_packages(exclude=['test', '*.test', '*.test.*']),
@@ -13,7 +13,7 @@ if __name__ == '__main__':
         long_description="""Common loaders for MIR datasets.""",
         keywords='mir dataset loader audio',
         license='BSD-3-Clause',
-        install_requires=['tqdm', 'librosa >= 0.7.0', 'numpy>=1.16', 'six', 'jams', 'requests'],
+        install_requires=['tqdm', 'librosa >= 0.7.0', 'numpy>=1.16', 'six', 'jams', 'requests', 'dali-dataset'],
         extras_require={
             'tests': [
                 'pytest>=4.4.0',
@@ -24,6 +24,7 @@ if __name__ == '__main__':
                 'testcontainers>=2.3',
                 'future==0.17.1',
                 'coveralls>=1.7.0',
+                'dali-dataset',
             ],
             'docs': [
                 'sphinx',

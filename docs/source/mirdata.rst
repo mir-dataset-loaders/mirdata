@@ -30,14 +30,6 @@ mirdata.ikala
    :undoc-members:
    :show-inheritance:
 
-mirdata.maps
-^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.maps
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 mirdata.medleydb\_melody
 ^^^^^^^^^^^^^^^
 
@@ -109,6 +101,15 @@ mirdata.salami
 ^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.salami
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+mirdata.dali
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.dali
    :members:
    :undoc-members:
    :show-inheritance:
