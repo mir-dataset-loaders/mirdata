@@ -103,10 +103,11 @@ class Track(object):
         composer (str): Composer of this Track.
             E.g., 'Haydn, Franz Joseph'
         artist (str): E.g., 'Tokyo City Philharmonic Orchestra'
-        duration_sec: Duration of the track in seconds
+        duration_sec (float): Duration of the track in seconds
         category (str): 'Symphony', 'Concerto', 'Orchestral',
             'Solo', 'Chamber', 'Vocal', or blank.\
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(

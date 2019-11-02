@@ -116,12 +116,13 @@ class Track(object):
         title (str): Title of The track.
         artist (str): Artist name with the vocal's gender
             E.g., 'Makoto Nakamura'
-        duration_sec: Duration of the track in seconds
-        tempo: Tempo of the track in BPM
-        instruments: List of used instruments
-        drum_information: If the drum is 'Drum sequences', 'Live drums',
+        duration_sec (float): Duration of the track in seconds
+        tempo (float): Tempo of the track in BPM
+        instruments (list): List of used instruments
+        drum_information (str): If the drum is 'Drum sequences', 'Live drums',
             or 'Drum loops'
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(

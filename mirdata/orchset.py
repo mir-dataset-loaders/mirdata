@@ -120,16 +120,16 @@ class Track(object):
         audio_path_mono (str): Mono audio path of the track
         audio_path_stereo (str): Stereo audio path of the track
         composer (str): Composer of the track
-        work (str):
-        predominant_melodic_instruments (str):
-        alternating_melody:
-        contains_winds (bool): If the track contains any wind instrument
-        contains_strings (bool): If the track contains any string instrument
-        contains_brass (bool): If the track contains any brass instrument
-        only_strings (bool): If the track contains string instruments only
-        only_winds (bool): If the track contains wind instruments only
-        only_brass (bool): If the track contains brass instruments only
-        melody (F0Data): melody annotation
+        work (str): The musical work
+        predominant_melodic_instruments ([str]): List of instruments which play the melody
+        alternating_melody (bool): True if the melody alternates between instruments
+        contains_winds (bool): True if the track contains any wind instrument
+        contains_strings (bool): True if the track contains any string instrument
+        contains_brass (bool): True if the track contains any brass instrument
+        only_strings (bool): True if the track contains string instruments only
+        only_winds (bool): True if the track contains wind instruments only
+        only_brass (bool): True if the track contains brass instruments only
+        melody (F0Data): Melody annotation
 
     """
 

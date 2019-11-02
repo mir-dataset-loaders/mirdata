@@ -130,7 +130,7 @@ NoteData = namedtuple('NoteData', ['start_times', 'end_times', 'notes', 'confide
 F0Data = namedtuple('F0Data', ['times', 'frequencies', 'confidence'])
 
 LyricData = namedtuple(
-    'LyricData', ['start_times', 'end_times', 'lyrics', 'pronounciations']
+    'LyricData', ['start_times', 'end_times', 'lyrics', 'pronunciations']
 )
 
 SectionData = namedtuple('SectionData', ['start_times', 'end_times', 'sections'])

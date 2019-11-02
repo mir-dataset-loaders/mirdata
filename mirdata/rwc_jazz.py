@@ -101,10 +101,11 @@ class Track(object):
         title (str): Title of The track.
         artist (str): Artist name with the vocal's gender
             E.g., 'Makoto Nakamura'
-        duration_sec: Duration of the track in seconds
+        duration_sec (float): Duration of the track in seconds
         variation:
-        instruments: list of used instruments.
+        instruments (list): list of used instruments.
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in RWC-Jazz'.format(track_id))
