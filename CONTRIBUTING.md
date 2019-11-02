@@ -359,4 +359,4 @@ Bibtex format citations/s here
   a. Include all audio and annotation files for one track of the dataset
   b. For each audio/annotation file, reduce the audio length to a few seconds and remove all but a few of the annotations.
   c. If the dataset has a metadata file, reduce the length to a few lines to make it trival to test.
-2. Test all of the dataset specific code, e.g. the Track object, any of the load functions, and so forth ??? see the ikala dataset tests (`tests/test_ikala.py`) for reference.
+2. Test all of the dataset specific code, e.g. the Track object, any of the load functions, and so forth. See the ikala dataset tests (`tests/test_ikala.py`) for reference.
