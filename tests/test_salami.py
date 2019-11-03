@@ -63,9 +63,9 @@ def test_track():
     assert type(track.sections_annotator_2_lowercase) is utils.SectionData
 
     # test audio loading functions
-    # y, sr = track.audio
-    # assert sr == 44100
-    # assert y.shape == (89856,)
+    y, sr = track.audio
+    assert sr == 44100
+    assert y.shape == (89856,)
 
     repr_string = (
         "Salami Track(track_id=2, "
