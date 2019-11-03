@@ -26,8 +26,19 @@ import pickle
 import os
 import librosa
 import logging
-import DALI  # this is the package, needed to load the annotations
 import numpy as np
+
+# this is the package, needed to load the annotations.
+# DALI-dataset is only installed if the user explicitly declares
+# they want dali when pip installing.
+try:
+    import DALI
+except ImportError as E:
+    logging.error(
+        'In order to use dali you must have dali-dataset installed. '
+        'Please reinstall mirdata using `pip install \'mirdata[dali]\''
+    )
+    raise
 
 import mirdata.utils as utils
 
@@ -297,7 +308,7 @@ def cite():
     cite_data = """
     ===========  MLA ===========
     Meseguer-Brocal, Gabriel, et al.
-    "DALI: a large Dataset of synchronized Audio, LyrIcs and notes, automatically created using teacher-student machine 
+    "DALI: a large Dataset of synchronized Audio, LyrIcs and notes, automatically created using teacher-student machine
     learning paradigm."
     In Proceedings of the 19th International Society for Music Information Retrieval Conference (ISMIR). 2018.
 
