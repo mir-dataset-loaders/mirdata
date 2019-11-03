@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3
+          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3 ffmpeg
       - run:
           name: Install tox
           command: pip install tox
@@ -26,7 +26,7 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3
+          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3 ffmpeg
       - run:
           name: Install tox
           command: pip install tox
@@ -43,7 +43,7 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3
+          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3 ffmpeg
       - run:
           name: Install tox
           command: pip install tox
