@@ -68,3 +68,6 @@ target/
 
 #IntelliJ
 .idea
+
+# MyPy
+.mypy_cache

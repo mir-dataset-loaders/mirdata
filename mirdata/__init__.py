@@ -15,6 +15,7 @@ __all__ = [
     'medley_solos_db',
     'medleydb_melody',
     'medleydb_pitch',
+    'msd',
     'orchset',
     'rwc_classical',
     'rwc_jazz',
