@@ -21,6 +21,26 @@ To install, simply run:
 pip install mirdata
 ```
 
+## Paper
+
+This library was presented in the following [paper](https://magdalenafuentes.github.io/publications/2019_ISMIR_mirdata.pdf):
+
+```
+"mirdata: Software for Reproducible Usage of Datasets"
+Rachel M. Bittner, Magdalena Fuentes, David Rubinstein, Andreas Jansson, Keunwoo Choi, and Thor Kell
+in International Society for Music Information Retrieval (ISMIR) Conference, 2019
+```
+
+```
+@inproceedings{
+  bittner_fuentes_2019,
+  title={mirdata: Software for Reproducible Usage of Datasets},
+  author={Bittner, Rachel M and Fuentes, Magdalena and Rubinstein, David and Jansson, Andreas and Choi, Keunwoo and Kell, Thor},
+  booktitle={International Society for Music Information Retrieval (ISMIR) Conference},
+  year={2019}
+}
+```
+
 ## Dataset Location
 By default, all datasets tracked by this library are stored in `~/mir_datasets`,
 (defined as `MIR_DATASETS_DIR` in `mirdata/__init__.py`).
@@ -29,13 +49,6 @@ within a relevant function, e.g. `mirdata.orchset.download(data_home='my_custom_
 
 
 ## Examples
-
-<!-- ### List available datasets
-```python
-import mirdata
-
-mirdata.list_datasets()
-``` -->
 
 ### Download the Orchset Dataset
 ```python
@@ -67,7 +80,7 @@ orchset_data = mirdata.orchset.load()
 
 example_track = orchset_data[orchset_ids[0]]
 print(example_track)
-> OrchsetTrack(
+> orchset.Track(
     track_id='Beethoven-S3-I-ex1',
     melody=F0Data(times=array([0.000e+00, 1.000e-02, 2.000e-02, ..., 1.244e+01, 1.245e+01, 1.246e+01]),
                   frequencies=array([  0.   ,   0.   ,   0.   , ..., 391.995, 391.995, 391.995]),
