@@ -8,8 +8,8 @@ This library provides tools for working with common MIR datasets, including tool
  * loading annotation files to a common format, consistent with the format required by `mir_eval`
  * parsing track level metadata for detailed evaluations.
 
+This libary was presented in our `ISMIR 2019 paper <https://magdalenafuentes.github.io/publications/2019_ISMIR_mirdata.pdf>`_
 
-A reference is our `ismir 2019 paper (tbd) <http://paper_url>`_
 
 Installation
 ------------
