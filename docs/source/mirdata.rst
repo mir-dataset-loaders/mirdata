@@ -114,6 +114,15 @@ mirdata.dali
    :undoc-members:
    :show-inheritance:
 
+
+mirdata.gtzan_genre
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.gtzan_genre
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Utilities
 ----------
 
