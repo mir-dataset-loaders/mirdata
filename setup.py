@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 if __name__ == '__main__':
     setup(
         name='mirdata',
-        version='0.1.0',
+        version='0.1.1',
         description='Common loaders for MIR datasets.',
         url='https://github.com/mir-dataset-loaders/mirdata',
         packages=find_packages(exclude=['test', '*.test', '*.test.*']),
