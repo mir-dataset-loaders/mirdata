@@ -15,5 +15,6 @@ from . import rwc_genre
 from . import rwc_jazz
 from . import rwc_popular
 from . import salami
+from . import tinysol
 from . import guitarset
 from . import gtzan_genre
