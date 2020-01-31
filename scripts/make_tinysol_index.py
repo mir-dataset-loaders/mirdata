@@ -32,17 +32,15 @@ def md5(file_path):
 def make_tinysol_index(tinysol_data_path):
     tinysol_index = {}
 
-    anno_path = os.path.join(tinysol_data_path, "TinySOL_metadata.csv")
+    anno_path = os.path.join(
+        tinysol_data_path, "annotation", "TinySOL_metadata.csv")
     audio_dir = os.path.join(tinysol_data_path, "audio")
 
     with open(anno_path, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         next(csv_reader)
         for row in csv_reader:
-            wav_name = row[0]
-            family_str = row[1]
-            instr_str = row[2]
-            local_path = os.path.join(family_str, instr_str, wav_name + ".wav")
+            local_path = row[0]
             audio_path = os.path.join(audio_dir, local_path)
             audio_checksum = md5(audio_path)
             tinysol_index[wav_name] = {
