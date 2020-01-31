@@ -93,18 +93,20 @@ def _load_metadata(data_home):
         next(csv_reader)
         for row in csv_reader:
             metadata_index[row[0]] = {
-                 "Family":                  row[1],
-                 "Instrument (abbr.)":      row[2],
-                 "Instrument (in full)":    row[3],
-                 "Technique (abbr.)":       row[4],
-                 "Technique (in full)":     row[5],
-                 "Pitch":                   row[6],
-                 "Pitch ID":                row[7],
-                 "Dynamics":                row[8],
-                 "Dynamics ID":             row[9],
+                 "Fold":                    row[1],
+                 "Family":                  row[2],
+                 "Instrument (abbr.)":      row[3],
+                 "Instrument (in full)":    row[4],
+                 "Technique (abbr.)":       row[5],
+                 "Technique (in full)":     row[6],
+                 "Pitch":                   row[7],
+                 "Pitch ID":                row[8],
+                 "Dynamics":                row[9],
+                 "Dynamics ID":            row[10],
+                 "Resampled":              row[11],
             }
-            if len(row)==11:
-                metadata_index[row[0]]["String ID"] = row[10]
+            if len(row)==13:
+                metadata_index[row[0]]["String ID"] = row[12]
 
     metadata_index["data_home"] = data_home
 
@@ -132,6 +134,7 @@ class Track(object):
         pitch_id (int): MIDI note index, where middle C ("C4") corresponds to 60
         dynamics (str): dynamics abbreviation. Ex: pp, mf, ff, etc.
         dynamics_id (int): pp=0, p=1, mf=2, f=3, ff=4
+        is_resampled (bool): True if this sample was pitch-shifted from a neighbor; False if it was genuinely recorded.
         string_id (int or None): string ID. By musical convention, the first
         string is the highest. On wind instruments, this is replaced by `None`.
     """
@@ -164,6 +167,7 @@ class Track(object):
                  "Pitch ID":                None,
                  "Dynamics":                None,
                  "Dynamics ID":             None,
+                 "Resampled":               None,
                  "String ID":               None,
             }
 
@@ -179,6 +183,7 @@ class Track(object):
         self.pitch_id = self._track_metadata["Pitch ID"]
         self.dynamics = self._track_metadata["Dynamics"]
         self.dynamics_id = self._track_metadata["Dynamics ID"]
+        self.is_resampled = self._track_metadata["Resampled"]
         if "String ID" in self._track_metadata:
             self.string_id = self._track_metadata["String ID"]
         else
