@@ -193,22 +193,18 @@ class Track(object):
 
         if self.string_id:
             repr_string = (
-                "TinySOL Track(instrument={}, technique={}, "
-                + "pitch={}, dynamics={}, string={})"
+                "TinySOL Track(instrument={}, pitch={}, dynamics={}, string={})"
             ).format(
                 self.instrument_full,
-                self.technique_full,
                 self.pitch,
                 self.dynamics,
                 STRING_ROMAN_NUMERALS[self.string_id],
             )
         else:
             repr_string = (
-                "TinySOL Track(instrument={}, technique={}, "
-                + "pitch={}, dynamics={}, string={})"
+                "TinySOL Track(instrument={}, pitch={}, dynamics={},)"
             ).format(
                 self.instrument_full,
-                self.technique_full,
                 self.pitch,
                 self.dynamics,
             )
