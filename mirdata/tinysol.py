@@ -65,14 +65,14 @@ import mirdata.jams_utils as jams_utils
 DATASET_DIR = "TinySOL"
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename="TinySOL_metadata.csv",
-    url="",
-    checksum="",
+    url="https://zenodo.org/record/3632287/files/TinySOL.tar.gz?download=1",
+    checksum="f4d20e1a896530bf1d3b1d199e7467be",
     destination_dir="annotation",
 )
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
     filename="TinySOL.tar.gz",
-    url="",
-    checksum="",
+    url="https://zenodo.org/record/3632287/files/TinySOL.tar.gz?download=1",
+    checksum="a4aff1150ed2cb5ed281938debb8b062",
     destination_dir="audio",
 )
 STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
@@ -80,7 +80,7 @@ STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(
-        data_home, "TinySOL_metadata.csv"
+        data_home, "annotation", "TinySOL_metadata.csv"
     )
 
     if not os.path.exists(metadata_path):
