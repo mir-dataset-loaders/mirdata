@@ -186,7 +186,7 @@ class Track(object):
         self.is_resampled = self._track_metadata["Resampled"]
         if "String ID" in self._track_metadata:
             self.string_id = self._track_metadata["String ID"]
-        else
+        else:
             self.string_id = None
 
     def __repr__(self):
