@@ -249,11 +249,21 @@ def load(data_home=None):
     return tinysol_data
 
 
-# def cite():
-#     """Print the reference"""
-#
-#     cite_data = """
-# =========== MLA ===========
-# ========== Bibtex ==========
-# """
-#     print(cite_data)
+def cite():
+    """Print the reference"""
+
+    cite_data = """
+=========== MLA ===========
+Cella, Carmine Emanuele, et al., "OrchideaSOL: A dataset of extended
+instrumental techniques for computer-aided orchestration". Under review, 2020.
+
+========== Bibtex ==========
+@inproceedings{cella2020preprint,
+author={Cella, Carmine Emanuele and Ghisi, Daniele and Lostanlen, Vincent and
+Lévy, Fabien and Fineberg, Joshua and Maresz, Yan},
+title={{OrchideaSOL}: {A} dataset of extended
+instrumental techniques for computer-aided orchestration},
+bootktitle={Under review},
+year={2020}}
+"""
+    print(cite_data)
