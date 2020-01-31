@@ -63,17 +63,17 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = "TinySOL"
-ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
-    filename="TinySOL_metadata.csv",
-    url="https://zenodo.org/record/3632287/files/TinySOL.tar.gz?download=1",
-    checksum="f4d20e1a896530bf1d3b1d199e7467be",
-    destination_dir="annotation",
-)
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
     filename="TinySOL.tar.gz",
-    url="https://zenodo.org/record/3632287/files/TinySOL.tar.gz?download=1",
-    checksum="a4aff1150ed2cb5ed281938debb8b062",
+    url="https://zenodo.org/record/3633012/files/TinySOL.tar.gz?download=1",
+    checksum="68c0bb3a008d00de60b23dc2022d6c8f",
     destination_dir="audio",
+)
+ANNOTATION_REMOTE = download.utils.RemoteFileMetadata(
+    filename="https://zenodo.org/record/3633012/files/TinySOL_metadata.csv?download=1",
+    url="https://zenodo.org/record/3633012/files/TinySOL_metadata.csv?download=1",
+    checksum="5cdfa8938d34b98534d6087c270f3ecf",
+    destination_dir="annotation",
 )
 STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
 
