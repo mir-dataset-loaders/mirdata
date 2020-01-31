@@ -43,7 +43,7 @@ def make_tinysol_index(tinysol_data_path):
             local_path = row[0]
             audio_path = os.path.join(audio_dir, local_path)
             audio_checksum = md5(audio_path)
-            tinysol_index[wav_name] = {
+            tinysol_index[os.path.split(local_path)[1]] = {
                 "audio": (
                     local_path,
                     audio_checksum
