@@ -219,22 +219,21 @@ class Track(object):
             metadata=self._track_metadata)             # TODO pass a note_data?
 
 
-# def download(data_home=None):
-#     """Download TinySOL.
-#
-#     Args:
-#         data_home (str): Local path where the dataset is stored.
-#             If `None`, looks for the data in the default directory, `~/mir_datasets`
-#     """
-#     if data_home is None:
-#         data_home = utils.get_default_dataset_path(DATASET_DIR)
-#
-#     download_utils.downloader(
-#         data_home,
-#         tar_downloads=[AUDIO_REMOTE],
-#         file_downloads=[ANNOTATION_REMOTE],
-#         cleanup=True,
-#     )
+def download(data_home=None):
+    """Download TinySOL.
+
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+    """
+    if data_home is None:
+        data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    download_utils.downloader(
+        data_home,
+        tar_downloads=[AUDIO_REMOTE],
+        cleanup=True,
+    )
 
 
 def track_ids():
