@@ -69,7 +69,7 @@ AUDIO_REMOTE = download_utils.RemoteFileMetadata(
     checksum="68c0bb3a008d00de60b23dc2022d6c8f",
     destination_dir="audio",
 )
-ANNOTATION_REMOTE = download.utils.RemoteFileMetadata(
+ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename="https://zenodo.org/record/3633012/files/TinySOL_metadata.csv?download=1",
     url="https://zenodo.org/record/3633012/files/TinySOL_metadata.csv?download=1",
     checksum="5cdfa8938d34b98534d6087c270f3ecf",
