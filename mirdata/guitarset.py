@@ -42,47 +42,47 @@ import logging
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
-DATASET_DIR = "GuitarSet"
+DATASET_DIR = 'GuitarSet'
 
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
-    filename="annotation.zip",
-    url="https://zenodo.org/record/3371780/files/annotation.zip?download=1",
-    checksum="b39b78e63d3446f2e54ddb7a54df9b10",
-    destination_dir="annotation",
+    filename='annotation.zip',
+    url='https://zenodo.org/record/3371780/files/annotation.zip?download=1',
+    checksum='b39b78e63d3446f2e54ddb7a54df9b10',
+    destination_dir='annotation',
 )
 AUDIO_HEX_CLN_REMOTE = download_utils.RemoteFileMetadata(
-    filename="audio_hex-pickup_debleeded.zip",
-    url="https://zenodo.org/record/3371780/files/audio_hex-pickup_debleeded.zip?download=1",
-    checksum="c31d97279464c9a67e640cb9061fb0c6",
-    destination_dir="audio_hex-pickup_debleeded",
+    filename='audio_hex-pickup_debleeded.zip',
+    url='https://zenodo.org/record/3371780/files/audio_hex-pickup_debleeded.zip?download=1',
+    checksum='c31d97279464c9a67e640cb9061fb0c6',
+    destination_dir='audio_hex-pickup_debleeded',
 )
 AUDIO_HEX_REMOTE = download_utils.RemoteFileMetadata(
-    filename="audio_hex-pickup_original.zip",
-    url="https://zenodo.org/record/3371780/files/audio_hex-pickup_original.zip?download=1",
-    checksum="f9911bf217cb40e9e68edf3726ef86cc",
-    destination_dir="audio_hex-pickup_original",
+    filename='audio_hex-pickup_original.zip',
+    url='https://zenodo.org/record/3371780/files/audio_hex-pickup_original.zip?download=1',
+    checksum='f9911bf217cb40e9e68edf3726ef86cc',
+    destination_dir='audio_hex-pickup_original',
 )
 AUDIO_MIC_REMOTE = download_utils.RemoteFileMetadata(
-    filename="audio_mono-mic.zip",
-    url="https://zenodo.org/record/3371780/files/audio_mono-mic.zip?download=1",
-    checksum="275966d6610ac34999b58426beb119c3",
-    destination_dir="audio_mono-mic",
+    filename='audio_mono-mic.zip',
+    url='https://zenodo.org/record/3371780/files/audio_mono-mic.zip?download=1',
+    checksum='275966d6610ac34999b58426beb119c3',
+    destination_dir='audio_mono-mic',
 )
 AUDIO_MIX_REMOTE = download_utils.RemoteFileMetadata(
-    filename="audio_mono-pickup_mix.zip",
-    url="https://zenodo.org/record/3371780/files/audio_mono-pickup_mix.zip?download=1",
-    checksum="aecce79f425a44e2055e46f680e10f6a",
-    destination_dir="audio_mono-pickup_mix",
+    filename='audio_mono-pickup_mix.zip',
+    url='https://zenodo.org/record/3371780/files/audio_mono-pickup_mix.zip?download=1',
+    checksum='aecce79f425a44e2055e46f680e10f6a',
+    destination_dir='audio_mono-pickup_mix',
 )
 _STYLE_DICT = {
-    "Jazz": "Jazz",
-    "BN": "Bossa Nova",
-    "Rock": "Rock",
-    "SS": "Singer-Songwriter",
-    "Funk": "Funk",
+    'Jazz': 'Jazz',
+    'BN': 'Bossa Nova',
+    'Rock': 'Rock',
+    'SS': 'Singer-Songwriter',
+    'Funk': 'Funk',
 }
-_GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
-DATA = utils.LargeData("guitarset_index.json")
+_GUITAR_STRINGS = ['E', 'A', 'D', 'G', 'B', 'e']
+DATA = utils.LargeData('guitarset_index.json')
 
 
 class Track(object):
@@ -140,7 +140,7 @@ class Track(object):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError("{} is not a valid track ID in GuitarSet".format(track_id))
+            raise ValueError('{} is not a valid track ID in GuitarSet'.format(track_id))
 
         self.track_id = track_id
 
@@ -151,21 +151,21 @@ class Track(object):
         self._track_paths = DATA.index[track_id]
 
         self.audio_hex_cln_path = os.path.join(
-            self._data_home, self._track_paths["audio_hex_cln"][0]
+            self._data_home, self._track_paths['audio_hex_cln'][0]
         )
         self.audio_hex_path = os.path.join(
-            self._data_home, self._track_paths["audio_hex"][0]
+            self._data_home, self._track_paths['audio_hex'][0]
         )
         self.audio_mic_path = os.path.join(
-            self._data_home, self._track_paths["audio_mic"][0]
+            self._data_home, self._track_paths['audio_mic'][0]
         )
         self.audio_mix_path = os.path.join(
-            self._data_home, self._track_paths["audio_mix"][0]
+            self._data_home, self._track_paths['audio_mix'][0]
         )
-        self.jams_path = os.path.join(self._data_home, self._track_paths["jams"][0])
+        self.jams_path = os.path.join(self._data_home, self._track_paths['jams'][0])
 
-        title_list = track_id.split("_")  # [PID, S-T-K, mode, rec_mode]
-        style, tempo, _ = title_list[1].split("-")  # [style, tempo, key]
+        title_list = track_id.split('_')  # [PID, S-T-K, mode, rec_mode]
+        style, tempo, _ = title_list[1].split('-')  # [style, tempo, key]
         self.player_id = title_list[0]
         self.mode = title_list[2]
         self.tempo = float(tempo)
@@ -173,9 +173,9 @@ class Track(object):
 
     def __repr__(self):
         repr_string = (
-            "GuitarSet Track("
-            + "track_id={}, jams_path={},\n".format(self.track_id, self.jams_path)
-            + "tempo={}, mode={}, style={},\n".format(self.tempo, self.mode, self.style)
+            'GuitarSet Track('
+            + 'track_id={}, jams_path={},\n'.format(self.track_id, self.jams_path)
+            + 'tempo={}, mode={}, style={},\n'.format(self.tempo, self.mode, self.style)
             + "beats=BeatData('beat_times', 'beat_positions'),\n"
             + "leadsheet_chords=ChordData('start_times', 'end_times', 'chords'),\n"
             + "inferred_chords=ChordData('start_times', 'end_times', 'chords'),\n"
@@ -191,17 +191,17 @@ class Track(object):
 
     @utils.cached_property
     def leadsheet_chords(self):
-        if self.mode == "solo":
+        if self.mode == 'solo':
             logging.info(
-                "Chord annotations for solo excerpts are the same with the comp excerpt."
+                'Chord annotations for solo excerpts are the same with the comp excerpt.'
             )
         return _load_chords(self.jams_path, leadsheet_version=True)
 
     @utils.cached_property
     def inferred_chords(self):
-        if self.mode == "solo":
+        if self.mode == 'solo':
             logging.info(
-                "Chord annotations for solo excerpts are the same with the comp excerpt."
+                'Chord annotations for solo excerpts are the same with the comp excerpt.'
             )
         return _load_chords(self.jams_path, leadsheet_version=False)
 
@@ -332,9 +332,9 @@ def load(data_home=None):
 
 def _load_beats(jams_path):
     jam = jams.load(jams_path)
-    anno = jam.search(namespace="beat_position")[0]
+    anno = jam.search(namespace='beat_position')[0]
     times, values = anno.to_event_values()
-    positions = [int(v["position"]) for v in values]
+    positions = [int(v['position']) for v in values]
     return utils.BeatData(times, positions)
 
 
@@ -348,16 +348,16 @@ def _load_chords(jams_path, leadsheet_version=True):
     """
     jam = jams.load(jams_path)
     if leadsheet_version:
-        anno = jam.search(namespace="chord")[0]
+        anno = jam.search(namespace='chord')[0]
     else:
-        anno = jam.search(namespace="chord")[1]
+        anno = jam.search(namespace='chord')[1]
     intervals, values = anno.to_interval_values()
     return utils.ChordData(intervals, values)
 
 
 def _load_key_mode(jams_path):
     jam = jams.load(jams_path)
-    anno = jam.search(namespace="key_mode")[0]
+    anno = jam.search(namespace='key_mode')[0]
     intervals, values = anno.to_interval_values()
     return utils.KeyData(intervals[:, 0], intervals[:, 1], values)
 
@@ -371,10 +371,10 @@ def _load_pitch_contour(jams_path, string_num):
         0 is the Low E string, 5 is the high e string.
     """
     jam = jams.load(jams_path)
-    anno_arr = jam.search(namespace="pitch_contour")
+    anno_arr = jam.search(namespace='pitch_contour')
     anno = anno_arr.search(data_source=str(string_num))[0]
     times, values = anno.to_event_values()
-    frequencies = [v["frequency"] for v in values]
+    frequencies = [v['frequency'] for v in values]
     return utils.F0Data(times, frequencies, np.ones_like(times))
 
 
@@ -387,7 +387,7 @@ def _load_note_ann(jams_path, string_num):
         0 is the Low E string, 5 is the high e string.
     """
     jam = jams.load(jams_path)
-    anno_arr = jam.search(namespace="note_midi")
+    anno_arr = jam.search(namespace='note_midi')
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()
     return utils.NoteData(

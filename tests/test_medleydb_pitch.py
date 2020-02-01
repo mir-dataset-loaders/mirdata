@@ -13,40 +13,40 @@ from tests.test_download_utils import mock_downloader
 
 def test_track():
     # test data home None
-    track_default = medleydb_pitch.Track("AClassicEducation_NightOwl_STEM_08")
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, "MedleyDB-Pitch")
+    track_default = medleydb_pitch.Track('AClassicEducation_NightOwl_STEM_08')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'MedleyDB-Pitch')
 
-    data_home = "tests/resources/mir_datasets/MedleyDB-Pitch"
+    data_home = 'tests/resources/mir_datasets/MedleyDB-Pitch'
 
     with pytest.raises(ValueError):
-        medleydb_pitch.Track("asdfasdf", data_home=data_home)
+        medleydb_pitch.Track('asdfasdf', data_home=data_home)
 
     track = medleydb_pitch.Track(
-        "AClassicEducation_NightOwl_STEM_08", data_home=data_home
+        'AClassicEducation_NightOwl_STEM_08', data_home=data_home
     )
 
     # test attributes
-    assert track.track_id == "AClassicEducation_NightOwl_STEM_08"
+    assert track.track_id == 'AClassicEducation_NightOwl_STEM_08'
     assert track._data_home == data_home
     assert track._track_paths == {
-        "audio": [
-            "audio/AClassicEducation_NightOwl_STEM_08.wav",
-            "6cfb976517cf377863ba0ef6c66c6a07",
+        'audio': [
+            'audio/AClassicEducation_NightOwl_STEM_08.wav',
+            '6cfb976517cf377863ba0ef6c66c6a07',
         ],
-        "pitch": [
-            "pitch/AClassicEducation_NightOwl_STEM_08.csv",
-            "67009ae37766c37d3c29146bf763e06d",
+        'pitch': [
+            'pitch/AClassicEducation_NightOwl_STEM_08.csv',
+            '67009ae37766c37d3c29146bf763e06d',
         ],
     }
     assert (
         track.audio_path
-        == "tests/resources/mir_datasets/"
-        + "MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav"
+        == 'tests/resources/mir_datasets/'
+        + 'MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav'
     )
-    assert track.instrument == "male singer"
-    assert track.artist == "AClassicEducation"
-    assert track.title == "NightOwl"
-    assert track.genre == "Singer/Songwriter"
+    assert track.instrument == 'male singer'
+    assert track.artist == 'AClassicEducation'
+    assert track.title == 'NightOwl'
+    assert track.genre == 'Singer/Songwriter'
 
     assert type(track.pitch) is utils.F0Data
 
@@ -66,20 +66,20 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = "tests/resources/mir_datasets/MedleyDB-Pitch"
+    data_home = 'tests/resources/mir_datasets/MedleyDB-Pitch'
     track = medleydb_pitch.Track(
-        "AClassicEducation_NightOwl_STEM_08", data_home=data_home
+        'AClassicEducation_NightOwl_STEM_08', data_home=data_home
     )
     jam = track.to_jams()
 
-    f0s = jam.search(namespace="pitch_contour")[0]["data"]
+    f0s = jam.search(namespace='pitch_contour')[0]['data']
     assert [f0.time for f0 in f0s] == [0.06965986394557823, 0.07546485260770976]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
     assert [f0.value for f0 in f0s] == [0.0, 191.877]
     assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
 
-    assert jam["file_metadata"]["title"] == "NightOwl"
-    assert jam["file_metadata"]["artist"] == "AClassicEducation"
+    assert jam['file_metadata']['title'] == 'NightOwl'
+    assert jam['file_metadata']['artist'] == 'AClassicEducation'
 
 
 def test_track_ids():
@@ -89,7 +89,7 @@ def test_track_ids():
 
 
 def test_load():
-    data_home = "tests/resources/mir_datasets/MedleyDB-Pitch"
+    data_home = 'tests/resources/mir_datasets/MedleyDB-Pitch'
     medleydb_pitch_data = medleydb_pitch.load(data_home=data_home)
     assert type(medleydb_pitch_data) is dict
     assert len(medleydb_pitch_data.keys()) is 103
@@ -102,8 +102,8 @@ def test_load():
 def test_load_pitch():
     # load a file which exists
     pitch_path = (
-        "tests/resources/mir_datasets/MedleyDB-Pitch/"
-        + "pitch/AClassicEducation_NightOwl_STEM_08.csv"
+        'tests/resources/mir_datasets/MedleyDB-Pitch/'
+        + 'pitch/AClassicEducation_NightOwl_STEM_08.csv'
     )
     pitch_data = medleydb_pitch._load_pitch(pitch_path)
 
@@ -121,24 +121,24 @@ def test_load_pitch():
     assert np.array_equal(pitch_data.confidence, np.array([0.0, 1.0]))
 
     # load a file which doesn't exist
-    pitch_data_none = medleydb_pitch._load_pitch("fake/file/path")
+    pitch_data_none = medleydb_pitch._load_pitch('fake/file/path')
     assert pitch_data_none is None
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/MedleyDB-Pitch"
+    data_home = 'tests/resources/mir_datasets/MedleyDB-Pitch'
     metadata = medleydb_pitch._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
-    assert metadata["AClassicEducation_NightOwl_STEM_08"] == {
-        "audio_path": "MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",
-        "pitch_path": "MedleyDB-Pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv",
-        "instrument": "male singer",
-        "artist": "AClassicEducation",
-        "title": "NightOwl",
-        "genre": "Singer/Songwriter",
+    assert metadata['data_home'] == data_home
+    assert metadata['AClassicEducation_NightOwl_STEM_08'] == {
+        'audio_path': 'MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav',
+        'pitch_path': 'MedleyDB-Pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv',
+        'instrument': 'male singer',
+        'artist': 'AClassicEducation',
+        'title': 'NightOwl',
+        'genre': 'Singer/Songwriter',
     }
 
-    metadata_none = medleydb_pitch._load_metadata("asdf/asdf")
+    metadata_none = medleydb_pitch._load_metadata('asdf/asdf')
     assert metadata_none is None
 
 

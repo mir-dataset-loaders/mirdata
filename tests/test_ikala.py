@@ -13,32 +13,32 @@ from tests.test_download_utils import mock_downloader
 
 def test_track():
     # test data home None
-    track_default = ikala.Track("10161_chorus")
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, "iKala")
+    track_default = ikala.Track('10161_chorus')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'iKala')
 
     # test data_home where the test data lives
-    data_home = "tests/resources/mir_datasets/iKala"
+    data_home = 'tests/resources/mir_datasets/iKala'
 
     with pytest.raises(ValueError):
-        ikala.Track("asdfasdf", data_home=data_home)
+        ikala.Track('asdfasdf', data_home=data_home)
 
-    track = ikala.Track("10161_chorus", data_home=data_home)
+    track = ikala.Track('10161_chorus', data_home=data_home)
 
     # test attributes are loaded as expected
-    assert track.track_id == "10161_chorus"
+    assert track.track_id == '10161_chorus'
     assert track._data_home == data_home
     assert track._track_paths == {
-        "audio": ["Wavfile/10161_chorus.wav", "278ae003cb0d323e99b9a643c0f2eeda"],
-        "pitch": ["PitchLabel/10161_chorus.pv", "0d93a011a9e668fd80673049089bbb14"],
-        "lyrics": ["Lyrics/10161_chorus.lab", "79bbeb72b422056fd43be4e8d63319ce"],
+        'audio': ['Wavfile/10161_chorus.wav', '278ae003cb0d323e99b9a643c0f2eeda'],
+        'pitch': ['PitchLabel/10161_chorus.pv', '0d93a011a9e668fd80673049089bbb14'],
+        'lyrics': ['Lyrics/10161_chorus.lab', '79bbeb72b422056fd43be4e8d63319ce'],
     }
     assert (
         track.audio_path
-        == "tests/resources/mir_datasets/iKala/" + "Wavfile/10161_chorus.wav"
+        == 'tests/resources/mir_datasets/iKala/' + 'Wavfile/10161_chorus.wav'
     )
-    assert track.song_id == "10161"
-    assert track.section == "chorus"
-    assert track.singer_id == "1"
+    assert track.song_id == '10161'
+    assert track.section == 'chorus'
+    assert track.singer_id == '1'
 
     # test that cached properties don't fail and have the expected type
     assert type(track.f0) is utils.F0Data
@@ -75,17 +75,17 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = "tests/resources/mir_datasets/iKala"
-    track = ikala.Track("10161_chorus", data_home=data_home)
+    data_home = 'tests/resources/mir_datasets/iKala'
+    track = ikala.Track('10161_chorus', data_home=data_home)
     jam = track.to_jams()
 
-    lyrics = jam.search(namespace="lyric")[0]["data"]
+    lyrics = jam.search(namespace='lyric')[0]['data']
     assert [lyric.time for lyric in lyrics] == [0.027, 0.232]
     assert [lyric.duration for lyric in lyrics] == [0.20500000000000002, 0.736]
-    assert [lyric.value for lyric in lyrics] == ["JUST", "WANNA"]
+    assert [lyric.value for lyric in lyrics] == ['JUST', 'WANNA']
     assert [lyric.confidence for lyric in lyrics] == [None, None]
 
-    f0s = jam.search(namespace="pitch_contour")[0]["data"]
+    f0s = jam.search(namespace='pitch_contour')[0]['data']
     assert [f0.time for f0 in f0s] == [0.016, 0.048]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
     assert [f0.value for f0 in f0s] == [0.0, 260.946404518887]
@@ -99,7 +99,7 @@ def test_track_ids():
 
 
 def test_load():
-    data_home = "tests/resources/mir_datasets/iKala"
+    data_home = 'tests/resources/mir_datasets/iKala'
     ikala_data = ikala.load(data_home=data_home)
     assert type(ikala_data) is dict
     assert len(ikala_data.keys()) == 252
@@ -111,7 +111,7 @@ def test_load():
 
 def test_load_f0():
     # load a file which exists
-    f0_path = "tests/resources/mir_datasets/iKala/PitchLabel/10161_chorus.pv"
+    f0_path = 'tests/resources/mir_datasets/iKala/PitchLabel/10161_chorus.pv'
     f0_data = ikala._load_f0(f0_path)
 
     # check types
@@ -126,13 +126,13 @@ def test_load_f0():
     assert np.array_equal(f0_data.confidence, np.array([0.0, 1.0]))
 
     # load a file which doesn't exist
-    f0_data_none = ikala._load_f0("fake/file/path")
+    f0_data_none = ikala._load_f0('fake/file/path')
     assert f0_data_none is None
 
 
 def test_load_lyrics():
     # load a file without pronunciations
-    lyrics_path_simple = "tests/resources/mir_datasets/iKala/Lyrics/10161_chorus.lab"
+    lyrics_path_simple = 'tests/resources/mir_datasets/iKala/Lyrics/10161_chorus.lab'
     lyrics_data_simple = ikala._load_lyrics(lyrics_path_simple)
 
     # check types
@@ -145,11 +145,11 @@ def test_load_lyrics():
     # check values
     assert np.array_equal(lyrics_data_simple.start_times, np.array([0.027, 0.232]))
     assert np.array_equal(lyrics_data_simple.end_times, np.array([0.232, 0.968]))
-    assert np.array_equal(lyrics_data_simple.lyrics, np.array(["JUST", "WANNA"]))
+    assert np.array_equal(lyrics_data_simple.lyrics, np.array(['JUST', 'WANNA']))
     assert np.array_equal(lyrics_data_simple.pronunciations, np.array([None, None]))
 
     # load a file with pronunciations
-    lyrics_path_pronun = "tests/resources/mir_datasets/iKala/Lyrics/10164_chorus.lab"
+    lyrics_path_pronun = 'tests/resources/mir_datasets/iKala/Lyrics/10164_chorus.lab'
     lyrics_data_pronun = ikala._load_lyrics(lyrics_path_pronun)
 
     # check types
@@ -162,22 +162,22 @@ def test_load_lyrics():
     # check values
     assert np.array_equal(lyrics_data_pronun.start_times, np.array([0.021, 0.571]))
     assert np.array_equal(lyrics_data_pronun.end_times, np.array([0.189, 1.415]))
-    assert np.array_equal(lyrics_data_pronun.lyrics, np.array(["ASDF", "EVERYBODY"]))
-    assert np.array_equal(lyrics_data_pronun.pronunciations, np.array(["t i au", None]))
+    assert np.array_equal(lyrics_data_pronun.lyrics, np.array(['ASDF', 'EVERYBODY']))
+    assert np.array_equal(lyrics_data_pronun.pronunciations, np.array(['t i au', None]))
 
     # load a file which doesn't exist
-    lyrics_data_none = ikala._load_lyrics("fake/path")
+    lyrics_data_none = ikala._load_lyrics('fake/path')
     assert lyrics_data_none is None
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/iKala"
+    data_home = 'tests/resources/mir_datasets/iKala'
     metadata = ikala._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
-    assert metadata["10161"] == "1"
-    assert metadata["21025"] == "1"
+    assert metadata['data_home'] == data_home
+    assert metadata['10161'] == '1'
+    assert metadata['21025'] == '1'
 
-    metadata_none = ikala._load_metadata("asdf/asdf")
+    metadata_none = ikala._load_metadata('asdf/asdf')
     assert metadata_none is None
 
 

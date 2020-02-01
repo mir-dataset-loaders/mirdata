@@ -20,84 +20,84 @@ import mirdata.jams_utils as jams_utils
 from mirdata.rwc_classical import _load_beats, _load_sections, _duration_to_sec
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
-    filename="rwc-p.csv",
-    url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
-    checksum="7dbe87fedbaaa1f348625a2af1d78030",
+    filename='rwc-p.csv',
+    url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
+    checksum='7dbe87fedbaaa1f348625a2af1d78030',
     destination_dir=None,
 )
-DATASET_DIR = "RWC-Popular"
+DATASET_DIR = 'RWC-Popular'
 ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
-    filename="AIST.RWC-MDB-P-2001.BEAT.zip",
-    url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip",
-    checksum="3858aa989535bd7196b3cd07b512b5b6",
-    destination_dir="annotations",
+    filename='AIST.RWC-MDB-P-2001.BEAT.zip',
+    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip',
+    checksum='3858aa989535bd7196b3cd07b512b5b6',
+    destination_dir='annotations',
 )
 ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
-    filename="AIST.RWC-MDB-P-2001.CHORUS.zip",
-    url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip",
-    checksum="f76b3a32701fbd9bf78baa608f692a77",
-    destination_dir="annotations",
+    filename='AIST.RWC-MDB-P-2001.CHORUS.zip',
+    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip',
+    checksum='f76b3a32701fbd9bf78baa608f692a77',
+    destination_dir='annotations',
 )
 ANNOTATIONS_REMOTE_3 = download_utils.RemoteFileMetadata(
-    filename="AIST.RWC-MDB-P-2001.CHORD.zip",
-    url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip",
-    checksum="68379c88bc8ec3f1907b32a3579197c5",
-    destination_dir="annotations",
+    filename='AIST.RWC-MDB-P-2001.CHORD.zip',
+    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip',
+    checksum='68379c88bc8ec3f1907b32a3579197c5',
+    destination_dir='annotations',
 )
 ANNOTATIONS_REMOTE_4 = download_utils.RemoteFileMetadata(
-    filename="AIST.RWC-MDB-P-2001.VOCA_INST.zip",
-    url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip",
-    checksum="47ded648a496407ef49dba9c8bf80e87",
-    destination_dir="annotations",
+    filename='AIST.RWC-MDB-P-2001.VOCA_INST.zip',
+    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip',
+    checksum='47ded648a496407ef49dba9c8bf80e87',
+    destination_dir='annotations',
 )
 
 
 def _load_metadata(data_home):
 
-    metadata_path = os.path.join(data_home, "metadata-master", "rwc-p.csv")
+    metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-p.csv')
 
     if not os.path.exists(metadata_path):
         logging.info(
-            "Metadata file {} not found.".format(metadata_path)
-            + "You can download the metadata file by running download()"
+            'Metadata file {} not found.'.format(metadata_path)
+            + 'You can download the metadata file by running download()'
         )
         return None
 
-    with open(metadata_path, "r") as fhandle:
+    with open(metadata_path, 'r') as fhandle:
         dialect = csv.Sniffer().sniff(fhandle.read(1024))
         fhandle.seek(0)
         reader = csv.reader(fhandle, dialect)
         raw_data = []
         for line in reader:
-            if line[0] != "Piece No.":
+            if line[0] != 'Piece No.':
                 raw_data.append(line)
 
     metadata_index = {}
     for line in raw_data:
-        if line[0] == "Piece No.":
+        if line[0] == 'Piece No.':
             continue
-        p = "00" + line[0].split(".")[1][1:]
-        track_id = "RM-P{}".format(p[len(p) - 3 :])
+        p = '00' + line[0].split('.')[1][1:]
+        track_id = 'RM-P{}'.format(p[len(p) - 3 :])
 
         metadata_index[track_id] = {
-            "piece_number": line[0],
-            "suffix": line[1],
-            "track_number": line[2],
-            "title": line[3],
-            "artist": line[4],
-            "singer_information": line[5],
-            "duration": _duration_to_sec(line[6]),
-            "tempo": line[7],
-            "instruments": line[8],
-            "drum_information": line[9],
+            'piece_number': line[0],
+            'suffix': line[1],
+            'track_number': line[2],
+            'title': line[3],
+            'artist': line[4],
+            'singer_information': line[5],
+            'duration': _duration_to_sec(line[6]),
+            'tempo': line[7],
+            'instruments': line[8],
+            'drum_information': line[9],
         }
 
-    metadata_index["data_home"] = data_home
+    metadata_index['data_home'] = data_home
 
     return metadata_index
 
 
-DATA = utils.LargeData("rwc_popular_index.json", _load_metadata)
+DATA = utils.LargeData('rwc_popular_index.json', _load_metadata)
 
 
 class Track(object):
@@ -127,7 +127,7 @@ class Track(object):
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(
-                "{} is not a valid track ID in RWC-Popular".format(track_id)
+                '{} is not a valid track ID in RWC-Popular'.format(track_id)
             )
 
         self.track_id = track_id
@@ -144,30 +144,30 @@ class Track(object):
         else:
             # annotations with missing metadata
             self._track_metadata = {
-                "piece_number": None,
-                "suffix": None,
-                "track_number": None,
-                "title": None,
-                "artist": None,
-                "singer_information": None,
-                "duration": None,
-                "tempo": None,
-                "instruments": None,
-                "drum_information": None,
+                'piece_number': None,
+                'suffix': None,
+                'track_number': None,
+                'title': None,
+                'artist': None,
+                'singer_information': None,
+                'duration': None,
+                'tempo': None,
+                'instruments': None,
+                'drum_information': None,
             }
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
-        self.piece_number = self._track_metadata["piece_number"]
-        self.suffix = self._track_metadata["suffix"]
-        self.track_number = self._track_metadata["track_number"]
-        self.title = self._track_metadata["title"]
-        self.artist = self._track_metadata["artist"]
-        self.singer_information = self._track_metadata["singer_information"]
-        self.duration = self._track_metadata["duration"]
-        self.tempo = self._track_metadata["tempo"]
-        self.instruments = self._track_metadata["instruments"]
-        self.drum_information = self._track_metadata["drum_information"]
+        self.piece_number = self._track_metadata['piece_number']
+        self.suffix = self._track_metadata['suffix']
+        self.track_number = self._track_metadata['track_number']
+        self.title = self._track_metadata['title']
+        self.artist = self._track_metadata['artist']
+        self.singer_information = self._track_metadata['singer_information']
+        self.duration = self._track_metadata['duration']
+        self.tempo = self._track_metadata['tempo']
+        self.instruments = self._track_metadata['instruments']
+        self.drum_information = self._track_metadata['drum_information']
 
     def __repr__(self):
         repr_string = (
@@ -198,23 +198,23 @@ class Track(object):
     @utils.cached_property
     def sections(self):
         return _load_sections(
-            os.path.join(self._data_home, self._track_paths["sections"][0])
+            os.path.join(self._data_home, self._track_paths['sections'][0])
         )
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(self._data_home, self._track_paths["beats"][0]))
+        return _load_beats(os.path.join(self._data_home, self._track_paths['beats'][0]))
 
     @utils.cached_property
     def chords(self):
         return _load_chords(
-            os.path.join(self._data_home, self._track_paths["chords"][0])
+            os.path.join(self._data_home, self._track_paths['chords'][0])
         )
 
     @utils.cached_property
     def vocal_instrument_activity(self):
         return _load_voca_inst(
-            os.path.join(self._data_home, self._track_paths["voca_inst"][0])
+            os.path.join(self._data_home, self._track_paths['voca_inst'][0])
         )
 
     @property
@@ -322,8 +322,8 @@ def _load_chords(chords_path):
     chords = []  # chord labels
 
     if os.path.exists(chords_path):
-        with open(chords_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter="\t")
+        with open(chords_path, 'r') as fhandle:
+            reader = csv.reader(fhandle, delimiter='\t')
             for line in reader:
                 begs.append(float(line[0]))
                 ends.append(float(line[1]))
@@ -339,11 +339,11 @@ def _load_voca_inst(voca_inst_path):
     ends = []  # timestamps of vocal-instrument activity endings
     events = []  # vocal-instrument activity labels
 
-    with open(voca_inst_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
+    with open(voca_inst_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
         raw_data = []
         for line in reader:
-            if line[0] != "Piece No.":
+            if line[0] != 'Piece No.':
                 raw_data.append(line)
 
     for i in range(len(raw_data)):

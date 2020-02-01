@@ -23,7 +23,7 @@ from mirdata.utils import md5
 
 # destination dir should be a relative path to save the file/s, or None
 RemoteFileMetadata = namedtuple(
-    "RemoteFileMetadata", ["filename", "url", "checksum", "destination_dir"]
+    'RemoteFileMetadata', ['filename', 'url', 'checksum', 'destination_dir']
 )
 
 
@@ -118,7 +118,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
-            unit="B", unit_scale=True, unit_divisor=1024, miniters=1
+            unit='B', unit_scale=True, unit_divisor=1024, miniters=1
         ) as t:
             try:
                 urllib.request.urlretrieve(
@@ -141,9 +141,9 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     checksum = md5(download_path)
     if remote.checksum != checksum:
         raise IOError(
-            "{} has an MD5 checksum ({}) "
-            "differing from expected ({}), "
-            "file may be corrupted.".format(download_path, checksum, remote.checksum)
+            '{} has an MD5 checksum ({}) '
+            'differing from expected ({}), '
+            'file may be corrupted.'.format(download_path, checksum, remote.checksum)
         )
     return download_path
 
@@ -173,7 +173,7 @@ def unzip(zip_path, cleanup=False):
         cleanup (bool): If True, remove zipfile after unzipping. Default=False
 
     """
-    zfile = zipfile.ZipFile(zip_path, "r")
+    zfile = zipfile.ZipFile(zip_path, 'r')
     zfile.extractall(os.path.dirname(zip_path))
     zfile.close()
     if cleanup:
@@ -200,7 +200,7 @@ def untar(tar_path, cleanup=False):
         tar_path (str): Path to tar file
         cleanup (bool): If True, remove tarfile after untarring. Default=False
     """
-    tfile = tarfile.open(tar_path, "r")
+    tfile = tarfile.open(tar_path, 'r')
     tfile.extractall(os.path.dirname(tar_path))
     tfile.close()
     if cleanup:

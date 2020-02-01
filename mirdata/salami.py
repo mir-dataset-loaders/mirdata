@@ -31,11 +31,11 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
-DATASET_DIR = "Salami"
+DATASET_DIR = 'Salami'
 ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
-    filename="salami-data-public-hierarchy-corrections.zip",
-    url="https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip",
-    checksum="194add2601c09a7279a7433288de81fd",
+    filename='salami-data-public-hierarchy-corrections.zip',
+    url='https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip',
+    checksum='194add2601c09a7279a7433288de81fd',
     destination_dir=None,
 )
 
@@ -45,19 +45,19 @@ def _load_metadata(data_home):
     metadata_path = os.path.join(
         data_home,
         os.path.join(
-            "salami-data-public-hierarchy-corrections", "metadata", "metadata.csv"
+            'salami-data-public-hierarchy-corrections', 'metadata', 'metadata.csv'
         ),
     )
     if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
+        logging.info('Metadata file {} not found.'.format(metadata_path))
         return None
 
-    with open(metadata_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
+    with open(metadata_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=',')
         raw_data = []
         for line in reader:
             if line != []:
-                if line[0] == "SONG_ID":
+                if line[0] == 'SONG_ID':
                     continue
                 raw_data.append(line)
 
@@ -65,27 +65,27 @@ def _load_metadata(data_home):
     for line in raw_data:
         track_id = line[0]
         duration = None
-        if line[5] != "":
+        if line[5] != '':
             duration = float(line[5])
         metadata_index[track_id] = {
-            "source": line[1],
-            "annotator_1_id": line[2],
-            "annotator_2_id": line[3],
-            "duration": duration,
-            "title": line[7],
-            "artist": line[8],
-            "annotator_1_time": line[10],
-            "annotator_2_time": line[11],
-            "class": line[14],
-            "genre": line[15],
+            'source': line[1],
+            'annotator_1_id': line[2],
+            'annotator_2_id': line[3],
+            'duration': duration,
+            'title': line[7],
+            'artist': line[8],
+            'annotator_1_time': line[10],
+            'annotator_2_time': line[11],
+            'class': line[14],
+            'genre': line[15],
         }
 
-    metadata_index["data_home"] = data_home
+    metadata_index['data_home'] = data_home
 
     return metadata_index
 
 
-DATA = utils.LargeData("salami_index.json", _load_metadata)
+DATA = utils.LargeData('salami_index.json', _load_metadata)
 
 
 class Track(object):
@@ -118,7 +118,7 @@ class Track(object):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError("{} is not a valid track ID in Salami".format(track_id))
+            raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
 
         self.track_id = track_id
 
@@ -134,28 +134,28 @@ class Track(object):
         else:
             # annotations with missing metadata
             self._track_metadata = {
-                "source": None,
-                "annotator_1_id": None,
-                "annotator_2_id": None,
-                "duration": None,
-                "title": None,
-                "artist": None,
-                "annotator_1_time": None,
-                "annotator_2_time": None,
-                "class": None,
-                "genre": None,
+                'source': None,
+                'annotator_1_id': None,
+                'annotator_2_id': None,
+                'duration': None,
+                'title': None,
+                'artist': None,
+                'annotator_1_time': None,
+                'annotator_2_time': None,
+                'class': None,
+                'genre': None,
             }
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.source = self._track_metadata["source"]
-        self.annotator_1_id = self._track_metadata["annotator_1_id"]
-        self.annotator_2_id = self._track_metadata["annotator_2_id"]
-        self.duration = self._track_metadata["duration"]
-        self.title = self._track_metadata["title"]
-        self.artist = self._track_metadata["artist"]
-        self.annotator_1_time = self._track_metadata["annotator_1_time"]
-        self.annotator_2_time = self._track_metadata["annotator_2_time"]
-        self.broad_genre = self._track_metadata["class"]
-        self.genre = self._track_metadata["genre"]
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.source = self._track_metadata['source']
+        self.annotator_1_id = self._track_metadata['annotator_1_id']
+        self.annotator_2_id = self._track_metadata['annotator_2_id']
+        self.duration = self._track_metadata['duration']
+        self.title = self._track_metadata['title']
+        self.artist = self._track_metadata['artist']
+        self.annotator_1_time = self._track_metadata['annotator_1_time']
+        self.annotator_2_time = self._track_metadata['annotator_2_time']
+        self.broad_genre = self._track_metadata['class']
+        self.genre = self._track_metadata['genre']
 
     def __repr__(self):
         repr_string = (
@@ -185,34 +185,34 @@ class Track(object):
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
-        if self._track_paths["annotator_1_uppercase"][0] is None:
+        if self._track_paths['annotator_1_uppercase'][0] is None:
             return None
         return _load_sections(
-            os.path.join(self._data_home, self._track_paths["annotator_1_uppercase"][0])
+            os.path.join(self._data_home, self._track_paths['annotator_1_uppercase'][0])
         )
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
-        if self._track_paths["annotator_1_lowercase"][0] is None:
+        if self._track_paths['annotator_1_lowercase'][0] is None:
             return None
         return _load_sections(
-            os.path.join(self._data_home, self._track_paths["annotator_1_lowercase"][0])
+            os.path.join(self._data_home, self._track_paths['annotator_1_lowercase'][0])
         )
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
-        if self._track_paths["annotator_2_uppercase"][0] is None:
+        if self._track_paths['annotator_2_uppercase'][0] is None:
             return None
         return _load_sections(
-            os.path.join(self._data_home, self._track_paths["annotator_2_uppercase"][0])
+            os.path.join(self._data_home, self._track_paths['annotator_2_uppercase'][0])
         )
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
-        if self._track_paths["annotator_2_lowercase"][0] is None:
+        if self._track_paths['annotator_2_lowercase'][0] is None:
             return None
         return _load_sections(
-            os.path.join(self._data_home, self._track_paths["annotator_2_lowercase"][0])
+            os.path.join(self._data_home, self._track_paths['annotator_2_lowercase'][0])
         )
 
     @property
@@ -227,14 +227,14 @@ class Track(object):
                         (self.sections_annotator_1_uppercase, 0),
                         (self.sections_annotator_1_lowercase, 1),
                     ],
-                    "annotator_1",
+                    'annotator_1',
                 ),
                 (
                     [
                         (self.sections_annotator_2_uppercase, 0),
                         (self.sections_annotator_2_lowercase, 1),
                     ],
-                    "annotator_2",
+                    'annotator_2',
                 ),
             ],
             metadata=self._track_metadata,
@@ -333,8 +333,8 @@ def _load_sections(sections_path):
 
     times = []
     secs = []
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
+    with open(sections_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
             times.append(float(line[0]))
             secs.append(line[1])

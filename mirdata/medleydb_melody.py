@@ -35,24 +35,24 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
-DATASET_DIR = "MedleyDB-Melody"
+DATASET_DIR = 'MedleyDB-Melody'
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "medleydb_melody_metadata.json")
+    metadata_path = os.path.join(data_home, 'medleydb_melody_metadata.json')
 
     if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
+        logging.info('Metadata file {} not found.'.format(metadata_path))
         return None
 
-    with open(metadata_path, "r") as fhandle:
+    with open(metadata_path, 'r') as fhandle:
         metadata = json.load(fhandle)
 
-    metadata["data_home"] = data_home
+    metadata['data_home'] = data_home
     return metadata
 
 
-DATA = utils.LargeData("medleydb_melody_index.json", _load_metadata)
+DATA = utils.LargeData('medleydb_melody_index.json', _load_metadata)
 
 
 class Track(object):
@@ -81,7 +81,7 @@ class Track(object):
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(
-                "{} is not a valid track ID in MedleyDB-Melody".format(track_id)
+                '{} is not a valid track ID in MedleyDB-Melody'.format(track_id)
             )
 
         self.track_id = track_id
@@ -97,21 +97,21 @@ class Track(object):
             self._track_metadata = metadata[track_id]
         else:
             self._track_metadata = {
-                "artist": None,
-                "title": None,
-                "genre": None,
-                "is_excerpt": None,
-                "is_instrumental": None,
-                "n_sources": None,
+                'artist': None,
+                'title': None,
+                'genre': None,
+                'is_excerpt': None,
+                'is_instrumental': None,
+                'n_sources': None,
             }
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.artist = self._track_metadata["artist"]
-        self.title = self._track_metadata["title"]
-        self.genre = self._track_metadata["genre"]
-        self.is_excerpt = self._track_metadata["is_excerpt"]
-        self.is_instrumental = self._track_metadata["is_instrumental"]
-        self.n_sources = self._track_metadata["n_sources"]
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.artist = self._track_metadata['artist']
+        self.title = self._track_metadata['title']
+        self.genre = self._track_metadata['genre']
+        self.is_excerpt = self._track_metadata['is_excerpt']
+        self.is_instrumental = self._track_metadata['is_instrumental']
+        self.n_sources = self._track_metadata['n_sources']
 
     def __repr__(self):
         repr_string = (
@@ -136,19 +136,19 @@ class Track(object):
     @utils.cached_property
     def melody1(self):
         return _load_melody(
-            os.path.join(self._data_home, self._track_paths["melody1"][0])
+            os.path.join(self._data_home, self._track_paths['melody1'][0])
         )
 
     @utils.cached_property
     def melody2(self):
         return _load_melody(
-            os.path.join(self._data_home, self._track_paths["melody2"][0])
+            os.path.join(self._data_home, self._track_paths['melody2'][0])
         )
 
     @utils.cached_property
     def melody3(self):
         return _load_melody3(
-            os.path.join(self._data_home, self._track_paths["melody3"][0])
+            os.path.join(self._data_home, self._track_paths['melody3'][0])
         )
 
     @property
@@ -158,9 +158,9 @@ class Track(object):
     def to_jams(self):
         return jams_utils.jams_converter(
             f0_data=[
-                (self.melody1, "melody1"),
-                (self.melody2, "melody2"),
-                (self.melody3, "melody3"),
+                (self.melody1, 'melody1'),
+                (self.melody2, 'melody2'),
+                (self.melody3, 'melody3'),
             ],
             metadata=self._track_metadata,
         )
@@ -251,8 +251,8 @@ def _load_melody(melody_path):
         return None
     times = []
     freqs = []
-    with open(melody_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
+    with open(melody_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=',')
         for line in reader:
             times.append(float(line[0]))
             freqs.append(float(line[1]))
@@ -269,8 +269,8 @@ def _load_melody3(melody_path):
         return None
     times = []
     freqs = []
-    with open(melody_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
+    with open(melody_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=',')
         for line in reader:
             times.append(float(line[0]))
             freqs.append([float(v) for v in line[1:]])

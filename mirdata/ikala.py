@@ -39,12 +39,12 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
-DATASET_DIR = "iKala"
+DATASET_DIR = 'iKala'
 TIME_STEP = 0.032  # seconds
 ID_MAPPING_REMOTE = download_utils.RemoteFileMetadata(
-    filename="id_mapping.txt",
-    url="http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt",
-    checksum="81097b587804ce93e56c7a331ba06abc",
+    filename='id_mapping.txt',
+    url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
+    checksum='81097b587804ce93e56c7a331ba06abc',
     destination_dir=None,
 )
 
@@ -53,28 +53,28 @@ def _load_metadata(data_home):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    id_map_path = os.path.join(data_home, "id_mapping.txt")
+    id_map_path = os.path.join(data_home, 'id_mapping.txt')
     if not os.path.exists(id_map_path):
         logging.info(
-            "Metadata file {} not found.".format(id_map_path)
-            + "You can download the metadata file for ikala by running ikala.download"
+            'Metadata file {} not found.'.format(id_map_path)
+            + 'You can download the metadata file for ikala by running ikala.download'
         )
         return None
 
-    with open(id_map_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
+    with open(id_map_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
         singer_map = {}
         for line in reader:
-            if line[0] == "singer":
+            if line[0] == 'singer':
                 continue
             singer_map[line[1]] = line[0]
 
-    singer_map["data_home"] = data_home
+    singer_map['data_home'] = data_home
 
     return singer_map
 
 
-DATA = utils.LargeData("ikala_index.json", _load_metadata)
+DATA = utils.LargeData('ikala_index.json', _load_metadata)
 
 
 class Track(object):
@@ -98,7 +98,7 @@ class Track(object):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError("{} is not a valid track ID in iKala".format(track_id))
+            raise ValueError('{} is not a valid track ID in iKala'.format(track_id))
 
         self.track_id = track_id
 
@@ -110,9 +110,9 @@ class Track(object):
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.song_id = track_id.split("_")[0]
-        self.section = track_id.split("_")[1]
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.song_id = track_id.split('_')[0]
+        self.section = track_id.split('_')[1]
 
         if metadata is not None and self.song_id in metadata:
             self.singer_id = metadata[self.song_id]
@@ -132,12 +132,12 @@ class Track(object):
 
     @utils.cached_property
     def f0(self):
-        return _load_f0(os.path.join(self._data_home, self._track_paths["pitch"][0]))
+        return _load_f0(os.path.join(self._data_home, self._track_paths['pitch'][0]))
 
     @utils.cached_property
     def lyrics(self):
         return _load_lyrics(
-            os.path.join(self._data_home, self._track_paths["lyrics"][0])
+            os.path.join(self._data_home, self._track_paths['lyrics'][0])
         )
 
     @property
@@ -181,10 +181,10 @@ class Track(object):
             f0_data=[(self.f0, None)],
             lyrics_data=[(self.lyrics, None)],
             metadata={
-                "section": self.section,
-                "singer_id": self.singer_id,
-                "track_id": self.track_id,
-                "song_id": self.song_id,
+                'section': self.section,
+                'singer_id': self.singer_id,
+                'track_id': self.track_id,
+                'song_id': self.song_id,
             },
         )
 
@@ -295,8 +295,8 @@ def _load_lyrics(lyrics_path):
     if not os.path.exists(lyrics_path):
         return None
     # input: start time (ms), end time (ms), lyric, [pronunciation]
-    with open(lyrics_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=" ")
+    with open(lyrics_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=' ')
         start_times = []
         end_times = []
         lyrics = []
@@ -306,8 +306,8 @@ def _load_lyrics(lyrics_path):
             end_times.append(float(line[1]) / 1000.0)
             lyrics.append(line[2])
             if len(line) > 2:
-                pronunciation = " ".join(line[3:])
-                pronunciations.append(pronunciation if pronunciation != "" else None)
+                pronunciation = ' '.join(line[3:])
+                pronunciations.append(pronunciation if pronunciation != '' else None)
             else:
                 pronunciations.append(None)
 
