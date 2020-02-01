@@ -31,7 +31,7 @@ import os
 import json
 
 
-MIR_DATASETS_DIR = os.path.join(os.getenv('HOME', '/tmp'), 'mir_datasets')
+MIR_DATASETS_DIR = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
 
 
 def md5(file_path):
@@ -45,8 +45,8 @@ def md5(file_path):
 
     """
     hash_md5 = hashlib.md5()
-    with open(file_path, 'rb') as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b''):
+    with open(file_path, "rb") as fhandle:
+        for chunk in iter(lambda: fhandle.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
@@ -109,39 +109,39 @@ def validator(dataset_index, data_home, silence=False):
     # print path of any missing files
     for track_id in missing_files.keys():
         if len(missing_files[track_id]) > 0:
-            log_message('Files missing for {}:'.format(track_id), silence)
+            log_message("Files missing for {}:".format(track_id), silence)
             for fpath in missing_files[track_id]:
                 log_message(fpath, silence)
-            log_message('-' * 20, silence)
+            log_message("-" * 20, silence)
 
     # print path of any invalid checksums
     for track_id in invalid_checksums.keys():
         if len(invalid_checksums[track_id]) > 0:
-            log_message('Invalid checksums for {}:'.format(track_id), silence)
+            log_message("Invalid checksums for {}:".format(track_id), silence)
             for fpath in invalid_checksums[track_id]:
                 log_message(fpath, silence)
-            log_message('-' * 20, silence)
+            log_message("-" * 20, silence)
 
     return missing_files, invalid_checksums
 
 
-NoteData = namedtuple('NoteData', ['start_times', 'end_times', 'notes', 'confidence'])
+NoteData = namedtuple("NoteData", ["start_times", "end_times", "notes", "confidence"])
 
-F0Data = namedtuple('F0Data', ['times', 'frequencies', 'confidence'])
+F0Data = namedtuple("F0Data", ["times", "frequencies", "confidence"])
 
 LyricData = namedtuple(
-    'LyricData', ['start_times', 'end_times', 'lyrics', 'pronunciations']
+    "LyricData", ["start_times", "end_times", "lyrics", "pronunciations"]
 )
 
-SectionData = namedtuple('SectionData', ['intervals', 'labels'])
+SectionData = namedtuple("SectionData", ["intervals", "labels"])
 
-BeatData = namedtuple('BeatData', ['beat_times', 'beat_positions'])
+BeatData = namedtuple("BeatData", ["beat_times", "beat_positions"])
 
-ChordData = namedtuple('ChordData', ['intervals', 'labels'])
+ChordData = namedtuple("ChordData", ["intervals", "labels"])
 
-KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
+KeyData = namedtuple("KeyData", ["start_times", "end_times", "keys"])
 
-EventData = namedtuple('EventData', ['start_times', 'end_times', 'event'])
+EventData = namedtuple("EventData", ["start_times", "end_times", "event"])
 
 
 def get_default_dataset_path(dataset_name):
@@ -159,7 +159,7 @@ def get_default_dataset_path(dataset_name):
 
 def load_json_index(filename):
     CWD = os.path.dirname(os.path.realpath(__file__))
-    with open(os.path.join(CWD, 'indexes', filename)) as f:
+    with open(os.path.join(CWD, "indexes", filename)) as f:
         return json.load(f)
 
 
@@ -209,6 +209,6 @@ class LargeData(object):
         if self.metadata_load_fn is None:
             raise NotImplementedError
 
-        if self._metadata is None or self._metadata['data_home'] != data_home:
+        if self._metadata is None or self._metadata["data_home"] != data_home:
             self._metadata = self.metadata_load_fn(data_home)
         return self._metadata

@@ -35,29 +35,29 @@ try:
     import DALI
 except ImportError as E:
     logging.error(
-        'In order to use dali you must have dali-dataset installed. '
-        'Please reinstall mirdata using `pip install \'mirdata[dali]\''
+        "In order to use dali you must have dali-dataset installed. "
+        "Please reinstall mirdata using `pip install 'mirdata[dali]'"
     )
     raise
 
 import mirdata.utils as utils
 
-DATASET_DIR = 'DALI'
+DATASET_DIR = "DALI"
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, os.path.join('dali_metadata.json'))
+    metadata_path = os.path.join(data_home, os.path.join("dali_metadata.json"))
     if not os.path.exists(metadata_path):
-        logging.info('Metadata file {} not found.'.format(metadata_path))
+        logging.info("Metadata file {} not found.".format(metadata_path))
         return None
-    with open(metadata_path, 'r') as fhandle:
+    with open(metadata_path, "r") as fhandle:
         metadata_index = json.load(fhandle)
 
-    metadata_index['data_home'] = data_home
+    metadata_index["data_home"] = data_home
     return metadata_index
 
 
-DATA = utils.LargeData('dali_index.json', _load_metadata)
+DATA = utils.LargeData("dali_index.json", _load_metadata)
 
 
 class Track(object):
@@ -85,7 +85,7 @@ class Track(object):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError('{} is not a valid track ID in DALI'.format(track_id))
+            raise ValueError("{} is not a valid track ID in DALI".format(track_id))
 
         if data_home is None:
             data_home = utils.get_default_dataset_path(DATASET_DIR)
@@ -97,26 +97,26 @@ class Track(object):
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
             self._track_metadata = metadata[track_id]
-            self._track_metadata['album'] = metadata[track_id]['metadata']['album']
-            self._track_metadata['release_date'] = metadata[track_id]['metadata'][
-                'release_date'
+            self._track_metadata["album"] = metadata[track_id]["metadata"]["album"]
+            self._track_metadata["release_date"] = metadata[track_id]["metadata"][
+                "release_date"
             ]
-            self._track_metadata['language'] = metadata[track_id]['metadata'][
-                'language'
+            self._track_metadata["language"] = metadata[track_id]["metadata"][
+                "language"
             ]
-            self.audio_url = self._track_metadata['audio']['url']
-            self.url_working = self._track_metadata['audio']['working']
-            self.ground_truth = self._track_metadata['ground-truth']
-            self.artist = self._track_metadata['artist']
-            self.title = self._track_metadata['title']
-            self.dataset_version = self._track_metadata['dataset_version']
-            self.scores_ncc = self._track_metadata['scores']['NCC']
-            self.scores_manual = self._track_metadata['scores']['manual']
-            self.album = self._track_metadata['album']
-            self.release_date = self._track_metadata['release_date']
-            self.language = self._track_metadata['language']
+            self.audio_url = self._track_metadata["audio"]["url"]
+            self.url_working = self._track_metadata["audio"]["working"]
+            self.ground_truth = self._track_metadata["ground-truth"]
+            self.artist = self._track_metadata["artist"]
+            self.title = self._track_metadata["title"]
+            self.dataset_version = self._track_metadata["dataset_version"]
+            self.scores_ncc = self._track_metadata["scores"]["NCC"]
+            self.scores_manual = self._track_metadata["scores"]["manual"]
+            self.album = self._track_metadata["album"]
+            self.release_date = self._track_metadata["release_date"]
+            self.language = self._track_metadata["language"]
             self.audio_path = os.path.join(
-                self._data_home, self._track_paths['audio'][0]
+                self._data_home, self._track_paths["audio"][0]
             )
 
     def __repr__(self):
@@ -144,31 +144,31 @@ class Track(object):
     @utils.cached_property
     def notes(self):
         return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]), 'notes'
+            os.path.join(self._data_home, self._track_paths["annot"][0]), "notes"
         )
 
     @utils.cached_property
     def words(self):
         return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]), 'words'
+            os.path.join(self._data_home, self._track_paths["annot"][0]), "words"
         )
 
     @utils.cached_property
     def lines(self):
         return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]), 'lines'
+            os.path.join(self._data_home, self._track_paths["annot"][0]), "lines"
         )
 
     @utils.cached_property
     def paragraphs(self):
         return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]), 'paragraphs'
+            os.path.join(self._data_home, self._track_paths["annot"][0]), "paragraphs"
         )
 
     @utils.cached_property
     def annotation_object(self):
         return _load_annotations_class(
-            os.path.join(self._data_home, self._track_paths['annot'][0])
+            os.path.join(self._data_home, self._track_paths["annot"][0])
         )
 
     @property
@@ -203,8 +203,8 @@ def download(data_home=None):
         {audio_path}
 
     """.format(
-            save_path=os.path.join(data_home, DATASET_DIR, 'annotatios'),
-            audio_path=os.path.join(data_home, DATASET_DIR, 'audio'),
+            save_path=os.path.join(data_home, DATASET_DIR, "annotatios"),
+            audio_path=os.path.join(data_home, DATASET_DIR, "audio"),
         )
     )
 
@@ -265,21 +265,21 @@ def _load_annotations_granularity(annotations_path, granularity):
     if not os.path.exists(annotations_path):
         return None
     try:
-        with gzip.open(annotations_path, 'rb') as f:
+        with gzip.open(annotations_path, "rb") as f:
             output = pickle.load(f)
     except Exception as e:
-        with gzip.open(annotations_path, 'r') as f:
+        with gzip.open(annotations_path, "r") as f:
             output = pickle.load(f)
     text = []
     notes = []
     begs = []
     ends = []
-    for annot in output.annotations['annot'][granularity]:
-        notes.append(round(annot['freq'][0], 3))
-        begs.append(round(annot['time'][0], 3))
-        ends.append(round(annot['time'][1], 3))
-        text.append(annot['text'])
-    if granularity == 'notes':
+    for annot in output.annotations["annot"][granularity]:
+        notes.append(round(annot["freq"][0], 3))
+        begs.append(round(annot["time"][0], 3))
+        ends.append(round(annot["time"][1], 3))
+        text.append(annot["text"])
+    if granularity == "notes":
         annotation = utils.NoteData(
             np.array(begs), np.array(ends), np.array(notes), None
         )
@@ -294,10 +294,10 @@ def _load_annotations_class(annotations_path):
     if not os.path.exists(annotations_path):
         return None
     try:
-        with gzip.open(annotations_path, 'rb') as f:
+        with gzip.open(annotations_path, "rb") as f:
             output = pickle.load(f)
     except Exception as e:
-        with gzip.open(annotations_path, 'r') as f:
+        with gzip.open(annotations_path, "r") as f:
             output = pickle.load(f)
     return output
 

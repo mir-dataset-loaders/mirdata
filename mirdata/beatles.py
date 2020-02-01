@@ -25,15 +25,15 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
-DATASET_DIR = 'Beatles'
+DATASET_DIR = "Beatles"
 ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
-    filename='The Beatles Annotations.tar.gz',
-    url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
-    checksum='62425c552d37c6bb655a78e4603828cc',
-    destination_dir='annotations',
+    filename="The Beatles Annotations.tar.gz",
+    url="http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz",
+    checksum="62425c552d37c6bb655a78e4603828cc",
+    destination_dir="annotations",
 )
 
-DATA = utils.LargeData('beatles_index.json')
+DATA = utils.LargeData("beatles_index.json")
 
 
 class Track(object):
@@ -57,7 +57,7 @@ class Track(object):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError('{} is not a valid track ID in Beatles'.format(track_id))
+            raise ValueError("{} is not a valid track ID in Beatles".format(track_id))
 
         self.track_id = track_id
 
@@ -67,9 +67,9 @@ class Track(object):
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-        self.title = os.path.basename(self._track_paths['sections'][0]).split('.')[0]
+        self.title = os.path.basename(self._track_paths["sections"][0]).split(".")[0]
 
     def __repr__(self):
         repr_string = (
@@ -83,30 +83,30 @@ class Track(object):
 
     @utils.cached_property
     def beats(self):
-        if not self._track_paths['beat'][0] is None:
+        if not self._track_paths["beat"][0] is None:
             return _load_beats(
-                os.path.join(self._data_home, self._track_paths['beat'][0])
+                os.path.join(self._data_home, self._track_paths["beat"][0])
             )
         return None
 
     @utils.cached_property
     def chords(self):
         return _load_chords(
-            os.path.join(self._data_home, self._track_paths['chords'][0])
+            os.path.join(self._data_home, self._track_paths["chords"][0])
         )
 
     @utils.cached_property
     def key(self):
-        if not self._track_paths['keys'][0] is None:
+        if not self._track_paths["keys"][0] is None:
             return _load_key(
-                os.path.join(self._data_home, self._track_paths['keys'][0])
+                os.path.join(self._data_home, self._track_paths["keys"][0])
             )
         return None
 
     @utils.cached_property
     def sections(self):
         return _load_sections(
-            os.path.join(self._data_home, self._track_paths['sections'][0])
+            os.path.join(self._data_home, self._track_paths["sections"][0])
         )
 
     @property
@@ -119,7 +119,7 @@ class Track(object):
             section_data=[(self.sections, None)],
             chord_data=[(self.chords, None)],
             key_data=[(self.key, None)],
-            metadata={'artist': 'The Beatles', 'title': self.title},
+            metadata={"artist": "The Beatles", "title": self.title},
         )
 
 
@@ -221,7 +221,7 @@ def _load_beats(beats_path):
         return None
 
     beat_times, beat_positions = [], []
-    with open(beats_path, 'r') as fhandle:
+    with open(beats_path, "r") as fhandle:
         dialect = csv.Sniffer().sniff(fhandle.read(1024))
         fhandle.seek(0)
         reader = csv.reader(fhandle, dialect)
@@ -249,7 +249,7 @@ def _load_chords(chords_path):
         return None
 
     start_times, end_times, chords = [], [], []
-    with open(chords_path, 'r') as f:
+    with open(chords_path, "r") as f:
         dialect = csv.Sniffer().sniff(f.read(1024))
         f.seek(0)
         reader = csv.reader(f, dialect)
@@ -274,10 +274,10 @@ def _load_key(key_path):
         return None
 
     start_times, end_times, keys = [], [], []
-    with open(key_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(key_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
-            if line[2] == 'Key':
+            if line[2] == "Key":
                 start_times.append(float(line[0]))
                 end_times.append(float(line[1]))
                 keys.append(line[3])
@@ -298,8 +298,8 @@ def _load_sections(sections_path):
         return None
 
     start_times, end_times, sections = [], [], []
-    with open(sections_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(sections_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             start_times.append(float(line[0]))
             end_times.append(float(line[1]))
@@ -315,16 +315,16 @@ def _fix_newpoint(beat_positions):
         from neighboring beats.
 
     """
-    while np.any(beat_positions == 'New Point'):
-        idxs = np.where(beat_positions == 'New Point')[0]
+    while np.any(beat_positions == "New Point"):
+        idxs = np.where(beat_positions == "New Point")[0]
         for i in idxs:
             if i < len(beat_positions) - 1:
-                if not beat_positions[i + 1] == 'New Point':
+                if not beat_positions[i + 1] == "New Point":
                     beat_positions[i] = str(np.mod(int(beat_positions[i + 1]) - 1, 4))
             if i == len(beat_positions) - 1:
-                if not beat_positions[i - 1] == 'New Point':
+                if not beat_positions[i - 1] == "New Point":
                     beat_positions[i] = str(np.mod(int(beat_positions[i - 1]) + 1, 4))
-    beat_positions[beat_positions == '0'] = '4'
+    beat_positions[beat_positions == "0"] = "4"
 
     return beat_positions
 

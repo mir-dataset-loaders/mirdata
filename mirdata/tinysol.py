@@ -79,9 +79,7 @@ STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, "annotation", "TinySOL_metadata.csv"
-    )
+    metadata_path = os.path.join(data_home, "annotation", "TinySOL_metadata.csv")
 
     if not os.path.exists(metadata_path):
         logging.info("Metadata file {} not found.".format(metadata_path))
@@ -93,19 +91,19 @@ def _load_metadata(data_home):
         next(csv_reader)
         for row in csv_reader:
             metadata_index[row[0]] = {
-                 "Fold":                    row[1],
-                 "Family":                  row[2],
-                 "Instrument (abbr.)":      row[3],
-                 "Instrument (in full)":    row[4],
-                 "Technique (abbr.)":       row[5],
-                 "Technique (in full)":     row[6],
-                 "Pitch":                   row[7],
-                 "Pitch ID":                row[8],
-                 "Dynamics":                row[9],
-                 "Dynamics ID":            row[10],
-                 "Resampled":              row[11],
+                "Fold": row[1],
+                "Family": row[2],
+                "Instrument (abbr.)": row[3],
+                "Instrument (in full)": row[4],
+                "Technique (abbr.)": row[5],
+                "Technique (in full)": row[6],
+                "Pitch": row[7],
+                "Pitch ID": row[8],
+                "Dynamics": row[9],
+                "Dynamics ID": row[10],
+                "Resampled": row[11],
             }
-            if len(row)==13:
+            if len(row) == 13:
                 metadata_index[row[0]]["String ID"] = row[12]
 
     metadata_index["data_home"] = data_home
@@ -141,9 +139,7 @@ class Track(object):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError(
-                "{} is not a valid track ID in TinySOL".format(track_id)
-            )
+            raise ValueError("{} is not a valid track ID in TinySOL".format(track_id))
 
         self.track_id = track_id
 
@@ -158,21 +154,20 @@ class Track(object):
             self._track_metadata = metadata[track_id]
         else:
             self._track_metadata = {
-                 "Family":                  None,
-                 "Instrument (abbr.)":      None,
-                 "Instrument (in full)":    None,
-                 "Technique (abbr.)":       None,
-                 "Technique (in full)":     None,
-                 "Pitch":                   None,
-                 "Pitch ID":                None,
-                 "Dynamics":                None,
-                 "Dynamics ID":             None,
-                 "Resampled":               None,
-                 "String ID":               None,
+                "Family": None,
+                "Instrument (abbr.)": None,
+                "Instrument (in full)": None,
+                "Technique (abbr.)": None,
+                "Technique (in full)": None,
+                "Pitch": None,
+                "Pitch ID": None,
+                "Dynamics": None,
+                "Dynamics ID": None,
+                "Resampled": None,
+                "String ID": None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths["audio"][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
         self.family = self._track_metadata["Family"]
         self.instrument_abbr = self._track_metadata["Instrument (abbr.)"]
@@ -203,11 +198,7 @@ class Track(object):
         else:
             repr_string = (
                 "TinySOL Track(instrument={}, pitch={}, dynamics={},)"
-            ).format(
-                self.instrument_full,
-                self.pitch,
-                self.dynamics,
-            )
+            ).format(self.instrument_full, self.pitch, self.dynamics)
         return repr_string
 
     @property
@@ -216,7 +207,8 @@ class Track(object):
 
     def to_jams(self):
         return jams_utils.jams_converter(
-            metadata=self._track_metadata)             # TODO pass a note_data?
+            metadata=self._track_metadata
+        )  # TODO pass a note_data?
 
 
 def download(data_home=None):
@@ -229,11 +221,7 @@ def download(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    download_utils.downloader(
-        data_home,
-        tar_downloads=[AUDIO_REMOTE],
-        cleanup=True,
-    )
+    download_utils.downloader(data_home, tar_downloads=[AUDIO_REMOTE], cleanup=True)
 
 
 def track_ids():

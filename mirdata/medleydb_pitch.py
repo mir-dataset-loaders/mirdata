@@ -33,24 +33,24 @@ import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
-DATASET_DIR = 'MedleyDB-Pitch'
+DATASET_DIR = "MedleyDB-Pitch"
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, 'medleydb_pitch_metadata.json')
+    metadata_path = os.path.join(data_home, "medleydb_pitch_metadata.json")
 
     if not os.path.exists(metadata_path):
-        logging.info('Metadata file {} not found.'.format(metadata_path))
+        logging.info("Metadata file {} not found.".format(metadata_path))
         return None
 
-    with open(metadata_path, 'r') as fhandle:
+    with open(metadata_path, "r") as fhandle:
         metadata = json.load(fhandle)
 
-    metadata['data_home'] = data_home
+    metadata["data_home"] = data_home
     return metadata
 
 
-DATA = utils.LargeData('medleydb_pitch_index.json', _load_metadata)
+DATA = utils.LargeData("medleydb_pitch_index.json", _load_metadata)
 
 
 class Track(object):
@@ -75,7 +75,7 @@ class Track(object):
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(
-                '{} is not a valid track ID in MedleyDB-Pitch'.format(track_id)
+                "{} is not a valid track ID in MedleyDB-Pitch".format(track_id)
             )
 
         self.track_id = track_id
@@ -91,17 +91,17 @@ class Track(object):
             self._track_metadata = metadata[track_id]
         else:
             self._track_metadata = {
-                'instrument': None,
-                'artist': None,
-                'title': None,
-                'genre': None,
+                "instrument": None,
+                "artist": None,
+                "title": None,
+                "genre": None,
             }
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
-        self.instrument = self._track_metadata['instrument']
-        self.artist = self._track_metadata['artist']
-        self.title = self._track_metadata['title']
-        self.genre = self._track_metadata['genre']
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.instrument = self._track_metadata["instrument"]
+        self.artist = self._track_metadata["artist"]
+        self.title = self._track_metadata["title"]
+        self.genre = self._track_metadata["genre"]
 
     def __repr__(self):
         repr_string = (
@@ -120,7 +120,7 @@ class Track(object):
 
     @utils.cached_property
     def pitch(self):
-        return _load_pitch(os.path.join(self._data_home, self._track_paths['pitch'][0]))
+        return _load_pitch(os.path.join(self._data_home, self._track_paths["pitch"][0]))
 
     @property
     def audio(self):
@@ -218,8 +218,8 @@ def _load_pitch(pitch_path):
         return None
     times = []
     freqs = []
-    with open(pitch_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=',')
+    with open(pitch_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
         for line in reader:
             times.append(float(line[0]))
             freqs.append(float(line[1]))

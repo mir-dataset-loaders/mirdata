@@ -14,47 +14,47 @@ from tests.test_download_utils import mock_downloader
 
 def test_track():
     # test data home None
-    track_default = medleydb_melody.Track('MusicDelta_Beethoven')
+    track_default = medleydb_melody.Track("MusicDelta_Beethoven")
     assert track_default._data_home == os.path.join(
-        DEFAULT_DATA_HOME, 'MedleyDB-Melody'
+        DEFAULT_DATA_HOME, "MedleyDB-Melody"
     )
 
-    data_home = 'tests/resources/mir_datasets/MedleyDB-Melody'
+    data_home = "tests/resources/mir_datasets/MedleyDB-Melody"
 
     with pytest.raises(ValueError):
-        medleydb_melody.Track('asdfasdf', data_home=data_home)
+        medleydb_melody.Track("asdfasdf", data_home=data_home)
 
-    track = medleydb_melody.Track('MusicDelta_Beethoven', data_home=data_home)
+    track = medleydb_melody.Track("MusicDelta_Beethoven", data_home=data_home)
 
     # test attributes
-    assert track.track_id == 'MusicDelta_Beethoven'
+    assert track.track_id == "MusicDelta_Beethoven"
     assert track._data_home == data_home
     assert track._track_paths == {
-        'audio': [
-            'audio/MusicDelta_Beethoven_MIX.wav',
-            '4c6081420a506b438a851c2807fc28ea',
+        "audio": [
+            "audio/MusicDelta_Beethoven_MIX.wav",
+            "4c6081420a506b438a851c2807fc28ea",
         ],
-        'melody1': [
-            'melody1/MusicDelta_Beethoven_MELODY1.csv',
-            '67dca3f4a9bf0517dd8a1287d091791e',
+        "melody1": [
+            "melody1/MusicDelta_Beethoven_MELODY1.csv",
+            "67dca3f4a9bf0517dd8a1287d091791e",
         ],
-        'melody2': [
-            'melody2/MusicDelta_Beethoven_MELODY2.csv',
-            '67dca3f4a9bf0517dd8a1287d091791e',
+        "melody2": [
+            "melody2/MusicDelta_Beethoven_MELODY2.csv",
+            "67dca3f4a9bf0517dd8a1287d091791e",
         ],
-        'melody3': [
-            'melody3/MusicDelta_Beethoven_MELODY3.csv',
-            '340f647c4f12d7e1ecf2421d0dfd509f',
+        "melody3": [
+            "melody3/MusicDelta_Beethoven_MELODY3.csv",
+            "340f647c4f12d7e1ecf2421d0dfd509f",
         ],
     }
     assert (
         track.audio_path
-        == 'tests/resources/mir_datasets/'
-        + 'MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav'
+        == "tests/resources/mir_datasets/"
+        + "MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav"
     )
-    assert track.artist == 'MusicDelta'
-    assert track.title == 'Beethoven'
-    assert track.genre == 'Classical'
+    assert track.artist == "MusicDelta"
+    assert track.title == "Beethoven"
+    assert track.genre == "Classical"
     assert track.is_excerpt is True
     assert track.is_instrumental is True
     assert track.n_sources == 18
@@ -81,18 +81,18 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = 'tests/resources/mir_datasets/MedleyDB-Melody'
-    track = medleydb_melody.Track('MusicDelta_Beethoven', data_home=data_home)
+    data_home = "tests/resources/mir_datasets/MedleyDB-Melody"
+    track = medleydb_melody.Track("MusicDelta_Beethoven", data_home=data_home)
     jam = track.to_jams()
 
-    f0s = jam.search(namespace='pitch_contour')[1]['data']
+    f0s = jam.search(namespace="pitch_contour")[1]["data"]
     assert [f0.time for f0 in f0s] == [0.046439909297052155, 0.052244897959183675]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
     assert [f0.value for f0 in f0s] == [0.0, 965.992]
     assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
 
-    assert jam['file_metadata']['title'] == 'Beethoven'
-    assert jam['file_metadata']['artist'] == 'MusicDelta'
+    assert jam["file_metadata"]["title"] == "Beethoven"
+    assert jam["file_metadata"]["artist"] == "MusicDelta"
 
 
 def test_track_ids():
@@ -102,7 +102,7 @@ def test_track_ids():
 
 
 def test_load():
-    data_home = 'tests/resources/mir_datasets/MedleyDB-Melody'
+    data_home = "tests/resources/mir_datasets/MedleyDB-Melody"
     medleydb_melody_data = medleydb_melody.load(data_home=data_home)
     assert type(medleydb_melody_data) is dict
     assert len(medleydb_melody_data.keys()) is 108
@@ -115,8 +115,8 @@ def test_load():
 def test_load_melody():
     # load a file which exists
     melody_path = (
-        'tests/resources/mir_datasets/MedleyDB-Melody/'
-        + 'melody1/MusicDelta_Beethoven_MELODY1.csv'
+        "tests/resources/mir_datasets/MedleyDB-Melody/"
+        + "melody1/MusicDelta_Beethoven_MELODY1.csv"
     )
     melody_data = medleydb_melody._load_melody(melody_path)
 
@@ -134,15 +134,15 @@ def test_load_melody():
     assert np.array_equal(melody_data.confidence, np.array([0.0, 1.0]))
 
     # load a file which doesn't exist
-    melody_data_none = medleydb_melody._load_melody('fake/file/path')
+    melody_data_none = medleydb_melody._load_melody("fake/file/path")
     assert melody_data_none is None
 
 
 def test_load_melody3():
     # load a file which exists
     melody_path = (
-        'tests/resources/mir_datasets/MedleyDB-Melody/'
-        + 'melody3/MusicDelta_Beethoven_MELODY3.csv'
+        "tests/resources/mir_datasets/MedleyDB-Melody/"
+        + "melody3/MusicDelta_Beethoven_MELODY3.csv"
     )
     melody_data = medleydb_melody._load_melody3(melody_path)
 
@@ -185,28 +185,28 @@ def test_load_melody3():
     )
 
     # load a file which doesn't exist
-    melody_data_none = medleydb_melody._load_melody3('fake/file/path')
+    melody_data_none = medleydb_melody._load_melody3("fake/file/path")
     assert melody_data_none is None
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/MedleyDB-Melody'
+    data_home = "tests/resources/mir_datasets/MedleyDB-Melody"
     metadata = medleydb_melody._load_metadata(data_home)
-    assert metadata['data_home'] == data_home
-    assert metadata['MusicDelta_Beethoven'] == {
-        'audio_path': 'MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav',
-        'melody1_path': 'MedleyDB-Melody/melody1/MusicDelta_Beethoven_MELODY1.csv',
-        'melody2_path': 'MedleyDB-Melody/melody2/MusicDelta_Beethoven_MELODY2.csv',
-        'melody3_path': 'MedleyDB-Melody/melody3/MusicDelta_Beethoven_MELODY3.csv',
-        'artist': 'MusicDelta',
-        'title': 'Beethoven',
-        'genre': 'Classical',
-        'is_excerpt': True,
-        'is_instrumental': True,
-        'n_sources': 18,
+    assert metadata["data_home"] == data_home
+    assert metadata["MusicDelta_Beethoven"] == {
+        "audio_path": "MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav",
+        "melody1_path": "MedleyDB-Melody/melody1/MusicDelta_Beethoven_MELODY1.csv",
+        "melody2_path": "MedleyDB-Melody/melody2/MusicDelta_Beethoven_MELODY2.csv",
+        "melody3_path": "MedleyDB-Melody/melody3/MusicDelta_Beethoven_MELODY3.csv",
+        "artist": "MusicDelta",
+        "title": "Beethoven",
+        "genre": "Classical",
+        "is_excerpt": True,
+        "is_instrumental": True,
+        "n_sources": 18,
     }
 
-    metadata_none = medleydb_melody._load_metadata('asdf/asdf')
+    metadata_none = medleydb_melody._load_metadata("asdf/asdf")
     assert metadata_none is None
 
 

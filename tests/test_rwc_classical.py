@@ -13,43 +13,43 @@ from tests.test_download_utils import mock_downloader
 
 def test_track():
     # test data home None
-    track_default = rwc_classical.Track('RM-C003')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'RWC-Classical')
+    track_default = rwc_classical.Track("RM-C003")
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, "RWC-Classical")
 
     # test data_home where the test data lives
-    data_home = 'tests/resources/mir_datasets/RWC-Classical'
+    data_home = "tests/resources/mir_datasets/RWC-Classical"
 
     with pytest.raises(ValueError):
-        rwc_classical.Track('asdfasdf', data_home=data_home)
+        rwc_classical.Track("asdfasdf", data_home=data_home)
 
-    track = rwc_classical.Track('RM-C003', data_home=data_home)
+    track = rwc_classical.Track("RM-C003", data_home=data_home)
 
     # test attributes are loaded as expected
-    assert track.track_id == 'RM-C003'
+    assert track.track_id == "RM-C003"
     assert track._data_home == data_home
     assert track._track_paths == {
-        'audio': ['audio/rwc-c-m01/3.wav', 'a2f1accd0ae6ba4364069b3370a57578'],
-        'sections': [
-            'annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT',
-            '9805083e55f2547559ebdfa5f97ccb0e',
+        "audio": ["audio/rwc-c-m01/3.wav", "a2f1accd0ae6ba4364069b3370a57578"],
+        "sections": [
+            "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
+            "9805083e55f2547559ebdfa5f97ccb0e",
         ],
-        'beats': [
-            'annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT',
-            '3deaf6102c54c04596182ba904375e19',
+        "beats": [
+            "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+            "3deaf6102c54c04596182ba904375e19",
         ],
     }
     assert (
         track.audio_path
-        == 'tests/resources/mir_datasets/RWC-Classical/' + 'audio/rwc-c-m01/3.wav'
+        == "tests/resources/mir_datasets/RWC-Classical/" + "audio/rwc-c-m01/3.wav"
     )
-    assert track.piece_number == 'No. 3'
-    assert track.suffix == 'M01'
-    assert track.track_number == 'Tr. 03'
-    assert track.title == 'Symphony no.5 in C minor, op.67. 1st mvmt.'
-    assert track.composer == 'Beethoven, Ludwig van'
-    assert track.artist == 'Tokyo City Philharmonic Orchestra'
+    assert track.piece_number == "No. 3"
+    assert track.suffix == "M01"
+    assert track.track_number == "Tr. 03"
+    assert track.title == "Symphony no.5 in C minor, op.67. 1st mvmt."
+    assert track.composer == "Beethoven, Ludwig van"
+    assert track.artist == "Tokyo City Philharmonic Orchestra"
     assert track.duration == 435
-    assert track.category == 'Symphony'
+    assert track.category == "Symphony"
 
     # test that cached properties don't fail and have the expected type
     assert type(track.sections) is utils.SectionData
@@ -74,11 +74,11 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = 'tests/resources/mir_datasets/RWC-Classical'
-    track = rwc_classical.Track('RM-C003', data_home=data_home)
+    data_home = "tests/resources/mir_datasets/RWC-Classical"
+    track = rwc_classical.Track("RM-C003", data_home=data_home)
     jam = track.to_jams()
 
-    beats = jam.search(namespace='beat')[0]['data']
+    beats = jam.search(namespace="beat")[0]["data"]
     assert [beat.time for beat in beats] == [
         1.65,
         2.58,
@@ -102,14 +102,14 @@ def test_to_jams():
         None,
     ]
 
-    segments = jam.search(namespace='segment')[0]['data']
+    segments = jam.search(namespace="segment")[0]["data"]
     assert [segment.time for segment in segments] == [0.29, 419.96]
     assert [segment.duration for segment in segments] == [45.85, 13.75]
-    assert [segment.value for segment in segments] == ['chorus A', 'ending']
+    assert [segment.value for segment in segments] == ["chorus A", "ending"]
     assert [segment.confidence for segment in segments] == [None, None]
 
-    assert jam['file_metadata']['title'] == 'Symphony no.5 in C minor, op.67. 1st mvmt.'
-    assert jam['file_metadata']['artist'] == 'Tokyo City Philharmonic Orchestra'
+    assert jam["file_metadata"]["title"] == "Symphony no.5 in C minor, op.67. 1st mvmt."
+    assert jam["file_metadata"]["artist"] == "Tokyo City Philharmonic Orchestra"
 
 
 def test_track_ids():
@@ -119,7 +119,7 @@ def test_track_ids():
 
 
 def test_load():
-    data_home = 'tests/resources/mir_datasets/RWC-Classical'
+    data_home = "tests/resources/mir_datasets/RWC-Classical"
     rwc_classical_data = rwc_classical.load(data_home=data_home)
     assert type(rwc_classical_data) is dict
     assert len(rwc_classical_data.keys()) == 50
@@ -132,8 +132,8 @@ def test_load():
 def test_load_sections():
     # load a file which exists
     section_path = (
-        'tests/resources/mir_datasets/RWC-Classical/'
-        + 'annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT'
+        "tests/resources/mir_datasets/RWC-Classical/"
+        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT"
     )
     section_data = rwc_classical._load_sections(section_path)
 
@@ -145,10 +145,10 @@ def test_load_sections():
     # check values
     assert np.array_equal(section_data.intervals[:, 0], np.array([0.29, 419.96]))
     assert np.array_equal(section_data.intervals[:, 1], np.array([46.14, 433.71]))
-    assert np.array_equal(section_data.labels, np.array(['chorus A', 'ending']))
+    assert np.array_equal(section_data.labels, np.array(["chorus A", "ending"]))
 
     # load a file which doesn't exist
-    section_data_none = rwc_classical._load_sections('fake/file/path')
+    section_data_none = rwc_classical._load_sections("fake/file/path")
     assert section_data_none is None
 
 
@@ -206,8 +206,8 @@ def test_position_in_bar():
 
 def test_load_beats():
     beats_path = (
-        'tests/resources/mir_datasets/RWC-Classical/'
-        + 'annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT'
+        "tests/resources/mir_datasets/RWC-Classical/"
+        + "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT"
     )
     beat_data = rwc_classical._load_beats(beats_path)
 
@@ -223,26 +223,26 @@ def test_load_beats():
     assert np.array_equal(beat_data.beat_positions, np.array([2, 1, 2, 1, 2, 1, 2, 1]))
 
     # load a file which doesn't exist
-    beats_data_none = rwc_classical._load_beats('fake/path')
+    beats_data_none = rwc_classical._load_beats("fake/path")
     assert beats_data_none is None
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/RWC-Classical'
+    data_home = "tests/resources/mir_datasets/RWC-Classical"
     metadata = rwc_classical._load_metadata(data_home)
-    assert metadata['data_home'] == data_home
-    assert metadata['RM-C003'] == {
-        'piece_number': 'No. 3',
-        'suffix': 'M01',
-        'track_number': 'Tr. 03',
-        'title': 'Symphony no.5 in C minor, op.67. 1st mvmt.',
-        'composer': 'Beethoven, Ludwig van',
-        'artist': 'Tokyo City Philharmonic Orchestra',
-        'duration': 435,
-        'category': 'Symphony',
+    assert metadata["data_home"] == data_home
+    assert metadata["RM-C003"] == {
+        "piece_number": "No. 3",
+        "suffix": "M01",
+        "track_number": "Tr. 03",
+        "title": "Symphony no.5 in C minor, op.67. 1st mvmt.",
+        "composer": "Beethoven, Ludwig van",
+        "artist": "Tokyo City Philharmonic Orchestra",
+        "duration": 435,
+        "category": "Symphony",
     }
 
-    metadata_none = rwc_classical._load_metadata('asdf/asdf')
+    metadata_none = rwc_classical._load_metadata("asdf/asdf")
     assert metadata_none is None
 
 
