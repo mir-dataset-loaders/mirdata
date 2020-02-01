@@ -36,76 +36,76 @@ import mirdata.jams_utils as jams_utils
 
 
 REMOTE = download_utils.RemoteFileMetadata(
-    filename='Orchset_dataset_0.zip',
-    url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
-    checksum='cf6fe52d64624f61ee116c752fb318ca',
+    filename="Orchset_dataset_0.zip",
+    url="https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1",
+    checksum="cf6fe52d64624f61ee116c752fb318ca",
     destination_dir=None,
 )
 
-DATASET_DIR = 'Orchset'
+DATASET_DIR = "Orchset"
 
 
 def _load_metadata(data_home):
 
     predominant_inst_path = os.path.join(
-        data_home, 'Orchset - Predominant Melodic Instruments.csv'
+        data_home, "Orchset - Predominant Melodic Instruments.csv"
     )
 
     if not os.path.exists(predominant_inst_path):
-        logging.info('Metadata file {} not found.'.format(predominant_inst_path))
+        logging.info("Metadata file {} not found.".format(predominant_inst_path))
         return None
 
-    with open(predominant_inst_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=',')
+    with open(predominant_inst_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
         raw_data = []
         for line in reader:
-            if line[0] == 'excerpt':
+            if line[0] == "excerpt":
                 continue
             raw_data.append(line)
 
-    tf_dict = {'TRUE': True, 'FALSE': False}
+    tf_dict = {"TRUE": True, "FALSE": False}
 
     metadata_index = {}
     for line in raw_data:
-        track_id = line[0].split('.')[0]
+        track_id = line[0].split(".")[0]
 
-        id_split = track_id.split('.')[0].split('-')
-        if id_split[0] == 'Musorgski' or id_split[0] == 'Rimski':
-            id_split[0] = '-'.join(id_split[:2])
+        id_split = track_id.split(".")[0].split("-")
+        if id_split[0] == "Musorgski" or id_split[0] == "Rimski":
+            id_split[0] = "-".join(id_split[:2])
             id_split.pop(1)
 
-        melodic_instruments = [s.split(',') for s in line[1].split('+')]
+        melodic_instruments = [s.split(",") for s in line[1].split("+")]
         melodic_instruments = [
             item.lower() for sublist in melodic_instruments for item in sublist
         ]
         for i, inst in enumerate(melodic_instruments):
-            if inst == 'string':
-                melodic_instruments[i] = 'strings'
-            elif inst == 'winds (solo)':
-                melodic_instruments[i] = 'winds'
+            if inst == "string":
+                melodic_instruments[i] = "strings"
+            elif inst == "winds (solo)":
+                melodic_instruments[i] = "winds"
         melodic_instruments = sorted(list(set(melodic_instruments)))
 
         metadata_index[track_id] = {
-            'predominant_melodic_instruments-raw': line[1],
-            'predominant_melodic_instruments-normalized': melodic_instruments,
-            'alternating_melody': tf_dict[line[2]],
-            'contains_winds': tf_dict[line[3]],
-            'contains_strings': tf_dict[line[4]],
-            'contains_brass': tf_dict[line[5]],
-            'only_strings': tf_dict[line[6]],
-            'only_winds': tf_dict[line[7]],
-            'only_brass': tf_dict[line[8]],
-            'composer': id_split[0],
-            'work': '-'.join(id_split[1:-1]),
-            'excerpt': id_split[-1][2:],
+            "predominant_melodic_instruments-raw": line[1],
+            "predominant_melodic_instruments-normalized": melodic_instruments,
+            "alternating_melody": tf_dict[line[2]],
+            "contains_winds": tf_dict[line[3]],
+            "contains_strings": tf_dict[line[4]],
+            "contains_brass": tf_dict[line[5]],
+            "only_strings": tf_dict[line[6]],
+            "only_winds": tf_dict[line[7]],
+            "only_brass": tf_dict[line[8]],
+            "composer": id_split[0],
+            "work": "-".join(id_split[1:-1]),
+            "excerpt": id_split[-1][2:],
         }
 
-    metadata_index['data_home'] = data_home
+    metadata_index["data_home"] = data_home
 
     return metadata_index
 
 
-DATA = utils.LargeData('orchset_index.json', _load_metadata)
+DATA = utils.LargeData("orchset_index.json", _load_metadata)
 
 
 class Track(object):
@@ -136,7 +136,7 @@ class Track(object):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))
+            raise ValueError("{} is not a valid track ID in Orchset".format(track_id))
 
         self.track_id = track_id
 
@@ -151,39 +151,39 @@ class Track(object):
             self._track_metadata = metadata[track_id]
         else:
             self._track_metadata = {
-                'predominant_melodic_instruments-raw': None,
-                'predominant_melodic_instruments-normalized': None,
-                'alternating_melody': None,
-                'contains_winds': None,
-                'contains_strings': None,
-                'contains_brass': None,
-                'only_strings': None,
-                'only_winds': None,
-                'only_brass': None,
-                'composer': None,
-                'work': None,
-                'excerpt': None,
+                "predominant_melodic_instruments-raw": None,
+                "predominant_melodic_instruments-normalized": None,
+                "alternating_melody": None,
+                "contains_winds": None,
+                "contains_strings": None,
+                "contains_brass": None,
+                "only_strings": None,
+                "only_winds": None,
+                "only_brass": None,
+                "composer": None,
+                "work": None,
+                "excerpt": None,
             }
 
         self.audio_path_mono = os.path.join(
-            self._data_home, self._track_paths['audio_mono'][0]
+            self._data_home, self._track_paths["audio_mono"][0]
         )
         self.audio_path_stereo = os.path.join(
-            self._data_home, self._track_paths['audio_stereo'][0]
+            self._data_home, self._track_paths["audio_stereo"][0]
         )
-        self.composer = self._track_metadata['composer']
-        self.work = self._track_metadata['work']
-        self.excerpt = self._track_metadata['excerpt']
+        self.composer = self._track_metadata["composer"]
+        self.work = self._track_metadata["work"]
+        self.excerpt = self._track_metadata["excerpt"]
         self.predominant_melodic_instruments = self._track_metadata[
-            'predominant_melodic_instruments-normalized'
+            "predominant_melodic_instruments-normalized"
         ]
-        self.alternating_melody = self._track_metadata['alternating_melody']
-        self.contains_winds = self._track_metadata['contains_winds']
-        self.contains_strings = self._track_metadata['contains_strings']
-        self.contains_brass = self._track_metadata['contains_brass']
-        self.only_strings = self._track_metadata['only_strings']
-        self.only_winds = self._track_metadata['only_winds']
-        self.only_brass = self._track_metadata['only_brass']
+        self.alternating_melody = self._track_metadata["alternating_melody"]
+        self.contains_winds = self._track_metadata["contains_winds"]
+        self.contains_strings = self._track_metadata["contains_strings"]
+        self.contains_brass = self._track_metadata["contains_brass"]
+        self.only_strings = self._track_metadata["only_strings"]
+        self.only_winds = self._track_metadata["only_winds"]
+        self.only_brass = self._track_metadata["only_brass"]
 
     def __repr__(self):
         repr_string = (
@@ -214,7 +214,7 @@ class Track(object):
     @utils.cached_property
     def melody(self):
         return _load_melody(
-            os.path.join(self._data_home, self._track_paths['melody'][0])
+            os.path.join(self._data_home, self._track_paths["melody"][0])
         )
 
     @property
@@ -248,8 +248,8 @@ def download(data_home=None, force_overwrite=False):
     )
 
     # files get downloaded to a folder called Orchset - move everything up a level
-    duplicated_orchset_dir = os.path.join(data_home, 'Orchset')
-    orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, '*'))
+    duplicated_orchset_dir = os.path.join(data_home, "Orchset")
+    orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, "*"))
 
     for fpath in orchset_files:
         shutil.move(fpath, data_home)
@@ -319,12 +319,12 @@ def _load_melody(melody_path):
     times = []
     freqs = []
     confidence = []
-    with open(melody_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(melody_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             times.append(float(line[0]))
             freqs.append(float(line[1]))
-            confidence.append(0.0 if line[1] == '0' else 1.0)
+            confidence.append(0.0 if line[1] == "0" else 1.0)
 
     melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
