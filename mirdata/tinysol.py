@@ -65,12 +65,12 @@ import mirdata.jams_utils as jams_utils
 DATASET_DIR = "TinySOL"
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
     filename="TinySOL.tar.gz",
-    url="https://zenodo.org/record/3633012/files/TinySOL.tar.gz?download=1",
-    checksum="68c0bb3a008d00de60b23dc2022d6c8f",
+    url="https://zenodo.org/record/3659365/files/TinySOL.tar.gz?download=1",
+    checksum="c1a8586d50ae4ccedbbf23d9a346a25f",
     destination_dir="audio",
 )
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
-    filename="https://zenodo.org/record/3633012/files/TinySOL_metadata.csv?download=1",
+    filename="TinySOL_metadata.csv",
     url="https://zenodo.org/record/3633012/files/TinySOL_metadata.csv?download=1",
     checksum="5cdfa8938d34b98534d6087c270f3ecf",
     destination_dir="annotation",
@@ -225,7 +225,11 @@ def download(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    download_utils.downloader(data_home, tar_downloads=[AUDIO_REMOTE], cleanup=True)
+    download_utils.downloader(
+        data_home,
+        tar_downloads=[AUDIO_REMOTE],
+        file_downloads=[ANNOTATION_REMOTE],
+        cleanup=True)
 
 
 def track_ids():
