@@ -229,7 +229,8 @@ def download(data_home=None):
         data_home,
         tar_downloads=[AUDIO_REMOTE],
         file_downloads=[ANNOTATION_REMOTE],
-        cleanup=True)
+        cleanup=True,
+    )
 
 
 def track_ids():
