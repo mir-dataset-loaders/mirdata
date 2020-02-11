@@ -62,13 +62,12 @@ def log_message(message, silence=False):
         print(message)
 
 
-def check_index(dataset_index, data_home, silence=False):
+def check_index(dataset_index, data_home):
     """check index to find out missing files and files with invalid checksum
 
     Args:
         dataset_index (list): dataset indices
         data_home (str): Local home path that the dataset is being stored
-        silence (bool)
 
     Returns:
         missing_files (list): List of file paths that are in the dataset index
@@ -103,7 +102,21 @@ def check_index(dataset_index, data_home, silence=False):
 
 
 def validator(dataset_index, data_home, silence=False):
-    """validate.. (todo: what does it do?) """
+    """logs missing files and files with invalid checksums in a dataset index.
+
+    Args:
+        dataset_index (list): dataset indices
+        data_home (str): Local home path that the dataset is being stored
+        silence (bool): if False (default), prints missing and invalid files
+        to stdout. Otherwise, this function is equivalent to check_index.
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally.
+        invalid_checksums (list): List of file paths that file exists in the
+            dataset index but has a different checksum compare to the reference
+            checksum.
+    """
     missing_files, invalid_checksums = check_index(dataset_index, data_home, silence)
 
     # print path of any missing files
