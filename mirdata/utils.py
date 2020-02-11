@@ -127,7 +127,6 @@ def validator(dataset_index, data_home, silence=False):
             for fpath in missing_files[track_id]:
                 log_message(fpath, silence)
             log_message('-' * 20, silence)
-        else:
             has_any_missing_file = True
 
     # print path of any invalid checksums
@@ -138,8 +137,7 @@ def validator(dataset_index, data_home, silence=False):
             for fpath in invalid_checksums[track_id]:
                 log_message(fpath, silence)
             log_message('-' * 20, silence)
-        else:
-            has_any_invalid_checksum = False
+            has_any_invalid_checksum = True
 
     if not (has_any_missing_file or has_any_invalid_checksum):
         log_message('Success: no missing files nor invalid checksums.', silence)
