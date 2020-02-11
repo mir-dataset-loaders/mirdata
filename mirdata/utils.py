@@ -107,20 +107,30 @@ def validator(dataset_index, data_home, silence=False):
     missing_files, invalid_checksums = check_index(dataset_index, data_home, silence)
 
     # print path of any missing files
+    has_any_missing_file = False
     for track_id in missing_files.keys():
         if len(missing_files[track_id]) > 0:
             log_message('Files missing for {}:'.format(track_id), silence)
             for fpath in missing_files[track_id]:
                 log_message(fpath, silence)
             log_message('-' * 20, silence)
+        else:
+            has_any_missing_file = True
 
     # print path of any invalid checksums
+    has_any_invalid_checksum = False
     for track_id in invalid_checksums.keys():
         if len(invalid_checksums[track_id]) > 0:
             log_message('Invalid checksums for {}:'.format(track_id), silence)
             for fpath in invalid_checksums[track_id]:
                 log_message(fpath, silence)
             log_message('-' * 20, silence)
+        else:
+            has_any_invalid_checksum = False
+
+    if not (has_any_missing_file or has_any_invalid_checksum):
+        log_message('Success: no missing files nor invalid checksums.', silence)
+        log_message('-' * 20, silence)
 
     return missing_files, invalid_checksums
 
