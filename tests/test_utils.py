@@ -87,12 +87,7 @@ def test_validator(mocker, mock_check_index, missing_files, invalid_checksums):
     m, c = utils.validator('foo', 'bar', True)
     assert m == missing_files
     assert c == invalid_checksums
-    mock_check_index.assert_called_once_with('foo', 'bar', True)
-
-    # if missing_files or invalid_checksums:
-    #     mock_create_invalid.assert_called_once_with(missing_files, invalid_checksums)
-    # else:
-    #     mock_create_validated.assert_called_once_with('baz')
+    mock_check_index.assert_called_once_with('foo', 'bar')
 
 
 def test_get_default_dataset_path():
