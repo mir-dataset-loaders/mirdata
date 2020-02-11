@@ -117,7 +117,7 @@ def validator(dataset_index, data_home, silence=False):
             dataset index but has a different checksum compare to the reference
             checksum.
     """
-    missing_files, invalid_checksums = check_index(dataset_index, data_home, silence)
+    missing_files, invalid_checksums = check_index(dataset_index, data_home)
 
     # print path of any missing files
     has_any_missing_file = False
