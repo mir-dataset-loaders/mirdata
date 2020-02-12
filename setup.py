@@ -1,16 +1,30 @@
 """ Setup script for mir_datasets. """
 from setuptools import setup, find_packages
 
+with open('README.md', 'r') as fdesc:
+    long_description = fdesc.read()
+
 if __name__ == '__main__':
     setup(
         name='mirdata',
         version='0.1.1',
-        description='Common loaders for MIR datasets.',
+        description='Data management utilities for reproducible research in music information retrieval (MIR).',
         url='https://github.com/mir-dataset-loaders/mirdata',
         packages=find_packages(exclude=['test', '*.test', '*.test.*']),
         download_url='http://github.com/mir-dataset-loaders/mirdata/releases',
         package_data={'mirdata': ['indexes/*']},
-        long_description="""Common loaders for MIR datasets.""",
+        long_description=long_description,
+        long_description_content_type='text/markdown',
+        classifiers=[
+            "License :: OSI Approved :: BSD License",
+            "Programming Language :: Python",
+            "Development Status :: 3 - Alpha",
+            "Intended Audience :: Science/Research",
+            "Topic :: Multimedia :: Sound/Audio :: Analysis",
+            "Programming Language :: Python :: 2.7",
+            "Programming Language :: Python :: 3.6",
+            "Programming Language :: Python :: 3.7",
+        ],
         keywords='mir dataset loader audio',
         license='BSD-3-Clause',
         install_requires=[
