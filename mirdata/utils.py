@@ -102,7 +102,9 @@ def check_index(dataset_index, data_home):
 
 
 def validator(dataset_index, data_home, silence=False):
-    """logs missing files and files with invalid checksums in a dataset index.
+    """Checks the existence and validity of files stored locally with
+    respect to the paths and file checksums stored in the reference index.
+    Logs invalid checksums and missing files.
 
     Args:
         dataset_index (list): dataset indices
