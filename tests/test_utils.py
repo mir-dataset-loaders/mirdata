@@ -67,8 +67,7 @@ def test_check_index(test_index, expected_missing, expected_inv_checksum):
         test_index = json.load(index_file)
 
     missing_files, invalid_checksums = utils.check_index(
-        test_index, 'tests/resources/', True
-    )
+        test_index, 'tests/resources/')
 
     assert expected_missing == missing_files
     assert expected_inv_checksum == invalid_checksums
@@ -79,6 +78,7 @@ def test_check_index(test_index, expected_missing, expected_inv_checksum):
     [
         ({'10161_chorus': ['tests/resources/10162_chorus.wav']}, {}),
         ({}, {'10161_chorus': ['tests/resources/10161_chorus.wav']}),
+        ({}, {}),
     ],
 )
 def test_validator(mocker, mock_check_index, missing_files, invalid_checksums):
@@ -87,12 +87,7 @@ def test_validator(mocker, mock_check_index, missing_files, invalid_checksums):
     m, c = utils.validator('foo', 'bar', True)
     assert m == missing_files
     assert c == invalid_checksums
-    mock_check_index.assert_called_once_with('foo', 'bar', True)
-
-    # if missing_files or invalid_checksums:
-    #     mock_create_invalid.assert_called_once_with(missing_files, invalid_checksums)
-    # else:
-    #     mock_create_validated.assert_called_once_with('baz')
+    mock_check_index.assert_called_once_with('foo', 'bar')
 
 
 def test_get_default_dataset_path():
