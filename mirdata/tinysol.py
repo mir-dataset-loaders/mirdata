@@ -103,9 +103,9 @@ def _load_metadata(data_home):
                 "Dynamics": row[9],
                 "Dynamics ID": int(row[10]),
                 "Instance ID": int(row[11]),
-                "Resampled": (row[13]=="TRUE"),
+                "Resampled": (row[13] == "TRUE"),
             }
-            if len(row[12])>0:
+            if len(row[12]) > 0:
                 metadata_index[key]["String ID"] = int(float(row[12]))
 
     metadata_index["data_home"] = data_home
@@ -172,7 +172,8 @@ class Track(object):
             }
 
         self.audio_path = os.path.join(
-            self._data_home, "audio", self._track_paths["audio"][0])
+            self._data_home, "audio", self._track_paths["audio"][0]
+        )
 
         self.family = self._track_metadata["Family"]
         self.instrument_abbr = self._track_metadata["Instrument (abbr.)"]
