@@ -106,7 +106,7 @@ def _load_metadata(data_home):
                 "Resampled": row[-1],
             }
             if len(row) == 14:
-                metadata_index[row[0]]["String ID"] = row[-2]
+                metadata_index[key]["String ID"] = row[-2]
 
     metadata_index["data_home"] = data_home
 
