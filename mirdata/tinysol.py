@@ -65,13 +65,13 @@ import mirdata.jams_utils as jams_utils
 DATASET_DIR = "TinySOL"
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
     filename="TinySOL.tar.gz",
-    url="https://zenodo.org/record/3685331/files/TinySOL.tar.gz?download=1",
-    checksum="1d8c04ab80842cf186313bd8e468452e",
+    url="https://zenodo.org/record/3685367/files/TinySOL.tar.gz?download=1",
+    checksum="36030a7fe389da86c3419e5ee48e3b7f",
     destination_dir="audio",
 )
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename="TinySOL_metadata.csv",
-    url="https://zenodo.org/record/3685331/files/TinySOL_metadata.csv?download=1",
+    url="https://zenodo.org/record/3685367/files/TinySOL_metadata.csv?download=1",
     checksum="a86c9bb115f69e61f2f25872e397fc4a",
     destination_dir="annotation",
 )
