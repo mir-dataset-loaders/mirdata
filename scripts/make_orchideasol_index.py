@@ -33,9 +33,9 @@ def make_orchideasol_index(orchideasol_data_path):
     orchideasol_index = {}
 
     anno_path = os.path.join(
-        orchideasol_data_path, "annotation", "OrchideaSOL_metadata.csv")
-    audio_dir = os.path.join(
-        orchideasol_data_path, "audio")
+        orchideasol_data_path, "annotation", "OrchideaSOL_metadata.csv"
+    )
+    audio_dir = os.path.join(orchideasol_data_path, "audio")
 
     with open(anno_path, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)

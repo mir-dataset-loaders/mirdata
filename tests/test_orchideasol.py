@@ -35,9 +35,7 @@ def test_track():
 
     # test with a string instrument
     track = tinysol.Track('Cb+S-trem-A2-mf-1c-N', data_home=data_home)
-    repr_string = (
-        'TinySOL Track(instrument=Contrabass, mute=sordina, technique=tremolo, pitch=A2, dynamics=mf)'
-    )
+    repr_string = 'TinySOL Track(instrument=Contrabass, mute=sordina, technique=tremolo, pitch=A2, dynamics=mf)'
     assert track.__repr__() == repr_string
 
 

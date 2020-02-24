@@ -131,7 +131,9 @@ class Track(object):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError("{} is not a valid track ID in OrchideaSOL".format(track_id))
+            raise ValueError(
+                "{} is not a valid track ID in OrchideaSOL".format(track_id)
+            )
 
         self.track_id = track_id
 
@@ -191,12 +193,9 @@ class Track(object):
     def __repr__(self):
 
         repr_string = (
-            "OrchideaSOL Track(" + "={}, ".format(
-                "instrument",
-                "mute",
-                "technique",
-                "pitch",
-                "dynamics") + "={}"
+            "OrchideaSOL Track("
+            + "={}, ".format("instrument", "mute", "technique", "pitch", "dynamics")
+            + "={}"
         ).format(
             self.instrument_full,
             self.mute_full,
