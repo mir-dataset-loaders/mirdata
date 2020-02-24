@@ -13,7 +13,7 @@ from tests.test_download_utils import mock_downloader
 
 def test_track():
     # test data home None
-    track_default = tinysol.Track('Fl-ord-C4-mf-N')
+    track_default = tinysol.Track('Fl-ord-C4-mf-N-T14d')
     assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'TinySOL')
 
     # test with custom data_home
@@ -24,8 +24,8 @@ def test_track():
         tinysol.Track('asdfasdf', data_home=data_home)
 
     # test with a wind instrument
-    track = tinysol.Track('Fl-ord-C4-mf-N', data_home=data_home)
-    assert track.track_id == 'Fl-ord-C4-mf-N'
+    track = tinysol.Track('Fl-ord-C4-mf-N-T14d', data_home=data_home)
+    assert track.track_id == 'Fl-ord-C4-mf-N-T14d'
     assert track._data_home == data_home
     y, sr = track.audio
     assert y.shape == (135059,)
@@ -34,9 +34,9 @@ def test_track():
     assert track.__repr__() == repr_string
 
     # test with a string instrument
-    track = tinysol.Track('Cb-ord-A2-mf-3cR', data_home=data_home)
+    track = tinysol.Track('Cb-ord-A2-mf-2c-N', data_home=data_home)
     repr_string = (
-        'TinySOL Track(instrument=Contrabass, pitch=A2, ' + 'dynamics=mf, string=III)'
+        'TinySOL Track(instrument=Contrabass, pitch=A2, ' + 'dynamics=mf, string=II)'
     )
     assert track.__repr__() == repr_string
 
@@ -45,7 +45,7 @@ def test_to_jams():
     data_home = 'tests/resources/mir_datasets/TinySOL'
 
     # Case with a wind instrument (no string_id)
-    track = tinysol.Track('Fl-ord-C4-mf-N', data_home=data_home)
+    track = tinysol.Track('Fl-ord-C4-mf-N-T14d', data_home=data_home)
     jam = track.to_jams()
 
     assert jam['sandbox']['Fold'] == 2
@@ -58,11 +58,11 @@ def test_to_jams():
     assert jam['sandbox']['Pitch ID'] == 60
     assert jam['sandbox']['Dynamics'] == 'mf'
     assert jam['sandbox']['Dynamics ID'] == 2
-    assert not jam['sandbox']['Resampled']
+    assert jam['sandbox']['Resampled']
     assert 'String ID' not in jam['sandbox']
 
     # Case with a string instrument
-    track = tinysol.Track('Cb-ord-A2-mf-3cR', data_home=data_home)
+    track = tinysol.Track('Cb-ord-A2-mf-2c-N', data_home=data_home)
     jam = track.to_jams()
 
     assert jam['sandbox']['Fold'] == 3
@@ -75,25 +75,25 @@ def test_to_jams():
     assert jam['sandbox']['Pitch ID'] == 45
     assert jam['sandbox']['Dynamics'] == 'mf'
     assert jam['sandbox']['Dynamics ID'] == 2
-    assert jam['sandbox']['Resampled']
-    assert jam['sandbox']['String ID'] == 3
+    assert not jam['sandbox']['Resampled']
+    assert jam['sandbox']['String ID'] == 2
 
 
 def test_track_ids():
     track_ids = tinysol.track_ids()
     assert type(track_ids) is list
-    assert len(track_ids) == 2478
+    assert len(track_ids) == 2913
 
 
 def test_load():
     data_home = 'tests/resources/mir_datasets/TinySOL'
     tinysol_data = tinysol.load(data_home=data_home)
     assert type(tinysol_data) is dict
-    assert len(tinysol_data.keys()) == 2478
+    assert len(tinysol_data.keys()) == 2913
 
     tinysol_data = tinysol.load()
     assert type(tinysol_data) is dict
-    assert len(tinysol_data.keys()) == 2478
+    assert len(tinysol_data.keys()) == 2913
 
 
 def test_download(mock_downloader):
