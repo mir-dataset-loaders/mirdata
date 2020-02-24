@@ -90,7 +90,8 @@ def _load_metadata(data_home):
         csv_reader = csv.reader(fhandle, delimiter=",")
         next(csv_reader)
         for row in csv_reader:
-            metadata_index[row[0]] = {
+            key = os.path.splitext(os.path.split(row[0])[1])[0]
+            metadata_index[key] = {
                 "Fold": row[1],
                 "Family": row[2],
                 "Instrument (abbr.)": row[3],
