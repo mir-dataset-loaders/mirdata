@@ -106,6 +106,15 @@ mirdata.salami
    :show-inheritance:
 
 
+mirdata.tinysol
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.tinysol
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 mirdata.dali
 ^^^^^^^^^^^^^^^
 
