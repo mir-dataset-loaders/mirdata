@@ -28,7 +28,7 @@ def test_track():
     assert track.track_id == 'Fl-ord-C4-mf-N-T14d'
     assert track._data_home == data_home
     y, sr = track.audio
-    assert y.shape == (135059,)
+    assert y.shape == (136209,)
     assert sr == 22050
     repr_string = 'TinySOL Track(instrument=Flute, pitch=C4, dynamics=mf)'
     assert track.__repr__() == repr_string
@@ -48,7 +48,7 @@ def test_to_jams():
     track = tinysol.Track('Fl-ord-C4-mf-N-T14d', data_home=data_home)
     jam = track.to_jams()
 
-    assert jam['sandbox']['Fold'] == 2
+    assert jam['sandbox']['Fold'] == 0
     assert jam['sandbox']['Family'] == 'Winds'
     assert jam['sandbox']['Instrument (abbr.)'] == 'Fl'
     assert jam['sandbox']['Instrument (in full)'] == 'Flute'
@@ -58,14 +58,15 @@ def test_to_jams():
     assert jam['sandbox']['Pitch ID'] == 60
     assert jam['sandbox']['Dynamics'] == 'mf'
     assert jam['sandbox']['Dynamics ID'] == 2
-    assert jam['sandbox']['Resampled']
+    assert jam['sandbox']['Instance ID'] == 0
     assert 'String ID' not in jam['sandbox']
+    assert jam['sandbox']['Resampled']
 
     # Case with a string instrument
     track = tinysol.Track('Cb-ord-A2-mf-2c-N', data_home=data_home)
     jam = track.to_jams()
 
-    assert jam['sandbox']['Fold'] == 3
+    assert jam['sandbox']['Fold'] == 4
     assert jam['sandbox']['Family'] == 'Strings'
     assert jam['sandbox']['Instrument (abbr.)'] == 'Cb'
     assert jam['sandbox']['Instrument (in full)'] == 'Contrabass'
@@ -75,8 +76,9 @@ def test_to_jams():
     assert jam['sandbox']['Pitch ID'] == 45
     assert jam['sandbox']['Dynamics'] == 'mf'
     assert jam['sandbox']['Dynamics ID'] == 2
-    assert not jam['sandbox']['Resampled']
+    assert jam['sandbox']['Instance ID'] == 1
     assert jam['sandbox']['String ID'] == 2
+    assert not jam['sandbox']['Resampled']
 
 
 def test_track_ids():

@@ -92,21 +92,21 @@ def _load_metadata(data_home):
         for row in csv_reader:
             key = os.path.splitext(os.path.split(row[0])[1])[0]
             metadata_index[key] = {
-                "Fold": row[1],
+                "Fold": int(row[1]),
                 "Family": row[2],
                 "Instrument (abbr.)": row[3],
                 "Instrument (in full)": row[4],
                 "Technique (abbr.)": row[5],
                 "Technique (in full)": row[6],
                 "Pitch": row[7],
-                "Pitch ID": row[8],
+                "Pitch ID": int(row[8]),
                 "Dynamics": row[9],
-                "Dynamics ID": row[10],
-                "Instance ID": row[11],
-                "Resampled": row[-1],
+                "Dynamics ID": int(row[10]),
+                "Instance ID": int(row[11]),
+                "Resampled": bool(row[-1]),
             }
             if len(row) == 14:
-                metadata_index[key]["String ID"] = row[-2]
+                metadata_index[key]["String ID"] = int(row[-2])
 
     metadata_index["data_home"] = data_home
 
