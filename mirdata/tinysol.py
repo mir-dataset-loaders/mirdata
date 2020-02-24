@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """TinySOL Dataset Loader.
 
-TinySOL is a dataset of 2478 samples, each containing a single musical note from one of 14 different instruments:
+TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14 different instruments:
 
     Bass Tuba
     French Horn
@@ -65,14 +65,14 @@ import mirdata.jams_utils as jams_utils
 DATASET_DIR = "TinySOL"
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
     filename="TinySOL.tar.gz",
-    url="https://zenodo.org/record/3659365/files/TinySOL.tar.gz?download=1",
-    checksum="c1a8586d50ae4ccedbbf23d9a346a25f",
+    url="https://zenodo.org/record/3685331/files/TinySOL.tar.gz?download=1",
+    checksum="1d8c04ab80842cf186313bd8e468452e",
     destination_dir="audio",
 )
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
-    filename="TinySOL_metadata.csv",
-    url="https://zenodo.org/record/3633012/files/TinySOL_metadata.csv?download=1",
-    checksum="5cdfa8938d34b98534d6087c270f3ecf",
+    filename="https://zenodo.org/record/3685331/files/TinySOL_metadata.csv?download=1",
+    url="https://zenodo.org/record/3685331/files/TinySOL_metadata.csv?download=1",
+    checksum="a86c9bb115f69e61f2f25872e397fc4a",
     destination_dir="annotation",
 )
 STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
@@ -90,23 +90,22 @@ def _load_metadata(data_home):
         csv_reader = csv.reader(fhandle, delimiter=",")
         next(csv_reader)
         for row in csv_reader:
-            key = os.path.splitext(os.path.split(row[0])[1])[0]
-            metadata_index[key] = {
-                "Path": row[0],
-                "Fold": int(row[1]),
+            metadata_index[row[0]] = {
+                "Fold": row[1],
                 "Family": row[2],
                 "Instrument (abbr.)": row[3],
                 "Instrument (in full)": row[4],
                 "Technique (abbr.)": row[5],
                 "Technique (in full)": row[6],
                 "Pitch": row[7],
-                "Pitch ID": int(row[8]),
+                "Pitch ID": row[8],
                 "Dynamics": row[9],
-                "Dynamics ID": int(row[10]),
-                "Resampled": (row[11] == "True"),
+                "Dynamics ID": row[10],
+                "Instance ID": row[11],
+                "Resampled": row[-1],
             }
-            if not row[12] == "":
-                metadata_index[key]["String ID"] = int(row[12])
+            if len(row) == 14:
+                metadata_index[row[0]]["String ID"] = row[-2]
 
     metadata_index["data_home"] = data_home
 
@@ -135,6 +134,7 @@ class Track(object):
         dynamics (str): dynamics abbreviation. Ex: pp, mf, ff, etc.
         dynamics_id (int): pp=0, p=1, mf=2, f=3, ff=4
         is_resampled (bool): True if this sample was pitch-shifted from a neighbor; False if it was genuinely recorded.
+        instance_id (int): instance ID. Either equal to 0, 1, 2, or 3.
         string_id (int or None): string ID. By musical convention, the first
         string is the highest. On wind instruments, this is replaced by `None`.
     """
@@ -165,13 +165,12 @@ class Track(object):
                 "Pitch ID": None,
                 "Dynamics": None,
                 "Dynamics ID": None,
-                "Resampled": None,
+                "Instance ID": None,
                 "String ID": None,
+                "Resampled": None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, "audio", self._track_paths["audio"][0]
-        )
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
         self.family = self._track_metadata["Family"]
         self.instrument_abbr = self._track_metadata["Instrument (abbr.)"]
@@ -182,11 +181,12 @@ class Track(object):
         self.pitch_id = self._track_metadata["Pitch ID"]
         self.dynamics = self._track_metadata["Dynamics"]
         self.dynamics_id = self._track_metadata["Dynamics ID"]
-        self.is_resampled = self._track_metadata["Resampled"]
+        self.instance_id = self._track_metadata["Instance ID"]
         if "String ID" in self._track_metadata:
             self.string_id = self._track_metadata["String ID"]
         else:
             self.string_id = None
+        self.is_resampled = self._track_metadata["Resampled"]
 
     def __repr__(self):
 
