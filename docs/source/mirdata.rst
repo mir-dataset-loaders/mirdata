@@ -56,6 +56,15 @@ mirdata.medley_solos_db
    :show-inheritance:
 
 
+mirdata.orchideasol
+^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.orchideasol
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+
 mirdata.orchset
 ^^^^^^^^^^^^^^^
 

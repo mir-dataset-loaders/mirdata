@@ -9,6 +9,7 @@ from . import ikala
 from . import medleydb_melody
 from . import medleydb_pitch
 from . import medley_solos_db
+from . import orchideasol
 from . import orchset
 from . import rwc_classical
 from . import rwc_genre
