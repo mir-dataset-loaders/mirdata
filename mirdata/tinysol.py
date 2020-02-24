@@ -103,10 +103,10 @@ def _load_metadata(data_home):
                 "Dynamics": row[9],
                 "Dynamics ID": int(row[10]),
                 "Instance ID": int(row[11]),
-                "Resampled": bool(row[-1]),
+                "Resampled": bool(row[13]),
             }
-            if len(row) == 14:
-                metadata_index[key]["String ID"] = int(float(row[-2]))
+            if len(row[12])>0:
+                metadata_index[key]["String ID"] = int(float(row[12]))
 
     metadata_index["data_home"] = data_home
 
