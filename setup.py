@@ -37,7 +37,6 @@ if __name__ == '__main__':
             'six',
             'jams',
             'requests',
-            'h5py',
             'tables',
         ],
         extras_require={
