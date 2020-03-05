@@ -152,6 +152,8 @@ NoteData = namedtuple('NoteData', ['start_times', 'end_times', 'notes', 'confide
 
 F0Data = namedtuple('F0Data', ['times', 'frequencies', 'confidence'])
 
+MultipitchData = namedtuple('MultipitchData', ['times', 'frequency_list', 'confidence_list'])
+
 LyricData = namedtuple(
     'LyricData', ['start_times', 'end_times', 'lyrics', 'pronunciations']
 )
