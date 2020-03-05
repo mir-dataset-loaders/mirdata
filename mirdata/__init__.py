@@ -4,6 +4,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+from .version import version as __version__
+
 from . import beatles
 from . import ikala
 from . import medleydb_melody
