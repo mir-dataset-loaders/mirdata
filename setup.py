@@ -1,5 +1,5 @@
 """ Setup script for mir_datasets. """
-import importlib
+from importlib.machinery import SourceFileLoader
 from setuptools import setup, find_packages
 
 version_sfl = SourceFileLoader('mirdata.version', '../mirdata/version.py')
