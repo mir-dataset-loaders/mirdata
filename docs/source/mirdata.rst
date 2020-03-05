@@ -14,10 +14,26 @@ mirdata.beatles
 .. automodule:: mirdata.beatles
    :members:
 
+mirdata.dali
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.dali
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 mirdata.guitarset
 ^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.guitarset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mirdata.gtzan_genre
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.gtzan_genre
    :members:
    :undoc-members:
    :show-inheritance:
@@ -93,24 +109,6 @@ mirdata.salami
 ^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.salami
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-mirdata.dali
-^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.dali
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-mirdata.gtzan_genre
-^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.gtzan_genre
    :members:
    :undoc-members:
    :show-inheritance:
