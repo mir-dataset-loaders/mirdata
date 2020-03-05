@@ -11,7 +11,6 @@ from . import medleydb_pitch
 from . import medley_solos_db
 from . import orchset
 from . import rwc_classical
-from . import rwc_genre
 from . import rwc_jazz
 from . import rwc_popular
 from . import salami

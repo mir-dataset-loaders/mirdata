@@ -72,14 +72,6 @@ mirdata.rwc_classical
    :undoc-members:
    :show-inheritance:
 
-mirdata.rwc_genre
-^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.rwc_genre
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 mirdata.rwc_jazz
 ^^^^^^^^^^^^^^^
 
