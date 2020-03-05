@@ -158,10 +158,7 @@ class Track(object):
     def to_jams(self):
         # jams does not support multipitch, so we skip melody3
         return jams_utils.jams_converter(
-            f0_data=[
-                (self.melody1, 'melody1'),
-                (self.melody2, 'melody2'),
-            ],
+            f0_data=[(self.melody1, 'melody1'), (self.melody2, 'melody2')],
             metadata=self._track_metadata,
         )
 

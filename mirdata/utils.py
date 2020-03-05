@@ -142,7 +142,9 @@ def validator(dataset_index, data_home, silence=False):
             has_any_invalid_checksum = True
 
     if not (has_any_missing_file or has_any_invalid_checksum):
-        log_message('Success: the dataset is complete and all files are valid.', silence)
+        log_message(
+            'Success: the dataset is complete and all files are valid.', silence
+        )
         log_message('-' * 20, silence)
 
     return missing_files, invalid_checksums
@@ -152,7 +154,9 @@ NoteData = namedtuple('NoteData', ['start_times', 'end_times', 'notes', 'confide
 
 F0Data = namedtuple('F0Data', ['times', 'frequencies', 'confidence'])
 
-MultipitchData = namedtuple('MultipitchData', ['times', 'frequency_list', 'confidence_list'])
+MultipitchData = namedtuple(
+    'MultipitchData', ['times', 'frequency_list', 'confidence_list']
+)
 
 LyricData = namedtuple(
     'LyricData', ['start_times', 'end_times', 'lyrics', 'pronunciations']
