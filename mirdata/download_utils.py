@@ -15,7 +15,6 @@ import tarfile
 import urllib
 import zipfile
 from tqdm import tqdm
-import sys
 
 from mirdata.utils import md5
 
