@@ -154,7 +154,7 @@ def test_load_beats():
         'tests/resources/mir_datasets/Beatles/annotations/beat/'
         + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt'
     )
-    beat_data = beatles._load_beats(beats_path)
+    beat_data = beatles.load_beats(beats_path)
 
     assert type(beat_data) == utils.BeatData
     assert type(beat_data.beat_times) == np.ndarray
@@ -167,7 +167,7 @@ def test_load_beats():
     assert np.array_equal(beat_data.beat_positions, np.array([2, 3, 4, 1, 2, 3, 4]))
 
     # load a file which doesn't exist
-    beat_none = beatles._load_beats('fake/file/path')
+    beat_none = beatles.load_beats('fake/file/path')
     assert beat_none is None
 
 
@@ -176,7 +176,7 @@ def test_load_chords():
         'tests/resources/mir_datasets/Beatles/annotations/chordlab/'
         + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
     )
-    chord_data = beatles._load_chords(chords_path)
+    chord_data = beatles.load_chords(chords_path)
 
     assert type(chord_data) == utils.ChordData
     assert type(chord_data.intervals) == np.ndarray
@@ -191,7 +191,7 @@ def test_load_chords():
     assert np.array_equal(chord_data.labels, np.array(['N', 'E:min', 'G']))
 
     # load a file which doesn't exist
-    chord_none = beatles._load_chords('fake/file/path')
+    chord_none = beatles.load_chords('fake/file/path')
     assert chord_none is None
 
 
@@ -200,7 +200,7 @@ def test_load_key():
         'tests/resources/mir_datasets/Beatles/annotations/keylab/'
         + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
     )
-    key_data = beatles._load_key(key_path)
+    key_data = beatles.load_key(key_path)
 
     assert type(key_data) == utils.KeyData
     assert type(key_data.start_times) == np.ndarray
@@ -210,7 +210,7 @@ def test_load_key():
     assert np.array_equal(key_data.keys, np.array(['E']))
 
     # load a file which doesn't exist
-    key_none = beatles._load_key('fake/file/path')
+    key_none = beatles.load_key('fake/file/path')
     assert key_none is None
 
 
@@ -219,7 +219,7 @@ def test_load_sections():
         'tests/resources/mir_datasets/Beatles/annotations/seglab/'
         + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
     )
-    section_data = beatles._load_sections(sections_path)
+    section_data = beatles.load_sections(sections_path)
 
     assert type(section_data) == utils.SectionData
     assert type(section_data.intervals) == np.ndarray
@@ -230,7 +230,7 @@ def test_load_sections():
     assert np.array_equal(section_data.labels, np.array(['silence', 'intro']))
 
     # load a file which doesn't exist
-    section_none = beatles._load_sections('fake/file/path')
+    section_none = beatles.load_sections('fake/file/path')
     assert section_none is None
 
 
