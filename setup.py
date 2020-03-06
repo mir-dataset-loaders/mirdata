@@ -7,8 +7,8 @@ with open('README.md', 'r') as fdesc:
 if __name__ == '__main__':
     setup(
         name='mirdata',
-        version='0.1.1',
-        description='Data management utilities for reproducible research in music information retrieval (MIR).',
+        version='0.2.dev0',
+        description='Common loaders for MIR datasets.',
         url='https://github.com/mir-dataset-loaders/mirdata',
         packages=find_packages(exclude=['test', '*.test', '*.test.*']),
         download_url='http://github.com/mir-dataset-loaders/mirdata/releases',

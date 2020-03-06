@@ -62,13 +62,12 @@ def log_message(message, silence=False):
         print(message)
 
 
-def check_index(dataset_index, data_home, silence=False):
+def check_index(dataset_index, data_home):
     """check index to find out missing files and files with invalid checksum
 
     Args:
         dataset_index (list): dataset indices
         data_home (str): Local home path that the dataset is being stored
-        silence (bool)
 
     Returns:
         missing_files (list): List of file paths that are in the dataset index
@@ -103,24 +102,48 @@ def check_index(dataset_index, data_home, silence=False):
 
 
 def validator(dataset_index, data_home, silence=False):
-    """validate.. (todo: what does it do?) """
-    missing_files, invalid_checksums = check_index(dataset_index, data_home, silence)
+    """Checks the existence and validity of files stored locally with
+    respect to the paths and file checksums stored in the reference index.
+    Logs invalid checksums and missing files.
+
+    Args:
+        dataset_index (list): dataset indices
+        data_home (str): Local home path that the dataset is being stored
+        silence (bool): if False (default), prints missing and invalid files
+        to stdout. Otherwise, this function is equivalent to check_index.
+
+    Returns:
+        missing_files (list): List of file paths that are in the dataset index
+            but missing locally.
+        invalid_checksums (list): List of file paths that file exists in the
+            dataset index but has a different checksum compare to the reference
+            checksum.
+    """
+    missing_files, invalid_checksums = check_index(dataset_index, data_home)
 
     # print path of any missing files
+    has_any_missing_file = False
     for track_id in missing_files.keys():
         if len(missing_files[track_id]) > 0:
             log_message('Files missing for {}:'.format(track_id), silence)
             for fpath in missing_files[track_id]:
                 log_message(fpath, silence)
             log_message('-' * 20, silence)
+            has_any_missing_file = True
 
     # print path of any invalid checksums
+    has_any_invalid_checksum = False
     for track_id in invalid_checksums.keys():
         if len(invalid_checksums[track_id]) > 0:
             log_message('Invalid checksums for {}:'.format(track_id), silence)
             for fpath in invalid_checksums[track_id]:
                 log_message(fpath, silence)
             log_message('-' * 20, silence)
+            has_any_invalid_checksum = True
+
+    if not (has_any_missing_file or has_any_invalid_checksum):
+        log_message('Success: the dataset is complete and all files are valid.', silence)
+        log_message('-' * 20, silence)
 
     return missing_files, invalid_checksums
 
