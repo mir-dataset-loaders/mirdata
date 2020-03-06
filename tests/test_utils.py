@@ -66,8 +66,7 @@ def test_check_index(test_index, expected_missing, expected_inv_checksum):
     with open(index_path) as index_file:
         test_index = json.load(index_file)
 
-    missing_files, invalid_checksums = utils.check_index(
-        test_index, 'tests/resources/')
+    missing_files, invalid_checksums = utils.check_index(test_index, 'tests/resources/')
 
     assert expected_missing == missing_files
     assert expected_inv_checksum == invalid_checksums

@@ -14,6 +14,7 @@ mirdata.beatles
 .. automodule:: mirdata.beatles
    :members:
 
+
 mirdata.dali
 ^^^^^^^^^^^^^^^
 
@@ -21,6 +22,7 @@ mirdata.dali
    :members:
    :undoc-members:
    :show-inheritance:
+
 
 mirdata.guitarset
 ^^^^^^^^^^^^^^^
@@ -37,6 +39,7 @@ mirdata.gtzan_genre
    :members:
    :undoc-members:
    :show-inheritance:
+   
 
 mirdata.ikala
 ^^^^^^^^^^^^^^^
@@ -112,6 +115,16 @@ mirdata.salami
    :members:
    :undoc-members:
    :show-inheritance:
+   
+   
+mirdata.tinysol
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.tinysol
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   
 
 Utilities
 ----------
