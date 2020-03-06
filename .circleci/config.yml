@@ -2,23 +2,6 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.4
 jobs:
-  buildpy27:
-    docker:
-      - image: python:2.7
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3 ffmpeg
-      - run:
-          name: Install tox
-          command: pip install tox
-      - run:
-          name: Run tests
-          command: tox -e py27
-      - codecov/upload:
-          file: coverage.xml
-          conf: .codecov.yml
   buildpy36:
     docker:
       - image: python:3.6
@@ -74,7 +57,6 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - buildpy27
       - buildpy36
       - buildpy37
       - black
