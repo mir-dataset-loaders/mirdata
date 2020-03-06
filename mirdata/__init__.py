@@ -6,6 +6,7 @@ from __future__ import print_function
 
 from .version import version as __version__
 
+<<<<<<< HEAD
 __all__ = [
     'beatles',
     'dali',
@@ -20,6 +21,7 @@ __all__ = [
     'rwc_jazz',
     'rwc_classical',
     'salami',
+    'tinysol',
 ]
 
 from . import *
