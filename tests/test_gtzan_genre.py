@@ -10,7 +10,6 @@ import pytest
 
 from mirdata import gtzan_genre
 from tests.test_utils import DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
 
 TEST_DATA_HOME = "tests/resources/mir_datasets/GTZAN-Genre"
 
@@ -35,34 +34,6 @@ def test_load_track():
     assert track.audio()[0].shape == (663300,)
 
 
-def test_load():
-    data = gtzan_genre.load(data_home=TEST_DATA_HOME)
-    assert len(data) == 1000
-    key, track = list(sorted(data.items()))[0]
-    assert key == "blues.00000"
-    assert track.genre == "blues"
-
-
-def test_validate():
-    missing_files, invalid_checksums = gtzan_genre.validate(
-        data_home=TEST_DATA_HOME, silence=True
-    )
-
-    assert len(missing_files) == 999
-    assert len(invalid_checksums) == 0
-
-
-def test_download(mock_downloader):
-    gtzan_genre.download()
-    mock_downloader.assert_called()
-
-
 def test_repr():
     track = gtzan_genre.Track("country.00000", data_home=TEST_DATA_HOME)
     assert str(track) == "GTZAN-Genre Track(track_id='country.00000', genre='country')"
-
-
-def test_cite(capsys):
-    gtzan_genre.cite()
-    captured = capsys.readouterr()
-    assert "Tzanetakis, George" in captured.out

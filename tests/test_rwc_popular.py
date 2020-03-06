@@ -7,7 +7,6 @@ import pytest
 
 from mirdata import rwc_popular, utils
 from tests.test_utils import DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
 
 
 def test_track():
@@ -153,23 +152,6 @@ def test_to_jams():
     assert jam['file_metadata']['artist'] == 'Kazuo Nishi'
 
 
-def test_track_ids():
-    track_ids = rwc_popular.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 100
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/RWC-Popular'
-    rwc_popular_data = rwc_popular.load(data_home=data_home)
-    assert type(rwc_popular_data) is dict
-    assert len(rwc_popular_data.keys()) == 100
-
-    rwc_popular_data_default = rwc_popular.load()
-    assert type(rwc_popular_data_default) is dict
-    assert len(rwc_popular_data_default.keys()) == 100
-
-
 def test_load_chords():
     chords_path = (
         'tests/resources/mir_datasets/RWC-Popular/'
@@ -273,17 +255,3 @@ def test_load_metadata():
 
     metadata_none = rwc_popular._load_metadata('asdf/asdf')
     assert metadata_none is None
-
-
-def test_download(mock_downloader):
-    rwc_popular.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    rwc_popular.validate()
-    rwc_popular.validate(silence=True)
-
-
-def test_cite():
-    rwc_popular.cite()
