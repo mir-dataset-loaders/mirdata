@@ -1,6 +1,19 @@
 #!/bin/bash -eux
 
-MSD_FOLDER=/msd
+# Description:
+#
+# make_msd_index.sh picks a (deterministically) random 10,000
+# tracks from the Million Song Dataset and computes MD5 hashes.
+
+# Usage:
+#
+# ./make_msd_index.sh <msd_folder>
+
+# Dependencies:
+#
+# * jq (installation instructions: https://stedolan.github.io/jq/download/)
+
+MSD_FOLDER=$1
 
 get_seeded_random() {
   seed="$1"
