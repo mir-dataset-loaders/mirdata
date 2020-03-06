@@ -55,7 +55,9 @@ def make_medley_solos_db_index(medley_solos_db_data_path):
             )
             audio_path = os.path.join(medley_solos_db_data_path, wav_name)
             audio_checksum = md5(audio_path)
-            medley_solos_db_index[uuid4] = {"audio": (wav_name, audio_checksum)}
+            medley_solos_db_index[uuid4] = {
+                "audio": (wav_name, audio_checksum),
+            }
 
     with open(MEDLEY_SOLOS_DB_INDEX_PATH, 'w') as fhandle:
         json.dump(medley_solos_db_index, fhandle, indent=2)

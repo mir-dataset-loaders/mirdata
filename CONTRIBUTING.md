@@ -5,7 +5,7 @@
 First, check out the repository from Github. (That's `git clone git@github.com:mir-dataset-loaders/mirdata.git`)
 
 Then, install [pyenv](https://github.com/pyenv/pyenv#installation) to manage your Python versions.
-You'll want to install Python 2.7.11, and the latest versions of Python 3.6 and 3.7
+You'll want to install the latest versions of Python 3.6 and 3.7
 
 Once pyenv and the three versions of Python are installed, install [tox](https://tox.readthedocs.io/en/latest/), our test runner.
 
