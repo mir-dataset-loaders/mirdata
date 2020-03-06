@@ -265,8 +265,8 @@ def notes_to_jams(notes):
     -------
     jannot_notes: JAM note_midi annotation object.
     '''
-    jannot_chord = jams.Annotation(namespace='note_midi')
-    jannot_chord.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_note = jams.Annotation(namespace='note_hz')
+    jannot_note.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if notes[0] is not None:
         if type(notes[0]) != utils.NoteData:
             raise TypeError('Type should be NoteData.')
@@ -274,9 +274,9 @@ def notes_to_jams(notes):
             notes[0].intervals[:, 0], notes[0].intervals[:, 1], notes[0].labels
         ):
             jannot_chord.append(time=beg, duration=end - beg, value=n)
-    if chords[1] is not None:
-        jannot_chord.sandbox = jams.Sandbox(name=chords[1])
-    return jannot_chord
+    if notes[1] is not None:
+        jannot_note.sandbox = jams.Sandbox(name=notes[1])
+    return jannot_note
 
 
 def keys_to_jams(keys):
