@@ -8,7 +8,6 @@ import pytest
 
 from mirdata import ikala, utils
 from tests.test_utils import DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
 
 
 def test_track():
@@ -92,23 +91,6 @@ def test_to_jams():
     assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
 
 
-def test_track_ids():
-    track_ids = ikala.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 252
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/iKala'
-    ikala_data = ikala.load(data_home=data_home)
-    assert type(ikala_data) is dict
-    assert len(ikala_data.keys()) == 252
-
-    ikala_data_default = ikala.load()
-    assert type(ikala_data_default) is dict
-    assert len(ikala_data_default.keys()) == 252
-
-
 def test_load_f0():
     # load a file which exists
     f0_path = 'tests/resources/mir_datasets/iKala/PitchLabel/10161_chorus.pv'
@@ -179,17 +161,3 @@ def test_load_metadata():
 
     metadata_none = ikala._load_metadata('asdf/asdf')
     assert metadata_none is None
-
-
-def test_download(mock_downloader):
-    ikala.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    ikala.validate()
-    ikala.validate(silence=True)
-
-
-def test_cite():
-    ikala.cite()

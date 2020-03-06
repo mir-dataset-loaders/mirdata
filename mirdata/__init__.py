@@ -6,16 +6,19 @@ from __future__ import print_function
 
 from .version import version as __version__
 
-from . import beatles
-from . import ikala
-from . import medleydb_melody
-from . import medleydb_pitch
-from . import medley_solos_db
-from . import orchset
-from . import rwc_classical
-from . import rwc_jazz
-from . import rwc_popular
-from . import salami
-from . import tinysol
-from . import guitarset
-from . import gtzan_genre
+__all__ = [
+    'beatles',
+    'dali',
+    'gtzan_genre',
+    'guitarset',
+    'ikala',
+    'medley_solos_db',
+    'medleydb_melody',
+    'medleydb_pitch',
+    'orchset',
+    'rwc_classical',
+    'rwc_jazz',
+    'rwc_classical',
+    'salami',
+    'tinysol',
+]

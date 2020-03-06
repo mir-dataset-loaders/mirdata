@@ -8,8 +8,7 @@ import json
 import pytest
 
 from mirdata import medleydb_melody, utils
-from tests.test_utils import mock_validated, mock_validator, DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
+from tests.test_utils import DEFAULT_DATA_HOME
 
 
 def test_track():
@@ -93,23 +92,6 @@ def test_to_jams():
 
     assert jam['file_metadata']['title'] == 'Beethoven'
     assert jam['file_metadata']['artist'] == 'MusicDelta'
-
-
-def test_track_ids():
-    track_ids = medleydb_melody.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 108
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/MedleyDB-Melody'
-    medleydb_melody_data = medleydb_melody.load(data_home=data_home)
-    assert type(medleydb_melody_data) is dict
-    assert len(medleydb_melody_data.keys()) is 108
-
-    medleydb_melody_data_default = medleydb_melody.load()
-    assert type(medleydb_melody_data_default) is dict
-    assert len(medleydb_melody_data_default.keys()) is 108
 
 
 def test_load_melody():
@@ -199,17 +181,3 @@ def test_load_metadata():
 
     metadata_none = medleydb_melody._load_metadata('asdf/asdf')
     assert metadata_none is None
-
-
-def test_download(mock_downloader):
-    medleydb_melody.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    medleydb_melody.validate()
-    medleydb_melody.validate(silence=True)
-
-
-def test_cite():
-    medleydb_melody.cite()
