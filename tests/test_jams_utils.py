@@ -203,6 +203,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
             ),
             None,
         )
@@ -212,6 +213,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
             ),
             'notes_2',
         )
@@ -221,6 +223,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
             ),
             'notes_1',
         ),
@@ -228,13 +231,16 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
             ),
             'notes_2',
         ),
     ]
     note_data_4 = (
         utils.NoteData(
-            np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, np.array([1108.731, 1108.731, 1108.731])
+            np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, 
+            np.array([1108.731, 1108.731, 1108.731]),
+            np.array([1, 1, 1])
         ),
         None,
     )
@@ -243,6 +249,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
             ),
             None,
         ],
@@ -250,6 +257,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
             ),
             'notes_2',
         ),
