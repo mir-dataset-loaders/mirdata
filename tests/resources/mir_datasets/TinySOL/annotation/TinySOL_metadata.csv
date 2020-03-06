@@ -1,0 +1,3 @@
+Path,Fold,Family,Instrument (abbr.),Instrument (in full),Technique (abbr.),Technique (in full),Pitch,Pitch ID,Dynamics,Dynamics ID,Instance ID,String ID (if applicable),Needed digital retuning
+Strings/Contrabass/ordinario/Cb-ord-A2-mf-2c-N.wav,4,Strings,Cb,Contrabass,ord,ordinario,A2,45,mf,2,1,2.0,FALSE
+Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav,0,Winds,Fl,Flute,ord,ordinario,C4,60,mf,2,0,,TRUE
