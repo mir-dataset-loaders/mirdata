@@ -1,4 +1,6 @@
-tqdm
-librosa<0.7.0
+dali-dataset>=1.0
+jams
+librosa>=0.7.0
 numpy>=1.16
 six
+tqdm
