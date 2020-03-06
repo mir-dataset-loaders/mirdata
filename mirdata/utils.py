@@ -142,7 +142,9 @@ def validator(dataset_index, data_home, silence=False):
             has_any_invalid_checksum = True
 
     if not (has_any_missing_file or has_any_invalid_checksum):
-        log_message('Success: the dataset is complete and all files are valid.', silence)
+        log_message(
+            'Success: the dataset is complete and all files are valid.', silence
+        )
         log_message('-' * 20, silence)
 
     return missing_files, invalid_checksums
