@@ -2,7 +2,7 @@
 from importlib.machinery import SourceFileLoader
 from setuptools import setup, find_packages
 
-version_sfl = SourceFileLoader('mirdata.version', '../mirdata/version.py')
+version_sfl = SourceFileLoader('mirdata.version', 'mirdata/version.py')
 version_module = version_sfl.load_module()
 
 if __name__ == '__main__':
