@@ -117,7 +117,6 @@ def jams_converter(
                 )
             jam.annotations.append(chords_to_jams(chords))
 
-
     # notes
     if note_data is not None:
         if type(note_data) != list:
@@ -129,7 +128,6 @@ def jams_converter(
                     + 'but is a list of something else'
                 )
             jam.annotations.append(notes_to_jams(notes))
-
 
     # keys
     if key_data is not None:
