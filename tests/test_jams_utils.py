@@ -285,7 +285,7 @@ def test_notes():
     assert value == [1108.731, 1108.731, 1108.731]
     assert confidence == [None, None, None]
 
-    assert jam_2.annotations[0]['sandbox']['name'] == 'note_2'
+    assert jam_2.annotations[0]['sandbox']['name'] == 'notes_2'
 
     time, duration, value, confidence = get_jam_data(jam_3, 'note_hz', 0)
     assert time == [0.0, 0.5, 1.0]
