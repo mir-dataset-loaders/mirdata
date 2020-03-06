@@ -21,7 +21,6 @@ if __name__ == '__main__':
             "Development Status :: 3 - Alpha",
             "Intended Audience :: Science/Research",
             "Topic :: Multimedia :: Sound/Audio :: Analysis",
-            "Programming Language :: Python :: 2.7",
             "Programming Language :: Python :: 3.6",
             "Programming Language :: Python :: 3.7",
         ],
