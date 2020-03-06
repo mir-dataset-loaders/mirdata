@@ -71,16 +71,33 @@ class Track(object):
 
         Args:
             sample_rate: Requested sample rate (optional, default 22050)
+
         Returns:
-            Pair of (audio signal, actual sample rate)
+            y (np.ndarray): the mono audio signal
+            sr (float): The sample rate of the audio file
         """
-        audio, sr = librosa.load(self.audio_path, sr=sample_rate, mono=True)
-        return audio, sr
+        return load_audio(self.audio_path, sample_rate)
 
     def __repr__(self):
         return "GTZAN-Genre Track(track_id='{track_id}', genre='{genre}')".format(
             track_id=self.track_id, genre=self.genre
         )
+
+
+def load_audio(audio_path, sample_rate=22050):
+    """Load a GTzan audio file.
+
+    Args:
+        audio_path (str): path to audio file
+        sample_rate: Requested sample rate (optional, default 22050)
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    audio, sr = librosa.load(self.audio_path, sr=sample_rate, mono=True)
+    return audio, sr
 
 
 def load(data_home=None):

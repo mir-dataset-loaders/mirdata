@@ -16,7 +16,7 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 # these functions are identical for all rwc datasets
-from mirdata.rwc_classical import _load_beats, _load_sections, _duration_to_sec
+from mirdata.rwc_classical import load_beats, load_sections, load_audio, _duration_to_sec
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-j.csv',
@@ -118,6 +118,8 @@ class Track(object):
         self._data_home = data_home
 
         self._track_paths = DATA.index[track_id]
+        self.sections_path = os.path.join(self._data_home, self._track_paths['sections'][0])
+        self.beats_path = os.path.join(self._data_home, self._track_paths['beats'][0])
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -168,17 +170,15 @@ class Track(object):
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['sections'][0])
-        )
+        return load_sections(self.sections_path)
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(self._data_home, self._track_paths['beats'][0]))
+        return load_beats(self.beats_path)
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=None, mono=True)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         return jams_utils.jams_converter(

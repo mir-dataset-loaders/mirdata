@@ -127,6 +127,10 @@ class Track(object):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
+        self.sections_annotator1_uppercase_path = os.path.join(self._data_home, self._track_paths['annotator_1_uppercase'][0])
+        self.sections_annotator1_lowercase_path = os.path.join(self._data_home, self._track_paths['annotator_1_lowercase'][0])
+        self.sections_annotator2_uppercase_path = os.path.join(self._data_home, self._track_paths['annotator_2_uppercase'][0])
+        self.sections_annotator2_lowercase_path = os.path.join(self._data_home, self._track_paths['annotator_2_lowercase'][0])
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata.keys():
@@ -187,37 +191,29 @@ class Track(object):
     def sections_annotator_1_uppercase(self):
         if self._track_paths['annotator_1_uppercase'][0] is None:
             return None
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['annotator_1_uppercase'][0])
-        )
+        return load_sections(self.sections_annotator1_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
         if self._track_paths['annotator_1_lowercase'][0] is None:
             return None
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['annotator_1_lowercase'][0])
-        )
+        return load_sections(self.sections_annotator1_lowercase_path)
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
         if self._track_paths['annotator_2_uppercase'][0] is None:
             return None
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['annotator_2_uppercase'][0])
-        )
+        return load_sections(self.sections_annotator2_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
         if self._track_paths['annotator_2_lowercase'][0] is None:
             return None
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['annotator_2_lowercase'][0])
-        )
+        return load_sections(self.sections_annotator2_lowercase_path)
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=None, mono=True)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         return jams_utils.jams_converter(
@@ -239,6 +235,20 @@ class Track(object):
             ],
             metadata=self._track_metadata,
         )
+
+
+def load_audio(audio_path):
+    """Load a Salami audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=None, mono=True)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -327,7 +337,7 @@ def load(data_home=None):
     return salami_data
 
 
-def _load_sections(sections_path):
+def load_sections(sections_path):
     if sections_path is None or not os.path.exists(sections_path):
         return None
 

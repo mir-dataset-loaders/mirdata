@@ -147,10 +147,24 @@ class Track(object):
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=22050, mono=True)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         return jams_utils.jams_converter(metadata=self._track_metadata)
+
+
+def load_audio(audio_path):
+    """Load a Medley Solos DB audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=22050, mono=True)
 
 
 def download(data_home=None):

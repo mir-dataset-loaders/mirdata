@@ -122,6 +122,8 @@ class Track(object):
         self._data_home = data_home
 
         self._track_paths = DATA.index[track_id]
+        self.sections_path = os.path.join(self._data_home, self._track_paths['sections'][0])
+        self.beats_path = os.path.join(self._data_home, self._track_paths['beats'][0])
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -172,17 +174,15 @@ class Track(object):
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['sections'][0])
-        )
+        return load_sections(self.sections_path)
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(self._data_home, self._track_paths['beats'][0]))
+        return load_beats(self.beats_path)
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=None, mono=True)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         return jams_utils.jams_converter(
@@ -190,6 +190,20 @@ class Track(object):
             section_data=[(self.sections, None)],
             metadata=self._track_metadata,
         )
+
+
+def load_audio(audio_path):
+    """Load a RWC audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=None, mono=True)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -270,7 +284,7 @@ def load(data_home=None):
     return rwc_classical_data
 
 
-def _load_sections(sections_path):
+def load_sections(sections_path):
     if not os.path.exists(sections_path):
         return None
     begs = []  # timestamps of section beginnings
@@ -316,7 +330,7 @@ def _position_in_bar(beat_positions, beat_times):
     return beat_positions_corrected, beat_times_corrected
 
 
-def _load_beats(beats_path):
+def load_beats(beats_path):
     if not os.path.exists(beats_path):
         return None
     beat_times = []  # timestamps of beat interval beginnings

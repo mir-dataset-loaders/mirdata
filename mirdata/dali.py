@@ -93,6 +93,7 @@ class Track(object):
         self.track_id = track_id
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
+        self.annotation_path = os.path.join(self._data_home, self._track_paths['annot'][0])
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -143,37 +144,41 @@ class Track(object):
 
     @utils.cached_property
     def notes(self):
-        return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]), 'notes'
-        )
+        return load_annotations_granularity(self.annotation_path, 'notes')
 
     @utils.cached_property
     def words(self):
-        return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]), 'words'
-        )
+        return load_annotations_granularity(self.annotation_path, 'words')
 
     @utils.cached_property
     def lines(self):
-        return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]), 'lines'
-        )
+        return load_annotations_granularity(self.annotation_path, 'lines')
 
     @utils.cached_property
     def paragraphs(self):
-        return _load_annotations_granularity(
-            os.path.join(self._data_home, self._track_paths['annot'][0]), 'paragraphs'
-        )
+        return load_annotations_granularity(self.annotation_path, 'paragraphs')
 
     @utils.cached_property
     def annotation_object(self):
-        return _load_annotations_class(
-            os.path.join(self._data_home, self._track_paths['annot'][0])
-        )
+        return load_annotations_class(self.annotation_path)
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=None, mono=True)
+        return load_audio(self.audio_path)
+
+
+def load_audio(audio_path):
+    """Load a DALI audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=None, mono=True)
 
 
 def download(data_home=None):
@@ -261,7 +266,17 @@ def load(data_home=None):
     return dali_data
 
 
-def _load_annotations_granularity(annotations_path, granularity):
+def load_annotations_granularity(annotations_path, granularity):
+    """Load annotations at the specified level of granularity
+
+    Args:
+        annotations_path (str): path to a DALI annotation file
+        granularity (str): one of 'notes', 'words', 'lines', 'paragraphs'
+
+    Returns:
+        NoteData for granularity='notes' or LyricData otherwise
+
+    """
     if not os.path.exists(annotations_path):
         return None
     try:
@@ -290,7 +305,16 @@ def _load_annotations_granularity(annotations_path, granularity):
     return annotation
 
 
-def _load_annotations_class(annotations_path):
+def load_annotations_class(annotations_path):
+    """Load full annotations into the DALI class object
+
+    Args:
+        annotations_path (str): path to a DALI annotation file
+
+    Returns:
+        DALI annotations object
+
+    """
     if not os.path.exists(annotations_path):
         return None
     try:

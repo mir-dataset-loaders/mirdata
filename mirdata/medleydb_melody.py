@@ -91,6 +91,9 @@ class Track(object):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
+        self.melody1_path = os.path.join(self._data_home, self._track_paths['melody1'][0])
+        self.melody2_path = os.path.join(self._data_home, self._track_paths['melody2'][0])
+        self.melody3_path = os.path.join(self._data_home, self._track_paths['melody3'][0])
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -135,25 +138,19 @@ class Track(object):
 
     @utils.cached_property
     def melody1(self):
-        return _load_melody(
-            os.path.join(self._data_home, self._track_paths['melody1'][0])
-        )
+        return load_melody(self.melody1_path)
 
     @utils.cached_property
     def melody2(self):
-        return _load_melody(
-            os.path.join(self._data_home, self._track_paths['melody2'][0])
-        )
+        return load_melody(self.melody2_path)
 
     @utils.cached_property
     def melody3(self):
-        return _load_melody3(
-            os.path.join(self._data_home, self._track_paths['melody3'][0])
-        )
+        return load_melody3(self.melody3_path)
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=None, mono=True)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         # jams does not support multipitch, so we skip melody3
@@ -161,6 +158,20 @@ class Track(object):
             f0_data=[(self.melody1, 'melody1'), (self.melody2, 'melody2')],
             metadata=self._track_metadata,
         )
+
+
+def load_audio(audio_path):
+    """Load a MedleyDB audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=None, mono=True)
 
 
 def download(data_home=None):
@@ -243,7 +254,7 @@ def load(data_home=None):
     return medleydb_melody_data
 
 
-def _load_melody(melody_path):
+def load_melody(melody_path):
     if not os.path.exists(melody_path):
         return None
     times = []
@@ -261,7 +272,7 @@ def _load_melody(melody_path):
     return melody_data
 
 
-def _load_melody3(melody_path):
+def load_melody3(melody_path):
     if not os.path.exists(melody_path):
         return None
     times = []
