@@ -9,10 +9,7 @@ import sys
 
 import mirdata
 
-DATASETS = [
-    importlib.import_module("mirdata.{}".format(d)) for d in
-    mirdata.__all__
-]
+DATASETS = [importlib.import_module("mirdata.{}".format(d)) for d in mirdata.__all__]
 
 
 def test_cite():
@@ -34,9 +31,7 @@ def test_download():
 
 def test_validate():
     for dataset in DATASETS:
-        data_home = os.path.join(
-            'tests/resources/mir_datasets', dataset.DATASET_DIR
-        )
+        data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
         dataset.validate(data_home=data_home)
         dataset.validate(data_home=data_home, silence=True)
 
@@ -47,9 +42,7 @@ def test_load_and_trackids():
         assert type(track_ids) is list
         trackid_len = len(track_ids)
 
-        data_home = os.path.join(
-            'tests/resources/mir_datasets', dataset.DATASET_DIR
-        )
+        data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
         dataset_data = dataset.load(data_home=data_home)
         assert type(dataset_data) is dict
         assert len(dataset_data.keys()) == trackid_len
