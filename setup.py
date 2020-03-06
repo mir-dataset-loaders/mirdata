@@ -1,5 +1,9 @@
 """ Setup script for mir_datasets. """
+from importlib.machinery import SourceFileLoader
 from setuptools import setup, find_packages
+
+version_sfl = SourceFileLoader('mirdata.version', 'mirdata/version.py')
+version_module = version_sfl.load_module()
 
 with open('README.md', 'r') as fdesc:
     long_description = fdesc.read()
@@ -7,7 +11,7 @@ with open('README.md', 'r') as fdesc:
 if __name__ == '__main__':
     setup(
         name='mirdata',
-        version='0.2.dev0',
+        version=version_module.version,
         description='Common loaders for MIR datasets.',
         url='https://github.com/mir-dataset-loaders/mirdata',
         packages=find_packages(exclude=['test', '*.test', '*.test.*']),
