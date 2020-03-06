@@ -120,7 +120,7 @@ class Track(object):
             + "is_instrumental={}, n_sources={}, "
             + "melody1=F0Data('times', 'frequencies', confidence'), "
             + "melody2=F0Data('times', 'frequencies', confidence'), "
-            + "melody3=F0Data('times', 'frequencies', confidence'))"
+            + "melody3=MultipitchData('times', 'frequencies', confidence'))"
         )
         return repr_string.format(
             self.track_id,
@@ -156,12 +156,9 @@ class Track(object):
         return librosa.load(self.audio_path, sr=None, mono=True)
 
     def to_jams(self):
+        # jams does not support multipitch, so we skip melody3
         return jams_utils.jams_converter(
-            f0_data=[
-                (self.melody1, 'melody1'),
-                (self.melody2, 'melody2'),
-                (self.melody3, 'melody3'),
-            ],
+            f0_data=[(self.melody1, 'melody1'), (self.melody2, 'melody2')],
             metadata=self._track_metadata,
         )
 
@@ -268,17 +265,17 @@ def _load_melody3(melody_path):
     if not os.path.exists(melody_path):
         return None
     times = []
-    freqs = []
+    freqs_list = []
+    conf_list = []
     with open(melody_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
         for line in reader:
             times.append(float(line[0]))
-            freqs.append([float(v) for v in line[1:]])
+            freqs_list.append([float(v) for v in line[1:]])
+            conf_list.append([float(float(v) > 0) for v in line[1:]])
 
     times = np.array(times)
-    freqs = np.array(freqs)
-    confidence = (freqs > 0).astype(float)
-    melody_data = utils.F0Data(times, freqs, confidence)
+    melody_data = utils.MultipitchData(times, freqs_list, conf_list)
     return melody_data
 
 
