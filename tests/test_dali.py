@@ -62,23 +62,6 @@ def test_track():
     assert track.__repr__() == repr_string
 
 
-def test_track_ids():
-    track_ids = dali.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 5358
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/DALI'
-    dali_data = dali.load(data_home=data_home)
-    assert type(dali_data) is dict
-    assert len(dali_data.keys()) == 5358
-
-    dali_data_default = dali.load()
-    assert type(dali_data_default) is dict
-    assert len(dali_data_default.keys()) == 5358
-
-
 def test_load_notes():
     notes_path = (
         'tests/resources/mir_datasets/DALI/annotations/'
@@ -245,12 +228,3 @@ def test_load_dali_object():
     # load a file which doesn't exist
     dali_none = dali._load_annotations_class('fake/file/path')
     assert dali_none is None
-
-
-def test_validate():
-    dali.validate()
-    dali.validate(silence=True)
-
-
-def test_cite():
-    dali.cite()

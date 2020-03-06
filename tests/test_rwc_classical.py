@@ -8,7 +8,6 @@ import pytest
 
 from mirdata import rwc_classical, utils
 from tests.test_utils import DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
 
 
 def test_track():
@@ -110,23 +109,6 @@ def test_to_jams():
 
     assert jam['file_metadata']['title'] == 'Symphony no.5 in C minor, op.67. 1st mvmt.'
     assert jam['file_metadata']['artist'] == 'Tokyo City Philharmonic Orchestra'
-
-
-def test_track_ids():
-    track_ids = rwc_classical.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 50
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/RWC-Classical'
-    rwc_classical_data = rwc_classical.load(data_home=data_home)
-    assert type(rwc_classical_data) is dict
-    assert len(rwc_classical_data.keys()) == 50
-
-    rwc_classical_data_default = rwc_classical.load()
-    assert type(rwc_classical_data_default) is dict
-    assert len(rwc_classical_data_default.keys()) == 50
 
 
 def test_load_sections():
@@ -244,17 +226,3 @@ def test_load_metadata():
 
     metadata_none = rwc_classical._load_metadata('asdf/asdf')
     assert metadata_none is None
-
-
-def test_download(mock_downloader):
-    rwc_classical.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    rwc_classical.validate()
-    rwc_classical.validate(silence=True)
-
-
-def test_cite():
-    rwc_classical.cite()

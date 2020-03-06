@@ -7,8 +7,7 @@ import numpy as np
 import pytest
 
 from mirdata import beatles, utils
-from tests.test_utils import mock_validated, mock_validator, DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
+from tests.test_utils import DEFAULT_DATA_HOME
 
 
 def test_track():
@@ -132,23 +131,6 @@ def test_to_jams():
     assert jam['file_metadata']['artist'] == 'The Beatles'
 
 
-def test_track_ids():
-    track_ids = beatles.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 180
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/Beatles'
-    beatles_data = beatles.load(data_home=data_home)
-    assert type(beatles_data) is dict
-    assert len(beatles_data.keys()) == 180
-
-    beatles_data_default = beatles.load()
-    assert type(beatles_data_default) is dict
-    assert len(beatles_data_default.keys()) == 180
-
-
 def test_load_beats():
     beats_path = (
         'tests/resources/mir_datasets/Beatles/annotations/beat/'
@@ -246,17 +228,3 @@ def test_fix_newpoint():
     beat_positions3 = np.array(['New Point', '2', '3'])
     new_beat_positions3 = beatles._fix_newpoint(beat_positions3)
     assert np.array_equal(new_beat_positions3, np.array(['1', '2', '3']))
-
-
-def test_download(mock_downloader):
-    beatles.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    beatles.validate()
-    beatles.validate(silence=True)
-
-
-def test_cite():
-    beatles.cite()

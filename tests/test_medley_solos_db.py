@@ -8,7 +8,6 @@ import pytest
 
 from mirdata import medley_solos_db, utils
 from tests.test_utils import DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
 
 
 def test_track():
@@ -70,34 +69,3 @@ def test_to_jams():
     assert jam['sandbox']['instrument_id'] == 3
     assert jam['sandbox']['song_id'] == 210
     assert jam['sandbox']['subset'] == 'validation'
-
-
-def test_track_ids():
-    track_ids = medley_solos_db.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 21571
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/Medley-solos-DB'
-    msdb_data = medley_solos_db.load(data_home=data_home)
-    assert type(msdb_data) is dict
-    assert len(msdb_data.keys()) == 21571
-
-    msdb_data = medley_solos_db.load()
-    assert type(msdb_data) is dict
-    assert len(msdb_data.keys()) == 21571
-
-
-def test_download(mock_downloader):
-    medley_solos_db.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    medley_solos_db.validate()
-    medley_solos_db.validate(silence=True)
-
-
-def test_cite():
-    cite_str = medley_solos_db.cite()

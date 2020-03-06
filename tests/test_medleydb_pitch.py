@@ -7,8 +7,7 @@ import os
 import pytest
 
 from mirdata import medleydb_pitch, utils
-from tests.test_utils import mock_validated, mock_validator, DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
+from tests.test_utils import DEFAULT_DATA_HOME
 
 
 def test_track():
@@ -82,23 +81,6 @@ def test_to_jams():
     assert jam['file_metadata']['artist'] == 'AClassicEducation'
 
 
-def test_track_ids():
-    track_ids = medleydb_pitch.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 103
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/MedleyDB-Pitch'
-    medleydb_pitch_data = medleydb_pitch.load(data_home=data_home)
-    assert type(medleydb_pitch_data) is dict
-    assert len(medleydb_pitch_data.keys()) is 103
-
-    medleydb_pitch_data_default = medleydb_pitch.load()
-    assert type(medleydb_pitch_data_default) is dict
-    assert len(medleydb_pitch_data_default.keys()) is 103
-
-
 def test_load_pitch():
     # load a file which exists
     pitch_path = (
@@ -140,17 +122,3 @@ def test_load_metadata():
 
     metadata_none = medleydb_pitch._load_metadata('asdf/asdf')
     assert metadata_none is None
-
-
-def test_download(mock_downloader):
-    medleydb_pitch.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    medleydb_pitch.validate()
-    medleydb_pitch.validate(silence=True)
-
-
-def test_cite():
-    medleydb_pitch.cite()
