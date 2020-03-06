@@ -7,8 +7,7 @@ import os
 import pytest
 
 from mirdata import orchset, utils
-from tests.test_utils import mock_validated, mock_validator, DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
+from tests.test_utils import DEFAULT_DATA_HOME
 
 
 def test_track():
@@ -95,23 +94,6 @@ def test_to_jams():
     assert [f0.confidence for f0 in f0s] == [0.0, 0.0, 1.0]
 
     assert jam['sandbox']['alternating_melody'] == True
-
-
-def test_track_ids():
-    track_ids = orchset.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 64
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/Orchset'
-    orchset_data = orchset.load(data_home=data_home)
-    assert type(orchset_data) is dict
-    assert len(orchset_data.keys()) is 64
-
-    orchset_data_default = orchset.load()
-    assert type(orchset_data_default) is dict
-    assert len(orchset_data_default.keys()) is 64
 
 
 def test_load_melody():
@@ -212,17 +194,3 @@ def test_load_metadata():
 
     metadata_none = orchset._load_metadata('asdf/asdf')
     assert metadata_none is None
-
-
-def test_download(mock_downloader):
-    orchset.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    orchset.validate()
-    orchset.validate(silence=True)
-
-
-def test_cite():
-    orchset.cite()

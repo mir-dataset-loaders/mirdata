@@ -6,7 +6,6 @@ import pytest
 
 from mirdata import rwc_jazz, utils
 from tests.test_utils import DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
 
 
 def test_track():
@@ -135,23 +134,6 @@ def test_to_jams():
     assert jam['file_metadata']['artist'] == 'Makoto Nakamura'
 
 
-def test_track_ids():
-    track_ids = rwc_jazz.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 50
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/RWC-Jazz'
-    rwc_jazz_data = rwc_jazz.load(data_home=data_home)
-    assert type(rwc_jazz_data) is dict
-    assert len(rwc_jazz_data.keys()) == 50
-
-    rwc_jazz_data_default = rwc_jazz.load()
-    assert type(rwc_jazz_data_default) is dict
-    assert len(rwc_jazz_data_default.keys()) == 50
-
-
 def test_load_metadata():
     data_home = 'tests/resources/mir_datasets/RWC-Jazz'
     metadata = rwc_jazz._load_metadata(data_home)
@@ -179,17 +161,3 @@ def test_load_metadata():
 
     metadata_none = rwc_jazz._load_metadata('asdf/asdf')
     assert metadata_none is None
-
-
-def test_download(mock_downloader):
-    rwc_jazz.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    rwc_jazz.validate()
-    rwc_jazz.validate(silence=True)
-
-
-def test_cite():
-    rwc_jazz.cite()
