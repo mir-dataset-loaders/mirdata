@@ -163,9 +163,7 @@ def test_load_lyrics():
     assert np.array_equal(lyrics_data_pronun.start_times, np.array([0.021, 0.571]))
     assert np.array_equal(lyrics_data_pronun.end_times, np.array([0.189, 1.415]))
     assert np.array_equal(lyrics_data_pronun.lyrics, np.array(['ASDF', 'EVERYBODY']))
-    assert np.array_equal(
-        lyrics_data_pronun.pronunciations, np.array(['t i au', None])
-    )
+    assert np.array_equal(lyrics_data_pronun.pronunciations, np.array(['t i au', None]))
 
     # load a file which doesn't exist
     lyrics_data_none = ikala._load_lyrics('fake/path')

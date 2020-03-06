@@ -138,7 +138,7 @@ def test_load_lines():
     print(line_data.lyrics)
 
     assert np.array_equal(line_data.start_times, np.array([24.125, 24.42]))
-    assert np.array_equal(line_data.end_times, np.array([24.42,  24.568]))
+    assert np.array_equal(line_data.end_times, np.array([24.42, 24.568]))
     assert np.array_equal(line_data.lyrics, np.array(['why do', 'they']))
 
     # load a file which doesn't exist
