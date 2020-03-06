@@ -281,7 +281,7 @@ def _load_annotations_granularity(annotations_path, granularity):
         text.append(annot['text'])
     if granularity == 'notes':
         annotation = utils.NoteData(
-            np.array(begs), np.array(ends), np.array(notes), None
+            np.array([begs, ends]), np.array(notes), None
         )
     else:
         annotation = utils.LyricData(
