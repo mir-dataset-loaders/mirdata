@@ -269,9 +269,9 @@ def notes_to_jams(notes):
         if type(notes[0]) != utils.NoteData:
             raise TypeError('Type should be NoteData.')
         for beg, end, n in zip(
-            notes[0].intervals[:, 0], notes[0].intervals[:, 1], notes[0].value
+            notes[0].intervals[:, 0], notes[0].intervals[:, 1], notes[0].note
         ):
-            jannot_chord.append(time=beg, duration=end - beg, value=n)
+            jannot_note.append(time=beg, duration=end - beg, value=n)
     if notes[1] is not None:
         jannot_note.sandbox = jams.Sandbox(name=notes[1])
     return jannot_note
