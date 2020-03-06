@@ -61,7 +61,7 @@ def test_track():
 
     assert type(track.melody1) is utils.F0Data
     assert type(track.melody2) is utils.F0Data
-    assert type(track.melody3) is utils.F0Data
+    assert type(track.melody3) is utils.MultipitchData
 
     y, sr = track.audio
     assert sr == 44100
@@ -74,7 +74,7 @@ def test_track():
         + " genre=Classical, is_excerpt=True, is_instrumental=True, "
         + "n_sources=18, melody1=F0Data('times', 'frequencies', confidence'),"
         + " melody2=F0Data('times', 'frequencies', confidence'), "
-        + "melody3=F0Data('times', 'frequencies', confidence'))"
+        + "melody3=MultipitchData('times', 'frequencies', confidence'))"
     )
     assert track.__repr__() == repr_string
 
@@ -147,42 +147,33 @@ def test_load_melody3():
     melody_data = medleydb_melody._load_melody3(melody_path)
 
     # check types
-    assert type(melody_data) == utils.F0Data
+    assert type(melody_data) == utils.MultipitchData
     assert type(melody_data.times) is np.ndarray
-    assert type(melody_data.frequencies) is np.ndarray
-    assert type(melody_data.confidence) is np.ndarray
+    assert type(melody_data.frequency_list) is list
+    assert type(melody_data.confidence_list) is list
 
     # check values
     assert np.array_equal(
         melody_data.times,
         np.array([0.046439909297052155, 0.052244897959183675, 0.1219047619047619]),
     )
-    assert np.array_equal(
-        melody_data.frequencies,
-        np.array(
-            [
-                [0.0, 0.0, 497.01600000000002, 0.0, 0.0],
-                [965.99199999999996, 996.46799999999996, 497.10599999999999, 0.0, 0.0],
-                [
-                    987.32000000000005,
-                    987.93200000000002,
-                    495.46800000000002,
-                    495.29899999999998,
-                    242.98699999999999,
-                ],
-            ]
-        ),
-    )
-    assert np.array_equal(
-        melody_data.confidence,
-        np.array(
-            [
-                [0.0, 0.0, 1.0, 0.0, 0.0],
-                [1.0, 1.0, 1.0, 0.0, 0.0],
-                [1.0, 1.0, 1.0, 1.0, 1.0],
-            ]
-        ),
-    )
+    assert melody_data.frequency_list == [
+        [0.0, 0.0, 497.01600000000002, 0.0, 0.0],
+        [965.99199999999996, 996.46799999999996, 497.10599999999999, 0.0, 0.0],
+        [
+            987.32000000000005,
+            987.93200000000002,
+            495.46800000000002,
+            495.29899999999998,
+            242.98699999999999,
+        ],
+    ]
+
+    assert melody_data.confidence_list == [
+        [0.0, 0.0, 1.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 0.0, 0.0],
+        [1.0, 1.0, 1.0, 1.0, 1.0],
+    ]
 
     # load a file which doesn't exist
     melody_data_none = medleydb_melody._load_melody3('fake/file/path')
