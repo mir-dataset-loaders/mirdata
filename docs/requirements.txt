@@ -1,4 +1,3 @@
 tqdm
 librosa<0.7.0
 numpy>=1.16
-six

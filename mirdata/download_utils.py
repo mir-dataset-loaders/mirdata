@@ -12,10 +12,9 @@ from __future__ import print_function
 from collections import namedtuple
 import os
 import tarfile
+import urllib
 import zipfile
 from tqdm import tqdm
-from six.moves import urllib
-import six
 import sys
 
 from mirdata.utils import md5
