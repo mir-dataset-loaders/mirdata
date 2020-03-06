@@ -19,7 +19,7 @@ __all__ = [
     'rwc_classical',
     'rwc_jazz',
     'rwc_classical',
-    'salami'
+    'salami',
 ]
 
 from . import *
