@@ -14,9 +14,7 @@ import os
 import tarfile
 import zipfile
 from tqdm import tqdm
-from six.moves import urllib
-import six
-import sys
+import urllib
 
 from mirdata.utils import md5
 

@@ -34,7 +34,6 @@ if __name__ == '__main__':
             'tqdm',
             'librosa >= 0.7.0',
             'numpy>=1.16',
-            'six',
             'jams',
             'requests',
         ],
