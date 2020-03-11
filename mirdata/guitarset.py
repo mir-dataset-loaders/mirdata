@@ -86,58 +86,60 @@ DATA = utils.LargeData('guitarset_index.json')
 
 
 class Track(object):
-    """GuitarSet track class
+    """guitarset Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/GuitarSet`
+        data_home (str): Local path where the dataset is stored. default=None
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
         audio_hex_cln_path (str): path to the debleeded hex wave file
         audio_hex_path (str): path to the original hex wave file
         audio_mic_path (str): path to the mono wave via microphone
         audio_mix_path (str): path to the mono wave via downmixing hex pickup
         jams_path (str): path to the jams file
-        player_id (str):
-            ID of the different players.
-            one of ['00', '01', ... , '05']
-        tempo (float): BPM of the track
-        mode (str):
-            one of ['solo', 'comp']
+        mode (str): one of ['solo', 'comp']
             For each excerpt, players are asked to first play in 'comp' mode
             and later play a 'solo' version on top of the already recorded comp.
-        style (str):
-            one of ['Jazz', 'Bossa Nova', 'Rock', 'Singer-Songwriter', 'Funk']
-        beats (BeatData)
-        leadsheet_chords (ChordData)
-        inferred_chords (ChordData)
-        key_mode (KeyData)
-        pitch_contours (dict):
-            {
-                'E': F0Data(...),
-                'A': F0Data(...),
-                ...
-                'e': F0Data(...)
-            }
-            a dict that contains 6 `F0Data`s.
+        player_id (str): ID of the different players.
+            one of ['00', '01', ... , '05']
+        style (str): one of ['Jazz', 'Bossa Nova', 'Rock', 'Singer-Songwriter', 'Funk']
+        tempo (float): BPM of the track
+        track_id (str): track id
+
+    Cached Properties:
+        beats (BeatData): the track's beat positions
+        inferred_chords (ChordData): the track's chords inferred from played transcription
+        key_mode (KeyData): the track's key and mode
+        leadsheet_chords (ChordData): the track's chords as written in the leadsheet
+        notes (dict): a dict that contains 6 `NoteData`s.
             From Low E string to high e string.
-        notes (list): (dict):
             {
                 'E': NoteData(...),
                 'A': NoteData(...),
                 ...
                 'e': NoteData(...)
             }
-            a dict that contains 6 `NoteData`s.
+        pitch_contours (dict): a dict that contains 6 `F0Data`s.
             From Low E string to high e string.
-        audio_mic (tuple): (np.ndarray, sr)
-        audio_mix (tuple): (np.ndarray, sr)
-        audio_hex (tuple): (np.ndarray, sr)
-        audio_hex_cln (tuple): (np.ndarray, sr)
-    """
+            {
+                'E': F0Data(...),
+                'A': F0Data(...),
+                ...
+                'e': F0Data(...)
+            }
 
+    Properties:
+        audio_hex: raw hexaphonic audio signal, sample rate
+        audio_hex_cln: bleed-removed hexaphonic audio signal, sample rate
+        audio_mic: stereo microphone audio signal, sample rate
+        audio_mix: stereo mix audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
+    """
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in GuitarSet'.format(track_id))

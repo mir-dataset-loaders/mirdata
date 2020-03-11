@@ -85,10 +85,17 @@ class Track(object):
         url_working (bool): True if the youtube url was valid
 
     Cached Properties:
-
+        annotation_object (DALI.Annotations): DALI Annotations object
+        lines (LyricData): line-aligned lyrics
+        notes (NoteData): note-aligned lyrics
+        paragraphs (LyricData): paragraph-aligned lyrics
+        words (LyricData): word-aligned lyric
 
     Properties:
+        audio: audio signal, sample rate
 
+    Methods:
+        to_jams: converts the track's data to jams format
 
     """
 

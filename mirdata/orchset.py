@@ -109,31 +109,41 @@ DATA = utils.LargeData('orchset_index.json', _load_metadata)
 
 
 class Track(object):
-    """ORCHSET Track class
+    """orchset Track class
 
     Args:
-        track_id (str): Track id of the Track
-        data_home (str): Local path where the dataset is stored.
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): Track id
-        audio_path_mono (str): Mono audio path of the track
-        audio_path_stereo (str): Stereo audio path of the track
-        composer (str): Composer of the track
-        work (str): The musical work
-        predominant_melodic_instruments ([str]): List of instruments which play the melody
         alternating_melody (bool): True if the melody alternates between instruments
-        contains_winds (bool): True if the track contains any wind instrument
-        contains_strings (bool): True if the track contains any string instrument
+        audio_path_mono (str): path to the mono audio file
+        audio_path_stereo (str): path to the stereo audio file
+        composer (str): the work's composer
         contains_brass (bool): True if the track contains any brass instrument
+        contains_strings (bool): True if the track contains any string instrument
+        contains_winds (bool): True if the track contains any wind instrument
+        excerpt (str): True if the track is an excerpt
+        melody_path (str): path to the melody annotation file
+        only_brass (bool): True if the track contains brass instruments only
         only_strings (bool): True if the track contains string instruments only
         only_winds (bool): True if the track contains wind instruments only
-        only_brass (bool): True if the track contains brass instruments only
-        melody (F0Data): Melody annotation
+        predominant_melodic_instruments (list): List of instruments which play the melody
+        track_id (str): track id
+        work (str): The musical work
+
+    Cached Properties:
+        melody (F0Data): melody annotation
+
+    Properties:
+        audio_mono: mono audio signal, sample rate
+        audio_stereo: stereo audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
 
     """
-
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in Orchset'.format(track_id))

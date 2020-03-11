@@ -56,28 +56,38 @@ DATA = utils.LargeData('medleydb_melody_index.json', _load_metadata)
 
 
 class Track(object):
-    """MedleyDB melody Track class
+    """medleydb_melody Track class
 
     Args:
-        track_id (str): Track id of the track
-        data_home (str): Local path where the dataset is stored.
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): Track id
-        audio_path (str): Track audio path
-        artist (str): Artist of the track
-        title (str): Title of the track
-        genre (str): Genre of the track
+        artist (str): artist
+        audio_path (str): path to the audio file
+        genre (str): genre
         is_excerpt (bool): True if the track is an excerpt
         is_instrumental (bool): True of the track does not contain vocals
+        melody1_path (str): path to the melody1 annotation file
+        melody2_path (str): path to the melody2 annotation file
+        melody3_path (str): path to the melody3 annotation file
         n_sources (int): Number of instruments in the track
+        title (str): title
+        track_id (str): track id
+
+    Cached Properties:
         melody1 (F0Data): The pitch of the single most predominant source (often the voice)
         melody2 (F0Data): The pitch of the predominant source for each point in time
-        melody3 (F0Data): The pitch of any melodic source. Allows for more than one f0 value at a time.
+        melody3 (MultipitchData): The pitch of any melodic source. Allows for more than one f0 value at a time.
+
+    Properties:
+        audio: stereo mixture audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
 
     """
-
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(

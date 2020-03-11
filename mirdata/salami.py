@@ -89,33 +89,44 @@ DATA = utils.LargeData('salami_index.json', _load_metadata)
 
 
 class Track(object):
-    """SALAMI Track class
+"""salami Track class
 
-    Args:
-        track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+Args:
+    track_id (str): track id of the track
+    data_home (str): Local path where the dataset is stored. default=None
+        If `None`, looks for the data in the default directory, `~/mir_datasets`
 
-    Attributes:
-        track_id (str): track id
-        audio_path (str): audio path of the track
-        source
-        annotator_1_id
-        annotator_2_id
-        duration: duration of the track
-        title: title of the track
-        artist
-        annotator_1_time
-        annotator_2-time
-        broad_genre
-        genre:
-        sections_annotator_1_uppercase: annotation
-        sections_annotator_1_lowercase: annotation
-        sections_annotator_2_uppercase: annotation
-        sections_annotator_2_lowercase: annotation
+Attributes:
+    annotator_1_id (str): TODO
+    annotator_1_time (str): TODO
+    annotator_2_id (str): TODO
+    annotator_2_time (str): TODO
+    artist (str): TODO
+    audio_path (str): TODO
+    broad_genre (str): TODO
+    duration (float): TODO
+    genre (str): TODO
+    sections_annotator1_lowercase_path (str): TODO
+    sections_annotator1_uppercase_path (str): TODO
+    sections_annotator2_lowercase_path (str): TODO
+    sections_annotator2_uppercase_path (str): TODO
+    source (str): TODO
+    title (str): TODO
+    track_id (str): track id
 
-    """
+Cached Properties:
+    sections_annotator_1_lowercase (SectionData): TODO
+    sections_annotator_1_uppercase (SectionData): TODO
+    sections_annotator_2_lowercase (SectionData): TODO
+    sections_annotator_2_uppercase (SectionData): TODO
 
+Properties:
+    audio: TODO
+
+Methods:
+    to_jams: converts the track's data to jams format
+
+"""
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in Salami'.format(track_id))

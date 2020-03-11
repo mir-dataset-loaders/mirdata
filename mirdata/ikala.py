@@ -78,24 +78,35 @@ DATA = utils.LargeData('ikala_index.json', _load_metadata)
 
 
 class Track(object):
-    """iKala track class
+    """ikala Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
-        audio_path (str): track audio path
-        song_id (str): song id of the track
+        audio_path (str): path to the track's audio file
+        f0_path (str): path to the track's f0 annotation file
+        lyrics_path (str): path to the track's lyric annotation file
         section (str): section. Either 'verse' or 'chorus'
         singer_id (str): singer id
-        f0 (F0Data): pitch
-        lyrics (LyricData): lyrics
+        song_id (str): song id of the track
+        track_id (str): track id
+
+    Cached Properties:
+        f0 (F0Data): The human-annotated singing voice pitch
+        lyrics (LyricData): The human-annotated lyrics
+
+    Properties:
+        instrumental_audio: mono instrumental audio signal, sample rate
+        mix_audio: mono mixture audio signal, sample rate
+        vocal_audio: mono vocal audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
 
     """
-
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in iKala'.format(track_id))

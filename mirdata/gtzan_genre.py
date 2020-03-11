@@ -35,19 +35,25 @@ DATA = utils.LargeData("gtzan_genre_index.json")
 
 
 class Track(object):
-    """GTZAN-Genre track class
+    """gtzan_genre Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/GuitarSet`
+        data_home (str): Local path where the dataset is stored. default=None
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
+        audio_path (str): path to the audio file
         genre (str): annotated genre
-        audio_path (str): absolute audio path
-    """
+        track_id (str): track id
 
+    Properties:
+        audio: audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
+    """
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(

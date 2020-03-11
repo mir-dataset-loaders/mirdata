@@ -90,20 +90,28 @@ DATA = utils.LargeData("medley_solos_db_index.json", _load_metadata)
 
 
 class Track(object):
-    """Medley-solos-DB track class
+    """medley_solos_db Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
+        audio_path (str): path to the track's audio file
         instrument (str): instrument encoded by its English name
         instrument_id (int): instrument encoded as an integer
         song_id (int): song encoded as an integer
         subset (str): either equal to 'train', 'validation', or 'test'
-    """
+        track_id (str): track id
 
+    Properties:
+        audio: audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
+    """
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(

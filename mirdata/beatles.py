@@ -45,29 +45,27 @@ class Track(object):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-
-        audio_path (str): TODO
-        beats_path (str): TODO
-        chords_path (str): TODO
-        keys_path (str): TODO
-        sections_path (str): TODO
-        title (str): TODO
-        track_id (str): TODO
-
-        track_id (str): track id
         audio_path (str): track audio path
         beats_path (str): beat annotation path
         chords_path (str): chord annotation path
         keys_path (str): key annotation path
         sections_path (str): sections annotation path
         title (str): title of the track
+        track_id (str): track id
+
+    Cached Properties:
         beats (BeatData): beat annotation
-        chords (ChordData): chords annotation
+        chords (ChordData): chord annotation
         key (KeyData): key annotation
         sections (SectionData): sections annotation
 
-    """
+    Properties:
+        audio: audio signal, sample rate
 
+    Methods:
+        to_jams: converts the track data to jams format
+
+    """
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in Beatles'.format(track_id))

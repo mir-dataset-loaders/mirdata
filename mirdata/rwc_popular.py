@@ -7,7 +7,6 @@ Attributes:
 
 """
 import csv
-import librosa
 import logging
 import numpy as np
 import os
@@ -17,7 +16,7 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 # these functions are identical for all rwc datasets
-from mirdata.rwc_classical import load_beats, load_sections, load_audio _duration_to_sec
+from mirdata.rwc_classical import load_beats, load_sections, load_audio, _duration_to_sec
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-p.csv',
@@ -101,29 +100,45 @@ DATA = utils.LargeData('rwc_popular_index.json', _load_metadata)
 
 
 class Track(object):
-    """RWC Popular Track class
+    """rwc_popular Track class
 
     Args:
-        track_id (str): Track id of the Track
-        data_home (str): Local path where the dataset is stored.
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): Track id
-        audio_path (str): Audio path of this Track
-        piece_number (str): Piece number of this Track, [1-50]
-        suffix (str): M01-M04
-        track_number: CD track number of this Track
-        title (str): Title of The track.
-        artist (str): Artist name with the vocal's gender
-            E.g., 'Makoto Nakamura'
-        duration_sec (float): Duration of the track in seconds
-        tempo (float): Tempo of the track in BPM
-        instruments (list): List of used instruments
+        artist (str): artist
+        audio_path (str): path of the audio file
+        beats_path (str): path of the beat annotation file
+        chords_path (str): path of the chord annotation file
         drum_information (str): If the drum is 'Drum sequences', 'Live drums',
             or 'Drum loops'
-    """
+        duration (float): Duration of the track in seconds
+        instruments (str): List of used instruments
+        piece_number (str): Piece number, [1-50]
+        sections_path (str): path of the section annotation file
+        singer_information (str): TODO
+        suffix (str): M01-M04
+        tempo (str): Tempo of the track in BPM
+        title (str): title
+        track_id (str): track id
+        track_number (str): CD track number
+        voca_inst_path (str): path of the vocal/instrumental annotation file
 
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotation
+        chords (ChordData): human-labeled chord annotation
+        sections (SectionData): human-labeled section annotation
+        vocal_instrument_activity (EventData): human-labeled vocal/instrument activity
+
+    Properties:
+        audio: audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
+    """
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(

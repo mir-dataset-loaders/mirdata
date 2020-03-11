@@ -117,29 +117,37 @@ DATA = utils.LargeData("tinysol_index.json", _load_metadata)
 
 
 class Track(object):
-    """TinySOL track class
+    """tinysol Track class
 
     Args:
-        track_id (str): ID of the track
-        data_home (str): Local path where the dataset is stored.
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        family (str): instrument family encoded by its English name
-        instrument_abbr (str): instrument abbreviation
-        instrument_full (str): instrument encoded by its English name
-        technique_abbr (str): playing technique abbreviation
-        technique_full (str): playing technique encoded by its English name
-        pitch (str): string containing English pitch class and octave number
-        pitch_id (int): MIDI note index, where middle C ("C4") corresponds to 60
+        audio_path (str): path of the audio file
         dynamics (str): dynamics abbreviation. Ex: pp, mf, ff, etc.
         dynamics_id (int): pp=0, p=1, mf=2, f=3, ff=4
-        is_resampled (bool): True if this sample was pitch-shifted from a neighbor; False if it was genuinely recorded.
+        family (str): instrument family encoded by its English name
         instance_id (int): instance ID. Either equal to 0, 1, 2, or 3.
-        string_id (int or None): string ID. By musical convention, the first
-        string is the highest. On wind instruments, this is replaced by `None`.
-    """
+        instrument_abbr (str): instrument abbreviation
+        instrument_full (str): instrument encoded by its English name
+        is_resampled (bool): True if this sample was pitch-shifted from a neighbor; False if it was genuinely recorded.
+        pitch (str): string containing English pitch class and octave number
+        pitch_id (int): MIDI note index, where middle C ("C4") corresponds to 60
+        string_id (NoneType): string ID. By musical convention, the first
+            string is the highest. On wind instruments, this is replaced by `None`.
+        technique_abbr (str): playing technique abbreviation
+        technique_full (str): playing technique encoded by its English name
+        track_id (str): track id
 
+    Properties:
+        audio: audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
+    """
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError("{} is not a valid track ID in TinySOL".format(track_id))
