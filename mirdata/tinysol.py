@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """TinySOL Dataset Loader.
 
-TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14 different instruments:
+TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14
+different instruments:
 
     Bass Tuba
     French Horn
