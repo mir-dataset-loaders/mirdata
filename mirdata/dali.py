@@ -69,18 +69,27 @@ class Track(object):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
-        audio_path (str): track audio path
-        artist
-        title
-        dataset_version (float): dali version
-        ground-truth (bool): if it is part of ground-truth or not
-        scorea: {'NCC': , 'manual'},
-        audio_metadata: {'url': , 'working': },
-        album:,
-        release_date:,
-        language:,
-        audio:,
+        album (str): the track's album
+        annotation_path (str): path to the track's annotation file
+        artist (str): the track's artist
+        audio_path (str): path to the track's audio file
+        audio_url (str): youtube ID
+        dataset_version (int): dataset annotation version
+        ground_truth (bool): True if the annotation is verified
+        language (str): sung language
+        release_date (str): year the track was released
+        scores_manual (int): TODO
+        scores_ncc (float): TODO
+        title (str): the track's title
+        track_id (str): the unique track id
+        url_working (bool): True if the youtube url was valid
+
+    Cached Properties:
+
+
+    Properties:
+
+
     """
 
     def __init__(self, track_id, data_home=None):
@@ -119,6 +128,19 @@ class Track(object):
             self.audio_path = os.path.join(
                 self._data_home, self._track_paths['audio'][0]
             )
+        else:
+            self.audio_url = None
+            self.url_working = None
+            self.ground_truth = None
+            self.artist = None
+            self.title = None
+            self.dataset_version = None
+            self.scores_ncc = None
+            self.scores_manual = None
+            self.album = None
+            self.release_date = None
+            self.language = None
+            self.audio_path = None
 
     def __repr__(self):
         repr_string = (
@@ -165,6 +187,9 @@ class Track(object):
     @property
     def audio(self):
         return load_audio(self.audio_path)
+
+    def to_jams(self):
+        raise NotImplementedError
 
 
 def load_audio(audio_path):

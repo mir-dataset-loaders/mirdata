@@ -45,8 +45,21 @@ class Track(object):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
+
+        audio_path (str): TODO
+        beats_path (str): TODO
+        chords_path (str): TODO
+        keys_path (str): TODO
+        sections_path (str): TODO
+        title (str): TODO
+        track_id (str): TODO
+
         track_id (str): track id
         audio_path (str): track audio path
+        beats_path (str): beat annotation path
+        chords_path (str): chord annotation path
+        keys_path (str): key annotation path
+        sections_path (str): sections annotation path
         title (str): title of the track
         beats (BeatData): beat annotation
         chords (ChordData): chords annotation
@@ -66,9 +79,9 @@ class Track(object):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
-        self.beats_path = os.path.join(self._data_home, self._track_paths['beat'][0])
+        self.beats_path = utils.none_path_join([self._data_home, self._track_paths['beat'][0]])
         self.chords_path = os.path.join(self._data_home, self._track_paths['chords'][0])
-        self.key_path = os.path.join(self._data_home, self._track_paths['keys'][0])
+        self.keys_path = utils.none_path_join([self._data_home, self._track_paths['keys'][0]])
         self.sections_path = os.path.join(self._data_home, self._track_paths['sections'][0])
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
@@ -86,9 +99,7 @@ class Track(object):
 
     @utils.cached_property
     def beats(self):
-        if self.beats_path is not None:
-            return load_beats(self.beats_path)
-        return None
+        return load_beats(self.beats_path)
 
     @utils.cached_property
     def chords(self):
@@ -96,9 +107,7 @@ class Track(object):
 
     @utils.cached_property
     def key(self):
-        if self.key_path is not None:
-            return load_key(self.key_path)
-        return None
+        return load_key(self.keys_path)
 
     @utils.cached_property
     def sections(self):
@@ -278,21 +287,21 @@ def load_chords(chords_path):
     return chord_data
 
 
-def load_key(key_path):
+def load_key(keys_path):
     """Load Beatles format key data from a file
 
     Args:
-        key_path (str): path to key annotation file
+        keys_path (str): path to key annotation file
 
     Returns:
         (utils.KeyData): loaded key data
 
     """
-    if key_path is None or not os.path.exists(key_path):
+    if keys_path is None or not os.path.exists(keys_path):
         return None
 
     start_times, end_times, keys = [], [], []
-    with open(key_path, 'r') as fhandle:
+    with open(keys_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
             if line[2] == 'Key':

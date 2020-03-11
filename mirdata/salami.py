@@ -127,10 +127,18 @@ class Track(object):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
-        self.sections_annotator1_uppercase_path = os.path.join(self._data_home, self._track_paths['annotator_1_uppercase'][0])
-        self.sections_annotator1_lowercase_path = os.path.join(self._data_home, self._track_paths['annotator_1_lowercase'][0])
-        self.sections_annotator2_uppercase_path = os.path.join(self._data_home, self._track_paths['annotator_2_uppercase'][0])
-        self.sections_annotator2_lowercase_path = os.path.join(self._data_home, self._track_paths['annotator_2_lowercase'][0])
+        self.sections_annotator1_uppercase_path = utils.none_path_join(
+            [self._data_home, self._track_paths['annotator_1_uppercase'][0]]
+        )
+        self.sections_annotator1_lowercase_path = utils.none_path_join(
+            [self._data_home, self._track_paths['annotator_1_lowercase'][0]]
+        )
+        self.sections_annotator2_uppercase_path = utils.none_path_join(
+            [self._data_home, self._track_paths['annotator_2_uppercase'][0]]
+        )
+        self.sections_annotator2_lowercase_path = utils.none_path_join(
+            [self._data_home, self._track_paths['annotator_2_lowercase'][0]]
+        )
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata.keys():
@@ -189,25 +197,25 @@ class Track(object):
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
-        if self._track_paths['annotator_1_uppercase'][0] is None:
+        if self.sections_annotator1_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator1_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
-        if self._track_paths['annotator_1_lowercase'][0] is None:
+        if self.sections_annotator1_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator1_lowercase_path)
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
-        if self._track_paths['annotator_2_uppercase'][0] is None:
+        if self.sections_annotator2_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator2_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
-        if self._track_paths['annotator_2_lowercase'][0] is None:
+        if self.sections_annotator2_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator2_lowercase_path)
 

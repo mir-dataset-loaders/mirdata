@@ -51,6 +51,23 @@ def md5(file_path):
     return hash_md5.hexdigest()
 
 
+def none_path_join(partial_path_list):
+    """Join a list of partial paths. If any part of the path is None,
+    returns None.
+
+    Args:
+        partial_path_list (list): List of partial paths
+
+    Returns:
+        path or None (str or None): joined path string or None
+
+    """
+    if None in partial_path_list:
+        return None
+    else:
+        return os.path.join(*partial_path_list)
+
+
 def log_message(message, silence=False):
     """Helper function to log message
 

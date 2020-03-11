@@ -194,7 +194,7 @@ def load_vocal_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
-    audio, sr = librosa.load(self.audio_path, sr=None, mono=False)
+    audio, sr = librosa.load(audio_path, sr=None, mono=False)
     vocal_channel = audio[1, :]
     return vocal_channel, sr
 
@@ -210,7 +210,7 @@ def load_instrumental_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
-    audio, sr = librosa.load(self.audio_path, sr=None, mono=False)
+    audio, sr = librosa.load(audio_path, sr=None, mono=False)
     instrumental_channel = audio[0, :]
     return instrumental_channel, sr
 

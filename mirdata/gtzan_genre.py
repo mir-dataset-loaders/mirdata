@@ -65,7 +65,8 @@ class Track(object):
         self.genre = track_id.split(".")[0]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-    def audio(self, sample_rate=22050):
+    @property
+    def audio(self):
         """
         Load the audio for this track.
 
@@ -76,12 +77,15 @@ class Track(object):
             y (np.ndarray): the mono audio signal
             sr (float): The sample rate of the audio file
         """
-        return load_audio(self.audio_path, sample_rate)
+        return load_audio(self.audio_path, sample_rate=22050)
 
     def __repr__(self):
         return "GTZAN-Genre Track(track_id='{track_id}', genre='{genre}')".format(
             track_id=self.track_id, genre=self.genre
         )
+
+    def to_jams(self):
+        raise NotImplementedError
 
 
 def load_audio(audio_path, sample_rate=22050):
@@ -96,7 +100,7 @@ def load_audio(audio_path, sample_rate=22050):
         sr (float): The sample rate of the audio file
 
     """
-    audio, sr = librosa.load(self.audio_path, sr=sample_rate, mono=True)
+    audio, sr = librosa.load(audio_path, sr=sample_rate, mono=True)
     return audio, sr
 
 
