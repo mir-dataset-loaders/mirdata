@@ -50,10 +50,12 @@ if __name__ == '__main__':
                 'dali-dataset',
             ],
             'docs': [
+                'DALI-dataset>=1.0.0',
+                'numpydoc',
+                'recommonmark',
                 'sphinx',
                 'sphinxcontrib-napoleon',
                 'sphinx_rtd_theme',
-                'numpydoc',
             ],
             'dali': ['DALI-dataset>=1.0.0'],
         },
