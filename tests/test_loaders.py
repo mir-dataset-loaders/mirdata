@@ -36,6 +36,7 @@ def test_validate():
         data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
         dataset.validate(data_home=data_home)
         dataset.validate(data_home=data_home, silence=True)
+        dataset.validate(data_home=None, silence=True)
 
 
 def test_load_and_trackids():
