@@ -52,28 +52,28 @@ within a relevant function, e.g. `mirdata.orchset.download(data_home='my_custom_
 
 ### Download the Orchset Dataset
 ```python
-import mirdata
+import mirdata.orchset
 
 mirdata.orchset.download()
 ```
 
 ### Validate the data
 ```python
-import mirdata
+import mirdata.orchset
 
 mirdata.orchset.validate()
 ```
 
 ### Load the Orchset Dataset
 ```python
-import mirdata
+import mirdata.orchset
 
 orchset_data = mirdata.orchset.load()
 ```
 
 ### See what data are available for a track
 ```python
-import mirdata
+import mirdata.orchset
 
 orchset_ids = mirdata.orchset.track_ids()
 orchset_data = mirdata.orchset.load()
@@ -104,7 +104,7 @@ print(example_track)
 ### Evaluate a melody extraction algorithm on Orchset
 ```python
 import mir_eval
-import mirdata
+import mirdata.orchset
 import numpy as np
 import sox
 
