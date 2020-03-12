@@ -109,7 +109,9 @@ class Track(object):
         self.track_id = track_id
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
-        self.annotation_path = os.path.join(self._data_home, self._track_paths['annot'][0])
+        self.annotation_path = os.path.join(
+            self._data_home, self._track_paths['annot'][0]
+        )
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:

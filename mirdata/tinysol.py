@@ -148,6 +148,7 @@ class Track(object):
         to_jams: converts the track's data to jams format
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError("{} is not a valid track ID in TinySOL".format(track_id))
@@ -221,9 +222,7 @@ class Track(object):
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        return jams_utils.jams_converter(
-            metadata=self._track_metadata
-        )  # TODO PR #185
+        return jams_utils.jams_converter(metadata=self._track_metadata)  # TODO PR #185
 
 
 def load_audio(audio_path):

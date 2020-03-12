@@ -66,6 +66,7 @@ class Track(object):
         to_jams: converts the track data to jams format
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in Beatles'.format(track_id))
@@ -77,10 +78,16 @@ class Track(object):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
-        self.beats_path = utils.none_path_join([self._data_home, self._track_paths['beat'][0]])
+        self.beats_path = utils.none_path_join(
+            [self._data_home, self._track_paths['beat'][0]]
+        )
         self.chords_path = os.path.join(self._data_home, self._track_paths['chords'][0])
-        self.keys_path = utils.none_path_join([self._data_home, self._track_paths['keys'][0]])
-        self.sections_path = os.path.join(self._data_home, self._track_paths['sections'][0])
+        self.keys_path = utils.none_path_join(
+            [self._data_home, self._track_paths['keys'][0]]
+        )
+        self.sections_path = os.path.join(
+            self._data_home, self._track_paths['sections'][0]
+        )
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
         self.title = os.path.basename(self._track_paths['sections'][0]).split('.')[0]

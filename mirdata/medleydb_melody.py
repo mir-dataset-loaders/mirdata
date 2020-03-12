@@ -88,6 +88,7 @@ class Track(object):
         to_jams: converts the track's data to jams format
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(
@@ -101,9 +102,15 @@ class Track(object):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
-        self.melody1_path = os.path.join(self._data_home, self._track_paths['melody1'][0])
-        self.melody2_path = os.path.join(self._data_home, self._track_paths['melody2'][0])
-        self.melody3_path = os.path.join(self._data_home, self._track_paths['melody3'][0])
+        self.melody1_path = os.path.join(
+            self._data_home, self._track_paths['melody1'][0]
+        )
+        self.melody2_path = os.path.join(
+            self._data_home, self._track_paths['melody2'][0]
+        )
+        self.melody3_path = os.path.join(
+            self._data_home, self._track_paths['melody3'][0]
+        )
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:

@@ -16,7 +16,12 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 # these functions are identical for all rwc datasets
-from mirdata.rwc_classical import load_beats, load_sections, load_audio, _duration_to_sec
+from mirdata.rwc_classical import (
+    load_beats,
+    load_sections,
+    load_audio,
+    _duration_to_sec,
+)
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-p.csv',
@@ -139,6 +144,7 @@ class Track(object):
         to_jams: converts the track's data to jams format
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(
@@ -152,10 +158,14 @@ class Track(object):
         self._data_home = data_home
 
         self._track_paths = DATA.index[track_id]
-        self.sections_path = os.path.join(self._data_home, self._track_paths['sections'][0])
+        self.sections_path = os.path.join(
+            self._data_home, self._track_paths['sections'][0]
+        )
         self.beats_path = os.path.join(self._data_home, self._track_paths['beats'][0])
         self.chords_path = os.path.join(self._data_home, self._track_paths['chords'][0])
-        self.voca_inst_path = os.path.join(self._data_home, self._track_paths['voca_inst'][0])
+        self.voca_inst_path = os.path.join(
+            self._data_home, self._track_paths['voca_inst'][0]
+        )
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
