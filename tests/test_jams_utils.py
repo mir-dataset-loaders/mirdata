@@ -197,6 +197,124 @@ def test_chords():
         jams_utils.jams_converter(chord_data=chord_data_7)
 
 
+def test_notes():
+    note_data_1 = [
+        (
+            utils.NoteData(
+                np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
+            ),
+            None,
+        )
+    ]
+    note_data_2 = [
+        (
+            utils.NoteData(
+                np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
+                np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
+            ),
+            'notes_2',
+        )
+    ]
+    note_data_3 = [
+        (
+            utils.NoteData(
+                np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
+            ),
+            'notes_1',
+        ),
+        (
+            utils.NoteData(
+                np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T,
+                np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
+            ),
+            'notes_2',
+        ),
+    ]
+    note_data_4 = (
+        utils.NoteData(
+            np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, 
+            np.array([1108.731, 1108.731, 1108.731]),
+            np.array([1, 1, 1])
+        ),
+        None,
+    )
+    note_data_5 = [
+        [
+            utils.NoteData(
+                np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
+            ),
+            None,
+        ],
+        (
+            utils.NoteData(
+                np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
+                np.array([1108.731, 1108.731, 1108.731]),
+                np.array([1, 1, 1])
+            ),
+            'notes_2',
+        ),
+    ]
+    note_data_6 = [(None, None)]
+    note_data_7 = [
+        (
+            utils.EventData(
+                np.array([0.2, 0.3]),
+                np.array([0.3, 0.4]),
+                np.array(['event A', 'event B']),
+            ),
+            None,
+        )
+    ]
+
+    jam_1 = jams_utils.jams_converter(note_data=note_data_1)
+    jam_2 = jams_utils.jams_converter(note_data=note_data_2)
+    jam_3 = jams_utils.jams_converter(note_data=note_data_3)
+    jam_6 = jams_utils.jams_converter(note_data=note_data_6)
+
+    time, duration, value, confidence = get_jam_data(jam_1, 'note_hz', 0)
+    assert time == [0.0, 0.5, 1.0]
+    assert duration == [0.5, 0.5, 0.5]
+    assert value == [1108.731, 1108.731, 1108.731]
+    assert confidence == [None, None, None]
+
+    assert jam_2.annotations[0]['sandbox']['name'] == 'notes_2'
+
+    time, duration, value, confidence = get_jam_data(jam_3, 'note_hz', 0)
+    assert time == [0.0, 0.5, 1.0]
+    assert duration == [0.5, 0.5, 0.5]
+    assert value == [1108.731, 1108.731, 1108.731]
+    assert confidence == [None, None, None]
+
+    time, duration, value, confidence = get_jam_data(jam_3, 'note_hz', 1)
+    assert time == [0.0, 0.7, 1.0]
+    assert duration == [0.7, 0.3, 0.5]
+    assert value == [1108.731, 1108.731, 1108.731]
+    assert confidence == [None, None, None]
+
+    time, duration, value, confidence = get_jam_data(jam_6, 'note_hz', 0)
+    assert time == []
+    assert duration == []
+    assert value == []
+    assert confidence == []
+
+    assert type(jam_1) == jams.JAMS
+
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(note_data=note_data_4)
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(note_data=note_data_5)
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(note_data=note_data_7)
+
+
 def test_sections():
     section_data_1 = [
         (

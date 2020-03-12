@@ -111,11 +111,11 @@ def test_load_contours():
 
 def test_load_notes():
     assert np.allclose(
-        TRACK.notes['e'].start_times,
+        TRACK.notes['e'].intervals[:, 0],
         [0.7612308390022235, 1.5072852607709137, 1.7806185941042258],
     )
     assert np.allclose(
-        TRACK.notes['e'].end_times, [1.2604598639455844, 1.7336798185940552, 2.0]
+        TRACK.notes['e'].intervals[:, 1], [1.2604598639455844, 1.7336798185940552, 2.0]
     )
     assert np.allclose(
         TRACK.notes['e'].notes, [67.0576287044242, 71.03221526299762, 71.03297250121584]

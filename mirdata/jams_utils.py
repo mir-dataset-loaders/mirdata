@@ -70,7 +70,7 @@ def jams_converter(
             if type(beats) != tuple:
                 raise TypeError(
                     'beat_data should be a list of tuples, '
-                    + 'but is a list of something else'
+                    + 'but is a list of {}'.format(type(beats))
                 )
             jam.annotations.append(beats_to_jams(beats))
 
@@ -82,7 +82,7 @@ def jams_converter(
             if type(sections) != tuple:
                 raise TypeError(
                     'section_data should be a list of tuples, '
-                    + 'but is a list of something else'
+                    + 'but is a list of {}'.format(type(sections))
                 )
             jam.annotations.append(sections_to_jams(sections))
 
@@ -94,7 +94,7 @@ def jams_converter(
             if type(sections) != tuple:
                 raise TypeError(
                     'multi_section_data should be a list of tuples, '
-                    + 'but is a list of something else'
+                    + 'but is a list of {}'.format(type(sections))
                 )
             if (type(sections[0]) != list) or (type(sections[0][0]) != tuple):
                 raise TypeError(
@@ -113,9 +113,21 @@ def jams_converter(
             if type(chords) != tuple:
                 raise TypeError(
                     'chord_data should be a list of tuples, '
-                    + 'but is a list of something else'
+                    + 'but is a list of {}'.format(type(chords))
                 )
             jam.annotations.append(chords_to_jams(chords))
+
+    # notes
+    if note_data is not None:
+        if type(note_data) != list:
+            raise TypeError('note_data should be a list of tuples')
+        for notes in note_data:
+            if type(notes) != tuple:
+                raise TypeError(
+                    'note_data should be a list of tuples, '
+                    + 'but is a list of {}'.format(type(notes))
+                )
+            jam.annotations.append(notes_to_jams(notes))
 
     # keys
     if key_data is not None:
@@ -125,7 +137,7 @@ def jams_converter(
             if type(keys) != tuple:
                 raise TypeError(
                     'key_data should be a list of tuples, '
-                    + 'but is a list of something else'
+                    + 'but is a list of {}'.format(type(keys))
                 )
             jam.annotations.append(keys_to_jams(keys))
 
@@ -137,7 +149,7 @@ def jams_converter(
             if type(f0s) != tuple:
                 raise TypeError(
                     'f0_data should be a list of tuples, '
-                    + 'but is a list of something else'
+                    + 'but is a list of {}'.format(type(f0s))
                 )
             jam.annotations.append(f0s_to_jams(f0s))
 
@@ -149,7 +161,7 @@ def jams_converter(
             if type(lyrics) != tuple:
                 raise TypeError(
                     'lyrics_data should be a list of tuples, '
-                    + 'but is a list of something else'
+                    + 'but is a list of {}'.format(type(lyrics))
                 )
             jam.annotations.append(lyrics_to_jams(lyrics))
 
@@ -226,16 +238,43 @@ def chords_to_jams(chords):
     jannot_chord = jams.Annotation(namespace='chord')
     jannot_chord.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if chords[0] is not None:
-        if chords[0] is not None:
-            if type(chords[0]) != utils.ChordData:
-                raise TypeError('Type should be ChordData.')
-            for beg, end, ch in zip(
-                chords[0].intervals[:, 0], chords[0].intervals[:, 1], chords[0].labels
-            ):
-                jannot_chord.append(time=beg, duration=end - beg, value=ch)
+        if type(chords[0]) != utils.ChordData:
+            raise TypeError('Type should be ChordData.')
+        for beg, end, ch in zip(
+            chords[0].intervals[:, 0], chords[0].intervals[:, 1], chords[0].labels
+        ):
+            jannot_chord.append(time=beg, duration=end - beg, value=ch)
     if chords[1] is not None:
         jannot_chord.sandbox = jams.Sandbox(name=chords[1])
     return jannot_chord
+
+
+def notes_to_jams(notes):
+    '''
+    Convert notes annotations into jams format using note_to_midi from librosa.
+
+    Parameters
+    ----------
+    notes: tuple
+        A tuple in the format (NoteData, str), where str describes the annotation
+        and NoteData is the notes mirdata annotation format.
+
+    Returns
+    -------
+    jannot_notes: JAM note_midi annotation object.
+    '''
+    jannot_note = jams.Annotation(namespace='note_hz')
+    jannot_note.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    if notes[0] is not None:
+        if type(notes[0]) != utils.NoteData:
+            raise TypeError('Type should be NoteData.')
+        for beg, end, n in zip(
+            notes[0].intervals[:, 0], notes[0].intervals[:, 1], notes[0].notes
+        ):
+            jannot_note.append(time=beg, duration=end - beg, value=n)
+    if notes[1] is not None:
+        jannot_note.sandbox = jams.Sandbox(name=notes[1])
+    return jannot_note
 
 
 def keys_to_jams(keys):
