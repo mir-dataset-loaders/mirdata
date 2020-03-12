@@ -12,7 +12,6 @@
 #
 import os
 import sys
-import unittest
 
 sys.path.insert(0, os.path.abspath('../'))
 
@@ -34,7 +33,7 @@ class Mock(MagicMock):
 
 
 MOCK_MODULES = [
-    'librosa', 'numpy'
+    'librosa', 'numpy', 'jams'
 ]
 
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
