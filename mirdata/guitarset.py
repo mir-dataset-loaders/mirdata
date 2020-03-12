@@ -181,7 +181,7 @@ class Track(object):
             + "inferred_chords=ChordData('start_times', 'end_times', 'chords'),\n"
             + "key_mode=KeyData('start_times', 'end_times', 'keys'),\n"
             + "pitch_contours=dict(F0Data('times', 'frequencies', 'confidence')),\n"
-            + "notes=dict(NoteData('start_times', 'end_times', 'notes', 'confidence')))"
+            + "notes=dict(NoteData('intervals', 'notes', 'confidence')))"
         )
         return repr_string
 
@@ -390,9 +390,7 @@ def _load_note_ann(jams_path, string_num):
     anno_arr = jam.search(namespace='note_midi')
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()
-    return utils.NoteData(
-        intervals[:, 0], intervals[:, 1], values, np.ones_like(values)
-    )
+    return utils.NoteData(intervals, values, np.ones_like(values))
 
 
 def cite():

@@ -70,12 +70,11 @@ def test_load_notes():
     note_data = dali._load_annotations_granularity(notes_path, 'notes')
 
     assert type(note_data) == utils.NoteData
-    assert type(note_data.start_times) == np.ndarray
-    assert type(note_data.end_times) == np.ndarray
+    assert type(note_data.intervals) == np.ndarray
     assert type(note_data.notes) == np.ndarray
 
-    assert np.array_equal(note_data.start_times, np.array([24.125, 24.273, 24.420]))
-    assert np.array_equal(note_data.end_times, np.array([24.273, 24.420, 24.568]))
+    assert np.array_equal(note_data.intervals[:, 0], np.array([24.125, 24.273, 24.420]))
+    assert np.array_equal(note_data.intervals[:, 1], np.array([24.273, 24.420, 24.568]))
     assert np.array_equal(note_data.notes, np.array([1108.731, 1108.731, 1108.731]))
 
     # load a file which doesn't exist

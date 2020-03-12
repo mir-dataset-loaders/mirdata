@@ -4,7 +4,7 @@
 Attributes:
     MIR_DATASETS_DIR (str): home folder for MIR datasets
 
-    NoteData (namedtuple): `start_times`, `end_times`, `notes`, `confidence`
+    NoteData (namedtuple): `intervals`, `notes`, `confidence`
 
     F0Data (namedtuple): `times`, `frequencies`, `confidence`
 
@@ -150,7 +150,7 @@ def validator(dataset_index, data_home, silence=False):
     return missing_files, invalid_checksums
 
 
-NoteData = namedtuple('NoteData', ['start_times', 'end_times', 'notes', 'confidence'])
+NoteData = namedtuple('NoteData', ['intervals', 'notes', 'confidence'])
 
 F0Data = namedtuple('F0Data', ['times', 'frequencies', 'confidence'])
 
