@@ -2,62 +2,42 @@
 from __future__ import absolute_import
 
 import numpy as np
-import os
-
-import pytest
 
 from mirdata import orchset, utils
-from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_utils import run_track_tests
 
 
 def test_track():
-    # test data home None
-    track_default = orchset.Track('Beethoven-S3-I-ex1')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'Orchset')
-
+    default_trackid = 'Beethoven-S3-I-ex1'
     data_home = 'tests/resources/mir_datasets/Orchset'
+    track = orchset.Track(default_trackid, data_home=data_home)
 
-    with pytest.raises(ValueError):
-        orchset.Track('asdfasdf', data_home=data_home)
-
-    track = orchset.Track('Beethoven-S3-I-ex1', data_home=data_home)
-
-    # test attributes
-    assert track.track_id == 'Beethoven-S3-I-ex1'
-    assert track._data_home == data_home
-    assert track._track_paths == {
-        "audio_stereo": [
-            "audio/stereo/Beethoven-S3-I-ex1.wav",
-            "f819c86bba06120a19bd495f819cd0ef",
-        ],
-        "audio_mono": [
-            "audio/mono/Beethoven-S3-I-ex1.wav",
-            "7bb7a2492dcf9e1eaad9e82f8550219a",
-        ],
-        "melody": ["GT/Beethoven-S3-I-ex1.mel", "8bbf6716337a2b5f7afcc611ad66e91a"],
+    expected_attributes = {
+        'track_id': 'Beethoven-S3-I-ex1',
+        'audio_path_mono': 'tests/resources/mir_datasets/Orchset/'
+            + 'audio/mono/Beethoven-S3-I-ex1.wav',
+        'audio_path_stereo': 'tests/resources/mir_datasets/Orchset/'
+            + 'audio/stereo/Beethoven-S3-I-ex1.wav',
+        'melody_path': 'tests/resources/mir_datasets/Orchset/'
+            + 'GT/Beethoven-S3-I-ex1.mel',
+        'composer': 'Beethoven',
+        'work': 'S3-I',
+        'excerpt': '1',
+        'predominant_melodic_instruments': ['strings', 'winds'],
+        'alternating_melody': True,
+        'contains_winds': True,
+        'contains_strings': True,
+        'contains_brass': False,
+        'only_strings': False,
+        'only_winds': False,
+        'only_brass': False,
     }
-    assert (
-        track.audio_path_mono
-        == 'tests/resources/mir_datasets/' + 'Orchset/audio/mono/Beethoven-S3-I-ex1.wav'
-    )
-    assert (
-        track.audio_path_stereo
-        == 'tests/resources/mir_datasets/'
-        + 'Orchset/audio/stereo/Beethoven-S3-I-ex1.wav'
-    )
-    assert track.composer == 'Beethoven'
-    assert track.work == 'S3-I'
-    assert track.excerpt == '1'
-    assert track.predominant_melodic_instruments == ['strings', 'winds']
-    assert track.alternating_melody is True
-    assert track.contains_winds is True
-    assert track.contains_strings is True
-    assert track.contains_brass is False
-    assert track.only_strings is False
-    assert track.only_winds is False
-    assert track.only_brass is False
 
-    assert type(track.melody) is utils.F0Data
+    expected_property_types = {
+        'melody': utils.F0Data
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     y_mono, sr_mono = track.audio_mono
     assert sr_mono == 44100
@@ -99,7 +79,7 @@ def test_to_jams():
 def test_load_melody():
     # load a file which exists
     melody_path = 'tests/resources/mir_datasets/Orchset/GT/Beethoven-S3-I-ex1.mel'
-    melody_data = orchset._load_melody(melody_path)
+    melody_data = orchset.load_melody(melody_path)
 
     # check types
     assert type(melody_data) == utils.F0Data
@@ -113,7 +93,7 @@ def test_load_melody():
     assert np.array_equal(melody_data.confidence, np.array([0.0, 0.0, 1.0]))
 
     # load a file which doesn't exist
-    melody_data_none = orchset._load_melody('fake/file/path')
+    melody_data_none = orchset.load_melody('fake/file/path')
     assert melody_data_none is None
 
 

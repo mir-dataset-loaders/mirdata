@@ -2,65 +2,41 @@
 from __future__ import absolute_import
 
 import numpy as np
-import os
-import json
-
-import pytest
 
 from mirdata import medleydb_melody, utils
-from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_utils import run_track_tests
 
 
 def test_track():
-    # test data home None
-    track_default = medleydb_melody.Track('MusicDelta_Beethoven')
-    assert track_default._data_home == os.path.join(
-        DEFAULT_DATA_HOME, 'MedleyDB-Melody'
-    )
-
+    default_trackid = 'MusicDelta_Beethoven'
     data_home = 'tests/resources/mir_datasets/MedleyDB-Melody'
+    track = medleydb_melody.Track(default_trackid, data_home=data_home)
 
-    with pytest.raises(ValueError):
-        medleydb_melody.Track('asdfasdf', data_home=data_home)
-
-    track = medleydb_melody.Track('MusicDelta_Beethoven', data_home=data_home)
-
-    # test attributes
-    assert track.track_id == 'MusicDelta_Beethoven'
-    assert track._data_home == data_home
-    assert track._track_paths == {
-        'audio': [
-            'audio/MusicDelta_Beethoven_MIX.wav',
-            '4c6081420a506b438a851c2807fc28ea',
-        ],
-        'melody1': [
-            'melody1/MusicDelta_Beethoven_MELODY1.csv',
-            '67dca3f4a9bf0517dd8a1287d091791e',
-        ],
-        'melody2': [
-            'melody2/MusicDelta_Beethoven_MELODY2.csv',
-            '67dca3f4a9bf0517dd8a1287d091791e',
-        ],
-        'melody3': [
-            'melody3/MusicDelta_Beethoven_MELODY3.csv',
-            '340f647c4f12d7e1ecf2421d0dfd509f',
-        ],
+    expected_attributes = {
+        'track_id': 'MusicDelta_Beethoven',
+        'audio_path': 'tests/resources/mir_datasets/'
+            + 'MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav',
+        'melody1_path': 'tests/resources/mir_datasets/'
+            + 'MedleyDB-Melody/melody1/MusicDelta_Beethoven_MELODY1.csv',
+        'melody2_path': 'tests/resources/mir_datasets/'
+            + 'MedleyDB-Melody/melody2/MusicDelta_Beethoven_MELODY2.csv',
+        'melody3_path': 'tests/resources/mir_datasets/'
+            + 'MedleyDB-Melody/melody3/MusicDelta_Beethoven_MELODY3.csv',
+        'artist': 'MusicDelta',
+        'title': 'Beethoven',
+        'genre': 'Classical',
+        'is_excerpt': True,
+        'is_instrumental': True,
+        'n_sources': 18,
     }
-    assert (
-        track.audio_path
-        == 'tests/resources/mir_datasets/'
-        + 'MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav'
-    )
-    assert track.artist == 'MusicDelta'
-    assert track.title == 'Beethoven'
-    assert track.genre == 'Classical'
-    assert track.is_excerpt is True
-    assert track.is_instrumental is True
-    assert track.n_sources == 18
 
-    assert type(track.melody1) is utils.F0Data
-    assert type(track.melody2) is utils.F0Data
-    assert type(track.melody3) is utils.MultipitchData
+    expected_property_types = {
+        'melody1': utils.F0Data,
+        'melody2': utils.F0Data,
+        'melody3': utils.MultipitchData
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     y, sr = track.audio
     assert sr == 44100
@@ -100,7 +76,7 @@ def test_load_melody():
         'tests/resources/mir_datasets/MedleyDB-Melody/'
         + 'melody1/MusicDelta_Beethoven_MELODY1.csv'
     )
-    melody_data = medleydb_melody._load_melody(melody_path)
+    melody_data = medleydb_melody.load_melody(melody_path)
 
     # check types
     assert type(melody_data) == utils.F0Data
@@ -116,7 +92,7 @@ def test_load_melody():
     assert np.array_equal(melody_data.confidence, np.array([0.0, 1.0]))
 
     # load a file which doesn't exist
-    melody_data_none = medleydb_melody._load_melody('fake/file/path')
+    melody_data_none = medleydb_melody.load_melody('fake/file/path')
     assert melody_data_none is None
 
 
@@ -126,7 +102,7 @@ def test_load_melody3():
         'tests/resources/mir_datasets/MedleyDB-Melody/'
         + 'melody3/MusicDelta_Beethoven_MELODY3.csv'
     )
-    melody_data = medleydb_melody._load_melody3(melody_path)
+    melody_data = medleydb_melody.load_melody3(melody_path)
 
     # check types
     assert type(melody_data) == utils.MultipitchData
@@ -158,7 +134,7 @@ def test_load_melody3():
     ]
 
     # load a file which doesn't exist
-    melody_data_none = medleydb_melody._load_melody3('fake/file/path')
+    melody_data_none = medleydb_melody.load_melody3('fake/file/path')
     assert melody_data_none is None
 
 
