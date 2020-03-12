@@ -387,6 +387,7 @@ Classical Music", Journal of New Music Research (2016)
     pages={101--117},
     year={2016},
     publisher={Taylor \\& Francis}
+}
 """
 
     print(cite_data)
