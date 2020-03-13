@@ -13,6 +13,8 @@ This library provides tools for working with common MIR datasets, including tool
 * loading annotation files to a common format, consistent with the format required by [mir_eval](https://github.com/craffel/mir_eval)
 * parsing track level metadata for detailed evaluations
 
+![](mirdata_example.gif)
+
 ## Installation
 
 To install, simply run:
