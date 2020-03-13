@@ -5,7 +5,7 @@ API documentation
    :maxdepth: 2
 
 
-.. automodule:: mirdata.__all__
+.. automodule:: mirdata
    :members:
 
 Dataset Loaders
