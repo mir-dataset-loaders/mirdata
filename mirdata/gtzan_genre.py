@@ -35,17 +35,24 @@ DATA = utils.LargeData("gtzan_genre_index.json")
 
 
 class Track(object):
-    """GTZAN-Genre track class
+    """gtzan_genre Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/GuitarSet`
+        data_home (str): Local path where the dataset is stored. default=None
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
+        audio_path (str): path to the audio file
         genre (str): annotated genre
-        audio_path (str): absolute audio path
+        track_id (str): track id
+
+    Properties:
+        audio: audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
     """
 
     def __init__(self, track_id, data_home=None):
@@ -65,22 +72,43 @@ class Track(object):
         self.genre = track_id.split(".")[0]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-    def audio(self, sample_rate=22050):
+    @property
+    def audio(self):
         """
         Load the audio for this track.
 
         Args:
             sample_rate: Requested sample rate (optional, default 22050)
+
         Returns:
-            Pair of (audio signal, actual sample rate)
+            y (np.ndarray): the mono audio signal
+            sr (float): The sample rate of the audio file
         """
-        audio, sr = librosa.load(self.audio_path, sr=sample_rate, mono=True)
-        return audio, sr
+        return load_audio(self.audio_path, sample_rate=22050)
 
     def __repr__(self):
         return "GTZAN-Genre Track(track_id='{track_id}', genre='{genre}')".format(
             track_id=self.track_id, genre=self.genre
         )
+
+    def to_jams(self):
+        raise NotImplementedError
+
+
+def load_audio(audio_path, sample_rate=22050):
+    """Load a GTzan audio file.
+
+    Args:
+        audio_path (str): path to audio file
+        sample_rate: Requested sample rate (optional, default 22050)
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    audio, sr = librosa.load(audio_path, sr=sample_rate, mono=True)
+    return audio, sr
 
 
 def load(data_home=None):

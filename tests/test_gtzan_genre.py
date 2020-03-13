@@ -6,7 +6,7 @@ from __future__ import print_function
 
 import os
 
-import pytest
+from tests.test_utils import run_track_tests
 
 from mirdata import gtzan_genre
 from tests.test_utils import DEFAULT_DATA_HOME
@@ -20,18 +20,20 @@ def test_track_default_data_home():
     assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, "GTZAN-Genre")
 
 
-def test_unknown_track():
-    with pytest.raises(ValueError):
-        gtzan_genre.Track("asdfasdf", data_home=TEST_DATA_HOME)
+def test_track():
+    default_trackid = "country.00000"
+    track = gtzan_genre.Track(default_trackid, data_home=TEST_DATA_HOME)
+    expected_attributes = {
+        'genre': "country",
+        'audio_path': "tests/resources/mir_datasets/GTZAN-Genre/"
+            + "gtzan_genre/genres/country/country.00000.wav",
+        'track_id': "country.00000",
+    }
+    run_track_tests(track, expected_attributes, {})
 
-
-def test_load_track():
-    track = gtzan_genre.Track("country.00000", data_home=TEST_DATA_HOME)
-    assert track.genre == "country"
-    assert track.audio_path == os.path.join(
-        TEST_DATA_HOME, "gtzan_genre/genres", "country/country.00000.wav"
-    )
-    assert track.audio()[0].shape == (663300,)
+    audio, sr = track.audio
+    assert sr == 22050
+    assert audio.shape == (663300,)
 
 
 def test_repr():

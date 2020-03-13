@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
+import itertools
 import os
 import sys
+import types
 
+import mirdata
 from mirdata import utils
 
 import json
@@ -15,6 +18,55 @@ else:
     builtin_module_name = '__builtin__'
 
 DEFAULT_DATA_HOME = os.path.join(os.getenv('HOME', '/tmp'), 'mir_datasets')
+
+
+def run_track_tests(track, expected_attributes, expected_property_types):
+    track_attr = get_attributes_and_properties(track)
+
+    # test track attributes
+    for attr in track_attr['attributes']:
+        print("{}: {}".format(attr, getattr(track, attr)))
+        assert expected_attributes[attr] == getattr(track, attr)
+
+    # test track property types
+    for prop in track_attr['cached_properties']:
+        print("{}: {}".format(prop, type(getattr(track, prop))))
+        assert isinstance(getattr(track, prop), expected_property_types[prop])
+
+
+def get_attributes_and_properties(class_instance):
+    attributes = []
+    properties = []
+    cached_properties = []
+    functions = []
+    for val in dir(class_instance.__class__):
+        if val.startswith('_'):
+            continue
+
+        attr = getattr(class_instance.__class__, val)
+        if isinstance(attr, mirdata.utils.cached_property):
+            cached_properties.append(val)
+        elif isinstance(attr, property):
+            properties.append(val)
+        elif isinstance(attr, types.FunctionType):
+            functions.append(val)
+        else:
+            raise ValueError("Unknown type {}".format(attr))
+
+    non_attributes = list(itertools.chain.from_iterable(
+        [properties, cached_properties, functions]
+    ))
+    for val in dir(class_instance):
+        if val.startswith('_'):
+            continue
+        if val not in non_attributes:
+            attributes.append(val)
+    return {
+        'attributes': attributes,
+        'properties': properties,
+        'cached_properties': cached_properties,
+        'functions': functions,
+    }
 
 
 @pytest.fixture

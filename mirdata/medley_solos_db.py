@@ -90,18 +90,27 @@ DATA = utils.LargeData("medley_solos_db_index.json", _load_metadata)
 
 
 class Track(object):
-    """Medley-solos-DB track class
+    """medley_solos_db Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
+        audio_path (str): path to the track's audio file
         instrument (str): instrument encoded by its English name
         instrument_id (int): instrument encoded as an integer
         song_id (int): song encoded as an integer
         subset (str): either equal to 'train', 'validation', or 'test'
+        track_id (str): track id
+
+    Properties:
+        audio: audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
     """
 
     def __init__(self, track_id, data_home=None):
@@ -147,10 +156,24 @@ class Track(object):
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=22050, mono=True)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         return jams_utils.jams_converter(metadata=self._track_metadata)
+
+
+def load_audio(audio_path):
+    """Load a Medley Solos DB audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=22050, mono=True)
 
 
 def download(data_home=None):

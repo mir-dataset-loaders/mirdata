@@ -2,34 +2,42 @@
 from __future__ import absolute_import
 
 import numpy as np
-import os
-
-import pytest
 
 from mirdata import tinysol, utils
-from tests.test_utils import DEFAULT_DATA_HOME
-from tests.test_download_utils import mock_downloader
+from tests.test_utils import run_track_tests
 
 
 def test_track():
-    # test data home None
-    track_default = tinysol.Track('Fl-ord-C4-mf-N-T14d')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'TinySOL')
-
-    # test with custom data_home
+    default_trackid = 'Fl-ord-C4-mf-N-T14d'
     data_home = 'tests/resources/mir_datasets/TinySOL'
+    track = tinysol.Track(default_trackid, data_home=data_home)
 
-    # missing track
-    with pytest.raises(ValueError):
-        tinysol.Track('asdfasdf', data_home=data_home)
+    expected_attributes = {
+        'track_id': 'Fl-ord-C4-mf-N-T14d',
+        'audio_path': 'tests/resources/mir_datasets/TinySOL/'
+            + 'audio/Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav',
+        'dynamics': 'mf',
+        'fold': 0,
+        'family': 'Winds',
+        'instrument_abbr': 'Fl',
+        'instrument_full': 'Flute',
+        'technique_abbr': 'ord',
+        'technique_full': 'ordinario',
+        'pitch': 'C4',
+        'pitch_id': 60,
+        'dynamics_id': 2,
+        'instance_id': 0,
+        'is_resampled': True,
+        'string_id': None,
+    }
 
-    # test with a wind instrument
-    track = tinysol.Track('Fl-ord-C4-mf-N-T14d', data_home=data_home)
-    assert track.track_id == 'Fl-ord-C4-mf-N-T14d'
-    assert track._data_home == data_home
+    expected_property_types = {}
+
+    run_track_tests(track, expected_attributes, expected_property_types)
+
     y, sr = track.audio
-    assert y.shape == (136209,)
-    assert sr == 22050
+    assert y.shape == (272417,)
+    assert sr == 44100
     repr_string = 'TinySOL Track(instrument=Flute, pitch=C4, dynamics=mf)'
     assert track.__repr__() == repr_string
 
@@ -79,34 +87,3 @@ def test_to_jams():
     assert jam['sandbox']['Instance ID'] == 1
     assert jam['sandbox']['String ID'] == 2
     assert not jam['sandbox']['Resampled']
-
-
-def test_track_ids():
-    track_ids = tinysol.track_ids()
-    assert type(track_ids) is list
-    assert len(track_ids) == 2913
-
-
-def test_load():
-    data_home = 'tests/resources/mir_datasets/TinySOL'
-    tinysol_data = tinysol.load(data_home=data_home)
-    assert type(tinysol_data) is dict
-    assert len(tinysol_data.keys()) == 2913
-
-    tinysol_data = tinysol.load()
-    assert type(tinysol_data) is dict
-    assert len(tinysol_data.keys()) == 2913
-
-
-def test_download(mock_downloader):
-    tinysol.download()
-    mock_downloader.assert_called()
-
-
-def test_validate():
-    tinysol.validate()
-    tinysol.validate(silence=True)
-
-
-def test_cite():
-    cite_str = tinysol.cite()

@@ -86,56 +86,59 @@ DATA = utils.LargeData('guitarset_index.json')
 
 
 class Track(object):
-    """GuitarSet track class
+    """guitarset Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/GuitarSet`
+        data_home (str): Local path where the dataset is stored. default=None
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
         audio_hex_cln_path (str): path to the debleeded hex wave file
         audio_hex_path (str): path to the original hex wave file
         audio_mic_path (str): path to the mono wave via microphone
         audio_mix_path (str): path to the mono wave via downmixing hex pickup
         jams_path (str): path to the jams file
-        player_id (str):
-            ID of the different players.
-            one of ['00', '01', ... , '05']
-        tempo (float): BPM of the track
-        mode (str):
-            one of ['solo', 'comp']
+        mode (str): one of ['solo', 'comp']
             For each excerpt, players are asked to first play in 'comp' mode
             and later play a 'solo' version on top of the already recorded comp.
-        style (str):
-            one of ['Jazz', 'Bossa Nova', 'Rock', 'Singer-Songwriter', 'Funk']
-        beats (BeatData)
-        leadsheet_chords (ChordData)
-        inferred_chords (ChordData)
-        key_mode (KeyData)
-        pitch_contours (dict):
-            {
-                'E': F0Data(...),
-                'A': F0Data(...),
-                ...
-                'e': F0Data(...)
-            }
-            a dict that contains 6 `F0Data`s.
+        player_id (str): ID of the different players.
+            one of ['00', '01', ... , '05']
+        style (str): one of ['Jazz', 'Bossa Nova', 'Rock', 'Singer-Songwriter', 'Funk']
+        tempo (float): BPM of the track
+        track_id (str): track id
+
+    Cached Properties:
+        beats (BeatData): the track's beat positions
+        inferred_chords (ChordData): the track's chords inferred from played transcription
+        key_mode (KeyData): the track's key and mode
+        leadsheet_chords (ChordData): the track's chords as written in the leadsheet
+        notes (dict): a dict that contains 6 `NoteData`s.
             From Low E string to high e string.
-        notes (list): (dict):
             {
                 'E': NoteData(...),
                 'A': NoteData(...),
                 ...
                 'e': NoteData(...)
             }
-            a dict that contains 6 `NoteData`s.
+        pitch_contours (dict): a dict that contains 6 `F0Data`s.
             From Low E string to high e string.
-        audio_mic (tuple): (np.ndarray, sr)
-        audio_mix (tuple): (np.ndarray, sr)
-        audio_hex (tuple): (np.ndarray, sr)
-        audio_hex_cln (tuple): (np.ndarray, sr)
+            {
+                'E': F0Data(...),
+                'A': F0Data(...),
+                ...
+                'e': F0Data(...)
+            }
+
+    Properties:
+        audio_hex: raw hexaphonic audio signal, sample rate
+        audio_hex_cln: bleed-removed hexaphonic audio signal, sample rate
+        audio_mic: stereo microphone audio signal, sample rate
+        audio_mix: stereo mix audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
     """
 
     def __init__(self, track_id, data_home=None):
@@ -187,7 +190,7 @@ class Track(object):
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(self.jams_path)
+        return load_beats(self.jams_path)
 
     @utils.cached_property
     def leadsheet_chords(self):
@@ -195,7 +198,7 @@ class Track(object):
             logging.info(
                 'Chord annotations for solo excerpts are the same with the comp excerpt.'
             )
-        return _load_chords(self.jams_path, leadsheet_version=True)
+        return load_chords(self.jams_path, leadsheet_version=True)
 
     @utils.cached_property
     def inferred_chords(self):
@@ -203,18 +206,18 @@ class Track(object):
             logging.info(
                 'Chord annotations for solo excerpts are the same with the comp excerpt.'
             )
-        return _load_chords(self.jams_path, leadsheet_version=False)
+        return load_chords(self.jams_path, leadsheet_version=False)
 
     @utils.cached_property
     def key_mode(self):
-        return _load_key_mode(self.jams_path)
+        return load_key_mode(self.jams_path)
 
     @utils.cached_property
     def pitch_contours(self):
         contours = {}
         # iterate over 6 strings
         for i in range(6):
-            contours[_GUITAR_STRINGS[i]] = _load_pitch_contour(self.jams_path, i)
+            contours[_GUITAR_STRINGS[i]] = load_pitch_contour(self.jams_path, i)
         return contours
 
     @utils.cached_property
@@ -229,32 +232,60 @@ class Track(object):
     def audio_mic(self):
         """Load the audio for the 'mic' version of the GuitarSet Track.
         """
-        audio, sr = librosa.load(self.audio_mic_path, sr=None)
+        audio, sr = load_audio(self.audio_mic_path)
         return audio, sr
 
     @property
     def audio_mix(self):
         """Load the audio for the 'mix' version of the GuitarSet Track.
         """
-        audio, sr = librosa.load(self.audio_mix_path, sr=None)
+        audio, sr = load_audio(self.audio_mix_path)
         return audio, sr
 
     @property
     def audio_hex(self):
         """Load the audio for the 'hex' version of the GuitarSet Track.
         """
-        audio, sr = librosa.load(self.audio_hex_path, sr=None, mono=False)
+        audio, sr = load_multitrack_audio(self.audio_hex_path)
         return audio, sr
 
     @property
     def audio_hex_cln(self):
         """Load the audio for the 'hex_cln' version of the GuitarSet Track.
         """
-        audio, sr = librosa.load(self.audio_hex_cln_path, sr=None, mono=False)
+        audio, sr = load_multitrack_audio(self.audio_hex_cln_path)
         return audio, sr
 
     def to_jams(self):
         return jams.load(self.jams_path)
+
+
+def load_audio(audio_path):
+    """Load a Guitarset audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=None, mono=True)
+
+
+def load_multitrack_audio(audio_path):
+    """Load a Guitarset multitrack audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=None, mono=False)
 
 
 def download(data_home=None):
@@ -304,7 +335,7 @@ def validate(data_home=None, silence=False):
 
 def track_ids():
     """Return track ids
-    
+
     Returns:
         (list): A list of track ids
     """
@@ -313,7 +344,7 @@ def track_ids():
 
 def load(data_home=None):
     """Load GuitarSet
-    
+
     Args:
         data_home (str): Local path where GuitarSet is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
@@ -330,7 +361,7 @@ def load(data_home=None):
     return guitarset_data
 
 
-def _load_beats(jams_path):
+def load_beats(jams_path):
     jam = jams.load(jams_path)
     anno = jam.search(namespace='beat_position')[0]
     times, values = anno.to_event_values()
@@ -338,13 +369,16 @@ def _load_beats(jams_path):
     return utils.BeatData(times, positions)
 
 
-def _load_chords(jams_path, leadsheet_version=True):
+def load_chords(jams_path, leadsheet_version=True):
     """
     Args:
         jams_path (str): Path of the jams annotation file
         leadsheet_version (Bool)
             Whether or not to load the leadsheet version of the chord annotation
             If False, load the infered version.
+
+    Returns:
+        (ChordData): Chord data
     """
     jam = jams.load(jams_path)
     if leadsheet_version:
@@ -355,14 +389,14 @@ def _load_chords(jams_path, leadsheet_version=True):
     return utils.ChordData(intervals, values)
 
 
-def _load_key_mode(jams_path):
+def load_key_mode(jams_path):
     jam = jams.load(jams_path)
     anno = jam.search(namespace='key_mode')[0]
     intervals, values = anno.to_interval_values()
     return utils.KeyData(intervals[:, 0], intervals[:, 1], values)
 
 
-def _load_pitch_contour(jams_path, string_num):
+def load_pitch_contour(jams_path, string_num):
     """
     Args:
         jams_path (str): Path of the jams annotation file

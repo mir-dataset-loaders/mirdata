@@ -1,7 +1,7 @@
 .. _example:
 
-Examples
-========
+Basic Example
+=============
 
 First of all, you can install mirdata using `pip`.
 
@@ -19,7 +19,7 @@ Fortunately, we can download Orchset dataset directly.
 .. code-block:: python
     :linenos:
 
-    import mirdata
+    import mirdata.orchset
     # Download the Orchset Dataset
     mirdata.orchset.download()
     # Orchset_dataset_0.zip?download=1: 1.00B [03:05, 185s/B]
@@ -57,7 +57,7 @@ metadata, we could do the following:
     :linenos:
 
     import mir_eval
-    import mirdata
+    import mirdata.orchset
     import numpy as np
     import sox
 
@@ -119,3 +119,57 @@ This is the result of the example above.
                ('Overall Accuracy', 0.036657681940700806)])}}
 
 `very_bad_melody_extractor` performs very badly!
+
+
+Using mirdata with local vs. remote data
+========================================
+
+When using mirdata on the same machine as where your datasets live, we do the loading for you.
+
+For example, to load the melody annotations from Orchset into memory, we can simply call:
+
+.. code-block:: python
+    :linenos:
+
+    import mirdata.orchset
+
+    # Load a single track
+    track = mirdata.orchset.Track('Beethoven-S3-I-ex1')
+    melody_annotation = track.melody
+
+    print(melody_annotation)
+    # F0Data(times=array([0.000e+00, 1.000e-02, 2.000e-02, ..., 1.244e+01, 1.245e+01,
+    #   1.246e+01]), frequencies=array([  0.   ,   0.   ,   0.   , ..., 391.995, 391.995, 391.995]), confidence=array([0., 0., 0., ..., 1., 1., 1.]))
+
+However, if your data lives somewhere else, accessing the annotation will return `None`. Instead, you can use the module's loading functions directly:
+
+.. code-block:: python
+    :linenos:
+
+    import mirdata.orchset
+
+    # Load a single track, specifying the remote location
+    track = mirdata.orchset.Track('Beethoven-S3-I-ex1', data_home='gs://my_custom/remote_path')
+    melody_path = track.melody_path
+
+    print(melody_path)
+    # gs://my_custom/remote_path/GT/Beethoven-S3-I-ex1.mel
+    print(os.path.exists(melody_path))
+    # False
+
+    # write code here to locally download your path e.g. to a temporary file.
+    def my_downloader(remote_path):
+        # the contents of this function will depend on where your data lives, and how permanently you want the files to remain on the machine. We point you to libraries handling common use cases below.
+        # for data you would download via scp, you could use the [scp](https://pypi.org/project/scp/) library
+        # for data on google drive, use [pydrive](https://pythonhosted.org/PyDrive/)
+        # for data on google cloud storage use [google-cloud-storage](https://pypi.org/project/google-cloud-storage/)
+        return local_path_to_downloaded_data
+
+    temp_path = my_downloader(melody_path)
+
+    # call orchset's melody annotation loader
+    melody_annotation = orchset.load_melody(temp_path)
+
+    print(melody_annotation)
+    # F0Data(times=array([0.000e+00, 1.000e-02, 2.000e-02, ..., 1.244e+01, 1.245e+01,
+    #   1.246e+01]), frequencies=array([  0.   ,   0.   ,   0.   , ..., 391.995, 391.995, 391.995]), confidence=array([0., 0., 0., ..., 1., 1., 1.]))

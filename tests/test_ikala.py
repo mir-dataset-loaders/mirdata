@@ -3,45 +3,38 @@ from __future__ import absolute_import
 
 import numpy as np
 
-import os
-import pytest
-
 from mirdata import ikala, utils
-from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_utils import run_track_tests
 
 
 def test_track():
-    # test data home None
-    track_default = ikala.Track('10161_chorus')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'iKala')
-
-    # test data_home where the test data lives
+    default_trackid = '10161_chorus'
     data_home = 'tests/resources/mir_datasets/iKala'
+    track = ikala.Track(default_trackid, data_home=data_home)
 
-    with pytest.raises(ValueError):
-        ikala.Track('asdfasdf', data_home=data_home)
+    expected_attributes = {
+        'track_id': '10161_chorus',
+        'audio_path': 'tests/resources/mir_datasets/iKala/'
+            + 'Wavfile/10161_chorus.wav',
+        'song_id': '10161',
+        'section': 'chorus',
+        'singer_id': '1',
+        'f0_path': 'tests/resources/mir_datasets/iKala/PitchLabel/10161_chorus.pv',
+        'lyrics_path': 'tests/resources/mir_datasets/iKala/Lyrics/10161_chorus.lab',
+    }
 
-    track = ikala.Track('10161_chorus', data_home=data_home)
+    expected_property_types = {
+        'f0': utils.F0Data,
+        'lyrics': utils.LyricData,
+    }
 
-    # test attributes are loaded as expected
-    assert track.track_id == '10161_chorus'
-    assert track._data_home == data_home
     assert track._track_paths == {
         'audio': ['Wavfile/10161_chorus.wav', '278ae003cb0d323e99b9a643c0f2eeda'],
         'pitch': ['PitchLabel/10161_chorus.pv', '0d93a011a9e668fd80673049089bbb14'],
         'lyrics': ['Lyrics/10161_chorus.lab', '79bbeb72b422056fd43be4e8d63319ce'],
     }
-    assert (
-        track.audio_path
-        == 'tests/resources/mir_datasets/iKala/' + 'Wavfile/10161_chorus.wav'
-    )
-    assert track.song_id == '10161'
-    assert track.section == 'chorus'
-    assert track.singer_id == '1'
 
-    # test that cached properties don't fail and have the expected type
-    assert type(track.f0) is utils.F0Data
-    assert type(track.lyrics) is utils.LyricData
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     # test audio loading functions
     vocal, sr_vocal = track.vocal_audio
@@ -94,7 +87,7 @@ def test_to_jams():
 def test_load_f0():
     # load a file which exists
     f0_path = 'tests/resources/mir_datasets/iKala/PitchLabel/10161_chorus.pv'
-    f0_data = ikala._load_f0(f0_path)
+    f0_data = ikala.load_f0(f0_path)
 
     # check types
     assert type(f0_data) == utils.F0Data
@@ -108,14 +101,14 @@ def test_load_f0():
     assert np.array_equal(f0_data.confidence, np.array([0.0, 1.0]))
 
     # load a file which doesn't exist
-    f0_data_none = ikala._load_f0('fake/file/path')
+    f0_data_none = ikala.load_f0('fake/file/path')
     assert f0_data_none is None
 
 
 def test_load_lyrics():
     # load a file without pronunciations
     lyrics_path_simple = 'tests/resources/mir_datasets/iKala/Lyrics/10161_chorus.lab'
-    lyrics_data_simple = ikala._load_lyrics(lyrics_path_simple)
+    lyrics_data_simple = ikala.load_lyrics(lyrics_path_simple)
 
     # check types
     assert type(lyrics_data_simple) is utils.LyricData
@@ -132,7 +125,7 @@ def test_load_lyrics():
 
     # load a file with pronunciations
     lyrics_path_pronun = 'tests/resources/mir_datasets/iKala/Lyrics/10164_chorus.lab'
-    lyrics_data_pronun = ikala._load_lyrics(lyrics_path_pronun)
+    lyrics_data_pronun = ikala.load_lyrics(lyrics_path_pronun)
 
     # check types
     assert type(lyrics_data_pronun) is utils.LyricData
@@ -148,7 +141,7 @@ def test_load_lyrics():
     assert np.array_equal(lyrics_data_pronun.pronunciations, np.array(['t i au', None]))
 
     # load a file which doesn't exist
-    lyrics_data_none = ikala._load_lyrics('fake/path')
+    lyrics_data_none = ikala.load_lyrics('fake/path')
     assert lyrics_data_none is None
 
 

@@ -89,30 +89,41 @@ DATA = utils.LargeData('salami_index.json', _load_metadata)
 
 
 class Track(object):
-    """SALAMI Track class
+    """salami Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
-        audio_path (str): audio path of the track
-        source
-        annotator_1_id
-        annotator_2_id
-        duration: duration of the track
-        title: title of the track
-        artist
-        annotator_1_time
-        annotator_2-time
-        broad_genre
-        genre:
-        sections_annotator_1_uppercase: annotation
-        sections_annotator_1_lowercase: annotation
-        sections_annotator_2_uppercase: annotation
-        sections_annotator_2_lowercase: annotation
+        annotator_1_id (str): number that identifies annotator 1
+        annotator_1_time (str): time that the annotator 1 took to complete the annotation
+        annotator_2_id (str): number that identifies annotator 1
+        annotator_2_time (str): time that the annotator 1 took to complete the annotation
+        artist (str): song artist
+        audio_path (str): path to the audio file
+        broad_genre (str): broad genre of the song
+        duration (float): duration of song in seconds
+        genre (str): genre of the song
+        sections_annotator1_lowercase_path (str): path to annotations in hierarchy level 1 from annotator 1
+        sections_annotator1_uppercase_path (str): path to annotations in hierarchy level 0 from annotator 1
+        sections_annotator2_lowercase_path (str): path to annotations in hierarchy level 1 from annotator 2
+        sections_annotator2_uppercase_path (str): path to annotations in hierarchy level 0 from annotator 2
+        source (str): dataset or source of song
+        title (str): title of the song
+
+    Cached Properties:
+        sections_annotator_1_lowercase (SectionData): annotations in hierarchy level 1 from annotator 1
+        sections_annotator_1_uppercase (SectionData): annotations in hierarchy level 0 from annotator 1
+        sections_annotator_2_lowercase (SectionData): annotations in hierarchy level 1 from annotator 2
+        sections_annotator_2_uppercase (SectionData): annotations in hierarchy level 0 from annotator 2
+
+    Properties:
+        audio: audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
 
     """
 
@@ -127,6 +138,18 @@ class Track(object):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
+        self.sections_annotator1_uppercase_path = utils.none_path_join(
+            [self._data_home, self._track_paths['annotator_1_uppercase'][0]]
+        )
+        self.sections_annotator1_lowercase_path = utils.none_path_join(
+            [self._data_home, self._track_paths['annotator_1_lowercase'][0]]
+        )
+        self.sections_annotator2_uppercase_path = utils.none_path_join(
+            [self._data_home, self._track_paths['annotator_2_uppercase'][0]]
+        )
+        self.sections_annotator2_lowercase_path = utils.none_path_join(
+            [self._data_home, self._track_paths['annotator_2_lowercase'][0]]
+        )
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata.keys():
@@ -185,39 +208,31 @@ class Track(object):
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
-        if self._track_paths['annotator_1_uppercase'][0] is None:
+        if self.sections_annotator1_uppercase_path is None:
             return None
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['annotator_1_uppercase'][0])
-        )
+        return load_sections(self.sections_annotator1_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
-        if self._track_paths['annotator_1_lowercase'][0] is None:
+        if self.sections_annotator1_lowercase_path is None:
             return None
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['annotator_1_lowercase'][0])
-        )
+        return load_sections(self.sections_annotator1_lowercase_path)
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
-        if self._track_paths['annotator_2_uppercase'][0] is None:
+        if self.sections_annotator2_uppercase_path is None:
             return None
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['annotator_2_uppercase'][0])
-        )
+        return load_sections(self.sections_annotator2_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
-        if self._track_paths['annotator_2_lowercase'][0] is None:
+        if self.sections_annotator2_lowercase_path is None:
             return None
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['annotator_2_lowercase'][0])
-        )
+        return load_sections(self.sections_annotator2_lowercase_path)
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=None, mono=True)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         return jams_utils.jams_converter(
@@ -239,6 +254,20 @@ class Track(object):
             ],
             metadata=self._track_metadata,
         )
+
+
+def load_audio(audio_path):
+    """Load a Salami audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=None, mono=True)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -327,7 +356,7 @@ def load(data_home=None):
     return salami_data
 
 
-def _load_sections(sections_path):
+def load_sections(sections_path):
     if sections_path is None or not os.path.exists(sections_path):
         return None
 
