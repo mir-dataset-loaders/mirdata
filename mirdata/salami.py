@@ -97,31 +97,30 @@ class Track(object):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        annotator_1_id (str): TODO
-        annotator_1_time (str): TODO
-        annotator_2_id (str): TODO
-        annotator_2_time (str): TODO
-        artist (str): TODO
-        audio_path (str): TODO
-        broad_genre (str): TODO
-        duration (float): TODO
-        genre (str): TODO
-        sections_annotator1_lowercase_path (str): TODO
-        sections_annotator1_uppercase_path (str): TODO
-        sections_annotator2_lowercase_path (str): TODO
-        sections_annotator2_uppercase_path (str): TODO
-        source (str): TODO
-        title (str): TODO
-        track_id (str): track id
+        annotator_1_id (str): number that identifies annotator 1
+        annotator_1_time (str): time that the annotator 1 took to complete the annotation
+        annotator_2_id (str): number that identifies annotator 1
+        annotator_2_time (str): time that the annotator 1 took to complete the annotation
+        artist (str): song artist
+        audio_path (str): path to the audio file
+        broad_genre (str): broad genre of the song
+        duration (float): duration of song in seconds
+        genre (str): genre of the song
+        sections_annotator1_lowercase_path (str): path to annotations in hierarchy level 1 from annotator 1
+        sections_annotator1_uppercase_path (str): path to annotations in hierarchy level 0 from annotator 1
+        sections_annotator2_lowercase_path (str): path to annotations in hierarchy level 1 from annotator 2
+        sections_annotator2_uppercase_path (str): path to annotations in hierarchy level 0 from annotator 2
+        source (str): dataset or source of song
+        title (str): title of the song
 
     Cached Properties:
-        sections_annotator_1_lowercase (SectionData): TODO
-        sections_annotator_1_uppercase (SectionData): TODO
-        sections_annotator_2_lowercase (SectionData): TODO
-        sections_annotator_2_uppercase (SectionData): TODO
+        sections_annotator_1_lowercase (SectionData): annotations in hierarchy level 1 from annotator 1
+        sections_annotator_1_uppercase (SectionData): annotations in hierarchy level 0 from annotator 1
+        sections_annotator_2_lowercase (SectionData): annotations in hierarchy level 1 from annotator 2
+        sections_annotator_2_uppercase (SectionData): annotations in hierarchy level 0 from annotator 2
 
     Properties:
-        audio: TODO
+        audio: audio signal, sample rate
 
     Methods:
         to_jams: converts the track's data to jams format
