@@ -1,56 +1,40 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
-import os
-import pytest
-
 from mirdata import rwc_jazz, utils
-from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_utils import run_track_tests
 
 
 def test_track():
-    # test data home None
-    track_default = rwc_jazz.Track('RM-J004')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'RWC-Jazz')
 
-    # test data_home where the test data lives
+    default_trackid = 'RM-J004'
     data_home = 'tests/resources/mir_datasets/RWC-Jazz'
+    track = rwc_jazz.Track(default_trackid, data_home=data_home)
 
-    with pytest.raises(ValueError):
-        rwc_jazz.Track('asdfasdf', data_home=data_home)
-
-    track = rwc_jazz.Track('RM-J004', data_home=data_home)
-
-    # test attributes are loaded as expected
-    assert track.track_id == 'RM-J004'
-    assert track._data_home == data_home
-    assert track._track_paths == {
-        'audio': ['audio/rwc-j-m01/4.wav', '7887ad17b7e4dcad9aa4605482e36cfa'],
-        'sections': [
-            'annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT',
-            '59cd67199cce9da16283b85338e5a9af',
-        ],
-        'beats': [
-            'annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT',
-            'f3159206ae2f0aa86901248148f4021f',
-        ],
+    expected_attributes = {
+        'track_id': 'RM-J004',
+        'audio_path': 'tests/resources/mir_datasets/RWC-Jazz/'
+            + 'audio/rwc-j-m01/4.wav',
+        'sections_path': 'tests/resources/mir_datasets/RWC-Jazz/'
+            + 'annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT',
+        'beats_path': 'tests/resources/mir_datasets/RWC-Jazz/'
+            + 'annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT',
+        'piece_number': 'No. 4',
+        'suffix': 'M01',
+        'track_number': 'Tr. 04',
+        'title': 'Crescent Serenade (Piano Solo)',
+        'artist': 'Makoto Nakamura',
+        'duration': 167,
+        'variation': 'Instrumentation 1',
+        'instruments': 'Pf',
     }
-    assert (
-        track.audio_path
-        == 'tests/resources/mir_datasets/RWC-Jazz/' + 'audio/rwc-j-m01/4.wav'
-    )
-    assert track.piece_number == 'No. 4'
-    assert track.suffix == 'M01'
-    assert track.track_number == 'Tr. 04'
-    assert track.title == 'Crescent Serenade (Piano Solo)'
-    assert track.artist == 'Makoto Nakamura'
-    assert track.duration == 167
-    assert track.variation == 'Instrumentation 1'
-    assert track.instruments == 'Pf'
 
-    # test that cached properties don't fail and have the expected type
-    assert type(track.sections) is utils.SectionData
-    assert type(track.beats) is utils.BeatData
+    expected_property_types = {
+        'beats': utils.BeatData,
+        'sections': utils.SectionData
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     # test audio loading functions
     y, sr = track.audio

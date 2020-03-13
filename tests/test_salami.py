@@ -2,64 +2,48 @@
 from __future__ import absolute_import
 
 import numpy as np
-import os
-import pytest
 from mirdata import salami, utils
-from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_utils import run_track_tests
 
 
 def test_track():
-    # test data home None
-    track_default = salami.Track('2')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'Salami')
 
-    # test specific data home
+    default_trackid = '2'
     data_home = 'tests/resources/mir_datasets/Salami'
+    track = salami.Track(default_trackid, data_home=data_home)
 
-    with pytest.raises(ValueError):
-        salami.Track('asdfasdf', data_home=data_home)
-
-    track = salami.Track('2', data_home=data_home)
-
-    # test attributes are loaded as expected
-    assert track.track_id == '2'
-    assert track._data_home == data_home
-    assert track._track_paths == {
-        'audio': ['audio/2.mp3', '76789a17bda0dd4d1d7e77424099c814'],
-        'annotator_1_uppercase': [
-            'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt',
-            '54ba0804f720d85d195dcd7ffaec0794',
-        ],
-        'annotator_1_lowercase': [
-            'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt',
-            '30ff127ff68c61039b94a44ab6ddda34',
-        ],
-        'annotator_2_uppercase': [
-            'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt',
-            'e9dca8577f028d3505ff1e5801397b2f',
-        ],
-        'annotator_2_lowercase': [
-            'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt',
-            '546a783c7b8bf96f2d718c7a4f114699',
-        ],
+    expected_attributes = {
+        'track_id': '2',
+        'audio_path': 'tests/resources/mir_datasets/Salami/'
+            + 'audio/2.mp3',
+        'sections_annotator1_uppercase_path': 'tests/resources/mir_datasets/Salami/'
+            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt',
+        'sections_annotator1_lowercase_path': 'tests/resources/mir_datasets/Salami/'
+            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt',
+        'sections_annotator2_uppercase_path': 'tests/resources/mir_datasets/Salami/'
+            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt',
+        'sections_annotator2_lowercase_path': 'tests/resources/mir_datasets/Salami/'
+            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt',
+        'source': 'Codaich',
+        'annotator_1_id': '5',
+        'annotator_2_id': '8',
+        'duration': 264,
+        'title': 'For_God_And_Country',
+        'artist': 'The_Smashing_Pumpkins',
+        'annotator_1_time': '37',
+        'annotator_2_time': '45',
+        'broad_genre': 'popular',
+        'genre': 'Alternative_Pop___Rock',
     }
-    assert track.audio_path == 'tests/resources/mir_datasets/Salami/' + 'audio/2.mp3'
-    assert track.source == 'Codaich'
-    assert track.annotator_1_id == '5'
-    assert track.annotator_2_id == '8'
-    assert track.duration == 264
-    assert track.title == 'For_God_And_Country'
-    assert track.artist == 'The_Smashing_Pumpkins'
-    assert track.annotator_1_time == '37'
-    assert track.annotator_2_time == '45'
-    assert track.broad_genre == 'popular'
-    assert track.genre == 'Alternative_Pop___Rock'
 
-    # test that cached properties don't fail and have the expected type
-    assert type(track.sections_annotator_1_uppercase) is utils.SectionData
-    assert type(track.sections_annotator_1_lowercase) is utils.SectionData
-    assert type(track.sections_annotator_2_uppercase) is utils.SectionData
-    assert type(track.sections_annotator_2_lowercase) is utils.SectionData
+    expected_property_types = {
+        'sections_annotator_1_uppercase': utils.SectionData,
+        'sections_annotator_1_lowercase': utils.SectionData,
+        'sections_annotator_2_uppercase': utils.SectionData,
+        'sections_annotator_2_lowercase': utils.SectionData,
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     # test audio loading functions
     y, sr = track.audio
@@ -207,7 +191,7 @@ def test_load_sections():
         'tests/resources/mir_datasets/Salami/'
         + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt'
     )
-    section_data = salami._load_sections(sections_path)
+    section_data = salami.load_sections(sections_path)
 
     # check types
     assert type(section_data) == utils.SectionData
@@ -228,11 +212,11 @@ def test_load_sections():
     )
 
     # load a file which doesn't exist
-    section_data_none = salami._load_sections('fake/file/path')
+    section_data_none = salami.load_sections('fake/file/path')
     assert section_data_none is None
 
     # load none
-    section_data_none2 = salami._load_sections('asdf/asdf')
+    section_data_none2 = salami.load_sections('asdf/asdf')
     assert section_data_none2 is None
 
 

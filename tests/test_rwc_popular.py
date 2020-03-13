@@ -2,68 +2,49 @@
 from __future__ import absolute_import
 
 import numpy as np
-import os
-import pytest
 
 from mirdata import rwc_popular, utils
-from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_utils import run_track_tests
 
 
 def test_track():
-    # test data home None
-    track_default = rwc_popular.Track('RM-P001')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'RWC-Popular')
 
-    # test data_home where the test data lives
+    default_trackid = 'RM-P001'
     data_home = 'tests/resources/mir_datasets/RWC-Popular'
+    track = rwc_popular.Track(default_trackid, data_home=data_home)
 
-    with pytest.raises(ValueError):
-        rwc_popular.Track('asdfasdf', data_home=data_home)
-
-    track = rwc_popular.Track('RM-P001', data_home=data_home)
-
-    # test attributes are loaded as expected
-    assert track.track_id == 'RM-P001'
-    assert track._data_home == data_home
-    assert track._track_paths == {
-        'audio': ['audio/rwc-p-m01/1.wav', '110ac7edb20dbe9a75ffe81b2bfeecef'],
-        'sections': [
-            'annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT',
-            '2d735867d44c4f8677b48746b5eb324d',
-        ],
-        'beats': [
-            'annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT',
-            '523231aebfea1cc62bad575cda3f704b',
-        ],
-        'chords': [
-            'annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab',
-            '2a8b1d320bb88f710be3bff4339db99b',
-        ],
-        'voca_inst': [
-            'annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT',
-            'f3ee36598a8bb9e367d25e0ff99850c7',
-        ],
+    expected_attributes = {
+        'track_id': 'RM-P001',
+        'audio_path': 'tests/resources/mir_datasets/RWC-Popular/'
+            + 'audio/rwc-p-m01/1.wav',
+        'sections_path': 'tests/resources/mir_datasets/RWC-Popular/'
+            + 'annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT',
+        'beats_path': 'tests/resources/mir_datasets/RWC-Popular/'
+            + 'annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT',
+        'chords_path': 'tests/resources/mir_datasets/RWC-Popular/'
+            + 'annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab',
+        'voca_inst_path': 'tests/resources/mir_datasets/RWC-Popular/'
+            + 'annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT',
+        'piece_number': 'No. 1',
+        'suffix': 'M01',
+        'track_number': 'Tr. 01',
+        'title': 'Eien no replica',
+        'artist': 'Kazuo Nishi',
+        'singer_information': 'Male',
+        'duration': 209,
+        'tempo': '135',
+        'instruments': 'Gt',
+        'drum_information': 'Drum sequences',
     }
-    assert (
-        track.audio_path
-        == 'tests/resources/mir_datasets/RWC-Popular/' + 'audio/rwc-p-m01/1.wav'
-    )
-    assert track.piece_number == 'No. 1'
-    assert track.suffix == 'M01'
-    assert track.track_number == 'Tr. 01'
-    assert track.title == 'Eien no replica'
-    assert track.artist == 'Kazuo Nishi'
-    assert track.singer_information == 'Male'
-    assert track.duration == 209
-    assert track.tempo == '135'
-    assert track.instruments == 'Gt'
-    assert track.drum_information == 'Drum sequences'
 
-    # test that cached properties don't fail and have the expected type
-    assert type(track.sections) is utils.SectionData
-    assert type(track.beats) is utils.BeatData
-    assert type(track.chords) is utils.ChordData
-    assert type(track.vocal_instrument_activity) is utils.EventData
+    expected_property_types = {
+        'beats': utils.BeatData,
+        'sections': utils.SectionData,
+        'chords': utils.ChordData,
+        'vocal_instrument_activity': utils.EventData,
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     # test audio loading functions
     y, sr = track.audio
@@ -157,7 +138,7 @@ def test_load_chords():
         'tests/resources/mir_datasets/RWC-Popular/'
         + 'annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab'
     )
-    chord_data = rwc_popular._load_chords(chords_path)
+    chord_data = rwc_popular.load_chords(chords_path)
 
     # check types
     assert type(chord_data) is utils.ChordData
@@ -176,7 +157,7 @@ def test_load_chords():
     )
 
     # load a file which doesn't exist
-    chord_data_none = rwc_popular._load_chords('fake/path')
+    chord_data_none = rwc_popular.load_chords('fake/path')
     assert chord_data_none is None
 
 
@@ -185,7 +166,7 @@ def test_load_voca_inst():
         'tests/resources/mir_datasets/RWC-Popular/'
         + 'annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT'
     )
-    vocinst_data = rwc_popular._load_voca_inst(vocinst_path)
+    vocinst_data = rwc_popular.load_voca_inst(vocinst_path)
 
     # check types
     assert type(vocinst_data) is utils.EventData
@@ -232,7 +213,7 @@ def test_load_voca_inst():
     )
 
     # load a file which doesn't exist
-    vocainst_data_none = rwc_popular._load_voca_inst('fake/path')
+    vocainst_data_none = rwc_popular.load_voca_inst('fake/path')
     assert vocainst_data_none is None
 
 

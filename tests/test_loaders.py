@@ -6,8 +6,10 @@ from inspect import signature
 import io
 import os
 import sys
+import pytest
 
 import mirdata
+from tests.test_utils import DEFAULT_DATA_HOME
 
 DATASETS = [importlib.import_module("mirdata.{}".format(d)) for d in mirdata.__all__]
 
@@ -34,6 +36,7 @@ def test_validate():
         data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
         dataset.validate(data_home=data_home)
         dataset.validate(data_home=data_home, silence=True)
+        dataset.validate(data_home=None, silence=True)
 
 
 def test_load_and_trackids():
@@ -50,3 +53,21 @@ def test_load_and_trackids():
         dataset_data_default = dataset.load()
         assert type(dataset_data_default) is dict
         assert len(dataset_data_default.keys()) == trackid_len
+
+
+def test_track():
+    for dataset in DATASETS:
+        print(str(dataset))
+        trackid = dataset.track_ids()[0]
+
+        # test data home None
+        track_default = dataset.Track(trackid)
+        assert track_default._data_home == os.path.join(
+            DEFAULT_DATA_HOME, dataset.DATASET_DIR)
+        assert hasattr(track_default, 'to_jams')
+
+        with pytest.raises(ValueError):
+            dataset.Track('~faketrackid~?!')
+
+        track_custom = dataset.Track(trackid, data_home='casa/de/data')
+        assert track_custom._data_home == 'casa/de/data'

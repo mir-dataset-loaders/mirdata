@@ -78,21 +78,33 @@ DATA = utils.LargeData('ikala_index.json', _load_metadata)
 
 
 class Track(object):
-    """iKala track class
+    """ikala Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): track id
-        audio_path (str): track audio path
-        song_id (str): song id of the track
+        audio_path (str): path to the track's audio file
+        f0_path (str): path to the track's f0 annotation file
+        lyrics_path (str): path to the track's lyric annotation file
         section (str): section. Either 'verse' or 'chorus'
         singer_id (str): singer id
-        f0 (F0Data): pitch
-        lyrics (LyricData): lyrics
+        song_id (str): song id of the track
+        track_id (str): track id
+
+    Cached Properties:
+        f0 (F0Data): The human-annotated singing voice pitch
+        lyrics (LyricData): The human-annotated lyrics
+
+    Properties:
+        instrumental_audio: mono instrumental audio signal, sample rate
+        mix_audio: mono mixture audio signal, sample rate
+        vocal_audio: mono vocal audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
 
     """
 
@@ -109,6 +121,8 @@ class Track(object):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
+        self.f0_path = os.path.join(self._data_home, self._track_paths['pitch'][0])
+        self.lyrics_path = os.path.join(self._data_home, self._track_paths['lyrics'][0])
 
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.song_id = track_id.split('_')[0]
@@ -132,13 +146,11 @@ class Track(object):
 
     @utils.cached_property
     def f0(self):
-        return _load_f0(os.path.join(self._data_home, self._track_paths['pitch'][0]))
+        return load_f0(self.f0_path)
 
     @utils.cached_property
     def lyrics(self):
-        return _load_lyrics(
-            os.path.join(self._data_home, self._track_paths['lyrics'][0])
-        )
+        return load_lyrics(self.lyrics_path)
 
     @property
     def vocal_audio(self):
@@ -148,9 +160,7 @@ class Track(object):
             vocal_channel (np.array): vocal audio. size of `(N, )`
             sr (int): sampling rate of the audio file
         """
-        audio, sr = librosa.load(self.audio_path, sr=None, mono=False)
-        vocal_channel = audio[1, :]
-        return vocal_channel, sr
+        return load_vocal_audio(self.audio_path)
 
     @property
     def instrumental_audio(self):
@@ -160,9 +170,7 @@ class Track(object):
             instrumental_channel (np.array): vocal audio. size of `(N, )`
             sr (int): sampling rate of the audio file
         """
-        audio, sr = librosa.load(self.audio_path, sr=None, mono=False)
-        instrumental_channel = audio[0, :]
-        return instrumental_channel, sr
+        return load_instrumental_audio(self.audio_path)
 
     @property
     def mix_audio(self):
@@ -172,9 +180,7 @@ class Track(object):
             mixed_audio (np.array): vocal audio. size of `(2, N)`
             sr (int): sampling rate of the audio file
         """
-        mixed_audio, sr = librosa.load(self.audio_path, sr=None, mono=True)
-        # multipy by 2 because librosa averages the left and right channel.
-        return 2.0 * mixed_audio, sr
+        return load_mix_audio(self.audio_path)
 
     def to_jams(self):
         return jams_utils.jams_converter(
@@ -187,6 +193,54 @@ class Track(object):
                 'song_id': self.song_id,
             },
         )
+
+
+def load_vocal_audio(audio_path):
+    """Load an ikala vocal.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    audio, sr = librosa.load(audio_path, sr=None, mono=False)
+    vocal_channel = audio[1, :]
+    return vocal_channel, sr
+
+
+def load_instrumental_audio(audio_path):
+    """Load an ikala instrumental.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    audio, sr = librosa.load(audio_path, sr=None, mono=False)
+    instrumental_channel = audio[0, :]
+    return instrumental_channel, sr
+
+
+def load_mix_audio(audio_path):
+    """Load an ikala mix.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    mixed_audio, sr = librosa.load(audio_path, sr=None, mono=True)
+    # multipy by 2 because librosa averages the left and right channel.
+    return 2.0 * mixed_audio, sr
 
 
 def download(data_home=None, force_overwrite=False):
@@ -277,7 +331,7 @@ def load(data_home=None):
     return ikala_data
 
 
-def _load_f0(f0_path):
+def load_f0(f0_path):
     if not os.path.exists(f0_path):
         return None
 
@@ -291,7 +345,7 @@ def _load_f0(f0_path):
     return f0_data
 
 
-def _load_lyrics(lyrics_path):
+def load_lyrics(lyrics_path):
     if not os.path.exists(lyrics_path):
         return None
     # input: start time (ms), end time (ms), lyric, [pronunciation]

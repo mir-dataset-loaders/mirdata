@@ -13,6 +13,8 @@ This library provides tools for working with common MIR datasets, including tool
 * loading annotation files to a common format, consistent with the format required by [mir_eval](https://github.com/craffel/mir_eval)
 * parsing track level metadata for detailed evaluations
 
+![](mirdata_example.gif)
+
 ## Installation
 
 To install, simply run:
@@ -52,28 +54,28 @@ within a relevant function, e.g. `mirdata.orchset.download(data_home='my_custom_
 
 ### Download the Orchset Dataset
 ```python
-import mirdata
+import mirdata.orchset
 
 mirdata.orchset.download()
 ```
 
 ### Validate the data
 ```python
-import mirdata
+import mirdata.orchset
 
 mirdata.orchset.validate()
 ```
 
 ### Load the Orchset Dataset
 ```python
-import mirdata
+import mirdata.orchset
 
 orchset_data = mirdata.orchset.load()
 ```
 
 ### See what data are available for a track
 ```python
-import mirdata
+import mirdata.orchset
 
 orchset_ids = mirdata.orchset.track_ids()
 orchset_data = mirdata.orchset.load()
@@ -104,7 +106,7 @@ print(example_track)
 ### Evaluate a melody extraction algorithm on Orchset
 ```python
 import mir_eval
-import mirdata
+import mirdata.orchset
 import numpy as np
 import sox
 

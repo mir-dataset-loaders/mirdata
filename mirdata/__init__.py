@@ -18,7 +18,7 @@ __all__ = [
     'orchset',
     'rwc_classical',
     'rwc_jazz',
-    'rwc_classical',
+    'rwc_popular',
     'salami',
     'tinysol',
 ]

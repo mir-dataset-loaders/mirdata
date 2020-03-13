@@ -86,27 +86,38 @@ DATA = utils.LargeData('rwc_classical_index.json', _load_metadata)
 
 
 class Track(object):
-    """RWC Classical Track class
+    """rwc_classical Track class
 
     Args:
-        track_id (str): Track id of the Track
-        data_home (str): Local path where the dataset is stored.
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): Track id
-        audio_path (str): Audio path of this Track
-        piece_number (str): Piece number of this Track, [1-50]
-        suffix (str): M01-M06
-        track_number: CD track number of this Track
-        title (str): Title of The track.
-            E.g., 'Symphony no.94 in G major, Hob.I-94 `The Surprise'. 1st mvmt.'
+        artist (str): the track's artist
+        audio_path (str): path of the audio file
+        beats_path (str): path of the beat annotation file
+        category (str): One of 'Symphony', 'Concerto', 'Orchestral',
+            'Solo', 'Chamber', 'Vocal', or blank.
         composer (str): Composer of this Track.
-            E.g., 'Haydn, Franz Joseph'
-        artist (str): E.g., 'Tokyo City Philharmonic Orchestra'
-        duration_sec (float): Duration of the track in seconds
-        category (str): 'Symphony', 'Concerto', 'Orchestral',
-            'Solo', 'Chamber', 'Vocal', or blank.\
+        duration (float): Duration of the track in seconds
+        piece_number (str): Piece number of this Track, [1-50]
+        sections_path (str): path of the section annotation file
+        suffix (str): string within M01-M06
+        title (str): Title of The track.
+        track_id (str): track id
+        track_number (str): CD track number of this Track
+
+    Cached Properties:
+        beats (BeatData): human labeled beat annotations
+        sections (SectionData): human labeled section annotations
+
+    Properties:
+        audio: audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
     """
 
     def __init__(self, track_id, data_home=None):
@@ -122,6 +133,10 @@ class Track(object):
         self._data_home = data_home
 
         self._track_paths = DATA.index[track_id]
+        self.sections_path = os.path.join(
+            self._data_home, self._track_paths['sections'][0]
+        )
+        self.beats_path = os.path.join(self._data_home, self._track_paths['beats'][0])
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -172,17 +187,15 @@ class Track(object):
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['sections'][0])
-        )
+        return load_sections(self.sections_path)
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(self._data_home, self._track_paths['beats'][0]))
+        return load_beats(self.beats_path)
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=None, mono=True)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         return jams_utils.jams_converter(
@@ -190,6 +203,20 @@ class Track(object):
             section_data=[(self.sections, None)],
             metadata=self._track_metadata,
         )
+
+
+def load_audio(audio_path):
+    """Load a RWC audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    return librosa.load(audio_path, sr=None, mono=True)
 
 
 def download(data_home=None, force_overwrite=False):
@@ -270,7 +297,7 @@ def load(data_home=None):
     return rwc_classical_data
 
 
-def _load_sections(sections_path):
+def load_sections(sections_path):
     if not os.path.exists(sections_path):
         return None
     begs = []  # timestamps of section beginnings
@@ -316,7 +343,7 @@ def _position_in_bar(beat_positions, beat_times):
     return beat_positions_corrected, beat_times_corrected
 
 
-def _load_beats(beats_path):
+def load_beats(beats_path):
     if not os.path.exists(beats_path):
         return None
     beat_times = []  # timestamps of beat interval beginnings

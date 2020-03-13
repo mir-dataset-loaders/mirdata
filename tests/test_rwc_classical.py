@@ -3,56 +3,39 @@ from __future__ import absolute_import
 
 import numpy as np
 
-import os
-import pytest
-
 from mirdata import rwc_classical, utils
-from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_utils import run_track_tests
 
 
 def test_track():
-    # test data home None
-    track_default = rwc_classical.Track('RM-C003')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'RWC-Classical')
-
-    # test data_home where the test data lives
+    default_trackid = 'RM-C003'
     data_home = 'tests/resources/mir_datasets/RWC-Classical'
+    track = rwc_classical.Track(default_trackid, data_home=data_home)
 
-    with pytest.raises(ValueError):
-        rwc_classical.Track('asdfasdf', data_home=data_home)
-
-    track = rwc_classical.Track('RM-C003', data_home=data_home)
-
-    # test attributes are loaded as expected
-    assert track.track_id == 'RM-C003'
-    assert track._data_home == data_home
-    assert track._track_paths == {
-        'audio': ['audio/rwc-c-m01/3.wav', 'a2f1accd0ae6ba4364069b3370a57578'],
-        'sections': [
-            'annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT',
-            '9805083e55f2547559ebdfa5f97ccb0e',
-        ],
-        'beats': [
-            'annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT',
-            '3deaf6102c54c04596182ba904375e19',
-        ],
+    expected_attributes = {
+        'track_id': 'RM-C003',
+        'audio_path': 'tests/resources/mir_datasets/RWC-Classical/'
+            + 'audio/rwc-c-m01/3.wav',
+        'sections_path': 'tests/resources/mir_datasets/RWC-Classical/'
+            + 'annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT',
+        'beats_path': 'tests/resources/mir_datasets/RWC-Classical/'
+            + 'annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT',
+        'piece_number': 'No. 3',
+        'suffix': 'M01',
+        'track_number': 'Tr. 03',
+        'title': 'Symphony no.5 in C minor, op.67. 1st mvmt.',
+        'composer': 'Beethoven, Ludwig van',
+        'artist': 'Tokyo City Philharmonic Orchestra',
+        'duration': 435,
+        'category': 'Symphony',
     }
-    assert (
-        track.audio_path
-        == 'tests/resources/mir_datasets/RWC-Classical/' + 'audio/rwc-c-m01/3.wav'
-    )
-    assert track.piece_number == 'No. 3'
-    assert track.suffix == 'M01'
-    assert track.track_number == 'Tr. 03'
-    assert track.title == 'Symphony no.5 in C minor, op.67. 1st mvmt.'
-    assert track.composer == 'Beethoven, Ludwig van'
-    assert track.artist == 'Tokyo City Philharmonic Orchestra'
-    assert track.duration == 435
-    assert track.category == 'Symphony'
 
-    # test that cached properties don't fail and have the expected type
-    assert type(track.sections) is utils.SectionData
-    assert type(track.beats) is utils.BeatData
+    expected_property_types = {
+        'beats': utils.BeatData,
+        'sections': utils.SectionData
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     # test audio loading functions
     y, sr = track.audio
@@ -117,7 +100,7 @@ def test_load_sections():
         'tests/resources/mir_datasets/RWC-Classical/'
         + 'annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT'
     )
-    section_data = rwc_classical._load_sections(section_path)
+    section_data = rwc_classical.load_sections(section_path)
 
     # check types
     assert type(section_data) == utils.SectionData
@@ -130,7 +113,7 @@ def test_load_sections():
     assert np.array_equal(section_data.labels, np.array(['chorus A', 'ending']))
 
     # load a file which doesn't exist
-    section_data_none = rwc_classical._load_sections('fake/file/path')
+    section_data_none = rwc_classical.load_sections('fake/file/path')
     assert section_data_none is None
 
 
@@ -191,7 +174,7 @@ def test_load_beats():
         'tests/resources/mir_datasets/RWC-Classical/'
         + 'annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT'
     )
-    beat_data = rwc_classical._load_beats(beats_path)
+    beat_data = rwc_classical.load_beats(beats_path)
 
     # check types
     assert type(beat_data) is utils.BeatData
@@ -205,7 +188,7 @@ def test_load_beats():
     assert np.array_equal(beat_data.beat_positions, np.array([2, 1, 2, 1, 2, 1, 2, 1]))
 
     # load a file which doesn't exist
-    beats_data_none = rwc_classical._load_beats('fake/path')
+    beats_data_none = rwc_classical.load_beats('fake/path')
     assert beats_data_none is None
 
 

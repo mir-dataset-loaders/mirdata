@@ -7,7 +7,6 @@ Attributes:
 
 """
 import csv
-import librosa
 import logging
 import numpy as np
 import os
@@ -17,7 +16,12 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 # these functions are identical for all rwc datasets
-from mirdata.rwc_classical import _load_beats, _load_sections, _duration_to_sec
+from mirdata.rwc_classical import (
+    load_beats,
+    load_sections,
+    load_audio,
+    _duration_to_sec,
+)
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-p.csv',
@@ -101,27 +105,44 @@ DATA = utils.LargeData('rwc_popular_index.json', _load_metadata)
 
 
 class Track(object):
-    """RWC Popular Track class
+    """rwc_popular Track class
 
     Args:
-        track_id (str): Track id of the Track
-        data_home (str): Local path where the dataset is stored.
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored. default=None
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        track_id (str): Track id
-        audio_path (str): Audio path of this Track
-        piece_number (str): Piece number of this Track, [1-50]
-        suffix (str): M01-M04
-        track_number: CD track number of this Track
-        title (str): Title of The track.
-        artist (str): Artist name with the vocal's gender
-            E.g., 'Makoto Nakamura'
-        duration_sec (float): Duration of the track in seconds
-        tempo (float): Tempo of the track in BPM
-        instruments (list): List of used instruments
+        artist (str): artist
+        audio_path (str): path of the audio file
+        beats_path (str): path of the beat annotation file
+        chords_path (str): path of the chord annotation file
         drum_information (str): If the drum is 'Drum sequences', 'Live drums',
             or 'Drum loops'
+        duration (float): Duration of the track in seconds
+        instruments (str): List of used instruments
+        piece_number (str): Piece number, [1-50]
+        sections_path (str): path of the section annotation file
+        singer_information (str): TODO
+        suffix (str): M01-M04
+        tempo (str): Tempo of the track in BPM
+        title (str): title
+        track_id (str): track id
+        track_number (str): CD track number
+        voca_inst_path (str): path of the vocal/instrumental annotation file
+
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotation
+        chords (ChordData): human-labeled chord annotation
+        sections (SectionData): human-labeled section annotation
+        vocal_instrument_activity (EventData): human-labeled vocal/instrument activity
+
+    Properties:
+        audio: audio signal, sample rate
+
+    Methods:
+        to_jams: converts the track's data to jams format
+
     """
 
     def __init__(self, track_id, data_home=None):
@@ -137,6 +158,14 @@ class Track(object):
         self._data_home = data_home
 
         self._track_paths = DATA.index[track_id]
+        self.sections_path = os.path.join(
+            self._data_home, self._track_paths['sections'][0]
+        )
+        self.beats_path = os.path.join(self._data_home, self._track_paths['beats'][0])
+        self.chords_path = os.path.join(self._data_home, self._track_paths['chords'][0])
+        self.voca_inst_path = os.path.join(
+            self._data_home, self._track_paths['voca_inst'][0]
+        )
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -197,29 +226,23 @@ class Track(object):
 
     @utils.cached_property
     def sections(self):
-        return _load_sections(
-            os.path.join(self._data_home, self._track_paths['sections'][0])
-        )
+        return load_sections(self.sections_path)
 
     @utils.cached_property
     def beats(self):
-        return _load_beats(os.path.join(self._data_home, self._track_paths['beats'][0]))
+        return load_beats(self.beats_path)
 
     @utils.cached_property
     def chords(self):
-        return _load_chords(
-            os.path.join(self._data_home, self._track_paths['chords'][0])
-        )
+        return load_chords(self.chords_path)
 
     @utils.cached_property
     def vocal_instrument_activity(self):
-        return _load_voca_inst(
-            os.path.join(self._data_home, self._track_paths['voca_inst'][0])
-        )
+        return load_voca_inst(self.voca_inst_path)
 
     @property
     def audio(self):
-        return librosa.load(self.audio_path, sr=None, mono=True)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         return jams_utils.jams_converter(
@@ -314,7 +337,7 @@ def load(data_home=None):
     return rwc_popular_data
 
 
-def _load_chords(chords_path):
+def load_chords(chords_path):
     if not os.path.exists(chords_path):
         return None
     begs = []  # timestamps of chord beginnings
@@ -332,7 +355,7 @@ def _load_chords(chords_path):
     return utils.ChordData(np.array([begs, ends]).T, chords)
 
 
-def _load_voca_inst(voca_inst_path):
+def load_voca_inst(voca_inst_path):
     if not os.path.exists(voca_inst_path):
         return None
     begs = []  # timestamps of vocal-instrument activity beginnings
