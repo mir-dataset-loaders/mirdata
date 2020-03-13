@@ -157,7 +157,14 @@ However, if your data lives somewhere else, accessing the annotation will return
     print(os.path.exists(melody_path))
     # False
 
-    # write code here to locally download your path e.g. to a temporary file
+    # write code here to locally download your path e.g. to a temporary file.
+    def my_downloader(remote_path):
+        # the contents of this function will depend on where your data lives, and how permanently you want the files to remain on the machine. We point you to libraries handling common use cases below.
+        # for data you would download via scp, you could use the [scp](https://pypi.org/project/scp/) library
+        # for data on google drive, use [pydrive](https://pythonhosted.org/PyDrive/)
+        # for data on google cloud storage use [google-cloud-storage](https://pypi.org/project/google-cloud-storage/)
+        return local_path_to_downloaded_data
+
     temp_path = my_downloader(melody_path)
 
     # call orchset's melody annotation loader
