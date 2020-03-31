@@ -2,7 +2,8 @@
 """Beatles Dataset Loader
 
 The Beatles Dataset includes beat and metric position, chord, key, and segmentation
-annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf
+annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf and
+http://isophonics.net/content/reference-annotations-beatles.
 
 
 Attributes:
