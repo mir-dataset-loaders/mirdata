@@ -16,6 +16,14 @@ Installation
 ``pip install mirdata``
 
 
+Datasets
+--------
+.. toctree::
+   :maxdepth: 2
+
+   source/datasets
+
+
 API documentation
 -----------------
 
