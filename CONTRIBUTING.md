@@ -14,14 +14,35 @@ Finally, run tox with `tox`.  All tests should pass!
 
 ## Contributing a new dataset loader
 
-To add a new dataset loader:
 
-1. Create a script in `scripts/`, e.g. `make_my_dataset_index.py`, which generates an index file. (See below for what an index file is!)
-2. Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`. (Also see below for what we mean by "canonical"!)
+### Dataset checklist
+
+To add a new dataset loader you should:
+
+1. Create a script in `scripts/`, e.g. `make_my_dataset_index.py`, which generates an index file. (See below for what an index file is)
+2. Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`. (Also see below for what we mean by "canonical") 
 3. Create a module in mirdata, e.g. `mirdata/my_dataset.py`
 4. Create tests for your loader in `tests/`, e.g. `test_my_dataset.py`
 5. Add your module to `docs/source/mirdata.rst`
 6. Add the module to `mirdata/__init__.py`
+7. Add the module to the table in the `README.md` file, section `Currently supported datasets`
+
+If your dataset **is not fully downloadable** there are two extra steps you should follow:
+1. Contacting the mirdata organizers by opening an issue or PR so we can discuss how to proceed with the closed dataset.
+2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the dataset creator, or by verifying equivalence with several other copies of the dataset.
+
+To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag.
+
+### Dataset description:
+
+Please include the following information at the top level docstring for the dataset's module `my_dataset.py`:
+
+1. Describe annotations included in the dataset
+2. Indicate the size of the datasets (e.g. number files and duration, hours)
+3. Mention the origin of the dataset (e.g. creator, institution)
+4. Describe the type of music included in the dataset
+5. Indicate any relevant papers related to the dataset
+6. Include a description about how the data can be accessed and the license it uses (if applicable)
 
 ### Canonical datasets
 Whenever possible, this should be the official release of the dataset as published by the dataset creator/s.

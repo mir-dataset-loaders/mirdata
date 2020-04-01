@@ -70,7 +70,7 @@ def jams_converter(
             if type(beats) != tuple:
                 raise TypeError(
                     'beat_data should be a list of tuples, '
-                    + 'but is a list of {}'.format(type(beats))
+                    + 'but contains a {} element'.format(type(beats))
                 )
             jam.annotations.append(beats_to_jams(beats))
 
@@ -82,7 +82,7 @@ def jams_converter(
             if type(sections) != tuple:
                 raise TypeError(
                     'section_data should be a list of tuples, '
-                    + 'but is a list of {}'.format(type(sections))
+                    + 'but contains a {} element'.format(type(sections))
                 )
             jam.annotations.append(sections_to_jams(sections))
 
@@ -94,7 +94,7 @@ def jams_converter(
             if type(sections) != tuple:
                 raise TypeError(
                     'multi_section_data should be a list of tuples, '
-                    + 'but is a list of {}'.format(type(sections))
+                    + 'but contains a {} element'.format(type(sections))
                 )
             if (type(sections[0]) != list) or (type(sections[0][0]) != tuple):
                 raise TypeError(
@@ -113,7 +113,7 @@ def jams_converter(
             if type(chords) != tuple:
                 raise TypeError(
                     'chord_data should be a list of tuples, '
-                    + 'but is a list of {}'.format(type(chords))
+                    + 'but contains a {} element'.format(type(chords))
                 )
             jam.annotations.append(chords_to_jams(chords))
 
@@ -125,7 +125,7 @@ def jams_converter(
             if type(notes) != tuple:
                 raise TypeError(
                     'note_data should be a list of tuples, '
-                    + 'but is a list of {}'.format(type(notes))
+                    + 'but contains a {} element'.format(type(notes))
                 )
             jam.annotations.append(notes_to_jams(notes))
 
@@ -137,7 +137,7 @@ def jams_converter(
             if type(keys) != tuple:
                 raise TypeError(
                     'key_data should be a list of tuples, '
-                    + 'but is a list of {}'.format(type(keys))
+                    + 'but contains a {} element'.format(type(keys))
                 )
             jam.annotations.append(keys_to_jams(keys))
 
@@ -149,7 +149,7 @@ def jams_converter(
             if type(f0s) != tuple:
                 raise TypeError(
                     'f0_data should be a list of tuples, '
-                    + 'but is a list of {}'.format(type(f0s))
+                    + 'but contains a {} element'.format(type(f0s))
                 )
             jam.annotations.append(f0s_to_jams(f0s))
 
@@ -161,7 +161,7 @@ def jams_converter(
             if type(lyrics) != tuple:
                 raise TypeError(
                     'lyrics_data should be a list of tuples, '
-                    + 'but is a list of {}'.format(type(lyrics))
+                    + 'but contains a {} element'.format(type(lyrics))
                 )
             jam.annotations.append(lyrics_to_jams(lyrics))
 
