@@ -6,17 +6,7 @@ evaluation of melody extraction algorithms. This collection contains
 64 audio excerpts focused on symphonic music with their corresponding
 annotation of the melody.
 
-Details can be found at https://zenodo.org/record/1289786#.XREpzaeZPx6
-
-
-Attributes:
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    DIR (str): The directory name for ORCHSET.
-        Set to `'Orchset'`.
-
-    DATA.metadata
+For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 """
 from __future__ import absolute_import

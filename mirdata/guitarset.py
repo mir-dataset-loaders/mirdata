@@ -1,32 +1,46 @@
 # -*- coding: utf-8 -*-
 """GuitarSet Loader
 
-Intr​oducing GuitarSet, a dataset that provides high quality guitar
-recordings alongside rich annotations and metadata.
-In particular, by recording guitars using a hexaphonic pickup, we
-are able to not only provide recordings of the individual strings
-but also to largely automate the expensive annotation process,
-therefore providing rich annotation.
-
-The dataset contains recordings of a variety of musical excerpts
+GuitarSet provides audio recordings of a variety of musical excerpts
 played on an acoustic guitar, along with time-aligned annotations
 including pitch contours, string and fret positions, chords, beats,
 downbeats, and keys.
 
-Details can be found at http://github.com/marl/guitarset/
+GuitarSet contains 360 excerpts that are close to 30 seconds in length.
+The 360 excerpts are the result of the following combinations:
+- 6 players
+- 2 versions: comping (harmonic accompaniment) and soloing (melodic improvisation)
+- 5 styles: Rock, Singer-Songwriter, Bossa Nova, Jazz, and Funk
+- 3 Progressions: 12 Bar Blues, Autumn Leaves, and Pachelbel Canon.
+- 2 Tempi: slow and fast.
 
-Attributes:
-    DATASET_DIR (str):
-        The directory name for GuitarSet. Set to `'GuitarSet'`.
+The tonality (key) of each excerpt is sampled uniformly at random.
 
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a `GuitarSet` namedtuple.
+GuitarSet was recorded with the help of a hexaphonic pickup, which outputs
+signals for each string separately, allowing automated note-level annotation.
+Excerpts are recorded with both the hexaphonic pickup and a Neumann U-87
+condenser microphone as reference.
+3 audio recordings are provided with each excerpt with the following suffix:
+- hex: original 6 channel wave file from hexaphonic pickup
+- hex_cln: hex wave files with interference removal applied
+- mic: monophonic recording from reference microphone
 
-    ANNOTATION_REMOTE (RemoteFileMetadata)
-    AUDIO_HEX_CLN_REMOTE (RemoteFileMetadata)
-    AUDIO_HEX_REMOTE (RemoteFileMetadata)
-    AUDIO_MIC_REMOTE (RemoteFileMetadata)
-    AUDIO_MIX_REMOTE (RemoteFileMetadata)
+Each of the 360 excerpts has an accompanying JAMS file which stores 16 annotations.
+Pitch:
+- 6 pitch_contour annotations (1 per string)
+- 6 midi_note annotations (1 per string)
+
+Beat and Tempo:
+- 1 beat_position annotation
+- 1 tempo annotation
+
+Chords:
+- 2 chord annotations: instructed and performed. The instructed chord annotation
+is a digital version of the lead sheet that's provided to the player, and the
+performed chord annotations are inferred from note annotations, using
+segmentation and root from the digital lead sheet annotation.
+
+For more details, please visit: http://github.com/marl/guitarset/
 """
 
 from __future__ import absolute_import

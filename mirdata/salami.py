@@ -1,25 +1,15 @@
 # -*- coding: utf-8 -*-
 """SALAMI Dataset Loader
 
-SALAMI Dataset.
+The SALAMI dataset contains Structural Annotations of a Large Amount of Music
+Information: the public portion contains over 2200 annotations of over 1300
+unique tracks.
 
-We are using the **corrected** version of the 2.0 annotations:
+NB: mirdata relies on the **corrected** version of the 2.0 annotations:
 Details can be found at https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections and
 https://github.com/DDMAL/salami-data-public/pull/15.
 
-Attributes:
-    DIR (str): The directory name for SALAMI dataset. Set to `'Salami'`.
-
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    DATA.metadata (None): (todo?)
-
-    ANNOT_REMOTE (RemoteFileMetadata (namedtuple)): metadata
-        of SALAMI dataset. It includes the annotation file name, annotation
-        file url, and checksum of the file.
-
-
+For more details, please visit: https://github.com/DDMAL/salami-data-public
 """
 import csv
 import librosa

@@ -37,16 +37,8 @@ their results in terms of average performance across folds.
 
 We encourage TinySOL users to subscribe to the Ircam Forum so that they can
 have access to larger versions of SOL.
-For more information, see https://www.orch-idea.org/
 
-Attributes:
-    DATA.index (dict): {track_id: track_data}.
-        track_id is a JSON data loaded from 'indexes/'
-
-    DATASET_DIR (str): The directory name for TinySOL.
-        Set to `'TinySOL'`.
-
-    DATA.metadata (dict): The metadata of TinySOL.
+For more details, please visit: https://www.orch-idea.org/
 """
 
 from __future__ import absolute_import
