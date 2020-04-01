@@ -1,10 +1,14 @@
+# Pull request name 
+
+While your workinh on your PR please add the [WIP] indication in the title, to avoid reviewing before it's ready. Also, please try to have a descriptive title.
+
 # Description
 
 Please include a summary of the change and which issue is fixed. 
 
 Fixes # (issue)
 
-## Type of change
+# Type of change
 
 Please add a description and delete options that are not relevant.
 
