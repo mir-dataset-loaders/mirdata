@@ -40,6 +40,8 @@ Examples
 
    source/example
 
+FAQ
+===
 .. toctree::
    :maxdepth: 2
 
