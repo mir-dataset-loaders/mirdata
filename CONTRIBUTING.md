@@ -23,7 +23,6 @@ To add a new dataset loader:
 5. Add your module to `docs/source/mirdata.rst`
 6. Add the module to `mirdata/__init__.py`
 7. Add the module to the table in the `README.md` file, section `Currently supported datasets`
-8. Make sure the dataset appears in `https://github.com/ismir/mir-datasets`
 
 If your dataset **is not fully downloadable** there are two extra steps you should follow:
 1. Contacting the mirdata organizers by opening an issue or PR so we can discuss how to proceed with the closed dataset.
