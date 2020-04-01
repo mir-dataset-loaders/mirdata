@@ -24,8 +24,8 @@ Datasets
 | medley_solos_db_ | Medley-solos-DB     | - audio: Yes        | Instrument Labels |
 |                  |                     | - annotations: Yes  |                   |
 +------------------+---------------------+---------------------+-------------------+
-| medleydb_melody_ | |MedleyDB Melody    | - audio: On Request | Melody F0         |
-|                  | |Subset             | - annotations: Yes  |                   |
+| medleydb_melody_ ||MedleyDB Melody     | - audio: On Request | Melody F0         |
+|                  ||Subset              | - annotations: Yes  |                   |
 +------------------+---------------------+---------------------+-------------------+
 | medleydb_pitch_  | |MedleyDB Pitch     | - audio: On Request | F0                |
 |                  | |Tracking Subset    | - annotations: Yes  |                   |
