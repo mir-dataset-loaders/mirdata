@@ -1,6 +1,6 @@
 ### Pull request name 
 
-While your workinh on your PR please add the [WIP] indication in the title, to avoid reviewing before it's ready. Also, please try to have a descriptive title.
+While your working on your PR please add the [WIP] indication in the title, to avoid reviewing before it's ready. Also, please try to have a descriptive title.
 
 ### Description
 
