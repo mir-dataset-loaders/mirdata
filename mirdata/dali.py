@@ -79,19 +79,6 @@ class Track(object):
         track_id (str): the unique track id
         url_working (bool): True if the youtube url was valid
 
-    Cached Properties:
-        annotation_object (DALI.Annotations): DALI Annotations object
-        lines (LyricData): line-aligned lyrics
-        notes (NoteData): note-aligned lyrics
-        paragraphs (LyricData): paragraph-aligned lyrics
-        words (LyricData): word-aligned lyric
-
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -170,29 +157,36 @@ class Track(object):
 
     @utils.cached_property
     def notes(self):
+        """NoteData: note-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, 'notes')
 
     @utils.cached_property
     def words(self):
+        """LyricData: word-aligned lyric"""
         return load_annotations_granularity(self.annotation_path, 'words')
 
     @utils.cached_property
     def lines(self):
+        """LyricData: line-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, 'lines')
 
     @utils.cached_property
     def paragraphs(self):
+        """LyricData: paragraph-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, 'paragraphs')
 
     @utils.cached_property
     def annotation_object(self):
+        """DALI.Annotations: DALI Annotations object"""
         return load_annotations_class(self.annotation_path)
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """(Not Implemented) Jams: the track's data in jams format"""
         raise NotImplementedError
 
 

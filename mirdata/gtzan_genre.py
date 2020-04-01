@@ -47,12 +47,6 @@ class Track(object):
         genre (str): annotated genre
         track_id (str): track id
 
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -74,16 +68,7 @@ class Track(object):
 
     @property
     def audio(self):
-        """
-        Load the audio for this track.
-
-        Args:
-            sample_rate: Requested sample rate (optional, default 22050)
-
-        Returns:
-            y (np.ndarray): the mono audio signal
-            sr (float): The sample rate of the audio file
-        """
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path, sample_rate=22050)
 
     def __repr__(self):
@@ -92,6 +77,7 @@ class Track(object):
         )
 
     def to_jams(self):
+        """(Not Implemented) Jams: the track's data in jams format"""
         raise NotImplementedError
 
 

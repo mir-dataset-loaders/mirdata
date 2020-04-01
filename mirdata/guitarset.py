@@ -122,37 +122,6 @@ class Track(object):
         tempo (float): BPM of the track
         track_id (str): track id
 
-    Cached Properties:
-        beats (BeatData): the track's beat positions
-        inferred_chords (ChordData): the track's chords inferred from played transcription
-        key_mode (KeyData): the track's key and mode
-        leadsheet_chords (ChordData): the track's chords as written in the leadsheet
-        notes (dict): a dict that contains 6 `NoteData`s.
-            From Low E string to high e string.
-            {
-                'E': NoteData(...),
-                'A': NoteData(...),
-                ...
-                'e': NoteData(...)
-            }
-        pitch_contours (dict): a dict that contains 6 `F0Data`s.
-            From Low E string to high e string.
-            {
-                'E': F0Data(...),
-                'A': F0Data(...),
-                ...
-                'e': F0Data(...)
-            }
-
-    Properties:
-        audio_hex: raw hexaphonic audio signal, sample rate
-        audio_hex_cln: bleed-removed hexaphonic audio signal, sample rate
-        audio_mic: stereo microphone audio signal, sample rate
-        audio_mix: stereo mix audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -204,10 +173,12 @@ class Track(object):
 
     @utils.cached_property
     def beats(self):
+        """BeatData: the track's beat positions"""
         return load_beats(self.jams_path)
 
     @utils.cached_property
     def leadsheet_chords(self):
+        """ChordData: the track's chords as written in the leadsheet"""
         if self.mode == 'solo':
             logging.info(
                 'Chord annotations for solo excerpts are the same with the comp excerpt.'
@@ -216,6 +187,7 @@ class Track(object):
 
     @utils.cached_property
     def inferred_chords(self):
+        """ChordData: the track's chords inferred from played transcription"""
         if self.mode == 'solo':
             logging.info(
                 'Chord annotations for solo excerpts are the same with the comp excerpt.'
@@ -224,10 +196,20 @@ class Track(object):
 
     @utils.cached_property
     def key_mode(self):
+        """KeyData: the track's key and mode"""
         return load_key_mode(self.jams_path)
 
     @utils.cached_property
     def pitch_contours(self):
+        """(dict): a dict that contains 6 F0Data.
+            From Low E string to high e string.
+            {
+                'E': F0Data(...),
+                'A': F0Data(...),
+                ...
+                'e': F0Data(...)
+            }
+        """
         contours = {}
         # iterate over 6 strings
         for i in range(6):
@@ -236,6 +218,15 @@ class Track(object):
 
     @utils.cached_property
     def notes(self):
+        """dict: a dict that contains 6 NoteData.
+            From Low E string to high e string.
+            {
+                'E': NoteData(...),
+                'A': NoteData(...),
+                ...
+                'e': NoteData(...)
+            }
+        """
         notes = {}
         # iterate over 6 strings
         for i in range(6):
@@ -244,33 +235,30 @@ class Track(object):
 
     @property
     def audio_mic(self):
-        """Load the audio for the 'mic' version of the GuitarSet Track.
-        """
+        """(np.ndarray, float): stereo microphone audio signal, sample rate"""
         audio, sr = load_audio(self.audio_mic_path)
         return audio, sr
 
     @property
     def audio_mix(self):
-        """Load the audio for the 'mix' version of the GuitarSet Track.
-        """
+        """(np.ndarray, float): stereo mix audio signal, sample rate"""
         audio, sr = load_audio(self.audio_mix_path)
         return audio, sr
 
     @property
     def audio_hex(self):
-        """Load the audio for the 'hex' version of the GuitarSet Track.
-        """
+        """(np.ndarray, float): raw hexaphonic audio signal, sample rate"""
         audio, sr = load_multitrack_audio(self.audio_hex_path)
         return audio, sr
 
     @property
     def audio_hex_cln(self):
-        """Load the audio for the 'hex_cln' version of the GuitarSet Track.
-        """
+        """(np.ndarray, float): bleed-removed hexaphonic audio signal, sample rate"""
         audio, sr = load_multitrack_audio(self.audio_hex_cln_path)
         return audio, sr
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams.load(self.jams_path)
 
 
