@@ -26,7 +26,7 @@ This library provides tools for working with common MIR datasets, including tool
 | [Ikala](http://mac.citi.sinica.edu.tw/ikala/) |
 | [MedleyDB Melody](https://medleydb.weebly.com/) |
 | [MedleyDB Pitch](https://medleydb.weebly.com/) |
-| [MedleyDB Solos](https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db) |
+| [Medley-solos-DB](https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db) |
 | [ORCHSET](https://zenodo.org/record/1289786#.XREpzaeZPx6) |
 | [RWC Classical](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html) |
 | [RWC Jazz](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html) |
