@@ -21,15 +21,6 @@ Each of these clips contains a single instrument among a taxonomy of eight:
 The Medley-solos-DB dataset is the dataset that is used in the benchmarks of
 musical instrument recognition in the publications of Lostanlen and Cella
 (ISMIR 2016) and Andén et al. (IEEE TSP 2019).
-
-Attributes:
-    DATA.index (dict): {track_id: track_data}.
-        track_id is a JSON data loaded from 'index/'
-
-    DATASET_DIR (str): The directory name for Medley-solos-DB.
-        Set to `'Medley-solos-DB'`.
-
-    DATA.metadata (dict): The metadata of Medley-solos-DB.
 """
 from __future__ import absolute_import
 from __future__ import division

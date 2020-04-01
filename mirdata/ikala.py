@@ -8,21 +8,7 @@ channels respectively and can be found under the Wavfile directory.
 In addition, the human-labeled pitch contours and timestamped lyrics can be
 found under PitchLabel and Lyrics respectively.
 
-Details can be found at http://mac.citi.sinica.edu.tw/ikala/
-
-
-Attributes:
-    DATASET_DIR (str): The directory name for iKala dataset. Set to `'iKala'`.
-
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a `IKalaTrack` namedtuple.
-
-    TIME_STEP (float): Time step unit (in second) (TODO: what is this? hop length? window?)
-
-    DATA.metadata (None): TODO
-
-    ID_MAPPING_URL (str): URL to get id-to-url mapping text file
-
+For more details, please visit: http://mac.citi.sinica.edu.tw/ikala/
 """
 
 from __future__ import absolute_import

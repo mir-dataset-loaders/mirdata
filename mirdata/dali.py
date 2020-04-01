@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
 """DALI Dataset Loader
 
-DALI Dataset.
+DALI contains 5358 audio files with their time-aligned vocal melody.
+It also contains time-aligned lyrics at four levels of granularity: notes,
+words, lines, and paragraphs.
 
-Details can be found at https://github.com/gabolsgabs/DALI
+For each song, DALI also provides additional metadata: genre, language, musician,
+album covers, or links to video clips.
 
-Attributes:
-    DATASET_DIR (str): The directory name for DALI dataset. Set to `'DALI'`.
-
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    DATA.metadata (dict): #TODO
-
-
+For more details, please visit: https://github.com/gabolsgabs/DALI
 """
 
 from __future__ import absolute_import

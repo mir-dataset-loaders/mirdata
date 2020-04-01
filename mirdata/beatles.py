@@ -4,17 +4,6 @@
 The Beatles Dataset includes beat and metric position, chord, key, and segmentation
 annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf
 
-
-Attributes:
-    DATASET_DIR (str): The directory name for Beatles dataset. Set to `'Beatles'`.
-
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    ANNOTATIONS_REMOTE (RemoteFileMetadata (namedtuple)): metadata
-        of Beatles dataset. It includes the annotation file name, annotation
-        file url, and checksum of the file.
-
 """
 import csv
 import librosa
