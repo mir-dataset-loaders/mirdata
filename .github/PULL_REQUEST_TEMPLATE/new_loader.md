@@ -1,9 +1,19 @@
+### Title
+ 
+ Please use the following title: "Adding loader for MyDATASET". If your pull request is work in progress, change your title to "[WIP] Adding loader for MyDATASET" to avoid reviews while the loader is not ready.
+
 ### Description
 
-Please include a brief summary of the dataset you are creating a loader for. 
+Please include the following information in the description of the dataset:
+
+- [ ] Describe annotations included in the dataset
+- [ ] Indicate the size of the datasets (e.g. number files and duration, hours)
+- [ ] Mention the origin of the dataset (e.g. creator, institution)
+- [ ] Describe the genres included in the dataset
+- [ ] Indicate any relevant papers related to the dataset
+- [ ] Include a description on openness/license of the dataset (e.g. is the audio downloadable?) 
 
 #### Dataset loaders checklist:
-
 
 - [ ] Create a script in `scripts/`, e.g. `make_my_dataset_index.py`, which generates an index file. (See below for what an index file is)
 - [ ] Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`. (Also see below for what we mean by "canonical") 
