@@ -187,7 +187,7 @@ class Track(object):
 
     @utils.cached_property
     def pitch_contours(self):
-        """(dict): a dict that contains 6 `F0Data`s.
+        """(dict): a dict that contains 6 F0Data.
             From Low E string to high e string.
             {
                 'E': F0Data(...),
@@ -204,7 +204,7 @@ class Track(object):
 
     @utils.cached_property
     def notes(self):
-        """dict: a dict that contains 6 `NoteData`s.
+        """dict: a dict that contains 6 NoteData.
             From Low E string to high e string.
             {
                 'E': NoteData(...),
