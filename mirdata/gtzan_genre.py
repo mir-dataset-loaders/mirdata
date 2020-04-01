@@ -7,7 +7,7 @@ P. Cook in IEEE Transactions on Audio and Speech Processing 2002.
 
 The dataset consists of 1000 audio tracks each 30 seconds long. It
 contains 10 genres, each represented by 100 tracks. The tracks are all
-22050Hz Mono 16-bit audio files in .wav format.
+22050 Hz mono 16-bit audio files in .wav format.
 """
 
 from __future__ import absolute_import

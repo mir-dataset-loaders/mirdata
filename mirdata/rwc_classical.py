@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """RWC Classical Dataset Loader
 
-More details are on https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html .
+ The Classical Music Database consists of 50 pieces:
+* Symphonies: 4 pieces
+* Concerti: 2 pieces
+* Orchestral music: 4 pieces
+* Chamber music: 10 pieces
+* Solo performances: 24 pieces
+* Vocal performances: 6 pieces
 
-Attributes:
-    METADATA_REMOTE (RemoteFileMetadata): Metadata of the remote file
-    DATASET_DIR (str): The directory name for iKala dataset. Set to `'RWC-Classical'`.
-
+For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html
 """
 import csv
 import librosa

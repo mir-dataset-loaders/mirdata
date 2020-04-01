@@ -7,15 +7,7 @@ addressing important shortcomings of existing collections. For each song
 we provide melody f0 annotations as well as instrument activations for
 evaluating automatic instrument recognition.
 
-Details can be found at https://medleydb.weebly.com
-
-
-Attributes:
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    DATASET_DIR (str): The directory name for MedleyDB melody dataset.
-        Set to `'MedleyDB-Pitch'`.
+For more details, please visit: https://medleydb.weebly.com
 
 """
 from __future__ import absolute_import

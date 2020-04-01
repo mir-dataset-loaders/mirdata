@@ -123,17 +123,11 @@ You can also remove any comments beginning with `# --`
 # -*- coding: utf-8 -*-
 """Example Dataset Loader
 
-[Description of the dataset]
+[Description of the dataset. Write about the number of files, origin of the
+music, genre, relevant papers, openness/license, creator, and annotation type.]
 
-[Link to any relevant websites]
+For more details, please visit: [website]
 
-Attributes:
-    DATASET_DIR (str): The directory name for Example dataset. Set to `'Example'`.
-
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a `Track` namedtuple.
-
-    DATA.metadata (dict): Dictionary of track metadata
 """
 
 from __future__ import absolute_import
