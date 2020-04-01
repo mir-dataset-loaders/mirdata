@@ -23,7 +23,7 @@ This library provides tools for working with common MIR datasets, including tool
 | [DALI](https://github.com/gabolsgabs/DALI)    | 
 | [GuitarSet](http://github.com/marl/guitarset/) |
 | [GTZAN genre](http://marsyas.info/downloads/datasets.html) |
-| [Ikala](gtzan_genre) |
+| [Ikala](http://mac.citi.sinica.edu.tw/ikala/) |
 | [MedleyDB Melody](https://medleydb.weebly.com/) |
 | [MedleyDB Pitch](https://medleydb.weebly.com/) |
 | [MedleyDB Solos](https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db) |
