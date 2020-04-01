@@ -133,12 +133,6 @@ class Track(object):
         technique_full (str): playing technique encoded by its English name
         track_id (str): track id
 
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -193,7 +187,6 @@ class Track(object):
         self.is_resampled = self._track_metadata["Resampled"]
 
     def __repr__(self):
-
         if self.string_id:
             repr_string = (
                 "TinySOL Track(instrument={}, pitch={}, dynamics={}, string={})"
@@ -211,9 +204,11 @@ class Track(object):
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(metadata=self._track_metadata)  # TODO PR #185
 
 

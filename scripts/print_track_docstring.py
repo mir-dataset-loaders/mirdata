@@ -94,27 +94,6 @@ def main(args):
                 print('    {} ({}): TODO'.format(attr, type(getattr(track, attr)).__name__))
         print('')
 
-    if len(data['cached_properties']) > 0:
-        print('Cached Properties:')
-        for attr in data['cached_properties']:
-            print('    {} ({}): TODO'.format(attr, type(getattr(track, attr)).__name__))
-        print('')
-
-    if len(data['properties']) > 0:
-        print('Properties:')
-        for attr in data['properties']:
-            print('    {}: TODO'.format(attr))
-        print('')
-
-    if len(data['functions']) > 0:
-        print('Methods:')
-        for attr in data['functions']:
-            if attr == 'to_jams':
-                print("    {}: converts the track's data to jams format".format(attr))
-            else:
-                print('    {}: TODO'.format(attr))
-        print('')
-
     print('"""')
 
 if __name__ == '__main__':

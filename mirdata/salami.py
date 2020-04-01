@@ -103,18 +103,6 @@ class Track(object):
         source (str): dataset or source of song
         title (str): title of the song
 
-    Cached Properties:
-        sections_annotator_1_lowercase (SectionData): annotations in hierarchy level 1 from annotator 1
-        sections_annotator_1_uppercase (SectionData): annotations in hierarchy level 0 from annotator 1
-        sections_annotator_2_lowercase (SectionData): annotations in hierarchy level 1 from annotator 2
-        sections_annotator_2_uppercase (SectionData): annotations in hierarchy level 0 from annotator 2
-
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -198,33 +186,39 @@ class Track(object):
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
+        """SectionData: annotations in hierarchy level 0 from annotator 1"""
         if self.sections_annotator1_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator1_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
+        """SectionData: annotations in hierarchy level 1 from annotator 1"""
         if self.sections_annotator1_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator1_lowercase_path)
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
+        """SectionData: annotations in hierarchy level 0 from annotator 2"""
         if self.sections_annotator2_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator2_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
+        """SectionData: annotations in hierarchy level 1 from annotator 2"""
         if self.sections_annotator2_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator2_lowercase_path)
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             multi_section_data=[
                 (

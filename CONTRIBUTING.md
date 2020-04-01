@@ -185,15 +185,6 @@ class Track(object):
         track_id (str): track id
         # -- Add any of the dataset specific attributes here
 
-    Cached Properties:
-        # -- Add any of the dataset specific utils.cached_property properties
-
-    Properties:
-        # -- Add any of the dataset specific properties
-
-    Methods:
-        to_jams: converts the track data to jams format
-
     """
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
@@ -235,6 +226,7 @@ class Track(object):
     # -- series data loaded from a file a cached property
     @utils.cached_property
     def annotation(self):
+        """output type: description of output"""
         return load_annotation(self.annotation_path)
 
     # -- `audio` will behave like an attribute, but it will only be loaded
@@ -242,12 +234,7 @@ class Track(object):
     # -- any memory heavy information (like audio) properties
     @property
     def audio(self):
-        """Load audio.
-
-        Returns:
-            audio (np.array): audio. size of `(N, )`
-            sr (int): sampling rate of the audio file
-        """
+        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     # -- we use the to_jams function to convert all the annotations in the JAMS format.
@@ -255,6 +242,7 @@ class Track(object):
     # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
     # -- object with the annotations.
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_convertrer(
             annotation_data=[(self.annotation, None)],
             metadata=metadata},

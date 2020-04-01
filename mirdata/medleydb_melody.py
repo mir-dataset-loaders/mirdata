@@ -66,17 +66,6 @@ class Track(object):
         title (str): title
         track_id (str): track id
 
-    Cached Properties:
-        melody1 (F0Data): The pitch of the single most predominant source (often the voice)
-        melody2 (F0Data): The pitch of the predominant source for each point in time
-        melody3 (MultipitchData): The pitch of any melodic source. Allows for more than one f0 value at a time.
-
-    Properties:
-        audio: stereo mixture audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -145,21 +134,26 @@ class Track(object):
 
     @utils.cached_property
     def melody1(self):
+        """F0Data: The pitch of the single most predominant source (often the voice)"""
         return load_melody(self.melody1_path)
 
     @utils.cached_property
     def melody2(self):
+        """F0Data: The pitch of the predominant source for each point in time"""
         return load_melody(self.melody2_path)
 
     @utils.cached_property
     def melody3(self):
+        """MultipitchData: The pitch of any melodic source. Allows for more than one f0 value at a time."""
         return load_melody3(self.melody3_path)
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         # jams does not support multipitch, so we skip melody3
         return jams_utils.jams_converter(
             f0_data=[(self.melody1, 'melody1'), (self.melody2, 'melody2')],

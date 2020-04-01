@@ -111,16 +111,6 @@ class Track(object):
         track_id (str): track id
         track_number (str): CD track number of this Track
 
-    Cached Properties:
-        beats (BeatData): human labeled beat annotations
-        sections (SectionData): human labeled section annotations
-
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -190,17 +180,21 @@ class Track(object):
 
     @utils.cached_property
     def sections(self):
+        """SectionData: human labeled section annotations"""
         return load_sections(self.sections_path)
 
     @utils.cached_property
     def beats(self):
+        """BeatData: human labeled beat annotations"""
         return load_beats(self.beats_path)
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             beat_data=[(self.beats, None)],
             section_data=[(self.sections, None)],

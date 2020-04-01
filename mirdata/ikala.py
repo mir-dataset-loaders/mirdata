@@ -80,18 +80,6 @@ class Track(object):
         song_id (str): song id of the track
         track_id (str): track id
 
-    Cached Properties:
-        f0 (F0Data): The human-annotated singing voice pitch
-        lyrics (LyricData): The human-annotated lyrics
-
-    Properties:
-        instrumental_audio: mono instrumental audio signal, sample rate
-        mix_audio: mono mixture audio signal, sample rate
-        vocal_audio: mono vocal audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -132,43 +120,31 @@ class Track(object):
 
     @utils.cached_property
     def f0(self):
+        """F0Data: The human-annotated singing voice pitch"""
         return load_f0(self.f0_path)
 
     @utils.cached_property
     def lyrics(self):
+        """LyricData: The human-annotated lyrics"""
         return load_lyrics(self.lyrics_path)
 
     @property
     def vocal_audio(self):
-        """Load iKala vocal audio
-
-        Returns:
-            vocal_channel (np.array): vocal audio. size of `(N, )`
-            sr (int): sampling rate of the audio file
-        """
+        """(np.ndarray, float): mono vocal audio signal, sample rate"""
         return load_vocal_audio(self.audio_path)
 
     @property
     def instrumental_audio(self):
-        """Load iKala instrumental audio
-
-        Returns:
-            instrumental_channel (np.array): vocal audio. size of `(N, )`
-            sr (int): sampling rate of the audio file
-        """
+        """(np.ndarray, float): mono instrumental audio signal, sample rate"""
         return load_instrumental_audio(self.audio_path)
 
     @property
     def mix_audio(self):
-        """Load iKala mixture audio
-
-        Returns:
-            mixed_audio (np.array): vocal audio. size of `(2, N)`
-            sr (int): sampling rate of the audio file
-        """
+        """(np.ndarray, float): mono mixture audio signal, sample rate"""
         return load_mix_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             f0_data=[(self.f0, None)],
             lyrics_data=[(self.lyrics, None)],
