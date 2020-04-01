@@ -1,25 +1,15 @@
 # -*- coding: utf-8 -*-
 """SALAMI Dataset Loader
 
-SALAMI Dataset.
+The SALAMI dataset contains Structural Annotations of a Large Amount of Music
+Information: the public portion contains over 2200 annotations of over 1300
+unique tracks.
 
-We are using the **corrected** version of the 2.0 annotations:
+NB: mirdata relies on the **corrected** version of the 2.0 annotations:
 Details can be found at https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections and
 https://github.com/DDMAL/salami-data-public/pull/15.
 
-Attributes:
-    DIR (str): The directory name for SALAMI dataset. Set to `'Salami'`.
-
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    DATA.metadata (None): (todo?)
-
-    ANNOT_REMOTE (RemoteFileMetadata (namedtuple)): metadata
-        of SALAMI dataset. It includes the annotation file name, annotation
-        file url, and checksum of the file.
-
-
+For more details, please visit: https://github.com/DDMAL/salami-data-public
 """
 import csv
 import librosa
@@ -113,18 +103,6 @@ class Track(object):
         source (str): dataset or source of song
         title (str): title of the song
 
-    Cached Properties:
-        sections_annotator_1_lowercase (SectionData): annotations in hierarchy level 1 from annotator 1
-        sections_annotator_1_uppercase (SectionData): annotations in hierarchy level 0 from annotator 1
-        sections_annotator_2_lowercase (SectionData): annotations in hierarchy level 1 from annotator 2
-        sections_annotator_2_uppercase (SectionData): annotations in hierarchy level 0 from annotator 2
-
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -208,33 +186,39 @@ class Track(object):
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
+        """SectionData: annotations in hierarchy level 0 from annotator 1"""
         if self.sections_annotator1_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator1_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
+        """SectionData: annotations in hierarchy level 1 from annotator 1"""
         if self.sections_annotator1_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator1_lowercase_path)
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
+        """SectionData: annotations in hierarchy level 0 from annotator 2"""
         if self.sections_annotator2_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator2_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
+        """SectionData: annotations in hierarchy level 1 from annotator 2"""
         if self.sections_annotator2_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator2_lowercase_path)
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             multi_section_data=[
                 (

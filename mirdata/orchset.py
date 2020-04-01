@@ -6,17 +6,7 @@ evaluation of melody extraction algorithms. This collection contains
 64 audio excerpts focused on symphonic music with their corresponding
 annotation of the melody.
 
-Details can be found at https://zenodo.org/record/1289786#.XREpzaeZPx6
-
-
-Attributes:
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    DIR (str): The directory name for ORCHSET.
-        Set to `'Orchset'`.
-
-    DATA.metadata
+For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 """
 from __future__ import absolute_import
@@ -133,16 +123,6 @@ class Track(object):
         track_id (str): track id
         work (str): The musical work
 
-    Cached Properties:
-        melody (F0Data): melody annotation
-
-    Properties:
-        audio_mono: mono audio signal, sample rate
-        audio_stereo: stereo audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -225,17 +205,21 @@ class Track(object):
 
     @utils.cached_property
     def melody(self):
+        """F0Data: melody annotation"""
         return load_melody(self.melody_path)
 
     @property
     def audio_mono(self):
+        """(np.ndarray, float): mono audio signal, sample rate"""
         return load_audio_mono(self.audio_path_mono)
 
     @property
     def audio_stereo(self):
+        """(np.ndarray, float): stereo audio signal, sample rate"""
         return load_audio_stereo(self.audio_path_stereo)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             f0_data=[(self.melody, None)], metadata=self._track_metadata
         )

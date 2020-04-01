@@ -7,15 +7,7 @@ addressing important shortcomings of existing collections. For each song
 we provide melody f0 annotations as well as instrument activations for
 evaluating automatic instrument recognition.
 
-Details can be found at https://medleydb.weebly.com
-
-
-Attributes:
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    DATASET_DIR (str): The directory name for MedleyDB melody dataset.
-        Set to `'MedleyDB-Pitch'`.
+For more details, please visit: https://medleydb.weebly.com
 
 """
 from __future__ import absolute_import
@@ -70,15 +62,6 @@ class Track(object):
         title (str): title
         track_id (str): track id
 
-    Cached Properties:
-        pitch (F0Data): The human-annotated pitch
-
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -130,13 +113,16 @@ class Track(object):
 
     @utils.cached_property
     def pitch(self):
+        """F0Data: The human-annotated pitch"""
         return load_pitch(self.pitch_path)
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             f0_data=[(self.pitch, None)], metadata=self._track_metadata
         )

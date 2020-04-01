@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
 """DALI Dataset Loader
 
-DALI Dataset.
+DALI contains 5358 audio files with their time-aligned vocal melody.
+It also contains time-aligned lyrics at four levels of granularity: notes,
+words, lines, and paragraphs.
 
-Details can be found at https://github.com/gabolsgabs/DALI
+For each song, DALI also provides additional metadata: genre, language, musician,
+album covers, or links to video clips.
 
-Attributes:
-    DATASET_DIR (str): The directory name for DALI dataset. Set to `'DALI'`.
-
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    DATA.metadata (dict): #TODO
-
-
+For more details, please visit: https://github.com/gabolsgabs/DALI
 """
 
 from __future__ import absolute_import
@@ -83,19 +78,6 @@ class Track(object):
         title (str): the track's title
         track_id (str): the unique track id
         url_working (bool): True if the youtube url was valid
-
-    Cached Properties:
-        annotation_object (DALI.Annotations): DALI Annotations object
-        lines (LyricData): line-aligned lyrics
-        notes (NoteData): note-aligned lyrics
-        paragraphs (LyricData): paragraph-aligned lyrics
-        words (LyricData): word-aligned lyric
-
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
 
     """
 
@@ -175,29 +157,36 @@ class Track(object):
 
     @utils.cached_property
     def notes(self):
+        """NoteData: note-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, 'notes')
 
     @utils.cached_property
     def words(self):
+        """LyricData: word-aligned lyric"""
         return load_annotations_granularity(self.annotation_path, 'words')
 
     @utils.cached_property
     def lines(self):
+        """LyricData: line-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, 'lines')
 
     @utils.cached_property
     def paragraphs(self):
+        """LyricData: paragraph-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, 'paragraphs')
 
     @utils.cached_property
     def annotation_object(self):
+        """DALI.Annotations: DALI Annotations object"""
         return load_annotations_class(self.annotation_path)
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """(Not Implemented) Jams: the track's data in jams format"""
         raise NotImplementedError
 
 

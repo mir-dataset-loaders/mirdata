@@ -37,16 +37,8 @@ their results in terms of average performance across folds.
 
 We encourage TinySOL users to subscribe to the Ircam Forum so that they can
 have access to larger versions of SOL.
-For more information, see https://www.orch-idea.org/
 
-Attributes:
-    DATA.index (dict): {track_id: track_data}.
-        track_id is a JSON data loaded from 'indexes/'
-
-    DATASET_DIR (str): The directory name for TinySOL.
-        Set to `'TinySOL'`.
-
-    DATA.metadata (dict): The metadata of TinySOL.
+For more details, please visit: https://www.orch-idea.org/
 """
 
 from __future__ import absolute_import
@@ -141,12 +133,6 @@ class Track(object):
         technique_full (str): playing technique encoded by its English name
         track_id (str): track id
 
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -201,7 +187,6 @@ class Track(object):
         self.is_resampled = self._track_metadata["Resampled"]
 
     def __repr__(self):
-
         if self.string_id:
             repr_string = (
                 "TinySOL Track(instrument={}, pitch={}, dynamics={}, string={})"
@@ -219,9 +204,11 @@ class Track(object):
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(metadata=self._track_metadata)  # TODO PR #185
 
 

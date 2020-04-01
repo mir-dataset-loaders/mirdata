@@ -2,18 +2,8 @@
 """Beatles Dataset Loader
 
 The Beatles Dataset includes beat and metric position, chord, key, and segmentation
-annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf
-
-
-Attributes:
-    DATASET_DIR (str): The directory name for Beatles dataset. Set to `'Beatles'`.
-
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a jason data loaded from `index/`
-
-    ANNOTATIONS_REMOTE (RemoteFileMetadata (namedtuple)): metadata
-        of Beatles dataset. It includes the annotation file name, annotation
-        file url, and checksum of the file.
+annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf and
+http://isophonics.net/content/reference-annotations-beatles.
 
 """
 import csv
@@ -52,18 +42,6 @@ class Track(object):
         sections_path (str): sections annotation path
         title (str): title of the track
         track_id (str): track id
-
-    Cached Properties:
-        beats (BeatData): beat annotation
-        chords (ChordData): chord annotation
-        key (KeyData): key annotation
-        sections (SectionData): sections annotation
-
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track data to jams format
 
     """
 
@@ -104,25 +82,31 @@ class Track(object):
 
     @utils.cached_property
     def beats(self):
+        """BeatData: human-labeled beat annotation"""
         return load_beats(self.beats_path)
 
     @utils.cached_property
     def chords(self):
+        """ChordData: chord annotation"""
         return load_chords(self.chords_path)
 
     @utils.cached_property
     def key(self):
+        """KeyData: key annotation"""
         return load_key(self.keys_path)
 
     @utils.cached_property
     def sections(self):
+        """SectionData: section annotation"""
         return load_sections(self.sections_path)
 
     @property
     def audio(self):
+        """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             beat_data=[(self.beats, None)],
             section_data=[(self.sections, None)],

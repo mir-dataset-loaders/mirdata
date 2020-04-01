@@ -8,21 +8,7 @@ channels respectively and can be found under the Wavfile directory.
 In addition, the human-labeled pitch contours and timestamped lyrics can be
 found under PitchLabel and Lyrics respectively.
 
-Details can be found at http://mac.citi.sinica.edu.tw/ikala/
-
-
-Attributes:
-    DATASET_DIR (str): The directory name for iKala dataset. Set to `'iKala'`.
-
-    DATA.index (dict): {track_id: track_data}.
-        track_data is a `IKalaTrack` namedtuple.
-
-    TIME_STEP (float): Time step unit (in second) (TODO: what is this? hop length? window?)
-
-    DATA.metadata (None): TODO
-
-    ID_MAPPING_URL (str): URL to get id-to-url mapping text file
-
+For more details, please visit: http://mac.citi.sinica.edu.tw/ikala/
 """
 
 from __future__ import absolute_import
@@ -94,18 +80,6 @@ class Track(object):
         song_id (str): song id of the track
         track_id (str): track id
 
-    Cached Properties:
-        f0 (F0Data): The human-annotated singing voice pitch
-        lyrics (LyricData): The human-annotated lyrics
-
-    Properties:
-        instrumental_audio: mono instrumental audio signal, sample rate
-        mix_audio: mono mixture audio signal, sample rate
-        vocal_audio: mono vocal audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
@@ -146,43 +120,31 @@ class Track(object):
 
     @utils.cached_property
     def f0(self):
+        """F0Data: The human-annotated singing voice pitch"""
         return load_f0(self.f0_path)
 
     @utils.cached_property
     def lyrics(self):
+        """LyricData: The human-annotated lyrics"""
         return load_lyrics(self.lyrics_path)
 
     @property
     def vocal_audio(self):
-        """Load iKala vocal audio
-
-        Returns:
-            vocal_channel (np.array): vocal audio. size of `(N, )`
-            sr (int): sampling rate of the audio file
-        """
+        """(np.ndarray, float): mono vocal audio signal, sample rate"""
         return load_vocal_audio(self.audio_path)
 
     @property
     def instrumental_audio(self):
-        """Load iKala instrumental audio
-
-        Returns:
-            instrumental_channel (np.array): vocal audio. size of `(N, )`
-            sr (int): sampling rate of the audio file
-        """
+        """(np.ndarray, float): mono instrumental audio signal, sample rate"""
         return load_instrumental_audio(self.audio_path)
 
     @property
     def mix_audio(self):
-        """Load iKala mixture audio
-
-        Returns:
-            mixed_audio (np.array): vocal audio. size of `(2, N)`
-            sr (int): sampling rate of the audio file
-        """
+        """(np.ndarray, float): mono mixture audio signal, sample rate"""
         return load_mix_audio(self.audio_path)
 
     def to_jams(self):
+        """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             f0_data=[(self.f0, None)],
             lyrics_data=[(self.lyrics, None)],
