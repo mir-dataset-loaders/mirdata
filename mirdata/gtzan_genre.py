@@ -47,12 +47,6 @@ class Track(object):
         genre (str): annotated genre
         track_id (str): track id
 
-    Properties:
-        audio: audio signal, sample rate
-
-    Methods:
-        to_jams: converts the track's data to jams format
-
     """
 
     def __init__(self, track_id, data_home=None):
