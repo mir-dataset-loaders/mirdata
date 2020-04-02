@@ -1,7 +1,7 @@
 .. _datasets:
 
-Datasets
-========
+Table of supported datasets
+===========================
 
 +------------------+---------------------+---------------------+-------------------+
 | Module           | Name                | Downloadable?       | Annotation Types  |

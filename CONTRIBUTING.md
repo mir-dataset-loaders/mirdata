@@ -31,7 +31,7 @@ If your dataset **is not fully downloadable** there are two extra steps you shou
 1. Contacting the mirdata organizers by opening an issue or PR so we can discuss how to proceed with the closed dataset.
 2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the dataset creator, or by verifying equivalence with several other copies of the dataset.
 
-To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag.
+To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag. Please use the **new_loader.md** template for your pull request by adding &template=new_loader.md at the end of the url when your creating the PR (e.g. `...mir-dataset-loaders/mirdata/compare?expand=1` will become `...mir-dataset-loaders/mirdata/compare?expand=1&template=new_loader.md`.
 
 ### Dataset description:
 
