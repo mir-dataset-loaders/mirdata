@@ -48,8 +48,8 @@ click the link provided in the "Module" column.
 | medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | - :ref:`inst`             | 21571  |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| medleydb_melody_ | | MedleyDB Melody   | - audio: 🔑         | - :ref:`melody`           | 108    |
-|                  | | Subset            | - annotations: ✅   | :ref:`f0`                 |        |
+| medleydb_melody_ | | MedleyDB          | - audio: 🔑         | - :ref:`melody` :ref:`f0` | 108    |
+|                  | | Melody Subset     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | medleydb_pitch_  | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
 |                  | | Tracking Subset   | - annotations: ✅   | - :ref:`inst`             |        |
@@ -94,6 +94,7 @@ Musical beats, typically encoded as sequence of time stamps and corresponding be
 This implicitly includes *downbeat* information (the beginning of a musical measure).
 
 .. _chords:
+
 Chords
 ^^^^^^
 Musical chords, e.g. as might be played on a guitar. Typically encoded as a sequence of labeled events,
@@ -101,6 +102,7 @@ where each event has a start time, end time, and a label. The label taxonomy var
 but typically encode a chord's root and its quality, e.g. A:m7 for "A minor 7".
 
 .. _f0:
+
 F0
 ^^
 Musical pitch contours, typically encoded as time series indidcating the musical pitch over time.
@@ -108,12 +110,14 @@ The time series typically have evenly spaced time stamps, each with a correspoin
 which may be encoded in a number of formats/granularities, including midi note numbers and Hertz.
 
 .. _genre:
+
 Genre
 ^^^^^
 A typically global "tag", indicating the genre of a recording. Note that the concept of genre is highly
 subjective and we refer those new to this task to this `article`_.
 
 .. _instrument-labels:
+
 Instrument Labels
 ^^^^^^^^^^^^^^^^^
 Labels indicating which instrument is present in a musical recording. This may refer to recordings of solo
@@ -121,11 +125,13 @@ instruments, or to recordings with multiple instruments. The labels may be globa
 may vary over time, indicating the presence/absence of a particular instrument as a time series.
 
 .. _key:
+
 Key
 ^^^
 Musical key. This can be defined globally for an audio file or as a sequence of events.
 
 .. _lyrics:
+
 Lyrics
 ^^^^^^
 Lyrics corresponding to the singing voice of the audio. These may be raw text with no time information,
@@ -133,13 +139,15 @@ or they may be time-aligned events. They may have varying levels of granularity 
 phoneme, character) depending on the dataset.
 
 .. _melody:
-Melody
+
+ASDFAS
 ^^^^^^
 The musical melody of a song. Melody has no universal definition and is typically defined per dataset.
 It is typically enocoded as F0_ or as Notes_. Other types of annotations such as Vocal F0 or Vocal Notes
 can often be considered as melody annotations as well.
 
 .. _notes:
+
 Notes
 ^^^^^
 Musical note events, typically encoded as sequences of start time, end time, label. The label typically
@@ -147,12 +155,14 @@ indicates a musical pitch, which may be in a number of formats/granularities, in
 Hertz, or pitch class.
 
 .. _playing-technique:
-Playing Technique
-^^^^^^^^^^^^^^^^^
+
+PlayingTechnique
+^^^^^^^^^^^^^^^^
 The playing technique used by a particular instrument, for example "Pizzicato". This label may be global
 for a given recording or encoded as a sequence of labeled events.
 
 .. _sections:
+
 Sections
 ^^^^^^^^
 Musical sections, which may be "flat" or "heirarchical", typically encoded by a sequence of
@@ -160,6 +170,7 @@ time stamps indicating musical section boundary times. Section annotations somet
 include labels for sections, which may indicate repetitions and/or the section type (e.g. Chorus, Verse).
 
 .. _vocal-activity:
+
 Vocal Activity
 ^^^^^^^^^^^^^^
 A time series or sequence of events indicating when singing voice is present in a recording. This type
