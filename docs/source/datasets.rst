@@ -11,18 +11,24 @@ as tracks can vary greatly in length (from a few seconds to a few minutes),
 and may be homogeneous. For specific information about the contents of each dataset,
 click the link provided in the "Module" column.
 
-Downloadable possible values:
-- ✅ : Freely downloadable
-- 🔑 : Available upon request
-- 📺 : Youtube Links provided
-- ❌ : Not available
+"Downloadable" possible values:
+
+* ✅ : Freely downloadable
+
+* 🔑 : Available upon request
+
+* 📺 : Youtube Links provided
+
+* ❌ : Not available
+
+
 
 +------------------+---------------------+---------------------+------------------------+----------+
 | Module           | Name                | Downloadable?       | Annotation Types       | # Tracks |
 +==================+=====================+=====================+========================+==========+
 | beatles_         | | The Beatles       | - audio: ❌         | | :ref:`Beats`,        | 180      |
-|                  | | Dataset           | - annotations: ✅   | | :ref:Sections,       |          |
-|                  |                     |                     | | :ref:Key             |
+|                  | | Dataset           | - annotations: ✅   | | :ref:`Sections`,     |          |
+|                  |                     |                     | | :ref:`Key`           |
 +------------------+---------------------+---------------------+------------------------+----------+
 | dali_            | DALI                | - audio: 📺         | | Lyrics,              | 5358     |
 |                  |                     | - annotations: ✅   | | Vocal Notes          |          |
