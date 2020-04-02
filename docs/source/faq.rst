@@ -1,8 +1,7 @@
 .. _faq:
 
-.. FAQ
-.. ===
-.. rubric:: FAQ
+FAQ
+===
 
 How do I add a new loader?
 --------------------------

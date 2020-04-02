@@ -16,8 +16,8 @@ Installation
 ``pip install mirdata``
 
 
-Test TOC ASDF
--------------
+.. Test TOC ASDF
+.. -------------
 .. toctree::
    :maxdepth: 4
 
