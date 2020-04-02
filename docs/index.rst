@@ -16,12 +16,12 @@ Installation
 ``pip install mirdata``
 
 
-.. Supported Datasets
-.. ------------------
-.. .. toctree::
-..    :maxdepth: 2
+Supported Datasets
+------------------
+.. toctree::
+   :maxdepth: 2
 
-..    source/datasets
+   source/datasets
 
 
 Examples
