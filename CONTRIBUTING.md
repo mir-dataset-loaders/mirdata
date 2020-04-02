@@ -389,3 +389,4 @@ Bibtex format citations/s here
   b. For each audio/annotation file, reduce the audio length to a few seconds and remove all but a few of the annotations.
   c. If the dataset has a metadata file, reduce the length to a few lines to make it trival to test.
 2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the ikala dataset tests (`tests/test_ikala.py`) for a reference.
+*Note that we have written automated tests for all loader's `cite`, `download`, `validate`, `load`, `track_ids` functions, as well as some basic edge cases of the `Track` object, so you don't need to write tests for these!*
