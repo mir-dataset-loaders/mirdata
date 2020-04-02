@@ -1,5 +1,8 @@
 .. _faq:
 
+FAQ
+===
+
 How do I add a new loader?
 --------------------------
 Take a look at our instructions_!
