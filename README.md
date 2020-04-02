@@ -17,7 +17,7 @@ This library provides tools for working with common MIR datasets, including tool
 
 #### Currently supported datasets
 
-[Beatles](http://isophonics.net/content/reference-annotations-beatles)
+* [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [DALI](https://github.com/gabolsgabs/DALI)
 * [GuitarSet](http://github.com/marl/guitarset/)
 * [GTZAN genre](http://marsyas.info/downloads/datasets.html)
