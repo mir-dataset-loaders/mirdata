@@ -26,7 +26,7 @@ click the link provided in the "Module" column.
 +------------------+---------------------+---------------------+------------------------+----------+
 | Module           | Name                | Downloadable?       | Annotation Types       | # Tracks |
 +==================+=====================+=====================+========================+==========+
-| beatles_         | | The Beatles       | - audio: ❌         | | :ref:`beats`,        | 180      |
+| beatles_         | | The Beatles       | - audio: ❌         | | Beats,               | 180      |
 |                  | | Dataset           | - annotations: ✅   | | Sections,            |          |
 |                  |                     |                     | | Key                  |
 +------------------+---------------------+---------------------+------------------------+----------+
