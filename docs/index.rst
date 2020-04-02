@@ -16,37 +16,48 @@ Installation
 ``pip install mirdata``
 
 
-Supported Datasets
-------------------
+Test TOC ASDF
+-------------
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
 
    source/datasets
-
-
-Examples
---------
-.. toctree::
-   :maxdepth: 2
-
    source/example
-
-
-API documentation
------------------
-
-.. toctree::
-   :maxdepth: 2
-
    source/mirdata
-
-
-FAQ
----
-.. toctree::
-   :maxdepth: 2
-
    source/faq
+
+
+.. Supported Datasets
+.. ------------------
+.. .. toctree::
+..    :maxdepth: 3
+
+..    source/datasets
+
+
+.. Examples
+.. --------
+.. .. toctree::
+..    :maxdepth: 2
+
+..    source/example
+
+
+.. API documentation
+.. -----------------
+
+.. .. toctree::
+..    :maxdepth: 2
+
+..    source/mirdata
+
+
+.. FAQ
+.. ---
+.. .. toctree::
+..    :maxdepth: 2
+
+..    source/faq
 
 
 Contribute
