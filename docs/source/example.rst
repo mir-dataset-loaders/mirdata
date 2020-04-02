@@ -1,7 +1,7 @@
 .. _example:
 
-Examples
-========
+📝 Examples 📝
+==============
 
 Basic Example
 -------------

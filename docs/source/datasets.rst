@@ -6,48 +6,48 @@
 +------------------+---------------------+---------------------+-------------------+
 | Module           | Name                | Downloadable?       | Annotation Types  |
 +==================+=====================+=====================+===================+
-| beatles_         | The Beatles Dataset | - audio: No         | | Beat, Chord,    |
-|                  |                     | - annotations:Yes✅ | | Section, Key    |
+| beatles_         | The Beatles Dataset | - audio: ❌         | | Beat, Chord,    |
+|                  |                     | - annotations: ✅   | | Section, Key    |
 +------------------+---------------------+---------------------+-------------------+
 | dali_            | DALI                | - audio: Youtube    | | Lyrics,         |
-|                  |                     | - annotations: Yes  | | Vocal Notes     |
+|                  |                     | - annotations: ✅   | | Vocal Notes     |
 +------------------+---------------------+---------------------+-------------------+
-| gtzan_genre_     | Gtzan-Genre         | - audio: Yes        | Genre             |
-|                  |                     | - annotations: Yes  |                   |
+| gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | Genre             |
+|                  |                     | - annotations: ✅   |                   |
 +------------------+---------------------+---------------------+-------------------+
-| guitarset_       | GuitarSet           | - audio: Yes        | | Beat, Chord,    |
-|                  |                     | - annotations: Yes  | | Key, Note, F0   |
+| guitarset_       | GuitarSet           | - audio: ✅         | | Beat, Chord,    |
+|                  |                     | - annotations: ✅   | | Key, Note, F0   |
 +------------------+---------------------+---------------------+-------------------+
-| ikala_           | iKala               | - audio: No         | Vocal F0, Lyrics  |
-|                  |                     | - annotations: No   |                   |
+| ikala_           | iKala               | - audio: ❌         | Vocal F0, Lyrics  |
+|                  |                     | - annotations: ❌   |                   |
 +------------------+---------------------+---------------------+-------------------+
-| medley_solos_db_ | Medley-solos-DB     | - audio: Yes        | Instrument Labels |
-|                  |                     | - annotations: Yes  |                   |
+| medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | Instrument Labels |
+|                  |                     | - annotations: ✅   |                   |
 +------------------+---------------------+---------------------+-------------------+
 | medleydb_melody_ | | MedleyDB Melody   | - audio: On Request | Melody F0         |
-|                  | | Subset            | - annotations: Yes  |                   |
+|                  | | Subset            | - annotations: ✅   |                   |
 +------------------+---------------------+---------------------+-------------------+
 | medleydb_pitch_  | | MedleyDB Pitch    | - audio: On Request | F0                |
-|                  | | Tracking Subset   | - annotations: Yes  |                   |
+|                  | | Tracking Subset   | - annotations: ✅   |                   |
 +------------------+---------------------+---------------------+-------------------+
-| orchset_         | Orchset             | - audio: Yes        | Melody F0         |
-|                  |                     | - annotations: Yes  |                   |
+| orchset_         | Orchset             | - audio: ✅         | Melody F0         |
+|                  |                     | - annotations: ✅   |                   |
 +------------------+---------------------+---------------------+-------------------+
-| rwc_classical_   | RWC Classical       | - audio: No         | Beat, Section     |
-|                  |                     | - annotations: Yes  |                   |
+| rwc_classical_   | RWC Classical       | - audio: ❌         | Beat, Section     |
+|                  |                     | - annotations: ✅   |                   |
 +------------------+---------------------+---------------------+-------------------+
-| rwc_jazz_        | RWC Jazz            | - audio: No         | Beat, Section     |
-|                  |                     | - annotations: Yes  |                   |
+| rwc_jazz_        | RWC Jazz            | - audio: ❌         | Beat, Section     |
+|                  |                     | - annotations: ✅   |                   |
 +------------------+---------------------+---------------------+-------------------+
-| rwc_pop_         | RWC Pop             | - audio: No         | | Beat, Section,  |
-|                  |                     | - annotations: Yes  | | Vocal Activity, |
+| rwc_pop_         | RWC Pop             | - audio: ❌         | | Beat, Section,  |
+|                  |                     | - annotations: ✅   | | Vocal Activity, |
 |                  |                     |                     | | Chord           |
 +------------------+---------------------+---------------------+-------------------+
-| salami_          | Salami              | - audio: No         | Section           |
-|                  |                     | - annotations: Yes  |                   |
+| salami_          | Salami              | - audio: ❌         | Section           |
+|                  |                     | - annotations: ✅   |                   |
 +------------------+---------------------+---------------------+-------------------+
-| tinysol_         | TinySOL             | - audio: Yes        | Instrument Labels |
-|                  |                     | - annotations: Yes  |                   |
+| tinysol_         | TinySOL             | - audio: ✅         | Instrument Labels |
+|                  |                     | - annotations: ✅   |                   |
 +------------------+---------------------+---------------------+-------------------+
 
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
