@@ -6,6 +6,7 @@ FAQ
 How do I add a new loader?
 --------------------------
 Take a look at our instructions_!
+
 .. _instructions: https://github.com/mir-dataset-loaders/mirdata/blob/master/CONTRIBUTING.md
 
 
@@ -22,6 +23,7 @@ No, we do not host or distribute datasets.
 How do I request a new dataset?
 -------------------------------
 Open an issue_ and tag it with the "New Loader" label.
+
 .. _issue: https://github.com/mir-dataset-loaders/mirdata/issues
 
 
@@ -38,6 +40,7 @@ Whenever possible, the data downloaded using `.download()` is the same data used
 Does mirdata provide data loaders for pytorch/Tensorflow?
 ---------------------------------------------------------
 For now, no. Music datasets are very widely varied in their annotation types and supported tasks. To make a data loader, there would need to be "standard" ways to encode the desired inputs/outputs - unofortunately this is not universal for most datasets and usages. Still, this library provides the necessary first step for building data loaders and it is easy to build data loaders on top of this. For a simple example, see our examples_ page.
+
 .. _examples: https://mirdata.readthedocs.io/en/latest/source/example.html#
 
 
@@ -49,6 +52,7 @@ The creators of this library are Python users, so we made a libray in python. We
 A download link is broken for a loader's .download() function. What do I do?
 ----------------------------------------------------------------------------
 Please open an issue_ and tag it with the "broken link" label.
+
 .. _issue: https://github.com/mir-dataset-loaders/mirdata/issues
 
 
@@ -65,5 +69,6 @@ No. All datasets have "mistakes", and we do not want to create another version o
 Does mirdata support data which lives off-disk?
 -----------------------------------------------
 Yes. While the simple useage of mirdata assumes that data lives on-disk, it can be used for off-disk data as well. See the "local vs remote" example in the examples_ page for details.
+
 .. _examples: https://mirdata.readthedocs.io/en/latest/source/example.html#
 

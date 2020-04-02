@@ -1,7 +1,10 @@
 .. _example:
 
+Examples
+========
+
 Basic Example
-=============
+-------------
 
 First of all, you can install mirdata using `pip`.
 
@@ -122,7 +125,7 @@ This is the result of the example above.
 
 
 Using mirdata with local vs. remote data
-========================================
+----------------------------------------
 
 When using mirdata on the same machine as where your datasets live, we do the loading for you.
 
@@ -176,7 +179,7 @@ However, if your data lives somewhere else, accessing the annotation will return
 
 
 Using mirdata with tf.data.Dataset
-==================================
+----------------------------------
 
 The following is a simple example of a generator that can be used to create a tensorflow Dataset
 
