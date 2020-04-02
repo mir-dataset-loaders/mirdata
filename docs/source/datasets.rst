@@ -26,9 +26,9 @@ click the link provided in the "Module" column.
 +------------------+---------------------+---------------------+------------------------+----------+
 | Module           | Name                | Downloadable?       | Annotation Types       | # Tracks |
 +==================+=====================+=====================+========================+==========+
-| beatles_         | | The Beatles       | - audio: ❌         | | :ref:`Beats`,        | 180      |
-|                  | | Dataset           | - annotations: ✅   | | :ref:`Sections`,     |          |
-|                  |                     |                     | | :ref:`Key`           |
+| beatles_         | | The Beatles       | - audio: ❌         | | :ref:`beats`,        | 180      |
+|                  | | Dataset           | - annotations: ✅   | | Sections,            |          |
+|                  |                     |                     | | Key                  |
 +------------------+---------------------+---------------------+------------------------+----------+
 | dali_            | DALI                | - audio: 📺         | | Lyrics,              | 5358     |
 |                  |                     | - annotations: ✅   | | Vocal Notes          |          |
@@ -81,6 +81,8 @@ definitions and their meaning can change depending on the type of music they cor
 Here we provide a rough guide to the types in this table, but we **strongly recommend** reading
 the dataset specific documentation to ensure the data is as you expect.
 
+
+.. _beats:
 
 Beats
 ^^^^^
