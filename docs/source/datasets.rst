@@ -11,53 +11,53 @@ as tracks can vary greatly in length (from a few seconds to a few minutes),
 and may be homogeneous. For specific information about the contents of each dataset,
 click the link provided in the "Module" column.
 
-+------------------+---------------------+---------------------+---------------------+----------+
-| Module           | Name                | Downloadable?       | Annotation Types    | # Tracks |
-+==================+=====================+=====================+=====================+==========+
-| beatles_         | | The Beatles       | - audio: ❌         | | Beats_, Chords_,  | 180      |
-|                  | | Dataset           | - annotations: ✅   | | Sections_, Key_   |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| dali_            | DALI                | - audio: Youtube    | | Lyrics_,          | 5358     |
-|                  |                     | - annotations: ✅   | | Vocal Notes_      |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | Genre_              | 1000     |
-|                  |                     | - annotations: ✅   |                     |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| guitarset_       | GuitarSet           | - audio: ✅         | | Beats_, Chords_,  | 360      |
-|                  |                     | - annotations: ✅   | | Key_, Notes_, F0_ |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| ikala_           | iKala               | - audio: ❌         | Vocal F0_, Lyrics_  | 252      |
-|                  |                     | - annotations: ❌   |                     |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | Instrumentlabels_   | 21571    |
-|                  |                     | - annotations: ✅   |                     |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| medleydb_melody_ | | MedleyDB Melody   | - audio: On Request | Melody_ F0_         | 108      |
-|                  | | Subset            | - annotations: ✅   |                     |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| medleydb_pitch_  | | MedleyDB Pitch    | - audio: On Request | | F0_ ,             | 103      |
-|                  | | Tracking Subset   | - annotations: ✅   | | Instrumentlabels_ |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| orchset_         | Orchset             | - audio: ✅         | Melody_ F0_         | 64       |
-|                  |                     | - annotations: ✅   |                     |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| rwc_classical_   | RWC Classical       | - audio: ❌         | Beats_, Sections_   | 50       |
-|                  |                     | - annotations: ✅   |                     |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| rwc_jazz_        | RWC Jazz            | - audio: ❌         | Beats_, Sections_   | 50       |
-|                  |                     | - annotations: ✅   |                     |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| rwc_popular_     | RWC Pop             | - audio: ❌         | | Beats_, Sections_,| 100      |
-|                  |                     | - annotations: ✅   | | Vocalactivity_,   |          |
-|                  |                     |                     | | Chords_           |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| salami_          | Salami              | - audio: ❌         | Sections_           | 1359     |
-|                  |                     | - annotations: ✅   |                     |          |
-+------------------+---------------------+---------------------+---------------------+----------+
-| tinysol_         | TinySOL             | - audio: ✅         | | Instrumentlabels_,| 2913     |
-|                  |                     | - annotations: ✅   | | Playingtechnique_,|          |
-|                  |                     |                     | | Notes_            |          |
-+------------------+---------------------+---------------------+---------------------+----------+
++------------------+---------------------+---------------------+------------------------+----------+
+| Module           | Name                | Downloadable?       | Annotation Types       | # Tracks |
++==================+=====================+=====================+========================+==========+
+| beatles_         | | The Beatles       | - audio: ❌         | | Beats_, Chords_,     | 180      |
+|                  | | Dataset           | - annotations: ✅   | | Sections_, Key_      |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| dali_            | DALI                | - audio: Youtube    | | Lyrics_,             | 5358     |
+|                  |                     | - annotations: ✅   | | Vocal Notes_         |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | Genre_                 | 1000     |
+|                  |                     | - annotations: ✅   |                        |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| guitarset_       | GuitarSet           | - audio: ✅         | | Beats_, Chords_,     | 360      |
+|                  |                     | - annotations: ✅   | | Key_, Notes_, F0_    |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| ikala_           | iKala               | - audio: ❌         | Vocal F0_, Lyrics_     | 252      |
+|                  |                     | - annotations: ❌   |                        |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | `Instrument Labels`_   | 21571    |
+|                  |                     | - annotations: ✅   |                        |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| medleydb_melody_ | | MedleyDB Melody   | - audio: On Request | Melody_ F0_            | 108      |
+|                  | | Subset            | - annotations: ✅   |                        |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| medleydb_pitch_  | | MedleyDB Pitch    | - audio: On Request | | F0_ ,                | 103      |
+|                  | | Tracking Subset   | - annotations: ✅   | | `Instrument Labels`_ |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| orchset_         | Orchset             | - audio: ✅         | Melody_ F0_            | 64       |
+|                  |                     | - annotations: ✅   |                        |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| rwc_classical_   | RWC Classical       | - audio: ❌         | Beats_, Sections_      | 50       |
+|                  |                     | - annotations: ✅   |                        |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| rwc_jazz_        | RWC Jazz            | - audio: ❌         | Beats_, Sections_      | 50       |
+|                  |                     | - annotations: ✅   |                        |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| rwc_popular_     | RWC Pop             | - audio: ❌         | | Beats_, Sections_,   | 100      |
+|                  |                     | - annotations: ✅   | | Vocalactivity_,      |          |
+|                  |                     |                     | | Chords_              |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| salami_          | Salami              | - audio: ❌         | Sections_              | 1359     |
+|                  |                     | - annotations: ✅   |                        |          |
++------------------+---------------------+---------------------+------------------------+----------+
+| tinysol_         | TinySOL             | - audio: ✅         | | `Instrument Labels`_,| 2913     |
+|                  |                     | - annotations: ✅   | | `Playing Technique`_,|          |
+|                  |                     |                     | | Notes_               |          |
++------------------+---------------------+---------------------+------------------------+----------+
 
 
 Annotation Type Descriptions
@@ -68,15 +68,15 @@ definitions and their meaning can change depending on the type of music they cor
 Here we provide a rough guide to the types in this table, but we **strongly recommend** reading
 the dataset specific documentation to ensure the data is as you expect.
 
-.. _Beat:
-Beat
-^^^^
+.. _Beats:
+Beats
+^^^^^
 Musical beats, typically encoded as sequence of time stamps and corresponding beat positions.
 This implicitly includes *downbeat* information (the beginning of a musical measure).
 
-.. _Chord:
-Chord
-^^^^^
+.. _Chords:
+Chords
+^^^^^^
 Musical chords, e.g. as might be played on a guitar. Typically encoded as a sequence of labeled events,
 where each event has a start time, end time, and a label. The label taxonomy varies per dataset,
 but typically encode a chord's root and its quality, e.g. A:m7 for "A minor 7".
@@ -94,7 +94,7 @@ Genre
 A typically global "tag", indicating the genre of a recording. Note that the concept of genre is highly
 subjective and we refer those new to this task to this `article`_.
 
-.. _Instrumentlabels:
+.. _Instrument Labels:
 Instrument Labels
 ^^^^^^^^^^^^^^^^^
 Labels indicating which instrument is present in a musical recording. This may refer to recordings of solo
@@ -126,20 +126,20 @@ Musical note events, typically encoded as sequences of start time, end time, lab
 indicates a musical pitch, which may be in a number of formats/granularities, including midi note numbers,
 Hertz, or pitch class.
 
-.. _Playingtechnique:
+.. _`Playing Technique`:
 Playing Technique
 ^^^^^^^^^^^^^^^^^
 The playing technique used by a particular instrument, for example "Pizzicato". This label may be global
 for a given recording or encoded as a sequence of labeled events.
 
-.. _Section:
-Section
-^^^^^^^
+.. _Sections:
+Sections
+^^^^^^^^
 Musical sections, which may be "flat" or "heirarchical", typically encoded by a sequence of
 time stamps indicating musical section boundary times. Section annotations sometimes also
 include labels for sections, which may indicate repetitions and/or the section type (e.g. Chorus, Verse).
 
-.. _Vocalactivity:
+.. _Vocal Activity:
 Vocal Activity
 ^^^^^^^^^^^^^^
 A time series or sequence of events indicating when singing voice is present in a recording. This type
