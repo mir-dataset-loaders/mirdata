@@ -1,7 +1,8 @@
 .. _example:
 
-Examples
-========
+.. Examples
+.. ========
+.. rubric:: Examples
 
 Basic Example
 -------------

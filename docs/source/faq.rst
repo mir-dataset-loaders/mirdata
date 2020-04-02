@@ -1,7 +1,8 @@
 .. _faq:
 
-FAQ
-===
+.. FAQ
+.. ===
+.. rubric:: FAQ
 
 How do I add a new loader?
 --------------------------
@@ -29,12 +30,12 @@ Open an issue_ and tag it with the "New Loader" label.
 
 What do I do if my data fails validation?
 -----------------------------------------
-Very often, data fails vaildation because of how the files are named or how the folder is structured. If this is the case, try renaming/reorganizing your data to match what mirdata expects. If your data fails validation because of the checksums, this means that you are using data which is different from what most people are using, and you should try to get the more common dataset version, for example by using the data loader's download function. If you want to use your data as-is and don't want to see the annoying validation logging, you can set `silence_validator=True` when calling `.load()`.
+Very often, data fails vaildation because of how the files are named or how the folder is structured. If this is the case, try renaming/reorganizing your data to match what mirdata expects. If your data fails validation because of the checksums, this means that you are using data which is different from what most people are using, and you should try to get the more common dataset version, for example by using the data loader's download function.
 
 
 How do you choose the data that is used to create the checksums?
 ----------------------------------------------------------------
-Whenever possible, the data downloaded using `.download()` is the same data used to create the checksums. If this isn't possible, we did our best to get the data from the original source (the dataset creator) in order to create the checksum. If this is again not possible, we found as many versions of the data as we could from different users of the dataset, computed checksums on all of them and used the version which was the most common amongst them.
+Whenever possible, the data downloaded using :code:`.download()` is the same data used to create the checksums. If this isn't possible, we did our best to get the data from the original source (the dataset creator) in order to create the checksum. If this is again not possible, we found as many versions of the data as we could from different users of the dataset, computed checksums on all of them and used the version which was the most common amongst them.
 
 
 Does mirdata provide data loaders for pytorch/Tensorflow?
@@ -49,7 +50,7 @@ Why didn’t you release a version of this library in MATLAB/C/Java/R?
 The creators of this library are Python users, so we made a libray in python. We'd be very happy to provide guidance to anyone who wants to create a version of this library in another programming languages.
 
 
-A download link is broken for a loader's .download() function. What do I do?
+A download link is broken for a loader's :code:`.download()` function. What do I do?
 ----------------------------------------------------------------------------
 Please open an issue_ and tag it with the "broken link" label.
 

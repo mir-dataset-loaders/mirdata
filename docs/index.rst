@@ -19,7 +19,7 @@ Installation
 Supported Datasets
 ------------------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    source/datasets
 
