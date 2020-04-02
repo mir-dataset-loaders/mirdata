@@ -39,8 +39,7 @@ class Track(object):
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith('_')]
         attributes = [
-            v for v in dir(self) if not v.startswith('_') and
-            v not in properties
+            v for v in dir(self) if not v.startswith('_') and v not in properties
         ]
 
         repr_str = "Track(\n"
