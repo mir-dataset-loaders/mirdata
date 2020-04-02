@@ -65,7 +65,7 @@ click the link provided in the "Module" column.
 +------------------+---------------------+---------------------+---------------------------+--------+
 | rwc_popular_     | RWC Pop             | - audio: ❌         | - :ref:`beats`            | 100    |
 |                  |                     | - annotations: ✅   | - :ref:`sections`         |        |
-|                  |                     |                     | - :ref:`vocal-activity`           |        |
+|                  |                     |                     | - :ref:`vocal-activity`   |        |
 |                  |                     |                     | - :ref:`chords`           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | salami_          | Salami              | - audio: ❌         | - :ref:`sections`         | 1359   |
