@@ -1,13 +1,13 @@
 .. _datasets:
 
-Table of supported datasets
-===========================
+⭐ Table of supported datasets ⭐
+=================================
 
 +------------------+---------------------+---------------------+-------------------+
 | Module           | Name                | Downloadable?       | Annotation Types  |
 +==================+=====================+=====================+===================+
 | beatles_         | The Beatles Dataset | - audio: No         | | Beat, Chord,    |
-|                  |                     | - annotations: Yes  | | Section, Key    |
+|                  |                     | - annotations:Yes✅ | | Section, Key    |
 +------------------+---------------------+---------------------+-------------------+
 | dali_            | DALI                | - audio: Youtube    | | Lyrics,         |
 |                  |                     | - annotations: Yes  | | Vocal Notes     |
