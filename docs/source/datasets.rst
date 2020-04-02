@@ -30,7 +30,7 @@ click the link provided in the "Module" column.
 |                  | | Dataset           | - annotations: ✅   | | Sections,            |          |
 |                  |                     |                     | | Key                  |
 +------------------+---------------------+---------------------+------------------------+----------+
-| dali_            | DALI                | - audio: 📺         | | Lyrics,              | 5358     |
+| dali_            | DALI                | - audio: x          | | Lyrics,              | 5358     |
 |                  |                     | - annotations: ✅   | | Vocal Notes          |          |
 +------------------+---------------------+---------------------+------------------------+----------+
 | gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | Genre                  | 1000     |
@@ -45,10 +45,10 @@ click the link provided in the "Module" column.
 | medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | Instrument Labels      | 21571    |
 |                  |                     | - annotations: ✅   |                        |          |
 +------------------+---------------------+---------------------+------------------------+----------+
-| medleydb_melody_ | | MedleyDB Melody   | - audio: 🔑         | Melody F0              | 108      |
+| medleydb_melody_ | | MedleyDB Melody   | - audio: x          | Melody F0              | 108      |
 |                  | | Subset            | - annotations: ✅   |                        |          |
 +------------------+---------------------+---------------------+------------------------+----------+
-| medleydb_pitch_  | | MedleyDB Pitch    | - audio: 🔑         | | F0 ,                 | 103      |
+| medleydb_pitch_  | | MedleyDB Pitch    | - audio: x          | | F0 ,                 | 103      |
 |                  | | Tracking Subset   | - annotations: ✅   | | Instrument Labels    |          |
 +------------------+---------------------+---------------------+------------------------+----------+
 | orchset_         | Orchset             | - audio: ✅         | Melody F0              | 64       |
