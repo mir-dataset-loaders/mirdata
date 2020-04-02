@@ -17,7 +17,7 @@ click the link provided in the "Module" column.
 
 * 🔑 : Available upon request
 
-* 📺 : Youtube Links provided
+* 📺 : Youtube Links only
 
 * ❌ : Not available
 
@@ -45,14 +45,14 @@ click the link provided in the "Module" column.
 | ikala_           | iKala               | - audio: ❌         | - Vocal :ref:`F0`         | 252    |
 |                  |                     | - annotations: ❌   | - :ref:`lyrics`           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | - :ref:`inst`             | 21571  |
+| medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | - :ref:`instrument-labels`| 21571  |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | medleydb_melody_ | | MedleyDB          | - audio: 🔑         | - :ref:`melody` :ref:`f0` | 108    |
 |                  | | Melody Subset     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | medleydb_pitch_  | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
-|                  | | Tracking Subset   | - annotations: ✅   | - :ref:`inst`             |        |
+|                  | | Tracking Subset   | - annotations: ✅   | - :ref:`instrument-labels`|        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | orchset_         | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
 |                  |                     | - annotations: ✅   |                           |        |
@@ -140,7 +140,7 @@ phoneme, character) depending on the dataset.
 
 .. _melody:
 
-ASDFAS
+Melody
 ^^^^^^
 The musical melody of a song. Melody has no universal definition and is typically defined per dataset.
 It is typically enocoded as F0_ or as Notes_. Other types of annotations such as Vocal F0 or Vocal Notes
@@ -156,8 +156,8 @@ Hertz, or pitch class.
 
 .. _playing-technique:
 
-PlayingTechnique
-^^^^^^^^^^^^^^^^
+Playing Technique
+^^^^^^^^^^^^^^^^^
 The playing technique used by a particular instrument, for example "Pizzicato". This label may be global
 for a given recording or encoded as a sequence of labeled events.
 
