@@ -32,7 +32,6 @@ eighth-note feel, music with a sixteenth-note feel, and Latin jazz music.
 For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html
 """
 import csv
-import librosa
 import logging
 import os
 
@@ -115,7 +114,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('rwc_jazz_index.json', _load_metadata)
 
 
-class Track(object):
+class Track(utils.Track):
     """rwc_jazz Track class
 
     Args:
@@ -180,27 +179,6 @@ class Track(object):
         self.duration = self._track_metadata['duration']
         self.variation = self._track_metadata['variation']
         self.instruments = self._track_metadata['instruments']
-
-    def __repr__(self):
-        repr_string = (
-            "RWC-Jazz Track(track_id={}, audio_path={}, "
-            + "piece_number={}, suffix={}, track_number={}, title={}, "
-            + "artist={}, duration={}, variation={}, instruments={}, "
-            + "sections=SectionData('intervals', 'labels'), "
-            + "beats=BeatData('beat_times', 'beat_positions'))"
-        )
-        return repr_string.format(
-            self.track_id,
-            self.audio_path,
-            self.piece_number,
-            self.suffix,
-            self.track_number,
-            self.title,
-            self.artist,
-            self.duration,
-            self.variation,
-            self.instruments,
-        )
 
     @utils.cached_property
     def sections(self):

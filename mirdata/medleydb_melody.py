@@ -45,7 +45,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('medleydb_melody_index.json', _load_metadata)
 
 
-class Track(object):
+class Track(utils.Track):
     """medleydb_melody Track class
 
     Args:
@@ -111,26 +111,6 @@ class Track(object):
         self.is_excerpt = self._track_metadata['is_excerpt']
         self.is_instrumental = self._track_metadata['is_instrumental']
         self.n_sources = self._track_metadata['n_sources']
-
-    def __repr__(self):
-        repr_string = (
-            "MedleyDb-Melody Track(track_id={}, audio_path={}, "
-            + "artist={}, title={}, genre={}, is_excerpt={}, "
-            + "is_instrumental={}, n_sources={}, "
-            + "melody1=F0Data('times', 'frequencies', confidence'), "
-            + "melody2=F0Data('times', 'frequencies', confidence'), "
-            + "melody3=MultipitchData('times', 'frequencies', confidence'))"
-        )
-        return repr_string.format(
-            self.track_id,
-            self.audio_path,
-            self.artist,
-            self.title,
-            self.genre,
-            self.is_excerpt,
-            self.is_instrumental,
-            self.n_sources,
-        )
 
     @utils.cached_property
     def melody1(self):

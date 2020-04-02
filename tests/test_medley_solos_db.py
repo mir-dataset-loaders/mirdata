@@ -28,14 +28,6 @@ def test_track():
     assert y.shape == (65536,)
     assert sr == 22050
 
-    repr_string = (
-        'Medley-solos-DB Track(track_id=d07b1fc0-567d-52c2-fef4-239f31c9d40e, '
-        + 'audio_path=tests/resources/mir_datasets/Medley-solos-DB/audio/'
-        + 'Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav, '
-        + 'instrument=flute, song_id=210, subset=validation)'
-    )
-    assert track.__repr__() == repr_string
-
 
 def test_to_jams():
 

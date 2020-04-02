@@ -108,7 +108,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("tinysol_index.json", _load_metadata)
 
 
-class Track(object):
+class Track(utils.Track):
     """tinysol Track class
 
     Args:
@@ -185,22 +185,6 @@ class Track(object):
         else:
             self.string_id = None
         self.is_resampled = self._track_metadata["Resampled"]
-
-    def __repr__(self):
-        if self.string_id:
-            repr_string = (
-                "TinySOL Track(instrument={}, pitch={}, dynamics={}, string={})"
-            ).format(
-                self.instrument_full,
-                self.pitch,
-                self.dynamics,
-                STRING_ROMAN_NUMERALS[self.string_id],
-            )
-        else:
-            repr_string = (
-                "TinySOL Track(instrument={}, pitch={}, dynamics={})"
-            ).format(self.instrument_full, self.pitch, self.dynamics)
-        return repr_string
 
     @property
     def audio(self):

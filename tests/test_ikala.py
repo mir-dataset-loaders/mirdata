@@ -54,16 +54,6 @@ def test_track():
     assert mix.shape == (44100 * 2,)
     assert np.array_equal(mix, instrumental + vocal)
 
-    repr_string = (
-        "iKala Track(track_id=10161_chorus, "
-        + "audio_path=tests/resources/mir_datasets/iKala/Wavfile/"
-        + "10161_chorus.wav, song_id=10161, section=chorus, singer_id=1, "
-        + "f0=F0Data('times', 'frequencies', 'confidence'), "
-        + "lyrics=LyricData('start_times', 'end_times', 'lyrics', "
-        + "'pronunciations'))"
-    )
-    assert track.__repr__() == repr_string
-
 
 def test_to_jams():
 

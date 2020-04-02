@@ -41,19 +41,6 @@ def test_track():
     assert sr == 44100
     assert y.shape == (44100 * 2,)
 
-    repr_string = (
-        "RWC-Jazz Track(track_id=RM-J004, "
-        + "audio_path=tests/resources/mir_datasets/RWC-Jazz/audio/rwc-j-m01/4.wav, "
-        + "piece_number=No. 4, suffix=M01, track_number=Tr. 04, "
-        + "title=Crescent Serenade (Piano Solo), artist=Makoto Nakamura, "
-        + "duration=167.0, variation=Instrumentation 1, instruments=Pf, "
-        + "sections=SectionData('intervals', 'labels'), "
-        + "beats=BeatData('beat_times', 'beat_positions'))"
-    )
-    assert track.__repr__() == repr_string
-
-    print(track.to_jams())
-
 
 def test_to_jams():
 

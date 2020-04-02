@@ -47,19 +47,6 @@ def test_track():
     assert sr_stereo == 44100
     assert y_stereo.shape == (2, 44100 * 2)
 
-    repr_string = (
-        "Orchset Track(track_id=Beethoven-S3-I-ex1, "
-        + "audio_path_stereo=tests/resources/mir_datasets/Orchset/audio/"
-        + "stereo/Beethoven-S3-I-ex1.wav, "
-        + "audio_path_mono=tests/resources/mir_datasets/Orchset/audio/"
-        + "mono/Beethoven-S3-I-ex1.wav, composer=Beethoven, work=S3-I, "
-        + "excerpt=1, predominant_melodic_instruments=['strings', 'winds'], "
-        + "alternating_melody=True, contains_winds=True, contains_strings=True, "
-        + "contains_brass=False, only_strings=False, only_winds=False, "
-        + "only_brass=False, melody=F0Data('times', 'frequencies', 'confidence'))"
-    )
-    assert track.__repr__() == repr_string
-
 
 def test_to_jams():
 
