@@ -14,7 +14,7 @@ click the link provided in the "Module" column.
 +------------------+---------------------+---------------------+------------------------+----------+
 | Module           | Name                | Downloadable?       | Annotation Types       | # Tracks |
 +==================+=====================+=====================+========================+==========+
-| beatles_         | | The Beatles       | - audio: ❌         | | Beats_, Chords_,     | 180      |
+| beatles_         | | The Beatles       | - audio: ❌         | | :ref:Beats,          | 180      |
 |                  | | Dataset           | - annotations: ✅   | | Sections_, Key_      |          |
 +------------------+---------------------+---------------------+------------------------+----------+
 | dali_            | DALI                | - audio: Youtube    | | Lyrics_,             | 5358     |
@@ -126,7 +126,7 @@ Musical note events, typically encoded as sequences of start time, end time, lab
 indicates a musical pitch, which may be in a number of formats/granularities, including midi note numbers,
 Hertz, or pitch class.
 
-.. _`Playing Technique`:
+.. _Playing Technique:
 Playing Technique
 ^^^^^^^^^^^^^^^^^
 The playing technique used by a particular instrument, for example "Pizzicato". This label may be global
