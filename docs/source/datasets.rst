@@ -45,14 +45,14 @@ click the link provided in the "Module" column.
 | ikala_           | iKala               | - audio: ❌         | - Vocal :ref:`F0`         | 252    |
 |                  |                     | - annotations: ❌   | - :ref:`lyrics`           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | - :ref:`instrument-labels`| 21571  |
+| medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | - :ref:`instruments`      | 21571  |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | medleydb_melody_ | | MedleyDB          | - audio: 🔑         | - :ref:`melody` :ref:`f0` | 108    |
 |                  | | Melody Subset     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | medleydb_pitch_  | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
-|                  | | Tracking Subset   | - annotations: ✅   | - :ref:`instrument-labels`|        |
+|                  | | Tracking Subset   | - annotations: ✅   | - :ref:`instruments`      |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | orchset_         | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
 |                  |                     | - annotations: ✅   |                           |        |
@@ -71,8 +71,8 @@ click the link provided in the "Module" column.
 | salami_          | Salami              | - audio: ❌         | - :ref:`sections`         | 1359   |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| tinysol_         | TinySOL             | - audio: ✅         | - :ref:`instrument-labels`| 2913   |
-|                  |                     | - annotations: ✅   | - :ref:`playing-technique`|        |
+| tinysol_         | TinySOL             | - audio: ✅         | - :ref:`instruments`      | 2913   |
+|                  |                     | - annotations: ✅   | - :ref:`technique`        |        |
 |                  |                     |                     | - :ref:`notes`            |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 
@@ -116,10 +116,10 @@ Genre
 A typically global "tag", indicating the genre of a recording. Note that the concept of genre is highly
 subjective and we refer those new to this task to this `article`_.
 
-.. _instrument-labels:
+.. _instruments:
 
-Instrument Labels
-^^^^^^^^^^^^^^^^^
+Instruments
+^^^^^^^^^^^
 Labels indicating which instrument is present in a musical recording. This may refer to recordings of solo
 instruments, or to recordings with multiple instruments. The labels may be global to a recording, or they
 may vary over time, indicating the presence/absence of a particular instrument as a time series.
@@ -154,10 +154,10 @@ Musical note events, typically encoded as sequences of start time, end time, lab
 indicates a musical pitch, which may be in a number of formats/granularities, including midi note numbers,
 Hertz, or pitch class.
 
-.. _playing-technique:
+.. _technique:
 
-Playing Technique
-^^^^^^^^^^^^^^^^^
+Technique
+^^^^^^^^^
 The playing technique used by a particular instrument, for example "Pizzicato". This label may be global
 for a given recording or encoded as a sequence of labeled events.
 
