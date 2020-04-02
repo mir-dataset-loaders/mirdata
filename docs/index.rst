@@ -16,30 +16,19 @@ Installation
 ``pip install mirdata``
 
 
-API documentation
------------------
-
+Documentation
+-------------
 .. toctree::
    :maxdepth: 2
 
-   source/mirdata
-
-
-Examples
-========
-.. toctree::
-   :maxdepth: 2
-
+   source/datasets
    source/example
-
-.. toctree::
-   :maxdepth: 2
-
+   source/mirdata
    source/faq
 
 
 Contribute
-==========
+----------
 - `Issue Tracker <https://github.com/mir-dataset-loaders/mirdata/issues>`_
 - `Source Code <https://github.com/mir-dataset-loaders/mirdata>`_
 

@@ -1,7 +1,10 @@
 .. _example:
 
+Examples
+========
+
 Basic Example
-=============
+-------------
 
 First of all, you can install mirdata using `pip`.
 
@@ -122,7 +125,7 @@ This is the result of the example above.
 
 
 Using mirdata with local vs. remote data
-========================================
+----------------------------------------
 
 When using mirdata on the same machine as where your datasets live, we do the loading for you.
 
@@ -173,3 +176,42 @@ However, if your data lives somewhere else, accessing the annotation will return
     print(melody_annotation)
     # F0Data(times=array([0.000e+00, 1.000e-02, 2.000e-02, ..., 1.244e+01, 1.245e+01,
     #   1.246e+01]), frequencies=array([  0.   ,   0.   ,   0.   , ..., 391.995, 391.995, 391.995]), confidence=array([0., 0., 0., ..., 1., 1., 1.]))
+
+
+Using mirdata with tf.data.Dataset
+----------------------------------
+
+The following is a simple example of a generator that can be used to create a tensorflow Dataset
+
+.. code-block:: python
+    :linenos:
+
+    import mirdata.orchset
+    import numpy as np
+    import tensorflow as tf
+
+    def orchset_generator():
+        # using the default data_home
+        track_ids = mirdata.orchset.track_ids()
+        for track_id in track_ids:
+            track = mirdata.orchset.Track(track_id)
+            audio_signal, sample_rate = track.audio_mono
+            yield {
+                "audio": audio_signal.astype(np.float32),
+                "sample_rate": sample_rate,
+                "annotation": {
+                    "times": track.melody.times.astype(np.float32),
+                    "freqs": track.melody.frequencies.astype(np.float32),
+                },
+                "metadata": {"track_id": track.track_id}
+            }
+
+    dataset = tf.data.Dataset.from_generator(
+        orchset_generator,
+        {
+            "audio": tf.float32,
+            "sample_rate": tf.float32,
+            "annotation": {"times": tf.float32, "freqs": tf.float32},
+            "metadata": {'track_id': tf.string}
+        }
+    )

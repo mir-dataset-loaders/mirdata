@@ -20,18 +20,18 @@ Finally, run tox with `tox`.  All tests should pass!
 To add a new dataset loader you should:
 
 1. Create a script in `scripts/`, e.g. `make_my_dataset_index.py`, which generates an index file. (See below for what an index file is)
-2. Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`. (Also see below for what we mean by "canonical") 
+2. Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`. (Also see below for what we mean by "canonical")
 3. Create a module in mirdata, e.g. `mirdata/my_dataset.py`
 4. Create tests for your loader in `tests/`, e.g. `test_my_dataset.py`
-5. Add your module to `docs/source/mirdata.rst`
+5. Add your module to `docs/source/mirdata.rst` and `docs/source/datasets.rst`
 6. Add the module to `mirdata/__init__.py`
-7. Add the module to the table in the `README.md` file, section `Currently supported datasets`
+7. Add the module to the list in the `README.md` file, section `Currently supported datasets`
 
 If your dataset **is not fully downloadable** there are two extra steps you should follow:
 1. Contacting the mirdata organizers by opening an issue or PR so we can discuss how to proceed with the closed dataset.
 2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the dataset creator, or by verifying equivalence with several other copies of the dataset.
 
-To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag.
+To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag. Please use the **new_loader.md** template for your pull request by adding &template=new_loader.md at the end of the url when your creating the PR (e.g. `...mir-dataset-loaders/mirdata/compare?expand=1` will become `...mir-dataset-loaders/mirdata/compare?expand=1&template=new_loader.md`.
 
 ### Dataset description:
 
@@ -389,3 +389,4 @@ Bibtex format citations/s here
   b. For each audio/annotation file, reduce the audio length to a few seconds and remove all but a few of the annotations.
   c. If the dataset has a metadata file, reduce the length to a few lines to make it trival to test.
 2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the ikala dataset tests (`tests/test_ikala.py`) for a reference.
+*Note that we have written automated tests for all loader's `cite`, `download`, `validate`, `load`, `track_ids` functions, as well as some basic edge cases of the `Track` object, so you don't need to write tests for these!*
