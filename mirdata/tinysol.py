@@ -50,6 +50,7 @@ import librosa
 import logging
 import os
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -108,7 +109,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("tinysol_index.json", _load_metadata)
 
 
-class Track(object):
+class Track(track.Track):
     """tinysol Track class
 
     Args:
@@ -185,22 +186,6 @@ class Track(object):
         else:
             self.string_id = None
         self.is_resampled = self._track_metadata["Resampled"]
-
-    def __repr__(self):
-        if self.string_id:
-            repr_string = (
-                "TinySOL Track(instrument={}, pitch={}, dynamics={}, string={})"
-            ).format(
-                self.instrument_full,
-                self.pitch,
-                self.dynamics,
-                STRING_ROMAN_NUMERALS[self.string_id],
-            )
-        else:
-            repr_string = (
-                "TinySOL Track(instrument={}, pitch={}, dynamics={})"
-            ).format(self.instrument_full, self.pitch, self.dynamics)
-        return repr_string
 
     @property
     def audio(self):

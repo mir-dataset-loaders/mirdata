@@ -51,19 +51,6 @@ def test_track():
     assert sr == 44100
     assert y.shape == (44100 * 2,)
 
-    repr_string = (
-        "RWC-Popular Track(track_id=RM-P001, "
-        + "audio_path=tests/resources/mir_datasets/RWC-Popular/audio/rwc-p-m01/1.wav, "
-        + "piece_number=No. 1, suffix=M01, track_number=Tr. 01, title=Eien no replica, "
-        + "artist=Kazuo Nishi, singer_information=Male, duration=209.0, "
-        + "tempo=135, instruments=Gt, drum_information=Drum sequences, "
-        + "sections=SectionData('intervals', 'labels'), "
-        + "beats=BeatData('beat_times', 'beat_positions'))"
-        + "chords=ChordData('intervals', 'labels'), "
-        + "vocal_instrument_activity=EventData('start_times', 'end_times', 'event')"
-    )
-    assert track.__repr__() == repr_string
-
 
 def test_to_jams():
 

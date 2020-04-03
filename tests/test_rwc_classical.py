@@ -42,17 +42,6 @@ def test_track():
     assert sr == 44100
     assert y.shape == (44100 * 2,)
 
-    repr_string = (
-        "RWC-Classical Track(track_id=RM-C003, "
-        + "audio_path=tests/resources/mir_datasets/RWC-Classical/audio/rwc-c-m01/3.wav, "
-        + "piece_number=No. 3, suffix=M01, track_number=Tr. 03, "
-        + "title=Symphony no.5 in C minor, op.67. 1st mvmt., composer=Beethoven, Ludwig van, "
-        + "artist=Tokyo City Philharmonic Orchestra, duration=435.0, category=Symphony"
-        + "sections=SectionData('intervals', 'labels'), "
-        + "beats=BeatData('beat_times', 'beat_positions'))"
-    )
-    assert track.__repr__() == repr_string
-
 
 def test_to_jams():
 

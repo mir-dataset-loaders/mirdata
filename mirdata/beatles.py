@@ -11,6 +11,7 @@ import librosa
 import os
 import numpy as np
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -26,7 +27,7 @@ ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
 DATA = utils.LargeData('beatles_index.json')
 
 
-class Track(object):
+class Track(track.Track):
     """Beatles track class
 
     Args:
@@ -69,16 +70,6 @@ class Track(object):
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
         self.title = os.path.basename(self._track_paths['sections'][0]).split('.')[0]
-
-    def __repr__(self):
-        repr_string = (
-            "Beatles Track(track_id={}, audio_path={}, title={}, "
-            + "beats=BeatData('beat_times, 'beat_positions'), "
-            + "chords=ChordData('intervals', 'labels'), "
-            + "key=KeyData('start_times', 'end_times', 'keys'), "
-            + "sections=SectionData('intervals', 'labels'))"
-        )
-        return repr_string.format(self.track_id, self.audio_path, self.title)
 
     @utils.cached_property
     def beats(self):

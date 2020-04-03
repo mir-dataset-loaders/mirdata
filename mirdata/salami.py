@@ -17,6 +17,7 @@ import logging
 import numpy as np
 import os
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -78,7 +79,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('salami_index.json', _load_metadata)
 
 
-class Track(object):
+class Track(track.Track):
     """salami Track class
 
     Args:
@@ -157,32 +158,6 @@ class Track(object):
         self.annotator_2_time = self._track_metadata['annotator_2_time']
         self.broad_genre = self._track_metadata['class']
         self.genre = self._track_metadata['genre']
-
-    def __repr__(self):
-        repr_string = (
-            "Salami Track(track_id={}, audio_path={}, source={}, "
-            + "title={}, artist={}, duration={}, annotator_1_id={}, "
-            + "annotator_2_id={}, annotator_1_time={}, annotator_2_time={}, "
-            + "broad_genre={}, genre={}, "
-            + "sections_annotator_1_uppercase=SectionData('intervals', 'labels'), "
-            + "sections_annotator_1_lowercase=SectionData('intervals', 'labels'), "
-            + "sections_annotator_2_uppercase=SectionData('intervals', 'labels'), "
-            + "sections_annotator_2_lowercase=SectionData('intervals', 'labels'))"
-        )
-        return repr_string.format(
-            self.track_id,
-            self.audio_path,
-            self.source,
-            self.title,
-            self.artist,
-            self.duration,
-            self.annotator_1_id,
-            self.annotator_2_id,
-            self.annotator_1_time,
-            self.annotator_2_time,
-            self.broad_genre,
-            self.genre,
-        )
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):

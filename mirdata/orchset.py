@@ -20,6 +20,7 @@ import numpy as np
 import os
 import shutil
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -98,7 +99,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('orchset_index.json', _load_metadata)
 
 
-class Track(object):
+class Track(track.Track):
     """orchset Track class
 
     Args:
@@ -176,32 +177,6 @@ class Track(object):
         self.only_strings = self._track_metadata['only_strings']
         self.only_winds = self._track_metadata['only_winds']
         self.only_brass = self._track_metadata['only_brass']
-
-    def __repr__(self):
-        repr_string = (
-            "Orchset Track(track_id={}, audio_path_stereo={}, "
-            + "audio_path_mono={}, composer={}, work={}, excerpt={}, "
-            + "predominant_melodic_instruments={}, alternating_melody={}, "
-            + "contains_winds={}, contains_strings={}, contains_brass={}, "
-            + "only_strings={}, only_winds={}, only_brass={}, "
-            + "melody=F0Data('times', 'frequencies', 'confidence'))"
-        )
-        return repr_string.format(
-            self.track_id,
-            self.audio_path_stereo,
-            self.audio_path_mono,
-            self.composer,
-            self.work,
-            self.excerpt,
-            self.predominant_melodic_instruments,
-            self.alternating_melody,
-            self.contains_winds,
-            self.contains_strings,
-            self.contains_brass,
-            self.only_strings,
-            self.only_winds,
-            self.only_brass,
-        )
 
     @utils.cached_property
     def melody(self):

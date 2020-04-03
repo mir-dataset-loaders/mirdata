@@ -38,15 +38,9 @@ def test_track():
     y, sr = track.audio
     assert y.shape == (272417,)
     assert sr == 44100
-    repr_string = 'TinySOL Track(instrument=Flute, pitch=C4, dynamics=mf)'
-    assert track.__repr__() == repr_string
 
     # test with a string instrument
     track = tinysol.Track('Cb-ord-A2-mf-2c-N', data_home=data_home)
-    repr_string = (
-        'TinySOL Track(instrument=Contrabass, pitch=A2, ' + 'dynamics=mf, string=II)'
-    )
-    assert track.__repr__() == repr_string
 
 
 def test_to_jams():

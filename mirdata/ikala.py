@@ -21,6 +21,7 @@ import librosa
 import logging
 import numpy as np
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -63,7 +64,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('ikala_index.json', _load_metadata)
 
 
-class Track(object):
+class Track(track.Track):
     """ikala Track class
 
     Args:
@@ -106,17 +107,6 @@ class Track(object):
             self.singer_id = metadata[self.song_id]
         else:
             self.singer_id = None
-
-    def __repr__(self):
-        repr_string = (
-            "iKala Track(track_id={}, audio_path={}, song_id={}, "
-            + "section={}, singer_id={}, "
-            + "f0=F0Data('times', 'frequencies', 'confidence'), "
-            + "lyrics=LyricData('start_times', 'end_times', 'lyrics', 'pronunciations'))"
-        )
-        return repr_string.format(
-            self.track_id, self.audio_path, self.song_id, self.section, self.singer_id
-        )
 
     @utils.cached_property
     def f0(self):

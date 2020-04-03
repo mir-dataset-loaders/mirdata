@@ -107,6 +107,12 @@ mirdata.tinysol
 Utilities
 ----------
 
+mirdata.track
+^^^^^^^^^^^^^
+
+.. automodule:: mirdata.track
+   :members:
+
 mirdata.utils
 ^^^^^^^^^^^^^
 

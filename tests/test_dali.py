@@ -50,15 +50,6 @@ def test_track():
     assert sr == 48000
     assert audio.shape == (94208,)
 
-    repr_string = (
-        "DALI Track(track_id=4b196e6c99574dd49ad00d56e132712b, "
-        + "audio_path=tests/resources/mir_datasets/DALI/audio/4b196e6c99574dd49ad00d56e132712b.mp3, "
-        + "audio_url=zUzd9KyIDrM, audio_working=True, ground_truth=False, artist=System Of A Down, "
-        + "title=B.Y.O.B.,dataset_version=1, scores_ncc=0.9645, scores_manual=0, "
-        + "album=Mezmerize, release_date=2005, language=english)"
-    )
-    assert track.__repr__() == repr_string
-
 
 def test_load_notes():
     notes_path = (

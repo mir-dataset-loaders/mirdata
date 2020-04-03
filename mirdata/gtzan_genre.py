@@ -18,6 +18,7 @@ import os
 import librosa
 
 from mirdata import download_utils
+import mirdata.track as track
 from mirdata import utils
 
 
@@ -34,7 +35,7 @@ DATASET_REMOTE = download_utils.RemoteFileMetadata(
 DATA = utils.LargeData("gtzan_genre_index.json")
 
 
-class Track(object):
+class Track(track.Track):
     """gtzan_genre Track class
 
     Args:
@@ -70,11 +71,6 @@ class Track(object):
     def audio(self):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path, sample_rate=22050)
-
-    def __repr__(self):
-        return "GTZAN-Genre Track(track_id='{track_id}', genre='{genre}')".format(
-            track_id=self.track_id, genre=self.genre
-        )
 
     def to_jams(self):
         """(Not Implemented) Jams: the track's data in jams format"""

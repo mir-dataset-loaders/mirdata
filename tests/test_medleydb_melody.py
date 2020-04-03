@@ -42,17 +42,6 @@ def test_track():
     assert sr == 44100
     assert y.shape == (44100 * 2,)
 
-    repr_string = (
-        "MedleyDb-Melody Track(track_id=MusicDelta_Beethoven, "
-        + "audio_path=tests/resources/mir_datasets/MedleyDB-Melody/audio/"
-        + "MusicDelta_Beethoven_MIX.wav, artist=MusicDelta, title=Beethoven,"
-        + " genre=Classical, is_excerpt=True, is_instrumental=True, "
-        + "n_sources=18, melody1=F0Data('times', 'frequencies', confidence'),"
-        + " melody2=F0Data('times', 'frequencies', confidence'), "
-        + "melody3=MultipitchData('times', 'frequencies', confidence'))"
-    )
-    assert track.__repr__() == repr_string
-
 
 def test_to_jams():
 
