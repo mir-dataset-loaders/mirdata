@@ -35,6 +35,7 @@ except ImportError as E:
     )
     raise
 
+import mirdata.track as track
 import mirdata.utils as utils
 
 DATASET_DIR = 'DALI'
@@ -55,7 +56,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('dali_index.json', _load_metadata)
 
 
-class Track(utils.Track):
+class Track(track.Track):
     """DALI melody Track class
 
     Args:

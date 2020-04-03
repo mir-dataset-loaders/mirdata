@@ -18,6 +18,7 @@ import os
 import librosa
 
 from mirdata import download_utils
+import mirdata.track as track
 from mirdata import utils
 
 
@@ -34,7 +35,7 @@ DATASET_REMOTE = download_utils.RemoteFileMetadata(
 DATA = utils.LargeData("gtzan_genre_index.json")
 
 
-class Track(utils.Track):
+class Track(track.Track):
     """gtzan_genre Track class
 
     Args:

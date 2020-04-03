@@ -21,6 +21,7 @@ import logging
 import numpy as np
 import os
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -45,7 +46,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('medleydb_pitch_index.json', _load_metadata)
 
 
-class Track(utils.Track):
+class Track(track.Track):
     """medleydb_pitch Track class
 
     Args:

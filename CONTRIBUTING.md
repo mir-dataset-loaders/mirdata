@@ -136,6 +136,7 @@ from __future__ import print_function
 
 # -- import whatever you need here
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -170,7 +171,7 @@ DATA = utils.LargeData('example_index.json', _load_metadata)
 # DATA = utils.LargeData('example_index.json')  ## use this if your dataset has no metadata
 
 
-class Track(utils.Track):
+class Track(track.Track):
     """Example track class
     # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
     # -- `scripts/print_track_docstring.py my_dataset`

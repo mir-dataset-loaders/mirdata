@@ -11,6 +11,7 @@ import librosa
 import os
 import numpy as np
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -26,7 +27,7 @@ ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
 DATA = utils.LargeData('beatles_index.json')
 
 
-class Track(utils.Track):
+class Track(track.Track):
     """Beatles track class
 
     Args:
