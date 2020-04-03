@@ -14,6 +14,7 @@ import logging
 import numpy as np
 import os
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -107,7 +108,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('rwc_popular_index.json', _load_metadata)
 
 
-class Track(object):
+class Track(track.Track):
     """rwc_popular Track class
 
     Args:
@@ -188,32 +189,6 @@ class Track(object):
         self.tempo = self._track_metadata['tempo']
         self.instruments = self._track_metadata['instruments']
         self.drum_information = self._track_metadata['drum_information']
-
-    def __repr__(self):
-        repr_string = (
-            "RWC-Popular Track(track_id={}, audio_path={}, "
-            + "piece_number={}, suffix={}, track_number={}, title={}, "
-            + "artist={}, singer_information={}, duration={}, "
-            + "tempo={}, instruments={}, drum_information={}, "
-            + "sections=SectionData('intervals', 'labels'), "
-            + "beats=BeatData('beat_times', 'beat_positions'))"
-            + "chords=ChordData('intervals', 'labels'), "
-            + "vocal_instrument_activity=EventData('start_times', 'end_times', 'event')"
-        )
-        return repr_string.format(
-            self.track_id,
-            self.audio_path,
-            self.piece_number,
-            self.suffix,
-            self.track_number,
-            self.title,
-            self.artist,
-            self.singer_information,
-            self.duration,
-            self.tempo,
-            self.instruments,
-            self.drum_information,
-        )
 
     @utils.cached_property
     def sections(self):

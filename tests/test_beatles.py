@@ -40,18 +40,6 @@ def test_track():
     assert sr == 44100
     assert audio.shape == (44100 * 2,)
 
-    repr_string = (
-        "Beatles Track(track_id=0111, "
-        + "audio_path=tests/resources/mir_datasets/Beatles/audio/"
-        + "01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav, "
-        + "title=11_-_Do_You_Want_To_Know_A_Secret, "
-        + "beats=BeatData('beat_times, 'beat_positions'), "
-        + "chords=ChordData('intervals', 'labels'), "
-        + "key=KeyData('start_times', 'end_times', 'keys'), "
-        + "sections=SectionData('intervals', 'labels'))"
-    )
-    assert track.__repr__() == repr_string
-
     track = beatles.Track('10212')
     assert track.beats is None
     assert track.key is None

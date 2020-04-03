@@ -31,6 +31,7 @@ import librosa
 import logging
 import os
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -80,7 +81,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("medley_solos_db_index.json", _load_metadata)
 
 
-class Track(object):
+class Track(track.Track):
     """medley_solos_db Track class
 
     Args:
@@ -129,15 +130,6 @@ class Track(object):
         self.instrument_id = self._track_metadata["instrument_id"]
         self.song_id = self._track_metadata["song_id"]
         self.subset = self._track_metadata["subset"]
-
-    def __repr__(self):
-        repr_string = (
-            "Medley-solos-DB Track(track_id={}, audio_path={}, "
-            + "instrument={}, song_id={}, subset={})"
-        )
-        return repr_string.format(
-            self.track_id, self.audio_path, self.instrument, self.song_id, self.subset
-        )
 
     @property
     def audio(self):

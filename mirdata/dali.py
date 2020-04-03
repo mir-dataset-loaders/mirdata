@@ -35,6 +35,7 @@ except ImportError as E:
     )
     raise
 
+import mirdata.track as track
 import mirdata.utils as utils
 
 DATASET_DIR = 'DALI'
@@ -55,7 +56,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('dali_index.json', _load_metadata)
 
 
-class Track(object):
+class Track(track.Track):
     """DALI melody Track class
 
     Args:
@@ -132,28 +133,6 @@ class Track(object):
             self.release_date = None
             self.language = None
             self.audio_path = None
-
-    def __repr__(self):
-        repr_string = (
-            "DALI Track(track_id={}, audio_path={}, "
-            + "audio_url={}, audio_working={}, ground_truth={}, artist={}, title={},"
-            + "dataset_version={}, scores_ncc={}, scores_manual={}, album={}, release_date={}, language={})"
-        )
-        return repr_string.format(
-            self.track_id,
-            self.audio_path,
-            self.audio_url,
-            self.url_working,
-            self.ground_truth,
-            self.artist,
-            self.title,
-            self.dataset_version,
-            round(self.scores_ncc, 4),
-            self.scores_manual,
-            self.album,
-            self.release_date,
-            self.language,
-        )
 
     @utils.cached_property
     def notes(self):

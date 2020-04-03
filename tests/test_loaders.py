@@ -9,6 +9,7 @@ import sys
 import pytest
 
 import mirdata
+import mirdata.track as track
 from tests.test_utils import DEFAULT_DATA_HOME
 
 DATASETS = [importlib.import_module("mirdata.{}".format(d)) for d in mirdata.__all__]
@@ -64,7 +65,13 @@ def test_track():
         track_default = dataset.Track(trackid)
         assert track_default._data_home == os.path.join(
             DEFAULT_DATA_HOME, dataset.DATASET_DIR)
+
+        assert isinstance(track_default, track.Track)
+
         assert hasattr(track_default, 'to_jams')
+
+        # will fail if something goes wrong with __repr__
+        print(track_default)
 
         with pytest.raises(ValueError):
             dataset.Track('~faketrackid~?!')

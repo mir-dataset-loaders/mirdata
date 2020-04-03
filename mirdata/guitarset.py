@@ -53,6 +53,7 @@ import librosa
 import jams
 import logging
 
+import mirdata.track as track
 import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 
@@ -99,7 +100,7 @@ _GUITAR_STRINGS = ['E', 'A', 'D', 'G', 'B', 'e']
 DATA = utils.LargeData('guitarset_index.json')
 
 
-class Track(object):
+class Track(track.Track):
     """guitarset Track class
 
     Args:
@@ -156,20 +157,6 @@ class Track(object):
         self.mode = title_list[2]
         self.tempo = float(tempo)
         self.style = _STYLE_DICT[style[:-1]]
-
-    def __repr__(self):
-        repr_string = (
-            'GuitarSet Track('
-            + 'track_id={}, jams_path={},\n'.format(self.track_id, self.jams_path)
-            + 'tempo={}, mode={}, style={},\n'.format(self.tempo, self.mode, self.style)
-            + "beats=BeatData('beat_times', 'beat_positions'),\n"
-            + "leadsheet_chords=ChordData('start_times', 'end_times', 'chords'),\n"
-            + "inferred_chords=ChordData('start_times', 'end_times', 'chords'),\n"
-            + "key_mode=KeyData('start_times', 'end_times', 'keys'),\n"
-            + "pitch_contours=dict(F0Data('times', 'frequencies', 'confidence')),\n"
-            + "notes=dict(NoteData('intervals', 'notes', 'confidence')))"
-        )
-        return repr_string
 
     @utils.cached_property
     def beats(self):

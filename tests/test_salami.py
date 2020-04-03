@@ -50,20 +50,6 @@ def test_track():
     assert sr == 44100
     assert y.shape == (89856,)
 
-    repr_string = (
-        "Salami Track(track_id=2, "
-        + "audio_path=tests/resources/mir_datasets/Salami/audio/2.mp3, "
-        + "source=Codaich, title=For_God_And_Country, "
-        + "artist=The_Smashing_Pumpkins, duration=264.0, annotator_1_id=5, "
-        + "annotator_2_id=8, annotator_1_time=37, annotator_2_time=45, "
-        + "broad_genre=popular, genre=Alternative_Pop___Rock, "
-        + "sections_annotator_1_uppercase=SectionData('intervals', 'labels'), "
-        + "sections_annotator_1_lowercase=SectionData('intervals', 'labels'), "
-        + "sections_annotator_2_uppercase=SectionData('intervals', 'labels'), "
-        + "sections_annotator_2_lowercase=SectionData('intervals', 'labels'))"
-    )
-    assert track.__repr__() == repr_string
-
     # Test file with missing annotations
     track = salami.Track('192', data_home=data_home)
 

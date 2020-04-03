@@ -34,8 +34,3 @@ def test_track():
     audio, sr = track.audio
     assert sr == 22050
     assert audio.shape == (663300,)
-
-
-def test_repr():
-    track = gtzan_genre.Track("country.00000", data_home=TEST_DATA_HOME)
-    assert str(track) == "GTZAN-Genre Track(track_id='country.00000', genre='country')"
