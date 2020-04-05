@@ -99,17 +99,17 @@ class Track(track.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        drummer (str):
-        session (str): 
-        track_id (str):
-        style (str):
-        bpm (int):
-        beat_type (str):
-        time_signature (str):
-        midi_path (str):
-        audio_path (str):
-        duration (float):
-        split (str): 
+        drummer (str): drummer id of the track 
+        session (str): type of session 
+        track_id (str): track id of the track 
+        style (str): style (genre, groove type) of the track 
+        bpm (int): track bpm
+        beat_type (str): whether the track is a beat or a fill 
+        time_signature (str): time signature of the track (ex. '4-4', '6-8') 
+        midi_path (str): path to the midi file 
+        audio_path (str): path to the audio file 
+        duration (float): duration of the midi file 
+        split (str): whether the track is for a train/valid/test set. 
     """
 
     def __init__(self, track_id, data_home=None):
