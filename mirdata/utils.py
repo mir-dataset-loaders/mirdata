@@ -23,8 +23,6 @@ Attributes:
 """
 
 
-
-
 from collections import namedtuple
 import hashlib
 import os
