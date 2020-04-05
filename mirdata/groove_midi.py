@@ -257,7 +257,8 @@ class Track(track.Track):
         midi_path (str): Path to the midi file
         audio_path (str): Path to the audio file
         duration (float): Duration of the midi file in seconds
-        split (str): Whether the track is for a train/valid/test set. One of 'train', 'valid' or 'test'.
+        split (str): Whether the track is for a train/valid/test set. One of
+        'train', 'valid' or 'test'.
     """
 
     def __init__(self, track_id, data_home=None):
@@ -436,7 +437,7 @@ def load_midi(midi_path):
         midi_path (str): path to midi file
 
     Returns:
-        midi_data (obj): prettyMIDI object containing MIDI data. Refer to http://craffel.github.io/pretty-midi/ for more details.
+        midi_data (obj): pretty_midi object
 
     """
     return pretty_midi.PrettyMIDI(midi_path)
@@ -519,7 +520,8 @@ Jon Gillick, Adam Roberts, Jesse Engel, Douglas Eck, and David Bamman.
 International Conference on Machine Learning (ICML), 2019.
 ========== Bibtex ==========
 @inproceedings{groove2019,
-    Author = {Jon Gillick and Adam Roberts and Jesse Engel and Douglas Eck and David Bamman},
+    Author = {Jon Gillick and Adam Roberts and Jesse Engel and Douglas Eck
+              and David Bamman},
     Title = {Learning to Groove with Inverse Sequence Transformations},
     Booktitle = {International Conference on Machine Learning (ICML)},
     Year = {2019},
