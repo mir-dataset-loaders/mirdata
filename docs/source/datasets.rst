@@ -33,6 +33,9 @@ click the link provided in the "Module" column.
 | dali_            | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                  |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
+| groove_midi_     | Groove MIDI         | - audio: ✅         | - :ref:`genre`             | 1150   |
+|                  | Dataset             | - midi: ✅          |                           |        |
++------------------+---------------------+---------------------+---------------------------+--------+
 | gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
@@ -74,9 +77,6 @@ click the link provided in the "Module" column.
 | tinysol_         | TinySOL             | - audio: ✅         | - :ref:`instruments`      | 2913   |
 |                  |                     | - annotations: ✅   | - :ref:`technique`        |        |
 |                  |                     |                     | - :ref:`notes`            |        |
-+------------------+---------------------+---------------------+---------------------------+--------+
-| groove_midi_     | Groove MIDI         | - audio: ✅         | - :ref:`genre`            | 1150   |
-|                  | Dataset             | - midi: ✅          |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 
 

@@ -1,35 +1,63 @@
 # -*- coding: utf-8 -*-
 """Groove MIDI Loader
 
-Groove MIDI dataset consists of 
-* 1,150 MIDI files with aligned synthesized audio, which is over 22,000 measures of drumming (13.6 hours in total) 
-* Performances by 10 drummers on a Roland TD-11 electronic drum kit
-* A wide range of genres, such as jazz, rock, latin, and funk
-* A mix of long sequences (several minutes) and short beats and fills (1 or 2 bars)
-* Additional information for each track, such as genre, time signature and bpm
+The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
+synthesized audio of human-performed, tempo-aligned expressive drumming.
+The dataset contains 1,150 MIDI files and over 22,000 measures of drumming.
 
-This dataset was introduced in a paper, ["Learning to Groove with Inverse Sequence Transformations"](https://arxiv.org/abs/1905.06118), by Gillick et al.   
-It is provided by the Google Magenta Team.  
+To enable a wide range of experiments and encourage comparisons between methods
+on the same data, Gillick et al. created a new dataset of drum performances
+recorded in MIDI format. They hired professional drummers and asked them to
+perform in multiple styles to a click track on a Roland TD-11 electronic drum kit.
+They also recorded the aligned, high-quality synthesized audio from the TD-11 and
+include it in the release.
 
-For more details and to download, please visit: http://magenta.tensorflow.org/datasets/groove
+The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
+existing ones:
+
+* The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000
+measures of drumming.
+* Each performance was played along with a metronome set at a specific tempo
+by the drummer.
+* The data includes performances by a total of 10 drummers, with more than 80%
+of duration coming from hired professionals. The professionals were able to
+improvise in a wide range of styles, resulting in a diverse dataset.
+* The drummers were instructed to play a mix of long sequences (several minutes
+of continuous playing) and short beats and fills.
+* Each performance is annotated with a genre (provided by the drummer), tempo,
+and anonymized drummer ID.
+* Most of the performances are in 4/4 time, with a few examples from other time
+signatures.
+* Four drummers were asked to record the same set of 10 beats in their own
+style. These are included in the test set split, labeled eval-session/groove1-10.
+* In addition to the MIDI recordings that are the primary source of data for the
+experiments in this work, the authors captured the synthesized audio outputs of
+the drum set and aligned them to within 2ms of the corresponding MIDI files.
+
+A train/validation/test split configuration is provided for easier comparison of
+model accuracy on various tasks.
+
+The dataset is made available by Google LLC under a Creative Commons
+Attribution 4.0 International (CC BY 4.0) License.
+
+For more details, please visit: http://magenta.tensorflow.org/datasets/groove
 """
 
-from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import csv
+import jams
+import librosa
+import logging
 import numpy as np
 import os
-import librosa
-import jams
-import logging
-import csv
 import pretty_midi
 
-import mirdata.track as track
-import mirdata.utils as utils
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
+import mirdata.track as track
+import mirdata.utils as utils
 
 
 DATASET_DIR = 'Groove-MIDI'
@@ -99,17 +127,17 @@ class Track(track.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        drummer (str): drummer id of the track 
-        session (str): type of session 
-        track_id (str): track id of the track 
-        style (str): style (genre, groove type) of the track 
-        bpm (int): track bpm
-        beat_type (str): whether the track is a beat or a fill 
-        time_signature (str): time signature of the track (ex. '4-4', '6-8') 
-        midi_path (str): path to the midi file 
-        audio_path (str): path to the audio file 
-        duration (float): duration of the midi file 
-        split (str): whether the track is for a train/valid/test set. 
+        drummer (str): Drummer id of the track (ex. 'drummer1') 
+        session (str): Type of session  (ex. 'session1', 'eval_session')
+        track_id (str): track id of the track (ex. 'drummer1/eval_session/1')
+        style (str): Style (genre, groove type) of the track (ex. 'funk/groove1') 
+        bpm (int): Track bpm (ex. 138) 
+        beat_type (str): Whether the track is a beat or a fill (ex. 'beat') 
+        time_signature (str): Time signature of the track (ex. '4-4', '6-8')  
+        midi_path (str): Path to the midi file 
+        audio_path (str): Path to the audio file 
+        duration (float): Duration of the midi file in seconds 
+        split (str): Whether the track is for a train/valid/test set. One of 'train', 'valid' or 'test'.
     """
 
     def __init__(self, track_id, data_home=None):
@@ -176,6 +204,10 @@ class Track(track.Track):
         """(obj): prettyMIDI obj"""
         return load_midi(self.midi_path)
 
+    def to_jams(self):
+        """(Not Implemented) Jams: the track's data in jams format"""
+        raise NotImplementedError
+
 
 def load_audio(audio_path):
     """Load a Groove MIDI audio file.
@@ -215,7 +247,7 @@ def download(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
-        data_home, downloads=[AUDIO_MIDI_REMOTE], cleanup=True,
+        data_home, zip_downloads=[AUDIO_MIDI_REMOTE], cleanup=True,
     )
 
 
