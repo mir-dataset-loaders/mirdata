@@ -60,7 +60,7 @@ import mirdata.track as track
 import mirdata.utils as utils
 
 
-DATASET_DIR = 'Groove-MIDI'
+DATASET_DIR = 'Groove MIDI'
 
 
 AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
@@ -249,6 +249,8 @@ def download(data_home=None):
     download_utils.downloader(
         data_home, zip_downloads=[AUDIO_MIDI_REMOTE], cleanup=True,
     )
+
+    os.rename(os.path.join(data_home, 'groove'), os.path.join(data_home, 'Groove MIDI'))
 
 
 def validate(data_home=None, silence=False):

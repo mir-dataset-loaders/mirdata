@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
-import os
 import numpy as np
+import os
 
 from mirdata import groove_midi, utils
 from tests.test_utils import run_track_tests
@@ -10,7 +10,7 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = 'drummer1/eval_session/1'
-    data_home = 'tests/resources/mir_datasets/Groove-MIDI'
+    data_home = 'tests/resources/mir_datasets/Groove MIDI'
     track = groove_midi.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
@@ -60,7 +60,7 @@ def test_track():
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/Groove-MIDI'
+    data_home = 'tests/resources/mir_datasets/Groove MIDI'
     metadata = groove_midi._load_metadata(data_home)
 
     assert metadata['data_home'] == data_home
