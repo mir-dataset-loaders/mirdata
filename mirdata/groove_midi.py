@@ -24,7 +24,7 @@ import librosa
 import jams
 import logging
 import csv
-import pretty_midi 
+import pretty_midi
 
 import mirdata.track as track
 import mirdata.utils as utils
@@ -39,14 +39,12 @@ AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
     filename='groove-v1-0.0.zip',
     url='http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip',
     checksum='21559feb2f1c96ca53988fd4d7060b1f2afe1d854fb2a8dcea5ff95cf3cce7e9',
-    destination_dir=None
+    destination_dir=None,
 )
 
 
 def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, "info.csv"
-    )
+    metadata_path = os.path.join(data_home, "info.csv")
 
     if not os.path.exists(metadata_path):
         logging.info("Metadata file {} not found.".format(metadata_path))
@@ -57,19 +55,31 @@ def _load_metadata(data_home):
         csv_reader = csv.reader(fhandle, delimiter=",")
         next(csv_reader)
         for row in csv_reader:
-            drummer, session, track_id, style, bpm, beat_type, time_signature, midi_filename, audio_filename, duration, split = row
+            (
+                drummer,
+                session,
+                track_id,
+                style,
+                bpm,
+                beat_type,
+                time_signature,
+                midi_filename,
+                audio_filename,
+                duration,
+                split,
+            ) = row
             metadata_index[str(track_id)] = {
-                'drummer' : str(drummer),
-                'session' : str(session),
+                'drummer': str(drummer),
+                'session': str(session),
                 'track_id': str(track_id),
-                'style' : str(style),
+                'style': str(style),
                 'bpm': int(bpm),
                 'beat_type': str(beat_type),
                 'time_signature': str(time_signature),
                 'midi_filename': str(midi_filename),
                 'audio_filename': str(audio_filename),
                 'duration': float(duration),
-                'split': str(split), 
+                'split': str(split),
             }
 
     metadata_index['data_home'] = data_home
@@ -104,7 +114,9 @@ class Track(track.Track):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError('{} is not a valid track ID in Groove MIDI'.format(track_id))
+            raise ValueError(
+                '{} is not a valid track ID in Groove MIDI'.format(track_id)
+            )
 
         self.track_id = track_id
 
@@ -113,7 +125,7 @@ class Track(track.Track):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
-        
+
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
             self._track_metadata = metadata[track_id]
@@ -128,9 +140,9 @@ class Track(track.Track):
                 "midi_filename": None,
                 "audio_filename": None,
                 "duration": None,
-                "split": None
+                "split": None,
             }
-       
+
         self.drummer = self._track_metadata["drummer"]
         self.session = self._track_metadata["session"]
         self.style = self._track_metadata["style"]
@@ -141,23 +153,24 @@ class Track(track.Track):
         self.split = self._track_metadata["split"]
         self.midi_filename = self._track_metadata["midi_filename"]
         self.audio_filename = self._track_metadata["audio_filename"]
-        
+
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
-        if self._track_paths["audio"][0]: 
-            self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        if self._track_paths["audio"][0]:
+            self.audio_path = os.path.join(
+                self._data_home, self._track_paths["audio"][0]
+            )
         else:
-            self.audio_path = None 
-
+            self.audio_path = None
 
     @property
     def audio(self):
         """(np.ndarray, float): audio signal, sample rate"""
-        if self.audio_path:  
+        if self.audio_path:
             return load_audio(self.audio_path)
         else:
             return (None, None)
-    
+
     @property
     def midi(self):
         """(obj): prettyMIDI obj"""
@@ -202,9 +215,7 @@ def download(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
-        data_home,
-        downloads=[AUDIO_MIDI_REMOTE],
-        cleanup=True,
+        data_home, downloads=[AUDIO_MIDI_REMOTE], cleanup=True,
     )
 
 
