@@ -325,8 +325,94 @@ class Track(track.Track):
         return load_midi(self.midi_path)
 
     def to_jams(self):
-        """(Not Implemented) Jams: the track's data in jams format"""
-        raise NotImplementedError
+        # Initialize top-level JAMS container
+        jam = jams.JAMS()
+
+        # Encode title, artist, and release
+        jam.file_metadata.title = os.path.split(self.audio_filename)[1]
+        jam.file_metadata.artist = self.drummer
+        jam.file_metadata.release = os.path.split(self.session)[1]
+
+        # Encode duration in seconds
+        jam.file_metadata.duration = self.duration
+
+        # Encode JAMS curator
+        curator = jams.Curator(name="Jon Gillick", email="jongillick@berkeley.edu")
+
+        # Store mirdata metadata as JAMS identifiers
+        jam.file_metadata.identifiers = jams.Sandbox(**self.__dict__)
+
+        # Encode annotation metadata
+        ann_meta = jams.AnnotationMetadata(
+            annotator={
+                "mirdata version": mirdata.__version__,
+                "pretty_midi version": pretty_midi.__version__,
+            },
+            version=GMD_VERSION,
+            corpus=DATASET_DIR,
+            annotation_tools="Roland TD-11 electronic drum kit",
+            annotation_rules=ANNOTATION_RULES,
+            validation=mirdata.groove_midi.AUDIO_MIDI_REMOTE,
+            data_source="Google Magenta",
+            curator=curator,
+        )
+
+        # Encode beat annotation
+        beat_ann = jams.Annotation(
+            namespace="beat_position",
+            time=0,
+            duration=self.duration,
+            annotation_metadata=ann_meta,
+        )
+        beat_times = self.midi.get_beats()
+        meter = self.midi.time_signature_changes[0]
+        n_beats_per_bar = meter.numerator
+        beat_durations = np.diff(list(beat_times) + [self.duration])
+        beat_enum = enumerate(zip(beat_times, beat_durations))
+        for beat_id, (beat_time, beat_duration) in beat_enum:
+            beat_value = {
+                "position": 1 + (beat_id % meter.numerator),
+                "measure": 1 + (beat_id // meter.numerator),
+                "num_beats": meter.numerator,
+                "beat_units": meter.denominator,
+            }
+            beat_ann.append(
+                time=beat_time, duration=beat_duration, confidence=1, value=beat_value
+            )
+        jam.annotations.append(beat_ann)
+
+        # Encode tempo annotation
+        tempo_ann = jams.Annotation(
+            namespace="tempo",
+            time=0,
+            duration=self.duration,
+            annotation_metadata=ann_meta,
+        )
+        tempo_ann.append(time=0, duration=self.duration, confidence=1, value=self.bpm)
+        jam.annotations.append(tempo_ann)
+
+        # Encode event annotation. We support three drum mappings:
+        # Roland, General MIDI (GM), and Simplified.
+        mapping_keys = ["Roland", "General MIDI", "Simplified"]
+        for mapping_key in mapping_keys:
+            mapping_namespace = "drum stroke ({} mapping)".format(mapping_key)
+            event_ann = jams.Annotation(
+                namespace=mapping_namespace,
+                time=0,
+                duration=self.duration,
+                annotation_metadata=ann_meta,
+            )
+            for note in self.midi.instruments[0].notes:
+                event_value = DRUM_MAPPING[drum.notes[0].pitch][mapping_key]
+                event_ann.append(
+                    time=note.start,
+                    duration=note.end - note.start,
+                    value=event_value,
+                    confidence=1,
+                )
+            jam.annotations.append(event_ann)
+
+        return jam
 
 
 def load_audio(audio_path):
