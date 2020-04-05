@@ -75,6 +75,9 @@ click the link provided in the "Module" column.
 |                  |                     | - annotations: ✅   | - :ref:`technique`        |        |
 |                  |                     |                     | - :ref:`notes`            |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
+| groove_midi_     | Groove MIDI         | - audio: ✅         | - :ref:`genre`            | 1150   |
+|                  | Dataset             | - midi: ✅          |                           |        |
++------------------+---------------------+---------------------+---------------------------+--------+
 
 
 Annotation Type Descriptions
@@ -192,5 +195,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _rwc_pop: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_pop
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
+.. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
+
 
 

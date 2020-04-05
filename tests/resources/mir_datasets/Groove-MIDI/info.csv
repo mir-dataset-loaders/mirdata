@@ -1,0 +1,4 @@
+drummer,session,id,style,bpm,beat_type,time_signature,midi_filename,audio_filename,duration,split
+drummer1,drummer1/eval_session,drummer1/eval_session/1,funk/groove1,138,beat,4-4,drummer1/eval_session/1_funk-groove1_138_beat_4-4.mid,drummer1/eval_session/1_funk-groove1_138_beat_4-4.wav,27.872308,test
+drummer1,drummer1/eval_session,drummer1/eval_session/10,soul/groove10,102,beat,4-4,drummer1/eval_session/10_soul-groove10_102_beat_4-4.mid,drummer1/eval_session/10_soul-groove10_102_beat_4-4.wav,37.691158,test
+drummer1,drummer1/eval_session,drummer1/eval_session/2,funk/groove2,105,beat,4-4,drummer1/eval_session/2_funk-groove2_105_beat_4-4.mid,drummer1/eval_session/2_funk-groove2_105_beat_4-4.wav,36.351218,test

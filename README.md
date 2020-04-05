@@ -31,6 +31,7 @@ This library provides tools for working with common MIR datasets, including tool
 * [RWC Popular](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html)
 * [Salami](https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections)
 * [TinySOL](https://www.orch-idea.org/)
+* [Groove MIDI](https://magenta.tensorflow.org/datasets/groove) 
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).
 

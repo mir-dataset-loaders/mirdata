@@ -21,4 +21,5 @@ __all__ = [
     'rwc_popular',
     'salami',
     'tinysol',
+    'groove_midi',
 ]

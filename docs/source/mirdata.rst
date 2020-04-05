@@ -104,6 +104,13 @@ mirdata.tinysol
    :members:
 
 
+mirdata.groove_midi
+^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.groove_midi
+   :members:
+
+
 Utilities
 ----------
 
