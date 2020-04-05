@@ -22,9 +22,6 @@ The Medley-solos-DB dataset is the dataset that is used in the benchmarks of
 musical instrument recognition in the publications of Lostanlen and Cella
 (ISMIR 2016) and Andén et al. (IEEE TSP 2019).
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 import csv
 import librosa

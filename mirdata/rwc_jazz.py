@@ -35,10 +35,10 @@ import csv
 import logging
 import os
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 # these functions are identical for all rwc datasets
 from mirdata.rwc_classical import (
