@@ -320,6 +320,15 @@ class Track(track.Track):
         else:
             return (None, None)
 
+    @utils.cached_property
+    def beats(self):
+        """BeatData: machine-generated beat annotation"""
+        beat_times = self.midi.get_beats()
+        beat_range = np.arange(0, len(beat_times))
+        meter = self.midi.time_signature_changes[0]
+        beat_positions = 1 + np.mod(beat_range, meter.numerator)
+        return BeatData(beat_times, beat_positions)
+
     @property
     def midi(self):
         """(obj): prettyMIDI obj"""
