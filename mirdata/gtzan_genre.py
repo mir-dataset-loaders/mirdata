@@ -73,8 +73,49 @@ class Track(track.Track):
         return load_audio(self.audio_path, sample_rate=22050)
 
     def to_jams(self):
-        """(Not Implemented) Jams: the track's data in jams format"""
-        raise NotImplementedError
+        """Jams: the track's data in jams format"""
+        # Initialize top-level JAMS container
+        jam = jams.JAMS()
+
+        # Encode title, artist, and release
+        jam.file_metadata.title = "Unknown track"
+        jam.file_metadata.artist = "Unknown artist"
+        jam.file_metadata.release = "Unknown album"
+
+        # Encode duration in seconds
+        jam.file_metadata.duration = 30.0
+
+        # Encode JAMS curator
+        curator = jams.Curator(name="George Tzanetakis", email="gtzan@cs.uvic.ca")
+
+        # Store mirdata metadata as JAMS identifiers
+        jam.file_metadata.identifiers = jams.Sandbox(**self.__dict__)
+
+        # Encode annotation metadata
+        ann_meta = jams.AnnotationMetadata(
+            annotator={
+                "mirdata version": mirdata.__version__,
+            },
+            version=VERSION,
+            corpus=DATASET_DIR,
+            annotation_tools="MARSYAS",
+            annotation_rules=ANNOTATION_RULES,
+            validation=DATASET_REMOTE,
+            data_source="George Tzanetakis",
+            curator=curator,
+        )
+
+        # Encode genre annotation
+        genre_ann = jams.Annotation(
+            namespace="gtzan",
+            time=0,
+            duration=30.0,
+            annotation_metadata=ann_meta,
+        )
+        genre_ann.append(time=0, duration=30.0, confidence=0, value=self.genre)
+        jam.annotations.append(genre_ann)
+
+        return jam
 
 
 def load_audio(audio_path, sample_rate=22050):
