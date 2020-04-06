@@ -36,6 +36,17 @@ DATASET_REMOTE = download_utils.RemoteFileMetadata(
 
 DATA = utils.LargeData("gtzan_genre_index.json")
 
+VERSION = "1.0"
+
+ANNOTATION_RULES = """
+Unfortunately the database was collected gradually and very early on in my
+research so I have no titles.
+The files were collected in 2000-2001 from a variety of sources including
+personal CDs, radio, microphone recordings, in order to represent a variety of
+recording conditions. Nevetheless I have been providing it to researchers upon
+request mainly for comparison purposes etc. -- George Tzanetakis, 2005
+"""
+
 
 class Track(track.Track):
     """gtzan_genre Track class
