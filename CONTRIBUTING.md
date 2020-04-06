@@ -130,16 +130,13 @@ For more details, please visit: [website]
 
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 # -- import whatever you need here
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 DATASET_DIR = 'Example'
 # -- info for any files that need to be downloaded
