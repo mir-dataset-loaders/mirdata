@@ -52,6 +52,12 @@ def downloader(
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
+    if type(download_items) != dict:
+        raise TypeError(
+            'download_items should be a dictionary, but is '
+            + 'a {} element'.format(type(download_items))
+        )
+
     start_download_message = """
             Trying to download the list of files {} to folder {}
         """.format(
@@ -62,12 +68,18 @@ def downloader(
     zip_downloads = []
     tar_downloads = []
     file_downloads = []
+
     for k in download_items.keys():
+        if type(download_items[k]) != RemoteFileMetadata:
+            raise TypeError(
+                'download_items should be a dictionary of RemoteFileMetadata type, '
+                + 'but contains a {} element'.format(type(download_items[k]))
+            )
         extension = os.path.splitext(download_items[k].url)[-1]
         if '.zip' in extension:
             zip_downloads.append(download_items[k])
         else:
-            if '.tar.gz' in extension:
+            if '.tar.gz' in extension or '.tar' in extension:
                 tar_downloads.append(download_items[k])
             else:
                 file_downloads.append(download_items[k])

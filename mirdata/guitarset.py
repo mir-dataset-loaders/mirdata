@@ -279,7 +279,7 @@ def load_multitrack_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=False)
 
 
-def download(data_home=None, download_items=None):
+def download(data_home=None, download_items=None, force_overwrite=True):
     """Download GuitarSet.
 
     Args:
@@ -294,6 +294,7 @@ def download(data_home=None, download_items=None):
     download_utils.downloader(
         data_home,
         download_items,
+        force_overwrite=force_overwrite,
         cleanup=True,
     )
 
