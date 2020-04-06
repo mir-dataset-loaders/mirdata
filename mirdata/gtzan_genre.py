@@ -26,10 +26,10 @@ DATASET_DIR = "GTZAN-Genre"
 
 DOWNLOAD = {
     'DATASET_REMOTE': download_utils.RemoteFileMetadata(
-    filename="genres.tar.gz",
-    url="http://opihi.cs.uvic.ca/sound/genres.tar.gz",
-    checksum="5b3d6dddb579ab49814ab86dba69e7c7",
-    destination_dir="gtzan_genre",
+        filename="genres.tar.gz",
+        url="http://opihi.cs.uvic.ca/sound/genres.tar.gz",
+        checksum="5b3d6dddb579ab49814ab86dba69e7c7",
+        destination_dir="gtzan_genre",
     )
 }
 
@@ -156,8 +156,9 @@ def download(data_home=None, download_items=None, force_overwrite=False):
     if download_items is None:
         download_items = DOWNLOAD
 
-    download_utils.downloader(data_home, download_items,
-                              force_overwrite=force_overwrite)
+    download_utils.downloader(
+        data_home, download_items, force_overwrite=force_overwrite
+    )
 
 
 def cite():

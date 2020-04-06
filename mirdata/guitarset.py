@@ -292,10 +292,7 @@ def download(data_home=None, download_items=None, force_overwrite=True):
         download_items = DOWNLOAD
 
     download_utils.downloader(
-        data_home,
-        download_items,
-        force_overwrite=force_overwrite,
-        cleanup=True,
+        data_home, download_items, force_overwrite=force_overwrite, cleanup=True,
     )
 
 

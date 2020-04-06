@@ -18,12 +18,12 @@ import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = 'Beatles'
 DOWNLOAD = {
-    'ANNOTATIONS_REMOTE':download_utils.RemoteFileMetadata(
-    filename='The Beatles Annotations.tar.gz',
-    url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
-    checksum='62425c552d37c6bb655a78e4603828cc',
-    destination_dir='annotations',
-)
+    'ANNOTATIONS_REMOTE': download_utils.RemoteFileMetadata(
+        filename='The Beatles Annotations.tar.gz',
+        url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
+        checksum='62425c552d37c6bb655a78e4603828cc',
+        destination_dir='annotations',
+    )
 }
 
 DATA = utils.LargeData('beatles_index.json')
@@ -160,7 +160,7 @@ def download(data_home=None, download_items=None, force_overwrite=False):
         download_items,
         info_message=download_message,
         force_overwrite=force_overwrite,
-)
+    )
 
 
 def validate(data_home=None, silence=False):

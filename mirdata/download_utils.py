@@ -26,11 +26,7 @@ RemoteFileMetadata = namedtuple(
 
 
 def downloader(
-    save_dir,
-    download_items,
-    info_message=None,
-    force_overwrite=False,
-    cleanup=False,
+    save_dir, download_items, info_message=None, force_overwrite=False, cleanup=False,
 ):
     """Download data to `save_dir` and optionally print a message.
 
@@ -151,12 +147,12 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
                 )
             except Exception as e:
                 error_msg = """
-                            mirdata failed to download the dataset!
+                            mirdata failed to download the dataset from {}!
                             Please try again in a few minutes.
                             If this error persists, please raise an issue at
                             https://github.com/mir-dataset-loaders/mirdata,
                             and tag it with 'broken-link'.
-                            """
+                            """.format(remote.url)
                 print(error_msg)
                 raise e
 
