@@ -10,15 +10,12 @@ contains 10 genres, each represented by 100 tracks. The tracks are all
 22050 Hz mono 16-bit audio files in .wav format.
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
-import os
 import librosa
+import os
 
 from mirdata import download_utils
-import mirdata.track as track
+from mirdata import jams_utils
+from mirdata import track
 from mirdata import utils
 
 

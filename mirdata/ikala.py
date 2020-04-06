@@ -11,20 +11,17 @@ found under PitchLabel and Lyrics respectively.
 For more details, please visit: http://mac.citi.sinica.edu.tw/ikala/
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import csv
 import os
 import librosa
 import logging
 import numpy as np
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
+
 
 DATASET_DIR = 'iKala'
 TIME_STEP = 0.032  # seconds

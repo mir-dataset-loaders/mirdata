@@ -22,19 +22,16 @@ The Medley-solos-DB dataset is the dataset that is used in the benchmarks of
 musical instrument recognition in the publications of Lostanlen and Cella
 (ISMIR 2016) and Andén et al. (IEEE TSP 2019).
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 import csv
 import librosa
 import logging
 import os
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 DATASET_DIR = "Medley-solos-DB"
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
