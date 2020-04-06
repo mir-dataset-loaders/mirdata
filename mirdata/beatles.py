@@ -17,12 +17,14 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = 'Beatles'
-ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
+DOWNLOAD = {
+    'ANNOTATIONS_REMOTE':download_utils.RemoteFileMetadata(
     filename='The Beatles Annotations.tar.gz',
     url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
     checksum='62425c552d37c6bb655a78e4603828cc',
     destination_dir='annotations',
 )
+}
 
 DATA = utils.LargeData('beatles_index.json')
 
@@ -121,7 +123,7 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False):
+def download(data_home=None, force_overwrite=False, to_download=DOWNLOAD):
     """Download the Beatles Dataset (annotations).
     The audio files are not provided due to the copyright.
 
@@ -129,6 +131,9 @@ def download(data_home=None, force_overwrite=False):
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
         force_overwrite (bool): Whether to overwrite the existing downloaded data
+        to_download (dict): Remote objects to download. By default it will download all available objects of a given
+                            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
+                            audio types), by passing a custom dictionary to the download function.
 
     """
 
@@ -148,11 +153,12 @@ def download(data_home=None, force_overwrite=False):
         data_home
     )
 
-    download_utils.downloader(
-        data_home,
-        tar_downloads=[ANNOTATIONS_REMOTE],
-        info_message=download_message,
-        force_overwrite=force_overwrite,
+    for key in DOWNLOAD.keys():
+        download_utils.downloader(
+            data_home,
+            tar_downloads=[DOWNLOAD[key]],
+            info_message=download_message,
+            force_overwrite=force_overwrite,
     )
 
 
