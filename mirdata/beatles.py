@@ -123,7 +123,7 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False, to_download=DOWNLOAD):
+def download(data_home=None, download_items=None, force_overwrite=False):
     """Download the Beatles Dataset (annotations).
     The audio files are not provided due to the copyright.
 
@@ -140,6 +140,8 @@ def download(data_home=None, force_overwrite=False, to_download=DOWNLOAD):
     # use the default location: ~/mir_datasets/Beatles
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
+    if download_items is None:
+        download_items = DOWNLOAD
 
     download_message = """
         Unfortunately the audio files of the Beatles dataset are not available
@@ -153,13 +155,12 @@ def download(data_home=None, force_overwrite=False, to_download=DOWNLOAD):
         data_home
     )
 
-    for key in DOWNLOAD.keys():
-        download_utils.downloader(
-            data_home,
-            tar_downloads=[DOWNLOAD[key]],
-            info_message=download_message,
-            force_overwrite=force_overwrite,
-    )
+    download_utils.downloader(
+        data_home,
+        download_items,
+        info_message=download_message,
+        force_overwrite=force_overwrite,
+)
 
 
 def validate(data_home=None, silence=False):

@@ -24,13 +24,14 @@ from mirdata import utils
 
 DATASET_DIR = "GTZAN-Genre"
 
-DATASET_REMOTE = download_utils.RemoteFileMetadata(
+DOWNLOAD = {
+    'DATASET_REMOTE': download_utils.RemoteFileMetadata(
     filename="genres.tar.gz",
     url="http://opihi.cs.uvic.ca/sound/genres.tar.gz",
     checksum="5b3d6dddb579ab49814ab86dba69e7c7",
     destination_dir="gtzan_genre",
-)
-
+    )
+}
 
 DATA = utils.LargeData("gtzan_genre_index.json")
 
@@ -143,7 +144,7 @@ def track_ids():
     return list(DATA.index.keys())
 
 
-def download(data_home=None):
+def download(data_home=None, download_items=None, force_overwrite=False):
     """Download the GTZAN-Genre dataset.
 
     Args:
@@ -152,8 +153,11 @@ def download(data_home=None):
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
+    if download_items is None:
+        download_items = DOWNLOAD
 
-    download_utils.downloader(data_home, tar_downloads=[DATASET_REMOTE])
+    download_utils.downloader(data_home, download_items,
+                              force_overwrite=force_overwrite)
 
 
 def cite():

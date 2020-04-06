@@ -27,9 +27,7 @@ RemoteFileMetadata = namedtuple(
 
 def downloader(
     save_dir,
-    zip_downloads=None,
-    tar_downloads=None,
-    file_downloads=None,
+    download_items,
     info_message=None,
     force_overwrite=False,
     cleanup=False,
@@ -39,15 +37,9 @@ def downloader(
     Args:
         save_dir (str):
             The directory to download the data
-        zip_downloads (list or None):
+        download_items (dict or None):
             A list of RemoteFileMetadata tuples of data in zip format.
             If None, there is no zip data to download
-        tar_downloads (list or None):
-            A list of RemoteFileMetadata tuples of data in tar format.
-            If None, there is no tar data to download
-        file_downloads (list or None):
-            A list of  RemoteFileMetadata tuples of uncompressed data.
-            If None, there is no uncompressed data to download.
         info_message (str or None):
             A string of info to print when this function is called.
             If None, no string is printed.
@@ -59,6 +51,26 @@ def downloader(
     """
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
+
+    start_download_message = """
+            Trying to download the list of files {} to folder {}
+        """.format(
+        list(download_items.keys()), save_dir
+    )
+    print(start_download_message)
+
+    zip_downloads = []
+    tar_downloads = []
+    file_downloads = []
+    for k in download_items.keys():
+        extension = os.path.splitext(download_items[k].url)[-1]
+        if '.zip' in extension:
+            zip_downloads.append(download_items[k])
+        else:
+            if '.tar.gz' in extension:
+                tar_downloads.append(download_items[k])
+            else:
+                file_downloads.append(download_items[k])
 
     if zip_downloads is not None:
         for zip_download in zip_downloads:
