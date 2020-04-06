@@ -34,3 +34,15 @@ def test_track():
     audio, sr = track.audio
     assert sr == 22050
     assert audio.shape == (663300,)
+
+
+def test_to_jams():
+    default_trackid = "country.00000"
+    track = gtzan_genre.Track(default_trackid, data_home=TEST_DATA_HOME)
+    jam = track.to_jams()
+
+    # Validate GTZAN schema
+    assert jam.validate()
+
+    # Test the that the genre parser of mirdata is correct
+    assert jam.annotations["tag_gtzan"][0].data[0].value == "country"
