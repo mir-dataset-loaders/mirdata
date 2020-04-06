@@ -18,8 +18,9 @@ import jams
 import librosa
 import os
 
+import mirdata
 from mirdata import download_utils
-import mirdata.track as track
+from mirdata import track
 from mirdata import utils
 
 
@@ -106,10 +107,7 @@ class Track(track.Track):
 
         # Encode genre annotation
         genre_ann = jams.Annotation(
-            namespace="tag_gtzan",
-            time=0,
-            duration=30.0,
-            annotation_metadata=ann_meta,
+            namespace="tag_gtzan", time=0, duration=30.0, annotation_metadata=ann_meta
         )
         genre_ann.append(time=0, duration=30.0, confidence=0, value=self.genre)
         jam.annotations.append(genre_ann)
