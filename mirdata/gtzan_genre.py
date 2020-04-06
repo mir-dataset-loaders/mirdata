@@ -78,7 +78,7 @@ class Track(track.Track):
 
 
 def load_audio(audio_path, sample_rate=22050):
-    """Load a GTzan audio file.
+    """Load a GTZAN audio file.
 
     Args:
         audio_path (str): path to audio file
