@@ -93,9 +93,7 @@ class Track(track.Track):
 
         # Encode annotation metadata
         ann_meta = jams.AnnotationMetadata(
-            annotator={
-                "mirdata version": mirdata.__version__,
-            },
+            annotator={"mirdata version": mirdata.__version__},
             version=VERSION,
             corpus=DATASET_DIR,
             annotation_tools="MARSYAS",
@@ -107,10 +105,7 @@ class Track(track.Track):
 
         # Encode genre annotation
         genre_ann = jams.Annotation(
-            namespace="gtzan",
-            time=0,
-            duration=30.0,
-            annotation_metadata=ann_meta,
+            namespace="gtzan", time=0, duration=30.0, annotation_metadata=ann_meta
         )
         genre_ann.append(time=0, duration=30.0, confidence=0, value=self.genre)
         jam.annotations.append(genre_ann)
