@@ -49,6 +49,7 @@ class Track(track.Track):
         track_id (str): track id
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(
@@ -80,7 +81,7 @@ class Track(track.Track):
                 'artist': "Unknown artist",
                 'release': "Unknown album",
                 'duration': 30.0,
-                'curator': 'George Tzanetakis'
+                'curator': 'George Tzanetakis',
             },
         )
 

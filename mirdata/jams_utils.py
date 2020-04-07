@@ -101,7 +101,9 @@ def jams_converter(
                     'multi_section_data should be a list of tuples, '
                     + 'but contains a {} element'.format(type(sections))
                 )
-            if not (isinstance(sections[0], list) and isinstance(sections[0][0], tuple)):
+            if not (
+                isinstance(sections[0], list) and isinstance(sections[0][0], tuple)
+            ):
                 raise TypeError(
                     'tuples in multi_section_data should contain a '
                     + 'list of tuples, indicating annotations in the different '
@@ -375,9 +377,10 @@ def f0s_to_jams(f0s):
             raise TypeError('Type should be F0Data.')
         for t, f, c in zip(f0s[0].times, f0s[0].frequencies, f0s[0].confidence):
             jannot_f0.append(
-                time=t, duration=0.0,
+                time=t,
+                duration=0.0,
                 value={'index': 0, 'frequency': f, 'voiced': f > 0},
-                confidence=c
+                confidence=c,
             )
     if f0s[1] is not None:
         jannot_f0.sandbox = jams.Sandbox(name=f0s[1])
@@ -427,7 +430,9 @@ def tag_gtzan_to_jams(tags):
     jannot_tag_gtzan: JAM tag_gtzan annotation object.
     '''
     jannot_tag_gtzan = jams.Annotation(namespace='tag_gtzan')
-    jannot_tag_gtzan.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_tag_gtzan.annotation_metadata = jams.AnnotationMetadata(
+        data_source='mirdata'
+    )
     if tags[0] is not None:
         if not isinstance(tags[0], str):
             raise TypeError('Type should be str.')

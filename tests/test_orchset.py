@@ -15,11 +15,11 @@ def test_track():
     expected_attributes = {
         'track_id': 'Beethoven-S3-I-ex1',
         'audio_path_mono': 'tests/resources/mir_datasets/Orchset/'
-            + 'audio/mono/Beethoven-S3-I-ex1.wav',
+        + 'audio/mono/Beethoven-S3-I-ex1.wav',
         'audio_path_stereo': 'tests/resources/mir_datasets/Orchset/'
-            + 'audio/stereo/Beethoven-S3-I-ex1.wav',
+        + 'audio/stereo/Beethoven-S3-I-ex1.wav',
         'melody_path': 'tests/resources/mir_datasets/Orchset/'
-            + 'GT/Beethoven-S3-I-ex1.mel',
+        + 'GT/Beethoven-S3-I-ex1.mel',
         'composer': 'Beethoven',
         'work': 'S3-I',
         'excerpt': '1',
@@ -33,9 +33,7 @@ def test_track():
         'only_brass': False,
     }
 
-    expected_property_types = {
-        'melody': utils.F0Data
-    }
+    expected_property_types = {'melody': utils.F0Data}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 

@@ -15,18 +15,16 @@ def test_track():
     expected_attributes = {
         'track_id': 'AClassicEducation_NightOwl_STEM_08',
         'audio_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav',
+        + 'MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav',
         'pitch_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv',
+        + 'MedleyDB-Pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv',
         'instrument': 'male singer',
         'artist': 'AClassicEducation',
         'title': 'NightOwl',
-        'genre': 'Singer/Songwriter'
+        'genre': 'Singer/Songwriter',
     }
 
-    expected_property_types = {
-        'pitch': utils.F0Data,
-    }
+    expected_property_types = {'pitch': utils.F0Data}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 

@@ -106,7 +106,7 @@ class Track(track.Track):
             metadata={
                 'artist': 'The Beatles',
                 'title': self.title,
-                'duration': librosa.get_duration(self.audio[0], self.audio[1])
+                'duration': librosa.get_duration(self.audio[0], self.audio[1]),
             },
         )
 

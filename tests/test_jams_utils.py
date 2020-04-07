@@ -202,7 +202,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             None,
         )
@@ -212,7 +212,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             'notes_2',
         )
@@ -222,7 +222,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             'notes_1',
         ),
@@ -230,7 +230,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             'notes_2',
         ),
@@ -239,7 +239,7 @@ def test_notes():
         utils.NoteData(
             np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
             np.array([1108.731, 1108.731, 1108.731]),
-            np.array([1, 1, 1])
+            np.array([1, 1, 1]),
         ),
         None,
     )
@@ -248,7 +248,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             None,
         ],
@@ -256,7 +256,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             'notes_2',
         ),
@@ -807,7 +807,7 @@ def test_f0s():
     assert duration == [0.0, 0.0]
     assert value == [
         {'frequency': 0.0, 'index': 0, 'voiced': False},
-        {'frequency': 260.9, 'index': 0, 'voiced': True}
+        {'frequency': 260.9, 'index': 0, 'voiced': True},
     ]
     assert confidence == [0.0, 1.0]
 
@@ -818,7 +818,7 @@ def test_f0s():
     assert duration == [0.0, 0.0]
     assert value == [
         {'frequency': 0.0, 'index': 0, 'voiced': False},
-        {'frequency': 260.9, 'index': 0, 'voiced': True}
+        {'frequency': 260.9, 'index': 0, 'voiced': True},
     ]
     assert confidence == [0.0, 1.0]
 
@@ -827,7 +827,7 @@ def test_f0s():
     assert duration == [0.0, 0.0]
     assert value == [
         {'frequency': 0.0, 'index': 0, 'voiced': False},
-        {'frequency': 230.5, 'index': 0, 'voiced': True}
+        {'frequency': 230.5, 'index': 0, 'voiced': True},
     ]
     assert confidence == [0.0, 1.0]
 

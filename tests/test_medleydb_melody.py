@@ -15,13 +15,13 @@ def test_track():
     expected_attributes = {
         'track_id': 'MusicDelta_Beethoven',
         'audio_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav',
+        + 'MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav',
         'melody1_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Melody/melody1/MusicDelta_Beethoven_MELODY1.csv',
+        + 'MedleyDB-Melody/melody1/MusicDelta_Beethoven_MELODY1.csv',
         'melody2_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Melody/melody2/MusicDelta_Beethoven_MELODY2.csv',
+        + 'MedleyDB-Melody/melody2/MusicDelta_Beethoven_MELODY2.csv',
         'melody3_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Melody/melody3/MusicDelta_Beethoven_MELODY3.csv',
+        + 'MedleyDB-Melody/melody3/MusicDelta_Beethoven_MELODY3.csv',
         'artist': 'MusicDelta',
         'title': 'Beethoven',
         'genre': 'Classical',
@@ -33,7 +33,7 @@ def test_track():
     expected_property_types = {
         'melody1': utils.F0Data,
         'melody2': utils.F0Data,
-        'melody3': utils.MultipitchData
+        'melody3': utils.MultipitchData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

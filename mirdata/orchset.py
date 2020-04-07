@@ -196,7 +196,9 @@ class Track(track.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
-        metadata['duration'] = librosa.get_duration(self.audio_mono[0], self.audio_mono[1])
+        metadata['duration'] = librosa.get_duration(
+            self.audio_mono[0], self.audio_mono[1]
+        )
         return jams_utils.jams_converter(
             f0_data=[(self.melody, 'annotated melody')], metadata=metadata
         )

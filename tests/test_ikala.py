@@ -15,7 +15,7 @@ def test_track():
     expected_attributes = {
         'track_id': '10161_chorus',
         'audio_path': 'tests/resources/mir_datasets/iKala/'
-            + 'Wavfile/10161_chorus.wav',
+        + 'Wavfile/10161_chorus.wav',
         'song_id': '10161',
         'section': 'chorus',
         'singer_id': '1',
@@ -23,10 +23,7 @@ def test_track():
         'lyrics_path': 'tests/resources/mir_datasets/iKala/Lyrics/10161_chorus.lab',
     }
 
-    expected_property_types = {
-        'f0': utils.F0Data,
-        'lyrics': utils.LyricData,
-    }
+    expected_property_types = {'f0': utils.F0Data, 'lyrics': utils.LyricData}
 
     assert track._track_paths == {
         'audio': ['Wavfile/10161_chorus.wav', '278ae003cb0d323e99b9a643c0f2eeda'],
@@ -72,7 +69,7 @@ def test_to_jams():
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
     assert [f0.value for f0 in f0s] == [
         {'frequency': 0.0, 'index': 0, 'voiced': False},
-        {'frequency': 260.946404518887, 'index': 0, 'voiced': True}
+        {'frequency': 260.946404518887, 'index': 0, 'voiced': True},
     ]
     assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
 

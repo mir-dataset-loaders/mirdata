@@ -82,7 +82,8 @@ def test_track():
 
         track_default = dataset.Track(trackid)
         assert track_default._data_home == os.path.join(
-            DEFAULT_DATA_HOME, dataset.DATASET_DIR)
+            DEFAULT_DATA_HOME, dataset.DATASET_DIR
+        )
 
         # test data home specified
         data_home = os.path.join(data_home_dir, dataset.DATASET_DIR)

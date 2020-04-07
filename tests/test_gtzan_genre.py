@@ -26,7 +26,7 @@ def test_track():
     expected_attributes = {
         'genre': "country",
         'audio_path': "tests/resources/mir_datasets/GTZAN-Genre/"
-            + "gtzan_genre/genres/country/country.00000.wav",
+        + "gtzan_genre/genres/country/country.00000.wav",
         'track_id': "country.00000",
     }
     run_track_tests(track, expected_attributes, {})
