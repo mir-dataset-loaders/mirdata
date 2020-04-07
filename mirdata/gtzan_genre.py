@@ -75,7 +75,7 @@ class Track(track.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            tags_data=[(self.genre, 'gtzan-genre')],
+            tags_gtzan_data=[(self.genre, 'gtzan-genre')],
             metadata={
                 'title': "Unknown track",
                 'artist': "Unknown artist",

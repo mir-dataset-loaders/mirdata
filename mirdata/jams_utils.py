@@ -18,7 +18,7 @@ def jams_converter(
     multi_section_data=None,
     key_data=None,
     lyrics_data=None,
-    tags_data=None,
+    tags_gtzan_data=None,
     metadata=None,
 ):
 
@@ -45,7 +45,7 @@ def jams_converter(
         A list of tuples of (KeyData, str), where str describes the annotation.
     lyrics_data (list or None):
         A list of tuples of (LyricData, str), where str describes the annotation.
-    tags_data (list or None):
+    tags_gtzan_data (list or None):
         A list of tuples of (str, str), where the first srt is the tag and the second
         is a descriptor of the annotation.
     metadata (dict or None):
@@ -173,13 +173,13 @@ def jams_converter(
             jam.annotations.append(lyrics_to_jams(lyrics))
 
     # tags
-    if tags_data is not None:
-        if not isinstance(tags_data, list):
-            raise TypeError('tags_data should be a list of tuples')
-        for tag in tags_data:
+    if tags_gtzan_data is not None:
+        if not isinstance(tags_gtzan_data, list):
+            raise TypeError('tags_gtzan_data should be a list of tuples')
+        for tag in tags_gtzan_data:
             if not isinstance(tag, tuple):
                 raise TypeError(
-                    'tags_data should be a list of tuples, '
+                    'tags_gtzan_data should be a list of tuples, '
                     + 'but contains a {} element'.format(type(tag))
                 )
             jam.annotations.append(tag_gtzan_to_jams(tag))

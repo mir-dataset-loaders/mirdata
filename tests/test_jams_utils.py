@@ -978,17 +978,17 @@ def test_tags():
     tag_data3 = [('invalid', 'asdf')]
     tag_data4 = ('jazz', 'wrong format')
     tag_data5 = ['wrong format too']
-    jam1 = jams_utils.jams_converter(tags_data=tag_data1, metadata={'duration': 10.0})
+    jam1 = jams_utils.jams_converter(tags_gtzan_data=tag_data1, metadata={'duration': 10.0})
     assert jam1.validate()
-    jam2 = jams_utils.jams_converter(tags_data=tag_data2, metadata={'duration': 10.0})
+    jam2 = jams_utils.jams_converter(tags_gtzan_data=tag_data2, metadata={'duration': 10.0})
     assert jam2.validate()
-    jam3 = jams_utils.jams_converter(tags_data=tag_data3, metadata={'duration': 10.0})
+    jam3 = jams_utils.jams_converter(tags_gtzan_data=tag_data3, metadata={'duration': 10.0})
     with pytest.raises(jams.SchemaError):
         assert jam3.validate()
     with pytest.raises(TypeError):
-        jam4 = jams_utils.jams_converter(tags_data=tag_data4)
+        jam4 = jams_utils.jams_converter(tags_gtzan_data=tag_data4)
     with pytest.raises(TypeError):
-        jam5 = jams_utils.jams_converter(tags_data=tag_data5)
+        jam5 = jams_utils.jams_converter(tags_gtzan_data=tag_data5)
 
 
 def test_metadata():
