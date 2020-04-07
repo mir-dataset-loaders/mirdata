@@ -19,7 +19,7 @@ class Track2(object):
         track_paths = {
             track_key: track_index[track_key][0] for track_key in track_index
         }
-        self.load_track(self, track_metadata, track_paths)
+        self.load_track(self, track_paths, track_metadata)
         if not hasattr(self, "duration"):
             self.duration = self.estimate_duration()
         self.jam = self.to_jams()
@@ -97,6 +97,11 @@ class Track2(object):
             elif utils.md5(track_path) != checksum:
                 invalid_checksums.append(track_path)
         return missing_files, invalid_checksums
+
+    @property
+    def audio(self):
+        """(np.ndarray, float): mono or stereo audio signal, sample rate"""
+        return librosa.load(self.audio_path, sr=None)
 
     @property
     def audio_mono(self):

@@ -429,7 +429,7 @@ def load_metadata(data_home):
     return metadata_index
 
 
-def load_track(self, track_metadata, track_paths):
+def load_track(self, track_paths, track_metadata):
     # Store track paths
     self.melody_path = track_paths['melody']
     self.audio_path_mono = track_paths['audio_mono']
