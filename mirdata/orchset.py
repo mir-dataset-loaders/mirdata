@@ -348,3 +348,118 @@ Classical Music", Journal of New Music Research (2016)
 """
 
     print(cite_data)
+
+
+name = "ORCHSET"
+
+bibtex = """@article{bosch2016evaluation,
+    title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
+    author={Bosch, Juan J and Marxer, Ricard and G{\'o}mez, Emilia},
+    journal={Journal of New Music Research},
+    volume={45},
+    number={2},
+    pages={101--117},
+    year={2016},
+    publisher={Taylor \\& Francis}
+}"""
+
+remotes = {
+    "zenodo": download_utils.RemoteFileMetadata(
+        filename='Orchset_dataset_0.zip',
+        url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
+        checksum='cf6fe52d64624f61ee116c752fb318ca',
+        destination_dir="..",
+    )
+}
+
+
+def load_metadata(data_home):
+    predominant_inst_path = os.path.join(
+        data_home, 'Orchset - Predominant Melodic Instruments.csv'
+    )
+
+    if not os.path.exists(predominant_inst_path):
+        logging.info('Metadata file {} not found.'.format(predominant_inst_path))
+        return None
+
+    with open(predominant_inst_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=',')
+        raw_data = []
+        for line in reader:
+            if line[0] == 'excerpt':
+                continue
+            raw_data.append(line)
+
+    tf_dict = {'TRUE': True, 'FALSE': False}
+
+    metadata_index = {}
+    for line in raw_data:
+        track_id = line[0].split('.')[0]
+
+        id_split = track_id.split('.')[0].split('-')
+        if id_split[0] == 'Musorgski' or id_split[0] == 'Rimski':
+            id_split[0] = '-'.join(id_split[:2])
+            id_split.pop(1)
+
+        melodic_instruments = [s.split(',') for s in line[1].split('+')]
+        melodic_instruments = [
+            item.lower() for sublist in melodic_instruments for item in sublist
+        ]
+        for i, inst in enumerate(melodic_instruments):
+            if inst == 'string':
+                melodic_instruments[i] = 'strings'
+            elif inst == 'winds (solo)':
+                melodic_instruments[i] = 'winds'
+        melodic_instruments = sorted(list(set(melodic_instruments)))
+
+        metadata_index[track_id] = {
+            'predominant_melodic_instruments-raw': line[1],
+            'predominant_melodic_instruments-normalized': melodic_instruments,
+            'alternating_melody': tf_dict[line[2]],
+            'contains_winds': tf_dict[line[3]],
+            'contains_strings': tf_dict[line[4]],
+            'contains_brass': tf_dict[line[5]],
+            'only_strings': tf_dict[line[6]],
+            'only_winds': tf_dict[line[7]],
+            'only_brass': tf_dict[line[8]],
+            'composer': id_split[0],
+            'work': '-'.join(id_split[1:-1]),
+            'excerpt': id_split[-1][2:],
+        }
+    return metadata_index
+
+
+def load_track(self, track_metadata, track_paths):
+    # Store track paths
+    self.melody_path = track_paths['melody']
+    self.audio_path_mono = track_paths['audio_mono']
+    self.audio_path_stereo = track_paths['audio_stereo']
+
+    # Parse melody
+    times = []
+    freqs = []
+    confidence = []
+    with open(self.melody_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
+        for line in reader:
+            times.append(float(line[0]))
+            freqs.append(float(line[1]))
+            confidence.append(0.0 if line[1] == '0' else 1.0)
+    self.melody = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
+
+    # Parse track metadata
+    self.composer = track_metadata['composer']
+    self.work = track_metadata['work']
+    self.excerpt = track_metadata['excerpt']
+    self.predominant_melodic_instruments = track_metadata[
+        'predominant_melodic_instruments-normalized'
+    ]
+    self.alternating_melody = track_metadata['alternating_melody']
+    self.contains_winds = track_metadata['contains_winds']
+    self.contains_strings = track_metadata['contains_strings']
+    self.contains_brass = track_metadata['contains_brass']
+    self.only_strings = track_metadata['only_strings']
+    self.only_winds = track_metadata['only_winds']
+    self.only_brass = track_metadata['only_brass']
+
+    return self
