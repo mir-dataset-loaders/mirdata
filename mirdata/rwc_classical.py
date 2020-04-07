@@ -414,3 +414,89 @@ Goto, Masataka, et al.,
 """
 
     print(cite_data)
+
+
+name = "RWC Classical"
+
+bibtex = """@inproceedings{goto2002rwc,
+  title={RWC Music Database: Popular, Classical and Jazz Music Databases},
+  author={Goto, Masataka and Hashiguchi, Hiroki and Nishimura, Takuichi and Oka, Ryuichi},
+  booktitle={Proceedings of the International Society for Music Information Retrieval (ISMIR) Conference},
+  year={2002},
+  series={ISMIR},
+}"""
+
+remotes = {
+    "metadata": download_utils.RemoteFileMetadata(
+        filename='rwc-c.csv',
+        url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
+        checksum='7dbe87fedbaaa1f348625a2af1d78030',
+        destination_dir=None,
+    ),
+    "beats": download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-C-2001.BEAT.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
+        checksum='e8ee05854833cbf5eb7280663f71c29b',
+        destination_dir='annotations',
+    ),
+    "sections": download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
+        checksum='f77bd527510376f59f5a2eed8fd7feb3',
+        destination_dir='annotations',
+    ),
+}
+
+
+def load_metadata(data_home):
+    metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-c.csv')
+
+    with open(metadata_path, 'r') as fhandle:
+        dialect = csv.Sniffer().sniff(fhandle.read(1024))
+        fhandle.seek(0)
+        reader = csv.reader(fhandle, dialect)
+        raw_data = []
+        for line in reader:
+            if line[0] != 'Piece No.':
+                raw_data.append(line)
+
+    metadata_index = {}
+    for line in raw_data:
+        if line[0] == 'Piece No.':
+            continue
+        p = '00' + line[0].split('.')[1][1:]
+        track_id = 'RM-C{}'.format(p[len(p) - 3 :])
+
+        metadata_index[track_id] = {
+            'piece_number': line[0],
+            'suffix': line[1],
+            'track_number': line[2],
+            'title': line[3],
+            'composer': line[4],
+            'artist': line[5],
+            'duration': _duration_to_sec(line[6]),
+            'category': line[7],
+        }
+    return metadata_index
+
+
+def load_track(self, track_metadata, track_paths):
+    # Define track paths
+    self.audio_path = track_paths["audio"]
+    self.beats_path = track_paths['beats']
+
+    # Parse beats
+    beat_times = []  # timestamps of beat interval beginnings
+    beat_positions = []  # beat position inside the bar
+    with open(self.beats_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
+        for line in reader:
+            beat_times.append(float(line[0]) / 100.0)
+            beat_positions.append(int(line[2]))
+
+    beat_positions, beat_times = _position_in_bar(
+        np.array(beat_positions), np.array(beat_times)
+    )
+    self.beats = utils.BeatData(beat_times, beat_positions.astype(int))
+
+    return self
