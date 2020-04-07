@@ -10,10 +10,6 @@ contains 10 genres, each represented by 100 tracks. The tracks are all
 22050 Hz mono 16-bit audio files in .wav format.
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import librosa
 import os
 

@@ -10,9 +10,6 @@ evaluating automatic instrument recognition.
 For more details, please visit: https://medleydb.weebly.com
 
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 import csv
 import json
@@ -21,10 +18,10 @@ import logging
 import numpy as np
 import os
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 DATASET_DIR = 'MedleyDB-Pitch'
 

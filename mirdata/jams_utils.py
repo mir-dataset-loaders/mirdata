@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 """functions for converting mirdata annotations to jams format
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 import jams
-import mirdata.utils as utils
+from mirdata import utils
 
 
 def jams_converter(

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
 
 from mirdata import rwc_jazz, utils
 from tests.test_utils import run_track_tests

@@ -9,9 +9,7 @@ annotation of the melody.
 For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
 import csv
 import glob
 import librosa
@@ -20,10 +18,10 @@ import numpy as np
 import os
 import shutil
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 
 REMOTE = download_utils.RemoteFileMetadata(
