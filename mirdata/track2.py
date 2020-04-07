@@ -4,6 +4,7 @@
 
 import jams
 import librosa
+import os
 import types
 
 from mirdata import utils
@@ -106,6 +107,3 @@ class Track2(object):
     def audio_stereo(self):
         """(np.ndarray, float): stereo audio signal, sample rate"""
         return librosa.load(self.audio_path_stereo, sr=None, mono=False)
-
-    def to_jams(self):
-        raise NotImplementedError
