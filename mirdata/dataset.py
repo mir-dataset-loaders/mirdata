@@ -4,19 +4,20 @@ import os
 import tqdm
 import re
 
+from mirdata import download_utils
 from mirdata import utils
+from mirdata import track2
 
 
 class Dataset(object):
-    def __init__(
-        self, name, load_track, load_metadata, bibtex, remotes, data_home=None
-    ):
-        super(Dataset, self).__init__()
-        self.name = name
-        self.load_metadata = load_metadata
-        self.load_track = load_track
-        self.bibtex = bibtex
-        self.remotes = remotes
+    def __init__(self, module, data_home=None):
+        self.name = module.name
+        self.bibtex = module.bibtex
+        self.remotes = module.remotes
+        self.load_metadata = module.load_metadata
+        self.load_track = module.load_track
+        self.readme = module.__doc__
+        self.module_path = module.__file__
         if data_home is None:
             self.data_home = self.dataset_default_path
         else:
@@ -29,7 +30,7 @@ class Dataset(object):
             track_index[track_key][0] = os.path.join(
                 self.data_home, track_index[track_key][0]
             )
-        return Track(self.load_track, track_metadata, track_index)
+        return track2.Track2(self.load_track, track_metadata, track_index)
 
     @property
     def dataset_default_path(self):
@@ -54,9 +55,27 @@ class Dataset(object):
         return metadata_index
 
     def cite(self):
-        bibtex_citation = self.bibtex
         print("========== BibTeX ==========")
-        print(bibtex)
+        print(self.bibtex)
+
+    def download(self, force_overwrite=False, cleanup=False):
+        if not os.path.exists(self.data_home):
+            os.makedirs(self.data_home, exist_ok=True)
+
+        for remote_key in self.remotes:
+            remote = self.remotes[remote_key]
+            if ".zip" in remote.url:
+                download_utils.download_zip_file(
+                    remote, self.data_home, force_overwrite, cleanup
+                )
+            elif ".tar.gz" in remote.url:
+                download_utils.download_tar_file(
+                    remote, self.data_home, force_overwrite, cleanup
+                )
+            else:
+                download_utils.download_from_remote(
+                    remote, self.data_home, force_overwrite
+                )
 
     def load(self, verbose=False):
         tracks = {}
