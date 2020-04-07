@@ -14,12 +14,11 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import jams
 import librosa
 import os
 
-import mirdata
 from mirdata import download_utils
+from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
@@ -33,19 +32,7 @@ DATASET_REMOTE = download_utils.RemoteFileMetadata(
     destination_dir="gtzan_genre",
 )
 
-
 DATA = utils.LargeData("gtzan_genre_index.json")
-
-VERSION = "1.0"
-
-ANNOTATION_RULES = """
-Unfortunately the database was collected gradually and very early on in my
-research so I have no titles.
-The files were collected in 2000-2001 from a variety of sources including
-personal CDs, radio, microphone recordings, in order to represent a variety of
-recording conditions. Nevetheless I have been providing it to researchers upon
-request mainly for comparison purposes etc. -- George Tzanetakis, 2005
-"""
 
 
 class Track(track.Track):
@@ -62,7 +49,6 @@ class Track(track.Track):
         track_id (str): track id
 
     """
-
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
             raise ValueError(
@@ -87,43 +73,16 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        # Initialize top-level JAMS container
-        jam = jams.JAMS()
-
-        # Encode title, artist, and release
-        jam.file_metadata.title = "Unknown track"
-        jam.file_metadata.artist = "Unknown artist"
-        jam.file_metadata.release = "Unknown album"
-
-        # Encode duration in seconds
-        jam.file_metadata.duration = 30.0
-
-        # Encode JAMS curator
-        curator = jams.Curator(name="George Tzanetakis", email="gtzan@cs.uvic.ca")
-
-        # Store mirdata metadata as JAMS identifiers
-        jam.file_metadata.identifiers = jams.Sandbox(**self.__dict__)
-
-        # Encode annotation metadata
-        ann_meta = jams.AnnotationMetadata(
-            annotator={"mirdata version": mirdata.__version__},
-            version=VERSION,
-            corpus=DATASET_DIR,
-            annotation_tools="MARSYAS",
-            annotation_rules=ANNOTATION_RULES,
-            validation=DATASET_REMOTE,
-            data_source="George Tzanetakis",
-            curator=curator,
+        return jams_utils.jams_converter(
+            tags_data=[(self.genre, 'gtzan-genre')],
+            metadata={
+                'title': "Unknown track",
+                'artist': "Unknown artist",
+                'release': "Unknown album",
+                'duration': 30.0,
+                'curator': 'George Tzanetakis'
+            },
         )
-
-        # Encode genre annotation
-        genre_ann = jams.Annotation(
-            namespace="tag_gtzan", time=0, duration=30.0, annotation_metadata=ann_meta
-        )
-        genre_ann.append(time=0, duration=30.0, confidence=0, value=self.genre)
-        jam.annotations.append(genre_ann)
-
-        return jam
 
 
 def load_audio(audio_path, sample_rate=22050):

@@ -52,7 +52,10 @@ def test_to_jams():
     f0s = jam.search(namespace='pitch_contour')[1]['data']
     assert [f0.time for f0 in f0s] == [0.046439909297052155, 0.052244897959183675]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [0.0, 965.992]
+    assert [f0.value for f0 in f0s] == [
+        {'frequency': 0.0, 'index': 0, 'voiced': False},
+        {'frequency': 965.992, 'index': 0, 'voiced': True},
+    ]
     assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
 
     assert jam['file_metadata']['title'] == 'Beethoven'

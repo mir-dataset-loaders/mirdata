@@ -70,7 +70,10 @@ def test_to_jams():
     f0s = jam.search(namespace='pitch_contour')[0]['data']
     assert [f0.time for f0 in f0s] == [0.016, 0.048]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [0.0, 260.946404518887]
+    assert [f0.value for f0 in f0s] == [
+        {'frequency': 0.0, 'index': 0, 'voiced': False},
+        {'frequency': 260.946404518887, 'index': 0, 'voiced': True}
+    ]
     assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
 
 
