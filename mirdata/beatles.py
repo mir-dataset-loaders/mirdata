@@ -362,3 +362,32 @@ Mauch, Matthias, et al.
     """
 
     print(cite_data)
+
+
+name = "Beatles"
+
+bibtex = """@inproceedings{mauch2009beatles,
+title={OMRAS2 metadata project 2009},
+author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte,
+Christopher and Kolozali, Sefki and Tidhar, Dan and Sandler, Mark},
+booktitle={12th International Society for Music Information Retrieval Conference},
+year={2009},
+series = {ISMIR}
+}"""
+
+remotes = {
+    "annotations": ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
+        filename='The Beatles Annotations.tar.gz',
+        url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
+        checksum='62425c552d37c6bb655a78e4603828cc',
+        destination_dir='annotations',
+    )
+    "audio": """
+        Unfortunately the audio files of the Beatles dataset are not available
+        for download. If you have the Beatles dataset, place the contents into
+        a folder called Beatles with the following structure:
+            > Beatles/
+                > annotations/
+                > audio/
+        and copy the Beatles folder to {}"""
+}

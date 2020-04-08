@@ -79,7 +79,7 @@ class Dataset(object):
         for remote_key in download_items:
             remote = self.remotes[remote_key]
             if isinstance(remote, str):
-                print(remote)
+                print(remote.format(data_home))
                 continue
 
             if ".zip" in remote.url:

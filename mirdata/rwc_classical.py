@@ -427,6 +427,15 @@ bibtex = """@inproceedings{goto2002rwc,
 }"""
 
 remotes = {
+    "audio": """
+        Unfortunately the audio files of the RWC-Jazz dataset are not available
+        for download. If you have the RWC-Classical dataset, place the contents into a
+        folder called RWC-Classical with the following structure:
+            > RWC-Classical/
+                > annotations/
+                > audio/rwc-c-m0i with i in [1 .. 6]
+                > metadata-master/
+        and copy the RWC-Classical folder to {}""",
     "metadata": download_utils.RemoteFileMetadata(
         filename='rwc-c.csv',
         url='https://github.com/magdalenafuentes/metadata/archive/master.zip',

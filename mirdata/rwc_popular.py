@@ -451,8 +451,7 @@ folder called RWC-Popular with the following structure:
         > annotations/
         > audio/rwc-p-m0i with i in [1 .. 7]
         > metadata-master/
-and copy the RWC-Popular folder to your "data_home" folder
-    """,
+and copy the RWC-Popular folder to {}""",
     "metadata": download_utils.RemoteFileMetadata(
         filename='rwc-p.csv',
         url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
