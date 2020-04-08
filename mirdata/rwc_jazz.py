@@ -37,7 +37,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 # these functions are identical for all rwc datasets
@@ -304,3 +304,87 @@ Goto, Masataka, et al.,
 """
 
     print(cite_data)
+
+
+name = "RWC Jazz"
+
+bibtex = """@inproceedings{goto2002rwc,
+  title={RWC Music Database: Popular, Classical and Jazz Music Databases},
+  author={Goto, Masataka and Hashiguchi, Hiroki and Nishimura, Takuichi and Oka, Ryuichi},
+  booktitle={Proceedings of the International Society for Music Information Retrieval (ISMIR) Conference},
+  year={2002},
+  series={ISMIR},
+}"""
+
+remotes = {
+    "metadata": download_utils.RemoteFileMetadata(
+        filename='rwc-j.csv',
+        url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
+        checksum='7dbe87fedbaaa1f348625a2af1d78030',
+        destination_dir=None,
+    ),
+    "beats": download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-J-2001.BEAT.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.BEAT.zip',
+        checksum='b483853da05d0fff3992879f7729bcb4',
+        destination_dir='annotations',
+    ),
+    "sections": download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-J-2001.CHORUS.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.CHORUS.zip',
+        checksum='44afcf7f193d7e48a7d99e7a6f3ed39d',
+        destination_dir='annotations',
+    ),
+}
+
+
+class Track2(track2.Track2):
+    @utils.cached_property
+    def beats(self):
+        """BeatData: human-labeled beat data"""
+        return load_beats(self.track_index["beats"][0])
+
+    @utils.cached_property
+    def sections(self):
+        """SectionData: human labeled section annotations"""
+        return load_sections(self.track_index["sections"][0])
+
+    @staticmethod
+    def load_metadata(data_home):
+        metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-j.csv')
+
+        if not os.path.exists(metadata_path):
+            logging.info(
+                'Metadata file {} not found.'.format(metadata_path)
+                + 'You can download the metadata file by running download()'
+            )
+            return None
+
+        with open(metadata_path, 'r') as fhandle:
+            dialect = csv.Sniffer().sniff(fhandle.read(1024))
+            fhandle.seek(0)
+            reader = csv.reader(fhandle, dialect)
+            raw_data = []
+            for line in reader:
+                if line[0] != 'Piece No.':
+                    raw_data.append(line)
+
+        metadata_index = {}
+        for line in raw_data:
+            if line[0] == 'Piece No.':
+                continue
+            p = '00' + line[0].split('.')[1][1:]
+            track_id = 'RM-J{}'.format(p[len(p) - 3 :])
+
+            metadata_index[track_id] = {
+                'piece_number': line[0],
+                'suffix': line[1],
+                'track_number': line[2],
+                'title': line[3],
+                'artist': line[4],
+                'duration': _duration_to_sec(line[5]),
+                'variation': line[6],
+                'instruments': line[7],
+            }
+
+        return metadata_index
