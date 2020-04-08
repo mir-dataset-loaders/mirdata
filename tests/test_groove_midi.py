@@ -33,6 +33,11 @@ def test_track():
         'split': 'test',
     }
 
+    expected_property_types = {
+        'beats': utils.BeatData,
+        'drum_events': utils.EventData,
+    }
+
     assert track._track_paths == {
         'audio': [
             'drummer1/eval_session/1_funk-groove1_138_beat_4-4.wav',
@@ -44,7 +49,7 @@ def test_track():
         ],
     }
 
-    run_track_tests(track, expected_attributes, {})
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     # test audio loading functions
     audio, sr = track.audio
