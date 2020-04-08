@@ -365,7 +365,9 @@ remotes = {
 }
 
 for remote_key in ["audio", "lyrics", "pitch"]:
-    remotes[remote_key] = """
+    remotes[
+        remote_key
+    ] = """
         Unfortunately the iKala dataset is not available for download.
         If you have the iKala dataset, place the contents into a folder called
         iKala with the following structure:

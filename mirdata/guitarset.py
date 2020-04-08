@@ -566,5 +566,5 @@ class Track2(track2.Track2):
             "mode": title_list[2],
             "player_id": title_list[0],
             "tempo": float(tempo),
-            "style":  _STYLE_DICT[style[:-1]],
+            "style": _STYLE_DICT[style[:-1]],
         }
