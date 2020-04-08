@@ -74,7 +74,7 @@ class Track2(object):
         else:
             raise AttributeError("Track object has no attribute 'audio'")
 
-    @utils.cached_property
+    @utils.property
     def duration(self):
         """(float): estimated duration of the track in seconds"""
         if "duration" in self.track_metadata:
