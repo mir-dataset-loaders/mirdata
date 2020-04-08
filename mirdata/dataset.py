@@ -89,10 +89,17 @@ class Dataset(object):
         if download_items is None:
             download_items = self.remotes
 
+        # The list previus_remote_prints stores all the previously printed
+        # messages. This avoids printing the same message over and over for
+        # different remotes when multiple remotes are absent from download,
+        # e.g. in ikala
+        previous_remote_prints = []
         for remote_key in download_items:
             remote = self.remotes[remote_key]
             if isinstance(remote, str):
-                print(remote.format(self.data_home))
+                if remote not in previous_remote_prints:
+                    print(remote.format(self.data_home))
+                previous_remote_prints.append(remote)
                 continue
 
             if ".zip" in remote.url:
