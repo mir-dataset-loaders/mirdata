@@ -14,7 +14,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 DATASET_DIR = 'Beatles'
@@ -376,12 +376,12 @@ series = {ISMIR}
 }"""
 
 remotes = {
-    "annotations": ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
+    "annotations": download_utils.RemoteFileMetadata(
         filename='The Beatles Annotations.tar.gz',
         url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
         checksum='62425c552d37c6bb655a78e4603828cc',
         destination_dir='annotations',
-    )
+    ),
     "audio": """
         Unfortunately the audio files of the Beatles dataset are not available
         for download. If you have the Beatles dataset, place the contents into
@@ -389,5 +389,71 @@ remotes = {
             > Beatles/
                 > annotations/
                 > audio/
-        and copy the Beatles folder to {}"""
+        and copy the Beatles folder to {}""",
 }
+
+
+class Track2(track2.Track2):
+    @staticmethod
+    def artist():
+        return "The Beatles"
+
+    @utils.cached_property
+    def beats(self):
+        """BeatData: human-labeled beat data"""
+        beat_times, beat_positions = [], []
+        with open(self.track_index["beat"][0], 'r') as fhandle:
+            dialect = csv.Sniffer().sniff(fhandle.read(1024))
+            fhandle.seek(0)
+            reader = csv.reader(fhandle, dialect)
+            for line in reader:
+                beat_times.append(float(line[0]))
+                beat_positions.append(line[-1])
+        beat_positions = _fix_newpoint(np.array(beat_positions))
+        # After fixing New Point labels convert positions to int
+        beat_positions = [int(b) for b in beat_positions]
+        return utils.BeatData(np.array(beat_times), np.array(beat_positions))
+
+    @utils.cached_property
+    def chords(self):
+        """ChordData: chord annotation"""
+        start_times, end_times, chords = [], [], []
+        with open(self.track_index["chords"][0], 'r') as f:
+            dialect = csv.Sniffer().sniff(f.read(1024))
+            f.seek(0)
+            reader = csv.reader(f, dialect)
+            for line in reader:
+                start_times.append(float(line[0]))
+                end_times.append(float(line[1]))
+                chords.append(line[2])
+        return utils.ChordData(np.array([start_times, end_times]).T, chords)
+
+    @utils.cached_property
+    def key(self):
+        """KeyData: key annotation"""
+        start_times, end_times, keys = [], [], []
+        with open(self.track_index["keys"][0], 'r') as fhandle:
+            reader = csv.reader(fhandle, delimiter='\t')
+            for line in reader:
+                if line[2] == 'Key':
+                    start_times.append(float(line[0]))
+                    end_times.append(float(line[1]))
+                    keys.append(line[3])
+        return utils.KeyData(np.array(start_times), np.array(end_times), np.array(keys))
+
+    @utils.cached_property
+    def sections(self):
+        """SectionData: human-labeled section annotations"""
+        start_times, end_times, sections = [], [], []
+        with open(self.track_index["sections"][0], 'r') as fhandle:
+            reader = csv.reader(fhandle, delimiter='\t')
+            for line in reader:
+                start_times.append(float(line[0]))
+                end_times.append(float(line[1]))
+                sections.append(line[3])
+        return utils.SectionData(np.array([start_times, end_times]).T, sections)
+
+    @utils.cached_property
+    def title(self):
+        """string: song title"""
+        return os.path.basename(self.track_index['sections'][0]).split('.')[0]
