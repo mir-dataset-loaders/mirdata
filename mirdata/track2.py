@@ -18,7 +18,7 @@ class Track2(object):
         self.track_metadata = track_metadata
         for key in track_metadata:
             self.__dict__[key] = track_metadata[key]
-        if "jams" in track_index:
+        if hasattr(self, "jams"):
             self.from_jams()
 
     def __repr__(self):
@@ -61,17 +61,17 @@ class Track2(object):
 
     @utils.cached_property
     def duration(self):
-        """Estimated duration of the track in seconds."""
+        """(float): estimated duration of the track in seconds"""
         if "audio" in self.track_index:
             return librosa.get_duration(filename=self.track_index["audio"][0])
         elif "audio_mono" in self.track_index:
             return librosa.get_duration(filename=self.track_index["audio_mono"][0])
-        if hasattr(self, "beats"):
+        elif hasattr(self, "beats"):
             return self.beats.beat_times[-1]
         return 0.0
 
     def from_jams(self):
-        pass
+        self.duration = self.jams.file_metadata.duration
 
     @staticmethod
     def load_metadata(data_home):
@@ -79,7 +79,11 @@ class Track2(object):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        # Initialize top-level JAMS object
+        # If the JAMS object is natively provided, simply return it
+        if hasattr(self, "jams"):
+            return self.jams
+
+        # Otherwise, initialize a top-level JAMS object
         jam = jams.JAMS()
 
         # Encode duration in seconds
