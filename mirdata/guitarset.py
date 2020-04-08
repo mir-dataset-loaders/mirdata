@@ -43,19 +43,17 @@ segmentation and root from the digital lead sheet annotation.
 For more details, please visit: http://github.com/marl/guitarset/
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
+import jams
+import librosa
+import logging
 import numpy as np
 import os
-import librosa
-import jams
-import logging
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
+
 
 DATASET_DIR = 'GuitarSet'
 
