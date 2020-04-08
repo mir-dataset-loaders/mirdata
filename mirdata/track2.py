@@ -71,9 +71,9 @@ class Track2(object):
         """(float): estimated duration of the track in seconds"""
         if "duration" in self.track_metadata:
             return self.track_metadata["duration"]
-        if "audio" in self.track_index:
+        if "audio" in self.track_index and os.path.exists(self.track_index["audio"][0]):
             return librosa.get_duration(filename=self.track_index["audio"][0])
-        elif "audio_mono" in self.track_index:
+        elif "audio_mono" in self.track_index and os.path.exists(self.track_index["audio_mono"][0]):
             return librosa.get_duration(filename=self.track_index["audio_mono"][0])
         elif hasattr(self, "beats"):
             return self.beats.beat_times[-1]
@@ -119,6 +119,12 @@ class Track2(object):
 
         # Encode duration in seconds
         jam.file_metadata.duration = self.duration
+
+        # Encode title and artist if available
+        if hasattr(self, "title"):
+            jam.file_metadata.title = self.title
+        if hasattr(self, "artist"):
+            jam.file_metadata.artist = self.artist
 
         # Encode annotation metadata
         ann_meta = jams.AnnotationMetadata(data_source='mirdata')
