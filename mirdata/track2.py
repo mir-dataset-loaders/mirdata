@@ -23,9 +23,14 @@ class Track2(object):
             self.from_jams()
 
     def __repr__(self):
-        properties = [v for v in dir(self.__class__) if not v.startswith('_')]
+        exclude = ["from_jams", "jams", "load_metadata", "to_jams", "validate"]
+        properties = [
+            v for v in dir(self.__class__) if not v.startswith('_') and v not in exclude
+        ]
         attributes = [
-            v for v in dir(self) if not v.startswith('_') and v not in properties
+            v
+            for v in dir(self)
+            if not v.startswith('_') and v not in properties and v not in exclude
         ]
 
         repr_str = "Track(\n"
