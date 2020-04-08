@@ -33,6 +33,10 @@ click the link provided in the "Module" column.
 | dali_            | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                  |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
+| groove_midi_     | Groove MIDI         | - audio: ✅         | - :ref:`beats`            | 1150   |
+|                  | Dataset             | - midi: ✅          | - :ref:`tempo`            |        |
+|                  |                     |                     | - :ref:`drums`            |        |
++------------------+---------------------+---------------------+---------------------------+--------+
 | gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
@@ -100,6 +104,14 @@ Chords
 Musical chords, e.g. as might be played on a guitar. Typically encoded as a sequence of labeled events,
 where each event has a start time, end time, and a label. The label taxonomy varies per dataset,
 but typically encode a chord's root and its quality, e.g. A:m7 for "A minor 7".
+
+.. _drums:
+
+Drums
+^^^^^
+Transcription of the drums, typically encoded as a sequence of labeled events, where the labels
+indicate which drum instrument (e.g. cymbal, snare drum) is played. These events often overlap with
+one another, as multiple drums can be played at the same time.
 
 .. _f0:
 
@@ -192,5 +204,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _rwc_pop: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_pop
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
+.. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
+
 
 

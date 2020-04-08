@@ -13,12 +13,13 @@ def jams_converter(
     f0_data=None,
     section_data=None,
     multi_section_data=None,
+    tempo_data=None,
+    event_data=None,
     key_data=None,
     lyrics_data=None,
     tags_gtzan_data=None,
     metadata=None,
 ):
-
     """Convert annotations from a track to JAMS format.
 
     Parameters
@@ -38,6 +39,11 @@ def jams_converter(
         list of tuples, indicating annotations in the different levels
         e.g. ([(segments0, level0), '(segments1, level1)], annotator) and a str
         indicating the annotator
+    tempo_data (list or None):
+        A list of tuples of (float, str), where float gives the tempo in bpm
+        and str describes the annotation.
+    event_data (list or None):
+        A list of tuples of (EventData, str), where str describes the annotation.
     key_data (list or None):
         A list of tuples of (KeyData, str), where str describes the annotation.
     lyrics_data (list or None):
@@ -108,6 +114,30 @@ def jams_converter(
                     + '(segments1, level1)], annotator)'
                 )
             jam.annotations.append(multi_sections_to_jams(sections))
+
+    # tempo
+    if tempo_data is not None:
+        if type(tempo_data) != list:
+            raise TypeError('tempo_data should be a list of tuples')
+        for tempo in tempo_data:
+            if type(tempo) != tuple:
+                raise TypeError(
+                    'tempo_data should be a list of tuples, '
+                    + 'but contains a {} element'.format(type(tempo))
+                )
+            jam.annotations.append(tempos_to_jams(tempo))
+
+    # events
+    if event_data is not None:
+        if type(event_data) != list:
+            raise TypeError('event_data should be a list of tuples')
+        for events in event_data:
+            if type(events) != tuple:
+                raise TypeError(
+                    'event_data should be a list of tuples, '
+                    + 'but contains a {} element'.format(type(events))
+                )
+            jam.annotations.append(events_to_jams(events))
 
     # chords
     if chord_data is not None:
@@ -351,6 +381,59 @@ def multi_sections_to_jams(multi_sections):
                     value={'label': seg, 'level': sections[1]},
                 )
     return jannot_multi
+
+
+def tempos_to_jams(tempos):
+    '''
+    Convert tempo annotations into jams format.
+
+    Parameters
+    ----------
+    tempo: tuple
+        A tuple in the format (float, str), where str describes the annotation
+        and float is the tempo in beats per minute.
+
+    Returns
+    -------
+    jannot_tempo: JAM tempo annotation object.
+    '''
+    jannot_tempo = jams.Annotation(namespace='tempo')
+    jannot_tempo.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    if tempos[0] is not None:
+        if not isinstance(tempos[0], float) and not isinstance(tempos[0], int):
+            raise TypeError('Type should be float or int.')
+        jannot_tempo.append(time=0, duration=0, confidence=1, value=tempos[0])
+    if tempos[1] is not None:
+        jannot_tempo.sandbox = jams.Sandbox(name=tempos[1])
+    return jannot_tempo
+
+
+def events_to_jams(events):
+    '''
+    Convert events annotations into jams format.
+
+    Parameters
+    ----------
+    events: tuple
+        A tuple in the format (EventData, str), where str describes the annotation
+        and EventData is the events mirdata annotation format.
+
+    Returns
+    -------
+    jannot_events: JAM tag_open annotation object.
+    '''
+    jannot_events = jams.Annotation(namespace='tag_open')
+    jannot_events.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    if events[0] is not None:
+        if type(events[0]) != utils.EventData:
+            raise TypeError('Type should be EventData.')
+        for beg, end, label in zip(
+            events[0].start_times, events[0].end_times, events[0].event
+        ):
+            jannot_events.append(time=beg, duration=end - beg, value=str(label))
+    if events[1] is not None:
+        jannot_events.sandbox = jams.Sandbox(name=events[1])
+    return jannot_events
 
 
 def f0s_to_jams(f0s):
