@@ -17,6 +17,8 @@ class Track2(object):
         self.track_index = track_index
         for key in track_metadata:
             self.__dict__[key] = track_metadata[key]
+        if "jams" in track_index:
+            self.jams = jams.load(track_index["jams"][0])
         if hasattr(self, "jams"):
             self.from_jams()
 
