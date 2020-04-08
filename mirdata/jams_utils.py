@@ -402,7 +402,7 @@ def tempos_to_jams(tempos):
     if tempos[0] is not None:
         if not isinstance(tempos[0], float) and not isinstance(tempos[0], int):
             raise TypeError('Type should be float or int.')
-        jannot_tempo.append(time=0, duration=0, confidence=1, value=tempo[0])
+        jannot_tempo.append(time=0, duration=0, confidence=1, value=tempos[0])
     if tempos[1] is not None:
         jannot_tempo.sandbox = jams.Sandbox(name=tempos[1])
     return jannot_tempo
@@ -430,7 +430,7 @@ def events_to_jams(events):
         for beg, end, label in zip(
             events[0].start_times, events[0].end_times, events[0].event
         ):
-            jannot_events.append(time=beg, duration=end - beg, value=label)
+            jannot_events.append(time=beg, duration=end - beg, value=str(label))
     if events[1] is not None:
         jannot_events.sandbox = jams.Sandbox(name=events[1])
     return jannot_events

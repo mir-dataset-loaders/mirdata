@@ -313,8 +313,6 @@ class Track(track.Track):
         start_times = []
         end_times = []
         events = []
-        print(self.midi.instruments[0])
-        print(self.midi.instruments[0].__dict__)
         for note in self.midi.instruments[0].notes:
             start_times.append(note.start)
             end_times.append(note.end)
