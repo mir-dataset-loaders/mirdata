@@ -15,6 +15,7 @@ MAX_STR_LEN = 100
 class Track2(object):
     def __init__(self, track_index, track_metadata):
         self.track_index = track_index
+        self.track_metadata = track_metadata
         for key in track_metadata:
             self.__dict__[key] = track_metadata[key]
         if "jams" in track_index:
@@ -68,6 +69,8 @@ class Track2(object):
     @utils.cached_property
     def duration(self):
         """(float): estimated duration of the track in seconds"""
+        if "duration" in self.track_metadata:
+            return self.track_metadata["duration"]
         if "audio" in self.track_index:
             return librosa.get_duration(filename=self.track_index["audio"][0])
         elif "audio_mono" in self.track_index:
@@ -123,10 +126,30 @@ class Track2(object):
         # Encode beats
         if hasattr(self, "beats"):
             ann = jams.Annotation(namespace='beat')
-            beats = self.beats
             ann.annotation_metadata = ann_meta
+            beats = self.beats
             for t, p in zip(beats.beat_times, beats.beat_positions):
                 ann.append(time=t, duration=0.0, value=p)
+            jam.annotations.append(ann)
+
+        # Encode chords
+        if hasattr(self, "chords"):
+            ann = jams.Annotation(namespace='chord')
+            ann.annotation_metadata = ann_meta
+            chords = self.chords
+            for beg, end, ch in zip(
+                chords.intervals[:, 0], chords.intervals[:, 1], chords.labels
+            ):
+                ann.append(time=beg, duration=end - beg, value=ch)
+            jam.annotations.append(ann)
+
+        # Encode musical structure
+        if hasattr(self, "sections"):
+            ann = jams.Annotation(namespace='segment_open')
+            ann.annotation_metadata = ann_meta
+            sections = self.sections
+            for inter, seg in zip(sections.intervals, sections.labels):
+                ann.append(time=inter[0], duration=inter[1] - inter[0], value=seg)
             jam.annotations.append(ann)
 
         return jam
