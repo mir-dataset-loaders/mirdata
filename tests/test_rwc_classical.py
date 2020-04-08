@@ -14,11 +14,11 @@ def test_track():
     expected_attributes = {
         'track_id': 'RM-C003',
         'audio_path': 'tests/resources/mir_datasets/RWC-Classical/'
-            + 'audio/rwc-c-m01/3.wav',
+        + 'audio/rwc-c-m01/3.wav',
         'sections_path': 'tests/resources/mir_datasets/RWC-Classical/'
-            + 'annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT',
+        + 'annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT',
         'beats_path': 'tests/resources/mir_datasets/RWC-Classical/'
-            + 'annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT',
+        + 'annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT',
         'piece_number': 'No. 3',
         'suffix': 'M01',
         'track_number': 'Tr. 03',
@@ -29,10 +29,7 @@ def test_track():
         'category': 'Symphony',
     }
 
-    expected_property_types = {
-        'beats': utils.BeatData,
-        'sections': utils.SectionData
-    }
+    expected_property_types = {'beats': utils.BeatData, 'sections': utils.SectionData}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 

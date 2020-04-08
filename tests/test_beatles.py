@@ -13,15 +13,15 @@ def test_track():
 
     expected_attributes = {
         'audio_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav',
+        + 'audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav',
         'beats_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt',
+        + 'annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt',
         'chords_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
+        + 'annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
         'keys_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
+        + 'annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
         'sections_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
+        + 'annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
         'title': '11_-_Do_You_Want_To_Know_A_Secret',
         'track_id': '0111',
     }
@@ -30,7 +30,7 @@ def test_track():
         'beats': utils.BeatData,
         'chords': utils.ChordData,
         'key': utils.KeyData,
-        'sections': utils.SectionData
+        'sections': utils.SectionData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

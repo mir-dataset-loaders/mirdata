@@ -14,11 +14,11 @@ def test_track():
     expected_attributes = {
         'track_id': 'Beethoven-S3-I-ex1',
         'audio_path_mono': 'tests/resources/mir_datasets/Orchset/'
-            + 'audio/mono/Beethoven-S3-I-ex1.wav',
+        + 'audio/mono/Beethoven-S3-I-ex1.wav',
         'audio_path_stereo': 'tests/resources/mir_datasets/Orchset/'
-            + 'audio/stereo/Beethoven-S3-I-ex1.wav',
+        + 'audio/stereo/Beethoven-S3-I-ex1.wav',
         'melody_path': 'tests/resources/mir_datasets/Orchset/'
-            + 'GT/Beethoven-S3-I-ex1.mel',
+        + 'GT/Beethoven-S3-I-ex1.mel',
         'composer': 'Beethoven',
         'work': 'S3-I',
         'excerpt': '1',
@@ -32,9 +32,7 @@ def test_track():
         'only_brass': False,
     }
 
-    expected_property_types = {
-        'melody': utils.F0Data
-    }
+    expected_property_types = {'melody': utils.F0Data}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -56,7 +54,11 @@ def test_to_jams():
     f0s = jam.search(namespace='pitch_contour')[0]['data']
     assert [f0.time for f0 in f0s] == [0.0, 0.08, 0.09]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [0.0, 0.0, 622.254]
+    assert [f0.value for f0 in f0s] == [
+        {'frequency': 0.0, 'index': 0, 'voiced': False},
+        {'frequency': 0.0, 'index': 0, 'voiced': False},
+        {'frequency': 622.254, 'index': 0, 'voiced': True},
+    ]
     assert [f0.confidence for f0 in f0s] == [0.0, 0.0, 1.0]
 
     assert jam['sandbox']['alternating_melody'] == True
