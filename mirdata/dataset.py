@@ -30,9 +30,12 @@ class Dataset(object):
             track_metadata = {}
         track_index = self.index[track_id].copy()
         for track_key in self.index[track_id]:
-            track_index[track_key][0] = os.path.join(
-                self.data_home, track_index[track_key][0]
-            )
+            if track_index[track_key][0] is not None:
+                track_index[track_key][0] = os.path.join(
+                    self.data_home, track_index[track_key][0]
+                )
+            else:
+                del track_index[track_key]
         return self.Track2(track_index, track_metadata)
 
     @property
