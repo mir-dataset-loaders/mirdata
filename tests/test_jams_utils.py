@@ -977,17 +977,106 @@ def test_tags():
     tag_data3 = [('invalid', 'asdf')]
     tag_data4 = ('jazz', 'wrong format')
     tag_data5 = ['wrong format too']
-    jam1 = jams_utils.jams_converter(tags_gtzan_data=tag_data1, metadata={'duration': 10.0})
+    jam1 = jams_utils.jams_converter(
+        tags_gtzan_data=tag_data1, metadata={'duration': 10.0}
+    )
     assert jam1.validate()
-    jam2 = jams_utils.jams_converter(tags_gtzan_data=tag_data2, metadata={'duration': 10.0})
+    jam2 = jams_utils.jams_converter(
+        tags_gtzan_data=tag_data2, metadata={'duration': 10.0}
+    )
     assert jam2.validate()
-    jam3 = jams_utils.jams_converter(tags_gtzan_data=tag_data3, metadata={'duration': 10.0})
+    jam3 = jams_utils.jams_converter(
+        tags_gtzan_data=tag_data3, metadata={'duration': 10.0}
+    )
     with pytest.raises(jams.SchemaError):
         assert jam3.validate()
     with pytest.raises(TypeError):
         jam4 = jams_utils.jams_converter(tags_gtzan_data=tag_data4)
     with pytest.raises(TypeError):
         jam5 = jams_utils.jams_converter(tags_gtzan_data=tag_data5)
+
+
+def test_tempos():
+    tempo_data1 = [(120, 'I am a description')]
+    tempo_data2 = [(120.0, 'tempo 1'), (240, 'tempo 2')]
+    tempo_data3 = [(-1, 'asdf')]
+    tempo_data4 = (120.5, 'wrong format')
+    tempo_data5 = ['wrong format too']
+    jam1 = jams_utils.jams_converter(
+        tempo_data=tempo_data1, metadata={'duration': 10.0}
+    )
+    assert jam1.validate()
+    jam2 = jams_utils.jams_converter(
+        tempo_data=tempo_data2, metadata={'duration': 10.0}
+    )
+    assert jam2.validate()
+    jam3 = jams_utils.jams_converter(
+        tempo_data=tempo_data3, metadata={'duration': 10.0}
+    )
+    with pytest.raises(jams.SchemaError):
+        assert jam3.validate()
+    with pytest.raises(TypeError):
+        jam4 = jams_utils.jams_converter(tempo_data=tempo_data4)
+    with pytest.raises(TypeError):
+        jam5 = jams_utils.jams_converter(tempo_data=tempo_data5)
+
+
+def test_events():
+    event_data1 = [
+        (
+            utils.EventData(
+                np.array([0.2, 0.3]),
+                np.array([0.3, 0.4]),
+                np.array(['event A', 'event B']),
+            ),
+            'I am a description',
+        )
+    ]
+    event_data2 = [
+        (
+            utils.EventData(
+                np.array([0.2, 0.3]), np.array([0.4, 0.5]), np.array([2, 'event B'])
+            ),
+            'events 1',
+        ),
+        (
+            utils.EventData(
+                np.array([0.2, 0.3]),
+                np.array([0.3, 0.4]),
+                np.array([{'a': 1, 2: 'b'}, 'a great label']),
+            ),
+            'events 2',
+        ),
+    ]
+    event_data3 = [
+        (
+            utils.EventData(
+                np.array([20, 30]),  # invalid because > duration
+                np.array([0.3, 0.4]),
+                np.array([{'a': 1, 2: 'b'}, 'a great label']),
+            ),
+            'asdf',
+        )
+    ]
+    event_data4 = ('jazz', 'wrong format')
+    event_data5 = ['wrong format too']
+    jam1 = jams_utils.jams_converter(
+        event_data=event_data1, metadata={'duration': 10.0}
+    )
+    assert jam1.validate()
+    jam2 = jams_utils.jams_converter(
+        event_data=event_data2, metadata={'duration': 10.0}
+    )
+    assert jam2.validate()
+    jam3 = jams_utils.jams_converter(
+        event_data=event_data3, metadata={'duration': 10.0}
+    )
+    with pytest.raises(jams.SchemaError):
+        assert jam3.validate()
+    with pytest.raises(TypeError):
+        jam4 = jams_utils.jams_converter(event_data=event_data4)
+    with pytest.raises(TypeError):
+        jam5 = jams_utils.jams_converter(event_data=event_data5)
 
 
 def test_metadata():
