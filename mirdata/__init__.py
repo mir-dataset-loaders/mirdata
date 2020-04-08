@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 from .version import version as __version__
 
 __all__ = [
     'beatles',
     'dali',
+    'groove_midi',
     'gtzan_genre',
     'guitarset',
     'ikala',
@@ -21,5 +19,4 @@ __all__ = [
     'rwc_popular',
     'salami',
     'tinysol',
-    'groove_midi',
 ]

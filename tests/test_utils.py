@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
 
 import itertools
 import os
@@ -53,9 +52,9 @@ def get_attributes_and_properties(class_instance):
         else:
             raise ValueError("Unknown type {}".format(attr))
 
-    non_attributes = list(itertools.chain.from_iterable(
-        [properties, cached_properties, functions]
-    ))
+    non_attributes = list(
+        itertools.chain.from_iterable([properties, cached_properties, functions])
+    )
     for val in dir(class_instance):
         if val.startswith('_'):
             continue

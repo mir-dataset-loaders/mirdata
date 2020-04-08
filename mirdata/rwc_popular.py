@@ -10,14 +10,15 @@ the 1990s.
 For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
 """
 import csv
+import librosa
 import logging
 import numpy as np
 import os
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 # these functions are identical for all rwc datasets
 from mirdata.rwc_classical import (
@@ -217,11 +218,13 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
+        metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
+        metadata['duration'] = librosa.get_duration(self.audio[0], self.audio[1])
         return jams_utils.jams_converter(
             beat_data=[(self.beats, None)],
             section_data=[(self.sections, None)],
             chord_data=[(self.chords, None)],
-            metadata=self._track_metadata,
+            metadata=metadata,
         )
 
 

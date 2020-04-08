@@ -10,15 +10,12 @@ contains 10 genres, each represented by 100 tracks. The tracks are all
 22050 Hz mono 16-bit audio files in .wav format.
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
-import os
 import librosa
+import os
 
 from mirdata import download_utils
-import mirdata.track as track
+from mirdata import jams_utils
+from mirdata import track
 from mirdata import utils
 
 
@@ -30,7 +27,6 @@ DATASET_REMOTE = download_utils.RemoteFileMetadata(
     checksum="5b3d6dddb579ab49814ab86dba69e7c7",
     destination_dir="gtzan_genre",
 )
-
 
 DATA = utils.LargeData("gtzan_genre_index.json")
 
@@ -73,12 +69,21 @@ class Track(track.Track):
         return load_audio(self.audio_path, sample_rate=22050)
 
     def to_jams(self):
-        """(Not Implemented) Jams: the track's data in jams format"""
-        raise NotImplementedError
+        """Jams: the track's data in jams format"""
+        return jams_utils.jams_converter(
+            tags_gtzan_data=[(self.genre, 'gtzan-genre')],
+            metadata={
+                'title': "Unknown track",
+                'artist': "Unknown artist",
+                'release': "Unknown album",
+                'duration': 30.0,
+                'curator': 'George Tzanetakis',
+            },
+        )
 
 
 def load_audio(audio_path, sample_rate=22050):
-    """Load a GTzan audio file.
+    """Load a GTZAN audio file.
 
     Args:
         audio_path (str): path to audio file
