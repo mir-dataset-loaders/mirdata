@@ -59,11 +59,15 @@ class Dataset(object):
         print("========== BibTeX ==========")
         print(self.bibtex)
 
-    def download(self, force_overwrite=False, cleanup=False):
+    def download(self, force_overwrite=False, cleanup=False, download_items=None):
         if not os.path.exists(self.data_home):
             os.makedirs(self.data_home, exist_ok=True)
 
-        for remote_key in self.remotes:
+        # By default, download all remotes
+        if download_items is None:
+            download_items = self.remotes
+
+        for remote_key in download_items:
             remote = self.remotes[remote_key]
             if ".zip" in remote.url:
                 download_utils.download_zip_file(
