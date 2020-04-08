@@ -394,6 +394,7 @@ remotes = {
 
 
 class Track2(track2.Track2):
+    @utils.cached_property
     def artist():
         """string: artist name"""
         return "The Beatles"
