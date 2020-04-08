@@ -13,13 +13,21 @@ MAX_STR_LEN = 100
 
 
 class Track2(object):
-    def __init__(self, track_index, track_metadata):
+    # TODO: bikeshed the naming of the kwarg flag196
+    def __init__(self, track_index, track_metadata, flag196="error"):
         self.track_index = track_index
         self.track_metadata = track_metadata
         for key in track_metadata:
             self.__dict__[key] = track_metadata[key]
         if "jams" in track_index:
-            self.jams = jams.load(track_index["jams"][0])
+            try:
+                self.jams = jams.load(track_index["jams"][0])
+            except FileNotFoundError as file_not_found_error:
+                # Failsafe mode
+                if flag196 == "pass":
+                    pass
+                else:
+                    raise file_not_found_error
         if hasattr(self, "jams"):
             self.from_jams()
 

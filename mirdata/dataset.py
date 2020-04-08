@@ -23,11 +23,9 @@ class Dataset(object):
         else:
             self.data_home = data_home
 
-    def __getitem__(self, track_id):
-        if track_id in self.metadata:
-            track_metadata = self.metadata[track_id]
-        else:
-            track_metadata = {}
+    # TODO: bikeshed the naming of the kwarg flag196
+    def __getitem__(self, track_id, flag196="error"):
+        track_id_info = self.Track2.parse_track_id(track_id)
         track_index = self.index[track_id].copy()
         for track_key in self.index[track_id]:
             if track_index[track_key][0] is not None:
@@ -36,7 +34,19 @@ class Dataset(object):
                 )
             else:
                 del track_index[track_key]
-        return self.Track2(track_index, track_metadata)
+        try:
+            metadata = self.metadata
+            if track_id in metadata:
+                track_metadata = {**track_id_info, **metadata[track_id]}
+            else:
+                track_metadata = track_id_info
+        except FileNotFoundError as file_not_found_error:
+            # Failsafe mode
+            if flag196 == "pass":
+                track_metadata = track_id_info
+            else:
+                raise file_not_found_error
+        return self.Track2(track_index, track_metadata, flag196=flag196)
 
     @property
     def dataset_default_path(self):
@@ -98,15 +108,21 @@ class Dataset(object):
                     remote, self.data_home, force_overwrite
                 )
 
-    def load(self, verbose=False):
+    # TODO: bikeshed the naming of the kwarg flag196
+    def load(self, verbose=False, flag196="error"):
         tracks = {}
         for track_id in tqdm.tqdm(self.index, disable=not verbose):
-            tracks[track_id] = self[track_id]
+            tracks[track_id] = self.__getitem__(track_id, flag196=flag196)
+
         return tracks
 
     def load_index(self):
         with open(self.index_path) as f:
             return json.load(f)
+
+    @staticmethod
+    def parse_track_id(self):
+        return {}
 
     def track_ids(self):
         return list(self.index.keys())

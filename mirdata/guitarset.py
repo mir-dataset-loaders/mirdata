@@ -477,16 +477,6 @@ remotes = {
 
 
 class Track2(track2.Track2):
-    def __init__(self, track_index, track_metadata):
-        super().__init__(track_index, track_metadata)
-        track_id = self.jams.file_metadata.title
-        title_list = track_id.split('_')  # [PID, S-T-K, mode, rec_mode]
-        style, tempo, _ = title_list[1].split('-')  # [style, tempo, key]
-        self.player_id = title_list[0]
-        self.mode = title_list[2]
-        self.tempo = float(tempo)
-        self.style = _STYLE_DICT[style[:-1]]
-
     @property
     def audio_hex(self):
         """(np.ndarray, float): raw hexaphonic audio signal, sample rate"""
@@ -567,3 +557,14 @@ class Track2(track2.Track2):
             string_f0s = utils.F0Data(times, frequencies, np.ones_like(times))
             contours[_GUITAR_STRINGS[i]] = string_f0s
         return contours
+
+    @staticmethod
+    def parse_track_id(track_id):
+        title_list = track_id.split('_')  # [PID, S-T-K, mode, rec_mode]
+        style, tempo, _ = title_list[1].split('-')  # [style, tempo, key]
+        return {
+            "mode": title_list[2],
+            "player_id": title_list[0],
+            "tempo": float(tempo),
+            "style":  _STYLE_DICT[style[:-1]],
+        }
