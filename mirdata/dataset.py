@@ -23,7 +23,10 @@ class Dataset(object):
             self.data_home = data_home
 
     def __getitem__(self, track_id):
-        track_metadata = self.metadata[track_id]
+        if track_id in self.metadata:
+            track_metadata = self.metadata[track_id]
+        else:
+            track_metadata = {}
         track_index = self.index[track_id].copy()
         for track_key in self.index[track_id]:
             track_index[track_key][0] = os.path.join(
@@ -50,7 +53,6 @@ class Dataset(object):
     @utils.cached_property
     def metadata(self):
         metadata_index = self.Track2.load_metadata(self.data_home)
-        metadata_index['data_home'] = self.data_home
         return metadata_index
 
     def cite(self):
