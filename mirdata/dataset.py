@@ -1,8 +1,9 @@
 import jams
 import json
 import os
-import tqdm
+import random
 import re
+import tqdm
 
 from mirdata import download_utils
 from mirdata import utils
@@ -54,6 +55,9 @@ class Dataset(object):
     def metadata(self):
         metadata_index = self.Track2.load_metadata(self.data_home)
         return metadata_index
+
+    def choice(self):
+        return self[random.choice(self.track_ids())]
 
     def cite(self):
         print("========== BibTeX ==========")
