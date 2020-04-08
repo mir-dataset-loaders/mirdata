@@ -19,7 +19,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 DATASET_DIR = 'Salami'
@@ -358,3 +358,93 @@ Smith, Jordan Bennett Louis, et al.,
 """
 
     print(cite_data)
+
+
+name = "SALAMI"
+
+bibtex = """@inproceedings{smith2011salami,
+    title={Design and creation of a large-scale database of structural annotations.},
+    author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and
+          Fujinaga, Ichiro and De Roure, David and Downie, J Stephen},
+    booktitle={12th International Society for Music Information Retrieval Conference},
+    year={2011},
+    series = {ISMIR},
+}"""
+
+remotes = {
+    "annotations": download_utils.RemoteFileMetadata(
+        filename='salami-data-public-hierarchy-corrections.zip',
+        url='https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip',
+        checksum='194add2601c09a7279a7433288de81fd',
+        destination_dir=None,
+    ),
+    "audio": """
+        Unfortunately the audio files of the Salami dataset are not available
+        for download. If you have the Salami dataset, place the contents into a
+        folder called Salami with the following structure:
+            > Salami/
+                > salami-data-public-hierarchy-corrections/
+                > audio/
+        and copy the Salami folder to {}""",
+}
+
+
+class Track2(track2.Track2):
+    @utils.cached_property
+    def sections_annotator_1_uppercase(self):
+        """SectionData: annotations in hierarchy level 0 from annotator 1"""
+        return load_sections(self.track_index['annotator_1_uppercase'][0])
+
+    @utils.cached_property
+    def sections_annotator_1_lowercase(self):
+        """SectionData: annotations in hierarchy level 1 from annotator 1"""
+        return load_sections(self.track_index['annotator_1_lowercase'][0])
+
+    @utils.cached_property
+    def sections_annotator_2_uppercase(self):
+        """SectionData: annotations in hierarchy level 0 from annotator 2"""
+        return load_sections(self.track_index['annotator_2_uppercase'][0])
+
+    @utils.cached_property
+    def sections_annotator_2_lowercase(self):
+        """SectionData: annotations in hierarchy level 1 from annotator 2"""
+        return load_sections(self.track_index['annotator_2_lowercase'][0])
+
+    @staticmethod
+    def load_metadata(data_home):
+        metadata_path = os.path.join(
+            data_home,
+            'salami-data-public-hierarchy-corrections',
+            'metadata',
+            'metadata.csv',
+        )
+
+        with open(metadata_path, 'r') as fhandle:
+            reader = csv.reader(fhandle, delimiter=',')
+            raw_data = []
+            for line in reader:
+                if line != []:
+                    if line[0] == 'SONG_ID':
+                        continue
+                    raw_data.append(line)
+
+        metadata_index = {}
+        for line in raw_data:
+            track_id = line[0]
+            duration = None
+            if line[5] != '':
+                duration = float(line[5])
+            metadata_index[track_id] = {
+                'source': line[1],
+                'annotator_1_id': line[2],
+                'annotator_2_id': line[3],
+                'duration': duration,
+                'title': line[7],
+                'artist': line[8],
+                'annotator_1_time': line[10],
+                'annotator_2_time': line[11],
+                'class': line[14],
+                'genre': line[15],
+            }
+
+        return metadata_index
