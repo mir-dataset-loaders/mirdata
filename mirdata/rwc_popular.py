@@ -16,7 +16,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 # these functions are identical for all rwc datasets
@@ -407,3 +407,144 @@ If using vocal-instrument activity annotations please cite:
 
 """
     print(cite_data)
+
+
+name = "RWC Popular"
+
+bibtex = {
+    "beats": """@inproceedings{goto2002rwc,
+      title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
+      author={Goto, Masataka and Hashiguchi, Hiroki and Nishimura, Takuichi and Oka, Ryuichi},
+      booktitle={3rd International Society for Music Information Retrieval Conference},
+      year={2002},
+      series={ISMIR},
+    }""",
+    "sections": """@inproceedings{goto2002rwc,
+      title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
+      author={Goto, Masataka and Hashiguchi, Hiroki and Nishimura, Takuichi and Oka, Ryuichi},
+      booktitle={3rd International Society for Music Information Retrieval Conference},
+      year={2002},
+      series={ISMIR},
+    }""",
+    "chords": """@inproceedings{cho2011feature,
+      title={A feature smoothing method for chord recognition using recurrence plots},
+      author={Cho, Taemin and Bello, Juan P},
+      booktitle={12th International Society for Music Information Retrieval Conference},
+      year={2011},
+      series={ISMIR},
+    }""",
+    "vocal_instrument_activity": """@inproceedings{mauch2011timbre,
+      title={Timbre and Melody Features for the Recognition of Vocal Activity and Instrumental Solos in Polyphonic Music.},
+      author={Mauch, Matthias and Fujihara, Hiromasa and Yoshii, Kazuyoshi and Goto, Masataka},
+      booktitle={ISMIR},
+      year={2011},
+      series={ISMIR},
+    }""",
+}
+
+remotes = {
+    "audio": """
+Unfortunately the audio files of the RWC-Popular dataset are not available
+for download. If you have the RWC-Popular dataset, place the contents into a
+folder called RWC-Popular with the following structure:
+    > RWC-Popular/
+        > annotations/
+        > audio/rwc-p-m0i with i in [1 .. 7]
+        > metadata-master/
+and copy the RWC-Popular folder to your "data_home" folder
+    """,
+    "metadata": download_utils.RemoteFileMetadata(
+        filename='rwc-p.csv',
+        url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
+        checksum='7dbe87fedbaaa1f348625a2af1d78030',
+        destination_dir=None,
+    ),
+    "beats": download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-J-2001.BEAT.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip',
+        checksum='3858aa989535bd7196b3cd07b512b5b6',
+        destination_dir='annotations',
+    ),
+    "sections": download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-J-2001.CHORUS.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip',
+        checksum='f76b3a32701fbd9bf78baa608f692a77',
+        destination_dir='annotations',
+    ),
+    "chords": download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-P-2001.CHORD.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip',
+        checksum='68379c88bc8ec3f1907b32a3579197c5',
+        destination_dir='annotations',
+    ),
+    "vocal_instrument_activity": download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-P-2001.VOCA_INST.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip',
+        checksum='47ded648a496407ef49dba9c8bf80e87',
+        destination_dir='annotations',
+    ),
+}
+
+
+class Track2(track2.Track2):
+    @utils.cached_property
+    def beats(self):
+        """BeatData: human-labeled beat data"""
+        return load_beats(self.track_index["beats"][0])
+
+    @utils.cached_property
+    def sections(self):
+        """SectionData: human labeled section annotations"""
+        return load_sections(self.track_index["sections"][0])
+
+    @utils.cached_property
+    def chords(self):
+        """ChordData: human-labeled chord annotation"""
+        return load_chords(self.track_index["chords"][0])
+
+    @utils.cached_property
+    def vocal_instrument_activity(self):
+        """EventData: human-labeled vocal/instrument activity"""
+        return load_voca_inst(self.track_index["voca_inst"][0])
+
+    @staticmethod
+    def load_metadata(data_home):
+        metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-p.csv')
+
+        if not os.path.exists(metadata_path):
+            logging.info(
+                'Metadata file {} not found.'.format(metadata_path)
+                + 'You can download the metadata file by running download()'
+            )
+            return None
+
+        with open(metadata_path, 'r') as fhandle:
+            dialect = csv.Sniffer().sniff(fhandle.read(1024))
+            fhandle.seek(0)
+            reader = csv.reader(fhandle, dialect)
+            raw_data = []
+            for line in reader:
+                if line[0] != 'Piece No.':
+                    raw_data.append(line)
+
+        metadata_index = {}
+        for line in raw_data:
+            if line[0] == 'Piece No.':
+                continue
+            p = '00' + line[0].split('.')[1][1:]
+            track_id = 'RM-P{}'.format(p[len(p) - 3 :])
+
+            metadata_index[track_id] = {
+                'piece_number': line[0],
+                'suffix': line[1],
+                'track_number': line[2],
+                'title': line[3],
+                'artist': line[4],
+                'singer_information': line[5],
+                'duration': _duration_to_sec(line[6]),
+                'tempo': line[7],
+                'instruments': line[8],
+                'drum_information': line[9],
+            }
+
+        return metadata_index
