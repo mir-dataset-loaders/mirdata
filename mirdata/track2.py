@@ -71,7 +71,29 @@ class Track2(object):
         return 0.0
 
     def from_jams(self):
+        # Duration
         self.duration = self.jams.file_metadata.duration
+
+        # Beats
+        jam_beats = self.jams.search(namespace='beat_position')
+        if len(jam_beats) > 0 and not hasattr(self, "beats"):
+            beat_ann = jam_beats[0]
+            times, values = beat_ann.to_event_values()
+            positions = [int(v['position']) for v in values]
+            self.beats = utils.BeatData(times, positions)
+
+        # Chords
+        jam_chords = self.jams.search(namespace='chord')
+        if len(jam_chords) > 0 and not hasattr(self, "chords"):
+            chord_ann = jam_chords[0]
+            self.chords = utils.ChordData(*chord_ann.to_interval_values())
+
+        # Keys
+        jam_keys = self.jams.search(namespace='key_mode')
+        if len(jam_keys) > 0 and not hasattr(self, "key_mode"):
+            key_ann = jam_keys[0]
+            intervals, values = key_ann.to_interval_values()
+            self.key_mode = utils.KeyData(intervals[:, 0], intervals[:, 1], values)
 
     @staticmethod
     def load_metadata(data_home):
