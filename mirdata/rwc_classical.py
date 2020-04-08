@@ -464,6 +464,21 @@ class Track2(track2.Track2):
         )
         return utils.BeatData(beat_times, beat_positions.astype(int))
 
+    @utils.cached_property
+    def sections(self):
+        begs = []  # timestamps of section beginnings
+        ends = []  # timestamps of section endings
+        secs = []  # section labels
+
+        with open(self.track_index["sections"][0], 'r') as fhandle:
+            reader = csv.reader(fhandle, delimiter='\t')
+            for line in reader:
+                begs.append(float(line[0]) / 100.0)
+                ends.append(float(line[1]) / 100.0)
+                secs.append(line[2])
+
+        return utils.SectionData(np.array([begs, ends]).T, secs)
+
     @staticmethod
     def load_metadata(data_home):
         metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-c.csv')
