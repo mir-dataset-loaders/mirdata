@@ -73,7 +73,9 @@ class Track2(object):
             return self.track_metadata["duration"]
         if "audio" in self.track_index and os.path.exists(self.track_index["audio"][0]):
             return librosa.get_duration(filename=self.track_index["audio"][0])
-        elif "audio_mono" in self.track_index and os.path.exists(self.track_index["audio_mono"][0]):
+        elif "audio_mono" in self.track_index and os.path.exists(
+            self.track_index["audio_mono"][0]
+        ):
             return librosa.get_duration(filename=self.track_index["audio_mono"][0])
         elif hasattr(self, "beats"):
             return self.beats.beat_times[-1]
