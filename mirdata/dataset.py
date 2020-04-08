@@ -60,8 +60,12 @@ class Dataset(object):
         return self[random.choice(self.track_ids())]
 
     def cite(self):
+        # TODO: use pybtex to convert to MLA
         print("========== BibTeX ==========")
-        print(self.bibtex)
+        if isinstance(self.bibtex, str):
+            print(self.bibtex)
+        else:
+            print("\n".join(self.bibtex.values()))
 
     def download(self, force_overwrite=False, cleanup=False, download_items=None):
         if not os.path.exists(self.data_home):
