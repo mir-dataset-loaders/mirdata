@@ -68,6 +68,7 @@ class Dataset(object):
             print("\n".join(self.bibtex.values()))
 
     def download(self, force_overwrite=False, cleanup=False, download_items=None):
+        # TODO: perhaps find a shorter kwarg name than "download_items"?
         if not os.path.exists(self.data_home):
             os.makedirs(self.data_home, exist_ok=True)
 
@@ -77,6 +78,10 @@ class Dataset(object):
 
         for remote_key in download_items:
             remote = self.remotes[remote_key]
+            if isinstance(remote, str):
+                print(remote)
+                continue
+
             if ".zip" in remote.url:
                 download_utils.download_zip_file(
                     remote, self.data_home, force_overwrite, cleanup
