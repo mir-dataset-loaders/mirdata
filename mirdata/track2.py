@@ -13,16 +13,13 @@ MAX_STR_LEN = 100
 
 
 class Track2(object):
-    def __init__(self, load_track, track_metadata, track_index):
-        self.load_track = load_track
+    def __init__(self, track_index, track_metadata):
         self.track_index = track_index
-        track_paths = {
-            track_key: track_index[track_key][0] for track_key in track_index
-        }
-        self.load_track(self, track_paths, track_metadata)
-        if not hasattr(self, "duration"):
-            self.duration = self.estimate_duration()
-        self.jam = self.to_jams()
+        self.track_metadata = track_metadata
+        for key in track_metadata:
+            self.__dict__[key] = track_metadata[key]
+        if "jams" in track_index:
+            self.from_jams()
 
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith('_')]
@@ -54,14 +51,31 @@ class Track2(object):
         repr_str += ")"
         return repr_str
 
-    def estimate_duration(self):
-        if hasattr(self, "audio_path") and os.path.exists(self.audio_path):
-            return librosa.get_duration(filename=self.audio_path)
-        if hasattr(self, "audio_path_mono") and os.path.exists(self.audio_path_mono):
-            return librosa.get_duration(filename=self.audio_path_mono)
+    @property
+    def audio(self):
+        """(np.ndarray, float): mono or stereo audio signal, sample rate"""
+        if "audio" in self.track_index:
+            return librosa.load(self.track_index["audio"][0], sr=None)
+        else:
+            raise AttributeError("Track object has no attribute 'audio'")
+
+    @utils.cached_property
+    def duration(self):
+        """Estimated duration of the track in seconds."""
+        if "audio" in self.track_index:
+            return librosa.get_duration(filename=self.track_index["audio"][0])
+        elif "audio_mono" in self.track_index:
+            return librosa.get_duration(filename=self.track_index["audio_mono"][0])
         if hasattr(self, "beats"):
             return self.beats.beat_times[-1]
-        return 0
+        return 0.0
+
+    def from_jams(self):
+        pass
+
+    @staticmethod
+    def load_metadata(data_home):
+        return {}
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
@@ -97,18 +111,3 @@ class Track2(object):
             elif utils.md5(track_path) != checksum:
                 invalid_checksums.append(track_path)
         return missing_files, invalid_checksums
-
-    @property
-    def audio(self):
-        """(np.ndarray, float): mono or stereo audio signal, sample rate"""
-        return librosa.load(self.audio_path, sr=None)
-
-    @property
-    def audio_mono(self):
-        """(np.ndarray, float): mono audio signal, sample rate"""
-        return librosa.load(self.audio_path_mono, sr=None, mono=True)
-
-    @property
-    def audio_stereo(self):
-        """(np.ndarray, float): stereo audio signal, sample rate"""
-        return librosa.load(self.audio_path_stereo, sr=None, mono=False)

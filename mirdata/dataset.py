@@ -14,8 +14,7 @@ class Dataset(object):
         self.name = module.name
         self.bibtex = module.bibtex
         self.remotes = module.remotes
-        self.load_metadata = module.load_metadata
-        self.load_track = module.load_track
+        self.Track2 = module.Track2
         self.readme = module.__doc__
         self.module_path = module.__file__
         if data_home is None:
@@ -30,7 +29,7 @@ class Dataset(object):
             track_index[track_key][0] = os.path.join(
                 self.data_home, track_index[track_key][0]
             )
-        return track2.Track2(self.load_track, track_metadata, track_index)
+        return self.Track2(track_index, track_metadata)
 
     @property
     def dataset_default_path(self):
@@ -50,7 +49,7 @@ class Dataset(object):
 
     @utils.cached_property
     def metadata(self):
-        metadata_index = self.load_metadata(self.data_home)
+        metadata_index = self.Track2.load_metadata(self.data_home)
         metadata_index['data_home'] = self.data_home
         return metadata_index
 

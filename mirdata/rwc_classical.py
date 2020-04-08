@@ -19,7 +19,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
@@ -448,55 +448,53 @@ remotes = {
 }
 
 
-def load_metadata(data_home):
-    metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-c.csv')
+class Track2(track2.Track2):
+    def __init__(self, track_id, track_metadata):
+        super().__init__(track_id, track_metadata)
 
-    with open(metadata_path, 'r') as fhandle:
-        dialect = csv.Sniffer().sniff(fhandle.read(1024))
-        fhandle.seek(0)
-        reader = csv.reader(fhandle, dialect)
-        raw_data = []
-        for line in reader:
-            if line[0] != 'Piece No.':
-                raw_data.append(line)
+    @utils.cached_property
+    def beats(self):
+        beat_times = []  # timestamps of beat interval beginnings
+        beat_positions = []  # beat position inside the bar
+        with open(self.track_index["beats"][0], 'r') as fhandle:
+            reader = csv.reader(fhandle, delimiter='\t')
+            for line in reader:
+                beat_times.append(float(line[0]) / 100.0)
+                beat_positions.append(int(line[2]))
 
-    metadata_index = {}
-    for line in raw_data:
-        if line[0] == 'Piece No.':
-            continue
-        p = '00' + line[0].split('.')[1][1:]
-        track_id = 'RM-C{}'.format(p[len(p) - 3 :])
+        beat_positions, beat_times = _position_in_bar(
+            np.array(beat_positions), np.array(beat_times)
+        )
+        return utils.BeatData(beat_times, beat_positions.astype(int))
 
-        metadata_index[track_id] = {
-            'piece_number': line[0],
-            'suffix': line[1],
-            'track_number': line[2],
-            'title': line[3],
-            'composer': line[4],
-            'artist': line[5],
-            'duration': _duration_to_sec(line[6]),
-            'category': line[7],
-        }
-    return metadata_index
+    @staticmethod
+    def load_metadata(data_home):
+        metadata_path = os.path.join(data_home, 'metadata-master', 'rwc-c.csv')
 
+        with open(metadata_path, 'r') as fhandle:
+            dialect = csv.Sniffer().sniff(fhandle.read(1024))
+            fhandle.seek(0)
+            reader = csv.reader(fhandle, dialect)
+            raw_data = []
+            for line in reader:
+                if line[0] != 'Piece No.':
+                    raw_data.append(line)
 
-def load_track(self, track_metadata, track_paths):
-    # Define track paths
-    self.audio_path = track_paths["audio"]
-    self.beats_path = track_paths['beats']
+        metadata_index = {}
+        for line in raw_data:
+            if line[0] == 'Piece No.':
+                continue
+            p = '00' + line[0].split('.')[1][1:]
+            track_id = 'RM-C{}'.format(p[len(p) - 3 :])
 
-    # Parse beats
-    beat_times = []  # timestamps of beat interval beginnings
-    beat_positions = []  # beat position inside the bar
-    with open(self.beats_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
-        for line in reader:
-            beat_times.append(float(line[0]) / 100.0)
-            beat_positions.append(int(line[2]))
-
-    beat_positions, beat_times = _position_in_bar(
-        np.array(beat_positions), np.array(beat_times)
-    )
-    self.beats = utils.BeatData(beat_times, beat_positions.astype(int))
-
-    return self
+            metadata_index[track_id] = {
+                'piece_number': line[0],
+                'suffix': line[1],
+                'track_number': line[2],
+                'title': line[3],
+                'composer': line[4],
+                'artist': line[5],
+                'duration': _duration_to_sec(line[6]),
+                'category': line[7],
+            }
+        return metadata_index

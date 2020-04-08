@@ -20,7 +20,7 @@ import shutil
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 
@@ -373,93 +373,91 @@ remotes = {
 }
 
 
-def load_metadata(data_home):
-    predominant_inst_path = os.path.join(
-        data_home, 'Orchset - Predominant Melodic Instruments.csv'
-    )
+class Track2(track2.Track2):
+    def __init__(self, track_id, track_metadata):
+        super().__init__(track_id, track_metadata)
 
-    if not os.path.exists(predominant_inst_path):
-        logging.info('Metadata file {} not found.'.format(predominant_inst_path))
-        return None
+    @staticmethod
+    def load_metadata(data_home):
+        predominant_inst_path = os.path.join(
+            data_home, 'Orchset - Predominant Melodic Instruments.csv'
+        )
 
-    with open(predominant_inst_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=',')
-        raw_data = []
-        for line in reader:
-            if line[0] == 'excerpt':
-                continue
-            raw_data.append(line)
+        if not os.path.exists(predominant_inst_path):
+            logging.info('Metadata file {} not found.'.format(predominant_inst_path))
+            return None
 
-    tf_dict = {'TRUE': True, 'FALSE': False}
+        with open(predominant_inst_path, 'r') as fhandle:
+            reader = csv.reader(fhandle, delimiter=',')
+            raw_data = []
+            for line in reader:
+                if line[0] == 'excerpt':
+                    continue
+                raw_data.append(line)
 
-    metadata_index = {}
-    for line in raw_data:
-        track_id = line[0].split('.')[0]
+        tf_dict = {'TRUE': True, 'FALSE': False}
 
-        id_split = track_id.split('.')[0].split('-')
-        if id_split[0] == 'Musorgski' or id_split[0] == 'Rimski':
-            id_split[0] = '-'.join(id_split[:2])
-            id_split.pop(1)
+        metadata_index = {}
+        for line in raw_data:
+            track_id = line[0].split('.')[0]
 
-        melodic_instruments = [s.split(',') for s in line[1].split('+')]
-        melodic_instruments = [
-            item.lower() for sublist in melodic_instruments for item in sublist
-        ]
-        for i, inst in enumerate(melodic_instruments):
-            if inst == 'string':
-                melodic_instruments[i] = 'strings'
-            elif inst == 'winds (solo)':
-                melodic_instruments[i] = 'winds'
-        melodic_instruments = sorted(list(set(melodic_instruments)))
+            id_split = track_id.split('.')[0].split('-')
+            if id_split[0] == 'Musorgski' or id_split[0] == 'Rimski':
+                id_split[0] = '-'.join(id_split[:2])
+                id_split.pop(1)
 
-        metadata_index[track_id] = {
-            'predominant_melodic_instruments-raw': line[1],
-            'predominant_melodic_instruments-normalized': melodic_instruments,
-            'alternating_melody': tf_dict[line[2]],
-            'contains_winds': tf_dict[line[3]],
-            'contains_strings': tf_dict[line[4]],
-            'contains_brass': tf_dict[line[5]],
-            'only_strings': tf_dict[line[6]],
-            'only_winds': tf_dict[line[7]],
-            'only_brass': tf_dict[line[8]],
-            'composer': id_split[0],
-            'work': '-'.join(id_split[1:-1]),
-            'excerpt': id_split[-1][2:],
-        }
-    return metadata_index
+            melodic_instruments = [s.split(',') for s in line[1].split('+')]
+            melodic_instruments = [
+                item.lower() for sublist in melodic_instruments for item in sublist
+            ]
+            for i, inst in enumerate(melodic_instruments):
+                if inst == 'string':
+                    melodic_instruments[i] = 'strings'
+                elif inst == 'winds (solo)':
+                    melodic_instruments[i] = 'winds'
+            melodic_instruments = sorted(list(set(melodic_instruments)))
 
+            metadata_index[track_id] = {
+                'predominant_melodic_instruments_raw': line[1],
+                'predominant_melodic_instruments': melodic_instruments,
+                'alternating_melody': tf_dict[line[2]],
+                'contains_winds': tf_dict[line[3]],
+                'contains_strings': tf_dict[line[4]],
+                'contains_brass': tf_dict[line[5]],
+                'only_strings': tf_dict[line[6]],
+                'only_winds': tf_dict[line[7]],
+                'only_brass': tf_dict[line[8]],
+                'composer': id_split[0],
+                'work': '-'.join(id_split[1:-1]),
+                'excerpt': id_split[-1][2:],
+            }
+        return metadata_index
 
-def load_track(self, track_paths, track_metadata):
-    # Store track paths
-    self.melody_path = track_paths['melody']
-    self.audio_path_mono = track_paths['audio_mono']
-    self.audio_path_stereo = track_paths['audio_stereo']
+    @property
+    def audio(self):
+        """(np.ndarray, float): stereo audio signal, sample rate"""
+        return load_audio_stereo(self.track_index["audio_stereo"][0])
 
-    # Parse melody
-    times = []
-    freqs = []
-    confidence = []
-    with open(self.melody_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
-            confidence.append(0.0 if line[1] == '0' else 1.0)
-    self.melody = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
+    @property
+    def audio_mono(self):
+        """(np.ndarray, float): mono audio signal, sample rate"""
+        return load_audio_mono(self.track_index["audio_mono"][0])
 
-    # Parse track metadata
-    self.composer = track_metadata['composer']
-    self.work = track_metadata['work']
-    self.excerpt = track_metadata['excerpt']
-    self.predominant_melodic_instruments = track_metadata[
-        'predominant_melodic_instruments-normalized'
-    ]
-    self.alternating_melody = track_metadata['alternating_melody']
-    self.contains_winds = track_metadata['contains_winds']
-    self.contains_strings = track_metadata['contains_strings']
-    self.contains_brass = track_metadata['contains_brass']
-    self.only_strings = track_metadata['only_strings']
-    self.only_winds = track_metadata['only_winds']
-    self.only_brass = track_metadata['only_brass']
+    @property
+    def audio_stereo(self):
+        """(np.ndarray, float): stereo audio signal, sample rate"""
+        return load_audio_stereo(self.track_index["audio_stereo"][0])
 
-    return self
+    @utils.cached_property
+    def melody(self):
+        """F0Data: melody annotation"""
+        times = []
+        freqs = []
+        confidence = []
+        with open(self.track_index["melody"][0], 'r') as fhandle:
+            reader = csv.reader(fhandle, delimiter='\t')
+            for line in reader:
+                times.append(float(line[0]))
+                freqs.append(float(line[1]))
+                confidence.append(0.0 if line[1] == '0' else 1.0)
+        return utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
