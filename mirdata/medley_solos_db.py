@@ -30,7 +30,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 DATASET_DIR = "Medley-solos-DB"
@@ -235,3 +235,57 @@ In Proceedings of the 16th International Society for Music Information Retrieval
 }
 """
     print(cite_data)
+
+
+name = "Medley-solos-DB"
+
+bibtex = """@inproceedings{lostanlen2019ismir,
+    title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
+    author={Lostanlen, Vincent and Cella, Carmine Emanuele},
+    booktitle={International Society of Music Information Retrieval (ISMIR)},
+    year={2016}
+}"""
+
+remotes = {
+    "annotation": download_utils.RemoteFileMetadata(
+        filename="Medley-solos-DB_metadata.csv",
+        url="https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1",
+        checksum="fda6a589c56785f2195c9227809c521a",
+        destination_dir="annotation",
+    ),
+    "audio": download_utils.RemoteFileMetadata(
+        filename="Medley-solos-DB.tar.gz",
+        url="https://zenodo.org/record/3464194/files/Medley-solos-DB.tar.gz?download=1",
+        checksum="f5facf398793ef5c1f80c013afdf3e5f",
+        destination_dir="audio",
+    ),
+}
+
+
+class Track2(track2.Track2):
+    def __init__(self, track_index, track_metadata):
+        super().__init__(track_index, track_metadata)
+
+    @utils.cached_property
+    def duration(self):
+        """(number): duration of the file in seconds"""
+        return 65536 / 22050
+
+    @staticmethod
+    def load_metadata(data_home):
+        metadata_path = os.path.join(
+            data_home, "annotation", "Medley-solos-DB_metadata.csv"
+        )
+        metadata_index = {}
+        with open(metadata_path, "r") as fhandle:
+            csv_reader = csv.reader(fhandle, delimiter=",")
+            next(csv_reader)
+            for row in csv_reader:
+                subset, instrument_str, instrument_id, song_id, track_id = row
+                metadata_index[str(track_id)] = {
+                    "subset": str(subset),
+                    "instrument": str(instrument_str),
+                    "instrument_id": int(instrument_id),
+                    "song_id": int(song_id),
+                }
+        return metadata_index
