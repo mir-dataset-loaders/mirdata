@@ -12,7 +12,6 @@ else:
 
 
 def test_track_repr():
-
     class TestTrack(track.Track):
         def __init__(self):
             self.a = 'asdf'

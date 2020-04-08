@@ -15,10 +15,10 @@ def test_track():
     expected_attributes = {
         'album': 'Mezmerize',
         'annotation_path': 'tests/resources/mir_datasets/DALI/'
-            + 'annotations/4b196e6c99574dd49ad00d56e132712b.gz',
+        + 'annotations/4b196e6c99574dd49ad00d56e132712b.gz',
         'artist': 'System Of A Down',
         'audio_path': 'tests/resources/mir_datasets/DALI/'
-            + 'audio/4b196e6c99574dd49ad00d56e132712b.mp3',
+        + 'audio/4b196e6c99574dd49ad00d56e132712b.mp3',
         'audio_url': 'zUzd9KyIDrM',
         'dataset_version': 1,
         'ground_truth': False,
@@ -36,7 +36,7 @@ def test_track():
         'words': utils.LyricData,
         'lines': utils.LyricData,
         'paragraphs': utils.LyricData,
-        'annotation_object': DALI.Annotations
+        'annotation_object': DALI.Annotations,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

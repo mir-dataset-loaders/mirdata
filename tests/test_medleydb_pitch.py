@@ -14,18 +14,16 @@ def test_track():
     expected_attributes = {
         'track_id': 'AClassicEducation_NightOwl_STEM_08',
         'audio_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav',
+        + 'MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav',
         'pitch_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv',
+        + 'MedleyDB-Pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv',
         'instrument': 'male singer',
         'artist': 'AClassicEducation',
         'title': 'NightOwl',
-        'genre': 'Singer/Songwriter'
+        'genre': 'Singer/Songwriter',
     }
 
-    expected_property_types = {
-        'pitch': utils.F0Data,
-    }
+    expected_property_types = {'pitch': utils.F0Data}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -45,7 +43,10 @@ def test_to_jams():
     f0s = jam.search(namespace='pitch_contour')[0]['data']
     assert [f0.time for f0 in f0s] == [0.06965986394557823, 0.07546485260770976]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [0.0, 191.877]
+    assert [f0.value for f0 in f0s] == [
+        {'frequency': 0.0, 'index': 0, 'voiced': False},
+        {'frequency': 191.877, 'index': 0, 'voiced': True},
+    ]
     assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
 
     assert jam['file_metadata']['title'] == 'NightOwl'

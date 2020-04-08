@@ -14,13 +14,13 @@ def test_track():
     expected_attributes = {
         'track_id': 'MusicDelta_Beethoven',
         'audio_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav',
+        + 'MedleyDB-Melody/audio/MusicDelta_Beethoven_MIX.wav',
         'melody1_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Melody/melody1/MusicDelta_Beethoven_MELODY1.csv',
+        + 'MedleyDB-Melody/melody1/MusicDelta_Beethoven_MELODY1.csv',
         'melody2_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Melody/melody2/MusicDelta_Beethoven_MELODY2.csv',
+        + 'MedleyDB-Melody/melody2/MusicDelta_Beethoven_MELODY2.csv',
         'melody3_path': 'tests/resources/mir_datasets/'
-            + 'MedleyDB-Melody/melody3/MusicDelta_Beethoven_MELODY3.csv',
+        + 'MedleyDB-Melody/melody3/MusicDelta_Beethoven_MELODY3.csv',
         'artist': 'MusicDelta',
         'title': 'Beethoven',
         'genre': 'Classical',
@@ -32,7 +32,7 @@ def test_track():
     expected_property_types = {
         'melody1': utils.F0Data,
         'melody2': utils.F0Data,
-        'melody3': utils.MultipitchData
+        'melody3': utils.MultipitchData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -51,7 +51,10 @@ def test_to_jams():
     f0s = jam.search(namespace='pitch_contour')[1]['data']
     assert [f0.time for f0 in f0s] == [0.046439909297052155, 0.052244897959183675]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [0.0, 965.992]
+    assert [f0.value for f0 in f0s] == [
+        {'frequency': 0.0, 'index': 0, 'voiced': False},
+        {'frequency': 965.992, 'index': 0, 'voiced': True},
+    ]
     assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
 
     assert jam['file_metadata']['title'] == 'Beethoven'

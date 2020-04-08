@@ -32,6 +32,7 @@ eighth-note feel, music with a sixteenth-note feel, and Latin jazz music.
 For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html
 """
 import csv
+import librosa
 import logging
 import os
 
@@ -198,10 +199,12 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
+        metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
+        metadata['duration'] = librosa.get_duration(self.audio[0], self.audio[1])
         return jams_utils.jams_converter(
             beat_data=[(self.beats, None)],
             section_data=[(self.sections, None)],
-            metadata=self._track_metadata,
+            metadata=metadata,
         )
 
 

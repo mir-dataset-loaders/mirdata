@@ -140,6 +140,7 @@ class Track(track.Track):
                 'singer_id': self.singer_id,
                 'track_id': self.track_id,
                 'song_id': self.song_id,
+                'duration': librosa.get_duration(self.mix_audio[0], self.mix_audio[1]),
             },
         )
 
