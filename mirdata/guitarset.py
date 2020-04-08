@@ -51,7 +51,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 
@@ -431,3 +431,139 @@ In Proceedings of the 19th International Society for Music Information Retrieval
 }
 """
     print(cite_data)
+
+
+name = "GuitarSet"
+
+bibtex = """@inproceedings{xi2018guitarset,
+title={GuitarSet: A Dataset for Guitar Transcription},
+author={Xi, Qingyang and Bittner, Rachel M. and Ye, Xuzhou and Pauwels, Johan and Bello, Juan Pablo},
+booktitle={Proceedings of the International Society of Music Information Retrieval (ISMIR) Conference},
+year={2018}
+"""
+
+remotes = {
+    "annotation": download_utils.RemoteFileMetadata(
+        filename='annotation.zip',
+        url='https://zenodo.org/record/3371780/files/annotation.zip?download=1',
+        checksum='b39b78e63d3446f2e54ddb7a54df9b10',
+        destination_dir='annotation',
+    ),
+    "audio_hex-pickup_debleeded": download_utils.RemoteFileMetadata(
+        filename='audio_hex-pickup_debleeded.zip',
+        url='https://zenodo.org/record/3371780/files/audio_hex-pickup_debleeded.zip?download=1',
+        checksum='c31d97279464c9a67e640cb9061fb0c6',
+        destination_dir='audio_hex-pickup_debleeded',
+    ),
+    "audio_hex-pickup_debleeded": download_utils.RemoteFileMetadata(
+        filename='audio_hex-pickup_original.zip',
+        url='https://zenodo.org/record/3371780/files/audio_hex-pickup_original.zip?download=1',
+        checksum='f9911bf217cb40e9e68edf3726ef86cc',
+        destination_dir='audio_hex-pickup_original',
+    ),
+    "audio_mono-mic": download_utils.RemoteFileMetadata(
+        filename='audio_mono-mic.zip',
+        url='https://zenodo.org/record/3371780/files/audio_mono-mic.zip?download=1',
+        checksum='275966d6610ac34999b58426beb119c3',
+        destination_dir='audio_mono-mic',
+    ),
+    "audio_mono-pickup_mix": download_utils.RemoteFileMetadata(
+        filename='audio_mono-pickup_mix.zip',
+        url='https://zenodo.org/record/3371780/files/audio_mono-pickup_mix.zip?download=1',
+        checksum='aecce79f425a44e2055e46f680e10f6a',
+        destination_dir='audio_mono-pickup_mix',
+    ),
+}
+
+
+class Track2(track2.Track2):
+    def __init__(self, track_index, track_metadata):
+        super().__init__(track_index, track_metadata)
+        track_id = self.jams.file_metadata.title
+        title_list = track_id.split('_')  # [PID, S-T-K, mode, rec_mode]
+        style, tempo, _ = title_list[1].split('-')  # [style, tempo, key]
+        self.player_id = title_list[0]
+        self.mode = title_list[2]
+        self.tempo = float(tempo)
+        self.style = _STYLE_DICT[style[:-1]]
+
+    @property
+    def audio_hex(self):
+        """(np.ndarray, float): raw hexaphonic audio signal, sample rate"""
+        audio, sr = librosa.load(self.track_index["audio_hex"], sr=None, mono=False)
+        return audio, sr
+
+    @property
+    def audio_hex_cln(self):
+        """(np.ndarray, float): bleed-removed hexaphonic audio signal, sample rate"""
+        audio, sr = librosa.load(self.track_index["audio_hex_cln"], sr=None, mono=False)
+        return audio, sr
+
+    @property
+    def audio_mic(self):
+        """(np.ndarray, float): stereo microphone audio signal, sample rate"""
+        audio, sr = librosa.load(self.track_index["audio_mic"], sr=None, mono=True)
+        return audio, sr
+
+    @property
+    def audio_mix(self):
+        """(np.ndarray, float): stereo mix audio signal, sample rate"""
+        audio, sr = librosa.load(self.track_index["audio_mix"], sr=None, mono=True)
+        return audio, sr
+
+    @utils.cached_property
+    def inferred_chords(self):
+        """ChordData: the track's chords inferred from played transcription"""
+        inferred_chords_ann = self.jams.search(namespace='chord')[1]
+        intervals, values = inferred_chords_ann.to_interval_values()
+        return utils.ChordData(intervals, values)
+
+    @utils.cached_property
+    def leadsheet_chords(self):
+        """ChordData: the track's chords as written in the leadsheet"""
+        leadsheet_chords_ann = self.jams.search(namespace='chord')[0]
+        intervals, values = leadsheet_chords_ann.to_interval_values()
+        return utils.ChordData(intervals, values)
+
+    @utils.cached_property
+    def notes(self):
+        """dict: a dict that contains 6 NoteData.
+            From Low E string to high e string.
+            {
+                'E': NoteData(...),
+                'A': NoteData(...),
+                ...
+                'e': NoteData(...)
+            }
+        """
+        notes = {}
+        # iterate over 6 strings
+        for i in range(6):
+            anno_arr = self.jam.search(namespace='note_midi')
+            anno = anno_arr.search(data_source=str(string_num))[0]
+            intervals, values = anno.to_interval_values()
+            string_notes = utils.NoteData(intervals, values, np.ones_like(values))
+            notes[_GUITAR_STRINGS[i]] = string_notes
+        return notes
+
+    @utils.cached_property
+    def pitch_contours(self):
+        """(dict): a dict that contains 6 F0Data.
+            From Low E string to high e string.
+            {
+                'E': F0Data(...),
+                'A': F0Data(...),
+                ...
+                'e': F0Data(...)
+            }
+        """
+        contours = {}
+        # iterate over 6 strings
+        for i in range(6):
+            anno_arr = self.jam.search(namespace='pitch_contour')
+            anno = anno_arr.search(data_source=str(string_num))[0]
+            times, values = anno.to_event_values()
+            frequencies = [v['frequency'] for v in values]
+            string_f0s = utils.F0Data(times, frequencies, np.ones_like(times))
+            contours[_GUITAR_STRINGS[i]] = string_f0s
+        return contours
