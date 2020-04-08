@@ -289,7 +289,8 @@ class Track(track.Track):
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
         self.audio_path = utils.none_path_join(
-            [self._data_home, self._track_paths["audio"][0]])
+            [self._data_home, self._track_paths["audio"][0]]
+        )
 
     @property
     def audio(self):
@@ -317,7 +318,9 @@ class Track(track.Track):
             start_times.append(note.start)
             end_times.append(note.end)
             events.append(DRUM_MAPPING[note.pitch])
-        return utils.EventData(np.array(start_times), np.array(end_times), np.array(events))
+        return utils.EventData(
+            np.array(start_times), np.array(end_times), np.array(events)
+        )
 
     @property
     def midi(self):

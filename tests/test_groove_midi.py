@@ -30,10 +30,7 @@ def test_track():
         'split': 'test',
     }
 
-    expected_property_types = {
-        'beats': utils.BeatData,
-        'drum_events': utils.EventData,
-    }
+    expected_property_types = {'beats': utils.BeatData, 'drum_events': utils.EventData}
 
     assert track._track_paths == {
         'audio': [
