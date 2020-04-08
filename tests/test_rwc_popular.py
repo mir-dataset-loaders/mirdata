@@ -15,15 +15,15 @@ def test_track():
     expected_attributes = {
         'track_id': 'RM-P001',
         'audio_path': 'tests/resources/mir_datasets/RWC-Popular/'
-            + 'audio/rwc-p-m01/1.wav',
+        + 'audio/rwc-p-m01/1.wav',
         'sections_path': 'tests/resources/mir_datasets/RWC-Popular/'
-            + 'annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT',
+        + 'annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT',
         'beats_path': 'tests/resources/mir_datasets/RWC-Popular/'
-            + 'annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT',
+        + 'annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT',
         'chords_path': 'tests/resources/mir_datasets/RWC-Popular/'
-            + 'annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab',
+        + 'annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab',
         'voca_inst_path': 'tests/resources/mir_datasets/RWC-Popular/'
-            + 'annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT',
+        + 'annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT',
         'piece_number': 'No. 1',
         'suffix': 'M01',
         'track_number': 'Tr. 01',

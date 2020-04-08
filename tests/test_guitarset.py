@@ -18,15 +18,15 @@ def test_track():
     expected_attributes = {
         'track_id': '03_BN3-119-G_solo',
         'audio_hex_cln_path': 'tests/resources/mir_datasets/GuitarSet/'
-            + 'audio_hex-pickup_debleeded/03_BN3-119-G_solo_hex_cln.wav',
+        + 'audio_hex-pickup_debleeded/03_BN3-119-G_solo_hex_cln.wav',
         'audio_hex_path': 'tests/resources/mir_datasets/GuitarSet/'
-            + 'audio_hex-pickup_original/03_BN3-119-G_solo_hex.wav',
+        + 'audio_hex-pickup_original/03_BN3-119-G_solo_hex.wav',
         'audio_mic_path': 'tests/resources/mir_datasets/GuitarSet/'
-            + 'audio_mono-mic/03_BN3-119-G_solo_mic.wav',
+        + 'audio_mono-mic/03_BN3-119-G_solo_mic.wav',
         'audio_mix_path': 'tests/resources/mir_datasets/GuitarSet/'
-            + 'audio_mono-pickup_mix/03_BN3-119-G_solo_mix.wav',
+        + 'audio_mono-pickup_mix/03_BN3-119-G_solo_mix.wav',
         'jams_path': 'tests/resources/mir_datasets/GuitarSet/'
-            + 'annotation/03_BN3-119-G_solo.jams',
+        + 'annotation/03_BN3-119-G_solo.jams',
         'player_id': '03',
         'tempo': 119,
         'mode': 'solo',

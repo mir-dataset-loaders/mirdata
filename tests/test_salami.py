@@ -13,16 +13,15 @@ def test_track():
 
     expected_attributes = {
         'track_id': '2',
-        'audio_path': 'tests/resources/mir_datasets/Salami/'
-            + 'audio/2.mp3',
+        'audio_path': 'tests/resources/mir_datasets/Salami/' + 'audio/2.mp3',
         'sections_annotator1_uppercase_path': 'tests/resources/mir_datasets/Salami/'
-            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt',
+        + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt',
         'sections_annotator1_lowercase_path': 'tests/resources/mir_datasets/Salami/'
-            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt',
+        + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt',
         'sections_annotator2_uppercase_path': 'tests/resources/mir_datasets/Salami/'
-            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt',
+        + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt',
         'sections_annotator2_lowercase_path': 'tests/resources/mir_datasets/Salami/'
-            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt',
+        + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt',
         'source': 'Codaich',
         'annotator_1_id': '5',
         'annotator_2_id': '8',

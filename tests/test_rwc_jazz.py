@@ -13,11 +13,11 @@ def test_track():
     expected_attributes = {
         'track_id': 'RM-J004',
         'audio_path': 'tests/resources/mir_datasets/RWC-Jazz/'
-            + 'audio/rwc-j-m01/4.wav',
+        + 'audio/rwc-j-m01/4.wav',
         'sections_path': 'tests/resources/mir_datasets/RWC-Jazz/'
-            + 'annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT',
+        + 'annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT',
         'beats_path': 'tests/resources/mir_datasets/RWC-Jazz/'
-            + 'annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT',
+        + 'annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT',
         'piece_number': 'No. 4',
         'suffix': 'M01',
         'track_number': 'Tr. 04',
@@ -28,10 +28,7 @@ def test_track():
         'instruments': 'Pf',
     }
 
-    expected_property_types = {
-        'beats': utils.BeatData,
-        'sections': utils.SectionData
-    }
+    expected_property_types = {'beats': utils.BeatData, 'sections': utils.SectionData}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 

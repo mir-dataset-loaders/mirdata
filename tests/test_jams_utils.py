@@ -21,7 +21,6 @@ def get_jam_data(jam, namespace, annot_numb):
 
 
 def test_beats():
-
     beat_data_1 = [(utils.BeatData(np.array([0.2, 0.3]), np.array([1, 2])), None)]
     beat_data_2 = [(utils.BeatData(np.array([0.5, 0.7]), np.array([2, 3])), 'beats_2')]
     beat_data_3 = [
@@ -202,7 +201,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             None,
         )
@@ -212,7 +211,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             'notes_2',
         )
@@ -222,7 +221,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             'notes_1',
         ),
@@ -230,16 +229,16 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             'notes_2',
         ),
     ]
     note_data_4 = (
         utils.NoteData(
-            np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, 
+            np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
             np.array([1108.731, 1108.731, 1108.731]),
-            np.array([1, 1, 1])
+            np.array([1, 1, 1]),
         ),
         None,
     )
@@ -248,7 +247,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             None,
         ],
@@ -256,7 +255,7 @@ def test_notes():
             utils.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1])
+                np.array([1, 1, 1]),
             ),
             'notes_2',
         ),
@@ -805,7 +804,10 @@ def test_f0s():
     time, duration, value, confidence = get_jam_data(jam_1, 'pitch_contour', 0)
     assert time == [0.016, 0.048]
     assert duration == [0.0, 0.0]
-    assert value == [0.0, 260.9]
+    assert value == [
+        {'frequency': 0.0, 'index': 0, 'voiced': False},
+        {'frequency': 260.9, 'index': 0, 'voiced': True},
+    ]
     assert confidence == [0.0, 1.0]
 
     assert jam_2.annotations[0]['sandbox']['name'] == 'f0s_1'
@@ -813,13 +815,19 @@ def test_f0s():
     time, duration, value, confidence = get_jam_data(jam_3, 'pitch_contour', 0)
     assert time == [0.016, 0.048]
     assert duration == [0.0, 0.0]
-    assert value == [0.0, 260.9]
+    assert value == [
+        {'frequency': 0.0, 'index': 0, 'voiced': False},
+        {'frequency': 260.9, 'index': 0, 'voiced': True},
+    ]
     assert confidence == [0.0, 1.0]
 
     time, duration, value, confidence = get_jam_data(jam_3, 'pitch_contour', 1)
     assert time == [0.003, 0.012]
     assert duration == [0.0, 0.0]
-    assert value == [0.0, 230.5]
+    assert value == [
+        {'frequency': 0.0, 'index': 0, 'voiced': False},
+        {'frequency': 230.5, 'index': 0, 'voiced': True},
+    ]
     assert confidence == [0.0, 1.0]
 
     time, duration, value, confidence = get_jam_data(jam_6, 'pitch_contour', 0)
@@ -961,6 +969,25 @@ def test_lyrics():
         jams_utils.jams_converter(lyrics_data=lyrics_data_5)
     with pytest.raises(TypeError):
         jams_utils.jams_converter(lyrics_data=lyrics_data_7)
+
+
+def test_tags():
+    tag_data1 = [('blues', 'I am a description')]
+    tag_data2 = [('disco', 'tag 1'), ('rock', 'tag 2')]
+    tag_data3 = [('invalid', 'asdf')]
+    tag_data4 = ('jazz', 'wrong format')
+    tag_data5 = ['wrong format too']
+    jam1 = jams_utils.jams_converter(tags_gtzan_data=tag_data1, metadata={'duration': 10.0})
+    assert jam1.validate()
+    jam2 = jams_utils.jams_converter(tags_gtzan_data=tag_data2, metadata={'duration': 10.0})
+    assert jam2.validate()
+    jam3 = jams_utils.jams_converter(tags_gtzan_data=tag_data3, metadata={'duration': 10.0})
+    with pytest.raises(jams.SchemaError):
+        assert jam3.validate()
+    with pytest.raises(TypeError):
+        jam4 = jams_utils.jams_converter(tags_gtzan_data=tag_data4)
+    with pytest.raises(TypeError):
+        jam5 = jams_utils.jams_converter(tags_gtzan_data=tag_data5)
 
 
 def test_metadata():
