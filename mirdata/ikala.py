@@ -19,7 +19,7 @@ import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 
@@ -342,3 +342,75 @@ Chan, Tak-Shing, et al.
 }
 """
     print(cite_data)
+
+
+name = "iKala"
+
+bibtex = """@inproceedings{chan2015vocal,
+title={Vocal activity informed singing voice separation with the iKala dataset},
+author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and Jang, Roger},
+booktitle={2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+pages={718--722},
+year={2015},
+organization={IEEE}
+"""
+
+remotes = {
+    "id_mapping": download_utils.RemoteFileMetadata(
+        filename='id_mapping.txt',
+        url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
+        checksum='81097b587804ce93e56c7a331ba06abc',
+        destination_dir=None,
+    )
+}
+
+for remote_key in ["audio", "lyrics", "pitch"]:
+    remotes[remote_key] = """
+        Unfortunately the iKala dataset is not available for download.
+        If you have the iKala dataset, place the contents into a folder called
+        iKala with the following structure:
+            > iKala/
+                > Lyrics/
+                > PitchLabel/
+                > Wavfile/
+        and copy the iKala folder to {}"""
+
+
+class Track2(track2.Track2):
+    @utils.cached_property
+    def f0(self):
+        """F0Data: The human-annotated singing voice pitch"""
+        return load_f0(self.track_index["pitch"][0])
+
+    @property
+    def instrumental_audio(self):
+        """(np.ndarray, float): mono instrumental audio signal, sample rate"""
+        return load_vocal_audio(self.track_index["pitch"][0])
+
+    @utils.cached_property
+    def lyrics(self):
+        """LyricData: The human-annotated lyrics"""
+        return load_lyrics(self.track_index["lyrics"][0])
+
+    @property
+    def mix_audio(self):
+        """(np.ndarray, float): mono mixture audio signal, sample rate"""
+        return load_vocal_audio(self.track_index["audio"][0])
+
+    @property
+    def vocal_audio(self):
+        """(np.ndarray, float): mono vocal audio signal, sample rate"""
+        return load_vocal_audio(self.track_index["audio"][0])
+
+    @staticmethod
+    def load_metadata(data_home):
+        id_map_path = os.path.join(data_home, 'id_mapping.txt')
+
+        with open(id_map_path, 'r') as fhandle:
+            reader = csv.reader(fhandle, delimiter='\t')
+            singer_map = {}
+            for line in reader:
+                if line[0] == 'singer':
+                    continue
+                singer_map[line[1]] = line[0]
+        return singer_map
