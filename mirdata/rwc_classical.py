@@ -451,33 +451,13 @@ remotes = {
 class Track2(track2.Track2):
     @utils.cached_property
     def beats(self):
-        beat_times = []  # timestamps of beat interval beginnings
-        beat_positions = []  # beat position inside the bar
-        with open(self.track_index["beats"][0], 'r') as fhandle:
-            reader = csv.reader(fhandle, delimiter='\t')
-            for line in reader:
-                beat_times.append(float(line[0]) / 100.0)
-                beat_positions.append(int(line[2]))
-
-        beat_positions, beat_times = _position_in_bar(
-            np.array(beat_positions), np.array(beat_times)
-        )
-        return utils.BeatData(beat_times, beat_positions.astype(int))
+        """BeatData: human-labeled beat data"""
+        return load_beats(self.track_index["beats"][0])
 
     @utils.cached_property
     def sections(self):
-        begs = []  # timestamps of section beginnings
-        ends = []  # timestamps of section endings
-        secs = []  # section labels
-
-        with open(self.track_index["sections"][0], 'r') as fhandle:
-            reader = csv.reader(fhandle, delimiter='\t')
-            for line in reader:
-                begs.append(float(line[0]) / 100.0)
-                ends.append(float(line[1]) / 100.0)
-                secs.append(line[2])
-
-        return utils.SectionData(np.array([begs, ends]).T, secs)
+        """SectionData: human labeled section annotations"""
+        return load_sections(self.track_index["sections"][0])
 
     @staticmethod
     def load_metadata(data_home):
