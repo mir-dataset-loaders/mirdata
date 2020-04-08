@@ -15,7 +15,6 @@ MAX_STR_LEN = 100
 class Track2(object):
     def __init__(self, track_index, track_metadata):
         self.track_index = track_index
-        self.track_metadata = track_metadata
         for key in track_metadata:
             self.__dict__[key] = track_metadata[key]
         if hasattr(self, "jams"):
