@@ -62,13 +62,133 @@ import mirdata.utils as utils
 
 DATASET_DIR = 'Groove MIDI'
 
-
 AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
     filename='groove-v1-0.0.zip',
     url='http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip',
     checksum='99db7e2a087761a913b2abfb19e86181',
     destination_dir=None,
 )
+
+DRUM_MAPPING = {
+    36: {"Roland": "Kick", "General MIDI": "Bass Drum 1", "Simplified": "Bass (36)"},
+    38: {
+        "Roland": "Snare (Head)",
+        "General MIDI": "Acoustic Snare",
+        "Simplified": "Snare (38)",
+    },
+    40: {
+        "Roland": "Snare (Rim)",
+        "General MIDI": "Electric Snare",
+        "Simplified": "Snare (38)",
+    },
+    37: {
+        "Roland": "Snare X-Stick",
+        "General MIDI": "Side Stick",
+        "Simplified": "Snare (38)",
+    },
+    48: {
+        "Roland": "Tom 1",
+        "General MIDI": "Hi-Mid Tom",
+        "Simplified": "High Tom (50)",
+    },
+    50: {
+        "Roland": "Tom 1 (Rim)",
+        "General MIDI": "High Tom",
+        "Simplified": "High Tom (50)",
+    },
+    45: {
+        "Roland": "Tom 2",
+        "General MIDI": "Low Tom",
+        "Simplified": "Low-Mid Tom (47)",
+    },
+    47: {
+        "Roland": "Tom 2 (Rim)",
+        "General MIDI": "Low-Mid Tom",
+        "Simplified": "Low-Mid Tom (47)",
+    },
+    43: {
+        "Roland": "Tom 3 (Head)",
+        "General MIDI": "High Floor Tom",
+        "Simplified": "High Floor Tom (43)",
+    },
+    58: {
+        "Roland": "Tom 3 (Rim)",
+        "General MIDI": "Vibraslap",
+        "Simplified": "High Floor Tom (43)",
+    },
+    46: {
+        "Roland": "HH Open (Bow)",
+        "General MIDI": "Open Hi-Hat",
+        "Simplified": "Open Hi-Hat (46)",
+    },
+    26: {
+        "Roland": "HH Open (Edge)",
+        "General MIDI": "N/A",
+        "Simplified": "Open Hi-Hat (46)",
+    },
+    42: {
+        "Roland": "HH Closed (Bow)",
+        "General MIDI": "Closed Hi-Hat",
+        "Simplified": "Closed Hi-Hat (42)",
+    },
+    22: {
+        "Roland": "HH Closed (Edge)",
+        "General MIDI": "N/A",
+        "Simplified": "Closed Hi-Hat (42)",
+    },
+    44: {
+        "Roland": "HH Pedal",
+        "General MIDI": "Pedal Hi-Hat",
+        "Simplified": "Closed Hi-Hat (42)",
+    },
+    49: {
+        "Roland": "Crash 1 (Bow)",
+        "General MIDI": "Crash Cymbal 1",
+        "Simplified": "Crash Cymbal (49)",
+    },
+    55: {
+        "Roland": "Crash 1 (Edge)",
+        "General MIDI": "Splash Cymbal",
+        "Simplified": "Crash Cymbal (49)",
+    },
+    57: {
+        "Roland": "Crash 2 (Bow)",
+        "General MIDI": "Crash Cymbal 2",
+        "Simplified": "Crash Cymbal (49)",
+    },
+    52: {
+        "Roland": "Crash 2 (Edge)",
+        "General MIDI": "Chinese Cymbal",
+        "Simplified": "Crash Cymbal (49)",
+    },
+    51: {
+        "Roland": "Ride (Bow)",
+        "General MIDI": "Ride Cymbal 1",
+        "Simplified": "Ride Cymbal (51)",
+    },
+    59: {
+        "Roland": "Ride (Edge)",
+        "General MIDI": "Ride Cymbal 2",
+        "Simplified": "Ride Cymbal (51)",
+    },
+    53: {
+        "Roland": "Ride (Bell)",
+        "General MIDI": "Ride Bell",
+        "Simplified": "Ride Cymbal (51)",
+    },
+}
+
+GMD_VERSION = "1.0.0"
+
+ANNOTATION_RULES = """
+The Roland TD-11 splits the recorded data into separate tracks: one for
+meta-messages (tempo, time signature, key signature), one for control changes
+(hi-hat pedal position), and one for notes. The control changes are set on
+channel 0 and the notes on channel 9 (the canonical drum channel). To simplify
+processing of this data, we made two adjustments to the raw MIDI files before
+distributing: We merged all messages (meta, control change, and note) to a
+single track. We set all messages to channel 9 (10 if 1-indexed).
+"""
 
 
 def _load_metadata(data_home):
@@ -127,17 +247,18 @@ class Track(track.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        drummer (str): Drummer id of the track (ex. 'drummer1') 
+        drummer (str): Drummer id of the track (ex. 'drummer1')
         session (str): Type of session  (ex. 'session1', 'eval_session')
         track_id (str): track id of the track (ex. 'drummer1/eval_session/1')
-        style (str): Style (genre, groove type) of the track (ex. 'funk/groove1') 
-        bpm (int): Track bpm (ex. 138) 
-        beat_type (str): Whether the track is a beat or a fill (ex. 'beat') 
-        time_signature (str): Time signature of the track (ex. '4-4', '6-8')  
-        midi_path (str): Path to the midi file 
-        audio_path (str): Path to the audio file 
-        duration (float): Duration of the midi file in seconds 
-        split (str): Whether the track is for a train/valid/test set. One of 'train', 'valid' or 'test'.
+        style (str): Style (genre, groove type) of the track (ex. 'funk/groove1')
+        bpm (int): Track bpm (ex. 138)
+        beat_type (str): Whether the track is a beat or a fill (ex. 'beat')
+        time_signature (str): Time signature of the track (ex. '4-4', '6-8')
+        midi_path (str): Path to the midi file
+        audio_path (str): Path to the audio file
+        duration (float): Duration of the midi file in seconds
+        split (str): Whether the track is for a train/valid/test set. One of
+        'train', 'valid' or 'test'.
     """
 
     def __init__(self, track_id, data_home=None):
@@ -199,14 +320,109 @@ class Track(track.Track):
         else:
             return (None, None)
 
+    @utils.cached_property
+    def beats(self):
+        """BeatData: machine-generated beat annotation"""
+        beat_times = self.midi.get_beats()
+        beat_range = np.arange(0, len(beat_times))
+        meter = self.midi.time_signature_changes[0]
+        beat_positions = 1 + np.mod(beat_range, meter.numerator)
+        return BeatData(beat_times, beat_positions)
+
     @property
     def midi(self):
         """(obj): prettyMIDI obj"""
         return load_midi(self.midi_path)
 
     def to_jams(self):
-        """(Not Implemented) Jams: the track's data in jams format"""
-        raise NotImplementedError
+        # Initialize top-level JAMS container
+        jam = jams.JAMS()
+
+        # Encode title, artist, and release
+        jam.file_metadata.title = os.path.split(self.audio_filename)[1]
+        jam.file_metadata.artist = self.drummer
+        jam.file_metadata.release = os.path.split(self.session)[1]
+
+        # Encode duration in seconds
+        jam.file_metadata.duration = self.duration
+
+        # Encode JAMS curator
+        curator = jams.Curator(name="Jon Gillick", email="jongillick@berkeley.edu")
+
+        # Store mirdata metadata as JAMS identifiers
+        jam.file_metadata.identifiers = jams.Sandbox(**self.__dict__)
+
+        # Encode annotation metadata
+        ann_meta = jams.AnnotationMetadata(
+            annotator={
+                "mirdata version": mirdata.__version__,
+                "pretty_midi version": pretty_midi.__version__,
+            },
+            version=GMD_VERSION,
+            corpus=DATASET_DIR,
+            annotation_tools="Roland TD-11 electronic drum kit",
+            annotation_rules=ANNOTATION_RULES,
+            validation=mirdata.groove_midi.AUDIO_MIDI_REMOTE,
+            data_source="Google Magenta",
+            curator=curator,
+        )
+
+        # Encode beat annotation
+        beat_ann = jams.Annotation(
+            namespace="beat_position",
+            time=0,
+            duration=self.duration,
+            annotation_metadata=ann_meta,
+        )
+        beat_times = self.midi.get_beats()
+        meter = self.midi.time_signature_changes[0]
+        n_beats_per_bar = meter.numerator
+        beat_durations = np.diff(list(beat_times) + [self.duration])
+        beat_enum = enumerate(zip(beat_times, beat_durations))
+        for beat_id, (beat_time, beat_duration) in beat_enum:
+            beat_value = {
+                "position": 1 + (beat_id % meter.numerator),
+                "measure": 1 + (beat_id // meter.numerator),
+                "num_beats": meter.numerator,
+                "beat_units": meter.denominator,
+            }
+            beat_ann.append(
+                time=beat_time, duration=beat_duration, confidence=1, value=beat_value
+            )
+        jam.annotations.append(beat_ann)
+
+        # Encode tempo annotation
+        tempo_ann = jams.Annotation(
+            namespace="tempo",
+            time=0,
+            duration=self.duration,
+            annotation_metadata=ann_meta,
+        )
+        tempo_ann.append(time=0, duration=self.duration, confidence=1, value=self.bpm)
+        jam.annotations.append(tempo_ann)
+
+        # Encode event annotation. We support three drum mappings:
+        # Roland, General MIDI (GM), and Simplified.
+        mapping_keys = ["Roland", "General MIDI", "Simplified"]
+        for mapping_key in mapping_keys:
+            mapping_namespace = "drum stroke ({} mapping)".format(mapping_key)
+            event_ann = jams.Annotation(
+                namespace=mapping_namespace,
+                time=0,
+                duration=self.duration,
+                annotation_metadata=ann_meta,
+            )
+            for note in self.midi.instruments[0].notes:
+                event_value = DRUM_MAPPING[drum.notes[0].pitch][mapping_key]
+                event_ann.append(
+                    time=note.start,
+                    duration=note.end - note.start,
+                    value=event_value,
+                    confidence=1,
+                )
+            jam.annotations.append(event_ann)
+
+        return jam
 
 
 def load_audio(audio_path):
@@ -230,7 +446,7 @@ def load_midi(midi_path):
         midi_path (str): path to midi file
 
     Returns:
-        midi_data (obj): prettyMIDI object containing MIDI data. Refer to http://craffel.github.io/pretty-midi/ for more details. 
+        midi_data (obj): pretty_midi object
 
     """
     return pretty_midi.PrettyMIDI(midi_path)
@@ -247,7 +463,7 @@ def download(data_home=None):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
-        data_home, zip_downloads=[AUDIO_MIDI_REMOTE], cleanup=True,
+        data_home, zip_downloads=[AUDIO_MIDI_REMOTE], cleanup=True
     )
 
     os.rename(os.path.join(data_home, 'groove'), os.path.join(data_home, 'Groove MIDI'))
@@ -285,7 +501,7 @@ def track_ids():
 
 
 def load(data_home=None):
-    """Load Groove MIDI dataset 
+    """Load Groove MIDI dataset
 
     Args:
         data_home (str): Local path where Groove MIDI is stored.
@@ -313,7 +529,8 @@ Jon Gillick, Adam Roberts, Jesse Engel, Douglas Eck, and David Bamman.
 International Conference on Machine Learning (ICML), 2019.
 ========== Bibtex ==========
 @inproceedings{groove2019,
-    Author = {Jon Gillick and Adam Roberts and Jesse Engel and Douglas Eck and David Bamman},
+    Author = {Jon Gillick and Adam Roberts and Jesse Engel and Douglas Eck
+              and David Bamman},
     Title = {Learning to Groove with Inverse Sequence Transformations},
     Booktitle = {International Conference on Machine Learning (ICML)},
     Year = {2019},
