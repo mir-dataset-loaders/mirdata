@@ -10,12 +10,14 @@ contains 10 genres, each represented by 100 tracks. The tracks are all
 22050 Hz mono 16-bit audio files in .wav format.
 """
 
+import jams
 import librosa
 import os
 
+import mirdata
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import track, track2
 from mirdata import utils
 
 
@@ -170,3 +172,79 @@ Music Analysis, Retrieval and Synthesis for Audio Signals. (2002).
 }
 """
     print(cite_data)
+
+
+name = "GTZAN Genre"
+
+bibtex = """@article{tzanetakis2002gtzan,
+title={GTZAN genre collection},
+author={Tzanetakis, George and Cook, P},
+journal={Music Analysis, Retrieval and Synthesis for Audio Signals},
+year={2002}
+}"""
+
+remotes = {
+    "audio": download_utils.RemoteFileMetadata(
+        filename="genres.tar.gz",
+        url="http://opihi.cs.uvic.ca/sound/genres.tar.gz",
+        checksum="5b3d6dddb579ab49814ab86dba69e7c7",
+        destination_dir="gtzan_genre",
+    )
+}
+
+
+class Track2(track2.Track2):
+    @utils.cached_property
+    def genre(self):
+        """Musical genre among 10 categories"""
+        wav_name = os.path.split(self.track_index["audio"][0])[1]
+        return wav_name.split(".")[0]
+
+    @utils.cached_property
+    def jams(self):
+        """JAMS: JSON-Annotated Music Specification"""
+        # Initialize top-level JAMS container
+        jam = jams.JAMS()
+
+        # Encode title, artist, and release
+        jam.file_metadata.title = "Unknown track"
+        jam.file_metadata.artist = "Unknown artist"
+        jam.file_metadata.release = "Unknown album"
+
+        # Encode duration in seconds
+        jam.file_metadata.duration = 30.0
+
+        # Encode JAMS curator
+        curator = jams.Curator(name="George Tzanetakis", email="gtzan@cs.uvic.ca")
+
+        # Store mirdata metadata as JAMS identifiers
+        jam.file_metadata.identifiers = jams.Sandbox(**self.__dict__)
+
+        # Encode annotation rules
+        annotation_rules = """Unfortunately the database was collected gradually and
+very early on in my research so I have no titles.
+The files were collected in 2000-2001 from a variety of sources including
+personal CDs, radio, microphone recordings, in order to represent a variety of
+recording conditions. Nevertheless I have been providing it to researchers upon
+request mainly for comparison purposes etc. -- George Tzanetakis, 2005"""
+
+        # Encode annotation metadata
+        ann_meta = jams.AnnotationMetadata(
+            annotator={"mirdata version": mirdata.__version__},
+            version="1.0",
+            corpus=name,
+            annotation_tools="MARSYAS",
+            annotation_rules=annotation_rules,
+            validation=remotes,
+            data_source="George Tzanetakis",
+            curator=curator,
+        )
+
+        # Encode genre annotation
+        genre_ann = jams.Annotation(
+            namespace="tag_gtzan", time=0, duration=30.0, annotation_metadata=ann_meta
+        )
+        genre_ann.append(time=0, duration=30.0, confidence=0, value=self.genre)
+        jam.annotations.append(genre_ann)
+
+        return jam
