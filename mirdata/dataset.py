@@ -120,10 +120,6 @@ class Dataset(object):
         with open(self.index_path) as f:
             return json.load(f)
 
-    @staticmethod
-    def parse_track_id(self):
-        return {}
-
     def track_ids(self):
         return list(self.index.keys())
 

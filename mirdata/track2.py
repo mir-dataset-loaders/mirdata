@@ -118,6 +118,10 @@ class Track2(object):
     def load_metadata(data_home):
         return {}
 
+    @staticmethod
+    def parse_track_id(self):
+        return {}
+
     def to_jams(self):
         """Jams: the track's data in jams format"""
         # If the JAMS object is natively provided, simply return it
