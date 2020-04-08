@@ -374,9 +374,6 @@ remotes = {
 
 
 class Track2(track2.Track2):
-    def __init__(self, track_id, track_metadata):
-        super().__init__(track_id, track_metadata)
-
     @staticmethod
     def load_metadata(data_home):
         predominant_inst_path = os.path.join(

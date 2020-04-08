@@ -449,9 +449,6 @@ remotes = {
 
 
 class Track2(track2.Track2):
-    def __init__(self, track_id, track_metadata):
-        super().__init__(track_id, track_metadata)
-
     @utils.cached_property
     def beats(self):
         beat_times = []  # timestamps of beat interval beginnings
