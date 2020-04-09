@@ -24,7 +24,6 @@ CUSTOM_TEST_TRACKS = {
     'salami': '2',
     'tinysol': 'Fl-ord-C4-mf-N-T14d',
 }
-TOJAMS_NEEDS_DURATION = ["dali"]
 
 
 def test_cite():
@@ -96,7 +95,7 @@ def test_track():
         # Validate JSON schema
         if dataset_name in TOJAMS_NEEDS_DURATION:
             # we put a placeholder positive value as duration
-            jam = track_test.to_jams(duration=1.0)
+            jam = track_test.to_jams()
         else:
             jam = track_test.to_jams()
         assert jam.validate()
