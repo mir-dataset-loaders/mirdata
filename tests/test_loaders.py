@@ -6,6 +6,7 @@ import io
 import os
 import sys
 import pytest
+import re
 
 import mirdata
 import mirdata.track as track
