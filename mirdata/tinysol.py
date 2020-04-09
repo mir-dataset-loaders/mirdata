@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-"""TinySOL Dataset Loader.
-
-TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14
-different instruments:
+"""TinySOL is a dataset of 2913 samples, each containing a single musical note
+from one of 14 different instruments:
 
     Bass Tuba
     French Horn
@@ -38,8 +36,7 @@ their results in terms of average performance across folds.
 We encourage TinySOL users to subscribe to the Ircam Forum so that they can
 have access to larger versions of SOL.
 
-For more details, please visit: https://www.orch-idea.org/
-"""
+For more details, please visit: https://www.orch-idea.org/"""
 
 import csv
 import librosa
@@ -51,7 +48,9 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "TinySOL"
+name = "TinySOL"
+DATASET_DIR = name.replace(" ", "-")
+
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
     filename="TinySOL.tar.gz",
     url="https://zenodo.org/record/3685367/files/TinySOL.tar.gz?download=1",

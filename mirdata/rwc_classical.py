@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""RWC Classical Dataset Loader
-
- The Classical Music Database consists of 50 pieces:
+"""The Classical Music Database consists of 50 pieces:
 * Symphonies: 4 pieces
 * Concerti: 2 pieces
 * Orchestral music: 4 pieces
@@ -11,6 +9,7 @@
 
 For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html
 """
+
 import csv
 import librosa
 import logging
@@ -22,13 +21,15 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
+name = "RWC Classical"
+DATASET_DIR = name.replace(" ", "-")
+
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-c.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030',
     destination_dir=None,
 )
-DATASET_DIR = 'RWC-Classical'
 ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-C-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""RWC Jazz Dataset Loader.
-
-The Jazz Music Database consists of 50 pieces:
+"""The Jazz Music Database consists of 50 pieces:
 
 * Instrumentation variations: 35 pieces (5 pieces × 7 instrumentations).
 The instrumentation-variation pieces were recorded to obtain different versions
@@ -31,6 +29,7 @@ eighth-note feel, music with a sixteenth-note feel, and Latin jazz music.
 
 For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html
 """
+
 import csv
 import librosa
 import logging
@@ -49,13 +48,16 @@ from mirdata.rwc_classical import (
     _duration_to_sec,
 )
 
+
+name = "RWC Jazz"
+DATASET_DIR = name.replace(" ", "-")
+
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-j.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030',
     destination_dir=None,
 )
-DATASET_DIR = 'RWC-Jazz'
 ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-J-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.BEAT.zip',

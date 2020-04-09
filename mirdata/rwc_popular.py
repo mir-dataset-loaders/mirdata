@@ -9,6 +9,7 @@ the 1990s.
 
 For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
 """
+
 import csv
 import librosa
 import logging
@@ -28,13 +29,15 @@ from mirdata.rwc_classical import (
     _duration_to_sec,
 )
 
+name = "RWC Jazz"
+DATASET_DIR = name.replace(" ", "-")
+
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='rwc-p.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030',
     destination_dir=None,
 )
-DATASET_DIR = 'RWC-Popular'
 ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-P-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip',

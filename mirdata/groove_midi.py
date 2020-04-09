@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Groove MIDI Loader
-
-The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
+"""The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
 synthesized audio of human-performed, tempo-aligned expressive drumming.
 The dataset contains 1,150 MIDI files and over 22,000 measures of drumming.
 
@@ -42,6 +40,7 @@ Attribution 4.0 International (CC BY 4.0) License.
 
 For more details, please visit: http://magenta.tensorflow.org/datasets/groove
 """
+
 import csv
 import librosa
 import logging
@@ -55,7 +54,8 @@ import mirdata.track as track
 import mirdata.utils as utils
 
 
-DATASET_DIR = 'Groove MIDI'
+name = "Groove MIDI"
+DATASET_DIR = name.replace(" ", "-")
 
 AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
     filename='groove-v1-0.0.zip',

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""DALI Dataset Loader
-
-DALI contains 5358 audio files with their time-aligned vocal melody.
+"""DALI contains 5358 audio files with their time-aligned vocal melody.
 It also contains time-aligned lyrics at four levels of granularity: notes,
 words, lines, and paragraphs.
 
@@ -39,7 +37,8 @@ except ImportError as E:
 import mirdata.track as track
 import mirdata.utils as utils
 
-DATASET_DIR = 'DALI'
+name = 'DALI'
+DATASET_DIR = name.replace(" ", "-")
 
 
 def _load_metadata(data_home):

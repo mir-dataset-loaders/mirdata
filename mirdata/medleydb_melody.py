@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""MedleyDB melody Dataset Loader
-
-MedleyDB is a dataset of annotated, royalty-free multitrack recordings.
+"""MedleyDB is a dataset of annotated, royalty-free multitrack recordings.
 MedleyDB was curated primarily to support research on melody extraction,
 addressing important shortcomings of existing collections. For each song
 we provide melody f0 annotations as well as instrument activations for
@@ -23,7 +21,8 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = 'MedleyDB-Melody'
+name = "MedleyDB Mitch"
+DATASET_DIR = name.replace(" ", "-")
 
 
 def _load_metadata(data_home):

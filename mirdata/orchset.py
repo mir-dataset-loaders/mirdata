@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
-"""ORCHSET Dataset Loader
-
-Orchset is intended to be used as a dataset for the development and
+"""ORCHSET is intended to be used as a dataset for the development and
 evaluation of melody extraction algorithms. This collection contains
 64 audio excerpts focused on symphonic music with their corresponding
 annotation of the melody.
 
 For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
-
 """
 
 import csv
@@ -31,7 +28,8 @@ REMOTE = download_utils.RemoteFileMetadata(
     destination_dir=None,
 )
 
-DATASET_DIR = 'Orchset'
+name = "ORCHSET"
+DATASET_DIR = name.replace(" ", "-")
 
 
 def _load_metadata(data_home):

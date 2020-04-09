@@ -55,7 +55,8 @@ from mirdata import track
 from mirdata import utils
 
 
-DATASET_DIR = 'GuitarSet'
+name = "GuitarSet"
+DATASET_DIR = name.replace(" ", "-")
 
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename='annotation.zip',

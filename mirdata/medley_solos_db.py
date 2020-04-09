@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Medley-solos-DB Dataset Loader.
-
-Medley-solos-DB is a cross-collection dataset for automatic musical instrument
+"""Medley-solos-DB is a cross-collection dataset for automatic musical instrument
 recognition in solo recordings.
 It consists of a training set of 3-second audio clips, which are extracted from
 the MedleyDB dataset (Bittner et al., ISMIR 2014) as well as a test set of
@@ -33,7 +31,9 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "Medley-solos-DB"
+name = "Medley-solos-DB"
+DATASET_DIR = name.replace(" ", "-")
+
 ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
     filename="Medley-solos-DB_metadata.csv",
     url="https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1",

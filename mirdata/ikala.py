@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-"""iKala Dataset Loader
-
-The iKala dataset is comprised of 252 30-second excerpts sampled from 206 iKala
-songs (plus 100 hidden excerpts reserved for MIREX).
+"""The iKala dataset is comprised of 252 30-second excerpts sampled from 206
+iKala songs (plus 100 hidden excerpts reserved for MIREX).
 The music accompaniment and the singing voice are recorded at the left and right
 channels respectively and can be found under the Wavfile directory.
 In addition, the human-labeled pitch contours and timestamped lyrics can be
@@ -23,7 +21,9 @@ from mirdata import track
 from mirdata import utils
 
 
-DATASET_DIR = 'iKala'
+name = "iKala"
+DATASET_DIR = name.replace(" ", "-")
+
 TIME_STEP = 0.032  # seconds
 ID_MAPPING_REMOTE = download_utils.RemoteFileMetadata(
     filename='id_mapping.txt',

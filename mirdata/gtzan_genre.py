@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""GTZAN-Genre Dataset Loader
-
-This dataset was used for the well known paper in genre classification
+"""This dataset was used for the well known paper in genre classification
 "Musical genre classification of audio signals " by G. Tzanetakis and
 P. Cook in IEEE Transactions on Audio and Speech Processing 2002.
 
@@ -19,7 +17,9 @@ from mirdata import track
 from mirdata import utils
 
 
-DATASET_DIR = "GTZAN-Genre"
+
+name = "GTZAN Genre"
+DATASET_DIR = name.replace(" ", "-")
 
 DATASET_REMOTE = download_utils.RemoteFileMetadata(
     filename="genres.tar.gz",

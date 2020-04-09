@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""SALAMI Dataset Loader
-
-The SALAMI dataset contains Structural Annotations of a Large Amount of Music
+"""The SALAMI dataset contains Structural Annotations of a Large Amount of Music
 Information: the public portion contains over 2200 annotations of over 1300
 unique tracks.
 
@@ -11,6 +9,7 @@ https://github.com/DDMAL/salami-data-public/pull/15.
 
 For more details, please visit: https://github.com/DDMAL/salami-data-public
 """
+
 import csv
 import librosa
 import logging
@@ -22,7 +21,9 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = 'Salami'
+name = "SALAMI"
+DATASET_DIR = name.replace(" ", "-")
+
 ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
     filename='salami-data-public-hierarchy-corrections.zip',
     url='https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip',
