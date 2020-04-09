@@ -188,17 +188,17 @@ KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
 EventData = namedtuple('EventData', ['start_times', 'end_times', 'event'])
 
 
-def get_default_dataset_path(dir_name):
+def get_default_dataset_path(DATASET_DIR):
     """Get the default path for a dataset given its name
 
     Args:
-        dir_name (str or None)
+        DATASET_DIR (str)
             The name of the dataset folder, e.g. 'ORCHSET'
 
     Returns:
         save_path (str): Local path to the dataset
     """
-    return os.path.join(MIR_DATASETS_DIR, dataset_name)
+    return os.path.join(MIR_DATASETS_DIR, DATASET_DIR)
 
 
 def load_json_index(filename):
