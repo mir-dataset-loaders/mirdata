@@ -9,6 +9,7 @@ import pytest
 
 import mirdata
 import mirdata.track as track
+from tests.test_utils import DEFAULT_DATA_HOME
 
 DATASETS = [importlib.import_module("mirdata.{}".format(d)) for d in mirdata.__all__]
 CUSTOM_TEST_TRACKS = {
