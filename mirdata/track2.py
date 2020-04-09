@@ -74,21 +74,6 @@ class Track2(object):
         else:
             raise AttributeError("Track object has no attribute 'audio'")
 
-    @property
-    def duration(self):
-        """(float): estimated duration of the track in seconds"""
-        if "duration" in self.track_metadata:
-            return self.track_metadata["duration"]
-        if "audio" in self.track_index and os.path.exists(self.track_index["audio"][0]):
-            return librosa.get_duration(filename=self.track_index["audio"][0])
-        elif "audio_mono" in self.track_index and os.path.exists(
-            self.track_index["audio_mono"][0]
-        ):
-            return librosa.get_duration(filename=self.track_index["audio_mono"][0])
-        elif hasattr(self, "beats"):
-            return self.beats.beat_times[-1]
-        return 0.0
-
     def from_jams(self):
         # Duration
         self.duration = self.jams.file_metadata.duration
@@ -122,7 +107,7 @@ class Track2(object):
     def parse_track_id(self):
         return {}
 
-    def to_jams(self):
+    def to_jams(duration, self):
         """Jams: the track's data in jams format"""
         # If the JAMS object is natively provided, simply return it
         if hasattr(self, "jams"):
@@ -132,7 +117,7 @@ class Track2(object):
         jam = jams.JAMS()
 
         # Encode duration in seconds
-        jam.file_metadata.duration = self.duration
+        jam.file_metadata.duration = duration
 
         # Encode title and artist if available
         if hasattr(self, "title"):
