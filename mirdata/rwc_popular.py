@@ -29,7 +29,7 @@ from mirdata.rwc_classical import (
     _duration_to_sec,
 )
 
-name = "RWC Jazz"
+name = "RWC Popular"
 DATASET_DIR = name.replace(" ", "-")
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
