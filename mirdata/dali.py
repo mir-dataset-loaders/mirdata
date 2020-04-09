@@ -179,7 +179,13 @@ class Track(track.Track):
         y, sr = self.audio
         metadata['duration'] = librosa.get_duration(y=y, sr=sr)
         return jams_utils.jams_converter(
-            lyrics_data=[(self.words, None)], metadata=metadata
+            lyrics_data=[
+                (self.words, 'word-aligned lyrics'),
+                (self.lines,  'line-aligned lyrics'),
+                (self.paragraphs, 'paragraph-aligned lyrics'),
+            ],
+            note_data=[(self.notes, 'annotated vocal notes')],
+            metadata=metadata
         )
 
 
@@ -210,10 +216,7 @@ def download(data_home=None, force_overwrite=False):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    download_utils.downloader(data_home, file_downloads=[METADATA_REMOTE])
-
-    print(
-        """
+    info_message = """
         To download this dataset, visit:
         https://zenodo.org/record/2577915 and request access.
 
@@ -224,11 +227,15 @@ def download(data_home=None, force_overwrite=False):
         Use the function dali_code.get_audio you can find at:
         https://github.com/gabolsgabs/DALI for getting the audio and place them at:
         {audio_path}
-
     """.format(
-            save_path=os.path.join(data_home, 'annotations'),
-            audio_path=os.path.join(data_home, 'audio'),
-        )
+        save_path=os.path.join(data_home, 'annotations'),
+        audio_path=os.path.join(data_home, 'audio'),
+    )
+    download_utils.downloader(
+        data_home,
+        file_downloads=[METADATA_REMOTE],
+        info_message=info_message,
+        force_overwrite=force_overwrite,
     )
 
 
