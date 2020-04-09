@@ -78,7 +78,7 @@ def test_track():
         dataset_name = dataset.name
 
         # Name of directory, e.g. "RWC-Classical"
-        dir_name = DATASET_DIR
+        dir_name = dataset.DATASET_DIR
 
         print(module_name)
 
