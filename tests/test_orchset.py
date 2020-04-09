@@ -8,16 +8,16 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = 'Beethoven-S3-I-ex1'
-    data_home = 'tests/resources/mir_datasets/Orchset'
+    data_home = 'tests/resources/mir_datasets/ORCHSET'
     track = orchset.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
         'track_id': 'Beethoven-S3-I-ex1',
-        'audio_path_mono': 'tests/resources/mir_datasets/Orchset/'
+        'audio_path_mono': 'tests/resources/mir_datasets/ORCHSET/'
         + 'audio/mono/Beethoven-S3-I-ex1.wav',
-        'audio_path_stereo': 'tests/resources/mir_datasets/Orchset/'
+        'audio_path_stereo': 'tests/resources/mir_datasets/ORCHSET/'
         + 'audio/stereo/Beethoven-S3-I-ex1.wav',
-        'melody_path': 'tests/resources/mir_datasets/Orchset/'
+        'melody_path': 'tests/resources/mir_datasets/ORCHSET/'
         + 'GT/Beethoven-S3-I-ex1.mel',
         'composer': 'Beethoven',
         'work': 'S3-I',
@@ -47,7 +47,7 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = 'tests/resources/mir_datasets/Orchset'
+    data_home = 'tests/resources/mir_datasets/ORCHSET'
     track = orchset.Track('Beethoven-S3-I-ex1', data_home=data_home)
     jam = track.to_jams()
 
@@ -66,7 +66,7 @@ def test_to_jams():
 
 def test_load_melody():
     # load a file which exists
-    melody_path = 'tests/resources/mir_datasets/Orchset/GT/Beethoven-S3-I-ex1.mel'
+    melody_path = 'tests/resources/mir_datasets/ORCHSET/GT/Beethoven-S3-I-ex1.mel'
     melody_data = orchset.load_melody(melody_path)
 
     # check types
@@ -86,7 +86,7 @@ def test_load_melody():
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/Orchset'
+    data_home = 'tests/resources/mir_datasets/ORCHSET'
     metadata = orchset._load_metadata(data_home)
     assert metadata['data_home'] == data_home
     assert metadata['Beethoven-S3-I-ex1'] == {

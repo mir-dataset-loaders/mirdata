@@ -8,19 +8,19 @@ from tests.test_utils import run_track_tests
 def test_track():
 
     default_trackid = '2'
-    data_home = 'tests/resources/mir_datasets/Salami'
+    data_home = 'tests/resources/mir_datasets/SALAMI'
     track = salami.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
         'track_id': '2',
-        'audio_path': 'tests/resources/mir_datasets/Salami/' + 'audio/2.mp3',
-        'sections_annotator1_uppercase_path': 'tests/resources/mir_datasets/Salami/'
+        'audio_path': 'tests/resources/mir_datasets/SALAMI/' + 'audio/2.mp3',
+        'sections_annotator1_uppercase_path': 'tests/resources/mir_datasets/SALAMI/'
         + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt',
-        'sections_annotator1_lowercase_path': 'tests/resources/mir_datasets/Salami/'
+        'sections_annotator1_lowercase_path': 'tests/resources/mir_datasets/SALAMI/'
         + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt',
-        'sections_annotator2_uppercase_path': 'tests/resources/mir_datasets/Salami/'
+        'sections_annotator2_uppercase_path': 'tests/resources/mir_datasets/SALAMI/'
         + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt',
-        'sections_annotator2_lowercase_path': 'tests/resources/mir_datasets/Salami/'
+        'sections_annotator2_lowercase_path': 'tests/resources/mir_datasets/SALAMI/'
         + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt',
         'source': 'Codaich',
         'annotator_1_id': '5',
@@ -111,7 +111,7 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = 'tests/resources/mir_datasets/Salami'
+    data_home = 'tests/resources/mir_datasets'
     track = salami.Track('2', data_home=data_home)
     jam = track.to_jams()
 
@@ -172,7 +172,7 @@ def test_to_jams():
 def test_load_sections():
     # load a file which exists
     sections_path = (
-        'tests/resources/mir_datasets/Salami/'
+        'tests/resources/mir_datasets/SALAMI/'
         + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt'
     )
     section_data = salami.load_sections(sections_path)
@@ -205,7 +205,7 @@ def test_load_sections():
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/Salami'
+    data_home = 'tests/resources/mir_datasets/SALAMI'
     metadata = salami._load_metadata(data_home)
     assert metadata['data_home'] == data_home
     assert metadata['2'] == {
