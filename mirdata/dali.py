@@ -172,16 +172,14 @@ class Track(track.Track):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
-    def to_jams(duration, self):
+    def to_jams(self, duration):
         """Jams: the track's data in jams format"""
+        # Load metadata
+        metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
+        metadata['duration'] = duration
         return jams_utils.jams_converter(
-            lyrics_data=[(self.lyrics, None)],
-            metadata={
-                'artist': self.artist,
-                'release': self.album,
-                'track_id': self.track_id,
-                'duration': duration,
-            },
+            lyrics_data=[(self.words, None)],
+            metadata=metadata,
         )
 
 
