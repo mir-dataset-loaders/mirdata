@@ -181,11 +181,11 @@ class Track(track.Track):
         return jams_utils.jams_converter(
             lyrics_data=[
                 (self.words, 'word-aligned lyrics'),
-                (self.lines,  'line-aligned lyrics'),
+                (self.lines, 'line-aligned lyrics'),
                 (self.paragraphs, 'paragraph-aligned lyrics'),
             ],
             note_data=[(self.notes, 'annotated vocal notes')],
-            metadata=metadata
+            metadata=metadata,
         )
 
 
