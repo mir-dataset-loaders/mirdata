@@ -36,7 +36,8 @@ their results in terms of average performance across folds.
 We encourage TinySOL users to subscribe to the Ircam Forum so that they can
 have access to larger versions of SOL.
 
-For more details, please visit: https://www.orch-idea.org/"""
+For more details, please visit: https://www.orch-idea.org/
+"""
 
 import csv
 import librosa

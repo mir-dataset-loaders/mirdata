@@ -6,7 +6,6 @@ we provide melody f0 annotations as well as instrument activations for
 evaluating automatic instrument recognition.
 
 For more details, please visit: https://medleydb.weebly.com
-
 """
 
 import csv
