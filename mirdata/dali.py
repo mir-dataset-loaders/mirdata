@@ -43,8 +43,8 @@ DATASET_DIR = 'DALI'
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
     filename='dali_metadata.json',
-    url='https://github.com/gabolsgabs/DALI/blob/master/code/DALI/files/dali_v1_metadata.json',
-    checksum='2501a50825564583b6a1b4c0386887f1',
+    url='https://raw.githubusercontent.com/gabolsgabs/DALI/master/code/DALI/files/dali_v1_metadata.json',
+    checksum='40af5059e7aa97f81b2654758094d24b',
     destination_dir='.',
 )
 
@@ -196,7 +196,7 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None):
+def download(data_home=None, force_overwrite=False):
     """DALI is not available for downloading directly.
     This function prints a helper message to download DALI
     through zenodo.org.
