@@ -33,8 +33,8 @@ click the link provided in the "Module" column.
 | dali_            | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                  |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| groove_midi_     | Groove MIDI         | - audio: ✅         | - :ref:`beats`            | 1150   |
-|                  | Dataset             | - midi: ✅          | - :ref:`tempo`            |        |
+| groove_midi_     | | Groove MIDI       | - audio: ✅         | - :ref:`beats`            | 1150   |
+|                  | | Dataset           | - midi: ✅          | - :ref:`tempo`            |        |
 |                  |                     |                     | - :ref:`drums`            |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
@@ -45,6 +45,7 @@ click the link provided in the "Module" column.
 |                  |                     |                     | - :ref:`key`              |        |
 |                  |                     |                     | - :ref:`notes`            |        |
 |                  |                     |                     | - :ref:`f0`               |        |
+|                  |                     |                     | - :ref:`tempo`            |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | ikala_           | iKala               | - audio: ❌         | - Vocal :ref:`F0`         | 252    |
 |                  |                     | - annotations: ❌   | - :ref:`lyrics`           |        |
@@ -71,6 +72,7 @@ click the link provided in the "Module" column.
 |                  |                     | - annotations: ✅   | - :ref:`sections`         |        |
 |                  |                     |                     | - :ref:`vocal-activity`   |        |
 |                  |                     |                     | - :ref:`chords`           |        |
+|                  |                     |                     | - :ref:`tempo`            |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | salami_          | Salami              | - audio: ❌         | - :ref:`sections`         | 1359   |
 |                  |                     | - annotations: ✅   |                           |        |
@@ -94,7 +96,7 @@ the dataset specific documentation to ensure the data is as you expect.
 
 Beats
 ^^^^^
-Musical beats, typically encoded as sequence of time stamps and corresponding beat positions.
+Musical beats, typically encoded as sequence of timestamps and corresponding beat positions.
 This implicitly includes *downbeat* information (the beginning of a musical measure).
 
 .. _chords:
@@ -118,7 +120,7 @@ one another, as multiple drums can be played at the same time.
 F0
 ^^
 Musical pitch contours, typically encoded as time series indidcating the musical pitch over time.
-The time series typically have evenly spaced time stamps, each with a correspoinding pitch value
+The time series typically have evenly spaced timestamps, each with a correspoinding pitch value
 which may be encoded in a number of formats/granularities, including midi note numbers and Hertz.
 
 .. _genre:
@@ -166,6 +168,14 @@ Musical note events, typically encoded as sequences of start time, end time, lab
 indicates a musical pitch, which may be in a number of formats/granularities, including midi note numbers,
 Hertz, or pitch class.
 
+.. _sections:
+
+Sections
+^^^^^^^^
+Musical sections, which may be "flat" or "hierarchical", typically encoded by a sequence of
+timestamps indicating musical section boundary times. Section annotations sometimes also
+include labels for sections, which may indicate repetitions and/or the section type (e.g. Chorus, Verse).
+
 .. _technique:
 
 Technique
@@ -173,13 +183,14 @@ Technique
 The playing technique used by a particular instrument, for example "Pizzicato". This label may be global
 for a given recording or encoded as a sequence of labeled events.
 
-.. _sections:
+.. _tempo:
 
-Sections
-^^^^^^^^
-Musical sections, which may be "flat" or "heirarchical", typically encoded by a sequence of
-time stamps indicating musical section boundary times. Section annotations sometimes also
-include labels for sections, which may indicate repetitions and/or the section type (e.g. Chorus, Verse).
+Tempo
+^^^^^
+The tempo of a song, typical in units of beats-per-minute (bpm). This is often indicated globally per track,
+but in practice tracks may have tempos that change, and some datasets encode tempo as time-varying quantity.
+Additionally, there may be multiple reasonable tempos at any given time (for example, often 2x or 0.5x a
+tempo value will also be "correct"). For this reason, some datasets provide two or more different tempo values.
 
 .. _vocal-activity:
 
@@ -192,6 +203,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
+.. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre
 .. _guitarset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.guitarset
 .. _ikala: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.ikala
@@ -204,7 +216,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _rwc_pop: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_pop
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
-.. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
+
 
 
 
