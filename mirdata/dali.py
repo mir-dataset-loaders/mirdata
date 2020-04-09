@@ -41,6 +41,13 @@ import mirdata.utils as utils
 
 DATASET_DIR = 'DALI'
 
+METADATA_REMOTE = download_utils.RemoteFileMetadata(
+    filename='dali_metadata.json',
+    url='https://github.com/gabolsgabs/DALI/blob/master/code/DALI/files/dali_v1_metadata.json',
+    checksum='2501a50825564583b6a1b4c0386887f1',
+    destination_dir='.',
+)
+
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, os.path.join('dali_metadata.json'))
@@ -196,6 +203,8 @@ def download(data_home=None):
 
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    download_utils.downloader(data_home, file_downloads=[METADATA_REMOTE])
 
     print(
         """
