@@ -82,14 +82,21 @@ def test_track():
 
         print(module_name)
 
-        # check that name is pure ASCII
-        assert len(dataset_name) == len(dataset_name.encode())
+        # check that name :
+        # * only contains alphanumeric characters, hyphens, underscores, or spaces
+        # * begins with a letter (this is important for Python module names)
+        # * is at least three characters long
+        # * ends with an alphanumeric character
+        bool(re.match("^[a-zA-Z][a-zA-Z0-9_\\- ]+[a-zA-Z0-9]$", dataset_name))
 
         # check that directory name has no space in it
         assert " " not in dir_name
 
         # check that one can infer module name from directory name
         assert module_name == lower(dir_name.replace("-", "_"))
+
+        # check that module name does not have adjacent underscores
+        assert "__" not in module_name
 
         if module_name in CUSTOM_TEST_TRACKS:
             trackid = CUSTOM_TEST_TRACKS[module_name]
