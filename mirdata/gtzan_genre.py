@@ -17,7 +17,6 @@ from mirdata import track
 from mirdata import utils
 
 
-
 name = "GTZAN Genre"
 DATASET_DIR = name.replace(" ", "-")
 
