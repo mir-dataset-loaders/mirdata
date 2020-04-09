@@ -9,11 +9,11 @@ import pytest
 
 import mirdata
 import mirdata.track as track
-from tests.test_utils import DEFAULT_DATA_HOME
 
 DATASETS = [importlib.import_module("mirdata.{}".format(d)) for d in mirdata.__all__]
 CUSTOM_TEST_TRACKS = {
     'beatles': '0111',
+    'dali': '4b196e6c99574dd49ad00d56e132712b',
     'guitarset': '03_BN3-119-G_solo',
     'medley_solos_db': 'd07b1fc0-567d-52c2-fef4-239f31c9d40e',
     'medleydb_melody': 'MusicDelta_Beethoven',
@@ -23,6 +23,7 @@ CUSTOM_TEST_TRACKS = {
     'salami': '2',
     'tinysol': 'Fl-ord-C4-mf-N-T14d',
 }
+TOJAMS_NEEDS_DURATION = ["dali"]
 
 
 def test_cite():
@@ -67,7 +68,6 @@ def test_load_and_trackids():
 
 
 def test_track():
-    jams_temporary_exceptions = ['dali']
     data_home_dir = 'tests/resources/mir_datasets'
 
     for dataset in DATASETS:
@@ -92,10 +92,13 @@ def test_track():
 
         assert hasattr(track_test, 'to_jams')
 
-        if dataset_name not in jams_temporary_exceptions:
-            # Validate json schema
+        # Validate JSON schema
+        if dataset_name in TOJAMS_NEEDS_DURATION:
+            # we put a placeholder positive value as duration
+            jam = track_test.to_jams(duration=1.0)
+        else:
             jam = track_test.to_jams()
-            assert jam.validate()
+        assert jam.validate()
 
         # will fail if something goes wrong with __repr__
         print(track_test)
