@@ -2,7 +2,7 @@
 """track object utility functions
 """
 
-
+import pretty_midi
 import types
 
 MAX_STR_LEN = 100
@@ -38,6 +38,12 @@ class Track(object):
 
         repr_str += ")"
         return repr_str
+
+    @property
+    def midi(self):
+        """(obj): prettyMIDI obj"""
+        midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
+        return pretty_midi.PrettyMIDI(midi_path)
 
     def to_jams(self):
         raise NotImplementedError

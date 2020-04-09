@@ -286,8 +286,6 @@ class Track(track.Track):
         self.midi_filename = self._track_metadata["midi_filename"]
         self.audio_filename = self._track_metadata["audio_filename"]
 
-        self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
-
         self.audio_path = utils.none_path_join(
             [self._data_home, self._track_paths["audio"][0]]
         )
@@ -322,11 +320,6 @@ class Track(track.Track):
             np.array(start_times), np.array(end_times), np.array(events)
         )
 
-    @property
-    def midi(self):
-        """(obj): prettyMIDI obj"""
-        return load_midi(self.midi_path)
-
     def to_jams(self):
         # Initialize top-level JAMS container
         return jams_utils.jams_converter(
@@ -349,19 +342,6 @@ def load_audio(audio_path):
 
     """
     return librosa.load(audio_path, sr=22050, mono=True)
-
-
-def load_midi(midi_path):
-    """Load a Groove MIDI midi file.
-
-    Args:
-        midi_path (str): path to midi file
-
-    Returns:
-        midi_data (obj): pretty_midi object
-
-    """
-    return pretty_midi.PrettyMIDI(midi_path)
 
 
 def download(data_home=None):
