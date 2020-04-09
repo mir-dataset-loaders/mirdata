@@ -96,7 +96,7 @@ the dataset specific documentation to ensure the data is as you expect.
 
 Beats
 ^^^^^
-Musical beats, typically encoded as sequence of time stamps and corresponding beat positions.
+Musical beats, typically encoded as sequence of timestamps and corresponding beat positions.
 This implicitly includes *downbeat* information (the beginning of a musical measure).
 
 .. _chords:
@@ -120,7 +120,7 @@ one another, as multiple drums can be played at the same time.
 F0
 ^^
 Musical pitch contours, typically encoded as time series indidcating the musical pitch over time.
-The time series typically have evenly spaced time stamps, each with a correspoinding pitch value
+The time series typically have evenly spaced timestamps, each with a correspoinding pitch value
 which may be encoded in a number of formats/granularities, including midi note numbers and Hertz.
 
 .. _genre:
@@ -172,8 +172,8 @@ Hertz, or pitch class.
 
 Sections
 ^^^^^^^^
-Musical sections, which may be "flat" or "heirarchical", typically encoded by a sequence of
-time stamps indicating musical section boundary times. Section annotations sometimes also
+Musical sections, which may be "flat" or "hierarchical", typically encoded by a sequence of
+timestamps indicating musical section boundary times. Section annotations sometimes also
 include labels for sections, which may indicate repetitions and/or the section type (e.g. Chorus, Verse).
 
 .. _technique:
