@@ -172,9 +172,18 @@ class Track(track.Track):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """(Not Implemented) Jams: the track's data in jams format"""
-        raise NotImplementedError
+    def to_jams(duration, self):
+        """Jams: the track's data in jams format"""
+        return jams_utils.jams_converter(
+            lyrics_data=[(self.lyrics, None)],
+            metadata={
+                'artist': self.artist,
+                'release': self.album,
+                'track_id': self.track_id,
+                'duration': duration,
+            },
+        )
+
 
 
 def load_audio(audio_path):
