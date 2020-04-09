@@ -71,11 +71,25 @@ def test_track():
     data_home_dir = 'tests/resources/mir_datasets'
 
     for dataset in DATASETS:
-        dataset_name = dataset.__name__.split('.')[1]
-        print(dataset_name)
+        # Name of module. e.g. "rwc_classical"
+        module_name = dataset.__name__.split('.')[1]
 
-        if dataset_name in CUSTOM_TEST_TRACKS:
-            trackid = CUSTOM_TEST_TRACKS[dataset_name]
+        # Name of dataset, e.g. "RWC Classical"
+        dataset_name = dataset.name
+
+        # Name of directory, e.g. "RWC-Classical"
+        dir_name = DATASET_DIR
+
+        print(module_name)
+
+        # check that directory name has no space in it
+        assert " " not in dir_name
+
+        # check that one can infer module name from directory name
+        assert module_name == lower(dir_name.replace("-", "_"))
+
+        if module_name in CUSTOM_TEST_TRACKS:
+            trackid = CUSTOM_TEST_TRACKS[module_name]
         else:
             trackid = dataset.track_ids()[0]
 
@@ -92,7 +106,7 @@ def test_track():
 
         assert hasattr(track_test, 'to_jams')
 
-        if dataset_name not in jams_temporary_exceptions:
+        if module_name not in jams_temporary_exceptions:
             # Validate json schema
             jam = track_test.to_jams()
             assert jam.validate()
