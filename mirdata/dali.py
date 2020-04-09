@@ -178,10 +178,8 @@ class Track(track.Track):
         metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
         metadata['duration'] = duration
         return jams_utils.jams_converter(
-            lyrics_data=[(self.words, None)],
-            metadata=metadata,
+            lyrics_data=[(self.words, None)], metadata=metadata
         )
-
 
 
 def load_audio(audio_path):
