@@ -82,6 +82,9 @@ def test_track():
 
         print(module_name)
 
+        # check that name is pure ASCII
+        assert len(dataset_name) == len(dataset_name.encode())
+
         # check that directory name has no space in it
         assert " " not in dir_name
 
