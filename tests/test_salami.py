@@ -111,7 +111,7 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = 'tests/resources/mir_datasets'
+    data_home = 'tests/resources/mir_datasets/SALAMI'
     track = salami.Track('2', data_home=data_home)
     jam = track.to_jams()
 
