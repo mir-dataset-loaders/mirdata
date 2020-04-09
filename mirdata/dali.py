@@ -211,8 +211,8 @@ def download(data_home=None):
         {audio_path}
 
     """.format(
-            save_path=os.path.join(data_home, DATASET_DIR, 'annotatios'),
-            audio_path=os.path.join(data_home, DATASET_DIR, 'audio'),
+            save_path=os.path.join(data_home, 'annotations'),
+            audio_path=os.path.join(data_home, 'audio'),
         )
     )
 
