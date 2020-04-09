@@ -93,11 +93,7 @@ def test_track():
         assert hasattr(track_test, 'to_jams')
 
         # Validate JSON schema
-        if dataset_name in TOJAMS_NEEDS_DURATION:
-            # we put a placeholder positive value as duration
-            jam = track_test.to_jams()
-        else:
-            jam = track_test.to_jams()
+        jam = track_test.to_jams()
         assert jam.validate()
 
         # will fail if something goes wrong with __repr__
