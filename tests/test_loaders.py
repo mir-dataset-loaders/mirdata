@@ -94,7 +94,7 @@ def test_track():
         assert " " not in dir_name
 
         # check that one can infer module name from directory name
-        assert module_name == lower(dir_name.replace("-", "_"))
+        assert module_name == dir_name.replace("-", "_").lower()
 
         # check that module name does not have adjacent underscores
         assert "__" not in module_name
