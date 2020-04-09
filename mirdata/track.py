@@ -2,6 +2,7 @@
 """track object utility functions
 """
 
+import os
 import pretty_midi
 import types
 
