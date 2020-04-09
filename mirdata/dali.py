@@ -29,7 +29,7 @@ try:
     import DALI
 except ImportError as E:
     logging.error(
-        'In order to use dali you must have dali-dataset installed. '
+        'In order to use DALI, you must have dali-dataset installed. '
         'Please reinstall mirdata using `pip install \'mirdata[dali]\''
     )
     raise
@@ -69,7 +69,7 @@ class Track(track.Track):
         annotation_path (str): path to the track's annotation file
         artist (str): the track's artist
         audio_path (str): path to the track's audio file
-        audio_url (str): youtube ID
+        audio_url (str): YouTube ID
         dataset_version (int): dataset annotation version
         ground_truth (bool): True if the annotation is verified
         language (str): sung language
@@ -78,7 +78,7 @@ class Track(track.Track):
         scores_ncc (float): TODO
         title (str): the track's title
         track_id (str): the unique track id
-        url_working (bool): True if the youtube url was valid
+        url_working (bool): True if the YouTube url was valid
 
     """
 

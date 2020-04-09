@@ -358,7 +358,7 @@ def multi_sections_to_jams(multi_sections):
     multi_segment: list
         A list of tuples in the format ([(segments0, level0), (segments1, level1)], annotator),
         where segments are SectionData mirdata format, level indicates the hierarchy (e.g. 0, 1)
-        and annotator describes the annotator. This format is customize for Salami dataset annotations.
+        and annotator describes the annotator. This format is customize for SALAMI dataset annotations.
 
     Returns
     -------

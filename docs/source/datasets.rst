@@ -17,7 +17,7 @@ click the link provided in the "Module" column.
 
 * 🔑 : Available upon request
 
-* 📺 : Youtube Links only
+* 📺 : YouTube Links only
 
 * ❌ : Not available
 
@@ -26,18 +26,18 @@ click the link provided in the "Module" column.
 +------------------+---------------------+---------------------+---------------------------+--------+
 | Module           | Name                | Downloadable?       | Annotation Types          | Tracks |
 +==================+=====================+=====================+===========================+========+
-| beatles_         | | The Beatles       | - audio: ❌         | - :ref:`beats`            | 180    |
-|                  | | Dataset           | - annotations: ✅   | - :ref:`sections`         |        |
+| beatles_         | Beatles             | - audio: ❌         | - :ref:`beats`            | 180    |
+|                  |                     | - annotations: ✅   | - :ref:`sections`         |        |
 |                  |                     |                     | - :ref:`key`              |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | dali_            | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                  |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | groove_midi_     | Groove MIDI         | - audio: ✅         | - :ref:`beats`            | 1150   |
-|                  | Dataset             | - midi: ✅          | - :ref:`tempo`            |        |
+|                  |                     | - midi: ✅          | - :ref:`tempo`            |        |
 |                  |                     |                     | - :ref:`drums`            |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
+| gtzan_genre_     | GTZAN Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | guitarset_       | GuitarSet           | - audio: ✅         | - :ref:`beats`            | 360    |
@@ -53,12 +53,12 @@ click the link provided in the "Module" column.
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | medleydb_melody_ | | MedleyDB          | - audio: 🔑         | - :ref:`melody` :ref:`f0` | 108    |
-|                  | | Melody Subset     | - annotations: ✅   |                           |        |
+|                  | | Melody            | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| medleydb_pitch_  | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
-|                  | | Tracking Subset   | - annotations: ✅   | - :ref:`instruments`      |        |
+| medleydb_pitch_  | | MedleyDB          | - audio: 🔑         | - :ref:`f0`               | 103    |
+|                  | | Pitch             | - annotations: ✅   | - :ref:`instruments`      |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| orchset_         | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
+| orchset_         | ORCHSET             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | rwc_classical_   | RWC Classical       | - audio: ❌         | - :ref:`beats`            | 50     |
@@ -67,12 +67,12 @@ click the link provided in the "Module" column.
 | rwc_jazz_        | RWC Jazz            | - audio: ❌         | - :ref:`beats`            | 50     |
 |                  |                     | - annotations: ✅   | - :ref:`sections`         |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| rwc_popular_     | RWC Pop             | - audio: ❌         | - :ref:`beats`            | 100    |
+| rwc_popular_     | RWC Popular         | - audio: ❌         | - :ref:`beats`            | 100    |
 |                  |                     | - annotations: ✅   | - :ref:`sections`         |        |
 |                  |                     |                     | - :ref:`vocal-activity`   |        |
 |                  |                     |                     | - :ref:`chords`           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| salami_          | Salami              | - audio: ❌         | - :ref:`sections`         | 1359   |
+| salami_          | SALAMI              | - audio: ❌         | - :ref:`sections`         | 1359   |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | tinysol_         | TinySOL             | - audio: ✅         | - :ref:`instruments`      | 2913   |
@@ -205,6 +205,3 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
 .. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
-
-
-

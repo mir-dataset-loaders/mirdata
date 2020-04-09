@@ -123,13 +123,10 @@ You can also remove any comments beginning with `# --`
 ```python
 
 # -*- coding: utf-8 -*-
-"""Example Dataset Loader
-
-[Description of the dataset. Write about the number of files, origin of the
+"""[Description of the dataset. Write about the number of files, origin of the
 music, genre, relevant papers, openness/license, creator, and annotation type.]
 
 For more details, please visit: [website]
-
 """
 
 
@@ -380,5 +377,5 @@ Bibtex format citations/s here
   a. Include all audio and annotation files for one track of the dataset
   b. For each audio/annotation file, reduce the audio length to a few seconds and remove all but a few of the annotations.
   c. If the dataset has a metadata file, reduce the length to a few lines to make it trival to test.
-2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the ikala dataset tests (`tests/test_ikala.py`) for a reference.
+2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the iKala dataset tests (`tests/test_ikala.py`) for a reference.
 *Note that we have written automated tests for all loader's `cite`, `download`, `validate`, `load`, `track_ids` functions, as well as some basic edge cases of the `Track` object, so you don't need to write tests for these!*

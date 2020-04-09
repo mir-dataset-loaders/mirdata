@@ -82,7 +82,7 @@ class Track(track.Track):
 
 
 def load_audio(audio_path, sample_rate=22050):
-    """Load a GTZAN audio file.
+    """Load a GTZAN Genre audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -98,7 +98,7 @@ def load_audio(audio_path, sample_rate=22050):
 
 
 def load(data_home=None):
-    """Load GTZAN-Genre
+    """Load GTZAN Genre
 
     Args:
         data_home (str): Local path where GTZAN-Genre is stored.
@@ -148,7 +148,7 @@ def track_ids():
 
 
 def download(data_home=None):
-    """Download the GTZAN-Genre dataset.
+    """Download the GTZAN Genre dataset.
 
     Args:
         data_home (str): Local path where the dataset is stored.
@@ -166,11 +166,11 @@ def cite():
     cite_data = """
 =========== MLA ===========
 Tzanetakis, George et al.
-"GTZAN genre collection".
+"GTZAN Genre collection".
 Music Analysis, Retrieval and Synthesis for Audio Signals. (2002).
 ========== Bibtex ==========
 @article{tzanetakis2002gtzan,
-  title={GTZAN genre collection},
+  title={GTZAN Genre collection},
   author={Tzanetakis, George and Cook, P},
   journal={Music Analysis, Retrieval and Synthesis for Audio Signals},
   year={2002}

@@ -16,14 +16,14 @@ First of all, you can install mirdata using `pip`.
 With `mirdata`, the first thing you would do is to download the dataset.
 Depending on the availability of the audio files, `mirdata` may only show you
 an instruction about how to download the dataset.
-Fortunately, we can download Orchset dataset directly.
+Fortunately, we can download the ORCHSET dataset directly.
 
 
 .. code-block:: python
     :linenos:
 
     import mirdata.orchset
-    # Download the Orchset Dataset
+    # Download the ORCHSET Dataset
     mirdata.orchset.download()
     # Orchset_dataset_0.zip?download=1: 1.00B [03:05, 185s/B]
 
@@ -33,7 +33,7 @@ Once downloading is done, you can find the the dataset folder.
 .. code-block:: bash
     :linenos:
 
-    $ ls ~/mir_datasets/Orchset/
+    $ ls ~/mir_datasets/ORCHSET/
     GT
     Orchset - Predominant Melodic Instruments.csv
     README.txt
@@ -52,7 +52,7 @@ The ID's and annotation data can be loaded as below.
     # todo: add __str__() method and print(orchset_data)
 
 
-If we wanted to use Orchset to evaluate the performance of a melody extraction algorithm
+If we wanted to use ORCHSET to evaluate the performance of a melody extraction algorithm
 (in our case, `very_bad_melody_extractor`), and then split the scores based on the
 metadata, we could do the following:
 
@@ -129,7 +129,7 @@ Using mirdata with local vs. remote data
 
 When using mirdata on the same machine as where your datasets live, we do the loading for you.
 
-For example, to load the melody annotations from Orchset into memory, we can simply call:
+For example, to load the melody annotations from ORCHSET into memory, we can simply call:
 
 .. code-block:: python
     :linenos:

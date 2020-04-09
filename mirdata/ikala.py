@@ -41,7 +41,7 @@ def _load_metadata(data_home):
     if not os.path.exists(id_map_path):
         logging.info(
             'Metadata file {} not found.'.format(id_map_path)
-            + 'You can download the metadata file for ikala by running ikala.download'
+            + 'You can download the metadata file for iKala by running ikala.download'
         )
         return None
 

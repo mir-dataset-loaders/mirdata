@@ -19,10 +19,10 @@ This library provides tools for working with common MIR datasets, including tool
 
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [DALI](https://github.com/gabolsgabs/DALI)
-* [Groove MIDI](https://magenta.tensorflow.org/datasets/groove) 
-* [GTZAN genre](http://marsyas.info/downloads/datasets.html)
+* [Groove MIDI](https://magenta.tensorflow.org/datasets/groove)
+* [GTZAN Genre](http://marsyas.info/downloads/datasets.html)
 * [GuitarSet](http://github.com/marl/guitarset/)
-* [Ikala](http://mac.citi.sinica.edu.tw/ikala/)
+* [iKala](http://mac.citi.sinica.edu.tw/ikala/)
 * [MedleyDB Melody](https://medleydb.weebly.com/)
 * [MedleyDB Pitch](https://medleydb.weebly.com/)
 * [Medley-solos-DB](https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db)
@@ -30,7 +30,7 @@ This library provides tools for working with common MIR datasets, including tool
 * [RWC Classical](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html)
 * [RWC Jazz](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html)
 * [RWC Popular](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html)
-* [Salami](https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections)
+* [SALAMI](https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections)
 * [TinySOL](https://www.orch-idea.org/)
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).

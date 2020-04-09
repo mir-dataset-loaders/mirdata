@@ -109,7 +109,7 @@ class Track(track.Track):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
+            raise ValueError('{} is not a valid track ID in SALAMI'.format(track_id))
 
         self.track_id = track_id
 
@@ -219,7 +219,7 @@ class Track(track.Track):
 
 
 def load_audio(audio_path):
-    """Load a Salami audio file.
+    """Load a SALAMI audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -247,13 +247,13 @@ def download(data_home=None, force_overwrite=False):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     info_message = """
-        Unfortunately the audio files of the Salami dataset are not available
-        for download. If you have the Salami dataset, place the contents into a
-        folder called Salami with the following structure:
-            > Salami/
+        Unfortunately the audio files of the SALAMI dataset are not available
+        for download. If you have the SALAMI dataset, place the contents into a
+        folder called SALAMI with the following structure:
+            > SALAMI/
                 > salami-data-public-hierarchy-corrections/
                 > audio/
-        and copy the Salami folder to {}
+        and copy the SALAMI folder to {}
     """.format(
         data_home
     )

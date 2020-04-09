@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
+"""The Groove MIDI Dataset is composed of 13.6 hours of aligned MIDI and
 synthesized audio of human-performed, tempo-aligned expressive drumming.
 The dataset contains 1,150 MIDI files and over 22,000 measures of drumming.
 
@@ -10,7 +10,7 @@ perform in multiple styles to a click track on a Roland TD-11 electronic drum ki
 They also recorded the aligned, high-quality synthesized audio from the TD-11 and
 include it in the release.
 
-The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
+The Groove MIDI Dataset has several attributes that distinguish it from
 existing ones:
 
 * The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000

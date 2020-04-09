@@ -29,9 +29,9 @@ def md5(file_path):
 
 def make_salami_index(data_path):
     annotations_dir = os.path.join(
-        data_path, 'Salami', 'salami-data-public-hierarchy-corrections', 'annotations'
+        data_path, 'SALAMI', 'salami-data-public-hierarchy-corrections', 'annotations'
     )
-    audio_dir = os.path.join(data_path, 'Salami', 'audio')
+    audio_dir = os.path.join(data_path, 'SALAMI', 'audio')
     annotations_files = os.listdir(annotations_dir)
     track_ids = sorted([os.path.basename(f).split('.')[0] for f in annotations_files])
 
@@ -92,9 +92,9 @@ def main(args):
 
 
 if __name__ == '__main__':
-    PARSER = argparse.ArgumentParser(description='Make Salami index file.')
+    PARSER = argparse.ArgumentParser(description='Make SALAMI index file.')
     PARSER.add_argument(
-        'salami_data_path', type=str, help='Path to Salami data folder.'
+        'salami_data_path', type=str, help='Path to SALAMI data folder.'
     )
 
     main(PARSER.parse_args())
