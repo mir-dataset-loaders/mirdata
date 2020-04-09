@@ -20,7 +20,7 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-name = "MedleyDB Mitch"
+name = "MedleyDB Melody"
 DATASET_DIR = name.replace(" ", "-")
 
 
