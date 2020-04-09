@@ -204,7 +204,7 @@ def _load_metadata(data_home):
                 'session': str(session),
                 'track_id': str(track_id),
                 'style': str(style),
-                'bpm': int(bpm),
+                'tempo': int(bpm),
                 'beat_type': str(beat_type),
                 'time_signature': str(time_signature),
                 'midi_filename': str(midi_filename),
@@ -234,7 +234,7 @@ class Track(track.Track):
         session (str): Type of session  (ex. 'session1', 'eval_session')
         track_id (str): track id of the track (ex. 'drummer1/eval_session/1')
         style (str): Style (genre, groove type) of the track (ex. 'funk/groove1')
-        bpm (int): Track bpm (ex. 138)
+        tempo (int): Track tempo in beats per minute (ex. 138)
         beat_type (str): Whether the track is a beat or a fill (ex. 'beat')
         time_signature (str): Time signature of the track (ex. '4-4', '6-8')
         midi_path (str): Path to the midi file
@@ -266,7 +266,7 @@ class Track(track.Track):
                 "drummer": None,
                 "session": None,
                 "style": None,
-                "bpm": None,
+                "tempo": None,
                 "beat_type": None,
                 "time_signature": None,
                 "midi_filename": None,
@@ -278,7 +278,7 @@ class Track(track.Track):
         self.drummer = self._track_metadata["drummer"]
         self.session = self._track_metadata["session"]
         self.style = self._track_metadata["style"]
-        self.bpm = self._track_metadata["bpm"]
+        self.tempo = self._track_metadata["tempo"]
         self.beat_type = self._track_metadata["beat_type"]
         self.time_signature = self._track_metadata["time_signature"]
         self.duration = self._track_metadata["duration"]
@@ -331,7 +331,7 @@ class Track(track.Track):
         # Initialize top-level JAMS container
         return jams_utils.jams_converter(
             beat_data=[(self.beats, 'midi beats')],
-            tempo_data=[(self.bpm, 'midi tempo')],
+            tempo_data=[(self.tempo, 'midi tempo')],
             event_data=[(self.drum_events, 'annotated drum patterns')],
             metadata=self._track_metadata,
         )
