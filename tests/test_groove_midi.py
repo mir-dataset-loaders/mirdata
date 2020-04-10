@@ -87,7 +87,9 @@ def test_download(httpserver):
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
-    httpserver.serve_content(open('tests/resources/download/groove-v1-0.0.zip', 'rb').read())
+    httpserver.serve_content(
+        open('tests/resources/download/groove-v1-0.0.zip', 'rb').read()
+    )
 
     groove_midi.AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
         filename='groove-v1-0.0.zip',
