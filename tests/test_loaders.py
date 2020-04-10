@@ -44,6 +44,14 @@ def test_download():
         assert params['data_home'].default is None
 
 
+def test_validate():
+    for dataset in DATASETS:
+        data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
+        dataset.validate(data_home=data_home)
+        dataset.validate(data_home=data_home, silence=True)
+        dataset.validate(data_home=None, silence=True)
+
+
 def test_load_and_trackids():
     for dataset in DATASETS:
         track_ids = dataset.track_ids()
@@ -103,7 +111,10 @@ def test_track():
 # module_name : {function_name: {parameter2: value, parameter3: value}}
 EXCEPTIONS = {
     'dali': {'load_annotations_granularity': {'granularity': 'notes'}},
-    'guitarset': {'load_pitch_contour': {'string_num': 1}},
+    'guitarset': {
+        'load_pitch_contour': {'string_num': 1},
+        'load_note_ann': {'string_num': 1}
+    },
 }
 
 

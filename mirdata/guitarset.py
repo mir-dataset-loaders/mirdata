@@ -214,7 +214,7 @@ class Track(track.Track):
         notes = {}
         # iterate over 6 strings
         for i in range(6):
-            notes[_GUITAR_STRINGS[i]] = _load_note_ann(self.jams_path, i)
+            notes[_GUITAR_STRINGS[i]] = load_note_ann(self.jams_path, i)
         return notes
 
     @property
@@ -410,7 +410,7 @@ def load_pitch_contour(jams_path, string_num):
     return utils.F0Data(times, frequencies, np.ones_like(times))
 
 
-def _load_note_ann(jams_path, string_num):
+def load_note_ann(jams_path, string_num):
     """
     Args:
         jams_path (str): Path of the jams annotation file
