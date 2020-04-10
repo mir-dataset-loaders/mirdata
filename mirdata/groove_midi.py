@@ -43,11 +43,13 @@ Attribution 4.0 International (CC BY 4.0) License.
 For more details, please visit: http://magenta.tensorflow.org/datasets/groove
 """
 import csv
+import glob
 import librosa
 import logging
 import numpy as np
 import os
 import pretty_midi
+import shutil
 
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -386,7 +388,7 @@ def download(data_home=None):
         shutil.move(fpath, data_home)
 
     if os.path.exists(groove_dir):
-        os.removedirs(groove_dir)
+        shutil.rmtree(groove_dir)
 
 
 def validate(data_home=None, silence=False):
