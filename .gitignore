@@ -1,3 +1,4 @@
+tests/resources/mir_datasets_full
 tests/data/output.wav
 *.DS_Store
 

@@ -33,7 +33,7 @@ If your dataset **is not fully downloadable** there are two extra steps you shou
 1. Contacting the mirdata organizers by opening an issue or PR so we can discuss how to proceed with the closed dataset.
 2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the dataset creator, or by verifying equivalence with several other copies of the dataset.
 
-To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag. 
+To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag.
 
 ### Dataset description:
 
@@ -382,3 +382,33 @@ Bibtex format citations/s here
   c. If the dataset has a metadata file, reduce the length to a few lines to make it trival to test.
 2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the ikala dataset tests (`tests/test_ikala.py`) for a reference.
 *Note that we have written automated tests for all loader's `cite`, `download`, `validate`, `load`, `track_ids` functions, as well as some basic edge cases of the `Track` object, so you don't need to write tests for these!*
+
+## Running your tests locally
+
+You can run all the tests locally by running:
+```
+pytest tests/ --local
+```
+The `--local` flag skips tests that are built for running on the remote testing environment.
+
+To run one specific test file:
+```
+pytest tests/test_ikala.py
+```
+
+Finally, there is one local test you should run, which we can't easily run in our testing environment.
+```
+pytest tests/test_full_dataset.py --local --dataset my_dataset
+```
+Where `my_dataset` is the name of the module of the dataset you added.
+
+This tests that your dataset downloads, validates, and loads properly for every track.
+This test takes a long time for some datasets :( but it's important.
+
+We've added one extra convenience flag for this test, for getting the tests running when the download is very slow:
+```
+pytest tests/test_full_dataset.py --local --dataset my_dataset --skip-download
+
+```
+which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually
+all pass without this flag.
