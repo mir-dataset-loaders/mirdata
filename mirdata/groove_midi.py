@@ -43,11 +43,13 @@ Attribution 4.0 International (CC BY 4.0) License.
 For more details, please visit: http://magenta.tensorflow.org/datasets/groove
 """
 import csv
+import glob
 import librosa
 import logging
 import numpy as np
 import os
 import pretty_midi
+import shutil
 
 import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
@@ -55,7 +57,7 @@ import mirdata.track as track
 import mirdata.utils as utils
 
 
-DATASET_DIR = 'Groove MIDI'
+DATASET_DIR = 'Groove-MIDI'
 
 AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
     filename='groove-v1-0.0.zip',
@@ -378,7 +380,15 @@ def download(data_home=None):
         data_home, zip_downloads=[AUDIO_MIDI_REMOTE], cleanup=True
     )
 
-    os.rename(os.path.join(data_home, 'groove'), os.path.join(data_home, 'Groove MIDI'))
+    # files get downloaded to a folder called groove - move everything up a level
+    groove_dir = os.path.join(data_home, 'groove')
+    groove_files = glob.glob(os.path.join(groove_dir, '*'))
+
+    for fpath in groove_files:
+        shutil.move(fpath, data_home)
+
+    if os.path.exists(groove_dir):
+        shutil.rmtree(groove_dir)
 
 
 def validate(data_home=None, silence=False):
