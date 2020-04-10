@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
+import pytest
+import shutil
 
-from mirdata import groove_midi, utils
+from mirdata import groove_midi, utils, download_utils
 from tests.test_utils import run_track_tests
 
 
@@ -78,3 +80,34 @@ def test_load_metadata():
     }
     metadata_none = groove_midi._load_metadata('asdf/asdf')
     assert metadata_none is None
+
+
+@pytest.fixture
+def AUDIO_MIDI_REMOTE(httpserver):
+    httpserver.serve_content(open('tests/resources/download/groove-v1-0.0.zip', 'rb').read())
+    return download_utils.RemoteFileMetadata(
+        filename='groove-v1-0.0.zip',
+        url=httpserver.url,
+        checksum=('97a9a888d2a65cc87bb26e74df08b011'),
+        destination_dir=None,
+    )
+
+
+def test_download(AUDIO_MIDI_REMOTE):
+    data_home = 'tests/resources/mir_datasets/Groove_MIDI_download'
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    groove_midi.AUDIO_MIDI_REMOTE = AUDIO_MIDI_REMOTE
+    groove_midi.download(data_home=data_home)
+
+    assert os.path.exists(data_home)
+    assert not os.path.exists(os.path.join(data_home, 'groove'))
+
+    assert os.path.exists(os.path.join(data_home, "info.csv"))
+    track = groove_midi.Track('drummer1/eval_session/1', data_home=data_home)
+    assert os.path.exists(track.midi_path)
+    assert os.path.exists(track.audio_path)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
