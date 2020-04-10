@@ -151,6 +151,9 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=22050, mono=True)
 
 

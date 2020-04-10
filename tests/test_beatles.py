@@ -115,9 +115,7 @@ def test_load_beats():
     )
     assert np.array_equal(beat_data.beat_positions, np.array([2, 3, 4, 1, 2, 3, 4]))
 
-    # load a file which doesn't exist
-    beat_none = beatles.load_beats('fake/file/path')
-    assert beat_none is None
+    assert beatles.load_beats(None) is None
 
 
 def test_load_chords():
@@ -139,9 +137,7 @@ def test_load_chords():
     )
     assert np.array_equal(chord_data.labels, np.array(['N', 'E:min', 'G']))
 
-    # load a file which doesn't exist
-    chord_none = beatles.load_chords('fake/file/path')
-    assert chord_none is None
+    assert beatles.load_chords(None) is None
 
 
 def test_load_key():
@@ -158,9 +154,7 @@ def test_load_key():
     assert np.array_equal(key_data.end_times, np.array([119.333]))
     assert np.array_equal(key_data.keys, np.array(['E']))
 
-    # load a file which doesn't exist
-    key_none = beatles.load_key('fake/file/path')
-    assert key_none is None
+    assert beatles.load_key(None) is None
 
 
 def test_load_sections():
@@ -178,9 +172,7 @@ def test_load_sections():
     assert np.array_equal(section_data.intervals[:, 1], np.array([0.465, 14.931]))
     assert np.array_equal(section_data.labels, np.array(['silence', 'intro']))
 
-    # load a file which doesn't exist
-    section_none = beatles.load_sections('fake/file/path')
-    assert section_none is None
+    assert beatles.load_sections(None) is None
 
 
 def test_fix_newpoint():

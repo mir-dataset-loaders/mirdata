@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import importlib
+import inspect
 from inspect import signature
 import io
 import os
@@ -41,14 +42,6 @@ def test_download():
         params = signature(dataset.download).parameters
         assert 'data_home' in params
         assert params['data_home'].default is None
-
-
-def test_validate():
-    for dataset in DATASETS:
-        data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
-        dataset.validate(data_home=data_home)
-        dataset.validate(data_home=data_home, silence=True)
-        dataset.validate(data_home=None, silence=True)
 
 
 def test_load_and_trackids():
@@ -104,3 +97,42 @@ def test_track():
 
         track_custom = dataset.Track(trackid, data_home='casa/de/data')
         assert track_custom._data_home == 'casa/de/data'
+
+
+EXCEPTIONS = {
+    'dali': {
+        'load_annotations_granularity': {'granularity': 'notes'}
+    },
+    'guitarset': {
+        'load_pitch_contour': {'string_num': 1}
+    }
+}
+
+
+def test_load_methods():
+    for dataset in DATASETS:
+        dataset_name = dataset.__name__.split('.')[1]
+        print(dataset_name)
+
+        all_methods = dir(dataset)
+        load_methods = [
+            getattr(dataset, m) for m in all_methods if m.startswith('load_')
+        ]
+        for load_method in load_methods:
+            method_name = load_method.__name__
+            params = [
+                p for p in signature(load_method).parameters.values()
+                if p.default == inspect._empty
+            ]  # get list of parameters that don't have defaults
+
+            if len(params) > 1:
+                print(method_name)
+                print(params)
+
+            if dataset_name in EXCEPTIONS and method_name in EXCEPTIONS[dataset_name]:
+                extra_params = EXCEPTIONS[dataset_name][method_name]
+                with pytest.raises(IOError):
+                    load_method("a/fake/filepath", **extra_params)
+            else:
+                with pytest.raises(IOError):
+                    load_method("a/fake/filepath")

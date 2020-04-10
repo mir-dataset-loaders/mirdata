@@ -213,6 +213,9 @@ def load_audio_mono(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -227,6 +230,9 @@ def load_audio_stereo(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=None, mono=False)
 
 
@@ -313,7 +319,7 @@ def load(data_home=None):
 
 def load_melody(melody_path):
     if not os.path.exists(melody_path):
-        return None
+        raise IOError("melody_path {} does not exist".format(melody_path))
 
     times = []
     freqs = []

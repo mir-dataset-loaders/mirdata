@@ -80,10 +80,6 @@ def test_load_melody():
     assert np.array_equal(melody_data.frequencies, np.array([0.0, 0.0, 622.254]))
     assert np.array_equal(melody_data.confidence, np.array([0.0, 0.0, 1.0]))
 
-    # load a file which doesn't exist
-    melody_data_none = orchset.load_melody('fake/file/path')
-    assert melody_data_none is None
-
 
 def test_load_metadata():
     data_home = 'tests/resources/mir_datasets/Orchset'

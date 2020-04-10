@@ -78,3 +78,9 @@ def test_load_metadata():
     }
     metadata_none = groove_midi._load_metadata('asdf/asdf')
     assert metadata_none is None
+
+
+def test_load_audio():
+    audio_none, sr_none = groove_midi.load_audio(None)
+    assert audio_none is None
+    assert sr_none is None

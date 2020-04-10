@@ -33,7 +33,7 @@ If your dataset **is not fully downloadable** there are two extra steps you shou
 1. Contacting the mirdata organizers by opening an issue or PR so we can discuss how to proceed with the closed dataset.
 2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the dataset creator, or by verifying equivalence with several other copies of the dataset.
 
-To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag. 
+To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag.
 
 ### Dataset description:
 
@@ -255,6 +255,8 @@ def load_audio(audio_path):
     # -- for example, the code below. This should be dataset specific!
     # -- By default we load to mono
     # -- change this if it doesn't make sense for your dataset.
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -342,8 +344,15 @@ def load(data_home=None):
 
 # -- Write any necessary loader functions for loading the dataset's data
 def load_annotation(annotation_path):
+
+    # -- if there are some file paths for this annotation type in this dataset's
+    # -- index that are None/null, uncomment the lines below.
+    # if annotation_path is None:
+    #     return None
+
     if not os.path.exists(annotation_path):
-        return None
+        raise IOError("annotation_path {} does not exist".format(annotation_path))
+
     with open(annotation_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=' ')
         start_times = []

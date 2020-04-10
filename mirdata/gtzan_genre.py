@@ -66,7 +66,7 @@ class Track(track.Track):
     @property
     def audio(self):
         """(np.ndarray, float): audio signal, sample rate"""
-        return load_audio(self.audio_path, sample_rate=22050)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
@@ -82,19 +82,20 @@ class Track(track.Track):
         )
 
 
-def load_audio(audio_path, sample_rate=22050):
+def load_audio(audio_path):
     """Load a GTZAN audio file.
 
     Args:
         audio_path (str): path to audio file
-        sample_rate: Requested sample rate (optional, default 22050)
 
     Returns:
         y (np.ndarray): the mono audio signal
         sr (float): The sample rate of the audio file
 
     """
-    audio, sr = librosa.load(audio_path, sr=sample_rate, mono=True)
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+    audio, sr = librosa.load(audio_path, sr=22050, mono=True)
     return audio, sr
 
 
