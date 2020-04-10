@@ -140,5 +140,7 @@ def test_validator(mocker, mock_check_index, missing_files, invalid_checksums):
     mock_check_index.assert_called_once_with('foo', 'bar')
 
 
-def test_get_default_dataset_path():
+# This is magically skipped by the the remote fixture `skip_local` in conftest.py
+# when tests are run with the --local flag
+def test_get_default_dataset_path(skip_local):
     assert '/tmp/mir_datasets/data_home' == utils.get_default_dataset_path('data_home')
