@@ -43,7 +43,9 @@ def test_download():
         assert params['data_home'].default is None
 
 
-def test_validate():
+# This is magically skipped by the the remote fixture `skip_local` in conftest.py
+# when tests are run with the --local flag
+def test_validate(skip_local):
     for dataset in DATASETS:
         data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
         dataset.validate(data_home=data_home)
