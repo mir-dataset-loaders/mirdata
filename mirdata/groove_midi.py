@@ -57,7 +57,7 @@ import mirdata.track as track
 import mirdata.utils as utils
 
 
-DATASET_DIR = 'Groove_MIDI'
+DATASET_DIR = 'Groove-MIDI'
 
 AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
     filename='groove-v1-0.0.zip',
