@@ -25,11 +25,6 @@ def data_home_dir(dataset):
 def test_download(skip_remote, dataset, data_home_dir, test_dataset, skip_download):
     assert test_dataset in mirdata.__all__
 
-    # dataset = importlib.import_module("mirdata.{}".format(test_dataset))
-
-    # # new directory to test download
-    # data_home_dir = os.path.join('tests/resources/mir_datasets_full', dataset.DATASET_DIR)
-
     # download the dataset
     if not skip_download:
         dataset.download(data_home=data_home_dir)
