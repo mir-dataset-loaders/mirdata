@@ -82,23 +82,19 @@ def test_load_metadata():
     assert metadata_none is None
 
 
-@pytest.fixture
-def AUDIO_MIDI_REMOTE(httpserver):
+def test_download(httpserver):
+    data_home = 'tests/resources/mir_datasets/Groove_MIDI_download'
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
     httpserver.serve_content(open('tests/resources/download/groove-v1-0.0.zip', 'rb').read())
-    return download_utils.RemoteFileMetadata(
+
+    groove_midi.AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
         filename='groove-v1-0.0.zip',
         url=httpserver.url,
         checksum=('97a9a888d2a65cc87bb26e74df08b011'),
         destination_dir=None,
     )
-
-
-def test_download(AUDIO_MIDI_REMOTE):
-    data_home = 'tests/resources/mir_datasets/Groove_MIDI_download'
-    if os.path.exists(data_home):
-        shutil.rmtree(data_home)
-
-    groove_midi.AUDIO_MIDI_REMOTE = AUDIO_MIDI_REMOTE
     groove_midi.download(data_home=data_home)
 
     assert os.path.exists(data_home)
