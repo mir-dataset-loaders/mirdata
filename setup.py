@@ -48,16 +48,15 @@ if __name__ == '__main__':
                 'testcontainers>=2.3',
                 'future==0.17.1',
                 'coveralls>=1.7.0',
-                'dali-dataset',
             ],
             'docs': [
-                'DALI-dataset>=1.0.0',
+                'dali-dataset==1.1',
                 'numpydoc',
                 'recommonmark',
                 'sphinx',
                 'sphinxcontrib-napoleon',
                 'sphinx_rtd_theme',
             ],
-            'dali': ['DALI-dataset>=1.0.0'],
+            'dali': ['dali-dataset==1.1'],
         },
     )
