@@ -386,9 +386,10 @@ def download(
         force_overwrite (bool):
             Whether to overwrite the existing downloaded data
         partial_download (list):
-            Remote objects to download. By default it will download all available objects of a given
-            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
-            audio types), by passing a custom list of the module.REMOTE object to the download function.
+            List indicating what to partially download. The list can include any of:
+                * `'audio'` all files
+            If `None`, all data is downloaded. Note this makes sense in other datasets
+            with multiple remote files to download.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
 
@@ -398,7 +399,7 @@ def download(
 
     download_utils.downloader(
         data_home,
-        download=REMOTES,
+        remotes=REMOTES,
         partial_download=partial_download,
         info_message=None,
         force_overwrite=force_overwrite,

@@ -24,6 +24,7 @@ condenser microphone as reference.
 - hex: original 6 channel wave file from hexaphonic pickup
 - hex_cln: hex wave files with interference removal applied
 - mic: monophonic recording from reference microphone
+- mix: monophonic mixture of original 6 channel file
 
 Each of the 360 excerpts has an accompanying JAMS file which stores 16 annotations.
 Pitch:
@@ -292,9 +293,13 @@ def download(
         force_overwrite (bool):
             Whether to overwrite the existing downloaded data
         partial_download (list):
-            Remote objects to download. By default it will download all available objects of a given
-            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
-            audio types), by passing a custom list of the module.REMOTE object to the download function.
+            List indicating what to partially download. The list can include any of:
+             * `'annotations'` the annotation files
+             * `'audio_hex_original'` original 6 channel wave file from hexaphonic pickup
+             * `'audio_hex_debleeded'` hex wave files with interference removal applied
+             * `'audio_mic'` monophonic recording from reference microphone
+             * `'audio_mix'` monophonic mixture of original 6 channel file
+             If `None`, all data is downloaded.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
     """
@@ -303,7 +308,7 @@ def download(
 
     download_utils.downloader(
         data_home,
-        download=REMOTES,
+        remotes=REMOTES,
         partial_download=partial_download,
         info_message=None,
         force_overwrite=force_overwrite,

@@ -24,7 +24,7 @@ RemoteFileMetadata = namedtuple(
 
 def downloader(
     save_dir,
-    download=None,
+    remotes=None,
     partial_download=None,
     info_message=None,
     force_overwrite=False,
@@ -35,7 +35,7 @@ def downloader(
     Args:
         save_dir (str):
             The directory to download the data
-        download (dict or None):
+        remotes (dict or None):
             A dictionary of RemoteFileMetadata tuples of data in zip format.
             If None, there is no data to download
         partial_download (list or None):
@@ -53,56 +53,39 @@ def downloader(
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
-    if download is not None:
+    if remotes is not None:
         if partial_download is not None:
-            if type(partial_download) != list:
+            if not isinstance(partial_download, list):
                 raise TypeError(
-                    'partial_download should be a list of keys to access the elements of the download dictionary, '
-                    + 'but is a {} element'.format(type(partial_download))
+                    'partial_download must be a list which is a subset of '
+                    + '{}'.format(remotes.keys())
                 )
             # check the keys in partial_download are in the download dict
             for key in partial_download:
-                if key not in download.keys():
+                if key not in remotes.keys():
                     raise KeyError(
-                        'The key {} in partial_download should be part of the REMOTES object keys ({})'
-                        + '.'.format(key, download.keys())
+                        '{} not found. List items in partial_download should be one of '
+                        + '{}'.format(key, remotes.keys())
                     )
             objs_to_download = partial_download
         else:
-            objs_to_download = download.keys()
+            objs_to_download = list(remotes.keys())
 
         start_download_message = """
                 Starting to download the list of files {} to folder {}
             """.format(
-            list(partial_download.keys()), save_dir
+            objs_to_download, save_dir
         )
         print(start_download_message)
 
-        zip_downloads = []
-        tar_downloads = []
-        file_downloads = []
-
         for k in objs_to_download:
-            extension = os.path.splitext(download[k].url)[-1]
+            extension = os.path.splitext(remotes[k].url)[-1]
             if '.zip' in extension:
-                zip_downloads.append(download[k])
+                download_zip_file(remotes[k], save_dir, force_overwrite, cleanup)
+            elif '.tar.gz' in extension or '.tar' in extension:
+                download_tar_file(remotes[k], save_dir, force_overwrite, cleanup)
             else:
-                if '.tar.gz' in extension or '.tar' in extension:
-                    tar_downloads.append(download[k])
-                else:
-                    file_downloads.append(download[k])
-
-        if zip_downloads is not None:
-            for zip_download in zip_downloads:
-                download_zip_file(zip_download, save_dir, force_overwrite, cleanup)
-
-        if tar_downloads is not None:
-            for tar_download in tar_downloads:
-                download_tar_file(tar_download, save_dir, force_overwrite, cleanup)
-
-        if file_downloads is not None:
-            for file_download in file_downloads:
-                download_from_remote(file_download, save_dir, force_overwrite)
+                download_from_remote(remotes[k], save_dir, force_overwrite)
     else:
         if info_message is not None:
             print(info_message)

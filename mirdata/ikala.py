@@ -26,7 +26,7 @@ from mirdata import utils
 DATASET_DIR = 'iKala'
 TIME_STEP = 0.032  # seconds
 REMOTES = {
-    'annotations': download_utils.RemoteFileMetadata(
+    'metadata': download_utils.RemoteFileMetadata(
         filename='id_mapping.txt',
         url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
         checksum='81097b587804ce93e56c7a331ba06abc',
@@ -218,9 +218,10 @@ def download(
         force_overwrite (bool):
             Whether to overwrite the existing downloaded data
         partial_download (list):
-            Remote objects to download. By default it will download all available objects of a given
-            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
-            audio types), by passing a custom list of the module.REMOTE object to the download function.
+            List indicating what to partially download. The list can include any of:
+                * `'metadata'` the annotation files
+             If `None`, all data is downloaded. Note this makes sense in other datasets
+             with multiple remote files to download.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
     """
