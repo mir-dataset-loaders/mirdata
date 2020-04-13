@@ -58,10 +58,10 @@ DATASET_DIR = 'Groove-MIDI'
 
 REMOTES = {
     'audio': download_utils.RemoteFileMetadata(
-    filename='groove-v1-0.0.zip',
-    url='http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip',
-    checksum='99db7e2a087761a913b2abfb19e86181',
-    destination_dir=None,
+        filename='groove-v1-0.0.zip',
+        url='http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip',
+        checksum='99db7e2a087761a913b2abfb19e86181',
+        destination_dir=None,
     )
 }
 
