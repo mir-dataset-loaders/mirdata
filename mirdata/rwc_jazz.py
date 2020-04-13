@@ -48,25 +48,29 @@ from mirdata.rwc_classical import (
     _duration_to_sec,
 )
 
-METADATA_REMOTE = download_utils.RemoteFileMetadata(
+
+REMOTES = {
+    'metadata': download_utils.RemoteFileMetadata(
     filename='rwc-j.csv',
     url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
     checksum='7dbe87fedbaaa1f348625a2af1d78030',
     destination_dir=None,
-)
-DATASET_DIR = 'RWC-Jazz'
-ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
+    ),
+    'annotations_beat': download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-J-2001.BEAT.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.BEAT.zip',
     checksum='b483853da05d0fff3992879f7729bcb4',
     destination_dir='annotations',
-)
-ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
+    ),
+    'annotations_sections':  download_utils.RemoteFileMetadata(
     filename='AIST.RWC-MDB-J-2001.CHORUS.zip',
     url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.CHORUS.zip',
     checksum='44afcf7f193d7e48a7d99e7a6f3ed39d',
     destination_dir='annotations',
-)
+    )
+}
+
+DATASET_DIR = 'RWC-Jazz'
 
 
 def _load_metadata(data_home):
@@ -205,8 +209,24 @@ class Track(track.Track):
         )
 
 
-def download(data_home=None, force_overwrite=False):
+def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
+    """Download the RWC Jazz (annotations and metadata).
+    The audio files are not provided due to copyright issues.
 
+    Args:
+        data_home (str):
+            Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        partial_download (list):
+            Remote objects to download. By default it will download all available objects of a given
+            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
+            audio types), by passing a custom list of the module.REMOTE object to the download function.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
+
+    """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
@@ -225,9 +245,11 @@ def download(data_home=None, force_overwrite=False):
 
     download_utils.downloader(
         data_home,
-        zip_downloads=[METADATA_REMOTE, ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
+        download=REMOTES,
+        partial_download=partial_download,
         info_message=info_message,
         force_overwrite=force_overwrite,
+        cleanup=cleanup
     )
 
 

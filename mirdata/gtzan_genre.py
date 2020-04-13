@@ -24,8 +24,8 @@ from mirdata import utils
 
 DATASET_DIR = "GTZAN-Genre"
 
-DOWNLOAD = {
-    'DATASET_REMOTE': download_utils.RemoteFileMetadata(
+REMOTES = {
+    'all': download_utils.RemoteFileMetadata(
         filename="genres.tar.gz",
         url="http://opihi.cs.uvic.ca/sound/genres.tar.gz",
         checksum="5b3d6dddb579ab49814ab86dba69e7c7",
@@ -144,20 +144,32 @@ def track_ids():
     return list(DATA.index.keys())
 
 
-def download(data_home=None, download_items=None, force_overwrite=False):
+def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
     """Download the GTZAN-Genre dataset.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        partial_download (list):
+            Remote objects to download. By default it will download all available objects of a given
+            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
+            audio types), by passing a custom list of the module.REMOTE object to the download function.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
-    if download_items is None:
-        download_items = DOWNLOAD
 
     download_utils.downloader(
-        data_home, download_items, force_overwrite=force_overwrite
+        data_home,
+        download=REMOTES,
+        partial_download=partial_download,
+        info_message=None,
+        force_overwrite=force_overwrite,
+        cleanup=cleanup
     )
 
 

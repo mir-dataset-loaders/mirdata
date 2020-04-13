@@ -37,18 +37,20 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = "Medley-solos-DB"
-ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
+REMOTES = {
+    'annotations': download_utils.RemoteFileMetadata(
     filename="Medley-solos-DB_metadata.csv",
     url="https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1",
     checksum="fda6a589c56785f2195c9227809c521a",
     destination_dir="annotation",
-)
-AUDIO_REMOTE = download_utils.RemoteFileMetadata(
+),
+    'audio': download_utils.RemoteFileMetadata(
     filename="Medley-solos-DB.tar.gz",
     url="https://zenodo.org/record/3464194/files/Medley-solos-DB.tar.gz?download=1",
     checksum="f5facf398793ef5c1f80c013afdf3e5f",
     destination_dir="audio",
 )
+}
 
 
 def _load_metadata(data_home):
@@ -155,21 +157,32 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
-def download(data_home=None):
+def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
     """Download Medley-solos-DB.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        partial_download (list):
+            Remote objects to download. By default it will download all available objects of a given
+            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
+            audio types), by passing a custom list of the module.REMOTE object to the download function.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
         data_home,
-        tar_downloads=[AUDIO_REMOTE],
-        file_downloads=[ANNOTATION_REMOTE],
-        cleanup=True,
+        download=REMOTES,
+        partial_download=partial_download,
+        info_message=None,
+        force_overwrite=force_overwrite,
+        cleanup=cleanup
     )
 
 

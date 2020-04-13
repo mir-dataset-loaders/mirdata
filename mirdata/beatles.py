@@ -17,8 +17,8 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 DATASET_DIR = 'Beatles'
-DOWNLOAD = {
-    'ANNOTATIONS_REMOTE': download_utils.RemoteFileMetadata(
+REMOTES = {
+    'annotations': download_utils.RemoteFileMetadata(
         filename='The Beatles Annotations.tar.gz',
         url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
         checksum='62425c552d37c6bb655a78e4603828cc',
@@ -123,25 +123,28 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, download_items=None, force_overwrite=False):
+def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
     """Download the Beatles Dataset (annotations).
-    The audio files are not provided due to the copyright.
+    The audio files are not provided due to copyright issues.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool): Whether to overwrite the existing downloaded data
-        to_download (dict): Remote objects to download. By default it will download all available objects of a given
-                            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
-                            audio types), by passing a custom dictionary to the download function.
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        partial_download (list):
+            Remote objects to download. By default it will download all available objects of a given
+            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
+            audio types), by passing a custom list of the module.REMOTE object to the download function.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
 
     """
 
     # use the default location: ~/mir_datasets/Beatles
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
-    if download_items is None:
-        download_items = DOWNLOAD
 
     download_message = """
         Unfortunately the audio files of the Beatles dataset are not available
@@ -157,9 +160,11 @@ def download(data_home=None, download_items=None, force_overwrite=False):
 
     download_utils.downloader(
         data_home,
-        download_items,
+        download=REMOTES,
+        partial_download=partial_download,
         info_message=download_message,
         force_overwrite=force_overwrite,
+        cleanup=cleanup
     )
 
 

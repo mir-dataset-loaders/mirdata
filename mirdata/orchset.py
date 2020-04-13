@@ -26,12 +26,14 @@ import mirdata.download_utils as download_utils
 import mirdata.jams_utils as jams_utils
 
 
-REMOTE = download_utils.RemoteFileMetadata(
+REMOTES = {
+    'all': download_utils.RemoteFileMetadata(
     filename='Orchset_dataset_0.zip',
     url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
     checksum='cf6fe52d64624f61ee116c752fb318ca',
     destination_dir=None,
 )
+}
 
 DATASET_DIR = 'Orchset'
 
@@ -228,20 +230,33 @@ def load_audio_stereo(audio_path):
     return librosa.load(audio_path, sr=None, mono=False)
 
 
-def download(data_home=None, force_overwrite=False):
+def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
     """Download ORCHSET Dataset.
 
-    Args:
-        data_home (str): Local path where the dataset is stored.
+        Args:
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool): Whether to overwrite the existing downloaded data
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        partial_download (list):
+            Remote objects to download. By default it will download all available objects of a given
+            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
+            audio types), by passing a custom list of the module.REMOTE object to the download function.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
 
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
-        data_home, zip_downloads=[REMOTE], force_overwrite=force_overwrite
+        data_home,
+        download=None,
+        partial_download=partial_download,
+        info_message=None,
+        force_overwrite=force_overwrite,
+        cleanup=cleanup
     )
 
     # files get downloaded to a folder called Orchset - move everything up a level

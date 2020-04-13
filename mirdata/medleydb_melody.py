@@ -156,14 +156,23 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None):
+def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
     """MedleyDB is not available for downloading directly.
     This function prints a helper message to download MedleyDB
     through zenodo.org.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        partial_download (list):
+            Remote objects to download. By default it will download all available objects of a given
+            dataset. It is possible to perform partial downloads (e.g. download only one of multiple
+            audio types), by passing a custom list of the module.REMOTE object to the download function.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
     """
 
     if data_home is None:
@@ -181,7 +190,14 @@ def download(data_home=None):
         data_home=data_home
     )
 
-    download_utils.downloader(data_home, info_message=info_message)
+    download_utils.downloader(
+        data_home,
+        download=None,
+        partial_download=partial_download,
+        info_message=info_message,
+        force_overwrite=force_overwrite,
+        cleanup=cleanup
+    )
 
 
 def validate(data_home=None, silence=False):
