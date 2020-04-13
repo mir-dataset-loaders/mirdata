@@ -26,16 +26,24 @@ mirdata.dali
    :members:
 
 
-mirdata.guitarset
-^^^^^^^^^^^^^^^^^
+mirdata.groove_midi
+^^^^^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.guitarset
+.. automodule:: mirdata.groove_midi
    :members:
+
 
 mirdata.gtzan_genre
 ^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.gtzan_genre
+   :members:
+
+
+mirdata.guitarset
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.guitarset
    :members:
 
 

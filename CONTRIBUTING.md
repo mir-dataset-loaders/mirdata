@@ -14,6 +14,8 @@ Finally, run tox with `tox`.  All tests should pass!
 
 ## Contributing a new dataset loader
 
+**IMPORTANT:** when starting your pull request lease use the **new_loader.md template**, it will simplify the reviewing process and also help you make a complete PR. You can do that by adding `&template=new_loader.md` at the end of the url when your creating the PR (e.g. `...mir-dataset-loaders/mirdata/compare?expand=1` will become `...mir-dataset-loaders/mirdata/compare?expand=1&template=new_loader.md`.
+
 
 ### Dataset checklist
 
@@ -31,7 +33,7 @@ If your dataset **is not fully downloadable** there are two extra steps you shou
 1. Contacting the mirdata organizers by opening an issue or PR so we can discuss how to proceed with the closed dataset.
 2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the dataset creator, or by verifying equivalence with several other copies of the dataset.
 
-To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag. Please use the **new_loader.md** template for your pull request by adding &template=new_loader.md at the end of the url when your creating the PR (e.g. `...mir-dataset-loaders/mirdata/compare?expand=1` will become `...mir-dataset-loaders/mirdata/compare?expand=1&template=new_loader.md`.
+To reduce friction, we will make commits on top of contributors pull requests by default unless they use the `please-do-not-edit` flag.
 
 ### Dataset description:
 
@@ -130,16 +132,13 @@ For more details, please visit: [website]
 
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 # -- import whatever you need here
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 DATASET_DIR = 'Example'
 # -- info for any files that need to be downloaded
@@ -256,6 +255,8 @@ def load_audio(audio_path):
     # -- for example, the code below. This should be dataset specific!
     # -- By default we load to mono
     # -- change this if it doesn't make sense for your dataset.
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -343,8 +344,15 @@ def load(data_home=None):
 
 # -- Write any necessary loader functions for loading the dataset's data
 def load_annotation(annotation_path):
+
+    # -- if there are some file paths for this annotation type in this dataset's
+    # -- index that are None/null, uncomment the lines below.
+    # if annotation_path is None:
+    #     return None
+
     if not os.path.exists(annotation_path):
-        return None
+        raise IOError("annotation_path {} does not exist".format(annotation_path))
+
     with open(annotation_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=' ')
         start_times = []
@@ -383,3 +391,33 @@ Bibtex format citations/s here
   c. If the dataset has a metadata file, reduce the length to a few lines to make it trival to test.
 2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the ikala dataset tests (`tests/test_ikala.py`) for a reference.
 *Note that we have written automated tests for all loader's `cite`, `download`, `validate`, `load`, `track_ids` functions, as well as some basic edge cases of the `Track` object, so you don't need to write tests for these!*
+
+## Running your tests locally
+
+You can run all the tests locally by running:
+```
+pytest tests/ --local
+```
+The `--local` flag skips tests that are built to run only on the remote testing environment.
+
+To run one specific test file:
+```
+pytest tests/test_ikala.py
+```
+
+Finally, there is one local test you should run, which we can't easily run in our testing environment.
+```
+pytest -s tests/test_full_dataset.py --local --dataset my_dataset
+```
+Where `my_dataset` is the name of the module of the dataset you added. The `-s` tells pytest not to skip print statments, which is useful here for seeing the download progress bar when testing the download function. 
+
+This tests that your dataset downloads, validates, and loads properly for every track.
+This test takes a long time for some datasets :( but it's important.
+
+We've added one extra convenience flag for this test, for getting the tests running when the download is very slow:
+```
+pytest -s tests/test_full_dataset.py --local --dataset my_dataset --skip-download
+
+```
+which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually
+all pass without this flag.

@@ -10,9 +10,6 @@ evaluating automatic instrument recognition.
 For more details, please visit: https://medleydb.weebly.com
 
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 import csv
 import json
@@ -21,10 +18,10 @@ import logging
 import numpy as np
 import os
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 DATASET_DIR = 'MedleyDB-Pitch'
 
@@ -109,8 +106,10 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
+        metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
+        metadata['duration'] = librosa.get_duration(self.audio[0], self.audio[1])
         return jams_utils.jams_converter(
-            f0_data=[(self.pitch, None)], metadata=self._track_metadata
+            f0_data=[(self.pitch, 'annotated pitch')], metadata=metadata
         )
 
 
@@ -125,6 +124,9 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -227,7 +229,8 @@ def load(data_home=None):
 
 def load_pitch(pitch_path):
     if not os.path.exists(pitch_path):
-        return None
+        raise IOError("pitch_path {} does not exist".format(pitch_path))
+
     times = []
     freqs = []
     with open(pitch_path, 'r') as fhandle:

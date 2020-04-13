@@ -11,17 +11,18 @@ album covers, or links to video clips.
 For more details, please visit: https://github.com/gabolsgabs/DALI
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import json
 import gzip
-import pickle
-import os
 import librosa
 import logging
 import numpy as np
+import os
+import pickle
+
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 # this is the package, needed to load the annotations.
 # DALI-dataset is only installed if the user explicitly declares
@@ -35,10 +36,14 @@ except ImportError as E:
     )
     raise
 
-import mirdata.track as track
-import mirdata.utils as utils
-
 DATASET_DIR = 'DALI'
+
+METADATA_REMOTE = download_utils.RemoteFileMetadata(
+    filename='dali_metadata.json',
+    url='https://raw.githubusercontent.com/gabolsgabs/DALI/master/code/DALI/files/dali_v1_metadata.json',
+    checksum='40af5059e7aa97f81b2654758094d24b',
+    destination_dir='.',
+)
 
 
 def _load_metadata(data_home):
@@ -165,8 +170,20 @@ class Track(track.Track):
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """(Not Implemented) Jams: the track's data in jams format"""
-        raise NotImplementedError
+        """Jams: the track's data in jams format"""
+        # Load metadata
+        metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
+        y, sr = self.audio
+        metadata['duration'] = librosa.get_duration(y=y, sr=sr)
+        return jams_utils.jams_converter(
+            lyrics_data=[
+                (self.words, 'word-aligned lyrics'),
+                (self.lines, 'line-aligned lyrics'),
+                (self.paragraphs, 'paragraph-aligned lyrics'),
+            ],
+            note_data=[(self.notes, 'annotated vocal notes')],
+            metadata=metadata,
+        )
 
 
 def load_audio(audio_path):
@@ -180,10 +197,12 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None):
+def download(data_home=None, force_overwrite=False):
     """DALI is not available for downloading directly.
     This function prints a helper message to download DALI
     through zenodo.org.
@@ -196,8 +215,7 @@ def download(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    print(
-        """
+    info_message = """
         To download this dataset, visit:
         https://zenodo.org/record/2577915 and request access.
 
@@ -208,11 +226,15 @@ def download(data_home=None):
         Use the function dali_code.get_audio you can find at:
         https://github.com/gabolsgabs/DALI for getting the audio and place them at:
         {audio_path}
-
     """.format(
-            save_path=os.path.join(data_home, DATASET_DIR, 'annotatios'),
-            audio_path=os.path.join(data_home, DATASET_DIR, 'audio'),
-        )
+        save_path=os.path.join(data_home, 'annotations'),
+        audio_path=os.path.join(data_home, 'audio'),
+    )
+    download_utils.downloader(
+        data_home,
+        file_downloads=[METADATA_REMOTE],
+        info_message=info_message,
+        force_overwrite=force_overwrite,
     )
 
 
@@ -280,7 +302,8 @@ def load_annotations_granularity(annotations_path, granularity):
 
     """
     if not os.path.exists(annotations_path):
-        return None
+        raise IOError("annotations_path {} does not exist".format(annotations_path))
+
     try:
         with gzip.open(annotations_path, 'rb') as f:
             output = pickle.load(f)
@@ -316,7 +339,8 @@ def load_annotations_class(annotations_path):
 
     """
     if not os.path.exists(annotations_path):
-        return None
+        raise IOError("annotations_path {} does not exist".format(annotations_path))
+
     try:
         with gzip.open(annotations_path, 'rb') as f:
             output = pickle.load(f)

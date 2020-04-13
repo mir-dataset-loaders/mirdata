@@ -41,19 +41,15 @@ have access to larger versions of SOL.
 For more details, please visit: https://www.orch-idea.org/
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import csv
 import librosa
 import logging
 import os
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 DATASET_DIR = "TinySOL"
 AUDIO_REMOTE = download_utils.RemoteFileMetadata(
@@ -194,7 +190,9 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(metadata=self._track_metadata)  # TODO PR #185
+        metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
+        metadata['duration'] = librosa.get_duration(self.audio[0], self.audio[1])
+        return jams_utils.jams_converter(metadata=metadata)  # TODO PR #185
 
 
 def load_audio(audio_path):
@@ -208,6 +206,9 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=None, mono=True)
 
 

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
 
 from mirdata import medley_solos_db
 from tests.test_utils import run_track_tests
@@ -13,11 +12,11 @@ def test_track():
     expected_attributes = {
         'track_id': 'd07b1fc0-567d-52c2-fef4-239f31c9d40e',
         'audio_path': 'tests/resources/mir_datasets/Medley-solos-DB/'
-            + 'audio/Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav',
+        + 'audio/Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav',
         'instrument': 'flute',
         'instrument_id': 3,
         'song_id': 210,
-        'subset': 'validation'
+        'subset': 'validation',
     }
 
     expected_property_types = {}

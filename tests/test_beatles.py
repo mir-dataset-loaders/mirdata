@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
 
 import numpy as np
 
@@ -14,15 +13,15 @@ def test_track():
 
     expected_attributes = {
         'audio_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav',
+        + 'audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav',
         'beats_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt',
+        + 'annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt',
         'chords_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
+        + 'annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
         'keys_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
+        + 'annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
         'sections_path': 'tests/resources/mir_datasets/Beatles/'
-            + 'annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
+        + 'annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab',
         'title': '11_-_Do_You_Want_To_Know_A_Secret',
         'track_id': '0111',
     }
@@ -31,7 +30,7 @@ def test_track():
         'beats': utils.BeatData,
         'chords': utils.ChordData,
         'key': utils.KeyData,
-        'sections': utils.SectionData
+        'sections': utils.SectionData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -116,9 +115,7 @@ def test_load_beats():
     )
     assert np.array_equal(beat_data.beat_positions, np.array([2, 3, 4, 1, 2, 3, 4]))
 
-    # load a file which doesn't exist
-    beat_none = beatles.load_beats('fake/file/path')
-    assert beat_none is None
+    assert beatles.load_beats(None) is None
 
 
 def test_load_chords():
@@ -140,9 +137,7 @@ def test_load_chords():
     )
     assert np.array_equal(chord_data.labels, np.array(['N', 'E:min', 'G']))
 
-    # load a file which doesn't exist
-    chord_none = beatles.load_chords('fake/file/path')
-    assert chord_none is None
+    assert beatles.load_chords(None) is None
 
 
 def test_load_key():
@@ -159,9 +154,7 @@ def test_load_key():
     assert np.array_equal(key_data.end_times, np.array([119.333]))
     assert np.array_equal(key_data.keys, np.array(['E']))
 
-    # load a file which doesn't exist
-    key_none = beatles.load_key('fake/file/path')
-    assert key_none is None
+    assert beatles.load_key(None) is None
 
 
 def test_load_sections():
@@ -179,9 +172,7 @@ def test_load_sections():
     assert np.array_equal(section_data.intervals[:, 1], np.array([0.465, 14.931]))
     assert np.array_equal(section_data.labels, np.array(['silence', 'intro']))
 
-    # load a file which doesn't exist
-    section_none = beatles.load_sections('fake/file/path')
-    assert section_none is None
+    assert beatles.load_sections(None) is None
 
 
 def test_fix_newpoint():

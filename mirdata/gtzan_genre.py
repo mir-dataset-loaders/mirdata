@@ -10,15 +10,12 @@ contains 10 genres, each represented by 100 tracks. The tracks are all
 22050 Hz mono 16-bit audio files in .wav format.
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
-import os
 import librosa
+import os
 
 from mirdata import download_utils
-import mirdata.track as track
+from mirdata import jams_utils
+from mirdata import track
 from mirdata import utils
 
 
@@ -71,26 +68,36 @@ class Track(track.Track):
     @property
     def audio(self):
         """(np.ndarray, float): audio signal, sample rate"""
-        return load_audio(self.audio_path, sample_rate=22050)
+        return load_audio(self.audio_path)
 
     def to_jams(self):
-        """(Not Implemented) Jams: the track's data in jams format"""
-        raise NotImplementedError
+        """Jams: the track's data in jams format"""
+        return jams_utils.jams_converter(
+            tags_gtzan_data=[(self.genre, 'gtzan-genre')],
+            metadata={
+                'title': "Unknown track",
+                'artist': "Unknown artist",
+                'release': "Unknown album",
+                'duration': 30.0,
+                'curator': 'George Tzanetakis',
+            },
+        )
 
 
-def load_audio(audio_path, sample_rate=22050):
-    """Load a GTzan audio file.
+def load_audio(audio_path):
+    """Load a GTZAN audio file.
 
     Args:
         audio_path (str): path to audio file
-        sample_rate: Requested sample rate (optional, default 22050)
 
     Returns:
         y (np.ndarray): the mono audio signal
         sr (float): The sample rate of the audio file
 
     """
-    audio, sr = librosa.load(audio_path, sr=sample_rate, mono=True)
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+    audio, sr = librosa.load(audio_path, sr=22050, mono=True)
     return audio, sr
 
 

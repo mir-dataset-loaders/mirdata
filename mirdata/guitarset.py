@@ -43,19 +43,16 @@ segmentation and root from the digital lead sheet annotation.
 For more details, please visit: http://github.com/marl/guitarset/
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
+import jams
+import librosa
+import logging
 import numpy as np
 import os
-import librosa
-import jams
-import logging
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
+from mirdata import download_utils
+from mirdata import track
+from mirdata import utils
+
 
 DATASET_DIR = 'GuitarSet'
 
@@ -219,7 +216,7 @@ class Track(track.Track):
         notes = {}
         # iterate over 6 strings
         for i in range(6):
-            notes[_GUITAR_STRINGS[i]] = _load_note_ann(self.jams_path, i)
+            notes[_GUITAR_STRINGS[i]] = load_note_ann(self.jams_path, i)
         return notes
 
     @property
@@ -262,6 +259,8 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -276,6 +275,8 @@ def load_multitrack_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=False)
 
 
@@ -361,6 +362,8 @@ def load(data_home=None):
 
 
 def load_beats(jams_path):
+    if not os.path.exists(jams_path):
+        raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
     anno = jam.search(namespace='beat_position')[0]
     times, values = anno.to_event_values()
@@ -379,6 +382,8 @@ def load_chords(jams_path, leadsheet_version=True):
     Returns:
         (ChordData): Chord data
     """
+    if not os.path.exists(jams_path):
+        raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
     if leadsheet_version:
         anno = jam.search(namespace='chord')[0]
@@ -389,6 +394,8 @@ def load_chords(jams_path, leadsheet_version=True):
 
 
 def load_key_mode(jams_path):
+    if not os.path.exists(jams_path):
+        raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
     anno = jam.search(namespace='key_mode')[0]
     intervals, values = anno.to_interval_values()
@@ -403,6 +410,8 @@ def load_pitch_contour(jams_path, string_num):
     string_num (int), in range(6): Which string to load.
         0 is the Low E string, 5 is the high e string.
     """
+    if not os.path.exists(jams_path):
+        raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
     anno_arr = jam.search(namespace='pitch_contour')
     anno = anno_arr.search(data_source=str(string_num))[0]
@@ -411,7 +420,7 @@ def load_pitch_contour(jams_path, string_num):
     return utils.F0Data(times, frequencies, np.ones_like(times))
 
 
-def _load_note_ann(jams_path, string_num):
+def load_note_ann(jams_path, string_num):
     """
     Args:
         jams_path (str): Path of the jams annotation file
@@ -419,6 +428,8 @@ def _load_note_ann(jams_path, string_num):
     string_num (int), in range(6): Which string to load.
         0 is the Low E string, 5 is the high e string.
     """
+    if not os.path.exists(jams_path):
+        raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
     anno_arr = jam.search(namespace='note_midi')
     anno = anno_arr.search(data_source=str(string_num))[0]

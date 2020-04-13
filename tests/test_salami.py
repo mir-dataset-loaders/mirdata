@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
 
 import numpy as np
 from mirdata import salami, utils
@@ -14,16 +13,15 @@ def test_track():
 
     expected_attributes = {
         'track_id': '2',
-        'audio_path': 'tests/resources/mir_datasets/Salami/'
-            + 'audio/2.mp3',
+        'audio_path': 'tests/resources/mir_datasets/Salami/' + 'audio/2.mp3',
         'sections_annotator1_uppercase_path': 'tests/resources/mir_datasets/Salami/'
-            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt',
+        + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt',
         'sections_annotator1_lowercase_path': 'tests/resources/mir_datasets/Salami/'
-            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt',
+        + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt',
         'sections_annotator2_uppercase_path': 'tests/resources/mir_datasets/Salami/'
-            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt',
+        + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt',
         'sections_annotator2_lowercase_path': 'tests/resources/mir_datasets/Salami/'
-            + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt',
+        + 'salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt',
         'source': 'Codaich',
         'annotator_1_id': '5',
         'annotator_2_id': '8',
@@ -197,13 +195,9 @@ def test_load_sections():
         section_data.labels, np.array(['Silence', 'A', 'B', 'Silence'])
     )
 
-    # load a file which doesn't exist
-    section_data_none = salami.load_sections('fake/file/path')
-    assert section_data_none is None
-
     # load none
-    section_data_none2 = salami.load_sections('asdf/asdf')
-    assert section_data_none2 is None
+    section_data_none = salami.load_sections(None)
+    assert section_data_none is None
 
 
 def test_load_metadata():

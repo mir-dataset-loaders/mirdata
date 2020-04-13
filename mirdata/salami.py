@@ -17,10 +17,10 @@ import logging
 import numpy as np
 import os
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 DATASET_DIR = 'Salami'
 
@@ -197,6 +197,8 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
+        metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
+        metadata['duration'] = librosa.get_duration(self.audio[0], self.audio[1])
         return jams_utils.jams_converter(
             multi_section_data=[
                 (
@@ -214,7 +216,7 @@ class Track(track.Track):
                     'annotator_2',
                 ),
             ],
-            metadata=self._track_metadata,
+            metadata=metadata,
         )
 
 
@@ -229,6 +231,9 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -330,8 +335,11 @@ def load(data_home=None):
 
 
 def load_sections(sections_path):
-    if sections_path is None or not os.path.exists(sections_path):
+    if sections_path is None:
         return None
+
+    if not os.path.exists(sections_path):
+        raise IOError("sections_path {} does not exist".format(sections_path))
 
     times = []
     secs = []

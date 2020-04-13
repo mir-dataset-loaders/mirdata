@@ -5,16 +5,13 @@ Attributes:
     RemoteFileMetadata (namedtuple): It specifies the metadata of the remote file to download.
         The metadata consists of `filename`, `url`, `checksum`, and `destination_dir`.
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 from collections import namedtuple
 import os
-import tarfile
-import zipfile
 from tqdm import tqdm
 import urllib
+import tarfile
+import zipfile
 
 from mirdata.utils import md5
 

@@ -6,15 +6,16 @@ annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.
 http://isophonics.net/content/reference-annotations-beatles.
 
 """
+
 import csv
 import librosa
-import os
 import numpy as np
+import os
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 DATASET_DIR = 'Beatles'
 REMOTES = {
@@ -105,7 +106,11 @@ class Track(track.Track):
             section_data=[(self.sections, None)],
             chord_data=[(self.chords, None)],
             key_data=[(self.key, None)],
-            metadata={'artist': 'The Beatles', 'title': self.title},
+            metadata={
+                'artist': 'The Beatles',
+                'title': self.title,
+                'duration': librosa.get_duration(self.audio[0], self.audio[1]),
+            },
         )
 
 
@@ -120,6 +125,8 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -232,8 +239,11 @@ def load_beats(beats_path):
         (utils.BeatData): loaded beat data
 
     """
-    if beats_path is None or not os.path.exists(beats_path):
+    if beats_path is None:
         return None
+
+    if not os.path.exists(beats_path):
+        raise IOError("beats_path {} does not exist".format(beats_path))
 
     beat_times, beat_positions = [], []
     with open(beats_path, 'r') as fhandle:
@@ -263,8 +273,11 @@ def load_chords(chords_path):
         (utils.ChordData): loaded chord data
 
     """
-    if chords_path is None or not os.path.exists(chords_path):
+    if chords_path is None:
         return None
+
+    if not os.path.exists(chords_path):
+        raise IOError("chords_path {} does not exist".format(chords_path))
 
     start_times, end_times, chords = [], [], []
     with open(chords_path, 'r') as f:
@@ -291,8 +304,11 @@ def load_key(keys_path):
         (utils.KeyData): loaded key data
 
     """
-    if keys_path is None or not os.path.exists(keys_path):
+    if keys_path is None:
         return None
+
+    if not os.path.exists(keys_path):
+        raise IOError("keys_path {} does not exist".format(keys_path))
 
     start_times, end_times, keys = [], [], []
     with open(keys_path, 'r') as fhandle:
@@ -318,8 +334,11 @@ def load_sections(sections_path):
         (utils.SectionData): loaded section data
 
     """
-    if sections_path is None or not os.path.exists(sections_path):
+    if sections_path is None:
         return None
+
+    if not os.path.exists(sections_path):
+        raise IOError("sections_path {} does not exist".format(sections_path))
 
     start_times, end_times, sections = [], [], []
     with open(sections_path, 'r') as fhandle:

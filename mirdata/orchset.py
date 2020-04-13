@@ -9,9 +9,7 @@ annotation of the melody.
 For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
 import csv
 import glob
 import librosa
@@ -20,10 +18,10 @@ import numpy as np
 import os
 import shutil
 
-import mirdata.track as track
-import mirdata.utils as utils
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
+from mirdata import download_utils
+from mirdata import jams_utils
+from mirdata import track
+from mirdata import utils
 
 
 REMOTES = {
@@ -197,8 +195,12 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
+        metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
+        metadata['duration'] = librosa.get_duration(
+            self.audio_mono[0], self.audio_mono[1]
+        )
         return jams_utils.jams_converter(
-            f0_data=[(self.melody, None)], metadata=self._track_metadata
+            f0_data=[(self.melody, 'annotated melody')], metadata=metadata
         )
 
 
@@ -213,6 +215,9 @@ def load_audio_mono(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -227,6 +232,9 @@ def load_audio_stereo(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=None, mono=False)
 
 
@@ -328,7 +336,7 @@ def load(data_home=None):
 
 def load_melody(melody_path):
     if not os.path.exists(melody_path):
-        return None
+        raise IOError("melody_path {} does not exist".format(melody_path))
 
     times = []
     freqs = []

@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import numpy as np
 import DALI
 
@@ -16,10 +14,10 @@ def test_track():
     expected_attributes = {
         'album': 'Mezmerize',
         'annotation_path': 'tests/resources/mir_datasets/DALI/'
-            + 'annotations/4b196e6c99574dd49ad00d56e132712b.gz',
+        + 'annotations/4b196e6c99574dd49ad00d56e132712b.gz',
         'artist': 'System Of A Down',
         'audio_path': 'tests/resources/mir_datasets/DALI/'
-            + 'audio/4b196e6c99574dd49ad00d56e132712b.mp3',
+        + 'audio/4b196e6c99574dd49ad00d56e132712b.mp3',
         'audio_url': 'zUzd9KyIDrM',
         'dataset_version': 1,
         'ground_truth': False,
@@ -37,7 +35,7 @@ def test_track():
         'words': utils.LyricData,
         'lines': utils.LyricData,
         'paragraphs': utils.LyricData,
-        'annotation_object': DALI.Annotations
+        'annotation_object': DALI.Annotations,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -66,10 +64,6 @@ def test_load_notes():
     assert np.array_equal(note_data.intervals[:, 1], np.array([24.273, 24.420, 24.568]))
     assert np.array_equal(note_data.notes, np.array([1108.731, 1108.731, 1108.731]))
 
-    # load a file which doesn't exist
-    notes_none = dali.load_annotations_granularity('fake/file/path', 'notes')
-    assert notes_none is None
-
 
 def test_load_words():
     data_path = (
@@ -86,10 +80,6 @@ def test_load_words():
     assert np.array_equal(word_data.start_times, np.array([24.125, 24.273, 24.42]))
     assert np.array_equal(word_data.end_times, np.array([24.273, 24.42, 24.568]))
     assert np.array_equal(word_data.lyrics, np.array(['why', 'do', 'they']))
-
-    # load a file which doesn't exist
-    words_none = dali.load_annotations_granularity('fake/file/path', 'words')
-    assert words_none is None
 
 
 def test_load_lines():
@@ -112,10 +102,6 @@ def test_load_lines():
     assert np.array_equal(line_data.end_times, np.array([24.42, 24.568]))
     assert np.array_equal(line_data.lyrics, np.array(['why do', 'they']))
 
-    # load a file which doesn't exist
-    line_none = dali.load_annotations_granularity('fake/file/path', 'lines')
-    assert line_none is None
-
 
 def test_load_paragraphs():
     data_path = (
@@ -132,10 +118,6 @@ def test_load_paragraphs():
     assert np.array_equal(par_data.start_times, np.array([24.125, 24.420]))
     assert np.array_equal(par_data.end_times, np.array([24.420, 24.568]))
     assert np.array_equal(par_data.lyrics, np.array(['why do', 'they']))
-
-    # load a file which doesn't exist
-    pars_none = dali.load_annotations_granularity('fake/file/path', 'paragraphs')
-    assert pars_none is None
 
 
 def test_load_dali_object():
@@ -212,7 +194,3 @@ def test_load_dali_object():
             'time': [24.42030564587644, 24.568103458468812],
         },
     ]
-
-    # load a file which doesn't exist
-    dali_none = dali.load_annotations_class('fake/file/path')
-    assert dali_none is None

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
 
 import itertools
 import os
@@ -53,9 +52,9 @@ def get_attributes_and_properties(class_instance):
         else:
             raise ValueError("Unknown type {}".format(attr))
 
-    non_attributes = list(itertools.chain.from_iterable(
-        [properties, cached_properties, functions]
-    ))
+    non_attributes = list(
+        itertools.chain.from_iterable([properties, cached_properties, functions])
+    )
     for val in dir(class_instance):
         if val.startswith('_'):
             continue
@@ -141,5 +140,7 @@ def test_validator(mocker, mock_check_index, missing_files, invalid_checksums):
     mock_check_index.assert_called_once_with('foo', 'bar')
 
 
-def test_get_default_dataset_path():
+# This is magically skipped by the the remote fixture `skip_local` in conftest.py
+# when tests are run with the --local flag
+def test_get_default_dataset_path(skip_local):
     assert '/tmp/mir_datasets/data_home' == utils.get_default_dataset_path('data_home')
