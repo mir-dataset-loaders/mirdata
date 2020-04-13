@@ -398,7 +398,7 @@ You can run all the tests locally by running:
 ```
 pytest tests/ --local
 ```
-The `--local` flag skips tests that are built for running on the remote testing environment.
+The `--local` flag skips tests that are built to run only on the remote testing environment.
 
 To run one specific test file:
 ```
@@ -407,16 +407,16 @@ pytest tests/test_ikala.py
 
 Finally, there is one local test you should run, which we can't easily run in our testing environment.
 ```
-pytest tests/test_full_dataset.py --local --dataset my_dataset
+pytest -s tests/test_full_dataset.py --local --dataset my_dataset
 ```
-Where `my_dataset` is the name of the module of the dataset you added.
+Where `my_dataset` is the name of the module of the dataset you added. The `-s` tells pytest not to skip print statments, which is useful here for seeing the download progress bar when testing the download function. 
 
 This tests that your dataset downloads, validates, and loads properly for every track.
 This test takes a long time for some datasets :( but it's important.
 
 We've added one extra convenience flag for this test, for getting the tests running when the download is very slow:
 ```
-pytest tests/test_full_dataset.py --local --dataset my_dataset --skip-download
+pytest -s tests/test_full_dataset.py --local --dataset my_dataset --skip-download
 
 ```
 which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually
