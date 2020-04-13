@@ -55,17 +55,17 @@ DATASET_DIR = "TinySOL"
 
 REMOTES = {
     'audio': download_utils.RemoteFileMetadata(
-    filename="TinySOL.tar.gz",
-    url="https://zenodo.org/record/3685367/files/TinySOL.tar.gz?download=1",
-    checksum="36030a7fe389da86c3419e5ee48e3b7f",
-    destination_dir="audio",
+        filename="TinySOL.tar.gz",
+        url="https://zenodo.org/record/3685367/files/TinySOL.tar.gz?download=1",
+        checksum="36030a7fe389da86c3419e5ee48e3b7f",
+        destination_dir="audio",
     ),
     'annotations': download_utils.RemoteFileMetadata(
-    filename="TinySOL_metadata.csv",
-    url="https://zenodo.org/record/3685367/files/TinySOL_metadata.csv?download=1",
-    checksum="a86c9bb115f69e61f2f25872e397fc4a",
-    destination_dir="annotation",
-    )
+        filename="TinySOL_metadata.csv",
+        url="https://zenodo.org/record/3685367/files/TinySOL_metadata.csv?download=1",
+        checksum="a86c9bb115f69e61f2f25872e397fc4a",
+        destination_dir="annotation",
+    ),
 }
 
 STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
