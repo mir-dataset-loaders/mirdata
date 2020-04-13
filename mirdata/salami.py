@@ -228,6 +228,9 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -318,8 +321,11 @@ def load(data_home=None):
 
 
 def load_sections(sections_path):
-    if sections_path is None or not os.path.exists(sections_path):
+    if sections_path is None:
         return None
+
+    if not os.path.exists(sections_path):
+        raise IOError("sections_path {} does not exist".format(sections_path))
 
     times = []
     secs = []

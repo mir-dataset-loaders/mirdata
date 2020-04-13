@@ -123,6 +123,8 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -223,8 +225,11 @@ def load_beats(beats_path):
         (utils.BeatData): loaded beat data
 
     """
-    if beats_path is None or not os.path.exists(beats_path):
+    if beats_path is None:
         return None
+
+    if not os.path.exists(beats_path):
+        raise IOError("beats_path {} does not exist".format(beats_path))
 
     beat_times, beat_positions = [], []
     with open(beats_path, 'r') as fhandle:
@@ -254,8 +259,11 @@ def load_chords(chords_path):
         (utils.ChordData): loaded chord data
 
     """
-    if chords_path is None or not os.path.exists(chords_path):
+    if chords_path is None:
         return None
+
+    if not os.path.exists(chords_path):
+        raise IOError("chords_path {} does not exist".format(chords_path))
 
     start_times, end_times, chords = [], [], []
     with open(chords_path, 'r') as f:
@@ -282,8 +290,11 @@ def load_key(keys_path):
         (utils.KeyData): loaded key data
 
     """
-    if keys_path is None or not os.path.exists(keys_path):
+    if keys_path is None:
         return None
+
+    if not os.path.exists(keys_path):
+        raise IOError("keys_path {} does not exist".format(keys_path))
 
     start_times, end_times, keys = [], [], []
     with open(keys_path, 'r') as fhandle:
@@ -309,8 +320,11 @@ def load_sections(sections_path):
         (utils.SectionData): loaded section data
 
     """
-    if sections_path is None or not os.path.exists(sections_path):
+    if sections_path is None:
         return None
+
+    if not os.path.exists(sections_path):
+        raise IOError("sections_path {} does not exist".format(sections_path))
 
     start_times, end_times, sections = [], [], []
     with open(sections_path, 'r') as fhandle:

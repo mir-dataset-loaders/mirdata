@@ -314,7 +314,8 @@ def load(data_home=None):
 
 def load_chords(chords_path):
     if not os.path.exists(chords_path):
-        return None
+        raise IOError("chords_path {} does not exist".format(chords_path))
+
     begs = []  # timestamps of chord beginnings
     ends = []  # timestamps of chord endings
     chords = []  # chord labels
@@ -332,7 +333,8 @@ def load_chords(chords_path):
 
 def load_voca_inst(voca_inst_path):
     if not os.path.exists(voca_inst_path):
-        return None
+        raise IOError("voca_inst_path {} does not exist".format(voca_inst_path))
+
     begs = []  # timestamps of vocal-instrument activity beginnings
     ends = []  # timestamps of vocal-instrument activity endings
     events = []  # vocal-instrument activity labels

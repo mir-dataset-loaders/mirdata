@@ -142,10 +142,6 @@ def test_load_chords():
         chord_data.labels, ['N', 'Ab:min', 'E:maj', 'Bb:maj(*3)', 'C:min7']
     )
 
-    # load a file which doesn't exist
-    chord_data_none = rwc_popular.load_chords('fake/path')
-    assert chord_data_none is None
-
 
 def test_load_voca_inst():
     vocinst_path = (
@@ -198,10 +194,6 @@ def test_load_voca_inst():
         ),
     )
 
-    # load a file which doesn't exist
-    vocainst_data_none = rwc_popular.load_voca_inst('fake/path')
-    assert vocainst_data_none is None
-
 
 def test_load_metadata():
     data_home = 'tests/resources/mir_datasets/RWC-Popular'
@@ -219,6 +211,3 @@ def test_load_metadata():
         'instruments': 'Gt',
         'drum_information': 'Drum sequences',
     }
-
-    metadata_none = rwc_popular._load_metadata('asdf/asdf')
-    assert metadata_none is None

@@ -82,10 +82,6 @@ def test_load_melody():
     assert np.array_equal(melody_data.frequencies, np.array([0.0, 965.99199999999996]))
     assert np.array_equal(melody_data.confidence, np.array([0.0, 1.0]))
 
-    # load a file which doesn't exist
-    melody_data_none = medleydb_melody.load_melody('fake/file/path')
-    assert melody_data_none is None
-
 
 def test_load_melody3():
     # load a file which exists
@@ -123,10 +119,6 @@ def test_load_melody3():
         [1.0, 1.0, 1.0, 0.0, 0.0],
         [1.0, 1.0, 1.0, 1.0, 1.0],
     ]
-
-    # load a file which doesn't exist
-    melody_data_none = medleydb_melody.load_melody3('fake/file/path')
-    assert melody_data_none is None
 
 
 def test_load_metadata():

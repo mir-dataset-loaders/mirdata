@@ -51,10 +51,7 @@ import os
 import pretty_midi
 import shutil
 
-import mirdata.download_utils as download_utils
-import mirdata.jams_utils as jams_utils
-import mirdata.track as track
-import mirdata.utils as utils
+from mirdata import download_utils, jams_utils, track, utils
 
 
 DATASET_DIR = 'Groove-MIDI'
@@ -350,6 +347,12 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if audio_path is None:
+        return None, None
+
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
@@ -363,6 +366,9 @@ def load_midi(midi_path):
         midi_data (obj): pretty_midi object
 
     """
+    if not os.path.exists(midi_path):
+        raise IOError("midi_path {} does not exist".format(midi_path))
+
     return pretty_midi.PrettyMIDI(midi_path)
 
 

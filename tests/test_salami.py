@@ -195,13 +195,9 @@ def test_load_sections():
         section_data.labels, np.array(['Silence', 'A', 'B', 'Silence'])
     )
 
-    # load a file which doesn't exist
-    section_data_none = salami.load_sections('fake/file/path')
-    assert section_data_none is None
-
     # load none
-    section_data_none2 = salami.load_sections('asdf/asdf')
-    assert section_data_none2 is None
+    section_data_none = salami.load_sections(None)
+    assert section_data_none is None
 
 
 def test_load_metadata():

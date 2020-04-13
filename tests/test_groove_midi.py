@@ -82,6 +82,12 @@ def test_load_metadata():
     assert metadata_none is None
 
 
+def test_load_audio():
+    audio_none, sr_none = groove_midi.load_audio(None)
+    assert audio_none is None
+    assert sr_none is None
+
+
 def test_download(httpserver):
     data_home = 'tests/resources/mir_datasets/Groove-MIDI_download'
     if os.path.exists(data_home):
