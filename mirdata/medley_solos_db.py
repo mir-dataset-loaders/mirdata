@@ -39,17 +39,17 @@ import mirdata.jams_utils as jams_utils
 DATASET_DIR = "Medley-solos-DB"
 REMOTES = {
     'annotations': download_utils.RemoteFileMetadata(
-    filename="Medley-solos-DB_metadata.csv",
-    url="https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1",
-    checksum="fda6a589c56785f2195c9227809c521a",
-    destination_dir="annotation",
-),
+        filename="Medley-solos-DB_metadata.csv",
+        url="https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1",
+        checksum="fda6a589c56785f2195c9227809c521a",
+        destination_dir="annotation",
+    ),
     'audio': download_utils.RemoteFileMetadata(
-    filename="Medley-solos-DB.tar.gz",
-    url="https://zenodo.org/record/3464194/files/Medley-solos-DB.tar.gz?download=1",
-    checksum="f5facf398793ef5c1f80c013afdf3e5f",
-    destination_dir="audio",
-)
+        filename="Medley-solos-DB.tar.gz",
+        url="https://zenodo.org/record/3464194/files/Medley-solos-DB.tar.gz?download=1",
+        checksum="f5facf398793ef5c1f80c013afdf3e5f",
+        destination_dir="audio",
+    ),
 }
 
 
@@ -157,7 +157,9 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
-def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+):
     """Download Medley-solos-DB.
 
     Args:
@@ -182,7 +184,7 @@ def download(data_home=None, partial_download=None, force_overwrite=False, clean
         partial_download=partial_download,
         info_message=None,
         force_overwrite=force_overwrite,
-        cleanup=cleanup
+        cleanup=cleanup,
     )
 
 

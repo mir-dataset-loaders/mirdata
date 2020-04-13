@@ -26,20 +26,23 @@ DATASET_DIR = 'RWC-Classical'
 
 REMOTES = {
     'annotations_beat': download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-C-2001.BEAT.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
-    checksum='e8ee05854833cbf5eb7280663f71c29b',
-    destination_dir='annotations',),
+        filename='AIST.RWC-MDB-C-2001.BEAT.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
+        checksum='e8ee05854833cbf5eb7280663f71c29b',
+        destination_dir='annotations',
+    ),
     'annotations_sections': download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
-    checksum='f77bd527510376f59f5a2eed8fd7feb3',
-    destination_dir='annotations',),
+        filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
+        checksum='f77bd527510376f59f5a2eed8fd7feb3',
+        destination_dir='annotations',
+    ),
     'metadata': download_utils.RemoteFileMetadata(
-    filename='rwc-c.csv',
-    url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
-    checksum='7dbe87fedbaaa1f348625a2af1d78030',
-    destination_dir=None,),
+        filename='rwc-c.csv',
+        url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
+        checksum='7dbe87fedbaaa1f348625a2af1d78030',
+        destination_dir=None,
+    ),
 }
 
 
@@ -196,7 +199,9 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+):
     """Download the RWC Classical (annotations and metadata).
     The audio files are not provided due to copyright issues.
 
@@ -237,7 +242,7 @@ def download(data_home=None, partial_download=None, force_overwrite=False, clean
         partial_download=partial_download,
         info_message=info_message,
         force_overwrite=force_overwrite,
-        cleanup=cleanup
+        cleanup=cleanup,
     )
 
 

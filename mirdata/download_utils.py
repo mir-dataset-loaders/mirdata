@@ -25,8 +25,14 @@ RemoteFileMetadata = namedtuple(
 )
 
 
-def downloader(save_dir, download=None, partial_download=None,
-               info_message=None, force_overwrite=False, cleanup=False):
+def downloader(
+    save_dir,
+    download=None,
+    partial_download=None,
+    info_message=None,
+    force_overwrite=False,
+    cleanup=False,
+):
     """Download data to `save_dir` and optionally print a message.
 
     Args:
@@ -161,7 +167,9 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
                             If this error persists, please raise an issue at
                             https://github.com/mir-dataset-loaders/mirdata,
                             and tag it with 'broken-link'.
-                            """.format(remote.url)
+                            """.format(
+                    remote.url
+                )
                 print(error_msg)
                 raise e
 

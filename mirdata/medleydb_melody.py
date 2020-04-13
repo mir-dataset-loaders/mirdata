@@ -156,7 +156,9 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+):
     """MedleyDB is not available for downloading directly.
     This function prints a helper message to download MedleyDB
     through zenodo.org.
@@ -196,7 +198,7 @@ def download(data_home=None, partial_download=None, force_overwrite=False, clean
         partial_download=partial_download,
         info_message=info_message,
         force_overwrite=force_overwrite,
-        cleanup=cleanup
+        cleanup=cleanup,
     )
 
 

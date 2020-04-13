@@ -29,35 +29,35 @@ from mirdata.rwc_classical import (
 
 REMOTES = {
     'metadata': download_utils.RemoteFileMetadata(
-    filename='rwc-p.csv',
-    url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
-    checksum='7dbe87fedbaaa1f348625a2af1d78030',
-    destination_dir=None,
+        filename='rwc-p.csv',
+        url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
+        checksum='7dbe87fedbaaa1f348625a2af1d78030',
+        destination_dir=None,
     ),
     'annotations_beat': download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-P-2001.BEAT.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip',
-    checksum='3858aa989535bd7196b3cd07b512b5b6',
-    destination_dir='annotations',
+        filename='AIST.RWC-MDB-P-2001.BEAT.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip',
+        checksum='3858aa989535bd7196b3cd07b512b5b6',
+        destination_dir='annotations',
     ),
     'annotations_sections': download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-P-2001.CHORUS.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip',
-    checksum='f76b3a32701fbd9bf78baa608f692a77',
-    destination_dir='annotations',
+        filename='AIST.RWC-MDB-P-2001.CHORUS.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip',
+        checksum='f76b3a32701fbd9bf78baa608f692a77',
+        destination_dir='annotations',
     ),
     'annotations_chords': download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-P-2001.CHORD.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip',
-    checksum='68379c88bc8ec3f1907b32a3579197c5',
-    destination_dir='annotations',
+        filename='AIST.RWC-MDB-P-2001.CHORD.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip',
+        checksum='68379c88bc8ec3f1907b32a3579197c5',
+        destination_dir='annotations',
     ),
     'annotations_vocal_act': download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-P-2001.VOCA_INST.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip',
-    checksum='47ded648a496407ef49dba9c8bf80e87',
-    destination_dir='annotations',
-    )
+        filename='AIST.RWC-MDB-P-2001.VOCA_INST.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip',
+        checksum='47ded648a496407ef49dba9c8bf80e87',
+        destination_dir='annotations',
+    ),
 }
 
 DATASET_DIR = 'RWC-Popular'
@@ -228,7 +228,9 @@ class Track(track.Track):
         )
 
 
-def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+):
     """Download the RWC Popular (annotations and metadata).
     The audio files are not provided due to copyright issues.
 
@@ -269,7 +271,7 @@ def download(data_home=None, partial_download=None, force_overwrite=False, clean
         partial_download=partial_download,
         info_message=info_message,
         force_overwrite=force_overwrite,
-        cleanup=cleanup
+        cleanup=cleanup,
     )
 
 

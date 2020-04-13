@@ -28,11 +28,11 @@ import mirdata.jams_utils as jams_utils
 
 REMOTES = {
     'all': download_utils.RemoteFileMetadata(
-    filename='Orchset_dataset_0.zip',
-    url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
-    checksum='cf6fe52d64624f61ee116c752fb318ca',
-    destination_dir=None,
-)
+        filename='Orchset_dataset_0.zip',
+        url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
+        checksum='cf6fe52d64624f61ee116c752fb318ca',
+        destination_dir=None,
+    )
 }
 
 DATASET_DIR = 'Orchset'
@@ -230,7 +230,9 @@ def load_audio_stereo(audio_path):
     return librosa.load(audio_path, sr=None, mono=False)
 
 
-def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+):
     """Download ORCHSET Dataset.
 
         Args:
@@ -256,7 +258,7 @@ def download(data_home=None, partial_download=None, force_overwrite=False, clean
         partial_download=partial_download,
         info_message=None,
         force_overwrite=force_overwrite,
-        cleanup=cleanup
+        cleanup=cleanup,
     )
 
     # files get downloaded to a folder called Orchset - move everything up a level

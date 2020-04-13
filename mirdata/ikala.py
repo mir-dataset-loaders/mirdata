@@ -30,11 +30,12 @@ DATASET_DIR = 'iKala'
 TIME_STEP = 0.032  # seconds
 REMOTES = {
     'annotations': download_utils.RemoteFileMetadata(
-    filename='id_mapping.txt',
-    url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
-    checksum='81097b587804ce93e56c7a331ba06abc',
-    destination_dir=None,
-)}
+        filename='id_mapping.txt',
+        url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
+        checksum='81097b587804ce93e56c7a331ba06abc',
+        destination_dir=None,
+    )
+}
 
 
 def _load_metadata(data_home):
@@ -196,7 +197,9 @@ def load_mix_audio(audio_path):
     return 2.0 * mixed_audio, sr
 
 
-def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+):
     """Download iKala Dataset. However, iKala dataset is not available for
     download anymore. This function prints a helper message to organize
     pre-downloaded iKala dataset.
@@ -236,7 +239,7 @@ def download(data_home=None, partial_download=None, force_overwrite=False, clean
         partial_download=partial_download,
         info_message=download_message,
         force_overwrite=force_overwrite,
-        cleanup=cleanup
+        cleanup=cleanup,
     )
 
 

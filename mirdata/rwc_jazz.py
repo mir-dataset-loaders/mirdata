@@ -51,23 +51,23 @@ from mirdata.rwc_classical import (
 
 REMOTES = {
     'metadata': download_utils.RemoteFileMetadata(
-    filename='rwc-j.csv',
-    url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
-    checksum='7dbe87fedbaaa1f348625a2af1d78030',
-    destination_dir=None,
+        filename='rwc-j.csv',
+        url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
+        checksum='7dbe87fedbaaa1f348625a2af1d78030',
+        destination_dir=None,
     ),
     'annotations_beat': download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-J-2001.BEAT.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.BEAT.zip',
-    checksum='b483853da05d0fff3992879f7729bcb4',
-    destination_dir='annotations',
+        filename='AIST.RWC-MDB-J-2001.BEAT.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.BEAT.zip',
+        checksum='b483853da05d0fff3992879f7729bcb4',
+        destination_dir='annotations',
     ),
-    'annotations_sections':  download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-J-2001.CHORUS.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.CHORUS.zip',
-    checksum='44afcf7f193d7e48a7d99e7a6f3ed39d',
-    destination_dir='annotations',
-    )
+    'annotations_sections': download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-J-2001.CHORUS.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.CHORUS.zip',
+        checksum='44afcf7f193d7e48a7d99e7a6f3ed39d',
+        destination_dir='annotations',
+    ),
 }
 
 DATASET_DIR = 'RWC-Jazz'
@@ -209,7 +209,9 @@ class Track(track.Track):
         )
 
 
-def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+):
     """Download the RWC Jazz (annotations and metadata).
     The audio files are not provided due to copyright issues.
 
@@ -249,7 +251,7 @@ def download(data_home=None, partial_download=None, force_overwrite=False, clean
         partial_download=partial_download,
         info_message=info_message,
         force_overwrite=force_overwrite,
-        cleanup=cleanup
+        cleanup=cleanup,
     )
 
 

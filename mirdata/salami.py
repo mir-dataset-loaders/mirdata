@@ -26,10 +26,10 @@ DATASET_DIR = 'Salami'
 
 REMOTES = {
     'annotations': download_utils.RemoteFileMetadata(
-    filename='salami-data-public-hierarchy-corrections.zip',
-    url='https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip',
-    checksum='194add2601c09a7279a7433288de81fd',
-    destination_dir=None,
+        filename='salami-data-public-hierarchy-corrections.zip',
+        url='https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip',
+        checksum='194add2601c09a7279a7433288de81fd',
+        destination_dir=None,
     )
 }
 
@@ -232,7 +232,9 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, partial_download=None, force_overwrite=False, cleanup=False):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+):
     """Download SALAMI Dataset (annotations).
     The audio files are not provided.
 
@@ -271,7 +273,7 @@ def download(data_home=None, partial_download=None, force_overwrite=False, clean
         partial_download=partial_download,
         info_message=info_message,
         force_overwrite=force_overwrite,
-        cleanup=cleanup
+        cleanup=cleanup,
     )
 
 
