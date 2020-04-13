@@ -156,6 +156,9 @@ def load_vocal_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     audio, sr = librosa.load(audio_path, sr=None, mono=False)
     vocal_channel = audio[1, :]
     return vocal_channel, sr
@@ -172,6 +175,9 @@ def load_instrumental_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     audio, sr = librosa.load(audio_path, sr=None, mono=False)
     instrumental_channel = audio[0, :]
     return instrumental_channel, sr
@@ -188,6 +194,9 @@ def load_mix_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     mixed_audio, sr = librosa.load(audio_path, sr=None, mono=True)
     # multipy by 2 because librosa averages the left and right channel.
     return 2.0 * mixed_audio, sr
@@ -283,7 +292,7 @@ def load(data_home=None):
 
 def load_f0(f0_path):
     if not os.path.exists(f0_path):
-        return None
+        raise IOError("f0_path {} does not exist".format(f0_path))
 
     with open(f0_path) as fhandle:
         lines = fhandle.readlines()
@@ -297,7 +306,8 @@ def load_f0(f0_path):
 
 def load_lyrics(lyrics_path):
     if not os.path.exists(lyrics_path):
-        return None
+        raise IOError("lyrics_path {} does not exist".format(lyrics_path))
+
     # input: start time (ms), end time (ms), lyric, [pronunciation]
     with open(lyrics_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=' ')

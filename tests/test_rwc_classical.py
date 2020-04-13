@@ -97,10 +97,6 @@ def test_load_sections():
     assert np.array_equal(section_data.intervals[:, 1], np.array([46.14, 433.71]))
     assert np.array_equal(section_data.labels, np.array(['chorus A', 'ending']))
 
-    # load a file which doesn't exist
-    section_data_none = rwc_classical.load_sections('fake/file/path')
-    assert section_data_none is None
-
 
 def test_position_in_bar():
     beat_positions1 = np.array([48, 384, 48, 384, 48, 384, 48, 384])
@@ -172,10 +168,6 @@ def test_load_beats():
     )
     assert np.array_equal(beat_data.beat_positions, np.array([2, 1, 2, 1, 2, 1, 2, 1]))
 
-    # load a file which doesn't exist
-    beats_data_none = rwc_classical.load_beats('fake/path')
-    assert beats_data_none is None
-
 
 def test_load_metadata():
     data_home = 'tests/resources/mir_datasets/RWC-Classical'
@@ -191,6 +183,3 @@ def test_load_metadata():
         'duration': 435,
         'category': 'Symphony',
     }
-
-    metadata_none = rwc_classical._load_metadata('asdf/asdf')
-    assert metadata_none is None

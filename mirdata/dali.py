@@ -36,9 +36,6 @@ except ImportError as E:
     )
     raise
 
-import mirdata.track as track
-import mirdata.utils as utils
-
 DATASET_DIR = 'DALI'
 
 METADATA_REMOTE = download_utils.RemoteFileMetadata(
@@ -200,6 +197,8 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -303,7 +302,8 @@ def load_annotations_granularity(annotations_path, granularity):
 
     """
     if not os.path.exists(annotations_path):
-        return None
+        raise IOError("annotations_path {} does not exist".format(annotations_path))
+
     try:
         with gzip.open(annotations_path, 'rb') as f:
             output = pickle.load(f)
@@ -339,7 +339,8 @@ def load_annotations_class(annotations_path):
 
     """
     if not os.path.exists(annotations_path):
-        return None
+        raise IOError("annotations_path {} does not exist".format(annotations_path))
+
     try:
         with gzip.open(annotations_path, 'rb') as f:
             output = pickle.load(f)

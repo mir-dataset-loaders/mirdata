@@ -74,10 +74,6 @@ def test_load_pitch():
     assert np.array_equal(pitch_data.frequencies, np.array([0.0, 191.877]))
     assert np.array_equal(pitch_data.confidence, np.array([0.0, 1.0]))
 
-    # load a file which doesn't exist
-    pitch_data_none = medleydb_pitch.load_pitch('fake/file/path')
-    assert pitch_data_none is None
-
 
 def test_load_metadata():
     data_home = 'tests/resources/mir_datasets/MedleyDB-Pitch'
@@ -91,6 +87,3 @@ def test_load_metadata():
         'title': 'NightOwl',
         'genre': 'Singer/Songwriter',
     }
-
-    metadata_none = medleydb_pitch._load_metadata('asdf/asdf')
-    assert metadata_none is None

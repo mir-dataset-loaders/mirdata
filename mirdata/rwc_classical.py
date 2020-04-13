@@ -195,6 +195,9 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
     return librosa.load(audio_path, sr=None, mono=True)
 
 
@@ -278,7 +281,8 @@ def load(data_home=None):
 
 def load_sections(sections_path):
     if not os.path.exists(sections_path):
-        return None
+        raise IOError("sections_path {} does not exist".format(sections_path))
+
     begs = []  # timestamps of section beginnings
     ends = []  # timestamps of section endings
     secs = []  # section labels
@@ -324,7 +328,8 @@ def _position_in_bar(beat_positions, beat_times):
 
 def load_beats(beats_path):
     if not os.path.exists(beats_path):
-        return None
+        raise IOError("beats_path {} does not exist".format(beats_path))
+
     beat_times = []  # timestamps of beat interval beginnings
     beat_positions = []  # beat position inside the bar
 

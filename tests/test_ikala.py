@@ -89,10 +89,6 @@ def test_load_f0():
     assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.946404518887]))
     assert np.array_equal(f0_data.confidence, np.array([0.0, 1.0]))
 
-    # load a file which doesn't exist
-    f0_data_none = ikala.load_f0('fake/file/path')
-    assert f0_data_none is None
-
 
 def test_load_lyrics():
     # load a file without pronunciations
@@ -128,10 +124,6 @@ def test_load_lyrics():
     assert np.array_equal(lyrics_data_pronun.end_times, np.array([0.189, 1.415]))
     assert np.array_equal(lyrics_data_pronun.lyrics, np.array(['ASDF', 'EVERYBODY']))
     assert np.array_equal(lyrics_data_pronun.pronunciations, np.array(['t i au', None]))
-
-    # load a file which doesn't exist
-    lyrics_data_none = ikala.load_lyrics('fake/path')
-    assert lyrics_data_none is None
 
 
 def test_load_metadata():

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import importlib
+import inspect
 from inspect import signature
 import io
 import os
@@ -106,3 +107,41 @@ def test_track():
 
         track_custom = dataset.Track(trackid, data_home='casa/de/data')
         assert track_custom._data_home == 'casa/de/data'
+
+
+# for load_* functions which require more than one argument
+# module_name : {function_name: {parameter2: value, parameter3: value}}
+EXCEPTIONS = {
+    'dali': {'load_annotations_granularity': {'granularity': 'notes'}},
+    'guitarset': {
+        'load_pitch_contour': {'string_num': 1},
+        'load_note_ann': {'string_num': 1}
+    },
+}
+
+
+def test_load_methods():
+    for dataset in DATASETS:
+        dataset_name = dataset.__name__.split('.')[1]
+
+        all_methods = dir(dataset)
+        load_methods = [
+            getattr(dataset, m) for m in all_methods if m.startswith('load_')
+        ]
+        for load_method in load_methods:
+            method_name = load_method.__name__
+            params = [
+                p
+                for p in signature(load_method).parameters.values()
+                if p.default == inspect._empty
+            ]  # get list of parameters that don't have defaults
+
+            # add to the EXCEPTIONS dictionary above if your load_* function needs
+            # more than one argument.
+            if dataset_name in EXCEPTIONS and method_name in EXCEPTIONS[dataset_name]:
+                extra_params = EXCEPTIONS[dataset_name][method_name]
+                with pytest.raises(IOError):
+                    load_method("a/fake/filepath", **extra_params)
+            else:
+                with pytest.raises(IOError):
+                    load_method("a/fake/filepath")
