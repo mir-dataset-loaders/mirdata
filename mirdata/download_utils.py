@@ -55,40 +55,33 @@ def downloader(
 
     if remotes is not None:
         if partial_download is not None:
-            if not isinstance(partial_download, list):
-                raise TypeError(
-                    'partial_download must be a list which is a subset of '
-                    + '{}'.format(remotes.keys())
-                )
             # check the keys in partial_download are in the download dict
-            for key in partial_download:
-                if key not in remotes.keys():
-                    raise KeyError(
-                        '{} not found. List items in partial_download should be one of '
-                        + '{}'.format(key, remotes.keys())
+            if not isinstance(partial_download, list) or any(
+                [k not in remotes for k in partial_download]
+            ):
+                raise ValueError(
+                    'partial_download must be a list which is a subset of {}'.format(
+                        remotes.keys()
                     )
+                )
             objs_to_download = partial_download
         else:
             objs_to_download = list(remotes.keys())
 
-        start_download_message = """
-                Starting to download the list of files {} to folder {}
-            """.format(
-            objs_to_download, save_dir
-        )
-        print(start_download_message)
+        print("Starting to download {} to folder {}".format(objs_to_download, save_dir))
 
         for k in objs_to_download:
-            extension = os.path.splitext(remotes[k].url)[-1]
+            print("> downloading {}".format(k))
+            extension = os.path.splitext(remotes[k].filename)[-1]
             if '.zip' in extension:
                 download_zip_file(remotes[k], save_dir, force_overwrite, cleanup)
             elif '.gz' in extension or '.tar' in extension:
                 download_tar_file(remotes[k], save_dir, force_overwrite, cleanup)
             else:
                 download_from_remote(remotes[k], save_dir, force_overwrite)
-    else:
-        if info_message is not None:
-            print(info_message)
+
+    if info_message is not None:
+        print(info_message)
 
 
 class DownloadProgressBar(tqdm):

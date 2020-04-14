@@ -243,7 +243,7 @@ def download(
 
     download_utils.downloader(
         data_home,
-        download=REMOTES,
+        remotes=REMOTES,
         partial_download=partial_download,
         info_message=download_message,
         force_overwrite=force_overwrite,
