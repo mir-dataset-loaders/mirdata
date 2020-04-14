@@ -5,11 +5,12 @@ import inspect
 from inspect import signature
 import io
 import os
+import requests
 import sys
 import pytest
 
 import mirdata
-import mirdata.track as track
+from mirdata import track
 from tests.test_utils import DEFAULT_DATA_HOME
 
 DATASETS = [importlib.import_module("mirdata.{}".format(d)) for d in mirdata.__all__]
@@ -35,13 +36,41 @@ def test_cite():
         sys.stdout = sys.__stdout__
 
 
-def test_download():
+KNOWN_ISSUES = {'gtzan_genre': ['all']}  # issue #242, remove when fixed
+
+
+def test_download(mocker):
     for dataset in DATASETS:
+        dataset_name = dataset.__name__.split('.')[1]
+        print(dataset_name)
+
         assert hasattr(dataset, 'download')
         assert hasattr(dataset.download, '__call__')
         params = signature(dataset.download).parameters
         assert 'data_home' in params
         assert params['data_home'].default is None
+
+        # check that the download method can be called without errors
+        if hasattr(dataset, 'REMOTES'):
+            mock_downloader = mocker.patch.object(dataset, 'REMOTES')
+            dataset.download()
+            mocker.resetall()
+
+            # check that links are online
+            for key in dataset.REMOTES:
+                # skip this test if it's in known issues
+                if dataset_name in KNOWN_ISSUES and key in KNOWN_ISSUES[dataset_name]:
+                    continue
+
+                url = dataset.REMOTES[key].url
+                try:
+                    request = requests.head(url)
+                    assert request.ok
+                except requests.exceptions.ConnectionError:
+                    print('Link {} for {} is unreachable'.format(url, dataset_name))
+                    assert False
+        else:
+            dataset.download()
 
 
 # This is magically skipped by the the remote fixture `skip_local` in conftest.py
@@ -115,7 +144,7 @@ EXCEPTIONS = {
     'dali': {'load_annotations_granularity': {'granularity': 'notes'}},
     'guitarset': {
         'load_pitch_contour': {'string_num': 1},
-        'load_note_ann': {'string_num': 1}
+        'load_note_ann': {'string_num': 1},
     },
 }
 
