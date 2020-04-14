@@ -142,7 +142,7 @@ from mirdata import utils
 
 DATASET_DIR = 'Example'
 # -- REMOTES is a dictionary containing all files that need to be downloaded.
-# -- The keys should be descriptive (e.g. 'annotations', 'audio')  
+# -- The keys should be descriptive (e.g. 'annotations', 'audio')
 REMOTES = {
     'remote_data': download_utils.RemoteFileMetadata(
     filename='a_zip_file.zip',
@@ -265,7 +265,7 @@ def load_audio(audio_path):
 def download(
     data_home=None, partial_download=None, force_overwrite=False, cleanup=False
 ):
-    """Download  Dataset .
+    """Download the dataset.
     The audio files are not provided.
 
     Args:
@@ -420,7 +420,7 @@ Finally, there is one local test you should run, which we can't easily run in ou
 ```
 pytest -s tests/test_full_dataset.py --local --dataset my_dataset
 ```
-Where `my_dataset` is the name of the module of the dataset you added. The `-s` tells pytest not to skip print statments, which is useful here for seeing the download progress bar when testing the download function. 
+Where `my_dataset` is the name of the module of the dataset you added. The `-s` tells pytest not to skip print statments, which is useful here for seeing the download progress bar when testing the download function.
 
 This tests that your dataset downloads, validates, and loads properly for every track.
 This test takes a long time for some datasets :( but it's important.
