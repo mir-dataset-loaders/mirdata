@@ -57,7 +57,7 @@ from mirdata import download_utils, jams_utils, track, utils
 DATASET_DIR = 'Groove-MIDI'
 
 REMOTES = {
-    'audio': download_utils.RemoteFileMetadata(
+    'all': download_utils.RemoteFileMetadata(
         filename='groove-v1-0.0.zip',
         url='http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip',
         checksum='99db7e2a087761a913b2abfb19e86181',
@@ -387,7 +387,7 @@ def download(
             Whether to overwrite the existing downloaded data
         partial_download (list):
             List indicating what to partially download. The list can include any of:
-                * `'audio'` all files
+                * `'all'` all files
             If `None`, all data is downloaded. Note this makes sense in other datasets
             with multiple remote files to download.
         cleanup (bool):

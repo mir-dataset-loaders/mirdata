@@ -13,18 +13,26 @@ import mirdata
 
 @pytest.fixture()
 def dataset(test_dataset):
+    if test_dataset == '':
+        return None
+    elif test_dataset not in mirdata.__all__:
+        raise ValueError("{} is not a dataset in mirdata".format(test_dataset))
+
     return importlib.import_module("mirdata.{}".format(test_dataset))
 
 
 @pytest.fixture()
 def data_home_dir(dataset):
+    if dataset is None:
+        return None
     return os.path.join('tests/resources/mir_datasets_full', dataset.DATASET_DIR)
 
 
 # This is magically skipped by the the remote fixture `skip_remote` in conftest.py
 # when tests are run without the --local flag
-def test_download(skip_remote, dataset, data_home_dir, test_dataset, skip_download):
-    assert test_dataset in mirdata.__all__
+def test_download(skip_remote, dataset, data_home_dir, skip_download):
+    if dataset is None:
+        pytest.skip()
 
     # download the dataset
     if not skip_download:
@@ -38,6 +46,9 @@ def test_download(skip_remote, dataset, data_home_dir, test_dataset, skip_downlo
 
 
 def test_validation(skip_remote, dataset, data_home_dir):
+    if dataset is None:
+        pytest.skip()
+
     # run validation
     missing_files, invalid_checksums = dataset.validate(
         data_home=data_home_dir, silence=True
@@ -48,6 +59,9 @@ def test_validation(skip_remote, dataset, data_home_dir):
 
 
 def test_load(skip_remote, dataset, data_home_dir):
+    if dataset is None:
+        pytest.skip()
+
     # run load
     all_data = dataset.load(data_home=data_home_dir)
 
