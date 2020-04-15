@@ -261,7 +261,10 @@ def load_audio(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
-
+# -- the partial_download argument can be removed if `dataset.REMOTES` is missing/has only one value
+# -- the force_overwrite argument can be removed if the dataset does not download anything 
+# -- (i.e. there is no `dataset.REMOTES`) 
+# -- the cleanup argument can be removed if the dataset has no tar or zip files in `dataset.REMOTES`.
 def download(
     data_home=None, partial_download=None, force_overwrite=False, cleanup=False
 ):

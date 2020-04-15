@@ -204,7 +204,7 @@ def load_mix_audio(audio_path):
     return 2.0 * mixed_audio, sr
 
 
-def download(data_home=None):
+def download(data_home=None, force_overwrite=False):
     """Download iKala Dataset. However, iKala dataset is not available for
     download anymore. This function prints a helper message to organize
     pre-downloaded iKala dataset.
@@ -231,7 +231,9 @@ def download(data_home=None):
     )
 
     download_utils.downloader(
-        data_home, remotes=REMOTES, info_message=download_message,
+        data_home, remotes=REMOTES,
+        info_message=download_message,
+        force_overwrite=force_overwrite
     )
 
 
