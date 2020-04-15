@@ -64,7 +64,7 @@ def test_downloader(mocker, mock_path, capsys):
 
     # tar only
     download_utils.downloader('a', remotes={'b': tar_remote})
-    mock_tar.assert_called_once_with(tar_remote, 'a', False, False)
+    mock_tar.assert_called_once_with(tar_remote, 'a', False, True)
     mocker.resetall()
 
     # file only
