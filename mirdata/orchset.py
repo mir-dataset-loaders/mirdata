@@ -239,7 +239,7 @@ def load_audio_stereo(audio_path):
 
 
 def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
 ):
     """Download ORCHSET Dataset.
 

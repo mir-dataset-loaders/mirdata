@@ -205,7 +205,7 @@ def load_mix_audio(audio_path):
 
 
 def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
 ):
     """Download iKala Dataset. However, iKala dataset is not available for
     download anymore. This function prints a helper message to organize

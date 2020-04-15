@@ -28,7 +28,7 @@ def downloader(
     partial_download=None,
     info_message=None,
     force_overwrite=False,
-    cleanup=False,
+    cleanup=True,
 ):
     """Download data to `save_dir` and optionally print a message.
 
@@ -156,7 +156,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     return download_path
 
 
-def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=False):
+def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
     """Download and unzip a zip file.
 
     Args:
@@ -173,7 +173,7 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=False):
     unzip(zip_download_path, cleanup=cleanup)
 
 
-def unzip(zip_path, cleanup=False):
+def unzip(zip_path, cleanup=True):
     """Unzip a zip file inside it's current directory.
 
     Args:
@@ -188,7 +188,7 @@ def unzip(zip_path, cleanup=False):
         os.remove(zip_path)
 
 
-def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=False):
+def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=True):
     """Download and untar a tar file.
 
     Args:
@@ -201,7 +201,7 @@ def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=False):
     untar(tar_download_path, cleanup=cleanup)
 
 
-def untar(tar_path, cleanup=False):
+def untar(tar_path, cleanup=True):
     """Untar a tar file inside it's current directory.
 
     Args:

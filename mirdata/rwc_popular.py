@@ -232,7 +232,7 @@ class Track(track.Track):
 
 
 def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
 ):
     """Download the RWC Popular (annotations and metadata).
     The audio files are not provided due to copyright issues.

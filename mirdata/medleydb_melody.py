@@ -159,7 +159,7 @@ def load_audio(audio_path):
 
 
 def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
 ):
     """MedleyDB is not available for downloading directly.
     This function prints a helper message to download MedleyDB
