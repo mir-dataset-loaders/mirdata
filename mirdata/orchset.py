@@ -238,9 +238,7 @@ def load_audio_stereo(audio_path):
     return librosa.load(audio_path, sr=None, mono=False)
 
 
-def download(
-    data_home=None, force_overwrite=False, cleanup=True
-):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download ORCHSET Dataset.
 
     Args:

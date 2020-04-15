@@ -151,9 +151,7 @@ def track_ids():
     return list(DATA.index.keys())
 
 
-def download(
-    data_home=None, force_overwrite=False, cleanup=True
-):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download the GTZAN-Genre dataset.
 
     Args:

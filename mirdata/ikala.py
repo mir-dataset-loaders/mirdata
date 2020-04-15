@@ -231,9 +231,7 @@ def download(data_home=None):
     )
 
     download_utils.downloader(
-        data_home,
-        remotes=REMOTES,
-        info_message=download_message,
+        data_home, remotes=REMOTES, info_message=download_message,
     )
 
 

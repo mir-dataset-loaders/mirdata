@@ -237,9 +237,7 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(
-    data_home=None, force_overwrite=False, cleanup=True
-):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download SALAMI Dataset (annotations).
     The audio files are not provided.
 

@@ -374,9 +374,7 @@ def load_midi(midi_path):
     return pretty_midi.PrettyMIDI(midi_path)
 
 
-def download(
-    data_home=None, force_overwrite=False, cleanup=True
-):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download Groove MIDI.
 
     Args:
