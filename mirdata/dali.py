@@ -204,7 +204,7 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False):
+def download(data_home=None):
     """DALI is not available for downloading directly.
     This function prints a helper message to download DALI
     through zenodo.org.
@@ -237,7 +237,6 @@ def download(data_home=None, force_overwrite=False):
         data_home,
         remotes=REMOTES,
         info_message=info_message,
-        force_overwrite=force_overwrite,
     )
 
 

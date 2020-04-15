@@ -158,9 +158,7 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
-):
+def download(data_home=None):
     """MedleyDB is not available for downloading directly.
     This function prints a helper message to download MedleyDB
     through zenodo.org.
@@ -169,14 +167,6 @@ def download(
         data_home (str):
             Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
-        partial_download (list):
-            List indicating what to partially download. The list can include any of:
-             If `None`, all data is downloaded. Note this makes sense in other datasets
-             with multiple remote files to download.
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
     """
 
     if data_home is None:
@@ -197,10 +187,7 @@ def download(
     download_utils.downloader(
         data_home,
         remotes=None,
-        partial_download=partial_download,
         info_message=info_message,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
     )
 
 
