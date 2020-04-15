@@ -16,23 +16,23 @@ The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
 existing ones:
 
 * The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000
-measures of drumming.
+  measures of drumming.
 * Each performance was played along with a metronome set at a specific tempo
-by the drummer.
+  by the drummer.
 * The data includes performances by a total of 10 drummers, with more than 80%
-of duration coming from hired professionals. The professionals were able to
-improvise in a wide range of styles, resulting in a diverse dataset.
+  of duration coming from hired professionals. The professionals were able to
+  improvise in a wide range of styles, resulting in a diverse dataset.
 * The drummers were instructed to play a mix of long sequences (several minutes
-of continuous playing) and short beats and fills.
+  of continuous playing) and short beats and fills.
 * Each performance is annotated with a genre (provided by the drummer), tempo,
-and anonymized drummer ID.
+  and anonymized drummer ID.
 * Most of the performances are in 4/4 time, with a few examples from other time
-signatures.
+  signatures.
 * Four drummers were asked to record the same set of 10 beats in their own
-style. These are included in the test set split, labeled eval-session/groove1-10.
+  style. These are included in the test set split, labeled eval-session/groove1-10.
 * In addition to the MIDI recordings that are the primary source of data for the
-experiments in this work, the authors captured the synthesized audio outputs of
-the drum set and aligned them to within 2ms of the corresponding MIDI files.
+  experiments in this work, the authors captured the synthesized audio outputs of
+  the drum set and aligned them to within 2ms of the corresponding MIDI files.
 
 A train/validation/test split configuration is provided for easier comparison of
 model accuracy on various tasks.
@@ -242,7 +242,7 @@ class Track(track.Track):
         audio_path (str): Path to the audio file
         duration (float): Duration of the midi file in seconds
         split (str): Whether the track is for a train/valid/test set. One of
-        'train', 'valid' or 'test'.
+            'train', 'valid' or 'test'.
     """
 
     def __init__(self, track_id, data_home=None):

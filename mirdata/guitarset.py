@@ -8,6 +8,7 @@ downbeats, and keys.
 
 GuitarSet contains 360 excerpts that are close to 30 seconds in length.
 The 360 excerpts are the result of the following combinations:
+
 - 6 players
 - 2 versions: comping (harmonic accompaniment) and soloing (melodic improvisation)
 - 5 styles: Rock, Singer-Songwriter, Bossa Nova, Jazz, and Funk
@@ -21,6 +22,7 @@ signals for each string separately, allowing automated note-level annotation.
 Excerpts are recorded with both the hexaphonic pickup and a Neumann U-87
 condenser microphone as reference.
 3 audio recordings are provided with each excerpt with the following suffix:
+
 - hex: original 6 channel wave file from hexaphonic pickup
 - hex_cln: hex wave files with interference removal applied
 - mic: monophonic recording from reference microphone
@@ -28,14 +30,17 @@ condenser microphone as reference.
 
 Each of the 360 excerpts has an accompanying JAMS file which stores 16 annotations.
 Pitch:
+
 - 6 pitch_contour annotations (1 per string)
 - 6 midi_note annotations (1 per string)
 
 Beat and Tempo:
+
 - 1 beat_position annotation
 - 1 tempo annotation
 
 Chords:
+
 - 2 chord annotations: instructed and performed. The instructed chord annotation
 is a digital version of the lead sheet that's provided to the player, and the
 performed chord annotations are inferred from note annotations, using
