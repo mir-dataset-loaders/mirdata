@@ -291,7 +291,7 @@ def download(
 ):
     """Download GuitarSet.
 
-        Args:
+    Args:
         data_home (str):
             Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`

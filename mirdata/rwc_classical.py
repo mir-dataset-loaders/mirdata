@@ -217,11 +217,11 @@ def download(
         force_overwrite (bool):
             Whether to overwrite the existing downloaded data
         partial_download (list):
-            List indicating what to partially download. The list can include any of:
-             * `'annotations_beat'` the beat annotation files
-             * `'annotations_sections'` the sections annotation files
-             * `'metadata'` the metadata files
-             If `None`, all data is downloaded.
+            List indicating what to partially download. The list can include any of
+            * `'annotations_beat'` the beat annotation files
+            * `'annotations_sections'` the sections annotation files
+            * `'metadata'` the metadata files
+            If `None`, all data is downloaded.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
 

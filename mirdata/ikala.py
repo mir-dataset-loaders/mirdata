@@ -220,8 +220,8 @@ def download(
         partial_download (list):
             List indicating what to partially download. The list can include any of:
                 * `'metadata'` the annotation files
-             If `None`, all data is downloaded. Note this makes sense in other datasets
-             with multiple remote files to download.
+            If `None`, all data is downloaded. Note this makes sense in other datasets
+            with multiple remote files to download.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
     """

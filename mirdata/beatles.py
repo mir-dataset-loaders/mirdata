@@ -143,8 +143,8 @@ def download(
         force_overwrite (bool):
             Whether to overwrite the existing downloaded data
         partial_download (list):
-            List indicating what to partially download. The list can include any of:
-                * `'annotations'` all files
+            List indicating what to partially download. The list can include any of
+            * `'annotations'` all files
             If `None`, all data is downloaded. Note this makes sense in other datasets
             with multiple remote files to download.
         cleanup (bool):
