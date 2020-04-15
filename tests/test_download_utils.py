@@ -74,19 +74,19 @@ def test_downloader(mocker, mock_path, capsys):
 
     # zip and tar
     download_utils.downloader('a', remotes={'b': zip_remote, 'c': tar_remote})
-    mock_zip.assert_called_once_with(zip_remote, 'a', False, False)
-    mock_tar.assert_called_once_with(tar_remote, 'a', False, False)
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
+    mock_tar.assert_called_once_with(tar_remote, 'a', False, True)
     mocker.resetall()
 
     # zip and file
     download_utils.downloader('a', remotes={'b': zip_remote, 'c': file_remote})
-    mock_zip.assert_called_once_with(zip_remote, 'a', False, False)
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
     mock_file.assert_called_once_with(file_remote, 'a', False)
     mocker.resetall()
 
     # tar and file
     download_utils.downloader('a', remotes={'b': tar_remote, 'c': file_remote})
-    mock_tar.assert_called_once_with(tar_remote, 'a', False, False)
+    mock_tar.assert_called_once_with(tar_remote, 'a', False, True)
     mock_file.assert_called_once_with(file_remote, 'a', False)
     mocker.resetall()
 
@@ -94,9 +94,9 @@ def test_downloader(mocker, mock_path, capsys):
     download_utils.downloader(
         'a', remotes={'b': zip_remote, 'c': tar_remote, 'd': file_remote}
     )
-    mock_zip.assert_called_once_with(zip_remote, 'a', False, False)
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
     mock_file.assert_called_once_with(file_remote, 'a', False)
-    mock_tar.assert_called_once_with(tar_remote, 'a', False, False)
+    mock_tar.assert_called_once_with(tar_remote, 'a', False, True)
     mocker.resetall()
 
     # test partial download
@@ -105,7 +105,7 @@ def test_downloader(mocker, mock_path, capsys):
         remotes={'b': zip_remote, 'c': tar_remote, 'd': file_remote},
         partial_download=['b', 'd'],
     )
-    mock_zip.assert_called_once_with(zip_remote, 'a', False, False)
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
     mock_file.assert_called_once_with(file_remote, 'a', False)
     mocker.resetall()
 
