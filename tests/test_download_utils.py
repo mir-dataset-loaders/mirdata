@@ -59,7 +59,7 @@ def test_downloader(mocker, mock_path, capsys):
 
     # Zip only
     download_utils.downloader('a', remotes={'b': zip_remote})
-    mock_zip.assert_called_once_with(zip_remote, 'a', False, False)
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
     mocker.resetall()
 
     # tar only
@@ -194,7 +194,7 @@ def test_download_zip_file(mocker, mock_file, mock_unzip):
     download_utils.download_zip_file("a", "b", True)
 
     mock_file.assert_called_once_with("a", "b", True)
-    mock_unzip.assert_called_once_with("foo", cleanup=False)
+    mock_unzip.assert_called_once_with("foo", cleanup=True)
     if os.path.exists('a'):
         shutil.rmtree('a')
 
@@ -204,6 +204,6 @@ def test_download_tar_file(mocker, mock_file, mock_untar):
     download_utils.download_tar_file("a", "b", True)
 
     mock_file.assert_called_once_with("a", "b", True)
-    mock_untar.assert_called_once_with("foo", cleanup=False)
+    mock_untar.assert_called_once_with("foo", cleanup=True)
     if os.path.exists('a'):
         shutil.rmtree('a')
