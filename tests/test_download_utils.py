@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import shutil
 import sys
 
 from mirdata import download_utils
@@ -40,51 +41,94 @@ def mock_path(mocker, mock_file):
     return mocker.patch.object(Path, 'mkdir')
 
 
-def test_downloader(mocker, mock_path):
+def test_downloader(mocker, mock_path, capsys):
     mock_zip = mocker.patch.object(download_utils, 'download_zip_file')
     mock_tar = mocker.patch.object(download_utils, 'download_tar_file')
     mock_file = mocker.patch.object(download_utils, 'download_from_remote')
+
+    zip_remote = download_utils.RemoteFileMetadata(
+        filename='remote.zip', url='a', checksum=('1234'), destination_dir=None
+    )
+    tar_remote = download_utils.RemoteFileMetadata(
+        filename='remote.tar.gz', url='a', checksum=('1234'), destination_dir=None
+    )
+
+    file_remote = download_utils.RemoteFileMetadata(
+        filename='remote.txt', url='a', checksum=('1234'), destination_dir=None
+    )
+
     # Zip only
-    download_utils.downloader('a', zip_downloads=['foo'])
-    mock_zip.assert_called_once_with('foo', 'a', False, False)
+    download_utils.downloader('a', remotes={'b': zip_remote})
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
     mocker.resetall()
 
     # tar only
-    download_utils.downloader('a', tar_downloads=['foo'])
-    mock_tar.assert_called_once_with('foo', 'a', False, False)
+    download_utils.downloader('a', remotes={'b': tar_remote})
+    mock_tar.assert_called_once_with(tar_remote, 'a', False, True)
     mocker.resetall()
 
     # file only
-    download_utils.downloader('a', file_downloads=['foo'])
-    mock_file.assert_called_once_with('foo', 'a', False)
+    download_utils.downloader('a', remotes={'b': file_remote})
+    mock_file.assert_called_once_with(file_remote, 'a', False)
     mocker.resetall()
 
     # zip and tar
-    download_utils.downloader('a', zip_downloads=['foo'], tar_downloads=['foo'])
-    mock_zip.assert_called_once_with('foo', 'a', False, False)
-    mock_tar.assert_called_once_with('foo', 'a', False, False)
+    download_utils.downloader('a', remotes={'b': zip_remote, 'c': tar_remote})
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
+    mock_tar.assert_called_once_with(tar_remote, 'a', False, True)
     mocker.resetall()
 
     # zip and file
-    download_utils.downloader('a', zip_downloads=['foo'], file_downloads=['foo'])
-    mock_zip.assert_called_once_with('foo', 'a', False, False)
-    mock_file.assert_called_once_with('foo', 'a', False)
+    download_utils.downloader('a', remotes={'b': zip_remote, 'c': file_remote})
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
+    mock_file.assert_called_once_with(file_remote, 'a', False)
     mocker.resetall()
 
     # tar and file
-    download_utils.downloader('a', tar_downloads=['foo'], file_downloads=['foo'])
-    mock_tar.assert_called_once_with('foo', 'a', False, False)
-    mock_file.assert_called_once_with('foo', 'a', False)
+    download_utils.downloader('a', remotes={'b': tar_remote, 'c': file_remote})
+    mock_tar.assert_called_once_with(tar_remote, 'a', False, True)
+    mock_file.assert_called_once_with(file_remote, 'a', False)
     mocker.resetall()
 
     # zip and tar and file
     download_utils.downloader(
-        'a', zip_downloads=['foo'], tar_downloads=['foo'], file_downloads=['foo']
+        'a', remotes={'b': zip_remote, 'c': tar_remote, 'd': file_remote}
     )
-    mock_zip.assert_called_once_with('foo', 'a', False, False)
-    mock_file.assert_called_once_with('foo', 'a', False)
-    mock_tar.assert_called_once_with('foo', 'a', False, False)
-    mock_file.assert_called_once_with('foo', 'a', False)
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
+    mock_file.assert_called_once_with(file_remote, 'a', False)
+    mock_tar.assert_called_once_with(tar_remote, 'a', False, True)
+    mocker.resetall()
+
+    # test partial download
+    download_utils.downloader(
+        'a',
+        remotes={'b': zip_remote, 'c': tar_remote, 'd': file_remote},
+        partial_download=['b', 'd'],
+    )
+    mock_zip.assert_called_once_with(zip_remote, 'a', False, True)
+    mock_file.assert_called_once_with(file_remote, 'a', False)
+    mocker.resetall()
+
+    # test bad type partial download
+    with pytest.raises(ValueError):
+        download_utils.downloader(
+            'a',
+            remotes={'b': zip_remote, 'c': tar_remote, 'd': file_remote},
+            partial_download='b',
+        )
+
+    with pytest.raises(ValueError):
+        download_utils.downloader(
+            'a',
+            remotes={'b': zip_remote, 'c': tar_remote, 'd': file_remote},
+            partial_download=['d', 'e'],
+        )
+
+    # test info message
+    captured = capsys.readouterr()  # skip everything printed before this
+    download_utils.downloader('a', info_message='I am a message!')
+    captured = capsys.readouterr()
+    assert captured.out == "I am a message!\n"
 
 
 def test_download_from_remote(httpserver, tmpdir):
@@ -132,14 +176,14 @@ def test_download_from_remote_raises_IOError(httpserver, tmpdir):
 
 
 def test_unzip():
-    download_utils.unzip('tests/resources/file.zip')
+    download_utils.unzip('tests/resources/file.zip', cleanup=False)
     expected_file_location = os.path.join('tests', 'resources', 'file.txt')
     assert os.path.exists(expected_file_location)
     os.remove(expected_file_location)
 
 
 def test_untar():
-    download_utils.untar('tests/resources/file.tar.gz')
+    download_utils.untar('tests/resources/file.tar.gz', cleanup=False)
     expected_file_location = os.path.join('tests', 'resources', 'file', 'file.txt')
     assert os.path.exists(expected_file_location)
     os.remove(expected_file_location)
@@ -150,7 +194,9 @@ def test_download_zip_file(mocker, mock_file, mock_unzip):
     download_utils.download_zip_file("a", "b", True)
 
     mock_file.assert_called_once_with("a", "b", True)
-    mock_unzip.assert_called_once_with("foo", cleanup=False)
+    mock_unzip.assert_called_once_with("foo", cleanup=True)
+    if os.path.exists('a'):
+        shutil.rmtree('a')
 
 
 def test_download_tar_file(mocker, mock_file, mock_untar):
@@ -158,4 +204,6 @@ def test_download_tar_file(mocker, mock_file, mock_untar):
     download_utils.download_tar_file("a", "b", True)
 
     mock_file.assert_called_once_with("a", "b", True)
-    mock_untar.assert_called_once_with("foo", cleanup=False)
+    mock_untar.assert_called_once_with("foo", cleanup=True)
+    if os.path.exists('a'):
+        shutil.rmtree('a')

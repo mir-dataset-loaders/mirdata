@@ -130,13 +130,14 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False):
+def download(data_home=None):
     """MedleyDB is not available for downloading directly.
     This function prints a helper message to download MedleyDB
     through zenodo.org.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
     """
 
@@ -155,9 +156,7 @@ def download(data_home=None, force_overwrite=False):
         data_home=data_home
     )
 
-    download_utils.downloader(
-        data_home, info_message=info_message, force_overwrite=force_overwrite
-    )
+    download_utils.downloader(data_home, info_message=info_message)
 
 
 def validate(data_home=None, silence=False):

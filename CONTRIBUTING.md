@@ -141,14 +141,16 @@ from mirdata import track
 from mirdata import utils
 
 DATASET_DIR = 'Example'
-# -- info for any files that need to be downloaded
-REMOTE_ZIP = download_utils.RemoteFileMetadata(
+# -- REMOTES is a dictionary containing all files that need to be downloaded.
+# -- The keys should be descriptive (e.g. 'annotations', 'audio')
+REMOTES = {
+    'remote_data': download_utils.RemoteFileMetadata(
     filename='a_zip_file.zip',
     url='http://website/hosting/the/zipfile.zip',
     checksum='00000000000000000000000000000000',  # -- the md5 checksum
     destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
-)
-
+    )
+}
 
 # -- change this to load any top-level metadata
 ## delete this function if you don't have global metadata
@@ -259,15 +261,29 @@ def load_audio(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
-
-def download(data_home=None, force_overwrite=False):
+# -- the partial_download argument can be removed if `dataset.REMOTES` is missing/has only one value
+# -- the force_overwrite argument can be removed if the dataset does not download anything
+# -- (i.e. there is no `dataset.REMOTES`)
+# -- the cleanup argument can be removed if the dataset has no tar or zip files in `dataset.REMOTES`.
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+):
     """Download the dataset.
+    The audio files are not provided.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool): If True, existing files are overwritten by the
-            downloaded files.
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        partial_download (list):
+             List indicating what to partially download. The list can include any of:
+                * `'remote_data_1'` the remote_data_1 files
+             If `None`, all data is downloaded.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
+
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
@@ -275,23 +291,17 @@ def download(data_home=None, force_overwrite=False):
     download_utils.downloader(
         # -- everything will be downloaded & uncompressed inside `data_home`
         data_home,
-        force_overwrite=force_overwrite,
-        # -- download any freely accessible zip files by adding them to this list
-        # -- this function also unzips them
-        zip_downloads=[REMOTE_ZIP],
-        # -- download any freely accessible tar files by adding them to this list
-        # -- this function also untarrs them
-        tar_downloads=[...],
-        # -- download any freely accessible uncompressed files by adding them to this list
-        file_downloads=[...],
+        # -- by default all elements in REMOTES will be downloaded
+        remotes=REMOTES,
+        # -- we allow partial downloads of the datasets containing multiple remote files
+        # -- this is done by specifying a list of keys in partial_download (when using the library)
+        partial_download=partial_download,
         # -- if you need to give the user any instructions, such as how to download
         # -- a dataset which is not freely availalbe, put them here
-        print_message=""
+        info_message=None,
+        force_overwrite=force_overwrite,
+        cleanup=cleanup,
     )
-
-    # -- if the files need to be organized in a particular way, you can call
-    # -- download_utils.downloader multiple times and change `data_home` to be
-    # -- e.g. a subfolder of data_home.
 
 
 # -- keep this function exactly as it is
@@ -409,7 +419,7 @@ Finally, there is one local test you should run, which we can't easily run in ou
 ```
 pytest -s tests/test_full_dataset.py --local --dataset my_dataset
 ```
-Where `my_dataset` is the name of the module of the dataset you added. The `-s` tells pytest not to skip print statments, which is useful here for seeing the download progress bar when testing the download function. 
+Where `my_dataset` is the name of the module of the dataset you added. The `-s` tells pytest not to skip print statments, which is useful here for seeing the download progress bar when testing the download function.
 
 This tests that your dataset downloads, validates, and loads properly for every track.
 This test takes a long time for some datasets :( but it's important.

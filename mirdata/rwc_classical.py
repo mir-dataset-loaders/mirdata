@@ -22,25 +22,28 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-METADATA_REMOTE = download_utils.RemoteFileMetadata(
-    filename='rwc-c.csv',
-    url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
-    checksum='7dbe87fedbaaa1f348625a2af1d78030',
-    destination_dir=None,
-)
 DATASET_DIR = 'RWC-Classical'
-ANNOTATIONS_REMOTE_1 = download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-C-2001.BEAT.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
-    checksum='e8ee05854833cbf5eb7280663f71c29b',
-    destination_dir='annotations',
-)
-ANNOTATIONS_REMOTE_2 = download_utils.RemoteFileMetadata(
-    filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
-    url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
-    checksum='f77bd527510376f59f5a2eed8fd7feb3',
-    destination_dir='annotations',
-)
+
+REMOTES = {
+    'annotations_beat': download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-C-2001.BEAT.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.BEAT.zip',
+        checksum='e8ee05854833cbf5eb7280663f71c29b',
+        destination_dir='annotations',
+    ),
+    'annotations_sections': download_utils.RemoteFileMetadata(
+        filename='AIST.RWC-MDB-C-2001.CHORUS.zip',
+        url='https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip',
+        checksum='f77bd527510376f59f5a2eed8fd7feb3',
+        destination_dir='annotations',
+    ),
+    'metadata': download_utils.RemoteFileMetadata(
+        filename='rwc-c.csv',
+        url='https://github.com/magdalenafuentes/metadata/archive/master.zip',
+        checksum='7dbe87fedbaaa1f348625a2af1d78030',
+        destination_dir=None,
+    ),
+}
 
 
 def _load_metadata(data_home):
@@ -201,13 +204,34 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
+):
+    """Download the RWC Classical (annotations and metadata).
+    The audio files are not provided due to copyright issues.
+
+    Args:
+        data_home (str):
+            Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        partial_download (list):
+            List indicating what to partially download. The list can include any of
+            * `'annotations_beat'` the beat annotation files
+            * `'annotations_sections'` the sections annotation files
+            * `'metadata'` the metadata files
+            If `None`, all data is downloaded.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
+
+    """
 
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     info_message = """
-        Unfortunately the audio files of the RWC-Jazz dataset are not available
+        Unfortunately the audio files of the RWC-Classical dataset are not available
         for download. If you have the RWC-Classical dataset, place the contents into a
         folder called RWC-Classical with the following structure:
             > RWC-Classical/
@@ -221,9 +245,11 @@ def download(data_home=None, force_overwrite=False):
 
     download_utils.downloader(
         data_home,
-        zip_downloads=[METADATA_REMOTE, ANNOTATIONS_REMOTE_1, ANNOTATIONS_REMOTE_2],
+        remotes=REMOTES,
+        partial_download=partial_download,
         info_message=info_message,
         force_overwrite=force_overwrite,
+        cleanup=cleanup,
     )
 
 

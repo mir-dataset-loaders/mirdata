@@ -97,12 +97,14 @@ def test_download(httpserver):
         open('tests/resources/download/groove-v1-0.0.zip', 'rb').read()
     )
 
-    groove_midi.AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
-        filename='groove-v1-0.0.zip',
-        url=httpserver.url,
-        checksum=('97a9a888d2a65cc87bb26e74df08b011'),
-        destination_dir=None,
-    )
+    groove_midi.REMOTES = {
+        'all': download_utils.RemoteFileMetadata(
+            filename='groove-v1-0.0.zip',
+            url=httpserver.url,
+            checksum=('97a9a888d2a65cc87bb26e74df08b011'),
+            destination_dir=None,
+        )
+    }
     groove_midi.download(data_home=data_home)
 
     assert os.path.exists(data_home)

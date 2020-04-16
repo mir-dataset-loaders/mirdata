@@ -23,12 +23,15 @@ from mirdata import track
 from mirdata import utils
 
 DATASET_DIR = 'Salami'
-ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
-    filename='salami-data-public-hierarchy-corrections.zip',
-    url='https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip',
-    checksum='194add2601c09a7279a7433288de81fd',
-    destination_dir=None,
-)
+
+REMOTES = {
+    'annotations': download_utils.RemoteFileMetadata(
+        filename='salami-data-public-hierarchy-corrections.zip',
+        url='https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip',
+        checksum='194add2601c09a7279a7433288de81fd',
+        destination_dir=None,
+    )
+}
 
 
 def _load_metadata(data_home):
@@ -234,15 +237,18 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download SALAMI Dataset (annotations).
     The audio files are not provided.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-        force_overwrite (bool): whether to overwrite the existing downloaded data
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
 
     """
     if data_home is None:
@@ -262,9 +268,10 @@ def download(data_home=None, force_overwrite=False):
 
     download_utils.downloader(
         data_home,
-        zip_downloads=[ANNOTATIONS_REMOTE],
+        remotes=REMOTES,
         info_message=info_message,
         force_overwrite=force_overwrite,
+        cleanup=cleanup,
     )
 
 

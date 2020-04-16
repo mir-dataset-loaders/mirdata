@@ -24,12 +24,14 @@ from mirdata import track
 from mirdata import utils
 
 
-REMOTE = download_utils.RemoteFileMetadata(
-    filename='Orchset_dataset_0.zip',
-    url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
-    checksum='cf6fe52d64624f61ee116c752fb318ca',
-    destination_dir=None,
-)
+REMOTES = {
+    'all': download_utils.RemoteFileMetadata(
+        filename='Orchset_dataset_0.zip',
+        url='https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1',
+        checksum='cf6fe52d64624f61ee116c752fb318ca',
+        destination_dir=None,
+    )
+}
 
 DATASET_DIR = 'Orchset'
 
@@ -236,20 +238,28 @@ def load_audio_stereo(audio_path):
     return librosa.load(audio_path, sr=None, mono=False)
 
 
-def download(data_home=None, force_overwrite=False):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download ORCHSET Dataset.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool): Whether to overwrite the existing downloaded data
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
 
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
-        data_home, zip_downloads=[REMOTE], force_overwrite=force_overwrite
+        data_home,
+        remotes=None,
+        info_message=None,
+        force_overwrite=force_overwrite,
+        cleanup=cleanup,
     )
 
     # files get downloaded to a folder called Orchset - move everything up a level

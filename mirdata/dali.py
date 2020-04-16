@@ -38,12 +38,14 @@ except ImportError as E:
 
 DATASET_DIR = 'DALI'
 
-METADATA_REMOTE = download_utils.RemoteFileMetadata(
-    filename='dali_metadata.json',
-    url='https://raw.githubusercontent.com/gabolsgabs/DALI/master/code/DALI/files/dali_v1_metadata.json',
-    checksum='40af5059e7aa97f81b2654758094d24b',
-    destination_dir='.',
-)
+REMOTES = {
+    'metadata': download_utils.RemoteFileMetadata(
+        filename='dali_metadata.json',
+        url='https://raw.githubusercontent.com/gabolsgabs/DALI/master/code/DALI/files/dali_v1_metadata.json',
+        checksum='40af5059e7aa97f81b2654758094d24b',
+        destination_dir='.',
+    )
+}
 
 
 def _load_metadata(data_home):
@@ -228,14 +230,11 @@ def download(data_home=None, force_overwrite=False):
         {audio_path}
     """.format(
         save_path=os.path.join(data_home, 'annotations'),
+        force_overwrite=force_overwrite,
         audio_path=os.path.join(data_home, 'audio'),
     )
-    download_utils.downloader(
-        data_home,
-        file_downloads=[METADATA_REMOTE],
-        info_message=info_message,
-        force_overwrite=force_overwrite,
-    )
+
+    download_utils.downloader(data_home, remotes=REMOTES, info_message=info_message)
 
 
 def validate(data_home=None, silence=False):
