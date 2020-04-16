@@ -1093,3 +1093,39 @@ def test_metadata():
     assert jam_1['file_metadata']['artist'] == 'Meatloaf'
     assert jam_1['file_metadata']['duration'] == 1.5
     assert jam_1['sandbox']['favourite_color'] == 'rainbow'
+
+
+def test_duration():
+    # duration from audio file
+    jam = jams_utils.jams_converter(audio_path='tests/resources/mir_datasets/iKala/Wavfile/10161_chorus.wav')
+    assert jam.file_metadata.duration == 2.0
+    assert jam.validate()
+
+    # test invalid file path
+    with pytest.raises(OSError):
+        jams_utils.jams_converter(audio_path='i/dont/exist')
+
+    jam1 = jams_utils.jams_converter(metadata={'duration': 4})
+    assert jam1.file_metadata.duration == 4.0
+    assert jam1.validate()
+
+    # test incomplete metadata
+    jam2 = jams_utils.jams_converter(metadata={'artist': 'b'})
+    with pytest.raises(jams_utils.jams.SchemaError):
+        jam2.validate()
+
+    # test metadata duration and audio file equal
+    jam3 = jams_utils.jams_converter(
+        audio_path='tests/resources/mir_datasets/iKala/Wavfile/10161_chorus.wav',
+        metadata={'duration': 2}
+    )
+    assert jam3.file_metadata.duration == 2
+    assert jam3.validate()
+
+    # test metadata and duration not equal
+    jam4 = jams_utils.jams_converter(
+        audio_path='tests/resources/mir_datasets/iKala/Wavfile/10161_chorus.wav',
+        metadata={'duration': 1000}
+    )
+    assert jam4.file_metadata.duration == 1000
+    assert jam4.validate()

@@ -135,6 +135,7 @@ class Track(track.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
+            audio_path=self.audio_path,
             f0_data=[(self.f0, None)],
             lyrics_data=[(self.lyrics, None)],
             metadata={
@@ -142,7 +143,6 @@ class Track(track.Track):
                 'singer_id': self.singer_id,
                 'track_id': self.track_id,
                 'song_id': self.song_id,
-                'duration': librosa.get_duration(self.mix_audio[0], self.mix_audio[1]),
             },
         )
 

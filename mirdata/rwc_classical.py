@@ -71,7 +71,7 @@ def _load_metadata(data_home):
         if line[0] == 'Piece No.':
             continue
         p = '00' + line[0].split('.')[1][1:]
-        track_id = 'RM-C{}'.format(p[len(p) - 3 :])
+        track_id = 'RM-C{}'.format(p[len(p) - 3:])
 
         metadata_index[track_id] = {
             'piece_number': line[0],
@@ -178,12 +178,11 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        metadata = {k: v for k, v in self._track_metadata.items() if v is not None}
-        metadata['duration'] = librosa.get_duration(self.audio[0], self.audio[1])
         return jams_utils.jams_converter(
+            audio_path=self.audio_path,
             beat_data=[(self.beats, None)],
             section_data=[(self.sections, None)],
-            metadata=metadata,
+            metadata=self._track_metadata,
         )
 
 
