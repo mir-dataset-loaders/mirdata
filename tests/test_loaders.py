@@ -44,11 +44,46 @@ def test_download(mocker):
         dataset_name = dataset.__name__.split('.')[1]
         print(dataset_name)
 
+        # test parameters & defaults
         assert hasattr(dataset, 'download')
         assert hasattr(dataset.download, '__call__')
         params = signature(dataset.download).parameters
         assert 'data_home' in params
         assert params['data_home'].default is None
+
+        # if there are no remotes, make sure partial_download,
+        # force_overwrite, and cleanup are not parameters
+        if not hasattr(dataset, 'REMOTES'):
+            assert 'partial_download' not in params
+            assert 'force_overwrite' not in params
+            assert 'cleanup' not in params
+        # if there are remotes, make sure force_overwrite is specified and
+        # the default is False
+        else:
+            assert 'force_overwrite' in params
+            assert params['force_overwrite'].default is False
+
+            # if there are remotes but only one item, make sure partial_download
+            # is not a parameter
+            if len(dataset.REMOTES) == 1:
+                assert 'partial_download' not in params
+            # if there is more than one item in remotes, make sure partial_download
+            # is a parameter and the default is None
+            else:
+                assert 'partial_download' in params
+                assert params['partial_download'].default is None
+
+            extensions = [
+                os.path.splitext(r.filename)[-1] for r in dataset.REMOTES.values()
+            ]
+            # if there are any zip or tar files to download, make sure cleanup
+            # is a parameter and its default is True
+            if any([e == '.zip' or e == '.gz' for e in extensions]):
+                assert 'cleanup' in params
+                assert params['cleanup'].default is True
+            # if there are no zip or tar files, make sure cleanup is not a parameter
+            else:
+                assert 'cleanup' not in params
 
         # check that the download method can be called without errors
         if hasattr(dataset, 'REMOTES'):

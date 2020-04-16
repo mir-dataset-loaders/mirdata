@@ -234,9 +234,7 @@ def download(data_home=None, force_overwrite=False):
         audio_path=os.path.join(data_home, 'audio'),
     )
 
-    download_utils.downloader(
-        data_home, remotes=REMOTES, info_message=info_message,
-    )
+    download_utils.downloader(data_home, remotes=REMOTES, info_message=info_message)
 
 
 def validate(data_home=None, silence=False):

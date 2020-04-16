@@ -156,9 +156,7 @@ def download(data_home=None):
         data_home=data_home
     )
 
-    download_utils.downloader(
-        data_home, info_message=info_message,
-    )
+    download_utils.downloader(data_home, info_message=info_message)
 
 
 def validate(data_home=None, silence=False):

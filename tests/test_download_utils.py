@@ -176,14 +176,14 @@ def test_download_from_remote_raises_IOError(httpserver, tmpdir):
 
 
 def test_unzip():
-    download_utils.unzip('tests/resources/file.zip')
+    download_utils.unzip('tests/resources/file.zip', cleanup=False)
     expected_file_location = os.path.join('tests', 'resources', 'file.txt')
     assert os.path.exists(expected_file_location)
     os.remove(expected_file_location)
 
 
 def test_untar():
-    download_utils.untar('tests/resources/file.tar.gz')
+    download_utils.untar('tests/resources/file.tar.gz', cleanup=False)
     expected_file_location = os.path.join('tests', 'resources', 'file', 'file.txt')
     assert os.path.exists(expected_file_location)
     os.remove(expected_file_location)
