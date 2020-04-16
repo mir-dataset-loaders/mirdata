@@ -16,23 +16,23 @@ The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
 existing ones:
 
 * The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000
-measures of drumming.
+  measures of drumming.
 * Each performance was played along with a metronome set at a specific tempo
-by the drummer.
+  by the drummer.
 * The data includes performances by a total of 10 drummers, with more than 80%
-of duration coming from hired professionals. The professionals were able to
-improvise in a wide range of styles, resulting in a diverse dataset.
+  of duration coming from hired professionals. The professionals were able to
+  improvise in a wide range of styles, resulting in a diverse dataset.
 * The drummers were instructed to play a mix of long sequences (several minutes
-of continuous playing) and short beats and fills.
+  of continuous playing) and short beats and fills.
 * Each performance is annotated with a genre (provided by the drummer), tempo,
-and anonymized drummer ID.
+  and anonymized drummer ID.
 * Most of the performances are in 4/4 time, with a few examples from other time
-signatures.
+  signatures.
 * Four drummers were asked to record the same set of 10 beats in their own
-style. These are included in the test set split, labeled eval-session/groove1-10.
+  style. These are included in the test set split, labeled eval-session/groove1-10.
 * In addition to the MIDI recordings that are the primary source of data for the
-experiments in this work, the authors captured the synthesized audio outputs of
-the drum set and aligned them to within 2ms of the corresponding MIDI files.
+  experiments in this work, the authors captured the synthesized audio outputs of
+  the drum set and aligned them to within 2ms of the corresponding MIDI files.
 
 A train/validation/test split configuration is provided for easier comparison of
 model accuracy on various tasks.
@@ -56,12 +56,14 @@ from mirdata import download_utils, jams_utils, track, utils
 
 DATASET_DIR = 'Groove-MIDI'
 
-AUDIO_MIDI_REMOTE = download_utils.RemoteFileMetadata(
-    filename='groove-v1-0.0.zip',
-    url='http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip',
-    checksum='99db7e2a087761a913b2abfb19e86181',
-    destination_dir=None,
-)
+REMOTES = {
+    'all': download_utils.RemoteFileMetadata(
+        filename='groove-v1-0.0.zip',
+        url='http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip',
+        checksum='99db7e2a087761a913b2abfb19e86181',
+        destination_dir=None,
+    )
+}
 
 DRUM_MAPPING = {
     36: {"Roland": "Kick", "General MIDI": "Bass Drum 1", "Simplified": "Bass (36)"},
@@ -240,7 +242,7 @@ class Track(track.Track):
         audio_path (str): Path to the audio file
         duration (float): Duration of the midi file in seconds
         split (str): Whether the track is for a train/valid/test set. One of
-        'train', 'valid' or 'test'.
+            'train', 'valid' or 'test'.
     """
 
     def __init__(self, track_id, data_home=None):
@@ -372,18 +374,28 @@ def load_midi(midi_path):
     return pretty_midi.PrettyMIDI(midi_path)
 
 
-def download(data_home=None):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download Groove MIDI.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
+
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
-        data_home, zip_downloads=[AUDIO_MIDI_REMOTE], cleanup=True
+        data_home,
+        remotes=REMOTES,
+        info_message=None,
+        force_overwrite=force_overwrite,
+        cleanup=cleanup,
     )
 
     # files get downloaded to a folder called groove - move everything up a level

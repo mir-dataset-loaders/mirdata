@@ -8,6 +8,7 @@ downbeats, and keys.
 
 GuitarSet contains 360 excerpts that are close to 30 seconds in length.
 The 360 excerpts are the result of the following combinations:
+
 - 6 players
 - 2 versions: comping (harmonic accompaniment) and soloing (melodic improvisation)
 - 5 styles: Rock, Singer-Songwriter, Bossa Nova, Jazz, and Funk
@@ -21,20 +22,25 @@ signals for each string separately, allowing automated note-level annotation.
 Excerpts are recorded with both the hexaphonic pickup and a Neumann U-87
 condenser microphone as reference.
 3 audio recordings are provided with each excerpt with the following suffix:
+
 - hex: original 6 channel wave file from hexaphonic pickup
 - hex_cln: hex wave files with interference removal applied
 - mic: monophonic recording from reference microphone
+- mix: monophonic mixture of original 6 channel file
 
 Each of the 360 excerpts has an accompanying JAMS file which stores 16 annotations.
 Pitch:
+
 - 6 pitch_contour annotations (1 per string)
 - 6 midi_note annotations (1 per string)
 
 Beat and Tempo:
+
 - 1 beat_position annotation
 - 1 tempo annotation
 
 Chords:
+
 - 2 chord annotations: instructed and performed. The instructed chord annotation
 is a digital version of the lead sheet that's provided to the player, and the
 performed chord annotations are inferred from note annotations, using
@@ -56,36 +62,38 @@ from mirdata import utils
 
 DATASET_DIR = 'GuitarSet'
 
-ANNOTATION_REMOTE = download_utils.RemoteFileMetadata(
-    filename='annotation.zip',
-    url='https://zenodo.org/record/3371780/files/annotation.zip?download=1',
-    checksum='b39b78e63d3446f2e54ddb7a54df9b10',
-    destination_dir='annotation',
-)
-AUDIO_HEX_CLN_REMOTE = download_utils.RemoteFileMetadata(
-    filename='audio_hex-pickup_debleeded.zip',
-    url='https://zenodo.org/record/3371780/files/audio_hex-pickup_debleeded.zip?download=1',
-    checksum='c31d97279464c9a67e640cb9061fb0c6',
-    destination_dir='audio_hex-pickup_debleeded',
-)
-AUDIO_HEX_REMOTE = download_utils.RemoteFileMetadata(
-    filename='audio_hex-pickup_original.zip',
-    url='https://zenodo.org/record/3371780/files/audio_hex-pickup_original.zip?download=1',
-    checksum='f9911bf217cb40e9e68edf3726ef86cc',
-    destination_dir='audio_hex-pickup_original',
-)
-AUDIO_MIC_REMOTE = download_utils.RemoteFileMetadata(
-    filename='audio_mono-mic.zip',
-    url='https://zenodo.org/record/3371780/files/audio_mono-mic.zip?download=1',
-    checksum='275966d6610ac34999b58426beb119c3',
-    destination_dir='audio_mono-mic',
-)
-AUDIO_MIX_REMOTE = download_utils.RemoteFileMetadata(
-    filename='audio_mono-pickup_mix.zip',
-    url='https://zenodo.org/record/3371780/files/audio_mono-pickup_mix.zip?download=1',
-    checksum='aecce79f425a44e2055e46f680e10f6a',
-    destination_dir='audio_mono-pickup_mix',
-)
+REMOTES = {
+    'annotations': download_utils.RemoteFileMetadata(
+        filename='annotation.zip',
+        url='https://zenodo.org/record/3371780/files/annotation.zip?download=1',
+        checksum='b39b78e63d3446f2e54ddb7a54df9b10',
+        destination_dir='annotation',
+    ),
+    'audio_hex_debleeded': download_utils.RemoteFileMetadata(
+        filename='audio_hex-pickup_debleeded.zip',
+        url='https://zenodo.org/record/3371780/files/audio_hex-pickup_debleeded.zip?download=1',
+        checksum='c31d97279464c9a67e640cb9061fb0c6',
+        destination_dir='audio_hex-pickup_debleeded',
+    ),
+    'audio_hex_original': download_utils.RemoteFileMetadata(
+        filename='audio_hex-pickup_original.zip',
+        url='https://zenodo.org/record/3371780/files/audio_hex-pickup_original.zip?download=1',
+        checksum='f9911bf217cb40e9e68edf3726ef86cc',
+        destination_dir='audio_hex-pickup_original',
+    ),
+    'audio_mic': download_utils.RemoteFileMetadata(
+        filename='audio_mono-mic.zip',
+        url='https://zenodo.org/record/3371780/files/audio_mono-mic.zip?download=1',
+        checksum='275966d6610ac34999b58426beb119c3',
+        destination_dir='audio_mono-mic',
+    ),
+    'audio_mix': download_utils.RemoteFileMetadata(
+        filename='audio_mono-pickup_mix.zip',
+        url='https://zenodo.org/record/3371780/files/audio_mono-pickup_mix.zip?download=1',
+        checksum='aecce79f425a44e2055e46f680e10f6a',
+        destination_dir='audio_mono-pickup_mix',
+    ),
+}
 _STYLE_DICT = {
     'Jazz': 'Jazz',
     'BN': 'Bossa Nova',
@@ -278,26 +286,38 @@ def load_multitrack_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=False)
 
 
-def download(data_home=None):
+def download(
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
+):
     """Download GuitarSet.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        partial_download (list):
+            List indicating what to partially download. The list can include any of:
+             * `'annotations'` the annotation files
+             * `'audio_hex_original'` original 6 channel wave file from hexaphonic pickup
+             * `'audio_hex_debleeded'` hex wave files with interference removal applied
+             * `'audio_mic'` monophonic recording from reference microphone
+             * `'audio_mix'` monophonic mixture of original 6 channel file
+             If `None`, all data is downloaded.
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
         data_home,
-        zip_downloads=[
-            ANNOTATION_REMOTE,
-            AUDIO_HEX_CLN_REMOTE,
-            AUDIO_HEX_REMOTE,
-            AUDIO_MIC_REMOTE,
-            AUDIO_MIX_REMOTE,
-        ],
-        cleanup=True,
+        remotes=REMOTES,
+        partial_download=partial_download,
+        info_message=None,
+        force_overwrite=force_overwrite,
+        cleanup=cleanup,
     )
 
 

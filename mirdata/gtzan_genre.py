@@ -21,12 +21,14 @@ from mirdata import utils
 
 DATASET_DIR = "GTZAN-Genre"
 
-DATASET_REMOTE = download_utils.RemoteFileMetadata(
-    filename="genres.tar.gz",
-    url="http://opihi.cs.uvic.ca/sound/genres.tar.gz",
-    checksum="5b3d6dddb579ab49814ab86dba69e7c7",
-    destination_dir="gtzan_genre",
-)
+REMOTES = {
+    'all': download_utils.RemoteFileMetadata(
+        filename="genres.tar.gz",
+        url="http://opihi.cs.uvic.ca/sound/genres.tar.gz",
+        checksum="5b3d6dddb579ab49814ab86dba69e7c7",
+        destination_dir="gtzan_genre",
+    )
+}
 
 DATA = utils.LargeData("gtzan_genre_index.json")
 
@@ -149,17 +151,28 @@ def track_ids():
     return list(DATA.index.keys())
 
 
-def download(data_home=None):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download the GTZAN-Genre dataset.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    download_utils.downloader(data_home, tar_downloads=[DATASET_REMOTE])
+    download_utils.downloader(
+        data_home,
+        remotes=REMOTES,
+        info_message=None,
+        force_overwrite=force_overwrite,
+        cleanup=cleanup,
+    )
 
 
 def cite():

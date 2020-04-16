@@ -25,12 +25,14 @@ from mirdata import utils
 
 DATASET_DIR = 'iKala'
 TIME_STEP = 0.032  # seconds
-ID_MAPPING_REMOTE = download_utils.RemoteFileMetadata(
-    filename='id_mapping.txt',
-    url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
-    checksum='81097b587804ce93e56c7a331ba06abc',
-    destination_dir=None,
-)
+REMOTES = {
+    'metadata': download_utils.RemoteFileMetadata(
+        filename='id_mapping.txt',
+        url='http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt',
+        checksum='81097b587804ce93e56c7a331ba06abc',
+        destination_dir=None,
+    )
+}
 
 
 def _load_metadata(data_home):
@@ -208,10 +210,9 @@ def download(data_home=None, force_overwrite=False):
     pre-downloaded iKala dataset.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool): If True, existing files are overwritten by the
-            downloaded files.
     """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
@@ -231,7 +232,7 @@ def download(data_home=None, force_overwrite=False):
 
     download_utils.downloader(
         data_home,
-        file_downloads=[ID_MAPPING_REMOTE],
+        remotes=REMOTES,
         info_message=download_message,
         force_overwrite=force_overwrite,
     )

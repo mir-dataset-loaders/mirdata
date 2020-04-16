@@ -24,27 +24,23 @@ RemoteFileMetadata = namedtuple(
 
 def downloader(
     save_dir,
-    zip_downloads=None,
-    tar_downloads=None,
-    file_downloads=None,
+    remotes=None,
+    partial_download=None,
     info_message=None,
     force_overwrite=False,
-    cleanup=False,
+    cleanup=True,
 ):
     """Download data to `save_dir` and optionally print a message.
 
     Args:
         save_dir (str):
             The directory to download the data
-        zip_downloads (list or None):
-            A list of RemoteFileMetadata tuples of data in zip format.
-            If None, there is no zip data to download
-        tar_downloads (list or None):
-            A list of RemoteFileMetadata tuples of data in tar format.
-            If None, there is no tar data to download
-        file_downloads (list or None):
-            A list of  RemoteFileMetadata tuples of uncompressed data.
-            If None, there is no uncompressed data to download.
+        remotes (dict or None):
+            A dictionary of RemoteFileMetadata tuples of data in zip format.
+            If None, there is no data to download
+        partial_download (list or None):
+            A list of keys to partially download the remote objects of the download dict.
+            If None, all data is downloaded
         info_message (str or None):
             A string of info to print when this function is called.
             If None, no string is printed.
@@ -57,17 +53,32 @@ def downloader(
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
-    if zip_downloads is not None:
-        for zip_download in zip_downloads:
-            download_zip_file(zip_download, save_dir, force_overwrite, cleanup)
+    if remotes is not None:
+        if partial_download is not None:
+            # check the keys in partial_download are in the download dict
+            if not isinstance(partial_download, list) or any(
+                [k not in remotes for k in partial_download]
+            ):
+                raise ValueError(
+                    'partial_download must be a list which is a subset of {}'.format(
+                        remotes.keys()
+                    )
+                )
+            objs_to_download = partial_download
+        else:
+            objs_to_download = list(remotes.keys())
 
-    if tar_downloads is not None:
-        for tar_download in tar_downloads:
-            download_tar_file(tar_download, save_dir, force_overwrite, cleanup)
+        print("Starting to download {} to folder {}".format(objs_to_download, save_dir))
 
-    if file_downloads is not None:
-        for file_download in file_downloads:
-            download_from_remote(file_download, save_dir, force_overwrite)
+        for k in objs_to_download:
+            print("> downloading {}".format(k))
+            extension = os.path.splitext(remotes[k].filename)[-1]
+            if '.zip' in extension:
+                download_zip_file(remotes[k], save_dir, force_overwrite, cleanup)
+            elif '.gz' in extension or '.tar' in extension:
+                download_tar_file(remotes[k], save_dir, force_overwrite, cleanup)
+            else:
+                download_from_remote(remotes[k], save_dir, force_overwrite)
 
     if info_message is not None:
         print(info_message)
@@ -124,12 +135,14 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
                 )
             except Exception as e:
                 error_msg = """
-                            mirdata failed to download the dataset!
+                            mirdata failed to download the dataset from {}!
                             Please try again in a few minutes.
                             If this error persists, please raise an issue at
                             https://github.com/mir-dataset-loaders/mirdata,
                             and tag it with 'broken-link'.
-                            """
+                            """.format(
+                    remote.url
+                )
                 print(error_msg)
                 raise e
 
@@ -143,7 +156,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     return download_path
 
 
-def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=False):
+def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
     """Download and unzip a zip file.
 
     Args:
@@ -160,7 +173,7 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=False):
     unzip(zip_download_path, cleanup=cleanup)
 
 
-def unzip(zip_path, cleanup=False):
+def unzip(zip_path, cleanup=True):
     """Unzip a zip file inside it's current directory.
 
     Args:
@@ -175,7 +188,7 @@ def unzip(zip_path, cleanup=False):
         os.remove(zip_path)
 
 
-def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=False):
+def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=True):
     """Download and untar a tar file.
 
     Args:
@@ -188,7 +201,7 @@ def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=False):
     untar(tar_download_path, cleanup=cleanup)
 
 
-def untar(tar_path, cleanup=False):
+def untar(tar_path, cleanup=True):
     """Untar a tar file inside it's current directory.
 
     Args:

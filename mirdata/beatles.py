@@ -18,12 +18,14 @@ from mirdata import track
 from mirdata import utils
 
 DATASET_DIR = 'Beatles'
-ANNOTATIONS_REMOTE = download_utils.RemoteFileMetadata(
-    filename='The Beatles Annotations.tar.gz',
-    url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
-    checksum='62425c552d37c6bb655a78e4603828cc',
-    destination_dir='annotations',
-)
+REMOTES = {
+    'annotations': download_utils.RemoteFileMetadata(
+        filename='The Beatles Annotations.tar.gz',
+        url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
+        checksum='62425c552d37c6bb655a78e4603828cc',
+        destination_dir='annotations',
+    )
+}
 
 DATA = utils.LargeData('beatles_index.json')
 
@@ -128,14 +130,18 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download the Beatles Dataset (annotations).
-    The audio files are not provided due to the copyright.
+    The audio files are not provided due to copyright issues.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool): Whether to overwrite the existing downloaded data
+        force_overwrite (bool):
+            Whether to overwrite the existing downloaded data
+        cleanup (bool):
+            Whether to delete the zip/tar file after extracting.
 
     """
 
@@ -157,9 +163,10 @@ def download(data_home=None, force_overwrite=False):
 
     download_utils.downloader(
         data_home,
-        tar_downloads=[ANNOTATIONS_REMOTE],
+        remotes=REMOTES,
         info_message=download_message,
         force_overwrite=force_overwrite,
+        cleanup=cleanup,
     )
 
 

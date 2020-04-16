@@ -164,7 +164,8 @@ def download(data_home=None):
     through zenodo.org.
 
     Args:
-        data_home (str): Local path where the dataset is stored.
+        data_home (str):
+            Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
     """
 
