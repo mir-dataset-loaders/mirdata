@@ -109,7 +109,7 @@ class Track(track.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.pitch, 'annotated pitch')],
-            metadata=self._track_metadata
+            metadata=self._track_metadata,
         )
 
 

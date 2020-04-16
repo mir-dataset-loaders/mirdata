@@ -181,7 +181,7 @@ class Track(track.Track):
                 (self.paragraphs, 'paragraph-aligned lyrics'),
             ],
             note_data=[(self.notes, 'annotated vocal notes')],
-            metadata=self._track_metadata
+            metadata=self._track_metadata,
         )
 
 

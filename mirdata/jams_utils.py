@@ -78,9 +78,9 @@ def jams_converter(
             duration = librosa.get_duration(filename=audio_path)
         else:
             raise OSError(
-                'jams conversion failed because the audio file ' +
-                'for this track cannot be found, and it is required' +
-                'to compute duration.'
+                'jams conversion failed because the audio file '
+                + 'for this track cannot be found, and it is required'
+                + 'to compute duration.'
             )
 
     # metadata
@@ -88,9 +88,9 @@ def jams_converter(
         for key in metadata:
             if key == 'duration' and duration is not None and metadata[key] != duration:
                 print(
-                    'Warning: duration provided in metadata does not' +
-                    'match the duration computed from the audio file.' +
-                    'Using the duration provided by the metadata.'
+                    'Warning: duration provided in metadata does not'
+                    + 'match the duration computed from the audio file.'
+                    + 'Using the duration provided by the metadata.'
                 )
 
             if metadata[key] is None:

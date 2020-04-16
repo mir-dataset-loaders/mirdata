@@ -138,8 +138,7 @@ class Track(track.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata=self._track_metadata
+            audio_path=self.audio_path, metadata=self._track_metadata
         )
 
 

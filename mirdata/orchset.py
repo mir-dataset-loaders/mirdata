@@ -198,7 +198,7 @@ class Track(track.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path_mono,
             f0_data=[(self.melody, 'annotated melody')],
-            metadata=self._track_metadata
+            metadata=self._track_metadata,
         )
 
 

@@ -107,10 +107,7 @@ class Track(track.Track):
             section_data=[(self.sections, None)],
             chord_data=[(self.chords, None)],
             key_data=[(self.key, None)],
-            metadata={
-                'artist': 'The Beatles',
-                'title': self.title,
-            },
+            metadata={'artist': 'The Beatles', 'title': self.title},
         )
 
 
