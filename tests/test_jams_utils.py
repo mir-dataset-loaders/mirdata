@@ -977,6 +977,7 @@ def test_tags():
     tag_data3 = [('invalid', 'asdf')]
     tag_data4 = ('jazz', 'wrong format')
     tag_data5 = ['wrong format too']
+    tag_data6 = [(123, 'asdf')]
     jam1 = jams_utils.jams_converter(
         tags_gtzan_data=tag_data1, metadata={'duration': 10.0}
     )
@@ -991,9 +992,11 @@ def test_tags():
     with pytest.raises(jams.SchemaError):
         assert jam3.validate()
     with pytest.raises(TypeError):
-        jam4 = jams_utils.jams_converter(tags_gtzan_data=tag_data4)
+        jams_utils.jams_converter(tags_gtzan_data=tag_data4)
     with pytest.raises(TypeError):
-        jam5 = jams_utils.jams_converter(tags_gtzan_data=tag_data5)
+        jams_utils.jams_converter(tags_gtzan_data=tag_data5)
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(tags_gtzan_data=tag_data6)
 
 
 def test_tempos():
@@ -1002,6 +1005,7 @@ def test_tempos():
     tempo_data3 = [(-1, 'asdf')]
     tempo_data4 = (120.5, 'wrong format')
     tempo_data5 = ['wrong format too']
+    tempo_data6 = [('string!', 'string!')]
     jam1 = jams_utils.jams_converter(
         tempo_data=tempo_data1, metadata={'duration': 10.0}
     )
@@ -1016,9 +1020,11 @@ def test_tempos():
     with pytest.raises(jams.SchemaError):
         assert jam3.validate()
     with pytest.raises(TypeError):
-        jam4 = jams_utils.jams_converter(tempo_data=tempo_data4)
+        jams_utils.jams_converter(tempo_data=tempo_data4)
     with pytest.raises(TypeError):
-        jam5 = jams_utils.jams_converter(tempo_data=tempo_data5)
+        jams_utils.jams_converter(tempo_data=tempo_data5)
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(tempo_data=tempo_data6)
 
 
 def test_events():
@@ -1060,6 +1066,7 @@ def test_events():
     ]
     event_data4 = ('jazz', 'wrong format')
     event_data5 = ['wrong format too']
+    event_data6 = [('wrong', 'description')]
     jam1 = jams_utils.jams_converter(
         event_data=event_data1, metadata={'duration': 10.0}
     )
@@ -1074,9 +1081,11 @@ def test_events():
     with pytest.raises(jams.SchemaError):
         assert jam3.validate()
     with pytest.raises(TypeError):
-        jam4 = jams_utils.jams_converter(event_data=event_data4)
+        jams_utils.jams_converter(event_data=event_data4)
     with pytest.raises(TypeError):
-        jam5 = jams_utils.jams_converter(event_data=event_data5)
+        jams_utils.jams_converter(event_data=event_data5)
+    with pytest.raises(TypeError):
+        jams_utils.jams_converter(event_data=event_data6)
 
 
 def test_metadata():
@@ -1093,3 +1102,55 @@ def test_metadata():
     assert jam_1['file_metadata']['artist'] == 'Meatloaf'
     assert jam_1['file_metadata']['duration'] == 1.5
     assert jam_1['sandbox']['favourite_color'] == 'rainbow'
+
+    # test meatadata value None
+    metadata_2 = {
+        'duration': 1.5,
+        'artist': 'breakmaster cylinder',
+        'title': None,
+        'extra': None
+    }
+    jam2 = jams_utils.jams_converter(metadata=metadata_2)
+    assert jam2.validate()
+    assert jam2['file_metadata']['duration'] == 1.5
+    assert jam2['file_metadata']['artist'] == 'breakmaster cylinder'
+    assert jam2['file_metadata']['title'] == ''
+    assert 'extra' not in jam2['sandbox']
+
+
+def test_duration():
+    # duration from audio file
+    jam = jams_utils.jams_converter(
+        audio_path='tests/resources/mir_datasets/iKala/Wavfile/10161_chorus.wav'
+    )
+    assert jam.file_metadata.duration == 2.0
+    assert jam.validate()
+
+    # test invalid file path
+    with pytest.raises(OSError):
+        jams_utils.jams_converter(audio_path='i/dont/exist')
+
+    jam1 = jams_utils.jams_converter(metadata={'duration': 4})
+    assert jam1.file_metadata.duration == 4.0
+    assert jam1.validate()
+
+    # test incomplete metadata
+    jam2 = jams_utils.jams_converter(metadata={'artist': 'b'})
+    with pytest.raises(jams_utils.jams.SchemaError):
+        jam2.validate()
+
+    # test metadata duration and audio file equal
+    jam3 = jams_utils.jams_converter(
+        audio_path='tests/resources/mir_datasets/iKala/Wavfile/10161_chorus.wav',
+        metadata={'duration': 2},
+    )
+    assert jam3.file_metadata.duration == 2
+    assert jam3.validate()
+
+    # test metadata and duration not equal
+    jam4 = jams_utils.jams_converter(
+        audio_path='tests/resources/mir_datasets/iKala/Wavfile/10161_chorus.wav',
+        metadata={'duration': 1000},
+    )
+    assert jam4.file_metadata.duration == 1000
+    assert jam4.validate()
