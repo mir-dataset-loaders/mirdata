@@ -63,6 +63,9 @@ class Track(track.Track):
         self._track_paths = DATA.index[track_id]
 
         self.genre = track_id.split(".")[0]
+        if self.genre == 'hiphop':
+            self.genre = 'hip-hop'
+
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
     @property
