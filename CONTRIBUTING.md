@@ -208,9 +208,9 @@ class Track(track.Track):
             self._data_home, self._track_paths['annotation'][0])
 
         # -- if the user doesn't have a metadata file, load None
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self.some_metadata = metadata[track_id]['some_metadata']
+        self._metadata = DATA.metadata(data_home)
+        if self._metadata is not None and track_id in self._metadata:
+            self.some_metadata = self._metadata[track_id]['some_metadata']
         else:
             self.some_metadata = None
 
@@ -237,10 +237,12 @@ class Track(track.Track):
     # -- object with the annotations.
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        return jams_utils.jams_convertrer(
+        return jams_utils.jams_converter(
+            audio_path=self.audio_path,
             annotation_data=[(self.annotation, None)],
-            metadata=metadata},
+            metadata=self._metadata,
         )
+        # -- see the documentation for `jams_utils.jams_converter for all fields
 
 
 def load_audio(audio_path):

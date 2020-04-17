@@ -3,10 +3,14 @@
 """
 
 import jams
+import librosa
+import os
+
 from mirdata import utils
 
 
 def jams_converter(
+    audio_path=None,
     beat_data=None,
     chord_data=None,
     note_data=None,
@@ -24,6 +28,11 @@ def jams_converter(
 
     Parameters
     ----------
+    audio_path (str or None):
+        A path to the corresponding audio file, or None. If provided,
+        the audio file will be read to compute the duration. If None,
+        'duration' must be a field in the metadata dictionary, or the
+        resulting jam object will not validate.
     beat_data (list or None):
         A list of tuples of (BeatData, str), where str describes the annotation (e.g. 'beats_1').
     chord_data (list or None):
@@ -62,13 +71,38 @@ def jams_converter(
 
     jam = jams.JAMS()
 
+    # duration
+    duration = None
+    if audio_path is not None:
+        if os.path.exists(audio_path):
+            duration = librosa.get_duration(filename=audio_path)
+        else:
+            raise OSError(
+                'jams conversion failed because the audio file '
+                + 'for this track cannot be found, and it is required'
+                + 'to compute duration.'
+            )
+
     # metadata
     if metadata is not None:
         for key in metadata:
+            if key == 'duration' and duration is not None and metadata[key] != duration:
+                print(
+                    'Warning: duration provided in metadata does not'
+                    + 'match the duration computed from the audio file.'
+                    + 'Using the duration provided by the metadata.'
+                )
+
+            if metadata[key] is None:
+                continue
+
             if hasattr(jam.file_metadata, key):
                 setattr(jam.file_metadata, key, metadata[key])
             else:
                 setattr(jam.sandbox, key, metadata[key])
+
+    if jam.file_metadata.duration is None:
+        jam.file_metadata.duration = duration
 
     # beats
     if beat_data is not None:

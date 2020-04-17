@@ -36,7 +36,7 @@ def test_cite():
         sys.stdout = sys.__stdout__
 
 
-KNOWN_ISSUES = {'gtzan_genre': ['all']}  # issue #242, remove when fixed
+KNOWN_ISSUES = {}  # key is module, value is REMOTE key
 
 
 def test_download(mocker):
