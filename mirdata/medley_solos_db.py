@@ -137,9 +137,9 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        metadata = {'duration': librosa.get_duration(self.audio[0], self.audio[1])}
-        metadata.update(self._track_metadata)
-        return jams_utils.jams_converter(metadata=metadata)
+        return jams_utils.jams_converter(
+            audio_path=self.audio_path, metadata=self._track_metadata
+        )
 
 
 def load_audio(audio_path):
