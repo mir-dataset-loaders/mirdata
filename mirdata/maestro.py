@@ -264,15 +264,6 @@ def download(
     if os.path.exists(maestro_dir):
         shutil.rmtree(maestro_dir)
 
-    # if partial_download is midi, the midi files have slightly different names
-    # changes them here
-    if partial_download == ['midi']:
-        maestro_files = glob.glob(os.path.join(data_home, '*', '*.wav.midi'))
-        for f in maestro_files:
-            fname = os.path.basename(f).split('.')[0]
-            fdir = os.path.dirname(f)
-            shutil.move(f, os.path.join(fdir, '{}.midi'.format(fname)))
-
 
 def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version

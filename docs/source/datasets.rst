@@ -50,7 +50,7 @@ click the link provided in the "Module" column.
 | ikala_           | iKala               | - audio: ❌         | - Vocal :ref:`F0`         | 252    |
 |                  |                     | - annotations: ❌   | - :ref:`lyrics`           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| maestro_         | MAESTRO             | - audio: ✅         | - Piano :ref:`notes`      |  TODO  |
+| maestro_         | MAESTRO             | - audio: ✅         | - Piano :ref:`notes`      | 1282   |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | - :ref:`instruments`      | 21571  |
