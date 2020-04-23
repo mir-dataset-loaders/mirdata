@@ -29,13 +29,15 @@ def md5(file_path):
 
 
 def make_maestro_index(data_path):
-    metadata_path = os.path.join(data_path, 'info.csv')
+    metadata_path = os.path.join(data_path, 'maestro-v2.0.0.json')
+    print(metadata_path)
 
     maestro_index = {}
     with open(metadata_path, 'r') as fhandle:
-        metadata = csv.DictReader(fhandle)
+        metadata = json.load(fhandle)
 
-        for row in metadata:
+        for i, row in enumerate(metadata):
+            print(i)
             trackid = row['midi_filename'].split('.')[0]
             maestro_index[trackid] = {}
 
@@ -52,7 +54,9 @@ def make_maestro_index(data_path):
 
 
 def main(args):
+    print("creating index...")
     make_maestro_index(args.maestro_data_path)
+    print("done!")
 
 
 if __name__ == '__main__':
