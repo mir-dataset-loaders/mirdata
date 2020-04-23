@@ -132,7 +132,8 @@ For more details, please visit: [website]
 
 """
 
-
+import logging
+import os
 # -- import whatever you need here
 
 from mirdata import download_utils
@@ -155,8 +156,10 @@ REMOTES = {
 # -- change this to load any top-level metadata
 ## delete this function if you don't have global metadata
 def _load_metadata(data_home):
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
+    metadata_path = os.path.join(data_home, 'example_metadta.csv')
+    if not os.path.exists(metadata_path):
+        logging.info('Metadata file {} not found.'.format(metadata_path))
+        return None
 
     # load metadata however makes sense for your dataset
     metadata_path = os.path.join(data_home, 'example_metadata.json')

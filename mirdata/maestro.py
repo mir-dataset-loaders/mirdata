@@ -5,6 +5,8 @@ MAESTRO (MIDI and Audio Edited for Synchronous TRacks and Organization) is a
 dataset composed of over 200 hours of virtuosic piano performances captured
 with fine alignment (~3 ms) between note labels and audio waveforms.
 
+The dataset is created and released by Google's Magenta team.
+
 The dataset contains over 200 hours of paired audio and MIDI recordings from
 ten years of International Piano-e-Competition. The MIDI data includes key
 strike velocities and sustain/sostenuto/una corda pedal positions. Audio and
@@ -25,6 +27,7 @@ For more details, please visit: https://magenta.tensorflow.org/datasets/maestro
 
 import json
 import glob
+import logging
 import os
 import shutil
 
@@ -60,13 +63,13 @@ REMOTES = {
     ),
 }
 
-# -- change this to load any top-level metadata
 def _load_metadata(data_home):
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
+    metadata_path = os.path.join(data_home, 'maestro-v2.0.0.json')
+    if not os.path.exists(metadata_path):
+        logging.info("Metadata file {} not found.".format(metadata_path))
+        return None
 
     # load metadata however makes sense for your dataset
-    metadata_path = os.path.join(data_home, 'maestro-v2.0.0.json')
     with open(metadata_path, 'r') as fhandle:
         raw_metadata = json.load(fhandle)
 
@@ -84,19 +87,24 @@ DATA = utils.LargeData('maestro_index.json', _load_metadata)
 
 
 class Track(track.Track):
-    """MAESTRO track class
-    # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
-    # -- `scripts/print_track_docstring.py my_dataset`
-    # -- note that you'll first need to have a test track (see "Adding tests to your dataset" below)
+    """MAESTRO Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/MAESTRO`
+        data_home (str): Local path where the dataset is stored. default=None
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
+        audio_path (str): Path to the track's audio file
+        canonical_composer (str): Composer of the piece, standardized on a
+            single spelling for a given name.
+        canonical_title (str): Title of the piece. Not guaranteed to be
+            standardized to a single representation.
+        duration (float): Duration in seconds, based on the MIDI file.
+        midi_path (str): Path to the track's MIDI file
+        split (str): Suggested train/validation/test split.
         track_id (str): track id
-        # -- Add any of the dataset specific attributes here
+        year (int): Year of performance.
 
     """
     def __init__(self, track_id, data_home=None):
@@ -123,7 +131,7 @@ class Track(track.Track):
             self.canonical_title = self._metadata[track_id]['canonical_title']
             self.split = self._metadata[track_id]['split']
             self.year = self._metadata[track_id]['year']
-            self.duraiton = self._metadata[track_id]['duration']
+            self.duration = self._metadata[track_id]['duration']
         else:
             self.canonical_composer = None
             self.canonical_title = None
@@ -140,8 +148,6 @@ class Track(track.Track):
     def notes(self):
         """NoteData: annotated piano notes"""
         return load_notes(self.midi_path, self.midi)
-
-    # TODO - check if midi files have beat data
 
     @property
     def audio(self):
