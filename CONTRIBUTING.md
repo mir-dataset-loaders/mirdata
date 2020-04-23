@@ -145,11 +145,11 @@ DATASET_DIR = 'Example'
 # -- The keys should be descriptive (e.g. 'annotations', 'audio')
 REMOTES = {
     'remote_data': download_utils.RemoteFileMetadata(
-    filename='a_zip_file.zip',
-    url='http://website/hosting/the/zipfile.zip',
-    checksum='00000000000000000000000000000000',  # -- the md5 checksum
-    destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
-    )
+        filename='a_zip_file.zip',
+        url='http://website/hosting/the/zipfile.zip',
+        checksum='00000000000000000000000000000000',  # -- the md5 checksum
+        destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
+    ),
 }
 
 # -- change this to load any top-level metadata
@@ -268,7 +268,7 @@ def load_audio(audio_path):
 # -- (i.e. there is no `dataset.REMOTES`)
 # -- the cleanup argument can be removed if the dataset has no tar or zip files in `dataset.REMOTES`.
 def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
 ):
     """Download the dataset.
     The audio files are not provided.
