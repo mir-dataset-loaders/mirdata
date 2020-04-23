@@ -309,7 +309,7 @@ class Track(track.Track):
         """EventData: annotated drum kit events"""
         return load_drum_events(self.midi_path, self.midi)
 
-    @property
+    @utils.cached_property
     def midi(self):
         """(obj): prettyMIDI obj"""
         return load_midi(self.midi_path)
