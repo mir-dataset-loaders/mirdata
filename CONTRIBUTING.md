@@ -442,15 +442,19 @@ all pass without this flag.
 If github shows a red X next to your latest commit, it means one of our checks is not passing. This could mean:
 
 1. running "black" has failed
+
 This means that your code is not formatted according to black's code-style. To fix this, simply run:
 `black --target-version py37 --skip-string-normalization mirdata/`
 from inside the top level folder of the repository.
 
 2. the test coverage is too low
+
 This means that there are too many new lines of code introduced that are not tested. Most of the time we will help you fix this.
 
 3. the docs build has failed
+
 This means that one of the changes you made to the documentation has caused the build to fail. Check the formatting in your changes (especially in `docs/datasets.rst`) and make sure they're consistent.
 
 4. the tests have failed
+
 This means at least one of tests are failing. Run the tests locally to make sure they're passing. If they're passing locally but failing in the check, we can help debug.
