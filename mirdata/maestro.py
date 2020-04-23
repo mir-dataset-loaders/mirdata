@@ -225,7 +225,6 @@ def download(
     data_home=None, partial_download=None, force_overwrite=False, cleanup=True
 ):
     """Download the dataset.
-    The audio files are not provided.
 
     Args:
         data_home (str):
@@ -234,9 +233,11 @@ def download(
         force_overwrite (bool):
             Whether to overwrite the existing downloaded data
         partial_download (list):
-             List indicating what to partially download. The list can include any of:
-                * `'remote_data_1'` the remote_data_1 files
-             If `None`, all data is downloaded.
+            List indicating what to partially download. The list can include any of:
+                * 'all': audio, midi and metadata
+                * 'midi': midi and metadata only
+                * 'metadata': metadata only
+            If `None`, all data is downloaded.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
 
@@ -272,6 +273,7 @@ def download(
 
 def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
+
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
@@ -292,6 +294,7 @@ def validate(data_home=None, silence=False):
 
 def track_ids():
     """Return track ids
+
     Returns:
         (list): A list of track ids
     """
@@ -300,6 +303,7 @@ def track_ids():
 
 def load(data_home=None):
     """Load MAESTRO dataset
+
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`

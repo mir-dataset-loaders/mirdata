@@ -274,7 +274,6 @@ def download(
     data_home=None, partial_download=None, force_overwrite=False, cleanup=True
 ):
     """Download the dataset.
-    The audio files are not provided.
 
     Args:
         data_home (str):
@@ -283,9 +282,9 @@ def download(
         force_overwrite (bool):
             Whether to overwrite the existing downloaded data
         partial_download (list):
-             List indicating what to partially download. The list can include any of:
-                * `'remote_data_1'` the remote_data_1 files
-             If `None`, all data is downloaded.
+            List indicating what to partially download. The list can include any of:
+                * 'TODO_KEYS_OF_REMOTES' TODO ADD DESCRIPTION
+            If `None`, all data is downloaded.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
 
@@ -312,6 +311,7 @@ def download(
 # -- keep this function exactly as it is
 def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
+
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
@@ -333,6 +333,7 @@ def validate(data_home=None, silence=False):
 # -- keep this function exactly as it is
 def track_ids():
     """Return track ids
+
     Returns:
         (list): A list of track ids
     """
@@ -342,6 +343,7 @@ def track_ids():
 # -- keep this function as it is
 def load(data_home=None):
     """Load Example dataset
+
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
