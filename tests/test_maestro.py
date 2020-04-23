@@ -16,7 +16,8 @@ def test_track():
     expected_attributes = {
         'track_id': '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1',
         'midi_path': os.path.join(
-            data_home, '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi'
+            data_home,
+            '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi',
         ),
         'audio_path': os.path.join(
             data_home, '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav'
@@ -28,10 +29,7 @@ def test_track():
         'split': 'train',
     }
 
-    expected_property_types = {
-        'notes': utils.NoteData,
-        'midi': pretty_midi.PrettyMIDI,
-    }
+    expected_property_types = {'notes': utils.NoteData, 'midi': pretty_midi.PrettyMIDI}
 
     assert track._track_paths == {
         'audio': [
@@ -53,16 +51,20 @@ def test_track():
 
 
 def test_load_midi():
-    midi_file = 'tests/resources/mir_datasets/MAESTRO/2018/' + \
-        'MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi'
+    midi_file = (
+        'tests/resources/mir_datasets/MAESTRO/2018/'
+        + 'MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi'
+    )
     midi = maestro.load_midi(midi_file)
     assert len(midi.instruments) == 1
     assert len(midi.instruments[0].notes) == 4197
 
 
 def test_load_notes():
-    midi_file = 'tests/resources/mir_datasets/MAESTRO/2018/' + \
-        'MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi'
+    midi_file = (
+        'tests/resources/mir_datasets/MAESTRO/2018/'
+        + 'MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi'
+    )
     notes = maestro.load_notes(midi_file)
     expected_intervals = np.array([[0.98307292, 1.80989583], [1.78385417, 1.90625]])
     assert np.allclose(notes.intervals[0:2], expected_intervals)
@@ -83,7 +85,7 @@ def test_load_metadata():
         "year": 2018,
         "midi_filename": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi",
         "audio_filename": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav",
-        "duration": 698.661160312
+        "duration": 698.661160312,
     }
     metadata_none = maestro._load_metadata('asdf/asdf')
     assert metadata_none is None
@@ -115,7 +117,7 @@ def test_download_partial(httpserver):
             url=httpserver.url,
             checksum=('d41d8cd98f00b204e9800998ecf8427e'),
             destination_dir='maestro-v2.0.0',
-        )
+        ),
     }
     maestro.download(data_home=data_home, partial_download=None)
     assert os.path.exists(os.path.join(data_home, '1-maestro-v2.0.0.json'))
@@ -168,14 +170,18 @@ def test_download(httpserver):
     assert not os.path.exists(os.path.join(data_home, 'maestro-v2.0.0'))
 
     assert os.path.exists(os.path.join(data_home, "maestro-v2.0.0.json"))
-    assert os.path.exists(os.path.join(
-        data_home,
-        "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav"
-    ))
-    assert os.path.exists(os.path.join(
-        data_home,
-        "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi"
-    ))
+    assert os.path.exists(
+        os.path.join(
+            data_home,
+            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav",
+        )
+    )
+    assert os.path.exists(
+        os.path.join(
+            data_home,
+            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
+        )
+    )
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
@@ -199,14 +205,18 @@ def test_download(httpserver):
     assert not os.path.exists(os.path.join(data_home, 'maestro-v2.0.0'))
 
     assert os.path.exists(os.path.join(data_home, "maestro-v2.0.0.json"))
-    assert not os.path.exists(os.path.join(
-        data_home,
-        "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav"
-    ))
-    assert os.path.exists(os.path.join(
-        data_home,
-        "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi"
-    ))
+    assert not os.path.exists(
+        os.path.join(
+            data_home,
+            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav",
+        )
+    )
+    assert os.path.exists(
+        os.path.join(
+            data_home,
+            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
+        )
+    )
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
@@ -230,14 +240,18 @@ def test_download(httpserver):
     assert not os.path.exists(os.path.join(data_home, 'maestro-v2.0.0'))
 
     assert os.path.exists(os.path.join(data_home, "maestro-v2.0.0.json"))
-    assert not os.path.exists(os.path.join(
-        data_home,
-        "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav"
-    ))
-    assert not os.path.exists(os.path.join(
-        data_home,
-        "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi"
-    ))
+    assert not os.path.exists(
+        os.path.join(
+            data_home,
+            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav",
+        )
+    )
+    assert not os.path.exists(
+        os.path.join(
+            data_home,
+            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
+        )
+    )
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)

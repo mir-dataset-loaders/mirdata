@@ -47,21 +47,22 @@ REMOTES = {
         filename='maestro-v2.0.0.zip',
         url='https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.zip',
         checksum='7a6c23536ebcf3f50b1f00ac253886a7',
-        destination_dir=''
+        destination_dir='',
     ),
     'midi': download_utils.RemoteFileMetadata(
         filename='maestro-v2.0.0-midi.zip',
         url='https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0-midi.zip',
         checksum='8a45cc678a8b23cd7bad048b1e9034c5',
-        destination_dir=''
+        destination_dir='',
     ),
     'metadata': download_utils.RemoteFileMetadata(
         filename='maestro-v2.0.0.json',
         url='https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json',
         checksum='576172af1cdc4efddcf0be7d260d48f7',
-        destination_dir='maestro-v2.0.0'
+        destination_dir='maestro-v2.0.0',
     ),
 }
+
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, 'maestro-v2.0.0.json')
@@ -107,10 +108,10 @@ class Track(track.Track):
         year (int): Year of performance.
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError(
-                '{} is not a valid track ID in MAESTRO'.format(track_id))
+            raise ValueError('{} is not a valid track ID in MAESTRO'.format(track_id))
 
         self.track_id = track_id
 
@@ -120,10 +121,8 @@ class Track(track.Track):
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
 
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
-        self.midi_path = os.path.join(
-            self._data_home, self._track_paths['midi'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.midi_path = os.path.join(self._data_home, self._track_paths['midi'][0])
 
         self._metadata = DATA.metadata(data_home)
         if self._metadata is not None and track_id in self._metadata:
@@ -201,9 +200,7 @@ def load_notes(midi_path, midi=None):
         intervals.append([note.start, note.end])
         pitches.append(librosa.midi_to_hz(note.pitch))
         confidence.append(note.velocity)
-    return utils.NoteData(
-        np.array(intervals), np.array(pitches), np.array(confidence)
-    )
+    return utils.NoteData(np.array(intervals), np.array(pitches), np.array(confidence))
 
 
 def load_audio(audio_path):

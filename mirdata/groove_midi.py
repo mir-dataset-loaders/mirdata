@@ -403,9 +403,7 @@ def load_drum_events(midi_path, midi=None):
         start_times.append(note.start)
         end_times.append(note.end)
         events.append(DRUM_MAPPING[note.pitch])
-    return utils.EventData(
-        np.array(start_times), np.array(end_times), np.array(events)
-    )
+    return utils.EventData(np.array(start_times), np.array(end_times), np.array(events))
 
 
 def download(data_home=None, force_overwrite=False, cleanup=True):

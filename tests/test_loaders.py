@@ -39,6 +39,7 @@ def test_cite():
 KNOWN_ISSUES = {}  # key is module, value is REMOTE key
 DOWNLOAD_EXCEPTIONS = ['maestro']
 
+
 def test_download(mocker):
     for dataset in DATASETS:
         dataset_name = dataset.__name__.split('.')[1]
