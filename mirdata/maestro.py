@@ -22,6 +22,8 @@ multiple subsets. Repertoire is mostly classical, including composers from the
 The dataset is made available by Google LLC under a Creative Commons
 Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0) license.
 
+This loader supports MAESTRO version 2.
+
 For more details, please visit: https://magenta.tensorflow.org/datasets/maestro
 """
 
