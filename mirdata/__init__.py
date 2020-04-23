@@ -10,6 +10,7 @@ __all__ = [
     'gtzan_genre',
     'guitarset',
     'ikala',
+    'maestro',
     'medley_solos_db',
     'medleydb_melody',
     'medleydb_pitch',
