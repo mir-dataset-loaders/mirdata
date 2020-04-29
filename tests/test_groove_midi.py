@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-import pytest
+import pretty_midi
 import shutil
 
 from mirdata import groove_midi, utils, download_utils
@@ -32,7 +32,11 @@ def test_track():
         'split': 'test',
     }
 
-    expected_property_types = {'beats': utils.BeatData, 'drum_events': utils.EventData}
+    expected_property_types = {
+        'beats': utils.BeatData,
+        'drum_events': utils.EventData,
+        'midi': pretty_midi.PrettyMIDI,
+    }
 
     assert track._track_paths == {
         'audio': [

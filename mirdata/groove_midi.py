@@ -44,12 +44,13 @@ For more details, please visit: http://magenta.tensorflow.org/datasets/groove
 """
 import csv
 import glob
-import librosa
 import logging
-import numpy as np
 import os
-import pretty_midi
 import shutil
+
+import librosa
+import numpy as np
+import pretty_midi
 
 from mirdata import download_utils, jams_utils, track, utils
 
@@ -296,34 +297,19 @@ class Track(track.Track):
     @property
     def audio(self):
         """(np.ndarray, float): audio signal, sample rate"""
-        if self.audio_path is None:
-            return (None, None)
         return load_audio(self.audio_path)
 
     @utils.cached_property
     def beats(self):
         """BeatData: machine-generated beat annotation"""
-        beat_times = self.midi.get_beats()
-        beat_range = np.arange(0, len(beat_times))
-        meter = self.midi.time_signature_changes[0]
-        beat_positions = 1 + np.mod(beat_range, meter.numerator)
-        return utils.BeatData(beat_times, beat_positions)
+        return load_beats(self.midi_path, self.midi)
 
     @utils.cached_property
     def drum_events(self):
         """EventData: annotated drum kit events"""
-        start_times = []
-        end_times = []
-        events = []
-        for note in self.midi.instruments[0].notes:
-            start_times.append(note.start)
-            end_times.append(note.end)
-            events.append(DRUM_MAPPING[note.pitch])
-        return utils.EventData(
-            np.array(start_times), np.array(end_times), np.array(events)
-        )
+        return load_drum_events(self.midi_path, self.midi)
 
-    @property
+    @utils.cached_property
     def midi(self):
         """(obj): prettyMIDI obj"""
         return load_midi(self.midi_path)
@@ -365,13 +351,59 @@ def load_midi(midi_path):
         midi_path (str): path to midi file
 
     Returns:
-        midi_data (obj): pretty_midi object
+        midi_data (pretty_midi.PrettyMIDI): pretty_midi object
 
     """
     if not os.path.exists(midi_path):
         raise IOError("midi_path {} does not exist".format(midi_path))
 
     return pretty_midi.PrettyMIDI(midi_path)
+
+
+def load_beats(midi_path, midi=None):
+    """Load beat data from the midi file.
+
+    Args:
+        midi_path (str): path to midi file
+        midi (pretty_midi.PrettyMIDI): pre-loaded midi object or None
+            if None, the midi object is loaded using midi_path
+
+    Returns:
+        beat_data (BeatData)
+
+    """
+    if midi is None:
+        midi = load_midi(midi_path)
+    beat_times = midi.get_beats()
+    beat_range = np.arange(0, len(beat_times))
+    meter = midi.time_signature_changes[0]
+    beat_positions = 1 + np.mod(beat_range, meter.numerator)
+    return utils.BeatData(beat_times, beat_positions)
+
+
+def load_drum_events(midi_path, midi=None):
+    """Load drum events from the midi file.
+
+    Args:
+        midi_path (str): path to midi file
+        midi (pretty_midi.PrettyMIDI): pre-loaded midi object or None
+            if None, the midi object is loaded using midi_path
+
+    Returns:
+        drum_events (EventData)
+
+    """
+    if midi is None:
+        midi = load_midi(midi_path)
+
+    start_times = []
+    end_times = []
+    events = []
+    for note in midi.instruments[0].notes:
+        start_times.append(note.start)
+        end_times.append(note.end)
+        events.append(DRUM_MAPPING[note.pitch])
+    return utils.EventData(np.array(start_times), np.array(end_times), np.array(events))
 
 
 def download(data_home=None, force_overwrite=False, cleanup=True):

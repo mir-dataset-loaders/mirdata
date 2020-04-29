@@ -1108,7 +1108,7 @@ def test_metadata():
         'duration': 1.5,
         'artist': 'breakmaster cylinder',
         'title': None,
-        'extra': None
+        'extra': None,
     }
     jam2 = jams_utils.jams_converter(metadata=metadata_2)
     assert jam2.validate()

@@ -53,6 +53,14 @@ mirdata.ikala
 .. automodule:: mirdata.ikala
    :members:
 
+
+mirdata.maestro
+^^^^^^^^^^^^^
+
+.. automodule:: mirdata.maestro
+   :members:
+
+
 mirdata.medleydb\_melody
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

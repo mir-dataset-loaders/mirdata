@@ -19,10 +19,11 @@ This library provides tools for working with common MIR datasets, including tool
 
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [DALI](https://github.com/gabolsgabs/DALI)
-* [Groove MIDI](https://magenta.tensorflow.org/datasets/groove) 
+* [Groove MIDI](https://magenta.tensorflow.org/datasets/groove)
 * [GTZAN genre](http://marsyas.info/downloads/datasets.html)
 * [GuitarSet](http://github.com/marl/guitarset/)
 * [Ikala](http://mac.citi.sinica.edu.tw/ikala/)
+* [MAESTRO](https://magenta.tensorflow.org/datasets/maestro)
 * [MedleyDB Melody](https://medleydb.weebly.com/)
 * [MedleyDB Pitch](https://medleydb.weebly.com/)
 * [Medley-solos-DB](https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db)

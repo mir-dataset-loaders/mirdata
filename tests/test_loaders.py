@@ -37,6 +37,7 @@ def test_cite():
 
 
 KNOWN_ISSUES = {}  # key is module, value is REMOTE key
+DOWNLOAD_EXCEPTIONS = ['maestro']
 
 
 def test_download(mocker):
@@ -88,8 +89,9 @@ def test_download(mocker):
         # check that the download method can be called without errors
         if hasattr(dataset, 'REMOTES'):
             mock_downloader = mocker.patch.object(dataset, 'REMOTES')
-            dataset.download()
-            mocker.resetall()
+            if dataset_name not in DOWNLOAD_EXCEPTIONS:
+                dataset.download()
+                mocker.resetall()
 
             # check that links are online
             for key in dataset.REMOTES:
