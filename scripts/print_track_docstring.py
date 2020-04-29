@@ -14,6 +14,7 @@ TEST_TRACKIDS = {
     'gtzan_genre': 'country.00000',
     'guitarset': '03_BN3-119-G_solo',
     'ikala': '10161_chorus',
+    'maestro': '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1',
     'medley_solos_db': 'd07b1fc0-567d-52c2-fef4-239f31c9d40e',
     'medleydb_melody': 'MusicDelta_Beethoven',
     'medleydb_pitch': 'AClassicEducation_NightOwl_STEM_08',

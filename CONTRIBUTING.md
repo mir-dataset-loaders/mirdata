@@ -132,7 +132,8 @@ For more details, please visit: [website]
 
 """
 
-
+import logging
+import os
 # -- import whatever you need here
 
 from mirdata import download_utils
@@ -145,18 +146,20 @@ DATASET_DIR = 'Example'
 # -- The keys should be descriptive (e.g. 'annotations', 'audio')
 REMOTES = {
     'remote_data': download_utils.RemoteFileMetadata(
-    filename='a_zip_file.zip',
-    url='http://website/hosting/the/zipfile.zip',
-    checksum='00000000000000000000000000000000',  # -- the md5 checksum
-    destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
-    )
+        filename='a_zip_file.zip',
+        url='http://website/hosting/the/zipfile.zip',
+        checksum='00000000000000000000000000000000',  # -- the md5 checksum
+        destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
+    ),
 }
 
 # -- change this to load any top-level metadata
 ## delete this function if you don't have global metadata
 def _load_metadata(data_home):
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
+    metadata_path = os.path.join(data_home, 'example_metadta.csv')
+    if not os.path.exists(metadata_path):
+        logging.info('Metadata file {} not found.'.format(metadata_path))
+        return None
 
     # load metadata however makes sense for your dataset
     metadata_path = os.path.join(data_home, 'example_metadata.json')
@@ -268,10 +271,9 @@ def load_audio(audio_path):
 # -- (i.e. there is no `dataset.REMOTES`)
 # -- the cleanup argument can be removed if the dataset has no tar or zip files in `dataset.REMOTES`.
 def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=False
+    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
 ):
     """Download the dataset.
-    The audio files are not provided.
 
     Args:
         data_home (str):
@@ -280,9 +282,9 @@ def download(
         force_overwrite (bool):
             Whether to overwrite the existing downloaded data
         partial_download (list):
-             List indicating what to partially download. The list can include any of:
-                * `'remote_data_1'` the remote_data_1 files
-             If `None`, all data is downloaded.
+            List indicating what to partially download. The list can include any of:
+                * 'TODO_KEYS_OF_REMOTES' TODO ADD DESCRIPTION
+            If `None`, all data is downloaded.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
 
@@ -309,6 +311,7 @@ def download(
 # -- keep this function exactly as it is
 def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
+
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
@@ -330,6 +333,7 @@ def validate(data_home=None, silence=False):
 # -- keep this function exactly as it is
 def track_ids():
     """Return track ids
+
     Returns:
         (list): A list of track ids
     """
@@ -339,6 +343,7 @@ def track_ids():
 # -- keep this function as it is
 def load(data_home=None):
     """Load Example dataset
+
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
@@ -433,3 +438,25 @@ pytest -s tests/test_full_dataset.py --local --dataset my_dataset --skip-downloa
 ```
 which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually
 all pass without this flag.
+
+## Troubleshooting
+
+If github shows a red X next to your latest commit, it means one of our checks is not passing. This could mean:
+
+1. running "black" has failed
+
+This means that your code is not formatted according to black's code-style. To fix this, simply run:
+`black --target-version py37 --skip-string-normalization mirdata/`
+from inside the top level folder of the repository.
+
+2. the test coverage is too low
+
+This means that there are too many new lines of code introduced that are not tested. Most of the time we will help you fix this.
+
+3. the docs build has failed
+
+This means that one of the changes you made to the documentation has caused the build to fail. Check the formatting in your changes (especially in `docs/datasets.rst`) and make sure they're consistent.
+
+4. the tests have failed
+
+This means at least one of tests are failing. Run the tests locally to make sure they're passing. If they're passing locally but failing in the check, we can help debug.

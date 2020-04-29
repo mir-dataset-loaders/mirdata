@@ -50,6 +50,9 @@ click the link provided in the "Module" column.
 | ikala_           | iKala               | - audio: ❌         | - Vocal :ref:`F0`         | 252    |
 |                  |                     | - annotations: ❌   | - :ref:`lyrics`           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
+| maestro_         | MAESTRO             | - audio: ✅         | - Piano :ref:`notes`      | 1282   |
+|                  |                     | - annotations: ✅   |                           |        |
++------------------+---------------------+---------------------+---------------------------+--------+
 | medley_solos_db_ | Medley-solos-DB     | - audio: ✅         | - :ref:`instruments`      | 21571  |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
@@ -207,6 +210,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre
 .. _guitarset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.guitarset
 .. _ikala: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.ikala
+.. _maestro: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.maestro
 .. _medley_solos_db: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db
 .. _medleydb_melody: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_melody
 .. _medleydb_pitch: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_pitch
