@@ -32,6 +32,7 @@ if __name__ == '__main__':
         license='BSD-3-Clause',
         install_requires=[
             'tqdm',
+            'numba==0.48',  # patch for librosa incompatibility
             'librosa >= 0.7.0',
             'numpy>=1.16',
             'jams',
