@@ -36,12 +36,16 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
     audio, sr = track.audio
-    assert sr == 44100
-    assert audio.shape == (44100 * 2,)
+    assert sr == 44100, 'sample rate {} is not 44100'.format(sr)
+    assert audio.shape == (44100 * 2,), 'audio shape {} was not (88200,)'.format(
+        audio.shape
+    )
 
     track = beatles.Track('10212')
-    assert track.beats is None
-    assert track.key is None
+    assert track.beats is None, 'expected track.beats to be None, got {}'.format(
+        track.beats
+    )
+    assert track.key is None, 'expected track.key to be None, got {}'.format(track.key)
 
 
 def test_to_jams():
@@ -59,9 +63,25 @@ def test_to_jams():
         15.453,
         15.929,
         16.428,
-    ]
-    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    assert [beat.value for beat in beats] == [2, 3, 4, 1, 2, 3, 4]
+    ], 'beat times do not match expected'
+    assert [beat.duration for beat in beats] == [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+    ], 'beat durations do not match expected'
+    assert [beat.value for beat in beats] == [
+        2,
+        3,
+        4,
+        1,
+        2,
+        3,
+        4,
+    ], 'beat values do not match expected'
     assert [beat.confidence for beat in beats] == [
         None,
         None,
@@ -70,32 +90,64 @@ def test_to_jams():
         None,
         None,
         None,
-    ]
+    ], 'beat confidence does not match expected'
 
     segments = jam.search(namespace='segment')[0]['data']
-    assert [segment.time for segment in segments] == [0.0, 0.465]
-    assert [segment.duration for segment in segments] == [0.465, 14.466]
-    assert [segment.value for segment in segments] == ['silence', 'intro']
-    assert [segment.confidence for segment in segments] == [None, None]
+    assert [segment.time for segment in segments] == [
+        0.0,
+        0.465,
+    ], 'segment time does not match expected'
+    assert [segment.duration for segment in segments] == [
+        0.465,
+        14.466,
+    ], 'segment duration does not match expected'
+    assert [segment.value for segment in segments] == [
+        'silence',
+        'intro',
+    ], 'segment value does not match expected'
+    assert [segment.confidence for segment in segments] == [
+        None,
+        None,
+    ], 'segment confidence does not match expected'
 
     chords = jam.search(namespace='chord')[0]['data']
-    assert [chord.time for chord in chords] == [0.0, 4.586464, 6.98973]
+    assert [chord.time for chord in chords] == [
+        0.0,
+        4.586464,
+        6.98973,
+    ], 'chord time does not match expected'
     assert [chord.duration for chord in chords] == [
         0.497838,
         2.4032659999999995,
         2.995374,
-    ]
-    assert [chord.value for chord in chords] == ['N', 'E:min', 'G']
-    assert [chord.confidence for chord in chords] == [None, None, None]
+    ], 'chord duration does not match expected'
+    assert [chord.value for chord in chords] == [
+        'N',
+        'E:min',
+        'G',
+    ], 'chord value does not match expected'
+    assert [chord.confidence for chord in chords] == [
+        None,
+        None,
+        None,
+    ], 'chord confidence does not match expected'
 
     keys = jam.search(namespace='key')[0]['data']
-    assert [key.time for key in keys] == [0.0]
-    assert [key.duration for key in keys] == [119.333]
-    assert [key.value for key in keys] == ['E']
-    assert [key.confidence for key in keys] == [None]
+    assert [key.time for key in keys] == [0.0], 'key time does not match expected'
+    assert [key.duration for key in keys] == [
+        119.333
+    ], 'key duration does not match expected'
+    assert [key.value for key in keys] == ['E'], 'key value does not match expected'
+    assert [key.confidence for key in keys] == [
+        None
+    ], 'key confidence does not match expected'
 
-    assert jam['file_metadata']['title'] == '11_-_Do_You_Want_To_Know_A_Secret'
-    assert jam['file_metadata']['artist'] == 'The Beatles'
+    assert (
+        jam['file_metadata']['title'] == '11_-_Do_You_Want_To_Know_A_Secret'
+    ), 'title does not match expected'
+    assert (
+        jam['file_metadata']['artist'] == 'The Beatles'
+    ), 'artist does not match expected'
 
 
 def test_load_beats():
@@ -105,17 +157,23 @@ def test_load_beats():
     )
     beat_data = beatles.load_beats(beats_path)
 
-    assert type(beat_data) == utils.BeatData
-    assert type(beat_data.beat_times) == np.ndarray
-    assert type(beat_data.beat_positions) == np.ndarray
+    assert type(beat_data) == utils.BeatData, 'beat_data is not type utils.BeatData'
+    assert (
+        type(beat_data.beat_times) == np.ndarray
+    ), 'beat_data.beat_times is not an np.ndarray'
+    assert (
+        type(beat_data.beat_positions) == np.ndarray
+    ), 'beat_data.beat_positions is not an np.ndarray'
 
     assert np.array_equal(
         beat_data.beat_times,
         np.array([13.249, 13.959, 14.416, 14.965, 15.453, 15.929, 16.428]),
-    )
-    assert np.array_equal(beat_data.beat_positions, np.array([2, 3, 4, 1, 2, 3, 4]))
+    ), 'beat_data.beat_times different than expected'
+    assert np.array_equal(
+        beat_data.beat_positions, np.array([2, 3, 4, 1, 2, 3, 4])
+    ), 'beat_data.beat_positions different from expected'
 
-    assert beatles.load_beats(None) is None
+    assert beatles.load_beats(None) is None, 'load_beats(None) should return None'
 
 
 def test_load_chords():
