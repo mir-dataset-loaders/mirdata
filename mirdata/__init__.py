@@ -15,6 +15,7 @@ __all__ = [
     'medleydb_melody',
     'medleydb_pitch',
     'orchset',
+    'phenicx_anechoic',
     'rwc_classical',
     'rwc_jazz',
     'rwc_popular',
