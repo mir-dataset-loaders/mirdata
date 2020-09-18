@@ -65,6 +65,9 @@ click the link provided in the "Module" column.
 | orchset_         | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
+| phenicx_anechoic_| Orchset             | - audio: ✅         | - :ref:`instruments`      |  4     |
+|                  |                     | - annotations: ✅   | - :ref:`notes`            |        |
++------------------+---------------------+---------------------+---------------------------+--------+
 | rwc_classical_   | RWC Classical       | - audio: ❌         | - :ref:`beats`            | 50     |
 |                  |                     | - annotations: ✅   | - :ref:`sections`         |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
@@ -215,9 +218,10 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _medleydb_melody: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_melody
 .. _medleydb_pitch: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_pitch
 .. _orchset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.orchset
+.. _phenicx_anechoic: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.phenicx_anechoic
 .. _rwc_classical: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_classical
 .. _rwc_jazz: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_jazz
-.. _rwc_pop: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_pop
+.. _rwc_popular: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_pop
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
 
