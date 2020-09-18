@@ -57,16 +57,16 @@ def make_dataset_index(data_path):
             #### add scores
             assert os.path.exists(os.path.join(data_path, 'annotations', piece,'{}.txt'.format(instrument))),'cannot find score file {}'.formatos.path.join(data_path, 'annotations', piece,'{}.txt'.format(instrument))
             assert os.path.exists(os.path.join(data_path, 'annotations', piece,'{}_o.txt'.format(instrument))),'cannot find score file {}'.formatos.path.join(data_path, 'annotations', piece,'{}_o.txt'.format(instrument))
-            assert os.path.exists(os.path.join(data_path, 'annotations', piece,'{}.mid'.format(instrument))),'cannot find score file {}'.formatos.path.join(data_path, 'annotations', piece,'{}.mid'.format(instrument))
-            assert os.path.exists(os.path.join(data_path, 'annotations', piece,'{}_o.mid'.format(instrument))),'cannot find score file {}'.formatos.path.join(data_path, 'annotations', piece,'{}_o.mid'.format(instrument))
+            # assert os.path.exists(os.path.join(data_path, 'annotations', piece,'{}.mid'.format(instrument))),'cannot find score file {}'.formatos.path.join(data_path, 'annotations', piece,'{}.mid'.format(instrument))
+            # assert os.path.exists(os.path.join(data_path, 'annotations', piece,'{}_o.mid'.format(instrument))),'cannot find score file {}'.formatos.path.join(data_path, 'annotations', piece,'{}_o.mid'.format(instrument))
             score_checksum = md5(os.path.join(data_path, 'annotations', piece,'{}.txt'.format(instrument)))
             score_original_checksum = md5(os.path.join(data_path, 'annotations', piece,'{}_o.txt'.format(instrument)))
-            midi_checksum = md5(os.path.join(data_path, 'annotations', piece,'{}.mid'.format(instrument)))
-            midi_original_checksum = md5(os.path.join(data_path, 'annotations', piece,'{}_o.mid'.format(instrument)))
+            # midi_checksum = md5(os.path.join(data_path, 'annotations', piece,'{}.mid'.format(instrument)))
+            # midi_original_checksum = md5(os.path.join(data_path, 'annotations', piece,'{}_o.mid'.format(instrument)))
             index[piece]['score-'+instrument]= ('annotations/{}/{}.txt'.format(piece,instrument), score_checksum)
             index[piece]['score_original-'+instrument]=('annotations/{}/{}_o.txt'.format(piece,instrument), score_original_checksum)
-            index[piece]['score_midi-'+instrument]= ('annotations/{}/{}.mid'.format(piece,instrument), midi_checksum)
-            index[piece]['score_midi_original-'+instrument]= ('annotations/{}/{}_o.mid'.format(piece,instrument), midi_original_checksum)
+            # index[piece]['score_midi-'+instrument]= ('annotations/{}/{}.mid'.format(piece,instrument), midi_checksum)
+            # index[piece]['score_midi_original-'+instrument]= ('annotations/{}/{}_o.mid'.format(piece,instrument), midi_original_checksum)
 
             #### add audios
             instrument_audio_files = sorted(
