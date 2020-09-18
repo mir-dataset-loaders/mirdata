@@ -64,7 +64,6 @@ click the link provided in the "Module" column.
 +------------------+---------------------+---------------------+---------------------------+--------+
 | orchset_         | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
 |                  |                     | - annotations: ✅   |                           |        |
-
 +------------------+---------------------+---------------------+---------------------------+--------+
 | phenicx_anechoic_| PHENICX-Anechoic    | - audio: ✅         | - :ref:`instruments`      | 4     |
 |                  |                     | - annotations: ✅   | - :ref:`notes`            |        |
