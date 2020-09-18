@@ -1,10 +1,45 @@
 # -*- coding: utf-8 -*-
-"""Example Dataset Loader
+"""PHENICX-Anechoic Dataset Loader
 
-[Description of the dataset. Write about the number of files, origin of the
-music, genre, relevant papers, openness/license, creator, and annotation type.]
+This dataset includes audio and annotations useful for tasks as score-informed source separation, score following, multi-pitch estimation, transcription or instrument detection, in the context of symphonic music:
+M. Miron, J. Carabias-Orti, J. J. Bosch, E. Gómez and J. Janer, "Score-informed source separation for multi-channel orchestral recordings", Journal of Electrical and Computer Engineering (2016))"
 
-For more details, please visit: [website]
+We do not provide the original audio files, which can be found at the web page hosted by Aalto University. However, with their permission we distribute the denoised versions for some of the anechoic orchestral recordings. The original dataset was introduced in:
+Pätynen, J., Pulkki, V., and Lokki, T., "Anechoic recording system for symphony orchestra," Acta Acustica united with Acustica, vol. 94, nr. 6, pp. 856-865, November/December 2008.
+
+Additionally, we provide the associated musical note onset and offset annotations, and the Roomsim configuration files used to generate the multi-microphone recordings.
+
+The original anechoic dataset in Pätynen et al. consists of four passages of symphonic music from the Classical and Romantic periods. This work presented a set of anechoic recordings for each of the instruments, which were then synchronized between them so that they could later be combined to a mix of the orchestra. In order to keep the evaluation setup consistent between the four pieces, we selected the following instruments: violin, viola, cello, double bass, oboe, flute, clarinet, horn, trumpet and bassoon. A list of the characteristics of the four pieces can be found below:
+
+Mozart
+- duration: 3min 47s
+- period: classical
+- no. sources: 8
+- total no. instruments: 10
+- max. instruments/source: 2
+
+Beethoven
+- duration: 3min 11s
+- period: classical
+- no. sources: 10
+- total no. instruments: 20
+- max. instruments/source: 4
+
+Beethoven
+- duration: 2min 12s
+- period: romantic
+- no. sources: 10
+- total no. instruments: 30
+- max. instruments/source: 4
+
+Bruckner
+- duration: 1min 27s
+- period: romantic
+- no. sources: 10
+- total no. instruments: 39
+- max. instruments/source: 12
+
+For more details, please visit: https://www.upf.edu/web/mtg/phenicx-anechoic
 
 """
 
@@ -31,7 +66,7 @@ REMOTES = {
         filename='PHENICX-Anechoic.zip',
         url='https://zenodo.org/record/840025/files/PHENICX-Anechoic.zip?download=1',
         checksum='7fec47568263476ecac0103aef608629',
-        destination_dir=None, # -- relative path for where to unzip the data, or None
+        destination_dir='..', # -- relative path for where to unzip the data, or None
     )
 }
 
@@ -54,10 +89,6 @@ class Track(track.Track):
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
 
-    Attributes:
-        track_id (str): track id
-        # -- Add any of the dataset specific attributes here
-
     """
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
@@ -71,15 +102,16 @@ class Track(track.Track):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
-        self._audio_track_paths = {k:v for k,v in self._track_paths.items() if 'audio-' in k}
-        self._score_track_paths = {k:v for k,v in self._track_paths.items() if 'score-' in k}
+        self._audio_track_paths = {k:v for k,v in sorted(self._track_paths.items()) if 'audio-' in k}
+        self._score_track_paths = {k:v for k,v in sorted(self._track_paths.items()) if 'score-' in k}
 
         #### parse the keys for the list of instruments
-        self.instruments = [source.replace('score-','')
-                for source in self._track_paths.keys() if 'score-' in source]
+        self.instruments = sorted([source.replace('score-','')
+                for source in self._track_paths.keys() if 'score-' in source])
+
         #### get the corresponding sections for the instruments
-        self.sections = list(set(section for instrument,section in DATASET_SECTIONS.items()
-                            if instrument in self.instruments))
+        self.sections = sorted(list(set(section for instrument,section in DATASET_SECTIONS.items()
+                            if instrument in self.instruments)))
 
         audio_path = [v[0] for k,v in self._track_paths.items() if 'audio-' in k][0]
         score_path = [v[0] for k,v in self._track_paths.items() if 'score-' in k][0]
@@ -92,6 +124,7 @@ class Track(track.Track):
         target_instruments = {instrument:[] for instrument in self.instruments}
         target_sections = {section:[] for section in self.sections}
         mix = []
+
         for i,(k,audio_source) in enumerate(self._audio_track_paths.items()):
             source_name = os.path.basename(audio_source[0]).split('.')[0]
             instrument = source_name.rstrip(string.digits)
@@ -125,6 +158,7 @@ class Track(track.Track):
                         name=section,
                         instruments=instruments,
                         score_path=self.annotation_path)
+
 
     def get_score(self,target):
         """Get the score for a given target
@@ -193,22 +227,23 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        score_data = [(self.targets[target].score, 'score-'+target) for target in self.targets]
-        original_score_data = [(self.targets[target].original_score, 'score-'+target) for target in self.targets]
+        # score_data = [(self.targets[target].score, 'score-'+target) for target in self.targets]
+        # original_score_data = [(self.targets[target].original_score, 'score-'+target) for target in self.targets]
         metadata = {}
         metadata['instruments'] = self.instruments
         metadata['sections'] = self.sections
+        metadata['mix'] = self.mix
         metadata['sources'] = self.sources
         metadata['targets'] = self.targets
+        audio_paths = [os.path.join(self.audio_path,source+'.wav') for source in self.sources.keys()]
         return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            event_data=score_data.extend(original_score_data),
-            annotation_data=[(self.annotation, None)],
+            audio_path=audio_paths[0],
+            #event_data=score_data.extend(original_score_data),
             metadata=metadata,
         )
 
 def load_audio(audio_path):
-    """Load a Example audio file.
+    """Load an audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -301,8 +336,7 @@ def track_ids():
 
 # -- keep this function as it is
 def load(data_home=None):
-    """Load Example dataset
-
+    """Load  dataset
     Args:
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
@@ -320,11 +354,13 @@ def load(data_home=None):
 
 # -- Write any necessary loader functions for loading the dataset's data
 def load_score(score_paths):
+    """
+    Args:
+        score_paths (str) or list[str]: list of txt score files containing start_time, end_time, note
+    Returns:
+        utils.EventData: score as EventData tuple
+    """
 
-    # -- if there are some file paths for this annotation type in this dataset's
-    # -- index that are None/null, uncomment the lines below.
-    # if annotation_path is None:
-    #     return None
     if isinstance(score_paths,str): score_paths=list(score_paths)
     assert isinstance(score_paths,list), "score_paths should be either string or list of strings"
 
@@ -335,12 +371,16 @@ def load_score(score_paths):
         if not os.path.exists(path):
             raise IOError("path {} does not exist".format(path))
 
+        #### read start, end times
         times = np.loadtxt(path, delimiter=",",usecols=[0, 1], dtype=np.float)
-        sc = np.loadtxt(path, delimiter=",", usecols=2, dtype=str)
-
         start_times.append(times[:,0])
         end_times.append(times[:,1])
-        score.append(sc)
+
+        #### read notes as string
+        with open(path) as f:
+            content = f.readlines()
+            sc = np.array([line.split(',')[2].strip('\n') for line in content])
+            score.append(sc)
 
     start_times = np.concatenate(start_times)
     end_times = np.concatenate(end_times)
@@ -361,9 +401,30 @@ def cite():
 
     cite_data = """
 =========== MLA ===========
-MLA format citation/s here
+Miron, Marius, et al. "Score-informed source separation for multichannel orchestral recordings." Journal of Electrical and Computer Engineering 2016 (2016).
+
+Pätynen, Jukka, Ville Pulkki, and Tapio Lokki. "Anechoic recording system for symphony orchestra." Acta Acustica united with Acustica 94.6 (2008): 856-865.
 ========== Bibtex ==========
-Bibtex format citations/s here
+@article{miron2016score,
+  title={Score-informed source separation for multichannel orchestral recordings},
+  author={Miron, Marius and Carabias-Orti, Julio J and Bosch, Juan J and G{\'o}mez, Emilia and Janer, Jordi},
+  journal={Journal of Electrical and Computer Engineering},
+  volume={2016},
+  year={2016},
+  publisher={Hindawi}
+}
+
+@article{patynen2008anechoic,
+  title={Anechoic recording system for symphony orchestra},
+  author={P{\"a}tynen, Jukka and Pulkki, Ville and Lokki, Tapio},
+  journal={Acta Acustica united with Acustica},
+  volume={94},
+  number={6},
+  pages={856--865},
+  year={2008},
+  publisher={S. Hirzel Verlag}
+}
+
 """
     print(cite_data)
 
@@ -375,18 +436,13 @@ Bibtex format citations/s here
 ##########################################
 
 class Source(object):
-    """
-    An audio Target which is a linear mixture of several sources
-    Attributes
-    ----------
-    name : str
-        Name of this source
-    stem_id : int
-        stem/substream ID is set here.
-    path : str
-        Absolute path to audio file
-    gain : float
-        Mixing weight for this source
+    """An audio Target which is a linear mixture of several sources
+
+    Args:
+        name (str): Name of this source
+        stem_id (int): stem/substream ID is set here.
+        path (str): Absolute path to audio file
+        gain (float): Mixing weight for this source
     """
     def __init__(
         self,
@@ -425,15 +481,23 @@ class Source(object):
     def rate(self):
         return self._rate
 
+    def __eq__(self, other):
+        """ tests if two sources are equal
+        """
+        if not isinstance(other, Source):
+            return False
+        else:
+            return self.name==other.name and self.gain==other.gain and os.path.basename(self.path)==os.path.basename(other.path)
+
 
 # Target from musdb DB mixed from several sources
 class Target(object):
     """
     An audio Target which is a linear mixture of several sources/targets
     Attributes
-    ----------
-    sources : list[Source/Target]
-        list of ``Source`` objects for this ``Target``
+
+    Args:
+        sources (list[Source/Target]): list of ``Source`` objects for this ``Target``
     """
     def __init__(
         self,
@@ -442,10 +506,14 @@ class Target(object):
         score_path, # paths to score/annotation files
         name=None,  # has its own name
     ):
+        assert isinstance(sources,list),"sources should be a list of Source objects"
+        assert isinstance(instruments,list),"instruments should be a list of str representing instruments"
+        print(score_path)
+        assert os.path.isdir(score_path),"score_path does not exist"
         self.sources = sources
         self.name = name
         self.score_path = score_path
-        self.instruments = instruments
+        self.instruments = sorted(instruments)
 
     @property
     def audio(self):
@@ -454,11 +522,13 @@ class Target(object):
         """
         for i,source in enumerate(self.sources):
             audio = source.audio
+            sr = source.rate
             if audio is not None:
                 if i==0:
                     mix = source.gain * audio
-                    self._rate = source.rate
+                    self._rate = sr
                 else:
+                    assert sr==self.rate,"the sampling rate is different for two sources of the same target"
                     if len(audio)>len(mix):
                         prev_len = len(mix)
                         mix = np.resize(mix,audio.shape)
@@ -499,3 +569,20 @@ class Target(object):
         for source in self.sources:
             parts.append(source.name)
         return '+'.join(parts)
+
+    def __eq__(self, other):
+        """ tests if two targets are equal
+        """
+        if not isinstance(other, Target):
+            print('not the same type')
+            return False
+        else:
+            if self.name!=other.name:
+                print('names not equal')
+                return False
+            if self.instruments!=other.instruments:
+                print('instruments not equal')
+                return False
+            for s1,s2 in zip(self.sources,other.sources):
+                if s1!=s2: return False
+            return True
