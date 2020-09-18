@@ -28,6 +28,7 @@ This library provides tools for working with common MIR datasets, including tool
 * [MedleyDB Pitch](https://medleydb.weebly.com/)
 * [Medley-solos-DB](https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db)
 * [ORCHSET](https://zenodo.org/record/1289786#.XREpzaeZPx6)
+* [PHENICX-Anechoic](https://zenodo.org/record/840025)
 * [RWC Classical](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html)
 * [RWC Jazz](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html)
 * [RWC Popular](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html)
