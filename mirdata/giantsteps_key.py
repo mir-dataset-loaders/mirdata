@@ -73,7 +73,7 @@ class Track(track.Track):
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
-        self.keys_path = os.path.join(self._data_home, self._track_paths['keys'][0])
+        self.keys_path = os.path.join(self._data_home, self._track_paths['key'][0])
         self.metada_path = os.path.join(self._data_home, self._track_paths['metadata'][0])
 
         self.title = os.path.basename(self._track_paths['sections'][0]).split('.')[0]
