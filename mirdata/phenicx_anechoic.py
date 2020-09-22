@@ -66,7 +66,7 @@ REMOTES = {
         filename='PHENICX-Anechoic.zip',
         url='https://zenodo.org/record/840025/files/PHENICX-Anechoic.zip?download=1',
         checksum='7fec47568263476ecac0103aef608629',
-        destination_dir='..', # -- relative path for where to unzip the data, or None
+        destination_dir='..'
     )
 }
 
@@ -265,7 +265,7 @@ def load_audio(audio_path):
 # -- (i.e. there is no `dataset.REMOTES`)
 # -- the cleanup argument can be removed if the dataset has no tar or zip files in `dataset.REMOTES`.
 def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
+    data_home=None, force_overwrite=False, cleanup=True
 ):
     """Download the dataset.
 
@@ -275,10 +275,6 @@ def download(
             If `None`, looks for the data in the default directory, `~/mir_datasets`
         force_overwrite (bool):
             Whether to overwrite the existing downloaded data
-        partial_download (list):
-            List indicating what to partially download. The list can include any of:
-                * 'TODO_KEYS_OF_REMOTES' TODO ADD DESCRIPTION
-            If `None`, all data is downloaded.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
 
@@ -291,9 +287,6 @@ def download(
         data_home,
         # -- by default all elements in REMOTES will be downloaded
         remotes=REMOTES,
-        # -- we allow partial downloads of the datasets containing multiple remote files
-        # -- this is done by specifying a list of keys in partial_download (when using the library)
-        partial_download=partial_download,
         # -- if you need to give the user any instructions, such as how to download
         # -- a dataset which is not freely availalbe, put them here
         info_message=None,
@@ -508,8 +501,6 @@ class Target(object):
     ):
         assert isinstance(sources,list),"sources should be a list of Source objects"
         assert isinstance(instruments,list),"instruments should be a list of str representing instruments"
-        print(score_path)
-        assert os.path.isdir(score_path),"score_path does not exist"
         self.sources = sources
         self.name = name
         self.score_path = score_path
