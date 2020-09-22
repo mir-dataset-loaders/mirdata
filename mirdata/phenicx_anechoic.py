@@ -66,7 +66,7 @@ REMOTES = {
         filename='PHENICX-Anechoic.zip',
         url='https://zenodo.org/record/840025/files/PHENICX-Anechoic.zip?download=1',
         checksum='7fec47568263476ecac0103aef608629',
-        destination_dir='..'
+        destination_dir='..',
     )
 }
 
@@ -74,9 +74,19 @@ DATASET_DIR = 'PHENICX-Anechoic'
 
 DATA = utils.LargeData('phenicx_anechoic_index.json')
 
-DATASET_SECTIONS = {'doublebass':'strings','cello':'strings','clarinet':'woodwinds',
-            'viola':'strings','violin':'strings','oboe':'woodwinds',
-            'flute':'woodwinds','trumpet':'brass','bassoon':'woodwinds','horn':'brass'}
+DATASET_SECTIONS = {
+    'doublebass': 'strings',
+    'cello': 'strings',
+    'clarinet': 'woodwinds',
+    'viola': 'strings',
+    'violin': 'strings',
+    'oboe': 'woodwinds',
+    'flute': 'woodwinds',
+    'trumpet': 'brass',
+    'bassoon': 'woodwinds',
+    'horn': 'brass',
+}
+
 
 class Track(track.Track):
     """Phenicx-Anechoic Track class
@@ -90,10 +100,10 @@ class Track(track.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
 
     """
+
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError(
-                '{} is not a valid track ID in Example'.format(track_id))
+            raise ValueError('{} is not a valid track ID in Example'.format(track_id))
 
         self.track_id = track_id
 
@@ -102,36 +112,58 @@ class Track(track.Track):
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
-        self._audio_track_paths = {k:v for k,v in sorted(self._track_paths.items()) if 'audio-' in k}
-        self._score_track_paths = {k:v for k,v in sorted(self._track_paths.items()) if 'score-' in k}
+        self._audio_track_paths = {
+            k: v for k, v in sorted(self._track_paths.items()) if 'audio-' in k
+        }
+        self._score_track_paths = {
+            k: v for k, v in sorted(self._track_paths.items()) if 'score-' in k
+        }
 
         #### parse the keys for the list of instruments
-        self.instruments = sorted([source.replace('score-','')
-                for source in self._track_paths.keys() if 'score-' in source])
+        self.instruments = sorted(
+            [
+                source.replace('score-', '')
+                for source in self._track_paths.keys()
+                if 'score-' in source
+            ]
+        )
 
         #### get the corresponding sections for the instruments
-        self.sections = sorted(list(set(section for instrument,section in DATASET_SECTIONS.items()
-                            if instrument in self.instruments)))
+        self.sections = sorted(
+            list(
+                set(
+                    section
+                    for instrument, section in DATASET_SECTIONS.items()
+                    if instrument in self.instruments
+                )
+            )
+        )
 
-        audio_path = [v[0] for k,v in self._track_paths.items() if 'audio-' in k][0]
-        score_path = [v[0] for k,v in self._track_paths.items() if 'score-' in k][0]
+        audio_path = [v[0] for k, v in self._track_paths.items() if 'audio-' in k][0]
+        score_path = [v[0] for k, v in self._track_paths.items() if 'score-' in k][0]
 
         self.audio_path = os.path.dirname(os.path.join(self._data_home, audio_path))
-        self.annotation_path = os.path.dirname(os.path.join(self._data_home, score_path))
+        self.annotation_path = os.path.dirname(
+            os.path.join(self._data_home, score_path)
+        )
 
         #### add sources to track
         self.sources = collections.OrderedDict()
-        target_instruments = {instrument:[] for instrument in self.instruments}
-        target_sections = {section:[] for section in self.sections}
+        target_instruments = {instrument: [] for instrument in self.instruments}
+        target_sections = {section: [] for section in self.sections}
         mix = []
 
-        for i,(k,audio_source) in enumerate(self._audio_track_paths.items()):
+        for i, (k, audio_source) in enumerate(self._audio_track_paths.items()):
             source_name = os.path.basename(audio_source[0]).split('.')[0]
             instrument = source_name.rstrip(string.digits)
 
             ####source
-            source = Source(name=source_name, stem_id=i, path=os.path.join(self._data_home, audio_source[0]))
-            self.sources[source_name]=source
+            source = Source(
+                name=source_name,
+                stem_id=i,
+                path=os.path.join(self._data_home, audio_source[0]),
+            )
+            self.sources[source_name] = source
 
             ####add to targets
             mix.append(source)
@@ -139,28 +171,40 @@ class Track(track.Track):
             target_sections[DATASET_SECTIONS[instrument]].append(source)
 
         #### build the input mix using the sources
-        self.mix = Target(sources=mix,
-                    name='mix',
-                    instruments=self.instruments,
-                    score_path=self.annotation_path)
+        self.mix = Target(
+            sources=mix,
+            name='mix',
+            instruments=self.instruments,
+            score_path=self.annotation_path,
+        )
 
         self.targets = collections.OrderedDict()
         ####build targets for instruments using the sources in target_instruments
         for instrument in self.instruments:
-            self.targets[instrument] = Target(sources=target_instruments[instrument],
-                        name=instrument,
-                        instruments=[instrument],
-                        score_path=self.annotation_path)
+            self.targets[instrument] = Target(
+                sources=target_instruments[instrument],
+                name=instrument,
+                instruments=[instrument],
+                score_path=self.annotation_path,
+            )
         ####build targets for sections using the sources in target_sections
         for section in self.sections:
-            instruments = list(set([source.name.rstrip(string.digits) for source in target_sections[section]]))
-            self.targets[section] = Target(sources=target_sections[section],
-                        name=section,
-                        instruments=instruments,
-                        score_path=self.annotation_path)
+            instruments = list(
+                set(
+                    [
+                        source.name.rstrip(string.digits)
+                        for source in target_sections[section]
+                    ]
+                )
+            )
+            self.targets[section] = Target(
+                sources=target_sections[section],
+                name=section,
+                instruments=instruments,
+                score_path=self.annotation_path,
+            )
 
-
-    def get_score(self,target):
+    def get_score(self, target):
         """Get the score for a given target
 
         Args:
@@ -170,10 +214,12 @@ class Track(track.Track):
             (namedtuple, utils.EventData): the score in format 'start_times', 'end_times', 'event'
 
         """
-        assert target in self.targets.keys(),'target {} is not in the list of targets {}'.format(target,self.targets)
+        assert (
+            target in self.targets.keys()
+        ), 'target {} is not in the list of targets {}'.format(target, self.targets)
         return self.targets[target].score
 
-    def get_original_score(self,target):
+    def get_original_score(self, target):
         """Get the original score for a given target
 
         Args:
@@ -183,7 +229,9 @@ class Track(track.Track):
             (namedtuple, utils.EventData): the score in format 'start_times', 'end_times', 'event'
 
         """
-        assert target in self.targets.keys(),'target {} is not in the list of targets {}'.format(target,self.targets)
+        assert (
+            target in self.targets.keys()
+        ), 'target {} is not in the list of targets {}'.format(target, self.targets)
         return self.targets[target].original_score
 
     def get_audio_mix(self):
@@ -194,9 +242,9 @@ class Track(track.Track):
             (float): The sample rate of the audio file
 
         """
-        return self.mix.audio,self.mix.rate
+        return self.mix.audio, self.mix.rate
 
-    def get_audio_target(self,target):
+    def get_audio_target(self, target):
         """Get the audio, sampling rate for a given target
 
         Args:
@@ -207,10 +255,12 @@ class Track(track.Track):
             (float): The sample rate of the audio file
 
         """
-        assert target in self.targets.keys(),'target {} is not in the list of targets {}'.format(target,self.targets)
-        return self.targets[target].audio,self.targets[target].rate
+        assert (
+            target in self.targets.keys()
+        ), 'target {} is not in the list of targets {}'.format(target, self.targets)
+        return self.targets[target].audio, self.targets[target].rate
 
-    def get_audio_source(self,source):
+    def get_audio_source(self, source):
         """Get the audio, sampling rate for a given source
 
         Args:
@@ -221,9 +271,10 @@ class Track(track.Track):
             (float): The sample rate of the audio file
 
         """
-        assert source in self.sources.keys(),'source {} is not in the list of sources {}'.format(source,self.sources)
-        return self.sources[source].audio,self.sources[source].rate
-
+        assert (
+            source in self.sources.keys()
+        ), 'source {} is not in the list of sources {}'.format(source, self.sources)
+        return self.sources[source].audio, self.sources[source].rate
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
@@ -235,12 +286,16 @@ class Track(track.Track):
         metadata['mix'] = self.mix
         metadata['sources'] = self.sources
         metadata['targets'] = self.targets
-        audio_paths = [os.path.join(self.audio_path,source+'.wav') for source in self.sources.keys()]
+        audio_paths = [
+            os.path.join(self.audio_path, source + '.wav')
+            for source in self.sources.keys()
+        ]
         return jams_utils.jams_converter(
             audio_path=audio_paths[0],
-            #event_data=score_data.extend(original_score_data),
+            # event_data=score_data.extend(original_score_data),
             metadata=metadata,
         )
+
 
 def load_audio(audio_path):
     """Load an audio file.
@@ -260,13 +315,12 @@ def load_audio(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
+
 # -- the partial_download argument can be removed if `dataset.REMOTES` is missing/has only one value
 # -- the force_overwrite argument can be removed if the dataset does not download anything
 # -- (i.e. there is no `dataset.REMOTES`)
 # -- the cleanup argument can be removed if the dataset has no tar or zip files in `dataset.REMOTES`.
-def download(
-    data_home=None, force_overwrite=False, cleanup=True
-):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download the dataset.
 
     Args:
@@ -354,8 +408,11 @@ def load_score(score_paths):
         utils.EventData: score as EventData tuple
     """
 
-    if isinstance(score_paths,str): score_paths=list(score_paths)
-    assert isinstance(score_paths,list), "score_paths should be either string or list of strings"
+    if isinstance(score_paths, str):
+        score_paths = list(score_paths)
+    assert isinstance(
+        score_paths, list
+    ), "score_paths should be either string or list of strings"
 
     start_times = []
     end_times = []
@@ -365,9 +422,9 @@ def load_score(score_paths):
             raise IOError("path {} does not exist".format(path))
 
         #### read start, end times
-        times = np.loadtxt(path, delimiter=",",usecols=[0, 1], dtype=np.float)
-        start_times.append(times[:,0])
-        end_times.append(times[:,1])
+        times = np.loadtxt(path, delimiter=",", usecols=[0, 1], dtype=np.float)
+        start_times.append(times[:, 0])
+        end_times.append(times[:, 1])
 
         #### read notes as string
         with open(path) as f:
@@ -379,7 +436,7 @@ def load_score(score_paths):
     end_times = np.concatenate(end_times)
     score = np.concatenate(score)
 
-    #sort on the start time
+    # sort on the start time
     ind = np.argsort(start_times, axis=0)
     start_times = np.take_along_axis(start_times, ind, axis=0)
     end_times = np.take_along_axis(end_times, ind, axis=0)
@@ -422,11 +479,11 @@ Pätynen, Jukka, Ville Pulkki, and Tapio Lokki. "Anechoic recording system for s
     print(cite_data)
 
 
-
 ##########################################
 #### derived from musdb multi-track code
 #### distributed under MIT license
 ##########################################
+
 
 class Source(object):
     """An audio Target which is a linear mixture of several sources
@@ -437,6 +494,7 @@ class Source(object):
         path (str): Absolute path to audio file
         gain (float): Mixing weight for this source
     """
+
     def __init__(
         self,
         name=None,  # has its own name
@@ -444,7 +502,7 @@ class Source(object):
         stem_id=None,  # might have its own stem_id
         gain=1.0,
         *args,
-        **kwargs
+        **kwargs,
     ):
         self.name = name
         self.path = path
@@ -480,7 +538,11 @@ class Source(object):
         if not isinstance(other, Source):
             return False
         else:
-            return self.name==other.name and self.gain==other.gain and os.path.basename(self.path)==os.path.basename(other.path)
+            return (
+                self.name == other.name
+                and self.gain == other.gain
+                and os.path.basename(self.path) == os.path.basename(other.path)
+            )
 
 
 # Target from musdb DB mixed from several sources
@@ -492,15 +554,18 @@ class Target(object):
     Args:
         sources (list[Source/Target]): list of ``Source`` objects for this ``Target``
     """
+
     def __init__(
         self,
-        sources, # list of Source objects
-        instruments, # list of str (instruments)
-        score_path, # paths to score/annotation files
+        sources,  # list of Source objects
+        instruments,  # list of str (instruments)
+        score_path,  # paths to score/annotation files
         name=None,  # has its own name
     ):
-        assert isinstance(sources,list),"sources should be a list of Source objects"
-        assert isinstance(instruments,list),"instruments should be a list of str representing instruments"
+        assert isinstance(sources, list), "sources should be a list of Source objects"
+        assert isinstance(
+            instruments, list
+        ), "instruments should be a list of str representing instruments"
         self.sources = sources
         self.name = name
         self.score_path = score_path
@@ -511,22 +576,24 @@ class Target(object):
         """array_like: [shape=(num_samples)]
         mixes audio for targets on the fly
         """
-        for i,source in enumerate(self.sources):
+        for i, source in enumerate(self.sources):
             audio = source.audio
             sr = source.rate
             if audio is not None:
-                if i==0:
+                if i == 0:
                     mix = source.gain * audio
                     self._rate = sr
                 else:
-                    assert sr==self.rate,"the sampling rate is different for two sources of the same target"
-                    if len(audio)>len(mix):
+                    assert (
+                        sr == self.rate
+                    ), "the sampling rate is different for two sources of the same target"
+                    if len(audio) > len(mix):
                         prev_len = len(mix)
-                        mix = np.resize(mix,audio.shape)
-                        mix[prev_len:] = 0.
+                        mix = np.resize(mix, audio.shape)
+                        mix[prev_len:] = 0.0
                         mix += source.gain * audio
-                    elif len(audio)<len(mix):
-                        mix[:len(audio)] += source.gain * audio
+                    elif len(audio) < len(mix):
+                        mix[: len(audio)] += source.gain * audio
                     else:
                         mix += source.gain * audio
         return mix
@@ -541,8 +608,10 @@ class Target(object):
         """
         if not os.path.isdir(self.score_path):
             raise IOError("path {} does not exist".format(self.score_path))
-        score_paths = [os.path.join(self.score_path,instrument+'.txt')
-                                    for instrument in self.instruments]
+        score_paths = [
+            os.path.join(self.score_path, instrument + '.txt')
+            for instrument in self.instruments
+        ]
         return load_score(score_paths)
 
     @utils.cached_property
@@ -551,8 +620,10 @@ class Target(object):
         """
         if not os.path.isdir(self.score_path):
             raise IOError("path {} does not exist".format(self.score_path))
-        score_paths = [os.path.join(self.score_path,instrument+'_o.txt')
-                                    for instrument in self.instruments]
+        score_paths = [
+            os.path.join(self.score_path, instrument + '_o.txt')
+            for instrument in self.instruments
+        ]
         return load_score(score_paths)
 
     def __repr__(self):
@@ -568,12 +639,13 @@ class Target(object):
             print('not the same type')
             return False
         else:
-            if self.name!=other.name:
+            if self.name != other.name:
                 print('names not equal')
                 return False
-            if self.instruments!=other.instruments:
+            if self.instruments != other.instruments:
                 print('instruments not equal')
                 return False
-            for s1,s2 in zip(self.sources,other.sources):
-                if s1!=s2: return False
+            for s1, s2 in zip(self.sources, other.sources):
+                if s1 != s2:
+                    return False
             return True
