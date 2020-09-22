@@ -186,6 +186,15 @@ def test_to_jams():
     sections = ['brass', 'strings', 'woodwinds']
     track = phenicx_anechoic.Track('beethoven', data_home=data_home)
     jam = track.to_jams()
+    assert len(jam.search(namespace='tag_open')) == 26
+    score = jam.search(namespace='tag_open')[0]['data']
+    assert [s.time for s in score] == [4.347937, 4.347937, 12.147982]
+    assert [s.duration for s in score] == [
+        0.6598860000000002,
+        0.6598860000000002,
+        0.7196599999999993,
+    ]
+    assert [s.value for s in score] == ['A3', 'C#4', 'B3']
     assert jam['sandbox']['instruments'] == instruments
     assert jam['sandbox']['sections'] == sections
     assert isinstance(jam['sandbox']['targets'], collections.OrderedDict)

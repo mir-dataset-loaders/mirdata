@@ -278,8 +278,13 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        # score_data = [(self.targets[target].score, 'score-'+target) for target in self.targets]
-        # original_score_data = [(self.targets[target].original_score, 'score-'+target) for target in self.targets]
+        score_data = [
+            (self.targets[target].score, 'score-' + target) for target in self.targets
+        ]
+        original_score_data = [
+            (self.targets[target].original_score, 'score-' + target)
+            for target in self.targets
+        ]
         metadata = {}
         metadata['instruments'] = self.instruments
         metadata['sections'] = self.sections
@@ -291,9 +296,7 @@ class Track(track.Track):
             for source in self.sources.keys()
         ]
         return jams_utils.jams_converter(
-            audio_path=audio_paths[0],
-            # event_data=score_data.extend(original_score_data),
-            metadata=metadata,
+            event_data=score_data + original_score_data, metadata=metadata,
         )
 
 
