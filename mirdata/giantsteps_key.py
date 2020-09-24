@@ -275,5 +275,6 @@ Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
 
 if __name__ == "__main__":
     data = load()
-
-    print(data["3"].metadata)
+    for k, v in data.items():
+        print(v.title)
+        print(v.metadata)
