@@ -26,6 +26,13 @@ mirdata.dali
    :members:
 
 
+mirdata.giantsteps_key
+^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.giantsteps_key
+   :members:
+
+
 mirdata.groove_midi
 ^^^^^^^^^^^^^^^^^^^
 
