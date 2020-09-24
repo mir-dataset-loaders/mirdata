@@ -1,9 +1,26 @@
 # -*- coding: utf-8 -*-
 """giantsteps_key Dataset Loader
 
-The giantsteps_key Dataset includes beat and metric position, chord, key, and segmentation
-annotations for 179 giantsteps_key songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf and
-http://isophonics.net/content/reference-annotations-beatles.
+The GiantSteps+ EDM Key Dataset includes 600 two-minute sound excerpts from various EDM subgenres, annotated with
+single-key labels, comments and confidence levels by Daniel G. Camhi, and thoroughly revised and expanded by Ángel
+Faraldo. Additionally, 500 tracks have been thoroughly analysed, containing pitch-class set descriptions, key changes,
+and additional modal changes. This dataset is a revision of the original  GiantSteps Key Dataset, available in Github
+(<https://github.com/GiantSteps/giantsteps-key-dataset>) and initially described in:
+
+Knees, P., Faraldo, Á., Herrera, P., Vogl, R., Böck, S., Hörschläger, F., Le Goff, M. (2015).
+Two Datasets for Tempo Estimation and Key Detection in Electronic Dance Music Annotated from User Corrections.
+In Proceedings of the 16th International Society for Music Information Retrieval Conference, 364–370. Málaga, Spain.
+
+The original audio samples belong to online audio snippets from Beatport, an online music store for DJ's and Electronic
+Dance Music Producers (<http:\\www.beatport.com>). If this dataset were used in further research, we would appreciate
+the citation of the current DOI (10.5281/zenodo.1101082) and the following doctoral dissertation, where a detailed
+description of the properties of this dataset can be found:
+
+Ángel Faraldo (2017). Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination.
+PhD Thesis. Universitat Pompeu Fabra, Barcelona.
+
+This dataset is mainly intended to assess the performance of computational key estimation algorithms in electronic dance
+music subgenres.
 
 """
 
