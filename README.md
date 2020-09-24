@@ -19,6 +19,7 @@ This library provides tools for working with common MIR datasets, including tool
 
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [DALI](https://github.com/gabolsgabs/DALI)
+* [GiantSteps key](https://zenodo.org/record/1095691#.X2zqwC3FQUE)
 * [Groove MIDI](https://magenta.tensorflow.org/datasets/groove)
 * [GTZAN genre](http://marsyas.info/downloads/datasets.html)
 * [GuitarSet](http://github.com/marl/guitarset/)
