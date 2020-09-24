@@ -37,7 +37,7 @@ def make_giantsteps_key_index(data_path):
             codec = '.mp3'
             audio_path = os.path.join(audio_dir, ann_dir.replace('.json', codec))
             chord_path = os.path.join(key_dir, ann_dir.replace('.json', '.txt'))
-            if "Unknown Artist - Unknown Title*" in audio_path:
+            if "*" in audio_path:
                 meta = (None, None)
             else:
                 meta = (ann_dir_full.replace(data_path + '/', ''), md5(ann_dir_full))

@@ -76,7 +76,11 @@ class Track(track.Track):
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.keys_path = os.path.join(self._data_home, self._track_paths['key'][0])
-        self.metadata_path = os.path.join(self._data_home, self._track_paths['meta'][0])
+        self.metadata_path = (
+            os.path.join(self._data_home, self._track_paths['meta'][0])
+            if self._track_paths['meta'][0] is not None
+            else None
+        )
         self.title = self.audio_path.replace(".mp3", '').split('/')[-1]
 
     @utils.cached_property
@@ -274,7 +278,11 @@ Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
 
 
 if __name__ == "__main__":
+    download()
     data = load()
     for k, v in data.items():
         print(v.title)
         print(v.metadata)
+        print(v.key)
+        print(v.title)
+        print(v.to_jams)
