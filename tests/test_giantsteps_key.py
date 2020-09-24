@@ -8,15 +8,15 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = '3'
-    data_home = 'resources/mir_datasets/giantsteps_key'
+    data_home = 'tests/resources/mir_datasets/giantsteps_key'
     track = giantsteps_key.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        'audio_path': 'resources/mir_datasets/giantsteps_key/audio/10089 Jason Sparks - Close My Eyes feat. J. '
+        'audio_path': 'tests/resources/mir_datasets/giantsteps_key/audio/10089 Jason Sparks - Close My Eyes feat. J. '
                       'Little (Original Mix).mp3',
-        'keys_path': 'resources/mir_datasets/giantsteps_key/keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. '
+        'keys_path': 'tests/resources/mir_datasets/giantsteps_key/keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. '
                      'Little (Original Mix).txt',
-        'metadata_path': 'resources/mir_datasets/giantsteps_key/meta/10089 Jason Sparks - Close My Eyes feat. J. '
+        'metadata_path': 'tests/resources/mir_datasets/giantsteps_key/meta/10089 Jason Sparks - Close My Eyes feat. J. '
                          'Little (Original Mix).json',
         'title': '10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix)',
         'track_id': '3',
@@ -36,170 +36,75 @@ def test_track():
     )
 
 
-# def test_to_jams():
-#
-#     data_home = 'tests/resources/mir_datasets/Beatles'
-#     track = giantsteps_key.Track('0111', data_home=data_home)
-#     jam = track.to_jams()
-#
-#     beats = jam.search(namespace='beat')[0]['data']
-#     assert [beat.time for beat in beats] == [
-#         13.249,
-#         13.959,
-#         14.416,
-#         14.965,
-#         15.453,
-#         15.929,
-#         16.428,
-#     ], 'beat times do not match expected'
-#     assert [beat.duration for beat in beats] == [
-#         0.0,
-#         0.0,
-#         0.0,
-#         0.0,
-#         0.0,
-#         0.0,
-#         0.0,
-#     ], 'beat durations do not match expected'
-#     assert [beat.value for beat in beats] == [
-#         2,
-#         3,
-#         4,
-#         1,
-#         2,
-#         3,
-#         4,
-#     ], 'beat values do not match expected'
-#     assert [beat.confidence for beat in beats] == [
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#     ], 'beat confidence does not match expected'
-#
-#     segments = jam.search(namespace='segment')[0]['data']
-#     assert [segment.time for segment in segments] == [
-#         0.0,
-#         0.465,
-#     ], 'segment time does not match expected'
-#     assert [segment.duration for segment in segments] == [
-#         0.465,
-#         14.466,
-#     ], 'segment duration does not match expected'
-#     assert [segment.value for segment in segments] == [
-#         'silence',
-#         'intro',
-#     ], 'segment value does not match expected'
-#     assert [segment.confidence for segment in segments] == [
-#         None,
-#         None,
-#     ], 'segment confidence does not match expected'
-#
-#     chords = jam.search(namespace='chord')[0]['data']
-#     assert [chord.time for chord in chords] == [
-#         0.0,
-#         4.586464,
-#         6.98973,
-#     ], 'chord time does not match expected'
-#     assert [chord.duration for chord in chords] == [
-#         0.497838,
-#         2.4032659999999995,
-#         2.995374,
-#     ], 'chord duration does not match expected'
-#     assert [chord.value for chord in chords] == [
-#         'N',
-#         'E:min',
-#         'G',
-#     ], 'chord value does not match expected'
-#     assert [chord.confidence for chord in chords] == [
-#         None,
-#         None,
-#         None,
-#     ], 'chord confidence does not match expected'
-#
-#     keys = jam.search(namespace='key')[0]['data']
-#     assert [key.time for key in keys] == [0.0], 'key time does not match expected'
-#     assert [key.duration for key in keys] == [
-#         119.333
-#     ], 'key duration does not match expected'
-#     assert [key.value for key in keys] == ['E'], 'key value does not match expected'
-#     assert [key.confidence for key in keys] == [
-#         None
-#     ], 'key confidence does not match expected'
-#
-#     assert (
-#         jam['file_metadata']['title'] == '11_-_Do_You_Want_To_Know_A_Secret'
-#     ), 'title does not match expected'
-#     assert (
-#         jam['file_metadata']['artist'] == 'The Beatles'
-#     ), 'artist does not match expected'
+metadata_test = {'exclusive': False, 'images': {
+    'large': {'url': 'https://geo-media.beatport.com/image/8912740.jpg', 'width': 500, 'id': 8912740, 'height': 500},
+    'small': {'url': 'https://geo-media.beatport.com/image/2489.jpg', 'width': 30, 'id': 2489, 'height': 30},
+    'medium': {'url': 'https://geo-media.beatport.com/image/276.jpg', 'width': 60, 'id': 276, 'height': 60},
+    'dynamic': {'url': 'https://geo-media.beatport.com/image_size{hq}/{w}x{h}/8912740.jpg', 'id': 8912740}},
+                 'artists': [{'slug': 'jason-sparks', 'id': 681, 'name': 'Jason Sparks'}],
+                 'duration': {'minutes': '3:10', 'milliseconds': 190840}, 'id': 10089,
+                 'genres': [{'slug': 'breaks', 'id': 9, 'name': 'Breaks'}],
+                 'title': 'Close My Eyes feat. J. Little (Original Mix)',
+                 'label': {'slug': 'botchit-and-scarper', 'id': 85, 'name': 'Botchit & Scarper'}, 'mix': 'Original Mix',
+                 'preview': {'mp4': {'url': 'https://geo-samples.beatport.com/lofi/10089.LOFI.mp4',
+                                     'offset': {'start': 70840, 'end': 190840}},
+                             'mp3': {'url': 'https://geo-samples.beatport.com/lofi/10089.LOFI.mp3',
+                                     'offset': {'start': 70840, 'end': 190840}}}, 'type': 'track', 'remixers': [],
+                 'purchase_type': None, 'audio_format': 'mp3', 'sale_type': 'purchase', 'purchase': 1,
+                 'price': {'symbol': '€', 'code': 'EUR', 'display': '€1.30', 'value': 1.3}, 'component': 'Track Detail',
+                 'sponsored': False, 'key': 'D maj', 'date': {'released': '2004-02-23', 'published': '2004-02-23'},
+                 'active': True, 'slug': 'close-my-eyes-feat-j-little-original-mix', 'preorder': False,
+                 'name': 'Close My Eyes feat. J. Little', 'component_type': None, 'bpm': 150,
+                 'formats': {'wav': {'symbol': '€', 'code': 'EUR', 'display': '€0.75', 'value': 0.75},
+                             'aiff': {'symbol': '€', 'code': 'EUR', 'display': '€0.75', 'value': 0.75}},
+                 'release': {'slug': 'heroes-and-villians-ep', 'id': 1449, 'name': 'Heroes & Villians EP'},
+                 'waveform': {
+                     'large': {'url': 'https://geo-media.beatport.com/image/8912747.png', 'width': 1500, 'id': 8912747,
+                               'height': 250},
+                     'dynamic': {'url': 'https://geo-media.beatport.com/image_size{hq}/{w}x{h}/8912747.png',
+                                 'id': 8912747}}, 'guest_pick': False, 'sub_genres': []}
 
 
-# def test_load_beats():
-#     beats_path = (
-#         'tests/resources/mir_datasets/Beatles/annotations/beat/'
-#         + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt'
-#     )
-#     beat_data = beatles.load_beats(beats_path)
-#
-#     assert type(beat_data) == utils.BeatData, 'beat_data is not type utils.BeatData'
-#     assert (
-#         type(beat_data.beat_times) == np.ndarray
-#     ), 'beat_data.beat_times is not an np.ndarray'
-#     assert (
-#         type(beat_data.beat_positions) == np.ndarray
-#     ), 'beat_data.beat_positions is not an np.ndarray'
-#
-#     assert np.array_equal(
-#         beat_data.beat_times,
-#         np.array([13.249, 13.959, 14.416, 14.965, 15.453, 15.929, 16.428]),
-#     ), 'beat_data.beat_times different than expected'
-#     assert np.array_equal(
-#         beat_data.beat_positions, np.array([2, 3, 4, 1, 2, 3, 4])
-#     ), 'beat_data.beat_positions different from expected'
-#
-#     assert beatles.load_beats(None) is None, 'load_beats(None) should return None'
-#
-#
-# def test_load_chords():
-#     chords_path = (
-#         'tests/resources/mir_datasets/Beatles/annotations/chordlab/'
-#         + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
-#     )
-#     chord_data = beatles.load_chords(chords_path)
-#
-#     assert type(chord_data) == utils.ChordData
-#     assert type(chord_data.intervals) == np.ndarray
-#     assert type(chord_data.labels) == list
-#
-#     assert np.array_equal(
-#         chord_data.intervals[:, 0], np.array([0.000000, 4.586464, 6.989730])
-#     )
-#     assert np.array_equal(
-#         chord_data.intervals[:, 1], np.array([0.497838, 6.989730, 9.985104])
-#     )
-#     assert np.array_equal(chord_data.labels, np.array(['N', 'E:min', 'G']))
-#
-#     assert beatles.load_chords(None) is None
-#
-#
-# def test_load_key():
-#     key_path = (
-#         'tests/resources/mir_datasets/Beatles/annotations/keylab/'
-#         + 'The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab'
-#     )
-#     key_data = beatles.load_key(key_path)
-#
-#     assert type(key_data) == utils.KeyData
-#     assert type(key_data.start_times) == np.ndarray
-#
-#     assert np.array_equal(key_data.start_times, np.array([0.000]))
-#     assert np.array_equal(key_data.end_times, np.array([119.333]))
-#     assert np.array_equal(key_data.keys, np.array(['E']))
-#
-#     assert beatles.load_key(None) is None
-#
-#
+def test_to_jams():
+    data_home = 'tests/resources/mir_datasets/giantsteps_key'
+    track = giantsteps_key.Track('3', data_home=data_home)
+    jam = track.to_jams()
+    assert (
+            jam['sandbox']['key'] == 'D major'
+    ), 'key does not match expected'
+
+    assert (
+            jam['file_metadata']['title'] == '10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix)'
+    ), 'title does not match expected'
+
+    assert (
+            jam['sandbox']['metadata'] == metadata_test
+    ), 'title does not match expected'
+
+
+def test_load_key():
+    key_path = (
+            'tests/resources/mir_datasets/giantsteps_key/keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. ' +
+            'Little (Original Mix).txt'
+    )
+    key_data = giantsteps_key.load_key(key_path)
+
+    assert type(key_data) == str
+
+    assert key_data == "D major"
+
+    assert giantsteps_key.load_key(None) is None
+
+
+def test_load_meta():
+    key_path = (
+            'tests/resources/mir_datasets/giantsteps_key/meta/10089 Jason Sparks - Close My Eyes feat. J. ' +
+            'Little (Original Mix).json'
+    )
+    metadata = giantsteps_key.load_metadata(key_path)
+
+    assert type(metadata) == dict
+
+    assert metadata == metadata_test
+
+    assert giantsteps_key.load_metadata(None) is None

@@ -23,7 +23,7 @@ DATASET_DIR = 'GiantSteps_key'
 REMOTES = {
     'audio': download_utils.RemoteFileMetadata(
         filename='audio.zip',
-        url='https://zenodo.org/record/1095691/files/audio.zip?download=1',
+        url='lsaudio.zip?download=1',
         checksum='8ec9ade888d5a88ce435d7fda031929b',
         destination_dir='.',
     ),
@@ -273,4 +273,5 @@ Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
 
 if __name__ == "__main__":
     data = load()
-    print(data["3"].key)
+
+    print(data["3"].metadata)
