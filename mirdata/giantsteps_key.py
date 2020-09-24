@@ -23,7 +23,7 @@ DATASET_DIR = 'GiantSteps_key'
 REMOTES = {
     'audio': download_utils.RemoteFileMetadata(
         filename='audio.zip',
-        url='lsaudio.zip?download=1',
+        url='https://zenodo.org/record/1095691/files/audio.zip?download=1',
         checksum='8ec9ade888d5a88ce435d7fda031929b',
         destination_dir='.',
     ),
@@ -38,7 +38,7 @@ REMOTES = {
         url='https://zenodo.org/record/1095691/files/original_metadata.zip?download=1',
         checksum='54181e0f34c35d9720439750d0b08091',
         destination_dir='.',
-    )
+    ),
 }
 
 DATA = utils.LargeData('giantsteps_key_index.json')
@@ -63,7 +63,9 @@ class Track(track.Track):
 
     def __init__(self, track_id, data_home=None):
         if track_id not in DATA.index:
-            raise ValueError('{} is not a valid track ID in giantsteps_key'.format(track_id))
+            raise ValueError(
+                '{} is not a valid track ID in giantsteps_key'.format(track_id)
+            )
 
         self.track_id = track_id
 
