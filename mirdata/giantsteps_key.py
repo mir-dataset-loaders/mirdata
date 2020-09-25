@@ -28,6 +28,7 @@ All the data of this dataset is licensed with Creative Commons Attribution Share
 
 import csv
 import json
+import zipfile
 
 import librosa
 import numpy as np
@@ -43,7 +44,7 @@ REMOTES = {
     'audio': download_utils.RemoteFileMetadata(
         filename='audio.zip',
         url='https://zenodo.org/record/1095691/files/audio.zip?download=1',
-        checksum='81b5ffbd34a66b65ed6e496ef7d65346',
+        checksum='8ec9ade888d5a88ce435d7fda031929b',
         destination_dir='.',
     ),
     'keys': download_utils.RemoteFileMetadata(
@@ -159,7 +160,8 @@ def download(
             Whether to overwrite the existing downloaded data
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
-
+        partial_download(list of str)
+            arguments can be 'audio' 'metadata' or/and 'keys'
     """
 
     # use the default location: ~/mir_datasets/giantsteps_key
@@ -167,9 +169,9 @@ def download(
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     if partial_download is None or 'all' in partial_download:
-        partial_download = ['all']
+        partial_download = ['audio', 'metadata', 'keys']
     elif 'without_audio' in partial_download:
-        partial_download = ['metadata', 'key']
+        partial_download = ['metadata', 'keys']
 
     download_message = """
         Done.
@@ -180,10 +182,21 @@ def download(
     download_utils.downloader(
         data_home,
         remotes=REMOTES,
+        partial_download=partial_download,
         info_message=download_message,
         force_overwrite=force_overwrite,
         cleanup=cleanup,
     )
+
+    # if 'audio' in partial_download:
+    #     with zipfile.ZipFile(os.path.join(data_home, 'audio.zip'), 'r') as zip_ref:
+    #         zip_ref.extractall(data_home)
+    # if 'metadata' in partial_download:
+    #     with zipfile.ZipFile(os.path.join(data_home, 'metadata.zip'), 'r') as zip_ref:
+    #         zip_ref.extractall(data_home)
+    # if 'key' in partial_download:
+    #     with zipfile.ZipFile(os.path.join(data_home, 'key.zip'), 'r') as zip_ref:
+    #         zip_ref.extractall(data_home)
 
 
 def validate(data_home=None, silence=False):
@@ -308,11 +321,7 @@ Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
 
 
 if __name__ == "__main__":
-    download()
-    data = load()
-    for k, v in data.items():
-        print(v.title)
-        print(v.metadata)
-        print(v.key)
-        print(v.title)
-        print(v.to_jams)
+    try:
+        download()
+    except:
+        assert False, "kk"
