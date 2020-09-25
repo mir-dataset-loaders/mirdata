@@ -121,7 +121,11 @@ class Track(track.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            metadata={'metadata': self.metadata if self.metadata is not None else {}, 'title': self.title, 'key': self.key},
+            metadata={
+                'metadata': self.metadata if self.metadata is not None else {},
+                'title': self.title,
+                'key': self.key,
+            },
         )
 
 
@@ -141,7 +145,9 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False, cleanup=True, partial_download=None):
+def download(
+    data_home=None, force_overwrite=False, cleanup=True, partial_download=None
+):
     """Download the giantsteps_key Dataset (annotations).
     The audio files are not provided due to copyright issues.
 
