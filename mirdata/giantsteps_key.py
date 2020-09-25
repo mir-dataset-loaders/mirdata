@@ -3,9 +3,9 @@
 
 The GiantSteps+ EDM Key Dataset includes 600 two-minute sound excerpts from various EDM subgenres, annotated with
 single-key labels, comments and confidence levels by Daniel G. Camhi, and thoroughly revised and expanded by Ángel
-Faraldo. Additionally, 500 tracks have been thoroughly analysed, containing pitch-class set descriptions, key changes,
-and additional modal changes. This dataset is a revision of the original  GiantSteps Key Dataset, available in Github
-(<https://github.com/GiantSteps/giantsteps-key-dataset>) and initially described in:
+Faraldo at MTG UPF. Additionally, 500 tracks have been thoroughly analysed, containing pitch-class set descriptions,
+key changes, and additional modal changes. This dataset is a revision of the original  GiantSteps Key Dataset, available
+in Github (<https://github.com/GiantSteps/giantsteps-key-dataset>) and initially described in:
 
 Knees, P., Faraldo, Á., Herrera, P., Vogl, R., Böck, S., Hörschläger, F., Le Goff, M. (2015).
 Two Datasets for Tempo Estimation and Key Detection in Electronic Dance Music Annotated from User Corrections.
@@ -21,6 +21,8 @@ PhD Thesis. Universitat Pompeu Fabra, Barcelona.
 
 This dataset is mainly intended to assess the performance of computational key estimation algorithms in electronic dance
 music subgenres.
+
+All the data of this dataset is licensed with Creative Commons Attribution Share Alike 4.0 International.
 
 """
 
@@ -41,7 +43,7 @@ REMOTES = {
     'audio': download_utils.RemoteFileMetadata(
         filename='audio.zip',
         url='https://zenodo.org/record/1095691/files/audio.zip?download=1',
-        checksum='8ec9ade888d5a88ce435d7fda031929b',
+        checksum='81b5ffbd34a66b65ed6e496ef7d65346',
         destination_dir='.',
     ),
     'keys': download_utils.RemoteFileMetadata(
@@ -119,7 +121,7 @@ class Track(track.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            metadata={'metadata': self.metadata, 'title': self.title, 'key': self.key},
+            metadata={'metadata': self.metadata if self.metadata is not None else {}, 'title': self.title, 'key': self.key},
         )
 
 
@@ -139,7 +141,7 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False, cleanup=True):
+def download(data_home=None, force_overwrite=False, cleanup=True, partial_download=None):
     """Download the giantsteps_key Dataset (annotations).
     The audio files are not provided due to copyright issues.
 
@@ -157,6 +159,11 @@ def download(data_home=None, force_overwrite=False, cleanup=True):
     # use the default location: ~/mir_datasets/giantsteps_key
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
+
+    if partial_download is None or 'all' in partial_download:
+        partial_download = ['all']
+    elif 'without_audio' in partial_download:
+        partial_download = ['metadata', 'key']
 
     download_message = """
         Done.
