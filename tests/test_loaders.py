@@ -177,6 +177,7 @@ def test_download(mocker):
 # when tests are run with the --local flag
 def test_validate(skip_local):
     for dataset in DATASETS:
+        dataset_name = dataset.__name__.split('.')[1]
         data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
         try:
             dataset.validate(data_home=data_home)
@@ -196,6 +197,7 @@ def test_validate(skip_local):
 
 def test_load_and_trackids():
     for dataset in DATASETS:
+        dataset_name = dataset.__name__.split('.')[1]
         try:
             track_ids = dataset.track_ids()
         except:
@@ -240,6 +242,7 @@ def test_track():
     data_home_dir = 'tests/resources/mir_datasets'
 
     for dataset in DATASETS:
+
         dataset_name = dataset.__name__.split('.')[1]
 
         if dataset_name in CUSTOM_TEST_TRACKS:
