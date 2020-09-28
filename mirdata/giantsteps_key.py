@@ -168,7 +168,6 @@ def download(
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-
     download_message = """
         Done.
     """.format(
