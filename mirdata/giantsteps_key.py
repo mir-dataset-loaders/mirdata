@@ -168,10 +168,6 @@ def download(
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    if partial_download is None or 'all' in partial_download:
-        partial_download = ['audio', 'metadata', 'keys']
-    elif 'without_audio' in partial_download:
-        partial_download = ['metadata', 'keys']
 
     download_message = """
         Done.
