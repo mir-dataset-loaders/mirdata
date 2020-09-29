@@ -32,17 +32,18 @@ def make_giantsteps_tempo_index(data_path):
     meta2_dir = os.path.join(data_path, dir_github, 'annotations_v2', 'jams')
     audio_dir = os.path.join(data_path, 'audio')
     giantsteps_tempo_index = {}
+    print(sorted(os.listdir(meta1_dir)))
     for track_id, ann_dir in enumerate(sorted(os.listdir(meta1_dir))):
         ann_dir_full = os.path.join(meta1_dir, ann_dir)
-        if '.json' in ann_dir:
+        if '.jams' in ann_dir:
             codec = '.mp3'
-            audio_path = os.path.join(audio_dir, ann_dir.replace('.json', codec))
+            audio_path = os.path.join(audio_dir, ann_dir.replace('.jams', codec))
             ann1_path = os.path.join(meta1_dir, ann_dir)
             ann2_path = os.path.join(meta2_dir, ann_dir)
             giantsteps_tempo_index[track_id] = {
                 'audio': (audio_path.replace(data_path + '/', ''), md5(audio_path)),
-                'annotation_v1': (chord_path.replace(data_path + '/', ''), md5(chord_path)),
-                'annotation_v2': (chord_path.replace(data_path + '/', ''), md5(chord_path)),
+                'annotation_v1': (ann1_path.replace(data_path + '/', ''), md5(ann1_path)),
+                'annotation_v2': (ann2_path.replace(data_path + '/', ''), md5(ann2_path)),
             }
     with open(giantsteps_tempo_INDEX_PATH, 'w') as fhandle:
         json.dump(giantsteps_tempo_index, fhandle, indent=2)

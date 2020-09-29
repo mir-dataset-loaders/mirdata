@@ -176,11 +176,6 @@ def download(
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    # if partial_download is None or 'all' in partial_download:
-    #     partial_download = ['audio', 'metadata', 'tempos']
-    # elif 'without_audio' in partial_download:
-    #     partial_download = ['metadata', 'tempos']
-
     download_message = """
         Done.
     """.format(
@@ -195,16 +190,6 @@ def download(
         force_overwrite=force_overwrite,
         cleanup=cleanup,
     )
-
-    # if 'audio' in partial_download:
-    #     with zipfile.ZipFile(os.path.join(data_home, 'audio.zip'), 'r') as zip_ref:
-    #         zip_ref.extractall(data_home)
-    # if 'metadata' in partial_download:
-    #     with zipfile.ZipFile(os.path.join(data_home, 'metadata.zip'), 'r') as zip_ref:
-    #         zip_ref.extractall(data_home)
-    # if 'tempo' in partial_download:
-    #     with zipfile.ZipFile(os.path.join(data_home, 'tempo.zip'), 'r') as zip_ref:
-    #         zip_ref.extractall(data_home)
 
 
 def validate(data_home=None, silence=False):
