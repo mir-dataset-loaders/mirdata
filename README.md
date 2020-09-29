@@ -13,6 +13,15 @@ This library provides tools for working with common MIR datasets, including tool
 * loading annotation files to a common format, consistent with the format required by [mir_eval](https://github.com/craffel/mir_eval)
 * parsing track level metadata for detailed evaluations
 
+
+### Installation
+
+To install, simply run:
+
+```python
+pip install mirdata
+```
+
 Try it out!
 ```python
 import mirdata.orchset
@@ -28,7 +37,7 @@ print(example_track)  # see the availalbe data
 See the Examples section below for more details, or the [documentation](https://mirdata.readthedocs.io/en/latest/) for more examples and the API reference.
 
 
-#### Currently supported datasets
+### Currently supported datasets
 
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [DALI](https://github.com/gabolsgabs/DALI)
@@ -49,15 +58,8 @@ See the Examples section below for more details, or the [documentation](https://
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).
 
-## Installation
 
-To install, simply run:
-
-```python
-pip install mirdata
-```
-
-## Reference
+### Reference
 
 This library was presented in the following [paper](https://magdalenafuentes.github.io/publications/2019_ISMIR_mirdata.pdf):
 
