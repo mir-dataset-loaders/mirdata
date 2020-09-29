@@ -1,0 +1,67 @@
+{
+  "sandbox": {}, 
+  "annotations": [
+    {
+      "namespace": "tempo", 
+      "sandbox": {}, 
+      "time": 0, 
+      "duration": null, 
+      "annotation_metadata": {
+        "annotation_tools": "Beatport Forum", 
+        "curator": {
+          "name": "Peter Knees", 
+          "email": "peter.knees@jku.at"
+        }, 
+        "annotator": {}, 
+        "version": "1.0", 
+        "corpus": "GiantSteps Tempo", 
+        "annotation_rules": "", 
+        "validation": "http://www.cp.jku.at/datasets/giantsteps/", 
+        "data_source": "P. Knees, \u00c1. Faraldo, P. Herrera, R. Vogl, S. B\u00f6ck, F. H\u00f6rschl\u00e4ger, and M. Le Goff.: 'Two Data Sets for Tempo Estimation and Key Detection in Electronic Dance Music Annotated from User Corrections.' In Proc. of the 16th International Society for Music Information Retrieval Conference (ISMIR), M\u00e1laga, Spain, 2015."
+      }, 
+      "data": [
+        {
+          "duration": 120.0, 
+          "confidence": 1.0, 
+          "value": 137.6, 
+          "time": 0.0
+        }
+      ]
+    }, 
+    {
+      "namespace": "tag_open", 
+      "sandbox": {}, 
+      "time": 0, 
+      "duration": null, 
+      "annotation_metadata": {
+        "annotation_tools": "Beatport Forum", 
+        "curator": {
+          "name": "Peter Knees", 
+          "email": "peter.knees@jku.at"
+        }, 
+        "annotator": {}, 
+        "version": "1.0", 
+        "corpus": "GiantSteps Tempo", 
+        "annotation_rules": "", 
+        "validation": "http://www.cp.jku.at/datasets/giantsteps/", 
+        "data_source": "P. Knees, \u00c1. Faraldo, P. Herrera, R. Vogl, S. B\u00f6ck, F. H\u00f6rschl\u00e4ger, and M. Le Goff.: 'Two Data Sets for Tempo Estimation and Key Detection in Electronic Dance Music Annotated from User Corrections.' In Proc. of the 16th International Society for Music Information Retrieval Conference (ISMIR), M\u00e1laga, Spain, 2015."
+      }, 
+      "data": [
+        {
+          "duration": 120.0, 
+          "confidence": 1.0, 
+          "value": "trance", 
+          "time": 0.0
+        }
+      ]
+    }
+  ], 
+  "file_metadata": {
+    "jams_version": "0.2.0", 
+    "title": "28952.LOFI", 
+    "identifiers": {}, 
+    "release": "", 
+    "duration": 120, 
+    "artist": ""
+  }
+}

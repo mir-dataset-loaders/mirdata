@@ -20,6 +20,8 @@ Attributes:
 
     EventData (namedtuple): `start_times`, `end_times`, `event`
 
+    TempoData (namedtuple): `time`, `duration`, `value`, `confidence`
+
 """
 
 
@@ -184,6 +186,8 @@ BeatData = namedtuple('BeatData', ['beat_times', 'beat_positions'])
 ChordData = namedtuple('ChordData', ['intervals', 'labels'])
 
 KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
+
+TempoData = namedtuple('TempoData', ['time', 'duration', 'value', 'confidence'])
 
 EventData = namedtuple('EventData', ['start_times', 'end_times', 'event'])
 

@@ -73,6 +73,7 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 from mirdata.giantsteps_tempo_remotes import REMOTES
+import jams
 
 DATASET_DIR = 'GiantSteps_tempo'
 
@@ -87,8 +88,6 @@ class Track(track.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
     Attributes:
         audio_path (str): track audio path
-        tempos_path (str): tempo annotation path
-        metadata_path (str): sections annotation path
         title (str): title of the track
         track_id (str): track id
     """
@@ -107,39 +106,38 @@ class Track(track.Track):
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
-        self.tempos_path = os.path.join(self._data_home, self._track_paths['tempo'][0])
-        self.metadata_path = (
-            os.path.join(self._data_home, self._track_paths['meta'][0])
-            if self._track_paths['meta'][0] is not None
-            else None
-        )
-        self.title = self.audio_path.replace(".mp3", '').split('/')[-1]
+        self.annotation_v1_path = os.path.join(self._data_home, self._track_paths['annotation_v1'][0])
+        self.annotation_v2_path = os.path.join(self._data_home, self._track_paths['annotation_v2'][0])
+
+        self.title = self.audio_path.replace(".mp3", '').split('/')[-1].split('.')[0]
 
     @utils.cached_property
-    def metadata(self):
+    def genre(self):
         """metadata: human-labeled metadata annotation"""
-        return load_metadata(self.metadata_path)
+        return load_genre(self.annotation_v1_path)
 
     @utils.cached_property
-    def tempo(self):
-        """ChordData: tempo annotation"""
-        return load_tempo(self.tempos_path)
+    def tempo_v1(self):
+        """ChordData: tempo annotation ordered by confidence"""
+        return load_tempo(self.annotation_v1_path)
+
+    @utils.cached_property
+    def tempo_v2(self):
+        """ChordData: tempos annotation ordered by confidence"""
+        return load_tempo(self.annotation_v2_path)
 
     @property
     def audio(self):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
-    def to_jams(self):
+    def to_jams_v1(self):
         """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                'metadata': self.metadata if self.metadata is not None else {},
-                'title': self.title,
-                'tempo': self.tempo,
-            },
-        )
+        return jams.load(self.annotation_v1_path)
+
+    def to_jams_v2(self):
+        """Jams: the track's data in jams format"""
+        return jams.load(self.annotation_v2_path)
 
 
 def load_audio(audio_path):
@@ -176,11 +174,7 @@ def download(
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    download_message = """
-        Done.
-    """.format(
-        data_home
-    )
+    download_message = ""
 
     download_utils.downloader(
         data_home,
@@ -217,7 +211,7 @@ def track_ids():
     Returns:
         (list): A list of track ids
     """
-    return list(DATA.index.tempos())
+    return list(DATA.index.keys())
 
 
 def load(data_home=None):
@@ -237,41 +231,40 @@ def load(data_home=None):
     return beatles_data
 
 
-def load_metadata(metadata_path):
-    """Load giantsteps_tempo format metadata data from a file
-    Args:
-        metadata_path (str): path to metadata annotation file
-    Returns:
-        (dict): loaded metadata data
+def load_genre(path):
+    """Load genre data from a file
+        Args:
+            path (str): path to metadata annotation file
+        Returns:
+            (str): loaded genre data
     """
-    if metadata_path is None:
+    if path is None:
         return None
 
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
+    with open(path) as json_file:
+        annotation = jams.load(json_file)
 
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-    return meta
+    return annotation.search(namespace='tag_open')[0]['data'][0].value
 
 
-def load_tempo(tempos_path):
-    """Load giantsteps_tempo format tempo data from a file
+def load_tempo(tempo_path):
+    """Load giantsteps_tempo tempo data from a file ordered by confidence
     Args:
-        tempos_path (str): path to tempo annotation file
+        tempo_path (str): path to tempo annotation file
     Returns:
-        (str): loaded tempo data
+        (list of utils.TempoData): loaded tempo data
     """
-    if tempos_path is None:
+    if tempo_path is None:
         return None
 
-    if not os.path.exists(tempos_path):
-        raise IOError("tempos_path {} does not exist".format(tempos_path))
+    if not os.path.exists(tempo_path):
+        raise IOError("tempo_path {} does not exist".format(tempo_path))
 
-    with open(tempos_path) as f:
-        tempo = f.readline()
+    with open(tempo_path) as json_file:
+        annotation = jams.load(json_file)
 
-    return tempo
+    tempos = annotation.search(namespace='tempo')[0]['data']
+    return [utils.TempoData(tempo.duration, tempo.confidence, tempo.value, tempo.time) for tempo in tempos]
 
 
 def cite():
@@ -312,9 +305,10 @@ url-pdf   = {http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pd
 
 
     """
-
     print(cite_data)
 
 
 if __name__ == "__main__":
-    download()
+    data = load()['0']
+    print()
+
