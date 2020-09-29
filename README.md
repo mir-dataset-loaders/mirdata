@@ -13,9 +13,31 @@ This library provides tools for working with common MIR datasets, including tool
 * loading annotation files to a common format, consistent with the format required by [mir_eval](https://github.com/craffel/mir_eval)
 * parsing track level metadata for detailed evaluations
 
-![](mirdata_example.gif)
 
-#### Currently supported datasets
+### Installation
+
+To install, simply run:
+
+```python
+pip install mirdata
+```
+
+Try it out!
+```python
+import mirdata.orchset
+import random
+
+mirdata.orchset.download()  # download the dataset
+mirdata.orchset.validate()  # validate that all the expected files are there
+orchset_data = mirdata.orchset.load()  # (lazy) load the data index
+
+example_track = random.choice(list(orchset_data.items()))  # choose a random example track
+print(example_track)  # see the availalbe data
+```
+See the Examples section below for more details, or the [documentation](https://mirdata.readthedocs.io/en/latest/) for more examples and the API reference.
+
+
+### Currently supported datasets
 
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [DALI](https://github.com/gabolsgabs/DALI)
@@ -36,15 +58,8 @@ This library provides tools for working with common MIR datasets, including tool
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).
 
-## Installation
 
-To install, simply run:
-
-```python
-pip install mirdata
-```
-
-## Paper
+### Reference
 
 This library was presented in the following [paper](https://magdalenafuentes.github.io/publications/2019_ISMIR_mirdata.pdf):
 
@@ -65,7 +80,8 @@ in International Society for Music Information Retrieval (ISMIR) Conference, 201
 ```
 
 ## Contributing a new dataset loader
-To add datasets and code, please see [CONTRIBUTING.md](https://github.com/mir-dataset-loaders/mirdata/blob/master/CONTRIBUTING.md)
+
+We welcome contributions to this library, especially new datasets. Please see [CONTRIBUTING.md](https://github.com/mir-dataset-loaders/mirdata/blob/master/CONTRIBUTING.md) for guidelines.
 
 
 ## Examples
@@ -140,9 +156,8 @@ orchset_data = mirdata.orchset.load()
 for track_id, track_data in orchset_data.items():
     est_times, est_freqs = very_bad_melody_extractor(track_data.audio_path_mono)
 
-    ref_melody_data = track_data.melody
-    ref_times = ref_melody_data.times
-    ref_freqs = ref_melody_data.frequencies
+    ref_times = track_data.melody.times
+    ref_freqs = track_data.melody.frequencies
 
     score = mir_eval.melody.evaluate(ref_times, ref_freqs, est_times, est_freqs)
     orchset_scores[track_id] = score
