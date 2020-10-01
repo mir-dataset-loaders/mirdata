@@ -59,8 +59,7 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-# -- REMOTES is a dictionary containing all files that need to be downloaded.
-# -- The keys should be descriptive (e.g. 'annotations', 'audio')
+
 REMOTES = {
     'all': download_utils.RemoteFileMetadata(
         filename='PHENICX-Anechoic.zip',
@@ -90,14 +89,22 @@ DATASET_SECTIONS = {
 
 class Track(track.Track):
     """Phenicx-Anechoic Track class
-    # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
-    # -- `scripts/print_track_docstring.py my_dataset`
-    # -- note that you'll first need to have a test track (see "Adding tests to your dataset" below)
 
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
+
+
+    Attributes:
+        audio_path (str): path to the audio files associated with this track
+        annotation_path (str): path to the annotations files associated with this track
+        track_id (str): track id
+        instruments (list): list of strings with instrument names
+        sections (list): list of strings with section names
+        sources (OrderedDict): dictionary comprising Source objects, one source represents one audio file
+        targets (OrderedDict): dictionary comprising Target objects, one Target is a linear mix of multiple sources
+        mix (Target): a Target object, a linear mix of all sources
 
     """
 
@@ -312,18 +319,12 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
-    # -- for example, the code below. This should be dataset specific!
-    # -- By default we load to mono
-    # -- change this if it doesn't make sense for your dataset.
+
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-# -- the partial_download argument can be removed if `dataset.REMOTES` is missing/has only one value
-# -- the force_overwrite argument can be removed if the dataset does not download anything
-# -- (i.e. there is no `dataset.REMOTES`)
-# -- the cleanup argument can be removed if the dataset has no tar or zip files in `dataset.REMOTES`.
 def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download the dataset.
 
@@ -341,19 +342,13 @@ def download(data_home=None, force_overwrite=False, cleanup=True):
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
     download_utils.downloader(
-        # -- everything will be downloaded & uncompressed inside `data_home`
         data_home,
-        # -- by default all elements in REMOTES will be downloaded
         remotes=REMOTES,
-        # -- if you need to give the user any instructions, such as how to download
-        # -- a dataset which is not freely availalbe, put them here
         info_message=None,
         force_overwrite=force_overwrite,
         cleanup=cleanup,
     )
 
-
-# -- keep this function exactly as it is
 def validate(data_home=None, silence=False):
     """Validate if the stored dataset is a valid version
 
@@ -375,7 +370,7 @@ def validate(data_home=None, silence=False):
     return missing_files, invalid_checksums
 
 
-# -- keep this function exactly as it is
+
 def track_ids():
     """Return track ids
 
@@ -385,7 +380,6 @@ def track_ids():
     return list(DATA.index.keys())
 
 
-# -- keep this function as it is
 def load(data_home=None):
     """Load  dataset
     Args:
@@ -403,7 +397,6 @@ def load(data_home=None):
     return data
 
 
-# -- Write any necessary loader functions for loading the dataset's data
 def load_score(score_paths):
     """
     Args:
