@@ -296,6 +296,7 @@ class Track(track.Track):
             for source in self.sources.keys()
         ]
         return jams_utils.jams_converter(
+            audio_path=audio_paths[0],
             event_data=score_data + original_score_data, metadata=metadata,
         )
 
