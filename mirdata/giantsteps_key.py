@@ -168,11 +168,7 @@ def download(
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    download_message = """
-        Done.
-    """.format(
-        data_home
-    )
+    download_message = ""
 
     download_utils.downloader(
         data_home,
@@ -182,16 +178,6 @@ def download(
         force_overwrite=force_overwrite,
         cleanup=cleanup,
     )
-
-    # if 'audio' in partial_download:
-    #     with zipfile.ZipFile(os.path.join(data_home, 'audio.zip'), 'r') as zip_ref:
-    #         zip_ref.extractall(data_home)
-    # if 'metadata' in partial_download:
-    #     with zipfile.ZipFile(os.path.join(data_home, 'metadata.zip'), 'r') as zip_ref:
-    #         zip_ref.extractall(data_home)
-    # if 'key' in partial_download:
-    #     with zipfile.ZipFile(os.path.join(data_home, 'key.zip'), 'r') as zip_ref:
-    #         zip_ref.extractall(data_home)
 
 
 def validate(data_home=None, silence=False):
@@ -313,10 +299,3 @@ Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
     """
 
     print(cite_data)
-
-
-if __name__ == "__main__":
-    try:
-        download()
-    except:
-        assert False, "kk"
