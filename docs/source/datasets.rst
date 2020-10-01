@@ -65,7 +65,7 @@ click the link provided in the "Module" column.
 | orchset_         | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| phenicx_anechoic_| Orchset             | - audio: ✅         | - :ref:`instruments`      |  4     |
+| phenicx_anechoic_| Phenicx-Anechoic    | - audio: ✅         | - :ref:`instruments`      |  4     |
 |                  |                     | - annotations: ✅   | - :ref:`notes`            |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | rwc_classical_   | RWC Classical       | - audio: ❌         | - :ref:`beats`            | 50     |
