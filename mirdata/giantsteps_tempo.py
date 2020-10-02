@@ -283,7 +283,6 @@ def load_tempo(tempo_path):
     tempos = annotation.search(namespace='tempo')[0]['data']
     return [utils.TempoData(tempo.duration, tempo.confidence, tempo.value, tempo.time) for tempo in tempos]
 
-
 def cite():
     """Print the reference"""
 
@@ -326,6 +325,6 @@ url-pdf   = {http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pd
 
 
 if __name__ == "__main__":
-    data = load()['0']
-    print()
+    data = load()['113']
+    print(data.tempo_v1, data.tempo_v2)
 

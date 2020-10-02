@@ -37,29 +37,39 @@ def test_track():
     )
 
 
-# def test_load_genre():
-#     tempo_path = (
-#             'tests/resources/mir_datasets/giantsteps_tempo/tempos_gs+/10089 Jason Sparks - Close My Eyes feat. J. ' +
-#             'Little (Original Mix).txt'
-#     )
-#     tempo_data = giantsteps_tempo.load_tempo(tempo_path)
-#
-#     assert type(tempo_data) == str
-#
-#     assert tempo_data == "D major"
-#
-#     assert giantsteps_tempo.load_tempo(None) is None
+def test_load_genre():
+    genre_path = 'tests/resources/mir_datasets/giantsteps_tempo/giantsteps-tempo-dataset' \
+                 '-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations/jams/28952.LOFI.jams'
+
+    genre_data = giantsteps_tempo.load_genre(genre_path)
+
+    assert type(genre_data) == str
+
+    assert genre_data == "trance"
+
+    assert giantsteps_tempo.load_tempo(None) is None
 
 
-# def test_load_tempo():
-#     tempo_path = (
-#             'tests/resources/mir_datasets/giantsteps_tempo/tempos_gs+/10089 Jason Sparks - Close My Eyes feat. J. ' +
-#             'Little (Original Mix).txt'
-#     )
-#     tempo_data = giantsteps_tempo.load_tempo(tempo_path)
-#
-#     assert type(tempo_data) == str
-#
-#     assert tempo_data == "D major"
-#
-#     assert giantsteps_tempo.load_tempo(None) is None
+def test_load_tempo():
+    tempo_path = (
+        'tests/resources/mir_datasets/giantsteps_tempo/giantsteps-tempo-dataset'
+        '-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations/jams/28952.LOFI.jams'
+    )
+    tempo_data = giantsteps_tempo.load_tempo(tempo_path)
+
+    assert type(tempo_data) == list
+
+    assert tempo_data == [utils.TempoData(time=120.0, duration=1.0, value=137.6, confidence=0.0)]
+
+    tempo_path = (
+        'tests/resources/mir_datasets/giantsteps_tempo/giantsteps-tempo-dataset'
+        '-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations_v2/jams/28952.LOFI.jams'
+    )
+    tempo_data = giantsteps_tempo.load_tempo(tempo_path)
+
+    assert type(tempo_data) == list
+
+    assert tempo_data == [utils.TempoData(time=120.0, duration=0.30927835051546393, value=77.0, confidence=0.0),
+                          utils.TempoData(time=120.0, duration=0.6907216494845361, value=139.0, confidence=0.0)]
+
+    assert giantsteps_tempo.load_tempo(None) is None
