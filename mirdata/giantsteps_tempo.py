@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """giantsteps_tempo Dataset Loader
+
 name:             GiantSteps (tempo+genre)
 
 contact:          Richard Vogl <richard.vogl@tuwien.ac.at>
@@ -27,7 +28,7 @@ notes:
 The audio files (664 files, size ~1gb) can be downloaded from http://www.beatport.com/
 using the bash script:
 
-./audio_dl.sh
+ https://github.com/GiantSteps/giantsteps-tempo-dataset/blob/master/audio_dl.sh
 
 To download the files manually use links of the following form:
 http://geo-samples.beatport.com/lofi/<name of mp3 file>
