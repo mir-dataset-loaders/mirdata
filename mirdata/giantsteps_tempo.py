@@ -72,12 +72,20 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
-from mirdata.giantsteps_tempo_remotes import REMOTES
 import jams
 
 DATASET_DIR = 'GiantSteps_tempo'
 
 DATA = utils.LargeData('giantsteps_tempo_index.json')
+
+REMOTES = {
+    'annotations': download_utils.RemoteFileMetadata(
+        filename='giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip',
+        url='https://github.com/GiantSteps/giantsteps-tempo-dataset/archive/0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip',
+        checksum='8fdafbaf505fe3f293bd912c92b72ac8',
+        destination_dir='',
+    )
+}
 
 
 class Track(track.Track):
@@ -174,12 +182,21 @@ def download(
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    download_message = ""
+    download_message = """
+            Unfortunately the audio files of the Giant Steps Tempo dataset are not available
+            for download. If you have the Beatles dataset, place the contents into
+            a folder called Beatles with the following structure:
+                > GiantSteps_tempo/
+                    > giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/
+                    > audio/
+            and copy the Beatles folder to {}
+        """.format(
+        data_home
+    )
 
     download_utils.downloader(
         data_home,
         remotes=REMOTES,
-        partial_download=partial_download,
         info_message=download_message,
         force_overwrite=force_overwrite,
         cleanup=cleanup,
