@@ -33,6 +33,10 @@ click the link provided in the "Module" column.
 | dali_            | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                  |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
+| giantsteps_tempo_ | | Groove MIDI       | - audio: ❌          | - :ref:`genre`           | 664    |
+|                  | | Dataset           | - annotations: ✅    | - :ref:`tempo`           |        |
+|                  |                     |                      |                          |        |
++------------------+---------------------+---------------------+---------------------------+--------+
 | groove_midi_     | | Groove MIDI       | - audio: ✅         | - :ref:`beats`            | 1150   |
 |                  | | Dataset           | - midi: ✅          | - :ref:`tempo`            |        |
 |                  |                     |                     | - :ref:`drums`            |        |
@@ -147,6 +151,7 @@ Key
 ^^^
 Musical key. This can be defined globally for an audio file or as a sequence of events.
 
+
 .. _lyrics:
 
 Lyrics
@@ -206,6 +211,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
+.. _giantsteps_tempo: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.giantsteps_tempo
 .. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre
 .. _guitarset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.guitarset
