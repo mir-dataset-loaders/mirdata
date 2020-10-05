@@ -104,14 +104,24 @@ class Track(track.Track):
         self.title = self.audio_path.replace(".mp3", '').split('/')[-1]
 
     @utils.cached_property
-    def metadata(self):
-        """metadata: human-labeled metadata annotation"""
-        return load_metadata(self.metadata_path)
+    def key(self):
+        """String: key annotation"""
+        return load_key(self.keys_path)
 
     @utils.cached_property
-    def key(self):
-        """ChordData: key annotation"""
-        return load_key(self.keys_path)
+    def artists(self):
+        """Dict: artist annotation"""
+        return load_artist(self.metadata_path)
+
+    @utils.cached_property
+    def genres(self):
+        """Dict: genre annotation"""
+        return load_genre(self.metadata_path)
+
+    @utils.cached_property
+    def tempo(self):
+        """int: tempo beatports crowdsourced annotation"""
+        return load_tempo(self.metadata_path)
 
     @property
     def audio(self):
@@ -123,7 +133,9 @@ class Track(track.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             metadata={
-                'metadata': self.metadata if self.metadata is not None else {},
+                'artists': self.artists,
+                'genres': self.genres,
+                'tempo': self.tempo,
                 'title': self.title,
                 'key': self.key,
             },
@@ -232,27 +244,6 @@ def load(data_home=None):
     return beatles_data
 
 
-def load_metadata(metadata_path):
-    """Load giantsteps_key format metadata data from a file
-
-    Args:
-        metadata_path (str): path to metadata annotation file
-
-    Returns:
-        (dict): loaded metadata data
-
-    """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-    return meta
-
-
 def load_key(keys_path):
     """Load giantsteps_key format key data from a file
 
@@ -273,6 +264,74 @@ def load_key(keys_path):
         key = f.readline()
 
     return key
+
+
+def load_tempo(metadata_path):
+    """Load giantsteps_key tempo data from a file
+
+    Args:
+        metadata_path (str): path to metadata annotation file
+
+    Returns:
+        (str): loaded tempo data
+
+    """
+    if metadata_path is None:
+        return None
+
+    if not os.path.exists(metadata_path):
+        raise IOError("metadata_path {} does not exist".format(metadata_path))
+
+    with open(metadata_path) as json_file:
+        meta = json.load(json_file)
+
+    return meta["bpm"]
+
+
+def load_genre(metadata_path):
+    """Load giantsteps_key genre data from a file
+
+    Args:
+        metadata_path (str): path to metadata annotation file
+
+    Returns:
+        (dict): with the list of strings with genres ['genres'] and list of strings with sub-genres ['sub_genres']
+    """
+    if metadata_path is None:
+        return None
+
+    if not os.path.exists(metadata_path):
+        raise IOError("metadata_path {} does not exist".format(metadata_path))
+
+    with open(metadata_path) as json_file:
+        meta = json.load(json_file)
+
+    return {
+        "genres": [genre["name"] for genre in meta["genres"]],
+        "sub_genres": [genre["name"] for genre in meta["sub_genres"]],
+    }
+
+
+def load_artist(metadata_path):
+    """Load giantsteps_key tempo data from a file
+
+    Args:
+        metadata_path (str): path to metadata annotation file
+
+    Returns:
+        (list of strings): list of artists involved in the track.
+
+    """
+    if metadata_path is None:
+        return None
+
+    if not os.path.exists(metadata_path):
+        raise IOError("metadata_path {} does not exist".format(metadata_path))
+
+    with open(metadata_path) as json_file:
+        meta = json.load(json_file)
+
+    return [artist["name"] for artist in meta["artists"]]
 
 
 def cite():
@@ -299,3 +358,11 @@ Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
     """
 
     print(cite_data)
+
+
+if __name__ == "__main__":
+    v = load()['3']
+    print(v.genres)
+    print(v.artists)
+    print(v.tempo)
+    print(v.to_jams())
