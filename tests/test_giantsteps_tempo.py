@@ -22,7 +22,7 @@ def test_track():
     }
 
     expected_property_types = {
-        'tempo_v1': list,
+        'tempo': list,
         'tempo_v2': list,
         'genre': str
     }

@@ -115,8 +115,12 @@ class Track(track.Track):
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
-        self.annotation_v1_path = os.path.join(self._data_home, self._track_paths['annotation_v1'][0])
-        self.annotation_v2_path = os.path.join(self._data_home, self._track_paths['annotation_v2'][0])
+        self.annotation_v1_path = os.path.join(
+            self._data_home, self._track_paths['annotation_v1'][0]
+        )
+        self.annotation_v2_path = os.path.join(
+            self._data_home, self._track_paths['annotation_v2'][0]
+        )
 
         self.title = self.audio_path.replace(".mp3", '').split('/')[-1].split('.')[0]
 
@@ -126,7 +130,7 @@ class Track(track.Track):
         return load_genre(self.annotation_v1_path)
 
     @utils.cached_property
-    def tempo_v1(self):
+    def tempo(self):
         """ChordData: tempo annotation ordered by confidence"""
         return load_tempo(self.annotation_v1_path)
 
@@ -140,7 +144,7 @@ class Track(track.Track):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
-    def to_jams_v1(self):
+    def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams.load(self.annotation_v1_path)
 
@@ -162,9 +166,7 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(
-        data_home=None, force_overwrite=False, cleanup=True, partial_download=None
-):
+def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download the giantsteps_tempo Dataset (annotations).
     The audio files are not provided due to copyright issues.
     Args:
@@ -251,10 +253,10 @@ def load(data_home=None):
 
 def load_genre(path):
     """Load genre data from a file
-        Args:
-            path (str): path to metadata annotation file
-        Returns:
-            (str): loaded genre data
+    Args:
+        path (str): path to metadata annotation file
+    Returns:
+        (str): loaded genre data
     """
     if path is None:
         return None
@@ -282,7 +284,11 @@ def load_tempo(tempo_path):
         annotation = jams.load(json_file)
 
     tempos = annotation.search(namespace='tempo')[0]['data']
-    return [utils.TempoData(tempo.duration, tempo.confidence, tempo.value, tempo.time) for tempo in tempos]
+    return [
+        utils.TempoData(tempo.duration, tempo.confidence, tempo.value, tempo.time)
+        for tempo in tempos
+    ]
+
 
 def cite():
     """Print the reference"""
@@ -327,5 +333,4 @@ url-pdf   = {http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pd
 
 if __name__ == "__main__":
     data = load()['113']
-    print(data.tempo_v1, data.tempo_v2)
-
+    print(data.to_jams(), data.to_jams_v2())
