@@ -329,8 +329,3 @@ url-pdf   = {http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pd
 
     """
     print(cite_data)
-
-
-if __name__ == "__main__":
-    data = load()['113']
-    print(data.to_jams(), data.to_jams_v2())
