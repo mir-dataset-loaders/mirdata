@@ -22,6 +22,7 @@ def jams_converter(
     key_data=None,
     lyrics_data=None,
     tags_gtzan_data=None,
+    tags_open_data=None,
     metadata=None,
 ):
     """Convert annotations from a track to JAMS format.
@@ -74,19 +75,27 @@ def jams_converter(
     # duration
     duration = None
     if audio_path is not None:
-        if os.path.exists(audio_path):
-            duration = librosa.get_duration(filename=audio_path)
+        if 'spectrum' in audio_path:
+            duration = 0
         else:
-            raise OSError(
-                'jams conversion failed because the audio file '
-                + 'for this track cannot be found, and it is required'
-                + 'to compute duration.'
-            )
+            if os.path.exists(audio_path):
+                duration = librosa.get_duration(filename=audio_path)
+            else:
+                raise OSError(
+                    'jams conversion failed because the audio file '
+                    + 'for this track cannot be found, and it is required'
+                    + 'to compute duration.'
+                )
 
     # metadata
     if metadata is not None:
         for key in metadata:
-            if key == 'duration' and duration is not None and metadata[key] != duration:
+            if (
+                key == 'duration'
+                and duration is not None
+                and metadata[key] != duration
+                and 'spectrum' not in audio_path
+            ):
                 print(
                     'Warning: duration provided in metadata does not'
                     + 'match the duration computed from the audio file.'
@@ -245,11 +254,23 @@ def jams_converter(
                 )
             jam.annotations.append(tag_gtzan_to_jams(tag))
 
+    # tag open
+    if tags_open_data is not None:
+        if not isinstance(tags_open_data, list):
+            raise TypeError('tags_open_data should be a list of tuples')
+        for tag in tags_open_data:
+            if not isinstance(tag, tuple):
+                raise TypeError(
+                    'tags_open_data should be a list of tuples, '
+                    + 'but contains a {} element'.format(type(tag))
+                )
+            jam.annotations.append(tag_open_to_jams(tag))
+
     return jam
 
 
 def beats_to_jams(beats):
-    '''
+    """
     Convert beats annotations into jams format.
 
     Parameters
@@ -262,7 +283,7 @@ def beats_to_jams(beats):
     -------
     jannot_beat: JAM beat annotation object.
 
-    '''
+    """
     jannot_beat = jams.Annotation(namespace='beat')
     jannot_beat.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if beats[0] is not None:
@@ -276,7 +297,7 @@ def beats_to_jams(beats):
 
 
 def sections_to_jams(sections):
-    '''
+    """
     Convert sections annotations into jams format.
 
     Parameters
@@ -288,7 +309,7 @@ def sections_to_jams(sections):
     Returns
     -------
     jannot_seg: JAM segment_open annotation object.
-    '''
+    """
     jannot_seg = jams.Annotation(namespace='segment_open')
     jannot_seg.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if sections[0] is not None:
@@ -302,7 +323,7 @@ def sections_to_jams(sections):
 
 
 def chords_to_jams(chords):
-    '''
+    """
     Convert chords annotations into jams format.
 
     Parameters
@@ -314,7 +335,7 @@ def chords_to_jams(chords):
     Returns
     -------
     jannot_chord: JAM chord annotation object.
-    '''
+    """
     jannot_chord = jams.Annotation(namespace='chord')
     jannot_chord.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if chords[0] is not None:
@@ -330,7 +351,7 @@ def chords_to_jams(chords):
 
 
 def notes_to_jams(notes):
-    '''
+    """
     Convert notes annotations into jams format using note_to_midi from librosa.
 
     Parameters
@@ -342,7 +363,7 @@ def notes_to_jams(notes):
     Returns
     -------
     jannot_notes: JAM note_midi annotation object.
-    '''
+    """
     jannot_note = jams.Annotation(namespace='note_hz')
     jannot_note.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if notes[0] is not None:
@@ -358,7 +379,7 @@ def notes_to_jams(notes):
 
 
 def keys_to_jams(keys):
-    '''
+    """
     Convert keys annotations into jams format.
 
     Parameters
@@ -370,7 +391,7 @@ def keys_to_jams(keys):
     Returns
     -------
     jannot_key: JAM key_mode annotation object.
-    '''
+    """
     jannot_key = jams.Annotation(namespace='key_mode')
     jannot_key.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if keys[0] is not None:
@@ -384,7 +405,7 @@ def keys_to_jams(keys):
 
 
 def multi_sections_to_jams(multi_sections):
-    '''
+    """
     Convert hierarchical annotations into jams format.
 
     Parameters
@@ -397,7 +418,7 @@ def multi_sections_to_jams(multi_sections):
     Returns
     -------
     jannot_multi: JAM multi_segment annotation object.
-    '''
+    """
     # sections with multiple annotators and multiple level annotations
     jannot_multi = jams.Annotation(namespace='multi_segment')
     jannot_multi.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
@@ -418,7 +439,7 @@ def multi_sections_to_jams(multi_sections):
 
 
 def tempos_to_jams(tempos):
-    '''
+    """
     Convert tempo annotations into jams format.
 
     Parameters
@@ -430,7 +451,7 @@ def tempos_to_jams(tempos):
     Returns
     -------
     jannot_tempo: JAM tempo annotation object.
-    '''
+    """
     jannot_tempo = jams.Annotation(namespace='tempo')
     jannot_tempo.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if tempos[0] is not None:
@@ -443,7 +464,7 @@ def tempos_to_jams(tempos):
 
 
 def events_to_jams(events):
-    '''
+    """
     Convert events annotations into jams format.
 
     Parameters
@@ -455,7 +476,7 @@ def events_to_jams(events):
     Returns
     -------
     jannot_events: JAM tag_open annotation object.
-    '''
+    """
     jannot_events = jams.Annotation(namespace='tag_open')
     jannot_events.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if events[0] is not None:
@@ -471,7 +492,7 @@ def events_to_jams(events):
 
 
 def f0s_to_jams(f0s):
-    '''
+    """
     Convert f0 annotations into jams format.
 
     Parameters
@@ -483,7 +504,7 @@ def f0s_to_jams(f0s):
     Returns
     -------
     jannot_f0: JAM pitch_contour annotation object.
-    '''
+    """
     jannot_f0 = jams.Annotation(namespace='pitch_contour')
     jannot_f0.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if f0s[0] is not None:
@@ -502,7 +523,7 @@ def f0s_to_jams(f0s):
 
 
 def lyrics_to_jams(lyrics):
-    '''
+    """
     Convert lyrics annotations into jams format.
 
     Parameters
@@ -514,7 +535,7 @@ def lyrics_to_jams(lyrics):
     Returns
     -------
     jannot_lyric: JAM lyric annotation object.
-    '''
+    """
     jannot_lyric = jams.Annotation(namespace='lyrics')
     jannot_lyric.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
     if lyrics[0] is not None:
@@ -530,7 +551,7 @@ def lyrics_to_jams(lyrics):
 
 
 def tag_gtzan_to_jams(tags):
-    '''
+    """
     Convert tag-gtzan annotations into jams format.
 
     Parameters
@@ -542,7 +563,7 @@ def tag_gtzan_to_jams(tags):
     Returns
     -------
     jannot_tag_gtzan: JAM tag_gtzan annotation object.
-    '''
+    """
     jannot_tag_gtzan = jams.Annotation(namespace='tag_gtzan')
     jannot_tag_gtzan.annotation_metadata = jams.AnnotationMetadata(
         data_source='mirdata'
@@ -554,3 +575,28 @@ def tag_gtzan_to_jams(tags):
     if tags[1] is not None:
         jannot_tag_gtzan.sandbox = jams.Sandbox(name=tags[1])
     return jannot_tag_gtzan
+
+
+def tag_open_to_jams(tags):
+    """
+    Convert tag-open annotations into jams format.
+
+    Parameters
+    ----------
+    tags: tuple
+        A tuple in the format (str, str), where the first str is the open tag
+        and the second describes the annotation.
+
+    Returns
+    -------
+    jannot_tag_open: JAM tag_open annotation object.
+    """
+    jannot_tag_open = jams.Annotation(namespace='tag_open')
+    jannot_tag_open.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    if tags[0] is not None:
+        if not isinstance(tags[0], str):
+            raise TypeError('Type should be str.')
+        jannot_tag_open.append(time=0.0, duration=0.0, value=tags[0])
+    if tags[1] is not None:
+        jannot_tag_open.sandbox = jams.Sandbox(name=tags[1])
+    return jannot_tag_open
