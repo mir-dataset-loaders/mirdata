@@ -17,6 +17,7 @@ DATASETS = [importlib.import_module("mirdata.{}".format(d)) for d in mirdata.__a
 CUSTOM_TEST_TRACKS = {
     'beatles': '0111',
     'dali': '4b196e6c99574dd49ad00d56e132712b',
+    'giantsteps_tempo': '113',
     'guitarset': '03_BN3-119-G_solo',
     'medley_solos_db': 'd07b1fc0-567d-52c2-fef4-239f31c9d40e',
     'medleydb_melody': 'MusicDelta_Beethoven',

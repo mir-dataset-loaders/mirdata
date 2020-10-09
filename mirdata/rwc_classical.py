@@ -287,14 +287,14 @@ def track_ids():
 def load(data_home=None):
     """Load RWC-Classical dataset
 
-        Args:
-            data_home (str): Local path where the dataset is stored.
-                If `None`, looks for the data in the default directory, `~/mir_datasets`
+    Args:
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
-        Returns:
-            (dict): {`track_id`: track data}
+    Returns:
+        (dict): {`track_id`: track data}
 
-        """
+    """
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 

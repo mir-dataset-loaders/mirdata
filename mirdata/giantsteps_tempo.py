@@ -187,12 +187,12 @@ def download(data_home=None, force_overwrite=False, cleanup=True):
 
     download_message = """
             Unfortunately the audio files of the Giant Steps Tempo dataset are not available
-            for download. If you have the Beatles dataset, place the contents into
-            a folder called Beatles with the following structure:
+            for download. If you have the Giant Steps audio dataset, place the contents into
+            a folder called GiantSteps_tempo with the following structure:
                 > GiantSteps_tempo/
                     > giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/
                     > audio/
-            and copy the Beatles folder to {}
+            and copy the folder to {}
         """.format(
         data_home
     )
@@ -245,10 +245,10 @@ def load(data_home=None):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    beatles_data = {}
+    giantsteps_key_data = {}
     for tempo in track_ids():
-        beatles_data[tempo] = Track(tempo, data_home=data_home)
-    return beatles_data
+        giantsteps_key_data[tempo] = Track(tempo, data_home=data_home)
+    return giantsteps_key_data
 
 
 def load_genre(path):
