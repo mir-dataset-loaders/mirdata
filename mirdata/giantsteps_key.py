@@ -26,12 +26,8 @@ All the data of this dataset is licensed with Creative Commons Attribution Share
 
 """
 
-import csv
 import json
-import zipfile
-
 import librosa
-import numpy as np
 import os
 
 from mirdata import download_utils
