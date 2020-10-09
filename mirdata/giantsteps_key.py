@@ -359,10 +359,3 @@ Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
 
     print(cite_data)
 
-
-if __name__ == "__main__":
-    v = load()['3']
-    print(v.genres)
-    print(v.artists)
-    print(v.tempo)
-    print(v.to_jams())
