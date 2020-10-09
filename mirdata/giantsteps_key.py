@@ -358,4 +358,3 @@ Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
     """
 
     print(cite_data)
-
