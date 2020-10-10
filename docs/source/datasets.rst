@@ -62,7 +62,7 @@ click the link provided in the "Module" column.
 | medleydb_pitch_   | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
 |                   | | Tracking Subset   | - annotations: ✅   | - :ref:`instruments`      |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
-| mridangam_stroke_ | Mridangam Stroke    | - audio: ✅         | - :ref:`stroke_name`      | 7162   |
+| mridangam_stroke_ | Mridangam Stroke    | - audio: ✅         | - :ref:`stroke_name`      | 6977   |
 |                   |                     | - annotations: ✅   | - :ref:`tonic`            |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | orchset_          | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
