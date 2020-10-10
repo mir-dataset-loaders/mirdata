@@ -22,8 +22,8 @@ def test_track():
     }
 
     expected_property_types = {
-        'tempo': list,
-        'tempo_v2': list,
+        'tempo': utils.TempoData,
+        'tempo_v2': utils.TempoData,
         'genre': str
     }
 
@@ -32,7 +32,7 @@ def test_track():
     audio, sr = track.audio
     assert sr == 22050, 'sample rate {} is not 22050'.format(sr)
     print(audio.shape)
-    assert audio.shape == (2646720,), 'audio shape {} was not (5294592,)'.format(
+    assert audio.shape == (2646720,), 'audio shape {} was not (2646720,)'.format(
         audio.shape
     )
 
@@ -47,7 +47,7 @@ def test_load_genre():
 
     assert genre_data == "trance"
 
-    assert giantsteps_tempo.load_tempo(None) is None
+    assert giantsteps_tempo.load_genre(None) is None
 
 
 def test_load_tempo():
@@ -57,9 +57,10 @@ def test_load_tempo():
     )
     tempo_data = giantsteps_tempo.load_tempo(tempo_path)
 
-    assert type(tempo_data) == list
+    assert type(tempo_data) == utils.TempoData
 
-    assert tempo_data == [utils.TempoData(time=120.0, duration=1.0, value=137.6, confidence=0.0)]
+    assert tempo_data == utils.TempoData(time=np.array([0.0]), duration=np.array([120.0]),
+                                         value=np.array([137.6]), confidence=np.array([1.0]))
 
     tempo_path = (
         'tests/resources/mir_datasets/GiantSteps_tempo/giantsteps-tempo-dataset'
@@ -67,9 +68,9 @@ def test_load_tempo():
     )
     tempo_data = giantsteps_tempo.load_tempo(tempo_path)
 
-    assert type(tempo_data) == list
+    assert type(tempo_data) == utils.TempoData
 
-    assert tempo_data == [utils.TempoData(time=120.0, duration=0.30927835051546393, value=77.0, confidence=0.0),
-                          utils.TempoData(time=120.0, duration=0.6907216494845361, value=139.0, confidence=0.0)]
-
+    assert np.array_equal(tempo_data.time, np.array([0., 0.]))
+    assert np.array_equal(tempo_data.duration, np.array([120., 120.]))
+    assert np.array_equal(tempo_data.value, np.array([77., 139.]))
     assert giantsteps_tempo.load_tempo(None) is None

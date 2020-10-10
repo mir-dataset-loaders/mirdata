@@ -68,6 +68,7 @@ import os
 from mirdata import download_utils
 from mirdata import track
 from mirdata import utils
+import numpy as np
 import jams
 
 DATASET_DIR = 'GiantSteps_tempo'
@@ -123,17 +124,17 @@ class Track(track.Track):
 
     @utils.cached_property
     def genre(self):
-        """metadata: human-labeled metadata annotation"""
+        """genre: human-labeled metadata annotation"""
         return load_genre(self.annotation_v1_path)
 
     @utils.cached_property
     def tempo(self):
-        """ChordData: tempo annotation ordered by confidence"""
+        """TempoData: tempo annotation ordered by confidence"""
         return load_tempo(self.annotation_v1_path)
 
     @utils.cached_property
     def tempo_v2(self):
-        """ChordData: tempos annotation ordered by confidence"""
+        """TempoData: tempos annotation ordered by confidence"""
         return load_tempo(self.annotation_v2_path)
 
     @property
@@ -280,11 +281,14 @@ def load_tempo(tempo_path):
     with open(tempo_path) as json_file:
         annotation = jams.load(json_file)
 
-    tempos = annotation.search(namespace='tempo')[0]['data']
-    return [
-        utils.TempoData(tempo.duration, tempo.confidence, tempo.value, tempo.time)
-        for tempo in tempos
-    ]
+    tempo = annotation.search(namespace='tempo')[0]['data']
+
+    return utils.TempoData(
+        np.array([t.time for t in tempo]),
+        np.array([t.duration for t in tempo]),
+        np.array([t.value for t in tempo]),
+        np.array([t.confidence for t in tempo]),
+    )
 
 
 def cite():
