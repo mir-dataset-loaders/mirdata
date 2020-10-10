@@ -94,6 +94,8 @@ class Track(track.Track):
         audio_path (str): track audio path
         title (str): title of the track
         track_id (str): track id
+        annotation_v1_path (str): track annotation v1 path
+        annotation_v2_path (str): track annotation v2 path
     """
 
     def __init__(self, track_id, data_home=None):
