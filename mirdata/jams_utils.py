@@ -75,17 +75,14 @@ def jams_converter(
     # duration
     duration = None
     if audio_path is not None:
-        if 'spectrum' in audio_path:
-            duration = 0
+        if os.path.exists(audio_path):
+            duration = librosa.get_duration(filename=audio_path)
         else:
-            if os.path.exists(audio_path):
-                duration = librosa.get_duration(filename=audio_path)
-            else:
-                raise OSError(
-                    'jams conversion failed because the audio file '
-                    + 'for this track cannot be found, and it is required'
-                    + 'to compute duration.'
-                )
+            raise OSError(
+                'jams conversion failed because the audio file '
+                + 'for this track cannot be found, and it is required'
+                + 'to compute duration.'
+            )
 
     # metadata
     if metadata is not None:
