@@ -61,16 +61,11 @@ name              length
 3577631.LOFI.mp3  119
 """
 
-import csv
-import json
-import zipfile
 
 import librosa
-import numpy as np
 import os
 
 from mirdata import download_utils
-from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 import jams
