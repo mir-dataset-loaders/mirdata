@@ -345,7 +345,7 @@ def load_sections(sections_path):
 
 def _fix_newpoint(beat_positions):
     """Fills in missing beat position labels by inferring the beat position
-        from neighboring beats.
+    from neighboring beats.
 
     """
     while np.any(beat_positions == 'New Point'):
