@@ -1,12 +1,21 @@
 # -*- coding: utf-8 -*-
 """beatport_key Dataset Loader
-The Beatport EDM Key Dataset includes 1,486 two-minute sound excerpts from various EDM subgenres, annotated with single-key labels, comments and confidence levels generously provided by Eduard Mas Marín, and thoroughly revised and expanded by Ángel Faraldo.
+The Beatport EDM Key Dataset includes 1,486 two-minute sound excerpts from various EDM
+subgenres, annotated with single-key labels, comments and confidence levels generously provided by Eduard Mas Marín,
+and thoroughly revised and expanded by Ángel Faraldo.
 
-The original audio samples belong to online audio snippets from Beatport, an online music store for DJ's and Electronic Dance Music Producers (<http:\\www.beatport.com>). If this dataset were used in further research, we would appreciate the citation of the current DOI (10.5281/zenodo.1101082) and the following doctoral dissertation, where a detailed description of the properties of this dataset can be found:
+The original audio samples belong to online audio snippets from Beatport, an online music store for DJ's and
+Electronic Dance Music Producers (<http:\\www.beatport.com>). If this dataset were used in further research,
+we would appreciate the citation of the current DOI (10.5281/zenodo.1101082) and the following doctoral dissertation,
+where a detailed description of the properties of this dataset can be found:
 
-Ángel Faraldo (2017). Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination. PhD Thesis. Universitat Pompeu Fabra, Barcelona.
+Ángel Faraldo (2017). Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed
+Examination. PhD Thesis. Universitat Pompeu Fabra, Barcelona.
 
-This dataset is mainly intended to assess the performance of computational key estimation algorithms in electronic dance music subgenres.
+This dataset is mainly intended to assess the performance of computational key estimation algorithms in electronic
+dance music subgenres.
+
+Data License: Creative Commons Attribution Share Alike 4.0 International
 """
 import fnmatch
 import json
@@ -186,8 +195,6 @@ def download(
     # doesn't correspond to json format.
     # input file
     find_replace(os.path.join(data_home, "meta"), ": nan", ": null", "*.json")
-
-
 
 
 def validate(data_home=None, silence=False):
