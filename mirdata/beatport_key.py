@@ -174,7 +174,6 @@ def download(
     # This dataset annotations have characters that doesnt correspond with json format. In particular, "bpm": nan
     # doesn't correspond to json format.
     # input file
-    find_replace(os.path.join(data_home, "meta"), ": nan", ": null", "*.json")
     for path, dirs, files in os.walk(os.path.abspath(os.path.join(data_home, "meta"))):
         for filename in fnmatch.filter(files, "*.json"):
             filepath = os.path.join(path, filename)
