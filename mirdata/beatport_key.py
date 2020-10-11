@@ -140,26 +140,6 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def find_replace(directory, find, replace, pattern):
-    """
-    Replace in some directory all the songs with the format pattern find by replace
-    Parameters
-    ----------
-    directory (str) path to directory
-    find (str) string from replace
-    replace (str) string to replace
-    pattern (str) regex that must match the directories searrched
-    """
-    for path, dirs, files in os.walk(os.path.abspath(directory)):
-        for filename in fnmatch.filter(files, pattern):
-            filepath = os.path.join(path, filename)
-            with open(filepath) as f:
-                s = f.read()
-            s = s.replace(find, replace)
-            with open(filepath, "w") as f:
-                f.write(s)
-
-
 def download(
     data_home=None, force_overwrite=False, cleanup=True, partial_download=None
 ):
@@ -195,6 +175,14 @@ def download(
     # doesn't correspond to json format.
     # input file
     find_replace(os.path.join(data_home, "meta"), ": nan", ": null", "*.json")
+    for path, dirs, files in os.walk(os.path.abspath(os.path.join(data_home, "meta"))):
+        for filename in fnmatch.filter(files, "*.json"):
+            filepath = os.path.join(path, filename)
+            with open(filepath) as f:
+                s = f.read()
+            s = s.replace(": nan", ": null")
+            with open(filepath, "w") as f:
+                f.write(s)
 
 
 def validate(data_home=None, silence=False):
@@ -346,9 +334,3 @@ PhD Thesis. Universitat Pompeu Fabra, Barcelona.
     """
 
     print(cite_data)
-
-
-if __name__ == "__main__":
-    for k, v in load().items():
-        print(k, v.metadata_path)
-        print(k, v.artists)
