@@ -8,7 +8,7 @@ The original audio samples belong to online audio snippets from Beatport, an onl
 
 This dataset is mainly intended to assess the performance of computational key estimation algorithms in electronic dance music subgenres.
 """
-
+import fnmatch
 import json
 import librosa
 import os
@@ -131,6 +131,26 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
+def find_replace(directory, find, replace, pattern):
+    """
+    Replace in some directory all the songs with the format pattern find by replace
+    Parameters
+    ----------
+    directory (str) path to directory
+    find (str) string from replace
+    replace (str) string to replace
+    pattern (str) regex that must match the directories searrched
+    """
+    for path, dirs, files in os.walk(os.path.abspath(directory)):
+        for filename in fnmatch.filter(files, pattern):
+            filepath = os.path.join(path, filename)
+            with open(filepath) as f:
+                s = f.read()
+            s = s.replace(find, replace)
+            with open(filepath, "w") as f:
+                f.write(s)
+
+
 def download(
     data_home=None, force_overwrite=False, cleanup=True, partial_download=None
 ):
@@ -162,6 +182,12 @@ def download(
         force_overwrite=force_overwrite,
         cleanup=cleanup,
     )
+    # This dataset annotations have characters that doesnt correspond with json format. In particular, "bpm": nan
+    # doesn't correspond to json format.
+    # input file
+    find_replace(os.path.join(data_home, "meta"), ": nan", ": null", "*.json")
+
+
 
 
 def validate(data_home=None, silence=False):
@@ -316,4 +342,6 @@ PhD Thesis. Universitat Pompeu Fabra, Barcelona.
 
 
 if __name__ == "__main__":
-    validate()
+    for k, v in load().items():
+        print(k, v.metadata_path)
+        print(k, v.artists)
