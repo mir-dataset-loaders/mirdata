@@ -18,6 +18,7 @@ This library provides tools for working with common MIR datasets, including tool
 #### Currently supported datasets
 
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
+* [Beatport EDM key](https://zenodo.org/record/1101082/export/xd#.X4NCfC3FQUE)
 * [DALI](https://github.com/gabolsgabs/DALI)
 * [Groove MIDI](https://magenta.tensorflow.org/datasets/groove)
 * [GTZAN genre](http://marsyas.info/downloads/datasets.html)
