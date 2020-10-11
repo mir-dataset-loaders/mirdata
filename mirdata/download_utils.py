@@ -15,7 +15,6 @@ import zipfile
 
 from mirdata.utils import md5
 
-
 # destination dir should be a relative path to save the file/s, or None
 RemoteFileMetadata = namedtuple(
     'RemoteFileMetadata', ['filename', 'url', 'checksum', 'destination_dir']
