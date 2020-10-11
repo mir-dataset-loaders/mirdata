@@ -48,17 +48,17 @@ def test_to_jams():
     ), 'title does not match expected'
     sand_box = {
         "artists": [
-          "Lindstrom"
+            "Lindstrom"
         ],
         "genres": {
-          "genres": [
-            "Electronica / Downtempo"
-          ],
-          "sub_genres": []
+            "genres": [
+                "Electronica / Downtempo"
+            ],
+            "sub_genres": []
         },
         "tempo": 115,
         "key": "D minor"
-      }
+    }
     assert (
             dict(jam['sandbox']) == sand_box
     ), 'sandbox does not match expected'
@@ -66,7 +66,7 @@ def test_to_jams():
 
 def test_load_key():
     key_path = (
-            'tests/resources/mir_datasets/beatport_key/keys/100066 Lindstrom - Monsteer (Original Mix).txt'
+        'tests/resources/mir_datasets/beatport_key/keys/100066 Lindstrom - Monsteer (Original Mix).txt'
     )
     key_data = beatport_key.load_key(key_path)
 
@@ -79,7 +79,7 @@ def test_load_key():
 
 def test_load_meta():
     meta_path = (
-            'tests/resources/mir_datasets/beatport_key/meta/100066 Lindstrom - Monsteer (Original Mix).json'
+        'tests/resources/mir_datasets/beatport_key/meta/100066 Lindstrom - Monsteer (Original Mix).json'
     )
     genres = {'genres': ['Electronica / Downtempo'], 'sub_genres': []}
     artists = ['Lindstrom']
@@ -96,3 +96,12 @@ def test_load_meta():
     assert beatport_key.load_genre(None) is None
     assert beatport_key.load_artist(None) is None
     assert beatport_key.load_tempo(None) is None
+
+
+def test_find_replace():
+    with open('tests/resources/mir_datasets/beatport_key/find_replace.json', 'w') as the_file:
+        the_file.write('{"probando": nan}')
+    beatport_key.find_replace('tests/resources/mir_datasets/beatport_key', ": nan", ": null", "*.json")
+    f = open('tests/resources/mir_datasets/beatport_key/find_replace.json', "r")
+    content = f.read()
+    assert content == '{"probando": null}'
