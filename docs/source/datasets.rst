@@ -40,7 +40,7 @@ click the link provided in the "Module" column.
 | gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| giantsteps_key_  | Giantsteps EDM key  | - audio: ✅         | - global :ref:`key`       | 1000   |
+| giantsteps_key_  | Giantsteps EDM key  | - audio: ✅         | - global :ref:`key`       | 500    |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | guitarset_       | GuitarSet           | - audio: ✅         | - :ref:`beats`            | 360    |
