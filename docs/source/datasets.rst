@@ -40,6 +40,9 @@ click the link provided in the "Module" column.
 | gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
+| giantsteps_key_  | Giantsteps EDM key  | - audio: ✅         | - global :ref:`key`       | 500    |
+|                  |                     | - annotations: ✅   |                           |        |
++------------------+---------------------+---------------------+---------------------------+--------+
 | guitarset_       | GuitarSet           | - audio: ✅         | - :ref:`beats`            | 360    |
 |                  |                     | - annotations: ✅   | - :ref:`chords`           |        |
 |                  |                     |                     | - :ref:`key`              |        |
@@ -206,6 +209,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
+.. _giantsteps_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata._giantsteps_key
 .. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre
 .. _guitarset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.guitarset
