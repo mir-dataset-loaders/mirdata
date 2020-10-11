@@ -18,6 +18,12 @@ mirdata.beatles
 
 .. automodule:: mirdata.beatles
    :members:
+   
+mirdata.beatport_key
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.beatport_key
+   :members:
 
 mirdata.dali
 ^^^^^^^^^^^^
