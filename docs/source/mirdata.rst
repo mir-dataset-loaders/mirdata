@@ -61,6 +61,13 @@ mirdata.ikala
    :members:
 
 
+mirdata.irmas
+^^^^^^^^^^^^^
+
+.. automodule:: mirdata.irmas
+   :members:
+
+
 mirdata.maestro
 ^^^^^^^^^^^^^
 
