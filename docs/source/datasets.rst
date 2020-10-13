@@ -225,6 +225,7 @@ note. Originally added to describe the tonic of the Mridangam strokes.
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
+.. _giantsteps_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata._giantsteps_key
 .. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre
 .. _guitarset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.guitarset
@@ -233,7 +234,7 @@ note. Originally added to describe the tonic of the Mridangam strokes.
 .. _medley_solos_db: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db
 .. _medleydb_melody: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_melody
 .. _medleydb_pitch: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_pitch
-.. _mridangam_stroke: https://compmusic.upf.edu/mridangam-stroke-dataset
+.. _mridangam_stroke: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.mridangam_stroke
 .. _orchset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.orchset
 .. _rwc_classical: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_classical
 .. _rwc_jazz: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_jazz
