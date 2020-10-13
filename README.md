@@ -23,6 +23,7 @@ This library provides tools for working with common MIR datasets, including tool
 * [GTZAN genre](http://marsyas.info/downloads/datasets.html)
 * [GuitarSet](http://github.com/marl/guitarset/)
 * [Ikala](http://mac.citi.sinica.edu.tw/ikala/)
+* [IRMAS](https://www.upf.edu/web/mtg/irmas)
 * [MAESTRO](https://magenta.tensorflow.org/datasets/maestro)
 * [MedleyDB Melody](https://medleydb.weebly.com/)
 * [MedleyDB Pitch](https://medleydb.weebly.com/)
