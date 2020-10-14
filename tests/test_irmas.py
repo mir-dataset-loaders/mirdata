@@ -7,12 +7,11 @@ from tests.test_utils import run_track_tests
 from mirdata import irmas
 from tests.test_utils import DEFAULT_DATA_HOME
 
-TEST_DATA_HOME = "tests/resources/mir_datasets/IRMAS"
-
 
 def test_track():
-    default_trackid = "1"
-    track = irmas.Track(default_trackid, data_home=TEST_DATA_HOME)
+    default_trackid = '1'
+    data_home = "tests/resources/mir_datasets/IRMAS"
+    track = irmas.Track(default_trackid, data_home=data_home)
     expected_attributes = {
         'annotation_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.txt",
@@ -32,8 +31,9 @@ def test_track():
 
 
 def test_to_jams():
-    default_trackid = "1"
-    track = irmas.Track(default_trackid, data_home=TEST_DATA_HOME)
+    default_trackid = '1'
+    data_home = "tests/resources/mir_datasets/IRMAS"
+    track = irmas.Track(default_trackid, data_home=data_home)
     jam = track.to_jams()
 
     # Validate Mridangam schema
@@ -45,18 +45,22 @@ def test_to_jams():
 
 def test_load_pred_inst():
     # Training samples
+    """
     default_trackid_train = "0189__2"
-    track = irmas.Track(default_trackid_train, data_home=TEST_DATA_HOME)
+    data_home = "tests/resources/mir_datasets/IRMAS"
+    track = irmas.Track(default_trackid_train, data_home=data_home)
 
     split_1 = track.audio_path.split('[')[1]
     pred_inst_code = split_1.split(']')[0]
     pred_inst = irmas.inst_trans(pred_inst_code)
 
     assert pred_inst == 'clarinet'
+    """
 
     # Testing samples
-    default_trackid_train = "1"
-    track = irmas.Track(default_trackid_train, data_home=TEST_DATA_HOME)
+    default_trackid_train = '1'
+    data_home = "tests/resources/mir_datasets/IRMAS"
+    track = irmas.Track(default_trackid_train, data_home=data_home)
 
     with open(track.annotation_path, 'r') as fopen:
         pred_inst_file = fopen.readlines()
@@ -72,9 +76,12 @@ def test_load_pred_inst():
 
 
 def test_load_genre():
-    default_trackid_train = "0189__2"
-    track = irmas.Track(default_trackid_train, data_home=TEST_DATA_HOME)
+    default_trackid_train = '1'
+    data_home = "tests/resources/mir_datasets/IRMAS"
+    track = irmas.Track(default_trackid_train, data_home=data_home)
+    assert track.genre is None
 
+    """
     genre = ''
     if 'nod' in track.audio_path:
         if 'dru' in track.audio_path:
@@ -88,16 +95,19 @@ def test_load_genre():
         genre = irmas.genre_trans(genre_code)
 
     assert genre == 'classical'
+    """
 
 
 def test_load_drum():
-    default_trackid_train = "0189__2"
-    track = irmas.Track(default_trackid_train, data_home=TEST_DATA_HOME)
-
+    default_trackid_train = '1'
+    data_home = "tests/resources/mir_datasets/IRMAS"
+    track = irmas.Track(default_trackid_train, data_home=data_home)
+    assert track.drum is None
+    """
     is_drum = False
 
     if 'dru' in track.audio_path:
         is_drum = True
 
     assert is_drum is False
-
+    """

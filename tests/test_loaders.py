@@ -308,6 +308,8 @@ def test_track():
 # module_name : {function_name: {parameter2: value, parameter3: value}}
 EXCEPTIONS = {
     'dali': {'load_annotations_granularity': {'granularity': 'notes'}},
+    'irmas': {'load_pred_inst': {
+        'train': False, 'audio_path': None, 'annotation_path': None}},
     'guitarset': {
         'load_pitch_contour': {'string_num': 1},
         'load_note_ann': {'string_num': 1},
