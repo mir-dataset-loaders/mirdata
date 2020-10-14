@@ -142,11 +142,12 @@ class Track(track.Track):
 
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.annotation_path = ""
 
         # Define Train tracks
         if self.train:
             self.predominant_instrument = load_pred_inst(
-                train=self.train, audio_path=self.audio_path)
+                train=self.train, audio_path=self.audio_path, annotation_path=self.annotation_path)
             self.genre = load_genre(self.audio_path)
             self.drum = load_drum(self.audio_path)
             self._track_metadata = {
@@ -327,7 +328,6 @@ def load_pred_inst(train, audio_path, annotation_path=None):
     Args:
         audio_path (str): Local path where the track is stored.
         train (bool): Flag to know if track is from the train or test set
-        data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
         annotation_path (str): Local path where the testing annotation is stored.
     Returns:
