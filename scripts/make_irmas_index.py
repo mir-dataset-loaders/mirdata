@@ -98,7 +98,8 @@ def make_irmas_index(irmas_data_path):
         audio_checksum = md5(os.path.join(irmas_data_path, inst[1]))
 
         irmas_index[inst[0]] = {
-            'audio': (inst[1], audio_checksum)
+            'audio': (inst[1], audio_checksum),
+            'annotation': (inst[1], audio_checksum)
         }
 
     index = 1
