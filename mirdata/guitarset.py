@@ -194,13 +194,13 @@ class Track(track.Track):
     @utils.cached_property
     def pitch_contours(self):
         """(dict): a dict that contains 6 F0Data.
-            From Low E string to high e string.
-            {
-                'E': F0Data(...),
-                'A': F0Data(...),
-                ...
-                'e': F0Data(...)
-            }
+        From Low E string to high e string.
+        {
+            'E': F0Data(...),
+            'A': F0Data(...),
+            ...
+            'e': F0Data(...)
+        }
         """
         contours = {}
         # iterate over 6 strings
@@ -211,13 +211,13 @@ class Track(track.Track):
     @utils.cached_property
     def notes(self):
         """dict: a dict that contains 6 NoteData.
-            From Low E string to high e string.
-            {
-                'E': NoteData(...),
-                'A': NoteData(...),
-                ...
-                'e': NoteData(...)
-            }
+        From Low E string to high e string.
+        {
+            'E': NoteData(...),
+            'A': NoteData(...),
+            ...
+            'e': NoteData(...)
+        }
         """
         notes = {}
         # iterate over 6 strings

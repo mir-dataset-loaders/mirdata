@@ -308,9 +308,13 @@ def test_track():
 # module_name : {function_name: {parameter2: value, parameter3: value}}
 EXCEPTIONS = {
     'dali': {'load_annotations_granularity': {'granularity': 'notes'}},
-    'irmas': {'load_pred_inst': {
-        'annotation_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
-        + "02 - And The Body Will Die-8.txt", 'train': False}},
+    'irmas': {
+        'load_pred_inst': {
+            'annotation_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
+            + "02 - And The Body Will Die-8.txt",
+            'train': False,
+        }
+    },
     'guitarset': {
         'load_pitch_contour': {'string_num': 1},
         'load_note_ann': {'string_num': 1},

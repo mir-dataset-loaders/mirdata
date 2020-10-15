@@ -31,9 +31,7 @@ def test_track():
         'train': False,
     }
 
-    expected_property_types = {
-        'predominant_instrument': utils.EventData
-    }
+    expected_property_types = {'predominant_instrument': utils.EventData}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
