@@ -117,9 +117,7 @@ def _load_metadata(data_home):
     for root, dirs, files in os.walk(data_home):
         for directory in dirs:
             if 'Train' in directory:
-                for root_, dirs_, files_ in os.walk(
-                    os.path.join(data_home, directory)
-                ):
+                for root_, dirs_, files_ in os.walk(os.path.join(data_home, directory)):
                     for directory_ in dirs_:
                         for root__, dirs__, files__ in os.walk(
                             os.path.join(data_home, directory, directory_)
@@ -136,7 +134,7 @@ def _load_metadata(data_home):
                                         irmas_dict[irmas_id_dru_no_wav] = {
                                             'genre': genre_code,
                                             'drum': True,
-                                            'train': True
+                                            'train': True,
                                         }
                                     if 'nod' in file:
                                         irmas_id_nod = file.split(']')[3]  # Obtain id
@@ -148,7 +146,7 @@ def _load_metadata(data_home):
                                         irmas_dict[irmas_id_nod_no_wav] = {
                                             'genre': genre_code,
                                             'drum': False,
-                                            'train': True
+                                            'train': True,
                                         }
                                     else:
                                         irmas_id = file.split(']')[2]  # Obtain id
@@ -160,12 +158,10 @@ def _load_metadata(data_home):
                                         irmas_dict[irmas_id_nod_no_wav] = {
                                             'genre': genre_code,
                                             'drum': False,
-                                            'train': True
+                                            'train': True,
                                         }
             if 'Test' in directory:
-                for root_, dirs_, files_ in os.walk(
-                    os.path.join(data_home, directory)
-                ):
+                for root_, dirs_, files_ in os.walk(os.path.join(data_home, directory)):
                     for directory_ in dirs_:
                         for root__, dirs__, files__ in os.walk(
                             os.path.join(data_home, directory, directory_)
@@ -176,7 +172,7 @@ def _load_metadata(data_home):
                                     irmas_dict[test_index] = {
                                         'genre': None,
                                         'drum': None,
-                                        'train': False
+                                        'train': False,
                                     }
                                     count += 1
 
@@ -185,7 +181,9 @@ def _load_metadata(data_home):
     return irmas_dict
 
 
-DATA = utils.LargeData('irmas_index.json', _load_metadata)  # use this if your dataset has no metadata
+DATA = utils.LargeData(
+    'irmas_index.json', _load_metadata
+)  # use this if your dataset has no metadata
 
 
 class Track(track.Track):
@@ -221,13 +219,11 @@ class Track(track.Track):
         if metadata is not None and track_id in metadata:
             self._track_metadata = metadata[track_id]
         else:
-            self._track_metadata = {
-                'genre': None,
-                'drum': None,
-                'train': None
-            }
+            self._track_metadata = {'genre': None, 'drum': None, 'train': None}
 
-        self.annotation_path = os.path.join(self._data_home, self._track_paths['annotation'][0])
+        self.annotation_path = os.path.join(
+            self._data_home, self._track_paths['annotation'][0]
+        )
         self.genre = self._track_metadata['genre']
         self.drum = self._track_metadata['drum']
         self.train = self._track_metadata['train']
@@ -235,8 +231,7 @@ class Track(track.Track):
     @utils.cached_property
     def predominant_instrument(self):
         """EventData: predominant instrument"""
-        return load_pred_inst(
-            self.audio_path, self.annotation_path, self.train)
+        return load_pred_inst(self.audio_path, self.annotation_path, self.train)
 
     @property
     def audio(self):
@@ -371,7 +366,9 @@ def load_pred_inst(audio_path, annotation_path, train):
         split_1 = audio_path.split('[')[1]
         pred_inst_code = split_1.split(']')[0]
 
-        return utils.EventData(np.array([0]), np.array([duration]), np.array([pred_inst_code]))
+        return utils.EventData(
+            np.array([0]), np.array([duration]), np.array([pred_inst_code])
+        )
 
     else:
         with open(annotation_path, 'r') as fopen:
@@ -381,7 +378,9 @@ def load_pred_inst(audio_path, annotation_path, train):
                 inst_code = inst_[:3]
                 pred_inst.append(inst_code)
 
-        return utils.EventData(np.array([0]), np.array([duration]), np.array([tuple(pred_inst)]))
+        return utils.EventData(
+            np.array([0]), np.array([duration]), np.array([tuple(pred_inst)])
+        )
 
 
 def cite():
@@ -405,5 +404,3 @@ IRMAS: a dataset for instrument recognition in musical audio signals (Version 1.
 """
 
     print(cite_data)
-
-

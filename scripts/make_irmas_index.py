@@ -99,7 +99,7 @@ def make_irmas_index(irmas_data_path):
 
         irmas_index[inst[0]] = {
             'audio': (inst[1], audio_checksum),
-            'annotation': (inst[1], audio_checksum)
+            'annotation': (inst[1], audio_checksum),
         }
 
     index = 1
