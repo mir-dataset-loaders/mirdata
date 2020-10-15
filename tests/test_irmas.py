@@ -4,8 +4,16 @@ import os
 
 from tests.test_utils import run_track_tests
 
-from mirdata import irmas
+from mirdata import irmas, utils
 from tests.test_utils import DEFAULT_DATA_HOME
+
+TEST_DATA_HOME = "tests/resources/mir_datasets/IRMAS"
+
+
+def test_track_default_data_home():
+    # test data home None
+    track_default = irmas.Track('1')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, "IRMAS")
 
 
 def test_track():
@@ -19,15 +27,20 @@ def test_track():
         + "02 - And The Body Will Die-8.wav",
         'drum': None,
         'genre': None,
-        'predominant_instrument': ('electric guitar', 'voice'),
         'track_id': '1',
         'train': False,
     }
 
-    run_track_tests(track, expected_attributes, {})
+    expected_property_types = {
+        'predominant_instrument': utils.EventData
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     audio, sr = track.audio
     assert sr == 44100
+    assert len(audio) == 2
+    assert len(audio[1, :]) == 882000
 
 
 def test_to_jams():
@@ -40,22 +53,24 @@ def test_to_jams():
     assert jam.validate()
 
     # Test the training genre parser
-    assert jam.sandbox["predominant_instrument"] == ('electric guitar', 'voice')
+    assert jam.annotations["tag_open"][0].data[0].value == "['gel' 'voi']"
+    assert jam.sandbox["train"] is False
 
 
 def test_load_pred_inst():
     # Training samples
-    """
     default_trackid_train = "0189__2"
     data_home = "tests/resources/mir_datasets/IRMAS"
     track = irmas.Track(default_trackid_train, data_home=data_home)
 
-    split_1 = track.audio_path.split('[')[1]
-    pred_inst_code = split_1.split(']')[0]
-    pred_inst = irmas.inst_trans(pred_inst_code)
+    split_inst = track.audio_path.split('[')[1]
+    pred_inst = split_inst.split(']')[0]
 
-    assert pred_inst == 'clarinet'
-    """
+    split_genre = track.audio_path.split('[')[2]
+    genre_code = split_genre.split(']')[0]
+
+    assert pred_inst == 'cla'
+    assert genre_code == 'cla'
 
     # Testing samples
     default_trackid_train = '1'
@@ -67,47 +82,8 @@ def test_load_pred_inst():
         pred_inst = []
         for inst_ in pred_inst_file:
             inst_code = inst_[:3]
-            inst = irmas.inst_trans(inst_code)
-            pred_inst.append(inst)
+            pred_inst.append(inst_code)
 
         pred_inst = tuple(pred_inst)
 
-    assert pred_inst == ('electric guitar', 'voice')
-
-
-def test_load_genre():
-    default_trackid_train = '1'
-    data_home = "tests/resources/mir_datasets/IRMAS"
-    track = irmas.Track(default_trackid_train, data_home=data_home)
-    assert track.genre is None
-
-    """
-    genre = ''
-    if 'nod' in track.audio_path:
-        if 'dru' in track.audio_path:
-            split_nod = track.audio_path.split('[')[3]
-            genre_code = split_nod.split(']')[0]
-            genre = irmas.genre_trans(genre_code)
-
-    else:
-        split = track.audio_path.split('[')[2]
-        genre_code = split.split(']')[0]
-        genre = irmas.genre_trans(genre_code)
-
-    assert genre == 'classical'
-    """
-
-
-def test_load_drum():
-    default_trackid_train = '1'
-    data_home = "tests/resources/mir_datasets/IRMAS"
-    track = irmas.Track(default_trackid_train, data_home=data_home)
-    assert track.drum is None
-    """
-    is_drum = False
-
-    if 'dru' in track.audio_path:
-        is_drum = True
-
-    assert is_drum is False
-    """
+    assert pred_inst == ('gel', 'voi')
