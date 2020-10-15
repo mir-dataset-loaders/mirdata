@@ -74,6 +74,7 @@ For more details, please visit: https://www.upf.edu/web/mtg/irmas
 
 import os
 import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -109,7 +110,82 @@ REMOTES = {
     ),
 }
 
-DATA = utils.LargeData('irmas_index.json')  # use this if your dataset has no metadata
+
+def _load_metadata(data_home):
+    count = 1
+    irmas_dict = dict()
+    for root, dirs, files in os.walk(data_home):
+        for directory in dirs:
+            if 'Train' in directory:
+                for root_, dirs_, files_ in os.walk(
+                    os.path.join(data_home, directory)
+                ):
+                    for directory_ in dirs_:
+                        for root__, dirs__, files__ in os.walk(
+                            os.path.join(data_home, directory, directory_)
+                        ):
+                            for file in files__:
+                                if file.endswith('.wav'):
+                                    if 'dru' in file:
+                                        irmas_id_dru = file.split(']')[3]  # Obtain id
+                                        irmas_id_dru_no_wav = irmas_id_dru.split('.')[
+                                            0
+                                        ]  # Obtain id without '.wav'
+                                        split_dru = file.split('[')[3]
+                                        genre_code = split_dru.split(']')[0]
+                                        irmas_dict[irmas_id_dru_no_wav] = {
+                                            'genre': genre_code,
+                                            'drum': True,
+                                            'train': True
+                                        }
+                                    if 'nod' in file:
+                                        irmas_id_nod = file.split(']')[3]  # Obtain id
+                                        irmas_id_nod_no_wav = irmas_id_nod.split('.')[
+                                            0
+                                        ]  # Obtain id without '.wav'
+                                        split_nod = file.split('[')[3]
+                                        genre_code = split_nod.split(']')[0]
+                                        irmas_dict[irmas_id_nod_no_wav] = {
+                                            'genre': genre_code,
+                                            'drum': False,
+                                            'train': True
+                                        }
+                                    else:
+                                        irmas_id = file.split(']')[2]  # Obtain id
+                                        irmas_id_nod_no_wav = irmas_id.split('.')[
+                                            0
+                                        ]  # Obtain id without '.wav'
+                                        split_1 = file.split('[')[2]
+                                        genre_code = split_1.split(']')[0]
+                                        irmas_dict[irmas_id_nod_no_wav] = {
+                                            'genre': genre_code,
+                                            'drum': False,
+                                            'train': True
+                                        }
+            if 'Test' in directory:
+                for root_, dirs_, files_ in os.walk(
+                    os.path.join(data_home, directory)
+                ):
+                    for directory_ in dirs_:
+                        for root__, dirs__, files__ in os.walk(
+                            os.path.join(data_home, directory, directory_)
+                        ):
+                            for file in files__:
+                                if file.endswith('.wav'):
+                                    test_index = str(count)
+                                    irmas_dict[test_index] = {
+                                        'genre': None,
+                                        'drum': None,
+                                        'train': False
+                                    }
+                                    count += 1
+
+    irmas_dict["data_home"] = data_home
+
+    return irmas_dict
+
+
+DATA = utils.LargeData('irmas_index.json', _load_metadata)  # use this if your dataset has no metadata
 
 
 class Track(track.Track):
@@ -123,7 +199,6 @@ class Track(track.Track):
     Attributes:
         track_id (str): track id
         train (bool): flag to identify if the track is from the training of the testing dataset
-        predominant_instrument (str): string containing the namecode of the predominant instrument in the track
         genre (str): string containing the namecode of the genre of the track.
         drum (bool): flag to identify if the track contains drums or not.
     """
@@ -133,7 +208,6 @@ class Track(track.Track):
             raise ValueError('{} is not a valid track ID in Example'.format(track_id))
 
         self.track_id = track_id
-        self.train = is_train(self.track_id)
 
         if data_home is None:
             data_home = utils.get_default_dataset_path(DATASET_DIR)
@@ -142,34 +216,27 @@ class Track(track.Track):
 
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
-        self.annotation_path = ""
 
-        # Define Train tracks
-        if self.train:
-            self.predominant_instrument = load_pred_inst(
-                train=self.train, audio_path=self.audio_path, annotation_path=self.annotation_path)
-            self.genre = load_genre(self.audio_path)
-            self.drum = load_drum(self.audio_path)
-            self._track_metadata = {
-                'predominant_instrument': self.predominant_instrument,
-                'genre': self.genre,
-                'drum': self.drum,
-                'train': True,
-            }
-
-        # Define Test tracks
+        metadata = DATA.metadata(data_home)
+        if metadata is not None and track_id in metadata:
+            self._track_metadata = metadata[track_id]
         else:
-            self.annotation_path = os.path.join(self._data_home, self._track_paths['annotation'][0])
-            self.predominant_instrument = load_pred_inst(
-                train=self.train, audio_path=self.audio_path, annotation_path=self.annotation_path)
-            self.genre = None
-            self.drum = None
             self._track_metadata = {
-                'predominant_instrument': self.predominant_instrument,
-                'genre': self.genre,
-                'drum': self.drum,
-                'train': False,
+                'genre': None,
+                'drum': None,
+                'train': None
             }
+
+        self.annotation_path = os.path.join(self._data_home, self._track_paths['annotation'][0])
+        self.genre = self._track_metadata['genre']
+        self.drum = self._track_metadata['drum']
+        self.train = self._track_metadata['train']
+
+    @utils.cached_property
+    def predominant_instrument(self):
+        """EventData: predominant instrument"""
+        return load_pred_inst(
+            self.audio_path, self.annotation_path, self.train)
 
     @property
     def audio(self):
@@ -180,6 +247,7 @@ class Track(track.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
+            event_data=[(self.predominant_instrument, 'predominant_instrument')],
             metadata=self._track_metadata,
         )
 
@@ -203,7 +271,7 @@ def load_audio(audio_path):
 def download(
     data_home=None, partial_download=None, force_overwrite=False, cleanup=True
 ):
-    """Download the Mridangam Stroke Dataset.
+    """Download the IRMAS Dataset.
 
     Args:
         data_home (str):
@@ -280,22 +348,40 @@ def load(data_home=None):
     return data
 
 
-def is_train(track_id):
-    """
-    Differentiate between training and testing IRMAS samples by id.
+def load_pred_inst(audio_path, annotation_path, train):
+    """Load predominant instrument of track
 
     Args:
-        track_id (str): dict id of the track
-
+        audio_path (str): Local path where the track is stored.
+        train (bool): Flag to know if track is from the train or test set
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+        annotation_path (str): Local path where the testing annotation is stored.
     Returns:
-        True -> If sample is from the training subset
-        False -> If sample is from the testing subset
-
+        pred_inst (str): track predominant instrument extracted from filename
     """
-    if '__' in track_id:
-        return True
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+
+    duration = None
+    if audio_path is not None:
+        if os.path.exists(audio_path):
+            duration = librosa.get_duration(filename=audio_path)
+
+    if train is True:
+        split_1 = audio_path.split('[')[1]
+        pred_inst_code = split_1.split(']')[0]
+
+        return utils.EventData(np.array([0]), np.array([duration]), np.array([pred_inst_code]))
+
     else:
-        return False
+        with open(annotation_path, 'r') as fopen:
+            pred_inst_file = fopen.readlines()
+            pred_inst = []
+            for inst_ in pred_inst_file:
+                inst_code = inst_[:3]
+                pred_inst.append(inst_code)
+
+        return utils.EventData(np.array([0]), np.array([duration]), np.array([tuple(pred_inst)]))
 
 
 def cite():
@@ -320,125 +406,4 @@ IRMAS: a dataset for instrument recognition in musical audio signals (Version 1.
 
     print(cite_data)
 
-
-# <-- From now on there are the functions to load the dataset annotations -->
-def load_pred_inst(train, audio_path, annotation_path=None):
-    """Load predominant instrument of track
-
-    Args:
-        audio_path (str): Local path where the track is stored.
-        train (bool): Flag to know if track is from the train or test set
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-        annotation_path (str): Local path where the testing annotation is stored.
-    Returns:
-        pred_inst (str): track predominant instrument extracted from filename
-    """
-    if train is True:
-        split_1 = audio_path.split('[')[1]
-        pred_inst_code = split_1.split(']')[0]
-        pred_inst = inst_trans(pred_inst_code)
-
-        return pred_inst
-
-    else:
-        with open(annotation_path, 'r') as fopen:
-            pred_inst_file = fopen.readlines()
-            pred_inst = []
-            for inst_ in pred_inst_file:
-                inst_code = inst_[:3]
-                inst = inst_trans(inst_code)
-                pred_inst.append(inst)
-
-        return tuple(pred_inst)
-
-
-def load_genre(audio_path):
-    """Load genre of track
-
-    Args:
-        audio_path (str): Local path where the track is stored.
-    Returns:
-        genre (str): track genre extracted from filename
-    """
-    if 'nod' in audio_path:
-        split_nod = audio_path.split('[')[3]
-        genre_code = split_nod.split(']')[0]
-        genre = genre_trans(genre_code)
-        return genre
-
-    if 'dru' in audio_path:
-        split_dru = audio_path.split('[')[3]
-        genre_code = split_dru.split(']')[0]
-        genre = genre_trans(genre_code)
-        return genre
-
-    else:
-        split_1 = audio_path.split('[')[2]
-        genre_code = split_1.split(']')[0]
-        genre = genre_trans(genre_code)
-        return genre
-
-
-def load_drum(audio_path):
-    """Load drum presence annotation
-
-    Args:
-        audio_path (str): Local path where the track is stored.
-    Returns:
-        True/False depending on drum set presence
-    """
-    if 'nod' in audio_path:
-        return False
-
-    if 'dru' in audio_path:
-        return True
-    else:
-        return False
-
-
-def inst_trans(inst_code):
-    """Translate 3-digit instrument code to full genre name
-
-    Args:
-        inst_code: (str): 3-letter IRMAS code of the track predominant
-            instrument.
-    Returns:
-        inst (str): translated and readable track predominant instrument
-    """
-    inst_trans_dict = {
-        'cel': 'cello',
-        'cla': 'clarinet',
-        'flu': 'flute',
-        'gac': 'acoustic guitar',
-        'gel': 'electric guitar',
-        'org': 'organ',
-        'pia': 'piano',
-        'sax': 'sacophone',
-        'tru': 'trumpet',
-        'vio': 'violin',
-        'voi': 'voice',
-    }
-    inst = inst_trans_dict[inst_code]
-
-    return inst
-
-
-def genre_trans(genre_code):
-    """Translate 3-digit genre code to full genre name
-
-    Args:
-        genre_code: (str): 3-letter IRMAS code of the track genre.
-    Returns:
-        genre (str): translated and readable track genre
-    """
-    genre_trans_dict = {
-        'cou_fol': 'country-folk',
-        'cla': 'classical',
-        'pop_roc': 'pop-rock',
-        'lat_sou': 'latin-soul',
-        'jaz_blu': 'jazz-blues',
-    }
-    genre = genre_trans_dict[genre_code]
-
-    return genre
 
