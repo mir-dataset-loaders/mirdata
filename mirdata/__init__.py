@@ -7,6 +7,7 @@ __all__ = [
     'beatles',
     'dali',
     'giantsteps_tempo',
+    'giantsteps_key',
     'groove_midi',
     'gtzan_genre',
     'guitarset',
