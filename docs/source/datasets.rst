@@ -23,6 +23,7 @@ click the link provided in the "Module" column.
 
 
 
+
 +------------------+---------------------+---------------------+---------------------------+--------+
 | Module           | Name                | Downloadable?       | Annotation Types          | Tracks |
 +==================+=====================+=====================+===========================+========+
@@ -39,6 +40,10 @@ click the link provided in the "Module" column.
 +------------------+---------------------+---------------------+---------------------------+--------+
 | gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
 |                  |                     | - annotations: ✅   |                           |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
+| giantsteps_tempo_ | | Giantsteps EDM    | - audio: ❌         | - :ref:`genre`            | 664    |
+|                   | | tempo Dataset     | - annotations: ✅   | - :ref:`tempo`            |        |
+|                   |                     |                     |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | giantsteps_key_  | Giantsteps EDM key  | - audio: ✅         | - global :ref:`key`       | 500    |
 |                  |                     | - annotations: ✅   |                           |        |
@@ -87,6 +92,7 @@ click the link provided in the "Module" column.
 |                  |                     | - annotations: ✅   | - :ref:`technique`        |        |
 |                  |                     |                     | - :ref:`notes`            |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
+
 
 
 Annotation Type Descriptions
@@ -150,6 +156,7 @@ Key
 ^^^
 Musical key. This can be defined globally for an audio file or as a sequence of events.
 
+
 .. _lyrics:
 
 Lyrics
@@ -209,6 +216,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
+.. _giantsteps_tempo: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.giantsteps_tempo
 .. _giantsteps_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata._giantsteps_key
 .. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre

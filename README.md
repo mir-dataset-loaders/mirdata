@@ -41,6 +41,7 @@ See the Examples section below for more details, or the [documentation](https://
 
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [DALI](https://github.com/gabolsgabs/DALI)
+* [GiantSteps tempo](https://github.com/GiantSteps/giantsteps-tempo-dataset)
 * [GiantSteps key](https://zenodo.org/record/1095691#.X2zqwC3FQUE)
 * [Groove MIDI](https://magenta.tensorflow.org/datasets/groove)
 * [GTZAN genre](http://marsyas.info/downloads/datasets.html)
