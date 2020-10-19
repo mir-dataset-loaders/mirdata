@@ -7,8 +7,6 @@ from tests.test_utils import run_track_tests
 from mirdata import mridangam_stroke
 from tests.test_utils import DEFAULT_DATA_HOME
 
-TEST_DATA_HOME = "tests/resources/mir_datasets/Mridangam-Stroke"
-
 
 def test_track_default_data_home():
     # test data home None
@@ -20,7 +18,8 @@ def test_track_default_data_home():
 
 def test_track():
     default_trackid = "224030"
-    track = mridangam_stroke.Track(default_trackid, data_home=TEST_DATA_HOME)
+    data_home = 'tests/resources/mir_datasets/Mridangam-Stroke'
+    track = mridangam_stroke.Track(default_trackid, data_home=data_home)
     expected_attributes = {
         'audio_path': "tests/resources/mir_datasets/Mridangam-Stroke/mridangam_stroke_1.5/"
         + "B/224030__akshaylaya__bheem-b-001.wav",
@@ -37,7 +36,8 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "224030"
-    track = mridangam_stroke.Track(default_trackid, data_home=TEST_DATA_HOME)
+    data_home = 'tests/resources/mir_datasets/Mridangam-Stroke'
+    track = mridangam_stroke.Track(default_trackid, data_home=data_home)
     jam = track.to_jams()
     # print(jam)
 
@@ -49,15 +49,17 @@ def test_to_jams():
     assert jam.sandbox.tonic == "B"
 
 
-def test_get_tonic():
+def test_load_tonic():
     default_trackid = "224030"
-    track = mridangam_stroke.Track(default_trackid, data_home=TEST_DATA_HOME)
-    tonic = mridangam_stroke.get_tonic(track.audio_path)
+    data_home = 'tests/resources/mir_datasets/Mridangam-Stroke'
+    track = mridangam_stroke.Track(default_trackid, data_home=data_home)
+    tonic = mridangam_stroke.load_tonic(track.audio_path)
     assert tonic == 'B'
 
 
-def test_get_stroke_name():
+def test_load_stroke_name():
     default_trackid = "224030"
-    track = mridangam_stroke.Track(default_trackid, data_home=TEST_DATA_HOME)
-    stroke_name = mridangam_stroke.get_stroke_name(track.audio_path)
+    data_home = 'tests/resources/mir_datasets/Mridangam-Stroke'
+    track = mridangam_stroke.Track(default_trackid, data_home=data_home)
+    stroke_name = mridangam_stroke.load_stroke_name(track.audio_path)
     assert stroke_name == 'bheem'

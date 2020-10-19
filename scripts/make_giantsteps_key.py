@@ -57,5 +57,7 @@ def main(args):
 
 if __name__ == '__main__':
     PARSER = argparse.ArgumentParser(description='Make giantsteps_key index file.')
-    PARSER.add_argument('giantsteps_key_data_path', type=str, help='Path to giantsteps_key data folder.')
+    PARSER.add_argument(
+        'giantsteps_key_data_path', type=str, help='Path to giantsteps_key data folder.'
+    )
     main(PARSER.parse_args())

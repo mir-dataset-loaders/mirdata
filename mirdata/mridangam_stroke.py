@@ -85,25 +85,29 @@ class Track(track.Track):
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
 
-        # -- add any dataset specific attributes here
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
-        self.stroke_name = get_stroke_name(self.audio_path)
-        self.tonic = get_tonic(self.audio_path)
-
-        self._track_metadata = {'tonic': self.tonic}
 
     @property
     def audio(self):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
+    @property
+    def stroke_name(self):
+        """(np.ndarray, float): audio signal, sample rate"""
+        return load_stroke_name(self.audio_path)
+
+    @property
+    def tonic(self):
+        """(np.ndarray, float): audio signal, sample rate"""
+        return load_tonic(self.audio_path)
+
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            # key_data=[(self.tonic, 'key_data')],
             tags_open_data=[(self.stroke_name, 'stroke_name')],
-            metadata=self._track_metadata,
+            metadata={'tonic': self.tonic},
         )
 
 
@@ -188,13 +192,15 @@ def load(data_home=None):
     return data
 
 
-def get_stroke_name(audio_path):
+def load_stroke_name(audio_path):
     """Load stroke name of track
     Args:
         audio_path (str): Local path where the track is stored.
     Returns:
         stroke_name (str): stroke name or type extracted from filename
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
 
     if '.wav' in audio_path:
         audio_data = audio_path.split('__')[2]
@@ -203,13 +209,15 @@ def get_stroke_name(audio_path):
         return stroke_name
 
 
-def get_tonic(audio_path):
+def load_tonic(audio_path):
     """Get tonic of track
     Args:
         audio_path (str): Local path where the track is stored.
     Returns:
         tonic (str): track tonic extracted from filename
     """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
 
     if '.wav' in audio_path:
         audio_data = audio_path.split('__')[2]
@@ -219,15 +227,6 @@ def get_tonic(audio_path):
         # Adapt sharp tonic: 'sh' to '#'
         if 'SH' in tonic_info_upper:
             tonic_info_upper = tonic_info_upper[0] + '#'
-
-        """
-        start_times = 0
-        end_times = 1
-        # y, sr = load_audio(audio_path)
-        # end_times = len(y) / sr
-        tonic_keydata = utils.KeyData(np.array([start_times]), np.array([end_times]),
-                                      np.array([tonic_info_upper]).tolist())
-        """
 
         return tonic_info_upper
 
