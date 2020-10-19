@@ -85,3 +85,14 @@ def test_load_pred_inst():
         pred_inst = tuple(pred_inst)
 
     assert pred_inst == ('gel', 'voi')
+
+
+def test_load_metadata():
+    data_home = 'tests/resources/mir_datasets/IRMAS'
+    metadata = irmas._load_metadata(data_home)
+    assert metadata['data_home'] == data_home
+    assert metadata['1'] == {
+        'genre': None,
+        'drum': None,
+        'train': False,
+    }
