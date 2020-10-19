@@ -157,7 +157,7 @@ def _load_metadata(data_home):
                                         genre_code = split_1.split(']')[0]
                                         irmas_dict[irmas_id_nod_no_wav] = {
                                             'genre': genre_code,
-                                            'drum': False,
+                                            'drum': None,
                                             'train': True,
                                         }
             if 'Test' in directory:
@@ -183,7 +183,7 @@ def _load_metadata(data_home):
 
 DATA = utils.LargeData(
     'irmas_index.json', _load_metadata
-)  # use this if your dataset has no metadata
+)
 
 
 class Track(track.Track):

@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import os
+import numpy as np
 
 from tests.test_utils import run_track_tests
 
 from mirdata import irmas, utils
 from tests.test_utils import DEFAULT_DATA_HOME
-
-TEST_DATA_HOME = "tests/resources/mir_datasets/IRMAS"
 
 
 def test_track_default_data_home():
@@ -18,8 +17,10 @@ def test_track_default_data_home():
 
 def test_track():
     default_trackid = '1'
+    default_trackid_train = '0189__2'
     data_home = "tests/resources/mir_datasets/IRMAS"
     track = irmas.Track(default_trackid, data_home=data_home)
+    track_train = irmas.Track(default_trackid_train, data_home=data_home)
     expected_attributes = {
         'annotation_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.txt",
@@ -28,12 +29,23 @@ def test_track():
         'drum': None,
         'genre': None,
         'track_id': '1',
-        'train': False,
+        'train': False
+    }
+    expected_attributes_train = {
+        'annotation_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TrainingData/cla/"
+        + "[cla][cla]0189__2.wav",
+        'audio_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TrainingData/cla/"
+        + "[cla][cla]0189__2.wav",
+        'drum': None,
+        'genre': 'cla',
+        'track_id': '0189__2',
+        'train': True
     }
 
     expected_property_types = {'predominant_instrument': utils.EventData}
 
     run_track_tests(track, expected_attributes, expected_property_types)
+    run_track_tests(track_train, expected_attributes_train, expected_property_types)
 
     audio, sr = track.audio
     assert sr == 44100
@@ -42,9 +54,23 @@ def test_track():
 
 
 def test_to_jams():
-    default_trackid = '1'
+    # Training samples
+    default_trackid_train = "0189__2"
     data_home = "tests/resources/mir_datasets/IRMAS"
-    track = irmas.Track(default_trackid, data_home=data_home)
+    track_train = irmas.Track(default_trackid_train, data_home=data_home)
+    jam_train = track_train.to_jams()
+
+    # Validate Mridangam schema
+    assert jam_train.validate()
+
+    # Test data parsers
+    assert jam_train.annotations["tag_open"][0].data[0].value == "cla"
+    assert jam_train.sandbox["train"] is True
+
+    # Testing samples
+    default_trackid_train = '1'
+    data_home = "tests/resources/mir_datasets/IRMAS"
+    track = irmas.Track(default_trackid_train, data_home=data_home)
     jam = track.to_jams()
 
     # Validate Mridangam schema
@@ -56,35 +82,37 @@ def test_to_jams():
 
 
 def test_load_pred_inst():
-    # Training samples
-    default_trackid_train = "0189__2"
-    data_home = "tests/resources/mir_datasets/IRMAS"
-    track = irmas.Track(default_trackid_train, data_home=data_home)
+    pred_inst_audio_test = (
+        "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
+        + "02 - And The Body Will Die-8.wav"
+    )
+    pred_inst_ann_path_test = (
+        "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
+        + "02 - And The Body Will Die-8.txt"
+    )
+    pred_inst_data_test = irmas.load_pred_inst(
+        pred_inst_audio_test, pred_inst_ann_path_test, train=False
+    )
 
-    split_inst = track.audio_path.split('[')[1]
-    pred_inst = split_inst.split(']')[0]
+    # check types
+    assert type(pred_inst_data_test) is utils.EventData
+    assert type(pred_inst_data_test.start_times) is np.ndarray
+    assert type(pred_inst_data_test.end_times) is np.ndarray
+    assert type(pred_inst_data_test.event) is np.ndarray
 
-    split_genre = track.audio_path.split('[')[2]
-    genre_code = split_genre.split(']')[0]
-
-    assert pred_inst == 'cla'
-    assert genre_code == 'cla'
-
-    # Testing samples
-    default_trackid_train = '1'
-    data_home = "tests/resources/mir_datasets/IRMAS"
-    track = irmas.Track(default_trackid_train, data_home=data_home)
-
-    with open(track.annotation_path, 'r') as fopen:
-        pred_inst_file = fopen.readlines()
-        pred_inst = []
-        for inst_ in pred_inst_file:
-            inst_code = inst_[:3]
-            pred_inst.append(inst_code)
-
-        pred_inst = tuple(pred_inst)
-
-    assert pred_inst == ('gel', 'voi')
+    # check values
+    assert np.array_equal(
+        pred_inst_data_test.start_times,
+        np.array([0]),
+    )
+    assert np.array_equal(
+        pred_inst_data_test.end_times,
+        np.array([20.]),
+    )
+    assert np.array_equal(
+        pred_inst_data_test.event,
+        np.array([['gel', 'voi']]),
+    )
 
 
 def test_load_metadata():
@@ -95,4 +123,19 @@ def test_load_metadata():
         'genre': None,
         'drum': None,
         'train': False,
+    }
+    assert metadata['0189__2'] == {
+        'genre': 'cla',
+        'drum': None,
+        'train': True,
+    }
+    assert metadata['0020__1'] == {
+        'genre': 'cla',
+        'drum': False,
+        'train': True,
+    }
+    assert metadata['0407__1'] == {
+        'genre': 'cou_fol',
+        'drum': True,
+        'train': True,
     }
