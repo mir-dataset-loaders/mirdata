@@ -30,7 +30,7 @@ click the link provided in the "Module" column.
 |                  | | Dataset           | - annotations: ✅   | - :ref:`sections`         |        |
 |                  |                     |                     | - :ref:`key`              |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
-| giantsteps_key_  | Giantsteps EDM key  | - audio: ✅         | - global :ref:`key`       | 1486   |
+| beatport_key_    |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
 |                  |                     | - annotations: ✅   |                           |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
 | dali_            | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
@@ -208,6 +208,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
+.. _beatport_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatport_key
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
 .. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre
