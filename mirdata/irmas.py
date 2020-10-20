@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 """
@@ -75,6 +74,7 @@ For more details, please visit: https://www.upf.edu/web/mtg/irmas
 import os
 import librosa
 import numpy as np
+import json
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -112,69 +112,31 @@ REMOTES = {
 
 
 def _load_metadata(data_home):
-    count = 1
     irmas_dict = dict()
-    for root, dirs, files in os.walk(data_home):
-        for directory in dirs:
-            if 'Train' in directory:
-                for root_, dirs_, files_ in os.walk(os.path.join(data_home, directory)):
-                    for directory_ in dirs_:
-                        for root__, dirs__, files__ in os.walk(
-                            os.path.join(data_home, directory, directory_)
-                        ):
-                            for file in files__:
-                                if file.endswith('.wav'):
-                                    if 'dru' in file:
-                                        irmas_id_dru = file.split(']')[3]  # Obtain id
-                                        irmas_id_dru_no_wav = irmas_id_dru.split('.')[
-                                            0
-                                        ]  # Obtain id without '.wav'
-                                        split_dru = file.split('[')[3]
-                                        genre_code = split_dru.split(']')[0]
-                                        irmas_dict[irmas_id_dru_no_wav] = {
-                                            'genre': genre_code,
-                                            'drum': True,
-                                            'train': True,
-                                        }
-                                    if 'nod' in file:
-                                        irmas_id_nod = file.split(']')[3]  # Obtain id
-                                        irmas_id_nod_no_wav = irmas_id_nod.split('.')[
-                                            0
-                                        ]  # Obtain id without '.wav'
-                                        split_nod = file.split('[')[3]
-                                        genre_code = split_nod.split(']')[0]
-                                        irmas_dict[irmas_id_nod_no_wav] = {
-                                            'genre': genre_code,
-                                            'drum': False,
-                                            'train': True,
-                                        }
-                                    else:
-                                        irmas_id = file.split(']')[2]  # Obtain id
-                                        irmas_id_nod_no_wav = irmas_id.split('.')[
-                                            0
-                                        ]  # Obtain id without '.wav'
-                                        split_1 = file.split('[')[2]
-                                        genre_code = split_1.split(']')[0]
-                                        irmas_dict[irmas_id_nod_no_wav] = {
-                                            'genre': genre_code,
-                                            'drum': None,
-                                            'train': True,
-                                        }
-            if 'Test' in directory:
-                for root_, dirs_, files_ in os.walk(os.path.join(data_home, directory)):
-                    for directory_ in dirs_:
-                        for root__, dirs__, files__ in os.walk(
-                            os.path.join(data_home, directory, directory_)
-                        ):
-                            for file in files__:
-                                if file.endswith('.wav'):
-                                    test_index = str(count)
-                                    irmas_dict[test_index] = {
-                                        'genre': None,
-                                        'drum': None,
-                                        'train': False,
-                                    }
-                                    count += 1
+    with open('mirdata/indexes/irmas_index.json') as json_file:
+        index = json.load(json_file)
+        for track_id in index.keys():
+            if '__' in track_id:
+                if 'dru' in index[track_id]['audio'][0] or 'nod' in index[track_id]['audio'][0]:
+                    genre = index[track_id]['audio'][0].split('.')[0].split('[')[3].split(']')[0]
+                    irmas_dict[track_id] = {
+                        'genre': genre,
+                        'drum': [True if 'dru' in index[track_id]['audio'][0] else False][0],
+                        'train': True
+                    }
+                else:
+                    genre = index[track_id]['audio'][0].split('.')[0].split('[')[2].split(']')[0]
+                    irmas_dict[track_id] = {
+                        'genre': genre,
+                        'drum': None,
+                        'train': True
+                    }
+            else:
+                irmas_dict[track_id] = {
+                    'genre': None,
+                    'drum': None,
+                    'train': False
+                }
 
     irmas_dict["data_home"] = data_home
 
