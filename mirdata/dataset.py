@@ -36,8 +36,8 @@ class Dataset(object):
         """Inits a dataset by name and data location"""
         module = importlib.import_module("mirdata.{}".format(dataset))
         self.dataset = dataset
-        self.bibtex = module.bibtex
-        self.remotes = module.REMOTES
+        self.bibtex = getattr(module, "BIBTEX", "No citation data provided")
+        self.remotes = getattr(module, "REMOTES", {})
         self.index = module.DATA.index
         self.download_info = getattr(module, "DOWNLOAD_INFO", None)
         self.track_object = getattr(module, "Track", None)
@@ -102,21 +102,13 @@ class Dataset(object):
         else:
             print("\n".join(self.bibtex.values()))
 
-    def download(self, force_overwrite=False, cleanup=True, partial_download=None):
+    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
         """Download data to `save_dir` and optionally print a message.
 
         Args:
-            save_dir (str):
-                The directory to download the data
-            remotes (dict or None):
-                A dictionary of RemoteFileMetadata tuples of data in zip format.
-                If None, there is no data to download
             partial_download (list or None):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
-            info_message (str or None):
-                A string of info to print when this function is called.
-                If None, no string is printed.
             force_overwrite (bool):
                 If True, existing files are overwritten by the downloaded files.
             cleanup (bool):
