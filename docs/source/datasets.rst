@@ -217,11 +217,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre
 .. _guitarset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.guitarset
 .. _ikala: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.ikala
-<<<<<<< HEAD
 .. _irmas: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.irmas
-=======
-.. _irmas: https://www.upf.edu/web/mtg/irmas
->>>>>>> 8d6f3436fb4a7583ed9aab596b7036ab1158d00b
 .. _maestro: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.maestro
 .. _medley_solos_db: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db
 .. _medleydb_melody: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_melody
