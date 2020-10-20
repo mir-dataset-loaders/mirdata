@@ -2,24 +2,25 @@
 
 
 from .version import version as __version__
+from .dataset import Dataset
 
 __all__ = [
-    'beatles',
-    'dali',
-    'giantsteps_tempo',
-    'giantsteps_key',
-    'groove_midi',
-    'gtzan_genre',
-    'guitarset',
-    'ikala',
-    'maestro',
-    'medley_solos_db',
-    'medleydb_melody',
-    'medleydb_pitch',
-    'orchset',
-    'rwc_classical',
-    'rwc_jazz',
-    'rwc_popular',
-    'salami',
-    'tinysol',
+    "beatles",
+    "dali",
+    "giantsteps_tempo",
+    "giantsteps_key",
+    "groove_midi",
+    "gtzan_genre",
+    "guitarset",
+    "ikala",
+    "maestro",
+    "medley_solos_db",
+    "medleydb_melody",
+    "medleydb_pitch",
+    "orchset",
+    "rwc_classical",
+    "rwc_jazz",
+    "rwc_popular",
+    "salami",
+    "tinysol",
 ]
