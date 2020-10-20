@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """beatport_key Dataset Loader
-The Beatport EDM Key Dataset includes 1,486 two-minute sound excerpts from various EDM
+The Beatport EDM Key Dataset includes 1486 two-minute sound excerpts from various EDM
 subgenres, annotated with single-key labels, comments and confidence levels generously provided by Eduard Mas Marín,
 and thoroughly revised and expanded by Ángel Faraldo.
 
