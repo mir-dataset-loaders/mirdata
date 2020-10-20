@@ -30,7 +30,6 @@ import random
 orchset = mirdata.Dataset('orchset')
 orchset.download()  # download the dataset
 orchset.validate()  # validate that all the expected files are there
-orchset_data = orchset.load_tracks()  # (lazy) load the data index
 
 example_track = orchset.choice()  # choose a random example track
 print(example_track)  # see the availalbe data

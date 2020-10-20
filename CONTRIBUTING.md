@@ -307,7 +307,7 @@ def download(
     """
     # see download_utils.downloader for basic usage - if you only need to call downloader
     # once, you do not need this function at all.
-    # ONLY WRITE A CUSTOM FUNCTION IF YOU NEED IT! 
+    # only write a custom function if you need it! 
 
 
 # -- Write any necessary loader functions for loading the dataset's data
