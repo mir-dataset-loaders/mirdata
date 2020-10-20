@@ -165,6 +165,10 @@ def download(
 ):
     """Download the beatport_key Dataset (annotations).
     The audio files are not provided due to copyright issues.
+    
+    This dataset annotations have characters that doesnt correspond with json format. In particular, "bpm": nan
+    doesn't correspond to json format. The function find_replace is used to fix this problem.
+    input file
     Args:
         data_home (str):
             Local path where the dataset is stored.
@@ -191,9 +195,7 @@ def download(
         force_overwrite=force_overwrite,
         cleanup=cleanup,
     )
-    # This dataset annotations have characters that doesnt correspond with json format. In particular, "bpm": nan
-    # doesn't correspond to json format.
-    # input file
+    # removing nans from JSON files
     find_replace(os.path.join(data_home, "meta"), ": nan", ": null", "*.json")
 
 
