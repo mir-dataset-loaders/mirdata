@@ -15,7 +15,7 @@ instruments in musical audio. The instruments considered are: cello, clarinet, f
 electric guitar, organ, piano, saxophone, trumpet, violin, and human singing voice.
 This dataset is derived from the one compiled by Ferdinand Fuhrmann in his PhD thesis, with the difference
 that we provide audio data in stereo format, the annotations in the testing dataset are limited to specific
-pitched instruments, and there is a different amount and lenght of excerpts.
+pitched instruments, and there is a different amount and lenght of excerpts from the original dataset.
 
 
 THE DATASET IS DIVIDED IN TRAINING AND TESTING DATA.
