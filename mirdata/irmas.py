@@ -73,7 +73,6 @@ For more details, please visit: https://www.upf.edu/web/mtg/irmas
 
 import os
 import librosa
-import numpy as np
 import json
 
 from mirdata import download_utils
@@ -323,6 +322,9 @@ def load_pred_inst(audio_path, annotation_path, train):
     Returns:
         pred_inst (str): track predominant instrument extracted from filename
     """
+    if audio_path is None and annotation_path is None:
+        return None
+
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 

@@ -43,7 +43,7 @@ def test_track():
     }
 
     expected_property_types = {
-        'instrument': list,
+        'instrument': list
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -65,23 +65,23 @@ def test_to_jams():
     # Validate Mridangam schema
     assert jam_train.validate()
 
-    # Test data parsers
+    # Test the training data parsers
     assert jam_train.sandbox["instrument"] == ['cla']
     assert jam_train.sandbox["genre"] == 'cla'
     assert jam_train.sandbox["train"] is True
 
     # Testing samples
-    default_trackid_train = '1'
+    default_trackid_test = '1'
     data_home = "tests/resources/mir_datasets/IRMAS"
-    track = irmas.Track(default_trackid_train, data_home=data_home)
-    jam = track.to_jams()
+    track_test = irmas.Track(default_trackid_test, data_home=data_home)
+    jam_test = track_test.to_jams()
 
     # Validate Mridangam schema
-    assert jam.validate()
+    assert jam_test.validate()
 
-    # Test the training genre parser
-    assert jam.sandbox["instrument"] == ['gel', 'voi']
-    assert jam.sandbox["train"] is False
+    # Test the testing genre parser
+    assert jam_test.sandbox["instrument"] == ['gel', 'voi']
+    assert jam_test.sandbox["train"] is False
 
 
 def test_load_pred_inst():
@@ -97,7 +97,10 @@ def test_load_pred_inst():
     pred_inst_data_train = irmas.load_pred_inst(
         pred_inst_audio_train, pred_inst_ann_path_train, train=True
     )
+    assert type(pred_inst_data_train) is list
+    assert type(pred_inst_data_train[0]) is str
     assert pred_inst_data_train == ['cla']
+    assert irmas.load_pred_inst(None, None, train=True) is None
 
     # Testing samples
     pred_inst_audio_test = (
@@ -111,7 +114,10 @@ def test_load_pred_inst():
     pred_inst_data_test = irmas.load_pred_inst(
         pred_inst_audio_test, pred_inst_ann_path_test, train=False
     )
+    assert type(pred_inst_data_test) is list
+    assert type(pred_inst_data_test[0]) is str
     assert pred_inst_data_test == ['gel', 'voi']
+    assert irmas.load_pred_inst(None, None, train=False) is None
 
 
 def test_load_metadata():
