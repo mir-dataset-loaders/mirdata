@@ -85,20 +85,20 @@ class Track(track.Track):
 
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
-    @property
-    def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
-        return load_audio(self.audio_path)
-
-    @property
+    @utils.cached_property
     def stroke_name(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """(String): audio signal, sample rate"""
         return load_stroke_name(self.audio_path)
 
-    @property
+    @utils.cached_property
     def tonic(self):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_tonic(self.audio_path)
+
+    @property
+    def audio(self):
+        """(String): audio signal, sample rate"""
+        return load_audio(self.audio_path)
 
     def to_jams(self):
         """Jams: the track's data in jams format"""

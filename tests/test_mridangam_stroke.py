@@ -23,11 +23,15 @@ def test_track():
     expected_attributes = {
         'audio_path': "tests/resources/mir_datasets/Mridangam-Stroke/mridangam_stroke_1.5/"
         + "B/224030__akshaylaya__bheem-b-001.wav",
-        'stroke_name': 'bheem',
-        'tonic': 'B',
         'track_id': "224030",
     }
-    run_track_tests(track, expected_attributes, {})
+
+    expected_property_types = {
+        'stroke_name': str,
+        'tonic': str
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
 
     audio, sr = track.audio
     assert sr == 44100
