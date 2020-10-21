@@ -1,5 +1,5 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
 """
 Mridangam Stroke Dataset Loader
 
@@ -58,7 +58,7 @@ REMOTES = {
 
 DATA = utils.LargeData(
     'mridangam_stroke_index.json'
-)  # use this if your dataset has no metadata
+)
 
 
 class Track(track.Track):
@@ -69,8 +69,6 @@ class Track(track.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets/Mridangam-Stroke`
     Attributes:
         track_id (str): track id
-        stroke_name (str): stroke name or type
-        tonic (str): tonic note of the stroke
     """
 
     def __init__(self, track_id, data_home=None):

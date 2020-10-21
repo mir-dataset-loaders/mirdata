@@ -39,7 +39,6 @@ def test_to_jams():
     data_home = 'tests/resources/mir_datasets/Mridangam-Stroke'
     track = mridangam_stroke.Track(default_trackid, data_home=data_home)
     jam = track.to_jams()
-    # print(jam)
 
     # Validate Mridangam schema
     assert jam.validate()
