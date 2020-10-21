@@ -1,0 +1,46 @@
+{
+  "annotations": [
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "Hendrik Schreiber",
+          "email": "hs@tagtraum.com"
+        },
+        "annotator": {},
+        "version": "2.0",
+        "corpus": "GiantSteps Tempo",
+        "annotation_tools": "crowdsourced, web-based experiment",
+        "annotation_rules": "Hendrik Schreiber, Meinard M\u00fcller: \"A Crowdsourced Experiment for Tempo Estimation of Electronic Dance Music\", Proc. of the 19th Conference of the International Society for Music Information Retrieval (ISMIR'18), Sept. 2018, Paris, France.",
+        "validation": "http://www.cp.jku.at/datasets/giantsteps/",
+        "data_source": "crowdsource"
+      },
+      "namespace": "tempo",
+      "data": [
+        {
+          "time": 0.0,
+          "duration": 120.0,
+          "value": 77.0,
+          "confidence": 0.30927835051546393
+        },
+        {
+          "time": 0.0,
+          "duration": 120.0,
+          "value": 139.0,
+          "confidence": 0.6907216494845361
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    }
+  ],
+  "file_metadata": {
+    "title": "28952.LOFI",
+    "artist": "",
+    "release": "",
+    "duration": 120,
+    "identifiers": {},
+    "jams_version": "0.2.0"
+  },
+  "sandbox": {}
+}
