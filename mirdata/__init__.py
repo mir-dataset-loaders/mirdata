@@ -7,8 +7,8 @@ from .dataset import Dataset
 __all__ = [
     "beatles",
     "dali",
-    "giantsteps_tempo",
     "giantsteps_key",
+    "giantsteps_tempo",
     "groove_midi",
     "gtzan_genre",
     "guitarset",

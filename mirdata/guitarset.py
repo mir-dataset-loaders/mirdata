@@ -116,8 +116,7 @@ class Track(track.Track):
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored. default=None
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+        data_home (str): Local path where the dataset is stored.
 
     Attributes:
         audio_hex_cln_path (str): path to the debleeded hex wave file

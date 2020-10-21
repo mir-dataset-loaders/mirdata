@@ -71,18 +71,43 @@ from mirdata import utils
 import numpy as np
 import jams
 
-DATASET_DIR = 'GiantSteps_tempo'
+DATASET_DIR = "GiantSteps_tempo"
 
-DATA = utils.LargeData('giantsteps_tempo_index.json')
+BIBTEX = """@inproceedings{knees2015two,
+  title={Two data sets for tempo estimation and key detection in electronic dance music annotated from user corrections},
+  author={Knees, Peter and Faraldo P{\'e}rez, {\'A}ngel and Boyer, Herrera and Vogl, Richard and B{\"o}ck, Sebastian and H{\"o}rschl{\"a}ger, Florian and Le Goff, Mickael and others},
+  booktitle={Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR); 2015 Oct 26-30; M{\'a}laga, Spain.[M{\'a}laga]: International Society for Music Information Retrieval, 2015. p. 364-70.},
+  year={2015},
+  organization={International Society for Music Information Retrieval (ISMIR)}
+}
+@inproceedings{SchreiberM18a_Tempo_ISMIR,
+author    = {Hendrik Schreiber and Meinard M{\"u}ller},
+title     = {A Crowdsourced Experiment for Tempo Estimation of Electronic Dance Music},
+booktitle = {Proceedings of the International Conference on Music Information Retrieval ({ISMIR})},
+address   = {Paris, France},
+year      = {2018},
+url-pdf   = {http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf}
+}"""
+
+DATA = utils.LargeData("giantsteps_tempo_index.json")
 
 REMOTES = {
-    'annotations': download_utils.RemoteFileMetadata(
-        filename='giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip',
-        url='https://github.com/GiantSteps/giantsteps-tempo-dataset/archive/0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip',
-        checksum='8fdafbaf505fe3f293bd912c92b72ac8',
-        destination_dir='',
+    "annotations": download_utils.RemoteFileMetadata(
+        filename="giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip",
+        url="https://github.com/GiantSteps/giantsteps-tempo-dataset/archive/0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip",
+        checksum="8fdafbaf505fe3f293bd912c92b72ac8",
+        destination_dir="",
     )
 }
+DOWNLOAD_INFO = """
+    Unfortunately the audio files of the Giant Steps Tempo dataset are not available
+    for download. If you have the Giant Steps audio dataset, place the contents into
+    a folder called GiantSteps_tempo with the following structure:
+        > GiantSteps_tempo/
+            > giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/
+            > audio/
+    and copy the folder to {data_home}
+"""
 
 
 class Track(track.Track):
@@ -90,7 +115,7 @@ class Track(track.Track):
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
     Attributes:
         audio_path (str): track audio path
         title (str): title of the track
@@ -99,28 +124,25 @@ class Track(track.Track):
         annotation_v2_path (str): track annotation v2 path
     """
 
-    def __init__(self, track_id, data_home=None):
+    def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
             raise ValueError(
-                '{} is not a valid track ID in giantsteps_tempo'.format(track_id)
+                "{} is not a valid track ID in giantsteps_tempo".format(track_id)
             )
 
         self.track_id = track_id
 
-        if data_home is None:
-            data_home = utils.get_default_dataset_path(DATASET_DIR)
-
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
-        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.annotation_v1_path = os.path.join(
-            self._data_home, self._track_paths['annotation_v1'][0]
+            self._data_home, self._track_paths["annotation_v1"][0]
         )
         self.annotation_v2_path = os.path.join(
-            self._data_home, self._track_paths['annotation_v2'][0]
+            self._data_home, self._track_paths["annotation_v2"][0]
         )
 
-        self.title = self.audio_path.replace(".mp3", '').split('/')[-1].split('.')[0]
+        self.title = self.audio_path.replace(".mp3", "").split("/")[-1].split(".")[0]
 
     @utils.cached_property
     def genre(self):
@@ -164,91 +186,6 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False, cleanup=True):
-    """Download the giantsteps_tempo Dataset (annotations).
-    The audio files are not provided due to copyright issues.
-    Args:
-        data_home (str):
-            Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-        partial_download(list of str)
-            arguments can be 'audio' 'metadata' or/and 'tempos'
-    """
-
-    # use the default location: ~/mir_datasets/giantsteps_tempo
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    download_message = """
-            Unfortunately the audio files of the Giant Steps Tempo dataset are not available
-            for download. If you have the Giant Steps audio dataset, place the contents into
-            a folder called GiantSteps_tempo with the following structure:
-                > GiantSteps_tempo/
-                    > giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/
-                    > audio/
-            and copy the folder to {}
-        """.format(
-        data_home
-    )
-
-    download_utils.downloader(
-        data_home,
-        remotes=REMOTES,
-        info_message=download_message,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-
-
-def validate(data_home=None, silence=False):
-    """Validate if a local version of this dataset is consistent
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-    Returns:
-        missing_files (list): List of file paths that are in the dataset index
-            but missing locally
-        invalid_checksums (list): List of file paths where the expected file exists locally
-            but has a different checksum than the reference
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    missing_files, invalid_checksums = utils.validator(
-        DATA.index, data_home, silence=silence
-    )
-    return missing_files, invalid_checksums
-
-
-def track_ids():
-    """Get the list of track IDs for this dataset
-    Returns:
-        (list): A list of track ids
-    """
-    return list(DATA.index.keys())
-
-
-def load(data_home=None):
-    """Load giantsteps_tempo dataset
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-    Returns:
-        (dict): {`track_id`: track data}
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    giantsteps_key_data = {}
-    for tempo in track_ids():
-        giantsteps_key_data[tempo] = Track(tempo, data_home=data_home)
-    return giantsteps_key_data
-
-
 def load_genre(path):
     """Load genre data from a file
     Args:
@@ -262,7 +199,7 @@ def load_genre(path):
     with open(path) as json_file:
         annotation = jams.load(json_file)
 
-    return annotation.search(namespace='tag_open')[0]['data'][0].value
+    return annotation.search(namespace="tag_open")[0]["data"][0].value
 
 
 def load_tempo(tempo_path):
@@ -281,7 +218,7 @@ def load_tempo(tempo_path):
     with open(tempo_path) as json_file:
         annotation = jams.load(json_file)
 
-    tempo = annotation.search(namespace='tempo')[0]['data']
+    tempo = annotation.search(namespace="tempo")[0]["data"]
 
     return utils.TempoData(
         np.array([t.time for t in tempo]),
@@ -289,44 +226,3 @@ def load_tempo(tempo_path):
         np.array([t.value for t in tempo]),
         np.array([t.confidence for t in tempo]),
     )
-
-
-def cite():
-    """Print the reference"""
-
-    cite_data = """
-===========  MLA ===========
-Peter Knees, Ángel Faraldo, Perfecto Herrera, Richard Vogl,
-Sebastian Böck, Florian Hörschläger, Mickael Le Goff: "Two data
-sets for tempo estimation and key detection in electronic dance
-music annotated from user corrections," Proc. of the 16th
-Conference of the International Society for Music Information
-Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
-========== Bibtex ==========
-@inproceedings{knees2015two,
-  title={Two data sets for tempo estimation and key detection in electronic dance music annotated from user corrections},
-  author={Knees, Peter and Faraldo P{\'e}rez, {\'A}ngel and Boyer, Herrera and Vogl, Richard and B{\"o}ck, Sebastian and H{\"o}rschl{\"a}ger, Florian and Le Goff, Mickael and others},
-  booktitle={Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR); 2015 Oct 26-30; M{\'a}laga, Spain.[M{\'a}laga]: International Society for Music Information Retrieval, 2015. p. 364-70.},
-  year={2015},
-  organization={International Society for Music Information Retrieval (ISMIR)}
-}
-===========  MLA ===========
-Hendrik Schreiber, Meinard Müller: "A Crowdsourced Experiment
-for Tempo Estimation of Electronic Dance Music", Proc. of the
-19th Conference of the International Society for Music
-Information Retrieval (ISMIR'18), Sept. 2018, Paris, France.
-========== Bibtex ==========
-@inproceedings{SchreiberM18a_Tempo_ISMIR,
-author    = {Hendrik Schreiber and Meinard M{\"u}ller},
-title     = {A Crowdsourced Experiment for Tempo Estimation of Electronic Dance Music},
-booktitle = {Proceedings of the International Conference on Music Information Retrieval ({ISMIR})},
-address   = {Paris, France},
-year      = {2018},
-url-pdf   = {http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf}
-}
-
-
-
-
-    """
-    print(cite_data)

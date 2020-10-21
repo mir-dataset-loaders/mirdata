@@ -44,7 +44,7 @@ from mirdata import utils
 
 DATASET_DIR = "MAESTRO"
 
-BIBTEXT = """@inproceedings{
+BIBTEX = """@inproceedings{
   hawthorne2018enabling,
   title={Enabling Factorized Piano Music Modeling and Generation with the {MAESTRO} Dataset},
   author={Curtis Hawthorne and Andriy Stasyuk and Adam Roberts and Ian Simon and Cheng-Zhi Anna Huang and Sander Dieleman and Erich Elsen and Jesse Engel and Douglas Eck},
@@ -104,8 +104,7 @@ class Track(track.Track):
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored. default=None
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+        data_home (str): Local path where the dataset is stored.
 
     Attributes:
         audio_path (str): Path to the track's audio file
@@ -228,7 +227,7 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(
+def _download(
     save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
 ):
     """Download the dataset.
@@ -261,7 +260,7 @@ def download(
 
     download_utils.downloader(
         save_dir,
-        remotes=REMOTES,
+        remotes=remotes,
         partial_download=partial_download,
         force_overwrite=force_overwrite,
         cleanup=cleanup,
