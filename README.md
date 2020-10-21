@@ -31,7 +31,7 @@ orchset = mirdata.Dataset('orchset')
 orchset.download()  # download the dataset
 orchset.validate()  # validate that all the expected files are there
 
-example_track = orchset.choice()  # choose a random example track
+example_track = orchset.choice_track()  # choose a random example track
 print(example_track)  # see the availalbe data
 ```
 See the Examples section below for more details, or the [documentation](https://mirdata.readthedocs.io/en/latest/) for more examples and the API reference.

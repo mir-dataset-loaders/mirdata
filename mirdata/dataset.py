@@ -15,7 +15,7 @@ class Dataset(object):
     orchset = mirdata.Dataset('orchset')  # get the orchset dataset
     orchset.download()  # download orchset
     orchset.validate()  # validate orchset
-    track = orchset.choice()  # load a random track
+    track = orchset.choice_track()  # load a random track
     print(track)  # see what data a track contains
     orchset.track_ids()  # load all track ids
 
@@ -36,13 +36,13 @@ class Dataset(object):
         """Inits a dataset by name and data location"""
         module = importlib.import_module("mirdata.{}".format(dataset))
         self.dataset = dataset
-        self.bibtex = getattr(module, "BIBTEX", "No citation data provided")
-        self.remotes = getattr(module, "REMOTES", {})
-        self.index = module.DATA.index
-        self.download_info = getattr(module, "DOWNLOAD_INFO", None)
-        self.track_object = getattr(module, "Track", None)
+        self.bibtex = getattr(module, "BIBTEX", "")
+        self._remotes = getattr(module, "REMOTES", {})
+        self._index = module.DATA.index
+        self._download_info = getattr(module, "DOWNLOAD_INFO", None)
+        self._track_object = getattr(module, "Track", None)
         self.dataset_dir = module.DATASET_DIR
-        self.download_fn = getattr(module, "download", download_utils.downloader)
+        self._download_fn = getattr(module, "_download", download_utils.downloader)
         self.readme = module.__doc__
 
         if data_home is None:
@@ -69,10 +69,10 @@ class Dataset(object):
         Returns:
             track (dataset.Track): an instance of this dataset's Track object
         """
-        if self.track_object is None:
+        if self._track_object is None:
             raise NotImplementedError
         else:
-            return self.track_object(track_id, self.data_home)
+            return self._track_object(track_id, self.data_home)
 
     def load_tracks(self):
         """Load all tracks in the dataset
@@ -83,9 +83,9 @@ class Dataset(object):
         Raises:
             NotImplementedError: If the dataset does not support Track objects
         """
-        return {self.track(track_id) for track_id in self.track_ids}
+        return {track_id: self.track(track_id) for track_id in self.track_ids}
 
-    def choice(self):
+    def choice_track(self):
         """Choose a random track
 
         Returns:
@@ -97,10 +97,7 @@ class Dataset(object):
         """Print the reference"""
         # TODO: use pybtex to convert to MLA
         print("========== BibTeX ==========")
-        if isinstance(self.bibtex, str):
-            print(self.bibtex)
-        else:
-            print("\n".join(self.bibtex.values()))
+        print(self.bibtex)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=True):
         """Download data to `save_dir` and optionally print a message.
@@ -119,11 +116,11 @@ class Dataset(object):
             IOError: if a downloaded file's checksum is different from expected
 
         """
-        self.download_fn(
+        self._download_fn(
             self.data_home,
-            remotes=self.remotes,
+            remotes=self._remotes,
             partial_download=partial_download,
-            info_message=self.download_info,
+            info_message=self._download_info,
             force_overwrite=force_overwrite,
             cleanup=cleanup,
         )
@@ -135,7 +132,7 @@ class Dataset(object):
         Returns:
             (list): A list of track ids
         """
-        return list(self.index.keys())
+        return list(self._index.keys())
 
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version
@@ -151,7 +148,7 @@ class Dataset(object):
 
         """
         missing_files, invalid_checksums = utils.validator(
-            self.index, self.data_home, verbose=verbose
+            self._index, self.data_home, verbose=verbose
         )
         return missing_files, invalid_checksums
 

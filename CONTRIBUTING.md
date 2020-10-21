@@ -201,7 +201,6 @@ class Track(track.Track):
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
 
     Attributes:
         track_id (str): track id
@@ -282,7 +281,7 @@ def load_audio(audio_path):
 
 # -- this function is not necessary unless you need very custom download logic
 # -- If you need it, it must have this signature.
-def download(
+def _download(
     save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
 ):
     """Download the dataset.
