@@ -22,7 +22,6 @@ click the link provided in the "Module" column.
 * ❌ : Not available
 
 
-
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | Module            | Name                | Downloadable?       | Annotation Types          | Tracks |
 +===================+=====================+=====================+===========================+========+
@@ -153,6 +152,7 @@ Key
 ^^^
 Musical key. This can be defined globally for an audio file or as a sequence of events.
 
+
 .. _lyrics:
 
 Lyrics
@@ -225,6 +225,7 @@ note. Originally added to describe the tonic of the Mridangam strokes.
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
+.. _giantsteps_tempo: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.giantsteps_tempo
 .. _giantsteps_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata._giantsteps_key
 .. _groove_midi: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.groove_midi
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre
