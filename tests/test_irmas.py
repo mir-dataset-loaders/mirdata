@@ -26,9 +26,9 @@ def test_track():
         + "02 - And The Body Will Die-8.txt",
         'audio_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.wav",
-        'drum': None,
-        'genre': None,
         'track_id': '1',
+        'genre': None,
+        'drum': None,
         'train': False
     }
     expected_attributes_train = {
@@ -36,13 +36,15 @@ def test_track():
         + "[cla][cla]0189__2.wav",
         'audio_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TrainingData/cla/"
         + "[cla][cla]0189__2.wav",
-        'drum': None,
-        'genre': 'cla',
         'track_id': '0189__2',
+        'genre': 'cla',
+        'drum': None,
         'train': True
     }
 
-    expected_property_types = {'predominant_instrument': utils.EventData}
+    expected_property_types = {
+        'instrument': list,
+    }
 
     run_track_tests(track, expected_attributes, expected_property_types)
     run_track_tests(track_train, expected_attributes_train, expected_property_types)
@@ -64,7 +66,8 @@ def test_to_jams():
     assert jam_train.validate()
 
     # Test data parsers
-    assert jam_train.annotations["tag_open"][0].data[0].value == "cla"
+    assert jam_train.sandbox["instrument"] == ['cla']
+    assert jam_train.sandbox["genre"] == 'cla'
     assert jam_train.sandbox["train"] is True
 
     # Testing samples
@@ -77,11 +80,26 @@ def test_to_jams():
     assert jam.validate()
 
     # Test the training genre parser
-    assert jam.annotations["tag_open"][0].data[0].value == "['gel' 'voi']"
+    assert jam.sandbox["instrument"] == ['gel', 'voi']
     assert jam.sandbox["train"] is False
 
 
 def test_load_pred_inst():
+    # Training samples
+    pred_inst_audio_train = (
+        "tests/resources/mir_datasets/IRMAS/IRMAS-TrainingData/cla/"
+        + "[cla][cla]0189__2.wav"
+    )
+    pred_inst_ann_path_train = (
+        "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
+        + "[cla][cla]0189__2.wav"
+    )
+    pred_inst_data_train = irmas.load_pred_inst(
+        pred_inst_audio_train, pred_inst_ann_path_train, train=True
+    )
+    assert pred_inst_data_train == ['cla']
+
+    # Testing samples
     pred_inst_audio_test = (
         "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.wav"
@@ -93,26 +111,7 @@ def test_load_pred_inst():
     pred_inst_data_test = irmas.load_pred_inst(
         pred_inst_audio_test, pred_inst_ann_path_test, train=False
     )
-
-    # check types
-    assert type(pred_inst_data_test) is utils.EventData
-    assert type(pred_inst_data_test.start_times) is np.ndarray
-    assert type(pred_inst_data_test.end_times) is np.ndarray
-    assert type(pred_inst_data_test.event) is np.ndarray
-
-    # check values
-    assert np.array_equal(
-        pred_inst_data_test.start_times,
-        np.array([0]),
-    )
-    assert np.array_equal(
-        pred_inst_data_test.end_times,
-        np.array([20.]),
-    )
-    assert np.array_equal(
-        pred_inst_data_test.event,
-        np.array([['gel', 'voi']]),
-    )
+    assert pred_inst_data_test == ['gel', 'voi']
 
 
 def test_load_metadata():

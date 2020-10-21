@@ -176,23 +176,26 @@ class Track(track.Track):
 
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
-
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {'genre': None, 'drum': None, 'train': None}
-
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths['annotation'][0]
         )
-        self.genre = self._track_metadata['genre']
-        self.drum = self._track_metadata['drum']
-        self.train = self._track_metadata['train']
+
+        metadata = DATA.metadata(data_home)
+        if metadata is None or track_id not in metadata:
+            self._track_metadata = {
+                'instrument': None,
+                'genre': None,
+                'drum': None,
+                'train': None
+            }
+
+        self.genre = metadata[track_id]['genre']
+        self.drum = metadata[track_id]['drum']
+        self.train = metadata[track_id]['train']
 
     @utils.cached_property
-    def predominant_instrument(self):
-        """EventData: predominant instrument"""
+    def instrument(self):
+        """String: instrument"""
         return load_pred_inst(self.audio_path, self.annotation_path, self.train)
 
     @property
@@ -204,8 +207,12 @@ class Track(track.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            event_data=[(self.predominant_instrument, 'predominant_instrument')],
-            metadata=self._track_metadata,
+            metadata={
+                'instrument': self.instrument,
+                'genre': self.genre,
+                'drum': self.drum,
+                'train': self.train
+            },
         )
 
 
@@ -319,30 +326,20 @@ def load_pred_inst(audio_path, annotation_path, train):
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 
-    duration = None
-    if audio_path is not None:
-        if os.path.exists(audio_path):
-            duration = librosa.get_duration(filename=audio_path)
-
+    pred_inst = []
     if train is True:
-        split_1 = audio_path.split('[')[1]
-        pred_inst_code = split_1.split(']')[0]
+        pred_inst.append(audio_path.split('[')[1].split(']')[0])
 
-        return utils.EventData(
-            np.array([0]), np.array([duration]), np.array([pred_inst_code])
-        )
+        return pred_inst
 
     else:
         with open(annotation_path, 'r') as fopen:
             pred_inst_file = fopen.readlines()
-            pred_inst = []
             for inst_ in pred_inst_file:
                 inst_code = inst_[:3]
                 pred_inst.append(inst_code)
 
-        return utils.EventData(
-            np.array([0]), np.array([duration]), np.array([tuple(pred_inst)])
-        )
+        return pred_inst
 
 
 def cite():
