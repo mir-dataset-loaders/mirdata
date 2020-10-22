@@ -4,8 +4,11 @@ import importlib
 import os
 import random
 
+import mirdata
 from mirdata import download_utils
 from mirdata import utils
+
+DATASETS = mirdata.__all__
 
 
 class Dataset(object):
@@ -34,6 +37,12 @@ class Dataset(object):
 
     def __init__(self, dataset, data_home=None):
         """Inits a dataset by name and data location"""
+        if dataset not in DATASETS:
+            raise ValueError(
+                "{} is not a valid dataset in mirdata. Valid datsets are:\n{}".format(
+                    dataset, ",".join(DATASETS)
+                )
+            )
         module = importlib.import_module("mirdata.{}".format(dataset))
         self.dataset = dataset
         self.bibtex = getattr(module, "BIBTEX", "")
@@ -50,6 +59,16 @@ class Dataset(object):
         else:
             self.data_home = data_home
 
+        # this is a hack to be able to have dataset-specific docstrings
+        self.track = lambda track_id: self._track(track_id)
+        self.track.__doc__ = self._track_object.__doc__  # set the docstring
+
+        # inherit any public load functions from the module
+        for method_name in dir(module):
+            if method_name.startswith("load_"):
+                method = getattr(module, method_name)
+                setattr(self, method_name, method)
+
     @property
     def default_path(self):
         """Get the default path for the dataset
@@ -60,8 +79,9 @@ class Dataset(object):
         mir_datasets_dir = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
         return os.path.join(mir_datasets_dir, self.dataset_dir)
 
-    def track(self, track_id):
-        """Load a track by track_id
+    def _track(self, track_id):
+        """Load a track by track_id.
+        Hidden helper function that gets called as a lambda.
 
         Args:
             track_id (str): track id of the track
@@ -95,7 +115,6 @@ class Dataset(object):
 
     def cite(self):
         """Print the reference"""
-        # TODO: use pybtex to convert to MLA
         print("========== BibTeX ==========")
         print(self.bibtex)
 
@@ -151,4 +170,3 @@ class Dataset(object):
             self._index, self.data_home, verbose=verbose
         )
         return missing_files, invalid_checksums
-

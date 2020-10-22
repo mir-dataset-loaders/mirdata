@@ -4,22 +4,23 @@ import sys
 import pytest
 
 from mirdata import track
+from mirdata import dataset
 
 if sys.version_info.major == 3:
-    builtin_module_name = 'builtins'
+    builtin_module_name = "builtins"
 else:
-    builtin_module_name = '__builtin__'
+    builtin_module_name = "__builtin__"
 
 
 def test_track_repr():
     class TestTrack(track.Track):
         def __init__(self):
-            self.a = 'asdf'
+            self.a = "asdf"
             self.b = 1.2345678
-            self.c = {1: 'a', 'b': 2}
-            self._d = 'hidden'
+            self.c = {1: "a", "b": 2}
+            self._d = "hidden"
             self.e = None
-            self.long = 'a' + 'b' * 50 + 'c' * 50
+            self.long = "a" + "b" * 50 + "c" * 50
 
         @property
         def f(self):
@@ -36,7 +37,7 @@ def test_track_repr():
 
     expected1 = """Track(\n  a="asdf",\n  b=1.2345678,\n  """
     expected2 = """c={1: 'a', 'b': 2},\n  e=None,\n  """
-    expected3 = """long="...{}",\n  """.format('b' * 50 + 'c' * 50)
+    expected3 = """long="...{}",\n  """.format("b" * 50 + "c" * 50)
     expected4 = """f: ThisObjectType,\n  g: I have an improper docstring,\n)"""
 
     test_track = TestTrack()
@@ -54,3 +55,19 @@ def test_track_repr():
     bad_track = NoDocsTrack()
     with pytest.raises(ValueError):
         bad_track.__repr__()
+
+
+def test_dataset_errors():
+    with pytest.raises(ValueError):
+        dataset.Dataset("not_a_dataset")
+
+    d = dataset.Dataset("orchset")
+    d._track_object = None
+    with pytest.raises(NotImplementedError):
+        d.track("asdf")
+
+    with pytest.raises(NotImplementedError):
+        d.load_tracks()
+
+    with pytest.raises(NotImplementedError):
+        d.choice_track()

@@ -5,9 +5,10 @@ import inspect
 from inspect import signature
 import io
 import os
-import requests
 import sys
 import pytest
+import requests
+
 
 import mirdata
 from mirdata import track
@@ -322,7 +323,6 @@ EXCEPTIONS = {
 
 def test_load_methods():
     for dataset_name in DATASETS:
-
         dataset = mirdata.Dataset(dataset_name)
         all_methods = dir(dataset)
         load_methods = [
@@ -334,7 +334,6 @@ def test_load_methods():
             # skip default methods
             if method_name == "load_tracks":
                 continue
-
             params = [
                 p
                 for p in signature(load_method).parameters.values()

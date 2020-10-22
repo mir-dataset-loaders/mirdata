@@ -2,7 +2,6 @@
 
 
 from .version import version as __version__
-from .dataset import Dataset
 
 __all__ = [
     "beatles",
@@ -24,3 +23,5 @@ __all__ = [
     "salami",
     "tinysol",
 ]
+
+from .dataset import Dataset
