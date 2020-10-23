@@ -62,19 +62,68 @@ class MultiTrack(Track):
         self.tracks = tracks
         self.track_audio_attribute = track_audio_attribute
 
-    def get_target(self, track_keys, weights=None):
-        """Create a linear mixture given a subset of tracks.
+    def get_target(self, track_keys, weights=None, mix=True, enforce_length=True):
+        """Get target containing a subset of tracks.
+        When mix=True, creates a weighted linear mix (according to weights)
+        When mix=False, the target is a multichannel file
 
         Args:
             track_keys (list): list of track keys to mix together
             weights (list or None): list of positive scalars to be used in the average
+            mix (bool): if True, mixes tracks into a signal weighted mixture.
+                if False, returns all targets as a multichannel file.
+            enforce_length (bool): If True, raises ValueError if the tracks are 
+                not the same length. If False, pads audio with zeros to match the length
+                of the longest track
         
         Returns:
-            target (np.ndarray): mixture audio with shape (n_samples, n_channels)
+            target (np.ndarray): 
+                if mix=True, mixture audio with shape (n_channels, n_samples)
+                if mix=False, multichannel audio with shape (n_channels * len(track_keys), n_samples)
+
+        Raises:
+            ValueError: 
+                if sample rates of the tracks are not equal
+                if enforce_length=True and lengths are not equal
+
         """
-        signals = [
-            getattr(self.tracks[k], self.track_audio_attribute)() for k in track_keys
-        ]
+        signals = []
+        lengths = []
+        sample_rates = []
+        for k in track_keys:
+            audio, sample_rate = getattr(self.tracks[k], self.track_audio_attribute)()
+            # ensure all signals are shape (n_channels, n_samples)
+            if len(audio.shape) == 1:
+                audio = audio[np.newaxis, :]
+            signals.append(audio)
+            lengths.append(audio.shape[1])
+            sample_rates.append(sample_rate)
+
+        if len(set(sample_rates)) > 1:
+            raise ValueError(
+                "Sample rates for tracks {} are not equal: {}".format(
+                    track_keys, sample_rates
+                )
+            )
+
+        max_length = np.max(lengths)
+        if any([l != max_length for l in lengths]):
+            if enforce_length:
+                raise ValueError(
+                    "Track's {} audio are not the same length {}. Use enforce_length=False to pad with zeros.".format(
+                        track_keys, lengths
+                    )
+                )
+            else:
+                # pad signals to the max length
+                signals = [
+                    np.pad(signal, ((0, 0), (0, max_length - signal.shape[1])))
+                    for signal in signals
+                ]
+
+        if not mix:
+            return np.concatenate(signals, axis=0)
+
         return np.average(signals, axis=0, weights=weights)
 
     def get_random_target(self, n_tracks=None, min_weight=0.3, max_weight=1.0):

@@ -63,7 +63,7 @@ def test_multitrack():
             self.key = key
 
         def f(self):
-            return np.random.uniform(-1, 1, (100, 2))
+            return np.random.uniform(-1, 1, (2, 100)), 1000
 
     track_keys = ["a", "b", "c"]
     tracks = {k: TestTrack(k) for k in track_keys}
@@ -71,19 +71,23 @@ def test_multitrack():
     mtrack = track.MultiTrack(tracks, "f")
 
     target1 = mtrack.get_target(["a", "c"])
-    assert target1.shape == (100, 2)
+    assert target1.shape == (2, 100)
     assert np.max(np.abs(target1)) <= 1
 
     target2 = mtrack.get_target(["b", "c"], weights=[0.5, 0.2])
-    assert target2.shape == (100, 2)
+    assert target2.shape == (2, 100)
     assert np.max(np.abs(target2)) <= 1
 
     target3 = mtrack.get_target(["b", "c"], weights=[0.5, 5])
-    assert target3.shape == (100, 2)
+    assert target3.shape == (2, 100)
     assert np.max(np.abs(target3)) <= 1
 
+    target4 = mtrack.get_target(["a", "c"], mix=False)
+    assert target4.shape == (4, 100)
+    assert np.max(np.abs(target4)) <= 1
+
     random_target1, t1, w1 = mtrack.get_random_target(n_tracks=2)
-    assert random_target1.shape == (100, 2)
+    assert random_target1.shape == (2, 100)
     assert np.max(np.abs(random_target1)) <= 1
     assert len(t1) == 2
     assert len(w1) == 2
@@ -91,7 +95,7 @@ def test_multitrack():
     assert np.all(w1 <= 1.0)
 
     random_target2, t2, w2 = mtrack.get_random_target(n_tracks=5)
-    assert random_target2.shape == (100, 2)
+    assert random_target2.shape == (2, 100)
     assert np.max(np.abs(random_target2)) <= 1
     assert len(t2) == 3
     assert len(w2) == 3
@@ -99,7 +103,7 @@ def test_multitrack():
     assert np.all(w2 <= 1.0)
 
     random_target3, t3, w3 = mtrack.get_random_target()
-    assert random_target3.shape == (100, 2)
+    assert random_target3.shape == (2, 100)
     assert np.max(np.abs(random_target3)) <= 1
     assert len(t3) == 3
     assert len(w3) == 3
@@ -109,7 +113,7 @@ def test_multitrack():
     random_target4, t4, w4 = mtrack.get_random_target(
         n_tracks=2, min_weight=0.1, max_weight=0.4
     )
-    assert random_target4.shape == (100, 2)
+    assert random_target4.shape == (2, 100)
     assert np.max(np.abs(random_target4)) <= 1
     assert len(t4) == 2
     assert len(w4) == 2
@@ -117,4 +121,90 @@ def test_multitrack():
     assert np.all(w4 <= 0.4)
 
     mix = mtrack.get_mix()
-    assert mix.shape == (100, 2)
+    assert mix.shape == (2, 100)
+
+
+def test_multitrack_unequal_len():
+    class TestTrack(track.Track):
+        def __init__(self, key):
+            self.key = key
+
+        def f(self):
+            return np.random.uniform(-1, 1, (2, np.random.randint(50, 100))), 1000
+
+    track_keys = ["a", "b", "c"]
+    tracks = {k: TestTrack(k) for k in track_keys}
+
+    mtrack = track.MultiTrack(tracks, "f")
+
+    with pytest.raises(ValueError):
+        mtrack.get_target(["a", "b", "c"])
+
+    target1 = mtrack.get_target(["a", "b", "c"], enforce_length=False)
+    assert target1.shape[0] == 2
+    assert np.max(np.abs(target1)) <= 1
+
+    target2 = mtrack.get_target(["a", "b", "c"], mix=False, enforce_length=False)
+    assert target2.shape[0] == 6
+    assert np.max(np.abs(target2)) <= 1
+
+
+def test_multitrack_unequal_sr():
+    class TestTrack(track.Track):
+        def __init__(self, key):
+            self.key = key
+
+        def f(self):
+            return np.random.uniform(-1, 1, (2, 100)), np.random.randint(10, 1000)
+
+    track_keys = ["a", "b", "c"]
+    tracks = {k: TestTrack(k) for k in track_keys}
+
+    mtrack = track.MultiTrack(tracks, "f")
+
+    with pytest.raises(ValueError):
+        mtrack.get_target(["a", "b", "c"])
+
+
+def test_multitrack_mono():
+    ### no first channel - audio shapes (100,)
+    class TestTrack(track.Track):
+        def __init__(self, key):
+            self.key = key
+
+        def f(self):
+            return np.random.uniform(-1, 1, (100)), 1000
+
+    track_keys = ["a", "b", "c"]
+    tracks = {k: TestTrack(k) for k in track_keys}
+
+    mtrack = track.MultiTrack(tracks, "f")
+
+    target1 = mtrack.get_target(["a", "c"])
+    assert target1.shape == (1, 100)
+    assert np.max(np.abs(target1)) <= 1
+
+    target1 = mtrack.get_target(["a", "c"], mix=False)
+    assert target1.shape == (2, 100)
+    assert np.max(np.abs(target1)) <= 1
+
+    ### one channel mono shape (1, 100)
+    class TestTrack1(track.Track):
+        def __init__(self, key):
+            self.key = key
+
+        def f(self):
+            return np.random.uniform(-1, 1, (1, 100)), 1000
+
+    track_keys = ["a", "b", "c"]
+    tracks = {k: TestTrack1(k) for k in track_keys}
+
+    mtrack = track.MultiTrack(tracks, "f")
+
+    target1 = mtrack.get_target(["a", "c"])
+    assert target1.shape == (1, 100)
+    assert np.max(np.abs(target1)) <= 1
+
+    target1 = mtrack.get_target(["a", "c"], mix=False)
+    assert target1.shape == (2, 100)
+    assert np.max(np.abs(target1)) <= 1
