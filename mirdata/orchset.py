@@ -113,7 +113,6 @@ class Track(track.Track):
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
 
     Attributes:
         alternating_melody (bool): True if the melody alternates between instruments

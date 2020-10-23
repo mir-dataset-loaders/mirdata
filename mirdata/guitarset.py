@@ -116,7 +116,6 @@ class Track(track.Track):
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
 
     Attributes:
         audio_hex_cln_path (str): path to the debleeded hex wave file

@@ -81,7 +81,6 @@ def main(args):
     print("")
     print("Args:")
     print("    track_id (str): track id of the track")
-    print("    data_home (str): Local path where the dataset is stored.")
     print("")
 
     if len(data["attributes"]) > 0:

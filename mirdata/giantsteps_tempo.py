@@ -114,7 +114,6 @@ class Track(track.Track):
     """giantsteps_tempo track class
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
 
     Attributes:
         audio_path (str): track audio path

@@ -104,7 +104,6 @@ class Track(track.Track):
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
 
     Attributes:
         annotator_1_id (str): number that identifies annotator 1
