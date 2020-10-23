@@ -62,24 +62,20 @@ class MultiTrack(Track):
         self.tracks = tracks
         self.track_audio_attribute = track_audio_attribute
 
-    def get_target(self, track_keys, weights=None, mix=True, enforce_length=True):
-        """Get target containing a subset of tracks.
-        When mix=True, creates a weighted linear mix (according to weights)
-        When mix=False, the target is a multichannel file
+    def get_target(self, track_keys, weights=None, average=True, enforce_length=True):
+        """Get target which is a linear mixture of tracks
 
         Args:
             track_keys (list): list of track keys to mix together
             weights (list or None): list of positive scalars to be used in the average
-            mix (bool): if True, mixes tracks into a signal weighted mixture.
-                if False, returns all targets as a multichannel file.
+            average (bool): if True, computes a weighted average of the tracks
+                if False, computes a weighted sum of the tracks
             enforce_length (bool): If True, raises ValueError if the tracks are 
                 not the same length. If False, pads audio with zeros to match the length
                 of the longest track
         
         Returns:
-            target (np.ndarray): 
-                if mix=True, mixture audio with shape (n_channels, n_samples)
-                if mix=False, multichannel audio with shape (n_channels * len(track_keys), n_samples)
+            target (np.ndarray): target audio with shape (n_channels, n_samples)
 
         Raises:
             ValueError: 
@@ -121,10 +117,14 @@ class MultiTrack(Track):
                     for signal in signals
                 ]
 
-        if not mix:
-            return np.concatenate(signals, axis=0)
+        if weights is None:
+            weights = np.ones((len(track_keys),))
 
-        return np.average(signals, axis=0, weights=weights)
+        target = np.average(signals, axis=0, weights=weights)
+        if not average:
+            target *= np.sum(weights)
+
+        return target
 
     def get_random_target(self, n_tracks=None, min_weight=0.3, max_weight=1.0):
         """Get a random target by combining a random selection of tracks with random weights

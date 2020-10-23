@@ -82,9 +82,13 @@ def test_multitrack():
     assert target3.shape == (2, 100)
     assert np.max(np.abs(target3)) <= 1
 
-    target4 = mtrack.get_target(["a", "c"], mix=False)
-    assert target4.shape == (4, 100)
-    assert np.max(np.abs(target4)) <= 1
+    target4 = mtrack.get_target(["a", "c"], average=False)
+    assert target4.shape == (2, 100)
+    assert np.max(np.abs(target4)) <= 2
+
+    target5 = mtrack.get_target(["a", "c"], average=False, weights=[0.1, 0.5])
+    assert target5.shape == (2, 100)
+    assert np.max(np.abs(target5)) <= 0.6
 
     random_target1, t1, w1 = mtrack.get_random_target(n_tracks=2)
     assert random_target1.shape == (2, 100)
@@ -144,9 +148,9 @@ def test_multitrack_unequal_len():
     assert target1.shape[0] == 2
     assert np.max(np.abs(target1)) <= 1
 
-    target2 = mtrack.get_target(["a", "b", "c"], mix=False, enforce_length=False)
-    assert target2.shape[0] == 6
-    assert np.max(np.abs(target2)) <= 1
+    target2 = mtrack.get_target(["a", "b", "c"], average=False, enforce_length=False)
+    assert target2.shape[0] == 2
+    assert np.max(np.abs(target2)) <= 3
 
 
 def test_multitrack_unequal_sr():
@@ -184,9 +188,9 @@ def test_multitrack_mono():
     assert target1.shape == (1, 100)
     assert np.max(np.abs(target1)) <= 1
 
-    target1 = mtrack.get_target(["a", "c"], mix=False)
-    assert target1.shape == (2, 100)
-    assert np.max(np.abs(target1)) <= 1
+    target1 = mtrack.get_target(["a", "c"], average=False)
+    assert target1.shape == (1, 100)
+    assert np.max(np.abs(target1)) <= 2
 
     ### one channel mono shape (1, 100)
     class TestTrack1(track.Track):
@@ -205,6 +209,6 @@ def test_multitrack_mono():
     assert target1.shape == (1, 100)
     assert np.max(np.abs(target1)) <= 1
 
-    target1 = mtrack.get_target(["a", "c"], mix=False)
-    assert target1.shape == (2, 100)
-    assert np.max(np.abs(target1)) <= 1
+    target1 = mtrack.get_target(["a", "c"], average=False)
+    assert target1.shape == (1, 100)
+    assert np.max(np.abs(target1)) <= 2
