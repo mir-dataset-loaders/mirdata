@@ -118,29 +118,3 @@ def test_load_pred_inst():
     assert type(pred_inst_data_test[0]) is str
     assert pred_inst_data_test == ['gel', 'voi']
     assert irmas.load_pred_inst(None, None, train=False) is None
-
-
-def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/IRMAS'
-    metadata = irmas._load_metadata(data_home)
-    assert metadata['data_home'] == data_home
-    assert metadata['1'] == {
-        'genre': None,
-        'drum': None,
-        'train': False,
-    }
-    assert metadata['0189__2'] == {
-        'genre': 'cla',
-        'drum': None,
-        'train': True,
-    }
-    assert metadata['0020__1'] == {
-        'genre': 'cla',
-        'drum': False,
-        'train': True,
-    }
-    assert metadata['0407__1'] == {
-        'genre': 'cou_fol',
-        'drum': True,
-        'train': True,
-    }

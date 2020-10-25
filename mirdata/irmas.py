@@ -110,40 +110,8 @@ REMOTES = {
 }
 
 
-def _load_metadata(data_home):
-    irmas_dict = dict()
-    with open('mirdata/indexes/irmas_index.json') as json_file:
-        index = json.load(json_file)
-        for track_id in index.keys():
-            if '__' in track_id:
-                if 'dru' in index[track_id]['audio'][0] or 'nod' in index[track_id]['audio'][0]:
-                    genre = index[track_id]['audio'][0].split('.')[0].split('[')[3].split(']')[0]
-                    irmas_dict[track_id] = {
-                        'genre': genre,
-                        'drum': [True if 'dru' in index[track_id]['audio'][0] else False][0],
-                        'train': True
-                    }
-                else:
-                    genre = index[track_id]['audio'][0].split('.')[0].split('[')[2].split(']')[0]
-                    irmas_dict[track_id] = {
-                        'genre': genre,
-                        'drum': None,
-                        'train': True
-                    }
-            else:
-                irmas_dict[track_id] = {
-                    'genre': None,
-                    'drum': None,
-                    'train': False
-                }
-
-    irmas_dict["data_home"] = data_home
-
-    return irmas_dict
-
-
 DATA = utils.LargeData(
-    'irmas_index.json', _load_metadata
+    'irmas_index.json'
 )
 
 
@@ -179,18 +147,32 @@ class Track(track.Track):
             self._data_home, self._track_paths['annotation'][0]
         )
 
-        metadata = DATA.metadata(data_home)
-        if metadata is None or track_id not in metadata:
-            self._track_metadata = {
-                'instrument': None,
+        self._track_metadata = {}
+        if '__' in track_id:
+            if 'dru' in self._track_paths['audio'][0] or 'nod' in self._track_paths['audio'][0]:
+                genre = self._track_paths['audio'][0].split('.')[0].split('[')[3].split(']')[0]
+                _track_metadata = {
+                    'genre': genre,
+                    'drum': [True if 'dru' in self._track_paths['audio'][0] else False][0],
+                    'train': True
+                }
+            else:
+                genre = self._track_paths['audio'][0].split('.')[0].split('[')[2].split(']')[0]
+                _track_metadata = {
+                    'genre': genre,
+                    'drum': None,
+                    'train': True
+                }
+        else:
+            _track_metadata = {
                 'genre': None,
                 'drum': None,
-                'train': None
+                'train': False
             }
 
-        self.genre = metadata[track_id]['genre']
-        self.drum = metadata[track_id]['drum']
-        self.train = metadata[track_id]['train']
+        self.train = _track_metadata['train']
+        self.genre = _track_metadata['genre']
+        self.drum = _track_metadata['drum']
 
     @utils.cached_property
     def instrument(self):
