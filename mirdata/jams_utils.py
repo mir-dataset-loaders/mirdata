@@ -91,7 +91,6 @@ def jams_converter(
                 key == 'duration'
                 and duration is not None
                 and metadata[key] != duration
-                and 'spectrum' not in audio_path
             ):
                 print(
                     'Warning: duration provided in metadata does not'
