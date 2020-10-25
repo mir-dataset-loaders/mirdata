@@ -219,14 +219,15 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 
 Stroke Name
 ^^^^^^^^^^^
-An open "tag" that refers to the original name of the stroke type that is played on a Mridangam instrument.
+An open "tag" to identify an instrument stroke name or type. Used for instruments that have specific
+stroke labels.
 
 .. _tonic:
 
 Tonic
 ^^^^^^^^^^^
-Stored as metadata, the absolute tonic of a track. It is a useful metre for tracks with a single stroke or
-note. Originally added to describe the tonic of the Mridangam strokes.
+The absolute tonic of a track. It may refer to the tonic a single stroke, or the tonal center of
+a track.
 
 
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y

@@ -61,6 +61,9 @@ def jams_converter(
     tags_gtzan_data (list or None):
         A list of tuples of (str, str), where the first srt is the tag and the second
         is a descriptor of the annotation.
+    tags_open_data (list or None):
+        A list of tuples of (str, str), where the first srt is the tag and the second
+        is a descriptor of the annotation.
     metadata (dict or None):
         A dictionary containing the track metadata.
 

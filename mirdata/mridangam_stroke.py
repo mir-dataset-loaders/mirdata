@@ -87,12 +87,12 @@ class Track(track.Track):
 
     @utils.cached_property
     def stroke_name(self):
-        """(String): audio signal, sample rate"""
+        """TagOpenData: Name of a single Mridangam stroke."""
         return load_stroke_name(self.audio_path)
 
     @utils.cached_property
     def tonic(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """(String): Tonic of a single Mridangam Stroke"""
         return load_tonic(self.audio_path)
 
     @property
