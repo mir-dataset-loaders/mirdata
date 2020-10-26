@@ -61,6 +61,16 @@ DATA = utils.LargeData(
 )
 
 
+STROKE_DICT = {
+    'bheem', 'cha', 'dheem', 'dhin', 'num', 'ta', 'tha', 'tham', 'thi', 'thom'
+}
+
+
+TONIC_DICT = {
+    'B', 'C', 'C#', 'D', 'D#', 'E'
+}
+
+
 class Track(track.Track):
     """Mridangam Stroke track class
     Args:
@@ -203,6 +213,7 @@ def load_stroke_name(audio_path):
     if '.wav' in audio_path:
         audio_data = audio_path.split('__')[2]
         stroke_name = audio_data.split('-')[0]
+        assert stroke_name in STROKE_DICT, "Stroke {} not in stroke dictionary".format(stroke_name)
 
         return stroke_name
 
@@ -218,15 +229,10 @@ def load_tonic(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 
     if '.wav' in audio_path:
-        audio_data = audio_path.split('__')[2]
-        tonic_info = audio_data.split('-')[1]
-        tonic_info_upper = tonic_info.upper()
+        tonic = os.path.basename(os.path.dirname(audio_path))
+        assert tonic in TONIC_DICT, "Tonic {} not in tonic dictionary".format(tonic)
 
-        # Adapt sharp tonic: 'sh' to '#'
-        if 'SH' in tonic_info_upper:
-            tonic_info_upper = tonic_info_upper[0] + '#'
-
-        return tonic_info_upper
+        return tonic
 
 
 def cite():
