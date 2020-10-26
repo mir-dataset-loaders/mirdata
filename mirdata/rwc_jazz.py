@@ -88,8 +88,6 @@ DOWNLOAD_INFO = """
     and copy the RWC-Jazz folder to {data_home}
 """
 
-DATASET_DIR = "RWC-Jazz"
-
 
 def _load_metadata(data_home):
 

@@ -19,7 +19,6 @@ from mirdata import track
 from mirdata import utils
 
 
-DATASET_DIR = "GTZAN-Genre"
 BIBTEX = """@article{tzanetakis2002gtzan,
   title={GTZAN genre collection},
   author={Tzanetakis, George and Cook, P},

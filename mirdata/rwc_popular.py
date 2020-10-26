@@ -95,7 +95,6 @@ DOWNLOAD_INFO = """
             > metadata-master/
     and copy the RWC-Popular folder to {data_home}
 """
-DATASET_DIR = "RWC-Popular"
 
 
 def _load_metadata(data_home):

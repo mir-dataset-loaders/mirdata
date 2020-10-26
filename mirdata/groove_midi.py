@@ -55,7 +55,6 @@ import pretty_midi
 from mirdata import download_utils, jams_utils, track, utils
 
 
-DATASET_DIR = "Groove-MIDI"
 BIBTEX = """@inproceedings{groove2019,
     Author = {Jon Gillick and Adam Roberts and Jesse Engel and Douglas Eck
               and David Bamman},

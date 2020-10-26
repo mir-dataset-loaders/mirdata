@@ -23,7 +23,6 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "MedleyDB-Pitch"
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
     Booktitle = {International Society of Music Information Retrieval (ISMIR)},

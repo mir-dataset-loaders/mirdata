@@ -33,7 +33,6 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "Medley-solos-DB"
 BIBTEX = """@inproceedings{lostanlen2019ismir,
     title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
     author={Lostanlen, Vincent and Cella, Carmine Emanuele},

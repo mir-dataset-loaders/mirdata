@@ -141,7 +141,6 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = 'Example'
 
 # -- Add any relevant citations here
 BIBTEX = """@article{article-minimal,

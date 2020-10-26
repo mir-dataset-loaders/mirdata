@@ -37,8 +37,6 @@ except ImportError as E:
     )
     raise
 
-DATASET_DIR = "DALI"
-
 BIBTEX = """@inproceedings{Meseguer-Brocal_2018,
     Title = {DALI: a large Dataset of synchronized Audio, LyrIcs and notes, automatically created using teacher-student
      machine learning paradigm.},

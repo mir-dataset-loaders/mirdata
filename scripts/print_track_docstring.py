@@ -72,7 +72,7 @@ def main(args):
         print("Please add a test track to the dictionary at the top of this script.")
         return
 
-    data_home = "tests/resources/mir_datasets/{}".format(dataset.DATASET_DIR)
+    data_home = "tests/resources/mir_datasets/{}".format(dataset.name)
     print(data_home)
     track = dataset.Track(track_id, data_home=data_home)
     data = get_attributes_and_properties(track)

@@ -23,7 +23,6 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "RWC-Classical"
 BIBTEX = """@inproceedings{goto2002rwc,
   title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
   author={Goto, Masataka and Hashiguchi, Hiroki and Nishimura, Takuichi and Oka, Ryuichi},
@@ -135,7 +134,7 @@ class Track(track.Track):
     def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
             raise ValueError(
-                "{} is not a valid track ID in RWC-Classical".format(track_id)
+                "{} is not a valid track ID in rwc_classical".format(track_id)
             )
 
         self.track_id = track_id
@@ -291,46 +290,3 @@ def _duration_to_sec(duration):
                 )  # mistake in annotation in RM-J044
             total_secs = float(minutes) * 60 + float(secs)
             return total_secs
-
-
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "metadata-master", "rwc-c.csv")
-
-    if not os.path.exists(metadata_path):
-        logging.info(
-            "Metadata file {} not found.".format(metadata_path)
-            + "You can download the metadata file by running download()"
-        )
-        return None
-
-    with open(metadata_path, "r") as fhandle:
-        dialect = csv.Sniffer().sniff(fhandle.read(1024))
-        fhandle.seek(0)
-        reader = csv.reader(fhandle, dialect)
-        raw_data = []
-        for line in reader:
-            if line[0] != "Piece No.":
-                raw_data.append(line)
-
-    metadata_index = {}
-    for line in raw_data:
-        if line[0] == "Piece No.":
-            continue
-        p = "00" + line[0].split(".")[1][1:]
-        track_id = "RM-C{}".format(p[len(p) - 3 :])
-
-        metadata_index[track_id] = {
-            "piece_number": line[0],
-            "suffix": line[1],
-            "track_number": line[2],
-            "title": line[3],
-            "composer": line[4],
-            "artist": line[5],
-            "duration": _duration_to_sec(line[6]),
-            "category": line[7],
-        }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-

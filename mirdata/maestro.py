@@ -42,7 +42,6 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "MAESTRO"
 
 BIBTEX = """@inproceedings{
   hawthorne2018enabling,

@@ -51,7 +51,6 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "TinySOL"
 BIBTEX = """@inproceedings{cella2020preprint,
   author={Cella, Carmine Emanuele and Ghisi, Daniele and Lostanlen, Vincent and
   Lévy, Fabien and Fineberg, Joshua and Maresz, Yan},

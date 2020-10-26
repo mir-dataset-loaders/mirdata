@@ -23,7 +23,6 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "MedleyDB-Melody"
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
     Booktitle = {International Society of Music Information Retrieval (ISMIR)},
@@ -83,7 +82,7 @@ class Track(track.Track):
     def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
             raise ValueError(
-                "{} is not a valid track ID in MedleyDB-Melody".format(track_id)
+                "{} is not a valid track ID in medleydb_melody".format(track_id)
             )
 
         self.track_id = track_id

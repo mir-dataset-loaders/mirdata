@@ -35,13 +35,13 @@ def test_dataset_attributes():
     for dataset_name in DATASETS:
         dataset = mirdata.Dataset(dataset_name)
         assert (
-            dataset.dataset == dataset_name
+            dataset.name == dataset_name
         ), "{}.dataset attribute does not match dataset name".format(dataset_name)
-        assert dataset.bibtex != "", "No BIBTEX information provided for {}".format(
-            dataset_name
-        )
-        assert isinstance(
-            dataset._remotes, dict
+        assert (
+            dataset.bibtex is not None
+        ), "No BIBTEX information provided for {}".format(dataset_name)
+        assert (
+            isinstance(dataset._remotes, dict) or dataset._remotes is None
         ), "{}.REMOTES must be a dictionary".format(dataset_name)
         assert isinstance(dataset._index, dict), "{}.DATA is not properly set".format(
             dataset_name
@@ -52,9 +52,6 @@ def test_dataset_attributes():
         assert type(dataset._track_object) == type(
             track.Track
         ), "{}.Track must be an instance of track.Track".format(dataset_name)
-        assert hasattr(
-            dataset, "dataset_dir"
-        ), "{} is missing the attribute DATASET_DIR".format(dataset_name)
         assert callable(dataset._download_fn), "{}._download is not a function".format(
             dataset_name
         )
@@ -77,6 +74,9 @@ def test_forward_compatibility():
         assert not hasattr(
             dataset_module, "load"
         ), "{}: loaders no longer need load methods".format(dataset_name)
+        assert not hasattr(
+            dataset_module, "DATASET_DIR"
+        ), "{}: loaders no longer need to define DATASET_DIR".format(dataset_name)
 
         if hasattr(dataset_module, "Track"):
             track_params = signature(dataset_module.Track).parameters
@@ -161,9 +161,7 @@ def test_download(mocker):
 def test_validate(skip_local):
     for dataset_name in DATASETS:
         dataset_module = importlib.import_module("mirdata.{}".format(dataset_name))
-        data_home = os.path.join(
-            "tests/resources/mir_datasets", dataset_module.DATASET_DIR
-        )
+        data_home = os.path.join("tests/resources/mir_datasets", dataset_module.name)
         dataset = mirdata.Dataset(dataset_name, data_home=data_home)
         try:
             dataset.validate()
@@ -184,10 +182,7 @@ def test_validate(skip_local):
 
 def test_load_and_trackids():
     for dataset_name in DATASETS:
-        dataset_module = importlib.import_module("mirdata.{}".format(dataset_name))
-        data_home = os.path.join(
-            "tests/resources/mir_datasets", dataset_module.DATASET_DIR
-        )
+        data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
         dataset = mirdata.Dataset(dataset_name, data_home=data_home)
         dataset_default = mirdata.Dataset(dataset_name, data_home=None)
         try:
@@ -247,8 +242,7 @@ def test_track():
 
     for dataset_name in DATASETS:
 
-        dataset_module = importlib.import_module("mirdata.{}".format(dataset_name))
-        data_home = os.path.join(data_home_dir, dataset_module.DATASET_DIR)
+        data_home = os.path.join(data_home_dir, dataset_name)
         dataset = mirdata.Dataset(dataset_name, data_home=data_home)
         dataset_default = mirdata.Dataset(dataset_name, data_home=None)
 
@@ -270,7 +264,7 @@ def test_track():
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
         assert track_default._data_home == os.path.join(
-            DEFAULT_DATA_HOME, dataset.dataset_dir
+            DEFAULT_DATA_HOME, dataset.name
         ), "{}: Track._data_home path is not set as expected".format(dataset_name)
 
         # test data home specified

@@ -12,11 +12,11 @@ For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 import csv
 import glob
-import librosa
 import logging
-import numpy as np
 import os
 import shutil
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -41,8 +41,6 @@ REMOTES = {
         destination_dir=None,
     )
 }
-
-DATASET_DIR = "Orchset"
 
 
 def _load_metadata(data_home):

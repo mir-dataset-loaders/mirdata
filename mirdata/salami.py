@@ -23,7 +23,6 @@ from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "Salami"
 BIBTEX = """@inproceedings{smith2011salami,
     title={Design and creation of a large-scale database of structural annotations.},
     author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and

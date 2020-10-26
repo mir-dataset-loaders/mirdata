@@ -23,7 +23,6 @@ from mirdata import track
 from mirdata import utils
 
 
-DATASET_DIR = "iKala"
 BIBTEX = """@inproceedings{chan2015vocal,
     title={Vocal activity informed singing voice separation with the iKala dataset},
     author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and Jang, Roger},

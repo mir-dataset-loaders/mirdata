@@ -59,8 +59,6 @@ from mirdata import track
 from mirdata import utils
 
 
-DATASET_DIR = "GuitarSet"
-
 BIBTEX = """@inproceedings{xi2018guitarset,
 title={GuitarSet: A Dataset for Guitar Transcription},
 author={Xi, Qingyang and Bittner, Rachel M and Ye, Xuzhou and Pauwels, Johan and Bello, Juan P},

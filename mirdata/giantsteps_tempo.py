@@ -71,7 +71,6 @@ from mirdata import utils
 import numpy as np
 import jams
 
-DATASET_DIR = "GiantSteps_tempo"
 
 BIBTEX = """@inproceedings{knees2015two,
   title={Two data sets for tempo estimation and key detection in electronic dance music annotated from user corrections},

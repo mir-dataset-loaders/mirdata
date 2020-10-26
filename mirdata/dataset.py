@@ -23,13 +23,12 @@ class Dataset(object):
     orchset.track_ids()  # load all track ids
 
     Attributes:
-        dataset (str): the identifier of the dataset
+        name (str): the identifier of the dataset
         bibtex (str): dataset citation/s in bibtex format
         remotes (dict): data to be downloaded
         index (dict): dataset file index
         download_info (str): download instructions or caveats
-        track_object (mirdata.track.Track): an uninstantiated Track object
-        dataset_dir (str): dataset save folder
+        track (mirdata.track.Track): function that inputs a track_id
         readme (str): information about the dataset
         data_home (str): path where mirdata will look for the dataset
 
@@ -44,13 +43,12 @@ class Dataset(object):
                 )
             )
         module = importlib.import_module("mirdata.{}".format(dataset))
-        self.dataset = dataset
-        self.bibtex = getattr(module, "BIBTEX", "")
-        self._remotes = getattr(module, "REMOTES", {})
+        self.name = dataset
+        self.bibtex = getattr(module, "BIBTEX", None)
+        self._remotes = getattr(module, "REMOTES", None)
         self._index = module.DATA.index
         self._download_info = getattr(module, "DOWNLOAD_INFO", None)
         self._track_object = getattr(module, "Track", None)
-        self.dataset_dir = module.DATASET_DIR
         self._download_fn = getattr(module, "_download", download_utils.downloader)
         self.readme = module.__doc__
 
@@ -68,6 +66,7 @@ class Dataset(object):
             if method_name.startswith("load_"):
                 method = getattr(module, method_name)
                 setattr(self, method_name, method)
+                # getattr(self, method_name).__doc__ = method.__doc__
 
     @property
     def default_path(self):
@@ -77,7 +76,7 @@ class Dataset(object):
             default_path (str): Local path to the dataset
         """
         mir_datasets_dir = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
-        return os.path.join(mir_datasets_dir, self.dataset_dir)
+        return os.path.join(mir_datasets_dir, self.name)
 
     def _track(self, track_id):
         """Load a track by track_id.

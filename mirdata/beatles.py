@@ -8,16 +8,15 @@ http://isophonics.net/content/reference-annotations-beatles.
 """
 
 import csv
+import os
 import librosa
 import numpy as np
-import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import track
 from mirdata import utils
 
-DATASET_DIR = "Beatles"
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
     author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte,

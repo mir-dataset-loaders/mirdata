@@ -7,7 +7,7 @@ from tests.test_utils import run_track_tests
 from mirdata import gtzan_genre
 from tests.test_utils import DEFAULT_DATA_HOME
 
-TEST_DATA_HOME = "tests/resources/mir_datasets/GTZAN-Genre"
+TEST_DATA_HOME = "tests/resources/mir_datasets/gtzan_genre"
 
 
 def test_track():
@@ -15,7 +15,7 @@ def test_track():
     track = gtzan_genre.Track(default_trackid, data_home=TEST_DATA_HOME)
     expected_attributes = {
         "genre": "country",
-        "audio_path": "tests/resources/mir_datasets/GTZAN-Genre/"
+        "audio_path": "tests/resources/mir_datasets/gtzan_genre/"
         + "gtzan_genre/genres/country/country.00000.wav",
         "track_id": "country.00000",
     }

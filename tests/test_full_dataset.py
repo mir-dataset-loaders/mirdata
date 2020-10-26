@@ -13,7 +13,7 @@ import mirdata
 
 @pytest.fixture()
 def dataset(test_dataset):
-    if test_dataset == '':
+    if test_dataset == "":
         return None
     elif test_dataset not in mirdata.__all__:
         raise ValueError("{} is not a dataset in mirdata".format(test_dataset))
@@ -25,7 +25,7 @@ def dataset(test_dataset):
 def data_home_dir(dataset):
     if dataset is None:
         return None
-    return os.path.join('tests/resources/mir_datasets_full', dataset.DATASET_DIR)
+    return os.path.join("tests/resources/mir_datasets_full", dataset.name)
 
 
 # This is magically skipped by the the remote fixture `skip_remote` in conftest.py
@@ -75,13 +75,13 @@ def test_load(skip_remote, dataset, data_home_dir):
         track = all_data[track_id]
         track_data = get_attributes_and_properties(track)
 
-        for attr in track_data['attributes']:
+        for attr in track_data["attributes"]:
             ret = getattr(track, attr)
 
-        for prop in track_data['properties']:
+        for prop in track_data["properties"]:
             ret = getattr(track, prop)
 
-        for cprop in track_data['cached_properties']:
+        for cprop in track_data["cached_properties"]:
             ret = getattr(track, cprop)
 
         jam = track.to_jams()
