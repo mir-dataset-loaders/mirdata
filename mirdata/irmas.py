@@ -115,6 +115,11 @@ DATA = utils.LargeData(
 )
 
 
+INST_DICT = {
+    'cel', 'cla', 'flu', 'gac', 'gel', 'org', 'pia', 'sax', 'tru', 'vio', 'voi'
+}
+
+
 class Track(track.Track):
     """IRMAS track class
 
@@ -312,7 +317,9 @@ def load_pred_inst(audio_path, annotation_path, train):
 
     pred_inst = []
     if train is True:
-        pred_inst.append(audio_path.split('[')[1].split(']')[0])
+        inst_code = os.path.basename(os.path.dirname(audio_path))
+        pred_inst.append(inst_code)
+        assert inst_code in INST_DICT, "Instrument {} not in instrument dictionary".format(inst_code)
 
         return pred_inst
 
@@ -321,6 +328,7 @@ def load_pred_inst(audio_path, annotation_path, train):
             pred_inst_file = fopen.readlines()
             for inst_ in pred_inst_file:
                 inst_code = inst_[:3]
+                assert inst_code in INST_DICT, "Instrument {} not in instrument dictionary".format(inst_code)
                 pred_inst.append(inst_code)
 
         return pred_inst
