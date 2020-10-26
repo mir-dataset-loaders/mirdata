@@ -1,0 +1,127 @@
+{
+ "exclusive": false, 
+ "images": {
+  "large": {
+   "url": "https://geo-media.beatport.com/image/f5bb204b-2d77-4bbe-b436-c0c2d59fd688.jpg", 
+   "width": 500, 
+   "id": 5121260, 
+   "height": 500
+  }, 
+  "small": {
+   "url": "https://geo-media.beatport.com/image/a5640aa6-57b9-43e1-8ae1-b7d2a13be1d3.jpg", 
+   "width": 30, 
+   "id": 26964, 
+   "height": 30
+  }, 
+  "medium": {
+   "url": "https://geo-media.beatport.com/image/e3bc205b-a3fa-4edb-bb2d-ae1980d15d02.jpg", 
+   "width": 60, 
+   "id": 11241, 
+   "height": 60
+  }, 
+  "dynamic": {
+   "url": "https://geo-media.beatport.com/image_size/{w}x{h}/f5bb204b-2d77-4bbe-b436-c0c2d59fd688.jpg", 
+   "id": 5121260
+  }
+ }, 
+ "artists": [
+  {
+   "slug": "lindstrom", 
+   "id": 7992, 
+   "name": "Lindstrom"
+  }
+ ], 
+ "duration": {
+  "minutes": "5:37", 
+  "milliseconds": 337866
+ }, 
+ "id": 100066, 
+ "genres": [
+  {
+   "slug": "electronica-downtempo", 
+   "id": 3, 
+   "name": "Electronica / Downtempo"
+  }
+ ], 
+ "title": "Monsteer (Original Mix)", 
+ "label": {
+  "slug": "dialect-recordings", 
+  "id": 1954, 
+  "name": "Dialect Recordings"
+ }, 
+ "mix": "Original Mix", 
+ "preview": {
+  "mp4": {
+   "url": "https://geo-samples.beatport.com/track/6c36c681-b2ad-46f0-a575-f2f18bfdc0a3.LOFI.mp4", 
+   "offset": {
+    "start": 135146, 
+    "end": 255146
+   }
+  }, 
+  "mp3": {
+   "url": "https://geo-samples.beatport.com/track/6c36c681-b2ad-46f0-a575-f2f18bfdc0a3.LOFI.mp3", 
+   "offset": {
+    "start": 135146, 
+    "end": 255146
+   }
+  }
+ }, 
+ "type": "track", 
+ "remixers": [], 
+ "purchase_type": null, 
+ "audio_format": "mp3", 
+ "sale_type": "albumOnly", 
+ "purchase": 2, 
+ "price": {
+  "symbol": "\u20ac", 
+  "code": "EUR", 
+  "display": "\u20ac1.30", 
+  "value": 1.3
+ }, 
+ "component": "Track Detail", 
+ "sponsored": false, 
+ "key": "D maj", 
+ "date": {
+  "released": "2006-03-13", 
+  "published": "2006-03-13"
+ }, 
+ "active": true, 
+ "slug": "monsteer-original-mix", 
+ "preorder": false, 
+ "name": "Monsteer", 
+ "component_type": null, 
+ "bpm": 115, 
+ "formats": {
+  "wav": {
+   "symbol": "\u20ac", 
+   "code": "EUR", 
+   "display": "\u20ac0.75", 
+   "value": 0.75
+  }, 
+  "aiff": {
+   "symbol": "\u20ac", 
+   "code": "EUR", 
+   "display": "\u20ac0.75", 
+   "value": 0.75
+  }
+ }, 
+ "release": {
+  "slug": "dialect-intersection", 
+  "id": 23943, 
+  "name": "Dialect Intersection"
+ }, 
+ "waveform": {
+  "large": {
+   "url": "https://geo-media.beatport.com/image/2b8bd856-55ad-40fc-b754-5bca7d219c0c.png", 
+   "width": 1500, 
+   "id": 2422005, 
+   "height": 250
+  }, 
+  "dynamic": {
+   "url": "https://geo-media.beatport.com/image_size/{w}x{h}/2b8bd856-55ad-40fc-b754-5bca7d219c0c.png", 
+   "id": 2422005
+  }
+ }, 
+ "guest_pick": false, 
+ "sub_genres": []
+}
