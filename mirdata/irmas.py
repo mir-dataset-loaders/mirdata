@@ -151,9 +151,12 @@ class Track(track.Track):
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths['annotation'][0]
         )
-
+        self.predominant_instrument = None
         self._track_metadata = {}
         if '__' in track_id:
+            self.predominant_instrument = os.path.basename(os.path.dirname(self.audio_path))
+            assert self.predominant_instrument in INST_DICT, "Instrument {} not in instrument dict".format(self.predominant_instrument)
+
             if 'dru' in self._track_paths['audio'][0] or 'nod' in self._track_paths['audio'][0]:
                 genre = self._track_paths['audio'][0].split('.')[0].split('[')[3].split(']')[0]
                 _track_metadata = {
@@ -181,8 +184,12 @@ class Track(track.Track):
 
     @utils.cached_property
     def instrument(self):
-        """String: instrument"""
-        return load_pred_inst(self.audio_path, self.annotation_path, self.train)
+        """(list, string): instrument"""
+        if self.predominant_instrument is not None:
+            return [self.predominant_instrument]
+        else:
+            return load_pred_inst(self.annotation_path)
+
 
     @property
     def audio(self):
@@ -298,38 +305,27 @@ def load(data_home=None):
     return data
 
 
-def load_pred_inst(audio_path, annotation_path, train):
+def load_pred_inst(annotation_path):
     """Load predominant instrument of track
 
     Args:
-        audio_path (str): Local path where the track is stored.
-        train (bool): Flag to know if track is from the train or test set
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
         annotation_path (str): Local path where the testing annotation is stored.
     Returns:
         pred_inst (str): track predominant instrument extracted from filename
     """
-    if audio_path is None and annotation_path is None:
+    if annotation_path is None:
         return None
 
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
+    if not os.path.exists(annotation_path):
+        raise IOError("audio_path {} does not exist".format(annotation_path))
 
     pred_inst = []
-    if train is True:
-        inst_code = os.path.basename(os.path.dirname(audio_path))
-        pred_inst.append(inst_code)
-        assert inst_code in INST_DICT, "Instrument {} not in instrument dictionary".format(inst_code)
-
-        return pred_inst
-
-    else:
-        with open(annotation_path, 'r') as fopen:
-            pred_inst_file = fopen.readlines()
-            for inst_ in pred_inst_file:
-                inst_code = inst_[:3]
-                assert inst_code in INST_DICT, "Instrument {} not in instrument dictionary".format(inst_code)
-                pred_inst.append(inst_code)
+    with open(annotation_path, 'r') as fopen:
+        pred_inst_file = fopen.readlines()
+        for inst_ in pred_inst_file:
+            inst_code = inst_[:3]
+            assert inst_code in INST_DICT, "Instrument {} not in instrument dictionary".format(inst_code)
+            pred_inst.append(inst_code)
 
         return pred_inst
 

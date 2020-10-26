@@ -27,6 +27,7 @@ def test_track():
         'audio_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.wav",
         'track_id': '1',
+        'predominant_instrument': None,
         'genre': None,
         'drum': None,
         'train': False
@@ -37,17 +38,18 @@ def test_track():
         'audio_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TrainingData/cla/"
         + "[cla][cla]0189__2.wav",
         'track_id': '0189__2',
+        'predominant_instrument': 'cla',
         'genre': 'cla',
         'drum': None,
         'train': True
     }
 
-    expected_property_types = {
+    expected_property_test_types = {
         'instrument': list
     }
 
-    run_track_tests(track, expected_attributes, expected_property_types)
-    run_track_tests(track_train, expected_attributes_train, expected_property_types)
+    run_track_tests(track, expected_attributes, expected_property_test_types)
+    run_track_tests(track_train, expected_attributes_train, expected_property_test_types)
 
     audio, sr = track.audio
     assert sr == 44100
@@ -90,31 +92,19 @@ def test_load_pred_inst():
         "tests/resources/mir_datasets/IRMAS/IRMAS-TrainingData/cla/"
         + "[cla][cla]0189__2.wav"
     )
-    pred_inst_ann_path_train = (
-        "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
-        + "[cla][cla]0189__2.wav"
-    )
-    pred_inst_data_train = irmas.load_pred_inst(
-        pred_inst_audio_train, pred_inst_ann_path_train, train=True
-    )
-    assert type(pred_inst_data_train) is list
-    assert type(pred_inst_data_train[0]) is str
-    assert pred_inst_data_train == ['cla']
-    assert irmas.load_pred_inst(None, None, train=True) is None
+
+    pred_inst_train = os.path.basename(os.path.dirname(pred_inst_audio_train))
+    assert pred_inst_train == 'cla'
 
     # Testing samples
-    pred_inst_audio_test = (
-        "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
-        + "02 - And The Body Will Die-8.wav"
-    )
     pred_inst_ann_path_test = (
         "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.txt"
     )
     pred_inst_data_test = irmas.load_pred_inst(
-        pred_inst_audio_test, pred_inst_ann_path_test, train=False
+        pred_inst_ann_path_test
     )
     assert type(pred_inst_data_test) is list
     assert type(pred_inst_data_test[0]) is str
     assert pred_inst_data_test == ['gel', 'voi']
-    assert irmas.load_pred_inst(None, None, train=False) is None
+    assert irmas.load_pred_inst(None) is None
