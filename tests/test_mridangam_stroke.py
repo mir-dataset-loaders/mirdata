@@ -58,6 +58,7 @@ def test_load_tonic():
     track = mridangam_stroke.Track(default_trackid, data_home=data_home)
     tonic = mridangam_stroke.load_tonic(track.audio_path)
     assert tonic == 'B'
+    assert tonic in mridangam_stroke.TONIC_DICT
 
 
 def test_load_stroke_name():
@@ -66,3 +67,4 @@ def test_load_stroke_name():
     track = mridangam_stroke.Track(default_trackid, data_home=data_home)
     stroke_name = mridangam_stroke.load_stroke_name(track.audio_path)
     assert stroke_name == 'bheem'
+    assert stroke_name in mridangam_stroke.STROKE_DICT
