@@ -67,6 +67,8 @@ def test_dataset():
     dataset = mirdata.Dataset("ikala")
     assert isinstance(dataset, core.Dataset)
 
+    print(dataset)  # test that repr doesn't fail
+
 
 def test_dataset_errors():
     with pytest.raises(ValueError):

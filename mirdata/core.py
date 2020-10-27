@@ -53,7 +53,7 @@ class Dataset(object):
         self._download_info = getattr(module, "DOWNLOAD_INFO", None)
         self._track_object = getattr(module, "Track", None)
         self._download_fn = getattr(module, "_download", download_utils.downloader)
-        self.readme = module.__doc__
+        self._readme_str = module.__doc__
 
         if data_home is None:
             self.data_home = self.default_path
@@ -73,15 +73,18 @@ class Dataset(object):
 
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
+        repr_string += "-" * MAX_STR_LEN
+        repr_string += "\n"
         repr_string += (
-            "Call the .readme method for complete documentation of this dataset."
+            "Call the .readme method for complete documentation of this dataset.\n"
         )
         repr_string += "Call the .cite method for bibtex citations.\n"
-        repr_string += "=" * MAX_STR_LEN
+        repr_string += "-" * MAX_STR_LEN
         repr_string += "\n"
         if self._track_object is not None:
-            repr_string += "Tracks:\n"
-            repr_string += self.track.__repr__
+            repr_string += self.track.__doc__
+            repr_string += "-" * MAX_STR_LEN
+            repr_string += "\n"
 
         return repr_string
 
@@ -128,6 +131,11 @@ class Dataset(object):
             track (dataset.Track): a random Track object
         """
         return self.track(random.choice(self.track_ids))
+
+    def readme(self):
+        """Print the dataset's readme.
+        """
+        print(self._readme_str)
 
     def cite(self):
         """Print the reference"""

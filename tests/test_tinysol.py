@@ -9,12 +9,12 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "Fl-ord-C4-mf-N-T14d"
-    data_home = "tests/resources/mir_datasets/TinySOL"
+    data_home = "tests/resources/mir_datasets/tinysol"
     track = tinysol.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
         "track_id": "Fl-ord-C4-mf-N-T14d",
-        "audio_path": "tests/resources/mir_datasets/TinySOL/"
+        "audio_path": "tests/resources/mir_datasets/tinysol/"
         + "audio/Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav",
         "dynamics": "mf",
         "fold": 0,
@@ -44,7 +44,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/TinySOL"
+    data_home = "tests/resources/mir_datasets/tinysol"
 
     # Case with a wind instrument (no string_id)
     track = tinysol.Track("Fl-ord-C4-mf-N-T14d", data_home=data_home)
