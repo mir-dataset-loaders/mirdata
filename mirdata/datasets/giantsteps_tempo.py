@@ -1,30 +1,31 @@
 # -*- coding: utf-8 -*-
 """giantsteps_tempo Dataset Loader
 
-name:             GiantSteps (tempo+genre)
+name: GiantSteps (tempo+genre)
 
-contact:          Richard Vogl <richard.vogl@tuwien.ac.at>
-                  Peter Knees <peter.knees@tuwien.ac.at>
+contact:
+  * Richard Vogl <richard.vogl@tuwien.ac.at>
+  * Peter Knees <peter.knees@tuwien.ac.at>
 
-description:      collection of annotations for 664 2min(1) audio previews from
-                  www.beatport.com
+description:  collection of annotations for 664 2min(1) audio previews from
+  www.beatport.com
 
-references:       [1] Peter Knees, Ángel Faraldo, Perfecto Herrera, Richard Vogl,
-                  Sebastian Böck, Florian Hörschläger, Mickael Le Goff: "Two data
-                  sets for tempo estimation and key detection in electronic dance
-                  music annotated from user corrections", Proc. of the 16th
-                  Conference of the International Society for Music Information
-                  Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
+references:       
+[1] Peter Knees, Ángel Faraldo, Perfecto Herrera, Richard Vogl,
+    Sebastian Böck, Florian Hörschläger, Mickael Le Goff: "Two data
+    sets for tempo estimation and key detection in electronic dance
+    music annotated from user corrections", Proc. of the 16th
+    Conference of the International Society for Music Information
+    Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
 
-                  [2] Hendrik Schreiber, Meinard Müller: "A Crowdsourced Experiment
-                  for Tempo Estimation of Electronic Dance Music", Proc. of the
-                  19th Conference of the International Society for Music
-                  Information Retrieval (ISMIR'18), Sept. 2018, Paris, France.
+[2] Hendrik Schreiber, Meinard Müller: "A Crowdsourced Experiment
+    for Tempo Estimation of Electronic Dance Music", Proc. of the
+    19th Conference of the International Society for Music
+    Information Retrieval (ISMIR'18), Sept. 2018, Paris, France.
 
-annotations:      tempo (bpm), genre
+annotations: tempo (bpm), genre
 
 notes:
-=========================================================================
 The audio files (664 files, size ~1gb) can be downloaded from http://www.beatport.com/
 using the bash script:
 
@@ -61,7 +62,6 @@ name              length
 3577631.LOFI.mp3  119
 """
 
-
 import librosa
 import os
 
@@ -77,15 +77,15 @@ BIBTEX = """@inproceedings{knees2015two,
   author={Knees, Peter and Faraldo P{\'e}rez, {\'A}ngel and Boyer, Herrera and Vogl, Richard and B{\"o}ck, Sebastian and H{\"o}rschl{\"a}ger, Florian and Le Goff, Mickael and others},
   booktitle={Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR); 2015 Oct 26-30; M{\'a}laga, Spain.[M{\'a}laga]: International Society for Music Information Retrieval, 2015. p. 364-70.},
   year={2015},
-  organization={International Society for Music Information Retrieval (ISMIR)}
+  organization={International Society for Music Information Retrieval (ISMIR)},
 }
 @inproceedings{SchreiberM18a_Tempo_ISMIR,
-author    = {Hendrik Schreiber and Meinard M{\"u}ller},
-title     = {A Crowdsourced Experiment for Tempo Estimation of Electronic Dance Music},
-booktitle = {Proceedings of the International Conference on Music Information Retrieval ({ISMIR})},
-address   = {Paris, France},
-year      = {2018},
-url-pdf   = {http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf}
+  author={Hendrik Schreiber and Meinard M{\"u}ller},
+  title={A Crowdsourced Experiment for Tempo Estimation of Electronic Dance Music},
+  booktitle={Proceedings of the International Conference on Music Information Retrieval ({ISMIR})},
+  address={Paris, France},
+  year={2018},
+  url-pdf={http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf},
 }"""
 
 DATA = utils.LargeData("giantsteps_tempo_index.json")
@@ -111,6 +111,7 @@ DOWNLOAD_INFO = """
 
 class Track(core.Track):
     """giantsteps_tempo track class
+
     Args:
         track_id (str): track id of the track
 
@@ -173,8 +174,10 @@ class Track(core.Track):
 
 def load_audio(audio_path):
     """Load a giantsteps_tempo audio file.
+
     Args:
         audio_path (str): path to audio file
+
     Returns:
         y (np.ndarray): the mono audio signal
         sr (float): The sample rate of the audio file
@@ -186,8 +189,10 @@ def load_audio(audio_path):
 
 def load_genre(path):
     """Load genre data from a file
+
     Args:
         path (str): path to metadata annotation file
+
     Returns:
         (str): loaded genre data
     """
@@ -202,8 +207,10 @@ def load_genre(path):
 
 def load_tempo(tempo_path):
     """Load giantsteps_tempo tempo data from a file ordered by confidence
+
     Args:
         tempo_path (str): path to tempo annotation file
+
     Returns:
         (list of utils.TempoData): loaded tempo data
     """
