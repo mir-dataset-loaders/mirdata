@@ -18,6 +18,12 @@ mirdata.beatles
 
 .. automodule:: mirdata.beatles
    :members:
+   
+mirdata.beatport_key
+^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.beatport_key
+   :members:
 
 mirdata.dali
 ^^^^^^^^^^^^
@@ -25,22 +31,17 @@ mirdata.dali
 .. automodule:: mirdata.dali
    :members:
 
-
-
 mirdata.giantsteps_tempo
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.giantsteps_tempo
-
-
-
+   :members:
 
 mirdata.giantsteps_key
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.giantsteps_key
    :members:
-
 
 mirdata.groove_midi
 ^^^^^^^^^^^^^^^^^^^
@@ -48,13 +49,11 @@ mirdata.groove_midi
 .. automodule:: mirdata.groove_midi
    :members:
 
-
 mirdata.gtzan_genre
 ^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.gtzan_genre
    :members:
-
 
 mirdata.guitarset
 ^^^^^^^^^^^^^^^^^
@@ -71,7 +70,7 @@ mirdata.ikala
 
 
 mirdata.maestro
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.maestro
    :members:
