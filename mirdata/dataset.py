@@ -127,7 +127,7 @@ class Dataset(object):
             force_overwrite (bool):
                 If True, existing files are overwritten by the downloaded files.
             cleanup (bool):
-                Whether to delete the zip/tar file after extracting.
+                Whether to delete any zip/tar files after extracting.
 
         Raises:
             ValueError: if invalid keys are passed to partial_download

@@ -3,11 +3,11 @@
 This test takes a long time, but it makes sure that the datset can be locally downloaded,
 validated successfully, and loaded.
 """
-import importlib
-from tests.test_utils import get_attributes_and_properties
 import os
 import pytest
+import tqdm
 
+from tests.test_utils import get_attributes_and_properties
 import mirdata
 
 
@@ -17,26 +17,19 @@ def dataset(test_dataset):
         return None
     elif test_dataset not in mirdata.__all__:
         raise ValueError("{} is not a dataset in mirdata".format(test_dataset))
-
-    return importlib.import_module("mirdata.{}".format(test_dataset))
-
-
-@pytest.fixture()
-def data_home_dir(dataset):
-    if dataset is None:
-        return None
-    return os.path.join("tests/resources/mir_datasets_full", dataset.name)
+    data_home = os.path.join("tests/resources/mir_datasets_full", test_dataset)
+    return mirdata.Dataset(test_dataset, data_home)
 
 
 # This is magically skipped by the the remote fixture `skip_remote` in conftest.py
 # when tests are run without the --local flag
-def test_download(skip_remote, dataset, data_home_dir, skip_download):
+def test_download(skip_remote, dataset, skip_download):
     if dataset is None:
         pytest.skip()
 
     # download the dataset
     if not skip_download:
-        dataset.download(data_home=data_home_dir)
+        dataset.download()
 
         print(
             "If this dataset does not have openly downloadable data, "
@@ -45,33 +38,31 @@ def test_download(skip_remote, dataset, data_home_dir, skip_download):
         )
 
 
-def test_validation(skip_remote, dataset, data_home_dir):
+def test_validation(skip_remote, dataset):
     if dataset is None:
         pytest.skip()
 
     # run validation
-    missing_files, invalid_checksums = dataset.validate(
-        data_home=data_home_dir, silence=True
-    )
+    missing_files, invalid_checksums = dataset.validate(verbose=True)
 
     assert missing_files == {}
     assert invalid_checksums == {}
 
 
-def test_load(skip_remote, dataset, data_home_dir):
+def test_load(skip_remote, dataset):
     if dataset is None:
         pytest.skip()
 
     # run load
-    all_data = dataset.load(data_home=data_home_dir)
+    all_data = dataset.load_tracks()
 
     assert isinstance(all_data, dict)
 
-    track_ids = dataset.track_ids()
+    track_ids = dataset.track_ids
     assert set(track_ids) == set(all_data.keys())
 
     # test that all attributes and properties can be called
-    for track_id in track_ids:
+    for track_id in tqdm.tqdm(track_ids):
         track = all_data[track_id]
         track_data = get_attributes_and_properties(track)
 

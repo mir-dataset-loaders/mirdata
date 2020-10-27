@@ -263,12 +263,11 @@ def _download(
     """
     download_utils.downloader(
         save_dir,
-        remotes=None,
+        remotes=remotes,
         info_message=None,
         force_overwrite=force_overwrite,
         cleanup=cleanup,
     )
-
     # files get downloaded to a folder called Orchset - move everything up a level
     duplicated_orchset_dir = os.path.join(save_dir, "Orchset")
     orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, "*"))
