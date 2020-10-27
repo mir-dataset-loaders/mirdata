@@ -20,6 +20,8 @@ Attributes:
 
     EventData (namedtuple): `start_times`, `end_times`, `event`
 
+    TempoData (namedtuple): `time`, `duration`, `value`, `confidence`
+
 """
 
 
@@ -185,6 +187,8 @@ ChordData = namedtuple('ChordData', ['intervals', 'labels'])
 
 KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
 
+TempoData = namedtuple('TempoData', ['time', 'duration', 'value', 'confidence'])
+
 EventData = namedtuple('EventData', ['start_times', 'end_times', 'event'])
 
 
@@ -208,10 +212,10 @@ def load_json_index(filename):
 
 
 class cached_property(object):
-    """ A property that is only computed once per instance and then replaces
-        itself with an ordinary attribute. Deleting the attribute resets the
-        property.
-        Source: https://github.com/bottlepy/bottle/commit/fa7733e075da0d790d809aa3d2f53071897e6f76
+    """A property that is only computed once per instance and then replaces
+    itself with an ordinary attribute. Deleting the attribute resets the
+    property.
+    Source: https://github.com/bottlepy/bottle/commit/fa7733e075da0d790d809aa3d2f53071897e6f76
     """
 
     def __init__(self, func):
