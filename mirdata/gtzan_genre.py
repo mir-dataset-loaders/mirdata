@@ -15,7 +15,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 
@@ -37,7 +37,7 @@ REMOTES = {
 DATA = utils.LargeData("gtzan_genre_index.json")
 
 
-class Track(track.Track):
+class Track(core.Track):
     """gtzan_genre Track class
 
     Args:

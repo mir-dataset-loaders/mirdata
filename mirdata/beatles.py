@@ -14,7 +14,7 @@ import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 BIBTEX = """@inproceedings{mauch2009beatles,
@@ -49,7 +49,7 @@ DOWNLOAD_INFO = """
 DATA = utils.LargeData("beatles_index.json")
 
 
-class Track(track.Track):
+class Track(core.Track):
     """Beatles track class
 
     Args:

@@ -39,7 +39,7 @@ import librosa
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 # these functions are identical for all rwc datasets
@@ -135,7 +135,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("rwc_jazz_index.json", _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """rwc_jazz Track class
 
     Args:

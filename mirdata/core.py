@@ -1,13 +1,16 @@
-"""Module containing the Dataset base class
+# -*- coding: utf-8 -*-
+"""core mirdata classes
 """
 import importlib
 import os
 import random
+import types
 
 import mirdata
 from mirdata import download_utils
 from mirdata import utils
 
+MAX_STR_LEN = 100
 DATASETS = mirdata.__all__
 
 
@@ -28,7 +31,7 @@ class Dataset(object):
         remotes (dict): data to be downloaded
         index (dict): dataset file index
         download_info (str): download instructions or caveats
-        track (mirdata.track.Track): function that inputs a track_id
+        track (mirdata.core.Track): function that inputs a track_id
         readme (str): information about the dataset
         data_home (str): path where mirdata will look for the dataset
 
@@ -67,6 +70,20 @@ class Dataset(object):
                 method = getattr(module, method_name)
                 setattr(self, method_name, method)
                 # getattr(self, method_name).__doc__ = method.__doc__
+
+    def __repr__(self):
+        repr_string = "The {} dataset\n".format(self.name)
+        repr_string += (
+            "Call the .readme method for complete documentation of this dataset."
+        )
+        repr_string += "Call the .cite method for bibtex citations.\n"
+        repr_string += "=" * MAX_STR_LEN
+        repr_string += "\n"
+        if self._track_object is not None:
+            repr_string += "Tracks:\n"
+            repr_string += self.track.__repr__
+
+        return repr_string
 
     @property
     def default_path(self):
@@ -169,3 +186,39 @@ class Dataset(object):
             self._index, self.data_home, verbose=verbose
         )
         return missing_files, invalid_checksums
+
+
+class Track(object):
+    def __repr__(self):
+        properties = [v for v in dir(self.__class__) if not v.startswith("_")]
+        attributes = [
+            v for v in dir(self) if not v.startswith("_") and v not in properties
+        ]
+
+        repr_str = "Track(\n"
+
+        for attr in attributes:
+            val = getattr(self, attr)
+            if isinstance(val, str):
+                if len(val) > MAX_STR_LEN:
+                    val = "...{}".format(val[-MAX_STR_LEN:])
+                val = '"{}"'.format(val)
+            repr_str += "  {}={},\n".format(attr, val)
+
+        for prop in properties:
+            val = getattr(self.__class__, prop)
+            if isinstance(val, types.FunctionType):
+                continue
+
+            if val.__doc__ is None:
+                raise ValueError("{} has no documentation".format(prop))
+
+            val_type_str = val.__doc__.split(":")[0]
+            repr_str += "  {}: {},\n".format(prop, val_type_str)
+
+        repr_str += ")"
+        return repr_str
+
+    def to_jams(self):
+        raise NotImplementedError
+

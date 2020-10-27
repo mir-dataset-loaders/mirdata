@@ -39,7 +39,7 @@ import pretty_midi
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 
@@ -98,7 +98,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("maestro_index.json", _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """MAESTRO Track class
 
     Args:

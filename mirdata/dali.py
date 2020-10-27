@@ -22,7 +22,7 @@ import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 # this is the package, needed to load the annotations.
@@ -83,7 +83,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("dali_index.json", _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """DALI melody Track class
 
     Args:

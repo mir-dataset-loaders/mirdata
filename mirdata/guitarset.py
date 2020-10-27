@@ -55,7 +55,7 @@ import librosa
 import numpy as np
 
 from mirdata import download_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 
@@ -109,7 +109,7 @@ _GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
 DATA = utils.LargeData("guitarset_index.json")
 
 
-class Track(track.Track):
+class Track(core.Track):
     """guitarset Track class
 
     Args:

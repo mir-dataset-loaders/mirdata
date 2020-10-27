@@ -32,7 +32,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 BIBTEX = """@inproceedings{knees2015two,
@@ -66,7 +66,7 @@ REMOTES = {
 DATA = utils.LargeData("giantsteps_key_index.json")
 
 
-class Track(track.Track):
+class Track(core.Track):
     """giantsteps_key track class
 
     Args:

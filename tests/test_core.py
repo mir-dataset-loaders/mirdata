@@ -3,8 +3,7 @@
 import sys
 import pytest
 
-from mirdata import track
-from mirdata import dataset
+from mirdata import core
 
 if sys.version_info.major == 3:
     builtin_module_name = "builtins"
@@ -13,7 +12,7 @@ else:
 
 
 def test_track_repr():
-    class TestTrack(track.Track):
+    class TestTrack(core.Track):
         def __init__(self):
             self.a = "asdf"
             self.b = 1.2345678
@@ -47,7 +46,7 @@ def test_track_repr():
     with pytest.raises(NotImplementedError):
         test_track.to_jams()
 
-    class NoDocsTrack(track.Track):
+    class NoDocsTrack(core.Track):
         @property
         def no_doc(self):
             return "whee!"
@@ -59,9 +58,9 @@ def test_track_repr():
 
 def test_dataset_errors():
     with pytest.raises(ValueError):
-        dataset.Dataset("not_a_dataset")
+        core.Dataset("not_a_dataset")
 
-    d = dataset.Dataset("orchset")
+    d = core.Dataset("orchset")
     d._track_object = None
     with pytest.raises(NotImplementedError):
         d.track("asdf")

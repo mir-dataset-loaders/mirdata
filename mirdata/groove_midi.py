@@ -52,7 +52,7 @@ import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils, jams_utils, track, utils
+from mirdata import download_utils, jams_utils, core, utils
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -228,7 +228,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("groove_midi_index.json", _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """Groove MIDI Track class
 
     Args:

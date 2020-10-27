@@ -66,7 +66,7 @@ import librosa
 import os
 
 from mirdata import download_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 import numpy as np
 import jams
@@ -109,7 +109,7 @@ DOWNLOAD_INFO = """
 """
 
 
-class Track(track.Track):
+class Track(core.Track):
     """giantsteps_tempo track class
     Args:
         track_id (str): track id of the track

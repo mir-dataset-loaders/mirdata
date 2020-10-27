@@ -11,7 +11,7 @@ import requests
 
 
 import mirdata
-from mirdata import track
+from mirdata import core
 from tests.test_utils import DEFAULT_DATA_HOME
 
 DATASETS = mirdata.__all__
@@ -50,8 +50,8 @@ def test_dataset_attributes():
             isinstance(dataset._download_info, str) or dataset._download_info is None
         ), "{}.DOWNLOAD_INFO must be a string".format(dataset_name)
         assert type(dataset._track_object) == type(
-            track.Track
-        ), "{}.Track must be an instance of track.Track".format(dataset_name)
+            core.Track
+        ), "{}.Track must be an instance of core.Track".format(dataset_name)
         assert callable(dataset._download_fn), "{}._download is not a function".format(
             dataset_name
         )
@@ -203,8 +203,8 @@ def test_load_and_trackids():
             except:
                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
             assert isinstance(
-                choice_track, track.Track
-            ), "{}.choice_track must return an instance of type track.Track".format(
+                choice_track, core.Track
+            ), "{}.choice_track must return an instance of type core.Track".format(
                 dataset_name
             )
 
@@ -274,8 +274,8 @@ def test_track():
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
         assert isinstance(
-            track_test, track.Track
-        ), "{}.track must be an instance of type track.Track".format(dataset_name)
+            track_test, core.Track
+        ), "{}.track must be an instance of type core.Track".format(dataset_name)
 
         assert hasattr(
             track_test, "to_jams"

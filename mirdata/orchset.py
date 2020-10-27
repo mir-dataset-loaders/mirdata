@@ -20,7 +20,7 @@ import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 BIBTEX = """@article{bosch2016evaluation,
@@ -106,7 +106,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("orchset_index.json", _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """orchset Track class
 
     Args:

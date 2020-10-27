@@ -30,7 +30,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 BIBTEX = """@inproceedings{lostanlen2019ismir,
@@ -85,7 +85,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("medley_solos_db_index.json", _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """medley_solos_db Track class
 
     Args:

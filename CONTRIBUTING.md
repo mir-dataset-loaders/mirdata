@@ -138,7 +138,7 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 
@@ -191,7 +191,7 @@ DATA = utils.LargeData('example_index.json', _load_metadata)
 # DATA = utils.LargeData('example_index.json')  ## use this if your dataset has no metadata
 
 
-class Track(track.Track):
+class Track(core.Track):
     """Example track class
     # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
     # -- `scripts/print_track_docstring.py my_dataset`
