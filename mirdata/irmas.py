@@ -184,12 +184,11 @@ class Track(track.Track):
 
     @utils.cached_property
     def instrument(self):
-        """(list, string): instrument"""
+        """(list, string): predominant instrument"""
         if self.predominant_instrument is not None:
             return [self.predominant_instrument]
         else:
             return load_pred_inst(self.annotation_path)
-
 
     @property
     def audio(self):
