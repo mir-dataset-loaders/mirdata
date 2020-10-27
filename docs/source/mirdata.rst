@@ -13,7 +13,7 @@ API documentation
 Datasets
 --------
 
-.. automodule:: mirdata.Datasets
+.. automodule:: mirdata.datasets
    :members:
 
 mirdata.beatles
