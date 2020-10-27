@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import itertools
+import re
 
 
 acousticbrainz_genre_INDEX_PATH = '../mirdata/indexes/acousticbrainz_genre_index.json'
@@ -31,8 +32,10 @@ def md5(file_path):
 def make_acousticbrainz_genre_index(data_path):
     count = 0
     acousticbrainz_genre_index = {}
-    datasets = ['allmusic', 'lastfm', 'tagtraum', 'discogs']
+    datasets = ['tagtraum']  # ,'allmusic', 'lastfm', 'tagtraum', 'discogs']
     dataset_types = ['validation', 'train']
+    f = open(acousticbrainz_genre_INDEX_PATH, 'w')
+    f.write('{\n')
     for dataset, dataset_type in itertools.product(datasets, dataset_types):
         tsv_file = open(os.path.join(data_path, "acousticbrainz-mediaeval-" + dataset + "-" + dataset_type + ".tsv"))
         read_tsv = csv.reader(tsv_file, delimiter="\t")
@@ -45,13 +48,14 @@ def make_acousticbrainz_genre_index(data_path):
                 if i == 0:
                     mbid = r
             ann_path = os.path.join(data_path, "acousticbrainz-mediaeval-" + dataset_type, mbid[:2], mbid + ".json")
-            acousticbrainz_genre_index[track_id] = {
-                'annotations': (ann_path, md5(ann_path)),
-            }
-            print(count)
+            f.write('\t\"%s\": {\n' % (track_id,))
+            f.write('\t\t\"annotations\": [\n')
+            f.write('\t\t\t\"%s\",\n' % (ann_path.replace(data_path + '/', ''),))
+            f.write('\t\t\t\"%s\"\n' % md5(ann_path))
+            f.write('\t\t\"]\n')
+            f.write('\t},\n')
             count += 1
-    with open(acousticbrainz_genre_INDEX_PATH, 'w') as fhandle:
-        json.dump(acousticbrainz_genre_index, fhandle, indent=2)
+    f.write('}')
 
 
 def main(args):
