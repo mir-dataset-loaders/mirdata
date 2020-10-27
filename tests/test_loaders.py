@@ -162,8 +162,7 @@ def test_download(mocker):
 # when tests are run with the --local flag
 def test_validate(skip_local):
     for dataset_name in DATASETS:
-        dataset_module = importlib.import_module("mirdata.{}".format(dataset_name))
-        data_home = os.path.join("tests/resources/mir_datasets", dataset_module.name)
+        data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
         dataset = mirdata.Dataset(dataset_name, data_home=data_home)
         try:
             dataset.validate()
