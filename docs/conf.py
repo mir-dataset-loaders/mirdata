@@ -22,7 +22,7 @@ copyright = "2019, Rachel Bittner, Magdalena Fuentes, David Rubinstein, Andreas 
 author = "Rachel Bittner, Magdalena Fuentes, David Rubinstein, Andreas Jansson, Keunwoo Choi, Thor Kell"
 
 
-from importlib.machinery import SourceFileLoader
+import importlib
 
 mirdata_version = importlib.import_module("mirdata.version")
 
