@@ -2,7 +2,8 @@
 
 import numpy as np
 
-from mirdata import medleydb_pitch, utils
+from mirdata.datasets import medleydb_pitch
+from mirdata import utils
 from tests.test_utils import run_track_tests
 
 

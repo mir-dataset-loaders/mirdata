@@ -22,7 +22,7 @@ from mirdata import core
 from mirdata import utils
 
 # these functions are identical for all rwc datasets
-from mirdata.rwc_classical import (
+from mirdata.datasets.rwc_classical import (
     load_beats,
     load_sections,
     load_audio,

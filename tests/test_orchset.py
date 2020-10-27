@@ -2,7 +2,8 @@
 import os, shutil
 import numpy as np
 
-from mirdata import orchset, utils, download_utils
+from mirdata.datasets import orchset
+from mirdata import utils, download_utils
 from tests.test_utils import run_track_tests
 
 

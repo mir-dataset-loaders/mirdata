@@ -4,7 +4,7 @@ import os
 
 from tests.test_utils import run_track_tests
 
-from mirdata import gtzan_genre
+from mirdata.datasets import gtzan_genre
 from tests.test_utils import DEFAULT_DATA_HOME
 
 TEST_DATA_HOME = "tests/resources/mir_datasets/gtzan_genre"

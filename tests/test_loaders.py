@@ -14,7 +14,7 @@ import mirdata
 from mirdata import core
 from tests.test_utils import DEFAULT_DATA_HOME
 
-DATASETS = mirdata.__all__
+DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
     "giantsteps_key": "3",
@@ -60,7 +60,9 @@ def test_dataset_attributes():
 
 def test_forward_compatibility():
     for dataset_name in DATASETS:
-        dataset_module = importlib.import_module("mirdata.{}".format(dataset_name))
+        dataset_module = importlib.import_module(
+            "mirdata.datasets.{}".format(dataset_name)
+        )
         assert not hasattr(
             dataset_module, "validate"
         ), "{}: loaders no longer need validate methods".format(dataset_name)

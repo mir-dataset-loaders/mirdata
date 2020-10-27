@@ -2,7 +2,8 @@
 
 import numpy as np
 
-from mirdata import rwc_popular, utils
+from mirdata.datasets import rwc_popular
+from mirdata import utils
 from tests.test_utils import run_track_tests
 
 

@@ -2,7 +2,8 @@
 
 import numpy as np
 
-from mirdata import beatles, utils
+from mirdata.datasets import beatles
+from mirdata import utils
 from tests.test_utils import run_track_tests
 
 

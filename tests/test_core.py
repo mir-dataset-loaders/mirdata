@@ -3,6 +3,7 @@
 import sys
 import pytest
 
+import mirdata
 from mirdata import core
 
 if sys.version_info.major == 3:
@@ -54,6 +55,17 @@ def test_track_repr():
     bad_track = NoDocsTrack()
     with pytest.raises(ValueError):
         bad_track.__repr__()
+
+
+def test_dataset():
+    dataset = mirdata.Dataset("guitarset")
+    assert isinstance(dataset, core.Dataset)
+
+    dataset = mirdata.Dataset("rwc_jazz")
+    assert isinstance(dataset, core.Dataset)
+
+    dataset = mirdata.Dataset("ikala")
+    assert isinstance(dataset, core.Dataset)
 
 
 def test_dataset_errors():

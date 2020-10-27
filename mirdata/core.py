@@ -11,7 +11,7 @@ from mirdata import download_utils
 from mirdata import utils
 
 MAX_STR_LEN = 100
-DATASETS = mirdata.__all__
+DATASETS = mirdata.DATASETS
 
 
 class Dataset(object):
@@ -45,7 +45,7 @@ class Dataset(object):
                     dataset, ",".join(DATASETS)
                 )
             )
-        module = importlib.import_module("mirdata.{}".format(dataset))
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset))
         self.name = dataset
         self.bibtex = getattr(module, "BIBTEX", None)
         self._remotes = getattr(module, "REMOTES", None)

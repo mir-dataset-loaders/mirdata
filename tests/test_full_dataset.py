@@ -15,7 +15,7 @@ import mirdata
 def dataset(test_dataset):
     if test_dataset == "":
         return None
-    elif test_dataset not in mirdata.__all__:
+    elif test_dataset not in mirdata.DATASETS:
         raise ValueError("{} is not a dataset in mirdata".format(test_dataset))
     data_home = os.path.join("tests/resources/mir_datasets_full", test_dataset)
     return mirdata.Dataset(test_dataset, data_home)

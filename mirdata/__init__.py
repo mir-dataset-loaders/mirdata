@@ -3,7 +3,7 @@
 
 from .version import version as __version__
 
-__all__ = [
+DATASETS = [
     "beatles",
     "dali",
     "giantsteps_key",

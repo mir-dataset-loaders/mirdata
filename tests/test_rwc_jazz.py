@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from mirdata import rwc_jazz, utils
+from mirdata.datasets import rwc_jazz
+from mirdata import utils
 from tests.test_utils import run_track_tests
 
 

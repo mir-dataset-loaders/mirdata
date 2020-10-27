@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-from mirdata import salami, utils
+from mirdata.datasets import salami
+from mirdata import utils
 from tests.test_utils import run_track_tests
 
 

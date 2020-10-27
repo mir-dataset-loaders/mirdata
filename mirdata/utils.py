@@ -192,7 +192,7 @@ EventData = namedtuple("EventData", ["start_times", "end_times", "event"])
 
 def load_json_index(filename):
     working_dir = os.path.dirname(os.path.realpath(__file__))
-    with open(os.path.join(working_dir, "indexes", filename)) as f:
+    with open(os.path.join(working_dir, "datasets/indexes", filename)) as f:
         return json.load(f)
 
 

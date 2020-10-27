@@ -4,7 +4,8 @@ import shutil
 import pretty_midi
 import numpy as np
 
-from mirdata import maestro, utils, download_utils
+from mirdata.datasets import maestro
+from mirdata import utils, download_utils
 from tests.test_utils import run_track_tests
 
 
