@@ -10,8 +10,11 @@ API documentation
 .. automodule:: mirdata
    :members:
 
-Dataset Loaders
----------------
+Datasets
+--------
+
+.. automodule:: mirdata.Datasets
+   :members:
 
 mirdata.beatles
 ^^^^^^^^^^^^^^^
