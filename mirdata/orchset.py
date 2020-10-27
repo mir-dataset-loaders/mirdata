@@ -133,7 +133,7 @@ class Track(track.Track):
 
     def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
-            raise ValueError("{} is not a valid track ID in Orchset".format(track_id))
+            raise ValueError("{} is not a valid track ID in orchset".format(track_id))
 
         self.track_id = track_id
 
@@ -271,12 +271,10 @@ def _download(
     # files get downloaded to a folder called Orchset - move everything up a level
     duplicated_orchset_dir = os.path.join(save_dir, "Orchset")
     orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, "*"))
-
     for fpath in orchset_files:
         shutil.move(fpath, save_dir)
-
     if os.path.exists(duplicated_orchset_dir):
-        os.removedirs(duplicated_orchset_dir)
+        shutil.rmtree(duplicated_orchset_dir)
 
 
 def load_melody(melody_path):
