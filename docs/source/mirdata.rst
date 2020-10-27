@@ -20,7 +20,7 @@ mirdata.beatles
    :members:
    
 mirdata.beatport_key
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.beatport_key
    :members:
@@ -34,7 +34,7 @@ mirdata.dali
 
 
 mirdata.giantsteps_tempo
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.giantsteps_tempo
 
@@ -42,7 +42,7 @@ mirdata.giantsteps_tempo
 
 
 mirdata.giantsteps_key
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.giantsteps_key
    :members:
@@ -77,7 +77,7 @@ mirdata.ikala
 
 
 mirdata.maestro
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.maestro
    :members:
