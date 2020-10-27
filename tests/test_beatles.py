@@ -9,19 +9,19 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "0111"
-    data_home = "tests/resources/mir_datasets/Beatles"
+    data_home = "tests/resources/mir_datasets/beatles"
     track = beatles.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/Beatles/"
+        "audio_path": "tests/resources/mir_datasets/beatles/"
         + "audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav",
-        "beats_path": "tests/resources/mir_datasets/Beatles/"
+        "beats_path": "tests/resources/mir_datasets/beatles/"
         + "annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt",
-        "chords_path": "tests/resources/mir_datasets/Beatles/"
+        "chords_path": "tests/resources/mir_datasets/beatles/"
         + "annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
-        "keys_path": "tests/resources/mir_datasets/Beatles/"
+        "keys_path": "tests/resources/mir_datasets/beatles/"
         + "annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
-        "sections_path": "tests/resources/mir_datasets/Beatles/"
+        "sections_path": "tests/resources/mir_datasets/beatles/"
         + "annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
         "title": "11_-_Do_You_Want_To_Know_A_Secret",
         "track_id": "0111",
@@ -51,7 +51,7 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = "tests/resources/mir_datasets/Beatles"
+    data_home = "tests/resources/mir_datasets/beatles"
     track = beatles.Track("0111", data_home=data_home)
     jam = track.to_jams()
 
@@ -153,7 +153,7 @@ def test_to_jams():
 
 def test_load_beats():
     beats_path = (
-        "tests/resources/mir_datasets/Beatles/annotations/beat/"
+        "tests/resources/mir_datasets/beatles/annotations/beat/"
         + "The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt"
     )
     beat_data = beatles.load_beats(beats_path)
@@ -179,7 +179,7 @@ def test_load_beats():
 
 def test_load_chords():
     chords_path = (
-        "tests/resources/mir_datasets/Beatles/annotations/chordlab/"
+        "tests/resources/mir_datasets/beatles/annotations/chordlab/"
         + "The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab"
     )
     chord_data = beatles.load_chords(chords_path)
@@ -201,7 +201,7 @@ def test_load_chords():
 
 def test_load_key():
     key_path = (
-        "tests/resources/mir_datasets/Beatles/annotations/keylab/"
+        "tests/resources/mir_datasets/beatles/annotations/keylab/"
         + "The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab"
     )
     key_data = beatles.load_key(key_path)
@@ -218,7 +218,7 @@ def test_load_key():
 
 def test_load_sections():
     sections_path = (
-        "tests/resources/mir_datasets/Beatles/annotations/seglab/"
+        "tests/resources/mir_datasets/beatles/annotations/seglab/"
         + "The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab"
     )
     section_data = beatles.load_sections(sections_path)

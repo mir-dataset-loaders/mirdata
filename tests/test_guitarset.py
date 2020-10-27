@@ -7,7 +7,7 @@ from mirdata.datasets import guitarset
 from mirdata import utils
 from tests.test_utils import run_track_tests
 
-TEST_DATA_HOME = "tests/resources/mir_datasets/GuitarSet"
+TEST_DATA_HOME = "tests/resources/mir_datasets/guitarset"
 TRACK = guitarset.Track("03_BN3-119-G_solo", data_home=TEST_DATA_HOME)
 
 
@@ -18,15 +18,15 @@ def test_track():
 
     expected_attributes = {
         "track_id": "03_BN3-119-G_solo",
-        "audio_hex_cln_path": "tests/resources/mir_datasets/GuitarSet/"
+        "audio_hex_cln_path": "tests/resources/mir_datasets/guitarset/"
         + "audio_hex-pickup_debleeded/03_BN3-119-G_solo_hex_cln.wav",
-        "audio_hex_path": "tests/resources/mir_datasets/GuitarSet/"
+        "audio_hex_path": "tests/resources/mir_datasets/guitarset/"
         + "audio_hex-pickup_original/03_BN3-119-G_solo_hex.wav",
-        "audio_mic_path": "tests/resources/mir_datasets/GuitarSet/"
+        "audio_mic_path": "tests/resources/mir_datasets/guitarset/"
         + "audio_mono-mic/03_BN3-119-G_solo_mic.wav",
-        "audio_mix_path": "tests/resources/mir_datasets/GuitarSet/"
+        "audio_mix_path": "tests/resources/mir_datasets/guitarset/"
         + "audio_mono-pickup_mix/03_BN3-119-G_solo_mix.wav",
-        "jams_path": "tests/resources/mir_datasets/GuitarSet/"
+        "jams_path": "tests/resources/mir_datasets/guitarset/"
         + "annotation/03_BN3-119-G_solo.jams",
         "player_id": "03",
         "tempo": 119,
@@ -142,7 +142,7 @@ def test_audio_hex_cln():
 
 def test_to_jams():
 
-    data_home = "tests/resources/mir_datasets/GuitarSet"
+    data_home = "tests/resources/mir_datasets/guitarset"
     track = guitarset.Track("03_BN3-119-G_solo", data_home=data_home)
     jam = track.to_jams()
 

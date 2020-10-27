@@ -11,7 +11,7 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
-    data_home = "tests/resources/mir_datasets/MAESTRO"
+    data_home = "tests/resources/mir_datasets/maestro"
     track = maestro.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
@@ -53,7 +53,7 @@ def test_track():
 
 def test_load_midi():
     midi_file = (
-        "tests/resources/mir_datasets/MAESTRO/2018/"
+        "tests/resources/mir_datasets/maestro/2018/"
         + "MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi"
     )
     midi = maestro.load_midi(midi_file)
@@ -63,7 +63,7 @@ def test_load_midi():
 
 def test_load_notes():
     midi_file = (
-        "tests/resources/mir_datasets/MAESTRO/2018/"
+        "tests/resources/mir_datasets/maestro/2018/"
         + "MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi"
     )
     notes = maestro.load_notes(midi_file)
@@ -74,7 +74,7 @@ def test_load_notes():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/MAESTRO"
+    data_home = "tests/resources/mir_datasets/maestro"
     metadata = maestro._load_metadata(data_home)
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
 
@@ -93,7 +93,7 @@ def test_load_metadata():
 
 
 def test_download_partial(httpserver):
-    data_home = "tests/resources/mir_datasets/MAESTRO_download"
+    data_home = "tests/resources/mir_datasets/maestro_download"
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
@@ -148,7 +148,7 @@ def test_download_partial(httpserver):
 
 
 def test_download(httpserver):
-    data_home = "tests/resources/mir_datasets/MAESTRO_download"
+    data_home = "tests/resources/mir_datasets/maestro_download"
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 

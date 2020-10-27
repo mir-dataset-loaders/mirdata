@@ -9,15 +9,15 @@ from tests.test_utils import run_track_tests
 def test_track():
 
     default_trackid = "4b196e6c99574dd49ad00d56e132712b"
-    data_home = "tests/resources/mir_datasets/DALI"
+    data_home = "tests/resources/mir_datasets/dali"
     track = dali.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
         "album": "Mezmerize",
-        "annotation_path": "tests/resources/mir_datasets/DALI/"
+        "annotation_path": "tests/resources/mir_datasets/dali/"
         + "annotations/4b196e6c99574dd49ad00d56e132712b.gz",
         "artist": "System Of A Down",
-        "audio_path": "tests/resources/mir_datasets/DALI/"
+        "audio_path": "tests/resources/mir_datasets/dali/"
         + "audio/4b196e6c99574dd49ad00d56e132712b.mp3",
         "audio_url": "zUzd9KyIDrM",
         "dataset_version": 1,
@@ -41,7 +41,7 @@ def test_track():
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
-    path_save = "/home/mfuentes/astre/code/repositories/mirdata/tests/resources/mir_datasets/DALI/annotations"
+    path_save = "/home/mfuentes/astre/code/repositories/mirdata/tests/resources/mir_datasets/dali/annotations"
     name = "test"
     track.annotation_object.write_json(path_save, name)
 
@@ -52,7 +52,7 @@ def test_track():
 
 def test_load_notes():
     notes_path = (
-        "tests/resources/mir_datasets/DALI/annotations/"
+        "tests/resources/mir_datasets/dali/annotations/"
         + "4b196e6c99574dd49ad00d56e132712b.gz"
     )
     note_data = dali.load_annotations_granularity(notes_path, "notes")
@@ -68,7 +68,7 @@ def test_load_notes():
 
 def test_load_words():
     data_path = (
-        "tests/resources/mir_datasets/DALI/annotations/"
+        "tests/resources/mir_datasets/dali/annotations/"
         + "4b196e6c99574dd49ad00d56e132712b.gz"
     )
     word_data = dali.load_annotations_granularity(data_path, "words")
@@ -85,7 +85,7 @@ def test_load_words():
 
 def test_load_lines():
     data_path = (
-        "tests/resources/mir_datasets/DALI/annotations/"
+        "tests/resources/mir_datasets/dali/annotations/"
         + "4b196e6c99574dd49ad00d56e132712b.gz"
     )
     line_data = dali.load_annotations_granularity(data_path, "lines")
@@ -106,7 +106,7 @@ def test_load_lines():
 
 def test_load_paragraphs():
     data_path = (
-        "tests/resources/mir_datasets/DALI/annotations/"
+        "tests/resources/mir_datasets/dali/annotations/"
         + "4b196e6c99574dd49ad00d56e132712b.gz"
     )
     par_data = dali.load_annotations_granularity(data_path, "paragraphs")
@@ -123,7 +123,7 @@ def test_load_paragraphs():
 
 def test_load_dali_object():
     data_path = (
-        "tests/resources/mir_datasets/DALI/annotations/"
+        "tests/resources/mir_datasets/dali/annotations/"
         + "4b196e6c99574dd49ad00d56e132712b.gz"
     )
     dali_data = dali.load_annotations_class(data_path)
