@@ -24,25 +24,25 @@ click the link provided in the "Module" column.
 
 
 
-+------------------+---------------------+---------------------+---------------------------+--------+
-| Module           | Name                | Downloadable?       | Annotation Types          | Tracks |
-+==================+=====================+=====================+===========================+========+
-| beatles_         | | The Beatles       | - audio: ❌         | - :ref:`beats`            | 180    |
-|                  | | Dataset           | - annotations: ✅   | - :ref:`sections`         |        |
-|                  |                     |                     | - :ref:`key`              |        |
-+------------------+---------------------+---------------------+---------------------------+--------+
-| beatport_key_    |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
-|                  |                     | - annotations: ✅   |                           |        |
-+------------------+---------------------+---------------------+---------------------------+--------+
-| dali_            | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
-|                  |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
-+------------------+---------------------+---------------------+---------------------------+--------+
-| groove_midi_     | | Groove MIDI       | - audio: ✅         | - :ref:`beats`            | 1150   |
-|                  | | Dataset           | - midi: ✅          | - :ref:`tempo`            |        |
-|                  |                     |                     | - :ref:`drums`            |        |
-+------------------+---------------------+---------------------+---------------------------+--------+
-| gtzan_genre_     | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
-|                  |                     | - annotations: ✅   |                           |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
+| Module            | Name                | Downloadable?       | Annotation Types          | Tracks |
++===================+=====================+=====================+===========================+========+
+| beatles_          | | The Beatles       | - audio: ❌         | - :ref:`beats`            | 180    |
+|                   | | Dataset           | - annotations: ✅   | - :ref:`sections`         |        |
+|                   |                     |                     | - :ref:`key`              |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
+| beatport_key_     |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
+|                   |                     | - annotations: ✅   |                           |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
+| dali_             | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
+|                   |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
+| groove_midi_      | | Groove MIDI       | - audio: ✅         | - :ref:`beats`            | 1150   |
+|                   | | Dataset           | - midi: ✅          | - :ref:`tempo`            |        |
+|                   |                     |                     | - :ref:`drums`            |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
+| gtzan_genre_      | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
+|                   |                     | - annotations: ✅   |                           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | giantsteps_tempo_ | | Giantsteps EDM    | - audio: ❌         | - :ref:`genre`            | 664    |
 |                   | | tempo Dataset     | - annotations: ✅   | - :ref:`tempo`            |        |
@@ -98,6 +98,7 @@ click the link provided in the "Module" column.
 |                  |                     | - annotations: ✅   | - :ref:`technique`        |        |
 |                  |                     |                     | - :ref:`notes`            |        |
 +------------------+---------------------+---------------------+---------------------------+--------+
+
 
 
 
@@ -237,7 +238,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _orchset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.orchset
 .. _rwc_classical: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_classical
 .. _rwc_jazz: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_jazz
-.. _rwc_pop: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_pop
+.. _rwc_popular: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_popular
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
 
