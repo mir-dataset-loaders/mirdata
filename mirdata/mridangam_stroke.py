@@ -115,7 +115,9 @@ class Track(track.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             tags_open_data=[(self.stroke_name, 'stroke_name')],
-            metadata={'tonic': self.tonic},
+            metadata={
+                'tonic': self.tonic
+            },
         )
 
 
