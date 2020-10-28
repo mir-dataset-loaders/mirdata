@@ -7,7 +7,7 @@ import itertools
 import re
 
 
-acousticbrainz_genre_INDEX_PATH = '../mirdata/indexes/acousticbrainz_genre_index.json'
+acousticbrainz_genre_INDEX_PATH = '../mirdata/indexes/test_acousticbrainz_genre_index.json'
 ACOUSTICBRAINZ_GENRE_ANNOTATION_SCHEMA = ['JAMS']
 
 
