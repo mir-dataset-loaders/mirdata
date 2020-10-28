@@ -254,7 +254,7 @@ class MultiTrack(track.MultiTrack):
     """Example multitrack class
 
     Args:
-        mtrack_id (str): track id of the track
+        mtrack_id (str): multitrack id
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
 
