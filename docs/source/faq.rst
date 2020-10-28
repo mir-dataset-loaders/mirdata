@@ -50,7 +50,7 @@ The creators of this library are Python users, so we made a libray in python. We
 
 
 A download link is broken for a loader's :code:`.download()` function. What do I do?
-----------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 Please open an issue_ and tag it with the "broken link" label.
 
 .. _issue: https://github.com/mir-dataset-loaders/mirdata/issues
