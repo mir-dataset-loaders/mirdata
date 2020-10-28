@@ -95,17 +95,16 @@ class Track(track.Track):
         instrument (str): instrument corresponding to the track
     """
 
-    def __init__(self, parent_track_id, track_id, data_home=None):
+    def __init__(self, mtrack_id, track_id, data_home=None):
 
-        self.track_id = parent_track_id + '_' + track_id
+        self.track_id = track_id
 
         if data_home is None:
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
 
-        self.audio_path = DATA.index[parent_track_id][track_id]
-
+        self.audio_path = os.path.join(data_home, DATA.index[mtrack_id][track_id][0])
 
     @property
     def audio(self):
@@ -118,7 +117,7 @@ class MultiTrack(track.MultiTrack):
     """Phenicx-Anechoic MultiTrack class
 
     Args:
-        track_id (str): track id of the track
+        mtrack_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets/Phenicx-Anechoic`
 
@@ -131,25 +130,32 @@ class MultiTrack(track.MultiTrack):
         sections (list): list of strings with section names
     """
 
-    def __init__(self, track_id, data_home=None):
-        if track_id not in DATA.index:
-            raise ValueError('{} is not a valid track ID in Example'.format(track_id))
+    def __init__(self, mtrack_id, data_home=None):
+        if mtrack_id not in DATA.index:
+            raise ValueError('{} is not a valid track ID in Example'.format(mtrack_id))
 
-        self.track_id = track_id
+        self.mtrack_id = mtrack_id
 
         if data_home is None:
             data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
 
-        self.tracks = {k:Track(self.track_id, k) for k, v in sorted(DATA.index[track_id].items()) if 'audio-' in k}
+        self.track_ids = [k for k, v in sorted(DATA.index[mtrack_id].items()) if 'audio-' in k]
+        self.tracks = {k:Track(self.mtrack_id, k, self._data_home) for k, v in sorted(DATA.index[mtrack_id].items()) if 'audio-' in k}
+
+        self.track_audio_attribute = "audio" # the attribute of Track which returns the relevant audio file for mixing
+
+
+        # self.mix_path = ...
+        # self.annotation_path = ...
 
 
         #### parse the keys for the list of instruments
         self.instruments = sorted(
             [
                 source.replace('score-', '')
-                for source in DATA.index[track_id].keys()
+                for source in DATA.index[mtrack_id].keys()
                 if 'score-' in source
             ]
         )
@@ -166,7 +172,29 @@ class MultiTrack(track.MultiTrack):
         )
 
         temp = self.get_score(['violin','viola'])
+
+        instruments_to_trackids = [tid for tid in self.track_ids if re.compile('|'.join(['violin','viola']),re.IGNORECASE).search(tid)]
+        temp = self.get_target(instruments_to_trackids)
         import pdb;pdb.set_trace()
+
+    # # -- multitracks can optionally have mix-level cached properties and properties
+    # @utils.cached_property
+    # def score(self):
+    #     """output type: description of output"""
+    #     return load_score(self.annotation_path)
+
+    # @property
+    # def audio(self):
+    #     """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
+    #     return load_audio(self.audio_path)
+
+    # def to_jams(self):
+    #     """Jams: the track's data in jams format"""
+    #     return jams_utils.jams_converter(
+    #         audio_path=self.mix_path,
+    #         annotation_data=[(self.annotation, None)],
+    #         ...
+    #     )
 
     def get_score(self, track_keys):
         """Get the score for a target which is a mixture of tracks
@@ -177,7 +205,7 @@ class MultiTrack(track.MultiTrack):
             target (EventData): EventData tuples (start_times, end_times, note)
 
         """
-        score_paths = [v[0] for k,v in DATA.index[self.track_id].items() if 'score-' in k and re.compile('|'.join(track_keys),re.IGNORECASE).search(v[0])]
+        score_paths = [v[0] for k,v in DATA.index[self.mtrack_id].items() if 'score-' in k and re.compile('|'.join(track_keys),re.IGNORECASE).search(v[0])]
 
         start_times = []
         end_times = []
