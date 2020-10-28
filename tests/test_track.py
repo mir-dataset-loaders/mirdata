@@ -57,7 +57,7 @@ def test_track_repr():
         bad_track.__repr__()
 
 
-def test_multitrack():
+def test_multitrack_basic():
     class TestTrack(track.Track):
         def __init__(self, key):
             self.key = key
@@ -65,10 +65,58 @@ def test_multitrack():
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), 1000
 
-    track_keys = ["a", "b", "c"]
-    tracks = {k: TestTrack(k) for k in track_keys}
+    class TestMultiTrack1(track.MultiTrack):
+        def __init__(self, mtrack_id, data_home):
+            self.mtrack_id = mtrack_id
+            self._data_home = data_home
 
-    mtrack = track.MultiTrack(tracks, "f")
+    mtrack = TestMultiTrack1("test", "foo")
+
+    with pytest.raises(NotImplementedError):
+        mtrack.to_jams()
+
+    with pytest.raises(NotImplementedError):
+        mtrack.get_target(["a"])
+
+    with pytest.raises(NotImplementedError):
+        mtrack.get_random_target()
+
+    with pytest.raises(NotImplementedError):
+        mtrack.get_mix()
+
+    class TestMultiTrack2(track.MultiTrack):
+        def __init__(self, mtrack_id, data_home):
+            self.mtrack_id = mtrack_id
+            self._data_home = data_home
+            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
+            self.track_audio_attribute = "f"
+
+        def to_jams(self):
+            return None
+
+    mtrack = TestMultiTrack2("test", "foo")
+    mtrack.to_jams()
+    mtrack.get_target(["a"])
+    mtrack.get_random_target()
+    mtrack.get_mix()
+
+
+def test_multitrack_mixing():
+    class TestTrack(track.Track):
+        def __init__(self, key):
+            self.key = key
+
+        def f(self):
+            return np.random.uniform(-1, 1, (2, 100)), 1000
+
+    class TestMultiTrack(track.MultiTrack):
+        def __init__(self, mtrack_id, data_home):
+            self.mtrack_id = mtrack_id
+            self._data_home = data_home
+            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
+            self.track_audio_attribute = "f"
+
+    mtrack = TestMultiTrack("test", "foo")
 
     target1 = mtrack.get_target(["a", "c"])
     assert target1.shape == (2, 100)
@@ -136,10 +184,14 @@ def test_multitrack_unequal_len():
         def f(self):
             return np.random.uniform(-1, 1, (2, np.random.randint(50, 100))), 1000
 
-    track_keys = ["a", "b", "c"]
-    tracks = {k: TestTrack(k) for k in track_keys}
+    class TestMultiTrack(track.MultiTrack):
+        def __init__(self, mtrack_id, data_home):
+            self.mtrack_id = mtrack_id
+            self._data_home = data_home
+            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
+            self.track_audio_attribute = "f"
 
-    mtrack = track.MultiTrack(tracks, "f")
+    mtrack = TestMultiTrack("test", "foo")
 
     with pytest.raises(ValueError):
         mtrack.get_target(["a", "b", "c"])
@@ -161,10 +213,14 @@ def test_multitrack_unequal_sr():
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), np.random.randint(10, 1000)
 
-    track_keys = ["a", "b", "c"]
-    tracks = {k: TestTrack(k) for k in track_keys}
+    class TestMultiTrack(track.MultiTrack):
+        def __init__(self, mtrack_id, data_home):
+            self.mtrack_id = mtrack_id
+            self._data_home = data_home
+            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
+            self.track_audio_attribute = "f"
 
-    mtrack = track.MultiTrack(tracks, "f")
+    mtrack = TestMultiTrack("test", "foo")
 
     with pytest.raises(ValueError):
         mtrack.get_target(["a", "b", "c"])
@@ -179,10 +235,14 @@ def test_multitrack_mono():
         def f(self):
             return np.random.uniform(-1, 1, (100)), 1000
 
-    track_keys = ["a", "b", "c"]
-    tracks = {k: TestTrack(k) for k in track_keys}
+    class TestMultiTrack(track.MultiTrack):
+        def __init__(self, mtrack_id, data_home):
+            self.mtrack_id = mtrack_id
+            self._data_home = data_home
+            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
+            self.track_audio_attribute = "f"
 
-    mtrack = track.MultiTrack(tracks, "f")
+    mtrack = TestMultiTrack("test", "foo")
 
     target1 = mtrack.get_target(["a", "c"])
     assert target1.shape == (1, 100)
@@ -200,10 +260,14 @@ def test_multitrack_mono():
         def f(self):
             return np.random.uniform(-1, 1, (1, 100)), 1000
 
-    track_keys = ["a", "b", "c"]
-    tracks = {k: TestTrack1(k) for k in track_keys}
+    class TestMultiTrack1(track.MultiTrack):
+        def __init__(self, mtrack_id, data_home):
+            self.mtrack_id = mtrack_id
+            self._data_home = data_home
+            self.tracks = {t: TestTrack1(t) for t in ["a", "b", "c"]}
+            self.track_audio_attribute = "f"
 
-    mtrack = track.MultiTrack(tracks, "f")
+    mtrack = TestMultiTrack1("test", "foo")
 
     target1 = mtrack.get_target(["a", "c"])
     assert target1.shape == (1, 100)

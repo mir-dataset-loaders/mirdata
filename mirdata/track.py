@@ -51,16 +51,13 @@ class MultiTrack(Track):
     A multitrack is iteslf a Track, and can have its own associated audio (such as
     a mastered mix), its own metadata and its own annotations.
 
-    Attributes:
-        tracks (dict): {track_id: Track}
-        track_audio_attribute (str): the name of the attribute of Track which 
-            returns the audio to be mixed
     """
 
-    def __init__(self, tracks, track_audio_attribute):
-        """Inits MultiTrack with tracks and audio attribute"""
-        self.tracks = tracks
-        self.track_audio_attribute = track_audio_attribute
+    def _check_mixable(self):
+        if not hasattr(self, "tracks") or not hasattr(self, "track_audio_attribute"):
+            raise NotImplementedError(
+                "This MultiTrack has no tracks/track_audio_attribute. Cannot perform mixing"
+            )
 
     def get_target(self, track_keys, weights=None, average=True, enforce_length=True):
         """Get target which is a linear mixture of tracks
@@ -83,6 +80,7 @@ class MultiTrack(Track):
                 if enforce_length=True and lengths are not equal
 
         """
+        self._check_mixable()
         signals = []
         lengths = []
         sample_rates = []
@@ -139,6 +137,7 @@ class MultiTrack(Track):
             tracks (list): list of keys of included tracks
             weights (list): list of weights used to mix tracks
         """
+        self._check_mixable()
         tracks = list(self.tracks.keys())
         if n_tracks is not None and n_tracks < len(tracks):
             tracks = np.random.choice(tracks, n_tracks, replace=False)
@@ -156,4 +155,5 @@ class MultiTrack(Track):
         Returns:
             target (np.ndarray): mixture audio with shape (n_samples, n_channels)
         """
+        self._check_mixable()
         return self.get_target(list(self.tracks.keys()))
