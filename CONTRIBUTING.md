@@ -269,12 +269,13 @@ class MultiTrack(track.MultiTrack):
     def __init__(self, mtrack_id, data_home):
         self.mtrack_id = mtrack_id
         self._data_home = data_home
+        # these three attributes below must have exactly these names
         self.track_ids = [...] # define which track_ids should be part of the multitrack
         self.tracks = {t: Track(t, self._data_home) for t in track_ids}
-        self.track_audio_attribute = "audio" # the attribute of Track which returns the relevant audio file for mixing
+        self.track_audio_property = "audio" # the property of Track which returns the relevant audio file for mixing
 
         # -- optionally add any multitrack specific attributes here
-        self.mix_path = ...
+        self.mix_path = ...  # this can be called whatever makes sense for the datasets
         self.annotation_path = ...
 
     # -- multitracks can optionally have mix-level cached properties and properties

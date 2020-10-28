@@ -62,6 +62,7 @@ def test_multitrack_basic():
         def __init__(self, key):
             self.key = key
 
+        @property
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), 1000
 
@@ -89,7 +90,7 @@ def test_multitrack_basic():
             self.mtrack_id = mtrack_id
             self._data_home = data_home
             self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_attribute = "f"
+            self.track_audio_property = "f"
 
         def to_jams(self):
             return None
@@ -106,6 +107,7 @@ def test_multitrack_mixing():
         def __init__(self, key):
             self.key = key
 
+        @property
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), 1000
 
@@ -114,7 +116,7 @@ def test_multitrack_mixing():
             self.mtrack_id = mtrack_id
             self._data_home = data_home
             self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_attribute = "f"
+            self.track_audio_property = "f"
 
     mtrack = TestMultiTrack("test", "foo")
 
@@ -181,6 +183,7 @@ def test_multitrack_unequal_len():
         def __init__(self, key):
             self.key = key
 
+        @property
         def f(self):
             return np.random.uniform(-1, 1, (2, np.random.randint(50, 100))), 1000
 
@@ -189,7 +192,7 @@ def test_multitrack_unequal_len():
             self.mtrack_id = mtrack_id
             self._data_home = data_home
             self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_attribute = "f"
+            self.track_audio_property = "f"
 
     mtrack = TestMultiTrack("test", "foo")
 
@@ -210,6 +213,7 @@ def test_multitrack_unequal_sr():
         def __init__(self, key):
             self.key = key
 
+        @property
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), np.random.randint(10, 1000)
 
@@ -218,7 +222,7 @@ def test_multitrack_unequal_sr():
             self.mtrack_id = mtrack_id
             self._data_home = data_home
             self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_attribute = "f"
+            self.track_audio_property = "f"
 
     mtrack = TestMultiTrack("test", "foo")
 
@@ -232,6 +236,7 @@ def test_multitrack_mono():
         def __init__(self, key):
             self.key = key
 
+        @property
         def f(self):
             return np.random.uniform(-1, 1, (100)), 1000
 
@@ -240,7 +245,7 @@ def test_multitrack_mono():
             self.mtrack_id = mtrack_id
             self._data_home = data_home
             self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_attribute = "f"
+            self.track_audio_property = "f"
 
     mtrack = TestMultiTrack("test", "foo")
 
@@ -257,6 +262,7 @@ def test_multitrack_mono():
         def __init__(self, key):
             self.key = key
 
+        @property
         def f(self):
             return np.random.uniform(-1, 1, (1, 100)), 1000
 
@@ -265,7 +271,7 @@ def test_multitrack_mono():
             self.mtrack_id = mtrack_id
             self._data_home = data_home
             self.tracks = {t: TestTrack1(t) for t in ["a", "b", "c"]}
-            self.track_audio_attribute = "f"
+            self.track_audio_property = "f"
 
     mtrack = TestMultiTrack1("test", "foo")
 

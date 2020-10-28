@@ -54,9 +54,9 @@ class MultiTrack(Track):
     """
 
     def _check_mixable(self):
-        if not hasattr(self, "tracks") or not hasattr(self, "track_audio_attribute"):
+        if not hasattr(self, "tracks") or not hasattr(self, "track_audio_property"):
             raise NotImplementedError(
-                "This MultiTrack has no tracks/track_audio_attribute. Cannot perform mixing"
+                "This MultiTrack has no tracks/track_audio_property. Cannot perform mixing"
             )
 
     def get_target(self, track_keys, weights=None, average=True, enforce_length=True):
@@ -85,7 +85,7 @@ class MultiTrack(Track):
         lengths = []
         sample_rates = []
         for k in track_keys:
-            audio, sample_rate = getattr(self.tracks[k], self.track_audio_attribute)()
+            audio, sample_rate = getattr(self.tracks[k], self.track_audio_property)
             # ensure all signals are shape (n_channels, n_samples)
             if len(audio.shape) == 1:
                 audio = audio[np.newaxis, :]
