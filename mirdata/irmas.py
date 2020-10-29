@@ -151,36 +151,31 @@ class Track(track.Track):
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths['annotation'][0]
         )
+
+        # Dataset attributes
         self.predominant_instrument = None
-        self._track_metadata = {}
+        self.genre = None
+        self.drum = None
+        self.train = True
+
+        # TRAINING TRACKS
         if '__' in track_id:
             self.predominant_instrument = os.path.basename(os.path.dirname(self.audio_path))
             assert self.predominant_instrument in INST_DICT, "Instrument {} not in instrument dict".format(self.predominant_instrument)
 
+            # Drum presence annotation is present
             if 'dru' in self._track_paths['audio'][0] or 'nod' in self._track_paths['audio'][0]:
-                genre = self._track_paths['audio'][0].split('.')[0].split('[')[3].split(']')[0]
-                _track_metadata = {
-                    'genre': genre,
-                    'drum': [True if 'dru' in self._track_paths['audio'][0] else False][0],
-                    'train': True
-                }
-            else:
-                genre = self._track_paths['audio'][0].split('.')[0].split('[')[2].split(']')[0]
-                _track_metadata = {
-                    'genre': genre,
-                    'drum': None,
-                    'train': True
-                }
-        else:
-            _track_metadata = {
-                'genre': None,
-                'drum': None,
-                'train': False
-            }
+                self.genre = self._track_paths['audio'][0].split('.')[0].split('[')[3].split(']')[0]
+                self.drum = [True if 'dru' in self._track_paths['audio'][0] else False][0]
 
-        self.train = _track_metadata['train']
-        self.genre = _track_metadata['genre']
-        self.drum = _track_metadata['drum']
+            # Drum presence annotation not present
+            else:
+                self.genre = self._track_paths['audio'][0].split('.')[0].split('[')[2].split(']')[0]
+                self.drum = None
+
+        # TESTING TRACKS
+        else:
+            self.train = False
 
     @utils.cached_property
     def instrument(self):
@@ -237,7 +232,6 @@ def download(
             Whether to overwrite the existing downloaded data
         partial_download (list):
             List indicating what to partially download. The list can include any of:
-                * 'TODO_KEYS_OF_REMOTES' TODO ADD DESCRIPTION
             If `None`, all data is downloaded.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
@@ -310,13 +304,13 @@ def load_pred_inst(annotation_path):
     Args:
         annotation_path (str): Local path where the testing annotation is stored.
     Returns:
-        pred_inst (str): track predominant instrument extracted from filename
+        pred_inst (str): testing track predominant instrument(s) annotations
     """
     if annotation_path is None:
         return None
 
     if not os.path.exists(annotation_path):
-        raise IOError("audio_path {} does not exist".format(annotation_path))
+        raise IOError("annotation_path {} does not exist".format(annotation_path))
 
     pred_inst = []
     with open(annotation_path, 'r') as fopen:
