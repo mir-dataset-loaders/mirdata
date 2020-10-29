@@ -96,11 +96,19 @@ mirdata.medley_solos_db
    :members:
 
 
+mirdata.mridangam_stroke
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.mridangam_stroke
+   :members:
+
+
 mirdata.orchset
 ^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.orchset
    :members:
+
 
 mirdata.rwc_classical
 ^^^^^^^^^^^^^^^^^^^^^

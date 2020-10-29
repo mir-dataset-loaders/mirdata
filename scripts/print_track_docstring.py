@@ -46,9 +46,9 @@ def get_attributes_and_properties(class_instance):
         else:
             raise ValueError("Unknown type {}".format(attr))
 
-    non_attributes = list(itertools.chain.from_iterable(
-        [properties, cached_properties, functions]
-    ))
+    non_attributes = list(
+        itertools.chain.from_iterable([properties, cached_properties, functions])
+    )
     for val in dir(class_instance):
         if val.startswith('_'):
             continue
@@ -82,24 +82,33 @@ def main(args):
     print('Args:')
     print('    track_id (str): track id of the track')
     print('    data_home (str): Local path where the dataset is stored. default=None')
-    print('        If `None`, looks for the data in the default directory, `~/mir_datasets`')
+    print(
+        '        If `None`, looks for the data in the default directory, `~/mir_datasets`'
+    )
     print('')
 
     if len(data['attributes']) > 0:
         print('Attributes:')
         for attr in data['attributes']:
             if attr == 'track_id':
-                print('    {} ({}): track id'.format(attr, type(getattr(track, attr)).__name__))
+                print(
+                    '    {} ({}): track id'.format(
+                        attr, type(getattr(track, attr)).__name__
+                    )
+                )
             else:
-                print('    {} ({}): TODO'.format(attr, type(getattr(track, attr)).__name__))
+                print(
+                    '    {} ({}): TODO'.format(
+                        attr, type(getattr(track, attr)).__name__
+                    )
+                )
         print('')
 
     print('"""')
 
+
 if __name__ == '__main__':
     PARSER = argparse.ArgumentParser(description='Print an empty docstring')
-    PARSER.add_argument(
-        'dataset', type=str, help='dataset module name.'
-    )
+    PARSER.add_argument('dataset', type=str, help='dataset module name.')
 
     main(PARSER.parse_args())
