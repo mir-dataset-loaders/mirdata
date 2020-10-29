@@ -24,14 +24,11 @@ def test_track():
         'audio_path': "tests/resources/mir_datasets/Mridangam-Stroke/mridangam_stroke_1.5/"
         + "B/224030__akshaylaya__bheem-b-001.wav",
         'track_id': "224030",
+        'stroke_name': 'bheem',
+        'tonic': 'B'
     }
 
-    expected_property_types = {
-        'stroke_name': str,
-        'tonic': str
-    }
-
-    run_track_tests(track, expected_attributes, expected_property_types)
+    run_track_tests(track, expected_attributes, {})
 
     audio, sr = track.audio
     assert sr == 44100
@@ -48,23 +45,11 @@ def test_to_jams():
     assert jam.validate()
 
     # Test the stroke parser
-    assert jam.annotations["tag_open"][0].data[0].value == "bheem"
-    assert jam.sandbox.tonic == "B"
+    parsed_stroke = jam.annotations["tag_open"][0].data[0].value
+    assert parsed_stroke == "bheem"
+    assert parsed_stroke in mridangam_stroke.STROKE_DICT, "Stroke {} not in stroke dictionary".format(parsed_stroke)
 
-
-def test_load_tonic():
-    default_trackid = "224030"
-    data_home = 'tests/resources/mir_datasets/Mridangam-Stroke'
-    track = mridangam_stroke.Track(default_trackid, data_home=data_home)
-    tonic = mridangam_stroke.load_tonic(track.audio_path)
-    assert tonic == 'B'
-    assert tonic in mridangam_stroke.TONIC_DICT
-
-
-def test_load_stroke_name():
-    default_trackid = "224030"
-    data_home = 'tests/resources/mir_datasets/Mridangam-Stroke'
-    track = mridangam_stroke.Track(default_trackid, data_home=data_home)
-    stroke_name = mridangam_stroke.load_stroke_name(track.audio_path)
-    assert stroke_name == 'bheem'
-    assert stroke_name in mridangam_stroke.STROKE_DICT
+    # Test the tonic parser
+    parsed_tonic = jam.sandbox.tonic
+    assert parsed_tonic == "B"
+    assert parsed_tonic in mridangam_stroke.TONIC_DICT, "Stroke {} not in stroke dictionary".format(parsed_tonic)

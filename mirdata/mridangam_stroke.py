@@ -79,6 +79,9 @@ class Track(track.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets/Mridangam-Stroke`
     Attributes:
         track_id (str): track id
+        audio_path (str): audio path
+        stroke_name (str): name of the Mridangam stroke present in Track
+        tonic (str): tonic of the stroke in the Track
     """
 
     def __init__(self, track_id, data_home=None):
@@ -95,15 +98,13 @@ class Track(track.Track):
 
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
 
-    @utils.cached_property
-    def stroke_name(self):
-        """TagOpenData: Name of a single Mridangam stroke."""
-        return load_stroke_name(self.audio_path)
+        # Parse stroke name annotation from audio file name
+        self.stroke_name = self.audio_path.split('__')[2].split('-')[0]
+        assert self.stroke_name in STROKE_DICT, "Stroke {} not in stroke dictionary".format(self.stroke_name)
 
-    @utils.cached_property
-    def tonic(self):
-        """(String): Tonic of a single Mridangam Stroke"""
-        return load_tonic(self.audio_path)
+        # Parse tonic annotation from audio file name
+        self.tonic = os.path.basename(os.path.dirname(self.audio_path))
+        assert self.tonic in TONIC_DICT, "Tonic {} not in tonic dictionary".format(self.tonic)
 
     @property
     def audio(self):
@@ -200,41 +201,6 @@ def load(data_home=None):
     for key in DATA.index.keys():
         data[key] = Track(key, data_home=data_home)
     return data
-
-
-def load_stroke_name(audio_path):
-    """Load stroke name of track
-    Args:
-        audio_path (str): Local path where the track is stored.
-    Returns:
-        stroke_name (str): stroke name or type extracted from filename
-    """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    if '.wav' in audio_path:
-        audio_data = audio_path.split('__')[2]
-        stroke_name = audio_data.split('-')[0]
-        assert stroke_name in STROKE_DICT, "Stroke {} not in stroke dictionary".format(stroke_name)
-
-        return stroke_name
-
-
-def load_tonic(audio_path):
-    """Get tonic of track
-    Args:
-        audio_path (str): Local path where the track is stored.
-    Returns:
-        tonic (str): track tonic extracted from filename
-    """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    if '.wav' in audio_path:
-        tonic = os.path.basename(os.path.dirname(audio_path))
-        assert tonic in TONIC_DICT, "Tonic {} not in tonic dictionary".format(tonic)
-
-        return tonic
 
 
 def cite():
