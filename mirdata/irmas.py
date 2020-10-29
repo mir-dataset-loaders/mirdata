@@ -130,6 +130,7 @@ class Track(track.Track):
 
     Attributes:
         track_id (str): track id
+        predominant_instrument (list): Training tracks predominant instrument
         train (bool): flag to identify if the track is from the training of the testing dataset
         genre (str): string containing the namecode of the genre of the track.
         drum (bool): flag to identify if the track contains drums or not.
