@@ -248,6 +248,59 @@ class Track(track.Track):
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
 
+# -- if the dataset contains multitracks, you can define a MultiTrack similar to a Track
+# -- you can delete the block of code below if the dataset has no multitracks
+class MultiTrack(track.MultiTrack):
+    """Example multitrack class
+
+    Args:
+        mtrack_id (str): multitrack id
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
+
+    Attributes:
+        mtrack_id (str): track id
+        tracks (dict): {track_id: Track}
+        track_audio_attribute (str): the name of the attribute of Track which 
+            returns the audio to be mixed
+        # -- Add any of the dataset specific attributes here
+
+    """
+    def __init__(self, mtrack_id, data_home):
+        self.mtrack_id = mtrack_id
+        self._data_home = data_home
+        # these three attributes below must have exactly these names
+        self.track_ids = [...] # define which track_ids should be part of the multitrack
+        self.tracks = {t: Track(t, self._data_home) for t in track_ids}
+        self.track_audio_property = "audio" # the property of Track which returns the relevant audio file for mixing
+
+        # -- optionally add any multitrack specific attributes here
+        self.mix_path = ...  # this can be called whatever makes sense for the datasets
+        self.annotation_path = ...
+
+    # -- multitracks can optionally have mix-level cached properties and properties
+    @utils.cached_property
+    def annotation(self):
+        """output type: description of output"""
+        return load_annotation(self.annotation_path)
+
+    @property
+    def audio(self):
+        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
+        return load_audio(self.audio_path)
+
+    # -- multitrack objects are themselves Tracks, and also need a to_jams method 
+    # -- for any mixture-level annotations
+    def to_jams(self):
+        """Jams: the track's data in jams format"""
+        return jams_utils.jams_converter(
+            audio_path=self.mix_path,
+            annotation_data=[(self.annotation, None)],
+            ...
+        )
+        # -- see the documentation for `jams_utils.jams_converter for all fields
+
+
 def load_audio(audio_path):
     """Load a Example audio file.
 
