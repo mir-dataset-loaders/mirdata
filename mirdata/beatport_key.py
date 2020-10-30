@@ -90,8 +90,8 @@ class Track(track.Track):
 
     @utils.cached_property
     def key(self):
-        """String: key annotation"""
-        return load_key(self.keys_path)
+        """List of String: list of possible key annotations"""
+        return load_key(self.keys_path).split(' | ')
 
     @utils.cached_property
     def artists(self):
