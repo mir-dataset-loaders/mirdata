@@ -17,6 +17,7 @@ DATASETS = [
     "medley_solos_db",
     "medleydb_melody",
     "medleydb_pitch",
+    "mridangam_stroke",
     "orchset",
     "rwc_classical",
     "rwc_jazz",

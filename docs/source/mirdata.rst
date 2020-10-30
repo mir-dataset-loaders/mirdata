@@ -96,6 +96,13 @@ medley_solos_db
    :members:
 
 
+mridangam_stroke
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.mridangam_stroke
+   :members:
+
+
 orchset
 ^^^^^^^
 

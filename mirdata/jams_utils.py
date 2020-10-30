@@ -22,6 +22,7 @@ def jams_converter(
     key_data=None,
     lyrics_data=None,
     tags_gtzan_data=None,
+    tags_open_data=None,
     metadata=None,
 ):
     """Convert annotations from a track to JAMS format.
@@ -58,6 +59,9 @@ def jams_converter(
     lyrics_data (list or None):
         A list of tuples of (LyricData, str), where str describes the annotation.
     tags_gtzan_data (list or None):
+        A list of tuples of (str, str), where the first srt is the tag and the second
+        is a descriptor of the annotation.
+    tags_open_data (list or None):
         A list of tuples of (str, str), where the first srt is the tag and the second
         is a descriptor of the annotation.
     metadata (dict or None):
@@ -244,6 +248,18 @@ def jams_converter(
                     + "but contains a {} element".format(type(tag))
                 )
             jam.annotations.append(tag_gtzan_to_jams(tag))
+
+    # tag open
+    if tags_open_data is not None:
+        if not isinstance(tags_open_data, list):
+            raise TypeError("tags_open_data should be a list of tuples")
+        for tag in tags_open_data:
+            if not isinstance(tag, tuple):
+                raise TypeError(
+                    "tags_open_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(tag))
+                )
+            jam.annotations.append(tag_open_to_jams(tag))
 
     return jam
 
@@ -554,3 +570,28 @@ def tag_gtzan_to_jams(tags):
     if tags[1] is not None:
         jannot_tag_gtzan.sandbox = jams.Sandbox(name=tags[1])
     return jannot_tag_gtzan
+
+
+def tag_open_to_jams(tags):
+    """
+    Convert tag-open annotations into jams format.
+
+    Parameters
+    ----------
+    tags: tuple
+        A tuple in the format (str, str), where the first str is the open tag
+        and the second describes the annotation.
+
+    Returns
+    -------
+    jannot_tag_open: JAM tag_open annotation object.
+    """
+    jannot_tag_open = jams.Annotation(namespace="tag_open")
+    jannot_tag_open.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
+    if tags[0] is not None:
+        if not isinstance(tags[0], str):
+            raise TypeError("Type should be str.")
+        jannot_tag_open.append(time=0.0, duration=0.0, value=tags[0])
+    if tags[1] is not None:
+        jannot_tag_open.sandbox = jams.Sandbox(name=tags[1])
+    return jannot_tag_open

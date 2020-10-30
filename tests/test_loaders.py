@@ -23,6 +23,7 @@ CUSTOM_TEST_TRACKS = {
     "guitarset": "03_BN3-119-G_solo",
     "medley_solos_db": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
     "medleydb_melody": "MusicDelta_Beethoven",
+    "mridangam_stroke": "224030",
     "rwc_classical": "RM-C003",
     "rwc_jazz": "RM-J004",
     "rwc_popular": "RM-P001",
@@ -344,3 +345,54 @@ def test_load_methods():
             else:
                 with pytest.raises(IOError):
                     load_method("a/fake/filepath")
+
+
+CUSTOM_TEST_MTRACKS = {}
+
+
+def test_multitracks():
+    data_home_dir = "tests/resources/mir_datasets"
+
+    for dataset_name in DATASETS:
+        dataset = mirdata.Dataset(dataset_name)
+
+        # TODO this is currently an opt-in test. Make it an opt out test
+        # once #265 is addressed
+        if dataset_name in CUSTOM_TEST_MTRACKS:
+            mtrack_id = CUSTOM_TEST_MTRACKS[dataset_name]
+        else:
+            # there are no multitracks
+            continue
+
+        try:
+            mtrack_default = dataset.MultiTrack(mtrack_id)
+        except:
+            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+
+        # test data home specified
+        data_home = os.path.join(data_home_dir, dataset_name)
+        dataset_specific = mirdata.Dataset(dataset_name, data_home=data_home)
+        try:
+            mtrack_test = dataset_specific.MultiTrack(mtrack_id, data_home=data_home)
+        except:
+            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+
+        assert isinstance(
+            mtrack_test, core.MultiTrack
+        ), "{}.MultiTrack must be an instance of type core.MultiTrack".format(
+            dataset_name
+        )
+
+        assert hasattr(
+            mtrack_test, "to_jams"
+        ), "{}.MultiTrack must have a to_jams method".format(dataset_name)
+
+        # Validate JSON schema
+        try:
+            jam = mtrack_test.to_jams()
+        except:
+            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+
+        assert jam.validate(), "Jams validation failed for {}.MultiTrack({})".format(
+            dataset_name, mtrack_id
+        )

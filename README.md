@@ -52,6 +52,7 @@ See the Examples section below for more details, or the [documentation](https://
 * [MedleyDB Melody](https://medleydb.weebly.com/)
 * [MedleyDB Pitch](https://medleydb.weebly.com/)
 * [Medley-solos-DB](https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db)
+* [Mridangam Stroke](https://compmusic.upf.edu/mridangam-stroke-dataset)
 * [ORCHSET](https://zenodo.org/record/1289786#.XREpzaeZPx6)
 * [RWC Classical](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html)
 * [RWC Jazz](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html)
