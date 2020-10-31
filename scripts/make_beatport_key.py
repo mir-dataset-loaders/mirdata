@@ -32,7 +32,6 @@ def make_beatport_key_index(data_path):
     key_dir = os.path.join(data_path, 'keys')
     beatport_key_index = {}
     for track_id, ann_dir in enumerate(sorted(os.listdir(key_dir))):
-        ann_dir_full = os.path.join(key_dir, ann_dir)
         if '.txt' in ann_dir:
             codec = '.mp3'
             audio_path = os.path.join(audio_dir, ann_dir.replace('.txt', codec))
@@ -41,7 +40,7 @@ def make_beatport_key_index(data_path):
             if not os.path.exists(meta_path):
                 meta = (None, None)
             else:
-                meta = (ann_dir_full.replace(data_path + '/', ''), md5(meta_path))
+                meta = (meta_path.replace(data_path + '/', ''), md5(meta_path))
 
             beatport_key_index[track_id] = {
                 'audio': (audio_path.replace(data_path + '/', ''), md5(audio_path)),
