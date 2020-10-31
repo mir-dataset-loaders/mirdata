@@ -21,7 +21,6 @@ import fnmatch
 import json
 import librosa
 import os
-import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -92,7 +91,7 @@ class Track(track.Track):
     @utils.cached_property
     def key(self):
         """List of String: list of possible key annotations"""
-        return load_key(self.keys_path)
+        return load_key(self.keys_path).split(' | ')
 
     @utils.cached_property
     def artists(self):
@@ -116,15 +115,14 @@ class Track(track.Track):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        print(self.key)
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            key_data=[(self.key, None)],
             metadata={
                 'artists': self.artists,
                 'genres': self.genres,
                 'tempo': self.tempo,
                 'title': self.title,
+                'key': self.key,
             },
         )
 
@@ -262,13 +260,7 @@ def load_key(keys_path):
     with open(keys_path) as f:
         key = f.readline()
 
-    keys = np.array([one_key for one_key in key.split(' | ')])
-    first_time = np.full_like(keys, 0.0, float)
-    end_time = np.full_like(keys, 120.0, float)
-
-    key_data = utils.KeyData(first_time, end_time, keys)
-
-    return key_data
+    return key
 
 
 def load_tempo(metadata_path):
