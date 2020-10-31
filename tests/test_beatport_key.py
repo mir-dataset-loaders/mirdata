@@ -20,7 +20,7 @@ def test_track():
     }
 
     expected_property_types = {
-        'key': list,
+        'key': utils.KeyData,
         'genres': dict,
         'artists': list,
         'tempo': int
@@ -39,9 +39,16 @@ def test_to_jams():
     data_home = 'tests/resources/mir_datasets/beatport_key'
     track = beatport_key.Track('1', data_home=data_home)
     jam = track.to_jams()
-    assert (
-            jam['sandbox']['key'] == ['D minor']
-    ), 'key does not match expected'
+
+    keys = jam.search(namespace='key')[0]['data']
+    assert [key.time for key in keys] == [0.0], 'key time does not match expected'
+    assert [key.duration for key in keys] == [
+        120.0
+    ], 'key duration does not match expected'
+    assert [key.value for key in keys] == ['D minor'], 'key value does not match expected'
+    assert [key.confidence for key in keys] == [
+        None
+    ], 'key confidence does not match expected'
 
     assert (
             jam['file_metadata']['title'] == '100066 Lindstrom - Monsteer (Original Mix)'
@@ -57,7 +64,6 @@ def test_to_jams():
             "sub_genres": []
         },
         "tempo": 115,
-        "key": ["D minor"]
     }
     assert (
             dict(jam['sandbox']) == sand_box
@@ -70,9 +76,10 @@ def test_load_key():
     )
     key_data = beatport_key.load_key(key_path)
 
-    assert type(key_data) == str
-
-    assert key_data == "D minor"
+    assert type(key_data) == utils.KeyData
+    assert np.array_equal(key_data.start_times, np.array([0.0]))
+    assert np.array_equal(key_data.end_times, np.array([120.0]))
+    assert np.array_equal(key_data.keys, np.array(['D minor']))
 
     assert beatport_key.load_key(None) is None
 
