@@ -154,14 +154,15 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
         )
     return download_path
 
-def extractall_zip(zf,zdir):
+
+def extractall_zip(zf, zdir):
     for m in zf.infolist():
-        data = zf.read(m) # extract zipped data into memory
+        data = zf.read(m)  # extract zipped data into memory
 
         if m.filename.encode('cp437').decode() != m.filename.encode('utf8').decode():
-            disk_file_name = os.path.join(zdir,m.filename.encode('cp437').decode() )
+            disk_file_name = os.path.join(zdir, m.filename.encode('cp437').decode())
         else:
-            disk_file_name = os.path.join(zdir,m.filename)
+            disk_file_name = os.path.join(zdir, m.filename)
 
         dir_name = os.path.dirname(disk_file_name)
         if not os.path.exists(dir_name):
@@ -170,6 +171,7 @@ def extractall_zip(zf,zdir):
         if os.path.isfile(disk_file_name):
             with open(disk_file_name, 'wb') as fd:
                 fd.write(data)
+
 
 def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
     """Download and unzip a zip file.
@@ -188,7 +190,7 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
     unzip(zip_download_path, cleanup=cleanup)
 
 
-def extractall_unicode(zfile,out_dir):
+def extractall_unicode(zfile, out_dir):
     """Extract all files inside a zip archive to a output directory.
     In comparison to the zipfile, it checks for correct file name encoding
 
@@ -198,12 +200,12 @@ def extractall_unicode(zfile,out_dir):
 
     """
     for m in zfile.infolist():
-        data = zfile.read(m) # extract zipped data into memory
+        data = zfile.read(m)  # extract zipped data into memory
 
         if m.filename.encode('cp437').decode() != m.filename.encode('utf8').decode():
-            disk_file_name = os.path.join(out_dir,m.filename.encode('cp437').decode())
+            disk_file_name = os.path.join(out_dir, m.filename.encode('cp437').decode())
         else:
-            disk_file_name = os.path.join(out_dir,m.filename)
+            disk_file_name = os.path.join(out_dir, m.filename)
 
         dir_name = os.path.dirname(disk_file_name)
         if not os.path.exists(dir_name):
@@ -212,6 +214,7 @@ def extractall_unicode(zfile,out_dir):
         if not os.path.isdir(disk_file_name):
             with open(disk_file_name, 'wb') as fd:
                 fd.write(data)
+
 
 def unzip(zip_path, cleanup=True):
     """Unzip a zip file inside it's current directory.
@@ -222,12 +225,11 @@ def unzip(zip_path, cleanup=True):
 
     """
     zfile = zipfile.ZipFile(zip_path, 'r')
-    #zfile.extractall(os.path.dirname(zip_path))
-    extractall_unicode(zfile,os.path.dirname(zip_path))
+    # zfile.extractall(os.path.dirname(zip_path))
+    extractall_unicode(zfile, os.path.dirname(zip_path))
     zfile.close()
     if cleanup:
         os.remove(zip_path)
-
 
 
 def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=True):
