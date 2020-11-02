@@ -1,0 +1,23 @@
+{
+    "id": "10089",
+    "confidence": 2,
+    "key": [
+        "D major"
+    ],
+    "pitch-description": [
+        "D: d, e, f#, g, a , b"
+    ],
+    "pc-set": [
+        "[0, 2, 4, 5, 7, 9]"
+    ],
+    "cardinality": [
+        "6"
+    ],
+    "start_times": [
+        0
+    ],
+    "end_times": [
+        120
+    ],
+    "comments": "Not enough information to determine wether it is ionian or mixolydian"
+}
