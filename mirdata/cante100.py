@@ -2,8 +2,6 @@
 """
 cante100 Loader
 
-TODO FIX DESCRIPTION
-
 The cante100 dataset contains 100 tracks taken from the COFLA corpus. We defined 10 style
 families of which 10 tracks each are included. Apart from the style family, we manually
 annotated the sections of the track in which the vocals are present. In addition, we
@@ -181,7 +179,11 @@ class Track(track.Track):
 
     Attributes:
         track_id (str): track id
-        TODO
+        identifier (str): musicbrainz id of the track
+        artist (str): performing artists
+        title (str): title of the track song
+        release (str): release where the track can be found
+        duration (str): duration in seconds of the track
     """
 
     def __init__(self, track_id, data_home=None):
