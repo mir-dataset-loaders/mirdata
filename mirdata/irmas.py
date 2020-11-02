@@ -73,7 +73,6 @@ For more details, please visit: https://www.upf.edu/web/mtg/irmas
 
 import os
 import librosa
-import json
 
 from mirdata import download_utils
 from mirdata import jams_utils
