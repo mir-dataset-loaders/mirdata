@@ -155,23 +155,6 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     return download_path
 
 
-def extractall_zip(zf, zdir):
-    for m in zf.infolist():
-        data = zf.read(m)  # extract zipped data into memory
-
-        if m.filename.encode('cp437').decode() != m.filename.encode('utf8').decode():
-            disk_file_name = os.path.join(zdir, m.filename.encode('cp437').decode())
-        else:
-            disk_file_name = os.path.join(zdir, m.filename)
-
-        dir_name = os.path.dirname(disk_file_name)
-        if not os.path.exists(dir_name):
-            os.makedirs(dir_name)
-
-        if os.path.isfile(disk_file_name):
-            with open(disk_file_name, 'wb') as fd:
-                fd.write(data)
-
 
 def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
     """Download and unzip a zip file.
