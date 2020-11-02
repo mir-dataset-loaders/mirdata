@@ -14,8 +14,7 @@ def test_track():
     expected_attributes = {
         'audio_path': 'tests/resources/mir_datasets/GiantSteps_key/audio/10089 Jason Sparks - Close My Eyes feat. J. '
                       'Little (Original Mix).mp3',
-        'keys_path': 'tests/resources/mir_datasets/GiantSteps_key/keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. '
-                     'Little (Original Mix).txt',
+        'keys_path': 'tests/resources/mir_datasets/GiantSteps_key/new_annotations/10089.json',
         'metadata_path': 'tests/resources/mir_datasets/GiantSteps_key/meta/10089 Jason Sparks - Close My Eyes feat. J. '
                          'Little (Original Mix).json',
         'title': '10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix)',
@@ -23,7 +22,7 @@ def test_track():
     }
 
     expected_property_types = {
-        'key': str,
+        'key': dict,
         'genres': dict,
         'artists': list,
         'tempo': int
@@ -42,8 +41,18 @@ def test_to_jams():
     data_home = 'tests/resources/mir_datasets/GiantSteps_key'
     track = giantsteps_key.Track('3', data_home=data_home)
     jam = track.to_jams()
+    key_info = {
+        'key': [['D major']],
+        'confidence': 2,
+        'pitch-description': ['D: d, e, f#, g, a , b'],
+        'pc-set': ['[0, 2, 4, 5, 7, 9]'],
+        'cardinality': [6],
+        'start_times': [0],
+        'end_times': [120],
+        'comments': 'Not enough information to determine wether it is ionian or mixolydian'
+    }
     assert (
-            jam['sandbox']['key'] == 'D major'
+            jam['sandbox']['key'] == key_info
     ), 'key does not match expected'
 
     assert (
@@ -51,16 +60,39 @@ def test_to_jams():
     ), 'title does not match expected'
     sand_box = {
         "artists": [
-          "Jason Sparks"
+            "Jason Sparks"
         ],
         "genres": {
-          "genres": [
-            "Breaks"
-          ],
-          "sub_genres": []
+            "genres": [
+                "Breaks"
+            ],
+            "sub_genres": []
         },
         "tempo": 150,
-        "key": "D major"
+        "key": {
+            "key": [
+                [
+                    "D major"
+                ]
+            ],
+            "confidence": 2,
+            "pitch-description": [
+                "D: d, e, f#, g, a , b"
+            ],
+            "pc-set": [
+                "[0, 2, 4, 5, 7, 9]"
+            ],
+            "cardinality": [
+                6
+            ],
+            "start_times": [
+                0
+            ],
+            "end_times": [
+                120
+            ],
+            "comments": "Not enough information to determine wether it is ionian or mixolydian"
+        }
     }
     assert (
             dict(jam['sandbox']) == sand_box
@@ -69,14 +101,23 @@ def test_to_jams():
 
 def test_load_key():
     key_path = (
-            'tests/resources/mir_datasets/GiantSteps_key/keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. ' +
-            'Little (Original Mix).txt'
+            'tests/resources/mir_datasets/GiantSteps_key/new_annotations/10089.json'
     )
     key_data = giantsteps_key.load_key(key_path)
 
-    assert type(key_data) == str
+    assert type(key_data) == dict
 
-    assert key_data == "D major"
+    key = {
+        'key': [['D major']],
+        'confidence': 2,
+        'pitch-description': ['D: d, e, f#, g, a , b'],
+        'pc-set': ['[0, 2, 4, 5, 7, 9]'],
+        'cardinality': [6],
+        'start_times': [0],
+        'end_times': [120],
+        'comments': 'Not enough information to determine wether it is ionian or mixolydian'
+    }
+    assert key_data == key
 
     assert giantsteps_key.load_key(None) is None
 

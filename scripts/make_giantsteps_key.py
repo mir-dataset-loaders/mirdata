@@ -29,14 +29,14 @@ def md5(file_path):
 def make_giantsteps_key_index(data_path):
     meta_dir = os.path.join(data_path, 'meta')
     audio_dir = os.path.join(data_path, 'audio')
-    key_dir = os.path.join(data_path, 'keys_gs+')
+    key_dir = os.path.join(data_path, 'new_annotations')
     giantsteps_key_index = {}
     for track_id, ann_dir in enumerate(sorted(os.listdir(meta_dir))):
         ann_dir_full = os.path.join(meta_dir, ann_dir)
         if '.json' in ann_dir:
             codec = '.mp3'
             audio_path = os.path.join(audio_dir, ann_dir.replace('.json', codec))
-            chord_path = os.path.join(key_dir, ann_dir.replace('.json', '.txt'))
+            chord_path = os.path.join(key_dir, ann_dir.split(' ')[0] + '.json')
             if "*" in audio_path:
                 meta = (None, None)
             else:
