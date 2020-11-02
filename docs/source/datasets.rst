@@ -31,7 +31,10 @@ click the link provided in the "Module" column.
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | beatport_key_     |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
 |                   |                     | - annotations: ✅   |                           |        |
-+-------------------+---------------------+---------------------+---------------------------+--------+
++------------------+---------------------+---------------------+---------------------------+--------+
+| cante100_        | cante100            | - audio: 🔑         | - :ref:`F0`               | 100    |
+|                  |                     | - annotations: ✅   | - :ref:`notes`            |        |
++------------------+---------------------+---------------------+---------------------------+--------+
 | dali_             | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                   |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
@@ -70,9 +73,6 @@ click the link provided in the "Module" column.
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | medleydb_pitch_   | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
 |                   | | Tracking Subset   | - annotations: ✅   | - :ref:`instruments`      |        |
-+-------------------+---------------------+---------------------+---------------------------+--------+
-| mridangam_stroke_ | Mridangam Stroke    | - audio: ✅         | - :ref:`stroke_name`      | 6977   |
-|                   |                     | - annotations: ✅   | - :ref:`tonic`            |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | orchset_          | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
 |                   |                     | - annotations: ✅   |                           |        |
@@ -215,23 +215,10 @@ Vocal Activity
 A time series or sequence of events indicating when singing voice is present in a recording. This type
 of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations are available.
 
-.. _stroke-name:
-
-Stroke Name
-^^^^^^^^^^^
-An open "tag" to identify an instrument stroke name or type. Used for instruments that have specific
-stroke labels.
-
-.. _tonic:
-
-Tonic
-^^^^^^^^^^^
-The absolute tonic of a track. It may refer to the tonic a single stroke, or the tonal center of
-a track.
-
 
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
+.. _cante100: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.cante100
 .. _beatport_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatport_key
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
 .. _giantsteps_tempo: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.giantsteps_tempo
@@ -244,7 +231,6 @@ a track.
 .. _medley_solos_db: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db
 .. _medleydb_melody: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_melody
 .. _medleydb_pitch: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_pitch
-.. _mridangam_stroke: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.mridangam_stroke
 .. _orchset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.orchset
 .. _rwc_classical: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_classical
 .. _rwc_jazz: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_jazz

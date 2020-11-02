@@ -6,6 +6,7 @@ from .version import version as __version__
 __all__ = [
     'beatles',
     'beatport_key',
+    'cante100',
     'dali',
     'giantsteps_tempo',
     'giantsteps_key',
@@ -17,7 +18,6 @@ __all__ = [
     'medley_solos_db',
     'medleydb_melody',
     'medleydb_pitch',
-    'mridangam_stroke',
     'orchset',
     'rwc_classical',
     'rwc_jazz',

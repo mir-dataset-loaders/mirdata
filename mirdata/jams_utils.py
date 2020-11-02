@@ -5,12 +5,14 @@
 import jams
 import librosa
 import os
+import csv
 
 from mirdata import utils
 
 
 def jams_converter(
     audio_path=None,
+    spectrum_cante100_path=None,
     beat_data=None,
     chord_data=None,
     note_data=None,
@@ -22,7 +24,6 @@ def jams_converter(
     key_data=None,
     lyrics_data=None,
     tags_gtzan_data=None,
-    tags_open_data=None,
     metadata=None,
 ):
     """Convert annotations from a track to JAMS format.
@@ -34,6 +35,8 @@ def jams_converter(
         the audio file will be read to compute the duration. If None,
         'duration' must be a field in the metadata dictionary, or the
         resulting jam object will not validate.
+    spectrum_cante100_path (str or None):
+        A path to the corresponding spectrum file, or None.
     beat_data (list or None):
         A list of tuples of (BeatData, str), where str describes the annotation (e.g. 'beats_1').
     chord_data (list or None):
@@ -61,9 +64,6 @@ def jams_converter(
     tags_gtzan_data (list or None):
         A list of tuples of (str, str), where the first srt is the tag and the second
         is a descriptor of the annotation.
-    tags_open_data (list or None):
-        A list of tuples of (str, str), where the first srt is the tag and the second
-        is a descriptor of the annotation.
     metadata (dict or None):
         A dictionary containing the track metadata.
 
@@ -86,15 +86,14 @@ def jams_converter(
                 + 'for this track cannot be found, and it is required'
                 + 'to compute duration.'
             )
+    if spectrum_cante100_path is not None:
+        if audio_path is None:
+            duration = metadata['duration']
 
     # metadata
     if metadata is not None:
         for key in metadata:
-            if (
-                key == 'duration'
-                and duration is not None
-                and metadata[key] != duration
-            ):
+            if key == 'duration' and duration is not None and metadata[key] != duration and audio_path is not None:
                 print(
                     'Warning: duration provided in metadata does not'
                     + 'match the duration computed from the audio file.'
@@ -252,18 +251,6 @@ def jams_converter(
                     + 'but contains a {} element'.format(type(tag))
                 )
             jam.annotations.append(tag_gtzan_to_jams(tag))
-
-    # tag open
-    if tags_open_data is not None:
-        if not isinstance(tags_open_data, list):
-            raise TypeError('tags_open_data should be a list of tuples')
-        for tag in tags_open_data:
-            if not isinstance(tag, tuple):
-                raise TypeError(
-                    'tags_open_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(tag))
-                )
-            jam.annotations.append(tag_open_to_jams(tag))
 
     return jam
 
@@ -574,28 +561,3 @@ def tag_gtzan_to_jams(tags):
     if tags[1] is not None:
         jannot_tag_gtzan.sandbox = jams.Sandbox(name=tags[1])
     return jannot_tag_gtzan
-
-
-def tag_open_to_jams(tags):
-    """
-    Convert tag-open annotations into jams format.
-
-    Parameters
-    ----------
-    tags: tuple
-        A tuple in the format (str, str), where the first str is the open tag
-        and the second describes the annotation.
-
-    Returns
-    -------
-    jannot_tag_open: JAM tag_open annotation object.
-    """
-    jannot_tag_open = jams.Annotation(namespace='tag_open')
-    jannot_tag_open.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
-    if tags[0] is not None:
-        if not isinstance(tags[0], str):
-            raise TypeError('Type should be str.')
-        jannot_tag_open.append(time=0.0, duration=0.0, value=tags[0])
-    if tags[1] is not None:
-        jannot_tag_open.sandbox = jams.Sandbox(name=tags[1])
-    return jannot_tag_open

@@ -25,6 +25,14 @@ mirdata.beatport_key
 .. automodule:: mirdata.beatport_key
    :members:
 
+
+mirdata.cante100
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.cante100
+   :members:
+
+
 mirdata.dali
 ^^^^^^^^^^^^
 
@@ -96,19 +104,11 @@ mirdata.medley_solos_db
    :members:
 
 
-mirdata.mridangam_stroke
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.mridangam_stroke
-   :members:
-
-
 mirdata.orchset
 ^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.orchset
    :members:
-
 
 mirdata.rwc_classical
 ^^^^^^^^^^^^^^^^^^^^^
