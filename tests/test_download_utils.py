@@ -3,6 +3,7 @@
 import os
 import shutil
 import sys
+import zipfile
 
 from mirdata import download_utils
 
@@ -207,3 +208,10 @@ def test_download_tar_file(mocker, mock_file, mock_untar):
     mock_untar.assert_called_once_with("foo", cleanup=True)
     if os.path.exists('a'):
         shutil.rmtree('a')
+
+def test_extractall_unicode(mocker,mock_file,mock_unzip):
+    zfile = zipfile.ZipFile('tests/resources/file.zip', 'r')
+    download_utils.extractall_unicode(zfile, os.path.dirname('tests/resources/'))
+    zfile.close()
+    expected_file_location = os.path.join('tests', 'resources', 'file.txt')
+    assert os.path.exists(expected_file_location)
