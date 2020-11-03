@@ -8,7 +8,7 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = "0"
+    default_trackid = "1"
     data_home = "tests/resources/mir_datasets/beatport_key"
     track = beatport_key.Track(default_trackid, data_home=data_home)
 
@@ -17,11 +17,11 @@ def test_track():
         "keys_path": "tests/resources/mir_datasets/beatport_key/keys/100066 Lindstrom - Monsteer (Original Mix).txt",
         "metadata_path": "tests/resources/mir_datasets/beatport_key/meta/100066 Lindstrom - Monsteer (Original Mix).json",
         "title": "100066 Lindstrom - Monsteer (Original Mix)",
-        "track_id": "0",
+        "track_id": "1",
     }
 
     expected_property_types = {
-        "key": str,
+        "key": list,
         "genres": dict,
         "artists": list,
         "tempo": int,
@@ -38,9 +38,9 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/beatport_key"
-    track = beatport_key.Track("0", data_home=data_home)
+    track = beatport_key.Track("1", data_home=data_home)
     jam = track.to_jams()
-    assert jam["sandbox"]["key"] == "D minor", "key does not match expected"
+    assert jam["sandbox"]["key"] == ["D minor"], "key does not match expected"
 
     assert (
         jam["file_metadata"]["title"] == "100066 Lindstrom - Monsteer (Original Mix)"
@@ -49,7 +49,7 @@ def test_to_jams():
         "artists": ["Lindstrom"],
         "genres": {"genres": ["Electronica / Downtempo"], "sub_genres": []},
         "tempo": 115,
-        "key": "D minor",
+        "key": ["D minor"],
     }
     assert dict(jam["sandbox"]) == sand_box, "sandbox does not match expected"
 
@@ -58,9 +58,9 @@ def test_load_key():
     key_path = "tests/resources/mir_datasets/beatport_key/keys/100066 Lindstrom - Monsteer (Original Mix).txt"
     key_data = beatport_key.load_key(key_path)
 
-    assert type(key_data) == str
+    assert type(key_data) == list
 
-    assert key_data == "D minor"
+    assert key_data == ["D minor"]
 
     assert beatport_key.load_key(None) is None
 
