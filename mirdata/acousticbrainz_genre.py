@@ -3594,50 +3594,10 @@ class Track(track.Track):
         """
         return load_extractor(self.path)["metadata"]["rhythm"]
 
-    @utils.cached_property
-    def artist(self):
-        """Artist: metadata title annotation"""
-        return load_extractor(self.path)["metadata"]["file_name"]
-
-    @utils.cached_property
-    def artist(self):
-        """Artist: metadata title annotation"""
-        return load_extractor(self.path)["metadata"]["file_name"]
-
-    @utils.cached_property
-    def artist(self):
-        """Artist: metadata title annotation"""
-        return load_extractor(self.path)["metadata"]["file_name"]
-
-    @utils.cached_property
-    def artist(self):
-        """Artist: metadata title annotation"""
-        return load_extractor(self.path)["metadata"]["file_name"]
-
-    @utils.cached_property
-    def chords(self):
-        """ChordData: chord annotation"""
-        return load_chords(self.chords_path)
-
-    @utils.cached_property
-    def key(self):
-        """KeyData: key annotation"""
-        return load_key(self.keys_path)
-
-    @utils.cached_property
-    def sections(self):
-        """SectionData: section annotation"""
-        return load_sections(self.sections_path)
-
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, None)],
-            section_data=[(self.sections, None)],
-            chord_data=[(self.chords, None)],
-            key_data=[(self.key, None)],
-            metadata={'artist': 'The AcousticBrainz Dataset', 'title': self.title},
+            metadata={'features': load_extractor(self.path)}
         )
 
 
