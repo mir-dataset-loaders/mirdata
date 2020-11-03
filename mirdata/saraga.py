@@ -1,8 +1,17 @@
 # -*- coding: utf-8 -*-
 """Saraga Dataset Loader
 
+This repository contains time aligned melody, rhythm and structural annotations for two large open corpora of
+Indian Art Music (Carnatic and Hindustani music).
+
+The repository contains the following manual annotations referring to audio files:
+
+Section and tempo annotations stored as start and end timestamps together with the name of the section and
+tempo during the section (in a separate file). Sama annotations referring to rhythmic cycle boundaries stored
+as timestamps. Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
+({S, r, R, g, G, m, M, P, d, D, n, N}). Audio features automatically extracted and stored: pitch and tonic.
 """
-import csv
+
 import librosa
 import numpy as np
 import os
@@ -368,11 +377,14 @@ def load_tonic(tonic_path):
 
     Args:
         tonic_path (str): Local path where the tonic path is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+            If `None`, returns None.
 
     Returns:
         (int): Tonic annotation in Hz
     """
+    if tonic_path is None:
+        return None
+
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
@@ -385,7 +397,7 @@ def load_pitch(pitch_path):
 
     Args:
         pitch path (str): Local path where the pitch annotation is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+            If `None`, returns None.
 
     Returns:
         F0Data: pitch annotation
@@ -417,7 +429,7 @@ def load_bpm(bpm_path):
 
     Args:
         bpm_path (str): Local path where the bpm tempo is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+            If `None`, returns None.
 
     Returns:
         TempoData: bpm tempo annotation
@@ -467,10 +479,10 @@ def load_sama(sama_path):
 
     Args:
         sama_path (str): Local path where the sama annotation is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+            If `None`, returns None.
 
     Returns:
-        SectionData: sama annotation
+        SectionData: sama annotations
 
     """
     if sama_path is None:
@@ -504,10 +516,10 @@ def load_sections(sections_path):
 
     Args:
         sections_path (str): Local path where the section annotation is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+            If `None`, returns None.
 
     Returns:
-        SectionData: section annotation
+        SectionData: section annotations for track
 
     """
     if sections_path is None:
@@ -537,10 +549,10 @@ def load_phrases(phrases_path):
 
     Args:
         phrases_path (str): Local path where the phrase annotation is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+            If `None`, returns None.
 
     Returns:
-        EventData: phrases annotation
+        EventData: phrases annotation for track
 
     """
     if phrases_path is None:
@@ -573,10 +585,24 @@ def cite():
 
     cite_data = """
 ===========  MLA ===========
-TODO
+Bozkurt, B., Srinivasamurthy, A., Gulati, S., & Serra, X. (2018). 
+Saraga: research datasets of Indian Art Music (Version 1.0) [Data set]. 
+Zenodo. http://doi.org/10.5281/zenodo.1256127
 
 ========== Bibtex ==========
-@inproceedings{TODO}
+@dataset{bozkurt_b_2018_1256127,
+  author       = {Bozkurt, B. and
+                  Srinivasamurthy, A. and
+                  Gulati, S. and
+                  Serra, X.},
+  title        = {Saraga: research datasets of Indian Art Music},
+  month        = may,
+  year         = 2018,
+  publisher    = {Zenodo},
+  version      = {1.0},
+  doi          = {10.5281/zenodo.1256127},
+  url          = {https://doi.org/10.5281/zenodo.1256127}
+}
 """
 
     print(cite_data)
