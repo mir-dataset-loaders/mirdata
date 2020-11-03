@@ -260,7 +260,11 @@ def load_key(keys_path):
     with open(keys_path) as f:
         key = f.readline()
 
-    return key.split(' | ')
+    keys = key.split(' | ')
+
+    # standarize 'Unknown'  to 'X'
+    keys = ['x' if k.lower() == 'unknown' else k for k in keys]
+    return keys
 
 
 def load_tempo(metadata_path):
