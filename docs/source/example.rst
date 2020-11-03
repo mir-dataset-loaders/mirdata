@@ -22,10 +22,10 @@ Fortunately, we can download Orchset dataset directly.
 .. code-block:: python
     :linenos:
 
-    import mirdata.orchset
+    import mirdata
+    orchset = mirdata.Dataset("orchset")
     # Download the Orchset Dataset
-    mirdata.orchset.download()
-    # Orchset_dataset_0.zip?download=1: 1.00B [03:05, 185s/B]
+    orchset.download()
 
 
 Once downloading is done, you can find the the dataset folder.
@@ -33,7 +33,7 @@ Once downloading is done, you can find the the dataset folder.
 .. code-block:: bash
     :linenos:
 
-    $ ls ~/mir_datasets/Orchset/
+    $ ls ~/mir_datasets/orchset/
     GT
     Orchset - Predominant Melodic Instruments.csv
     README.txt
@@ -46,10 +46,12 @@ The ID's and annotation data can be loaded as below.
     :linenos:
 
     # Load the dataset
-    orchset_data = mirdata.orchset.load()
-    orchset_ids = mirdata.orchset.track_ids()
+    orchset_data = orchset.load_tracks()
+    orchset_ids = orchset.track_ids()
 
-    # todo: add __str__() method and print(orchset_data)
+    # Look at one random track
+    track = orchset.choice_track()
+    print(track)
 
 
 If we wanted to use Orchset to evaluate the performance of a melody extraction algorithm
@@ -60,7 +62,7 @@ metadata, we could do the following:
     :linenos:
 
     import mir_eval
-    import mirdata.orchset
+    import mirdata
     import numpy as np
     import sox
 
@@ -71,8 +73,9 @@ metadata, we could do the following:
         return time_stamps, melody_f0
 
     # Evaluate on the full dataset
+    orchset = mirdata.Dataset("orchset")
     orchset_scores = {}
-    orchset_data = mirdata.orchset.load()
+    orchset_data = orchset.load_tracks()
     for track_id, track_data in orchset_data.items():
         est_times, est_freqs = very_bad_melody_extractor(track_data.audio_path_mono)
 
@@ -134,10 +137,13 @@ For example, to load the melody annotations from Orchset into memory, we can sim
 .. code-block:: python
     :linenos:
 
-    import mirdata.orchset
+    import mirdata
+    
+    # get the orchset dataset
+    orchset = mirdata.Dataset("orchset")
 
-    # Load a single track
-    track = mirdata.orchset.Track('Beethoven-S3-I-ex1')
+    # Load a specific track
+    track = orchset.track('Beethoven-S3-I-ex1')
     melody_annotation = track.melody
 
     print(melody_annotation)
@@ -149,10 +155,13 @@ However, if your data lives somewhere else, accessing the annotation will return
 .. code-block:: python
     :linenos:
 
-    import mirdata.orchset
+    import mirdata
+    
+    # get the orchset dataset
+    orchset = mirdata.Dataset("orchset")
 
     # Load a single track, specifying the remote location
-    track = mirdata.orchset.Track('Beethoven-S3-I-ex1', data_home='gs://my_custom/remote_path')
+    track = orchset.track('Beethoven-S3-I-ex1', data_home='gs://my_custom/remote_path')
     melody_path = track.melody_path
 
     print(melody_path)
@@ -186,15 +195,16 @@ The following is a simple example of a generator that can be used to create a te
 .. code-block:: python
     :linenos:
 
-    import mirdata.orchset
+    import mirdata
     import numpy as np
     import tensorflow as tf
 
     def orchset_generator():
         # using the default data_home
-        track_ids = mirdata.orchset.track_ids()
+        orchset = mirdata.Dataset("orchset")
+        track_ids = orchset.track_ids()
         for track_id in track_ids:
-            track = mirdata.orchset.Track(track_id)
+            track = orchset.track(track_id)
             audio_signal, sample_rate = track.audio_mono
             yield {
                 "audio": audio_signal.astype(np.float32),

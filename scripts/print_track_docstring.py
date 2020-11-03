@@ -9,21 +9,21 @@ import mirdata
 
 
 TEST_TRACKIDS = {
-    'beatles': '0111',
-    'dali': '4b196e6c99574dd49ad00d56e132712b',
-    'gtzan_genre': 'country.00000',
-    'guitarset': '03_BN3-119-G_solo',
-    'ikala': '10161_chorus',
-    'maestro': '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1',
-    'medley_solos_db': 'd07b1fc0-567d-52c2-fef4-239f31c9d40e',
-    'medleydb_melody': 'MusicDelta_Beethoven',
-    'medleydb_pitch': 'AClassicEducation_NightOwl_STEM_08',
-    'orchset': 'Beethoven-S3-I-ex1',
-    'rwc_classical': 'RM-C003',
-    'rwc_jazz': 'RM-J004',
-    'rwc_popular': 'RM-P001',
-    'salami': '2',
-    'tinysol': 'Fl-ord-C4-mf-N-T14d',
+    "beatles": "0111",
+    "dali": "4b196e6c99574dd49ad00d56e132712b",
+    "gtzan_genre": "country.00000",
+    "guitarset": "03_BN3-119-G_solo",
+    "ikala": "10161_chorus",
+    "maestro": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1",
+    "medley_solos_db": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
+    "medleydb_melody": "MusicDelta_Beethoven",
+    "medleydb_pitch": "AClassicEducation_NightOwl_STEM_08",
+    "orchset": "Beethoven-S3-I-ex1",
+    "rwc_classical": "RM-C003",
+    "rwc_jazz": "RM-J004",
+    "rwc_popular": "RM-P001",
+    "salami": "2",
+    "tinysol": "Fl-ord-C4-mf-N-T14d",
 }
 
 
@@ -33,7 +33,7 @@ def get_attributes_and_properties(class_instance):
     cached_properties = []
     functions = []
     for val in dir(class_instance.__class__):
-        if val.startswith('_'):
+        if val.startswith("_"):
             continue
 
         attr = getattr(class_instance.__class__, val)
@@ -50,15 +50,15 @@ def get_attributes_and_properties(class_instance):
         itertools.chain.from_iterable([properties, cached_properties, functions])
     )
     for val in dir(class_instance):
-        if val.startswith('_'):
+        if val.startswith("_"):
             continue
         if val not in non_attributes:
             attributes.append(val)
     return {
-        'attributes': sorted(attributes),
-        'properties': sorted(properties),
-        'cached_properties': sorted(cached_properties),
-        'functions': sorted(functions),
+        "attributes": sorted(attributes),
+        "properties": sorted(properties),
+        "cached_properties": sorted(cached_properties),
+        "functions": sorted(functions),
     }
 
 
@@ -72,43 +72,39 @@ def main(args):
         print("Please add a test track to the dictionary at the top of this script.")
         return
 
-    data_home = "tests/resources/mir_datasets/{}".format(dataset.DATASET_DIR)
+    data_home = "tests/resources/mir_datasets/{}".format(dataset.name)
     print(data_home)
     track = dataset.Track(track_id, data_home=data_home)
     data = get_attributes_and_properties(track)
 
     print('"""{} Track class'.format(args.dataset))
-    print('')
-    print('Args:')
-    print('    track_id (str): track id of the track')
-    print('    data_home (str): Local path where the dataset is stored. default=None')
-    print(
-        '        If `None`, looks for the data in the default directory, `~/mir_datasets`'
-    )
-    print('')
+    print("")
+    print("Args:")
+    print("    track_id (str): track id of the track")
+    print("")
 
-    if len(data['attributes']) > 0:
-        print('Attributes:')
-        for attr in data['attributes']:
-            if attr == 'track_id':
+    if len(data["attributes"]) > 0:
+        print("Attributes:")
+        for attr in data["attributes"]:
+            if attr == "track_id":
                 print(
-                    '    {} ({}): track id'.format(
+                    "    {} ({}): track id".format(
                         attr, type(getattr(track, attr)).__name__
                     )
                 )
             else:
                 print(
-                    '    {} ({}): TODO'.format(
+                    "    {} ({}): TODO".format(
                         attr, type(getattr(track, attr)).__name__
                     )
                 )
-        print('')
+        print("")
 
     print('"""')
 
 
-if __name__ == '__main__':
-    PARSER = argparse.ArgumentParser(description='Print an empty docstring')
-    PARSER.add_argument('dataset', type=str, help='dataset module name.')
+if __name__ == "__main__":
+    PARSER = argparse.ArgumentParser(description="Print an empty docstring")
+    PARSER.add_argument("dataset", type=str, help="dataset module name.")
 
     main(PARSER.parse_args())

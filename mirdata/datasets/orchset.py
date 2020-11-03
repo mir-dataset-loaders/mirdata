@@ -12,18 +12,27 @@ For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 import csv
 import glob
-import librosa
 import logging
-import numpy as np
 import os
 import shutil
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
-
+BIBTEX = """@article{bosch2016evaluation,
+    title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
+    author={Bosch, Juan J and Marxer, Ricard and G{\'o}mez, Emilia},
+    journal={Journal of New Music Research},
+    volume={45},
+    number={2},
+    pages={101--117},
+    year={2016},
+    publisher={Taylor \\& Francis}
+}"""
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="Orchset_dataset_0.zip",
@@ -32,8 +41,6 @@ REMOTES = {
         destination_dir=None,
     )
 }
-
-DATASET_DIR = "Orchset"
 
 
 def _load_metadata(data_home):
@@ -99,13 +106,11 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("orchset_index.json", _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """orchset Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored. default=None
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
         alternating_melody (bool): True if the melody alternates between instruments
@@ -126,14 +131,11 @@ class Track(track.Track):
 
     """
 
-    def __init__(self, track_id, data_home=None):
+    def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
-            raise ValueError("{} is not a valid track ID in Orchset".format(track_id))
+            raise ValueError("{} is not a valid track ID in orchset".format(track_id))
 
         self.track_id = track_id
-
-        if data_home is None:
-            data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
@@ -236,93 +238,43 @@ def load_audio_stereo(audio_path):
     return librosa.load(audio_path, sr=None, mono=False)
 
 
-def download(data_home=None, force_overwrite=False, cleanup=True):
-    """Download ORCHSET Dataset.
+def _download(
+    save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
+):
+    """Download the dataset.
 
     Args:
-        data_home (str):
-            Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+        save_dir (str):
+            The directory to download the data
+        remotes (dict or None):
+            A dictionary of RemoteFileMetadata tuples of data in zip format.
+            If None, there is no data to download
+        partial_download (list or None):
+            A list of keys to partially download the remote objects of the download dict.
+            If None, all data is downloaded
+        info_message (str or None):
+            A string of info to print when this function is called.
+            If None, no string is printed.
         force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
+            If True, existing files are overwritten by the downloaded files.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
 
     """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
     download_utils.downloader(
-        data_home,
-        remotes=REMOTES,
+        save_dir,
+        remotes=remotes,
         info_message=None,
         force_overwrite=force_overwrite,
         cleanup=cleanup,
     )
-
     # files get downloaded to a folder called Orchset - move everything up a level
-    duplicated_orchset_dir = os.path.join(data_home, "Orchset")
+    duplicated_orchset_dir = os.path.join(save_dir, "Orchset")
     orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, "*"))
-
     for fpath in orchset_files:
-        shutil.move(fpath, data_home)
-
+        shutil.move(fpath, save_dir)
     if os.path.exists(duplicated_orchset_dir):
-        os.removedirs(duplicated_orchset_dir)
-
-
-def validate(data_home=None, silence=False):
-    """Validate if the stored dataset is a valid version
-
-    Args:
-        dataset_path (str): ORCHSET dataset local path
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        missing_files (list): List of file paths that are in the dataset index
-            but missing locally
-        invalid_checksums (list): List of file paths that file exists in the dataset
-            index but has a different checksum compare to the reference checksum
-
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    missing_files, invalid_checksums = utils.validator(
-        DATA.index, data_home, silence=silence
-    )
-    return missing_files, invalid_checksums
-
-
-def track_ids():
-    """Return track ids
-
-    Returns:
-        (list): A list of track ids
-    """
-    return list(DATA.index.keys())
-
-
-def load(data_home=None):
-    """Load ORCHSET dataset
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        (dict): {`track_id`: track data}
-
-    """
-
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    orchset_data = {}
-    for key in track_ids():
-        orchset_data[key] = Track(key, data_home=data_home)
-    return orchset_data
+        shutil.rmtree(duplicated_orchset_dir)
 
 
 def load_melody(melody_path):
@@ -342,27 +294,3 @@ def load_melody(melody_path):
     melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
 
-
-def cite():
-    """Print the reference"""
-
-    cite_data = """
-===========  MLA ===========
-Bosch, J., Marxer, R., Gomez, E., "Evaluation and Combination of
-Pitch Estimation Methods for Melody Extraction in Symphonic
-Classical Music", Journal of New Music Research (2016)
-
-========== Bibtex ==========
-@article{bosch2016evaluation,
-    title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
-    author={Bosch, Juan J and Marxer, Ricard and G{\'o}mez, Emilia},
-    journal={Journal of New Music Research},
-    volume={45},
-    number={2},
-    pages={101--117},
-    year={2016},
-    publisher={Taylor \\& Francis}
-}
-"""
-
-    print(cite_data)

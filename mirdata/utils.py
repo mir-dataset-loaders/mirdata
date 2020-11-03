@@ -2,7 +2,6 @@
 """Utility functions for mirdata
 
 Attributes:
-    MIR_DATASETS_DIR (str): home folder for MIR datasets
 
     NoteData (namedtuple): `intervals`, `notes`, `confidence`
 
@@ -29,9 +28,7 @@ from collections import namedtuple
 import hashlib
 import os
 import json
-
-
-MIR_DATASETS_DIR = os.path.join(os.getenv('HOME', '/tmp'), 'mir_datasets')
+import tqdm
 
 
 def md5(file_path):
@@ -45,8 +42,8 @@ def md5(file_path):
 
     """
     hash_md5 = hashlib.md5()
-    with open(file_path, 'rb') as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b''):
+    with open(file_path, "rb") as fhandle:
+        for chunk in iter(lambda: fhandle.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
@@ -68,23 +65,24 @@ def none_path_join(partial_path_list):
         return os.path.join(*partial_path_list)
 
 
-def log_message(message, silence=False):
+def log_message(message, verbose=True):
     """Helper function to log message
 
     Args:
         message (str): message to log
-        silence (bool): if true, the message is not logged
+        verbose (bool): if false, the message is not logged
     """
-    if not silence:
+    if verbose:
         print(message)
 
 
-def check_index(dataset_index, data_home):
+def check_index(dataset_index, data_home, verbose=True):
     """check index to find out missing files and files with invalid checksum
 
     Args:
         dataset_index (list): dataset indices
         data_home (str): Local home path that the dataset is being stored
+        verbose (bool): if true, prints validation status while running
 
     Returns:
         missing_files (list): List of file paths that are in the dataset index
@@ -97,7 +95,7 @@ def check_index(dataset_index, data_home):
     invalid_checksums = {}
 
     # loop over track ids
-    for track_id, track in dataset_index.items():
+    for track_id, track in tqdm.tqdm(dataset_index.items(), disable=not verbose):
         # loop over each data file for this track id
         for key in track.keys():
             filepath = track[key][0]
@@ -118,7 +116,7 @@ def check_index(dataset_index, data_home):
     return missing_files, invalid_checksums
 
 
-def validator(dataset_index, data_home, silence=False):
+def validator(dataset_index, data_home, verbose=True):
     """Checks the existence and validity of files stored locally with
     respect to the paths and file checksums stored in the reference index.
     Logs invalid checksums and missing files.
@@ -126,8 +124,8 @@ def validator(dataset_index, data_home, silence=False):
     Args:
         dataset_index (list): dataset indices
         data_home (str): Local home path that the dataset is being stored
-        silence (bool): if False (default), prints missing and invalid files
-        to stdout. Otherwise, this function is equivalent to check_index.
+        verbose (bool): if True (default), prints missing and invalid files
+            to stdout. Otherwise, this function is equivalent to check_index.
 
     Returns:
         missing_files (list): List of file paths that are in the dataset index
@@ -136,78 +134,65 @@ def validator(dataset_index, data_home, silence=False):
             dataset index but has a different checksum compare to the reference
             checksum.
     """
-    missing_files, invalid_checksums = check_index(dataset_index, data_home)
+    missing_files, invalid_checksums = check_index(dataset_index, data_home, verbose)
 
     # print path of any missing files
     has_any_missing_file = False
-    for track_id in missing_files.keys():
+    for track_id in missing_files:
         if len(missing_files[track_id]) > 0:
-            log_message('Files missing for {}:'.format(track_id), silence)
+            log_message("Files missing for {}:".format(track_id), verbose)
             for fpath in missing_files[track_id]:
-                log_message(fpath, silence)
-            log_message('-' * 20, silence)
+                log_message(fpath, verbose)
+            log_message("-" * 20, verbose)
             has_any_missing_file = True
 
     # print path of any invalid checksums
     has_any_invalid_checksum = False
-    for track_id in invalid_checksums.keys():
+    for track_id in invalid_checksums:
         if len(invalid_checksums[track_id]) > 0:
-            log_message('Invalid checksums for {}:'.format(track_id), silence)
+            log_message("Invalid checksums for {}:".format(track_id), verbose)
             for fpath in invalid_checksums[track_id]:
-                log_message(fpath, silence)
-            log_message('-' * 20, silence)
+                log_message(fpath, verbose)
+            log_message("-" * 20, verbose)
             has_any_invalid_checksum = True
 
     if not (has_any_missing_file or has_any_invalid_checksum):
         log_message(
-            'Success: the dataset is complete and all files are valid.', silence
+            "Success: the dataset is complete and all files are valid.", verbose
         )
-        log_message('-' * 20, silence)
+        log_message("-" * 20, verbose)
 
     return missing_files, invalid_checksums
 
 
-NoteData = namedtuple('NoteData', ['intervals', 'notes', 'confidence'])
+NoteData = namedtuple("NoteData", ["intervals", "notes", "confidence"])
 
-F0Data = namedtuple('F0Data', ['times', 'frequencies', 'confidence'])
+F0Data = namedtuple("F0Data", ["times", "frequencies", "confidence"])
 
 MultipitchData = namedtuple(
-    'MultipitchData', ['times', 'frequency_list', 'confidence_list']
+    "MultipitchData", ["times", "frequency_list", "confidence_list"]
 )
 
 LyricData = namedtuple(
-    'LyricData', ['start_times', 'end_times', 'lyrics', 'pronunciations']
+    "LyricData", ["start_times", "end_times", "lyrics", "pronunciations"]
 )
 
-SectionData = namedtuple('SectionData', ['intervals', 'labels'])
+SectionData = namedtuple("SectionData", ["intervals", "labels"])
 
-BeatData = namedtuple('BeatData', ['beat_times', 'beat_positions'])
+BeatData = namedtuple("BeatData", ["beat_times", "beat_positions"])
 
-ChordData = namedtuple('ChordData', ['intervals', 'labels'])
+ChordData = namedtuple("ChordData", ["intervals", "labels"])
 
-KeyData = namedtuple('KeyData', ['start_times', 'end_times', 'keys'])
+KeyData = namedtuple("KeyData", ["start_times", "end_times", "keys"])
 
-TempoData = namedtuple('TempoData', ['time', 'duration', 'value', 'confidence'])
+TempoData = namedtuple("TempoData", ["time", "duration", "value", "confidence"])
 
-EventData = namedtuple('EventData', ['start_times', 'end_times', 'event'])
-
-
-def get_default_dataset_path(dataset_name):
-    """Get the default path for a dataset given it's name
-
-    Args:
-        dataset_name (str or None)
-            The name of the dataset folder, e.g. 'Orchset'
-
-    Returns:
-        save_path (str): Local path to the dataset
-    """
-    return os.path.join(MIR_DATASETS_DIR, dataset_name)
+EventData = namedtuple("EventData", ["start_times", "end_times", "event"])
 
 
 def load_json_index(filename):
-    CWD = os.path.dirname(os.path.realpath(__file__))
-    with open(os.path.join(CWD, 'indexes', filename)) as f:
+    working_dir = os.path.dirname(os.path.realpath(__file__))
+    with open(os.path.join(working_dir, "datasets/indexes", filename)) as f:
         return json.load(f)
 
 
@@ -257,6 +242,6 @@ class LargeData(object):
         if self.metadata_load_fn is None:
             raise NotImplementedError
 
-        if self._metadata is None or self._metadata['data_home'] != data_home:
+        if self._metadata is None or self._metadata["data_home"] != data_home:
             self._metadata = self.metadata_load_fn(data_home)
         return self._metadata
