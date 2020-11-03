@@ -91,7 +91,7 @@ class Track(track.Track):
     @utils.cached_property
     def key(self):
         """List of String: list of possible key annotations"""
-        return load_key(self.keys_path).split(' | ')
+        return load_key(self.keys_path)
 
     @utils.cached_property
     def artists(self):
@@ -260,7 +260,7 @@ def load_key(keys_path):
     with open(keys_path) as f:
         key = f.readline()
 
-    return key
+    return key.split(' | ')
 
 
 def load_tempo(metadata_path):
