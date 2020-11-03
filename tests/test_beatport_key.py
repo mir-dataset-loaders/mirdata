@@ -70,9 +70,9 @@ def test_load_key():
     )
     key_data = beatport_key.load_key(key_path)
 
-    assert type(key_data) == str
+    assert type(key_data) == list
 
-    assert key_data == "D minor"
+    assert key_data == ["D minor"]
 
     assert beatport_key.load_key(None) is None
 
