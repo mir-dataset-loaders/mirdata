@@ -1,38 +1,39 @@
 # -*- coding: utf-8 -*-
-
+import os, shutil
 import numpy as np
 
-from mirdata import orchset, utils
+from mirdata.datasets import orchset
+from mirdata import utils, download_utils
 from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = 'Beethoven-S3-I-ex1'
-    data_home = 'tests/resources/mir_datasets/Orchset'
+    default_trackid = "Beethoven-S3-I-ex1"
+    data_home = "tests/resources/mir_datasets/orchset"
     track = orchset.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        'track_id': 'Beethoven-S3-I-ex1',
-        'audio_path_mono': 'tests/resources/mir_datasets/Orchset/'
-        + 'audio/mono/Beethoven-S3-I-ex1.wav',
-        'audio_path_stereo': 'tests/resources/mir_datasets/Orchset/'
-        + 'audio/stereo/Beethoven-S3-I-ex1.wav',
-        'melody_path': 'tests/resources/mir_datasets/Orchset/'
-        + 'GT/Beethoven-S3-I-ex1.mel',
-        'composer': 'Beethoven',
-        'work': 'S3-I',
-        'excerpt': '1',
-        'predominant_melodic_instruments': ['strings', 'winds'],
-        'alternating_melody': True,
-        'contains_winds': True,
-        'contains_strings': True,
-        'contains_brass': False,
-        'only_strings': False,
-        'only_winds': False,
-        'only_brass': False,
+        "track_id": "Beethoven-S3-I-ex1",
+        "audio_path_mono": "tests/resources/mir_datasets/orchset/"
+        + "audio/mono/Beethoven-S3-I-ex1.wav",
+        "audio_path_stereo": "tests/resources/mir_datasets/orchset/"
+        + "audio/stereo/Beethoven-S3-I-ex1.wav",
+        "melody_path": "tests/resources/mir_datasets/orchset/"
+        + "GT/Beethoven-S3-I-ex1.mel",
+        "composer": "Beethoven",
+        "work": "S3-I",
+        "excerpt": "1",
+        "predominant_melodic_instruments": ["strings", "winds"],
+        "alternating_melody": True,
+        "contains_winds": True,
+        "contains_strings": True,
+        "contains_brass": False,
+        "only_strings": False,
+        "only_winds": False,
+        "only_brass": False,
     }
 
-    expected_property_types = {'melody': utils.F0Data}
+    expected_property_types = {"melody": utils.F0Data}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -47,26 +48,26 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = 'tests/resources/mir_datasets/Orchset'
-    track = orchset.Track('Beethoven-S3-I-ex1', data_home=data_home)
+    data_home = "tests/resources/mir_datasets/orchset"
+    track = orchset.Track("Beethoven-S3-I-ex1", data_home=data_home)
     jam = track.to_jams()
 
-    f0s = jam.search(namespace='pitch_contour')[0]['data']
+    f0s = jam.search(namespace="pitch_contour")[0]["data"]
     assert [f0.time for f0 in f0s] == [0.0, 0.08, 0.09]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0, 0.0]
     assert [f0.value for f0 in f0s] == [
-        {'frequency': 0.0, 'index': 0, 'voiced': False},
-        {'frequency': 0.0, 'index': 0, 'voiced': False},
-        {'frequency': 622.254, 'index': 0, 'voiced': True},
+        {"frequency": 0.0, "index": 0, "voiced": False},
+        {"frequency": 0.0, "index": 0, "voiced": False},
+        {"frequency": 622.254, "index": 0, "voiced": True},
     ]
     assert [f0.confidence for f0 in f0s] == [0.0, 0.0, 1.0]
 
-    assert jam['sandbox']['alternating_melody'] == True
+    assert jam["sandbox"]["alternating_melody"] == True
 
 
 def test_load_melody():
     # load a file which exists
-    melody_path = 'tests/resources/mir_datasets/Orchset/GT/Beethoven-S3-I-ex1.mel'
+    melody_path = "tests/resources/mir_datasets/orchset/GT/Beethoven-S3-I-ex1.mel"
     melody_data = orchset.load_melody(melody_path)
 
     # check types
@@ -82,79 +83,114 @@ def test_load_melody():
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/Orchset'
+    data_home = "tests/resources/mir_datasets/orchset"
     metadata = orchset._load_metadata(data_home)
-    assert metadata['data_home'] == data_home
-    assert metadata['Beethoven-S3-I-ex1'] == {
-        'predominant_melodic_instruments-raw': 'strings+winds',
-        'predominant_melodic_instruments-normalized': ['strings', 'winds'],
-        'alternating_melody': True,
-        'contains_winds': True,
-        'contains_strings': True,
-        'contains_brass': False,
-        'only_strings': False,
-        'only_winds': False,
-        'only_brass': False,
-        'composer': 'Beethoven',
-        'work': 'S3-I',
-        'excerpt': '1',
+    assert metadata["data_home"] == data_home
+    assert metadata["Beethoven-S3-I-ex1"] == {
+        "predominant_melodic_instruments-raw": "strings+winds",
+        "predominant_melodic_instruments-normalized": ["strings", "winds"],
+        "alternating_melody": True,
+        "contains_winds": True,
+        "contains_strings": True,
+        "contains_brass": False,
+        "only_strings": False,
+        "only_winds": False,
+        "only_brass": False,
+        "composer": "Beethoven",
+        "work": "S3-I",
+        "excerpt": "1",
     }
-    assert metadata['Haydn-S94-Menuet-ex1'] == {
-        'predominant_melodic_instruments-raw': 'string+winds',
-        'predominant_melodic_instruments-normalized': ['strings', 'winds'],
-        'alternating_melody': True,
-        'contains_winds': True,
-        'contains_strings': True,
-        'contains_brass': False,
-        'only_strings': False,
-        'only_winds': False,
-        'only_brass': False,
-        'composer': 'Haydn',
-        'work': 'S94-Menuet',
-        'excerpt': '1',
+    assert metadata["Haydn-S94-Menuet-ex1"] == {
+        "predominant_melodic_instruments-raw": "string+winds",
+        "predominant_melodic_instruments-normalized": ["strings", "winds"],
+        "alternating_melody": True,
+        "contains_winds": True,
+        "contains_strings": True,
+        "contains_brass": False,
+        "only_strings": False,
+        "only_winds": False,
+        "only_brass": False,
+        "composer": "Haydn",
+        "work": "S94-Menuet",
+        "excerpt": "1",
     }
-    assert metadata['Musorgski-Ravel-PicturesExhibition-Promenade1-ex2'] == {
-        'predominant_melodic_instruments-raw': 'strings',
-        'predominant_melodic_instruments-normalized': ['strings'],
-        'alternating_melody': False,
-        'contains_winds': True,
-        'contains_strings': False,
-        'contains_brass': False,
-        'only_strings': True,
-        'only_winds': False,
-        'only_brass': False,
-        'composer': 'Musorgski-Ravel',
-        'work': 'PicturesExhibition-Promenade1',
-        'excerpt': '2',
+    assert metadata["Musorgski-Ravel-PicturesExhibition-Promenade1-ex2"] == {
+        "predominant_melodic_instruments-raw": "strings",
+        "predominant_melodic_instruments-normalized": ["strings"],
+        "alternating_melody": False,
+        "contains_winds": True,
+        "contains_strings": False,
+        "contains_brass": False,
+        "only_strings": True,
+        "only_winds": False,
+        "only_brass": False,
+        "composer": "Musorgski-Ravel",
+        "work": "PicturesExhibition-Promenade1",
+        "excerpt": "2",
     }
-    assert metadata['Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4'] == {
-        'predominant_melodic_instruments-raw': 'strings+winds',
-        'predominant_melodic_instruments-normalized': ['strings', 'winds'],
-        'alternating_melody': True,
-        'contains_winds': True,
-        'contains_strings': True,
-        'contains_brass': False,
-        'only_strings': False,
-        'only_winds': False,
-        'only_brass': False,
-        'composer': 'Rimski-Korsakov',
-        'work': 'Scheherazade-YoungPrincePrincess',
-        'excerpt': '4',
+    assert metadata["Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4"] == {
+        "predominant_melodic_instruments-raw": "strings+winds",
+        "predominant_melodic_instruments-normalized": ["strings", "winds"],
+        "alternating_melody": True,
+        "contains_winds": True,
+        "contains_strings": True,
+        "contains_brass": False,
+        "only_strings": False,
+        "only_winds": False,
+        "only_brass": False,
+        "composer": "Rimski-Korsakov",
+        "work": "Scheherazade-YoungPrincePrincess",
+        "excerpt": "4",
     }
-    assert metadata['Schubert-S8-II-ex2'] == {
-        'predominant_melodic_instruments-raw': 'winds (solo)',
-        'predominant_melodic_instruments-normalized': ['winds'],
-        'alternating_melody': False,
-        'contains_winds': False,
-        'contains_strings': True,
-        'contains_brass': False,
-        'only_strings': False,
-        'only_winds': True,
-        'only_brass': False,
-        'composer': 'Schubert',
-        'work': 'S8-II',
-        'excerpt': '2',
+    assert metadata["Schubert-S8-II-ex2"] == {
+        "predominant_melodic_instruments-raw": "winds (solo)",
+        "predominant_melodic_instruments-normalized": ["winds"],
+        "alternating_melody": False,
+        "contains_winds": False,
+        "contains_strings": True,
+        "contains_brass": False,
+        "only_strings": False,
+        "only_winds": True,
+        "only_brass": False,
+        "composer": "Schubert",
+        "work": "S8-II",
+        "excerpt": "2",
     }
 
-    metadata_none = orchset._load_metadata('asdf/asdf')
+    metadata_none = orchset._load_metadata("asdf/asdf")
     assert metadata_none is None
+
+
+def test_download(httpserver):
+    data_home = "tests/resources/mir_datasets/orchset_download"
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    httpserver.serve_content(
+        open("tests/resources/download/Orchset_dataset_0.zip", "rb").read()
+    )
+
+    remotes = {
+        "all": download_utils.RemoteFileMetadata(
+            filename="Orchset_dataset_0.zip",
+            url=httpserver.url,
+            checksum=("4794bc3514f7e8d1727f0d975d6d1ee2"),
+            destination_dir=None,
+        )
+    }
+    orchset._download(data_home, remotes, None, None, False, True)
+
+    assert os.path.exists(data_home)
+    assert not os.path.exists(os.path.join(data_home, "Orchset"))
+
+    assert os.path.exists(os.path.join(data_home, "README.txt"))
+    assert os.path.exists(
+        os.path.join(data_home, "Orchset - Predominant Melodic Instruments.csv")
+    )
+    track = orchset.Track("Beethoven-S3-I-ex1", data_home=data_home)
+    assert os.path.exists(track.audio_path_mono)
+    assert os.path.exists(track.audio_path_stereo)
+    assert os.path.exists(track.melody_path)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)

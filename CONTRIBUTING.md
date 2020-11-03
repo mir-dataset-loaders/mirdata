@@ -22,12 +22,13 @@ Finally, run tox with `tox`.  All tests should pass!
 To add a new dataset loader you should:
 
 1. Create a script in `scripts/`, e.g. `make_my_dataset_index.py`, which generates an index file. (See below for what an index file is)
-2. Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`. (Also see below for what we mean by "canonical")
-3. Create a module in mirdata, e.g. `mirdata/my_dataset.py`
+2. Run the script on the canonical version of the dataset and save the index in `mirdata/datasets/indexes/` e.g. `my_dataset_index.json`. (Also see below for what we mean by "canonical")
+3. Create a module in mirdata, e.g. `mirdata/datasets/my_dataset.py`
 4. Create tests for your loader in `tests/`, e.g. `test_my_dataset.py`
-5. Add your module to `docs/source/mirdata.rst` and `docs/source/datasets.rst`
-6. Add the module to `mirdata/__init__.py`
+5. Add your module to `docs/source/mirdata.rst` and `docs/source/datasets.rst`  (you can check that this was done correctly by clicking on the readthedocs check when you open a Pull Request)
+6. Add the module name to `DATASETS` in `mirdata/__init__.py`
 7. Add the module to the list in the `README.md` file, section `Currently supported datasets`
+8. Run `pytest -s tests/test_full_dataset.py --local --dataset my_dataset` and make sure the tests all pass. See the tests section below for details.
 
 If your dataset **is not fully downloadable** there are two extra steps you should follow:
 1. Contacting the mirdata organizers by opening an issue or PR so we can discuss how to proceed with the closed dataset.
@@ -138,10 +139,18 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
-DATASET_DIR = 'Example'
+
+# -- Add any relevant citations here
+BIBTEX = """@article{article-minimal,
+    author = "L[eslie] B. Lamport",
+    title = "The Gnats and Gnus Document Preparation System",
+    journal = "G-Animal's Journal",
+    year = "1986"
+}"""
+
 # -- REMOTES is a dictionary containing all files that need to be downloaded.
 # -- The keys should be descriptive (e.g. 'annotations', 'audio')
 REMOTES = {
@@ -152,6 +161,14 @@ REMOTES = {
         destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
     ),
 }
+
+# -- Include any information that should be printed when downloading
+# -- remove this variable if you don't need to print anything during download
+DOWNLOAD_INFO = """
+Include any information you want to be printed when dataset.download() is called.
+These can be instructions for how to download the dataset (e.g. request access on zenodo),
+caveats about the download, etc
+"""
 
 # -- change this to load any top-level metadata
 ## delete this function if you don't have global metadata
@@ -175,7 +192,7 @@ DATA = utils.LargeData('example_index.json', _load_metadata)
 # DATA = utils.LargeData('example_index.json')  ## use this if your dataset has no metadata
 
 
-class Track(track.Track):
+class Track(core.Track):
     """Example track class
     # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
     # -- `scripts/print_track_docstring.py my_dataset`
@@ -183,23 +200,18 @@ class Track(track.Track):
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
 
     Attributes:
         track_id (str): track id
         # -- Add any of the dataset specific attributes here
 
     """
-    def __init__(self, track_id, data_home=None):
+    def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
             raise ValueError(
                 '{} is not a valid track ID in Example'.format(track_id))
 
         self.track_id = track_id
-
-        if data_home is None:
-            data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
@@ -319,97 +331,34 @@ def load_audio(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
-# -- the partial_download argument can be removed if `dataset.REMOTES` is missing/has only one value
-# -- the force_overwrite argument can be removed if the dataset does not download anything
-# -- (i.e. there is no `dataset.REMOTES`)
-# -- the cleanup argument can be removed if the dataset has no tar or zip files in `dataset.REMOTES`.
-def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
+# -- this function is not necessary unless you need very custom download logic
+# -- If you need it, it must have this signature.
+def _download(
+    save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
 ):
     """Download the dataset.
 
     Args:
-        data_home (str):
-            Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+        save_dir (str):
+            The directory to download the data
+        remotes (dict or None):
+            A dictionary of RemoteFileMetadata tuples of data in zip format.
+            If None, there is no data to download
+        partial_download (list or None):
+            A list of keys to partially download the remote objects of the download dict.
+            If None, all data is downloaded
+        info_message (str or None):
+            A string of info to print when this function is called.
+            If None, no string is printed.
         force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
-        partial_download (list):
-            List indicating what to partially download. The list can include any of:
-                * 'TODO_KEYS_OF_REMOTES' TODO ADD DESCRIPTION
-            If `None`, all data is downloaded.
+            If True, existing files are overwritten by the downloaded files.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
 
     """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    download_utils.downloader(
-        # -- everything will be downloaded & uncompressed inside `data_home`
-        data_home,
-        # -- by default all elements in REMOTES will be downloaded
-        remotes=REMOTES,
-        # -- we allow partial downloads of the datasets containing multiple remote files
-        # -- this is done by specifying a list of keys in partial_download (when using the library)
-        partial_download=partial_download,
-        # -- if you need to give the user any instructions, such as how to download
-        # -- a dataset which is not freely availalbe, put them here
-        info_message=None,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-
-
-# -- keep this function exactly as it is
-def validate(data_home=None, silence=False):
-    """Validate if the stored dataset is a valid version
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-    Returns:
-        missing_files (list): List of file paths that are in the dataset index
-            but missing locally
-        invalid_checksums (list): List of file paths that file exists in the dataset
-            index but has a different checksum compare to the reference checksum
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    missing_files, invalid_checksums = utils.validator(
-        DATA.index, data_home, silence=silence
-    )
-    return missing_files, invalid_checksums
-
-
-# -- keep this function exactly as it is
-def track_ids():
-    """Return track ids
-
-    Returns:
-        (list): A list of track ids
-    """
-    return list(DATA.index.keys())
-
-
-# -- keep this function as it is
-def load(data_home=None):
-    """Load Example dataset
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-    Returns:
-        (dict): {`track_id`: track data}
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    data = {}
-    for key in DATA.index.keys():
-        data[key] = Track(key, data_home=data_home)
-    return data
+    # see download_utils.downloader for basic usage - if you only need to call downloader
+    # once, you do not need this function at all.
+    # only write a custom function if you need it! 
 
 
 # -- Write any necessary loader functions for loading the dataset's data
@@ -438,18 +387,6 @@ def load_annotation(annotation_path):
         np.array(annotation))
     return annotation_data
 
-
-def cite():
-    """Print the reference"""
-
-    cite_data = """
-=========== MLA ===========
-MLA format citation/s here
-========== Bibtex ==========
-Bibtex format citations/s here
-"""
-    print(cite_data)
-
 ```
 
 
@@ -461,6 +398,7 @@ Bibtex format citations/s here
   c. If the dataset has a metadata file, reduce the length to a few lines to make it trival to test.
 2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the ikala dataset tests (`tests/test_ikala.py`) for a reference.
 *Note that we have written automated tests for all loader's `cite`, `download`, `validate`, `load`, `track_ids` functions, as well as some basic edge cases of the `Track` object, so you don't need to write tests for these!*
+3. Locally run `pytest -s tests/test_full_dataset.py --local --dataset my_dataset`. See below for more details.
 
 ## Running your tests locally
 
