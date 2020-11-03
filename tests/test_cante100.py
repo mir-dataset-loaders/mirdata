@@ -46,7 +46,8 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 22050
-    assert audio.shape == (2, 3956358)
+    assert audio.shape[0] == 2  # Check audio is stereo
+    assert audio.shape[1] == 3957696  # Check audio length
 
 
 def test_to_jams():
