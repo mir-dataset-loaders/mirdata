@@ -13,12 +13,12 @@ TEST_DATA_HOME = "tests/resources/mir_datasets/cante100"
 
 def test_track_default_data_home():
     # test data home None
-    track_default = cante100.Track("008")
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, "cante100")
+    track_default = cante100.Track('008')
+    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'cante100')
 
 
 def test_track():
-    default_trackid = "008"
+    default_trackid = '008'
     track = cante100.Track(default_trackid, data_home=TEST_DATA_HOME)
     expected_attributes = {
         'artist': 'Toronjo',
@@ -44,11 +44,6 @@ def test_track():
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
-    audio, sr = track.audio
-    assert sr == 22050
-    assert audio.shape[0] == 2  # Check audio is stereo
-    assert audio.shape[1] == 3957696  # Check audio length
-
 
 def test_to_jams():
     default_trackid = "008"
@@ -58,56 +53,80 @@ def test_to_jams():
     # Validate cante100 jam schema
     assert jam.validate()
 
-    notes = jam.search(namespace='note_hz')[0]['data']
+    # Validate melody
     melody = jam.search(namespace='pitch_contour')[0]['data']
+    assert [note.time for note in melody] == [
+        0.023219954,
+        0.026122448,
+        0.029024942,
+        0.031927436,
+        0.034829931,
+        0.037732425
+    ]
+    assert [note.duration for note in melody] == [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ]
+    assert [note.value for note in melody] == [
+        {'index': 0, 'frequency': 0.0, 'voiced': False},
+        {'index': 0, 'frequency': 137.0, 'voiced': True},
+        {'index': 0, 'frequency': 220.34, 'voiced': True},
+        {'index': 0, 'frequency': 400.0, 'voiced': True},
+        {'index': 0, 'frequency': -110.0, 'voiced': False},
+        {'index': 0, 'frequency': -110.0, 'voiced': False}
+    ]
+    assert [note.confidence for note in melody] == [
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0
+    ]
 
-    assert [note.time for note in notes] == [25.7625, 26.1457, 37.3319, 37.5612, 37.7876, 44.8755, 45.1686,
-                                             46.0219, 46.1961, 46.5589, 46.884, 47.2149, 50.5673, 50.7269,
-                                             51.2174, 51.3916, 51.557, 51.7225, 52.0185, 52.1839, 53.4494,
-                                             53.8558, 54.0125, 54.1751, 54.3405, 54.503, 54.6598, 54.9529,
-                                             55.6176, 55.9107, 56.3229, 56.5232, 56.7496, 56.8483, 60.8856,
-                                             61.1701, 68.7833, 69.1316, 69.448, 69.8253, 70.0227, 70.1823,
-                                             70.3129, 70.609, 70.9137, 71.085, 71.2301, 71.3694, 71.6568,
-                                             71.9615, 72.1444, 72.2953, 72.4753, 72.7307, 72.8642, 74.3155,
-                                             74.5099, 74.8176, 75.0411, 75.2472, 75.3575, 75.5258, 75.7116,
-                                             76.0744, 76.5881, 76.6984, 77.0206, 77.1657, 77.4792, 77.6475,
-                                             77.7897, 79.3919, 79.6909, 79.836, 80.2453, 80.5152, 80.701,
-                                             80.8838, 81.3395, 81.6356, 81.8068, 81.9664, 82.1261, 82.4076,
-                                             84.6977, 84.898, 85.0605, 85.255, 85.7571, 86.0677, 86.7962,
-                                             87.4464, 87.7569, 87.9108, 89.6377, 89.838, 90.0963, 90.7639,
-                                             90.9816, 91.1354, 91.3125, 91.6259, 91.7885, 91.9452, 92.0961,
-                                             92.3893, 92.6999, 92.8798, 93.3036, 93.501, 93.8434, 94.7984,
-                                             95.4195, 95.7881, 96.0784, 96.6095, 97.0159, 97.5964, 97.8315,
-                                             98.3249, 98.499, 98.6674, 98.8328, 98.9983, 99.1608, 99.6658,
-                                             100.423, 100.824, 100.986, 101.155, 101.323, 101.486, 101.64,
-                                             101.953, 102.266, 102.458, 102.612, 102.792, 102.969, 103.245,
-                                             103.509, 103.909, 134.748, 134.908, 135.219, 135.488, 135.874,
-                                             136.057, 136.496, 136.777, 136.928, 137.079, 137.23, 137.514,
-                                             140.234, 140.768, 141.247, 141.523, 142.512, 142.986, 143.154,
-                                             143.319, 145.554, 145.975, 146.262, 146.547, 146.779, 147.22,
-                                             147.49, 147.641, 147.795, 147.943, 148.225, 148.524, 150.66,
-                                             150.825, 151.179, 151.362, 151.824, 152.027, 152.732, 153.046,
-                                             153.356, 153.507, 155.664, 156.009, 156.302, 156.601, 156.659,
-                                             157.455, 157.745, 157.983, 158.258, 158.412, 158.569, 158.72,
-                                             159.007, 159.318, 159.501, 160.049, 161.001, 161.582, 161.823,
-                                             162.142, 162.496, 162.842, 163.318, 163.805, 164.008, 164.484,
-                                             164.65, 164.812, 164.978, 165.291, 165.46, 166.734, 167.126,
-                                             167.297, 167.48, 167.66, 167.825, 167.979, 168.292, 168.594,
-                                             168.858, 169.053, 169.236, 169.392, 169.781, 170.179, 170.562]
-    assert notes[0].duration == 0.3453969999999984
-    assert notes[-1].duration == 0.3976419999999905
-    assert notes[0].value == 207.65234878997256
-    assert notes[-1].value == 207.65234878997256
-
-    assert melody[0].time == 0.023219954
-    assert melody[-1].time == 179.795011337
-    assert melody[0].value == {'index': 0, 'frequency': 0, 'voiced': False}
-    assert melody[-1].value == {'index': 0, 'frequency': -110.0, 'voiced': False}
+    # Validate note transciption
+    notes = jam.search(namespace='note_hz')[0]['data']
+    assert [note.time for note in notes] == [
+        25.7625,
+        26.1457,
+        37.3319,
+        37.5612,
+        37.7876,
+        44.8755
+    ]
+    assert [note.duration for note in notes] == [
+        0.3453969999999984,
+        0.3947390000000013,
+        0.22349200000000025,
+        0.20317500000000166,
+        2.400359999999999,
+        0.2873469999999969
+    ]
+    assert [note.value for note in notes] == [
+        207.65234878997256,
+        207.65234878997256,
+        311.1269837220809,
+        369.9944227116344,
+        415.3046975799452,
+        391.9954359817492,
+    ]
+    assert [note.confidence for note in notes] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+        None
+    ]
 
 
-def test_load_f0():
-    # load a file which exists
-    f0_path = 'tests/resources/mir_datasets/cante100/cante100midi_f0/008_PacoToronjo_Fandangos.f0.csv'
+def test_load_melody():
+    track = cante100.Track('008', data_home=TEST_DATA_HOME)
+    f0_path = track.f0_path
     f0_data = cante100.load_melody(f0_path)
 
     # check types
@@ -115,6 +134,65 @@ def test_load_f0():
     assert type(f0_data.times) is np.ndarray
     assert type(f0_data.frequencies) is np.ndarray
     assert type(f0_data.confidence) is np.ndarray
+
+    # check values
+    assert np.array_equal(
+        f0_data.times, np.array([0.023219954, 0.026122448, 0.029024942, 0.031927436, 0.034829931, 0.037732425])
+    )
+    assert np.array_equal(
+        f0_data.frequencies, np.array([0.0, 137.0, 220.34, 400.0, -110.0, -110.0])
+    )
+    assert np.array_equal(
+        f0_data.confidence, np.array([0.0, 1.0, 1.0, 1.0, 0.0, 0.0])
+    )
+
+
+def test_load_notes():
+    track = cante100.Track('008', data_home=TEST_DATA_HOME)
+    notes_path = track.notes_path
+    notes_data = cante100.load_notes(notes_path)
+
+    # check types
+    assert type(notes_data) == utils.NoteData
+    assert type(notes_data.intervals) is np.ndarray
+    assert type(notes_data.notes) is np.ndarray
+    assert type(notes_data.confidence) is np.ndarray
+
+    # check values
+    assert np.array_equal(
+        notes_data.intervals[:, 0], np.array([25.7625, 26.1457, 37.3319, 37.5612, 37.7876, 44.8755])
+    )
+    assert np.array_equal(
+        notes_data.intervals[:, 1], np.array([26.107896999999998, 26.540439000000003, 37.555392,
+                                              37.764375, 40.18796, 45.162847])
+    )
+    assert np.array_equal(
+        notes_data.notes, np.array([207.65234878997256, 207.65234878997256, 311.1269837220809,
+                                    369.9944227116344, 415.3046975799452, 391.9954359817492])
+    )
+    assert np.array_equal(
+        notes_data.confidence, np.array([1., 1., 1., 1., 1., 1.])
+    )
+
+
+def test_load_spectrum():
+    track = cante100.Track('008', data_home=TEST_DATA_HOME)
+    spectrum_path = track.spectrum_path
+    spectrum = cante100.load_spectrum(spectrum_path)
+    assert spectrum.shape[0] == 5
+    assert spectrum.shape[1] == 514
+    assert type(spectrum) is np.ndarray
+    assert isinstance(spectrum[0][0], float) is True
+
+
+def test_load_audio():
+    track = cante100.Track('008', data_home=TEST_DATA_HOME)
+    audio_path = track.audio_path
+    audio, sr = cante100.load_audio(audio_path)
+    assert sr == 22050
+    assert audio.shape[0] == 2  # Check audio is stereo
+    # assert audio.shape[1] == 3957696  # Check audio length
+    assert type(audio) is np.ndarray
 
 
 def test_load_metadata():

@@ -278,7 +278,7 @@ def load_spectrum(spectrum_path):
             spectrum_.append(row[:514])
             total_rows += 1
 
-        spectrum = np.array(spectrum_)
+        spectrum = np.array(spectrum_).astype(np.float)
         spectrum.reshape(total_rows, 514)
 
     return spectrum
