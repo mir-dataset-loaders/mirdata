@@ -21,8 +21,8 @@ Audio specifications
 * Bit-depth: 16 bit
 * Audio format: .mp3
 
-cante100 dataset has spectrum available, in csv format. Spectrum is available to download
-without request needed, so at first instance, cante100 loader uses the spectrum of the tracks.
+cante100 dataset has spectrogram available, in csv format. spectrogram is available to download
+without request needed, so at first instance, cante100 loader uses the spectrogram of the tracks.
 
 The available annotations are:
 - F0 (predominant melody)
@@ -55,7 +55,7 @@ DATASET_DIR = 'cante100'
 
 
 REMOTES = {
-    'spectrum': download_utils.RemoteFileMetadata(
+    'spectrogram': download_utils.RemoteFileMetadata(
         filename='cante100_spectrum.zip',
         url='https://zenodo.org/record/1322542/files/cante100_spectrum.zip?download=1',
         checksum='0b81fe0fd7ab2c1adc1ad789edb12981',  # the md5 checksum
@@ -201,7 +201,7 @@ class Track(track.Track):
         self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0]
         )
-        self.spectrum_path = os.path.join(
+        self.spectrogram_path = os.path.join(
             self._data_home, self._track_paths['spectrum'][0]
         )
         self.f0_path = os.path.join(self._data_home, self._track_paths['f0'][0])
@@ -231,9 +231,9 @@ class Track(track.Track):
         return load_audio(self.audio_path)
 
     @property
-    def spectrum(self):
-        """(np.ndarray, float): spectrum"""
-        return load_spectrum(self.spectrum_path)
+    def spectrogram(self):
+        """(np.ndarray, float): spectrogram"""
+        return load_spectrogram(self.spectrogram_path)
 
     @utils.cached_property
     def melody(self):
@@ -249,39 +249,29 @@ class Track(track.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            spectrum_cante100_path=self.spectrum_path,
+            spectrogram_path=self.spectrogram_path,
             f0_data=[(self.melody, 'pitch_contour')],
             note_data=[(self.notes, 'note_hz')],
             metadata=self._track_metadata,
         )
 
 
-def load_spectrum(spectrum_path):
-    """Load a cante100 dataset spectrum file.
+def load_spectrogram(spectrogram_path):
+    """Load a cante100 dataset spectrogram file.
 
     Args:
-        spectrum_path (str): path to audio file
+        spectrogram_path (str): path to audio file
 
     Returns:
-        np.array: spectrum
+        np.array: spectrogram
 
     """
-    if not os.path.exists(spectrum_path):
-        raise IOError("audio_path {} does not exist".format(spectrum_path))
+    if not os.path.exists(spectrogram_path):
+        raise IOError("spectrogram_path {} does not exist".format(spectrogram_path))
+    parsed_spectrogram = np.genfromtxt(spectrogram_path, delimiter=' ')
+    spectrogram = parsed_spectrogram.astype(np.float)
 
-    with open(spectrum_path, 'r') as csvfile:
-        reader = csv.reader(csvfile, delimiter=' ', quotechar='\n')
-
-        spectrum_ = []
-        total_rows = 0
-        for row in reader:
-            spectrum_.append(row[:514])
-            total_rows += 1
-
-        spectrum = np.array(spectrum_).astype(np.float)
-        spectrum.reshape(total_rows, 514)
-
-    return spectrum
+    return spectrogram
 
 
 def load_melody(f0_path):
@@ -299,11 +289,11 @@ def load_melody(f0_path):
 
     times = []
     freqs = []
-    with open(f0_path, 'r') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',', quotechar='\n')
-        for row in reader:
-            times.append(float(row[0]))
-            freqs.append(float(row[1]))
+
+    parsed_melody = np.genfromtxt(f0_path, delimiter=',')
+    for row in parsed_melody:
+        times.append(float(row[0]))
+        freqs.append(float(row[1]))
 
     times = np.array(times)
     freqs = np.array(freqs)
@@ -328,13 +318,13 @@ def load_notes(notes_path):
     intervals = []
     pitches = []
     confidence = []
-    with open(notes_path, 'r') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',', quotechar='\n')
-        for row in reader:
-            intervals.append([row[0], float(row[0]) + float(row[1])])
-            # Convert midi value to frequency
-            pitches.append((440 / 32) * (2 ** ((int(row[2]) - 9) / 12)))
-            confidence.append(1.0)
+
+    parsed_notes = np.genfromtxt(notes_path, delimiter=',')
+    for row in parsed_notes:
+        intervals.append([row[0], float(row[0]) + float(row[1])])
+        # Convert midi value to frequency
+        pitches.append((440 / 32) * (2 ** ((int(row[2]) - 9) / 12)))
+        confidence.append(1.0)
 
     return utils.NoteData(
         np.array(intervals, dtype='float'),
@@ -489,3 +479,12 @@ Zenodo. http://doi.org/10.5281/zenodo.1324183
 """
 
     print(cite_data)
+
+
+def main():
+    spectrogram_path = '/Users/genisplaja/Desktop/genis-datasets/cante100/cante100_spectrogram/008_PacoToronjo_Fandangos.spectrogram.csv'
+    spectrogram = load(spectrogram_path)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,7 +1,5 @@
 import argparse
 import collections
-import numpy as np
-import glob
 import hashlib
 import json
 import os

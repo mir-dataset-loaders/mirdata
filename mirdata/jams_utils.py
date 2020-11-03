@@ -5,14 +5,13 @@
 import jams
 import librosa
 import os
-import csv
 
 from mirdata import utils
 
 
 def jams_converter(
     audio_path=None,
-    spectrum_cante100_path=None,
+    spectrogram_path=None,
     beat_data=None,
     chord_data=None,
     note_data=None,
@@ -90,7 +89,7 @@ def jams_converter(
                 + 'for this track cannot be found, and it is required'
                 + 'to compute duration.'
             )
-    if spectrum_cante100_path is not None:
+    if spectrogram_path is not None:
         if audio_path is None:
             duration = metadata['duration']
 

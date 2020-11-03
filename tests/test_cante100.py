@@ -31,7 +31,7 @@ def test_track():
         'notes_path': 'tests/resources/mir_datasets/cante100/cante100_automaticTranscription/008_PacoToronjo_'
         + 'Fandangos.notes.csv',
         'release': 'Atlas del cante flamenco',
-        'spectrum_path': 'tests/resources/mir_datasets/cante100/cante100_spectrum/008_PacoToronjo_'
+        'spectrogram_path': 'tests/resources/mir_datasets/cante100/cante100_spectrum/008_PacoToronjo_'
         + 'Fandangos.spectrum.csv',
         'title': 'Huelva Como Capital',
         'track_id': '008',
@@ -177,12 +177,12 @@ def test_load_notes():
 
 def test_load_spectrum():
     track = cante100.Track('008', data_home=TEST_DATA_HOME)
-    spectrum_path = track.spectrum_path
-    spectrum = cante100.load_spectrum(spectrum_path)
-    assert spectrum.shape[0] == 5
-    assert spectrum.shape[1] == 514
-    assert type(spectrum) is np.ndarray
-    assert isinstance(spectrum[0][0], float) is True
+    spectrogram_path = track.spectrogram_path
+    spectrogram = cante100.load_spectrogram(spectrogram_path)
+    assert spectrogram.shape[0] == 5
+    assert spectrogram.shape[1] == 514
+    assert type(spectrogram) is np.ndarray
+    assert isinstance(spectrogram[0][0], float) is True
 
 
 def test_load_audio():
