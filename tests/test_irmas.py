@@ -9,13 +9,13 @@ from mirdata.datasets import irmas
 def test_track():
     default_trackid = '1'
     default_trackid_train = '0189__2'
-    data_home = "tests/resources/mir_datasets/IRMAS"
+    data_home = "tests/resources/mir_datasets/irmas"
     track = irmas.Track(default_trackid, data_home=data_home)
     track_train = irmas.Track(default_trackid_train, data_home=data_home)
     expected_attributes = {
-        'annotation_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
+        'annotation_path': "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.txt",
-        'audio_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
+        'audio_path': "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.wav",
         'track_id': '1',
         'predominant_instrument': None,
@@ -24,9 +24,9 @@ def test_track():
         'train': False
     }
     expected_attributes_train = {
-        'annotation_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TrainingData/cla/"
+        'annotation_path': "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/"
         + "[cla][cla]0189__2.wav",
-        'audio_path': "tests/resources/mir_datasets/IRMAS/IRMAS-TrainingData/cla/"
+        'audio_path': "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/"
         + "[cla][cla]0189__2.wav",
         'track_id': '0189__2',
         'predominant_instrument': 'cla',
@@ -51,7 +51,7 @@ def test_track():
 def test_to_jams():
     # Training samples
     default_trackid_train = "0189__2"
-    data_home = "tests/resources/mir_datasets/IRMAS"
+    data_home = "tests/resources/mir_datasets/irmas"
     track_train = irmas.Track(default_trackid_train, data_home=data_home)
     jam_train = track_train.to_jams()
 
@@ -65,7 +65,7 @@ def test_to_jams():
 
     # Testing samples
     default_trackid_test = '1'
-    data_home = "tests/resources/mir_datasets/IRMAS"
+    data_home = "tests/resources/mir_datasets/irmas"
     track_test = irmas.Track(default_trackid_test, data_home=data_home)
     jam_test = track_test.to_jams()
 
@@ -80,7 +80,7 @@ def test_to_jams():
 def test_load_pred_inst():
     # Training samples
     pred_inst_audio_train = (
-        "tests/resources/mir_datasets/IRMAS/IRMAS-TrainingData/cla/"
+        "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/"
         + "[cla][cla]0189__2.wav"
     )
 
@@ -89,7 +89,7 @@ def test_load_pred_inst():
 
     # Testing samples
     pred_inst_ann_path_test = (
-        "tests/resources/mir_datasets/IRMAS/IRMAS-TestingData-Part1/Part1/"
+        "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.txt"
     )
     pred_inst_data_test = irmas.load_pred_inst(
