@@ -178,7 +178,7 @@ def extractall_unicode(zfile, out_dir):
 
     Args:
         zfile (obj): Zip file object created with zipfile.ZipFile
-        out_dir (str): Output fulder
+        out_dir (str): Output folder
 
     """
     for m in zfile.infolist():
@@ -207,7 +207,6 @@ def unzip(zip_path, cleanup=True):
 
     """
     zfile = zipfile.ZipFile(zip_path, 'r')
-    # zfile.extractall(os.path.dirname(zip_path))
     extractall_unicode(zfile, os.path.dirname(zip_path))
     zfile.close()
     if cleanup:
