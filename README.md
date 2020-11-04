@@ -24,14 +24,14 @@ pip install mirdata
 
 Try it out!
 ```python
-import mirdata.orchset
+import mirdata
 import random
 
-mirdata.orchset.download()  # download the dataset
-mirdata.orchset.validate()  # validate that all the expected files are there
-orchset_data = mirdata.orchset.load()  # (lazy) load the data index
+orchset = mirdata.Dataset('orchset')
+orchset.download()  # download the dataset
+orchset.validate()  # validate that all the expected files are there
 
-example_track = random.choice(list(orchset_data.items()))  # choose a random example track
+example_track = orchset.choice_track()  # choose a random example track
 print(example_track)  # see the availalbe data
 ```
 See the Examples section below for more details, or the [documentation](https://mirdata.readthedocs.io/en/latest/) for more examples and the API reference.
@@ -92,31 +92,44 @@ We welcome contributions to this library, especially new datasets. Please see [C
 
 ### Download the Orchset Dataset
 ```python
-import mirdata.orchset
+import mirdata
 
-mirdata.orchset.download()
+orchset = mirdata.Dataset('orchset')
+orchset.download()
 ```
 
 ### Validate the data
 ```python
-import mirdata.orchset
+import mirdata
 
-mirdata.orchset.validate()
+orchset = mirdata.Dataset('orchset')
+orchset.validate()
 ```
 
-### Load the Orchset Dataset
+### Load data for a specific track
 ```python
-import mirdata.orchset
+import mirdata
 
-orchset_data = mirdata.orchset.load()
+orchset = mirdata.Dataset('orchset')
+track = orchset.track('Beethoven-S3-I-ex1')
+print(track)
+```
+
+### Load all tracks in the Orchset Dataset
+```python
+import mirdata
+
+orchset = mirdata.Dataset('orchset')
+orchset_data = orchset.load_tracks()
 ```
 
 ### See what data are available for a track
 ```python
-import mirdata.orchset
+import mirdata
 
-orchset_ids = mirdata.orchset.track_ids()
-orchset_data = mirdata.orchset.load()
+orchset = mirdata.Dataset('orchset')
+orchset_ids = orchset.track_ids()
+orchset_data = orchset.load_tracks()
 
 example_track = orchset_data[orchset_ids[0]]
 print(example_track)
@@ -144,7 +157,7 @@ print(example_track)
 ### Evaluate a melody extraction algorithm on Orchset
 ```python
 import mir_eval
-import mirdata.orchset
+import mirdata
 import numpy as np
 import sox
 
@@ -156,7 +169,8 @@ def very_bad_melody_extractor(audio_path):
 
 # Evaluate on the full dataset
 orchset_scores = {}
-orchset_data = mirdata.orchset.load()
+orchset = mirdata.Dataset('orchset')
+orchset_data = orchset.load_tracks()
 for track_id, track_data in orchset_data.items():
     est_times, est_freqs = very_bad_melody_extractor(track_data.audio_path_mono)
 
@@ -183,4 +197,4 @@ for track_id, track_data in orchset_data.items():
 By default, all datasets tracked by this library are stored in `~/mir_datasets`,
 (defined as `MIR_DATASETS_DIR` in `mirdata/__init__.py`).
 Data can alternatively be stored in another location by specifying `data_home`
-within a relevant function, e.g. `mirdata.orchset.download(data_home='my_custom_path')`
+within a relevant function, e.g. `mirdata.Dataset('orchset', data_home='my_custom_path')`

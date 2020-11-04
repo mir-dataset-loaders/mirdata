@@ -4,7 +4,8 @@ import sys
 import pytest
 import numpy as np
 
-from mirdata import track
+import mirdata
+from mirdata import core
 
 if sys.version_info.major == 3:
     builtin_module_name = "builtins"
@@ -13,7 +14,7 @@ else:
 
 
 def test_track_repr():
-    class TestTrack(track.Track):
+    class TestTrack(core.Track):
         def __init__(self):
             self.a = "asdf"
             self.b = 1.2345678
@@ -47,7 +48,7 @@ def test_track_repr():
     with pytest.raises(NotImplementedError):
         test_track.to_jams()
 
-    class NoDocsTrack(track.Track):
+    class NoDocsTrack(core.Track):
         @property
         def no_doc(self):
             return "whee!"
@@ -57,8 +58,37 @@ def test_track_repr():
         bad_track.__repr__()
 
 
+def test_dataset():
+    dataset = mirdata.Dataset("guitarset")
+    assert isinstance(dataset, core.Dataset)
+
+    dataset = mirdata.Dataset("rwc_jazz")
+    assert isinstance(dataset, core.Dataset)
+
+    dataset = mirdata.Dataset("ikala")
+    assert isinstance(dataset, core.Dataset)
+
+    print(dataset)  # test that repr doesn't fail
+
+
+def test_dataset_errors():
+    with pytest.raises(ValueError):
+        core.Dataset("not_a_dataset")
+
+    d = core.Dataset("orchset")
+    d._track_object = None
+    with pytest.raises(NotImplementedError):
+        d.track("asdf")
+
+    with pytest.raises(NotImplementedError):
+        d.load_tracks()
+
+    with pytest.raises(NotImplementedError):
+        d.choice_track()
+
+
 def test_multitrack_basic():
-    class TestTrack(track.Track):
+    class TestTrack(core.Track):
         def __init__(self, key):
             self.key = key
 
@@ -66,7 +96,7 @@ def test_multitrack_basic():
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), 1000
 
-    class TestMultiTrack1(track.MultiTrack):
+    class TestMultiTrack1(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
@@ -85,7 +115,7 @@ def test_multitrack_basic():
     with pytest.raises(NotImplementedError):
         mtrack.get_mix()
 
-    class TestMultiTrack2(track.MultiTrack):
+    class TestMultiTrack2(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
@@ -103,7 +133,7 @@ def test_multitrack_basic():
 
 
 def test_multitrack_mixing():
-    class TestTrack(track.Track):
+    class TestTrack(core.Track):
         def __init__(self, key):
             self.key = key
 
@@ -111,7 +141,7 @@ def test_multitrack_mixing():
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), 1000
 
-    class TestMultiTrack(track.MultiTrack):
+    class TestMultiTrack(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
@@ -179,7 +209,7 @@ def test_multitrack_mixing():
 
 
 def test_multitrack_unequal_len():
-    class TestTrack(track.Track):
+    class TestTrack(core.Track):
         def __init__(self, key):
             self.key = key
 
@@ -187,7 +217,7 @@ def test_multitrack_unequal_len():
         def f(self):
             return np.random.uniform(-1, 1, (2, np.random.randint(50, 100))), 1000
 
-    class TestMultiTrack(track.MultiTrack):
+    class TestMultiTrack(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
@@ -209,7 +239,7 @@ def test_multitrack_unequal_len():
 
 
 def test_multitrack_unequal_sr():
-    class TestTrack(track.Track):
+    class TestTrack(core.Track):
         def __init__(self, key):
             self.key = key
 
@@ -217,7 +247,7 @@ def test_multitrack_unequal_sr():
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), np.random.randint(10, 1000)
 
-    class TestMultiTrack(track.MultiTrack):
+    class TestMultiTrack(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
@@ -232,7 +262,7 @@ def test_multitrack_unequal_sr():
 
 def test_multitrack_mono():
     ### no first channel - audio shapes (100,)
-    class TestTrack(track.Track):
+    class TestTrack(core.Track):
         def __init__(self, key):
             self.key = key
 
@@ -240,7 +270,7 @@ def test_multitrack_mono():
         def f(self):
             return np.random.uniform(-1, 1, (100)), 1000
 
-    class TestMultiTrack(track.MultiTrack):
+    class TestMultiTrack(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
@@ -258,7 +288,7 @@ def test_multitrack_mono():
     assert np.max(np.abs(target1)) <= 2
 
     ### one channel mono shape (1, 100)
-    class TestTrack1(track.Track):
+    class TestTrack1(core.Track):
         def __init__(self, key):
             self.key = key
 
@@ -266,7 +296,7 @@ def test_multitrack_mono():
         def f(self):
             return np.random.uniform(-1, 1, (1, 100)), 1000
 
-    class TestMultiTrack1(track.MultiTrack):
+    class TestMultiTrack1(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home

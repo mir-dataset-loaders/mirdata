@@ -10,146 +10,145 @@ API documentation
 .. automodule:: mirdata
    :members:
 
-Dataset Loaders
----------------
+Datasets
+--------
 
-mirdata.beatles
-^^^^^^^^^^^^^^^
+beatles
+^^^^^^^
 
-.. automodule:: mirdata.beatles
+.. automodule:: mirdata.datasets.beatles
    :members:
    
-mirdata.beatport_key
-^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.beatport_key
-   :members:
-
-mirdata.dali
+beatport_key
 ^^^^^^^^^^^^
 
-.. automodule:: mirdata.dali
+.. automodule:: mirdata.datasets.beatport_key
    :members:
 
-mirdata.giantsteps_tempo
-^^^^^^^^^^^^^^^^^^^^^^^^
+dali
+^^^^
 
-.. automodule:: mirdata.giantsteps_tempo
+.. automodule:: mirdata.datasets.dali
    :members:
 
-mirdata.giantsteps_key
-^^^^^^^^^^^^^^^^^^^^^^
+giantsteps_tempo
+^^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.giantsteps_key
+.. automodule:: mirdata.datasets.giantsteps_tempo
    :members:
 
-mirdata.groove_midi
-^^^^^^^^^^^^^^^^^^^
+giantsteps_key
+^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.groove_midi
+.. automodule:: mirdata.datasets.giantsteps_key
    :members:
 
-mirdata.gtzan_genre
-^^^^^^^^^^^^^^^^^^^
+groove_midi
+^^^^^^^^^^^
 
-.. automodule:: mirdata.gtzan_genre
+.. automodule:: mirdata.datasets.groove_midi
    :members:
 
-mirdata.guitarset
-^^^^^^^^^^^^^^^^^
+gtzan_genre
+^^^^^^^^^^^
 
-.. automodule:: mirdata.guitarset
+.. automodule:: mirdata.datasets.gtzan_genre
+   :members:
+
+guitarset
+^^^^^^^^^
+
+.. automodule:: mirdata.datasets.guitarset
    :members:
 
 
-mirdata.ikala
-^^^^^^^^^^^^^
+ikala
+^^^^^
 
-.. automodule:: mirdata.ikala
+.. automodule:: mirdata.datasets.ikala
    :members:
 
 
-mirdata.maestro
+maestro
+^^^^^^^
+
+.. automodule:: mirdata.datasets.maestro
+   :members:
+
+
+medleydb\_melody
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.medleydb_melody
+   :members:
+
+medleydb\_pitch
 ^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.maestro
+.. automodule:: mirdata.datasets.medleydb_pitch
    :members:
 
 
-mirdata.medleydb\_melody
-^^^^^^^^^^^^^^^^^^^^^^^^
+medley_solos_db
+^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.medleydb_melody
-   :members:
-
-mirdata.medleydb\_pitch
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.medleydb_pitch
+.. automodule:: mirdata.datasets.medley_solos_db
    :members:
 
 
-mirdata.medley_solos_db
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.medley_solos_db
-   :members:
-
-
-mirdata.mridangam_stroke
-^^^^^^^^^^^^^^^^^^^^^^^^
+mridangam_stroke
+^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.mridangam_stroke
    :members:
 
 
-mirdata.orchset
-^^^^^^^^^^^^^^^
+orchset
+^^^^^^^
 
-.. automodule:: mirdata.orchset
+.. automodule:: mirdata.datasets.orchset
+   :members:
+
+rwc_classical
+^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.rwc_classical
+   :members:
+
+rwc_jazz
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.rwc_jazz
+   :members:
+
+rwc_popular
+^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.rwc_popular
    :members:
 
 
-mirdata.rwc_classical
-^^^^^^^^^^^^^^^^^^^^^
+salami
+^^^^^^
 
-.. automodule:: mirdata.rwc_classical
-   :members:
-
-mirdata.rwc_jazz
-^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.rwc_jazz
-   :members:
-
-mirdata.rwc_popular
-^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.rwc_popular
+.. automodule:: mirdata.datasets.salami
    :members:
 
 
-mirdata.salami
-^^^^^^^^^^^^^^
+tinysol
+^^^^^^^
 
-.. automodule:: mirdata.salami
-   :members:
-
-
-mirdata.tinysol
-^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.tinysol
+.. automodule:: mirdata.datasets.tinysol
    :members:
 
 
 Utilities
 ----------
 
-mirdata.track
+mirdata.core
 ^^^^^^^^^^^^^
 
-.. automodule:: mirdata.track
+.. automodule:: mirdata.core
    :members:
 
 mirdata.utils

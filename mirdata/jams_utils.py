@@ -82,23 +82,19 @@ def jams_converter(
             duration = librosa.get_duration(filename=audio_path)
         else:
             raise OSError(
-                'jams conversion failed because the audio file '
-                + 'for this track cannot be found, and it is required'
-                + 'to compute duration.'
+                "jams conversion failed because the audio file "
+                + "for this track cannot be found, and it is required "
+                + "to compute duration."
             )
 
     # metadata
     if metadata is not None:
         for key in metadata:
-            if (
-                key == 'duration'
-                and duration is not None
-                and metadata[key] != duration
-            ):
+            if key == "duration" and duration is not None and metadata[key] != duration:
                 print(
-                    'Warning: duration provided in metadata does not'
-                    + 'match the duration computed from the audio file.'
-                    + 'Using the duration provided by the metadata.'
+                    "Warning: duration provided in metadata does not"
+                    + "match the duration computed from the audio file."
+                    + "Using the duration provided by the metadata."
                 )
 
             if metadata[key] is None:
@@ -115,153 +111,153 @@ def jams_converter(
     # beats
     if beat_data is not None:
         if not isinstance(beat_data, list):
-            raise TypeError('beat_data should be a list of tuples')
+            raise TypeError("beat_data should be a list of tuples")
         for beats in beat_data:
             if not isinstance(beats, tuple):
                 raise TypeError(
-                    'beat_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(beats))
+                    "beat_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(beats))
                 )
             jam.annotations.append(beats_to_jams(beats))
 
     # sections
     if section_data is not None:
         if not isinstance(section_data, list):
-            raise TypeError('section_data should be a list of tuples')
+            raise TypeError("section_data should be a list of tuples")
         for sections in section_data:
             if not isinstance(sections, tuple):
                 raise TypeError(
-                    'section_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(sections))
+                    "section_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(sections))
                 )
             jam.annotations.append(sections_to_jams(sections))
 
     # multi-sections (sections with multiple levels)
     if multi_section_data is not None:
         if not isinstance(multi_section_data, list):
-            raise TypeError('multi_section_data should be a list of tuples')
+            raise TypeError("multi_section_data should be a list of tuples")
         for sections in multi_section_data:
             if not isinstance(sections, tuple):
                 raise TypeError(
-                    'multi_section_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(sections))
+                    "multi_section_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(sections))
                 )
             if not (
                 isinstance(sections[0], list) and isinstance(sections[0][0], tuple)
             ):
                 raise TypeError(
-                    'tuples in multi_section_data should contain a '
-                    + 'list of tuples, indicating annotations in the different '
-                    + 'levels, e.g. ([(segments0, level0), '
-                    + '(segments1, level1)], annotator)'
+                    "tuples in multi_section_data should contain a "
+                    + "list of tuples, indicating annotations in the different "
+                    + "levels, e.g. ([(segments0, level0), "
+                    + "(segments1, level1)], annotator)"
                 )
             jam.annotations.append(multi_sections_to_jams(sections))
 
     # tempo
     if tempo_data is not None:
         if type(tempo_data) != list:
-            raise TypeError('tempo_data should be a list of tuples')
+            raise TypeError("tempo_data should be a list of tuples")
         for tempo in tempo_data:
             if type(tempo) != tuple:
                 raise TypeError(
-                    'tempo_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(tempo))
+                    "tempo_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(tempo))
                 )
             jam.annotations.append(tempos_to_jams(tempo))
 
     # events
     if event_data is not None:
         if type(event_data) != list:
-            raise TypeError('event_data should be a list of tuples')
+            raise TypeError("event_data should be a list of tuples")
         for events in event_data:
             if type(events) != tuple:
                 raise TypeError(
-                    'event_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(events))
+                    "event_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(events))
                 )
             jam.annotations.append(events_to_jams(events))
 
     # chords
     if chord_data is not None:
         if not isinstance(chord_data, list):
-            raise TypeError('chord_data should be a list of tuples')
+            raise TypeError("chord_data should be a list of tuples")
         for chords in chord_data:
             if not isinstance(chords, tuple):
                 raise TypeError(
-                    'chord_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(chords))
+                    "chord_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(chords))
                 )
             jam.annotations.append(chords_to_jams(chords))
 
     # notes
     if note_data is not None:
         if not isinstance(note_data, list):
-            raise TypeError('note_data should be a list of tuples')
+            raise TypeError("note_data should be a list of tuples")
         for notes in note_data:
             if not isinstance(notes, tuple):
                 raise TypeError(
-                    'note_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(notes))
+                    "note_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(notes))
                 )
             jam.annotations.append(notes_to_jams(notes))
 
     # keys
     if key_data is not None:
         if not isinstance(key_data, list):
-            raise TypeError('key_data should be a list of tuples')
+            raise TypeError("key_data should be a list of tuples")
         for keys in key_data:
             if not isinstance(keys, tuple):
                 raise TypeError(
-                    'key_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(keys))
+                    "key_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(keys))
                 )
             jam.annotations.append(keys_to_jams(keys))
 
     # f0
     if f0_data is not None:
         if not isinstance(f0_data, list):
-            raise TypeError('f0_data should be a list of tuples')
+            raise TypeError("f0_data should be a list of tuples")
         for f0s in f0_data:
             if not isinstance(f0s, tuple):
                 raise TypeError(
-                    'f0_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(f0s))
+                    "f0_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(f0s))
                 )
             jam.annotations.append(f0s_to_jams(f0s))
 
     # lyrics
     if lyrics_data is not None:
         if not isinstance(lyrics_data, list):
-            raise TypeError('lyrics_data should be a list of tuples')
+            raise TypeError("lyrics_data should be a list of tuples")
         for lyrics in lyrics_data:
             if not isinstance(lyrics, tuple):
                 raise TypeError(
-                    'lyrics_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(lyrics))
+                    "lyrics_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(lyrics))
                 )
             jam.annotations.append(lyrics_to_jams(lyrics))
 
     # tags
     if tags_gtzan_data is not None:
         if not isinstance(tags_gtzan_data, list):
-            raise TypeError('tags_gtzan_data should be a list of tuples')
+            raise TypeError("tags_gtzan_data should be a list of tuples")
         for tag in tags_gtzan_data:
             if not isinstance(tag, tuple):
                 raise TypeError(
-                    'tags_gtzan_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(tag))
+                    "tags_gtzan_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(tag))
                 )
             jam.annotations.append(tag_gtzan_to_jams(tag))
 
     # tag open
     if tags_open_data is not None:
         if not isinstance(tags_open_data, list):
-            raise TypeError('tags_open_data should be a list of tuples')
+            raise TypeError("tags_open_data should be a list of tuples")
         for tag in tags_open_data:
             if not isinstance(tag, tuple):
                 raise TypeError(
-                    'tags_open_data should be a list of tuples, '
-                    + 'but contains a {} element'.format(type(tag))
+                    "tags_open_data should be a list of tuples, "
+                    + "but contains a {} element".format(type(tag))
                 )
             jam.annotations.append(tag_open_to_jams(tag))
 
@@ -283,11 +279,11 @@ def beats_to_jams(beats):
     jannot_beat: JAM beat annotation object.
 
     """
-    jannot_beat = jams.Annotation(namespace='beat')
-    jannot_beat.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_beat = jams.Annotation(namespace="beat")
+    jannot_beat.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if beats[0] is not None:
         if not isinstance(beats[0], utils.BeatData):
-            raise TypeError('Type should be BeatData.')
+            raise TypeError("Type should be BeatData.")
         for t, p in zip(beats[0].beat_times, beats[0].beat_positions):
             jannot_beat.append(time=t, duration=0.0, value=p)
     if beats[1] is not None:
@@ -309,11 +305,11 @@ def sections_to_jams(sections):
     -------
     jannot_seg: JAM segment_open annotation object.
     """
-    jannot_seg = jams.Annotation(namespace='segment_open')
-    jannot_seg.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_seg = jams.Annotation(namespace="segment_open")
+    jannot_seg.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if sections[0] is not None:
         if not isinstance(sections[0], utils.SectionData):
-            raise TypeError('Type should be SectionData.')
+            raise TypeError("Type should be SectionData.")
         for inter, seg in zip(sections[0].intervals, sections[0].labels):
             jannot_seg.append(time=inter[0], duration=inter[1] - inter[0], value=seg)
     if sections[1] is not None:
@@ -335,11 +331,11 @@ def chords_to_jams(chords):
     -------
     jannot_chord: JAM chord annotation object.
     """
-    jannot_chord = jams.Annotation(namespace='chord')
-    jannot_chord.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_chord = jams.Annotation(namespace="chord")
+    jannot_chord.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if chords[0] is not None:
         if not isinstance(chords[0], utils.ChordData):
-            raise TypeError('Type should be ChordData.')
+            raise TypeError("Type should be ChordData.")
         for beg, end, ch in zip(
             chords[0].intervals[:, 0], chords[0].intervals[:, 1], chords[0].labels
         ):
@@ -363,11 +359,11 @@ def notes_to_jams(notes):
     -------
     jannot_notes: JAM note_midi annotation object.
     """
-    jannot_note = jams.Annotation(namespace='note_hz')
-    jannot_note.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_note = jams.Annotation(namespace="note_hz")
+    jannot_note.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if notes[0] is not None:
         if not isinstance(notes[0], utils.NoteData):
-            raise TypeError('Type should be NoteData.')
+            raise TypeError("Type should be NoteData.")
         for beg, end, n in zip(
             notes[0].intervals[:, 0], notes[0].intervals[:, 1], notes[0].notes
         ):
@@ -391,11 +387,11 @@ def keys_to_jams(keys):
     -------
     jannot_key: JAM key_mode annotation object.
     """
-    jannot_key = jams.Annotation(namespace='key_mode')
-    jannot_key.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_key = jams.Annotation(namespace="key_mode")
+    jannot_key.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if keys[0] is not None:
         if not isinstance(keys[0], utils.KeyData):
-            raise TypeError('Type should be KeyData.')
+            raise TypeError("Type should be KeyData.")
         for beg, end, key in zip(keys[0].start_times, keys[0].end_times, keys[0].keys):
             jannot_key.append(time=beg, duration=end - beg, value=key)
     if keys[1] is not None:
@@ -419,20 +415,20 @@ def multi_sections_to_jams(multi_sections):
     jannot_multi: JAM multi_segment annotation object.
     """
     # sections with multiple annotators and multiple level annotations
-    jannot_multi = jams.Annotation(namespace='multi_segment')
-    jannot_multi.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_multi = jams.Annotation(namespace="multi_segment")
+    jannot_multi.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     jannot_multi.annotation_metadata = jams.AnnotationMetadata(
-        annotator={'name': multi_sections[1]}
+        annotator={"name": multi_sections[1]}
     )
     for sections in multi_sections[0]:
         if sections[0] is not None:
             if not isinstance(sections[0], utils.SectionData):
-                raise TypeError('Type should be SectionData.')
+                raise TypeError("Type should be SectionData.")
             for inter, seg in zip(sections[0].intervals, sections[0].labels):
                 jannot_multi.append(
                     time=inter[0],
                     duration=inter[1] - inter[0],
-                    value={'label': seg, 'level': sections[1]},
+                    value={"label": seg, "level": sections[1]},
                 )
     return jannot_multi
 
@@ -451,11 +447,11 @@ def tempos_to_jams(tempos):
     -------
     jannot_tempo: JAM tempo annotation object.
     """
-    jannot_tempo = jams.Annotation(namespace='tempo')
-    jannot_tempo.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_tempo = jams.Annotation(namespace="tempo")
+    jannot_tempo.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if tempos[0] is not None:
         if not isinstance(tempos[0], float) and not isinstance(tempos[0], int):
-            raise TypeError('Type should be float or int.')
+            raise TypeError("Type should be float or int.")
         jannot_tempo.append(time=0, duration=0, confidence=1, value=tempos[0])
     if tempos[1] is not None:
         jannot_tempo.sandbox = jams.Sandbox(name=tempos[1])
@@ -476,11 +472,11 @@ def events_to_jams(events):
     -------
     jannot_events: JAM tag_open annotation object.
     """
-    jannot_events = jams.Annotation(namespace='tag_open')
-    jannot_events.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_events = jams.Annotation(namespace="tag_open")
+    jannot_events.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if events[0] is not None:
         if type(events[0]) != utils.EventData:
-            raise TypeError('Type should be EventData.')
+            raise TypeError("Type should be EventData.")
         for beg, end, label in zip(
             events[0].start_times, events[0].end_times, events[0].event
         ):
@@ -504,16 +500,16 @@ def f0s_to_jams(f0s):
     -------
     jannot_f0: JAM pitch_contour annotation object.
     """
-    jannot_f0 = jams.Annotation(namespace='pitch_contour')
-    jannot_f0.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_f0 = jams.Annotation(namespace="pitch_contour")
+    jannot_f0.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if f0s[0] is not None:
         if not isinstance(f0s[0], utils.F0Data):
-            raise TypeError('Type should be F0Data.')
+            raise TypeError("Type should be F0Data.")
         for t, f, c in zip(f0s[0].times, f0s[0].frequencies, f0s[0].confidence):
             jannot_f0.append(
                 time=t,
                 duration=0.0,
-                value={'index': 0, 'frequency': f, 'voiced': f > 0},
+                value={"index": 0, "frequency": f, "voiced": f > 0},
                 confidence=c,
             )
     if f0s[1] is not None:
@@ -535,11 +531,11 @@ def lyrics_to_jams(lyrics):
     -------
     jannot_lyric: JAM lyric annotation object.
     """
-    jannot_lyric = jams.Annotation(namespace='lyrics')
-    jannot_lyric.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_lyric = jams.Annotation(namespace="lyrics")
+    jannot_lyric.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if lyrics[0] is not None:
         if not isinstance(lyrics[0], utils.LyricData):
-            raise TypeError('Type should be LyricData.')
+            raise TypeError("Type should be LyricData.")
         for beg, end, lyric in zip(
             lyrics[0].start_times, lyrics[0].end_times, lyrics[0].lyrics
         ):
@@ -563,13 +559,13 @@ def tag_gtzan_to_jams(tags):
     -------
     jannot_tag_gtzan: JAM tag_gtzan annotation object.
     """
-    jannot_tag_gtzan = jams.Annotation(namespace='tag_gtzan')
+    jannot_tag_gtzan = jams.Annotation(namespace="tag_gtzan")
     jannot_tag_gtzan.annotation_metadata = jams.AnnotationMetadata(
-        data_source='mirdata'
+        data_source="mirdata"
     )
     if tags[0] is not None:
         if not isinstance(tags[0], str):
-            raise TypeError('Type should be str.')
+            raise TypeError("Type should be str.")
         jannot_tag_gtzan.append(time=0.0, duration=0.0, value=tags[0])
     if tags[1] is not None:
         jannot_tag_gtzan.sandbox = jams.Sandbox(name=tags[1])
@@ -590,11 +586,11 @@ def tag_open_to_jams(tags):
     -------
     jannot_tag_open: JAM tag_open annotation object.
     """
-    jannot_tag_open = jams.Annotation(namespace='tag_open')
-    jannot_tag_open.annotation_metadata = jams.AnnotationMetadata(data_source='mirdata')
+    jannot_tag_open = jams.Annotation(namespace="tag_open")
+    jannot_tag_open.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if tags[0] is not None:
         if not isinstance(tags[0], str):
-            raise TypeError('Type should be str.')
+            raise TypeError("Type should be str.")
         jannot_tag_open.append(time=0.0, duration=0.0, value=tags[0])
     if tags[1] is not None:
         jannot_tag_open.sandbox = jams.Sandbox(name=tags[1])
