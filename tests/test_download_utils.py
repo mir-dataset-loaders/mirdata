@@ -3,6 +3,7 @@
 import os
 import shutil
 import sys
+import zipfile
 
 from mirdata import download_utils
 
@@ -207,3 +208,28 @@ def test_download_tar_file(mocker, mock_file, mock_untar):
     mock_untar.assert_called_once_with("foo", cleanup=True)
     if os.path.exists('a'):
         shutil.rmtree('a')
+
+
+def test_extractall_unicode(mocker, mock_file, mock_unzip):
+    zfile = zipfile.ZipFile('tests/resources/utfissue.zip', 'r')
+    download_utils.extractall_unicode(zfile, os.path.dirname('tests/resources/'))
+    zfile.close()
+    expected_files = ['pic👨‍👩‍👧‍👦🎂.jpg', 'Benoît.txt']
+    for expected_file in expected_files:
+        expected_file_location = os.path.join('tests', 'resources', expected_file)
+        assert os.path.exists(expected_file_location)
+        os.remove(expected_file_location)
+
+
+def test_extractall_cp437(mocker, mock_file, mock_unzip):
+    zfile = zipfile.ZipFile('tests/resources/utfissue.zip', 'r')
+    zfile.extractall(os.path.dirname('tests/resources/'))
+    zfile.close()
+    expected_files = ['pic👨‍👩‍👧‍👦🎂.jpg', 'Benoît.txt']
+    for expected_file in expected_files:
+        expected_file_location = os.path.join('tests', 'resources', expected_file)
+        assert not os.path.exists(expected_file_location)
+    true_files = ['pic≡ƒæ¿ΓÇì≡ƒæ⌐ΓÇì≡ƒæºΓÇì≡ƒæª≡ƒÄé.jpg', 'Benoi╠ét.txt']
+    for true_file in true_files:
+        true_file_location = os.path.join('tests', 'resources', true_file)
+        os.remove(true_file_location)
