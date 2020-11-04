@@ -4,6 +4,7 @@ import os
 import shutil
 import sys
 import zipfile
+import re
 
 from mirdata import download_utils
 
@@ -229,7 +230,8 @@ def test_extractall_cp437(mocker, mock_file, mock_unzip):
     for expected_file in expected_files:
         expected_file_location = os.path.join('tests', 'resources', expected_file)
         assert not os.path.exists(expected_file_location)
-    true_files = ['pic≡ƒæ¿ΓÇì≡ƒæ⌐ΓÇì≡ƒæºΓÇì≡ƒæª≡ƒÄé.jpg', 'Benoi╠ét.txt']
+    true_files = [file for file in os.listdir(os.path.join('tests','resources')) if re.match(r'(pic.*).jpg', file) or re.match(r'(Beno.*).txt', file)]
     for true_file in true_files:
         true_file_location = os.path.join('tests', 'resources', true_file)
         os.remove(true_file_location)
+    shutil.rmtree(os.path.join('tests', 'resources','__MACOSX'))
