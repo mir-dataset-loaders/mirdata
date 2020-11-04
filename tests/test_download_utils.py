@@ -232,5 +232,4 @@ def test_extractall_cp437(mocker, mock_file, mock_unzip):
     true_files = ['pic≡ƒæ¿ΓÇì≡ƒæ⌐ΓÇì≡ƒæºΓÇì≡ƒæª≡ƒÄé.jpg', 'Benoi╠ét.txt']
     for true_file in true_files:
         true_file_location = os.path.join('tests', 'resources', true_file)
-        assert os.path.exists(true_file_location)
         os.remove(true_file_location)
