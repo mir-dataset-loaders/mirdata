@@ -5,16 +5,11 @@ import numpy as np
 
 from tests.test_utils import run_track_tests
 
-from mirdata import cante100, utils
+from mirdata import utils
+from mirdata.datasets import cante100
 from tests.test_utils import DEFAULT_DATA_HOME
 
 TEST_DATA_HOME = "tests/resources/mir_datasets/cante100"
-
-
-def test_track_default_data_home():
-    # test data home None
-    track_default = cante100.Track('008')
-    assert track_default._data_home == os.path.join(DEFAULT_DATA_HOME, 'cante100')
 
 
 def test_track():

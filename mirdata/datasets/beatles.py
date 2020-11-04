@@ -8,35 +8,52 @@ http://isophonics.net/content/reference-annotations-beatles.
 """
 
 import csv
+import os
 import librosa
 import numpy as np
-import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
-DATASET_DIR = 'Beatles'
+BIBTEX = """@inproceedings{mauch2009beatles,
+    title={OMRAS2 metadata project 2009},
+    author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte,
+    Christopher and Kolozali, Sefki and Tidhar, Dan and Sandler, Mark},
+    booktitle={12th International Society for Music Information Retrieval Conference},
+    year={2009},
+    series = {ISMIR}
+}"""
+
+
 REMOTES = {
-    'annotations': download_utils.RemoteFileMetadata(
-        filename='The Beatles Annotations.tar.gz',
-        url='http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz',
-        checksum='62425c552d37c6bb655a78e4603828cc',
-        destination_dir='annotations',
+    "annotations": download_utils.RemoteFileMetadata(
+        filename="The Beatles Annotations.tar.gz",
+        url="http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz",
+        checksum="62425c552d37c6bb655a78e4603828cc",
+        destination_dir="annotations",
     )
 }
 
-DATA = utils.LargeData('beatles_index.json')
+DOWNLOAD_INFO = """
+        Unfortunately the audio files of the Beatles dataset are not available
+        for download. If you have the Beatles dataset, place the contents into
+        a folder called Beatles with the following structure:
+            > Beatles/
+                > annotations/
+                > audio/
+        and copy the Beatles folder to {data_home}
+"""
+
+DATA = utils.LargeData("beatles_index.json")
 
 
-class Track(track.Track):
+class Track(core.Track):
     """Beatles track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
         audio_path (str): track audio path
@@ -49,30 +66,27 @@ class Track(track.Track):
 
     """
 
-    def __init__(self, track_id, data_home=None):
+    def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
-            raise ValueError('{} is not a valid track ID in Beatles'.format(track_id))
+            raise ValueError("{} is not a valid track ID in Beatles".format(track_id))
 
         self.track_id = track_id
-
-        if data_home is None:
-            data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
         self.beats_path = utils.none_path_join(
-            [self._data_home, self._track_paths['beat'][0]]
+            [self._data_home, self._track_paths["beat"][0]]
         )
-        self.chords_path = os.path.join(self._data_home, self._track_paths['chords'][0])
+        self.chords_path = os.path.join(self._data_home, self._track_paths["chords"][0])
         self.keys_path = utils.none_path_join(
-            [self._data_home, self._track_paths['keys'][0]]
+            [self._data_home, self._track_paths["keys"][0]]
         )
         self.sections_path = os.path.join(
-            self._data_home, self._track_paths['sections'][0]
+            self._data_home, self._track_paths["sections"][0]
         )
-        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-        self.title = os.path.basename(self._track_paths['sections'][0]).split('.')[0]
+        self.title = os.path.basename(self._track_paths["sections"][0]).split(".")[0]
 
     @utils.cached_property
     def beats(self):
@@ -107,7 +121,7 @@ class Track(track.Track):
             section_data=[(self.sections, None)],
             chord_data=[(self.chords, None)],
             key_data=[(self.key, None)],
-            metadata={'artist': 'The Beatles', 'title': self.title},
+            metadata={"artist": "The Beatles", "title": self.title},
         )
 
 
@@ -127,98 +141,6 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def download(data_home=None, force_overwrite=False, cleanup=True):
-    """Download the Beatles Dataset (annotations).
-    The audio files are not provided due to copyright issues.
-
-    Args:
-        data_home (str):
-            Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-
-    """
-
-    # use the default location: ~/mir_datasets/Beatles
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    download_message = """
-        Unfortunately the audio files of the Beatles dataset are not available
-        for download. If you have the Beatles dataset, place the contents into
-        a folder called Beatles with the following structure:
-            > Beatles/
-                > annotations/
-                > audio/
-        and copy the Beatles folder to {}
-    """.format(
-        data_home
-    )
-
-    download_utils.downloader(
-        data_home,
-        remotes=REMOTES,
-        info_message=download_message,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-
-
-def validate(data_home=None, silence=False):
-    """Validate if a local version of this dataset is consistent
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        missing_files (list): List of file paths that are in the dataset index
-            but missing locally
-        invalid_checksums (list): List of file paths where the expected file exists locally
-            but has a different checksum than the reference
-
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    missing_files, invalid_checksums = utils.validator(
-        DATA.index, data_home, silence=silence
-    )
-    return missing_files, invalid_checksums
-
-
-def track_ids():
-    """Get the list of track IDs for this dataset
-
-    Returns:
-        (list): A list of track ids
-    """
-    return list(DATA.index.keys())
-
-
-def load(data_home=None):
-    """Load Beatles dataset
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        (dict): {`track_id`: track data}
-
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    beatles_data = {}
-    for key in track_ids():
-        beatles_data[key] = Track(key, data_home=data_home)
-    return beatles_data
-
-
 def load_beats(beats_path):
     """Load Beatles format beat data from a file
 
@@ -236,7 +158,7 @@ def load_beats(beats_path):
         raise IOError("beats_path {} does not exist".format(beats_path))
 
     beat_times, beat_positions = [], []
-    with open(beats_path, 'r') as fhandle:
+    with open(beats_path, "r") as fhandle:
         dialect = csv.Sniffer().sniff(fhandle.read(1024))
         fhandle.seek(0)
         reader = csv.reader(fhandle, dialect)
@@ -270,7 +192,7 @@ def load_chords(chords_path):
         raise IOError("chords_path {} does not exist".format(chords_path))
 
     start_times, end_times, chords = [], [], []
-    with open(chords_path, 'r') as f:
+    with open(chords_path, "r") as f:
         dialect = csv.Sniffer().sniff(f.read(1024))
         f.seek(0)
         reader = csv.reader(f, dialect)
@@ -301,10 +223,10 @@ def load_key(keys_path):
         raise IOError("keys_path {} does not exist".format(keys_path))
 
     start_times, end_times, keys = [], [], []
-    with open(keys_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(keys_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
-            if line[2] == 'Key':
+            if line[2] == "Key":
                 start_times.append(float(line[0]))
                 end_times.append(float(line[1]))
                 keys.append(line[3])
@@ -331,8 +253,8 @@ def load_sections(sections_path):
         raise IOError("sections_path {} does not exist".format(sections_path))
 
     start_times, end_times, sections = [], [], []
-    with open(sections_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(sections_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             start_times.append(float(line[0]))
             end_times.append(float(line[1]))
@@ -348,39 +270,15 @@ def _fix_newpoint(beat_positions):
     from neighboring beats.
 
     """
-    while np.any(beat_positions == 'New Point'):
-        idxs = np.where(beat_positions == 'New Point')[0]
+    while np.any(beat_positions == "New Point"):
+        idxs = np.where(beat_positions == "New Point")[0]
         for i in idxs:
             if i < len(beat_positions) - 1:
-                if not beat_positions[i + 1] == 'New Point':
+                if not beat_positions[i + 1] == "New Point":
                     beat_positions[i] = str(np.mod(int(beat_positions[i + 1]) - 1, 4))
             if i == len(beat_positions) - 1:
-                if not beat_positions[i - 1] == 'New Point':
+                if not beat_positions[i - 1] == "New Point":
                     beat_positions[i] = str(np.mod(int(beat_positions[i - 1]) + 1, 4))
-    beat_positions[beat_positions == '0'] = '4'
+    beat_positions[beat_positions == "0"] = "4"
 
     return beat_positions
-
-
-def cite():
-    """Print the reference"""
-
-    cite_data = """
-===========  MLA ===========
-
-Mauch, Matthias, et al.
-"OMRAS2 metadata project 2009."
-10th International Society for Music Information Retrieval Conference (2009)
-
-========== Bibtex ==========
-@inproceedings{mauch2009beatles,
-    title={OMRAS2 metadata project 2009},
-    author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte,
-    Christopher and Kolozali, Sefki and Tidhar, Dan and Sandler, Mark},
-    booktitle={12th International Society for Music Information Retrieval Conference},
-    year={2009},
-    series = {ISMIR}
-}
-    """
-
-    print(cite_data)

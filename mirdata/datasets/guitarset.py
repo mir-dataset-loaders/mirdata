@@ -48,70 +48,72 @@ segmentation and root from the digital lead sheet annotation.
 
 For more details, please visit: http://github.com/marl/guitarset/
 """
-
+import logging
+import os
 import jams
 import librosa
-import logging
 import numpy as np
-import os
 
 from mirdata import download_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 
-DATASET_DIR = 'GuitarSet'
+BIBTEX = """@inproceedings{xi2018guitarset,
+title={GuitarSet: A Dataset for Guitar Transcription},
+author={Xi, Qingyang and Bittner, Rachel M and Ye, Xuzhou and Pauwels, Johan and Bello, Juan P},
+booktitle={International Society of Music Information Retrieval (ISMIR)},
+year={2018}
+}"""
 
 REMOTES = {
-    'annotations': download_utils.RemoteFileMetadata(
-        filename='annotation.zip',
-        url='https://zenodo.org/record/3371780/files/annotation.zip?download=1',
-        checksum='b39b78e63d3446f2e54ddb7a54df9b10',
-        destination_dir='annotation',
+    "annotations": download_utils.RemoteFileMetadata(
+        filename="annotation.zip",
+        url="https://zenodo.org/record/3371780/files/annotation.zip?download=1",
+        checksum="b39b78e63d3446f2e54ddb7a54df9b10",
+        destination_dir="annotation",
     ),
-    'audio_hex_debleeded': download_utils.RemoteFileMetadata(
-        filename='audio_hex-pickup_debleeded.zip',
-        url='https://zenodo.org/record/3371780/files/audio_hex-pickup_debleeded.zip?download=1',
-        checksum='c31d97279464c9a67e640cb9061fb0c6',
-        destination_dir='audio_hex-pickup_debleeded',
+    "audio_hex_debleeded": download_utils.RemoteFileMetadata(
+        filename="audio_hex-pickup_debleeded.zip",
+        url="https://zenodo.org/record/3371780/files/audio_hex-pickup_debleeded.zip?download=1",
+        checksum="c31d97279464c9a67e640cb9061fb0c6",
+        destination_dir="audio_hex-pickup_debleeded",
     ),
-    'audio_hex_original': download_utils.RemoteFileMetadata(
-        filename='audio_hex-pickup_original.zip',
-        url='https://zenodo.org/record/3371780/files/audio_hex-pickup_original.zip?download=1',
-        checksum='f9911bf217cb40e9e68edf3726ef86cc',
-        destination_dir='audio_hex-pickup_original',
+    "audio_hex_original": download_utils.RemoteFileMetadata(
+        filename="audio_hex-pickup_original.zip",
+        url="https://zenodo.org/record/3371780/files/audio_hex-pickup_original.zip?download=1",
+        checksum="f9911bf217cb40e9e68edf3726ef86cc",
+        destination_dir="audio_hex-pickup_original",
     ),
-    'audio_mic': download_utils.RemoteFileMetadata(
-        filename='audio_mono-mic.zip',
-        url='https://zenodo.org/record/3371780/files/audio_mono-mic.zip?download=1',
-        checksum='275966d6610ac34999b58426beb119c3',
-        destination_dir='audio_mono-mic',
+    "audio_mic": download_utils.RemoteFileMetadata(
+        filename="audio_mono-mic.zip",
+        url="https://zenodo.org/record/3371780/files/audio_mono-mic.zip?download=1",
+        checksum="275966d6610ac34999b58426beb119c3",
+        destination_dir="audio_mono-mic",
     ),
-    'audio_mix': download_utils.RemoteFileMetadata(
-        filename='audio_mono-pickup_mix.zip',
-        url='https://zenodo.org/record/3371780/files/audio_mono-pickup_mix.zip?download=1',
-        checksum='aecce79f425a44e2055e46f680e10f6a',
-        destination_dir='audio_mono-pickup_mix',
+    "audio_mix": download_utils.RemoteFileMetadata(
+        filename="audio_mono-pickup_mix.zip",
+        url="https://zenodo.org/record/3371780/files/audio_mono-pickup_mix.zip?download=1",
+        checksum="aecce79f425a44e2055e46f680e10f6a",
+        destination_dir="audio_mono-pickup_mix",
     ),
 }
 _STYLE_DICT = {
-    'Jazz': 'Jazz',
-    'BN': 'Bossa Nova',
-    'Rock': 'Rock',
-    'SS': 'Singer-Songwriter',
-    'Funk': 'Funk',
+    "Jazz": "Jazz",
+    "BN": "Bossa Nova",
+    "Rock": "Rock",
+    "SS": "Singer-Songwriter",
+    "Funk": "Funk",
 }
-_GUITAR_STRINGS = ['E', 'A', 'D', 'G', 'B', 'e']
-DATA = utils.LargeData('guitarset_index.json')
+_GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
+DATA = utils.LargeData("guitarset_index.json")
 
 
-class Track(track.Track):
+class Track(core.Track):
     """guitarset Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored. default=None
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
         audio_hex_cln_path (str): path to the debleeded hex wave file
@@ -130,34 +132,31 @@ class Track(track.Track):
 
     """
 
-    def __init__(self, track_id, data_home=None):
+    def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
-            raise ValueError('{} is not a valid track ID in GuitarSet'.format(track_id))
+            raise ValueError("{} is not a valid track ID in GuitarSet".format(track_id))
 
         self.track_id = track_id
-
-        if data_home is None:
-            data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
 
         self.audio_hex_cln_path = os.path.join(
-            self._data_home, self._track_paths['audio_hex_cln'][0]
+            self._data_home, self._track_paths["audio_hex_cln"][0]
         )
         self.audio_hex_path = os.path.join(
-            self._data_home, self._track_paths['audio_hex'][0]
+            self._data_home, self._track_paths["audio_hex"][0]
         )
         self.audio_mic_path = os.path.join(
-            self._data_home, self._track_paths['audio_mic'][0]
+            self._data_home, self._track_paths["audio_mic"][0]
         )
         self.audio_mix_path = os.path.join(
-            self._data_home, self._track_paths['audio_mix'][0]
+            self._data_home, self._track_paths["audio_mix"][0]
         )
-        self.jams_path = os.path.join(self._data_home, self._track_paths['jams'][0])
+        self.jams_path = os.path.join(self._data_home, self._track_paths["jams"][0])
 
-        title_list = track_id.split('_')  # [PID, S-T-K, mode, rec_mode]
-        style, tempo, _ = title_list[1].split('-')  # [style, tempo, key]
+        title_list = track_id.split("_")  # [PID, S-T-K, mode, rec_mode]
+        style, tempo, _ = title_list[1].split("-")  # [style, tempo, key]
         self.player_id = title_list[0]
         self.mode = title_list[2]
         self.tempo = float(tempo)
@@ -171,18 +170,18 @@ class Track(track.Track):
     @utils.cached_property
     def leadsheet_chords(self):
         """ChordData: the track's chords as written in the leadsheet"""
-        if self.mode == 'solo':
+        if self.mode == "solo":
             logging.info(
-                'Chord annotations for solo excerpts are the same with the comp excerpt.'
+                "Chord annotations for solo excerpts are the same with the comp excerpt."
             )
         return load_chords(self.jams_path, leadsheet_version=True)
 
     @utils.cached_property
     def inferred_chords(self):
         """ChordData: the track's chords inferred from played transcription"""
-        if self.mode == 'solo':
+        if self.mode == "solo":
             logging.info(
-                'Chord annotations for solo excerpts are the same with the comp excerpt.'
+                "Chord annotations for solo excerpts are the same with the comp excerpt."
             )
         return load_chords(self.jams_path, leadsheet_version=False)
 
@@ -286,98 +285,13 @@ def load_multitrack_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=False)
 
 
-def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
-):
-    """Download GuitarSet.
-
-    Args:
-        data_home (str):
-            Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
-        partial_download (list):
-            List indicating what to partially download. The list can include any of:
-             * `'annotations'` the annotation files
-             * `'audio_hex_original'` original 6 channel wave file from hexaphonic pickup
-             * `'audio_hex_debleeded'` hex wave files with interference removal applied
-             * `'audio_mic'` monophonic recording from reference microphone
-             * `'audio_mix'` monophonic mixture of original 6 channel file
-             If `None`, all data is downloaded.
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    download_utils.downloader(
-        data_home,
-        remotes=REMOTES,
-        partial_download=partial_download,
-        info_message=None,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-
-
-def validate(data_home=None, silence=False):
-    """Validate if the stored dataset is a valid version
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        missing_files (list): List of file paths that are in the dataset index
-            but missing locally
-        invalid_checksums (list): List of file paths that file exists in the dataset
-            index but has a different checksum compare to the reference checksum
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    missing_files, invalid_checksums = utils.validator(
-        DATA.index, data_home, silence=silence
-    )
-    return missing_files, invalid_checksums
-
-
-def track_ids():
-    """Return track ids
-
-    Returns:
-        (list): A list of track ids
-    """
-    return list(DATA.index.keys())
-
-
-def load(data_home=None):
-    """Load GuitarSet
-
-    Args:
-        data_home (str): Local path where GuitarSet is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        (dict): {`track_id`: track data}
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    guitarset_data = {}
-    for key in DATA.index.keys():
-        guitarset_data[key] = Track(key, data_home=data_home)
-    return guitarset_data
-
-
 def load_beats(jams_path):
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
-    anno = jam.search(namespace='beat_position')[0]
+    anno = jam.search(namespace="beat_position")[0]
     times, values = anno.to_event_values()
-    positions = [int(v['position']) for v in values]
+    positions = [int(v["position"]) for v in values]
     return utils.BeatData(times, positions)
 
 
@@ -396,9 +310,9 @@ def load_chords(jams_path, leadsheet_version=True):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
     if leadsheet_version:
-        anno = jam.search(namespace='chord')[0]
+        anno = jam.search(namespace="chord")[0]
     else:
-        anno = jam.search(namespace='chord')[1]
+        anno = jam.search(namespace="chord")[1]
     intervals, values = anno.to_interval_values()
     return utils.ChordData(intervals, values)
 
@@ -407,7 +321,7 @@ def load_key_mode(jams_path):
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
-    anno = jam.search(namespace='key_mode')[0]
+    anno = jam.search(namespace="key_mode")[0]
     intervals, values = anno.to_interval_values()
     return utils.KeyData(intervals[:, 0], intervals[:, 1], values)
 
@@ -423,10 +337,10 @@ def load_pitch_contour(jams_path, string_num):
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
-    anno_arr = jam.search(namespace='pitch_contour')
+    anno_arr = jam.search(namespace="pitch_contour")
     anno = anno_arr.search(data_source=str(string_num))[0]
     times, values = anno.to_event_values()
-    frequencies = [v['frequency'] for v in values]
+    frequencies = [v["frequency"] for v in values]
     return utils.F0Data(times, frequencies, np.ones_like(times))
 
 
@@ -441,26 +355,7 @@ def load_note_ann(jams_path, string_num):
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
-    anno_arr = jam.search(namespace='note_midi')
+    anno_arr = jam.search(namespace="note_midi")
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()
     return utils.NoteData(intervals, values, np.ones_like(values))
-
-
-def cite():
-    """Print the reference"""
-
-    cite_data = """
-=========== MLA ===========
-Xi, Qingyang, et al.
-"GuitarSet: A Dataset for Guitar Transcription."
-In Proceedings of the 19th International Society for Music Information Retrieval Conference (ISMIR). 2018.
-========== Bibtex ==========
-@inproceedings{xi2018guitarset,
-    title={GuitarSet: A Dataset for Guitar Transcription},
-    author={Xi, Qingyang and Bittner, Rachel M and Ye, Xuzhou and Pauwels, Johan and Bello, Juan P},
-    booktitle={International Society of Music Information Retrieval (ISMIR)},
-    year={2018}
-}
-"""
-    print(cite_data)

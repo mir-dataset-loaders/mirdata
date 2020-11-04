@@ -41,17 +41,43 @@ For more details, please visit: http://www.cofla-project.com/?page_id=134
 import logging
 import librosa
 import os
-import csv
 import numpy as np
 import xml.etree.ElementTree as ET
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
 
-DATASET_DIR = 'cante100'
+BIBTEX = """@dataset{nadine_kroher_2018_1322542,
+  author       = {Nadine Kroher and
+                  José Miguel Díaz-Báñez and
+                  Joaquin Mora and
+                  Emilia Gómez},
+  title        = {cante100 Metadata},
+  month        = jul,
+  year         = 2018,
+  publisher    = {Zenodo},
+  version      = {1.0},
+  doi          = {10.5281/zenodo.1322542},
+  url          = {https://doi.org/10.5281/zenodo.1322542}
+}
+
+@dataset{nadine_kroher_2018_1324183,
+  author       = {Nadine Kroher and
+                  José Miguel Díaz-Báñez and
+                  Joaquin Mora and
+                  Emilia Gómez},
+  title        = {cante100 Audio},
+  month        = jul,
+  year         = 2018,
+  publisher    = {Zenodo},
+  version      = {1.0},
+  doi          = {10.5281/zenodo.1324183},
+  url          = {https://doi.org/10.5281/zenodo.1324183}
+}
+"""
 
 
 REMOTES = {
@@ -89,9 +115,6 @@ REMOTES = {
 
 
 def _load_metadata(data_home):
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
     metadata_path = os.path.join(data_home, 'cante100Meta.xml')
     if not os.path.exists(metadata_path):
         logging.info(
@@ -169,7 +192,7 @@ def _load_metadata(data_home):
 DATA = utils.LargeData('cante100_index.json', _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """cante100 track class
 
     Args:
@@ -186,14 +209,11 @@ class Track(track.Track):
         duration (str): duration in seconds of the track
     """
 
-    def __init__(self, track_id, data_home=None):
+    def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in Example'.format(track_id))
 
         self.track_id = track_id
-
-        if data_home is None:
-            data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
 
@@ -274,6 +294,23 @@ def load_spectrogram(spectrogram_path):
     return spectrogram
 
 
+def load_audio(audio_path):
+    """Load a cante100 audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        y (np.ndarray): the mono audio signal
+        sr (float): The sample rate of the audio file
+
+    """
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
+    audio, sr = librosa.load(audio_path, sr=22050, mono=False)
+    return audio, sr
+
+
 def load_melody(f0_path):
     """Load cante100 f0 annotations
 
@@ -333,158 +370,4 @@ def load_notes(notes_path):
     )
 
 
-def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
-):
-    """Download the cante100 dataset (just the annotations)
 
-    Args:
-        data_home (str):
-            Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
-        partial_download (str)
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    info_message = (
-        '''
-        cante100 audio is only available upon request. However, this loader supports
-        audio loading. Just request the audio in this link:
-        https://zenodo.org/record/1324183/files/cante100audio.zip?download=1, and then
-        unzip the audio folder inside the general dataset cante100 folder.
-        '''
-    )
-
-    download_utils.downloader(
-        data_home,
-        remotes=REMOTES,
-        info_message=info_message,
-        partial_download=partial_download,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-
-
-def validate(data_home=None, silence=False):
-    """Validate if the stored dataset is a valid version
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-    Returns:
-        missing_files (list): List of file paths that are in the dataset index
-            but missing locally
-        invalid_checksums (list): List of file paths that file exists in the dataset
-            index but has a different checksum compare to the reference checksum
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    missing_files, invalid_checksums = utils.validator(
-        DATA.index, data_home, silence=silence
-    )
-    return missing_files, invalid_checksums
-
-
-def track_ids():
-    """Return track ids
-
-    Returns:
-        (list): A list of track ids
-    """
-    return list(DATA.index.keys())
-
-
-def load_audio(audio_path):
-    """Load a cante100 audio file.
-
-    Args:
-        audio_path (str): path to audio file
-
-    Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
-
-    """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    audio, sr = librosa.load(audio_path, sr=22050, mono=False)
-    return audio, sr
-
-
-def load(data_home=None):
-    """Load cante100 dataset
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-    Returns:
-        (dict): {`track_id`: track data}
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    data = {}
-    for key in DATA.index.keys():
-        data[key] = Track(key, data_home=data_home)
-    return data
-
-
-def cite():
-    """Print the reference"""
-
-    cite_data = """
-=========== MLA ===========
-Nadine Kroher, José Miguel Díaz-Báñez, Joaquin Mora, & Emilia Gómez. (2018). 
-cante100 Metadata(Version 1.0) [Data set]. 
-Zenodo. http://doi.org/10.5281/zenodo.1322542
-
-Nadine Kroher, José Miguel Díaz-Báñez, Joaquin Mora, & Emilia Gómez. (2018). 
-cante100 Audio (Version 1.0) [Data set]. 
-Zenodo. http://doi.org/10.5281/zenodo.1324183
-========== Bibtex ==========
-@dataset{nadine_kroher_2018_1322542,
-  author       = {Nadine Kroher and
-                  José Miguel Díaz-Báñez and
-                  Joaquin Mora and
-                  Emilia Gómez},
-  title        = {cante100 Metadata},
-  month        = jul,
-  year         = 2018,
-  publisher    = {Zenodo},
-  version      = {1.0},
-  doi          = {10.5281/zenodo.1322542},
-  url          = {https://doi.org/10.5281/zenodo.1322542}
-}
-
-@dataset{nadine_kroher_2018_1324183,
-  author       = {Nadine Kroher and
-                  José Miguel Díaz-Báñez and
-                  Joaquin Mora and
-                  Emilia Gómez},
-  title        = {cante100 Audio},
-  month        = jul,
-  year         = 2018,
-  publisher    = {Zenodo},
-  version      = {1.0},
-  doi          = {10.5281/zenodo.1324183},
-  url          = {https://doi.org/10.5281/zenodo.1324183}
-}
-"""
-
-    print(cite_data)
-
-
-def main():
-    spectrogram_path = '/Users/genisplaja/Desktop/genis-datasets/cante100/cante100_spectrogram/008_PacoToronjo_Fandangos.spectrogram.csv'
-    spectrogram = load(spectrogram_path)
-
-
-if __name__ == '__main__':
-    main()

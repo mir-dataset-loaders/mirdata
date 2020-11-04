@@ -5,7 +5,7 @@ import json
 import os
 
 
-CANTE100_INDEX_PATH = '../mirdata/indexes/cante100_index.json'
+CANTE100_INDEX_PATH = '../mirdata/datasets/indexes/cante100_index.json'
 
 
 def md5(file_path):
