@@ -155,7 +155,6 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     return download_path
 
 
-
 def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
     """Download and unzip a zip file.
 
