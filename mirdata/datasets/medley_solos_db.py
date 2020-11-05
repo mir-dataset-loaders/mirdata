@@ -30,18 +30,23 @@ import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
-DATASET_DIR = "Medley-solos-DB"
+BIBTEX = """@inproceedings{lostanlen2019ismir,
+    title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
+    author={Lostanlen, Vincent and Cella, Carmine Emanuele},
+    booktitle={International Society of Music Information Retrieval (ISMIR)},
+    year={2016}
+}"""
 REMOTES = {
-    'annotations': download_utils.RemoteFileMetadata(
+    "annotations": download_utils.RemoteFileMetadata(
         filename="Medley-solos-DB_metadata.csv",
         url="https://zenodo.org/record/3464194/files/Medley-solos-DB_metadata.csv?download=1",
         checksum="fda6a589c56785f2195c9227809c521a",
         destination_dir="annotation",
     ),
-    'audio': download_utils.RemoteFileMetadata(
+    "audio": download_utils.RemoteFileMetadata(
         filename="Medley-solos-DB.tar.gz",
         url="https://zenodo.org/record/3464194/files/Medley-solos-DB.tar.gz?download=1",
         checksum="f5facf398793ef5c1f80c013afdf3e5f",
@@ -80,13 +85,11 @@ def _load_metadata(data_home):
 DATA = utils.LargeData("medley_solos_db_index.json", _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """medley_solos_db Track class
 
     Args:
         track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored. default=None
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
         audio_path (str): path to the track's audio file
@@ -98,16 +101,13 @@ class Track(track.Track):
 
     """
 
-    def __init__(self, track_id, data_home=None):
+    def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
             raise ValueError(
                 "{} is not a valid track ID in Medley-solos-DB".format(track_id)
             )
 
         self.track_id = track_id
-
-        if data_home is None:
-            data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
@@ -157,102 +157,3 @@ def load_audio(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 
     return librosa.load(audio_path, sr=22050, mono=True)
-
-
-def download(
-    data_home=None, partial_download=None, force_overwrite=False, cleanup=True
-):
-    """Download Medley-solos-DB.
-
-    Args:
-        data_home (str):
-            Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
-        partial_download (list):
-            List indicating what to partially download. The list can include any of:
-                * `'annotations'` the annotation files
-                * `'audio'` the audio files
-            If `None`, all data is downloaded.
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    download_utils.downloader(
-        data_home,
-        remotes=REMOTES,
-        partial_download=partial_download,
-        info_message=None,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-
-
-def track_ids():
-    """Return track ids
-
-    Returns:
-        (list): A list of track ids
-    """
-    return list(DATA.index.keys())
-
-
-def validate(data_home=None, silence=False):
-    """Validate if the stored dataset is a valid version
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        missing_files (list): List of file paths that are in the dataset index
-            but missing locally
-        invalid_checksums (list): List of file paths that file exists in the dataset
-            index but has a different checksum compare to the reference checksum
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    missing_files, invalid_checksums = utils.validator(
-        DATA.index, data_home, silence=silence
-    )
-    return missing_files, invalid_checksums
-
-
-def load(data_home=None):
-    """Load Medley-solos-DB
-    Args:
-        data_home (str): Local path where Medley-solos-DB is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-    Returns:
-        (dict): {`track_id`: track data}
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    medley_solos_db_data = {}
-    for key in DATA.index.keys():
-        medley_solos_db_data[key] = Track(key, data_home=data_home)
-    return medley_solos_db_data
-
-
-def cite():
-    """Print the reference"""
-
-    cite_data = """
-=========== MLA ===========
-Lostanlen, Vincent and Cella, Carmine Emanuele.
-"Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition."
-In Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR). 2016.
-========== Bibtex ==========
-@inproceedings{lostanlen2019ismir,
-    title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
-    author={Lostanlen, Vincent and Cella, Carmine Emanuele},
-    booktitle={International Society of Music Information Retrieval (ISMIR)},
-    year={2016}
-}
-"""
-    print(cite_data)

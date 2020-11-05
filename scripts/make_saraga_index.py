@@ -5,7 +5,7 @@ import json
 import os
 
 
-SARAGA_INDEX_PATH = '../mirdata/indexes/saraga_index.json'
+SARAGA_INDEX_PATH = '../mirdata/datasets/indexes/saraga_index.json'
 
 
 def md5(file_path):

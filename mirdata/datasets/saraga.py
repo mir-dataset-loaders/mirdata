@@ -17,35 +17,28 @@ import numpy as np
 import os
 import json
 import logging
-import six
-from six.moves.urllib import parse as urllibparse
-
-import requests
-import requests.adapters
 
 from mirdata import download_utils
 from mirdata import jams_utils
-from mirdata import track
+from mirdata import core
 from mirdata import utils
 
-logger = logging.getLogger("dunya")
 
-HOSTNAME = "https://dunya.compmusic.upf.edu"
-TOKEN = 'a79d018dd20964751a1ac5c2cd26876c0a10521a'
-session = requests.Session()
-session.mount('http://', requests.adapters.HTTPAdapter(max_retries=5))
-session.mount('https://', requests.adapters.HTTPAdapter(max_retries=5))
-
-
-class HTTPError(Exception):
-    pass
-
-
-class ConnectionError(Exception):
-    pass
-
-
-DATASET_DIR = 'Saraga'
+BIBTEX = """
+@dataset{bozkurt_b_2018_1256127,
+  author       = {Bozkurt, B. and
+                  Srinivasamurthy, A. and
+                  Gulati, S. and
+                  Serra, X.},
+  title        = {Saraga: research datasets of Indian Art Music},
+  month        = may,
+  year         = 2018,
+  publisher    = {Zenodo},
+  version      = {1.0},
+  doi          = {10.5281/zenodo.1256127},
+  url          = {https://doi.org/10.5281/zenodo.1256127}
+}
+"""
 
 
 REMOTES = {
@@ -76,7 +69,7 @@ def _load_metadata(metadata_path):
 DATA = utils.LargeData('saraga_index.json', _load_metadata)
 
 
-class Track(track.Track):
+class Track(core.Track):
     """Saraga Track class
 
     Args:
@@ -88,14 +81,11 @@ class Track(track.Track):
         TODO
     """
 
-    def __init__(self, track_id, data_home=None):
+    def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in Salami'.format(track_id))
 
         self.track_id = track_id
-
-        if data_home is None:
-            data_home = utils.get_default_dataset_path(DATASET_DIR)
 
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
@@ -290,86 +280,6 @@ def load_audio(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 
     return librosa.load(audio_path, sr=44100, mono=False)
-
-
-def download(data_home=None, force_overwrite=False, cleanup=True):
-    """Download Saraga Dataset (annotations).
-    The audio files are not provided.
-
-    Args:
-        data_home (str):
-            Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    info_message = 'TODO'
-
-    download_utils.downloader(
-        data_home,
-        remotes=REMOTES,
-        info_message=info_message,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-
-
-def validate(data_home=None, silence=False):
-    """Validate if the stored dataset is a valid version
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        missing_files (list): List of file paths that are in the dataset index
-            but missing locally
-        invalid_checksums (list): List of file paths that file exists in the dataset
-            index but has a different checksum compare to the reference checksum
-
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    missing_files, invalid_checksums = utils.validator(
-        DATA.index, data_home, silence=silence
-    )
-    return missing_files, invalid_checksums
-
-
-def track_ids():
-    """Return track ids
-
-    Returns:
-        (list): A list of track ids
-    """
-    return list(DATA.index.keys())
-
-
-def load(data_home=None):
-    """Load Saraga dataset
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        (dict): {`track_id`: track data}
-
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    data = {}
-    for key in track_ids():
-        data[key] = Track(key, data_home=data_home)
-    return data
 
 
 def load_tonic(tonic_path):
@@ -578,175 +488,3 @@ def load_phrases(phrases_path):
         np.array(end_times),
         events
     )
-
-
-def cite():
-    """Print the reference"""
-
-    cite_data = """
-===========  MLA ===========
-Bozkurt, B., Srinivasamurthy, A., Gulati, S., & Serra, X. (2018). 
-Saraga: research datasets of Indian Art Music (Version 1.0) [Data set]. 
-Zenodo. http://doi.org/10.5281/zenodo.1256127
-
-========== Bibtex ==========
-@dataset{bozkurt_b_2018_1256127,
-  author       = {Bozkurt, B. and
-                  Srinivasamurthy, A. and
-                  Gulati, S. and
-                  Serra, X.},
-  title        = {Saraga: research datasets of Indian Art Music},
-  month        = may,
-  year         = 2018,
-  publisher    = {Zenodo},
-  version      = {1.0},
-  doi          = {10.5281/zenodo.1256127},
-  url          = {https://doi.org/10.5281/zenodo.1256127}
-}
-"""
-
-    print(cite_data)
-
-
-# Functions to download multitrack files from Dunya API
-def file_for_document(recordingid, thetype, subtype=None, part=None, version=None):
-    """Get the most recent derived file given a filetype.
-    :param recordingid: Musicbrainz recording ID
-    :param thetype: the computed filetype
-    :param subtype: a subtype if the module has one
-    :param part: the file part if the module has one
-    :param version: a specific version, otherwise the most recent one will be used
-    :returns: The contents of the most recent version of the derived file
-    """
-    path = "document/by-id/%s/%s" % (recordingid, thetype)
-    args = {}
-    if subtype:
-        args["subtype"] = subtype
-    if part:
-        args["part"] = part
-    if version:
-        args["v"] = version
-    return _dunya_query_file(path, **args)
-
-
-def set_hostname(hostname):
-    """ Change the hostname of the dunya API endpoint.
-
-    Arguments:
-        hostname: The new dunya hostname to set. If you want to access over http or a different port,
-         include them in the hostname, e.g. `http://localhost:8000`
-
-    """
-    global HOSTNAME
-    HOSTNAME = hostname
-
-
-def set_token(token):
-    """ Set an access token. You must call this before you can make
-    any other calls.
-
-    Arguments:
-        token: your access token
-
-    """
-    global TOKEN
-    TOKEN = token
-
-
-def _get_paged_json(path, **kwargs):
-    extra_headers = None
-    if 'extra_headers' in kwargs:
-        extra_headers = kwargs.get('extra_headers')
-        del kwargs['extra_headers']
-    nxt = _make_url(path, **kwargs)
-    logger.debug("initial paged to %s", nxt)
-    ret = []
-    while nxt:
-        res = _dunya_url_query(nxt, extra_headers=extra_headers)
-        res = res.json()
-        ret.extend(res.get("results", []))
-        nxt = res.get("next")
-    return ret
-
-
-def _dunya_url_query(url, extra_headers=None):
-    logger.debug("query to '%s'" % url)
-    if not TOKEN:
-        raise ConnectionError("You need to authenticate with `set_token`")
-
-    headers = {"Authorization": "Token %s" % TOKEN}
-    if extra_headers:
-        headers.update(extra_headers)
-
-    g = session.get(url, headers=headers)
-    try:
-        g.raise_for_status()
-    except requests.exceptions.HTTPError as e:
-        raise HTTPError(e)
-    return g
-
-
-def _dunya_post(url, data=None, files=None):
-    data = data or {}
-    files = files or {}
-    logger.debug("post to '%s'" % url)
-    if not TOKEN:
-        raise ConnectionError("You need to authenticate with `set_token`")
-    headers = {"Authorization": "Token %s" % TOKEN}
-    p = requests.post(url, headers=headers, data=data, files=files)
-    try:
-        p.raise_for_status()
-    except requests.exceptions.HTTPError as e:
-        raise HTTPError(e)
-    return p
-
-
-def _make_url(path, **kwargs):
-    if "://" in HOSTNAME:
-        protocol, hostname = HOSTNAME.split("://")
-    else:
-        protocol = "http"
-        hostname = HOSTNAME
-
-    if not kwargs:
-        kwargs = {}
-    for key, value in kwargs.items():
-        if isinstance(value, six.text_type):
-            kwargs[key] = value.encode('utf8')
-    url = urllibparse.urlunparse((
-        protocol,
-        hostname,
-        '%s' % path,
-        '',
-        urllibparse.urlencode(kwargs),
-        ''
-    ))
-    return url
-
-
-def _dunya_query_json(path, **kwargs):
-    """Make a query to dunya and expect the results to be JSON"""
-    g = _dunya_url_query(_make_url(path, **kwargs))
-    return g.json() if g else None
-
-
-def _dunya_query_file(path, **kwargs):
-    """Make a query to dunya and return the raw result"""
-    g = _dunya_url_query(_make_url(path, **kwargs))
-    if g:
-        cl = g.headers.get('content-length')
-        content = g.content
-        if cl and int(cl) != len(content):
-            logger.warning("Indicated content length is not the same as returned content. Some data may be missing")
-        return content
-    else:
-        return None
-
-
-'''
-def main():
-    file = file_for_document('6d4e58d1-e565-4987-b7a5-c63a4e9d3f90', 'mp3')
-
-if __name__ == '__main__':
-    main()
-'''

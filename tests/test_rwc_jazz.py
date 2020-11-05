@@ -1,34 +1,35 @@
 # -*- coding: utf-8 -*-
 
-from mirdata import rwc_jazz, utils
+from mirdata.datasets import rwc_jazz
+from mirdata import utils
 from tests.test_utils import run_track_tests
 
 
 def test_track():
 
-    default_trackid = 'RM-J004'
-    data_home = 'tests/resources/mir_datasets/RWC-Jazz'
+    default_trackid = "RM-J004"
+    data_home = "tests/resources/mir_datasets/rwc_jazz"
     track = rwc_jazz.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        'track_id': 'RM-J004',
-        'audio_path': 'tests/resources/mir_datasets/RWC-Jazz/'
-        + 'audio/rwc-j-m01/4.wav',
-        'sections_path': 'tests/resources/mir_datasets/RWC-Jazz/'
-        + 'annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT',
-        'beats_path': 'tests/resources/mir_datasets/RWC-Jazz/'
-        + 'annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT',
-        'piece_number': 'No. 4',
-        'suffix': 'M01',
-        'track_number': 'Tr. 04',
-        'title': 'Crescent Serenade (Piano Solo)',
-        'artist': 'Makoto Nakamura',
-        'duration': 167,
-        'variation': 'Instrumentation 1',
-        'instruments': 'Pf',
+        "track_id": "RM-J004",
+        "audio_path": "tests/resources/mir_datasets/rwc_jazz/"
+        + "audio/rwc-j-m01/4.wav",
+        "sections_path": "tests/resources/mir_datasets/rwc_jazz/"
+        + "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT",
+        "beats_path": "tests/resources/mir_datasets/rwc_jazz/"
+        + "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT",
+        "piece_number": "No. 4",
+        "suffix": "M01",
+        "track_number": "Tr. 04",
+        "title": "Crescent Serenade (Piano Solo)",
+        "artist": "Makoto Nakamura",
+        "duration": 167,
+        "variation": "Instrumentation 1",
+        "instruments": "Pf",
     }
 
-    expected_property_types = {'beats': utils.BeatData, 'sections': utils.SectionData}
+    expected_property_types = {"beats": utils.BeatData, "sections": utils.SectionData}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -40,11 +41,11 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = 'tests/resources/mir_datasets/RWC-Jazz'
-    track = rwc_jazz.Track('RM-J004', data_home=data_home)
+    data_home = "tests/resources/mir_datasets/rwc_jazz"
+    track = rwc_jazz.Track("RM-J004", data_home=data_home)
     jam = track.to_jams()
 
-    beats = jam.search(namespace='beat')[0]['data']
+    beats = jam.search(namespace="beat")[0]["data"]
     assert [beat.time for beat in beats] == [
         0.05,
         0.86,
@@ -83,7 +84,7 @@ def test_to_jams():
         None,
     ]
 
-    segments = jam.search(namespace='segment')[0]['data']
+    segments = jam.search(namespace="segment")[0]["data"]
     assert [segment.time for segment in segments] == [0.05, 6.53, 152.06]
     assert [segment.duration for segment in segments] == [
         6.48,
@@ -91,40 +92,40 @@ def test_to_jams():
         13.319999999999993,
     ]
     assert [segment.value for segment in segments] == [
-        'nothing',
-        'chorus A',
-        'chorus B',
+        "nothing",
+        "chorus A",
+        "chorus B",
     ]
     assert [segment.confidence for segment in segments] == [None, None, None]
 
-    assert jam['file_metadata']['title'] == 'Crescent Serenade (Piano Solo)'
-    assert jam['file_metadata']['artist'] == 'Makoto Nakamura'
+    assert jam["file_metadata"]["title"] == "Crescent Serenade (Piano Solo)"
+    assert jam["file_metadata"]["artist"] == "Makoto Nakamura"
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/RWC-Jazz'
+    data_home = "tests/resources/mir_datasets/rwc_jazz"
     metadata = rwc_jazz._load_metadata(data_home)
-    assert metadata['data_home'] == data_home
-    assert metadata['RM-J004'] == {
-        'piece_number': 'No. 4',
-        'suffix': 'M01',
-        'track_number': 'Tr. 04',
-        'title': 'Crescent Serenade (Piano Solo)',
-        'artist': 'Makoto Nakamura',
-        'duration': 167,
-        'variation': 'Instrumentation 1',
-        'instruments': 'Pf',
+    assert metadata["data_home"] == data_home
+    assert metadata["RM-J004"] == {
+        "piece_number": "No. 4",
+        "suffix": "M01",
+        "track_number": "Tr. 04",
+        "title": "Crescent Serenade (Piano Solo)",
+        "artist": "Makoto Nakamura",
+        "duration": 167,
+        "variation": "Instrumentation 1",
+        "instruments": "Pf",
     }
-    assert metadata['RM-J044'] == {
-        'piece_number': 'No. 44',
-        'suffix': 'M04',
-        'track_number': 'Tr. 09',
-        'title': 'Joyful, Joyful, We Adore Thee',
-        'artist': 'K’s Band',
-        'duration': 270,
-        'variation': 'Style (Free jazz)',
-        'instruments': 'Pf & Bs & Dr & Gt & Ts & Fl & Bar',
+    assert metadata["RM-J044"] == {
+        "piece_number": "No. 44",
+        "suffix": "M04",
+        "track_number": "Tr. 09",
+        "title": "Joyful, Joyful, We Adore Thee",
+        "artist": "K’s Band",
+        "duration": 270,
+        "variation": "Style (Free jazz)",
+        "instruments": "Pf & Bs & Dr & Gt & Ts & Fl & Bar",
     }
 
-    metadata_none = rwc_jazz._load_metadata('asdf/asdf')
+    metadata_none = rwc_jazz._load_metadata("asdf/asdf")
     assert metadata_none is None

@@ -1,7 +1,7 @@
 {
   "AClassicEducation_NightOwl_STEM_08": {
-    "audio_path": "MedleyDB-Pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",
-    "pitch_path": "MedleyDB-Pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv",
+    "audio_path": "medleydb_pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",
+    "pitch_path": "medleydb_pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv",
     "instrument": "male singer",
     "artist": "AClassicEducation",
     "title": "NightOwl",

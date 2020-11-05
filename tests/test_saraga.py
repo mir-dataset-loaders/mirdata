@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-from mirdata import saraga, utils
+from mirdata import utils
+from mirdata.datasets import saraga
 from tests.test_utils import run_track_tests
 
 
