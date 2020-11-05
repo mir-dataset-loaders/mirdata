@@ -63,7 +63,7 @@ DATA = utils.LargeData('acousticbrainz_genre_index.json')
 
 
 class Track(track.Track):
-    """AcousticBrainz Dataset track class
+    """AcousticBrainz Genre Dataset track class
 
     Args:
         track_id (str): track id of the track
@@ -71,14 +71,9 @@ class Track(track.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        audio_path (str): track audio path
-        beats_path (str): beat annotation path
-        chords_path (str): chord annotation path
-        keys_path (str): key annotation path
-        sections_path (str): sections annotation path
-        title (str): title of the track
         track_id (str): track id
-
+        mbid (str): mbid record
+        mbid_group: mbid group
     """
 
     def __init__(self, track_id, data_home=None):
@@ -3622,7 +3617,6 @@ def load_extractor(path):
 
 def download(data_home=None, force_overwrite=False, cleanup=True):
     """Download the AcousticBrainz Dataset Dataset (annotations).
-    The audio files are not provided due to copyright issues.
 
     Args:
         data_home (str):
@@ -3639,17 +3633,7 @@ def download(data_home=None, force_overwrite=False, cleanup=True):
     if data_home is None:
         data_home = utils.get_default_dataset_path(DATASET_DIR)
 
-    download_message = """
-        Unfortunately the audio files of the AcousticBrainz Dataset dataset are not available
-        for download. If you have the AcousticBrainz Dataset dataset, place the contents into
-        a folder called AcousticBrainz Dataset with the following structure:
-            > AcousticBrainz Dataset/
-                > annotations/
-                > audio/
-        and copy the AcousticBrainz Dataset folder to {}
-    """.format(
-        data_home
-    )
+    download_message = ""
 
     download_utils.downloader(
         data_home,
@@ -3777,7 +3761,6 @@ def cite():
 
     cite_data = """
 ===========  MLA ===========
-
 Bogdanov, D., Porter A., Schreiber H., Urbano J., & Oramas S. (2019).
 The AcousticBrainz Genre Dataset: Multi-Source, Multi-Level, Multi-Label, and Large-Scale.
 20th International Society for Music Information Retrieval Conference (ISMIR 2019).
@@ -3791,7 +3774,6 @@ The AcousticBrainz Genre Dataset: Multi-Source, Multi-Level, Multi-Label, and La
   organization={International Society for Music Information Retrieval (ISMIR)}
 }
     """
-
     print(cite_data)
 
 
