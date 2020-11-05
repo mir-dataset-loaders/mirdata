@@ -209,20 +209,14 @@ class Track(core.Track):
         return load_pitch(self.pitch_vocal_path)
 
     @utils.cached_property
-    def bpm(self):
-        """TempoData: tempo annotations"""
-        if self.bpm_path is None:
-            return None
-        return load_bpm(self.bpm_path)
-
-    '''
-    @utils.cached_property
     def tempo(self):
         """TempoData: tempo annotations"""
         if self.tempo_path is None:
             return None
-        return load_tempo(self.tempo_path)
-    '''
+        if self.iam_style == 'carnatic':
+            return load_tempo_carnatic(self.tempo_path)
+        if self.iam_style == 'hindustani':
+            return load_tempo_hindustani(self.tempo_path)
 
     @utils.cached_property
     def sama(self):
@@ -255,10 +249,10 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.pitch, 'pitch'), (self.pitch_vocal, 'pitch_vocal')],
-            # tempo_data=[(self.bpm, 'bpm tempo')],
             section_data=[(self.sama, 'sama'), (self.sections, 'sections')],
             event_data=[(self.phrases, 'phrases')],
             metadata={
+                'tempo': self.tempo,
                 'tonic': self.tonic,
                 'metadata': self._track_metadata
             }
@@ -369,8 +363,7 @@ def load_bpm(bpm_path):
     )
 
 
-'''
-def load_tempo(tempo_path):
+def load_tempo_carnatic(tempo_path):
     """Load tempo
 
     Args:
@@ -378,10 +371,83 @@ def load_tempo(tempo_path):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
-        (dict): {`track_id`: track data}
+        (dict): {'tempo_apm' = tempo in aksharas per minute (APM)
+                 'tempo_bpm' = tempo in beats per minute (BPM)
+                 'sama_interval' = median duration (in seconds) of one tāla cycle
+                 'beats_per_cycle' = number of beats in one cycle of the tāla
+                 'subdivisions' = number of aksharas per beat of the tāla
+                 }
+    """
+    if not os.path.exists(tempo_path):
+        raise IOError("tempo_path {} does not exist".format(tempo_path))
+
+    tempo_carnatic = {}
+
+    with open(tempo_path, 'r') as reader:
+        parsed_tempo = reader.readline()
+
+    tempo_carnatic['tempo_apm'] = float(parsed_tempo.split(',')[0])
+    tempo_carnatic['tempo_bpm'] = float(parsed_tempo.split(',')[1].split(' ')[1])
+    tempo_carnatic['sama_interval'] = float(parsed_tempo.split(',')[2].split(' ')[1])
+    tempo_carnatic['beats_per_cycle'] = float(parsed_tempo.split(',')[3].split(' ')[1])
+    tempo_carnatic['subdivisions'] = float(parsed_tempo.split(',')[4].split(' ')[1])
+
+    return tempo_carnatic
+
+
+def load_tempo_hindustani(tempo_path):
+    """Load tempo
+
+    Args:
+        tempo_path (str): Local path where the tempo annotation is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Returns:
+        (dict): {'tempo' = parsed_tempo[i][0]
+        tempo_hindustani['matra_interval'] = parsed_tempo[i][1]
+        tempo_hindustani['sama_interval'] = parsed_tempo[i][2]
+        tempo_hindustani['matras_per_cycle'] = parsed_tempo[i][3]
+        tempo_hindustani['start_time'] = parsed_tempo[i][4]
+        tempo_hindustani['duration'] = parsed_tempo[i][5]}
 
     """
-'''
+    if not os.path.exists(tempo_path):
+        raise IOError("tempo_path {} does not exist".format(tempo_path))
+
+    tempo_hindustani = {}
+
+    head, tail = os.path.split(tempo_path)
+    sections_path = tail.split('.')[0] + '.sections-manual.txt'
+    sections_abs_path = head + '/' + sections_path
+
+    sections = []
+    with open(sections_abs_path, 'r') as reader:
+        for line in reader.readlines():
+            sections.append(line.split(',')[3].split('\n')[0])
+
+    section_count = 0
+    with open(tempo_path, 'r') as reader:
+        for line in reader.readlines():
+
+            tempo = line.split(',')[0]
+            matra = line.split(',')[1].split(' ')[1]
+            sama_interval = line.split(',')[2].split(' ')[1]
+            matras_per_cycle = line.split(',')[3].split(' ')[1]
+            start_time = line.split(',')[4].split(' ')[1]
+            duration = line.split(',')[5].split(' ')[1]
+
+            tempo_hindustani[sections[section_count]] = {
+                'tempo': float(tempo) if '.' in tempo else int(tempo),
+                'matra_interval': float(matra) if '.' in matra else int(matra),
+                'sama_interval': float(sama_interval) if '.' in sama_interval else int(sama_interval),
+                'matras_per_cycle': float(matras_per_cycle) if '.' in matras_per_cycle else int(matras_per_cycle),
+                'start_time': float(start_time) if '.' in start_time else int(start_time),
+                'duration': float(duration) if '.' in duration else int(duration)
+            }
+
+            section_count += 1  # Go to next section
+
+    return tempo_hindustani
 
 
 def load_sama(sama_path):

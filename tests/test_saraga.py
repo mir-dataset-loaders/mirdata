@@ -60,7 +60,7 @@ def test_track():
     expected_property_types = {
         'audio': (np.ndarray, float),
         'bpm': utils.TempoData,
-        # 'tempo': TempoData
+        'tempo': dict,
         'phrases': utils.EventData,
         'pitch': utils.F0Data,
         'pitch_vocal': utils.F0Data,
@@ -135,7 +135,15 @@ def test_to_jams():
         0.0, 1.0, 1.0, 1.0, 1.0, 0.0
     ]
 
-    # Tempo TODO
+    # Tempo
+    parsed_tempo = jam['sandbox'].tempo
+    assert parsed_tempo == {
+        'tempo_apm': 330.0,
+        'tempo_bpm': 82.0,
+        'sama_interval': 5.827,
+        'beats_per_cycle': 32.0,
+        'subdivisions': 4.0
+    }
 
     # Sama
     samas = jam.search(namespace='segment_open')[0]['data']
@@ -369,3 +377,43 @@ def test_load_metadata():
     }]
     assert parsed_metadata['track_id'] == 'carnatic_1'
     assert parsed_metadata['data_home'] == 'tests/resources/mir_datasets/Saraga/saraga1.0'
+
+
+def test_load_tempo_carnatic():
+    data_home = 'tests/resources/mir_datasets/Saraga'
+    track = saraga.Track('carnatic_1', data_home=data_home)
+    tempo_path = track.tempo_path
+    parsed_tempo = saraga.load_tempo_carnatic(tempo_path)
+
+    assert type(parsed_tempo) == dict
+    assert type(parsed_tempo['tempo_apm']) == float
+    assert parsed_tempo == {
+        'tempo_apm': 330.0,
+        'tempo_bpm': 82.0,
+        'sama_interval': 5.827,
+        'beats_per_cycle': 32.0,
+        'subdivisions': 4.0
+    }
+
+
+def test_load_tempo_hindustani():
+    data_home = 'tests/resources/mir_datasets/Saraga'
+    track = saraga.Track('hindustani_1', data_home=data_home)
+    tempo_path = track.tempo_path
+    parsed_tempo = saraga.load_tempo_hindustani(tempo_path)
+
+    assert type(parsed_tempo) == dict
+    assert type(parsed_tempo['alap']) == dict
+    assert type(parsed_tempo['alap']['tempo']) == int
+    assert type(parsed_tempo['alap']['duration']) == float
+    assert parsed_tempo == {
+        'alap':
+            {'tempo': -1, 'matra_interval': -1, 'sama_interval': -1, 'matras_per_cycle': -1,
+             'start_time': 3.298, 'duration': 58.236},
+        'vilambit_Ektal':
+            {'tempo': 13, 'matra_interval': 4.605, 'sama_interval': 55.265, 'matras_per_cycle': 12,
+             'start_time': 59.49, 'duration': 678.009},
+        'drut_Ektal':
+            {'tempo': 185, 'matra_interval': 0.324, 'sama_interval': 3.885, 'matras_per_cycle': 12,
+             'start_time': 679.834, 'duration': 894.433}
+    }
