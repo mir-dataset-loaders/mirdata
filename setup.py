@@ -16,7 +16,7 @@ if __name__ == "__main__":
         url="https://github.com/mir-dataset-loaders/mirdata",
         packages=find_packages(exclude=["test", "*.test", "*.test.*"]),
         download_url="http://github.com/mir-dataset-loaders/mirdata/releases",
-        package_data={"mirdata": ["indexes/*"]},
+        package_data={"mirdata": ["datasets/indexes/*"]},
         long_description=long_description,
         long_description_content_type="text/markdown",
         classifiers=[
