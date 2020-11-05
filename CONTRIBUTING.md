@@ -262,7 +262,7 @@ class Track(core.Track):
 
 # -- if the dataset contains multitracks, you can define a MultiTrack similar to a Track
 # -- you can delete the block of code below if the dataset has no multitracks
-class MultiTrack(track.MultiTrack):
+class MultiTrack(core.MultiTrack):
     """Example multitrack class
 
     Args:
