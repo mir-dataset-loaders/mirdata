@@ -371,11 +371,11 @@ def load_tempo_carnatic(tempo_path):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
-        (dict): {'tempo_apm' = tempo in aksharas per minute (APM)
-                 'tempo_bpm' = tempo in beats per minute (BPM)
-                 'sama_interval' = median duration (in seconds) of one tāla cycle
-                 'beats_per_cycle' = number of beats in one cycle of the tāla
-                 'subdivisions' = number of aksharas per beat of the tāla
+        (dict): {'tempo_apm': tempo in aksharas per minute (APM)
+                 'tempo_bpm': tempo in beats per minute (BPM)
+                 'sama_interval': median duration (in seconds) of one tāla cycle
+                 'beats_per_cycle': number of beats in one cycle of the tāla
+                 'subdivisions': number of aksharas per beat of the tāla
                  }
     """
     if not os.path.exists(tempo_path):
@@ -386,11 +386,17 @@ def load_tempo_carnatic(tempo_path):
     with open(tempo_path, 'r') as reader:
         parsed_tempo = reader.readline()
 
-    tempo_carnatic['tempo_apm'] = float(parsed_tempo.split(',')[0])
-    tempo_carnatic['tempo_bpm'] = float(parsed_tempo.split(',')[1].split(' ')[1])
-    tempo_carnatic['sama_interval'] = float(parsed_tempo.split(',')[2].split(' ')[1])
-    tempo_carnatic['beats_per_cycle'] = float(parsed_tempo.split(',')[3].split(' ')[1])
-    tempo_carnatic['subdivisions'] = float(parsed_tempo.split(',')[4].split(' ')[1])
+    tempo_apm = parsed_tempo.split(',')[0]
+    tempo_bpm = parsed_tempo.split(',')[1].split(' ')[1]
+    sama_interval = parsed_tempo.split(',')[2].split(' ')[1]
+    beats_per_cycle = parsed_tempo.split(',')[3].split(' ')[1]
+    subdivisions = parsed_tempo.split(',')[4].split(' ')[1]
+
+    tempo_carnatic['tempo_apm'] = float(tempo_apm) if '.' in tempo_apm else int(tempo_apm)
+    tempo_carnatic['tempo_bpm'] = float(tempo_bpm) if '.' in tempo_bpm else int(tempo_bpm)
+    tempo_carnatic['sama_interval'] = float(sama_interval) if '.' in sama_interval else int(sama_interval)
+    tempo_carnatic['beats_per_cycle'] = float(beats_per_cycle) if '.' in beats_per_cycle else int(beats_per_cycle)
+    tempo_carnatic['subdivisions'] = float(subdivisions) if '.' in subdivisions else int(subdivisions)
 
     return tempo_carnatic
 
@@ -403,13 +409,14 @@ def load_tempo_hindustani(tempo_path):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Returns:
-        (dict): {'tempo' = parsed_tempo[i][0]
-        tempo_hindustani['matra_interval'] = parsed_tempo[i][1]
-        tempo_hindustani['sama_interval'] = parsed_tempo[i][2]
-        tempo_hindustani['matras_per_cycle'] = parsed_tempo[i][3]
-        tempo_hindustani['start_time'] = parsed_tempo[i][4]
-        tempo_hindustani['duration'] = parsed_tempo[i][5]}
-
+        (dict): {'tempo': median tempo for the section in mātrās per minute (MPM)
+                 'matra_interval': tempo expressed as the duration of the mātra (essentially
+                                   dividing 60 by tempo, expressed in seconds)
+                 'sama_interval': median duration of one tāl cycle in the section
+                 'matras_per_cycle': indicator of the structure of the tāl, showing the number
+                                     of mātrā in a cycle of the tāl of the recording
+                 'start_time': start time of the section
+                 'duration': duration of the section
     """
     if not os.path.exists(tempo_path):
         raise IOError("tempo_path {} does not exist".format(tempo_path))

@@ -138,11 +138,11 @@ def test_to_jams():
     # Tempo
     parsed_tempo = jam['sandbox'].tempo
     assert parsed_tempo == {
-        'tempo_apm': 330.0,
-        'tempo_bpm': 82.0,
+        'tempo_apm': 330,
+        'tempo_bpm': 82,
         'sama_interval': 5.827,
-        'beats_per_cycle': 32.0,
-        'subdivisions': 4.0
+        'beats_per_cycle': 32,
+        'subdivisions': 4
     }
 
     # Sama
@@ -386,13 +386,14 @@ def test_load_tempo_carnatic():
     parsed_tempo = saraga.load_tempo_carnatic(tempo_path)
 
     assert type(parsed_tempo) == dict
-    assert type(parsed_tempo['tempo_apm']) == float
+    assert type(parsed_tempo['tempo_apm']) == int
+    assert type(parsed_tempo['sama_interval']) == float
     assert parsed_tempo == {
-        'tempo_apm': 330.0,
-        'tempo_bpm': 82.0,
+        'tempo_apm': 330,
+        'tempo_bpm': 82,
         'sama_interval': 5.827,
-        'beats_per_cycle': 32.0,
-        'subdivisions': 4.0
+        'beats_per_cycle': 32,
+        'subdivisions': 4
     }
 
 
