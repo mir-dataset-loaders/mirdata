@@ -6,6 +6,7 @@ from .version import version as __version__
 DATASETS = [
     "beatles",
     "beatport_key",
+    "classicalDB",
     "dali",
     "giantsteps_key",
     "giantsteps_tempo",

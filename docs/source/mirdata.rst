@@ -25,6 +25,12 @@ beatport_key
 .. automodule:: mirdata.datasets.beatport_key
    :members:
 
+classicalDB
+^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.classicalDB
+   :members:
+
 dali
 ^^^^
 
