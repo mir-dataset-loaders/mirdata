@@ -42,7 +42,6 @@ def make_saraga_index(saraga_data_path):
                         ctonic = (None, None)
                         pitch = (None, None)
                         pitch_v = (None, None)
-                        bpm = (None, None)
                         tempo = (None, None)
                         sama = (None, None)
                         sections = (None, None)
@@ -67,10 +66,6 @@ def make_saraga_index(saraga_data_path):
                                 pitch_v_path = os.path.join(directory, directory_, file)
                                 pitch_v_checksum = md5(os.path.join(saraga_data_path, pitch_v_path))
                                 pitch_v = (os.path.join('saraga1.0/', pitch_v_path), pitch_v_checksum)
-                            if 'bpm' in file:
-                                bpm_path = os.path.join(directory, directory_, file)
-                                bpm_checksum = md5(os.path.join(saraga_data_path, bpm_path))
-                                bpm = (os.path.join('saraga1.0/', bpm_path), bpm_checksum)
                             if 'tempo' in file:
                                 tempo_path = os.path.join(directory, directory_, file)
                                 tempo_checksum = md5(os.path.join(saraga_data_path, tempo_path))
@@ -97,7 +92,6 @@ def make_saraga_index(saraga_data_path):
                                 'ctonic': ctonic,
                                 'pitch': pitch,
                                 'pitch_vocal': pitch_v,
-                                'bpm': bpm,
                                 'tempo': tempo,
                                 'sama': sama,
                                 'sections': sections,

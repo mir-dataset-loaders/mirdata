@@ -16,10 +16,6 @@
       "saraga1.0/carnatic/135/Sumithra Vasudev - Sri Guru Na Palitosmi.pitch-vocal.txt",
       "616745e18b36ece891c9eb0e7c07c2b0"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/135/Sumithra Vasudev - Sri Guru Na Palitosmi.bpm-manual.txt",
-      "e3efaef864a0e824418baeee53c8973b"
-    ],
     "tempo": [
       "saraga1.0/carnatic/135/Sumithra Vasudev - Sri Guru Na Palitosmi.tempo-manual.txt",
       "195a14e3bae63ee73459b0e2b453d4b2"
@@ -55,10 +51,6 @@
       "ccf345265c593a3820442dfb3232cc01"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -100,10 +92,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -142,10 +130,6 @@
       "saraga1.0/carnatic/132/Sumithra Vasudev - Karuninchutakidi.pitch-vocal.txt",
       "365b6d47cb68214e5c15182ba14aa548"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/132/Sumithra Vasudev - Karuninchutakidi.bpm-manual.txt",
-      "d7d715962e2eeae8c6a234f7d4a2d2ec"
-    ],
     "tempo": [
       "saraga1.0/carnatic/132/Sumithra Vasudev - Karuninchutakidi.tempo-manual.txt",
       "19b46d6ecd3c3f72a2596eb7090e2a61"
@@ -181,10 +165,6 @@
       "3e6a2baea8661015f96ae6d2e8e4a22d"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -226,10 +206,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -268,10 +244,6 @@
       "saraga1.0/carnatic/66/Rithvik Raja - Bhogeendra Shayinam.pitch-vocal.txt",
       "baa38afe15c2d281530b3ef742d92861"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/66/Rithvik Raja - Bhogeendra Shayinam.bpm-manual.txt",
-      "2558f66dfb8a14a49fb05ab4062f948d"
-    ],
     "tempo": [
       "saraga1.0/carnatic/66/Rithvik Raja - Bhogeendra Shayinam.tempo-manual.txt",
       "dfe053bd8b359dd1e38b985bd7065beb"
@@ -307,10 +279,6 @@
       "2bb31404e1a50083c214e547e3a6b664"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -352,10 +320,6 @@
       "saraga1.0/carnatic/50/KP Nandini - Tillana.pitch-vocal.txt",
       "c0190b4897662a35128c02e93a082653"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/50/KP Nandini - Tillana.bpm-manual.txt",
-      "16f49cdc42e89e92865e7ed7b3dcdc91"
-    ],
     "tempo": [
       "saraga1.0/carnatic/50/KP Nandini - Tillana.tempo-manual.txt",
       "37923e6bfcdd2fd77c8c2ce3b292aac4"
@@ -394,10 +358,6 @@
       "saraga1.0/carnatic/68/Rithvik Raja - Madhava Mamava.pitch-vocal.txt",
       "338a07db11a6dc95ab3e63f087f24e8d"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/68/Rithvik Raja - Madhava Mamava.bpm-manual.txt",
-      "1eaf1173677b3f509413a78f474d7d6d"
-    ],
     "tempo": [
       "saraga1.0/carnatic/68/Rithvik Raja - Madhava Mamava.tempo-manual.txt",
       "5e59313b523263638ca89013acb27fc3"
@@ -433,10 +393,6 @@
       "0768b950b8ba6adba56e646f4d89c3f1"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -478,10 +434,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/carnatic/57/S Sundar - Purahara Nandana.tempo-manual.txt",
       "8af6f0db848b40dd80b917daa4414249"
@@ -519,10 +471,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/168/Ashwath Narayanan - Sadabalarupapi Shlokam.pitch-vocal.txt",
       "68083a9ea75f09e5eaf4b87eef0e368c"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/168/Ashwath Narayanan - Sadabalarupapi Shlokam.bpm-manual.txt",
-      "7fb7294e791880a44fa4e048148d4368"
     ],
     "tempo": [
       "saraga1.0/carnatic/168/Ashwath Narayanan - Sadabalarupapi Shlokam.tempo-manual.txt",
@@ -562,10 +510,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/157/Sanjay Subrahmanyan - Shatre Vilagi Irum.bpm-manual.txt",
-      "74003b6598b4bcc70b3e1b237075fa01"
-    ],
     "tempo": [
       "saraga1.0/carnatic/157/Sanjay Subrahmanyan - Shatre Vilagi Irum.tempo-manual.txt",
       "5cf0c3a7f40d8667ec800ea118181fb2"
@@ -601,10 +545,6 @@
       "54627311037e40c7291f88b0b5aa06c0"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -646,10 +586,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/159/Sanjay Subrahmanyan - Entara Nitana.bpm-manual.txt",
-      "ddd3cab05bc1905e8adc9e90903dc9ad"
-    ],
     "tempo": [
       "saraga1.0/carnatic/159/Sanjay Subrahmanyan - Entara Nitana.tempo-manual.txt",
       "0101b30519c5b20c676db071cf332cdd"
@@ -687,10 +623,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/32/Sanjay Subrahmanyan - Oorilen Kaani Illai.bpm-manual.txt",
-      "861295fc328bbe284adcd91e4ea04709"
     ],
     "tempo": [
       "saraga1.0/carnatic/32/Sanjay Subrahmanyan - Oorilen Kaani Illai.tempo-manual.txt",
@@ -730,10 +662,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/166/Sanjay Subrahmanyan - Thillana Dhanashri.bpm-manual.txt",
-      "c9d49a071ad5d7185063eda2cee52850"
-    ],
     "tempo": [
       "saraga1.0/carnatic/166/Sanjay Subrahmanyan - Thillana Dhanashri.tempo-manual.txt",
       "951c14862287178ea4050a936bcc54a4"
@@ -771,10 +699,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/192/V. Shankaranarayanan - Ardhanareeshwaram.pitch-vocal.txt",
       "a192c7e40f130cbccba6828b3141b81f"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/192/V. Shankaranarayanan - Ardhanareeshwaram.bpm-manual.txt",
-      "36470afa97193dd5ad38f4b8cb433eea"
     ],
     "tempo": [
       "saraga1.0/carnatic/192/V. Shankaranarayanan - Ardhanareeshwaram.tempo-manual.txt",
@@ -814,10 +738,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/35/Sanjay Subrahmanyan - Teerthakarayinile.bpm-manual.txt",
-      "e8b9f00bcf7f09f4bee45b469a301fc2"
-    ],
     "tempo": [
       "saraga1.0/carnatic/35/Sanjay Subrahmanyan - Teerthakarayinile.tempo-manual.txt",
       "bf237482b5b72c091bee4ebaabe7f8ef"
@@ -855,10 +775,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/195/V. Shankaranarayanan - Muruga Muruga Muruga.pitch-vocal.txt",
       "ced3e5be6c7a2d6bf5c669cfcc125885"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/195/V. Shankaranarayanan - Muruga Muruga Muruga.bpm-manual.txt",
-      "1b0d8664a0102d8f41d5232f02d0c642"
     ],
     "tempo": [
       "saraga1.0/carnatic/195/V. Shankaranarayanan - Muruga Muruga Muruga.tempo-manual.txt",
@@ -898,10 +814,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/161/Sanjay Subrahmanyan - Ozhukkam Uyirinum.bpm-manual.txt",
-      "2ee90367876abfd06c8fa560436b9efe"
-    ],
     "tempo": [
       "saraga1.0/carnatic/161/Sanjay Subrahmanyan - Ozhukkam Uyirinum.tempo-manual.txt",
       "d9a869e6c8ef134d3fefd2dbb16e1024"
@@ -937,10 +849,6 @@
       "84580d923d5046acd4750cdf1bfcbac9"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -982,10 +890,6 @@
       "saraga1.0/carnatic/69/Rithvik Raja - Sapasyat Kausalya.pitch-vocal.txt",
       "4ee3c78354f9f114ff12a0218effb1ef"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/69/Rithvik Raja - Sapasyat Kausalya.bpm-manual.txt",
-      "9598f8031e00b7d83529bf4c5aee12dc"
-    ],
     "tempo": [
       "saraga1.0/carnatic/69/Rithvik Raja - Sapasyat Kausalya.tempo-manual.txt",
       "ae407a7569a2eadb3665026bf3e8c58f"
@@ -1021,10 +925,6 @@
       "a0087552ce9ac547cb22a2777b641150"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -1066,10 +966,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -1105,10 +1001,6 @@
       "b4d3aa7460c7314b7a0d4c103db4c863"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -1150,10 +1042,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/carnatic/58/S Sundar - Geetha Vaadya Natana.tempo-manual.txt",
       "cb28caf60d25ab7a8859f90bc56a60f8"
@@ -1191,10 +1079,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/133/Sumithra Vasudev - Ramabhi Rama Manasu.pitch-vocal.txt",
       "47330ba05f13f5c44e030a8c4365cbbd"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/133/Sumithra Vasudev - Ramabhi Rama Manasu.bpm-manual.txt",
-      "dd8f8571d005739e2ad8a55f75f353f9"
     ],
     "tempo": [
       "saraga1.0/carnatic/133/Sumithra Vasudev - Ramabhi Rama Manasu.tempo-manual.txt",
@@ -1234,10 +1118,6 @@
       "saraga1.0/carnatic/67/Rithvik Raja - Saraguna Palimpa.pitch-vocal.txt",
       "e54577990dbcad76e70fdb26a98fa852"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/67/Rithvik Raja - Saraguna Palimpa.bpm-manual.txt",
-      "3307ce39f0800cd8484c5d5521371a40"
-    ],
     "tempo": [
       "saraga1.0/carnatic/67/Rithvik Raja - Saraguna Palimpa.tempo-manual.txt",
       "91d9400ded57e68c7cd37c4bf4b4f57e"
@@ -1273,10 +1153,6 @@
       "2cbdc35569c35b32aca02e9f447c373d"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -1318,10 +1194,6 @@
       "saraga1.0/carnatic/134/Sumithra Vasudev - Thoomani Madatthu.pitch-vocal.txt",
       "815b2e827f6756123cc8bf63795d6363"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/134/Sumithra Vasudev - Thoomani Madatthu.bpm-manual.txt",
-      "dd53154ac02d85b9d750229b61892c16"
-    ],
     "tempo": [
       "saraga1.0/carnatic/134/Sumithra Vasudev - Thoomani Madatthu.tempo-manual.txt",
       "29acc1c2318d4d49e4d5db75e1aec1a8"
@@ -1357,10 +1229,6 @@
       "eeafffa2e6c80d19dc2d0e55301a1cb3"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -1402,10 +1270,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/carnatic/60/S Sundar - Nera Nammiti.tempo-manual.txt",
       "54c4215f700faf2e54524991fab1bcdd"
@@ -1443,10 +1307,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/34/Sanjay Subrahmanyan - Ramakrishnaru Manaegae.bpm-manual.txt",
-      "e3dfe16284c097c6d70b83bb0f485e61"
     ],
     "tempo": [
       "saraga1.0/carnatic/34/Sanjay Subrahmanyan - Ramakrishnaru Manaegae.tempo-manual.txt",
@@ -1486,10 +1346,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/160/Sanjay Subrahmanyan - Soundararajam.bpm-manual.txt",
-      "a4a4c3fafe83e760fb9734b1a5fd0543"
-    ],
     "tempo": [
       "saraga1.0/carnatic/160/Sanjay Subrahmanyan - Soundararajam.tempo-manual.txt",
       "fe7b5990d3458aef71f50d9026dcb37c"
@@ -1527,10 +1383,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/194/V. Shankaranarayanan - Chenduril Nindradum Kanda.pitch-vocal.txt",
       "7d42eb24e81af0ea661b253655c11257"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/194/V. Shankaranarayanan - Chenduril Nindradum Kanda.bpm-manual.txt",
-      "bd5718251a0623d8363d67df5f3935c6"
     ],
     "tempo": [
       "saraga1.0/carnatic/194/V. Shankaranarayanan - Chenduril Nindradum Kanda.tempo-manual.txt",
@@ -1570,10 +1422,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/33/Sanjay Subrahmanyan - Karupuram Naarumo.bpm-manual.txt",
-      "b66a360852928472a9509b975e4fbb23"
-    ],
     "tempo": [
       "saraga1.0/carnatic/33/Sanjay Subrahmanyan - Karupuram Naarumo.tempo-manual.txt",
       "34329eccc3a97628cf3a33be218835a0"
@@ -1611,10 +1459,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/158/Sanjay Subrahmanyan - Kamakshi.bpm-manual.txt",
-      "06653e69f0623ff5ea90f61b6da9250a"
     ],
     "tempo": [
       "saraga1.0/carnatic/158/Sanjay Subrahmanyan - Kamakshi.tempo-manual.txt",
@@ -1654,10 +1498,6 @@
       "saraga1.0/carnatic/193/V. Shankaranarayanan - Chakkani Raja.pitch-vocal.txt",
       "9207915aed9d71acea3fa6c4b9fdade7"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/193/V. Shankaranarayanan - Chakkani Raja.bpm-manual.txt",
-      "6aca0ae7a85d3df6e9a56f7f03ec4075"
-    ],
     "tempo": [
       "saraga1.0/carnatic/193/V. Shankaranarayanan - Chakkani Raja.tempo-manual.txt",
       "b73ab0365789077f2c861f0fac9c1f93"
@@ -1696,10 +1536,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/167/Sanjay Subrahmanyan - Pavamana Suthudu.bpm-manual.txt",
-      "2b38c2922bc207c674c7d32c51667b47"
-    ],
     "tempo": [
       "saraga1.0/carnatic/167/Sanjay Subrahmanyan - Pavamana Suthudu.tempo-manual.txt",
       "dd9e8dc62042a6fc9215e29e536c9fa8"
@@ -1735,10 +1571,6 @@
       "861ffebcec1fcaba05cc9cc39bad4865"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -1780,10 +1612,6 @@
       "saraga1.0/carnatic/169/Ashwath Narayanan - Eranapai.pitch-vocal.txt",
       "2d8fe325a5a833697dfe5db089109b55"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/169/Ashwath Narayanan - Eranapai.bpm-manual.txt",
-      "96708ac864070a22414a87d86ad57647"
-    ],
     "tempo": [
       "saraga1.0/carnatic/169/Ashwath Narayanan - Eranapai.tempo-manual.txt",
       "8a568c3df112abedffbcaed7ac8539f6"
@@ -1821,10 +1649,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/156/Sanjay Subrahmanyan - Undan Paada Pankayam.bpm-manual.txt",
-      "0997868d53da255519fb40971825d243"
     ],
     "tempo": [
       "saraga1.0/carnatic/156/Sanjay Subrahmanyan - Undan Paada Pankayam.tempo-manual.txt",
@@ -1864,10 +1688,6 @@
       "saraga1.0/carnatic/174/Ashwath Narayanan - Evarura.pitch-vocal.txt",
       "45ad1cd03d5a55964998397b7b41bcef"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/174/Ashwath Narayanan - Evarura.bpm-manual.txt",
-      "f9e5efc60cff271855479a703f1c3f3c"
-    ],
     "tempo": [
       "saraga1.0/carnatic/174/Ashwath Narayanan - Evarura.tempo-manual.txt",
       "786dc5a084f315bf9567bb323725bacc"
@@ -1905,10 +1725,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/180/Vignesh Ishwar - Hiranmayeem Lakshmeem.bpm-manual.txt",
-      "69f67e5f7a50ab768223c5a9ec1242c3"
     ],
     "tempo": [
       "saraga1.0/carnatic/180/Vignesh Ishwar - Hiranmayeem Lakshmeem.tempo-manual.txt",
@@ -1948,10 +1764,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/20/Sanjay Subrahmanyan - Pavamaana Suthudu Pattu.bpm-manual.txt",
-      "5be4901c54db0fc54cba8bf7b6c7d4b3"
-    ],
     "tempo": [
       "saraga1.0/carnatic/20/Sanjay Subrahmanyan - Pavamaana Suthudu Pattu.tempo-manual.txt",
       "eee984bef4869da98317c6bb7a6af1ee"
@@ -1989,10 +1801,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/187/Vignesh Ishwar - Pavamana Suthudu Mangalam.bpm-manual.txt",
-      "ba4ea1126cf35242664a85cf49512526"
     ],
     "tempo": [
       "saraga1.0/carnatic/187/Vignesh Ishwar - Pavamana Suthudu Mangalam.tempo-manual.txt",
@@ -2032,10 +1840,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/18/Sanjay Subrahmanyan - Karuvutranaal Mudalaaga.bpm-manual.txt",
-      "39c9de40c0090bdecead57e37486f629"
-    ],
     "tempo": [
       "saraga1.0/carnatic/18/Sanjay Subrahmanyan - Karuvutranaal Mudalaaga.tempo-manual.txt",
       "bf237482b5b72c091bee4ebaabe7f8ef"
@@ -2073,10 +1877,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/173/Ashwath Narayanan - Parama Purusham.pitch-vocal.txt",
       "398a449aaf99a8ed2851b82ebbc45a99"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/173/Ashwath Narayanan - Parama Purusham.bpm-manual.txt",
-      "c54578e35bc78e21972a03224ae69b4e"
     ],
     "tempo": [
       "saraga1.0/carnatic/173/Ashwath Narayanan - Parama Purusham.tempo-manual.txt",
@@ -2116,10 +1916,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/27/Sanjay Subrahmanyan - Chalamelara Saketha Rama.bpm-manual.txt",
-      "f01469e89a563f67da827fc1d8771a15"
-    ],
     "tempo": [
       "saraga1.0/carnatic/27/Sanjay Subrahmanyan - Chalamelara Saketha Rama.tempo-manual.txt",
       "826e8f98d59f8ac55aedd9654bb36ba9"
@@ -2157,10 +1953,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/9/Sanjay Subrahmanyan - Eranapai.bpm-manual.txt",
-      "2ee89090cdb86c87a0ecbf98cdcbafed"
     ],
     "tempo": [
       "saraga1.0/carnatic/9/Sanjay Subrahmanyan - Eranapai.tempo-manual.txt",
@@ -2200,10 +1992,6 @@
       "saraga1.0/carnatic/0/Cherthala Ranganatha Sharma - Varashiki Vahana.pitch-vocal.txt",
       "5934e3b88a80f8ad91b38e5de55ab9fe"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/0/Cherthala Ranganatha Sharma - Varashiki Vahana.bpm-manual.txt",
-      "098313caa7c985cf2c40a4fca9d624c3"
-    ],
     "tempo": [
       "saraga1.0/carnatic/0/Cherthala Ranganatha Sharma - Varashiki Vahana.tempo-manual.txt",
       "189afbaa50fc6267f6e37d688b6de325"
@@ -2239,10 +2027,6 @@
       "480e741dc5eb48d4b7becb2990f94bbe"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -2284,10 +2068,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/11/Sanjay Subrahmanyan - Ennadu Jootuno.bpm-manual.txt",
-      "31cf88f7791a700079daa0ed98432433"
-    ],
     "tempo": [
       "saraga1.0/carnatic/11/Sanjay Subrahmanyan - Ennadu Jootuno.tempo-manual.txt",
       "f2ece2c91b7373645ab1b9f79169f5c1"
@@ -2323,10 +2103,6 @@
       "a60b9a11d26b6ee14c0f43ac9fa0a53b"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -2368,10 +2144,6 @@
       "saraga1.0/carnatic/7/Cherthala Ranganatha Sharma - Idhu Thaano Thillai Sthalam.pitch-vocal.txt",
       "598062324e9bfd44ee01ac61363458b6"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/7/Cherthala Ranganatha Sharma - Idhu Thaano Thillai Sthalam.bpm-manual.txt",
-      "c2429bb0708db694e8461d68fbaca18f"
-    ],
     "tempo": [
       "saraga1.0/carnatic/7/Cherthala Ranganatha Sharma - Idhu Thaano Thillai Sthalam.tempo-manual.txt",
       "37654baad82b2e6eaa7fab8f9c9bc834"
@@ -2409,10 +2181,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/29/Sanjay Subrahmanyan - Ganta mani aadudhu.bpm-manual.txt",
-      "9a281bf998fcf80b3e0a1c006d0f1274"
     ],
     "tempo": [
       "saraga1.0/carnatic/29/Sanjay Subrahmanyan - Ganta mani aadudhu.tempo-manual.txt",
@@ -2452,10 +2220,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/16/Sanjay Subrahmanyan - Ragam Thanam Pallavi - Shanmukhapriya.bpm-manual.txt",
-      "91effb43bf6f2fbceb09588e3aaa120d"
-    ],
     "tempo": [
       "saraga1.0/carnatic/16/Sanjay Subrahmanyan - Ragam Thanam Pallavi - Shanmukhapriya.tempo-manual.txt",
       "8278dd3ce05062874a3acb14a8efe511"
@@ -2494,10 +2258,6 @@
       "saraga1.0/carnatic/189/V. Shankaranarayanan - Nera Nammiti.pitch-vocal.txt",
       "236335ba1e3700ec485c9eb7f91eacea"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/189/V. Shankaranarayanan - Nera Nammiti.bpm-manual.txt",
-      "4bd8fef8ba7fe692131b4dd706ec5a7d"
-    ],
     "tempo": [
       "saraga1.0/carnatic/189/V. Shankaranarayanan - Nera Nammiti.tempo-manual.txt",
       "cf0f22483e2545eabe3eab55a217bcba"
@@ -2533,10 +2293,6 @@
       "d66c7c975c160a1248c907dbe1c89d79"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -2578,10 +2334,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/carnatic/42/S Sundar - Vanajaksha Ninne Nammiti.tempo-manual.txt",
       "31b38fd539f82bceddb702dfc8b45383"
@@ -2620,10 +2372,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/89/Akkarai Sisters - Thillana Pahadi.bpm-manual.txt",
-      "8ad0bb853697262d428f11320e8b2af9"
-    ],
     "tempo": [
       "saraga1.0/carnatic/89/Akkarai Sisters - Thillana Pahadi.tempo-manual.txt",
       "1dd265869b6721081eb08b6378af0840"
@@ -2659,10 +2407,6 @@
       "1d03dbe44b78ee276875982e994d2ca2"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -2704,10 +2448,6 @@
       "saraga1.0/carnatic/45/KP Nandini - Bhavamulona.pitch-vocal.txt",
       "3d2eae0d45931329672af1a284d7ae1f"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/45/KP Nandini - Bhavamulona.bpm-manual.txt",
-      "eaf1933c9919881272363d96f1700a1c"
-    ],
     "tempo": [
       "saraga1.0/carnatic/45/KP Nandini - Bhavamulona.tempo-manual.txt",
       "e196e1e8c3b688707808e54bd0abcc6f"
@@ -2743,10 +2483,6 @@
       "71b117fd18b823daddcbc4ea8bad0e9e"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -2788,10 +2524,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -2827,10 +2559,6 @@
       "50bd848ec4cb5f9094f1191dcecf028a"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -2872,10 +2600,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/87/Akkarai Sisters - Geeta Nayakan.bpm-manual.txt",
-      "d10c04b010a4290c428cba937f580a10"
-    ],
     "tempo": [
       "saraga1.0/carnatic/87/Akkarai Sisters - Geeta Nayakan.tempo-manual.txt",
       "0803fc00b68a17220350bb9ab1c0288d"
@@ -2911,10 +2635,6 @@
       "0265bfbc842415271067dc153a2d2d09"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -2956,10 +2676,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -2995,10 +2711,6 @@
       "0da41eab29d47ea563f4503e010d1a42"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -3040,10 +2752,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -3081,10 +2789,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/6/Cherthala Ranganatha Sharma - Prathi Vaaram Vaaram.pitch-vocal.txt",
       "351a5ad9cda6fee2b5e05ea1213a8d72"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/6/Cherthala Ranganatha Sharma - Prathi Vaaram Vaaram.bpm-manual.txt",
-      "8586d8a2433983e70b5ab7d2a65ed4d6"
     ],
     "tempo": [
       "saraga1.0/carnatic/6/Cherthala Ranganatha Sharma - Prathi Vaaram Vaaram.tempo-manual.txt",
@@ -3124,10 +2828,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/28/Sanjay Subrahmanyan - O Rangashayee.bpm-manual.txt",
-      "72093f0154e6bba7ec22903a97669d47"
-    ],
     "tempo": [
       "saraga1.0/carnatic/28/Sanjay Subrahmanyan - O Rangashayee.tempo-manual.txt",
       "40d41eea5e4596eabe2a139dcb97145e"
@@ -3163,10 +2863,6 @@
       "31f748bb681eaab8a6b7dea18c1ce5b0"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -3208,10 +2904,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/17/Sanjay Subrahmanyan - Saravanabhava Enum.bpm-manual.txt",
-      "8912a9c7c1076d1047679c01ded4ea6c"
-    ],
     "tempo": [
       "saraga1.0/carnatic/17/Sanjay Subrahmanyan - Saravanabhava Enum.tempo-manual.txt",
       "a4d694242e4d3b6119260ba6cf4653fc"
@@ -3250,10 +2942,6 @@
       "saraga1.0/carnatic/188/V. Shankaranarayanan - Shloka.pitch-vocal.txt",
       "c1a0cc8dff95b2adb3e944ad5b50e770"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/188/V. Shankaranarayanan - Shloka.bpm-manual.txt",
-      "853c140dad21f79884ebddca2d1d0705"
-    ],
     "tempo": [
       "saraga1.0/carnatic/188/V. Shankaranarayanan - Shloka.tempo-manual.txt",
       "4fd63d3900ae1d5f1b59a307e4d03fe5"
@@ -3289,10 +2977,6 @@
       "52f4473ee933d11e966a6281f9a11e75"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -3334,10 +3018,6 @@
       "saraga1.0/carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.pitch-vocal.txt",
       "fd3a15a0ebbfc98ed45c11646c4a7c78"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.bpm-manual.txt",
-      "94d1ba3b1977fdc75195b0cbbaf78315"
-    ],
     "tempo": [
       "saraga1.0/carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.tempo-manual.txt",
       "57b657e6d2490f1e329883436bba3f59"
@@ -3375,10 +3055,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/10/Sanjay Subrahmanyan - Pullum Silambena Kan.bpm-manual.txt",
-      "92729051a4057eadf970236891a65f65"
     ],
     "tempo": [
       "saraga1.0/carnatic/10/Sanjay Subrahmanyan - Pullum Silambena Kan.tempo-manual.txt",
@@ -3418,10 +3094,6 @@
       "saraga1.0/carnatic/172/Ashwath Narayanan - Angakaram.pitch-vocal.txt",
       "b34fc57e05cc0c3b157af500e1cdb938"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/172/Ashwath Narayanan - Angakaram.bpm-manual.txt",
-      "7784ffb4e5bbba85487e66c2394c2251"
-    ],
     "tempo": [
       "saraga1.0/carnatic/172/Ashwath Narayanan - Angakaram.tempo-manual.txt",
       "2181d90edcfd5fb797f94c6cd1b0750c"
@@ -3459,10 +3131,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/186/Vignesh Ishwar - Niraimadi Mugam Thiruppugazh.bpm-manual.txt",
-      "8a3a2d37ed36a08354233ab54501e4d4"
     ],
     "tempo": [
       "saraga1.0/carnatic/186/Vignesh Ishwar - Niraimadi Mugam Thiruppugazh.tempo-manual.txt",
@@ -3502,10 +3170,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/19/Sanjay Subrahmanyan - Maname Kanamum.bpm-manual.txt",
-      "ced7e390568394633a7b9b08d4171fac"
-    ],
     "tempo": [
       "saraga1.0/carnatic/19/Sanjay Subrahmanyan - Maname Kanamum.tempo-manual.txt",
       "6eb37d258c31755e2fe138941b8fdb4d"
@@ -3543,10 +3207,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/26/Sanjay Subrahmanyan - Va vela va.bpm-manual.txt",
-      "71e4df7a976ce398c7fab3ee7a3f3031"
     ],
     "tempo": [
       "saraga1.0/carnatic/26/Sanjay Subrahmanyan - Va vela va.tempo-manual.txt",
@@ -3586,10 +3246,6 @@
       "saraga1.0/carnatic/8/Cherthala Ranganatha Sharma - Shlokam - Shivah Shaktyayukto.pitch-vocal.txt",
       "8a824a7cfabf1365ce833118556b1b79"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/8/Cherthala Ranganatha Sharma - Shlokam - Shivah Shaktyayukto.bpm-manual.txt",
-      "6e6c84e049c78f46d605ed8cdb72fd39"
-    ],
     "tempo": [
       "saraga1.0/carnatic/8/Cherthala Ranganatha Sharma - Shlokam - Shivah Shaktyayukto.tempo-manual.txt",
       "826bda30f93d4823891d316bce0be433"
@@ -3627,10 +3283,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/181/Vignesh Ishwar - Gopanandana.bpm-manual.txt",
-      "cd36b1b151df4c78a8e8c1fa0f2a10fe"
     ],
     "tempo": [
       "saraga1.0/carnatic/181/Vignesh Ishwar - Gopanandana.tempo-manual.txt",
@@ -3670,10 +3322,6 @@
       "saraga1.0/carnatic/175/Ashwath Narayanan - Marubari.pitch-vocal.txt",
       "4d85fb09eda9517476473f967d0e4a3e"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/175/Ashwath Narayanan - Marubari.bpm-manual.txt",
-      "395b0da298c1149d2775850ff4955aac"
-    ],
     "tempo": [
       "saraga1.0/carnatic/175/Ashwath Narayanan - Marubari.tempo-manual.txt",
       "1e7178b9def84ace98dff9b70dacfa4c"
@@ -3712,10 +3360,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/21/Sanjay Subrahmanyan - Vanajakshi - Varnam.bpm-manual.txt",
-      "a0db27297c9561bd61ffbc5f5b467b0a"
-    ],
     "tempo": [
       "saraga1.0/carnatic/21/Sanjay Subrahmanyan - Vanajakshi - Varnam.tempo-manual.txt",
       "6d5d8ad3c88f30cb5a20805f8919c4a2"
@@ -3751,10 +3395,6 @@
       "4b6fb4feb9dda8e54fa6dd42af10bb2c"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -3796,10 +3436,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/81/Akkarai Sisters - Karunimpa Idi.bpm-manual.txt",
-      "b269dd87c3bdfc4a42d70c70f0d6a03e"
-    ],
     "tempo": [
       "saraga1.0/carnatic/81/Akkarai Sisters - Karunimpa Idi.tempo-manual.txt",
       "48130ede4867ea96ad529548996346d9"
@@ -3835,10 +3471,6 @@
       "3c6f2627f21143633e904d43271a5c4b"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -3880,10 +3512,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -3922,10 +3550,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/86/Akkarai Sisters - Shankari Shankuru.bpm-manual.txt",
-      "00d443cba8899e23f6ff212a7873cf77"
-    ],
     "tempo": [
       "saraga1.0/carnatic/86/Akkarai Sisters - Shankari Shankuru.tempo-manual.txt",
       "8555e404b8d66ea7abdcde779b0c2c5c"
@@ -3961,10 +3585,6 @@
       "00a6101d3ed239423c358e8355078505"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -4006,10 +3626,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -4048,10 +3664,6 @@
       "saraga1.0/carnatic/44/KP Nandini - Ardhanarishwaram.pitch-vocal.txt",
       "1fbc8c1980e79134affba8206a2da6c9"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/44/KP Nandini - Ardhanarishwaram.bpm-manual.txt",
-      "2753c5c12655b7f4dbc7955f18cd8a13"
-    ],
     "tempo": [
       "saraga1.0/carnatic/44/KP Nandini - Ardhanarishwaram.tempo-manual.txt",
       "5cf0c3a7f40d8667ec800ea118181fb2"
@@ -4087,10 +3699,6 @@
       "a5c217101ba94ac4d509baa1b778c72f"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -4132,10 +3740,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/carnatic/43/S Sundar - Parvathi Ninnu Neranammiti.tempo-manual.txt",
       "87fcbfa491d2d05bac2eff1bea8de9c6"
@@ -4171,10 +3775,6 @@
       "86b14f1c2e0cbc4400f4f555e1946f2f"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -4216,10 +3816,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/88/Akkarai Sisters - Manadirkkugandhadu.bpm-manual.txt",
-      "36e816f7f7f4f517ab2b1ba1c28995fe"
-    ],
     "tempo": [
       "saraga1.0/carnatic/88/Akkarai Sisters - Manadirkkugandhadu.tempo-manual.txt",
       "92f078b0754ec29e0b6d482e81c3961a"
@@ -4255,10 +3851,6 @@
       "d9d7c1055f9c2e4cfb9f7e30533e0757"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -4300,10 +3892,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -4342,10 +3930,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/38/Sanjay Subrahmanyan - Mangalam.bpm-manual.txt",
-      "6591468e774789fec4282adefa3278cd"
-    ],
     "tempo": [
       "saraga1.0/carnatic/38/Sanjay Subrahmanyan - Mangalam.tempo-manual.txt",
       "ea3bc07d09121c9c35d63287eef0a0a4"
@@ -4381,10 +3965,6 @@
       "e891f89ab912f3bc13b1accc63b3dc42"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -4426,10 +4006,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/36/Sanjay Subrahmanyan - Ninnaiye rathi.bpm-manual.txt",
-      "19992418b728bc896ab597b11fb82e71"
-    ],
     "tempo": [
       "saraga1.0/carnatic/36/Sanjay Subrahmanyan - Ninnaiye rathi.tempo-manual.txt",
       "a83a6eb7e4bb3f66c8867a549711e620"
@@ -4467,10 +4043,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/196/V. Shankaranarayanan - Pavamana Suthudu Pattu.pitch-vocal.txt",
       "376f9ca4a3602b751302ac1348e99c56"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/196/V. Shankaranarayanan - Pavamana Suthudu Pattu.bpm-manual.txt",
-      "f667c641f0e41bf5865ad09c376ee095"
     ],
     "tempo": [
       "saraga1.0/carnatic/196/V. Shankaranarayanan - Pavamana Suthudu Pattu.tempo-manual.txt",
@@ -4510,10 +4082,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/162/Sanjay Subrahmanyan - Raagam Thaanam Pallavi.bpm-manual.txt",
-      "167bff246a72aab691fc18b341c77e8e"
-    ],
     "tempo": [
       "saraga1.0/carnatic/162/Sanjay Subrahmanyan - Raagam Thaanam Pallavi.tempo-manual.txt",
       "9730fc542abf1642aa6b89b9b5d5e0f9"
@@ -4551,10 +4119,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/31/Sanjay Subrahmanyan - Innamum Oru thalam.bpm-manual.txt",
-      "97c0b1bf2eaf313aad2e304d2b19907a"
     ],
     "tempo": [
       "saraga1.0/carnatic/31/Sanjay Subrahmanyan - Innamum Oru thalam.tempo-manual.txt",
@@ -4594,10 +4158,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/165/Sanjay Subrahmanyan - Payum Oli Nee Yenakku.bpm-manual.txt",
-      "0777d485d28a62a87533495d4772e714"
-    ],
     "tempo": [
       "saraga1.0/carnatic/165/Sanjay Subrahmanyan - Payum Oli Nee Yenakku.tempo-manual.txt",
       "9b80d9cf93b88511bbf4674267f823e4"
@@ -4635,10 +4195,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/191/V. Shankaranarayanan - Dinamani Vamsa.pitch-vocal.txt",
       "77451add24f14b862c1ad6ec3ecdcdb0"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/191/V. Shankaranarayanan - Dinamani Vamsa.bpm-manual.txt",
-      "706f36c5aecbc799aa1ec748f6b60d8e"
     ],
     "tempo": [
       "saraga1.0/carnatic/191/V. Shankaranarayanan - Dinamani Vamsa.tempo-manual.txt",
@@ -4678,10 +4234,6 @@
       "saraga1.0/carnatic/131/Sumithra Vasudev - Sri Vidhya Rajagopala.pitch-vocal.txt",
       "9132f42d4aa2742c456ad2bcdd81b935"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/131/Sumithra Vasudev - Sri Vidhya Rajagopala.bpm-manual.txt",
-      "e926a379b16930a9c2215b48b418d176"
-    ],
     "tempo": [
       "saraga1.0/carnatic/131/Sumithra Vasudev - Sri Vidhya Rajagopala.tempo-manual.txt",
       "2d67a1501a1c49e385fad8526239ec1f"
@@ -4717,10 +4269,6 @@
       "14b4076fb55c26d7de22d753c2e61724"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -4762,10 +4310,6 @@
       "saraga1.0/carnatic/65/Rithvik Raja - Emani Migula.pitch-vocal.txt",
       "a9f3e57ff37e7174f8dbaa84dd1c43c1"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/65/Rithvik Raja - Emani Migula.bpm-manual.txt",
-      "3942fc38d0a5fc2ad914231752c53be4"
-    ],
     "tempo": [
       "saraga1.0/carnatic/65/Rithvik Raja - Emani Migula.tempo-manual.txt",
       "53a86299aebdd76ec85135b0efcc1c28"
@@ -4804,10 +4348,6 @@
       "saraga1.0/carnatic/136/Sumithra Vasudev - Mati Matiki.pitch-vocal.txt",
       "09a2423336238fa48a9c80316d8ca2dc"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/136/Sumithra Vasudev - Mati Matiki.bpm-manual.txt",
-      "97fc2a2617f2549e4cee853e4a910b84"
-    ],
     "tempo": [
       "saraga1.0/carnatic/136/Sumithra Vasudev - Mati Matiki.tempo-manual.txt",
       "353daa12fb92ad286de9f44215785d66"
@@ -4843,10 +4383,6 @@
       "2acf35cc705c2d6af8b2a0649bbd945b"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -4888,10 +4424,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -4927,10 +4459,6 @@
       "e40c9adfc17bcf6ec62c1c6631166428"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -4972,10 +4500,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -5011,10 +4535,6 @@
       "1951eee45bfd0929db3177a12afde11b"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -5056,10 +4576,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -5095,10 +4611,6 @@
       "28aa9c210c3cf7f65e0b85b83d60b661"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -5140,10 +4652,6 @@
       "saraga1.0/carnatic/138/Sumithra Vasudev - Va Va Brindavana.pitch-vocal.txt",
       "14693ad8c6fe3d05fd3a19f4e63508a3"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/138/Sumithra Vasudev - Va Va Brindavana.bpm-manual.txt",
-      "9e77c65e021204526b5ee2bac59c74f4"
-    ],
     "tempo": [
       "saraga1.0/carnatic/138/Sumithra Vasudev - Va Va Brindavana.tempo-manual.txt",
       "5e75f5df533cde3409b077cbacb52763"
@@ -5179,10 +4687,6 @@
       "eba89e940b1b1d917b2f1612bdbd5a0c"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -5224,10 +4728,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/30/Sanjay Subrahmanyan - Uppum karpuramum.bpm-manual.txt",
-      "16fe66b7c441074be2c24dfa66243bdc"
-    ],
     "tempo": [
       "saraga1.0/carnatic/30/Sanjay Subrahmanyan - Uppum karpuramum.tempo-manual.txt",
       "bf237482b5b72c091bee4ebaabe7f8ef"
@@ -5265,10 +4765,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/190/V. Shankaranarayanan - Ninne Bhajana.pitch-vocal.txt",
       "cec79dca64975a61548a4e0ce5497e9b"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/190/V. Shankaranarayanan - Ninne Bhajana.bpm-manual.txt",
-      "8009adf99fabed62f4234eaa3009a358"
     ],
     "tempo": [
       "saraga1.0/carnatic/190/V. Shankaranarayanan - Ninne Bhajana.tempo-manual.txt",
@@ -5308,10 +4804,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/164/Sanjay Subrahmanyan - Teerthakarayinile.bpm-manual.txt",
-      "6b998f565cfb0e90e7d4461e5d0af647"
-    ],
     "tempo": [
       "saraga1.0/carnatic/164/Sanjay Subrahmanyan - Teerthakarayinile.tempo-manual.txt",
       "826bda30f93d4823891d316bce0be433"
@@ -5349,10 +4841,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/37/Sanjay Subrahmanyan - Kalilo Hari Smrana.bpm-manual.txt",
-      "3050960b3e13df6ea57b6d7744d8e591"
     ],
     "tempo": [
       "saraga1.0/carnatic/37/Sanjay Subrahmanyan - Kalilo Hari Smrana.tempo-manual.txt",
@@ -5392,10 +4880,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/163/Sanjay Subrahmanyan - Maname Ramanai Paada.bpm-manual.txt",
-      "f33a62f5b9218963eabaed99d1ef40c7"
-    ],
     "tempo": [
       "saraga1.0/carnatic/163/Sanjay Subrahmanyan - Maname Ramanai Paada.tempo-manual.txt",
       "50fe23a7d69005bc8589a1192be0fe54"
@@ -5431,10 +4915,6 @@
       "1daf83cbd6fc1dd70f7a3f770e2ac498"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -5476,10 +4956,6 @@
       "saraga1.0/carnatic/39/KP Nandini - Nadatanum Anisham.pitch-vocal.txt",
       "de7cf17dde8ded7d791f2597eab98131"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/39/KP Nandini - Nadatanum Anisham.bpm-manual.txt",
-      "0ec554296872970cdc0cd6b966f4d49b"
-    ],
     "tempo": [
       "saraga1.0/carnatic/39/KP Nandini - Nadatanum Anisham.tempo-manual.txt",
       "a6cc76c2473de48d5800f01e8332b957"
@@ -5515,10 +4991,6 @@
       "8a6a92cf3ae6922eb8c36b2f4b6cfe2d"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -5560,10 +5032,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -5599,10 +5067,6 @@
       "fff767366bde8d4af2f03cd3567a82fe"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -5644,10 +5108,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/carnatic/52/S Sundar - Paahi Maam Sri.tempo-manual.txt",
       "f54c6e6b54de5e35f970c97b35b02df4"
@@ -5686,10 +5146,6 @@
       "saraga1.0/carnatic/139/Sumithra Vasudev - Mangalam Kosalendraya.pitch-vocal.txt",
       "7e7c17e18d07ee4747cf4a1e0b54de46"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/139/Sumithra Vasudev - Mangalam Kosalendraya.bpm-manual.txt",
-      "67536d1379d438030c608812780c2463"
-    ],
     "tempo": [
       "saraga1.0/carnatic/139/Sumithra Vasudev - Mangalam Kosalendraya.tempo-manual.txt",
       "826bda30f93d4823891d316bce0be433"
@@ -5725,10 +5181,6 @@
       "75aac2d962ddf2db7d64f4b2351640d0"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -5770,10 +5222,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/carnatic/55/S Sundar - Jaya Jaya Padmanabhanujese.tempo-manual.txt",
       "a65c2fff1065b780a5b24f1a85edd682"
@@ -5812,10 +5260,6 @@
       "saraga1.0/carnatic/137/Sumithra Vasudev - Aaniraimekkani.pitch-vocal.txt",
       "ee8e38a2ed85b5b88e1ca4cdafcd1940"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/137/Sumithra Vasudev - Aaniraimekkani.bpm-manual.txt",
-      "e930dd041ec3341677aebcd1299ceb33"
-    ],
     "tempo": [
       "saraga1.0/carnatic/137/Sumithra Vasudev - Aaniraimekkani.tempo-manual.txt",
       "826bda30f93d4823891d316bce0be433"
@@ -5851,10 +5295,6 @@
       "92a8225245a0920dfcfa1e13ae0b8ebd"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -5896,10 +5336,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -5937,10 +5373,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/63/Rithvik Raja - Chintayama Kanda.pitch-vocal.txt",
       "8b20656775aef48bf66f77e59b84379a"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/63/Rithvik Raja - Chintayama Kanda.bpm-manual.txt",
-      "6500c31f34a2b91af4737ce517719bfb"
     ],
     "tempo": [
       "saraga1.0/carnatic/63/Rithvik Raja - Chintayama Kanda.tempo-manual.txt",
@@ -5980,10 +5412,6 @@
       "saraga1.0/carnatic/130/Sumithra Vasudev - Vanajaksha Ninne Kori.pitch-vocal.txt",
       "7123b64fb7b9c28ec0b00c636c3db4a0"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/130/Sumithra Vasudev - Vanajaksha Ninne Kori.bpm-manual.txt",
-      "f89901f9733540352234e4720cd7647b"
-    ],
     "tempo": [
       "saraga1.0/carnatic/130/Sumithra Vasudev - Vanajaksha Ninne Kori.tempo-manual.txt",
       "b49f0ed22b19afa74b41d29154dd8851"
@@ -6021,10 +5449,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/64/Rithvik Raja - Seetapati Namanasuna.pitch-vocal.txt",
       "bbd5eb31061190912fc574e30e378528"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/64/Rithvik Raja - Seetapati Namanasuna.bpm-manual.txt",
-      "c9c55133be57c50109d4d8db326e02e9"
     ],
     "tempo": [
       "saraga1.0/carnatic/64/Rithvik Raja - Seetapati Namanasuna.tempo-manual.txt",
@@ -6064,10 +5488,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/90/Akkarai Sisters - Pavamana Suthudu Mangalam.bpm-manual.txt",
-      "313e58293ec17a3a66920a4ae4aacc76"
-    ],
     "tempo": [
       "saraga1.0/carnatic/90/Akkarai Sisters - Pavamana Suthudu Mangalam.tempo-manual.txt",
       "cb92be77a24a6839072213791ee99f89"
@@ -6106,10 +5526,6 @@
       "saraga1.0/carnatic/46/KP Nandini - Manasaramathi.pitch-vocal.txt",
       "a6fa4c89a1962e98fdabe0d05e29c578"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/46/KP Nandini - Manasaramathi.bpm-manual.txt",
-      "259dd11d6e5c2cc21db95b6e37a4e28f"
-    ],
     "tempo": [
       "saraga1.0/carnatic/46/KP Nandini - Manasaramathi.tempo-manual.txt",
       "349c94507d41ecf7a77ba804b140e122"
@@ -6145,10 +5561,6 @@
       "10c0a11ce66439609365d86a55c91309"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -6190,10 +5602,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -6232,10 +5640,6 @@
       "saraga1.0/carnatic/41/Rithvik Raja - Endaro Mahanubhavulu.pitch-vocal.txt",
       "9f2b93a498bdb9a3fbc01db705180316"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/41/Rithvik Raja - Endaro Mahanubhavulu.bpm-manual.txt",
-      "ed5dc46b55d3a0a6d9ba5344c00be6e7"
-    ],
     "tempo": [
       "saraga1.0/carnatic/41/Rithvik Raja - Endaro Mahanubhavulu.tempo-manual.txt",
       "9f1081d8495ca635e31dff40cf453cc6"
@@ -6271,10 +5675,6 @@
       "413b46b0847d2728e2553f498e68bbac"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -6316,10 +5716,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/83/Akkarai Sisters - Koti Janmani.bpm-manual.txt",
-      "0f018034ef43c3c0db0789139540da2b"
-    ],
     "tempo": [
       "saraga1.0/carnatic/83/Akkarai Sisters - Koti Janmani.tempo-manual.txt",
       "9a11c85d0021193dec13bc2ea58ba529"
@@ -6355,10 +5751,6 @@
       "77eb101405d2c8147f6877c0f2c68b63"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -6400,10 +5792,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -6441,10 +5829,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/48/KP Nandini - Janakipathe Jaya Karunya Jaladhe.pitch-vocal.txt",
       "33d4f50d1c54e57bc57782ebf1ab087f"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/48/KP Nandini - Janakipathe Jaya Karunya Jaladhe.bpm-manual.txt",
-      "fa7fd2eb4f27551cf07cff6fb96f8b3a"
     ],
     "tempo": [
       "saraga1.0/carnatic/48/KP Nandini - Janakipathe Jaya Karunya Jaladhe.tempo-manual.txt",
@@ -6484,10 +5868,6 @@
       "saraga1.0/carnatic/70/Rithvik Raja - Thillana Senchurutti.pitch-vocal.txt",
       "e10d08ab17cd02e3bfbdcfc270d30bc6"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/70/Rithvik Raja - Thillana Senchurutti.bpm-manual.txt",
-      "b2892f17bc738d336f602c6dd2c910bb"
-    ],
     "tempo": [
       "saraga1.0/carnatic/70/Rithvik Raja - Thillana Senchurutti.tempo-manual.txt",
       "381d55c0c98b74092e05b3fe41232096"
@@ -6526,10 +5906,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/84/Akkarai Sisters - Apparama Bhakti.bpm-manual.txt",
-      "6de66e569198e02599392e9d2ea5aa56"
-    ],
     "tempo": [
       "saraga1.0/carnatic/84/Akkarai Sisters - Apparama Bhakti.tempo-manual.txt",
       "629a4b4b93a5b0a8dd87ccc3bedbf050"
@@ -6565,10 +5941,6 @@
       "d5551bc4f40792b10eaf6fa8644b4e9a"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -6610,10 +5982,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/184/Vignesh Ishwar - Idhuthaano Thillai Sthalam.bpm-manual.txt",
-      "ac5d334fdcd75864fc986ed499d5457f"
-    ],
     "tempo": [
       "saraga1.0/carnatic/184/Vignesh Ishwar - Idhuthaano Thillai Sthalam.tempo-manual.txt",
       "e099ecfa5d463940584067136c189c6e"
@@ -6651,10 +6019,6 @@
     "pitch_vocal": [
       "saraga1.0/carnatic/170/Ashwath Narayanan - Samajavarada.pitch-vocal.txt",
       "4092b8e2ca494871f4db1567ef46e9aa"
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/170/Ashwath Narayanan - Samajavarada.bpm-manual.txt",
-      "b2df6a3029dd78b1715419df70fbba92"
     ],
     "tempo": [
       "saraga1.0/carnatic/170/Ashwath Narayanan - Samajavarada.tempo-manual.txt",
@@ -6694,10 +6058,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/24/Sanjay Subrahmanyan - Janani.bpm-manual.txt",
-      "78b3a63afb96cc11ed13d6a064fd8d47"
-    ],
     "tempo": [
       "saraga1.0/carnatic/24/Sanjay Subrahmanyan - Janani.tempo-manual.txt",
       "d7a67ed9a37a4eecb339444ee711c2e4"
@@ -6735,10 +6095,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/177/Vignesh Ishwar - Evvari Bodhana.bpm-manual.txt",
-      "3512a8efc0441c892a044b75cb286d0b"
     ],
     "tempo": [
       "saraga1.0/carnatic/177/Vignesh Ishwar - Evvari Bodhana.tempo-manual.txt",
@@ -6778,10 +6134,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/183/Vignesh Ishwar - Sanchara Dhadhara.bpm-manual.txt",
-      "bb836c7787c807cc1174b069841bcf24"
-    ],
     "tempo": [
       "saraga1.0/carnatic/183/Vignesh Ishwar - Sanchara Dhadhara.tempo-manual.txt",
       "fa593b25a1fd192ca4b0a6bbf31d8882"
@@ -6817,10 +6169,6 @@
       "65611e1fde8da9b849147a4e91e59a4b"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -6862,10 +6210,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/23/Sanjay Subrahmanyan - Nadopasana.bpm-manual.txt",
-      "97d9bbe2c0f3120d327fa19cceb659b5"
-    ],
     "tempo": [
       "saraga1.0/carnatic/23/Sanjay Subrahmanyan - Nadopasana.tempo-manual.txt",
       "9c1104868d6fc5bac352d52639bda3ed"
@@ -6901,10 +6245,6 @@
       "6530fe8b7a1348c16b97cf1d2accdd57"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -6946,10 +6286,6 @@
       "saraga1.0/carnatic/4/Cherthala Ranganatha Sharma - Tulasi Bilva.pitch-vocal.txt",
       "c18b07c028264d95363a5acf26cbb6dc"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/4/Cherthala Ranganatha Sharma - Tulasi Bilva.bpm-manual.txt",
-      "ccb1be4480e91db2e16e6cf16cf2bb15"
-    ],
     "tempo": [
       "saraga1.0/carnatic/4/Cherthala Ranganatha Sharma - Tulasi Bilva.tempo-manual.txt",
       "7e141f88e3991333c6f6302d4606d564"
@@ -6987,10 +6323,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/15/Sanjay Subrahmanyan - Paarengum.bpm-manual.txt",
-      "7d95a6cd5802193b4044cba83c376f18"
     ],
     "tempo": [
       "saraga1.0/carnatic/15/Sanjay Subrahmanyan - Paarengum.tempo-manual.txt",
@@ -7030,10 +6362,6 @@
       "saraga1.0/carnatic/3/Cherthala Ranganatha Sharma - Karuna Nidhi Illalo.pitch-vocal.txt",
       "532527402390d8676f3f69d4f0391c31"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/3/Cherthala Ranganatha Sharma - Karuna Nidhi Illalo.bpm-manual.txt",
-      "88173f1ac377470e2a5b3e5c4db015ef"
-    ],
     "tempo": [
       "saraga1.0/carnatic/3/Cherthala Ranganatha Sharma - Karuna Nidhi Illalo.tempo-manual.txt",
       "2d404a120cd6dae4714972f90402962c"
@@ -7069,10 +6397,6 @@
       "9abc7eefb572224d37967f0b0beda06a"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -7114,10 +6438,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/12/Sanjay Subrahmanyan - Aru marundu.bpm-manual.txt",
-      "7e63c7d6b86085d1e78f7be330d9e01d"
-    ],
     "tempo": [
       "saraga1.0/carnatic/12/Sanjay Subrahmanyan - Aru marundu.tempo-manual.txt",
       "ce59e50ceb0652c08448b39fa68ef039"
@@ -7155,10 +6475,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/179/Vignesh Ishwar - Lokavana Chatura.bpm-manual.txt",
-      "db30361b6c95e532a76d3dbc936176e6"
     ],
     "tempo": [
       "saraga1.0/carnatic/179/Vignesh Ishwar - Lokavana Chatura.tempo-manual.txt",
@@ -7198,10 +6514,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/85/Akkarai Sisters - Brova Barama.bpm-manual.txt",
-      "dee074841fec0de4ee72b7ca76deee52"
-    ],
     "tempo": [
       "saraga1.0/carnatic/85/Akkarai Sisters - Brova Barama.tempo-manual.txt",
       "363141d18fff89dde2d4344b8a239e25"
@@ -7240,10 +6552,6 @@
       "saraga1.0/carnatic/71/Rithvik Raja - Ramachandraya Mangalam.pitch-vocal.txt",
       "424c5d79b8e3d9e434c084289b7feee6"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/71/Rithvik Raja - Ramachandraya Mangalam.bpm-manual.txt",
-      "f4daad44e32cb5822de64cc29e9c4a6e"
-    ],
     "tempo": [
       "saraga1.0/carnatic/71/Rithvik Raja - Ramachandraya Mangalam.tempo-manual.txt",
       "2e8c5ae5b679d2b1fe69c9f1f166461e"
@@ -7279,10 +6587,6 @@
       "f6eab1de6baf2d8793968006b614120d"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -7324,10 +6628,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -7365,10 +6665,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/82/Akkarai Sisters - Siddhi Vinayakam.bpm-manual.txt",
-      "c13822444f023bd22f901add7b39881b"
     ],
     "tempo": [
       "saraga1.0/carnatic/82/Akkarai Sisters - Siddhi Vinayakam.tempo-manual.txt",
@@ -7408,10 +6704,6 @@
       "saraga1.0/carnatic/49/KP Nandini - Eppadi Padinaro.pitch-vocal.txt",
       "33e75a83b85f30c04201b20ce9dcc8b9"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/49/KP Nandini - Eppadi Padinaro.bpm-manual.txt",
-      "6a5aa85c6d9d064a60d6ec89addc92c8"
-    ],
     "tempo": [
       "saraga1.0/carnatic/49/KP Nandini - Eppadi Padinaro.tempo-manual.txt",
       "0db946d1dbf6f6f78e33a6619b240cf9"
@@ -7447,10 +6739,6 @@
       "01afa36b00a36e5f947749e75e3ee216"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -7492,10 +6780,6 @@
       "saraga1.0/carnatic/40/Rithvik Raja - Karunimpa Idi.pitch-vocal.txt",
       "46a7b3dd6849ea547bba3483c25a7ff4"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/40/Rithvik Raja - Karunimpa Idi.bpm-manual.txt",
-      "7ed7d22ffd637a87d19b349fca000549"
-    ],
     "tempo": [
       "saraga1.0/carnatic/40/Rithvik Raja - Karunimpa Idi.tempo-manual.txt",
       "55644922b4ef844440109556bdefe4af"
@@ -7531,10 +6815,6 @@
       "02a458e2d46a9cc95d6710838e8b60f3"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -7576,10 +6856,6 @@
       "saraga1.0/carnatic/47/KP Nandini - Seethamma.pitch-vocal.txt",
       "c9c80037739faaadd81a07e7167dd1a5"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/47/KP Nandini - Seethamma.bpm-manual.txt",
-      "cf42085e832c0e65a5a146b591bb4707"
-    ],
     "tempo": [
       "saraga1.0/carnatic/47/KP Nandini - Seethamma.tempo-manual.txt",
       "2025b80d538874aea3878360da628cc8"
@@ -7615,10 +6891,6 @@
       "29b297d60e598e0e230208edd9cc1a01"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -7660,10 +6932,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -7699,10 +6967,6 @@
       "ffa8b38ee81da37e9eaff066632ab8c2"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -7744,10 +7008,6 @@
       "saraga1.0/carnatic/2/Cherthala Ranganatha Sharma - Velum Mayilume.pitch-vocal.txt",
       "cd198a221eb3d508806d2ae6662ceba7"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/2/Cherthala Ranganatha Sharma - Velum Mayilume.bpm-manual.txt",
-      "557c7bb03432966e87c54fcf58120f60"
-    ],
     "tempo": [
       "saraga1.0/carnatic/2/Cherthala Ranganatha Sharma - Velum Mayilume.tempo-manual.txt",
       "9f38c5917f50566a42dd1ac5fdb53d3a"
@@ -7785,10 +7045,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/178/Vignesh Ishwar - Karuna Ela Gante.bpm-manual.txt",
-      "f6321a93c6200f302bf99f74aeeee8d9"
     ],
     "tempo": [
       "saraga1.0/carnatic/178/Vignesh Ishwar - Karuna Ela Gante.tempo-manual.txt",
@@ -7828,10 +7084,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/13/Sanjay Subrahmanyan - Sri Raghuvara Sugunaalaya.bpm-manual.txt",
-      "a5a413e3e22a5c8474332c215423532c"
-    ],
     "tempo": [
       "saraga1.0/carnatic/13/Sanjay Subrahmanyan - Sri Raghuvara Sugunaalaya.tempo-manual.txt",
       "a45b3f83d42f584810534d34dfc219e2"
@@ -7870,10 +7122,6 @@
       "saraga1.0/carnatic/5/Cherthala Ranganatha Sharma - Rama Rama Guna Seema.pitch-vocal.txt",
       "f557b76f4906687ba2445a39c3476f4b"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/5/Cherthala Ranganatha Sharma - Rama Rama Guna Seema.bpm-manual.txt",
-      "e445eacab10d188cd484d365a164c5de"
-    ],
     "tempo": [
       "saraga1.0/carnatic/5/Cherthala Ranganatha Sharma - Rama Rama Guna Seema.tempo-manual.txt",
       "2d1ef7bf2678141e142c26c1dce80ddc"
@@ -7909,10 +7157,6 @@
       "9bc7b249b85a37103873ad6d8eac34ae"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -7954,10 +7198,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/14/Sanjay Subrahmanyan - Sarasadalanayana.bpm-manual.txt",
-      "b1ee5422f69adc337860522f9efba926"
-    ],
     "tempo": [
       "saraga1.0/carnatic/14/Sanjay Subrahmanyan - Sarasadalanayana.tempo-manual.txt",
       "7f45fec12f97800d60294deccf984abf"
@@ -7995,10 +7235,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/182/Vignesh Ishwar - Amba Kamakshi.bpm-manual.txt",
-      "0c051375a5cc99516c1c6a915747453d"
     ],
     "tempo": [
       "saraga1.0/carnatic/182/Vignesh Ishwar - Amba Kamakshi.tempo-manual.txt",
@@ -8038,10 +7274,6 @@
       "saraga1.0/carnatic/176/Ashwath Narayanan - Thillana Purnachandrika.pitch-vocal.txt",
       "ac5f065edd3edb341b06efdfae435171"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/176/Ashwath Narayanan - Thillana Purnachandrika.bpm-manual.txt",
-      "b1ecd3cf9ec408a561b11d8cb23a9b21"
-    ],
     "tempo": [
       "saraga1.0/carnatic/176/Ashwath Narayanan - Thillana Purnachandrika.tempo-manual.txt",
       "1ebae01b8b534a05547a1a7ded7aef2b"
@@ -8080,10 +7312,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/22/Sanjay Subrahmanyan - Sama geeta priyan.bpm-manual.txt",
-      "ca1dda439f3347a1676499b3b38a2df0"
-    ],
     "tempo": [
       "saraga1.0/carnatic/22/Sanjay Subrahmanyan - Sama geeta priyan.tempo-manual.txt",
       "210966a355bb8ad29a7d55eaf74585c3"
@@ -8119,10 +7347,6 @@
       "3d76366cb2fdd7a1c62a1c7665b947b5"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -8164,10 +7388,6 @@
       "saraga1.0/carnatic/171/Ashwath Narayanan - Aparadhamula.pitch-vocal.txt",
       "cb1c7fcedfdd032145b164491f33cf33"
     ],
-    "bpm": [
-      "saraga1.0/carnatic/171/Ashwath Narayanan - Aparadhamula.bpm-manual.txt",
-      "b6a8a355840a4bb556354c1709e5b8e8"
-    ],
     "tempo": [
       "saraga1.0/carnatic/171/Ashwath Narayanan - Aparadhamula.tempo-manual.txt",
       "15d25093f989b68992fc9393b59e1da6"
@@ -8205,10 +7425,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/carnatic/185/Vignesh Ishwar - Vitthala Salaho Swamy.bpm-manual.txt",
-      "4bd0ddae50eaf6d2e03ec0453fa8ed80"
     ],
     "tempo": [
       "saraga1.0/carnatic/185/Vignesh Ishwar - Vitthala Salaho Swamy.tempo-manual.txt",
@@ -8248,10 +7464,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/carnatic/25/Sanjay Subrahmanyan - Deenarakshaka.bpm-manual.txt",
-      "ac380c40758d558b67e2feeb010470cb"
-    ],
     "tempo": [
       "saraga1.0/carnatic/25/Sanjay Subrahmanyan - Deenarakshaka.tempo-manual.txt",
       "d2bfe3965c67db621418487e3cc6f4ad"
@@ -8287,10 +7499,6 @@
       "0269d664c52d86fefa523a29056155c8"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -8332,10 +7540,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -8371,10 +7575,6 @@
       "521dce1255151539bea9a49eff5ac85d"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -8416,10 +7616,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -8455,10 +7651,6 @@
       "c844edb8b4b0f508592912190dfc7b79"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -8500,10 +7692,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/hindustani/104/Sameehan Kashalkar - Raag Kedar.tempo-manual.txt",
       "e43e388060753fe676f395d2d14fe894"
@@ -8542,10 +7730,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/50/Ajoy Chakrabarty - Raga Shree - Khayal.bpm-manual.txt",
-      "29fd003c66f677feba86a003093498a9"
-    ],
     "tempo": [
       "saraga1.0/hindustani/50/Ajoy Chakrabarty - Raga Shree - Khayal.tempo-manual.txt",
       "fa19d14b2449d5896750472da99c6879"
@@ -8581,10 +7765,6 @@
       "1909b13c78024d69c23e3bffbdec0c4c"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -8626,10 +7806,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/hindustani/103/Sameehan Kashalkar - Raag Paraj.tempo-manual.txt",
       "29645e4ae6ba9e3283676997e64ce543"
@@ -8665,10 +7841,6 @@
       "2d33ff29ba9622c9e845e29d72158322"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -8710,10 +7882,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/32/Kaustuv Kanti Ganguli - Bhairavi Thumri.bpm-manual.txt",
-      "f190bdea97a76c024d86302cf6e75058"
-    ],
     "tempo": [
       "saraga1.0/hindustani/32/Kaustuv Kanti Ganguli - Bhairavi Thumri.tempo-manual.txt",
       "48fce29e07030923431813ca02171131"
@@ -8752,10 +7920,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/35/Satyasheel Deshpande - Majh Khamaj Thumri.bpm-manual.txt",
-      "4cfa13bce5e0832ed8b43e4c990b4928"
-    ],
     "tempo": [
       "saraga1.0/hindustani/35/Satyasheel Deshpande - Majh Khamaj Thumri.tempo-manual.txt",
       "50521db86e34061bfe533c16271aad92"
@@ -8791,10 +7955,6 @@
       "1d25fa51317493583f58e02ff6ef4e0c"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -8836,10 +7996,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -8875,10 +8031,6 @@
       "6abc92091d5a2043c416ae3a4c201be3"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -8920,10 +8072,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       "saraga1.0/hindustani/105/Sameehan Kashalkar - Raag Sohani.tempo-manual.txt",
       "10b410b6e92a263413f3dc7f5a5c75aa"
@@ -8962,10 +8110,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/51/Ajoy Chakrabarty - Thumri in Piloo.bpm-manual.txt",
-      "8417ad1ada271b636e73f344aa128f14"
-    ],
     "tempo": [
       "saraga1.0/hindustani/51/Ajoy Chakrabarty - Thumri in Piloo.tempo-manual.txt",
       "a59e08196c17882fb7678cf5e120972b"
@@ -9001,10 +8145,6 @@
       "71f208ba895c9ee6fac56c2dff10c263"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -9046,10 +8186,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -9085,10 +8221,6 @@
       "0f69dde7d22c491058639c17d07eb401"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -9130,10 +8262,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -9169,10 +8297,6 @@
       "815ef4bccec2922cd621a0e53d1db25b"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -9214,10 +8338,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/34/Satyasheel Deshpande - Raag Chandrakauns.bpm-manual.txt",
-      "e5e06140ef18a29aaa31dedbc83285f7"
-    ],
     "tempo": [
       "saraga1.0/hindustani/34/Satyasheel Deshpande - Raag Chandrakauns.tempo-manual.txt",
       "fc4744582c7ae665a4ea795495ddb47c"
@@ -9255,10 +8375,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/33/Satyasheel Deshpande - Raag Malkauns.bpm-manual.txt",
-      "c2eb301c454ff4507de2c0334ba26a02"
     ],
     "tempo": [
       "saraga1.0/hindustani/33/Satyasheel Deshpande - Raag Malkauns.tempo-manual.txt",
@@ -9298,10 +8414,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/20/Omkar Dadarkar - Raag Multani.bpm-manual.txt",
-      "f8aebde3b7fa799e186a3b23c1a3f028"
-    ],
     "tempo": [
       "saraga1.0/hindustani/20/Omkar Dadarkar - Raag Multani.tempo-manual.txt",
       "6fa1952fda43d9226e991cfd6e8ab243"
@@ -9339,10 +8451,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/18/Omkar Dadarkar - Raag Gavti.bpm-manual.txt",
-      "cfdc53de6fc5f2359a53e0f1c4c68905"
     ],
     "tempo": [
       "saraga1.0/hindustani/18/Omkar Dadarkar - Raag Gavti.tempo-manual.txt",
@@ -9382,10 +8490,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/27/Omkar Dadarkar - Raag Bahar.bpm-manual.txt",
-      "dd16e8c9d0bddabcc977aaa81bf908f6"
-    ],
     "tempo": [
       "saraga1.0/hindustani/27/Omkar Dadarkar - Raag Bahar.tempo-manual.txt",
       "23ad038bc2f8aa48030b3de50f0f9e46"
@@ -9423,10 +8527,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/9/Ajoy Chakrabarty - Multani.bpm-manual.txt",
-      "ce36f00f8182ac50896b3a8e7100485e"
     ],
     "tempo": [
       "saraga1.0/hindustani/9/Ajoy Chakrabarty - Multani.tempo-manual.txt",
@@ -9466,10 +8566,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/0/Ajoy Chakrabarty - Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty.bpm-manual.txt",
-      "4299d9cbde0b879108b583937834352c"
-    ],
     "tempo": [
       "saraga1.0/hindustani/0/Ajoy Chakrabarty - Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty.tempo-manual.txt",
       "46263f31a1e93de9f3f9ad3faa70ec6f"
@@ -9507,10 +8603,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/11/Ajoy Chakrabarty - Maru Bihag.bpm-manual.txt",
-      "3bd944b76ddcfcf576fe3870104cba97"
     ],
     "tempo": [
       "saraga1.0/hindustani/11/Ajoy Chakrabarty - Maru Bihag.tempo-manual.txt",
@@ -9550,10 +8642,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/7/Ajoy Chakrabarty - Taal and Sur of Thekas.bpm-manual.txt",
-      "21f576b8ebcf965601c983f917fc57c9"
-    ],
     "tempo": [
       "saraga1.0/hindustani/7/Ajoy Chakrabarty - Taal and Sur of Thekas.tempo-manual.txt",
       "eb4194ddb7b3b8e60b295363a1873812"
@@ -9591,10 +8679,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/29/Omkar Dadarkar - Raag Yaman.bpm-manual.txt",
-      "21e5b43ed13f571262a039efa0a96d91"
     ],
     "tempo": [
       "saraga1.0/hindustani/29/Omkar Dadarkar - Raag Yaman.tempo-manual.txt",
@@ -9634,10 +8718,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/16/Omkar Dadarkar - Bhairavi Dadra.bpm-manual.txt",
-      "6a53adb1e72443b28ad48e13cf566445"
-    ],
     "tempo": [
       "saraga1.0/hindustani/16/Omkar Dadarkar - Bhairavi Dadra.tempo-manual.txt",
       "af1913335f4804a1302127551ac42c8e"
@@ -9676,10 +8756,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/42/Satyasheel Deshpande - Bhairavi Bhajan.bpm-manual.txt",
-      "0a777f5d9e998710a31c57288b5c0c40"
-    ],
     "tempo": [
       "saraga1.0/hindustani/42/Satyasheel Deshpande - Bhairavi Bhajan.tempo-manual.txt",
       "1f85b62b800965b945f804b492ed7b2d"
@@ -9715,10 +8791,6 @@
       "e9ee43d48bf583dd3515b769172cf0ec"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -9760,10 +8832,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/45/Satyasheel Deshpande - Raag Mian Malhar.bpm-manual.txt",
-      "1bb18fa7671c94734447c93403425848"
-    ],
     "tempo": [
       "saraga1.0/hindustani/45/Satyasheel Deshpande - Raag Mian Malhar.tempo-manual.txt",
       "82c9e82c0d3051ed636e787d73081582"
@@ -9802,10 +8870,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/73/Sameehan Kashalkar - Raag Marwa.bpm-manual.txt",
-      "129b4ba512b20888f61f01f88fb761c0"
-    ],
     "tempo": [
       "saraga1.0/hindustani/73/Sameehan Kashalkar - Raag Marwa.tempo-manual.txt",
       "0e5f609e871b01d3afc82d7b4ed997f6"
@@ -9841,10 +8905,6 @@
       "26b8d030a26ea6a9630f5c64f5ac7a96"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -9886,10 +8946,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -9927,10 +8983,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/74/Sameehan Kashalkar - Raag Hameer.bpm-manual.txt",
-      "9914a069c815251990fcbdddb196407d"
     ],
     "tempo": [
       "saraga1.0/hindustani/74/Sameehan Kashalkar - Raag Hameer.tempo-manual.txt",
@@ -9970,10 +9022,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/6/Ajoy Chakrabarty - Lyrics of all the Bandishes.bpm-manual.txt",
-      "463237e30afc569e8c6b341924cf192e"
-    ],
     "tempo": [
       "saraga1.0/hindustani/6/Ajoy Chakrabarty - Lyrics of all the Bandishes.tempo-manual.txt",
       "c9ebeb31faa0d302df1b5c285f6abade"
@@ -10011,10 +9059,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/28/Omkar Dadarkar - Raag Gaud Malhar.bpm-manual.txt",
-      "4c4321ddeb6325d7e9cf1827eaca185c"
     ],
     "tempo": [
       "saraga1.0/hindustani/28/Omkar Dadarkar - Raag Gaud Malhar.tempo-manual.txt",
@@ -10054,10 +9098,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/17/Omkar Dadarkar - Raag Bhoopali.bpm-manual.txt",
-      "58c4f2a9435b9af6eddd06c9de1d1e92"
-    ],
     "tempo": [
       "saraga1.0/hindustani/17/Omkar Dadarkar - Raag Bhoopali.tempo-manual.txt",
       "0ac5282e21b26ac3a274d842cf6da3cd"
@@ -10095,10 +9135,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/1/Ajoy Chakrabarty - Bairagi.bpm-manual.txt",
-      "fdd1637f911b3702af40d1aab8c463ad"
     ],
     "tempo": [
       "saraga1.0/hindustani/1/Ajoy Chakrabarty - Bairagi.tempo-manual.txt",
@@ -10138,10 +9174,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/10/Ajoy Chakrabarty - Sudh Kalyan.bpm-manual.txt",
-      "aa5c000001b6219577b902f44d63ce12"
-    ],
     "tempo": [
       "saraga1.0/hindustani/10/Ajoy Chakrabarty - Sudh Kalyan.tempo-manual.txt",
       "a87eab207ff34ab7b22c91a9b722cd14"
@@ -10179,10 +9211,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/19/Omkar Dadarkar - Raag Bhimpalasi.bpm-manual.txt",
-      "cd86448b1d61a0c4489885f8939c1b7f"
     ],
     "tempo": [
       "saraga1.0/hindustani/19/Omkar Dadarkar - Raag Bhimpalasi.tempo-manual.txt",
@@ -10222,10 +9250,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/26/Omkar Dadarkar - Raag Todi.bpm-manual.txt",
-      "f1c917e6e265ef925d3edee7e4e42173"
-    ],
     "tempo": [
       "saraga1.0/hindustani/26/Omkar Dadarkar - Raag Todi.tempo-manual.txt",
       "b0b51162df538d9c8b5186644796a145"
@@ -10263,10 +9287,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/8/Ajoy Chakrabarty - Sudh Sarang.bpm-manual.txt",
-      "7ecc88f6390aff04f11dc1f44761fc27"
     ],
     "tempo": [
       "saraga1.0/hindustani/8/Ajoy Chakrabarty - Sudh Sarang.tempo-manual.txt",
@@ -10306,10 +9326,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/21/Omkar Dadarkar - Raag Lalit.bpm-manual.txt",
-      "da608839fbb67d237f89d649c3897294"
-    ],
     "tempo": [
       "saraga1.0/hindustani/21/Omkar Dadarkar - Raag Lalit.tempo-manual.txt",
       "76847e201aa8c37e02c85bc543129bb9"
@@ -10348,10 +9364,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/75/Anol Chatterjee - Raag Abhogi.bpm-manual.txt",
-      "2b0913cd74ce401113665f0de43a9c5d"
-    ],
     "tempo": [
       "saraga1.0/hindustani/75/Anol Chatterjee - Raag Abhogi.tempo-manual.txt",
       "64e7f47ab0c146b1ea7d192293f4db08"
@@ -10387,10 +9399,6 @@
       "9b93fa32f37c2fa5af0913eff532a5d6"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -10432,10 +9440,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/86/Brajeshwar Mukherjee - Irani Bhairavi Thumri.bpm-manual.txt",
-      "7d80135cbfb3cf352c49d58dd6062491"
-    ],
     "tempo": [
       "saraga1.0/hindustani/86/Brajeshwar Mukherjee - Irani Bhairavi Thumri.tempo-manual.txt",
       "a99a247cc9d90adb4c87e81906775f3f"
@@ -10473,10 +9477,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/72/Brajeshwar Mukherjee - Raag Hameer.bpm-manual.txt",
-      "59f69a569f9d18b85065d465f40298a0"
     ],
     "tempo": [
       "saraga1.0/hindustani/72/Brajeshwar Mukherjee - Raag Hameer.tempo-manual.txt",
@@ -10516,10 +9516,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/44/Kumar Gandharva - Raag Dhani.bpm-manual.txt",
-      "513500708f2965dfbdd5b698d349e677"
-    ],
     "tempo": [
       "saraga1.0/hindustani/44/Kumar Gandharva - Raag Dhani.tempo-manual.txt",
       "461430bc5e0fc402068552debf9b3339"
@@ -10558,10 +9554,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/43/Kumar Gandharva - Raag Bhairav.bpm-manual.txt",
-      "5e54bc16839ff382522ed318313d7be8"
-    ],
     "tempo": [
       "saraga1.0/hindustani/43/Kumar Gandharva - Raag Bhairav.tempo-manual.txt",
       "afdc2055bceddd0f0a0a8f51c7ee5154"
@@ -10597,10 +9589,6 @@
       "9c6201d2165c95a42039c44c39e1daa3"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -10642,10 +9630,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/38/Satyasheel Deshpande - Raag Dhani.bpm-manual.txt",
-      "962fc03d95abbd05301699056fa42360"
-    ],
     "tempo": [
       "saraga1.0/hindustani/38/Satyasheel Deshpande - Raag Dhani.tempo-manual.txt",
       "b7437aa69a6156241ccc9414264c046a"
@@ -10683,10 +9667,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/36/Satyasheel Deshpande - Raag Kalyan.bpm-manual.txt",
-      "142747198343f41c549de2910ba6cf6a"
     ],
     "tempo": [
       "saraga1.0/hindustani/36/Satyasheel Deshpande - Raag Kalyan.tempo-manual.txt",
@@ -10726,10 +9706,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/31/Kaustuv Kanti Ganguli - Raag Bhatiyar.bpm-manual.txt",
-      "b0b592d15e68eb135740aa0dc53522bc"
-    ],
     "tempo": [
       "saraga1.0/hindustani/31/Kaustuv Kanti Ganguli - Raag Bhatiyar.tempo-manual.txt",
       "77629efabd41aad5908a649595df0399"
@@ -10765,10 +9741,6 @@
       "7b29b6647df115b41fc0526d07d5dbb7"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -10810,10 +9782,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -10849,10 +9817,6 @@
       "13c29e41e0a76601d6e25d5343848441"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -10894,10 +9858,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -10933,10 +9893,6 @@
       "d328010510b8e7d9daa29e8f45b2b40a"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -10978,10 +9934,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/54/Deborshee Bhattacharya - Raag Shree.bpm-manual.txt",
-      "9042f7360d891af97f4757c8e1433f95"
-    ],
     "tempo": [
       "saraga1.0/hindustani/54/Deborshee Bhattacharya - Raag Shree.tempo-manual.txt",
       "2508ac1405d5f3f32f65ae8d9c25a3c2"
@@ -11020,10 +9972,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/107/Brajeshwar Mukherjee - Raag Bhimpalasi.bpm-manual.txt",
-      "0ecd518c01aa911909c70bd8bc0d2722"
-    ],
     "tempo": [
       "saraga1.0/hindustani/107/Brajeshwar Mukherjee - Raag Bhimpalasi.tempo-manual.txt",
       "cb29d2d39de4a9d47b6acf8319d4663b"
@@ -11059,10 +10007,6 @@
       "cfc1e0b8cb71dbdb53603677d4c000c9"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -11104,10 +10048,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/53/Deborshee Bhattacharya - Raag Ramdasi Malhar.bpm-manual.txt",
-      "dea22b4a3c693af314c7ec241fcce762"
-    ],
     "tempo": [
       "saraga1.0/hindustani/53/Deborshee Bhattacharya - Raag Ramdasi Malhar.tempo-manual.txt",
       "b54cddd25778bd6449ad4c390d12122a"
@@ -11143,10 +10083,6 @@
       "c7edd9de3324e99a9ef620b32b102adf"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -11188,10 +10124,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/37/Satyasheel Deshpande - Raag Bhimpalasi.bpm-manual.txt",
-      "384a09fabd4a92a4af25ed7fc498f927"
-    ],
     "tempo": [
       "saraga1.0/hindustani/37/Satyasheel Deshpande - Raag Bhimpalasi.tempo-manual.txt",
       "7f959ec8b3bb32b07bf01ac65fbb3a24"
@@ -11229,10 +10161,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/39/Kumar Gandharva - Raag Lagan Gandhar.bpm-manual.txt",
-      "30d9f172366510209fdd8594c6b067ce"
     ],
     "tempo": [
       "saraga1.0/hindustani/39/Kumar Gandharva - Raag Lagan Gandhar.tempo-manual.txt",
@@ -11272,10 +10200,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/106/Brajeshwar Mukherjee - Raag Puriya.bpm-manual.txt",
-      "ebe20e02c27ab6b859dffdc73b16a5ef"
-    ],
     "tempo": [
       "saraga1.0/hindustani/106/Brajeshwar Mukherjee - Raag Puriya.tempo-manual.txt",
       "6afaf4ac0b3eae0d6a76a298cbeae174"
@@ -11311,10 +10235,6 @@
       "6e7f03e5d0559cb975fe7fa3aacaae83"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -11356,10 +10276,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/52/Deborshee Bhattacharya - Raag Mian Malhar.bpm-manual.txt",
-      "dcc0f3c7d00eebf5bbd8c44300f4d62b"
-    ],
     "tempo": [
       "saraga1.0/hindustani/52/Deborshee Bhattacharya - Raag Mian Malhar.tempo-manual.txt",
       "f5ad3623fe12e30318a003acd0119f66"
@@ -11395,10 +10311,6 @@
       "fa497a37a12a1e500f246879a79bd440"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -11440,10 +10352,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/55/Deborshee Bhattacharya - Raag Bihag.bpm-manual.txt",
-      "2d25cb3ac5313e4fc6c4dfc8630cf9f7"
-    ],
     "tempo": [
       "saraga1.0/hindustani/55/Deborshee Bhattacharya - Raag Bihag.tempo-manual.txt",
       "e2f2c25af84535d4d3a521e305fb0b98"
@@ -11479,10 +10387,6 @@
       "0c623bac13f26e4b98285fddbd028f20"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -11524,10 +10428,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -11563,10 +10463,6 @@
       "3b90b53da7ef25db81e339e72178f60a"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -11608,10 +10504,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -11650,10 +10542,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/46/Satyasheel Deshpande - Raag Ramdasi Malhar.bpm-manual.txt",
-      "10d7ea859bd04d721c5e331928c43ea2"
-    ],
     "tempo": [
       "saraga1.0/hindustani/46/Satyasheel Deshpande - Raag Ramdasi Malhar.tempo-manual.txt",
       "9cc8325322a7a7e0897ce79626fc7b15"
@@ -11689,10 +10577,6 @@
       "381a5a81f3fce4e1c59af370f9b6dadd"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -11734,10 +10618,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/41/Satyasheel Deshpande - Raag Bageshree.bpm-manual.txt",
-      "6a48a29b258a26abf5cf98596b46ee51"
-    ],
     "tempo": [
       "saraga1.0/hindustani/41/Satyasheel Deshpande - Raag Bageshree.tempo-manual.txt",
       "a6fe4bb7cabb1ec2b02a899cabb825c9"
@@ -11773,10 +10653,6 @@
       "f38cd0a5e135b359d45619f7e1129092"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -11818,10 +10694,6 @@
       null,
       null
     ],
-    "bpm": [
-      null,
-      null
-    ],
     "tempo": [
       null,
       null
@@ -11859,10 +10731,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/48/Ajoy Chakrabarty - Introductory speech by Ajoy Chakrabarty.bpm-manual.txt",
-      "b3a72b38c67cf5506ad1403ef6e75d7f"
     ],
     "tempo": [
       "saraga1.0/hindustani/48/Ajoy Chakrabarty - Introductory speech by Ajoy Chakrabarty.tempo-manual.txt",
@@ -11902,10 +10770,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/70/Kaustuv Kanti Ganguli - Raag Shree.bpm-manual.txt",
-      "d96c8c8f43aa72d12e2276a98919c25f"
-    ],
     "tempo": [
       "saraga1.0/hindustani/70/Kaustuv Kanti Ganguli - Raag Shree.tempo-manual.txt",
       "302692557db40764e4430b3306806839"
@@ -11943,10 +10807,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/84/Brajeshwar Mukherjee - Raag Bairagi.bpm-manual.txt",
-      "697ad330bb9042d1372e99785ecd23c2"
     ],
     "tempo": [
       "saraga1.0/hindustani/84/Brajeshwar Mukherjee - Raag Bairagi.tempo-manual.txt",
@@ -11986,10 +10846,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/24/Omkar Dadarkar - Raag Shree.bpm-manual.txt",
-      "1f6d3c08d0c5a0e2b911d40742df582f"
-    ],
     "tempo": [
       "saraga1.0/hindustani/24/Omkar Dadarkar - Raag Shree.tempo-manual.txt",
       "ae1b5eff74e50fe7868d78433536988e"
@@ -12027,10 +10883,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/23/Omkar Dadarkar - Raag Marwa.bpm-manual.txt",
-      "c80e64cba11814236f4d045f2408436e"
     ],
     "tempo": [
       "saraga1.0/hindustani/23/Omkar Dadarkar - Raag Marwa.tempo-manual.txt",
@@ -12070,10 +10922,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/4/Ajoy Chakrabarty - Aahir Bhairon.bpm-manual.txt",
-      "9866947482214559e242fdca2a3e926c"
-    ],
     "tempo": [
       "saraga1.0/hindustani/4/Ajoy Chakrabarty - Aahir Bhairon.tempo-manual.txt",
       "0cb40c3caae442072559f14483dc8007"
@@ -12111,10 +10959,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/15/Omkar Dadarkar - Raag Bihag.bpm-manual.txt",
-      "9be41404b476f002e7f53636e5d9a154"
     ],
     "tempo": [
       "saraga1.0/hindustani/15/Omkar Dadarkar - Raag Bihag.tempo-manual.txt",
@@ -12154,10 +10998,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/3/Ajoy Chakrabarty - Nat Bhairon.bpm-manual.txt",
-      "8c8732ce657db3b0d91360bdf795604c"
-    ],
     "tempo": [
       "saraga1.0/hindustani/3/Ajoy Chakrabarty - Nat Bhairon.tempo-manual.txt",
       "d0d1892d097c6c78565d8560fd7e67b6"
@@ -12195,10 +11035,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/12/Ajoy Chakrabarty - Kalavati.bpm-manual.txt",
-      "0c797d3c89b4cc9ef7bffcdc8968eb52"
     ],
     "tempo": [
       "saraga1.0/hindustani/12/Ajoy Chakrabarty - Kalavati.tempo-manual.txt",
@@ -12238,10 +11074,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/85/Brajeshwar Mukherjee - Raag Saraswati.bpm-manual.txt",
-      "a356145b242d678a429ab72ce6dd8f1a"
-    ],
     "tempo": [
       "saraga1.0/hindustani/85/Brajeshwar Mukherjee - Raag Saraswati.tempo-manual.txt",
       "dba2ab2b439fceec0471aa697412bca7"
@@ -12279,10 +11111,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/71/Brajeshwar Mukherjee - Raag Jog.bpm-manual.txt",
-      "3e8c00be364254c8cababbb6dd6fc81b"
     ],
     "tempo": [
       "saraga1.0/hindustani/71/Brajeshwar Mukherjee - Raag Jog.tempo-manual.txt",
@@ -12322,10 +11150,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/76/Anol Chatterjee - Raag Megh.bpm-manual.txt",
-      "6cf8b46e603428706123a76cbc128761"
-    ],
     "tempo": [
       "saraga1.0/hindustani/76/Anol Chatterjee - Raag Megh.tempo-manual.txt",
       "b105836b437062ddcc7e38ecdc44e585"
@@ -12361,10 +11185,6 @@
       "053a0d5d141e336c81b4e790af56461e"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -12406,10 +11226,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/49/Ajoy Chakrabarty - Raga Lalit - Khayal.bpm-manual.txt",
-      "48791d574fc424e63680ede460f20f85"
-    ],
     "tempo": [
       "saraga1.0/hindustani/49/Ajoy Chakrabarty - Raga Lalit - Khayal.tempo-manual.txt",
       "8ef08428448499425b1ee72da3034545"
@@ -12447,10 +11263,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/40/Kumar Gandharva - Nirgun Bhajan.bpm-manual.txt",
-      "39570108950b3b274eb1c9133fac2e95"
     ],
     "tempo": [
       "saraga1.0/hindustani/40/Kumar Gandharva - Nirgun Bhajan.tempo-manual.txt",
@@ -12490,10 +11302,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/47/Ajoy Chakrabarty - Introduction about Ajoy Chakrabarty.bpm-manual.txt",
-      "e2d55d4c04a53cbc147e940a4a89c8d8"
-    ],
     "tempo": [
       "saraga1.0/hindustani/47/Ajoy Chakrabarty - Introduction about Ajoy Chakrabarty.tempo-manual.txt",
       "63d0ba34e52b8ba02c6521a986d40940"
@@ -12529,10 +11337,6 @@
       "e127ba23a6c85b5547ff4e75b38f97c8"
     ],
     "pitch_vocal": [
-      null,
-      null
-    ],
-    "bpm": [
       null,
       null
     ],
@@ -12574,10 +11378,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/2/Ajoy Chakrabarty - Bilaskhani Todi.bpm-manual.txt",
-      "10b2d25c8b01e124f157bcea391b7335"
-    ],
     "tempo": [
       "saraga1.0/hindustani/2/Ajoy Chakrabarty - Bilaskhani Todi.tempo-manual.txt",
       "67368aec4584cef736a7ce0a76a879e8"
@@ -12615,10 +11415,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/13/Ajoy Chakrabarty - Raageshree.bpm-manual.txt",
-      "9022f526eec8eccc586671ff6afaa2c0"
     ],
     "tempo": [
       "saraga1.0/hindustani/13/Ajoy Chakrabarty - Raageshree.tempo-manual.txt",
@@ -12658,10 +11454,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/5/Ajoy Chakrabarty - Todi.bpm-manual.txt",
-      "b0b43c4b7ebdb6f17080a68a24fe0d2e"
-    ],
     "tempo": [
       "saraga1.0/hindustani/5/Ajoy Chakrabarty - Todi.tempo-manual.txt",
       "b0eb66c61b2b5e027271f2b1af1e04b0"
@@ -12699,10 +11491,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/14/Ajoy Chakrabarty - Malkauns.bpm-manual.txt",
-      "6836f97d5d9eddcb5fd73f271b8b700d"
     ],
     "tempo": [
       "saraga1.0/hindustani/14/Ajoy Chakrabarty - Malkauns.tempo-manual.txt",
@@ -12742,10 +11530,6 @@
       null,
       null
     ],
-    "bpm": [
-      "saraga1.0/hindustani/22/Omkar Dadarkar - Raag Bibhas.bpm-manual.txt",
-      "5c89ad48d2588b091b8e97a35619195e"
-    ],
     "tempo": [
       "saraga1.0/hindustani/22/Omkar Dadarkar - Raag Bibhas.tempo-manual.txt",
       "ee556341c0ffcd3e0ccdb1b4bec814b9"
@@ -12783,10 +11567,6 @@
     "pitch_vocal": [
       null,
       null
-    ],
-    "bpm": [
-      "saraga1.0/hindustani/25/Omkar Dadarkar - Raag Ahir Bhairon.bpm-manual.txt",
-      "6e94dbc224b624d2e7ec21ed0e5a1e7d"
     ],
     "tempo": [
       "saraga1.0/hindustani/25/Omkar Dadarkar - Raag Ahir Bhairon.tempo-manual.txt",

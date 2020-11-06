@@ -59,7 +59,6 @@ def test_track():
 
     expected_property_types = {
         'audio': (np.ndarray, float),
-        'bpm': utils.TempoData,
         'tempo': dict,
         'phrases': utils.EventData,
         'pitch': utils.F0Data,

@@ -10,6 +10,21 @@ Section and tempo annotations stored as start and end timestamps together with t
 tempo during the section (in a separate file). Sama annotations referring to rhythmic cycle boundaries stored
 as timestamps. Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
 ({S, r, R, g, G, m, M, P, d, D, n, N}). Audio features automatically extracted and stored: pitch and tonic.
+The annotations are stored in text files, named as the audio filename but with the respective extension at the
+end, for instance: "Cherthala Ranganatha Sharma - Bhuvini Dasudane.tempo-manual.txt".
+
+The dataset contains a total of 197 tracks from the carnatic corpus and 108 track from the hindustani corpus.
+
+A total of 163 tracks from the carnatic dataset have multitrack audio, which is not currently available in this
+loader version. New version of the loader is coming soon with the multitrack audio support.
+
+The files of this dataset are shared with the following license:
+Creative Commons Attribution Non Commercial Share Alike 4.0 International
+
+Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+
+For more information about the dataset as well as IAM and annotations, please refer to:
+https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
 """
 
 import librosa
@@ -102,9 +117,6 @@ class Track(core.Track):
         )
         self.pitch_vocal_path = utils.none_path_join(
             [self._data_home, self._track_paths['pitch_vocal'][0]]
-        )
-        self.bpm_path = utils.none_path_join(
-            [self._data_home, self._track_paths['bpm'][0]]
         )
         self.tempo_path = utils.none_path_join(
             [self._data_home, self._track_paths['tempo'][0]]
@@ -326,41 +338,6 @@ def load_pitch(pitch_path):
     freqs = np.array(freqs)
     confidence = (freqs > 0).astype(float)
     return utils.F0Data(times, freqs, confidence)
-
-
-def load_bpm(bpm_path):
-    """Load bpm tempo
-
-    Args:
-        bpm_path (str): Local path where the bpm tempo is stored.
-            If `None`, returns None.
-
-    Returns:
-        TempoData: bpm tempo annotation
-    """
-    if not os.path.exists(bpm_path):
-        raise IOError("bpm_path {} does not exist".format(bpm_path))
-
-    tempo = []
-    start_times = []
-    duration = []
-    confidence = []
-    with open(bpm_path, 'r') as reader:
-        for line in reader.readlines():
-            tempo.append(float(line.split(',')[0]))
-            start_times.append(float(line.split(',')[1]))
-            duration.append(float(line.split(',')[2]) - float(line.split(',')[1]))
-            confidence.append(1.) if line.split(',')[0] is not None else confidence.append(0.)
-
-    if not tempo:
-        return None
-
-    return utils.TempoData(
-        np.array(start_times),
-        np.array(duration),
-        np.array(tempo),
-        np.array(confidence)
-    )
 
 
 def load_tempo_carnatic(tempo_path):
