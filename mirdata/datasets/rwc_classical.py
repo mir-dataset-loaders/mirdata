@@ -47,7 +47,7 @@ REMOTES = {
         filename="rwc-c.csv",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir=None,
+        destination_dir='metadata-master',
     ),
 }
 DATASET_INFO = """
