@@ -9,31 +9,31 @@ from tests.test_utils import run_track_tests
 def test_track():
 
     default_trackid = 'carnatic_1'
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
         'track_id': 'carnatic_1',
         'iam_style': "carnatic",
-        'audio_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'audio_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                       'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.mp3',
-        'ctonic_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'ctonic_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                        'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.ctonic.txt',
-        'pitch_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'pitch_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                       'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.pitch.txt',
-        'pitch_vocal_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'pitch_vocal_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                       'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.pitch-vocal.txt',
-        'bpm_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'bpm_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                     'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.bpm-manual.txt',
-        'tempo_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'tempo_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                       'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.tempo-manual.txt',
-        'sama_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'sama_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                      'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.sama-manual.txt',
-        'sections_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'sections_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                          'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.sections-manual.txt',
-        'phrases_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'phrases_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                         'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.mphrases-manual.txt',
-        'metadata_path': 'tests/resources/mir_datasets/Saraga/saraga1.0/' +
+        'metadata_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
                          'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.json',
         'raaga': [{'uuid': '42dd0ccb-f92a-4622-ae5d-a3be571b4939', 'name': 'Śrīranjani'}],
         'form': [{'name': 'Kriti'}],
@@ -76,7 +76,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     jam = track.to_jams()
 
@@ -226,11 +226,11 @@ def test_to_jams():
         'title': 'Cherthala Ranganatha Sharma at Arkay'
     }]
     assert metadata['track_id'] == 'carnatic_1'
-    assert metadata['data_home'] == 'tests/resources/mir_datasets/Saraga/saraga1.0'
+    assert metadata['data_home'] == 'tests/resources/mir_datasets/saraga/saraga1.0'
 
 
 def test_load_tonic():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     tonic_path = track.ctonic_path
     parsed_tonic = saraga.load_tonic(tonic_path)
@@ -238,7 +238,7 @@ def test_load_tonic():
 
 
 def test_load_pitch():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     pitch_path = track.pitch_path
     parsed_pitch = saraga.load_pitch(pitch_path)
@@ -264,7 +264,7 @@ def test_load_pitch():
 
 
 def test_load_sama():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     sama_path = track.sama_path
     parsed_sama = saraga.load_sama(sama_path)
@@ -286,7 +286,7 @@ def test_load_sama():
 
 
 def test_load_sections_carnatic():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     sections_path = track.sections_path
     parsed_sections = saraga.load_sections_carnatic(sections_path)
@@ -308,7 +308,7 @@ def test_load_sections_carnatic():
 
 
 def test_load_sections_hindustani():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('hindustani_1', data_home=data_home)
     sections_path = track.sections_path
     parsed_sections = saraga.load_sections_hindustani(sections_path)
@@ -332,7 +332,7 @@ def test_load_sections_hindustani():
 
 
 def test_load_phrases():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     phrases_path = track.phrases_path
     parsed_phrases = saraga.load_phrases(phrases_path)
@@ -356,7 +356,7 @@ def test_load_phrases():
 
 
 def test_load_tempo_carnatic():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     tempo_path = track.tempo_path
     parsed_tempo = saraga.load_tempo_carnatic(tempo_path)
@@ -374,7 +374,7 @@ def test_load_tempo_carnatic():
 
 
 def test_load_tempo_hindustani():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('hindustani_1', data_home=data_home)
     tempo_path = track.tempo_path
     parsed_tempo = saraga.load_tempo_hindustani(tempo_path)
@@ -397,7 +397,7 @@ def test_load_tempo_hindustani():
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/Saraga'
+    data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     metadata_path = track.metadata_path
     parsed_metadata = saraga._load_metadata(metadata_path)
@@ -440,5 +440,5 @@ def test_load_metadata():
         'title': 'Cherthala Ranganatha Sharma at Arkay'
     }]
     assert parsed_metadata['track_id'] == 'carnatic_1'
-    assert parsed_metadata['data_home'] == 'tests/resources/mir_datasets/Saraga/saraga1.0'
+    assert parsed_metadata['data_home'] == 'tests/resources/mir_datasets/saraga/saraga1.0'
 
