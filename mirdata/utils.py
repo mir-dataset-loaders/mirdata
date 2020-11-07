@@ -95,23 +95,28 @@ def check_index(dataset_index, data_home, verbose=True):
     invalid_checksums = {}
 
     # loop over track ids
-    for track_id, track in tqdm.tqdm(dataset_index.items(), disable=not verbose):
-        # loop over each data file for this track id
-        for key in track.keys():
-            filepath = track[key][0]
-            checksum = track[key][1]
-            if filepath is not None:
-                local_path = os.path.join(data_home, filepath)
-                # validate that the file exists on disk
-                if not os.path.exists(local_path):
-                    if track_id not in missing_files.keys():
-                        missing_files[track_id] = []
-                    missing_files[track_id].append(local_path)
-                # validate that the checksum matches
-                elif md5(local_path) != checksum:
-                    if track_id not in invalid_checksums.keys():
-                        invalid_checksums[track_id] = []
-                    invalid_checksums[track_id].append(local_path)
+    key_subset = [k for k in dataset_index.keys() if not k == 'version']
+    for key in key_subset:
+        # metadata in the index can be empty
+        if dataset_index[key] is None:
+            continue
+        for file_id, file in tqdm.tqdm(dataset_index[key].items(), disable=not verbose):
+            # loop over each data file for this track id
+            for key in file.keys():
+                filepath = file[key][0]
+                checksum = file[key][1]
+                if filepath is not None:
+                    local_path = os.path.join(data_home, filepath)
+                    # validate that the file exists on disk
+                    if not os.path.exists(local_path):
+                        if file_id not in missing_files.keys():
+                            missing_files[file_id] = []
+                        missing_files[file_id].append(local_path)
+                    # validate that the checksum matches
+                    elif md5(local_path) != checksum:
+                        if file_id not in invalid_checksums.keys():
+                            invalid_checksums[file_id] = []
+                        invalid_checksums[file_id].append(local_path)
 
     return missing_files, invalid_checksums
 
@@ -138,20 +143,20 @@ def validator(dataset_index, data_home, verbose=True):
 
     # print path of any missing files
     has_any_missing_file = False
-    for track_id in missing_files:
-        if len(missing_files[track_id]) > 0:
-            log_message("Files missing for {}:".format(track_id), verbose)
-            for fpath in missing_files[track_id]:
+    for file_id in missing_files:
+        if len(missing_files[file_id]) > 0:
+            log_message("Files missing for {}:".format(file_id), verbose)
+            for fpath in missing_files[file_id]:
                 log_message(fpath, verbose)
             log_message("-" * 20, verbose)
             has_any_missing_file = True
 
     # print path of any invalid checksums
     has_any_invalid_checksum = False
-    for track_id in invalid_checksums:
-        if len(invalid_checksums[track_id]) > 0:
-            log_message("Invalid checksums for {}:".format(track_id), verbose)
-            for fpath in invalid_checksums[track_id]:
+    for file_id in invalid_checksums:
+        if len(invalid_checksums[file_id]) > 0:
+            log_message("Invalid checksums for {}:".format(file_id), verbose)
+            for fpath in invalid_checksums[file_id]:
                 log_message(fpath, verbose)
             log_message("-" * 20, verbose)
             has_any_invalid_checksum = True
