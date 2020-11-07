@@ -381,6 +381,9 @@ def load_tempo_carnatic(tempo_path):
                  'subdivisions': number of aksharas per beat of the tāla
                  }
     """
+    if tempo_path is None:
+        return None
+
     if not os.path.exists(tempo_path):
         raise IOError("tempo_path {} does not exist".format(tempo_path))
 
@@ -430,6 +433,9 @@ def load_tempo_hindustani(tempo_path):
                  'start_time': start time of the section
                  'duration': duration of the section
     """
+    if tempo_path is None:
+        return None
+
     if not os.path.exists(tempo_path):
         raise IOError("tempo_path {} does not exist".format(tempo_path))
 

@@ -272,6 +272,7 @@ def test_load_tonic():
     tonic_path = track.ctonic_path
     parsed_tonic = saraga.load_tonic(tonic_path)
     assert parsed_tonic == 201.740890
+    assert saraga.load_tonic(None) is None
 
 
 def test_load_pitch():
@@ -408,6 +409,7 @@ def test_load_tempo_carnatic():
         'beats_per_cycle': 32,
         'subdivisions': 4
     }
+    assert saraga.load_tempo_carnatic(None) is None
 
 
 def test_load_tempo_hindustani():
@@ -431,9 +433,11 @@ def test_load_tempo_hindustani():
             {'tempo': 185, 'matra_interval': 0.324, 'sama_interval': 3.885, 'matras_per_cycle': 12,
              'start_time': 679.834, 'duration': 894.433}
     }
+    assert saraga.load_tempo_hindustani(None) is None
 
 
 def test_load_metadata():
+    # Carnatic track
     data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     metadata_path = track.metadata_path
@@ -477,6 +481,49 @@ def test_load_metadata():
         'title': 'Cherthala Ranganatha Sharma at Arkay'
     }]
     assert parsed_metadata['track_id'] == 'carnatic_1'
+    assert parsed_metadata['data_home'] == 'tests/resources/mir_datasets/saraga/saraga1.0'
+
+    # Hindustani track
+    data_home = 'tests/resources/mir_datasets/saraga'
+    track = saraga.Track('hindustani_1', data_home=data_home)
+    metadata_path = track.metadata_path
+    parsed_metadata = saraga._load_metadata(metadata_path)
+
+    assert parsed_metadata['title'] == 'Bairagi'
+    assert parsed_metadata['raags'] == [{
+        'common_name': 'Bairagi', 'uuid': 'b143adaa-f1a6-4de4-8985-a5bd35e96279', 'name': 'Bairāgi'
+    }]
+    assert parsed_metadata['length'] == 899469
+    assert parsed_metadata['album_artists'] == [{
+        'mbid': '653fa2f8-85f8-4829-871f-7c2506ea9b48', 'name': 'Ajoy Chakrabarty'
+    }]
+    assert parsed_metadata['forms'] == [{
+        'common_name': 'Khayal', 'uuid': '7ed81b92-aea6-4f4b-bffb-c12d80012d37', 'name': 'Khyāl'
+    }]
+    assert parsed_metadata['mbid'] == 'b71c2774-2532-4692-8761-5452e2a83118'
+    assert parsed_metadata['artists'] == [
+        {'instrument': {'mbid': 'd92884b7-ee0c-46d5-96f3-918196ba8c5b', 'name': 'Voice'}, 'attributes': 'lead vocals',
+         'lead': True, 'artist': {'mbid': '653fa2f8-85f8-4829-871f-7c2506ea9b48', 'name': 'Ajoy Chakrabarty'}},
+        {'instrument': {'mbid': 'c43c7647-077d-4d60-a01b-769de71b82f2', 'name': 'Harmonium'}, 'attributes': '',
+         'lead': False, 'artist': {'mbid': 'afbb34e8-1f87-4dd4-81ec-b6145af4d72f', 'name': 'Paromita Mukherjee'}},
+        {'instrument': {'mbid': '18e6998b-e53b-415b-b484-d3ac286da99d', 'name': 'Tabla'}, 'attributes': '',
+         'lead': False, 'artist': {'mbid': 'beee80e6-aa99-451c-9edb-dcda8c2fce8a', 'name': 'Indranil Bhaduri'}}
+    ]
+    assert parsed_metadata['release'] == [{
+        'mbid': 'ae0f2366-9a4f-4534-9376-ac123e881f64', 'title': 'Geetinandan : Part-3'
+    }]
+    assert parsed_metadata['works'] == [
+        {'mbid': 'b8925ff6-9c8f-4184-8fc8-d358cfdea79b', 'title': 'Mere Maname Baso Ram Abhiram Puran Ho Sab Kaam'},
+        {'mbid': 'd7a184c3-0187-4912-8708-8d12a4bd9b0a', 'title': 'Bar Bar Har Gai'}
+    ]
+    assert parsed_metadata['taals'] == [
+        {'common_name': 'Ektaal', 'uuid': '7cb20903-5f64-4f15-8713-2fb4fcca2b5b', 'name': 'ēktāl'},
+        {'common_name': 'Ektaal', 'uuid': '7cb20903-5f64-4f15-8713-2fb4fcca2b5b', 'name': 'ēktāl'}
+    ]
+    assert parsed_metadata['layas'] == [{
+        'common_name': 'Vilambit', 'uuid': 'ee58d24a-60aa-4b16-bfcf-edd105118738', 'name': 'Vilaṁbit'
+    }]
+    assert parsed_metadata['track_id'] == 'hindustani_1'
     assert parsed_metadata['data_home'] == 'tests/resources/mir_datasets/saraga/saraga1.0'
 
 
