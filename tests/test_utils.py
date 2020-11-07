@@ -126,8 +126,8 @@ def test_check_index(test_index, expected_missing, expected_inv_checksum):
 @pytest.mark.parametrize(
     "missing_files,invalid_checksums",
     [
-        ({"10161_chorus": ["tests/resources/10162_chorus.wav"]}, {}),
-        ({}, {"10161_chorus": ["tests/resources/10161_chorus.wav"]}),
+        ({"tracks":{"10161_chorus": ["tests/resources/10162_chorus.wav"]}}, {}),
+        ({}, {"tracks":{"10161_chorus": ["tests/resources/10161_chorus.wav"]}}),
         ({}, {}),
     ],
 )
