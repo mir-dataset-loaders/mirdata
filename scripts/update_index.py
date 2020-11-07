@@ -162,15 +162,12 @@ def test_index(dataset_names):
         assert type(index['tracks']) == dict
         assert set(mandatory_keys) <= set([*index.keys()])
 
-def test_track_load(dataset_names):
-    """
 
+def test_track_load(dataset_names):
+    """Function to test all loaders work and indexes are fine (run locally)
     Parameters
     ----------
-    dataset_names
-
-    Returns
-    -------
+    dataset_names (list): list of dataset names
 
     """
     for module in dataset_names:
