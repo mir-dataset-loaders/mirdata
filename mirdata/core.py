@@ -105,7 +105,7 @@ class Dataset(object):
 
         Args:
             track_id (str): track id of the track
-        
+
         Returns:
             track (dataset.Track): an instance of this dataset's Track object
         """
@@ -119,7 +119,7 @@ class Dataset(object):
 
         Returns:
             (dict): {`track_id`: track data}
-        
+
         Raises:
             NotImplementedError: If the dataset does not support Track objects
         """
@@ -134,8 +134,7 @@ class Dataset(object):
         return self.track(random.choice(self.track_ids))
 
     def readme(self):
-        """Print the dataset's readme.
-        """
+        """Print the dataset's readme."""
         print(self._readme_str)
 
     def cite(self):
@@ -176,7 +175,7 @@ class Dataset(object):
         Returns:
             (list): A list of track ids
         """
-        return list(self._index.keys())
+        return list(self._index['tracks'].keys())
 
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version
@@ -256,15 +255,15 @@ class MultiTrack(Track):
             weights (list or None): list of positive scalars to be used in the average
             average (bool): if True, computes a weighted average of the tracks
                 if False, computes a weighted sum of the tracks
-            enforce_length (bool): If True, raises ValueError if the tracks are 
+            enforce_length (bool): If True, raises ValueError if the tracks are
                 not the same length. If False, pads audio with zeros to match the length
                 of the longest track
-        
+
         Returns:
             target (np.ndarray): target audio with shape (n_channels, n_samples)
 
         Raises:
-            ValueError: 
+            ValueError:
                 if sample rates of the tracks are not equal
                 if enforce_length=True and lengths are not equal
 
@@ -320,7 +319,7 @@ class MultiTrack(Track):
             n_tracks (int or None): number of tracks to randomly mix. If None, uses all tracks
             min_weight (float): minimum possible weight when mixing
             max_weight (float): maximum possible weight when mixing
-        
+
         Returns:
             target (np.ndarray): mixture audio with shape (n_samples, n_channels)
             tracks (list): list of keys of included tracks
@@ -340,7 +339,7 @@ class MultiTrack(Track):
 
         Args:
             track_keys (list): list of track keys to mix together
-        
+
         Returns:
             target (np.ndarray): mixture audio with shape (n_samples, n_channels)
         """
