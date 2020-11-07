@@ -19,6 +19,7 @@ DATASETS = [
     "medleydb_pitch",
     "mridangam_stroke",
     "orchset",
+    'phenicx_anechoic',
     "rwc_classical",
     "rwc_jazz",
     "rwc_popular",
