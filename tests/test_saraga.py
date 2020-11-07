@@ -165,9 +165,9 @@ def test_to_jams():
         141.453061224
     ]
     assert [section.value for section in sections] == [
-        'pallavi_1',
-        'anupallavi_1',
-        'charanam_1'
+        'pallavi',
+        'anupallavi',
+        'charanam'
     ]
     assert [section.confidence for section in sections] == [None, None, None]
 
@@ -180,7 +180,7 @@ def test_to_jams():
         2.4938775509999997, 2.4734693870000006, 2.2755555550000004
     ]
     assert [phrase.value for phrase in phrases] == [
-        'ndmdnsndn_0', 'ndmdnsndn_0', 'ndmdndmgr_0'
+        'ndmdnsndn', 'ndmdnsndn', 'ndmdndmgr'
     ]
     assert [phrase.confidence for phrase in phrases] == [
         None, None, None
@@ -285,11 +285,11 @@ def test_load_sama():
     assert saraga.load_sama(None) is None
 
 
-def test_load_sections():
+def test_load_sections_carnatic():
     data_home = 'tests/resources/mir_datasets/Saraga'
     track = saraga.Track('carnatic_1', data_home=data_home)
     sections_path = track.sections_path
-    parsed_sections = saraga.load_sections(sections_path)
+    parsed_sections = saraga.load_sections_carnatic(sections_path)
 
     # Check types
     assert type(parsed_sections) == utils.SectionData
@@ -303,8 +303,32 @@ def test_load_sections():
     assert np.array_equal(
         parsed_sections.intervals[:, 1], np.array([85.28979591699999, 166.857142856, 308.767346938])
     )
-    assert parsed_sections.labels == ['pallavi_1', 'anupallavi_1', 'charanam_1']
-    assert saraga.load_sections(None) is None
+    assert parsed_sections.labels == ['pallavi', 'anupallavi', 'charanam']
+    assert saraga.load_sections_carnatic(None) is None
+
+
+def test_load_sections_hindustani():
+    data_home = 'tests/resources/mir_datasets/Saraga'
+    track = saraga.Track('hindustani_1', data_home=data_home)
+    sections_path = track.sections_path
+    parsed_sections = saraga.load_sections_hindustani(sections_path)
+    print(parsed_sections)
+
+    # Check types
+    assert type(parsed_sections) == utils.SectionData
+    assert type(parsed_sections.intervals) is np.ndarray
+    assert type(parsed_sections.labels) is list
+
+    print(parsed_sections.intervals[1, 1])
+    # Check values
+    assert np.array_equal(
+        parsed_sections.intervals[:, 0], np.array([3.298, 59.49, 679.834])
+    )
+    assert np.array_equal(
+        parsed_sections.intervals[:, 1], np.array([58.236000000000004, 678.009, 894.433])
+    )
+    assert parsed_sections.labels == ['alap-1', 'vilambit_Ektal-2', 'drut_Ektal-3']
+    assert saraga.load_sections_hindustani(None) is None
 
 
 def test_load_phrases():
@@ -314,7 +338,7 @@ def test_load_phrases():
     parsed_phrases = saraga.load_phrases(phrases_path)
 
     # Check types
-    assert type(parsed_phrases) == utils.EventData
+    assert type(parsed_phrases) is utils.EventData
     assert type(parsed_phrases.start_times) is np.ndarray
     assert type(parsed_phrases.end_times) is np.ndarray
     assert type(parsed_phrases.event) is list
@@ -327,8 +351,49 @@ def test_load_phrases():
     assert np.array_equal(
         parsed_phrases.end_times, np.array([2.718367346, 8.318367346, 10.779863945])
     )
-    assert parsed_phrases.event == ['ndmdnsndn_0', 'ndmdnsndn_0', 'ndmdndmgr_0']
+    assert parsed_phrases.event == ['ndmdnsndn', 'ndmdnsndn', 'ndmdndmgr']
     assert saraga.load_phrases(None) is None
+
+
+def test_load_tempo_carnatic():
+    data_home = 'tests/resources/mir_datasets/Saraga'
+    track = saraga.Track('carnatic_1', data_home=data_home)
+    tempo_path = track.tempo_path
+    parsed_tempo = saraga.load_tempo_carnatic(tempo_path)
+
+    assert type(parsed_tempo) == dict
+    assert type(parsed_tempo['tempo_apm']) == int
+    assert type(parsed_tempo['sama_interval']) == float
+    assert parsed_tempo == {
+        'tempo_apm': 330,
+        'tempo_bpm': 82,
+        'sama_interval': 5.827,
+        'beats_per_cycle': 32,
+        'subdivisions': 4
+    }
+
+
+def test_load_tempo_hindustani():
+    data_home = 'tests/resources/mir_datasets/Saraga'
+    track = saraga.Track('hindustani_1', data_home=data_home)
+    tempo_path = track.tempo_path
+    parsed_tempo = saraga.load_tempo_hindustani(tempo_path)
+
+    assert type(parsed_tempo) == dict
+    assert type(parsed_tempo['alap']) == dict
+    assert type(parsed_tempo['alap']['tempo']) == int
+    assert type(parsed_tempo['alap']['duration']) == float
+    assert parsed_tempo == {
+        'alap':
+            {'tempo': -1, 'matra_interval': -1, 'sama_interval': -1, 'matras_per_cycle': -1,
+             'start_time': 3.298, 'duration': 58.236},
+        'vilambit_Ektal':
+            {'tempo': 13, 'matra_interval': 4.605, 'sama_interval': 55.265, 'matras_per_cycle': 12,
+             'start_time': 59.49, 'duration': 678.009},
+        'drut_Ektal':
+            {'tempo': 185, 'matra_interval': 0.324, 'sama_interval': 3.885, 'matras_per_cycle': 12,
+             'start_time': 679.834, 'duration': 894.433}
+    }
 
 
 def test_load_metadata():
@@ -377,43 +442,3 @@ def test_load_metadata():
     assert parsed_metadata['track_id'] == 'carnatic_1'
     assert parsed_metadata['data_home'] == 'tests/resources/mir_datasets/Saraga/saraga1.0'
 
-
-def test_load_tempo_carnatic():
-    data_home = 'tests/resources/mir_datasets/Saraga'
-    track = saraga.Track('carnatic_1', data_home=data_home)
-    tempo_path = track.tempo_path
-    parsed_tempo = saraga.load_tempo_carnatic(tempo_path)
-
-    assert type(parsed_tempo) == dict
-    assert type(parsed_tempo['tempo_apm']) == int
-    assert type(parsed_tempo['sama_interval']) == float
-    assert parsed_tempo == {
-        'tempo_apm': 330,
-        'tempo_bpm': 82,
-        'sama_interval': 5.827,
-        'beats_per_cycle': 32,
-        'subdivisions': 4
-    }
-
-
-def test_load_tempo_hindustani():
-    data_home = 'tests/resources/mir_datasets/Saraga'
-    track = saraga.Track('hindustani_1', data_home=data_home)
-    tempo_path = track.tempo_path
-    parsed_tempo = saraga.load_tempo_hindustani(tempo_path)
-
-    assert type(parsed_tempo) == dict
-    assert type(parsed_tempo['alap']) == dict
-    assert type(parsed_tempo['alap']['tempo']) == int
-    assert type(parsed_tempo['alap']['duration']) == float
-    assert parsed_tempo == {
-        'alap':
-            {'tempo': -1, 'matra_interval': -1, 'sama_interval': -1, 'matras_per_cycle': -1,
-             'start_time': 3.298, 'duration': 58.236},
-        'vilambit_Ektal':
-            {'tempo': 13, 'matra_interval': 4.605, 'sama_interval': 55.265, 'matras_per_cycle': 12,
-             'start_time': 59.49, 'duration': 678.009},
-        'drut_Ektal':
-            {'tempo': 185, 'matra_interval': 0.324, 'sama_interval': 3.885, 'matras_per_cycle': 12,
-             'start_time': 679.834, 'duration': 894.433}
-    }

@@ -93,7 +93,30 @@ class Track(core.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        TODO
+        iam_style (str): flag to identify if track belongs to hindustani or carnatic collection
+
+        Carnatic attributes:
+            raaga (list, dict): list of dicts containing information about the raagas present in the track
+            form (list, dict): list of dicts containing information about the forms present in the track
+            title (str): Title of the piece in the track
+            work (list, dicts): list of dicts containing the work present in the piece, and its mbid
+            taala (list, dicts): list of dicts containing the talas present in the track and its uuid
+            album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
+            mbid (str): MusicBrainz ID of the track
+            artists (list, dicts): list of dicts containing information of the featuring artists in the track
+            concert (list, dicts): list of dicts containing the concert where the track is present and its mbid
+
+        Hindustani attributes:
+            title (str): Title of the piece in the track
+            raags (list, dict): list of dicts containing information about the raags present in the track
+            album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
+            form (list, dict): list of dicts containing information about the forms present in the track
+            mbid (str): MusicBrainz ID of the track
+            artists (list, dicts): list of dicts containing information of the featuring artists in the track
+            release (list, dicts): list of dicts containing information of the release where the track is found
+            work (list, dicts): list of dicts containing the work present in the piece, and its mbid
+            taals (list, dicts): list of dicts containing the taals present in the track and its uuid
+            layas (list, dicts): list of dicts containing the layas present in the track and its uuid
     """
 
     def __init__(self, track_id, data_home):
@@ -201,7 +224,7 @@ class Track(core.Track):
 
     @utils.cached_property
     def tonic(self):
-        """Integer: tonic annotation"""
+        """Float: tonic annotation"""
         if self.ctonic_path is None:
             return None
         return load_tonic(self.ctonic_path)
@@ -222,7 +245,7 @@ class Track(core.Track):
 
     @utils.cached_property
     def tempo(self):
-        """TempoData: tempo annotations"""
+        """Dict: tempo annotations"""
         if self.tempo_path is None:
             return None
         if self.iam_style == 'carnatic':
@@ -232,21 +255,24 @@ class Track(core.Track):
 
     @utils.cached_property
     def sama(self):
-        """SectionData: annotations in hierarchy level 1 from annotator 2"""
+        """SectionData: sama section annotations"""
         if self.sama_path is None:
             return None
         return load_sama(self.sama_path)
 
     @utils.cached_property
     def sections(self):
-        """SectionData: annotations in hierarchy level 1 from annotator 2"""
+        """SectionData: track section annotations"""
         if self.sections_path is None:
             return None
-        return load_sections(self.sections_path)
+        if self.iam_style == 'carnatic':
+            return load_sections_carnatic(self.sections_path)
+        if self.iam_style == 'hindustani':
+            return load_sections_hindustani(self.sections_path)
 
     @utils.cached_property
     def phrases(self):
-        """SectionData: annotations in hierarchy level 1 from annotator 2"""
+        """EventData: phrase annotations"""
         if self.phrases_path is None:
             return None
         return load_phrases(self.phrases_path)
@@ -341,7 +367,7 @@ def load_pitch(pitch_path):
 
 
 def load_tempo_carnatic(tempo_path):
-    """Load tempo
+    """Load tempo from carnatic collection
 
     Args:
         tempo_path (str): Local path where the tempo annotation is stored.
@@ -363,11 +389,20 @@ def load_tempo_carnatic(tempo_path):
     with open(tempo_path, 'r') as reader:
         parsed_tempo = reader.readline()
 
+    tempo_data = []
     tempo_apm = parsed_tempo.split(',')[0]
+    tempo_data.append(tempo_apm)
     tempo_bpm = parsed_tempo.split(',')[1].split(' ')[1]
+    tempo_data.append(tempo_bpm)
     sama_interval = parsed_tempo.split(',')[2].split(' ')[1]
+    tempo_data.append(sama_interval)
     beats_per_cycle = parsed_tempo.split(',')[3].split(' ')[1]
+    tempo_data.append(beats_per_cycle)
     subdivisions = parsed_tempo.split(',')[4].split(' ')[1]
+    tempo_data.append(subdivisions)
+
+    if 'NaN' in tempo_data:
+        return None
 
     tempo_carnatic['tempo_apm'] = float(tempo_apm) if '.' in tempo_apm else int(tempo_apm)
     tempo_carnatic['tempo_bpm'] = float(tempo_bpm) if '.' in tempo_bpm else int(tempo_bpm)
@@ -379,7 +414,7 @@ def load_tempo_carnatic(tempo_path):
 
 
 def load_tempo_hindustani(tempo_path):
-    """Load tempo
+    """Load tempo from hindustani collection
 
     Args:
         tempo_path (str): Local path where the tempo annotation is stored.
@@ -407,18 +442,29 @@ def load_tempo_hindustani(tempo_path):
     sections = []
     with open(sections_abs_path, 'r') as reader:
         for line in reader.readlines():
-            sections.append(line.split(',')[3].split('\n')[0])
+            if line != '\n':
+                sections.append(line.split(',')[3].split('\n')[0])
 
     section_count = 0
     with open(tempo_path, 'r') as reader:
         for line in reader.readlines():
 
+            tempo_data = []
             tempo = line.split(',')[0]
+            tempo_data.append(tempo)
             matra = line.split(',')[1].split(' ')[1]
+            tempo_data.append(matra)
             sama_interval = line.split(',')[2].split(' ')[1]
+            tempo_data.append(sama_interval)
             matras_per_cycle = line.split(',')[3].split(' ')[1]
+            tempo_data.append(matras_per_cycle)
             start_time = line.split(',')[4].split(' ')[1]
+            tempo_data.append(start_time)
             duration = line.split(',')[5].split(' ')[1]
+            tempo_data.append(duration)
+
+            if 'NaN' in tempo_data:
+                return None
 
             tempo_hindustani[sections[section_count]] = {
                 'tempo': float(tempo) if '.' in tempo else int(tempo),
@@ -471,8 +517,8 @@ def load_sama(sama_path):
         )
 
 
-def load_sections(sections_path):
-    """Load sections
+def load_sections_carnatic(sections_path):
+    """Load sections from carnatic collection
 
     Args:
         sections_path (str): Local path where the section annotation is stored.
@@ -492,8 +538,43 @@ def load_sections(sections_path):
     section_labels = []
     with open(sections_path, 'r') as reader:
         for line in reader.readlines():
-            intervals.append([float(line.split('\t')[0]), float(line.split('\t')[0]) + float(line.split('\t')[2])])
-            section_labels.append(str(line.split('\t')[3].split('\n')[0]) + '_' + str(line.split('\t')[1]))
+            if line != '\n':
+                intervals.append([float(line.split('\t')[0]), float(line.split('\t')[0]) + float(line.split('\t')[2])])
+                section_labels.append(str(line.split('\t')[3].split('\n')[0]))
+
+    if not intervals:
+        return None
+
+    return utils.SectionData(
+        np.array(intervals),
+        section_labels
+    )
+
+
+def load_sections_hindustani(sections_path):
+    """Load sections from hindustani collection
+
+    Args:
+        sections_path (str): Local path where the section annotation is stored.
+            If `None`, returns None.
+
+    Returns:
+        SectionData: section annotations for track
+
+    """
+    if sections_path is None:
+        return None
+
+    if not os.path.exists(sections_path):
+        raise IOError("sections_path {} does not exist".format(sections_path))
+
+    intervals = []
+    section_labels = []
+    with open(sections_path, 'r') as reader:
+        for line in reader.readlines():
+            if line != '\n':
+                intervals.append([float(line.split(',')[0]), float(line.split(',')[0]) + float(line.split(',')[2])])
+                section_labels.append(str(line.split(',')[3].split('\n')[0]) + '-' + str(line.split(',')[1]))
 
     if not intervals:
         return None
@@ -526,9 +607,14 @@ def load_phrases(phrases_path):
     events = []
     with open(phrases_path, 'r') as reader:
         for line in reader.readlines():
-            start_times.append(float(line.split('\t')[0]))
-            end_times.append(float(line.split('\t')[0]) + float(line.split('\t')[2]))
-            events.append(str(line.split('\t')[3].split('\n')[0]) + '_' + str(line.split('\t')[1]))
+            if len(line.split('\t')) == 4:
+                start_times.append(float(line.split('\t')[0]))
+                end_times.append(float(line.split('\t')[0]) + float(line.split('\t')[2]))
+                events.append(str(line.split('\t')[3].split('\n')[0]))
+            if len(line.split('\t')) == 3:
+                start_times.append(float(line.split('\t')[0]))
+                end_times.append(float(line.split('\t')[0]) + float(line.split('\t')[2]))
+                events.append('No information')
 
     if not start_times:
         return None
