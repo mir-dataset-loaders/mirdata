@@ -114,6 +114,22 @@ REMOTES = {
 }
 
 
+DOWNLOAD_INFO = """
+        This loader is designed to load the spectrum, as it is available for download.
+        However, the loader supports audio as well. Unfortunately the audio files of the 
+        cante100 dataset are not available for free download, but upon request. However, 
+        you can request de audio in both links here: 
+        ==> http://www.cofla-project.com/?page_id=208
+        ==> https://zenodo.org/record/1324183
+        Then, locate the downloaded the cante100audio folder like this:
+            > cante100/
+                > cante100_spectrum/
+                ... (rest of the annotation folders)
+                > cante100audio/
+        Remember to locate the Beatles folder to {data_home}
+"""
+
+
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, 'cante100Meta.xml')
     if not os.path.exists(metadata_path):

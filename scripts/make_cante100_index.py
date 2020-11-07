@@ -55,6 +55,7 @@ def make_cante100_index(cante100_data_path):
                             os.path.join('cante100_automaticTranscription', notes_name)
                         ]
 
+    cante100_dict = fix_audio_notation_errors(cante100_dict)
     cante100_dict_ord = collections.OrderedDict(sorted(cante100_dict.items()))
     print(cante100_dict_ord.items())
 
@@ -75,6 +76,28 @@ def make_cante100_index(cante100_data_path):
 
     with open(CANTE100_INDEX_PATH, 'w') as fhandle:
         json.dump(cante100_index, fhandle, indent=2)
+
+
+def fix_audio_notation_errors(cante100_dict):
+    """
+    Patch to fix cante100 audio notation errors to make index work well
+    Known issues:
+        - Wrong named files: 17, 80, 90.
+
+    Parameters
+    ----------
+    cante100_dict
+
+    Returns
+    -------
+    cante100_dict (corrected)
+    """
+
+    cante100_dict['017'][0] = 'cante100audio/017_ManuelSotoSorder_TientosTangos.mp3'
+    cante100_dict['080'][0] = 'cante100audio/080_PericonDeCadiz_CantesAmericanos.mp3'
+    cante100_dict['091'][0] = 'cante100audio/090_PepeDeLaMatrona_Tonas.mp3'
+
+    return cante100_dict
 
 
 def main(args):
