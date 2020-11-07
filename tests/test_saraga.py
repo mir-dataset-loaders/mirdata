@@ -489,5 +489,4 @@ def test_load_audio():
     assert sr == 44100
     assert type(audio) == np.ndarray
     assert audio.shape[0] == 2
-    assert audio.shape[1] == 13641984
 
