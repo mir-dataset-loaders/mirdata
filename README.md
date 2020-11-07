@@ -128,7 +128,7 @@ orchset_data = orchset.load_tracks()
 import mirdata
 
 orchset = mirdata.Dataset('orchset')
-orchset_ids = orchset.track_ids()
+orchset_ids = orchset.track_ids
 orchset_data = orchset.load_tracks()
 
 example_track = orchset_data[orchset_ids[0]]
