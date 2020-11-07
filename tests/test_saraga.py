@@ -7,7 +7,6 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-
     default_trackid = 'carnatic_1'
     data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track(default_trackid, data_home=data_home)
@@ -228,6 +227,44 @@ def test_to_jams():
     assert metadata['track_id'] == 'carnatic_1'
     assert metadata['data_home'] == 'tests/resources/mir_datasets/saraga/saraga1.0'
 
+    # Test hindustani tracks different JAMS-structured data from carnatic tracks
+    track_hindustani = saraga.Track('hindustani_1', data_home=data_home)
+    jam_hindustani = track_hindustani.to_jams()
+
+    # Tempo
+    parsed_tempo_hindustani = jam_hindustani['sandbox'].tempo
+    assert parsed_tempo_hindustani == {
+        'alap':
+            {'tempo': -1, 'matra_interval': -1, 'sama_interval': -1, 'matras_per_cycle': -1,
+             'start_time': 3.298, 'duration': 58.236},
+        'vilambit_Ektal':
+            {'tempo': 13, 'matra_interval': 4.605, 'sama_interval': 55.265, 'matras_per_cycle': 12,
+             'start_time': 59.49, 'duration': 678.009},
+        'drut_Ektal':
+            {'tempo': 185, 'matra_interval': 0.324, 'sama_interval': 3.885, 'matras_per_cycle': 12,
+             'start_time': 679.834, 'duration': 894.433}
+    }
+
+    # Sections
+    sections_hindustani = jam_hindustani.search(namespace='segment_open')[1]['data']
+    print(sections_hindustani)
+    assert [section.time for section in sections_hindustani] == [
+        3.298,
+        59.49,
+        679.834
+    ]
+    assert [section.duration for section in sections_hindustani] == [
+        54.938,
+        618.519,
+        214.59900000000005
+    ]
+    assert [section.value for section in sections_hindustani] == [
+        'alap-1',
+        'vilambit_Ektal-2',
+        'drut_Ektal-3'
+    ]
+    assert [section.confidence for section in sections_hindustani] == [None, None, None]
+
 
 def test_load_tonic():
     data_home = 'tests/resources/mir_datasets/saraga'
@@ -441,4 +478,16 @@ def test_load_metadata():
     }]
     assert parsed_metadata['track_id'] == 'carnatic_1'
     assert parsed_metadata['data_home'] == 'tests/resources/mir_datasets/saraga/saraga1.0'
+
+
+def test_load_audio():
+    data_home = 'tests/resources/mir_datasets/saraga'
+    track = saraga.Track('carnatic_1', data_home=data_home)
+    audio_path = track.audio_path
+    audio, sr = saraga.load_audio(audio_path)
+
+    assert sr == 44100
+    assert type(audio) == np.ndarray
+    assert audio.shape[0] == 2
+    assert audio.shape[1] == 13641984
 
