@@ -130,8 +130,8 @@ def update_index(all_indexes):
         metadata_checksums = None
 
         if metadata_files is not None:
-            metadata_checksums = {key: [metadata_files[key],
-                                        md5(os.path.join(data_home, metadata_files[key]))]
+            metadata_checksums = {key: {'metadata': [metadata_files[key],
+                                        md5(os.path.join(data_home, metadata_files[key]))]}
                                   for key in metadata_files.keys()}
 
         # get version of dataset
@@ -162,6 +162,20 @@ def test_index(dataset_names):
         assert type(index['tracks']) == dict
         assert set(mandatory_keys) <= set([*index.keys()])
 
+def test_track_load(dataset_names):
+    """
+
+    Parameters
+    ----------
+    dataset_names
+
+    Returns
+    -------
+
+    """
+    for module in dataset_names:
+        dataset = mirdata.Dataset(module)
+        dataset.load_tracks()
 
 def main():
 
@@ -178,7 +192,7 @@ def main():
     update_index(ALL_INDEXES)
     # Check new indexes are shaped as expected
     test_index(DATASETS)
-
+    test_track_load(DATASETS)
 
 if __name__ == '__main__':
     main()
