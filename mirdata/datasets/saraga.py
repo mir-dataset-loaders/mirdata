@@ -225,29 +225,21 @@ class Track(core.Track):
     @utils.cached_property
     def tonic(self):
         """Float: tonic annotation"""
-        if self.ctonic_path is None:
-            return None
         return load_tonic(self.ctonic_path)
 
     @utils.cached_property
     def pitch(self):
         """F0Data: pitch annotation"""
-        if self.pitch_path is None:
-            return None
         return load_pitch(self.pitch_path)
 
     @utils.cached_property
     def pitch_vocal(self):
         """F0Data: pitch vocal annotations"""
-        if self.pitch_vocal_path is None:
-            return None
         return load_pitch(self.pitch_vocal_path)
 
     @utils.cached_property
     def tempo(self):
         """Dict: tempo annotations"""
-        if self.tempo_path is None:
-            return None
         if self.iam_style == 'carnatic':
             return load_tempo_carnatic(self.tempo_path)
         if self.iam_style == 'hindustani':
@@ -256,15 +248,11 @@ class Track(core.Track):
     @utils.cached_property
     def sama(self):
         """SectionData: sama section annotations"""
-        if self.sama_path is None:
-            return None
         return load_sama(self.sama_path)
 
     @utils.cached_property
     def sections(self):
         """SectionData: track section annotations"""
-        if self.sections_path is None:
-            return None
         if self.iam_style == 'carnatic':
             return load_sections_carnatic(self.sections_path)
         if self.iam_style == 'hindustani':
@@ -273,8 +261,6 @@ class Track(core.Track):
     @utils.cached_property
     def phrases(self):
         """EventData: phrase annotations"""
-        if self.phrases_path is None:
-            return None
         return load_phrases(self.phrases_path)
 
     @property
@@ -308,6 +294,9 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
+    if audio_path is None:
+        return None
+
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 

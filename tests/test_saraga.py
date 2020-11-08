@@ -7,6 +7,7 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
+    # Carnatic track test
     default_trackid = 'carnatic_1'
     data_home = 'tests/resources/mir_datasets/saraga'
     track = saraga.Track(default_trackid, data_home=data_home)
@@ -72,6 +73,82 @@ def test_track():
     # test audio loading functions
     audio, sr = track.audio
     assert sr == 44100
+    assert audio.shape[0] == 2
+
+    # Hindustani track test
+    default_trackid_hindustani = 'hindustani_1'
+    data_home = 'tests/resources/mir_datasets/saraga'
+    track_hindustani = saraga.Track(default_trackid_hindustani, data_home=data_home)
+
+    expected_attributes_hindustani = {
+        'track_id': 'hindustani_1',
+        'iam_style': 'hindustani',
+        'title': 'Bairagi',
+        'audio_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
+                      'hindustani/1/Ajoy Chakrabarty - Bairagi.mp3',
+        'ctonic_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
+                       'hindustani/1/Ajoy Chakrabarty - Bairagi.ctonic.txt',
+        'pitch_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
+                      'hindustani/1/Ajoy Chakrabarty - Bairagi.pitch.txt',
+        'pitch_vocal_path': None,
+        'bpm_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
+                    'carnatic/1/Cherthala Ranganatha Sharma - Bhuvini Dasudane.bpm-manual.txt',
+        'tempo_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
+                      'hindustani/1/Ajoy Chakrabarty - Bairagi.tempo-manual.txt',
+        'sama_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
+                     'hindustani/1/Ajoy Chakrabarty - Bairagi.sama-manual.txt',
+        'sections_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
+                         'hindustani/1/Ajoy Chakrabarty - Bairagi.sections-manual.txt',
+        'phrases_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
+                        'hindustani/1/Ajoy Chakrabarty - Bairagi.mphrases-manual.txt',
+        'metadata_path': 'tests/resources/mir_datasets/saraga/saraga1.0/' +
+                         'hindustani/1/Ajoy Chakrabarty - Bairagi.json',
+        'album_artists': [{
+            'mbid': '653fa2f8-85f8-4829-871f-7c2506ea9b48', 'name': 'Ajoy Chakrabarty'
+        }],
+        'artists': [{'instrument': {'mbid': 'd92884b7-ee0c-46d5-96f3-918196ba8c5b', 'name': 'Voice'},
+                     'attributes': 'lead vocals',
+                     'lead': True,
+                     'artist': {'mbid': '653fa2f8-85f8-4829-871f-7c2506ea9b48', 'name': 'Ajoy Chakrabarty'}},
+                    {'instrument': {'mbid': 'c43c7647-077d-4d60-a01b-769de71b82f2', 'name': 'Harmonium'},
+                     'attributes': '',
+                     'lead': False,
+                     'artist': {'mbid': 'afbb34e8-1f87-4dd4-81ec-b6145af4d72f', 'name': 'Paromita Mukherjee'}},
+                    {'instrument': {'mbid': '18e6998b-e53b-415b-b484-d3ac286da99d', 'name': 'Tabla'},
+                     'attributes': '',
+                     'lead': False,
+                     'artist': {'mbid': 'beee80e6-aa99-451c-9edb-dcda8c2fce8a', 'name': 'Indranil Bhaduri'}}],
+        'forms': [{'common_name': 'Khayal', 'uuid': '7ed81b92-aea6-4f4b-bffb-c12d80012d37', 'name': 'Khyāl'}],
+        'layas': [{'common_name': 'Vilambit', 'uuid': 'ee58d24a-60aa-4b16-bfcf-edd105118738', 'name': 'Vilaṁbit'}],
+        'mbid': 'b71c2774-2532-4692-8761-5452e2a83118',
+        'raags': [{'common_name': 'Bairagi', 'uuid': 'b143adaa-f1a6-4de4-8985-a5bd35e96279', 'name': 'Bairāgi'}],
+        'release': [{'mbid': 'ae0f2366-9a4f-4534-9376-ac123e881f64', 'title': 'Geetinandan : Part-3'}],
+        'taals': [
+            {'common_name': 'Ektaal', 'uuid': '7cb20903-5f64-4f15-8713-2fb4fcca2b5b', 'name': 'ēktāl'},
+            {'common_name': 'Ektaal', 'uuid': '7cb20903-5f64-4f15-8713-2fb4fcca2b5b', 'name': 'ēktāl'}
+        ],
+        'works': [
+            {'mbid': 'b8925ff6-9c8f-4184-8fc8-d358cfdea79b', 'title': 'Mere Maname Baso Ram Abhiram Puran Ho Sab Kaam'},
+            {'mbid': 'd7a184c3-0187-4912-8708-8d12a4bd9b0a', 'title': 'Bar Bar Har Gai'}],
+    }
+
+    expected_property_types_hindustani = {
+        'audio': (np.ndarray, float),
+        'tempo': dict,
+        'phrases': utils.EventData,
+        'pitch': utils.F0Data,
+        'pitch_vocal': type(None),
+        'sama': utils.SectionData,
+        'sections': utils.SectionData,
+        'tonic': float,
+    }
+
+    run_track_tests(track_hindustani, expected_attributes_hindustani, expected_property_types_hindustani)
+
+    # test audio loading functions
+    audio, sr = track.audio
+    assert sr == 44100
+    assert audio.shape[0] == 2
 
 
 def test_to_jams():
@@ -298,6 +375,42 @@ def test_load_pitch():
     assert np.array_equal(
         parsed_pitch.confidence, np.array([0.0, 1.0, 1.0, 1.0, 1.0, 1.0])
     )
+
+    track = saraga.Track('carnatic_1', data_home=data_home)
+    pitch_vocal_path = track.pitch_vocal_path
+    parsed_vocal_pitch = saraga.load_pitch(pitch_vocal_path)
+
+    # Check types
+    assert type(parsed_vocal_pitch) == utils.F0Data
+    assert type(parsed_vocal_pitch.times) is np.ndarray
+    assert type(parsed_vocal_pitch.frequencies) is np.ndarray
+    assert type(parsed_vocal_pitch.confidence) is np.ndarray
+
+    # Check values
+    assert np.array_equal(
+        parsed_vocal_pitch.times, np.array([
+            0.000000000000000000e+00,
+            2.902494331065759697e-03,
+            5.804988662131519393e-03,
+            8.707482993197278656e-03,
+            1.160997732426303879e-02,
+            1.451247165532879892e-02
+        ])
+    )
+    assert np.array_equal(
+        parsed_vocal_pitch.frequencies, np.array([
+            0.000000000000000000e+00,
+            1.123456789012345678e+02,
+            2.234567890123456789e+02,
+            3.345678901234567890e+02,
+            4.456789012345678901e+01,
+            0.000000000000000000e+00
+        ])
+    )
+    assert np.array_equal(
+        parsed_vocal_pitch.confidence, np.array([0.0, 1.0, 1.0, 1.0, 1.0, 0.0])
+    )
+
     assert saraga.load_pitch(None) is None
 
 
@@ -536,4 +649,6 @@ def test_load_audio():
     assert sr == 44100
     assert type(audio) == np.ndarray
     assert audio.shape[0] == 2
+
+    assert saraga.load_audio(None) is None
 
