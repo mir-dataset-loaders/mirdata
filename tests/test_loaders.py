@@ -315,6 +315,10 @@ EXCEPTIONS = {
         "load_pitch_contour": {"string_num": 1},
         "load_note_ann": {"string_num": 1},
     },
+    "saraga": {
+        "load_tempo": {"iam_style": "carnatic"},
+        "load_sections": {"iam_style": "carnatic"}
+    }
 }
 
 

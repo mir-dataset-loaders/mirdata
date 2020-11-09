@@ -55,6 +55,12 @@ def test_track():
                      'artist': {'mbid': 'e09b0542-84e1-45ad-b09a-a05a9ad0cb83', 'name': 'Cherthala Ranganatha Sharma'}
                      }],
         'concert': [{'mbid': '0816586d-c83e-4c79-a0aa-9b0e578f408d', 'title': 'Cherthala Ranganatha Sharma at Arkay'}],
+        'forms': None,
+        'layas': None,
+        'raags': None,
+        'release': None,
+        'taals': None,
+        'works': None,
     }
 
     expected_property_types = {
@@ -130,6 +136,11 @@ def test_track():
         'works': [
             {'mbid': 'b8925ff6-9c8f-4184-8fc8-d358cfdea79b', 'title': 'Mere Maname Baso Ram Abhiram Puran Ho Sab Kaam'},
             {'mbid': 'd7a184c3-0187-4912-8708-8d12a4bd9b0a', 'title': 'Bar Bar Har Gai'}],
+        'raaga': None,
+        'form': None,
+        'work': None,
+        'taala': None,
+        'concert': None
     }
 
     expected_property_types_hindustani = {
@@ -436,11 +447,14 @@ def test_load_sama():
     assert saraga.load_sama(None) is None
 
 
-def test_load_sections_carnatic():
+def test_load_sections():
     data_home = 'tests/resources/mir_datasets/saraga'
+
+    # Carnatic track
     track = saraga.Track('carnatic_1', data_home=data_home)
     sections_path = track.sections_path
-    parsed_sections = saraga.load_sections_carnatic(sections_path)
+    iam_flag = track.iam_style
+    parsed_sections = saraga.load_sections(sections_path, iam_flag)
 
     # Check types
     assert type(parsed_sections) == utils.SectionData
@@ -455,14 +469,12 @@ def test_load_sections_carnatic():
         parsed_sections.intervals[:, 1], np.array([85.28979591699999, 166.857142856, 308.767346938])
     )
     assert parsed_sections.labels == ['pallavi', 'anupallavi', 'charanam']
-    assert saraga.load_sections_carnatic(None) is None
 
-
-def test_load_sections_hindustani():
-    data_home = 'tests/resources/mir_datasets/saraga'
+    # Hindustani track
     track = saraga.Track('hindustani_1', data_home=data_home)
     sections_path = track.sections_path
-    parsed_sections = saraga.load_sections_hindustani(sections_path)
+    iam_flag = track.iam_style
+    parsed_sections = saraga.load_sections(sections_path, iam_flag)
     print(parsed_sections)
 
     # Check types
@@ -479,7 +491,8 @@ def test_load_sections_hindustani():
         parsed_sections.intervals[:, 1], np.array([58.236000000000004, 678.009, 894.433])
     )
     assert parsed_sections.labels == ['alap-1', 'vilambit_Ektal-2', 'drut_Ektal-3']
-    assert saraga.load_sections_hindustani(None) is None
+
+    assert saraga.load_sections(None, iam_flag) is None
 
 
 def test_load_phrases():
@@ -506,11 +519,14 @@ def test_load_phrases():
     assert saraga.load_phrases(None) is None
 
 
-def test_load_tempo_carnatic():
+def test_load_tempo():
     data_home = 'tests/resources/mir_datasets/saraga'
+
+    # Carnatic track
     track = saraga.Track('carnatic_1', data_home=data_home)
     tempo_path = track.tempo_path
-    parsed_tempo = saraga.load_tempo_carnatic(tempo_path)
+    iam_flag = track.iam_style
+    parsed_tempo = saraga.load_tempo(tempo_path, iam_flag)
 
     assert type(parsed_tempo) == dict
     assert type(parsed_tempo['tempo_apm']) == int
@@ -522,14 +538,12 @@ def test_load_tempo_carnatic():
         'beats_per_cycle': 32,
         'subdivisions': 4
     }
-    assert saraga.load_tempo_carnatic(None) is None
 
-
-def test_load_tempo_hindustani():
-    data_home = 'tests/resources/mir_datasets/saraga'
+    # Hindustani track
     track = saraga.Track('hindustani_1', data_home=data_home)
     tempo_path = track.tempo_path
-    parsed_tempo = saraga.load_tempo_hindustani(tempo_path)
+    iam_flag = track.iam_style
+    parsed_tempo = saraga.load_tempo(tempo_path, iam_flag)
 
     assert type(parsed_tempo) == dict
     assert type(parsed_tempo['alap']) == dict
@@ -546,7 +560,7 @@ def test_load_tempo_hindustani():
             {'tempo': 185, 'matra_interval': 0.324, 'sama_interval': 3.885, 'matras_per_cycle': 12,
              'start_time': 679.834, 'duration': 894.433}
     }
-    assert saraga.load_tempo_hindustani(None) is None
+    assert saraga.load_tempo(None, iam_flag) is None
 
 
 def test_load_metadata():
