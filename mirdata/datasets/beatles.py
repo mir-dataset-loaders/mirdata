@@ -37,9 +37,6 @@ REMOTES = {
 }
 
 
-DATA = utils.LargeData("beatles_index.json")
-
-
 DOWNLOAD_INFO = """
         Unfortunately the audio files of the Beatles dataset are not available
         for download. If you have the Beatles dataset, place the contents into
@@ -48,7 +45,9 @@ DOWNLOAD_INFO = """
                 > annotations/
                 > audio/
         and copy the Beatles folder to {}
-""".format(core.Dataset('beatles').data_home)
+"""
+
+DATA = utils.LargeData("beatles_index.json")
 
 
 class Track(core.Track):

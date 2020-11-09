@@ -31,6 +31,15 @@ BIBTEX = """@inproceedings{bittner2014medleydb,
     Title = {Medley{DB}: A Multitrack Dataset for Annotation-Intensive {MIR} Research},
     Year = {2014}
 }"""
+DOWNLOAD_INFO = """
+    To download this dataset, visit:
+    https://zenodo.org/record/2620624#.XKZc7hNKh24
+    and request access.
+    
+    Once downloaded, unzip the file MedleyDB-Pitch.zip
+    and copy the result to:
+    {}
+"""
 
 
 def _load_metadata(data_home):
@@ -48,17 +57,6 @@ def _load_metadata(data_home):
 
 
 DATA = utils.LargeData("medleydb_pitch_index.json", _load_metadata)
-
-
-DOWNLOAD_INFO = """
-    To download this dataset, visit:
-    https://zenodo.org/record/2620624#.XKZc7hNKh24
-    and request access.
-
-    Once downloaded, unzip the file MedleyDB-Pitch.zip
-    and copy the result to:
-    {}
-""".format(core.Dataset('medleydb_pitch').data_home)
 
 
 class Track(core.Track):

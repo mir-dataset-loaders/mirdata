@@ -85,6 +85,16 @@ REMOTES = {
         destination_dir="annotations",
     ),
 }
+DOWNLOAD_INFO = """
+    Unfortunately the audio files of the RWC-Popular dataset are not available
+    for download. If you have the RWC-Popular dataset, place the contents into a
+    folder called RWC-Popular with the following structure:
+        > RWC-Popular/
+            > annotations/
+            > audio/rwc-p-m0i with i in [1 .. 7]
+            > metadata-master/
+    and copy the RWC-Popular folder to {}
+"""
 
 
 def _load_metadata(data_home):
@@ -133,18 +143,6 @@ def _load_metadata(data_home):
 
 
 DATA = utils.LargeData("rwc_popular_index.json", _load_metadata)
-
-
-DOWNLOAD_INFO = """
-    Unfortunately the audio files of the RWC-Popular dataset are not available
-    for download. If you have the RWC-Popular dataset, place the contents into a
-    folder called RWC-Popular with the following structure:
-        > RWC-Popular/
-            > annotations/
-            > audio/rwc-p-m0i with i in [1 .. 7]
-            > metadata-master/
-    and copy the RWC-Popular folder to {}
-""".format(core.Dataset('rwc_popular').data_home)
 
 
 class Track(core.Track):

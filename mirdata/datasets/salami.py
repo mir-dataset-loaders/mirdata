@@ -39,6 +39,15 @@ REMOTES = {
         destination_dir=None,
     )
 }
+DOWNLOAD_INFO = """
+    Unfortunately the audio files of the Salami dataset are not available
+    for download. If you have the Salami dataset, place the contents into a
+    folder called Salami with the following structure:
+        > Salami/
+            > salami-data-public-hierarchy-corrections/
+            > audio/
+    and copy the Salami folder to {}
+"""
 
 
 def _load_metadata(data_home):
@@ -87,17 +96,6 @@ def _load_metadata(data_home):
 
 
 DATA = utils.LargeData("salami_index.json", _load_metadata)
-
-
-DOWNLOAD_INFO = """
-    Unfortunately the audio files of the Salami dataset are not available
-    for download. If you have the Salami dataset, place the contents into a
-    folder called Salami with the following structure:
-        > Salami/
-            > salami-data-public-hierarchy-corrections/
-            > audio/
-    and copy the Salami folder to {}
-""".format(core.Dataset('salami').data_home)
 
 
 class Track(core.Track):

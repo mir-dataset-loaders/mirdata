@@ -54,6 +54,17 @@ REMOTES = {
         destination_dir=".",
     )
 }
+DOWNLOAD_INFO = """
+    To download this dataset, visit:
+    https://zenodo.org/record/2577915 and request access.
+    Once downloaded, unzip the file DALI_v1.0.zip
+    and place the result in:
+    {}
+    
+    Use the function dali_code.get_audio you can find at:
+    https://github.com/gabolsgabs/DALI for getting the audio and place them in:
+    {}/audio
+"""
 
 
 def _load_metadata(data_home):
@@ -69,20 +80,6 @@ def _load_metadata(data_home):
 
 
 DATA = utils.LargeData("dali_index.json", _load_metadata)
-
-
-DOWNLOAD_INFO = """
-    To download this dataset, visit:
-    https://zenodo.org/record/2577915 and request access.
-
-    Once downloaded, unzip the file DALI_v1.0.zip
-    and place the result in:
-    {}
-
-    Use the function dali_code.get_audio you can find at:
-    https://github.com/gabolsgabs/DALI for getting the audio and place them in:
-    {}/audio
-""".format(core.Dataset('dali').data_home, core.Dataset('dali').data_home)
 
 
 class Track(core.Track):
