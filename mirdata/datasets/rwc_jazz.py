@@ -85,7 +85,7 @@ DOWNLOAD_INFO = """
             > annotations/
             > audio/rwc-j-m0i with i in [1 .. 4]
             > metadata-master/
-    and copy the RWC-Jazz folder to {data_home}
+    and copy the RWC-Jazz folder to {}
 """
 
 

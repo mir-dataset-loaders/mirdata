@@ -50,7 +50,7 @@ REMOTES = {
         destination_dir=None,
     ),
 }
-DATASET_INFO = """
+DOWNLOAD_INFO = """
     Unfortunately the audio files of the RWC-Classical dataset are not available
     for download. If you have the RWC-Classical dataset, place the contents into a
     folder called RWC-Classical with the following structure:
@@ -58,7 +58,7 @@ DATASET_INFO = """
             > annotations/
             > audio/rwc-c-m0i with i in [1 .. 6]
             > metadata-master/
-    and copy the RWC-Classical folder to {data_home}
+    and copy the RWC-Classical folder to {}
 """
 
 
