@@ -58,6 +58,7 @@ See the Examples section below for more details, or the [documentation](https://
 * [RWC Jazz](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html)
 * [RWC Popular](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html)
 * [Salami](https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections)
+* [Saraga](https://mtg.github.io/saraga/)
 * [TinySOL](https://www.orch-idea.org/)
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).

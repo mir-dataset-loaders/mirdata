@@ -135,6 +135,13 @@ salami
    :members:
 
 
+saraga
+^^^^^^
+
+.. automodule:: mirdata.datasets.saraga
+   :members:
+
+
 tinysol
 ^^^^^^^
 
