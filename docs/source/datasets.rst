@@ -96,7 +96,7 @@ click the link provided in the "Module" column.
 |                   |                     | - annotations: ✅   | - :ref:`phrases`          |        |
 |                   |                     |                     | - :ref:`f0`               |        |
 |                   |                     |                     | - :ref:`f0` (vocal)       |        |
-|                   |                     |                     | - :ref:`sections`(samas)  |        |
+|                   |                     |                     | - :ref:`sections` (samas) |        |
 |                   |                     |                     | - :ref:`sections`         |        |
 |                   |                     |                     | - :ref:`tonic`            |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
@@ -258,7 +258,7 @@ a track.
 .. _rwc_jazz: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_jazz
 .. _rwc_popular: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_popular
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
-.. _saraga:: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga
+.. _saraga: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
 
 
