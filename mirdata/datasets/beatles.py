@@ -48,7 +48,7 @@ DOWNLOAD_INFO = """
                 > annotations/
                 > audio/
         and copy the Beatles folder to {}
-""".format(core.Dataset('giantsteps_tempo').data_home)
+""".format(core.Dataset('beatles').data_home)
 
 
 class Track(core.Track):
