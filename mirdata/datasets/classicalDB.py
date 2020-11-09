@@ -38,7 +38,7 @@ DOWNLOAD_INFO = """
             > keys/
     and copy the folder to {data_home}
 """
-DATA = utils.LargeData("classicalDB.json")
+DATA = utils.LargeData("classicalDB_index.json")
 
 
 class Track(core.Track):
@@ -67,7 +67,7 @@ class Track(core.Track):
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.keys_path = os.path.join(self._data_home, self._track_paths["key"][0])
-        self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
+        self.title = self.audio_path.replace(".wav", "").split("/")[-1]
 
     @utils.cached_property
     def key(self):
@@ -85,6 +85,7 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             metadata={
+                "title": self.title,
                 "key": self.key,
             },
         )
@@ -125,7 +126,4 @@ def load_key(keys_path):
     with open(keys_path) as f:
         key = f.readline()
 
-    return key.replace('\t', ' ')
-
-
-
+    return key.replace('\t', ' ').replace('\n', '')
