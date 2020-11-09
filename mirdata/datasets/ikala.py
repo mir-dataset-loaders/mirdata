@@ -40,16 +40,6 @@ REMOTES = {
         destination_dir=None,
     )
 }
-DOWNLOAD_INFO = """
-    Unfortunately the iKala dataset is not available for download.
-    If you have the iKala dataset, place the contents into a folder called
-    iKala with the following structure:
-        > iKala/
-            > Lyrics/
-            > PitchLabel/
-            > Wavfile/
-    and copy the iKala folder to {data_home}
-"""
 
 
 def _load_metadata(data_home):
@@ -75,6 +65,19 @@ def _load_metadata(data_home):
 
 
 DATA = utils.LargeData("ikala_index.json", _load_metadata)
+
+
+DOWNLOAD_INFO = """
+    Unfortunately the iKala dataset is not available for download.
+    If you have the iKala dataset, place the contents into a folder called
+    iKala with the following structure:
+        > iKala/
+            > Lyrics/
+            > PitchLabel/
+            > Wavfile/
+    and copy the iKala folder to {}
+""".format(core.Dataset('ikala').data_home)
+
 
 
 class Track(core.Track):

@@ -23,6 +23,7 @@ from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
 
+
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
     Booktitle = {International Society of Music Information Retrieval (ISMIR)},
@@ -30,15 +31,6 @@ BIBTEX = """@inproceedings{bittner2014medleydb,
     Title = {Medley{DB}: A Multitrack Dataset for Annotation-Intensive {MIR} Research},
     Year = {2014}
 }"""
-DOWNLOAD_INFO = """
-    To download this dataset, visit:
-    https://zenodo.org/record/2620624#.XKZc7hNKh24
-    and request access.
-
-    Once downloaded, unzip the file MedleyDB-Pitch.zip
-    and copy the result to:
-    {data_home}
-"""
 
 
 def _load_metadata(data_home):
@@ -56,6 +48,17 @@ def _load_metadata(data_home):
 
 
 DATA = utils.LargeData("medleydb_pitch_index.json", _load_metadata)
+
+
+DOWNLOAD_INFO = """
+    To download this dataset, visit:
+    https://zenodo.org/record/2620624#.XKZc7hNKh24
+    and request access.
+
+    Once downloaded, unzip the file MedleyDB-Pitch.zip
+    and copy the result to:
+    {}
+""".format(core.Dataset('medleydb_pitch').data_home)
 
 
 class Track(core.Track):

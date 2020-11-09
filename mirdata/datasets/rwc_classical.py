@@ -50,16 +50,6 @@ REMOTES = {
         destination_dir=None,
     ),
 }
-DATASET_INFO = """
-    Unfortunately the audio files of the RWC-Classical dataset are not available
-    for download. If you have the RWC-Classical dataset, place the contents into a
-    folder called RWC-Classical with the following structure:
-        > RWC-Classical/
-            > annotations/
-            > audio/rwc-c-m0i with i in [1 .. 6]
-            > metadata-master/
-    and copy the RWC-Classical folder to {data_home}
-"""
 
 
 def _load_metadata(data_home):
@@ -106,6 +96,18 @@ def _load_metadata(data_home):
 
 
 DATA = utils.LargeData("rwc_classical_index.json", _load_metadata)
+
+
+DOWNLOAD_INFO = """
+    Unfortunately the audio files of the RWC-Classical dataset are not available
+    for download. If you have the RWC-Classical dataset, place the contents into a
+    folder called RWC-Classical with the following structure:
+        > RWC-Classical/
+            > annotations/
+            > audio/rwc-c-m0i with i in [1 .. 6]
+            > metadata-master/
+    and copy the RWC-Classical folder to {}
+""".format(core.Dataset('rwc_classical').data_home)
 
 
 class Track(core.Track):

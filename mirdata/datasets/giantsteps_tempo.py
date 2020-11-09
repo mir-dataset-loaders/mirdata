@@ -98,6 +98,8 @@ REMOTES = {
         destination_dir="",
     )
 }
+
+
 DOWNLOAD_INFO = """
     Unfortunately the audio files of the Giant Steps Tempo dataset are not available
     for download. If you have the Giant Steps audio dataset, place the contents into
@@ -105,8 +107,8 @@ DOWNLOAD_INFO = """
         > GiantSteps_tempo/
             > giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/
             > audio/
-    and copy the folder to {data_home}
-"""
+    and copy the folder to {}
+""".format(core.Dataset('giantsteps_tempo').data_home)
 
 
 class Track(core.Track):

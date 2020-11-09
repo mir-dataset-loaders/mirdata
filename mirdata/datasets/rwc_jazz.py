@@ -77,16 +77,6 @@ REMOTES = {
         destination_dir="annotations",
     ),
 }
-DOWNLOAD_INFO = """
-    Unfortunately the audio files of the RWC-Jazz dataset are not available
-    for download. If you have the RWC-Jazz dataset, place the contents into a
-    folder called RWC-Jazz with the following structure:
-        > RWC-Jazz/
-            > annotations/
-            > audio/rwc-j-m0i with i in [1 .. 4]
-            > metadata-master/
-    and copy the RWC-Jazz folder to {data_home}
-"""
 
 
 def _load_metadata(data_home):
@@ -133,6 +123,18 @@ def _load_metadata(data_home):
 
 
 DATA = utils.LargeData("rwc_jazz_index.json", _load_metadata)
+
+
+DOWNLOAD_INFO = """
+    Unfortunately the audio files of the RWC-Jazz dataset are not available
+    for download. If you have the RWC-Jazz dataset, place the contents into a
+    folder called RWC-Jazz with the following structure:
+        > RWC-Jazz/
+            > annotations/
+            > audio/rwc-j-m0i with i in [1 .. 4]
+            > metadata-master/
+    and copy the RWC-Jazz folder to {}
+""".format(core.Dataset('rwc_jazz').data_home)
 
 
 class Track(core.Track):

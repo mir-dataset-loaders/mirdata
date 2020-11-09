@@ -36,6 +36,10 @@ REMOTES = {
     )
 }
 
+
+DATA = utils.LargeData("beatles_index.json")
+
+
 DOWNLOAD_INFO = """
         Unfortunately the audio files of the Beatles dataset are not available
         for download. If you have the Beatles dataset, place the contents into
@@ -43,10 +47,8 @@ DOWNLOAD_INFO = """
             > Beatles/
                 > annotations/
                 > audio/
-        and copy the Beatles folder to {data_home}
-"""
-
-DATA = utils.LargeData("beatles_index.json")
+        and copy the Beatles folder to {}
+""".format(core.Dataset('giantsteps_tempo').data_home)
 
 
 class Track(core.Track):
