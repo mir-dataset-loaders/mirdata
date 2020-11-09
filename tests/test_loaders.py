@@ -28,6 +28,7 @@ CUSTOM_TEST_TRACKS = {
     "rwc_jazz": "RM-J004",
     "rwc_popular": "RM-P001",
     "salami": "2",
+    "saraga": "carnatic_1",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
 }
 
@@ -314,6 +315,10 @@ EXCEPTIONS = {
         "load_pitch_contour": {"string_num": 1},
         "load_note_ann": {"string_num": 1},
     },
+    "saraga": {
+        "load_tempo": {"iam_style": "carnatic"},
+        "load_sections": {"iam_style": "carnatic"}
+    }
 }
 
 

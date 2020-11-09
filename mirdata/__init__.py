@@ -23,6 +23,7 @@ DATASETS = [
     "rwc_jazz",
     "rwc_popular",
     "salami",
+    "saraga",
     "tinysol",
 ]
 
