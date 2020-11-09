@@ -62,8 +62,11 @@ DOWNLOAD_INFO = """
     {}
     
     Use the function dali_code.get_audio you can find at:
-    https://github.com/gabolsgabs/DALI for getting the audio and place them in:
-    {}/audio
+    https://github.com/gabolsgabs/DALI for getting the audio 
+    and place them in "audio" folder with the following structure:
+    > Dali
+        > audio
+        ...
 """
 
 
