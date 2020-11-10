@@ -57,14 +57,16 @@ REMOTES = {
 DOWNLOAD_INFO = """
     To download this dataset, visit:
     https://zenodo.org/record/2577915 and request access.
-
     Once downloaded, unzip the file DALI_v1.0.zip
     and place the result in:
-    {data_home}
-
+    {}
+    
     Use the function dali_code.get_audio you can find at:
-    https://github.com/gabolsgabs/DALI for getting the audio and place them in:
-    {data_home}/audio
+    https://github.com/gabolsgabs/DALI for getting the audio 
+    and place them in "audio" folder with the following structure:
+    > Dali
+        > audio
+        ...
 """
 
 

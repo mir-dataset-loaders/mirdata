@@ -93,7 +93,7 @@ DOWNLOAD_INFO = """
             > annotations/
             > audio/rwc-p-m0i with i in [1 .. 7]
             > metadata-master/
-    and copy the RWC-Popular folder to {data_home}
+    and copy the RWC-Popular folder to {}
 """
 
 
