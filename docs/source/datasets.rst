@@ -74,6 +74,9 @@ click the link provided in the "Module" column.
 | medleydb_pitch_   | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
 |                   | | Tracking Subset   | - annotations: ✅   | - :ref:`instruments`      |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
+| mridangam_stroke_ | Mridangam Stroke    | - audio: ✅         | - :ref:`stroke-name`      | 6977   |
+|                   |                     | - annotations: ✅   | - :ref:`tonic`            |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
 | orchset_          | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
 |                   |                     | - annotations: ✅   |                           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
@@ -91,6 +94,14 @@ click the link provided in the "Module" column.
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | salami_           | Salami              | - audio: ❌         | - :ref:`sections`         | 1359   |
 |                   |                     | - annotations: ✅   |                           |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
+| saraga_           | Saraga              | - audio: ✅         | - :ref:`tempo`            | 305    |
+|                   |                     | - annotations: ✅   | - :ref:`phrases`          |        |
+|                   |                     |                     | - :ref:`f0`               |        |
+|                   |                     |                     | - :ref:`f0` (vocal)       |        |
+|                   |                     |                     | - :ref:`sections` (samas) |        |
+|                   |                     |                     | - :ref:`sections`         |        |
+|                   |                     |                     | - :ref:`tonic`            |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | tinysol_          | TinySOL             | - audio: ✅         | - :ref:`instruments`      | 2913   |
 |                   |                     | - annotations: ✅   | - :ref:`technique`        |        |
@@ -236,6 +247,7 @@ of annotation is implicitly available when Vocal F0_ or Vocal Notes_ annotations
 .. _rwc_jazz: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_jazz
 .. _rwc_popular: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_popular
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
+.. _saraga: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
 
 
