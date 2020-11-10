@@ -126,7 +126,7 @@ DOWNLOAD_INFO = """
                 > cante100_spectrum/
                 ... (rest of the annotation folders)
                 > cante100audio/
-        Remember to locate the Beatles folder to {data_home}
+        Remember to locate the cante100 folder to {}
 """
 
 
