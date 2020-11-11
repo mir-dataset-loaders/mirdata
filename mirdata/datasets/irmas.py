@@ -95,26 +95,26 @@ REMOTES = {
     'training_data': download_utils.RemoteFileMetadata(
         filename='IRMAS-TrainingData.zip',
         url='https://zenodo.org/record/1290750/files/IRMAS-TrainingData.zip?download=1',
-        checksum='4fd9f5ed5a18d8e2687e6360b5f60afe',  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
+        checksum='4fd9f5ed5a18d8e2687e6360b5f60afe',
+        destination_dir=None,
     ),
     'testing_data_1': download_utils.RemoteFileMetadata(
         filename='IRMAS-TestingData-Part1.zip',
         url='https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part1.zip?download=1',
-        checksum='5a2e65520dcedada565dff2050bb2a56',  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
+        checksum='5a2e65520dcedada565dff2050bb2a56',
+        destination_dir=None,
     ),
     'testing_data_2': download_utils.RemoteFileMetadata(
         filename='IRMAS-TestingData-Part2.zip',
         url='https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part2.zip?download=1',
-        checksum='afb0c8ea92f34ee653693106be95c895',  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
+        checksum='afb0c8ea92f34ee653693106be95c895',
+        destination_dir=None,
     ),
     'testing_data_3': download_utils.RemoteFileMetadata(
         filename='IRMAS-TestingData-Part3.zip',
         url='https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part3.zip?download=1',
-        checksum='9b3fb2d0c89cdc98037121c25bd5b556',  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
+        checksum='9b3fb2d0c89cdc98037121c25bd5b556',
+        destination_dir=None,
     ),
 }
 
@@ -124,9 +124,9 @@ DATA = utils.LargeData(
 )
 
 
-INST_DICT = {
+INST_DICT = [
     'cel', 'cla', 'flu', 'gac', 'gel', 'org', 'pia', 'sax', 'tru', 'vio', 'voi'
-}
+]
 
 
 class Track(core.Track):
@@ -164,19 +164,21 @@ class Track(core.Track):
         self.drum = None
         self.train = True
 
+        self._audio_filename = self._track_paths['audio'][0]
+
         # TRAINING TRACKS
         if '__' in track_id:
             self.predominant_instrument = os.path.basename(os.path.dirname(self.audio_path))
             assert self.predominant_instrument in INST_DICT, "Instrument {} not in instrument dict".format(self.predominant_instrument)
 
             # Drum presence annotation is present
-            if 'dru' in self._track_paths['audio'][0] or 'nod' in self._track_paths['audio'][0]:
-                self.genre = self._track_paths['audio'][0].split('.')[0].split('[')[3].split(']')[0]
-                self.drum = [True if 'dru' in self._track_paths['audio'][0] else False][0]
+            if 'dru' in self._audio_filename or 'nod' in self._audio_filename:
+                self.genre = self._audio_filename.split('.')[0].split('[')[3].split(']')[0]
+                self.drum = [True if 'dru' in self._audio_filename else False][0]
 
             # Drum presence annotation not present
             else:
-                self.genre = self._track_paths['audio'][0].split('.')[0].split('[')[2].split(']')[0]
+                self.genre = self._audio_filename.split('.')[0].split('[')[2].split(']')[0]
                 self.drum = None
 
         # TESTING TRACKS
