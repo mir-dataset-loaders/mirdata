@@ -191,8 +191,7 @@ def _load_metadata(data_home):
 
     metadata = dict()
     metadata['data_home'] = data_home
-    j = 0
-    for i in indexes:
+    for i, j in zip(indexes, range(len(artists))):
         metadata[i] = {
             'musicBrainzID': identifiers[j],
             'artist': artists[j],
@@ -200,7 +199,6 @@ def _load_metadata(data_home):
             'release': releases[j],
             'duration': durations[j],
         }
-        j += 1
 
     return metadata
 
@@ -340,13 +338,9 @@ def load_melody(f0_path):
     if not os.path.exists(f0_path):
         raise IOError("f0_path {} does not exist".format(f0_path))
 
-    times = []
-    freqs = []
-
     parsed_melody = np.genfromtxt(f0_path, delimiter=',')
-    for row in parsed_melody:
-        times.append(float(row[0]))
-        freqs.append(float(row[1]))
+    times = parsed_melody[:, 0]
+    freqs = parsed_melody[:, 1]
 
     times = np.array(times)
     freqs = np.array(freqs)
