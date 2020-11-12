@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-from .version import version as __version__
-
-# -*- coding: utf-8 -*-
-
-
 from .version import version as __version__
 
 DATASETS = [
@@ -33,7 +27,5 @@ DATASETS = [
     "saraga",
     "tinysol",
 ]
-
-from .core import Dataset
 
 from .core import Dataset
