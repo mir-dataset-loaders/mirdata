@@ -29,14 +29,14 @@ def md5(file_path):
 def make_giantsteps_key_index(data_path):
     meta_dir = os.path.join(data_path, 'meta')
     audio_dir = os.path.join(data_path, 'audio')
-    key_dir = os.path.join(data_path, 'new_annotations')
+    key_dir_version2 = os.path.join(data_path, 'new_annotations')
     giantsteps_key_index = {}
     for track_id, ann_dir in enumerate(sorted(os.listdir(meta_dir))):
         ann_dir_full = os.path.join(meta_dir, ann_dir)
         if '.json' in ann_dir:
             codec = '.mp3'
             audio_path = os.path.join(audio_dir, ann_dir.replace('.json', codec))
-            chord_path = os.path.join(key_dir, ann_dir.split(' ')[0] + '.json')
+            key_path_version2 = os.path.join(key_dir_version2, ann_dir.split(' ')[0] + '.json')
             if "*" in audio_path:
                 meta = (None, None)
             else:
@@ -45,7 +45,7 @@ def make_giantsteps_key_index(data_path):
             giantsteps_key_index[track_id] = {
                 'audio': (audio_path.replace(data_path + '/', ''), md5(audio_path)),
                 'meta': meta,
-                'key': (chord_path.replace(data_path + '/', ''), md5(chord_path)),
+                'key': (key_path_version2.replace(data_path + '/', ''), md5(key_path_version2)),
             }
     with open(giantsteps_key_INDEX_PATH, 'w') as fhandle:
         json.dump(giantsteps_key_index, fhandle, indent=2)
