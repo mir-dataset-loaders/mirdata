@@ -32,6 +32,9 @@ click the link provided in the "Module" column.
 | beatport_key_     |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
 |                   |                     | - annotations: ✅   |                           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
+| cante100_         | cante100            | - audio: 🔑         | - :ref:`F0`               | 100    |
+|                   |                     | - annotations: ✅   | - :ref:`notes`            |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
 | dali_             | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                   |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
@@ -243,6 +246,7 @@ a track.
 
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
+.. _cante100: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.cante100
 .. _beatport_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatport_key
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
 .. _giantsteps_tempo: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.giantsteps_tempo

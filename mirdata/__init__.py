@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-
 from .version import version as __version__
 
 DATASETS = [
     "beatles",
     "beatport_key",
+    "cante100",
     "dali",
     "giantsteps_key",
     "giantsteps_tempo",
