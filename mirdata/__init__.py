@@ -19,6 +19,7 @@ DATASETS = [
     "gtzan_genre",
     "guitarset",
     "ikala",
+    "irmas",
     "maestro",
     "medley_solos_db",
     "medleydb_melody",

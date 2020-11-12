@@ -83,6 +83,13 @@ ikala
    :members:
 
 
+irmas
+^^^^^
+
+.. automodule:: mirdata.datasets.irmas
+   :members:
+
+
 maestro
 ^^^^^^^
 
