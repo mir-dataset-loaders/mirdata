@@ -48,7 +48,7 @@ DOWNLOAD_INFO = """
             > Lyrics/
             > PitchLabel/
             > Wavfile/
-    and copy the iKala folder to {data_home}
+    and copy the iKala folder to {}
 """
 
 

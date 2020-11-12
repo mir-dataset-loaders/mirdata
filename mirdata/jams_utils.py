@@ -11,6 +11,7 @@ from mirdata import utils
 
 def jams_converter(
     audio_path=None,
+    spectrogram_path=None,
     beat_data=None,
     chord_data=None,
     note_data=None,
@@ -34,6 +35,8 @@ def jams_converter(
         the audio file will be read to compute the duration. If None,
         'duration' must be a field in the metadata dictionary, or the
         resulting jam object will not validate.
+    spectrum_cante100_path (str or None):
+        A path to the corresponding spectrum file, or None.
     beat_data (list or None):
         A list of tuples of (BeatData, str), where str describes the annotation (e.g. 'beats_1').
     chord_data (list or None):
@@ -86,11 +89,14 @@ def jams_converter(
                 + "for this track cannot be found, and it is required "
                 + "to compute duration."
             )
+    if spectrogram_path is not None:
+        if audio_path is None:
+            duration = metadata['duration']
 
     # metadata
     if metadata is not None:
         for key in metadata:
-            if key == "duration" and duration is not None and metadata[key] != duration:
+            if key == 'duration' and duration is not None and metadata[key] != duration and audio_path is not None:
                 print(
                     "Warning: duration provided in metadata does not"
                     + "match the duration computed from the audio file."
@@ -575,13 +581,11 @@ def tag_gtzan_to_jams(tags):
 def tag_open_to_jams(tags):
     """
     Convert tag-open annotations into jams format.
-
     Parameters
     ----------
     tags: tuple
         A tuple in the format (str, str), where the first str is the open tag
         and the second describes the annotation.
-
     Returns
     -------
     jannot_tag_open: JAM tag_open annotation object.

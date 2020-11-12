@@ -80,7 +80,7 @@ def downloader(
                 download_from_remote(remotes[k], save_dir, force_overwrite)
 
     if info_message is not None:
-        print(info_message)
+        print(info_message.format(save_dir))
 
 
 class DownloadProgressBar(tqdm):

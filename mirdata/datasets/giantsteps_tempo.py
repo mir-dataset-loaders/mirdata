@@ -105,7 +105,7 @@ DOWNLOAD_INFO = """
         > GiantSteps_tempo/
             > giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/
             > audio/
-    and copy the folder to {data_home}
+    and copy the folder to {}
 """
 
 

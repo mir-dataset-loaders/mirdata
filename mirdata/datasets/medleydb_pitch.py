@@ -23,6 +23,7 @@ from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
 
+
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
     Booktitle = {International Society of Music Information Retrieval (ISMIR)},
@@ -34,10 +35,10 @@ DOWNLOAD_INFO = """
     To download this dataset, visit:
     https://zenodo.org/record/2620624#.XKZc7hNKh24
     and request access.
-
+    
     Once downloaded, unzip the file MedleyDB-Pitch.zip
     and copy the result to:
-    {data_home}
+    {}
 """
 
 

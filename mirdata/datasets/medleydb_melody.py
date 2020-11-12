@@ -34,10 +34,10 @@ DOWNLOAD_INFO = """
     To download this dataset, visit:
     https://zenodo.org/record/2628782#.XKZdABNKh24
     and request access.
-
+    
     Once downloaded, unzip the file MedleyDB-Melody.zip
     and copy the result to:
-    {data_home}
+    {}
 """
 
 
