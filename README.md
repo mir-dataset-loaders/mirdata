@@ -48,6 +48,7 @@ See the Examples section below for more details, or the [documentation](https://
 * [GTZAN genre](http://marsyas.info/downloads/datasets.html)
 * [GuitarSet](http://github.com/marl/guitarset/)
 * [Ikala](http://mac.citi.sinica.edu.tw/ikala/)
+* [IRMAS](https://www.upf.edu/web/mtg/irmas)
 * [MAESTRO](https://magenta.tensorflow.org/datasets/maestro)
 * [MedleyDB Melody](https://medleydb.weebly.com/)
 * [MedleyDB Pitch](https://medleydb.weebly.com/)
