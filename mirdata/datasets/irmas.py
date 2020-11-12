@@ -42,7 +42,7 @@ IRMAS Dataset trainig samples are annotated by storing the information of each t
 Additionally, some of the files have annotation in the filename regarding the presence ([dru])
 or non presence([nod]) of drums.
 - The annotation of the musical genre: country-folk ([cou_fol]), classical ([cla]),
-pop-rock ([pop-roc]), latin-soul ([lat-sou]).
+pop-rock ([pop_roc]), latin-soul ([lat_sou]), jazz-blues ([jaz_blu]).
 The annotations appear in this order in the filenames.
 
 ==> Testing data:
@@ -128,6 +128,10 @@ INST_DICT = [
     'cel', 'cla', 'flu', 'gac', 'gel', 'org', 'pia', 'sax', 'tru', 'vio', 'voi'
 ]
 
+GENRE_DICT = [
+    'cou_fol', 'cla', 'pop_roc', 'lat_sou', 'jaz_blu'
+]
+
 
 class Track(core.Track):
     """IRMAS track class
@@ -169,16 +173,24 @@ class Track(core.Track):
         # TRAINING TRACKS
         if '__' in track_id:
             self.predominant_instrument = os.path.basename(os.path.dirname(self.audio_path))
-            assert self.predominant_instrument in INST_DICT, "Instrument {} not in instrument dict".format(self.predominant_instrument)
+            assert self.predominant_instrument in INST_DICT, "Instrument {} not in instrument dict".format(
+                self.predominant_instrument
+            )
 
             # Drum presence annotation is present
             if 'dru' in self._audio_filename or 'nod' in self._audio_filename:
                 self.genre = self._audio_filename.split('.')[0].split('[')[3].split(']')[0]
+                assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
+                    self.genre
+                )
                 self.drum = [True if 'dru' in self._audio_filename else False][0]
 
             # Drum presence annotation not present
             else:
                 self.genre = self._audio_filename.split('.')[0].split('[')[2].split(']')[0]
+                assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
+                    self.genre
+                )
                 self.drum = None
 
         # TESTING TRACKS
