@@ -12,7 +12,7 @@ and the musicBrainz ID.
 Total tracks: 100
 
 cante100 audio is only available upon request. To download the audio request access in
-this link: https://zenodo.org/record/1324183/files/cante100audio.zip?download=1. Then
+this link: https://zenodo.org/record/1324183. Then
 unzip the audio into the cante100 general dataset folder for the rest of annotations
 and files.
 
