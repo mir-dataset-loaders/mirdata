@@ -3531,11 +3531,9 @@
     }
   },
   "metadata": {
-    "id_mapping": {
-      "metadata": [
-        "id_mapping.txt",
-        "81097b587804ce93e56c7a331ba06abc"
-      ]
-    }
+    "id_mapping": [
+      "id_mapping.txt",
+      "81097b587804ce93e56c7a331ba06abc"
+    ]
   }
 }

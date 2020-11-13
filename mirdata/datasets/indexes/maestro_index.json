@@ -12823,11 +12823,9 @@
     }
   },
   "metadata": {
-    "maestro-v2.0.0": {
-      "metadata": [
-        "maestro-v2.0.0.json",
-        "576172af1cdc4efddcf0be7d260d48f7"
-      ]
-    }
+    "maestro-v2.0.0": [
+      "maestro-v2.0.0.json",
+      "576172af1cdc4efddcf0be7d260d48f7"
+    ]
   }
 }

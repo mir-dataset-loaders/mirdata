@@ -1947,11 +1947,9 @@
     }
   },
   "metadata": {
-    "medleydb_melody_metadata": {
-      "metadata": [
-        "medleydb_melody_metadata.json",
-        "842f01084a41e1a43f8640ac05b9e76d"
-      ]
-    }
+    "medleydb_melody_metadata": [
+      "medleydb_melody_metadata.json",
+      "842f01084a41e1a43f8640ac05b9e76d"
+    ]
   }
 }

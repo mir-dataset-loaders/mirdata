@@ -703,11 +703,9 @@
     }
   },
   "metadata": {
-    "rwc-j": {
-      "metadata": [
-        "metadata-master/rwc-j.csv",
-        "7dbe87fedbaaa1f348625a2af1d78030"
-      ]
-    }
+    "rwc-j": [
+      "metadata-master/rwc-j.csv",
+      "7dbe87fedbaaa1f348625a2af1d78030"
+    ]
   }
 }

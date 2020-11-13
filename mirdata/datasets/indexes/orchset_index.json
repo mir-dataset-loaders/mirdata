@@ -899,11 +899,9 @@
     }
   },
   "metadata": {
-    "Orchset - Predominant Melodic Instruments": {
-      "metadata": [
-        "Orchset - Predominant Melodic Instruments.csv",
-        "6301bdea599ac355a4d5fd9ad70c6127"
-      ]
-    }
+    "Orchset - Predominant Melodic Instruments": [
+      "Orchset - Predominant Melodic Instruments.csv",
+      "6301bdea599ac355a4d5fd9ad70c6127"
+    ]
   }
 }

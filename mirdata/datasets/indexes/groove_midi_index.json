@@ -11503,11 +11503,9 @@
     }
   },
   "metadata": {
-    "info": {
-      "metadata": [
-        "info.csv",
-        "69f466852d9ef15c31b58371c10f3f29"
-      ]
-    }
+    "info": [
+      "info.csv",
+      "69f466852d9ef15c31b58371c10f3f29"
+    ]
   }
 }

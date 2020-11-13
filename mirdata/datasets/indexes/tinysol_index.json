@@ -17481,11 +17481,9 @@
     }
   },
   "metadata": {
-    "TinySOL_metadata": {
-      "metadata": [
-        "annotation/TinySOL_metadata.csv",
-        "a86c9bb115f69e61f2f25872e397fc4a"
-      ]
-    }
+    "TinySOL_metadata": [
+      "annotation/TinySOL_metadata.csv",
+      "a86c9bb115f69e61f2f25872e397fc4a"
+    ]
   }
 }

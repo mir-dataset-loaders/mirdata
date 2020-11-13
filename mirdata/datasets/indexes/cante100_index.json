@@ -1803,11 +1803,9 @@
     }
   },
   "metadata": {
-    "cante100Meta": {
-      "metadata": [
-        "cante100Meta.xml",
-        "6cce186ce77a06541cdb9f0a671afb46"
-      ]
-    }
+    "cante100Meta": [
+      "cante100Meta.xml",
+      "6cce186ce77a06541cdb9f0a671afb46"
+    ]
   }
 }

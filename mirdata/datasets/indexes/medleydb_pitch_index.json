@@ -1033,11 +1033,9 @@
     }
   },
   "metadata": {
-    "medleydb_pitch_metadata": {
-      "metadata": [
-        "medleydb_pitch_metadata.json",
-        "0507b05c14549beccf17ba04d02f50aa"
-      ]
-    }
+    "medleydb_pitch_metadata": [
+      "medleydb_pitch_metadata.json",
+      "0507b05c14549beccf17ba04d02f50aa"
+    ]
   }
 }

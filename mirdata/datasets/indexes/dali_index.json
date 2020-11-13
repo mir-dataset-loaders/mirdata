@@ -53583,11 +53583,9 @@
     }
   },
   "metadata": {
-    "dali_metadata": {
-      "metadata": [
-        "dali_metadata.json",
-        "5616c60ce2541e825a1929acb3affd48"
-      ]
-    }
+    "dali_metadata": [
+      "dali_metadata.json",
+      "5616c60ce2541e825a1929acb3affd48"
+    ]
   }
 }

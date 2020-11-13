@@ -29901,11 +29901,9 @@
     }
   },
   "metadata": {
-    "metadata": {
-      "metadata": [
-        "salami-data-public-hierarchy-corrections/metadata/metadata.csv",
-        "a28ff98c44102d0caa7c735fa816cfe4"
-      ]
-    }
+    "metadata": [
+      "salami-data-public-hierarchy-corrections/metadata/metadata.csv",
+      "a28ff98c44102d0caa7c735fa816cfe4"
+    ]
   }
 }
