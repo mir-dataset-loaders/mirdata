@@ -1,4 +1,5 @@
-{"tracks": {
+{ "version": null,
+  "tracks": {
     "10161_chorus": {
       "audio": [
         "10162_chorus.wav",
@@ -11,5 +12,6 @@
         "3f77d0d69dc41b3696f074ad6bf2852f"
       ]
     }
-  }
+  },
+  "metadata": null
 }
