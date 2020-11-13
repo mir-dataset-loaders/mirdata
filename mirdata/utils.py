@@ -114,9 +114,7 @@ def check_metadata(file_dict, data_home, verbose, missing_files, invalid_checksu
         checksum = file[1]
         if filepath is not None:
             local_path = os.path.join(data_home, filepath)
-            validate(
-                file_id, local_path, checksum, missing_files, invalid_checksums
-            )
+            validate(file_id, local_path, checksum, missing_files, invalid_checksums)
 
 
 def check_index(dataset_index, data_home, verbose=True):
