@@ -7,13 +7,13 @@
 #    'tracks': {
 #        ...
 #    },
-#    'metadata': {
-#        ...
-#    },
-#    'tables': {
+#    'records': {
 #        ...
 #    },
 #    'multitracks': {
+#        ...
+#    },
+#    'metadata': {
 #        ...
 #    }
 # }
@@ -136,8 +136,8 @@ def update_index(all_indexes):
         metadata_checksums = None
 
         if metadata_files is not None:
-            metadata_checksums = {key: {'metadata': [metadata_files[key],
-                                        md5(os.path.join(data_home, metadata_files[key]))]}
+            metadata_checksums = {key: [metadata_files[key],
+                                        md5(os.path.join(data_home, metadata_files[key]))]
                                   for key in metadata_files.keys()}
 
         # get version of dataset
@@ -193,8 +193,10 @@ def main():
                                                    and 'training' not in key and 'testing' not in key])
 
     # Update index to new format
+    print('Updating indexes...\n')
     update_index(ALL_INDEXES)
     # Check new indexes are shaped as expected
+    print('Quick check on datasets...\n')
     test_index(DATASETS)
     test_track_load(DATASETS)
 
