@@ -44,6 +44,7 @@ def get_metadata_paths(module):
     customized_paths = {
         'beatles': None,
         'beatport_key': None,
+        'cante100': {'cante100Meta':'cante100Meta.xml'},
         'dali': {'dali_metadata': 'dali_metadata.json'},
         'giantsteps_key': None,
         'giantsteps_tempo': None,
@@ -51,6 +52,7 @@ def get_metadata_paths(module):
         'gtzan_genre': None,
         'guitarset': None,
         'ikala': {'id_mapping': 'id_mapping.txt'},
+        'irmas': None,
         'maestro': {'maestro-v2.0.0': 'maestro-v2.0.0.json'},
         'medley_solos_db': {'Medley-solos-DB_metadata': os.path.join("annotation", "Medley-solos-DB_metadata.csv")},
         'medleydb_melody': {'medleydb_melody_metadata': 'medleydb_melody_metadata.json'},
@@ -61,6 +63,7 @@ def get_metadata_paths(module):
         'rwc_jazz':  {'rwc-j': os.path.join("metadata-master", "rwc-j.csv")},
         'rwc_popular':  {'rwc-p': os.path.join("metadata-master", "rwc-p.csv")},
         'salami': {'metadata': os.path.join("salami-data-public-hierarchy-corrections", "metadata", "metadata.csv")},
+        'saraga': None,
         'tinysol': {'TinySOL_metadata': os.path.join('annotation', 'TinySOL_metadata.csv')},
      }
 
@@ -82,6 +85,7 @@ def get_dataset_version(module):
     customized_versions = {
         'beatles': '1.2',  # http://isophonics.net/content/reference-annotations-beatles
         'beatport_key': '1.0',  # https://zenodo.org/record/1101082/export/xd#.X6BFXpNKi3J
+        'cante100': '1.0',  # https://zenodo.org/record/1324183
         'dali': '1.0',  # https://zenodo.org/record/2577915#.X6BGZJNKi3I
         'giantsteps_key': '+',  # https://zenodo.org/record/1095691#.X6BGrZNKi3J
         'giantsteps_tempo': '2.0',  # https://github.com/GiantSteps/giantsteps-tempo-dataset
@@ -89,6 +93,7 @@ def get_dataset_version(module):
         'gtzan_genre': None,  # http://marsyas.info/downloads/datasets.html
         'guitarset': '1.1.0',  # https://zenodo.org/record/3371780#.X6BIZpNKi3I
         'ikala': None,  # http://mac.citi.sinica.edu.tw/ikala/
+        'irmas': '1.0',  # https://zenodo.org/record/1290750/
         'maestro': '2.0.0',  # https://magenta.tensorflow.org/datasets/maestro
         'medley_solos_db': None,  # https://mirdata.readthedocs.io/en/latest/source/mirdata.html
         'medleydb_melody': '5.0',  # https://zenodo.org/record/2628782#.X6BKOJNKi3J
@@ -99,6 +104,7 @@ def get_dataset_version(module):
         'rwc_jazz': None,  # https://staff.aist.go.jp/m.goto/RWC-MDB/
         'rwc_popular': None,  # https://staff.aist.go.jp/m.goto/RWC-MDB/
         'salami': '2.0-corrected',  # https://github.com/DDMAL/salami-data-public/pull/15
+        'saraga': '1.0',  # https://zenodo.org/record/1256127/#.X65rnZNKhUI
         'tinysol': '6.0'  # https://zenodo.org/record/1101082/export/xd#.X6BFXpNKi3J
     }
     return customized_versions[module]
@@ -183,7 +189,8 @@ def main():
             dataset = mirdata.Dataset(module)
             if dataset._remotes is not None:
                 dataset.download(partial_download=['metadata' if 'metadata' in dataset._remotes
-                                                   else key for key in dataset._remotes if key is not 'audio'])
+                                                   else key for key in dataset._remotes if key is not 'audio'
+                                                   and 'training' not in key and 'testing' not in key])
 
     # Update index to new format
     update_index(ALL_INDEXES)
