@@ -76,6 +76,37 @@ def log_message(message, verbose=True):
         print(message)
 
 
+def validate(file_id, local_path, checksum, missing_files, invalid_checksums):
+
+    # validate that the file exists on disk
+    if not os.path.exists(local_path):
+        if file_id not in missing_files.keys():
+            missing_files[file_id] = []
+        missing_files[file_id].append(local_path)
+    # validate that the checksum matches
+    elif md5(local_path) != checksum:
+        if file_id not in invalid_checksums.keys():
+            invalid_checksums[file_id] = []
+        invalid_checksums[file_id].append(local_path)
+
+
+def check_files(file_dict, data_home, verbose, missing_files, invalid_checksums):
+    for file_id, file in tqdm.tqdm(file_dict.items(), disable=not verbose):
+        # multitrack case
+        if file_id is 'tracks':
+            continue
+        # tracks and metadata case
+        else:
+            for tracks in file.keys():
+                filepath = file[tracks][0]
+                checksum = file[tracks][1]
+                if filepath is not None:
+                    local_path = os.path.join(data_home, filepath)
+                    validate(
+                        file_id, local_path, checksum, missing_files, invalid_checksums
+                    )
+
+
 def check_index(dataset_index, data_home, verbose=True):
     """check index to find out missing files and files with invalid checksum
 
@@ -94,29 +125,33 @@ def check_index(dataset_index, data_home, verbose=True):
     missing_files = {}
     invalid_checksums = {}
 
-    # loop over track ids
-    key_subset = [k for k in dataset_index.keys() if not k == 'version']
-    for key in key_subset:
-        # metadata in the index can be empty
-        if dataset_index[key] is None:
-            continue
-        for file_id, file in tqdm.tqdm(dataset_index[key].items(), disable=not verbose):
-            # loop over each data file for this track id
-            for key in file.keys():
-                filepath = file[key][0]
-                checksum = file[key][1]
-                if filepath is not None:
-                    local_path = os.path.join(data_home, filepath)
-                    # validate that the file exists on disk
-                    if not os.path.exists(local_path):
-                        if file_id not in missing_files.keys():
-                            missing_files[file_id] = []
-                        missing_files[file_id].append(local_path)
-                    # validate that the checksum matches
-                    elif md5(local_path) != checksum:
-                        if file_id not in invalid_checksums.keys():
-                            invalid_checksums[file_id] = []
-                        invalid_checksums[file_id].append(local_path)
+    # check index
+    if dataset_index['metadata'] is not None:
+        check_files(
+            dataset_index['metadata'],
+            data_home,
+            verbose,
+            missing_files,
+            invalid_checksums,
+        )
+
+    if 'tracks' in dataset_index:
+        check_files(
+            dataset_index['tracks'],
+            data_home,
+            verbose,
+            missing_files,
+            invalid_checksums,
+        )
+
+    if 'multitracks' in dataset_index:
+        check_files(
+            dataset_index['multitracks'],
+            data_home,
+            verbose,
+            missing_files,
+            invalid_checksums,
+        )
 
     return missing_files, invalid_checksums
 
