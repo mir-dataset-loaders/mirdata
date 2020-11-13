@@ -95,7 +95,7 @@ def check_files(file_dict, data_home, verbose, missing_files, invalid_checksums)
         # multitrack case
         if file_id is 'tracks':
             continue
-        # tracks and metadata case
+        # tracks
         else:
             for tracks in file.keys():
                 filepath = file[tracks][0]
@@ -105,6 +105,18 @@ def check_files(file_dict, data_home, verbose, missing_files, invalid_checksums)
                     validate(
                         file_id, local_path, checksum, missing_files, invalid_checksums
                     )
+
+
+def check_metadata(file_dict, data_home, verbose, missing_files, invalid_checksums):
+    for file_id, file in tqdm.tqdm(file_dict.items(), disable=not verbose):
+        print(file_id, file)
+        filepath = file[0]
+        checksum = file[1]
+        if filepath is not None:
+            local_path = os.path.join(data_home, filepath)
+            validate(
+                file_id, local_path, checksum, missing_files, invalid_checksums
+            )
 
 
 def check_index(dataset_index, data_home, verbose=True):
@@ -127,7 +139,7 @@ def check_index(dataset_index, data_home, verbose=True):
 
     # check index
     if dataset_index['metadata'] is not None:
-        check_files(
+        check_metadata(
             dataset_index['metadata'],
             data_home,
             verbose,
