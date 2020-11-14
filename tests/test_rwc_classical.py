@@ -2,34 +2,35 @@
 
 import numpy as np
 
-from mirdata import rwc_classical, utils
+from mirdata.datasets import rwc_classical
+from mirdata import utils
 from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = 'RM-C003'
-    data_home = 'tests/resources/mir_datasets/RWC-Classical'
+    default_trackid = "RM-C003"
+    data_home = "tests/resources/mir_datasets/rwc_classical"
     track = rwc_classical.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        'track_id': 'RM-C003',
-        'audio_path': 'tests/resources/mir_datasets/RWC-Classical/'
-        + 'audio/rwc-c-m01/3.wav',
-        'sections_path': 'tests/resources/mir_datasets/RWC-Classical/'
-        + 'annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT',
-        'beats_path': 'tests/resources/mir_datasets/RWC-Classical/'
-        + 'annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT',
-        'piece_number': 'No. 3',
-        'suffix': 'M01',
-        'track_number': 'Tr. 03',
-        'title': 'Symphony no.5 in C minor, op.67. 1st mvmt.',
-        'composer': 'Beethoven, Ludwig van',
-        'artist': 'Tokyo City Philharmonic Orchestra',
-        'duration': 435,
-        'category': 'Symphony',
+        "track_id": "RM-C003",
+        "audio_path": "tests/resources/mir_datasets/rwc_classical/"
+        + "audio/rwc-c-m01/3.wav",
+        "sections_path": "tests/resources/mir_datasets/rwc_classical/"
+        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
+        "beats_path": "tests/resources/mir_datasets/rwc_classical/"
+        + "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+        "piece_number": "No. 3",
+        "suffix": "M01",
+        "track_number": "Tr. 03",
+        "title": "Symphony no.5 in C minor, op.67. 1st mvmt.",
+        "composer": "Beethoven, Ludwig van",
+        "artist": "Tokyo City Philharmonic Orchestra",
+        "duration": 435,
+        "category": "Symphony",
     }
 
-    expected_property_types = {'beats': utils.BeatData, 'sections': utils.SectionData}
+    expected_property_types = {"beats": utils.BeatData, "sections": utils.SectionData}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -41,11 +42,11 @@ def test_track():
 
 def test_to_jams():
 
-    data_home = 'tests/resources/mir_datasets/RWC-Classical'
-    track = rwc_classical.Track('RM-C003', data_home=data_home)
+    data_home = "tests/resources/mir_datasets/rwc_classical"
+    track = rwc_classical.Track("RM-C003", data_home=data_home)
     jam = track.to_jams()
 
-    beats = jam.search(namespace='beat')[0]['data']
+    beats = jam.search(namespace="beat")[0]["data"]
     assert [beat.time for beat in beats] == [
         1.65,
         2.58,
@@ -69,21 +70,21 @@ def test_to_jams():
         None,
     ]
 
-    segments = jam.search(namespace='segment')[0]['data']
+    segments = jam.search(namespace="segment")[0]["data"]
     assert [segment.time for segment in segments] == [0.29, 419.96]
     assert [segment.duration for segment in segments] == [45.85, 13.75]
-    assert [segment.value for segment in segments] == ['chorus A', 'ending']
+    assert [segment.value for segment in segments] == ["chorus A", "ending"]
     assert [segment.confidence for segment in segments] == [None, None]
 
-    assert jam['file_metadata']['title'] == 'Symphony no.5 in C minor, op.67. 1st mvmt.'
-    assert jam['file_metadata']['artist'] == 'Tokyo City Philharmonic Orchestra'
+    assert jam["file_metadata"]["title"] == "Symphony no.5 in C minor, op.67. 1st mvmt."
+    assert jam["file_metadata"]["artist"] == "Tokyo City Philharmonic Orchestra"
 
 
 def test_load_sections():
     # load a file which exists
     section_path = (
-        'tests/resources/mir_datasets/RWC-Classical/'
-        + 'annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT'
+        "tests/resources/mir_datasets/rwc_classical/"
+        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT"
     )
     section_data = rwc_classical.load_sections(section_path)
 
@@ -95,7 +96,7 @@ def test_load_sections():
     # check values
     assert np.array_equal(section_data.intervals[:, 0], np.array([0.29, 419.96]))
     assert np.array_equal(section_data.intervals[:, 1], np.array([46.14, 433.71]))
-    assert np.array_equal(section_data.labels, np.array(['chorus A', 'ending']))
+    assert np.array_equal(section_data.labels, np.array(["chorus A", "ending"]))
 
 
 def test_position_in_bar():
@@ -152,8 +153,8 @@ def test_position_in_bar():
 
 def test_load_beats():
     beats_path = (
-        'tests/resources/mir_datasets/RWC-Classical/'
-        + 'annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT'
+        "tests/resources/mir_datasets/rwc_classical/"
+        + "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT"
     )
     beat_data = rwc_classical.load_beats(beats_path)
 
@@ -170,16 +171,16 @@ def test_load_beats():
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/RWC-Classical'
+    data_home = "tests/resources/mir_datasets/rwc_classical"
     metadata = rwc_classical._load_metadata(data_home)
-    assert metadata['data_home'] == data_home
-    assert metadata['RM-C003'] == {
-        'piece_number': 'No. 3',
-        'suffix': 'M01',
-        'track_number': 'Tr. 03',
-        'title': 'Symphony no.5 in C minor, op.67. 1st mvmt.',
-        'composer': 'Beethoven, Ludwig van',
-        'artist': 'Tokyo City Philharmonic Orchestra',
-        'duration': 435,
-        'category': 'Symphony',
+    assert metadata["data_home"] == data_home
+    assert metadata["RM-C003"] == {
+        "piece_number": "No. 3",
+        "suffix": "M01",
+        "track_number": "Tr. 03",
+        "title": "Symphony no.5 in C minor, op.67. 1st mvmt.",
+        "composer": "Beethoven, Ludwig van",
+        "artist": "Tokyo City Philharmonic Orchestra",
+        "duration": 435,
+        "category": "Symphony",
     }
