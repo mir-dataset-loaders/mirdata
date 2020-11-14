@@ -6,10 +6,12 @@ import sys
 import types
 
 import mirdata
-from mirdata import utils
+from mirdata import utils, download_utils
 
 import json
 import pytest
+
+from mirdata.utils import LargeData
 
 if sys.version_info.major == 3:
     builtin_module_name = "builtins"
@@ -66,6 +68,21 @@ def get_attributes_and_properties(class_instance):
         "cached_properties": cached_properties,
         "functions": functions,
     }
+
+
+def remote_index():
+    REMOTE_INDEX = {
+        "remote_index": download_utils.RemoteFileMetadata(
+            filename="acousticbrainz_genre_dataset_little_test.json",
+            url="https://zenodo.org/record/4273918/files/acousticbrainz_genre_dataset_little_test.json?download=1",
+            checksum="327812092ffa1d2661c99a450fad5884",  # the md5 checksum
+            destination_dir="mirdata/indexes",  # relative path for where to unzip the data, or None
+        ),
+    }
+    DATA = LargeData("acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX)
+    with open("tests/indexes/acousticbrainz_genre_dataset_little_test.json") as f:
+        little_index = json.load(f)
+    assert DATA.index == little_index
 
 
 @pytest.fixture
