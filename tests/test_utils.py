@@ -70,21 +70,6 @@ def get_attributes_and_properties(class_instance):
     }
 
 
-def remote_index():
-    REMOTE_INDEX = {
-        "remote_index": download_utils.RemoteFileMetadata(
-            filename="acousticbrainz_genre_dataset_little_test.json",
-            url="https://zenodo.org/record/4273918/files/acousticbrainz_genre_dataset_little_test.json?download=1",
-            checksum="327812092ffa1d2661c99a450fad5884",  # the md5 checksum
-            destination_dir="mirdata/indexes",  # relative path for where to unzip the data, or None
-        ),
-    }
-    DATA = LargeData("acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX)
-    with open("tests/indexes/acousticbrainz_genre_dataset_little_test.json") as f:
-        little_index = json.load(f)
-    assert DATA.index == little_index
-
-
 @pytest.fixture
 def mock_validated(mocker):
     return mocker.patch.object(utils, "check_validated")
@@ -98,6 +83,21 @@ def mock_validator(mocker):
 @pytest.fixture
 def mock_check_index(mocker):
     return mocker.patch.object(utils, "check_index")
+
+
+def test_remote_index():
+    REMOTE_INDEX = {
+        "remote_index": download_utils.RemoteFileMetadata(
+            filename="acousticbrainz_genre_dataset_little_test.json",
+            url="https://zenodo.org/record/4274551/files/acousticbrainz_genre_dataset_little_test.json?download=1",
+            checksum="7f256c49438022ab493c88f5a1b43e88",  # the md5 checksum
+            destination_dir=".",  # relative path for where to unzip the data, or None
+        ),
+    }
+    DATA = LargeData("acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX)
+    with open("tests/indexes/acousticbrainz_genre_dataset_little_test.json") as f:
+        little_index = json.load(f)
+    assert DATA.index == little_index
 
 
 def test_md5(mocker):

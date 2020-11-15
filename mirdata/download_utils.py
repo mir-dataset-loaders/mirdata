@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """functions for downloading from the web
-
 Attributes:
     RemoteFileMetadata (namedtuple): It specifies the metadata of the remote file to download.
         The metadata consists of `filename`, `url`, `checksum`, and `destination_dir`.
@@ -9,7 +8,7 @@ Attributes:
 from collections import namedtuple
 import os
 from tqdm import tqdm
-import urllib
+import urllib.request
 import tarfile
 import zipfile
 
@@ -30,7 +29,6 @@ def downloader(
     cleanup=True,
 ):
     """Download data to `save_dir` and optionally print a message.
-
     Args:
         save_dir (str):
             The directory to download the data
@@ -47,7 +45,6 @@ def downloader(
             If True, existing files are overwritten by the downloaded files.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
-
     """
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
@@ -97,9 +94,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     Fetch a dataset pointed by remote's url, save into path using remote's
     filename and ensure its integrity based on the MD5 Checksum of the
     downloaded file.
-
     Adapted from scikit-learn's sklearn.datasets.base._fetch_remote.
-
     Args:
         remote (RemoteFileMetadata): Named tuple containing remote dataset
             meta information: url, filename and checksum
@@ -107,7 +102,6 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
         force_overwrite  (bool):
             If True, overwrite existing file with the downloaded file.
             If False, does not overwrite, but checks that checksum is consistent.
-
     Returns:
         file_path (str): Full path of the created file.
     """
@@ -157,7 +151,6 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
 
 def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
     """Download and unzip a zip file.
-
     Args:
         zip_remote (RemoteFileMetadata):
             Object containing download information
@@ -175,11 +168,9 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
 def extractall_unicode(zfile, out_dir):
     """Extract all files inside a zip archive to a output directory.
     In comparison to the zipfile, it checks for correct file name encoding
-
     Args:
         zfile (obj): Zip file object created with zipfile.ZipFile
         out_dir (str): Output folder
-
     """
     for m in zfile.infolist():
         data = zfile.read(m)  # extract zipped data into memory
@@ -200,11 +191,9 @@ def extractall_unicode(zfile, out_dir):
 
 def unzip(zip_path, cleanup=True):
     """Unzip a zip file inside it's current directory.
-
     Args:
         zip_path (str): Path to zip file
         cleanup (bool): If True, remove zipfile after unzipping. Default=False
-
     """
     zfile = zipfile.ZipFile(zip_path, 'r')
     extractall_unicode(zfile, os.path.dirname(zip_path))
@@ -215,7 +204,6 @@ def unzip(zip_path, cleanup=True):
 
 def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=True):
     """Download and untar a tar file.
-
     Args:
         tar_remote (RemoteFileMetadata): Object containing download information
         save_dir (str): Path to save downloaded file
@@ -228,7 +216,6 @@ def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=True):
 
 def untar(tar_path, cleanup=True):
     """Untar a tar file inside it's current directory.
-
     Args:
         tar_path (str): Path to tar file
         cleanup (bool): If True, remove tarfile after untarring. Default=False
