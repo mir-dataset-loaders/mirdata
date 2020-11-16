@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import librosa
 import numpy as np
 
 from mirdata.datasets import classicalDB
@@ -61,5 +61,25 @@ def test_load_key():
     assert key_data == "D major"
 
     assert classicalDB.load_key(None) is None
+
+
+def test_load_spectrum():
+    spectrum_path = (
+        "tests/resources/mir_datasets/classicalDB/spectrums/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json"
+    )
+    audio_path = (
+        "tests/resources/mir_datasets/classicalDB/audio/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.wav"
+    )
+    spectrum_data = classicalDB.load_spectrum(spectrum_path)
+
+    assert type(spectrum_data) == np.ndarray
+
+    y, sr = librosa.load(audio_path)
+    spectrum = librosa.cqt(y, sr=sr, window='blackmanharris', hop_length=4096)
+    for spec_data, spec in zip(spectrum_data, spectrum):
+        for item_data, item in zip(spec_data, spec):
+            assert np.isclose(item_data, item)
+
+    assert classicalDB.load_spectrum(None) is None
 
 

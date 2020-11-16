@@ -9,11 +9,14 @@ Department of Information and Communication Technologies.
 
 This dataset is mainly intended to assess the performance of computational key estimation algorithms in classical music.
 
+The audios are privatives
+
 """
 
 import json
 import librosa
 import os
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -32,10 +35,11 @@ BIBTEX = """@article{gomez2006tonal,
 DOWNLOAD_INFO = """
     Unfortunately the audio files of the classicalDB dataset are not available
     for download. If you have the classicalDB audio dataset, place the contents into
-    a folder called GiantSteps_tempo with the following structure:
+    a folder called classicalDB with the following structure:
         > classicalDB/
             > audio/
             > keys/
+            > spectrums/
     and copy the folder to {data_home}
 """
 DATA = utils.LargeData("classicalDB_index.json")
@@ -66,14 +70,19 @@ class Track(core.Track):
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.keys_path = os.path.join(self._data_home, self._track_paths["key"][0])
+        self.key_path = os.path.join(self._data_home, self._track_paths["key"][0])
+        self.spectrum_path = os.path.join(self._data_home, self._track_paths["spectrum"][0])
         self.title = self.audio_path.replace(".wav", "").split("/")[-1]
 
     @utils.cached_property
     def key(self):
         """String: key annotation"""
-        return load_key(self.keys_path)
+        return load_key(self.key_path)
 
+    @utils.cached_property
+    def spectrum(self):
+        """String: spectrum"""
+        return load_key(self.spectrum_path)
 
     @property
     def audio(self):
@@ -127,3 +136,27 @@ def load_key(keys_path):
         key = f.readline()
 
     return key.replace('\t', ' ').replace('\n', '')
+
+
+def load_spectrum(spectrum_path):
+    """Load classicalDB spectrum data from a file
+
+    Args:
+        spectrum_path (str): path to spectrum  file
+
+    Returns:
+        (str): loaded key data
+
+    """
+    if spectrum_path is None:
+        return None
+
+    if not os.path.exists(spectrum_path):
+        raise IOError("spectrum_path {} does not exist".format(spectrum_path))
+
+    with open(spectrum_path) as f:
+        data = json.load(f)
+
+    spectrum = [list(map(complex, x)) for x in data['spectrum']]
+
+    return np.array(spectrum)

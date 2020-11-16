@@ -29,16 +29,19 @@ def md5(file_path):
 def make_classicalDB_index(data_path):
     audio_dir = os.path.join(data_path, 'audio')
     key_dir = os.path.join(data_path, 'keys')
+    spectrum_dir = os.path.join(data_path, 'spectrums')
     classicalDB_index = {}
     for track_id, key_file in enumerate(sorted(os.listdir(key_dir))):
         if '.txt' in key_file:
             codec = '.wav'
-            audio_path = os.path.join(audio_dir, key_file.replace('.txt', codec))
+            audio_path = os.path.join(audio_dir, os.path.splitext(key_file)[0] + codec)
+            spectrum_path = os.path.join(spectrum_dir, os.path.splitext(key_file)[0] + '.json')
             key_path = os.path.join(key_dir, key_file)
 
             classicalDB_index[track_id] = {
                 'audio': (audio_path.replace(data_path + '/', ''), md5(audio_path)),
                 'key': (key_path.replace(data_path + '/', ''), md5(key_path)),
+                'spectrum': (spectrum_path.replace(data_path + '/', ''), md5(spectrum_path)),
             }
     with open(classicalDB_INDEX_PATH, 'w') as fhandle:
         json.dump(classicalDB_index, fhandle, indent=2)
