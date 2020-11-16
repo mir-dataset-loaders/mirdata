@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""giantsteps_key Dataset Loader
+"""classicalDB Dataset Loader
 
-The ClassicalDB Dataset includes 880 classical music pieces across different styles from s.XVII to s. XX , annotated with
+The ClassicalDB Dataset includes 880 classical music pieces across different styles from s.XVII to s. XX annotated with
 single-key labels.
 
 Gómez, E. (2006). PhD Thesis. Tonal description of music audio signals.
@@ -9,8 +9,11 @@ Department of Information and Communication Technologies.
 
 This dataset is mainly intended to assess the performance of computational key estimation algorithms in classical music.
 
-The audios are privatives
-
+**2020 note**: The audios are privatives. If you have the private collection, you can add it to the dataset. If you
+don't have the original collection, you could create it from your private collection because the key is robust across
+the different versions. Moreover, we have added the spectrum of each audio. Maybe spectrum is all you need, or you can
+use it for comparing how different are your musical audio versions. Spectrum has been computed as is shown here:
+<https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/classicalDB/ClassicalDB_spectrum_features.ipynb>
 """
 
 import json
@@ -157,6 +160,6 @@ def load_spectrum(spectrum_path):
     with open(spectrum_path) as f:
         data = json.load(f)
 
-    spectrum = [list(map(complex, x)) for x in data['spectrum']]
+    spectrum = [list(map(complex    , x)) for x in data['spectrum']]
 
     return np.array(spectrum)
