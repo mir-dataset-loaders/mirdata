@@ -37,32 +37,101 @@ Acknowledgements
 This work is partially supported by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 688382 AudioCommons.
 """
 
-import csv
 import json
-
-import librosa
-import numpy as np
 import os
 
-from mirdata import download_utils
+from mirdata import download_utils, core
 from mirdata import jams_utils
-from mirdata import track
 from mirdata import utils
+
+
+BIBTEX = """@inproceedings{bogdanov2019acousticbrainz,
+  title={The AcousticBrainz genre dataset: Multi-source, multi-level, multi-label, and large-scale},
+  author={Bogdanov, Dmitry and Porter, Alastair and Schreiber, Hendrik and Urbano, Juli{\'a}n and Oramas, Sergio},
+  booktitle={Proceedings of the 20th Conference of the International Society for Music Information Retrieval (ISMIR 2019): 2019 Nov 4-8; Delft, The Netherlands.[Canada]: ISMIR; 2019.},
+  year={2019},
+  organization={International Society for Music Information Retrieval (ISMIR)}
+}
+"""
+
 
 DATASET_DIR = 'acousticbrainz_genre'
 REMOTES = {
-    'annotations': download_utils.RemoteFileMetadata(
-        filename='The AcousticBrainz Dataset Annotations.tar.gz',
-        url='http://isophonics.net/files/annotations/The%20AcousticBrainz Dataset%20Annotations.tar.gz',
-        checksum='62425c552d37c6bb655a78e4603828cc',
-        destination_dir='annotations',
+    'validation1': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-validation-01234567.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-validation-01234567.tar.bz2?download=1',
+        checksum='f21f9c5e398713139cca9790b656faf9',
+        destination_dir='',
+    ),
+    'validation2': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-validation-89abcdef.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-validation-89abcdef.tar.bz2?download=1',
+        checksum='34f47394ac6d8face4399f48e2b98ebe',
+        destination_dir='',
+    ),
+    'train1': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features--train-01.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features--train-01.tar.bz2?download=1',
+        checksum='db7157b5112022d609652dd21c632090',
+        destination_dir='',
+    ),
+    'train2': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-train-23.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-23.tar.bz2?download=1',
+        checksum='79581967a1be5c52e83be21261d1ef6c',
+        destination_dir='',
+    ),
+    'train3': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-train-45.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-45.tar.bz2?download=1',
+        checksum='0e48fa319fa48e5cf95eea8118d2e882',
+        destination_dir='',
+    ),
+    'train4': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-train-67.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-67.tar.bz2?download=1',
+        checksum='22ca7f1fea8a86459b7fda4530f00070',
+        destination_dir='',
+    ),
+    'train5': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-train-89.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-89.tar.bz2?download=1',
+        checksum='22ca7f1fea8a86459b7fda4530f00070',
+        destination_dir='',
+    ),
+    'train6': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-train-89.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-89.tar.bz2?download=1',
+        checksum='c6e4a2ef1b0e8ed535197b868f8c7302',
+        destination_dir='',
+    ),
+    'train7': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-train-ab.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-ab.tar.bz2?download=1',
+        checksum='513d5f306dd4f3799c137423ee444051',
+        destination_dir='',
+    ),
+    'train8': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-train-cd.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-cd.tar.bz2?download=1',
+        checksum='422d75d70d583decec0b2761865092a7',
+        destination_dir='',
+    ),
+    'train9': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz-mediaeval-features-train-ef.tar.bz2',
+        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-ef.tar.bz2?download=1',
+        checksum='021ab25a5fd1b020521824e7fce9c775',
+        destination_dir='',
     )
 }
+
+DOWNLOAD_INFO = ""
+
 
 DATA = utils.LargeData('acousticbrainz_genre_index.json')
 
 
-class Track(track.Track):
+class Track(core.Track):
     """AcousticBrainz Genre Dataset track class
 
     Args:
@@ -3615,58 +3684,6 @@ def load_extractor(path):
     return meta
 
 
-def download(data_home=None, force_overwrite=False, cleanup=True):
-    """Download the AcousticBrainz Dataset Dataset (annotations).
-
-    Args:
-        data_home (str):
-            Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-        force_overwrite (bool):
-            Whether to overwrite the existing downloaded data
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-
-    """
-
-    # use the default location: ~/mir_datasets/AcousticBrainz Dataset
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    download_message = ""
-
-    download_utils.downloader(
-        data_home,
-        remotes=REMOTES,
-        info_message=download_message,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-
-
-def validate(data_home=None, silence=False):
-    """Validate if a local version of this dataset is consistent
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        missing_files (list): List of file paths that are in the dataset index
-            but missing locally
-        invalid_checksums (list): List of file paths where the expected file exists locally
-            but has a different checksum than the reference
-
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    missing_files, invalid_checksums = utils.validator(
-        DATA.index, data_home, silence=silence
-    )
-    return missing_files, invalid_checksums
-
-
 def track_ids():
     """Get the list of track IDs for this dataset
 
@@ -3717,66 +3734,141 @@ def filter_index(search_key, data_home=None):
 
 
 def load_all_train(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for training across the four different datasets.
+
+        Args:
+            data_home (str): Local path where the dataset is stored.
+                If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+    """
     return filter_index("#train#", data_home=data_home)
 
 
 def load_all_validation(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for validating across the four different datasets.
+
+            Args:
+                data_home (str): Local path where the dataset is stored.
+                    If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+            Returns:
+                (dict): {`track_id`: track data}
+
+    """
     return filter_index("#validation#", data_home=data_home)
 
 
 def load_tagtraum_validation(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for validating in tagtraum dataset.
+
+                Args:
+                    data_home (str): Local path where the dataset is stored.
+                        If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+                Returns:
+                    (dict): {`track_id`: track data}
+
+    """
     return filter_index("tagtraum#validation#", data_home=data_home)
 
 
 def load_tagtraum_train(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for training in tagtraum dataset.
+
+                    Args:
+                        data_home (str): Local path where the dataset is stored.
+                            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+                    Returns:
+                        (dict): {`track_id`: track data}
+
+    """
     return filter_index("tagtraum#train#", data_home=data_home)
 
 
 def load_allmusic_train(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
+
+                    Args:
+                        data_home (str): Local path where the dataset is stored.
+                            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+                    Returns:
+                        (dict): {`track_id`: track data}
+
+    """
     return filter_index("allmusic#train#", data_home=data_home)
 
 
 def load_allmusic_validation(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
+
+                    Args:
+                        data_home (str): Local path where the dataset is stored.
+                            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+                    Returns:
+                        (dict): {`track_id`: track data}
+
+    """
     return filter_index("allmusic#validation#", data_home=data_home)
 
 
 def load_lastfm_train(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for training in lastfm dataset.
+
+                    Args:
+                        data_home (str): Local path where the dataset is stored.
+                            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+                    Returns:
+                        (dict): {`track_id`: track data}
+
+    """
     return filter_index("lastfm#train#", data_home=data_home)
 
 
 def load_lastfm_validation(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for validation in lastfm dataset.
+
+                    Args:
+                        data_home (str): Local path where the dataset is stored.
+                            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+                    Returns:
+                        (dict): {`track_id`: track data}
+
+    """
     return filter_index("lastfm#validation#", data_home=data_home)
 
 
 def load_discogs_train(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for training in discogs dataset.
+
+                    Args:
+                        data_home (str): Local path where the dataset is stored.
+                            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+                    Returns:
+                        (dict): {`track_id`: track data}
+
+    """
     return filter_index("allmusic#train#", data_home=data_home)
 
 
 def load_discogs_validation(data_home=None):
+    """Load from AcousticBrainz genre dataset the tracks that are used for validation in tagtraum dataset.
+
+                    Args:
+                        data_home (str): Local path where the dataset is stored.
+                            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+                    Returns:
+                        (dict): {`track_id`: track data}
+
+    """
     return filter_index("allmusic#validation#", data_home=data_home)
 
-
-def cite():
-    """Print the reference"""
-
-    cite_data = """
-===========  MLA ===========
-Bogdanov, D., Porter A., Schreiber H., Urbano J., & Oramas S. (2019).
-The AcousticBrainz Genre Dataset: Multi-Source, Multi-Level, Multi-Label, and Large-Scale.
-20th International Society for Music Information Retrieval Conference (ISMIR 2019).
-
-========== Bibtex ==========
-@inproceedings{bogdanov2019acousticbrainz,
-  title={The AcousticBrainz genre dataset: Multi-source, multi-level, multi-label, and large-scale},
-  author={Bogdanov, Dmitry and Porter, Alastair and Schreiber, Hendrik and Urbano, Juli{\'a}n and Oramas, Sergio},
-  booktitle={Proceedings of the 20th Conference of the International Society for Music Information Retrieval (ISMIR 2019): 2019 Nov 4-8; Delft, The Netherlands.[Canada]: ISMIR; 2019.},
-  year={2019},
-  organization={International Society for Music Information Retrieval (ISMIR)}
-}
-    """
-    print(cite_data)
-
-
-if __name__ == '__main__':
-    for k, track in load_allmusic_train().items():
-        print(k, track.path)
