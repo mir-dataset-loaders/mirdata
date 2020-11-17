@@ -75,4 +75,4 @@ def pytest_sessionfinish(session, exitstatus):
             with open(file_destination,append_write) as txtfile:
                 txtfile.write(report + '\n')
         else:
-            print('Folder {} does not exist'.format(os.path.isdir(os.path.dirname(file_destination))))
+            print('Folder {} does not exist'.format(os.path.dirname(file_destination)))
