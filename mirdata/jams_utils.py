@@ -96,7 +96,12 @@ def jams_converter(
     # metadata
     if metadata is not None:
         for key in metadata:
-            if key == 'duration' and duration is not None and metadata[key] != duration and audio_path is not None:
+            if (
+                key == 'duration'
+                and duration is not None
+                and metadata[key] != duration
+                and audio_path is not None
+            ):
                 print(
                     "Warning: duration provided in metadata does not"
                     + "match the duration computed from the audio file."
