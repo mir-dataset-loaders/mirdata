@@ -1,27 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Utility functions for mirdata
-
-Attributes:
-
-    NoteData (namedtuple): `intervals`, `notes`, `confidence`
-
-    F0Data (namedtuple): `times`, `frequencies`, `confidence`
-
-    LyricData (namedtuple): `start_times`, `end_times`, `lyrics`, `pronounciations`
-
-    SectionData (namedtuple): `start_times`, `end_times`, `sections`
-
-    BeatData (namedtuple): `beat_times`, `beat_positions`
-
-    ChordData (namedtuple): `start_times`, `end_times`, `chords`
-
-    KeyData (namedtuple): `start_times`, '`end_times`, `keys`
-
-    EventData (namedtuple): `start_times`, `end_times`, `event`
-
-    TempoData (namedtuple): `time`, `duration`, `value`, `confidence`
-
-"""
+"""Utility functions for mirdata"""
 
 
 from collections import namedtuple
@@ -218,31 +196,6 @@ def validator(dataset_index, data_home, verbose=True):
         log_message("-" * 20, verbose)
 
     return missing_files, invalid_checksums
-
-
-NoteData = namedtuple("NoteData", ["intervals", "notes", "confidence"])
-
-F0Data = namedtuple("F0Data", ["times", "frequencies", "confidence"])
-
-MultipitchData = namedtuple(
-    "MultipitchData", ["times", "frequency_list", "confidence_list"]
-)
-
-LyricData = namedtuple(
-    "LyricData", ["start_times", "end_times", "lyrics", "pronunciations"]
-)
-
-SectionData = namedtuple("SectionData", ["intervals", "labels"])
-
-BeatData = namedtuple("BeatData", ["beat_times", "beat_positions"])
-
-ChordData = namedtuple("ChordData", ["intervals", "labels"])
-
-KeyData = namedtuple("KeyData", ["start_times", "end_times", "keys"])
-
-TempoData = namedtuple("TempoData", ["time", "duration", "value", "confidence"])
-
-EventData = namedtuple("EventData", ["start_times", "end_times", "event"])
 
 
 def load_json_index(filename):
