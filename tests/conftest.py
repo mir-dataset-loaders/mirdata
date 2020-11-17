@@ -58,7 +58,7 @@ def pytest_runtest_makereport(item, call):
 
 def pytest_sessionfinish(session, exitstatus):
     if len(session.config.option.report_file)>0:
-        report = 'Tests: '+','.join(session.config.option.file_or_dir) + '\n'
+        report = '\nTests: '+','.join(session.config.option.file_or_dir) + '\n'
         report += 'Run status code: '+ str(exitstatus) + '\n'
         report += 'Running time: '+str(session.config.option.durations_min)  + '\n'
         passed_amount = sum(1 for result in session.results.values() if result.passed)
@@ -74,3 +74,5 @@ def pytest_sessionfinish(session, exitstatus):
 
             with open(file_destination,append_write) as txtfile:
                 txtfile.write(report + '\n')
+        else:
+            print('Folder {} does not exist'.format(os.path.isdir(os.path.dirname(file_destination))))
