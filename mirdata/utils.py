@@ -90,7 +90,9 @@ def validate(file_id, local_path, checksum, missing_files, invalid_checksums):
         invalid_checksums[file_id].append(local_path)
 
 
-def check_files(file_dict, data_home, verbose, missing_files, invalid_checksums):
+def check_files(file_dict, data_home, verbose):
+    missing = {}
+    invalid = {}
     for file_id, file in tqdm.tqdm(file_dict.items(), disable=not verbose):
         # multitrack case
         if file_id is 'tracks':
@@ -103,18 +105,22 @@ def check_files(file_dict, data_home, verbose, missing_files, invalid_checksums)
                 if filepath is not None:
                     local_path = os.path.join(data_home, filepath)
                     validate(
-                        file_id, local_path, checksum, missing_files, invalid_checksums
+                        file_id, local_path, checksum, missing, invalid
                     )
+    return missing, invalid
 
 
-def check_metadata(file_dict, data_home, verbose, missing_files, invalid_checksums):
+def check_metadata(file_dict, data_home, verbose):
+    missing = {}
+    invalid = {}
     for file_id, file in tqdm.tqdm(file_dict.items(), disable=not verbose):
         print(file_id, file)
         filepath = file[0]
         checksum = file[1]
         if filepath is not None:
             local_path = os.path.join(data_home, filepath)
-            validate(file_id, local_path, checksum, missing_files, invalid_checksums)
+            validate(file_id, local_path, checksum, missing, invalid)
+    return missing, invalid
 
 
 def check_index(dataset_index, data_home, verbose=True):
@@ -137,31 +143,31 @@ def check_index(dataset_index, data_home, verbose=True):
 
     # check index
     if dataset_index['metadata'] is not None:
-        check_metadata(
+        missing_metadata, invalid_metadata = check_metadata(
             dataset_index['metadata'],
             data_home,
             verbose,
-            missing_files,
-            invalid_checksums,
         )
+        missing_files['metadata'] = missing_metadata
+        invalid_checksums['metadata'] = invalid_metadata
 
     if 'tracks' in dataset_index:
-        check_files(
+        missing_tracks, invalid_tracks = check_files(
             dataset_index['tracks'],
             data_home,
             verbose,
-            missing_files,
-            invalid_checksums,
         )
+        missing_files['tracks'] = missing_tracks
+        invalid_checksums['tracks'] = invalid_tracks
 
     if 'multitracks' in dataset_index:
-        check_files(
+        missing_multitracks, invalid_multitracks = check_files(
             dataset_index['multitracks'],
             data_home,
             verbose,
-            missing_files,
-            invalid_checksums,
         )
+        missing_files['multitracks'] = missing_multitracks
+        invalid_checksums['multitracks'] = invalid_multitracks
 
     return missing_files, invalid_checksums
 
