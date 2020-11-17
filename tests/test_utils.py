@@ -6,10 +6,12 @@ import sys
 import types
 
 import mirdata
-from mirdata import utils
+from mirdata import utils, download_utils
 
 import json
 import pytest
+
+from mirdata.utils import LargeData
 
 if sys.version_info.major == 3:
     builtin_module_name = "builtins"
@@ -83,6 +85,21 @@ def mock_check_index(mocker):
     return mocker.patch.object(utils, "check_index")
 
 
+def test_remote_index():
+    REMOTE_INDEX = {
+        "remote_index": download_utils.RemoteFileMetadata(
+            filename="acousticbrainz_genre_dataset_little_test.json",
+            url="https://zenodo.org/record/4274551/files/acousticbrainz_genre_dataset_little_test.json?download=1",
+            checksum="7f256c49438022ab493c88f5a1b43e88",  # the md5 checksum
+            destination_dir=".",  # relative path for where to unzip the data, or None
+        ),
+    }
+    DATA = LargeData("acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX)
+    with open("tests/indexes/acousticbrainz_genre_dataset_little_test.json") as f:
+        little_index = json.load(f)
+    assert DATA.index == little_index
+
+
 def test_md5(mocker):
     audio_file = b"audio1234"
 
@@ -138,4 +155,3 @@ def test_validator(mocker, mock_check_index, missing_files, invalid_checksums):
     assert m == missing_files
     assert c == invalid_checksums
     mock_check_index.assert_called_once_with("foo", "bar", False)
-
