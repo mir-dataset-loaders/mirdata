@@ -57,8 +57,9 @@ When this is not possible, (e.g. for data that is no longer available), find as 
 dataset which is necessary for the loading and validating functionalities of `mirdata`. In particular, indexes contain 
 information about the files included in the dataset, their location and checksums.
 
-The index is a json file with the mandatory top-level keys `version` and `metadata` and at least one of the optional 
-top-level keys `tracks`, `multitracks` or `records`, explained below. Scripts used to create the dataset indexes are in
+The index is a json file with the mandatory top-level key `version` and at least one of the optional 
+top-level keys `tracks`, `multitracks` or `records`, explained below. The index can also optionally have the top-level 
+key `metadata`, but it is not required. Scripts used to create the dataset indexes are in
  the [scripts](https://github.com/mir-dataset-loaders/mirdata/tree/master/scripts) folder. For a standard example, see 
  the script used to make the [Example index](https://github.com/mir-dataset-loaders/mirdata/blob/master/scripts/make_ikala_index.py).
 
@@ -82,7 +83,6 @@ Such an index would look like this:
         }
 ```
 
-#### Optional top-level keys
 
 The optional top-level keys (`tracks`, `multitracks` and `records`) relate to different organizations of music datasets.
 `tracks` should be used when the dataset is organized as a collection of individual tracks, namely 
