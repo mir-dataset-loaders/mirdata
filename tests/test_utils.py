@@ -97,7 +97,7 @@ def test_remote_index():
     DATA = LargeData("acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX)
     with open("tests/indexes/acousticbrainz_genre_dataset_little_test.json") as f:
         little_index = json.load(f)
-    assert DATA.index == little_index
+    assert DATA.index == little_index['tracks']
 
 
 def test_md5(mocker):
