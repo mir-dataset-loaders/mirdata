@@ -105,9 +105,7 @@ def check_files(file_dict, data_home, verbose):
                 checksum = file[tracks][1]
                 if filepath is not None:
                     local_path = os.path.join(data_home, filepath)
-                    validate(
-                        file_id, local_path, checksum, missing, invalid
-                    )
+                    validate(file_id, local_path, checksum, missing, invalid)
     return missing, invalid
 
 
@@ -296,7 +294,9 @@ class LargeData(object):
     def index(self):
         if self.remote_index is not None:
             working_dir = os.path.dirname(os.path.realpath(__file__))
-            path_index_file = os.path.join(working_dir, "datasets/indexes", self.index_file)
+            path_index_file = os.path.join(
+                working_dir, "datasets/indexes", self.index_file
+            )
             if not os.path.isfile(path_index_file):
                 path_indexes = os.path.join(working_dir, "datasets/indexes")
                 download_utils.downloader(path_indexes, remotes=self.remote_index)
