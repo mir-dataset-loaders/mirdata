@@ -29,6 +29,7 @@ import hashlib
 import os
 import json
 import tqdm
+from mirdata import download_utils
 
 
 def md5(file_path):
@@ -216,7 +217,7 @@ class cached_property(object):
 
 
 class LargeData(object):
-    def __init__(self, index_file, metadata_load_fn=None):
+    def __init__(self, index_file, metadata_load_fn=None, remote_index=None):
         """Object which loads and caches large data the first time it's
         accessed.
 
@@ -233,9 +234,16 @@ class LargeData(object):
         self._metadata = None
         self.index_file = index_file
         self.metadata_load_fn = metadata_load_fn
+        self.remote_index = remote_index
 
     @cached_property
     def index(self):
+        if self.remote_index is not None:
+            working_dir = os.path.dirname(os.path.realpath(__file__))
+            path_index_file = os.path.join(working_dir, "datasets/indexes", self.index_file)
+            if not os.path.isfile(path_index_file):
+                path_indexes = os.path.join(working_dir, "datasets/indexes")
+                download_utils.downloader(path_indexes, remotes=self.remote_index)
         return load_json_index(self.index_file)
 
     def metadata(self, data_home):
