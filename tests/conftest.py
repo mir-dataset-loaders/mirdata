@@ -1,40 +1,6 @@
 # -*- coding: utf-8 -*-
 import pytest
-import smtplib
-
-from os.path import basename
-from email.mime.application import MIMEApplication
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.utils import COMMASPACE, formatdate
-
-def send_mail(send_from, send_to, subject, text, files=None,
-              server="127.0.0.1"):
-    assert isinstance(send_to, list)
-
-    msg = MIMEMultipart()
-    msg['From'] = send_from
-    msg['To'] = COMMASPACE.join(send_to)
-    msg['Date'] = formatdate(localtime=True)
-    msg['Subject'] = subject
-
-    msg.attach(MIMEText(text))
-
-    for f in files or []:
-        with open(f, "rb") as fil:
-            part = MIMEApplication(
-                fil.read(),
-                Name=basename(f)
-            )
-        # After the file is closed
-        part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
-        msg.attach(part)
-
-
-    smtp = smtplib.SMTP(server)
-    smtp.sendmail(send_from, send_to, msg.as_string())
-    smtp.close()
-
+import os
 
 def pytest_addoption(parser):
     parser.addoption(
@@ -44,9 +10,7 @@ def pytest_addoption(parser):
     parser.addoption(
         "--skip-download", action="store_true", default=False, help="skip download step"
     )
-    parser.addoption(
-        "--send-email", action="store_true", default=False, help="send test results on email"
-    )
+    parser.addoption("--report-file", type=str, default="", help="dataset to test locally")
 
 
 # @pytest.fixture(scope='session')
@@ -76,8 +40,8 @@ def skip_download(request):
     return request.config.getoption('--skip-download')
 
 @pytest.fixture(scope='session')
-def send_email(request):
-    return request.config.getoption('--send-email')
+def report_file(request):
+    return request.config.getoption('--report-file')
 
 
 def pytest_sessionstart(session):
@@ -93,10 +57,20 @@ def pytest_runtest_makereport(item, call):
         item.session.results[item] = result
 
 def pytest_sessionfinish(session, exitstatus):
-    print()
-    print('run status code:', exitstatus)
-    passed_amount = sum(1 for result in session.results.values() if result.passed)
-    failed_amount = sum(1 for result in session.results.values() if result.failed)
-    print(f'there are {passed_amount} passed and {failed_amount} failed tests')
-    if session.config.option.send_email:
-        send_mail('mirdatatests@gmail.com', ['miron.marius@upf.edu'], 'mirdata weekly reports', 'My Text', server="myserver")
+    if len(session.config.option.report_file)>0:
+        report = 'Tests: '+','.join(session.config.option.file_or_dir) + '\n'
+        report += 'Run status code: '+ str(exitstatus) + '\n'
+        report += 'Running time: '+str(session.config.option.durations_min)  + '\n'
+        passed_amount = sum(1 for result in session.results.values() if result.passed)
+        failed_amount = sum(1 for result in session.results.values() if result.failed)
+        report += 'There are {} passed and {} failed tests \n'.format(passed_amount,failed_amount)
+        print(report)
+        file_destination=session.config.option.report_file
+        if os.path.isdir(os.path.dirname(file_destination)):
+            if os.path.exists(file_destination):
+                append_write = 'a' # append if already exists
+            else:
+                append_write = 'w' # make a new file if not
+
+            with open(file_destination,append_write) as txtfile:
+                txtfile.write(report + '\n')
