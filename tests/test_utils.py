@@ -97,7 +97,7 @@ def test_remote_index():
     DATA = LargeData("acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX)
     with open("tests/indexes/acousticbrainz_genre_dataset_little_test.json") as f:
         little_index = json.load(f)
-    assert DATA.index == little_index
+    assert DATA.index == little_index['tracks']
 
 
 def test_md5(mocker):
@@ -116,16 +116,16 @@ def test_md5(mocker):
 @pytest.mark.parametrize(
     "test_index,expected_missing,expected_inv_checksum",
     [
-        ("test_index_valid.json", {}, {}),
+        ("test_index_valid.json", {"tracks":{}}, {"tracks":{}}),
         (
             "test_index_missing_file.json",
-            {"10161_chorus": ["tests/resources/10162_chorus.wav"]},
-            {},
+            {"tracks":{"10161_chorus": ["tests/resources/10162_chorus.wav"]}},
+            {"tracks":{}},
         ),
         (
             "test_index_invalid_checksum.json",
-            {},
-            {"10161_chorus": ["tests/resources/10161_chorus.wav"]},
+            {"tracks":{}},
+            {"tracks":{"10161_chorus": ["tests/resources/10161_chorus.wav"]}},
         ),
     ],
 )
@@ -143,9 +143,9 @@ def test_check_index(test_index, expected_missing, expected_inv_checksum):
 @pytest.mark.parametrize(
     "missing_files,invalid_checksums",
     [
-        ({"10161_chorus": ["tests/resources/10162_chorus.wav"]}, {}),
-        ({}, {"10161_chorus": ["tests/resources/10161_chorus.wav"]}),
-        ({}, {}),
+        ({"tracks":{"10161_chorus": ["tests/resources/10162_chorus.wav"]}}, {"tracks":{}}),
+        ({"tracks":{}}, {"tracks":{"10161_chorus": ["tests/resources/10161_chorus.wav"]}}),
+        ({"tracks":{}}, {"tracks":{}}),
     ],
 )
 def test_validator(mocker, mock_check_index, missing_files, invalid_checksums):

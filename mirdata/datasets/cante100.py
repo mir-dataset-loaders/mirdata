@@ -12,7 +12,7 @@ and the musicBrainz ID.
 Total tracks: 100
 
 cante100 audio is only available upon request. To download the audio request access in
-this link: https://zenodo.org/record/1324183/files/cante100audio.zip?download=1. Then
+this link: https://zenodo.org/record/1324183. Then
 unzip the audio into the cante100 general dataset folder for the rest of annotations
 and files.
 
@@ -110,7 +110,7 @@ REMOTES = {
         url='https://zenodo.org/record/1322542/files/cante100_README.txt?download=1',
         checksum='184209b7e7d816fa603f0c7f481c0aae',  # the md5 checksum
         destination_dir=None,  # relative path for where to unzip the data, or None
-    )
+    ),
 }
 
 
@@ -224,17 +224,15 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
+        if track_id not in DATA.index['tracks']:
             raise ValueError('{} is not a valid track ID in Example'.format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
 
-        self._track_paths = DATA.index[track_id]
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0]
-        )
+        self._track_paths = DATA.index['tracks'][track_id]
+        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.spectrogram_path = os.path.join(
             self._data_home, self._track_paths['spectrum'][0]
         )
@@ -378,6 +376,3 @@ def load_notes(notes_path):
         np.array(pitches, dtype='float'),
         np.array(confidence, dtype='float'),
     )
-
-
-

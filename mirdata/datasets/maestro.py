@@ -119,13 +119,13 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
+        if track_id not in DATA.index['tracks']:
             raise ValueError("{} is not a valid track ID in MAESTRO".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
+        self._track_paths = DATA.index['tracks'][track_id]
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
@@ -239,7 +239,7 @@ def _download(
             List indicating what to partially download. The list can include any of:
                 * 'all': audio, midi and metadata
                 * 'midi': midi and metadata only
-                * 'metadata': metadata only            
+                * 'metadata': metadata only
             If None, all data is downloaded
         info_message (str or None):
             A string of info to print when this function is called.
