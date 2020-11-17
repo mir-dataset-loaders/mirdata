@@ -45,8 +45,8 @@ def test_validation(skip_remote, dataset):
     # run validation
     missing_files, invalid_checksums = dataset.validate(verbose=True)
 
-    assert missing_files == {}
-    assert invalid_checksums == {}
+    assert missing_files == {key:{} for key in dataset._index.keys() if not key == "version"}
+    assert invalid_checksums == {key:{} for key in dataset._index.keys() if not key == "version"}
 
 
 def test_load(skip_remote, dataset):
@@ -85,8 +85,6 @@ def test_index(skip_remote, dataset):
 
     okeys = ["tracks", "multitracks", "records"]
 
-    if "metadata" not in dataset._index.keys():
-        raise NotImplementedError("The top-level key 'metadata' is missing in the index")
     if  "version" not in dataset._index.keys():
         raise NotImplementedError("The top-level key 'version' is missing in the index")
 
