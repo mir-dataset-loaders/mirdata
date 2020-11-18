@@ -59,6 +59,7 @@ def pytest_runtest_makereport(item, call):
 def pytest_sessionfinish(session, exitstatus):
     if len(session.config.option.report_file)>0:
         report = '\nTests: '+','.join(session.config.option.file_or_dir) + '\n'
+        report += 'Dataset: '+ str(session.config.option.dataset) + '\n'
         report += 'Run status code: '+ str(exitstatus) + '\n'
         report += 'Running time: '+str(session.config.option.durations_min)  + '\n'
         passed_amount = sum(1 for result in session.results.values() if result.passed)
