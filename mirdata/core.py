@@ -134,8 +134,7 @@ class Dataset(object):
         return self.track(random.choice(self.track_ids))
 
     def readme(self):
-        """Print the dataset's readme.
-        """
+        """Print the dataset's readme."""
         print(self._readme_str)
 
     def cite(self):
@@ -176,7 +175,7 @@ class Dataset(object):
         Returns:
             (list): A list of track ids
         """
-        return list(self._index.keys())
+        return list(self._index['tracks'].keys())
 
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version

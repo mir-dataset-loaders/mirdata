@@ -119,18 +119,24 @@ REMOTES = {
 }
 
 
-DATA = utils.LargeData(
-    'irmas_index.json'
-)
+DATA = utils.LargeData('irmas_index.json')
 
 
 INST_DICT = [
-    'cel', 'cla', 'flu', 'gac', 'gel', 'org', 'pia', 'sax', 'tru', 'vio', 'voi'
+    'cel',
+    'cla',
+    'flu',
+    'gac',
+    'gel',
+    'org',
+    'pia',
+    'sax',
+    'tru',
+    'vio',
+    'voi',
 ]
 
-GENRE_DICT = [
-    'cou_fol', 'cla', 'pop_roc', 'lat_sou', 'jaz_blu'
-]
+GENRE_DICT = ['cou_fol', 'cla', 'pop_roc', 'lat_sou', 'jaz_blu']
 
 
 class Track(core.Track):
@@ -150,13 +156,13 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
+        if track_id not in DATA.index['tracks']:
             raise ValueError('{} is not a valid track ID in Example'.format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
+        self._track_paths = DATA.index['tracks'][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths['annotation'][0]
@@ -172,14 +178,20 @@ class Track(core.Track):
 
         # TRAINING TRACKS
         if '__' in track_id:
-            self.predominant_instrument = os.path.basename(os.path.dirname(self.audio_path))
-            assert self.predominant_instrument in INST_DICT, "Instrument {} not in instrument dict".format(
+            self.predominant_instrument = os.path.basename(
+                os.path.dirname(self.audio_path)
+            )
+            assert (
+                self.predominant_instrument in INST_DICT
+            ), "Instrument {} not in instrument dict".format(
                 self.predominant_instrument
             )
 
             # Drum presence annotation is present
             if 'dru' in self._audio_filename or 'nod' in self._audio_filename:
-                self.genre = self._audio_filename.split('.')[0].split('[')[3].split(']')[0]
+                self.genre = (
+                    self._audio_filename.split('.')[0].split('[')[3].split(']')[0]
+                )
                 assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
                     self.genre
                 )
@@ -187,7 +199,9 @@ class Track(core.Track):
 
             # Drum presence annotation not present
             else:
-                self.genre = self._audio_filename.split('.')[0].split('[')[2].split(']')[0]
+                self.genre = (
+                    self._audio_filename.split('.')[0].split('[')[2].split(']')[0]
+                )
                 assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
                     self.genre
                 )
@@ -218,7 +232,7 @@ class Track(core.Track):
                 'instrument': self.instrument,
                 'genre': self.genre,
                 'drum': self.drum,
-                'train': self.train
+                'train': self.train,
             },
         )
 
@@ -258,8 +272,9 @@ def load_pred_inst(annotation_path):
         pred_inst_file = fopen.readlines()
         for inst_ in pred_inst_file:
             inst_code = inst_[:3]
-            assert inst_code in INST_DICT, "Instrument {} not in instrument dictionary".format(inst_code)
+            assert (
+                inst_code in INST_DICT
+            ), "Instrument {} not in instrument dictionary".format(inst_code)
             pred_inst.append(inst_code)
 
         return pred_inst
-
