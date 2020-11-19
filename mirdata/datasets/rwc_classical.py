@@ -44,10 +44,10 @@ REMOTES = {
         destination_dir="annotations",
     ),
     "metadata": download_utils.RemoteFileMetadata(
-        filename="rwc-c.csv",
+        filename="master.zip",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir="metadata-master",
+        destination_dir="",
     ),
 }
 DOWNLOAD_INFO = """
