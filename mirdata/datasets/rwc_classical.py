@@ -9,6 +9,32 @@
 * Solo performances: 24 pieces
 * Vocal performances: 6 pieces
 
+Note about Beat annotations:
+
+In general, 48 corresponds to the duration of a quarter note (crotchet).
+24 corresponds to the duration of an eighth note (quaver).
+384 corresponds to the position of a downbeat.
+
+In 4/4 time signature, they correspond as follows:
+384: 1st beat in a measure (i.e., downbeat position)
+48: 2nd beat
+96: 3rd beat
+144 4th beat
+
+In 3/4 time signature, they correspond as follows:
+384: 1st beat in a measure (i.e., downbeat position)
+48: 2nd beat
+96: 3rd beat
+
+In 6/8 time signature, they correspond as follows:
+384: 1st beat in a measure (i.e., downbeat position)
+24: 2nd beat
+48: 3rd beat
+72: 4th beat
+96: 5th beat
+120: 6th beat
+
+
 For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html
 """
 import csv
@@ -44,10 +70,10 @@ REMOTES = {
         destination_dir="annotations",
     ),
     "metadata": download_utils.RemoteFileMetadata(
-        filename="rwc-c.csv",
+        filename="master.zip",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir="metadata-master",
+        destination_dir="",
     ),
 }
 DOWNLOAD_INFO = """
@@ -241,7 +267,7 @@ def _position_in_bar(beat_positions, beat_times):
 
     # Create corrected array with downbeat positions
     beat_positions_corrected = np.zeros((len(_beat_positions),))
-    downbeat_positions = np.where(_beat_positions == np.max(_beat_positions))[0]
+    downbeat_positions = np.where(_beat_positions == 384)[0]
     _beat_positions[downbeat_positions] = 1
     beat_positions_corrected[downbeat_positions] = 1
 
