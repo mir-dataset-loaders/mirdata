@@ -59,10 +59,10 @@ BIBTEX = """@inproceedings{goto2002rwc,
 }"""
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
-        filename="rwc-j.csv",
+        filename="master.zip",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir="metadata-master",
+        destination_dir="",
     ),
     "annotations_beat": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-J-2001.BEAT.zip",
