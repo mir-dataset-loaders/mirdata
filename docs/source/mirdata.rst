@@ -25,10 +25,10 @@ beatport_key
 .. automodule:: mirdata.datasets.beatport_key
    :members:
 
-classicalDB
+tonality_classicalDB
 ^^^^^^^^^^^^
 
-.. automodule:: mirdata.datasets.classicalDB
+.. automodule:: mirdata.datasets.tonality_classicalDB
    :members:
 
 dali

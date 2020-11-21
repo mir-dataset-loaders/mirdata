@@ -32,8 +32,8 @@ click the link provided in the "Module" column.
 | beatport_key_     |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
 |                   |                     | - annotations: ✅   |                           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
-| classicalDB_      | classicalDV         | - audio: ❌         | - global :ref:`key`       | 880    |
-|                   |                     | - annotations: ✅   |                           |        |
+| classicalDB_      | tonality            | - audio: ❌         | - global :ref:`key`       | 881    |
+|                   | classicalDB         | - annotations: ✅   |                           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | dali_             | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                   |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
