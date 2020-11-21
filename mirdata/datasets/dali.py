@@ -274,4 +274,3 @@ def load_annotations_class(annotations_path):
         with gzip.open(annotations_path, "r") as f:
             output = pickle.load(f)
     return output
-

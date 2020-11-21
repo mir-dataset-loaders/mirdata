@@ -239,7 +239,7 @@ def _download(
             List indicating what to partially download. The list can include any of:
                 * 'all': audio, midi and metadata
                 * 'midi': midi and metadata only
-                * 'metadata': metadata only            
+                * 'metadata': metadata only
             If None, all data is downloaded
         info_message (str or None):
             A string of info to print when this function is called.

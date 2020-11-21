@@ -300,4 +300,3 @@ def load_voca_inst(voca_inst_path):
             events.append(raw_data[i][1])
 
     return utils.EventData(np.array(begs), np.array(ends), np.array(events))
-

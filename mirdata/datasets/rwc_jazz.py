@@ -219,4 +219,3 @@ class Track(core.Track):
             section_data=[(self.sections, None)],
             metadata=self._track_metadata,
         )
-

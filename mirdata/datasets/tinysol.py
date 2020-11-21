@@ -215,4 +215,3 @@ def load_audio(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 
     return librosa.load(audio_path, sr=None, mono=True)
-

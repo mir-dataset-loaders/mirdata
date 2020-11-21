@@ -270,4 +270,3 @@ def load_sections(sections_path):
     return utils.SectionData(
         np.array([times_revised[:-1], times_revised[1:]]).T, list(secs_revised[:-1])
     )
-

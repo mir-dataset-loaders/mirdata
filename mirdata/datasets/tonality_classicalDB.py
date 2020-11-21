@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """classicalDB Dataset Loader
 
-The ClassicalDB Dataset includes 880 classical music pieces across different styles from s.XVII to s. XX annotated with
+The ClassicalDB Dataset includes 881 classical music pieces across different styles from s.XVII to s. XX annotated with
 single-key labels.
 
 Gómez, E. (2006). PhD Thesis. Tonal description of music audio signals.
@@ -21,7 +21,6 @@ import librosa
 import os
 import numpy as np
 
-from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
@@ -37,15 +36,17 @@ BIBTEX = """@article{gomez2006tonal,
 # }
 DOWNLOAD_INFO = """
     Unfortunately the audio files of the classicalDB dataset are not available
-    for download. If you have the classicalDB audio dataset, place the contents into
+    for download. If you have the tonality classicalDB audio dataset, place the contents into
     a folder called classicalDB with the following structure:
         > classicalDB/
             > audio/
             > keys/
             > spectrums/
+            > HPCPs/
+            > musicbrainz_metadata/
     and copy the folder to {data_home}
 """
-DATA = utils.LargeData("classicalDB_index.json")
+DATA = utils.LargeData("tonality_classicalDB_index.json")
 
 
 class Track(core.Track):
@@ -56,7 +57,7 @@ class Track(core.Track):
 
     Attributes:
         audio_path (str): track audio path
-        keys_path (str): key annotation path
+        key_path (str): key annotation path
         title (str): title of the track
         track_id (str): track id
 
@@ -74,7 +75,11 @@ class Track(core.Track):
         self._track_paths = DATA.index[track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.key_path = os.path.join(self._data_home, self._track_paths["key"][0])
-        self.spectrum_path = os.path.join(self._data_home, self._track_paths["spectrum"][0])
+        self.spectrum_path = os.path.join(
+            self._data_home, self._track_paths["spectrum"][0]
+        )
+        self.mb_path = os.path.join(self._data_home, self._track_paths["mb"][0])
+        self.HPCP_path = os.path.join(self._data_home, self._track_paths["HPCP"][0])
         self.title = self.audio_path.replace(".wav", "").split("/")[-1]
 
     @utils.cached_property
@@ -84,8 +89,18 @@ class Track(core.Track):
 
     @utils.cached_property
     def spectrum(self):
-        """String: spectrum"""
-        return load_key(self.spectrum_path)
+        """np.array: spectrum"""
+        return load_spectrum(self.spectrum_path)
+
+    @utils.cached_property
+    def HPCP(self):
+        """np.array: HPCP"""
+        return load_HPCP(self.HPCP_path)
+
+    @utils.cached_property
+    def mb_metadata(self):
+        """Dict: musicbrainz metadata"""
+        return load_mb(self.mb_path)
 
     @property
     def audio(self):
@@ -99,6 +114,9 @@ class Track(core.Track):
             metadata={
                 "title": self.title,
                 "key": self.key,
+                "spectrum": self.spectrum,
+                "HPCP": self.HPCP,
+                "musicbrainz_metatada": self.mb_metadata,
             },
         )
 
@@ -148,7 +166,7 @@ def load_spectrum(spectrum_path):
         spectrum_path (str): path to spectrum  file
 
     Returns:
-        (str): loaded key data
+        (np.array): loaded spectrum data
 
     """
     if spectrum_path is None:
@@ -160,6 +178,46 @@ def load_spectrum(spectrum_path):
     with open(spectrum_path) as f:
         data = json.load(f)
 
-    spectrum = [list(map(complex    , x)) for x in data['spectrum']]
+    spectrum = [list(map(complex, x)) for x in data['spectrum']]
 
     return np.array(spectrum)
+
+
+def load_HPCP(HPCP_path):
+    """Load classicalDB HPCP feature from a file
+    Args:
+        HPCP_path (str): path to HPCP file
+
+    Returns:
+        (np.array): loaded HPCP data
+
+    """
+    if HPCP_path is None:
+        return None
+
+    if not os.path.exists(HPCP_path):
+        raise IOError("HPCP_path {} does not exist".format(HPCP_path))
+
+    with open(HPCP_path) as f:
+        data = json.load(f)
+    return np.array(data["hpcp"])
+
+
+def load_mb(mb_path):
+    """Load classicalDB musicbraiz metadata from a file
+    Args:
+        mb_path (str): path to musicbrainz metadata  file
+
+    Returns:
+        (dict): loaded musicbrainz metadata
+
+    """
+    if mb_path is None:
+        return None
+
+    if not os.path.exists(mb_path):
+        raise IOError("mb_path {} does not exist".format(mb_path))
+
+    with open(mb_path) as f:
+        data = json.load(f)
+    return data

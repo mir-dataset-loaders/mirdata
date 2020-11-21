@@ -293,4 +293,3 @@ def load_melody(melody_path):
 
     melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data
-
