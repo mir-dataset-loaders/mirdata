@@ -31,7 +31,8 @@ def make_saraga_multitrack_index(saraga_multitrack_data_path):
 
     saraga_index = {
         'version': 1.0,
-        'tracks': {}
+        'tracks': {},
+        'metadata': None
     }
     idx = 0
     for root, dirs, files in os.walk(saraga_multitrack_data_path):
