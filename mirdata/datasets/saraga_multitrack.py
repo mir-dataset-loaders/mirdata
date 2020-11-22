@@ -13,7 +13,22 @@ as timestamps. Phrase annotations stored as timestamps and transcription of the 
 The annotations are stored in text files, named as the audio filename but with the respective extension at the
 end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
 
-This dataset has a total of 163 tracks from the carnatic dataset have multitrack audio.
+This dataset has a total of 168 tracks from the carnatic dataset have multitrack audio.
+Count of annotations for the total 168 tracks:
+    'audio': 168
+    'audio-ghatam': 46
+    'audio-mridangam-left': 168
+    'audio-mridangam-right': 168
+    'audio-violin': 168
+    'audio-vocal-s': 24
+    'audio-vocal': 168
+    'ctonic': 116
+    'pitch': 116
+    'phrases': 45
+    'tempo': 60
+    'sama': 63
+    'sections': 46
+    'metadata': 168
 
 The files of this dataset are shared with the following license:
 Creative Commons Attribution Non Commercial Share Alike 4.0 International
@@ -58,6 +73,16 @@ REMOTES = {
         checksum='c8471e55bd55e060bde6cfacc555e1b1',
         destination_dir=None,
     )
+}
+
+MULTITRACK_DICT = {
+    'audio',
+    'audio-ghatam',
+    'audio-mridangam-left',
+    'audio-mridangam-right',
+    'audio-violin',
+    'audio-vocal-s',
+    'audio-vocal'
 }
 
 
@@ -116,6 +141,7 @@ class Track(core.MultiTrack):
         self.multitrack_paths = []
         # Audio paths of multitracks
         for i in self.multitrack_ids:
+            assert (i in MULTITRACK_DICT), "Multitrack file {} not in multitrack dictionary".format(i)
             self.multitrack_paths.append(os.path.join(data_home, DATA.index[mtrack_id][i][0]))
 
         # Annotation paths
@@ -180,7 +206,7 @@ class Track(core.MultiTrack):
     def multitrack_audio(self):
         """(dict, Track): audio signal, sample rate"""
         return {
-            k: SingleTrack(self.mtrack_id, k, self._data_home) for k in self.multitrack_ids if 'audio-' in k
+            k: SingleTrack(self.mtrack_id, k, self._data_home) for k in self.multitrack_ids
         }
 
     @utils.cached_property

@@ -78,7 +78,7 @@ def make_saraga_multitrack_index(saraga_multitrack_data_path):
                                         audio_vocal_s_path = os.path.join(directory, directory_, file)
                                         audio_vocal_s_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_vocal_s_path))
                                         audio_vocal_s = (os.path.join('saraga_multitrack/', audio_vocal_s_path), audio_vocal_s_checksum)
-                                    if 'vocal' in file:
+                                    if 'vocal.' in file:
                                         audio_vocal_path = os.path.join(directory, directory_, file)
                                         audio_vocal_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_vocal_path))
                                         audio_vocal = (os.path.join('saraga_multitrack/', audio_vocal_path), audio_vocal_checksum)

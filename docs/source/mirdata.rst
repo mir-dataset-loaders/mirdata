@@ -149,6 +149,13 @@ saraga
    :members:
 
 
+saraga_multitrack
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.saraga_multitrack
+   :members:
+
+
 tinysol
 ^^^^^^^
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-from mirdata import utils
+from mirdata import utils, core
 from mirdata.datasets import saraga_multitrack
 from tests.test_utils import run_track_tests
 
@@ -54,7 +54,7 @@ def test_track():
             'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-violin.mp3',
             'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
-            'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal-s.mp3',
+            'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal.mp3',
             'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal-s.mp3'
         ],
@@ -88,10 +88,54 @@ def test_track():
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
+    assert type(track.multitrack_audio['audio-ghatam']) == saraga_multitrack.SingleTrack
+    assert type(track.multitrack_audio['audio-mridangam-left']) == saraga_multitrack.SingleTrack
+    assert type(track.multitrack_audio['audio-mridangam-right']) == saraga_multitrack.SingleTrack
+    assert type(track.multitrack_audio['audio-violin']) == saraga_multitrack.SingleTrack
+    assert type(track.multitrack_audio['audio-vocal-s']) == saraga_multitrack.SingleTrack
+    assert type(track.multitrack_audio['audio-vocal']) == saraga_multitrack.SingleTrack
+
+    assert track.multitrack_audio['audio-ghatam'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+            'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-ghatam.mp3'
+    assert track.multitrack_audio['audio-mridangam-left'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+            'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-mridangam-left.mp3'
+    assert track.multitrack_audio['audio-mridangam-right'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+            'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-mridangam-right.mp3'
+    assert track.multitrack_audio['audio-violin'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+            'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-violin.mp3'
+    assert track.multitrack_audio['audio-vocal-s'].audio_path ==  'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+            'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal-s.mp3'
+    assert track.multitrack_audio['audio-vocal'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+            'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal.mp3'
+
     # test audio loading functions
     audio, sr = track.audio
     assert sr == 44100
     assert audio.shape[0] == 2
+
+
+def test_single_track():
+    default_mtrackid = '30_Siddhi Vinayakam'
+    default_trackid = 'audio-vocal'
+    data_home = 'tests/resources/mir_datasets/saraga_multitrack'
+    track = saraga_multitrack.SingleTrack(default_mtrackid, default_trackid, data_home=data_home)
+
+    expected_attributes = {
+        'mtrack_id': '30_Siddhi Vinayakam',
+        'audio_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+                      'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal.mp3'
+    }
+
+    expected_property_types = {
+        'audio': (np.ndarray, float),
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
+
+    # test audio loading functions
+    audio, sr = track.audio
+    assert sr == 44100
+    assert len(audio) == 33295724
 
 
 def test_to_jams():
