@@ -61,36 +61,37 @@ def make_saraga_multitrack_index(saraga_multitrack_data_path):
                         print(index)
                         for file in files__:
                             if '.mp3' in file:
-                                if 'multitrack' in file:
-                                    if 'ghatam' in file:
-                                        audio_ghatam_path = os.path.join(directory, directory_, file)
-                                        audio_ghatam_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_ghatam_path))
-                                        audio_ghatam = (os.path.join('saraga_multitrack/', audio_ghatam_path), audio_ghatam_checksum)
-                                    if 'mridangam-left' in file:
-                                        audio_mridangam_left_path = os.path.join(directory, directory_, file)
-                                        audio_mridangam_left_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_mridangam_left_path))
-                                        audio_mridangam_left = (os.path.join('saraga_multitrack/', audio_mridangam_left_path), audio_mridangam_left_checksum)
-                                    if 'mridangam-right' in file:
-                                        mridangam_right_path = os.path.join(directory, directory_, file)
-                                        mridangam_right_checksum = md5(os.path.join(saraga_multitrack_data_path, mridangam_right_path))
-                                        audio_mridangam_right = (os.path.join('saraga_multitrack/', mridangam_right_path), mridangam_right_checksum)
-                                    if 'violin' in file:
-                                        audio_violin_path = os.path.join(directory, directory_, file)
-                                        audio_violin_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_violin_path))
-                                        audio_violin = (os.path.join('saraga_multitrack/', audio_violin_path), audio_violin_checksum)
-                                    if 'vocal-s' in file:
-                                        audio_vocal_s_path = os.path.join(directory, directory_, file)
-                                        audio_vocal_s_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_vocal_s_path))
-                                        audio_vocal_s = (os.path.join('saraga_multitrack/', audio_vocal_s_path), audio_vocal_s_checksum)
-                                    if 'vocal.' in file:
-                                        audio_vocal_path = os.path.join(directory, directory_, file)
-                                        audio_vocal_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_vocal_path))
-                                        audio_vocal = (os.path.join('saraga_multitrack/', audio_vocal_path), audio_vocal_checksum)
+                                if '.md5' not in file:
+                                    if 'multitrack' in file:
+                                        if 'ghatam' in file:
+                                            audio_ghatam_path = os.path.join(directory, directory_, file)
+                                            audio_ghatam_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_ghatam_path))
+                                            audio_ghatam = (os.path.join('saraga_multitrack/', audio_ghatam_path), audio_ghatam_checksum)
+                                        if 'mridangam-left' in file:
+                                            audio_mridangam_left_path = os.path.join(directory, directory_, file)
+                                            audio_mridangam_left_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_mridangam_left_path))
+                                            audio_mridangam_left = (os.path.join('saraga_multitrack/', audio_mridangam_left_path), audio_mridangam_left_checksum)
+                                        if 'mridangam-right' in file:
+                                            mridangam_right_path = os.path.join(directory, directory_, file)
+                                            mridangam_right_checksum = md5(os.path.join(saraga_multitrack_data_path, mridangam_right_path))
+                                            audio_mridangam_right = (os.path.join('saraga_multitrack/', mridangam_right_path), mridangam_right_checksum)
+                                        if 'violin' in file:
+                                            audio_violin_path = os.path.join(directory, directory_, file)
+                                            audio_violin_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_violin_path))
+                                            audio_violin = (os.path.join('saraga_multitrack/', audio_violin_path), audio_violin_checksum)
+                                        if 'vocal-s' in file:
+                                            audio_vocal_s_path = os.path.join(directory, directory_, file)
+                                            audio_vocal_s_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_vocal_s_path))
+                                            audio_vocal_s = (os.path.join('saraga_multitrack/', audio_vocal_s_path), audio_vocal_s_checksum)
+                                        if 'vocal.' in file:
+                                            audio_vocal_path = os.path.join(directory, directory_, file)
+                                            audio_vocal_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_vocal_path))
+                                            audio_vocal = (os.path.join('saraga_multitrack/', audio_vocal_path), audio_vocal_checksum)
 
-                                else:
-                                    audio_path = os.path.join(directory, directory_, file)
-                                    audio_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_path))
-                                    audio = (os.path.join('saraga_multitrack/', audio_path), audio_checksum)
+                                    else:
+                                        audio_path = os.path.join(directory, directory_, file)
+                                        audio_checksum = md5(os.path.join(saraga_multitrack_data_path, audio_path))
+                                        audio = (os.path.join('saraga_multitrack/', audio_path), audio_checksum)
                             if 'ctonic.txt' in file:
                                 ctonic_path = os.path.join(directory, directory_, file)
                                 ctonic_checksum = md5(os.path.join(saraga_multitrack_data_path, ctonic_path))
