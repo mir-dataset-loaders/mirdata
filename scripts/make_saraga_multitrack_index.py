@@ -29,7 +29,10 @@ def md5(file_path):
 
 def make_saraga_multitrack_index(saraga_multitrack_data_path):
 
-    saraga_index = {}
+    saraga_index = {
+        'version': 1.0,
+        'tracks': {}
+    }
     idx = 0
     for root, dirs, files in os.walk(saraga_multitrack_data_path):
         for directory in dirs:  # Artists
@@ -116,7 +119,7 @@ def make_saraga_multitrack_index(saraga_multitrack_data_path):
                                 metadata_checksum = md5(os.path.join(saraga_multitrack_data_path, metadata_path))
                                 metadata = (os.path.join('saraga_multitrack/', metadata_path), metadata_checksum)
 
-                            saraga_index[index] = {
+                            saraga_index['tracks'][index] = {
                                 'audio': audio,
                                 'audio-ghatam': audio_ghatam,
                                 'audio-mridangam-left': audio_mridangam_left,

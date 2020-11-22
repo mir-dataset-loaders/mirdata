@@ -120,29 +120,34 @@ class Track(core.MultiTrack):
              work (list, dicts): list of dicts containing the work present in the piece, and its mbid
              taala (list, dicts): list of dicts containing the talas present in the track and its uuid
              concert (list, dicts): list of dicts containing the concert where the track is present and its mbid
+
+             audio_path (str): path of the audio file of the mix track
+             multitrack_ids (list, str): list containing ids of available multitrack single instrument files
+             multitrack_paths (list, str): list containing paths of available multitrack single instrument files
+
     """
 
     def __init__(self, mtrack_id, data_home):
-        if mtrack_id not in DATA.index:
+        if mtrack_id not in DATA.index['tracks']:
             raise ValueError('{} is not a valid track ID in Saraga'.format(mtrack_id))
 
         self.mtrack_id = mtrack_id
 
         self._data_home = data_home
-        self.audio_path = os.path.join(data_home, DATA.index[mtrack_id]['audio'][0])
+        self.audio_path = os.path.join(data_home, DATA.index['tracks'][mtrack_id]['audio'][0])
 
         self._data_home = data_home
-        self._track_paths = DATA.index[mtrack_id]
+        self._track_paths = DATA.index['tracks'][mtrack_id]
 
         self.multitrack_ids = [
-            k for k, v in sorted(DATA.index[mtrack_id].items()) if 'audio-' in k and v != [None, None]
+            k for k, v in sorted(DATA.index['tracks'][mtrack_id].items()) if 'audio-' in k and v != [None, None]
         ]
 
         self.multitrack_paths = []
         # Audio paths of multitracks
         for i in self.multitrack_ids:
             assert (i in MULTITRACK_DICT), "Multitrack file {} not in multitrack dictionary".format(i)
-            self.multitrack_paths.append(os.path.join(data_home, DATA.index[mtrack_id][i][0]))
+            self.multitrack_paths.append(os.path.join(data_home, DATA.index['tracks'][mtrack_id][i][0]))
 
         # Annotation paths
         self.ctonic_path = utils.none_path_join(
@@ -255,15 +260,26 @@ class Track(core.MultiTrack):
 
 
 class SingleTrack(core.Track):
+    """Saraga Single Track class
 
+         Args:
+             mtrack_id (str): track id of the mix track
+             track_id (str): track id of the single instrument track
+             data_home (str): Local path where the dataset is stored. default=None
+                 If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+         Attributes:
+             audio_path (str): path of the audio file of the single instrument track
+
+    """
     def __init__(self, mtrack_id, track_id, data_home):
-        if mtrack_id not in DATA.index:
+        if mtrack_id not in DATA.index['tracks']:
             raise ValueError('{} is not a valid track ID in Saraga'.format(track_id))
 
         self.mtrack_id = mtrack_id
 
         self._data_home = data_home
-        aux_path = DATA.index[mtrack_id][track_id][0]
+        aux_path = DATA.index['tracks'][mtrack_id][track_id][0]
         if aux_path is not None:
             self.audio_path = os.path.join(data_home, aux_path)
         else:
