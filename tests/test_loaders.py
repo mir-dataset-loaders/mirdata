@@ -17,6 +17,7 @@ from tests.test_utils import DEFAULT_DATA_HOME
 DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
+    "cante100": "008",
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
     "giantsteps_tempo": "113",

@@ -141,13 +141,13 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
+        if track_id not in DATA.index['tracks']:
             raise ValueError("{} is not a valid track ID in TinySOL".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
+        self._track_paths = DATA.index['tracks'][track_id]
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -215,4 +215,3 @@ def load_audio(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 
     return librosa.load(audio_path, sr=None, mono=True)
-
