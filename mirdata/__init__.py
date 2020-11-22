@@ -25,6 +25,7 @@ DATASETS = [
     "rwc_popular",
     "salami",
     "saraga",
+    "saraga_multitrack",
     "tinysol",
 ]
 
