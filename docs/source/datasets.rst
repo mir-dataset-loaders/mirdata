@@ -103,7 +103,7 @@ click the link provided in the "Module" column.
 |                    |                     |                     | - :ref:`sections`         |        |
 |                    |                     |                     | - :ref:`tonic`            |        |
 +--------------------+---------------------+---------------------+---------------------------+--------+
-| saraga_multitrack_ | Saraga              | - audio: ✅         | - :ref:`tempo`            | 305    |
+| saraga_multitrack_ | Saraga Multitrack   | - audio: ✅         | - :ref:`tempo`            | 168    |
 |                    |                     | - annotations: ✅   | - :ref:`phrases`          |        |
 |                    |                     |                     | - :ref:`f0`               |        |
 |                    |                     |                     | - :ref:`sections` (samas) |        |
