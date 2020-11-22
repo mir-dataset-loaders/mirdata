@@ -32,6 +32,9 @@ click the link provided in the "Module" column.
 | beatport_key_      |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
 |                    |                     | - annotations: ✅   |                           |        |
 +--------------------+---------------------+---------------------+---------------------------+--------+
+| cante100_          | cante100            | - audio: 🔑         | - :ref:`F0`               | 100    |
+|                    |                     | - annotations: ✅   | - :ref:`notes`            |        |
++-------------------+---------------------+---------------------+---------------------------+---------+
 | dali_              | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                    |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
 +--------------------+---------------------+---------------------+---------------------------+--------+
@@ -114,7 +117,6 @@ click the link provided in the "Module" column.
 |                    |                     | - annotations: ✅   | - :ref:`technique`        |        |
 |                    |                     |                     | - :ref:`notes`            |        |
 +--------------------+---------------------+---------------------+---------------------------+--------+
-
 
 
 Annotation Type Descriptions
