@@ -130,9 +130,9 @@ def test_position_in_bar():
     assert np.array_equal(actual_positions3, fixed_positions3)
     assert np.array_equal(actual_times3, fixed_times3)
 
-    beat_positions4 = np.array([48, 12, 24, 36, 48, 12, 24, 36])
+    beat_positions4 = np.array([384, 24, 48, 72, 96, 120, 384, 24])
     times4 = np.array([1, 2, 3, 4, 5, 6, 7, 8])
-    fixed_positions4 = np.array([1, 2, 3, 4, 1, 2, 3, 4])
+    fixed_positions4 = np.array([1, 2, 3, 4, 5, 6, 1, 2])
     fixed_times4 = np.array([1, 2, 3, 4, 5, 6, 7, 8])
     actual_positions4, actual_times4 = rwc_classical._position_in_bar(
         beat_positions4, times4
@@ -140,9 +140,9 @@ def test_position_in_bar():
     assert np.array_equal(actual_positions4, fixed_positions4)
     assert np.array_equal(actual_times4, fixed_times4)
 
-    beat_positions5 = np.array([24, 36, 48, 12, 24, 36, 48])
+    beat_positions5 = np.array([96, 384, 48, 96, 384, 48, 96])
     times5 = np.array([1, 2, 3, 4, 5, 6, 7])
-    fixed_positions5 = np.array([3, 4, 1, 2, 3, 4, 1])
+    fixed_positions5 = np.array([3, 1, 2, 3, 1, 2, 3])
     fixed_times5 = np.array([1, 2, 3, 4, 5, 6, 7])
     actual_positions5, actual_times5 = rwc_classical._position_in_bar(
         beat_positions5, times5

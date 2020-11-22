@@ -116,6 +116,7 @@ click the link provided in the "Module" column.
 +--------------------+---------------------+---------------------+---------------------------+--------+
 
 
+
 Annotation Type Descriptions
 ----------------------------
 The table above provides annotation types as a guide for choosing appropriate datasets,
@@ -250,6 +251,7 @@ a track.
 
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
+.. _cante100: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.cante100
 .. _beatport_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatport_key
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
 .. _giantsteps_tempo: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.giantsteps_tempo
