@@ -26,7 +26,7 @@ from tqdm import tqdm
 from mirdata.utils import md5
 
 INDEXES_PATH = '../mirdata/datasets/indexes/'
-ALL_INDEXES = [i for i in os.listdir(INDEXES_PATH) if not i == 'acousticbrainz_genre_dataset_little_test.json']
+ALL_INDEXES = os.listdir(INDEXES_PATH)
 DATASETS = mirdata.DATASETS
 
 
@@ -186,13 +186,13 @@ def main():
 
     print(DATASETS)
     # Download metadata from all datasets for computing metadata checksums
-    # for module in DATASETS:
-    #     if module not in ['dali', 'beatles', 'groove_midi']:
-    #         dataset = mirdata.Dataset(module)
-    #         if dataset._remotes is not None:
-    #             dataset.download(partial_download=['metadata' if 'metadata' in dataset._remotes
-    #                                                else key for key in dataset._remotes if key is not 'audio'
-    #                                                and 'training' not in key and 'testing' not in key])
+    for module in DATASETS:
+        if module not in ['dali', 'beatles', 'groove_midi']:
+            dataset = mirdata.Dataset(module)
+            if dataset._remotes is not None:
+                dataset.download(partial_download=['metadata' if 'metadata' in dataset._remotes
+                                                   else key for key in dataset._remotes if key is not 'audio'
+                                                   and 'training' not in key and 'testing' not in key])
 
     # Update index to new format
     print('Updating indexes...\n')
