@@ -124,11 +124,19 @@ REMOTES = {
         destination_dir='',
     )
 }
+REMOTE_INDEX = {
+    'REMOTE_INDEX': download_utils.RemoteFileMetadata(
+        filename='acousticbrainz_genre_index.json.zip',
+        url='https://zenodo.org/record/4274551/files/acousticbrainz_genre_index.json.zip?download=1',
+        checksum='e58b3f88b2562a09492784c71d7bfb48',
+        destination_dir=''
+    )
+}
 
 DOWNLOAD_INFO = ""
 
 
-DATA = utils.LargeData('acousticbrainz_genre_index.json')
+DATA = utils.LargeData('acousticbrainz_genre_index.json', remote_index=REMOTE_INDEX)
 
 
 class Track(core.Track):
