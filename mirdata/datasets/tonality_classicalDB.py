@@ -73,7 +73,7 @@ DOWNLOAD_INFO = """
             > spectrums/
             > HPCPs/
             > musicbrainz_metadata/
-    and copy the folder to mir_datasets directory
+    and copy the folder to {} directory
 """
 DATA = utils.LargeData("tonality_classicalDB_index.json")
 
