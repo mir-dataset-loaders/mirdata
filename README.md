@@ -41,7 +41,6 @@ See the Examples section below for more details, or the [documentation](https://
 
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [Beatport EDM key](https://zenodo.org/record/1101082/export/xd#.X4NCfC3FQUE)
-* [Tonality ClassicalDB](http://mtg.upf.edu/node/472)
 * [DALI](https://github.com/gabolsgabs/DALI)
 * [GiantSteps tempo](https://github.com/GiantSteps/giantsteps-tempo-dataset)
 * [GiantSteps key](https://zenodo.org/record/1095691#.X2zqwC3FQUE)
@@ -60,6 +59,7 @@ See the Examples section below for more details, or the [documentation](https://
 * [RWC Popular](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html)
 * [Salami](https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections)
 * [TinySOL](https://www.orch-idea.org/)
+* [Tonality ClassicalDB](https://zenodo.org/record/4283868#.X7t9VS3TphE)
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).
 
