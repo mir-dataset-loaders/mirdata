@@ -25,12 +25,6 @@ beatport_key
 .. automodule:: mirdata.datasets.beatport_key
    :members:
 
-tonality_classicalDB
-^^^^^^^^^^^^
-
-.. automodule:: mirdata.datasets.tonality_classicalDB
-   :members:
-
 dali
 ^^^^
 
@@ -146,6 +140,14 @@ tinysol
 
 .. automodule:: mirdata.datasets.tinysol
    :members:
+
+
+tonality_classicalDB
+^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.tonality_classicalDB
+   :members:
+
 
 
 Utilities
