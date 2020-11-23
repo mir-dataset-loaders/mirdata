@@ -163,6 +163,32 @@ class Track(core.Track):
         self.mbid = data[0]
         self.mbid_group = data[1]
 
+    def download(self, cleanup=True):
+        """Download data to `save_dir` and optionally print a message.
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        for key, REMOTE in REMOTES.items():
+            download_utils.downloader(
+                self._data_home,
+                remotes=REMOTE,
+                partial_download=None,
+                info_message=DOWNLOAD_INFO,
+                force_overwrite=False,
+                cleanup=cleanup,
+            )
     # Genre
     @utils.cached_property
     def genre(self):
