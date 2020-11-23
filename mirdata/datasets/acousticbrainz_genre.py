@@ -184,6 +184,14 @@ class Track(core.Track):
             IOError: if a downloaded file's checksum is different from expected
 
         """
+        train_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-train")
+        if not os.path.isdir(train_dir):
+            os.mkdir(train_dir)
+
+        validate_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-validation")
+        if not os.path.isdir(validate_dir):
+            os.mkdir(validate_dir)
+
         for key, REMOTE in REMOTES.items():
             download_utils.downloader(
                 self._data_home,
@@ -194,10 +202,7 @@ class Track(core.Track):
                 cleanup=cleanup,
             )
             source_dir = os.path.join(self._data_home, "temp")
-            if "train" in key:
-                target_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-train")
-            else:
-                target_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-validation")
+            target_dir = train_dir if "train" in key else validate_dir
             file_names = os.listdir(source_dir)
             for file_name in file_names:
                 shutil.move(os.path.join(source_dir, file_name), target_dir)
