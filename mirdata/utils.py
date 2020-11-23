@@ -113,7 +113,6 @@ def check_metadata(file_dict, data_home, verbose):
     missing = {}
     invalid = {}
     for file_id, file in tqdm.tqdm(file_dict.items(), disable=not verbose):
-        print(file_id, file)
         filepath = file[0]
         checksum = file[1]
         if filepath is not None:
