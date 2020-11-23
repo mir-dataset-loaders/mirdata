@@ -64,6 +64,7 @@ def get_metadata_paths(module):
         'rwc_popular':  {'rwc-p': os.path.join("metadata-master", "rwc-p.csv")},
         'salami': {'metadata': os.path.join("salami-data-public-hierarchy-corrections", "metadata", "metadata.csv")},
         'saraga': None,
+        'saraga_multitrack': None,
         'tinysol': {'TinySOL_metadata': os.path.join('annotation', 'TinySOL_metadata.csv')},
      }
 
@@ -105,6 +106,7 @@ def get_dataset_version(module):
         'rwc_popular': None,  # https://staff.aist.go.jp/m.goto/RWC-MDB/
         'salami': '2.0-corrected',  # https://github.com/DDMAL/salami-data-public/pull/15
         'saraga': '1.0',  # https://zenodo.org/record/1256127/#.X65rnZNKhUI
+        'saraga_multitrack': '1.0',  # TODO
         'tinysol': '6.0'  # https://zenodo.org/record/1101082/export/xd#.X6BFXpNKi3J
     }
     return customized_versions[module]
