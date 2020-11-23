@@ -39,6 +39,7 @@ This work is partially supported by the European Union’s Horizon 2020 research
 
 import json
 import os
+import shutil
 
 from mirdata import download_utils, core
 from mirdata import jams_utils
@@ -175,11 +176,6 @@ class Track(core.Track):
         """Download data to `save_dir` and optionally print a message.
 
         Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.
 
@@ -194,9 +190,18 @@ class Track(core.Track):
                 remotes=REMOTE,
                 partial_download=None,
                 info_message=DOWNLOAD_INFO,
-                force_overwrite=False,
+                force_overwrite=True,
                 cleanup=cleanup,
             )
+            source_dir = os.path.join(self._data_home, "temp")
+            if "train" in key:
+                target_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-train")
+            else:
+                target_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-validation")
+            file_names = os.listdir(source_dir)
+            for file_name in file_names:
+                shutil.move(os.path.join(source_dir, file_name), target_dir)
+
     # Genre
     @utils.cached_property
     def genre(self):
