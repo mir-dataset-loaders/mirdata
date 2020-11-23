@@ -59,7 +59,7 @@ See the Examples section below for more details, or the [documentation](https://
 * [RWC Popular](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html)
 * [Salami](https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections)
 * [TinySOL](https://www.orch-idea.org/)
-* [Tonality ClassicalDB](https://zenodo.org/record/4283868#.X7t9VS3TphE)
+* [Tonality classicalDB](https://zenodo.org/record/4283868#.X7t9VS3TphE)
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).
 
