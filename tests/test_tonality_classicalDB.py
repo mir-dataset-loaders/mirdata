@@ -85,7 +85,7 @@ def test_load_spectrum():
     spectrum = librosa.cqt(y, sr=sr, window='blackmanharris', hop_length=4096)
 
     assert spectrum.shape[0] == spectrum_data.shape[0]
-    assert spectrum.shape.shape[1] == spectrum_data.shape[1]
+    assert spectrum.shape[1] == spectrum_data.shape[1]
     assert isinstance(spectrum[0][0], complex) is True
     assert tonality_classicalDB.load_spectrum(None) is None
 

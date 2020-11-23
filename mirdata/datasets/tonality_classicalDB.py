@@ -21,9 +21,8 @@ import librosa
 import os
 import numpy as np
 
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import utils
+from mirdata import jams_utils, download_utils, core, utils
+
 
 BIBTEX = """@article{gomez2006tonal,
   title={Tonal description of music audio signals},
@@ -31,11 +30,34 @@ BIBTEX = """@article{gomez2006tonal,
   journal={Department of Information and Communication Technologies},
   year={2006}
 }"""
-# REMOTES = {
-#     []
-# }
+REMOTES = {
+    "keys": download_utils.RemoteFileMetadata(
+        filename="keys.zip",
+        url="https://zenodo.org/record/4283868/files/keys.zip?download=1",
+        checksum="5d58978783de846f9cb337352e7d2612",
+        destination_dir=".",
+    ),
+    "musicbrainz_metadata": download_utils.RemoteFileMetadata(
+        filename="musicbrainz_metadata.zip",
+        url="https://zenodo.org/record/1095691/files/musicbrainz_metadata.zip?download=1",
+        checksum="4a77ecc6a9410a59feeffa1152cb6edc",
+        destination_dir=".",
+    ),
+    "HPCPs": download_utils.RemoteFileMetadata(
+        filename="HPCPs.zip",
+        url="https://zenodo.org/record/4283868/files/HPCPs.zip?download=1",
+        checksum="66d1ca70376109a42d0bac1306691599",
+        destination_dir=".",
+    ),
+    "spectrums": download_utils.RemoteFileMetadata(
+        filename="spectrums.zip",
+        url="https://zenodo.org/record/1095691/files/spectrums.zip?download=1",
+        checksum="63a79033d608ba95fb559a33e2f70d3a",
+        destination_dir=".",
+    ),
+}
 DOWNLOAD_INFO = """
-    Unfortunately the audio files of the classicalDB dataset are not available
+    Unfortunately the audio files of the tonality classicalDB dataset are not available
     for download. If you have the tonality classicalDB audio dataset, place the contents into
     a folder called classicalDB with the following structure:
         > classicalDB/
