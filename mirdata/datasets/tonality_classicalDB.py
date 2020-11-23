@@ -1,19 +1,26 @@
 # -*- coding: utf-8 -*-
-"""classicalDB Dataset Loader
+"""Tonality classicalDB Dataset Loader
+The Tonality classicalDB Dataset includes 881 classical musical pieces across different styles from s.XVII to s.XX annotated with single-key labels.
 
-The ClassicalDB Dataset includes 881 classical music pieces across different styles from s.XVII to s. XX annotated with
-single-key labels.
-
+Tonality classicalDB Dataset was created as part of:
 Gómez, E. (2006). PhD Thesis. Tonal description of music audio signals.
 Department of Information and Communication Technologies.
 
 This dataset is mainly intended to assess the performance of computational key estimation algorithms in classical music.
 
-**2020 note**: The audios are privatives. If you have the private collection, you can add it to the dataset. If you
-don't have the original collection, you could create it from your private collection because the key is robust across
-the different versions. Moreover, we have added the spectrum of each audio. Maybe spectrum is all you need, or you can
-use it for comparing how different are your musical audio versions. Spectrum has been computed as is shown here:
-<https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/classicalDB/ClassicalDB_spectrum_features.ipynb>
+2020 note: The audios are privates. If you don't have the original audio collection, you could create it from your private collection because most of the recordings are well known. To this end, we provide musicbrainz metadata. Moreover, we have added the spectrum and HPCP chromagram of each audio.
+
+This dataset can be used with mirdata library:
+https://github.com/mir-dataset-loaders/mirdata
+
+Spectrum features have been computed as is shown here:
+https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/Tonality_classicalDB/ClassicalDB_spectrum_features.ipynb
+
+HPCP chromagram has been computed as is shown here:
+https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/Tonality_classicalDB/ClassicalDB_HPCP_features.ipynb
+
+Musicbrainz metadata has been computed as is shown here:
+https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/Tonality_classicalDB/ClassicalDB_musicbrainz_metadata.ipynb
 """
 
 import json
@@ -57,7 +64,7 @@ REMOTES = {
     ),
 }
 DOWNLOAD_INFO = """
-    Unfortunately the audio files of the tonality classicalDB dataset are not available
+    Unfortunately the audio files of the Tonality classicalDB dataset are not available
     for download. If you have the tonality classicalDB audio dataset, place the contents into
     a folder called classicalDB with the following structure:
         > classicalDB/
@@ -66,7 +73,7 @@ DOWNLOAD_INFO = """
             > spectrums/
             > HPCPs/
             > musicbrainz_metadata/
-    and copy the folder to {data_home}
+    and copy the folder to mir_datasets directory
 """
 DATA = utils.LargeData("tonality_classicalDB_index.json")
 
@@ -144,7 +151,7 @@ class Track(core.Track):
 
 
 def load_audio(audio_path):
-    """Load a classicalDB audio file.
+    """Load a Tonality classicalDB audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -160,7 +167,7 @@ def load_audio(audio_path):
 
 
 def load_key(keys_path):
-    """Load classicalDB format key data from a file
+    """Load Tonality classicalDB format key data from a file
 
     Args:
         keys_path (str): path to key annotation file
@@ -182,7 +189,7 @@ def load_key(keys_path):
 
 
 def load_spectrum(spectrum_path):
-    """Load classicalDB spectrum data from a file
+    """Load Tonality classicalDB spectrum data from a file
 
     Args:
         spectrum_path (str): path to spectrum  file
@@ -206,7 +213,7 @@ def load_spectrum(spectrum_path):
 
 
 def load_HPCP(HPCP_path):
-    """Load classicalDB HPCP feature from a file
+    """Load Tonality classicalDB HPCP feature from a file
     Args:
         HPCP_path (str): path to HPCP file
 
@@ -226,7 +233,7 @@ def load_HPCP(HPCP_path):
 
 
 def load_mb(mb_path):
-    """Load classicalDB musicbraiz metadata from a file
+    """Load Tonality classicalDB musicbraiz metadata from a file
     Args:
         mb_path (str): path to musicbrainz metadata  file
 
