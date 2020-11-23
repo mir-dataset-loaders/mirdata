@@ -3,6 +3,7 @@
 from .version import version as __version__
 
 DATASETS = [
+    "acousticbrainz_genre",
     "beatles",
     "beatport_key",
     "cante100",
