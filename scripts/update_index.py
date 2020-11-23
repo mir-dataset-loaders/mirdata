@@ -26,7 +26,7 @@ from tqdm import tqdm
 from mirdata.utils import md5
 
 INDEXES_PATH = '../mirdata/datasets/indexes/'
-ALL_INDEXES = os.listdir(INDEXES_PATH)
+ALL_INDEXES = [i for i in os.listdir(INDEXES_PATH) if not i == 'acousticbrainz_genre_dataset_little_test.json']
 DATASETS = mirdata.DATASETS
 
 
@@ -147,8 +147,10 @@ def update_index(all_indexes):
         # The computation of the checksum should be customized in the make_index
         # of each dataset. This is a patch to convert previous indexes to the new format.
         new_index = {'version': version,
-                     'tracks': old_index,
-                     'metadata': metadata_checksums}
+                     'tracks': old_index}
+
+        if metadata_files is not None:
+            new_index['metadata'] =  metadata_checksums
 
         with open(os.path.join(INDEXES_PATH, index_name), 'w') as fhandle:
             json.dump(new_index, fhandle, indent=2)
@@ -162,7 +164,7 @@ def test_index(dataset_names):
 
     """
 
-    mandatory_keys = ['metadata', 'version']
+    mandatory_keys = ['version']
     for module in dataset_names:
         index = mirdata.Dataset(module)._index
         assert type(index['tracks']) == dict
@@ -184,13 +186,13 @@ def main():
 
     print(DATASETS)
     # Download metadata from all datasets for computing metadata checksums
-    for module in DATASETS:
-        if module not in ['dali', 'beatles', 'groove_midi']:
-            dataset = mirdata.Dataset(module)
-            if dataset._remotes is not None:
-                dataset.download(partial_download=['metadata' if 'metadata' in dataset._remotes
-                                                   else key for key in dataset._remotes if key is not 'audio'
-                                                   and 'training' not in key and 'testing' not in key])
+    # for module in DATASETS:
+    #     if module not in ['dali', 'beatles', 'groove_midi']:
+    #         dataset = mirdata.Dataset(module)
+    #         if dataset._remotes is not None:
+    #             dataset.download(partial_download=['metadata' if 'metadata' in dataset._remotes
+    #                                                else key for key in dataset._remotes if key is not 'audio'
+    #                                                and 'training' not in key and 'testing' not in key])
 
     # Update index to new format
     print('Updating indexes...\n')
