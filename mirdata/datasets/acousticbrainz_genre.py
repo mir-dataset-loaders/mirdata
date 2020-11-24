@@ -3896,11 +3896,12 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
         IOError: if a downloaded file's checksum is different from expected
 
     """
-    train_dir = os.path.join(data_home, "acousticbrainz-mediaeval-train")
+    train = "acousticbrainz-mediaeval-train"
+    train_dir = os.path.join(data_home, train)
     if not os.path.isdir(train_dir):
         os.mkdir(train_dir)
-
-    validate_dir = os.path.join(data_home, "acousticbrainz-mediaeval-validation")
+    validate = "acousticbrainz-mediaeval-validation"
+    validate_dir = os.path.join(data_home, validate)
     if not os.path.isdir(validate_dir):
         os.mkdir(validate_dir)
 
@@ -3910,11 +3911,12 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
             remotes={key: REMOTE},
             partial_download=None,
             info_message=None,
-            force_overwrite=False,
+            force_overwrite=True,
             cleanup=cleanup,
         )
-        source_dir = os.path.join(data_home, "temp")
+        downloaded_dir, _ = os.path.splitext(REMOTE.filename)
+        source_dir = os.path.join(data_home, "temp", downloaded_dir)
         target_dir = train_dir if "train" in key else validate_dir
         file_names = os.listdir(source_dir)
         for file_name in file_names:
-            shutil.move(os.path.join(source_dir, file_name), target_dir)
+            shutil.copyfile(os.path.join(source_dir, file_name), target_dir)
