@@ -141,7 +141,7 @@ def check_index(dataset_index, data_home, verbose=True):
     invalid_checksums = {}
 
     # check index
-    if dataset_index['metadata'] is not None:
+    if 'metadata' in dataset_index:
         missing_metadata, invalid_metadata = check_metadata(
             dataset_index['metadata'],
             data_home,
