@@ -3910,7 +3910,7 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
             remotes={key: REMOTE},
             partial_download=None,
             info_message=None,
-            force_overwrite=True,
+            force_overwrite=False,
             cleanup=cleanup,
         )
         source_dir = os.path.join(data_home, "temp")
