@@ -31,7 +31,7 @@ CUSTOM_TEST_TRACKS = {
     "rwc_popular": "RM-P001",
     "salami": "2",
     "saraga": "carnatic_1",
-    "saraga_multitrack": "30_Siddhi Vinayakam",
+    "saraga_multitrack": "21_Siddhi Vinayakam",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
 }
 

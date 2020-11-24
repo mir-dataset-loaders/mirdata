@@ -76,7 +76,6 @@ REMOTES = {
 }
 
 MULTITRACK_DICT = {
-    'audio',
     'audio-ghatam',
     'audio-mridangam-left',
     'audio-mridangam-right',
@@ -129,7 +128,7 @@ class Track(core.MultiTrack):
 
     def __init__(self, mtrack_id, data_home):
         if mtrack_id not in DATA.index['tracks']:
-            raise ValueError('{} is not a valid track ID in Saraga'.format(mtrack_id))
+            raise ValueError('{} is not a valid track ID in Saraga Multitrack'.format(mtrack_id))
 
         self.mtrack_id = mtrack_id
 
@@ -140,14 +139,14 @@ class Track(core.MultiTrack):
         self._track_paths = DATA.index['tracks'][mtrack_id]
 
         self.multitrack_ids = [
-            k for k, v in sorted(DATA.index['tracks'][mtrack_id].items()) if 'audio-' in k and v != [None, None]
+            k for k, v in sorted(DATA.index['multitracks'][mtrack_id].items()) if v != [None, None]
         ]
 
         self.multitrack_paths = []
         # Audio paths of multitracks
         for i in self.multitrack_ids:
             assert (i in MULTITRACK_DICT), "Multitrack file {} not in multitrack dictionary".format(i)
-            self.multitrack_paths.append(os.path.join(data_home, DATA.index['tracks'][mtrack_id][i][0]))
+            self.multitrack_paths.append(os.path.join(data_home, DATA.index['multitracks'][mtrack_id][i][0]))
 
         # Annotation paths
         self.ctonic_path = utils.none_path_join(
@@ -175,7 +174,7 @@ class Track(core.MultiTrack):
         # CARNATIC MUSIC TRACKS
         metadata = DATA.metadata(self.metadata_path)
         if metadata is not None and mtrack_id.split('_')[1] in metadata['title']:
-            metadata['track_id'] = mtrack_id
+            metadata['mtrack_id'] = mtrack_id
             self._track_metadata = metadata
         else:
             # annotations with missing metadata
@@ -192,10 +191,10 @@ class Track(core.MultiTrack):
                 'concert': None
             }
 
-        self.title = self._track_metadata['title']
-        self.artists = self._track_metadata['artists']
-        self.album_artists = self._track_metadata['album_artists']
-        self.mbid = self._track_metadata['mbid']
+        self.title = self._track_metadata['title'] if 'title' in self._track_metadata.keys() is not None else None
+        self.artists = self._track_metadata['artists'] if 'artists' in self._track_metadata.keys() is not None else None
+        self.album_artists = self._track_metadata['album_artists'] if 'album_artists' in self._track_metadata.keys() is not None else None
+        self.mbid = self._track_metadata['mbid'] if 'mbid' in self._track_metadata.keys() is not None else None
         self.raaga = self._track_metadata['raaga'] if 'raaga' in self._track_metadata.keys() is not None else None
         self.form = self._track_metadata['form'] if 'form' in self._track_metadata.keys() is not None else None
         self.work = self._track_metadata['work'] if 'work' in self._track_metadata.keys() is not None else None
@@ -264,7 +263,7 @@ class SingleTrack(core.Track):
 
          Args:
              mtrack_id (str): track id of the mix track
-             track_id (str): track id of the single instrument track
+             strack_id (str): track id of the single instrument track
              data_home (str): Local path where the dataset is stored. default=None
                  If `None`, looks for the data in the default directory, `~/mir_datasets`
 
@@ -272,14 +271,17 @@ class SingleTrack(core.Track):
              audio_path (str): path of the audio file of the single instrument track
 
     """
-    def __init__(self, mtrack_id, track_id, data_home):
+    def __init__(self, mtrack_id, strack_id, data_home):
         if mtrack_id not in DATA.index['tracks']:
-            raise ValueError('{} is not a valid track ID in Saraga'.format(track_id))
+            raise ValueError('{} is not a valid track ID in Saraga Multitrack'.format(mtrack_id))
+
+        if strack_id not in DATA.index['multitracks'][mtrack_id]:
+            raise ValueError('{} is not a valid multitrack ID in Saraga Multitrack'.format(strack_id))
 
         self.mtrack_id = mtrack_id
 
         self._data_home = data_home
-        aux_path = DATA.index['tracks'][mtrack_id][track_id][0]
+        aux_path = DATA.index['multitracks'][mtrack_id][strack_id][0]
         if aux_path is not None:
             self.audio_path = os.path.join(data_home, aux_path)
         else:

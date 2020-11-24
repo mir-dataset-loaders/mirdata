@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-from mirdata import utils, core
+from mirdata import utils
 from mirdata.datasets import saraga_multitrack
 from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = '30_Siddhi Vinayakam'
+    default_trackid = '21_Siddhi Vinayakam'
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
     track = saraga_multitrack.Track(default_trackid, data_home=data_home)
 
@@ -19,57 +19,57 @@ def test_track():
                     {'artist': {'mbid': '4feed850-2fe8-4601-ba69-5479527c33ea', 'name': 'M R Gopinath'},
                     'instrument': {'mbid': '089f123c-0f7d-4105-a64e-49de81ca8fa4', 'name': 'Violin'}, 'lead': False,
                      'attributes': ''},
-                   {'artist': {'mbid': 'a448874e-c223-4abc-9491-bca1eb33bd6a', 'name': 'Akkarai Subhalakshmi'},
+                    {'artist': {'mbid': 'a448874e-c223-4abc-9491-bca1eb33bd6a', 'name': 'Akkarai Subhalakshmi'},
                     'instrument': {'mbid': '089f123c-0f7d-4105-a64e-49de81ca8fa4', 'name': 'Violin'}, 'lead': False,
                     'attributes': ''},
-                   {'artist': {'mbid': 'a448874e-c223-4abc-9491-bca1eb33bd6a', 'name': 'Akkarai Subhalakshmi'},
+                    {'artist': {'mbid': 'a448874e-c223-4abc-9491-bca1eb33bd6a', 'name': 'Akkarai Subhalakshmi'},
                     'instrument': {'mbid': 'd92884b7-ee0c-46d5-96f3-918196ba8c5b', 'name': 'Voice'}, 'lead': True,
                     'attributes': 'lead vocals'},
-                   {'artist': {'mbid': 'be525efa-5701-4b59-8e5a-eb5b3eb77853', 'name': 'Akkarai Sornalatha'},
+                    {'artist': {'mbid': 'be525efa-5701-4b59-8e5a-eb5b3eb77853', 'name': 'Akkarai Sornalatha'},
                     'instrument': {'mbid': 'd92884b7-ee0c-46d5-96f3-918196ba8c5b', 'name': 'Voice'}, 'lead': True,
                     'attributes': 'lead vocals'},
-                   {'artist': {'mbid': 'e7e20b72-5405-4b7e-b1bf-60f005dbd647', 'name': 'Kallidaikurichi S. Sivakumar'},
+                    {'artist': {'mbid': 'e7e20b72-5405-4b7e-b1bf-60f005dbd647', 'name': 'Kallidaikurichi S. Sivakumar'},
                     'instrument': {'mbid': 'f689271c-37bc-4c49-92a3-a14b15ee5d0e', 'name': 'Mridangam'}, 'lead': False,
                     'attributes': ''}],
-        'audio_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+        'audio_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                       'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.mp3.mp3',
         'concert': [{'mbid': '513e205a-8d71-4d4a-95f7-96d131fa15bc', 'title': 'Akkarai Sisters at Arkay'}],
-        'ctonic_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+        'ctonic_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                        'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.ctonic.txt',
         'form': [{'name': 'Kriti'}],
         'mbid': '16a3263f-31dc-40da-839b-f5955b77c0b6',
-        'metadata_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+        'metadata_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                          'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.json',
-        'mtrack_id': '30_Siddhi Vinayakam',
+        'mtrack_id': '21_Siddhi Vinayakam',
         'multitrack_ids': [
             'audio-ghatam', 'audio-mridangam-left', 'audio-mridangam-right', 'audio-violin', 'audio-vocal', 'audio-vocal-s'
         ],
         'multitrack_paths': [
-            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-ghatam.mp3',
-            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-mridangam-left.mp3',
-            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-mridangam-right.mp3',
-            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-violin.mp3',
-            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal.mp3',
-            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+            'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal-s.mp3'
         ],
-        'pitch_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+        'pitch_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                       'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.pitch.txt',
-        'phrases_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+        'phrases_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                         'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.mphrases-manual.txt',
         'raaga': [{'uuid': '0277eae5-3411-4b22-9fa8-1b347e7528d1', 'name': 'Ṣanmukhapriya',
                   'common_name': 'shanmukhapriya'}],
-        'sama_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+        'sama_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                      'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.sama-manual.txt',
-        'sections_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+        'sections_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                      'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.sections-manual-p.txt',
-        'taala': [{'uuid': '8c6c26db-e01a-4eef-ae0b-9f7e31a926e8', 'name': 'Rūpaka', 'common_name': 'rupaka'}],
-        'tempo_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+        'taala': [],
+        'tempo_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                       'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.tempo-manual.txt',
         'title': 'Siddhi Vinayakam',
         'work': [{'mbid': '1bd9d41e-7689-40e8-9048-624395a24762', 'title': 'Siddhi Vinayakam'}]
@@ -95,17 +95,17 @@ def test_track():
     assert type(track.multitrack_audio['audio-vocal-s']) == saraga_multitrack.SingleTrack
     assert type(track.multitrack_audio['audio-vocal']) == saraga_multitrack.SingleTrack
 
-    assert track.multitrack_audio['audio-ghatam'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+    assert track.multitrack_audio['audio-ghatam'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' \
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-ghatam.mp3'
-    assert track.multitrack_audio['audio-mridangam-left'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+    assert track.multitrack_audio['audio-mridangam-left'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' \
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-mridangam-left.mp3'
-    assert track.multitrack_audio['audio-mridangam-right'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+    assert track.multitrack_audio['audio-mridangam-right'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' \
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-mridangam-right.mp3'
-    assert track.multitrack_audio['audio-violin'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+    assert track.multitrack_audio['audio-violin'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' \
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-violin.mp3'
-    assert track.multitrack_audio['audio-vocal-s'].audio_path ==  'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+    assert track.multitrack_audio['audio-vocal-s'].audio_path ==  'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' \
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal-s.mp3'
-    assert track.multitrack_audio['audio-vocal'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' \
+    assert track.multitrack_audio['audio-vocal'].audio_path == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' \
             'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal.mp3'
 
     # test audio loading functions
@@ -115,14 +115,14 @@ def test_track():
 
 
 def test_single_track():
-    default_mtrackid = '30_Siddhi Vinayakam'
+    default_mtrackid = '21_Siddhi Vinayakam'
     default_trackid = 'audio-vocal'
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
     track = saraga_multitrack.SingleTrack(default_mtrackid, default_trackid, data_home=data_home)
 
     expected_attributes = {
-        'mtrack_id': '30_Siddhi Vinayakam',
-        'audio_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack/' +
+        'mtrack_id': '21_Siddhi Vinayakam',
+        'audio_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                       'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal.mp3'
     }
 
@@ -140,7 +140,7 @@ def test_single_track():
 
 def test_to_jams():
     data_home = 'tests/resources/mir_datasets/saraga_multitrack/'
-    track = saraga_multitrack.Track('30_Siddhi Vinayakam', data_home=data_home)
+    track = saraga_multitrack.Track('21_Siddhi Vinayakam', data_home=data_home)
     jam = track.to_jams()
 
     # Tonic
@@ -251,9 +251,7 @@ def test_to_jams():
         'mbid': '1bd9d41e-7689-40e8-9048-624395a24762', 'title': 'Siddhi Vinayakam'
     }]
     assert metadata['length'] == 754991
-    assert metadata['taala'] == [{
-        'uuid': '8c6c26db-e01a-4eef-ae0b-9f7e31a926e8', 'name': 'Rūpaka', 'common_name': 'rupaka'
-    }]
+    assert metadata['taala'] == []
     assert metadata['album_artists'] == [{
         'mbid': '90d36f37-ee10-4dff-9d3f-3bdd1291f367', 'name': 'Akkarai Sisters'
     }]
@@ -281,13 +279,13 @@ def test_to_jams():
     assert metadata['concert'] == [{
         'mbid': '513e205a-8d71-4d4a-95f7-96d131fa15bc', 'title': 'Akkarai Sisters at Arkay'
     }]
-    assert metadata['track_id'] == '30_Siddhi Vinayakam'
-    assert metadata['data_home'] == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack'
+    assert metadata['mtrack_id'] == '21_Siddhi Vinayakam'
+    assert metadata['data_home'] == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0'
 
 
 def test_load_tonic():
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
-    track = saraga_multitrack.Track('30_Siddhi Vinayakam', data_home=data_home)
+    track = saraga_multitrack.Track('21_Siddhi Vinayakam', data_home=data_home)
     tonic_path = track.ctonic_path
     parsed_tonic = saraga_multitrack.load_tonic(tonic_path)
     assert parsed_tonic == 195.997718
@@ -296,7 +294,7 @@ def test_load_tonic():
 
 def test_load_pitch():
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
-    track = saraga_multitrack.Track('30_Siddhi Vinayakam', data_home=data_home)
+    track = saraga_multitrack.Track('21_Siddhi Vinayakam', data_home=data_home)
     pitch_path = track.pitch_path
     parsed_pitch = saraga_multitrack.load_pitch(pitch_path)
 
@@ -325,7 +323,7 @@ def test_load_pitch():
 
 def test_load_sama():
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
-    track = saraga_multitrack.Track('30_Siddhi Vinayakam', data_home=data_home)
+    track = saraga_multitrack.Track('21_Siddhi Vinayakam', data_home=data_home)
     sama_path = track.sama_path
     parsed_sama = saraga_multitrack.load_sama(sama_path)
 
@@ -350,7 +348,7 @@ def test_load_tempo():
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
 
     # Carnatic track
-    track = saraga_multitrack.Track('30_Siddhi Vinayakam', data_home=data_home)
+    track = saraga_multitrack.Track('21_Siddhi Vinayakam', data_home=data_home)
     tempo_path = track.tempo_path
     parsed_tempo = saraga_multitrack.load_tempo(tempo_path)
 
@@ -370,7 +368,7 @@ def test_load_tempo():
 def test_load_metadata():
     # Carnatic track
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
-    track = saraga_multitrack.Track('30_Siddhi Vinayakam', data_home=data_home)
+    track = saraga_multitrack.Track('21_Siddhi Vinayakam', data_home=data_home)
     metadata_path = track.metadata_path
     parsed_metadata = saraga_multitrack._load_metadata(metadata_path)
 
@@ -385,9 +383,7 @@ def test_load_metadata():
         'mbid': '1bd9d41e-7689-40e8-9048-624395a24762', 'title': 'Siddhi Vinayakam'
     }]
     assert parsed_metadata['length'] == 754991
-    assert parsed_metadata['taala'] == [{
-        'uuid': '8c6c26db-e01a-4eef-ae0b-9f7e31a926e8', 'name': 'Rūpaka', 'common_name': 'rupaka'
-    }]
+    assert parsed_metadata['taala'] == []
     assert parsed_metadata['album_artists'] == [{
         'mbid': '90d36f37-ee10-4dff-9d3f-3bdd1291f367', 'name': 'Akkarai Sisters'
     }]
@@ -415,12 +411,12 @@ def test_load_metadata():
     assert parsed_metadata['concert'] == [{
         'mbid': '513e205a-8d71-4d4a-95f7-96d131fa15bc', 'title': 'Akkarai Sisters at Arkay'
     }]
-    assert parsed_metadata['data_home'] == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack'
+    assert parsed_metadata['data_home'] == 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0'
 
 
 def test_load_audio():
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
-    track = saraga_multitrack.Track('30_Siddhi Vinayakam', data_home=data_home)
+    track = saraga_multitrack.Track('21_Siddhi Vinayakam', data_home=data_home)
     audio_path = track.audio_path
     audio, sr = saraga_multitrack.load_audio(audio_path)
 
