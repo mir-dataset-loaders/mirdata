@@ -3918,4 +3918,4 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
         target_dir = train_dir if "train" in key else validate_dir
         file_names = os.listdir(source_dir)
         for file_name in file_names:
-            shutil.copyfile(os.path.join(source_dir, file_name), target_dir)
+            shutil.copytree(os.path.join(source_dir, file_name), target_dir)
