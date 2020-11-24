@@ -112,7 +112,6 @@ def test_track():
     audio, sr = track.audio
     assert sr == 44100
     assert audio.shape[0] == 2  # Check that audio complete mix is stereo
-    assert audio.shape[1] == 33295104
 
 
 def test_single_track():
