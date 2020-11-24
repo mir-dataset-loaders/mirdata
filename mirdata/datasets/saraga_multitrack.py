@@ -279,11 +279,12 @@ class SingleTrack(core.Track):
             raise ValueError('{} is not a valid multitrack ID in Saraga Multitrack'.format(strack_id))
 
         self.mtrack_id = mtrack_id
+        self.strack_id = strack_id
 
         self._data_home = data_home
-        aux_path = DATA.index['multitracks'][mtrack_id][strack_id][0]
-        if aux_path is not None:
-            self.audio_path = os.path.join(data_home, aux_path)
+        assert (self.strack_id in MULTITRACK_DICT), "Multitrack file {} not in multitrack dictionary".format(self.strack_id)
+        if DATA.index['multitracks'][mtrack_id][strack_id][0] is not None:
+            self.audio_path = os.path.join(data_home, DATA.index['multitracks'][mtrack_id][strack_id][0])
         else:
             self.audio_path = None
 

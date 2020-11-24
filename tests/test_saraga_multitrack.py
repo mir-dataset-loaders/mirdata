@@ -68,7 +68,7 @@ def test_track():
                      'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.sama-manual.txt',
         'sections_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                      'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.sections-manual-p.txt',
-        'taala': [],
+        'taala': [{"uuid": "8c6c26db-e01a-4eef-ae0b-9f7e31a926e8", "name": "R\u016bpaka", "common_name": "rupaka"}],
         'tempo_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                       'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.tempo-manual.txt',
         'title': 'Siddhi Vinayakam',
@@ -111,7 +111,8 @@ def test_track():
     # test audio loading functions
     audio, sr = track.audio
     assert sr == 44100
-    assert audio.shape[0] == 2
+    assert audio.shape[0] == 2  # Check that audio complete mix is stereo
+    assert audio.shape[1] == 33295104
 
 
 def test_single_track():
@@ -122,6 +123,7 @@ def test_single_track():
 
     expected_attributes = {
         'mtrack_id': '21_Siddhi Vinayakam',
+        'strack_id': 'audio-vocal',
         'audio_path': 'tests/resources/mir_datasets/saraga_multitrack/saraga_multitrack1.0/' +
                       'Akkarai Sisters at Arkay by Akkarai Sisters/Siddhi Vinayakam/Siddhi Vinayakam.multitrack-vocal.mp3'
     }
@@ -251,7 +253,9 @@ def test_to_jams():
         'mbid': '1bd9d41e-7689-40e8-9048-624395a24762', 'title': 'Siddhi Vinayakam'
     }]
     assert metadata['length'] == 754991
-    assert metadata['taala'] == []
+    assert metadata['taala'] == [{
+        "uuid": "8c6c26db-e01a-4eef-ae0b-9f7e31a926e8", "name": "R\u016bpaka", "common_name": "rupaka"
+    }]
     assert metadata['album_artists'] == [{
         'mbid': '90d36f37-ee10-4dff-9d3f-3bdd1291f367', 'name': 'Akkarai Sisters'
     }]
@@ -383,7 +387,9 @@ def test_load_metadata():
         'mbid': '1bd9d41e-7689-40e8-9048-624395a24762', 'title': 'Siddhi Vinayakam'
     }]
     assert parsed_metadata['length'] == 754991
-    assert parsed_metadata['taala'] == []
+    assert parsed_metadata['taala'] == [{
+        "uuid": "8c6c26db-e01a-4eef-ae0b-9f7e31a926e8", "name": "R\u016bpaka", "common_name": "rupaka"
+    }]
     assert parsed_metadata['album_artists'] == [{
         'mbid': '90d36f37-ee10-4dff-9d3f-3bdd1291f367', 'name': 'Akkarai Sisters'
     }]
