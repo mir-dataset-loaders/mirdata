@@ -172,42 +172,6 @@ class Track(core.Track):
         self.mbid = data[0]
         self.mbid_group = data[1]
 
-    def _download(self, cleanup=True):
-        """Download data to `save_dir` and optionally print a message.
-
-        Args:
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        print("_inside download")
-        train_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-train")
-        if not os.path.isdir(train_dir):
-            os.mkdir(train_dir)
-
-        validate_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-validation")
-        if not os.path.isdir(validate_dir):
-            os.mkdir(validate_dir)
-
-        for key, REMOTE in REMOTES.items():
-            download_utils.downloader(
-                self._data_home,
-                remotes=REMOTE,
-                partial_download=None,
-                info_message=DOWNLOAD_INFO,
-                force_overwrite=True,
-                cleanup=cleanup,
-            )
-            source_dir = os.path.join(self._data_home, "temp")
-            target_dir = train_dir if "train" in key else validate_dir
-            file_names = os.listdir(source_dir)
-            for file_name in file_names:
-                shutil.move(os.path.join(source_dir, file_name), target_dir)
-
     # Genre
     @utils.cached_property
     def genre(self):
@@ -3917,3 +3881,40 @@ def load_discogs_validation(data_home=None):
     """
     return filter_index("allmusic#validation#", data_home=data_home)
 
+
+def _download(data_home, remotes, partial_download, info_message, force_overwrite, cleanup=True):
+    """Download data to `save_dir` and optionally print a message.
+
+    Args:
+        data_home (str):
+            Dataset files path
+        cleanup (bool):
+            Whether to delete any zip/tar files after extracting.
+
+    Raises:
+        ValueError: if invalid keys are passed to partial_download
+        IOError: if a downloaded file's checksum is different from expected
+
+    """
+    train_dir = os.path.join(data_home, "acousticbrainz-mediaeval-train")
+    if not os.path.isdir(train_dir):
+        os.mkdir(train_dir)
+
+    validate_dir = os.path.join(data_home, "acousticbrainz-mediaeval-validation")
+    if not os.path.isdir(validate_dir):
+        os.mkdir(validate_dir)
+
+    for key, REMOTE in REMOTES.items():
+        download_utils.downloader(
+            data_home,
+            remotes={key: REMOTE},
+            partial_download=None,
+            info_message=None,
+            force_overwrite=True,
+            cleanup=cleanup,
+        )
+        source_dir = os.path.join(data_home, "temp")
+        target_dir = train_dir if "train" in key else validate_dir
+        file_names = os.listdir(source_dir)
+        for file_name in file_names:
+            shutil.move(os.path.join(source_dir, file_name), target_dir)
