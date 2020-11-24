@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """Saraga Carnatic Multitrack Dataset Loader
 
-This repository contains time aligned melody, rhythm and structural annotations for two large open corpora of
-Indian Art Music (Carnatic multitrack music).
-
-The repository contains the following manual annotations referring to audio files:
+This repository contains time aligned melody, rhythm and structural annotations for a large open corpora of
+Carnatic music, as well as multitrack audio comprising isolated audio tracks for the following instruments:
+Ghatam, mridangam (right and left channel), violin, vocal secondary and main vocal.
 
 Section and tempo annotations stored as start and end timestamps together with the name of the section and
-tempo during the section (in a separate file). Sama annotations referring to rhythmic cycle boundaries stored
+tempo during the section. Sama annotations referring to rhythmic cycle boundaries stored
 as timestamps. Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
 ({S, r, R, g, G, m, M, P, d, D, n, N}). Audio features automatically extracted and stored: pitch and tonic.
 The annotations are stored in text files, named as the audio filename but with the respective extension at the
@@ -68,9 +67,9 @@ BIBTEX = """
 
 REMOTES = {
     'all': download_utils.RemoteFileMetadata(
-        filename='saraga_1.0.zip',
-        url='https://zenodo.org/record/1256127/files/saraga_1.0.zip?download=1',
-        checksum='c8471e55bd55e060bde6cfacc555e1b1',
+        filename='saraga_multitrack1.0.zip',
+        url='TODO',
+        checksum='TODO',
         destination_dir=None,
     )
 }
@@ -278,8 +277,8 @@ class SingleTrack(core.Track):
         if strack_id not in DATA.index['multitracks'][mtrack_id]:
             raise ValueError('{} is not a valid multitrack ID in Saraga Multitrack'.format(strack_id))
 
-        self.mtrack_id = mtrack_id
-        self.strack_id = strack_id
+        self.mtrack_id = mtrack_id  # Id for the general mix of the piece
+        self.strack_id = strack_id  # Id for the single instrument track
 
         self._data_home = data_home
         assert (self.strack_id in MULTITRACK_DICT), "Multitrack file {} not in multitrack dictionary".format(self.strack_id)

@@ -116,9 +116,9 @@ def test_track():
 
 def test_single_track():
     default_mtrackid = '21_Siddhi Vinayakam'
-    default_trackid = 'audio-vocal'
+    default_strackid = 'audio-vocal'
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
-    track = saraga_multitrack.SingleTrack(default_mtrackid, default_trackid, data_home=data_home)
+    track = saraga_multitrack.SingleTrack(default_mtrackid, default_strackid, data_home=data_home)
 
     expected_attributes = {
         'mtrack_id': '21_Siddhi Vinayakam',
@@ -137,6 +137,22 @@ def test_single_track():
     audio, sr = track.audio
     assert sr == 44100
     assert len(audio) == 33295724
+
+    default_mtrackid_2 = '1_Ganamuda Panam'
+    default_strackid_2 = 'audio-ghatam'
+    track_2 = saraga_multitrack.SingleTrack(default_mtrackid_2, default_strackid_2, data_home=data_home)
+
+    expected_attributes_2 = {
+        'mtrack_id': '1_Ganamuda Panam',
+        'strack_id': 'audio-ghatam',
+        'audio_path': None
+    }
+
+    expected_property_types_2 = {
+        'audio': (np.ndarray, float),
+    }
+
+    run_track_tests(track_2, expected_attributes_2, expected_property_types_2)
 
 
 def test_to_jams():
@@ -350,7 +366,6 @@ def test_load_sama():
 def test_load_tempo():
     data_home = 'tests/resources/mir_datasets/saraga_multitrack'
 
-    # Carnatic track
     track = saraga_multitrack.Track('21_Siddhi Vinayakam', data_home=data_home)
     tempo_path = track.tempo_path
     parsed_tempo = saraga_multitrack.load_tempo(tempo_path)
@@ -366,6 +381,36 @@ def test_load_tempo():
         'subdivisions': 4
     }
     assert saraga_multitrack.load_tempo(None) is None
+
+
+def test_load_sections():
+    data_home = 'tests/resources/mir_datasets/saraga_multitrack'
+
+    track = saraga_multitrack.Track('21_Siddhi Vinayakam', data_home=data_home)
+    sections_path = track.sections_path
+    parsed_sections = saraga_multitrack.load_sections(sections_path)
+
+    # Check types
+    assert type(parsed_sections) == utils.SectionData
+    assert type(parsed_sections.intervals) is np.ndarray
+    assert type(parsed_sections.labels) is list
+
+    # Check values
+    assert np.array_equal(
+        parsed_sections.intervals[:, 0], np.array([
+            1.151020408, 55.730612244, 139.21632653, 241.975510204, 388.27755102
+        ])
+    )
+    assert np.array_equal(
+        parsed_sections.intervals[:, 1], np.array([
+            55.730612244, 139.21632653, 241.975510204, 388.27755102, 754.9910204079999
+        ])
+    )
+    assert parsed_sections.labels == [
+        'Vocal ālāp', 'Pallavi', 'Anupallavi', 'Caraṇam', 'Kalpanā svara'
+    ]
+
+    assert saraga_multitrack.load_sections(None) is None
 
 
 def test_load_metadata():
