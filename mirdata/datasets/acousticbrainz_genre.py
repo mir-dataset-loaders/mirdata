@@ -3914,7 +3914,7 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
             force_overwrite=True,
             cleanup=cleanup,
         )
-        downloaded_dir, _ = os.path.splitext(REMOTE.filename)
+        downloaded_dir = REMOTE.filename.replace('.tar.bz2', '')
         source_dir = os.path.join(data_home, "temp", downloaded_dir)
         target_dir = train_dir if "train" in key else validate_dir
         file_names = os.listdir(source_dir)
