@@ -184,6 +184,7 @@ class Track(core.Track):
             IOError: if a downloaded file's checksum is different from expected
 
         """
+        print("_inside download")
         train_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-train")
         if not os.path.isdir(train_dir):
             os.mkdir(train_dir)
