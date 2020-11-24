@@ -172,7 +172,7 @@ class Track(core.Track):
         self.mbid = data[0]
         self.mbid_group = data[1]
 
-    def download(self, cleanup=True):
+    def _download(self, cleanup=True):
         """Download data to `save_dir` and optionally print a message.
 
         Args:
@@ -184,7 +184,6 @@ class Track(core.Track):
             IOError: if a downloaded file's checksum is different from expected
 
         """
-        import pdb; pdb.set_trace()
         train_dir = os.path.join(self._data_home, "acousticbrainz-mediaeval-train")
         if not os.path.isdir(train_dir):
             os.mkdir(train_dir)
