@@ -41,23 +41,26 @@ See the Examples section below for more details, or the [documentation](https://
 
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [Beatport EDM key](https://zenodo.org/record/1101082/export/xd#.X4NCfC3FQUE)
+* [cante100](http://www.cofla-project.com/?page_id=529&lang=es)
 * [DALI](https://github.com/gabolsgabs/DALI)
-* [GiantSteps tempo](https://github.com/GiantSteps/giantsteps-tempo-dataset)
 * [GiantSteps key](https://zenodo.org/record/1095691#.X2zqwC3FQUE)
+* [GiantSteps tempo](https://github.com/GiantSteps/giantsteps-tempo-dataset)
 * [Groove MIDI](https://magenta.tensorflow.org/datasets/groove)
 * [GTZAN genre](http://marsyas.info/downloads/datasets.html)
 * [GuitarSet](http://github.com/marl/guitarset/)
 * [Ikala](http://mac.citi.sinica.edu.tw/ikala/)
+* [IRMAS](https://www.upf.edu/web/mtg/irmas)
 * [MAESTRO](https://magenta.tensorflow.org/datasets/maestro)
+* [Medley-solos-DB](https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db)
 * [MedleyDB Melody](https://medleydb.weebly.com/)
 * [MedleyDB Pitch](https://medleydb.weebly.com/)
-* [Medley-solos-DB](https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db)
 * [Mridangam Stroke](https://compmusic.upf.edu/mridangam-stroke-dataset)
 * [ORCHSET](https://zenodo.org/record/1289786#.XREpzaeZPx6)
 * [RWC Classical](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html)
 * [RWC Jazz](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html)
 * [RWC Popular](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html)
 * [Salami](https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections)
+* [Saraga](https://mtg.github.io/saraga/)
 * [TinySOL](https://www.orch-idea.org/)
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).
@@ -128,7 +131,7 @@ orchset_data = orchset.load_tracks()
 import mirdata
 
 orchset = mirdata.Dataset('orchset')
-orchset_ids = orchset.track_ids()
+orchset_ids = orchset.track_ids
 orchset_data = orchset.load_tracks()
 
 example_track = orchset_data[orchset_ids[0]]

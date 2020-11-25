@@ -17,10 +17,12 @@ from tests.test_utils import DEFAULT_DATA_HOME
 DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
+    "cante100": "008",
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
     "giantsteps_tempo": "113",
     "guitarset": "03_BN3-119-G_solo",
+    "irmas": "1",
     "medley_solos_db": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
     "medleydb_melody": "MusicDelta_Beethoven",
     "mridangam_stroke": "224030",
@@ -28,6 +30,7 @@ CUSTOM_TEST_TRACKS = {
     "rwc_jazz": "RM-J004",
     "rwc_popular": "RM-P001",
     "salami": "2",
+    "saraga": "carnatic_1",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
 }
 
@@ -314,6 +317,10 @@ EXCEPTIONS = {
         "load_pitch_contour": {"string_num": 1},
         "load_note_ann": {"string_num": 1},
     },
+    "saraga": {
+        "load_tempo": {"iam_style": "carnatic"},
+        "load_sections": {"iam_style": "carnatic"}
+    }
 }
 
 

@@ -23,6 +23,7 @@ from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
 
+
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
     Booktitle = {International Society of Music Information Retrieval (ISMIR)},
@@ -34,10 +35,10 @@ DOWNLOAD_INFO = """
     To download this dataset, visit:
     https://zenodo.org/record/2620624#.XKZc7hNKh24
     and request access.
-
+    
     Once downloaded, unzip the file MedleyDB-Pitch.zip
     and copy the result to:
-    {data_home}
+    {}
 """
 
 
@@ -76,7 +77,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
+        if track_id not in DATA.index['tracks']:
             raise ValueError(
                 "{} is not a valid track ID in MedleyDB-Pitch".format(track_id)
             )
@@ -84,7 +85,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
+        self._track_paths = DATA.index['tracks'][track_id]
         self.pitch_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
 
         metadata = DATA.metadata(data_home)

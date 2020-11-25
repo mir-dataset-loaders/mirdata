@@ -57,14 +57,16 @@ REMOTES = {
 DOWNLOAD_INFO = """
     To download this dataset, visit:
     https://zenodo.org/record/2577915 and request access.
-
     Once downloaded, unzip the file DALI_v1.0.zip
     and place the result in:
-    {data_home}
-
+    {}
+    
     Use the function dali_code.get_audio you can find at:
-    https://github.com/gabolsgabs/DALI for getting the audio and place them in:
-    {data_home}/audio
+    https://github.com/gabolsgabs/DALI for getting the audio 
+    and place them in "audio" folder with the following structure:
+    > Dali
+        > audio
+        ...
 """
 
 
@@ -108,12 +110,12 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
+        if track_id not in DATA.index['tracks']:
             raise ValueError("{} is not a valid track ID in DALI".format(track_id))
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
+        self._track_paths = DATA.index['tracks'][track_id]
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths["annot"][0]
         )
@@ -274,4 +276,3 @@ def load_annotations_class(annotations_path):
         with gzip.open(annotations_path, "r") as f:
             output = pickle.load(f)
     return output
-
