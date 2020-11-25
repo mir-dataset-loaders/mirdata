@@ -75,7 +75,6 @@ def downloader(
             if '.zip' in extension:
                 download_zip_file(remotes[k], save_dir, force_overwrite, cleanup)
             elif '.gz' in extension or '.tar' in extension or '.bz2' in extension:
-                print("en tar")
                 download_tar_file(remotes[k], save_dir, force_overwrite, cleanup)
             else:
                 download_from_remote(remotes[k], save_dir, force_overwrite)
