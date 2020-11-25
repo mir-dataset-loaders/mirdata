@@ -40,6 +40,7 @@ This work is partially supported by the European Union’s Horizon 2020 research
 import json
 import os
 import shutil
+import urllib
 
 from mirdata import download_utils, core
 from mirdata import jams_utils
@@ -3906,16 +3907,24 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
         os.mkdir(validate_dir)
 
     for key, REMOTE in REMOTES.items():
-        download_utils.downloader(
-            data_home,
-            remotes={key: REMOTE},
-            partial_download=None,
-            info_message=None,
-            force_overwrite=True,
-            cleanup=cleanup,
-        )
+        urlib_works = False
+        while not urlib_works:
+            try:
+                download_utils.downloader(
+                    data_home,
+                    remotes={key: REMOTE},
+                    partial_download=None,
+                    info_message=None,
+                    force_overwrite=True,
+                    cleanup=cleanup,
+                )
+            except urllib.error.ContentTooShortError:
+                os.remove(os.path.join(data_home, "temp", REMOTE.filename))
+                continue
+            urlib_works = True
+
         source_dir = os.path.join(data_home, "temp", train if "train" in key else validate)
         target_dir = train_dir if "train" in key else validate_dir
-        file_names = os.listdir(source_dir)
-        for file_name in file_names:
-            shutil.copytree(os.path.join(source_dir, file_name), target_dir)
+        dir_names = os.listdir(source_dir)
+        for dir_name in dir_names:
+            shutil.move(os.path.join(source_dir, dir_name), os.path.join(target_dir, dir_name))
