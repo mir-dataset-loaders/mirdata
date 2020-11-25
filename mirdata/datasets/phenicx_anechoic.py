@@ -100,7 +100,7 @@ DATASET_SECTIONS = {
     'horn': 'brass',
 }
 
-class IsolatedTrack(core.Track):
+class Track(core.Track):
     """Phenicx-Anechoic Track class
 
     Args:
@@ -120,7 +120,7 @@ class IsolatedTrack(core.Track):
 
         self._data_home = data_home
 
-        self.audio_path = os.path.join(data_home, DATA.index[self.mtrack_id][track_id][0])
+        self.audio_path = os.path.join(data_home, DATA.index['multitracks'][self.mtrack_id]['tracks'][track_id][0])
 
         self._metadata = None
 
@@ -137,7 +137,7 @@ class IsolatedTrack(core.Track):
 
 
 
-class Track(core.MultiTrack):
+class MultiTrack(core.MultiTrack):
     """Phenicx-Anechoic MultiTrack class
 
     Args:
@@ -155,30 +155,25 @@ class Track(core.MultiTrack):
     """
 
     def __init__(self, mtrack_id, data_home=None):
-        if mtrack_id not in DATA.index:
+        if mtrack_id not in DATA.index['multitracks']:
             raise ValueError('{} is not a valid track ID in Example'.format(mtrack_id))
 
         self.mtrack_id = mtrack_id
 
         self._data_home = data_home
 
-        self.track_ids = [k for k, v in sorted(DATA.index[mtrack_id].items()) if 'audio-' in k]
-        self.tracks = {k:IsolatedTrack(self.mtrack_id, k, self._data_home) for k, v in sorted(DATA.index[mtrack_id].items()) if 'audio-' in k}
+        self.mtrack_ids = [k for k, v in sorted(DATA.index['multitracks'][mtrack_id]['tracks'].items())]
+        self.tracks = {k:Track(self.mtrack_id, k, self._data_home) for k, v in sorted(DATA.index['multitracks'][mtrack_id]['tracks'].items())}
 
         self.track_audio_property = "audio" # the attribute of Track which returns the relevant audio file for mixing
 
         self._metadata = None
 
-
-        # self.mix_path = ...
-        # self.annotation_path = ...
-
-
         #### parse the keys for the list of instruments
         self.instruments = sorted(
             [
                 source.replace('score-', '')
-                for source in DATA.index[mtrack_id].keys()
+                for source in DATA.index['multitracks'][mtrack_id].keys()
                 if 'score-' in source
             ]
         )
@@ -194,41 +189,93 @@ class Track(core.MultiTrack):
             )
         )
 
-        temp = self.get_score(['violin','viola'])
 
-        instruments_to_trackids = [tid for tid in self.track_ids if re.compile('|'.join(['violin','viola']),re.IGNORECASE).search(tid)]
-        temp = self.get_target(instruments_to_trackids)
-        import pdb;pdb.set_trace()
 
-    # # -- multitracks can optionally have mix-level cached properties and properties
-    # @utils.cached_property
-    # def score(self):
-    #     """output type: description of output"""
-    #     return load_score(self.annotation_path)
+    @property
+    def audio_mix(self):
+        """np.ndarray(n_channels, n_samples): audio signal"""
+        return self.get_audio_mix_instruments(self.instruments, weights=None, average=True, enforce_length=False)
 
-    # @property
-    # def audio(self):
-    #     """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
-    #     return load_audio(self.audio_path)
 
-    # def to_jams(self):
-    #     """Jams: the track's data in jams format"""
-    #     return jams_utils.jams_converter(
-    #         audio_path=self.mix_path,
-    #         annotation_data=[(self.annotation, None)],
-    #         ...
-    #     )
+    @caches_property
+    def scores(self):
+        """list(EventData): list of musical score as EventData for all instruments"""
+        return [self.get_score_mix_instruments(instrument) for instrument in self.instruments]
 
-    def get_score(self, track_keys):
-        """Get the score for a target which is a mixture of tracks
+
+    def get_trackids(self,instruments):
+        """Get the track_ids for the given instrument(s)
         Args:
-            track_keys (list): list of track keys to mix together
+            instruments (list or string): list of instrument names
 
         Returns:
-            target (EventData): EventData tuples (start_times, end_times, note)
+           (list): list of track_ids
 
         """
-        score_paths = [v[0] for k,v in DATA.index[self.mtrack_id].items() if 'score-' in k and re.compile('|'.join(track_keys),re.IGNORECASE).search(v[0])]
+        if isinstance(instruments, str):
+            instruments = [instruments]
+        assert isinstance(instruments, list)
+        assert all(elem in self.instruments for elem in instruments),'The instruments {} must be: {}'.format(instruments,self.instruments)
+
+        return [tid for tid in self.mtrack_ids if re.compile('|'.join(instruments),re.IGNORECASE).search(tid)]
+
+
+    def get_audio_mix_instruments(self, instruments, weights=None, average=True, enforce_length=True):
+        """Get the audio mix/linear sum for the given instrument(s)
+        Args:
+            instruments (list or string): list of instrument names
+
+        Returns:
+           np.ndarray(n_channels, n_samples): mixed audio
+
+        """
+        return self.get_target(self.get_trackids(instruments), weights=weights, average=average, enforce_length=enforce_length)
+
+
+    def get_audio_instruments(self, instruments, weights=None, average=True, enforce_length=True):
+        """Get the audios for the given instrument(s)
+        Args:
+            instruments (list or string): list of instrument names
+
+        Returns:
+           list(np.ndarray(n_channels, n_samples,n_instruments)): list of audio signals for the instruments
+
+        """
+        if isinstance(instruments, str):
+            instruments = [instruments]
+        return np.stack([self.get_audio_mix_instruments(instrument, weights=weights, average=average, enforce_length=True) for instrument in instruments],axis=-1)
+
+
+    def get_audio_sections(self, sections, weights=None, average=True):
+        """Get the audios for the given section(s)
+        Args:
+            sections (list or string): list of section names
+
+        Returns:
+           list(np.ndarray(n_channels, n_samples, n_instruments)): list of audio signals for the sections
+
+        """
+        if isinstance(sections, str):
+            sections = [sections]
+        instruments_for_sections = [[k for k,s in DATASET_SECTIONS.items() if s == section] for section in sections]
+        return np.stack([self.get_audio_mix_instruments(instruments, weights=weights, average=average, enforce_length=True) for instruments in instruments_for_sections],axis=-1)
+
+
+    def get_score_mix_instruments(self, instruments):
+        """Get the mixed score for the instrument(s)
+        Args:
+            instruments (list or string)): list of instrument names to get the score for
+
+        Returns:
+            score (EventData): EventData tuples (start_times, end_times, note)
+
+        """
+        if isinstance(instruments, str):
+            instruments = [instruments]
+        assert isinstance(instruments, list)
+        assert all(elem in self.instruments for elem in instruments),'The instruments {} must be: {}'.format(instruments,self.instruments)
+
+        score_paths = [v[0] for k,v in DATA.index['multitracks'][self.mtrack_id].items() if 'score-' in k and re.compile('|'.join(instruments),re.IGNORECASE).search(v[0])]
 
         start_times = []
         end_times = []
@@ -253,7 +300,7 @@ class Track(core.MultiTrack):
         end_times = np.concatenate(end_times)
         score = np.concatenate(score)
 
-        # sort on the start time
+        #### sort on the start time
         ind = np.argsort(start_times, axis=0)
         start_times = np.take_along_axis(start_times, ind, axis=0)
         end_times = np.take_along_axis(end_times, ind, axis=0)
@@ -261,6 +308,29 @@ class Track(core.MultiTrack):
 
         data = utils.EventData(start_times, end_times, score)
         return data
+
+
+    def to_jams(self):
+        """Jams: the track's data in jams format"""
+
+        metadata = {}
+        metadata['instruments'] = self.instruments
+        metadata['sections'] = self.sections
+
+        audio_paths = [
+            track.audio_path
+            for k,track in self.tracks.items()
+        ]
+
+        score_data = [
+            (self.get_score_instruments(instrument), 'score-' + instrument) for instrument in self.instruments
+        ]
+
+        return jams_utils.jams_converter(
+            audio_path=audio_paths[0],
+            event_data=score_data,
+            metadata=metadata
+        )
 
 
 def load_audio(audio_path):
