@@ -219,6 +219,21 @@ class Dataset(object):
         else:
             return self._multitrack_object(mtrack_id, self.data_home)
 
+    def _multitrack(self, mtrack_id):
+        """Load a multitrack by mtrack_id.
+        Hidden helper function that gets called as a lambda.
+
+        Args:
+            mtrack_id (str): mtrack id of the multitrack
+
+        Returns:
+            multitrack (dataset.MultiTrack): an instance of this dataset's MultiTrack object
+        """
+        if self._multitrack_object is None:
+            raise NotImplementedError
+        else:
+            return self._multitrack_object(mtrack_id, self.data_home)
+
     def load_tracks(self):
         """Load all tracks in the dataset
 
