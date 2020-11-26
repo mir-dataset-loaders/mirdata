@@ -98,7 +98,7 @@ REMOTES = {
     'train-89': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-train-89.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-89.tar.bz2?download=1',
-        checksum='22ca7f1fea8a86459b7fda4530f00070',
+        checksum='c6e4a2ef1b0e8ed535197b868f8c7302',
         destination_dir='temp',
     ),
     'train-ab': download_utils.RemoteFileMetadata(
@@ -3885,6 +3885,8 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
             Dataset files path
         cleanup (bool):
             Whether to delete any zip/tar files after extracting.
+        force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files. By default False.
 
     Raises:
         ValueError: if invalid keys are passed to partial_download
@@ -3910,6 +3912,7 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
             first_dir_path = os.path.join(train_dir if fold == 'train' else validate_dir, first_dir)
             if os.path.isdir(first_dir_path):
                 file_downloaded = True
+                print("File " + REMOTE.filename + " downloaded. Skip download (force_overwrite=False).")
         if not file_downloaded:
             #  if this typical error happend it repeat download
             urlib_works = False
