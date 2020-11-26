@@ -145,8 +145,6 @@ class Track(core.Track):
 
     Attributes:
         track_id (str): track id
-        mbid (str): mbid record
-        mbid_group: mbid group
     """
 
     def __init__(self, track_id, data_home):
@@ -159,50 +157,58 @@ class Track(core.Track):
         self.path = utils.none_path_join(
             [self._data_home, self._track_paths['data'][0]]
         )
-        data = self.track_id.split('#')
-        self.mbid = data[0]
-        self.mbid_group = data[1]
 
     # Genre
-    @utils.cached_property
+    @property
     def genre(self):
         """Genre: human-labeled genre and subgenres list"""
         return [genre for genre in self.track_id.split('#')[2:]]
 
+    # Music Brainz
+    @property
+    def mbid(self):
+        """mbid: musicbrainz id"""
+        return self.track_id.split('#')[0]
+
+    @property
+    def mbid_group(self):
+        """mbid_group: musicbrainz id group"""
+        return self.track_id.split('#')[1]
+
     # Metadata
-    @utils.cached_property
+    @property
     def artist(self):
         """Artist: metadata artist annotation
         """
         return load_extractor(self.path)["metadata"]["artist"]
 
-    @utils.cached_property
+    @property
     def title(self):
         """title: metadata title annotation"""
         return load_extractor(self.path)["metadata"]["title"]
 
-    @utils.cached_property
+    @property
     def date(self):
         """date: metadata date annotation"""
         return load_extractor(self.path)["metadata"]["date"]
 
-    @utils.cached_property
+    @property
     def file_name(self):
         """File_name: metadata file_name annotation"""
         return load_extractor(self.path)["metadata"]["file_name"]
 
-    @utils.cached_property
+    @property
     def album(self):
         """Album: metadata album annotation"""
         return load_extractor(self.path)["metadata"]["album"]
 
-    @utils.cached_property
+    @property
     def tracknumber(self):
         """tracknumber: metadata tracknumber annotation"""
         return load_extractor(self.path)["metadata"]["tracknumber"]
 
     # Tonal
-    @utils.cached_property
+    @property
     def tonal(self):
         """Tonal: tonal features.
         'tuning_frequency': estimated tuning frequency [Hz]. Algorithms: TuningFrequency
@@ -673,7 +679,7 @@ class Track(core.Track):
         return load_extractor(self.path)["tonal"]
 
     # low_level
-    @utils.cached_property
+    @property
     def low_level(self):
         """low_level: low_level track descritors.
 
@@ -3161,7 +3167,7 @@ class Track(core.Track):
         """
         return load_extractor(self.path)["low_level"]
 
-    @utils.cached_property
+    @property
     def rhythm(self):
         """Rhythm: rhytm essentia extractor descriptors
         'beats_position': time positions [sec] of detected beats using beat tracking algorithm by Degara et al., 2012. Algorithms: RhythmExtractor2013, BeatTrackerDegara
@@ -3665,6 +3671,7 @@ class Track(core.Track):
         )
 
 
+@utils.cached_property
 def load_extractor(path):
     """Load a AcousticBrainz Dataset json file with all the features and metadata.
 
@@ -3684,35 +3691,6 @@ def load_extractor(path):
     return meta
 
 
-def track_ids():
-    """Get the list of track IDs for this dataset
-
-    Returns:
-        (list): A list of track ids
-    """
-    return list(DATA.index.keys())
-
-
-def load(data_home=None):
-    """Load AcousticBrainz Dataset dataset
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-
-    Returns:
-        (dict): {`track_id`: track data}
-
-    """
-    if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
-
-    acousticbrainz_genre_data = {}
-    for key in track_ids():
-        acousticbrainz_genre_data[key] = Track(key, data_home=data_home)
-    return acousticbrainz_genre_data
-
-
 def filter_index(search_key, data_home=None):
     """Load from AcousticBrainz genre dataset the indexes that match with search_key.
 
@@ -3725,7 +3703,8 @@ def filter_index(search_key, data_home=None):
 
     """
     if data_home is None:
-        data_home = utils.get_default_dataset_path(DATASET_DIR)
+        mir_datasets_dir = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
+        return os.path.join(mir_datasets_dir, DATASET_DIR)
 
     acousticbrainz_genre_data = {}
     for pair in filter(lambda item: search_key in item[0], DATA.index.items()):
