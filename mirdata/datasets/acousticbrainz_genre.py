@@ -59,67 +59,61 @@ BIBTEX = """@inproceedings{bogdanov2019acousticbrainz,
 
 DATASET_DIR = 'acousticbrainz_genre'
 REMOTES = {
-    'validation1': download_utils.RemoteFileMetadata(
+    'validation-01': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-validation-01234567.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-validation-01234567.tar.bz2?download=1',
         checksum='f21f9c5e398713139cca9790b656faf9',
         destination_dir='temp',
     ),
-    'validation2': download_utils.RemoteFileMetadata(
+    'validation-89': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-validation-89abcdef.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-validation-89abcdef.tar.bz2?download=1',
         checksum='34f47394ac6d8face4399f48e2b98ebe',
         destination_dir='temp',
     ),
-    'train1': download_utils.RemoteFileMetadata(
+    'train-01': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features--train-01.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features--train-01.tar.bz2?download=1',
         checksum='db7157b5112022d609652dd21c632090',
         destination_dir='temp',
     ),
-    'train2': download_utils.RemoteFileMetadata(
+    'train-23': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-train-23.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-23.tar.bz2?download=1',
         checksum='79581967a1be5c52e83be21261d1ef6c',
         destination_dir='temp',
     ),
-    'train3': download_utils.RemoteFileMetadata(
+    'train-45': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-train-45.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-45.tar.bz2?download=1',
         checksum='0e48fa319fa48e5cf95eea8118d2e882',
         destination_dir='temp',
     ),
-    'train4': download_utils.RemoteFileMetadata(
+    'train-67': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-train-67.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-67.tar.bz2?download=1',
         checksum='22ca7f1fea8a86459b7fda4530f00070',
         destination_dir='temp',
     ),
-    'train5': download_utils.RemoteFileMetadata(
+    'train-89': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-train-89.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-89.tar.bz2?download=1',
         checksum='22ca7f1fea8a86459b7fda4530f00070',
         destination_dir='temp',
     ),
-    'train6': download_utils.RemoteFileMetadata(
-        filename='acousticbrainz-mediaeval-features-train-89.tar.bz2',
-        url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-89.tar.bz2?download=1',
-        checksum='c6e4a2ef1b0e8ed535197b868f8c7302',
-        destination_dir='temp',
-    ),
-    'train7': download_utils.RemoteFileMetadata(
+    'train-ab': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-train-ab.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-ab.tar.bz2?download=1',
         checksum='513d5f306dd4f3799c137423ee444051',
         destination_dir='temp',
     ),
-    'train8': download_utils.RemoteFileMetadata(
+    'train-cd': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-train-cd.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-cd.tar.bz2?download=1',
         checksum='422d75d70d583decec0b2761865092a7',
         destination_dir='temp',
     ),
-    'train9': download_utils.RemoteFileMetadata(
+    'train-ef': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-train-ef.tar.bz2',
         url='https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-ef.tar.bz2?download=1',
         checksum='021ab25a5fd1b020521824e7fce9c775',
@@ -3883,7 +3877,7 @@ def load_discogs_validation(data_home=None):
     return filter_index("allmusic#validation#", data_home=data_home)
 
 
-def _download(data_home, remotes, partial_download, info_message, force_overwrite, cleanup=True):
+def _download(data_home, remotes, partial_download, info_message, force_overwrite=False, cleanup=True):
     """Download data to `save_dir` and optionally print a message.
 
     Args:
@@ -3897,6 +3891,7 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
         IOError: if a downloaded file's checksum is different from expected
 
     """
+    # Create these directories if doesn't exist
     train = "acousticbrainz-mediaeval-train"
     train_dir = os.path.join(data_home, train)
     if not os.path.isdir(train_dir):
@@ -3906,23 +3901,33 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
     if not os.path.isdir(validate_dir):
         os.mkdir(validate_dir)
 
+    # start to download
     for key, REMOTE in REMOTES.items():
-        urlib_works = False
-        while not urlib_works:
-            try:
-                download_utils.downloader(
-                    data_home,
-                    remotes={key: REMOTE},
-                    partial_download=None,
-                    info_message=None,
-                    force_overwrite=True,
-                    cleanup=cleanup,
-                )
-            except urllib.error.ContentTooShortError:
-                os.remove(os.path.join(data_home, "temp", REMOTE.filename))
-                continue
-            urlib_works = True
-
+        # check overwrite
+        file_downloaded = False
+        if not force_overwrite:
+            fold, first_dir = key.split('-')
+            first_dir_path = os.path.join(train_dir if fold == 'train' else validate_dir, first_dir)
+            if os.path.isdir(first_dir_path):
+                file_downloaded = True
+        if not file_downloaded:
+            #  if this typical error happend it repeat download
+            urlib_works = False
+            while not urlib_works:
+                try:
+                    download_utils.downloader(
+                        data_home,
+                        remotes={key: REMOTE},
+                        partial_download=None,
+                        info_message=None,
+                        force_overwrite=True,
+                        cleanup=cleanup,
+                    )
+                except urllib.error.ContentTooShortError:
+                    os.remove(os.path.join(data_home, "temp", REMOTE.filename))
+                    continue
+                urlib_works = True
+        # move from a temporal directory to final one
         source_dir = os.path.join(data_home, "temp", train if "train" in key else validate)
         target_dir = train_dir if "train" in key else validate_dir
         dir_names = os.listdir(source_dir)
