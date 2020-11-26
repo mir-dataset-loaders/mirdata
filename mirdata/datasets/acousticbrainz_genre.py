@@ -3879,10 +3879,14 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
     Args:
         data_home (str):
             Dataset files path
-        cleanup (bool):
-            Whether to delete any zip/tar files after extracting.
+            remotes (dict or None):
+        remotes (dict) :
+            A dictionary of RemoteFileMetadata tuples of data in zip format.
+            If None, there is no data to download
         force_overwrite (bool):
                 If True, existing files are overwritten by the downloaded files. By default False.
+        cleanup (bool):
+            Whether to delete any zip/tar files after extracting.
 
     Raises:
         ValueError: if invalid keys are passed to partial_download
@@ -3902,7 +3906,7 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
         os.mkdir(validate_dir)
 
     # start to download
-    for key, REMOTE in REMOTES.items():
+    for key, remote in remotes.items():
         # check overwrite
         file_downloaded = False
         if not force_overwrite:
@@ -3910,7 +3914,7 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
             first_dir_path = os.path.join(train_dir if fold == 'train' else validate_dir, first_dir)
             if os.path.isdir(first_dir_path):
                 file_downloaded = True
-                print("File " + REMOTE.filename + " downloaded. Skip download (force_overwrite=False).")
+                print("File " + remote.filename + " downloaded. Skip download (force_overwrite=False).")
         if not file_downloaded:
             #  if this typical error happend it repeat download
             urlib_works = False
@@ -3918,14 +3922,14 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
                 try:
                     download_utils.downloader(
                         data_home,
-                        remotes={key: REMOTE},
+                        remotes={key: remote},
                         partial_download=None,
                         info_message=None,
                         force_overwrite=True,
                         cleanup=cleanup,
                     )
                 except urllib.error.ContentTooShortError:
-                    os.remove(os.path.join(data_home, "temp", REMOTE.filename))
+                    os.remove(os.path.join(data_home, "temp", remote.filename))
                     continue
                 urlib_works = True
         # move from a temporal directory to final one
