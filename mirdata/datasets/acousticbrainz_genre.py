@@ -149,15 +149,11 @@ class Track(core.Track):
         mbid_group: mbid group
     """
 
-    def __init__(self, track_id, data_home=None):
+    def __init__(self, track_id, data_home):
         if track_id not in DATA.index:
             raise ValueError('{} is not a valid track ID in AcousticBrainz genre Dataset'.format(track_id))
 
         self.track_id = track_id
-
-        if data_home is None:
-            data_home = utils.get_default_dataset_path(DATASET_DIR)
-
         self._data_home = data_home
         self._track_paths = DATA.index[track_id]
         self.path = utils.none_path_join(
