@@ -3889,6 +3889,8 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
         IOError: if a downloaded file's checksum is different from expected
 
     """
+    if not os.path.exists(data_home):
+        os.makedirs(data_home)
     # Create these directories if doesn't exist
     train = "acousticbrainz-mediaeval-train"
     train_dir = os.path.join(data_home, train)
