@@ -1,4 +1,4 @@
-from mirdata import utils
+from mirdata import utils, jams_utils
 from mirdata.datasets import acousticbrainz_genre
 from tests.test_utils import run_track_tests
 
@@ -101,7 +101,7 @@ features = {"tonal": {
     "audio_properties": {"equal_loudness": 0, "codec": "mp3", "downmix": "mix", "sample_rate": 44100,
                          "analysis_sample_rate": 44100, "bit_rate": 320000,
                          "md5_encoded": "2bf9caa8bea8a46924db3280f8e8dab9", "length": 469.629394531,
-                         "replay_gain": -12.2262840271, "lossless": false},
+                         "replay_gain": -12.2262840271, "lossless": False},
     "version": {"essentia_build_sha": "cead25079874084f62182a551b7393616cd33d87", "essentia": "2.1-beta2",
                 "extractor": "music 1.0", "essentia_git_sha": "v2.1_beta2-1-ge3940c0"},
     "tags": {"title": ["Still Dreaming (Anything Can Happen)"], "barcode": ["7296134204121"], "media": ["CD"],
@@ -888,5 +888,50 @@ features = {"tonal": {
                          "barkbands_crest": {"dmean2": 5.16687965393, "median": 12.3140182495, "min": 2.29649472237,
                                              "dvar2": 21.2763710022, "dvar": 8.37867069244, "dmean": 3.1435611248,
                                              "max": 25.9979152679, "var": 29.487985611, "mean": 13.2201347351}}}
+
+
+def test_load_extractor():
+        path = "tests/resources/mir_datasets/acousticbrainz_genre/acousticbrainz-mediaeval-validation/be/be9e01e5-8f93-494d-bbaa-ddcc5a52f629.json"
+        extractor_data = acousticbrainz_genre.load_extractor(path)
+
+        assert type(extractor_data) == dict
+        assert extractor_data == features
+
+
+def test_to_jams():
+    data_home = "tests/resources/mir_datasets/acousticbrainz_genre"
+    trackid = "tagtraum#validation#be9e01e5-8f93-494d-bbaa-ddcc5a52f629#2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960#trance########"
+    track = acousticbrainz_genre.Track(trackid, data_home=data_home)
+
+    jam_ground_truth = jams_utils.jams_converter(
+            metadata={
+                'features': features,
+                'duration': features["metadata"]["audio_properties"]["length"]
+            }
+        )
+    jam = track.to_jams()
+
+    assert jam_ground_truth == jam
+
+
+def test_filter_index():
+    index = acousticbrainz_genre.load_all_train()
+    assert len(index) == 3311607
+    index = acousticbrainz_genre.load_all_validation()
+    assert len(index) == 708205
+    index = acousticbrainz_genre.load_tagtraum_validation()
+    assert len(index) == 102843
+    index = acousticbrainz_genre.load_tagtraum_train()
+    assert len(index) == 486740
+    index = acousticbrainz_genre.load_allmusic_validation()
+    assert len(index) == 291702
+    index = acousticbrainz_genre.load_lastfm_train()
+    assert len(index) == 566710
+    index = acousticbrainz_genre.load_lastfm_validation()
+    assert len(index) == 120268
+    index = acousticbrainz_genre.load_discogs_train()
+    assert len(index) == 1353213
+    index = acousticbrainz_genre.load_discogs_validation()
+    assert len(index) == 291702
 
 

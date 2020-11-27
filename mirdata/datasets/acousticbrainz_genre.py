@@ -21,7 +21,7 @@ For details on format and contents, please refer to the data webpage.
 
 Note, that the AllMusic ground-truth annotations are distributed separately at https://zenodo.org/record/2554044.
 
-
+A size comparative between different datasets of Acoustic brainz Genre:
 
 Citation
 
@@ -3667,11 +3667,13 @@ class Track(core.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            metadata={'features': load_extractor(self.path)}
+            metadata={
+                'features': load_extractor(self.path),
+                'duration': load_extractor(self.path)["metadata"]["audio_properties"]["length"]
+            }
         )
 
 
-@utils.cached_property
 def load_extractor(path):
     """Load a AcousticBrainz Dataset json file with all the features and metadata.
 
@@ -3691,23 +3693,27 @@ def load_extractor(path):
     return meta
 
 
-def filter_index(search_key, data_home=None):
+def filter_index(search_key, data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the indexes that match with search_key.
 
     Args:
+        search_key (str): regex to match with folds, mbid or genres
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets`
+        index (dict): mirdata index to filter.
 
     Returns:
         (dict): {`track_id`: track data}
-
     """
     if data_home is None:
         mir_datasets_dir = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
-        return os.path.join(mir_datasets_dir, DATASET_DIR)
+        data_home = os.path.join(mir_datasets_dir, DATASET_DIR)
+
+    if index is None:
+        index = DATA.index.items()
 
     acousticbrainz_genre_data = {}
-    for pair in filter(lambda item: search_key in item[0], DATA.index.items()):
+    for pair in filter(lambda item: search_key in item[0], index):
         acousticbrainz_genre_data[pair[0]] = Track(pair[0], data_home=data_home)
     return acousticbrainz_genre_data
 
