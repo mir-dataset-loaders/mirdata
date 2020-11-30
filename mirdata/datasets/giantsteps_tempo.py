@@ -105,7 +105,7 @@ DOWNLOAD_INFO = """
         > GiantSteps_tempo/
             > giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/
             > audio/
-    and copy the folder to {data_home}
+    and copy the folder to {}
 """
 
 
@@ -124,7 +124,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
+        if track_id not in DATA.index['tracks']:
             raise ValueError(
                 "{} is not a valid track ID in giantsteps_tempo".format(track_id)
             )
@@ -132,7 +132,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
+        self._track_paths = DATA.index['tracks'][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.annotation_v1_path = os.path.join(
             self._data_home, self._track_paths["annotation_v1"][0]

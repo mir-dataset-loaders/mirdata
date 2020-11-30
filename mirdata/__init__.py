@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-
 from .version import version as __version__
 
 DATASETS = [
     "beatles",
     "beatport_key",
+    "cante100",
     "dali",
     "giantsteps_key",
     "giantsteps_tempo",
@@ -13,6 +13,7 @@ DATASETS = [
     "gtzan_genre",
     "guitarset",
     "ikala",
+    "irmas",
     "maestro",
     "medley_solos_db",
     "medleydb_melody",
@@ -23,6 +24,7 @@ DATASETS = [
     "rwc_jazz",
     "rwc_popular",
     "salami",
+    "saraga",
     "tinysol",
 ]
 

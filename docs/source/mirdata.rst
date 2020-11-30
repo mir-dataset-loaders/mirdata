@@ -18,12 +18,21 @@ beatles
 
 .. automodule:: mirdata.datasets.beatles
    :members:
-   
+
+
 beatport_key
 ^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.beatport_key
    :members:
+
+
+cante100
+^^^^^^^^
+
+.. automodule:: mirdata.cante100
+   :members:
+
 
 dali
 ^^^^
@@ -31,11 +40,13 @@ dali
 .. automodule:: mirdata.datasets.dali
    :members:
 
+
 giantsteps_tempo
 ^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.giantsteps_tempo
    :members:
+
 
 giantsteps_key
 ^^^^^^^^^^^^^^
@@ -43,17 +54,20 @@ giantsteps_key
 .. automodule:: mirdata.datasets.giantsteps_key
    :members:
 
+
 groove_midi
 ^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.groove_midi
    :members:
 
+
 gtzan_genre
 ^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.gtzan_genre
    :members:
+
 
 guitarset
 ^^^^^^^^^
@@ -69,6 +83,13 @@ ikala
    :members:
 
 
+irmas
+^^^^^
+
+.. automodule:: mirdata.datasets.irmas
+   :members:
+
+
 maestro
 ^^^^^^^
 
@@ -81,6 +102,7 @@ medleydb\_melody
 
 .. automodule:: mirdata.datasets.medleydb_melody
    :members:
+
 
 medleydb\_pitch
 ^^^^^^^^^^^^^^^
@@ -109,17 +131,20 @@ orchset
 .. automodule:: mirdata.datasets.orchset
    :members:
 
+
 rwc_classical
 ^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.rwc_classical
    :members:
 
+
 rwc_jazz
 ^^^^^^^^
 
 .. automodule:: mirdata.datasets.rwc_jazz
    :members:
+
 
 rwc_popular
 ^^^^^^^^^^^
@@ -132,6 +157,13 @@ salami
 ^^^^^^
 
 .. automodule:: mirdata.datasets.salami
+   :members:
+
+
+saraga
+^^^^^^
+
+.. automodule:: mirdata.datasets.saraga
    :members:
 
 
