@@ -895,7 +895,7 @@ features = {"tonal": {
 
 
 def test_load_extractor():
-        path = "tests/resources/mir_datasets/acousticbrainz_genre/acousticbrainz-mediaeval-validation/be/be9e01e5-8f93-494d-bbaa-ddcc5a52f629.json"
+        path = "tests/resources/mir_datasets/acousticbrainz_genre2/acousticbrainz-mediaeval-validation/be/be9e01e5-8f93-494d-bbaa-ddcc5a52f629.json"
         extractor_data = acousticbrainz_genre.load_extractor(path)
 
         assert type(extractor_data) == dict
@@ -903,7 +903,7 @@ def test_load_extractor():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/acousticbrainz_genre"
+    data_home = "tests/resources/mir_datasets/acousticbrainz_genre2"
     trackid = "tagtraum#validation#be9e01e5-8f93-494d-bbaa-ddcc5a52f629#2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960#trance########"
     track = acousticbrainz_genre.Track(trackid, data_home=data_home)
 
