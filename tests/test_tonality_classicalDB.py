@@ -45,7 +45,6 @@ def test_to_jams():
     track = tonality_classicalDB.Track("0", data_home=data_home)
     jam = track.to_jams()
     assert jam["sandbox"]["key"] == "D major", "key does not match expected"
-
     assert (
         jam["file_metadata"]["title"]
         == "01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D"
