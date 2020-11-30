@@ -1,14 +1,17 @@
-{
-  "10161_chorus": {
-    "audio": [
-      "10161_chorus.wav",
-      "3f77d0d69dc41b3696f074ad6bf2852f"
-    ]
+{ "version": null,
+  "tracks": {
+    "10161_chorus": {
+      "audio": [
+        "10161_chorus.wav",
+        "3f77d0d69dc41b3696f074ad6bf2852f"
+      ]
+    },
+    "10161_verse": {
+      "audio": [
+        "10161_verse.wav",
+        "3f77d0d69dc41b3696f074ad6bf2852f"
+      ]
+    }
   },
-  "10161_verse": {
-    "audio": [
-      "10161_verse.wav",
-      "3f77d0d69dc41b3696f074ad6bf2852f"
-    ]
-  }
+  "metadata": null
 }

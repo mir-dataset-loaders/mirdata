@@ -1,0 +1,1803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+   <track id="1">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>13</track-no>
+      </source>
+      <meta>
+         <artist>Fernando Terremoto</artist>
+         <title>Me entregaste con tus manos</title>
+         <style>Fandangos Gitanos</style>
+         <duration_m>3</duration_m>
+         <duration_s>24</duration_s>
+      </meta>
+      <musicBrainzID>1537139d-2fd6-459f-9fd7-9b96eabb25fb</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="2">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>9</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Soto</artist>
+         <title>Caballo que a Treinta Pasos</title>
+         <style>Fandangos de Huelva</style>
+         <duration_m>2</duration_m>
+         <duration_s>2</duration_s>
+      </meta>
+      <musicBrainzID>905450fe-74ff-42cb-8065-6ba5b0fd1068</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="3">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>12</track-no>
+      </source>
+      <meta>
+         <artist>Rafael Romero</artist>
+         <title>Pa acabarlo de criar</title>
+         <style>Rondeñas</style>
+         <duration_m>2</duration_m>
+         <duration_s>43</duration_s>
+      </meta>
+      <musicBrainzID>b6f3d483-e5ca-4d0b-8c5c-c375d4fe4446</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="4">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>9</cd-no>
+         <track-no>18</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Soto</artist>
+         <title>Que llores por mi querer</title>
+         <style>Fandango del Gloria</style>
+         <duration_m>2</duration_m>
+         <duration_s>24</duration_s>
+      </meta>
+      <musicBrainzID>1ef0fa22-3dd4-4401-b320-27e3cc63bae3</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="5">
+      <source>
+         <anthology>El cante flamenco - Antología historica</anthology>
+         <cd-no>3</cd-no>
+         <track-no>1</track-no>
+      </source>
+      <meta>
+         <artist>Fosforito</artist>
+         <title>A mi malaga bella</title>
+         <style>Fandangos abandolados</style>
+         <duration_m>2</duration_m>
+         <duration_s>48</duration_s>
+      </meta>
+      <musicBrainzID>181c3705-b630-4955-8cb4-78d9d9669053</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="6">
+      <source>
+         <anthology>El cante flamenco - Antología historica</anthology>
+         <cd-no>3</cd-no>
+         <track-no>16</track-no>
+      </source>
+      <meta>
+         <artist>Camarón de la Isla</artist>
+         <title>En una piedra yo me acoste</title>
+         <style>Fandangos naturales</style>
+         <duration_m>3</duration_m>
+         <duration_s>27</duration_s>
+      </meta>
+      <musicBrainzID>241dbead-f7e5-4fa5-b321-87f8823ec5e2</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="7">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>9</cd-no>
+         <track-no>4</track-no>
+      </source>
+      <meta>
+         <artist>Toronjo</artist>
+         <title>Más Clara Que La Verdad</title>
+         <style>Fandangos de Huelva</style>
+         <duration_m>3</duration_m>
+         <duration_s>33</duration_s>
+      </meta>
+      <musicBrainzID>76db9b9c-051d-4336-ae83-4e229a692a35</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="8">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>9</cd-no>
+         <track-no>11</track-no>
+      </source>
+      <meta>
+         <artist>Toronjo</artist>
+         <title>Huelva Como Capital</title>
+         <style>Fandangos de Toronjo</style>
+         <duration_m>2</duration_m>
+         <duration_s>59</duration_s>
+      </meta>
+      <musicBrainzID>4eebe839-82bb-426e-914d-7c4525dd9dad</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="9">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>19</track-no>
+      </source>
+      <meta>
+         <artist>Chato de la Isla</artist>
+         <title>Solo En El Mundo</title>
+         <style>Fandangos del Gloria</style>
+         <duration_m>2</duration_m>
+         <duration_s>24</duration_s>
+      </meta>
+      <musicBrainzID>9c54e3c3-3578-4760-aa67-3f9112900b11</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="10">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>13</track-no>
+      </source>
+      <meta>
+         <artist>Manolo Caracol</artist>
+         <title>Cuando yo te conocí</title>
+         <style>Fandangos Caracoleros</style>
+         <duration_m>2</duration_m>
+         <duration_s>28</duration_s>
+      </meta>
+      <musicBrainzID>25466898-6dd3-4931-985b-e83e27143377</musicBrainzID>
+      <manual_annotations>
+         <style_family>Fandangos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="11">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>1</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Mairena</artist>
+         <title>Por Horas y momentos</title>
+         <style>Tangos</style>
+         <duration_m>3</duration_m>
+         <duration_s>59</duration_s>
+      </meta>
+      <musicBrainzID>e9c3c3d1-2110-4c44-85b1-dd101a847a69</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="12">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>6</cd-no>
+         <track-no>1</track-no>
+      </source>
+      <meta>
+         <artist>Aurelio Selles</artist>
+         <title>Te tengo que querer</title>
+         <style>Tientos de Cádiz</style>
+         <duration_m>3</duration_m>
+         <duration_s>50</duration_s>
+      </meta>
+      <musicBrainzID>a66f517b-7917-43a4-bd81-a8d05a96adf3</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="13">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>12</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Soto</artist>
+         <title>Me fui detras de los mios</title>
+         <style>Tientos - Tangos</style>
+         <duration_m>5</duration_m>
+         <duration_s>3</duration_s>
+      </meta>
+      <musicBrainzID>732678b1-7760-4af7-8eb7-d3dad31c27a6</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="14">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>4</track-no>
+      </source>
+      <meta>
+         <artist>Fernando Terremoto</artist>
+         <title>Cuando te veo venir</title>
+         <style>Tangos</style>
+         <duration_m>3</duration_m>
+         <duration_s>3</duration_s>
+      </meta>
+      <musicBrainzID>19f3753f-1814-4466-9089-d5a6d339b60e</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="15">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>2</track-no>
+      </source>
+      <meta>
+         <artist>Luis Torres Joselero</artist>
+         <title>La virgen va caminando</title>
+         <style>Tangos Gitanos</style>
+         <duration_m>3</duration_m>
+         <duration_s>53</duration_s>
+      </meta>
+      <musicBrainzID>d6ddb90c-9bea-4da7-aecb-b8be4f7093ad</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="16">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>5</track-no>
+      </source>
+      <meta>
+         <artist>Diego Clavel</artist>
+         <title>Como el Carbon en la sierra</title>
+         <style>Tangos</style>
+         <duration_m>4</duration_m>
+         <duration_s>11</duration_s>
+      </meta>
+      <musicBrainzID>3cb04a03-cd03-42c2-83ff-59d155c5d9a4</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="17">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>2</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Soto</artist>
+         <title>Con lo poquito que habia</title>
+         <style>Tangos</style>
+         <duration_m>2</duration_m>
+         <duration_s>58</duration_s>
+      </meta>
+      <musicBrainzID>b9e08eba-9206-45f3-874d-83c033cc3027</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="18">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>6</cd-no>
+         <track-no>6</track-no>
+      </source>
+      <meta>
+         <artist>Gabriel Moreno</artist>
+         <title>Yo no te dao motivos</title>
+         <style>Tiento de La Niña de los Peines</style>
+         <duration_m>4</duration_m>
+         <duration_s>8</duration_s>
+      </meta>
+      <musicBrainzID>f1e14261-4e57-485a-a8f3-87892f19b4c4</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="19">
+      <source>
+         <anthology>El cante flamenco - Antología historica</anthology>
+         <cd-no>2</cd-no>
+         <track-no>13</track-no>
+      </source>
+      <meta>
+         <artist>Fosforito</artist>
+         <title>La noche se terminaba</title>
+         <style>Tiento</style>
+         <duration_m>3</duration_m>
+         <duration_s>2</duration_s>
+      </meta>
+      <musicBrainzID>1a7a0022-fe00-4bc7-8520-97f4dff605d2</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="20">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>11</track-no>
+      </source>
+      <meta>
+         <artist>Camarón de La Isla</artist>
+         <title>No naqueres más de mi</title>
+         <style>Tangos del Titi</style>
+         <duration_m>2</duration_m>
+         <duration_s>15</duration_s>
+      </meta>
+      <musicBrainzID>ba253c16-7d29-426b-abc8-2735a058f072</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tientos</style_family>
+      </manual_annotations>
+   </track>
+   <track id="21">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>2</track-no>
+      </source>
+      <meta>
+         <artist>Juan Talega</artist>
+         <title>A quien le contare yo</title>
+         <style>Soleares de Alcala</style>
+         <duration_m>4</duration_m>
+         <duration_s>9</duration_s>
+      </meta>
+      <musicBrainzID>53639656-a8d7-47c3-b554-b6d3366f6243</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="22">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>10</track-no>
+      </source>
+      <meta>
+         <artist>Tio Gregorio Borrico</artist>
+         <title>Estan tocando a rebato</title>
+         <style>Soleares</style>
+         <duration_m>2</duration_m>
+         <duration_s>25</duration_s>
+      </meta>
+      <musicBrainzID>48a1b468-60c2-4839-8d80-2ae7ce50d493</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="23">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>17</track-no>
+      </source>
+      <meta>
+         <artist>Perrate de Utrera</artist>
+         <title>Por el habla de la gente</title>
+         <style>Soleares de Alcala y Utrera</style>
+         <duration_m>3</duration_m>
+         <duration_s>19</duration_s>
+      </meta>
+      <musicBrainzID>70640db9-495f-4ca8-888e-b285a557a49b</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="24">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>6</track-no>
+      </source>
+      <meta>
+         <artist>Luis Torres Joselero</artist>
+         <title>Me juzgan consejo de guerra</title>
+         <style>Soleares de Triana</style>
+         <duration_m>4</duration_m>
+         <duration_s>38</duration_s>
+      </meta>
+      <musicBrainzID>0317c039-e183-4c9d-a45b-9c3205688b72</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="25">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>13</track-no>
+      </source>
+      <meta>
+         <artist>Santiago Donday</artist>
+         <title>Tu me ibas a sopla</title>
+         <style>Soleares de Jerez y Alcala</style>
+         <duration_m>4</duration_m>
+         <duration_s>33</duration_s>
+      </meta>
+      <musicBrainzID>5a0a4d69-0d65-4519-b45f-0ef1924988c8</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="26">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>6</track-no>
+      </source>
+      <meta>
+         <artist>Fernando Terremoto</artist>
+         <title>Con intencion de dejarme</title>
+         <style>Soleares de Jerez</style>
+         <duration_m>4</duration_m>
+         <duration_s>34</duration_s>
+      </meta>
+      <musicBrainzID>9a9db3b0-014f-46c8-a178-23066833eee9</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="27">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>12</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Soto</artist>
+         <title>Voy como si fuera preso</title>
+         <style>Bulerias por solea</style>
+         <duration_m>4</duration_m>
+         <duration_s>12</duration_s>
+      </meta>
+      <musicBrainzID>371b3a39-0883-4380-9082-61982a6e8df3</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="28">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>1</track-no>
+      </source>
+      <meta>
+         <artist>Tia Anica la Piriñaca</artist>
+         <title>Que Malina era tu madre</title>
+         <style>soleares de jerez y lebrija</style>
+         <duration_m>4</duration_m>
+         <duration_s>0</duration_s>
+      </meta>
+      <musicBrainzID>c19f6758-5140-4334-95e0-80ab44df6940</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="29">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>10</track-no>
+      </source>
+      <meta>
+         <artist>Jose Menese</artist>
+         <title>Hay lenguas en esta calle</title>
+         <style>Soleares de frijones</style>
+         <duration_m>5</duration_m>
+         <duration_s>53</duration_s>
+      </meta>
+      <musicBrainzID>cd8defa2-73d4-4796-a08f-796e82ae6a18</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="30">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>21</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Mairena</artist>
+         <title>Me viene persiguiendo</title>
+         <style>Soleares de Alcala</style>
+         <duration_m>1</duration_m>
+         <duration_s>46</duration_s>
+      </meta>
+      <musicBrainzID>304a0710-da60-4f36-b8f9-10f887972849</musicBrainzID>
+      <manual_annotations>
+         <style_family>Soleares</style_family>
+      </manual_annotations>
+   </track>
+   <track id="31">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>6</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Agujetas</artist>
+         <title>Moritos a Caballo</title>
+         <style>Cabales</style>
+         <duration_m>2</duration_m>
+         <duration_s>38</duration_s>
+      </meta>
+      <musicBrainzID>c0cba018-16b2-43da-8fa3-0875a8b1b64c</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="32">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>8</track-no>
+      </source>
+      <meta>
+         <artist>Fernando Terremoto</artist>
+         <title>Siempre por los rincones</title>
+         <style>Seguiriyas</style>
+         <duration_m>7</duration_m>
+         <duration_s>0</duration_s>
+      </meta>
+      <musicBrainzID>3c5110a9-08ce-4be1-bd5d-cb0eb9072ebc</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="33">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>15</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Agujetas</artist>
+         <title>Como cosita mia</title>
+         <style>Seguiriya y cambio</style>
+         <duration_m>4</duration_m>
+         <duration_s>35</duration_s>
+      </meta>
+      <musicBrainzID>fc331352-dbe3-41ec-bf9c-7caf40586e4f</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="34">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>1</track-no>
+      </source>
+      <meta>
+         <artist>Jose Menese</artist>
+         <title>Dia Grande</title>
+         <style>Seguiriyas y Cabales</style>
+         <duration_m>6</duration_m>
+         <duration_s>49</duration_s>
+      </meta>
+      <musicBrainzID>117000cd-10a5-4860-a895-4f312737659e</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="35">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>17</track-no>
+      </source>
+      <meta>
+         <artist>Diego Clavel</artist>
+         <title>Descanso a mi cuerpo</title>
+         <style>Seguiriyas</style>
+         <duration_m>6</duration_m>
+         <duration_s>19</duration_s>
+      </meta>
+      <musicBrainzID>821ab95a-76a0-4f17-a41f-4bb5f246e4a5</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="36">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>1</track-no>
+      </source>
+      <meta>
+         <artist>Juan Talega</artist>
+         <title>Sintiendo estaban las piedras</title>
+         <style>Seguiriyas de Paco de La Luz y Manuel Cagancho</style>
+         <duration_m>4</duration_m>
+         <duration_s>49</duration_s>
+      </meta>
+      <musicBrainzID>0c2f4a17-7406-4043-9312-304e538a4e83</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="37">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>11</track-no>
+      </source>
+      <meta>
+         <artist>Tomas Torre</artist>
+         <title>Se me acabo el gusto</title>
+         <style>Seguiriyas de su padre Manuel</style>
+         <duration_m>6</duration_m>
+         <duration_s>45</duration_s>
+      </meta>
+      <musicBrainzID>b632677e-9e28-4b67-93f2-5c83ffa0a3f1</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="38">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>17</track-no>
+      </source>
+      <meta>
+         <artist>Tia Anica la Piriñaca</artist>
+         <title>Que desgracia es la mia</title>
+         <style>Seguiriyas del Marrurro y el loco Mateo</style>
+         <duration_m>7</duration_m>
+         <duration_s>15</duration_s>
+      </meta>
+      <musicBrainzID>a24ab96e-392e-4271-bbbb-cfd756be4351</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="39">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>17</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Mairena</artist>
+         <title>Verguenza</title>
+         <style>Siguiriyas de Cadiz</style>
+         <duration_m>1</duration_m>
+         <duration_s>46</duration_s>
+      </meta>
+      <musicBrainzID>ab797c04-6764-4c71-86fd-a3cdfbd98975</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="40">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>19</track-no>
+      </source>
+      <meta>
+         <artist>Aurelio Selles</artist>
+         <title>Me dicen a mi</title>
+         <style>Seguiriyas de Cádiz</style>
+         <duration_m>4</duration_m>
+         <duration_s>10</duration_s>
+      </meta>
+      <musicBrainzID>a368f9b1-85bc-4cf1-8d55-5d44cae69ba0</musicBrainzID>
+      <manual_annotations>
+         <style_family>Seguiriyas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="41">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>7</track-no>
+      </source>
+      <meta>
+         <artist>Juan Peña El Lebrijano</artist>
+         <title>A mi que me importa</title>
+         <style>Mirabras</style>
+         <duration_m>3</duration_m>
+         <duration_s>35</duration_s>
+      </meta>
+      <musicBrainzID>0f5018c5-a7b0-4d9e-8590-d9783903817e</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="42">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>11</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Mairena</artist>
+         <title>El barquito que en la mar</title>
+         <style>Cantiñas</style>
+         <duration_m>6</duration_m>
+         <duration_s>7</duration_s>
+      </meta>
+      <musicBrainzID>a09a3f9b-2589-4768-af9b-d28eebac0cf8</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="43">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>14</track-no>
+      </source>
+      <meta>
+         <artist>El Beni de Cadiz</artist>
+         <title>Lo van a prende mañana</title>
+         <style>Alegrias</style>
+         <duration_m>2</duration_m>
+         <duration_s>57</duration_s>
+      </meta>
+      <musicBrainzID>6ebbbe56-f5f7-45f4-a5c8-9c1f1850a117</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="44">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>2</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Soto</artist>
+         <title>Temprano se arrecogen</title>
+         <style>Romeras</style>
+         <duration_m>1</duration_m>
+         <duration_s>41</duration_s>
+      </meta>
+      <musicBrainzID>3d35df2a-c4c4-4819-8eff-481361f83d57</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="45">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>16</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Mairena</artist>
+         <title>El Puente de Triana</title>
+         <style>Caracoles</style>
+         <duration_m>4</duration_m>
+         <duration_s>40</duration_s>
+      </meta>
+      <musicBrainzID>2576c2fc-5dd6-4d2e-adb7-6171d014fd94</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="46">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>18</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Soto</artist>
+         <title>Verdades como puños</title>
+         <style>Cantiñas</style>
+         <duration_m>2</duration_m>
+         <duration_s>42</duration_s>
+      </meta>
+      <musicBrainzID>05f9419b-cf36-45ac-a472-c750bc1ff6e4</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="47">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>8</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Agujetas</artist>
+         <title>Que desgraciaito fuiste</title>
+         <style>Alegrias y Cantiñas</style>
+         <duration_m>4</duration_m>
+         <duration_s>20</duration_s>
+      </meta>
+      <musicBrainzID>b04ab614-5709-418c-957a-f0cea08add6a</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="48">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>14</track-no>
+      </source>
+      <meta>
+         <artist>Maria Vargas</artist>
+         <title>Romera, ay mi romera</title>
+         <style>Romeras</style>
+         <duration_m>2</duration_m>
+         <duration_s>45</duration_s>
+      </meta>
+      <musicBrainzID>9bf7d147-e2f9-484b-92aa-9e0f5119eb73</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="49">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>1</track-no>
+      </source>
+      <meta>
+         <artist>Camarón de la Isla</artist>
+         <title>Tus ojillos negros</title>
+         <style>Alegría</style>
+         <duration_m>4</duration_m>
+         <duration_s>58</duration_s>
+      </meta>
+      <musicBrainzID>befa96a3-6e8e-4211-ae0a-273d8d02612c</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="50">
+      <source>
+         <anthology>El cante flamenco - Antología historica</anthology>
+         <cd-no>2</cd-no>
+         <track-no>7</track-no>
+      </source>
+      <meta>
+         <artist>Fosforito</artist>
+         <title>Como reluce</title>
+         <style>Caracoles</style>
+         <duration_m>3</duration_m>
+         <duration_s>43</duration_s>
+      </meta>
+      <musicBrainzID>7fd10691-2d75-4033-8dd0-eb9a0b8a6cbc</musicBrainzID>
+      <manual_annotations>
+         <style_family>Alegrías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="51">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>9</track-no>
+      </source>
+      <meta>
+         <artist>Bernarda de Utrera</artist>
+         <title>Como loca me sali</title>
+         <style>Bulerias de Utreta</style>
+         <duration_m>2</duration_m>
+         <duration_s>53</duration_s>
+      </meta>
+      <musicBrainzID>fe205d97-a4d5-455e-9fe8-268b479d98cc</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="52">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>8</track-no>
+      </source>
+      <meta>
+         <artist>El Turronero</artist>
+         <title>Olivares del campo</title>
+         <style>Bulerias</style>
+         <duration_m>3</duration_m>
+         <duration_s>19</duration_s>
+      </meta>
+      <musicBrainzID>64954ce5-c102-4f53-b9fb-4d532a0a0ee9</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="53">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>12</track-no>
+      </source>
+      <meta>
+         <artist>Fernando Terremoto</artist>
+         <title>Por lo que yo voy mirando</title>
+         <style>Bulerias de Jerez</style>
+         <duration_m>2</duration_m>
+         <duration_s>24</duration_s>
+      </meta>
+      <musicBrainzID>8e3798c0-84b8-4eb5-942e-0a09061f3721</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="54">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>13</track-no>
+      </source>
+      <meta>
+         <artist>Fernanda de Utrera</artist>
+         <title>Te pido un favor</title>
+         <style>Bulerias de Utrera</style>
+         <duration_m>4</duration_m>
+         <duration_s>49</duration_s>
+      </meta>
+      <musicBrainzID>0f90dd53-34f6-413d-8f2e-becfd6ede99e</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="55">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>19</track-no>
+      </source>
+      <meta>
+         <artist>Pericon de Cadiz</artist>
+         <title>Me metieron en un vapor</title>
+         <style>Bulerías de Antonio el Herrero</style>
+         <duration_m>2</duration_m>
+         <duration_s>46</duration_s>
+      </meta>
+      <musicBrainzID>49612b9a-acb5-4157-87f1-9d377b6d61c3</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="56">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>6</track-no>
+      </source>
+      <meta>
+         <artist>La Perla de Cádiz</artist>
+         <title>Ganas me dan de volverme</title>
+         <style>Buleria</style>
+         <duration_m>4</duration_m>
+         <duration_s>23</duration_s>
+      </meta>
+      <musicBrainzID>4fb8f1f1-84b3-464a-b664-9de8577db623</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="57">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>1</track-no>
+      </source>
+      <meta>
+         <artist>Fernando Terremoto</artist>
+         <title>Fiesta en el Barrio de Santiago</title>
+         <style>Bulerías</style>
+         <duration_m>5</duration_m>
+         <duration_s>26</duration_s>
+      </meta>
+      <musicBrainzID>e2c9462c-17ae-47a8-80fb-066cabeaf1cf</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="58">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>2</track-no>
+      </source>
+      <meta>
+         <artist>La Paquera de Jerez</artist>
+         <title>Qué dolor de mare mia</title>
+         <style>Bulerías</style>
+         <duration_m>3</duration_m>
+         <duration_s>9</duration_s>
+      </meta>
+      <musicBrainzID>bfdc5d5a-d30e-4298-86a5-3dc3313706d2</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="59">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>4</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Mairena</artist>
+         <title>La mulilla</title>
+         <style>Bulerías</style>
+         <duration_m>5</duration_m>
+         <duration_s>51</duration_s>
+      </meta>
+      <musicBrainzID>e4b2e337-cba1-40b1-a84d-ff98ba16e869</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="60">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>6</cd-no>
+         <track-no>20</track-no>
+      </source>
+      <meta>
+         <artist>Carmen Linares</artist>
+         <title>Si pasas por el molino</title>
+         <style>Bulerías</style>
+         <duration_m>5</duration_m>
+         <duration_s>49</duration_s>
+      </meta>
+      <musicBrainzID>2bef5bf7-6209-4513-975f-15e9bf26cff1</musicBrainzID>
+      <manual_annotations>
+         <style_family>Bulerías</style_family>
+      </manual_annotations>
+   </track>
+   <track id="61">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>16</track-no>
+      </source>
+      <meta>
+         <artist>Fernando Terremoto</artist>
+         <title>Donde estara ese muchacho</title>
+         <style>Tarantos</style>
+         <duration_m>3</duration_m>
+         <duration_s>41</duration_s>
+      </meta>
+      <musicBrainzID>5218873a-8333-4a1e-9a46-44fc3a5a28e5</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="62">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>17</track-no>
+      </source>
+      <meta>
+         <artist>Jose Menese</artist>
+         <title>A la huerta del sotillo</title>
+         <style>Tarantos</style>
+         <duration_m>4</duration_m>
+         <duration_s>18</duration_s>
+      </meta>
+      <musicBrainzID>26794a70-1f04-41d5-8123-d6ae3183ffc0</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="63">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>8</track-no>
+      </source>
+      <meta>
+         <artist>Juan Peña</artist>
+         <title>A los pies de un soberano</title>
+         <style>Cartagenera</style>
+         <duration_m>2</duration_m>
+         <duration_s>22</duration_s>
+      </meta>
+      <musicBrainzID>3dc4a124-bb93-466e-b77e-18c6beb4767e</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="64">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>8</cd-no>
+         <track-no>9</track-no>
+      </source>
+      <meta>
+         <artist>Camarón de la Isla</artist>
+         <title>Sube al enganche</title>
+         <style>Taranta de la Gabriela</style>
+         <duration_m>2</duration_m>
+         <duration_s>20</duration_s>
+      </meta>
+      <musicBrainzID>a77cf5ed-657a-495a-acbe-3c40413e19ce</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="65">
+      <source>
+         <anthology>El cante flamenco - Antología historica</anthology>
+         <cd-no>3</cd-no>
+         <track-no>6</track-no>
+      </source>
+      <meta>
+         <artist>Fosforito</artist>
+         <title>No tengo nada que envidiarte</title>
+         <style>Tarantos</style>
+         <duration_m>3</duration_m>
+         <duration_s>40</duration_s>
+      </meta>
+      <musicBrainzID>1ee80fcb-8c35-4c10-8008-53d08234a8e5</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="66">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>8</cd-no>
+         <track-no>4</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Piñana</artist>
+         <title>Pierdo los vientos</title>
+         <style>Cartagenera</style>
+         <duration_m>4</duration_m>
+         <duration_s>3</duration_s>
+      </meta>
+      <musicBrainzID>ff4b85f5-f4a4-4283-a169-28b8d108f565</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="67">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>8</cd-no>
+         <track-no>7</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Piñana</artist>
+         <title>De Cartagena a Almeria</title>
+         <style>Taranta</style>
+         <duration_m>3</duration_m>
+         <duration_s>52</duration_s>
+      </meta>
+      <musicBrainzID>19d34698-7920-40d9-b066-46d4021602ac</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="68">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>8</cd-no>
+         <track-no>21</track-no>
+      </source>
+      <meta>
+         <artist>Juanito Valderrama</artist>
+         <title>El Frutos</title>
+         <style>Taranta de el Frutos de Linares</style>
+         <duration_m>4</duration_m>
+         <duration_s>27</duration_s>
+      </meta>
+      <musicBrainzID>2a5a38c5-ffa0-4633-a654-59653e443110</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="69">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>8</cd-no>
+         <track-no>12</track-no>
+      </source>
+      <meta>
+         <artist>Enrique Orozco</artist>
+         <title>Madrugar</title>
+         <style>Minera de Chacón</style>
+         <duration_m>2</duration_m>
+         <duration_s>17</duration_s>
+      </meta>
+      <musicBrainzID>da61c43a-2677-4297-ac9f-e31f09551f98</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="70">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>8</cd-no>
+         <track-no>10</track-no>
+      </source>
+      <meta>
+         <artist>Luis de Córdoba</artist>
+         <title>Ya cambiaíco el dinero</title>
+         <style>Minera de la Union</style>
+         <duration_m>3</duration_m>
+         <duration_s>58</duration_s>
+      </meta>
+      <musicBrainzID>d453f066-78a9-44bc-a6b5-009cc74ff726</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes mineros</style_family>
+      </manual_annotations>
+   </track>
+   <track id="71">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>3</cd-no>
+         <track-no>9</track-no>
+      </source>
+      <meta>
+         <artist>Pericon de Cadiz</artist>
+         <title>Al pie de un pocito seco</title>
+         <style>Peteneras</style>
+         <duration_m>2</duration_m>
+         <duration_s>35</duration_s>
+      </meta>
+      <musicBrainzID>b7d32456-982b-4290-9c02-d3dba56519c6</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="72">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>5</cd-no>
+         <track-no>17</track-no>
+      </source>
+      <meta>
+         <artist>Angel de Alora</artist>
+         <title>Los caminos estan muy malos</title>
+         <style>Cantes del piyayo (Tango de Málaga)</style>
+         <duration_m>3</duration_m>
+         <duration_s>10</duration_s>
+      </meta>
+      <musicBrainzID>e8863f01-8cfb-4a22-b070-65cfa44c0e6c</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="73">
+      <source>
+         <anthology>El cante flamenco - Antología historica</anthology>
+         <cd-no>2</cd-no>
+         <track-no>11</track-no>
+      </source>
+      <meta>
+         <artist>Camarón de la Isla</artist>
+         <title>Quisiera volverme pulga</title>
+         <style>Tango del piyayo</style>
+         <duration_m>3</duration_m>
+         <duration_s>2</duration_s>
+      </meta>
+      <musicBrainzID>d62a47ca-20f0-45d4-a457-b127101d8324</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="74">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>10</cd-no>
+         <track-no>9</track-no>
+      </source>
+      <meta>
+         <artist>Pepe Marchena</artist>
+         <title>Me gustaría estar en la sierra</title>
+         <style>Colombiana</style>
+         <duration_m>2</duration_m>
+         <duration_s>56</duration_s>
+      </meta>
+      <musicBrainzID>3d1f5718-9edb-418f-ab4b-c234ec34a00b</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="75">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>10</cd-no>
+         <track-no>11</track-no>
+      </source>
+      <meta>
+         <artist>Pepe de La Matrona</artist>
+         <title>Recuerdo de La Habana</title>
+         <style>Rumbita</style>
+         <duration_m>4</duration_m>
+         <duration_s>49</duration_s>
+      </meta>
+      <musicBrainzID>f3e038a0-2153-4ced-a941-eb0bae4e2c6a</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="76">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>10</cd-no>
+         <track-no>14</track-no>
+      </source>
+      <meta>
+         <artist>Luis de Córdoba</artist>
+         <title>Por culpita de la helá</title>
+         <style>Guajiras</style>
+         <duration_m>3</duration_m>
+         <duration_s>56</duration_s>
+      </meta>
+      <musicBrainzID>9a0bf358-3d87-4ebc-a27a-6c0da594310e</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="77">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>10</cd-no>
+         <track-no>17</track-no>
+      </source>
+      <meta>
+         <artist>Juanito Valderrama</artist>
+         <title>Mi mulata</title>
+         <style>Guajiras</style>
+         <duration_m>3</duration_m>
+         <duration_s>5</duration_s>
+      </meta>
+      <musicBrainzID>48173727-7f4d-496e-b0ff-ee1d082b24cf</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="78">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>10</cd-no>
+         <track-no>22</track-no>
+      </source>
+      <meta>
+         <artist>Juanito Valderrama</artist>
+         <title>Quisiera cariño mio</title>
+         <style>Colombiana</style>
+         <duration_m>2</duration_m>
+         <duration_s>53</duration_s>
+      </meta>
+      <musicBrainzID>1e6011c1-82f1-422d-8371-594b4f26357f</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="79">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>10</cd-no>
+         <track-no>21</track-no>
+      </source>
+      <meta>
+         <artist>Pepe Aznalcollar</artist>
+         <title>Un soldado herido</title>
+         <style>Milonga</style>
+         <duration_m>3</duration_m>
+         <duration_s>34</duration_s>
+      </meta>
+      <musicBrainzID>a4929a8b-7e8b-481f-a0b9-c1e126a892b8</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="80">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>14</track-no>
+      </source>
+      <meta>
+         <artist>Rafael Romero</artist>
+         <title>Ven aca  remediaora</title>
+         <style>Peteneras</style>
+         <duration_m>3</duration_m>
+         <duration_s>32</duration_s>
+      </meta>
+      <musicBrainzID>77d287bf-09bb-4f49-9943-554f16749fa7</musicBrainzID>
+      <manual_annotations>
+         <style_family>Cantes</style_family>
+      </manual_annotations>
+   </track>
+   <track id="81">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>5</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Mairena</artist>
+         <title>A mi me da Sentimiento</title>
+         <style>Malagueña del mellizo</style>
+         <duration_m>5</duration_m>
+         <duration_s>5</duration_s>
+      </meta>
+      <musicBrainzID>4c9489ad-5306-4199-ac7b-ef3f83dcf3e9</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="82">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>9</track-no>
+      </source>
+      <meta>
+         <artist>Luis Caballero</artist>
+         <title>Serrana, que te olvidara</title>
+         <style>Granainas</style>
+         <duration_m>3</duration_m>
+         <duration_s>24</duration_s>
+      </meta>
+      <musicBrainzID>ebb262b8-790c-4ee8-bc51-00e28433845b</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="83">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>8</cd-no>
+         <track-no>8</track-no>
+      </source>
+      <meta>
+         <artist>Bernardo el de los lobitos</artist>
+         <title>Los peces mueran de pena</title>
+         <style>Malagueña de Gayarrito</style>
+         <duration_m>3</duration_m>
+         <duration_s>10</duration_s>
+      </meta>
+      <musicBrainzID>a7772f17-6b79-485f-a61c-7a224c90191c</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="84">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>7</cd-no>
+         <track-no>15</track-no>
+      </source>
+      <meta>
+         <artist>Bernardo el de los lobitos</artist>
+         <title>Por las trenzas de tu pelo</title>
+         <style>Malagueñita de El Canario</style>
+         <duration_m>3</duration_m>
+         <duration_s>15</duration_s>
+      </meta>
+      <musicBrainzID>dc6a38ce-a357-4f3a-a853-5b85f9b8fe6f</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="85">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>6</cd-no>
+         <track-no>10</track-no>
+      </source>
+      <meta>
+         <artist>Gabriel Moreno</artist>
+         <title>Un eco del viento</title>
+         <style>Malagueña</style>
+         <duration_m>3</duration_m>
+         <duration_s>19</duration_s>
+      </meta>
+      <musicBrainzID>343eb520-5ec5-47c3-8d8e-978484a55e52</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="86">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>6</cd-no>
+         <track-no>11</track-no>
+      </source>
+      <meta>
+         <artist>Jacinto Almadén</artist>
+         <title>Tengo que poner espías</title>
+         <style>Malagueña</style>
+         <duration_m>3</duration_m>
+         <duration_s>57</duration_s>
+      </meta>
+      <musicBrainzID>6a960b7a-f9ad-4a79-b515-a540c95695da</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="87">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>7</cd-no>
+         <track-no>6</track-no>
+      </source>
+      <meta>
+         <artist>Cobitos</artist>
+         <title>Rosa si no te cogí</title>
+         <style>Granainas</style>
+         <duration_m>2</duration_m>
+         <duration_s>56</duration_s>
+      </meta>
+      <musicBrainzID>f33f7bdf-fdd5-4b4e-a7b5-a0411e21439d</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="88">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>7</cd-no>
+         <track-no>7</track-no>
+      </source>
+      <meta>
+         <artist>Jacinto Almadén</artist>
+         <title>Viva el puente del Genil</title>
+         <style>Granainas</style>
+         <duration_m>2</duration_m>
+         <duration_s>6</duration_s>
+      </meta>
+      <musicBrainzID>41acb0a1-2a5f-42df-9a51-4c527844e12c</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="89">
+      <source>
+         <anthology>Atlas del cante flamenco</anthology>
+         <cd-no>7</cd-no>
+         <track-no>8</track-no>
+      </source>
+      <meta>
+         <artist>José Vidal</artist>
+         <title>Está la Vega y Graná</title>
+         <style>Granainas</style>
+         <duration_m>2</duration_m>
+         <duration_s>35</duration_s>
+      </meta>
+      <musicBrainzID>46bb8127-4d66-41f4-b477-b774b6be2147</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="90">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>7</cd-no>
+         <track-no>16</track-no>
+      </source>
+      <meta>
+         <artist>Antonio de Canillas</artist>
+         <title>A Millares</title>
+         <style>Malagueña</style>
+         <duration_m>2</duration_m>
+         <duration_s>48</duration_s>
+      </meta>
+      <musicBrainzID>4d998afa-af30-4226-95cf-12d2bdd41228</musicBrainzID>
+      <manual_annotations>
+         <style_family>Malagueñas-Granaínas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="91">
+      <source>
+         <anthology>Antologia de cantaores flamencos</anthology>
+         <cd-no>1</cd-no>
+         <track-no>10</track-no>
+      </source>
+      <meta>
+         <artist>Pepe de la Matrona</artist>
+         <title>yo soy como aquel buen viejo</title>
+         <style>Toná grande de Tío Luis el de la Juliana</style>
+         <duration_m>1</duration_m>
+         <duration_s>26</duration_s>
+      </meta>
+      <musicBrainzID>a037770e-d197-4cc7-9edb-17454014aafa</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="92">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>9</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Mairena</artist>
+         <title>no te obligo, gitana</title>
+         <style>Toná grande</style>
+         <duration_m>1</duration_m>
+         <duration_s>43</duration_s>
+      </meta>
+      <musicBrainzID>9655377d-d10f-432e-8012-0a0a6f746b57</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="93">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>12</track-no>
+      </source>
+      <meta>
+         <artist>Gabriel Moreno</artist>
+         <title>cuando te vi</title>
+         <style>Toná chica de Tomás Pavón</style>
+         <duration_m>0</duration_m>
+         <duration_s>49</duration_s>
+      </meta>
+      <musicBrainzID>2b8d2cd3-1c01-464f-8643-c89dd237d1c8</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="94">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>14</track-no>
+      </source>
+      <meta>
+         <artist>Ramon Medrano</artist>
+         <title>en la capillita esta</title>
+         <style>Toná de Perico Frascola</style>
+         <duration_m>1</duration_m>
+         <duration_s>58</duration_s>
+      </meta>
+      <musicBrainzID>3e05f7f1-7d8f-49fc-ad41-fc619a0ff497</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="95">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>17</track-no>
+      </source>
+      <meta>
+         <artist>Tio Gregorio Borrico</artist>
+         <title>a mi me llaman loco</title>
+         <style>Martinetes de Jerez</style>
+         <duration_m>2</duration_m>
+         <duration_s>11</duration_s>
+      </meta>
+      <musicBrainzID>783cbd07-9822-42c2-8ffd-25c776b9f542</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="96">
+      <source>
+         <anthology>Magna antología del cante flamenco</anthology>
+         <cd-no>1</cd-no>
+         <track-no>20</track-no>
+      </source>
+      <meta>
+         <artist>Antonio Mairena</artist>
+         <title>si los huesos me partieran</title>
+         <style>Martinete</style>
+         <duration_m>1</duration_m>
+         <duration_s>22</duration_s>
+      </meta>
+      <musicBrainzID>4c3d5cdc-9438-4a55-9bc0-24439b8f3939</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="97">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>3</track-no>
+      </source>
+      <meta>
+         <artist>Diego Clavel</artist>
+         <title>A estas horas quien sera</title>
+         <style>Debla y martinete</style>
+         <duration_m>4</duration_m>
+         <duration_s>6</duration_s>
+      </meta>
+      <musicBrainzID>2b4c8f0e-be64-4d2c-b3e5-3fe0b60c4356</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="98">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>7</track-no>
+      </source>
+      <meta>
+         <artist>Manuel Agujetas</artist>
+         <title>Lo amarraban por las manos</title>
+         <style>Martinete</style>
+         <duration_m>3</duration_m>
+         <duration_s>0</duration_s>
+      </meta>
+      <musicBrainzID>c9bdd167-2b77-4e98-b8f7-ca966617d6f5</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="99">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>2</cd-no>
+         <track-no>15</track-no>
+      </source>
+      <meta>
+         <artist>Jose Menese</artist>
+         <title>Fue sentenciao Juan Garcia</title>
+         <style>Tona y Martinete</style>
+         <duration_m>4</duration_m>
+         <duration_s>57</duration_s>
+      </meta>
+      <musicBrainzID>8f15c2e2-921c-43a6-a661-e174dd392aaf</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+   <track id="100">
+      <source>
+         <anthology>Medio siglo del cante flamenco</anthology>
+         <cd-no>4</cd-no>
+         <track-no>7</track-no>
+      </source>
+      <meta>
+         <artist>Manolo Zapata</artist>
+         <title>Sale de san agustin</title>
+         <style>Saeta de alcor</style>
+         <duration_m>1</duration_m>
+         <duration_s>16</duration_s>
+      </meta>
+      <musicBrainzID>d9555309-1c48-4678-9d3b-a68a75a06937</musicBrainzID>
+      <manual_annotations>
+         <style_family>Tonas</style_family>
+      </manual_annotations>
+   </track>
+</document>

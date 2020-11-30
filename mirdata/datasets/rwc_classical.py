@@ -9,6 +9,32 @@
 * Solo performances: 24 pieces
 * Vocal performances: 6 pieces
 
+Note about Beat annotations:
+
+In general, 48 corresponds to the duration of a quarter note (crotchet).
+24 corresponds to the duration of an eighth note (quaver).
+384 corresponds to the position of a downbeat.
+
+In 4/4 time signature, they correspond as follows:
+384: 1st beat in a measure (i.e., downbeat position)
+48: 2nd beat
+96: 3rd beat
+144 4th beat
+
+In 3/4 time signature, they correspond as follows:
+384: 1st beat in a measure (i.e., downbeat position)
+48: 2nd beat
+96: 3rd beat
+
+In 6/8 time signature, they correspond as follows:
+384: 1st beat in a measure (i.e., downbeat position)
+24: 2nd beat
+48: 3rd beat
+72: 4th beat
+96: 5th beat
+120: 6th beat
+
+
 For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html
 """
 import csv
@@ -44,13 +70,13 @@ REMOTES = {
         destination_dir="annotations",
     ),
     "metadata": download_utils.RemoteFileMetadata(
-        filename="rwc-c.csv",
+        filename="master.zip",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir=None,
+        destination_dir="",
     ),
 }
-DATASET_INFO = """
+DOWNLOAD_INFO = """
     Unfortunately the audio files of the RWC-Classical dataset are not available
     for download. If you have the RWC-Classical dataset, place the contents into a
     folder called RWC-Classical with the following structure:
@@ -58,7 +84,7 @@ DATASET_INFO = """
             > annotations/
             > audio/rwc-c-m0i with i in [1 .. 6]
             > metadata-master/
-    and copy the RWC-Classical folder to {data_home}
+    and copy the RWC-Classical folder to {}
 """
 
 
@@ -132,14 +158,14 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
+        if track_id not in DATA.index['tracks']:
             raise ValueError(
                 "{} is not a valid track ID in rwc_classical".format(track_id)
             )
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
+        self._track_paths = DATA.index['tracks'][track_id]
         self.sections_path = os.path.join(
             self._data_home, self._track_paths["sections"][0]
         )
@@ -241,7 +267,7 @@ def _position_in_bar(beat_positions, beat_times):
 
     # Create corrected array with downbeat positions
     beat_positions_corrected = np.zeros((len(_beat_positions),))
-    downbeat_positions = np.where(_beat_positions == np.max(_beat_positions))[0]
+    downbeat_positions = np.where(_beat_positions == 384)[0]
     _beat_positions[downbeat_positions] = 1
     beat_positions_corrected[downbeat_positions] = 1
 

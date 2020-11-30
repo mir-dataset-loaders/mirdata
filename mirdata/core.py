@@ -175,7 +175,7 @@ class Dataset(object):
         Returns:
             (list): A list of track ids
         """
-        return list(self._index.keys())
+        return list(self._index['tracks'].keys())
 
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version

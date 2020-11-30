@@ -32,8 +32,8 @@ click the link provided in the "Module" column.
 | beatport_key_     |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
 |                   |                     | - annotations: ✅   |                           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
-| classicalDB_      | Tonality            | - audio: ❌         | - global :ref:`key`       | 881    |
-|                   | classicalDB         | - annotations: ✅   |                           |        |
+| cante100_         | cante100            | - audio: 🔑         | - :ref:`F0`               | 100    |
+|                   |                     | - annotations: ✅   | - :ref:`notes`            |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | dali_             | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
 |                   |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
@@ -62,6 +62,9 @@ click the link provided in the "Module" column.
 | ikala_            | iKala               | - audio: ❌         | - Vocal :ref:`F0`         | 252    |
 |                   |                     | - annotations: ❌   | - :ref:`lyrics`           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
+| irmas_            | IRMAS               | - audio: ✅         | - :ref:`instruments`      | 9579   |
+|                   |                     | - annotations: ✅   | - :ref:`genre`            |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
 | maestro_          | MAESTRO             | - audio: ✅         | - Piano :ref:`notes`      | 1282   |
 |                   |                     | - annotations: ✅   |                           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
@@ -74,7 +77,7 @@ click the link provided in the "Module" column.
 | medleydb_pitch_   | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
 |                   | | Tracking Subset   | - annotations: ✅   | - :ref:`instruments`      |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
-| mridangam_stroke_ | Mridangam Stroke    | - audio: ✅         | - :ref:`stroke_name`      | 6977   |
+| mridangam_stroke_ | Mridangam Stroke    | - audio: ✅         | - :ref:`stroke-name`      | 6977   |
 |                   |                     | - annotations: ✅   | - :ref:`tonic`            |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | orchset_          | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
@@ -94,6 +97,14 @@ click the link provided in the "Module" column.
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | salami_           | Salami              | - audio: ❌         | - :ref:`sections`         | 1359   |
 |                   |                     | - annotations: ✅   |                           |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
+| saraga_           | Saraga              | - audio: ✅         | - :ref:`tempo`            | 305    |
+|                   |                     | - annotations: ✅   | - :ref:`phrases`          |        |
+|                   |                     |                     | - :ref:`f0`               |        |
+|                   |                     |                     | - :ref:`f0` (vocal)       |        |
+|                   |                     |                     | - :ref:`sections` (samas) |        |
+|                   |                     |                     | - :ref:`sections`         |        |
+|                   |                     |                     | - :ref:`tonic`            |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | tinysol_          | TinySOL             | - audio: ✅         | - :ref:`instruments`      | 2913   |
 |                   |                     | - annotations: ✅   | - :ref:`technique`        |        |
@@ -235,8 +246,8 @@ a track.
 
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
+.. _cante100: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.cante100
 .. _beatport_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatport_key
-.. _classicalDB: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.classicalDB
 .. _dali: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.dali
 .. _giantsteps_tempo: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.giantsteps_tempo
 .. _giantsteps_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata._giantsteps_key
@@ -244,6 +255,7 @@ a track.
 .. _gtzan_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.gtzan_genre
 .. _guitarset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.guitarset
 .. _ikala: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.ikala
+.. _irmas: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.irmas
 .. _maestro: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.maestro
 .. _medley_solos_db: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medley_solos_db
 .. _medleydb_melody: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_melody
@@ -254,6 +266,7 @@ a track.
 .. _rwc_jazz: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_jazz
 .. _rwc_popular: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_popular
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
+.. _saraga: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
 
 
