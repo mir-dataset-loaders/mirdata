@@ -148,12 +148,12 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError('{} is not a valid track ID in AcousticBrainz genre Dataset'.format(track_id))
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.path = utils.none_path_join(
             [self._data_home, self._track_paths['data'][0]]
         )
@@ -3710,7 +3710,7 @@ def filter_index(search_key, data_home=None, index=None):
         data_home = os.path.join(mir_datasets_dir, DATASET_DIR)
 
     if index is None:
-        index = DATA.index.items()
+        index = DATA.index["tracks"].items()
 
     acousticbrainz_genre_data = {}
     for pair in filter(lambda item: search_key in item[0], index):
