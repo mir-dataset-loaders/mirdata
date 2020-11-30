@@ -110,6 +110,9 @@ click the link provided in the "Module" column.
 |                   |                     | - annotations: ✅   | - :ref:`technique`        |        |
 |                   |                     |                     | - :ref:`notes`            |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
+| classicalDB_      |  Tonality           | - audio: ❌         | - global :ref:`key`       | 881    |
+|                   |  ClassicalDB        | - annotations: ✅   |                           |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
 
 
 Annotation Type Descriptions
@@ -268,6 +271,7 @@ a track.
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
 .. _saraga: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
+.. _classicalDB: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tonality_classicaldb
 
 
 

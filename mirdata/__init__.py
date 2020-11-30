@@ -26,6 +26,7 @@ DATASETS = [
     "salami",
     "saraga",
     "tinysol",
+    "tonality_classicalDB",
 ]
 
 from .core import Dataset
