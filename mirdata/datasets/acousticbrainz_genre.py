@@ -3901,22 +3901,15 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
                 file_downloaded = True
                 print("File " + remote.filename + " downloaded. Skip download (force_overwrite=False).")
         if not file_downloaded:
-            #  if this typical error happend it repeat download
-            urlib_works = False
-            while not urlib_works:
-                try:
-                    download_utils.downloader(
-                        data_home,
-                        remotes={key: remote},
-                        partial_download=None,
-                        info_message=None,
-                        force_overwrite=True,
-                        cleanup=cleanup,
-                    )
-                except urllib.error.ContentTooShortError:
-                    os.remove(os.path.join(data_home, "temp", remote.filename))
-                    continue
-                urlib_works = True
+                #  if this typical error happend it repeat download
+                download_utils.downloader(
+                    data_home,
+                    remotes={key: remote},
+                    partial_download=None,
+                    info_message=None,
+                    force_overwrite=True,
+                    cleanup=cleanup,
+                )
         # move from a temporal directory to final one
         source_dir = os.path.join(data_home, "temp", train if "train" in key else validate)
         target_dir = train_dir if "train" in key else validate_dir

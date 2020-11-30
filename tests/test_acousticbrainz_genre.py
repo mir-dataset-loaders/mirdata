@@ -1,4 +1,8 @@
-from mirdata import utils, jams_utils
+import os
+import shutil
+
+
+from mirdata import utils, jams_utils, download_utils
 from mirdata.datasets import acousticbrainz_genre
 from tests.test_utils import run_track_tests
 
@@ -933,5 +937,60 @@ def test_filter_index():
     assert len(index) == 1353213
     index = acousticbrainz_genre.load_discogs_validation()
     assert len(index) == 291702
+
+
+def test_download(httpserver):
+    data_home = "tests/resources/mir_datasets/acousticbrainz_genre"
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # download the full dataset
+    httpserver.serve_content(
+        open("tests/resources/download/acousticbrainz-mediaeval-features-validation-01.tar.bz2", "rb").read()
+    )
+
+    remotes = {
+        "validation-01": download_utils.RemoteFileMetadata(
+            filename="acousticbrainz-mediaeval-features-validation-01.tar.bz2",
+            url=httpserver.url,
+            checksum='2cc101d8a6e388ff27048c0d693ae141',
+            destination_dir='temp',
+        )
+    }
+
+    acousticbrainz_genre._download(data_home, remotes, None, None, False, False)
+
+    assert os.path.exists(data_home)
+    assert os.path.exists(os.path.join(data_home, "acousticbrainz-mediaeval-validation"))
+    assert os.path.exists(os.path.join(data_home, "acousticbrainz-mediaeval-validation", "01"))
+    assert os.path.exists(os.path.join(data_home, "acousticbrainz-mediaeval-validation", "01",
+                                           "01a1a77a-f81e-49a5-9fea-7060394409ec.json"))
+
+
+    httpserver.serve_content(
+        open("tests/resources/download/acousticbrainz-mediaeval-features-train-01.tar.bz2", "rb").read()
+    )
+
+    remotes = {
+        "train-01": download_utils.RemoteFileMetadata(
+            filename="acousticbrainz-mediaeval-features-train-01.tar.bz2",
+            url=httpserver.url,
+            checksum='eb155784e1d4de0f35aa23ded4d34849',
+            destination_dir='temp',
+        )
+    }
+
+    acousticbrainz_genre._download(data_home, remotes, None, None, False, False)
+
+    assert os.path.exists(data_home)
+    assert os.path.exists(os.path.join(data_home, "acousticbrainz-mediaeval-train"))
+    assert os.path.exists(os.path.join(data_home, "acousticbrainz-mediaeval-train", "01"))
+    assert os.path.exists(os.path.join(data_home, "acousticbrainz-mediaeval-train", "01",
+                                                  "01a0a332-d340-4806-a88b-cb60a05355c0.json"))
+
+    shutil.rmtree(data_home)
+
+
 
 
