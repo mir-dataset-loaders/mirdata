@@ -120,7 +120,8 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
         os.makedirs(download_dir)
 
     download_path = os.path.join(download_dir, remote.filename)
-    if not os.path.exists(download_path) or force_overwrite:
+    if not os.path.exists(download_path) or force_overwrite \
+            or (os.path.exists(download_path) and remote.checksum != md5(download_path)):
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
             unit='B', unit_scale=True, unit_divisor=1024, miniters=1
