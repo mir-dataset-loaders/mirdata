@@ -367,7 +367,7 @@ def test_load_sections():
         parsed_sections.intervals[:, 0], np.array([0.065306122, 85.355102040, 167.314285714])
     )
     assert np.array_equal(
-        parsed_sections.intervals[:, 1], np.array([85.35510204, 167.31428571, 309.34204082])
+        parsed_sections.intervals[:, 1], np.array([85.35510203999999, 167.314285714, 309.342040816])
     )
     assert parsed_sections.labels == ['Pallavi', 'Anupallavi', 'Caraṇam']
 
