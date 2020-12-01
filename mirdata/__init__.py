@@ -24,7 +24,8 @@ DATASETS = [
     "rwc_jazz",
     "rwc_popular",
     "salami",
-    "saraga",
+    "saraga_carnatic",
+    "saraga_hindustani",
     "tinysol",
 ]
 

@@ -160,10 +160,17 @@ salami
    :members:
 
 
-saraga
-^^^^^^
+saraga_carnatic
+^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.datasets.saraga
+.. automodule:: mirdata.datasets.saraga_carnatic
+   :members:
+
+
+saraga_hindustani
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.saraga_hindustani
    :members:
 
 
