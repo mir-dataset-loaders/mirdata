@@ -3718,144 +3718,154 @@ def filter_index(search_key, data_home=None, index=None):
     return acousticbrainz_genre_data
 
 
-def load_all_train(data_home=None):
+def load_all_train(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for training across the four different datasets.
 
         Args:
             data_home (str): Local path where the dataset is stored.
                 If `None`, looks for the data in the default directory, `~/mir_datasets`
+            index (dict): mirdata index to filter.
 
         Returns:
             (dict): {`track_id`: track data}
 
     """
-    return filter_index("#train#", data_home=data_home)
+    return filter_index("#train#", data_home=data_home, index=index)
 
 
-def load_all_validation(data_home=None):
+def load_all_validation(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validating across the four different datasets.
 
             Args:
                 data_home (str): Local path where the dataset is stored.
                     If `None`, looks for the data in the default directory, `~/mir_datasets`
+                index (dict): mirdata index to filter.
 
             Returns:
                 (dict): {`track_id`: track data}
 
     """
-    return filter_index("#validation#", data_home=data_home)
+    return filter_index("#validation#", data_home=data_home, index=index)
 
 
-def load_tagtraum_validation(data_home=None):
+def load_tagtraum_validation(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validating in tagtraum dataset.
 
                 Args:
                     data_home (str): Local path where the dataset is stored.
                         If `None`, looks for the data in the default directory, `~/mir_datasets`
+                    index (dict): mirdata index to filter.
 
                 Returns:
                     (dict): {`track_id`: track data}
 
     """
-    return filter_index("tagtraum#validation#", data_home=data_home)
+    return filter_index("tagtraum#validation#", data_home=data_home, index=index)
 
 
-def load_tagtraum_train(data_home=None):
+def load_tagtraum_train(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for training in tagtraum dataset.
 
                     Args:
                         data_home (str): Local path where the dataset is stored.
                             If `None`, looks for the data in the default directory, `~/mir_datasets`
+                        index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("tagtraum#train#", data_home=data_home)
+    return filter_index("tagtraum#train#", data_home=data_home, index=index)
 
 
-def load_allmusic_train(data_home=None):
+def load_allmusic_train(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
                     Args:
                         data_home (str): Local path where the dataset is stored.
                             If `None`, looks for the data in the default directory, `~/mir_datasets`
+                        index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("allmusic#train#", data_home=data_home)
+    return filter_index("allmusic#train#", data_home=data_home, index=index)
 
 
-def load_allmusic_validation(data_home=None):
+def load_allmusic_validation(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
                     Args:
                         data_home (str): Local path where the dataset is stored.
                             If `None`, looks for the data in the default directory, `~/mir_datasets`
+                        index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("allmusic#validation#", data_home=data_home)
+    return filter_index("allmusic#validation#", data_home=data_home, index=index)
 
 
-def load_lastfm_train(data_home=None):
+def load_lastfm_train(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for training in lastfm dataset.
 
                     Args:
                         data_home (str): Local path where the dataset is stored.
                             If `None`, looks for the data in the default directory, `~/mir_datasets`
+                        index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("lastfm#train#", data_home=data_home)
+    return filter_index("lastfm#train#", data_home=data_home, index=index)
 
 
-def load_lastfm_validation(data_home=None):
+def load_lastfm_validation(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validation in lastfm dataset.
 
                     Args:
                         data_home (str): Local path where the dataset is stored.
                             If `None`, looks for the data in the default directory, `~/mir_datasets`
+                        index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("lastfm#validation#", data_home=data_home)
+    return filter_index("lastfm#validation#", data_home=data_home, index=index)
 
 
-def load_discogs_train(data_home=None):
+def load_discogs_train(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for training in discogs dataset.
 
                     Args:
                         data_home (str): Local path where the dataset is stored.
                             If `None`, looks for the data in the default directory, `~/mir_datasets`
+                        index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("allmusic#train#", data_home=data_home)
+    return filter_index("allmusic#train#", data_home=data_home, index=index)
 
 
-def load_discogs_validation(data_home=None):
+def load_discogs_validation(data_home=None, index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validation in tagtraum dataset.
 
                     Args:
                         data_home (str): Local path where the dataset is stored.
                             If `None`, looks for the data in the default directory, `~/mir_datasets`
+                        index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("allmusic#validation#", data_home=data_home)
+    return filter_index("allmusic#validation#", data_home=data_home, index=index)
 
 
 def _download(data_home, remotes, partial_download, info_message, force_overwrite=False, cleanup=True):
