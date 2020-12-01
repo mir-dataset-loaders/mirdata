@@ -123,8 +123,8 @@ REMOTES = {
 REMOTE_INDEX = {
     'REMOTE_INDEX': download_utils.RemoteFileMetadata(
         filename='acousticbrainz_genre_index.json.zip',
-        url='https://zenodo.org/record/4274551/files/acousticbrainz_genre_index.json.zip?download=1',
-        checksum='e58b3f88b2562a09492784c71d7bfb48',
+        url='https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1',
+        checksum='810f1c003f53cbe58002ba96e6d4d138',
         destination_dir=''
     )
 }
