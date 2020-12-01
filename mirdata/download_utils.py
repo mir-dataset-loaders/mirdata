@@ -5,7 +5,7 @@ Attributes:
     RemoteFileMetadata (namedtuple): It specifies the metadata of the remote file to download.
         The metadata consists of `filename`, `url`, `checksum`, and `destination_dir`.
 """
-import sys
+
 from collections import namedtuple
 import os
 from tqdm import tqdm
@@ -22,12 +22,12 @@ RemoteFileMetadata = namedtuple(
 
 
 def downloader(
-        save_dir,
-        remotes=None,
-        partial_download=None,
-        info_message=None,
-        force_overwrite=False,
-        cleanup=True,
+    save_dir,
+    remotes=None,
+    partial_download=None,
+    info_message=None,
+    force_overwrite=False,
+    cleanup=True,
 ):
     """Download data to `save_dir` and optionally print a message.
 
@@ -56,7 +56,7 @@ def downloader(
         if partial_download is not None:
             # check the keys in partial_download are in the download dict
             if not isinstance(partial_download, list) or any(
-                    [k not in remotes for k in partial_download]
+                [k not in remotes for k in partial_download]
             ):
                 raise ValueError(
                     'partial_download must be a list which is a subset of {}'.format(
@@ -123,7 +123,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
-                unit='B', unit_scale=True, unit_divisor=1024, miniters=1
+            unit='B', unit_scale=True, unit_divisor=1024, miniters=1
         ) as t:
             try:
                 urllib.request.urlretrieve(
@@ -132,7 +132,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
                     reporthook=t.update_to,
                     data=None,
                 )
-            except (urllib.error.URLError, urllib.error.HTTPError) as e:
+            except Exception as e:
                 error_msg = """
                             mirdata failed to download the dataset from {}!
                             Please try again in a few minutes.
@@ -143,16 +143,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
                     remote.url
                 )
                 print(error_msg)
-
                 raise e
-            except:
-                os.remove(download_path)
-                print("External error outside the download function force to cancel the download."
-                      "Please try again in a few minutes."
-                      "If this error persists, please raise an issue at"
-                      "https://github.com/mir-dataset-loaders/mirdata,"
-                      "and tag it with 'problems while downloading'.")
-                sys.exit()
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
