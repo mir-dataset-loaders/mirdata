@@ -188,9 +188,9 @@ def test_to_jams():
         167.314285714
     ]
     assert [section.duration for section in sections] == [
-        85.224489795,
-        81.50204081599999,
-        141.453061224
+        85.289795918,
+        81.95918367399999,
+        142.02775510200001
     ]
     assert [section.value for section in sections] == [
         'pallavi',
@@ -365,7 +365,7 @@ def test_load_sections():
         parsed_sections.intervals[:, 0], np.array([0.065306122, 85.355102040, 167.314285714])
     )
     assert np.array_equal(
-        parsed_sections.intervals[:, 1], np.array([85.28979591699999, 166.857142856, 308.767346938])
+        parsed_sections.intervals[:, 1], np.array([85.28979592, 166.85714286, 308.76734694])
     )
     assert parsed_sections.labels == ['pallavi', 'anupallavi', 'charanam']
 
