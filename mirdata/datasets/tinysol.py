@@ -168,9 +168,7 @@ class Track(core.Track):
                 "Resampled": None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, "audio", self._track_paths["audio"][0]
-        )
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
         self.family = self._track_metadata["Family"]
         self.instrument_abbr = self._track_metadata["Instrument (abbr.)"]
