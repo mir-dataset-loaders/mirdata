@@ -93,7 +93,7 @@ def test_remote_index(httpserver):
         "remote_index": download_utils.RemoteFileMetadata(
             filename="acousticbrainz_genre_dataset_little_test.json",
             url=httpserver.url,
-            checksum="7f256c49438022ab493c88f5a1b43e88",  # the md5 checksum
+            checksum="50cf34e2e40e3df4c1cd582d08fa4506",  # the md5 checksum
             destination_dir=".",  # relative path for where to unzip the data, or None
         )
     }
