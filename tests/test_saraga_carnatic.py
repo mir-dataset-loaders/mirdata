@@ -193,9 +193,9 @@ def test_to_jams():
         142.02775510200001
     ]
     assert [section.value for section in sections] == [
-        'pallavi',
-        'anupallavi',
-        'charanam'
+        'Pallavi',
+        'Anupallavi',
+        'Caraṇam'
     ]
     assert [section.confidence for section in sections] == [None, None, None]
 
@@ -218,7 +218,8 @@ def test_to_jams():
     metadata = jam['sandbox'].metadata
     assert metadata['raaga'] == [{
         'uuid': '42dd0ccb-f92a-4622-ae5d-a3be571b4939',
-        'name': 'Śrīranjani'
+        'name': 'Śrīranjani',
+        'common_name': 'shri ranjani'
     }]
     assert metadata['form'] == [{
         'name': 'Kriti'
@@ -231,7 +232,8 @@ def test_to_jams():
     assert metadata['length'] == 309000
     assert metadata['taala'] == [{
         'uuid': 'c788c38a-b53a-48cb-b7bf-d11769260c4d',
-        'name': 'Ādi'
+        'name': 'Ādi',
+        'common_name': 'adi'
     }]
     assert metadata['album_artists'] == [{
         'mbid': 'e09b0542-84e1-45ad-b09a-a05a9ad0cb83',
@@ -365,9 +367,9 @@ def test_load_sections():
         parsed_sections.intervals[:, 0], np.array([0.065306122, 85.355102040, 167.314285714])
     )
     assert np.array_equal(
-        parsed_sections.intervals[:, 1], np.array([85.28979592, 166.85714286, 308.76734694])
+        parsed_sections.intervals[:, 1], np.array([85.35510204, 167.31428571, 309.34204082])
     )
-    assert parsed_sections.labels == ['pallavi', 'anupallavi', 'charanam']
+    assert parsed_sections.labels == ['Pallavi', 'Anupallavi', 'Caraṇam']
 
     assert saraga_carnatic.load_sections(None) is None
 
