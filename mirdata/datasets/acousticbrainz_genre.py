@@ -147,7 +147,10 @@ class Track(core.Track):
         track_id (str): track id
     """
 
-    def __init__(self, track_id, data_home):
+    def __init__(self, track_id, data_home, remote_index=None, remote_index_name=None):
+        if remote_index is not None and remote_index_name is not None:
+            DATA = utils.LargeData(remote_index_name, remote_index=remote_index)
+
         if track_id not in DATA.index["tracks"]:
             raise ValueError('{} is not a valid track ID in AcousticBrainz genre Dataset'.format(track_id))
 
@@ -3712,9 +3715,7 @@ def filter_index(search_key, data_home=None, index=None):
     if index is None:
         index = DATA.index["tracks"].items()
 
-    acousticbrainz_genre_data = {}
-    for pair in filter(lambda item: search_key in item[0], index):
-        acousticbrainz_genre_data[pair[0]] = Track(pair[0], data_home=data_home)
+    acousticbrainz_genre_data = {k: v for k, v in index.items() if search_key in k}
     return acousticbrainz_genre_data
 
 

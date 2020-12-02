@@ -923,33 +923,34 @@ def test_filter_index(httpserver):
         open("tests/resources/download/acousticbrainz_genre_dataset_little_test.json.zip", "rb").read()
     )
 
-    remotes = {
+    remote_index = {
         "index": download_utils.RemoteFileMetadata(
             filename="acousticbrainz_genre_dataset_little_test.json.zip",
             url=httpserver.url,
-            checksum='2cc101d8a6e388ff27048c0d693ae141',
+            checksum='c5fbdd4f8b7de383796a34143cb44c4f',
             destination_dir='',
         )
     }
-    DATA = utils.LargeData('acousticbrainz_genre_index.json', remote_index=remotes)
-    index = acousticbrainz_genre.load_all_train(DATA.index["tracks"])
+    DATA_test = utils.LargeData('acousticbrainz_genre_dataset_little_test.json', remote_index=remote_index)
+    index = acousticbrainz_genre.load_all_train(index=DATA_test.index["tracks"])
     assert len(index) == 8
-    index = acousticbrainz_genre.load_all_validation(DATA.index["tracks"])
+    index = acousticbrainz_genre.load_all_validation(index=DATA_test.index["tracks"])
     assert len(index) == 8
-    index = acousticbrainz_genre.load_tagtraum_validation(DATA.index["tracks"])
-    assert len(index) == 1
-    index = acousticbrainz_genre.load_tagtraum_train(DATA.index["tracks"])
-    assert len(index) == 1
-    index = acousticbrainz_genre.load_allmusic_validation(DATA.index["tracks"])
-    assert len(index) == 1
-    index = acousticbrainz_genre.load_lastfm_train(DATA.index["tracks"])
-    assert len(index) == 1
-    index = acousticbrainz_genre.load_lastfm_validation(DATA.index["tracks"])
-    assert len(index) == 1
-    index = acousticbrainz_genre.load_discogs_train(DATA.index["tracks"])
-    assert len(index) == 1
-    index = acousticbrainz_genre.load_discogs_validation(DATA.index["tracks"])
-    assert len(index) == 1
+    index = acousticbrainz_genre.load_tagtraum_validation(index=DATA_test.index["tracks"])
+    assert len(index) == 2
+    index = acousticbrainz_genre.load_tagtraum_train(index=DATA_test.index["tracks"])
+    assert len(index) == 2
+    index = acousticbrainz_genre.load_allmusic_validation(index=DATA_test.index["tracks"])
+    assert len(index) == 2
+    index = acousticbrainz_genre.load_lastfm_train(index=DATA_test.index["tracks"])
+    assert len(index) == 2
+    index = acousticbrainz_genre.load_lastfm_validation(index=DATA_test.index["tracks"])
+    assert len(index) == 2
+    index = acousticbrainz_genre.load_discogs_train(index=DATA_test.index["tracks"])
+    assert len(index) == 2
+    index = acousticbrainz_genre.load_discogs_validation(index=DATA_test.index["tracks"])
+    assert len(index) == 2
+    os.remove(os.path.join("mirdata", "datasets/indexes", 'acousticbrainz_genre_dataset_little_test.json'))
 
 
 def test_download(httpserver):
