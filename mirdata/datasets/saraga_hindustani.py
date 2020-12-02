@@ -35,7 +35,7 @@ from mirdata import core
 from mirdata import utils
 
 BIBTEX = """
-@dataset{bozkurt_b_2018_1256127,
+@dataset{bozkurt_b_2018_4301737,
   author       = {Bozkurt, B. and
                   Srinivasamurthy, A. and
                   Gulati, S. and
@@ -44,17 +44,17 @@ BIBTEX = """
   month        = may,
   year         = 2018,
   publisher    = {Zenodo},
-  version      = {1.0},
-  doi          = {10.5281/zenodo.1256127},
-  url          = {https://doi.org/10.5281/zenodo.1256127}
+  version      = {1.5},
+  doi          = {10.5281/zenodo.4301737},
+  url          = {https://doi.org/10.5281/zenodo.4301737}
 }
 """
 
 REMOTES = {
     'all': download_utils.RemoteFileMetadata(
-        filename='saraga_1.0.zip',
-        url='https://zenodo.org/record/1256127/files/saraga_1.0.zip?download=1',
-        checksum='c8471e55bd55e060bde6cfacc555e1b1',
+        filename='saraga1.5_hindustani.zip',
+        url='https://zenodo.org/record/4301737/files/saraga1.5_hindustani.zip?download=1',
+        checksum='ea9ed2885ea37a1b10e42f60cf299702',
         destination_dir=None,
     )
 }
