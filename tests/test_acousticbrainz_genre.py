@@ -915,10 +915,23 @@ def test_load_extractor():
         assert extractor_data == features
 
 
-def test_to_jams():
+def test_to_jams(httpserver):
     data_home = "tests/resources/mir_datasets/acousticbrainz_genre2"
     trackid = "tagtraum#validation#be9e01e5-8f93-494d-bbaa-ddcc5a52f629#2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960#trance########"
-    track = acousticbrainz_genre.Track(trackid, data_home=data_home)
+
+    httpserver.serve_content(
+        open("tests/resources/download/acousticbrainz_genre_dataset_little_test.json.zip", "rb").read()
+    )
+    remote_index = {
+        "index": download_utils.RemoteFileMetadata(
+            filename="acousticbrainz_genre_dataset_little_test.json.zip",
+            url=httpserver.url,
+            checksum='c5fbdd4f8b7de383796a34143cb44c4f',
+            destination_dir='',
+        )
+    }
+    track = acousticbrainz_genre.Track(trackid, data_home=data_home, remote_index=remote_index,
+                                       remote_index_name='acousticbrainz_genre_dataset_little_test.json')
 
     jam_ground_truth = jams_utils.jams_converter(
             metadata={
