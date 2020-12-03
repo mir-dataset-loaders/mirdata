@@ -46,6 +46,7 @@ def test_track(httpserver):
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
+    os.remove(os.path.join("mirdata", "datasets/indexes", 'acousticbrainz_genre_dataset_little_test.json'))
 
 
 features = {"tonal": {
@@ -940,6 +941,7 @@ def test_to_jams(httpserver):
             }
         )
     jam = track.to_jams()
+    os.remove(os.path.join("mirdata", "datasets/indexes", 'acousticbrainz_genre_dataset_little_test.json'))
 
     assert jam_ground_truth == jam
 
