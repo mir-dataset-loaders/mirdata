@@ -44,7 +44,7 @@ REMOTE_DATASETS = {
 }
 
 
-def create_remote_dataset(httpserver, dataset_name):
+def create_remote_dataset(httpserver, dataset_name, data_home=None):
     httpserver.serve_content(
         open(REMOTE_DATASETS[dataset_name]["local_index"], "rb").read()
     )
@@ -57,7 +57,7 @@ def create_remote_dataset(httpserver, dataset_name):
         )
     }
     data_remote = utils.LargeData(REMOTE_DATASETS[dataset_name]["filename"], remote_index=remote_index)
-    return mirdata.Dataset(dataset_name, index=data_remote.index)
+    return mirdata.Dataset(dataset_name, index=data_remote.index, data_home=data_home)
 
 
 def clean_remote_dataset(dataset_name):
@@ -221,11 +221,17 @@ def test_validate(skip_local):
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
 
-def test_load_and_trackids():
+def test_load_and_trackids(httpserver):
     for dataset_name in DATASETS:
-        data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
-        dataset = mirdata.Dataset(dataset_name, data_home=data_home)
-        dataset_default = mirdata.Dataset(dataset_name, data_home=None)
+        if dataset_name not in REMOTE_DATASETS:
+            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+            dataset = mirdata.Dataset(dataset_name, data_home=data_home)
+            dataset_default = mirdata.Dataset(dataset_name, data_home=None)
+        else:
+            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+            dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
+            dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
+
         try:
             track_ids = dataset.track_ids
         except:
@@ -276,16 +282,20 @@ def test_load_and_trackids():
             ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
                 dataset_name, dataset_name
             )
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
 
 
-def test_track():
-    data_home_dir = "tests/resources/mir_datasets"
-
+def test_track(httpserver):
     for dataset_name in DATASETS:
-
-        data_home = os.path.join(data_home_dir, dataset_name)
-        dataset = mirdata.Dataset(dataset_name, data_home=data_home)
-        dataset_default = mirdata.Dataset(dataset_name, data_home=None)
+        if dataset_name not in REMOTE_DATASETS:
+            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+            dataset = mirdata.Dataset(dataset_name, data_home=data_home)
+            dataset_default = mirdata.Dataset(dataset_name, data_home=None)
+        else:
+            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+            dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
+            dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
 
         # if the dataset doesn't have a track object, make sure it raises a value error
         # and move on to the next dataset
@@ -343,6 +353,9 @@ def test_track():
 
         with pytest.raises(ValueError):
             dataset.track("~faketrackid~?!")
+
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
 
 
 # for load_* functions which require more than one argument

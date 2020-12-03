@@ -146,14 +146,16 @@ class Track(core.Track):
 
     def __init__(self, track_id, data_home, remote_index=None, remote_index_name=None):
         if remote_index is not None and remote_index_name is not None:
-            DATA = utils.LargeData(remote_index_name, remote_index=remote_index)
+            data = utils.LargeData(remote_index_name, remote_index=remote_index)
+        else:
+            data = DATA
 
-        if track_id not in DATA.index["tracks"]:
+        if track_id not in data.index["tracks"]:
             raise ValueError('{} is not a valid track ID in AcousticBrainz genre Dataset'.format(track_id))
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+        self._track_paths = data.index["tracks"][track_id]
         self.path = utils.none_path_join(
             [self._data_home, self._track_paths['data'][0]]
         )
