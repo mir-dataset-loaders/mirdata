@@ -55,9 +55,6 @@ BIBTEX = """@inproceedings{bogdanov2019acousticbrainz,
   organization={International Society for Music Information Retrieval (ISMIR)}
 }
 """
-
-
-DATASET_DIR = 'acousticbrainz_genre'
 REMOTES = {
     'validation-01': download_utils.RemoteFileMetadata(
         filename='acousticbrainz-mediaeval-features-validation-01234567.tar.bz2',
@@ -3696,22 +3693,16 @@ def load_extractor(path):
     return meta
 
 
-def filter_index(search_key, data_home=None, index=None):
+def filter_index(search_key, index=None):
     """Load from AcousticBrainz genre dataset the indexes that match with search_key.
 
     Args:
         search_key (str): regex to match with folds, mbid or genres
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
         index (dict): mirdata index to filter.
 
     Returns:
         (dict): {`track_id`: track data}
     """
-    if data_home is None:
-        mir_datasets_dir = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
-        data_home = os.path.join(mir_datasets_dir, DATASET_DIR)
-
     if index is None:
         index = DATA.index["tracks"].items()
 
@@ -3719,37 +3710,33 @@ def filter_index(search_key, data_home=None, index=None):
     return acousticbrainz_genre_data
 
 
-def load_all_train(data_home=None, index=None):
+def load_all_train(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for training across the four different datasets.
 
         Args:
-            data_home (str): Local path where the dataset is stored.
-                If `None`, looks for the data in the default directory, `~/mir_datasets`
             index (dict): mirdata index to filter.
 
         Returns:
             (dict): {`track_id`: track data}
 
     """
-    return filter_index("#train#", data_home=data_home, index=index)
+    return filter_index("#train#", index=index)
 
 
-def load_all_validation(data_home=None, index=None):
+def load_all_validation(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validating across the four different datasets.
 
             Args:
-                data_home (str): Local path where the dataset is stored.
-                    If `None`, looks for the data in the default directory, `~/mir_datasets`
                 index (dict): mirdata index to filter.
 
             Returns:
                 (dict): {`track_id`: track data}
 
     """
-    return filter_index("#validation#", data_home=data_home, index=index)
+    return filter_index("#validation#", index=index)
 
 
-def load_tagtraum_validation(data_home=None, index=None):
+def load_tagtraum_validation(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validating in tagtraum dataset.
 
                 Args:
@@ -3761,119 +3748,105 @@ def load_tagtraum_validation(data_home=None, index=None):
                     (dict): {`track_id`: track data}
 
     """
-    return filter_index("tagtraum#validation#", data_home=data_home, index=index)
+    return filter_index("tagtraum#validation#", index=index)
 
 
-def load_tagtraum_train(data_home=None, index=None):
+def load_tagtraum_train(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for training in tagtraum dataset.
 
                     Args:
-                        data_home (str): Local path where the dataset is stored.
-                            If `None`, looks for the data in the default directory, `~/mir_datasets`
                         index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("tagtraum#train#", data_home=data_home, index=index)
+    return filter_index("tagtraum#train#", index=index)
 
 
-def load_allmusic_train(data_home=None, index=None):
+def load_allmusic_train(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
                     Args:
-                        data_home (str): Local path where the dataset is stored.
-                            If `None`, looks for the data in the default directory, `~/mir_datasets`
                         index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("allmusic#train#", data_home=data_home, index=index)
+    return filter_index("allmusic#train#", index=index)
 
 
-def load_allmusic_validation(data_home=None, index=None):
+def load_allmusic_validation(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
                     Args:
-                        data_home (str): Local path where the dataset is stored.
-                            If `None`, looks for the data in the default directory, `~/mir_datasets`
                         index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("allmusic#validation#", data_home=data_home, index=index)
+    return filter_index("allmusic#validation#", index=index)
 
 
-def load_lastfm_train(data_home=None, index=None):
+def load_lastfm_train(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for training in lastfm dataset.
 
                     Args:
-                        data_home (str): Local path where the dataset is stored.
-                            If `None`, looks for the data in the default directory, `~/mir_datasets`
                         index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("lastfm#train#", data_home=data_home, index=index)
+    return filter_index("lastfm#train#", index=index)
 
 
-def load_lastfm_validation(data_home=None, index=None):
+def load_lastfm_validation(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validation in lastfm dataset.
 
                     Args:
-                        data_home (str): Local path where the dataset is stored.
-                            If `None`, looks for the data in the default directory, `~/mir_datasets`
                         index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("lastfm#validation#", data_home=data_home, index=index)
+    return filter_index("lastfm#validation#", index=index)
 
 
-def load_discogs_train(data_home=None, index=None):
+def load_discogs_train(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for training in discogs dataset.
 
                     Args:
-                        data_home (str): Local path where the dataset is stored.
-                            If `None`, looks for the data in the default directory, `~/mir_datasets`
                         index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("allmusic#train#", data_home=data_home, index=index)
+    return filter_index("allmusic#train#", index=index)
 
 
-def load_discogs_validation(data_home=None, index=None):
+def load_discogs_validation(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for validation in tagtraum dataset.
 
                     Args:
-                        data_home (str): Local path where the dataset is stored.
-                            If `None`, looks for the data in the default directory, `~/mir_datasets`
                         index (dict): mirdata index to filter.
 
                     Returns:
                         (dict): {`track_id`: track data}
 
     """
-    return filter_index("allmusic#validation#", data_home=data_home, index=index)
+    return filter_index("allmusic#validation#", index=index)
 
 
-def _download(data_home, remotes, partial_download, info_message, force_overwrite=False, cleanup=True):
+def _download(save_dir, remotes, partial_download, info_message, force_overwrite=False, cleanup=True):
     """Download data to `save_dir` and optionally print a message.
 
     Args:
-        data_home (str):
+        save_dir (str):
             Dataset files path
             remotes (dict or None):
         remotes (dict) :
@@ -3889,15 +3862,15 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
         IOError: if a downloaded file's checksum is different from expected
 
     """
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
     # Create these directories if doesn't exist
     train = "acousticbrainz-mediaeval-train"
-    train_dir = os.path.join(data_home, train)
+    train_dir = os.path.join(save_dir, train)
     if not os.path.isdir(train_dir):
         os.mkdir(train_dir)
     validate = "acousticbrainz-mediaeval-validation"
-    validate_dir = os.path.join(data_home, validate)
+    validate_dir = os.path.join(save_dir, validate)
     if not os.path.isdir(validate_dir):
         os.mkdir(validate_dir)
 
@@ -3914,7 +3887,7 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
         if not file_downloaded:
                 #  if this typical error happend it repeat download
                 download_utils.downloader(
-                    data_home,
+                    save_dir,
                     remotes={key: remote},
                     partial_download=None,
                     info_message=None,
@@ -3922,7 +3895,7 @@ def _download(data_home, remotes, partial_download, info_message, force_overwrit
                     cleanup=cleanup,
                 )
         # move from a temporal directory to final one
-        source_dir = os.path.join(data_home, "temp", train if "train" in key else validate)
+        source_dir = os.path.join(save_dir, "temp", train if "train" in key else validate)
         target_dir = train_dir if "train" in key else validate_dir
         dir_names = os.listdir(source_dir)
         for dir_name in dir_names:
