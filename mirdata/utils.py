@@ -113,7 +113,6 @@ def check_metadata(file_dict, data_home, verbose):
     missing = {}
     invalid = {}
     for file_id, file in tqdm.tqdm(file_dict.items(), disable=not verbose):
-        print(file_id, file)
         filepath = file[0]
         checksum = file[1]
         if filepath is not None:
@@ -141,7 +140,7 @@ def check_index(dataset_index, data_home, verbose=True):
     invalid_checksums = {}
 
     # check index
-    if dataset_index['metadata'] is not None:
+    if 'metadata' in dataset_index and dataset_index['metadata'] is not None:
         missing_metadata, invalid_metadata = check_metadata(
             dataset_index['metadata'],
             data_home,
@@ -150,7 +149,7 @@ def check_index(dataset_index, data_home, verbose=True):
         missing_files['metadata'] = missing_metadata
         invalid_checksums['metadata'] = invalid_metadata
 
-    if 'tracks' in dataset_index:
+    if 'tracks' in dataset_index and dataset_index['tracks'] is not None:
         missing_tracks, invalid_tracks = check_files(
             dataset_index['tracks'],
             data_home,
@@ -159,7 +158,7 @@ def check_index(dataset_index, data_home, verbose=True):
         missing_files['tracks'] = missing_tracks
         invalid_checksums['tracks'] = invalid_tracks
 
-    if 'multitracks' in dataset_index:
+    if 'multitracks' in dataset_index and dataset_index['multitracks'] is not None:
         missing_multitracks, invalid_multitracks = check_files(
             dataset_index['multitracks'],
             data_home,

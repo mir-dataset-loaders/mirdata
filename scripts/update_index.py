@@ -147,8 +147,10 @@ def update_index(all_indexes):
         # The computation of the checksum should be customized in the make_index
         # of each dataset. This is a patch to convert previous indexes to the new format.
         new_index = {'version': version,
-                     'tracks': old_index,
-                     'metadata': metadata_checksums}
+                     'tracks': old_index}
+
+        if metadata_files is not None:
+            new_index['metadata'] =  metadata_checksums
 
         with open(os.path.join(INDEXES_PATH, index_name), 'w') as fhandle:
             json.dump(new_index, fhandle, indent=2)
@@ -162,7 +164,7 @@ def test_index(dataset_names):
 
     """
 
-    mandatory_keys = ['metadata', 'version']
+    mandatory_keys = ['version']
     for module in dataset_names:
         index = mirdata.Dataset(module)._index
         assert type(index['tracks']) == dict
