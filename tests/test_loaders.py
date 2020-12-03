@@ -11,7 +11,7 @@ import requests
 
 
 import mirdata
-from mirdata import core
+from mirdata import core, download_utils, utils
 from tests.test_utils import DEFAULT_DATA_HOME
 
 DATASETS = mirdata.DATASETS
@@ -34,10 +34,35 @@ CUSTOM_TEST_TRACKS = {
     "tinysol": "Fl-ord-C4-mf-N-T14d",
 }
 
+REMOTE_DATASETS = {
+    "acousticbrainz_genre": {
+        "local_index": "tests/resources/download/acousticbrainz_genre_dataset_little_test.json.zip",
+        "filename": "acousticbrainz_genre_dataset_little_test.json",
+        "remote_filename": "acousticbrainz_genre_dataset_little_test.json.zip",
+        "remote_checksum": 'c5fbdd4f8b7de383796a34143cb44c4f'
+    }
+}
 
-def test_dataset_attributes():
+
+def test_dataset_attributes(httpserver):
     for dataset_name in DATASETS:
-        dataset = mirdata.Dataset(dataset_name)
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = mirdata.Dataset(dataset_name)
+        else:
+            httpserver.serve_content(
+                open(REMOTE_DATASETS[dataset_name]["local_index"], "rb").read()
+            )
+            remote_index = {
+                "index": download_utils.RemoteFileMetadata(
+                    filename=REMOTE_DATASETS[dataset_name]["remote_filename"],
+                    url=httpserver.url,
+                    checksum=REMOTE_DATASETS[dataset_name]["remote_checksum"],
+                    destination_dir='',
+                )
+            }
+            data_remote = utils.LargeData(REMOTE_DATASETS[dataset_name]["filename"], remote_index=remote_index)
+            dataset = mirdata.Dataset(dataset_name, index=data_remote.index)
+
         assert (
             dataset.name == dataset_name
         ), "{}.dataset attribute does not match dataset name".format(dataset_name)
@@ -60,6 +85,9 @@ def test_dataset_attributes():
             dataset_name
         )
         assert dataset.readme != "", "{} has no module readme".format(dataset_name)
+
+        if dataset_name in REMOTE_DATASETS:
+            os.remove(os.path.join("mirdata/datasets/indexes", REMOTE_DATASETS[dataset_name]["filename"]))
 
 
 def test_forward_compatibility():
