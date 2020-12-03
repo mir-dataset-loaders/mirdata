@@ -380,12 +380,17 @@ def test_load_methods():
         load_methods = [
             getattr(dataset, m) for m in all_methods if m.startswith("load_")
         ]
+        # methods test in module test
+        if dataset_name in REMOTE_DATASETS:
+            continue
+
         for load_method in load_methods:
             method_name = load_method.__name__
 
             # skip default methods
             if method_name == "load_tracks":
                 continue
+
             params = [
                 p
                 for p in signature(load_method).parameters.values()
