@@ -44,24 +44,32 @@ REMOTE_DATASETS = {
 }
 
 
+def create_remote_dataset(httpserver, dataset_name):
+    httpserver.serve_content(
+        open(REMOTE_DATASETS[dataset_name]["local_index"], "rb").read()
+    )
+    remote_index = {
+        "index": download_utils.RemoteFileMetadata(
+            filename=REMOTE_DATASETS[dataset_name]["remote_filename"],
+            url=httpserver.url,
+            checksum=REMOTE_DATASETS[dataset_name]["remote_checksum"],
+            destination_dir='',
+        )
+    }
+    data_remote = utils.LargeData(REMOTE_DATASETS[dataset_name]["filename"], remote_index=remote_index)
+    return mirdata.Dataset(dataset_name, index=data_remote.index)
+
+
+def clean_remote_dataset(dataset_name):
+    os.remove(os.path.join("mirdata/datasets/indexes", REMOTE_DATASETS[dataset_name]["filename"]))
+
+
 def test_dataset_attributes(httpserver):
     for dataset_name in DATASETS:
         if dataset_name not in REMOTE_DATASETS:
             dataset = mirdata.Dataset(dataset_name)
         else:
-            httpserver.serve_content(
-                open(REMOTE_DATASETS[dataset_name]["local_index"], "rb").read()
-            )
-            remote_index = {
-                "index": download_utils.RemoteFileMetadata(
-                    filename=REMOTE_DATASETS[dataset_name]["remote_filename"],
-                    url=httpserver.url,
-                    checksum=REMOTE_DATASETS[dataset_name]["remote_checksum"],
-                    destination_dir='',
-                )
-            }
-            data_remote = utils.LargeData(REMOTE_DATASETS[dataset_name]["filename"], remote_index=remote_index)
-            dataset = mirdata.Dataset(dataset_name, index=data_remote.index)
+            dataset = create_remote_dataset(httpserver, dataset_name)
 
         assert (
             dataset.name == dataset_name
@@ -87,7 +95,7 @@ def test_dataset_attributes(httpserver):
         assert dataset.readme != "", "{} has no module readme".format(dataset_name)
 
         if dataset_name in REMOTE_DATASETS:
-            os.remove(os.path.join("mirdata/datasets/indexes", REMOTE_DATASETS[dataset_name]["filename"]))
+            clean_remote_dataset(dataset_name)
 
 
 def test_forward_compatibility():
