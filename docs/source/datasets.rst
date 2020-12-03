@@ -25,9 +25,8 @@ click the link provided in the "Module" column.
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | Module            | Name                | Downloadable?       | Annotation Types          | Tracks |
 +===================+=====================+=====================+===========================+========+
-| beatles_          | | The Beatles       | - audio: ❌         | - :ref:`beats`            | 180    |
-|                   | | Dataset           | - annotations: ✅   | - :ref:`sections`         |        |
-|                   |                     |                     | - :ref:`key`              |        |
+| ab_genre_         | AcousticBrainz      | - audio: ✅         | - :ref:`genre`            | >4mill |
+|                   | Genre               |                     |                           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | beatport_key_     |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
 |                   |                     | - annotations: ✅   |                           |        |
@@ -245,6 +244,7 @@ a track.
 
 
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
+.. _ab_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.ab_genre
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
 .. _cante100: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.cante100
 .. _beatport_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatport_key
@@ -268,6 +268,7 @@ a track.
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
 .. _saraga: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
+
 
 
 
