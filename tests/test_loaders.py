@@ -299,76 +299,76 @@ def test_download(mocker, httpserver):
 #             clean_remote_dataset(dataset_name)
 
 
-def test_track(httpserver):
-    for dataset_name in DATASETS:
-        if dataset_name not in REMOTE_DATASETS:
-            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
-            dataset = mirdata.Dataset(dataset_name, data_home=data_home)
-            dataset_default = mirdata.Dataset(dataset_name, data_home=None)
-        else:
-            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
-            dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
-            dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
-
-        # if the dataset doesn't have a track object, make sure it raises a value error
-        # and move on to the next dataset
-        if dataset._track_object is None:
-            with pytest.raises(NotImplementedError):
-                dataset.track("~faketrackid~?!")
-            continue
-
-        if dataset_name in CUSTOM_TEST_TRACKS:
-            trackid = CUSTOM_TEST_TRACKS[dataset_name]
-        else:
-            trackid = dataset.track_ids[0]
-
-        try:
-            track_default = dataset_default.track(trackid)
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert track_default._data_home == os.path.join(
-            DEFAULT_DATA_HOME, dataset.name
-        ), "{}: Track._data_home path is not set as expected".format(dataset_name)
-
-        # test data home specified
-        try:
-            track_test = dataset.track(trackid)
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert isinstance(
-            track_test, core.Track
-        ), "{}.track must be an instance of type core.Track".format(dataset_name)
-
-        assert hasattr(
-            track_test, "to_jams"
-        ), "{}.track must have a to_jams method".format(dataset_name)
-
-        # Validate JSON schema
-        try:
-            jam = track_test.to_jams()
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert jam.validate(), "Jams validation failed for {}.track({})".format(
-            dataset_name, trackid
-        )
-
-        # will fail if something goes wrong with __repr__
-        try:
-            text_trap = io.StringIO()
-            sys.stdout = text_trap
-            print(track_test)
-            sys.stdout = sys.__stdout__
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        with pytest.raises(ValueError):
-            dataset.track("~faketrackid~?!")
-
-        if dataset_name in REMOTE_DATASETS:
-            clean_remote_dataset(dataset_name)
+# def test_track(httpserver):
+#     for dataset_name in DATASETS:
+#         if dataset_name not in REMOTE_DATASETS:
+#             data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+#             dataset = mirdata.Dataset(dataset_name, data_home=data_home)
+#             dataset_default = mirdata.Dataset(dataset_name, data_home=None)
+#         else:
+#             data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+#             dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
+#             dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
+#
+#         # if the dataset doesn't have a track object, make sure it raises a value error
+#         # and move on to the next dataset
+#         if dataset._track_object is None:
+#             with pytest.raises(NotImplementedError):
+#                 dataset.track("~faketrackid~?!")
+#             continue
+#
+#         if dataset_name in CUSTOM_TEST_TRACKS:
+#             trackid = CUSTOM_TEST_TRACKS[dataset_name]
+#         else:
+#             trackid = dataset.track_ids[0]
+#
+#         try:
+#             track_default = dataset_default.track(trackid)
+#         except:
+#             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#
+#         assert track_default._data_home == os.path.join(
+#             DEFAULT_DATA_HOME, dataset.name
+#         ), "{}: Track._data_home path is not set as expected".format(dataset_name)
+#
+#         # test data home specified
+#         try:
+#             track_test = dataset.track(trackid)
+#         except:
+#             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#
+#         assert isinstance(
+#             track_test, core.Track
+#         ), "{}.track must be an instance of type core.Track".format(dataset_name)
+#
+#         assert hasattr(
+#             track_test, "to_jams"
+#         ), "{}.track must have a to_jams method".format(dataset_name)
+#
+#         # Validate JSON schema
+#         try:
+#             jam = track_test.to_jams()
+#         except:
+#             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#
+#         assert jam.validate(), "Jams validation failed for {}.track({})".format(
+#             dataset_name, trackid
+#         )
+#
+#         # will fail if something goes wrong with __repr__
+#         try:
+#             text_trap = io.StringIO()
+#             sys.stdout = text_trap
+#             print(track_test)
+#             sys.stdout = sys.__stdout__
+#         except:
+#             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#
+#         with pytest.raises(ValueError):
+#             dataset.track("~faketrackid~?!")
+#
+#         if dataset_name in REMOTE_DATASETS:
+#             clean_remote_dataset(dataset_name)
 
 
 # for load_* functions which require more than one argument
