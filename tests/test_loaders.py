@@ -241,19 +241,17 @@ def test_load_and_trackids(httpserver):
             dataset_default = mirdata.Dataset(dataset_name, data_home=None)
         else:
             continue
-            dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
-            dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
-        print("test 2")
+            #
+            # dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
+            # dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
         try:
             track_ids = dataset.track_ids
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-        print("test 3")
         assert type(track_ids) is list, "{}.track_ids() should return a list".format(
             dataset_name
         )
         trackid_len = len(track_ids)
-        print("test 4")
         # if the dataset has tracks, test the loaders
         if dataset._track_object is not None:
 
