@@ -332,8 +332,8 @@ def load_tempo(tempo_path):
 
     tempo_annotation = {}
     head, tail = os.path.split(tempo_path)
-    sections_path = os.path.join(tail.split('.')[0], '.sections-manual-p.txt')
-    sections_abs_path = os.path.join(head, '/', sections_path)
+    sections_path = tail.split('.')[0] + '.sections-manual-p.txt'
+    sections_abs_path = os.path.join(head, sections_path)
 
     sections = []
     with open(sections_abs_path, 'r') as reader:
