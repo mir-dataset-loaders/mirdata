@@ -145,10 +145,13 @@ KNOWN_ISSUES = {}  # key is module, value is REMOTE key
 DOWNLOAD_EXCEPTIONS = ["maestro", "acousticbrainz_genre"]
 
 
-def test_download(mocker):
+def test_download(mocker, httpserver):
     for dataset_name in DATASETS:
         print(dataset_name)
-        dataset = mirdata.Dataset(dataset_name)
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = mirdata.Dataset(dataset_name)
+        else:
+            dataset = create_remote_dataset(httpserver, dataset_name)
 
         # test parameters & defaults
         assert callable(dataset._download_fn), "{}.download is not callable".format(
@@ -201,14 +204,19 @@ def test_download(mocker):
                 dataset.download()
             except:
                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
 
 
 # This is magically skipped by the the remote fixture `skip_local` in conftest.py
 # when tests are run with the --local flag
-def test_validate(skip_local):
+def test_validate(skip_local, httpserver):
     for dataset_name in DATASETS:
         data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
-        dataset = mirdata.Dataset(dataset_name, data_home=data_home)
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = mirdata.Dataset(dataset_name)
+        else:
+            dataset = create_remote_dataset(httpserver, dataset_name)
         try:
             dataset.validate()
         except:
@@ -224,6 +232,8 @@ def test_validate(skip_local):
             dataset_default.validate(verbose=False)
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
 
 
 def test_load_and_trackids(httpserver):
