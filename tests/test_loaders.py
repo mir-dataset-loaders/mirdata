@@ -386,39 +386,39 @@ EXCEPTIONS = {
 }
 
 
-def test_load_methods():
-    for dataset_name in DATASETS:
-        dataset = mirdata.Dataset(dataset_name)
-        all_methods = dir(dataset)
-        load_methods = [
-            getattr(dataset, m) for m in all_methods if m.startswith("load_")
-        ]
-        # methods test in module test
-        if dataset_name in REMOTE_DATASETS:
-            continue
-
-        for load_method in load_methods:
-            method_name = load_method.__name__
-
-            # skip default methods
-            if method_name == "load_tracks":
-                continue
-
-            params = [
-                p
-                for p in signature(load_method).parameters.values()
-                if p.default == inspect._empty
-            ]  # get list of parameters that don't have defaults
-
-            # add to the EXCEPTIONS dictionary above if your load_* function needs
-            # more than one argument.
-            if dataset_name in EXCEPTIONS and method_name in EXCEPTIONS[dataset_name]:
-                extra_params = EXCEPTIONS[dataset_name][method_name]
-                with pytest.raises(IOError):
-                    load_method("a/fake/filepath", **extra_params)
-            else:
-                with pytest.raises(IOError):
-                    load_method("a/fake/filepath")
+# def test_load_methods():
+#     for dataset_name in DATASETS:
+#         dataset = mirdata.Dataset(dataset_name)
+#         all_methods = dir(dataset)
+#         load_methods = [
+#             getattr(dataset, m) for m in all_methods if m.startswith("load_")
+#         ]
+#         # methods test in module test
+#         if dataset_name in REMOTE_DATASETS:
+#             continue
+#
+#         for load_method in load_methods:
+#             method_name = load_method.__name__
+#
+#             # skip default methods
+#             if method_name == "load_tracks":
+#                 continue
+#
+#             params = [
+#                 p
+#                 for p in signature(load_method).parameters.values()
+#                 if p.default == inspect._empty
+#             ]  # get list of parameters that don't have defaults
+#
+#             # add to the EXCEPTIONS dictionary above if your load_* function needs
+#             # more than one argument.
+#             if dataset_name in EXCEPTIONS and method_name in EXCEPTIONS[dataset_name]:
+#                 extra_params = EXCEPTIONS[dataset_name][method_name]
+#                 with pytest.raises(IOError):
+#                     load_method("a/fake/filepath", **extra_params)
+#             else:
+#                 with pytest.raises(IOError):
+#                     load_method("a/fake/filepath")
 
 
 CUSTOM_TEST_MTRACKS = {}
