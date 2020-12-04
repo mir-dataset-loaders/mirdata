@@ -234,69 +234,69 @@ def test_download(mocker, httpserver):
 #                 clean_remote_dataset(dataset_name)
 
 
-def test_load_and_trackids(httpserver):
-    for dataset_name in DATASETS:
-        if dataset_name not in REMOTE_DATASETS:
-            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
-            dataset = mirdata.Dataset(dataset_name, data_home=data_home)
-            dataset_default = mirdata.Dataset(dataset_name, data_home=None)
-        else:
-            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
-            dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
-            dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
-
-        try:
-            track_ids = dataset.track_ids
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert type(track_ids) is list, "{}.track_ids() should return a list".format(
-            dataset_name
-        )
-        trackid_len = len(track_ids)
-
-        # if the dataset has tracks, test the loaders
-        if dataset._track_object is not None:
-
-            try:
-                choice_track = dataset.choice_track()
-            except:
-                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-            assert isinstance(
-                choice_track, core.Track
-            ), "{}.choice_track must return an instance of type core.Track".format(
-                dataset_name
-            )
-
-            try:
-                dataset_data = dataset.load_tracks()
-            except:
-                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-            assert (
-                type(dataset_data) is dict
-            ), "{}.load should return a dictionary".format(dataset_name)
-            assert (
-                len(dataset_data.keys()) == trackid_len
-            ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
-                dataset_name, dataset_name
-            )
-
-            try:
-                dataset_data_default = dataset_default.load_tracks()
-            except:
-                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-            assert (
-                type(dataset_data_default) is dict
-            ), "{}.load should return a dictionary".format(dataset_name)
-            assert (
-                len(dataset_data_default.keys()) == trackid_len
-            ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
-                dataset_name, dataset_name
-            )
-        if dataset_name in REMOTE_DATASETS:
-            clean_remote_dataset(dataset_name)
+# def test_load_and_trackids(httpserver):
+#     for dataset_name in DATASETS:
+#         if dataset_name not in REMOTE_DATASETS:
+#             data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+#             dataset = mirdata.Dataset(dataset_name, data_home=data_home)
+#             dataset_default = mirdata.Dataset(dataset_name, data_home=None)
+#         else:
+#             data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+#             dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
+#             dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
+#
+#         try:
+#             track_ids = dataset.track_ids
+#         except:
+#             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#
+#         assert type(track_ids) is list, "{}.track_ids() should return a list".format(
+#             dataset_name
+#         )
+#         trackid_len = len(track_ids)
+#
+#         # if the dataset has tracks, test the loaders
+#         if dataset._track_object is not None:
+#
+#             try:
+#                 choice_track = dataset.choice_track()
+#             except:
+#                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#             assert isinstance(
+#                 choice_track, core.Track
+#             ), "{}.choice_track must return an instance of type core.Track".format(
+#                 dataset_name
+#             )
+#
+#             try:
+#                 dataset_data = dataset.load_tracks()
+#             except:
+#                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#
+#             assert (
+#                 type(dataset_data) is dict
+#             ), "{}.load should return a dictionary".format(dataset_name)
+#             assert (
+#                 len(dataset_data.keys()) == trackid_len
+#             ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
+#                 dataset_name, dataset_name
+#             )
+#
+#             try:
+#                 dataset_data_default = dataset_default.load_tracks()
+#             except:
+#                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#
+#             assert (
+#                 type(dataset_data_default) is dict
+#             ), "{}.load should return a dictionary".format(dataset_name)
+#             assert (
+#                 len(dataset_data_default.keys()) == trackid_len
+#             ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
+#                 dataset_name, dataset_name
+#             )
+#         if dataset_name in REMOTE_DATASETS:
+#             clean_remote_dataset(dataset_name)
 
 
 def test_track(httpserver):
