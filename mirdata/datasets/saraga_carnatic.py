@@ -151,23 +151,7 @@ class Track(core.Track):
 
         # Track attributes
         metadata = DATA.metadata(self.metadata_path)
-        if metadata is not None and metadata['title'].replace(' ', '_') in self.track_id:
-            self._track_metadata = metadata
-        else:
-            # annotations with missing metadata
-            self._track_metadata = {
-                'raaga': None,
-                'form': None,
-                'title': None,
-                'work': None,
-                'length': None,
-                'taala': None,
-                'album_artists': None,
-                'mbid': None,
-                'artists': None,
-                'concert': None,
-            }
-
+        self._track_metadata = metadata
         self.title = self._track_metadata['title']
         self.artists = self._track_metadata['artists']
         self.album_artists = self._track_metadata['album_artists']

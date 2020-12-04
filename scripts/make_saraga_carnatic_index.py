@@ -34,6 +34,7 @@ def make_saraga_carnatic_index(dataset_data_path):
         'tracks': {},
     }
     idx = 0
+    dataset_data_path_prev = dataset_data_path.split('saraga1.5_carnatic/')[0]
     for concert in os.listdir(dataset_data_path):
         if '.' not in concert:
             for song in os.listdir(os.path.join(dataset_data_path, concert)):
@@ -61,54 +62,54 @@ def make_saraga_carnatic_index(dataset_data_path):
                         if '.mp3' in file:
                             if 'multitrack' in file:
                                 if 'ghatam' in file:
-                                    audio_ghatam_path = os.path.join(concert, song, file)
+                                    audio_ghatam_path = os.path.join('saraga1.5_carnatic', concert, song, file)
                                     audio_ghatam_checksum = md5(
-                                        os.path.join(dataset_data_path, audio_ghatam_path)
+                                        os.path.join(dataset_data_path_prev, audio_ghatam_path)
                                     )
                                     audio_ghatam = (
                                         audio_ghatam_path,
                                         audio_ghatam_checksum
                                     )
                                 if 'mridangam-left' in file:
-                                    audio_mridangam_left_path = os.path.join(concert, song, file)
+                                    audio_mridangam_left_path = os.path.join('saraga1.5_carnatic', concert, song, file)
                                     audio_mridangam_left_checksum = md5(
-                                        os.path.join(dataset_data_path, audio_mridangam_left_path)
+                                        os.path.join(dataset_data_path_prev, audio_mridangam_left_path)
                                     )
                                     audio_mridangam_left = (
                                         audio_mridangam_left_path,
                                         audio_mridangam_left_checksum
                                     )
                                 if 'mridangam-right' in file:
-                                    mridangam_right_path = os.path.join(concert, song, file)
+                                    mridangam_right_path = os.path.join('saraga1.5_carnatic', concert, song, file)
                                     mridangam_right_checksum = md5(
-                                        os.path.join(dataset_data_path, mridangam_right_path)
+                                        os.path.join(dataset_data_path_prev, mridangam_right_path)
                                     )
                                     audio_mridangam_right = (
                                         mridangam_right_path,
                                         mridangam_right_checksum
                                     )
                                 if 'violin' in file:
-                                    audio_violin_path = os.path.join(concert, song, file)
+                                    audio_violin_path = os.path.join('saraga1.5_carnatic', concert, song, file)
                                     audio_violin_checksum = md5(
-                                        os.path.join(dataset_data_path, audio_violin_path)
+                                        os.path.join(dataset_data_path_prev, audio_violin_path)
                                     )
                                     audio_violin = (
                                         audio_violin_path,
                                         audio_violin_checksum
                                     )
                                 if 'vocal-s' in file:
-                                    audio_vocal_s_path = os.path.join(concert, song, file)
+                                    audio_vocal_s_path = os.path.join('saraga1.5_carnatic', concert, song, file)
                                     audio_vocal_s_checksum = md5(
-                                        os.path.join(dataset_data_path, audio_vocal_s_path)
+                                        os.path.join(dataset_data_path_prev, audio_vocal_s_path)
                                     )
                                     audio_vocal_s = (
                                         audio_vocal_s_path,
                                         audio_vocal_s_checksum
                                     )
                                 if 'vocal.' in file:
-                                    audio_vocal_path = os.path.join(concert, song, file)
+                                    audio_vocal_path = os.path.join('saraga1.5_carnatic', concert, song, file)
                                     audio_vocal_checksum = md5(
-                                        os.path.join(dataset_data_path, audio_vocal_path)
+                                        os.path.join(dataset_data_path_prev, audio_vocal_path)
                                     )
                                     audio_vocal = (
                                         audio_vocal_path,
@@ -116,40 +117,41 @@ def make_saraga_carnatic_index(dataset_data_path):
                                     )
 
                             else:
-                                audio_path = os.path.join(concert, song, file)
-                                audio_checksum = md5(os.path.join(dataset_data_path, audio_path))
+                                audio_path = os.path.join('saraga1.5_carnatic', concert, song, file)
+                                audio_checksum = md5(os.path.join(dataset_data_path_prev, audio_path))
                                 audio = (audio_path, audio_checksum)
-                        if 'ctonic' in file:
-                            ctonic_path = os.path.join(concert, song, file)
-                            ctonic_checksum = md5(os.path.join(dataset_data_path, ctonic_path))
+
+                        if 'ctonic.' in file:
+                            ctonic_path = os.path.join('saraga1.5_carnatic', concert, song, file)
+                            ctonic_checksum = md5(os.path.join(dataset_data_path_prev, ctonic_path))
                             ctonic = (ctonic_path, ctonic_checksum)
                         if 'pitch.' in file:
-                            pitch_path = os.path.join(concert, song, file)
-                            pitch_checksum = md5(os.path.join(dataset_data_path, pitch_path))
+                            pitch_path = os.path.join('saraga1.5_carnatic', concert, song, file)
+                            pitch_checksum = md5(os.path.join(dataset_data_path_prev, pitch_path))
                             pitch = (pitch_path, pitch_checksum)
                         if 'pitch-vocal' in file:
-                            pitch_v_path = os.path.join(concert, song, file)
-                            pitch_v_checksum = md5(os.path.join(dataset_data_path, pitch_v_path))
+                            pitch_v_path = os.path.join('saraga1.5_carnatic', concert, song, file)
+                            pitch_v_checksum = md5(os.path.join(dataset_data_path_prev, pitch_v_path))
                             pitch_v = (pitch_v_path, pitch_v_checksum)
-                        if 'tempo' in file:
-                            tempo_path = os.path.join(concert, song, file)
-                            tempo_checksum = md5(os.path.join(dataset_data_path, tempo_path))
+                        if 'tempo-manual' in file:
+                            tempo_path = os.path.join('saraga1.5_carnatic', concert, song, file)
+                            tempo_checksum = md5(os.path.join(dataset_data_path_prev, tempo_path))
                             tempo = (tempo_path, tempo_checksum)
-                        if 'sama' in file:
-                            sama_path = os.path.join(concert, song, file)
-                            sama_checksum = md5(os.path.join(dataset_data_path, sama_path))
+                        if 'sama-manual' in file:
+                            sama_path = os.path.join('saraga1.5_carnatic', concert, song, file)
+                            sama_checksum = md5(os.path.join(dataset_data_path_prev, sama_path))
                             sama = (sama_path, sama_checksum)
                         if 'sections-manual-p.txt' in file:
-                            sections_path = os.path.join(concert, song, file)
-                            sections_checksum = md5(os.path.join(dataset_data_path, sections_path))
+                            sections_path = os.path.join('saraga1.5_carnatic', concert, song, file)
+                            sections_checksum = md5(os.path.join(dataset_data_path_prev, sections_path))
                             sections = (sections_path, sections_checksum)
-                        if 'phrase' in file:
-                            phrases_path = os.path.join(concert, song, file)
-                            phrases_checksum = md5(os.path.join(dataset_data_path, phrases_path))
+                        if 'mphrase' in file:
+                            phrases_path = os.path.join('saraga1.5_carnatic', concert, song, file)
+                            phrases_checksum = md5(os.path.join(dataset_data_path_prev, phrases_path))
                             phrases = (phrases_path, phrases_checksum)
                         if '.json' in file:
-                            metadata_path = os.path.join(concert, song, file)
-                            metadata_checksum = md5(os.path.join(dataset_data_path, metadata_path))
+                            metadata_path = os.path.join('saraga1.5_carnatic', concert, song, file)
+                            metadata_checksum = md5(os.path.join(dataset_data_path_prev, metadata_path))
                             metadata = (metadata_path, metadata_checksum)
 
                         saraga_index['tracks'][index] = {
