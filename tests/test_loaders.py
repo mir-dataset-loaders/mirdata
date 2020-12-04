@@ -208,30 +208,30 @@ def test_download(mocker, httpserver):
             clean_remote_dataset(dataset_name)
 
 
-# This is magically skipped by the the remote fixture `skip_local` in conftest.py
-# when tests are run with the --local flag
-def test_validate(skip_local):
-    for dataset_name in DATASETS:
-        if dataset_name not in DOWNLOAD_EXCEPTIONS:
-            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
-            dataset = mirdata.Dataset(dataset_name, data_home=data_home)
-            try:
-                dataset.validate()
-            except:
-                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-            try:
-                dataset.validate(verbose=False)
-            except:
-                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-            dataset_default = mirdata.Dataset(dataset_name, data_home=None)
-            try:
-                dataset_default.validate(verbose=False)
-            except:
-                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-            if dataset_name in REMOTE_DATASETS:
-                clean_remote_dataset(dataset_name)
+# # This is magically skipped by the the remote fixture `skip_local` in conftest.py
+# # when tests are run with the --local flag
+# def test_validate(skip_local):
+#     for dataset_name in DATASETS:
+#         if dataset_name not in DOWNLOAD_EXCEPTIONS:
+#             data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+#             dataset = mirdata.Dataset(dataset_name, data_home=data_home)
+#             try:
+#                 dataset.validate()
+#             except:
+#                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#
+#             try:
+#                 dataset.validate(verbose=False)
+#             except:
+#                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#
+#             dataset_default = mirdata.Dataset(dataset_name, data_home=None)
+#             try:
+#                 dataset_default.validate(verbose=False)
+#             except:
+#                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+#             if dataset_name in REMOTE_DATASETS:
+#                 clean_remote_dataset(dataset_name)
 
 
 def test_load_and_trackids(httpserver):
