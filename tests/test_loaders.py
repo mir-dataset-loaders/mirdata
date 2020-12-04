@@ -424,11 +424,15 @@ def test_download(mocker, httpserver):
 CUSTOM_TEST_MTRACKS = {}
 
 
-def test_multitracks():
+def test_multitracks(httpserver):
     data_home_dir = "tests/resources/mir_datasets"
 
     for dataset_name in DATASETS:
-        dataset = mirdata.Dataset(dataset_name)
+
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = mirdata.Dataset(dataset_name)
+        else:
+            dataset = create_remote_dataset(httpserver, dataset_name)
 
         # TODO this is currently an opt-in test. Make it an opt out test
         # once #265 is addressed
@@ -470,3 +474,5 @@ def test_multitracks():
         assert jam.validate(), "Jams validation failed for {}.MultiTrack({})".format(
             dataset_name, mtrack_id
         )
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
