@@ -126,19 +126,18 @@ def test_forward_compatibility():
                 track_params["data_home"].default == inspect._empty
             ), "{}.Track should no longer take default arguments".format(dataset_name)
 
+KNOWN_ISSUES = {}  # key is module, value is REMOTE key
+DOWNLOAD_EXCEPTIONS = ["maestro", "acousticbrainz_genre"]
+
 
 def test_cite():
     for dataset_name in DATASETS:
-        dataset = mirdata.Dataset(dataset_name)
-        text_trap = io.StringIO()
-        sys.stdout = text_trap
-        dataset.cite()
-        sys.stdout = sys.__stdout__
-
-
-KNOWN_ISSUES = {}  # key is module, value is REMOTE key
-DOWNLOAD_EXCEPTIONS = ["maestro"]
-
+        if dataset_name not in DOWNLOAD_EXCEPTIONS:
+            dataset = mirdata.Dataset(dataset_name)
+            text_trap = io.StringIO()
+            sys.stdout = text_trap
+            dataset.cite()
+            sys.stdout = sys.__stdout__
 
 # def test_download(mocker):
 #     for dataset_name in DATASETS:
@@ -196,8 +195,8 @@ DOWNLOAD_EXCEPTIONS = ["maestro"]
 #                 dataset.download()
 #             except:
 #                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-#
-#
+
+
 # # This is magically skipped by the the remote fixture `skip_local` in conftest.py
 # # when tests are run with the --local flag
 # def test_validate(skip_local):
