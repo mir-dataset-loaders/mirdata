@@ -98,33 +98,33 @@ def test_dataset_attributes(httpserver):
             clean_remote_dataset(dataset_name)
 
 
-# def test_forward_compatibility():
-#     for dataset_name in DATASETS:
-#         dataset_module = importlib.import_module(
-#             "mirdata.datasets.{}".format(dataset_name)
-#         )
-#         assert not hasattr(
-#             dataset_module, "validate"
-#         ), "{}: loaders no longer need validate methods".format(dataset_name)
-#         assert not hasattr(dataset_module, "download"), (
-#             "{}: loaders no longer need download methods. "
-#             + "If you want to specify a custom download function, call it _download"
-#         ).format(dataset_name)
-#         assert not hasattr(
-#             dataset_module, "track_ids"
-#         ), "{}: loaders no longer need track_ids methods".format(dataset_name)
-#         assert not hasattr(
-#             dataset_module, "load"
-#         ), "{}: loaders no longer need load methods".format(dataset_name)
-#         assert not hasattr(
-#             dataset_module, "DATASET_DIR"
-#         ), "{}: loaders no longer need to define DATASET_DIR".format(dataset_name)
-#
-#         if hasattr(dataset_module, "Track"):
-#             track_params = signature(dataset_module.Track).parameters
-#             assert (
-#                 track_params["data_home"].default == inspect._empty
-#             ), "{}.Track should no longer take default arguments".format(dataset_name)
+def test_forward_compatibility():
+    for dataset_name in DATASETS:
+        dataset_module = importlib.import_module(
+            "mirdata.datasets.{}".format(dataset_name)
+        )
+        assert not hasattr(
+            dataset_module, "validate"
+        ), "{}: loaders no longer need validate methods".format(dataset_name)
+        assert not hasattr(dataset_module, "download"), (
+            "{}: loaders no longer need download methods. "
+            + "If you want to specify a custom download function, call it _download"
+        ).format(dataset_name)
+        assert not hasattr(
+            dataset_module, "track_ids"
+        ), "{}: loaders no longer need track_ids methods".format(dataset_name)
+        assert not hasattr(
+            dataset_module, "load"
+        ), "{}: loaders no longer need load methods".format(dataset_name)
+        assert not hasattr(
+            dataset_module, "DATASET_DIR"
+        ), "{}: loaders no longer need to define DATASET_DIR".format(dataset_name)
+
+        if hasattr(dataset_module, "Track"):
+            track_params = signature(dataset_module.Track).parameters
+            assert (
+                track_params["data_home"].default == inspect._empty
+            ), "{}.Track should no longer take default arguments".format(dataset_name)
 #
 #
 # def test_cite():
