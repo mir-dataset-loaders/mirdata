@@ -234,25 +234,25 @@ def test_validate(skip_local):
 
 def test_load_and_trackids(httpserver):
     for dataset_name in DATASETS:
+        data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+        print("test 1")
         if dataset_name not in REMOTE_DATASETS:
-            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
             dataset = mirdata.Dataset(dataset_name, data_home=data_home)
             dataset_default = mirdata.Dataset(dataset_name, data_home=None)
         else:
-            data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
             dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
             dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
-
+        print("test 2")
         try:
             track_ids = dataset.track_ids
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
+        print("test 3")
         assert type(track_ids) is list, "{}.track_ids() should return a list".format(
             dataset_name
         )
         trackid_len = len(track_ids)
-
+        print("test 4")
         # if the dataset has tracks, test the loaders
         if dataset._track_object is not None:
 
