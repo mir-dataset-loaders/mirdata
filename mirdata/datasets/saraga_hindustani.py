@@ -67,7 +67,7 @@ def _load_metadata(metadata_path):
 
     with open(metadata_path) as f:
         metadata = json.load(f)
-        data_home = metadata_path.split('/' + metadata_path.split('/')[-3])[0]
+        data_home = metadata_path.split('/' + metadata_path.split('/')[-4])[0]
         metadata['data_home'] = data_home
 
         return metadata

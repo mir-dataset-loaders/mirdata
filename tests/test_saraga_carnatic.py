@@ -13,47 +13,47 @@ def test_track():
 
     expected_attributes = {
         'track_id': '116_Bhuvini_Dasudane',
-        'audio_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'audio_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                       'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                       'Bhuvini Dasudane/Bhuvini Dasudane.mp3.mp3',
-        'audio_ghatam_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'audio_ghatam_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                              'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                              'Bhuvini Dasudane/Bhuvini Dasudane.multitrack-ghatam.mp3',
-        'audio_mridangam_left_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'audio_mridangam_left_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                                      'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                                      'Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-left.mp3',
-        'audio_mridangam_right_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'audio_mridangam_right_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                                       'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                                       'Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-right.mp3',
-        'audio_violin_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'audio_violin_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                              'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                              'Bhuvini Dasudane/Bhuvini Dasudane.multitrack-violin.mp3',
         'audio_vocal_s_path': None,
-        'audio_vocal_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'audio_vocal_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                             'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                             'Bhuvini Dasudane/Bhuvini Dasudane.multitrack-vocal.mp3',
-        'ctonic_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'ctonic_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                        'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                        'Bhuvini Dasudane/Bhuvini Dasudane.ctonic.txt',
-        'pitch_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'pitch_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                       'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                       'Bhuvini Dasudane/Bhuvini Dasudane.pitch.txt',
-        'pitch_vocal_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'pitch_vocal_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                             'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                             'Bhuvini Dasudane/Bhuvini Dasudane.pitch-vocal.txt',
-        'tempo_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'tempo_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                       'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                       'Bhuvini Dasudane/Bhuvini Dasudane.tempo-manual.txt',
-        'sama_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'sama_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                      'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                      'Bhuvini Dasudane/Bhuvini Dasudane.sama-manual.txt',
-        'sections_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'sections_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                          'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                          'Bhuvini Dasudane/Bhuvini Dasudane.sections-manual-p.txt',
-        'phrases_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'phrases_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                         'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                         'Bhuvini Dasudane/Bhuvini Dasudane.mphrases-manual.txt',
-        'metadata_path': 'tests/resources/mir_datasets/saraga_carnatic/' +
+        'metadata_path': 'tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/' +
                          'Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/' +
                          'Bhuvini Dasudane/Bhuvini Dasudane.json',
         'raaga': [{'uuid': '42dd0ccb-f92a-4622-ae5d-a3be571b4939', 'name': 'Śrīranjani', 'common_name': 'shri ranjani'}],

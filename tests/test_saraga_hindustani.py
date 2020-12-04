@@ -15,21 +15,21 @@ def test_track():
     expected_attributes = {
         'track_id': '59_Bairagi',
         'title': 'Bairagi',
-        'audio_path': 'tests/resources/mir_datasets/saraga_hindustani/' +
+        'audio_path': 'tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/' +
                       'Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.mp3.mp3',
-        'ctonic_path': 'tests/resources/mir_datasets/saraga_hindustani/' +
+        'ctonic_path': 'tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/' +
                        'Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.ctonic.txt',
-        'pitch_path': 'tests/resources/mir_datasets/saraga_hindustani/' +
+        'pitch_path': 'tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/' +
                       'Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.pitch.txt',
-        'tempo_path': 'tests/resources/mir_datasets/saraga_hindustani/' +
+        'tempo_path': 'tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/' +
                       'Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.tempo-manual.txt',
-        'sama_path': 'tests/resources/mir_datasets/saraga_hindustani/' +
+        'sama_path': 'tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/' +
                      'Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.sama-manual.txt',
-        'sections_path': 'tests/resources/mir_datasets/saraga_hindustani/' +
+        'sections_path': 'tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/' +
                          'Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.sections-manual-p.txt',
-        'phrases_path': 'tests/resources/mir_datasets/saraga_hindustani/' +
+        'phrases_path': 'tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/' +
                         'Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.mphrases-manual.txt',
-        'metadata_path': 'tests/resources/mir_datasets/saraga_hindustani/' +
+        'metadata_path': 'tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/' +
                          'Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.json',
         'album_artists': [{
             'mbid': '653fa2f8-85f8-4829-871f-7c2506ea9b48', 'name': 'Ajoy Chakrabarty'
