@@ -240,6 +240,7 @@ def test_load_and_trackids(httpserver):
             dataset = mirdata.Dataset(dataset_name, data_home=data_home)
             dataset_default = mirdata.Dataset(dataset_name, data_home=None)
         else:
+            continue
             dataset = create_remote_dataset(httpserver, dataset_name, data_home=data_home)
             dataset_default = create_remote_dataset(httpserver, dataset_name, data_home=None)
         print("test 2")
