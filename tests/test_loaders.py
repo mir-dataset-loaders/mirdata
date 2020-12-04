@@ -125,21 +125,21 @@ def test_forward_compatibility():
             assert (
                 track_params["data_home"].default == inspect._empty
             ), "{}.Track should no longer take default arguments".format(dataset_name)
-#
-#
-# def test_cite():
-#     for dataset_name in DATASETS:
-#         dataset = mirdata.Dataset(dataset_name)
-#         text_trap = io.StringIO()
-#         sys.stdout = text_trap
-#         dataset.cite()
-#         sys.stdout = sys.__stdout__
-#
-#
-# KNOWN_ISSUES = {}  # key is module, value is REMOTE key
-# DOWNLOAD_EXCEPTIONS = ["maestro"]
-#
-#
+
+
+def test_cite():
+    for dataset_name in DATASETS:
+        dataset = mirdata.Dataset(dataset_name)
+        text_trap = io.StringIO()
+        sys.stdout = text_trap
+        dataset.cite()
+        sys.stdout = sys.__stdout__
+
+
+KNOWN_ISSUES = {}  # key is module, value is REMOTE key
+DOWNLOAD_EXCEPTIONS = ["maestro"]
+
+
 # def test_download(mocker):
 #     for dataset_name in DATASETS:
 #         print(dataset_name)
