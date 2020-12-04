@@ -100,8 +100,7 @@ click the link provided in the "Module" column.
 +--------------------+---------------------+---------------------+---------------------------+--------+
 | saraga_carnatic_   | Saraga Carnatic     | - audio: ✅         | - :ref:`tempo`            | 249    |
 |                    |                     | - multichannel: ✅  | - :ref:`phrases`          |        |
-|                    |                     | - annotations: ✅   | - :ref:`phrases`          |        |
-|                    |                     |                     | - :ref:`f0`               |        |
+|                    |                     | - annotations: ✅   | - :ref:`f0`               |        |
 |                    |                     |                     | - :ref:`f0` (vocal)       |        |
 |                    |                     |                     | - :ref:`sections`         |        |
 |                    |                     |                     | - :ref:`sections` (samas) |        |
