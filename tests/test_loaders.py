@@ -132,12 +132,11 @@ DOWNLOAD_EXCEPTIONS = ["maestro", "acousticbrainz_genre"]
 
 def test_cite():
     for dataset_name in DATASETS:
-        if dataset_name not in DOWNLOAD_EXCEPTIONS:
-            dataset = mirdata.Dataset(dataset_name)
-            text_trap = io.StringIO()
-            sys.stdout = text_trap
-            dataset.cite()
-            sys.stdout = sys.__stdout__
+        dataset = mirdata.Dataset(dataset_name)
+        text_trap = io.StringIO()
+        sys.stdout = text_trap
+        dataset.cite()
+        sys.stdout = sys.__stdout__
 
 # def test_download(mocker):
 #     for dataset_name in DATASETS:
