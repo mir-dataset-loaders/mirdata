@@ -406,12 +406,13 @@ def load_sama(sama_path):
         for line in reader.readlines():
             timestamps.append(float(line))
 
+        # Return None if sama file is empty
+        if not timestamps:
+            return None
+
     for i in np.arange(1, len(timestamps)):
         intervals.append([timestamps[i - 1], timestamps[i]])
         sama_cycles.append('sama cycle ' + str(i))
-
-    if not intervals:
-        return None
 
     return utils.SectionData(np.array(intervals), sama_cycles)
 
@@ -450,6 +451,7 @@ def load_sections(sections_path):
                     + str(line.split(',')[1])
                 )
 
+    # Return None if sections file is empty
     if not intervals:
         return None
 

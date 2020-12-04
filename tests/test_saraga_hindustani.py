@@ -177,6 +177,12 @@ def test_load_sama():
     assert parsed_sama.labels == ['sama cycle 1', 'sama cycle 2', 'sama cycle 3']
     assert saraga_hindustani.load_sama(None) is None
 
+    # Test empty sama
+    track = saraga_hindustani.Track('71_Bilaskhani_Todi', data_home=data_home)
+    sama_path = track.sama_path
+    parsed_empty_sama = saraga_hindustani.load_sama(sama_path)
+    assert parsed_empty_sama is None
+
 
 def test_load_sections():
     data_home = 'tests/resources/mir_datasets/saraga_hindustani'
@@ -200,6 +206,12 @@ def test_load_sections():
 
     assert saraga_hindustani.load_sections(None) is None
 
+    # Test empty sections
+    track = saraga_hindustani.Track('71_Bilaskhani_Todi', data_home=data_home)
+    sections_path = track.sections_path
+    parsed_empty_sections = saraga_hindustani.load_sections(sections_path)
+    assert parsed_empty_sections is None
+
 
 def test_load_phrases():
     data_home = 'tests/resources/mir_datasets/saraga_hindustani'
@@ -222,6 +234,12 @@ def test_load_phrases():
     )
     assert parsed_phrases.event == ['Pmr', 'PnS', 'rmP']
     assert saraga_hindustani.load_phrases(None) is None
+
+    # Test phrases with no information
+    track = saraga_hindustani.Track('71_Bilaskhani_Todi', data_home=data_home)
+    phrases_path = track.phrases_path
+    parsed_phrases_add = saraga_hindustani.load_phrases(phrases_path)
+    assert parsed_phrases_add.event == ['rg', 'No information']
 
 
 def test_load_tempo():
