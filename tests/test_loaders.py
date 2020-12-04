@@ -126,17 +126,24 @@ def test_forward_compatibility():
                 track_params["data_home"].default == inspect._empty
             ), "{}.Track should no longer take default arguments".format(dataset_name)
 
-KNOWN_ISSUES = {}  # key is module, value is REMOTE key
-DOWNLOAD_EXCEPTIONS = ["maestro", "acousticbrainz_genre"]
 
-
-def test_cite():
+def test_cite(httpserver):
     for dataset_name in DATASETS:
-        dataset = mirdata.Dataset(dataset_name)
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = mirdata.Dataset(dataset_name)
+        else:
+            dataset = create_remote_dataset(httpserver, dataset_name)
         text_trap = io.StringIO()
         sys.stdout = text_trap
         dataset.cite()
         sys.stdout = sys.__stdout__
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
+
+
+KNOWN_ISSUES = {}  # key is module, value is REMOTE key
+DOWNLOAD_EXCEPTIONS = ["maestro", "acousticbrainz_genre"]
+
 
 # def test_download(mocker):
 #     for dataset_name in DATASETS:
