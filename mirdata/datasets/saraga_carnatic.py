@@ -475,17 +475,13 @@ def load_phrases(phrases_path):
     events = []
     with open(phrases_path, 'r') as reader:
         for line in reader.readlines():
+            start_times.append(float(line.split('\t')[0]))
+            end_times.append(
+                float(line.split('\t')[0]) + float(line.split('\t')[2])
+            )
             if len(line.split('\t')) == 4:
-                start_times.append(float(line.split('\t')[0]))
-                end_times.append(
-                    float(line.split('\t')[0]) + float(line.split('\t')[2])
-                )
                 events.append(str(line.split('\t')[3].split('\n')[0]))
-            if len(line.split('\t')) == 3:
-                start_times.append(float(line.split('\t')[0]))
-                end_times.append(
-                    float(line.split('\t')[0]) + float(line.split('\t')[2])
-                )
+            else:
                 events.append('No information')
 
     if not start_times:
