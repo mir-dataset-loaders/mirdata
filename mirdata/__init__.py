@@ -8,6 +8,7 @@ DATASETS = [
     "beatport_key",
     "cante100",
     "dali",
+    "da_tacos",
     "giantsteps_key",
     "giantsteps_tempo",
     "groove_midi",
