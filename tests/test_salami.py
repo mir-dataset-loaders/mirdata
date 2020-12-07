@@ -2,7 +2,7 @@
 
 import numpy as np
 from mirdata.datasets import salami
-from mirdata import utils
+from mirdata import classes
 from tests.test_utils import run_track_tests
 
 
@@ -36,10 +36,10 @@ def test_track():
     }
 
     expected_property_types = {
-        "sections_annotator_1_uppercase": utils.SectionData,
-        "sections_annotator_1_lowercase": utils.SectionData,
-        "sections_annotator_2_uppercase": utils.SectionData,
-        "sections_annotator_2_lowercase": utils.SectionData,
+        "sections_annotator_1_uppercase": classes.SectionData,
+        "sections_annotator_1_lowercase": classes.SectionData,
+        "sections_annotator_2_uppercase": classes.SectionData,
+        "sections_annotator_2_lowercase": classes.SectionData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -81,8 +81,8 @@ def test_track():
     }
 
     # test that cached properties don't fail and have the expected type
-    assert type(track.sections_annotator_1_uppercase) is utils.SectionData
-    assert type(track.sections_annotator_1_lowercase) is utils.SectionData
+    assert type(track.sections_annotator_1_uppercase) is classes.SectionData
+    assert type(track.sections_annotator_1_lowercase) is classes.SectionData
     assert track.sections_annotator_2_uppercase is None
     assert track.sections_annotator_2_lowercase is None
 
@@ -106,8 +106,8 @@ def test_track():
     # test that cached properties don't fail and have the expected type
     assert track.sections_annotator_1_uppercase is None
     assert track.sections_annotator_1_lowercase is None
-    assert type(track.sections_annotator_2_uppercase) is utils.SectionData
-    assert type(track.sections_annotator_2_lowercase) is utils.SectionData
+    assert type(track.sections_annotator_2_uppercase) is classes.SectionData
+    assert type(track.sections_annotator_2_lowercase) is classes.SectionData
 
 
 def test_to_jams():
@@ -179,7 +179,7 @@ def test_load_sections():
     section_data = salami.load_sections(sections_path)
 
     # check types
-    assert type(section_data) == utils.SectionData
+    assert type(section_data) == classes.SectionData
     assert type(section_data.intervals) is np.ndarray
     assert type(section_data.labels) is list
 

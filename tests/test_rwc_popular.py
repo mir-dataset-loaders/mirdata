@@ -3,7 +3,7 @@
 import numpy as np
 
 from mirdata.datasets import rwc_popular
-from mirdata import utils
+from mirdata import classes
 from tests.test_utils import run_track_tests
 
 
@@ -38,10 +38,10 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": utils.BeatData,
-        "sections": utils.SectionData,
-        "chords": utils.ChordData,
-        "vocal_instrument_activity": utils.EventData,
+        "beats": classes.BeatData,
+        "sections": classes.SectionData,
+        "chords": classes.ChordData,
+        "vocal_instrument_activity": classes.EventData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -128,7 +128,7 @@ def test_load_chords():
     chord_data = rwc_popular.load_chords(chords_path)
 
     # check types
-    assert type(chord_data) is utils.ChordData
+    assert type(chord_data) is classes.ChordData
     assert type(chord_data.intervals) is np.ndarray
     assert type(chord_data.labels) is list
 
@@ -152,14 +152,13 @@ def test_load_voca_inst():
     vocinst_data = rwc_popular.load_voca_inst(vocinst_path)
 
     # check types
-    assert type(vocinst_data) is utils.EventData
-    assert type(vocinst_data.start_times) is np.ndarray
-    assert type(vocinst_data.end_times) is np.ndarray
-    assert type(vocinst_data.event) is np.ndarray
+    assert type(vocinst_data) is classes.EventData
+    assert type(vocinst_data.intervals) is np.ndarray
+    assert type(vocinst_data.event) is list
 
     # check values
     assert np.array_equal(
-        vocinst_data.start_times,
+        vocinst_data.intervals[:, 0],
         np.array(
             [
                 0.000,
@@ -174,7 +173,7 @@ def test_load_voca_inst():
         ),
     )
     assert np.array_equal(
-        vocinst_data.end_times,
+        vocinst_data.intervals[:, 1],
         np.array(
             [
                 10.293061224,
