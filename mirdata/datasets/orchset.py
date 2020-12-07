@@ -22,6 +22,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import classes
 
 BIBTEX = """@article{bosch2016evaluation,
     title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
@@ -291,5 +292,5 @@ def load_melody(melody_path):
             freqs.append(float(line[1]))
             confidence.append(0.0 if line[1] == "0" else 1.0)
 
-    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
+    melody_data = classes.F0Data(np.array(times), np.array(freqs), np.array(confidence))
     return melody_data

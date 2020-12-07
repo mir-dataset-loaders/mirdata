@@ -41,6 +41,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import classes
 
 
 BIBTEX = """@inproceedings{
@@ -206,7 +207,9 @@ def load_notes(midi_path, midi=None):
         intervals.append([note.start, note.end])
         pitches.append(librosa.midi_to_hz(note.pitch))
         confidence.append(note.velocity)
-    return utils.NoteData(np.array(intervals), np.array(pitches), np.array(confidence))
+    return classes.NoteData(
+        np.array(intervals), np.array(pitches), np.array(confidence)
+    )
 
 
 def load_audio(audio_path):

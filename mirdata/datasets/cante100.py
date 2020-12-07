@@ -48,6 +48,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import classes
 
 
 BIBTEX = """@dataset{nadine_kroher_2018_1322542,
@@ -344,7 +345,7 @@ def load_melody(f0_path):
     freqs = np.array(freqs)
     confidence = (freqs > 0).astype(float)
 
-    return utils.F0Data(times, freqs, confidence)
+    return classes.F0Data(times, freqs, confidence)
 
 
 def load_notes(notes_path):
@@ -371,7 +372,7 @@ def load_notes(notes_path):
         pitches.append((440 / 32) * (2 ** ((int(row[2]) - 9) / 12)))
         confidence.append(1.0)
 
-    return utils.NoteData(
+    return classes.NoteData(
         np.array(intervals, dtype='float'),
         np.array(pitches, dtype='float'),
         np.array(confidence, dtype='float'),

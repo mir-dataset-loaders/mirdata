@@ -24,6 +24,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import classes
 
 # this is the package, needed to load the annotations.
 # DALI-dataset is only installed if the user explicitly declares
@@ -248,11 +249,9 @@ def load_annotations_granularity(annotations_path, granularity):
         ends.append(round(annot["time"][1], 3))
         text.append(annot["text"])
     if granularity == "notes":
-        annotation = utils.NoteData(np.array([begs, ends]).T, np.array(notes), None)
+        annotation = classes.NoteData(np.array([begs, ends]).T, np.array(notes), None)
     else:
-        annotation = utils.LyricData(
-            np.array(begs), np.array(ends), np.array(text), None
-        )
+        annotation = classes.LyricData(np.array([begs, ends]).T, text, None)
     return annotation
 
 

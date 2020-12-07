@@ -21,11 +21,13 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import classes
 
 
 BIBTEX = """@inproceedings{chan2015vocal,
     title={Vocal activity informed singing voice separation with the iKala dataset},
-    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and Jang, Roger},
+    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and 
+    Jang, Roger},
     booktitle={2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
     pages={718--722},
     year={2015},
@@ -223,7 +225,7 @@ def load_f0(f0_path):
     f0_hz = librosa.midi_to_hz(f0_midi) * (f0_midi > 0)
     confidence = (f0_hz > 0).astype(float)
     times = (np.arange(len(f0_midi)) * TIME_STEP) + (TIME_STEP / 2.0)
-    f0_data = utils.F0Data(times, f0_hz, confidence)
+    f0_data = classes.F0Data(times, f0_hz, confidence)
     return f0_data
 
 
@@ -248,10 +250,7 @@ def load_lyrics(lyrics_path):
             else:
                 pronunciations.append(None)
 
-    lyrics_data = utils.LyricData(
-        np.array(start_times),
-        np.array(end_times),
-        np.array(lyrics),
-        np.array(pronunciations),
+    lyrics_data = classes.LyricData(
+        np.array([start_times, end_times]).T, lyrics, pronunciations,
     )
     return lyrics_data
