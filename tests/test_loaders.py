@@ -319,8 +319,8 @@ EXCEPTIONS = {
     },
     "saraga": {
         "load_tempo": {"iam_style": "carnatic"},
-        "load_sections": {"iam_style": "carnatic"}
-    }
+        "load_sections": {"iam_style": "carnatic"},
+    },
 }
 
 

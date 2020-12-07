@@ -5,7 +5,7 @@ import pretty_midi
 import numpy as np
 
 from mirdata.datasets import maestro
-from mirdata import utils, download_utils
+from mirdata import classes, download_utils
 from tests.test_utils import run_track_tests
 
 
@@ -30,7 +30,10 @@ def test_track():
         "split": "train",
     }
 
-    expected_property_types = {"notes": utils.NoteData, "midi": pretty_midi.PrettyMIDI}
+    expected_property_types = {
+        "notes": classes.NoteData,
+        "midi": pretty_midi.PrettyMIDI,
+    }
 
     assert track._track_paths == {
         "audio": [

@@ -4,7 +4,7 @@ import numpy as np
 import jams
 
 from mirdata.datasets import guitarset
-from mirdata import utils
+from mirdata import classes
 from tests.test_utils import run_track_tests
 
 TEST_DATA_HOME = "tests/resources/mir_datasets/guitarset"
@@ -35,23 +35,23 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": utils.BeatData,
-        "leadsheet_chords": utils.ChordData,
-        "inferred_chords": utils.ChordData,
-        "key_mode": utils.KeyData,
+        "beats": classes.BeatData,
+        "leadsheet_chords": classes.ChordData,
+        "inferred_chords": classes.ChordData,
+        "key_mode": classes.KeyData,
         "pitch_contours": dict,
         "notes": dict,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
-    assert type(track.pitch_contours["E"]) is utils.F0Data
-    assert type(track.notes["E"]) is utils.NoteData
+    assert type(track.pitch_contours["E"]) is classes.F0Data
+    assert type(track.notes["E"]) is classes.NoteData
 
 
 def test_load_beats():
-    assert np.allclose(TRACK.beats.beat_times, [0.50420168, 1.00840336, 1.51260504])
-    assert np.allclose(TRACK.beats.beat_positions, [2, 3, 4])
+    assert np.allclose(TRACK.beats.times, [0.50420168, 1.00840336, 1.51260504])
+    assert np.allclose(TRACK.beats.positions, np.array([2, 3, 4]))
 
 
 def test_load_chords():
@@ -65,8 +65,8 @@ def test_load_chords():
 
 
 def test_load_keys():
-    assert np.allclose(TRACK.key_mode.start_times, [0])
-    assert np.allclose(TRACK.key_mode.end_times, [2])
+    assert np.allclose(TRACK.key_mode.intervals[:, 0], [0])
+    assert np.allclose(TRACK.key_mode.intervals[:, 1], [2])
     assert TRACK.key_mode.keys == ["G:major"]
 
 
