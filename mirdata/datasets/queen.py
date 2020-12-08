@@ -47,7 +47,7 @@ DOWNLOAD_INFO = """
         and copy Queen folder to {}
 """
 
-DATA = utils.LargeData("beatles_index.json")
+DATA = utils.LargeData("queen_index.json")
 
 
 class Track(core.Track):
@@ -109,7 +109,6 @@ class Track(core.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            beat_data=[(self.beats, None)],
             section_data=[(self.sections, None)],
             chord_data=[(self.chords, None)],
             key_data=[(self.key, None)],

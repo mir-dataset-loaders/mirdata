@@ -1,0 +1,9 @@
+0.000	0.400		silence
+0.400	49.072		intro
+49.072	108.392		verse
+108.392	156.320		verse
+156.320	183.414		instrumental_solo
+183.414	248.621		section_y
+248.621	296.130		section_z
+296.130	354.920		outro
+354.920	358.293		silence
