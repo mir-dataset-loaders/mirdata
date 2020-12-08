@@ -28,6 +28,7 @@ click the link provided in the "Module" column.
 | beatles_          | | The Beatles       | - audio: ❌         | - :ref:`beats`            | 180    |
 |                   | | Dataset           | - annotations: ✅   | - :ref:`sections`         |        |
 |                   |                     |                     | - :ref:`key`              |        |
+|                   |                     |                     | - :ref:`chords`           |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | beatport_key_     |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
 |                   |                     | - annotations: ✅   |                           |        |
@@ -82,6 +83,10 @@ click the link provided in the "Module" column.
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | orchset_          | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
 |                   |                     | - annotations: ✅   |                           |        |
++-------------------+---------------------+---------------------+---------------------------+--------+
+| queen_            | | The Queen         | - audio: ❌         | - :ref:`chords`           | 51     |
+|                   | | Dataset           | - annotations: ✅   | - :ref:`sections`         |        |
+|                   |                     |                     | - :ref:`key`              |        |
 +-------------------+---------------------+---------------------+---------------------------+--------+
 | rwc_classical_    | RWC Classical       | - audio: ❌         | - :ref:`beats`            | 50     |
 |                   |                     | - annotations: ✅   | - :ref:`sections`         |        |
@@ -262,6 +267,7 @@ a track.
 .. _medleydb_pitch: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.medleydb_pitch
 .. _mridangam_stroke: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.mridangam_stroke
 .. _orchset: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.orchset
+.. _queen: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.queen
 .. _rwc_classical: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_classical
 .. _rwc_jazz: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_jazz
 .. _rwc_popular: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_popular

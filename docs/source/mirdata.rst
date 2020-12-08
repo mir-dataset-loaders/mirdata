@@ -132,6 +132,13 @@ orchset
    :members:
 
 
+Queen
+^^^^^^^
+
+.. automodule:: mirdata.datasets.queen
+   :members:
+
+
 rwc_classical
 ^^^^^^^^^^^^^
 
