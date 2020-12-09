@@ -402,7 +402,7 @@ def load_drum_events(midi_path, midi=None):
     for note in midi.instruments[0].notes:
         start_times.append(note.start)
         end_times.append(note.end)
-        events.append(DRUM_MAPPING[note.pitch]['Simplified'])
+        events.append(DRUM_MAPPING[note.pitch]['Roland'])
     return classes.EventData(np.array([start_times, end_times]).T, events)
 
 
