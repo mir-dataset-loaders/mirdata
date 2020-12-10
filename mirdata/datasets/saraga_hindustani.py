@@ -491,7 +491,7 @@ def load_phrases(phrases_path):
                 end_times.append(
                     float(line.split('\t')[0]) + float(line.split('\t')[2])
                 )
-                events.append('No information')
+                events.append(' ')
 
     if not start_times:
         return None

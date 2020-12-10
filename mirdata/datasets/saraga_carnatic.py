@@ -482,7 +482,7 @@ def load_phrases(phrases_path):
             if len(line.split('\t')) == 4:
                 events.append(str(line.split('\t')[3].split('\n')[0]))
             else:
-                events.append('No information')
+                events.append(' ')
 
     if not start_times:
         return None
