@@ -220,7 +220,7 @@ class Track(core.Track):
 
     @utils.cached_property
     def sama(self):
-        """SectionData: sama section annotations"""
+        """BeatData: sama section annotations"""
         return load_sama(self.sama_path)
 
     @utils.cached_property
@@ -242,8 +242,9 @@ class Track(core.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
+            beat_data=[(self.sama, 'sama')],
             f0_data=[(self.pitch, 'pitch'), (self.pitch_vocal, 'pitch_vocal')],
-            section_data=[(self.sama, 'sama'), (self.sections, 'sections')],
+            section_data=[(self.sections, 'sections')],
             event_data=[(self.phrases, 'phrases')],
             metadata={
                 'tempo': self.tempo,
@@ -400,21 +401,17 @@ def load_sama(sama_path):
     if not os.path.exists(sama_path):
         raise IOError("sama_path {} does not exist".format(sama_path))
 
-    timestamps = []
-    sama_cycles = []
-    intervals = []
+    beat_times = []
+    beat_positions = []
     with open(sama_path, 'r') as reader:
         for line in reader.readlines():
-            timestamps.append(float(line))
+            beat_times.append(float(line))
+            beat_positions.append(1)
 
-    for i in np.arange(1, len(timestamps)):
-        intervals.append([timestamps[i - 1], timestamps[i]])
-        sama_cycles.append('sama cycle ' + str(i))
-
-    if not intervals:
+    if not beat_times:
         return None
 
-    return utils.SectionData(np.array(intervals), sama_cycles)
+    return utils.BeatData(np.array(beat_times), np.array(beat_positions))
 
 
 def load_sections(sections_path):

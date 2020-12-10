@@ -90,7 +90,7 @@ def test_track():
         'phrases': utils.EventData,
         'pitch': utils.F0Data,
         'pitch_vocal': utils.F0Data,
-        'sama': utils.SectionData,
+        'sama': utils.BeatData,
         'sections': utils.SectionData,
         'tonic': float,
     }
@@ -173,15 +173,15 @@ def test_to_jams():
     }
 
     # Sama
-    samas = jam.search(namespace='segment_open')[0]['data']
-    assert len(samas) == 2
-    assert [sama.time for sama in samas] == [4.894, 10.229]
-    assert [sama.duration for sama in samas] == [5.334999999999999, 5.495000000000001]
-    assert [sama.value for sama in samas] == ['sama cycle 1', 'sama cycle 2']
-    assert [sama.confidence for sama in samas] == [None, None]
+    samas = jam.search(namespace='beat')[0]['data']
+    assert len(samas) == 3
+    assert [sama.time for sama in samas] == [4.894, 10.229, 15.724]
+    assert [sama.duration for sama in samas] == [0.0, 0.0, 0.0]
+    assert [sama.value for sama in samas] == [1, 1, 1]
+    assert [sama.confidence for sama in samas] == [None, None, None]
 
     # Sections
-    sections = jam.search(namespace='segment_open')[1]['data']
+    sections = jam.search(namespace='segment_open')[0]['data']
     assert [section.time for section in sections] == [
         0.065306122,
         85.35510204,
@@ -336,18 +336,17 @@ def test_load_sama():
     parsed_sama = saraga_carnatic.load_sama(sama_path)
 
     # Check types
-    assert type(parsed_sama) == utils.SectionData
-    assert type(parsed_sama.intervals) is np.ndarray
-    assert type(parsed_sama.labels) is list
+    assert type(parsed_sama) == utils.BeatData
+    assert type(parsed_sama.beat_times) is np.ndarray
+    assert type(parsed_sama.beat_positions) is np.ndarray
 
     # Check values
     assert np.array_equal(
-        parsed_sama.intervals[:, 0], np.array([4.894, 10.229])
+        parsed_sama.beat_times, np.array([4.894, 10.229, 15.724])
     )
     assert np.array_equal(
-        parsed_sama.intervals[:, 1], np.array([10.229, 15.724])
+        parsed_sama.beat_positions, np.array([1, 1, 1])
     )
-    assert parsed_sama.labels == ['sama cycle 1', 'sama cycle 2']
     assert saraga_carnatic.load_sama(None) is None
 
 

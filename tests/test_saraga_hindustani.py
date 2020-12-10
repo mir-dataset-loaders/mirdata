@@ -65,7 +65,7 @@ def test_track():
         'tempo': dict,
         'phrases': utils.EventData,
         'pitch': utils.F0Data,
-        'sama': utils.SectionData,
+        'sama': utils.BeatData,
         'sections': utils.SectionData,
         'tonic': float,
     }
@@ -100,7 +100,7 @@ def test_to_jams():
     }
 
     # Sections
-    sections = jam.search(namespace='segment_open')[1]['data']
+    sections = jam.search(namespace='segment_open')[0]['data']
     assert [section.time for section in sections] == [
         3.298,
         59.49,
@@ -163,18 +163,17 @@ def test_load_sama():
     parsed_sama = saraga_hindustani.load_sama(sama_path)
 
     # Check types
-    assert type(parsed_sama) == utils.SectionData
-    assert type(parsed_sama.intervals) is np.ndarray
-    assert type(parsed_sama.labels) is list
+    assert type(parsed_sama) == utils.BeatData
+    assert type(parsed_sama.beat_times) is np.ndarray
+    assert type(parsed_sama.beat_positions) is np.ndarray
 
     # Check values
     assert np.array_equal(
-        parsed_sama.intervals[:, 0], np.array([68.385, 123.804, 179.069])
+        parsed_sama.beat_times, np.array([68.385, 123.804, 179.069, 234.339])
     )
     assert np.array_equal(
-        parsed_sama.intervals[:, 1], np.array([123.804, 179.069, 234.339])
+        parsed_sama.beat_positions, np.array([1, 1, 1, 1])
     )
-    assert parsed_sama.labels == ['sama cycle 1', 'sama cycle 2', 'sama cycle 3']
     assert saraga_hindustani.load_sama(None) is None
 
     # Test empty sama
