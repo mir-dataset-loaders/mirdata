@@ -195,7 +195,7 @@ def test_download_zip_file(mocker, mock_file, mock_unzip):
     mock_file.return_value = "foo"
     download_utils.download_zip_file("a", "b", True)
 
-    mock_file.assert_called_once_with("a", "b", True)
+    mock_file.assert_called_once_with("a", "b", True, True)
     mock_unzip.assert_called_once_with("foo", cleanup=True)
     if os.path.exists('a'):
         shutil.rmtree('a')
@@ -205,7 +205,7 @@ def test_download_tar_file(mocker, mock_file, mock_untar):
     mock_file.return_value = "foo"
     download_utils.download_tar_file("a", "b", True)
 
-    mock_file.assert_called_once_with("a", "b", True)
+    mock_file.assert_called_once_with("a", "b", True, True)
     mock_untar.assert_called_once_with("foo", cleanup=True)
     if os.path.exists('a'):
         shutil.rmtree('a')
