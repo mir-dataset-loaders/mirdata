@@ -2,8 +2,8 @@
 
 import numpy as np
 
-from mirdata.datasets import queen
 from mirdata import utils
+from mirdata.datasets import queen
 from tests.test_utils import run_track_tests
 
 

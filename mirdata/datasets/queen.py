@@ -180,7 +180,7 @@ def load_chords(chords_path):
             end_times.append(float(line[1]))
             chords.append(line[2])
 
-    chord_data = utils.ChordData(np.array([start_times, end_times]).T, chords)
+    chord_data = utils.ChordData(np.array([start_times, end_times]).astype(np.float).T, chords)
 
     return chord_data
 
@@ -210,7 +210,7 @@ def load_key(keys_path):
                 end_times.append(float(line[1]))
                 keys.append(line[3])
 
-    key_data = utils.KeyData(np.array(start_times), np.array(end_times), np.array(keys))
+    key_data = utils.KeyData(np.array(start_times).astype(np.float), np.array(end_times).astype(np.float), np.array(keys))
 
     return key_data
 
@@ -239,7 +239,7 @@ def load_sections(sections_path):
             end_times.append(float(line[1]))
             sections.append(line[3])
 
-    section_data = utils.SectionData(np.array([start_times, end_times]).T, sections)
+    section_data = utils.SectionData(np.array([start_times, end_times]).astype(np.float).T, sections)
 
     return section_data
 
