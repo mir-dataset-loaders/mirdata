@@ -85,7 +85,6 @@ class Track(core.Track):
         track_id (str): track id
 
     """
-
     def __init__(self, track_id, data_home):
         if track_id not in DATA.index['tracks']:
             raise ValueError("{} is not a valid track ID in Queen".format(track_id))
