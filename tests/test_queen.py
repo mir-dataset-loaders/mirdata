@@ -9,16 +9,16 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "0"
-    data_home = "tests/resources/mir_datasets/Queen"
+    data_home = "tests/resources/mir_datasets/queen"
     track = queen.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/Queen/audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
-        "chords_path": "tests/resources/mir_datasets/Queen/"
+        "audio_path": "tests/resources/mir_datasets/queen/audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
+        "chords_path": "tests/resources/mir_datasets/queen/"
                        "annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
-        "keys_path": "tests/resources/mir_datasets/Queen/"
+        "keys_path": "tests/resources/mir_datasets/queen/"
                      + "annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
-        "sections_path": "tests/resources/mir_datasets/Queen/"
+        "sections_path": "tests/resources/mir_datasets/queen/"
                          + "annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
         "title": "01 Bohemian Rhapsody",
         "track_id": "0",
@@ -40,7 +40,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/Queen"
+    data_home = "tests/resources/mir_datasets/queen"
     track = queen.Track("0", data_home=data_home)
     jam = track.to_jams()
     segments = jam.search(namespace="segment")[0]["data"]
@@ -194,7 +194,7 @@ def test_to_jams():
 
 
 def test_load_chords():
-    chords_path = "tests/resources/mir_datasets/Queen/annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
+    chords_path = "tests/resources/mir_datasets/queen/annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
     chord_data = queen.load_chords(chords_path)
 
     assert type(chord_data) == utils.ChordData
@@ -315,7 +315,7 @@ def test_load_chords():
 
 def test_load_key():
     key_path = (
-        "tests/resources/mir_datasets/Queen/annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
+        "tests/resources/mir_datasets/queen/annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
     )
     key_data = queen.load_key(key_path)
 
@@ -331,7 +331,7 @@ def test_load_key():
 
 def test_load_sections():
     sections_path = (
-        "tests/resources/mir_datasets/Queen/annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
+        "tests/resources/mir_datasets/queen/annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
     )
     section_data = queen.load_sections(sections_path)
 
