@@ -1,4 +1,4 @@
-.. _datasets:
+    .. _datasets:
 
 ⭐ Table of supported datasets ⭐
 =================================
@@ -22,101 +22,94 @@ click the link provided in the "Module" column.
 * ❌ : Not available
 
 
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| Module             | Name                | Downloadable?       | Annotation Types                    | Tracks |
-+====================+=====================+=====================+=====================================+========+
-| beatles_           | | The Beatles       | - audio: ❌         | - :ref:`beats`                      | 180    |
-|                    | | Dataset           | - annotations: ✅   | - :ref:`sections`                   |        |
-|                    |                     |                     | - :ref:`key`                        |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| beatport_key_      |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`                 | 1486   |
-|                    |                     | - annotations: ✅   |                                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| cante100_          | cante100            | - audio: 🔑         | - :ref:`F0`                         | 100    |
-|                    |                     | - annotations: ✅   | - :ref:`notes`                      |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| dali_              | DALI                | - audio: 📺         | - :ref:`lyrics`                     | 5358   |
-|                    |                     | - annotations: ✅   | - Vocal :ref:`notes`                |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| groove_midi_       | | Groove MIDI       | - audio: ✅         | - :ref:`beats`                      | 1150   |
-|                    | | Dataset           | - midi: ✅          | - :ref:`tempo`                      |        |
-|                    |                     |                     | - :ref:`drums`                      |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| gtzan_genre_       | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`                      | 1000   |
-|                    |                     | - annotations: ✅   |                                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| giantsteps_tempo_  | | Giantsteps EDM    | - audio: ❌         | - :ref:`genre`                      | 664    |
-|                    | | tempo Dataset     | - annotations: ✅   | - :ref:`tempo`                      |        |
-|                    |                     |                     |                                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| giantsteps_key_    | Giantsteps EDM key  | - audio: ✅         | - global :ref:`key`                 | 500    |
-|                    |                     | - annotations: ✅   |                                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| guitarset_         | GuitarSet           | - audio: ✅         | - :ref:`beats`                      | 360    |
-|                    |                     | - annotations: ✅   | - :ref:`chords`                     |        |
-|                    |                     |                     | - :ref:`key`                        |        |
-|                    |                     |                     | - :ref:`notes`                      |        |
-|                    |                     |                     | - :ref:`f0`                         |        |
-|                    |                     |                     | - :ref:`tempo`                      |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| ikala_             | iKala               | - audio: ❌         | - Vocal :ref:`F0`                   | 252    |
-|                    |                     | - annotations: ❌   | - :ref:`lyrics`                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| irmas_             | IRMAS               | - audio: ✅         | - :ref:`instruments`                | 9579   |
-|                    |                     | - annotations: ✅   | - :ref:`genre`                      |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| maestro_           | MAESTRO             | - audio: ✅         | - Piano :ref:`notes`                | 1282   |
-|                    |                     | - annotations: ✅   |                                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| medley_solos_db_   | Medley-solos-DB     | - audio: ✅         | - :ref:`instruments`                | 21571  |
-|                    |                     | - annotations: ✅   |                                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| medleydb_melody_   | | MedleyDB          | - audio: 🔑         | - :ref:`melody` :ref:`f0`           | 108    |
-|                    | | Melody Subset     | - annotations: ✅   |                                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| medleydb_pitch_    | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`                         | 103    |
-|                    | | Tracking Subset   | - annotations: ✅   | - :ref:`instruments`                |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| mridangam_stroke_  | Mridangam Stroke    | - audio: ✅         | - :ref:`stroke-name`                | 6977   |
-|                    |                     | - annotations: ✅   | - :ref:`tonic`                      |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| orchset_           | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0`           | 64     |
-|                    |                     | - annotations: ✅   |                                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| rwc_classical_     | RWC Classical       | - audio: ❌         | - :ref:`beats`                      | 50     |
-|                    |                     | - annotations: ✅   | - :ref:`sections`                   |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| rwc_jazz_          | RWC Jazz            | - audio: ❌         | - :ref:`beats`                      | 50     |
-|                    |                     | - annotations: ✅   | - :ref:`sections`                   |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| rwc_popular_       | RWC Pop             | - audio: ❌         | - :ref:`beats`                      | 100    |
-|                    |                     | - annotations: ✅   | - :ref:`sections`                   |        |
-|                    |                     |                     | - :ref:`vocal-activity`             |        |
-|                    |                     |                     | - :ref:`chords`                     |        |
-|                    |                     |                     | - :ref:`tempo`                      |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| salami_            | Salami              | - audio: ❌         | - :ref:`sections`                   | 1359   |
-|                    |                     | - annotations: ✅   |                                     |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| saraga_carnatic_   | Saraga Carnatic     | - audio: ✅         | - :ref:`tempo`                      | 249    |
-|                    |                     | - multichannel: ✅  | - :ref:`phrases`                    |        |
-|                    |                     | - annotations: ✅   | - :ref:`f0`                         |        |
-|                    |                     |                     | - :ref:`f0` (vocal)                 |        |
-|                    |                     |                     | - :ref:`sections` (piece structure) |        |
-|                    |                     |                     | - :ref:`sections` (rhythmic, samas) |        |
-|                    |                     |                     | - :ref:`tonic`                      |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| saraga_hindustani_ | Saraga Hindustani   | - audio: ✅         | - :ref:`tempo`                      | 108    |
-|                    |                     | - annotations: ✅   | - :ref:`phrases`                    |        |
-|                    |                     |                     | - :ref:`f0`                         |        |
-|                    |                     |                     | - :ref:`sections` (piece structure) |        |
-|                    |                     |                     | - :ref:`sections` (rhythmic, samas) |        |
-|                    |                     |                     | - :ref:`tonic`                      |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
-| tinysol_           | TinySOL             | - audio: ✅         | - :ref:`instruments`                | 2913   |
-|                    |                     | - annotations: ✅   | - :ref:`technique`                  |        |
-|                    |                     |                     | - :ref:`notes`                      |        |
-+--------------------+---------------------+---------------------+-------------------------------------+--------+
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| Module                | Name                | Downloadable?       | Annotation Types          | Tracks |
++=======================+=====================+=====================+===========================+========+
+| acousticbrainz_genre_ | AcousticBrainz      | - audio: ❌         | - :ref:`genre`            | >4mill |
+|                       | Genre               | - annotations: ✅   |                           |        |
+|                       |                     | - features: ✅      |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| beatport_key_         |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
+|                       |                     | - annotations: ✅   |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| cante100_             | cante100            | - audio: 🔑         | - :ref:`F0`               | 100    |
+|                       |                     | - annotations: ✅   | - :ref:`notes`            |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| dali_                 | DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
+|                       |                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| groove_midi_          | | Groove MIDI       | - audio: ✅         | - :ref:`beats`            | 1150   |
+|                       | | Dataset           | - midi: ✅          | - :ref:`tempo`            |        |
+|                       |                     |                     | - :ref:`drums`            |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| gtzan_genre_          | Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
+|                       |                     | - annotations: ✅   |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| giantsteps_tempo_     | | Giantsteps EDM    | - audio: ❌         | - :ref:`genre`            | 664    |
+|                       | | tempo Dataset     | - annotations: ✅   | - :ref:`tempo`            |        |
+|                       |                     |                     |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| giantsteps_key_       | Giantsteps EDM key  | - audio: ✅         | - global :ref:`key`       | 500    |
+|                       |                     | - annotations: ✅   |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| guitarset_            | GuitarSet           | - audio: ✅         | - :ref:`beats`            | 360    |
+|                       |                     | - annotations: ✅   | - :ref:`chords`           |        |
+|                       |                     |                     | - :ref:`key`              |        |
+|                       |                     |                     | - :ref:`notes`            |        |
+|                       |                     |                     | - :ref:`f0`               |        |
+|                       |                     |                     | - :ref:`tempo`            |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| ikala_                | iKala               | - audio: ❌         | - Vocal :ref:`F0`         | 252    |
+|                       |                     | - annotations: ❌   | - :ref:`lyrics`           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| irmas_                | IRMAS               | - audio: ✅         | - :ref:`instruments`      | 9579   |
+|                       |                     | - annotations: ✅   | - :ref:`genre`            |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| maestro_              | MAESTRO             | - audio: ✅         | - Piano :ref:`notes`      | 1282   |
+|                       |                     | - annotations: ✅   |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| medley_solos_db_      | Medley-solos-DB     | - audio: ✅         | - :ref:`instruments`      | 21571  |
+|                       |                     | - annotations: ✅   |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| medleydb_melody_      | | MedleyDB          | - audio: 🔑         | - :ref:`melody` :ref:`f0` | 108    |
+|                       | | Melody Subset     | - annotations: ✅   |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| medleydb_pitch_       | | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
+|                       | | Tracking Subset   | - annotations: ✅   | - :ref:`instruments`      |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| mridangam_stroke_     | Mridangam Stroke    | - audio: ✅         | - :ref:`stroke-name`      | 6977   |
+|                       |                     | - annotations: ✅   | - :ref:`tonic`            |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| orchset_              | Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
+|                       |                     | - annotations: ✅   |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| rwc_classical_        | RWC Classical       | - audio: ❌         | - :ref:`beats`            | 50     |
+|                       |                     | - annotations: ✅   | - :ref:`sections`         |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| rwc_jazz_             | RWC Jazz            | - audio: ❌         | - :ref:`beats`            | 50     |
+|                       |                     | - annotations: ✅   | - :ref:`sections`         |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| rwc_popular_          | RWC Pop             | - audio: ❌         | - :ref:`beats`            | 100    |
+|                       |                     | - annotations: ✅   | - :ref:`sections`         |        |
+|                       |                     |                     | - :ref:`vocal-activity`   |        |
+|                       |                     |                     | - :ref:`chords`           |        |
+|                       |                     |                     | - :ref:`tempo`            |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| salami_               | Salami              | - audio: ❌         | - :ref:`sections`         | 1359   |
+|                       |                     | - annotations: ✅   |                           |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| saraga_               | Saraga              | - audio: ✅         | - :ref:`tempo`            | 305    |
+|                       |                     | - annotations: ✅   | - :ref:`phrases`          |        |
+|                       |                     |                     | - :ref:`f0`               |        |
+|                       |                     |                     | - :ref:`f0` (vocal)       |        |
+|                       |                     |                     | - :ref:`sections` (samas) |        |
+|                       |                     |                     | - :ref:`sections`         |        |
+|                       |                     |                     | - :ref:`tonic`            |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| tinysol_              | TinySOL             | - audio: ✅         | - :ref:`instruments`      | 2913   |
+|                       |                     | - annotations: ✅   | - :ref:`technique`        |        |
+|                       |                     |                     | - :ref:`notes`            |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
 
 
 Annotation Type Descriptions
@@ -252,6 +245,7 @@ a track.
 
 
 .. _article: https://link.springer.com/article/10.1007/s10844-013-0250-y
+.. _acousticbrainz_genre: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.acousticbrainz_genre
 .. _beatles: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatles
 .. _cante100: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.cante100
 .. _beatport_key: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.beatport_key
@@ -276,6 +270,7 @@ a track.
 .. _saraga_carnatic: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga_carnatic
 .. _saraga_hindustani: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga_hindustani
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
+
 
 
 
