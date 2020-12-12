@@ -274,7 +274,7 @@ a track.
 .. _saraga_carnatic: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga_carnatic
 .. _saraga_hindustani: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga_hindustani
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
-.. _classicalDB: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tonality_classicaldb
+.. _tonality_classicalDB: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tonality_classicaldb
 
 
 
