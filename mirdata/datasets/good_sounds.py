@@ -146,7 +146,7 @@ class Track(core.Track):
         return take_info
 
     @utils.cached_property
-    def get_rating_info(self):
+    def get_ratings_info(self):
         """dict: A pack is a group of sounds from the same recording session. The audio files are organised in the
         *sound_files* directory in subfolders with the pack name to which they belong."""
         sound_id = str(DATA.index["takes"][self.track_id]["sound_id"])
@@ -167,7 +167,7 @@ class Track(core.Track):
             metadata={
                 "sound": self.get_sound_info,
                 "take": self.get_take_info,
-                "rating": self.get_rating_info,
+                "ratings": self.get_ratings_info,
                 "pack": self.get_pack_info,
             }
         )
