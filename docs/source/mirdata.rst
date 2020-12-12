@@ -187,6 +187,13 @@ tinysol
    :members:
 
 
+tonality_classicaldb
+^^^^^^^
+
+.. automodule:: mirdata.datasets.tonality_classicaldb
+   :members:
+
+
 Utilities
 ----------
 

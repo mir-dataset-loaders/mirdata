@@ -64,6 +64,7 @@ See the Examples section below for more details, or the [documentation](https://
 * [Saraga Carnatic](https://mtg.github.io/saraga/)
 * [Saraga Hindustani](https://mtg.github.io/saraga/)
 * [TinySOL](https://www.orch-idea.org/)
+* [Tonality classicalDB](https://zenodo.org/record/4283868#.X7t9VS3TphE)
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).
 
