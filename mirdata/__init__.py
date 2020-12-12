@@ -9,6 +9,7 @@ DATASETS = [
     "dali",
     "giantsteps_key",
     "giantsteps_tempo",
+    "good_sounds",
     "groove_midi",
     "gtzan_genre",
     "guitarset",
