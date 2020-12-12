@@ -25,8 +25,9 @@ click the link provided in the "Module" column.
 +-----------------------+---------------------+---------------------+---------------------------+--------+
 | Module                | Name                | Downloadable?       | Annotation Types          | Tracks |
 +=======================+=====================+=====================+===========================+========+
-| acousticbrainz_genre_ | AcousticBrainz      | - annotations: ✅   | - :ref:`genre`            | >4mill |
-|                       | Genre               | - features: ✅      |                           |        |
+| acousticbrainz_genre_ | AcousticBrainz      | - audio: ❌         | - :ref:`genre`            | >4mill |
+|                       | Genre               | - annotations: ✅   |                           |        |
+|                       |                     | - features: ✅      |                           |        |
 +-----------------------+---------------------+---------------------+---------------------------+--------+
 | beatport_key_         |  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
 |                       |                     | - annotations: ✅   |                           |        |
