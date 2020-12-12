@@ -85,19 +85,24 @@ def mock_check_index(mocker):
     return mocker.patch.object(utils, "check_index")
 
 
-def test_remote_index():
+def test_remote_index(httpserver):
+    httpserver.serve_content(
+        open("tests/resources/download/acousticbrainz_genre_dataset_little_test.json", "rb").read()
+    )
     REMOTE_INDEX = {
         "remote_index": download_utils.RemoteFileMetadata(
             filename="acousticbrainz_genre_dataset_little_test.json",
-            url="https://zenodo.org/record/4274551/files/acousticbrainz_genre_dataset_little_test.json?download=1",
-            checksum="7f256c49438022ab493c88f5a1b43e88",  # the md5 checksum
+            url=httpserver.url,
+            checksum="50cf34e2e40e3df4c1cd582d08fa4506",  # the md5 checksum
             destination_dir=".",  # relative path for where to unzip the data, or None
-        ),
+        )
     }
     DATA = LargeData("acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX)
-    with open("tests/indexes/acousticbrainz_genre_dataset_little_test.json") as f:
-        little_index = json.load(f)
-    assert DATA.index == little_index['tracks']
+    ind = DATA.index
+    assert len(ind["tracks"]) == 16
+    os.remove("mirdata/datasets/indexes/acousticbrainz_genre_dataset_little_test.json")
+
+
 
 
 def test_md5(mocker):
