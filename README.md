@@ -39,6 +39,7 @@ See the Examples section below for more details, or the [documentation](https://
 
 ### Currently supported datasets
 
+* [AcousticBrainz genre](https://zenodo.org/record/2553414#.X8jTgulKhhE)
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [Beatport EDM key](https://zenodo.org/record/1101082/export/xd#.X4NCfC3FQUE)
 * [cante100](http://www.cofla-project.com/?page_id=529&lang=es)

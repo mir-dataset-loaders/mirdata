@@ -13,6 +13,12 @@ API documentation
 Datasets
 --------
 
+ab_genre
+^^^^^^^
+
+.. automodule:: mirdata.datasets.acousticbrainz_genre
+   :members:
+
 beatles
 ^^^^^^^
 
