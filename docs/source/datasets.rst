@@ -266,7 +266,8 @@ a track.
 .. _rwc_jazz: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_jazz
 .. _rwc_popular: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.rwc_popular
 .. _salami: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.salami
-.. _saraga: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga
+.. _saraga_carnatic: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga_carnatic
+.. _saraga_hindustani: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga_hindustani
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
 
 
