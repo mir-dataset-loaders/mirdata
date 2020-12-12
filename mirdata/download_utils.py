@@ -92,7 +92,7 @@ class DownloadProgressBar(tqdm):
         self.update(b * bsize - self.n)
 
 
-def download_from_remote(remote, save_dir, force_overwrite=False):
+def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True):
     """Download a remote dataset into path
     Fetch a dataset pointed by remote's url, save into path using remote's
     filename and ensure its integrity based on the MD5 Checksum of the
@@ -107,6 +107,8 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
         force_overwrite  (bool):
             If True, overwrite existing file with the downloaded file.
             If False, does not overwrite, but checks that checksum is consistent.
+        clean_up (bool):
+            If True, overwrite existing file if the checksum can not be verified.
 
     Returns:
         file_path (str): Full path of the created file.
@@ -120,7 +122,8 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
         os.makedirs(download_dir)
 
     download_path = os.path.join(download_dir, remote.filename)
-    if not os.path.exists(download_path) or force_overwrite:
+    if not os.path.exists(download_path) or force_overwrite \
+            or (clean_up and os.path.exists(download_path) and remote.checksum != md5(download_path)):
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
             unit='B', unit_scale=True, unit_divisor=1024, miniters=1
@@ -168,7 +171,7 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
         cleanup (bool):
             If True, remove zipfile after unziping. Default=False
     """
-    zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite)
+    zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite, cleanup)
     unzip(zip_download_path, cleanup=cleanup)
 
 
@@ -222,7 +225,7 @@ def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=True):
         force_overwrite (bool): If True, overwrites existing files
         cleanup (bool): If True, remove tarfile after untarring. Default=False
     """
-    tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite)
+    tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite, cleanup)
     untar(tar_download_path, cleanup=cleanup)
 
 
