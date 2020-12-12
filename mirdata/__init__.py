@@ -28,6 +28,7 @@ DATASETS = [
     "saraga_carnatic",
     "saraga_hindustani",
     "tinysol",
+    "tonality_classicalDB",
 ]
 
 from .core import Dataset

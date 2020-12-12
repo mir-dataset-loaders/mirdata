@@ -22,6 +22,7 @@ click the link provided in the "Module" column.
 * ❌ : Not available
 
 
+
 +-----------------------+---------------------+---------------------+---------------------------+--------+
 | Module                | Name                | Downloadable?       | Annotation Types          | Tracks |
 +=======================+=====================+=====================+===========================+========+
@@ -109,6 +110,9 @@ click the link provided in the "Module" column.
 | tinysol_              | TinySOL             | - audio: ✅         | - :ref:`instruments`      | 2913   |
 |                       |                     | - annotations: ✅   | - :ref:`technique`        |        |
 |                       |                     |                     | - :ref:`notes`            |        |
++-----------------------+---------------------+---------------------+---------------------------+--------+
+| tonality_classicalDB_ |  Tonality           | - audio: ❌         | - global :ref:`key`       | 881    |
+|                       |  ClassicalDB        | - annotations: ✅   |                           |        |
 +-----------------------+---------------------+---------------------+---------------------------+--------+
 
 
@@ -270,6 +274,7 @@ a track.
 .. _saraga_carnatic: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga_carnatic
 .. _saraga_hindustani: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.saraga_hindustani
 .. _tinysol: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tinysol
+.. _tonality_classicalDB: https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.tonality_classicaldb
 
 
 
