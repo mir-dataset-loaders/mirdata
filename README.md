@@ -39,6 +39,7 @@ See the Examples section below for more details, or the [documentation](https://
 
 ### Currently supported datasets
 
+* [AcousticBrainz genre](https://zenodo.org/record/2553414#.X8jTgulKhhE)
 * [Beatles](http://isophonics.net/content/reference-annotations-beatles)
 * [Beatport EDM key](https://zenodo.org/record/1101082/export/xd#.X4NCfC3FQUE)
 * [cante100](http://www.cofla-project.com/?page_id=529&lang=es)
@@ -60,7 +61,8 @@ See the Examples section below for more details, or the [documentation](https://
 * [RWC Jazz](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html)
 * [RWC Popular](https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html)
 * [Salami](https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections)
-* [Saraga](https://mtg.github.io/saraga/)
+* [Saraga Carnatic](https://mtg.github.io/saraga/)
+* [Saraga Hindustani](https://mtg.github.io/saraga/)
 * [TinySOL](https://www.orch-idea.org/)
 
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).
