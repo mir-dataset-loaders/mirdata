@@ -22,12 +22,12 @@ RemoteFileMetadata = namedtuple(
 
 
 def downloader(
-    save_dir,
-    remotes=None,
-    partial_download=None,
-    info_message=None,
-    force_overwrite=False,
-    cleanup=True,
+        save_dir,
+        remotes=None,
+        partial_download=None,
+        info_message=None,
+        force_overwrite=False,
+        cleanup=True,
 ):
     """Download data to `save_dir` and optionally print a message.
 
@@ -56,7 +56,7 @@ def downloader(
         if partial_download is not None:
             # check the keys in partial_download are in the download dict
             if not isinstance(partial_download, list) or any(
-                [k not in remotes for k in partial_download]
+                    [k not in remotes for k in partial_download]
             ):
                 raise ValueError(
                     'partial_download must be a list which is a subset of {}'.format(
@@ -123,7 +123,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False):
     if not os.path.exists(download_path) or force_overwrite:
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
-            unit='B', unit_scale=True, unit_divisor=1024, miniters=1
+                unit='B', unit_scale=True, unit_divisor=1024, miniters=1
         ) as t:
             try:
                 urllib.request.urlretrieve(
@@ -183,8 +183,15 @@ def extractall_unicode(zfile, out_dir):
     """
     for m in zfile.infolist():
         data = zfile.read(m)  # extract zipped data into memory
+        # to solve a problem with a file named /._Icon\uf00d
+        error_cp437 = False
+        try:
+            m_filename_cp437 = m.filename.encode('cp437').decode()
+        except:
+            error_cp437 = True
 
-        if m.filename.encode('cp437').decode() != m.filename.encode('utf8').decode():
+        m_filename_utf8 = m.filename.encode('utf8').decode()
+        if not error_cp437 and m_filename_cp437 != m_filename_utf8:
             disk_file_name = os.path.join(out_dir, m.filename.encode('cp437').decode())
         else:
             disk_file_name = os.path.join(out_dir, m.filename)

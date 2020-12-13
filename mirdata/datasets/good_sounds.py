@@ -127,6 +127,7 @@ class Track(core.Track):
             [self._data_home, self._track_paths["audio"][0]]
         )
 
+
     @property
     def audio(self):
         """(np.ndarray, float): audio signal, sample rate"""
