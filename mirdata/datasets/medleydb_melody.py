@@ -22,7 +22,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
@@ -183,7 +183,7 @@ def load_melody(melody_path):
     times = np.array(times)
     freqs = np.array(freqs)
     confidence = (freqs > 0).astype(float)
-    melody_data = classes.F0Data(times, freqs, confidence)
+    melody_data = annotations.F0Data(times, freqs, confidence)
     return melody_data
 
 
@@ -202,5 +202,5 @@ def load_melody3(melody_path):
             conf_list.append([float(float(v) > 0) for v in line[1:]])
 
     times = np.array(times)
-    melody_data = classes.MultiF0Data(times, freqs_list, conf_list)
+    melody_data = annotations.MultiF0Data(times, freqs_list, conf_list)
     return melody_data

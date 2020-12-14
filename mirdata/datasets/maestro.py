@@ -41,7 +41,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 
 BIBTEX = """@inproceedings{
@@ -207,7 +207,7 @@ def load_notes(midi_path, midi=None):
         intervals.append([note.start, note.end])
         pitches.append(librosa.midi_to_hz(note.pitch))
         confidence.append(note.velocity)
-    return classes.NoteData(
+    return annotations.NoteData(
         np.array(intervals), np.array(pitches), np.array(confidence)
     )
 

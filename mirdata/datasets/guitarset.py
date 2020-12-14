@@ -57,7 +57,7 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 
 BIBTEX = """@inproceedings{xi2018guitarset,
@@ -293,7 +293,7 @@ def load_beats(jams_path):
     anno = jam.search(namespace="beat_position")[0]
     times, values = anno.to_event_values()
     positions = [int(v["position"]) for v in values]
-    return classes.BeatData(times, np.array(positions))
+    return annotations.BeatData(times, np.array(positions))
 
 
 def load_chords(jams_path, leadsheet_version=True):
@@ -315,7 +315,7 @@ def load_chords(jams_path, leadsheet_version=True):
     else:
         anno = jam.search(namespace="chord")[1]
     intervals, values = anno.to_interval_values()
-    return classes.ChordData(intervals, values)
+    return annotations.ChordData(intervals, values)
 
 
 def load_key_mode(jams_path):
@@ -324,7 +324,7 @@ def load_key_mode(jams_path):
     jam = jams.load(jams_path)
     anno = jam.search(namespace="key_mode")[0]
     intervals, values = anno.to_interval_values()
-    return classes.KeyData(intervals, values)
+    return annotations.KeyData(intervals, values)
 
 
 def load_pitch_contour(jams_path, string_num):
@@ -342,7 +342,7 @@ def load_pitch_contour(jams_path, string_num):
     anno = anno_arr.search(data_source=str(string_num))[0]
     times, values = anno.to_event_values()
     frequencies = [v["frequency"] for v in values]
-    return classes.F0Data(times, np.array(frequencies), np.ones_like(times))
+    return annotations.F0Data(times, np.array(frequencies), np.ones_like(times))
 
 
 def load_note_ann(jams_path, string_num):
@@ -359,4 +359,4 @@ def load_note_ann(jams_path, string_num):
     anno_arr = jam.search(namespace="note_midi")
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()
-    return classes.NoteData(intervals, np.array(values), np.ones_like(values))
+    return annotations.NoteData(intervals, np.array(values), np.ones_like(values))

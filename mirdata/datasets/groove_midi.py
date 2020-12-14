@@ -52,7 +52,7 @@ import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils, jams_utils, core, utils, classes
+from mirdata import download_utils, jams_utils, core, utils, annotations
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -378,7 +378,7 @@ def load_beats(midi_path, midi=None):
     beat_range = np.arange(0, len(beat_times))
     meter = midi.time_signature_changes[0]
     beat_positions = 1 + np.mod(beat_range, meter.numerator)
-    return classes.BeatData(beat_times, beat_positions)
+    return annotations.BeatData(beat_times, beat_positions)
 
 
 def load_drum_events(midi_path, midi=None):
@@ -403,7 +403,7 @@ def load_drum_events(midi_path, midi=None):
         start_times.append(note.start)
         end_times.append(note.end)
         events.append(DRUM_MAPPING[note.pitch]['Roland'])
-    return classes.EventData(np.array([start_times, end_times]).T, events)
+    return annotations.EventData(np.array([start_times, end_times]).T, events)
 
 
 def _download(

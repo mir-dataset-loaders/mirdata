@@ -22,7 +22,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 BIBTEX = """@inproceedings{smith2011salami,
     title={Design and creation of a large-scale database of structural annotations.},
@@ -268,6 +268,6 @@ def load_sections(sections_path):
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
-    return classes.SectionData(
+    return annotations.SectionData(
         np.array([times_revised[:-1], times_revised[1:]]).T, list(secs_revised[:-1])
     )

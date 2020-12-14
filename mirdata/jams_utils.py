@@ -6,7 +6,7 @@ import jams
 import librosa
 import os
 
-from mirdata import classes
+from mirdata import annotations
 
 
 def jams_converter(
@@ -293,7 +293,7 @@ def beats_to_jams(beats):
     jannot_beat = jams.Annotation(namespace="beat")
     jannot_beat.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if beats[0] is not None:
-        if not isinstance(beats[0], classes.BeatData):
+        if not isinstance(beats[0], annotations.BeatData):
             raise TypeError("Type should be BeatData.")
         for t, p in zip(beats[0].times, beats[0].positions):
             jannot_beat.append(time=t, duration=0.0, value=p)
@@ -319,7 +319,7 @@ def sections_to_jams(sections):
     jannot_seg = jams.Annotation(namespace="segment_open")
     jannot_seg.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if sections[0] is not None:
-        if not isinstance(sections[0], classes.SectionData):
+        if not isinstance(sections[0], annotations.SectionData):
             raise TypeError("Type should be SectionData.")
         for inter, seg in zip(sections[0].intervals, sections[0].labels):
             jannot_seg.append(time=inter[0], duration=inter[1] - inter[0], value=seg)
@@ -345,7 +345,7 @@ def chords_to_jams(chords):
     jannot_chord = jams.Annotation(namespace="chord")
     jannot_chord.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if chords[0] is not None:
-        if not isinstance(chords[0], classes.ChordData):
+        if not isinstance(chords[0], annotations.ChordData):
             raise TypeError("Type should be ChordData.")
         for beg, end, ch in zip(
             chords[0].intervals[:, 0], chords[0].intervals[:, 1], chords[0].labels
@@ -373,7 +373,7 @@ def notes_to_jams(notes):
     jannot_note = jams.Annotation(namespace="note_hz")
     jannot_note.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if notes[0] is not None:
-        if not isinstance(notes[0], classes.NoteData):
+        if not isinstance(notes[0], annotations.NoteData):
             raise TypeError("Type should be NoteData.")
         for beg, end, n in zip(
             notes[0].intervals[:, 0], notes[0].intervals[:, 1], notes[0].notes
@@ -401,7 +401,7 @@ def keys_to_jams(keys):
     jannot_key = jams.Annotation(namespace="key_mode")
     jannot_key.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if keys[0] is not None:
-        if not isinstance(keys[0], classes.KeyData):
+        if not isinstance(keys[0], annotations.KeyData):
             raise TypeError("Type should be KeyData.")
         for beg, end, key in zip(
             keys[0].intervals[:, 0], keys[0].intervals[:, 1], keys[0].keys
@@ -435,7 +435,7 @@ def multi_sections_to_jams(multi_sections):
     )
     for sections in multi_sections[0]:
         if sections[0] is not None:
-            if not isinstance(sections[0], classes.SectionData):
+            if not isinstance(sections[0], annotations.SectionData):
                 raise TypeError("Type should be SectionData.")
             for inter, seg in zip(sections[0].intervals, sections[0].labels):
                 jannot_multi.append(
@@ -488,7 +488,7 @@ def events_to_jams(events):
     jannot_events = jams.Annotation(namespace="tag_open")
     jannot_events.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if events[0] is not None:
-        if type(events[0]) != classes.EventData:
+        if type(events[0]) != annotations.EventData:
             raise TypeError("Type should be EventData.")
         for beg, end, label in zip(
             events[0].intervals[:, 0], events[0].intervals[:, 1], events[0].event
@@ -516,7 +516,7 @@ def f0s_to_jams(f0s):
     jannot_f0 = jams.Annotation(namespace="pitch_contour")
     jannot_f0.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if f0s[0] is not None:
-        if not isinstance(f0s[0], classes.F0Data):
+        if not isinstance(f0s[0], annotations.F0Data):
             raise TypeError("Type should be F0Data.")
         for t, f, c in zip(f0s[0].times, f0s[0].frequencies, f0s[0].confidence):
             jannot_f0.append(
@@ -547,7 +547,7 @@ def lyrics_to_jams(lyrics):
     jannot_lyric = jams.Annotation(namespace="lyrics")
     jannot_lyric.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     if lyrics[0] is not None:
-        if not isinstance(lyrics[0], classes.LyricData):
+        if not isinstance(lyrics[0], annotations.LyricData):
             raise TypeError("Type should be LyricData.")
         for beg, end, lyric in zip(
             lyrics[0].intervals[:, 0], lyrics[0].intervals[:, 1], lyrics[0].lyrics

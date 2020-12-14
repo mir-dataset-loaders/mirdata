@@ -16,7 +16,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
@@ -172,7 +172,7 @@ def load_beats(beats_path):
     # After fixing New Point labels convert positions to int
     beat_positions = [int(b) for b in beat_positions]
 
-    beat_data = classes.BeatData(np.array(beat_times), np.array(beat_positions))
+    beat_data = annotations.BeatData(np.array(beat_times), np.array(beat_positions))
 
     return beat_data
 
@@ -203,7 +203,7 @@ def load_chords(chords_path):
             end_times.append(float(line[1]))
             chords.append(line[2])
 
-    chord_data = classes.ChordData(np.array([start_times, end_times]).T, chords)
+    chord_data = annotations.ChordData(np.array([start_times, end_times]).T, chords)
 
     return chord_data
 
@@ -233,7 +233,7 @@ def load_key(keys_path):
                 end_times.append(float(line[1]))
                 keys.append(line[3])
 
-    key_data = classes.KeyData(np.array([start_times, end_times]).T, keys)
+    key_data = annotations.KeyData(np.array([start_times, end_times]).T, keys)
 
     return key_data
 
@@ -262,7 +262,7 @@ def load_sections(sections_path):
             end_times.append(float(line[1]))
             sections.append(line[3])
 
-    section_data = classes.SectionData(np.array([start_times, end_times]).T, sections)
+    section_data = annotations.SectionData(np.array([start_times, end_times]).T, sections)
 
     return section_data
 

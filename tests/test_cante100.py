@@ -5,7 +5,7 @@ import numpy as np
 
 from tests.test_utils import run_track_tests
 
-from mirdata import classes
+from mirdata import annotations
 from mirdata.datasets import cante100
 from tests.test_utils import DEFAULT_DATA_HOME
 
@@ -32,7 +32,7 @@ def test_track():
         'track_id': '008',
     }
 
-    expected_property_types = {'melody': classes.F0Data, 'notes': classes.NoteData}
+    expected_property_types = {'melody': annotations.F0Data, 'notes': annotations.NoteData}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -101,7 +101,7 @@ def test_load_melody():
     f0_data = cante100.load_melody(f0_path)
 
     # check types
-    assert type(f0_data) == classes.F0Data
+    assert type(f0_data) == annotations.F0Data
     assert type(f0_data.times) is np.ndarray
     assert type(f0_data.frequencies) is np.ndarray
     assert type(f0_data.confidence) is np.ndarray
@@ -132,7 +132,7 @@ def test_load_notes():
     notes_data = cante100.load_notes(notes_path)
 
     # check types
-    assert type(notes_data) == classes.NoteData
+    assert type(notes_data) == annotations.NoteData
     assert type(notes_data.intervals) is np.ndarray
     assert type(notes_data.notes) is np.ndarray
     assert type(notes_data.confidence) is np.ndarray

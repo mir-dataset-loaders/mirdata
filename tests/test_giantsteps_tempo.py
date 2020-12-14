@@ -3,7 +3,7 @@
 import numpy as np
 
 from mirdata.datasets import giantsteps_tempo
-from mirdata import classes
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -23,8 +23,8 @@ def test_track():
     }
 
     expected_property_types = {
-        "tempo": classes.TempoData,
-        "tempo_v2": classes.TempoData,
+        "tempo": annotations.TempoData,
+        "tempo_v2": annotations.TempoData,
         "genre": str,
     }
 
@@ -61,7 +61,7 @@ def test_load_tempo():
 
     tempo_data = giantsteps_tempo.load_tempo(tempo_path)
 
-    assert type(tempo_data) == classes.TempoData
+    assert type(tempo_data) == annotations.TempoData
     print(tempo_data.intervals)
     assert np.array_equal(tempo_data.intervals[:, 0], np.array([0.0]))
     assert np.array_equal(tempo_data.intervals[:, 1], np.array([120.0]))

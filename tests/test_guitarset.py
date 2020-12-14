@@ -4,7 +4,7 @@ import numpy as np
 import jams
 
 from mirdata.datasets import guitarset
-from mirdata import classes
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 TEST_DATA_HOME = "tests/resources/mir_datasets/guitarset"
@@ -35,18 +35,18 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": classes.BeatData,
-        "leadsheet_chords": classes.ChordData,
-        "inferred_chords": classes.ChordData,
-        "key_mode": classes.KeyData,
+        "beats": annotations.BeatData,
+        "leadsheet_chords": annotations.ChordData,
+        "inferred_chords": annotations.ChordData,
+        "key_mode": annotations.KeyData,
         "pitch_contours": dict,
         "notes": dict,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
-    assert type(track.pitch_contours["E"]) is classes.F0Data
-    assert type(track.notes["E"]) is classes.NoteData
+    assert type(track.pitch_contours["E"]) is annotations.F0Data
+    assert type(track.notes["E"]) is annotations.NoteData
 
 
 def test_load_beats():

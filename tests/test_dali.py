@@ -1,7 +1,7 @@
 import DALI
 
 from mirdata.datasets import dali
-from mirdata import classes
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 import numpy as np
 
@@ -32,10 +32,10 @@ def test_track():
     }
 
     expected_property_types = {
-        "notes": classes.NoteData,
-        "words": classes.LyricData,
-        "lines": classes.LyricData,
-        "paragraphs": classes.LyricData,
+        "notes": annotations.NoteData,
+        "words": annotations.LyricData,
+        "lines": annotations.LyricData,
+        "paragraphs": annotations.LyricData,
         "annotation_object": DALI.Annotations,
     }
 
@@ -57,7 +57,7 @@ def test_load_notes():
     )
     note_data = dali.load_annotations_granularity(notes_path, "notes")
 
-    assert type(note_data) == classes.NoteData
+    assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) == np.ndarray
     assert type(note_data.notes) == np.ndarray
 
@@ -73,7 +73,7 @@ def test_load_words():
     )
     word_data = dali.load_annotations_granularity(data_path, "words")
 
-    assert type(word_data) == classes.LyricData
+    assert type(word_data) == annotations.LyricData
     assert type(word_data.intervals) == np.ndarray
     assert type(word_data.lyrics) == list
 
@@ -89,7 +89,7 @@ def test_load_lines():
     )
     line_data = dali.load_annotations_granularity(data_path, "lines")
 
-    assert type(line_data) == classes.LyricData
+    assert type(line_data) == annotations.LyricData
     assert type(line_data.intervals) == np.ndarray
     assert type(line_data.lyrics) == list
 
@@ -105,7 +105,7 @@ def test_load_paragraphs():
     )
     par_data = dali.load_annotations_granularity(data_path, "paragraphs")
 
-    assert type(par_data) == classes.LyricData
+    assert type(par_data) == annotations.LyricData
     assert type(par_data.intervals) == np.ndarray
     assert type(par_data.lyrics) == list
 

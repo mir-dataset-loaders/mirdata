@@ -21,7 +21,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 
 BIBTEX = """@inproceedings{chan2015vocal,
@@ -225,7 +225,7 @@ def load_f0(f0_path):
     f0_hz = librosa.midi_to_hz(f0_midi) * (f0_midi > 0)
     confidence = (f0_hz > 0).astype(float)
     times = (np.arange(len(f0_midi)) * TIME_STEP) + (TIME_STEP / 2.0)
-    f0_data = classes.F0Data(times, f0_hz, confidence)
+    f0_data = annotations.F0Data(times, f0_hz, confidence)
     return f0_data
 
 
@@ -250,7 +250,7 @@ def load_lyrics(lyrics_path):
             else:
                 pronunciations.append(None)
 
-    lyrics_data = classes.LyricData(
+    lyrics_data = annotations.LyricData(
         np.array([start_times, end_times]).T, lyrics, pronunciations,
     )
     return lyrics_data

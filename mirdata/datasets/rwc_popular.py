@@ -20,7 +20,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (
@@ -275,7 +275,7 @@ def load_chords(chords_path):
                 ends.append(float(line[1]))
                 chords.append(line[2])
 
-    return classes.ChordData(np.array([begs, ends]).T, chords)
+    return annotations.ChordData(np.array([begs, ends]).T, chords)
 
 
 def load_voca_inst(voca_inst_path):
@@ -300,4 +300,4 @@ def load_voca_inst(voca_inst_path):
             ends.append(float(raw_data[i + 1][0]))
             events.append(raw_data[i][1])
 
-    return classes.EventData(np.array([begs, ends]).T, events)
+    return annotations.EventData(np.array([begs, ends]).T, events)

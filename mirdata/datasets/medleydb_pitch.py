@@ -22,7 +22,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
@@ -157,5 +157,5 @@ def load_pitch(pitch_path):
     times = np.array(times)
     freqs = np.array(freqs)
     confidence = (freqs > 0).astype(float)
-    pitch_data = classes.F0Data(times, freqs, confidence)
+    pitch_data = annotations.F0Data(times, freqs, confidence)
     return pitch_data
