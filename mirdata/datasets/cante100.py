@@ -85,19 +85,19 @@ REMOTES = {
         filename='cante100_spectrum.zip',
         url='https://zenodo.org/record/1322542/files/cante100_spectrum.zip?download=1',
         checksum='0b81fe0fd7ab2c1adc1ad789edb12981',  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
+        destination_dir='cante100_spectrum',  # relative path for where to unzip the data, or None
     ),
     'melody': download_utils.RemoteFileMetadata(
         filename='cante100midi_f0.zip',
         url='https://zenodo.org/record/1322542/files/cante100midi_f0.zip?download=1',
         checksum='cce543b5125eda5a984347b55fdcd5e8',  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
+        destination_dir='cante100midi_f0',  # relative path for where to unzip the data, or None
     ),
     'notes': download_utils.RemoteFileMetadata(
         filename='cante100_automaticTranscription.zip',
         url='https://zenodo.org/record/1322542/files/cante100_automaticTranscription.zip?download=1',
         checksum='47fea64c744f9fe678ae5642a8f0ee8e',  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
+        destination_dir='cante100_automaticTranscription',  # relative path for where to unzip the data, or None
     ),
     'metadata': download_utils.RemoteFileMetadata(
         filename='cante100Meta.xml',

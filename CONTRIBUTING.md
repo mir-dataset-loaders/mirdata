@@ -210,7 +210,9 @@ BIBTEX = """@article{article-minimal,
 }"""
 
 # -- REMOTES is a dictionary containing all files that need to be downloaded.
-# -- The keys should be descriptive (e.g. 'annotations', 'audio')
+# -- The keys should be descriptive (e.g. 'annotations', 'audio').
+# -- When having data that can be partially downloaded, remember to set up 
+# -- correctly destination_dir to download the files following the correct structure.
 REMOTES = {
     'remote_data': download_utils.RemoteFileMetadata(
         filename='a_zip_file.zip',
