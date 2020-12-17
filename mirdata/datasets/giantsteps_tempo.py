@@ -10,15 +10,16 @@ contact:
 description:  collection of annotations for 664 2min(1) audio previews from
   www.beatport.com
 
-references:       
-[1] Peter Knees, Ángel Faraldo, Perfecto Herrera, Richard Vogl,
+references:
+
+.. [giantsteps_tempo_cit_1] Peter Knees, Ángel Faraldo, Perfecto Herrera, Richard Vogl,
     Sebastian Böck, Florian Hörschläger, Mickael Le Goff: "Two data
     sets for tempo estimation and key detection in electronic dance
     music annotated from user corrections", Proc. of the 16th
     Conference of the International Society for Music Information
     Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
 
-[2] Hendrik Schreiber, Meinard Müller: "A Crowdsourced Experiment
+.. [giantsteps_tempo_cit_2] Hendrik Schreiber, Meinard Müller: "A Crowdsourced Experiment
     for Tempo Estimation of Electronic Dance Music", Proc. of the
     19th Conference of the International Society for Music
     Information Retrieval (ISMIR'18), Sept. 2018, Paris, France.
@@ -42,9 +43,9 @@ To convert the audio files to .wav use (bash + sox):
 
 To retrieve the genre information, the JSON contained within the website was parsed.
 The tempo annotation was extracted from forum entries of people correcting the bpm values (i.e. manual annotation of tempo).
-For more information please contact creators.
+For more information please refer to the publication [giantsteps_tempo_cit_1]_.
 
-[2] found some files without tempo. There are:
+[giantsteps_tempo_cit_2]_ found some files without tempo. There are:
 
 3041381.LOFI.mp3
 3041383.LOFI.mp3
@@ -124,7 +125,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in giantsteps_tempo".format(track_id)
             )
@@ -132,7 +133,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.annotation_v1_path = os.path.join(
             self._data_home, self._track_paths["annotation_v1"][0]

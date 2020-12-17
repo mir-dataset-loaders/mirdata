@@ -68,7 +68,7 @@ class Track(core.Track):
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
     Attributes:
         audio_path (str): track audio path
         keys_path (str): key annotation path
@@ -78,7 +78,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in beatport_key".format(track_id)
             )
@@ -86,7 +86,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.keys_path = os.path.join(self._data_home, self._track_paths["key"][0])
         self.metadata_path = (
@@ -217,10 +217,10 @@ def load_key(keys_path):
     with open(keys_path) as f:
         key = f.readline()
 
-    keys = key.split(' | ')
+    keys = key.split(" | ")
 
     # standarize 'Unknown'  to 'X'
-    keys = ['x' if k.lower() == 'unknown' else k for k in keys]
+    keys = ["x" if k.lower() == "unknown" else k for k in keys]
     return keys
 
 

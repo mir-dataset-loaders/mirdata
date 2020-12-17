@@ -3,7 +3,7 @@
 
 The Jazz Music Database consists of 50 pieces:
 
-* Instrumentation variations: 35 pieces (5 pieces × 7 instrumentations).
+**Instrumentation variations:** 35 pieces (5 pieces × 7 instrumentations).
 The instrumentation-variation pieces were recorded to obtain different versions
 of the same piece; i.e., different arrangements performed by different player
 instrumentations. Five standard-style jazz pieces were originally composed
@@ -16,7 +16,7 @@ and then performed in modern-jazz style using the following seven instrumentatio
 6. Octet: Piano trio + Guitar + Alto saxophone + Baritone saxophone + Tenor saxophone × 2
 7. Piano trio + Vibraphone or Flute
 
-* Style variations: 9 pieces
+**Style variations:** 9 pieces
 The style-variation pieces were recorded to represent various styles of jazz.
 They include four well-known public-domain pieces and consist of
 1. Vocal jazz: 2 pieces (including "Aura Lee")
@@ -158,13 +158,13 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in RWC-Jazz".format(track_id))
 
         self.track_id = track_id
         self._data_home = data_home
 
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.sections_path = os.path.join(
             self._data_home, self._track_paths["sections"][0]
         )

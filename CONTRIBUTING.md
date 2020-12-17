@@ -210,7 +210,9 @@ BIBTEX = """@article{article-minimal,
 }"""
 
 # -- REMOTES is a dictionary containing all files that need to be downloaded.
-# -- The keys should be descriptive (e.g. 'annotations', 'audio')
+# -- The keys should be descriptive (e.g. 'annotations', 'audio').
+# -- When having data that can be partially downloaded, remember to set up 
+# -- correctly destination_dir to download the files following the correct structure.
 REMOTES = {
     'remote_data': download_utils.RemoteFileMetadata(
         filename='a_zip_file.zip',
@@ -487,6 +489,10 @@ pytest -s tests/test_full_dataset.py --local --dataset my_dataset --skip-downloa
 ```
 which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually
 all pass without this flag.
+
+## Docs
+
+Staged docs for every new pull request are built, and you can look at them by clicking on the "readthedocs" test in a pull request. To quickly troubleshoot any issues, you can build the docs locally by nagivating to the `docs` folder, and running `make html` (note, you must have `sphinx` installed). Then open the generated `_build/source/index.html` file in your web browser to view.
 
 ## Troubleshooting
 

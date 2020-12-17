@@ -91,13 +91,13 @@ def jams_converter(
             )
     if spectrogram_path is not None:
         if audio_path is None:
-            duration = metadata['duration']
+            duration = metadata["duration"]
 
     # metadata
     if metadata is not None:
         for key in metadata:
             if (
-                key == 'duration'
+                key == "duration"
                 and duration is not None
                 and metadata[key] != duration
                 and audio_path is not None
@@ -586,6 +586,7 @@ def tag_gtzan_to_jams(tags):
 def tag_open_to_jams(tags):
     """
     Convert tag-open annotations into jams format.
+
     Parameters
     ----------
     tags: tuple
