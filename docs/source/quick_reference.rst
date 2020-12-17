@@ -32,12 +32,12 @@ click the link provided in the "Module" column.
 * ❌ : Not available
 
 
-Find the API documentation for each of the below datasets :ref:`api`.
+Find the API documentation for each of the below datasets in :ref:`api`.
 
 +---------------------+---------------------+---------------------------+--------+
 | Dataset             | Downloadable?       | Annotation Types          | Tracks |
 +=====================+=====================+===========================+========+
-| AcousticBrainz      | - audio: ❌         | - :ref:`genre`            | >4mill |
+| AcousticBrainz      | - audio: ❌         | - :ref:`genre`            | >4M    |
 | Genre               | - annotations: ✅   |                           |        |
 |                     | - features: ✅      |                           |        |
 +---------------------+---------------------+---------------------------+--------+
