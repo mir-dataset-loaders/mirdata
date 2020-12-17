@@ -25,9 +25,22 @@ To install, run:
 
 For more details see the :ref:`tutorial`.
 
+jams and mir_eval compatibility
 
 Dataset Loaders
 ---------------
+
+Mirdata works based on two main components: datasets loaders and indexes. In general terms, the dataset loader contains the code for working with the different elements of the dataset (audio, annotations, metadata); and the index has the information about the folder structure the dataset should have and the checksums of its different elements, and is used to load and validate them.
+All datasets loaders have the following functionalities:
+readme(), cite(), download(), validate() […] .
+Those functionalities are explained <here-link-to-Dataset-class>.
+Besides these common functionalities, each dataset loader has
+its own functions and attributes depending on the nature of
+the dataset. For example, most datasets consist of a collection
+of tracks, then most dataset loaders will have a Track
+element/attribute. Moreover, depending on the type of
+annotation the dataset has, the track will have different
+attributes such as beats or chords. When the annotations are time-series, they have their own mirdata data-type as explained <here-link-to-annotations>. If the annotations are static over the whole track, they are included as metadata. See <usage> for a detail explanation on how to interact with the library.
 
 
 Downloading
@@ -65,7 +78,3 @@ Easy to use multiple datasets, increase multi-tasking and diversity of musical c
 Standardization
 ---------------
 Standardize while respecting idiosyncrasy of datasets
-
-
-Citing
-======
