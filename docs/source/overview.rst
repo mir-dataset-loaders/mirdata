@@ -60,6 +60,12 @@ jams and mir_eval compatibility
 Metadata
 --------
 
+.. _canonical version:
+Canonical datasets
+^^^^^^^^^^^^^^^^^^
+Whenever possible, this should be the official release of the dataset as published by the dataset creator/s.
+When this is not possible, (e.g. for data that is no longer available), find as many copies of the data as you can from different researchers (at least 4), and use the most common one. When in doubt open an [issue](https://github.com/mir-dataset-loaders/mirdata/issues) and leave it to the community to discuss what to use.
+
 
 Design Principles
 =================
