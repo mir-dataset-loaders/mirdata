@@ -22,16 +22,14 @@ First, clone the repository from github:
     git clone git@github.com:mir-dataset-loaders/mirdata.git
 
 
-Then, we recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions. You'll
+Then, we recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions and install all ``mirdata`` requirements. You will
 want to install the latest versions of Python 3.6 and 3.7. Once ``pyenv`` and the Python versions are configured,
-install `tox <https://tox.readthedocs.io/en/latest/>`_, our test runner.
-
-Finally, run ``tox``:
+install ``pytest``. Finally, run :
 
 ::
 
-    cd mirdata
-    tox
+    pytest tests/ --local
+
 
 All tests should pass!
 
