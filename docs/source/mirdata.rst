@@ -1,10 +1,5 @@
 .. _api:
 
-#################
-API Documentation
-#################
-
-For basic usage see the tutorial.
 
 Datasets
 --------

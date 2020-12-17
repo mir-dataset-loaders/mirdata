@@ -22,7 +22,7 @@ To install, simply run:
 pip install mirdata
 ```
 
-Try it out!
+### Quick example
 ```python
 import mirdata
 import random
@@ -32,12 +32,13 @@ orchset.download()  # download the dataset
 orchset.validate()  # validate that all the expected files are there
 
 example_track = orchset.choice_track()  # choose a random example track
-print(example_track)  # see the availalbe data
+print(example_track)  # see the available data
 ```
-See the Examples section below for more details, or the [documentation](https://mirdata.readthedocs.io/en/latest/) for more examples and the API reference.
+See the [documentation](https://mirdata.readthedocs.io/en/latest/) for more examples and the API reference.
 
 
 ### Currently supported datasets
+
 
 Supported datasets include [AcousticBrainz](https://zenodo.org/record/2553414#.X8jTgulKhhE), [DALI](https://github.com/gabolsgabs/DALI), [Guitarset](http://github.com/marl/guitarset/), [MAESTRO](https://magenta.tensorflow.org/datasets/maestro), [TinySOL](https://www.orch-idea.org/), among many others.
 
@@ -71,118 +72,6 @@ in International Society for Music Information Retrieval (ISMIR) Conference, 201
 }
 ```
 
-## Contributing a new dataset loader
+### Contributing a new dataset loader
 
 We welcome contributions to this library, especially new datasets. Please see [CONTRIBUTING.md](https://github.com/mir-dataset-loaders/mirdata/blob/master/CONTRIBUTING.md) for guidelines.
-
-
-## Examples
-
-### Download the Orchset Dataset
-```python
-import mirdata
-
-orchset = mirdata.Dataset('orchset')
-orchset.download()
-```
-
-### Validate the data
-```python
-import mirdata
-
-orchset = mirdata.Dataset('orchset')
-orchset.validate()
-```
-
-### Load data for a specific track
-```python
-import mirdata
-
-orchset = mirdata.Dataset('orchset')
-track = orchset.track('Beethoven-S3-I-ex1')
-print(track)
-```
-
-### Load all tracks in the Orchset Dataset
-```python
-import mirdata
-
-orchset = mirdata.Dataset('orchset')
-orchset_data = orchset.load_tracks()
-```
-
-### See what data are available for a track
-```python
-import mirdata
-
-orchset = mirdata.Dataset('orchset')
-orchset_ids = orchset.track_ids
-orchset_data = orchset.load_tracks()
-
-example_track = orchset_data[orchset_ids[0]]
-print(example_track)
-> orchset.Track(
-    track_id='Beethoven-S3-I-ex1',
-    melody=F0Data(times=array([0.000e+00, 1.000e-02, 2.000e-02, ..., 1.244e+01, 1.245e+01, 1.246e+01]),
-                  frequencies=array([  0.   ,   0.   ,   0.   , ..., 391.995, 391.995, 391.995]),
-                  confidence=array([0, 0, 0, ..., 1, 1, 1])),
-    audio_path_mono='~/mir_datasets/Orchset/audio/mono/Beethoven-S3-I-ex1.wav',
-    audio_path_stereo='~/mir_datasets/Orchset/audio/stereo/Beethoven-S3-I-ex1.wav',
-    composer='Beethoven',
-    work='S3-I',
-    excerpt='1',
-    predominant_melodic_instruments=['winds', 'strings'],
-    alternating_melody=True,
-    contains_winds=True,
-    contains_strings=True,
-    contains_brass=False,
-    only_strings=False,
-    only_winds=False,
-    only_brass=False
-)
-```
-
-### Evaluate a melody extraction algorithm on Orchset
-```python
-import mir_eval
-import mirdata
-import numpy as np
-import sox
-
-def very_bad_melody_extractor(audio_path):
-    duration = sox.file_info.duration(audio_path)
-    time_stamps = np.arange(0, duration, 0.01)
-    melody_f0 = np.random.uniform(low=80.0, high=800.0, size=time_stamps.shape)
-    return time_stamps, melody_f0
-
-# Evaluate on the full dataset
-orchset_scores = {}
-orchset = mirdata.Dataset('orchset')
-orchset_data = orchset.load_tracks()
-for track_id, track_data in orchset_data.items():
-    est_times, est_freqs = very_bad_melody_extractor(track_data.audio_path_mono)
-
-    ref_times = track_data.melody.times
-    ref_freqs = track_data.melody.frequencies
-
-    score = mir_eval.melody.evaluate(ref_times, ref_freqs, est_times, est_freqs)
-    orchset_scores[track_id] = score
-
-# Split the results by composer and by instrumentation
-composer_scores = {}
-strings_no_strings_scores = {True: {}, False: {}}
-for track_id, track_data in orchset_data.items():
-    if track_data.composer not in composer_scores.keys():
-        composer_scores[track_data.composer] = {}
-
-    composer_scores[track_data.composer][track_id] = orchset_scores[track_id]
-    strings_no_strings_scores[track_data.contains_strings][track_id] = \
-        orchset_scores[track_id]
-```
-
-
-## Dataset Location
-By default, all datasets tracked by this library are stored in `~/mir_datasets`,
-(defined as `MIR_DATASETS_DIR` in `mirdata/__init__.py`).
-Data can alternatively be stored in another location by specifying `data_home`
-within a relevant function, e.g. `mirdata.Dataset('orchset', data_home='my_custom_path')`
