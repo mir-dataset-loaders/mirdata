@@ -51,10 +51,10 @@ BIBTEX = """
 """
 
 REMOTES = {
-    'all': download_utils.RemoteFileMetadata(
-        filename='saraga1.5_hindustani.zip',
-        url='https://zenodo.org/record/4301737/files/saraga1.5_hindustani.zip?download=1',
-        checksum='ea9ed2885ea37a1b10e42f60cf299702',
+    "all": download_utils.RemoteFileMetadata(
+        filename="saraga1.5_hindustani.zip",
+        url="https://zenodo.org/record/4301737/files/saraga1.5_hindustani.zip?download=1",
+        checksum="ea9ed2885ea37a1b10e42f60cf299702",
         destination_dir=None,
     )
 }
@@ -62,18 +62,18 @@ REMOTES = {
 
 def _load_metadata(metadata_path):
     if not os.path.exists(metadata_path):
-        logging.info('Metadata file {} not found.'.format(metadata_path))
+        logging.info("Metadata file {} not found.".format(metadata_path))
         return None
 
     with open(metadata_path) as f:
         metadata = json.load(f)
-        data_home = metadata_path.split('/' + metadata_path.split('/')[-4])[0]
-        metadata['data_home'] = data_home
+        data_home = metadata_path.split("/" + metadata_path.split("/")[-4])[0]
+        metadata["data_home"] = data_home
 
         return metadata
 
 
-DATA = utils.LargeData('saraga_hindustani_index.json', _load_metadata)
+DATA = utils.LargeData("saraga_hindustani_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -98,92 +98,97 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
-            raise ValueError('{} is not a valid track ID in Saraga Hindustani'.format(track_id))
+        if track_id not in DATA.index["tracks"]:
+            raise ValueError(
+                "{} is not a valid track ID in Saraga Hindustani".format(track_id)
+            )
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         # Audio path
-        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
         # Annotation paths
         self.ctonic_path = utils.none_path_join(
-            [self._data_home, self._track_paths['ctonic'][0]]
+            [self._data_home, self._track_paths["ctonic"][0]]
         )
         self.pitch_path = utils.none_path_join(
-            [self._data_home, self._track_paths['pitch'][0]]
+            [self._data_home, self._track_paths["pitch"][0]]
         )
         self.tempo_path = utils.none_path_join(
-            [self._data_home, self._track_paths['tempo'][0]]
+            [self._data_home, self._track_paths["tempo"][0]]
         )
         self.sama_path = utils.none_path_join(
-            [self._data_home, self._track_paths['sama'][0]]
+            [self._data_home, self._track_paths["sama"][0]]
         )
         self.sections_path = utils.none_path_join(
-            [self._data_home, self._track_paths['sections'][0]]
+            [self._data_home, self._track_paths["sections"][0]]
         )
         self.phrases_path = utils.none_path_join(
-            [self._data_home, self._track_paths['phrases'][0]]
+            [self._data_home, self._track_paths["phrases"][0]]
         )
         self.metadata_path = utils.none_path_join(
-            [self._data_home, self._track_paths['metadata'][0]]
+            [self._data_home, self._track_paths["metadata"][0]]
         )
 
         # Track attributes
         metadata = DATA.metadata(self.metadata_path)
-        if metadata is not None and metadata['title'].replace(' ', '_') in self.track_id:
+        if (
+            metadata is not None
+            and metadata["title"].replace(" ", "_") in self.track_id
+        ):
             self._track_metadata = metadata
         else:
             # in case the metadata is missing
             self._track_metadata = {
-                'title': None,
-                'raags': None,
-                'length': None,
-                'album_artists': None,
-                'forms': None,
-                'mbid': None,
-                'artists': None,
-                'release': None,
-                'works': None,
-                'taals': None,
-                'layas': None,
+                "title": None,
+                "raags": None,
+                "length": None,
+                "album_artists": None,
+                "forms": None,
+                "mbid": None,
+                "artists": None,
+                "release": None,
+                "works": None,
+                "taals": None,
+                "layas": None,
             }
 
-        self.title = self._track_metadata['title']
-        self.artists = self._track_metadata['artists']
-        self.album_artists = self._track_metadata['album_artists']
-        self.mbid = self._track_metadata['mbid']
+        self.title = self._track_metadata["title"]
+        self.artists = self._track_metadata["artists"]
+        self.album_artists = self._track_metadata["album_artists"]
+        self.mbid = self._track_metadata["mbid"]
         self.raags = (
-            self._track_metadata['raags']
-            if 'raags' in self._track_metadata.keys() is not None
+            self._track_metadata["raags"]
+            if "raags" in self._track_metadata.keys() is not None
             else None
         )
         self.forms = (
-            self._track_metadata['forms']
-            if 'forms' in self._track_metadata.keys() is not None
+            self._track_metadata["forms"]
+            if "forms" in self._track_metadata.keys() is not None
             else None
         )
         self.release = (
-            self._track_metadata['release']
-            if 'release' in self._track_metadata.keys() is not None
+            self._track_metadata["release"]
+            if "release" in self._track_metadata.keys() is not None
             else None
         )
         self.works = (
-            self._track_metadata['works']
-            if 'works' in self._track_metadata.keys() is not None
+            self._track_metadata["works"]
+            if "works" in self._track_metadata.keys() is not None
             else None
         )
         self.taals = (
-            self._track_metadata['taals']
-            if 'taals' in self._track_metadata.keys() is not None
+            self._track_metadata["taals"]
+            if "taals" in self._track_metadata.keys() is not None
             else None
         )
         self.layas = (
-            self._track_metadata['layas']
-            if 'layas' in self._track_metadata.keys() is not None
+            self._track_metadata["layas"]
+            if "layas" in self._track_metadata.keys() is not None
             else None
         )
 
@@ -226,14 +231,14 @@ class Track(core.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            beat_data=[(self.sama, 'sama')],
-            event_data=[(self.phrases, 'phrases')],
-            f0_data=[(self.pitch, 'pitch')],
-            section_data=[(self.sections, 'sections')],
+            beat_data=[(self.sama, "sama")],
+            event_data=[(self.phrases, "phrases")],
+            f0_data=[(self.pitch, "pitch")],
+            section_data=[(self.sections, "sections")],
             metadata={
-                'tempo': self.tempo,
-                'tonic': self.tonic,
-                'metadata': self._track_metadata,
+                "tempo": self.tempo,
+                "tonic": self.tonic,
+                "metadata": self._track_metadata,
             },
         )
 
@@ -273,8 +278,8 @@ def load_tonic(tonic_path):
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
-    with open(tonic_path, 'r') as reader:
-        return float(reader.readline().split('\n')[0])
+    with open(tonic_path, "r") as reader:
+        return float(reader.readline().split("\n")[0])
 
 
 def load_pitch(pitch_path):
@@ -295,10 +300,10 @@ def load_pitch(pitch_path):
 
     times = []
     freqs = []
-    with open(pitch_path, 'r') as reader:
+    with open(pitch_path, "r") as reader:
         for line in reader.readlines():
-            times.append(float(line.split('\t')[0]))
-            freqs.append(float(line.split('\t')[1]))
+            times.append(float(line.split("\t")[0]))
+            freqs.append(float(line.split("\t")[1]))
 
     if not times:
         return None
@@ -316,14 +321,16 @@ def load_tempo(tempo_path):
         tempo_path (str): Local path where the tempo annotation is stored.
 
     Returns:
-        (dict): {'tempo': median tempo for the section in mātrās per minute (MPM)
-                 'matra_interval': tempo expressed as the duration of the mātra (essentially
-                                   dividing 60 by tempo, expressed in seconds)
-                 'sama_interval': median duration of one tāl cycle in the section
-                 'matras_per_cycle': indicator of the structure of the tāl, showing the number
-                                     of mātrā in a cycle of the tāl of the recording
-                 'start_time': start time of the section
-                 'duration': duration of the section
+        (dict): Dictionary of tempo information with the following keys:
+            * 'tempo': median tempo for the section in mātrās per minute (MPM)
+            * 'matra_interval': tempo expressed as the duration of the mātra (essentially
+              dividing 60 by tempo, expressed in seconds)
+            * 'sama_interval': median duration of one tāl cycle in the section
+            * 'matras_per_cycle': indicator of the structure of the tāl, showing the number
+              of mātrā in a cycle of the tāl of the recording
+            * 'start_time': start time of the section
+            * 'duration': duration of the section
+
     """
     if tempo_path is None:
         return None
@@ -333,49 +340,49 @@ def load_tempo(tempo_path):
 
     tempo_annotation = {}
     head, tail = os.path.split(tempo_path)
-    sections_path = tail.split('.')[0] + '.sections-manual-p.txt'
+    sections_path = tail.split(".")[0] + ".sections-manual-p.txt"
     sections_abs_path = os.path.join(head, sections_path)
 
     sections = []
-    with open(sections_abs_path, 'r') as reader:
+    with open(sections_abs_path, "r") as reader:
         for line in reader.readlines():
-            if line != '\n':
-                sections.append(line.split(',')[3].split('\n')[0])
+            if line != "\n":
+                sections.append(line.split(",")[3].split("\n")[0])
 
     section_count = 0
-    with open(tempo_path, 'r') as reader:
+    with open(tempo_path, "r") as reader:
         for line in reader.readlines():
 
             tempo_data = []
-            tempo = line.split(',')[0]
+            tempo = line.split(",")[0]
             tempo_data.append(tempo)
-            matra = line.split(',')[1].split(' ')[1]
+            matra = line.split(",")[1].split(" ")[1]
             tempo_data.append(matra)
-            sama_interval = line.split(',')[2].split(' ')[1]
+            sama_interval = line.split(",")[2].split(" ")[1]
             tempo_data.append(sama_interval)
-            matras_per_cycle = line.split(',')[3].split(' ')[1]
+            matras_per_cycle = line.split(",")[3].split(" ")[1]
             tempo_data.append(matras_per_cycle)
-            start_time = line.split(',')[4].split(' ')[1]
+            start_time = line.split(",")[4].split(" ")[1]
             tempo_data.append(start_time)
-            duration = line.split(',')[5].split(' ')[1]
+            duration = line.split(",")[5].split(" ")[1]
             tempo_data.append(duration)
 
-            if 'NaN' in tempo_data:
+            if "NaN" in tempo_data:
                 return None
 
             tempo_annotation[sections[section_count]] = {
-                'tempo': float(tempo) if '.' in tempo else int(tempo),
-                'matra_interval': float(matra) if '.' in matra else int(matra),
-                'sama_interval': float(sama_interval)
-                if '.' in sama_interval
+                "tempo": float(tempo) if "." in tempo else int(tempo),
+                "matra_interval": float(matra) if "." in matra else int(matra),
+                "sama_interval": float(sama_interval)
+                if "." in sama_interval
                 else int(sama_interval),
-                'matras_per_cycle': float(matras_per_cycle)
-                if '.' in matras_per_cycle
+                "matras_per_cycle": float(matras_per_cycle)
+                if "." in matras_per_cycle
                 else int(matras_per_cycle),
-                'start_time': float(start_time)
-                if '.' in start_time
+                "start_time": float(start_time)
+                if "." in start_time
                 else int(start_time),
-                'duration': float(duration) if '.' in duration else int(duration),
+                "duration": float(duration) if "." in duration else int(duration),
             }
 
             section_count += 1  # Go to next section
@@ -402,7 +409,7 @@ def load_sama(sama_path):
 
     beat_times = []
     beat_positions = []
-    with open(sama_path, 'r') as reader:
+    with open(sama_path, "r") as reader:
         for line in reader.readlines():
             beat_times.append(float(line))
             beat_positions.append(1)
@@ -432,19 +439,19 @@ def load_sections(sections_path):
     intervals = []
     section_labels = []
 
-    with open(sections_path, 'r') as reader:
+    with open(sections_path, "r") as reader:
         for line in reader.readlines():
-            if line != '\n':
+            if line != "\n":
                 intervals.append(
                     [
-                        float(line.split(',')[0]),
-                        float(line.split(',')[0]) + float(line.split(',')[2]),
+                        float(line.split(",")[0]),
+                        float(line.split(",")[0]) + float(line.split(",")[2]),
                     ]
                 )
                 section_labels.append(
-                    str(line.split(',')[3].split('\n')[0])
-                    + '-'
-                    + str(line.split(',')[1])
+                    str(line.split(",")[3].split("\n")[0])
+                    + "-"
+                    + str(line.split(",")[1])
                 )
 
     # Return None if sections file is empty
@@ -474,20 +481,20 @@ def load_phrases(phrases_path):
     start_times = []
     end_times = []
     events = []
-    with open(phrases_path, 'r') as reader:
+    with open(phrases_path, "r") as reader:
         for line in reader.readlines():
-            if len(line.split('\t')) == 4:
-                start_times.append(float(line.split('\t')[0]))
+            if len(line.split("\t")) == 4:
+                start_times.append(float(line.split("\t")[0]))
                 end_times.append(
-                    float(line.split('\t')[0]) + float(line.split('\t')[2])
+                    float(line.split("\t")[0]) + float(line.split("\t")[2])
                 )
-                events.append(str(line.split('\t')[3].split('\n')[0]))
-            if len(line.split('\t')) == 3:
-                start_times.append(float(line.split('\t')[0]))
+                events.append(str(line.split("\t")[3].split("\n")[0]))
+            if len(line.split("\t")) == 3:
+                start_times.append(float(line.split("\t")[0]))
                 end_times.append(
-                    float(line.split('\t')[0]) + float(line.split('\t')[2])
+                    float(line.split("\t")[0]) + float(line.split("\t")[2])
                 )
-                events.append(' ')
+                events.append(" ")
 
     if not start_times:
         return None

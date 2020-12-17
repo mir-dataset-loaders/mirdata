@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """RWC Classical Dataset Loader
 
- The Classical Music Database consists of 50 pieces:
+The Classical Music Database consists of 50 pieces
 * Symphonies: 4 pieces
 * Concerti: 2 pieces
 * Orchestral music: 4 pieces
@@ -158,14 +158,14 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in rwc_classical".format(track_id)
             )
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.sections_path = os.path.join(
             self._data_home, self._track_paths["sections"][0]
         )

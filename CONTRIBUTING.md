@@ -490,6 +490,10 @@ pytest -s tests/test_full_dataset.py --local --dataset my_dataset --skip-downloa
 which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually
 all pass without this flag.
 
+## Docs
+
+Staged docs for every new pull request are built, and you can look at them by clicking on the "readthedocs" test in a pull request. To quickly troubleshoot any issues, you can build the docs locally by nagivating to the `docs` folder, and running `make html` (note, you must have `sphinx` installed). Then open the generated `_build/source/index.html` file in your web browser to view.
+
 ## Troubleshooting
 
 If github shows a red X next to your latest commit, it means one of our checks is not passing. This could mean:
