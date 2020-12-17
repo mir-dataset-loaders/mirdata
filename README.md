@@ -9,7 +9,7 @@ common loaders for Music Information Retrieval (MIR) datasets. Find the API docu
 
 This library provides tools for working with common MIR datasets, including tools for:
 * downloading datasets to a common location and format
-* validating that the files for a dataset are all present
+* validating that the files for a dataset are all present 
 * loading annotation files to a common format, consistent with the format required by [mir_eval](https://github.com/craffel/mir_eval)
 * parsing track level metadata for detailed evaluations
 
@@ -69,9 +69,16 @@ See the Examples section below for more details, or the [documentation](https://
 For more information about these datasets see [this table](https://mirdata.readthedocs.io/en/latest/source/datasets.html).
 
 
-### Reference
+### Citing
 
-This library was presented in the following [paper](https://magdalenafuentes.github.io/publications/2019_ISMIR_mirdata.pdf):
+
+There are two ways of citing mirdata:
+
+If you are using the library for your work, please cite the version you used as indexed at Zenodo:
+
+DOI
+
+If you refer to mirdata's design principles, motivation etc., please cite the following [paper](https://magdalenafuentes.github.io/publications/2019_ISMIR_mirdata.pdf):
 
 ```
 "mirdata: Software for Reproducible Usage of Datasets"
