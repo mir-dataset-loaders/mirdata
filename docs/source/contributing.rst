@@ -5,7 +5,7 @@ Contributing
 ############
 
 We encourage contributions to mirdata, especially new dataset loaders. To contribute a new loader, follow the
-steps indicated below and create a Pull Request to the github repository.
+steps indicated below and create a Pull Request (PR) to the github repository.
 
 - `Issue Tracker <https://github.com/mir-dataset-loaders/mirdata/issues>`_
 - `Source Code <https://github.com/mir-dataset-loaders/mirdata>`_
@@ -49,155 +49,32 @@ The steps to add a new dataset loader to ``mirdata`` are:
 
 **Before starting**, if your dataset **is not fully downloadable** you should:
 
-1. Contact the mirdata team by opening an issue or PR so we can discuss how to proceed with the closed dataset.
-2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the dataset creator,
-or by verifying equivalence with several other copies of the dataset.
 
-To reduce friction, we will make commits on top of contributors pull requests by default unless
+1. Contact the mirdata team by opening an issue or PR so we can discuss how to proceed with the closed dataset.
+2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the dataset creator, or by verifying equivalence with several other copies of the dataset.
+
+To reduce friction, we will make commits on top of contributors PRs by default unless
 they use the ``please-do-not-edit`` flag.
 
 .. _create_index:
 1. Create an index
 --------------------
 
-``mirdata``'s structure relies on ``JSON`` objects called ``indexes``. Indexes contain information about the structure of the
+``mirdata``'s structure relies on ``JSON`` objects called :ref:`indexes`. Indexes contain information about the structure of the
 dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
-information about the files included in the dataset, their location and checksums.
+information about the files included in the dataset, their location and checksums. The necessary steps are:
 
 
-1. To create an index, first cereate a script in ``scripts/``, e.g. ``make_my_dataset_index.py``, which generates an ``index`` file.
-2. Then run the script on the :ref:`canonical version` of the dataset and save the index in ``mirdata/datasets/indexes/``
-e.g. ``my_dataset_index.json``.
+1. To create an index, first cereate a script in ``scripts/``, as ``make_dataset_index.py``, which generates an ``index`` file.
+2. Then run the script on the :ref:`canonical version` of the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index.json``.
 
 
-
-Index structure
-^^^^^^^^^^^^^^^
-
-The index is a json file with the mandatory top-level key ``version`` and at least one of the optional
-top-level keys ``tracks``, ``multitracks`` or ``records``, explained below. The index can also optionally have the top-level
-key ``metadata``, but it is not required. Scripts used to create the dataset indexes are in the `scripts <https://github.com/mir-dataset-loaders/mirdata/tree/master/scripts>`_ folder.
-
-``version`` should have a string with the version of the dataset
-(e.g. "1.0.0") or `null` if the version is unclear. `metadata` should contain a dictionary where keys are all files
-that contain the metadata of the dataset, and the values are lists with the path to the metadata and the md5 checksum.
-Such an index would look like this:
-
-.. code-block:: javascript
-
-    {   "version": "1.0.0",
-        "metadata": {
-            "metadata_file_1": [
-                    // the relative path for metadata_file_1
-                    "path_to_metadata/metadata_file_1.csv",
-                    // metadata_file_1 md5 checksum
-                    "bb8b0ca866fc2423edde01325d6e34f7"
-                ],
-            "metadata_file_2": [
-                    // the relative path for metadata_file_2
-                    "path_to_metadata/metadata_file_2.csv",
-                    // metadata_file_2 md5 checksum
-                    "6cce186ce77a06541cdb9f0a671afb46"
-                ]
-            }
-    }
-
-
-The optional top-level keys (`tracks`, `multitracks` and `records`) relate to different organizations of music datasets.
-`tracks` should be used when the dataset is organized as a collection of individual tracks, namely
-mono or multi-channel audio, spectrograms only, and their respective annotations. `multitracks` should be used in the
-case that the dataset comprises multitracks, that is different groups of tracks related to each other. Finally, `records`
-should be used when the dataset consits of groups of tables, as many recommendation datasets do.
-
-tracks
-^^^^^^
-
-Most MIR datasets are organized as a collection of tracks and annotations. In such case, the index should make use of the ``tracks``
-top-level key. A dictionary should be stored under the ``tracks`` top-level key where the keys are the unique track ids of the dataset. The values should be a dictionary of files associated with
-the track id, along with their checksums. These files could be for instance audio files or annotations related to the track id.
-Any file path included should be relative to the top level directory of the dataset.
-
-For example, if the version `1.0` of a given dataset has the structure:
-
-.. code-block:: javascript
-
-    > Example_Dataset/
-        > audio/
-            track1.wav
-            track2.wav
-            track3.wav
-        > annotations/
-            track1.csv
-            Track2.csv
-            track3.csv
-        > metadata/
-            metadata_file.csv
-
-The top level directory is ``Example_Dataset`` and the relative path for ``track1.wav``
-should be ``audio/track1.wav``. Any unavailable field should be indicated with `null`. A possible index file for this example would be:
-
-.. code-block:: javascript
-
-
-    {   "version": "1.0",
-        "tracks":
-            "track1": {
-                "audio": [
-                    "audio/track1.wav",  // the relative path for track1's audio file
-                    "912ec803b2ce49e4a541068d495ab570"  // track1.wav's md5 checksum
-                ],
-                "annotation": [
-                    "annotations/track1.csv",  // the relative path for track1's annotation
-                    "2cf33591c3b28b382668952e236cccd5"  // track1.csv's md5 checksum
-                ]
-            },
-            "track2": {
-                "audio": [
-                    "audio/track2.wav",
-                    "65d671ec9787b32cfb7e33188be32ff7"
-                ],
-                "annotation": [
-                    "annotations/Track2.csv",
-                    "e1964798cfe86e914af895f8d0291812"
-                ]
-            },
-            "track3": {
-                "audio": [
-                    "audio/track3.wav",
-                    "60edeb51dc4041c47c031c4bfb456b76"
-                ],
-                "annotation": [
-                    "annotations/track3.csv",
-                    "06cb006cc7b61de6be6361ff904654b3"
-                ]
-            },
-        }
-      "metadata": {
-            "metadata_file": [
-                "metadata/metadata_file.csv",
-                "7a41b280c7b74e2ddac5184708f9525b"
-            ]
-      }
-    }
-
-
-In this example there is a (purposeful) mismatch between the name of the audio file `track2.wav` and its corresponding annotation file, `Track2.csv`, compared with the other pairs. *This mismatch should be included in the index*. This type of slight difference in filenames happens often in publicly available datasets, making pairing audio and annotation files more difficult. We use a fixed, version-controlled index to account for this kind of mismatch, rather than relying on string parsing on load.
-
-
-multitracks
-^^^^^^^^^^^
-
-We are still defining the structure of this ones, to be updated soon!
-
-
-records
-^^^^^^^
-
-We are still defining the structure of this ones, to be updated soon!
 
 .. _index example:
 Index script example
 ^^^^^^^^^^^^^^^^^^^^
+
+Here there is an example of an index to use as guideline:
 
 .. code-block:: python
 
@@ -208,55 +85,51 @@ Index script example
     import os
     from mirdata.utils import md5
 
-    IKALA_INDEX_PATH = "../mirdata/datasets/indexes/ikala_index.json"
+    DATASET_INDEX_PATH = "../mirdata/datasets/indexes/dataset_index.json"
 
 
-    def make_ikala_index(ikala_data_path):
-        lyrics_dir = os.path.join(ikala_data_path, 'Lyrics')
-        lyrics_files = glob.glob(os.path.join(lyrics_dir, '*.lab'))
-        track_ids = sorted([os.path.basename(f).split('.')[0] for f in lyrics_files])
+    def make_dataset_index(dataset_data_path):
+        annotation_dir = os.path.join(dataset_data_path, 'annotation')
+        annotation_files = glob.glob(os.path.join(annotation_dir, '*.lab'))
+        track_ids = sorted([os.path.basename(f).split('.')[0] for f in annotation_files])
 
         # top-key level metadata
-        metadata_checksum = md5(os.path.join(ikala_data_path, 'id_mapping.txt'))
+        metadata_checksum = md5(os.path.join(dataset_data_path, 'id_mapping.txt'))
         index_metadata = {"metadata":{"id_mapping": ("id_mapping.txt", metadata_checksum)}}
 
         # top-key level tracks
         index_tracks = {}
         for track_id in track_ids:
             audio_checksum = md5(
-                os.path.join(ikala_data_path, "Wavfile/{}.wav".format(track_id))
+                os.path.join(dataset_data_path, "Wavfile/{}.wav".format(track_id))
             )
-            pitch_checksum = md5(
-                os.path.join(ikala_data_path, "PitchLabel/{}.pv".format(track_id))
-            )
-            lyrics_checksum = md5(
-                os.path.join(ikala_data_path, "Lyrics/{}.lab".format(track_id))
+            annotation_checksum = md5(
+                os.path.join(dataset_data_path, "annotation/{}.lab".format(track_id))
             )
 
             index_tracks[track_id] = {
                 "audio": ("Wavfile/{}.wav".format(track_id), audio_checksum),
-                "pitch": ("PitchLabel/{}.pv".format(track_id), pitch_checksum),
-                "lyrics": ("Lyrics/{}.lab".format(track_id), lyrics_checksum),
+                "annotation": ("annotation/{}.lab".format(track_id), annotation_checksum),
             }
 
         # top-key level version
-        ikala_index = {"version": None}
+        dataset_index = {"version": None}
 
         # combine all in dataset index
-        ikala_index.update(index_metadata)
-        ikala_index.update({"tracks": index_tracks})
+        dataset_index.update(index_metadata)
+        dataset_index.update({"tracks": index_tracks})
 
-        with open(IKALA_INDEX_PATH, 'w') as fhandle:
-            json.dump(ikala_index, fhandle, indent=2)
+        with open(dataset_INDEX_PATH, 'w') as fhandle:
+            json.dump(dataset_index, fhandle, indent=2)
 
 
     def main(args):
-        make_ikala_index(args.ikala_data_path)
+        make_dataset_index(args.dataset_data_path)
 
 
     if __name__ == '__main__':
-        PARSER = argparse.ArgumentParser(description='Make IKala index file.')
-        PARSER.add_argument('ikala_data_path', type=str, help='Path to IKala data folder.')
+        PARSER = argparse.ArgumentParser(description='Make dataset index file.')
+        PARSER.add_argument('dataset_data_path', type=str, help='Path to dataset data folder.')
 
         main(PARSER.parse_args())
 
@@ -266,8 +139,11 @@ Index script example
 2. Create a module
 ------------------
 
-Copy and paste this template and adjust it for your dataset. Find and replace `Example` with the name of your dataset.
-You can also remove any comments beginning with `# --`
+Once the index is created you can create the loader. For that, we suggest you use the following template and adjust it for your dataset.
+Remove any comments beginning with `# --` which are there as guidelines. See other modules as examples in the
+`datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_. The necessary step is then:
+
+1. Create a module in mirdata, ``mirdata/datasets/dataset.py``
 
 Module example
 ^^^^^^^^^^^^^^
@@ -277,7 +153,7 @@ Module example
     # -*- coding: utf-8 -*-
     """Example Dataset Loader
 
-    Please include the following information at the top level docstring for the dataset's module `my_dataset.py`:
+    Please include the following information at the top level docstring for the dataset's module `dataset.py`:
 
     1. Describe annotations included in the dataset
     2. Indicate the size of the datasets (e.g. number files and duration, hours)
@@ -551,22 +427,107 @@ Module example
 3. Add tests
 ------------
 
-1. Make a fake version of the dataset in the tests folder `tests/resources/mir_datasets/my_dataset/`, so you can test against that data. For example:
-  a. Include all audio and annotation files for one track of the dataset
-  b. For each audio/annotation file, reduce the audio length to a few seconds and remove all but a few of the annotations.
-  c. If the dataset has a metadata file, reduce the length to a few lines to make it trival to test.
-2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the ikala dataset tests (`tests/test_ikala.py`) for a reference.
-*Note that we have written automated tests for all loader's `cite`, `download`, `validate`, `load`, `track_ids` functions, as well as some basic edge cases of the `Track` object, so you don't need to write tests for these!*
-3. Locally run `pytest -s tests/test_full_dataset.py --local --dataset my_dataset`. See below for more details.
+To finish your contribution, include tests that check the integrity of your loader. For this, follow these steps:
+
+1. Make a toy version of the dataset in the tests folder ``tests/resources/mir_datasets/my_dataset/``,
+so you can test against little data. For example:
+    * Include all audio and annotation files for one track of the dataset
+    * For each audio/annotation file, reduce the audio length to a few seconds and remove all but a few of the annotations.
+    * If the dataset has a metadata file, reduce the length to a few lines.
+2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the `tests folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/tests>`_ for reference.
+3. Locally run ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset`` before submitting your loader to make sure everything is working.
+
+
+.. note::  We have written automated tests for all loader's ``cite``, ``download``, ``validate``, ``load``, ``track_ids`` functions, as well as some basic edge cases of the ``Track`` object, so you don't need to write tests for these!
+
+
+.. _test_file:
+
+Test file example
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    # -*- coding: utf-8 -*-
+
+    import numpy as np
+
+    from mirdata.datasets import dataset
+    from mirdata import utils
+    from tests.test_utils import run_track_tests
+
+
+    def test_track():
+        default_trackid = "some_id"
+        data_home = "tests/resources/mir_datasets/dataset"
+        track = dataset.Track(default_trackid, data_home=data_home)
+
+        expected_attributes = {
+            "track_id": "some_id",
+            "audio_path": "tests/resources/mir_datasets/dataset/"
+            + "Wavfile/some_id.wav",
+            "song_id": "some_id",
+            "annotation_path": "tests/resources/mir_datasets/dataset/annotation/some_id.pv",
+        }
+
+        expected_property_types = {"annotation": annotations.XData}
+
+        assert track._track_paths == {
+            "audio": ["Wavfile/some_id.wav", "278ae003cb0d323e99b9a643c0f2eeda"],
+            "annotation": ["Annotation/some_id.pv", "0d93a011a9e668fd80673049089bbb14"],
+        }
+
+        run_track_tests(track, expected_attributes, expected_property_types)
+
+        # test audio loading functions
+        audio, sr = track.audio
+        assert sr == 44100
+        assert audio.shape == (44100 * 2,)
+
+    def test_to_jams():
+
+        data_home = "tests/resources/mir_datasets/dataset"
+        track = dataset.Track("some_id", data_home=data_home)
+        jam = track.to_jams()
+
+        annotations = jam.search(namespace="annotation")[0]["data"]
+        assert [annotation.time for annotation in annotations] == [0.027, 0.232]
+        assert [annotation.duration for annotation in annotations] == [0.20500000000000002, 0.736]
+        # ... etc
+
+    def test_load_annotation():
+        # load a file which exists
+        annotation_path = "tests/resources/mir_datasets/dataset/Annotation/some_id.pv"
+        annotation_data = dataset.load_annotation(annotation_path)
+
+        # check types
+        assert type(annotation_data) == annotations.XData
+        assert type(annotation_data.times) is np.ndarray
+        # ... etc
+
+        # check values
+        assert np.array_equal(annotation_data.times, np.array([0.016, 0.048]))
+        # ... etc
+
+
+    def test_load_metadata():
+        data_home = "tests/resources/mir_datasets/dataset"
+        metadata = dataset._load_metadata(data_home)
+        assert metadata["data_home"] == data_home
+        assert metadata["some_id"] == "something"
+
+        metadata_none = dataset._load_metadata("asdf/asdf")
+        assert metadata_none is None
 
 Running your tests locally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can run all the tests locally by running:
+Before creating a PR, you should run all the tests locally like this:
 
 ::
 
-pytest tests/ --local
+    pytest tests/ --local
+
 
 The `--local` flag skips tests that are built to run only on the remote testing environment.
 
@@ -574,33 +535,30 @@ To run one specific test file:
 
 ::
 
-pytest tests/test_ikala.py
+    pytest tests/test_ikala.py
 
 
 Finally, there is one local test you should run, which we can't easily run in our testing environment.
 
 ::
 
-pytest -s tests/test_full_dataset.py --local --dataset my_dataset
+    pytest -s tests/test_full_dataset.py --local --dataset dataset
 
 
-Where `my_dataset` is the name of the module of the dataset you added. The `-s` tells pytest not to skip print statments, which is useful here for seeing the download progress bar when testing the download function.
+Where ``dataset`` is the name of the module of the dataset you added. The ``-s`` tells pytest not to skip print statments, which is useful here for seeing the download progress bar when testing the download function.
 
-This tests that your dataset downloads, validates, and loads properly for every track.
-This test takes a long time for some datasets :( but it's important.
+This tests that your dataset downloads, validates, and loads properly for every track. This test takes a long time for some datasets, but it's important to ensure the integrity of the library.
 
 We've added one extra convenience flag for this test, for getting the tests running when the download is very slow:
 
 ::
 
-pytest -s tests/test_full_dataset.py --local --dataset my_dataset --skip-download
+    pytest -s tests/test_full_dataset.py --local --dataset my_dataset --skip-download
 
 
-which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually
-all pass without this flag.
+which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually all pass without this flag.
 
-Test file example
-^^^^^^^^^^^^^^^^^
+
 
 .. _submit_loader:
 
@@ -609,14 +567,13 @@ Submit your loader
 
 Before you submit your loader make sure to:
 
-1. Add your module to ``docs/source/mirdata.rst`` (you can check that this was done correctly by clicking on the
-readthedocs check when you open a Pull Request)
+1. Add your module to ``docs/source/mirdata.rst`` (you can check that this was done correctly by clicking on the readthedocs check when you open a PR)
 2. Add the module name to ``DATASETS`` in ``mirdata/__init__.py``
 
 Pull Request template
 ^^^^^^^^^^^^^^^^^^^^^
 
-When starting your pull request please use the `new_loader.md template <https://github.com/mir-dataset-loaders/mirdata/blob/master/.github/PULL_REQUEST_TEMPLATE/new_loader.md>`_,
+When starting your PR please use the `new_loader.md template <https://github.com/mir-dataset-loaders/mirdata/blob/master/.github/PULL_REQUEST_TEMPLATE/new_loader.md>`_,
 it will simplify the reviewing process and also help you make a complete PR. You can do that by adding
 ``&template=new_loader.md`` at the end of the url when you are creating the PR :
 
@@ -625,31 +582,24 @@ it will simplify the reviewing process and also help you make a complete PR. You
 
 Docs
 ^^^^
-Staged docs for every new pull request are built, and you can look at them by clicking on the "readthedocs" test in a pull request. To quickly troubleshoot any issues, you can build the docs locally by nagivating to the `docs` folder, and running `make html` (note, you must have `sphinx` installed). Then open the generated `_build/source/index.html` file in your web browser to view.
+Staged docs for every new PR are built, and you can look at them by clicking on the "readthedocs" test in a PR. To quickly troubleshoot any issues, you can build the docs locally by nagivating to the ``docs`` folder, and running ``make html`` (note, you must have ``sphinx`` installed). Then open the generated ``_build/source/index.html`` file in your web browser to view.
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
-If github shows a red X next to your latest commit, it means one of our checks is not passing. This could mean:
+If github shows a red ``X`` next to your latest commit, it means one of our checks is not passing. This could mean:
 
-1. running "black" has failed
-
-This means that your code is not formatted according to black's code-style. To fix this, simply run:
+1. running ``black`` has failed -- this means that your code is not formatted according to ``black``'s code-style. To fix this, simply run:
 
 ::
 
-black --target-version py37 --skip-string-normalization mirdata/
+    black --target-version py37 --skip-string-normalization mirdata/
+
 from inside the top level folder of the repository.
 
-2. the test coverage is too low
+2. the test coverage is too low -- this means that there are too many new lines of code introduced that are not tested.
 
-This means that there are too many new lines of code introduced that are not tested. Most of the time we will help you fix this.
+3. the docs build has failed -- this means that one of the changes you made to the documentation has caused the build to fail. Check the formatting in your changes and make sure they are consistent.
 
-3. the docs build has failed
-
-This means that one of the changes you made to the documentation has caused the build to fail. Check the formatting in your changes (especially in `docs/datasets.rst`) and make sure they're consistent.
-
-4. the tests have failed
-
-This means at least one of tests are failing. Run the tests locally to make sure they're passing. If they're passing locally but failing in the check, we can help debug.
+4. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing. If they are passing locally but failing in the check, open an `issue` and we can help debug.
 
