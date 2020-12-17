@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath("../"))
 # -- Project information -----------------------------------------------------
 
 project = "mirdata"
-copyright = "2019, Rachel Bittner, Magdalena Fuentes, David Rubinstein, Andreas Jansson, Keunwoo Choi, Thor Kell"
+copyright = "2019-2020, mirdata development team."
 author = "Rachel Bittner, Magdalena Fuentes, David Rubinstein, Andreas Jansson, Keunwoo Choi, Thor Kell"
 
 
@@ -30,6 +30,9 @@ mirdata_version = importlib.import_module("mirdata.version")
 version = mirdata_version.short_version
 # The full version, including alpha/beta/rc tags.
 release = mirdata_version.version
+# Show only copyright
+show_authors = False
+
 
 # -- Mock dependencies -------------------------------------------------------
 
