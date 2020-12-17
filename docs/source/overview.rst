@@ -1,60 +1,74 @@
 .. _overview:
 
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
 ########
 Overview
 ########
 
-Introduction
-============
 
-This library provides tools for working with common MIR datasets, including tools for:
+``mirdata`` works based on two main components: ``datasets loaders`` and ``indexes``. In general terms, a ``dataset loader`` contains customized code for working with the different elements of a dataset (audio, annotations, metadata); and an ``index`` has the information about the folder structure the dataset should have and the checksums of its different elements, and is used to load and validate them.
 
- * downloading datasets to a common location and format
- * validating that the files for a dataset are all present
- * loading annotation files to a common format, consistent with the format required by `mir_eval`
- * parsing track level metadata for detailed evaluations.
 
-This libary was presented in our `ISMIR 2019 paper <https://magdalenafuentes.github.io/publications/2019_ISMIR_mirdata.pdf>`_
+All ``datasets loaders`` have the following functionalities: ``readme()``, ``cite()``, ``download()``, ``validate()``. Besides these common functionalities, each ``dataset loader`` has its own functions and attributes depending on the nature of the dataset. For example, most datasets consist of a collection
+of ``tracks``, then most ``dataset loaders`` will have a ``Track`` attribute. Moreover, depending on the type of ``annotation`` the dataset has, the track will have different
+attributes such as ``beats`` or ``chords``. When the annotations are ``time-series``, they have their own ``mirdata`` ``data-type``. If the annotations are static over the whole track, they are included as ``metadata``. See the :ref:`tutorial` for a detail explanation on how to interact with the library.
 
-To install, run:
-``pip install mirdata``
 
-For more details see the :ref:`tutorial`.
 
-jams and mir_eval compatibility
+mirdata design principles
+#########################
 
-Dataset Loaders
+Ease of use and contribution
+----------------------------
+
+We designed ``mirdata`` to be easy to use and easy to contribute to. ``mirdata`` simplifies the research pipeline considerably, facilitating research in a wider diversity of tasks and musical datasets.
+We provide detailed examples on how to interact with the library in the :ref:`tutorial`, as well as detail explanation on
+how to contribute in :ref:`contributing`. Additionally, we have a `repository of Jupyter notebooks <https://github.com/mir-dataset-loaders/mirdata-notebooks>`_ with usage
+examples of the different datasets.
+
+
+Reproducibility
 ---------------
 
-Mirdata works based on two main components: datasets loaders and indexes. In general terms, the dataset loader contains the code for working with the different elements of the dataset (audio, annotations, metadata); and the index has the information about the folder structure the dataset should have and the checksums of its different elements, and is used to load and validate them.
-All datasets loaders have the following functionalities:
-readme(), cite(), download(), validate() […] .
-Those functionalities are explained <here-link-to-Dataset-class>.
-Besides these common functionalities, each dataset loader has
-its own functions and attributes depending on the nature of
-the dataset. For example, most datasets consist of a collection
-of tracks, then most dataset loaders will have a Track
-element/attribute. Moreover, depending on the type of
-annotation the dataset has, the track will have different
-attributes such as beats or chords. When the annotations are time-series, they have their own mirdata data-type as explained <here-link-to-annotations>. If the annotations are static over the whole track, they are included as metadata. See <usage> for a detail explanation on how to interact with the library.
+We hope that ``mirdata`` will increase research reproducibility by giving a common framework for MIR researchers to compare and validate their data.
+If mistakes are found in annotations or audio versions change, using ``mirdata`` the community can fix those mistakes while still being able
+to compare methods moving forward. We hope the library will also contribute to fair comparisons within algorithms making sure the data is the same.
 
 
-Downloading
------------
+.. _canonical version:
+
+canonical version
+^^^^^^^^^^^^^^^^^^
+The ``dataset loaders`` in ``mirdata`` are written for what we call the ``canonical version`` of a dataset. Whenever possible, this should be the official release of the dataset as published by the dataset creator/s.
+When this is not possible, (e.g. for data that is no longer available), the procedure we follow is to find as many copies of the data as possible from different researchers (at least 4), and use the most common one.
+To make this process transparent, when there are doubts about the data consistency we open an `issue <https://github.com/mir-dataset-loaders/mirdata/issues>`_ and leave it to the community to discuss what to use.
+
+
+
+Standardization
+---------------
+
+Different datasets have different annotations, metadata, etc. We try to respect the idiosyncrasy of each dataset as much as we can. For that
+reason, ``tracks`` in different ``dataset loaders`` in ``mirdata`` have different attributes, e.g. some may have ``artist`` and some may not.
+However there are some elements that are common in `most` datasets, and in those cases we standarize them to increase the usability of the library.
+Some examples of this are the annotations in ``mirdata``, e.g. ``BeatData``.
+
+
+..
+    .. _dataset_loaders:
+
+    dataset loaders
+    ###############
+
+
+
 
 .. _indexes:
 
 indexes
--------
+#######
 
-Index structure
-^^^^^^^^^^^^^^^
 
-The index is a json file with the mandatory top-level key ``version`` and at least one of the optional
+The ``index`` is a json file with the mandatory top-level key ``version`` and at least one of the optional
 top-level keys ``tracks``, ``multitracks`` or ``records``, explained below. The index can also optionally have the top-level
 key ``metadata``, but it is not required. Scripts used to create the dataset indexes are in the `scripts <https://github.com/mir-dataset-loaders/mirdata/tree/master/scripts>`_ folder.
 
@@ -90,7 +104,7 @@ case that the dataset comprises multitracks, that is different groups of tracks 
 should be used when the dataset consits of groups of tables, as many recommendation datasets do.
 
 tracks
-^^^^^^
+------
 
 Most MIR datasets are organized as a collection of tracks and annotations. In such case, the index should make use of the ``tracks``
 top-level key. A dictionary should be stored under the ``tracks`` top-level key where the keys are the unique track ids of the dataset. The values should be a dictionary of files associated with
@@ -161,52 +175,30 @@ should be ``audio/track1.wav``. Any unavailable field should be indicated with `
     }
 
 
-In this example there is a (purposeful) mismatch between the name of the audio file `track2.wav` and its corresponding annotation file, `Track2.csv`, compared with the other pairs. *This mismatch should be included in the index*. This type of slight difference in filenames happens often in publicly available datasets, making pairing audio and annotation files more difficult. We use a fixed, version-controlled index to account for this kind of mismatch, rather than relying on string parsing on load.
+.. note::
+    In this example there is a (purposeful) mismatch between the name of the audio file ``track2.wav`` and its corresponding annotation file, ``Track2.csv``, compared with the other pairs. This mismatch should be included in the index. This type of slight difference in filenames happens often in publicly available datasets, making pairing audio and annotation files more difficult. We use a fixed, version-controlled index to account for this kind of mismatch, rather than relying on string parsing on load.
 
 
 multitracks
-^^^^^^^^^^^
+-----------
 
 We are still defining the structure of this ones, to be updated soon!
 
 
 records
-^^^^^^^
+-------
 
 We are still defining the structure of this ones, to be updated soon!
 
 
-Annotations
------------
+..
+    Annotations
+    -----------
 
-jams and mir_eval compatibility
+    jams and mir_eval compatibility
 
 
 Metadata
---------
+########
 
-.. _canonical version:
-
-canonical version
-^^^^^^^^^^^^^^^^^^
-Whenever possible, this should be the official release of the dataset as published by the dataset creator/s.
-When this is not possible, (e.g. for data that is no longer available), find as many copies of the data as you can from different researchers (at least 4), and use the most common one. When in doubt open an [issue](https://github.com/mir-dataset-loaders/mirdata/issues) and leave it to the community to discuss what to use.
-
-
-Design Principles
-=================
-
-Ease of use and contribution
-----------------------------
-Examples and notebooks
-Contributing section
-
-Reproducability
----------------
-Everyone uses the same dataset
-If mistakes found, can fix and still compare algorithms
-Easy to use multiple datasets, increase multi-tasking and diversity of musical cultures
-
-Standardization
----------------
-Standardize while respecting idiosyncrasy of datasets
+When available, we provide extensive and easy-to-access ``metadata`` to facilitate track metadata-specific analysis. ``metadata`` is available as attroibutes at the ``track`` level, e.g. ``track.artist``.

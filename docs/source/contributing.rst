@@ -12,7 +12,7 @@ steps indicated below and create a Pull Request (PR) to the github repository.
 
 
 Installing and running tests
-#####################################
+#############################
 
 
 First, clone the repository from github:
