@@ -43,7 +43,7 @@ class Mock(MagicMock):
         return MagicMock()
 
 
-MOCK_MODULES = ["librosa", "numpy", "jams", "pretty_midi"]
+MOCK_MODULES = ["librosa", "numpy", "jams", "pretty_midi", "DALI"]
 
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
@@ -59,7 +59,7 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
-    "sphinx.ext.autosectionlabel",
+    # "sphinx.ext.autosectionlabel",
 ]
 
 
@@ -75,7 +75,12 @@ master_doc = "index"
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+exclude_patterns = [
+    "_build",
+    "Thumbs.db",
+    ".DS_Store",
+    "source/example.rst",
+]
 
 
 # -- Options for HTML output -------------------------------------------------
