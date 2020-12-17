@@ -74,4 +74,4 @@ in International Society for Music Information Retrieval (ISMIR) Conference, 201
 
 ### Contributing a new dataset loader
 
-We welcome contributions to this library, especially new datasets. Please see [CONTRIBUTING.md](https://github.com/mir-dataset-loaders/mirdata/blob/master/CONTRIBUTING.md) for guidelines.
+We welcome contributions to this library, especially new datasets. Please see [contributing](https://mirdata.readthedocs.io/en/latest/source/contributing.html) for guidelines.
