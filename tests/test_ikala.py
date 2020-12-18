@@ -109,7 +109,7 @@ def test_load_lyrics():
     assert np.array_equal(lyrics_data_simple.intervals[:, 0], np.array([0.027, 0.232]))
     assert np.array_equal(lyrics_data_simple.intervals[:, 1], np.array([0.232, 0.968]))
     assert np.array_equal(lyrics_data_simple.lyrics, ["JUST", "WANNA"])
-    assert np.array_equal(lyrics_data_simple.pronunciations, [None, None])
+    assert np.array_equal(lyrics_data_simple.pronunciations, ["", ""])
 
     # load a file with pronunciations
     lyrics_path_pronun = "tests/resources/mir_datasets/ikala/Lyrics/10164_chorus.lab"
@@ -125,7 +125,7 @@ def test_load_lyrics():
     assert np.array_equal(lyrics_data_pronun.intervals[:, 0], np.array([0.021, 0.571]))
     assert np.array_equal(lyrics_data_pronun.intervals[:, 1], np.array([0.189, 1.415]))
     assert np.array_equal(lyrics_data_pronun.lyrics, ["ASDF", "EVERYBODY"])
-    assert np.array_equal(lyrics_data_pronun.pronunciations, ["t i au", None])
+    assert np.array_equal(lyrics_data_pronun.pronunciations, ["t i au", ""])
 
 
 def test_load_metadata():

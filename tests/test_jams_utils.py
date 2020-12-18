@@ -196,7 +196,7 @@ def test_notes():
             annotations.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1]),
+                np.array([1.0, 1.0, 1.0]),
             ),
             None,
         )
@@ -206,7 +206,7 @@ def test_notes():
             annotations.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1]),
+                np.array([1.0, 1.0, 1.0]),
             ),
             "notes_2",
         )
@@ -216,7 +216,7 @@ def test_notes():
             annotations.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1]),
+                np.array([1.0, 1.0, 1.0]),
             ),
             "notes_1",
         ),
@@ -224,7 +224,7 @@ def test_notes():
             annotations.NoteData(
                 np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1]),
+                np.array([1.0, 1.0, 1.0]),
             ),
             "notes_2",
         ),
@@ -233,7 +233,7 @@ def test_notes():
         annotations.NoteData(
             np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
             np.array([1108.731, 1108.731, 1108.731]),
-            np.array([1, 1, 1]),
+            np.array([1.0, 1.0, 1.0]),
         ),
         None,
     )
@@ -242,7 +242,7 @@ def test_notes():
             annotations.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1]),
+                np.array([1.0, 1.0, 1.0]),
             ),
             None,
         ],
@@ -250,7 +250,7 @@ def test_notes():
             annotations.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
-                np.array([1, 1, 1]),
+                np.array([1.0, 1.0, 1.0]),
             ),
             "notes_2",
         ),
@@ -829,9 +829,7 @@ def test_lyrics():
     lyrics_data_1 = [
         (
             annotations.LyricData(
-                np.array([[0.027, 0.232], [0.227, 0.742]]).T,
-                ["The", "Test"],
-                [None, None],
+                np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
             ),
             None,
         )
@@ -839,9 +837,7 @@ def test_lyrics():
     lyrics_data_2 = [
         (
             annotations.LyricData(
-                np.array([[0.027, 0.232], [0.227, 0.742]]).T,
-                ["The", "Test"],
-                [None, None],
+                np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
             ),
             "lyrics_1",
         )
@@ -849,24 +845,20 @@ def test_lyrics():
     lyrics_data_3 = [
         (
             annotations.LyricData(
-                np.array([[0.027, 0.232], [0.227, 0.742]]).T,
-                ["The", "Test"],
-                [None, None],
+                np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
             ),
             "lyrics_1",
         ),
         (
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
-                ["is", "cool"],
-                [None, None],
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T, ["is", "cool"], ["", ""],
             ),
             "lyrics_2",
         ),
     ]
     lyrics_data_4 = (
         annotations.LyricData(
-            np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], [None, None],
+            np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
         ),
         "lyrics_1",
     )
@@ -875,7 +867,7 @@ def test_lyrics():
             annotations.LyricData(
                 np.array([[0.027, 0.232], [0.227, 0.742]]).T,
                 ["The", "Test"],
-                [None, None],
+                ["", ""],
             ),
             "lyrics_1",
         ),
@@ -883,7 +875,7 @@ def test_lyrics():
             annotations.LyricData(
                 np.array([[0.0, 0.232], [0.227, 0.742]]).T,
                 ["is", "cool"],
-                [None, None],
+                ["", ""],
             ),
             "lyrics_2",
         ],
@@ -999,22 +991,19 @@ def test_events():
     event_data1 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]), ["event A", "event B"],
             ),
             "I am a description",
         )
     ]
     event_data2 = [
         (
-            annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["2", "event B"]
-            ),
+            annotations.EventData(np.array([[0.2, 0.3], [0.3, 0.4]]), ["2", "event B"]),
             "events 1",
         ),
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T,
-                [{"a": 1, 2: "b"}, "a great label"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]), ["", "a great label"],
             ),
             "events 2",
         ),
@@ -1022,8 +1011,8 @@ def test_events():
     event_data3 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T,  # invalid because > duration
-                [{"a": 1, 2: "b"}, "a great label"],
+                np.array([[0.2, 0.3], [0.3, 20.0]]),  # invalid because > duration
+                ["", "a great label"],
             ),
             "asdf",
         )
@@ -1038,15 +1027,11 @@ def test_events():
     jam2 = jams_utils.jams_converter(
         event_data=event_data2, metadata={"duration": 10.0}
     )
-    with pytest.raises(jams.SchemaError):
-        jam2.validate()
 
     jam3 = jams_utils.jams_converter(
         event_data=event_data3, metadata={"duration": 10.0}
     )
 
-    with pytest.raises(jams.SchemaError):
-        assert jam3.validate()
     with pytest.raises(TypeError):
         jams_utils.jams_converter(event_data=event_data4)
     with pytest.raises(TypeError):

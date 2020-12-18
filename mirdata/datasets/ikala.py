@@ -246,9 +246,9 @@ def load_lyrics(lyrics_path):
             lyrics.append(line[2])
             if len(line) > 2:
                 pronunciation = " ".join(line[3:])
-                pronunciations.append(pronunciation if pronunciation != "" else None)
+                pronunciations.append(pronunciation)
             else:
-                pronunciations.append(None)
+                pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
         np.array([start_times, end_times]).T, lyrics, pronunciations,

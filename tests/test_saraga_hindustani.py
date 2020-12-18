@@ -317,7 +317,7 @@ def test_load_phrases():
     # Check types
     assert type(parsed_phrases) is annotations.EventData
     assert type(parsed_phrases.intervals) is np.ndarray
-    assert type(parsed_phrases.event) is list
+    assert type(parsed_phrases.events) is list
 
     # Check values
     assert np.array_equal(
@@ -330,14 +330,14 @@ def test_load_phrases():
             ]
         ),
     )
-    assert parsed_phrases.event == ["Pmr", "PnS", "rmP"]
+    assert parsed_phrases.events == ["Pmr", "PnS", "rmP"]
     assert saraga_hindustani.load_phrases(None) is None
 
     # Test phrases with no information
     track = saraga_hindustani.Track("71_Bilaskhani_Todi", data_home=data_home)
     phrases_path = track.phrases_path
     parsed_phrases_add = saraga_hindustani.load_phrases(phrases_path)
-    assert parsed_phrases_add.event == ["rg", " "]
+    assert parsed_phrases_add.events == ["rg", " "]
 
 
 def test_load_tempo():

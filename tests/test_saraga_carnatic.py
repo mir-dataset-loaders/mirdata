@@ -511,7 +511,7 @@ def test_load_phrases():
     # Check types
     assert type(parsed_phrases) is annotations.EventData
     assert type(parsed_phrases.intervals) is np.ndarray
-    assert type(parsed_phrases.event) is list
+    assert type(parsed_phrases.events) is list
 
     # Check values
     assert np.array_equal(
@@ -524,7 +524,7 @@ def test_load_phrases():
             ]
         ),
     )
-    assert parsed_phrases.event == ["ndmdnsndn", "ndmdnsndn", "ndmdndmgr"]
+    assert parsed_phrases.events == ["ndmdnsndn", "ndmdnsndn", "ndmdndmgr"]
     assert saraga_carnatic.load_phrases(None) is None
 
 

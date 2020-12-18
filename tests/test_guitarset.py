@@ -101,7 +101,7 @@ def test_load_contours():
             393.37,
         ],
     )
-    assert np.allclose(TRACK.pitch_contours["e"].confidence[:10], np.ones((10,)))
+    assert TRACK.pitch_contours["e"].confidence is None
 
 
 def test_load_notes():
@@ -115,7 +115,7 @@ def test_load_notes():
     assert np.allclose(
         TRACK.notes["e"].notes, [67.0576287044242, 71.03221526299762, 71.03297250121584]
     )
-    assert np.allclose(TRACK.notes["e"].confidence, [1, 1, 1])
+    assert TRACK.notes["e"].confidence is None
 
 
 def test_audio_mono():
