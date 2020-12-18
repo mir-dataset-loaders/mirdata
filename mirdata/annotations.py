@@ -8,7 +8,7 @@ import numpy as np
 class Annotation(object):
     def __repr__(self):
         attributes = [v for v in dir(self) if not v.startswith("_")]
-        repr_str = f"{self.__class__.__name__}({attributes.join(',')})"
+        repr_str = f"{self.__class__.__name__}({', '.join(attributes)})"
         return repr_str
 
 
@@ -337,6 +337,12 @@ def validate_confidence(confidence):
     if confidence is None:
         return
 
+    confidence_shape = np.shape(confidence)
+    if len(confidence_shape) != 1:
+        raise ValueError(
+            f"Confidence should be 1d, but array has shape {confidence_shape}"
+        )
+
     if (confidence < 0).any() or (confidence > 1).any():
         raise ValueError("confidence should be between 0 and 1")
 
@@ -355,6 +361,10 @@ def validate_times(times):
     """
     if times is None:
         return
+
+    time_shape = np.shape(times)
+    if len(time_shape) != 1:
+        raise ValueError(f"Times should be 1d, but array has shape {time_shape}")
 
     if (times < 0).any():
         raise ValueError("times should be positive numbers")
@@ -380,9 +390,10 @@ def validate_intervals(intervals):
         return
 
     # validate that intervals have the correct shape
-    if not np.shape(intervals)[1] == 2:
+    interval_shape = np.shape(intervals)
+    if len(interval_shape) != 2 or interval_shape[1] != 2:
         raise ValueError(
-            f"Intervals should be arrays with two columns, but array has {np.shape(intervals)[1]}"
+            f"Intervals should be arrays with two columns, but array has {interval_shape}"
         )
 
     # validate that time stamps are all positive numbers

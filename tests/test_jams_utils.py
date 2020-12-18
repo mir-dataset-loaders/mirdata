@@ -27,7 +27,7 @@ def test_beats():
     ]
     beat_data_3 = [
         (annotations.BeatData(np.array([0.0, 0.3]), np.array([1, 2])), "beats_1"),
-        (annotations.BeatData(np.array([0.5, 0.13]), np.array([4, 3])), "beats_2"),
+        (annotations.BeatData(np.array([0.5, 0.8]), np.array([4, 3])), "beats_2"),
     ]
     beat_data_4 = (
         annotations.BeatData(np.array([0.0, 0.3]), np.array([1, 2])),
@@ -35,7 +35,7 @@ def test_beats():
     )
     beat_data_5 = [
         (annotations.BeatData(np.array([0.0, 0.3]), np.array([1, 2])), "beats_1"),
-        [annotations.BeatData(np.array([0.5, 0.13]), np.array([4, 3])), "beats_2"],
+        [annotations.BeatData(np.array([0.5, 0.8]), np.array([4, 3])), "beats_2"],
     ]
     beat_data_6 = [(None, None)]
     beat_data_7 = [
@@ -67,9 +67,9 @@ def test_beats():
     assert confidence == [None, None]
 
     time, duration, value, confidence = get_jam_data(jam_3, "beat", 1)
-    assert time == [0.13, 0.5]
+    assert time == [0.5, 0.8]
     assert duration == [0.0, 0.0]
-    assert value == [3, 4]
+    assert value == [4, 3]
     assert confidence == [None, None]
 
     time, duration, value, confidence = get_jam_data(jam_6, "beat", 0)
@@ -865,17 +865,13 @@ def test_lyrics():
     lyrics_data_5 = [
         (
             annotations.LyricData(
-                np.array([[0.027, 0.232], [0.227, 0.742]]).T,
-                ["The", "Test"],
-                ["", ""],
+                np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
             ),
             "lyrics_1",
         ),
         [
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
-                ["is", "cool"],
-                ["", ""],
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T, ["is", "cool"], ["", ""],
             ),
             "lyrics_2",
         ],
