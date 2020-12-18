@@ -5,7 +5,7 @@ common loaders for Music Information Retrieval (MIR) datasets. Find the API docu
 [![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
 [![Documentation Status](https://readthedocs.org/projects/mirdata/badge/?version=latest)](https://mirdata.readthedocs.io/en/latest/?badge=latest)
 ![GitHub](https://img.shields.io/github/license/mir-dataset-loaders/mirdata.svg)
-[![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/mir-dataset-loaders/mirdata)](http://clayallsopp.github.io/readme-score?url=https://github.com/mir-dataset-loaders/mirdata)
+
 
 This library provides tools for working with common MIR datasets, including tools for:
 * downloading datasets to a common location and format
