@@ -204,6 +204,7 @@ def load_key(keys_path):
     with open(keys_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
+            # silence sections are not included
             if line[2] == "Key":
                 start_times.append(float(line[0]))
                 end_times.append(float(line[1]))
