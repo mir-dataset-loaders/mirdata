@@ -47,7 +47,14 @@ from mirdata import utils
 
 
 BIBTEX = """
-TODO
+    @inproceedings{porter2015acousticbrainz,
+      title={Acousticbrainz: a community platform for gathering music information obtained from audio},
+      author={Porter, Alastair and Bogdanov, Dmitry and Kaye, Robert and Tsukanov, Roman and Serra, Xavier},
+      booktitle={M{\"u}ller M, Wiering F, editors. ISMIR 2015. 16th International Society for Music Information 
+      Retrieval Conference; 2015 Oct 26-30; M{\'a}laga, Spain. Canada: ISMIR; 2015.},
+      year={2015},
+      organization={International Society for Music Information Retrieval (ISMIR)}
+}
 """
 REMOTES = {
     "validation-01": download_utils.RemoteFileMetadata(
