@@ -191,6 +191,13 @@ Core
    :members:
 
 
+Annotations
+-----------
+
+.. automodule:: mirdata.annotations
+   :members:
+
+
 Advanced
 --------
 
