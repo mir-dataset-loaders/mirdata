@@ -26,35 +26,43 @@ Total audio samples: 6705
 They are excerpts of 3 seconds from more than 2000 distinct recordings.
 
 Audio specifications
+
 * Sampling frequency: 44.1 kHz
 * Bit-depth: 16 bit
 * Audio format: .wav
 
 IRMAS Dataset trainig samples are annotated by storing the information of each track in their filenames.
- - Predominant instrument:
-    The annotation of the predominant instrument of each excerpt is both in the name of the containing
-    folder, and in the file name: cello (cel), clarinet (cla), flute (flu), acoustic guitar (gac),
-    electric guitar (gel), organ (org), piano (pia), saxophone (sax), trumpet (tru), violin (vio),
-    and human singing voice (voi).
-    The number of files per instrument are: cel(388), cla(505), flu(451), gac(637), gel(760), org(682),
-    pia(721), sax(626), tru(577), vio(580), voi(778).
-- Drum presence
-Additionally, some of the files have annotation in the filename regarding the presence ([dru])
-or non presence([nod]) of drums.
-- The annotation of the musical genre: country-folk ([cou_fol]), classical ([cla]),
-pop-rock ([pop_roc]), latin-soul ([lat_sou]), jazz-blues ([jaz_blu]).
-The annotations appear in this order in the filenames.
+* Predominant instrument:
+
+    * The annotation of the predominant instrument of each excerpt is both in the name of the containing
+      folder, and in the file name: cello (cel), clarinet (cla), flute (flu), acoustic guitar (gac),
+      electric guitar (gel), organ (org), piano (pia), saxophone (sax), trumpet (tru), violin (vio),
+      and human singing voice (voi).
+    * The number of files per instrument are: cel(388), cla(505), flu(451), gac(637), gel(760), org(682),
+      pia(721), sax(626), tru(577), vio(580), voi(778).
+
+* Drum presence
+
+    * Additionally, some of the files have annotation in the filename regarding the presence ([dru])
+      or non presence([nod]) of drums.
+
+* The annotation of the musical genre:
+    country-folk ([cou_fol]), classical ([cla]),
+    pop-rock ([pop_roc]), latin-soul ([lat_sou]), jazz-blues ([jaz_blu]).
+    The annotations appear in this order in the filenames.
 
 ==> Testing data:
 Total audio samples: 2874
 
 Audio specifications
+
 * Sampling frequency: 44.1 kHz
 * Bit-depth: 16 bit
 * Audio format: .wav
 
 IRMAS Dataset testing samples are annotated by the following basis:
-- Predominant instrument:
+
+* Predominant instrument:
     The annotations for an excerpt named: “excerptName.wav” are given in “excerptName.txt”. More than one
     instrument may be annotated in each excerpt, one label per line. This part of the dataset contains excerpts
     from a diversity of western musical genres, with varied instrumentations, and it is derived from the original
@@ -92,51 +100,51 @@ BIBTEX = """
 """
 
 REMOTES = {
-    'training_data': download_utils.RemoteFileMetadata(
-        filename='IRMAS-TrainingData.zip',
-        url='https://zenodo.org/record/1290750/files/IRMAS-TrainingData.zip?download=1',
-        checksum='4fd9f5ed5a18d8e2687e6360b5f60afe',
+    "training_data": download_utils.RemoteFileMetadata(
+        filename="IRMAS-TrainingData.zip",
+        url="https://zenodo.org/record/1290750/files/IRMAS-TrainingData.zip?download=1",
+        checksum="4fd9f5ed5a18d8e2687e6360b5f60afe",
         destination_dir=None,
     ),
-    'testing_data_1': download_utils.RemoteFileMetadata(
-        filename='IRMAS-TestingData-Part1.zip',
-        url='https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part1.zip?download=1',
-        checksum='5a2e65520dcedada565dff2050bb2a56',
+    "testing_data_1": download_utils.RemoteFileMetadata(
+        filename="IRMAS-TestingData-Part1.zip",
+        url="https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part1.zip?download=1",
+        checksum="5a2e65520dcedada565dff2050bb2a56",
         destination_dir=None,
     ),
-    'testing_data_2': download_utils.RemoteFileMetadata(
-        filename='IRMAS-TestingData-Part2.zip',
-        url='https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part2.zip?download=1',
-        checksum='afb0c8ea92f34ee653693106be95c895',
+    "testing_data_2": download_utils.RemoteFileMetadata(
+        filename="IRMAS-TestingData-Part2.zip",
+        url="https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part2.zip?download=1",
+        checksum="afb0c8ea92f34ee653693106be95c895",
         destination_dir=None,
     ),
-    'testing_data_3': download_utils.RemoteFileMetadata(
-        filename='IRMAS-TestingData-Part3.zip',
-        url='https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part3.zip?download=1',
-        checksum='9b3fb2d0c89cdc98037121c25bd5b556',
+    "testing_data_3": download_utils.RemoteFileMetadata(
+        filename="IRMAS-TestingData-Part3.zip",
+        url="https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part3.zip?download=1",
+        checksum="9b3fb2d0c89cdc98037121c25bd5b556",
         destination_dir=None,
     ),
 }
 
 
-DATA = utils.LargeData('irmas_index.json')
+DATA = utils.LargeData("irmas_index.json")
 
 
 INST_DICT = [
-    'cel',
-    'cla',
-    'flu',
-    'gac',
-    'gel',
-    'org',
-    'pia',
-    'sax',
-    'tru',
-    'vio',
-    'voi',
+    "cel",
+    "cla",
+    "flu",
+    "gac",
+    "gel",
+    "org",
+    "pia",
+    "sax",
+    "tru",
+    "vio",
+    "voi",
 ]
 
-GENRE_DICT = ['cou_fol', 'cla', 'pop_roc', 'lat_sou', 'jaz_blu']
+GENRE_DICT = ["cou_fol", "cla", "pop_roc", "lat_sou", "jaz_blu"]
 
 
 class Track(core.Track):
@@ -156,16 +164,16 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
-            raise ValueError('{} is not a valid track ID in Example'.format(track_id))
+        if track_id not in DATA.index["tracks"]:
+            raise ValueError("{} is not a valid track ID in Example".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
-        self.audio_path = os.path.join(self._data_home, self._track_paths['audio'][0])
+        self._track_paths = DATA.index["tracks"][track_id]
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.annotation_path = os.path.join(
-            self._data_home, self._track_paths['annotation'][0]
+            self._data_home, self._track_paths["annotation"][0]
         )
 
         # Dataset attributes
@@ -174,10 +182,10 @@ class Track(core.Track):
         self.drum = None
         self.train = True
 
-        self._audio_filename = self._track_paths['audio'][0]
+        self._audio_filename = self._track_paths["audio"][0]
 
         # TRAINING TRACKS
-        if '__' in track_id:
+        if "__" in track_id:
             self.predominant_instrument = os.path.basename(
                 os.path.dirname(self.audio_path)
             )
@@ -188,19 +196,19 @@ class Track(core.Track):
             )
 
             # Drum presence annotation is present
-            if 'dru' in self._audio_filename or 'nod' in self._audio_filename:
+            if "dru" in self._audio_filename or "nod" in self._audio_filename:
                 self.genre = (
-                    self._audio_filename.split('.')[0].split('[')[3].split(']')[0]
+                    self._audio_filename.split(".")[0].split("[")[3].split("]")[0]
                 )
                 assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
                     self.genre
                 )
-                self.drum = [True if 'dru' in self._audio_filename else False][0]
+                self.drum = [True if "dru" in self._audio_filename else False][0]
 
             # Drum presence annotation not present
             else:
                 self.genre = (
-                    self._audio_filename.split('.')[0].split('[')[2].split(']')[0]
+                    self._audio_filename.split(".")[0].split("[")[2].split("]")[0]
                 )
                 assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
                     self.genre
@@ -229,10 +237,10 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             metadata={
-                'instrument': self.instrument,
-                'genre': self.genre,
-                'drum': self.drum,
-                'train': self.train,
+                "instrument": self.instrument,
+                "genre": self.genre,
+                "drum": self.drum,
+                "train": self.train,
             },
         )
 
@@ -268,7 +276,7 @@ def load_pred_inst(annotation_path):
         raise IOError("annotation_path {} does not exist".format(annotation_path))
 
     pred_inst = []
-    with open(annotation_path, 'r') as fopen:
+    with open(annotation_path, "r") as fopen:
         pred_inst_file = fopen.readlines()
         for inst_ in pred_inst_file:
             inst_code = inst_[:3]

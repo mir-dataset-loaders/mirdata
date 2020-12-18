@@ -1,17 +1,14 @@
 .. _api:
 
-API documentation
-=================
 
-.. toctree::
-   :maxdepth: 2
+Dataset loaders
+---------------
 
+acousticbrainz_genre
+^^^^^^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata
+.. automodule:: mirdata.datasets.acousticbrainz_genre
    :members:
-
-Datasets
---------
 
 beatles
 ^^^^^^^
@@ -30,7 +27,7 @@ beatport_key
 cante100
 ^^^^^^^^
 
-.. automodule:: mirdata.cante100
+.. automodule:: mirdata.datasets.cante100
    :members:
 
 
@@ -121,7 +118,7 @@ medley_solos_db
 mridangam_stroke
 ^^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.mridangam_stroke
+.. automodule:: mirdata.datasets.mridangam_stroke
    :members:
 
 
@@ -160,10 +157,17 @@ salami
    :members:
 
 
-saraga
-^^^^^^
+saraga_carnatic
+^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.datasets.saraga
+.. automodule:: mirdata.datasets.saraga_carnatic
+   :members:
+
+
+saraga_hindustani
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.saraga_hindustani
    :members:
 
 
@@ -174,14 +178,21 @@ tinysol
    :members:
 
 
-Utilities
-----------
+tonality_classicaldb
+^^^^^^^^^^^^^^^^^^^^
 
-mirdata.core
-^^^^^^^^^^^^^
+.. automodule:: mirdata.datasets.tonality_classicalDB
+   :members:
+
+Core
+----
 
 .. automodule:: mirdata.core
    :members:
+
+
+Advanced
+--------
 
 mirdata.utils
 ^^^^^^^^^^^^^
@@ -202,3 +213,5 @@ mirdata.jams_utils
 
 .. automodule:: mirdata.jams_utils
    :members:
+
+

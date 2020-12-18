@@ -38,7 +38,7 @@ class Dataset(object):
 
     """
 
-    def __init__(self, dataset, data_home=None):
+    def __init__(self, dataset, data_home=None, index=None):
         """Inits a dataset by name and data location"""
         if dataset not in DATASETS:
             raise ValueError(
@@ -50,7 +50,7 @@ class Dataset(object):
         self.name = dataset
         self.bibtex = getattr(module, "BIBTEX", None)
         self._remotes = getattr(module, "REMOTES", None)
-        self._index = module.DATA.index
+        self._index = module.DATA.index if index is None else index
         self._download_info = getattr(module, "DOWNLOAD_INFO", None)
         self._track_object = getattr(module, "Track", None)
         self._download_fn = getattr(module, "_download", download_utils.downloader)
