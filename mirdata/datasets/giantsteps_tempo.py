@@ -69,7 +69,7 @@ import os
 from mirdata import download_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 import numpy as np
 import jams
 
@@ -227,7 +227,7 @@ def load_tempo(tempo_path):
 
     tempo = annotation.search(namespace="tempo")[0]["data"]
 
-    return classes.TempoData(
+    return annotations.TempoData(
         np.array([[t.time for t in tempo], [t.time + t.duration for t in tempo]]).T,
         np.array([t.value for t in tempo]),
         np.array([t.confidence for t in tempo]),

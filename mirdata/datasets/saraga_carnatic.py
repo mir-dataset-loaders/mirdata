@@ -34,7 +34,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -342,7 +342,7 @@ def load_pitch(pitch_path):
     times = np.array(times)
     freqs = np.array(freqs)
     confidence = (freqs > 0).astype(float)
-    return classes.F0Data(times, freqs, confidence)
+    return annotations.F0Data(times, freqs, confidence)
 
 
 def load_tempo(tempo_path):
@@ -431,7 +431,7 @@ def load_sama(sama_path):
     if not beat_times:
         return None
 
-    return classes.BeatData(np.array(beat_times), np.array(beat_positions))
+    return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
 
 
 def load_sections(sections_path):
@@ -467,7 +467,7 @@ def load_sections(sections_path):
         if not intervals:
             return None
 
-    return classes.SectionData(np.array(intervals), section_labels)
+    return annotations.SectionData(np.array(intervals), section_labels)
 
 
 def load_phrases(phrases_path):
@@ -502,4 +502,4 @@ def load_phrases(phrases_path):
     if not start_times:
         return None
 
-    return classes.EventData(np.array([start_times, end_times]).T, events)
+    return annotations.EventData(np.array([start_times, end_times]).T, events)

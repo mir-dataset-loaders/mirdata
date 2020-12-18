@@ -3,7 +3,7 @@
 import numpy as np
 
 from mirdata.datasets import ikala
-from mirdata import classes
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -23,7 +23,10 @@ def test_track():
         "lyrics_path": "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab",
     }
 
-    expected_property_types = {"f0": classes.F0Data, "lyrics": classes.LyricData}
+    expected_property_types = {
+        "f0": annotations.F0Data,
+        "lyrics": annotations.LyricData,
+    }
 
     assert track._track_paths == {
         "audio": ["Wavfile/10161_chorus.wav", "278ae003cb0d323e99b9a643c0f2eeda"],
@@ -80,7 +83,7 @@ def test_load_f0():
     f0_data = ikala.load_f0(f0_path)
 
     # check types
-    assert type(f0_data) == classes.F0Data
+    assert type(f0_data) == annotations.F0Data
     assert type(f0_data.times) is np.ndarray
     assert type(f0_data.frequencies) is np.ndarray
     assert type(f0_data.confidence) is np.ndarray
@@ -97,7 +100,7 @@ def test_load_lyrics():
     lyrics_data_simple = ikala.load_lyrics(lyrics_path_simple)
 
     # check types
-    assert type(lyrics_data_simple) is classes.LyricData
+    assert type(lyrics_data_simple) is annotations.LyricData
     assert type(lyrics_data_simple.intervals) is np.ndarray
     assert type(lyrics_data_simple.lyrics) is list
     assert type(lyrics_data_simple.pronunciations) is list
@@ -113,7 +116,7 @@ def test_load_lyrics():
     lyrics_data_pronun = ikala.load_lyrics(lyrics_path_pronun)
 
     # check types
-    assert type(lyrics_data_pronun) is classes.LyricData
+    assert type(lyrics_data_pronun) is annotations.LyricData
     assert type(lyrics_data_pronun.intervals) is np.ndarray
     assert type(lyrics_data_pronun.lyrics) is list
     assert type(lyrics_data_pronun.pronunciations) is list

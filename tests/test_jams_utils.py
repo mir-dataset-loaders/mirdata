@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 import jams
 
-from mirdata import jams_utils, classes
+from mirdata import jams_utils, annotations
 
 
 def get_jam_data(jam, namespace, annot_numb):
@@ -21,23 +21,26 @@ def get_jam_data(jam, namespace, annot_numb):
 
 
 def test_beats():
-    beat_data_1 = [(classes.BeatData(np.array([0.2, 0.3]), np.array([1, 2])), None)]
+    beat_data_1 = [(annotations.BeatData(np.array([0.2, 0.3]), np.array([1, 2])), None)]
     beat_data_2 = [
-        (classes.BeatData(np.array([0.5, 0.7]), np.array([2, 3])), "beats_2")
+        (annotations.BeatData(np.array([0.5, 0.7]), np.array([2, 3])), "beats_2")
     ]
     beat_data_3 = [
-        (classes.BeatData(np.array([0.0, 0.3]), np.array([1, 2])), "beats_1"),
-        (classes.BeatData(np.array([0.5, 0.13]), np.array([4, 3])), "beats_2"),
+        (annotations.BeatData(np.array([0.0, 0.3]), np.array([1, 2])), "beats_1"),
+        (annotations.BeatData(np.array([0.5, 0.13]), np.array([4, 3])), "beats_2"),
     ]
-    beat_data_4 = (classes.BeatData(np.array([0.0, 0.3]), np.array([1, 2])), "beats_1")
+    beat_data_4 = (
+        annotations.BeatData(np.array([0.0, 0.3]), np.array([1, 2])),
+        "beats_1",
+    )
     beat_data_5 = [
-        (classes.BeatData(np.array([0.0, 0.3]), np.array([1, 2])), "beats_1"),
-        [classes.BeatData(np.array([0.5, 0.13]), np.array([4, 3])), "beats_2"],
+        (annotations.BeatData(np.array([0.0, 0.3]), np.array([1, 2])), "beats_1"),
+        [annotations.BeatData(np.array([0.5, 0.13]), np.array([4, 3])), "beats_2"],
     ]
     beat_data_6 = [(None, None)]
     beat_data_7 = [
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
             ),
             None,
@@ -88,7 +91,7 @@ def test_beats():
 def test_chords():
     chord_data_1 = [
         (
-            classes.ChordData(
+            annotations.ChordData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "A", "E"],
             ),
             None,
@@ -96,7 +99,7 @@ def test_chords():
     ]
     chord_data_2 = [
         (
-            classes.ChordData(
+            annotations.ChordData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "B", "C"],
             ),
             "chords_2",
@@ -104,33 +107,33 @@ def test_chords():
     ]
     chord_data_3 = [
         (
-            classes.ChordData(
+            annotations.ChordData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "A", "E"],
             ),
             "chords_1",
         ),
         (
-            classes.ChordData(
+            annotations.ChordData(
                 np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T, ["A", "B", "C"],
             ),
             "chords_2",
         ),
     ]
     chord_data_4 = (
-        classes.ChordData(
+        annotations.ChordData(
             np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "A", "E"]
         ),
         None,
     )
     chord_data_5 = [
         [
-            classes.ChordData(
+            annotations.ChordData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "A", "E"],
             ),
             None,
         ],
         (
-            classes.ChordData(
+            annotations.ChordData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "B", "C"],
             ),
             "chords_2",
@@ -139,7 +142,7 @@ def test_chords():
     chord_data_6 = [(None, None)]
     chord_data_7 = [
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
             ),
             None,
@@ -190,7 +193,7 @@ def test_chords():
 def test_notes():
     note_data_1 = [
         (
-            classes.NoteData(
+            annotations.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
                 np.array([1, 1, 1]),
@@ -200,7 +203,7 @@ def test_notes():
     ]
     note_data_2 = [
         (
-            classes.NoteData(
+            annotations.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
                 np.array([1, 1, 1]),
@@ -210,7 +213,7 @@ def test_notes():
     ]
     note_data_3 = [
         (
-            classes.NoteData(
+            annotations.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
                 np.array([1, 1, 1]),
@@ -218,7 +221,7 @@ def test_notes():
             "notes_1",
         ),
         (
-            classes.NoteData(
+            annotations.NoteData(
                 np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
                 np.array([1, 1, 1]),
@@ -227,7 +230,7 @@ def test_notes():
         ),
     ]
     note_data_4 = (
-        classes.NoteData(
+        annotations.NoteData(
             np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
             np.array([1108.731, 1108.731, 1108.731]),
             np.array([1, 1, 1]),
@@ -236,7 +239,7 @@ def test_notes():
     )
     note_data_5 = [
         [
-            classes.NoteData(
+            annotations.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
                 np.array([1, 1, 1]),
@@ -244,7 +247,7 @@ def test_notes():
             None,
         ],
         (
-            classes.NoteData(
+            annotations.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
                 np.array([1108.731, 1108.731, 1108.731]),
                 np.array([1, 1, 1]),
@@ -255,7 +258,7 @@ def test_notes():
     note_data_6 = [(None, None)]
     note_data_7 = [
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
             ),
             None,
@@ -306,7 +309,7 @@ def test_notes():
 def test_sections():
     section_data_1 = [
         (
-            classes.SectionData(
+            annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                 ["verse A", "verse B", "verse A"],
             ),
@@ -315,7 +318,7 @@ def test_sections():
     ]
     section_data_2 = [
         (
-            classes.SectionData(
+            annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                 ["verse A", "verse B", "verse A"],
             ),
@@ -324,14 +327,14 @@ def test_sections():
     ]
     section_data_3 = [
         (
-            classes.SectionData(
+            annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                 ["verse A", "verse B", "verse A"],
             ),
             "sections_1",
         ),
         (
-            classes.SectionData(
+            annotations.SectionData(
                 np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 30.0]]).T,
                 ["verse A", "verse B", "verse C"],
             ),
@@ -339,7 +342,7 @@ def test_sections():
         ),
     ]
     section_data_4 = (
-        classes.SectionData(
+        annotations.SectionData(
             np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
             ["verse A", "verse B", "verse A"],
         ),
@@ -347,14 +350,14 @@ def test_sections():
     )
     section_data_5 = [
         [
-            classes.SectionData(
+            annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                 ["verse A", "verse B", "verse A"],
             ),
             None,
         ],
         (
-            classes.SectionData(
+            annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                 ["verse A", "verse B", "verse A"],
             ),
@@ -364,7 +367,7 @@ def test_sections():
     section_data_6 = [(None, None)]
     section_data_7 = [
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
             ),
             None,
@@ -417,14 +420,14 @@ def test_multi_sections():
         (
             [
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                         ["verse A", "verse B", "verse A"],
                     ),
                     None,
                 ),
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
                         ["verse a", "verse b", "verse a"],
                     ),
@@ -439,14 +442,14 @@ def test_multi_sections():
         (
             [
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                         ["verse A", "verse B", "verse A"],
                     ),
                     0,
                 ),
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
                         ["verse a", "verse b", "verse a"],
                     ),
@@ -460,14 +463,14 @@ def test_multi_sections():
         (
             [
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                         ["verse A", "verse B", "verse A"],
                     ),
                     0,
                 ),
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
                         ["verse a", "verse b", "verse a"],
                     ),
@@ -479,14 +482,14 @@ def test_multi_sections():
         (
             [
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                         ["verse A", "verse B", "verse A"],
                     ),
                     0,
                 ),
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
                         ["verse a", "verse b", "verse a"],
                     ),
@@ -499,14 +502,14 @@ def test_multi_sections():
     multi_section_data_4 = (
         [
             (
-                classes.SectionData(
+                annotations.SectionData(
                     np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                     ["verse A", "verse B", "verse A"],
                 ),
                 None,
             ),
             (
-                classes.SectionData(
+                annotations.SectionData(
                     np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
                     ["verse a", "verse b", "verse a"],
                 ),
@@ -519,14 +522,14 @@ def test_multi_sections():
         [
             [
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                         ["verse A", "verse B", "verse A"],
                     ),
                     None,
                 ),
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
                         ["verse a", "verse b", "verse a"],
                     ),
@@ -540,14 +543,14 @@ def test_multi_sections():
         (
             (
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
                         ["verse A", "verse B", "verse A"],
                     ),
                     None,
                 ),
                 (
-                    classes.SectionData(
+                    annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
                         ["verse a", "verse b", "verse a"],
                     ),
@@ -562,13 +565,13 @@ def test_multi_sections():
         (
             [
                 (
-                    classes.EventData(
+                    annotations.EventData(
                         np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
                     ),
                     None,
                 ),
                 (
-                    classes.EventData(
+                    annotations.EventData(
                         np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
                     ),
                     None,
@@ -646,24 +649,24 @@ def test_multi_sections():
 
 
 def test_keys():
-    key_data_1 = [(classes.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), None)]
-    key_data_2 = [(classes.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), "keys_1")]
+    key_data_1 = [(annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), None)]
+    key_data_2 = [(annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), "keys_1")]
     key_data_3 = [
-        (classes.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), "keys_1"),
-        (classes.KeyData(np.array([[0.0], [50.0]]).T, ["B"]), "keys_2"),
+        (annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), "keys_1"),
+        (annotations.KeyData(np.array([[0.0], [50.0]]).T, ["B"]), "keys_2"),
     ]
     key_data_4 = (
-        classes.KeyData(np.array([[0.0], [100.0]]).T, ["A"]),
+        annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]),
         "keys_1",
     )
     key_data_5 = [
-        [classes.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), "keys_1"],
-        (classes.KeyData(np.array([[0.0], [50.0]]).T, ["B"]), "keys_2"),
+        [annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), "keys_1"],
+        (annotations.KeyData(np.array([[0.0], [50.0]]).T, ["B"]), "keys_2"),
     ]
     key_data_6 = [(None, None)]
     key_data_7 = [
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
             ),
             None,
@@ -714,7 +717,7 @@ def test_keys():
 def test_f0s():
     f0_data_1 = [
         (
-            classes.F0Data(
+            annotations.F0Data(
                 np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
             ),
             None,
@@ -722,7 +725,7 @@ def test_f0s():
     ]
     f0_data_2 = [
         (
-            classes.F0Data(
+            annotations.F0Data(
                 np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
             ),
             "f0s_1",
@@ -730,33 +733,33 @@ def test_f0s():
     ]
     f0_data_3 = [
         (
-            classes.F0Data(
+            annotations.F0Data(
                 np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
             ),
             "f0s_1",
         ),
         (
-            classes.F0Data(
+            annotations.F0Data(
                 np.array([0.003, 0.012]), np.array([0.0, 230.5]), np.array([0.0, 1.0])
             ),
             "f0s_2",
         ),
     ]
     f0_data_4 = (
-        classes.F0Data(
+        annotations.F0Data(
             np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
         ),
         "f0s_1",
     )
     f0_data_5 = [
         [
-            classes.F0Data(
+            annotations.F0Data(
                 np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
             ),
             "f0s_1",
         ],
         (
-            classes.F0Data(
+            annotations.F0Data(
                 np.array([0.003, 0.012]), np.array([0.0, 230.5]), np.array([0.0, 1.0])
             ),
             "f0s_2",
@@ -765,7 +768,7 @@ def test_f0s():
     f0_data_6 = [(None, None)]
     f0_data_7 = [
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
             ),
             None,
@@ -825,7 +828,7 @@ def test_f0s():
 def test_lyrics():
     lyrics_data_1 = [
         (
-            classes.LyricData(
+            annotations.LyricData(
                 np.array([[0.027, 0.232], [0.227, 0.742]]).T,
                 ["The", "Test"],
                 [None, None],
@@ -835,7 +838,7 @@ def test_lyrics():
     ]
     lyrics_data_2 = [
         (
-            classes.LyricData(
+            annotations.LyricData(
                 np.array([[0.027, 0.232], [0.227, 0.742]]).T,
                 ["The", "Test"],
                 [None, None],
@@ -845,7 +848,7 @@ def test_lyrics():
     ]
     lyrics_data_3 = [
         (
-            classes.LyricData(
+            annotations.LyricData(
                 np.array([[0.027, 0.232], [0.227, 0.742]]).T,
                 ["The", "Test"],
                 [None, None],
@@ -853,7 +856,7 @@ def test_lyrics():
             "lyrics_1",
         ),
         (
-            classes.LyricData(
+            annotations.LyricData(
                 np.array([[0.0, 0.232], [0.227, 0.742]]).T,
                 ["is", "cool"],
                 [None, None],
@@ -862,14 +865,14 @@ def test_lyrics():
         ),
     ]
     lyrics_data_4 = (
-        classes.LyricData(
+        annotations.LyricData(
             np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], [None, None],
         ),
         "lyrics_1",
     )
     lyrics_data_5 = [
         (
-            classes.LyricData(
+            annotations.LyricData(
                 np.array([[0.027, 0.232], [0.227, 0.742]]).T,
                 ["The", "Test"],
                 [None, None],
@@ -877,7 +880,7 @@ def test_lyrics():
             "lyrics_1",
         ),
         [
-            classes.LyricData(
+            annotations.LyricData(
                 np.array([[0.0, 0.232], [0.227, 0.742]]).T,
                 ["is", "cool"],
                 [None, None],
@@ -888,7 +891,7 @@ def test_lyrics():
     lyrics_data_6 = [(None, None)]
     lyrics_data_7 = [
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
             ),
             None,
@@ -995,7 +998,7 @@ def test_tempos():
 def test_events():
     event_data1 = [
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
             ),
             "I am a description",
@@ -1003,11 +1006,13 @@ def test_events():
     ]
     event_data2 = [
         (
-            classes.EventData(np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["2", "event B"]),
+            annotations.EventData(
+                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["2", "event B"]
+            ),
             "events 1",
         ),
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T,
                 [{"a": 1, 2: "b"}, "a great label"],
             ),
@@ -1016,7 +1021,7 @@ def test_events():
     ]
     event_data3 = [
         (
-            classes.EventData(
+            annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T,  # invalid because > duration
                 [{"a": 1, 2: "b"}, "a great label"],
             ),

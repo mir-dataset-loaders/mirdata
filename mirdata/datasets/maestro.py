@@ -41,7 +41,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
-from mirdata import classes
+from mirdata import annotations
 
 
 BIBTEX = """@inproceedings{
@@ -120,13 +120,13 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in MAESTRO".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
@@ -207,7 +207,7 @@ def load_notes(midi_path, midi=None):
         intervals.append([note.start, note.end])
         pitches.append(librosa.midi_to_hz(note.pitch))
         confidence.append(note.velocity)
-    return classes.NoteData(
+    return annotations.NoteData(
         np.array(intervals), np.array(pitches), np.array(confidence)
     )
 

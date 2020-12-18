@@ -3,7 +3,7 @@
 import numpy as np
 
 from mirdata.datasets import beatles
-from mirdata import classes
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -28,10 +28,10 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": classes.BeatData,
-        "chords": classes.ChordData,
-        "key": classes.KeyData,
-        "sections": classes.SectionData,
+        "beats": annotations.BeatData,
+        "chords": annotations.ChordData,
+        "key": annotations.KeyData,
+        "sections": annotations.SectionData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -158,7 +158,9 @@ def test_load_beats():
     )
     beat_data = beatles.load_beats(beats_path)
 
-    assert type(beat_data) == classes.BeatData, "beat_data is not type classes.BeatData"
+    assert (
+        type(beat_data) == annotations.BeatData
+    ), "beat_data is not type annotations.BeatData"
     assert type(beat_data.times) == np.ndarray, "beat_data.times is not an np.ndarray"
     assert (
         type(beat_data.positions) == np.ndarray
@@ -182,7 +184,7 @@ def test_load_chords():
     )
     chord_data = beatles.load_chords(chords_path)
 
-    assert type(chord_data) == classes.ChordData
+    assert type(chord_data) == annotations.ChordData
     assert type(chord_data.intervals) == np.ndarray
     assert type(chord_data.labels) == list
 
@@ -204,7 +206,7 @@ def test_load_key():
     )
     key_data = beatles.load_key(key_path)
 
-    assert type(key_data) == classes.KeyData
+    assert type(key_data) == annotations.KeyData
     assert type(key_data.intervals) == np.ndarray
 
     assert np.array_equal(key_data.intervals[:, 0], np.array([0.000]))
@@ -221,7 +223,7 @@ def test_load_sections():
     )
     section_data = beatles.load_sections(sections_path)
 
-    assert type(section_data) == classes.SectionData
+    assert type(section_data) == annotations.SectionData
     assert type(section_data.intervals) == np.ndarray
     assert type(section_data.labels) == list
 

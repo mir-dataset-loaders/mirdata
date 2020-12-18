@@ -5,7 +5,7 @@ import pretty_midi
 import numpy as np
 
 from mirdata.datasets import maestro
-from mirdata import classes, download_utils
+from mirdata import annotations, download_utils
 from tests.test_utils import run_track_tests
 
 
@@ -31,7 +31,7 @@ def test_track():
     }
 
     expected_property_types = {
-        "notes": classes.NoteData,
+        "notes": annotations.NoteData,
         "midi": pretty_midi.PrettyMIDI,
     }
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from mirdata.datasets import rwc_jazz
-from mirdata import classes
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -30,8 +30,8 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": classes.BeatData,
-        "sections": classes.SectionData,
+        "beats": annotations.BeatData,
+        "sections": annotations.SectionData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

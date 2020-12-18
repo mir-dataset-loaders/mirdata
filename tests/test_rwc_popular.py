@@ -3,7 +3,7 @@
 import numpy as np
 
 from mirdata.datasets import rwc_popular
-from mirdata import classes
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -38,10 +38,10 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": classes.BeatData,
-        "sections": classes.SectionData,
-        "chords": classes.ChordData,
-        "vocal_instrument_activity": classes.EventData,
+        "beats": annotations.BeatData,
+        "sections": annotations.SectionData,
+        "chords": annotations.ChordData,
+        "vocal_instrument_activity": annotations.EventData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -128,7 +128,7 @@ def test_load_chords():
     chord_data = rwc_popular.load_chords(chords_path)
 
     # check types
-    assert type(chord_data) is classes.ChordData
+    assert type(chord_data) is annotations.ChordData
     assert type(chord_data.intervals) is np.ndarray
     assert type(chord_data.labels) is list
 
@@ -152,7 +152,7 @@ def test_load_voca_inst():
     vocinst_data = rwc_popular.load_voca_inst(vocinst_path)
 
     # check types
-    assert type(vocinst_data) is classes.EventData
+    assert type(vocinst_data) is annotations.EventData
     assert type(vocinst_data.intervals) is np.ndarray
     assert type(vocinst_data.event) is list
 

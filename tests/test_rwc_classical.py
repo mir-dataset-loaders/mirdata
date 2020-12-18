@@ -3,7 +3,7 @@
 import numpy as np
 
 from mirdata.datasets import rwc_classical
-from mirdata import classes
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -31,8 +31,8 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": classes.BeatData,
-        "sections": classes.SectionData,
+        "beats": annotations.BeatData,
+        "sections": annotations.SectionData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -92,7 +92,7 @@ def test_load_sections():
     section_data = rwc_classical.load_sections(section_path)
 
     # check types
-    assert type(section_data) == classes.SectionData
+    assert type(section_data) == annotations.SectionData
     assert type(section_data.intervals) is np.ndarray
     assert type(section_data.labels) is list
 
@@ -162,7 +162,7 @@ def test_load_beats():
     beat_data = rwc_classical.load_beats(beats_path)
 
     # check types
-    assert type(beat_data) is classes.BeatData
+    assert type(beat_data) is annotations.BeatData
     assert type(beat_data.times) is np.ndarray
     assert type(beat_data.positions) is np.ndarray
 
