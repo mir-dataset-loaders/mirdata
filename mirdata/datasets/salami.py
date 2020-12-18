@@ -22,6 +22,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import annotations
 
 BIBTEX = """@inproceedings{smith2011salami,
     title={Design and creation of a large-scale database of structural annotations.},
@@ -124,13 +125,13 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in Salami".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.sections_annotator1_uppercase_path = utils.none_path_join(
             [self._data_home, self._track_paths["annotator_1_uppercase"][0]]
         )
@@ -267,6 +268,6 @@ def load_sections(sections_path):
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
-    return utils.SectionData(
+    return annotations.SectionData(
         np.array([times_revised[:-1], times_revised[1:]]).T, list(secs_revised[:-1])
     )

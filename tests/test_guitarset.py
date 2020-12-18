@@ -4,7 +4,7 @@ import numpy as np
 import jams
 
 from mirdata.datasets import guitarset
-from mirdata import utils
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 TEST_DATA_HOME = "tests/resources/mir_datasets/guitarset"
@@ -35,23 +35,23 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": utils.BeatData,
-        "leadsheet_chords": utils.ChordData,
-        "inferred_chords": utils.ChordData,
-        "key_mode": utils.KeyData,
+        "beats": annotations.BeatData,
+        "leadsheet_chords": annotations.ChordData,
+        "inferred_chords": annotations.ChordData,
+        "key_mode": annotations.KeyData,
         "pitch_contours": dict,
         "notes": dict,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
-    assert type(track.pitch_contours["E"]) is utils.F0Data
-    assert type(track.notes["E"]) is utils.NoteData
+    assert type(track.pitch_contours["E"]) is annotations.F0Data
+    assert type(track.notes["E"]) is annotations.NoteData
 
 
 def test_load_beats():
-    assert np.allclose(TRACK.beats.beat_times, [0.50420168, 1.00840336, 1.51260504])
-    assert np.allclose(TRACK.beats.beat_positions, [2, 3, 4])
+    assert np.allclose(TRACK.beats.times, [0.50420168, 1.00840336, 1.51260504])
+    assert np.allclose(TRACK.beats.positions, np.array([2, 3, 4]))
 
 
 def test_load_chords():
@@ -65,8 +65,8 @@ def test_load_chords():
 
 
 def test_load_keys():
-    assert np.allclose(TRACK.key_mode.start_times, [0])
-    assert np.allclose(TRACK.key_mode.end_times, [2])
+    assert np.allclose(TRACK.key_mode.intervals[:, 0], [0])
+    assert np.allclose(TRACK.key_mode.intervals[:, 1], [2])
     assert TRACK.key_mode.keys == ["G:major"]
 
 
@@ -101,7 +101,7 @@ def test_load_contours():
             393.37,
         ],
     )
-    assert np.allclose(TRACK.pitch_contours["e"].confidence[:10], np.ones((10,)))
+    assert TRACK.pitch_contours["e"].confidence is None
 
 
 def test_load_notes():
@@ -115,7 +115,7 @@ def test_load_notes():
     assert np.allclose(
         TRACK.notes["e"].notes, [67.0576287044242, 71.03221526299762, 71.03297250121584]
     )
-    assert np.allclose(TRACK.notes["e"].confidence, [1, 1, 1])
+    assert TRACK.notes["e"].confidence is None
 
 
 def test_audio_mono():

@@ -122,8 +122,15 @@ def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True)
         os.makedirs(download_dir)
 
     download_path = os.path.join(download_dir, remote.filename)
-    if not os.path.exists(download_path) or force_overwrite \
-            or (clean_up and os.path.exists(download_path) and remote.checksum != md5(download_path)):
+    if (
+        not os.path.exists(download_path)
+        or force_overwrite
+        or (
+            clean_up
+            and os.path.exists(download_path)
+            and remote.checksum != md5(download_path)
+        )
+    ):
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
             unit='B', unit_scale=True, unit_divisor=1024, miniters=1
@@ -171,7 +178,9 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
         cleanup (bool):
             If True, remove zipfile after unziping. Default=False
     """
-    zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite, cleanup)
+    zip_download_path = download_from_remote(
+        zip_remote, save_dir, force_overwrite, cleanup
+    )
     unzip(zip_download_path, cleanup=cleanup)
 
 
@@ -225,7 +234,9 @@ def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=True):
         force_overwrite (bool): If True, overwrites existing files
         cleanup (bool): If True, remove tarfile after untarring. Default=False
     """
-    tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite, cleanup)
+    tar_download_path = download_from_remote(
+        tar_remote, save_dir, force_overwrite, cleanup
+    )
     untar(tar_download_path, cleanup=cleanup)
 
 

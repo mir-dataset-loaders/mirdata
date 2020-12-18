@@ -21,11 +21,13 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import annotations
 
 
 BIBTEX = """@inproceedings{chan2015vocal,
     title={Vocal activity informed singing voice separation with the iKala dataset},
-    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and Jang, Roger},
+    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and 
+    Jang, Roger},
     booktitle={2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
     pages={718--722},
     year={2015},
@@ -95,7 +97,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in iKala".format(track_id))
 
         self.track_id = track_id
@@ -103,7 +105,7 @@ class Track(core.Track):
         metadata = DATA.metadata(data_home)
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.f0_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
         self.lyrics_path = os.path.join(self._data_home, self._track_paths["lyrics"][0])
 
@@ -223,7 +225,7 @@ def load_f0(f0_path):
     f0_hz = librosa.midi_to_hz(f0_midi) * (f0_midi > 0)
     confidence = (f0_hz > 0).astype(float)
     times = (np.arange(len(f0_midi)) * TIME_STEP) + (TIME_STEP / 2.0)
-    f0_data = utils.F0Data(times, f0_hz, confidence)
+    f0_data = annotations.F0Data(times, f0_hz, confidence)
     return f0_data
 
 
@@ -244,14 +246,13 @@ def load_lyrics(lyrics_path):
             lyrics.append(line[2])
             if len(line) > 2:
                 pronunciation = " ".join(line[3:])
-                pronunciations.append(pronunciation if pronunciation != "" else None)
+                pronunciations.append(pronunciation)
             else:
-                pronunciations.append(None)
+                pronunciations.append("")
 
-    lyrics_data = utils.LyricData(
-        np.array(start_times),
-        np.array(end_times),
-        np.array(lyrics),
-        np.array(pronunciations),
+    lyrics_data = annotations.LyricData(
+        np.array([start_times, end_times]).T,
+        lyrics,
+        pronunciations,
     )
     return lyrics_data

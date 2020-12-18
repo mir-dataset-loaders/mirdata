@@ -374,11 +374,11 @@ def filter_index(search_key, index=None):
 def load_all_train(index=None):
     """Load from AcousticBrainz genre dataset the tracks that are used for training across the four different datasets.
 
-      Args:
-         index (dict): mirdata index to filter.
+    Args:
+       index (dict): mirdata index to filter.
 
-      Returns:
-         (dict): {`track_id`: track data}
+    Returns:
+       (dict): {`track_id`: track data}
 
     """
     return filter_index("#train#", index=index)
@@ -578,4 +578,3 @@ def _download(
             shutil.move(
                 os.path.join(source_dir, dir_name), os.path.join(target_dir, dir_name)
             )
-
