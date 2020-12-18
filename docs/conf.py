@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath("../"))
 # -- Project information -----------------------------------------------------
 
 project = "mirdata"
-copyright = "2019, Rachel Bittner, Magdalena Fuentes, David Rubinstein, Andreas Jansson, Keunwoo Choi, Thor Kell"
+copyright = "2019-2020, mirdata development team."
 author = "Rachel Bittner, Magdalena Fuentes, David Rubinstein, Andreas Jansson, Keunwoo Choi, Thor Kell"
 
 
@@ -30,6 +30,9 @@ mirdata_version = importlib.import_module("mirdata.version")
 version = mirdata_version.short_version
 # The full version, including alpha/beta/rc tags.
 release = mirdata_version.version
+# Show only copyright
+show_authors = False
+
 
 # -- Mock dependencies -------------------------------------------------------
 
@@ -43,7 +46,7 @@ class Mock(MagicMock):
         return MagicMock()
 
 
-MOCK_MODULES = ["librosa", "numpy", "jams", "pretty_midi"]
+MOCK_MODULES = ["librosa", "numpy", "jams", "pretty_midi", "DALI"]
 
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
@@ -59,7 +62,7 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
-    "sphinx.ext.autosectionlabel",
+    # "sphinx.ext.autosectionlabel",
 ]
 
 
@@ -75,7 +78,12 @@ master_doc = "index"
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+exclude_patterns = [
+    "_build",
+    "Thumbs.db",
+    ".DS_Store",
+    "source/example.rst",
+]
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -89,3 +97,6 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+html_css_files = ["css/custom.css",]
+
+html_logo = 'img/mirdata.png'

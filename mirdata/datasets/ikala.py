@@ -97,7 +97,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in iKala".format(track_id))
 
         self.track_id = track_id
@@ -105,7 +105,7 @@ class Track(core.Track):
         metadata = DATA.metadata(data_home)
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.f0_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
         self.lyrics_path = os.path.join(self._data_home, self._track_paths["lyrics"][0])
 
@@ -246,11 +246,13 @@ def load_lyrics(lyrics_path):
             lyrics.append(line[2])
             if len(line) > 2:
                 pronunciation = " ".join(line[3:])
-                pronunciations.append(pronunciation if pronunciation != "" else None)
+                pronunciations.append(pronunciation)
             else:
-                pronunciations.append(None)
+                pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T, lyrics, pronunciations,
+        np.array([start_times, end_times]).T,
+        lyrics,
+        pronunciations,
     )
     return lyrics_data

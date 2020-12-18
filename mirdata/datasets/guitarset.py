@@ -42,9 +42,9 @@ Beat and Tempo:
 Chords:
 
 - 2 chord annotations: instructed and performed. The instructed chord annotation
-is a digital version of the lead sheet that's provided to the player, and the
-performed chord annotations are inferred from note annotations, using
-segmentation and root from the digital lead sheet annotation.
+  is a digital version of the lead sheet that's provided to the player, and the
+  performed chord annotations are inferred from note annotations, using
+  segmentation and root from the digital lead sheet annotation.
 
 For more details, please visit: http://github.com/marl/guitarset/
 """
@@ -134,13 +134,13 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in GuitarSet".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         self.audio_hex_cln_path = os.path.join(
             self._data_home, self._track_paths["audio_hex_cln"][0]
@@ -195,12 +195,11 @@ class Track(core.Track):
     def pitch_contours(self):
         """(dict): a dict that contains 6 F0Data.
         From Low E string to high e string.
-        {
-            'E': F0Data(...),
-            'A': F0Data(...),
-            ...
-            'e': F0Data(...)
-        }
+        - 'E': F0Data(...),
+        - 'A': F0Data(...),
+        -  ...
+        - 'e': F0Data(...)
+
         """
         contours = {}
         # iterate over 6 strings
@@ -212,12 +211,10 @@ class Track(core.Track):
     def notes(self):
         """dict: a dict that contains 6 NoteData.
         From Low E string to high e string.
-        {
-            'E': NoteData(...),
-            'A': NoteData(...),
-            ...
-            'e': NoteData(...)
-        }
+        - 'E': NoteData(...),
+        - 'A': NoteData(...),
+        -  ...
+        - 'e': NoteData(...)
         """
         notes = {}
         # iterate over 6 strings
@@ -341,8 +338,10 @@ def load_pitch_contour(jams_path, string_num):
     anno_arr = jam.search(namespace="pitch_contour")
     anno = anno_arr.search(data_source=str(string_num))[0]
     times, values = anno.to_event_values()
+    if len(times) == 0:
+        return annotations.F0Data(None, None)
     frequencies = [v["frequency"] for v in values]
-    return annotations.F0Data(times, np.array(frequencies), np.ones_like(times))
+    return annotations.F0Data(times, np.array(frequencies))
 
 
 def load_note_ann(jams_path, string_num):
@@ -359,4 +358,6 @@ def load_note_ann(jams_path, string_num):
     anno_arr = jam.search(namespace="note_midi")
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()
-    return annotations.NoteData(intervals, np.array(values), np.ones_like(values))
+    if len(values) == 0:
+        return annotations.NoteData(None, None)
+    return annotations.NoteData(intervals, np.array(values))

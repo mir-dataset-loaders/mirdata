@@ -154,7 +154,7 @@ def test_load_voca_inst():
     # check types
     assert type(vocinst_data) is annotations.EventData
     assert type(vocinst_data.intervals) is np.ndarray
-    assert type(vocinst_data.event) is list
+    assert type(vocinst_data.events) is list
 
     # check values
     assert np.array_equal(
@@ -188,7 +188,7 @@ def test_load_voca_inst():
         ),
     )
     assert np.array_equal(
-        vocinst_data.event,
+        vocinst_data.events,
         np.array(
             ["b", "m:withm", "b", "m:withm", "b", "m:withm", "b", "s:electricguitar"]
         ),

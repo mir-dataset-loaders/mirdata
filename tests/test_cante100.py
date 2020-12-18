@@ -13,26 +13,30 @@ TEST_DATA_HOME = "tests/resources/mir_datasets/cante100"
 
 
 def test_track():
-    default_trackid = '008'
+    default_trackid = "008"
     track = cante100.Track(default_trackid, data_home=TEST_DATA_HOME)
     expected_attributes = {
-        'artist': 'Toronjo',
-        'duration': 179.0,
-        'audio_path': 'tests/resources/mir_datasets/cante100/cante100audio/008_PacoToronjo_'
-        + 'Fandangos.mp3',
-        'f0_path': 'tests/resources/mir_datasets/cante100/cante100midi_f0/008_PacoToronjo_'
-        + 'Fandangos.f0.csv',
-        'identifier': '4eebe839-82bb-426e-914d-7c4525dd9dad',
-        'notes_path': 'tests/resources/mir_datasets/cante100/cante100_automaticTranscription/008_PacoToronjo_'
-        + 'Fandangos.notes.csv',
-        'release': 'Atlas del cante flamenco',
-        'spectrogram_path': 'tests/resources/mir_datasets/cante100/cante100_spectrum/008_PacoToronjo_'
-        + 'Fandangos.spectrum.csv',
-        'title': 'Huelva Como Capital',
-        'track_id': '008',
+        "artist": "Toronjo",
+        "duration": 179.0,
+        "audio_path": "tests/resources/mir_datasets/cante100/cante100audio/008_PacoToronjo_"
+        + "Fandangos.mp3",
+        "f0_path": "tests/resources/mir_datasets/cante100/cante100midi_f0/008_PacoToronjo_"
+        + "Fandangos.f0.csv",
+        "identifier": "4eebe839-82bb-426e-914d-7c4525dd9dad",
+        "notes_path": "tests/resources/mir_datasets/cante100/cante100_automaticTranscription/008_PacoToronjo_"
+        + "Fandangos.notes.csv",
+        "release": "Atlas del cante flamenco",
+        "spectrogram_path": "tests/resources/mir_datasets/cante100/cante100_spectrum/008_PacoToronjo_"
+        + "Fandangos.spectrum.csv",
+        "title": "Huelva Como Capital",
+        "track_id": "008",
     }
 
-    expected_property_types = {'melody': annotations.F0Data, 'notes': annotations.NoteData}
+
+    expected_property_types = {
+        "melody": annotations.F0Data,
+        "notes": annotations.NoteData,
+    }
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -46,7 +50,7 @@ def test_to_jams():
     assert jam.validate()
 
     # Validate melody
-    melody = jam.search(namespace='pitch_contour')[0]['data']
+    melody = jam.search(namespace="pitch_contour")[0]["data"]
     assert [note.time for note in melody] == [
         0.023219954,
         0.026122448,
@@ -57,17 +61,17 @@ def test_to_jams():
     ]
     assert [note.duration for note in melody] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     assert [note.value for note in melody] == [
-        {'index': 0, 'frequency': 0.0, 'voiced': False},
-        {'index': 0, 'frequency': 137.0, 'voiced': True},
-        {'index': 0, 'frequency': 220.34, 'voiced': True},
-        {'index': 0, 'frequency': 400.0, 'voiced': True},
-        {'index': 0, 'frequency': -110.0, 'voiced': False},
-        {'index': 0, 'frequency': -110.0, 'voiced': False},
+        {"index": 0, "frequency": 0.0, "voiced": False},
+        {"index": 0, "frequency": 137.0, "voiced": True},
+        {"index": 0, "frequency": 220.34, "voiced": True},
+        {"index": 0, "frequency": 400.0, "voiced": True},
+        {"index": 0, "frequency": -110.0, "voiced": False},
+        {"index": 0, "frequency": -110.0, "voiced": False},
     ]
     assert [note.confidence for note in melody] == [0.0, 1.0, 1.0, 1.0, 0.0, 0.0]
 
     # Validate note transciption
-    notes = jam.search(namespace='note_hz')[0]['data']
+    notes = jam.search(namespace="note_hz")[0]["data"]
     assert [note.time for note in notes] == [
         25.7625,
         26.1457,
@@ -96,7 +100,7 @@ def test_to_jams():
 
 
 def test_load_melody():
-    track = cante100.Track('008', data_home=TEST_DATA_HOME)
+    track = cante100.Track("008", data_home=TEST_DATA_HOME)
     f0_path = track.f0_path
     f0_data = cante100.load_melody(f0_path)
 
@@ -127,7 +131,7 @@ def test_load_melody():
 
 
 def test_load_notes():
-    track = cante100.Track('008', data_home=TEST_DATA_HOME)
+    track = cante100.Track("008", data_home=TEST_DATA_HOME)
     notes_path = track.notes_path
     notes_data = cante100.load_notes(notes_path)
 
@@ -174,7 +178,7 @@ def test_load_notes():
 
 
 def test_load_spectrum():
-    track = cante100.Track('008', data_home=TEST_DATA_HOME)
+    track = cante100.Track("008", data_home=TEST_DATA_HOME)
     spectrogram_path = track.spectrogram_path
     spectrogram = cante100.load_spectrogram(spectrogram_path)
     assert spectrogram.shape[0] == 5
@@ -184,7 +188,7 @@ def test_load_spectrum():
 
 
 def test_load_audio():
-    track = cante100.Track('008', data_home=TEST_DATA_HOME)
+    track = cante100.Track("008", data_home=TEST_DATA_HOME)
     audio_path = track.audio_path
     audio, sr = cante100.load_audio(audio_path)
     assert sr == 22050
@@ -194,13 +198,13 @@ def test_load_audio():
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/cante100'
+    data_home = "tests/resources/mir_datasets/cante100"
     metadata = cante100._load_metadata(data_home)
-    assert metadata['data_home'] == data_home
-    assert metadata['008'] == {
-        'musicBrainzID': '4eebe839-82bb-426e-914d-7c4525dd9dad',
-        'artist': 'Toronjo',
-        'title': 'Huelva Como Capital',
-        'release': 'Atlas del cante flamenco',
-        'duration': 179,
+    assert metadata["data_home"] == data_home
+    assert metadata["008"] == {
+        "musicBrainzID": "4eebe839-82bb-426e-914d-7c4525dd9dad",
+        "artist": "Toronjo",
+        "title": "Huelva Como Capital",
+        "release": "Atlas del cante flamenco",
+        "duration": 179,
     }

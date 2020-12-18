@@ -158,7 +158,10 @@ def test_load_beats():
     )
     beat_data = beatles.load_beats(beats_path)
 
-    assert type(beat_data) == annotations.BeatData, "beat_data is not type classes.BeatData"
+
+    assert (
+        type(beat_data) == annotations.BeatData
+    ), "beat_data is not type annotations.BeatData"
     assert type(beat_data.times) == np.ndarray, "beat_data.times is not an np.ndarray"
     assert (
         type(beat_data.positions) == np.ndarray

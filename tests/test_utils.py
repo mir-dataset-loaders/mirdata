@@ -87,7 +87,10 @@ def mock_check_index(mocker):
 
 def test_remote_index(httpserver):
     httpserver.serve_content(
-        open("tests/resources/download/acousticbrainz_genre_dataset_little_test.json", "rb").read()
+        open(
+            "tests/resources/download/acousticbrainz_genre_dataset_little_test.json",
+            "rb",
+        ).read()
     )
     REMOTE_INDEX = {
         "remote_index": download_utils.RemoteFileMetadata(
@@ -98,10 +101,14 @@ def test_remote_index(httpserver):
         )
     }
 
-    DATA = LargeData("acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX)
+    DATA = LargeData(
+        "acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX
+    )
     ind = DATA.index
     assert len(ind["tracks"]) == 16
     os.remove("mirdata/datasets/indexes/acousticbrainz_genre_dataset_little_test.json")
+
+
 
 def test_md5(mocker):
     audio_file = b"audio1234"

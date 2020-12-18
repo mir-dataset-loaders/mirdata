@@ -133,13 +133,13 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in orchset".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.melody_path = os.path.join(self._data_home, self._track_paths["melody"][0])
 
         metadata = DATA.metadata(data_home)
@@ -292,5 +292,7 @@ def load_melody(melody_path):
             freqs.append(float(line[1]))
             confidence.append(0.0 if line[1] == "0" else 1.0)
 
-    melody_data = annotations.F0Data(np.array(times), np.array(freqs), np.array(confidence))
+    melody_data = annotations.F0Data(
+        np.array(times), np.array(freqs), np.array(confidence)
+    )
     return melody_data
