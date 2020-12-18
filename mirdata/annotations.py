@@ -5,29 +5,47 @@
 import numpy as np
 
 
-class BeatData:
-    """
+class Annotation(object):
+    def __repr__(self):
+        attributes = [v for v in dir(self) if not v.startswith("_")]
+        repr_str = f"{self.__class__.__name__}({attributes.join(',')})"
+        return repr_str
+
+
+class BeatData(Annotation):
+    """BeatData object
+
+    Attributes:
+        times (np.ndarray or None): array of time stamps (as floats) in seconds
+            with positive, strictly increasing values
+        positions (np.ndarray or None): array of beat positions (as ints)
+            e.g. 1, 2, 3, 4
+
     """
 
     def __init__(self, times, positions=None):
-        # check mir_eval compliance
         validate_array_like(times, np.ndarray, float)
         validate_array_like(positions, np.ndarray, int)
         validate_lengths_equal([times, positions])
+        validate_times(times)
 
         self.times = times
         self.positions = positions
 
-    def __repr__(self):
-        pass
 
+class SectionData(Annotation):
+    """SectionData object
 
-class SectionData:
+    Attributes:
+        intervals (np.ndarray or None): (n x 2) array of intervals 
+            (as floats) in seconds in the form [start_time, end_time]
+            times should be positive and intervals should have
+            non-negative duration
+        labels (list or None): list of labels (as strings)
+
     """
-    """
 
-    def __init__(self, intervals, labels):
-        # check mir_eval compliance
+    def __init__(self, intervals, labels=None):
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(labels, list, str)
         validate_lengths_equal([intervals, labels])
@@ -37,93 +55,125 @@ class SectionData:
         self.labels = labels
 
 
-class NoteData:
-    """
+class NoteData(Annotation):
+    """NoteData object
+
+    Attributes:
+        intervals (np.ndarray or None): (n x 2) array of intervals 
+            (as floats) in seconds in the form [start_time, end_time] 
+            with positive time stamps and end_time >= start_time.
+        notes (np.ndarray or None): array of notes (as floats) in Hz
+        confidence (np.ndarray or None): array of confidence values
+            between 0 and 1
 
     """
 
-    # customized __init__ to check data types
     def __init__(self, intervals, notes, confidence=None):
 
-        # check mir_eval compliance
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(notes, np.ndarray, float)
         validate_array_like(confidence, np.ndarray, float)
         validate_lengths_equal([intervals, notes, confidence])
         validate_intervals(intervals)
+        validate_confidence(confidence)
 
         self.intervals = intervals
         self.notes = notes
         self.confidence = confidence
 
 
-class ChordData:
-    """
-    # ChordData = namedtuple("ChordData", ["intervals", "labels"])
+class ChordData(Annotation):
+    """ChordData object
+
+    Attributes:
+        intervals (np.ndarray or None): (n x 2) array of intervals 
+            (as floats) in seconds in the form [start_time, end_time] 
+            with positive time stamps and end_time >= start_time.
+        labels (list or None): list chord labels (as strings)
+        confidence (np.ndarray or None): array of confidence values
+            between 0 and 1
+
     """
 
     def __init__(self, intervals, labels, confidence=None):
 
-        # check mir_eval compliance
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(labels, list, str)
         validate_array_like(confidence, np.ndarray, float)
         validate_lengths_equal([intervals, labels, confidence])
         validate_intervals(intervals)
+        validate_confidence(confidence)
 
         self.intervals = intervals
         self.labels = labels
         self.confidence = confidence
 
 
-class F0Data:
-    """
-    # F0Data = namedtuple("F0Data", ["times", "frequencies", "confidence"])
+class F0Data(Annotation):
+    """F0Data object
+
+    Attributes:
+        times (np.ndarray or None): array of time stamps (as floats) in seconds
+            with positive, strictly increasing values
+        frequencies (np.ndarray or None): array of frequency values (as floats)
+            in Hz
+        confidence (np.ndarray or None): array of confidence values
+            between 0 and 1
+
     """
 
-    # customized __init__ to check data types
     def __init__(self, times, frequencies, confidence=None):
 
-        # check mir_eval compliance
         validate_array_like(times, np.ndarray, float)
         validate_array_like(frequencies, np.ndarray, float)
         validate_array_like(confidence, np.ndarray, float)
         validate_lengths_equal([times, frequencies, confidence])
+        validate_times(times)
+        validate_confidence(confidence)
 
         self.times = times
         self.frequencies = frequencies
         self.confidence = confidence
 
 
-class MultiF0Data:
-    """
-    # MultipitchData = namedtuple(
-#     "MultipitchData", ["times", "frequency_list", "confidence_list"]
-# )
+class MultiF0Data(Annotation):
+    """MultiF0Data object
+
+    Attributes:
+        times (np.ndarray or None): array of time stamps (as floats) in seconds
+            with positive, strictly increasing values
+        frequency_list (list or None): list of lists of frequency values (as floats)
+            in Hz
+        confidence_list (list or None): list of lists of confidence values
+            between 0 and 1
+
     """
 
-    # customized __init__ to check data types
     def __init__(self, times, frequency_list, confidence_list=None):
-        # check mir_eval compliance
         validate_array_like(times, np.ndarray, float)
         validate_array_like(frequency_list, list, list)
         validate_array_like(confidence_list, list, list)
         validate_lengths_equal([times, frequency_list, confidence_list])
+        validate_times(times)
 
         self.times = times
         self.frequency_list = frequency_list
         self.confidence_list = confidence_list
 
 
-class KeyData:
-    """
-    # KeyData = namedtuple("KeyData", ["start_times", "end_times", "keys"])
+class KeyData(Annotation):
+    """KeyData object
+
+    Attributes:
+        intervals (np.ndarray or None): (n x 2) array of intervals 
+            (as floats) in seconds in the form [start_time, end_time] 
+            with positive time stamps and end_time >= start_time.
+        keys (list or None): list key labels (as strings)
+
     """
 
-    # customized __init__ to check data types
     def __init__(self, intervals, keys):
 
-        # check mir_eval compliance
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(keys, list, str)
         validate_lengths_equal([intervals, keys])
@@ -133,17 +183,20 @@ class KeyData:
         self.keys = keys
 
 
-class LyricData:
-    """
-    # LyricData = namedtuple(
-    #     "LyricData", ["start_times", "end_times", "lyrics", "pronunciations"]
-    # )
+class LyricData(Annotation):
+    """LyricData object
+
+    Attributes:
+        intervals (np.ndarray or None): (n x 2) array of intervals 
+            (as floats) in seconds in the form [start_time, end_time] 
+            with positive time stamps and end_time >= start_time.
+        lyrics (list or None): list of lyrics (as strings)
+        pronunciations (list or None): list of pronunciations (as strings)
+
     """
 
-    # customized __init__ to check data types
     def __init__(self, intervals, lyrics, pronunciations=None):
 
-        # check mir_eval compliance
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(lyrics, list, str)
         validate_array_like(pronunciations, list, str)
@@ -155,37 +208,46 @@ class LyricData:
         self.pronunciations = pronunciations
 
 
-class TempoData:
-    """
-    # TempoData = namedtuple("TempoData", ["intervals, "value", "confidence"])
+class TempoData(Annotation):
+    """TempoData object
+
+    Attributes:
+        intervals (np.ndarray or None): (n x 2) array of intervals 
+            (as floats) in seconds in the form [start_time, end_time] 
+            with positive time stamps and end_time >= start_time.
+        value (list or None): array of tempo values (as floats)
+        confidence (np.ndarray or None): array of confidence values
+            between 0 and 1
+
     """
 
-    # customized __init__ to check data types
     def __init__(self, intervals, value, confidence=None):
 
-        # check mir_eval compliance
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(value, np.ndarray, float)
         validate_array_like(confidence, np.ndarray, float)
         validate_lengths_equal([intervals, value, confidence])
         validate_intervals(intervals)
+        validate_confidence(confidence)
 
         self.intervals = intervals
         self.value = value
         self.confidence = confidence
 
 
-class EventData:
-    """
-    #
-    #
-    # EventData = namedtuple("EventData", ["start_times", "end_times", "event"])
-    #
+class EventData(Annotation):
+    """TempoData object
+
+    Attributes:
+        intervals (np.ndarray or None): (n x 2) array of intervals 
+            (as floats) in seconds in the form [start_time, end_time] 
+            with positive time stamps and end_time >= start_time.
+        events (list or None): list of event labels (as strings)
+
     """
 
     def __init__(self, intervals, events):
 
-        # check mir_eval compliance
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(events, list, str)
         validate_lengths_equal([intervals, events])
@@ -258,6 +320,25 @@ def validate_lengths_equal(array_list):
 
         if not len(att1) == len(att2):
             raise ValueError("Arrays have unequal length")
+
+
+def validate_confidence(confidence):
+    """Validate if confidence is well-formed.
+
+    If confidence is None, validation passes automatically
+
+    Args:
+        confidence (np.ndarray): an array of confidence values
+
+    Raises:
+        ValueError: if confidence are not between 0 and 1
+
+    """
+    if confidence is None:
+        return
+
+    if (confidence < 0).any() or (confidence > 1).any():
+        raise ValueError("confidence should be between 0 and 1")
 
 
 def validate_times(times):
