@@ -24,11 +24,12 @@ For more information about the dataset as well as IAM and annotations, please re
 https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
 """
 
-import librosa
 import numpy as np
 import os
 import json
 import logging
+import librosa
+import csv
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -289,8 +290,13 @@ def load_tonic(tonic_path):
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
-    with open(tonic_path, 'r') as reader:
-        return float(reader.readline().split('\n')[0])
+    tonic = 0
+    with open(tonic_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
+        for line in reader:
+            tonic = float(line[0])
+
+    return tonic
 
 
 def load_pitch(pitch_path):
@@ -311,10 +317,11 @@ def load_pitch(pitch_path):
 
     times = []
     freqs = []
-    with open(pitch_path, 'r') as reader:
-        for line in reader.readlines():
-            times.append(float(line.split('\t')[0]))
-            freqs.append(float(line.split('\t')[1]))
+    with open(pitch_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
+        for line in reader:
+            times.append(float(line[0]))
+            freqs.append(float(line[1]))
 
     if not times:
         return None
@@ -347,39 +354,39 @@ def load_tempo(tempo_path):
 
     tempo_annotation = {}
 
-    with open(tempo_path, 'r') as reader:
-        parsed_tempo = reader.readline()
+    with open(tempo_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=',')
+        for line in reader:
+            tempo_data = []
+            tempo_apm = line[0]
+            tempo_data.append(tempo_apm)
+            tempo_bpm = line[1]
+            tempo_data.append(tempo_bpm)
+            sama_interval = line[2]
+            tempo_data.append(sama_interval)
+            beats_per_cycle = line[3]
+            tempo_data.append(beats_per_cycle)
+            subdivisions = line[4]
+            tempo_data.append(subdivisions)
 
-        tempo_data = []
-        tempo_apm = parsed_tempo.split(',')[0]
-        tempo_data.append(tempo_apm)
-        tempo_bpm = parsed_tempo.split(',')[1].split(' ')[1]
-        tempo_data.append(tempo_bpm)
-        sama_interval = parsed_tempo.split(',')[2].split(' ')[1]
-        tempo_data.append(sama_interval)
-        beats_per_cycle = parsed_tempo.split(',')[3].split(' ')[1]
-        tempo_data.append(beats_per_cycle)
-        subdivisions = parsed_tempo.split(',')[4].split(' ')[1]
-        tempo_data.append(subdivisions)
+            if 'NaN' in tempo_data:
+                return None
 
-        if 'NaN' in tempo_data:
-            return None
-
-        tempo_annotation['tempo_apm'] = (
-            float(tempo_apm) if '.' in tempo_apm else int(tempo_apm)
-        )
-        tempo_annotation['tempo_bpm'] = (
-            float(tempo_bpm) if '.' in tempo_bpm else int(tempo_bpm)
-        )
-        tempo_annotation['sama_interval'] = (
-            float(sama_interval) if '.' in sama_interval else int(sama_interval)
-        )
-        tempo_annotation['beats_per_cycle'] = (
-            float(beats_per_cycle) if '.' in beats_per_cycle else int(beats_per_cycle)
-        )
-        tempo_annotation['subdivisions'] = (
-            float(subdivisions) if '.' in subdivisions else int(subdivisions)
-        )
+            tempo_annotation['tempo_apm'] = (
+                float(tempo_apm) if '.' in tempo_apm else int(tempo_apm)
+            )
+            tempo_annotation['tempo_bpm'] = (
+                float(tempo_bpm) if '.' in tempo_bpm else int(tempo_bpm)
+            )
+            tempo_annotation['sama_interval'] = (
+                float(sama_interval) if '.' in sama_interval else int(sama_interval)
+            )
+            tempo_annotation['beats_per_cycle'] = (
+                float(beats_per_cycle) if '.' in beats_per_cycle else int(beats_per_cycle)
+            )
+            tempo_annotation['subdivisions'] = (
+                float(subdivisions) if '.' in subdivisions else int(subdivisions)
+            )
 
     return tempo_annotation
 
@@ -403,9 +410,10 @@ def load_sama(sama_path):
 
     beat_times = []
     beat_positions = []
-    with open(sama_path, 'r') as reader:
-        for line in reader.readlines():
-            beat_times.append(float(line))
+    with open(sama_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
+        for line in reader:
+            beat_times.append(float(line[0]))
             beat_positions.append(1)
 
     if not beat_times:
@@ -433,16 +441,17 @@ def load_sections(sections_path):
     intervals = []
     section_labels = []
 
-    with open(sections_path, 'r') as reader:
-        for line in reader.readlines():
+    with open(sections_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
+        for line in reader:
             if line != '\n':
                 intervals.append(
                     [
-                        float(line.split('\t')[0]),
-                        float(line.split('\t')[0]) + float(line.split('\t')[2]),
+                        float(line[0]),
+                        float(line[0]) + float(line[2]),
                     ]
                 )
-                section_labels.append(str(line.split('\t')[3].split('\n')[0]))
+                section_labels.append(str(line[3]))
 
         if not intervals:
             return None
@@ -470,14 +479,15 @@ def load_phrases(phrases_path):
     start_times = []
     end_times = []
     events = []
-    with open(phrases_path, 'r') as reader:
-        for line in reader.readlines():
-            start_times.append(float(line.split('\t')[0]))
+    with open(phrases_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\t')
+        for line in reader:
+            start_times.append(float(line[0]))
             end_times.append(
-                float(line.split('\t')[0]) + float(line.split('\t')[2])
+                float(line[0]) + float(line[2])
             )
-            if len(line.split('\t')) == 4:
-                events.append(str(line.split('\t')[3].split('\n')[0]))
+            if len(line) == 4:
+                events.append(str(line[3].split('\n')[0]))
             else:
                 events.append(' ')
 
