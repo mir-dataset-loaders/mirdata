@@ -38,47 +38,67 @@ class Dataset(object):
 
     """
 
-    def __init__(self, dataset, data_home=None, index=None):
-        """Inits a dataset by name and data location"""
-        if dataset not in DATASETS:
-            raise ValueError(
-                "{} is not a valid dataset in mirdata. Valid datsets are:\n{}".format(
-                    dataset, ",".join(DATASETS)
-                )
-            )
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset))
-        self.name = dataset
-        self.bibtex = getattr(module, "BIBTEX", None)
-        self._remotes = getattr(module, "REMOTES", None)
-        self._index = module.DATA.index if index is None else index
-        self._download_info = getattr(module, "DOWNLOAD_INFO", None)
-        self._track_object = getattr(module, "Track", None)
-        self._download_fn = getattr(module, "_download", download_utils.downloader)
-        self._readme_str = module.__doc__
+    def __init__(
+        self,
+        data_home=None,
+        index=None,
+        name=None,
+        track_object=None,
+        bibtex=None,
+        remotes=None,
+        download_info=None,
+        methods=None,
+        custom_download=None,
+    ):
+        self.data_home = self.default_path if data_home is None else data_home
+        self._index = index
+        self.name = name
+        self._track_object = track_object
+        self.bibtex = bibtex
+        self.remotes = remotes
+        self._download_info = download_info
+        self._download_fn = (
+            download_utils.downloader if custom_download is None else custom_download
+        )
 
-        if data_home is None:
-            self.data_home = self.default_path
-        else:
-            self.data_home = data_home
+        # attach methods
+        for method in methods:
+            setattr(self, method, method)
+
+        # attach docstring to methods
+        for method in methods:
+            getattr(self, method).__doc__ = method.__doc__
+
+        # if dataset not in DATASETS:
+        #     raise ValueError(
+        #         "{} is not a valid dataset in mirdata. Valid datsets are:\n{}".format(
+        #             dataset, ",".join(DATASETS)
+        #         )
+        #     )
+        # module = importlib.import_module("mirdata.datasets.{}".format(dataset))
+        # self.name = dataset
+        # self.bibtex = getattr(module, "BIBTEX", None)
+        # self._remotes = getattr(module, "REMOTES", None)
+        # self._index = module.DATA.index if index is None else index
+        # self._download_info = getattr(module, "DOWNLOAD_INFO", None)
+        # self._track_object = getattr(module, "Track", None)
+        # self._download_fn = getattr(module, "_download", download_utils.downloader)
 
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
         self.track.__doc__ = self._track_object.__doc__  # set the docstring
 
         # inherit any public load functions from the module
-        for method_name in dir(module):
-            if method_name.startswith("load_"):
-                method = getattr(module, method_name)
-                setattr(self, method_name, method)
-                # getattr(self, method_name).__doc__ = method.__doc__
+        # for method_name in dir(module):
+        #     if method_name.startswith("load_"):
+        #         method = getattr(module, method_name)
+        #         setattr(self, method_name, method)
+        # getattr(self, method_name).__doc__ = method.__doc__
 
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
         repr_string += "-" * MAX_STR_LEN
         repr_string += "\n"
-        repr_string += (
-            "Call the .readme method for complete documentation of this dataset.\n"
-        )
         repr_string += "Call the .cite method for bibtex citations.\n"
         repr_string += "-" * MAX_STR_LEN
         repr_string += "\n"
@@ -101,6 +121,7 @@ class Dataset(object):
 
     def _track(self, track_id):
         """Load a track by track_id.
+
         Hidden helper function that gets called as a lambda.
 
         Args:
@@ -133,10 +154,6 @@ class Dataset(object):
         """
         return self.track(random.choice(self.track_ids))
 
-    def readme(self):
-        """Print the dataset's readme."""
-        print(self._readme_str)
-
     def cite(self):
         """Print the reference"""
         print("========== BibTeX ==========")
@@ -161,7 +178,7 @@ class Dataset(object):
         """
         self._download_fn(
             self.data_home,
-            remotes=self._remotes,
+            remotes=self.remotes,
             partial_download=partial_download,
             info_message=self._download_info,
             force_overwrite=force_overwrite,
@@ -175,7 +192,7 @@ class Dataset(object):
         Returns:
             (list): A list of track ids
         """
-        return list(self._index['tracks'].keys())
+        return list(self._index["tracks"].keys())
 
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version

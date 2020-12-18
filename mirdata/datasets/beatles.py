@@ -18,6 +18,9 @@ from mirdata import core
 from mirdata import utils
 from mirdata import annotations
 
+
+DATA = utils.LargeData("beatles_index.json")
+
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
     author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte,
@@ -27,7 +30,6 @@ BIBTEX = """@inproceedings{mauch2009beatles,
     series = {ISMIR}
 }"""
 
-
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="The Beatles Annotations.tar.gz",
@@ -36,19 +38,54 @@ REMOTES = {
         destination_dir="annotations",
     )
 }
-
-
 DOWNLOAD_INFO = """
-        Unfortunately the audio files of the Beatles dataset are not available
-        for download. If you have the Beatles dataset, place the contents into
-        a folder called Beatles with the following structure:
-            > Beatles/
-                > annotations/
-                > audio/
-        and copy the Beatles folder to {}
+    Unfortunately the audio files of the Beatles dataset are not available
+    for download. If you have the Beatles dataset, place the contents into
+    a folder called Beatles with the following structure:
+        > Beatles/
+            > annotations/
+            > audio/
+    and copy the Beatles folder to {}
 """
 
-DATA = utils.LargeData("beatles_index.json")
+
+class Dataset(core.Dataset):
+    """TEST
+    """
+
+    def __init__(self, data_home):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="beatles",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+            methods=[load_audio, load_beats, load_chords, load_sections],
+        )
+
+
+def dataset(data_home):
+    """The beatles dataset
+
+    Args:
+        data_home (str): path where the data lives
+    
+    Returns:
+        core.Dataset
+
+    """
+    return core.Dataset(
+        data_home,
+        index=DATA.index,
+        name="beatles",
+        track_object=Track,
+        bibtex=BIBTEX,
+        remotes=REMOTES,
+        download_info=DOWNLOAD_INFO,
+        methods=[load_audio, load_beats, load_chords, load_sections],
+    )
 
 
 class Track(core.Track):
@@ -56,6 +93,7 @@ class Track(core.Track):
 
     Args:
         track_id (str): track id of the track
+        data_home (str): path where the data lives
 
     Attributes:
         audio_path (str): track audio path
