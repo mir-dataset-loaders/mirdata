@@ -47,13 +47,12 @@ from mirdata import utils
 
 
 BIBTEX = """
-    @inproceedings{porter2015acousticbrainz,
-      title={Acousticbrainz: a community platform for gathering music information obtained from audio},
-      author={Porter, Alastair and Bogdanov, Dmitry and Kaye, Robert and Tsukanov, Roman and Serra, Xavier},
-      booktitle={M{\"u}ller M, Wiering F, editors. ISMIR 2015. 16th International Society for Music Information 
-      Retrieval Conference; 2015 Oct 26-30; M{\'a}laga, Spain. Canada: ISMIR; 2015.},
-      year={2015},
-      organization={International Society for Music Information Retrieval (ISMIR)}
+@inproceedings{bogdanov2019acousticbrainz,
+  title={The AcousticBrainz genre dataset: Multi-source, multi-level, multi-label, and large-scale},
+  author={Bogdanov, Dmitry and Porter, Alastair and Schreiber, Hendrik and Urbano, Juli{\'a}n and Oramas, Sergio},
+  booktitle={Proceedings of the 20th Conference of the International Society for Music Information Retrieval (ISMIR 2019): 2019 Nov 4-8; Delft, The Netherlands.[Canada]: ISMIR; 2019.},
+  year={2019},
+  organization={International Society for Music Information Retrieval (ISMIR)}
 }
 """
 REMOTES = {
