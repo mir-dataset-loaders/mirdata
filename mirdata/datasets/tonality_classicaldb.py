@@ -66,8 +66,8 @@ REMOTES = {
 DOWNLOAD_INFO = """
     Unfortunately the audio files of the Tonality classicalDB dataset are not available
     for download. If you have the tonality classicalDB audio dataset, place the contents into
-    a folder called classicalDB with the following structure:
-        > classicalDB/
+    a folder called classicaldb with the following structure:
+        > classicaldb/
             > audio/
             > keys/
             > spectrums/
@@ -75,7 +75,7 @@ DOWNLOAD_INFO = """
             > musicbrainz_metadata/
     and copy the folder to {} directory
 """
-DATA = utils.LargeData("tonality_classicalDB_index.json")
+DATA = utils.LargeData("tonality_classicaldb_index.json")
 
 
 class Track(core.Track):
