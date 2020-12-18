@@ -52,7 +52,7 @@ import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils, jams_utils, core, utils
+from mirdata import download_utils, jams_utils, core, utils, annotations
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -250,7 +250,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in Groove MIDI".format(track_id)
             )
@@ -258,7 +258,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -378,7 +378,7 @@ def load_beats(midi_path, midi=None):
     beat_range = np.arange(0, len(beat_times))
     meter = midi.time_signature_changes[0]
     beat_positions = 1 + np.mod(beat_range, meter.numerator)
-    return utils.BeatData(beat_times, beat_positions)
+    return annotations.BeatData(beat_times, beat_positions)
 
 
 def load_drum_events(midi_path, midi=None):
@@ -402,8 +402,9 @@ def load_drum_events(midi_path, midi=None):
     for note in midi.instruments[0].notes:
         start_times.append(note.start)
         end_times.append(note.end)
-        events.append(DRUM_MAPPING[note.pitch])
-    return utils.EventData(np.array(start_times), np.array(end_times), np.array(events))
+        events.append(DRUM_MAPPING[note.pitch]["Roland"])
+
+    return annotations.EventData(np.array([start_times, end_times]).T, events)
 
 
 def _download(

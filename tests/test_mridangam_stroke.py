@@ -5,7 +5,6 @@ import os
 from tests.test_utils import run_track_tests
 
 from mirdata.datasets import mridangam_stroke
-from tests.test_utils import DEFAULT_DATA_HOME
 
 
 def test_track():

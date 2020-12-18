@@ -40,7 +40,7 @@ REMOTE_DATASETS = {
         "local_index": "tests/resources/download/acousticbrainz_genre_dataset_little_test.json.zip",
         "filename": "acousticbrainz_genre_dataset_little_test.json",
         "remote_filename": "acousticbrainz_genre_dataset_little_test.json.zip",
-        "remote_checksum": 'c5fbdd4f8b7de383796a34143cb44c4f'
+        "remote_checksum": "c5fbdd4f8b7de383796a34143cb44c4f",
     }
 }
 
@@ -54,15 +54,21 @@ def create_remote_dataset(httpserver, dataset_name, data_home=None):
             filename=REMOTE_DATASETS[dataset_name]["remote_filename"],
             url=httpserver.url,
             checksum=REMOTE_DATASETS[dataset_name]["remote_checksum"],
-            destination_dir='',
+            destination_dir="",
         )
     }
-    data_remote = utils.LargeData(REMOTE_DATASETS[dataset_name]["filename"], remote_index=remote_index)
+    data_remote = utils.LargeData(
+        REMOTE_DATASETS[dataset_name]["filename"], remote_index=remote_index
+    )
     return mirdata.Dataset(dataset_name, index=data_remote.index, data_home=data_home)
 
 
 def clean_remote_dataset(dataset_name):
-    os.remove(os.path.join("mirdata/datasets/indexes", REMOTE_DATASETS[dataset_name]["filename"]))
+    os.remove(
+        os.path.join(
+            "mirdata/datasets/indexes", REMOTE_DATASETS[dataset_name]["filename"]
+        )
+    )
 
 
 def test_dataset_attributes(httpserver):
@@ -243,9 +249,9 @@ def test_load_and_trackids(httpserver):
                 track_ids = dataset.track_ids
             except:
                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-            assert type(track_ids) is list, "{}.track_ids() should return a list".format(
-                dataset_name
-            )
+            assert (
+                type(track_ids) is list
+            ), "{}.track_ids() should return a list".format(dataset_name)
             trackid_len = len(track_ids)
             # if the dataset has tracks, test the loaders
             if dataset._track_object is not None:
@@ -368,8 +374,8 @@ EXCEPTIONS = {
     },
     "saraga": {
         "load_tempo": {"iam_style": "carnatic"},
-        "load_sections": {"iam_style": "carnatic"}
-    }
+        "load_sections": {"iam_style": "carnatic"},
+    },
 }
 
 
@@ -395,7 +401,10 @@ def test_load_methods():
 
                 # add to the EXCEPTIONS dictionary above if your load_* function needs
                 # more than one argument.
-                if dataset_name in EXCEPTIONS and method_name in EXCEPTIONS[dataset_name]:
+                if (
+                    dataset_name in EXCEPTIONS
+                    and method_name in EXCEPTIONS[dataset_name]
+                ):
                     extra_params = EXCEPTIONS[dataset_name][method_name]
                     with pytest.raises(IOError):
                         load_method("a/fake/filepath", **extra_params)

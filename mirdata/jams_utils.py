@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """functions for converting mirdata annotations to jams format
 """
+import os
 
 import jams
 import librosa
-import os
 
-from mirdata import utils
+from mirdata import annotations
 
 
 def jams_converter(
@@ -129,7 +129,7 @@ def jams_converter(
                     "beat_data should be a list of tuples, "
                     + "but contains a {} element".format(type(beats))
                 )
-            jam.annotations.append(beats_to_jams(beats))
+            jam.annotations.append(beats_to_jams(beats[0], beats[1]))
 
     # sections
     if section_data is not None:
@@ -141,7 +141,7 @@ def jams_converter(
                     "section_data should be a list of tuples, "
                     + "but contains a {} element".format(type(sections))
                 )
-            jam.annotations.append(sections_to_jams(sections))
+            jam.annotations.append(sections_to_jams(sections[0], sections[1]))
 
     # multi-sections (sections with multiple levels)
     if multi_section_data is not None:
@@ -162,7 +162,7 @@ def jams_converter(
                     + "levels, e.g. ([(segments0, level0), "
                     + "(segments1, level1)], annotator)"
                 )
-            jam.annotations.append(multi_sections_to_jams(sections))
+            jam.annotations.append(multi_sections_to_jams(sections[0], sections[1]))
 
     # tempo
     if tempo_data is not None:
@@ -174,7 +174,7 @@ def jams_converter(
                     "tempo_data should be a list of tuples, "
                     + "but contains a {} element".format(type(tempo))
                 )
-            jam.annotations.append(tempos_to_jams(tempo))
+            jam.annotations.append(tempos_to_jams(tempo[0], tempo[1]))
 
     # events
     if event_data is not None:
@@ -186,7 +186,7 @@ def jams_converter(
                     "event_data should be a list of tuples, "
                     + "but contains a {} element".format(type(events))
                 )
-            jam.annotations.append(events_to_jams(events))
+            jam.annotations.append(events_to_jams(events[0], events[1]))
 
     # chords
     if chord_data is not None:
@@ -198,7 +198,7 @@ def jams_converter(
                     "chord_data should be a list of tuples, "
                     + "but contains a {} element".format(type(chords))
                 )
-            jam.annotations.append(chords_to_jams(chords))
+            jam.annotations.append(chords_to_jams(chords[0], chords[1]))
 
     # notes
     if note_data is not None:
@@ -210,7 +210,7 @@ def jams_converter(
                     "note_data should be a list of tuples, "
                     + "but contains a {} element".format(type(notes))
                 )
-            jam.annotations.append(notes_to_jams(notes))
+            jam.annotations.append(notes_to_jams(notes[0], notes[1]))
 
     # keys
     if key_data is not None:
@@ -222,7 +222,7 @@ def jams_converter(
                     "key_data should be a list of tuples, "
                     + "but contains a {} element".format(type(keys))
                 )
-            jam.annotations.append(keys_to_jams(keys))
+            jam.annotations.append(keys_to_jams(keys[0], keys[1]))
 
     # f0
     if f0_data is not None:
@@ -234,7 +234,7 @@ def jams_converter(
                     "f0_data should be a list of tuples, "
                     + "but contains a {} element".format(type(f0s))
                 )
-            jam.annotations.append(f0s_to_jams(f0s))
+            jam.annotations.append(f0s_to_jams(f0s[0], f0s[1]))
 
     # lyrics
     if lyrics_data is not None:
@@ -246,7 +246,7 @@ def jams_converter(
                     "lyrics_data should be a list of tuples, "
                     + "but contains a {} element".format(type(lyrics))
                 )
-            jam.annotations.append(lyrics_to_jams(lyrics))
+            jam.annotations.append(lyrics_to_jams(lyrics[0], lyrics[1]))
 
     # tags
     if tags_gtzan_data is not None:
@@ -258,7 +258,7 @@ def jams_converter(
                     "tags_gtzan_data should be a list of tuples, "
                     + "but contains a {} element".format(type(tag))
                 )
-            jam.annotations.append(tag_gtzan_to_jams(tag))
+            jam.annotations.append(tag_to_jams(tag[0], "tag_gtzan", tag[1]))
 
     # tag open
     if tags_open_data is not None:
@@ -270,170 +270,157 @@ def jams_converter(
                     "tags_open_data should be a list of tuples, "
                     + "but contains a {} element".format(type(tag))
                 )
-            jam.annotations.append(tag_open_to_jams(tag))
+            jam.annotations.append(tag_to_jams(tag[0], "tag_open", tag[1]))
 
     return jam
 
 
-def beats_to_jams(beats):
-    """
-    Convert beats annotations into jams format.
+def beats_to_jams(beat_data, description=None):
+    """Convert beat annotations into jams format.
 
-    Parameters
-    ----------
-    beats: tuple
-        A tuple in the format (BeatData, str), where str describes the annotation
-        and BeatData is the beats mirdata annotation format.
+    Args:
+        beat_data (BeatData): beat data object
+        description (str): annotation description
 
-    Returns
-    -------
-    jannot_beat: JAM beat annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
 
     """
     jannot_beat = jams.Annotation(namespace="beat")
     jannot_beat.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if beats[0] is not None:
-        if not isinstance(beats[0], utils.BeatData):
+
+    if beat_data is not None:
+        if not isinstance(beat_data, annotations.BeatData):
             raise TypeError("Type should be BeatData.")
-        for t, p in zip(beats[0].beat_times, beats[0].beat_positions):
+        for t, p in zip(beat_data.times, beat_data.positions):
             jannot_beat.append(time=t, duration=0.0, value=p)
-    if beats[1] is not None:
-        jannot_beat.sandbox = jams.Sandbox(name=beats[1])
+    if description is not None:
+        jannot_beat.sandbox = jams.Sandbox(name=description)
     return jannot_beat
 
 
-def sections_to_jams(sections):
-    """
-    Convert sections annotations into jams format.
+def sections_to_jams(section_data, description=None):
+    """Convert section annotations into jams format.
 
-    Parameters
-    ----------
-    sections: tuple
-        A tuple in the format (SectionData, str), where str describes the annotation
-        and SectionData is the sections mirdata annotation format.
+    Args:
+        section_data (SectionData): section data object
+        description (str): annotation description
 
-    Returns
-    -------
-    jannot_seg: JAM segment_open annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
     jannot_seg = jams.Annotation(namespace="segment_open")
     jannot_seg.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if sections[0] is not None:
-        if not isinstance(sections[0], utils.SectionData):
+
+    if section_data is not None:
+        if not isinstance(section_data, annotations.SectionData):
             raise TypeError("Type should be SectionData.")
-        for inter, seg in zip(sections[0].intervals, sections[0].labels):
+        for inter, seg in zip(section_data.intervals, section_data.labels):
             jannot_seg.append(time=inter[0], duration=inter[1] - inter[0], value=seg)
-    if sections[1] is not None:
-        jannot_seg.sandbox = jams.Sandbox(name=sections[1])
+    if description is not None:
+        jannot_seg.sandbox = jams.Sandbox(name=description)
     return jannot_seg
 
 
-def chords_to_jams(chords):
-    """
-    Convert chords annotations into jams format.
+def chords_to_jams(chord_data, description=None):
+    """Convert chord annotations into jams format.
 
-    Parameters
-    ----------
-    chords: tuple
-        A tuple in the format (ChordData, str), where str describes the annotation
-        and ChordData is the chords mirdata annotation format.
+    Args:
+        chord_data (ChordData): chord data object
+        description (str): annotation description
 
-    Returns
-    -------
-    jannot_chord: JAM chord annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
     jannot_chord = jams.Annotation(namespace="chord")
     jannot_chord.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if chords[0] is not None:
-        if not isinstance(chords[0], utils.ChordData):
+
+    if chord_data is not None:
+        if not isinstance(chord_data, annotations.ChordData):
             raise TypeError("Type should be ChordData.")
         for beg, end, ch in zip(
-            chords[0].intervals[:, 0], chords[0].intervals[:, 1], chords[0].labels
+            chord_data.intervals[:, 0], chord_data.intervals[:, 1], chord_data.labels
         ):
             jannot_chord.append(time=beg, duration=end - beg, value=ch)
-    if chords[1] is not None:
-        jannot_chord.sandbox = jams.Sandbox(name=chords[1])
+    if description is not None:
+        jannot_chord.sandbox = jams.Sandbox(name=description)
     return jannot_chord
 
 
-def notes_to_jams(notes):
-    """
-    Convert notes annotations into jams format using note_to_midi from librosa.
+def notes_to_jams(note_data, description):
+    """Convert note annotations into jams format.
 
-    Parameters
-    ----------
-    notes: tuple
-        A tuple in the format (NoteData, str), where str describes the annotation
-        and NoteData is the notes mirdata annotation format.
+    Args:
+        note_data (NoteData): note data object
+        description (str): annotation description
 
-    Returns
-    -------
-    jannot_notes: JAM note_midi annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
     jannot_note = jams.Annotation(namespace="note_hz")
     jannot_note.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if notes[0] is not None:
-        if not isinstance(notes[0], utils.NoteData):
+
+    if note_data is not None:
+        if not isinstance(note_data, annotations.NoteData):
             raise TypeError("Type should be NoteData.")
         for beg, end, n in zip(
-            notes[0].intervals[:, 0], notes[0].intervals[:, 1], notes[0].notes
+            note_data.intervals[:, 0], note_data.intervals[:, 1], note_data.notes
         ):
             jannot_note.append(time=beg, duration=end - beg, value=n)
-    if notes[1] is not None:
-        jannot_note.sandbox = jams.Sandbox(name=notes[1])
+    if description is not None:
+        jannot_note.sandbox = jams.Sandbox(name=description)
     return jannot_note
 
 
-def keys_to_jams(keys):
-    """
-    Convert keys annotations into jams format.
+def keys_to_jams(key_data, description):
+    """Convert key annotations into jams format.
 
-    Parameters
-    ----------
-    keys: tuple
-        A tuple in the format (KeyData, str), where str describes the annotation
-        and KeyData is the keys mirdata annotation format.
+    Args:
+        key_data (KeyData): key data object
+        description (str): annotation description
 
-    Returns
-    -------
-    jannot_key: JAM key_mode annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
     jannot_key = jams.Annotation(namespace="key_mode")
     jannot_key.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if keys[0] is not None:
-        if not isinstance(keys[0], utils.KeyData):
+
+    if key_data is not None:
+        if not isinstance(key_data, annotations.KeyData):
             raise TypeError("Type should be KeyData.")
-        for beg, end, key in zip(keys[0].start_times, keys[0].end_times, keys[0].keys):
+        for beg, end, key in zip(
+            key_data.intervals[:, 0], key_data.intervals[:, 1], key_data.keys
+        ):
             jannot_key.append(time=beg, duration=end - beg, value=key)
-    if keys[1] is not None:
-        jannot_key.sandbox = jams.Sandbox(name=keys[1])
+    if description is not None:
+        jannot_key.sandbox = jams.Sandbox(name=description)
     return jannot_key
 
 
-def multi_sections_to_jams(multi_sections):
-    """
-    Convert hierarchical annotations into jams format.
+def multi_sections_to_jams(multisection_data, description):
+    """Convert multi-section annotations into jams format.
 
-    Parameters
-    ----------
-    multi_segment: list
-        A list of tuples in the format ([(segments0, level0), (segments1, level1)], annotator),
-        where segments are SectionData mirdata format, level indicates the hierarchy (e.g. 0, 1)
-        and annotator describes the annotator. This format is customize for Salami dataset annotations.
+    Args:
+        multisection_data (list): list of tuples of the form [(SectionData, int)]
+        description (str): annotation description
 
-    Returns
-    -------
-    jannot_multi: JAM multi_segment annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
     # sections with multiple annotators and multiple level annotations
     jannot_multi = jams.Annotation(namespace="multi_segment")
     jannot_multi.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
     jannot_multi.annotation_metadata = jams.AnnotationMetadata(
-        annotator={"name": multi_sections[1]}
+        annotator={"name": description}
     )
-    for sections in multi_sections[0]:
+    for sections in multisection_data:
         if sections[0] is not None:
-            if not isinstance(sections[0], utils.SectionData):
+            if not isinstance(sections[0], annotations.SectionData):
                 raise TypeError("Type should be SectionData.")
             for inter, seg in zip(sections[0].intervals, sections[0].labels):
                 jannot_multi.append(
@@ -444,164 +431,127 @@ def multi_sections_to_jams(multi_sections):
     return jannot_multi
 
 
-def tempos_to_jams(tempos):
-    """
-    Convert tempo annotations into jams format.
+def tempos_to_jams(tempo_data, description=None):
+    """Convert tempo annotations into jams format.
 
-    Parameters
-    ----------
-    tempo: tuple
-        A tuple in the format (float, str), where str describes the annotation
-        and float is the tempo in beats per minute.
+    Args:
+        tempo_data (TempoData): tempo data object
+        description (str): annotation description
 
-    Returns
-    -------
-    jannot_tempo: JAM tempo annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
     jannot_tempo = jams.Annotation(namespace="tempo")
     jannot_tempo.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if tempos[0] is not None:
-        if not isinstance(tempos[0], float) and not isinstance(tempos[0], int):
+    if tempo_data is not None:
+        if not isinstance(tempo_data, float) and not isinstance(tempo_data, int):
             raise TypeError("Type should be float or int.")
-        jannot_tempo.append(time=0, duration=0, confidence=1, value=tempos[0])
-    if tempos[1] is not None:
-        jannot_tempo.sandbox = jams.Sandbox(name=tempos[1])
+        jannot_tempo.append(time=0, duration=0, confidence=1, value=tempo_data)
+    if description is not None:
+        jannot_tempo.sandbox = jams.Sandbox(name=description)
     return jannot_tempo
 
 
-def events_to_jams(events):
-    """
-    Convert events annotations into jams format.
+def events_to_jams(event_data, description=None):
+    """Convert events annotations into jams format.
 
-    Parameters
-    ----------
-    events: tuple
-        A tuple in the format (EventData, str), where str describes the annotation
-        and EventData is the events mirdata annotation format.
+    Args:
+        event_data (EventData): event data object
+        description (str): annotation description
 
-    Returns
-    -------
-    jannot_events: JAM tag_open annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
     jannot_events = jams.Annotation(namespace="tag_open")
     jannot_events.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if events[0] is not None:
-        if type(events[0]) != utils.EventData:
+
+    if event_data is not None:
+        if not isinstance(event_data, annotations.EventData):
             raise TypeError("Type should be EventData.")
         for beg, end, label in zip(
-            events[0].start_times, events[0].end_times, events[0].event
+            event_data.intervals[:, 0], event_data.intervals[:, 1], event_data.events
         ):
-            jannot_events.append(time=beg, duration=end - beg, value=str(label))
-    if events[1] is not None:
-        jannot_events.sandbox = jams.Sandbox(name=events[1])
+            jannot_events.append(time=beg, duration=end - beg, value=label)
+    if description is not None:
+        jannot_events.sandbox = jams.Sandbox(name=description)
     return jannot_events
 
 
-def f0s_to_jams(f0s):
-    """
-    Convert f0 annotations into jams format.
+def f0s_to_jams(f0_data, description=None):
+    """Convert f0 annotations into jams format.
 
-    Parameters
-    ----------
-    f0s: tuple
-        A tuple in the format (F0Data, str), where str describes the annotation
-        and F0Data is the f0 mirdata annotation format.
+    Args:
+        f0_data (F0Data): f0 annotation object
+        description (str): annotation descriptoin
 
-    Returns
-    -------
-    jannot_f0: JAM pitch_contour annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
     jannot_f0 = jams.Annotation(namespace="pitch_contour")
     jannot_f0.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if f0s[0] is not None:
-        if not isinstance(f0s[0], utils.F0Data):
+
+    if f0_data is not None:
+        if not isinstance(f0_data, annotations.F0Data):
             raise TypeError("Type should be F0Data.")
-        for t, f, c in zip(f0s[0].times, f0s[0].frequencies, f0s[0].confidence):
+        for t, f, c in zip(f0_data.times, f0_data.frequencies, f0_data.confidence):
             jannot_f0.append(
                 time=t,
                 duration=0.0,
                 value={"index": 0, "frequency": f, "voiced": f > 0},
                 confidence=c,
             )
-    if f0s[1] is not None:
-        jannot_f0.sandbox = jams.Sandbox(name=f0s[1])
+    if description is not None:
+        jannot_f0.sandbox = jams.Sandbox(name=description)
     return jannot_f0
 
 
-def lyrics_to_jams(lyrics):
-    """
-    Convert lyrics annotations into jams format.
+def lyrics_to_jams(lyric_data, description=None):
+    """Convert lyric annotations into jams format.
 
-    Parameters
-    ----------
-    lyrics: tuple
-        A tuple in the format (LyricData, str), where str describes the annotation
-        and LyricData is the lyric mirdata annotation format.
+    Args:
+        lyric_data (LyricData): lyric annotation object
+        description (str): annotation descriptoin
 
-    Returns
-    -------
-    jannot_lyric: JAM lyric annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
     jannot_lyric = jams.Annotation(namespace="lyrics")
     jannot_lyric.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if lyrics[0] is not None:
-        if not isinstance(lyrics[0], utils.LyricData):
+
+    if lyric_data is not None:
+        if not isinstance(lyric_data, annotations.LyricData):
             raise TypeError("Type should be LyricData.")
         for beg, end, lyric in zip(
-            lyrics[0].start_times, lyrics[0].end_times, lyrics[0].lyrics
+            lyric_data.intervals[:, 0], lyric_data.intervals[:, 1], lyric_data.lyrics
         ):
             jannot_lyric.append(time=beg, duration=end - beg, value=lyric)
-    if lyrics[1] is not None:
-        jannot_lyric.sandbox = jams.Sandbox(name=lyrics[1])
+    if description is not None:
+        jannot_lyric.sandbox = jams.Sandbox(name=description)
     return jannot_lyric
 
 
-def tag_gtzan_to_jams(tags):
-    """
-    Convert tag-gtzan annotations into jams format.
+def tag_to_jams(tag_data, namespace="tag_open", description=None):
+    """Convert lyric annotations into jams format.
 
-    Parameters
-    ----------
-    tags: tuple
-        A tuple in the format (str, str), where the first str is the tag
-        and the second describes the annotation.
+    Args:
+        lyric_data (LyricData): lyric annotation object
+        namespace (str): the jams-compatible tag namespace
+        description (str): annotation descriptoin
 
-    Returns
-    -------
-    jannot_tag_gtzan: JAM tag_gtzan annotation object.
+    Returns:
+        (jams.Annotation): jams annotation object.
+
     """
-    jannot_tag_gtzan = jams.Annotation(namespace="tag_gtzan")
-    jannot_tag_gtzan.annotation_metadata = jams.AnnotationMetadata(
-        data_source="mirdata"
-    )
-    if tags[0] is not None:
-        if not isinstance(tags[0], str):
+    jannot_tag = jams.Annotation(namespace=namespace)
+    jannot_tag.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
+    if tag_data is not None:
+        if not isinstance(tag_data, str):
             raise TypeError("Type should be str.")
-        jannot_tag_gtzan.append(time=0.0, duration=0.0, value=tags[0])
-    if tags[1] is not None:
-        jannot_tag_gtzan.sandbox = jams.Sandbox(name=tags[1])
-    return jannot_tag_gtzan
-
-
-def tag_open_to_jams(tags):
-    """
-    Convert tag-open annotations into jams format.
-
-    Parameters
-    ----------
-    tags: tuple
-        A tuple in the format (str, str), where the first str is the open tag
-        and the second describes the annotation.
-    Returns
-    -------
-    jannot_tag_open: JAM tag_open annotation object.
-    """
-    jannot_tag_open = jams.Annotation(namespace="tag_open")
-    jannot_tag_open.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    if tags[0] is not None:
-        if not isinstance(tags[0], str):
-            raise TypeError("Type should be str.")
-        jannot_tag_open.append(time=0.0, duration=0.0, value=tags[0])
-    if tags[1] is not None:
-        jannot_tag_open.sandbox = jams.Sandbox(name=tags[1])
-    return jannot_tag_open
+        jannot_tag.append(time=0.0, duration=0.0, value=tag_data)
+    if description is not None:
+        jannot_tag.sandbox = jams.Sandbox(name=description)
+    return jannot_tag

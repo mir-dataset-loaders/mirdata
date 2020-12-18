@@ -48,6 +48,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import annotations
 
 BIBTEX = """@inproceedings{goto2002rwc,
   title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
@@ -254,7 +255,7 @@ def load_sections(sections_path):
             ends.append(float(line[1]) / 100.0)
             secs.append(line[2])
 
-    return utils.SectionData(np.array([begs, ends]).T, secs)
+    return annotations.SectionData(np.array([begs, ends]).T, secs)
 
 
 def _position_in_bar(beat_positions, beat_times):
@@ -302,7 +303,7 @@ def load_beats(beats_path):
         np.array(beat_positions), np.array(beat_times)
     )
 
-    return utils.BeatData(beat_times, beat_positions.astype(int))
+    return annotations.BeatData(beat_times, beat_positions.astype(int))
 
 
 def _duration_to_sec(duration):

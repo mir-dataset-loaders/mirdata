@@ -1,9 +1,9 @@
-import numpy as np
 import DALI
 
 from mirdata.datasets import dali
-from mirdata import utils
+from mirdata import annotations
 from tests.test_utils import run_track_tests
+import numpy as np
 
 
 def test_track():
@@ -32,10 +32,10 @@ def test_track():
     }
 
     expected_property_types = {
-        "notes": utils.NoteData,
-        "words": utils.LyricData,
-        "lines": utils.LyricData,
-        "paragraphs": utils.LyricData,
+        "notes": annotations.NoteData,
+        "words": annotations.LyricData,
+        "lines": annotations.LyricData,
+        "paragraphs": annotations.LyricData,
         "annotation_object": DALI.Annotations,
     }
 
@@ -57,7 +57,7 @@ def test_load_notes():
     )
     note_data = dali.load_annotations_granularity(notes_path, "notes")
 
-    assert type(note_data) == utils.NoteData
+    assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) == np.ndarray
     assert type(note_data.notes) == np.ndarray
 
@@ -73,14 +73,13 @@ def test_load_words():
     )
     word_data = dali.load_annotations_granularity(data_path, "words")
 
-    assert type(word_data) == utils.LyricData
-    assert type(word_data.start_times) == np.ndarray
-    assert type(word_data.end_times) == np.ndarray
-    assert type(word_data.lyrics) == np.ndarray
+    assert type(word_data) == annotations.LyricData
+    assert type(word_data.intervals) == np.ndarray
+    assert type(word_data.lyrics) == list
 
-    assert np.array_equal(word_data.start_times, np.array([24.125, 24.273, 24.42]))
-    assert np.array_equal(word_data.end_times, np.array([24.273, 24.42, 24.568]))
-    assert np.array_equal(word_data.lyrics, np.array(["why", "do", "they"]))
+    assert np.array_equal(word_data.intervals[:, 0], np.array([24.125, 24.273, 24.42]))
+    assert np.array_equal(word_data.intervals[:, 1], np.array([24.273, 24.42, 24.568]))
+    assert np.array_equal(word_data.lyrics, ["why", "do", "they"])
 
 
 def test_load_lines():
@@ -90,18 +89,13 @@ def test_load_lines():
     )
     line_data = dali.load_annotations_granularity(data_path, "lines")
 
-    assert type(line_data) == utils.LyricData
-    assert type(line_data.start_times) == np.ndarray
-    assert type(line_data.end_times) == np.ndarray
-    assert type(line_data.lyrics) == np.ndarray
+    assert type(line_data) == annotations.LyricData
+    assert type(line_data.intervals) == np.ndarray
+    assert type(line_data.lyrics) == list
 
-    print(line_data.start_times)
-    print(line_data.end_times)
-    print(line_data.lyrics)
-
-    assert np.array_equal(line_data.start_times, np.array([24.125, 24.42]))
-    assert np.array_equal(line_data.end_times, np.array([24.42, 24.568]))
-    assert np.array_equal(line_data.lyrics, np.array(["why do", "they"]))
+    assert np.array_equal(line_data.intervals[:, 0], np.array([24.125, 24.42]))
+    assert np.array_equal(line_data.intervals[:, 1], np.array([24.42, 24.568]))
+    assert np.array_equal(line_data.lyrics, ["why do", "they"])
 
 
 def test_load_paragraphs():
@@ -111,14 +105,14 @@ def test_load_paragraphs():
     )
     par_data = dali.load_annotations_granularity(data_path, "paragraphs")
 
-    assert type(par_data) == utils.LyricData
-    assert type(par_data.start_times) == np.ndarray
-    assert type(par_data.end_times) == np.ndarray
-    assert type(par_data.lyrics) == np.ndarray
+    assert type(par_data) == annotations.LyricData
+    assert type(par_data.intervals) == np.ndarray
+    assert type(par_data.lyrics) == list
 
-    assert np.array_equal(par_data.start_times, np.array([24.125, 24.420]))
-    assert np.array_equal(par_data.end_times, np.array([24.420, 24.568]))
-    assert np.array_equal(par_data.lyrics, np.array(["why do", "they"]))
+    assert np.array_equal(par_data.intervals[:, 0], np.array([24.125, 24.420]))
+    assert np.array_equal(par_data.intervals[:, 0], np.array([24.125, 24.420]))
+    assert np.array_equal(par_data.intervals[:, 1], np.array([24.420, 24.568]))
+    assert np.array_equal(par_data.lyrics, ["why do", "they"])
 
 
 def test_load_dali_object():
