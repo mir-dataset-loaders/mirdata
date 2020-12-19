@@ -107,28 +107,55 @@ An example for cante100 dataset could be: ``cante100.download(partial_download=[
 Validating a dataset
 ^^^^^^^^^^^^^^^^^^^^
 
-big datasets comment:
+Using the method .validate() is checked if the files in the local version are the same than the canical version.
 
+big datasets comment:
+In future mirdata versions a random validation will be included. This improvement will reduce validation time in very big datasets.
 
 Accessing annotations
 ^^^^^^^^^^^^^^^^^^^^^
-choice track
-select particular track
-annotation classes and compatibility with jams/mir_eval
 
+- Choice track
+With this function a random track is chosen.
+.. code-block:: python
+
+    orchset.choice_track()
+
+
+- Select particular track
+
+.. code-block:: python
+
+    orchset.load_tracks()["Beethoven-S3-I-ex1"]
+
+- Annotation classes and compatibility with jams/mir_eval
+
+TODO
 
 Iterating over datasets and annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+all the data could be accessed with load_ methods. In general, most of the datasets are based on the track concept. Each track has
+an audio with his own annotations.
+
+With the .load_tracks() method all the tracks (audios and annotations) can be loaded as a dictionary structure.
+
+.. code-block:: python
+
+    for key, track in orchset.load_tracks.items():
+        print(key, track.title, track.audio_path)
 
 
 Working with remote datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+TODO
 
 Working with big datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+TODO
 
 Using mirdata with tensorlow or pytorch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+In the future generators for tensorflow and pytorch will be included in the library.
