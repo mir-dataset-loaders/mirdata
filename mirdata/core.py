@@ -18,23 +18,23 @@ DATASETS = mirdata.DATASETS
 class Dataset(object):
     """mirdata Dataset object
 
-    Usage example:
-    orchset = mirdata.Dataset('orchset')  # get the orchset dataset
-    orchset.download()  # download orchset
-    orchset.validate()  # validate orchset
-    track = orchset.choice_track()  # load a random track
-    print(track)  # see what data a track contains
-    orchset.track_ids()  # load all track ids
+        Usage example:
+
+        orchset = mirdata.Dataset('orchset')  # get the orchset dataset
+        orchset.download()  # download orchset
+        orchset.validate()  # validate orchset
+        track = orchset.choice_track()  # load a random track
+        print(track)  # see what data a track contains
+        orchset.track_ids()  # load all track ids
 
     Attributes:
+        data_home (str): path where mirdata will look for the dataset
         name (str): the identifier of the dataset
         bibtex (str): dataset citation/s in bibtex format
         remotes (dict): data to be downloaded
-        index (dict): dataset file index
         download_info (str): download instructions or caveats
         track (mirdata.core.Track): function that inputs a track_id
         readme (str): information about the dataset
-        data_home (str): path where mirdata will look for the dataset
 
     """
 
@@ -47,53 +47,30 @@ class Dataset(object):
         bibtex=None,
         remotes=None,
         download_info=None,
-        methods=None,
-        custom_download=None,
     ):
+        """Dataset init method
+
+        Args:
+            data_home (str or None): path where mirdata will look for the dataset
+            index (dict or None): the dataset's file index
+            name (str or None): the identifier of the dataset
+            track_object (mirdata.core.Track or None): the dataset's uninstantiated Track object
+            bibtex (str or None): dataset citation/s in bibtex format
+            remotes (dict or None): data to be downloaded
+            download_info (str or None): download instructions or caveats
+
+        """
+        self.name = name
         self.data_home = self.default_path if data_home is None else data_home
         self._index = index
-        self.name = name
         self._track_object = track_object
         self.bibtex = bibtex
         self.remotes = remotes
         self._download_info = download_info
-        self._download_fn = (
-            download_utils.downloader if custom_download is None else custom_download
-        )
-
-        # attach methods
-        for method in methods:
-            setattr(self, method, method)
-
-        # attach docstring to methods
-        for method in methods:
-            getattr(self, method).__doc__ = method.__doc__
-
-        # if dataset not in DATASETS:
-        #     raise ValueError(
-        #         "{} is not a valid dataset in mirdata. Valid datsets are:\n{}".format(
-        #             dataset, ",".join(DATASETS)
-        #         )
-        #     )
-        # module = importlib.import_module("mirdata.datasets.{}".format(dataset))
-        # self.name = dataset
-        # self.bibtex = getattr(module, "BIBTEX", None)
-        # self._remotes = getattr(module, "REMOTES", None)
-        # self._index = module.DATA.index if index is None else index
-        # self._download_info = getattr(module, "DOWNLOAD_INFO", None)
-        # self._track_object = getattr(module, "Track", None)
-        # self._download_fn = getattr(module, "_download", download_utils.downloader)
 
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
         self.track.__doc__ = self._track_object.__doc__  # set the docstring
-
-        # inherit any public load functions from the module
-        # for method_name in dir(module):
-        #     if method_name.startswith("load_"):
-        #         method = getattr(module, method_name)
-        #         setattr(self, method_name, method)
-        # getattr(self, method_name).__doc__ = method.__doc__
 
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
@@ -176,7 +153,7 @@ class Dataset(object):
             IOError: if a downloaded file's checksum is different from expected
 
         """
-        self._download_fn(
+        download_utils.downloader(
             self.data_home,
             remotes=self.remotes,
             partial_download=partial_download,
@@ -214,6 +191,9 @@ class Dataset(object):
 
 
 class Track(object):
+    """Track base class
+    """
+
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]
         attributes = [
@@ -341,6 +321,7 @@ class MultiTrack(Track):
             target (np.ndarray): mixture audio with shape (n_samples, n_channels)
             tracks (list): list of keys of included tracks
             weights (list): list of weights used to mix tracks
+
         """
         self._check_mixable()
         tracks = list(self.tracks.keys())
@@ -359,6 +340,37 @@ class MultiTrack(Track):
 
         Returns:
             target (np.ndarray): mixture audio with shape (n_samples, n_channels)
+
         """
         self._check_mixable()
         return self.get_target(list(self.tracks.keys()))
+
+
+def docstring_inherit(parent):
+    """Decorator function 
+    
+    Adds documented Attributes from the parent to the child docs.
+
+    """
+
+    def inherit(obj):
+        spaces = "    "
+        if not str(obj.__doc__).__contains__("Attributes:"):
+            obj.__doc__ += "\n" + spaces + "Attributes:\n"
+        obj.__doc__ = str(obj.__doc__).rstrip() + "\n"
+        for attribute in parent.__doc__.split("Attributes:\n")[-1].lstrip().split("\n"):
+            obj.__doc__ += spaces * 2 + str(attribute).lstrip().rstrip() + "\n"
+
+        return obj
+
+    return inherit
+
+
+def copy_docs(original):
+    """Decorator function to copy docs from one function to another"""
+
+    def wrapper(target):
+        target.__doc__ = original.__doc__
+        return target
+
+    return wrapper

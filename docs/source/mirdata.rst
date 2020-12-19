@@ -15,6 +15,7 @@ beatles
 
 .. automodule:: mirdata.datasets.beatles
    :members:
+   :inherited-members:
 
 
 beatport_key

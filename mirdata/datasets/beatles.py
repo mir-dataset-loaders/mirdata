@@ -49,45 +49,6 @@ DOWNLOAD_INFO = """
 """
 
 
-class Dataset(core.Dataset):
-    """TEST
-    """
-
-    def __init__(self, data_home):
-        super().__init__(
-            data_home,
-            index=DATA.index,
-            name="beatles",
-            track_object=Track,
-            bibtex=BIBTEX,
-            remotes=REMOTES,
-            download_info=DOWNLOAD_INFO,
-            methods=[load_audio, load_beats, load_chords, load_sections],
-        )
-
-
-def dataset(data_home):
-    """The beatles dataset
-
-    Args:
-        data_home (str): path where the data lives
-    
-    Returns:
-        core.Dataset
-
-    """
-    return core.Dataset(
-        data_home,
-        index=DATA.index,
-        name="beatles",
-        track_object=Track,
-        bibtex=BIBTEX,
-        remotes=REMOTES,
-        download_info=DOWNLOAD_INFO,
-        methods=[load_audio, load_beats, load_chords, load_sections],
-    )
-
-
 class Track(core.Track):
     """Beatles track class
 
@@ -324,3 +285,36 @@ def _fix_newpoint(beat_positions):
     beat_positions[beat_positions == "0"] = "4"
 
     return beat_positions
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The beatles dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="beatles",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)
+
+    @core.copy_docs(load_chords)
+    def load_chords(self, *args, **kwargs):
+        return load_chords(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
