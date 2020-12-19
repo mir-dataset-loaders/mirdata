@@ -1,28 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Utility functions for mirdata
-
-Attributes:
-
-    NoteData (namedtuple): `intervals`, `notes`, `confidence`
-
-    F0Data (namedtuple): `times`, `frequencies`, `confidence`
-
-    LyricData (namedtuple): `start_times`, `end_times`, `lyrics`, `pronounciations`
-
-    SectionData (namedtuple): `start_times`, `end_times`, `sections`
-
-    BeatData (namedtuple): `beat_times`, `beat_positions`
-
-    ChordData (namedtuple): `start_times`, `end_times`, `chords`
-
-    KeyData (namedtuple): `start_times`, '`end_times`, `keys`
-
-    EventData (namedtuple): `start_times`, `end_times`, `event`
-
-    TempoData (namedtuple): `time`, `duration`, `value`, `confidence`
-
-"""
-
+"""Utility functions for mirdata"""
 
 from collections import namedtuple
 import hashlib
@@ -96,7 +73,7 @@ def check_files(file_dict, data_home, verbose):
     invalid = {}
     for file_id, file in tqdm.tqdm(file_dict.items(), disable=not verbose):
         # multitrack case
-        if file_id is 'tracks':
+        if file_id is "tracks":
             continue
         # tracks
         else:
@@ -140,32 +117,32 @@ def check_index(dataset_index, data_home, verbose=True):
     invalid_checksums = {}
 
     # check index
-    if 'metadata' in dataset_index and dataset_index['metadata'] is not None:
+    if "metadata" in dataset_index and dataset_index["metadata"] is not None:
         missing_metadata, invalid_metadata = check_metadata(
-            dataset_index['metadata'],
+            dataset_index["metadata"],
             data_home,
             verbose,
         )
-        missing_files['metadata'] = missing_metadata
-        invalid_checksums['metadata'] = invalid_metadata
+        missing_files["metadata"] = missing_metadata
+        invalid_checksums["metadata"] = invalid_metadata
 
-    if 'tracks' in dataset_index and dataset_index['tracks'] is not None:
+    if "tracks" in dataset_index and dataset_index["tracks"] is not None:
         missing_tracks, invalid_tracks = check_files(
-            dataset_index['tracks'],
+            dataset_index["tracks"],
             data_home,
             verbose,
         )
-        missing_files['tracks'] = missing_tracks
-        invalid_checksums['tracks'] = invalid_tracks
+        missing_files["tracks"] = missing_tracks
+        invalid_checksums["tracks"] = invalid_tracks
 
-    if 'multitracks' in dataset_index and dataset_index['multitracks'] is not None:
+    if "multitracks" in dataset_index and dataset_index["multitracks"] is not None:
         missing_multitracks, invalid_multitracks = check_files(
-            dataset_index['multitracks'],
+            dataset_index["multitracks"],
             data_home,
             verbose,
         )
-        missing_files['multitracks'] = missing_multitracks
-        invalid_checksums['multitracks'] = invalid_multitracks
+        missing_files["multitracks"] = missing_multitracks
+        invalid_checksums["multitracks"] = invalid_multitracks
 
     return missing_files, invalid_checksums
 
@@ -217,31 +194,6 @@ def validator(dataset_index, data_home, verbose=True):
         log_message("-" * 20, verbose)
 
     return missing_files, invalid_checksums
-
-
-NoteData = namedtuple("NoteData", ["intervals", "notes", "confidence"])
-
-F0Data = namedtuple("F0Data", ["times", "frequencies", "confidence"])
-
-MultipitchData = namedtuple(
-    "MultipitchData", ["times", "frequency_list", "confidence_list"]
-)
-
-LyricData = namedtuple(
-    "LyricData", ["start_times", "end_times", "lyrics", "pronunciations"]
-)
-
-SectionData = namedtuple("SectionData", ["intervals", "labels"])
-
-BeatData = namedtuple("BeatData", ["beat_times", "beat_positions"])
-
-ChordData = namedtuple("ChordData", ["intervals", "labels"])
-
-KeyData = namedtuple("KeyData", ["start_times", "end_times", "keys"])
-
-TempoData = namedtuple("TempoData", ["time", "duration", "value", "confidence"])
-
-EventData = namedtuple("EventData", ["start_times", "end_times", "event"])
 
 
 def load_json_index(filename):

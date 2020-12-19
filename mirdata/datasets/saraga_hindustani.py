@@ -33,7 +33,7 @@ import csv
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import utils, annotations
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -317,7 +317,7 @@ def load_pitch(pitch_path):
     times = np.array(times)
     freqs = np.array(freqs)
     confidence = (freqs > 0).astype(float)
-    return utils.F0Data(times, freqs, confidence)
+    return annotations.F0Data(times, freqs, confidence)
 
 
 def load_tempo(tempo_path):
@@ -425,7 +425,7 @@ def load_sama(sama_path):
     if not beat_times:
         return None
 
-    return utils.BeatData(np.array(beat_times), np.array(beat_positions))
+    return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
 
 
 def load_sections(sections_path):
@@ -467,7 +467,7 @@ def load_sections(sections_path):
     if not intervals:
         return None
 
-    return utils.SectionData(np.array(intervals), section_labels)
+    return annotations.SectionData(np.array(intervals), section_labels)
 
 
 def load_phrases(phrases_path):
@@ -487,8 +487,7 @@ def load_phrases(phrases_path):
     if not os.path.exists(phrases_path):
         raise IOError("phrases_path {} does not exist".format(phrases_path))
 
-    start_times = []
-    end_times = []
+    intervals = []
     events = []
     with open(phrases_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
@@ -502,7 +501,7 @@ def load_phrases(phrases_path):
             else:
                 events.append('')
 
-    if not start_times:
+    if not intervals:
         return None
 
-    return utils.EventData(np.array(start_times), np.array(end_times), events)
+    return annotations.EventData(np.array(intervals), events)

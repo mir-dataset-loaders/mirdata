@@ -4,7 +4,7 @@ import pretty_midi
 import shutil
 
 from mirdata.datasets import groove_midi
-from mirdata import utils, download_utils
+from mirdata import annotations, download_utils
 from tests.test_utils import run_track_tests
 
 
@@ -34,8 +34,8 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": utils.BeatData,
-        "drum_events": utils.EventData,
+        "beats": annotations.BeatData,
+        "drum_events": annotations.EventData,
         "midi": pretty_midi.PrettyMIDI,
     }
 

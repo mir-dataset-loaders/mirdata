@@ -168,7 +168,7 @@ Module example
 
     from mirdata import download_utils
     from mirdata import jams_utils
-    from mirdata import core
+    from mirdata import core, annotations
     from mirdata import utils
 
 
@@ -405,17 +405,15 @@ Module example
 
         with open(annotation_path, 'r') as fhandle:
             reader = csv.reader(fhandle, delimiter=' ')
-            start_times = []
-            end_times = []
+            intervals = []
             annotation = []
             for line in reader:
-                start_times.append(float(line[0]))
-                end_times.append(float(line[1]))
+                intervals.append([float(line[0]), float(line[1])])
                 annotation.append(line[2])
 
-        annotation_data = utils.EventData(
-            np.array(start_times), np.array(end_times),
-            np.array(annotation))
+        annotation_data = annotations.EventData(
+            np.array(intervals), np.array(annotation)
+        )
         return annotation_data
 
 

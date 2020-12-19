@@ -3,7 +3,7 @@
 import numpy as np
 
 from mirdata.datasets import medleydb_pitch
-from mirdata import utils
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -24,7 +24,7 @@ def test_track():
         "genre": "Singer/Songwriter",
     }
 
-    expected_property_types = {"pitch": utils.F0Data}
+    expected_property_types = {"pitch": annotations.F0Data}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -63,7 +63,7 @@ def test_load_pitch():
     pitch_data = medleydb_pitch.load_pitch(pitch_path)
 
     # check types
-    assert type(pitch_data) == utils.F0Data
+    assert type(pitch_data) == annotations.F0Data
     assert type(pitch_data.times) is np.ndarray
     assert type(pitch_data.frequencies) is np.ndarray
     assert type(pitch_data.confidence) is np.ndarray

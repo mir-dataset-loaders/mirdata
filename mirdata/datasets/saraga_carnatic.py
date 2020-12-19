@@ -35,6 +35,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import annotations
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -53,10 +54,10 @@ BIBTEX = """
 """
 
 REMOTES = {
-    'all': download_utils.RemoteFileMetadata(
-        filename='saraga1.5_carnatic.zip',
-        url='https://zenodo.org/record/4301737/files/saraga1.5_carnatic.zip?download=1',
-        checksum='e4fcd380b4f6d025964cd16aee00273d',
+    "all": download_utils.RemoteFileMetadata(
+        filename="saraga1.5_carnatic.zip",
+        url="https://zenodo.org/record/4301737/files/saraga1.5_carnatic.zip?download=1",
+        checksum="e4fcd380b4f6d025964cd16aee00273d",
         destination_dir=None,
     )
 }
@@ -64,18 +65,18 @@ REMOTES = {
 
 def _load_metadata(metadata_path):
     if not os.path.exists(metadata_path):
-        logging.info('Metadata file {} not found.'.format(metadata_path))
+        logging.info("Metadata file {} not found.".format(metadata_path))
         return None
 
     with open(metadata_path) as f:
         metadata = json.load(f)
-        data_home = metadata_path.split('/' + metadata_path.split('/')[-4])[0]
-        metadata['data_home'] = data_home
+        data_home = metadata_path.split("/" + metadata_path.split("/")[-4])[0]
+        metadata["data_home"] = data_home
 
         return metadata
 
 
-DATA = utils.LargeData('saraga_carnatic_index.json', _load_metadata)
+DATA = utils.LargeData("saraga_carnatic_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -99,103 +100,122 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
-            raise ValueError('{} is not a valid track ID in Saraga Carnatic'.format(track_id))
+        if track_id not in DATA.index["tracks"]:
+            raise ValueError(
+                "{} is not a valid track ID in Saraga Carnatic".format(track_id)
+            )
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         # Audio path
-        self.audio_path = os.path.join(self._data_home, self._track_paths['audio-mix'][0])
+        self.audio_path = os.path.join(
+            self._data_home, self._track_paths["audio-mix"][0]
+        )
 
         # Multitrack audios path
-        if self._track_paths['audio-ghatam'][0] is not None:
-            self.audio_ghatam_path = os.path.join(self._data_home, self._track_paths['audio-ghatam'][0])
-        if self._track_paths['audio-mridangam-left'][0] is not None:
-            self.audio_mridangam_left_path = os.path.join(self._data_home, self._track_paths['audio-mridangam-left'][0])
-        if self._track_paths['audio-mridangam-right'][0] is not None:
-            self.audio_mridangam_right_path = os.path.join(self._data_home, self._track_paths['audio-mridangam-right'][0])
-        if self._track_paths['audio-violin'][0] is not None:
-            self.audio_violin_path = os.path.join(self._data_home, self._track_paths['audio-violin'][0])
-        if self._track_paths['audio-vocal-s'][0] is not None:
-            self.audio_vocal_s_path = os.path.join(self._data_home, self._track_paths['audio-vocal-s'][0])
-        if self._track_paths['audio-vocal'][0] is not None:
-            self.audio_vocal_path = os.path.join(self._data_home, self._track_paths['audio-vocal'][0])
+        if self._track_paths["audio-ghatam"][0] is not None:
+            self.audio_ghatam_path = os.path.join(
+                self._data_home, self._track_paths["audio-ghatam"][0]
+            )
+        if self._track_paths["audio-mridangam-left"][0] is not None:
+            self.audio_mridangam_left_path = os.path.join(
+                self._data_home, self._track_paths["audio-mridangam-left"][0]
+            )
+        if self._track_paths["audio-mridangam-right"][0] is not None:
+            self.audio_mridangam_right_path = os.path.join(
+                self._data_home, self._track_paths["audio-mridangam-right"][0]
+            )
+        if self._track_paths["audio-violin"][0] is not None:
+            self.audio_violin_path = os.path.join(
+                self._data_home, self._track_paths["audio-violin"][0]
+            )
+        if self._track_paths["audio-vocal-s"][0] is not None:
+            self.audio_vocal_s_path = os.path.join(
+                self._data_home, self._track_paths["audio-vocal-s"][0]
+            )
+        if self._track_paths["audio-vocal"][0] is not None:
+            self.audio_vocal_path = os.path.join(
+                self._data_home, self._track_paths["audio-vocal"][0]
+            )
 
         # Annotation paths
         self.ctonic_path = utils.none_path_join(
-            [self._data_home, self._track_paths['ctonic'][0]]
+            [self._data_home, self._track_paths["ctonic"][0]]
         )
         self.pitch_path = utils.none_path_join(
-            [self._data_home, self._track_paths['pitch'][0]]
+            [self._data_home, self._track_paths["pitch"][0]]
         )
         self.pitch_vocal_path = utils.none_path_join(
-            [self._data_home, self._track_paths['pitch-vocal'][0]]
+            [self._data_home, self._track_paths["pitch-vocal"][0]]
         )
         self.tempo_path = utils.none_path_join(
-            [self._data_home, self._track_paths['tempo'][0]]
+            [self._data_home, self._track_paths["tempo"][0]]
         )
         self.sama_path = utils.none_path_join(
-            [self._data_home, self._track_paths['sama'][0]]
+            [self._data_home, self._track_paths["sama"][0]]
         )
         self.sections_path = utils.none_path_join(
-            [self._data_home, self._track_paths['sections'][0]]
+            [self._data_home, self._track_paths["sections"][0]]
         )
         self.phrases_path = utils.none_path_join(
-            [self._data_home, self._track_paths['phrases'][0]]
+            [self._data_home, self._track_paths["phrases"][0]]
         )
         self.metadata_path = utils.none_path_join(
-            [self._data_home, self._track_paths['metadata'][0]]
+            [self._data_home, self._track_paths["metadata"][0]]
         )
 
         # Track attributes
         metadata = DATA.metadata(self.metadata_path)
-        if metadata is not None and metadata['title'].replace(' ', '_') in self.track_id:
+        if (
+            metadata is not None
+            and metadata["title"].replace(" ", "_") in self.track_id
+        ):
             self._track_metadata = metadata
         else:
             # in case the metadata is missing
             self._track_metadata = {
-                'raaga': None,
-                'form': None,
-                'title': None,
-                'work': None,
-                'length': None,
-                'taala': None,
-                'album_artists': None,
-                'mbid': None,
-                'artists': None,
-                'concert': None,
+                "raaga": None,
+                "form": None,
+                "title": None,
+                "work": None,
+                "length": None,
+                "taala": None,
+                "album_artists": None,
+                "mbid": None,
+                "artists": None,
+                "concert": None,
             }
 
-        self.title = self._track_metadata['title']
-        self.artists = self._track_metadata['artists']
-        self.album_artists = self._track_metadata['album_artists']
-        self.mbid = self._track_metadata['mbid']
+        self.title = self._track_metadata["title"]
+        self.artists = self._track_metadata["artists"]
+        self.album_artists = self._track_metadata["album_artists"]
+        self.mbid = self._track_metadata["mbid"]
         self.raaga = (
-            self._track_metadata['raaga']
-            if 'raaga' in self._track_metadata.keys() is not None
+            self._track_metadata["raaga"]
+            if "raaga" in self._track_metadata.keys() is not None
             else None
         )
         self.form = (
-            self._track_metadata['form']
-            if 'form' in self._track_metadata.keys() is not None
+            self._track_metadata["form"]
+            if "form" in self._track_metadata.keys() is not None
             else None
         )
         self.work = (
-            self._track_metadata['work']
-            if 'work' in self._track_metadata.keys() is not None
+            self._track_metadata["work"]
+            if "work" in self._track_metadata.keys() is not None
             else None
         )
         self.taala = (
-            self._track_metadata['taala']
-            if 'taala' in self._track_metadata.keys() is not None
+            self._track_metadata["taala"]
+            if "taala" in self._track_metadata.keys() is not None
             else None
         )
         self.concert = (
-            self._track_metadata['concert']
-            if 'concert' in self._track_metadata.keys() is not None
+            self._track_metadata["concert"]
+            if "concert" in self._track_metadata.keys() is not None
             else None
         )
 
@@ -243,14 +263,14 @@ class Track(core.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            beat_data=[(self.sama, 'sama')],
-            f0_data=[(self.pitch, 'pitch'), (self.pitch_vocal, 'pitch_vocal')],
-            section_data=[(self.sections, 'sections')],
-            event_data=[(self.phrases, 'phrases')],
+            beat_data=[(self.sama, "sama")],
+            f0_data=[(self.pitch, "pitch"), (self.pitch_vocal, "pitch_vocal")],
+            section_data=[(self.sections, "sections")],
+            event_data=[(self.phrases, "phrases")],
             metadata={
-                'tempo': self.tempo,
-                'tonic': self.tonic,
-                'metadata': self._track_metadata,
+                "tempo": self.tempo,
+                "tonic": self.tonic,
+                "metadata": self._track_metadata,
             },
         )
 
@@ -290,6 +310,7 @@ def load_tonic(tonic_path):
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
+
     with open(tonic_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
@@ -328,7 +349,7 @@ def load_pitch(pitch_path):
     times = np.array(times)
     freqs = np.array(freqs)
     confidence = (freqs > 0).astype(float)
-    return utils.F0Data(times, freqs, confidence)
+    return annotations.F0Data(times, freqs, confidence)
 
 
 def load_tempo(tempo_path):
@@ -362,23 +383,23 @@ def load_tempo(tempo_path):
         beats_per_cycle = tempo_data[3]
         subdivisions = tempo_data[4]
 
-        if 'NaN' in tempo_data:
+        if "NaN" in tempo_data:
             return None
 
-        tempo_annotation['tempo_apm'] = (
-            float(tempo_apm) if '.' in tempo_apm else int(tempo_apm)
+        tempo_annotation["tempo_apm"] = (
+            float(tempo_apm) if "." in tempo_apm else int(tempo_apm)
         )
-        tempo_annotation['tempo_bpm'] = (
-            float(tempo_bpm) if '.' in tempo_bpm else int(tempo_bpm)
+        tempo_annotation["tempo_bpm"] = (
+            float(tempo_bpm) if "." in tempo_bpm else int(tempo_bpm)
         )
-        tempo_annotation['sama_interval'] = (
-            float(sama_interval) if '.' in sama_interval else int(sama_interval)
+        tempo_annotation["sama_interval"] = (
+            float(sama_interval) if "." in sama_interval else int(sama_interval)
         )
-        tempo_annotation['beats_per_cycle'] = (
-            float(beats_per_cycle) if '.' in beats_per_cycle else int(beats_per_cycle)
+        tempo_annotation["beats_per_cycle"] = (
+            float(beats_per_cycle) if "." in beats_per_cycle else int(beats_per_cycle)
         )
-        tempo_annotation['subdivisions'] = (
-            float(subdivisions) if '.' in subdivisions else int(subdivisions)
+        tempo_annotation["subdivisions"] = (
+            float(subdivisions) if "." in subdivisions else int(subdivisions)
         )
 
     return tempo_annotation
@@ -392,7 +413,7 @@ def load_sama(sama_path):
             If `None`, returns None.
 
     Returns:
-        SectionData: sama annotations
+        BeatData: sama annotations
 
     """
     if sama_path is None:
@@ -412,7 +433,7 @@ def load_sama(sama_path):
     if not beat_times:
         return None
 
-    return utils.BeatData(np.array(beat_times), np.array(beat_positions))
+    return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
 
 
 def load_sections(sections_path):
@@ -449,7 +470,7 @@ def load_sections(sections_path):
         if not intervals:
             return None
 
-    return utils.SectionData(np.array(intervals), section_labels)
+    return annotations.SectionData(np.array(intervals), section_labels)
 
 
 def load_phrases(phrases_path):
@@ -487,4 +508,4 @@ def load_phrases(phrases_path):
     if not start_times:
         return None
 
-    return utils.EventData(np.array(start_times), np.array(end_times), events)
+    return annotations.EventData(np.array([start_times, end_times]).T, events)
