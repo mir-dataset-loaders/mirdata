@@ -279,7 +279,6 @@ def load_tonic(tonic_path):
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
-    tonic = 0
     with open(tonic_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
@@ -451,7 +450,7 @@ def load_sections(sections_path):
     with open(sections_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
         for line in reader:
-            if line != "\n":
+            if line:
                 intervals.append(
                     [
                         float(line[0]),
@@ -501,7 +500,7 @@ def load_phrases(phrases_path):
             if len(line) == 4:
                 events.append(str(line[3].split('\n')[0]))
             else:
-                events.append(' ')
+                events.append('')
 
     if not start_times:
         return None

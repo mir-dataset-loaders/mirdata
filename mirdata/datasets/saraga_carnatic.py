@@ -290,7 +290,6 @@ def load_tonic(tonic_path):
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
-    tonic = 0
     with open(tonic_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter='\t')
         for line in reader:
@@ -356,37 +355,31 @@ def load_tempo(tempo_path):
 
     with open(tempo_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
-        for line in reader:
-            tempo_data = []
-            tempo_apm = line[0]
-            tempo_data.append(tempo_apm)
-            tempo_bpm = line[1]
-            tempo_data.append(tempo_bpm)
-            sama_interval = line[2]
-            tempo_data.append(sama_interval)
-            beats_per_cycle = line[3]
-            tempo_data.append(beats_per_cycle)
-            subdivisions = line[4]
-            tempo_data.append(subdivisions)
+        tempo_data = next(reader)
+        tempo_apm = tempo_data[0]
+        tempo_bpm = tempo_data[1]
+        sama_interval = tempo_data[2]
+        beats_per_cycle = tempo_data[3]
+        subdivisions = tempo_data[4]
 
-            if 'NaN' in tempo_data:
-                return None
+        if 'NaN' in tempo_data:
+            return None
 
-            tempo_annotation['tempo_apm'] = (
-                float(tempo_apm) if '.' in tempo_apm else int(tempo_apm)
-            )
-            tempo_annotation['tempo_bpm'] = (
-                float(tempo_bpm) if '.' in tempo_bpm else int(tempo_bpm)
-            )
-            tempo_annotation['sama_interval'] = (
-                float(sama_interval) if '.' in sama_interval else int(sama_interval)
-            )
-            tempo_annotation['beats_per_cycle'] = (
-                float(beats_per_cycle) if '.' in beats_per_cycle else int(beats_per_cycle)
-            )
-            tempo_annotation['subdivisions'] = (
-                float(subdivisions) if '.' in subdivisions else int(subdivisions)
-            )
+        tempo_annotation['tempo_apm'] = (
+            float(tempo_apm) if '.' in tempo_apm else int(tempo_apm)
+        )
+        tempo_annotation['tempo_bpm'] = (
+            float(tempo_bpm) if '.' in tempo_bpm else int(tempo_bpm)
+        )
+        tempo_annotation['sama_interval'] = (
+            float(sama_interval) if '.' in sama_interval else int(sama_interval)
+        )
+        tempo_annotation['beats_per_cycle'] = (
+            float(beats_per_cycle) if '.' in beats_per_cycle else int(beats_per_cycle)
+        )
+        tempo_annotation['subdivisions'] = (
+            float(subdivisions) if '.' in subdivisions else int(subdivisions)
+        )
 
     return tempo_annotation
 
@@ -489,7 +482,7 @@ def load_phrases(phrases_path):
             if len(line) == 4:
                 events.append(str(line[3].split('\n')[0]))
             else:
-                events.append(' ')
+                events.append('')
 
     if not start_times:
         return None
