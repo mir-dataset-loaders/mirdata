@@ -141,7 +141,7 @@ With the .load_tracks() method all the tracks (audios and annotations) can be lo
 
 .. code-block:: python
 
-    for key, track in orchset.load_tracks.items():
+    for key, track in orchset.load_tracks().items():
         print(key, track.title, track.audio_path)
 
 
