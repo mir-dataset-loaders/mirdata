@@ -3,7 +3,7 @@
 import numpy as np
 
 from mirdata.datasets import medleydb_melody
-from mirdata import utils
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -31,9 +31,9 @@ def test_track():
     }
 
     expected_property_types = {
-        "melody1": utils.F0Data,
-        "melody2": utils.F0Data,
-        "melody3": utils.MultipitchData,
+        "melody1": annotations.F0Data,
+        "melody2": annotations.F0Data,
+        "melody3": annotations.MultiF0Data,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -71,7 +71,7 @@ def test_load_melody():
     melody_data = medleydb_melody.load_melody(melody_path)
 
     # check types
-    assert type(melody_data) == utils.F0Data
+    assert type(melody_data) == annotations.F0Data
     assert type(melody_data.times) is np.ndarray
     assert type(melody_data.frequencies) is np.ndarray
     assert type(melody_data.confidence) is np.ndarray
@@ -93,7 +93,7 @@ def test_load_melody3():
     melody_data = medleydb_melody.load_melody3(melody_path)
 
     # check types
-    assert type(melody_data) == utils.MultipitchData
+    assert type(melody_data) == annotations.MultiF0Data
     assert type(melody_data.times) is np.ndarray
     assert type(melody_data.frequency_list) is list
     assert type(melody_data.confidence_list) is list

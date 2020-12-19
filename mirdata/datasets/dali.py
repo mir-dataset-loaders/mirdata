@@ -24,6 +24,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import utils
+from mirdata import annotations
 
 # this is the package, needed to load the annotations.
 # DALI-dataset is only installed if the user explicitly declares
@@ -110,12 +111,12 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in DALI".format(track_id))
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths["annot"][0]
         )
@@ -248,11 +249,12 @@ def load_annotations_granularity(annotations_path, granularity):
         ends.append(round(annot["time"][1], 3))
         text.append(annot["text"])
     if granularity == "notes":
-        annotation = utils.NoteData(np.array([begs, ends]).T, np.array(notes), None)
-    else:
-        annotation = utils.LyricData(
-            np.array(begs), np.array(ends), np.array(text), None
+
+        annotation = annotations.NoteData(
+            np.array([begs, ends]).T, np.array(notes), None
         )
+    else:
+        annotation = annotations.LyricData(np.array([begs, ends]).T, text, None)
     return annotation
 
 

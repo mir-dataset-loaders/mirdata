@@ -198,7 +198,7 @@ We are still defining the structure of this ones, to be updated soon!
     jams and mir_eval compatibility
 
 
-Metadata
+metadata
 ########
 
 When available, we provide extensive and easy-to-access ``metadata`` to facilitate track metadata-specific analysis. ``metadata`` is available as attroibutes at the ``track`` level, e.g. ``track.artist``.

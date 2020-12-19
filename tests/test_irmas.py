@@ -21,7 +21,7 @@ def test_track():
         'predominant_instrument': None,
         'genre': None,
         'drum': None,
-        'train': False
+        'train': False,
     }
     expected_attributes_train = {
         'annotation_path': "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/"
@@ -32,15 +32,15 @@ def test_track():
         'predominant_instrument': 'cla',
         'genre': 'cla',
         'drum': None,
-        'train': True
+        'train': True,
     }
 
-    expected_property_test_types = {
-        'instrument': list
-    }
+    expected_property_test_types = {'instrument': list}
 
     run_track_tests(track, expected_attributes, expected_property_test_types)
-    run_track_tests(track_train, expected_attributes_train, expected_property_test_types)
+    run_track_tests(
+        track_train, expected_attributes_train, expected_property_test_types
+    )
 
     audio, sr = track.audio
     assert sr == 44100
@@ -92,9 +92,7 @@ def test_load_pred_inst():
         "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.txt"
     )
-    pred_inst_data_test = irmas.load_pred_inst(
-        pred_inst_ann_path_test
-    )
+    pred_inst_data_test = irmas.load_pred_inst(pred_inst_ann_path_test)
     assert type(pred_inst_data_test) is list
     assert type(pred_inst_data_test[0]) is str
     assert pred_inst_data_test == ['gel', 'voi']
