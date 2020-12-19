@@ -7,6 +7,28 @@ Tutorial
 Installation
 ------------
 
+If you are going to use mirdata library.
+
+.. code-block:: bash
+    !pip install mirdata
+
+
+
+- For development purposes
+
+First, you have to download the mirdata source library from Github.
+
+.. code-block:: bash
+    git clone https://github.com/mir-dataset-loaders/mirdata.git
+
+Then, after opening source data library you have to install all the dependencies.
+
+.. code-block:: bash
+    pip install .
+    pip install .[tests]
+    pip install .[docs]
+    pip install .[dali]
+
 
 Usage
 -----
@@ -85,7 +107,7 @@ An example for cante100 dataset could be: ``cante100.download(partial_download=[
 Validating a dataset
 ^^^^^^^^^^^^^^^^^^^^
 
-big datasets comment
+big datasets comment:
 
 
 Accessing annotations
