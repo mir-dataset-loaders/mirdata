@@ -107,26 +107,43 @@ An example for cante100 dataset could be: ``cante100.download(partial_download=[
 Validating a dataset
 ^^^^^^^^^^^^^^^^^^^^
 
-Using the method .validate() is checked if the files in the local version are the same than the canical version.
+Using the method ``validate()`` we can check if the files in the local version are the same than the canical version.
 
 big datasets comment:
-In future mirdata versions a random validation will be included. This improvement will reduce validation time in very big datasets.
+In future ``mirdata`` version, a random validation will be included. This improvement will reduce validation time for very big datasets.
 
 Accessing annotations
 ^^^^^^^^^^^^^^^^^^^^^
 
 - Choice track
-With this function a random track is chosen.
+We can chose a random track with ``choice_track()`` method.
+
 .. code-block:: python
 
-    orchset.choice_track()
+    random_track = orchset.choice_track()
 
 
 - Select particular track
 
 .. code-block:: python
 
-    orchset.load_tracks()["Beethoven-S3-I-ex1"]
+    orchset_data = orchset.load_tracks()
+    example_track = orchset_data["Beethoven-S3-I-ex1"]
+
+    # Accessing to track melody annotation
+    example_melody = example_track.melody
+
+Annotations can also be accesses through load_ methods.
+
+.. code-block:: python
+
+    random_track = orchset.choice_track()
+
+    # Parsing melody annotation path
+    random_melody_path = random_track.melody_path
+
+    # Accessing to track melody annotation
+    random_melody = orchset.load_melody(melody_path)
 
 - Annotation classes and compatibility with jams/mir_eval
 
@@ -134,10 +151,9 @@ TODO
 
 Iterating over datasets and annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-all the data could be accessed with load_ methods. In general, most of the datasets are based on the track concept. Each track has
-an audio with his own annotations.
+In general, most of the datasets are based on the track concept. Each track has an audio with his own annotations.
 
-With the .load_tracks() method all the tracks (audios and annotations) can be loaded as a dictionary structure.
+With the ``load_tracks()`` method all the tracks (so including their respective audio and annotations) can be loaded as a dictionary structure.
 
 .. code-block:: python
 
@@ -158,4 +174,4 @@ TODO
 Using mirdata with tensorlow or pytorch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the future generators for tensorflow and pytorch will be included in the library.
+In future ``mirdata`` version, generators for tensorflow and pytorch will be included in the library.
