@@ -130,7 +130,11 @@ class Track(core.Track):
 
     @property
     def vocal_audio(self):
-        """(np.ndarray, float): mono vocal audio signal, sample rate"""
+        """Vocal Audio ground truth
+
+        Returns:
+            (np.ndarray, float): audio signal, sample rate
+        """
         return load_vocal_audio(self.audio_path)
 
     @property

@@ -224,7 +224,11 @@ class Track(core.Track):
 
     @property
     def audio_mic(self):
-        """(np.ndarray, float): stereo microphone audio signal, sample rate"""
+        """Audio ground truth
+
+        Returns:
+            (np.ndarray, float): audio signal, sample rate
+        """
         audio, sr = load_audio(self.audio_mic_path)
         return audio, sr
 

@@ -188,12 +188,20 @@ class Track(core.Track):
 
     @property
     def audio_mono(self):
-        """(np.ndarray, float): mono audio signal, sample rate"""
+        """Mono Audio ground truth
+
+        Returns:
+            (np.ndarray, float): audio signal, sample rate
+        """
         return load_audio_mono(self.audio_path_mono)
 
     @property
     def audio_stereo(self):
-        """(np.ndarray, float): stereo audio signal, sample rate"""
+        """Stereo Audio ground truth
+
+        Returns:
+            (np.ndarray, float): audio signal, sample rate
+        """
         return load_audio_stereo(self.audio_path_stereo)
 
     def to_jams(self):
