@@ -45,6 +45,7 @@ Downloading a dataset into the default folder:
 
     .. code-block:: python
 
+        import mirdata
         orchset = mirdata.Dataset('orchset')
         orchset.download()  # Dataset is downloaded at user root folder
 
@@ -215,8 +216,18 @@ as a dictionary structure.
 
 .. code-block:: python
 
+    orchset = mirdata.Dataset('orchset')
     for key, track in orchset.load_tracks().items():
         print(key, track.title, track.audio_path)
+
+
+.. code-block:: python
+
+    orchset = mirdata.Dataset('orchset')
+    orchset_data = orchset.load_track()
+    for track_id in orchset.track_ids:
+        print(track_id, orchset_data[track_id].title, orchset_data[track_id].audio_path)
+
 
 
 Working with remote datasets
