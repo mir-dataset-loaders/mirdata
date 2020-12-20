@@ -168,163 +168,208 @@ class Track(core.Track):
     # Genre
     @property
     def genre(self):
-        """Genre: human-labeled genre and subgenres list"""
+        """human-labeled genre and subgenres list
+
+        return:
+            (list of string): human-labeled genre and subgenres list
+        """
         return [genre for genre in self.track_id.split("#")[2:]]
 
     # Music Brainz
     @property
     def mbid(self):
-        """mbid: musicbrainz id"""
+        """musicbrainz id
+
+        return:
+            (string): mbid
+        """
         return self.track_id.split("#")[0]
 
     @property
     def mbid_group(self):
-        """mbid_group: musicbrainz id group"""
+        """musicbrainz id group
+
+        return:
+            (string): mbid group
+        """
         return self.track_id.split("#")[1]
 
     # Metadata
     @property
     def artist(self):
-        """Artist: metadata artist annotation"""
+        """metadata artist annotation
+
+        return:
+            (string): artist"""
         return load_extractor(self.path)["metadata"]["artist"]
 
     @property
     def title(self):
-        """title: metadata title annotation"""
+        """metadata title annotation
+
+        return:
+            (string): title
+        """
         return load_extractor(self.path)["metadata"]["title"]
 
     @property
     def date(self):
-        """date: metadata date annotation"""
+        """metadata date annotation
+
+        return:
+            (string): date
+        """
         return load_extractor(self.path)["metadata"]["date"]
 
     @property
     def file_name(self):
-        """File_name: metadata file_name annotation"""
+        """metadata file_name annotation
+
+        return:
+            (string): file name
+        """
         return load_extractor(self.path)["metadata"]["file_name"]
 
     @property
     def album(self):
-        """Album: metadata album annotation"""
+        """metadata album annotation
+
+        return:
+            (string): album
+        """
         return load_extractor(self.path)["metadata"]["album"]
 
     @property
     def tracknumber(self):
-        """tracknumber: metadata tracknumber annotation"""
+        """metadata tracknumber annotation
+
+        return:
+            (string): tracknumber
+        """
         return load_extractor(self.path)["metadata"]["tracknumber"]
 
     @property
     def tonal(self):
-        """Tonal: tonal features.
-        'tuning_frequency': estimated tuning frequency [Hz]. Algorithms: TuningFrequency
-        'tuning_nontempered_energy_ratio' and 'tuning_equal_tempered_deviation'
+        """tonal features
 
-        'hpcp', 'thpcp': 32-dimensional harmonic pitch class profile (HPCP) and its transposed version. Algorithms: HPCP
+        return:
+            (dict):
+            'tuning_frequency': estimated tuning frequency [Hz]. Algorithms: TuningFrequency
+            'tuning_nontempered_energy_ratio' and 'tuning_equal_tempered_deviation'
 
-        'hpcp_entropy': Shannon entropy of a HPCP vector. Algorithms: Entropy
+            'hpcp', 'thpcp': 32-dimensional harmonic pitch class profile (HPCP) and its transposed version. Algorithms: HPCP
 
-        'key_key', 'key_scale': Global key feature. Algorithms: Key
+            'hpcp_entropy': Shannon entropy of a HPCP vector. Algorithms: Entropy
 
-        'chords_key', 'chords_scale': Global key extracted from chords detection.
+            'key_key', 'key_scale': Global key feature. Algorithms: Key
 
-        'chords_strength', 'chords_histogram': : strength of estimated chords and normalized histogram of their
-        progression; Algorithms: ChordsDetection, ChordsDescriptors
+            'chords_key', 'chords_scale': Global key extracted from chords detection.
 
-        'chords_changes_rate', 'chords_number_rate':  chords change rate in the progression; ratio
-        of different chords from the total number of chords in the progression; Algorithms: ChordsDetection,
-        ChordsDescriptors
+            'chords_strength', 'chords_histogram': : strength of estimated chords and normalized histogram of their
+            progression; Algorithms: ChordsDetection, ChordsDescriptors
+
+            'chords_changes_rate', 'chords_number_rate':  chords change rate in the progression; ratio
+            of different chords from the total number of chords in the progression; Algorithms: ChordsDetection,
+            ChordsDescriptors
         """
         return load_extractor(self.path)["tonal"]
 
     @property
     def low_level(self):
-        """low_level: low_level track descritors.
+        """low_level track descritors.
 
-        'average_loudness': dynamic range descriptor. It rescales average loudness,
-        computed on 2sec windows with 1 sec overlap, into the [0,1] interval. The value of 0 corresponds to signals
-        with large dynamic range, 1 corresponds to signal with little dynamic range. Algorithms: Loudness
+        return:
 
-        'dynamic_complexity': dynamic complexity computed on 2sec windows with 1sec overlap. Algorithms: DynamicComplexity
+        (dict):
 
-        'silence_rate_20dB', 'silence_rate_30dB', 'silence_rate_60dB': rate of silent frames in a signal for
-        thresholds of 20, 30, and 60 dBs. Algorithms: SilenceRate
+            'average_loudness': dynamic range descriptor. It rescales average loudness,
+            computed on 2sec windows with 1 sec overlap, into the [0,1] interval. The value of 0 corresponds to signals
+            with large dynamic range, 1 corresponds to signal with little dynamic range. Algorithms: Loudness
 
-        'spectral_rms': spectral RMS. Algorithms: RMS
+            'dynamic_complexity': dynamic complexity computed on 2sec windows with 1sec overlap. Algorithms: DynamicComplexity
 
-        'spectral_flux': spectral flux of a signal computed using L2-norm. Algorithms: Flux
+            'silence_rate_20dB', 'silence_rate_30dB', 'silence_rate_60dB': rate of silent frames in a signal for
+            thresholds of 20, 30, and 60 dBs. Algorithms: SilenceRate
 
-        'spectral_centroid', 'spectral_kurtosis', 'spectral_spread', 'spectral_skewness': centroid and central
-        moments statistics describing the spectral shape. Algorithms: Centroid, CentralMoments
+            'spectral_rms': spectral RMS. Algorithms: RMS
 
-        'spectral_rolloff': the roll-off frequency of a spectrum. Algorithms: RollOff
+            'spectral_flux': spectral flux of a signal computed using L2-norm. Algorithms: Flux
 
-        'spectral_decrease': spectral decrease. Algorithms: Decrease
+            'spectral_centroid', 'spectral_kurtosis', 'spectral_spread', 'spectral_skewness': centroid and central
+            moments statistics describing the spectral shape. Algorithms: Centroid, CentralMoments
 
-        'hfc': high frequency content descriptor as proposed by Masri. Algorithms: HFC
+            'spectral_rolloff': the roll-off frequency of a spectrum. Algorithms: RollOff
 
-        'zerocrossingrate' zero-crossing rate. Algorithms: ZeroCrossingRate
+            'spectral_decrease': spectral decrease. Algorithms: Decrease
 
-        'spectral_energy': spectral energy. Algorithms: Energy
+            'hfc': high frequency content descriptor as proposed by Masri. Algorithms: HFC
 
-        'spectral_energyband_low', 'spectral_energyband_middle_low', 'spectral_energyband_middle_high',
-        'spectral_energyband_high': spectral energy in frequency bands [20Hz, 150Hz], [150Hz, 800Hz], [800Hz, 4kHz],
-        and [4kHz, 20kHz]. Algorithms EnergyBand
+            'zerocrossingrate' zero-crossing rate. Algorithms: ZeroCrossingRate
 
-        'barkbands': spectral energy in 27 Bark bands. Algorithms: BarkBands
+            'spectral_energy': spectral energy. Algorithms: Energy
 
-        'melbands': spectral energy in 40 mel bands. Algorithms: MFCC
+            'spectral_energyband_low', 'spectral_energyband_middle_low', 'spectral_energyband_middle_high',
+            'spectral_energyband_high': spectral energy in frequency bands [20Hz, 150Hz], [150Hz, 800Hz], [800Hz, 4kHz],
+            and [4kHz, 20kHz]. Algorithms EnergyBand
 
-        'erbbands': spectral energy in 40 ERB bands. Algorithms: ERBBands
+            'barkbands': spectral energy in 27 Bark bands. Algorithms: BarkBands
 
-        'mfcc': the first 13 mel frequency cepstrum coefficients. See algorithm: MFCC
+            'melbands': spectral energy in 40 mel bands. Algorithms: MFCC
 
-        'gfcc': the first 13 gammatone feature cepstrum coefficients. Algorithms: GFCC
+            'erbbands': spectral energy in 40 ERB bands. Algorithms: ERBBands
 
-        'barkbands_crest', 'barkbands_flatness_db': crest and flatness computed over energies in Bark bands. Algorithms: Crest, FlatnessDB
+            'mfcc': the first 13 mel frequency cepstrum coefficients. See algorithm: MFCC
 
-        'barkbands_kurtosis', 'barkbands_skewness', 'barkbands_spread': central moments statistics over energies in Bark bands. Algorithms: CentralMoments
+            'gfcc': the first 13 gammatone feature cepstrum coefficients. Algorithms: GFCC
 
-        'melbands_crest', 'melbands_flatness_db': crest and flatness computed over energies in mel bands. Algorithms: Crest, FlatnessDB
+            'barkbands_crest', 'barkbands_flatness_db': crest and flatness computed over energies in Bark bands. Algorithms: Crest, FlatnessDB
 
-        'melbands_kurtosis', 'melbands_skewness', 'melbands_spread': central moments statistics over energies in mel bands. Algorithms: CentralMoments
+            'barkbands_kurtosis', 'barkbands_skewness', 'barkbands_spread': central moments statistics over energies in Bark bands. Algorithms: CentralMoments
 
-        'erbbands_crest', 'erbbands_flatness_db': crest and flatness computed over energies in ERB bands. Algorithms: Crest, FlatnessDB
+            'melbands_crest', 'melbands_flatness_db': crest and flatness computed over energies in mel bands. Algorithms: Crest, FlatnessDB
 
-        'erbbands_kurtosis', 'erbbands_skewness', 'erbbands_spread': central moments statistics over energies in ERB bands. Algorithms: CentralMoments
+            'melbands_kurtosis', 'melbands_skewness', 'melbands_spread': central moments statistics over energies in mel bands. Algorithms: CentralMoments
 
-        'dissonance': sensory dissonance of a spectrum. Algorithms: Dissonance
+            'erbbands_crest', 'erbbands_flatness_db': crest and flatness computed over energies in ERB bands. Algorithms: Crest, FlatnessDB
 
-        'spectral_entropy': Shannon entropy of a spectrum. Algorithms: Entropy
+            'erbbands_kurtosis', 'erbbands_skewness', 'erbbands_spread': central moments statistics over energies in ERB bands. Algorithms: CentralMoments
 
-        'pitch_salience': pitch salience of a spectrum. Algorithms: PitchSalience
+            'dissonance': sensory dissonance of a spectrum. Algorithms: Dissonance
 
-        'spectral_complexity': spectral complexity. Algorithms: SpectralComplexity
+            'spectral_entropy': Shannon entropy of a spectrum. Algorithms: Entropy
 
-        'spectral_contrast_coeffs', 'spectral_contrast_valleys': spectral contrast features. Algorithms:
-        SpectralContrast
+            'pitch_salience': pitch salience of a spectrum. Algorithms: PitchSalience
+
+            'spectral_complexity': spectral complexity. Algorithms: SpectralComplexity
+
+            'spectral_contrast_coeffs', 'spectral_contrast_valleys': spectral contrast features. Algorithms:
+            SpectralContrast
 
         """
         return load_extractor(self.path)["low_level"]
 
     @property
     def rhythm(self):
-        """Rhythm: rhytm essentia extractor descriptors
-        'beats_position': time positions [sec] of detected beats using beat tracking algorithm by Degara et al., 2012. Algorithms: RhythmExtractor2013, BeatTrackerDegara
+        """rhythm essentia extractor descriptors
 
-        'beats_count': number of detected beats
+        return:
+            (dict):
+            'beats_position': time positions [sec] of detected beats using beat tracking algorithm by Degara et al., 2012. Algorithms: RhythmExtractor2013, BeatTrackerDegara
 
-        'bpm': BPM value according to detected beats
+            'beats_count': number of detected beats
 
-        'bpm_histogram_first_peak_bpm', 'bpm_histogram_first_peak_spread', 'bpm_histogram_first_peak_weight',
-        'bpm_histogram_second_peak_bpm', 'bpm_histogram_second_peak_spread', 'bpm_histogram_second_peak_weight':
-        descriptors characterizing highest and second highest peak of the BPM histogram. Algorithms:
-        BpmHistogramDescriptors
+            'bpm': BPM value according to detected beats
 
-        'beats_loudness', 'beats_loudness_band_ratio': spectral energy computed on beats segments of audio across the whole spectrum, and ratios of energy in 6 frequency bands. Algorithms: BeatsLoudness, SingleBeatLoudness
+            'bpm_histogram_first_peak_bpm', 'bpm_histogram_first_peak_spread', 'bpm_histogram_first_peak_weight',
+            'bpm_histogram_second_peak_bpm', 'bpm_histogram_second_peak_spread', 'bpm_histogram_second_peak_weight':
+            descriptors characterizing highest and second highest peak of the BPM histogram. Algorithms:
+            BpmHistogramDescriptors
 
-        'onset_rate': number of detected onsets per second. Algorithms: OnsetRate
+            'beats_loudness', 'beats_loudness_band_ratio': spectral energy computed on beats segments of audio across the whole spectrum, and ratios of energy in 6 frequency bands. Algorithms: BeatsLoudness, SingleBeatLoudness
 
-        'danceability': danceability estimate. Algorithms: Danceability
+            'onset_rate': number of detected onsets per second. Algorithms: OnsetRate
+
+            'danceability': danceability estimate. Algorithms: Danceability
 
         """
         return load_extractor(self.path)["metadata"]["rhythm"]
