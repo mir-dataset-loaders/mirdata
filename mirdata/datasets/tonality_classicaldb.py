@@ -113,27 +113,44 @@ class Track(core.Track):
 
     @utils.cached_property
     def key(self):
-        """String: key annotation"""
+        """ key annotation
+
+        Returns:
+            (String): key annotation
+        """
         return load_key(self.key_path)
 
     @utils.cached_property
     def spectrum(self):
-        """np.array: spectrum"""
+        """Spectrum of ground truth audio
+
+        Returns:
+            (np.array): spectrum
+        """
         return load_spectrum(self.spectrum_path)
 
     @utils.cached_property
     def HPCP(self):
-        """np.array: HPCP"""
+        """HPCP of ground truth audio
+
+        Returns:
+            (np.array): spectrum
+        """
         return load_HPCP(self.HPCP_path)
 
     @utils.cached_property
     def mb_metadata(self):
-        """Dict: musicbrainz metadata"""
+        """Musicbrainz metadata
+
+        Returns:
+            (dict): MusicBrainz metadata
+        """
         return load_mb(self.mb_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """
+        (np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
     def to_jams(self):
