@@ -283,7 +283,11 @@ class Track(core.Track):
         return load_notes(self.notes_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """the track's data in jams format:
+
+        Return:
+            (JAMS): return track data in jam format
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             spectrogram_path=self.spectrogram_path,

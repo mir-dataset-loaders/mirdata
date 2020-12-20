@@ -148,7 +148,11 @@ class Track(core.Track):
         return load_mix_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """the track's data in jams format:
+
+        Return:
+            (JAMS): return track data in jam format
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.f0, None)],

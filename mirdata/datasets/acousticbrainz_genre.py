@@ -330,7 +330,11 @@ class Track(core.Track):
         return load_extractor(self.path)["metadata"]["rhythm"]
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """the track's data in jams format:
+
+        Return:
+            (JAMS): return track data in jam format
+        """
         return jams_utils.jams_converter(
             metadata={
                 "features": load_extractor(self.path),

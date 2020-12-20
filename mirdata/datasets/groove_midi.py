@@ -319,7 +319,11 @@ class Track(core.Track):
         return load_midi(self.midi_path)
 
     def to_jams(self):
-        # Initialize top-level JAMS container
+        """the track's data in jams format:
+
+                Return:
+                    (JAMS): return track data in jam format
+        """
         return jams_utils.jams_converter(
             beat_data=[(self.beats, "midi beats")],
             tempo_data=[(self.tempo, "midi tempo")],
