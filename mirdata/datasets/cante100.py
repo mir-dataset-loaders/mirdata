@@ -269,17 +269,28 @@ class Track(core.Track):
 
     @property
     def spectrogram(self):
-        """(np.ndarray, float): spectrogram"""
+        """spectrogram of audio ground truth
+
+        Returns:
+            np.ndarray: spectrogram
+        """
         return load_spectrogram(self.spectrogram_path)
 
     @utils.cached_property
     def melody(self):
-        """F0Data: audio signal, sample rate"""
+        """F0 annotated.
+
+         Returns:
+             (F0Data): F0
+         """
         return load_melody(self.f0_path)
 
     @utils.cached_property
     def notes(self):
-        """NoteData: audio signal, sample rate"""
+        """Annotated notes
+
+        Returns:
+            NoteData: notes"""
         return load_notes(self.notes_path)
 
     def to_jams(self):
