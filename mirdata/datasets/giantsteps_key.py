@@ -82,7 +82,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in giantsteps_key".format(track_id)
             )
@@ -90,7 +90,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.keys_path = os.path.join(self._data_home, self._track_paths["key"][0])
         self.metadata_path = (
@@ -243,3 +243,39 @@ def load_artist(metadata_path):
         meta = json.load(json_file)
 
     return [artist["name"] for artist in meta["artists"]]
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The giantsteps_key dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="giantsteps_key",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_key)
+    def load_key(self, *args, **kwargs):
+        return load_key(*args, **kwargs)
+
+    @core.copy_docs(load_tempo)
+    def load_tempo(self, *args, **kwargs):
+        return load_tempo(*args, **kwargs)
+
+    @core.copy_docs(load_genre)
+    def load_genre(self, *args, **kwargs):
+        return load_genre(*args, **kwargs)
+
+    @core.copy_docs(load_artist)
+    def load_artist(self, *args, **kwargs):
+        return load_artist(*args, **kwargs)

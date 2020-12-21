@@ -37,12 +37,12 @@ by the COFLA team.
 For more details, please visit: http://www.cofla-project.com/?page_id=134
 
 """
-
-import logging
-import librosa
 import os
-import numpy as np
+import logging
 import xml.etree.ElementTree as ET
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -63,8 +63,7 @@ BIBTEX = """@dataset{nadine_kroher_2018_1322542,
   version      = {1.0},
   doi          = {10.5281/zenodo.1322542},
   url          = {https://doi.org/10.5281/zenodo.1322542}
-}
-
+},
 @dataset{nadine_kroher_2018_1324183,
   author       = {Nadine Kroher and
                   José Miguel Díaz-Báñez and
@@ -377,3 +376,36 @@ def load_notes(notes_path):
         np.array(pitches, dtype="float"),
         np.array(confidence, dtype="float"),
     )
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The cante100 dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="cante100",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_spectrogram)
+    def load_spectrogram(self, *args, **kwargs):
+        return load_spectrogram(*args, **kwargs)
+
+    @core.copy_docs(load_melody)
+    def load_melody(self, *args, **kwargs):
+        return load_melody(*args, **kwargs)
+
+    @core.copy_docs(load_notes)
+    def load_notes(self, *args, **kwargs):
+        return load_notes(*args, **kwargs)

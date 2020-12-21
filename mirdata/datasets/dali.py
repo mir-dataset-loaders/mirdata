@@ -278,3 +278,32 @@ def load_annotations_class(annotations_path):
         with gzip.open(annotations_path, "r") as f:
             output = pickle.load(f)
     return output
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The dali dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="dali",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_annotations_granularity)
+    def load_annotations_granularity(self, *args, **kwargs):
+        return load_annotations_granularity(*args, **kwargs)
+
+    @core.copy_docs(load_annotations_class)
+    def load_annotations_class(self, *args, **kwargs):
+        return load_annotations_class(*args, **kwargs)

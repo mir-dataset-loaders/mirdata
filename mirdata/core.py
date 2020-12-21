@@ -347,7 +347,7 @@ class MultiTrack(Track):
 
 
 def docstring_inherit(parent):
-    """Decorator function 
+    """Decorator function to inherit docstrings from the parent class.
     
     Adds documented Attributes from the parent to the child docs.
 
