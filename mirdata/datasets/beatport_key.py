@@ -17,6 +17,7 @@ dance music subgenres.
 
 Data License: Creative Commons Attribution Share Alike 4.0 International
 """
+import csv
 import os
 import fnmatch
 import json
@@ -168,10 +169,9 @@ def load_key(keys_path):
     if not os.path.exists(keys_path):
         raise IOError("keys_path {} does not exist".format(keys_path))
 
-    with open(keys_path) as f:
-        key = f.readline()
-
-    keys = key.split(" | ")
+    with open(keys_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="|")
+        keys = next(reader)
 
     # standarize 'Unknown'  to 'X'
     keys = ["x" if k.lower() == "unknown" else k for k in keys]
