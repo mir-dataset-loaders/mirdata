@@ -198,9 +198,11 @@ def test_validate(skip_local, httpserver):
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
         if dataset_name not in REMOTE_DATASETS:
             dataset = module.Dataset(data_home)
+            dataset_default = module.Dataset(data_home=None)
         else:
             remote_index = create_remote_index(httpserver, dataset_name)
             dataset = module.Dataset(data_home, index=remote_index)
+            dataset_default = module.Dataset(data_home=None, index=remote_index)
 
         try:
             dataset.validate()
@@ -212,7 +214,6 @@ def test_validate(skip_local, httpserver):
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
-        dataset_default = module.Dataset(dataset_name, data_home=None)
         try:
             dataset_default.validate(verbose=False)
         except:

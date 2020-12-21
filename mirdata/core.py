@@ -71,15 +71,6 @@ def copy_docs(original):
 class Dataset(object):
     """mirdata Dataset object
 
-        Usage example:
-
-        orchset = mirdata.Dataset('orchset')  # get the orchset dataset
-        orchset.download()  # download orchset
-        orchset.validate()  # validate orchset
-        track = orchset.choice_track()  # load a random track
-        print(track)  # see what data a track contains
-        orchset.track_ids()  # load all track ids
-
     Attributes:
         data_home (str): path where mirdata will look for the dataset
         name (str): the identifier of the dataset
