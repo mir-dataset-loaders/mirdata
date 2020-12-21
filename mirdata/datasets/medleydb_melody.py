@@ -123,17 +123,29 @@ class Track(core.Track):
 
     @utils.cached_property
     def melody1(self):
-        """F0Data: The pitch of the single most predominant source (often the voice)"""
+        """The pitch of the single most predominant source (often the voice).
+
+        Returns:
+            (F0Data): pitch
+        """
         return load_melody(self.melody1_path)
 
     @utils.cached_property
     def melody2(self):
-        """F0Data: The pitch of the predominant source for each point in time"""
+        """The pitch of the predominant source for each point in time
+
+        Returns:
+            (F0Data): Pitch
+        """
         return load_melody(self.melody2_path)
 
     @utils.cached_property
     def melody3(self):
-        """MultiF0Data: The pitch of any melodic source. Allows for more than one f0 value at a time."""
+        """The pitch of any melodic source. Allows for more than one f0 value at a time.
+
+        Returns:
+            (F0Data): pitch
+        """
         return load_melody3(self.melody3_path)
 
     @property

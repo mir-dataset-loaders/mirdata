@@ -147,12 +147,19 @@ class Track(core.Track):
 
     @utils.cached_property
     def midi(self):
-        """output type: description of output"""
+        """Description of output.
+
+        Retuns:
+            (Obj): midi"""
         return load_midi(self.midi_path)
 
     @utils.cached_property
     def notes(self):
-        """NoteData: annotated piano notes"""
+        """Annotated piano notes
+
+        Returns:
+            (NoteData): notes
+        """
         return load_notes(self.midi_path, self.midi)
 
     @property
