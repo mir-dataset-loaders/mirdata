@@ -27,6 +27,7 @@ import json
 import librosa
 import os
 import numpy as np
+import csv
 
 from mirdata import jams_utils, download_utils, core, utils
 
@@ -182,10 +183,11 @@ def load_key(keys_path):
     if not os.path.exists(keys_path):
         raise IOError("keys_path {} does not exist".format(keys_path))
 
-    with open(keys_path) as f:
-        key = f.readline()
+    with open(keys_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter='\n')
+        key = next(reader)[0]
 
-    return key.replace('\t', ' ').replace('\n', '')
+    return key.replace('\t', ' ')
 
 
 def load_spectrum(spectrum_path):

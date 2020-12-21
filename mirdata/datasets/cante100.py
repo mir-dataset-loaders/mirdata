@@ -42,6 +42,7 @@ import logging
 import librosa
 import os
 import numpy as np
+import csv
 import xml.etree.ElementTree as ET
 
 from mirdata import download_utils
@@ -337,9 +338,13 @@ def load_melody(f0_path):
     if not os.path.exists(f0_path):
         raise IOError("f0_path {} does not exist".format(f0_path))
 
-    parsed_melody = np.genfromtxt(f0_path, delimiter=",")
-    times = parsed_melody[:, 0]
-    freqs = parsed_melody[:, 1]
+    times = []
+    freqs = []
+    with open(f0_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=',')
+        for line in reader:
+            times.append(float(line[0]))
+            freqs.append(float(line[1]))
 
     times = np.array(times)
     freqs = np.array(freqs)
@@ -364,13 +369,13 @@ def load_notes(notes_path):
     intervals = []
     pitches = []
     confidence = []
-
-    parsed_notes = np.genfromtxt(notes_path, delimiter=",")
-    for row in parsed_notes:
-        intervals.append([row[0], float(row[0]) + float(row[1])])
-        # Convert midi value to frequency
-        pitches.append((440 / 32) * (2 ** ((int(row[2]) - 9) / 12)))
-        confidence.append(1.0)
+    with open(notes_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=',')
+        for line in reader:
+            intervals.append([line[0], float(line[0]) + float(line[1])])
+            # Convert midi value to frequency
+            pitches.append((440 / 32) * (2 ** ((int(line[2]) - 9) / 12)))
+            confidence.append(1.0)
 
     return annotations.NoteData(
         np.array(intervals, dtype="float"),
