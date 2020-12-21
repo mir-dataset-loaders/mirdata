@@ -12,7 +12,7 @@
 
 import csv
 import os
-from typing import Optional, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, Union
 
 import librosa
 import numpy as np
@@ -115,7 +115,7 @@ class Track(core.Track):
         return load_sections(self.sections_path)
 
     @property
-    def audio(self) -> Tuple[np.ndarray, float]:
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
@@ -143,7 +143,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_audio(faudio) -> Optional[Tuple[np.ndarray, float]]:
+def load_audio(faudio: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
     """Load a Beatles audio file.
 
     Args:
@@ -158,14 +158,14 @@ def load_audio(faudio) -> Optional[Tuple[np.ndarray, float]]:
 
 
 @io.coerce_to_string_io
-def load_beats(fbeats) -> Optional[annotations.BeatData]:
+def load_beats(fbeats: TextIO) -> annotations.BeatData:
     """Load Beatles format beat data from a file
 
-        Args:
-            fbeats (str or file-like): path or file-like object pointing to a beat annotation file
+    Args:
+        fbeats (str or file-like): path or file-like object pointing to a beat annotation file
 
-        Returns:
-            BeatData: loaded beat data
+    Returns:
+        BeatData: loaded beat data
 
     """
     beat_times, beat_positions = [], []
@@ -186,14 +186,14 @@ def load_beats(fbeats) -> Optional[annotations.BeatData]:
 
 
 @io.coerce_to_string_io
-def load_chords(fchords) -> Optional[annotations.ChordData]:
+def load_chords(fchords: TextIO) -> annotations.ChordData:
     """Load Beatles format chord data from a file
 
-        Args:
-            fchords (str or file-like): path or file-like object pointing to a chord annotation file
+    Args:
+        fchords (str or file-like): path or file-like object pointing to a chord annotation file
 
-        Returns:
-            ChordData: loaded chord data
+    Returns:
+        ChordData: loaded chord data
 
     """
     start_times, end_times, chords = [], [], []
@@ -209,14 +209,14 @@ def load_chords(fchords) -> Optional[annotations.ChordData]:
 
 
 @io.coerce_to_string_io
-def load_key(fkeys) -> Optional[annotations.KeyData]:
+def load_key(fkeys: TextIO) -> annotations.KeyData:
     """Load Beatles format key data from a file
 
-        Args:
-            fkeys (str or file-like): path or file-like object pointing to a key annotation file
+    Args:
+        fkeys (str or file-like): path or file-like object pointing to a key annotation file
 
-        Returns:
-            KeyData: loaded key data
+    Returns:
+        KeyData: loaded key data
 
     """
     start_times, end_times, keys = [], [], []
@@ -231,14 +231,14 @@ def load_key(fkeys) -> Optional[annotations.KeyData]:
 
 
 @io.coerce_to_string_io
-def load_sections(fsections) -> Optional[annotations.SectionData]:
+def load_sections(fsections: TextIO) -> annotations.SectionData:
     """Load Beatles format section data from a file
 
-        Args:
-            fsections (str or file-like): path or file-like object pointing to a section annotation file
+    Args:
+        fsections (str or file-like): path or file-like object pointing to a section annotation file
 
-        Returns:
-            SectionData: loaded section data
+    Returns:
+        SectionData: loaded section data
     """
     start_times, end_times, sections = [], [], []
     reader = csv.reader(fsections, delimiter="\t")
@@ -250,7 +250,7 @@ def load_sections(fsections) -> Optional[annotations.SectionData]:
     return annotations.SectionData(np.array([start_times, end_times]).T, sections)
 
 
-def _fix_newpoint(beat_positions):
+def _fix_newpoint(beat_positions: np.ndarray) -> np.ndarray:
     """Fills in missing beat position labels by inferring the beat position
     from neighboring beats.
 

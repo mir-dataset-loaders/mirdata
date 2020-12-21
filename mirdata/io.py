@@ -4,7 +4,9 @@ from typing import BinaryIO, Callable, Optional, TextIO, TypeVar, Union
 T = TypeVar('T')  # Can be anything
 
 
-def coerce_to_string_io(func: Callable[[Optional[Union[str, TextIO]]], Optional[T]]):
+def coerce_to_string_io(
+    func: Callable[[TextIO], T]
+) -> Callable[[Optional[Union[str, TextIO]]], Optional[T]]:
     def wrapper(file_path_or_obj: Optional[Union[str, TextIO]]) -> Optional[T]:
         if not file_path_or_obj:
             return None
@@ -23,7 +25,9 @@ def coerce_to_string_io(func: Callable[[Optional[Union[str, TextIO]]], Optional[
     return wrapper
 
 
-def coerce_to_bytes_io(func: Callable[[Optional[Union[str, BinaryIO]]], Optional[T]]):
+def coerce_to_bytes_io(
+    func: Callable[[BinaryIO], T]
+) -> Callable[[Optional[Union[str, BinaryIO]]], Optional[T]]:
     def wrapper(file_path_or_obj: Optional[Union[str, BinaryIO]]) -> Optional[T]:
         if not file_path_or_obj:
             return None
