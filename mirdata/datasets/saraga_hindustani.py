@@ -360,22 +360,17 @@ def load_tempo(tempo_path):
     with open(tempo_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=',')
         for line in reader:
-            tempo_data = []
-            tempo = line[0]
-            tempo_data.append(tempo)
-            matra = line[1]
-            tempo_data.append(matra)
-            sama_interval = line[2]
-            tempo_data.append(sama_interval)
-            matras_per_cycle = line[3]
-            tempo_data.append(matras_per_cycle)
-            start_time = line[4]
-            tempo_data.append(start_time)
-            duration = line[5]
-            tempo_data.append(duration)
 
-            if "NaN" in tempo_data:
+            if "NaN" in line:
                 return None
+
+            # Store partial tempo information
+            tempo = line[0]
+            matra = line[1]
+            sama_interval = line[2]
+            matras_per_cycle = line[3]
+            start_time = line[4]
+            duration = line[5]
 
             tempo_annotation[sections[section_count]] = {
                 "tempo": float(tempo) if "." in tempo else int(tempo),
