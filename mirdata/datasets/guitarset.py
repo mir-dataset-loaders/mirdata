@@ -292,7 +292,7 @@ def load_beats(jams_path):
         jams_path (str): Path of the jams annotation file
 
     Returns:
-        (BeatData): Beat data
+        (annotations.BeatData): Beat data
 
     """
     if not os.path.exists(jams_path):
@@ -314,7 +314,7 @@ def load_chords(jams_path, leadsheet_version=True):
             If False, load the infered version.
 
     Returns:
-        (ChordData): Chord data
+        (annotations.ChordData): Chord data
 
     """
     if not os.path.exists(jams_path):
@@ -335,7 +335,7 @@ def load_key_mode(jams_path):
         jams_path (str): Path of the jams annotation file
 
     Returns:
-        (KeyData): Key data
+        (annotations.KeyData): Key data
 
     """
     if not os.path.exists(jams_path):
@@ -355,7 +355,7 @@ def load_pitch_contour(jams_path, string_num):
             0 is the Low E string, 5 is the high e string.
 
     Returns:
-        (F0Data): Pitch contour data for the given string
+        (annotations.F0Data): Pitch contour data for the given string
 
     """
     if not os.path.exists(jams_path):
@@ -379,7 +379,7 @@ def load_notes(jams_path, string_num):
             0 is the Low E string, 5 is the high e string.
 
     Returns:
-        (NoteData): Note data for the given string
+        (annotations.NoteData): Note data for the given string
 
     """
     if not os.path.exists(jams_path):

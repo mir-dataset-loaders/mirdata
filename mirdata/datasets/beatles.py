@@ -149,7 +149,7 @@ def load_beats(beats_path):
         beats_path (str): path to beat annotation file
 
     Returns:
-        (utils.BeatData): loaded beat data
+        (annotations.BeatData): loaded beat data
 
     """
     if beats_path is None:
@@ -183,7 +183,7 @@ def load_chords(chords_path):
         chords_path (str): path to chord annotation file
 
     Returns:
-        (utils.ChordData): loaded chord data
+        (annotations.ChordData): loaded chord data
 
     """
     if chords_path is None:
@@ -214,7 +214,7 @@ def load_key(keys_path):
         keys_path (str): path to key annotation file
 
     Returns:
-        (utils.KeyData): loaded key data
+        (annotations.KeyData): loaded key data
 
     """
     if keys_path is None:
@@ -244,7 +244,7 @@ def load_sections(sections_path):
         sections_path (str): path to section annotation file
 
     Returns:
-        (utils.SectionData): loaded section data
+        (annotations.SectionData): loaded section data
 
     """
     if sections_path is None:
@@ -270,7 +270,7 @@ def load_sections(sections_path):
 
 def _fix_newpoint(beat_positions):
     """Fills in missing beat position labels by inferring the beat position
-    from neighboring beats.
+        from neighboring beats.
 
     """
     while np.any(beat_positions == "New Point"):

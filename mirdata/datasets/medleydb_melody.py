@@ -204,3 +204,31 @@ def load_melody3(melody_path):
     times = np.array(times)
     melody_data = annotations.MultiF0Data(times, freqs_list, conf_list)
     return melody_data
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The medleydb_melody dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="medleydb_melody",
+            track_object=Track,
+            bibtex=BIBTEX,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_melody)
+    def load_melody(self, *args, **kwargs):
+        return load_melody(*args, **kwargs)
+
+    @core.copy_docs(load_melody3)
+    def load_melody3(self, *args, **kwargs):
+        return load_melody3(*args, **kwargs)

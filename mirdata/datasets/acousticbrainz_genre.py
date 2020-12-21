@@ -327,10 +327,10 @@ class Dataset(core.Dataset):
     """The acousticbrainz genre dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, index=None):
         super().__init__(
             data_home,
-            index=DATA.index,
+            index=DATA.index if index is None else index,
             name="acousticbrainz_genre",
             track_object=Track,
             bibtex=BIBTEX,
@@ -409,140 +409,107 @@ class Dataset(core.Dataset):
                     os.path.join(target_dir, dir_name),
                 )
 
-    def filter_index(self, search_key, index=None):
+    def filter_index(self, search_key):
         """Load from AcousticBrainz genre dataset the indexes that match with search_key.
 
         Args:
             search_key (str): regex to match with folds, mbid or genres
-            index (dict): mirdata index to filter.
 
         Returns:
             (dict): {`track_id`: track data}
         """
-        if index is None:
-            index = self._index["tracks"].items()
 
-        acousticbrainz_genre_data = {k: v for k, v in index.items() if search_key in k}
+        acousticbrainz_genre_data = {
+            k: v for k, v in self._index["tracks"].items() if search_key in k
+        }
         return acousticbrainz_genre_data
 
-    def load_all_train(self, index=None):
+    def load_all_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for training across the four different datasets.
 
-        Args:
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("#train#", index=index)
+        return self.filter_index("#train#")
 
-    def load_all_validation(self, index=None):
+    def load_all_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validating across the four different datasets.
 
-        Args:
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("#validation#", index=index)
+        return self.filter_index("#validation#")
 
-    def load_tagtraum_validation(self, index=None):
+    def load_tagtraum_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validating in tagtraum dataset.
 
-        Args:
-            data_home (str): Local path where the dataset is stored.
-                If `None`, looks for the data in the default directory, `~/mir_datasets`
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("tagtraum#validation#", index=index)
+        return self.filter_index("tagtraum#validation#")
 
-    def load_tagtraum_train(self, index=None):
+    def load_tagtraum_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for training in tagtraum dataset.
 
-        Args:
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("tagtraum#train#", index=index)
+        return self.filter_index("tagtraum#train#")
 
-    def load_allmusic_train(self, index=None):
+    def load_allmusic_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
-        Args:
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("allmusic#train#", index=index)
+        return self.filter_index("allmusic#train#")
 
-    def load_allmusic_validation(self, index=None):
+    def load_allmusic_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
-        Args:
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("allmusic#validation#", index=index)
+        return self.filter_index("allmusic#validation#")
 
-    def load_lastfm_train(self, index=None):
+    def load_lastfm_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for training in lastfm dataset.
 
-        Args:
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("lastfm#train#", index=index)
+        return self.filter_index("lastfm#train#")
 
-    def load_lastfm_validation(self, index=None):
+    def load_lastfm_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in lastfm dataset.
 
-        Args:
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("lastfm#validation#", index=index)
+        return self.filter_index("lastfm#validation#")
 
-    def load_discogs_train(self, index=None):
+    def load_discogs_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for training in discogs dataset.
 
-        Args:
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("allmusic#train#", index=index)
+        return self.filter_index("allmusic#train#")
 
-    def load_discogs_validation(self, index=None):
+    def load_discogs_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in tagtraum dataset.
 
-        Args:
-            index (dict): mirdata index to filter.
-
         Returns:
             (dict): {`track_id`: track data}
 
         """
-        return self.filter_index("allmusic#validation#", index=index)
+        return self.filter_index("allmusic#validation#")

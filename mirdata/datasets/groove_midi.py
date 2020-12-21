@@ -369,7 +369,7 @@ def load_beats(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        beat_data (BeatData)
+        beat_data (annotations.BeatData)
 
     """
     if midi is None:
@@ -390,7 +390,7 @@ def load_drum_events(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        drum_events (EventData)
+        drum_events (annotations.EventData)
 
     """
     if midi is None:

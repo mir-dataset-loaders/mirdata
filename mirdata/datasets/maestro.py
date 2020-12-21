@@ -194,7 +194,7 @@ def load_notes(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        note_data (NoteData)
+        note_data (annotations.NoteData)
 
     """
     if midi is None:
@@ -251,9 +251,9 @@ class Dataset(core.Dataset):
     def load_midi(self, *args, **kwargs):
         return load_midi(*args, **kwargs)
 
-    @core.copy_docs(load_note)
-    def load_note(self, *args, **kwargs):
-        return load_note(*args, **kwargs)
+    @core.copy_docs(load_notes)
+    def load_notes(self, *args, **kwargs):
+        return load_notes(*args, **kwargs)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=True):
         """Download the dataset

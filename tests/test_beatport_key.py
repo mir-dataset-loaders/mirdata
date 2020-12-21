@@ -88,7 +88,8 @@ def test_find_replace():
         "tests/resources/mir_datasets/beatport_key/find_replace.json", "w"
     ) as the_file:
         the_file.write('{"probando": nan}')
-    beatport_key.find_replace(
+    dataset = beatport_key.Dataset()
+    dataset._find_replace(
         "tests/resources/mir_datasets/beatport_key", ": nan", ": null", "*.json"
     )
     f = open("tests/resources/mir_datasets/beatport_key/find_replace.json", "r")

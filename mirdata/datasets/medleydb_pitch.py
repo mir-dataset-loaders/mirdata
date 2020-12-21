@@ -159,3 +159,27 @@ def load_pitch(pitch_path):
     confidence = (freqs > 0).astype(float)
     pitch_data = annotations.F0Data(times, freqs, confidence)
     return pitch_data
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The medleydb_pitch dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="medleydb_pitch",
+            track_object=Track,
+            bibtex=BIBTEX,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_pitch)
+    def load_pitch(self, *args, **kwargs):
+        return load_pitch(*args, **kwargs)

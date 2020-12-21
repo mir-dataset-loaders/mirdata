@@ -249,6 +249,15 @@ def load_audio(audio_path):
 
 
 def load_sections(sections_path):
+    """Load salami sections data from a file
+
+    Args:
+        sections_path (str): path to sectin annotation file
+
+    Returns:
+        (annotations.SectionData): section data
+
+    """
     if sections_path is None:
         return None
 
@@ -271,3 +280,28 @@ def load_sections(sections_path):
     return annotations.SectionData(
         np.array([times_revised[:-1], times_revised[1:]]).T, list(secs_revised[:-1])
     )
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The salami dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="salami",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)

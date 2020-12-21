@@ -59,13 +59,13 @@ def test_track_repr():
 
 
 def test_dataset():
-    dataset = mirdata.Dataset("guitarset")
+    dataset = mirdata.load("guitarset")
     assert isinstance(dataset, core.Dataset)
 
-    dataset = mirdata.Dataset("rwc_jazz")
+    dataset = mirdata.load("rwc_jazz")
     assert isinstance(dataset, core.Dataset)
 
-    dataset = mirdata.Dataset("ikala")
+    dataset = mirdata.load("ikala")
     assert isinstance(dataset, core.Dataset)
 
     print(dataset)  # test that repr doesn't fail
@@ -73,9 +73,9 @@ def test_dataset():
 
 def test_dataset_errors():
     with pytest.raises(ValueError):
-        core.Dataset("not_a_dataset")
+        mirdata.load("not_a_dataset")
 
-    d = core.Dataset("orchset")
+    d = mirdata.load("orchset")
     d._track_object = None
     with pytest.raises(NotImplementedError):
         d.track("asdf")

@@ -12,7 +12,6 @@ from mirdata import download_utils
 from mirdata import utils
 
 MAX_STR_LEN = 100
-DATASETS = mirdata.DATASETS
 
 
 class Dataset(object):
@@ -75,10 +74,10 @@ class Dataset(object):
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
         repr_string += "-" * MAX_STR_LEN
-        repr_string += "\n"
+        repr_string += "\n\n\n"
         repr_string += "Call the .cite method for bibtex citations.\n"
         repr_string += "-" * MAX_STR_LEN
-        repr_string += "\n"
+        repr_string += "\n\n\n"
         if self._track_object is not None:
             repr_string += self.track.__doc__
             repr_string += "-" * MAX_STR_LEN

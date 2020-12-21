@@ -503,3 +503,47 @@ def load_phrases(phrases_path):
         return None
 
     return annotations.EventData(np.array([start_times, end_times]).T, events)
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The saraga_carnatic dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="saraga_carnatic",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_tonic)
+    def load_tonic(self, *args, **kwargs):
+        return load_tonic(*args, **kwargs)
+
+    @core.copy_docs(load_pitch)
+    def load_pitch(self, *args, **kwargs):
+        return load_pitch(*args, **kwargs)
+
+    @core.copy_docs(load_tempo)
+    def load_tempo(self, *args, **kwargs):
+        return load_tempo(*args, **kwargs)
+
+    @core.copy_docs(load_sama)
+    def load_sama(self, *args, **kwargs):
+        return load_sama(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_phrases)
+    def load_phrases(self, *args, **kwargs):
+        return load_phrases(*args, **kwargs)
