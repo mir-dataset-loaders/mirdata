@@ -286,3 +286,27 @@ def load_pred_inst(annotation_path):
             pred_inst.append(inst_code)
 
         return pred_inst
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The irmas dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="irmas",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_pred_inst)
+    def load_pred_inst(self, *args, **kwargs):
+        return load_pred_inst(*args, **kwargs)
