@@ -165,12 +165,19 @@ class Track(core.Track):
 
     @utils.cached_property
     def beats(self):
-        """BeatData: the track's beat positions"""
+        """The track's beat positions.
+
+        Returns:
+            (BeatData): beats """
         return load_beats(self.jams_path)
 
     @utils.cached_property
     def leadsheet_chords(self):
-        """ChordData: the track's chords as written in the leadsheet"""
+        """The track's chords as written in the leadsheet.
+
+        Returns:
+            (ChordData): leedsheet chords
+        """
         if self.mode == "solo":
             logging.info(
                 "Chord annotations for solo excerpts are the same with the comp excerpt."
@@ -179,7 +186,10 @@ class Track(core.Track):
 
     @utils.cached_property
     def inferred_chords(self):
-        """ChordData: the track's chords inferred from played transcription"""
+        """The track's chords inferred from played transcription.
+
+        Returns:
+            (ChordData): inferred_chords"""
         if self.mode == "solo":
             logging.info(
                 "Chord annotations for solo excerpts are the same with the comp excerpt."
@@ -188,18 +198,24 @@ class Track(core.Track):
 
     @utils.cached_property
     def key_mode(self):
-        """KeyData: the track's key and mode"""
+        """The track's key and mode.
+
+        Returns:
+            (KeyData): key_mode
+        """
         return load_key_mode(self.jams_path)
 
     @utils.cached_property
     def pitch_contours(self):
-        """(dict): a dict that contains 6 F0Data.
-        From Low E string to high e string.
-        - 'E': F0Data(...),
-        - 'A': F0Data(...),
-        -  ...
-        - 'e': F0Data(...)
+        """A dict that contains 6 F0Data.
 
+        Returns:
+            (dict):
+            From Low E string to high e string.
+            - 'E': F0Data(...),
+            - 'A': F0Data(...),
+            -  ...
+            - 'e': F0Data(...)
         """
         contours = {}
         # iterate over 6 strings
@@ -209,12 +225,15 @@ class Track(core.Track):
 
     @utils.cached_property
     def notes(self):
-        """dict: a dict that contains 6 NoteData.
-        From Low E string to high e string.
-        - 'E': NoteData(...),
-        - 'A': NoteData(...),
-        -  ...
-        - 'e': NoteData(...)
+        """A dict that contains 6 NoteData.
+
+        Returns:
+            (dict):
+            From Low E string to high e string.
+            - 'E': NoteData(...),
+            - 'A': NoteData(...),
+            -  ...
+            - 'e': NoteData(...)
         """
         notes = {}
         # iterate over 6 strings
@@ -234,19 +253,31 @@ class Track(core.Track):
 
     @property
     def audio_mix(self):
-        """(np.ndarray, float): stereo mix audio signal, sample rate"""
+        """Audio mix ground truth
+
+        Returns:
+            (np.ndarray, float): audio signal, sample rate
+        """
         audio, sr = load_audio(self.audio_mix_path)
         return audio, sr
 
     @property
     def audio_hex(self):
-        """(np.ndarray, float): raw hexaphonic audio signal, sample rate"""
+        """Audio hex ground truth
+
+        Returns:
+            (np.ndarray, float): audio signal, sample rate
+        """
         audio, sr = load_multitrack_audio(self.audio_hex_path)
         return audio, sr
 
     @property
     def audio_hex_cln(self):
-        """(np.ndarray, float): bleed-removed hexaphonic audio signal, sample rate"""
+        """Audio bleed-removed ground truth
+
+        Returns:
+            (np.ndarray, float): audio signal, sample rate
+        """
         audio, sr = load_multitrack_audio(self.audio_hex_cln_path)
         return audio, sr
 
@@ -292,6 +323,13 @@ def load_multitrack_audio(audio_path):
 
 
 def load_beats(jams_path):
+    """
+        Args:
+            jams_path (str): Path of the jams annotation file
+
+        Returns:
+            (BeatData): Beat data
+    """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
