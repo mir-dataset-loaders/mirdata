@@ -198,12 +198,20 @@ class Track(core.Track):
 
     @utils.cached_property
     def sections(self):
-        """SectionData: human-labeled section data"""
+        """Human-labeled section data
+
+        Returns:
+            (SectionData): sections
+        """
         return load_sections(self.sections_path)
 
     @utils.cached_property
     def beats(self):
-        """BeatData: human-labeled beat data"""
+        """Human-labeled beat data
+
+        Returns:
+            (BeatData): beats
+        """
         return load_beats(self.beats_path)
 
     @property
