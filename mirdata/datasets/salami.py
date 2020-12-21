@@ -176,28 +176,44 @@ class Track(core.Track):
 
     @utils.cached_property
     def sections_annotator_1_uppercase(self):
-        """SectionData: annotations in hierarchy level 0 from annotator 1"""
+        """Annotations in hierarchy level 0 from annotator 1
+
+        Returns:
+            (SectionData): section annotator 1 uppercase
+        """
         if self.sections_annotator1_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator1_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_1_lowercase(self):
-        """SectionData: annotations in hierarchy level 1 from annotator 1"""
+        """Annotations in hierarchy level 1 from annotator 1
+
+        Returns:
+            (SectionData): section annotator 1 lowercase)
+        """
         if self.sections_annotator1_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator1_lowercase_path)
 
     @utils.cached_property
     def sections_annotator_2_uppercase(self):
-        """SectionData: annotations in hierarchy level 0 from annotator 2"""
+        """Annotations in hierarchy level 0 from annotator 2
+
+        Returns:
+            (SectionData): sections annotator 2 uppercase
+        """
         if self.sections_annotator2_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator2_uppercase_path)
 
     @utils.cached_property
     def sections_annotator_2_lowercase(self):
-        """SectionData: annotations in hierarchy level 1 from annotator 2"""
+        """Annotations in hierarchy level 1 from annotator 2.
+
+        Returns:
+            (SectionData): Annotations
+        """
         if self.sections_annotator2_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator2_lowercase_path)

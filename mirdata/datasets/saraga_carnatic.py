@@ -220,37 +220,65 @@ class Track(core.Track):
 
     @utils.cached_property
     def tonic(self):
-        """Float: tonic annotation"""
+        """Tonic annotation
+
+        Returns:
+            (Float): tonic
+        """
         return load_tonic(self.ctonic_path)
 
     @utils.cached_property
     def pitch(self):
-        """F0Data: pitch annotation"""
+        """Pitch annotation
+
+        Returns:
+            (F0Data): pitch
+        """
         return load_pitch(self.pitch_path)
 
     @utils.cached_property
     def pitch_vocal(self):
-        """F0Data: pitch vocal annotations"""
+        """Pitch vocal annotations
+
+        Returns:
+            (F0Data): pitch vocal
+        """
         return load_pitch(self.pitch_vocal_path)
 
     @utils.cached_property
     def tempo(self):
-        """Dict: tempo annotations"""
+        """Tempo annotations
+
+        Returns:
+            (dict): tempo annotations
+        """
         return load_tempo(self.tempo_path)
 
     @utils.cached_property
     def sama(self):
-        """BeatData: sama section annotations"""
+        """Sama section annotations
+
+        Returns:
+            (BeatData): sama
+        """
         return load_sama(self.sama_path)
 
     @utils.cached_property
     def sections(self):
-        """SectionData: track section annotations"""
+        """Track section annotations
+
+        Returns:
+            (SectionData): sections
+        """
         return load_sections(self.sections_path)
 
     @utils.cached_property
     def phrases(self):
-        """EventData: phrase annotations"""
+        """Phrase annotations
+
+        Returns:
+            (SectionData): Phrase annotations
+        """
         return load_phrases(self.phrases_path)
 
     @property
