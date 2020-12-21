@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """RWC Popular Dataset Loader
 
-The Popular Music Database consists of 100 songs — 20 songs with English lyrics
-performed in the style of popular music typical of songs on the American hit
-charts in the 1980s, and 80 songs with Japanese lyrics performed in the style of
-modern Japanese popular music typical of songs on the Japanese hit charts in
-the 1990s.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
+    The Popular Music Database consists of 100 songs — 20 songs with English lyrics
+    performed in the style of popular music typical of songs on the American hit
+    charts in the 1980s, and 80 songs with Japanese lyrics performed in the style of
+    modern Japanese popular music typical of songs on the Japanese hit charts in
+    the 1990s.
+
+    For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
+
 """
 import csv
 import logging

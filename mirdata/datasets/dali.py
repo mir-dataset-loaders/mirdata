@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 """DALI Dataset Loader
 
-DALI contains 5358 audio files with their time-aligned vocal melody.
-It also contains time-aligned lyrics at four levels of granularity: notes,
-words, lines, and paragraphs.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For each song, DALI also provides additional metadata: genre, language, musician,
-album covers, or links to video clips.
+    DALI contains 5358 audio files with their time-aligned vocal melody.
+    It also contains time-aligned lyrics at four levels of granularity: notes,
+    words, lines, and paragraphs.
 
-For more details, please visit: https://github.com/gabolsgabs/DALI
+    For each song, DALI also provides additional metadata: genre, language, musician,
+    album covers, or links to video clips.
+
+    For more details, please visit: https://github.com/gabolsgabs/DALI
 """
 
 import json

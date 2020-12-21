@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 """MedleyDB pitch Dataset Loader
 
-MedleyDB is a dataset of annotated, royalty-free multitrack recordings.
-MedleyDB was curated primarily to support research on melody extraction,
-addressing important shortcomings of existing collections. For each song
-we provide melody f0 annotations as well as instrument activations for
-evaluating automatic instrument recognition.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: https://medleydb.weebly.com
+    MedleyDB Pitch is a pitch-tracking subset of the MedleyDB dataset 
+    containing only f0-annotated, monophonic stems. 
+
+    MedleyDB is a dataset of annotated, royalty-free multitrack recordings.
+    MedleyDB was curated primarily to support research on melody extraction,
+    addressing important shortcomings of existing collections. For each song
+    we provide melody f0 annotations as well as instrument activations for
+    evaluating automatic instrument recognition.
+
+    For more details, please visit: https://medleydb.weebly.com
 
 """
 

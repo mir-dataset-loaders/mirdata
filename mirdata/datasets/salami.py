@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 """SALAMI Dataset Loader
 
-The SALAMI dataset contains Structural Annotations of a Large Amount of Music
-Information: the public portion contains over 2200 annotations of over 1300
-unique tracks.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-NB: mirdata relies on the **corrected** version of the 2.0 annotations:
-Details can be found at https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections and
-https://github.com/DDMAL/salami-data-public/pull/15.
+    The SALAMI dataset contains Structural Annotations of a Large Amount of Music
+    Information: the public portion contains over 2200 annotations of over 1300
+    unique tracks.
 
-For more details, please visit: https://github.com/DDMAL/salami-data-public
+    NB: mirdata relies on the **corrected** version of the 2.0 annotations:
+    Details can be found at https://github.com/bmcfee/salami-data-public/tree/hierarchy-corrections and
+    https://github.com/DDMAL/salami-data-public/pull/15.
+
+    For more details, please visit: https://github.com/DDMAL/salami-data-public
+
 """
 import csv
 import logging

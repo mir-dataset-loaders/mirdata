@@ -1,30 +1,34 @@
 # -*- coding: utf-8 -*-
 """MAESTRO Dataset Loader
 
-MAESTRO (MIDI and Audio Edited for Synchronous TRacks and Organization) is a
-dataset composed of over 200 hours of virtuosic piano performances captured
-with fine alignment (~3 ms) between note labels and audio waveforms.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The dataset is created and released by Google's Magenta team.
+    MAESTRO (MIDI and Audio Edited for Synchronous TRacks and Organization) is a
+    dataset composed of over 200 hours of virtuosic piano performances captured
+    with fine alignment (~3 ms) between note labels and audio waveforms.
 
-The dataset contains over 200 hours of paired audio and MIDI recordings from
-ten years of International Piano-e-Competition. The MIDI data includes key
-strike velocities and sustain/sostenuto/una corda pedal positions. Audio and
-MIDI files are aligned with ∼3 ms accuracy and sliced to individual musical
-pieces, which are annotated with composer, title, and year of performance.
-Uncompressed audio is of CD quality or higher (44.1–48 kHz 16-bit PCM stereo).
+    The dataset is created and released by Google's Magenta team.
 
-A train/validation/test split configuration is also proposed, so that the same
-composition, even if performed by multiple contestants, does not appear in
-multiple subsets. Repertoire is mostly classical, including composers from the
-17th to early 20th century.
+    The dataset contains over 200 hours of paired audio and MIDI recordings from
+    ten years of International Piano-e-Competition. The MIDI data includes key
+    strike velocities and sustain/sostenuto/una corda pedal positions. Audio and
+    MIDI files are aligned with ∼3 ms accuracy and sliced to individual musical
+    pieces, which are annotated with composer, title, and year of performance.
+    Uncompressed audio is of CD quality or higher (44.1–48 kHz 16-bit PCM stereo).
 
-The dataset is made available by Google LLC under a Creative Commons
-Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0) license.
+    A train/validation/test split configuration is also proposed, so that the same
+    composition, even if performed by multiple contestants, does not appear in
+    multiple subsets. Repertoire is mostly classical, including composers from the
+    17th to early 20th century.
 
-This loader supports MAESTRO version 2.
+    The dataset is made available by Google LLC under a Creative Commons
+    Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0) license.
 
-For more details, please visit: https://magenta.tensorflow.org/datasets/maestro
+    This loader supports MAESTRO version 2.
+
+    For more details, please visit: https://magenta.tensorflow.org/datasets/maestro
+
 """
 
 import json
