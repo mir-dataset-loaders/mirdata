@@ -17,16 +17,16 @@ Installing and running tests
 
 First, clone the repository from github:
 
-::
+.. code-block:: bash
 
     git clone git@github.com:mir-dataset-loaders/mirdata.git
 
 
-Then, we recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions and install all ``mirdata`` requirements. You will
-want to install the latest versions of Python 3.6 and 3.7. Once ``pyenv`` and the Python versions are configured,
-install ``pytest``. Finally, run :
+We recommend you install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions 
+and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7. 
+Once ``pyenv`` and the Python versions are configured, install ``pytest``. Finally, run :
 
-::
+.. code-block:: bash
 
     pytest tests/ --local
 
@@ -52,23 +52,23 @@ The steps to add a new dataset loader to ``mirdata`` are:
 2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the dataset creator, or by verifying equivalence with several other copies of the dataset.
 
 To reduce friction, we will make commits on top of contributors PRs by default unless
-they use the ``please-do-not-edit`` flag.
+the ``please-do-not-edit`` flag is used.
 
 .. _create_index:
+
 1. Create an index
---------------------
+------------------
 
 ``mirdata``'s structure relies on ``JSON`` objects called :ref:`indexes`. Indexes contain information about the structure of the
 dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
-
 1. To create an index, first cereate a script in ``scripts/``, as ``make_dataset_index.py``, which generates an ``index`` file.
 2. Then run the script on the :ref:`canonical version` of the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index.json``.
 
 
-
 .. _index example:
+
 Index script example
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -151,14 +151,17 @@ Module example
     # -*- coding: utf-8 -*-
     """Example Dataset Loader
 
-    Please include the following information at the top level docstring for the dataset's module `dataset.py`:
+    .. admonition:: Dataset Info
+        :class: dropdown
 
-    1. Describe annotations included in the dataset
-    2. Indicate the size of the datasets (e.g. number files and duration, hours)
-    3. Mention the origin of the dataset (e.g. creator, institution)
-    4. Describe the type of music included in the dataset
-    5. Indicate any relevant papers related to the dataset
-    6. Include a description about how the data can be accessed and the license it uses (if applicable)
+        Please include the following information at the top level docstring for the dataset's module `dataset.py`:
+
+        1. Describe annotations included in the dataset
+        2. Indicate the size of the datasets (e.g. number files and duration, hours)
+        3. Mention the origin of the dataset (e.g. creator, institution)
+        4. Describe the type of music included in the dataset
+        5. Indicate any relevant papers related to the dataset
+        6. Include a description about how the data can be accessed and the license it uses (if applicable)
 
     """
 
@@ -449,10 +452,12 @@ Module example
 To finish your contribution, include tests that check the integrity of your loader. For this, follow these steps:
 
 1. Make a toy version of the dataset in the tests folder ``tests/resources/mir_datasets/my_dataset/``,
-so you can test against little data. For example:
+   so you can test against little data. For example:
+
     * Include all audio and annotation files for one track of the dataset
     * For each audio/annotation file, reduce the audio length to a few seconds and remove all but a few of the annotations.
     * If the dataset has a metadata file, reduce the length to a few lines.
+
 2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other custom functions you wrote. See the `tests folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/tests>`_ for reference.
 3. Locally run ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset`` before submitting your loader to make sure everything is working.
 
@@ -580,8 +585,8 @@ which will skip the downloading step. Note that this is just for convenience dur
 
 .. _submit_loader:
 
-Submit your loader
-------------------
+4. Submit your loader
+---------------------
 
 Before you submit your loader make sure to:
 
@@ -609,17 +614,18 @@ Troubleshooting
 
 If github shows a red ``X`` next to your latest commit, it means one of our checks is not passing. This could mean:
 
-1. running ``black`` has failed -- this means that your code is not formatted according to ``black``'s code-style. To fix this, simply run:
+1. running ``black`` has failed -- this means that your code is not formatted according to ``black``'s code-style. To fix this, simply run
+   the following from inside the top level folder of the repository:
 
 ::
 
     black --target-version py37 --skip-string-normalization mirdata/
 
-from inside the top level folder of the repository.
-
 2. the test coverage is too low -- this means that there are too many new lines of code introduced that are not tested.
 
-3. the docs build has failed -- this means that one of the changes you made to the documentation has caused the build to fail. Check the formatting in your changes and make sure they are consistent.
+3. the docs build has failed -- this means that one of the changes you made to the documentation has caused the build to fail. 
+   Check the formatting in your changes and make sure they are consistent.
 
-4. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing. If they are passing locally but failing in the check, open an `issue` and we can help debug.
+4. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing. 
+   If they are passing locally but failing in the check, open an `issue` and we can help debug.
 
