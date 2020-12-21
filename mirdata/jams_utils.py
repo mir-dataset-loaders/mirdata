@@ -28,52 +28,51 @@ def jams_converter(
 ):
     """Convert annotations from a track to JAMS format.
 
-    Parameters
-    ----------
-    audio_path (str or None):
-        A path to the corresponding audio file, or None. If provided,
-        the audio file will be read to compute the duration. If None,
-        'duration' must be a field in the metadata dictionary, or the
-        resulting jam object will not validate.
-    spectrum_cante100_path (str or None):
-        A path to the corresponding spectrum file, or None.
-    beat_data (list or None):
-        A list of tuples of (BeatData, str), where str describes the annotation (e.g. 'beats_1').
-    chord_data (list or None):
-        A list of tuples of (ChordData, str), where str describes the annotation.
-    note_data (list or None):
-        A list of tuples of (NoteData, str), where str describes the annotation.
-    f0_data (list or None):
-        A list of tuples of (F0Data, str), where str describes the annotation.
-    section_data (list or None):
-        A list of tuples of (SectionData, str), where str describes the annotation.
-    multi_section_data (list or None):
-        A list of tuples. Tuples in multi_section_data should contain another
-        list of tuples, indicating annotations in the different levels
-        e.g. ([(segments0, level0), '(segments1, level1)], annotator) and a str
-        indicating the annotator
-    tempo_data (list or None):
-        A list of tuples of (float, str), where float gives the tempo in bpm
-        and str describes the annotation.
-    event_data (list or None):
-        A list of tuples of (EventData, str), where str describes the annotation.
-    key_data (list or None):
-        A list of tuples of (KeyData, str), where str describes the annotation.
-    lyrics_data (list or None):
-        A list of tuples of (LyricData, str), where str describes the annotation.
-    tags_gtzan_data (list or None):
-        A list of tuples of (str, str), where the first srt is the tag and the second
-        is a descriptor of the annotation.
-    tags_open_data (list or None):
-        A list of tuples of (str, str), where the first srt is the tag and the second
-        is a descriptor of the annotation.
-    metadata (dict or None):
-        A dictionary containing the track metadata.
+    Args:
+        audio_path (str or None):
+            A path to the corresponding audio file, or None. If provided,
+            the audio file will be read to compute the duration. If None,
+            'duration' must be a field in the metadata dictionary, or the
+            resulting jam object will not validate.
+        spectrum_cante100_path (str or None):
+            A path to the corresponding spectrum file, or None.
+        beat_data (list or None):
+            A list of tuples of (annotations.BeatData, str), where str describes 
+            the annotation (e.g. 'beats_1').
+        chord_data (list or None):
+            A list of tuples of (annotations.ChordData, str), where str describes the annotation.
+        note_data (list or None):
+            A list of tuples of (annotations.NoteData, str), where str describes the annotation.
+        f0_data (list or None):
+            A list of tuples of (annotations.F0Data, str), where str describes the annotation.
+        section_data (list or None):
+            A list of tuples of (annotations.SectionData, str), where str describes the annotation.
+        multi_section_data (list or None):
+            A list of tuples. Tuples in multi_section_data should contain another
+            list of tuples, indicating annotations in the different levels
+            e.g. ([(segments0, level0), '(segments1, level1)], annotator) and a str
+            indicating the annotator
+        tempo_data (list or None):
+            A list of tuples of (float, str), where float gives the tempo in bpm
+            and str describes the annotation.
+        event_data (list or None):
+            A list of tuples of (annotations.EventData, str), where str describes the annotation.
+        key_data (list or None):
+            A list of tuples of (annotations.KeyData, str), where str describes the annotation.
+        lyrics_data (list or None):
+            A list of tuples of (annotations.LyricData, str), where str describes the annotation.
+        tags_gtzan_data (list or None):
+            A list of tuples of (str, str), where the first srt is the tag and the second
+            is a descriptor of the annotation.
+        tags_open_data (list or None):
+            A list of tuples of (str, str), where the first srt is the tag and the second
+            is a descriptor of the annotation.
+        metadata (dict or None):
+            A dictionary containing the track metadata.
 
-    Returns
-    -------
-    jam: JAM object
-        A JAM object with all the annotations.
+    Returns:
+        jam (jams.JAM): JAM object
+            A JAM object with all the annotations.
     """
 
     jam = jams.JAMS()
@@ -279,7 +278,7 @@ def beats_to_jams(beat_data, description=None):
     """Convert beat annotations into jams format.
 
     Args:
-        beat_data (BeatData): beat data object
+        beat_data (annotations.BeatData): beat data object
         description (str): annotation description
 
     Returns:
@@ -303,7 +302,7 @@ def sections_to_jams(section_data, description=None):
     """Convert section annotations into jams format.
 
     Args:
-        section_data (SectionData): section data object
+        section_data (annotations.SectionData): section data object
         description (str): annotation description
 
     Returns:
@@ -327,7 +326,7 @@ def chords_to_jams(chord_data, description=None):
     """Convert chord annotations into jams format.
 
     Args:
-        chord_data (ChordData): chord data object
+        chord_data (annotations.ChordData): chord data object
         description (str): annotation description
 
     Returns:
@@ -353,7 +352,7 @@ def notes_to_jams(note_data, description):
     """Convert note annotations into jams format.
 
     Args:
-        note_data (NoteData): note data object
+        note_data (annotations.NoteData): note data object
         description (str): annotation description
 
     Returns:
@@ -379,7 +378,7 @@ def keys_to_jams(key_data, description):
     """Convert key annotations into jams format.
 
     Args:
-        key_data (KeyData): key data object
+        key_data (annotations.KeyData): key data object
         description (str): annotation description
 
     Returns:
@@ -435,7 +434,7 @@ def tempos_to_jams(tempo_data, description=None):
     """Convert tempo annotations into jams format.
 
     Args:
-        tempo_data (TempoData): tempo data object
+        tempo_data (annotations.TempoData): tempo data object
         description (str): annotation description
 
     Returns:
@@ -457,7 +456,7 @@ def events_to_jams(event_data, description=None):
     """Convert events annotations into jams format.
 
     Args:
-        event_data (EventData): event data object
+        event_data (annotations.EventData): event data object
         description (str): annotation description
 
     Returns:
@@ -483,7 +482,7 @@ def f0s_to_jams(f0_data, description=None):
     """Convert f0 annotations into jams format.
 
     Args:
-        f0_data (F0Data): f0 annotation object
+        f0_data (annotations.F0Data): f0 annotation object
         description (str): annotation descriptoin
 
     Returns:
@@ -512,7 +511,7 @@ def lyrics_to_jams(lyric_data, description=None):
     """Convert lyric annotations into jams format.
 
     Args:
-        lyric_data (LyricData): lyric annotation object
+        lyric_data (annotations.LyricData): lyric annotation object
         description (str): annotation descriptoin
 
     Returns:
@@ -538,7 +537,7 @@ def tag_to_jams(tag_data, namespace="tag_open", description=None):
     """Convert lyric annotations into jams format.
 
     Args:
-        lyric_data (LyricData): lyric annotation object
+        lyric_data (annotations.LyricData): lyric annotation object
         namespace (str): the jams-compatible tag namespace
         description (str): annotation descriptoin
 

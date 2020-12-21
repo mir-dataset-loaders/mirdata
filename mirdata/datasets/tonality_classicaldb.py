@@ -29,7 +29,7 @@ import os
 import numpy as np
 import csv
 
-from mirdata import jams_utils, download_utils, core, utils
+from mirdata import jams_utils, download_utils, core
 
 
 BIBTEX = """@article{gomez2006tonal,
@@ -76,11 +76,11 @@ DOWNLOAD_INFO = """
             > musicbrainz_metadata/
     and copy the folder to {} directory
 """
-DATA = utils.LargeData("tonality_classicaldb_index.json")
+DATA = core.LargeData("tonality_classicaldb_index.json")
 
 
 class Track(core.Track):
-    """classicalDB track class
+    """tonality_classicaldb track class
 
     Args:
         track_id (str): track id of the track
@@ -94,7 +94,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in Tonality classicalDB".format(track_id)
             )
@@ -102,35 +102,35 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.key_path = os.path.join(self._data_home, self._track_paths["key"][0])
         self.spectrum_path = os.path.join(
             self._data_home, self._track_paths["spectrum"][0]
         )
         self.mb_path = os.path.join(self._data_home, self._track_paths["mb"][0])
-        self.HPCP_path = os.path.join(self._data_home, self._track_paths["HPCP"][0])
+        self.hpcp_path = os.path.join(self._data_home, self._track_paths["HPCP"][0])
         self.title = self.audio_path.replace(".wav", "").split("/")[-1]
 
-    @utils.cached_property
+    @core.cached_property
     def key(self):
         """String: key annotation"""
         return load_key(self.key_path)
 
-    @utils.cached_property
+    @core.cached_property
     def spectrum(self):
         """np.array: spectrum"""
         return load_spectrum(self.spectrum_path)
 
-    @utils.cached_property
-    def HPCP(self):
+    @core.cached_property
+    def hpcp(self):
         """np.array: HPCP"""
-        return load_HPCP(self.HPCP_path)
+        return load_hpcp(self.hpcp_path)
 
-    @utils.cached_property
+    @core.cached_property
     def mb_metadata(self):
         """Dict: musicbrainz metadata"""
-        return load_mb(self.mb_path)
+        return load_musicbrainz(self.mb_path)
 
     @property
     def audio(self):
@@ -145,7 +145,7 @@ class Track(core.Track):
                 "title": self.title,
                 "key": self.key,
                 "spectrum": self.spectrum,
-                "HPCP": self.HPCP,
+                "hpcp": self.hpcp,
                 "musicbrainz_metatada": self.mb_metadata,
             },
         )
@@ -183,11 +183,11 @@ def load_key(keys_path):
     if not os.path.exists(keys_path):
         raise IOError("keys_path {} does not exist".format(keys_path))
 
-    with open(keys_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\n')
+    with open(keys_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\n")
         key = next(reader)[0]
 
-    return key.replace('\t', ' ')
+    return key.replace("\t", " ")
 
 
 def load_spectrum(spectrum_path):
@@ -209,33 +209,34 @@ def load_spectrum(spectrum_path):
     with open(spectrum_path) as f:
         data = json.load(f)
 
-    spectrum = [list(map(complex, x)) for x in data['spectrum']]
+    spectrum = [list(map(complex, x)) for x in data["spectrum"]]
 
     return np.array(spectrum)
 
 
-def load_HPCP(HPCP_path):
+def load_hpcp(hpcp_path):
     """Load Tonality classicalDB HPCP feature from a file
     Args:
-        HPCP_path (str): path to HPCP file
+        hpcp_path (str): path to HPCP file
 
     Returns:
         (np.array): loaded HPCP data
 
     """
-    if HPCP_path is None:
+    if hpcp_path is None:
         return None
 
-    if not os.path.exists(HPCP_path):
-        raise IOError("HPCP_path {} does not exist".format(HPCP_path))
+    if not os.path.exists(hpcp_path):
+        raise IOError("hpcp_path {} does not exist".format(hpcp_path))
 
-    with open(HPCP_path) as f:
+    with open(hpcp_path) as f:
         data = json.load(f)
     return np.array(data["hpcp"])
 
 
-def load_mb(mb_path):
+def load_musicbrainz(mb_path):
     """Load Tonality classicalDB musicbraiz metadata from a file
+
     Args:
         mb_path (str): path to musicbrainz metadata  file
 
@@ -252,3 +253,40 @@ def load_mb(mb_path):
     with open(mb_path) as f:
         data = json.load(f)
     return data
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The tonality_classicaldb dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="tonality_classicaldb",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_key)
+    def load_key(self, *args, **kwargs):
+        return load_key(*args, **kwargs)
+
+    @core.copy_docs(load_spectrum)
+    def load_spectrum(self, *args, **kwargs):
+        return load_spectrum(*args, **kwargs)
+
+    @core.copy_docs(load_hpcp)
+    def load_hpcp(self, *args, **kwargs):
+        return load_hpcp(*args, **kwargs)
+
+    @core.copy_docs(load_musicbrainz)
+    def load_musicbrainz(self, *args, **kwargs):
+        return load_musicbrainz(*args, **kwargs)

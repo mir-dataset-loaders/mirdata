@@ -56,7 +56,6 @@ import numpy as np
 
 from mirdata import download_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 
@@ -107,7 +106,7 @@ _STYLE_DICT = {
     "Funk": "Funk",
 }
 _GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
-DATA = utils.LargeData("guitarset_index.json")
+DATA = core.LargeData("guitarset_index.json")
 
 
 class Track(core.Track):
@@ -163,12 +162,12 @@ class Track(core.Track):
         self.tempo = float(tempo)
         self.style = _STYLE_DICT[style[:-1]]
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
         """BeatData: the track's beat positions"""
         return load_beats(self.jams_path)
 
-    @utils.cached_property
+    @core.cached_property
     def leadsheet_chords(self):
         """ChordData: the track's chords as written in the leadsheet"""
         if self.mode == "solo":
@@ -177,7 +176,7 @@ class Track(core.Track):
             )
         return load_chords(self.jams_path, leadsheet_version=True)
 
-    @utils.cached_property
+    @core.cached_property
     def inferred_chords(self):
         """ChordData: the track's chords inferred from played transcription"""
         if self.mode == "solo":
@@ -186,14 +185,15 @@ class Track(core.Track):
             )
         return load_chords(self.jams_path, leadsheet_version=False)
 
-    @utils.cached_property
+    @core.cached_property
     def key_mode(self):
         """KeyData: the track's key and mode"""
         return load_key_mode(self.jams_path)
 
-    @utils.cached_property
+    @core.cached_property
     def pitch_contours(self):
         """(dict): a dict that contains 6 F0Data.
+
         From Low E string to high e string.
         - 'E': F0Data(...),
         - 'A': F0Data(...),
@@ -207,9 +207,10 @@ class Track(core.Track):
             contours[_GUITAR_STRINGS[i]] = load_pitch_contour(self.jams_path, i)
         return contours
 
-    @utils.cached_property
+    @core.cached_property
     def notes(self):
         """dict: a dict that contains 6 NoteData.
+
         From Low E string to high e string.
         - 'E': NoteData(...),
         - 'A': NoteData(...),
@@ -219,7 +220,7 @@ class Track(core.Track):
         notes = {}
         # iterate over 6 strings
         for i in range(6):
-            notes[_GUITAR_STRINGS[i]] = load_note_ann(self.jams_path, i)
+            notes[_GUITAR_STRINGS[i]] = load_notes(self.jams_path, i)
         return notes
 
     @property
@@ -284,6 +285,15 @@ def load_multitrack_audio(audio_path):
 
 
 def load_beats(jams_path):
+    """Load a Guitarset beats annotation.
+
+    Args:
+        jams_path (str): Path of the jams annotation file
+
+    Returns:
+        (annotations.BeatData): Beat data
+
+    """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
@@ -294,15 +304,17 @@ def load_beats(jams_path):
 
 
 def load_chords(jams_path, leadsheet_version=True):
-    """
+    """Load a guitarset chord annotation.
+
     Args:
         jams_path (str): Path of the jams annotation file
-        leadsheet_version (Bool)
+        leadsheet_version (Bool):
             Whether or not to load the leadsheet version of the chord annotation
             If False, load the infered version.
 
     Returns:
-        (ChordData): Chord data
+        (annotations.ChordData): Chord data
+
     """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
@@ -316,6 +328,15 @@ def load_chords(jams_path, leadsheet_version=True):
 
 
 def load_key_mode(jams_path):
+    """Load a Guitarset key-mode annotation.
+
+    Args:
+        jams_path (str): Path of the jams annotation file
+
+    Returns:
+        (annotations.KeyData): Key data
+
+    """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
@@ -325,12 +346,16 @@ def load_key_mode(jams_path):
 
 
 def load_pitch_contour(jams_path, string_num):
-    """
+    """Load a guitarset pitch contour annotation for a given string
+
     Args:
         jams_path (str): Path of the jams annotation file
+        string_num (int), in range(6): Which string to load.
+            0 is the Low E string, 5 is the high e string.
 
-    string_num (int), in range(6): Which string to load.
-        0 is the Low E string, 5 is the high e string.
+    Returns:
+        (annotations.F0Data): Pitch contour data for the given string
+
     """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
@@ -344,13 +369,17 @@ def load_pitch_contour(jams_path, string_num):
     return annotations.F0Data(times, np.array(frequencies))
 
 
-def load_note_ann(jams_path, string_num):
-    """
+def load_notes(jams_path, string_num):
+    """Load a guitarset note annotation for a given string
+
     Args:
         jams_path (str): Path of the jams annotation file
+        string_num (int), in range(6): Which string to load.
+            0 is the Low E string, 5 is the high e string.
 
-    string_num (int), in range(6): Which string to load.
-        0 is the Low E string, 5 is the high e string.
+    Returns:
+        (annotations.NoteData): Note data for the given string
+
     """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
@@ -361,3 +390,47 @@ def load_note_ann(jams_path, string_num):
     if len(values) == 0:
         return annotations.NoteData(None, None)
     return annotations.NoteData(intervals, np.array(values))
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The guitarset dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="guitarset",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_multitrack_audio)
+    def load_multitrack_audio(self, *args, **kwargs):
+        return load_multitrack_audio(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)
+
+    @core.copy_docs(load_chords)
+    def load_chords(self, *args, **kwargs):
+        return load_chords(*args, **kwargs)
+
+    @core.copy_docs(load_key_mode)
+    def load_key_mode(self, *args, **kwargs):
+        return load_key_mode(*args, **kwargs)
+
+    @core.copy_docs(load_pitch_contour)
+    def load_pitch_contour(self, *args, **kwargs):
+        return load_pitch_contour(*args, **kwargs)
+
+    @core.copy_docs(load_notes)
+    def load_notes(self, *args, **kwargs):
+        return load_notes(*args, **kwargs)
