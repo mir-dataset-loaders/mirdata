@@ -178,7 +178,9 @@ def test_download(httpserver):
             destination_dir=None,
         )
     }
-    orchset._download(data_home, remotes, None, None, False, True)
+    dataset = orchset.Dataset(data_home)
+    dataset.remotes = remotes
+    dataset.download(remotes, False, True)
 
     assert os.path.exists(data_home)
     assert not os.path.exists(os.path.join(data_home, "Orchset"))

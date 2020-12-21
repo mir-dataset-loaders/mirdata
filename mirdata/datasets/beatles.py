@@ -15,8 +15,10 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
+
+
+DATA = core.LargeData("beatles_index.json")
 
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
@@ -27,7 +29,6 @@ BIBTEX = """@inproceedings{mauch2009beatles,
     series = {ISMIR}
 }"""
 
-
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="The Beatles Annotations.tar.gz",
@@ -36,19 +37,15 @@ REMOTES = {
         destination_dir="annotations",
     )
 }
-
-
 DOWNLOAD_INFO = """
-        Unfortunately the audio files of the Beatles dataset are not available
-        for download. If you have the Beatles dataset, place the contents into
-        a folder called Beatles with the following structure:
-            > Beatles/
-                > annotations/
-                > audio/
-        and copy the Beatles folder to {}
+    Unfortunately the audio files of the Beatles dataset are not available
+    for download. If you have the Beatles dataset, place the contents into
+    a folder called Beatles with the following structure:
+        > Beatles/
+            > annotations/
+            > audio/
+    and copy the Beatles folder to {}
 """
-
-DATA = utils.LargeData("beatles_index.json")
 
 
 class Track(core.Track):
@@ -56,6 +53,7 @@ class Track(core.Track):
 
     Args:
         track_id (str): track id of the track
+        data_home (str): path where the data lives
 
     Attributes:
         audio_path (str): track audio path
@@ -76,11 +74,11 @@ class Track(core.Track):
 
         self._data_home = data_home
         self._track_paths = DATA.index["tracks"][track_id]
-        self.beats_path = utils.none_path_join(
+        self.beats_path = core.none_path_join(
             [self._data_home, self._track_paths["beat"][0]]
         )
         self.chords_path = os.path.join(self._data_home, self._track_paths["chords"][0])
-        self.keys_path = utils.none_path_join(
+        self.keys_path = core.none_path_join(
             [self._data_home, self._track_paths["keys"][0]]
         )
         self.sections_path = os.path.join(
@@ -90,22 +88,22 @@ class Track(core.Track):
 
         self.title = os.path.basename(self._track_paths["sections"][0]).split(".")[0]
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
         """BeatData: human-labeled beat annotation"""
         return load_beats(self.beats_path)
 
-    @utils.cached_property
+    @core.cached_property
     def chords(self):
         """ChordData: chord annotation"""
         return load_chords(self.chords_path)
 
-    @utils.cached_property
+    @core.cached_property
     def key(self):
         """KeyData: key annotation"""
         return load_key(self.keys_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sections(self):
         """SectionData: section annotation"""
         return load_sections(self.sections_path)
@@ -150,7 +148,7 @@ def load_beats(beats_path):
         beats_path (str): path to beat annotation file
 
     Returns:
-        (utils.BeatData): loaded beat data
+        (annotations.BeatData): loaded beat data
 
     """
     if beats_path is None:
@@ -184,7 +182,7 @@ def load_chords(chords_path):
         chords_path (str): path to chord annotation file
 
     Returns:
-        (utils.ChordData): loaded chord data
+        (annotations.ChordData): loaded chord data
 
     """
     if chords_path is None:
@@ -215,7 +213,7 @@ def load_key(keys_path):
         keys_path (str): path to key annotation file
 
     Returns:
-        (utils.KeyData): loaded key data
+        (annotations.KeyData): loaded key data
 
     """
     if keys_path is None:
@@ -245,7 +243,7 @@ def load_sections(sections_path):
         sections_path (str): path to section annotation file
 
     Returns:
-        (utils.SectionData): loaded section data
+        (annotations.SectionData): loaded section data
 
     """
     if sections_path is None:
@@ -271,7 +269,7 @@ def load_sections(sections_path):
 
 def _fix_newpoint(beat_positions):
     """Fills in missing beat position labels by inferring the beat position
-    from neighboring beats.
+        from neighboring beats.
 
     """
     while np.any(beat_positions == "New Point"):
@@ -286,3 +284,36 @@ def _fix_newpoint(beat_positions):
     beat_positions[beat_positions == "0"] = "4"
 
     return beat_positions
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The beatles dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="beatles",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)
+
+    @core.copy_docs(load_chords)
+    def load_chords(self, *args, **kwargs):
+        return load_chords(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)

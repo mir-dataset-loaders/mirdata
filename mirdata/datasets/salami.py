@@ -21,7 +21,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 BIBTEX = """@inproceedings{smith2011salami,
@@ -96,7 +95,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("salami_index.json", _load_metadata)
+DATA = core.LargeData("salami_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -132,16 +131,16 @@ class Track(core.Track):
 
         self._data_home = data_home
         self._track_paths = DATA.index["tracks"][track_id]
-        self.sections_annotator1_uppercase_path = utils.none_path_join(
+        self.sections_annotator1_uppercase_path = core.none_path_join(
             [self._data_home, self._track_paths["annotator_1_uppercase"][0]]
         )
-        self.sections_annotator1_lowercase_path = utils.none_path_join(
+        self.sections_annotator1_lowercase_path = core.none_path_join(
             [self._data_home, self._track_paths["annotator_1_lowercase"][0]]
         )
-        self.sections_annotator2_uppercase_path = utils.none_path_join(
+        self.sections_annotator2_uppercase_path = core.none_path_join(
             [self._data_home, self._track_paths["annotator_2_uppercase"][0]]
         )
-        self.sections_annotator2_lowercase_path = utils.none_path_join(
+        self.sections_annotator2_lowercase_path = core.none_path_join(
             [self._data_home, self._track_paths["annotator_2_lowercase"][0]]
         )
 
@@ -174,28 +173,28 @@ class Track(core.Track):
         self.broad_genre = self._track_metadata["class"]
         self.genre = self._track_metadata["genre"]
 
-    @utils.cached_property
+    @core.cached_property
     def sections_annotator_1_uppercase(self):
         """SectionData: annotations in hierarchy level 0 from annotator 1"""
         if self.sections_annotator1_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator1_uppercase_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sections_annotator_1_lowercase(self):
         """SectionData: annotations in hierarchy level 1 from annotator 1"""
         if self.sections_annotator1_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator1_lowercase_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sections_annotator_2_uppercase(self):
         """SectionData: annotations in hierarchy level 0 from annotator 2"""
         if self.sections_annotator2_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator2_uppercase_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sections_annotator_2_lowercase(self):
         """SectionData: annotations in hierarchy level 1 from annotator 2"""
         if self.sections_annotator2_lowercase_path is None:
@@ -249,6 +248,15 @@ def load_audio(audio_path):
 
 
 def load_sections(sections_path):
+    """Load salami sections data from a file
+
+    Args:
+        sections_path (str): path to sectin annotation file
+
+    Returns:
+        (annotations.SectionData): section data
+
+    """
     if sections_path is None:
         return None
 
@@ -271,3 +279,28 @@ def load_sections(sections_path):
     return annotations.SectionData(
         np.array([times_revised[:-1], times_revised[1:]]).T, list(secs_revised[:-1])
     )
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The salami dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="salami",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)

@@ -144,12 +144,12 @@ def test_load_chords():
     )
 
 
-def test_load_voca_inst():
+def test_load_vocal_activity():
     vocinst_path = (
         "tests/resources/mir_datasets/rwc_popular/"
         + "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT"
     )
-    vocinst_data = rwc_popular.load_voca_inst(vocinst_path)
+    vocinst_data = rwc_popular.load_vocal_activity(vocinst_path)
 
     # check types
     assert type(vocinst_data) is annotations.EventData

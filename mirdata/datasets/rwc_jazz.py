@@ -40,7 +40,6 @@ import librosa
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (
@@ -132,7 +131,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("rwc_jazz_index.json", _load_metadata)
+DATA = core.LargeData("rwc_jazz_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -196,12 +195,12 @@ class Track(core.Track):
         self.variation = self._track_metadata["variation"]
         self.instruments = self._track_metadata["instruments"]
 
-    @utils.cached_property
+    @core.cached_property
     def sections(self):
         """SectionData: human-labeled section data"""
         return load_sections(self.sections_path)
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
         """BeatData: human-labeled beat data"""
         return load_beats(self.beats_path)
@@ -219,3 +218,32 @@ class Track(core.Track):
             section_data=[(self.sections, None)],
             metadata=self._track_metadata,
         )
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The rwc_jazz dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="rwc_jazz",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)

@@ -34,7 +34,6 @@ import csv
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 BIBTEX = """
@@ -76,7 +75,7 @@ def _load_metadata(metadata_path):
         return metadata
 
 
-DATA = utils.LargeData("saraga_carnatic_index.json", _load_metadata)
+DATA = core.LargeData("saraga_carnatic_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -142,28 +141,28 @@ class Track(core.Track):
             )
 
         # Annotation paths
-        self.ctonic_path = utils.none_path_join(
+        self.ctonic_path = core.none_path_join(
             [self._data_home, self._track_paths["ctonic"][0]]
         )
-        self.pitch_path = utils.none_path_join(
+        self.pitch_path = core.none_path_join(
             [self._data_home, self._track_paths["pitch"][0]]
         )
-        self.pitch_vocal_path = utils.none_path_join(
+        self.pitch_vocal_path = core.none_path_join(
             [self._data_home, self._track_paths["pitch-vocal"][0]]
         )
-        self.tempo_path = utils.none_path_join(
+        self.tempo_path = core.none_path_join(
             [self._data_home, self._track_paths["tempo"][0]]
         )
-        self.sama_path = utils.none_path_join(
+        self.sama_path = core.none_path_join(
             [self._data_home, self._track_paths["sama"][0]]
         )
-        self.sections_path = utils.none_path_join(
+        self.sections_path = core.none_path_join(
             [self._data_home, self._track_paths["sections"][0]]
         )
-        self.phrases_path = utils.none_path_join(
+        self.phrases_path = core.none_path_join(
             [self._data_home, self._track_paths["phrases"][0]]
         )
-        self.metadata_path = utils.none_path_join(
+        self.metadata_path = core.none_path_join(
             [self._data_home, self._track_paths["metadata"][0]]
         )
 
@@ -219,37 +218,37 @@ class Track(core.Track):
             else None
         )
 
-    @utils.cached_property
+    @core.cached_property
     def tonic(self):
         """Float: tonic annotation"""
         return load_tonic(self.ctonic_path)
 
-    @utils.cached_property
+    @core.cached_property
     def pitch(self):
         """F0Data: pitch annotation"""
         return load_pitch(self.pitch_path)
 
-    @utils.cached_property
+    @core.cached_property
     def pitch_vocal(self):
         """F0Data: pitch vocal annotations"""
         return load_pitch(self.pitch_vocal_path)
 
-    @utils.cached_property
+    @core.cached_property
     def tempo(self):
         """Dict: tempo annotations"""
         return load_tempo(self.tempo_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sama(self):
         """BeatData: sama section annotations"""
         return load_sama(self.sama_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sections(self):
         """SectionData: track section annotations"""
         return load_sections(self.sections_path)
 
-    @utils.cached_property
+    @core.cached_property
     def phrases(self):
         """EventData: phrase annotations"""
         return load_phrases(self.phrases_path)
@@ -507,3 +506,47 @@ def load_phrases(phrases_path):
         return None
 
     return annotations.EventData(np.array([start_times, end_times]).T, events)
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The saraga_carnatic dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="saraga_carnatic",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_tonic)
+    def load_tonic(self, *args, **kwargs):
+        return load_tonic(*args, **kwargs)
+
+    @core.copy_docs(load_pitch)
+    def load_pitch(self, *args, **kwargs):
+        return load_pitch(*args, **kwargs)
+
+    @core.copy_docs(load_tempo)
+    def load_tempo(self, *args, **kwargs):
+        return load_tempo(*args, **kwargs)
+
+    @core.copy_docs(load_sama)
+    def load_sama(self, *args, **kwargs):
+        return load_sama(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_phrases)
+    def load_phrases(self, *args, **kwargs):
+        return load_phrases(*args, **kwargs)
