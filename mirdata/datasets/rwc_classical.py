@@ -200,12 +200,19 @@ class Track(core.Track):
 
     @utils.cached_property
     def sections(self):
-        """SectionData: human labeled section annotations"""
+        """Human labeled section annotations
+
+        Returns:
+            (SectionData): sections annotations
+        """
         return load_sections(self.sections_path)
 
     @utils.cached_property
     def beats(self):
-        """BeatData: human labeled beat annotations"""
+        """Human labeled beat annotations
+
+        Returns:
+            (BeatData): beat annotations"""
         return load_beats(self.beats_path)
 
     @property

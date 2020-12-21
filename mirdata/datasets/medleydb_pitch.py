@@ -108,7 +108,11 @@ class Track(core.Track):
 
     @utils.cached_property
     def pitch(self):
-        """F0Data: The human-annotated pitch"""
+        """The human-annotated pitch
+
+        Returns:
+            (F0Data): human-annotated pitch
+        """
         return load_pitch(self.pitch_path)
 
     @property

@@ -183,7 +183,10 @@ class Track(core.Track):
 
     @utils.cached_property
     def melody(self):
-        """F0Data: melody annotation"""
+        """Melody annotation
+
+        Returns:
+            (F0Data): F0 melody"""
         return load_melody(self.melody_path)
 
     @property
