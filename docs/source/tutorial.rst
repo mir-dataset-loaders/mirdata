@@ -32,6 +32,12 @@ To install ``mirdata`` for development purposes:
 Usage
 -----
 
+``mirdata`` is easily imported into your Python code by:
+
+.. code-block:: python
+
+    import mirdata
+
 Downloading a dataset
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -148,7 +154,6 @@ We can chose a random track with ``choice_track()`` method.
         )
 
 
-
 We can access to specific tracks by id. The ids are specified in the dataset index.
 In the next example we take the first track of the index, and then we retrieve the melody
 annotation.
@@ -171,19 +176,47 @@ Alternatively, we don't need to load the whole dataset to get a single track.
     example_melody = orchset.track(orchset_ids[0]).melody  # Get melody from first track in the index
 
 
-Annotations can also be accessed through ``load_someAnnotation()`` methods.
+Accessing annotations through dataset loading functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Annotations can also be accessed through ``load_someAnnotation()`` methods in case, for instance, that your data don't live locally
+but in a remote path. If you specify the path where to find the annotation, you can use the module's loading functions directly. Let's
+see an example.
+
 
 .. code-block:: python
 
-    orchset_ids = orchset.track_ids  # Load list of track ids of the dataset
-    example_melody_path = orchset.track(orchset_ids[0]).melody_path  # Parsing melody annotation path
+    # Load list of track ids of the dataset
+    orchset_ids = orchset.track_ids
+
+    # Load a single track, specifying the remote location
+    example_track = orchset.track(orchset_ids[0], data_home='user/my_custom/remote_path')
+    melody_path = example_track.melody_path
+
+    print(melody_path)
+    >>> user/my_custom/remote_path/GT/Beethoven-S3-I-ex1.mel
+    print(os.path.exists(melody_path))
+    >>> False
+
+    # Write code here to locally download your path e.g. to a temporary file.
+    def my_downloader(remote_path):
+        # the contents of this function will depend on where your data lives, and how permanently you want the files to remain on the machine. We point you to libraries handling common use cases below.
+        # for data you would download via scp, you could use the [scp](https://pypi.org/project/scp/) library
+        # for data on google drive, use [pydrive](https://pythonhosted.org/PyDrive/)
+        # for data on google cloud storage use [google-cloud-storage](https://pypi.org/project/google-cloud-storage/)
+        return local_path_to_downloaded_data
+
+    # Get path where youe data lives
+    temp_path = my_downloader(melody_path)
 
     # Accessing to track melody annotation
-    example_melody = orchset.load_melody(example_melody_path)
+    example_melody = orchset.load_melody(temp_path)
+
     print(example_melody.frequencies)
     >>> array([  0.   ,   0.   ,   0.   , ..., 391.995, 391.995, 391.995])
     print(example_melody.times)
     >>> array([0.000e+00, 1.000e-02, 2.000e-02, ..., 1.244e+01, 1.245e+01, 1.246e+01])
+
 
 
 Annotation classes
@@ -220,7 +253,7 @@ Alternatively, we can run over the ``track_ids`` list to access directly to each
 
 
 Working with remote index
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the end user there is no difference between the remote and local indexes.
 
@@ -248,7 +281,121 @@ Working with big datasets
 In the development of large datasets, it is advisable to create an index as small as possible to develop
 the new dataset and pass the tests.
 
-Using mirdata with tensorflow or pytorch
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In future ``mirdata`` versions, generators for tensorflow and pytorch will be included in the library.
+Basic example: including mirdata in your pipeline
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If we wanted to use Orchset to evaluate the performance of a melody extraction algorithm
+(in our case, ``very_bad_melody_extractor``), and then split the scores based on the
+metadata, we could do the following:
+
+.. code-block:: python
+
+    import mir_eval
+    import mirdata
+    import numpy as np
+    import sox
+
+    def very_bad_melody_extractor(audio_path):
+        duration = sox.file_info.duration(audio_path)
+        time_stamps = np.arange(0, duration, 0.01)
+        melody_f0 = np.random.uniform(low=80.0, high=800.0, size=time_stamps.shape)
+        return time_stamps, melody_f0
+
+    # Evaluate on the full dataset
+    orchset = mirdata.Dataset("orchset")
+    orchset_scores = {}
+    orchset_data = orchset.load_tracks()
+    for track_id, track_data in orchset_data.items():
+        est_times, est_freqs = very_bad_melody_extractor(track_data.audio_path_mono)
+
+        ref_melody_data = track_data.melody
+        ref_times = ref_melody_data.times
+        ref_freqs = ref_melody_data.frequencies
+
+        score = mir_eval.melody.evaluate(ref_times, ref_freqs, est_times, est_freqs)
+        orchset_scores[track_id] = score
+
+    # Split the results by composer and by instrumentation
+    composer_scores = {}
+    strings_no_strings_scores = {True: {}, False: {}}
+    for track_id, track_data in orchset_data.items():
+        if track_data.composer not in composer_scores.keys():
+            composer_scores[track_data.composer] = {}
+
+        composer_scores[track_data.composer][track_id] = orchset_scores[track_id]
+        strings_no_strings_scores[track_data.contains_strings][track_id] = \
+            orchset_scores[track_id]
+
+
+This is the result of the example above.
+
+.. code-block:: python
+
+    print(strings_no_strings_scores)
+    >>> {True: {
+            'Beethoven-S3-I-ex1':OrderedDict([
+                   ('Voicing Recall', 1.0),
+                   ('Voicing False Alarm', 1.0),
+                   ('Raw Pitch Accuracy', 0.029798422436459245),
+                   ('Raw Chroma Accuracy', 0.08063102541630149),
+                   ('Overall Accuracy', 0.0272654370489174)
+                   ]),
+            'Beethoven-S3-I-ex2': OrderedDict([
+                   ('Voicing Recall', 1.0),
+                   ('Voicing False Alarm', 1.0),
+                   ('Raw Pitch Accuracy', 0.009221311475409836),
+                   ('Raw Chroma Accuracy', 0.07377049180327869),
+                   ('Overall Accuracy', 0.008754863813229572)]),
+            ...
+
+            'Wagner-Tannhauser-Act2-ex2': OrderedDict([
+                   ('Voicing Recall', 1.0),
+                   ('Voicing False Alarm', 1.0),
+                   ('Raw Pitch Accuracy', 0.03685636856368564),
+                   ('Raw Chroma Accuracy', 0.08997289972899729),
+                   ('Overall Accuracy', 0.036657681940700806)])
+            }}
+
+You can see that ``very_bad_melody_extractor`` performs very badly!
+
+
+Using mirdata with tf.data.Dataset
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following is a simple example of a generator that can be used to create a tensorflow Dataset.
+
+.. code-block:: python
+
+    import mirdata
+    import numpy as np
+    import tensorflow as tf
+
+    def orchset_generator():
+        # using the default data_home
+        orchset = mirdata.Dataset("orchset")
+        track_ids = orchset.track_ids()
+        for track_id in track_ids:
+            track = orchset.track(track_id)
+            audio_signal, sample_rate = track.audio_mono
+            yield {
+                "audio": audio_signal.astype(np.float32),
+                "sample_rate": sample_rate,
+                "annotation": {
+                    "times": track.melody.times.astype(np.float32),
+                    "freqs": track.melody.frequencies.astype(np.float32),
+                },
+                "metadata": {"track_id": track.track_id}
+            }
+
+    dataset = tf.data.Dataset.from_generator(
+        orchset_generator,
+        {
+            "audio": tf.float32,
+            "sample_rate": tf.float32,
+            "annotation": {"times": tf.float32, "freqs": tf.float32},
+            "metadata": {'track_id': tf.string}
+        }
+    )
+
+In future ``mirdata`` versions, generators for Tensorflow and Pytorch will be included.
