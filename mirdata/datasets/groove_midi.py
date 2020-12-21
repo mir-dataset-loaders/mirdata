@@ -305,17 +305,29 @@ class Track(core.Track):
 
     @utils.cached_property
     def beats(self):
-        """BeatData: machine-generated beat annotation"""
+        """Machine-generated beat annotation.
+
+        Returns:
+            (BeatData): beats
+        """
         return load_beats(self.midi_path, self.midi)
 
     @utils.cached_property
     def drum_events(self):
-        """EventData: annotated drum kit events"""
+        """Annotated drum kit events
+
+        Returns:
+            (EventData): drum events
+        """
         return load_drum_events(self.midi_path, self.midi)
 
     @utils.cached_property
     def midi(self):
-        """(obj): prettyMIDI obj"""
+        """prettyMIDI obj
+
+        Returns:
+            (obj): MIDI
+        """
         return load_midi(self.midi_path)
 
     def to_jams(self):
