@@ -20,7 +20,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 
@@ -76,7 +75,7 @@ def _load_metadata(data_home):
     return singer_map
 
 
-DATA = utils.LargeData("ikala_index.json", _load_metadata)
+DATA = core.LargeData("ikala_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -118,12 +117,12 @@ class Track(core.Track):
         else:
             self.singer_id = None
 
-    @utils.cached_property
+    @core.cached_property
     def f0(self):
         """F0Data: The human-annotated singing voice pitch"""
         return load_f0(self.f0_path)
 
-    @utils.cached_property
+    @core.cached_property
     def lyrics(self):
         """LyricData: The human-annotated lyrics"""
         return load_lyrics(self.lyrics_path)

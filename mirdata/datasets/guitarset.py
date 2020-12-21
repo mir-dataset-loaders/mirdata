@@ -56,7 +56,6 @@ import numpy as np
 
 from mirdata import download_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 
@@ -107,7 +106,7 @@ _STYLE_DICT = {
     "Funk": "Funk",
 }
 _GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
-DATA = utils.LargeData("guitarset_index.json")
+DATA = core.LargeData("guitarset_index.json")
 
 
 class Track(core.Track):
@@ -163,12 +162,12 @@ class Track(core.Track):
         self.tempo = float(tempo)
         self.style = _STYLE_DICT[style[:-1]]
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
         """BeatData: the track's beat positions"""
         return load_beats(self.jams_path)
 
-    @utils.cached_property
+    @core.cached_property
     def leadsheet_chords(self):
         """ChordData: the track's chords as written in the leadsheet"""
         if self.mode == "solo":
@@ -177,7 +176,7 @@ class Track(core.Track):
             )
         return load_chords(self.jams_path, leadsheet_version=True)
 
-    @utils.cached_property
+    @core.cached_property
     def inferred_chords(self):
         """ChordData: the track's chords inferred from played transcription"""
         if self.mode == "solo":
@@ -186,12 +185,12 @@ class Track(core.Track):
             )
         return load_chords(self.jams_path, leadsheet_version=False)
 
-    @utils.cached_property
+    @core.cached_property
     def key_mode(self):
         """KeyData: the track's key and mode"""
         return load_key_mode(self.jams_path)
 
-    @utils.cached_property
+    @core.cached_property
     def pitch_contours(self):
         """(dict): a dict that contains 6 F0Data.
 
@@ -208,7 +207,7 @@ class Track(core.Track):
             contours[_GUITAR_STRINGS[i]] = load_pitch_contour(self.jams_path, i)
         return contours
 
-    @utils.cached_property
+    @core.cached_property
     def notes(self):
         """dict: a dict that contains 6 NoteData.
 

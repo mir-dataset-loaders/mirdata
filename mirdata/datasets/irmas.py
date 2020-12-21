@@ -85,7 +85,6 @@ import librosa
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 BIBTEX = """
 @dataset{juan_j_bosch_2014_1290750,
@@ -127,7 +126,7 @@ REMOTES = {
 }
 
 
-DATA = utils.LargeData("irmas_index.json")
+DATA = core.LargeData("irmas_index.json")
 
 
 INST_DICT = [
@@ -219,7 +218,7 @@ class Track(core.Track):
         else:
             self.train = False
 
-    @utils.cached_property
+    @core.cached_property
     def instrument(self):
         """(list, string): predominant instrument"""
         if self.predominant_instrument is not None:

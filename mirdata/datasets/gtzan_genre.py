@@ -16,7 +16,6 @@ import os
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 
 BIBTEX = """@article{tzanetakis2002gtzan,
@@ -34,7 +33,7 @@ REMOTES = {
     )
 }
 
-DATA = utils.LargeData("gtzan_genre_index.json")
+DATA = core.LargeData("gtzan_genre_index.json")
 
 
 class Track(core.Track):

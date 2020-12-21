@@ -40,7 +40,6 @@ import pretty_midi
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 
@@ -96,7 +95,7 @@ def _load_metadata(data_home):
     return metadata
 
 
-DATA = utils.LargeData("maestro_index.json", _load_metadata)
+DATA = core.LargeData("maestro_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -145,12 +144,12 @@ class Track(core.Track):
             self.year = None
             self.duration = None
 
-    @utils.cached_property
+    @core.cached_property
     def midi(self):
         """output type: description of output"""
         return load_midi(self.midi_path)
 
-    @utils.cached_property
+    @core.cached_property
     def notes(self):
         """NoteData: annotated piano notes"""
         return load_notes(self.midi_path, self.midi)

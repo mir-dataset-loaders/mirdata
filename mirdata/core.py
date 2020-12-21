@@ -1,17 +1,71 @@
 # -*- coding: utf-8 -*-
 """core mirdata classes
 """
-import importlib
+import json
 import os
 import random
 import types
 import numpy as np
 
-import mirdata
 from mirdata import download_utils
-from mirdata import utils
+from mirdata import validate
 
 MAX_STR_LEN = 100
+
+
+##### decorators ######
+
+
+class cached_property(object):
+    """A property that is only computed once per instance and then replaces
+        itself with an ordinary attribute. Deleting the attribute resets the
+        property.
+        Source: https://github.com/bottlepy/bottle/commit/fa7733e075da0d790d809aa3d2f53071897e6f76
+    """
+
+    def __init__(self, func):
+        self.__doc__ = getattr(func, "__doc__")
+        self.func = func
+
+    def __get__(self, obj, cls):
+        # type: (Any, type) -> Any
+        if obj is None:
+            return self
+        value = obj.__dict__[self.func.__name__] = self.func(obj)
+        return value
+
+
+def docstring_inherit(parent):
+    """Decorator function to inherit docstrings from the parent class.
+    
+    Adds documented Attributes from the parent to the child docs.
+
+    """
+
+    def inherit(obj):
+        spaces = "    "
+        if not str(obj.__doc__).__contains__("Attributes:"):
+            obj.__doc__ += "\n" + spaces + "Attributes:\n"
+        obj.__doc__ = str(obj.__doc__).rstrip() + "\n"
+        for attribute in parent.__doc__.split("Attributes:\n")[-1].lstrip().split("\n"):
+            obj.__doc__ += spaces * 2 + str(attribute).lstrip().rstrip() + "\n"
+
+        return obj
+
+    return inherit
+
+
+def copy_docs(original):
+    """Decorator function to copy docs from one function to another"""
+
+    def wrapper(target):
+        target.__doc__ = original.__doc__
+        return target
+
+    return wrapper
+
+
+##### Core Classes #####
 
 
 class Dataset(object):
@@ -161,7 +215,7 @@ class Dataset(object):
             cleanup=cleanup,
         )
 
-    @utils.cached_property
+    @cached_property
     def track_ids(self):
         """Return track ids
 
@@ -183,7 +237,7 @@ class Dataset(object):
                 index but has a different checksum compare to the reference checksum
 
         """
-        missing_files, invalid_checksums = utils.validator(
+        missing_files, invalid_checksums = validate.validator(
             self._index, self.data_home, verbose=verbose
         )
         return missing_files, invalid_checksums
@@ -345,31 +399,63 @@ class MultiTrack(Track):
         return self.get_target(list(self.tracks.keys()))
 
 
-def docstring_inherit(parent):
-    """Decorator function to inherit docstrings from the parent class.
-    
-    Adds documented Attributes from the parent to the child docs.
+def load_json_index(filename):
+    working_dir = os.path.dirname(os.path.realpath(__file__))
+    with open(os.path.join(working_dir, "datasets/indexes", filename)) as f:
+        return json.load(f)
+
+
+def none_path_join(partial_path_list):
+    """Join a list of partial paths. If any part of the path is None,
+    returns None.
+
+    Args:
+        partial_path_list (list): List of partial paths
+
+    Returns:
+        path or None (str or None): joined path string or None
 
     """
-
-    def inherit(obj):
-        spaces = "    "
-        if not str(obj.__doc__).__contains__("Attributes:"):
-            obj.__doc__ += "\n" + spaces + "Attributes:\n"
-        obj.__doc__ = str(obj.__doc__).rstrip() + "\n"
-        for attribute in parent.__doc__.split("Attributes:\n")[-1].lstrip().split("\n"):
-            obj.__doc__ += spaces * 2 + str(attribute).lstrip().rstrip() + "\n"
-
-        return obj
-
-    return inherit
+    if None in partial_path_list:
+        return None
+    else:
+        return os.path.join(*partial_path_list)
 
 
-def copy_docs(original):
-    """Decorator function to copy docs from one function to another"""
+class LargeData(object):
+    def __init__(self, index_file, metadata_load_fn=None, remote_index=None):
+        """Object which loads and caches large data the first time it's accessed.
 
-    def wrapper(target):
-        target.__doc__ = original.__doc__
-        return target
+        Args:
+            index_file: str
+                File name of checksum index file to be passed to `load_json_index`
+            metadata_load_fn: function
+                Function which returns a metadata dictionary.
+                If None, assume the dataset has no metadata. When the
+                `metadata` attribute is called, raises a NotImplementedError
 
-    return wrapper
+        """
+        self._metadata = None
+        self.index_file = index_file
+        self.metadata_load_fn = metadata_load_fn
+        self.remote_index = remote_index
+
+    @cached_property
+    def index(self):
+        if self.remote_index is not None:
+            working_dir = os.path.dirname(os.path.realpath(__file__))
+            path_index_file = os.path.join(
+                working_dir, "datasets/indexes", self.index_file
+            )
+            if not os.path.isfile(path_index_file):
+                path_indexes = os.path.join(working_dir, "datasets/indexes")
+                download_utils.downloader(path_indexes, remotes=self.remote_index)
+        return load_json_index(self.index_file)
+
+    def metadata(self, data_home):
+        if self.metadata_load_fn is None:
+            raise NotImplementedError
+
+        if self._metadata is None or self._metadata["data_home"] != data_home:
+            self._metadata = self.metadata_load_fn(data_home)
+        return self._metadata

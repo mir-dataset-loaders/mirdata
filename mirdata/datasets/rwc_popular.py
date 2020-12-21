@@ -19,7 +19,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 # these functions are identical for all rwc datasets
@@ -143,7 +142,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("rwc_popular_index.json", _load_metadata)
+DATA = core.LargeData("rwc_popular_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -223,22 +222,22 @@ class Track(core.Track):
         self.instruments = self._track_metadata["instruments"]
         self.drum_information = self._track_metadata["drum_information"]
 
-    @utils.cached_property
+    @core.cached_property
     def sections(self):
         """SectionData: human-labeled section annotation"""
         return load_sections(self.sections_path)
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
         """BeatData: human-labeled beat annotation"""
         return load_beats(self.beats_path)
 
-    @utils.cached_property
+    @core.cached_property
     def chords(self):
         """ChordData: human-labeled chord annotation"""
         return load_chords(self.chords_path)
 
-    @utils.cached_property
+    @core.cached_property
     def vocal_instrument_activity(self):
         """EventData: human-labeled vocal/instrument activity"""
         return load_vocal_activity(self.voca_inst_path)

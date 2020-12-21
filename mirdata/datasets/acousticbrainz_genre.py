@@ -43,7 +43,6 @@ import shutil
 
 from mirdata import download_utils, core
 from mirdata import jams_utils
-from mirdata import utils
 
 
 BIBTEX = """
@@ -126,7 +125,7 @@ REMOTE_INDEX = {
     )
 }
 
-DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+DATA = core.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
 
 
 class Track(core.Track):
@@ -144,7 +143,7 @@ class Track(core.Track):
 
     def __init__(self, track_id, data_home, remote_index=None, remote_index_name=None):
         if remote_index is not None and remote_index_name is not None:
-            data = utils.LargeData(remote_index_name, remote_index=remote_index)
+            data = core.LargeData(remote_index_name, remote_index=remote_index)
         else:
             data = DATA
 
@@ -158,9 +157,7 @@ class Track(core.Track):
         self.track_id = track_id
         self._data_home = data_home
         self._track_paths = data.index["tracks"][track_id]
-        self.path = utils.none_path_join(
-            [self._data_home, self._track_paths["data"][0]]
-        )
+        self.path = core.none_path_join([self._data_home, self._track_paths["data"][0]])
 
     # Genre
     @property

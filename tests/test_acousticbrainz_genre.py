@@ -2,7 +2,7 @@ import os
 import shutil
 import pytest
 
-from mirdata import utils, jams_utils, download_utils
+from mirdata import jams_utils, download_utils, core
 from mirdata.datasets import acousticbrainz_genre
 from tests.test_utils import run_track_tests
 
@@ -3979,7 +3979,7 @@ def test_filter_index(httpserver):
             destination_dir="",
         )
     }
-    DATA_test = utils.LargeData(
+    DATA_test = core.LargeData(
         "acousticbrainz_genre_dataset_little_test.json", remote_index=remote_index
     )
     dataset = acousticbrainz_genre.Dataset(index=DATA_test.index)

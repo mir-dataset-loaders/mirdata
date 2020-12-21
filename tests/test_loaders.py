@@ -11,7 +11,7 @@ import requests
 
 
 import mirdata
-from mirdata import core, download_utils, utils
+from mirdata import core, download_utils
 from tests.test_utils import DEFAULT_DATA_HOME
 
 DATASETS = mirdata.DATASETS
@@ -57,7 +57,7 @@ def create_remote_index(httpserver, dataset_name):
             destination_dir="",
         )
     }
-    data_remote = utils.LargeData(
+    data_remote = core.LargeData(
         REMOTE_DATASETS[dataset_name]["filename"], remote_index=remote_index
     )
     return data_remote.index

@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-import subprocess
 import sys
 
 import librosa
 import numpy as np
 
 from mirdata.datasets import tonality_classicaldb
-from mirdata import utils
 from tests.test_utils import run_track_tests
 
 

@@ -81,7 +81,7 @@ Here there is an example of an index to use as guideline:
     import glob
     import json
     import os
-    from mirdata.utils import md5
+    from mirdata.validate import md5
 
     DATASET_INDEX_PATH = "../mirdata/datasets/indexes/dataset_index.json"
 
@@ -169,7 +169,6 @@ Module example
     from mirdata import download_utils
     from mirdata import jams_utils
     from mirdata import core, annotations
-    from mirdata import utils
 
 
     # -- Add any relevant citations here
@@ -219,8 +218,8 @@ Module example
         return metadata
 
 
-    DATA = utils.LargeData('example_index.json', _load_metadata)
-    # DATA = utils.LargeData('example_index.json')  ## use this if your dataset has no metadata
+    DATA = core.LargeData('example_index.json', _load_metadata)
+    # DATA = core.LargeData('example_index.json')  ## use this if your dataset has no metadata
 
 
     class Track(core.Track):
@@ -264,7 +263,7 @@ Module example
         # -- and saved when someone accesses it. Useful when loading slightly
         # -- bigger files or for bigger datasets. By default, we make any time
         # -- series data loaded from a file a cached property
-        @utils.cached_property
+        @core.cached_property
         def annotation(self):
             """output type: description of output"""
             return load_annotation(self.annotation_path)
@@ -322,7 +321,7 @@ Module example
             self.annotation_path = ...
 
         # -- multitracks can optionally have mix-level cached properties and properties
-        @utils.cached_property
+        @core.cached_property
         def annotation(self):
             """output type: description of output"""
             return load_annotation(self.annotation_path)
@@ -473,7 +472,6 @@ Test file example
     import numpy as np
 
     from mirdata.datasets import dataset
-    from mirdata import utils
     from tests.test_utils import run_track_tests
 
 

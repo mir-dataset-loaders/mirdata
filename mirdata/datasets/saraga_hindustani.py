@@ -32,7 +32,7 @@ import logging
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils, annotations
+from mirdata import annotations
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -73,7 +73,7 @@ def _load_metadata(metadata_path):
         return metadata
 
 
-DATA = utils.LargeData("saraga_hindustani_index.json", _load_metadata)
+DATA = core.LargeData("saraga_hindustani_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -112,25 +112,25 @@ class Track(core.Track):
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
         # Annotation paths
-        self.ctonic_path = utils.none_path_join(
+        self.ctonic_path = core.none_path_join(
             [self._data_home, self._track_paths["ctonic"][0]]
         )
-        self.pitch_path = utils.none_path_join(
+        self.pitch_path = core.none_path_join(
             [self._data_home, self._track_paths["pitch"][0]]
         )
-        self.tempo_path = utils.none_path_join(
+        self.tempo_path = core.none_path_join(
             [self._data_home, self._track_paths["tempo"][0]]
         )
-        self.sama_path = utils.none_path_join(
+        self.sama_path = core.none_path_join(
             [self._data_home, self._track_paths["sama"][0]]
         )
-        self.sections_path = utils.none_path_join(
+        self.sections_path = core.none_path_join(
             [self._data_home, self._track_paths["sections"][0]]
         )
-        self.phrases_path = utils.none_path_join(
+        self.phrases_path = core.none_path_join(
             [self._data_home, self._track_paths["phrases"][0]]
         )
-        self.metadata_path = utils.none_path_join(
+        self.metadata_path = core.none_path_join(
             [self._data_home, self._track_paths["metadata"][0]]
         )
 
@@ -192,32 +192,32 @@ class Track(core.Track):
             else None
         )
 
-    @utils.cached_property
+    @core.cached_property
     def tonic(self):
         """Float: tonic annotation"""
         return load_tonic(self.ctonic_path)
 
-    @utils.cached_property
+    @core.cached_property
     def pitch(self):
         """F0Data: pitch annotation"""
         return load_pitch(self.pitch_path)
 
-    @utils.cached_property
+    @core.cached_property
     def tempo(self):
         """Dict: tempo annotations"""
         return load_tempo(self.tempo_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sama(self):
         """BeatData: sama section annotations"""
         return load_sama(self.sama_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sections(self):
         """SectionData: track section annotations"""
         return load_sections(self.sections_path)
 
-    @utils.cached_property
+    @core.cached_property
     def phrases(self):
         """EventData: phrase annotations"""
         return load_phrases(self.phrases_path)

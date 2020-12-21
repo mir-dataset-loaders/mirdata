@@ -231,10 +231,10 @@ Annotations
 Advanced
 --------
 
-mirdata.utils
-^^^^^^^^^^^^^
+mirdata.validate
+^^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.utils
+.. automodule:: mirdata.validate
    :members:
 
 

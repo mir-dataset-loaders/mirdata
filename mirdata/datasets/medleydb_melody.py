@@ -21,7 +21,6 @@ import os
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
@@ -56,7 +55,7 @@ def _load_metadata(data_home):
     return metadata
 
 
-DATA = utils.LargeData("medleydb_melody_index.json", _load_metadata)
+DATA = core.LargeData("medleydb_melody_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -121,17 +120,17 @@ class Track(core.Track):
         self.is_instrumental = self._track_metadata["is_instrumental"]
         self.n_sources = self._track_metadata["n_sources"]
 
-    @utils.cached_property
+    @core.cached_property
     def melody1(self):
         """F0Data: The pitch of the single most predominant source (often the voice)"""
         return load_melody(self.melody1_path)
 
-    @utils.cached_property
+    @core.cached_property
     def melody2(self):
         """F0Data: The pitch of the predominant source for each point in time"""
         return load_melody(self.melody2_path)
 
-    @utils.cached_property
+    @core.cached_property
     def melody3(self):
         """MultiF0Data: The pitch of any melodic source. Allows for more than one f0 value at a time."""
         return load_melody3(self.melody3_path)

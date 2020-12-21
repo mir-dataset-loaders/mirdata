@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 """Utility functions for mirdata"""
 
-from collections import namedtuple
 import hashlib
 import os
-import json
 import tqdm
-from mirdata import download_utils
 
 
 def md5(file_path):
@@ -24,23 +21,6 @@ def md5(file_path):
         for chunk in iter(lambda: fhandle.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
-
-
-def none_path_join(partial_path_list):
-    """Join a list of partial paths. If any part of the path is None,
-    returns None.
-
-    Args:
-        partial_path_list (list): List of partial paths
-
-    Returns:
-        path or None (str or None): joined path string or None
-
-    """
-    if None in partial_path_list:
-        return None
-    else:
-        return os.path.join(*partial_path_list)
 
 
 def log_message(message, verbose=True):
@@ -119,27 +99,21 @@ def check_index(dataset_index, data_home, verbose=True):
     # check index
     if "metadata" in dataset_index and dataset_index["metadata"] is not None:
         missing_metadata, invalid_metadata = check_metadata(
-            dataset_index["metadata"],
-            data_home,
-            verbose,
+            dataset_index["metadata"], data_home, verbose,
         )
         missing_files["metadata"] = missing_metadata
         invalid_checksums["metadata"] = invalid_metadata
 
     if "tracks" in dataset_index and dataset_index["tracks"] is not None:
         missing_tracks, invalid_tracks = check_files(
-            dataset_index["tracks"],
-            data_home,
-            verbose,
+            dataset_index["tracks"], data_home, verbose,
         )
         missing_files["tracks"] = missing_tracks
         invalid_checksums["tracks"] = invalid_tracks
 
     if "multitracks" in dataset_index and dataset_index["multitracks"] is not None:
         missing_multitracks, invalid_multitracks = check_files(
-            dataset_index["multitracks"],
-            data_home,
-            verbose,
+            dataset_index["multitracks"], data_home, verbose,
         )
         missing_files["multitracks"] = missing_multitracks
         invalid_checksums["multitracks"] = invalid_multitracks
@@ -195,68 +169,3 @@ def validator(dataset_index, data_home, verbose=True):
 
     return missing_files, invalid_checksums
 
-
-def load_json_index(filename):
-    working_dir = os.path.dirname(os.path.realpath(__file__))
-    with open(os.path.join(working_dir, "datasets/indexes", filename)) as f:
-        return json.load(f)
-
-
-class cached_property(object):
-    """A property that is only computed once per instance and then replaces
-    itself with an ordinary attribute. Deleting the attribute resets the
-    property.
-    Source: https://github.com/bottlepy/bottle/commit/fa7733e075da0d790d809aa3d2f53071897e6f76
-    """
-
-    def __init__(self, func):
-        self.__doc__ = getattr(func, "__doc__")
-        self.func = func
-
-    def __get__(self, obj, cls):
-        # type: (Any, type) -> Any
-        if obj is None:
-            return self
-        value = obj.__dict__[self.func.__name__] = self.func(obj)
-        return value
-
-
-class LargeData(object):
-    def __init__(self, index_file, metadata_load_fn=None, remote_index=None):
-        """Object which loads and caches large data the first time it's
-        accessed.
-
-        Parameters
-        ----------
-        index_file: str
-            File name of checksum index file to be passed to `load_json_index`
-        metadata_load_fn: function
-            Function which returns a metadata dictionary.
-            If None, assume the dataset has no metadata. When the
-            `metadata` attribute is called, raises a NotImplementedError
-
-        """
-        self._metadata = None
-        self.index_file = index_file
-        self.metadata_load_fn = metadata_load_fn
-        self.remote_index = remote_index
-
-    @cached_property
-    def index(self):
-        if self.remote_index is not None:
-            working_dir = os.path.dirname(os.path.realpath(__file__))
-            path_index_file = os.path.join(
-                working_dir, "datasets/indexes", self.index_file
-            )
-            if not os.path.isfile(path_index_file):
-                path_indexes = os.path.join(working_dir, "datasets/indexes")
-                download_utils.downloader(path_indexes, remotes=self.remote_index)
-        return load_json_index(self.index_file)
-
-    def metadata(self, data_home):
-        if self.metadata_load_fn is None:
-            raise NotImplementedError
-
-        if self._metadata is None or self._metadata["data_home"] != data_home:
-            self._metadata = self.metadata_load_fn(data_home)
-        return self._metadata

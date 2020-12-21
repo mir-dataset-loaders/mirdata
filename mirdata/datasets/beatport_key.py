@@ -25,7 +25,6 @@ import librosa
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 BIBTEX = """@phdthesis {3897,
     title = {Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination},
@@ -60,7 +59,7 @@ REMOTES = {
     ),
 }
 
-DATA = utils.LargeData("beatport_key_index.json")
+DATA = core.LargeData("beatport_key_index.json")
 
 
 class Track(core.Track):
@@ -98,22 +97,22 @@ class Track(core.Track):
         )
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
 
-    @utils.cached_property
+    @core.cached_property
     def key(self):
         """List of String: list of possible key annotations"""
         return load_key(self.keys_path)
 
-    @utils.cached_property
+    @core.cached_property
     def artists(self):
         """Dict: artist annotation"""
         return load_artist(self.metadata_path)
 
-    @utils.cached_property
+    @core.cached_property
     def genres(self):
         """Dict: genre annotation"""
         return load_genre(self.metadata_path)
 
-    @utils.cached_property
+    @core.cached_property
     def tempo(self):
         """int: tempo beatports crowdsourced annotation"""
         return load_tempo(self.metadata_path)

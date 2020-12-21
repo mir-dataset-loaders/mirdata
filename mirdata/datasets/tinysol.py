@@ -49,7 +49,6 @@ import os
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 BIBTEX = """@inproceedings{cella2020preprint,
   author={Cella, Carmine Emanuele and Ghisi, Daniele and Lostanlen, Vincent and
@@ -112,7 +111,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("tinysol_index.json", _load_metadata)
+DATA = core.LargeData("tinysol_index.json", _load_metadata)
 
 
 class Track(core.Track):

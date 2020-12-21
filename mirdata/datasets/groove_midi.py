@@ -52,7 +52,7 @@ import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils, jams_utils, core, utils, annotations
+from mirdata import download_utils, jams_utils, core, annotations
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -225,7 +225,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("groove_midi_index.json", _load_metadata)
+DATA = core.LargeData("groove_midi_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -290,7 +290,7 @@ class Track(core.Track):
 
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
-        self.audio_path = utils.none_path_join(
+        self.audio_path = core.none_path_join(
             [self._data_home, self._track_paths["audio"][0]]
         )
 
@@ -299,17 +299,17 @@ class Track(core.Track):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
         """BeatData: machine-generated beat annotation"""
         return load_beats(self.midi_path, self.midi)
 
-    @utils.cached_property
+    @core.cached_property
     def drum_events(self):
         """EventData: annotated drum kit events"""
         return load_drum_events(self.midi_path, self.midi)
 
-    @utils.cached_property
+    @core.cached_property
     def midi(self):
         """(obj): prettyMIDI obj"""
         return load_midi(self.midi_path)

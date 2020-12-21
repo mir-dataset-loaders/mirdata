@@ -40,7 +40,6 @@ import librosa
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 BIBTEX = """@article{Anantapadmanabhan2013,
     author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
@@ -64,7 +63,7 @@ REMOTES = {
     ),
 }
 
-DATA = utils.LargeData("mridangam_stroke_index.json")
+DATA = core.LargeData("mridangam_stroke_index.json")
 
 
 STROKE_DICT = {

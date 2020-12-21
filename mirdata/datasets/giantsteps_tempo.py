@@ -70,7 +70,6 @@ import numpy as np
 
 from mirdata import download_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 
@@ -90,7 +89,7 @@ BIBTEX = """@inproceedings{knees2015two,
   url-pdf={http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf},
 }"""
 
-DATA = utils.LargeData("giantsteps_tempo_index.json")
+DATA = core.LargeData("giantsteps_tempo_index.json")
 
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
@@ -146,17 +145,17 @@ class Track(core.Track):
 
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1].split(".")[0]
 
-    @utils.cached_property
+    @core.cached_property
     def genre(self):
         """genre: human-labeled metadata annotation"""
         return load_genre(self.annotation_v1_path)
 
-    @utils.cached_property
+    @core.cached_property
     def tempo(self):
         """TempoData: tempo annotation ordered by confidence"""
         return load_tempo(self.annotation_v1_path)
 
-    @utils.cached_property
+    @core.cached_property
     def tempo_v2(self):
         """TempoData: tempos annotation ordered by confidence"""
         return load_tempo(self.annotation_v2_path)

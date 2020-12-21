@@ -21,7 +21,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 BIBTEX = """@article{bosch2016evaluation,
@@ -104,7 +103,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("orchset_index.json", _load_metadata)
+DATA = core.LargeData("orchset_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -181,7 +180,7 @@ class Track(core.Track):
         self.only_winds = self._track_metadata["only_winds"]
         self.only_brass = self._track_metadata["only_brass"]
 
-    @utils.cached_property
+    @core.cached_property
     def melody(self):
         """F0Data: melody annotation"""
         return load_melody(self.melody_path)

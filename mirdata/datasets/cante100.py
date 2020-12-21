@@ -47,7 +47,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 
@@ -203,7 +202,7 @@ def _load_metadata(data_home):
     return metadata
 
 
-DATA = utils.LargeData("cante100_index.json", _load_metadata)
+DATA = core.LargeData("cante100_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -267,12 +266,12 @@ class Track(core.Track):
         """(np.ndarray, float): spectrogram"""
         return load_spectrogram(self.spectrogram_path)
 
-    @utils.cached_property
+    @core.cached_property
     def melody(self):
         """F0Data: audio signal, sample rate"""
         return load_melody(self.f0_path)
 
-    @utils.cached_property
+    @core.cached_property
     def notes(self):
         """NoteData: audio signal, sample rate"""
         return load_notes(self.notes_path)

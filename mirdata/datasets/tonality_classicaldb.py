@@ -28,7 +28,7 @@ import librosa
 import os
 import numpy as np
 
-from mirdata import jams_utils, download_utils, core, utils
+from mirdata import jams_utils, download_utils, core
 
 
 BIBTEX = """@article{gomez2006tonal,
@@ -75,7 +75,7 @@ DOWNLOAD_INFO = """
             > musicbrainz_metadata/
     and copy the folder to {} directory
 """
-DATA = utils.LargeData("tonality_classicaldb_index.json")
+DATA = core.LargeData("tonality_classicaldb_index.json")
 
 
 class Track(core.Track):
@@ -111,22 +111,22 @@ class Track(core.Track):
         self.hpcp_path = os.path.join(self._data_home, self._track_paths["HPCP"][0])
         self.title = self.audio_path.replace(".wav", "").split("/")[-1]
 
-    @utils.cached_property
+    @core.cached_property
     def key(self):
         """String: key annotation"""
         return load_key(self.key_path)
 
-    @utils.cached_property
+    @core.cached_property
     def spectrum(self):
         """np.array: spectrum"""
         return load_spectrum(self.spectrum_path)
 
-    @utils.cached_property
+    @core.cached_property
     def hpcp(self):
         """np.array: HPCP"""
         return load_hpcp(self.hpcp_path)
 
-    @utils.cached_property
+    @core.cached_property
     def mb_metadata(self):
         """Dict: musicbrainz metadata"""
         return load_musicbrainz(self.mb_path)
