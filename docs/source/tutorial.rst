@@ -230,15 +230,34 @@ Alternatively, we can run over the ``track_ids`` list to access directly to each
         print(track_id, orchset.track(track_id).title,  orchset.track(track_id).audio_path)
 
 
-Working with remote datasets
+Working with remote index
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-TODO
+For the end user there is no difference between the remote and local indexes.
+
+However, to extend the library you have to add in utils.LargeData(...) the remote_index argument with a
+download_utils.RemoteFileMetadata dictionary with the remote index information.
+
+DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+
+.. code-block:: python
+
+    REMOTE_INDEX = {
+        "REMOTE_INDEX": download_utils.RemoteFileMetadata(
+            filename="acousticbrainz_genre_index.json.zip",
+            url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
+            checksum="810f1c003f53cbe58002ba96e6d4d138",
+            destination_dir="",
+        )
+    }
+    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+
 
 Working with big datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-TODO
+In the development of large datasets, it is advisable to create an index as small as possible to develop
+the new dataset and pass the tests.
 
 Using mirdata with tensorflow or pytorch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
