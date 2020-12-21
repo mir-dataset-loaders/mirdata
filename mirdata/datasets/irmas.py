@@ -81,6 +81,7 @@ For more details, please visit: https://www.upf.edu/web/mtg/irmas
 
 import os
 import librosa
+import csv
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -276,10 +277,10 @@ def load_pred_inst(annotation_path):
         raise IOError("annotation_path {} does not exist".format(annotation_path))
 
     pred_inst = []
-    with open(annotation_path, "r") as fopen:
-        pred_inst_file = fopen.readlines()
-        for inst_ in pred_inst_file:
-            inst_code = inst_[:3]
+    with open(annotation_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=' ')
+        for line in reader:
+            inst_code = line[0][:3]
             assert (
                 inst_code in INST_DICT
             ), "Instrument {} not in instrument dictionary".format(inst_code)
