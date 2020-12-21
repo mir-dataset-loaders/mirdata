@@ -225,22 +225,36 @@ class Track(core.Track):
 
     @utils.cached_property
     def sections(self):
-        """SectionData: human-labeled section annotation"""
+        """Human-labeled section annotation
+
+        Returns:
+            (SectionData): sections"""
         return load_sections(self.sections_path)
 
     @utils.cached_property
     def beats(self):
-        """BeatData: human-labeled beat annotation"""
+        """Human-labeled beat annotation
+
+        Returns:
+            (BeatData): beats
+        """
         return load_beats(self.beats_path)
 
     @utils.cached_property
     def chords(self):
-        """ChordData: human-labeled chord annotation"""
+        """Human-labeled chord annotation
+
+        Returns:
+            ChordData: chords
+        """
         return load_chords(self.chords_path)
 
     @utils.cached_property
     def vocal_instrument_activity(self):
-        """EventData: human-labeled vocal/instrument activity"""
+        """Human-labeled vocal/instrument activity.
+
+        Returns:
+            (EventData): voocal instrument activity"""
         return load_voca_inst(self.voca_inst_path)
 
     @property
