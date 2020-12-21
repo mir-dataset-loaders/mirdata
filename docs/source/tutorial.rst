@@ -192,18 +192,7 @@ Annotation classes
 ``mirdata`` uses several diffent data classes to store annotations. These data classes are meant to standarize the organization for
 all the loaders, and keep compatibility with `JAMS <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
-The list of available annotation classes are:
-
-- BeatData(times, positions)
-- SectionData(intervals, labels)
-- NoteData(intervals, notes, confidence)
-- ChordData(intervals, labels, confidence)
-- F0Data(times, frequencies, confidence)
-- MultiF0Data(times, frequency_list, confidence_list)
-- KeyData(intervals, keys)
-- LyricData(intervals, lyrics, pronunciations)
-- TempoData(intervals, value, confidence)
-- EventData(intervals, events)
+The list and descriptions of available annotation classes can be found `in this link <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.annotations>`_.
 
 **These classes are extendable in case a certain loader requires it.**
 
