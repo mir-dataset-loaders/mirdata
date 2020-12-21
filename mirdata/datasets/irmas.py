@@ -221,7 +221,11 @@ class Track(core.Track):
 
     @utils.cached_property
     def instrument(self):
-        """(list, string): predominant instrument"""
+        """Predominant instrument
+
+        Returns:
+            (list, string): Predominant instrument
+        """
         if self.predominant_instrument is not None:
             return [self.predominant_instrument]
         else:

@@ -120,12 +120,19 @@ class Track(core.Track):
 
     @utils.cached_property
     def f0(self):
-        """F0Data: The human-annotated singing voice pitch"""
+        """The human-annotated singing voice pitch
+
+        Returns:
+            (F0Data): f0 """
         return load_f0(self.f0_path)
 
     @utils.cached_property
     def lyrics(self):
-        """LyricData: The human-annotated lyrics"""
+        """The human-annotated lyrics
+
+        Returns:
+            (LyricsData): LyricData
+        """
         return load_lyrics(self.lyrics_path)
 
     @property
@@ -139,12 +146,20 @@ class Track(core.Track):
 
     @property
     def instrumental_audio(self):
-        """(np.ndarray, float): mono instrumental audio signal, sample rate"""
+        """Mono instrumental Audio ground truth
+
+        Returns:
+            (np.ndarray, float): audio signal, sample rate
+        """
         return load_instrumental_audio(self.audio_path)
 
     @property
     def mix_audio(self):
-        """(np.ndarray, float): mono mixture audio signal, sample rate"""
+        """Mono mixture Audio ground truth
+
+        Returns:
+            (np.ndarray, float): audio signal, sample rate
+        """
         return load_mix_audio(self.audio_path)
 
     def to_jams(self):
