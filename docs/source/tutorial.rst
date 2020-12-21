@@ -189,7 +189,7 @@ Annotations can also be accessed through ``load_someAnnotation()`` methods.
 Annotation classes
 ^^^^^^^^^^^^^^^^^^
 
-To store annotations ``mirdata`` uses several diffent data classes to standarize the organization for
+``mirdata`` uses several diffent data classes to store annotations. These data classes are meant to standarize the organization for
 all the loaders, and keep compatibility with `JAMS <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
 The list of available annotation classes are:
@@ -211,8 +211,8 @@ Iterating over datasets and annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In general, most datasets are a collection of tracks. Each track has an audio with its own annotations.
 
-With the ``load_tracks()`` method all the tracks (so including their respective audio and annotations) can be loaded
-as a dictionary structure.
+With the ``load_tracks()`` method, all the tracks (so including their respective audio and annotations) can be loaded
+in a dictionary structure.
 
 .. code-block:: python
 
@@ -221,13 +221,13 @@ as a dictionary structure.
         print(key, track.title, track.audio_path)
 
 
+Alternatively, we can run over the ``track_ids`` list to access directly to each track in the dataset.
+
 .. code-block:: python
 
     orchset = mirdata.Dataset('orchset')
-    orchset_data = orchset.load_track()
     for track_id in orchset.track_ids:
-        print(track_id, orchset_data[track_id].title, orchset_data[track_id].audio_path)
-
+        print(track_id, orchset.track(track_id).title,  orchset.track(track_id).audio_path)
 
 
 Working with remote datasets
