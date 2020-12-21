@@ -110,7 +110,9 @@ def test_download(httpserver):
             destination_dir=None,
         )
     }
-    groove_midi._download(data_home, remotes, None, None, False, False)
+    dataset = groove_midi.Dataset(data_home)
+    dataset.remotes = remotes
+    dataset.download(None, False, False)
 
     assert os.path.exists(data_home)
     assert not os.path.exists(os.path.join(data_home, "groove"))

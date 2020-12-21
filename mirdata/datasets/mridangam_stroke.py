@@ -40,7 +40,6 @@ import librosa
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 BIBTEX = """@article{Anantapadmanabhan2013,
     author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
@@ -64,7 +63,7 @@ REMOTES = {
     ),
 }
 
-DATA = utils.LargeData("mridangam_stroke_index.json")
+DATA = core.LargeData("mridangam_stroke_index.json")
 
 
 STROKE_DICT = {
@@ -145,3 +144,23 @@ def load_audio(audio_path):
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=44100, mono=True)
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The mridangam_stroke dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="mridangam_stroke",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)

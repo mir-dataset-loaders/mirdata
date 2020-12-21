@@ -52,7 +52,7 @@ Downloading a dataset into the default folder:
     .. code-block:: python
 
         import mirdata
-        orchset = mirdata.Dataset('orchset')
+        orchset = mirdata.initialize('orchset')
         orchset.download()  # Dataset is downloaded at user root folder
 
 Downloading a dataset into a specified folder:
@@ -60,7 +60,7 @@ Downloading a dataset into a specified folder:
 
     .. code-block:: python
 
-        orchset = mirdata.Dataset('orchset', data_home='Users/johnsmith/Desktop')
+        orchset = mirdata.initialize('orchset', data_home='Users/johnsmith/Desktop')
         orchset.download()  # Dataset is downloaded at John Smith's desktop
 
 Partially downloading a dataset
@@ -238,7 +238,7 @@ in a dictionary with the ids as keys and tracks as items.
 
 .. code-block:: python
 
-    orchset = mirdata.Dataset('orchset')
+    orchset = mirdata.initialize('orchset')
     for key, track in orchset.load_tracks().items():
         print(key, track.title, track.audio_path)
 
@@ -247,7 +247,7 @@ Alternatively, we can run over the ``track_ids`` list to access directly to each
 
 .. code-block:: python
 
-    orchset = mirdata.Dataset('orchset')
+    orchset = mirdata.initialize('orchset')
     for track_id in orchset.track_ids:
         print(track_id, orchset.track(track_id).title,  orchset.track(track_id).audio_path)
 
@@ -303,7 +303,7 @@ metadata, we could do the following:
         return time_stamps, melody_f0
 
     # Evaluate on the full dataset
-    orchset = mirdata.Dataset("orchset")
+    orchset = mirdata.initialize("orchset")
     orchset_scores = {}
     orchset_data = orchset.load_tracks()
     for track_id, track_data in orchset_data.items():
@@ -373,7 +373,7 @@ The following is a simple example of a generator that can be used to create a te
 
     def orchset_generator():
         # using the default data_home
-        orchset = mirdata.Dataset("orchset")
+        orchset = mirdata.initialize("orchset")
         track_ids = orchset.track_ids()
         for track_id in track_ids:
             track = orchset.track(track_id)

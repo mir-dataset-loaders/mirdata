@@ -17,17 +17,15 @@ dance music subgenres.
 
 Data License: Creative Commons Attribution Share Alike 4.0 International
 """
-
+import csv
+import os
 import fnmatch
 import json
 import librosa
-import os
-import csv
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 BIBTEX = """@phdthesis {3897,
     title = {Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination},
@@ -62,11 +60,12 @@ REMOTES = {
     ),
 }
 
-DATA = utils.LargeData("beatport_key_index.json")
+DATA = core.LargeData("beatport_key_index.json")
 
 
 class Track(core.Track):
     """beatport_key track class
+
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
@@ -77,6 +76,7 @@ class Track(core.Track):
         metadata_path (str): sections annotation path
         title (str): title of the track
         track_id (str): track id
+
     """
 
     def __init__(self, track_id, data_home):
@@ -98,22 +98,22 @@ class Track(core.Track):
         )
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
 
-    @utils.cached_property
+    @core.cached_property
     def key(self):
         """List of String: list of possible key annotations"""
         return load_key(self.keys_path)
 
-    @utils.cached_property
+    @core.cached_property
     def artists(self):
         """Dict: artist annotation"""
         return load_artist(self.metadata_path)
 
-    @utils.cached_property
+    @core.cached_property
     def genres(self):
         """Dict: genre annotation"""
         return load_genre(self.metadata_path)
 
-    @utils.cached_property
+    @core.cached_property
     def tempo(self):
         """int: tempo beatports crowdsourced annotation"""
         return load_tempo(self.metadata_path)
@@ -139,76 +139,29 @@ class Track(core.Track):
 
 def load_audio(audio_path):
     """Load a beatport_key audio file.
+
     Args:
         audio_path (str): path to audio file
+
     Returns:
         y (np.ndarray): the mono audio signal
         sr (float): The sample rate of the audio file
+
     """
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def find_replace(directory, find, replace, pattern):
-    """
-    Replace in some directory all the songs with the format pattern find by replace
-    Parameters
-    ----------
-    directory (str) path to directory
-    find (str) string from replace
-    replace (str) string to replace
-    pattern (str) regex that must match the directories searrched
-    """
-    for path, dirs, files in os.walk(os.path.abspath(directory)):
-        for filename in fnmatch.filter(files, pattern):
-            filepath = os.path.join(path, filename)
-            with open(filepath) as f:
-                s = f.read()
-            s = s.replace(find, replace)
-            with open(filepath, "w") as f:
-                f.write(s)
-
-
-def _download(
-    save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
-):
-    """Download the dataset.
-
-    Args:
-        save_dir (str):
-            The directory to download the data
-        remotes (dict or None):
-            A dictionary of RemoteFileMetadata tuples of data in zip format.
-            If None, there is no data to download
-        partial_download (list or None):
-            A list of keys to partially download the remote objects of the download dict.
-            If None, all data is downloaded
-        info_message (str or None):
-            A string of info to print when this function is called.
-            If None, no string is printed.
-        force_overwrite (bool):
-            If True, existing files are overwritten by the downloaded files.
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-    """
-    download_utils.downloader(
-        save_dir,
-        remotes=remotes,
-        partial_download=partial_download,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-    # removing nans from JSON files
-    find_replace(os.path.join(save_dir, "meta"), ": nan", ": null", "*.json")
-
-
 def load_key(keys_path):
     """Load beatport_key format key data from a file
+
     Args:
         keys_path (str): path to key annotation file
+
     Returns:
         (str): loaded key data
+
     """
     if keys_path is None:
         return None
@@ -216,8 +169,8 @@ def load_key(keys_path):
     if not os.path.exists(keys_path):
         raise IOError("keys_path {} does not exist".format(keys_path))
 
-    with open(keys_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='|')
+    with open(keys_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="|")
         keys = next(reader)
 
     # standarize 'Unknown'  to 'X'
@@ -227,10 +180,13 @@ def load_key(keys_path):
 
 def load_tempo(metadata_path):
     """Load beatport_key tempo data from a file
+
     Args:
         metadata_path (str): path to metadata annotation file
+
     Returns:
         (str): loaded tempo data
+
     """
     if metadata_path is None:
         return None
@@ -246,10 +202,13 @@ def load_tempo(metadata_path):
 
 def load_genre(metadata_path):
     """Load beatport_key genre data from a file
+
     Args:
         metadata_path (str): path to metadata annotation file
+
     Returns:
         (dict): with the list of strings with genres ['genres'] and list of strings with sub-genres ['sub_genres']
+
     """
     if metadata_path is None:
         return None
@@ -268,10 +227,13 @@ def load_genre(metadata_path):
 
 def load_artist(metadata_path):
     """Load beatport_key tempo data from a file
+
     Args:
         metadata_path (str): path to metadata annotation file
+
     Returns:
         (list of strings): list of artists involved in the track.
+
     """
     if metadata_path is None:
         return None
@@ -283,3 +245,89 @@ def load_artist(metadata_path):
         meta = json.load(json_file)
 
     return [artist["name"] for artist in meta["artists"]]
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The beatport_key dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="beatport_key",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_key)
+    def load_key(self, *args, **kwargs):
+        return load_key(*args, **kwargs)
+
+    @core.copy_docs(load_tempo)
+    def load_tempo(self, *args, **kwargs):
+        return load_tempo(*args, **kwargs)
+
+    @core.copy_docs(load_genre)
+    def load_genre(self, *args, **kwargs):
+        return load_genre(*args, **kwargs)
+
+    @core.copy_docs(load_artist)
+    def load_artist(self, *args, **kwargs):
+        return load_artist(*args, **kwargs)
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files. 
+                By default False.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        download_utils.downloader(
+            self.data_home,
+            remotes=self.remotes,
+            partial_download=partial_download,
+            force_overwrite=force_overwrite,
+            cleanup=cleanup,
+        )
+
+        self._find_replace(
+            os.path.join(self.data_home, "meta"), ": nan", ": null", "*.json"
+        )
+
+    def _find_replace(self, directory, find, replace, pattern):
+        """Replace all the files with the format pattern "find" by "replace"
+
+        Args:
+            directory (str): path to directory
+            find (str): string from replace
+            replace (str): string to replace
+            pattern (str): regex that must match the directories searrched
+
+        """
+        for path, dirs, files in os.walk(os.path.abspath(directory)):
+            for filename in fnmatch.filter(files, pattern):
+                filepath = os.path.join(path, filename)
+                with open(filepath) as f:
+                    s = f.read()
+                s = s.replace(find, replace)
+                with open(filepath, "w") as f:
+                    f.write(s)
+

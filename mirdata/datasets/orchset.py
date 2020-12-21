@@ -21,7 +21,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 BIBTEX = """@article{bosch2016evaluation,
@@ -104,7 +103,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("orchset_index.json", _load_metadata)
+DATA = core.LargeData("orchset_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -181,7 +180,7 @@ class Track(core.Track):
         self.only_winds = self._track_metadata["only_winds"]
         self.only_brass = self._track_metadata["only_brass"]
 
-    @utils.cached_property
+    @core.cached_property
     def melody(self):
         """F0Data: melody annotation"""
         return load_melody(self.melody_path)
@@ -239,45 +238,6 @@ def load_audio_stereo(audio_path):
     return librosa.load(audio_path, sr=None, mono=False)
 
 
-def _download(
-    save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
-):
-    """Download the dataset.
-
-    Args:
-        save_dir (str):
-            The directory to download the data
-        remotes (dict or None):
-            A dictionary of RemoteFileMetadata tuples of data in zip format.
-            If None, there is no data to download
-        partial_download (list or None):
-            A list of keys to partially download the remote objects of the download dict.
-            If None, all data is downloaded
-        info_message (str or None):
-            A string of info to print when this function is called.
-            If None, no string is printed.
-        force_overwrite (bool):
-            If True, existing files are overwritten by the downloaded files.
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-
-    """
-    download_utils.downloader(
-        save_dir,
-        remotes=remotes,
-        info_message=None,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-    # files get downloaded to a folder called Orchset - move everything up a level
-    duplicated_orchset_dir = os.path.join(save_dir, "Orchset")
-    orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, "*"))
-    for fpath in orchset_files:
-        shutil.move(fpath, save_dir)
-    if os.path.exists(duplicated_orchset_dir):
-        shutil.rmtree(duplicated_orchset_dir)
-
-
 def load_melody(melody_path):
     if not os.path.exists(melody_path):
         raise IOError("melody_path {} does not exist".format(melody_path))
@@ -296,3 +256,65 @@ def load_melody(melody_path):
         np.array(times), np.array(freqs), np.array(confidence)
     )
     return melody_data
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The orchset dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="orchset",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio_mono)
+    def load_audio_mono(self, *args, **kwargs):
+        return load_audio_mono(*args, **kwargs)
+
+    @core.copy_docs(load_audio_stereo)
+    def load_audio_stereo(self, *args, **kwargs):
+        return load_audio_stereo(*args, **kwargs)
+
+    @core.copy_docs(load_melody)
+    def load_melody(self, *args, **kwargs):
+        return load_melody(*args, **kwargs)
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files. 
+                By default False.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        download_utils.downloader(
+            self.data_home,
+            remotes=self.remotes,
+            info_message=None,
+            force_overwrite=force_overwrite,
+            cleanup=cleanup,
+        )
+        # files get downloaded to a folder called Orchset - move everything up a level
+        duplicated_orchset_dir = os.path.join(self.data_home, "Orchset")
+        orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, "*"))
+        for fpath in orchset_files:
+            shutil.move(fpath, self.data_home)
+        if os.path.exists(duplicated_orchset_dir):
+            shutil.rmtree(duplicated_orchset_dir)
+

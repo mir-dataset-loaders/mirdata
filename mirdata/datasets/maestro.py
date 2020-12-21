@@ -40,7 +40,6 @@ import pretty_midi
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 
@@ -96,7 +95,7 @@ def _load_metadata(data_home):
     return metadata
 
 
-DATA = utils.LargeData("maestro_index.json", _load_metadata)
+DATA = core.LargeData("maestro_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -145,12 +144,12 @@ class Track(core.Track):
             self.year = None
             self.duration = None
 
-    @utils.cached_property
+    @core.cached_property
     def midi(self):
         """output type: description of output"""
         return load_midi(self.midi_path)
 
-    @utils.cached_property
+    @core.cached_property
     def notes(self):
         """NoteData: annotated piano notes"""
         return load_notes(self.midi_path, self.midi)
@@ -194,7 +193,7 @@ def load_notes(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        note_data (NoteData)
+        note_data (annotations.NoteData)
 
     """
     if midi is None:
@@ -228,52 +227,72 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=None, mono=True)
 
 
-def _download(
-    save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
-):
-    """Download the dataset.
-    Args:
-        save_dir (str):
-            The directory to download the data
-        remotes (dict or None):
-            A dictionary of RemoteFileMetadata tuples of data in zip format.
-            If None, there is no data to download
-        partial_download (list or None):
-            List indicating what to partially download. The list can include any of:
-                * 'all': audio, midi and metadata
-                * 'midi': midi and metadata only
-                * 'metadata': metadata only
-            If None, all data is downloaded
-        info_message (str or None):
-            A string of info to print when this function is called.
-            If None, no string is printed.
-        force_overwrite (bool):
-            If True, existing files are overwritten by the downloaded files.
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The maestro dataset
     """
-    # in MAESTRO "metadata" is contained in "midi" is contained in "all"
-    if partial_download is None or "all" in partial_download:
-        partial_download = ["all"]
-    elif "midi" in partial_download:
-        partial_download = ["midi"]
 
-    download_utils.downloader(
-        save_dir,
-        remotes=remotes,
-        partial_download=partial_download,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="maestro",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
 
-    # files get downloaded to a folder called maestro-v2.0.0
-    # move everything up a level
-    maestro_dir = os.path.join(save_dir, "maestro-v2.0.0")
-    maestro_files = glob.glob(os.path.join(maestro_dir, "*"))
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
 
-    for fpath in maestro_files:
-        shutil.move(fpath, save_dir)
+    @core.copy_docs(load_midi)
+    def load_midi(self, *args, **kwargs):
+        return load_midi(*args, **kwargs)
 
-    if os.path.exists(maestro_dir):
-        shutil.rmtree(maestro_dir)
+    @core.copy_docs(load_notes)
+    def load_notes(self, *args, **kwargs):
+        return load_notes(*args, **kwargs)
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files. 
+                By default False.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        # in MAESTRO "metadata" is contained in "midi" is contained in "all"
+        if partial_download is None or "all" in partial_download:
+            partial_download = ["all"]
+        elif "midi" in partial_download:
+            partial_download = ["midi"]
+
+        download_utils.downloader(
+            self.data_home,
+            remotes=self.remotes,
+            partial_download=partial_download,
+            force_overwrite=force_overwrite,
+            cleanup=cleanup,
+        )
+
+        # files get downloaded to a folder called maestro-v2.0.0
+        # move everything up a level
+        maestro_dir = os.path.join(self.data_home, "maestro-v2.0.0")
+        maestro_files = glob.glob(os.path.join(maestro_dir, "*"))
+
+        for fpath in maestro_files:
+            shutil.move(fpath, self.data_home)
+
+        if os.path.exists(maestro_dir):
+            shutil.rmtree(maestro_dir)

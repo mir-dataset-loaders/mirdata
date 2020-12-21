@@ -81,7 +81,7 @@ Here there is an example of an index to use as guideline:
     import glob
     import json
     import os
-    from mirdata.utils import md5
+    from mirdata.validate import md5
 
     DATASET_INDEX_PATH = "../mirdata/datasets/indexes/dataset_index.json"
 
@@ -169,7 +169,6 @@ Module example
     from mirdata import download_utils
     from mirdata import jams_utils
     from mirdata import core, annotations
-    from mirdata import utils
 
 
     # -- Add any relevant citations here
@@ -219,8 +218,8 @@ Module example
         return metadata
 
 
-    DATA = utils.LargeData('example_index.json', _load_metadata)
-    # DATA = utils.LargeData('example_index.json')  ## use this if your dataset has no metadata
+    DATA = core.LargeData('example_index.json', _load_metadata)
+    # DATA = core.LargeData('example_index.json')  ## use this if your dataset has no metadata
 
 
     class Track(core.Track):
@@ -264,7 +263,7 @@ Module example
         # -- and saved when someone accesses it. Useful when loading slightly
         # -- bigger files or for bigger datasets. By default, we make any time
         # -- series data loaded from a file a cached property
-        @utils.cached_property
+        @core.cached_property
         def annotation(self):
             """output type: description of output"""
             return load_annotation(self.annotation_path)
@@ -322,7 +321,7 @@ Module example
             self.annotation_path = ...
 
         # -- multitracks can optionally have mix-level cached properties and properties
-        @utils.cached_property
+        @core.cached_property
         def annotation(self):
             """output type: description of output"""
             return load_annotation(self.annotation_path)
@@ -362,35 +361,6 @@ Module example
             raise IOError("audio_path {} does not exist".format(audio_path))
         return librosa.load(audio_path, sr=None, mono=True)
 
-    # -- this function is not necessary unless you need very custom download logic
-    # -- If you need it, it must have this signature.
-    def _download(
-        save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
-    ):
-        """Download the dataset.
-
-        Args:
-            save_dir (str):
-                The directory to download the data
-            remotes (dict or None):
-                A dictionary of RemoteFileMetadata tuples of data in zip format.
-                If None, there is no data to download
-            partial_download (list or None):
-                A list of keys to partially download the remote objects of the download dict.
-                If None, all data is downloaded
-            info_message (str or None):
-                A string of info to print when this function is called.
-                If None, no string is printed.
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete the zip/tar file after extracting.
-
-        """
-        # see download_utils.downloader for basic usage - if you only need to call downloader
-        # once, you do not need this function at all.
-        # only write a custom function if you need it!
-
 
     # -- Write any necessary loader functions for loading the dataset's data
     def load_annotation(annotation_path):
@@ -416,6 +386,59 @@ Module example
         )
         return annotation_data
 
+    # -- use this decorator so the docs are complete
+    @core.docstring_inherit(core.Dataset)
+    class Dataset(core.Dataset):
+        """The Example dataset
+        """
+
+        def __init__(self, data_home=None):
+            super().__init__(
+                data_home,
+                index=DATA.index,
+                name="Example",
+                track_object=Track,
+                bibtex=BIBTEX,
+                remotes=REMOTES,
+                download_info=DOWNLOAD_INFO,
+            )
+
+        # -- Copy any loaders you wrote that should be part of the Dataset object
+        # -- use this core.copy_docs decorator to copy the docs from the original
+        # -- load_ function
+        @core.copy_docs(load_audio)
+        def load_audio(self, *args, **kwargs):
+            return load_audio(*args, **kwargs)
+
+        @core.copy_docs(load_annotation)
+        def load_annotation(self, *args, **kwargs):
+            return load_annotation(*args, **kwargs)
+
+    # -- if your dataset needs to overwrite the default download logic, do it here.
+    # -- this function is usually not necessary unless you need very custom download logic
+    def download(
+        self, partial_download=None, force_overwrite=False, cleanup=True
+    ):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files. 
+                By default False.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        # see download_utils.downloader for basic usage - if you only need to call downloader
+        # once, you do not need this function at all.
+        # only write a custom function if you need it!
 
 
 .. _add_tests:
@@ -449,7 +472,6 @@ Test file example
     import numpy as np
 
     from mirdata.datasets import dataset
-    from mirdata import utils
     from tests.test_utils import run_track_tests
 
 
@@ -563,8 +585,10 @@ Submit your loader
 
 Before you submit your loader make sure to:
 
-1. Add your module to ``docs/source/mirdata.rst`` (you can check that this was done correctly by clicking on the readthedocs check when you open a PR)
-2. Add the module name to ``DATASETS`` in ``mirdata/__init__.py``
+1. Add your module to ``docs/source/mirdata.rst``
+2. Add your module to ``docs/source/quick_reference.rst``
+
+(you can check that this was done correctly by clicking on the readthedocs check when you open a PR)
 
 Pull Request template
 ^^^^^^^^^^^^^^^^^^^^^

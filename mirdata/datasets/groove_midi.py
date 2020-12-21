@@ -52,7 +52,7 @@ import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils, jams_utils, core, utils, annotations
+from mirdata import download_utils, jams_utils, core, annotations
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -225,7 +225,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("groove_midi_index.json", _load_metadata)
+DATA = core.LargeData("groove_midi_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -290,7 +290,7 @@ class Track(core.Track):
 
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
-        self.audio_path = utils.none_path_join(
+        self.audio_path = core.none_path_join(
             [self._data_home, self._track_paths["audio"][0]]
         )
 
@@ -299,17 +299,17 @@ class Track(core.Track):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
         """BeatData: machine-generated beat annotation"""
         return load_beats(self.midi_path, self.midi)
 
-    @utils.cached_property
+    @core.cached_property
     def drum_events(self):
         """EventData: annotated drum kit events"""
         return load_drum_events(self.midi_path, self.midi)
 
-    @utils.cached_property
+    @core.cached_property
     def midi(self):
         """(obj): prettyMIDI obj"""
         return load_midi(self.midi_path)
@@ -369,7 +369,7 @@ def load_beats(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        beat_data (BeatData)
+        beat_data (annotations.BeatData)
 
     """
     if midi is None:
@@ -390,7 +390,7 @@ def load_drum_events(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        drum_events (EventData)
+        drum_events (annotations.EventData)
 
     """
     if midi is None:
@@ -407,43 +407,70 @@ def load_drum_events(midi_path, midi=None):
     return annotations.EventData(np.array([start_times, end_times]).T, events)
 
 
-def _download(
-    save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
-):
-    """Download the dataset.
-
-    Args:
-        save_dir (str):
-            The directory to download the data
-        remotes (dict or None):
-            A dictionary of RemoteFileMetadata tuples of data in zip format.
-            If None, there is no data to download
-        partial_download (list or None):
-            A list of keys to partially download the remote objects of the download dict.
-            If None, all data is downloaded
-        info_message (str or None):
-            A string of info to print when this function is called.
-            If None, no string is printed.
-        force_overwrite (bool):
-            If True, existing files are overwritten by the downloaded files.
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The groove_midi dataset
     """
-    download_utils.downloader(
-        save_dir,
-        remotes=remotes,
-        info_message=None,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
 
-    # files get downloaded to a folder called groove - move everything up a level
-    groove_dir = os.path.join(save_dir, "groove")
-    groove_files = glob.glob(os.path.join(groove_dir, "*"))
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="groove_midi",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
 
-    for fpath in groove_files:
-        shutil.move(fpath, save_dir)
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
 
-    if os.path.exists(groove_dir):
-        shutil.rmtree(groove_dir)
+    @core.copy_docs(load_midi)
+    def load_midi(self, *args, **kwargs):
+        return load_midi(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)
+
+    @core.copy_docs(load_drum_events)
+    def load_drum_events(self, *args, **kwargs):
+        return load_drum_events(*args, **kwargs)
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files. 
+                By default False.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        download_utils.downloader(
+            self.data_home,
+            partial_download=partial_download,
+            remotes=self.remotes,
+            info_message=None,
+            force_overwrite=force_overwrite,
+            cleanup=cleanup,
+        )
+
+        # files get downloaded to a folder called groove - move everything up a level
+        groove_dir = os.path.join(self.data_home, "groove")
+        groove_files = glob.glob(os.path.join(groove_dir, "*"))
+
+        for fpath in groove_files:
+            shutil.move(fpath, self.data_home)
+
+        if os.path.exists(groove_dir):
+            shutil.rmtree(groove_dir)

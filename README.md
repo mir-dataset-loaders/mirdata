@@ -27,7 +27,7 @@ pip install mirdata
 import mirdata
 import random
 
-orchset = mirdata.Dataset('orchset')
+orchset = mirdata.initialize('orchset')
 orchset.download()  # download the dataset
 orchset.validate()  # validate that all the expected files are there
 
