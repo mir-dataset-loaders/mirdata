@@ -461,7 +461,7 @@ def test_multitracks(httpserver):
 
         # test data home specified
         data_home = os.path.join(data_home_dir, dataset_name)
-        dataset_specific = mirdata.load(dataset_name, data_home=data_home)
+        dataset_specific = mirdata.initialize(dataset_name, data_home=data_home)
         try:
             mtrack_test = dataset_specific.MultiTrack(mtrack_id, data_home=data_home)
         except:

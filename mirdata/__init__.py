@@ -13,4 +13,4 @@ DATASETS = [
     )
 ]
 
-from .load import load
+from .initialize import initialize

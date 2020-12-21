@@ -214,7 +214,7 @@ tonality_classicaldb
 Core
 ----
 
-..automodule:: mirdata.load
+..automodule:: mirdata.initialize
    :members:
 
 .. automodule:: mirdata.core

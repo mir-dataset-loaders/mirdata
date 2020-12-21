@@ -5,12 +5,12 @@ import importlib
 from mirdata import DATASETS
 
 
-def load(dataset_name, data_home=None):
+def initialize(dataset_name, data_home=None):
     """Load a mirdata dataset by name
 
         Usage example:
 
-        orchset = mirdata.load('orchset')  # get the orchset dataset
+        orchset = mirdata.dataset('orchset')  # get the orchset dataset
         orchset.download()  # download orchset
         orchset.validate()  # validate orchset
         track = orchset.choice_track()  # load a random track
@@ -24,7 +24,7 @@ def load(dataset_name, data_home=None):
             uses the default location.
     
     Returns
-        dataset (core.Dataset): a Dataset object
+        (core.Dataset): a Dataset object
 
     """
     if dataset_name not in DATASETS:

@@ -137,13 +137,13 @@ def update_index(all_indexes):
         module = index_name.replace("_index.json", "")
 
         # load old index
-        old_index = mirdata.load(module)._index
+        old_index = mirdata.initialize(module)._index
 
         # avoid modifying when running multiple times
         if "tracks" in old_index.keys():
             old_index = old_index["tracks"]
 
-        data_home = mirdata.load(module).data_home
+        data_home = mirdata.initialize(module).data_home
 
         # get metadata checksum
         metadata_files = get_metadata_paths(module)
@@ -183,7 +183,7 @@ def test_index(dataset_names):
 
     mandatory_keys = ["version"]
     for module in dataset_names:
-        index = mirdata.load(module)._index
+        index = mirdata.initialize(module)._index
         assert type(index["tracks"]) == dict
         assert set(mandatory_keys) <= set([*index.keys()])
 
@@ -196,7 +196,7 @@ def test_track_load(dataset_names):
 
     """
     for module in dataset_names:
-        dataset = mirdata.load(module)
+        dataset = mirdata.initialize(module)
         dataset.load_tracks()
 
 
@@ -206,7 +206,7 @@ def main():
     # Download metadata from all datasets for computing metadata checksums
     for module in DATASETS:
         if module not in ["dali", "beatles", "groove_midi"]:
-            dataset = mirdata.load(module)
+            dataset = mirdata.initialize(module)
             if dataset._remotes is not None:
                 dataset.download(
                     partial_download=[
