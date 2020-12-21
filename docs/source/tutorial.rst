@@ -40,7 +40,7 @@ version of the dataset (when available). When initializing a dataset it is impor
 where the dataset is going to be stored and retrieved.
 
 Downloading a dataset into the default folder:
-    In this first example, ``data_home`` is not specified. Thus, ORCHSET will be downloaded and retrieved from mir_datasets
+    In this first example, ``data_home`` is not specified. Thus, ORCHSET will be downloaded and retrieved from ``mir_datasets``
     folder created at user root folder:
 
     .. code-block:: python
@@ -49,7 +49,7 @@ Downloading a dataset into the default folder:
         orchset = mirdata.Dataset('orchset')
         orchset.download()  # Dataset is downloaded at user root folder
 
-Donwloading a dataset into a specified folder:
+Downloading a dataset into a specified folder:
     Now ``data_home`` is specified and so ORCHSET will be downloaded and retrieved from it:
 
     .. code-block:: python
@@ -64,8 +64,8 @@ The ``download()`` functions allows to partially download a dataset. In other wo
 select which elements of the dataset they want to download. Each dataset has a ``REMOTES`` dictionary were all
 the available elements are listed.
 
-cante100 has different elements as seen in the REMOTES dictionary. Thus, we can specify which of these elements are
-downloaded, by passing to the ``download()`` function the list of keys in REMOTES that we are interested in. This
+cante100 has different elements as seen in the ``REMOTES`` dictionary. Thus, we can specify which of these elements are
+downloaded, by passing to the ``download()`` function the list of keys in ``REMOTES`` that we are interested in. This
 list is passed to the ``download()`` function through the ``partial_download`` variable.
 
 .. code-block:: python
@@ -212,7 +212,7 @@ Iterating over datasets and annotations
 In general, most datasets are a collection of tracks. Each track has an audio with its own annotations.
 
 With the ``load_tracks()`` method, all the tracks (so including their respective audio and annotations) can be loaded
-in a dictionary structure.
+in a dictionary with the ids as keys and tracks as items.
 
 .. code-block:: python
 
@@ -240,7 +240,7 @@ Working with big datasets
 
 TODO
 
-Using mirdata with tensorlow or pytorch
+Using mirdata with tensorflow or pytorch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In future ``mirdata`` versions, generators for tensorflow and pytorch will be included in the library.
