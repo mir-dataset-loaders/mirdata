@@ -102,22 +102,34 @@ class Track(core.Track):
 
     @utils.cached_property
     def key(self):
-        """String: key annotation"""
+        """key annotation
+
+        Returns:
+            (String): key"""
         return load_key(self.keys_path)
 
     @utils.cached_property
     def artists(self):
-        """Dict: artist annotation"""
+        """Artist annotation
+
+        Returns:
+            (list): Artists involved"""
         return load_artist(self.metadata_path)
 
     @utils.cached_property
     def genres(self):
-        """Dict: genre annotation"""
+        """Genre annotation
+
+        Returns:
+            (dict): genres and subgenres lists"""
         return load_genre(self.metadata_path)
 
     @utils.cached_property
     def tempo(self):
-        """int: tempo beatports crowdsourced annotation"""
+        """Tempo beatports crowdsourced annotation
+
+        Returns:
+            (int): tempo"""
         return load_tempo(self.metadata_path)
 
     @property
