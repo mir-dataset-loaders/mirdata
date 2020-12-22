@@ -244,7 +244,7 @@ class Track(core.Track):
         """Human-labeled chord annotation
 
         Returns:
-            ChordData: chords
+            (ChordData): chords
         """
         return load_chords(self.chords_path)
 
