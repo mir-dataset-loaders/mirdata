@@ -33,7 +33,7 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 44100, "sample rate {} is not 44100".format(sr)
-    assert audio.shape == (5865300,), "audio shape {} was not (5865300,)".format(
+    assert audio.shape == (88200,), "audio shape {} was not (88200,)".format(
         audio.shape
     )
 
@@ -73,6 +73,9 @@ def test_load_spectrum():
 
     y, sr = librosa.load(audio_path)
     spectrum = librosa.cqt(y, sr=sr, window="blackmanharris", hop_length=4096)
+
+    # only first 2 seconds
+    spectrum_data = spectrum_data[:, :spectrum.shape[1]]
 
     assert spectrum.shape[0] == spectrum_data.shape[0]
     assert spectrum.shape[1] == spectrum_data.shape[1]
