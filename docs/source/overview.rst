@@ -26,7 +26,7 @@ into a standard format to be used for experimenting or evaluating. ``mirdata`` d
 ``mirdata`` loaders contain methods to:
 
 - ``download()``: download (or give instructions to download) a dataset
-- ``load_*()``: load a dataset's files (audio, metadata, annotations, etc.) into standard formats 
+- ``load_*()``: load a dataset's files (audio, metadata, annotations, etc.) into standard formats, so you don't have to write them yourself
   which are compatible with ``mir_eval`` and ``jams``.
 - ``validate()``: validate that a dataset is complete and correct
 - ``cite()``: quickly print a dataset's relevant citation
