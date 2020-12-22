@@ -547,6 +547,11 @@ def test_load_tempo():
 
     assert saraga_carnatic.load_tempo(None) is None
 
+    track = saraga_carnatic.Track("115_Idhu_Thaano_Thillai_Sthalam", data_home=data_home)
+    tempo_path = track.tempo_path
+    parsed_tempo = saraga_carnatic.load_tempo(tempo_path)
+    assert parsed_tempo is None
+
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"

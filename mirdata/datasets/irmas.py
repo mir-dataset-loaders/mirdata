@@ -81,11 +81,11 @@ For more details, please visit: https://www.upf.edu/web/mtg/irmas
 
 import os
 import librosa
+import csv
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 BIBTEX = """
 @dataset{juan_j_bosch_2014_1290750,
@@ -127,7 +127,7 @@ REMOTES = {
 }
 
 
-DATA = utils.LargeData("irmas_index.json")
+DATA = core.LargeData("irmas_index.json")
 
 
 INST_DICT = [
@@ -219,7 +219,7 @@ class Track(core.Track):
         else:
             self.train = False
 
-    @utils.cached_property
+    @core.cached_property
     def instrument(self):
         """(list, string): predominant instrument"""
         if self.predominant_instrument is not None:
@@ -276,13 +276,37 @@ def load_pred_inst(annotation_path):
         raise IOError("annotation_path {} does not exist".format(annotation_path))
 
     pred_inst = []
-    with open(annotation_path, "r") as fopen:
-        pred_inst_file = fopen.readlines()
-        for inst_ in pred_inst_file:
-            inst_code = inst_[:3]
+    with open(annotation_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=' ')
+        for line in reader:
+            inst_code = line[0][:3]
             assert (
                 inst_code in INST_DICT
             ), "Instrument {} not in instrument dictionary".format(inst_code)
             pred_inst.append(inst_code)
 
         return pred_inst
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The irmas dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="irmas",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_pred_inst)
+    def load_pred_inst(self, *args, **kwargs):
+        return load_pred_inst(*args, **kwargs)

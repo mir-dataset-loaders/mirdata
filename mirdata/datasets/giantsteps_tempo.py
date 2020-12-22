@@ -62,16 +62,15 @@ name              length
 3419452.LOFI.mp3  119
 3577631.LOFI.mp3  119
 """
-
-import librosa
 import os
+
+import jams
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
-import numpy as np
-import jams
 
 
 BIBTEX = """@inproceedings{knees2015two,
@@ -90,7 +89,7 @@ BIBTEX = """@inproceedings{knees2015two,
   url-pdf={http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf},
 }"""
 
-DATA = utils.LargeData("giantsteps_tempo_index.json")
+DATA = core.LargeData("giantsteps_tempo_index.json")
 
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
@@ -123,6 +122,7 @@ class Track(core.Track):
         track_id (str): track id
         annotation_v1_path (str): track annotation v1 path
         annotation_v2_path (str): track annotation v2 path
+
     """
 
     def __init__(self, track_id, data_home):
@@ -145,17 +145,17 @@ class Track(core.Track):
 
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1].split(".")[0]
 
-    @utils.cached_property
+    @core.cached_property
     def genre(self):
         """genre: human-labeled metadata annotation"""
         return load_genre(self.annotation_v1_path)
 
-    @utils.cached_property
+    @core.cached_property
     def tempo(self):
         """TempoData: tempo annotation ordered by confidence"""
         return load_tempo(self.annotation_v1_path)
 
-    @utils.cached_property
+    @core.cached_property
     def tempo_v2(self):
         """TempoData: tempos annotation ordered by confidence"""
         return load_tempo(self.annotation_v2_path)
@@ -232,3 +232,32 @@ def load_tempo(tempo_path):
         np.array([t.value for t in tempo]),
         np.array([t.confidence for t in tempo]),
     )
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The giantsteps_tempo dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="giantsteps_tempo",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_genre)
+    def load_genre(self, *args, **kwargs):
+        return load_genre(*args, **kwargs)
+
+    @core.copy_docs(load_tempo)
+    def load_tempo(self, *args, **kwargs):
+        return load_tempo(*args, **kwargs)

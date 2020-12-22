@@ -37,7 +37,7 @@ def get_attributes_and_properties(class_instance):
             continue
 
         attr = getattr(class_instance.__class__, val)
-        if isinstance(attr, mirdata.utils.cached_property):
+        if isinstance(attr, mirdata.core.cached_property):
             cached_properties.append(val)
         elif isinstance(attr, property):
             properties.append(val)

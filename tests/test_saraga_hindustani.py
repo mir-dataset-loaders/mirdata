@@ -337,7 +337,7 @@ def test_load_phrases():
     track = saraga_hindustani.Track("71_Bilaskhani_Todi", data_home=data_home)
     phrases_path = track.phrases_path
     parsed_phrases_add = saraga_hindustani.load_phrases(phrases_path)
-    assert parsed_phrases_add.events == ["rg", " "]
+    assert parsed_phrases_add.events == ['rg', '']
 
 
 def test_load_tempo():
@@ -345,6 +345,8 @@ def test_load_tempo():
     track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
     tempo_path = track.tempo_path
     parsed_tempo = saraga_hindustani.load_tempo(tempo_path)
+
+    print(parsed_tempo)
 
     assert type(parsed_tempo) == dict
     assert type(parsed_tempo["Ālāp"]) == dict

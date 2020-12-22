@@ -19,7 +19,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 # these functions are identical for all rwc datasets
@@ -143,7 +142,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("rwc_popular_index.json", _load_metadata)
+DATA = core.LargeData("rwc_popular_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -223,25 +222,25 @@ class Track(core.Track):
         self.instruments = self._track_metadata["instruments"]
         self.drum_information = self._track_metadata["drum_information"]
 
-    @utils.cached_property
+    @core.cached_property
     def sections(self):
         """SectionData: human-labeled section annotation"""
         return load_sections(self.sections_path)
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
         """BeatData: human-labeled beat annotation"""
         return load_beats(self.beats_path)
 
-    @utils.cached_property
+    @core.cached_property
     def chords(self):
         """ChordData: human-labeled chord annotation"""
         return load_chords(self.chords_path)
 
-    @utils.cached_property
+    @core.cached_property
     def vocal_instrument_activity(self):
         """EventData: human-labeled vocal/instrument activity"""
-        return load_voca_inst(self.voca_inst_path)
+        return load_vocal_activity(self.voca_inst_path)
 
     @property
     def audio(self):
@@ -260,6 +259,15 @@ class Track(core.Track):
 
 
 def load_chords(chords_path):
+    """Load rwc chord data from a file
+
+    Args:
+        chords_path (str): path to chord annotation file
+
+    Returns:
+        (annotations.ChordData): chord data
+
+    """
     if not os.path.exists(chords_path):
         raise IOError("chords_path {} does not exist".format(chords_path))
 
@@ -278,15 +286,26 @@ def load_chords(chords_path):
     return annotations.ChordData(np.array([begs, ends]).T, chords)
 
 
-def load_voca_inst(voca_inst_path):
-    if not os.path.exists(voca_inst_path):
-        raise IOError("voca_inst_path {} does not exist".format(voca_inst_path))
+def load_vocal_activity(vocal_activity_path):
+    """Load rwc vocal activity data from a file
+
+    Args:
+        vocal_activity_path (str): path to vocal activity annotation file
+
+    Returns:
+        (annotations.EventData): vocal activity data
+
+    """
+    if not os.path.exists(vocal_activity_path):
+        raise IOError(
+            "vocal_activity_path {} does not exist".format(vocal_activity_path)
+        )
 
     begs = []  # timestamps of vocal-instrument activity beginnings
     ends = []  # timestamps of vocal-instrument activity endings
     events = []  # vocal-instrument activity labels
 
-    with open(voca_inst_path, "r") as fhandle:
+    with open(vocal_activity_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter="\t")
         raw_data = []
         for line in reader:
@@ -301,3 +320,40 @@ def load_voca_inst(voca_inst_path):
             events.append(raw_data[i][1])
 
     return annotations.EventData(np.array([begs, ends]).T, events)
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The rwc_popular dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="rwc_popular",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)
+
+    @core.copy_docs(load_chords)
+    def load_chords(self, *args, **kwargs):
+        return load_chords(*args, **kwargs)
+
+    @core.copy_docs(load_vocal_activity)
+    def load_vocal_activity(self, *args, **kwargs):
+        return load_vocal_activity(*args, **kwargs)

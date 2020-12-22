@@ -13,11 +13,11 @@ import urllib
 import tarfile
 import zipfile
 
-from mirdata.utils import md5
+from mirdata.validate import md5
 
 # destination dir should be a relative path to save the file/s, or None
 RemoteFileMetadata = namedtuple(
-    'RemoteFileMetadata', ['filename', 'url', 'checksum', 'destination_dir']
+    "RemoteFileMetadata", ["filename", "url", "checksum", "destination_dir"]
 )
 
 
@@ -59,7 +59,7 @@ def downloader(
                 [k not in remotes for k in partial_download]
             ):
                 raise ValueError(
-                    'partial_download must be a list which is a subset of {}'.format(
+                    "partial_download must be a list which is a subset of {}".format(
                         remotes.keys()
                     )
                 )
@@ -72,9 +72,9 @@ def downloader(
         for k in objs_to_download:
             print("> downloading {}".format(k))
             extension = os.path.splitext(remotes[k].filename)[-1]
-            if '.zip' in extension:
+            if ".zip" in extension:
                 download_zip_file(remotes[k], save_dir, force_overwrite, cleanup)
-            elif '.gz' in extension or '.tar' in extension or '.bz2' in extension:
+            elif ".gz" in extension or ".tar" in extension or ".bz2" in extension:
                 download_tar_file(remotes[k], save_dir, force_overwrite, cleanup)
             else:
                 download_from_remote(remotes[k], save_dir, force_overwrite)
@@ -133,7 +133,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True)
     ):
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
-            unit='B', unit_scale=True, unit_divisor=1024, miniters=1
+            unit="B", unit_scale=True, unit_divisor=1024, miniters=1
         ) as t:
             try:
                 urllib.request.urlretrieve(
@@ -158,9 +158,9 @@ def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True)
     checksum = md5(download_path)
     if remote.checksum != checksum:
         raise IOError(
-            '{} has an MD5 checksum ({}) '
-            'differing from expected ({}), '
-            'file may be corrupted.'.format(download_path, checksum, remote.checksum)
+            "{} has an MD5 checksum ({}) "
+            "differing from expected ({}), "
+            "file may be corrupted.".format(download_path, checksum, remote.checksum)
         )
     return download_path
 
@@ -196,8 +196,8 @@ def extractall_unicode(zfile, out_dir):
     for m in zfile.infolist():
         data = zfile.read(m)  # extract zipped data into memory
 
-        if m.filename.encode('cp437').decode() != m.filename.encode('utf8').decode():
-            disk_file_name = os.path.join(out_dir, m.filename.encode('cp437').decode())
+        if m.filename.encode("cp437").decode() != m.filename.encode("utf8").decode():
+            disk_file_name = os.path.join(out_dir, m.filename.encode("cp437").decode())
         else:
             disk_file_name = os.path.join(out_dir, m.filename)
 
@@ -206,7 +206,7 @@ def extractall_unicode(zfile, out_dir):
             os.makedirs(dir_name)
 
         if not os.path.isdir(disk_file_name):
-            with open(disk_file_name, 'wb') as fd:
+            with open(disk_file_name, "wb") as fd:
                 fd.write(data)
 
 
@@ -218,7 +218,7 @@ def unzip(zip_path, cleanup=True):
         cleanup (bool): If True, remove zipfile after unzipping. Default=False
 
     """
-    zfile = zipfile.ZipFile(zip_path, 'r')
+    zfile = zipfile.ZipFile(zip_path, "r")
     extractall_unicode(zfile, os.path.dirname(zip_path))
     zfile.close()
     if cleanup:
@@ -247,7 +247,7 @@ def untar(tar_path, cleanup=True):
         tar_path (str): Path to tar file
         cleanup (bool): If True, remove tarfile after untarring. Default=False
     """
-    tfile = tarfile.open(tar_path, 'r')
+    tfile = tarfile.open(tar_path, "r")
     tfile.extractall(os.path.dirname(tar_path))
     tfile.close()
     if cleanup:

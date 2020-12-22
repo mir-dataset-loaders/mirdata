@@ -193,27 +193,27 @@ def test_validate_array_like():
 
 
 def test_validate_lengths_equal():
-    annotations.validate_lengths_equal([np.array([0,1])])
+    annotations.validate_lengths_equal([np.array([0, 1])])
     annotations.validate_lengths_equal([np.array([]), None])
 
     with pytest.raises(ValueError):
-        annotations.validate_lengths_equal([np.array([0,1]), np.array([0])])
+        annotations.validate_lengths_equal([np.array([0, 1]), np.array([0])])
 
 
 def test_validate_confidence():
     annotations.validate_confidence(None)
 
     with pytest.raises(ValueError):
-        annotations.validate_confidence(np.array([[0,1], [0,2]]))
+        annotations.validate_confidence(np.array([[0, 1], [0, 2]]))
     with pytest.raises(ValueError):
-        annotations.validate_confidence(np.array([0,2]))
+        annotations.validate_confidence(np.array([0, 2]))
 
 
 def test_validate_times():
     annotations.validate_times(None)
 
     with pytest.raises(ValueError):
-        annotations.validate_times(np.array([[0,1], [0,2]]))
+        annotations.validate_times(np.array([[0, 1], [0, 2]]))
 
     with pytest.raises(ValueError):
         annotations.validate_times(np.array([2, 0]))
@@ -223,10 +223,10 @@ def test_validate_intervals():
     annotations.validate_intervals(None)
 
     with pytest.raises(ValueError):
-        annotations.validate_intervals(np.array([0,2]))
+        annotations.validate_intervals(np.array([0, 2]))
 
     with pytest.raises(ValueError):
-        annotations.validate_intervals(np.array([0,-2]))
+        annotations.validate_intervals(np.array([0, -2]))
 
     with pytest.raises(ValueError):
         annotations.validate_intervals(np.array([[0, 1], [1, 0.5]]))
