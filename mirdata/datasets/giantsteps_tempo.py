@@ -150,7 +150,7 @@ class Track(core.Track):
         """Human-labeled metadata annotation
 
         Returns:
-            (dict): genre or sub-genres list
+            dict: genre or sub-genres list
         """
         return load_genre(self.annotation_v1_path)
 

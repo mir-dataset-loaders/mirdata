@@ -209,7 +209,7 @@ class Track(core.Track):
         """A dict that contains 6 F0Data.
 
         Returns:
-            (dict):
+            dict:
                 From Low E string to high e string.
                 - 'E': F0Data(...),
                 - 'A': F0Data(...),
@@ -227,7 +227,7 @@ class Track(core.Track):
         """A dict that contains 6 NoteData.
 
         Returns:
-            (dict):
+            dict:
                 From Low E string to high e string.
                 - 'E': NoteData(...),
                 - 'A': NoteData(...),

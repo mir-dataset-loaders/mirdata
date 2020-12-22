@@ -160,7 +160,7 @@ class Dataset(object):
         """Load all tracks in the dataset
 
         Returns:
-            (dict): {`track_id`: track data}
+            dict: {`track_id`: track data}
 
         Raises:
             NotImplementedError: If the dataset does not support Track objects

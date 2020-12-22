@@ -161,6 +161,7 @@ class Track(core.Track):
         train (bool): flag to identify if the track is from the training of the testing dataset
         genre (str): string containing the namecode of the genre of the track.
         drum (bool): flag to identify if the track contains drums or not.
+        
     """
 
     def __init__(self, track_id, data_home):
@@ -224,7 +225,8 @@ class Track(core.Track):
         """Predominant instrument
 
         Returns:
-            (list, string): Predominant instrument
+            (list): List of predominant instruments as str
+
         """
         if self.predominant_instrument is not None:
             return [self.predominant_instrument]
@@ -238,6 +240,7 @@ class Track(core.Track):
         Returns:
            (np.ndarray): audio signal
            (float): sample rate
+
         """
         return load_audio(self.audio_path)
 
@@ -246,6 +249,7 @@ class Track(core.Track):
 
         Returns:
             (jams.JAMS): return track data in jam format
+
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
@@ -279,8 +283,10 @@ def load_pred_inst(annotation_path):
 
     Args:
         annotation_path (str): Local path where the testing annotation is stored.
+
     Returns:
         pred_inst (str): testing track predominant instrument(s) annotations
+    
     """
     if annotation_path is None:
         return None
@@ -289,8 +295,8 @@ def load_pred_inst(annotation_path):
         raise IOError("annotation_path {} does not exist".format(annotation_path))
 
     pred_inst = []
-    with open(annotation_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=' ')
+    with open(annotation_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=" ")
         for line in reader:
             inst_code = line[0][:3]
             assert (

@@ -117,7 +117,7 @@ class Track(core.Track):
         """ key annotation
 
         Returns:
-            (string): key annotation
+            str annotation
         """
         return load_key(self.key_path)
 
@@ -144,7 +144,7 @@ class Track(core.Track):
         """Musicbrainz metadata
 
         Returns:
-            (dict): MusicBrainz metadata
+            dictMusicBrainz metadata
         """
         return load_musicbrainz(self.mb_path)
 

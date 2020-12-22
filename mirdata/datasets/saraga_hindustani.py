@@ -215,7 +215,7 @@ class Track(core.Track):
         """tempo annotations
 
         Returns:
-            (dict): tempo"""
+            dict: tempo"""
         return load_tempo(self.tempo_path)
 
     @core.cached_property

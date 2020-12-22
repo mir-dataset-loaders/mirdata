@@ -93,7 +93,10 @@ class Track(core.Track):
         """human-labeled beat annotation
 
         Returns:
-            (BeatData): beats"""
+            BeatData: beats
+
+        """
+
         return load_beats(self.beats_path)
 
     @core.cached_property
@@ -101,7 +104,8 @@ class Track(core.Track):
         """chord annotation
 
         Returns:
-            (ChordData): chords
+            ChordData: chords
+
         """
         return load_chords(self.chords_path)
 
@@ -110,7 +114,8 @@ class Track(core.Track):
         """local key annotation
 
         Returns:
-            (KeyData): keys
+            KeyData: keys
+
         """
         return load_key(self.keys_path)
 
@@ -119,7 +124,8 @@ class Track(core.Track):
         """Section annotation
 
         Returns:
-            (SectionData): Sections
+            SectionData: Sections
+
         """
         return load_sections(self.sections_path)
 
@@ -128,8 +134,9 @@ class Track(core.Track):
         """The track's audio
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+            np.ndarray: audio signal
+            float: sample rate
+
         """
         return load_audio(self.audio_path)
 
@@ -137,7 +144,8 @@ class Track(core.Track):
         """the track's data in jams format:
 
         Returns:
-            (jams.JAMS): return track data in jam format
+            jams.JAMS: return track data in jam format
+    
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,

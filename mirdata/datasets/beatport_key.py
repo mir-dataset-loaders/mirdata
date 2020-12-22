@@ -103,7 +103,7 @@ class Track(core.Track):
         """Key annotations
 
         Returns:
-            (list of strings): list of possible key annotations
+            (list): list of possible key annotations
         """
         return load_key(self.keys_path)
 
@@ -112,7 +112,7 @@ class Track(core.Track):
         """Artist annotation
 
         Returns:
-            (list of string): list of artists involved in the track"""
+            (list): list of artists involved in the track"""
         return load_artist(self.metadata_path)
 
     @core.cached_property
@@ -120,7 +120,7 @@ class Track(core.Track):
         """Genre annotation
 
         Returns:
-            (dict): genre and subgenre lists"""
+            dict: genre and subgenre lists"""
         return load_genre(self.metadata_path)
 
     @core.cached_property
@@ -230,7 +230,7 @@ def load_genre(metadata_path):
         metadata_path (str): path to metadata annotation file
 
     Returns:
-        (dict): with the list of strings with genres ['genres'] and list of strings with sub-genres ['sub_genres']
+        (dict): with the list with genres ['genres'] and list with sub-genres ['sub_genres']
 
     """
     if metadata_path is None:
@@ -255,7 +255,7 @@ def load_artist(metadata_path):
         metadata_path (str): path to metadata annotation file
 
     Returns:
-        (list of strings): list of artists involved in the track.
+        (list): list of artists involved in the track.
 
     """
     if metadata_path is None:
