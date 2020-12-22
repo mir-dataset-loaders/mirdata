@@ -130,7 +130,7 @@ class Track(core.Track):
         """
         return load_spectrum(self.spectrum_path)
 
-    @utils.cached_property
+    @core.cached_property
     def HPCP(self):
         """HPCP of ground truth audio
 
