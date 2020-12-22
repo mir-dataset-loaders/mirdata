@@ -30,7 +30,7 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 44100, "sample rate {} is not 44100".format(sr)
-    assert audio.shape == (5292000,), "audio shape {} was not (5292000,)".format(
+    assert audio.shape == (88200,), "audio shape {} was not (88200,)".format(
         audio.shape
     )
 
