@@ -4,9 +4,11 @@
 Overview
 ########
 
-``mirdata`` is a library which aims to standardize how audio datasets are accessed in Python, removing the need for writing custom loaders in every project.
-Working with datasets usually requires an often cumbersome step of downloading data and writing load functions that load e.g. matching audio and
-annotation files into some standard format to be used for experimenting or evaluating. ``mirdata`` does all of this for you:
+``mirdata`` is a library which aims to standardize how audio datasets are accessed in Python, 
+removing the need for writing custom loaders in every project, and improving reproducibility.
+Working with datasets usually requires an often cumbersome step of downloading data and writing 
+load functions that load related files (for example, audio and annotations)
+into a standard format to be used for experimenting or evaluating. ``mirdata`` does all of this for you:
 
 .. code-block:: Python
 

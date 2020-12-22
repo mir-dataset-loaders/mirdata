@@ -1,8 +1,8 @@
 .. _api:
 
 
-Datasets
---------
+Dataset Loaders
+---------------
 
 acousticbrainz_genre
 ^^^^^^^^^^^^^^^^^^^^
