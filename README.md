@@ -25,7 +25,6 @@ pip install mirdata
 ### Quick example
 ```python
 import mirdata
-import random
 
 orchset = mirdata.initialize('orchset')
 orchset.download()  # download the dataset

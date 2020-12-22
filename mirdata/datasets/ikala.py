@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
 """iKala Dataset Loader
 
-The iKala dataset is comprised of 252 30-second excerpts sampled from 206 iKala
-songs (plus 100 hidden excerpts reserved for MIREX).
-The music accompaniment and the singing voice are recorded at the left and right
-channels respectively and can be found under the Wavfile directory.
-In addition, the human-labeled pitch contours and timestamped lyrics can be
-found under PitchLabel and Lyrics respectively.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: http://mac.citi.sinica.edu.tw/ikala/
+    The iKala dataset is comprised of 252 30-second excerpts sampled from 206 iKala
+    songs (plus 100 hidden excerpts reserved for MIREX).
+    The music accompaniment and the singing voice are recorded at the left and right
+    channels respectively and can be found under the Wavfile directory.
+    In addition, the human-labeled pitch contours and timestamped lyrics can be
+    found under PitchLabel and Lyrics respectively.
+
+    For more details, please visit: http://mac.citi.sinica.edu.tw/ikala/
+
 """
 
 import csv

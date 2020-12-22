@@ -1,13 +1,20 @@
 # -*- coding: utf-8 -*-
 """GTZAN-Genre Dataset Loader
 
-This dataset was used for the well known paper in genre classification
-"Musical genre classification of audio signals " by G. Tzanetakis and
-P. Cook in IEEE Transactions on Audio and Speech Processing 2002.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The dataset consists of 1000 audio tracks each 30 seconds long. It
-contains 10 genres, each represented by 100 tracks. The tracks are all
-22050 Hz mono 16-bit audio files in .wav format.
+    This dataset was used for the well known genre classification paper:
+
+    .. code-block:: latex
+
+        "Musical genre classification of audio signals " by G. Tzanetakis and
+        P. Cook in IEEE Transactions on Audio and Speech Processing 2002.
+
+    The dataset consists of 1000 audio tracks each 30 seconds long. It
+    contains 10 genres, each represented by 100 tracks. The tracks are all
+    22050 Hz mono 16-bit audio files in .wav format.
+
 """
 
 import librosa

@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""functions for downloading from the web
-
-Attributes:
-    RemoteFileMetadata (namedtuple): It specifies the metadata of the remote file to download.
-        The metadata consists of `filename`, `url`, `checksum`, and `destination_dir`.
+"""Utilities for downloading from the web.
 """
 
 from collections import namedtuple
@@ -15,10 +11,23 @@ import zipfile
 
 from mirdata.validate import md5
 
-# destination dir should be a relative path to save the file/s, or None
-RemoteFileMetadata = namedtuple(
-    "RemoteFileMetadata", ["filename", "url", "checksum", "destination_dir"]
-)
+
+class RemoteFileMetadata(object):
+    """The metadata for a remote file
+
+    Attributes:
+        filename (str): the remote file's basename
+        url (str): the remote file's url
+        checksum (str): the remote file's md5 checksum
+        destination_dir (str or None): the relative path for where to save the file
+
+    """
+
+    def __init__(self, filename, url, checksum, destination_dir):
+        self.filename = filename
+        self.url = url
+        self.checksum = checksum
+        self.destination_dir = destination_dir
 
 
 def downloader(

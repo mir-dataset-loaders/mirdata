@@ -1,40 +1,43 @@
 # -*- coding: utf-8 -*-
 """Acoustic Brainz Genre dataset
-The AcousticBrainz Genre Dataset consists of four datasets of genre annotations and music features extracted from audio
-suited for evaluation of hierarchical multi-label genre classification systems.
 
-Description about the music features can be found here: https://essentia.upf.edu/streaming_extractor_music.html
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The datasets are used within the MediaEval AcousticBrainz Genre Task. The task is focused on content-based music
-genre recognition using genre annotations from multiple sources and large-scale music features data available in the
-AcousticBrainz database. The goal of our task is to explore how the same music pieces can be annotated differently by
-different communities following different genre taxonomies, and how this should be addressed by content-based genre r
-ecognition systems.
+    The AcousticBrainz Genre Dataset consists of four datasets of genre annotations and music features extracted from audio
+    suited for evaluation of hierarchical multi-label genre classification systems.
 
-We provide four datasets containing genre and subgenre annotations extracted from four different online metadata sources:
+    Description about the music features can be found here: https://essentia.upf.edu/streaming_extractor_music.html
 
-AllMusic and Discogs are based on editorial metadata databases maintained by music experts and enthusiasts. These sources contain explicit genre/subgenre annotations of music releases (albums) following a predefined genre namespace and taxonomy. We propagated release-level annotations to recordings (tracks) in AcousticBrainz to build the datasets.
+    The datasets are used within the MediaEval AcousticBrainz Genre Task. The task is focused on content-based music
+    genre recognition using genre annotations from multiple sources and large-scale music features data available in the
+    AcousticBrainz database. The goal of our task is to explore how the same music pieces can be annotated differently by
+    different communities following different genre taxonomies, and how this should be addressed by content-based genre r
+    ecognition systems.
 
-Lastfm and Tagtraum are based on collaborative music tagging platforms with large amounts of genre labels provided by their users for music recordings (tracks). We have automatically inferred a genre/subgenre taxonomy and annotations from these labels.
+    We provide four datasets containing genre and subgenre annotations extracted from four different online metadata sources:
 
-For details on format and contents, please refer to the data webpage.
+    - AllMusic and Discogs are based on editorial metadata databases maintained by music experts and enthusiasts. These sources 
+      contain explicit genre/subgenre annotations of music releases (albums) following a predefined genre namespace and taxonomy. 
+      We propagated release-level annotations to recordings (tracks) in AcousticBrainz to build the datasets.
+    - Lastfm and Tagtraum are based on collaborative music tagging platforms with large amounts of genre labels provided by their 
+      users for music recordings (tracks). We have automatically inferred a genre/subgenre taxonomy and annotations from these labels.
 
-Note, that the AllMusic ground-truth annotations are distributed separately at https://zenodo.org/record/2554044.
+    For details on format and contents, please refer to the data webpage.
 
-A size comparative between different datasets of Acoustic brainz Genre:
+    Note, that the AllMusic ground-truth annotations are distributed separately at https://zenodo.org/record/2554044.
 
-Citation
+    If you use the MediaEval AcousticBrainz Genre dataset or part of it, please cite our ISMIR 2019 overview paper:
 
-If you use the MediaEval AcousticBrainz Genre dataset or part of it, please cite our ISMIR 2019 overview paper:
+    .. code-block:: latex
 
-Bogdanov, D., Porter A., Schreiber H., Urbano J., & Oramas S. (2019).
-The AcousticBrainz Genre Dataset: Multi-Source, Multi-Level, Multi-Label, and Large-Scale.
-20th International Society for Music Information Retrieval Conference (ISMIR 2019).
+        Bogdanov, D., Porter A., Schreiber H., Urbano J., & Oramas S. (2019).
+        The AcousticBrainz Genre Dataset: Multi-Source, Multi-Level, Multi-Label, and Large-Scale.
+        20th International Society for Music Information Retrieval Conference (ISMIR 2019).
 
+    This work is partially supported by the European Union’s Horizon 2020 research and innovation programme under 
+    grant agreement No 688382 AudioCommons.
 
-Acknowledgements
-
-This work is partially supported by the European Union’s Horizon 2020 research and innovation programme under grant agreement No 688382 AudioCommons.
 """
 
 import json
@@ -210,17 +213,21 @@ class Track(core.Track):
     @property
     def tonal(self):
         """Tonal features.
-        - 'tuning_frequency': estimated tuning frequency [Hz]. Algorithms: TuningFrequency
-        - 'tuning_nontempered_energy_ratio' and 'tuning_equal_tempered_deviation'
-        - 'hpcp', 'thpcp': 32-dimensional harmonic pitch class profile (HPCP) and its transposed version. Algorithms: HPCP
-        - 'hpcp_entropy': Shannon entropy of a HPCP vector. Algorithms: Entropy
-        - 'key_key', 'key_scale': Global key feature. Algorithms: Key
-        - 'chords_key', 'chords_scale': Global key extracted from chords detection.
-        - 'chords_strength', 'chords_histogram': : strength of estimated chords and normalized histogram of their
-          progression; Algorithms: ChordsDetection, ChordsDescriptors
-        - 'chords_changes_rate', 'chords_number_rate':  chords change rate in the progression; ratio
-          of different chords from the total number of chords in the progression; Algorithms: ChordsDetection,
-          ChordsDescriptors
+
+        .. toggle::
+
+            - 'tuning_frequency': estimated tuning frequency [Hz]. Algorithms: TuningFrequency
+            - 'tuning_nontempered_energy_ratio' and 'tuning_equal_tempered_deviation'
+            - 'hpcp', 'thpcp': 32-dimensional harmonic pitch class profile (HPCP) and its transposed version. 
+              Algorithms: HPCP
+            - 'hpcp_entropy': Shannon entropy of a HPCP vector. Algorithms: Entropy
+            - 'key_key', 'key_scale': Global key feature. Algorithms: Key
+            - 'chords_key', 'chords_scale': Global key extracted from chords detection.
+            - 'chords_strength', 'chords_histogram': : strength of estimated chords and normalized histogram of their
+              progression; Algorithms: ChordsDetection, ChordsDescriptors
+            - 'chords_changes_rate', 'chords_number_rate':  chords change rate in the progression; ratio
+              of different chords from the total number of chords in the progression; Algorithms: ChordsDetection,
+              ChordsDescriptors
 
         """
         return load_extractor(self.path)["tonal"]
@@ -229,41 +236,43 @@ class Track(core.Track):
     def low_level(self):
         """low_level track descritors.
 
-        - 'average_loudness': dynamic range descriptor. It rescales average loudness,
-           computed on 2sec windows with 1 sec overlap, into the [0,1] interval. The value of 0 corresponds to signals
-           with large dynamic range, 1 corresponds to signal with little dynamic range. Algorithms: Loudness
-        - 'dynamic_complexity': dynamic complexity computed on 2sec windows with 1sec overlap. Algorithms: DynamicComplexity
-        - 'silence_rate_20dB', 'silence_rate_30dB', 'silence_rate_60dB': rate of silent frames in a signal for
-           thresholds of 20, 30, and 60 dBs. Algorithms: SilenceRate
-        - 'spectral_rms': spectral RMS. Algorithms: RMS
-        - 'spectral_flux': spectral flux of a signal computed using L2-norm. Algorithms: Flux
-        - 'spectral_centroid', 'spectral_kurtosis', 'spectral_spread', 'spectral_skewness': centroid and central
-          moments statistics describing the spectral shape. Algorithms: Centroid, CentralMoments
-        - 'spectral_rolloff': the roll-off frequency of a spectrum. Algorithms: RollOff
-        - 'spectral_decrease': spectral decrease. Algorithms: Decrease
-        - 'hfc': high frequency content descriptor as proposed by Masri. Algorithms: HFC
-        - 'zerocrossingrate' zero-crossing rate. Algorithms: ZeroCrossingRate
-        - 'spectral_energy': spectral energy. Algorithms: Energy
-        - 'spectral_energyband_low', 'spectral_energyband_middle_low', 'spectral_energyband_middle_high',
-        - 'spectral_energyband_high': spectral energy in frequency bands [20Hz, 150Hz], [150Hz, 800Hz], [800Hz, 4kHz],
-          and [4kHz, 20kHz]. Algorithms EnergyBand
-        - 'barkbands': spectral energy in 27 Bark bands. Algorithms: BarkBands
-        - 'melbands': spectral energy in 40 mel bands. Algorithms: MFCC
-        - 'erbbands': spectral energy in 40 ERB bands. Algorithms: ERBBands
-        - 'mfcc': the first 13 mel frequency cepstrum coefficients. See algorithm: MFCC
-        - 'gfcc': the first 13 gammatone feature cepstrum coefficients. Algorithms: GFCC
-        - 'barkbands_crest', 'barkbands_flatness_db': crest and flatness computed over energies in Bark bands. Algorithms: Crest, FlatnessDB
-        - 'barkbands_kurtosis', 'barkbands_skewness', 'barkbands_spread': central moments statistics over energies in Bark bands. Algorithms: CentralMoments
-        - 'melbands_crest', 'melbands_flatness_db': crest and flatness computed over energies in mel bands. Algorithms: Crest, FlatnessDB
-        - 'melbands_kurtosis', 'melbands_skewness', 'melbands_spread': central moments statistics over energies in mel bands. Algorithms: CentralMoments
-        - 'erbbands_crest', 'erbbands_flatness_db': crest and flatness computed over energies in ERB bands. Algorithms: Crest, FlatnessDB
-        - 'erbbands_kurtosis', 'erbbands_skewness', 'erbbands_spread': central moments statistics over energies in ERB bands. Algorithms: CentralMoments
-        - 'dissonance': sensory dissonance of a spectrum. Algorithms: Dissonance
-        - 'spectral_entropy': Shannon entropy of a spectrum. Algorithms: Entropy
-        - 'pitch_salience': pitch salience of a spectrum. Algorithms: PitchSalience
-        - 'spectral_complexity': spectral complexity. Algorithms: SpectralComplexity
-        - 'spectral_contrast_coeffs', 'spectral_contrast_valleys': spectral contrast features. Algorithms:
-          SpectralContrast
+        .. toggle::
+
+            - 'average_loudness': dynamic range descriptor. It rescales average loudness,
+              computed on 2sec windows with 1 sec overlap, into the [0,1] interval. The value of 0 corresponds to signals
+              with large dynamic range, 1 corresponds to signal with little dynamic range. Algorithms: Loudness
+            - 'dynamic_complexity': dynamic complexity computed on 2sec windows with 1sec overlap. Algorithms: DynamicComplexity
+            - 'silence_rate_20dB', 'silence_rate_30dB', 'silence_rate_60dB': rate of silent frames in a signal for
+              thresholds of 20, 30, and 60 dBs. Algorithms: SilenceRate
+            - 'spectral_rms': spectral RMS. Algorithms: RMS
+            - 'spectral_flux': spectral flux of a signal computed using L2-norm. Algorithms: Flux
+            - 'spectral_centroid', 'spectral_kurtosis', 'spectral_spread', 'spectral_skewness': centroid and central
+              moments statistics describing the spectral shape. Algorithms: Centroid, CentralMoments
+            - 'spectral_rolloff': the roll-off frequency of a spectrum. Algorithms: RollOff
+            - 'spectral_decrease': spectral decrease. Algorithms: Decrease
+            - 'hfc': high frequency content descriptor as proposed by Masri. Algorithms: HFC
+            - 'zerocrossingrate' zero-crossing rate. Algorithms: ZeroCrossingRate
+            - 'spectral_energy': spectral energy. Algorithms: Energy
+            - 'spectral_energyband_low', 'spectral_energyband_middle_low', 'spectral_energyband_middle_high',
+            - 'spectral_energyband_high': spectral energy in frequency bands [20Hz, 150Hz], [150Hz, 800Hz], [800Hz, 4kHz],
+              and [4kHz, 20kHz]. Algorithms EnergyBand
+            - 'barkbands': spectral energy in 27 Bark bands. Algorithms: BarkBands
+            - 'melbands': spectral energy in 40 mel bands. Algorithms: MFCC
+            - 'erbbands': spectral energy in 40 ERB bands. Algorithms: ERBBands
+            - 'mfcc': the first 13 mel frequency cepstrum coefficients. See algorithm: MFCC
+            - 'gfcc': the first 13 gammatone feature cepstrum coefficients. Algorithms: GFCC
+            - 'barkbands_crest', 'barkbands_flatness_db': crest and flatness computed over energies in Bark bands. Algorithms: Crest, FlatnessDB
+            - 'barkbands_kurtosis', 'barkbands_skewness', 'barkbands_spread': central moments statistics over energies in Bark bands. Algorithms: CentralMoments
+            - 'melbands_crest', 'melbands_flatness_db': crest and flatness computed over energies in mel bands. Algorithms: Crest, FlatnessDB
+            - 'melbands_kurtosis', 'melbands_skewness', 'melbands_spread': central moments statistics over energies in mel bands. Algorithms: CentralMoments
+            - 'erbbands_crest', 'erbbands_flatness_db': crest and flatness computed over energies in ERB bands. Algorithms: Crest, FlatnessDB
+            - 'erbbands_kurtosis', 'erbbands_skewness', 'erbbands_spread': central moments statistics over energies in ERB bands. Algorithms: CentralMoments
+            - 'dissonance': sensory dissonance of a spectrum. Algorithms: Dissonance
+            - 'spectral_entropy': Shannon entropy of a spectrum. Algorithms: Entropy
+            - 'pitch_salience': pitch salience of a spectrum. Algorithms: PitchSalience
+            - 'spectral_complexity': spectral complexity. Algorithms: SpectralComplexity
+            - 'spectral_contrast_coeffs', 'spectral_contrast_valleys': spectral contrast features. Algorithms:
+              SpectralContrast
 
         """
         return load_extractor(self.path)["low_level"]
@@ -272,18 +281,20 @@ class Track(core.Track):
     def rhythm(self):
         """Rhythm essentia extractor descriptors
 
-        - 'beats_position': time positions [sec] of detected beats using beat tracking algorithm by Degara et al., 2012. Algorithms: RhythmExtractor2013, BeatTrackerDegara
-        - 'beats_count': number of detected beats
-        - 'bpm': BPM value according to detected beats
-        - 'bpm_histogram_first_peak_bpm', 'bpm_histogram_first_peak_spread', 'bpm_histogram_first_peak_weight',
-        - 'bpm_histogram_second_peak_bpm', 'bpm_histogram_second_peak_spread', 'bpm_histogram_second_peak_weight':
-          descriptors characterizing highest and second highest peak of the BPM histogram. Algorithms:
-          BpmHistogramDescriptors
-        - 'beats_loudness', 'beats_loudness_band_ratio': spectral energy computed on beats segments of audio 
-          across the whole spectrum, and ratios of energy in 6 frequency bands. 
-          Algorithms: BeatsLoudness, SingleBeatLoudness
-        - 'onset_rate': number of detected onsets per second. Algorithms: OnsetRate
-        - 'danceability': danceability estimate. Algorithms: Danceability
+        .. toggle::
+
+            - 'beats_position': time positions [sec] of detected beats using beat tracking algorithm by Degara et al., 2012. Algorithms: RhythmExtractor2013, BeatTrackerDegara
+            - 'beats_count': number of detected beats
+            - 'bpm': BPM value according to detected beats
+            - 'bpm_histogram_first_peak_bpm', 'bpm_histogram_first_peak_spread', 'bpm_histogram_first_peak_weight',
+            - 'bpm_histogram_second_peak_bpm', 'bpm_histogram_second_peak_spread', 'bpm_histogram_second_peak_weight':
+              descriptors characterizing highest and second highest peak of the BPM histogram. Algorithms:
+              BpmHistogramDescriptors
+            - 'beats_loudness', 'beats_loudness_band_ratio': spectral energy computed on beats segments of audio 
+              across the whole spectrum, and ratios of energy in 6 frequency bands. 
+              Algorithms: BeatsLoudness, SingleBeatLoudness
+            - 'onset_rate': number of detected onsets per second. Algorithms: OnsetRate
+            - 'danceability': danceability estimate. Algorithms: Danceability
 
         """
         return load_extractor(self.path)["metadata"]["rhythm"]
