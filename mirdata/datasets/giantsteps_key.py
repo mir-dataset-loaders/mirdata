@@ -104,7 +104,7 @@ class Track(core.Track):
         """key annotation
 
         Returns:
-            (String): key
+            (string): key
         """
         return load_key(self.keys_path)
 
