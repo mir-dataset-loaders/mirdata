@@ -176,10 +176,10 @@ Alternatively, we don't need to load the whole dataset to get a single track.
     example_melody = orchset.track(orchset_ids[0]).melody  # Get melody from first track in the index
 
 
-Accessing annotations through dataset loading functions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Accessing annotations remotely
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Annotations can also be accessed through ``load_someAnnotation()`` methods in case, for instance, that your data don't live locally
+Annotations can also be accessed through ``load_*()`` methods in case, for instance, that your data don't live locally
 but in a remote path. If you specify the path where to find the annotation, you can use the module's loading functions directly. Let's
 see an example.
 
