@@ -381,7 +381,7 @@ def load_tempo(tempo_path):
         beats_per_cycle = tempo_data[3]
         subdivisions = tempo_data[4]
 
-        if "NaN" or " NaN" or "NaN " in tempo_data:
+        if "NaN" in tempo_data or " NaN" in tempo_data or "NaN " in tempo_data:
             return None
 
         tempo_annotation["tempo_apm"] = (

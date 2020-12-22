@@ -361,7 +361,7 @@ def load_tempo(tempo_path):
         reader = csv.reader(fhandle, delimiter=",")
         for line in reader:
 
-            if "NaN" or " NaN" or "NaN " in line:
+            if "NaN" in line or " NaN" in line or "NaN " in line:
                 return None
 
             # Store partial tempo information
