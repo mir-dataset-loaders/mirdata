@@ -255,7 +255,7 @@ class Track(core.Track):
         Returns:
             (EventData): voocal instrument activity
         """
-        return load_voca_inst(self.voca_inst_path)
+        return load_vocal_activity(self.voca_inst_path)
 
 
     @property
