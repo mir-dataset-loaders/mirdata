@@ -290,7 +290,8 @@ class Track(core.Track):
         """Annotated notes
 
         Returns:
-            NoteData: notes"""
+            NoteData: notes
+        """
         return load_notes(self.notes_path)
 
     def to_jams(self):

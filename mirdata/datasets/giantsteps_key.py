@@ -105,7 +105,8 @@ class Track(core.Track):
         """key annotation
 
         Returns:
-            (String): key"""
+            (String): key
+        """
         return load_key(self.keys_path)
 
     @utils.cached_property
