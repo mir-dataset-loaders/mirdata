@@ -199,7 +199,7 @@ class Track(core.Track):
         """DALI Annotations object
 
         Returns:
-            (DALI.Annotations):
+            (DALI.Annotations): DALI annotations object
         """
         return load_annotations_class(self.annotation_path)
 
@@ -293,7 +293,7 @@ def load_annotations_class(annotations_path):
         annotations_path (str): path to a DALI annotation file
 
     Returns:
-        DALI annotations object
+        (DALI.annotations): DALI annotations object
 
     """
     if not os.path.exists(annotations_path):
