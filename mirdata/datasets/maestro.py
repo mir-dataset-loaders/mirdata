@@ -150,7 +150,7 @@ class Track(core.Track):
         """Description of output.
 
         Retuns:
-            (Obj): midi"""
+            (pretty_midi.MIDI): midi"""
         return load_midi(self.midi_path)
 
     @utils.cached_property
@@ -192,7 +192,7 @@ def load_midi(midi_path):
         midi_path (str): path to midi file
 
     Returns:
-        midi_data (obj): pretty_midi object
+        midi_data (pretty_midi.MIDI): pretty_midi object
 
     """
     if not os.path.exists(midi_path):

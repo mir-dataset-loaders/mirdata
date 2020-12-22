@@ -327,7 +327,7 @@ class Track(core.Track):
         """prettyMIDI obj
 
         Returns:
-            (obj): MIDI
+            (pretty_midi.MIDI): MIDI
         """
         return load_midi(self.midi_path)
 
