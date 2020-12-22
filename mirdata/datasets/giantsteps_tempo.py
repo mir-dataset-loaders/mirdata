@@ -147,7 +147,7 @@ class Track(core.Track):
 
     @core.cached_property
     def genre(self):
-        """human-labeled metadata annotation
+        """Human-labeled metadata annotation
 
         Returns:
             (dict): genre or sub-genres list
@@ -156,7 +156,7 @@ class Track(core.Track):
 
     @core.cached_property
     def tempo(self):
-        """tempo annotation ordered by confidence
+        """Tempo annotation ordered by confidence
 
         Returns:
             (int): tempo
@@ -165,7 +165,7 @@ class Track(core.Track):
 
     @core.cached_property
     def tempo_v2(self):
-        """Tempos annotation ordered by confidence
+        """Tempo annotations ordered by confidence
 
         Returns:
             (int): tempo
@@ -185,7 +185,7 @@ class Track(core.Track):
     def to_jams(self):
         """the track's data in jams format:
 
-        Return:
+        Returns:
             (jams.JAMS): return track data in jam format
         """
         return jams.load(self.annotation_v1_path)
