@@ -186,8 +186,8 @@ Once the index is created you can create the loader. For that, we suggest you us
 To quickstart a new module:
 
 1. Copy the example below and save it to ``mirdata/datasets/<your_dataset_name>.py``
-1. Find & Replace ``Example`` with the <your_dataset_name>.
-2. Remove any lines beginning with `# --` which are there as guidelines. 
+2. Find & Replace ``Example`` with the <your_dataset_name>.
+3. Remove any lines beginning with `# --` which are there as guidelines. 
 
 .. admonition:: Example Module
     :class: dropdown

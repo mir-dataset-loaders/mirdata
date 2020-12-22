@@ -104,8 +104,8 @@ class Track(core.Track):
         ground_truth (bool): True if the annotation is verified
         language (str): sung language
         release_date (str): year the track was released
-        scores_manual (int): TODO
-        scores_ncc (float): TODO
+        scores_manual (int): manual score annotations
+        scores_ncc (float): ncc score annotations
         title (str): the track's title
         track_id (str): the unique track id
         url_working (bool): True if the youtube url was valid
