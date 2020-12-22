@@ -82,6 +82,9 @@ def test_load_spectrum():
     y, sr = librosa.load(audio_path)
     spectrum = librosa.cqt(y, sr=sr, window='blackmanharris', hop_length=4096)
 
+    # only first 2 seconds
+    spectrum_data = spectrum_data[:, :spectrum.shape[1]]
+
     assert spectrum.shape[0] == spectrum_data.shape[0]
     assert spectrum.shape[1] == spectrum_data.shape[1]
     assert tonality_classicaldb.load_spectrum(None) is None
