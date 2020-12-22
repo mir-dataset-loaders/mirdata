@@ -166,7 +166,7 @@ class Track(core.Track):
         instruments (str): List of used instruments
         piece_number (str): Piece number, [1-50]
         sections_path (str): path of the section annotation file
-        singer_information (str): TODO
+        singer_information (str): could be male, female or vocal group
         suffix (str): M01-M04
         tempo (str): Tempo of the track in BPM
         title (str): title

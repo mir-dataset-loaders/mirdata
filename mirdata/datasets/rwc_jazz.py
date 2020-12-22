@@ -162,7 +162,7 @@ class Track(core.Track):
         title (str): Title of The track.
         track_id (str): track id
         track_number (str): CD track number of this Track
-        variation (str): TODO
+        variation (str):  style variations
 
     """
 
