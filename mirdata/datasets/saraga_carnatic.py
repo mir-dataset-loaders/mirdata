@@ -223,7 +223,7 @@ class Track(core.Track):
         """Tonic annotation
 
         Returns:
-            (Float): tonic
+            (float): tonic
         """
         return load_tonic(self.ctonic_path)
 
