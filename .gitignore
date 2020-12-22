@@ -1,5 +1,6 @@
 tests/resources/mir_datasets_full
 tests/data/output.wav
+mirdata/datasets/indexes/__MACOSX
 *.DS_Store
 
 # Byte-compiled / optimized / DLL files

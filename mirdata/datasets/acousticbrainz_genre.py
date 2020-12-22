@@ -43,7 +43,6 @@ import shutil
 
 from mirdata import download_utils, core
 from mirdata import jams_utils
-from mirdata import utils
 
 
 BIBTEX = """
@@ -126,10 +125,7 @@ REMOTE_INDEX = {
     )
 }
 
-DOWNLOAD_INFO = ""
-
-
-DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+DATA = core.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
 
 
 class Track(core.Track):
@@ -147,7 +143,7 @@ class Track(core.Track):
 
     def __init__(self, track_id, data_home, remote_index=None, remote_index_name=None):
         if remote_index is not None and remote_index_name is not None:
-            data = utils.LargeData(remote_index_name, remote_index=remote_index)
+            data = core.LargeData(remote_index_name, remote_index=remote_index)
         else:
             data = DATA
 
@@ -161,176 +157,139 @@ class Track(core.Track):
         self.track_id = track_id
         self._data_home = data_home
         self._track_paths = data.index["tracks"][track_id]
-        self.path = utils.none_path_join(
-            [self._data_home, self._track_paths["data"][0]]
-        )
+        self.path = core.none_path_join([self._data_home, self._track_paths["data"][0]])
 
     # Genre
     @property
     def genre(self):
-        """Genre: human-labeled genre and subgenres list"""
+        """human-labeled genre and subgenres list"""
         return [genre for genre in self.track_id.split("#")[2:]]
 
     # Music Brainz
     @property
     def mbid(self):
-        """mbid: musicbrainz id"""
+        """musicbrainz id"""
         return self.track_id.split("#")[0]
 
     @property
     def mbid_group(self):
-        """mbid_group: musicbrainz id group"""
+        """musicbrainz id group"""
         return self.track_id.split("#")[1]
 
     # Metadata
     @property
     def artist(self):
-        """Artist: metadata artist annotation"""
+        """metadata artist annotation"""
         return load_extractor(self.path)["metadata"]["artist"]
 
     @property
     def title(self):
-        """title: metadata title annotation"""
+        """metadata title annotation"""
         return load_extractor(self.path)["metadata"]["title"]
 
     @property
     def date(self):
-        """date: metadata date annotation"""
+        """metadata date annotation"""
         return load_extractor(self.path)["metadata"]["date"]
 
     @property
     def file_name(self):
-        """File_name: metadata file_name annotation"""
+        """metadata file_name annotation"""
         return load_extractor(self.path)["metadata"]["file_name"]
 
     @property
     def album(self):
-        """Album: metadata album annotation"""
+        """metadata album annotation"""
         return load_extractor(self.path)["metadata"]["album"]
 
     @property
     def tracknumber(self):
-        """tracknumber: metadata tracknumber annotation"""
+        """metadata tracknumber annotation"""
         return load_extractor(self.path)["metadata"]["tracknumber"]
 
     @property
     def tonal(self):
-        """Tonal: tonal features.
-        'tuning_frequency': estimated tuning frequency [Hz]. Algorithms: TuningFrequency
-        'tuning_nontempered_energy_ratio' and 'tuning_equal_tempered_deviation'
+        """Tonal features.
+        - 'tuning_frequency': estimated tuning frequency [Hz]. Algorithms: TuningFrequency
+        - 'tuning_nontempered_energy_ratio' and 'tuning_equal_tempered_deviation'
+        - 'hpcp', 'thpcp': 32-dimensional harmonic pitch class profile (HPCP) and its transposed version. Algorithms: HPCP
+        - 'hpcp_entropy': Shannon entropy of a HPCP vector. Algorithms: Entropy
+        - 'key_key', 'key_scale': Global key feature. Algorithms: Key
+        - 'chords_key', 'chords_scale': Global key extracted from chords detection.
+        - 'chords_strength', 'chords_histogram': : strength of estimated chords and normalized histogram of their
+          progression; Algorithms: ChordsDetection, ChordsDescriptors
+        - 'chords_changes_rate', 'chords_number_rate':  chords change rate in the progression; ratio
+          of different chords from the total number of chords in the progression; Algorithms: ChordsDetection,
+          ChordsDescriptors
 
-        'hpcp', 'thpcp': 32-dimensional harmonic pitch class profile (HPCP) and its transposed version. Algorithms: HPCP
-
-        'hpcp_entropy': Shannon entropy of a HPCP vector. Algorithms: Entropy
-
-        'key_key', 'key_scale': Global key feature. Algorithms: Key
-
-        'chords_key', 'chords_scale': Global key extracted from chords detection.
-
-        'chords_strength', 'chords_histogram': : strength of estimated chords and normalized histogram of their
-        progression; Algorithms: ChordsDetection, ChordsDescriptors
-
-        'chords_changes_rate', 'chords_number_rate':  chords change rate in the progression; ratio
-        of different chords from the total number of chords in the progression; Algorithms: ChordsDetection,
-        ChordsDescriptors
         """
         return load_extractor(self.path)["tonal"]
 
     @property
     def low_level(self):
-        """low_level: low_level track descritors.
+        """low_level track descritors.
 
-        'average_loudness': dynamic range descriptor. It rescales average loudness,
-        computed on 2sec windows with 1 sec overlap, into the [0,1] interval. The value of 0 corresponds to signals
-        with large dynamic range, 1 corresponds to signal with little dynamic range. Algorithms: Loudness
-
-        'dynamic_complexity': dynamic complexity computed on 2sec windows with 1sec overlap. Algorithms: DynamicComplexity
-
-        'silence_rate_20dB', 'silence_rate_30dB', 'silence_rate_60dB': rate of silent frames in a signal for
-        thresholds of 20, 30, and 60 dBs. Algorithms: SilenceRate
-
-        'spectral_rms': spectral RMS. Algorithms: RMS
-
-        'spectral_flux': spectral flux of a signal computed using L2-norm. Algorithms: Flux
-
-        'spectral_centroid', 'spectral_kurtosis', 'spectral_spread', 'spectral_skewness': centroid and central
-        moments statistics describing the spectral shape. Algorithms: Centroid, CentralMoments
-
-        'spectral_rolloff': the roll-off frequency of a spectrum. Algorithms: RollOff
-
-        'spectral_decrease': spectral decrease. Algorithms: Decrease
-
-        'hfc': high frequency content descriptor as proposed by Masri. Algorithms: HFC
-
-        'zerocrossingrate' zero-crossing rate. Algorithms: ZeroCrossingRate
-
-        'spectral_energy': spectral energy. Algorithms: Energy
-
-        'spectral_energyband_low', 'spectral_energyband_middle_low', 'spectral_energyband_middle_high',
-        'spectral_energyband_high': spectral energy in frequency bands [20Hz, 150Hz], [150Hz, 800Hz], [800Hz, 4kHz],
-        and [4kHz, 20kHz]. Algorithms EnergyBand
-
-        'barkbands': spectral energy in 27 Bark bands. Algorithms: BarkBands
-
-        'melbands': spectral energy in 40 mel bands. Algorithms: MFCC
-
-        'erbbands': spectral energy in 40 ERB bands. Algorithms: ERBBands
-
-        'mfcc': the first 13 mel frequency cepstrum coefficients. See algorithm: MFCC
-
-        'gfcc': the first 13 gammatone feature cepstrum coefficients. Algorithms: GFCC
-
-        'barkbands_crest', 'barkbands_flatness_db': crest and flatness computed over energies in Bark bands. Algorithms: Crest, FlatnessDB
-
-        'barkbands_kurtosis', 'barkbands_skewness', 'barkbands_spread': central moments statistics over energies in Bark bands. Algorithms: CentralMoments
-
-        'melbands_crest', 'melbands_flatness_db': crest and flatness computed over energies in mel bands. Algorithms: Crest, FlatnessDB
-
-        'melbands_kurtosis', 'melbands_skewness', 'melbands_spread': central moments statistics over energies in mel bands. Algorithms: CentralMoments
-
-        'erbbands_crest', 'erbbands_flatness_db': crest and flatness computed over energies in ERB bands. Algorithms: Crest, FlatnessDB
-
-        'erbbands_kurtosis', 'erbbands_skewness', 'erbbands_spread': central moments statistics over energies in ERB bands. Algorithms: CentralMoments
-
-        'dissonance': sensory dissonance of a spectrum. Algorithms: Dissonance
-
-        'spectral_entropy': Shannon entropy of a spectrum. Algorithms: Entropy
-
-        'pitch_salience': pitch salience of a spectrum. Algorithms: PitchSalience
-
-        'spectral_complexity': spectral complexity. Algorithms: SpectralComplexity
-
-        'spectral_contrast_coeffs', 'spectral_contrast_valleys': spectral contrast features. Algorithms:
-        SpectralContrast
+        - 'average_loudness': dynamic range descriptor. It rescales average loudness,
+           computed on 2sec windows with 1 sec overlap, into the [0,1] interval. The value of 0 corresponds to signals
+           with large dynamic range, 1 corresponds to signal with little dynamic range. Algorithms: Loudness
+        - 'dynamic_complexity': dynamic complexity computed on 2sec windows with 1sec overlap. Algorithms: DynamicComplexity
+        - 'silence_rate_20dB', 'silence_rate_30dB', 'silence_rate_60dB': rate of silent frames in a signal for
+           thresholds of 20, 30, and 60 dBs. Algorithms: SilenceRate
+        - 'spectral_rms': spectral RMS. Algorithms: RMS
+        - 'spectral_flux': spectral flux of a signal computed using L2-norm. Algorithms: Flux
+        - 'spectral_centroid', 'spectral_kurtosis', 'spectral_spread', 'spectral_skewness': centroid and central
+          moments statistics describing the spectral shape. Algorithms: Centroid, CentralMoments
+        - 'spectral_rolloff': the roll-off frequency of a spectrum. Algorithms: RollOff
+        - 'spectral_decrease': spectral decrease. Algorithms: Decrease
+        - 'hfc': high frequency content descriptor as proposed by Masri. Algorithms: HFC
+        - 'zerocrossingrate' zero-crossing rate. Algorithms: ZeroCrossingRate
+        - 'spectral_energy': spectral energy. Algorithms: Energy
+        - 'spectral_energyband_low', 'spectral_energyband_middle_low', 'spectral_energyband_middle_high',
+        - 'spectral_energyband_high': spectral energy in frequency bands [20Hz, 150Hz], [150Hz, 800Hz], [800Hz, 4kHz],
+          and [4kHz, 20kHz]. Algorithms EnergyBand
+        - 'barkbands': spectral energy in 27 Bark bands. Algorithms: BarkBands
+        - 'melbands': spectral energy in 40 mel bands. Algorithms: MFCC
+        - 'erbbands': spectral energy in 40 ERB bands. Algorithms: ERBBands
+        - 'mfcc': the first 13 mel frequency cepstrum coefficients. See algorithm: MFCC
+        - 'gfcc': the first 13 gammatone feature cepstrum coefficients. Algorithms: GFCC
+        - 'barkbands_crest', 'barkbands_flatness_db': crest and flatness computed over energies in Bark bands. Algorithms: Crest, FlatnessDB
+        - 'barkbands_kurtosis', 'barkbands_skewness', 'barkbands_spread': central moments statistics over energies in Bark bands. Algorithms: CentralMoments
+        - 'melbands_crest', 'melbands_flatness_db': crest and flatness computed over energies in mel bands. Algorithms: Crest, FlatnessDB
+        - 'melbands_kurtosis', 'melbands_skewness', 'melbands_spread': central moments statistics over energies in mel bands. Algorithms: CentralMoments
+        - 'erbbands_crest', 'erbbands_flatness_db': crest and flatness computed over energies in ERB bands. Algorithms: Crest, FlatnessDB
+        - 'erbbands_kurtosis', 'erbbands_skewness', 'erbbands_spread': central moments statistics over energies in ERB bands. Algorithms: CentralMoments
+        - 'dissonance': sensory dissonance of a spectrum. Algorithms: Dissonance
+        - 'spectral_entropy': Shannon entropy of a spectrum. Algorithms: Entropy
+        - 'pitch_salience': pitch salience of a spectrum. Algorithms: PitchSalience
+        - 'spectral_complexity': spectral complexity. Algorithms: SpectralComplexity
+        - 'spectral_contrast_coeffs', 'spectral_contrast_valleys': spectral contrast features. Algorithms:
+          SpectralContrast
 
         """
         return load_extractor(self.path)["low_level"]
 
     @property
     def rhythm(self):
-        """Rhythm: rhytm essentia extractor descriptors
-        'beats_position': time positions [sec] of detected beats using beat tracking algorithm by Degara et al., 2012. Algorithms: RhythmExtractor2013, BeatTrackerDegara
+        """Rhythm essentia extractor descriptors
 
-        'beats_count': number of detected beats
-
-        'bpm': BPM value according to detected beats
-
-        'bpm_histogram_first_peak_bpm', 'bpm_histogram_first_peak_spread', 'bpm_histogram_first_peak_weight',
-        'bpm_histogram_second_peak_bpm', 'bpm_histogram_second_peak_spread', 'bpm_histogram_second_peak_weight':
-        descriptors characterizing highest and second highest peak of the BPM histogram. Algorithms:
-        BpmHistogramDescriptors
-
-        'beats_loudness', 'beats_loudness_band_ratio': spectral energy computed on beats segments of audio across the whole spectrum, and ratios of energy in 6 frequency bands. Algorithms: BeatsLoudness, SingleBeatLoudness
-
-        'onset_rate': number of detected onsets per second. Algorithms: OnsetRate
-
-        'danceability': danceability estimate. Algorithms: Danceability
+        - 'beats_position': time positions [sec] of detected beats using beat tracking algorithm by Degara et al., 2012. Algorithms: RhythmExtractor2013, BeatTrackerDegara
+        - 'beats_count': number of detected beats
+        - 'bpm': BPM value according to detected beats
+        - 'bpm_histogram_first_peak_bpm', 'bpm_histogram_first_peak_spread', 'bpm_histogram_first_peak_weight',
+        - 'bpm_histogram_second_peak_bpm', 'bpm_histogram_second_peak_spread', 'bpm_histogram_second_peak_weight':
+          descriptors characterizing highest and second highest peak of the BPM histogram. Algorithms:
+          BpmHistogramDescriptors
+        - 'beats_loudness', 'beats_loudness_band_ratio': spectral energy computed on beats segments of audio 
+          across the whole spectrum, and ratios of energy in 6 frequency bands. 
+          Algorithms: BeatsLoudness, SingleBeatLoudness
+        - 'onset_rate': number of detected onsets per second. Algorithms: OnsetRate
+        - 'danceability': danceability estimate. Algorithms: Danceability
 
         """
         return load_extractor(self.path)["metadata"]["rhythm"]
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """the track's data in jams format"""
         return jams_utils.jams_converter(
             metadata={
                 "features": load_extractor(self.path),
@@ -360,227 +319,194 @@ def load_extractor(path):
     return meta
 
 
-def filter_index(search_key, index=None):
-    """Load from AcousticBrainz genre dataset the indexes that match with search_key.
-
-    Args:
-        search_key (str): regex to match with folds, mbid or genres
-        index (dict): mirdata index to filter.
-
-    Returns:
-        (dict): {`track_id`: track data}
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The acousticbrainz genre dataset
     """
-    if index is None:
-        index = DATA.index["tracks"].items()
 
-    acousticbrainz_genre_data = {k: v for k, v in index.items() if search_key in k}
-    return acousticbrainz_genre_data
-
-
-def load_all_train(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for training across the four different datasets.
-
-    Args:
-       index (dict): mirdata index to filter.
-
-    Returns:
-       (dict): {`track_id`: track data}
-
-    """
-    return filter_index("#train#", index=index)
-
-
-def load_all_validation(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for validating across the four different datasets.
-
-    Args:
-        index (dict): mirdata index to filter.
-
-    Returns:
-        (dict): {`track_id`: track data}
-
-    """
-    return filter_index("#validation#", index=index)
-
-
-def load_tagtraum_validation(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for validating in tagtraum dataset.
-
-    Args:
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
-        index (dict): mirdata index to filter.
-
-    Returns:
-        (dict): {`track_id`: track data}
-
-    """
-    return filter_index("tagtraum#validation#", index=index)
-
-
-def load_tagtraum_train(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for training in tagtraum dataset.
-
-    Args:
-       index (dict): mirdata index to filter.
-
-    Returns:
-       (dict): {`track_id`: track data}
-
-    """
-    return filter_index("tagtraum#train#", index=index)
-
-
-def load_allmusic_train(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
-
-    Args:
-       index (dict): mirdata index to filter.
-
-    Returns:
-       (dict): {`track_id`: track data}
-
-    """
-    return filter_index("allmusic#train#", index=index)
-
-
-def load_allmusic_validation(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
-
-    Args:
-       index (dict): mirdata index to filter.
-
-    Returns:
-       (dict): {`track_id`: track data}
-
-    """
-    return filter_index("allmusic#validation#", index=index)
-
-
-def load_lastfm_train(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for training in lastfm dataset.
-
-    Args:
-       index (dict): mirdata index to filter.
-
-    Returns:
-       (dict): {`track_id`: track data}
-
-    """
-    return filter_index("lastfm#train#", index=index)
-
-
-def load_lastfm_validation(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for validation in lastfm dataset.
-
-    Args:
-       index (dict): mirdata index to filter.
-
-    Returns:
-       (dict): {`track_id`: track data}
-
-    """
-    return filter_index("lastfm#validation#", index=index)
-
-
-def load_discogs_train(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for training in discogs dataset.
-
-    Args:
-       index (dict): mirdata index to filter.
-
-    Returns:
-       (dict): {`track_id`: track data}
-
-    """
-    return filter_index("allmusic#train#", index=index)
-
-
-def load_discogs_validation(index=None):
-    """Load from AcousticBrainz genre dataset the tracks that are used for validation in tagtraum dataset.
-
-    Args:
-       index (dict): mirdata index to filter.
-
-    Returns:
-       (dict): {`track_id`: track data}
-
-    """
-    return filter_index("allmusic#validation#", index=index)
-
-
-def _download(
-    save_dir,
-    remotes,
-    partial_download,
-    info_message,
-    force_overwrite=False,
-    cleanup=True,
-):
-    """Download data to `save_dir` and optionally print a message.
-
-    Args:
-        save_dir (str):
-            Dataset files path
-            remotes (dict or None):
-        remotes (dict) :
-            A dictionary of RemoteFileMetadata tuples of data in zip format.
-            If None, there is no data to download
-        force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. By default False.
-        cleanup (bool):
-            Whether to delete any zip/tar files after extracting.
-
-    Raises:
-        ValueError: if invalid keys are passed to partial_download
-        IOError: if a downloaded file's checksum is different from expected
-
-    """
-    if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
-    # Create these directories if doesn't exist
-    train = "acousticbrainz-mediaeval-train"
-    train_dir = os.path.join(save_dir, train)
-    if not os.path.isdir(train_dir):
-        os.mkdir(train_dir)
-    validate = "acousticbrainz-mediaeval-validation"
-    validate_dir = os.path.join(save_dir, validate)
-    if not os.path.isdir(validate_dir):
-        os.mkdir(validate_dir)
-
-    # start to download
-    for key, remote in remotes.items():
-        # check overwrite
-        file_downloaded = False
-        if not force_overwrite:
-            fold, first_dir = key.split("-")
-            first_dir_path = os.path.join(
-                train_dir if fold == "train" else validate_dir, first_dir
-            )
-            if os.path.isdir(first_dir_path):
-                file_downloaded = True
-                print(
-                    "File "
-                    + remote.filename
-                    + " downloaded. Skip download (force_overwrite=False)."
-                )
-        if not file_downloaded:
-            #  if this typical error happend it repeat download
-            download_utils.downloader(
-                save_dir,
-                remotes={key: remote},
-                partial_download=None,
-                info_message=None,
-                force_overwrite=True,
-                cleanup=cleanup,
-            )
-        # move from a temporal directory to final one
-        source_dir = os.path.join(
-            save_dir, "temp", train if "train" in key else validate
+    def __init__(self, data_home=None, index=None):
+        super().__init__(
+            data_home,
+            index=DATA.index if index is None else index,
+            name="acousticbrainz_genre",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
         )
-        target_dir = train_dir if "train" in key else validate_dir
-        dir_names = os.listdir(source_dir)
-        for dir_name in dir_names:
-            shutil.move(
-                os.path.join(source_dir, dir_name), os.path.join(target_dir, dir_name)
+
+    @core.copy_docs(load_extractor)
+    def load_extractor(self, *args, **kwargs):
+        return load_extractor(*args, **kwargs)
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files. 
+                By default False.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        if not os.path.exists(self.data_home):
+            os.makedirs(self.data_home)
+        # Create these directories if doesn't exist
+        train = "acousticbrainz-mediaeval-train"
+        train_dir = os.path.join(self.data_home, train)
+        if not os.path.isdir(train_dir):
+            os.mkdir(train_dir)
+        validate = "acousticbrainz-mediaeval-validation"
+        validate_dir = os.path.join(self.data_home, validate)
+        if not os.path.isdir(validate_dir):
+            os.mkdir(validate_dir)
+
+        # start to download
+        for key, remote in self.remotes.items():
+            # check overwrite
+            file_downloaded = False
+            if not force_overwrite:
+                fold, first_dir = key.split("-")
+                first_dir_path = os.path.join(
+                    train_dir if fold == "train" else validate_dir, first_dir
+                )
+                if os.path.isdir(first_dir_path):
+                    file_downloaded = True
+                    print(
+                        "File "
+                        + remote.filename
+                        + " downloaded. Skip download (force_overwrite=False)."
+                    )
+            if not file_downloaded:
+                #  if this typical error happend it repeat download
+                download_utils.downloader(
+                    self.data_home,
+                    remotes={key: remote},
+                    partial_download=None,
+                    info_message=None,
+                    force_overwrite=True,
+                    cleanup=cleanup,
+                )
+            # move from a temporary directory to final one
+            source_dir = os.path.join(
+                self.data_home, "temp", train if "train" in key else validate
             )
+            target_dir = train_dir if "train" in key else validate_dir
+            dir_names = os.listdir(source_dir)
+            for dir_name in dir_names:
+                shutil.move(
+                    os.path.join(source_dir, dir_name),
+                    os.path.join(target_dir, dir_name),
+                )
+
+    def filter_index(self, search_key):
+        """Load from AcousticBrainz genre dataset the indexes that match with search_key.
+
+        Args:
+            search_key (str): regex to match with folds, mbid or genres
+
+        Returns:
+            (dict): {`track_id`: track data}
+        """
+
+        acousticbrainz_genre_data = {
+            k: v for k, v in self._index["tracks"].items() if search_key in k
+        }
+        return acousticbrainz_genre_data
+
+    def load_all_train(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for training across the four different datasets.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("#train#")
+
+    def load_all_validation(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for validating across the four different datasets.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("#validation#")
+
+    def load_tagtraum_validation(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for validating in tagtraum dataset.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("tagtraum#validation#")
+
+    def load_tagtraum_train(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for training in tagtraum dataset.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("tagtraum#train#")
+
+    def load_allmusic_train(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("allmusic#train#")
+
+    def load_allmusic_validation(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("allmusic#validation#")
+
+    def load_lastfm_train(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for training in lastfm dataset.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("lastfm#train#")
+
+    def load_lastfm_validation(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for validation in lastfm dataset.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("lastfm#validation#")
+
+    def load_discogs_train(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for training in discogs dataset.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("allmusic#train#")
+
+    def load_discogs_validation(self):
+        """Load from AcousticBrainz genre dataset the tracks that are used for validation in tagtraum dataset.
+
+        Returns:
+            (dict): {`track_id`: track data}
+
+        """
+        return self.filter_index("allmusic#validation#")

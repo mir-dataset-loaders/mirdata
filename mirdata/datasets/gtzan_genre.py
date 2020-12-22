@@ -16,7 +16,6 @@ import os
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 
 BIBTEX = """@article{tzanetakis2002gtzan,
@@ -34,7 +33,7 @@ REMOTES = {
     )
 }
 
-DATA = utils.LargeData("gtzan_genre_index.json")
+DATA = core.LargeData("gtzan_genre_index.json")
 
 
 class Track(core.Track):
@@ -51,7 +50,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in GTZAN-Genre".format(track_id)
             )
@@ -59,7 +58,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         self.genre = track_id.split(".")[0]
         if self.genre == "hiphop":
@@ -101,3 +100,23 @@ def load_audio(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
     audio, sr = librosa.load(audio_path, sr=22050, mono=True)
     return audio, sr
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The gtzan_genre dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="gtzan_genre",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)

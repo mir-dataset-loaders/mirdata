@@ -9,12 +9,14 @@ acousticbrainz_genre
 
 .. automodule:: mirdata.datasets.acousticbrainz_genre
    :members:
+   :inherited-members:
 
 beatles
 ^^^^^^^
 
 .. automodule:: mirdata.datasets.beatles
    :members:
+   :inherited-members:
 
 
 beatport_key
@@ -22,6 +24,7 @@ beatport_key
 
 .. automodule:: mirdata.datasets.beatport_key
    :members:
+   :inherited-members:
 
 
 cante100
@@ -29,6 +32,7 @@ cante100
 
 .. automodule:: mirdata.datasets.cante100
    :members:
+   :inherited-members:
 
 
 dali
@@ -36,6 +40,7 @@ dali
 
 .. automodule:: mirdata.datasets.dali
    :members:
+   :inherited-members:
 
 
 giantsteps_tempo
@@ -43,6 +48,7 @@ giantsteps_tempo
 
 .. automodule:: mirdata.datasets.giantsteps_tempo
    :members:
+   :inherited-members:
 
 
 giantsteps_key
@@ -50,6 +56,7 @@ giantsteps_key
 
 .. automodule:: mirdata.datasets.giantsteps_key
    :members:
+   :inherited-members:
 
 
 groove_midi
@@ -57,6 +64,7 @@ groove_midi
 
 .. automodule:: mirdata.datasets.groove_midi
    :members:
+   :inherited-members:
 
 
 gtzan_genre
@@ -64,6 +72,7 @@ gtzan_genre
 
 .. automodule:: mirdata.datasets.gtzan_genre
    :members:
+   :inherited-members:
 
 
 guitarset
@@ -71,6 +80,7 @@ guitarset
 
 .. automodule:: mirdata.datasets.guitarset
    :members:
+   :inherited-members:
 
 
 ikala
@@ -78,6 +88,7 @@ ikala
 
 .. automodule:: mirdata.datasets.ikala
    :members:
+   :inherited-members:
 
 
 irmas
@@ -85,6 +96,7 @@ irmas
 
 .. automodule:: mirdata.datasets.irmas
    :members:
+   :inherited-members:
 
 
 maestro
@@ -92,6 +104,7 @@ maestro
 
 .. automodule:: mirdata.datasets.maestro
    :members:
+   :inherited-members:
 
 
 medleydb\_melody
@@ -99,6 +112,7 @@ medleydb\_melody
 
 .. automodule:: mirdata.datasets.medleydb_melody
    :members:
+   :inherited-members:
 
 
 medleydb\_pitch
@@ -106,6 +120,7 @@ medleydb\_pitch
 
 .. automodule:: mirdata.datasets.medleydb_pitch
    :members:
+   :inherited-members:
 
 
 medley_solos_db
@@ -113,6 +128,7 @@ medley_solos_db
 
 .. automodule:: mirdata.datasets.medley_solos_db
    :members:
+   :inherited-members:
 
 
 mridangam_stroke
@@ -120,6 +136,7 @@ mridangam_stroke
 
 .. automodule:: mirdata.datasets.mridangam_stroke
    :members:
+   :inherited-members:
 
 
 orchset
@@ -127,6 +144,7 @@ orchset
 
 .. automodule:: mirdata.datasets.orchset
    :members:
+   :inherited-members:
 
 
 rwc_classical
@@ -134,6 +152,7 @@ rwc_classical
 
 .. automodule:: mirdata.datasets.rwc_classical
    :members:
+   :inherited-members:
 
 
 rwc_jazz
@@ -141,6 +160,7 @@ rwc_jazz
 
 .. automodule:: mirdata.datasets.rwc_jazz
    :members:
+   :inherited-members:
 
 
 rwc_popular
@@ -148,6 +168,7 @@ rwc_popular
 
 .. automodule:: mirdata.datasets.rwc_popular
    :members:
+   :inherited-members:
 
 
 salami
@@ -155,6 +176,7 @@ salami
 
 .. automodule:: mirdata.datasets.salami
    :members:
+   :inherited-members:
 
 
 saraga_carnatic
@@ -162,6 +184,7 @@ saraga_carnatic
 
 .. automodule:: mirdata.datasets.saraga_carnatic
    :members:
+   :inherited-members:
 
 
 saraga_hindustani
@@ -169,6 +192,7 @@ saraga_hindustani
 
 .. automodule:: mirdata.datasets.saraga_hindustani
    :members:
+   :inherited-members:
 
 
 tinysol
@@ -176,6 +200,7 @@ tinysol
 
 .. automodule:: mirdata.datasets.tinysol
    :members:
+   :inherited-members:
 
 
 tonality_classicaldb
@@ -183,9 +208,14 @@ tonality_classicaldb
 
 .. automodule:: mirdata.datasets.tonality_classicaldb
    :members:
+   :inherited-members:
+
 
 Core
 ----
+
+..automodule:: mirdata.initialize
+   :members:
 
 .. automodule:: mirdata.core
    :members:
@@ -201,10 +231,10 @@ Annotations
 Advanced
 --------
 
-mirdata.utils
-^^^^^^^^^^^^^
+mirdata.validate
+^^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.utils
+.. automodule:: mirdata.validate
    :members:
 
 

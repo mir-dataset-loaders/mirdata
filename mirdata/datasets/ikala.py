@@ -20,7 +20,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 
@@ -76,7 +75,7 @@ def _load_metadata(data_home):
     return singer_map
 
 
-DATA = utils.LargeData("ikala_index.json", _load_metadata)
+DATA = core.LargeData("ikala_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -118,12 +117,12 @@ class Track(core.Track):
         else:
             self.singer_id = None
 
-    @utils.cached_property
+    @core.cached_property
     def f0(self):
         """F0Data: The human-annotated singing voice pitch"""
         return load_f0(self.f0_path)
 
-    @utils.cached_property
+    @core.cached_property
     def lyrics(self):
         """LyricData: The human-annotated lyrics"""
         return load_lyrics(self.lyrics_path)
@@ -251,8 +250,43 @@ def load_lyrics(lyrics_path):
                 pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T,
-        lyrics,
-        pronunciations,
+        np.array([start_times, end_times]).T, lyrics, pronunciations,
     )
     return lyrics_data
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The ikala dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="ikala",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_vocal_audio)
+    def load_vocal_audio(self, *args, **kwargs):
+        return load_vocal_audio(*args, **kwargs)
+
+    @core.copy_docs(load_instrumental_audio)
+    def load_instrumental_audio(self, *args, **kwargs):
+        return load_instrumental_audio(*args, **kwargs)
+
+    @core.copy_docs(load_mix_audio)
+    def load_mix_audio(self, *args, **kwargs):
+        return load_mix_audio(*args, **kwargs)
+
+    @core.copy_docs(load_f0)
+    def load_f0(self, *args, **kwargs):
+        return load_f0(*args, **kwargs)
+
+    @core.copy_docs(load_lyrics)
+    def load_lyrics(self, *args, **kwargs):
+        return load_lyrics(*args, **kwargs)

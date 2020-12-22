@@ -18,7 +18,7 @@ def dataset(test_dataset):
     elif test_dataset not in mirdata.DATASETS:
         raise ValueError("{} is not a dataset in mirdata".format(test_dataset))
     data_home = os.path.join("tests/resources/mir_datasets_full", test_dataset)
-    return mirdata.Dataset(test_dataset, data_home)
+    return mirdata.initialize(test_dataset, data_home)
 
 
 # This is magically skipped by the the remote fixture `skip_remote` in conftest.py

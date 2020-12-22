@@ -23,7 +23,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 # this is the package, needed to load the annotations.
@@ -83,7 +82,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("dali_index.json", _load_metadata)
+DATA = core.LargeData("dali_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -159,27 +158,27 @@ class Track(core.Track):
             self.language = None
             self.audio_path = None
 
-    @utils.cached_property
+    @core.cached_property
     def notes(self):
         """NoteData: note-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, "notes")
 
-    @utils.cached_property
+    @core.cached_property
     def words(self):
         """LyricData: word-aligned lyric"""
         return load_annotations_granularity(self.annotation_path, "words")
 
-    @utils.cached_property
+    @core.cached_property
     def lines(self):
         """LyricData: line-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, "lines")
 
-    @utils.cached_property
+    @core.cached_property
     def paragraphs(self):
         """LyricData: paragraph-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, "paragraphs")
 
-    @utils.cached_property
+    @core.cached_property
     def annotation_object(self):
         """DALI.Annotations: DALI Annotations object"""
         return load_annotations_class(self.annotation_path)
@@ -278,3 +277,32 @@ def load_annotations_class(annotations_path):
         with gzip.open(annotations_path, "r") as f:
             output = pickle.load(f)
     return output
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The dali dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="dali",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_annotations_granularity)
+    def load_annotations_granularity(self, *args, **kwargs):
+        return load_annotations_granularity(*args, **kwargs)
+
+    @core.copy_docs(load_annotations_class)
+    def load_annotations_class(self, *args, **kwargs):
+        return load_annotations_class(*args, **kwargs)

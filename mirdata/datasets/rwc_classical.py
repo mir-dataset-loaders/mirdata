@@ -47,7 +47,6 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 BIBTEX = """@inproceedings{goto2002rwc,
@@ -132,7 +131,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("rwc_classical_index.json", _load_metadata)
+DATA = core.LargeData("rwc_classical_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -198,12 +197,12 @@ class Track(core.Track):
         self.duration = self._track_metadata["duration"]
         self.category = self._track_metadata["category"]
 
-    @utils.cached_property
+    @core.cached_property
     def sections(self):
         """SectionData: human labeled section annotations"""
         return load_sections(self.sections_path)
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
         """BeatData: human labeled beat annotations"""
         return load_beats(self.beats_path)
@@ -241,6 +240,15 @@ def load_audio(audio_path):
 
 
 def load_sections(sections_path):
+    """Load rwc section data from a file
+
+    Args:
+        sections_path (str): path to sections annotation file
+
+    Returns:
+        (annotations.SectionData): section data
+
+    """
     if not os.path.exists(sections_path):
         raise IOError("sections_path {} does not exist".format(sections_path))
 
@@ -259,8 +267,16 @@ def load_sections(sections_path):
 
 
 def _position_in_bar(beat_positions, beat_times):
-    """
-    Mapping to beat position in bar (e.g. 1, 2, 3, 4).
+    """Map raw rwc eat data to beat position in bar (e.g. 1, 2, 3, 4).
+
+    Args:
+        beat_positions (np.ndarray): raw rwc beat positions
+        beat_times (np.ndarray): raw rwc time stamps
+    
+    Returns:
+        beat_positions_corrected (np.ndarray): normalized beat positions
+        beat_times_corrected (np.ndarray): normalized time stamps
+
     """
     # Remove -1
     _beat_positions = np.delete(beat_positions, np.where(beat_positions == -1))
@@ -288,6 +304,15 @@ def _position_in_bar(beat_positions, beat_times):
 
 
 def load_beats(beats_path):
+    """Load rwc beat data from a file
+
+    Args:
+        beats_path (str): path to beats annotation file
+
+    Returns:
+        (annotations.BeatData): beat data
+
+    """
     if not os.path.exists(beats_path):
         raise IOError("beats_path {} does not exist".format(beats_path))
 
@@ -307,6 +332,15 @@ def load_beats(beats_path):
 
 
 def _duration_to_sec(duration):
+    """Convert min:sec duration values to seconds
+
+    Args:
+        duration (str): duration in form min:sec
+
+    Returns:
+        (float): duration in seconds
+
+    """
     if type(duration) == str:
         if ":" in duration:
             if len(duration.split(":")) <= 2:
@@ -317,3 +351,36 @@ def _duration_to_sec(duration):
                 )  # mistake in annotation in RM-J044
             total_secs = float(minutes) * 60 + float(secs)
             return total_secs
+    else:
+        raise ValueError(
+            "Expected duration to have type str, got {}".format(type(duration))
+        )
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The rwc_classical dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="rwc_classical",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)
