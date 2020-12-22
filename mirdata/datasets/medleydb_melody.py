@@ -162,7 +162,7 @@ class Track(core.Track):
         """the track's data in jams format:
 
         Returns:
-            (JAMS): return track data in jam format
+            (jams.JAMS): return track data in jam format
         """
         # jams does not support multiF0, so we skip melody3
         return jams_utils.jams_converter(

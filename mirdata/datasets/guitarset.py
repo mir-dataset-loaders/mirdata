@@ -289,7 +289,7 @@ class Track(core.Track):
         """the track's data in jams format:
 
         Returns:
-            (JAMS): return track data in jam format
+            (jams.JAMS): return track data in jam format
         """
         return jams.load(self.jams_path)
 

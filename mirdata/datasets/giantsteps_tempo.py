@@ -186,7 +186,7 @@ class Track(core.Track):
         """the track's data in jams format:
 
         Return:
-            (JAMS): return track data in jam format
+            (jams.JAMS): return track data in jam format
         """
         return jams.load(self.annotation_v1_path)
 
@@ -194,7 +194,7 @@ class Track(core.Track):
         """the track's data in jams format:
 
         Returns:
-            (JAMS): return track data in jam format
+            (jams.JAMS): return track data in jam format
         """
         return jams.load(self.annotation_v2_path)
 
