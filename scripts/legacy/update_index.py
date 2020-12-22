@@ -25,7 +25,7 @@ import mirdata
 from tqdm import tqdm
 from mirdata.utils import md5
 
-INDEXES_PATH = "../mirdata/datasets/indexes/"
+INDEXES_PATH = "../../mirdata/datasets/indexes/"
 ALL_INDEXES = os.listdir(INDEXES_PATH)
 DATASETS = [
     "beatles",
