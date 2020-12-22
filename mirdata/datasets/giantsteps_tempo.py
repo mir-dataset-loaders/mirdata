@@ -192,7 +192,7 @@ class Track(core.Track):
     def to_jams_v2(self):
         """the track's data in jams format:
 
-        Return:
+        Returns:
             (JAMS): return track data in jam format
         """
         return jams.load(self.annotation_v2_path)

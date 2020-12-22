@@ -160,7 +160,7 @@ class Track(core.Track):
     def to_jams(self):
         """the track's data in jams format:
 
-        Return:
+        Returns:
             (JAMS): return track data in jam format
         """
         # jams does not support multiF0, so we skip melody3

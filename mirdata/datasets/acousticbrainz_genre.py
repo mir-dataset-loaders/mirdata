@@ -170,7 +170,7 @@ class Track(core.Track):
     def genre(self):
         """human-labeled genre and subgenres list
 
-        return:
+        Returns:
             (list of string): human-labeled genre and subgenres list
         """
         return [genre for genre in self.track_id.split("#")[2:]]
@@ -180,7 +180,7 @@ class Track(core.Track):
     def mbid(self):
         """musicbrainz id
 
-        return:
+        Returns:
             (string): mbid
         """
         return self.track_id.split("#")[0]
@@ -189,7 +189,7 @@ class Track(core.Track):
     def mbid_group(self):
         """musicbrainz id group
 
-        return:
+        Returns:
             (string): mbid group
         """
         return self.track_id.split("#")[1]
@@ -199,7 +199,7 @@ class Track(core.Track):
     def artist(self):
         """metadata artist annotation
 
-        return:
+        Returns:
             (string): artist"""
         return load_extractor(self.path)["metadata"]["artist"]
 
@@ -207,7 +207,7 @@ class Track(core.Track):
     def title(self):
         """metadata title annotation
 
-        return:
+        Returns:
             (string): title
         """
         return load_extractor(self.path)["metadata"]["title"]
@@ -216,7 +216,7 @@ class Track(core.Track):
     def date(self):
         """metadata date annotation
 
-        return:
+        Returns:
             (string): date
         """
         return load_extractor(self.path)["metadata"]["date"]
@@ -225,7 +225,7 @@ class Track(core.Track):
     def file_name(self):
         """metadata file_name annotation
 
-        return:
+        Returns:
             (string): file name
         """
         return load_extractor(self.path)["metadata"]["file_name"]
@@ -234,7 +234,7 @@ class Track(core.Track):
     def album(self):
         """metadata album annotation
 
-        return:
+        Returns:
             (string): album
         """
         return load_extractor(self.path)["metadata"]["album"]
@@ -243,7 +243,7 @@ class Track(core.Track):
     def tracknumber(self):
         """metadata tracknumber annotation
 
-        return:
+        Returns:
             (string): tracknumber
         """
         return load_extractor(self.path)["metadata"]["tracknumber"]
@@ -252,7 +252,7 @@ class Track(core.Track):
     def tonal(self):
         """tonal features
 
-        return:
+        Returns:
             (dict):
             'tuning_frequency': estimated tuning frequency [Hz]. Algorithms: TuningFrequency
             'tuning_nontempered_energy_ratio' and 'tuning_equal_tempered_deviation'
@@ -278,7 +278,7 @@ class Track(core.Track):
     def low_level(self):
         """low_level track descritors.
 
-        return:
+        Returns:
 
         (dict):
 
@@ -352,7 +352,7 @@ class Track(core.Track):
     def rhythm(self):
         """rhythm essentia extractor descriptors
 
-        return:
+        Returns:
             (dict):
             'beats_position': time positions [sec] of detected beats using beat tracking algorithm by Degara et al., 2012. Algorithms: RhythmExtractor2013, BeatTrackerDegara
 
@@ -377,7 +377,7 @@ class Track(core.Track):
     def to_jams(self):
         """the track's data in jams format:
 
-        Return:
+        Returns:
             (JAMS): return track data in jam format
         """
         return jams_utils.jams_converter(
