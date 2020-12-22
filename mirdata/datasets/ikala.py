@@ -137,28 +137,31 @@ class Track(core.Track):
 
     @property
     def vocal_audio(self):
-        """Vocal Audio ground truth
+        """Vocal The track's audio
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         return load_vocal_audio(self.audio_path)
 
     @property
     def instrumental_audio(self):
-        """Mono instrumental Audio ground truth
+        """Mono instrumental The track's audio
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         return load_instrumental_audio(self.audio_path)
 
     @property
     def mix_audio(self):
-        """Mono mixture Audio ground truth
+        """Mono mixture The track's audio
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         return load_mix_audio(self.audio_path)
 

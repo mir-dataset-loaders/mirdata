@@ -206,10 +206,11 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """Audio ground truth
+        """The track's audio
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         return load_audio(self.audio_path)
 

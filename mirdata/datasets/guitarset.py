@@ -243,10 +243,11 @@ class Track(core.Track):
 
     @property
     def audio_mic(self):
-        """Audio ground truth
+        """The track's audio
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         audio, sr = load_audio(self.audio_mic_path)
         return audio, sr
@@ -256,7 +257,8 @@ class Track(core.Track):
         """Audio mix ground truth
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         audio, sr = load_audio(self.audio_mix_path)
         return audio, sr
@@ -266,7 +268,8 @@ class Track(core.Track):
         """Audio hex ground truth
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         audio, sr = load_multitrack_audio(self.audio_hex_path)
         return audio, sr
@@ -276,7 +279,8 @@ class Track(core.Track):
         """Audio bleed-removed ground truth
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         audio, sr = load_multitrack_audio(self.audio_hex_cln_path)
         return audio, sr

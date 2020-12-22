@@ -260,16 +260,17 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """Audio ground truth
+        """The track's audio
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         return load_audio(self.audio_path)
 
     @property
     def spectrogram(self):
-        """spectrogram of audio ground truth
+        """spectrogram of The track's audio
 
         Returns:
             np.ndarray: spectrogram

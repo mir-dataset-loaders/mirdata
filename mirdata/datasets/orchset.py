@@ -191,19 +191,21 @@ class Track(core.Track):
 
     @property
     def audio_mono(self):
-        """Mono Audio ground truth
+        """Mono The track's audio
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         return load_audio_mono(self.audio_path_mono)
 
     @property
     def audio_stereo(self):
-        """Stereo Audio ground truth
+        """Stereo The track's audio
 
         Returns:
-            (np.ndarray, float): audio signal, sample rate
+           (np.ndarray): audio signal
+           (float): sample rate
         """
         return load_audio_stereo(self.audio_path_stereo)
 
