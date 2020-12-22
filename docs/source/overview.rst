@@ -130,7 +130,7 @@ See the contributing docs :ref:`create_index` for more information about mirdata
 
 .. annotations:
 
-Annotations
+annotations
 ###########
 
 .. admonition:: TODO
