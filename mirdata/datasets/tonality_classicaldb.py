@@ -131,13 +131,13 @@ class Track(core.Track):
         return load_spectrum(self.spectrum_path)
 
     @core.cached_property
-    def HPCP(self):
+    def hpcp(self):
         """HPCP of ground truth audio
 
         Returns:
             (np.array): spectrum
         """
-        return load_HPCP(self.HPCP_path)
+        return load_hpcp(self.hpcp_path)
 
     @core.cached_property
     def mb_metadata(self):
@@ -146,7 +146,7 @@ class Track(core.Track):
         Returns:
             (dict): MusicBrainz metadata
         """
-        return load_mb(self.mb_path)
+        return load_musicbrainz(self.mb_path)
 
     @property
     def audio(self):
