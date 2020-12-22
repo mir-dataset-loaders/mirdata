@@ -6,12 +6,12 @@ import sys
 import types
 
 import mirdata
-from mirdata import utils, download_utils
+from mirdata import core, validate, download_utils
 
 import json
 import pytest
 
-from mirdata.utils import LargeData
+from mirdata.core import LargeData
 
 if sys.version_info.major == 3:
     builtin_module_name = "builtins"
@@ -45,7 +45,7 @@ def get_attributes_and_properties(class_instance):
             continue
 
         attr = getattr(class_instance.__class__, val)
-        if isinstance(attr, mirdata.utils.cached_property):
+        if isinstance(attr, mirdata.core.cached_property):
             cached_properties.append(val)
         elif isinstance(attr, property):
             properties.append(val)
@@ -72,17 +72,17 @@ def get_attributes_and_properties(class_instance):
 
 @pytest.fixture
 def mock_validated(mocker):
-    return mocker.patch.object(utils, "check_validated")
+    return mocker.patch.object(validate, "check_validated")
 
 
 @pytest.fixture
 def mock_validator(mocker):
-    return mocker.patch.object(utils, "validator")
+    return mocker.patch.object(validate, "validator")
 
 
 @pytest.fixture
 def mock_check_index(mocker):
-    return mocker.patch.object(utils, "check_index")
+    return mocker.patch.object(validate, "check_index")
 
 
 def test_remote_index(httpserver):
@@ -109,7 +109,6 @@ def test_remote_index(httpserver):
     os.remove("mirdata/datasets/indexes/acousticbrainz_genre_dataset_little_test.json")
 
 
-
 def test_md5(mocker):
     audio_file = b"audio1234"
 
@@ -119,7 +118,7 @@ def test_md5(mocker):
         "%s.open" % builtin_module_name, new=mocker.mock_open(read_data=audio_file)
     )
 
-    md5_checksum = utils.md5("test_file_path")
+    md5_checksum = validate.md5("test_file_path")
     assert expected_checksum == md5_checksum
 
 
@@ -144,7 +143,9 @@ def test_check_index(test_index, expected_missing, expected_inv_checksum):
     with open(index_path) as index_file:
         test_index = json.load(index_file)
 
-    missing_files, invalid_checksums = utils.check_index(test_index, "tests/resources/")
+    missing_files, invalid_checksums = validate.check_index(
+        test_index, "tests/resources/"
+    )
 
     assert expected_missing == missing_files
     assert expected_inv_checksum == invalid_checksums
@@ -167,7 +168,7 @@ def test_check_index(test_index, expected_missing, expected_inv_checksum):
 def test_validator(mocker, mock_check_index, missing_files, invalid_checksums):
     mock_check_index.return_value = missing_files, invalid_checksums
 
-    m, c = utils.validator("foo", "bar", False)
+    m, c = validate.validator("foo", "bar", False)
     assert m == missing_files
     assert c == invalid_checksums
     mock_check_index.assert_called_once_with("foo", "bar", False)

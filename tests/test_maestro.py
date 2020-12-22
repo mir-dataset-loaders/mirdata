@@ -123,28 +123,30 @@ def test_download_partial(httpserver):
             destination_dir="maestro-v2.0.0",
         ),
     }
-    maestro._download(data_home, remotes, None, None, False, False)
+    dataset = maestro.Dataset(data_home)
+    dataset.remotes = remotes
+    dataset.download(None, False, False)
     assert os.path.exists(os.path.join(data_home, "1-maestro-v2.0.0.json"))
     assert not os.path.exists(os.path.join(data_home, "2-maestro-v2.0.0.json"))
     assert not os.path.exists(os.path.join(data_home, "3-maestro-v2.0.0.json"))
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
-    maestro._download(data_home, remotes, ["all", "midi"], None, False, False)
+    dataset.download(["all", "midi"], False, False)
     assert os.path.exists(os.path.join(data_home, "1-maestro-v2.0.0.json"))
     assert not os.path.exists(os.path.join(data_home, "2-maestro-v2.0.0.json"))
     assert not os.path.exists(os.path.join(data_home, "3-maestro-v2.0.0.json"))
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
-    maestro._download(data_home, remotes, ["metadata", "midi"], None, False, False)
+    dataset.download(["metadata", "midi"], False, False)
     assert not os.path.exists(os.path.join(data_home, "1-maestro-v2.0.0.json"))
     assert os.path.exists(os.path.join(data_home, "2-maestro-v2.0.0.json"))
     assert not os.path.exists(os.path.join(data_home, "3-maestro-v2.0.0.json"))
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
-    maestro._download(data_home, remotes, ["metadata"], None, False, False)
+    dataset.download(["metadata"], False, False)
     assert not os.path.exists(os.path.join(data_home, "1-maestro-v2.0.0.json"))
     assert not os.path.exists(os.path.join(data_home, "2-maestro-v2.0.0.json"))
     assert os.path.exists(os.path.join(data_home, "3-maestro-v2.0.0.json"))
@@ -168,7 +170,9 @@ def test_download(httpserver):
             destination_dir=None,
         )
     }
-    maestro._download(data_home, remotes, None, None, False, False)
+    dataset = maestro.Dataset(data_home)
+    dataset.remotes = remotes
+    dataset.download(None, False, False)
 
     assert os.path.exists(data_home)
     assert not os.path.exists(os.path.join(data_home, "maestro-v2.0.0"))
@@ -203,7 +207,8 @@ def test_download(httpserver):
             destination_dir=None,
         )
     }
-    maestro._download(data_home, remotes, ["midi"], None, False, False)
+    dataset.remotes = remotes
+    dataset.download(["midi"], False, False)
 
     assert os.path.exists(data_home)
     assert not os.path.exists(os.path.join(data_home, "maestro-v2.0.0"))
@@ -238,7 +243,8 @@ def test_download(httpserver):
             destination_dir=None,
         )
     }
-    maestro._download(data_home, remotes, ["metadata"], None, False, False)
+    dataset.remotes = remotes
+    dataset.download(["metadata"], False, False)
 
     assert os.path.exists(data_home)
     assert not os.path.exists(os.path.join(data_home, "maestro-v2.0.0"))

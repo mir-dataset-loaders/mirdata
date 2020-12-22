@@ -21,7 +21,7 @@ Fortunately, we can download Orchset dataset directly.
     :linenos:
 
     import mirdata
-    orchset = mirdata.Dataset("orchset")
+    orchset = mirdata.initialize("orchset")
     # Download the Orchset Dataset
     orchset.download()
 
@@ -71,7 +71,7 @@ metadata, we could do the following:
         return time_stamps, melody_f0
 
     # Evaluate on the full dataset
-    orchset = mirdata.Dataset("orchset")
+    orchset = mirdata.initialize("orchset")
     orchset_scores = {}
     orchset_data = orchset.load_tracks()
     for track_id, track_data in orchset_data.items():
@@ -138,7 +138,7 @@ For example, to load the melody annotations from Orchset into memory, we can sim
     import mirdata
     
     # get the orchset dataset
-    orchset = mirdata.Dataset("orchset")
+    orchset = mirdata.initialize("orchset")
 
     # Load a specific track
     track = orchset.track('Beethoven-S3-I-ex1')
@@ -156,10 +156,10 @@ However, if your data lives somewhere else, accessing the annotation will return
     import mirdata
     
     # get the orchset dataset
-    orchset = mirdata.Dataset("orchset")
+    orchset = mirdata.initialize("orchset", data_home='gs://my_custom/remote_path')
 
     # Load a single track, specifying the remote location
-    track = orchset.track('Beethoven-S3-I-ex1', data_home='gs://my_custom/remote_path')
+    track = orchset.track('Beethoven-S3-I-ex1')
     melody_path = track.melody_path
 
     print(melody_path)
@@ -199,7 +199,7 @@ The following is a simple example of a generator that can be used to create a te
 
     def orchset_generator():
         # using the default data_home
-        orchset = mirdata.Dataset("orchset")
+        orchset = mirdata.initialize("orchset")
         track_ids = orchset.track_ids()
         for track_id in track_ids:
             track = orchset.track(track_id)

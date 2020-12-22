@@ -1,34 +1,16 @@
 # -*- coding: utf-8 -*-
 
+import os
+import pkgutil
+
 from .version import version as __version__
 
+
 DATASETS = [
-    "acousticbrainz_genre",
-    "beatles",
-    "beatport_key",
-    "cante100",
-    "dali",
-    "giantsteps_key",
-    "giantsteps_tempo",
-    "groove_midi",
-    "gtzan_genre",
-    "guitarset",
-    "ikala",
-    "irmas",
-    "maestro",
-    "medley_solos_db",
-    "medleydb_melody",
-    "medleydb_pitch",
-    "mridangam_stroke",
-    "orchset",
-    "rwc_classical",
-    "rwc_jazz",
-    "rwc_popular",
-    "salami",
-    "saraga_carnatic",
-    "saraga_hindustani",
-    "tinysol",
-    "tonality_classicaldb",
+    d.name
+    for d in pkgutil.iter_modules(
+        [os.path.dirname(os.path.abspath(__file__)) + "/datasets"]
+    )
 ]
 
-from .core import Dataset
+from .initialize import initialize

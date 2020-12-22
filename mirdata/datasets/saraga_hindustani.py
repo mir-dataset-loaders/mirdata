@@ -23,16 +23,17 @@ For more information about the dataset as well as IAM and annotations, please re
 https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
 """
 
-import librosa
 import numpy as np
 import os
 import json
 import logging
+import librosa
+import csv
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils, annotations
+from mirdata import annotations
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -73,7 +74,7 @@ def _load_metadata(metadata_path):
         return metadata
 
 
-DATA = utils.LargeData("saraga_hindustani_index.json", _load_metadata)
+DATA = core.LargeData("saraga_hindustani_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -112,25 +113,25 @@ class Track(core.Track):
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
         # Annotation paths
-        self.ctonic_path = utils.none_path_join(
+        self.ctonic_path = core.none_path_join(
             [self._data_home, self._track_paths["ctonic"][0]]
         )
-        self.pitch_path = utils.none_path_join(
+        self.pitch_path = core.none_path_join(
             [self._data_home, self._track_paths["pitch"][0]]
         )
-        self.tempo_path = utils.none_path_join(
+        self.tempo_path = core.none_path_join(
             [self._data_home, self._track_paths["tempo"][0]]
         )
-        self.sama_path = utils.none_path_join(
+        self.sama_path = core.none_path_join(
             [self._data_home, self._track_paths["sama"][0]]
         )
-        self.sections_path = utils.none_path_join(
+        self.sections_path = core.none_path_join(
             [self._data_home, self._track_paths["sections"][0]]
         )
-        self.phrases_path = utils.none_path_join(
+        self.phrases_path = core.none_path_join(
             [self._data_home, self._track_paths["phrases"][0]]
         )
-        self.metadata_path = utils.none_path_join(
+        self.metadata_path = core.none_path_join(
             [self._data_home, self._track_paths["metadata"][0]]
         )
 
@@ -192,7 +193,7 @@ class Track(core.Track):
             else None
         )
 
-    @utils.cached_property
+    @core.cached_property
     def tonic(self):
         """Tonic annotation
 
@@ -201,7 +202,7 @@ class Track(core.Track):
         """
         return load_tonic(self.ctonic_path)
 
-    @utils.cached_property
+    @core.cached_property
     def pitch(self):
         """Pitch annotation
 
@@ -209,7 +210,7 @@ class Track(core.Track):
             (F0Data): pitch"""
         return load_pitch(self.pitch_path)
 
-    @utils.cached_property
+    @core.cached_property
     def tempo(self):
         """tempo annotations
 
@@ -217,7 +218,7 @@ class Track(core.Track):
             (dict): tempo"""
         return load_tempo(self.tempo_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sama(self):
         """Sama section annotations
 
@@ -225,7 +226,7 @@ class Track(core.Track):
             (BeatData): sama"""
         return load_sama(self.sama_path)
 
-    @utils.cached_property
+    @core.cached_property
     def sections(self):
         """Track section annotations
 
@@ -234,7 +235,7 @@ class Track(core.Track):
         """
         return load_sections(self.sections_path)
 
-    @utils.cached_property
+    @core.cached_property
     def phrases(self):
         """Phrase annotations
 
@@ -308,8 +309,12 @@ def load_tonic(tonic_path):
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
-    with open(tonic_path, "r") as reader:
-        return float(reader.readline().split("\n")[0])
+    with open(tonic_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
+        for line in reader:
+            tonic = float(line[0])
+
+    return tonic
 
 
 def load_pitch(pitch_path):
@@ -330,10 +335,11 @@ def load_pitch(pitch_path):
 
     times = []
     freqs = []
-    with open(pitch_path, "r") as reader:
-        for line in reader.readlines():
-            times.append(float(line.split("\t")[0]))
-            freqs.append(float(line.split("\t")[1]))
+    with open(pitch_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
+        for line in reader:
+            times.append(float(line[0]))
+            freqs.append(float(line[1]))
 
     if not times:
         return None
@@ -374,31 +380,27 @@ def load_tempo(tempo_path):
     sections_abs_path = os.path.join(head, sections_path)
 
     sections = []
-    with open(sections_abs_path, "r") as reader:
-        for line in reader.readlines():
+    with open(sections_abs_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
+        for line in reader:
             if line != "\n":
-                sections.append(line.split(",")[3].split("\n")[0])
+                sections.append(line[3])
 
     section_count = 0
-    with open(tempo_path, "r") as reader:
-        for line in reader.readlines():
+    with open(tempo_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
+        for line in reader:
 
-            tempo_data = []
-            tempo = line.split(",")[0]
-            tempo_data.append(tempo)
-            matra = line.split(",")[1].split(" ")[1]
-            tempo_data.append(matra)
-            sama_interval = line.split(",")[2].split(" ")[1]
-            tempo_data.append(sama_interval)
-            matras_per_cycle = line.split(",")[3].split(" ")[1]
-            tempo_data.append(matras_per_cycle)
-            start_time = line.split(",")[4].split(" ")[1]
-            tempo_data.append(start_time)
-            duration = line.split(",")[5].split(" ")[1]
-            tempo_data.append(duration)
-
-            if "NaN" in tempo_data:
+            if "NaN" in line:
                 return None
+
+            # Store partial tempo information
+            tempo = line[0]
+            matra = line[1]
+            sama_interval = line[2]
+            matras_per_cycle = line[3]
+            start_time = line[4]
+            duration = line[5]
 
             tempo_annotation[sections[section_count]] = {
                 "tempo": float(tempo) if "." in tempo else int(tempo),
@@ -439,9 +441,10 @@ def load_sama(sama_path):
 
     beat_times = []
     beat_positions = []
-    with open(sama_path, "r") as reader:
-        for line in reader.readlines():
-            beat_times.append(float(line))
+    with open(sama_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
+        for line in reader:
+            beat_times.append(float(line[0]))
             beat_positions.append(1)
 
     if not beat_times:
@@ -469,20 +472,14 @@ def load_sections(sections_path):
     intervals = []
     section_labels = []
 
-    with open(sections_path, "r") as reader:
-        for line in reader.readlines():
-            if line != "\n":
+    with open(sections_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
+        for line in reader:
+            if line:
                 intervals.append(
-                    [
-                        float(line.split(",")[0]),
-                        float(line.split(",")[0]) + float(line.split(",")[2]),
-                    ]
+                    [float(line[0]), float(line[0]) + float(line[2]),]
                 )
-                section_labels.append(
-                    str(line.split(",")[3].split("\n")[0])
-                    + "-"
-                    + str(line.split(",")[1])
-                )
+                section_labels.append(str(line[3]) + "-" + str(line[1]))
 
     # Return None if sections file is empty
     if not intervals:
@@ -508,22 +505,64 @@ def load_phrases(phrases_path):
     if not os.path.exists(phrases_path):
         raise IOError("phrases_path {} does not exist".format(phrases_path))
 
-    intervals = []
+    start_times = []
+    end_times = []
     events = []
-    with open(phrases_path, "r") as reader:
-        for line in reader.readlines():
-            intervals.append(
-                [
-                    float(line.split("\t")[0]),
-                    float(line.split("\t")[0]) + float(line.split("\t")[2]),
-                ]
-            )
-            if len(line.split("\t")) == 4:
-                events.append(str(line.split("\t")[3].split("\n")[0]))
-            if len(line.split("\t")) == 3:
-                events.append(" ")
+    with open(phrases_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
+        for line in reader:
+            start_times.append(float(line[0]))
+            end_times.append(float(line[0]) + float(line[2]))
+            if len(line) == 4:
+                events.append(str(line[3].split("\n")[0]))
+            else:
+                events.append("")
 
-    if not intervals:
+    if not start_times:
         return None
 
-    return annotations.EventData(np.array(intervals), events)
+    return annotations.EventData(np.array([start_times, end_times]).T, events)
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The saraga_hindustani dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="saraga_hindustani",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_tonic)
+    def load_tonic(self, *args, **kwargs):
+        return load_tonic(*args, **kwargs)
+
+    @core.copy_docs(load_pitch)
+    def load_pitch(self, *args, **kwargs):
+        return load_pitch(*args, **kwargs)
+
+    @core.copy_docs(load_tempo)
+    def load_tempo(self, *args, **kwargs):
+        return load_tempo(*args, **kwargs)
+
+    @core.copy_docs(load_sama)
+    def load_sama(self, *args, **kwargs):
+        return load_sama(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_phrases)
+    def load_phrases(self, *args, **kwargs):
+        return load_phrases(*args, **kwargs)

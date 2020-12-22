@@ -37,17 +37,17 @@ by the COFLA team.
 For more details, please visit: http://www.cofla-project.com/?page_id=134
 
 """
-
-import logging
-import librosa
+import csv
 import os
-import numpy as np
+import logging
 import xml.etree.ElementTree as ET
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 from mirdata import annotations
 
 
@@ -63,8 +63,7 @@ BIBTEX = """@dataset{nadine_kroher_2018_1322542,
   version      = {1.0},
   doi          = {10.5281/zenodo.1322542},
   url          = {https://doi.org/10.5281/zenodo.1322542}
-}
-
+},
 @dataset{nadine_kroher_2018_1324183,
   author       = {Nadine Kroher and
                   José Miguel Díaz-Báñez and
@@ -204,7 +203,7 @@ def _load_metadata(data_home):
     return metadata
 
 
-DATA = utils.LargeData("cante100_index.json", _load_metadata)
+DATA = core.LargeData("cante100_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -277,7 +276,7 @@ class Track(core.Track):
         """
         return load_spectrogram(self.spectrogram_path)
 
-    @utils.cached_property
+    @core.cached_property
     def melody(self):
         """F0 annotated.
 
@@ -286,7 +285,7 @@ class Track(core.Track):
          """
         return load_melody(self.f0_path)
 
-    @utils.cached_property
+    @core.cached_property
     def notes(self):
         """Annotated notes
 
@@ -358,9 +357,13 @@ def load_melody(f0_path):
     if not os.path.exists(f0_path):
         raise IOError("f0_path {} does not exist".format(f0_path))
 
-    parsed_melody = np.genfromtxt(f0_path, delimiter=",")
-    times = parsed_melody[:, 0]
-    freqs = parsed_melody[:, 1]
+    times = []
+    freqs = []
+    with open(f0_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
+        for line in reader:
+            times.append(float(line[0]))
+            freqs.append(float(line[1]))
 
     times = np.array(times)
     freqs = np.array(freqs)
@@ -385,16 +388,49 @@ def load_notes(notes_path):
     intervals = []
     pitches = []
     confidence = []
-
-    parsed_notes = np.genfromtxt(notes_path, delimiter=",")
-    for row in parsed_notes:
-        intervals.append([row[0], float(row[0]) + float(row[1])])
-        # Convert midi value to frequency
-        pitches.append((440 / 32) * (2 ** ((int(row[2]) - 9) / 12)))
-        confidence.append(1.0)
+    with open(notes_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
+        for line in reader:
+            intervals.append([line[0], float(line[0]) + float(line[1])])
+            # Convert midi value to frequency
+            pitches.append((440 / 32) * (2 ** ((int(line[2]) - 9) / 12)))
+            confidence.append(1.0)
 
     return annotations.NoteData(
         np.array(intervals, dtype="float"),
         np.array(pitches, dtype="float"),
         np.array(confidence, dtype="float"),
     )
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The cante100 dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="cante100",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_spectrogram)
+    def load_spectrogram(self, *args, **kwargs):
+        return load_spectrogram(*args, **kwargs)
+
+    @core.copy_docs(load_melody)
+    def load_melody(self, *args, **kwargs):
+        return load_melody(*args, **kwargs)
+
+    @core.copy_docs(load_notes)
+    def load_notes(self, *args, **kwargs):
+        return load_notes(*args, **kwargs)
