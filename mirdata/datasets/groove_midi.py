@@ -1,46 +1,50 @@
 # -*- coding: utf-8 -*-
 """Groove MIDI Loader
 
-The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
-synthesized audio of human-performed, tempo-aligned expressive drumming.
-The dataset contains 1,150 MIDI files and over 22,000 measures of drumming.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-To enable a wide range of experiments and encourage comparisons between methods
-on the same data, Gillick et al. created a new dataset of drum performances
-recorded in MIDI format. They hired professional drummers and asked them to
-perform in multiple styles to a click track on a Roland TD-11 electronic drum kit.
-They also recorded the aligned, high-quality synthesized audio from the TD-11 and
-include it in the release.
+    The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
+    synthesized audio of human-performed, tempo-aligned expressive drumming.
+    The dataset contains 1,150 MIDI files and over 22,000 measures of drumming.
 
-The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
-existing ones:
+    To enable a wide range of experiments and encourage comparisons between methods
+    on the same data, Gillick et al. created a new dataset of drum performances
+    recorded in MIDI format. They hired professional drummers and asked them to
+    perform in multiple styles to a click track on a Roland TD-11 electronic drum kit.
+    They also recorded the aligned, high-quality synthesized audio from the TD-11 and
+    include it in the release.
 
-* The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000
-  measures of drumming.
-* Each performance was played along with a metronome set at a specific tempo
-  by the drummer.
-* The data includes performances by a total of 10 drummers, with more than 80%
-  of duration coming from hired professionals. The professionals were able to
-  improvise in a wide range of styles, resulting in a diverse dataset.
-* The drummers were instructed to play a mix of long sequences (several minutes
-  of continuous playing) and short beats and fills.
-* Each performance is annotated with a genre (provided by the drummer), tempo,
-  and anonymized drummer ID.
-* Most of the performances are in 4/4 time, with a few examples from other time
-  signatures.
-* Four drummers were asked to record the same set of 10 beats in their own
-  style. These are included in the test set split, labeled eval-session/groove1-10.
-* In addition to the MIDI recordings that are the primary source of data for the
-  experiments in this work, the authors captured the synthesized audio outputs of
-  the drum set and aligned them to within 2ms of the corresponding MIDI files.
+    The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
+    existing ones:
 
-A train/validation/test split configuration is provided for easier comparison of
-model accuracy on various tasks.
+    * The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000
+      measures of drumming.
+    * Each performance was played along with a metronome set at a specific tempo
+      by the drummer.
+    * The data includes performances by a total of 10 drummers, with more than 80%
+      of duration coming from hired professionals. The professionals were able to
+      improvise in a wide range of styles, resulting in a diverse dataset.
+    * The drummers were instructed to play a mix of long sequences (several minutes
+      of continuous playing) and short beats and fills.
+    * Each performance is annotated with a genre (provided by the drummer), tempo,
+      and anonymized drummer ID.
+    * Most of the performances are in 4/4 time, with a few examples from other time
+      signatures.
+    * Four drummers were asked to record the same set of 10 beats in their own
+      style. These are included in the test set split, labeled eval-session/groove1-10.
+    * In addition to the MIDI recordings that are the primary source of data for the
+      experiments in this work, the authors captured the synthesized audio outputs of
+      the drum set and aligned them to within 2ms of the corresponding MIDI files.
 
-The dataset is made available by Google LLC under a Creative Commons
-Attribution 4.0 International (CC BY 4.0) License.
+    A train/validation/test split configuration is provided for easier comparison of
+    model accuracy on various tasks.
 
-For more details, please visit: http://magenta.tensorflow.org/datasets/groove
+    The dataset is made available by Google LLC under a Creative Commons
+    Attribution 4.0 International (CC BY 4.0) License.
+
+    For more details, please visit: http://magenta.tensorflow.org/datasets/groove
+
 """
 import csv
 import glob

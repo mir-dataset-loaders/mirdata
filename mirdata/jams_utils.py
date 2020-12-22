@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""functions for converting mirdata annotations to jams format
+"""Utilities for converting mirdata Annotation objects to jams format.
 """
 import os
 

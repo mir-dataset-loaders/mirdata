@@ -57,7 +57,7 @@ Please see :ref:`contributing` for guidelines.
    source/mirdata
 
 .. toctree::
-   :caption: Related
+   :caption: Further Information
    :maxdepth: 1
 
    source/contributing

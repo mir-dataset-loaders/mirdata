@@ -1,37 +1,45 @@
 # -*- coding: utf-8 -*-
-"""
-Mridangam Stroke Dataset Loader
+"""Mridangam Stroke Dataset Loader
 
-The Mridangam Stroke dataset is a collection of individual strokes of
-the Mridangam in various tonics. The dataset comprises of 10 different
-strokes played on Mridangams with 6 different tonic values. The audio
-examples were recorded from a professional Carnatic percussionist in a
-semi-anechoic studio conditions by Akshay Anantapadmanabhan.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-Total audio samples: 6977
+    The Mridangam Stroke dataset is a collection of individual strokes of
+    the Mridangam in various tonics. The dataset comprises of 10 different
+    strokes played on Mridangams with 6 different tonic values. The audio
+    examples were recorded from a professional Carnatic percussionist in a
+    semi-anechoic studio conditions by Akshay Anantapadmanabhan.
 
-Used microphones:
-* SM-58 microphones
-* H4n ZOOM recorder.
+    Total audio samples: 6977
 
-Audio specifications
-* Sampling frequency: 44.1 kHz
-* Bit-depth: 16 bit
-* Audio format: .wav
+    Used microphones:
 
-The dataset can be used for training models for each Mridangam stroke. The
-presentation of the dataset took place on the IEEE International Conference
-on Acoustics, Speech and Signal Processing (ICASSP 2013) on May 2013.
-You can read the full publication here: https://repositori.upf.edu/handle/10230/25756
+    * SM-58 microphones
+    * H4n ZOOM recorder.
 
-Mridangam Dataset is annotated by storing the informat of each track in their filenames.
-The structure of the filename is:
-<TrackID>__<AuthorName>__<StrokeName>-<Tonic>-<InstanceNum>.wav
+    Audio specifications:
 
-The dataset is made available by CompMusic under a Creative Commons
-Attribution 3.0 Unported (CC BY 3.0) License.
+    * Sampling frequency: 44.1 kHz
+    * Bit-depth: 16 bit
+    * Audio format: .wav
 
-For more details, please visit: https://compmusic.upf.edu/mridangam-stroke-dataset
+    The dataset can be used for training models for each Mridangam stroke. The
+    presentation of the dataset took place on the IEEE International Conference
+    on Acoustics, Speech and Signal Processing (ICASSP 2013) on May 2013.
+    You can read the full publication here: https://repositori.upf.edu/handle/10230/25756
+
+    Mridangam Dataset is annotated by storing the informat of each track in their filenames.
+    The structure of the filename is:
+
+    .. code-block:: bash
+
+        <TrackID>__<AuthorName>__<StrokeName>-<Tonic>-<InstanceNum>.wav
+
+    The dataset is made available by CompMusic under a Creative Commons
+    Attribution 3.0 Unported (CC BY 3.0) License.
+
+    For more details, please visit: https://compmusic.upf.edu/mridangam-stroke-dataset
+
 """
 
 import os

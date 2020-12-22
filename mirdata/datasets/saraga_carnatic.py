@@ -1,27 +1,34 @@
 # -*- coding: utf-8 -*-
 """Saraga Dataset Loader
 
-This dataset contains time aligned melody, rhythm and structural annotations of Carnatic Music tracks, extracted
-from the large open Indian Art Music corpora of CompMusic.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The dataset contains the following manual annotations referring to audio files:
-Section and tempo annotations stored as start and end timestamps together with the name of the section and
-tempo during the section (in a separate file). Sama annotations referring to rhythmic cycle boundaries stored
-as timestamps. Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
-({S, r, R, g, G, m, M, P, d, D, n, N}). Audio features automatically extracted and stored: pitch and tonic.
-The annotations are stored in text files, named as the audio filename but with the respective extension at the
-end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
+    This dataset contains time aligned melody, rhythm and structural annotations of Carnatic Music tracks, extracted
+    from the large open Indian Art Music corpora of CompMusic.
 
-The dataset contains a total of 249 tracks.
-A total of 168 tracks have multitrack audio.
+    The dataset contains the following manual annotations referring to audio files:
 
-The files of this dataset are shared with the following license:
-Creative Commons Attribution Non Commercial Share Alike 4.0 International
+    - Section and tempo annotations stored as start and end timestamps together with the name of the section and
+      tempo during the section (in a separate file)
+    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps. 
+    - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
+      ({S, r, R, g, G, m, M, P, d, D, n, N}). 
+    - Audio features automatically extracted and stored: pitch and tonic.
+    - The annotations are stored in text files, named as the audio filename but with the respective extension at the
+      end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
 
-Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+    The dataset contains a total of 249 tracks.
+    A total of 168 tracks have multitrack audio.
 
-For more information about the dataset as well as IAM and annotations, please refer to:
-https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
+    The files of this dataset are shared with the following license:
+    Creative Commons Attribution Non Commercial Share Alike 4.0 International
+
+    Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+
+    For more information about the dataset as well as IAM and annotations, please refer to:
+    https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
+
 """
 
 import numpy as np
@@ -309,8 +316,8 @@ def load_tonic(tonic_path):
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
-    with open(tonic_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(tonic_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             tonic = float(line[0])
 
@@ -335,8 +342,8 @@ def load_pitch(pitch_path):
 
     times = []
     freqs = []
-    with open(pitch_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(pitch_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             times.append(float(line[0]))
             freqs.append(float(line[1]))
@@ -372,8 +379,8 @@ def load_tempo(tempo_path):
 
     tempo_annotation = {}
 
-    with open(tempo_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=',')
+    with open(tempo_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
         tempo_data = next(reader)
         tempo_apm = tempo_data[0]
         tempo_bpm = tempo_data[1]
@@ -422,8 +429,8 @@ def load_sama(sama_path):
 
     beat_times = []
     beat_positions = []
-    with open(sama_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(sama_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             beat_times.append(float(line[0]))
             beat_positions.append(1)
@@ -452,15 +459,12 @@ def load_sections(sections_path):
 
     intervals = []
     section_labels = []
-    with open(sections_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(sections_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
-            if line != '\n':
+            if line != "\n":
                 intervals.append(
-                    [
-                        float(line[0]),
-                        float(line[0]) + float(line[2]),
-                    ]
+                    [float(line[0]), float(line[0]) + float(line[2]),]
                 )
                 section_labels.append(str(line[3]))
 
@@ -490,17 +494,15 @@ def load_phrases(phrases_path):
     start_times = []
     end_times = []
     events = []
-    with open(phrases_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(phrases_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             start_times.append(float(line[0]))
-            end_times.append(
-                float(line[0]) + float(line[2])
-            )
+            end_times.append(float(line[0]) + float(line[2]))
             if len(line) == 4:
-                events.append(str(line[3].split('\n')[0]))
+                events.append(str(line[3].split("\n")[0]))
             else:
-                events.append('')
+                events.append("")
 
     if not start_times:
         return None
