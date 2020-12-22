@@ -272,7 +272,7 @@ class Track(core.Track):
         """spectrogram of The track's audio
 
         Returns:
-            np.ndarray: spectrogram
+            (np.ndarray): spectrogram
         """
         return load_spectrogram(self.spectrogram_path)
 
@@ -290,7 +290,7 @@ class Track(core.Track):
         """Annotated notes
 
         Returns:
-            NoteData: notes
+            (NoteData): notes
         """
         return load_notes(self.notes_path)
 
@@ -316,7 +316,7 @@ def load_spectrogram(spectrogram_path):
         spectrogram_path (str): path to audio file
 
     Returns:
-        np.array: spectrogram
+        (np.ndarray): spectrogram
 
     """
     if not os.path.exists(spectrogram_path):
@@ -379,7 +379,7 @@ def load_notes(notes_path):
         notes_path (str): path to notes file
 
     Returns:
-        NoteData: note annotations
+        (NoteData): note annotations
 
     """
     if not os.path.exists(notes_path):
