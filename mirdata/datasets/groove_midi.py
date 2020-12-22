@@ -333,8 +333,8 @@ class Track(core.Track):
     def to_jams(self):
         """the track's data in jams format:
 
-            Returns:
-                (JAMS): return track data in jam format
+        Returns:
+            (JAMS): return track data in jam format
         """
         return jams_utils.jams_converter(
             beat_data=[(self.beats, "midi beats")],

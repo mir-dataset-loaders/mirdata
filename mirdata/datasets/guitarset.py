@@ -211,11 +211,11 @@ class Track(core.Track):
 
         Returns:
             (dict):
-            From Low E string to high e string.
-            - 'E': F0Data(...),
-            - 'A': F0Data(...),
-            -  ...
-            - 'e': F0Data(...)
+                From Low E string to high e string.
+                - 'E': F0Data(...),
+                - 'A': F0Data(...),
+                -  ...
+                - 'e': F0Data(...)
         """
         contours = {}
         # iterate over 6 strings
@@ -229,11 +229,11 @@ class Track(core.Track):
 
         Returns:
             (dict):
-            From Low E string to high e string.
-            - 'E': NoteData(...),
-            - 'A': NoteData(...),
-            -  ...
-            - 'e': NoteData(...)
+                From Low E string to high e string.
+                - 'E': NoteData(...),
+                - 'A': NoteData(...),
+                -  ...
+                - 'e': NoteData(...)
         """
         notes = {}
         # iterate over 6 strings
