@@ -1,26 +1,37 @@
 # -*- coding: utf-8 -*-
 """Tonality classicalDB Dataset Loader
-The Tonality classicalDB Dataset includes 881 classical musical pieces across different styles from s.XVII to s.XX annotated with single-key labels.
 
-Tonality classicalDB Dataset was created as part of:
-Gómez, E. (2006). PhD Thesis. Tonal description of music audio signals.
-Department of Information and Communication Technologies.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-This dataset is mainly intended to assess the performance of computational key estimation algorithms in classical music.
+    The Tonality classicalDB Dataset includes 881 classical musical pieces across different styles from s.XVII to s.XX 
+    annotated with single-key labels.
 
-2020 note: The audios are privates. If you don't have the original audio collection, you could create it from your private collection because most of the recordings are well known. To this end, we provide musicbrainz metadata. Moreover, we have added the spectrum and HPCP chromagram of each audio.
+    Tonality classicalDB Dataset was created as part of:
 
-This dataset can be used with mirdata library:
-https://github.com/mir-dataset-loaders/mirdata
+    .. code-block:: latex
 
-Spectrum features have been computed as is shown here:
-https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/Tonality_classicalDB/ClassicalDB_spectrum_features.ipynb
+        Gómez, E. (2006). PhD Thesis. Tonal description of music audio signals.
+        Department of Information and Communication Technologies.
 
-HPCP chromagram has been computed as is shown here:
-https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/Tonality_classicalDB/ClassicalDB_HPCP_features.ipynb
+    This dataset is mainly intended to assess the performance of computational key estimation algorithms in classical music.
 
-Musicbrainz metadata has been computed as is shown here:
-https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/Tonality_classicalDB/ClassicalDB_musicbrainz_metadata.ipynb
+    2020 note: The audio is privates. If you don't have the original audio collection, you could create it from your private collection 
+    because most of the recordings are well known. To this end, we provide musicbrainz metadata. Moreover, we have added the spectrum and 
+    HPCP chromagram of each audio.
+
+    This dataset can be used with mirdata library:
+    https://github.com/mir-dataset-loaders/mirdata
+
+    Spectrum features have been computed as is shown here:
+    https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/Tonality_classicalDB/ClassicalDB_spectrum_features.ipynb
+
+    HPCP chromagram has been computed as is shown here:
+    https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/Tonality_classicalDB/ClassicalDB_HPCP_features.ipynb
+
+    Musicbrainz metadata has been computed as is shown here:
+    https://github.com/mir-dataset-loaders/mirdata-notebooks/blob/master/Tonality_classicalDB/ClassicalDB_musicbrainz_metadata.ipynb
+
 """
 
 import json

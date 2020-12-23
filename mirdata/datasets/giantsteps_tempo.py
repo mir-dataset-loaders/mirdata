@@ -1,66 +1,70 @@
 # -*- coding: utf-8 -*-
 """giantsteps_tempo Dataset Loader
 
-name: GiantSteps (tempo+genre)
+.. admonition:: Dataset Info
+    :class: dropdown
 
-contact:
-  * Richard Vogl <richard.vogl@tuwien.ac.at>
-  * Peter Knees <peter.knees@tuwien.ac.at>
+    GiantSteps tempo + genre is a collection of annotations for 664 2min(1) audio previews from
+    www.beatport.com, created by Richard Vogl <richard.vogl@tuwien.ac.at> and 
+    Peter Knees <peter.knees@tuwien.ac.at>
 
-description:  collection of annotations for 664 2min(1) audio previews from
-  www.beatport.com
+    references:
 
-references:
+    .. [giantsteps_tempo_cit_1] Peter Knees, Ángel Faraldo, Perfecto Herrera, Richard Vogl,
+        Sebastian Böck, Florian Hörschläger, Mickael Le Goff: "Two data
+        sets for tempo estimation and key detection in electronic dance
+        music annotated from user corrections", Proc. of the 16th
+        Conference of the International Society for Music Information
+        Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
 
-.. [giantsteps_tempo_cit_1] Peter Knees, Ángel Faraldo, Perfecto Herrera, Richard Vogl,
-    Sebastian Böck, Florian Hörschläger, Mickael Le Goff: "Two data
-    sets for tempo estimation and key detection in electronic dance
-    music annotated from user corrections", Proc. of the 16th
-    Conference of the International Society for Music Information
-    Retrieval (ISMIR'15), Oct. 2015, Malaga, Spain.
+    .. [giantsteps_tempo_cit_2] Hendrik Schreiber, Meinard Müller: "A Crowdsourced Experiment
+        for Tempo Estimation of Electronic Dance Music", Proc. of the
+        19th Conference of the International Society for Music
+        Information Retrieval (ISMIR'18), Sept. 2018, Paris, France.
 
-.. [giantsteps_tempo_cit_2] Hendrik Schreiber, Meinard Müller: "A Crowdsourced Experiment
-    for Tempo Estimation of Electronic Dance Music", Proc. of the
-    19th Conference of the International Society for Music
-    Information Retrieval (ISMIR'18), Sept. 2018, Paris, France.
+    The audio files (664 files, size ~1gb) can be downloaded from http://www.beatport.com/
+    using the bash script:
 
-annotations: tempo (bpm), genre
+    https://github.com/GiantSteps/giantsteps-tempo-dataset/blob/master/audio_dl.sh
 
-notes:
-The audio files (664 files, size ~1gb) can be downloaded from http://www.beatport.com/
-using the bash script:
+    To download the files manually use links of the following form:
+    http://geo-samples.beatport.com/lofi/<name of mp3 file>
+    e.g.:
+    http://geo-samples.beatport.com/lofi/5377710.LOFI.mp3
 
- https://github.com/GiantSteps/giantsteps-tempo-dataset/blob/master/audio_dl.sh
+    To convert the audio files to .wav use the script found at 
+    https://github.com/GiantSteps/giantsteps-tempo-dataset/blob/master/convert_audio.sh and run:
 
-To download the files manually use links of the following form:
-http://geo-samples.beatport.com/lofi/<name of mp3 file>
-e.g.:
-http://geo-samples.beatport.com/lofi/5377710.LOFI.mp3
+    .. code-block:: bash
 
-To convert the audio files to .wav use (bash + sox):
+        ./convert_audio.sh
 
-./convert_audio.sh
+    To retrieve the genre information, the JSON contained within the website was parsed.
+    The tempo annotation was extracted from forum entries of people correcting the bpm values (i.e. manual annotation of tempo).
+    For more information please refer to the publication [giantsteps_tempo_cit_1]_.
 
-To retrieve the genre information, the JSON contained within the website was parsed.
-The tempo annotation was extracted from forum entries of people correcting the bpm values (i.e. manual annotation of tempo).
-For more information please refer to the publication [giantsteps_tempo_cit_1]_.
+    [giantsteps_tempo_cit_2]_ found some files without tempo. There are:
 
-[giantsteps_tempo_cit_2]_ found some files without tempo. There are:
+    .. code-block:: bash
 
-3041381.LOFI.mp3
-3041383.LOFI.mp3
-1327052.LOFI.mp3
+        3041381.LOFI.mp3
+        3041383.LOFI.mp3
+        1327052.LOFI.mp3
 
-Their v2 tempo is denoted as 0.0 in tempo and mirex and has no annotation in the JAMS format.
+    Their v2 tempo is denoted as 0.0 in tempo and mirex and has no annotation in the JAMS format.
 
-(1): Most of the audio files are 120 seconds long. Exceptions are:
-name              length
-906760.LOFI.mp3   62
-1327052.LOFI.mp3  70
-4416506.LOFI.mp3  80
-1855660.LOFI.mp3  119
-3419452.LOFI.mp3  119
-3577631.LOFI.mp3  119
+    Most of the audio files are 120 seconds long. Exceptions are:
+
+    .. code-block:: bash
+
+        name              length (sec)
+        906760.LOFI.mp3   62
+        1327052.LOFI.mp3  70
+        4416506.LOFI.mp3  80
+        1855660.LOFI.mp3  119
+        3419452.LOFI.mp3  119
+        3577631.LOFI.mp3  119
+
 """
 import os
 

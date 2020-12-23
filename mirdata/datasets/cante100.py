@@ -2,39 +2,47 @@
 """
 cante100 Loader
 
-The cante100 dataset contains 100 tracks taken from the COFLA corpus. We defined 10 style
-families of which 10 tracks each are included. Apart from the style family, we manually
-annotated the sections of the track in which the vocals are present. In addition, we
-provide a number of low-level descriptors and the fundamental frequency corresponding to
-the predominant melody for each track. The meta-information includes editoral meta-data
-and the musicBrainz ID.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-Total tracks: 100
+    The cante100 dataset contains 100 tracks taken from the COFLA corpus. We defined 10 style
+    families of which 10 tracks each are included. Apart from the style family, we manually
+    annotated the sections of the track in which the vocals are present. In addition, we
+    provide a number of low-level descriptors and the fundamental frequency corresponding to
+    the predominant melody for each track. The meta-information includes editoral meta-data
+    and the musicBrainz ID.
 
-cante100 audio is only available upon request. To download the audio request access in
-this link: https://zenodo.org/record/1324183. Then
-unzip the audio into the cante100 general dataset folder for the rest of annotations
-and files.
+    Total tracks: 100
 
-Audio specifications
-* Sampling frequency: 44.1 kHz
-* Bit-depth: 16 bit
-* Audio format: .mp3
+    cante100 audio is only available upon request. To download the audio request access in
+    this link: https://zenodo.org/record/1324183. Then
+    unzip the audio into the cante100 general dataset folder for the rest of annotations
+    and files.
 
-cante100 dataset has spectrogram available, in csv format. spectrogram is available to download
-without request needed, so at first instance, cante100 loader uses the spectrogram of the tracks.
+    Audio specifications:
 
-The available annotations are:
-- F0 (predominant melody)
-- Automatic transcription of notes (of singing voice)
+    - Sampling frequency: 44.1 kHz
+    - Bit-depth: 16 bit
+    - Audio format: .mp3
 
-CANTE100 LICENSE COPIED FROM ZENODO PAGE:
-The provided datasets are offered free of charge for internal non-commercial use.
-We do not grant any rights for redistribution or modification. All data collections were gathered
-by the COFLA team.
-© COFLA 2015. All rights reserved.
+    cante100 dataset has spectrogram available, in csv format. spectrogram is available to download
+    without request needed, so at first instance, cante100 loader uses the spectrogram of the tracks.
 
-For more details, please visit: http://www.cofla-project.com/?page_id=134
+    The available annotations are:
+
+    - F0 (predominant melody)
+    - Automatic transcription of notes (of singing voice)
+
+    CANTE100 LICENSE (COPIED FROM ZENODO PAGE)
+
+    .. code-block:: latex
+
+        The provided datasets are offered free of charge for internal non-commercial use.
+        We do not grant any rights for redistribution or modification. All data collections were gathered
+        by the COFLA team.
+        © COFLA 2015. All rights reserved.
+
+    For more details, please visit: http://www.cofla-project.com/?page_id=134
 
 """
 import csv

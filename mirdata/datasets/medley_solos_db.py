@@ -1,26 +1,30 @@
 # -*- coding: utf-8 -*-
 """Medley-solos-DB Dataset Loader.
 
-Medley-solos-DB is a cross-collection dataset for automatic musical instrument
-recognition in solo recordings.
-It consists of a training set of 3-second audio clips, which are extracted from
-the MedleyDB dataset (Bittner et al., ISMIR 2014) as well as a test set of
-3-second clips, which are extracted from the solosDB dataset (Essid et al.,
-IEEE TASLP 2009).
-Each of these clips contains a single instrument among a taxonomy of eight:
+.. admonition:: Dataset Info
+    :class: dropdown
 
-    0. clarinet,
-    1. distorted electric guitar,
-    2. female singer,
-    3. flute,
-    4. piano,
-    5. tenor saxophone,
-    6. trumpet, and
-    7. violin.
+    Medley-solos-DB is a cross-collection dataset for automatic musical instrument
+    recognition in solo recordings. It consists of a training set of 3-second audio 
+    clips, which are extracted from the MedleyDB dataset (Bittner et al., ISMIR 2014) 
+    as well as a test set of 3-second clips, which are extracted from the solosDB 
+    dataset (Essid et al., IEEE TASLP 2009).
 
-The Medley-solos-DB dataset is the dataset that is used in the benchmarks of
-musical instrument recognition in the publications of Lostanlen and Cella
-(ISMIR 2016) and Andén et al. (IEEE TSP 2019).
+    Each of these clips contains a single instrument among a taxonomy of eight:
+
+        0. clarinet,
+        1. distorted electric guitar,
+        2. female singer,
+        3. flute,
+        4. piano,
+        5. tenor saxophone,
+        6. trumpet, and
+        7. violin.
+
+    The Medley-solos-DB dataset is the dataset that is used in the benchmarks of
+    musical instrument recognition in the publications of Lostanlen and Cella
+    (ISMIR 2016) and Andén et al. (IEEE TSP 2019).
+
 """
 
 import csv

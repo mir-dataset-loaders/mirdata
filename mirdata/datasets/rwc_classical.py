@@ -1,41 +1,54 @@
 # -*- coding: utf-8 -*-
 """RWC Classical Dataset Loader
 
-The Classical Music Database consists of 50 pieces
-* Symphonies: 4 pieces
-* Concerti: 2 pieces
-* Orchestral music: 4 pieces
-* Chamber music: 10 pieces
-* Solo performances: 24 pieces
-* Vocal performances: 6 pieces
+.. admonition:: Dataset Info
+    :class: dropdown
 
-Note about Beat annotations:
+    The Classical Music Database consists of 50 pieces
 
-In general, 48 corresponds to the duration of a quarter note (crotchet).
-24 corresponds to the duration of an eighth note (quaver).
-384 corresponds to the position of a downbeat.
+    * Symphonies: 4 pieces
+    * Concerti: 2 pieces
+    * Orchestral music: 4 pieces
+    * Chamber music: 10 pieces
+    * Solo performances: 24 pieces
+    * Vocal performances: 6 pieces
 
-In 4/4 time signature, they correspond as follows:
-384: 1st beat in a measure (i.e., downbeat position)
-48: 2nd beat
-96: 3rd beat
-144 4th beat
+    **A note about the Beat annotations:**
 
-In 3/4 time signature, they correspond as follows:
-384: 1st beat in a measure (i.e., downbeat position)
-48: 2nd beat
-96: 3rd beat
+    - 48 corresponds to the duration of a quarter note (crotchet)
+    - 24 corresponds to the duration of an eighth note (quaver)
+    - 384 corresponds to the position of a downbeat
 
-In 6/8 time signature, they correspond as follows:
-384: 1st beat in a measure (i.e., downbeat position)
-24: 2nd beat
-48: 3rd beat
-72: 4th beat
-96: 5th beat
-120: 6th beat
+    In 4/4 time signature, they correspond as follows:
 
+    .. code-block:: latex
 
-For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html
+        384: 1st beat in a measure (i.e., downbeat position)
+        48: 2nd beat
+        96: 3rd beat
+        144 4th beat
+
+    In 3/4 time signature, they correspond as follows:
+
+    .. code-block:: latex
+
+        384: 1st beat in a measure (i.e., downbeat position)
+        48: 2nd beat
+        96: 3rd beat
+
+    In 6/8 time signature, they correspond as follows:
+    
+    .. code-block:: latex
+
+        384: 1st beat in a measure (i.e., downbeat position)
+        24: 2nd beat
+        48: 3rd beat
+        72: 4th beat
+        96: 5th beat
+        120: 6th beat
+
+    For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html
+
 """
 import csv
 import logging

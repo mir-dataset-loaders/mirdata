@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """ORCHSET Dataset Loader
 
-Orchset is intended to be used as a dataset for the development and
-evaluation of melody extraction algorithms. This collection contains
-64 audio excerpts focused on symphonic music with their corresponding
-annotation of the melody.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
+    Orchset is intended to be used as a dataset for the development and
+    evaluation of melody extraction algorithms. This collection contains
+    64 audio excerpts focused on symphonic music with their corresponding
+    annotation of the melody.
+
+    For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 """
 

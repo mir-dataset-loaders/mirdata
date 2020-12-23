@@ -1,44 +1,47 @@
 # -*- coding: utf-8 -*-
 """TinySOL Dataset Loader.
 
-TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14
-different instruments:
+.. admonition:: Dataset Info
+    :class: dropdown
 
-    Bass Tuba
-    French Horn
-    Trombone
-    Trumpet in C
-    Accordion
-    Contrabass
-    Violin
-    Viola
-    Violoncello
-    Bassoon
-    Clarinet in B-flat
-    Flute
-    Oboe
-    Alto Saxophone
+    TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14
+    different instruments:
 
+    - Bass Tuba
+    - French Horn
+    - Trombone
+    - Trumpet in C
+    - Accordion
+    - Contrabass
+    - Violin
+    - Viola
+    - Violoncello
+    - Bassoon
+    - Clarinet in B-flat
+    - Flute
+    - Oboe
+    - Alto Saxophone
 
-These sounds were originally recorded at Ircam in Paris (France) between 1996
-and 1999, as part of a larger project named Studio On Line (SOL). Although SOL
-contains many combinations of mutes and extended playing techniques, TinySOL
-purely consists of sounds played in the so-called "ordinary" style, and in
-absence of mute.
+    These sounds were originally recorded at Ircam in Paris (France) between 1996
+    and 1999, as part of a larger project named Studio On Line (SOL). Although SOL
+    contains many combinations of mutes and extended playing techniques, TinySOL
+    purely consists of sounds played in the so-called "ordinary" style, and in
+    absence of mute.
 
-TinySOL can be used for education and research purposes. In particular, it can
-be employed as a dataset for training and/or evaluating music information
-retrieval (MIR) systems, for tasks such as instrument recognition or
-fundamental frequency estimation. For this purpose, we provide an official 5-fold
-split of TinySOL as a metadata attribute. This split has been carefully balanced
-in terms of instrumentation, pitch range, and dynamics. For the sake of research
-reproducibility, we encourage users of TinySOL to adopt this split and report
-their results in terms of average performance across folds.
+    TinySOL can be used for education and research purposes. In particular, it can
+    be employed as a dataset for training and/or evaluating music information
+    retrieval (MIR) systems, for tasks such as instrument recognition or
+    fundamental frequency estimation. For this purpose, we provide an official 5-fold
+    split of TinySOL as a metadata attribute. This split has been carefully balanced
+    in terms of instrumentation, pitch range, and dynamics. For the sake of research
+    reproducibility, we encourage users of TinySOL to adopt this split and report
+    their results in terms of average performance across folds.
 
-We encourage TinySOL users to subscribe to the Ircam Forum so that they can
-have access to larger versions of SOL.
+    We encourage TinySOL users to subscribe to the Ircam Forum so that they can
+    have access to larger versions of SOL.
 
-For more details, please visit: https://www.orch-idea.org/
+    For more details, please visit: https://www.orch-idea.org/
+
 """
 
 import csv

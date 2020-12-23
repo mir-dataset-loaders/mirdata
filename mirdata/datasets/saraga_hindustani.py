@@ -1,26 +1,34 @@
 # -*- coding: utf-8 -*-
 """Saraga Dataset Loader
 
-This dataset contains time aligned melody, rhythm and structural annotations of Hindustani Music tracks, extracted
-from the large open Indian Art Music corpora of CompMusic.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The dataset contains the following manual annotations referring to audio files:
-Section and tempo annotations stored as start and end timestamps together with the name of the section and
-tempo during the section (in a separate file). Sama annotations referring to rhythmic cycle boundaries stored
-as timestamps. Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
-({S, r, R, g, G, m, M, P, d, D, n, N}). Audio features automatically extracted and stored: pitch and tonic.
-The annotations are stored in text files, named as the audio filename but with the respective extension at the
-end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
+    This dataset contains time aligned melody, rhythm and structural annotations of Hindustani Music tracks, extracted
+    from the large open Indian Art Music corpora of CompMusic.
 
-The dataset contains a total of 108 tracks.
+    The dataset contains the following manual annotations referring to audio files:
 
-The files of this dataset are shared with the following license:
-Creative Commons Attribution Non Commercial Share Alike 4.0 International
+    - Section and tempo annotations stored as start and end timestamps together with the name of the section and
+      tempo during the section (in a separate file) 
+    - Sama annotations referring to rhythmic cycle boundaries stored
+      as timestamps
+    - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
+      ({S, r, R, g, G, m, M, P, d, D, n, N})
+    - Audio features automatically extracted and stored: pitch and tonic.
+    - The annotations are stored in text files, named as the audio filename but with the respective extension at the
+      end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
 
-Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+    The dataset contains a total of 108 tracks.
 
-For more information about the dataset as well as IAM and annotations, please refer to:
-https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
+    The files of this dataset are shared with the following license:
+    Creative Commons Attribution Non Commercial Share Alike 4.0 International
+
+    Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+
+    For more information about the dataset as well as IAM and annotations, please refer to:
+    https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
+
 """
 
 import numpy as np

@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 """DALI Dataset Loader
 
-DALI contains 5358 audio files with their time-aligned vocal melody.
-It also contains time-aligned lyrics at four levels of granularity: notes,
-words, lines, and paragraphs.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For each song, DALI also provides additional metadata: genre, language, musician,
-album covers, or links to video clips.
+    DALI contains 5358 audio files with their time-aligned vocal melody.
+    It also contains time-aligned lyrics at four levels of granularity: notes,
+    words, lines, and paragraphs.
 
-For more details, please visit: https://github.com/gabolsgabs/DALI
+    For each song, DALI also provides additional metadata: genre, language, musician,
+    album covers, or links to video clips.
+
+    For more details, please visit: https://github.com/gabolsgabs/DALI
 """
 
 import json
@@ -101,8 +104,8 @@ class Track(core.Track):
         ground_truth (bool): True if the annotation is verified
         language (str): sung language
         release_date (str): year the track was released
-        scores_manual (int): TODO
-        scores_ncc (float): TODO
+        scores_manual (int): manual score annotations
+        scores_ncc (float): ncc score annotations
         title (str): the track's title
         track_id (str): the unique track id
         url_working (bool): True if the youtube url was valid

@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """RWC Popular Dataset Loader
 
-The Popular Music Database consists of 100 songs — 20 songs with English lyrics
-performed in the style of popular music typical of songs on the American hit
-charts in the 1980s, and 80 songs with Japanese lyrics performed in the style of
-modern Japanese popular music typical of songs on the Japanese hit charts in
-the 1990s.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
+    The Popular Music Database consists of 100 songs — 20 songs with English lyrics
+    performed in the style of popular music typical of songs on the American hit
+    charts in the 1980s, and 80 songs with Japanese lyrics performed in the style of
+    modern Japanese popular music typical of songs on the Japanese hit charts in
+    the 1990s.
+
+    For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
+
 """
 import csv
 import logging
@@ -162,7 +166,7 @@ class Track(core.Track):
         instruments (str): List of used instruments
         piece_number (str): Piece number, [1-50]
         sections_path (str): path of the section annotation file
-        singer_information (str): TODO
+        singer_information (str): could be male, female or vocal group
         suffix (str): M01-M04
         tempo (str): Tempo of the track in BPM
         title (str): title
