@@ -67,6 +67,12 @@ class Track(core.Track):
         title (str): title of the track
         track_id (str): track id
 
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotations
+        chords (ChordData): human-labeled chord annotations
+        key (KeyData): local key annotations
+        sections (SectionData): section annotations
+
     """
 
     def __init__(self, track_id, data_home):
@@ -93,43 +99,18 @@ class Track(core.Track):
 
     @core.cached_property
     def beats(self):
-        """human-labeled beat annotation
-
-        Returns:
-            BeatData: beats
-
-        """
-
         return load_beats(self.beats_path)
 
     @core.cached_property
     def chords(self):
-        """chord annotation
-
-        Returns:
-            ChordData: chords
-
-        """
         return load_chords(self.chords_path)
 
     @core.cached_property
     def key(self):
-        """local key annotation
-
-        Returns:
-            KeyData: keys
-
-        """
         return load_key(self.keys_path)
 
     @core.cached_property
     def sections(self):
-        """Section annotation
-
-        Returns:
-            SectionData: Sections
-
-        """
         return load_sections(self.sections_path)
 
     @property
@@ -167,8 +148,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -324,6 +305,7 @@ def _fix_newpoint(beat_positions):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """The beatles dataset
+
     """
 
     def __init__(self, data_home=None):

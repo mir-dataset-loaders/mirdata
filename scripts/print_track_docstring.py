@@ -100,6 +100,12 @@ def main(args):
                 )
         print("")
 
+    if len(data["cached_properties"]) > 0:
+        print("Cached Properties:")
+        for attr in data["cached_properties"]:
+            print("    {} ({}): TODO".format(attr, type(getattr(track, attr)).__name__))
+        print("")
+
     print('"""')
 
 

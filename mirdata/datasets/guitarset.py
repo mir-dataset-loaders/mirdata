@@ -249,8 +249,9 @@ class Track(core.Track):
         """The track's audio
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         audio, sr = load_audio(self.audio_mic_path)
         return audio, sr
@@ -289,10 +290,11 @@ class Track(core.Track):
         return audio, sr
 
     def to_jams(self):
-        """the track's data in jams format:
+        """Get the track's data in jams format
 
         Returns:
-            (jams.JAMS): return track data in jam format
+            jams.JAMS: the track's data in jams format
+
         """
         return jams.load(self.jams_path)
 
@@ -304,8 +306,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -320,8 +322,8 @@ def load_multitrack_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):

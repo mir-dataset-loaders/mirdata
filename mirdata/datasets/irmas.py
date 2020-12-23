@@ -236,7 +236,7 @@ class Track(core.Track):
         """Predominant instrument
 
         Returns:
-            (list): List of predominant instruments as str
+            list: List of predominant instruments as str
 
         """
         if self.predominant_instrument is not None:
@@ -280,8 +280,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):

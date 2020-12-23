@@ -369,8 +369,8 @@ def load_extractor(path):
         path (str): path to features and metadata path
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(path):

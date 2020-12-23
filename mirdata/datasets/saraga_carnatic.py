@@ -103,6 +103,16 @@ class Track(core.Track):
         work (list, dicts): list of dicts containing the work present in the piece, and its mbid
         taala (list, dicts): list of dicts containing the talas present in the track and its uuid
         concert (list, dicts): list of dicts containing the concert where the track is present and its mbid
+
+    Cached Properties:
+        tonic (float): tonic annotation
+        pitch (F0Data): pitch annotation
+        pitch_vocal (F0Data): vocal pitch annotation
+        tempo (dict): tempo annotations
+        sama (BeatData): sama section annotations
+        sections (SectionData): track section annotations
+        phrases (SectionData): phrase annotations
+
     """
 
     def __init__(self, track_id, data_home):
@@ -227,65 +237,30 @@ class Track(core.Track):
 
     @core.cached_property
     def tonic(self):
-        """Tonic annotation
-
-        Returns:
-            (float): tonic
-        """
         return load_tonic(self.ctonic_path)
 
     @core.cached_property
     def pitch(self):
-        """Pitch annotation
-
-        Returns:
-            (F0Data): pitch
-        """
         return load_pitch(self.pitch_path)
 
     @core.cached_property
     def pitch_vocal(self):
-        """Pitch vocal annotations
-
-        Returns:
-            (F0Data): pitch vocal
-        """
         return load_pitch(self.pitch_vocal_path)
 
     @core.cached_property
     def tempo(self):
-        """Tempo annotations
-
-        Returns:
-            dict: tempo annotations
-        """
         return load_tempo(self.tempo_path)
 
     @core.cached_property
     def sama(self):
-        """Sama section annotations
-
-        Returns:
-            (BeatData): sama
-        """
         return load_sama(self.sama_path)
 
     @core.cached_property
     def sections(self):
-        """Track section annotations
-
-        Returns:
-            (SectionData): sections
-        """
         return load_sections(self.sections_path)
 
     @core.cached_property
     def phrases(self):
-        """Phrase annotations
-
-        Returns:
-            (SectionData): Phrase annotations
-        """
         return load_phrases(self.phrases_path)
 
     @property
@@ -293,16 +268,18 @@ class Track(core.Track):
         """The track's audio
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """the track's data in jams format:
+        """Get the track's data in jams format
 
         Returns:
-            (jams.JAMS): return track data in jam format
+            jams.JAMS: the track's data in jams format
+
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
@@ -325,8 +302,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if audio_path is None:
@@ -345,7 +322,7 @@ def load_tonic(tonic_path):
             If `None`, returns None.
 
     Returns:
-        (int): Tonic annotation in Hz
+        int: Tonic annotation in Hz
     """
     if tonic_path is None:
         return None
@@ -401,7 +378,7 @@ def load_tempo(tempo_path):
         tempo_path (str): Local path where the tempo annotation is stored.
 
     Returns:
-        (dict): {'tempo_apm': tempo in aksharas per minute (APM)
+        dict: {'tempo_apm': tempo in aksharas per minute (APM)
                  'tempo_bpm': tempo in beats per minute (BPM)
                  'sama_interval': median duration (in seconds) of one tāla cycle
                  'beats_per_cycle': number of beats in one cycle of the tāla

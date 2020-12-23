@@ -203,8 +203,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     # -- for example, the code below. This should be dataset specific!

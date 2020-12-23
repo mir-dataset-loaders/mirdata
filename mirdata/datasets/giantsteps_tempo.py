@@ -126,6 +126,11 @@ class Track(core.Track):
         track_id (str): track id
         annotation_v1_path (str): track annotation v1 path
         annotation_v2_path (str): track annotation v2 path
+    
+    Cached Properties:
+        genre (dict): Human-labeled metadata annotation
+        tempo (list): List of annotations.TempoData, ordered by confidence
+        tempo_v2 (list): List of annotations.TempoData for version 2, ordered by confidence
 
     """
 
@@ -151,29 +156,14 @@ class Track(core.Track):
 
     @core.cached_property
     def genre(self):
-        """Human-labeled metadata annotation
-
-        Returns:
-            dict: genre or sub-genres list
-        """
         return load_genre(self.annotation_v1_path)
 
     @core.cached_property
     def tempo(self):
-        """Tempo annotation ordered by confidence
-
-        Returns:
-            (int): tempo
-        """
         return load_tempo(self.annotation_v1_path)
 
     @core.cached_property
     def tempo_v2(self):
-        """Tempo annotations ordered by confidence
-
-        Returns:
-            (int): tempo
-        """
         return load_tempo(self.annotation_v2_path)
 
     @property
@@ -181,24 +171,27 @@ class Track(core.Track):
         """The track's audio
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """the track's data in jams format:
+        """Get the track's data in jams format
 
         Returns:
-            (jams.JAMS): return track data in jam format
+            jams.JAMS: the track's data in jams format
+
         """
         return jams.load(self.annotation_v1_path)
 
     def to_jams_v2(self):
-        """the track's data in jams format:
+        """Get the track's data in jams format
 
         Returns:
-            (jams.JAMS): return track data in jam format
+            jams.JAMS: the track's data in jams format
+
         """
         return jams.load(self.annotation_v2_path)
 
@@ -210,8 +203,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
     """
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
@@ -225,7 +218,7 @@ def load_genre(path):
         path (str): path to metadata annotation file
 
     Returns:
-        (str): loaded genre data
+        str: loaded genre data
     """
     if path is None:
         return None
@@ -243,7 +236,8 @@ def load_tempo(tempo_path):
         tempo_path (str): path to tempo annotation file
 
     Returns:
-        (list of utils.TempoData): loaded tempo data
+        list: list of annotations.TempoData
+
     """
     if tempo_path is None:
         return None

@@ -243,7 +243,7 @@ class Track(core.Track):
         session (str): Type of session  (ex. 'session1', 'eval_session')
         track_id (str): track id of the track (ex. 'drummer1/eval_session/1')
         style (str): Style (genre, groove type) of the track (ex. 'funk/groove1')
-        tempo (int): Track tempo in beats per minute (ex. 138)
+        tempo (int): track tempo in beats per minute (ex. 138)
         beat_type (str): Whether the track is a beat or a fill (ex. 'beat')
         time_signature (str): Time signature of the track (ex. '4-4', '6-8')
         midi_path (str): Path to the midi file
@@ -303,8 +303,9 @@ class Track(core.Track):
         """The track's audio
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         return load_audio(self.audio_path)
 
@@ -336,10 +337,11 @@ class Track(core.Track):
         return load_midi(self.midi_path)
 
     def to_jams(self):
-        """the track's data in jams format:
+        """Get the track's data in jams format
 
         Returns:
-            (jams.JAMS): return track data in jam format
+            jams.JAMS: the track's data in jams format
+
         """
         return jams_utils.jams_converter(
             beat_data=[(self.beats, "midi beats")],
@@ -356,8 +358,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if audio_path is None:
