@@ -218,7 +218,9 @@ Hertz, or pitch class.
 
 Phrases
 ^^^^^^^
-TODO
+Musical phrase events, typically encoded by a sequence of timestamps indicating the boundary times and
+defined by solfège symbols. This annotations are not intended to describe the complete melody but the
+musical phrases present in the track.
 
 .. _sections:
 
