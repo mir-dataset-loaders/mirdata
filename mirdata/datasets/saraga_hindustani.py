@@ -104,6 +104,15 @@ class Track(core.Track):
         works (list, dicts): list of dicts containing the work present in the piece, and its mbid
         taals (list, dicts): list of dicts containing the taals present in the track and its uuid
         layas (list, dicts): list of dicts containing the layas present in the track and its uuid
+
+    Cached Properties:
+        tonic (float): tonic annotation
+        pitch (F0Data): pitch annotation
+        tempo (dict): tempo annotations
+        sama (BeatData): Sama section annotations
+        sections (SectionData): track section annotations
+        phrases (EventData): phrase annotations
+
     """
 
     def __init__(self, track_id, data_home):
@@ -203,41 +212,46 @@ class Track(core.Track):
 
     @core.cached_property
     def tonic(self):
-        """Float: tonic annotation"""
         return load_tonic(self.ctonic_path)
 
     @core.cached_property
     def pitch(self):
-        """F0Data: pitch annotation"""
         return load_pitch(self.pitch_path)
 
     @core.cached_property
     def tempo(self):
-        """Dict: tempo annotations"""
         return load_tempo(self.tempo_path)
 
     @core.cached_property
     def sama(self):
-        """BeatData: sama section annotations"""
         return load_sama(self.sama_path)
 
     @core.cached_property
     def sections(self):
-        """SectionData: track section annotations"""
         return load_sections(self.sections_path)
 
     @core.cached_property
     def phrases(self):
-        """EventData: phrase annotations"""
         return load_phrases(self.phrases_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.sama, "sama")],
@@ -259,8 +273,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if audio_path is None:
@@ -279,7 +293,8 @@ def load_tonic(tonic_path):
             If `None`, returns None.
 
     Returns:
-        (int): Tonic annotation in Hz
+        int: Tonic annotation in Hz
+
     """
     if tonic_path is None:
         return None
@@ -304,6 +319,7 @@ def load_pitch(pitch_path):
 
     Returns:
         F0Data: pitch annotation
+
     """
     if pitch_path is None:
         return None
@@ -335,7 +351,8 @@ def load_tempo(tempo_path):
         tempo_path (str): Local path where the tempo annotation is stored.
 
     Returns:
-        (dict): Dictionary of tempo information with the following keys:
+        dict: 
+            Dictionary of tempo information with the following keys:
             * 'tempo': median tempo for the section in mātrās per minute (MPM)
             * 'matra_interval': tempo expressed as the duration of the mātra (essentially
               dividing 60 by tempo, expressed in seconds)

@@ -63,7 +63,10 @@ def get_attributes_and_properties(class_instance):
 
 
 def main(args):
-    dataset = importlib.import_module("mirdata.{}".format(args.dataset))
+    data_home = "tests/resources/mir_datasets/{}".format(dataset.name)
+    print(data_home)
+
+    dataset = mirdata.initialize(args.dataset, data_home=data_home)
 
     if args.dataset in TEST_TRACKIDS.keys():
         track_id = TEST_TRACKIDS[args.dataset]
@@ -72,9 +75,7 @@ def main(args):
         print("Please add a test track to the dictionary at the top of this script.")
         return
 
-    data_home = "tests/resources/mir_datasets/{}".format(dataset.name)
-    print(data_home)
-    track = dataset.Track(track_id, data_home=data_home)
+    track = dataset.track(track_id)
     data = get_attributes_and_properties(track)
 
     print('"""{} Track class'.format(args.dataset))
@@ -98,6 +99,12 @@ def main(args):
                         attr, type(getattr(track, attr)).__name__
                     )
                 )
+        print("")
+
+    if len(data["cached_properties"]) > 0:
+        print("Cached Properties:")
+        for attr in data["cached_properties"]:
+            print("    {} ({}): TODO".format(attr, type(getattr(track, attr)).__name__))
         print("")
 
     print('"""')

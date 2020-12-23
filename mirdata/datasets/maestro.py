@@ -120,6 +120,10 @@ class Track(core.Track):
         track_id (str): track id
         year (int): Year of performance.
 
+    Cached Property:
+        midi (pretty_midi.PrettyMIDI): object containing MIDI annotations
+        notes (NoteData): annotated piano notes
+
     """
 
     def __init__(self, track_id, data_home):
@@ -150,21 +154,30 @@ class Track(core.Track):
 
     @core.cached_property
     def midi(self):
-        """output type: description of output"""
         return load_midi(self.midi_path)
 
     @core.cached_property
     def notes(self):
-        """NoteData: annotated piano notes"""
         return load_notes(self.midi_path, self.midi)
 
     @property
     def audio(self):
-        """(np.ndarray, float): track's audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             note_data=[(self.notes, None)],
@@ -179,7 +192,7 @@ def load_midi(midi_path):
         midi_path (str): path to midi file
 
     Returns:
-        midi_data (obj): pretty_midi object
+        pretty_midi.PrettyMIDI: pretty_midi object
 
     """
     if not os.path.exists(midi_path):
@@ -197,7 +210,7 @@ def load_notes(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        note_data (annotations.NoteData)
+        NoteData: note annotations
 
     """
     if midi is None:
@@ -222,8 +235,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):

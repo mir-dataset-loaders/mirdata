@@ -12,6 +12,7 @@
     album covers, or links to video clips.
 
     For more details, please visit: https://github.com/gabolsgabs/DALI
+
 """
 
 import json
@@ -110,6 +111,13 @@ class Track(core.Track):
         track_id (str): the unique track id
         url_working (bool): True if the youtube url was valid
 
+    Cached Properties:
+        notes (NoteData): vocal notes
+        words (LyricData): word-level lyrics
+        lines (LyricData): line-level lyrics
+        paragraphs (LyricData): paragraph-level lyrics
+        annotation-object (DALI.Annotations): DALI annotation object
+
     """
 
     def __init__(self, track_id, data_home):
@@ -163,36 +171,42 @@ class Track(core.Track):
 
     @core.cached_property
     def notes(self):
-        """NoteData: note-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, "notes")
 
     @core.cached_property
     def words(self):
-        """LyricData: word-aligned lyric"""
         return load_annotations_granularity(self.annotation_path, "words")
 
     @core.cached_property
     def lines(self):
-        """LyricData: line-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, "lines")
 
     @core.cached_property
     def paragraphs(self):
-        """LyricData: paragraph-aligned lyrics"""
         return load_annotations_granularity(self.annotation_path, "paragraphs")
 
     @core.cached_property
     def annotation_object(self):
-        """DALI.Annotations: DALI Annotations object"""
         return load_annotations_class(self.annotation_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             lyrics_data=[
@@ -212,8 +226,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -267,7 +281,7 @@ def load_annotations_class(annotations_path):
         annotations_path (str): path to a DALI annotation file
 
     Returns:
-        DALI annotations object
+        DALI.annotations: DALI annotations object
 
     """
     if not os.path.exists(annotations_path):

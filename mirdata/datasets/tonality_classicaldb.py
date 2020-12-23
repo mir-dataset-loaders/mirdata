@@ -102,6 +102,12 @@ class Track(core.Track):
         title (str): title of the track
         track_id (str): track id
 
+    Cached Properties:
+        key (str): key annotation
+        spectrum (np.array): computed audio spectrum
+        hpcp (np.array): computed hpcp
+        musicbrainz_metadata (dict): MusicBrainz metadata
+
     """
 
     def __init__(self, track_id, data_home):
@@ -119,37 +125,46 @@ class Track(core.Track):
         self.spectrum_path = os.path.join(
             self._data_home, self._track_paths["spectrum"][0]
         )
-        self.mb_path = os.path.join(self._data_home, self._track_paths["mb"][0])
+        self.musicbrainz_path = os.path.join(
+            self._data_home, self._track_paths["mb"][0]
+        )
         self.hpcp_path = os.path.join(self._data_home, self._track_paths["HPCP"][0])
         self.title = self.audio_path.replace(".wav", "").split("/")[-1]
 
     @core.cached_property
     def key(self):
-        """String: key annotation"""
         return load_key(self.key_path)
 
     @core.cached_property
     def spectrum(self):
-        """np.array: spectrum"""
         return load_spectrum(self.spectrum_path)
 
     @core.cached_property
     def hpcp(self):
-        """np.array: HPCP"""
         return load_hpcp(self.hpcp_path)
 
     @core.cached_property
-    def mb_metadata(self):
-        """Dict: musicbrainz metadata"""
-        return load_musicbrainz(self.mb_path)
+    def musicbrainz_metadata(self):
+        return load_musicbrainz(self.musicbrainz_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             metadata={
@@ -157,7 +172,7 @@ class Track(core.Track):
                 "key": self.key,
                 "spectrum": self.spectrum,
                 "hpcp": self.hpcp,
-                "musicbrainz_metatada": self.mb_metadata,
+                "musicbrainz_metatada": self.musicbrainz_metadata,
             },
         )
 
@@ -169,8 +184,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -185,7 +200,7 @@ def load_key(keys_path):
         keys_path (str): path to key annotation file
 
     Returns:
-        (str): loaded key data
+        str: musical key data
 
     """
     if keys_path is None:
@@ -205,10 +220,10 @@ def load_spectrum(spectrum_path):
     """Load Tonality classicalDB spectrum data from a file
 
     Args:
-        spectrum_path (str): path to spectrum  file
+        spectrum_path (str): path to spectrum file
 
     Returns:
-        (np.array): loaded spectrum data
+        np.array: spectrum data
 
     """
     if spectrum_path is None:
@@ -227,11 +242,12 @@ def load_spectrum(spectrum_path):
 
 def load_hpcp(hpcp_path):
     """Load Tonality classicalDB HPCP feature from a file
+
     Args:
         hpcp_path (str): path to HPCP file
 
     Returns:
-        (np.array): loaded HPCP data
+        np.array: loaded HPCP data
 
     """
     if hpcp_path is None:
@@ -245,23 +261,23 @@ def load_hpcp(hpcp_path):
     return np.array(data["hpcp"])
 
 
-def load_musicbrainz(mb_path):
+def load_musicbrainz(musicbrainz_path):
     """Load Tonality classicalDB musicbraiz metadata from a file
 
     Args:
-        mb_path (str): path to musicbrainz metadata  file
+        musicbrainz_path (str): path to musicbrainz metadata  file
 
     Returns:
-        (dict): loaded musicbrainz metadata
+        dict: musicbrainz metadata
 
     """
-    if mb_path is None:
+    if musicbrainz_path is None:
         return None
 
-    if not os.path.exists(mb_path):
-        raise IOError("mb_path {} does not exist".format(mb_path))
+    if not os.path.exists(musicbrainz_path):
+        raise IOError("musicbrainz_path {} does not exist".format(musicbrainz_path))
 
-    with open(mb_path) as f:
+    with open(musicbrainz_path) as f:
         data = json.load(f)
     return data
 

@@ -80,6 +80,9 @@ class Track(core.Track):
         title (str): title
         track_id (str): track id
 
+    Cached Properties:
+        pitch (F0Data): human annotated pitch
+
     """
 
     def __init__(self, track_id, data_home):
@@ -113,16 +116,26 @@ class Track(core.Track):
 
     @core.cached_property
     def pitch(self):
-        """F0Data: The human-annotated pitch"""
         return load_pitch(self.pitch_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.pitch, "annotated pitch")],
@@ -137,8 +150,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -148,6 +161,18 @@ def load_audio(audio_path):
 
 
 def load_pitch(pitch_path):
+    """load a MedleyDB pitch annotation file
+
+    Args:
+        pitch_path (str): path to pitch annotation file
+
+    Raises:
+        IOError: if pitch_path doesn't exist
+
+    Returns:
+        F0Data: pitch annotation
+
+    """
     if not os.path.exists(pitch_path):
         raise IOError("pitch_path {} does not exist".format(pitch_path))
 

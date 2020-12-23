@@ -168,6 +168,10 @@ class Track(core.Track):
         track_id (str): track id
         track_number (str): CD track number of this Track
 
+    Cached Properties:
+        sections (SectionData): human-labeled section annotations
+        beats (BeatData): human-labeled beat annotations
+
     """
 
     def __init__(self, track_id, data_home):
@@ -212,21 +216,30 @@ class Track(core.Track):
 
     @core.cached_property
     def sections(self):
-        """SectionData: human labeled section annotations"""
         return load_sections(self.sections_path)
 
     @core.cached_property
     def beats(self):
-        """BeatData: human labeled beat annotations"""
         return load_beats(self.beats_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.beats, None)],
@@ -242,8 +255,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -259,7 +272,7 @@ def load_sections(sections_path):
         sections_path (str): path to sections annotation file
 
     Returns:
-        (annotations.SectionData): section data
+        SectionData: section data
 
     """
     if not os.path.exists(sections_path):
@@ -287,8 +300,8 @@ def _position_in_bar(beat_positions, beat_times):
         beat_times (np.ndarray): raw rwc time stamps
     
     Returns:
-        beat_positions_corrected (np.ndarray): normalized beat positions
-        beat_times_corrected (np.ndarray): normalized time stamps
+        * np.ndarray: normalized beat positions
+        * np.ndarray: normalized time stamps
 
     """
     # Remove -1
@@ -323,7 +336,7 @@ def load_beats(beats_path):
         beats_path (str): path to beats annotation file
 
     Returns:
-        (annotations.BeatData): beat data
+        BeatData: beat data
 
     """
     if not os.path.exists(beats_path):
@@ -351,7 +364,7 @@ def _duration_to_sec(duration):
         duration (str): duration in form min:sec
 
     Returns:
-        (float): duration in seconds
+        float: duration in seconds
 
     """
     if type(duration) == str:
