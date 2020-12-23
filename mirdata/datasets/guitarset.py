@@ -1,52 +1,56 @@
 # -*- coding: utf-8 -*-
 """GuitarSet Loader
 
-GuitarSet provides audio recordings of a variety of musical excerpts
-played on an acoustic guitar, along with time-aligned annotations
-including pitch contours, string and fret positions, chords, beats,
-downbeats, and keys.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-GuitarSet contains 360 excerpts that are close to 30 seconds in length.
-The 360 excerpts are the result of the following combinations:
+    GuitarSet provides audio recordings of a variety of musical excerpts
+    played on an acoustic guitar, along with time-aligned annotations
+    including pitch contours, string and fret positions, chords, beats,
+    downbeats, and keys.
 
-- 6 players
-- 2 versions: comping (harmonic accompaniment) and soloing (melodic improvisation)
-- 5 styles: Rock, Singer-Songwriter, Bossa Nova, Jazz, and Funk
-- 3 Progressions: 12 Bar Blues, Autumn Leaves, and Pachelbel Canon.
-- 2 Tempi: slow and fast.
+    GuitarSet contains 360 excerpts that are close to 30 seconds in length.
+    The 360 excerpts are the result of the following combinations:
 
-The tonality (key) of each excerpt is sampled uniformly at random.
+    - 6 players
+    - 2 versions: comping (harmonic accompaniment) and soloing (melodic improvisation)
+    - 5 styles: Rock, Singer-Songwriter, Bossa Nova, Jazz, and Funk
+    - 3 Progressions: 12 Bar Blues, Autumn Leaves, and Pachelbel Canon.
+    - 2 Tempi: slow and fast.
 
-GuitarSet was recorded with the help of a hexaphonic pickup, which outputs
-signals for each string separately, allowing automated note-level annotation.
-Excerpts are recorded with both the hexaphonic pickup and a Neumann U-87
-condenser microphone as reference.
-3 audio recordings are provided with each excerpt with the following suffix:
+    The tonality (key) of each excerpt is sampled uniformly at random.
 
-- hex: original 6 channel wave file from hexaphonic pickup
-- hex_cln: hex wave files with interference removal applied
-- mic: monophonic recording from reference microphone
-- mix: monophonic mixture of original 6 channel file
+    GuitarSet was recorded with the help of a hexaphonic pickup, which outputs
+    signals for each string separately, allowing automated note-level annotation.
+    Excerpts are recorded with both the hexaphonic pickup and a Neumann U-87
+    condenser microphone as reference.
+    3 audio recordings are provided with each excerpt with the following suffix:
 
-Each of the 360 excerpts has an accompanying JAMS file which stores 16 annotations.
-Pitch:
+    - hex: original 6 channel wave file from hexaphonic pickup
+    - hex_cln: hex wave files with interference removal applied
+    - mic: monophonic recording from reference microphone
+    - mix: monophonic mixture of original 6 channel file
 
-- 6 pitch_contour annotations (1 per string)
-- 6 midi_note annotations (1 per string)
+    Each of the 360 excerpts has an accompanying JAMS file which stores 16 annotations.
+    Pitch:
 
-Beat and Tempo:
+    - 6 pitch_contour annotations (1 per string)
+    - 6 midi_note annotations (1 per string)
 
-- 1 beat_position annotation
-- 1 tempo annotation
+    Beat and Tempo:
 
-Chords:
+    - 1 beat_position annotation
+    - 1 tempo annotation
 
-- 2 chord annotations: instructed and performed. The instructed chord annotation
-  is a digital version of the lead sheet that's provided to the player, and the
-  performed chord annotations are inferred from note annotations, using
-  segmentation and root from the digital lead sheet annotation.
+    Chords:
 
-For more details, please visit: http://github.com/marl/guitarset/
+    - 2 chord annotations: instructed and performed. The instructed chord annotation
+      is a digital version of the lead sheet that's provided to the player, and the
+      performed chord annotations are inferred from note annotations, using
+      segmentation and root from the digital lead sheet annotation.
+
+    For more details, please visit: http://github.com/marl/guitarset/
+
 """
 import logging
 import os
@@ -130,6 +134,28 @@ class Track(core.Track):
         tempo (float): BPM of the track
         track_id (str): track id
 
+    Cached Properties:
+        beats (BeatData): beat positions
+        leadsheet_chords (ChordData): chords as written in the leadsheet
+        inferred_chords (ChordData): chords inferred from played transcription
+        key_mode (KeyData): key and mode
+        pitch_contours (dict):
+            Pitch contours per string
+            - 'E': F0Data(...)
+            - 'A': F0Data(...)
+            - 'D': F0Data(...)
+            - 'G': F0Data(...)
+            - 'B': F0Data(...)
+            - 'e': F0Data(...)
+        notes (dict):
+            Notes per string
+            - 'E': NoteData(...)
+            - 'A': NoteData(...)
+            - 'D': NoteData(...)
+            - 'G': NoteData(...)
+            - 'B': NoteData(...)
+            - 'e': NoteData(...)
+
     """
 
     def __init__(self, track_id, data_home):
@@ -164,12 +190,10 @@ class Track(core.Track):
 
     @core.cached_property
     def beats(self):
-        """BeatData: the track's beat positions"""
         return load_beats(self.jams_path)
 
     @core.cached_property
     def leadsheet_chords(self):
-        """ChordData: the track's chords as written in the leadsheet"""
         if self.mode == "solo":
             logging.info(
                 "Chord annotations for solo excerpts are the same with the comp excerpt."
@@ -178,29 +202,18 @@ class Track(core.Track):
 
     @core.cached_property
     def inferred_chords(self):
-        """ChordData: the track's chords inferred from played transcription"""
         if self.mode == "solo":
             logging.info(
-                "Chord annotations for solo excerpts are the same with the comp excerpt."
+                "Chord annotations for solo excerpts are the same as the comp excerpt."
             )
         return load_chords(self.jams_path, leadsheet_version=False)
 
     @core.cached_property
     def key_mode(self):
-        """KeyData: the track's key and mode"""
         return load_key_mode(self.jams_path)
 
     @core.cached_property
     def pitch_contours(self):
-        """(dict): a dict that contains 6 F0Data.
-
-        From Low E string to high e string.
-        - 'E': F0Data(...),
-        - 'A': F0Data(...),
-        -  ...
-        - 'e': F0Data(...)
-
-        """
         contours = {}
         # iterate over 6 strings
         for i in range(6):
@@ -209,14 +222,6 @@ class Track(core.Track):
 
     @core.cached_property
     def notes(self):
-        """dict: a dict that contains 6 NoteData.
-
-        From Low E string to high e string.
-        - 'E': NoteData(...),
-        - 'A': NoteData(...),
-        -  ...
-        - 'e': NoteData(...)
-        """
         notes = {}
         # iterate over 6 strings
         for i in range(6):
@@ -225,30 +230,60 @@ class Track(core.Track):
 
     @property
     def audio_mic(self):
-        """(np.ndarray, float): stereo microphone audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         audio, sr = load_audio(self.audio_mic_path)
         return audio, sr
 
     @property
     def audio_mix(self):
-        """(np.ndarray, float): stereo mix audio signal, sample rate"""
+        """Mixture audio (mono)
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         audio, sr = load_audio(self.audio_mix_path)
         return audio, sr
 
     @property
     def audio_hex(self):
-        """(np.ndarray, float): raw hexaphonic audio signal, sample rate"""
+        """Hexaphonic audio (6-channels) with one channel per string
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         audio, sr = load_multitrack_audio(self.audio_hex_path)
         return audio, sr
 
     @property
     def audio_hex_cln(self):
-        """(np.ndarray, float): bleed-removed hexaphonic audio signal, sample rate"""
+        """Hexaphonic audio (6-channels) with one channel per string
+           after bleed removal
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         audio, sr = load_multitrack_audio(self.audio_hex_cln_path)
         return audio, sr
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams.load(self.jams_path)
 
 
@@ -259,8 +294,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -275,8 +310,8 @@ def load_multitrack_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -291,8 +326,7 @@ def load_beats(jams_path):
         jams_path (str): Path of the jams annotation file
 
     Returns:
-        (annotations.BeatData): Beat data
-
+        BeatData: Beat data
     """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
@@ -313,7 +347,7 @@ def load_chords(jams_path, leadsheet_version=True):
             If False, load the infered version.
 
     Returns:
-        (annotations.ChordData): Chord data
+        ChordData: Chord data
 
     """
     if not os.path.exists(jams_path):
@@ -334,7 +368,7 @@ def load_key_mode(jams_path):
         jams_path (str): Path of the jams annotation file
 
     Returns:
-        (annotations.KeyData): Key data
+        KeyData: Key data
 
     """
     if not os.path.exists(jams_path):
@@ -354,7 +388,7 @@ def load_pitch_contour(jams_path, string_num):
             0 is the Low E string, 5 is the high e string.
 
     Returns:
-        (annotations.F0Data): Pitch contour data for the given string
+        F0Data: Pitch contour data for the given string
 
     """
     if not os.path.exists(jams_path):
@@ -378,7 +412,7 @@ def load_notes(jams_path, string_num):
             0 is the Low E string, 5 is the high e string.
 
     Returns:
-        (annotations.NoteData): Note data for the given string
+        NoteData: Note data for the given string
 
     """
     if not os.path.exists(jams_path):

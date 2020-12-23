@@ -19,9 +19,8 @@ Please include the following information at the top level docstring for the data
 - [ ] Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`.
 - [ ] Create a module in mirdata, e.g. `mirdata/my_dataset.py`
 - [ ] Create tests for your loader in `tests/`, e.g. `test_my_dataset.py`
-- [ ] Add your module to `docs/source/mirdata.rst` and `docs/source/datasets.rst`
-- [ ] Add the module to `mirdata/__init__.py`
-- [ ] Add the module to the list in the `README.md` file, section `Currently supported datasets`
+- [ ] Add your module to `docs/source/mirdata.rst` and `docs/source/quick_reference.rst`
+- [ ] Run `tests/test_full_dataset.py` on your dataset.
 
 If your dataset **is not fully downloadable** there are two extra steps you should follow:
 - [ ] Contacting the mirdata organizers by opening an issue or PR so we can discuss how to proceed with the closed dataset.

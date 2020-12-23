@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath("../"))
 
 project = "mirdata"
 copyright = "2019-2020, mirdata development team."
-author = "Rachel Bittner, Magdalena Fuentes, David Rubinstein, Andreas Jansson, Keunwoo Choi, Thor Kell"
+author = "The mirdata development team"
 
 
 import importlib
@@ -57,13 +57,39 @@ sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 # # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # # ones.
 extensions = [
-    "recommonmark",
     "sphinx.ext.autodoc",
     "sphinx.ext.coverage",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
-    # "sphinx.ext.autosectionlabel",
+    "sphinx.ext.intersphinx",
+    "sphinx_togglebutton",
 ]
+
+intersphinx_mapping = {
+    "np": ("https://numpy.org/doc/stable/", None),
+    "jams": ("https://jams.readthedocs.io/en/stable/", None),
+    "mir_eval": ("https://craffel.github.io/mir_eval/", None),
+    "pretty_midi": ("https://craffel.github.io/pretty-midi/", None),
+}
+
+# Napoleon settings
+# https://github.com/sphinx-contrib/napoleon/issues/2
+napoleon_custom_sections = [
+    ("Cached Properties", "Other Parameters")
+]  # todo - when above issue is closed, update to say "cached properties"
+napoleon_google_docstring = True
+napoleon_numpy_docstring = False
+napoleon_include_init_with_doc = True
+napoleon_include_private_with_doc = False
+napoleon_include_special_with_doc = True
+napoleon_use_admonition_for_examples = True
+napoleon_use_admonition_for_notes = False
+napoleon_use_admonition_for_references = False
+napoleon_use_ivar = True
+napoleon_use_param = False
+napoleon_use_rtype = False
+napoleon_type_aliases = None
+napoleon_attr_annotations = True
 
 
 # Add any paths that contain templates here, relative to this directory.
@@ -97,6 +123,8 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
-html_css_files = ["css/custom.css",]
+html_css_files = [
+    "css/custom.css",
+]
 
-html_logo = 'img/mirdata.png'
+html_logo = "img/mirdata.png"

@@ -1,27 +1,34 @@
 # -*- coding: utf-8 -*-
 """Saraga Dataset Loader
 
-This dataset contains time aligned melody, rhythm and structural annotations of Carnatic Music tracks, extracted
-from the large open Indian Art Music corpora of CompMusic.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The dataset contains the following manual annotations referring to audio files:
-Section and tempo annotations stored as start and end timestamps together with the name of the section and
-tempo during the section (in a separate file). Sama annotations referring to rhythmic cycle boundaries stored
-as timestamps. Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
-({S, r, R, g, G, m, M, P, d, D, n, N}). Audio features automatically extracted and stored: pitch and tonic.
-The annotations are stored in text files, named as the audio filename but with the respective extension at the
-end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
+    This dataset contains time aligned melody, rhythm and structural annotations of Carnatic Music tracks, extracted
+    from the large open Indian Art Music corpora of CompMusic.
 
-The dataset contains a total of 249 tracks.
-A total of 168 tracks have multitrack audio.
+    The dataset contains the following manual annotations referring to audio files:
 
-The files of this dataset are shared with the following license:
-Creative Commons Attribution Non Commercial Share Alike 4.0 International
+    - Section and tempo annotations stored as start and end timestamps together with the name of the section and
+      tempo during the section (in a separate file)
+    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps. 
+    - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
+      ({S, r, R, g, G, m, M, P, d, D, n, N}). 
+    - Audio features automatically extracted and stored: pitch and tonic.
+    - The annotations are stored in text files, named as the audio filename but with the respective extension at the
+      end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
 
-Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+    The dataset contains a total of 249 tracks.
+    A total of 168 tracks have multitrack audio.
 
-For more information about the dataset as well as IAM and annotations, please refer to:
-https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
+    The files of this dataset are shared with the following license:
+    Creative Commons Attribution Non Commercial Share Alike 4.0 International
+
+    Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+
+    For more information about the dataset as well as IAM and annotations, please refer to:
+    https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
+
 """
 
 import numpy as np
@@ -96,6 +103,16 @@ class Track(core.Track):
         work (list, dicts): list of dicts containing the work present in the piece, and its mbid
         taala (list, dicts): list of dicts containing the talas present in the track and its uuid
         concert (list, dicts): list of dicts containing the concert where the track is present and its mbid
+
+    Cached Properties:
+        tonic (float): tonic annotation
+        pitch (F0Data): pitch annotation
+        pitch_vocal (F0Data): vocal pitch annotation
+        tempo (dict): tempo annotations
+        sama (BeatData): sama section annotations
+        sections (SectionData): track section annotations
+        phrases (SectionData): phrase annotations
+
     """
 
     def __init__(self, track_id, data_home):
@@ -220,46 +237,50 @@ class Track(core.Track):
 
     @core.cached_property
     def tonic(self):
-        """Float: tonic annotation"""
         return load_tonic(self.ctonic_path)
 
     @core.cached_property
     def pitch(self):
-        """F0Data: pitch annotation"""
         return load_pitch(self.pitch_path)
 
     @core.cached_property
     def pitch_vocal(self):
-        """F0Data: pitch vocal annotations"""
         return load_pitch(self.pitch_vocal_path)
 
     @core.cached_property
     def tempo(self):
-        """Dict: tempo annotations"""
         return load_tempo(self.tempo_path)
 
     @core.cached_property
     def sama(self):
-        """BeatData: sama section annotations"""
         return load_sama(self.sama_path)
 
     @core.cached_property
     def sections(self):
-        """SectionData: track section annotations"""
         return load_sections(self.sections_path)
 
     @core.cached_property
     def phrases(self):
-        """EventData: phrase annotations"""
         return load_phrases(self.phrases_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.sama, "sama")],
@@ -281,8 +302,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if audio_path is None:
@@ -301,7 +322,8 @@ def load_tonic(tonic_path):
             If `None`, returns None.
 
     Returns:
-        (int): Tonic annotation in Hz
+        int: Tonic annotation in Hz
+
     """
     if tonic_path is None:
         return None
@@ -309,8 +331,8 @@ def load_tonic(tonic_path):
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
-    with open(tonic_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(tonic_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             tonic = float(line[0])
 
@@ -326,6 +348,7 @@ def load_pitch(pitch_path):
 
     Returns:
         F0Data: pitch annotation
+
     """
     if pitch_path is None:
         return None
@@ -335,8 +358,8 @@ def load_pitch(pitch_path):
 
     times = []
     freqs = []
-    with open(pitch_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(pitch_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             times.append(float(line[0]))
             freqs.append(float(line[1]))
@@ -357,12 +380,14 @@ def load_tempo(tempo_path):
         tempo_path (str): Local path where the tempo annotation is stored.
 
     Returns:
-        (dict): {'tempo_apm': tempo in aksharas per minute (APM)
-                 'tempo_bpm': tempo in beats per minute (BPM)
-                 'sama_interval': median duration (in seconds) of one tāla cycle
-                 'beats_per_cycle': number of beats in one cycle of the tāla
-                 'subdivisions': number of aksharas per beat of the tāla
-                 }
+        dict: 
+            {'tempo_apm': tempo in aksharas per minute (APM)
+             'tempo_bpm': tempo in beats per minute (BPM)
+             'sama_interval': median duration (in seconds) of one tāla cycle
+             'beats_per_cycle': number of beats in one cycle of the tāla
+             'subdivisions': number of aksharas per beat of the tāla
+            }
+
     """
     if tempo_path is None:
         return None
@@ -372,8 +397,8 @@ def load_tempo(tempo_path):
 
     tempo_annotation = {}
 
-    with open(tempo_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=',')
+    with open(tempo_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
         tempo_data = next(reader)
         tempo_apm = tempo_data[0]
         tempo_bpm = tempo_data[1]
@@ -422,8 +447,8 @@ def load_sama(sama_path):
 
     beat_times = []
     beat_positions = []
-    with open(sama_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(sama_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             beat_times.append(float(line[0]))
             beat_positions.append(1)
@@ -452,15 +477,12 @@ def load_sections(sections_path):
 
     intervals = []
     section_labels = []
-    with open(sections_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(sections_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
-            if line != '\n':
+            if line != "\n":
                 intervals.append(
-                    [
-                        float(line[0]),
-                        float(line[0]) + float(line[2]),
-                    ]
+                    [float(line[0]), float(line[0]) + float(line[2]),]
                 )
                 section_labels.append(str(line[3]))
 
@@ -490,17 +512,15 @@ def load_phrases(phrases_path):
     start_times = []
     end_times = []
     events = []
-    with open(phrases_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter='\t')
+    with open(phrases_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter="\t")
         for line in reader:
             start_times.append(float(line[0]))
-            end_times.append(
-                float(line[0]) + float(line[2])
-            )
+            end_times.append(float(line[0]) + float(line[2]))
             if len(line) == 4:
-                events.append(str(line[3].split('\n')[0]))
+                events.append(str(line[3].split("\n")[0]))
             else:
-                events.append('')
+                events.append("")
 
     if not start_times:
         return None
