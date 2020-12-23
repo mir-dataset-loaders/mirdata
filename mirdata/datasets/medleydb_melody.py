@@ -83,6 +83,11 @@ class Track(core.Track):
         title (str): title
         track_id (str): track id
 
+    Cached Properties:
+        melody1 (F0Data): the pitch of the single most predominant source (often the voice)
+        melody2 (F0Data): the pitch of the predominant source for each point in time
+        melody3 (MultiF0Data): the pitch of any melodic source. Allows for more than one f0 value at a time
+
     """
 
     def __init__(self, track_id, data_home):
@@ -128,26 +133,34 @@ class Track(core.Track):
 
     @core.cached_property
     def melody1(self):
-        """F0Data: The pitch of the single most predominant source (often the voice)"""
         return load_melody(self.melody1_path)
 
     @core.cached_property
     def melody2(self):
-        """F0Data: The pitch of the predominant source for each point in time"""
         return load_melody(self.melody2_path)
 
     @core.cached_property
     def melody3(self):
-        """MultiF0Data: The pitch of any melodic source. Allows for more than one f0 value at a time."""
         return load_melody3(self.melody3_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         # jams does not support multiF0, so we skip melody3
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
@@ -163,8 +176,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -174,6 +187,18 @@ def load_audio(audio_path):
 
 
 def load_melody(melody_path):
+    """Load a MedleyDB melody1 or melody2 annotation file
+
+    Args:
+        melody_path (str): path to a melody annotation file
+
+    Raises:
+        IOError: if melody_path does not exist
+
+    Returns:
+        F0Data: melody data
+
+    """
     if not os.path.exists(melody_path):
         raise IOError("melody_path {} does not exist".format(melody_path))
 
@@ -193,6 +218,18 @@ def load_melody(melody_path):
 
 
 def load_melody3(melody_path):
+    """Load a MedleyDB melody3 annotation file
+
+    Args:
+        melody_path (str): melody 3 melody annotation path
+
+    Raises:
+        IOError: if melody_path does not exist
+
+    Returns:
+        MultiF0Data: melody 3 annotation data
+
+    """
     if not os.path.exists(melody_path):
         raise IOError("melody_path {} does not exist".format(melody_path))
 

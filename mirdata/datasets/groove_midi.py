@@ -243,7 +243,7 @@ class Track(core.Track):
         session (str): Type of session  (ex. 'session1', 'eval_session')
         track_id (str): track id of the track (ex. 'drummer1/eval_session/1')
         style (str): Style (genre, groove type) of the track (ex. 'funk/groove1')
-        tempo (int): Track tempo in beats per minute (ex. 138)
+        tempo (int): track tempo in beats per minute (ex. 138)
         beat_type (str): Whether the track is a beat or a fill (ex. 'beat')
         time_signature (str): Time signature of the track (ex. '4-4', '6-8')
         midi_path (str): Path to the midi file
@@ -251,6 +251,12 @@ class Track(core.Track):
         duration (float): Duration of the midi file in seconds
         split (str): Whether the track is for a train/valid/test set. One of
             'train', 'valid' or 'test'.
+
+    Cached Properties:
+        beats (BeatData): Machine-generated beat annotations
+        drum_events (EventData): Annotated drum kit events
+        midi (pretty_midi.PrettyMIDI): object containing MIDI information
+
     """
 
     def __init__(self, track_id, data_home):
@@ -300,26 +306,34 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     @core.cached_property
     def beats(self):
-        """BeatData: machine-generated beat annotation"""
         return load_beats(self.midi_path, self.midi)
 
     @core.cached_property
     def drum_events(self):
-        """EventData: annotated drum kit events"""
         return load_drum_events(self.midi_path, self.midi)
 
     @core.cached_property
     def midi(self):
-        """(obj): prettyMIDI obj"""
         return load_midi(self.midi_path)
 
     def to_jams(self):
-        # Initialize top-level JAMS container
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             beat_data=[(self.beats, "midi beats")],
             tempo_data=[(self.tempo, "midi tempo")],
@@ -335,8 +349,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if audio_path is None:
@@ -373,7 +387,7 @@ def load_beats(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        beat_data (annotations.BeatData)
+        annotations.BeatData: machine generated beat data
 
     """
     if midi is None:
@@ -394,7 +408,7 @@ def load_drum_events(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        drum_events (annotations.EventData)
+        annotations.EventData: drum event data
 
     """
     if midi is None:

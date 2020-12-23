@@ -2,12 +2,12 @@
 """Utilities for downloading from the web.
 """
 
-from collections import namedtuple
 import os
-from tqdm import tqdm
-import urllib
 import tarfile
+import urllib
 import zipfile
+
+from tqdm import tqdm
 
 from mirdata.validate import md5
 
@@ -120,7 +120,8 @@ def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True)
             If True, overwrite existing file if the checksum can not be verified.
 
     Returns:
-        file_path (str): Full path of the created file.
+        str: Full path of the created file.
+
     """
     if remote.destination_dir is None:
         download_dir = save_dir
@@ -186,6 +187,7 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
             If True, overwrites existing files
         cleanup (bool):
             If True, remove zipfile after unziping. Default=False
+
     """
     zip_download_path = download_from_remote(
         zip_remote, save_dir, force_overwrite, cleanup
@@ -195,6 +197,7 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
 
 def extractall_unicode(zfile, out_dir):
     """Extract all files inside a zip archive to a output directory.
+
     In comparison to the zipfile, it checks for correct file name encoding
 
     Args:
@@ -242,6 +245,7 @@ def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=True):
         save_dir (str): Path to save downloaded file
         force_overwrite (bool): If True, overwrites existing files
         cleanup (bool): If True, remove tarfile after untarring. Default=False
+
     """
     tar_download_path = download_from_remote(
         tar_remote, save_dir, force_overwrite, cleanup
@@ -255,6 +259,7 @@ def untar(tar_path, cleanup=True):
     Args:
         tar_path (str): Path to tar file
         cleanup (bool): If True, remove tarfile after untarring. Default=False
+
     """
     tfile = tarfile.open(tar_path, "r")
     tfile.extractall(os.path.dirname(tar_path))

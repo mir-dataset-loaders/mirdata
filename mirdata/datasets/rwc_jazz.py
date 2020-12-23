@@ -164,6 +164,10 @@ class Track(core.Track):
         track_number (str): CD track number of this Track
         variation (str):  style variations
 
+    Cached Properties:
+        sections (SectionData): human-labeled section data
+        beats (BeatData): human-labeled beat data
+
     """
 
     def __init__(self, track_id, data_home):
@@ -207,21 +211,30 @@ class Track(core.Track):
 
     @core.cached_property
     def sections(self):
-        """SectionData: human-labeled section data"""
         return load_sections(self.sections_path)
 
     @core.cached_property
     def beats(self):
-        """BeatData: human-labeled beat data"""
         return load_beats(self.beats_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.beats, None)],

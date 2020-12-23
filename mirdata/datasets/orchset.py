@@ -132,6 +132,9 @@ class Track(core.Track):
         track_id (str): track id
         work (str): The musical work
 
+    Cached Properties:
+        melody (F0Data): melody annotation
+
     """
 
     def __init__(self, track_id, data_home):
@@ -185,21 +188,37 @@ class Track(core.Track):
 
     @core.cached_property
     def melody(self):
-        """F0Data: melody annotation"""
         return load_melody(self.melody_path)
 
     @property
     def audio_mono(self):
-        """(np.ndarray, float): mono audio signal, sample rate"""
+        """the track's audio (mono)
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+
+        """
         return load_audio_mono(self.audio_path_mono)
 
     @property
     def audio_stereo(self):
-        """(np.ndarray, float): stereo audio signal, sample rate"""
+        """the track's audio (stereo)
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+
+        """
         return load_audio_stereo(self.audio_path_stereo)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path_mono,
             f0_data=[(self.melody, "annotated melody")],
@@ -208,14 +227,14 @@ class Track(core.Track):
 
 
 def load_audio_mono(audio_path):
-    """Load a Orchset audio file.
+    """Load an Orchset audio file.
 
     Args:
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -225,14 +244,14 @@ def load_audio_mono(audio_path):
 
 
 def load_audio_stereo(audio_path):
-    """Load a Orchset audio file.
+    """Load an Orchset audio file.
 
     Args:
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -242,6 +261,17 @@ def load_audio_stereo(audio_path):
 
 
 def load_melody(melody_path):
+    """Load an Orchset melody annotation file
+
+    Args:
+        melody_path (str): path to melody annotation file
+
+    Raises:
+        IOError: if melody_path doesn't exist
+
+    Returns:
+        F0Data: melody annotation data
+    """
     if not os.path.exists(melody_path):
         raise IOError("melody_path {} does not exist".format(melody_path))
 

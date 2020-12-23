@@ -125,6 +125,11 @@ class Track(core.Track):
         source (str): dataset or source of song
         title (str): title of the song
 
+    Cached Properties:
+        sections_annotator_1_uppercase (SectionData): annotations in hierarchy level 0 from annotator 1
+        sections_annotator_1_lowercase (SectionData): annotations in hierarchy level 1 from annotator 1
+        sections_annotator_2_uppercase (SectionData): annotations in hierarchy level 0 from annotator 2
+        sections_annotator_2_lowercase (SectionData): annotations in hierarchy level 1 from annotator 2
     """
 
     def __init__(self, track_id, data_home):
@@ -179,39 +184,46 @@ class Track(core.Track):
 
     @core.cached_property
     def sections_annotator_1_uppercase(self):
-        """SectionData: annotations in hierarchy level 0 from annotator 1"""
         if self.sections_annotator1_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator1_uppercase_path)
 
     @core.cached_property
     def sections_annotator_1_lowercase(self):
-        """SectionData: annotations in hierarchy level 1 from annotator 1"""
         if self.sections_annotator1_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator1_lowercase_path)
 
     @core.cached_property
     def sections_annotator_2_uppercase(self):
-        """SectionData: annotations in hierarchy level 0 from annotator 2"""
         if self.sections_annotator2_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator2_uppercase_path)
 
     @core.cached_property
     def sections_annotator_2_lowercase(self):
-        """SectionData: annotations in hierarchy level 1 from annotator 2"""
         if self.sections_annotator2_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator2_lowercase_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             multi_section_data=[
@@ -241,8 +253,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -258,7 +270,7 @@ def load_sections(sections_path):
         sections_path (str): path to sectin annotation file
 
     Returns:
-        (annotations.SectionData): section data
+        SectionData: section data
 
     """
     if sections_path is None:

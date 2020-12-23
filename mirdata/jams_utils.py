@@ -71,8 +71,8 @@ def jams_converter(
             A dictionary containing the track metadata.
 
     Returns:
-        jam (jams.JAM): JAM object
-            A JAM object with all the annotations.
+        jams.JAMS: A JAMS object containing the annotations.
+
     """
 
     jam = jams.JAMS()
@@ -282,7 +282,7 @@ def beats_to_jams(beat_data, description=None):
         description (str): annotation description
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_beat = jams.Annotation(namespace="beat")
@@ -306,7 +306,7 @@ def sections_to_jams(section_data, description=None):
         description (str): annotation description
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_seg = jams.Annotation(namespace="segment_open")
@@ -330,7 +330,7 @@ def chords_to_jams(chord_data, description=None):
         description (str): annotation description
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_chord = jams.Annotation(namespace="chord")
@@ -356,7 +356,7 @@ def notes_to_jams(note_data, description):
         description (str): annotation description
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_note = jams.Annotation(namespace="note_hz")
@@ -382,7 +382,7 @@ def keys_to_jams(key_data, description):
         description (str): annotation description
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_key = jams.Annotation(namespace="key_mode")
@@ -408,7 +408,7 @@ def multi_sections_to_jams(multisection_data, description):
         description (str): annotation description
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     # sections with multiple annotators and multiple level annotations
@@ -438,7 +438,7 @@ def tempos_to_jams(tempo_data, description=None):
         description (str): annotation description
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_tempo = jams.Annotation(namespace="tempo")
@@ -460,7 +460,7 @@ def events_to_jams(event_data, description=None):
         description (str): annotation description
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_events = jams.Annotation(namespace="tag_open")
@@ -486,7 +486,7 @@ def f0s_to_jams(f0_data, description=None):
         description (str): annotation descriptoin
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_f0 = jams.Annotation(namespace="pitch_contour")
@@ -515,7 +515,7 @@ def lyrics_to_jams(lyric_data, description=None):
         description (str): annotation descriptoin
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_lyric = jams.Annotation(namespace="lyrics")
@@ -542,7 +542,7 @@ def tag_to_jams(tag_data, namespace="tag_open", description=None):
         description (str): annotation descriptoin
 
     Returns:
-        (jams.Annotation): jams annotation object.
+        jams.Annotation: jams annotation object.
 
     """
     jannot_tag = jams.Annotation(namespace=namespace)

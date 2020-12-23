@@ -414,6 +414,9 @@ def test_load_methods(httpserver):
             if dataset_name in SKIP and method_name in SKIP[dataset_name]:
                 continue
 
+            if load_method.__doc__ is None:
+                raise ValueError("{} has no documentation".format(method_name))
+
             params = [
                 p
                 for p in signature(load_method).parameters.values()

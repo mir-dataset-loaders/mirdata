@@ -67,6 +67,12 @@ class Track(core.Track):
         title (str): title of the track
         track_id (str): track id
 
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotations
+        chords (ChordData): human-labeled chord annotations
+        key (KeyData): local key annotations
+        sections (SectionData): section annotations
+
     """
 
     def __init__(self, track_id, data_home):
@@ -93,31 +99,38 @@ class Track(core.Track):
 
     @core.cached_property
     def beats(self):
-        """BeatData: human-labeled beat annotation"""
         return load_beats(self.beats_path)
 
     @core.cached_property
     def chords(self):
-        """ChordData: chord annotation"""
         return load_chords(self.chords_path)
 
     @core.cached_property
     def key(self):
-        """KeyData: key annotation"""
         return load_key(self.keys_path)
 
     @core.cached_property
     def sections(self):
-        """SectionData: section annotation"""
         return load_sections(self.sections_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+            np.ndarray: audio signal
+            float: sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """the track's data in jams format
+
+        Returns:
+            jams.JAMS: return track data in jam format
+    
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.beats, None)],
@@ -135,8 +148,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -151,7 +164,7 @@ def load_beats(beats_path):
         beats_path (str): path to beat annotation file
 
     Returns:
-        (annotations.BeatData): loaded beat data
+        BeatData: loaded beat data
 
     """
     if beats_path is None:
@@ -185,7 +198,7 @@ def load_chords(chords_path):
         chords_path (str): path to chord annotation file
 
     Returns:
-        (annotations.ChordData): loaded chord data
+        ChordData: loaded chord data
 
     """
     if chords_path is None:
@@ -216,7 +229,7 @@ def load_key(keys_path):
         keys_path (str): path to key annotation file
 
     Returns:
-        (annotations.KeyData): loaded key data
+        KeyData: loaded key data
 
     """
     if keys_path is None:
@@ -246,7 +259,7 @@ def load_sections(sections_path):
         sections_path (str): path to section annotation file
 
     Returns:
-        (annotations.SectionData): loaded section data
+        SectionData: loaded section data
 
     """
     if sections_path is None:
@@ -292,6 +305,7 @@ def _fix_newpoint(beat_positions):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """The beatles dataset
+
     """
 
     def __init__(self, data_home=None):

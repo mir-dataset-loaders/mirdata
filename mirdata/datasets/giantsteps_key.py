@@ -84,6 +84,12 @@ class Track(core.Track):
         metadata_path (str): sections annotation path
         title (str): title of the track
         track_id (str): track id
+    
+    Cached Properties:
+        key (str): musical key annotation
+        artists (list): list of artists involved
+        genres (dict): genres and subgenres
+        tempo (int): crowdsourced tempo annotations in beats per minute
 
     """
 
@@ -108,31 +114,38 @@ class Track(core.Track):
 
     @core.cached_property
     def key(self):
-        """String: key annotation"""
         return load_key(self.keys_path)
 
     @core.cached_property
     def artists(self):
-        """Dict: artist annotation"""
         return load_artist(self.metadata_path)
 
     @core.cached_property
     def genres(self):
-        """Dict: genre annotation"""
         return load_genre(self.metadata_path)
 
     @core.cached_property
     def tempo(self):
-        """int: tempo beatports crowdsourced annotation"""
         return load_tempo(self.metadata_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             metadata={
@@ -152,8 +165,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -168,7 +181,7 @@ def load_key(keys_path):
         keys_path (str): path to key annotation file
 
     Returns:
-        (str): loaded key data
+        str: loaded key data
 
     """
     if keys_path is None:
@@ -190,7 +203,7 @@ def load_tempo(metadata_path):
         metadata_path (str): path to metadata annotation file
 
     Returns:
-        (str): loaded tempo data
+        str: loaded tempo data
 
     """
     if metadata_path is None:
@@ -212,7 +225,8 @@ def load_genre(metadata_path):
         metadata_path (str): path to metadata annotation file
 
     Returns:
-        (dict): with the list of strings with genres ['genres'] and list of strings with sub-genres ['sub_genres']
+        dict: `{'genres': [...], 'subgenres': [...]}`
+
     """
     if metadata_path is None:
         return None
@@ -236,7 +250,7 @@ def load_artist(metadata_path):
         metadata_path (str): path to metadata annotation file
 
     Returns:
-        (list of strings): list of artists involved in the track.
+        list: list of artists involved in the track.
 
     """
     if metadata_path is None:

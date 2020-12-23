@@ -229,6 +229,11 @@ class Track(core.Track):
         title (str): title of the track song
         release (str): release where the track can be found
         duration (str): duration in seconds of the track
+    
+    Cached Properties:
+        melody (F0Data): annotated melody
+        notes (NoteData): annotated notes
+
     """
 
     def __init__(self, track_id, data_home):
@@ -267,26 +272,39 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     @property
     def spectrogram(self):
-        """(np.ndarray, float): spectrogram"""
+        """spectrogram of The track's audio
+
+        Returns:
+            (np.ndarray): spectrogram
+        """
         return load_spectrogram(self.spectrogram_path)
 
     @core.cached_property
     def melody(self):
-        """F0Data: audio signal, sample rate"""
         return load_melody(self.f0_path)
 
     @core.cached_property
     def notes(self):
-        """NoteData: audio signal, sample rate"""
         return load_notes(self.notes_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             spectrogram_path=self.spectrogram_path,
@@ -303,7 +321,7 @@ def load_spectrogram(spectrogram_path):
         spectrogram_path (str): path to audio file
 
     Returns:
-        np.array: spectrogram
+        np.ndarray: spectrogram
 
     """
     if not os.path.exists(spectrogram_path):
@@ -321,8 +339,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):

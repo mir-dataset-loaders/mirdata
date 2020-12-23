@@ -81,8 +81,8 @@ def mock_validator(mocker):
 
 
 @pytest.fixture
-def mock_check_index(mocker):
-    return mocker.patch.object(validate, "check_index")
+def mock_validate_index(mocker):
+    return mocker.patch.object(validate, "validate_index")
 
 
 def test_remote_index(httpserver):
@@ -138,12 +138,12 @@ def test_md5(mocker):
         ),
     ],
 )
-def test_check_index(test_index, expected_missing, expected_inv_checksum):
+def test_validate_index(test_index, expected_missing, expected_inv_checksum):
     index_path = os.path.join("tests/indexes", test_index)
     with open(index_path) as index_file:
         test_index = json.load(index_file)
 
-    missing_files, invalid_checksums = validate.check_index(
+    missing_files, invalid_checksums = validate.validate_index(
         test_index, "tests/resources/"
     )
 
@@ -165,10 +165,10 @@ def test_check_index(test_index, expected_missing, expected_inv_checksum):
         ({"tracks": {}}, {"tracks": {}}),
     ],
 )
-def test_validator(mocker, mock_check_index, missing_files, invalid_checksums):
-    mock_check_index.return_value = missing_files, invalid_checksums
+def test_validator(mocker, mock_validate_index, missing_files, invalid_checksums):
+    mock_validate_index.return_value = missing_files, invalid_checksums
 
     m, c = validate.validator("foo", "bar", False)
     assert m == missing_files
     assert c == invalid_checksums
-    mock_check_index.assert_called_once_with("foo", "bar", False)
+    mock_validate_index.assert_called_once_with("foo", "bar", False)

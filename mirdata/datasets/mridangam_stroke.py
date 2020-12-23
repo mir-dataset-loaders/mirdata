@@ -93,6 +93,7 @@ TONIC_DICT = {"B", "C", "C#", "D", "D#", "E"}
 
 class Track(core.Track):
     """Mridangam Stroke track class
+
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
@@ -102,6 +103,7 @@ class Track(core.Track):
         audio_path (str): audio path
         stroke_name (str): name of the Mridangam stroke present in Track
         tonic (str): tonic of the stroke in the Track
+
     """
 
     def __init__(self, track_id, data_home):
@@ -129,11 +131,22 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """(String): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             tags_open_data=[(self.stroke_name, "stroke_name")],
@@ -143,11 +156,14 @@ class Track(core.Track):
 
 def load_audio(audio_path):
     """Load a Mridangam Stroke Dataset audio file.
+
     Args:
         audio_path (str): path to audio file
+
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
+        
     """
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
