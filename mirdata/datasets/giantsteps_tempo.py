@@ -205,6 +205,7 @@ def load_audio(audio_path):
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
+
     """
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
@@ -219,6 +220,7 @@ def load_genre(path):
 
     Returns:
         str: loaded genre data
+        
     """
     if path is None:
         return None

@@ -125,6 +125,11 @@ class Track(core.Track):
         source (str): dataset or source of song
         title (str): title of the song
 
+    Cached Properties:
+        sections_annotator_1_uppercase (SectionData): annotations in hierarchy level 0 from annotator 1
+        sections_annotator_1_lowercase (SectionData): annotations in hierarchy level 1 from annotator 1
+        sections_annotator_2_uppercase (SectionData): annotations in hierarchy level 0 from annotator 2
+        sections_annotator_2_lowercase (SectionData): annotations in hierarchy level 1 from annotator 2
     """
 
     def __init__(self, track_id, data_home):
@@ -179,44 +184,24 @@ class Track(core.Track):
 
     @core.cached_property
     def sections_annotator_1_uppercase(self):
-        """Annotations in hierarchy level 0 from annotator 1
-
-        Returns:
-            (SectionData): section annotator 1 uppercase
-        """
         if self.sections_annotator1_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator1_uppercase_path)
 
     @core.cached_property
     def sections_annotator_1_lowercase(self):
-        """Annotations in hierarchy level 1 from annotator 1
-
-        Returns:
-            (SectionData): section annotator 1 lowercase)
-        """
         if self.sections_annotator1_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator1_lowercase_path)
 
     @core.cached_property
     def sections_annotator_2_uppercase(self):
-        """Annotations in hierarchy level 0 from annotator 2
-
-        Returns:
-            (SectionData): sections annotator 2 uppercase
-        """
         if self.sections_annotator2_uppercase_path is None:
             return None
         return load_sections(self.sections_annotator2_uppercase_path)
 
     @core.cached_property
     def sections_annotator_2_lowercase(self):
-        """Annotations in hierarchy level 1 from annotator 2.
-
-        Returns:
-            (SectionData): Annotations
-        """
         if self.sections_annotator2_lowercase_path is None:
             return None
         return load_sections(self.sections_annotator2_lowercase_path)
@@ -285,7 +270,7 @@ def load_sections(sections_path):
         sections_path (str): path to sectin annotation file
 
     Returns:
-        (annotations.SectionData): section data
+        SectionData: section data
 
     """
     if sections_path is None:

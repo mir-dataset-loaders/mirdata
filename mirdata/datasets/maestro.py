@@ -120,6 +120,10 @@ class Track(core.Track):
         track_id (str): track id
         year (int): Year of performance.
 
+    Cached Property:
+        midi (pretty_midi.PrettyMIDI): object containing MIDI annotations
+        notes (NoteData): annotated piano notes
+
     """
 
     def __init__(self, track_id, data_home):
@@ -150,19 +154,10 @@ class Track(core.Track):
 
     @core.cached_property
     def midi(self):
-        """Description of output.
-
-        Retuns:
-            (pretty_midi.MIDI): midi"""
         return load_midi(self.midi_path)
 
     @core.cached_property
     def notes(self):
-        """Annotated piano notes
-
-        Returns:
-            (NoteData): notes
-        """
         return load_notes(self.midi_path, self.midi)
 
     @property
@@ -197,7 +192,7 @@ def load_midi(midi_path):
         midi_path (str): path to midi file
 
     Returns:
-        midi_data (pretty_midi.MIDI): pretty_midi object
+        pretty_midi.PrettyMIDI: pretty_midi object
 
     """
     if not os.path.exists(midi_path):
@@ -215,7 +210,7 @@ def load_notes(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        note_data (annotations.NoteData)
+        NoteData: note annotations
 
     """
     if midi is None:

@@ -125,7 +125,7 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """the track's data in jams format:
+        """the track's data in jams format
 
         Returns:
             jams.JAMS: return track data in jam format
@@ -164,7 +164,7 @@ def load_beats(beats_path):
         beats_path (str): path to beat annotation file
 
     Returns:
-        (annotations.BeatData): loaded beat data
+        BeatData: loaded beat data
 
     """
     if beats_path is None:
@@ -198,7 +198,7 @@ def load_chords(chords_path):
         chords_path (str): path to chord annotation file
 
     Returns:
-        (annotations.ChordData): loaded chord data
+        ChordData: loaded chord data
 
     """
     if chords_path is None:
@@ -229,7 +229,7 @@ def load_key(keys_path):
         keys_path (str): path to key annotation file
 
     Returns:
-        (annotations.KeyData): loaded key data
+        KeyData: loaded key data
 
     """
     if keys_path is None:
@@ -259,7 +259,7 @@ def load_sections(sections_path):
         sections_path (str): path to section annotation file
 
     Returns:
-        (annotations.SectionData): loaded section data
+        SectionData: loaded section data
 
     """
     if sections_path is None:

@@ -89,10 +89,10 @@ IRMAS Loader
     For more details, please visit: https://www.upf.edu/web/mtg/irmas
 
 """
+import csv
 
 import os
 import librosa
-import csv
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -173,6 +173,9 @@ class Track(core.Track):
         genre (str): string containing the namecode of the genre of the track.
         drum (bool): flag to identify if the track contains drums or not.
         
+    Cached Properties:
+        instrument (list): list of predominant instruments as str
+
     """
 
     def __init__(self, track_id, data_home):
@@ -233,12 +236,6 @@ class Track(core.Track):
 
     @core.cached_property
     def instrument(self):
-        """Predominant instrument
-
-        Returns:
-            list: List of predominant instruments as str
-
-        """
         if self.predominant_instrument is not None:
             return [self.predominant_instrument]
         else:
@@ -246,20 +243,20 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """The track's audio
+        """The track's audio signal
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
 
         """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """the track's data in jams format:
+        """the track's data in jams format
 
         Returns:
-            (jams.JAMS): return track data in jam format
+            jams.JAMS: return track data in jam format
 
         """
         return jams_utils.jams_converter(
@@ -293,10 +290,10 @@ def load_pred_inst(annotation_path):
     """Load predominant instrument of track
 
     Args:
-        annotation_path (str): Local path where the testing annotation is stored.
+        annotation_path (str): Local path where the test annotations are stored.
 
     Returns:
-        pred_inst (str): testing track predominant instrument(s) annotations
+        str: test track predominant instrument(s) annotations
     
     """
     if annotation_path is None:

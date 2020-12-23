@@ -168,6 +168,10 @@ class Track(core.Track):
         track_id (str): track id
         track_number (str): CD track number of this Track
 
+    Cached Properties:
+        sections (SectionData): human-labeled section annotations
+        beats (BeatData): human-labeled beat annotations
+
     """
 
     def __init__(self, track_id, data_home):
@@ -212,19 +216,10 @@ class Track(core.Track):
 
     @core.cached_property
     def sections(self):
-        """Human labeled section annotations
-
-        Returns:
-            (SectionData): sections annotations
-        """
         return load_sections(self.sections_path)
 
     @core.cached_property
     def beats(self):
-        """Human labeled beat annotations
-
-        Returns:
-            (BeatData): beat annotations"""
         return load_beats(self.beats_path)
 
     @property
@@ -277,7 +272,7 @@ def load_sections(sections_path):
         sections_path (str): path to sections annotation file
 
     Returns:
-        (annotations.SectionData): section data
+        SectionData: section data
 
     """
     if not os.path.exists(sections_path):
@@ -305,8 +300,8 @@ def _position_in_bar(beat_positions, beat_times):
         beat_times (np.ndarray): raw rwc time stamps
     
     Returns:
-        beat_positions_corrected (np.ndarray): normalized beat positions
-        beat_times_corrected (np.ndarray): normalized time stamps
+        * np.ndarray: normalized beat positions
+        * np.ndarray: normalized time stamps
 
     """
     # Remove -1
@@ -341,7 +336,7 @@ def load_beats(beats_path):
         beats_path (str): path to beats annotation file
 
     Returns:
-        (annotations.BeatData): beat data
+        BeatData: beat data
 
     """
     if not os.path.exists(beats_path):
@@ -369,7 +364,7 @@ def _duration_to_sec(duration):
         duration (str): duration in form min:sec
 
     Returns:
-        (float): duration in seconds
+        float: duration in seconds
 
     """
     if type(duration) == str:

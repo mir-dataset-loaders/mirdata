@@ -165,7 +165,8 @@ class Dataset(object):
         """Load all tracks in the dataset
 
         Returns:
-            dict: {`track_id`: track data}
+            dict: 
+                {`track_id`: track data}
 
         Raises:
             NotImplementedError: If the dataset does not support Track objects
@@ -230,8 +231,8 @@ class Dataset(object):
             verbose (bool): If False, don't print output
 
         Returns:        
-            * (list) - files in the index but are missing locally
-            * (list) - files which have an invalid checksum
+            * list - files in the index but are missing locally
+            * list - files which have an invalid checksum
 
         """
         missing_files, invalid_checksums = validate.validator(
@@ -269,9 +270,11 @@ class Track(object):
                 continue
 
             if val.__doc__ is None:
-                raise ValueError("{} has no documentation".format(prop))
+                doc = ""
+            else:
+                doc = val.__doc__
 
-            val_type_str = val.__doc__.split(":")[0]
+            val_type_str = doc.split(":")[0]
             repr_str += "  {}: {},\n".format(prop, val_type_str)
 
         repr_str += ")"
@@ -434,6 +437,9 @@ class LargeData(object):
                 If None, assume the dataset has no metadata. When the
                 `metadata` attribute is called, raises a NotImplementedError
 
+        Cached Properties:
+            index (dict): dataset index
+
         """
         self._metadata = None
         self.index_file = index_file
@@ -453,6 +459,18 @@ class LargeData(object):
         return load_json_index(self.index_file)
 
     def metadata(self, data_home):
+        """Dataset metadata
+
+        Args:
+            data_home (str): path where the dataset lives
+
+        Raises:
+            NotImplementedError: if self.metadata_load_fn is not set
+
+        Returns:
+            Object: data loaded by self.metadata_load_fn
+
+        """
         if self.metadata_load_fn is None:
             raise NotImplementedError
 

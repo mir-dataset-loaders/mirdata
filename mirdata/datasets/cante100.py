@@ -229,6 +229,11 @@ class Track(core.Track):
         title (str): title of the track song
         release (str): release where the track can be found
         duration (str): duration in seconds of the track
+    
+    Cached Properties:
+        melody (F0Data): annotated melody
+        notes (NoteData): annotated notes
+
     """
 
     def __init__(self, track_id, data_home):
@@ -287,20 +292,10 @@ class Track(core.Track):
 
     @core.cached_property
     def melody(self):
-        """F0 annotated.
-
-         Returns:
-             (F0Data): F0
-         """
         return load_melody(self.f0_path)
 
     @core.cached_property
     def notes(self):
-        """Annotated notes
-
-        Returns:
-            (NoteData): notes
-        """
         return load_notes(self.notes_path)
 
     def to_jams(self):
@@ -326,7 +321,7 @@ def load_spectrogram(spectrogram_path):
         spectrogram_path (str): path to audio file
 
     Returns:
-        (np.ndarray): spectrogram
+        np.ndarray: spectrogram
 
     """
     if not os.path.exists(spectrogram_path):
@@ -389,7 +384,7 @@ def load_notes(notes_path):
         notes_path (str): path to notes file
 
     Returns:
-        (NoteData): note annotations
+        NoteData: note annotations
 
     """
     if not os.path.exists(notes_path):

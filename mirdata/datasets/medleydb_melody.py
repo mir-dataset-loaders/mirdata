@@ -83,6 +83,11 @@ class Track(core.Track):
         title (str): title
         track_id (str): track id
 
+    Cached Properties:
+        melody1 (F0Data): the pitch of the single most predominant source (often the voice)
+        melody2 (F0Data): the pitch of the predominant source for each point in time
+        melody3 (MultiF0Data): the pitch of any melodic source. Allows for more than one f0 value at a time
+
     """
 
     def __init__(self, track_id, data_home):
@@ -128,29 +133,14 @@ class Track(core.Track):
 
     @core.cached_property
     def melody1(self):
-        """The pitch of the single most predominant source (often the voice).
-
-        Returns:
-            (F0Data): pitch
-        """
         return load_melody(self.melody1_path)
 
     @core.cached_property
     def melody2(self):
-        """The pitch of the predominant source for each point in time
-
-        Returns:
-            (F0Data): Pitch
-        """
         return load_melody(self.melody2_path)
 
     @core.cached_property
     def melody3(self):
-        """The pitch of any melodic source. Allows for more than one f0 value at a time.
-
-        Returns:
-            (F0Data): pitch
-        """
         return load_melody3(self.melody3_path)
 
     @property
@@ -197,6 +187,18 @@ def load_audio(audio_path):
 
 
 def load_melody(melody_path):
+    """Load a MedleyDB melody1 or melody2 annotation file
+
+    Args:
+        melody_path (str): path to a melody annotation file
+
+    Raises:
+        IOError: if melody_path does not exist
+
+    Returns:
+        F0Data: melody data
+
+    """
     if not os.path.exists(melody_path):
         raise IOError("melody_path {} does not exist".format(melody_path))
 
@@ -216,6 +218,18 @@ def load_melody(melody_path):
 
 
 def load_melody3(melody_path):
+    """Load a MedleyDB melody3 annotation file
+
+    Args:
+        melody_path (str): melody 3 melody annotation path
+
+    Raises:
+        IOError: if melody_path does not exist
+
+    Returns:
+        MultiF0Data: melody 3 annotation data
+
+    """
     if not os.path.exists(melody_path):
         raise IOError("melody_path {} does not exist".format(melody_path))
 

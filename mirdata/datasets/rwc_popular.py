@@ -174,6 +174,12 @@ class Track(core.Track):
         track_number (str): CD track number
         voca_inst_path (str): path of the vocal/instrumental annotation file
 
+    Cached Properties:
+        sections (SectionData): human-labeled section annotation
+        beats (BeatData): human-labeled beat annotation
+        chords (ChordData): human-labeled chord annotation
+        vocal_instrument_activity (EventData): human-labeled vocal/instrument activity
+
     """
 
     def __init__(self, track_id, data_home):
@@ -228,37 +234,18 @@ class Track(core.Track):
 
     @core.cached_property
     def sections(self):
-        """Human-labeled section annotation
-
-        Returns:
-            (SectionData): sections"""
         return load_sections(self.sections_path)
 
     @core.cached_property
     def beats(self):
-        """Human-labeled beat annotation
-
-        Returns:
-            (BeatData): beats
-        """
         return load_beats(self.beats_path)
 
     @core.cached_property
     def chords(self):
-        """Human-labeled chord annotation
-
-        Returns:
-            (ChordData): chords
-        """
         return load_chords(self.chords_path)
 
     @core.cached_property
     def vocal_instrument_activity(self):
-        """Human-labeled vocal/instrument activity.
-
-        Returns:
-            (EventData): voocal instrument activity
-        """
         return load_vocal_activity(self.voca_inst_path)
 
     @property
@@ -295,7 +282,7 @@ def load_chords(chords_path):
         chords_path (str): path to chord annotation file
 
     Returns:
-        (annotations.ChordData): chord data
+        ChordData: chord data
 
     """
     if not os.path.exists(chords_path):
@@ -323,7 +310,7 @@ def load_vocal_activity(vocal_activity_path):
         vocal_activity_path (str): path to vocal activity annotation file
 
     Returns:
-        (annotations.EventData): vocal activity data
+        EventData: vocal activity data
 
     """
     if not os.path.exists(vocal_activity_path):

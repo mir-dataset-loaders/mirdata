@@ -12,6 +12,7 @@
     album covers, or links to video clips.
 
     For more details, please visit: https://github.com/gabolsgabs/DALI
+
 """
 
 import json
@@ -110,6 +111,13 @@ class Track(core.Track):
         track_id (str): the unique track id
         url_working (bool): True if the youtube url was valid
 
+    Cached Properties:
+        notes (NoteData): vocal notes
+        words (LyricData): word-level lyrics
+        lines (LyricData): line-level lyrics
+        paragraphs (LyricData): paragraph-level lyrics
+        annotation-object (DALI.Annotations): DALI annotation object
+
     """
 
     def __init__(self, track_id, data_home):
@@ -163,47 +171,22 @@ class Track(core.Track):
 
     @core.cached_property
     def notes(self):
-        """note-aligned lyrics
-
-        Returns:
-            (NoteData): notes
-        """
         return load_annotations_granularity(self.annotation_path, "notes")
 
     @core.cached_property
     def words(self):
-        """Word-aligned lyric.
-
-        Returns:
-            (LyricData): word aligned lyric
-        """
         return load_annotations_granularity(self.annotation_path, "words")
 
     @core.cached_property
     def lines(self):
-        """Line-aligned lyric.
-
-        Returns:
-            (LyricData): Line aligned lyric
-        """
         return load_annotations_granularity(self.annotation_path, "lines")
 
     @core.cached_property
     def paragraphs(self):
-        """Paragraph-aligned lyric.
-
-        Returns:
-            (LyricData): Paragraph aligned lyric
-        """
         return load_annotations_granularity(self.annotation_path, "paragraphs")
 
     @core.cached_property
     def annotation_object(self):
-        """DALI Annotations object
-
-        Returns:
-            (DALI.Annotations): DALI annotations object
-        """
         return load_annotations_class(self.annotation_path)
 
     @property
@@ -298,7 +281,7 @@ def load_annotations_class(annotations_path):
         annotations_path (str): path to a DALI annotation file
 
     Returns:
-        (DALI.annotations): DALI annotations object
+        DALI.annotations: DALI annotations object
 
     """
     if not os.path.exists(annotations_path):

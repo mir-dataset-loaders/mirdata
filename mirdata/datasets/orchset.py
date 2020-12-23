@@ -132,6 +132,9 @@ class Track(core.Track):
         track_id (str): track id
         work (str): The musical work
 
+    Cached Properties:
+        melody (F0Data): melody annotation
+
     """
 
     def __init__(self, track_id, data_home):
@@ -185,29 +188,27 @@ class Track(core.Track):
 
     @core.cached_property
     def melody(self):
-        """Melody annotation
-
-        Returns:
-            (F0Data): F0 melody"""
         return load_melody(self.melody_path)
 
     @property
     def audio_mono(self):
-        """Mono The track's audio
+        """the track's audio (mono)
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+
         """
         return load_audio_mono(self.audio_path_mono)
 
     @property
     def audio_stereo(self):
-        """Stereo The track's audio
+        """the track's audio (stereo)
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+
         """
         return load_audio_stereo(self.audio_path_stereo)
 
@@ -226,7 +227,7 @@ class Track(core.Track):
 
 
 def load_audio_mono(audio_path):
-    """Load a Orchset audio file.
+    """Load an Orchset audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -243,7 +244,7 @@ def load_audio_mono(audio_path):
 
 
 def load_audio_stereo(audio_path):
-    """Load a Orchset audio file.
+    """Load an Orchset audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -260,6 +261,17 @@ def load_audio_stereo(audio_path):
 
 
 def load_melody(melody_path):
+    """Load an Orchset melody annotation file
+
+    Args:
+        melody_path (str): path to melody annotation file
+
+    Raises:
+        IOError: if melody_path doesn't exist
+
+    Returns:
+        F0Data: melody annotation data
+    """
     if not os.path.exists(melody_path):
         raise IOError("melody_path {} does not exist".format(melody_path))
 

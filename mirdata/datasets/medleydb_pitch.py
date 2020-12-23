@@ -80,6 +80,9 @@ class Track(core.Track):
         title (str): title
         track_id (str): track id
 
+    Cached Properties:
+        pitch (F0Data): human annotated pitch
+
     """
 
     def __init__(self, track_id, data_home):
@@ -113,11 +116,6 @@ class Track(core.Track):
 
     @core.cached_property
     def pitch(self):
-        """The human-annotated pitch
-
-        Returns:
-            (F0Data): human-annotated pitch
-        """
         return load_pitch(self.pitch_path)
 
     @property
@@ -163,6 +161,18 @@ def load_audio(audio_path):
 
 
 def load_pitch(pitch_path):
+    """load a MedleyDB pitch annotation file
+
+    Args:
+        pitch_path (str): path to pitch annotation file
+
+    Raises:
+        IOError: if pitch_path doesn't exist
+
+    Returns:
+        F0Data: pitch annotation
+
+    """
     if not os.path.exists(pitch_path):
         raise IOError("pitch_path {} does not exist".format(pitch_path))
 

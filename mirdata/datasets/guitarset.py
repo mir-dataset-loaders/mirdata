@@ -134,6 +134,28 @@ class Track(core.Track):
         tempo (float): BPM of the track
         track_id (str): track id
 
+    Cached Properties:
+        beats (BeatData): beat positions
+        leadsheet_chords (ChordData): chords as written in the leadsheet
+        inferred_chords (ChordData): chords inferred from played transcription
+        key_mode (KeyData): key and mode
+        pitch_contours (dict):
+            Pitch contours per string
+            - 'E': F0Data(...)
+            - 'A': F0Data(...)
+            - 'D': F0Data(...)
+            - 'G': F0Data(...)
+            - 'B': F0Data(...)
+            - 'e': F0Data(...)
+        notes (dict):
+            Notes per string
+            - 'E': NoteData(...)
+            - 'A': NoteData(...)
+            - 'D': NoteData(...)
+            - 'G': NoteData(...)
+            - 'B': NoteData(...)
+            - 'e': NoteData(...)
+
     """
 
     def __init__(self, track_id, data_home):
@@ -168,19 +190,10 @@ class Track(core.Track):
 
     @core.cached_property
     def beats(self):
-        """The track's beat positions.
-
-        Returns:
-            (BeatData): beats """
         return load_beats(self.jams_path)
 
     @core.cached_property
     def leadsheet_chords(self):
-        """The track's chords as written in the leadsheet.
-
-        Returns:
-            (ChordData): leedsheet chords
-        """
         if self.mode == "solo":
             logging.info(
                 "Chord annotations for solo excerpts are the same with the comp excerpt."
@@ -189,37 +202,18 @@ class Track(core.Track):
 
     @core.cached_property
     def inferred_chords(self):
-        """The track's chords inferred from played transcription.
-
-        Returns:
-            (ChordData): inferred_chords"""
         if self.mode == "solo":
             logging.info(
-                "Chord annotations for solo excerpts are the same with the comp excerpt."
+                "Chord annotations for solo excerpts are the same as the comp excerpt."
             )
         return load_chords(self.jams_path, leadsheet_version=False)
 
     @core.cached_property
     def key_mode(self):
-        """The track's key and mode.
-
-        Returns:
-            (KeyData): key_mode
-        """
         return load_key_mode(self.jams_path)
 
     @core.cached_property
     def pitch_contours(self):
-        """A dict that contains 6 F0Data.
-
-        Returns:
-            dict:
-                From Low E string to high e string.
-                - 'E': F0Data(...),
-                - 'A': F0Data(...),
-                -  ...
-                - 'e': F0Data(...)
-        """
         contours = {}
         # iterate over 6 strings
         for i in range(6):
@@ -228,16 +222,6 @@ class Track(core.Track):
 
     @core.cached_property
     def notes(self):
-        """A dict that contains 6 NoteData.
-
-        Returns:
-            dict:
-                From Low E string to high e string.
-                - 'E': NoteData(...),
-                - 'A': NoteData(...),
-                -  ...
-                - 'e': NoteData(...)
-        """
         notes = {}
         # iterate over 6 strings
         for i in range(6):
@@ -258,33 +242,37 @@ class Track(core.Track):
 
     @property
     def audio_mix(self):
-        """Audio mix ground truth
+        """Mixture audio (mono)
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         audio, sr = load_audio(self.audio_mix_path)
         return audio, sr
 
     @property
     def audio_hex(self):
-        """Audio hex ground truth
+        """Hexaphonic audio (6-channels) with one channel per string
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         audio, sr = load_multitrack_audio(self.audio_hex_path)
         return audio, sr
 
     @property
     def audio_hex_cln(self):
-        """Audio bleed-removed ground truth
+        """Hexaphonic audio (6-channels) with one channel per string
+           after bleed removal
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         audio, sr = load_multitrack_audio(self.audio_hex_cln_path)
         return audio, sr
@@ -338,7 +326,7 @@ def load_beats(jams_path):
         jams_path (str): Path of the jams annotation file
 
     Returns:
-        (annotations.BeatData): Beat data
+        BeatData: Beat data
     """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
@@ -359,7 +347,7 @@ def load_chords(jams_path, leadsheet_version=True):
             If False, load the infered version.
 
     Returns:
-        (annotations.ChordData): Chord data
+        ChordData: Chord data
 
     """
     if not os.path.exists(jams_path):
@@ -380,7 +368,7 @@ def load_key_mode(jams_path):
         jams_path (str): Path of the jams annotation file
 
     Returns:
-        (annotations.KeyData): Key data
+        KeyData: Key data
 
     """
     if not os.path.exists(jams_path):
@@ -400,7 +388,7 @@ def load_pitch_contour(jams_path, string_num):
             0 is the Low E string, 5 is the high e string.
 
     Returns:
-        (annotations.F0Data): Pitch contour data for the given string
+        F0Data: Pitch contour data for the given string
 
     """
     if not os.path.exists(jams_path):
@@ -424,7 +412,7 @@ def load_notes(jams_path, string_num):
             0 is the Low E string, 5 is the high e string.
 
     Returns:
-        (annotations.NoteData): Note data for the given string
+        NoteData: Note data for the given string
 
     """
     if not os.path.exists(jams_path):

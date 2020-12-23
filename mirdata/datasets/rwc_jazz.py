@@ -164,6 +164,10 @@ class Track(core.Track):
         track_number (str): CD track number of this Track
         variation (str):  style variations
 
+    Cached Properties:
+        sections (SectionData): human-labeled section data
+        beats (BeatData): human-labeled beat data
+
     """
 
     def __init__(self, track_id, data_home):
@@ -207,20 +211,10 @@ class Track(core.Track):
 
     @core.cached_property
     def sections(self):
-        """Human-labeled section data
-
-        Returns:
-            (SectionData): sections
-        """
         return load_sections(self.sections_path)
 
     @core.cached_property
     def beats(self):
-        """Human-labeled beat data
-
-        Returns:
-            (BeatData): beats
-        """
         return load_beats(self.beats_path)
 
     @property

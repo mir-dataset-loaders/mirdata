@@ -251,6 +251,12 @@ class Track(core.Track):
         duration (float): Duration of the midi file in seconds
         split (str): Whether the track is for a train/valid/test set. One of
             'train', 'valid' or 'test'.
+
+    Cached Properties:
+        beats (BeatData): Machine-generated beat annotations
+        drum_events (EventData): Annotated drum kit events
+        midi (pretty_midi.PrettyMIDI): object containing MIDI information
+
     """
 
     def __init__(self, track_id, data_home):
@@ -311,29 +317,14 @@ class Track(core.Track):
 
     @core.cached_property
     def beats(self):
-        """Machine-generated beat annotation.
-
-        Returns:
-            (BeatData): beats
-        """
         return load_beats(self.midi_path, self.midi)
 
     @core.cached_property
     def drum_events(self):
-        """Annotated drum kit events
-
-        Returns:
-            (EventData): drum events
-        """
         return load_drum_events(self.midi_path, self.midi)
 
     @core.cached_property
     def midi(self):
-        """prettyMIDI obj
-
-        Returns:
-            (pretty_midi.MIDI): MIDI
-        """
         return load_midi(self.midi_path)
 
     def to_jams(self):
@@ -396,7 +387,7 @@ def load_beats(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        beat_data (annotations.BeatData)
+        annotations.BeatData: machine generated beat data
 
     """
     if midi is None:
@@ -417,7 +408,7 @@ def load_drum_events(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        drum_events (annotations.EventData)
+        annotations.EventData: drum event data
 
     """
     if midi is None:

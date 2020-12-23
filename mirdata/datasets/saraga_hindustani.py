@@ -319,7 +319,7 @@ def load_pitch(pitch_path):
 
     Returns:
         F0Data: pitch annotation
-        
+
     """
     if pitch_path is None:
         return None
@@ -351,7 +351,8 @@ def load_tempo(tempo_path):
         tempo_path (str): Local path where the tempo annotation is stored.
 
     Returns:
-        dict: Dictionary of tempo information with the following keys:
+        dict: 
+            Dictionary of tempo information with the following keys:
             * 'tempo': median tempo for the section in mātrās per minute (MPM)
             * 'matra_interval': tempo expressed as the duration of the mātra (essentially
               dividing 60 by tempo, expressed in seconds)

@@ -97,6 +97,10 @@ class Track(core.Track):
         song_id (str): song id of the track
         track_id (str): track id
 
+    Cached Properties:
+        f0 (F0Data): human-annotated singing voice pitch
+        lyrics (LyricsData): human-annotated lyrics
+
     """
 
     def __init__(self, track_id, data_home):
@@ -123,48 +127,42 @@ class Track(core.Track):
 
     @core.cached_property
     def f0(self):
-        """The human-annotated singing voice pitch
-
-        Returns:
-            (F0Data): f0 """
         return load_f0(self.f0_path)
 
     @core.cached_property
     def lyrics(self):
-        """The human-annotated lyrics
-
-        Returns:
-            (LyricsData): LyricData
-        """
         return load_lyrics(self.lyrics_path)
 
     @property
     def vocal_audio(self):
-        """Vocal The track's audio
+        """solo vocal audio (mono)
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         return load_vocal_audio(self.audio_path)
 
     @property
     def instrumental_audio(self):
-        """Mono instrumental The track's audio
+        """instrumental audio (mono)
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         return load_instrumental_audio(self.audio_path)
 
     @property
     def mix_audio(self):
-        """Mono mixture The track's audio
+        """mixture audio (mono)
 
         Returns:
-           (np.ndarray): audio signal
-           (float): sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
+
         """
         return load_mix_audio(self.audio_path)
 
@@ -189,7 +187,7 @@ class Track(core.Track):
 
 
 def load_vocal_audio(audio_path):
-    """Load an ikala vocal.
+    """Load ikala vocal audio
 
     Args:
         audio_path (str): path to audio file
@@ -208,7 +206,7 @@ def load_vocal_audio(audio_path):
 
 
 def load_instrumental_audio(audio_path):
-    """Load an ikala instrumental.
+    """Load ikala instrumental audio
 
     Args:
         audio_path (str): path to audio file
@@ -246,6 +244,18 @@ def load_mix_audio(audio_path):
 
 
 def load_f0(f0_path):
+    """Load an ikala f0 annotation
+
+    Args:
+        f0_path (str): path to f0 annotation file
+
+    Raises:
+        IOError: If f0_path does not exist
+
+    Returns:
+        F0Data: the f0 annotation data
+
+    """
     if not os.path.exists(f0_path):
         raise IOError("f0_path {} does not exist".format(f0_path))
 
@@ -260,6 +270,18 @@ def load_f0(f0_path):
 
 
 def load_lyrics(lyrics_path):
+    """Load an ikala lyrics annotation
+
+    Args:
+        lyrics_path (str): path to lyric annotation file
+
+    Raises:
+        IOError: if lyrics_path does not exist
+
+    Returns:
+        LyricData: lyric annotation data
+
+    """
     if not os.path.exists(lyrics_path):
         raise IOError("lyrics_path {} does not exist".format(lyrics_path))
 
