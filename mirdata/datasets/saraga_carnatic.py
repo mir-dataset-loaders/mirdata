@@ -406,7 +406,7 @@ def load_tempo(tempo_path):
         beats_per_cycle = tempo_data[3]
         subdivisions = tempo_data[4]
 
-        if "NaN" in tempo_data:
+        if "NaN" in tempo_data or " NaN" in tempo_data or "NaN " in tempo_data:
             return None
 
         tempo_annotation["tempo_apm"] = (
@@ -453,7 +453,7 @@ def load_sama(sama_path):
             beat_times.append(float(line[0]))
             beat_positions.append(1)
 
-    if not beat_times:
+    if not beat_times or beat_times[0] == -1.:
         return None
 
     return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
