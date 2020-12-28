@@ -22,7 +22,7 @@
     description of the properties of this dataset can be found:
 
     .. code-block:: latex
-    
+
         Ángel Faraldo (2017). Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination.
         PhD Thesis. Universitat Pompeu Fabra, Barcelona.
 
@@ -55,11 +55,11 @@ REMOTES = {
         checksum="8ec9ade888d5a88ce435d7fda031929b",
         destination_dir=".",
     ),
-    "keys": download_utils.RemoteFileMetadata(
-        filename="keys.zip",
-        url="https://zenodo.org/record/1095691/files/keys.zip?download=1",
-        checksum="775b7d17e009f5818544cf505b6a96fd",
-        destination_dir=".",
+    'new_annotations': download_utils.RemoteFileMetadata(
+        filename='new_annotations.zip',
+        url='https://zenodo.org/record/4153506/files/annotations.zip?download=1',
+        checksum='603183d92916313c97dae51edac7655f',
+        destination_dir='.',
     ),
     "metadata": download_utils.RemoteFileMetadata(
         filename="original_metadata.zip",
@@ -68,7 +68,6 @@ REMOTES = {
         destination_dir=".",
     ),
 }
-
 DATA = core.LargeData("giantsteps_key_index.json")
 
 
@@ -84,7 +83,7 @@ class Track(core.Track):
         metadata_path (str): sections annotation path
         title (str): title of the track
         track_id (str): track id
-    
+
     Cached Properties:
         key (str): musical key annotation
         artists (list): list of artists involved
@@ -175,13 +174,32 @@ def load_audio(audio_path):
 
 
 def load_key(keys_path):
-    """Load giantsteps_key format key data from a file
-
+    """Load dictionary with data about key.
+    'key', 'pitch-description', 'pc-set', 'cardinality', 'end_times', start_times' are lists with the same size.
+    'key', 'pitch-description', 'pc-set' are the annotations about global key. Some mixes doesn't have the
+    key in all its tracks. That's why global key duration is not 120 seconds. 'key', 'pitch-description', 'pc-set' have
+    durations aligned with time stamps 'end_times', 'start_times'.
+    Each element of 'key' list can adopt different values (another nested list) because tonality can be mixed between
+    two tonal centers in electronic music.
+    'confidence' is between the 2 annotators and Angel Faraldo.
+    'cardinality' is the size of 'pitch-description', 'pc-set'
+    'comments' are annotators comments.
+    Example:
+    {
+        'key': [['D major']],
+        'confidence': 2,
+        'pitch-description': ['D: d, e, f#, g, a , b'],
+        'pc-set': ['[0, 2, 4, 5, 7, 9]'],
+        'cardinality': [6],
+        'start_times': [0],
+        'end_times': [120],
+        'comments': 'Not enough information to determine wether it is ionian or mixolydian'
+    }
     Args:
         keys_path (str): path to key annotation file
 
     Returns:
-        str: loaded key data
+        (str): loaded key data
 
     """
     if keys_path is None:
@@ -190,10 +208,23 @@ def load_key(keys_path):
     if not os.path.exists(keys_path):
         raise IOError("keys_path {} does not exist".format(keys_path))
 
-    with open(keys_path) as f:
-        key = f.readline()
-
-    return key
+    with open(keys_path) as json_file:
+        new_annotations = json.load(json_file)
+    cardinality = (
+        [int(c) for c in new_annotations['cardinality']]
+        if new_annotations['cardinality'] is not None
+        else []
+    )
+    return {
+        'key': [global_key.split(' | ') for global_key in new_annotations['key']],
+        'confidence': new_annotations['confidence'],
+        'pitch-description': new_annotations['pitch-description'],
+        'pc-set': new_annotations['pc-set'],
+        'cardinality': cardinality,
+        'start_times': new_annotations['start_times'],
+        'end_times': new_annotations['end_times'],
+        'comments': new_annotations['comments'],
+    }
 
 
 def load_tempo(metadata_path):
