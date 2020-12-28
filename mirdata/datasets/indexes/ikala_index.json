@@ -1,0 +1,3539 @@
+{
+  "version": null,
+  "tracks": {
+    "10161_chorus": {
+      "audio": [
+        "Wavfile/10161_chorus.wav",
+        "278ae003cb0d323e99b9a643c0f2eeda"
+      ],
+      "pitch": [
+        "PitchLabel/10161_chorus.pv",
+        "0d93a011a9e668fd80673049089bbb14"
+      ],
+      "lyrics": [
+        "Lyrics/10161_chorus.lab",
+        "79bbeb72b422056fd43be4e8d63319ce"
+      ]
+    },
+    "10161_verse": {
+      "audio": [
+        "Wavfile/10161_verse.wav",
+        "f487648f9ba54664eedd7f674920b6c7"
+      ],
+      "pitch": [
+        "PitchLabel/10161_verse.pv",
+        "6efe8bb97be68de86dea2fbd54de973c"
+      ],
+      "lyrics": [
+        "Lyrics/10161_verse.lab",
+        "60bbf86ac4a4410f9ef6053f6c1ad9db"
+      ]
+    },
+    "10164_chorus": {
+      "audio": [
+        "Wavfile/10164_chorus.wav",
+        "405668078aaac12149817000199f4268"
+      ],
+      "pitch": [
+        "PitchLabel/10164_chorus.pv",
+        "0c5b703f3a63d2dfcacb754963d2748c"
+      ],
+      "lyrics": [
+        "Lyrics/10164_chorus.lab",
+        "318f69479ddb293bfc68da460626f873"
+      ]
+    },
+    "10170_chorus": {
+      "audio": [
+        "Wavfile/10170_chorus.wav",
+        "87a1a467534e353fffba0d8ef0e9f8a4"
+      ],
+      "pitch": [
+        "PitchLabel/10170_chorus.pv",
+        "0784016f988b9552d63520b662e4f300"
+      ],
+      "lyrics": [
+        "Lyrics/10170_chorus.lab",
+        "c86250a3c400ea5fc8fe412749a34b90"
+      ]
+    },
+    "10171_chorus": {
+      "audio": [
+        "Wavfile/10171_chorus.wav",
+        "26b0dc4e520e7e63a7b187c3e017779c"
+      ],
+      "pitch": [
+        "PitchLabel/10171_chorus.pv",
+        "15635b5180d893f5e5a987017b229710"
+      ],
+      "lyrics": [
+        "Lyrics/10171_chorus.lab",
+        "342b3254e1a32c6b3fc8d8f2b5fa5174"
+      ]
+    },
+    "10171_verse": {
+      "audio": [
+        "Wavfile/10171_verse.wav",
+        "fc5a41876c223bda51856094f443be0d"
+      ],
+      "pitch": [
+        "PitchLabel/10171_verse.pv",
+        "0c770a92606f7ff84e08f95f8f14d92b"
+      ],
+      "lyrics": [
+        "Lyrics/10171_verse.lab",
+        "1a8861ced9e3a23637df17d44f7e2d30"
+      ]
+    },
+    "10174_chorus": {
+      "audio": [
+        "Wavfile/10174_chorus.wav",
+        "6228fc5687226584019b189074fac8d5"
+      ],
+      "pitch": [
+        "PitchLabel/10174_chorus.pv",
+        "49d3db44e882b74be5d37c58096eb3c0"
+      ],
+      "lyrics": [
+        "Lyrics/10174_chorus.lab",
+        "c8f4dc4f7bbdbaea6c3d634e938fdb29"
+      ]
+    },
+    "10174_verse": {
+      "audio": [
+        "Wavfile/10174_verse.wav",
+        "7d89acf2718e7f8ac56ad5c6e7ccca1c"
+      ],
+      "pitch": [
+        "PitchLabel/10174_verse.pv",
+        "5a48707c6bc3607866ba6e94b5008566"
+      ],
+      "lyrics": [
+        "Lyrics/10174_verse.lab",
+        "2b34d62ddf65f224d8415d6c586e0c82"
+      ]
+    },
+    "21025_chorus": {
+      "audio": [
+        "Wavfile/21025_chorus.wav",
+        "c3961223181200ffc01436790faa496d"
+      ],
+      "pitch": [
+        "PitchLabel/21025_chorus.pv",
+        "c5089be0ae6d2cebfd99c547f6c6ffc5"
+      ],
+      "lyrics": [
+        "Lyrics/21025_chorus.lab",
+        "4077e01708c05856542ae50f6afc406e"
+      ]
+    },
+    "21025_verse": {
+      "audio": [
+        "Wavfile/21025_verse.wav",
+        "61b6c2da0a6a10a692cf8ced3461bfd8"
+      ],
+      "pitch": [
+        "PitchLabel/21025_verse.pv",
+        "bf5c532f7609067c3550fe556fcf0b7c"
+      ],
+      "lyrics": [
+        "Lyrics/21025_verse.lab",
+        "26c322243870c36a3ec3036712b01860"
+      ]
+    },
+    "21031_verse": {
+      "audio": [
+        "Wavfile/21031_verse.wav",
+        "983ee2eca86c069e9a7f13e423576234"
+      ],
+      "pitch": [
+        "PitchLabel/21031_verse.pv",
+        "17d2462c0d3c78064f3b1356e9a07905"
+      ],
+      "lyrics": [
+        "Lyrics/21031_verse.lab",
+        "67e80a0dcc2784d182c51f7e205b6bc2"
+      ]
+    },
+    "21032_verse": {
+      "audio": [
+        "Wavfile/21032_verse.wav",
+        "aeda8a4c2d735848f2a88825bb81df74"
+      ],
+      "pitch": [
+        "PitchLabel/21032_verse.pv",
+        "79a37c0b0f7a5c753118eb899e8f9e62"
+      ],
+      "lyrics": [
+        "Lyrics/21032_verse.lab",
+        "9ef97cfd6fdd685558d3a5fd5de0b1ff"
+      ]
+    },
+    "21033_chorus": {
+      "audio": [
+        "Wavfile/21033_chorus.wav",
+        "b67fe8d7c26f1220a74d759484d838ef"
+      ],
+      "pitch": [
+        "PitchLabel/21033_chorus.pv",
+        "014ae4cd10227288bcc2dda731a53e9d"
+      ],
+      "lyrics": [
+        "Lyrics/21033_chorus.lab",
+        "260cb07af5a637665c136fb5d479940b"
+      ]
+    },
+    "21033_verse": {
+      "audio": [
+        "Wavfile/21033_verse.wav",
+        "b061308077ddc8dc0d0fba147ec6eb0a"
+      ],
+      "pitch": [
+        "PitchLabel/21033_verse.pv",
+        "c2a31320a4b7f93dd030afcac960626a"
+      ],
+      "lyrics": [
+        "Lyrics/21033_verse.lab",
+        "8b5c8428903e4ed53c56a83387cb4b46"
+      ]
+    },
+    "21035_chorus": {
+      "audio": [
+        "Wavfile/21035_chorus.wav",
+        "8e3f3b766d46cf403789647b26be1142"
+      ],
+      "pitch": [
+        "PitchLabel/21035_chorus.pv",
+        "9c975a53ab8f4fe11e85041e990a37f0"
+      ],
+      "lyrics": [
+        "Lyrics/21035_chorus.lab",
+        "bee24b42b1ae6b01ac5e4b1a44d649d0"
+      ]
+    },
+    "21035_verse": {
+      "audio": [
+        "Wavfile/21035_verse.wav",
+        "1fcc4a46357255dd9530580ae4f5affc"
+      ],
+      "pitch": [
+        "PitchLabel/21035_verse.pv",
+        "9e7f6f16f37221255ed97224dbea0622"
+      ],
+      "lyrics": [
+        "Lyrics/21035_verse.lab",
+        "931c85de89ffbf0d41a1727213a2e263"
+      ]
+    },
+    "21038_chorus": {
+      "audio": [
+        "Wavfile/21038_chorus.wav",
+        "51fbdc8b42132df873aa262d7cb00e62"
+      ],
+      "pitch": [
+        "PitchLabel/21038_chorus.pv",
+        "47fa41d67c877b4cece3f96a2bc6632d"
+      ],
+      "lyrics": [
+        "Lyrics/21038_chorus.lab",
+        "2f305417df42ad966a8c721ea8bab5d6"
+      ]
+    },
+    "21038_verse": {
+      "audio": [
+        "Wavfile/21038_verse.wav",
+        "ff5f388aad6b66d3af2ef57eab4e5af6"
+      ],
+      "pitch": [
+        "PitchLabel/21038_verse.pv",
+        "6bb95afccea2069e7293fd9f18dd2e81"
+      ],
+      "lyrics": [
+        "Lyrics/21038_verse.lab",
+        "981d5e7b601681bb92a205e0b15b03af"
+      ]
+    },
+    "21039_verse": {
+      "audio": [
+        "Wavfile/21039_verse.wav",
+        "134b7bd1628d010f03f7e22cc527d641"
+      ],
+      "pitch": [
+        "PitchLabel/21039_verse.pv",
+        "735930a9d115250d09a11938e95211f5"
+      ],
+      "lyrics": [
+        "Lyrics/21039_verse.lab",
+        "46d5d41d260aa71431b851b0b0a8095c"
+      ]
+    },
+    "21040_chorus": {
+      "audio": [
+        "Wavfile/21040_chorus.wav",
+        "356f66f0fbfb9508f575be695dcb3d6c"
+      ],
+      "pitch": [
+        "PitchLabel/21040_chorus.pv",
+        "e6d24a3695f457da0368e62d471d6825"
+      ],
+      "lyrics": [
+        "Lyrics/21040_chorus.lab",
+        "aeca2ceec86ffb8fd9a8f0b8650087fa"
+      ]
+    },
+    "21040_verse": {
+      "audio": [
+        "Wavfile/21040_verse.wav",
+        "8308ce1dd5f898d068650c5195293049"
+      ],
+      "pitch": [
+        "PitchLabel/21040_verse.pv",
+        "7780b7e549cec490dcf004e24810d74d"
+      ],
+      "lyrics": [
+        "Lyrics/21040_verse.lab",
+        "21cd054d18ccba49ac5e0b8401da9890"
+      ]
+    },
+    "21045_chorus": {
+      "audio": [
+        "Wavfile/21045_chorus.wav",
+        "e4b634c6e49c9b0fed01a797b1aab632"
+      ],
+      "pitch": [
+        "PitchLabel/21045_chorus.pv",
+        "d2d55fce635a3d0f172a2541b01fadd1"
+      ],
+      "lyrics": [
+        "Lyrics/21045_chorus.lab",
+        "220860c4015314e913d5b09fe3c76dc8"
+      ]
+    },
+    "21045_verse": {
+      "audio": [
+        "Wavfile/21045_verse.wav",
+        "192eee733c20ad117bfd4c042fa5fe34"
+      ],
+      "pitch": [
+        "PitchLabel/21045_verse.pv",
+        "7495eb2c50afc657c1c61563d5ea69fa"
+      ],
+      "lyrics": [
+        "Lyrics/21045_verse.lab",
+        "74318977f3cc2ac913d8f692d1e2e7cb"
+      ]
+    },
+    "21054_chorus": {
+      "audio": [
+        "Wavfile/21054_chorus.wav",
+        "391ebbd58e36ff14438c74a30be3051d"
+      ],
+      "pitch": [
+        "PitchLabel/21054_chorus.pv",
+        "2fa0a2fffd67516588fdad4f02bafb86"
+      ],
+      "lyrics": [
+        "Lyrics/21054_chorus.lab",
+        "30d701539a2a5f27a42d34a59542d4c2"
+      ]
+    },
+    "21054_verse": {
+      "audio": [
+        "Wavfile/21054_verse.wav",
+        "fd728851f14b90486cc2389e033efe53"
+      ],
+      "pitch": [
+        "PitchLabel/21054_verse.pv",
+        "04e4fafbaf6d0364a608c7d599020eea"
+      ],
+      "lyrics": [
+        "Lyrics/21054_verse.lab",
+        "83c07ad0b8d740cb08ea277f100fc6e8"
+      ]
+    },
+    "21055_verse": {
+      "audio": [
+        "Wavfile/21055_verse.wav",
+        "d7b76bdd9c25d788fdbaf1777e969f87"
+      ],
+      "pitch": [
+        "PitchLabel/21055_verse.pv",
+        "cc0cc8b0691bf1d21c642ee217399f58"
+      ],
+      "lyrics": [
+        "Lyrics/21055_verse.lab",
+        "778b97fafdd8b16bf7d75d851068527d"
+      ]
+    },
+    "21056_chorus": {
+      "audio": [
+        "Wavfile/21056_chorus.wav",
+        "3c58c302d10102240de8e67ac188b88d"
+      ],
+      "pitch": [
+        "PitchLabel/21056_chorus.pv",
+        "01bdab8b6fd00bd08f3931c5f28ac5b5"
+      ],
+      "lyrics": [
+        "Lyrics/21056_chorus.lab",
+        "87e2e54b31d35b2a103d1af9dea03add"
+      ]
+    },
+    "21057_chorus": {
+      "audio": [
+        "Wavfile/21057_chorus.wav",
+        "e1182e760c38010d6907e2e110edb370"
+      ],
+      "pitch": [
+        "PitchLabel/21057_chorus.pv",
+        "1991aade7afc2c1aceec63a9ddc48d77"
+      ],
+      "lyrics": [
+        "Lyrics/21057_chorus.lab",
+        "85b506015aefe3613ee8193a638e75ba"
+      ]
+    },
+    "21058_chorus": {
+      "audio": [
+        "Wavfile/21058_chorus.wav",
+        "40ecf5ecccd6ba4a25edd6ab2b8fee52"
+      ],
+      "pitch": [
+        "PitchLabel/21058_chorus.pv",
+        "ec9072babfc93e9665ae13a940bff16d"
+      ],
+      "lyrics": [
+        "Lyrics/21058_chorus.lab",
+        "12f118d0f2b6dcb870f9b622d807937a"
+      ]
+    },
+    "21058_verse": {
+      "audio": [
+        "Wavfile/21058_verse.wav",
+        "5fc1cb3599b7eb5b06dd40a40ec0d38f"
+      ],
+      "pitch": [
+        "PitchLabel/21058_verse.pv",
+        "f75c548ea4126c9063981d19d45d959f"
+      ],
+      "lyrics": [
+        "Lyrics/21058_verse.lab",
+        "10d2e82fb8643dcea67c74fade5badf3"
+      ]
+    },
+    "21059_chorus": {
+      "audio": [
+        "Wavfile/21059_chorus.wav",
+        "a99a6782e191f65f440a54dce0c54c12"
+      ],
+      "pitch": [
+        "PitchLabel/21059_chorus.pv",
+        "973da7ef119f9200eaf0f1425fc3dee2"
+      ],
+      "lyrics": [
+        "Lyrics/21059_chorus.lab",
+        "9e3a06ab7a3edbb8ee7b072cc2e212ae"
+      ]
+    },
+    "21059_verse": {
+      "audio": [
+        "Wavfile/21059_verse.wav",
+        "1953938fb77da744eff9a7b03885d4d9"
+      ],
+      "pitch": [
+        "PitchLabel/21059_verse.pv",
+        "57991b43930c4c064485e72a74106979"
+      ],
+      "lyrics": [
+        "Lyrics/21059_verse.lab",
+        "a2a269ffa6790158cdaf5a5244edb17f"
+      ]
+    },
+    "21060_verse": {
+      "audio": [
+        "Wavfile/21060_verse.wav",
+        "64840ad7543eebe996154bb9241031cc"
+      ],
+      "pitch": [
+        "PitchLabel/21060_verse.pv",
+        "a38c5ad51fd011f1f8fc4aa64c561da4"
+      ],
+      "lyrics": [
+        "Lyrics/21060_verse.lab",
+        "f9986854c6e6877cdd4bf44c175c3030"
+      ]
+    },
+    "21061_chorus": {
+      "audio": [
+        "Wavfile/21061_chorus.wav",
+        "afeb88e4e6e5938076936a4fdbe932fe"
+      ],
+      "pitch": [
+        "PitchLabel/21061_chorus.pv",
+        "8224376c5e2f66f61dbc249b4648a641"
+      ],
+      "lyrics": [
+        "Lyrics/21061_chorus.lab",
+        "4425d1dae1c13a47f8c1bef58b591199"
+      ]
+    },
+    "21061_verse": {
+      "audio": [
+        "Wavfile/21061_verse.wav",
+        "e353bcb101e7069ee3b656a3fec3ceb6"
+      ],
+      "pitch": [
+        "PitchLabel/21061_verse.pv",
+        "d74d3d3008056a408feeb7c6cb40efa5"
+      ],
+      "lyrics": [
+        "Lyrics/21061_verse.lab",
+        "24f05963a686add6306495249f6b37a8"
+      ]
+    },
+    "21062_verse": {
+      "audio": [
+        "Wavfile/21062_verse.wav",
+        "74ca9f4f6639fb5c2534f33a9cdd3b69"
+      ],
+      "pitch": [
+        "PitchLabel/21062_verse.pv",
+        "f866b531e2d02471d80b37e1000a67b5"
+      ],
+      "lyrics": [
+        "Lyrics/21062_verse.lab",
+        "70e9bcf403357c81652634f64b478037"
+      ]
+    },
+    "21063_chorus": {
+      "audio": [
+        "Wavfile/21063_chorus.wav",
+        "1c989a8c0168508eb9d358bb7e936190"
+      ],
+      "pitch": [
+        "PitchLabel/21063_chorus.pv",
+        "5a53429f8efac71df8fcca6f33e0ea68"
+      ],
+      "lyrics": [
+        "Lyrics/21063_chorus.lab",
+        "334adfe5f8c1a8195afad411daf69c35"
+      ]
+    },
+    "21063_verse": {
+      "audio": [
+        "Wavfile/21063_verse.wav",
+        "709d5380119eff695838167b79b0458e"
+      ],
+      "pitch": [
+        "PitchLabel/21063_verse.pv",
+        "28ec817dcc2f99a91ba32fd374c3ca00"
+      ],
+      "lyrics": [
+        "Lyrics/21063_verse.lab",
+        "711422dbea207ee814a10e2def7b6b50"
+      ]
+    },
+    "21064_verse": {
+      "audio": [
+        "Wavfile/21064_verse.wav",
+        "70b287f293c1cbb5e8fc09f53cbaecbb"
+      ],
+      "pitch": [
+        "PitchLabel/21064_verse.pv",
+        "8850b864fd28a2269886b95c702aef6f"
+      ],
+      "lyrics": [
+        "Lyrics/21064_verse.lab",
+        "37fb6372ba2e3ed8279c77f1e5b9f1be"
+      ]
+    },
+    "21068_chorus": {
+      "audio": [
+        "Wavfile/21068_chorus.wav",
+        "87b05276f4f88252b3a43376e5394962"
+      ],
+      "pitch": [
+        "PitchLabel/21068_chorus.pv",
+        "96c8f7cd7422e13008b7bc62186921ed"
+      ],
+      "lyrics": [
+        "Lyrics/21068_chorus.lab",
+        "74f03f9aaeea8b27c3a83e9cb274e73e"
+      ]
+    },
+    "21068_verse": {
+      "audio": [
+        "Wavfile/21068_verse.wav",
+        "7402ad3363f51a75df761ac572d8d10d"
+      ],
+      "pitch": [
+        "PitchLabel/21068_verse.pv",
+        "96c86eb4f9c670d35da13157c9d3ccea"
+      ],
+      "lyrics": [
+        "Lyrics/21068_verse.lab",
+        "b7edbab4cfe866bd1f91f493e4db07c1"
+      ]
+    },
+    "21069_verse": {
+      "audio": [
+        "Wavfile/21069_verse.wav",
+        "f36f5cce1e6d6602b235a3dda53779b5"
+      ],
+      "pitch": [
+        "PitchLabel/21069_verse.pv",
+        "32f32b0bdfb9a879de8599be5b1f70b5"
+      ],
+      "lyrics": [
+        "Lyrics/21069_verse.lab",
+        "6c71f9f5d970440b2d07c1dccf42c66c"
+      ]
+    },
+    "21071_verse": {
+      "audio": [
+        "Wavfile/21071_verse.wav",
+        "55b20d9b5590fe9ca95592fd7da97f11"
+      ],
+      "pitch": [
+        "PitchLabel/21071_verse.pv",
+        "3115fb065d1f391f8a9fed4e017803d4"
+      ],
+      "lyrics": [
+        "Lyrics/21071_verse.lab",
+        "20b94cd62d7025faf10c286ece0a8ac0"
+      ]
+    },
+    "21073_chorus": {
+      "audio": [
+        "Wavfile/21073_chorus.wav",
+        "46761f0cf1b046e94bad9667123d0791"
+      ],
+      "pitch": [
+        "PitchLabel/21073_chorus.pv",
+        "5bf89b131feb70de6f3a668ecb32573a"
+      ],
+      "lyrics": [
+        "Lyrics/21073_chorus.lab",
+        "52e3511d4e4595f08b6b0b78cfd82118"
+      ]
+    },
+    "21073_verse": {
+      "audio": [
+        "Wavfile/21073_verse.wav",
+        "ca8e4dd8f9fc0a018c638ae9ae5ad52d"
+      ],
+      "pitch": [
+        "PitchLabel/21073_verse.pv",
+        "fd0f810a408497cd1c141c53799b1128"
+      ],
+      "lyrics": [
+        "Lyrics/21073_verse.lab",
+        "bbd814e8c6c89138d1ae2ded1571d9c1"
+      ]
+    },
+    "21074_chorus": {
+      "audio": [
+        "Wavfile/21074_chorus.wav",
+        "ef0645775b6956f0f1df5607c339ac83"
+      ],
+      "pitch": [
+        "PitchLabel/21074_chorus.pv",
+        "c9868844943f4a19184ce637265275cc"
+      ],
+      "lyrics": [
+        "Lyrics/21074_chorus.lab",
+        "c7bcba9a33a914ea436da57fcaafb143"
+      ]
+    },
+    "21075_chorus": {
+      "audio": [
+        "Wavfile/21075_chorus.wav",
+        "fbb4a8b53b61f6ccd7a9284eedf8aa00"
+      ],
+      "pitch": [
+        "PitchLabel/21075_chorus.pv",
+        "4325a17391cb62824862677f261f8956"
+      ],
+      "lyrics": [
+        "Lyrics/21075_chorus.lab",
+        "0b05b16e4e3dbf9d644e4bb417313ba6"
+      ]
+    },
+    "21075_verse": {
+      "audio": [
+        "Wavfile/21075_verse.wav",
+        "454571b3a8512f4a3d80a79dbb9cd0c1"
+      ],
+      "pitch": [
+        "PitchLabel/21075_verse.pv",
+        "dc52faa9b3b42082623a24903feba9f2"
+      ],
+      "lyrics": [
+        "Lyrics/21075_verse.lab",
+        "61563d3059a62d211f907b0fe5f59d7f"
+      ]
+    },
+    "21076_verse": {
+      "audio": [
+        "Wavfile/21076_verse.wav",
+        "3379340031ed241e32dc73c39d32f9fa"
+      ],
+      "pitch": [
+        "PitchLabel/21076_verse.pv",
+        "fd1b51e8f42e9d08cdb17ae23fbb1f5a"
+      ],
+      "lyrics": [
+        "Lyrics/21076_verse.lab",
+        "49ad74c1c9ebea94de132ef44d8d62a0"
+      ]
+    },
+    "21083_chorus": {
+      "audio": [
+        "Wavfile/21083_chorus.wav",
+        "ef0a25ee795516e8da7c4b214d4111c3"
+      ],
+      "pitch": [
+        "PitchLabel/21083_chorus.pv",
+        "4f32b6da879ad0cb31f2347bee7b8471"
+      ],
+      "lyrics": [
+        "Lyrics/21083_chorus.lab",
+        "50b2006e6f42ab81e7cea6592e2f701e"
+      ]
+    },
+    "21084_chorus": {
+      "audio": [
+        "Wavfile/21084_chorus.wav",
+        "c4a37cd7e38a43e39c91da4518f99191"
+      ],
+      "pitch": [
+        "PitchLabel/21084_chorus.pv",
+        "891a14a37a4f96a57f77431cae49ee1e"
+      ],
+      "lyrics": [
+        "Lyrics/21084_chorus.lab",
+        "c76a466d00a61e81de80d453623a3be9"
+      ]
+    },
+    "21084_verse": {
+      "audio": [
+        "Wavfile/21084_verse.wav",
+        "171caf03b9e0edad24a20f090b0aaaaf"
+      ],
+      "pitch": [
+        "PitchLabel/21084_verse.pv",
+        "e99a82ef9574547600c3f085e1683b1c"
+      ],
+      "lyrics": [
+        "Lyrics/21084_verse.lab",
+        "21402565d24ed085a0bdc6686fe5b630"
+      ]
+    },
+    "21086_chorus": {
+      "audio": [
+        "Wavfile/21086_chorus.wav",
+        "e7655a58f7705d9463c60dc3bbedeca7"
+      ],
+      "pitch": [
+        "PitchLabel/21086_chorus.pv",
+        "07dd1ec5d4f441be38bc4798415bc842"
+      ],
+      "lyrics": [
+        "Lyrics/21086_chorus.lab",
+        "06454d78bd0db720438e2d1efa358ae0"
+      ]
+    },
+    "21086_verse": {
+      "audio": [
+        "Wavfile/21086_verse.wav",
+        "16e85658b6c5da84bacf354418db32b0"
+      ],
+      "pitch": [
+        "PitchLabel/21086_verse.pv",
+        "b74b2a67b6c6d0d6b06ce92a4756b5c6"
+      ],
+      "lyrics": [
+        "Lyrics/21086_verse.lab",
+        "35a41fcbcdb9d8e289a7a36eb95d5e28"
+      ]
+    },
+    "31047_chorus": {
+      "audio": [
+        "Wavfile/31047_chorus.wav",
+        "44822d1bb9de8fee07181dcb3cff5c05"
+      ],
+      "pitch": [
+        "PitchLabel/31047_chorus.pv",
+        "1f3b970532a0d7663290d72f0751343c"
+      ],
+      "lyrics": [
+        "Lyrics/31047_chorus.lab",
+        "86b75935446f2a6c0fbe51326a99a108"
+      ]
+    },
+    "31075_chorus": {
+      "audio": [
+        "Wavfile/31075_chorus.wav",
+        "5fa3857c3044d9b99ac70d3f548011ff"
+      ],
+      "pitch": [
+        "PitchLabel/31075_chorus.pv",
+        "1c8abb34f89b1e7096e10e5585a5949e"
+      ],
+      "lyrics": [
+        "Lyrics/31075_chorus.lab",
+        "23a7fa581d3da43203752fa6160b71bd"
+      ]
+    },
+    "31081_verse": {
+      "audio": [
+        "Wavfile/31081_verse.wav",
+        "a67483ec61e26ec7161b4c3d5cd63e87"
+      ],
+      "pitch": [
+        "PitchLabel/31081_verse.pv",
+        "4a15f0669bde29bf5ee6dc144fc56d4c"
+      ],
+      "lyrics": [
+        "Lyrics/31081_verse.lab",
+        "013d11070dacd74e2c1711273fa09b17"
+      ]
+    },
+    "31083_chorus": {
+      "audio": [
+        "Wavfile/31083_chorus.wav",
+        "914eb5cdd2b97c1b9ec9ea84cbd1408b"
+      ],
+      "pitch": [
+        "PitchLabel/31083_chorus.pv",
+        "becfa64b16fa25c0cae0404ac8355881"
+      ],
+      "lyrics": [
+        "Lyrics/31083_chorus.lab",
+        "ee6c9919b2cb289a7f9c0e941bd49fe4"
+      ]
+    },
+    "31083_verse": {
+      "audio": [
+        "Wavfile/31083_verse.wav",
+        "2efc6d02ccf2b248ea8b5d5e5181ac02"
+      ],
+      "pitch": [
+        "PitchLabel/31083_verse.pv",
+        "03048f5dfe76b3a59a9e38245e368600"
+      ],
+      "lyrics": [
+        "Lyrics/31083_verse.lab",
+        "7d939041f3e8909aa6277c7f981dfdfc"
+      ]
+    },
+    "31092_chorus": {
+      "audio": [
+        "Wavfile/31092_chorus.wav",
+        "4070d2847d67021c063ba4e8bf5df4fa"
+      ],
+      "pitch": [
+        "PitchLabel/31092_chorus.pv",
+        "cb5afc4c338ca00e837c660671e58327"
+      ],
+      "lyrics": [
+        "Lyrics/31092_chorus.lab",
+        "1400a90db8a00d75baf9a78f39399ef6"
+      ]
+    },
+    "31092_verse": {
+      "audio": [
+        "Wavfile/31092_verse.wav",
+        "afde1bd50e1db95e7c20a177bc279c28"
+      ],
+      "pitch": [
+        "PitchLabel/31092_verse.pv",
+        "cc20f82fafef54cef70cd5896007cdf1"
+      ],
+      "lyrics": [
+        "Lyrics/31092_verse.lab",
+        "8ac4d2e4b92ec0c684287cc5ca87b9f0"
+      ]
+    },
+    "31093_chorus": {
+      "audio": [
+        "Wavfile/31093_chorus.wav",
+        "df5e1f234e79eb7f28d5ce3bf3e7c5d0"
+      ],
+      "pitch": [
+        "PitchLabel/31093_chorus.pv",
+        "4cab36de233b7b041a017c16bd4cb200"
+      ],
+      "lyrics": [
+        "Lyrics/31093_chorus.lab",
+        "817569a0290aac9df38da59dd18775a9"
+      ]
+    },
+    "31099_verse": {
+      "audio": [
+        "Wavfile/31099_verse.wav",
+        "4311e62782152124b0d3efe2057345fd"
+      ],
+      "pitch": [
+        "PitchLabel/31099_verse.pv",
+        "1c14b0d22154ecb3534575664079b67d"
+      ],
+      "lyrics": [
+        "Lyrics/31099_verse.lab",
+        "c1296386a8a0b9c0bf7915601e43a883"
+      ]
+    },
+    "31100_chorus": {
+      "audio": [
+        "Wavfile/31100_chorus.wav",
+        "45a6e5679520c6b27d3c10986dfbb8e3"
+      ],
+      "pitch": [
+        "PitchLabel/31100_chorus.pv",
+        "cebbb1fbe91e3f7e22315f5e2aac2a31"
+      ],
+      "lyrics": [
+        "Lyrics/31100_chorus.lab",
+        "17bb646a410714d456da3a52e52dc57d"
+      ]
+    },
+    "31101_chorus": {
+      "audio": [
+        "Wavfile/31101_chorus.wav",
+        "06bfe17e307b9bc99838b6c803c1a44f"
+      ],
+      "pitch": [
+        "PitchLabel/31101_chorus.pv",
+        "558e9adeb8134b0258b226831b5ca72c"
+      ],
+      "lyrics": [
+        "Lyrics/31101_chorus.lab",
+        "5a096e4985592db91a18368b706208a7"
+      ]
+    },
+    "31101_verse": {
+      "audio": [
+        "Wavfile/31101_verse.wav",
+        "62e8347d5f0758cf96487ab2257c4453"
+      ],
+      "pitch": [
+        "PitchLabel/31101_verse.pv",
+        "ce084506de8416135b51c159598fca04"
+      ],
+      "lyrics": [
+        "Lyrics/31101_verse.lab",
+        "fdfa421a342ccabae6fd82f38dec0175"
+      ]
+    },
+    "31103_chorus": {
+      "audio": [
+        "Wavfile/31103_chorus.wav",
+        "b83e4f3c5b4b4350de431a87b5fbc9bc"
+      ],
+      "pitch": [
+        "PitchLabel/31103_chorus.pv",
+        "59cba9d3398bf374dfb7ee0e5dcd3237"
+      ],
+      "lyrics": [
+        "Lyrics/31103_chorus.lab",
+        "78b8eb257b11b6a0d37f54fb1439bf14"
+      ]
+    },
+    "31104_verse": {
+      "audio": [
+        "Wavfile/31104_verse.wav",
+        "4af836759aeb0037e379f0a7a85bf00d"
+      ],
+      "pitch": [
+        "PitchLabel/31104_verse.pv",
+        "a712de687f2eee9c3ca644807e8c8d6a"
+      ],
+      "lyrics": [
+        "Lyrics/31104_verse.lab",
+        "b65cbfcd5a54811df4322e88af2fe203"
+      ]
+    },
+    "31107_verse": {
+      "audio": [
+        "Wavfile/31107_verse.wav",
+        "19e183ad6855aab50ed71268431f93ff"
+      ],
+      "pitch": [
+        "PitchLabel/31107_verse.pv",
+        "b2e345bdc062e98c3a4fc9415d438bd6"
+      ],
+      "lyrics": [
+        "Lyrics/31107_verse.lab",
+        "62497f1a5ff7e79a7bac48fa60f06ed6"
+      ]
+    },
+    "31109_chorus": {
+      "audio": [
+        "Wavfile/31109_chorus.wav",
+        "a249d6e53ea65891e19ebab68ed7e86b"
+      ],
+      "pitch": [
+        "PitchLabel/31109_chorus.pv",
+        "a15212e793a986d8fd68d5afb0c8675d"
+      ],
+      "lyrics": [
+        "Lyrics/31109_chorus.lab",
+        "c4a028e74cb59014ae38b5bb939c800e"
+      ]
+    },
+    "31109_verse": {
+      "audio": [
+        "Wavfile/31109_verse.wav",
+        "c97cddbfed1b36f1d8812ff268fe66c8"
+      ],
+      "pitch": [
+        "PitchLabel/31109_verse.pv",
+        "83bc33adc6f552af6d427c70b80c9d0f"
+      ],
+      "lyrics": [
+        "Lyrics/31109_verse.lab",
+        "3a2dea69a10687ac7f096cd3f5c4a357"
+      ]
+    },
+    "31112_chorus": {
+      "audio": [
+        "Wavfile/31112_chorus.wav",
+        "b644d7656250ba01cb85f44572a67c16"
+      ],
+      "pitch": [
+        "PitchLabel/31112_chorus.pv",
+        "0013242eb9a8a8eb6d08e3a7575a3fa4"
+      ],
+      "lyrics": [
+        "Lyrics/31112_chorus.lab",
+        "41f82f6e6ccfa5012c138afb05655144"
+      ]
+    },
+    "31113_chorus": {
+      "audio": [
+        "Wavfile/31113_chorus.wav",
+        "e6747f911db2c3a57d5121ed680b0f38"
+      ],
+      "pitch": [
+        "PitchLabel/31113_chorus.pv",
+        "e6f9a34bc6905d427a60d9f4e5f882e4"
+      ],
+      "lyrics": [
+        "Lyrics/31113_chorus.lab",
+        "6735c4d60c42d5df4873bfc4c8427f3d"
+      ]
+    },
+    "31113_verse": {
+      "audio": [
+        "Wavfile/31113_verse.wav",
+        "3f18d007f4a077af56ec377287b9d6ef"
+      ],
+      "pitch": [
+        "PitchLabel/31113_verse.pv",
+        "b0f3bb88c99a3a95b64953220dd6f634"
+      ],
+      "lyrics": [
+        "Lyrics/31113_verse.lab",
+        "80e57cb3d162461b2ca10b195ebaad7a"
+      ]
+    },
+    "31114_verse": {
+      "audio": [
+        "Wavfile/31114_verse.wav",
+        "945939dd81bfb495abef8d6ae6033f52"
+      ],
+      "pitch": [
+        "PitchLabel/31114_verse.pv",
+        "b28c4409142ec0483e5db414c8b2ed5d"
+      ],
+      "lyrics": [
+        "Lyrics/31114_verse.lab",
+        "d4b2266881bb4ec0df5c906cf6cb5b73"
+      ]
+    },
+    "31115_chorus": {
+      "audio": [
+        "Wavfile/31115_chorus.wav",
+        "058a0c0a1cc79801bacc8596026b2285"
+      ],
+      "pitch": [
+        "PitchLabel/31115_chorus.pv",
+        "7679e6d1ee4c47335c81529c70ebdf2f"
+      ],
+      "lyrics": [
+        "Lyrics/31115_chorus.lab",
+        "15f089f0dcf10bb0ba81a7c1a0946a2c"
+      ]
+    },
+    "31116_chorus": {
+      "audio": [
+        "Wavfile/31116_chorus.wav",
+        "47db51efac7f0fcdd815008832ecce16"
+      ],
+      "pitch": [
+        "PitchLabel/31116_chorus.pv",
+        "f9ae77bd849201c62101ff9b2102e04b"
+      ],
+      "lyrics": [
+        "Lyrics/31116_chorus.lab",
+        "1b2e90104753c5ed44653f7d43d53131"
+      ]
+    },
+    "31117_verse": {
+      "audio": [
+        "Wavfile/31117_verse.wav",
+        "3aba07156af2ea6cfcacf1607a369e92"
+      ],
+      "pitch": [
+        "PitchLabel/31117_verse.pv",
+        "992b3d0623f2474c7cf4be717e4a60ec"
+      ],
+      "lyrics": [
+        "Lyrics/31117_verse.lab",
+        "e2b63d670b3ecaca7d25bef7c947d7f6"
+      ]
+    },
+    "31118_chorus": {
+      "audio": [
+        "Wavfile/31118_chorus.wav",
+        "2bc8754b932b28d818dab9bede026318"
+      ],
+      "pitch": [
+        "PitchLabel/31118_chorus.pv",
+        "e19d5fcaeea1d0677bdf4dcf784c3930"
+      ],
+      "lyrics": [
+        "Lyrics/31118_chorus.lab",
+        "e854c9141664cf7b4276962355c7cc15"
+      ]
+    },
+    "31119_verse": {
+      "audio": [
+        "Wavfile/31119_verse.wav",
+        "e8ba9f554347e84eb8fda54354e88aa2"
+      ],
+      "pitch": [
+        "PitchLabel/31119_verse.pv",
+        "86b5871df92c6842cc28f8f6de0f1f34"
+      ],
+      "lyrics": [
+        "Lyrics/31119_verse.lab",
+        "2b06d89d9870c702f77e27f4523e7dab"
+      ]
+    },
+    "31126_chorus": {
+      "audio": [
+        "Wavfile/31126_chorus.wav",
+        "82ac0cebda8570f270abe1ed9f0dded8"
+      ],
+      "pitch": [
+        "PitchLabel/31126_chorus.pv",
+        "d69aef98eefccdeafbb9b35b5b22e442"
+      ],
+      "lyrics": [
+        "Lyrics/31126_chorus.lab",
+        "2be8740aaa9a40b7129c05f2e264aa02"
+      ]
+    },
+    "31129_chorus": {
+      "audio": [
+        "Wavfile/31129_chorus.wav",
+        "8268f5bb3a2cbf7f38da7e02a4c6d05f"
+      ],
+      "pitch": [
+        "PitchLabel/31129_chorus.pv",
+        "136aaa7db101b0bc4fb53b12cb4d27ba"
+      ],
+      "lyrics": [
+        "Lyrics/31129_chorus.lab",
+        "e8d9f17773ac375b159a752130819049"
+      ]
+    },
+    "31129_verse": {
+      "audio": [
+        "Wavfile/31129_verse.wav",
+        "9afb408205180ddbacf192c3f42f9ec9"
+      ],
+      "pitch": [
+        "PitchLabel/31129_verse.pv",
+        "2a44d9d47502d82f2a88b0c3497cc6aa"
+      ],
+      "lyrics": [
+        "Lyrics/31129_verse.lab",
+        "1ddc8700cf9b488df22f9eb4c71a6b49"
+      ]
+    },
+    "31132_verse": {
+      "audio": [
+        "Wavfile/31132_verse.wav",
+        "e883b951ad55566d08658296eb3f4143"
+      ],
+      "pitch": [
+        "PitchLabel/31132_verse.pv",
+        "5e8eab970b6c35c43dba34a0dea1e95d"
+      ],
+      "lyrics": [
+        "Lyrics/31132_verse.lab",
+        "4afd0d60f11506d35859ab5be64bf02c"
+      ]
+    },
+    "31134_chorus": {
+      "audio": [
+        "Wavfile/31134_chorus.wav",
+        "a27fd95a8a8477ef9a3592c36a5bc6ac"
+      ],
+      "pitch": [
+        "PitchLabel/31134_chorus.pv",
+        "813c382280efb9142f94d4d5eea8eb50"
+      ],
+      "lyrics": [
+        "Lyrics/31134_chorus.lab",
+        "435b39d984301b40d059e1b4049adc39"
+      ]
+    },
+    "31134_verse": {
+      "audio": [
+        "Wavfile/31134_verse.wav",
+        "a1dfe142940302c06dc00b6ae958d846"
+      ],
+      "pitch": [
+        "PitchLabel/31134_verse.pv",
+        "72f282bb694849405ffa3309b3c2b813"
+      ],
+      "lyrics": [
+        "Lyrics/31134_verse.lab",
+        "3af93b1a69388e53d5a64afa382dd7a1"
+      ]
+    },
+    "31135_chorus": {
+      "audio": [
+        "Wavfile/31135_chorus.wav",
+        "57f48d0fcf41b65c828e562103bc6b64"
+      ],
+      "pitch": [
+        "PitchLabel/31135_chorus.pv",
+        "3b97a04361e6e5379ad9bd8c15e5a370"
+      ],
+      "lyrics": [
+        "Lyrics/31135_chorus.lab",
+        "400d38c6df29844031bf79e7414045f4"
+      ]
+    },
+    "31135_verse": {
+      "audio": [
+        "Wavfile/31135_verse.wav",
+        "9f85f3133dcec9d8e103a1fe4bbe840e"
+      ],
+      "pitch": [
+        "PitchLabel/31135_verse.pv",
+        "868f7ea2557ab5266acbb87fe366b43d"
+      ],
+      "lyrics": [
+        "Lyrics/31135_verse.lab",
+        "08a29c3e89ecff42b71b2f8e0a0aeb8d"
+      ]
+    },
+    "31136_verse": {
+      "audio": [
+        "Wavfile/31136_verse.wav",
+        "4eaba11cadb96f67963f16ed4cb215d4"
+      ],
+      "pitch": [
+        "PitchLabel/31136_verse.pv",
+        "b3ae0f6f3dc124d842216dd977fe36b4"
+      ],
+      "lyrics": [
+        "Lyrics/31136_verse.lab",
+        "a0f3661677ae6f923fc88c49268b89af"
+      ]
+    },
+    "31137_chorus": {
+      "audio": [
+        "Wavfile/31137_chorus.wav",
+        "51e53801bd786b828509aa7182d8bf31"
+      ],
+      "pitch": [
+        "PitchLabel/31137_chorus.pv",
+        "bc074a38c3db435aa0909ab0b834a77d"
+      ],
+      "lyrics": [
+        "Lyrics/31137_chorus.lab",
+        "49c291fa1053f39c613551212d8cc1bd"
+      ]
+    },
+    "31137_verse": {
+      "audio": [
+        "Wavfile/31137_verse.wav",
+        "dd8f2142a6cf682f8b2183f257f8423c"
+      ],
+      "pitch": [
+        "PitchLabel/31137_verse.pv",
+        "b370b0d41c27b251b0d20696056507a7"
+      ],
+      "lyrics": [
+        "Lyrics/31137_verse.lab",
+        "17fd747954fb872632e5bb17b461779b"
+      ]
+    },
+    "31139_chorus": {
+      "audio": [
+        "Wavfile/31139_chorus.wav",
+        "36c2235994e1b2529b131bf3fa082f34"
+      ],
+      "pitch": [
+        "PitchLabel/31139_chorus.pv",
+        "93772ce9a9040863f9f7e7d1914d4ab8"
+      ],
+      "lyrics": [
+        "Lyrics/31139_chorus.lab",
+        "c5201d2f48b47da753610f62a70bc097"
+      ]
+    },
+    "31139_verse": {
+      "audio": [
+        "Wavfile/31139_verse.wav",
+        "f19b0ae6c6fa79353d2096f594b9ead3"
+      ],
+      "pitch": [
+        "PitchLabel/31139_verse.pv",
+        "9a81fb86c14ce0a773b8af0f82c125ff"
+      ],
+      "lyrics": [
+        "Lyrics/31139_verse.lab",
+        "63827c80328560f7cce30d2877b80dd8"
+      ]
+    },
+    "31142_verse": {
+      "audio": [
+        "Wavfile/31142_verse.wav",
+        "b3f867cc5b8edaf6ff7de8a2d36d912b"
+      ],
+      "pitch": [
+        "PitchLabel/31142_verse.pv",
+        "4b933e1f48f6e30f309f76eb8ec6075e"
+      ],
+      "lyrics": [
+        "Lyrics/31142_verse.lab",
+        "0b2ae154bbacf9834b31a4e6216ef603"
+      ]
+    },
+    "31143_chorus": {
+      "audio": [
+        "Wavfile/31143_chorus.wav",
+        "4e8cf18962d997ec08d9336f79be5586"
+      ],
+      "pitch": [
+        "PitchLabel/31143_chorus.pv",
+        "53eb78d7d735d32d80aedaf15c8ed97d"
+      ],
+      "lyrics": [
+        "Lyrics/31143_chorus.lab",
+        "08dc2d285a0bda9fd1c91529679e7bb3"
+      ]
+    },
+    "31143_verse": {
+      "audio": [
+        "Wavfile/31143_verse.wav",
+        "369b5b35ad85205dd4588b9705859106"
+      ],
+      "pitch": [
+        "PitchLabel/31143_verse.pv",
+        "9a0d55b98bde82760e597dac72430667"
+      ],
+      "lyrics": [
+        "Lyrics/31143_verse.lab",
+        "c7f45f2edae19226977b9e1c35bb7ca4"
+      ]
+    },
+    "31144_verse": {
+      "audio": [
+        "Wavfile/31144_verse.wav",
+        "84ba5f092ebaafd778b4433468832b69"
+      ],
+      "pitch": [
+        "PitchLabel/31144_verse.pv",
+        "491cef81b84c97562b50216312dedfbc"
+      ],
+      "lyrics": [
+        "Lyrics/31144_verse.lab",
+        "3ab62c3ae209798d0e44e6cff09fb80a"
+      ]
+    },
+    "45305_chorus": {
+      "audio": [
+        "Wavfile/45305_chorus.wav",
+        "0789b92136f0d5c00e7a57bd333b6192"
+      ],
+      "pitch": [
+        "PitchLabel/45305_chorus.pv",
+        "2f12e89ed001921b53fe13882f58bf6b"
+      ],
+      "lyrics": [
+        "Lyrics/45305_chorus.lab",
+        "cbff8a3268b2342252e7ac7dac4f4e33"
+      ]
+    },
+    "45305_verse": {
+      "audio": [
+        "Wavfile/45305_verse.wav",
+        "b076fdfcac7f61d830d4eb6983abea57"
+      ],
+      "pitch": [
+        "PitchLabel/45305_verse.pv",
+        "2fa22e038d2059eae6e7254c63c81b13"
+      ],
+      "lyrics": [
+        "Lyrics/45305_verse.lab",
+        "dbfe52400161fa6996c64f0177bf9e3e"
+      ]
+    },
+    "45358_chorus": {
+      "audio": [
+        "Wavfile/45358_chorus.wav",
+        "2718b50331f9cb5ced58da5ceec06eb8"
+      ],
+      "pitch": [
+        "PitchLabel/45358_chorus.pv",
+        "853e0bb02d862a9932a2a81a837a27ea"
+      ],
+      "lyrics": [
+        "Lyrics/45358_chorus.lab",
+        "7f07526df0a26e68c72ec547b387662c"
+      ]
+    },
+    "45358_verse": {
+      "audio": [
+        "Wavfile/45358_verse.wav",
+        "a4bba038468eff12999b72f539795ecd"
+      ],
+      "pitch": [
+        "PitchLabel/45358_verse.pv",
+        "7196463d422ab72d9ee4fd73c6a7111f"
+      ],
+      "lyrics": [
+        "Lyrics/45358_verse.lab",
+        "588d5dd514c5c5af8f2d274ed78d3aa8"
+      ]
+    },
+    "45359_verse": {
+      "audio": [
+        "Wavfile/45359_verse.wav",
+        "a2ac5134892227a604779b9358b7b495"
+      ],
+      "pitch": [
+        "PitchLabel/45359_verse.pv",
+        "b68bdb01754e9ed1adc743489db8721d"
+      ],
+      "lyrics": [
+        "Lyrics/45359_verse.lab",
+        "85d9f608a372a5b33dfcd5604e5fe7be"
+      ]
+    },
+    "45361_chorus": {
+      "audio": [
+        "Wavfile/45361_chorus.wav",
+        "b775709e73ba5e2c586ec0bcc1cb68a3"
+      ],
+      "pitch": [
+        "PitchLabel/45361_chorus.pv",
+        "6d9001e307d85ed5034fb1bc758463e8"
+      ],
+      "lyrics": [
+        "Lyrics/45361_chorus.lab",
+        "c5ca80b3dd47e3a7ee60139a29ac216f"
+      ]
+    },
+    "45362_verse": {
+      "audio": [
+        "Wavfile/45362_verse.wav",
+        "91f23b3fa8ada8989b7d617a2a08bcdb"
+      ],
+      "pitch": [
+        "PitchLabel/45362_verse.pv",
+        "2e1fceb00866621dcaaef2f1314e1e8a"
+      ],
+      "lyrics": [
+        "Lyrics/45362_verse.lab",
+        "3f76f9d6731eabb27353026a7239fec4"
+      ]
+    },
+    "45363_chorus": {
+      "audio": [
+        "Wavfile/45363_chorus.wav",
+        "5bd65cc4093d83b8e5e053200c737263"
+      ],
+      "pitch": [
+        "PitchLabel/45363_chorus.pv",
+        "4b11fbfa7a4699655657e87dd97097d6"
+      ],
+      "lyrics": [
+        "Lyrics/45363_chorus.lab",
+        "64bd42069eaadf2f42da49f1f15140d1"
+      ]
+    },
+    "45367_chorus": {
+      "audio": [
+        "Wavfile/45367_chorus.wav",
+        "189898d57c08a28a8a9f9e29cfeb772e"
+      ],
+      "pitch": [
+        "PitchLabel/45367_chorus.pv",
+        "59b0e60365f55af4ac7ae2d9453f23ea"
+      ],
+      "lyrics": [
+        "Lyrics/45367_chorus.lab",
+        "35158ff6048957c996e80285655a5500"
+      ]
+    },
+    "45367_verse": {
+      "audio": [
+        "Wavfile/45367_verse.wav",
+        "21a52c63e860440c9a33e70536d4a98f"
+      ],
+      "pitch": [
+        "PitchLabel/45367_verse.pv",
+        "e2cafb9bad75990ebb07e7f6c5af59b9"
+      ],
+      "lyrics": [
+        "Lyrics/45367_verse.lab",
+        "f02de659e9a7482f90b5848a02ef6ca7"
+      ]
+    },
+    "45368_chorus": {
+      "audio": [
+        "Wavfile/45368_chorus.wav",
+        "1093a1f9ce1dc128d96f2ba9d7d0b63b"
+      ],
+      "pitch": [
+        "PitchLabel/45368_chorus.pv",
+        "f1cdf33b5d4954396a6e2e27a4062229"
+      ],
+      "lyrics": [
+        "Lyrics/45368_chorus.lab",
+        "6bef3f97fc93db593ad11481553bcafe"
+      ]
+    },
+    "45368_verse": {
+      "audio": [
+        "Wavfile/45368_verse.wav",
+        "38f7591fd6fdb3bf4720d5ce27622ddb"
+      ],
+      "pitch": [
+        "PitchLabel/45368_verse.pv",
+        "e905199f3b12caa62f47b97b25eba57e"
+      ],
+      "lyrics": [
+        "Lyrics/45368_verse.lab",
+        "458e604e932fe1740cf1185bba09c449"
+      ]
+    },
+    "45369_chorus": {
+      "audio": [
+        "Wavfile/45369_chorus.wav",
+        "ff46b82702db624015720d56e7d97ba1"
+      ],
+      "pitch": [
+        "PitchLabel/45369_chorus.pv",
+        "87064b1942f5e11797ac787b139ded93"
+      ],
+      "lyrics": [
+        "Lyrics/45369_chorus.lab",
+        "e3486eb2a4f1534b3337e39c68cf1304"
+      ]
+    },
+    "45369_verse": {
+      "audio": [
+        "Wavfile/45369_verse.wav",
+        "d589440b4351aed93ebb760ed600a4b9"
+      ],
+      "pitch": [
+        "PitchLabel/45369_verse.pv",
+        "9299896b568ef9b317bc2cebeb530cdb"
+      ],
+      "lyrics": [
+        "Lyrics/45369_verse.lab",
+        "f180d3516e2e9666b6d031c34786e01f"
+      ]
+    },
+    "45378_chorus": {
+      "audio": [
+        "Wavfile/45378_chorus.wav",
+        "aca0041dc5b72d0128214de8cdc1cd9e"
+      ],
+      "pitch": [
+        "PitchLabel/45378_chorus.pv",
+        "10a2f162add8956eed61ee2b6170a68f"
+      ],
+      "lyrics": [
+        "Lyrics/45378_chorus.lab",
+        "52bfb94ba1f362caf011bac88e3b3538"
+      ]
+    },
+    "45378_verse": {
+      "audio": [
+        "Wavfile/45378_verse.wav",
+        "551d72521033804e8d047c67d95a6025"
+      ],
+      "pitch": [
+        "PitchLabel/45378_verse.pv",
+        "e1db0b25460c404952cdf0f1f14e9ab6"
+      ],
+      "lyrics": [
+        "Lyrics/45378_verse.lab",
+        "822e03b62884b781e9fe1d8c50831734"
+      ]
+    },
+    "45381_chorus": {
+      "audio": [
+        "Wavfile/45381_chorus.wav",
+        "ad34889a3989cd97067342f642851da1"
+      ],
+      "pitch": [
+        "PitchLabel/45381_chorus.pv",
+        "b60f7a5e784e8a2235e8fa4d5de9dd71"
+      ],
+      "lyrics": [
+        "Lyrics/45381_chorus.lab",
+        "efba15f4b880ca47edd780b930077869"
+      ]
+    },
+    "45381_verse": {
+      "audio": [
+        "Wavfile/45381_verse.wav",
+        "ca4f4164fb9cfdfe0a4536ee2f9ba8d3"
+      ],
+      "pitch": [
+        "PitchLabel/45381_verse.pv",
+        "050da0d5c0e46bcf173e2fda2d03b78d"
+      ],
+      "lyrics": [
+        "Lyrics/45381_verse.lab",
+        "788378e2ba4ca382a4be2102a4d10a0d"
+      ]
+    },
+    "45382_chorus": {
+      "audio": [
+        "Wavfile/45382_chorus.wav",
+        "83be4d9bcd2f6ac93bd4d32b48e78fd7"
+      ],
+      "pitch": [
+        "PitchLabel/45382_chorus.pv",
+        "f5feb7708277038d15d9d88198690c22"
+      ],
+      "lyrics": [
+        "Lyrics/45382_chorus.lab",
+        "a0b8f93de7a3bedf70236dfb31dd4839"
+      ]
+    },
+    "45382_verse": {
+      "audio": [
+        "Wavfile/45382_verse.wav",
+        "4cb2c47ee52c53cd0afd0bcdbfe837aa"
+      ],
+      "pitch": [
+        "PitchLabel/45382_verse.pv",
+        "f5219bf554b0b6d9f82b32ea88e36a1a"
+      ],
+      "lyrics": [
+        "Lyrics/45382_verse.lab",
+        "4310f1006e6b2d45ff64a7a8bb82f795"
+      ]
+    },
+    "45384_chorus": {
+      "audio": [
+        "Wavfile/45384_chorus.wav",
+        "2d4c3f7d303a65eaac851a807a2b4a82"
+      ],
+      "pitch": [
+        "PitchLabel/45384_chorus.pv",
+        "ac62556efd9765e6623ce9ad6e3473d2"
+      ],
+      "lyrics": [
+        "Lyrics/45384_chorus.lab",
+        "87487c135dc00269e49caeac8aeff449"
+      ]
+    },
+    "45384_verse": {
+      "audio": [
+        "Wavfile/45384_verse.wav",
+        "c64ffe43af0514957b2e595db9ea0d6a"
+      ],
+      "pitch": [
+        "PitchLabel/45384_verse.pv",
+        "c5931376fbb40724e4e82ced04f5ffe4"
+      ],
+      "lyrics": [
+        "Lyrics/45384_verse.lab",
+        "bd32e1d9bc1e7a42898a734946958ce9"
+      ]
+    },
+    "45385_chorus": {
+      "audio": [
+        "Wavfile/45385_chorus.wav",
+        "ae8613453314028b42068adc0e600d09"
+      ],
+      "pitch": [
+        "PitchLabel/45385_chorus.pv",
+        "df23cc4f2a6e6001c5cee996b812133c"
+      ],
+      "lyrics": [
+        "Lyrics/45385_chorus.lab",
+        "0042aa6047984d840e13f8fd2a3adfa8"
+      ]
+    },
+    "45386_chorus": {
+      "audio": [
+        "Wavfile/45386_chorus.wav",
+        "717537cdf3e3762cb6194bd114cfa89d"
+      ],
+      "pitch": [
+        "PitchLabel/45386_chorus.pv",
+        "6cd34f18c611f4c2d7f2e1275dda92f5"
+      ],
+      "lyrics": [
+        "Lyrics/45386_chorus.lab",
+        "9e2c9ab7c08a5ead4263020196800074"
+      ]
+    },
+    "45386_verse": {
+      "audio": [
+        "Wavfile/45386_verse.wav",
+        "6dc8186aead3b06294745cc8e019abd2"
+      ],
+      "pitch": [
+        "PitchLabel/45386_verse.pv",
+        "6f449ce39351ae83b3a78d189863bd73"
+      ],
+      "lyrics": [
+        "Lyrics/45386_verse.lab",
+        "dc7752aa48b4fac1f3d349bbe1a2d2fb"
+      ]
+    },
+    "45387_chorus": {
+      "audio": [
+        "Wavfile/45387_chorus.wav",
+        "3f92dba9ee0fb23a785cd9ba8401f053"
+      ],
+      "pitch": [
+        "PitchLabel/45387_chorus.pv",
+        "c71d8351b1bd401caf6c5c5318cec207"
+      ],
+      "lyrics": [
+        "Lyrics/45387_chorus.lab",
+        "23a66d97cc04fc06f94d7f00077ae88a"
+      ]
+    },
+    "45387_verse": {
+      "audio": [
+        "Wavfile/45387_verse.wav",
+        "4d7d6a294644eb5f1ee218e1304ad7ac"
+      ],
+      "pitch": [
+        "PitchLabel/45387_verse.pv",
+        "18f5c703e562f9caab5e743d99fa977d"
+      ],
+      "lyrics": [
+        "Lyrics/45387_verse.lab",
+        "811f1711f43cd17a6ce914f972144b9a"
+      ]
+    },
+    "45388_verse": {
+      "audio": [
+        "Wavfile/45388_verse.wav",
+        "ecaf76b0e1ccd7bc98c92f382f071298"
+      ],
+      "pitch": [
+        "PitchLabel/45388_verse.pv",
+        "3eef2eee3347dfd8a0feebd53563fc1c"
+      ],
+      "lyrics": [
+        "Lyrics/45388_verse.lab",
+        "aa74a187056b0249451d50f17ee7f3a2"
+      ]
+    },
+    "45389_chorus": {
+      "audio": [
+        "Wavfile/45389_chorus.wav",
+        "8a83bf3a7b398a33456871462cf38fcb"
+      ],
+      "pitch": [
+        "PitchLabel/45389_chorus.pv",
+        "0344506715c55d648e6c126f302b1a94"
+      ],
+      "lyrics": [
+        "Lyrics/45389_chorus.lab",
+        "47cef49c3dce3c61a8091e89d2ad333c"
+      ]
+    },
+    "45389_verse": {
+      "audio": [
+        "Wavfile/45389_verse.wav",
+        "40b628dd49d451cb79c3df93036a7da4"
+      ],
+      "pitch": [
+        "PitchLabel/45389_verse.pv",
+        "f982c0e9b432bff5ddb6d94d91cb0803"
+      ],
+      "lyrics": [
+        "Lyrics/45389_verse.lab",
+        "fe801ff47d4bc5b5b0fee25e51e22f42"
+      ]
+    },
+    "45390_verse": {
+      "audio": [
+        "Wavfile/45390_verse.wav",
+        "d6b936ef366de604024e5b75bbe9079d"
+      ],
+      "pitch": [
+        "PitchLabel/45390_verse.pv",
+        "8deccc9a41cb1c56947a4ccc6a7adf89"
+      ],
+      "lyrics": [
+        "Lyrics/45390_verse.lab",
+        "ef0b74538fd03e50d40d315ef800ddcd"
+      ]
+    },
+    "45391_verse": {
+      "audio": [
+        "Wavfile/45391_verse.wav",
+        "eb42fd76b26efb8de97d7e91b86d2e3e"
+      ],
+      "pitch": [
+        "PitchLabel/45391_verse.pv",
+        "e4d0f7e960b3f26b0b4e3f415f0ec777"
+      ],
+      "lyrics": [
+        "Lyrics/45391_verse.lab",
+        "27e94fe5d0cc346c5fc4d769611d674e"
+      ]
+    },
+    "45392_chorus": {
+      "audio": [
+        "Wavfile/45392_chorus.wav",
+        "c4c045ff5a64c5feab48790488579524"
+      ],
+      "pitch": [
+        "PitchLabel/45392_chorus.pv",
+        "53f32f7e9b004ff875007fdd087b7824"
+      ],
+      "lyrics": [
+        "Lyrics/45392_chorus.lab",
+        "2cc0d9ec69cd1492d15a2629c56576e5"
+      ]
+    },
+    "45392_verse": {
+      "audio": [
+        "Wavfile/45392_verse.wav",
+        "c982ea54f1586fc8aa7e200cd9ae1698"
+      ],
+      "pitch": [
+        "PitchLabel/45392_verse.pv",
+        "c78c030015a6a5faacb72805dadd8b46"
+      ],
+      "lyrics": [
+        "Lyrics/45392_verse.lab",
+        "cdb13f9376924c68b29a654bf100bb40"
+      ]
+    },
+    "45393_verse": {
+      "audio": [
+        "Wavfile/45393_verse.wav",
+        "98d41090b66b6d1294d2bb07fb95ce34"
+      ],
+      "pitch": [
+        "PitchLabel/45393_verse.pv",
+        "3cf81c40c129f957f21f223b88aa873d"
+      ],
+      "lyrics": [
+        "Lyrics/45393_verse.lab",
+        "a09ee4fe77cb7fec5ee8c4692d6b9e5d"
+      ]
+    },
+    "45398_chorus": {
+      "audio": [
+        "Wavfile/45398_chorus.wav",
+        "25720d4d17d7d3e820547ec9757eaa5f"
+      ],
+      "pitch": [
+        "PitchLabel/45398_chorus.pv",
+        "3475dad314c9a8cef6461fd99aeea013"
+      ],
+      "lyrics": [
+        "Lyrics/45398_chorus.lab",
+        "57c42f808bcadf3481a524b72933f2ec"
+      ]
+    },
+    "45398_verse": {
+      "audio": [
+        "Wavfile/45398_verse.wav",
+        "6efd58fc95eef439176cac41b53c0520"
+      ],
+      "pitch": [
+        "PitchLabel/45398_verse.pv",
+        "5f00ae64c83004f832be0d7e874f8b5f"
+      ],
+      "lyrics": [
+        "Lyrics/45398_verse.lab",
+        "301981bba875d32206738b9b31986186"
+      ]
+    },
+    "45400_verse": {
+      "audio": [
+        "Wavfile/45400_verse.wav",
+        "701e017a9ff2e5abed37c11d3d1d74bc"
+      ],
+      "pitch": [
+        "PitchLabel/45400_verse.pv",
+        "8a42c1a710f89b455fed9bf531e7748b"
+      ],
+      "lyrics": [
+        "Lyrics/45400_verse.lab",
+        "5ccfa29f0364758cf70b6fd4fb6d0c63"
+      ]
+    },
+    "45404_verse": {
+      "audio": [
+        "Wavfile/45404_verse.wav",
+        "ead343e9cce76e33cae75fe08a645a6a"
+      ],
+      "pitch": [
+        "PitchLabel/45404_verse.pv",
+        "2a65c4750e8f859ade4adcca0f41d020"
+      ],
+      "lyrics": [
+        "Lyrics/45404_verse.lab",
+        "65a8bc3ec8a2aae525ec0aeb62262e6c"
+      ]
+    },
+    "45406_chorus": {
+      "audio": [
+        "Wavfile/45406_chorus.wav",
+        "8d631311eb8332dc880035aee5a656be"
+      ],
+      "pitch": [
+        "PitchLabel/45406_chorus.pv",
+        "263028c4ee5b7d44a1abde9fd13befd0"
+      ],
+      "lyrics": [
+        "Lyrics/45406_chorus.lab",
+        "b506b01f09166db12b092fd8ebb74557"
+      ]
+    },
+    "45409_verse": {
+      "audio": [
+        "Wavfile/45409_verse.wav",
+        "b60271ee1c11a877ffc73e02f3a8d57f"
+      ],
+      "pitch": [
+        "PitchLabel/45409_verse.pv",
+        "2e83f270ec9f726675bca4853836e868"
+      ],
+      "lyrics": [
+        "Lyrics/45409_verse.lab",
+        "51361a15a4b74f20d4063328cf0e23df"
+      ]
+    },
+    "45410_verse": {
+      "audio": [
+        "Wavfile/45410_verse.wav",
+        "138e37e313de7a8d94859b4eeeba8049"
+      ],
+      "pitch": [
+        "PitchLabel/45410_verse.pv",
+        "1c48a8de516807b50434e1b56fa5a7ae"
+      ],
+      "lyrics": [
+        "Lyrics/45410_verse.lab",
+        "8c63f5d65e34318a30b488bcbf120978"
+      ]
+    },
+    "45412_chorus": {
+      "audio": [
+        "Wavfile/45412_chorus.wav",
+        "93fc2e054cd73073e5af9e523b92bde4"
+      ],
+      "pitch": [
+        "PitchLabel/45412_chorus.pv",
+        "adb694a2947ba973516ce044fa2d9c79"
+      ],
+      "lyrics": [
+        "Lyrics/45412_chorus.lab",
+        "2e17a6a38288b3b7924183afcb5f1614"
+      ]
+    },
+    "45412_verse": {
+      "audio": [
+        "Wavfile/45412_verse.wav",
+        "52a52155c2f2334be5a6255632e423e1"
+      ],
+      "pitch": [
+        "PitchLabel/45412_verse.pv",
+        "cd8cc4a59d8682ebd40b9860bd7272e0"
+      ],
+      "lyrics": [
+        "Lyrics/45412_verse.lab",
+        "7f4fdb7ba2b63a5ca2734aa514a72bee"
+      ]
+    },
+    "45413_chorus": {
+      "audio": [
+        "Wavfile/45413_chorus.wav",
+        "be95722b2537355b905fd13e9adb53a6"
+      ],
+      "pitch": [
+        "PitchLabel/45413_chorus.pv",
+        "81a0d44305910827339eb1f3a43d7703"
+      ],
+      "lyrics": [
+        "Lyrics/45413_chorus.lab",
+        "97dced138db07b99e076af4c54024a27"
+      ]
+    },
+    "45414_verse": {
+      "audio": [
+        "Wavfile/45414_verse.wav",
+        "5c22317ec72210d051fb7e2df923c120"
+      ],
+      "pitch": [
+        "PitchLabel/45414_verse.pv",
+        "a2dc7b2e473022d2ba571c2b21c051c9"
+      ],
+      "lyrics": [
+        "Lyrics/45414_verse.lab",
+        "f649ae8c036d76735d6a082126eca0c0"
+      ]
+    },
+    "45415_chorus": {
+      "audio": [
+        "Wavfile/45415_chorus.wav",
+        "706dda52ab2fe68370e00d46c4ca863b"
+      ],
+      "pitch": [
+        "PitchLabel/45415_chorus.pv",
+        "99e1379f084b6c37e261903875ddc6ec"
+      ],
+      "lyrics": [
+        "Lyrics/45415_chorus.lab",
+        "95cf3de80726e810deeb1fbd0fd8972e"
+      ]
+    },
+    "45415_verse": {
+      "audio": [
+        "Wavfile/45415_verse.wav",
+        "7f01834bba2abc778e56a62305cb663b"
+      ],
+      "pitch": [
+        "PitchLabel/45415_verse.pv",
+        "567c3b3215cba10137b45ada2b1ef3dc"
+      ],
+      "lyrics": [
+        "Lyrics/45415_verse.lab",
+        "09672e902f4fe3ef92d46d63f8f31a73"
+      ]
+    },
+    "45416_chorus": {
+      "audio": [
+        "Wavfile/45416_chorus.wav",
+        "d45fc6d391e600d20a4c9cef4b47a014"
+      ],
+      "pitch": [
+        "PitchLabel/45416_chorus.pv",
+        "3c0a4dfeac0dcb3465860883f04bf711"
+      ],
+      "lyrics": [
+        "Lyrics/45416_chorus.lab",
+        "9901b428fa46f2e8ae33361fcc1045d8"
+      ]
+    },
+    "45416_verse": {
+      "audio": [
+        "Wavfile/45416_verse.wav",
+        "5868d5633156f1c28ad0794bf5d97709"
+      ],
+      "pitch": [
+        "PitchLabel/45416_verse.pv",
+        "0e5605343fe44ac62ee8fd38377de417"
+      ],
+      "lyrics": [
+        "Lyrics/45416_verse.lab",
+        "efd2af9b217885792b8db4b0c767c905"
+      ]
+    },
+    "45417_verse": {
+      "audio": [
+        "Wavfile/45417_verse.wav",
+        "0f61b8c20dc6b4b08154d5fa37dea2a5"
+      ],
+      "pitch": [
+        "PitchLabel/45417_verse.pv",
+        "8ae7ca0bde08bfbe6d4c203d289d5dce"
+      ],
+      "lyrics": [
+        "Lyrics/45417_verse.lab",
+        "da6e80c46ae416c41921cb93b3f49f7f"
+      ]
+    },
+    "45418_verse": {
+      "audio": [
+        "Wavfile/45418_verse.wav",
+        "858c3fa76b2cde59720440d37869071e"
+      ],
+      "pitch": [
+        "PitchLabel/45418_verse.pv",
+        "6f34f8f1d4ca6f122273d70d701bb372"
+      ],
+      "lyrics": [
+        "Lyrics/45418_verse.lab",
+        "35eb8e12e8002fc7bdb0fd4c3c65f671"
+      ]
+    },
+    "45419_chorus": {
+      "audio": [
+        "Wavfile/45419_chorus.wav",
+        "aee3e3ca836be4f1eb6dd3c8f30cac73"
+      ],
+      "pitch": [
+        "PitchLabel/45419_chorus.pv",
+        "ad83a3eefb9450c32260308f5a514539"
+      ],
+      "lyrics": [
+        "Lyrics/45419_chorus.lab",
+        "989d7578dc01a4b08320a32207c6f6d3"
+      ]
+    },
+    "45421_verse": {
+      "audio": [
+        "Wavfile/45421_verse.wav",
+        "3a3a663acf74a0a0c2a16f5287a86c6a"
+      ],
+      "pitch": [
+        "PitchLabel/45421_verse.pv",
+        "791d24a0c5905e29a10805ff944d6e19"
+      ],
+      "lyrics": [
+        "Lyrics/45421_verse.lab",
+        "a04cd0a52541b7a7d044531e20cbdeb6"
+      ]
+    },
+    "45422_chorus": {
+      "audio": [
+        "Wavfile/45422_chorus.wav",
+        "65151aa0069b843e90e456227813c659"
+      ],
+      "pitch": [
+        "PitchLabel/45422_chorus.pv",
+        "d8ed217d586534ff74bbb4eae4bb2c65"
+      ],
+      "lyrics": [
+        "Lyrics/45422_chorus.lab",
+        "cb25f47bdcd672a966b070ee0fda0f9c"
+      ]
+    },
+    "45422_verse": {
+      "audio": [
+        "Wavfile/45422_verse.wav",
+        "13ac0b74691496274195f2337ef9788e"
+      ],
+      "pitch": [
+        "PitchLabel/45422_verse.pv",
+        "41c8ad33de8c655fe19b9e8eaa7aa3b8"
+      ],
+      "lyrics": [
+        "Lyrics/45422_verse.lab",
+        "c90ba1572be2cb07d97a672f2c2da056"
+      ]
+    },
+    "45423_verse": {
+      "audio": [
+        "Wavfile/45423_verse.wav",
+        "bc2c5f9ccfd29245c3d9a08e1a0e12fd"
+      ],
+      "pitch": [
+        "PitchLabel/45423_verse.pv",
+        "2959e795e02ba2dd670d25e184ccae79"
+      ],
+      "lyrics": [
+        "Lyrics/45423_verse.lab",
+        "b2a25a503ed46e0862d26195829dcd79"
+      ]
+    },
+    "45424_chorus": {
+      "audio": [
+        "Wavfile/45424_chorus.wav",
+        "05646e04e39bf92dc294b82ae37e6004"
+      ],
+      "pitch": [
+        "PitchLabel/45424_chorus.pv",
+        "303f912ce52138edf7a0cc3b20f086bc"
+      ],
+      "lyrics": [
+        "Lyrics/45424_chorus.lab",
+        "1583703dc351c68d17cf0eedef8a3e2b"
+      ]
+    },
+    "45425_chorus": {
+      "audio": [
+        "Wavfile/45425_chorus.wav",
+        "9ae5ab58d9eb97b4089799bcbb214fbb"
+      ],
+      "pitch": [
+        "PitchLabel/45425_chorus.pv",
+        "03fe625756a9d17fb4daa032cc9a26f4"
+      ],
+      "lyrics": [
+        "Lyrics/45425_chorus.lab",
+        "a4161a26da189bcb9ce01cfe9429a10d"
+      ]
+    },
+    "45428_chorus": {
+      "audio": [
+        "Wavfile/45428_chorus.wav",
+        "1ae0c4918eaba5ee55d30938f6d2f7c1"
+      ],
+      "pitch": [
+        "PitchLabel/45428_chorus.pv",
+        "f7c14876274b654a25ffe9e4c4493df2"
+      ],
+      "lyrics": [
+        "Lyrics/45428_chorus.lab",
+        "d8641c42881c9b4ce44833991e9691ac"
+      ]
+    },
+    "45428_verse": {
+      "audio": [
+        "Wavfile/45428_verse.wav",
+        "c388c2b5869da0dad5bdb0f5ef1bd678"
+      ],
+      "pitch": [
+        "PitchLabel/45428_verse.pv",
+        "30626a672ada6474c3e7cf3166012996"
+      ],
+      "lyrics": [
+        "Lyrics/45428_verse.lab",
+        "345de302f300c310f957bb81faa9f84a"
+      ]
+    },
+    "45429_chorus": {
+      "audio": [
+        "Wavfile/45429_chorus.wav",
+        "28730b8c447648520f332840f133e687"
+      ],
+      "pitch": [
+        "PitchLabel/45429_chorus.pv",
+        "6458418a37771d4abc2bd0c17e8a0883"
+      ],
+      "lyrics": [
+        "Lyrics/45429_chorus.lab",
+        "8bc27a32d025c2e307511cd559d7b10f"
+      ]
+    },
+    "45429_verse": {
+      "audio": [
+        "Wavfile/45429_verse.wav",
+        "673c4c9923374246413153cd8b3555bf"
+      ],
+      "pitch": [
+        "PitchLabel/45429_verse.pv",
+        "ecee9d59978f33886f850e151436acc8"
+      ],
+      "lyrics": [
+        "Lyrics/45429_verse.lab",
+        "9ae968275da5f8960a64a7d99b1a1f7c"
+      ]
+    },
+    "45431_verse": {
+      "audio": [
+        "Wavfile/45431_verse.wav",
+        "5db2aaa616b3120e70cfae571166027c"
+      ],
+      "pitch": [
+        "PitchLabel/45431_verse.pv",
+        "71d36b5b761a5eb9cd1d0202ad7c473d"
+      ],
+      "lyrics": [
+        "Lyrics/45431_verse.lab",
+        "2859baa3acaec0aa4968cfe09cfd4e04"
+      ]
+    },
+    "45434_verse": {
+      "audio": [
+        "Wavfile/45434_verse.wav",
+        "a2c7ca6895d452d06a74aacef18ac38f"
+      ],
+      "pitch": [
+        "PitchLabel/45434_verse.pv",
+        "7a09aad7a3de36fc41b10dda3d3f024a"
+      ],
+      "lyrics": [
+        "Lyrics/45434_verse.lab",
+        "0344473ddb6a84e481169de3d5bff621"
+      ]
+    },
+    "45435_chorus": {
+      "audio": [
+        "Wavfile/45435_chorus.wav",
+        "310c7ed0a28726d462ffd0b610f83db0"
+      ],
+      "pitch": [
+        "PitchLabel/45435_chorus.pv",
+        "9d55d25f95fab322a0e73f61380ddfe3"
+      ],
+      "lyrics": [
+        "Lyrics/45435_chorus.lab",
+        "f095b34fe14721897cd0c6c178b384fb"
+      ]
+    },
+    "45435_verse": {
+      "audio": [
+        "Wavfile/45435_verse.wav",
+        "a3a5fb45dbb84ba579562508185f6128"
+      ],
+      "pitch": [
+        "PitchLabel/45435_verse.pv",
+        "cbfc9d7a752039d97bef1a6538503668"
+      ],
+      "lyrics": [
+        "Lyrics/45435_verse.lab",
+        "440d4e809bcb1ca58117901d1a55829e"
+      ]
+    },
+    "54016_verse": {
+      "audio": [
+        "Wavfile/54016_verse.wav",
+        "133ece478b33b60373b5e9d6c5af7923"
+      ],
+      "pitch": [
+        "PitchLabel/54016_verse.pv",
+        "e681ea592f0e66f5818f2ecbec225aaa"
+      ],
+      "lyrics": [
+        "Lyrics/54016_verse.lab",
+        "5f332739bb17dcf1f93f764703ad404a"
+      ]
+    },
+    "54173_chorus": {
+      "audio": [
+        "Wavfile/54173_chorus.wav",
+        "3d21a05e99d1f82c6c33542140388355"
+      ],
+      "pitch": [
+        "PitchLabel/54173_chorus.pv",
+        "79ba68f37778b09072b0651ff3106d4e"
+      ],
+      "lyrics": [
+        "Lyrics/54173_chorus.lab",
+        "e53b6cf5d39a4d759029a1116177d8ee"
+      ]
+    },
+    "54173_verse": {
+      "audio": [
+        "Wavfile/54173_verse.wav",
+        "9e86476ddae51406d86f2fe65e1defae"
+      ],
+      "pitch": [
+        "PitchLabel/54173_verse.pv",
+        "fd24aca06c92f363240fed0ebd316123"
+      ],
+      "lyrics": [
+        "Lyrics/54173_verse.lab",
+        "44cb0a9ddc69b763c4df11fd08fb52e6"
+      ]
+    },
+    "54183_chorus": {
+      "audio": [
+        "Wavfile/54183_chorus.wav",
+        "8c5805845315944c82623ac21a0f6b89"
+      ],
+      "pitch": [
+        "PitchLabel/54183_chorus.pv",
+        "52451ffa4449ab9e57ded8eab4c9bcee"
+      ],
+      "lyrics": [
+        "Lyrics/54183_chorus.lab",
+        "b0abb95774d5c1089eb537adcde0d66b"
+      ]
+    },
+    "54186_verse": {
+      "audio": [
+        "Wavfile/54186_verse.wav",
+        "4c327d0a0cce42015fbf4586c807a9cd"
+      ],
+      "pitch": [
+        "PitchLabel/54186_verse.pv",
+        "97d191ba77de9ae4fa0c8fdb3b25af0a"
+      ],
+      "lyrics": [
+        "Lyrics/54186_verse.lab",
+        "b142c35355607bf2676b0539e1cf9736"
+      ]
+    },
+    "54189_chorus": {
+      "audio": [
+        "Wavfile/54189_chorus.wav",
+        "e688f4edf3f3078b0ff21796d1f46797"
+      ],
+      "pitch": [
+        "PitchLabel/54189_chorus.pv",
+        "77a6f28d31beaf90df1d6e930316e967"
+      ],
+      "lyrics": [
+        "Lyrics/54189_chorus.lab",
+        "7741bb71c2d9b1f2e5c388b5f366facc"
+      ]
+    },
+    "54189_verse": {
+      "audio": [
+        "Wavfile/54189_verse.wav",
+        "3bfdd1c4b016badf1845e0647529073f"
+      ],
+      "pitch": [
+        "PitchLabel/54189_verse.pv",
+        "14459cc04bd439452b660cc7b5739490"
+      ],
+      "lyrics": [
+        "Lyrics/54189_verse.lab",
+        "bf5def90a06e7708443ed5a86ed8ab10"
+      ]
+    },
+    "54190_chorus": {
+      "audio": [
+        "Wavfile/54190_chorus.wav",
+        "42575721be48dd8bd132cf359583ca51"
+      ],
+      "pitch": [
+        "PitchLabel/54190_chorus.pv",
+        "a82280ed529a602115a5c43ad2a6640e"
+      ],
+      "lyrics": [
+        "Lyrics/54190_chorus.lab",
+        "988ab202ad6736f28f86d97bab50a791"
+      ]
+    },
+    "54190_verse": {
+      "audio": [
+        "Wavfile/54190_verse.wav",
+        "525ef4efffc7762805b31eedd71541e4"
+      ],
+      "pitch": [
+        "PitchLabel/54190_verse.pv",
+        "db186f5e8f18a03a852487df1cecb9c6"
+      ],
+      "lyrics": [
+        "Lyrics/54190_verse.lab",
+        "6f3d5e327530a22fd3e5270dff9fa9e3"
+      ]
+    },
+    "54191_verse": {
+      "audio": [
+        "Wavfile/54191_verse.wav",
+        "03127e748c90988bad3dfa9f4d44f418"
+      ],
+      "pitch": [
+        "PitchLabel/54191_verse.pv",
+        "18f372ab0ad84d46db68d273141bb6af"
+      ],
+      "lyrics": [
+        "Lyrics/54191_verse.lab",
+        "034952b5bb1cfbe63f881d06ca2e09b3"
+      ]
+    },
+    "54192_chorus": {
+      "audio": [
+        "Wavfile/54192_chorus.wav",
+        "68720b053a8e72f8972e164369c2ed5d"
+      ],
+      "pitch": [
+        "PitchLabel/54192_chorus.pv",
+        "af576f9c719b2b24832452563858c75b"
+      ],
+      "lyrics": [
+        "Lyrics/54192_chorus.lab",
+        "7a211e520279740e8e0917a2ac62cc1f"
+      ]
+    },
+    "54192_verse": {
+      "audio": [
+        "Wavfile/54192_verse.wav",
+        "171bd9f0c0ed1389a62ecfb77ed0433f"
+      ],
+      "pitch": [
+        "PitchLabel/54192_verse.pv",
+        "aa27b468bea2edc0ecf32396f37cbb3f"
+      ],
+      "lyrics": [
+        "Lyrics/54192_verse.lab",
+        "544d6c42172f6a471f616d6659773376"
+      ]
+    },
+    "54194_chorus": {
+      "audio": [
+        "Wavfile/54194_chorus.wav",
+        "d42be80cb08fabcd52e635e7e25f0ed4"
+      ],
+      "pitch": [
+        "PitchLabel/54194_chorus.pv",
+        "48b19a203157a3a07d3b78da49e1b958"
+      ],
+      "lyrics": [
+        "Lyrics/54194_chorus.lab",
+        "c039e70a21dac89719b285945114f9a6"
+      ]
+    },
+    "54194_verse": {
+      "audio": [
+        "Wavfile/54194_verse.wav",
+        "a36c473f3e1687c501ae0194e58bc643"
+      ],
+      "pitch": [
+        "PitchLabel/54194_verse.pv",
+        "367be595e0e3e5eb7fd5eed7ab025b8f"
+      ],
+      "lyrics": [
+        "Lyrics/54194_verse.lab",
+        "cf432134c7f66fc44ccba50da9d1a489"
+      ]
+    },
+    "54202_chorus": {
+      "audio": [
+        "Wavfile/54202_chorus.wav",
+        "a30f317f0289fa65d8ea51e036f55a16"
+      ],
+      "pitch": [
+        "PitchLabel/54202_chorus.pv",
+        "1fb15b63667c1f6cf12e2f3c9302a220"
+      ],
+      "lyrics": [
+        "Lyrics/54202_chorus.lab",
+        "f47757f396d2e741fcf06e44a931ca17"
+      ]
+    },
+    "54205_verse": {
+      "audio": [
+        "Wavfile/54205_verse.wav",
+        "c1b0757999e2381aae22f0e2e677f76e"
+      ],
+      "pitch": [
+        "PitchLabel/54205_verse.pv",
+        "b7697a865cbf36feca8e90c8e4084ff7"
+      ],
+      "lyrics": [
+        "Lyrics/54205_verse.lab",
+        "43a8ff6f7c1581d2cefe4e9cce2afa03"
+      ]
+    },
+    "54210_chorus": {
+      "audio": [
+        "Wavfile/54210_chorus.wav",
+        "c7004fe206d7b0b5e2b33189c9593fb0"
+      ],
+      "pitch": [
+        "PitchLabel/54210_chorus.pv",
+        "cd7c53c2b74255b1efef0c1bae70b387"
+      ],
+      "lyrics": [
+        "Lyrics/54210_chorus.lab",
+        "27ef36912a245056f933a1d8c8f17290"
+      ]
+    },
+    "54211_chorus": {
+      "audio": [
+        "Wavfile/54211_chorus.wav",
+        "a723fbf4e4baeea517449d7bbc05ed10"
+      ],
+      "pitch": [
+        "PitchLabel/54211_chorus.pv",
+        "258640f648476c45cfc2988624beb75b"
+      ],
+      "lyrics": [
+        "Lyrics/54211_chorus.lab",
+        "19eeeb02d7f77bc33bc72e2902ed6f12"
+      ]
+    },
+    "54212_chorus": {
+      "audio": [
+        "Wavfile/54212_chorus.wav",
+        "1407f9b59dba5e981d67789ade61689e"
+      ],
+      "pitch": [
+        "PitchLabel/54212_chorus.pv",
+        "2682845b9651913b5d74a8198bfd29c9"
+      ],
+      "lyrics": [
+        "Lyrics/54212_chorus.lab",
+        "02c2595d0b3b98d776197c1e94050306"
+      ]
+    },
+    "54213_chorus": {
+      "audio": [
+        "Wavfile/54213_chorus.wav",
+        "2a2c964bb0e5a6e9183465c08f367ffc"
+      ],
+      "pitch": [
+        "PitchLabel/54213_chorus.pv",
+        "fb8490f4251bc9d294b433d5e02ebd98"
+      ],
+      "lyrics": [
+        "Lyrics/54213_chorus.lab",
+        "cff5130481612a8d9da357000fe99d28"
+      ]
+    },
+    "54213_verse": {
+      "audio": [
+        "Wavfile/54213_verse.wav",
+        "11ead08ffe50c02e02047354ad78f63b"
+      ],
+      "pitch": [
+        "PitchLabel/54213_verse.pv",
+        "a0fc926b2b9ece32a503a3b255db1402"
+      ],
+      "lyrics": [
+        "Lyrics/54213_verse.lab",
+        "c93811a32722ab1cd1412882dc1814c9"
+      ]
+    },
+    "54216_verse": {
+      "audio": [
+        "Wavfile/54216_verse.wav",
+        "d35575b82ca11722084fa1e25b2aa508"
+      ],
+      "pitch": [
+        "PitchLabel/54216_verse.pv",
+        "f63a0fff8c366862ab7c0e1c6960a8a2"
+      ],
+      "lyrics": [
+        "Lyrics/54216_verse.lab",
+        "f02ecf7fe30980d88263cab1602779bc"
+      ]
+    },
+    "54219_verse": {
+      "audio": [
+        "Wavfile/54219_verse.wav",
+        "4cd7d062bf8d12b0298ec6a5a5e44c65"
+      ],
+      "pitch": [
+        "PitchLabel/54219_verse.pv",
+        "b29eb6fc3a7af8fdbb43a6f76a313445"
+      ],
+      "lyrics": [
+        "Lyrics/54219_verse.lab",
+        "f98cc63cf14be77e2ac6e0f406aa7721"
+      ]
+    },
+    "54220_chorus": {
+      "audio": [
+        "Wavfile/54220_chorus.wav",
+        "8f54a97881e2e10fc8d682d3718e451a"
+      ],
+      "pitch": [
+        "PitchLabel/54220_chorus.pv",
+        "df6a5ac6d16a4e983064241fdcf394b4"
+      ],
+      "lyrics": [
+        "Lyrics/54220_chorus.lab",
+        "620e1b41c413f449853fb1a98d23ff64"
+      ]
+    },
+    "54221_chorus": {
+      "audio": [
+        "Wavfile/54221_chorus.wav",
+        "65fb1e173293d40c096325473b678d23"
+      ],
+      "pitch": [
+        "PitchLabel/54221_chorus.pv",
+        "a1141e190348fc63c145d556e7b06594"
+      ],
+      "lyrics": [
+        "Lyrics/54221_chorus.lab",
+        "e931dff63132ef69e1199cd02f837d54"
+      ]
+    },
+    "54223_chorus": {
+      "audio": [
+        "Wavfile/54223_chorus.wav",
+        "e72ded5aea7fe940c23c272c6c080aa8"
+      ],
+      "pitch": [
+        "PitchLabel/54223_chorus.pv",
+        "e111a077b8b816292ae057a521137c80"
+      ],
+      "lyrics": [
+        "Lyrics/54223_chorus.lab",
+        "a93344837acd06822c350b19623e71e0"
+      ]
+    },
+    "54223_verse": {
+      "audio": [
+        "Wavfile/54223_verse.wav",
+        "ed37663a29cf3d3f7fcc15b753d14c75"
+      ],
+      "pitch": [
+        "PitchLabel/54223_verse.pv",
+        "a9bf5c4be37f26997b3ac3ac97cc49d5"
+      ],
+      "lyrics": [
+        "Lyrics/54223_verse.lab",
+        "b0b018df53cddeda5d06d61f8a1546f5"
+      ]
+    },
+    "54226_chorus": {
+      "audio": [
+        "Wavfile/54226_chorus.wav",
+        "9e204c8fb653f1959e249079d381cd34"
+      ],
+      "pitch": [
+        "PitchLabel/54226_chorus.pv",
+        "76a40cbaf5c16e09f25d02e17550583f"
+      ],
+      "lyrics": [
+        "Lyrics/54226_chorus.lab",
+        "88ade301e693abb12b84f947800bb6a9"
+      ]
+    },
+    "54226_verse": {
+      "audio": [
+        "Wavfile/54226_verse.wav",
+        "5b8016cc3fb6b2f1310bed6502815c77"
+      ],
+      "pitch": [
+        "PitchLabel/54226_verse.pv",
+        "52efd59d5ce46c12384cf99939df1bea"
+      ],
+      "lyrics": [
+        "Lyrics/54226_verse.lab",
+        "bb9016d6f62efd68f5300ca37458ee9e"
+      ]
+    },
+    "54227_chorus": {
+      "audio": [
+        "Wavfile/54227_chorus.wav",
+        "67a1acef208200bb3d0a06ed2c83e5d4"
+      ],
+      "pitch": [
+        "PitchLabel/54227_chorus.pv",
+        "b32ca8d7908f4b946a6fe9697e87fcfc"
+      ],
+      "lyrics": [
+        "Lyrics/54227_chorus.lab",
+        "384edb60d21db5cc548a722f9e49ec23"
+      ]
+    },
+    "54227_verse": {
+      "audio": [
+        "Wavfile/54227_verse.wav",
+        "d21e850b4300115db25108de4e995077"
+      ],
+      "pitch": [
+        "PitchLabel/54227_verse.pv",
+        "861284fd649fd825b9b0c4bd3953cec8"
+      ],
+      "lyrics": [
+        "Lyrics/54227_verse.lab",
+        "b808baa290211ef6e7d39dd4daf56079"
+      ]
+    },
+    "54228_chorus": {
+      "audio": [
+        "Wavfile/54228_chorus.wav",
+        "0250e89aa483a854179d3bb6fb1e6716"
+      ],
+      "pitch": [
+        "PitchLabel/54228_chorus.pv",
+        "96f51c0f16fcf33bd179a066cd7382fb"
+      ],
+      "lyrics": [
+        "Lyrics/54228_chorus.lab",
+        "2199eab36bdc130dabec9eab2b365c98"
+      ]
+    },
+    "54233_chorus": {
+      "audio": [
+        "Wavfile/54233_chorus.wav",
+        "2e677455f1e2ee1f9505348b9cf94902"
+      ],
+      "pitch": [
+        "PitchLabel/54233_chorus.pv",
+        "3fe76ede4d93aa7dab2604bf0c15bee5"
+      ],
+      "lyrics": [
+        "Lyrics/54233_chorus.lab",
+        "565043bfbe8ca19f8c4c1deb1b670079"
+      ]
+    },
+    "54233_verse": {
+      "audio": [
+        "Wavfile/54233_verse.wav",
+        "69f2035d92119a090f38941af01ee2c4"
+      ],
+      "pitch": [
+        "PitchLabel/54233_verse.pv",
+        "d68a6d296288011d0a626fd96f3c90e3"
+      ],
+      "lyrics": [
+        "Lyrics/54233_verse.lab",
+        "f95aaa762bb1a72dd2b75e6edb80b79f"
+      ]
+    },
+    "54236_chorus": {
+      "audio": [
+        "Wavfile/54236_chorus.wav",
+        "3545c9269cf79b032907706703e832b6"
+      ],
+      "pitch": [
+        "PitchLabel/54236_chorus.pv",
+        "fa501a35e5068e5f5085e1e834e968f4"
+      ],
+      "lyrics": [
+        "Lyrics/54236_chorus.lab",
+        "7b6d726f02f495d70c735abb09dd4a42"
+      ]
+    },
+    "54239_chorus": {
+      "audio": [
+        "Wavfile/54239_chorus.wav",
+        "81d9adbfd1eed38c8a23bf81611124a7"
+      ],
+      "pitch": [
+        "PitchLabel/54239_chorus.pv",
+        "5d5e5c15c9e0527d9dedd5f79fca24d0"
+      ],
+      "lyrics": [
+        "Lyrics/54239_chorus.lab",
+        "a70beb31636bc422ca26f3f1515a380c"
+      ]
+    },
+    "54242_verse": {
+      "audio": [
+        "Wavfile/54242_verse.wav",
+        "7ffedb1c61bfca797dabdd841ddb8233"
+      ],
+      "pitch": [
+        "PitchLabel/54242_verse.pv",
+        "4064570a975b89424b10caa712236a48"
+      ],
+      "lyrics": [
+        "Lyrics/54242_verse.lab",
+        "16bdee0b874a0181b5b18afb3a1aed1c"
+      ]
+    },
+    "54243_chorus": {
+      "audio": [
+        "Wavfile/54243_chorus.wav",
+        "e1e7b3302c081ec814893228b90a7f6b"
+      ],
+      "pitch": [
+        "PitchLabel/54243_chorus.pv",
+        "b1dda5a1a626faf8ba4590c0e87aea1e"
+      ],
+      "lyrics": [
+        "Lyrics/54243_chorus.lab",
+        "15206e7fdc4f503798a20c8a73a771d6"
+      ]
+    },
+    "54243_verse": {
+      "audio": [
+        "Wavfile/54243_verse.wav",
+        "758e50eb78b8472a35c85eb0fc947db0"
+      ],
+      "pitch": [
+        "PitchLabel/54243_verse.pv",
+        "5d86584861312c512d682495ec56a397"
+      ],
+      "lyrics": [
+        "Lyrics/54243_verse.lab",
+        "685f91ee14d13bebd9fe8daef29dc668"
+      ]
+    },
+    "54245_chorus": {
+      "audio": [
+        "Wavfile/54245_chorus.wav",
+        "23eddb70b7704443324b81a682516c89"
+      ],
+      "pitch": [
+        "PitchLabel/54245_chorus.pv",
+        "65935e8738f32d422a7ba41ff3d2c49d"
+      ],
+      "lyrics": [
+        "Lyrics/54245_chorus.lab",
+        "f1ab3008e0a161a99d5c4052fae309ff"
+      ]
+    },
+    "54245_verse": {
+      "audio": [
+        "Wavfile/54245_verse.wav",
+        "23b0bad956c7e0543ae60fe83eb0f0fe"
+      ],
+      "pitch": [
+        "PitchLabel/54245_verse.pv",
+        "f0ff1d226bcb839782ae234453c69a2c"
+      ],
+      "lyrics": [
+        "Lyrics/54245_verse.lab",
+        "930f520d78036869f74f438254171577"
+      ]
+    },
+    "54246_chorus": {
+      "audio": [
+        "Wavfile/54246_chorus.wav",
+        "6dd3e4a2dac8537d8f32e5f581987486"
+      ],
+      "pitch": [
+        "PitchLabel/54246_chorus.pv",
+        "164aacdc1d18cb002176980bf296b040"
+      ],
+      "lyrics": [
+        "Lyrics/54246_chorus.lab",
+        "bf63c6bcefa96ce4d1d456c2ee33875a"
+      ]
+    },
+    "54246_verse": {
+      "audio": [
+        "Wavfile/54246_verse.wav",
+        "50f82b7a75571817fe7b46b4ab8ed370"
+      ],
+      "pitch": [
+        "PitchLabel/54246_verse.pv",
+        "97b2018516c4ab2e81d866624b116e06"
+      ],
+      "lyrics": [
+        "Lyrics/54246_verse.lab",
+        "014ba8284ef503dbb7dbda88c53ce8d8"
+      ]
+    },
+    "54247_verse": {
+      "audio": [
+        "Wavfile/54247_verse.wav",
+        "83c1bb99d4638d0545fa0e5a3eda2f06"
+      ],
+      "pitch": [
+        "PitchLabel/54247_verse.pv",
+        "a15c7d2e232ed536f680adbc25e384e6"
+      ],
+      "lyrics": [
+        "Lyrics/54247_verse.lab",
+        "926922d8e462092ab138b41b8fc9dbdd"
+      ]
+    },
+    "54249_chorus": {
+      "audio": [
+        "Wavfile/54249_chorus.wav",
+        "10c181c803465b4f2b77f1a8b44c99d9"
+      ],
+      "pitch": [
+        "PitchLabel/54249_chorus.pv",
+        "3070962864f2d638c0cc01fca0a9fac8"
+      ],
+      "lyrics": [
+        "Lyrics/54249_chorus.lab",
+        "2363e4bfe30358e494842c86bb17c292"
+      ]
+    },
+    "54249_verse": {
+      "audio": [
+        "Wavfile/54249_verse.wav",
+        "89c51eff6db073a01c088e47367475e9"
+      ],
+      "pitch": [
+        "PitchLabel/54249_verse.pv",
+        "b5e212e18d50b2dcf8efcaea6501c0f9"
+      ],
+      "lyrics": [
+        "Lyrics/54249_verse.lab",
+        "5be10d436ae04688d092fb4d0c9bc346"
+      ]
+    },
+    "54251_verse": {
+      "audio": [
+        "Wavfile/54251_verse.wav",
+        "81f4c83b335cf98403c516466fffaa9f"
+      ],
+      "pitch": [
+        "PitchLabel/54251_verse.pv",
+        "f432ac4421a75ba15a206e3782cdaad6"
+      ],
+      "lyrics": [
+        "Lyrics/54251_verse.lab",
+        "7f9cf3948116e8347340c038ff0e211d"
+      ]
+    },
+    "61647_chorus": {
+      "audio": [
+        "Wavfile/61647_chorus.wav",
+        "5c563d422143e1d91a08cbdb154474ff"
+      ],
+      "pitch": [
+        "PitchLabel/61647_chorus.pv",
+        "fddf5a52fb0510b0610bf6c78e267972"
+      ],
+      "lyrics": [
+        "Lyrics/61647_chorus.lab",
+        "9e21b7748ab84cda779542dcb8ff16f2"
+      ]
+    },
+    "61647_verse": {
+      "audio": [
+        "Wavfile/61647_verse.wav",
+        "46476e80dff99f60ca6752557a23dc05"
+      ],
+      "pitch": [
+        "PitchLabel/61647_verse.pv",
+        "df82af751eea8337ad0924408c7452d4"
+      ],
+      "lyrics": [
+        "Lyrics/61647_verse.lab",
+        "5ffb995dad8a8164b6257a30dbaf16d3"
+      ]
+    },
+    "61670_verse": {
+      "audio": [
+        "Wavfile/61670_verse.wav",
+        "d18e6e43bf01369da1799b940945985b"
+      ],
+      "pitch": [
+        "PitchLabel/61670_verse.pv",
+        "f196393bc7f3ae9c801b2af6f2910ecd"
+      ],
+      "lyrics": [
+        "Lyrics/61670_verse.lab",
+        "fdf453deb9c0814e00c39e39af9613e8"
+      ]
+    },
+    "61671_chorus": {
+      "audio": [
+        "Wavfile/61671_chorus.wav",
+        "d4932252aeb8b609d15734f95634eb9e"
+      ],
+      "pitch": [
+        "PitchLabel/61671_chorus.pv",
+        "9b850efe93487ece97257b362f8d4df1"
+      ],
+      "lyrics": [
+        "Lyrics/61671_chorus.lab",
+        "e73879a67d3d189430905d0dadd05bbd"
+      ]
+    },
+    "61671_verse": {
+      "audio": [
+        "Wavfile/61671_verse.wav",
+        "bcf1a991e29b10c99ab3eebb57eab8e8"
+      ],
+      "pitch": [
+        "PitchLabel/61671_verse.pv",
+        "6d5eb0379ece0cd2b04ea889d588d5f2"
+      ],
+      "lyrics": [
+        "Lyrics/61671_verse.lab",
+        "1cebfcb2bf3263ff1f5c501fa0515d0f"
+      ]
+    },
+    "61673_verse": {
+      "audio": [
+        "Wavfile/61673_verse.wav",
+        "fe50049deed0ad314be4b68c8c1d9087"
+      ],
+      "pitch": [
+        "PitchLabel/61673_verse.pv",
+        "4e4aa43431dc6768b022bb8fc73cf027"
+      ],
+      "lyrics": [
+        "Lyrics/61673_verse.lab",
+        "b1702bf99c9ef26e76ecbed11b4771bc"
+      ]
+    },
+    "61674_verse": {
+      "audio": [
+        "Wavfile/61674_verse.wav",
+        "53b7563fc10de612cc794e68399cadc4"
+      ],
+      "pitch": [
+        "PitchLabel/61674_verse.pv",
+        "0805adaa7430be26b2ece72a15fe2272"
+      ],
+      "lyrics": [
+        "Lyrics/61674_verse.lab",
+        "eec8b102b3e14b1a314cb49469095e8b"
+      ]
+    },
+    "61676_chorus": {
+      "audio": [
+        "Wavfile/61676_chorus.wav",
+        "6bbbe3f3b31aba32c6215347e32e3759"
+      ],
+      "pitch": [
+        "PitchLabel/61676_chorus.pv",
+        "87fb2a1ee880ea260f06c3baa7af0102"
+      ],
+      "lyrics": [
+        "Lyrics/61676_chorus.lab",
+        "2a0e9dbcf2794f43113bfb0fe70332a7"
+      ]
+    },
+    "61677_chorus": {
+      "audio": [
+        "Wavfile/61677_chorus.wav",
+        "3f7e309adfacdda15ad996bd471f2579"
+      ],
+      "pitch": [
+        "PitchLabel/61677_chorus.pv",
+        "9aa10c6d70042e82f698863edf05a47c"
+      ],
+      "lyrics": [
+        "Lyrics/61677_chorus.lab",
+        "472119282b5a301da56bc9d3908acfc7"
+      ]
+    },
+    "66556_chorus": {
+      "audio": [
+        "Wavfile/66556_chorus.wav",
+        "1f39636e114b34f975ba966e122fdaf2"
+      ],
+      "pitch": [
+        "PitchLabel/66556_chorus.pv",
+        "d93b7ca64effdd4f0599839cf89ca255"
+      ],
+      "lyrics": [
+        "Lyrics/66556_chorus.lab",
+        "0957f21f83c292208cb970a2131272c1"
+      ]
+    },
+    "66556_verse": {
+      "audio": [
+        "Wavfile/66556_verse.wav",
+        "bf8dca1b47912bbff2270c9987218c5a"
+      ],
+      "pitch": [
+        "PitchLabel/66556_verse.pv",
+        "347a002990a0ab20fedab64d8fd12ade"
+      ],
+      "lyrics": [
+        "Lyrics/66556_verse.lab",
+        "39b40955ae7181243d0a608b58d97bfd"
+      ]
+    },
+    "66557_chorus": {
+      "audio": [
+        "Wavfile/66557_chorus.wav",
+        "cb56d1a5c510b6086c938e0dfc4049ad"
+      ],
+      "pitch": [
+        "PitchLabel/66557_chorus.pv",
+        "58ea683c01971771d439ba43f844436d"
+      ],
+      "lyrics": [
+        "Lyrics/66557_chorus.lab",
+        "c765d2d6c0ea939e14da0e070edb8143"
+      ]
+    },
+    "66558_verse": {
+      "audio": [
+        "Wavfile/66558_verse.wav",
+        "830aee3a0ecd44b8d1443323cd908408"
+      ],
+      "pitch": [
+        "PitchLabel/66558_verse.pv",
+        "e22b42d292d7f81eb7ab830217c8cdb4"
+      ],
+      "lyrics": [
+        "Lyrics/66558_verse.lab",
+        "b7d1da8b82bc700b328b0c1187b90a17"
+      ]
+    },
+    "66559_chorus": {
+      "audio": [
+        "Wavfile/66559_chorus.wav",
+        "f2a63a615ddf92131858a1b3232022b3"
+      ],
+      "pitch": [
+        "PitchLabel/66559_chorus.pv",
+        "bcd1d8849931535d14f9170f0c4a1202"
+      ],
+      "lyrics": [
+        "Lyrics/66559_chorus.lab",
+        "6bff040586f834f6ecbe8e5fc5c398ab"
+      ]
+    },
+    "66559_verse": {
+      "audio": [
+        "Wavfile/66559_verse.wav",
+        "090e839e60a994dd0397cfd27d3af371"
+      ],
+      "pitch": [
+        "PitchLabel/66559_verse.pv",
+        "f66a20f2c563f2858aa47d2d010a4ef5"
+      ],
+      "lyrics": [
+        "Lyrics/66559_verse.lab",
+        "fd13c94a73472f881a1c4c01d15385f0"
+      ]
+    },
+    "66560_verse": {
+      "audio": [
+        "Wavfile/66560_verse.wav",
+        "d3a827702707f7f58c562bc8b1f06687"
+      ],
+      "pitch": [
+        "PitchLabel/66560_verse.pv",
+        "959d042c1ee2f667f3d9326d70b2624d"
+      ],
+      "lyrics": [
+        "Lyrics/66560_verse.lab",
+        "5d43175f6094bf7c59b393c0179800f3"
+      ]
+    },
+    "66561_chorus": {
+      "audio": [
+        "Wavfile/66561_chorus.wav",
+        "ee193b514b91590f56e233173ac70e94"
+      ],
+      "pitch": [
+        "PitchLabel/66561_chorus.pv",
+        "1a61fbc01894141c2706e9d0658b7484"
+      ],
+      "lyrics": [
+        "Lyrics/66561_chorus.lab",
+        "e147564c182d3408181963baeaa3a39c"
+      ]
+    },
+    "66563_chorus": {
+      "audio": [
+        "Wavfile/66563_chorus.wav",
+        "66ae4d02786c27b4bf96a3bedd23c598"
+      ],
+      "pitch": [
+        "PitchLabel/66563_chorus.pv",
+        "463af509adce88b4e6bde158cbd08b3f"
+      ],
+      "lyrics": [
+        "Lyrics/66563_chorus.lab",
+        "d677aef5f0924a5e274c2292b6b096ff"
+      ]
+    },
+    "66563_verse": {
+      "audio": [
+        "Wavfile/66563_verse.wav",
+        "ead540636b5803e58d5f1e0cf29bba29"
+      ],
+      "pitch": [
+        "PitchLabel/66563_verse.pv",
+        "3885ef342bc7d626681eef39397a7f89"
+      ],
+      "lyrics": [
+        "Lyrics/66563_verse.lab",
+        "d48dd3a5caf6173bf691203942d963a4"
+      ]
+    },
+    "66564_verse": {
+      "audio": [
+        "Wavfile/66564_verse.wav",
+        "91a6307983db6384850d9eeaf8a2a84d"
+      ],
+      "pitch": [
+        "PitchLabel/66564_verse.pv",
+        "7fab1a9a9ac509642d1f9b9bac042904"
+      ],
+      "lyrics": [
+        "Lyrics/66564_verse.lab",
+        "10ed911c8a1642d70628453a080d6a17"
+      ]
+    },
+    "66565_verse": {
+      "audio": [
+        "Wavfile/66565_verse.wav",
+        "5b0eb16216e929bc8e37a4c3d84fa861"
+      ],
+      "pitch": [
+        "PitchLabel/66565_verse.pv",
+        "c3020a9f42b3f5b8ca8f5e8650d97218"
+      ],
+      "lyrics": [
+        "Lyrics/66565_verse.lab",
+        "95934d763fff7b24782c6690d24aeb6c"
+      ]
+    },
+    "66566_verse": {
+      "audio": [
+        "Wavfile/66566_verse.wav",
+        "0abce980a9ec97fd81c2b4eaf3e4255b"
+      ],
+      "pitch": [
+        "PitchLabel/66566_verse.pv",
+        "7941dcef8d37eb7b46068ad83c20a076"
+      ],
+      "lyrics": [
+        "Lyrics/66566_verse.lab",
+        "9493820aae8fb97353edb21886061cf4"
+      ]
+    },
+    "71706_verse": {
+      "audio": [
+        "Wavfile/71706_verse.wav",
+        "ff6f507a858c490e1945b8b246eb5f56"
+      ],
+      "pitch": [
+        "PitchLabel/71706_verse.pv",
+        "ed937930ccd008e64957554ae4d131d9"
+      ],
+      "lyrics": [
+        "Lyrics/71706_verse.lab",
+        "e06e884efe7d9141bb1422de35f8b2a4"
+      ]
+    },
+    "71710_chorus": {
+      "audio": [
+        "Wavfile/71710_chorus.wav",
+        "676bcf695336d3f136df194d90223294"
+      ],
+      "pitch": [
+        "PitchLabel/71710_chorus.pv",
+        "7397d308e3a140c20e749667e6cbd6e4"
+      ],
+      "lyrics": [
+        "Lyrics/71710_chorus.lab",
+        "ab36f209f48a8c12994b19b747e4f45b"
+      ]
+    },
+    "71710_verse": {
+      "audio": [
+        "Wavfile/71710_verse.wav",
+        "17f01d2ab13345caedd5074221faf8ed"
+      ],
+      "pitch": [
+        "PitchLabel/71710_verse.pv",
+        "b482f29177a8900f7e5edfae6a78ce83"
+      ],
+      "lyrics": [
+        "Lyrics/71710_verse.lab",
+        "3f029ae15403303905504a294a183dec"
+      ]
+    },
+    "71711_chorus": {
+      "audio": [
+        "Wavfile/71711_chorus.wav",
+        "cd19dd57ac514d9d58855304317e9a4a"
+      ],
+      "pitch": [
+        "PitchLabel/71711_chorus.pv",
+        "d02324d587333d04fdcf5a9dbf716b4b"
+      ],
+      "lyrics": [
+        "Lyrics/71711_chorus.lab",
+        "051dcc7bc8ac4ce27f872d22c770db34"
+      ]
+    },
+    "71711_verse": {
+      "audio": [
+        "Wavfile/71711_verse.wav",
+        "48d2352a148dbbdc95130061940605c8"
+      ],
+      "pitch": [
+        "PitchLabel/71711_verse.pv",
+        "21e7aa1c3b89514247ef4f310b56f485"
+      ],
+      "lyrics": [
+        "Lyrics/71711_verse.lab",
+        "c45e0cdb3a138e9b43fd1de8683d1879"
+      ]
+    },
+    "71712_verse": {
+      "audio": [
+        "Wavfile/71712_verse.wav",
+        "f2c29428626b0d97cfb33183f00d6378"
+      ],
+      "pitch": [
+        "PitchLabel/71712_verse.pv",
+        "5583864c1be311309fe3b2c96ddd5218"
+      ],
+      "lyrics": [
+        "Lyrics/71712_verse.lab",
+        "19b90f5b21dc54a40769176d4251cdd2"
+      ]
+    },
+    "71716_chorus": {
+      "audio": [
+        "Wavfile/71716_chorus.wav",
+        "5748c35b07268cfbfff8761c1f04b8ef"
+      ],
+      "pitch": [
+        "PitchLabel/71716_chorus.pv",
+        "3a04f1f9838f3a2dc2f1c785f4c41b77"
+      ],
+      "lyrics": [
+        "Lyrics/71716_chorus.lab",
+        "68d1cda48c5877a3f5afd4c065d7b72e"
+      ]
+    },
+    "71719_chorus": {
+      "audio": [
+        "Wavfile/71719_chorus.wav",
+        "b7837be8b1010bfdcea747016905702b"
+      ],
+      "pitch": [
+        "PitchLabel/71719_chorus.pv",
+        "6fefcdd93fa28905af9d78eb240dc4c2"
+      ],
+      "lyrics": [
+        "Lyrics/71719_chorus.lab",
+        "56e776119df0038fb653cd63a1553c8c"
+      ]
+    },
+    "71719_verse": {
+      "audio": [
+        "Wavfile/71719_verse.wav",
+        "976fd7af57aff62c17c6bd6fc3019980"
+      ],
+      "pitch": [
+        "PitchLabel/71719_verse.pv",
+        "17913bc1cd6263f10dce2742b3fdd4b5"
+      ],
+      "lyrics": [
+        "Lyrics/71719_verse.lab",
+        "2cefe52a3fb52b5f984745c2ca4f730e"
+      ]
+    },
+    "71720_chorus": {
+      "audio": [
+        "Wavfile/71720_chorus.wav",
+        "7680c9ebc65a663ff1c27cdd858df625"
+      ],
+      "pitch": [
+        "PitchLabel/71720_chorus.pv",
+        "05c06f33fc99934a7f7224f9e888ba4e"
+      ],
+      "lyrics": [
+        "Lyrics/71720_chorus.lab",
+        "9f11dfbce71b4c648c560de0db06a220"
+      ]
+    },
+    "71720_verse": {
+      "audio": [
+        "Wavfile/71720_verse.wav",
+        "bd38244ba764778424c9bfbe1b3573e7"
+      ],
+      "pitch": [
+        "PitchLabel/71720_verse.pv",
+        "2b330e0762b1ed12e25b0cd8461fe6f6"
+      ],
+      "lyrics": [
+        "Lyrics/71720_verse.lab",
+        "00f0f9041d19abae4a331fa4db68c111"
+      ]
+    },
+    "71723_verse": {
+      "audio": [
+        "Wavfile/71723_verse.wav",
+        "bfd4a85110aa12d0fbb946f8f5365e50"
+      ],
+      "pitch": [
+        "PitchLabel/71723_verse.pv",
+        "bfe2ae313ce5d1d95e9372fe0ac7e4a2"
+      ],
+      "lyrics": [
+        "Lyrics/71723_verse.lab",
+        "9c081a07e85a095c5fb6cd13fa60c94e"
+      ]
+    },
+    "71726_chorus": {
+      "audio": [
+        "Wavfile/71726_chorus.wav",
+        "65148b8c1d3236ec82113262d9d2d86c"
+      ],
+      "pitch": [
+        "PitchLabel/71726_chorus.pv",
+        "d8ba755ab4c438e9410037969f31b9a3"
+      ],
+      "lyrics": [
+        "Lyrics/71726_chorus.lab",
+        "d422edc55bddd04cbe834b80f0616d42"
+      ]
+    },
+    "80612_verse": {
+      "audio": [
+        "Wavfile/80612_verse.wav",
+        "c44befad7d31a98dc8641168fce2e6bd"
+      ],
+      "pitch": [
+        "PitchLabel/80612_verse.pv",
+        "1df8aba2e21492be951eb877c150d377"
+      ],
+      "lyrics": [
+        "Lyrics/80612_verse.lab",
+        "f1511cf760af267de3ec3c3dd35f05a4"
+      ]
+    },
+    "80614_verse": {
+      "audio": [
+        "Wavfile/80614_verse.wav",
+        "f55be3fe59014eb37a342af8102cd5e4"
+      ],
+      "pitch": [
+        "PitchLabel/80614_verse.pv",
+        "403722e4c5ace4e221dfafbfcaa55a93"
+      ],
+      "lyrics": [
+        "Lyrics/80614_verse.lab",
+        "8544729bb71866dd9474e8a9383c2d88"
+      ]
+    },
+    "80616_verse": {
+      "audio": [
+        "Wavfile/80616_verse.wav",
+        "925c9129d1a9384e981d537531b71978"
+      ],
+      "pitch": [
+        "PitchLabel/80616_verse.pv",
+        "fc9aebccff3b450721692707229c2394"
+      ],
+      "lyrics": [
+        "Lyrics/80616_verse.lab",
+        "7d2ae88b2767c8c34c2f532dd06c8e2e"
+      ]
+    },
+    "90586_chorus": {
+      "audio": [
+        "Wavfile/90586_chorus.wav",
+        "7f5cc4d2b9d926370ad9ea8baa0ee5ab"
+      ],
+      "pitch": [
+        "PitchLabel/90586_chorus.pv",
+        "807c9230a34d912a32499eb69064573b"
+      ],
+      "lyrics": [
+        "Lyrics/90586_chorus.lab",
+        "10b1a33fee6f62ba49efa6234d47d0bd"
+      ]
+    },
+    "90586_verse": {
+      "audio": [
+        "Wavfile/90586_verse.wav",
+        "7ab6184e630c3c72dd207f1c5de5ce43"
+      ],
+      "pitch": [
+        "PitchLabel/90586_verse.pv",
+        "e59f3af2b29cea5aab14f05e2b2d735f"
+      ],
+      "lyrics": [
+        "Lyrics/90586_verse.lab",
+        "4a1e122df010e7ecdd90bb3e715c20d7"
+      ]
+    },
+    "90587_verse": {
+      "audio": [
+        "Wavfile/90587_verse.wav",
+        "335173766f679e93ce8d8348c0978541"
+      ],
+      "pitch": [
+        "PitchLabel/90587_verse.pv",
+        "c676911d322799455c54df6762624f70"
+      ],
+      "lyrics": [
+        "Lyrics/90587_verse.lab",
+        "e408be95bf056c24d2da514c3bb26a95"
+      ]
+    }
+  },
+  "metadata": {
+    "id_mapping": [
+      "id_mapping.txt",
+      "81097b587804ce93e56c7a331ba06abc"
+    ]
+  }
+}

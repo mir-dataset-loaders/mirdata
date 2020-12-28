@@ -1,0 +1,711 @@
+{
+  "version": null,
+  "tracks": {
+    "RM-J001": {
+      "audio": [
+        "audio/rwc-j-m01/1.wav",
+        "d0abb6efd3b641cef0cc9686347149f6"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J001.CHORUS.TXT",
+        "fcad710d74c2430d4a19373d36d94e98"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J001.BEAT.TXT",
+        "45c96d9a317a36c1d850317cf09c13fa"
+      ]
+    },
+    "RM-J002": {
+      "audio": [
+        "audio/rwc-j-m01/2.wav",
+        "66cecb247193b6fd2322d7a906818d1e"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J002.CHORUS.TXT",
+        "20049a7a03ba7d4fef0537d1809b4ed1"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J002.BEAT.TXT",
+        "5b3df7660195d533c9ed03aad02e47a3"
+      ]
+    },
+    "RM-J003": {
+      "audio": [
+        "audio/rwc-j-m01/3.wav",
+        "9393c309a8df98bf628188557b04a4a7"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J003.CHORUS.TXT",
+        "802017e8e96f37f14d9d42e5c137ddb0"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J003.BEAT.TXT",
+        "8bdf191f809ee616b725854a3997205d"
+      ]
+    },
+    "RM-J004": {
+      "audio": [
+        "audio/rwc-j-m01/4.wav",
+        "7887ad17b7e4dcad9aa4605482e36cfa"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT",
+        "59cd67199cce9da16283b85338e5a9af"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT",
+        "f3159206ae2f0aa86901248148f4021f"
+      ]
+    },
+    "RM-J005": {
+      "audio": [
+        "audio/rwc-j-m01/5.wav",
+        "33b0db9098a5c01f980ccdc38a8b6236"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J005.CHORUS.TXT",
+        "d2810e74802a0b4c658ac0c325417419"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J005.BEAT.TXT",
+        "741992e416f07d4c4f2f40b9f8401c3f"
+      ]
+    },
+    "RM-J006": {
+      "audio": [
+        "audio/rwc-j-m01/6.wav",
+        "3a0ffe4d74e553fad06ece1999cb7b4a"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J006.CHORUS.TXT",
+        "103b5483482c81b9be705857bcf4de22"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J006.BEAT.TXT",
+        "551feabdf4dac3a6c8faa26a69554683"
+      ]
+    },
+    "RM-J007": {
+      "audio": [
+        "audio/rwc-j-m01/7.wav",
+        "f69f6ffe42880dedcf57809f39215780"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J007.CHORUS.TXT",
+        "96018ae390b44103dc9d5d7a12276828"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J007.BEAT.TXT",
+        "018fc0efc9bad606566b6b55cf894b18"
+      ]
+    },
+    "RM-J008": {
+      "audio": [
+        "audio/rwc-j-m01/8.wav",
+        "3762c558d8b8d14e79cf58e752bc9e3a"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J008.CHORUS.TXT",
+        "cd74ac976915cd198bf7645ffa483d9e"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J008.BEAT.TXT",
+        "54818cebc65975e0c138995e9369db67"
+      ]
+    },
+    "RM-J009": {
+      "audio": [
+        "audio/rwc-j-m01/9.wav",
+        "0cba9ba9bf5f78095162388f6d38a5a4"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J009.CHORUS.TXT",
+        "ebed8b008eb13aa4bca922b6401afd49"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J009.BEAT.TXT",
+        "6e4d2eb500ae70292c561f4aba6237e1"
+      ]
+    },
+    "RM-J010": {
+      "audio": [
+        "audio/rwc-j-m01/10.wav",
+        "3f20dbaa8f0d9824f76e1686ffe965e6"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J010.CHORUS.TXT",
+        "faea4ea832e3e60d8bd650f6c6d11b20"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J010.BEAT.TXT",
+        "b940c217691aec93b26c9e02fb0d8dfc"
+      ]
+    },
+    "RM-J011": {
+      "audio": [
+        "audio/rwc-j-m01/11.wav",
+        "73cc82d22c021948b5166cc8401382c3"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J011.CHORUS.TXT",
+        "a7726e7a6289ce566e2e6fd123ac2891"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J011.BEAT.TXT",
+        "e2205c5406dc162a6db2329b7980cba1"
+      ]
+    },
+    "RM-J012": {
+      "audio": [
+        "audio/rwc-j-m01/12.wav",
+        "a334774acb59548738b78536aaae5180"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J012.CHORUS.TXT",
+        "87411fcb8d8563673a577530280b9645"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J012.BEAT.TXT",
+        "8dc4e76f7a52fff2fb1f21da01b62bd1"
+      ]
+    },
+    "RM-J013": {
+      "audio": [
+        "audio/rwc-j-m01/13.wav",
+        "eb187fcf258436f87b999ef3493d43a0"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J013.CHORUS.TXT",
+        "13d6ad0e7043a427801e088c8a90c5e3"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J013.BEAT.TXT",
+        "eb1f0ffc093a386e91b3e8b758264049"
+      ]
+    },
+    "RM-J014": {
+      "audio": [
+        "audio/rwc-j-m01/14.wav",
+        "29b618f7982061ac7b3ea89a596c0efb"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J014.CHORUS.TXT",
+        "164c7558cbda561513d0407cdea79705"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J014.BEAT.TXT",
+        "66c2abb4aa490faf58d78e63af3cf1b8"
+      ]
+    },
+    "RM-J015": {
+      "audio": [
+        "audio/rwc-j-m01/15.wav",
+        "f13c96823ca8433ac98ba8348245b47a"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J015.CHORUS.TXT",
+        "8fbfdec0eeb09c3d93774a7e22693fb5"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J015.BEAT.TXT",
+        "d44dccaaeeafb3e6eee2a7495da76b2c"
+      ]
+    },
+    "RM-J016": {
+      "audio": [
+        "audio/rwc-j-m02/1.wav",
+        "a148a0f9fc8a797b306195cbc1855832"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J016.CHORUS.TXT",
+        "9ac3a4c0e3cc7507e5f5d753528ec811"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J016.BEAT.TXT",
+        "b607ba1b47235c32c732bdfe9ac4735c"
+      ]
+    },
+    "RM-J017": {
+      "audio": [
+        "audio/rwc-j-m02/2.wav",
+        "a00fc218f065166602403e0110168b8a"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J017.CHORUS.TXT",
+        "cdf05851f18ab617810ebc5dee47f494"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J017.BEAT.TXT",
+        "5ce5b967f6968a7e1a48a653a51dde32"
+      ]
+    },
+    "RM-J018": {
+      "audio": [
+        "audio/rwc-j-m02/3.wav",
+        "b416f2f978ead70f28f39d362d136009"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J018.CHORUS.TXT",
+        "0e809a5ce9388186f7c6be9858765fa5"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J018.BEAT.TXT",
+        "72b903b9fbee0a30124ce28e6b9e1670"
+      ]
+    },
+    "RM-J019": {
+      "audio": [
+        "audio/rwc-j-m02/4.wav",
+        "5657a24ca786f040efc8dbcd9be2950e"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J019.CHORUS.TXT",
+        "2c60c23878d5b7b741430047d1610a63"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J019.BEAT.TXT",
+        "302d89b658b911fc429f1713904528fc"
+      ]
+    },
+    "RM-J020": {
+      "audio": [
+        "audio/rwc-j-m02/5.wav",
+        "7c175e2fd54bcb7dcff433b9fb36d264"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J020.CHORUS.TXT",
+        "fe754a43ea9dbdcf6b9391f8a66b705f"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J020.BEAT.TXT",
+        "f086ea215a05a85ad0b93995840291bd"
+      ]
+    },
+    "RM-J021": {
+      "audio": [
+        "audio/rwc-j-m02/6.wav",
+        "0ca87e4c4d536c938edc0503bcf63824"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J021.CHORUS.TXT",
+        "dbceb3947c5b248351cfef0b01c57ac8"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J021.BEAT.TXT",
+        "eee849338c1ecff03fcf2b28fa78015f"
+      ]
+    },
+    "RM-J022": {
+      "audio": [
+        "audio/rwc-j-m02/7.wav",
+        "f8f2dc55a412c60118917aff42778aec"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J022.CHORUS.TXT",
+        "23c65bc61cf660b9ee95297b61a48d83"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J022.BEAT.TXT",
+        "d31406466b1995f44f96a2b11b0d1a0f"
+      ]
+    },
+    "RM-J023": {
+      "audio": [
+        "audio/rwc-j-m02/8.wav",
+        "16f61bd4b86c85083497f81dfa85062c"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J023.CHORUS.TXT",
+        "c6c206fcd6834b1cad8cd430d7165f52"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J023.BEAT.TXT",
+        "25962adec5b32c035688cb0af688178e"
+      ]
+    },
+    "RM-J024": {
+      "audio": [
+        "audio/rwc-j-m02/9.wav",
+        "7262bb1fc05346e12524fd3b09b6bc7a"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J024.CHORUS.TXT",
+        "217b1720f6afc1ef7c2b969b0cb66247"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J024.BEAT.TXT",
+        "62216249bd8e20fb01e042958bacf379"
+      ]
+    },
+    "RM-J025": {
+      "audio": [
+        "audio/rwc-j-m02/10.wav",
+        "2b2b23d18060b2040ca1902468e1c1d5"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J025.CHORUS.TXT",
+        "72d56471a6f6fa808afcec5a14edb741"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J025.BEAT.TXT",
+        "2b60831b9dc7d88c59089727ec5a4e52"
+      ]
+    },
+    "RM-J026": {
+      "audio": [
+        "audio/rwc-j-m03/1.wav",
+        "c60eabbf465a8530dec8a67230369bdd"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J026.CHORUS.TXT",
+        "8c11afbb57c8a08c47122606bd12ad49"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J026.BEAT.TXT",
+        "fde5d30a9a6acaefde407b3e63b22e08"
+      ]
+    },
+    "RM-J027": {
+      "audio": [
+        "audio/rwc-j-m03/2.wav",
+        "0b71d9420a28a45f0ac2df9b3f310c14"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J027.CHORUS.TXT",
+        "b114cc0ba61a6d22374fb5d39e8ea862"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J027.BEAT.TXT",
+        "28e10802c341053c29554381da6092f1"
+      ]
+    },
+    "RM-J028": {
+      "audio": [
+        "audio/rwc-j-m03/3.wav",
+        "68c6efcec7be866db658099ef7372f15"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J028.CHORUS.TXT",
+        "b21c4f4fbedcee9dd8e8e6bae76d7ce3"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J028.BEAT.TXT",
+        "eb1692b13df5d7b6210d2653d6c95513"
+      ]
+    },
+    "RM-J029": {
+      "audio": [
+        "audio/rwc-j-m03/4.wav",
+        "d67ca95a9db6efc5c7f0905ee5cecea5"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J029.CHORUS.TXT",
+        "b33a3aa8760c1d9961b8bfa934003cc6"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J029.BEAT.TXT",
+        "084d67bab542ea391f6066675fa3466c"
+      ]
+    },
+    "RM-J030": {
+      "audio": [
+        "audio/rwc-j-m03/5.wav",
+        "d89cc9b7dce3cac61946d138a63d6048"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J030.CHORUS.TXT",
+        "dd81ebc6edce04752ee3afcbded925f1"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J030.BEAT.TXT",
+        "d6746ea4f0564409ac2dc08d9de51166"
+      ]
+    },
+    "RM-J031": {
+      "audio": [
+        "audio/rwc-j-m03/6.wav",
+        "349788c1af10b637a2d320a0ec4b39c3"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J031.CHORUS.TXT",
+        "8a886ef7d8aa7794105975502f809ee0"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J031.BEAT.TXT",
+        "9cef9508bf4d7136fc3e6a9168a571c2"
+      ]
+    },
+    "RM-J032": {
+      "audio": [
+        "audio/rwc-j-m03/7.wav",
+        "b812306d314ee79f114ba6951906b2ce"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J032.CHORUS.TXT",
+        "76999ec0848aa46a626c2ccb8eb7400f"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J032.BEAT.TXT",
+        "993dd91716333f1c7ecec6d3707d1f47"
+      ]
+    },
+    "RM-J033": {
+      "audio": [
+        "audio/rwc-j-m03/8.wav",
+        "dbaa91df1614df3a5d0c7c5cad5d9baf"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J033.CHORUS.TXT",
+        "d903f3f2571ee93f5bd107c852867401"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J033.BEAT.TXT",
+        "c0b732afa612c8da49a57d14f2908db6"
+      ]
+    },
+    "RM-J034": {
+      "audio": [
+        "audio/rwc-j-m03/9.wav",
+        "9eb8586af56c6d17014d0f7e31f9358e"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J034.CHORUS.TXT",
+        "fd33681458fe815f1a1406a8ce8d3052"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J034.BEAT.TXT",
+        "955f44b923be7df6266b2d8e0885933e"
+      ]
+    },
+    "RM-J035": {
+      "audio": [
+        "audio/rwc-j-m03/10.wav",
+        "276869bd2346acec6e6f634edc52a906"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J035.CHORUS.TXT",
+        "bb5113f6d520cd45c0e1074a3da714d3"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J035.BEAT.TXT",
+        "a3146f8428a667442779bb1142effafc"
+      ]
+    },
+    "RM-J036": {
+      "audio": [
+        "audio/rwc-j-m04/1.wav",
+        "99deec2b04fffc202c09a38e88b68273"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J036.CHORUS.TXT",
+        "ef305637a41c9169ede94fc92fdffade"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J036.BEAT.TXT",
+        "bf68144b127bdd757a2338ccc96b7b63"
+      ]
+    },
+    "RM-J037": {
+      "audio": [
+        "audio/rwc-j-m04/2.wav",
+        "ef1284723d9ad70868df9b0774aff6e9"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J037.CHORUS.TXT",
+        "ad827c79994d13f0e525f7a4a3f84f61"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J037.BEAT.TXT",
+        "b9d73cad7a228b03a68b6a24fb592fa2"
+      ]
+    },
+    "RM-J038": {
+      "audio": [
+        "audio/rwc-j-m04/3.wav",
+        "b3b919c0418f69fc6a908b64a10e31d0"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J038.CHORUS.TXT",
+        "7a03d05804febe952cc73f88774cce51"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J038.BEAT.TXT",
+        "a277115e6ee3bf9db7d8bf5fd0a3d1c9"
+      ]
+    },
+    "RM-J039": {
+      "audio": [
+        "audio/rwc-j-m04/4.wav",
+        "49357be91cd142cdb725377e86621997"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J039.CHORUS.TXT",
+        "db8ab8893d577ae156d8caec40d33022"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J039.BEAT.TXT",
+        "5d1b59280af693fddb16b394be175040"
+      ]
+    },
+    "RM-J040": {
+      "audio": [
+        "audio/rwc-j-m04/5.wav",
+        "78abd5170196ac353d94dd5d3a4a32dc"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J040.CHORUS.TXT",
+        "4bbe7ef73f13cf6c32827e5c5867fb02"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J040.BEAT.TXT",
+        "19dda5a0c3110ef8da56935c1b64877a"
+      ]
+    },
+    "RM-J041": {
+      "audio": [
+        "audio/rwc-j-m04/6.wav",
+        "16616c9f475ee5d40c32270862c04ab8"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J041.CHORUS.TXT",
+        "ee72a21ece215b653de09de58af63bc0"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J041.BEAT.TXT",
+        "5367ad0812e72c137eef7b156f63f987"
+      ]
+    },
+    "RM-J042": {
+      "audio": [
+        "audio/rwc-j-m04/7.wav",
+        "7f5dfe241916a982cb79b83b2baf13f7"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J042.CHORUS.TXT",
+        "c8c55994817c47ad9d40b2d66aa1da86"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J042.BEAT.TXT",
+        "92ec9bce5a6f8b81bc6ca06c2724afd7"
+      ]
+    },
+    "RM-J043": {
+      "audio": [
+        "audio/rwc-j-m04/8.wav",
+        "dc19ebeb42de48f436543ff9551eeca7"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J043.CHORUS.TXT",
+        "24e2d780763a696a1a118777a3e3bcf0"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J043.BEAT.TXT",
+        "79e65eb7d53ff88307ae586bb3a3c176"
+      ]
+    },
+    "RM-J044": {
+      "audio": [
+        "audio/rwc-j-m04/9.wav",
+        "334cbac653b7d19f3ee0277d1023cd51"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J044.CHORUS.TXT",
+        "adbb8026a66b53bd08a0dc031655fe2b"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J044.BEAT.TXT",
+        "b37fab4ad12c430d931a26748383f069"
+      ]
+    },
+    "RM-J045": {
+      "audio": [
+        "audio/rwc-j-m04/10.wav",
+        "f5d1b6cc9be55da6114c79a6fdffe2bb"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J045.CHORUS.TXT",
+        "0904c43a0cb49c6661ad8a5c84162519"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J045.BEAT.TXT",
+        "758c0c1dcb2f5d0e901182ca2a4d604f"
+      ]
+    },
+    "RM-J046": {
+      "audio": [
+        "audio/rwc-j-m04/11.wav",
+        "52a099e1076822add6e6d3b1721bc747"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J046.CHORUS.TXT",
+        "95be31d31c526992ee284587ab8c75b9"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J046.BEAT.TXT",
+        "15031c4780c055d27c00ecb7e3713cfb"
+      ]
+    },
+    "RM-J047": {
+      "audio": [
+        "audio/rwc-j-m04/12.wav",
+        "2c3e34783cf38301a2192f88a34b651b"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J047.CHORUS.TXT",
+        "f7c1caf9878956bedc4e81b19c49e3e4"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J047.BEAT.TXT",
+        "077a1d811385be9ac4b5b5b6c9c8d431"
+      ]
+    },
+    "RM-J048": {
+      "audio": [
+        "audio/rwc-j-m04/13.wav",
+        "291bf97d25498c2c012b1613d3378025"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J048.CHORUS.TXT",
+        "aed0f8c9dff6557eeba26ecb8a231186"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J048.BEAT.TXT",
+        "6ee0b4dac48f8ecc1fbef2b54d122082"
+      ]
+    },
+    "RM-J049": {
+      "audio": [
+        "audio/rwc-j-m04/14.wav",
+        "fa933899a412a058b391c5585fb3eaa4"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J049.CHORUS.TXT",
+        "0f5ed63a0e69fbc650876b0243a6d9b8"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J049.BEAT.TXT",
+        "78431adbb64f2dd035c5a7dc13b94520"
+      ]
+    },
+    "RM-J050": {
+      "audio": [
+        "audio/rwc-j-m04/15.wav",
+        "86d178920586814f5f79d125032e31bd"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J050.CHORUS.TXT",
+        "2fd94e3988791ceb76ce8f40d1db7034"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J050.BEAT.TXT",
+        "95e8f77911f94d9beb26fc8fedbcfd7e"
+      ]
+    }
+  },
+  "metadata": {
+    "rwc-j": [
+      "metadata-master/rwc-j.csv",
+      "7850791b1833b1e4943bb47989d20d55"
+    ]
+  }
+}

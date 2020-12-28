@@ -1,160 +1,240 @@
 .. _api:
 
-API documentation
-=================
-
-.. toctree::
-   :maxdepth: 2
-
-
-.. automodule:: mirdata
-   :members:
 
 Dataset Loaders
 ---------------
 
-mirdata.beatles
-^^^^^^^^^^^^^^^
+acousticbrainz_genre
+^^^^^^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.beatles
+.. automodule:: mirdata.datasets.acousticbrainz_genre
    :members:
-   
-mirdata.beatport_key
-^^^^^^^^^^^^^^^
+   :inherited-members:
 
-.. automodule:: mirdata.beatport_key
+beatles
+^^^^^^^
+
+.. automodule:: mirdata.datasets.beatles
    :members:
+   :inherited-members:
 
-mirdata.dali
+
+beatport_key
 ^^^^^^^^^^^^
 
-.. automodule:: mirdata.dali
+.. automodule:: mirdata.datasets.beatport_key
    :members:
+   :inherited-members:
 
 
+cante100
+^^^^^^^^
 
-mirdata.giantsteps_tempo
-^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.giantsteps_tempo
-
-
-
-
-mirdata.giantsteps_key
-^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.giantsteps_key
+.. automodule:: mirdata.datasets.cante100
    :members:
+   :inherited-members:
 
 
-mirdata.groove_midi
-^^^^^^^^^^^^^^^^^^^
+dali
+^^^^
 
-.. automodule:: mirdata.groove_midi
+.. automodule:: mirdata.datasets.dali
    :members:
+   :inherited-members:
 
 
-mirdata.gtzan_genre
-^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.gtzan_genre
-   :members:
-
-
-mirdata.guitarset
-^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.guitarset
-   :members:
-
-
-mirdata.ikala
-^^^^^^^^^^^^^
-
-.. automodule:: mirdata.ikala
-   :members:
-
-
-mirdata.maestro
-^^^^^^^^^^^^^
-
-.. automodule:: mirdata.maestro
-   :members:
-
-
-mirdata.medleydb\_melody
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.medleydb_melody
-   :members:
-
-mirdata.medleydb\_pitch
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.medleydb_pitch
-   :members:
-
-
-mirdata.medley_solos_db
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.medley_solos_db
-   :members:
-
-
-mirdata.orchset
-^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.orchset
-   :members:
-
-mirdata.rwc_classical
-^^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.rwc_classical
-   :members:
-
-mirdata.rwc_jazz
+giantsteps_tempo
 ^^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.rwc_jazz
+.. automodule:: mirdata.datasets.giantsteps_tempo
    :members:
-
-mirdata.rwc_popular
-^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.rwc_popular
-   :members:
+   :inherited-members:
 
 
-mirdata.salami
+giantsteps_key
 ^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.salami
+.. automodule:: mirdata.datasets.giantsteps_key
    :members:
+   :inherited-members:
 
 
-mirdata.tinysol
+groove_midi
+^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.groove_midi
+   :members:
+   :inherited-members:
+
+
+gtzan_genre
+^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.gtzan_genre
+   :members:
+   :inherited-members:
+
+
+guitarset
+^^^^^^^^^
+
+.. automodule:: mirdata.datasets.guitarset
+   :members:
+   :inherited-members:
+
+
+ikala
+^^^^^
+
+.. automodule:: mirdata.datasets.ikala
+   :members:
+   :inherited-members:
+
+
+irmas
+^^^^^
+
+.. automodule:: mirdata.datasets.irmas
+   :members:
+   :inherited-members:
+
+
+maestro
+^^^^^^^
+
+.. automodule:: mirdata.datasets.maestro
+   :members:
+   :inherited-members:
+
+
+medleydb\_melody
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.medleydb_melody
+   :members:
+   :inherited-members:
+
+
+medleydb\_pitch
 ^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.tinysol
+.. automodule:: mirdata.datasets.medleydb_pitch
+   :members:
+   :inherited-members:
+
+
+medley_solos_db
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.medley_solos_db
+   :members:
+   :inherited-members:
+
+
+mridangam_stroke
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.mridangam_stroke
+   :members:
+   :inherited-members:
+
+
+orchset
+^^^^^^^
+
+.. automodule:: mirdata.datasets.orchset
+   :members:
+   :inherited-members:
+
+
+rwc_classical
+^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.rwc_classical
+   :members:
+   :inherited-members:
+
+
+rwc_jazz
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.rwc_jazz
+   :members:
+   :inherited-members:
+
+
+rwc_popular
+^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.rwc_popular
+   :members:
+   :inherited-members:
+
+
+salami
+^^^^^^
+
+.. automodule:: mirdata.datasets.salami
+   :members:
+   :inherited-members:
+
+
+saraga_carnatic
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.saraga_carnatic
+   :members:
+   :inherited-members:
+
+
+saraga_hindustani
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.saraga_hindustani
+   :members:
+   :inherited-members:
+
+
+tinysol
+^^^^^^^
+
+.. automodule:: mirdata.datasets.tinysol
+   :members:
+   :inherited-members:
+
+
+tonality_classicaldb
+^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.tonality_classicaldb
+   :members:
+   :inherited-members:
+
+
+Core
+----
+
+.. automodule:: mirdata.initialize
+   :members:
+
+.. automodule:: mirdata.core
    :members:
 
 
-Utilities
-----------
+Annotations
+-----------
 
-mirdata.track
-^^^^^^^^^^^^^
-
-.. automodule:: mirdata.track
+.. automodule:: mirdata.annotations
    :members:
 
-mirdata.utils
-^^^^^^^^^^^^^
 
-.. automodule:: mirdata.utils
+Advanced
+--------
+
+mirdata.validate
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.validate
    :members:
 
 
@@ -170,3 +250,5 @@ mirdata.jams_utils
 
 .. automodule:: mirdata.jams_utils
    :members:
+
+

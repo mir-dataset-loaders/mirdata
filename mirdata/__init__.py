@@ -1,26 +1,16 @@
 # -*- coding: utf-8 -*-
 
+import os
+import pkgutil
 
 from .version import version as __version__
 
-__all__ = [
-    'beatles',
-    'beatport_key',
-    'dali',
-    'giantsteps_tempo',
-    'giantsteps_key',
-    'groove_midi',
-    'gtzan_genre',
-    'guitarset',
-    'ikala',
-    'maestro',
-    'medley_solos_db',
-    'medleydb_melody',
-    'medleydb_pitch',
-    'orchset',
-    'rwc_classical',
-    'rwc_jazz',
-    'rwc_popular',
-    'salami',
-    'tinysol',
+
+DATASETS = [
+    d.name
+    for d in pkgutil.iter_modules(
+        [os.path.dirname(os.path.abspath(__file__)) + "/datasets"]
+    )
 ]
+
+from .initialize import initialize

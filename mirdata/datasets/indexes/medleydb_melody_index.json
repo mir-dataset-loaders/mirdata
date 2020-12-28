@@ -1,0 +1,1955 @@
+{
+  "version": "5.0",
+  "tracks": {
+    "AClassicEducation_NightOwl": {
+      "audio": [
+        "audio/AClassicEducation_NightOwl_MIX.wav",
+        "ea30856faa6c62d193f80dba6c5f1b22"
+      ],
+      "melody1": [
+        "melody1/AClassicEducation_NightOwl_MELODY1.csv",
+        "95675c3dd704c10bd2d7e2e8b628daf7"
+      ],
+      "melody2": [
+        "melody2/AClassicEducation_NightOwl_MELODY2.csv",
+        "adf56ed35486eca6ea277fe16c984cc0"
+      ],
+      "melody3": [
+        "melody3/AClassicEducation_NightOwl_MELODY3.csv",
+        "5db27e33167393bda5ec047586700a9b"
+      ]
+    },
+    "AimeeNorwich_Child": {
+      "audio": [
+        "audio/AimeeNorwich_Child_MIX.wav",
+        "d081a5674fb490905ae28309a06be640"
+      ],
+      "melody1": [
+        "melody1/AimeeNorwich_Child_MELODY1.csv",
+        "b46628e6460ec0feed62037854b6d587"
+      ],
+      "melody2": [
+        "melody2/AimeeNorwich_Child_MELODY2.csv",
+        "b46628e6460ec0feed62037854b6d587"
+      ],
+      "melody3": [
+        "melody3/AimeeNorwich_Child_MELODY3.csv",
+        "b46628e6460ec0feed62037854b6d587"
+      ]
+    },
+    "AimeeNorwich_Flying": {
+      "audio": [
+        "audio/AimeeNorwich_Flying_MIX.wav",
+        "e5f9338f7c0896e0513ae1112381e5bc"
+      ],
+      "melody1": [
+        "melody1/AimeeNorwich_Flying_MELODY1.csv",
+        "e89410c8fed7d44dc00f598e0d951a75"
+      ],
+      "melody2": [
+        "melody2/AimeeNorwich_Flying_MELODY2.csv",
+        "892c71c830d62cfef9e5c1435742e05e"
+      ],
+      "melody3": [
+        "melody3/AimeeNorwich_Flying_MELODY3.csv",
+        "40919dd33f48036d5b565bd874537409"
+      ]
+    },
+    "AlexanderRoss_GoodbyeBolero": {
+      "audio": [
+        "audio/AlexanderRoss_GoodbyeBolero_MIX.wav",
+        "1de5775bba6c12dfc74af24161a4e162"
+      ],
+      "melody1": [
+        "melody1/AlexanderRoss_GoodbyeBolero_MELODY1.csv",
+        "9a56d3972ef0c5eac7eca1703831dc40"
+      ],
+      "melody2": [
+        "melody2/AlexanderRoss_GoodbyeBolero_MELODY2.csv",
+        "10f55765f850b211ccb144c64d97f17a"
+      ],
+      "melody3": [
+        "melody3/AlexanderRoss_GoodbyeBolero_MELODY3.csv",
+        "c980c7f7365faab58971c723998dd838"
+      ]
+    },
+    "AlexanderRoss_VelvetCurtain": {
+      "audio": [
+        "audio/AlexanderRoss_VelvetCurtain_MIX.wav",
+        "b441efa863dfec43d9532753452e5d17"
+      ],
+      "melody1": [
+        "melody1/AlexanderRoss_VelvetCurtain_MELODY1.csv",
+        "d923d88d4dd21cdbeaa36303182c060c"
+      ],
+      "melody2": [
+        "melody2/AlexanderRoss_VelvetCurtain_MELODY2.csv",
+        "025fee8bce04df080a9da96ffd3e81cc"
+      ],
+      "melody3": [
+        "melody3/AlexanderRoss_VelvetCurtain_MELODY3.csv",
+        "41de3d6f3c24a978f809613fe80a6463"
+      ]
+    },
+    "AmarLal_Rest": {
+      "audio": [
+        "audio/AmarLal_Rest_MIX.wav",
+        "57d44d8c08502fb58fd40eef42be4f40"
+      ],
+      "melody1": [
+        "melody1/AmarLal_Rest_MELODY1.csv",
+        "a7e2e67af9e1d5aa6353c6775043f9df"
+      ],
+      "melody2": [
+        "melody2/AmarLal_Rest_MELODY2.csv",
+        "a7e2e67af9e1d5aa6353c6775043f9df"
+      ],
+      "melody3": [
+        "melody3/AmarLal_Rest_MELODY3.csv",
+        "a7e2e67af9e1d5aa6353c6775043f9df"
+      ]
+    },
+    "AmarLal_SpringDay1": {
+      "audio": [
+        "audio/AmarLal_SpringDay1_MIX.wav",
+        "108e7db7fedab30c506afb50f229b070"
+      ],
+      "melody1": [
+        "melody1/AmarLal_SpringDay1_MELODY1.csv",
+        "f2d81a822853a367ae440bedbfd73454"
+      ],
+      "melody2": [
+        "melody2/AmarLal_SpringDay1_MELODY2.csv",
+        "f2d81a822853a367ae440bedbfd73454"
+      ],
+      "melody3": [
+        "melody3/AmarLal_SpringDay1_MELODY3.csv",
+        "f2d81a822853a367ae440bedbfd73454"
+      ]
+    },
+    "Auctioneer_OurFutureFaces": {
+      "audio": [
+        "audio/Auctioneer_OurFutureFaces_MIX.wav",
+        "4d15db1d9e2af622d22a05398350bbc0"
+      ],
+      "melody1": [
+        "melody1/Auctioneer_OurFutureFaces_MELODY1.csv",
+        "b2daf409f89527de0a7e26c9362af440"
+      ],
+      "melody2": [
+        "melody2/Auctioneer_OurFutureFaces_MELODY2.csv",
+        "54e44a7b6238d00dcc37a8d02630b751"
+      ],
+      "melody3": [
+        "melody3/Auctioneer_OurFutureFaces_MELODY3.csv",
+        "28acbb6dc014d6d07019c23abf0c2a6c"
+      ]
+    },
+    "AvaLuna_Waterduct": {
+      "audio": [
+        "audio/AvaLuna_Waterduct_MIX.wav",
+        "b5144504e2a10dd65bb7ffa79d5192c2"
+      ],
+      "melody1": [
+        "melody1/AvaLuna_Waterduct_MELODY1.csv",
+        "964cd3e4546f56ab274a91c248e990d9"
+      ],
+      "melody2": [
+        "melody2/AvaLuna_Waterduct_MELODY2.csv",
+        "964cd3e4546f56ab274a91c248e990d9"
+      ],
+      "melody3": [
+        "melody3/AvaLuna_Waterduct_MELODY3.csv",
+        "964cd3e4546f56ab274a91c248e990d9"
+      ]
+    },
+    "BigTroubles_Phantom": {
+      "audio": [
+        "audio/BigTroubles_Phantom_MIX.wav",
+        "26b7a8597262377b11e1617bd72766d3"
+      ],
+      "melody1": [
+        "melody1/BigTroubles_Phantom_MELODY1.csv",
+        "e5982d60f81b87f841c855fd23b48721"
+      ],
+      "melody2": [
+        "melody2/BigTroubles_Phantom_MELODY2.csv",
+        "b372ae7e72a7e33da1412d13d6576125"
+      ],
+      "melody3": [
+        "melody3/BigTroubles_Phantom_MELODY3.csv",
+        "f93b566795e16bad7b3092f16f986a15"
+      ]
+    },
+    "BrandonWebster_DontHearAThing": {
+      "audio": [
+        "audio/BrandonWebster_DontHearAThing_MIX.wav",
+        "c3e9372d363691d514b23761c88fa3be"
+      ],
+      "melody1": [
+        "melody1/BrandonWebster_DontHearAThing_MELODY1.csv",
+        "9321aac8d1678f78e3351f8f5d8ab690"
+      ],
+      "melody2": [
+        "melody2/BrandonWebster_DontHearAThing_MELODY2.csv",
+        "9321aac8d1678f78e3351f8f5d8ab690"
+      ],
+      "melody3": [
+        "melody3/BrandonWebster_DontHearAThing_MELODY3.csv",
+        "9321aac8d1678f78e3351f8f5d8ab690"
+      ]
+    },
+    "BrandonWebster_YesSirICanFly": {
+      "audio": [
+        "audio/BrandonWebster_YesSirICanFly_MIX.wav",
+        "b0580eacf1a07bcff7516798d69ed512"
+      ],
+      "melody1": [
+        "melody1/BrandonWebster_YesSirICanFly_MELODY1.csv",
+        "b460a31b6900e160eca58d9de22ad921"
+      ],
+      "melody2": [
+        "melody2/BrandonWebster_YesSirICanFly_MELODY2.csv",
+        "b460a31b6900e160eca58d9de22ad921"
+      ],
+      "melody3": [
+        "melody3/BrandonWebster_YesSirICanFly_MELODY3.csv",
+        "b460a31b6900e160eca58d9de22ad921"
+      ]
+    },
+    "CelestialShore_DieForUs": {
+      "audio": [
+        "audio/CelestialShore_DieForUs_MIX.wav",
+        "7d86e7bea7a94fb804c77cc7a25815e1"
+      ],
+      "melody1": [
+        "melody1/CelestialShore_DieForUs_MELODY1.csv",
+        "e4b63111d55d9a5f79d81ed50b4d0280"
+      ],
+      "melody2": [
+        "melody2/CelestialShore_DieForUs_MELODY2.csv",
+        "09c9eb32374717c5b046032a4a1eee0b"
+      ],
+      "melody3": [
+        "melody3/CelestialShore_DieForUs_MELODY3.csv",
+        "db887d2872ace9fa8d0f4930b4e7d81d"
+      ]
+    },
+    "ChrisJacoby_BoothShotLincoln": {
+      "audio": [
+        "audio/ChrisJacoby_BoothShotLincoln_MIX.wav",
+        "2ab415e230253a3a0d172bd351bcb595"
+      ],
+      "melody1": [
+        "melody1/ChrisJacoby_BoothShotLincoln_MELODY1.csv",
+        "a9d21a1a59c68cf86fde44ae7475f464"
+      ],
+      "melody2": [
+        "melody2/ChrisJacoby_BoothShotLincoln_MELODY2.csv",
+        "a9d21a1a59c68cf86fde44ae7475f464"
+      ],
+      "melody3": [
+        "melody3/ChrisJacoby_BoothShotLincoln_MELODY3.csv",
+        "a9d21a1a59c68cf86fde44ae7475f464"
+      ]
+    },
+    "ChrisJacoby_PigsFoot": {
+      "audio": [
+        "audio/ChrisJacoby_PigsFoot_MIX.wav",
+        "eb6b1c5f53829c04ae61658176430e18"
+      ],
+      "melody1": [
+        "melody1/ChrisJacoby_PigsFoot_MELODY1.csv",
+        "777807c991a2dacf31aabadddacb4070"
+      ],
+      "melody2": [
+        "melody2/ChrisJacoby_PigsFoot_MELODY2.csv",
+        "777807c991a2dacf31aabadddacb4070"
+      ],
+      "melody3": [
+        "melody3/ChrisJacoby_PigsFoot_MELODY3.csv",
+        "777807c991a2dacf31aabadddacb4070"
+      ]
+    },
+    "ClaraBerryAndWooldog_AirTraffic": {
+      "audio": [
+        "audio/ClaraBerryAndWooldog_AirTraffic_MIX.wav",
+        "217a6bcc8e1c617ca326f0d07ed3306a"
+      ],
+      "melody1": [
+        "melody1/ClaraBerryAndWooldog_AirTraffic_MELODY1.csv",
+        "d8a6c0fcf6d58a61854557c00db5aeb8"
+      ],
+      "melody2": [
+        "melody2/ClaraBerryAndWooldog_AirTraffic_MELODY2.csv",
+        "9d37c3bdec961415018f83c550cdcb2b"
+      ],
+      "melody3": [
+        "melody3/ClaraBerryAndWooldog_AirTraffic_MELODY3.csv",
+        "cdba6ee5be9aa5dce9bad9437c72991b"
+      ]
+    },
+    "ClaraBerryAndWooldog_Boys": {
+      "audio": [
+        "audio/ClaraBerryAndWooldog_Boys_MIX.wav",
+        "b5cd748b28c38d9384844d8332aec62f"
+      ],
+      "melody1": [
+        "melody1/ClaraBerryAndWooldog_Boys_MELODY1.csv",
+        "7f0cf64967ca29008da450d93f576845"
+      ],
+      "melody2": [
+        "melody2/ClaraBerryAndWooldog_Boys_MELODY2.csv",
+        "0b30ebf372656d911714afa12783d130"
+      ],
+      "melody3": [
+        "melody3/ClaraBerryAndWooldog_Boys_MELODY3.csv",
+        "3b9f3c2fd5a97d2c96fffe890054b915"
+      ]
+    },
+    "ClaraBerryAndWooldog_Stella": {
+      "audio": [
+        "audio/ClaraBerryAndWooldog_Stella_MIX.wav",
+        "6076ce510c0d889160035c40e99068f4"
+      ],
+      "melody1": [
+        "melody1/ClaraBerryAndWooldog_Stella_MELODY1.csv",
+        "beaf8e7988d592c4e8d9438f38d39070"
+      ],
+      "melody2": [
+        "melody2/ClaraBerryAndWooldog_Stella_MELODY2.csv",
+        "beaf8e7988d592c4e8d9438f38d39070"
+      ],
+      "melody3": [
+        "melody3/ClaraBerryAndWooldog_Stella_MELODY3.csv",
+        "beaf8e7988d592c4e8d9438f38d39070"
+      ]
+    },
+    "ClaraBerryAndWooldog_TheBadGuys": {
+      "audio": [
+        "audio/ClaraBerryAndWooldog_TheBadGuys_MIX.wav",
+        "8cb9866c4652e23ad968a2441c216b21"
+      ],
+      "melody1": [
+        "melody1/ClaraBerryAndWooldog_TheBadGuys_MELODY1.csv",
+        "524d8b72286433a464bd9c335d4a4992"
+      ],
+      "melody2": [
+        "melody2/ClaraBerryAndWooldog_TheBadGuys_MELODY2.csv",
+        "524d8b72286433a464bd9c335d4a4992"
+      ],
+      "melody3": [
+        "melody3/ClaraBerryAndWooldog_TheBadGuys_MELODY3.csv",
+        "524d8b72286433a464bd9c335d4a4992"
+      ]
+    },
+    "ClaraBerryAndWooldog_WaltzForMyVictims": {
+      "audio": [
+        "audio/ClaraBerryAndWooldog_WaltzForMyVictims_MIX.wav",
+        "aefbc47d110bc7e94e45ac45642d8cc6"
+      ],
+      "melody1": [
+        "melody1/ClaraBerryAndWooldog_WaltzForMyVictims_MELODY1.csv",
+        "3d02ffe3a28cd1e909e4dd485f040b11"
+      ],
+      "melody2": [
+        "melody2/ClaraBerryAndWooldog_WaltzForMyVictims_MELODY2.csv",
+        "b56096f599fab1a22c8c5c867ab99a97"
+      ],
+      "melody3": [
+        "melody3/ClaraBerryAndWooldog_WaltzForMyVictims_MELODY3.csv",
+        "02d9c19195ee4847d7692376d617cdb6"
+      ]
+    },
+    "Creepoid_OldTree": {
+      "audio": [
+        "audio/Creepoid_OldTree_MIX.wav",
+        "732ca6cc0754b72cf1de5002f545c6cc"
+      ],
+      "melody1": [
+        "melody1/Creepoid_OldTree_MELODY1.csv",
+        "a39214455dc0ca7db27db2acd49497b6"
+      ],
+      "melody2": [
+        "melody2/Creepoid_OldTree_MELODY2.csv",
+        "b8606e213355e6b9913a91cde32cb7df"
+      ],
+      "melody3": [
+        "melody3/Creepoid_OldTree_MELODY3.csv",
+        "e5439467c1ab8a7d5fb6db064d16bdf4"
+      ]
+    },
+    "CroqueMadame_Oil": {
+      "audio": [
+        "audio/CroqueMadame_Oil_MIX.wav",
+        "8c4afe6f9170c45ba8edf5e9c34c00cc"
+      ],
+      "melody1": [
+        "melody1/CroqueMadame_Oil_MELODY1.csv",
+        "c4eb84ba487361c89301367ec224d495"
+      ],
+      "melody2": [
+        "melody2/CroqueMadame_Oil_MELODY2.csv",
+        "2bb1a159b20a277cd2e2749cbf73b74e"
+      ],
+      "melody3": [
+        "melody3/CroqueMadame_Oil_MELODY3.csv",
+        "5b01d8f68dccd4913ebc09908b861f0b"
+      ]
+    },
+    "CroqueMadame_Pilot": {
+      "audio": [
+        "audio/CroqueMadame_Pilot_MIX.wav",
+        "ed6a4b604bc0a730c1ed256d216fb7be"
+      ],
+      "melody1": [
+        "melody1/CroqueMadame_Pilot_MELODY1.csv",
+        "3c2cb321d839fa4ef25ab1eeeef57051"
+      ],
+      "melody2": [
+        "melody2/CroqueMadame_Pilot_MELODY2.csv",
+        "14727678a5b7771c6b4d1bb8e110aa3b"
+      ],
+      "melody3": [
+        "melody3/CroqueMadame_Pilot_MELODY3.csv",
+        "df6b32fa01f4302087f784cda88f6618"
+      ]
+    },
+    "Debussy_LenfantProdigue": {
+      "audio": [
+        "audio/Debussy_LenfantProdigue_MIX.wav",
+        "eec0a8eb7d1c72a6bf0c2d53b3e91c4a"
+      ],
+      "melody1": [
+        "melody1/Debussy_LenfantProdigue_MELODY1.csv",
+        "3fcf45fb39700c94b801ce2727355102"
+      ],
+      "melody2": [
+        "melody2/Debussy_LenfantProdigue_MELODY2.csv",
+        "64ba4b2f88ac35ccdb3a0675cfbb89d0"
+      ],
+      "melody3": [
+        "melody3/Debussy_LenfantProdigue_MELODY3.csv",
+        "8ce3421b16017496e277f775d0edb01e"
+      ]
+    },
+    "DreamersOfTheGhetto_HeavyLove": {
+      "audio": [
+        "audio/DreamersOfTheGhetto_HeavyLove_MIX.wav",
+        "305c1c439a3fbde9fc521af913603062"
+      ],
+      "melody1": [
+        "melody1/DreamersOfTheGhetto_HeavyLove_MELODY1.csv",
+        "7685f3c44532ff5170f8c5ea76861b40"
+      ],
+      "melody2": [
+        "melody2/DreamersOfTheGhetto_HeavyLove_MELODY2.csv",
+        "7685f3c44532ff5170f8c5ea76861b40"
+      ],
+      "melody3": [
+        "melody3/DreamersOfTheGhetto_HeavyLove_MELODY3.csv",
+        "7685f3c44532ff5170f8c5ea76861b40"
+      ]
+    },
+    "EthanHein_1930sSynthAndUprightBass": {
+      "audio": [
+        "audio/EthanHein_1930sSynthAndUprightBass_MIX.wav",
+        "fa508dc253a83727c4a95a1834cfe62b"
+      ],
+      "melody1": [
+        "melody1/EthanHein_1930sSynthAndUprightBass_MELODY1.csv",
+        "b98aab7e5f274beda4437b9cf51bcf64"
+      ],
+      "melody2": [
+        "melody2/EthanHein_1930sSynthAndUprightBass_MELODY2.csv",
+        "b98aab7e5f274beda4437b9cf51bcf64"
+      ],
+      "melody3": [
+        "melody3/EthanHein_1930sSynthAndUprightBass_MELODY3.csv",
+        "b98aab7e5f274beda4437b9cf51bcf64"
+      ]
+    },
+    "EthanHein_GirlOnABridge": {
+      "audio": [
+        "audio/EthanHein_GirlOnABridge_MIX.wav",
+        "8cce1900d0675bc75938796a6ccab26a"
+      ],
+      "melody1": [
+        "melody1/EthanHein_GirlOnABridge_MELODY1.csv",
+        "f05e32be67b2c746e73e1ec79a384016"
+      ],
+      "melody2": [
+        "melody2/EthanHein_GirlOnABridge_MELODY2.csv",
+        "f05e32be67b2c746e73e1ec79a384016"
+      ],
+      "melody3": [
+        "melody3/EthanHein_GirlOnABridge_MELODY3.csv",
+        "f05e32be67b2c746e73e1ec79a384016"
+      ]
+    },
+    "FacesOnFilm_WaitingForGa": {
+      "audio": [
+        "audio/FacesOnFilm_WaitingForGa_MIX.wav",
+        "84cdcedc45a126cdf3cfb8b61d2d9c06"
+      ],
+      "melody1": [
+        "melody1/FacesOnFilm_WaitingForGa_MELODY1.csv",
+        "7888a18c5dbd422116faa049740b569d"
+      ],
+      "melody2": [
+        "melody2/FacesOnFilm_WaitingForGa_MELODY2.csv",
+        "eead06ae98d2634c571bf4dae0e20763"
+      ],
+      "melody3": [
+        "melody3/FacesOnFilm_WaitingForGa_MELODY3.csv",
+        "3505854d373221e8dfe1cbaea914a8c7"
+      ]
+    },
+    "FamilyBand_Again": {
+      "audio": [
+        "audio/FamilyBand_Again_MIX.wav",
+        "7da3ed6df22d5eabf385e61239fa2549"
+      ],
+      "melody1": [
+        "melody1/FamilyBand_Again_MELODY1.csv",
+        "99657a0c9fce4599100b73daeee8e33f"
+      ],
+      "melody2": [
+        "melody2/FamilyBand_Again_MELODY2.csv",
+        "99657a0c9fce4599100b73daeee8e33f"
+      ],
+      "melody3": [
+        "melody3/FamilyBand_Again_MELODY3.csv",
+        "99657a0c9fce4599100b73daeee8e33f"
+      ]
+    },
+    "Handel_TornamiAVagheggiar": {
+      "audio": [
+        "audio/Handel_TornamiAVagheggiar_MIX.wav",
+        "c93756bfec8e718ece2df6fbccce45eb"
+      ],
+      "melody1": [
+        "melody1/Handel_TornamiAVagheggiar_MELODY1.csv",
+        "6bcb629d3c7acb0319f33cb5f269d604"
+      ],
+      "melody2": [
+        "melody2/Handel_TornamiAVagheggiar_MELODY2.csv",
+        "bbd4bf5c124a3fb97b81c747a229ab0f"
+      ],
+      "melody3": [
+        "melody3/Handel_TornamiAVagheggiar_MELODY3.csv",
+        "9e1c856779871d2ec275f610a1615565"
+      ]
+    },
+    "HeladoNegro_MitadDelMundo": {
+      "audio": [
+        "audio/HeladoNegro_MitadDelMundo_MIX.wav",
+        "ea8053b48f3c9347e1febc4a3404424b"
+      ],
+      "melody1": [
+        "melody1/HeladoNegro_MitadDelMundo_MELODY1.csv",
+        "23a671cacb2d6fb94c15c2b8ff61015f"
+      ],
+      "melody2": [
+        "melody2/HeladoNegro_MitadDelMundo_MELODY2.csv",
+        "23a671cacb2d6fb94c15c2b8ff61015f"
+      ],
+      "melody3": [
+        "melody3/HeladoNegro_MitadDelMundo_MELODY3.csv",
+        "23a671cacb2d6fb94c15c2b8ff61015f"
+      ]
+    },
+    "HezekiahJones_BorrowedHeart": {
+      "audio": [
+        "audio/HezekiahJones_BorrowedHeart_MIX.wav",
+        "9df72c9d64fbfbde4fb7cbced9af9697"
+      ],
+      "melody1": [
+        "melody1/HezekiahJones_BorrowedHeart_MELODY1.csv",
+        "a51c1910bc559291b8de61766a3eb4f9"
+      ],
+      "melody2": [
+        "melody2/HezekiahJones_BorrowedHeart_MELODY2.csv",
+        "a9d5c9de7f3bb8ef50ada2d8848f395b"
+      ],
+      "melody3": [
+        "melody3/HezekiahJones_BorrowedHeart_MELODY3.csv",
+        "2cad56cb2e4afc4eac1108c70f0dd80a"
+      ]
+    },
+    "HopAlong_SisterCities": {
+      "audio": [
+        "audio/HopAlong_SisterCities_MIX.wav",
+        "96c3aa5a7f08c10f81f9d62702641931"
+      ],
+      "melody1": [
+        "melody1/HopAlong_SisterCities_MELODY1.csv",
+        "8146d3c03d918ea568c92d4dd2a5344f"
+      ],
+      "melody2": [
+        "melody2/HopAlong_SisterCities_MELODY2.csv",
+        "a3ecabfe66b8dae6ee097ce69910f746"
+      ],
+      "melody3": [
+        "melody3/HopAlong_SisterCities_MELODY3.csv",
+        "1b43083a79f3ad73aa0e8a6df736f901"
+      ]
+    },
+    "InvisibleFamiliars_DisturbingWildlife": {
+      "audio": [
+        "audio/InvisibleFamiliars_DisturbingWildlife_MIX.wav",
+        "dcdb20217ce8b640bc7923691d41556c"
+      ],
+      "melody1": [
+        "melody1/InvisibleFamiliars_DisturbingWildlife_MELODY1.csv",
+        "af710c3af4250d75a06d5b2b2d4390e4"
+      ],
+      "melody2": [
+        "melody2/InvisibleFamiliars_DisturbingWildlife_MELODY2.csv",
+        "4abf3b95a9d620eb57f559bb8e1176dd"
+      ],
+      "melody3": [
+        "melody3/InvisibleFamiliars_DisturbingWildlife_MELODY3.csv",
+        "2a8ccbd0fcafdb293034809c0e41c7c6"
+      ]
+    },
+    "JoelHelander_Definition": {
+      "audio": [
+        "audio/JoelHelander_Definition_MIX.wav",
+        "6bd5d97e12d656aedbf8bef8968e13d2"
+      ],
+      "melody1": [
+        "melody1/JoelHelander_Definition_MELODY1.csv",
+        "0c236216e3c86f2237aa04c1ca33b514"
+      ],
+      "melody2": [
+        "melody2/JoelHelander_Definition_MELODY2.csv",
+        "a3759d0b7303d9a432a03e5e5d39f8a1"
+      ],
+      "melody3": [
+        "melody3/JoelHelander_Definition_MELODY3.csv",
+        "ffea21b8b63f303172a23cea48948edf"
+      ]
+    },
+    "JoelHelander_ExcessiveResistancetoChange": {
+      "audio": [
+        "audio/JoelHelander_ExcessiveResistancetoChange_MIX.wav",
+        "dc27ab431d899e6e5b1e2bc1ad1583c7"
+      ],
+      "melody1": [
+        "melody1/JoelHelander_ExcessiveResistancetoChange_MELODY1.csv",
+        "6705ea030aa3f4ea51a5ec312a253709"
+      ],
+      "melody2": [
+        "melody2/JoelHelander_ExcessiveResistancetoChange_MELODY2.csv",
+        "cf48e2eb67b4da3f0cf03d0171e1d231"
+      ],
+      "melody3": [
+        "melody3/JoelHelander_ExcessiveResistancetoChange_MELODY3.csv",
+        "ff8df5efcf9b0fc1afa3ed5039c6efa1"
+      ]
+    },
+    "JoelHelander_IntheAtticBedroom": {
+      "audio": [
+        "audio/JoelHelander_IntheAtticBedroom_MIX.wav",
+        "5a23eaa8ac272f53a7eb56220d7f27d0"
+      ],
+      "melody1": [
+        "melody1/JoelHelander_IntheAtticBedroom_MELODY1.csv",
+        "835a508734c8cb5d560b8f950fe031ff"
+      ],
+      "melody2": [
+        "melody2/JoelHelander_IntheAtticBedroom_MELODY2.csv",
+        "835a508734c8cb5d560b8f950fe031ff"
+      ],
+      "melody3": [
+        "melody3/JoelHelander_IntheAtticBedroom_MELODY3.csv",
+        "835a508734c8cb5d560b8f950fe031ff"
+      ]
+    },
+    "KarimDouaidy_Hopscotch": {
+      "audio": [
+        "audio/KarimDouaidy_Hopscotch_MIX.wav",
+        "bb48c0ac2774278324c9d4fbbd541042"
+      ],
+      "melody1": [
+        "melody1/KarimDouaidy_Hopscotch_MELODY1.csv",
+        "24f4dc9ba94379cf2f76f207948e739a"
+      ],
+      "melody2": [
+        "melody2/KarimDouaidy_Hopscotch_MELODY2.csv",
+        "f2a0610460f031e80c3286badcb80cb2"
+      ],
+      "melody3": [
+        "melody3/KarimDouaidy_Hopscotch_MELODY3.csv",
+        "62743d11d75d14bb8181f66a71fb1b22"
+      ]
+    },
+    "KarimDouaidy_Yatora": {
+      "audio": [
+        "audio/KarimDouaidy_Yatora_MIX.wav",
+        "3554247f5e4c6112c023d49bff5614ed"
+      ],
+      "melody1": [
+        "melody1/KarimDouaidy_Yatora_MELODY1.csv",
+        "e23552e3d2d6330b45daf8d4e4a8ac3d"
+      ],
+      "melody2": [
+        "melody2/KarimDouaidy_Yatora_MELODY2.csv",
+        "e198eeab240019d251397f2233d44d39"
+      ],
+      "melody3": [
+        "melody3/KarimDouaidy_Yatora_MELODY3.csv",
+        "cd29b0d828dd69ec1c090884e1dfe502"
+      ]
+    },
+    "LizNelson_Coldwar": {
+      "audio": [
+        "audio/LizNelson_Coldwar_MIX.wav",
+        "845bb553aef3fc3d5c8d19c054051c9f"
+      ],
+      "melody1": [
+        "melody1/LizNelson_Coldwar_MELODY1.csv",
+        "82255c660ecb0bcb69778d337bcfac74"
+      ],
+      "melody2": [
+        "melody2/LizNelson_Coldwar_MELODY2.csv",
+        "b2e351c7a061da013ad82575f1dc1a7b"
+      ],
+      "melody3": [
+        "melody3/LizNelson_Coldwar_MELODY3.csv",
+        "e75b70d74d0d5f792d9c8b4a8987f7d8"
+      ]
+    },
+    "LizNelson_ImComingHome": {
+      "audio": [
+        "audio/LizNelson_ImComingHome_MIX.wav",
+        "6e36d0e0dd02ac4ea9ad97e2e283cbf4"
+      ],
+      "melody1": [
+        "melody1/LizNelson_ImComingHome_MELODY1.csv",
+        "3e9821cae5eaea50b1c8cb32219fc83a"
+      ],
+      "melody2": [
+        "melody2/LizNelson_ImComingHome_MELODY2.csv",
+        "23a736b272d412fbfdb1d9bca4949494"
+      ],
+      "melody3": [
+        "melody3/LizNelson_ImComingHome_MELODY3.csv",
+        "2100e5713d812864483df2a2da668aec"
+      ]
+    },
+    "LizNelson_Rainfall": {
+      "audio": [
+        "audio/LizNelson_Rainfall_MIX.wav",
+        "34d9f1c7d2cb60734797f225b5504a15"
+      ],
+      "melody1": [
+        "melody1/LizNelson_Rainfall_MELODY1.csv",
+        "bb4f6abb59ac5ff8de53ca48a897e243"
+      ],
+      "melody2": [
+        "melody2/LizNelson_Rainfall_MELODY2.csv",
+        "bb4f6abb59ac5ff8de53ca48a897e243"
+      ],
+      "melody3": [
+        "melody3/LizNelson_Rainfall_MELODY3.csv",
+        "bb4f6abb59ac5ff8de53ca48a897e243"
+      ]
+    },
+    "MatthewEntwistle_DontYouEver": {
+      "audio": [
+        "audio/MatthewEntwistle_DontYouEver_MIX.wav",
+        "3d404656ba5964e6f7d1681ae5808141"
+      ],
+      "melody1": [
+        "melody1/MatthewEntwistle_DontYouEver_MELODY1.csv",
+        "e420ca8e8f3070f564445ac7a05a28c6"
+      ],
+      "melody2": [
+        "melody2/MatthewEntwistle_DontYouEver_MELODY2.csv",
+        "cd191f5548e2e8a8509a84d8b60c0979"
+      ],
+      "melody3": [
+        "melody3/MatthewEntwistle_DontYouEver_MELODY3.csv",
+        "40ee1cdba1316328696ff6be1f238f69"
+      ]
+    },
+    "MatthewEntwistle_FairerHopes": {
+      "audio": [
+        "audio/MatthewEntwistle_FairerHopes_MIX.wav",
+        "a739281bbd04b35ab4c971c3add2b0fc"
+      ],
+      "melody1": [
+        "melody1/MatthewEntwistle_FairerHopes_MELODY1.csv",
+        "ade8656c9d642c0ff0bfe79ca54a8dc6"
+      ],
+      "melody2": [
+        "melody2/MatthewEntwistle_FairerHopes_MELODY2.csv",
+        "d8db4a65241ce5ca438d5430899559dd"
+      ],
+      "melody3": [
+        "melody3/MatthewEntwistle_FairerHopes_MELODY3.csv",
+        "e7ce9ad35915bfc3430fd82222b0f084"
+      ]
+    },
+    "MatthewEntwistle_ImpressionsOfSaturn": {
+      "audio": [
+        "audio/MatthewEntwistle_ImpressionsOfSaturn_MIX.wav",
+        "9c33e6e0caebd69aff45941927825a68"
+      ],
+      "melody1": [
+        "melody1/MatthewEntwistle_ImpressionsOfSaturn_MELODY1.csv",
+        "77042dfd6805331671339c417484d8c6"
+      ],
+      "melody2": [
+        "melody2/MatthewEntwistle_ImpressionsOfSaturn_MELODY2.csv",
+        "1f1c93c2e1c792502e05fc21c42809d5"
+      ],
+      "melody3": [
+        "melody3/MatthewEntwistle_ImpressionsOfSaturn_MELODY3.csv",
+        "bf7df3f452dc8bacb4e8b05291055eda"
+      ]
+    },
+    "MatthewEntwistle_Lontano": {
+      "audio": [
+        "audio/MatthewEntwistle_Lontano_MIX.wav",
+        "c31b641e03d534e949d63a3ec17287f0"
+      ],
+      "melody1": [
+        "melody1/MatthewEntwistle_Lontano_MELODY1.csv",
+        "0a0c774232e58ef7d24b28e2b74c9a16"
+      ],
+      "melody2": [
+        "melody2/MatthewEntwistle_Lontano_MELODY2.csv",
+        "0a0c774232e58ef7d24b28e2b74c9a16"
+      ],
+      "melody3": [
+        "melody3/MatthewEntwistle_Lontano_MELODY3.csv",
+        "0a0c774232e58ef7d24b28e2b74c9a16"
+      ]
+    },
+    "MatthewEntwistle_TheArch": {
+      "audio": [
+        "audio/MatthewEntwistle_TheArch_MIX.wav",
+        "88a74a585c4cec05b4952c32f3d50acf"
+      ],
+      "melody1": [
+        "melody1/MatthewEntwistle_TheArch_MELODY1.csv",
+        "7b7e2d1721bf2881928f687b89b15374"
+      ],
+      "melody2": [
+        "melody2/MatthewEntwistle_TheArch_MELODY2.csv",
+        "cf21794ebc5ce34f78a7b3dcecb35eaf"
+      ],
+      "melody3": [
+        "melody3/MatthewEntwistle_TheArch_MELODY3.csv",
+        "722a03e1b3a77111497165a1421d3aa6"
+      ]
+    },
+    "MatthewEntwistle_TheFlaxenField": {
+      "audio": [
+        "audio/MatthewEntwistle_TheFlaxenField_MIX.wav",
+        "c8c777568aad928dd0bf71200e416e05"
+      ],
+      "melody1": [
+        "melody1/MatthewEntwistle_TheFlaxenField_MELODY1.csv",
+        "332be3c3b8c5cc2aaf321dd9eaae5b76"
+      ],
+      "melody2": [
+        "melody2/MatthewEntwistle_TheFlaxenField_MELODY2.csv",
+        "4c9fe9648b87b37d0ba2985ee5833c5b"
+      ],
+      "melody3": [
+        "melody3/MatthewEntwistle_TheFlaxenField_MELODY3.csv",
+        "22114804e5cae993fac791adc2a66f19"
+      ]
+    },
+    "Meaxic_TakeAStep": {
+      "audio": [
+        "audio/Meaxic_TakeAStep_MIX.wav",
+        "316ef9b2d4667bc6fae41ed7af2132dc"
+      ],
+      "melody1": [
+        "melody1/Meaxic_TakeAStep_MELODY1.csv",
+        "8397e11cf41ffcfddf187d2f6f217f8c"
+      ],
+      "melody2": [
+        "melody2/Meaxic_TakeAStep_MELODY2.csv",
+        "662fe2b1955eff73220ffeeaddc4bbb1"
+      ],
+      "melody3": [
+        "melody3/Meaxic_TakeAStep_MELODY3.csv",
+        "8570c538a61d2f3610472da7afba3f59"
+      ]
+    },
+    "Meaxic_YouListen": {
+      "audio": [
+        "audio/Meaxic_YouListen_MIX.wav",
+        "f961e06cdc4932833b1fb94deda65479"
+      ],
+      "melody1": [
+        "melody1/Meaxic_YouListen_MELODY1.csv",
+        "009fc2c06ecdd5fbbff6fb0d913a992a"
+      ],
+      "melody2": [
+        "melody2/Meaxic_YouListen_MELODY2.csv",
+        "17a567db4810c36628164242603db6ad"
+      ],
+      "melody3": [
+        "melody3/Meaxic_YouListen_MELODY3.csv",
+        "e54d2b2fb8ac00a153f5b943f9315c63"
+      ]
+    },
+    "MichaelKropf_AllGoodThings": {
+      "audio": [
+        "audio/MichaelKropf_AllGoodThings_MIX.wav",
+        "230f1851ea01d31aa713665f236ee562"
+      ],
+      "melody1": [
+        "melody1/MichaelKropf_AllGoodThings_MELODY1.csv",
+        "9facb3a6f896930123956c09da8a5777"
+      ],
+      "melody2": [
+        "melody2/MichaelKropf_AllGoodThings_MELODY2.csv",
+        "0c23807e3f7fd8a50f537dfdca62413b"
+      ],
+      "melody3": [
+        "melody3/MichaelKropf_AllGoodThings_MELODY3.csv",
+        "d6cc4a451c31e9267dfaee7630334946"
+      ]
+    },
+    "Mozart_BesterJungling": {
+      "audio": [
+        "audio/Mozart_BesterJungling_MIX.wav",
+        "6c0019a225231238d799cfaf533526a5"
+      ],
+      "melody1": [
+        "melody1/Mozart_BesterJungling_MELODY1.csv",
+        "01c2284a77c5c0befeaa5e0072b5ca0a"
+      ],
+      "melody2": [
+        "melody2/Mozart_BesterJungling_MELODY2.csv",
+        "194450fd393bcd18e6683478d7e485e2"
+      ],
+      "melody3": [
+        "melody3/Mozart_BesterJungling_MELODY3.csv",
+        "0efcd67eb4a4df595244cf21d0aa735b"
+      ]
+    },
+    "Mozart_DiesBildnis": {
+      "audio": [
+        "audio/Mozart_DiesBildnis_MIX.wav",
+        "1a6dcbabdee0cdf955f85d17c08db4d9"
+      ],
+      "melody1": [
+        "melody1/Mozart_DiesBildnis_MELODY1.csv",
+        "b2e681674501dd29aa856ca4ce0b44ec"
+      ],
+      "melody2": [
+        "melody2/Mozart_DiesBildnis_MELODY2.csv",
+        "83e1ff6babcc5d5b16750ddd52a5714a"
+      ],
+      "melody3": [
+        "melody3/Mozart_DiesBildnis_MELODY3.csv",
+        "0f488e598e9d9f56aee300bdb74dc015"
+      ]
+    },
+    "MusicDelta_80sRock": {
+      "audio": [
+        "audio/MusicDelta_80sRock_MIX.wav",
+        "65981cf0dda88646a72f0993a7fab0f0"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_80sRock_MELODY1.csv",
+        "1de8d9d710d54e3bbba4b95c1c38c915"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_80sRock_MELODY2.csv",
+        "1de8d9d710d54e3bbba4b95c1c38c915"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_80sRock_MELODY3.csv",
+        "1de8d9d710d54e3bbba4b95c1c38c915"
+      ]
+    },
+    "MusicDelta_Beatles": {
+      "audio": [
+        "audio/MusicDelta_Beatles_MIX.wav",
+        "b1d6f55caa2df99bdf8704f90bb9eaef"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Beatles_MELODY1.csv",
+        "f34438227de86bbc402b224a64282247"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Beatles_MELODY2.csv",
+        "a988b96277f31a1bee0d99a3006a2675"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Beatles_MELODY3.csv",
+        "69b131a6933fbcfd29ae17f622aec1fd"
+      ]
+    },
+    "MusicDelta_BebopJazz": {
+      "audio": [
+        "audio/MusicDelta_BebopJazz_MIX.wav",
+        "73a17f9363c7247581aeb769fb0082b4"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_BebopJazz_MELODY1.csv",
+        "fea0743c5f9d81172a105c49e69b556f"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_BebopJazz_MELODY2.csv",
+        "1a706178ce936a74a8ad2cf75de4f1a8"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_BebopJazz_MELODY3.csv",
+        "d99c511ff4ed1691befca088c220ac29"
+      ]
+    },
+    "MusicDelta_Beethoven": {
+      "audio": [
+        "audio/MusicDelta_Beethoven_MIX.wav",
+        "4c6081420a506b438a851c2807fc28ea"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Beethoven_MELODY1.csv",
+        "67dca3f4a9bf0517dd8a1287d091791e"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Beethoven_MELODY2.csv",
+        "67dca3f4a9bf0517dd8a1287d091791e"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Beethoven_MELODY3.csv",
+        "340f647c4f12d7e1ecf2421d0dfd509f"
+      ]
+    },
+    "MusicDelta_Britpop": {
+      "audio": [
+        "audio/MusicDelta_Britpop_MIX.wav",
+        "ed5298b53cd6b7fa2a1d1e15df1a8c81"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Britpop_MELODY1.csv",
+        "b25215412873109cae6a23a43a6af97e"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Britpop_MELODY2.csv",
+        "b25215412873109cae6a23a43a6af97e"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Britpop_MELODY3.csv",
+        "f785de0fcbf28705a98d0a4c47a83f95"
+      ]
+    },
+    "MusicDelta_ChineseChaoZhou": {
+      "audio": [
+        "audio/MusicDelta_ChineseChaoZhou_MIX.wav",
+        "cd5e6b7230614780a291061ca87856a7"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_ChineseChaoZhou_MELODY1.csv",
+        "8c2dc992ae06f0c378bedf5af7f19b6e"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_ChineseChaoZhou_MELODY2.csv",
+        "237168165ae3717dfce06620840bdcdb"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_ChineseChaoZhou_MELODY3.csv",
+        "ce3db0795c01c4fb86992dd21efe243e"
+      ]
+    },
+    "MusicDelta_ChineseDrama": {
+      "audio": [
+        "audio/MusicDelta_ChineseDrama_MIX.wav",
+        "5404bbc362ed31a634f91a5d0fe6918c"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_ChineseDrama_MELODY1.csv",
+        "140ff4f8039b94201347ef5a01f2eb5d"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_ChineseDrama_MELODY2.csv",
+        "eb54346419e7d51f898946a80191a5db"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_ChineseDrama_MELODY3.csv",
+        "a592749a1f28e323579d616842d97ddd"
+      ]
+    },
+    "MusicDelta_ChineseHenan": {
+      "audio": [
+        "audio/MusicDelta_ChineseHenan_MIX.wav",
+        "3e1010c22f4a70d37fcb34751558b535"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_ChineseHenan_MELODY1.csv",
+        "eec7bb6dd0851b90423681abb43e7cea"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_ChineseHenan_MELODY2.csv",
+        "1b15943b3e1e0cb73b1d787212b506c4"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_ChineseHenan_MELODY3.csv",
+        "6be2dc3475252b40bd7e68beebeabdbf"
+      ]
+    },
+    "MusicDelta_ChineseJiangNan": {
+      "audio": [
+        "audio/MusicDelta_ChineseJiangNan_MIX.wav",
+        "36fa7e9006ef0dde84b1169c3aa3aaeb"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_ChineseJiangNan_MELODY1.csv",
+        "73aef776b57e0d3e53560debc33c856d"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_ChineseJiangNan_MELODY2.csv",
+        "f5e7cd25bdbec1126a8ea0983f1aa663"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_ChineseJiangNan_MELODY3.csv",
+        "19967b3f3b34f53b12058913b4bd3289"
+      ]
+    },
+    "MusicDelta_ChineseXinJing": {
+      "audio": [
+        "audio/MusicDelta_ChineseXinJing_MIX.wav",
+        "6697b0fabf0e45eea527e6aae7ae5aea"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_ChineseXinJing_MELODY1.csv",
+        "936589a9f45d5aebc1ba338715bd73f9"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_ChineseXinJing_MELODY2.csv",
+        "a025da17b31572b59e81fe93be6b4894"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_ChineseXinJing_MELODY3.csv",
+        "5c6be0e527f9418453ecf41e2fdae3c4"
+      ]
+    },
+    "MusicDelta_ChineseYaoZu": {
+      "audio": [
+        "audio/MusicDelta_ChineseYaoZu_MIX.wav",
+        "204d5f65b9e0556a89b1759d299e0501"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_ChineseYaoZu_MELODY1.csv",
+        "42ec548157697e940f35aa715152e1c6"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_ChineseYaoZu_MELODY2.csv",
+        "0c5199f0980b09a28969a2fdedafda72"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_ChineseYaoZu_MELODY3.csv",
+        "58cd63cd8c1a5f7e945fb0a5d6f395db"
+      ]
+    },
+    "MusicDelta_CoolJazz": {
+      "audio": [
+        "audio/MusicDelta_CoolJazz_MIX.wav",
+        "94fe63cc5aba55b12db1e0c886947c93"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_CoolJazz_MELODY1.csv",
+        "6b3bcbed0d5dcc0104c230d5cd94fa51"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_CoolJazz_MELODY2.csv",
+        "a2d087f143277aa6941f4f23f1fc8b83"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_CoolJazz_MELODY3.csv",
+        "bb085779b24f3f7c99ecad66b5e682bb"
+      ]
+    },
+    "MusicDelta_Country1": {
+      "audio": [
+        "audio/MusicDelta_Country1_MIX.wav",
+        "70ad6cc49c164d73e7e01c72d21ab39a"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Country1_MELODY1.csv",
+        "6456630b5d0dbe772a51d81be30b4a1b"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Country1_MELODY2.csv",
+        "6456630b5d0dbe772a51d81be30b4a1b"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Country1_MELODY3.csv",
+        "6456630b5d0dbe772a51d81be30b4a1b"
+      ]
+    },
+    "MusicDelta_Country2": {
+      "audio": [
+        "audio/MusicDelta_Country2_MIX.wav",
+        "89377627c062cd0c8b3ea97ee5187be1"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Country2_MELODY1.csv",
+        "f825dace29f6c1160dfeec560aeb1f55"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Country2_MELODY2.csv",
+        "f825dace29f6c1160dfeec560aeb1f55"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Country2_MELODY3.csv",
+        "f825dace29f6c1160dfeec560aeb1f55"
+      ]
+    },
+    "MusicDelta_Disco": {
+      "audio": [
+        "audio/MusicDelta_Disco_MIX.wav",
+        "00dfebcbc25ebf425329af0049fdf4a4"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Disco_MELODY1.csv",
+        "eb75c59ccaae4d2fde214a40539edbbd"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Disco_MELODY2.csv",
+        "eb75c59ccaae4d2fde214a40539edbbd"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Disco_MELODY3.csv",
+        "eb75c59ccaae4d2fde214a40539edbbd"
+      ]
+    },
+    "MusicDelta_FreeJazz": {
+      "audio": [
+        "audio/MusicDelta_FreeJazz_MIX.wav",
+        "7cdcea04dedbb5f1a92a1505181483ab"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_FreeJazz_MELODY1.csv",
+        "8bb418c8047eec748c8e6cb42c882272"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_FreeJazz_MELODY2.csv",
+        "8bb418c8047eec748c8e6cb42c882272"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_FreeJazz_MELODY3.csv",
+        "8bb418c8047eec748c8e6cb42c882272"
+      ]
+    },
+    "MusicDelta_FunkJazz": {
+      "audio": [
+        "audio/MusicDelta_FunkJazz_MIX.wav",
+        "0917950377030e0c0c4ae5a2587ed7d4"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_FunkJazz_MELODY1.csv",
+        "a93487476e694d44917d20f5926fbccc"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_FunkJazz_MELODY2.csv",
+        "a93487476e694d44917d20f5926fbccc"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_FunkJazz_MELODY3.csv",
+        "76006d6f5bec43101656c5eb5bdf89c7"
+      ]
+    },
+    "MusicDelta_FusionJazz": {
+      "audio": [
+        "audio/MusicDelta_FusionJazz_MIX.wav",
+        "57d7262c72fcc5085b14da7bb461827b"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_FusionJazz_MELODY1.csv",
+        "1ac8def4a18b96d5ec0e0165aac9325e"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_FusionJazz_MELODY2.csv",
+        "1547518e6a2cb0a55d08ce77f748915c"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_FusionJazz_MELODY3.csv",
+        "1f25d755f148969d1043efcbc31591e6"
+      ]
+    },
+    "MusicDelta_Gospel": {
+      "audio": [
+        "audio/MusicDelta_Gospel_MIX.wav",
+        "1e37be46ec759df578b3a3b8c8a1a31c"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Gospel_MELODY1.csv",
+        "a98e72bd2e7170982bed75d5f9b97a4f"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Gospel_MELODY2.csv",
+        "a98e72bd2e7170982bed75d5f9b97a4f"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Gospel_MELODY3.csv",
+        "a98e72bd2e7170982bed75d5f9b97a4f"
+      ]
+    },
+    "MusicDelta_GriegTrolltog": {
+      "audio": [
+        "audio/MusicDelta_GriegTrolltog_MIX.wav",
+        "364b0ddb7946d767010d4a416cbdc679"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_GriegTrolltog_MELODY1.csv",
+        "eec095b8ca2e79db9d3f7a11acd9d861"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_GriegTrolltog_MELODY2.csv",
+        "940a99540ca98390839a7000db66574f"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_GriegTrolltog_MELODY3.csv",
+        "6dcab282708fb153851367030e89e849"
+      ]
+    },
+    "MusicDelta_Grunge": {
+      "audio": [
+        "audio/MusicDelta_Grunge_MIX.wav",
+        "e98082f4bb9db9a60cfee2e0c13b61e4"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Grunge_MELODY1.csv",
+        "8c91761c259625439ce363657c21c150"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Grunge_MELODY2.csv",
+        "8c91761c259625439ce363657c21c150"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Grunge_MELODY3.csv",
+        "8c91761c259625439ce363657c21c150"
+      ]
+    },
+    "MusicDelta_Hendrix": {
+      "audio": [
+        "audio/MusicDelta_Hendrix_MIX.wav",
+        "0ba72050612e60e44bfd1ed79c451160"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Hendrix_MELODY1.csv",
+        "2197a00adc3cd6ba397678a9f269ba8d"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Hendrix_MELODY2.csv",
+        "2197a00adc3cd6ba397678a9f269ba8d"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Hendrix_MELODY3.csv",
+        "2197a00adc3cd6ba397678a9f269ba8d"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing": {
+      "audio": [
+        "audio/MusicDelta_InTheHalloftheMountainKing_MIX.wav",
+        "dd175855bba20020d471f8a401b80785"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_InTheHalloftheMountainKing_MELODY1.csv",
+        "9cc2eb1c7b8680db90eeeac7ac0658ba"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_InTheHalloftheMountainKing_MELODY2.csv",
+        "9cc2eb1c7b8680db90eeeac7ac0658ba"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_InTheHalloftheMountainKing_MELODY3.csv",
+        "9cc2eb1c7b8680db90eeeac7ac0658ba"
+      ]
+    },
+    "MusicDelta_LatinJazz": {
+      "audio": [
+        "audio/MusicDelta_LatinJazz_MIX.wav",
+        "c9b72e78096a09af14a449ec065160f2"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_LatinJazz_MELODY1.csv",
+        "6de3eb8cd5bccf3536b13815e03594a5"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_LatinJazz_MELODY2.csv",
+        "71860e4bee7e3f253757b3ad010f5ea7"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_LatinJazz_MELODY3.csv",
+        "9e037386b8b6bd9c3509caacf7c93118"
+      ]
+    },
+    "MusicDelta_ModalJazz": {
+      "audio": [
+        "audio/MusicDelta_ModalJazz_MIX.wav",
+        "aeec4f978d3cb5f91616d0e7649a2d74"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_ModalJazz_MELODY1.csv",
+        "887430feb2ba0c8c51f0172aef4beba2"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_ModalJazz_MELODY2.csv",
+        "b00b317b8c7363fe423afae4f9b4c2a2"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_ModalJazz_MELODY3.csv",
+        "dfd246b361ded96b24bfaea300b40f69"
+      ]
+    },
+    "MusicDelta_Pachelbel": {
+      "audio": [
+        "audio/MusicDelta_Pachelbel_MIX.wav",
+        "237d26c8e4bd16659cb92dfeac75fc06"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Pachelbel_MELODY1.csv",
+        "f1da037d8068fd863a4b2d64d780c292"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Pachelbel_MELODY2.csv",
+        "485cb72d277fc0d48724d378d21726e1"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Pachelbel_MELODY3.csv",
+        "107c11f19ef317fc4174b7704ebb6c1b"
+      ]
+    },
+    "MusicDelta_Punk": {
+      "audio": [
+        "audio/MusicDelta_Punk_MIX.wav",
+        "2b5bb5f76b7bb8060a887300098b5c3a"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Punk_MELODY1.csv",
+        "1f4e10a29f9473cc8048a8aaf9ab0ada"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Punk_MELODY2.csv",
+        "1f4e10a29f9473cc8048a8aaf9ab0ada"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Punk_MELODY3.csv",
+        "1f4e10a29f9473cc8048a8aaf9ab0ada"
+      ]
+    },
+    "MusicDelta_Reggae": {
+      "audio": [
+        "audio/MusicDelta_Reggae_MIX.wav",
+        "51ae6155d48430b384897e6c2bde801f"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Reggae_MELODY1.csv",
+        "38a5260a453eab433d44721dcaf9084d"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Reggae_MELODY2.csv",
+        "38a5260a453eab433d44721dcaf9084d"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Reggae_MELODY3.csv",
+        "38a5260a453eab433d44721dcaf9084d"
+      ]
+    },
+    "MusicDelta_Rock": {
+      "audio": [
+        "audio/MusicDelta_Rock_MIX.wav",
+        "21c22a3f4d2d121e51bc540e812ec60d"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Rock_MELODY1.csv",
+        "4c5aeb605a5def63a53941caccdd3ef2"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Rock_MELODY2.csv",
+        "4c5aeb605a5def63a53941caccdd3ef2"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Rock_MELODY3.csv",
+        "4c5aeb605a5def63a53941caccdd3ef2"
+      ]
+    },
+    "MusicDelta_Rockabilly": {
+      "audio": [
+        "audio/MusicDelta_Rockabilly_MIX.wav",
+        "51072d2d4df9d6530640fcb251436b34"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Rockabilly_MELODY1.csv",
+        "e8c7adf826b849edc3a57a7aa7271a17"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Rockabilly_MELODY2.csv",
+        "e8c7adf826b849edc3a57a7aa7271a17"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Rockabilly_MELODY3.csv",
+        "e8c7adf826b849edc3a57a7aa7271a17"
+      ]
+    },
+    "MusicDelta_Shadows": {
+      "audio": [
+        "audio/MusicDelta_Shadows_MIX.wav",
+        "2393f19229873e2eb7cc984fe5a163da"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Shadows_MELODY1.csv",
+        "6f99cf310bc8585613509b58a745b59e"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Shadows_MELODY2.csv",
+        "6f99cf310bc8585613509b58a745b59e"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Shadows_MELODY3.csv",
+        "6f99cf310bc8585613509b58a745b59e"
+      ]
+    },
+    "MusicDelta_SpeedMetal": {
+      "audio": [
+        "audio/MusicDelta_SpeedMetal_MIX.wav",
+        "3f194506e9652550544cc1d6a8e5636d"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_SpeedMetal_MELODY1.csv",
+        "081a80dbcbc1f8d9d1d5b0cd82e954ed"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_SpeedMetal_MELODY2.csv",
+        "081a80dbcbc1f8d9d1d5b0cd82e954ed"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_SpeedMetal_MELODY3.csv",
+        "081a80dbcbc1f8d9d1d5b0cd82e954ed"
+      ]
+    },
+    "MusicDelta_SwingJazz": {
+      "audio": [
+        "audio/MusicDelta_SwingJazz_MIX.wav",
+        "74ebf4af133a6310634c37f2ecceb618"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_SwingJazz_MELODY1.csv",
+        "5229888fdfc823e7633308b76687e1f0"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_SwingJazz_MELODY2.csv",
+        "fac833503140939d259cdbf778a39377"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_SwingJazz_MELODY3.csv",
+        "4498cc3aee353bf72d03588312081076"
+      ]
+    },
+    "MusicDelta_Vivaldi": {
+      "audio": [
+        "audio/MusicDelta_Vivaldi_MIX.wav",
+        "704f2c623db6fef99b58af7b4a17c39b"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Vivaldi_MELODY1.csv",
+        "f5db57a7cb3f10f3506e8d73debf0659"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Vivaldi_MELODY2.csv",
+        "f5db57a7cb3f10f3506e8d73debf0659"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Vivaldi_MELODY3.csv",
+        "f5db57a7cb3f10f3506e8d73debf0659"
+      ]
+    },
+    "MusicDelta_Zeppelin": {
+      "audio": [
+        "audio/MusicDelta_Zeppelin_MIX.wav",
+        "59726ecac23ec52afe273fc18c26c0bc"
+      ],
+      "melody1": [
+        "melody1/MusicDelta_Zeppelin_MELODY1.csv",
+        "9be0f445be1ce0e6b93414a9f54d7b34"
+      ],
+      "melody2": [
+        "melody2/MusicDelta_Zeppelin_MELODY2.csv",
+        "9be0f445be1ce0e6b93414a9f54d7b34"
+      ],
+      "melody3": [
+        "melody3/MusicDelta_Zeppelin_MELODY3.csv",
+        "9be0f445be1ce0e6b93414a9f54d7b34"
+      ]
+    },
+    "NightPanther_Fire": {
+      "audio": [
+        "audio/NightPanther_Fire_MIX.wav",
+        "c69eb6c0d4d7484ce6afbc276d5ec1db"
+      ],
+      "melody1": [
+        "melody1/NightPanther_Fire_MELODY1.csv",
+        "f196e3835ab25adba444039da5a0bea4"
+      ],
+      "melody2": [
+        "melody2/NightPanther_Fire_MELODY2.csv",
+        "3aba633d9ba16d6069ca7f4d3014849e"
+      ],
+      "melody3": [
+        "melody3/NightPanther_Fire_MELODY3.csv",
+        "43c9c63e2307fb88f404046e0d346df5"
+      ]
+    },
+    "Phoenix_BrokenPledgeChicagoReel": {
+      "audio": [
+        "audio/Phoenix_BrokenPledgeChicagoReel_MIX.wav",
+        "adfb554260301e85071f488ab03d3913"
+      ],
+      "melody1": [
+        "melody1/Phoenix_BrokenPledgeChicagoReel_MELODY1.csv",
+        "57dcb78025a7dec99d1ed02292616552"
+      ],
+      "melody2": [
+        "melody2/Phoenix_BrokenPledgeChicagoReel_MELODY2.csv",
+        "57dcb78025a7dec99d1ed02292616552"
+      ],
+      "melody3": [
+        "melody3/Phoenix_BrokenPledgeChicagoReel_MELODY3.csv",
+        "299f5d7f9c5887e09a5f6c902e589f4d"
+      ]
+    },
+    "Phoenix_ColliersDaughter": {
+      "audio": [
+        "audio/Phoenix_ColliersDaughter_MIX.wav",
+        "a48158b8c1d580f144f63337f801ff1b"
+      ],
+      "melody1": [
+        "melody1/Phoenix_ColliersDaughter_MELODY1.csv",
+        "d2a9d950478196a9465761478c0b5484"
+      ],
+      "melody2": [
+        "melody2/Phoenix_ColliersDaughter_MELODY2.csv",
+        "991e386666deec611e18f6827bd0ed1b"
+      ],
+      "melody3": [
+        "melody3/Phoenix_ColliersDaughter_MELODY3.csv",
+        "01e1f9b11f2f028094bb6f4f3715409f"
+      ]
+    },
+    "Phoenix_ElzicsFarewell": {
+      "audio": [
+        "audio/Phoenix_ElzicsFarewell_MIX.wav",
+        "02144257171115861b2159d80405d88d"
+      ],
+      "melody1": [
+        "melody1/Phoenix_ElzicsFarewell_MELODY1.csv",
+        "53ad3a8e5140b4bc3342cf40b35debf3"
+      ],
+      "melody2": [
+        "melody2/Phoenix_ElzicsFarewell_MELODY2.csv",
+        "eb5d1ddd6b339cd1497081fb1bf01881"
+      ],
+      "melody3": [
+        "melody3/Phoenix_ElzicsFarewell_MELODY3.csv",
+        "71de6c6c75dd9642ebf666101587bac7"
+      ]
+    },
+    "Phoenix_LarkOnTheStrandDrummondCastle": {
+      "audio": [
+        "audio/Phoenix_LarkOnTheStrandDrummondCastle_MIX.wav",
+        "9fc5ef5c47f825cdd7e02b65ab54a954"
+      ],
+      "melody1": [
+        "melody1/Phoenix_LarkOnTheStrandDrummondCastle_MELODY1.csv",
+        "1dd144a3bacff7b5a6fa72d0c8bdff40"
+      ],
+      "melody2": [
+        "melody2/Phoenix_LarkOnTheStrandDrummondCastle_MELODY2.csv",
+        "1362645b7e2ce1c84ddf02ea2e4a26a0"
+      ],
+      "melody3": [
+        "melody3/Phoenix_LarkOnTheStrandDrummondCastle_MELODY3.csv",
+        "d9445def39386ff7d93cd48b619fbd74"
+      ]
+    },
+    "Phoenix_ScotchMorris": {
+      "audio": [
+        "audio/Phoenix_ScotchMorris_MIX.wav",
+        "2205695a64e9b5c49569fd4389a918d8"
+      ],
+      "melody1": [
+        "melody1/Phoenix_ScotchMorris_MELODY1.csv",
+        "94968698460756466facb9c04f3a84bf"
+      ],
+      "melody2": [
+        "melody2/Phoenix_ScotchMorris_MELODY2.csv",
+        "3c1c2b55f3cecbaa7586f40b451c3896"
+      ],
+      "melody3": [
+        "melody3/Phoenix_ScotchMorris_MELODY3.csv",
+        "1d8c75d68c60fa27a8fffb326b425f1b"
+      ]
+    },
+    "Phoenix_SeanCaughlinsTheScartaglen": {
+      "audio": [
+        "audio/Phoenix_SeanCaughlinsTheScartaglen_MIX.wav",
+        "a1730a874b0a0897bb57a9823e93ea2c"
+      ],
+      "melody1": [
+        "melody1/Phoenix_SeanCaughlinsTheScartaglen_MELODY1.csv",
+        "280d76bde4bc62617a3d6801db64c3a3"
+      ],
+      "melody2": [
+        "melody2/Phoenix_SeanCaughlinsTheScartaglen_MELODY2.csv",
+        "280d76bde4bc62617a3d6801db64c3a3"
+      ],
+      "melody3": [
+        "melody3/Phoenix_SeanCaughlinsTheScartaglen_MELODY3.csv",
+        "280d76bde4bc62617a3d6801db64c3a3"
+      ]
+    },
+    "PortStWillow_StayEven": {
+      "audio": [
+        "audio/PortStWillow_StayEven_MIX.wav",
+        "07155d2334c738b9e7953a23e8676b5f"
+      ],
+      "melody1": [
+        "melody1/PortStWillow_StayEven_MELODY1.csv",
+        "3377d6ebc9d3261713409779518fa47b"
+      ],
+      "melody2": [
+        "melody2/PortStWillow_StayEven_MELODY2.csv",
+        "3377d6ebc9d3261713409779518fa47b"
+      ],
+      "melody3": [
+        "melody3/PortStWillow_StayEven_MELODY3.csv",
+        "3377d6ebc9d3261713409779518fa47b"
+      ]
+    },
+    "PurlingHiss_Lolita": {
+      "audio": [
+        "audio/PurlingHiss_Lolita_MIX.wav",
+        "b31680c14eed0f83bf01f37228ae2597"
+      ],
+      "melody1": [
+        "melody1/PurlingHiss_Lolita_MELODY1.csv",
+        "b476226eb747683dde456223e28359b2"
+      ],
+      "melody2": [
+        "melody2/PurlingHiss_Lolita_MELODY2.csv",
+        "240c68ce9e8218edced11c716f7cce42"
+      ],
+      "melody3": [
+        "melody3/PurlingHiss_Lolita_MELODY3.csv",
+        "9e031c273b21a48e9647db324a4a359f"
+      ]
+    },
+    "Schubert_Erstarrung": {
+      "audio": [
+        "audio/Schubert_Erstarrung_MIX.wav",
+        "43d37621f5c389b4e6f6d63c6d58d675"
+      ],
+      "melody1": [
+        "melody1/Schubert_Erstarrung_MELODY1.csv",
+        "5d648d235cd457d90847ab63ac4eb59d"
+      ],
+      "melody2": [
+        "melody2/Schubert_Erstarrung_MELODY2.csv",
+        "cac8bece41d05e0c8b3f3cadfa14e54c"
+      ],
+      "melody3": [
+        "melody3/Schubert_Erstarrung_MELODY3.csv",
+        "e4eeae31aeae3987bab3e3d77ce8339b"
+      ]
+    },
+    "Schumann_Mignon": {
+      "audio": [
+        "audio/Schumann_Mignon_MIX.wav",
+        "422f72e5b1ea070d721e3bf6e2648b84"
+      ],
+      "melody1": [
+        "melody1/Schumann_Mignon_MELODY1.csv",
+        "80dca1a1035999e0bce74842c803ffdf"
+      ],
+      "melody2": [
+        "melody2/Schumann_Mignon_MELODY2.csv",
+        "b643b0f6cf818f97ec74c14b4eaaaea3"
+      ],
+      "melody3": [
+        "melody3/Schumann_Mignon_MELODY3.csv",
+        "63c1f0084d0a3bfc1f5aba1cfdf7f5cf"
+      ]
+    },
+    "SecretMountains_HighHorse": {
+      "audio": [
+        "audio/SecretMountains_HighHorse_MIX.wav",
+        "e195f9cc29668a68d6841bc351d61d73"
+      ],
+      "melody1": [
+        "melody1/SecretMountains_HighHorse_MELODY1.csv",
+        "020c191e430ab939472cae17a5b3ee1c"
+      ],
+      "melody2": [
+        "melody2/SecretMountains_HighHorse_MELODY2.csv",
+        "68b4d6de235ae885eacffc642148a63f"
+      ],
+      "melody3": [
+        "melody3/SecretMountains_HighHorse_MELODY3.csv",
+        "8eaf9ce72b85fd8de1675b8a356c0e39"
+      ]
+    },
+    "Snowmine_Curfews": {
+      "audio": [
+        "audio/Snowmine_Curfews_MIX.wav",
+        "669c4d6c7a26abd88517170167956f1e"
+      ],
+      "melody1": [
+        "melody1/Snowmine_Curfews_MELODY1.csv",
+        "5cbfa42e94336f9539aa3689b8271235"
+      ],
+      "melody2": [
+        "melody2/Snowmine_Curfews_MELODY2.csv",
+        "5cbfa42e94336f9539aa3689b8271235"
+      ],
+      "melody3": [
+        "melody3/Snowmine_Curfews_MELODY3.csv",
+        "5cbfa42e94336f9539aa3689b8271235"
+      ]
+    },
+    "StevenClark_Bounty": {
+      "audio": [
+        "audio/StevenClark_Bounty_MIX.wav",
+        "801b73989d574944c90a2818c07c5c26"
+      ],
+      "melody1": [
+        "melody1/StevenClark_Bounty_MELODY1.csv",
+        "7ad77479e3a1f0624328d1072769efb3"
+      ],
+      "melody2": [
+        "melody2/StevenClark_Bounty_MELODY2.csv",
+        "7ad77479e3a1f0624328d1072769efb3"
+      ],
+      "melody3": [
+        "melody3/StevenClark_Bounty_MELODY3.csv",
+        "7ad77479e3a1f0624328d1072769efb3"
+      ]
+    },
+    "StrandOfOaks_Spacestation": {
+      "audio": [
+        "audio/StrandOfOaks_Spacestation_MIX.wav",
+        "932c0baa4074ef819a88a8b873e1e455"
+      ],
+      "melody1": [
+        "melody1/StrandOfOaks_Spacestation_MELODY1.csv",
+        "eb08010cf08379765d3d3bc71f93883a"
+      ],
+      "melody2": [
+        "melody2/StrandOfOaks_Spacestation_MELODY2.csv",
+        "b117c1e4cd6f4da5016d5000a23051c3"
+      ],
+      "melody3": [
+        "melody3/StrandOfOaks_Spacestation_MELODY3.csv",
+        "602d6ae2af4971e38b4153844c574f61"
+      ]
+    },
+    "SweetLights_YouLetMeDown": {
+      "audio": [
+        "audio/SweetLights_YouLetMeDown_MIX.wav",
+        "21f2e62df189e617b8f1e381aa33e1a0"
+      ],
+      "melody1": [
+        "melody1/SweetLights_YouLetMeDown_MELODY1.csv",
+        "a5d2fdbc86bc1a94bce8b447afb675f9"
+      ],
+      "melody2": [
+        "melody2/SweetLights_YouLetMeDown_MELODY2.csv",
+        "6c63f506f064ceb9c861dd2b2e5fb818"
+      ],
+      "melody3": [
+        "melody3/SweetLights_YouLetMeDown_MELODY3.csv",
+        "30df3d61443b3d13c0aa2abb672a2c52"
+      ]
+    },
+    "TheDistricts_Vermont": {
+      "audio": [
+        "audio/TheDistricts_Vermont_MIX.wav",
+        "af4b4dd70eca666c07baea666f0d0d5f"
+      ],
+      "melody1": [
+        "melody1/TheDistricts_Vermont_MELODY1.csv",
+        "299969e14d8aee9218324dd303946411"
+      ],
+      "melody2": [
+        "melody2/TheDistricts_Vermont_MELODY2.csv",
+        "cbf53f226875310e8710ca229914d629"
+      ],
+      "melody3": [
+        "melody3/TheDistricts_Vermont_MELODY3.csv",
+        "4361c4b7059f8ebd20c9b7eb90fc7ce9"
+      ]
+    },
+    "TheScarletBrand_LesFleursDuMal": {
+      "audio": [
+        "audio/TheScarletBrand_LesFleursDuMal_MIX.wav",
+        "63dc609e9303fa9b966113308de91750"
+      ],
+      "melody1": [
+        "melody1/TheScarletBrand_LesFleursDuMal_MELODY1.csv",
+        "53c6080e79116f59f35c6d4ee3a72048"
+      ],
+      "melody2": [
+        "melody2/TheScarletBrand_LesFleursDuMal_MELODY2.csv",
+        "8ee4c03128e8529b40e128a42b011700"
+      ],
+      "melody3": [
+        "melody3/TheScarletBrand_LesFleursDuMal_MELODY3.csv",
+        "1115adbd81a36b131ea6bd8cb6d4049b"
+      ]
+    },
+    "TheSoSoGlos_Emergency": {
+      "audio": [
+        "audio/TheSoSoGlos_Emergency_MIX.wav",
+        "3fe3698752d99b4b2e2a9e0100d61e61"
+      ],
+      "melody1": [
+        "melody1/TheSoSoGlos_Emergency_MELODY1.csv",
+        "8dececffb774c15254159aca2fb4deb0"
+      ],
+      "melody2": [
+        "melody2/TheSoSoGlos_Emergency_MELODY2.csv",
+        "2e234ffe59efc22794350ab815af9f8c"
+      ],
+      "melody3": [
+        "melody3/TheSoSoGlos_Emergency_MELODY3.csv",
+        "78cba5f3e5fce6a3123d53e43c4a9bb1"
+      ]
+    },
+    "Wolf_DieBekherte": {
+      "audio": [
+        "audio/Wolf_DieBekherte_MIX.wav",
+        "28af3da873e9ca9e49911f8f88920b80"
+      ],
+      "melody1": [
+        "melody1/Wolf_DieBekherte_MELODY1.csv",
+        "d1eb1a1ac270c47a45c698640df24171"
+      ],
+      "melody2": [
+        "melody2/Wolf_DieBekherte_MELODY2.csv",
+        "227881a846bb95acd2fbf6a0672f0663"
+      ],
+      "melody3": [
+        "melody3/Wolf_DieBekherte_MELODY3.csv",
+        "1aa5ea58544c135d7e900df3c67e6d8f"
+      ]
+    }
+  },
+  "metadata": {
+    "medleydb_melody_metadata": [
+      "medleydb_melody_metadata.json",
+      "842f01084a41e1a43f8640ac05b9e76d"
+    ]
+  }
+}

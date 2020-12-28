@@ -1,0 +1,6005 @@
+{
+  "version": null,
+  "tracks": {
+    "classical.00000": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00000.wav",
+        "4ef1763c46a20382abdc0ab8f2d06ac3"
+      ]
+    },
+    "classical.00001": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00001.wav",
+        "7a42b8f88a6a1664089ecc6d5673f8e7"
+      ]
+    },
+    "classical.00002": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00002.wav",
+        "078b5df4c248062c0665c7d7bfccbd36"
+      ]
+    },
+    "classical.00003": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00003.wav",
+        "fe1b0937fd7286b44ab3aebe6875efca"
+      ]
+    },
+    "classical.00004": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00004.wav",
+        "f243be4cbb4a22a1975d220ad4408a9a"
+      ]
+    },
+    "classical.00005": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00005.wav",
+        "1bfe0d5f416fa1d4c5cc4fdb2be57d32"
+      ]
+    },
+    "classical.00006": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00006.wav",
+        "2166d6aceacb62a12771f079e589c842"
+      ]
+    },
+    "classical.00007": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00007.wav",
+        "5b71d25efe389275c7bc9dc276a7a613"
+      ]
+    },
+    "classical.00008": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00008.wav",
+        "d6eddf8541f31a231a7522e4bb0faf90"
+      ]
+    },
+    "classical.00009": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00009.wav",
+        "342800cd31bfa8c20e69bdf9fcb0ed85"
+      ]
+    },
+    "classical.00010": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00010.wav",
+        "2e12d7964e28938cefd0bc1328d87443"
+      ]
+    },
+    "classical.00011": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00011.wav",
+        "498720f09597742ae6fda2b6b8c65282"
+      ]
+    },
+    "classical.00012": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00012.wav",
+        "767047a3de57fd981bdd9f00e2633ded"
+      ]
+    },
+    "classical.00013": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00013.wav",
+        "921c16d123a1b2230b05b8ae918b65e5"
+      ]
+    },
+    "classical.00014": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00014.wav",
+        "f7029c70a087ba2736c620b647d6a55a"
+      ]
+    },
+    "classical.00015": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00015.wav",
+        "b7eb2b330451a130dff916a626801a82"
+      ]
+    },
+    "classical.00016": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00016.wav",
+        "b0933dbc40c7bb8536f06eb06f89304e"
+      ]
+    },
+    "classical.00017": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00017.wav",
+        "adf213f458a5652d00242a0f35b7d81a"
+      ]
+    },
+    "classical.00018": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00018.wav",
+        "8801e12ba62893d0b9a51570d2aec0fd"
+      ]
+    },
+    "classical.00019": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00019.wav",
+        "bf6bf8f0d7b7d3ce63f6ead71f6e3d13"
+      ]
+    },
+    "classical.00020": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00020.wav",
+        "a1a5f844a69c4edfd2e55d6235be0dae"
+      ]
+    },
+    "classical.00021": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00021.wav",
+        "b179ce11b275328266dd482bb6ab7a51"
+      ]
+    },
+    "classical.00022": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00022.wav",
+        "5df02421e0c92151b294ac1394a3b903"
+      ]
+    },
+    "classical.00023": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00023.wav",
+        "57e690607414c5cee103bb507cdfe006"
+      ]
+    },
+    "classical.00024": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00024.wav",
+        "4903cb7fb4de14c01e0592ca1b5697ca"
+      ]
+    },
+    "classical.00025": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00025.wav",
+        "bb07b11af6629dbbd04d6e811a150cf0"
+      ]
+    },
+    "classical.00026": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00026.wav",
+        "53f543bb5716fb3b24db5ae761a28803"
+      ]
+    },
+    "classical.00027": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00027.wav",
+        "f92dd0435d8f2076c1dbc2f9b2b92047"
+      ]
+    },
+    "classical.00028": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00028.wav",
+        "e724268701da98ba56e8f3d1bfcaa840"
+      ]
+    },
+    "classical.00029": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00029.wav",
+        "0bc26ef914e96e9cc3e057d4e0010958"
+      ]
+    },
+    "classical.00030": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00030.wav",
+        "488ba1766f1b837c604975abb0520e64"
+      ]
+    },
+    "classical.00031": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00031.wav",
+        "6d267619e50ef9dbe659287d61a70f35"
+      ]
+    },
+    "classical.00032": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00032.wav",
+        "14875b84725d8e6cd5390518c18779f6"
+      ]
+    },
+    "classical.00033": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00033.wav",
+        "ce185852a3976daea01051247969b7be"
+      ]
+    },
+    "classical.00034": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00034.wav",
+        "3a341fa8c90f0459caf0c897d86db110"
+      ]
+    },
+    "classical.00035": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00035.wav",
+        "f81da55f54bfd77d4a8f49dd6507b0c7"
+      ]
+    },
+    "classical.00036": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00036.wav",
+        "88f4f84992d93526b04c43f4c2e2efe4"
+      ]
+    },
+    "classical.00037": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00037.wav",
+        "68838d3cc528aef527bbcedc5d2b43d6"
+      ]
+    },
+    "classical.00038": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00038.wav",
+        "fd7ef547ad59a6163309bdb97210fc51"
+      ]
+    },
+    "classical.00039": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00039.wav",
+        "32d18e0269a68e47d02eb548a819bcaa"
+      ]
+    },
+    "classical.00040": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00040.wav",
+        "adac8b0315b26af0540629e660ce0d6a"
+      ]
+    },
+    "classical.00041": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00041.wav",
+        "cf977d4a123c93921efef5f3c9231af3"
+      ]
+    },
+    "classical.00042": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00042.wav",
+        "a190e48189dd53850bd75e89796fc79a"
+      ]
+    },
+    "classical.00043": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00043.wav",
+        "d04bcf92e6c9f52bcf230b7ccc77eb86"
+      ]
+    },
+    "classical.00044": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00044.wav",
+        "8e764c7dbbd08e9aff4fc1e161f97e5f"
+      ]
+    },
+    "classical.00045": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00045.wav",
+        "d2ac0067d568ee05bf061e45b86c542b"
+      ]
+    },
+    "classical.00046": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00046.wav",
+        "e4e576587e94b4bb97e1a7a46acc8b0a"
+      ]
+    },
+    "classical.00047": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00047.wav",
+        "fb530715af630360264482ae7a0665c9"
+      ]
+    },
+    "classical.00048": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00048.wav",
+        "7aae03e503d805cbf5402004ddd86f0c"
+      ]
+    },
+    "classical.00049": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00049.wav",
+        "2ca47a6addcf64aa4b7f6f208799c6c8"
+      ]
+    },
+    "classical.00050": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00050.wav",
+        "7d868f80458c83b1f26dfa26bc9bd3af"
+      ]
+    },
+    "classical.00051": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00051.wav",
+        "f1921973f48d3d55e8031a5c1811a220"
+      ]
+    },
+    "classical.00052": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00052.wav",
+        "84aa7dafd6610f5fbc85fa7bcef9828b"
+      ]
+    },
+    "classical.00053": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00053.wav",
+        "8c346c93b2358a1c29660dc4be4ed463"
+      ]
+    },
+    "classical.00054": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00054.wav",
+        "b12773a73de3ace9b6f0dd2b745f65ff"
+      ]
+    },
+    "classical.00055": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00055.wav",
+        "e6c1ba04740b6cceb48b55a2d2f7f89b"
+      ]
+    },
+    "classical.00056": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00056.wav",
+        "23ff77c2cfee25f510dd22bf3e21b174"
+      ]
+    },
+    "classical.00057": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00057.wav",
+        "3e147fb4b5981f85a228c0a610be8e47"
+      ]
+    },
+    "classical.00058": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00058.wav",
+        "d4cfdc1cd62c7118508ff57e9caf9e8c"
+      ]
+    },
+    "classical.00059": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00059.wav",
+        "9798899f623096299bcd5a32e950e2be"
+      ]
+    },
+    "classical.00060": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00060.wav",
+        "3c444f81fb774242de4a1c09da8b84da"
+      ]
+    },
+    "classical.00061": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00061.wav",
+        "dcbfdc067a43b702e50d5b0221b79e43"
+      ]
+    },
+    "classical.00062": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00062.wav",
+        "4bf386b9225acd93cca406e77cd7643c"
+      ]
+    },
+    "classical.00063": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00063.wav",
+        "70b75d989ced60837dcf5adc07953053"
+      ]
+    },
+    "classical.00064": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00064.wav",
+        "15c246b00c9c861a494f9b12615c829d"
+      ]
+    },
+    "classical.00065": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00065.wav",
+        "7f5c7839c0d73bd2c0831e41783eeda4"
+      ]
+    },
+    "classical.00066": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00066.wav",
+        "18db35f7a4a2637f51e5a1dcb06f832e"
+      ]
+    },
+    "classical.00067": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00067.wav",
+        "c57c057dda67617cfe3bb3e3db25a441"
+      ]
+    },
+    "classical.00068": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00068.wav",
+        "d3aeb3c1964b8ffcbc7d639f39ab4257"
+      ]
+    },
+    "classical.00069": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00069.wav",
+        "8133c9e41ac67b4c28aa980bbe5f9341"
+      ]
+    },
+    "classical.00070": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00070.wav",
+        "6aaa6284c9c6c5032934f3778709689f"
+      ]
+    },
+    "classical.00071": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00071.wav",
+        "94c6a40f44fe49cfd6edb23660591d67"
+      ]
+    },
+    "classical.00072": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00072.wav",
+        "fc24674917ffd04b1f7f9bbd47ec8bc1"
+      ]
+    },
+    "classical.00073": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00073.wav",
+        "8f16d604e60c4205d9f6a0787bafe21e"
+      ]
+    },
+    "classical.00074": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00074.wav",
+        "9f7a4f8b99fb190ccd3c82e5365bf8ac"
+      ]
+    },
+    "classical.00075": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00075.wav",
+        "25e06f1f21b19f1f800b715cf6427b55"
+      ]
+    },
+    "classical.00076": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00076.wav",
+        "9e5f05c2cbee693b5308deee623cd125"
+      ]
+    },
+    "classical.00077": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00077.wav",
+        "ad82e1272f08d06257b380f8c31a3ec1"
+      ]
+    },
+    "classical.00078": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00078.wav",
+        "e4caf2a82f3fd7dbff009736150e4ca0"
+      ]
+    },
+    "classical.00079": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00079.wav",
+        "705ec96d117ef5b9e1073f9a84c60707"
+      ]
+    },
+    "classical.00080": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00080.wav",
+        "dac0815bf1c2f492dc376add1febd6aa"
+      ]
+    },
+    "classical.00081": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00081.wav",
+        "b8802226d112c53e7165da2c8ff60f40"
+      ]
+    },
+    "classical.00082": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00082.wav",
+        "f66434097dd515686f43fc20e0623291"
+      ]
+    },
+    "classical.00083": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00083.wav",
+        "7674049c4d683e1cb027aed4ae5519de"
+      ]
+    },
+    "classical.00084": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00084.wav",
+        "f8dd9fbab80c6a5e890597e7d606890f"
+      ]
+    },
+    "classical.00085": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00085.wav",
+        "b39945f9e172d65a6454ff684a8c8323"
+      ]
+    },
+    "classical.00086": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00086.wav",
+        "e6ad4ae7ff8dac395843a84c832e64b0"
+      ]
+    },
+    "classical.00087": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00087.wav",
+        "07665da74747697b339313cde612d3b3"
+      ]
+    },
+    "classical.00088": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00088.wav",
+        "0c8653138e472f5628cb1b1dbea002cd"
+      ]
+    },
+    "classical.00089": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00089.wav",
+        "33029ff1e39126ed946faacc8282f7e6"
+      ]
+    },
+    "classical.00090": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00090.wav",
+        "57956023a78da7445938e6d5cd153777"
+      ]
+    },
+    "classical.00091": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00091.wav",
+        "6ed251f0a9dc7a23b9ed149202eb7eac"
+      ]
+    },
+    "classical.00092": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00092.wav",
+        "776a5ca8015e4430665fb6ce13587fa3"
+      ]
+    },
+    "classical.00093": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00093.wav",
+        "64154ac15110287437bcd76a3b519da9"
+      ]
+    },
+    "classical.00094": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00094.wav",
+        "d891561ef0bb15785cdaf4e2314a94fe"
+      ]
+    },
+    "classical.00095": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00095.wav",
+        "642d39db2e3b1641da68e8cdf1e5057c"
+      ]
+    },
+    "classical.00096": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00096.wav",
+        "5a8d8a8c92b4736ef1919c078b0a72e4"
+      ]
+    },
+    "classical.00097": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00097.wav",
+        "c042ff94f99021445b74141382a4f7fe"
+      ]
+    },
+    "classical.00098": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00098.wav",
+        "c855f633f280e672a85fd4bcfbc51e0e"
+      ]
+    },
+    "classical.00099": {
+      "audio": [
+        "gtzan_genre/genres/classical/classical.00099.wav",
+        "c45df4eced7f544813b4632314695a8f"
+      ]
+    },
+    "country.00000": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00000.wav",
+        "5d3854fd8d4b01eeabafaa1111137daf"
+      ]
+    },
+    "country.00001": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00001.wav",
+        "d823100ece3190677b86b799568bc9c3"
+      ]
+    },
+    "country.00002": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00002.wav",
+        "82e0b348b13107820c261a7e28899245"
+      ]
+    },
+    "country.00003": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00003.wav",
+        "75bdffbb330ed4e5d2e73f6bfd4b6b53"
+      ]
+    },
+    "country.00004": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00004.wav",
+        "c70430f2467cd0f9a7d00b18e753fd01"
+      ]
+    },
+    "country.00005": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00005.wav",
+        "f9874ea1e9b21838b376cd7ff8146ca9"
+      ]
+    },
+    "country.00006": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00006.wav",
+        "2e27ca7d2951ee5ee031472c26b9c285"
+      ]
+    },
+    "country.00007": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00007.wav",
+        "9c51cab52a3c85c3edcf9e5b37e61384"
+      ]
+    },
+    "country.00008": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00008.wav",
+        "551f2b496cb97ad8a01b0c801931a024"
+      ]
+    },
+    "country.00009": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00009.wav",
+        "e458cd8f37c5f654f5af3d8bc45d5dd9"
+      ]
+    },
+    "country.00010": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00010.wav",
+        "5e599dbfeeb53243a8b868faa6dc317b"
+      ]
+    },
+    "country.00011": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00011.wav",
+        "b8b6cbdb719aedba27ca5396d98a01e1"
+      ]
+    },
+    "country.00012": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00012.wav",
+        "6f6f07270a052347ae016d7d8aed3923"
+      ]
+    },
+    "country.00013": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00013.wav",
+        "9b013693c7f06b960b13814585d10f89"
+      ]
+    },
+    "country.00014": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00014.wav",
+        "a37425531ae200e3b96e17841a8f3608"
+      ]
+    },
+    "country.00015": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00015.wav",
+        "b8a0c7dd2f5b0b09f42472b0f8f9adfc"
+      ]
+    },
+    "country.00016": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00016.wav",
+        "e6f11b490ea48157b9326099a15e5538"
+      ]
+    },
+    "country.00017": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00017.wav",
+        "d6a3cd22ac601d90c1cf008574dfd76d"
+      ]
+    },
+    "country.00018": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00018.wav",
+        "3a7ac19de522537657060ba5d5471591"
+      ]
+    },
+    "country.00019": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00019.wav",
+        "920039e08d474c37c1199c16891244cf"
+      ]
+    },
+    "country.00020": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00020.wav",
+        "ca9a1cfc61dce26f313241c9f5852046"
+      ]
+    },
+    "country.00021": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00021.wav",
+        "417a833aff79ac56c2f8fd3c2b95a10d"
+      ]
+    },
+    "country.00022": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00022.wav",
+        "be3313247ad51a7797dd6d734e1f318b"
+      ]
+    },
+    "country.00023": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00023.wav",
+        "8ec949a22df1c36672b5a8965deaac07"
+      ]
+    },
+    "country.00024": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00024.wav",
+        "4307513a31c39ed2d79859940ab327fa"
+      ]
+    },
+    "country.00025": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00025.wav",
+        "e0467d63c8444e0f0538722ba4cab03f"
+      ]
+    },
+    "country.00026": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00026.wav",
+        "1fb586f70fe8c638aec057758b43cd34"
+      ]
+    },
+    "country.00027": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00027.wav",
+        "31c6c9a4deb66a0a204b0b9dccbaba9f"
+      ]
+    },
+    "country.00028": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00028.wav",
+        "baa563a2cdf04db45aad1866ddffbb1c"
+      ]
+    },
+    "country.00029": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00029.wav",
+        "2c6ee21337d67f452abdf0ca438d83c0"
+      ]
+    },
+    "country.00030": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00030.wav",
+        "b5861c63c51c004f691dcb962e7eaaa0"
+      ]
+    },
+    "country.00031": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00031.wav",
+        "31cd5c81fa945a33d5222ac0ad2b8bba"
+      ]
+    },
+    "country.00032": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00032.wav",
+        "4ba6bf7ce5ae48719e6e31b80a0871ff"
+      ]
+    },
+    "country.00033": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00033.wav",
+        "7a8e4b09bda82d9d033babdc6d2ccf4c"
+      ]
+    },
+    "country.00034": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00034.wav",
+        "7c65ca56f29d1248e81c8709bb37659f"
+      ]
+    },
+    "country.00035": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00035.wav",
+        "fa0570faa1b30933fadf4c88e18f5c3b"
+      ]
+    },
+    "country.00036": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00036.wav",
+        "02b5c5f54cd367a95eb463157669d7e7"
+      ]
+    },
+    "country.00037": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00037.wav",
+        "35c3af26bca4e71c3742839e552f9300"
+      ]
+    },
+    "country.00038": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00038.wav",
+        "f5ca3acb2fbd505a2ea38022e63c9b7a"
+      ]
+    },
+    "country.00039": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00039.wav",
+        "b696620868391e7dadb1dd0476f2e4f6"
+      ]
+    },
+    "country.00040": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00040.wav",
+        "1cebfb789dc00a2a88d7d8934307541c"
+      ]
+    },
+    "country.00041": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00041.wav",
+        "50610a1936d0305c117fa5dd5118caab"
+      ]
+    },
+    "country.00042": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00042.wav",
+        "e1b60156675042a06b5d2dfb590be530"
+      ]
+    },
+    "country.00043": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00043.wav",
+        "14e2228cefc20d470fb2025a34d2e4b0"
+      ]
+    },
+    "country.00044": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00044.wav",
+        "a22a22777c8a9f8daf00458ce4c631a5"
+      ]
+    },
+    "country.00045": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00045.wav",
+        "9d71808f40fea2191a7e4bfc3caee0c7"
+      ]
+    },
+    "country.00046": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00046.wav",
+        "45dabe2956899807a6705e90dcfff97d"
+      ]
+    },
+    "country.00047": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00047.wav",
+        "f2a42f77812d5edc2913f1c63eafa9ac"
+      ]
+    },
+    "country.00048": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00048.wav",
+        "6a975553350406a8c67793df45a6182d"
+      ]
+    },
+    "country.00049": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00049.wav",
+        "623afa0d813c34a21aa88999592339b2"
+      ]
+    },
+    "country.00050": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00050.wav",
+        "2106673d749435b8cdd7fe82022a0b55"
+      ]
+    },
+    "country.00051": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00051.wav",
+        "b7d509e9cccd4d4699ba2a9c7b177b4a"
+      ]
+    },
+    "country.00052": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00052.wav",
+        "b42cd7a41d2839084cb1b3007e8aa25a"
+      ]
+    },
+    "country.00053": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00053.wav",
+        "cbeb8c35e97e9d8467dbe25ab1635bd3"
+      ]
+    },
+    "country.00054": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00054.wav",
+        "b32324d32212adc4e348ea84c6242d9a"
+      ]
+    },
+    "country.00055": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00055.wav",
+        "7928cf85ba37af2787115c092f37d16a"
+      ]
+    },
+    "country.00056": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00056.wav",
+        "be5cce46c4818b32e87d5bb948a5c0e7"
+      ]
+    },
+    "country.00057": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00057.wav",
+        "b78cb4d3f438b4167f93e7c70f35f8a1"
+      ]
+    },
+    "country.00058": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00058.wav",
+        "30bd70cd67a9a9b08cbb10269640de4d"
+      ]
+    },
+    "country.00059": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00059.wav",
+        "86ac604bcde7f8c580669283f6605a14"
+      ]
+    },
+    "country.00060": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00060.wav",
+        "d0cb6e213b25fd75d813b39cec4d9c20"
+      ]
+    },
+    "country.00061": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00061.wav",
+        "74d91f834a27f5be8e655c3bbe41f5d6"
+      ]
+    },
+    "country.00062": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00062.wav",
+        "78236ff3197fcf3236a4df4d4663f39d"
+      ]
+    },
+    "country.00063": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00063.wav",
+        "420de114dca146809c312b44970fe193"
+      ]
+    },
+    "country.00064": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00064.wav",
+        "367c01c13fec13d9d6a28df635fbf11a"
+      ]
+    },
+    "country.00065": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00065.wav",
+        "2f295f3d4ce8b82dee7fb524fee680f7"
+      ]
+    },
+    "country.00066": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00066.wav",
+        "632451015b11a4185c6cd6f9d6975436"
+      ]
+    },
+    "country.00067": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00067.wav",
+        "3ee6c86af69f22434093f79baa112f33"
+      ]
+    },
+    "country.00068": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00068.wav",
+        "fef069fc305fa14e72b0adea6944838b"
+      ]
+    },
+    "country.00069": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00069.wav",
+        "63a75634626892a1934a54ef5d5ca945"
+      ]
+    },
+    "country.00070": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00070.wav",
+        "246e0dbc59f116f678e901acb3a8a4ef"
+      ]
+    },
+    "country.00071": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00071.wav",
+        "1c65b6912221ee941efb9572332bf075"
+      ]
+    },
+    "country.00072": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00072.wav",
+        "e7b32776bd963176407de262d9610d71"
+      ]
+    },
+    "country.00073": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00073.wav",
+        "a81deb6a7eecc2cbf42925d6449db3b4"
+      ]
+    },
+    "country.00074": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00074.wav",
+        "a5ee91462532737e6e9b9ab180bab55d"
+      ]
+    },
+    "country.00075": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00075.wav",
+        "f77374b5b2c8e2bb7366eeb441198220"
+      ]
+    },
+    "country.00076": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00076.wav",
+        "4021d773223ab14e9957b63d8a531db0"
+      ]
+    },
+    "country.00077": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00077.wav",
+        "2a70b016ea9d2b24ca87a7085915fbd5"
+      ]
+    },
+    "country.00078": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00078.wav",
+        "c5421a6f16bdcced4111d71aff0485e4"
+      ]
+    },
+    "country.00079": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00079.wav",
+        "be1c73226b485e86c0d4eb4c8eac2055"
+      ]
+    },
+    "country.00080": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00080.wav",
+        "a306de14df4a4a9907336b72c88ca80e"
+      ]
+    },
+    "country.00081": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00081.wav",
+        "d488c450f7c0cc5a2cccd6532ff4b902"
+      ]
+    },
+    "country.00082": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00082.wav",
+        "7c6fff2953d58895330fa72626deec74"
+      ]
+    },
+    "country.00083": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00083.wav",
+        "4847944c54006c266a50f0340a7f84a9"
+      ]
+    },
+    "country.00084": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00084.wav",
+        "9d6bda562e0c53a95d2606903fff9edf"
+      ]
+    },
+    "country.00085": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00085.wav",
+        "8c1acd765bc50b12e788aa541f4f1dd6"
+      ]
+    },
+    "country.00086": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00086.wav",
+        "6af58f3100876ee3b15afba207eda212"
+      ]
+    },
+    "country.00087": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00087.wav",
+        "f935cf0e4b05580daed701029a4ed38f"
+      ]
+    },
+    "country.00088": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00088.wav",
+        "ae60fa1dad5d6ea401165da8fcd55f5a"
+      ]
+    },
+    "country.00089": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00089.wav",
+        "6a19524d010b61cebeb14e2f7f7da986"
+      ]
+    },
+    "country.00090": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00090.wav",
+        "a2d5d06709bdd76fcf52977a596c5305"
+      ]
+    },
+    "country.00091": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00091.wav",
+        "3326117890f106d44009f1438bf69da6"
+      ]
+    },
+    "country.00092": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00092.wav",
+        "b74c96cf27b7b7715a7fc42503934b7b"
+      ]
+    },
+    "country.00093": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00093.wav",
+        "ff60fbb9e91b8b78162344f915658868"
+      ]
+    },
+    "country.00094": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00094.wav",
+        "536d29c0a95bf05b248d41e5f1a704c7"
+      ]
+    },
+    "country.00095": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00095.wav",
+        "8a4d9c2ba0f51f15b1beba1c327c0484"
+      ]
+    },
+    "country.00096": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00096.wav",
+        "5aaef329fe597cfc5e88bcd07461fae9"
+      ]
+    },
+    "country.00097": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00097.wav",
+        "caec60cfd09526d98b6e5110521f31c7"
+      ]
+    },
+    "country.00098": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00098.wav",
+        "da8b4bf3b3bdfab28054bbb039a5a23e"
+      ]
+    },
+    "country.00099": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00099.wav",
+        "8d1089fa63989a68d25be785145769ab"
+      ]
+    },
+    "disco.00000": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00000.wav",
+        "16e4fbe9c54ae9ba8b79e72e6d4ff85b"
+      ]
+    },
+    "disco.00001": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00001.wav",
+        "8293facfe73dccaa4147ca3acced2e5f"
+      ]
+    },
+    "disco.00002": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00002.wav",
+        "541dbda974cbee063d9853bf6798c9ce"
+      ]
+    },
+    "disco.00003": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00003.wav",
+        "d134435d82dc63c3e91882a4c1ced7c7"
+      ]
+    },
+    "disco.00004": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00004.wav",
+        "8f5f45cccb3c6f8d57f457588a0860f3"
+      ]
+    },
+    "disco.00005": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00005.wav",
+        "9e8468a2262e4af2eef01418c3f6e90b"
+      ]
+    },
+    "disco.00006": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00006.wav",
+        "7f82f8cefbc8b70d7a8bbb186673e164"
+      ]
+    },
+    "disco.00007": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00007.wav",
+        "0d487c405222804c5c26f9a8c9d35f2d"
+      ]
+    },
+    "disco.00008": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00008.wav",
+        "71dbd73b60c4617dc0d13d26b2c4194b"
+      ]
+    },
+    "disco.00009": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00009.wav",
+        "be79005c703de8ce4ec1e846db5d58c7"
+      ]
+    },
+    "disco.00010": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00010.wav",
+        "352fec9899ab538d666160ebc7d8f832"
+      ]
+    },
+    "disco.00011": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00011.wav",
+        "db5235edc3e33eeb75fc3ec9d35141b0"
+      ]
+    },
+    "disco.00012": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00012.wav",
+        "5b7905e4bb890fb6b1d34cf56a42c7f8"
+      ]
+    },
+    "disco.00013": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00013.wav",
+        "5ce794062e487553115182d6749e7658"
+      ]
+    },
+    "disco.00014": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00014.wav",
+        "464e77cf51ee31204100dc976f352e8c"
+      ]
+    },
+    "disco.00015": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00015.wav",
+        "5aa377cc48f6785ff71e2bbc2e1a9e5d"
+      ]
+    },
+    "disco.00016": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00016.wav",
+        "0a596477003370fd83bca9450415d9a4"
+      ]
+    },
+    "disco.00017": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00017.wav",
+        "0ec1815a3b83191cbba8c89463e458ec"
+      ]
+    },
+    "disco.00018": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00018.wav",
+        "d0c22c106c7297a4c77388bde0c79ce7"
+      ]
+    },
+    "disco.00019": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00019.wav",
+        "31129fdd91c8b0e1c7d6925ef57ec75c"
+      ]
+    },
+    "disco.00020": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00020.wav",
+        "dc0e7a8d3b9ab42a3be2bf626a17d58f"
+      ]
+    },
+    "disco.00021": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00021.wav",
+        "291d8382d41b245fc42d8bb9a43ac158"
+      ]
+    },
+    "disco.00022": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00022.wav",
+        "32e3e26bdb290aa75f0caf1081465e5f"
+      ]
+    },
+    "disco.00023": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00023.wav",
+        "91af7864af203c5a7c39d8483c3c6be9"
+      ]
+    },
+    "disco.00024": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00024.wav",
+        "1502c07f65ccd66411fc82460ef02066"
+      ]
+    },
+    "disco.00025": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00025.wav",
+        "65afaf251ee3552eedba538b1b080c14"
+      ]
+    },
+    "disco.00026": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00026.wav",
+        "1a229a114ac6a7feea6c9365a33e71b0"
+      ]
+    },
+    "disco.00027": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00027.wav",
+        "c5e19d06df80bf3863e81ae90d37570a"
+      ]
+    },
+    "disco.00028": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00028.wav",
+        "806e42ad61633a789caa6e92513c4962"
+      ]
+    },
+    "disco.00029": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00029.wav",
+        "efc6e32aae1c7e548f25a4b7d84dceda"
+      ]
+    },
+    "disco.00030": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00030.wav",
+        "506ca30dfab265745b36ac06d6d2e3ac"
+      ]
+    },
+    "disco.00031": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00031.wav",
+        "ad204e1ebc3ee1d90f3c68cbea6e01f3"
+      ]
+    },
+    "disco.00032": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00032.wav",
+        "02f1419b6ba3eb93a8c6eb37d2b2fd98"
+      ]
+    },
+    "disco.00033": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00033.wav",
+        "6106f5397899898b57f044c3d495d3af"
+      ]
+    },
+    "disco.00034": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00034.wav",
+        "cea1d5ce1ee152fc381a1e09c257f762"
+      ]
+    },
+    "disco.00035": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00035.wav",
+        "fa388d0e4fcb4b7eeed321b1f9f0f465"
+      ]
+    },
+    "disco.00036": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00036.wav",
+        "7346cdc793a903cdfdecc9cf3c65031a"
+      ]
+    },
+    "disco.00037": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00037.wav",
+        "1e3d562228255a452a209550b0b0d7ff"
+      ]
+    },
+    "disco.00038": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00038.wav",
+        "7413cbde20fdce09c5900ca9b35bbcca"
+      ]
+    },
+    "disco.00039": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00039.wav",
+        "c5530e8bd9d556834472e12860faa476"
+      ]
+    },
+    "disco.00040": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00040.wav",
+        "db82b12f664da48e5e865f5a1fc7b150"
+      ]
+    },
+    "disco.00041": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00041.wav",
+        "8a4a0b3f7374262491a9d787c15a0c4d"
+      ]
+    },
+    "disco.00042": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00042.wav",
+        "5f3ff8923cb236e359f5ac980cd85fa4"
+      ]
+    },
+    "disco.00043": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00043.wav",
+        "8023b1ad0ec6cbcf64ea4272d9cf4d4b"
+      ]
+    },
+    "disco.00044": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00044.wav",
+        "7135450a1bc4e296211c4992af511216"
+      ]
+    },
+    "disco.00045": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00045.wav",
+        "5806533090864c96bb75e76063ac908b"
+      ]
+    },
+    "disco.00046": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00046.wav",
+        "1119d144c0310cb78ffd883a10b44a01"
+      ]
+    },
+    "disco.00047": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00047.wav",
+        "973135c1c5d7587d84048e2ee8a17f2d"
+      ]
+    },
+    "disco.00048": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00048.wav",
+        "d2bd378644f34740b1a04723107105b6"
+      ]
+    },
+    "disco.00049": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00049.wav",
+        "c588b544f67942b575a7a1b87f777e1e"
+      ]
+    },
+    "disco.00050": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00050.wav",
+        "e0347732e1dfef52912b6b6374a67739"
+      ]
+    },
+    "disco.00051": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00051.wav",
+        "3d8a028421e10558ed0ce470a9b5d5df"
+      ]
+    },
+    "disco.00052": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00052.wav",
+        "73a54e279c104a7a36d3265b3be96ecb"
+      ]
+    },
+    "disco.00053": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00053.wav",
+        "cc7f1dfa5414f798123741ea50c4f4d4"
+      ]
+    },
+    "disco.00054": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00054.wav",
+        "67bee900b38c5b45a5cc8e5bb103f72a"
+      ]
+    },
+    "disco.00055": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00055.wav",
+        "3cecaf913957ca9a129d442229f48fc2"
+      ]
+    },
+    "disco.00056": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00056.wav",
+        "8ce00e69502ec3a26546d9bd891d339b"
+      ]
+    },
+    "disco.00057": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00057.wav",
+        "7415ba8db8b2ff4df030e746e292435b"
+      ]
+    },
+    "disco.00058": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00058.wav",
+        "0fc9ff799971447fb28f9c6c3ba27e2d"
+      ]
+    },
+    "disco.00059": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00059.wav",
+        "ef96de3320311f399e7b9dd58caff1c3"
+      ]
+    },
+    "disco.00060": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00060.wav",
+        "720924894018d9da73fd5928d8a51dce"
+      ]
+    },
+    "disco.00061": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00061.wav",
+        "2673b727680a8cd74a6ccc30fce1ef7b"
+      ]
+    },
+    "disco.00062": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00062.wav",
+        "97026d7738bf0bc5fcd196d6e567cf37"
+      ]
+    },
+    "disco.00063": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00063.wav",
+        "5888cdf0bc34f84be71882540ec334fa"
+      ]
+    },
+    "disco.00064": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00064.wav",
+        "096f3b7bd794eb5c708a32073ba5a465"
+      ]
+    },
+    "disco.00065": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00065.wav",
+        "6cc65c8203556443564f44bc3d9555e9"
+      ]
+    },
+    "disco.00066": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00066.wav",
+        "9ac643a0bd9c9407c674d0309a8aabde"
+      ]
+    },
+    "disco.00067": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00067.wav",
+        "fe16db6461a410f7fb6857272faa6f2d"
+      ]
+    },
+    "disco.00068": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00068.wav",
+        "8d5bf1ba559ba224f3f54ab78236b3ec"
+      ]
+    },
+    "disco.00069": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00069.wav",
+        "eed24fd6dee88e1506a583e8859a3f31"
+      ]
+    },
+    "disco.00070": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00070.wav",
+        "90221b24d6a4fa05eb8070abdad20a99"
+      ]
+    },
+    "disco.00071": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00071.wav",
+        "90cff91f64445bf3e8c697997ced9c32"
+      ]
+    },
+    "disco.00072": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00072.wav",
+        "3f71f3301a6729504710230c9d960eef"
+      ]
+    },
+    "disco.00073": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00073.wav",
+        "a0213c468b63f6e0c7c3234f52b99146"
+      ]
+    },
+    "disco.00074": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00074.wav",
+        "ca5a3b3d572548dec55b9eacec7f1e5d"
+      ]
+    },
+    "disco.00075": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00075.wav",
+        "afa0ae84072a9154dd02e3f52e3b2ece"
+      ]
+    },
+    "disco.00076": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00076.wav",
+        "813e1b5fc369c217b546db099a481186"
+      ]
+    },
+    "disco.00077": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00077.wav",
+        "4fb2ee4e27bea2d37ea3cabdd13ea305"
+      ]
+    },
+    "disco.00078": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00078.wav",
+        "4ff9f6ccecb554e58b222ee7d3503725"
+      ]
+    },
+    "disco.00079": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00079.wav",
+        "dc32b284158808d8a97fbdc3d7f4e1f4"
+      ]
+    },
+    "disco.00080": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00080.wav",
+        "63c206ab8165bf55f6a9c7915cd0a9aa"
+      ]
+    },
+    "disco.00081": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00081.wav",
+        "afb3f1955ef6d21c6fb99dc79583b1ab"
+      ]
+    },
+    "disco.00082": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00082.wav",
+        "1496e6698dc4987fbffce1a3aabbbc52"
+      ]
+    },
+    "disco.00083": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00083.wav",
+        "7f3454fff7de9a512f1ca94ef06cdff8"
+      ]
+    },
+    "disco.00084": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00084.wav",
+        "cff773ba4af75ca56ea55a77c5db151f"
+      ]
+    },
+    "disco.00085": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00085.wav",
+        "bc32575162220a2fcf8177cc81a6db09"
+      ]
+    },
+    "disco.00086": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00086.wav",
+        "f38e3b105c902197249ccab126dd32eb"
+      ]
+    },
+    "disco.00087": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00087.wav",
+        "80e2117f388d81dc85948461355d4161"
+      ]
+    },
+    "disco.00088": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00088.wav",
+        "1b2e9d7dbd568b16b06a7b5f82ed7d51"
+      ]
+    },
+    "disco.00089": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00089.wav",
+        "f78d2935023d47075a1646e41018525e"
+      ]
+    },
+    "disco.00090": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00090.wav",
+        "d1de57bdfad690213d15ca5ea1fb8b84"
+      ]
+    },
+    "disco.00091": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00091.wav",
+        "8dbf4e11d533d3bc722d19c4b071634f"
+      ]
+    },
+    "disco.00092": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00092.wav",
+        "de609dda40b410f56a5fdd66d73cb2ef"
+      ]
+    },
+    "disco.00093": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00093.wav",
+        "51ed278af3df092f2c4d0b3cf6a509fe"
+      ]
+    },
+    "disco.00094": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00094.wav",
+        "eb435e28924152a88047f5f17fe33bca"
+      ]
+    },
+    "disco.00095": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00095.wav",
+        "f74a0adaa84e41d2cb5c832a1406da4c"
+      ]
+    },
+    "disco.00096": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00096.wav",
+        "715109e28db0cff031bde7a9f95df1d5"
+      ]
+    },
+    "disco.00097": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00097.wav",
+        "8be364675b1944ba8398d8d33f8bccbc"
+      ]
+    },
+    "disco.00098": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00098.wav",
+        "991d302992ab7961726908f5d7a58963"
+      ]
+    },
+    "disco.00099": {
+      "audio": [
+        "gtzan_genre/genres/disco/disco.00099.wav",
+        "991d302992ab7961726908f5d7a58963"
+      ]
+    },
+    "hiphop.00000": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00000.wav",
+        "8e7ea8f540a51d912230594c66a786c0"
+      ]
+    },
+    "hiphop.00001": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00001.wav",
+        "318b2e156cfd68ec9a6f5557a476ce3e"
+      ]
+    },
+    "hiphop.00002": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00002.wav",
+        "2149ffb016f7107eaef04ef8196147cd"
+      ]
+    },
+    "hiphop.00003": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00003.wav",
+        "e8d82e4ea7972fbd36b9eb6965f89a9b"
+      ]
+    },
+    "hiphop.00004": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00004.wav",
+        "457c484f19c17fccd6544796c41a6050"
+      ]
+    },
+    "hiphop.00005": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00005.wav",
+        "6dafed9b87d410424b0ec4c8f478d489"
+      ]
+    },
+    "hiphop.00006": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00006.wav",
+        "0a0e405fc5519f30bdc84b2928086b58"
+      ]
+    },
+    "hiphop.00007": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00007.wav",
+        "60d8dc907bb594efe7dece9e9a293be9"
+      ]
+    },
+    "hiphop.00008": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00008.wav",
+        "48ff4134686467ff3e8a82536174ad52"
+      ]
+    },
+    "hiphop.00009": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00009.wav",
+        "59f07f871400b4ece4690b989a2b941c"
+      ]
+    },
+    "hiphop.00010": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00010.wav",
+        "d62a6148a37faa7e6551edead56ad84e"
+      ]
+    },
+    "hiphop.00011": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00011.wav",
+        "4e98fa70eec7861de539d200af3cdb6a"
+      ]
+    },
+    "hiphop.00012": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00012.wav",
+        "2709d60bba056cf233667b6dfd63276b"
+      ]
+    },
+    "hiphop.00013": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00013.wav",
+        "162578ff591553d3a32f082eca02cf67"
+      ]
+    },
+    "hiphop.00014": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00014.wav",
+        "15f25a38665cc4685bc94b4e8ec7d4cd"
+      ]
+    },
+    "hiphop.00015": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00015.wav",
+        "1bc0ac16f56e557238ffe56cef5651df"
+      ]
+    },
+    "hiphop.00016": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00016.wav",
+        "476fd4be71aebe95115bdf617822a41d"
+      ]
+    },
+    "hiphop.00017": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00017.wav",
+        "3a31fb9c52ddb0365e13615df7473d32"
+      ]
+    },
+    "hiphop.00018": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00018.wav",
+        "eca2a8437dc879462cd6047180f94eda"
+      ]
+    },
+    "hiphop.00019": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00019.wav",
+        "11e812399dd903e0935f00bcf3d033ab"
+      ]
+    },
+    "hiphop.00020": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00020.wav",
+        "ced3d784f0744ff1d1bb426529f914d4"
+      ]
+    },
+    "hiphop.00021": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00021.wav",
+        "e24e4f6553c434e71f9fa3f56d94e42e"
+      ]
+    },
+    "hiphop.00022": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00022.wav",
+        "23ada4f1f35457b9043fff2fbdf72d4f"
+      ]
+    },
+    "hiphop.00023": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00023.wav",
+        "a1f4a82fb34e984078a4437d4289e1b9"
+      ]
+    },
+    "hiphop.00024": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00024.wav",
+        "cb7899ff10b9107367f956afcf54cd17"
+      ]
+    },
+    "hiphop.00025": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00025.wav",
+        "2abb78065203fa93c5eac02627b934fe"
+      ]
+    },
+    "hiphop.00026": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00026.wav",
+        "bc3c8a70d78bc01f5952cbaeb85ff93e"
+      ]
+    },
+    "hiphop.00027": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00027.wav",
+        "01ce5135d648582cb80fa72b7419aaec"
+      ]
+    },
+    "hiphop.00028": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00028.wav",
+        "ff9ac5fb8c5165eba12b2b9e3d122337"
+      ]
+    },
+    "hiphop.00029": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00029.wav",
+        "91de1850d5f70d2f6b3bfbf7c7832b69"
+      ]
+    },
+    "hiphop.00030": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00030.wav",
+        "217933e8f71d589a4fefd66171676848"
+      ]
+    },
+    "hiphop.00031": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00031.wav",
+        "353d12d5800d1cb97241f318549f5dbd"
+      ]
+    },
+    "hiphop.00032": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00032.wav",
+        "6522e716783a39c92b138f74b39389fe"
+      ]
+    },
+    "hiphop.00033": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00033.wav",
+        "f5ac355a6c4f409fd2db8f7fbed0d342"
+      ]
+    },
+    "hiphop.00034": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00034.wav",
+        "48573916be99f61b0ba83c716182a109"
+      ]
+    },
+    "hiphop.00035": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00035.wav",
+        "76d043728945e7342eb2cc78e50f7a0c"
+      ]
+    },
+    "hiphop.00036": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00036.wav",
+        "7086e3f832a7b64e6faa66488844331b"
+      ]
+    },
+    "hiphop.00037": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00037.wav",
+        "aeb3aac0cd1dec13491da5b462d4076a"
+      ]
+    },
+    "hiphop.00038": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00038.wav",
+        "a7b2cdcfb30412cb7dc4457023f8e8ee"
+      ]
+    },
+    "hiphop.00039": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00039.wav",
+        "86985cbc22cbf7f75e6054920676d2e6"
+      ]
+    },
+    "hiphop.00040": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00040.wav",
+        "8e1b9d3ebe9194a2e567fb832756430f"
+      ]
+    },
+    "hiphop.00041": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00041.wav",
+        "d6c4017add7425aff58ef5382751a39a"
+      ]
+    },
+    "hiphop.00042": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00042.wav",
+        "72b09c815e0d567af08e2405f015ca53"
+      ]
+    },
+    "hiphop.00043": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00043.wav",
+        "3492295fe145c6c20eca6260dca79471"
+      ]
+    },
+    "hiphop.00044": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00044.wav",
+        "c40d94f5c1269b6ddc9e3e76253fd05e"
+      ]
+    },
+    "hiphop.00045": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00045.wav",
+        "86985cbc22cbf7f75e6054920676d2e6"
+      ]
+    },
+    "hiphop.00046": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00046.wav",
+        "7021adcad9773f924bcd0a29ab4e951a"
+      ]
+    },
+    "hiphop.00047": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00047.wav",
+        "edabbb2471bdcb272376ec0cf37b8b3f"
+      ]
+    },
+    "hiphop.00048": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00048.wav",
+        "9c950656fca0266b6cc693f1bf9fe491"
+      ]
+    },
+    "hiphop.00049": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00049.wav",
+        "6e43a42f4be2c6fb16cc6028e349484b"
+      ]
+    },
+    "hiphop.00050": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00050.wav",
+        "fa31c30ffcf3a870746cfeb1086a86a9"
+      ]
+    },
+    "hiphop.00051": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00051.wav",
+        "93712cec9454f8d9786000f8e288e98a"
+      ]
+    },
+    "hiphop.00052": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00052.wav",
+        "7610ec5956a0cc0363e38ce2672e4a90"
+      ]
+    },
+    "hiphop.00053": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00053.wav",
+        "587ba09378f4830e4ba7c674ea22d136"
+      ]
+    },
+    "hiphop.00054": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00054.wav",
+        "5cc7f278410ba895a3dd1fd33c973ba4"
+      ]
+    },
+    "hiphop.00055": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00055.wav",
+        "8e40416d617a183eb2964973621793a3"
+      ]
+    },
+    "hiphop.00056": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00056.wav",
+        "f74062e4f26c724f248d86474c3c5bfb"
+      ]
+    },
+    "hiphop.00057": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00057.wav",
+        "041c87f3b69c5b86424302b2eb64d121"
+      ]
+    },
+    "hiphop.00058": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00058.wav",
+        "5b8b5f60148eeb2d5a6ed31d5f7cc310"
+      ]
+    },
+    "hiphop.00059": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00059.wav",
+        "06dcc938f1a5d98940efca2adb84533e"
+      ]
+    },
+    "hiphop.00060": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00060.wav",
+        "beb66b3f1ee37e119eacefc906ff7615"
+      ]
+    },
+    "hiphop.00061": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00061.wav",
+        "e97ba9f7bf57a016288469a3147caf3e"
+      ]
+    },
+    "hiphop.00062": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00062.wav",
+        "58a531f42969e848f88e595cb2d894f9"
+      ]
+    },
+    "hiphop.00063": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00063.wav",
+        "9c1d123c7a68237528284c7e45d9671f"
+      ]
+    },
+    "hiphop.00064": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00064.wav",
+        "1b76d2bd621939c80372d42ee98c6d44"
+      ]
+    },
+    "hiphop.00065": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00065.wav",
+        "cde0aba4aa7fc14470199cc94b41f0d4"
+      ]
+    },
+    "hiphop.00066": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00066.wav",
+        "c8bb4b605ac9c9735e13fd96854694c0"
+      ]
+    },
+    "hiphop.00067": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00067.wav",
+        "7ea0f0638a75e2c4f78459cf9876ff14"
+      ]
+    },
+    "hiphop.00068": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00068.wav",
+        "d0396004e3661b12edc745deaf05095c"
+      ]
+    },
+    "hiphop.00069": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00069.wav",
+        "17378bbf3d9f499aa221b5d72209dbbf"
+      ]
+    },
+    "hiphop.00070": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00070.wav",
+        "4e56f3232d89809f91de644ed9fd537a"
+      ]
+    },
+    "hiphop.00071": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00071.wav",
+        "54cce2c64f66ae973f2d2d0014dce36c"
+      ]
+    },
+    "hiphop.00072": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00072.wav",
+        "ce5d5025522fc7f6b238343a0e2075d8"
+      ]
+    },
+    "hiphop.00073": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00073.wav",
+        "97af38ff327f5351898015df0e8fadec"
+      ]
+    },
+    "hiphop.00074": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00074.wav",
+        "a855c1707b4278e280bdcd828542a27d"
+      ]
+    },
+    "hiphop.00075": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00075.wav",
+        "de68c9a715738cb3212d9d7843fd6030"
+      ]
+    },
+    "hiphop.00076": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00076.wav",
+        "9a42deaa9beb74a739c30c624830841f"
+      ]
+    },
+    "hiphop.00077": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00077.wav",
+        "3929d8045016745c490868e9a011dff4"
+      ]
+    },
+    "hiphop.00078": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00078.wav",
+        "9a42deaa9beb74a739c30c624830841f"
+      ]
+    },
+    "hiphop.00079": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00079.wav",
+        "bfee1431cd3e23dc603829426b4c9506"
+      ]
+    },
+    "hiphop.00080": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00080.wav",
+        "8bc1ba83cd890f4edd03799f634c3d32"
+      ]
+    },
+    "hiphop.00081": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00081.wav",
+        "320a5623da721dcc774de44b4942e691"
+      ]
+    },
+    "hiphop.00082": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00082.wav",
+        "a3ba79f594722434156986b7750f0cb8"
+      ]
+    },
+    "hiphop.00083": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00083.wav",
+        "5e91e16f7a760f7b7747fcd5a6faa165"
+      ]
+    },
+    "hiphop.00084": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00084.wav",
+        "dc37577e6e50b19f6f068c64f52450f3"
+      ]
+    },
+    "hiphop.00085": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00085.wav",
+        "aec4d57d72b1850076eb5deb6276c75c"
+      ]
+    },
+    "hiphop.00086": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00086.wav",
+        "177d0fba96a3bc1ad068f174a911819e"
+      ]
+    },
+    "hiphop.00087": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00087.wav",
+        "d6002ab4cb5b9f15e5e67301b9c1910a"
+      ]
+    },
+    "hiphop.00088": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00088.wav",
+        "d674d4b57c7c495fe5ad561ef03b380f"
+      ]
+    },
+    "hiphop.00089": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00089.wav",
+        "e31f53127c48fceb64ebb5ad8c728241"
+      ]
+    },
+    "hiphop.00090": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00090.wav",
+        "3d8d34e42a49e9195bc58344a4840bc5"
+      ]
+    },
+    "hiphop.00091": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00091.wav",
+        "91d609539d6173e17a40fb5c1f753090"
+      ]
+    },
+    "hiphop.00092": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00092.wav",
+        "98bcc37a0e9ee4b68ae0c285b634109e"
+      ]
+    },
+    "hiphop.00093": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00093.wav",
+        "d253b794a746ab9e82d3df84bce90afa"
+      ]
+    },
+    "hiphop.00094": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00094.wav",
+        "fcc252c80172b9cf908afd95681dd619"
+      ]
+    },
+    "hiphop.00095": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00095.wav",
+        "efc74494793046bac5ce654b8dfc2d78"
+      ]
+    },
+    "hiphop.00096": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00096.wav",
+        "70fb61285dee2e37337ffbdfda519576"
+      ]
+    },
+    "hiphop.00097": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00097.wav",
+        "ac9ed2977f2e692baf6cf9672616b592"
+      ]
+    },
+    "hiphop.00098": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00098.wav",
+        "4f94f96260452fa000c7ce6e71fd946f"
+      ]
+    },
+    "hiphop.00099": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00099.wav",
+        "645439b419a52de59bd2b364ab52e119"
+      ]
+    },
+    "jazz.00000": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00000.wav",
+        "047e5122c546c5a85412f0cbff4c3762"
+      ]
+    },
+    "jazz.00001": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00001.wav",
+        "cc3912de11d646a7cec9bd8ac23430ba"
+      ]
+    },
+    "jazz.00002": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00002.wav",
+        "2c6137c54d93ca30f335252b1fd0c5b0"
+      ]
+    },
+    "jazz.00003": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00003.wav",
+        "dadf5a2866bfcbb29c1029e9e999b9bc"
+      ]
+    },
+    "jazz.00004": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00004.wav",
+        "50f220c0834acb04c17115b43d6c2b8a"
+      ]
+    },
+    "jazz.00005": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00005.wav",
+        "5611ab12a18aacb90ac4f121cce293da"
+      ]
+    },
+    "jazz.00006": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00006.wav",
+        "ae0df81500bcb2c2e24fc3f9203a6ba2"
+      ]
+    },
+    "jazz.00007": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00007.wav",
+        "b31fb93079fcae12ba3b9ab24394dad5"
+      ]
+    },
+    "jazz.00008": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00008.wav",
+        "f3aef750f9c47b8ad1772c29adad2006"
+      ]
+    },
+    "jazz.00009": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00009.wav",
+        "d50dc23fb210600283bc97d8f74590bb"
+      ]
+    },
+    "jazz.00010": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00010.wav",
+        "8100881a96493da36c617a4ceb4450b6"
+      ]
+    },
+    "jazz.00011": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00011.wav",
+        "e5237cc5c9bb930b86dca3cd628e92d3"
+      ]
+    },
+    "jazz.00012": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00012.wav",
+        "e3538af8b181d670ccc316c4c8debe9e"
+      ]
+    },
+    "jazz.00013": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00013.wav",
+        "519280bcca9b9a23458cab84205aaed1"
+      ]
+    },
+    "jazz.00014": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00014.wav",
+        "e8423ee06413089e00aef686b8d3d24a"
+      ]
+    },
+    "jazz.00015": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00015.wav",
+        "ab6a96292ff8189fb1d3653043ff4265"
+      ]
+    },
+    "jazz.00016": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00016.wav",
+        "2b745bd55904928c45921a359b79ca0b"
+      ]
+    },
+    "jazz.00017": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00017.wav",
+        "710ba853d7cad65a63ec1716e13c6452"
+      ]
+    },
+    "jazz.00018": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00018.wav",
+        "5c4ed3eb50c513e07b3ae0306cedaa15"
+      ]
+    },
+    "jazz.00019": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00019.wav",
+        "1a75cf511d849d4b741d8c219bb2c6da"
+      ]
+    },
+    "jazz.00020": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00020.wav",
+        "987f35e2380f398561b06c46f5398062"
+      ]
+    },
+    "jazz.00021": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00021.wav",
+        "4a4591731130c49b876255ef5b2137e1"
+      ]
+    },
+    "jazz.00022": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00022.wav",
+        "b01ec2132cbc3196240d7d0f094f9669"
+      ]
+    },
+    "jazz.00023": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00023.wav",
+        "763f17640fc7644a1fbaefe24362380b"
+      ]
+    },
+    "jazz.00024": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00024.wav",
+        "1fe7dcf601436bbf35ed4a550740dcd6"
+      ]
+    },
+    "jazz.00025": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00025.wav",
+        "c8388e1625b3ced79e685104cb936b9f"
+      ]
+    },
+    "jazz.00026": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00026.wav",
+        "22df4af2b722165fae8ebb9d688d1207"
+      ]
+    },
+    "jazz.00027": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00027.wav",
+        "a06f6775d6b952daa1d134bdb5f19113"
+      ]
+    },
+    "jazz.00028": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00028.wav",
+        "5ea4bded8bf1db6a01f446a95f5bb26f"
+      ]
+    },
+    "jazz.00029": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00029.wav",
+        "9125b27f607ebf22192433ba670ecf90"
+      ]
+    },
+    "jazz.00030": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00030.wav",
+        "fc988f2ac8ba255bc905ada24db40fc4"
+      ]
+    },
+    "jazz.00031": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00031.wav",
+        "bb74b4241e6e316168eb3b35add52579"
+      ]
+    },
+    "jazz.00032": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00032.wav",
+        "63bbde5397371ba42b32fe37c64553d0"
+      ]
+    },
+    "jazz.00033": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00033.wav",
+        "83dea4fe04678ef821c9b0115bec2081"
+      ]
+    },
+    "jazz.00034": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00034.wav",
+        "72726208c49b919cb517dd7008fd2609"
+      ]
+    },
+    "jazz.00035": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00035.wav",
+        "d74452f0ef129826a770f0235854bf32"
+      ]
+    },
+    "jazz.00036": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00036.wav",
+        "a1f7b27ccc042dc0fd88f8fa94c8a645"
+      ]
+    },
+    "jazz.00037": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00037.wav",
+        "138b574288da79f08718e6f443e9b542"
+      ]
+    },
+    "jazz.00038": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00038.wav",
+        "2fcadef7a8fa916ae4132318f8f6d69f"
+      ]
+    },
+    "jazz.00039": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00039.wav",
+        "c729c5562f3571915b22061b9670d285"
+      ]
+    },
+    "jazz.00040": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00040.wav",
+        "139d3de2477d6df0eba352a4e0194469"
+      ]
+    },
+    "jazz.00041": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00041.wav",
+        "48b7d12057fdb28095d3f972ed66a3eb"
+      ]
+    },
+    "jazz.00042": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00042.wav",
+        "98d9e130a747ae0872ef4c244741de44"
+      ]
+    },
+    "jazz.00043": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00043.wav",
+        "ed2113a10d12130572a8586cf4f14a89"
+      ]
+    },
+    "jazz.00044": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00044.wav",
+        "1ead3f2d112f651cda6f1d21eff46ceb"
+      ]
+    },
+    "jazz.00045": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00045.wav",
+        "03803d8bc07061d7653439d12391feed"
+      ]
+    },
+    "jazz.00046": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00046.wav",
+        "dbcb90f9e6c3ae0fb7c3a6182de6b87a"
+      ]
+    },
+    "jazz.00047": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00047.wav",
+        "53b662ee4285b42e8ad6619cb4a6b4b6"
+      ]
+    },
+    "jazz.00048": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00048.wav",
+        "d6834e3be38293124f321544199430d3"
+      ]
+    },
+    "jazz.00049": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00049.wav",
+        "10dc34c8b5682110c4a5873571751691"
+      ]
+    },
+    "jazz.00050": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00050.wav",
+        "a5a7078a7e7ddbc6d7de8d8fcb383a5d"
+      ]
+    },
+    "jazz.00051": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00051.wav",
+        "7708c6796db87bdd0fc8cf230327ead8"
+      ]
+    },
+    "jazz.00052": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00052.wav",
+        "2e0d1634b13142edc5c47d29441f634e"
+      ]
+    },
+    "jazz.00053": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00053.wav",
+        "a8c5f942e5d8a94ec67d5085009f6b1d"
+      ]
+    },
+    "jazz.00054": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00054.wav",
+        "8f0ab76fff2d2c6bc80eb9c9362318ca"
+      ]
+    },
+    "jazz.00055": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00055.wav",
+        "bead06ac65e8128d7829e46cd94b9733"
+      ]
+    },
+    "jazz.00056": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00056.wav",
+        "282ef2be5af64daf7b37bd76634b10ef"
+      ]
+    },
+    "jazz.00057": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00057.wav",
+        "3d256fa4c142bf342b30f8eb082cb892"
+      ]
+    },
+    "jazz.00058": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00058.wav",
+        "c3781f5e53c33f274ed784f3d5213107"
+      ]
+    },
+    "jazz.00059": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00059.wav",
+        "ad6db244515ef30c1b7dacd72634f61a"
+      ]
+    },
+    "jazz.00060": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00060.wav",
+        "897c0adbb8154d5764e7e3fba551d57b"
+      ]
+    },
+    "jazz.00061": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00061.wav",
+        "b02a67e70c46ab2cd4125ab541e2a8be"
+      ]
+    },
+    "jazz.00062": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00062.wav",
+        "66b707ed3d173ab067fec775c771a8f2"
+      ]
+    },
+    "jazz.00063": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00063.wav",
+        "8fd9be5b726b7e622febe137f301e339"
+      ]
+    },
+    "jazz.00064": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00064.wav",
+        "4c4926c271fef119321c6fb12ef51765"
+      ]
+    },
+    "jazz.00065": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00065.wav",
+        "25949786101cc6fecc80b030325fcc27"
+      ]
+    },
+    "jazz.00066": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00066.wav",
+        "b2afcd3951b91c298c3b43463e1ad447"
+      ]
+    },
+    "jazz.00067": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00067.wav",
+        "8ee85b2e9a67811e9ed8f48070d17679"
+      ]
+    },
+    "jazz.00068": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00068.wav",
+        "0c62baf5e7922aa0c7f7f2eede5882f5"
+      ]
+    },
+    "jazz.00069": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00069.wav",
+        "333c54bf2e843ba21fc29a4d22716265"
+      ]
+    },
+    "jazz.00070": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00070.wav",
+        "8f54f0824e4439e472dd2eed3f629a22"
+      ]
+    },
+    "jazz.00071": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00071.wav",
+        "36098e170263eaf5fcfc0193f1883a74"
+      ]
+    },
+    "jazz.00072": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00072.wav",
+        "b174310bb31c460faa59daa1b45d8a75"
+      ]
+    },
+    "jazz.00073": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00073.wav",
+        "f156401b1f3dda21b47be1b4c347fe2f"
+      ]
+    },
+    "jazz.00074": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00074.wav",
+        "a03f6ea7f3eb7b21526316796ef7c68f"
+      ]
+    },
+    "jazz.00075": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00075.wav",
+        "17b71803680bbfede7a59e50d774ed17"
+      ]
+    },
+    "jazz.00076": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00076.wav",
+        "c482bd191c655cb990af5d4cd566dbbd"
+      ]
+    },
+    "jazz.00077": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00077.wav",
+        "1f13d9bb526f0b584b60ac366a18fd1a"
+      ]
+    },
+    "jazz.00078": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00078.wav",
+        "83735c370b829d6d73810237be842fb3"
+      ]
+    },
+    "jazz.00079": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00079.wav",
+        "5edcfcca23ca77f503e59f8de3f5ef01"
+      ]
+    },
+    "jazz.00080": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00080.wav",
+        "7c09d7f730d737713e6c5aac0225d8f6"
+      ]
+    },
+    "jazz.00081": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00081.wav",
+        "e84a36ef57341006825371a7ac4e08d7"
+      ]
+    },
+    "jazz.00082": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00082.wav",
+        "2ac2222f86244ef8b18fda290a4e402c"
+      ]
+    },
+    "jazz.00083": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00083.wav",
+        "484380d3d3d50a62eec2c56683cd2f1e"
+      ]
+    },
+    "jazz.00084": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00084.wav",
+        "2c5de7981fdcf85265319cec8b4e5fae"
+      ]
+    },
+    "jazz.00085": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00085.wav",
+        "d51c3b43466f89f2686175f69ddb9bec"
+      ]
+    },
+    "jazz.00086": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00086.wav",
+        "8cd1a779a863a3153658aecc900e1d12"
+      ]
+    },
+    "jazz.00087": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00087.wav",
+        "f5172a7838738c770aaad7b1ca492b49"
+      ]
+    },
+    "jazz.00088": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00088.wav",
+        "283f63a9b29cfc2981988a47ac8e1d97"
+      ]
+    },
+    "jazz.00089": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00089.wav",
+        "9629ce2c4ce11451973963b6544493db"
+      ]
+    },
+    "jazz.00090": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00090.wav",
+        "43d0410cbd1a8171526fc63dff22b670"
+      ]
+    },
+    "jazz.00091": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00091.wav",
+        "ba97d6d42fa9bd0008d02d56240742c4"
+      ]
+    },
+    "jazz.00092": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00092.wav",
+        "6fd7b86575ffdecb4b8c90443374f0e3"
+      ]
+    },
+    "jazz.00093": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00093.wav",
+        "349dfe7354a4c2bebf1c0eeb30d5e0ee"
+      ]
+    },
+    "jazz.00094": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00094.wav",
+        "d59f0d25aa365bf6161a26d976fb9125"
+      ]
+    },
+    "jazz.00095": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00095.wav",
+        "265fb2503d1d9c3e16f4f7275b77d7f5"
+      ]
+    },
+    "jazz.00096": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00096.wav",
+        "eb991bee781c9142a597e87772882d85"
+      ]
+    },
+    "jazz.00097": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00097.wav",
+        "fd1c93fa71e4787a9d0d568d08552005"
+      ]
+    },
+    "jazz.00098": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00098.wav",
+        "a75205d032ed802b1ebb1080e8e8a946"
+      ]
+    },
+    "jazz.00099": {
+      "audio": [
+        "gtzan_genre/genres/jazz/jazz.00099.wav",
+        "060c96c4eb5de277543bb746a59c03b4"
+      ]
+    },
+    "rock.00000": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00000.wav",
+        "e9d3732e5b9d84521c8e0ec0dbdb52e9"
+      ]
+    },
+    "rock.00001": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00001.wav",
+        "0463d62d96c2a39b536d228481c73752"
+      ]
+    },
+    "rock.00002": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00002.wav",
+        "e1ef1a9110c3a3b33478f2958e0f0b9b"
+      ]
+    },
+    "rock.00003": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00003.wav",
+        "d6b1fa63c1e3f1185593f5144c18796f"
+      ]
+    },
+    "rock.00004": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00004.wav",
+        "e171ae83b38b3933a81eeba8edfe9a24"
+      ]
+    },
+    "rock.00005": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00005.wav",
+        "f2d6b84eb6f3f73a294e67e5e1797713"
+      ]
+    },
+    "rock.00006": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00006.wav",
+        "d151a39ab8eecb1a0d2c26c896148e27"
+      ]
+    },
+    "rock.00007": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00007.wav",
+        "c44d0d362fdb35c2ef34805b9613a405"
+      ]
+    },
+    "rock.00008": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00008.wav",
+        "08800987e330fd3c321ac0174d96c6e1"
+      ]
+    },
+    "rock.00009": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00009.wav",
+        "5c4bdd5f8c7f60ec862648ceb113f81c"
+      ]
+    },
+    "rock.00010": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00010.wav",
+        "315ad0f40dc9223694ef16eb1e664f0a"
+      ]
+    },
+    "rock.00011": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00011.wav",
+        "24c1a51c9755d0df3d9252b3b856bf33"
+      ]
+    },
+    "rock.00012": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00012.wav",
+        "db00c612d70357478dda38bc6cd7bce0"
+      ]
+    },
+    "rock.00013": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00013.wav",
+        "2dd3fa8f72d74c8dd10a44481d878497"
+      ]
+    },
+    "rock.00014": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00014.wav",
+        "73577d5605450d2ef2b3e002502ff4b1"
+      ]
+    },
+    "rock.00015": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00015.wav",
+        "c20abcf0cf27029add8361f973b38599"
+      ]
+    },
+    "rock.00016": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00016.wav",
+        "00025a41bc991e8a8d5232e6660df86f"
+      ]
+    },
+    "rock.00017": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00017.wav",
+        "2522d7310002708ace546c8d3e00a035"
+      ]
+    },
+    "rock.00018": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00018.wav",
+        "1f22f44cb9ddc42c29c17e2b9556d933"
+      ]
+    },
+    "rock.00019": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00019.wav",
+        "0c099c2f2075e98e00a0c3fe29526f13"
+      ]
+    },
+    "rock.00020": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00020.wav",
+        "1d8c33f667a18194b160ad35f29a1ce1"
+      ]
+    },
+    "rock.00021": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00021.wav",
+        "6faab2a9ae3f45d748f3f2b8bec5404b"
+      ]
+    },
+    "rock.00022": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00022.wav",
+        "c53a1235c1720a82b0d0b5115b9fdc13"
+      ]
+    },
+    "rock.00023": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00023.wav",
+        "4d7cdd7c84696160bdf668fdbc3a06eb"
+      ]
+    },
+    "rock.00024": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00024.wav",
+        "dd49399f7be07876adf946cd9f365eea"
+      ]
+    },
+    "rock.00025": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00025.wav",
+        "0387c5379154bb31e84cde81763c8d3b"
+      ]
+    },
+    "rock.00026": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00026.wav",
+        "44603270d7f032d4938596f1c4f5d1e8"
+      ]
+    },
+    "rock.00027": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00027.wav",
+        "2177f9d1a8cd8b4bd000f738ab23fe61"
+      ]
+    },
+    "rock.00028": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00028.wav",
+        "48f66050ff57cade2acd24df1e833fa5"
+      ]
+    },
+    "rock.00029": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00029.wav",
+        "71cb29f7a964a2d80e8118166394e022"
+      ]
+    },
+    "rock.00030": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00030.wav",
+        "246318108d772cb0fa7a9eca175e8869"
+      ]
+    },
+    "rock.00031": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00031.wav",
+        "431b289fe938c47c9c15065776984389"
+      ]
+    },
+    "rock.00032": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00032.wav",
+        "95474f4218b5677bbf724c9d18124c3e"
+      ]
+    },
+    "rock.00033": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00033.wav",
+        "c1de0ca734e06e9bf372b1cb991c35c6"
+      ]
+    },
+    "rock.00034": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00034.wav",
+        "35bc88f8a0c61b5d8f42f623c3e8d357"
+      ]
+    },
+    "rock.00035": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00035.wav",
+        "263cbe0e992d765f37971610ed37351b"
+      ]
+    },
+    "rock.00036": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00036.wav",
+        "e02821bf07a9647d9d1e7811daa55b07"
+      ]
+    },
+    "rock.00037": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00037.wav",
+        "85c0a91e3cae66ef3b6a781c942ca18c"
+      ]
+    },
+    "rock.00038": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00038.wav",
+        "23b5f1209af52c0e2148b663135a0678"
+      ]
+    },
+    "rock.00039": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00039.wav",
+        "a9fc76ec68a02f10f6a93d34a858bd67"
+      ]
+    },
+    "rock.00040": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00040.wav",
+        "dbc2048eef2a79b56a327599dff6d194"
+      ]
+    },
+    "rock.00041": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00041.wav",
+        "9fea7ecffa4a5f952ed8fda1cc73533d"
+      ]
+    },
+    "rock.00042": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00042.wav",
+        "21b6a1aaf3550f9ea719794e700855e5"
+      ]
+    },
+    "rock.00043": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00043.wav",
+        "c8e69f54f67ba16a838caf2ba1e85019"
+      ]
+    },
+    "rock.00044": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00044.wav",
+        "d2f3ee7eca2898670d43e7fd9c820abc"
+      ]
+    },
+    "rock.00045": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00045.wav",
+        "7514f34f9ad2692c68c306985099c90a"
+      ]
+    },
+    "rock.00046": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00046.wav",
+        "f3ee8adf7eba22ce7abd745117031b8c"
+      ]
+    },
+    "rock.00047": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00047.wav",
+        "f9f0882fc214dde61a54f719eb55fcaa"
+      ]
+    },
+    "rock.00048": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00048.wav",
+        "6ea305b533086f136b892ad2510ea315"
+      ]
+    },
+    "rock.00049": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00049.wav",
+        "0dd1af71e5def6fe848c9422e938027f"
+      ]
+    },
+    "rock.00050": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00050.wav",
+        "3260155b94acce828a161788844a34ab"
+      ]
+    },
+    "rock.00051": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00051.wav",
+        "df9391ab6ca4510c9274aeeaee2e074f"
+      ]
+    },
+    "rock.00052": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00052.wav",
+        "1a17a36846eddbda078e46888a1adcf1"
+      ]
+    },
+    "rock.00053": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00053.wav",
+        "9b31a244a1aa7521b194adfd98430bca"
+      ]
+    },
+    "rock.00054": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00054.wav",
+        "bdd5eb92df390781c4e6e51c37486d98"
+      ]
+    },
+    "rock.00055": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00055.wav",
+        "ca8a9b7ea0ceaa97cf20abbe136f59f0"
+      ]
+    },
+    "rock.00056": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00056.wav",
+        "d63a1236d46d9835c47e099f498fe910"
+      ]
+    },
+    "rock.00057": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00057.wav",
+        "42d9b96bc70989890a6402f08410c0ca"
+      ]
+    },
+    "rock.00058": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00058.wav",
+        "ccf317ae4161a33c6794185bf54724b1"
+      ]
+    },
+    "rock.00059": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00059.wav",
+        "f1c14079c67e27adda9716134194c151"
+      ]
+    },
+    "rock.00060": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00060.wav",
+        "846874a8e0c3172aef53e646c89ca73b"
+      ]
+    },
+    "rock.00061": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00061.wav",
+        "180e86b92ee16dd227cf07bc4b07d5ae"
+      ]
+    },
+    "rock.00062": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00062.wav",
+        "7635d1fe67bf5a6a9bab5ca17e899cae"
+      ]
+    },
+    "rock.00063": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00063.wav",
+        "0d5ffc3ff93068e7552207bb11ec483c"
+      ]
+    },
+    "rock.00064": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00064.wav",
+        "cb119391fa6f096459ef6d842e0ab5c5"
+      ]
+    },
+    "rock.00065": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00065.wav",
+        "33cd42ed97b695509557f7ba19a4bfad"
+      ]
+    },
+    "rock.00066": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00066.wav",
+        "800894684ba6aa8b4ff28b108e823ba0"
+      ]
+    },
+    "rock.00067": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00067.wav",
+        "2ba0be4f3245a19e974cc394480684fb"
+      ]
+    },
+    "rock.00068": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00068.wav",
+        "0e335a10e75550372687a850ed5a3901"
+      ]
+    },
+    "rock.00069": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00069.wav",
+        "9f7c67c9613bca79a1c12b770bc8768d"
+      ]
+    },
+    "rock.00070": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00070.wav",
+        "738c1d4292aaa222d9813dbee8a0f9af"
+      ]
+    },
+    "rock.00071": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00071.wav",
+        "3bd0a6105eecbeba05e5843ded5d35a7"
+      ]
+    },
+    "rock.00072": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00072.wav",
+        "3e5732d19ca5d4d97e10be445dd0f25e"
+      ]
+    },
+    "rock.00073": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00073.wav",
+        "32a04a6fefb23138349ba0819bebec25"
+      ]
+    },
+    "rock.00074": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00074.wav",
+        "d719db3df1f165afe080a3c9f5cf2080"
+      ]
+    },
+    "rock.00075": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00075.wav",
+        "3c06b723628342e8917e4419084d86cb"
+      ]
+    },
+    "rock.00076": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00076.wav",
+        "8264aed93c13ac72e42c0f88b7438520"
+      ]
+    },
+    "rock.00077": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00077.wav",
+        "1434fa72d547832d2aa52031325c4fdc"
+      ]
+    },
+    "rock.00078": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00078.wav",
+        "f798e74f7fa1605e7d1f4ad163848074"
+      ]
+    },
+    "rock.00079": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00079.wav",
+        "528e49472e2be7331a6a8717b0e5e7a6"
+      ]
+    },
+    "rock.00080": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00080.wav",
+        "0f7c228fb7cda66bebf10d5d8492dc37"
+      ]
+    },
+    "rock.00081": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00081.wav",
+        "5db1a0c389aec4ef2fe606f03fd47f2b"
+      ]
+    },
+    "rock.00082": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00082.wav",
+        "cb6ab62aa929f30963ae550b5e9c9946"
+      ]
+    },
+    "rock.00083": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00083.wav",
+        "1f221d08dd8f321408dd6c922e11ddd2"
+      ]
+    },
+    "rock.00084": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00084.wav",
+        "a3e2c87b5df773f9bf2c4c123c554f71"
+      ]
+    },
+    "rock.00085": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00085.wav",
+        "cd8765dcd9a3f8216240c953af2473ca"
+      ]
+    },
+    "rock.00086": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00086.wav",
+        "517c0ab4dba0b7fc0ebb1f6055c0a880"
+      ]
+    },
+    "rock.00087": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00087.wav",
+        "a1ea7a43cdc55aed7c3f4965d588172f"
+      ]
+    },
+    "rock.00088": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00088.wav",
+        "35ffddf6afbe0e622edaa51358f78a05"
+      ]
+    },
+    "rock.00089": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00089.wav",
+        "7cdc386e6f1636c4872130304e5969ec"
+      ]
+    },
+    "rock.00090": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00090.wav",
+        "72448976ca23b79b55da776f722d3677"
+      ]
+    },
+    "rock.00091": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00091.wav",
+        "3b41a36480e4df69dd8d06fd1a5fc8b5"
+      ]
+    },
+    "rock.00092": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00092.wav",
+        "365c7e9b824cc720d61ccf97f1a19e18"
+      ]
+    },
+    "rock.00093": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00093.wav",
+        "6451e3a74b1d73c244f1463d0283c1ad"
+      ]
+    },
+    "rock.00094": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00094.wav",
+        "6c638a389a6088566dc7cd3585a71b55"
+      ]
+    },
+    "rock.00095": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00095.wav",
+        "7305d2d484f65f565672104459a21954"
+      ]
+    },
+    "rock.00096": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00096.wav",
+        "5cefdb7759b2e9061f37e50992b04f0a"
+      ]
+    },
+    "rock.00097": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00097.wav",
+        "500256d97b0de37c3be950982b79cfef"
+      ]
+    },
+    "rock.00098": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00098.wav",
+        "1a160b0734447c4f2534d11f83dbe9b7"
+      ]
+    },
+    "rock.00099": {
+      "audio": [
+        "gtzan_genre/genres/rock/rock.00099.wav",
+        "698f46afecf8c059229ccf87715d47bc"
+      ]
+    },
+    "blues.00000": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00000.wav",
+        "b462fa6a82a35d00940fe251f11447e5"
+      ]
+    },
+    "blues.00001": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00001.wav",
+        "43b1c962973a2825d56769fe4faed755"
+      ]
+    },
+    "blues.00002": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00002.wav",
+        "0a803ee19f2525cc29462cfa26caf9e9"
+      ]
+    },
+    "blues.00003": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00003.wav",
+        "8b0578538bb3ed50cd72af6c421330a3"
+      ]
+    },
+    "blues.00004": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00004.wav",
+        "49c425916d43bea3263d41d8741bd0a4"
+      ]
+    },
+    "blues.00005": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00005.wav",
+        "f0c16d59775b25ce8973b26cfdb780ac"
+      ]
+    },
+    "blues.00006": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00006.wav",
+        "449bf52d2ea95a963d81dabf07f37e81"
+      ]
+    },
+    "blues.00007": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00007.wav",
+        "4a9bbf926d74bd4d33512430895d89d4"
+      ]
+    },
+    "blues.00008": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00008.wav",
+        "f01f1f8a495855194e6f194c5b2f18de"
+      ]
+    },
+    "blues.00009": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00009.wav",
+        "e9cbca8e73ace7ac2d30e89e45224a77"
+      ]
+    },
+    "blues.00010": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00010.wav",
+        "cb6f2a31cf2af5dffc1e5c530cdccd78"
+      ]
+    },
+    "blues.00011": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00011.wav",
+        "ee68a97c0899695cbf449f34d65999bb"
+      ]
+    },
+    "blues.00012": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00012.wav",
+        "a66aa281f581116f59e40139c9f94864"
+      ]
+    },
+    "blues.00013": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00013.wav",
+        "ccef0513683095d5d3e9b81507291ccd"
+      ]
+    },
+    "blues.00014": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00014.wav",
+        "3805c1fdd686438a2c46f0290a6e9e95"
+      ]
+    },
+    "blues.00015": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00015.wav",
+        "9eaef283a20f18c359f3737cccf5e979"
+      ]
+    },
+    "blues.00016": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00016.wav",
+        "83b61aab363a43a1adaea90401cec60e"
+      ]
+    },
+    "blues.00017": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00017.wav",
+        "14b2de1a4e247ee31933f840134d6ac5"
+      ]
+    },
+    "blues.00018": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00018.wav",
+        "b07443ac85d5176abecb54f870b10a83"
+      ]
+    },
+    "blues.00019": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00019.wav",
+        "4fd6a6dab066893de252985878ef1978"
+      ]
+    },
+    "blues.00020": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00020.wav",
+        "4a1e443dd82fb7b8f891d6cb4b78222d"
+      ]
+    },
+    "blues.00021": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00021.wav",
+        "66c44cfa31016f2909f29f64623ea169"
+      ]
+    },
+    "blues.00022": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00022.wav",
+        "18cda61ad2da057663dbf9be91a5b161"
+      ]
+    },
+    "blues.00023": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00023.wav",
+        "b552f243ddd890bca3a75c1c59a9acb2"
+      ]
+    },
+    "blues.00024": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00024.wav",
+        "6ef09be7c81a81ae543dc530f305a04e"
+      ]
+    },
+    "blues.00025": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00025.wav",
+        "f2f519f4d98a7d47a07d066710bf57f4"
+      ]
+    },
+    "blues.00026": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00026.wav",
+        "44b18941a819167f5a6292b511e08def"
+      ]
+    },
+    "blues.00027": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00027.wav",
+        "6761a207e149f352d8dccbe38142a0ca"
+      ]
+    },
+    "blues.00028": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00028.wav",
+        "01401ba0a55e7d8b49bd8fa8fbfe47da"
+      ]
+    },
+    "blues.00029": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00029.wav",
+        "4fa09bd0a32b68c62dca78ce0b742b08"
+      ]
+    },
+    "blues.00030": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00030.wav",
+        "e9e4ea0f9eb911dce0260617b4d06122"
+      ]
+    },
+    "blues.00031": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00031.wav",
+        "60c21ba7084f9a50c289cfadbe6dee02"
+      ]
+    },
+    "blues.00032": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00032.wav",
+        "1031c77119911433775a96261ec5fd43"
+      ]
+    },
+    "blues.00033": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00033.wav",
+        "a90a5dd002d33648f37d6a76ac365484"
+      ]
+    },
+    "blues.00034": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00034.wav",
+        "c5b3f918d466167683d4a65ed90305ba"
+      ]
+    },
+    "blues.00035": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00035.wav",
+        "1dd821fa9c33027f748ba86d6579e9c8"
+      ]
+    },
+    "blues.00036": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00036.wav",
+        "0e3ad19377fb97b2aff2ae3968bed783"
+      ]
+    },
+    "blues.00037": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00037.wav",
+        "5c8d94640da0a156efc792d00ad58dc4"
+      ]
+    },
+    "blues.00038": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00038.wav",
+        "efc764038140fa6bfb1caf6afb1951fc"
+      ]
+    },
+    "blues.00039": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00039.wav",
+        "f1a1d36555917bff0c9a5156b4cdadde"
+      ]
+    },
+    "blues.00040": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00040.wav",
+        "dce098083399e2c960cea69f8acd1605"
+      ]
+    },
+    "blues.00041": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00041.wav",
+        "61723b9904bc79fad1f7abd171da8a6b"
+      ]
+    },
+    "blues.00042": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00042.wav",
+        "d523f774c45e2102773e84e67925a0cf"
+      ]
+    },
+    "blues.00043": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00043.wav",
+        "d51679ff2d6f40dea364ff86e80a1a1d"
+      ]
+    },
+    "blues.00044": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00044.wav",
+        "8780f6bcb70a34027fbbad2fe8e35eca"
+      ]
+    },
+    "blues.00045": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00045.wav",
+        "32dd6cb76aaf8975352c912711a0cd1f"
+      ]
+    },
+    "blues.00046": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00046.wav",
+        "5c5aa4c6c513a488b897f4712e27eba0"
+      ]
+    },
+    "blues.00047": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00047.wav",
+        "aec925757a082b0b5a2e32f517c3ef3f"
+      ]
+    },
+    "blues.00048": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00048.wav",
+        "60c29b4614627bffa0d113fd4ae6ed2a"
+      ]
+    },
+    "blues.00049": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00049.wav",
+        "aac67d1bcadf72e4d69c34923122972f"
+      ]
+    },
+    "blues.00050": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00050.wav",
+        "4083558f2996c95452254156729b2d7e"
+      ]
+    },
+    "blues.00051": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00051.wav",
+        "f98a4d6d16981685f2bad57174d3b658"
+      ]
+    },
+    "blues.00052": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00052.wav",
+        "d08bc7170865c748703d6c96c9b60096"
+      ]
+    },
+    "blues.00053": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00053.wav",
+        "6cfeb0f1add47aec85500fc2f1d1fa03"
+      ]
+    },
+    "blues.00054": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00054.wav",
+        "ced59c524573d1938d10805fa09b50f2"
+      ]
+    },
+    "blues.00055": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00055.wav",
+        "a50fe1767da2eb385cddba22c0512099"
+      ]
+    },
+    "blues.00056": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00056.wav",
+        "799e8d1188e004ae755522a8e96fc82c"
+      ]
+    },
+    "blues.00057": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00057.wav",
+        "92c449810a8914b5b06d053089ac19e4"
+      ]
+    },
+    "blues.00058": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00058.wav",
+        "d611dbfec3ae5545844398c7ef122d3e"
+      ]
+    },
+    "blues.00059": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00059.wav",
+        "d654d3241c5ea776896d557af432ce67"
+      ]
+    },
+    "blues.00060": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00060.wav",
+        "4f7c39818d8427844f2cc4c7b04a0ec0"
+      ]
+    },
+    "blues.00061": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00061.wav",
+        "08eda07e7179310f08eb1a9da1476b22"
+      ]
+    },
+    "blues.00062": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00062.wav",
+        "a6ed511d4c1f888ef485898e9f9faf23"
+      ]
+    },
+    "blues.00063": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00063.wav",
+        "5a5d425c18c93645dfd0a95827e6a5c4"
+      ]
+    },
+    "blues.00064": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00064.wav",
+        "030fc57376778c25bb6546fda9729208"
+      ]
+    },
+    "blues.00065": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00065.wav",
+        "5ebc10e85f376508060772087fe52235"
+      ]
+    },
+    "blues.00066": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00066.wav",
+        "8d8af7957c12caa42793d6e46bf81bd6"
+      ]
+    },
+    "blues.00067": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00067.wav",
+        "e19caf54752b4cccf5398e9327534fd8"
+      ]
+    },
+    "blues.00068": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00068.wav",
+        "cc717cbc3844ffefcab01f40aab53686"
+      ]
+    },
+    "blues.00069": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00069.wav",
+        "7dbb52067f8e26e364a767e05a465291"
+      ]
+    },
+    "blues.00070": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00070.wav",
+        "b135492f0c05203b2809b25d662967e3"
+      ]
+    },
+    "blues.00071": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00071.wav",
+        "b1aec19788dbed6e3a2d6a5900b027da"
+      ]
+    },
+    "blues.00072": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00072.wav",
+        "08cb5b929cd19d49c19bf4e1cdb63a9f"
+      ]
+    },
+    "blues.00073": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00073.wav",
+        "63c093dd0395c7635ca5c77d720827f3"
+      ]
+    },
+    "blues.00074": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00074.wav",
+        "906d74358a46ddc5ea06c2ff2b625dbc"
+      ]
+    },
+    "blues.00075": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00075.wav",
+        "dade6897fe216838325583164c9833e0"
+      ]
+    },
+    "blues.00076": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00076.wav",
+        "d0b8f5a2d1cc871499ade90fa4e9594f"
+      ]
+    },
+    "blues.00077": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00077.wav",
+        "c737a95d850c4e8ff1d2859f2658a93e"
+      ]
+    },
+    "blues.00078": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00078.wav",
+        "fe4b87e3103ce7d045a3754b6418ba3d"
+      ]
+    },
+    "blues.00079": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00079.wav",
+        "ff1ef461879e8cf0fc1c18b8403a267a"
+      ]
+    },
+    "blues.00080": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00080.wav",
+        "dab5489f16f4e33ab36ae57fea78abb5"
+      ]
+    },
+    "blues.00081": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00081.wav",
+        "213ce6228b4ebcf2342b4cac704f253c"
+      ]
+    },
+    "blues.00082": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00082.wav",
+        "0444855585d9e2a6db9f5ebf72f1444a"
+      ]
+    },
+    "blues.00083": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00083.wav",
+        "803c1febb7dd5d7f500de2f0eb1ec565"
+      ]
+    },
+    "blues.00084": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00084.wav",
+        "81cb10794f808ffd09068380cdda2f49"
+      ]
+    },
+    "blues.00085": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00085.wav",
+        "041d15e59c1df908817b83a7390d54a6"
+      ]
+    },
+    "blues.00086": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00086.wav",
+        "b579fb05512ef6f051beae3a6144e174"
+      ]
+    },
+    "blues.00087": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00087.wav",
+        "8b352c0419a88333347bb737c47f92b7"
+      ]
+    },
+    "blues.00088": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00088.wav",
+        "7ed5ef60e0333608fb2d2c03294bfc7e"
+      ]
+    },
+    "blues.00089": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00089.wav",
+        "d7229dff570514e01759a6d395811fe7"
+      ]
+    },
+    "blues.00090": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00090.wav",
+        "cbf4697e503750f82f0ba0c7376323fa"
+      ]
+    },
+    "blues.00091": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00091.wav",
+        "69e6603a59cac596802e20f63bb96432"
+      ]
+    },
+    "blues.00092": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00092.wav",
+        "5db54b5228b9853648e24b2487ce9556"
+      ]
+    },
+    "blues.00093": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00093.wav",
+        "d8759887c5b874f07b5c2c558dc3a45b"
+      ]
+    },
+    "blues.00094": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00094.wav",
+        "17e0c57c9c4cb00db7241674aff4a8be"
+      ]
+    },
+    "blues.00095": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00095.wav",
+        "a145731c6a402959ee937d065a40e34a"
+      ]
+    },
+    "blues.00096": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00096.wav",
+        "37a3ac2abd70bc01f368b544df74b0b6"
+      ]
+    },
+    "blues.00097": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00097.wav",
+        "d09960c1b8080b03419286876c1f6e4c"
+      ]
+    },
+    "blues.00098": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00098.wav",
+        "9a0f6364218519e21fe9dcbd6ab2c820"
+      ]
+    },
+    "blues.00099": {
+      "audio": [
+        "gtzan_genre/genres/blues/blues.00099.wav",
+        "e902207bddb42a8da5a64101340a6725"
+      ]
+    },
+    "reggae.00000": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00000.wav",
+        "57d8dd1fccbd211619546ace3c270636"
+      ]
+    },
+    "reggae.00001": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00001.wav",
+        "320a327e0b3b45e265f87fd693cbdbe9"
+      ]
+    },
+    "reggae.00002": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00002.wav",
+        "eab6ab76f53515976bee7100cdbcdaab"
+      ]
+    },
+    "reggae.00003": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00003.wav",
+        "f9a6fd18e4a9ccf622c2d0d8ff051181"
+      ]
+    },
+    "reggae.00004": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00004.wav",
+        "5639c10975ccb0060d4532757e8e34d4"
+      ]
+    },
+    "reggae.00005": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00005.wav",
+        "ff41392500de009d8d17a8cf0ec2f7c8"
+      ]
+    },
+    "reggae.00006": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00006.wav",
+        "46fcbf2cf3f5632ff0aae768bfb7dcc5"
+      ]
+    },
+    "reggae.00007": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00007.wav",
+        "d7878325476d37aa4fb2b3afb8ef605b"
+      ]
+    },
+    "reggae.00008": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00008.wav",
+        "55b2b874396efce034ba7917f8019e9c"
+      ]
+    },
+    "reggae.00009": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00009.wav",
+        "52aaf5247afbf79d02a801fa21f0f1ca"
+      ]
+    },
+    "reggae.00010": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00010.wav",
+        "55d0e5331418cbff41b29c2bd36cc5b1"
+      ]
+    },
+    "reggae.00011": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00011.wav",
+        "4857d36ca3a27a0531863d9715cf78b7"
+      ]
+    },
+    "reggae.00012": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00012.wav",
+        "e60ae3b52249899499a9200e010e9f87"
+      ]
+    },
+    "reggae.00013": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00013.wav",
+        "f7a860a37dfa7bcf35b78406ad281310"
+      ]
+    },
+    "reggae.00014": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00014.wav",
+        "d1103186a315774d912283d828ee892a"
+      ]
+    },
+    "reggae.00015": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00015.wav",
+        "59e9437f2e6e993a5aa56ecf8317f5e9"
+      ]
+    },
+    "reggae.00016": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00016.wav",
+        "0e38200c450683cd5e92d0fcad82da41"
+      ]
+    },
+    "reggae.00017": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00017.wav",
+        "1783bddf090553a8b0b2d4c668d38951"
+      ]
+    },
+    "reggae.00018": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00018.wav",
+        "967893c86449e7716e7db71568f82dc9"
+      ]
+    },
+    "reggae.00019": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00019.wav",
+        "591ddc36b4d0b39953a058611bc445cf"
+      ]
+    },
+    "reggae.00020": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00020.wav",
+        "a6fc5b5ad26f4be9929ec0284b0a9e9b"
+      ]
+    },
+    "reggae.00021": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00021.wav",
+        "1a4573cb23fdcc06263765086304f823"
+      ]
+    },
+    "reggae.00022": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00022.wav",
+        "0b39c16b514872a416156fae72a45cc0"
+      ]
+    },
+    "reggae.00023": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00023.wav",
+        "40882f2fe18a3692d4f07b8d5108eb24"
+      ]
+    },
+    "reggae.00024": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00024.wav",
+        "0ad75345daa784f65b42f4c31836a1e6"
+      ]
+    },
+    "reggae.00025": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00025.wav",
+        "9ebc000f5519e8ad49bd0815ad6ef6e5"
+      ]
+    },
+    "reggae.00026": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00026.wav",
+        "abd884f2e5bc3d5fc57b121a833222b9"
+      ]
+    },
+    "reggae.00027": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00027.wav",
+        "8689cae6c2c1ab56c99a6e286c3d0d00"
+      ]
+    },
+    "reggae.00028": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00028.wav",
+        "ca6373b5aaf626e826c7a7a9d4c6241b"
+      ]
+    },
+    "reggae.00029": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00029.wav",
+        "0aac1bd091f06889be51c6f8b302b369"
+      ]
+    },
+    "reggae.00030": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00030.wav",
+        "8bdcde0559d8728e512c36839ba19c62"
+      ]
+    },
+    "reggae.00031": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00031.wav",
+        "29abaf96bf74c12c9bc7edfa7955f7bd"
+      ]
+    },
+    "reggae.00032": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00032.wav",
+        "0ac078885b2625a45454c2d06d934176"
+      ]
+    },
+    "reggae.00033": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00033.wav",
+        "ea2647fae32db14738e0b2162e44de4c"
+      ]
+    },
+    "reggae.00034": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00034.wav",
+        "84ddd284b85f42edd3fb28e44f1336b6"
+      ]
+    },
+    "reggae.00035": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00035.wav",
+        "df25b2c789eaa904933f08f573a4c4ff"
+      ]
+    },
+    "reggae.00036": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00036.wav",
+        "16d8c5fb2592be0dc7d2f8d953f317b2"
+      ]
+    },
+    "reggae.00037": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00037.wav",
+        "e72a1ea646a0f79c550f602229345de1"
+      ]
+    },
+    "reggae.00038": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00038.wav",
+        "7566d837f05ccc0059c96155cc77a1a8"
+      ]
+    },
+    "reggae.00039": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00039.wav",
+        "abfc6e515285abe0744cc3c714890bc2"
+      ]
+    },
+    "reggae.00040": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00040.wav",
+        "d4243ffaa91176029e46bccc06b3fb41"
+      ]
+    },
+    "reggae.00041": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00041.wav",
+        "759dd96c454bf8a00eceb3b4c853287d"
+      ]
+    },
+    "reggae.00042": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00042.wav",
+        "827c8efa5d977aad71e814793ed3f85a"
+      ]
+    },
+    "reggae.00043": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00043.wav",
+        "8d0d9259a13c5b70fbfff742543543ee"
+      ]
+    },
+    "reggae.00044": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00044.wav",
+        "7012be2afce3a6431e8190f2de50131e"
+      ]
+    },
+    "reggae.00045": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00045.wav",
+        "d176f6fecdacc88f88cd4bd5ac48ebb7"
+      ]
+    },
+    "reggae.00046": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00046.wav",
+        "3701079da488b6044fb06879f3d07847"
+      ]
+    },
+    "reggae.00047": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00047.wav",
+        "067fe7dcae260ed81006bd5bfb021005"
+      ]
+    },
+    "reggae.00048": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00048.wav",
+        "269e8ea63c1f2b5fcd080e2c583266bd"
+      ]
+    },
+    "reggae.00049": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00049.wav",
+        "1a40a5081cb2cd2c5126312ecfc6d8cb"
+      ]
+    },
+    "reggae.00050": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00050.wav",
+        "a2ef2e09adcb74bb87fb95f798ca78d0"
+      ]
+    },
+    "reggae.00051": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00051.wav",
+        "6d4b6d16eb99bf39178b77f164eb6287"
+      ]
+    },
+    "reggae.00052": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00052.wav",
+        "5eff91b2728dd7a78ad4688d43a9767a"
+      ]
+    },
+    "reggae.00053": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00053.wav",
+        "e1c99c930941da7d48edab4a7600941f"
+      ]
+    },
+    "reggae.00054": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00054.wav",
+        "de3de02d212fe5b1980fafee272e5cdd"
+      ]
+    },
+    "reggae.00055": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00055.wav",
+        "1b882df3a6935263f02e586567306793"
+      ]
+    },
+    "reggae.00056": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00056.wav",
+        "6724e6f059f040479810acd26ce0a9ab"
+      ]
+    },
+    "reggae.00057": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00057.wav",
+        "00d4408c1a8b1bc858ded8d0bae8ba36"
+      ]
+    },
+    "reggae.00058": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00058.wav",
+        "390b8055c6f809bae1258832aec6d0ef"
+      ]
+    },
+    "reggae.00059": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00059.wav",
+        "be7a005deba3a130658aee7a21217369"
+      ]
+    },
+    "reggae.00060": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00060.wav",
+        "ee23efaf15aa9cd77a7b7faf56d15cf6"
+      ]
+    },
+    "reggae.00061": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00061.wav",
+        "1325b16a7612eabebd2b0a68aa650147"
+      ]
+    },
+    "reggae.00062": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00062.wav",
+        "d99db85da3868a60ce254f78fb4a667d"
+      ]
+    },
+    "reggae.00063": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00063.wav",
+        "1edf91ee6ce11938d6eb6738847e9dec"
+      ]
+    },
+    "reggae.00064": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00064.wav",
+        "57d6fd067d4df896c28e5df5c0ec4b62"
+      ]
+    },
+    "reggae.00065": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00065.wav",
+        "f0602cd11b460c533c90942e9044ce8f"
+      ]
+    },
+    "reggae.00066": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00066.wav",
+        "fd0c7cc124ef31a1f397eed367552e2f"
+      ]
+    },
+    "reggae.00067": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00067.wav",
+        "2ec8ee3386d22e2df9f39783a66608f5"
+      ]
+    },
+    "reggae.00068": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00068.wav",
+        "08dd92246dcf08aaeeb61e6d425635bc"
+      ]
+    },
+    "reggae.00069": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00069.wav",
+        "61d68cebb7bd96a5a2c65343b159f189"
+      ]
+    },
+    "reggae.00070": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00070.wav",
+        "4dbacde67a9542f798f9dc44060b19cf"
+      ]
+    },
+    "reggae.00071": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00071.wav",
+        "12a343679969ec28789d0d6192c61e5d"
+      ]
+    },
+    "reggae.00072": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00072.wav",
+        "1af0374d3d8f572975fa22cc208623dd"
+      ]
+    },
+    "reggae.00073": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00073.wav",
+        "6a00d64cfb2cebc535f6e771f4132e92"
+      ]
+    },
+    "reggae.00074": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00074.wav",
+        "ff5da650075a921b52100a0b627bc5d9"
+      ]
+    },
+    "reggae.00075": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00075.wav",
+        "9e1970c25b9659b489abc6f295b2c107"
+      ]
+    },
+    "reggae.00076": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00076.wav",
+        "9b2652cb6aab52a3d5b62ec5d5b6366e"
+      ]
+    },
+    "reggae.00077": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00077.wav",
+        "7381526814a5765c99b3afa0c858a7a9"
+      ]
+    },
+    "reggae.00078": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00078.wav",
+        "12bc4f63b18fe60eb574a025556f89c4"
+      ]
+    },
+    "reggae.00079": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00079.wav",
+        "0f209a0aa63262d3de473f33836af145"
+      ]
+    },
+    "reggae.00080": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00080.wav",
+        "3159045d013ed2bb5acf407663338457"
+      ]
+    },
+    "reggae.00081": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00081.wav",
+        "a2afab9cf2b8d73dc54823599f558116"
+      ]
+    },
+    "reggae.00082": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00082.wav",
+        "a2afab9cf2b8d73dc54823599f558116"
+      ]
+    },
+    "reggae.00083": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00083.wav",
+        "1eb5847b928856b6eb8d5da520f77f16"
+      ]
+    },
+    "reggae.00084": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00084.wav",
+        "e81fd83264d3f4c31388865f2427cce5"
+      ]
+    },
+    "reggae.00085": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00085.wav",
+        "5fa5774ed93e1a8fa6a4914108dfa420"
+      ]
+    },
+    "reggae.00086": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00086.wav",
+        "079a4c1fac27f667c01625e46b9ad54c"
+      ]
+    },
+    "reggae.00087": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00087.wav",
+        "0ed46ff7702ffe3b2c4f6f2ed63a29d4"
+      ]
+    },
+    "reggae.00088": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00088.wav",
+        "f1867b47542081e387b41ad874ad770c"
+      ]
+    },
+    "reggae.00089": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00089.wav",
+        "50e8f37aab5bf54920c60ccc78caeb76"
+      ]
+    },
+    "reggae.00090": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00090.wav",
+        "720f89ac236bc02f7fb9c33ae2f66cab"
+      ]
+    },
+    "reggae.00091": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00091.wav",
+        "97dbea007c189214bb85cb2fbb83de13"
+      ]
+    },
+    "reggae.00092": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00092.wav",
+        "14d313696981a7f58bfafc7ece2ca0ec"
+      ]
+    },
+    "reggae.00093": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00093.wav",
+        "fe5c47311f8d7e64408df26475b4fbcd"
+      ]
+    },
+    "reggae.00094": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00094.wav",
+        "461d56a0e21af0cbe2fee5cced04375d"
+      ]
+    },
+    "reggae.00095": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00095.wav",
+        "6b184fd551f1188b698c15f144821078"
+      ]
+    },
+    "reggae.00096": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00096.wav",
+        "94dc702e71dfbf1c98818c900a85e2fa"
+      ]
+    },
+    "reggae.00097": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00097.wav",
+        "28d82a0fc882303a17a5c07b0a323f44"
+      ]
+    },
+    "reggae.00098": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00098.wav",
+        "81f0016f24dc870f1343b1774cc8daa7"
+      ]
+    },
+    "reggae.00099": {
+      "audio": [
+        "gtzan_genre/genres/reggae/reggae.00099.wav",
+        "c73d20b41d7d5cf71084e0e71aaf8230"
+      ]
+    },
+    "pop.00000": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00000.wav",
+        "49f82decebfe042f27ab8dd4ec073cc8"
+      ]
+    },
+    "pop.00001": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00001.wav",
+        "4971845e8742caf9046f2dd2cefea014"
+      ]
+    },
+    "pop.00002": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00002.wav",
+        "55804ea064f1876968148f50f1394404"
+      ]
+    },
+    "pop.00003": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00003.wav",
+        "b4759b343fa8367d7490fb7e00c51d1c"
+      ]
+    },
+    "pop.00004": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00004.wav",
+        "3fa37420ca8d2005463b753e50d32d29"
+      ]
+    },
+    "pop.00005": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00005.wav",
+        "c59288f482513aa74f5ff4e70cd3a119"
+      ]
+    },
+    "pop.00006": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00006.wav",
+        "543eb92a9287a1eb09dcc2f8a7648cca"
+      ]
+    },
+    "pop.00007": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00007.wav",
+        "6635bfcb8c704f74d277baf3bce215e5"
+      ]
+    },
+    "pop.00008": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00008.wav",
+        "4300192f6990bce39b1a610ceb29c049"
+      ]
+    },
+    "pop.00009": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00009.wav",
+        "7cc04a624dcf0c2d8951b68247db87cd"
+      ]
+    },
+    "pop.00010": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00010.wav",
+        "94d863228e07882b1ea86c31478f6605"
+      ]
+    },
+    "pop.00011": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00011.wav",
+        "d0727fcf69fa1a89fdb3b640656572c0"
+      ]
+    },
+    "pop.00012": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00012.wav",
+        "4954b350c845cba4604ed73fdcf80c3a"
+      ]
+    },
+    "pop.00013": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00013.wav",
+        "519d5c866d534ad1e75c41757e96e12b"
+      ]
+    },
+    "pop.00014": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00014.wav",
+        "65dc3b42a3b488de96c7893924498ce8"
+      ]
+    },
+    "pop.00015": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00015.wav",
+        "ecef9a44aaa831e1b79d25892e55cdcd"
+      ]
+    },
+    "pop.00016": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00016.wav",
+        "df8a6cfae6b53d993fbeba555b102e53"
+      ]
+    },
+    "pop.00017": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00017.wav",
+        "56c4b2c127dbb03a5dac3d032e371931"
+      ]
+    },
+    "pop.00018": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00018.wav",
+        "5f03849856e95f768f83774f472caddb"
+      ]
+    },
+    "pop.00019": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00019.wav",
+        "244c9c479bc77a1131d086bfc5e1fce9"
+      ]
+    },
+    "pop.00020": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00020.wav",
+        "38ca9771c71b2419524a270fa0dbef82"
+      ]
+    },
+    "pop.00021": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00021.wav",
+        "cddb41fc6d78e75939fc783a5f3c9ac0"
+      ]
+    },
+    "pop.00022": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00022.wav",
+        "12aa2a435c555e489e40a7a7733d8e21"
+      ]
+    },
+    "pop.00023": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00023.wav",
+        "c53cb558a99e53943b87467146749013"
+      ]
+    },
+    "pop.00024": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00024.wav",
+        "bf599d5fe70697b5c842c71b60bfb771"
+      ]
+    },
+    "pop.00025": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00025.wav",
+        "48c362b67a3d31e03aa1307af36eafb3"
+      ]
+    },
+    "pop.00026": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00026.wav",
+        "8a37e6d21f78431a8aba4e542f533f93"
+      ]
+    },
+    "pop.00027": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00027.wav",
+        "05a5bdae7273553b2603c524503e6d57"
+      ]
+    },
+    "pop.00028": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00028.wav",
+        "138126dfe383bd4dbf0ff383fc2d50b5"
+      ]
+    },
+    "pop.00029": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00029.wav",
+        "2feff179a028ccbb9d08970b6cdce077"
+      ]
+    },
+    "pop.00030": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00030.wav",
+        "6ac79ad908d116a2c4cb8dbe375b3e46"
+      ]
+    },
+    "pop.00031": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00031.wav",
+        "f6ea7b57e49099edceca7c978109459b"
+      ]
+    },
+    "pop.00032": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00032.wav",
+        "c77163075155dba54d0a143f0d1883e9"
+      ]
+    },
+    "pop.00033": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00033.wav",
+        "f9ca8fb4f9bb75ac56c2d6c996f2279a"
+      ]
+    },
+    "pop.00034": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00034.wav",
+        "4fa2b74a5689d654ce09ba0b247cb45b"
+      ]
+    },
+    "pop.00035": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00035.wav",
+        "4524e07761e4c5b8d4d6936bf6646b8b"
+      ]
+    },
+    "pop.00036": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00036.wav",
+        "6c6d636372db7ef70f8a53e6dba63601"
+      ]
+    },
+    "pop.00037": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00037.wav",
+        "e7d66733b6665baa3609bfe3fa4629e7"
+      ]
+    },
+    "pop.00038": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00038.wav",
+        "e9cb69831b2e8aeec570890250afaf47"
+      ]
+    },
+    "pop.00039": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00039.wav",
+        "a9e8c91d04df6dc17c8b68773490c041"
+      ]
+    },
+    "pop.00040": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00040.wav",
+        "d10bfa9de55216429802d27b5ce2cfc7"
+      ]
+    },
+    "pop.00041": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00041.wav",
+        "0d5c4ec4091cdbd2333546dcafee228c"
+      ]
+    },
+    "pop.00042": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00042.wav",
+        "6a891114c2f7745b349a0a0f578b6583"
+      ]
+    },
+    "pop.00043": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00043.wav",
+        "afe4e1ad8cdd8d99793e7487a072c096"
+      ]
+    },
+    "pop.00044": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00044.wav",
+        "26fa34964798ecc6827b34a4481c7530"
+      ]
+    },
+    "pop.00045": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00045.wav",
+        "ce774214e9ea6fc42a05511b25d1f654"
+      ]
+    },
+    "pop.00046": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00046.wav",
+        "644ce3418d2a1d116f5c4d35d0dcc8cd"
+      ]
+    },
+    "pop.00047": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00047.wav",
+        "36f7110025a4a70895d0ec5fd1b6e45d"
+      ]
+    },
+    "pop.00048": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00048.wav",
+        "0cb4a7cdf1296914e7dec3ef09b3dd4f"
+      ]
+    },
+    "pop.00049": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00049.wav",
+        "552ad347f98aaa98ef88a4fa0f502d3f"
+      ]
+    },
+    "pop.00050": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00050.wav",
+        "a20574c18ecf5e3d763197749a68bac4"
+      ]
+    },
+    "pop.00051": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00051.wav",
+        "c0d0d510db0af4f7df4032246749457b"
+      ]
+    },
+    "pop.00052": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00052.wav",
+        "343755b92f04e943607c433a6f1310f5"
+      ]
+    },
+    "pop.00053": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00053.wav",
+        "d0ceca40adec720baff0adecd137a4a6"
+      ]
+    },
+    "pop.00054": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00054.wav",
+        "294ff2f83536ceded548ed8b8ab4df50"
+      ]
+    },
+    "pop.00055": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00055.wav",
+        "dc118c94f3f64842c2a61d09dc156039"
+      ]
+    },
+    "pop.00056": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00056.wav",
+        "9b51c09305e3b2480c9d2614efc7c6fd"
+      ]
+    },
+    "pop.00057": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00057.wav",
+        "680860bd0632a5733e0db797a000e4ca"
+      ]
+    },
+    "pop.00058": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00058.wav",
+        "a7c3000c8db298a1e4cf186e1d14b23a"
+      ]
+    },
+    "pop.00059": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00059.wav",
+        "295c64f12bb7317bd9730177c5f028fc"
+      ]
+    },
+    "pop.00060": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00060.wav",
+        "294ff2f83536ceded548ed8b8ab4df50"
+      ]
+    },
+    "pop.00061": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00061.wav",
+        "90a279efef202d019cc67e5cef135a83"
+      ]
+    },
+    "pop.00062": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00062.wav",
+        "6b7361a8692536f7052b8efcfc7d0c07"
+      ]
+    },
+    "pop.00063": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00063.wav",
+        "75345d2c5638baee9a718ede40e2fa97"
+      ]
+    },
+    "pop.00064": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00064.wav",
+        "aa2e999cd8f4ddde9f9b41c297b96f86"
+      ]
+    },
+    "pop.00065": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00065.wav",
+        "2d04225a8bb45769a55dfab49df8674d"
+      ]
+    },
+    "pop.00066": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00066.wav",
+        "5eff3df29e3be43618ea30112d61aedc"
+      ]
+    },
+    "pop.00067": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00067.wav",
+        "91b4735c6f9751f489cc5be78d86aa44"
+      ]
+    },
+    "pop.00068": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00068.wav",
+        "5198cbb4c324028c004df7a289d68f9e"
+      ]
+    },
+    "pop.00069": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00069.wav",
+        "c1abfb6ca0bad9574fcb0774bd68d7eb"
+      ]
+    },
+    "pop.00070": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00070.wav",
+        "e11c36a727acdff4ee95dd64642ce04e"
+      ]
+    },
+    "pop.00071": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00071.wav",
+        "91b4735c6f9751f489cc5be78d86aa44"
+      ]
+    },
+    "pop.00072": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00072.wav",
+        "ced958d67d11b87d64fe255aa61a9c69"
+      ]
+    },
+    "pop.00073": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00073.wav",
+        "385461b4e2995ad721f988aa1d1f7805"
+      ]
+    },
+    "pop.00074": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00074.wav",
+        "6f94adf8be0999e37c0f6e041a60cf59"
+      ]
+    },
+    "pop.00075": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00075.wav",
+        "0a5fb7049ccc4ab3cccf16e5cd463fa4"
+      ]
+    },
+    "pop.00076": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00076.wav",
+        "07b0259328249d0b82be117b1e2c6e16"
+      ]
+    },
+    "pop.00077": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00077.wav",
+        "c1c4a979251ac47c075f900cdc641a83"
+      ]
+    },
+    "pop.00078": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00078.wav",
+        "a461181e28dc4c1c7a893e99a78c25d6"
+      ]
+    },
+    "pop.00079": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00079.wav",
+        "a5f3b7c6c3018bbde00d34bcc5cdba8c"
+      ]
+    },
+    "pop.00080": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00080.wav",
+        "376530fcbce33904afc4202ce376f9ea"
+      ]
+    },
+    "pop.00081": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00081.wav",
+        "981eb9adf051bfaf36d84a8534d0c326"
+      ]
+    },
+    "pop.00082": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00082.wav",
+        "4856a3a1b4863e2939f3548259d50ef3"
+      ]
+    },
+    "pop.00083": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00083.wav",
+        "6ae09b25ac2fca4060897baf032b83fe"
+      ]
+    },
+    "pop.00084": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00084.wav",
+        "4aa8e9773c76b9ae1071b75be06c88c4"
+      ]
+    },
+    "pop.00085": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00085.wav",
+        "ea00020459c96c62d4333b958bebb347"
+      ]
+    },
+    "pop.00086": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00086.wav",
+        "2fc938b59088acc35e13418f35225017"
+      ]
+    },
+    "pop.00087": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00087.wav",
+        "f9ef811254c3fb6bf916157621518b05"
+      ]
+    },
+    "pop.00088": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00088.wav",
+        "79883144b1ff52a21d07c75eb4299c29"
+      ]
+    },
+    "pop.00089": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00089.wav",
+        "c4c5942e973727acc4d353604d1852ac"
+      ]
+    },
+    "pop.00090": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00090.wav",
+        "5616aa2bb8474ef1f86bfeb831c0a723"
+      ]
+    },
+    "pop.00091": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00091.wav",
+        "b7b37b7ca13c7799a696d96028e02bd0"
+      ]
+    },
+    "pop.00092": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00092.wav",
+        "9a026fa2c601f0a87ccd65695b8cd67a"
+      ]
+    },
+    "pop.00093": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00093.wav",
+        "d7175cbb89044b3841d2b73e84bd920e"
+      ]
+    },
+    "pop.00094": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00094.wav",
+        "0aabcfc53bafaf2934e2f389a4e4adb8"
+      ]
+    },
+    "pop.00095": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00095.wav",
+        "abe1a396b1987890bd006ec2323f9bb7"
+      ]
+    },
+    "pop.00096": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00096.wav",
+        "b5f9a6d2dc2e59fe959f0cade9bff8ab"
+      ]
+    },
+    "pop.00097": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00097.wav",
+        "20d289fbb096142a95b0c91742c7f8fa"
+      ]
+    },
+    "pop.00098": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00098.wav",
+        "df4a350e10ae9b70cd18d8786462ad87"
+      ]
+    },
+    "pop.00099": {
+      "audio": [
+        "gtzan_genre/genres/pop/pop.00099.wav",
+        "8070ce11ab7baaaf3424df1fd05820c2"
+      ]
+    },
+    "metal.00000": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00000.wav",
+        "1497db5921a37276826c658ae0742c1a"
+      ]
+    },
+    "metal.00001": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00001.wav",
+        "0932dbf459db8aef34818a3cbdd7e934"
+      ]
+    },
+    "metal.00002": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00002.wav",
+        "d8d167dc12fbb39c558011c4f9b05e46"
+      ]
+    },
+    "metal.00003": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00003.wav",
+        "bef1d8cff53f05e956d1bc9f227ff55d"
+      ]
+    },
+    "metal.00004": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00004.wav",
+        "0d712effdd53165f3344d6dcf9e258e2"
+      ]
+    },
+    "metal.00005": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00005.wav",
+        "7194773b465e77a95242a54bf91e6a79"
+      ]
+    },
+    "metal.00006": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00006.wav",
+        "0afa1908259357db3c8d37d0b4b3b669"
+      ]
+    },
+    "metal.00007": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00007.wav",
+        "bd310d36dc15b6e0836a2268206369a2"
+      ]
+    },
+    "metal.00008": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00008.wav",
+        "a282a2e35198ec44ed6e46b624362202"
+      ]
+    },
+    "metal.00009": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00009.wav",
+        "505e5c33fe51ff1ad867caadc320519d"
+      ]
+    },
+    "metal.00010": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00010.wav",
+        "559b54bec71f80241f72a6ecaf7ba6a9"
+      ]
+    },
+    "metal.00011": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00011.wav",
+        "d0f968e07b056c1a2c9ec1f2724c1251"
+      ]
+    },
+    "metal.00012": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00012.wav",
+        "be87380135f2f08ee2b2330a95e86bc6"
+      ]
+    },
+    "metal.00013": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00013.wav",
+        "60254df39c1a4e60bcde630757134ce1"
+      ]
+    },
+    "metal.00014": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00014.wav",
+        "9e3575888e3d08408c5b668e0c2d6b65"
+      ]
+    },
+    "metal.00015": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00015.wav",
+        "e200e4d0ededfb077afe4439d0640525"
+      ]
+    },
+    "metal.00016": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00016.wav",
+        "9eae6c4cef1f724346ad04f113b9ebdc"
+      ]
+    },
+    "metal.00017": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00017.wav",
+        "c33dc00207701f26de8da1057c89000c"
+      ]
+    },
+    "metal.00018": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00018.wav",
+        "4ef471a9575af0a596c2bd1307761b4d"
+      ]
+    },
+    "metal.00019": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00019.wav",
+        "cb3b08b9239f3bb3b7460eaa591f9124"
+      ]
+    },
+    "metal.00020": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00020.wav",
+        "e6b8a65765c4eb78f1be47c150889145"
+      ]
+    },
+    "metal.00021": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00021.wav",
+        "56138a46b3ad8ab66790fba72d6b1b21"
+      ]
+    },
+    "metal.00022": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00022.wav",
+        "4b628ef8043aa10b093b198389af1e04"
+      ]
+    },
+    "metal.00023": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00023.wav",
+        "a45227a0c109ee3ec1250f541b8048e7"
+      ]
+    },
+    "metal.00024": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00024.wav",
+        "9f0765caf82ed5636742693c08b0a1e1"
+      ]
+    },
+    "metal.00025": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00025.wav",
+        "b44bc34d7b5ec055bf40506a6ea5b3d3"
+      ]
+    },
+    "metal.00026": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00026.wav",
+        "e8330f0661deb84dc1c5f59615ea2e14"
+      ]
+    },
+    "metal.00027": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00027.wav",
+        "59213e9abcbdc699ff0980334ec2b985"
+      ]
+    },
+    "metal.00028": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00028.wav",
+        "5922b53486935e303d6f1fe11486ba2f"
+      ]
+    },
+    "metal.00029": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00029.wav",
+        "5f198c1bda103b22bd59cd676e96cf9f"
+      ]
+    },
+    "metal.00030": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00030.wav",
+        "6b24aae7c37feec21652b423a410bd4d"
+      ]
+    },
+    "metal.00031": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00031.wav",
+        "451052baf22957af4f0ecd64ef88e454"
+      ]
+    },
+    "metal.00032": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00032.wav",
+        "236e168841caeb6df18e2648060a2c7f"
+      ]
+    },
+    "metal.00033": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00033.wav",
+        "81c2f1d9c6c4546dcd460a7f66156df5"
+      ]
+    },
+    "metal.00034": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00034.wav",
+        "108396866a0b7bd6120ce0f2c3647a33"
+      ]
+    },
+    "metal.00035": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00035.wav",
+        "d8b10da20eb093954e32af90b2e081d4"
+      ]
+    },
+    "metal.00036": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00036.wav",
+        "435e41ec9b20e877704a7386245909fc"
+      ]
+    },
+    "metal.00037": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00037.wav",
+        "1820cefdee35b4ba50922814412e8885"
+      ]
+    },
+    "metal.00038": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00038.wav",
+        "7621117216efa82e8504ab306a57910e"
+      ]
+    },
+    "metal.00039": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00039.wav",
+        "c51374a9b3ee58c7f2aa3ed4e06f17da"
+      ]
+    },
+    "metal.00040": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00040.wav",
+        "d7de8afad648505c0d6554ab763bc8af"
+      ]
+    },
+    "metal.00041": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00041.wav",
+        "6e6c3b5f83e2bc1bcbbedc3c0aaec346"
+      ]
+    },
+    "metal.00042": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00042.wav",
+        "dc24521ee6a1d42158ba0ff8c31e1ed6"
+      ]
+    },
+    "metal.00043": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00043.wav",
+        "cba45f2118073a824b026587a281f72e"
+      ]
+    },
+    "metal.00044": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00044.wav",
+        "8ee4d1bc07a8ac9fb7c4b05eea5177ce"
+      ]
+    },
+    "metal.00045": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00045.wav",
+        "6fb04d43192a9b025402fe6aca3f7e2b"
+      ]
+    },
+    "metal.00046": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00046.wav",
+        "30b334ff6a1f3b9b2dce89d6fb1a11e4"
+      ]
+    },
+    "metal.00047": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00047.wav",
+        "14455c6161d7dc4485900a56ac873faf"
+      ]
+    },
+    "metal.00048": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00048.wav",
+        "a645dd7c3388e54b68cbd65c23b6fe41"
+      ]
+    },
+    "metal.00049": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00049.wav",
+        "35f85b44be2ea5c33a0974697a369cdc"
+      ]
+    },
+    "metal.00050": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00050.wav",
+        "e923c785e141bcf97f66c896bbf2b4a0"
+      ]
+    },
+    "metal.00051": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00051.wav",
+        "485ef028a308d55fae522707c6c0fa0e"
+      ]
+    },
+    "metal.00052": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00052.wav",
+        "d4896d6aa23b0fdefd34044de33738fc"
+      ]
+    },
+    "metal.00053": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00053.wav",
+        "1858e542ac105bb1dc440bd886298dd9"
+      ]
+    },
+    "metal.00054": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00054.wav",
+        "1b6221f0fa0e9a1cc8e337d139652b11"
+      ]
+    },
+    "metal.00055": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00055.wav",
+        "a08adeabe7d916582d4a8ce9e0983335"
+      ]
+    },
+    "metal.00056": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00056.wav",
+        "0e28e8a2848d0794e14f4a047cc93867"
+      ]
+    },
+    "metal.00057": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00057.wav",
+        "9baadeecc23d8648055d79f27dcc8bce"
+      ]
+    },
+    "metal.00058": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00058.wav",
+        "00025a41bc991e8a8d5232e6660df86f"
+      ]
+    },
+    "metal.00059": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00059.wav",
+        "2e139a124805ca090ce900b895469d6d"
+      ]
+    },
+    "metal.00060": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00060.wav",
+        "f56c7346c8eeaa98b7c722aba35dba84"
+      ]
+    },
+    "metal.00061": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00061.wav",
+        "d7de8afad648505c0d6554ab763bc8af"
+      ]
+    },
+    "metal.00062": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00062.wav",
+        "6e6c3b5f83e2bc1bcbbedc3c0aaec346"
+      ]
+    },
+    "metal.00063": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00063.wav",
+        "dc24521ee6a1d42158ba0ff8c31e1ed6"
+      ]
+    },
+    "metal.00064": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00064.wav",
+        "cba45f2118073a824b026587a281f72e"
+      ]
+    },
+    "metal.00065": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00065.wav",
+        "8ee4d1bc07a8ac9fb7c4b05eea5177ce"
+      ]
+    },
+    "metal.00066": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00066.wav",
+        "6fb04d43192a9b025402fe6aca3f7e2b"
+      ]
+    },
+    "metal.00067": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00067.wav",
+        "f9a624b0c526df75a40df060b8221855"
+      ]
+    },
+    "metal.00068": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00068.wav",
+        "304286c244bd11434694cce8cfa4493c"
+      ]
+    },
+    "metal.00069": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00069.wav",
+        "1b86246d7e75b92693e6ff0e916f057f"
+      ]
+    },
+    "metal.00070": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00070.wav",
+        "0547fe35ec20d2825633e8ccf8ca5d89"
+      ]
+    },
+    "metal.00071": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00071.wav",
+        "8265a5665e96fa948cb017551ea91932"
+      ]
+    },
+    "metal.00072": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00072.wav",
+        "e2dd76fa155f03f2344de607e5829384"
+      ]
+    },
+    "metal.00073": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00073.wav",
+        "a8a927b0623d464db383e51841e98446"
+      ]
+    },
+    "metal.00074": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00074.wav",
+        "926403a17e040d44e8ae26d56ccea487"
+      ]
+    },
+    "metal.00075": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00075.wav",
+        "45762c3726d25e2ad0a861e9e45c5b5e"
+      ]
+    },
+    "metal.00076": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00076.wav",
+        "c918185d19df308e1ae1674fd07030e2"
+      ]
+    },
+    "metal.00077": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00077.wav",
+        "f897648489c32e6d295a2ca07c06207d"
+      ]
+    },
+    "metal.00078": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00078.wav",
+        "7042210b0d733e77587df76f654b685f"
+      ]
+    },
+    "metal.00079": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00079.wav",
+        "06d21913b24beea110af6df47004ca8b"
+      ]
+    },
+    "metal.00080": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00080.wav",
+        "539492dfb1dd11dccd8c3ac6db196592"
+      ]
+    },
+    "metal.00081": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00081.wav",
+        "9f1caad21c357273e95fbb26037a9d8e"
+      ]
+    },
+    "metal.00082": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00082.wav",
+        "1f937af40acef507ee8012da7feef0eb"
+      ]
+    },
+    "metal.00083": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00083.wav",
+        "e064223ff693f435920977ecba188746"
+      ]
+    },
+    "metal.00084": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00084.wav",
+        "6e2e246b9c4d1dffafacad2d0f79ed28"
+      ]
+    },
+    "metal.00085": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00085.wav",
+        "4711b197daab5d04b874ed5f5f0747b6"
+      ]
+    },
+    "metal.00086": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00086.wav",
+        "4f46f6791f1e6d947914095a1e43979e"
+      ]
+    },
+    "metal.00087": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00087.wav",
+        "cb0ed86773971c2b1719d45c9040cf3f"
+      ]
+    },
+    "metal.00088": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00088.wav",
+        "33b05af17fcc2bec334a151746a6332c"
+      ]
+    },
+    "metal.00089": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00089.wav",
+        "5fda92e7f2bd65a159a8b80bf5257816"
+      ]
+    },
+    "metal.00090": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00090.wav",
+        "dc3afde94cd4a547fdcb2823244261b0"
+      ]
+    },
+    "metal.00091": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00091.wav",
+        "f810d9e7b9e4a4d34b4fc378669e22ec"
+      ]
+    },
+    "metal.00092": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00092.wav",
+        "6f831b9b37861c44cc4d5dc3a965ee89"
+      ]
+    },
+    "metal.00093": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00093.wav",
+        "fba611de6985fe71727fd10464710150"
+      ]
+    },
+    "metal.00094": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00094.wav",
+        "108396866a0b7bd6120ce0f2c3647a33"
+      ]
+    },
+    "metal.00095": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00095.wav",
+        "6eca054d22e8364b3962e312d4368140"
+      ]
+    },
+    "metal.00096": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00096.wav",
+        "fe3033383f6909ecb8753c36b8f50588"
+      ]
+    },
+    "metal.00097": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00097.wav",
+        "18da9a0dac2225b0a2814c5d559e7fe5"
+      ]
+    },
+    "metal.00098": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00098.wav",
+        "4066854fc8b9a97f9a877331ae7b4008"
+      ]
+    },
+    "metal.00099": {
+      "audio": [
+        "gtzan_genre/genres/metal/metal.00099.wav",
+        "1af32d4de97623717afcc6746301afd0"
+      ]
+    }
+  }
+}

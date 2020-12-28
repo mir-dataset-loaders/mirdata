@@ -1,0 +1,907 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "Beethoven-S3-I-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S3-I-ex1.wav",
+        "f819c86bba06120a19bd495f819cd0ef"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S3-I-ex1.wav",
+        "7bb7a2492dcf9e1eaad9e82f8550219a"
+      ],
+      "melody": [
+        "GT/Beethoven-S3-I-ex1.mel",
+        "8bbf6716337a2b5f7afcc611ad66e91a"
+      ]
+    },
+    "Beethoven-S3-I-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S3-I-ex2.wav",
+        "d23ab12c76e3c6304d76e8e769614b0c"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S3-I-ex2.wav",
+        "6c2fed1414f2db6c51087837319caf66"
+      ],
+      "melody": [
+        "GT/Beethoven-S3-I-ex2.mel",
+        "4946245ceb44839afb9f2d7029b829d7"
+      ]
+    },
+    "Beethoven-S3-I-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S3-I-ex3.wav",
+        "feb704d3884c37ef446a40d577e7c6a3"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S3-I-ex3.wav",
+        "ff6cfe18c1ba3fdcd5c6a7b7462ae023"
+      ],
+      "melody": [
+        "GT/Beethoven-S3-I-ex3.mel",
+        "362f85f0395bffc22d078bbde43fa80b"
+      ]
+    },
+    "Beethoven-S3-I-ex5": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S3-I-ex5.wav",
+        "78dff9aa8dcf06cba8ce2cf7bab8e615"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S3-I-ex5.wav",
+        "499320ab63cb7b23fc6c27427df7233c"
+      ],
+      "melody": [
+        "GT/Beethoven-S3-I-ex5.mel",
+        "c866dd8e645dbd33726b45bd33567939"
+      ]
+    },
+    "Beethoven-S3-I-ex6": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S3-I-ex6.wav",
+        "95681c5f1efbf43f4d806c12f936ddd1"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S3-I-ex6.wav",
+        "6b5f7e8fd9d55d27af9654e7da2e3c28"
+      ],
+      "melody": [
+        "GT/Beethoven-S3-I-ex6.mel",
+        "930a58072d26e505b1e725574875ec0d"
+      ]
+    },
+    "Beethoven-S5-I-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S5-I-ex1.wav",
+        "60c7c0d1349af2ba15d6eaf13b34e1eb"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S5-I-ex1.wav",
+        "3fea0207bdbb07ccb01e412062c7f8a4"
+      ],
+      "melody": [
+        "GT/Beethoven-S5-I-ex1.mel",
+        "4c18cb4136d01fc4c46715a8b95676fd"
+      ]
+    },
+    "Beethoven-S5-II-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S5-II-ex1.wav",
+        "134764ddd393103bda39ee39b4d645a6"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S5-II-ex1.wav",
+        "59be66d0aeb23d5cba588d671c508d01"
+      ],
+      "melody": [
+        "GT/Beethoven-S5-II-ex1.mel",
+        "fa81423be4288b9b65c3399ab5189416"
+      ]
+    },
+    "Beethoven-S5-II-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S5-II-ex2.wav",
+        "d84754feb8b63a76d407125bbaeb040f"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S5-II-ex2.wav",
+        "d4e79cdd8b22dfd4a8a1a81b4ffafb39"
+      ],
+      "melody": [
+        "GT/Beethoven-S5-II-ex2.mel",
+        "908b8db569f0d6fe67afa258fd323fb8"
+      ]
+    },
+    "Beethoven-S5-II-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S5-II-ex3.wav",
+        "7f44cf336b63d95c8d962c46a2aa7c7b"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S5-II-ex3.wav",
+        "8451decffbebabdd76a950f732607dd7"
+      ],
+      "melody": [
+        "GT/Beethoven-S5-II-ex3.mel",
+        "065951f8aa81f4fe086393883f2cee55"
+      ]
+    },
+    "Beethoven-S7-II-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S7-II-ex2.wav",
+        "8ca0bf8790481b025f9f10c785a7706c"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S7-II-ex2.wav",
+        "6b90dc6359498fc15344cc5d25b7996d"
+      ],
+      "melody": [
+        "GT/Beethoven-S7-II-ex2.mel",
+        "b10941b5fc5a97bf4da27b8f52c05937"
+      ]
+    },
+    "Beethoven-S9-II-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S9-II-ex1.wav",
+        "1f75ce4e7adcc21f90b8306e81797be3"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S9-II-ex1.wav",
+        "3d35474917c581bea2c620a9e7627094"
+      ],
+      "melody": [
+        "GT/Beethoven-S9-II-ex1.mel",
+        "dba1ffe6f233e52cc6d697350639dd17"
+      ]
+    },
+    "Beethoven-S9-II-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S9-II-ex2.wav",
+        "a98b20210307fc9eab9d08e38edf630d"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S9-II-ex2.wav",
+        "348f03833eaeccef303d6f5ed180e6bd"
+      ],
+      "melody": [
+        "GT/Beethoven-S9-II-ex2.mel",
+        "35bf702842c0ab23fcd3d4c76810d413"
+      ]
+    },
+    "Beethoven-S9-II-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S9-II-ex3.wav",
+        "f8f697b89a76069aecc570e00c427f5c"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S9-II-ex3.wav",
+        "a8a2d39d273571d4a9b6ccc8e11a8e16"
+      ],
+      "melody": [
+        "GT/Beethoven-S9-II-ex3.mel",
+        "68b0034d337ee0ab3ca6b292827d9223"
+      ]
+    },
+    "Brahms-HungarianDance-n5-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Brahms-HungarianDance-n5-ex1.wav",
+        "15b0dbc700a7fa8bf4b1be0aa9b79ec5"
+      ],
+      "audio_mono": [
+        "audio/mono/Brahms-HungarianDance-n5-ex1.wav",
+        "93db03c9075ef4f9807c10823c1ec99d"
+      ],
+      "melody": [
+        "GT/Brahms-HungarianDance-n5-ex1.mel",
+        "46bbc83c21e8a50760e44550ccf8107b"
+      ]
+    },
+    "Brahms-S3-III-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Brahms-S3-III-ex1.wav",
+        "3da8a32fb7050b777a730ac961ae4f1e"
+      ],
+      "audio_mono": [
+        "audio/mono/Brahms-S3-III-ex1.wav",
+        "97aa52948664900bee6c146a06ae718f"
+      ],
+      "melody": [
+        "GT/Brahms-S3-III-ex1.mel",
+        "6a7a27e60b4f4ad4a66fcc8b393a01df"
+      ]
+    },
+    "Brahms-S3-III-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Brahms-S3-III-ex2.wav",
+        "be053014b465ee3fac40bdc72daac2f6"
+      ],
+      "audio_mono": [
+        "audio/mono/Brahms-S3-III-ex2.wav",
+        "532363c58f9960222e2137e690f0f611"
+      ],
+      "melody": [
+        "GT/Brahms-S3-III-ex2.mel",
+        "0d4825c98b50893a8003ab25c382e78a"
+      ]
+    },
+    "Brahms-S3-III-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Brahms-S3-III-ex3.wav",
+        "01989f7e900b94c7e1712574e5e6d205"
+      ],
+      "audio_mono": [
+        "audio/mono/Brahms-S3-III-ex3.wav",
+        "7adf9621ac41be0e68e13923248b4bc0"
+      ],
+      "melody": [
+        "GT/Brahms-S3-III-ex3.mel",
+        "550f0a0872514c67974b3410b7a0ae74"
+      ]
+    },
+    "Dvorak-S9-IV-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Dvorak-S9-IV-ex1.wav",
+        "770e1858e8d8b25021bcb42c0559f43c"
+      ],
+      "audio_mono": [
+        "audio/mono/Dvorak-S9-IV-ex1.wav",
+        "34afb0997ed847f8baeb002ba5e31e2b"
+      ],
+      "melody": [
+        "GT/Dvorak-S9-IV-ex1.mel",
+        "95bc841e6860122c832c67aa33c0034a"
+      ]
+    },
+    "Dvorak-S9-IV-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Dvorak-S9-IV-ex3.wav",
+        "17279849deb0e66e7f4e935467b8e0f2"
+      ],
+      "audio_mono": [
+        "audio/mono/Dvorak-S9-IV-ex3.wav",
+        "cffa62c661fb25def58471e6b084c7ea"
+      ],
+      "melody": [
+        "GT/Dvorak-S9-IV-ex3.mel",
+        "dc7da4027e46fc14b9f9e9eaea87b0d1"
+      ]
+    },
+    "Dvorak-S9-IV-ex4": {
+      "audio_stereo": [
+        "audio/stereo/Dvorak-S9-IV-ex4.wav",
+        "675f478b94a6c13e7db0f74e0dbe2b9b"
+      ],
+      "audio_mono": [
+        "audio/mono/Dvorak-S9-IV-ex4.wav",
+        "bd0b54adc7afbc40997e26e394b1d187"
+      ],
+      "melody": [
+        "GT/Dvorak-S9-IV-ex4.mel",
+        "4f9c06c9cf980c14b6cd7c7e6924c8e3"
+      ]
+    },
+    "Dvorak-S9-IV-ex5": {
+      "audio_stereo": [
+        "audio/stereo/Dvorak-S9-IV-ex5.wav",
+        "d8d7795f60055638d1e3b290aaa27c01"
+      ],
+      "audio_mono": [
+        "audio/mono/Dvorak-S9-IV-ex5.wav",
+        "06792be3153a03473b978c7586762525"
+      ],
+      "melody": [
+        "GT/Dvorak-S9-IV-ex5.mel",
+        "94ae885d91ae5ea5c58ddc480d8d72e0"
+      ]
+    },
+    "Grieg-PeerGynt-HallMountainKing-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Grieg-PeerGynt-HallMountainKing-ex1.wav",
+        "a77421fa58c312d53402bdb52e00afc7"
+      ],
+      "audio_mono": [
+        "audio/mono/Grieg-PeerGynt-HallMountainKing-ex1.wav",
+        "dafb490f7e30c57e2f63ef557afd2125"
+      ],
+      "melody": [
+        "GT/Grieg-PeerGynt-HallMountainKing-ex1.mel",
+        "cb91f88ab62af9ba1a18a1402aec963a"
+      ]
+    },
+    "Grieg-PeerGynt-MorningMood-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Grieg-PeerGynt-MorningMood-ex1.wav",
+        "57c344b671c5bb67f460c1b54316d18d"
+      ],
+      "audio_mono": [
+        "audio/mono/Grieg-PeerGynt-MorningMood-ex1.wav",
+        "ab2a11922ee73b61b1cba385ee1e832f"
+      ],
+      "melody": [
+        "GT/Grieg-PeerGynt-MorningMood-ex1.mel",
+        "4591785d0aed24addd0643584e03bf02"
+      ]
+    },
+    "Grieg-PeerGynt-MorningMood-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Grieg-PeerGynt-MorningMood-ex2.wav",
+        "8afbbbcc6f32bfa468914ad4726252a7"
+      ],
+      "audio_mono": [
+        "audio/mono/Grieg-PeerGynt-MorningMood-ex2.wav",
+        "c204ffb3b02d4cf1bc2803e5185629fb"
+      ],
+      "melody": [
+        "GT/Grieg-PeerGynt-MorningMood-ex2.mel",
+        "393435a2724e748ea406660b72e32b70"
+      ]
+    },
+    "Haydn-S94-Andante-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Haydn-S94-Andante-ex2.wav",
+        "21e4b51e968a934e1bee6b9bb0125252"
+      ],
+      "audio_mono": [
+        "audio/mono/Haydn-S94-Andante-ex2.wav",
+        "e6b229f3892de764b7a2a58156077592"
+      ],
+      "melody": [
+        "GT/Haydn-S94-Andante-ex2.mel",
+        "08417c3cf0dd70c1ef4cb621ed34ff33"
+      ]
+    },
+    "Haydn-S94-Menuet-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Haydn-S94-Menuet-ex1.wav",
+        "c272bb2e79889d2105f66ddbdefad43b"
+      ],
+      "audio_mono": [
+        "audio/mono/Haydn-S94-Menuet-ex1.wav",
+        "22978d96d343bf14d9db4103d0ddd92d"
+      ],
+      "melody": [
+        "GT/Haydn-S94-Menuet-ex1.mel",
+        "5ed0871264138e674a0de91decf06a75"
+      ]
+    },
+    "Haydn-S94-Menuet-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Haydn-S94-Menuet-ex2.wav",
+        "7a47d971028f533c1ef6a15625741807"
+      ],
+      "audio_mono": [
+        "audio/mono/Haydn-S94-Menuet-ex2.wav",
+        "4985f2345b8af4b55087a49928ee544b"
+      ],
+      "melody": [
+        "GT/Haydn-S94-Menuet-ex2.mel",
+        "59b3969a7d087b3dd5760249595e98ef"
+      ]
+    },
+    "Holst-ThePlanets-Jupiter-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Holst-ThePlanets-Jupiter-ex1.wav",
+        "ffaaedd3b204c2521b4f3242e5a69931"
+      ],
+      "audio_mono": [
+        "audio/mono/Holst-ThePlanets-Jupiter-ex1.wav",
+        "6a77cab63ebaeb010ec4fceeeb1a1b95"
+      ],
+      "melody": [
+        "GT/Holst-ThePlanets-Jupiter-ex1.mel",
+        "5fdcb7b2c83d613545242bd2dec693b9"
+      ]
+    },
+    "Holst-ThePlanets-Jupiter-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Holst-ThePlanets-Jupiter-ex2.wav",
+        "dcc6a62a10257b70bdf7978975542ec7"
+      ],
+      "audio_mono": [
+        "audio/mono/Holst-ThePlanets-Jupiter-ex2.wav",
+        "157bf151209716934b62aa06602ac507"
+      ],
+      "melody": [
+        "GT/Holst-ThePlanets-Jupiter-ex2.mel",
+        "ad79342c64f55d3c361f8430e91e1108"
+      ]
+    },
+    "Holst-ThePlanets-Jupiter-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Holst-ThePlanets-Jupiter-ex3.wav",
+        "db58245658d8573ee7074d4b4d3bf9db"
+      ],
+      "audio_mono": [
+        "audio/mono/Holst-ThePlanets-Jupiter-ex3.wav",
+        "89eac2a684ec72bdad9376601e0b7fa5"
+      ],
+      "melody": [
+        "GT/Holst-ThePlanets-Jupiter-ex3.mel",
+        "6deb005c0d7b9b00c497a47834f6e56f"
+      ]
+    },
+    "Holst-ThePlanets-Jupiter-ex4": {
+      "audio_stereo": [
+        "audio/stereo/Holst-ThePlanets-Jupiter-ex4.wav",
+        "0a0c3333e75bdb5861e098e19de75f34"
+      ],
+      "audio_mono": [
+        "audio/mono/Holst-ThePlanets-Jupiter-ex4.wav",
+        "5885787dda4e0eea3186869779e3a612"
+      ],
+      "melody": [
+        "GT/Holst-ThePlanets-Jupiter-ex4.mel",
+        "e3763776f0c3151160d587ecec115dbb"
+      ]
+    },
+    "Musorgski-Ravel-PicturesExhibition-Promenade1-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1.wav",
+        "bca704e15458dae7d1447fe650871f61"
+      ],
+      "audio_mono": [
+        "audio/mono/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1.wav",
+        "949862799d50525146b589bbdcf8be02"
+      ],
+      "melody": [
+        "GT/Musorgski-Ravel-PicturesExhibition-Promenade1-ex1.mel",
+        "9d1ca27092932383c2017207ef1fcf2e"
+      ]
+    },
+    "Musorgski-Ravel-PicturesExhibition-Promenade1-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2.wav",
+        "968ca3b76fc6d5b2191cdaeb450c127e"
+      ],
+      "audio_mono": [
+        "audio/mono/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2.wav",
+        "0f0c5140f75a91a4c20e294fb2c52b6d"
+      ],
+      "melody": [
+        "GT/Musorgski-Ravel-PicturesExhibition-Promenade1-ex2.mel",
+        "47f98d292436ffcb0ff39bab1138d525"
+      ]
+    },
+    "Musorgski-Ravel-PicturesExhibition-ex10": {
+      "audio_stereo": [
+        "audio/stereo/Musorgski-Ravel-PicturesExhibition-ex10.wav",
+        "ddcc150f8123dce093d9d2175e31ffa4"
+      ],
+      "audio_mono": [
+        "audio/mono/Musorgski-Ravel-PicturesExhibition-ex10.wav",
+        "5d0b080e823b14dab6f67fab7802761e"
+      ],
+      "melody": [
+        "GT/Musorgski-Ravel-PicturesExhibition-ex10.mel",
+        "ab561da2f87a7b80d87f1cb4de888937"
+      ]
+    },
+    "Musorgski-Ravel-PicturesExhibition-ex11": {
+      "audio_stereo": [
+        "audio/stereo/Musorgski-Ravel-PicturesExhibition-ex11.wav",
+        "88661fc7601aa9872abc515aff2d29a9"
+      ],
+      "audio_mono": [
+        "audio/mono/Musorgski-Ravel-PicturesExhibition-ex11.wav",
+        "d4f85bcb710cfc3cbd82419ecb64f957"
+      ],
+      "melody": [
+        "GT/Musorgski-Ravel-PicturesExhibition-ex11.mel",
+        "3dcaa095c27a6084831967ee6a76d63c"
+      ]
+    },
+    "Musorgski-Ravel-PicturesExhibition-ex4": {
+      "audio_stereo": [
+        "audio/stereo/Musorgski-Ravel-PicturesExhibition-ex4.wav",
+        "74d354570857e8b72b8e16cbd51c19c8"
+      ],
+      "audio_mono": [
+        "audio/mono/Musorgski-Ravel-PicturesExhibition-ex4.wav",
+        "63dee45118ebe28f5e088d8741f77b57"
+      ],
+      "melody": [
+        "GT/Musorgski-Ravel-PicturesExhibition-ex4.mel",
+        "7ece3d4e55332347e7743530459efa90"
+      ]
+    },
+    "Musorgski-Ravel-PicturesExhibition-ex5": {
+      "audio_stereo": [
+        "audio/stereo/Musorgski-Ravel-PicturesExhibition-ex5.wav",
+        "b36c96d31136c5ed3f37c778cb5dee8d"
+      ],
+      "audio_mono": [
+        "audio/mono/Musorgski-Ravel-PicturesExhibition-ex5.wav",
+        "0af0df0884c6c2594fb2e26642854019"
+      ],
+      "melody": [
+        "GT/Musorgski-Ravel-PicturesExhibition-ex5.mel",
+        "5b0bd0e1c49066b10436149a5d4b59df"
+      ]
+    },
+    "Musorgski-Ravel-PicturesExhibition-ex6": {
+      "audio_stereo": [
+        "audio/stereo/Musorgski-Ravel-PicturesExhibition-ex6.wav",
+        "678af12567d2f7f8884daa54fd47eee5"
+      ],
+      "audio_mono": [
+        "audio/mono/Musorgski-Ravel-PicturesExhibition-ex6.wav",
+        "876fee6d15c8da5f12f787e2795416c2"
+      ],
+      "melody": [
+        "GT/Musorgski-Ravel-PicturesExhibition-ex6.mel",
+        "45f1b2403c6f54f667b95801e757832e"
+      ]
+    },
+    "Musorgski-Ravel-PicturesExhibition-ex7": {
+      "audio_stereo": [
+        "audio/stereo/Musorgski-Ravel-PicturesExhibition-ex7.wav",
+        "16b19e1e559ecb8bb4a99a7c415d3e88"
+      ],
+      "audio_mono": [
+        "audio/mono/Musorgski-Ravel-PicturesExhibition-ex7.wav",
+        "3aa123431739033ec65ea6f678802cfa"
+      ],
+      "melody": [
+        "GT/Musorgski-Ravel-PicturesExhibition-ex7.mel",
+        "59a35569daab2f4a08ac2f7f2c68f4af"
+      ]
+    },
+    "Musorgski-Ravel-PicturesExhibition-ex8": {
+      "audio_stereo": [
+        "audio/stereo/Musorgski-Ravel-PicturesExhibition-ex8.wav",
+        "ffaa4eb65da6408e626f349e985bd582"
+      ],
+      "audio_mono": [
+        "audio/mono/Musorgski-Ravel-PicturesExhibition-ex8.wav",
+        "ca061e9d41317851e28590d843c505ad"
+      ],
+      "melody": [
+        "GT/Musorgski-Ravel-PicturesExhibition-ex8.mel",
+        "49705bcc39411002bf23729a40ebc4ed"
+      ]
+    },
+    "Profofiev-Romeo&Juliet-DanceKnights-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Profofiev-Romeo&Juliet-DanceKnights-ex1.wav",
+        "af4d837c706f0eb94ac210e800a18d9f"
+      ],
+      "audio_mono": [
+        "audio/mono/Profofiev-Romeo&Juliet-DanceKnights-ex1.wav",
+        "ba5d77c0f3a93902407df5f4bc6dc137"
+      ],
+      "melody": [
+        "GT/Profofiev-Romeo&Juliet-DanceKnights-ex1.mel",
+        "0c1962eec1de4f03a6fa18972b36b52c"
+      ]
+    },
+    "Profofiev-Romeo&Juliet-DanceKnights-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Profofiev-Romeo&Juliet-DanceKnights-ex2.wav",
+        "f1337aedcb94788887760e78d0c9433a"
+      ],
+      "audio_mono": [
+        "audio/mono/Profofiev-Romeo&Juliet-DanceKnights-ex2.wav",
+        "66a0b4dd9d0c5453db028c523d201ab4"
+      ],
+      "melody": [
+        "GT/Profofiev-Romeo&Juliet-DanceKnights-ex2.mel",
+        "9ac04b34409c475b14878be8840b8c81"
+      ]
+    },
+    "Ravel-Bolero-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Ravel-Bolero-ex1.wav",
+        "fce6e735b24a2db9d277cedd9c5f4f60"
+      ],
+      "audio_mono": [
+        "audio/mono/Ravel-Bolero-ex1.wav",
+        "2ec6f2371306c06f89a8fa0d96794f47"
+      ],
+      "melody": [
+        "GT/Ravel-Bolero-ex1.mel",
+        "03d5152c4c7ca696e5810785dd6478c8"
+      ]
+    },
+    "Ravel-Bolero-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Ravel-Bolero-ex2.wav",
+        "b5fde5f5e91069fa57cc29384d67e706"
+      ],
+      "audio_mono": [
+        "audio/mono/Ravel-Bolero-ex2.wav",
+        "433f1b38f6fa2f375c3705401183e490"
+      ],
+      "melody": [
+        "GT/Ravel-Bolero-ex2.mel",
+        "3e351d8b00cc828aa3fe43ba4a632982"
+      ]
+    },
+    "Ravel-Bolero-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Ravel-Bolero-ex3.wav",
+        "49254d499001ad1321a2aa2144bc3adf"
+      ],
+      "audio_mono": [
+        "audio/mono/Ravel-Bolero-ex3.wav",
+        "87b762bf3a195fe3ebfcf59844cc6b2b"
+      ],
+      "melody": [
+        "GT/Ravel-Bolero-ex3.mel",
+        "eb0fbbadef720b9f31b8917d6deee8b9"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-Kalender-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-Kalender-ex1.wav",
+        "315ba22396b265edacec288f1ac7ba7e"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex1.wav",
+        "817e63de937e5c3fe39e5df81d842e1b"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-Kalender-ex1.mel",
+        "378f5027487c4bb81870a9d32ab69813"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-Kalender-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-Kalender-ex2.wav",
+        "ddc2dd5fb320897e130f34c47575e3d4"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex2.wav",
+        "40239816a0dd8bc6e8d17df5c401f22f"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-Kalender-ex2.mel",
+        "cbee3d0eff09afe06a137b9fbf1cd1b1"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-Kalender-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-Kalender-ex3.wav",
+        "fa3b75db1b09e558f46c8b172e47aa70"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-Kalender-ex3.wav",
+        "257c96d2d1818a3cc6ae40913f7204ec"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-Kalender-ex3.mel",
+        "b9f2a835f0ce1f8136bda22bf2732573"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1.wav",
+        "d2ba92dc4a29f647b7edb6a925ab6b9b"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1.wav",
+        "c4599619930882ce28010722eb9015f8"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex1.mel",
+        "ebede20335989f891208d31749c41594"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2.wav",
+        "354099910af1c14b1b05fac5e25409e8"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2.wav",
+        "40d1ad731dbe2444e106fb87dee4a4c3"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex2.mel",
+        "b0209164c1fd2f6e9e926d1adcffb929"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5.wav",
+        "eb549d255b12ac6bbf8ed85c6665ad33"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5.wav",
+        "4c63d591bee87862f82ed8eb6bdb1fe2"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-Sea-SinbadShip-ex5.mel",
+        "0f6e3be54c81b7c328b92ff21a79da5f"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1.wav",
+        "29a285f1133f06308e8f784652fa3af9"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1.wav",
+        "6074bbc11d62759c337741b137b3dc4e"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex1.mel",
+        "e7095b62ee8fb01fe0ebfe8ecd3eea6a"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2.wav",
+        "90a2da9aa0c5bee1ccd60172e912131b"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2.wav",
+        "c54acd3ebdfb99d0c16cc1e3987f4392"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex2.mel",
+        "03e2ec7237c9741fbea443c1f0be70f7"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3.wav",
+        "d143fbaa98ceca48fd459f57bdaa75f6"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3.wav",
+        "621475aedce7a87b4d73a11204704a8b"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex3.mel",
+        "66bc9fa66d5f1fe4a25659290ef08665"
+      ]
+    },
+    "Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4": {
+      "audio_stereo": [
+        "audio/stereo/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4.wav",
+        "5d024af9ccf0df3e601c10933a8da935"
+      ],
+      "audio_mono": [
+        "audio/mono/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4.wav",
+        "7a094fed44812b34b10bc1c3fd4315e6"
+      ],
+      "melody": [
+        "GT/Rimski-Korsakov-Scheherazade-YoungPrincePrincess-ex4.mel",
+        "d2dd98f31d523490d9df19a0fe500b6f"
+      ]
+    },
+    "Schubert-S8-II-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Schubert-S8-II-ex2.wav",
+        "d0d2f69dbb4a796b9aeec04573a83a23"
+      ],
+      "audio_mono": [
+        "audio/mono/Schubert-S8-II-ex2.wav",
+        "0b3631f96dd21d2664c157c3a892da01"
+      ],
+      "melody": [
+        "GT/Schubert-S8-II-ex2.mel",
+        "91f442069d48556953673ac883f37d5a"
+      ]
+    },
+    "Smetana-MaVlast-Vltava-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Smetana-MaVlast-Vltava-ex1.wav",
+        "83646bb783ba6f4489a2a53d95b7fedc"
+      ],
+      "audio_mono": [
+        "audio/mono/Smetana-MaVlast-Vltava-ex1.wav",
+        "d58a86b4058ca8bb771f1815c3fe5f5b"
+      ],
+      "melody": [
+        "GT/Smetana-MaVlast-Vltava-ex1.mel",
+        "41d7ab0ab6f3cc753f7da252bc059bfe"
+      ]
+    },
+    "Smetana-MaVlast-Vltava-ex4": {
+      "audio_stereo": [
+        "audio/stereo/Smetana-MaVlast-Vltava-ex4.wav",
+        "b0fcefcf246fea99669d6d0ea1778b81"
+      ],
+      "audio_mono": [
+        "audio/mono/Smetana-MaVlast-Vltava-ex4.wav",
+        "bd04f9de73a8c292178e438a74d37222"
+      ],
+      "melody": [
+        "GT/Smetana-MaVlast-Vltava-ex4.mel",
+        "8fc9ec81ff0415d6864f6f5f20030183"
+      ]
+    },
+    "Strauss-BlueDanube-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Strauss-BlueDanube-ex1.wav",
+        "b6dbc2267e502e86a001a01487b933f6"
+      ],
+      "audio_mono": [
+        "audio/mono/Strauss-BlueDanube-ex1.wav",
+        "ee908e7ae30d561ee38e7b1cbfc822f3"
+      ],
+      "melody": [
+        "GT/Strauss-BlueDanube-ex1.mel",
+        "dc5823f2a6107c976a44bea2338c2c57"
+      ]
+    },
+    "Strauss-BlueDanube-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Strauss-BlueDanube-ex2.wav",
+        "f1592200d6ee03042c5495ebd4df5dab"
+      ],
+      "audio_mono": [
+        "audio/mono/Strauss-BlueDanube-ex2.wav",
+        "7a792b017a0c4d9633a09d4e13996bcb"
+      ],
+      "melody": [
+        "GT/Strauss-BlueDanube-ex2.mel",
+        "f16d1bab06a00fde9772956a2656cd2a"
+      ]
+    },
+    "Strauss-BlueDanube-ex3": {
+      "audio_stereo": [
+        "audio/stereo/Strauss-BlueDanube-ex3.wav",
+        "cc1959339cf0aadb7a765a5e55ce262b"
+      ],
+      "audio_mono": [
+        "audio/mono/Strauss-BlueDanube-ex3.wav",
+        "f333af80b36de45e75963461d44eb40a"
+      ],
+      "melody": [
+        "GT/Strauss-BlueDanube-ex3.mel",
+        "f9134e3577fcea2c45d4f577f40c89c3"
+      ]
+    },
+    "Tchaikovsky-SwanLake-Scene-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Tchaikovsky-SwanLake-Scene-ex1.wav",
+        "70863b6630cc095012e2385ab6febf5c"
+      ],
+      "audio_mono": [
+        "audio/mono/Tchaikovsky-SwanLake-Scene-ex1.wav",
+        "799bea8856f3bdb77458adc04ded3e88"
+      ],
+      "melody": [
+        "GT/Tchaikovsky-SwanLake-Scene-ex1.mel",
+        "efac181f5241e67e6c03ba287dc03381"
+      ]
+    },
+    "Tchaikovsky-SwanLake-Scene-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Tchaikovsky-SwanLake-Scene-ex2.wav",
+        "c46dbf48e7eb2411a1dc2fb6f803e1a1"
+      ],
+      "audio_mono": [
+        "audio/mono/Tchaikovsky-SwanLake-Scene-ex2.wav",
+        "0b3ffa1417fe5328e940dc7565ae5ddb"
+      ],
+      "melody": [
+        "GT/Tchaikovsky-SwanLake-Scene-ex2.mel",
+        "3b987cfa2829e9f40df9e215aeb629dc"
+      ]
+    },
+    "Wagner-Tannhauser-Act2-ex2": {
+      "audio_stereo": [
+        "audio/stereo/Wagner-Tannhauser-Act2-ex2.wav",
+        "c257972e970b1482726fbd7e448703af"
+      ],
+      "audio_mono": [
+        "audio/mono/Wagner-Tannhauser-Act2-ex2.wav",
+        "1b4ce6d268d604ddd76d033a747fd33a"
+      ],
+      "melody": [
+        "GT/Wagner-Tannhauser-Act2-ex2.mel",
+        "6fe3894eaf371e6c88699a3cda917e8b"
+      ]
+    }
+  },
+  "metadata": {
+    "Orchset - Predominant Melodic Instruments": [
+      "Orchset - Predominant Melodic Instruments.csv",
+      "6301bdea599ac355a4d5fd9ad70c6127"
+    ]
+  }
+}

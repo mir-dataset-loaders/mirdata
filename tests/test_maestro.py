@@ -4,41 +4,45 @@ import shutil
 import pretty_midi
 import numpy as np
 
-from mirdata import maestro, utils, download_utils
+from mirdata.datasets import maestro
+from mirdata import annotations, download_utils
 from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1'
-    data_home = 'tests/resources/mir_datasets/MAESTRO'
+    default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
+    data_home = "tests/resources/mir_datasets/maestro"
     track = maestro.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        'track_id': '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1',
-        'midi_path': os.path.join(
+        "track_id": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1",
+        "midi_path": os.path.join(
             data_home,
-            '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi',
+            "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi",
         ),
-        'audio_path': os.path.join(
-            data_home, '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav'
+        "audio_path": os.path.join(
+            data_home, "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav"
         ),
-        'canonical_composer': 'Alban Berg',
-        'canonical_title': 'Sonata Op. 1',
-        'year': 2018,
-        'duration': 698.661160312,
-        'split': 'train',
+        "canonical_composer": "Alban Berg",
+        "canonical_title": "Sonata Op. 1",
+        "year": 2018,
+        "duration": 698.661160312,
+        "split": "train",
     }
 
-    expected_property_types = {'notes': utils.NoteData, 'midi': pretty_midi.PrettyMIDI}
+    expected_property_types = {
+        "notes": annotations.NoteData,
+        "midi": pretty_midi.PrettyMIDI,
+    }
 
     assert track._track_paths == {
-        'audio': [
-            '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav',
-            '1694d8431f01eeb2a18444196550b99d',
+        "audio": [
+            "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav",
+            "1694d8431f01eeb2a18444196550b99d",
         ],
-        'midi': [
-            '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi',
-            '4901b1578ee4fe8c1696e02f60924949',
+        "midi": [
+            "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi",
+            "4901b1578ee4fe8c1696e02f60924949",
         ],
     }
 
@@ -52,8 +56,8 @@ def test_track():
 
 def test_load_midi():
     midi_file = (
-        'tests/resources/mir_datasets/MAESTRO/2018/'
-        + 'MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi'
+        "tests/resources/mir_datasets/maestro/2018/"
+        + "MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi"
     )
     midi = maestro.load_midi(midi_file)
     assert len(midi.instruments) == 1
@@ -62,22 +66,22 @@ def test_load_midi():
 
 def test_load_notes():
     midi_file = (
-        'tests/resources/mir_datasets/MAESTRO/2018/'
-        + 'MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi'
+        "tests/resources/mir_datasets/maestro/2018/"
+        + "MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi"
     )
     notes = maestro.load_notes(midi_file)
     expected_intervals = np.array([[0.98307292, 1.80989583], [1.78385417, 1.90625]])
     assert np.allclose(notes.intervals[0:2], expected_intervals)
     assert np.allclose(notes.notes[0:2], np.array([391.99543598, 523.2511306]))
-    assert np.array_equal(notes.confidence[0:2], np.array([52, 67]))
+    assert np.allclose(notes.confidence[0:2], np.array([0.40944882, 0.52755906]))
 
 
 def test_load_metadata():
-    data_home = 'tests/resources/mir_datasets/MAESTRO'
+    data_home = "tests/resources/mir_datasets/maestro"
     metadata = maestro._load_metadata(data_home)
-    default_trackid = '2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1'
+    default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
 
-    assert metadata['data_home'] == data_home
+    assert metadata["data_home"] == data_home
     assert metadata[default_trackid] == {
         "canonical_composer": "Alban Berg",
         "canonical_title": "Sonata Op. 1",
@@ -87,87 +91,91 @@ def test_load_metadata():
         "audio_filename": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav",
         "duration": 698.661160312,
     }
-    metadata_none = maestro._load_metadata('asdf/asdf')
+    metadata_none = maestro._load_metadata("asdf/asdf")
     assert metadata_none is None
 
 
 def test_download_partial(httpserver):
-    data_home = 'tests/resources/mir_datasets/MAESTRO_download'
+    data_home = "tests/resources/mir_datasets/maestro_download"
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
     httpserver.serve_content(
-        open('tests/resources/download/maestro-v2.0.0.json', 'r').read()
+        open("tests/resources/download/maestro-v2.0.0.json", "r").read()
     )
-    maestro.REMOTES = {
-        'all': download_utils.RemoteFileMetadata(
-            filename='1-maestro-v2.0.0.json',
+    remotes = {
+        "all": download_utils.RemoteFileMetadata(
+            filename="1-maestro-v2.0.0.json",
             url=httpserver.url,
-            checksum=('d41d8cd98f00b204e9800998ecf8427e'),
+            checksum=("d41d8cd98f00b204e9800998ecf8427e"),
             destination_dir=None,
         ),
-        'midi': download_utils.RemoteFileMetadata(
-            filename='2-maestro-v2.0.0.json',
+        "midi": download_utils.RemoteFileMetadata(
+            filename="2-maestro-v2.0.0.json",
             url=httpserver.url,
-            checksum=('d41d8cd98f00b204e9800998ecf8427e'),
+            checksum=("d41d8cd98f00b204e9800998ecf8427e"),
             destination_dir=None,
         ),
-        'metadata': download_utils.RemoteFileMetadata(
-            filename='3-maestro-v2.0.0.json',
+        "metadata": download_utils.RemoteFileMetadata(
+            filename="3-maestro-v2.0.0.json",
             url=httpserver.url,
-            checksum=('d41d8cd98f00b204e9800998ecf8427e'),
-            destination_dir='maestro-v2.0.0',
+            checksum=("d41d8cd98f00b204e9800998ecf8427e"),
+            destination_dir="maestro-v2.0.0",
         ),
     }
-    maestro.download(data_home=data_home, partial_download=None)
-    assert os.path.exists(os.path.join(data_home, '1-maestro-v2.0.0.json'))
-    assert not os.path.exists(os.path.join(data_home, '2-maestro-v2.0.0.json'))
-    assert not os.path.exists(os.path.join(data_home, '3-maestro-v2.0.0.json'))
+    dataset = maestro.Dataset(data_home)
+    dataset.remotes = remotes
+    dataset.download(None, False, False)
+    assert os.path.exists(os.path.join(data_home, "1-maestro-v2.0.0.json"))
+    assert not os.path.exists(os.path.join(data_home, "2-maestro-v2.0.0.json"))
+    assert not os.path.exists(os.path.join(data_home, "3-maestro-v2.0.0.json"))
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
-    maestro.download(data_home=data_home, partial_download=['all', 'midi'])
-    assert os.path.exists(os.path.join(data_home, '1-maestro-v2.0.0.json'))
-    assert not os.path.exists(os.path.join(data_home, '2-maestro-v2.0.0.json'))
-    assert not os.path.exists(os.path.join(data_home, '3-maestro-v2.0.0.json'))
+    dataset.download(["all", "midi"], False, False)
+    assert os.path.exists(os.path.join(data_home, "1-maestro-v2.0.0.json"))
+    assert not os.path.exists(os.path.join(data_home, "2-maestro-v2.0.0.json"))
+    assert not os.path.exists(os.path.join(data_home, "3-maestro-v2.0.0.json"))
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
-    maestro.download(data_home=data_home, partial_download=['metadata', 'midi'])
-    assert not os.path.exists(os.path.join(data_home, '1-maestro-v2.0.0.json'))
-    assert os.path.exists(os.path.join(data_home, '2-maestro-v2.0.0.json'))
-    assert not os.path.exists(os.path.join(data_home, '3-maestro-v2.0.0.json'))
+    dataset.download(["metadata", "midi"], False, False)
+    assert not os.path.exists(os.path.join(data_home, "1-maestro-v2.0.0.json"))
+    assert os.path.exists(os.path.join(data_home, "2-maestro-v2.0.0.json"))
+    assert not os.path.exists(os.path.join(data_home, "3-maestro-v2.0.0.json"))
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
-    maestro.download(data_home=data_home, partial_download=['metadata'])
-    assert not os.path.exists(os.path.join(data_home, '1-maestro-v2.0.0.json'))
-    assert not os.path.exists(os.path.join(data_home, '2-maestro-v2.0.0.json'))
-    assert os.path.exists(os.path.join(data_home, '3-maestro-v2.0.0.json'))
+    dataset.download(["metadata"], False, False)
+    assert not os.path.exists(os.path.join(data_home, "1-maestro-v2.0.0.json"))
+    assert not os.path.exists(os.path.join(data_home, "2-maestro-v2.0.0.json"))
+    assert os.path.exists(os.path.join(data_home, "3-maestro-v2.0.0.json"))
 
 
 def test_download(httpserver):
-    data_home = 'tests/resources/mir_datasets/MAESTRO_download'
+    data_home = "tests/resources/mir_datasets/maestro_download"
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
     # download the full dataset
     httpserver.serve_content(
-        open('tests/resources/download/maestro-v2.0.0.zip', 'rb').read()
+        open("tests/resources/download/maestro-v2.0.0.zip", "rb").read()
     )
 
-    maestro.REMOTES = {
-        'all': download_utils.RemoteFileMetadata(
-            filename='maestro-v2.0.0.zip',
+    remotes = {
+        "all": download_utils.RemoteFileMetadata(
+            filename="maestro-v2.0.0.zip",
             url=httpserver.url,
-            checksum=('625180ffa41cd9f2ab7252dd954b9e8a'),
+            checksum=("625180ffa41cd9f2ab7252dd954b9e8a"),
             destination_dir=None,
         )
     }
-    maestro.download(data_home=data_home)
+    dataset = maestro.Dataset(data_home)
+    dataset.remotes = remotes
+    dataset.download(None, False, False)
 
     assert os.path.exists(data_home)
-    assert not os.path.exists(os.path.join(data_home, 'maestro-v2.0.0'))
+    assert not os.path.exists(os.path.join(data_home, "maestro-v2.0.0"))
 
     assert os.path.exists(os.path.join(data_home, "maestro-v2.0.0.json"))
     assert os.path.exists(
@@ -188,21 +196,22 @@ def test_download(httpserver):
 
     # download the midi-only zip
     httpserver.serve_content(
-        open('tests/resources/download/maestro-v2.0.0-midi.zip', 'rb').read()
+        open("tests/resources/download/maestro-v2.0.0-midi.zip", "rb").read()
     )
 
-    maestro.REMOTES = {
-        'midi': download_utils.RemoteFileMetadata(
-            filename='maestro-v2.0.0-midi.zip',
+    remotes = {
+        "midi": download_utils.RemoteFileMetadata(
+            filename="maestro-v2.0.0-midi.zip",
             url=httpserver.url,
-            checksum=('c82283fff347ed2bd833693c09a9f01d'),
+            checksum=("c82283fff347ed2bd833693c09a9f01d"),
             destination_dir=None,
         )
     }
-    maestro.download(data_home=data_home, partial_download=['midi'])
+    dataset.remotes = remotes
+    dataset.download(["midi"], False, False)
 
     assert os.path.exists(data_home)
-    assert not os.path.exists(os.path.join(data_home, 'maestro-v2.0.0'))
+    assert not os.path.exists(os.path.join(data_home, "maestro-v2.0.0"))
 
     assert os.path.exists(os.path.join(data_home, "maestro-v2.0.0.json"))
     assert not os.path.exists(
@@ -223,21 +232,22 @@ def test_download(httpserver):
 
     # download only the metadata
     httpserver.serve_content(
-        open('tests/resources/download/maestro-v2.0.0.json', 'rb').read()
+        open("tests/resources/download/maestro-v2.0.0.json", "rb").read()
     )
 
-    maestro.REMOTES = {
-        'metadata': download_utils.RemoteFileMetadata(
-            filename='maestro-v2.0.0.json',
+    remotes = {
+        "metadata": download_utils.RemoteFileMetadata(
+            filename="maestro-v2.0.0.json",
             url=httpserver.url,
-            checksum=('d41d8cd98f00b204e9800998ecf8427e'),
+            checksum=("d41d8cd98f00b204e9800998ecf8427e"),
             destination_dir=None,
         )
     }
-    maestro.download(data_home=data_home, partial_download=['metadata'])
+    dataset.remotes = remotes
+    dataset.download(["metadata"], False, False)
 
     assert os.path.exists(data_home)
-    assert not os.path.exists(os.path.join(data_home, 'maestro-v2.0.0'))
+    assert not os.path.exists(os.path.join(data_home, "maestro-v2.0.0"))
 
     assert os.path.exists(os.path.join(data_home, "maestro-v2.0.0.json"))
     assert not os.path.exists(

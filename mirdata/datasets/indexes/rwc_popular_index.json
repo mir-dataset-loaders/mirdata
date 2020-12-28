@@ -1,0 +1,2211 @@
+{
+  "version": null,
+  "tracks": {
+    "RM-P001": {
+      "audio": [
+        "audio/rwc-p-m01/1.wav",
+        "110ac7edb20dbe9a75ffe81b2bfeecef"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT",
+        "2d735867d44c4f8677b48746b5eb324d"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT",
+        "523231aebfea1cc62bad575cda3f704b"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab",
+        "2a8b1d320bb88f710be3bff4339db99b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT",
+        "f3ee36598a8bb9e367d25e0ff99850c7"
+      ]
+    },
+    "RM-P002": {
+      "audio": [
+        "audio/rwc-p-m01/2.wav",
+        "c3376c1279512859257a23ad44bc7fd8"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P002.CHORUS.TXT",
+        "c1d7a4f77f094d1e1d43b6a34fa45a7d"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P002.BEAT.TXT",
+        "178abb46d182c403cd1786cb43588fb0"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N002-M01-T02.lab",
+        "70e7933476a6af3e3b7c27dd94520aba"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P002.VOCA_INST.TXT",
+        "b889da64ba43140f784bdc1f72636170"
+      ]
+    },
+    "RM-P003": {
+      "audio": [
+        "audio/rwc-p-m01/3.wav",
+        "573cbf2d334ca3636dc28fda315ff7af"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P003.CHORUS.TXT",
+        "653c6bc231a0428564d19e8d50a79d66"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P003.BEAT.TXT",
+        "b487b8207c7cd9d59ddcfb3e3b34aa0b"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N003-M01-T03.lab",
+        "79d661b172323693a5a53e5f7f234ecb"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P003.VOCA_INST.TXT",
+        "1c65148476f49f8469333cf4990381ee"
+      ]
+    },
+    "RM-P004": {
+      "audio": [
+        "audio/rwc-p-m01/4.wav",
+        "e833da0b83cf864d6db6b56d29c38e9c"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P004.CHORUS.TXT",
+        "cb79275e617268eaf22054002b005a3c"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P004.BEAT.TXT",
+        "bfa4bfe86a3bb672d6b0d2fc9f97daec"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N004-M01-T04.lab",
+        "6e5c7e04e886dd0f01a46610d5dca7dd"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P004.VOCA_INST.TXT",
+        "5b841a1fc1e0b45f92af992ec95c3cbc"
+      ]
+    },
+    "RM-P005": {
+      "audio": [
+        "audio/rwc-p-m01/5.wav",
+        "c2c5142ff2ae3413bc9458db174c2cb9"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P005.CHORUS.TXT",
+        "23dbcf280e52fc70cd836fca84873632"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P005.BEAT.TXT",
+        "1f95e32cf7f94f30ba67b094f6677c99"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N005-M01-T05.lab",
+        "c63c81ad70f612a23272519351f23dfd"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P005.VOCA_INST.TXT",
+        "40a4bc50b20ec84bf32aed599f84303f"
+      ]
+    },
+    "RM-P006": {
+      "audio": [
+        "audio/rwc-p-m01/6.wav",
+        "09b426aea90413fbc863ed1385859862"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P006.CHORUS.TXT",
+        "2dbfcf60447e6e3ed6d63fae8d27f8eb"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P006.BEAT.TXT",
+        "3310bb6c455667935511c52c6e5d03d6"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N006-M01-T06.lab",
+        "c9b6cc56c3d91f8464e63effcb4ace98"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P006.VOCA_INST.TXT",
+        "375ebf895572ac5c69b600b16fee6878"
+      ]
+    },
+    "RM-P007": {
+      "audio": [
+        "audio/rwc-p-m01/7.wav",
+        "d8d8c712c97fdf31fb60d032280a1d3f"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P007.CHORUS.TXT",
+        "7c25500ea3d27f04704a8328ecf578f4"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P007.BEAT.TXT",
+        "67b1eccf9ea854d52d71f7fe783a6630"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N007-M01-T07.lab",
+        "90691a3fb0c7f8960ae5fc91170fc4f8"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P007.VOCA_INST.TXT",
+        "1cf3df379b095e936784f6803fc7f1de"
+      ]
+    },
+    "RM-P008": {
+      "audio": [
+        "audio/rwc-p-m01/8.wav",
+        "98795a67bd149cf557785ba4ecfc484d"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P008.CHORUS.TXT",
+        "dc4c74256b1fbb159ff45017b98bb385"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P008.BEAT.TXT",
+        "30ca59e1609e5e6cb84d6050d68a5d7a"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N008-M01-T08.lab",
+        "696e9be2ec72e1f14abd7dc439a91532"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P008.VOCA_INST.TXT",
+        "095a39f5a559450e9f21bd7b1cd71a71"
+      ]
+    },
+    "RM-P009": {
+      "audio": [
+        "audio/rwc-p-m01/9.wav",
+        "faaba8ddb26301dca450a06fac89719a"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P009.CHORUS.TXT",
+        "1b923ecdd4554d25c5288550bdc1f7da"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P009.BEAT.TXT",
+        "6a3b1226601df8d8ec1c5ca73a9fff3f"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N009-M01-T09.lab",
+        "7af13c7d30437dd842d4615b597808e8"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P009.VOCA_INST.TXT",
+        "b6a019b575d295bd15be408882d82c20"
+      ]
+    },
+    "RM-P010": {
+      "audio": [
+        "audio/rwc-p-m01/10.wav",
+        "2ba64f00b33f4d7e29813ae0d23a78ee"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P010.CHORUS.TXT",
+        "7a5d555f52eeebf0e799c77d07d261b3"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P010.BEAT.TXT",
+        "0b2d7778953b71b06411be2fdccd18b3"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N010-M01-T10.lab",
+        "e8ca02cc78aa932fb6faee6836c7a208"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P010.VOCA_INST.TXT",
+        "35890ac7384cf0bd4b29af79bfe9b7a6"
+      ]
+    },
+    "RM-P011": {
+      "audio": [
+        "audio/rwc-p-m01/11.wav",
+        "0439849d5b9d6a441b04441216f802e5"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P011.CHORUS.TXT",
+        "e3e227791770e03cd5e5af210ca9db27"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P011.BEAT.TXT",
+        "b02720d89ad2351b84f64c26f2b1e978"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N011-M01-T11.lab",
+        "68951dea415531437451a3147b31c8cf"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P011.VOCA_INST.TXT",
+        "b4ef7ee0cbcda98ab9a0be82fd50af1b"
+      ]
+    },
+    "RM-P012": {
+      "audio": [
+        "audio/rwc-p-m01/12.wav",
+        "7d2287bc23a63c702b000c1857a5b245"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P012.CHORUS.TXT",
+        "bef78084547d4b09ee137d4725f2dd0d"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P012.BEAT.TXT",
+        "6b53ec069821a00642cbcc8fa11b4860"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N012-M01-T12.lab",
+        "46afc6ff3cee858babf3936ace63e119"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P012.VOCA_INST.TXT",
+        "ac9beabfc711d20a8a8e23f077f4c986"
+      ]
+    },
+    "RM-P013": {
+      "audio": [
+        "audio/rwc-p-m01/13.wav",
+        "6374de35838b380828ad5f5750dade22"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P013.CHORUS.TXT",
+        "19f17f811fc255ad9bafa1a146a1ebb7"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P013.BEAT.TXT",
+        "430d64194c5904a9f3cc634589705600"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N013-M01-T13.lab",
+        "8df84d73010f50e17ba94bb0482e51d5"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P013.VOCA_INST.TXT",
+        "ab2b6d008d2265cbc4054c766ac04db8"
+      ]
+    },
+    "RM-P014": {
+      "audio": [
+        "audio/rwc-p-m01/14.wav",
+        "c2da3b27052be5d0c69cfe28f1c10640"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P014.CHORUS.TXT",
+        "4ee647559223215105b06ba52d4e62b2"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P014.BEAT.TXT",
+        "9be56d757c804188f0440b963b09078d"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N014-M01-T14.lab",
+        "06034adeb52d53cbcfadbb6e391e0952"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P014.VOCA_INST.TXT",
+        "912fcce3764341a0cab3555eec158f1e"
+      ]
+    },
+    "RM-P015": {
+      "audio": [
+        "audio/rwc-p-m01/15.wav",
+        "9416972f9d49df5b223aa31906a698e9"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P015.CHORUS.TXT",
+        "d2dd1594fbb1cc773978e143559b632f"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P015.BEAT.TXT",
+        "de7ae7914abfc8e96a5da347caa2c1aa"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N015-M01-T15.lab",
+        "117b3a5fa3318c72c10b884e4ba36237"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P015.VOCA_INST.TXT",
+        "2ddbe784d3022b162ad01542f0271878"
+      ]
+    },
+    "RM-P016": {
+      "audio": [
+        "audio/rwc-p-m01/16.wav",
+        "7f5994bcf608b863275bb97ac780afbe"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P016.CHORUS.TXT",
+        "c42148b469c4c32e255f6755fe36faae"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P016.BEAT.TXT",
+        "9bdc1e8485fd76cdcc6879a36403e71a"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N016-M01-T16.lab",
+        "9197b624e361d49e9845de4952724178"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P016.VOCA_INST.TXT",
+        "64468bbd34f346756e1fd623152a2b3b"
+      ]
+    },
+    "RM-P017": {
+      "audio": [
+        "audio/rwc-p-m02/1.wav",
+        "11dc3d1694da5fcb7b48c47cf6d62319"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P017.CHORUS.TXT",
+        "4f07e625aa8bae816033bd5f3607a9e8"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P017.BEAT.TXT",
+        "196ee6af308213c2d0ade5b510200952"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N017-M02-T01.lab",
+        "c245aed44dfeed9f3121584e47f1e251"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P017.VOCA_INST.TXT",
+        "eeb369381afcf93bc3b67134f108e1b3"
+      ]
+    },
+    "RM-P018": {
+      "audio": [
+        "audio/rwc-p-m02/2.wav",
+        "bca46bbd0809f9884e74b3cffd62c493"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P018.CHORUS.TXT",
+        "4d1146654341baf365c4c85510e8c56f"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P018.BEAT.TXT",
+        "887f7d29d98e445423ddfc39fbec1157"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N018-M02-T02.lab",
+        "ded031e02b79dc4e3d1a9ab4289c9235"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P018.VOCA_INST.TXT",
+        "8a321c07e7b4d418b273e709e3b5e4c0"
+      ]
+    },
+    "RM-P019": {
+      "audio": [
+        "audio/rwc-p-m02/3.wav",
+        "625ab816eac83965adbff4e9cb5100f4"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P019.CHORUS.TXT",
+        "9a584968f64dd658bbd122973a963f08"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P019.BEAT.TXT",
+        "1185bab09f856f88135059ae76a24c0a"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N019-M02-T03.lab",
+        "6f3a1a19ab807e511baada0d8b68e28e"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P019.VOCA_INST.TXT",
+        "9c6aed6ef487edb3e282df283b615797"
+      ]
+    },
+    "RM-P020": {
+      "audio": [
+        "audio/rwc-p-m02/4.wav",
+        "97af69cd16afb066429615109b1f7b0c"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P020.CHORUS.TXT",
+        "8eb2828f155a5c4d8dbdf724af3a38e8"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P020.BEAT.TXT",
+        "05f52133a7eaf51fad3bd58bc91c9ae5"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N020-M02-T04.lab",
+        "80136ef0d5495e555c7617ee42b14985"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P020.VOCA_INST.TXT",
+        "32930093e2c8db5eb2dcd642185ee88f"
+      ]
+    },
+    "RM-P021": {
+      "audio": [
+        "audio/rwc-p-m02/5.wav",
+        "2cb0cbf1aff0ed052c5935c292b48e20"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P021.CHORUS.TXT",
+        "9246faced946c6c4ca6cc5669cbc86d4"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P021.BEAT.TXT",
+        "501cdd4c387d3eefb7ded50e62630a29"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N021-M02-T05.lab",
+        "c140aeff9b10095cf2320b5c36a9bf25"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P021.VOCA_INST.TXT",
+        "243a439fd8b2ddecfbb2e0566ff27061"
+      ]
+    },
+    "RM-P022": {
+      "audio": [
+        "audio/rwc-p-m02/6.wav",
+        "bbe8cb805740e93790137ab9f68d5ee6"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P022.CHORUS.TXT",
+        "77e3a3ab66fb8e6ee6bc7c9da753c5ca"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P022.BEAT.TXT",
+        "1d20e36da3f56e62c9bdf6577cec915a"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N022-M02-T06.lab",
+        "e247cae3903be5d5102773960c4d1086"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P022.VOCA_INST.TXT",
+        "67aa0fa7a45265eb9bf38d5313f055de"
+      ]
+    },
+    "RM-P023": {
+      "audio": [
+        "audio/rwc-p-m02/7.wav",
+        "479e5919b61cf4ac957fabd5673290c6"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P023.CHORUS.TXT",
+        "9ee709fda83e42f3e424de73d56e97ca"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P023.BEAT.TXT",
+        "d1d082d5921df3ec92de7542b6521e3a"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N023-M02-T07.lab",
+        "195df22c7710ddc32ad3ecfb659ca926"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P023.VOCA_INST.TXT",
+        "734c82c4c7c1a7a70efe623ff067e7a0"
+      ]
+    },
+    "RM-P024": {
+      "audio": [
+        "audio/rwc-p-m02/8.wav",
+        "5d8a9289dbf53f558da055de93c954ef"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P024.CHORUS.TXT",
+        "e3c6d00e53ce66252481b6a3a85b7af7"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P024.BEAT.TXT",
+        "2e7990e90ad704fa5dcc1de6183c8403"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N024-M02-T08.lab",
+        "64b564786fb90d2cda85e4dae489c432"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P024.VOCA_INST.TXT",
+        "de878d19196ef26b6925feeb6f3ccb2a"
+      ]
+    },
+    "RM-P025": {
+      "audio": [
+        "audio/rwc-p-m02/9.wav",
+        "78609677d4b04df39443c71fe4e98bad"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P025.CHORUS.TXT",
+        "145331bb24b237230b7ca98d9dbb98a1"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P025.BEAT.TXT",
+        "16cc3e02287625cd058bb4f3d204876e"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N025-M02-T09.lab",
+        "4146df2e03b1a3fed16d557b75607e22"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P025.VOCA_INST.TXT",
+        "56e21337da83c67d9a8926c429712934"
+      ]
+    },
+    "RM-P026": {
+      "audio": [
+        "audio/rwc-p-m02/10.wav",
+        "c55e5b753c46722a325ed8bbfa662a0b"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P026.CHORUS.TXT",
+        "ba0806e36cf6b108bec4f7bc771c97b3"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P026.BEAT.TXT",
+        "5a0986974f7c42b463f5363e409d665b"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N026-M02-T10.lab",
+        "2296ab155690ebca460178eb9904c111"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P026.VOCA_INST.TXT",
+        "f87b7a2cabe737ac0131a3ebfa6865d5"
+      ]
+    },
+    "RM-P027": {
+      "audio": [
+        "audio/rwc-p-m02/11.wav",
+        "9bc614637d42515a579a858484675ac1"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P027.CHORUS.TXT",
+        "ec06268aaf7a8fd6805bbbbd34d43a8e"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P027.BEAT.TXT",
+        "18fab847c030e8067e9c26b5ae2d8031"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N027-M02-T11.lab",
+        "a0fbfe3afc9c32d7638dc70ee20240e0"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P027.VOCA_INST.TXT",
+        "f755474942b1669cd07a9ccbcac8c812"
+      ]
+    },
+    "RM-P028": {
+      "audio": [
+        "audio/rwc-p-m02/12.wav",
+        "bdac01bfeba0a91073427ed639b94c09"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P028.CHORUS.TXT",
+        "62bab2a3db9c9f237cc5d934b93fb943"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P028.BEAT.TXT",
+        "c842a3ae2f4fb8868742c0ebb5ac4e81"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N028-M02-T12.lab",
+        "f939da441b8fc033ad58f7af9c6d9243"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P028.VOCA_INST.TXT",
+        "624e69979747987a26796f00e0eaaac9"
+      ]
+    },
+    "RM-P029": {
+      "audio": [
+        "audio/rwc-p-m02/13.wav",
+        "01318945501ef3a9167156f4b62b0e30"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P029.CHORUS.TXT",
+        "52186cf9a9db4e892b0e8f1f44695c71"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P029.BEAT.TXT",
+        "109b1a720b12a1541a9c2db277cc7ba8"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N029-M02-T13.lab",
+        "f7153865fd2441aa3921de09521effc1"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P029.VOCA_INST.TXT",
+        "de616fa4a2400faf21000541cd702bfd"
+      ]
+    },
+    "RM-P030": {
+      "audio": [
+        "audio/rwc-p-m02/14.wav",
+        "d738047c34c9b952aaa687a6e7f59133"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P030.CHORUS.TXT",
+        "ce9ce6ea8bfaaf84f63623616ea84672"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P030.BEAT.TXT",
+        "65c60dc09323a214e2fb6bd36dc8832a"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N030-M02-T14.lab",
+        "6e6c49179da6b201bb36b6fdf418d35b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P030.VOCA_INST.TXT",
+        "4d29fcefdcd14eece1ffda652d5010c2"
+      ]
+    },
+    "RM-P031": {
+      "audio": [
+        "audio/rwc-p-m02/15.wav",
+        "6fc24c34d67b9e21dd9d5984db12a8ce"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P031.CHORUS.TXT",
+        "16757c287bda5537c6e20c6bcc91c14c"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P031.BEAT.TXT",
+        "6858e3e8af23d001e52cc9e4a0d564be"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N031-M02-T15.lab",
+        "a7dbc9dfe872a5e2a705267bfd50696f"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P031.VOCA_INST.TXT",
+        "6705420599fb7155353c6eaf258fe337"
+      ]
+    },
+    "RM-P032": {
+      "audio": [
+        "audio/rwc-p-m02/16.wav",
+        "a480a3d5a58063695d1b8409b241bba9"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P032.CHORUS.TXT",
+        "05bc53797e72e871c755dcf8fe73bef5"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P032.BEAT.TXT",
+        "83baed769c9dfb6c7de7c9831cc7ce0b"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N032-M02-T16.lab",
+        "2a78ce67a022f5e0250fbf7f3eb66c40"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P032.VOCA_INST.TXT",
+        "4cd5319f5996c12c189fcd232c55ef71"
+      ]
+    },
+    "RM-P033": {
+      "audio": [
+        "audio/rwc-p-m03/1.wav",
+        "466ef9b9b36683d15168fd651a5140e8"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P033.CHORUS.TXT",
+        "69f6ea4b3327244e00d1e6c3992381c9"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P033.BEAT.TXT",
+        "a7dd8f396101566fea3cf56b1d154407"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N033-M03-T01.lab",
+        "d89397613bb6729bfb609bb4004e5f26"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P033.VOCA_INST.TXT",
+        "c18250b201fc53f42e469cf98392e3b7"
+      ]
+    },
+    "RM-P034": {
+      "audio": [
+        "audio/rwc-p-m03/2.wav",
+        "360042e892da31f39bc6b2a5a014c401"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P034.CHORUS.TXT",
+        "56d1e85cc5b9c6ad97b366fcca221736"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P034.BEAT.TXT",
+        "e432636c2c1bb319812fbbeb6943b0c7"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N034-M03-T02.lab",
+        "0fa3b3fd3bd19f460749f92953288fba"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P034.VOCA_INST.TXT",
+        "bee7c2440bf47b1c3a9f27c9ac6ed8cc"
+      ]
+    },
+    "RM-P035": {
+      "audio": [
+        "audio/rwc-p-m03/3.wav",
+        "2a6b1ed1f5132c8712f4495a1963082d"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P035.CHORUS.TXT",
+        "4c7cebadf78a2f862ddd88526123634d"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P035.BEAT.TXT",
+        "e9086be40c64dc84968084cb56afc432"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N035-M03-T03.lab",
+        "c7103ded708b4df546b0bae10b18b961"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P035.VOCA_INST.TXT",
+        "f69a70ffdea676d8c6e0b12a3b3c289f"
+      ]
+    },
+    "RM-P036": {
+      "audio": [
+        "audio/rwc-p-m03/4.wav",
+        "41706620cfc1cad0ba626e88bc2f9d2d"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P036.CHORUS.TXT",
+        "a023133bb6c6cc1c11488579aeaad0c6"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P036.BEAT.TXT",
+        "9292294c3ad3a9072c2404d5571b2292"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N036-M03-T04.lab",
+        "902321db9ce046cdc407c1e3f9d5d984"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P036.VOCA_INST.TXT",
+        "679c57f6320bb26d84ba7ba7b3242579"
+      ]
+    },
+    "RM-P037": {
+      "audio": [
+        "audio/rwc-p-m03/5.wav",
+        "36f5823e39f55fd55716c4a26addffea"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P037.CHORUS.TXT",
+        "cc6a308785d1bbc573c9aa3edb66841e"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P037.BEAT.TXT",
+        "4bcb9547552e4ca32ae0d7fcc85e32a2"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N037-M03-T05.lab",
+        "705c72253ce9cd52ba15f1262f15a21e"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P037.VOCA_INST.TXT",
+        "feb0001a96f746505bf20bfe44d85bb0"
+      ]
+    },
+    "RM-P038": {
+      "audio": [
+        "audio/rwc-p-m03/6.wav",
+        "c17c6a4dc05b410ab46b76be82485e6e"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P038.CHORUS.TXT",
+        "6aed89f153234f2d33d6e2a5c08c1345"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P038.BEAT.TXT",
+        "89159d3a4d1fd6169e757cc72dd88434"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N038-M03-T06.lab",
+        "8ef2dc6cc92069d240b47224a3453e7f"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P038.VOCA_INST.TXT",
+        "02021efc4cb3d04afba95f67f4ecb336"
+      ]
+    },
+    "RM-P039": {
+      "audio": [
+        "audio/rwc-p-m03/7.wav",
+        "56478c1668dc94b15745ac17a900ebed"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P039.CHORUS.TXT",
+        "a656d6b0193e219e8d90736c5b0c20ee"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P039.BEAT.TXT",
+        "94b3d62a956da25c83b4758e1ab3aa7b"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N039-M03-T07.lab",
+        "389f8a65d6a34c38a50fb973c7b59fa2"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P039.VOCA_INST.TXT",
+        "806ede3acfc8926361f47eaf148fe95b"
+      ]
+    },
+    "RM-P040": {
+      "audio": [
+        "audio/rwc-p-m03/8.wav",
+        "2e073a882998a3ff09212b3b4ec9c294"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P040.CHORUS.TXT",
+        "6cba1df0ec51a1075469f82b8eb2f972"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P040.BEAT.TXT",
+        "4c721589b874d96616c9758e965c0084"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N040-M03-T08.lab",
+        "1c51689a43abd4c107f4086300024d6b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P040.VOCA_INST.TXT",
+        "e3c22760f89bbdfe417a5a8324622217"
+      ]
+    },
+    "RM-P041": {
+      "audio": [
+        "audio/rwc-p-m03/9.wav",
+        "962b2f4f0b8305341bb9b42d10b6e2ec"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P041.CHORUS.TXT",
+        "e55cbe858a7f1101a474250df5a6af75"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P041.BEAT.TXT",
+        "aa8f5a97376bcc5b31ad1a8a00c7a269"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N041-M03-T09.lab",
+        "a7814c0bb56adc745ef538c51138ee35"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P041.VOCA_INST.TXT",
+        "2b6545a58bcd01d79e7bf2ef2acd2a55"
+      ]
+    },
+    "RM-P042": {
+      "audio": [
+        "audio/rwc-p-m03/10.wav",
+        "6f93af360855a5bb11c511fea0613f6c"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P042.CHORUS.TXT",
+        "eecf16d1fd90ce0162689401a250eb10"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P042.BEAT.TXT",
+        "26d7daa349bb72867f8e8ab50684e39d"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N042-M03-T10.lab",
+        "4452c1b089b492b0a785e0ceea01dd19"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P042.VOCA_INST.TXT",
+        "7176a22e105f1ef73e9d6dc950f89f79"
+      ]
+    },
+    "RM-P043": {
+      "audio": [
+        "audio/rwc-p-m03/11.wav",
+        "d4db2a598e8b0c47021ea9c2e1ce5ecd"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P043.CHORUS.TXT",
+        "89c2c08adb4f947648b7c467838986bf"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P043.BEAT.TXT",
+        "00fd2319a8cc2d7c99db5222898f1930"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N043-M03-T11.lab",
+        "e404a5c8cb669c8c519be21b9b781ef1"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P043.VOCA_INST.TXT",
+        "1a36672022ac7da2780edc3eb2227fa7"
+      ]
+    },
+    "RM-P044": {
+      "audio": [
+        "audio/rwc-p-m03/12.wav",
+        "f69b630ae455032192e3e53f7e453ee9"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P044.CHORUS.TXT",
+        "b7c32757d3b20017cec05c15f9ee1c97"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P044.BEAT.TXT",
+        "4cbd804ce68c8ec856bc7997fbb93340"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N044-M03-T12.lab",
+        "841332ca40455d7596a610b9ef48be60"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P044.VOCA_INST.TXT",
+        "94a6bda41b285954a40e255a2a7f9b95"
+      ]
+    },
+    "RM-P045": {
+      "audio": [
+        "audio/rwc-p-m03/13.wav",
+        "fcf78a0e84c8402a9a2ee67610ebba39"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P045.CHORUS.TXT",
+        "6088635125bc51ffbc0ab8395e68a44c"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P045.BEAT.TXT",
+        "b2e45f402e1fd20b2c79a6ab8d6e3393"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N045-M03-T13.lab",
+        "dc5d4b604f84450e65dbaec1f1cd101b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P045.VOCA_INST.TXT",
+        "1acc2c4cef6f9c900788cb3a951fd505"
+      ]
+    },
+    "RM-P046": {
+      "audio": [
+        "audio/rwc-p-m03/14.wav",
+        "d8816792dcddc09ebf9e47d76f54e233"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P046.CHORUS.TXT",
+        "54a03f5a8307a6c89855ef585a3f9d18"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P046.BEAT.TXT",
+        "06c281a20f3f88b2fde190c7bf9e8e45"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N046-M03-T14.lab",
+        "f13316b5343dd8942938398086548db8"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P046.VOCA_INST.TXT",
+        "620e9d4a4a2d3fe45cda12ff384c2889"
+      ]
+    },
+    "RM-P047": {
+      "audio": [
+        "audio/rwc-p-m03/15.wav",
+        "5cb3713f889b4b2d3f82be9a5b20ddce"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P047.CHORUS.TXT",
+        "fe38a5cb28b63aa27018056d760bc119"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P047.BEAT.TXT",
+        "c0e94dcea623cdd07e914078ff19a520"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N047-M03-T15.lab",
+        "1127819fae8f126b43199414fd18a02b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P047.VOCA_INST.TXT",
+        "006260d06370a960d077766745286fd9"
+      ]
+    },
+    "RM-P048": {
+      "audio": [
+        "audio/rwc-p-m03/16.wav",
+        "7b2b7f9706d58e1ba4a696c0a9aacf11"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P048.CHORUS.TXT",
+        "ac174901f7ec2d81a03aef157a5f6188"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P048.BEAT.TXT",
+        "f4e8fa5ca7c3579106804f3dd2d893fc"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N048-M03-T16.lab",
+        "860e4114f07826f91839cb9752d3a5a6"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P048.VOCA_INST.TXT",
+        "a89392835d5213474b6bface0db44fc3"
+      ]
+    },
+    "RM-P049": {
+      "audio": [
+        "audio/rwc-p-m04/1.wav",
+        "5f4480b5a6fc5cd928e0fddb722dd152"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P049.CHORUS.TXT",
+        "afa5f716c5063f87f683985c4861d154"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P049.BEAT.TXT",
+        "625be0c258430c1656c4aa0118fbb031"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N049-M04-T01.lab",
+        "fbb546b094bb06370341961068f7ad5f"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P049.VOCA_INST.TXT",
+        "ef666a7c1c15c83df24e50e6593bbf7a"
+      ]
+    },
+    "RM-P050": {
+      "audio": [
+        "audio/rwc-p-m04/2.wav",
+        "e7dad66947f6658a8dbcbf9d830a7cab"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P050.CHORUS.TXT",
+        "0ba997cb827939c30a36127a977afd03"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P050.BEAT.TXT",
+        "43e4fc98c68a2b6cd98a7c0ccdbbd862"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N050-M04-T02.lab",
+        "fabda991a1076aa28203f3516771c5c4"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P050.VOCA_INST.TXT",
+        "f6e53e7293aaeb80dd1982c78194b7a8"
+      ]
+    },
+    "RM-P051": {
+      "audio": [
+        "audio/rwc-p-m04/3.wav",
+        "038c2150f1351d8d39d22c7d2baf3f33"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P051.CHORUS.TXT",
+        "bc707a44ec60e5ffa53e4ef85ad1525e"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P051.BEAT.TXT",
+        "67d723ac7afa31de8cbfba0b38992e79"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N051-M04-T03.lab",
+        "4539b50941dc2465a23f7320b406a75b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P051.VOCA_INST.TXT",
+        "c16c71fae10bb7a0c0eb55dbd79cf215"
+      ]
+    },
+    "RM-P052": {
+      "audio": [
+        "audio/rwc-p-m04/4.wav",
+        "eac5b766c33954f4f2ad8033c24e9a11"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P052.CHORUS.TXT",
+        "ab86e95b169925fcb78cb95f70e74c46"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P052.BEAT.TXT",
+        "c16154a8044ae9875293f0e887e36a4d"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N052-M04-T04.lab",
+        "bc5e0ba7b9ab78d24081bae0da1aa086"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P052.VOCA_INST.TXT",
+        "9e0fea1860606a7c0fe7a0e6cec0ba35"
+      ]
+    },
+    "RM-P053": {
+      "audio": [
+        "audio/rwc-p-m04/5.wav",
+        "922ff0ca42f2cc0aad438d6d0df668e0"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P053.CHORUS.TXT",
+        "26e1ef9c0b6fa2fd7ade2d3b19d7c0e5"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P053.BEAT.TXT",
+        "444875f19465b40d572c1df0a79403ea"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N053-M04-T05.lab",
+        "fa752b4aa3c6416c2f89967c78729cc0"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P053.VOCA_INST.TXT",
+        "52f483b4edd36e1718c6883762361ce5"
+      ]
+    },
+    "RM-P054": {
+      "audio": [
+        "audio/rwc-p-m04/6.wav",
+        "1f6d78ebfb660701cd8ac883a11d13b7"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P054.CHORUS.TXT",
+        "7640fc5d89a2cba1ff331510c066efbc"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P054.BEAT.TXT",
+        "6ff78c503b229efeb6c2000c535a9b79"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N054-M04-T06.lab",
+        "b6e8a0a3b5204dded8d66627c1eab5b3"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P054.VOCA_INST.TXT",
+        "bee2c371cc094ca19311834830287217"
+      ]
+    },
+    "RM-P055": {
+      "audio": [
+        "audio/rwc-p-m04/7.wav",
+        "6ce23fd6f382c392951781b1fad05d72"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P055.CHORUS.TXT",
+        "d59d214888958f6bb7eb22c62395000d"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P055.BEAT.TXT",
+        "15c673e440ba53391a5ff124212d247c"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N055-M04-T07.lab",
+        "66472a64da1c56bcd42368a28ac26aea"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P055.VOCA_INST.TXT",
+        "d3552dc3c1ca65f7d45a7c95e4665426"
+      ]
+    },
+    "RM-P056": {
+      "audio": [
+        "audio/rwc-p-m04/8.wav",
+        "1b3f8cc86a6662e356ddae7a1e3185c4"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P056.CHORUS.TXT",
+        "6a4a64c333c060f179618cc41b03a557"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P056.BEAT.TXT",
+        "d68cfb066b3a4bcb4c74dae66a468ec0"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N056-M04-T08.lab",
+        "defdcabc602d2201bf4ce3651a4254a9"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P056.VOCA_INST.TXT",
+        "2bd23695dc988f1ccfc1b90b9220f6b6"
+      ]
+    },
+    "RM-P057": {
+      "audio": [
+        "audio/rwc-p-m04/9.wav",
+        "dd878c2befc82d442cacce7377b47fca"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P057.CHORUS.TXT",
+        "0c073c7b86dbf53c0543e04514b5e2bf"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P057.BEAT.TXT",
+        "e6dc3e70a7cc9539c44757c138a10227"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N057-M04-T09.lab",
+        "f5c44b65b6128c718fdb3f2690621d04"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P057.VOCA_INST.TXT",
+        "63f5414216b317ca8c1887e54bd3c2e5"
+      ]
+    },
+    "RM-P058": {
+      "audio": [
+        "audio/rwc-p-m04/10.wav",
+        "52c178c341f91934c756d2f7334556d3"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P058.CHORUS.TXT",
+        "fadf33386e17f52cec784a088a45d63a"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P058.BEAT.TXT",
+        "9cbd19c6b2abfba05dec2506abed74c6"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N058-M04-T10.lab",
+        "063537c3d3697b076673543e019752cd"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P058.VOCA_INST.TXT",
+        "89a8a0faa6478e1ed7c21cfb0635df8c"
+      ]
+    },
+    "RM-P059": {
+      "audio": [
+        "audio/rwc-p-m04/11.wav",
+        "05b9fd6e721af1e132dd400f32bf5bc6"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P059.CHORUS.TXT",
+        "c548968290280e52338fe7f568dffde8"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P059.BEAT.TXT",
+        "7f9658de265d0ffd256c5b4deb726a4f"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N059-M04-T11.lab",
+        "cdb1c2043604c951703536105f938777"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P059.VOCA_INST.TXT",
+        "a3311ee0e35d43f714c4e214ae6a9397"
+      ]
+    },
+    "RM-P060": {
+      "audio": [
+        "audio/rwc-p-m04/12.wav",
+        "1a2391f2b3f13f686957837d5145099d"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P060.CHORUS.TXT",
+        "72e6dd181dce5b6183c4a9e75a0086a0"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P060.BEAT.TXT",
+        "6a5fd4b570733e82a06f061cd2f50d5f"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N060-M04-T12.lab",
+        "2a5b3d7ae833d8bc2a14b95bbb240996"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P060.VOCA_INST.TXT",
+        "d9051250ecd7db75256e0dc50cbdc7ce"
+      ]
+    },
+    "RM-P061": {
+      "audio": [
+        "audio/rwc-p-m04/13.wav",
+        "b68cdd1c8ba137c7a6d3ca2186d87652"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P061.CHORUS.TXT",
+        "0f27feb4f891f97298a9f99f8ad4a4a7"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P061.BEAT.TXT",
+        "3bcb5d1dcb008f401381f9d50418417f"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N061-M04-T13.lab",
+        "b94b7fcc61ae129fb09d1e79c838f923"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P061.VOCA_INST.TXT",
+        "0df5f00f4a14dd599e6bb880e3e7d187"
+      ]
+    },
+    "RM-P062": {
+      "audio": [
+        "audio/rwc-p-m04/14.wav",
+        "249ceb618a051dc71f831fc43a7c0337"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P062.CHORUS.TXT",
+        "348f5f36fa8656c763cf3427f7ca4daf"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P062.BEAT.TXT",
+        "5fe001bda7604b35cbeaa6181fca9afb"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N062-M04-T14.lab",
+        "e0b9529a8f201b6f98dac34003443e47"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P062.VOCA_INST.TXT",
+        "74f1b326194c30af973343592168cfcb"
+      ]
+    },
+    "RM-P063": {
+      "audio": [
+        "audio/rwc-p-m04/15.wav",
+        "a94aae0e93ce22b6e2af6a189ea07a6b"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P063.CHORUS.TXT",
+        "ba0474de820acea7a2a5ddf7d0722d0d"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P063.BEAT.TXT",
+        "068ab105f592f77ebc329c6ecafaaf78"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N063-M04-T15.lab",
+        "e96c6ba3632a8e1c62014efb9c87fc51"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P063.VOCA_INST.TXT",
+        "7c36d810d8962069571e773b8a696df1"
+      ]
+    },
+    "RM-P064": {
+      "audio": [
+        "audio/rwc-p-m04/16.wav",
+        "520850ae3ff12777bd0b6f112465efb7"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P064.CHORUS.TXT",
+        "7730a69f2eac2690bbc96ceafdbbd609"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P064.BEAT.TXT",
+        "33c4762f10470ac07ce56146ed4eae9a"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N064-M04-T16.lab",
+        "57748852d12acff803c54fb0d78fa26b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P064.VOCA_INST.TXT",
+        "7fd0494f81a8bcb462170a5d146a0cab"
+      ]
+    },
+    "RM-P065": {
+      "audio": [
+        "audio/rwc-p-m05/1.wav",
+        "9582cf9d361a2551b22fec5066e85415"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P065.CHORUS.TXT",
+        "df78d8eb83a9f2590f1f65ea4449a449"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P065.BEAT.TXT",
+        "a5181a6036f50992bbe6e4e643e9fbef"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N065-M05-T01.lab",
+        "ac0ea5cf4524b167b94c247052fd9a89"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P065.VOCA_INST.TXT",
+        "94f8a4b760faaaf85cbad1fac3d20184"
+      ]
+    },
+    "RM-P066": {
+      "audio": [
+        "audio/rwc-p-m05/2.wav",
+        "6f6979750a46dbce6dc32fdafc99a956"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P066.CHORUS.TXT",
+        "8d28420e4adda2969871f21dcdab314c"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P066.BEAT.TXT",
+        "ffee06992b8b5ac7a795a2915c75a198"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N066-M05-T02.lab",
+        "0b800ef7d0a9ec7c13bcef7210ba2c36"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P066.VOCA_INST.TXT",
+        "54382307da365b84785c9e8e49fe6770"
+      ]
+    },
+    "RM-P067": {
+      "audio": [
+        "audio/rwc-p-m05/3.wav",
+        "e14078b10436b04a31c4d6fbb71d3566"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P067.CHORUS.TXT",
+        "3c535711e0b9cb5052f1a4b8f1561a18"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P067.BEAT.TXT",
+        "d754fe3395620b84962ee7795ff93d90"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N067-M05-T03.lab",
+        "0815f189c1a72e84edc4a3a860d52f40"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P067.VOCA_INST.TXT",
+        "648e8e65a8f58c00e7e9e36c250596c6"
+      ]
+    },
+    "RM-P068": {
+      "audio": [
+        "audio/rwc-p-m05/4.wav",
+        "5e589be8457e91af2b11ea339a0be5d2"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P068.CHORUS.TXT",
+        "544caeba21d6025e6484404992aebc4c"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P068.BEAT.TXT",
+        "6303ec371c3e3d300dd138bb9db0d541"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N068-M05-T04.lab",
+        "3921f6f0dd6c2f4b41fd6d4e444eda60"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P068.VOCA_INST.TXT",
+        "b457250112f9247bf61eb87ade671613"
+      ]
+    },
+    "RM-P069": {
+      "audio": [
+        "audio/rwc-p-m05/5.wav",
+        "c9f79bff534c50e9e246d597c62c9582"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P069.CHORUS.TXT",
+        "a96195c1a9f25388b27ddeaa02731cc2"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P069.BEAT.TXT",
+        "2fae9e1fd678c7dc390dd5db0e67da0b"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N069-M05-T05.lab",
+        "d945c707b2dfd4a98bb20e0aacd274e2"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P069.VOCA_INST.TXT",
+        "44a259fe045f9a379c4fd789f01d02f1"
+      ]
+    },
+    "RM-P070": {
+      "audio": [
+        "audio/rwc-p-m05/6.wav",
+        "95ece6498f5515106f3d1f1077604eb6"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P070.CHORUS.TXT",
+        "49e69bed0b30cea1ffa3c38662418e25"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P070.BEAT.TXT",
+        "40df09e0a566de3da842b2d6eb19d137"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N070-M05-T06.lab",
+        "eb000feced9ddc1af9aaf9bc34b4bd1d"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P070.VOCA_INST.TXT",
+        "659a26b3c27e0f5ad5ea5194f470d11b"
+      ]
+    },
+    "RM-P071": {
+      "audio": [
+        "audio/rwc-p-m05/7.wav",
+        "f1a74c6e24d09f6ffbb1acb901690e78"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P071.CHORUS.TXT",
+        "45b5e5b790675c614221557ec9140f89"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P071.BEAT.TXT",
+        "9290f26e79f87a84d1cd259c66e727f4"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N071-M05-T07.lab",
+        "5586c8c0e9167f30f3cb5d155d6e9898"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P071.VOCA_INST.TXT",
+        "781ea681c9fb4c259279f718cea86516"
+      ]
+    },
+    "RM-P072": {
+      "audio": [
+        "audio/rwc-p-m05/8.wav",
+        "6bef5d9ecf92394b183566f09c03f24a"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P072.CHORUS.TXT",
+        "d245ecad59b0d73957d5ac1d276f81f4"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P072.BEAT.TXT",
+        "82a9bc8e2fa66aecdcc3d2f68aa2913a"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N072-M05-T08.lab",
+        "71623539876028c987724ed7efa9570f"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P072.VOCA_INST.TXT",
+        "50485756052791b54b17b8e28f5509a4"
+      ]
+    },
+    "RM-P073": {
+      "audio": [
+        "audio/rwc-p-m05/9.wav",
+        "d2fc286352086f6669793406e4761494"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P073.CHORUS.TXT",
+        "16562a6eb8ed6226a68bb9c6f0fa8965"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P073.BEAT.TXT",
+        "f816519d2c34da02fe01bffccfe24601"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N073-M05-T09.lab",
+        "d8024d9bbeed973d664ad90ecd116b31"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P073.VOCA_INST.TXT",
+        "35bc02ac8de7eaa3660acfc751d6fd79"
+      ]
+    },
+    "RM-P074": {
+      "audio": [
+        "audio/rwc-p-m05/10.wav",
+        "8dc515f902dfd25b7386c3205fe3c1a2"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P074.CHORUS.TXT",
+        "f63d9285e37902cfc9e5c4bb55db501e"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P074.BEAT.TXT",
+        "7312e0ac45f25b7a16f5fb4ead508d1e"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N074-M05-T10.lab",
+        "2f718221c5267691e873db4a49fb3d12"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P074.VOCA_INST.TXT",
+        "5d796127947f4142de773b8c55b490ab"
+      ]
+    },
+    "RM-P075": {
+      "audio": [
+        "audio/rwc-p-m05/11.wav",
+        "f9fbb5ca47c9173acb7f37f5841eb3c9"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P075.CHORUS.TXT",
+        "02103f36d3c4efcb1695d2aab6b0f464"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P075.BEAT.TXT",
+        "933db7cf231f145d9a755da9a82e9e29"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N075-M05-T11.lab",
+        "c27aa8a9fec55007a0c3cdfb709384f1"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P075.VOCA_INST.TXT",
+        "aa711558d9ec37ae2029323cb9d4567d"
+      ]
+    },
+    "RM-P076": {
+      "audio": [
+        "audio/rwc-p-m05/12.wav",
+        "2c02125bfb5254d62ab0e9cd913791c3"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P076.CHORUS.TXT",
+        "fde0d7669e467681054f03dfef8c3dbd"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P076.BEAT.TXT",
+        "07af112a93aeae27e54d7de0b44439f3"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N076-M05-T12.lab",
+        "80edceef5c21868d21f4ca253b847cbf"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P076.VOCA_INST.TXT",
+        "5ab1d25f98d8093fd82a22e83f6112d6"
+      ]
+    },
+    "RM-P077": {
+      "audio": [
+        "audio/rwc-p-m05/13.wav",
+        "6cc6eb07a35e5565bade026e8a7f2489"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P077.CHORUS.TXT",
+        "0f9133764844810f9b94e724aabaeeb5"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P077.BEAT.TXT",
+        "b7caa9baf5e65b1905fa93bd36d18e7d"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N077-M05-T13.lab",
+        "5646dcace80771af1530679c7956d674"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P077.VOCA_INST.TXT",
+        "e52dd13eb6b7b0b0f14a08812a456902"
+      ]
+    },
+    "RM-P078": {
+      "audio": [
+        "audio/rwc-p-m05/14.wav",
+        "f3cebe714c76dce68c4c51eec20b09ae"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P078.CHORUS.TXT",
+        "bcf612a454161d169146c7e095882ca4"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P078.BEAT.TXT",
+        "cbcdd43b1d2b8a2236a1006103f56399"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N078-M05-T14.lab",
+        "5ad5d060a6f4b8538483695bda797d00"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P078.VOCA_INST.TXT",
+        "1c5a89a626f12878230ec36e3a322f95"
+      ]
+    },
+    "RM-P079": {
+      "audio": [
+        "audio/rwc-p-m05/15.wav",
+        "43a26bfe4605a61039f7b00f790906be"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P079.CHORUS.TXT",
+        "c096de2beb6c6abc5b1b29e1371c8b2c"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P079.BEAT.TXT",
+        "18cc6b6d3ff78863c138f1a481857b3d"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N079-M05-T15.lab",
+        "8479c41e67aa13b8b42ca5b11e4c09e4"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P079.VOCA_INST.TXT",
+        "4f1c81c4dc312fcb6214557b6ba43bc5"
+      ]
+    },
+    "RM-P080": {
+      "audio": [
+        "audio/rwc-p-m05/16.wav",
+        "e0643d30cec772bb517f66efbd46631f"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P080.CHORUS.TXT",
+        "d79892f40b22335e06cef5aeb1a0c91b"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P080.BEAT.TXT",
+        "a4028b28824e66ed40c5b2b3d183caec"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N080-M05-T16.lab",
+        "06b8f2425799ce443b548e54ffdd743c"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P080.VOCA_INST.TXT",
+        "dea09e6367093fae467a807e2391b832"
+      ]
+    },
+    "RM-P081": {
+      "audio": [
+        "audio/rwc-p-m06/1.wav",
+        "c3934e70aa130e347a0e93a251ea8f65"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P081.CHORUS.TXT",
+        "2817bb753bbae1f00a4d1791de65f9b3"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P081.BEAT.TXT",
+        "dd97b09601b9affbcd68e31854a137d9"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N081-M06-T01.lab",
+        "d586b43a2e42a010604106033967781c"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P081.VOCA_INST.TXT",
+        "ce8800f6dc213221015d0f0b1a9b9f1d"
+      ]
+    },
+    "RM-P082": {
+      "audio": [
+        "audio/rwc-p-m06/2.wav",
+        "99e7d17b7c874194a34aeb069908f3ed"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P082.CHORUS.TXT",
+        "9e0094d40ffb8fe13d9ac449695bf2cb"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P082.BEAT.TXT",
+        "5e9cc89b4953488f423d1fd890395ba1"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N082-M06-T02.lab",
+        "ee8df01e17827d75e8bffb1f587d4677"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P082.VOCA_INST.TXT",
+        "9fc12c1ae3c447180736c7667affff18"
+      ]
+    },
+    "RM-P083": {
+      "audio": [
+        "audio/rwc-p-m06/3.wav",
+        "e62461b0eafe9d0874d0c00e37b9e680"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P083.CHORUS.TXT",
+        "ddff6241ca97354aea2478e5dd0576e1"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P083.BEAT.TXT",
+        "21082e5f15126f23b52124bdec0cee23"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N083-M06-T03.lab",
+        "4295ea5b5540ec1f16d7048de702bd6e"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P083.VOCA_INST.TXT",
+        "c387d7c850126b64133b1e0406e1bf6e"
+      ]
+    },
+    "RM-P084": {
+      "audio": [
+        "audio/rwc-p-m06/4.wav",
+        "93a3f738094d8d003acbfa033bd67d73"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P084.CHORUS.TXT",
+        "a0542308a66d70a622348341fb9cd698"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P084.BEAT.TXT",
+        "c1ed8a2e03b53360092b70950a341efd"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N084-M06-T04.lab",
+        "3738673f43b77afe6a6b0f7346ba2a8a"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P084.VOCA_INST.TXT",
+        "f8e438ec32d702a232ec82f231a6ec1b"
+      ]
+    },
+    "RM-P085": {
+      "audio": [
+        "audio/rwc-p-m06/5.wav",
+        "d30fc1f29e7651fd04c0c1f6f238c97d"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P085.CHORUS.TXT",
+        "7c26a73b994d5b8d30736b795e0d7453"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P085.BEAT.TXT",
+        "b671179ef252e56d53054c9ce84c49f5"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N085-M06-T05.lab",
+        "de12c10942b4c247d885805977992a6b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P085.VOCA_INST.TXT",
+        "2f4ddb0771f7400eafc15b5f177380cd"
+      ]
+    },
+    "RM-P086": {
+      "audio": [
+        "audio/rwc-p-m06/6.wav",
+        "5e28a549da381179b439a5e1f194a972"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P086.CHORUS.TXT",
+        "350e1c16dee97de52f015633853cd46c"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P086.BEAT.TXT",
+        "e086b6fde90ad2d133845556487d6051"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N086-M06-T06.lab",
+        "57034f5bc2fb6e0b3a10f949b4eeaf7b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P086.VOCA_INST.TXT",
+        "6b71d4e6277ecd713ffabae4eb706555"
+      ]
+    },
+    "RM-P087": {
+      "audio": [
+        "audio/rwc-p-m06/7.wav",
+        "7827f7bd0a155d3adfd01eeb30b76dac"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P087.CHORUS.TXT",
+        "d343eab4f1f5ee4923f3d7844c1ce59d"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P087.BEAT.TXT",
+        "0a7767817db5e0c8e2e2387024596112"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N087-M06-T07.lab",
+        "30ab0567e09aac06ce1c6d1f16fb6a31"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P087.VOCA_INST.TXT",
+        "333714cb7fa3b6b9726cf83e83b856d9"
+      ]
+    },
+    "RM-P088": {
+      "audio": [
+        "audio/rwc-p-m06/8.wav",
+        "e0a5c49530339424362076ec7f6faa41"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P088.CHORUS.TXT",
+        "121d52486def6f640a88852fb952ca8a"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P088.BEAT.TXT",
+        "585888f39a4be047505b81a91dca9d96"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N088-M06-T08.lab",
+        "ea5c231d79e7e0b997057a88034aaa60"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P088.VOCA_INST.TXT",
+        "58afdf686752336d7f048ce7d8dd0b43"
+      ]
+    },
+    "RM-P089": {
+      "audio": [
+        "audio/rwc-p-m06/9.wav",
+        "a26048ae06d681e9d0f6fd5d5e5cb840"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P089.CHORUS.TXT",
+        "b618cf795105595574e6b6a841e831de"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P089.BEAT.TXT",
+        "2d18959a101f1187e9b5bd1a6ba56c93"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N089-M06-T09.lab",
+        "27236c9713a6ba33a15f6111a240e3e3"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P089.VOCA_INST.TXT",
+        "b9bd0ca727d29e549ce67237f537df2a"
+      ]
+    },
+    "RM-P090": {
+      "audio": [
+        "audio/rwc-p-m06/10.wav",
+        "35fa0fb25fa56e375f5e48baf6b030d6"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P090.CHORUS.TXT",
+        "2eb3e9566a94556d5dd594cd8bb1e412"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P090.BEAT.TXT",
+        "d96119a1b49cfdc4b123097fd221cd8c"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N090-M06-T10.lab",
+        "137745e23454d150b457b184cdbd6db8"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P090.VOCA_INST.TXT",
+        "95f158ee7d6db9585bf6f7cd439fd344"
+      ]
+    },
+    "RM-P091": {
+      "audio": [
+        "audio/rwc-p-m07/1.wav",
+        "1935e8cbf4bdce3a949a6db208355106"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P091.CHORUS.TXT",
+        "a24ff25bc63897d6d67bbcacf165043a"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P091.BEAT.TXT",
+        "17b21b318df687f1870370f7c6812a2e"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N091-M07-T01.lab",
+        "e1de4f02897d283383938da799bae27c"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P091.VOCA_INST.TXT",
+        "7214378a2c1a70301e22801a2866daad"
+      ]
+    },
+    "RM-P092": {
+      "audio": [
+        "audio/rwc-p-m07/2.wav",
+        "e9c59dfb98fe361abaf355b474918f31"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P092.CHORUS.TXT",
+        "c36d97ae752d1ee67dbe522c999bd733"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P092.BEAT.TXT",
+        "2e7558560fba392a064d650ee25333cd"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N092-M07-T02.lab",
+        "0bb6e4e126b070852d7a58f649701cb2"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P092.VOCA_INST.TXT",
+        "787078577e5f613fd24ccc7ec242c048"
+      ]
+    },
+    "RM-P093": {
+      "audio": [
+        "audio/rwc-p-m07/3.wav",
+        "347f095bbca6f593499d35fe84aca7ab"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P093.CHORUS.TXT",
+        "e0d741c91ac1b014ec6aa58376f77033"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P093.BEAT.TXT",
+        "b91cf653e03f9b283354e8bd19946d1b"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N093-M07-T03.lab",
+        "290ac061c1677c49e2810a2141b5be77"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P093.VOCA_INST.TXT",
+        "2ca72ad4dd77d152044369db85ed0d4a"
+      ]
+    },
+    "RM-P094": {
+      "audio": [
+        "audio/rwc-p-m07/4.wav",
+        "a79f7b203cd5098eb54287af67beb819"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P094.CHORUS.TXT",
+        "a2e23f52a326507f44a7165e49aed671"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P094.BEAT.TXT",
+        "d0354e2b7f53b1f75b4ba35005556bf7"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N094-M07-T04.lab",
+        "f32da1a6f9759c43e0fccd6ac1873d6f"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P094.VOCA_INST.TXT",
+        "b16e20cd890ba149c9b9f13ce22a65c4"
+      ]
+    },
+    "RM-P095": {
+      "audio": [
+        "audio/rwc-p-m07/5.wav",
+        "8354e00f71bc5fd9dd80730517741e96"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P095.CHORUS.TXT",
+        "0c51628e810e8c723b41fb55c3cfab8b"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P095.BEAT.TXT",
+        "672a5bed98cb44e307af8047c5ac884f"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N095-M07-T05.lab",
+        "aaf08ce1fe03178675e9b10fd89a4c0c"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P095.VOCA_INST.TXT",
+        "41a457fd8f74c16f7e44c75710ef3187"
+      ]
+    },
+    "RM-P096": {
+      "audio": [
+        "audio/rwc-p-m07/6.wav",
+        "0d15186c5a74449c3d69074dc401ffdf"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P096.CHORUS.TXT",
+        "3ec474ac4d37f2fd7359a52a358e3af0"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P096.BEAT.TXT",
+        "9deec9169040fab6546de6d4ab2605b4"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N096-M07-T06.lab",
+        "c709338342dcc66eaa2323eb339915b9"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P096.VOCA_INST.TXT",
+        "922e33e5c641f1eb3712bcd5dd1195fe"
+      ]
+    },
+    "RM-P097": {
+      "audio": [
+        "audio/rwc-p-m07/7.wav",
+        "8a17be3c1e0383073c3bbc7d221d5c5e"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P097.CHORUS.TXT",
+        "61e3673389dce61a737c430fd4243eb5"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P097.BEAT.TXT",
+        "394050ce32774ecde4a510dd4bbf4a00"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N097-M07-T07.lab",
+        "96d32c41cbef33a860fe1d4b6401545d"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P097.VOCA_INST.TXT",
+        "b3cd3152b8865402701fadfe6186af52"
+      ]
+    },
+    "RM-P098": {
+      "audio": [
+        "audio/rwc-p-m07/8.wav",
+        "e403c102c4ff2b4470c22fb70c4776b3"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P098.CHORUS.TXT",
+        "b4d535cd5fbb4ba8040b3d4b1937a652"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P098.BEAT.TXT",
+        "6b350f9a9f337700d51307670d62694c"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N098-M07-T08.lab",
+        "c7e2ca25e223bbb38932530aeb1719ec"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P098.VOCA_INST.TXT",
+        "edf0d8a4c210aa7eb85878e3f0b6b639"
+      ]
+    },
+    "RM-P099": {
+      "audio": [
+        "audio/rwc-p-m07/9.wav",
+        "30740f265b4f04d7fac9ffe9bebf1b64"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P099.CHORUS.TXT",
+        "f8d1de99f1f7d1c0c823e2b5dd7bf8af"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P099.BEAT.TXT",
+        "43cb858a6037edb695ea33d01af0b97f"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N099-M07-T09.lab",
+        "b68eed1ceb5c58610233f4ae9550c892"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P099.VOCA_INST.TXT",
+        "183bf27293fb720c9a31eaefe5d508cc"
+      ]
+    },
+    "RM-P100": {
+      "audio": [
+        "audio/rwc-p-m07/10.wav",
+        "523e0cd8ed48bf8365211e6b8fab8734"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P100.CHORUS.TXT",
+        "51773602926ea33aff9b5cd4dc88cd91"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P100.BEAT.TXT",
+        "6a92c4d73716538f01ec878018b71378"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N100-M07-T10.lab",
+        "f0b414fae7fb05972728df84232031e2"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P100.VOCA_INST.TXT",
+        "d50f155a450e3adcae39a3b450edde50"
+      ]
+    }
+  },
+  "metadata": {
+    "rwc-p": [
+      "metadata-master/rwc-p.csv",
+      "2311ffa9c150bdc83575f581e1ad8bc2"
+    ]
+  }
+}

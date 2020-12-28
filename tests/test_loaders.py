@@ -5,143 +5,155 @@ import inspect
 from inspect import signature
 import io
 import os
-import requests
 import sys
 import pytest
+import requests
+
 
 import mirdata
-from mirdata import track
+from mirdata import core, download_utils
 from tests.test_utils import DEFAULT_DATA_HOME
 
-DATASETS = [importlib.import_module("mirdata.{}".format(d)) for d in mirdata.__all__]
+DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
-    'beatles': '0111',
-    'giantsteps_key': '3',
-    'dali': '4b196e6c99574dd49ad00d56e132712b',
-    'giantsteps_tempo': '113',
-    'guitarset': '03_BN3-119-G_solo',
-    'medley_solos_db': 'd07b1fc0-567d-52c2-fef4-239f31c9d40e',
-    'medleydb_melody': 'MusicDelta_Beethoven',
-    'rwc_classical': 'RM-C003',
-    'rwc_jazz': 'RM-J004',
-    'rwc_popular': 'RM-P001',
-    'salami': '2',
-    'tinysol': 'Fl-ord-C4-mf-N-T14d',
+    "beatles": "0111",
+    "cante100": "008",
+    "giantsteps_key": "3",
+    "dali": "4b196e6c99574dd49ad00d56e132712b",
+    "giantsteps_tempo": "113",
+    "guitarset": "03_BN3-119-G_solo",
+    "irmas": "1",
+    "medley_solos_db": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
+    "medleydb_melody": "MusicDelta_Beethoven",
+    "mridangam_stroke": "224030",
+    "rwc_classical": "RM-C003",
+    "rwc_jazz": "RM-J004",
+    "rwc_popular": "RM-P001",
+    "salami": "2",
+    "saraga_carnatic": "116_Bhuvini_Dasudane",
+    "saraga_hindustani": "59_Bairagi",
+    "tinysol": "Fl-ord-C4-mf-N-T14d",
+}
+
+REMOTE_DATASETS = {
+    "acousticbrainz_genre": {
+        "local_index": "tests/resources/download/acousticbrainz_genre_dataset_little_test.json.zip",
+        "filename": "acousticbrainz_genre_dataset_little_test.json",
+        "remote_filename": "acousticbrainz_genre_dataset_little_test.json.zip",
+        "remote_checksum": "c5fbdd4f8b7de383796a34143cb44c4f",
+    }
 }
 
 
-def test_cite():
-    for dataset in DATASETS:
+def create_remote_index(httpserver, dataset_name):
+    httpserver.serve_content(
+        open(REMOTE_DATASETS[dataset_name]["local_index"], "rb").read()
+    )
+    remote_index = {
+        "index": download_utils.RemoteFileMetadata(
+            filename=REMOTE_DATASETS[dataset_name]["remote_filename"],
+            url=httpserver.url,
+            checksum=REMOTE_DATASETS[dataset_name]["remote_checksum"],
+            destination_dir="",
+        )
+    }
+    data_remote = core.LargeData(
+        REMOTE_DATASETS[dataset_name]["filename"], remote_index=remote_index
+    )
+    return data_remote.index
+
+
+def clean_remote_dataset(dataset_name):
+    os.remove(
+        os.path.join(
+            "mirdata/datasets/indexes", REMOTE_DATASETS[dataset_name]["filename"]
+        )
+    )
+
+
+def test_dataset_attributes(httpserver):
+    for dataset_name in DATASETS:
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = module.Dataset()
+        else:
+            remote_index = create_remote_index(httpserver, dataset_name)
+            dataset = module.Dataset(index=remote_index)
+
+        assert (
+            dataset.name == dataset_name
+        ), "{}.dataset attribute does not match dataset name".format(dataset_name)
+        assert (
+            dataset.bibtex is not None
+        ), "No BIBTEX information provided for {}".format(dataset_name)
+        assert (
+            isinstance(dataset.remotes, dict) or dataset.remotes is None
+        ), "{}.REMOTES must be a dictionary".format(dataset_name)
+        assert isinstance(dataset._index, dict), "{}.DATA is not properly set".format(
+            dataset_name
+        )
+        assert (
+            isinstance(dataset._download_info, str) or dataset._download_info is None
+        ), "{}.DOWNLOAD_INFO must be a string".format(dataset_name)
+        assert type(dataset._track_object) == type(
+            core.Track
+        ), "{}.Track must be an instance of core.Track".format(dataset_name)
+        assert callable(dataset.download), "{}.download is not a function".format(
+            dataset_name
+        )
+
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
+
+
+def test_cite(httpserver):
+    for dataset_name in DATASETS:
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = module.Dataset()
+        else:
+            remote_index = create_remote_index(httpserver, dataset_name)
+            dataset = module.Dataset(index=remote_index)
+
         text_trap = io.StringIO()
         sys.stdout = text_trap
         dataset.cite()
         sys.stdout = sys.__stdout__
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
 
 
 KNOWN_ISSUES = {}  # key is module, value is REMOTE key
-DOWNLOAD_EXCEPTIONS = ['maestro']
+DOWNLOAD_EXCEPTIONS = ["maestro", "acousticbrainz_genre"]
 
 
-def test_download(mocker):
-    for dataset in DATASETS:
-        dataset_name = dataset.__name__.split('.')[1]
+def test_download(mocker, httpserver):
+    for dataset_name in DATASETS:
+        print(dataset_name)
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = module.Dataset()
+        else:
+            remote_index = create_remote_index(httpserver, dataset_name)
+            dataset = module.Dataset(index=remote_index)
 
         # test parameters & defaults
-        assert hasattr(dataset, 'download'), '{} has no download method'.format(
+        assert callable(dataset.download), "{}.download is not callable".format(
             dataset_name
         )
-        assert hasattr(
-            dataset.download, '__call__'
-        ), '{}.download is not callable'.format(dataset_name)
         params = signature(dataset.download).parameters
-        assert (
-            'data_home' in params
-        ), 'data_home must be an argument of {}.download'.format(dataset_name)
-        assert (
-            params['data_home'].default is None
-        ), 'the default value of data_Home in {}.download should be None'.format(
-            dataset_name
-        )
-
-        # if there are no remotes, make sure partial_download,
-        # force_overwrite, and cleanup are not parameters
-        if not hasattr(dataset, 'REMOTES'):
-            assert (
-                'partial_download' not in params
-            ), '{} has no REMOTES, so its download method does not need a partial_download argument'.format(
-                dataset_name
-            )
-            assert (
-                'force_overwrite' not in params
-            ), '{} has no REMOTES so its download method does not need a force_overwrite argument'.format(
-                dataset_name
-            )
-            assert (
-                'cleanup' not in params
-            ), '{} has no REMOTES so its download method does not need a cleanup argument'.format(
-                dataset_name
-            )
-        # if there are remotes, make sure force_overwrite is specified and
-        # the default is False
-        else:
-            assert (
-                'force_overwrite' in params
-            ), '{} has REMOTES, so its download method must have a force_overwrite parameter'.format(
-                dataset_name
-            )
-            assert (
-                params['force_overwrite'].default is False
-            ), 'the force_overwrite parameter of {}.download must default to False'.format(
-                dataset_name
-            )
-
-            # if there are remotes but only one item, make sure partial_download
-            # is not a parameter
-            if len(dataset.REMOTES) == 1:
-                assert (
-                    'partial_download' not in params
-                ), '{}.REMOTES has only one item, so its download method does not need a partial_download argument'.format(
-                    dataset_name
-                )
-            # if there is more than one item in remotes, make sure partial_download
-            # is a parameter and the default is None
-            else:
-                assert (
-                    'partial_download' in params
-                ), '{}.REMOTES has multiple downloads, so its download method should have a partial_download argument'.format(
-                    dataset_name
-                )
-                assert (
-                    params['partial_download'].default is None
-                ), 'the default argument of partial_download in {}.download should be None'
-
-            extensions = [
-                os.path.splitext(r.filename)[-1] for r in dataset.REMOTES.values()
-            ]
-            # if there are any zip or tar files to download, make sure cleanup
-            # is a parameter and its default is True
-            if any([e == '.zip' or e == '.gz' for e in extensions]):
-                assert (
-                    'cleanup' in params
-                ), '{}.REMOTES contains zip or tar files, so its download method should have a cleanup argument'.format(
-                    dataset_name
-                )
-                assert (
-                    params['cleanup'].default is True
-                ), 'the default value for cleanup in {}.download should be True'.format(
-                    dataset_name
-                )
-            # if there are no zip or tar files, make sure cleanup is not a parameter
-            else:
-                assert (
-                    'cleanup' not in params
-                ), 'there are no zip or tar files in {}.REMOTES so its download method does not need a cleanup argument'.format(
-                    dataset_name
-                )
+        expected_params = [
+            "partial_download",
+            "force_overwrite",
+            "cleanup",
+        ]
+        assert set(params) == set(
+            expected_params
+        ), "{}.download must have parameters {}".format(dataset_name, expected_params)
 
         # check that the download method can be called without errors
-        if hasattr(dataset, 'REMOTES'):
-            mock_downloader = mocker.patch.object(dataset, 'REMOTES')
+        if dataset.remotes != {}:
+            mock_downloader = mocker.patch.object(dataset, "remotes")
             if dataset_name not in DOWNLOAD_EXCEPTIONS:
                 try:
                     dataset.download()
@@ -151,19 +163,19 @@ def test_download(mocker):
                 mocker.resetall()
 
             # check that links are online
-            for key in dataset.REMOTES:
+            for key in dataset.remotes:
                 # skip this test if it's in known issues
                 if dataset_name in KNOWN_ISSUES and key in KNOWN_ISSUES[dataset_name]:
                     continue
 
-                url = dataset.REMOTES[key].url
+                url = dataset.remotes[key].url
                 try:
                     request = requests.head(url)
-                    assert request.ok, 'Link {} for {} does not return OK'.format(
+                    assert request.ok, "Link {} for {} does not return OK".format(
                         url, dataset_name
                     )
                 except requests.exceptions.ConnectionError:
-                    assert False, 'Link {} for {} is unreachable'.format(
+                    assert False, "Link {} for {} is unreachable".format(
                         url, dataset_name
                     )
                 except:
@@ -173,108 +185,158 @@ def test_download(mocker):
                 dataset.download()
             except:
                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
 
 
 # This is magically skipped by the the remote fixture `skip_local` in conftest.py
 # when tests are run with the --local flag
-def test_validate(skip_local):
-    for dataset in DATASETS:
-        dataset_name = dataset.__name__.split('.')[1]
-        data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
+def test_validate(skip_local, httpserver):
+    for dataset_name in DATASETS:
+        data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = module.Dataset(data_home)
+            dataset_default = module.Dataset(data_home=None)
+        else:
+            remote_index = create_remote_index(httpserver, dataset_name)
+            dataset = module.Dataset(data_home, index=remote_index)
+            dataset_default = module.Dataset(data_home=None, index=remote_index)
+
         try:
-            dataset.validate(data_home=data_home)
+            dataset.validate()
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
         try:
-            dataset.validate(data_home=data_home, silence=True)
+            dataset.validate(verbose=False)
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
         try:
-            dataset.validate(data_home=None, silence=True)
+            dataset_default.validate(verbose=False)
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
 
-def test_load_and_trackids():
-    for dataset in DATASETS:
-        dataset_name = dataset.__name__.split('.')[1]
+def test_load_and_trackids(httpserver):
+    for dataset_name in DATASETS:
+        data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = module.Dataset(data_home)
+            dataset_default = module.Dataset()
+        else:
+            continue
+            # TODO - fix the dataset object to work with remote index
+            # remote_index = create_remote_index(httpserver, dataset_name)
+            # dataset = module.Dataset(data_home, index=remote_index)
+            # dataset_default = module.Dataset(index=remote_index)
+
         try:
-            track_ids = dataset.track_ids()
+            track_ids = dataset.track_ids
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert type(track_ids) is list, '{}.track_ids() should return a list'.format(
+        assert type(track_ids) is list, "{}.track_ids() should return a list".format(
             dataset_name
         )
         trackid_len = len(track_ids)
+        # if the dataset has tracks, test the loaders
+        if dataset._track_object is not None:
 
-        data_home = os.path.join('tests/resources/mir_datasets', dataset.DATASET_DIR)
-        try:
-            dataset_data = dataset.load(data_home=data_home)
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+            try:
+                choice_track = dataset.choice_track()
+            except:
+                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+            assert isinstance(
+                choice_track, core.Track
+            ), "{}.choice_track must return an instance of type core.Track".format(
+                dataset_name
+            )
 
-        assert type(dataset_data) is dict, '{}.load should return a dictionary'.format(
-            dataset_name
-        )
-        assert (
-            len(dataset_data.keys()) == trackid_len
-        ), 'the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()'.format(
-            dataset_name, dataset_name
-        )
+            try:
+                dataset_data = dataset.load_tracks()
+            except:
+                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
-        try:
-            dataset_data_default = dataset.load()
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+            assert (
+                type(dataset_data) is dict
+            ), "{}.load should return a dictionary".format(dataset_name)
+            assert (
+                len(dataset_data.keys()) == trackid_len
+            ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
+                dataset_name, dataset_name
+            )
 
-        assert (
-            type(dataset_data_default) is dict
-        ), '{}.load should return a dictionary'.format(dataset_name)
-        assert (
-            len(dataset_data_default.keys()) == trackid_len
-        ), 'the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()'.format(
-            dataset_name, dataset_name
-        )
+            try:
+                dataset_data_default = dataset_default.load_tracks()
+            except:
+                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+
+            assert (
+                type(dataset_data_default) is dict
+            ), "{}.load should return a dictionary".format(dataset_name)
+            assert (
+                len(dataset_data_default.keys()) == trackid_len
+            ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
+                dataset_name, dataset_name
+            )
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
 
 
-def test_track():
-    data_home_dir = 'tests/resources/mir_datasets'
+def test_track(httpserver):
+    data_home_dir = "tests/resources/mir_datasets"
 
-    for dataset in DATASETS:
+    for dataset_name in DATASETS:
+        data_home = os.path.join(data_home_dir, dataset_name)
 
-        dataset_name = dataset.__name__.split('.')[1]
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = module.Dataset(data_home)
+            dataset_default = module.Dataset()
+        else:
+            continue
+            # TODO - fix the dataset object to work with remote index
+            # remote_index = create_remote_index(httpserver, dataset_name)
+            # dataset = module.Dataset(data_home, index=remote_index)
+            # dataset_default = module.Dataset(index=remote_index)
+
+        # if the dataset doesn't have a track object, make sure it raises a value error
+        # and move on to the next dataset
+        if dataset._track_object is None:
+            with pytest.raises(NotImplementedError):
+                dataset.track("~faketrackid~?!")
+            continue
 
         if dataset_name in CUSTOM_TEST_TRACKS:
             trackid = CUSTOM_TEST_TRACKS[dataset_name]
         else:
-            trackid = dataset.track_ids()[0]
+            trackid = dataset.track_ids[0]
 
         try:
-            track_default = dataset.Track(trackid)
+            track_default = dataset_default.track(trackid)
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
         assert track_default._data_home == os.path.join(
-            DEFAULT_DATA_HOME, dataset.DATASET_DIR
-        ), '{}: Track._data_home path is not set as expected'.format(dataset_name)
+            DEFAULT_DATA_HOME, dataset.name
+        ), "{}: Track._data_home path is not set as expected".format(dataset_name)
 
         # test data home specified
-        data_home = os.path.join(data_home_dir, dataset.DATASET_DIR)
         try:
-            track_test = dataset.Track(trackid, data_home=data_home)
+            track_test = dataset.track(trackid)
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
         assert isinstance(
-            track_test, track.Track
-        ), '{}.Track must be an instance of type track.Track'.format(dataset_name)
+            track_test, core.Track
+        ), "{}.track must be an instance of type core.Track".format(dataset_name)
 
         assert hasattr(
-            track_test, 'to_jams'
-        ), '{}.Track must have a to_jams method'.format(dataset_name)
+            track_test, "to_jams"
+        ), "{}.track must have a to_jams method".format(dataset_name)
 
         # Validate JSON schema
         try:
@@ -282,7 +344,7 @@ def test_track():
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
-        assert jam.validate(), 'Jams validation failed for {}.Track({})'.format(
+        assert jam.validate(), "Jams validation failed for {}.track({})".format(
             dataset_name, trackid
         )
 
@@ -296,39 +358,65 @@ def test_track():
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
         with pytest.raises(ValueError):
-            dataset.Track('~faketrackid~?!')
-
-        try:
-            track_custom = dataset.Track(trackid, data_home='casa/de/data')
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert (
-            track_custom._data_home == 'casa/de/data'
-        ), '{}: Track._data_home path is not set as expected'.format(dataset_name)
+            dataset.track("~faketrackid~?!")
 
 
 # for load_* functions which require more than one argument
 # module_name : {function_name: {parameter2: value, parameter3: value}}
 EXCEPTIONS = {
-    'dali': {'load_annotations_granularity': {'granularity': 'notes'}},
-    'guitarset': {
-        'load_pitch_contour': {'string_num': 1},
-        'load_note_ann': {'string_num': 1},
+    "dali": {"load_annotations_granularity": {"granularity": "notes"}},
+    "guitarset": {
+        "load_pitch_contour": {"string_num": 1},
+        "load_notes": {"string_num": 1},
     },
+    "saraga": {
+        "load_tempo": {"iam_style": "carnatic"},
+        "load_sections": {"iam_style": "carnatic"},
+    },
+}
+SKIP = {
+    "acousticbrainz_genre": [
+        "load_all_train",
+        "load_all_validation",
+        "load_tagtraum_validation",
+        "load_tagtraum_train",
+        "load_allmusic_train",
+        "load_allmusic_validation",
+        "load_lastfm_train",
+        "load_lastfm_validation",
+        "load_discogs_train",
+        "load_discogs_validation",
+    ]
 }
 
 
-def test_load_methods():
-    for dataset in DATASETS:
-        dataset_name = dataset.__name__.split('.')[1]
+def test_load_methods(httpserver):
+    for dataset_name in DATASETS:
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = module.Dataset()
+        else:
+            remote_index = create_remote_index(httpserver, dataset_name)
+            dataset = module.Dataset(index=remote_index)
 
         all_methods = dir(dataset)
         load_methods = [
-            getattr(dataset, m) for m in all_methods if m.startswith('load_')
+            getattr(dataset, m) for m in all_methods if m.startswith("load_")
         ]
         for load_method in load_methods:
             method_name = load_method.__name__
+
+            # skip default methods
+            if method_name == "load_tracks":
+                continue
+
+            # skip overrides, add to the SKIP dictionary to skip a specific load method
+            if dataset_name in SKIP and method_name in SKIP[dataset_name]:
+                continue
+
+            if load_method.__doc__ is None:
+                raise ValueError("{} has no documentation".format(method_name))
+
             params = [
                 p
                 for p in signature(load_method).parameters.values()
@@ -344,3 +432,62 @@ def test_load_methods():
             else:
                 with pytest.raises(IOError):
                     load_method("a/fake/filepath")
+
+
+CUSTOM_TEST_MTRACKS = {}
+
+
+def test_multitracks(httpserver):
+    data_home_dir = "tests/resources/mir_datasets"
+
+    for dataset_name in DATASETS:
+
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
+        if dataset_name not in REMOTE_DATASETS:
+            dataset = module.Dataset()
+        else:
+            remote_index = create_remote_index(httpserver, dataset_name)
+            dataset = module.Dataset(index=remote_index)
+
+        # TODO this is currently an opt-in test. Make it an opt out test
+        # once #265 is addressed
+        if dataset_name in CUSTOM_TEST_MTRACKS:
+            mtrack_id = CUSTOM_TEST_MTRACKS[dataset_name]
+        else:
+            # there are no multitracks
+            continue
+
+        try:
+            mtrack_default = dataset.MultiTrack(mtrack_id)
+        except:
+            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+
+        # test data home specified
+        data_home = os.path.join(data_home_dir, dataset_name)
+        dataset_specific = mirdata.initialize(dataset_name, data_home=data_home)
+        try:
+            mtrack_test = dataset_specific.MultiTrack(mtrack_id, data_home=data_home)
+        except:
+            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+
+        assert isinstance(
+            mtrack_test, core.MultiTrack
+        ), "{}.MultiTrack must be an instance of type core.MultiTrack".format(
+            dataset_name
+        )
+
+        assert hasattr(
+            mtrack_test, "to_jams"
+        ), "{}.MultiTrack must have a to_jams method".format(dataset_name)
+
+        # Validate JSON schema
+        try:
+            jam = mtrack_test.to_jams()
+        except:
+            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+
+        assert jam.validate(), "Jams validation failed for {}.MultiTrack({})".format(
+            dataset_name, mtrack_id
+        )
+        if dataset_name in REMOTE_DATASETS:
+            clean_remote_dataset(dataset_name)
