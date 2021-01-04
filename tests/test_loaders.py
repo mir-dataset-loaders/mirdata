@@ -46,9 +46,7 @@ REMOTE_DATASETS = {
 
 
 def create_remote_index(httpserver, dataset_name):
-    httpserver.serve_content(
-        open(REMOTE_DATASETS[dataset_name]["local_index"], "rb").read()
-    )
+    httpserver.serve_content(open(REMOTE_DATASETS[dataset_name]["local_index"], "rb").read())
     remote_index = {
         "index": download_utils.RemoteFileMetadata(
             filename=REMOTE_DATASETS[dataset_name]["remote_filename"],
@@ -64,11 +62,7 @@ def create_remote_index(httpserver, dataset_name):
 
 
 def clean_remote_dataset(dataset_name):
-    os.remove(
-        os.path.join(
-            "mirdata/datasets/indexes", REMOTE_DATASETS[dataset_name]["filename"]
-        )
-    )
+    os.remove(os.path.join("mirdata/datasets/indexes", REMOTE_DATASETS[dataset_name]["filename"]))
 
 
 def test_dataset_attributes(httpserver):
@@ -83,27 +77,23 @@ def test_dataset_attributes(httpserver):
         assert (
             dataset.name == dataset_name
         ), "{}.dataset attribute does not match dataset name".format(dataset_name)
-        assert (
-            dataset.bibtex is not None
-        ), "No BIBTEX information provided for {}".format(dataset_name)
+        assert dataset.bibtex is not None, "No BIBTEX information provided for {}".format(
+            dataset_name
+        )
         assert (
                 dataset._license_info is not None
         ), "No LICENSE information provided for {}".format(dataset_name)
         assert (
             isinstance(dataset.remotes, dict) or dataset.remotes is None
         ), "{}.REMOTES must be a dictionary".format(dataset_name)
-        assert isinstance(dataset._index, dict), "{}.DATA is not properly set".format(
-            dataset_name
-        )
+        assert isinstance(dataset._index, dict), "{}.DATA is not properly set".format(dataset_name)
         assert (
             isinstance(dataset._download_info, str) or dataset._download_info is None
         ), "{}.DOWNLOAD_INFO must be a string".format(dataset_name)
         assert type(dataset._track_object) == type(
             core.Track
         ), "{}.Track must be an instance of core.Track".format(dataset_name)
-        assert callable(dataset.download), "{}.download is not a function".format(
-            dataset_name
-        )
+        assert callable(dataset.download), "{}.download is not a function".format(dataset_name)
 
         if dataset_name in REMOTE_DATASETS:
             clean_remote_dataset(dataset_name)
@@ -146,9 +136,7 @@ def test_download(mocker, httpserver):
             dataset = module.Dataset(index=remote_index)
 
         # test parameters & defaults
-        assert callable(dataset.download), "{}.download is not callable".format(
-            dataset_name
-        )
+        assert callable(dataset.download), "{}.download is not callable".format(dataset_name)
         params = signature(dataset.download).parameters
 
         expected_params = [
@@ -186,13 +174,9 @@ def test_download(mocker, httpserver):
                 url = dataset.remotes[key].url
                 try:
                     request = requests.head(url)
-                    assert request.ok, "Link {} for {} does not return OK".format(
-                        url, dataset_name
-                    )
+                    assert request.ok, "Link {} for {} does not return OK".format(url, dataset_name)
                 except requests.exceptions.ConnectionError:
-                    assert False, "Link {} for {} is unreachable".format(
-                        url, dataset_name
-                    )
+                    assert False, "Link {} for {} is unreachable".format(url, dataset_name)
                 except:
                     assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
         else:
@@ -253,9 +237,7 @@ def test_load_and_trackids(httpserver):
             track_ids = dataset.track_ids
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-        assert type(track_ids) is list, "{}.track_ids() should return a list".format(
-            dataset_name
-        )
+        assert type(track_ids) is list, "{}.track_ids() should return a list".format(dataset_name)
         trackid_len = len(track_ids)
         # if the dataset has tracks, test the loaders
         if dataset._track_object is not None:
@@ -266,18 +248,16 @@ def test_load_and_trackids(httpserver):
                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
             assert isinstance(
                 choice_track, core.Track
-            ), "{}.choice_track must return an instance of type core.Track".format(
-                dataset_name
-            )
+            ), "{}.choice_track must return an instance of type core.Track".format(dataset_name)
 
             try:
                 dataset_data = dataset.load_tracks()
             except:
                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
-            assert (
-                type(dataset_data) is dict
-            ), "{}.load should return a dictionary".format(dataset_name)
+            assert type(dataset_data) is dict, "{}.load should return a dictionary".format(
+                dataset_name
+            )
             assert (
                 len(dataset_data.keys()) == trackid_len
             ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
@@ -289,9 +269,9 @@ def test_load_and_trackids(httpserver):
             except:
                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
-            assert (
-                type(dataset_data_default) is dict
-            ), "{}.load should return a dictionary".format(dataset_name)
+            assert type(dataset_data_default) is dict, "{}.load should return a dictionary".format(
+                dataset_name
+            )
             assert (
                 len(dataset_data_default.keys()) == trackid_len
             ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
@@ -349,9 +329,9 @@ def test_track(httpserver):
             track_test, core.Track
         ), "{}.track must be an instance of type core.Track".format(dataset_name)
 
-        assert hasattr(
-            track_test, "to_jams"
-        ), "{}.track must have a to_jams method".format(dataset_name)
+        assert hasattr(track_test, "to_jams"), "{}.track must have a to_jams method".format(
+            dataset_name
+        )
 
         # Validate JSON schema
         try:
@@ -415,9 +395,7 @@ def test_load_methods(httpserver):
             dataset = module.Dataset(index=remote_index)
 
         all_methods = dir(dataset)
-        load_methods = [
-            getattr(dataset, m) for m in all_methods if m.startswith("load_")
-        ]
+        load_methods = [getattr(dataset, m) for m in all_methods if m.startswith("load_")]
         for load_method in load_methods:
             method_name = load_method.__name__
 
@@ -430,12 +408,14 @@ def test_load_methods(httpserver):
                 continue
 
             if load_method.__doc__ is None:
-                raise ValueError("{} has no documentation".format(method_name))
+                raise ValueError(
+                    "mirdata.datasets.{}.Dataset.{} has no documentation".format(
+                        dataset_name, method_name
+                    )
+                )
 
             params = [
-                p
-                for p in signature(load_method).parameters.values()
-                if p.default == inspect._empty
+                p for p in signature(load_method).parameters.values() if p.default == inspect._empty
             ]  # get list of parameters that don't have defaults
 
             # add to the EXCEPTIONS dictionary above if your load_* function needs
@@ -487,13 +467,11 @@ def test_multitracks(httpserver):
 
         assert isinstance(
             mtrack_test, core.MultiTrack
-        ), "{}.MultiTrack must be an instance of type core.MultiTrack".format(
+        ), "{}.MultiTrack must be an instance of type core.MultiTrack".format(dataset_name)
+
+        assert hasattr(mtrack_test, "to_jams"), "{}.MultiTrack must have a to_jams method".format(
             dataset_name
         )
-
-        assert hasattr(
-            mtrack_test, "to_jams"
-        ), "{}.MultiTrack must have a to_jams method".format(dataset_name)
 
         # Validate JSON schema
         try:
