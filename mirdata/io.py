@@ -22,6 +22,7 @@ def coerce_to_string_io(
                 type(file_path_or_obj),
             )
 
+    wrapper.__doc__ = func.__doc__
     return wrapper
 
 
@@ -43,4 +44,5 @@ def coerce_to_bytes_io(
                 type(file_path_or_obj),
             )
 
+    wrapper.__doc__ = func.__doc__
     return wrapper
