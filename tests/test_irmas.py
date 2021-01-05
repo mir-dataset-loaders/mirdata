@@ -45,7 +45,7 @@ def test_track():
     audio, sr = track.audio
     assert sr == 44100
     assert len(audio) == 2
-    assert len(audio[1, :]) == 882000
+    assert len(audio[1, :]) == 88200
 
 
 def test_to_jams():
