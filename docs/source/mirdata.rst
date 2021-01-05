@@ -1,7 +1,7 @@
 .. _api:
 
 
-Dataset loaders
+Dataset Loaders
 ---------------
 
 acousticbrainz_genre
@@ -214,7 +214,7 @@ tonality_classicaldb
 Core
 ----
 
-..automodule:: mirdata.initialize
+.. automodule:: mirdata.initialize
    :members:
 
 .. automodule:: mirdata.core

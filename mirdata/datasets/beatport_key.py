@@ -1,21 +1,28 @@
 # -*- coding: utf-8 -*-
 """beatport_key Dataset Loader
-The Beatport EDM Key Dataset includes 1486 two-minute sound excerpts from various EDM
-subgenres, annotated with single-key labels, comments and confidence levels generously provided by Eduard Mas Marín,
-and thoroughly revised and expanded by Ángel Faraldo.
 
-The original audio samples belong to online audio snippets from Beatport, an online music store for DJ's and
-Electronic Dance Music Producers (<http:\\www.beatport.com>). If this dataset were used in further research,
-we would appreciate the citation of the current DOI (10.5281/zenodo.1101082) and the following doctoral dissertation,
-where a detailed description of the properties of this dataset can be found:
+.. admonition:: Dataset Info
+    :class: dropdown
 
-Ángel Faraldo (2017). Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed
-Examination. PhD Thesis. Universitat Pompeu Fabra, Barcelona.
+    The Beatport EDM Key Dataset includes 1486 two-minute sound excerpts from various EDM
+    subgenres, annotated with single-key labels, comments and confidence levels generously provided by Eduard Mas Marín,
+    and thoroughly revised and expanded by Ángel Faraldo.
 
-This dataset is mainly intended to assess the performance of computational key estimation algorithms in electronic
-dance music subgenres.
+    The original audio samples belong to online audio snippets from Beatport, an online music store for DJ's and
+    Electronic Dance Music Producers (<http:\\www.beatport.com>). If this dataset were used in further research,
+    we would appreciate the citation of the current DOI (10.5281/zenodo.1101082) and the following doctoral dissertation,
+    where a detailed description of the properties of this dataset can be found:
 
-Data License: Creative Commons Attribution Share Alike 4.0 International
+    .. code-block:: latex
+
+        Ángel Faraldo (2017). Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed
+        Examination. PhD Thesis. Universitat Pompeu Fabra, Barcelona.
+
+    This dataset is mainly intended to assess the performance of computational key estimation algorithms in electronic
+    dance music subgenres.
+
+    Data License: Creative Commons Attribution Share Alike 4.0 International
+
 """
 import csv
 import os
@@ -76,6 +83,12 @@ class Track(core.Track):
         metadata_path (str): sections annotation path
         title (str): title of the track
         track_id (str): track id
+    
+    Cached Properties:
+        key (list): list of annotated musical keys
+        artists (list): artists involved in the track
+        genre (dict): genres and subgenres
+        tempo (int): tempo in beats per minute
 
     """
 
@@ -100,31 +113,38 @@ class Track(core.Track):
 
     @core.cached_property
     def key(self):
-        """List of String: list of possible key annotations"""
         return load_key(self.keys_path)
 
     @core.cached_property
     def artists(self):
-        """Dict: artist annotation"""
         return load_artist(self.metadata_path)
 
     @core.cached_property
     def genres(self):
-        """Dict: genre annotation"""
         return load_genre(self.metadata_path)
 
     @core.cached_property
     def tempo(self):
-        """int: tempo beatports crowdsourced annotation"""
         return load_tempo(self.metadata_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             metadata={
@@ -144,8 +164,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -160,7 +180,7 @@ def load_key(keys_path):
         keys_path (str): path to key annotation file
 
     Returns:
-        (str): loaded key data
+        list: list of annotated keys
 
     """
     if keys_path is None:
@@ -185,7 +205,7 @@ def load_tempo(metadata_path):
         metadata_path (str): path to metadata annotation file
 
     Returns:
-        (str): loaded tempo data
+        str: tempo in beats per minute
 
     """
     if metadata_path is None:
@@ -207,7 +227,7 @@ def load_genre(metadata_path):
         metadata_path (str): path to metadata annotation file
 
     Returns:
-        (dict): with the list of strings with genres ['genres'] and list of strings with sub-genres ['sub_genres']
+        dict: with the list with genres ['genres'] and list with sub-genres ['sub_genres']
 
     """
     if metadata_path is None:
@@ -232,7 +252,7 @@ def load_artist(metadata_path):
         metadata_path (str): path to metadata annotation file
 
     Returns:
-        (list of strings): list of artists involved in the track.
+        list: list of artists involved in the track.
 
     """
     if metadata_path is None:

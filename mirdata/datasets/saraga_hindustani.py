@@ -1,26 +1,34 @@
 # -*- coding: utf-8 -*-
 """Saraga Dataset Loader
 
-This dataset contains time aligned melody, rhythm and structural annotations of Hindustani Music tracks, extracted
-from the large open Indian Art Music corpora of CompMusic.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The dataset contains the following manual annotations referring to audio files:
-Section and tempo annotations stored as start and end timestamps together with the name of the section and
-tempo during the section (in a separate file). Sama annotations referring to rhythmic cycle boundaries stored
-as timestamps. Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
-({S, r, R, g, G, m, M, P, d, D, n, N}). Audio features automatically extracted and stored: pitch and tonic.
-The annotations are stored in text files, named as the audio filename but with the respective extension at the
-end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
+    This dataset contains time aligned melody, rhythm and structural annotations of Hindustani Music tracks, extracted
+    from the large open Indian Art Music corpora of CompMusic.
 
-The dataset contains a total of 108 tracks.
+    The dataset contains the following manual annotations referring to audio files:
 
-The files of this dataset are shared with the following license:
-Creative Commons Attribution Non Commercial Share Alike 4.0 International
+    - Section and tempo annotations stored as start and end timestamps together with the name of the section and
+      tempo during the section (in a separate file) 
+    - Sama annotations referring to rhythmic cycle boundaries stored
+      as timestamps
+    - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
+      ({S, r, R, g, G, m, M, P, d, D, n, N})
+    - Audio features automatically extracted and stored: pitch and tonic.
+    - The annotations are stored in text files, named as the audio filename but with the respective extension at the
+      end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
 
-Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+    The dataset contains a total of 108 tracks.
 
-For more information about the dataset as well as IAM and annotations, please refer to:
-https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
+    The files of this dataset are shared with the following license:
+    Creative Commons Attribution Non Commercial Share Alike 4.0 International
+
+    Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+
+    For more information about the dataset as well as IAM and annotations, please refer to:
+    https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
+
 """
 
 import numpy as np
@@ -96,6 +104,15 @@ class Track(core.Track):
         works (list, dicts): list of dicts containing the work present in the piece, and its mbid
         taals (list, dicts): list of dicts containing the taals present in the track and its uuid
         layas (list, dicts): list of dicts containing the layas present in the track and its uuid
+
+    Cached Properties:
+        tonic (float): tonic annotation
+        pitch (F0Data): pitch annotation
+        tempo (dict): tempo annotations
+        sama (BeatData): Sama section annotations
+        sections (SectionData): track section annotations
+        phrases (EventData): phrase annotations
+
     """
 
     def __init__(self, track_id, data_home):
@@ -195,41 +212,46 @@ class Track(core.Track):
 
     @core.cached_property
     def tonic(self):
-        """Float: tonic annotation"""
         return load_tonic(self.ctonic_path)
 
     @core.cached_property
     def pitch(self):
-        """F0Data: pitch annotation"""
         return load_pitch(self.pitch_path)
 
     @core.cached_property
     def tempo(self):
-        """Dict: tempo annotations"""
         return load_tempo(self.tempo_path)
 
     @core.cached_property
     def sama(self):
-        """BeatData: sama section annotations"""
         return load_sama(self.sama_path)
 
     @core.cached_property
     def sections(self):
-        """SectionData: track section annotations"""
         return load_sections(self.sections_path)
 
     @core.cached_property
     def phrases(self):
-        """EventData: phrase annotations"""
         return load_phrases(self.phrases_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.sama, "sama")],
@@ -251,8 +273,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if audio_path is None:
@@ -271,7 +293,8 @@ def load_tonic(tonic_path):
             If `None`, returns None.
 
     Returns:
-        (int): Tonic annotation in Hz
+        int: Tonic annotation in Hz
+
     """
     if tonic_path is None:
         return None
@@ -296,6 +319,7 @@ def load_pitch(pitch_path):
 
     Returns:
         F0Data: pitch annotation
+
     """
     if pitch_path is None:
         return None
@@ -327,7 +351,8 @@ def load_tempo(tempo_path):
         tempo_path (str): Local path where the tempo annotation is stored.
 
     Returns:
-        (dict): Dictionary of tempo information with the following keys:
+        dict: 
+            Dictionary of tempo information with the following keys:
             * 'tempo': median tempo for the section in mātrās per minute (MPM)
             * 'matra_interval': tempo expressed as the duration of the mātra (essentially
               dividing 60 by tempo, expressed in seconds)
@@ -361,7 +386,7 @@ def load_tempo(tempo_path):
         reader = csv.reader(fhandle, delimiter=",")
         for line in reader:
 
-            if "NaN" in line:
+            if "NaN" in line or " NaN" in line or "NaN " in line:
                 return None
 
             # Store partial tempo information
@@ -417,7 +442,7 @@ def load_sama(sama_path):
             beat_times.append(float(line[0]))
             beat_positions.append(1)
 
-    if not beat_times:
+    if not beat_times or beat_times[0] == -1.:
         return None
 
     return annotations.BeatData(np.array(beat_times), np.array(beat_positions))

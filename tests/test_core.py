@@ -48,15 +48,6 @@ def test_track_repr():
     with pytest.raises(NotImplementedError):
         test_track.to_jams()
 
-    class NoDocsTrack(core.Track):
-        @property
-        def no_doc(self):
-            return "whee!"
-
-    bad_track = NoDocsTrack()
-    with pytest.raises(ValueError):
-        bad_track.__repr__()
-
 
 def test_dataset():
     dataset = mirdata.initialize("guitarset")

@@ -1,13 +1,20 @@
 # -*- coding: utf-8 -*-
 """GTZAN-Genre Dataset Loader
 
-This dataset was used for the well known paper in genre classification
-"Musical genre classification of audio signals " by G. Tzanetakis and
-P. Cook in IEEE Transactions on Audio and Speech Processing 2002.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The dataset consists of 1000 audio tracks each 30 seconds long. It
-contains 10 genres, each represented by 100 tracks. The tracks are all
-22050 Hz mono 16-bit audio files in .wav format.
+    This dataset was used for the well known genre classification paper:
+
+    .. code-block:: latex
+
+        "Musical genre classification of audio signals " by G. Tzanetakis and
+        P. Cook in IEEE Transactions on Audio and Speech Processing 2002.
+
+    The dataset consists of 1000 audio tracks each 30 seconds long. It
+    contains 10 genres, each represented by 100 tracks. The tracks are all
+    22050 Hz mono 16-bit audio files in .wav format.
+
 """
 
 import librosa
@@ -68,11 +75,22 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             tags_gtzan_data=[(self.genre, "gtzan-genre")],
             metadata={
@@ -92,8 +110,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):

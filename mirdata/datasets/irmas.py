@@ -1,87 +1,98 @@
 # -*- coding: utf-8 -*-
-
 """
 IRMAS Loader
 
-IRMAS: a dataset for instrument recognition in musical audio signals
+.. admonition:: Dataset Info
+    :class: dropdown
 
-This dataset includes musical audio excerpts with annotations of the predominant instrument(s) present.
-It was used for the evaluation in the following article:
-Bosch, J. J., Janer, J., Fuhrmann, F., & Herrera, P. “A Comparison of Sound Segregation Techniques for
-Predominant Instrument Recognition in Musical Audio Signals”, in Proc. ISMIR (pp. 559-564), 2012.
+    IRMAS: a dataset for instrument recognition in musical audio signals
 
-IRMAS is intended to be used for training and testing methods for the automatic recognition of predominant
-instruments in musical audio. The instruments considered are: cello, clarinet, flute, acoustic guitar,
-electric guitar, organ, piano, saxophone, trumpet, violin, and human singing voice.
-This dataset is derived from the one compiled by Ferdinand Fuhrmann in his PhD thesis, with the difference
-that we provide audio data in stereo format, the annotations in the testing dataset are limited to specific
-pitched instruments, and there is a different amount and lenght of excerpts from the original dataset.
+    This dataset includes musical audio excerpts with annotations of the predominant instrument(s) present.
+    It was used for the evaluation in the following article:
+
+    .. code-block:: latex
+
+        Bosch, J. J., Janer, J., Fuhrmann, F., & Herrera, P. “A Comparison of Sound Segregation Techniques for
+        Predominant Instrument Recognition in Musical Audio Signals”, in Proc. ISMIR (pp. 559-564), 2012.
+
+    IRMAS is intended to be used for training and testing methods for the automatic recognition of predominant
+    instruments in musical audio. The instruments considered are: cello, clarinet, flute, acoustic guitar,
+    electric guitar, organ, piano, saxophone, trumpet, violin, and human singing voice.
+    This dataset is derived from the one compiled by Ferdinand Fuhrmann in his PhD thesis, with the difference
+    that we provide audio data in stereo format, the annotations in the testing dataset are limited to specific
+    pitched instruments, and there is a different amount and lenght of excerpts from the original dataset.
 
 
-THE DATASET IS DIVIDED IN TRAINING AND TESTING DATA.
+    The dataset is split into training and test data.
 
-==> Training data:
+    **Training data**
 
-Total audio samples: 6705
-They are excerpts of 3 seconds from more than 2000 distinct recordings.
+    Total audio samples: 6705
+    They are excerpts of 3 seconds from more than 2000 distinct recordings.
 
-Audio specifications
+    Audio specifications
 
-* Sampling frequency: 44.1 kHz
-* Bit-depth: 16 bit
-* Audio format: .wav
+    * Sampling frequency: 44.1 kHz
+    * Bit-depth: 16 bit
+    * Audio format: .wav
 
-IRMAS Dataset trainig samples are annotated by storing the information of each track in their filenames.
-* Predominant instrument:
+    IRMAS Dataset trainig samples are annotated by storing the information of each track in their filenames.
 
-    * The annotation of the predominant instrument of each excerpt is both in the name of the containing
-      folder, and in the file name: cello (cel), clarinet (cla), flute (flu), acoustic guitar (gac),
-      electric guitar (gel), organ (org), piano (pia), saxophone (sax), trumpet (tru), violin (vio),
-      and human singing voice (voi).
-    * The number of files per instrument are: cel(388), cla(505), flu(451), gac(637), gel(760), org(682),
-      pia(721), sax(626), tru(577), vio(580), voi(778).
+    * Predominant instrument:
 
-* Drum presence
+        * The annotation of the predominant instrument of each excerpt is both in the name of the containing
+          folder, and in the file name: cello (cel), clarinet (cla), flute (flu), acoustic guitar (gac),
+          electric guitar (gel), organ (org), piano (pia), saxophone (sax), trumpet (tru), violin (vio),
+          and human singing voice (voi).
+        * The number of files per instrument are: cel(388), cla(505), flu(451), gac(637), gel(760), org(682),
+          pia(721), sax(626), tru(577), vio(580), voi(778).
 
-    * Additionally, some of the files have annotation in the filename regarding the presence ([dru])
-      or non presence([nod]) of drums.
+    * Drum presence
 
-* The annotation of the musical genre:
-    country-folk ([cou_fol]), classical ([cla]),
-    pop-rock ([pop_roc]), latin-soul ([lat_sou]), jazz-blues ([jaz_blu]).
-    The annotations appear in this order in the filenames.
+        * Additionally, some of the files have annotation in the filename regarding the presence ([dru])
+          or non presence([nod]) of drums.
 
-==> Testing data:
-Total audio samples: 2874
+    * The annotation of the musical genre:
 
-Audio specifications
+        * country-folk ([cou_fol])
+        * classical ([cla]),
+        * pop-rock ([pop_roc])
+        * latin-soul ([lat_sou])
+        * jazz-blues ([jaz_blu]).
 
-* Sampling frequency: 44.1 kHz
-* Bit-depth: 16 bit
-* Audio format: .wav
+    **Testing data**
 
-IRMAS Dataset testing samples are annotated by the following basis:
+    Total audio samples: 2874
 
-* Predominant instrument:
-    The annotations for an excerpt named: “excerptName.wav” are given in “excerptName.txt”. More than one
-    instrument may be annotated in each excerpt, one label per line. This part of the dataset contains excerpts
-    from a diversity of western musical genres, with varied instrumentations, and it is derived from the original
-    testing dataset from Fuhrmann (http://www.dtic.upf.edu/~ffuhrmann/PhD//).
-    Instrument nomenclatures are the same as the training dataset.
+    Audio specifications
 
-Dataset compiled by Juan J. Bosch, Ferdinand Fuhrmann, Perfecto Herrera,
-Music Technology Group - Universitat Pompeu Fabra (Barcelona).
+    * Sampling frequency: 44.1 kHz
+    * Bit-depth: 16 bit
+    * Audio format: .wav
 
-The IRMAS dataset is offered free of charge for non-commercial use only. You can not redistribute it nor modify it.
-This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+    IRMAS Dataset testing samples are annotated by the following basis:
 
-For more details, please visit: https://www.upf.edu/web/mtg/irmas
+    * Predominant instrument:
+
+        The annotations for an excerpt named: “excerptName.wav” are given in “excerptName.txt”. More than one
+        instrument may be annotated in each excerpt, one label per line. This part of the dataset contains excerpts
+        from a diversity of western musical genres, with varied instrumentations, and it is derived from the original
+        testing dataset from Fuhrmann (http://www.dtic.upf.edu/~ffuhrmann/PhD/).
+        Instrument nomenclatures are the same as the training dataset.
+
+    Dataset compiled by Juan J. Bosch, Ferdinand Fuhrmann, Perfecto Herrera,
+    Music Technology Group - Universitat Pompeu Fabra (Barcelona).
+
+    The IRMAS dataset is offered free of charge for non-commercial use only. You can not redistribute it nor modify it.
+    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+
+    For more details, please visit: https://www.upf.edu/web/mtg/irmas
 
 """
+import csv
 
 import os
 import librosa
-import csv
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -161,6 +172,10 @@ class Track(core.Track):
         train (bool): flag to identify if the track is from the training of the testing dataset
         genre (str): string containing the namecode of the genre of the track.
         drum (bool): flag to identify if the track contains drums or not.
+        
+    Cached Properties:
+        instrument (list): list of predominant instruments as str
+
     """
 
     def __init__(self, track_id, data_home):
@@ -221,7 +236,6 @@ class Track(core.Track):
 
     @core.cached_property
     def instrument(self):
-        """(list, string): predominant instrument"""
         if self.predominant_instrument is not None:
             return [self.predominant_instrument]
         else:
@@ -229,11 +243,22 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio signal
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """the track's data in jams format
+
+        Returns:
+            jams.JAMS: return track data in jam format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             metadata={
@@ -252,8 +277,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -265,9 +290,11 @@ def load_pred_inst(annotation_path):
     """Load predominant instrument of track
 
     Args:
-        annotation_path (str): Local path where the testing annotation is stored.
+        annotation_path (str): Local path where the test annotations are stored.
+
     Returns:
-        pred_inst (str): testing track predominant instrument(s) annotations
+        str: test track predominant instrument(s) annotations
+    
     """
     if annotation_path is None:
         return None
@@ -276,8 +303,8 @@ def load_pred_inst(annotation_path):
         raise IOError("annotation_path {} does not exist".format(annotation_path))
 
     pred_inst = []
-    with open(annotation_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=' ')
+    with open(annotation_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=" ")
         for line in reader:
             inst_code = line[0][:3]
             assert (

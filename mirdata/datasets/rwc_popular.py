@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """RWC Popular Dataset Loader
 
-The Popular Music Database consists of 100 songs — 20 songs with English lyrics
-performed in the style of popular music typical of songs on the American hit
-charts in the 1980s, and 80 songs with Japanese lyrics performed in the style of
-modern Japanese popular music typical of songs on the Japanese hit charts in
-the 1990s.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
+    The Popular Music Database consists of 100 songs — 20 songs with English lyrics
+    performed in the style of popular music typical of songs on the American hit
+    charts in the 1980s, and 80 songs with Japanese lyrics performed in the style of
+    modern Japanese popular music typical of songs on the Japanese hit charts in
+    the 1990s.
+
+    For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
+
 """
 import csv
 import logging
@@ -162,13 +166,19 @@ class Track(core.Track):
         instruments (str): List of used instruments
         piece_number (str): Piece number, [1-50]
         sections_path (str): path of the section annotation file
-        singer_information (str): TODO
+        singer_information (str): could be male, female or vocal group
         suffix (str): M01-M04
         tempo (str): Tempo of the track in BPM
         title (str): title
         track_id (str): track id
         track_number (str): CD track number
         voca_inst_path (str): path of the vocal/instrumental annotation file
+
+    Cached Properties:
+        sections (SectionData): human-labeled section annotation
+        beats (BeatData): human-labeled beat annotation
+        chords (ChordData): human-labeled chord annotation
+        vocal_instrument_activity (EventData): human-labeled vocal/instrument activity
 
     """
 
@@ -224,31 +234,38 @@ class Track(core.Track):
 
     @core.cached_property
     def sections(self):
-        """SectionData: human-labeled section annotation"""
         return load_sections(self.sections_path)
 
     @core.cached_property
     def beats(self):
-        """BeatData: human-labeled beat annotation"""
         return load_beats(self.beats_path)
 
     @core.cached_property
     def chords(self):
-        """ChordData: human-labeled chord annotation"""
         return load_chords(self.chords_path)
 
     @core.cached_property
     def vocal_instrument_activity(self):
-        """EventData: human-labeled vocal/instrument activity"""
         return load_vocal_activity(self.voca_inst_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.beats, None)],
@@ -265,7 +282,7 @@ def load_chords(chords_path):
         chords_path (str): path to chord annotation file
 
     Returns:
-        (annotations.ChordData): chord data
+        ChordData: chord data
 
     """
     if not os.path.exists(chords_path):
@@ -293,7 +310,7 @@ def load_vocal_activity(vocal_activity_path):
         vocal_activity_path (str): path to vocal activity annotation file
 
     Returns:
-        (annotations.EventData): vocal activity data
+        EventData: vocal activity data
 
     """
     if not os.path.exists(vocal_activity_path):

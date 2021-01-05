@@ -1,46 +1,50 @@
 # -*- coding: utf-8 -*-
 """Groove MIDI Loader
 
-The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
-synthesized audio of human-performed, tempo-aligned expressive drumming.
-The dataset contains 1,150 MIDI files and over 22,000 measures of drumming.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-To enable a wide range of experiments and encourage comparisons between methods
-on the same data, Gillick et al. created a new dataset of drum performances
-recorded in MIDI format. They hired professional drummers and asked them to
-perform in multiple styles to a click track on a Roland TD-11 electronic drum kit.
-They also recorded the aligned, high-quality synthesized audio from the TD-11 and
-include it in the release.
+    The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
+    synthesized audio of human-performed, tempo-aligned expressive drumming.
+    The dataset contains 1,150 MIDI files and over 22,000 measures of drumming.
 
-The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
-existing ones:
+    To enable a wide range of experiments and encourage comparisons between methods
+    on the same data, Gillick et al. created a new dataset of drum performances
+    recorded in MIDI format. They hired professional drummers and asked them to
+    perform in multiple styles to a click track on a Roland TD-11 electronic drum kit.
+    They also recorded the aligned, high-quality synthesized audio from the TD-11 and
+    include it in the release.
 
-* The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000
-  measures of drumming.
-* Each performance was played along with a metronome set at a specific tempo
-  by the drummer.
-* The data includes performances by a total of 10 drummers, with more than 80%
-  of duration coming from hired professionals. The professionals were able to
-  improvise in a wide range of styles, resulting in a diverse dataset.
-* The drummers were instructed to play a mix of long sequences (several minutes
-  of continuous playing) and short beats and fills.
-* Each performance is annotated with a genre (provided by the drummer), tempo,
-  and anonymized drummer ID.
-* Most of the performances are in 4/4 time, with a few examples from other time
-  signatures.
-* Four drummers were asked to record the same set of 10 beats in their own
-  style. These are included in the test set split, labeled eval-session/groove1-10.
-* In addition to the MIDI recordings that are the primary source of data for the
-  experiments in this work, the authors captured the synthesized audio outputs of
-  the drum set and aligned them to within 2ms of the corresponding MIDI files.
+    The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
+    existing ones:
 
-A train/validation/test split configuration is provided for easier comparison of
-model accuracy on various tasks.
+    * The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000
+      measures of drumming.
+    * Each performance was played along with a metronome set at a specific tempo
+      by the drummer.
+    * The data includes performances by a total of 10 drummers, with more than 80%
+      of duration coming from hired professionals. The professionals were able to
+      improvise in a wide range of styles, resulting in a diverse dataset.
+    * The drummers were instructed to play a mix of long sequences (several minutes
+      of continuous playing) and short beats and fills.
+    * Each performance is annotated with a genre (provided by the drummer), tempo,
+      and anonymized drummer ID.
+    * Most of the performances are in 4/4 time, with a few examples from other time
+      signatures.
+    * Four drummers were asked to record the same set of 10 beats in their own
+      style. These are included in the test set split, labeled eval-session/groove1-10.
+    * In addition to the MIDI recordings that are the primary source of data for the
+      experiments in this work, the authors captured the synthesized audio outputs of
+      the drum set and aligned them to within 2ms of the corresponding MIDI files.
 
-The dataset is made available by Google LLC under a Creative Commons
-Attribution 4.0 International (CC BY 4.0) License.
+    A train/validation/test split configuration is provided for easier comparison of
+    model accuracy on various tasks.
 
-For more details, please visit: http://magenta.tensorflow.org/datasets/groove
+    The dataset is made available by Google LLC under a Creative Commons
+    Attribution 4.0 International (CC BY 4.0) License.
+
+    For more details, please visit: http://magenta.tensorflow.org/datasets/groove
+
 """
 import csv
 import glob
@@ -239,7 +243,7 @@ class Track(core.Track):
         session (str): Type of session  (ex. 'session1', 'eval_session')
         track_id (str): track id of the track (ex. 'drummer1/eval_session/1')
         style (str): Style (genre, groove type) of the track (ex. 'funk/groove1')
-        tempo (int): Track tempo in beats per minute (ex. 138)
+        tempo (int): track tempo in beats per minute (ex. 138)
         beat_type (str): Whether the track is a beat or a fill (ex. 'beat')
         time_signature (str): Time signature of the track (ex. '4-4', '6-8')
         midi_path (str): Path to the midi file
@@ -247,6 +251,12 @@ class Track(core.Track):
         duration (float): Duration of the midi file in seconds
         split (str): Whether the track is for a train/valid/test set. One of
             'train', 'valid' or 'test'.
+
+    Cached Properties:
+        beats (BeatData): Machine-generated beat annotations
+        drum_events (EventData): Annotated drum kit events
+        midi (pretty_midi.PrettyMIDI): object containing MIDI information
+
     """
 
     def __init__(self, track_id, data_home):
@@ -296,26 +306,34 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     @core.cached_property
     def beats(self):
-        """BeatData: machine-generated beat annotation"""
         return load_beats(self.midi_path, self.midi)
 
     @core.cached_property
     def drum_events(self):
-        """EventData: annotated drum kit events"""
         return load_drum_events(self.midi_path, self.midi)
 
     @core.cached_property
     def midi(self):
-        """(obj): prettyMIDI obj"""
         return load_midi(self.midi_path)
 
     def to_jams(self):
-        # Initialize top-level JAMS container
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             beat_data=[(self.beats, "midi beats")],
             tempo_data=[(self.tempo, "midi tempo")],
@@ -331,8 +349,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if audio_path is None:
@@ -369,7 +387,7 @@ def load_beats(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        beat_data (annotations.BeatData)
+        annotations.BeatData: machine generated beat data
 
     """
     if midi is None:
@@ -390,7 +408,7 @@ def load_drum_events(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        drum_events (annotations.EventData)
+        annotations.EventData: drum event data
 
     """
     if midi is None:

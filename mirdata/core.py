@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""core mirdata classes
+"""Core mirdata classes
 """
 import json
 import os
@@ -17,10 +17,13 @@ MAX_STR_LEN = 100
 
 
 class cached_property(object):
-    """A property that is only computed once per instance and then replaces
-        itself with an ordinary attribute. Deleting the attribute resets the
-        property.
-        Source: https://github.com/bottlepy/bottle/commit/fa7733e075da0d790d809aa3d2f53071897e6f76
+    """Cached propery decorator
+    
+    A property that is only computed once per instance and then replaces
+    itself with an ordinary attribute. Deleting the attribute resets the
+    property.
+    Source: https://github.com/bottlepy/bottle/commit/fa7733e075da0d790d809aa3d2f53071897e6f76
+
     """
 
     def __init__(self, func):
@@ -77,7 +80,7 @@ class Dataset(object):
         bibtex (str): dataset citation/s in bibtex format
         remotes (dict): data to be downloaded
         download_info (str): download instructions or caveats
-        track (mirdata.core.Track): function that inputs a track_id
+        track (core.Track): an uninstantiated Track object
         readme (str): information about the dataset
 
     """
@@ -98,7 +101,7 @@ class Dataset(object):
             data_home (str or None): path where mirdata will look for the dataset
             index (dict or None): the dataset's file index
             name (str or None): the identifier of the dataset
-            track_object (mirdata.core.Track or None): the dataset's uninstantiated Track object
+            track_object (mirdata.core.Track or None): an uninstantiated Track object
             bibtex (str or None): dataset citation/s in bibtex format
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
@@ -135,7 +138,8 @@ class Dataset(object):
         """Get the default path for the dataset
 
         Returns:
-            default_path (str): Local path to the dataset
+            str: Local path to the dataset
+
         """
         mir_datasets_dir = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
         return os.path.join(mir_datasets_dir, self.name)
@@ -149,7 +153,8 @@ class Dataset(object):
             track_id (str): track id of the track
 
         Returns:
-            track (dataset.Track): an instance of this dataset's Track object
+           Track: an instance of this dataset's Track object
+
         """
         if self._track_object is None:
             raise NotImplementedError
@@ -160,10 +165,12 @@ class Dataset(object):
         """Load all tracks in the dataset
 
         Returns:
-            (dict): {`track_id`: track data}
+            dict: 
+                {`track_id`: track data}
 
         Raises:
             NotImplementedError: If the dataset does not support Track objects
+
         """
         return {track_id: self.track(track_id) for track_id in self.track_ids}
 
@@ -171,7 +178,8 @@ class Dataset(object):
         """Choose a random track
 
         Returns:
-            track (dataset.Track): a random Track object
+            Track: a Track object instantiated by a random track_id
+        
         """
         return self.track(random.choice(self.track_ids))
 
@@ -211,7 +219,8 @@ class Dataset(object):
         """Return track ids
 
         Returns:
-            (list): A list of track ids
+            list: A list of track ids
+
         """
         return list(self._index["tracks"].keys())
 
@@ -221,11 +230,9 @@ class Dataset(object):
         Args:
             verbose (bool): If False, don't print output
 
-        Returns:
-            missing_files (list): List of file paths that are in the dataset index
-                but missing locally
-            invalid_checksums (list): List of file paths that file exists in the dataset
-                index but has a different checksum compare to the reference checksum
+        Returns:        
+            * list - files in the index but are missing locally
+            * list - files which have an invalid checksum
 
         """
         missing_files, invalid_checksums = validate.validator(
@@ -236,6 +243,9 @@ class Dataset(object):
 
 class Track(object):
     """Track base class
+
+    See the docs for each dataset loader's Track class for details
+
     """
 
     def __repr__(self):
@@ -260,9 +270,11 @@ class Track(object):
                 continue
 
             if val.__doc__ is None:
-                raise ValueError("{} has no documentation".format(prop))
+                doc = ""
+            else:
+                doc = val.__doc__
 
-            val_type_str = val.__doc__.split(":")[0]
+            val_type_str = doc.split(":")[0]
             repr_str += "  {}: {},\n".format(prop, val_type_str)
 
         repr_str += ")"
@@ -301,7 +313,7 @@ class MultiTrack(Track):
                 of the longest track
 
         Returns:
-            target (np.ndarray): target audio with shape (n_channels, n_samples)
+            np.ndarray: target audio with shape (n_channels, n_samples)
 
         Raises:
             ValueError:
@@ -362,9 +374,9 @@ class MultiTrack(Track):
             max_weight (float): maximum possible weight when mixing
 
         Returns:
-            target (np.ndarray): mixture audio with shape (n_samples, n_channels)
-            tracks (list): list of keys of included tracks
-            weights (list): list of weights used to mix tracks
+            * np.ndarray - mixture audio with shape (n_samples, n_channels)
+            * list - list of keys of included tracks
+            * list - list of weights used to mix tracks
 
         """
         self._check_mixable()
@@ -383,7 +395,7 @@ class MultiTrack(Track):
             track_keys (list): list of track keys to mix together
 
         Returns:
-            target (np.ndarray): mixture audio with shape (n_samples, n_channels)
+            np.ndarray: mixture audio with shape (n_samples, n_channels)
 
         """
         self._check_mixable()
@@ -404,7 +416,7 @@ def none_path_join(partial_path_list):
         partial_path_list (list): List of partial paths
 
     Returns:
-        path or None (str or None): joined path string or None
+        str or None: joined path string or None
 
     """
     if None in partial_path_list:
@@ -425,6 +437,9 @@ class LargeData(object):
                 If None, assume the dataset has no metadata. When the
                 `metadata` attribute is called, raises a NotImplementedError
 
+        Cached Properties:
+            index (dict): dataset index
+
         """
         self._metadata = None
         self.index_file = index_file
@@ -444,6 +459,18 @@ class LargeData(object):
         return load_json_index(self.index_file)
 
     def metadata(self, data_home):
+        """Dataset metadata
+
+        Args:
+            data_home (str): path where the dataset lives
+
+        Raises:
+            NotImplementedError: if self.metadata_load_fn is not set
+
+        Returns:
+            Object: data loaded by self.metadata_load_fn
+
+        """
         if self.metadata_load_fn is None:
             raise NotImplementedError
 
