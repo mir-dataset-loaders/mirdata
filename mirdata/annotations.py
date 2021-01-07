@@ -5,6 +5,8 @@ import numpy as np
 
 
 class Annotation(object):
+    """Annotation base class"""
+
     def __repr__(self):
         attributes = [v for v in dir(self) if not v.startswith("_")]
         repr_str = f"{self.__class__.__name__}({', '.join(attributes)})"

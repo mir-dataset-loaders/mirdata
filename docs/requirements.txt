@@ -1,3 +1,4 @@
+sphinx-togglebutton
 dali-dataset>=1.0
 jams
 librosa>=0.7.0

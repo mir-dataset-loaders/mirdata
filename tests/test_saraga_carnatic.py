@@ -476,6 +476,12 @@ def test_load_sama():
     assert np.array_equal(parsed_sama.positions, np.array([1, 1, 1]))
     assert saraga_carnatic.load_sama(None) is None
 
+    track = saraga_carnatic.Track("117_Karuna_Nidhi_Illalo", data_home=data_home)
+    parsed_sama = track.sama
+    assert parsed_sama is None
+
+
+
 
 def test_load_sections():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"

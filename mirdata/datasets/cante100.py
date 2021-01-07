@@ -2,39 +2,47 @@
 """
 cante100 Loader
 
-The cante100 dataset contains 100 tracks taken from the COFLA corpus. We defined 10 style
-families of which 10 tracks each are included. Apart from the style family, we manually
-annotated the sections of the track in which the vocals are present. In addition, we
-provide a number of low-level descriptors and the fundamental frequency corresponding to
-the predominant melody for each track. The meta-information includes editoral meta-data
-and the musicBrainz ID.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-Total tracks: 100
+    The cante100 dataset contains 100 tracks taken from the COFLA corpus. We defined 10 style
+    families of which 10 tracks each are included. Apart from the style family, we manually
+    annotated the sections of the track in which the vocals are present. In addition, we
+    provide a number of low-level descriptors and the fundamental frequency corresponding to
+    the predominant melody for each track. The meta-information includes editoral meta-data
+    and the musicBrainz ID.
 
-cante100 audio is only available upon request. To download the audio request access in
-this link: https://zenodo.org/record/1324183. Then
-unzip the audio into the cante100 general dataset folder for the rest of annotations
-and files.
+    Total tracks: 100
 
-Audio specifications
-* Sampling frequency: 44.1 kHz
-* Bit-depth: 16 bit
-* Audio format: .mp3
+    cante100 audio is only available upon request. To download the audio request access in
+    this link: https://zenodo.org/record/1324183. Then
+    unzip the audio into the cante100 general dataset folder for the rest of annotations
+    and files.
 
-cante100 dataset has spectrogram available, in csv format. spectrogram is available to download
-without request needed, so at first instance, cante100 loader uses the spectrogram of the tracks.
+    Audio specifications:
 
-The available annotations are:
-- F0 (predominant melody)
-- Automatic transcription of notes (of singing voice)
+    - Sampling frequency: 44.1 kHz
+    - Bit-depth: 16 bit
+    - Audio format: .mp3
 
-CANTE100 LICENSE COPIED FROM ZENODO PAGE:
-The provided datasets are offered free of charge for internal non-commercial use.
-We do not grant any rights for redistribution or modification. All data collections were gathered
-by the COFLA team.
-© COFLA 2015. All rights reserved.
+    cante100 dataset has spectrogram available, in csv format. spectrogram is available to download
+    without request needed, so at first instance, cante100 loader uses the spectrogram of the tracks.
 
-For more details, please visit: http://www.cofla-project.com/?page_id=134
+    The available annotations are:
+
+    - F0 (predominant melody)
+    - Automatic transcription of notes (of singing voice)
+
+    CANTE100 LICENSE (COPIED FROM ZENODO PAGE)
+
+    .. code-block:: latex
+
+        The provided datasets are offered free of charge for internal non-commercial use.
+        We do not grant any rights for redistribution or modification. All data collections were gathered
+        by the COFLA team.
+        © COFLA 2015. All rights reserved.
+
+    For more details, please visit: http://www.cofla-project.com/?page_id=134
 
 """
 import csv
@@ -221,6 +229,11 @@ class Track(core.Track):
         title (str): title of the track song
         release (str): release where the track can be found
         duration (str): duration in seconds of the track
+    
+    Cached Properties:
+        melody (F0Data): annotated melody
+        notes (NoteData): annotated notes
+
     """
 
     def __init__(self, track_id, data_home):
@@ -259,26 +272,39 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     @property
     def spectrogram(self):
-        """(np.ndarray, float): spectrogram"""
+        """spectrogram of The track's audio
+
+        Returns:
+            (np.ndarray): spectrogram
+        """
         return load_spectrogram(self.spectrogram_path)
 
     @core.cached_property
     def melody(self):
-        """F0Data: audio signal, sample rate"""
         return load_melody(self.f0_path)
 
     @core.cached_property
     def notes(self):
-        """NoteData: audio signal, sample rate"""
         return load_notes(self.notes_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             spectrogram_path=self.spectrogram_path,
@@ -295,7 +321,7 @@ def load_spectrogram(spectrogram_path):
         spectrogram_path (str): path to audio file
 
     Returns:
-        np.array: spectrogram
+        np.ndarray: spectrogram
 
     """
     if not os.path.exists(spectrogram_path):
@@ -313,8 +339,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
