@@ -4,14 +4,36 @@
 Overview
 ########
 
+``mirdata`` is a library which aims to standardize how audio datasets are accessed in Python, 
+removing the need for writing custom loaders in every project, and improving reproducibility.
+Working with datasets usually requires an often cumbersome step of downloading data and writing 
+load functions that load related files (for example, audio and annotations)
+into a standard format to be used for experimenting or evaluating. ``mirdata`` does all of this for you:
 
-``mirdata`` works based on two main components: ``datasets loaders`` and ``indexes``. In general terms, a ``dataset loader`` contains customized code for working with the different elements of a dataset (audio, annotations, metadata); and an ``index`` has the information about the folder structure the dataset should have and the checksums of its different elements, and is used to load and validate them.
+.. code-block:: Python
 
+    import mirdata
 
-All ``datasets loaders`` have the following functionalities: ``readme()``, ``cite()``, ``download()``, ``validate()``. Besides these common functionalities, each ``dataset loader`` has its own functions and attributes depending on the nature of the dataset. For example, most datasets consist of a collection
-of ``tracks``, then most ``dataset loaders`` will have a ``Track`` attribute. Moreover, depending on the type of ``annotation`` the dataset has, the track will have different
-attributes such as ``beats`` or ``chords``. When the annotations are ``time-series``, they have their own ``mirdata`` ``data-type``. If the annotations are static over the whole track, they are included as ``metadata``. See the :ref:`tutorial` for a detail explanation on how to interact with the library.
+    tinysol = mirdata.initialize('tinysol')
+    tinysol.download()
 
+    # get annotations and audio for a random track
+    example_track = tinysol.choice_track()
+    instrument = example_track.instrument_full
+    pitch = example_track.pitch
+    y, sr = example_track.audio
+
+``mirdata`` loaders contain methods to:
+
+- ``download()``: download (or give instructions to download) a dataset
+- ``load_*()``: load a dataset's files (audio, metadata, annotations, etc.) into standard formats, so you don't have to write them yourself
+  which are compatible with ``mir_eval`` and ``jams``.
+- ``validate()``: validate that a dataset is complete and correct
+- ``cite()``: quickly print a dataset's relevant citation
+- access ``track`` and ``multitrack`` objects for grouping multiple annotations for a particular track/multitrack
+- and more
+
+See the :ref:`tutorial` for a detailed explanation of how to get started using this library.
 
 
 mirdata design principles
@@ -20,46 +42,38 @@ mirdata design principles
 Ease of use and contribution
 ----------------------------
 
-We designed ``mirdata`` to be easy to use and easy to contribute to. ``mirdata`` simplifies the research pipeline considerably, facilitating research in a wider diversity of tasks and musical datasets.
-We provide detailed examples on how to interact with the library in the :ref:`tutorial`, as well as detail explanation on
-how to contribute in :ref:`contributing`. Additionally, we have a `repository of Jupyter notebooks <https://github.com/mir-dataset-loaders/mirdata-notebooks>`_ with usage
+We designed ``mirdata`` to be easy to use and easy to contribute to. ``mirdata`` simplifies the research pipeline considerably, 
+facilitating research in a wider diversity of tasks and musical datasets. We provide detailed examples on how to interact with 
+the library in the :ref:`tutorial`, as well as detail explanation on how to contribute in :ref:`contributing`. Additionally, 
+we have a `repository of Jupyter notebooks <https://github.com/mir-dataset-loaders/mirdata-notebooks>`_ with usage
 examples of the different datasets.
 
 
 Reproducibility
 ---------------
 
-We hope that ``mirdata`` will increase research reproducibility by giving a common framework for MIR researchers to compare and validate their data.
-If mistakes are found in annotations or audio versions change, using ``mirdata`` the community can fix those mistakes while still being able
-to compare methods moving forward. We hope the library will also contribute to fair comparisons within algorithms making sure the data is the same.
-
+We aim for ``mirdata`` to aid in increasing research reproducibility by providing a common framework for MIR researchers to 
+compare and validate their data. If mistakes are found in annotations or audio versions change, using ``mirdata``, the community 
+can fix mistakes while still being able to compare methods moving forward.
 
 .. _canonical version:
 
-canonical version
+canonical versions
 ^^^^^^^^^^^^^^^^^^
-The ``dataset loaders`` in ``mirdata`` are written for what we call the ``canonical version`` of a dataset. Whenever possible, this should be the official release of the dataset as published by the dataset creator/s.
-When this is not possible, (e.g. for data that is no longer available), the procedure we follow is to find as many copies of the data as possible from different researchers (at least 4), and use the most common one.
-To make this process transparent, when there are doubts about the data consistency we open an `issue <https://github.com/mir-dataset-loaders/mirdata/issues>`_ and leave it to the community to discuss what to use.
-
+The ``dataset loaders`` in ``mirdata`` are written for what we call the ``canonical version`` of a dataset. Whenever possible, 
+this should be the official release of the dataset as published by the dataset creator/s. When this is not possible, (e.g. for 
+data that is no longer available), the procedure we follow is to find as many copies of the data as possible from different researchers 
+(at least 4), and use the most common one. To make this process transparent, when there are doubts about the data consistency we open an 
+`issue <https://github.com/mir-dataset-loaders/mirdata/issues>`_ and leave it to the community to discuss what to use.
 
 
 Standardization
 ---------------
 
-Different datasets have different annotations, metadata, etc. We try to respect the idiosyncrasy of each dataset as much as we can. For that
-reason, ``tracks`` in different ``dataset loaders`` in ``mirdata`` have different attributes, e.g. some may have ``artist`` and some may not.
-However there are some elements that are common in `most` datasets, and in those cases we standarize them to increase the usability of the library.
+Different datasets have different annotations, metadata, etc. We try to respect the idiosyncracies of each dataset as much as we can. For this
+reason, ``tracks`` in each ``Dataset`` in ``mirdata`` have different attributes, e.g. some may have ``artist`` information and some may not.
+However there are some elements that are common in most datasets, and in these cases we standarize them to increase the usability of the library.
 Some examples of this are the annotations in ``mirdata``, e.g. ``BeatData``.
-
-
-..
-    .. _dataset_loaders:
-
-    dataset loaders
-    ###############
-
-
 
 
 .. _indexes:
@@ -67,138 +81,68 @@ Some examples of this are the annotations in ``mirdata``, e.g. ``BeatData``.
 indexes
 #######
 
+Indexes in `mirdata` are manifests of the files in a dataset and their corresponding md5 checksums.
+Specifically, an index is a json file with the mandatory top-level key ``version`` and at least one of the optional
+top-level keys ``metadata``, ``tracks``, ``multitracks`` or ``records``. An index might look like:
 
-The ``index`` is a json file with the mandatory top-level key ``version`` and at least one of the optional
-top-level keys ``tracks``, ``multitracks`` or ``records``, explained below. The index can also optionally have the top-level
-key ``metadata``, but it is not required. Scripts used to create the dataset indexes are in the `scripts <https://github.com/mir-dataset-loaders/mirdata/tree/master/scripts>`_ folder.
 
-``version`` should have a string with the version of the dataset
-(e.g. "1.0.0") or `null` if the version is unclear. `metadata` should contain a dictionary where keys are all files
-that contain the metadata of the dataset, and the values are lists with the path to the metadata and the md5 checksum.
-Such an index would look like this:
+.. admonition:: Example Index
+    :class: dropdown
 
-.. code-block:: javascript
+    .. code-block:: javascript
 
-    {   "version": "1.0.0",
-        "metadata": {
-            "metadata_file_1": [
-                    // the relative path for metadata_file_1
-                    "path_to_metadata/metadata_file_1.csv",
-                    // metadata_file_1 md5 checksum
-                    "bb8b0ca866fc2423edde01325d6e34f7"
-                ],
-            "metadata_file_2": [
-                    // the relative path for metadata_file_2
-                    "path_to_metadata/metadata_file_2.csv",
-                    // metadata_file_2 md5 checksum
-                    "6cce186ce77a06541cdb9f0a671afb46"
-                ]
-            }
-    }
+        {   "version": "1.0.0",
+            "metadata": {
+                "metadata_file_1": [
+                        // the relative path for metadata_file_1
+                        "path_to_metadata/metadata_file_1.csv",
+                        // metadata_file_1 md5 checksum
+                        "bb8b0ca866fc2423edde01325d6e34f7"
+                    ],
+                "metadata_file_2": [
+                        // the relative path for metadata_file_2
+                        "path_to_metadata/metadata_file_2.csv",
+                        // metadata_file_2 md5 checksum
+                        "6cce186ce77a06541cdb9f0a671afb46"
+                    ]
+                }
+            "tracks": {
+                "track1": {
+                    'audio': ["audio_files/track1.wav", "6c77777ce77a06541cdb9f0a671afb46"],
+                    'beats': ["annotations/track1.beats.csv", "ab8b0ca866fc2423edde01325d6e34f7"],
+                    'sections': ["annotations/track1.sections.txt", "05abeca866fc2423edde01325d6e34f7"],
+                }
+                "track2": {
+                    'audio': ["audio_files/track2.wav", "6c77777ce77a06542cdb9f0a672afb46"],
+                    'beats': ["annotations/track2.beats.csv", "ab8b0ca866fc2423edde02325d6e34f7"],
+                    'sections': ["annotations/track2.sections.txt", "05abeca866fc2423edde02325d6e34f7"],
+                }
+                ...
+                }
+        }
 
 
 The optional top-level keys (`tracks`, `multitracks` and `records`) relate to different organizations of music datasets.
-`tracks` should be used when the dataset is organized as a collection of individual tracks, namely
-mono or multi-channel audio, spectrograms only, and their respective annotations. `multitracks` should be used in the
-case that the dataset comprises multitracks, that is different groups of tracks related to each other. Finally, `records`
-should be used when the dataset consits of groups of tables, as many recommendation datasets do.
+`tracks` are used when a dataset is organized as a collection of individual tracks, namely mono or multi-channel audio, 
+spectrograms only, and their respective annotations. `multitracks` are used in when a dataset comprises of
+multitracks - different groups of tracks which are directly related to each other. Finally, `records` are used when a dataset 
+consits of groups of tables (e.g. relational databases), as many recommendation datasets do.
 
-tracks
-------
+See the contributing docs :ref:`create_index` for more information about mirdata indexes.
 
-Most MIR datasets are organized as a collection of tracks and annotations. In such case, the index should make use of the ``tracks``
-top-level key. A dictionary should be stored under the ``tracks`` top-level key where the keys are the unique track ids of the dataset. The values should be a dictionary of files associated with
-the track id, along with their checksums. These files could be for instance audio files or annotations related to the track id.
-Any file path included should be relative to the top level directory of the dataset.
+.. annotations:
 
-For example, if the version `1.0` of a given dataset has the structure:
+annotations
+###########
 
-.. code-block:: javascript
+.. admonition:: TODO
+    :class: dropdown, warning
 
-    > Example_Dataset/
-        > audio/
-            track1.wav
-            track2.wav
-            track3.wav
-        > annotations/
-            track1.csv
-            Track2.csv
-            track3.csv
-        > metadata/
-            metadata_file.csv
-
-The top level directory is ``Example_Dataset`` and the relative path for ``track1.wav``
-should be ``audio/track1.wav``. Any unavailable field should be indicated with `null`. A possible index file for this example would be:
-
-.. code-block:: javascript
-
-
-    {   "version": "1.0",
-        "tracks":
-            "track1": {
-                "audio": [
-                    "audio/track1.wav",  // the relative path for track1's audio file
-                    "912ec803b2ce49e4a541068d495ab570"  // track1.wav's md5 checksum
-                ],
-                "annotation": [
-                    "annotations/track1.csv",  // the relative path for track1's annotation
-                    "2cf33591c3b28b382668952e236cccd5"  // track1.csv's md5 checksum
-                ]
-            },
-            "track2": {
-                "audio": [
-                    "audio/track2.wav",
-                    "65d671ec9787b32cfb7e33188be32ff7"
-                ],
-                "annotation": [
-                    "annotations/Track2.csv",
-                    "e1964798cfe86e914af895f8d0291812"
-                ]
-            },
-            "track3": {
-                "audio": [
-                    "audio/track3.wav",
-                    "60edeb51dc4041c47c031c4bfb456b76"
-                ],
-                "annotation": [
-                    "annotations/track3.csv",
-                    "06cb006cc7b61de6be6361ff904654b3"
-                ]
-            },
-        }
-      "metadata": {
-            "metadata_file": [
-                "metadata/metadata_file.csv",
-                "7a41b280c7b74e2ddac5184708f9525b"
-            ]
-      }
-    }
-
-
-.. note::
-    In this example there is a (purposeful) mismatch between the name of the audio file ``track2.wav`` and its corresponding annotation file, ``Track2.csv``, compared with the other pairs. This mismatch should be included in the index. This type of slight difference in filenames happens often in publicly available datasets, making pairing audio and annotation files more difficult. We use a fixed, version-controlled index to account for this kind of mismatch, rather than relying on string parsing on load.
-
-
-multitracks
------------
-
-We are still defining the structure of this ones, to be updated soon!
-
-
-records
--------
-
-We are still defining the structure of this ones, to be updated soon!
-
-
-..
-    Annotations
-    -----------
-
-    jams and mir_eval compatibility
+    Coming soon
 
 
 metadata
 ########
 
-When available, we provide extensive and easy-to-access ``metadata`` to facilitate track metadata-specific analysis. ``metadata`` is available as attroibutes at the ``track`` level, e.g. ``track.artist``.
+When available, we provide extensive and easy-to-access ``metadata`` to facilitate track metadata-specific analysis. 
+``metadata`` is available as attroibutes at the ``track`` level, e.g. ``track.artist``.

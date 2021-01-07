@@ -1,35 +1,45 @@
 # -*- coding: utf-8 -*-
 """RWC Jazz Dataset Loader.
 
-The Jazz Music Database consists of 50 pieces:
+.. admonition:: Dataset Info
+    :class: dropdown
 
-**Instrumentation variations:** 35 pieces (5 pieces × 7 instrumentations).
-The instrumentation-variation pieces were recorded to obtain different versions
-of the same piece; i.e., different arrangements performed by different player
-instrumentations. Five standard-style jazz pieces were originally composed
-and then performed in modern-jazz style using the following seven instrumentations:
-1. Piano solo
-2. Guitar solo
-3. Duo: Vibraphone + Piano, Flute + Piano, and Piano + Bass
-4. Piano trio: Piano + Bass + Drums
-5. Piano trio + Trumpet or Tenor saxophone
-6. Octet: Piano trio + Guitar + Alto saxophone + Baritone saxophone + Tenor saxophone × 2
-7. Piano trio + Vibraphone or Flute
+    The Jazz Music Database consists of 50 pieces:
 
-**Style variations:** 9 pieces
-The style-variation pieces were recorded to represent various styles of jazz.
-They include four well-known public-domain pieces and consist of
-1. Vocal jazz: 2 pieces (including "Aura Lee")
-2. Big band jazz: 2 pieces (including "The Entertainer")
-3. Modal jazz: 2 pieces
-4. Funky jazz: 2 pieces (including "Silent Night")
-5. Free jazz: 1 piece (including "Joyful, Joyful, We Adore Thee")
-Fusion (crossover): 6 pieces
-The fusion pieces were recorded to obtain music that combines elements of jazz
-with other styles such as popular, rock, and latin. They include music with an
-eighth-note feel, music with a sixteenth-note feel, and Latin jazz music.
+    - **Instrumentation variations:** 35 pieces (5 pieces × 7 instrumentations).
 
-For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html
+        The instrumentation-variation pieces were recorded to obtain different versions
+        of the same piece; i.e., different arrangements performed by different player
+        instrumentations. Five standard-style jazz pieces were originally composed
+        and then performed in modern-jazz style using the following seven instrumentations:
+
+        1. Piano solo
+        2. Guitar solo
+        3. Duo: Vibraphone + Piano, Flute + Piano, and Piano + Bass
+        4. Piano trio: Piano + Bass + Drums
+        5. Piano trio + Trumpet or Tenor saxophone
+        6. Octet: Piano trio + Guitar + Alto saxophone + Baritone saxophone + Tenor saxophone × 2
+        7. Piano trio + Vibraphone or Flute
+
+    - **Style variations:** 9 pieces
+
+        The style-variation pieces were recorded to represent various styles of jazz.
+        They include four well-known public-domain pieces and consist of
+        
+        1. Vocal jazz: 2 pieces (including "Aura Lee")
+        2. Big band jazz: 2 pieces (including "The Entertainer")
+        3. Modal jazz: 2 pieces
+        4. Funky jazz: 2 pieces (including "Silent Night")
+        5. Free jazz: 1 piece (including "Joyful, Joyful, We Adore Thee")
+
+    - **Fusion (crossover):** 6 pieces
+
+        The fusion pieces were recorded to obtain music that combines elements of jazz
+        with other styles such as popular, rock, and latin. They include music with an
+        eighth-note feel, music with a sixteenth-note feel, and Latin jazz music.
+
+    For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html
+
 """
 import csv
 import logging
@@ -152,7 +162,11 @@ class Track(core.Track):
         title (str): Title of The track.
         track_id (str): track id
         track_number (str): CD track number of this Track
-        variation (str): TODO
+        variation (str):  style variations
+
+    Cached Properties:
+        sections (SectionData): human-labeled section data
+        beats (BeatData): human-labeled beat data
 
     """
 
@@ -197,21 +211,30 @@ class Track(core.Track):
 
     @core.cached_property
     def sections(self):
-        """SectionData: human-labeled section data"""
         return load_sections(self.sections_path)
 
     @core.cached_property
     def beats(self):
-        """BeatData: human-labeled beat data"""
         return load_beats(self.beats_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.beats, None)],
