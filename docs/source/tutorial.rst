@@ -70,7 +70,7 @@ The ``download()`` functions allows to partially download a dataset. In other wo
 select which elements of the dataset they want to download. Each dataset has a ``REMOTES`` dictionary were all
 the available elements are listed.
 
-cante100 has different elements as seen in the ``REMOTES`` dictionary. Thus, we can specify which of these elements are
+``cante100`` has different elements as seen in the ``REMOTES`` dictionary. Thus, we can specify which of these elements are
 downloaded, by passing to the ``download()`` function the list of keys in ``REMOTES`` that we are interested in. This
 list is passed to the ``download()`` function through the ``partial_download`` variable.
 
@@ -109,7 +109,7 @@ list is passed to the ``download()`` function through the ``partial_download`` v
         ),
     }
 
-An partial download example for cante100 dataset could be:
+An partial download example for ``cante100`` dataset could be:
 
 .. code-block:: python
 
@@ -176,8 +176,8 @@ Alternatively, we don't need to load the whole dataset to get a single track.
     example_melody = orchset.track(orchset_ids[0]).melody  # Get melody from first track in the index
 
 
-Accessing annotations remotely
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Accessing audio and annotations remotely
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Annotations can also be accessed through ``load_*()`` methods in case, for instance, that your data don't live locally
 but in a remote path. If you specify the path where to find the annotation, you can use the module's loading functions directly. Let's
@@ -227,7 +227,7 @@ all the loaders, and keep compatibility with `JAMS <https://jams.readthedocs.io/
 
 The list and descriptions of available annotation classes can be found `in this link <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.annotations>`_.
 
-**These classes are extendable in case a certain loader requires it.**
+.. note:: These classes are extendable in case a certain loader requires it.
 
 Iterating over datasets and annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -255,12 +255,15 @@ Alternatively, we can run over the ``track_ids`` list to access directly to each
 Working with remote index
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For the end user there is no difference between the remote and local indexes.
+For the end user there is no difference between the remote and local indexes. However, indexes can get really large when there are a lot of tracks
+in the dataset. For that reason, sometimes storing and accessing an index remotely can be really convenient.
 
-However, to extend the library you have to add in utils.LargeData(...) the remote_index argument with a
-download_utils.RemoteFileMetadata dictionary with the remote index information.
+However, to contribute to the library using remote indexes you have to add in ``utils.LargeData(...)`` the remote_index argument with a
+``download_utils.RemoteFileMetadata`` dictionary with the remote index information.
 
-DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+.. code-block:: python
+    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+
 
 .. code-block:: python
 
@@ -275,17 +278,11 @@ DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_IN
     DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
 
 
-Working with big datasets
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In the development of large datasets, it is advisable to create an index as small as possible to develop
-the new dataset and pass the tests.
-
 
 Basic example: including mirdata in your pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If we wanted to use Orchset to evaluate the performance of a melody extraction algorithm
+If we wanted to use ``orchset`` to evaluate the performance of a melody extraction algorithm
 (in our case, ``very_bad_melody_extractor``), and then split the scores based on the
 metadata, we could do the following:
 
