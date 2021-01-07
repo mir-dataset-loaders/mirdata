@@ -53,7 +53,9 @@ If you are using the library for your work, please cite the version you used as 
 
 DOI
 
-If you refer to mirdata's design principles, motivation etc., please cite the following [paper](https://magdalenafuentes.github.io/publications/2019_ISMIR_mirdata.pdf):
+If you refer to mirdata's design principles, motivation etc., please cite the following [paper](https://zenodo.org/record/3527750#.X-Inp5NKhUI):
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3527750.svg)](https://doi.org/10.5281/zenodo.3527750)
 
 ```
 "mirdata: Software for Reproducible Usage of Datasets"
