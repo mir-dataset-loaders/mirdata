@@ -76,11 +76,13 @@ class Dataset(object):
 
     Attributes:
         data_home (str): path where mirdata will look for the dataset
+        index (dict or None): the dataset's file index
         name (str): the identifier of the dataset
-        bibtex (str): dataset citation/s in bibtex format
-        remotes (dict): data to be downloaded
-        download_info (str): download instructions or caveats
-        track (core.Track): an uninstantiated Track object
+        track_object (mirdata.core.Track or None): an uninstantiated Track object
+        bibtex (str or None): dataset citation/s in bibtex format
+        remotes (dict or None): data to be downloaded
+        download_info (str or None): download instructions or caveats
+        license_info (str or None): license of the dataset
         readme (str): information about the dataset
 
     """
@@ -94,6 +96,7 @@ class Dataset(object):
         bibtex=None,
         remotes=None,
         download_info=None,
+        license_info=None,
     ):
         """Dataset init method
 
@@ -105,6 +108,7 @@ class Dataset(object):
             bibtex (str or None): dataset citation/s in bibtex format
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
+            license_info (str or None): license of the dataset
 
         """
         self.name = name
@@ -114,6 +118,7 @@ class Dataset(object):
         self.bibtex = bibtex
         self.remotes = remotes
         self._download_info = download_info
+        self._license_info = license_info
 
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
@@ -187,6 +192,19 @@ class Dataset(object):
         """Print the reference"""
         print("========== BibTeX ==========")
         print(self.bibtex)
+
+    def license(self):
+        """Print the license"""
+        print("========== License ==========")
+        print(self._license_info)
+        print(""" 
+        ******************************************************************************************
+        DISCLAIMER: mirdata is a software package with its own license which is independent from
+        the datasets' ones. We don't take any responsibility for possible inaccuracies in the 
+        licenses' information provided in mirdata. It is the user's responsibility to respect the 
+        dataset's license.
+        ******************************************************************************************
+        """)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=True):
         """Download data to `save_dir` and optionally print a message.
