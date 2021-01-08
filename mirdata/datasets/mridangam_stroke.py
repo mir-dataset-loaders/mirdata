@@ -90,6 +90,8 @@ STROKE_DICT = {
 
 TONIC_DICT = {"B", "C", "C#", "D", "D#", "E"}
 
+LICENSE_INFO = "Creative Commons Attribution 3.0 Unported (CC BY 3.0) License."
+
 
 class Track(core.Track):
     """Mridangam Stroke track class
@@ -183,6 +185,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

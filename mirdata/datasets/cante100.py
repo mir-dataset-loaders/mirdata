@@ -137,6 +137,12 @@ DOWNLOAD_INFO = """
         Remember to locate the cante100 folder to {}
 """
 
+LICENSE_INFO = """
+The provided datasets are offered free of charge for internal non-commercial use.
+We do not grant any rights for redistribution or modification. All data collections
+were gathered by the COFLA team.
+COFLA 2015. All rights reserved.
+"""
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, "cante100Meta.xml")
@@ -422,6 +428,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

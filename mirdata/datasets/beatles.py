@@ -50,6 +50,8 @@ DOWNLOAD_INFO = """
     and copy the Beatles folder to {}
 """
 
+LICENSE_INFO = "Unfortunately we couldn't find the license information for the Beatles dataset."
+
 
 class Track(core.Track):
     """Beatles track class
@@ -317,6 +319,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

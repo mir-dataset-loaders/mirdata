@@ -57,6 +57,7 @@ from mirdata.datasets.rwc_classical import (
     load_sections,
     load_audio,
     _duration_to_sec,
+    LICENSE_INFO
 )
 
 BIBTEX = """@inproceedings{goto2002rwc,
@@ -257,6 +258,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

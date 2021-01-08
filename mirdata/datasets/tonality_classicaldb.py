@@ -89,6 +89,7 @@ DOWNLOAD_INFO = """
 """
 DATA = core.LargeData("tonality_classicaldb_index.json")
 
+LICENSE_INFO = "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 
 class Track(core.Track):
     """tonality_classicaldb track class
@@ -296,6 +297,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

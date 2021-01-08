@@ -68,6 +68,8 @@ REMOTES = {
     )
 }
 
+LICENSE_INFO = "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+
 
 def _load_metadata(metadata_path):
     if not os.path.exists(metadata_path):
@@ -541,6 +543,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

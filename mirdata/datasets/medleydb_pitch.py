@@ -47,6 +47,8 @@ DOWNLOAD_INFO = """
     {}
 """
 
+LICENSE_INFO = "http://creativecommons.org/licenses/by-nc-sa/4.0/."
+
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, "medleydb_pitch_metadata.json")
@@ -204,6 +206,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

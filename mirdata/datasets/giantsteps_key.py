@@ -71,6 +71,8 @@ REMOTES = {
 
 DATA = core.LargeData("giantsteps_key_index.json")
 
+LICENSE_INFO = "Creative Commons Attribution Share Alike 4.0 International."
+
 
 class Track(core.Track):
     """giantsteps_key track class
@@ -278,6 +280,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

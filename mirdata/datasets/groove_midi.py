@@ -75,6 +75,8 @@ REMOTES = {
     )
 }
 
+LICENSE_INFO = "Creative Commons Attribution 4.0 International (CC BY 4.0) License."
+
 DRUM_MAPPING = {
     36: {"Roland": "Kick", "General MIDI": "Bass Drum 1", "Simplified": "Bass (36)"},
     38: {
@@ -438,6 +440,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

@@ -157,6 +157,7 @@ INST_DICT = [
 
 GENRE_DICT = ["cou_fol", "cla", "pop_roc", "lat_sou", "jaz_blu"]
 
+LICENSE_INFO = "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License."
 
 class Track(core.Track):
     """IRMAS track class
@@ -328,6 +329,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

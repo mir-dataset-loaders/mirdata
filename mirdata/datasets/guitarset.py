@@ -112,6 +112,8 @@ _STYLE_DICT = {
 _GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
 DATA = core.LargeData("guitarset_index.json")
 
+LICENSE_INFO = "MIT License."
+
 
 class Track(core.Track):
     """guitarset Track class
@@ -439,6 +441,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)
