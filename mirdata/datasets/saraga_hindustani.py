@@ -442,7 +442,7 @@ def load_sama(sama_path):
             beat_times.append(float(line[0]))
             beat_positions.append(1)
 
-    if not beat_times or beat_times[0] == -1.:
+    if not beat_times or beat_times[0] == -1.0:
         return None
 
     return annotations.BeatData(np.array(beat_times), np.array(beat_positions))

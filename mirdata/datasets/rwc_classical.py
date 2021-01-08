@@ -289,6 +289,9 @@ def load_sections(sections_path):
             ends.append(float(line[1]) / 100.0)
             secs.append(line[2])
 
+    if not begs:  # some files are empty
+        return None
+
     return annotations.SectionData(np.array([begs, ends]).T, secs)
 
 

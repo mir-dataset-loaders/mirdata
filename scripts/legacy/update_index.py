@@ -23,7 +23,7 @@ import os
 import json
 import mirdata
 from tqdm import tqdm
-from mirdata.utils import md5
+from mirdata.validate import md5
 
 INDEXES_PATH = "../../mirdata/datasets/indexes/"
 ALL_INDEXES = os.listdir(INDEXES_PATH)
@@ -224,17 +224,17 @@ def test_track_load(dataset_names):
 
 
 def main():
-
-    print(DATASETS)
+    DATASETS = ["rwc_classical"]
+    ALL_INDEXES = ["rwc_classical_index.json"]
     # Download metadata from all datasets for computing metadata checksums
     for module in DATASETS:
         if module not in ["dali", "beatles", "groove_midi"]:
             dataset = mirdata.initialize(module)
-            if dataset._remotes is not None:
+            if dataset.remotes is not None:
                 dataset.download(
                     partial_download=[
-                        "metadata" if "metadata" in dataset._remotes else key
-                        for key in dataset._remotes
+                        "metadata" if "metadata" in dataset.remotes else key
+                        for key in dataset.remotes
                         if key is not "audio"
                         and "training" not in key
                         and "testing" not in key
