@@ -12,7 +12,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple, Union
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
