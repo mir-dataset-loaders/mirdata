@@ -73,6 +73,9 @@ in International Society for Music Information Retrieval (ISMIR) Conference, 201
 }
 ```
 
+When working with datasets, please cite the version of `mirdata` that you are using (given by the `DOI` above) **AND** include the reference of the dataset,
+which can be found in the respective dataset loader using the `cite()` method. 
+
 ### Contributing a new dataset loader
 
 We welcome contributions to this library, especially new datasets. Please see [contributing](https://mirdata.readthedocs.io/en/latest/source/contributing.html) for guidelines.

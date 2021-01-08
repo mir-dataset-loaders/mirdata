@@ -34,6 +34,9 @@ If you refer to mirdata's design principles, motivation etc., please cite the fo
     "mirdata: Software for Reproducible Usage of Datasets."
     In Proceedings of the 20th International Society for Music Information Retrieval (ISMIR) Conference, 2019.:
 
+When working with datasets, please cite the version of ``mirdata`` that you are using (given by the ``DOI`` above)
+**AND** include the reference of the dataset, which can be found in the respective dataset loader using the ``cite()`` method.
+
 
 Contributing to mirdata
 -----------------------
