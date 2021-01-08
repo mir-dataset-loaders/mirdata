@@ -221,4 +221,3 @@ def validator(dataset_index, data_home, verbose=True):
         log_message("-" * 20, verbose)
 
     return missing_files, invalid_checksums
-

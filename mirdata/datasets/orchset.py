@@ -350,4 +350,3 @@ class Dataset(core.Dataset):
             shutil.move(fpath, self.data_home)
         if os.path.exists(duplicated_orchset_dir):
             shutil.rmtree(duplicated_orchset_dir)
-

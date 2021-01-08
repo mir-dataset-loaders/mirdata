@@ -5,7 +5,7 @@ import json
 import os
 import csv
 
-RWC_CLASSICAL_INDEX_PATH = "../mirdata/indexes/rwc_classical_index.json"
+RWC_CLASSICAL_INDEX_PATH = "../mirdata/datasets/indexes/rwc_classical_index.json"
 
 
 def md5(file_path):
@@ -29,9 +29,9 @@ def md5(file_path):
 
 
 def make_rwc_classical_index(data_path):
-    annotations_dir = os.path.join(data_path, 'RWC-Classical', 'annotations')
-    metadata_dir = os.path.join(data_path, 'RWC-Classical', 'metadata-master')
-    audio_dir = os.path.join(data_path, 'RWC-Classical', 'audio')
+    annotations_dir = os.path.join(data_path, 'rwc_classical', 'annotations')
+    metadata_dir = os.path.join(data_path, 'rwc_classical', 'metadata-master')
+    audio_dir = os.path.join(data_path, 'rwc_classical', 'audio')
     annotations_files = os.listdir(
         os.path.join(annotations_dir, 'AIST.RWC-MDB-C-2001.CHORUS')
     )
@@ -72,16 +72,11 @@ def make_rwc_classical_index(data_path):
         annot_rels = []
 
         for f in ['CHORUS', 'BEAT']:
-            if os.path.exists(
-                os.path.join(
-                    annotations_dir,
-                    'AIST.RWC-MDB-C-2001.{}'.format(f),
-                    '{}.{}.TXT'.format(track_id, f),
-                )
-            ):
+            if os.path.exists(os.path.join(annotations_dir,
+                              'AIST.RWC-MDB-C-2001.{}'.format(f),
+                              '{}.{}.TXT'.format(track_id, f),)):
                 annot_checksum.append(
-                    md5(
-                        os.path.join(
+                    md5(os.path.join(
                             annotations_dir,
                             'AIST.RWC-MDB-C-2001.{}'.format(f),
                             '{}.{}.TXT'.format(track_id, f),
@@ -99,7 +94,7 @@ def make_rwc_classical_index(data_path):
                 annot_checksum.append(None)
                 annot_rels.append(None)
 
-        rwc_classical_index[track_id[:7]] = {
+        rwc_classical_index[track_id] = {
             'audio': (
                 os.path.join('audio', audio_folder, "{}.wav".format(audio_track)),
                 audio_checksum,

@@ -101,6 +101,16 @@ def test_load_sections():
     assert np.array_equal(section_data.intervals[:, 1], np.array([46.14, 433.71]))
     assert np.array_equal(section_data.labels, np.array(["chorus A", "ending"]))
 
+    # empty file
+    section_path = (
+            "tests/resources/mir_datasets/rwc_classical/"
+            + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C025_A.CHORUS.TXT"
+    )
+
+    section_data = rwc_classical.load_sections(section_path)
+
+    assert section_data == None
+
 
 def test_position_in_bar():
     positions1 = np.array([48, 384, 48, 384, 48, 384, 48, 384])
