@@ -91,9 +91,9 @@ class Dataset(object):
         download_info (str or None): download instructions or caveats
         license_info (str or None): license of the dataset
         readme (str): information about the dataset
-        track (function): a function which inputs a track_id (str) and 
+        track (function): a function which inputs a track_id (str) and
             returns (mirdata.core.Track or None)
-        
+
     """
 
     def __init__(
