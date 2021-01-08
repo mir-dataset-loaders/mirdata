@@ -4,8 +4,7 @@ import json
 import os
 
 
-beatport_key_INDEX_PATH = '../../mirdata/datasets/indexes/beatport_key_index.json'
-BEATLES_ANNOTATION_SCHEMA = ['JAMS']
+beatport_key_INDEX_PATH = '../mirdata/datasets/indexes/beatport_key_index.json'
 
 
 def md5(file_path):
