@@ -284,6 +284,22 @@ We've added one extra convenience flag for this test, for getting the tests runn
 
 which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually all pass without this flag.
 
+.. _working_big_datasets:
+
+Working with big datasets
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the development of large datasets, it is advisable to create an index as small as possible to optimize the implementation process
+of the dataset loader and pass the tests.
+
+.. _reducing_test_space:
+
+Reducing the testing space usage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We are trying to keep the test resources folder size as small as possible, because it can get really heavy as new loaders are added. We
+kindly ask the contributors to reduce the size of the testing data if possible (e.g. trimming the audio tracks, keeping just two rows for
+csv files).
 
 
 .. _submit_loader:
