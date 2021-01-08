@@ -13,4 +13,4 @@ DATASETS = [
     )
 ]
 
-from .initialize import initialize
+from .initialize import initialize, list_datasets

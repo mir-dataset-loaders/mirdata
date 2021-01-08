@@ -5,6 +5,15 @@ import importlib
 from mirdata import DATASETS
 
 
+def list_datasets():
+    """Get a list of all mirdata dataset names
+
+    Returns:
+        list: list of dataset names as strings
+    """
+    return DATASETS
+
+
 def initialize(dataset_name, data_home=None):
     """Load a mirdata dataset by name
 
@@ -33,3 +42,4 @@ def initialize(dataset_name, data_home=None):
 
     module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
     return module.Dataset(data_home=data_home)
+
