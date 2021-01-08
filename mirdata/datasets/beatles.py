@@ -147,11 +147,11 @@ def load_audio(faudio: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
     """Load a Beatles audio file.
 
     Args:
-        faudio (str or file-like): path or file-like object pointing to an audio file
+        faudio: path or file-like object pointing to an audio file
 
     Returns:
-        * np.ndarray - the mono audio signal
-        * float - The sample rate of the audio file
+        np.ndarray - the mono audio signal
+        float - The sample rate of the audio file
 
     """
     return librosa.load(faudio, sr=None, mono=True)
@@ -162,7 +162,7 @@ def load_beats(fbeats: TextIO) -> annotations.BeatData:
     """Load Beatles format beat data from a file
 
     Args:
-        fbeats (str or file-like): path or file-like object pointing to a beat annotation file
+        fbeats: path or file-like object pointing to a beat annotation file
 
     Returns:
         BeatData: loaded beat data
@@ -190,7 +190,7 @@ def load_chords(fchords: TextIO) -> annotations.ChordData:
     """Load Beatles format chord data from a file
 
     Args:
-        fchords (str or file-like): path or file-like object pointing to a chord annotation file
+        fchords: path or file-like object pointing to a chord annotation file
 
     Returns:
         ChordData: loaded chord data
@@ -213,7 +213,7 @@ def load_key(fkeys: TextIO) -> annotations.KeyData:
     """Load Beatles format key data from a file
 
     Args:
-        fkeys (str or file-like): path or file-like object pointing to a key annotation file
+        fkeys: path or file-like object pointing to a key annotation file
 
     Returns:
         KeyData: loaded key data
@@ -235,7 +235,7 @@ def load_sections(fsections: TextIO) -> annotations.SectionData:
     """Load Beatles format section data from a file
 
     Args:
-        fsections (str or file-like): path or file-like object pointing to a section annotation file
+        fsections: path or file-like object pointing to a section annotation file
 
     Returns:
         SectionData: loaded section data
