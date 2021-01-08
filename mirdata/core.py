@@ -115,7 +115,7 @@ class Dataset(object):
         self.bibtex = bibtex
         self.remotes = remotes
         self._download_info = download_info
-        self.readme = "{}/#module-mirdata.datasets.{}".format(DOCS_URL, self.name)
+        self.readme = "{}#module-mirdata.datasets.{}".format(DOCS_URL, self.name)
 
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
