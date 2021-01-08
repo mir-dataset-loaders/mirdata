@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.0.0",
   "tracks": {
     "1": {
       "audio": [
@@ -563,7 +563,7 @@
     },
     "41": {
       "audio": [
-        "audio/1190980 Andrew Spencer, The Vamprockerz - Zombie 2k10 (Andr\u251c\u2310 Picar Remix Edit).mp3",
+        "audio/1190980 Andrew Spencer, The Vamprockerz - Zombie 2k10 (Andr\u00e9 Picar Remix Edit).mp3",
         "7c16a21a57f8d845a5e75d28110962ab"
       ],
       "meta": [
@@ -571,7 +571,7 @@
         null
       ],
       "key": [
-        "keys/1190980 Andrew Spencer, The Vamprockerz - Zombie 2k10 (Andr\u251c\u2310 Picar Remix Edit).txt",
+        "keys/1190980 Andrew Spencer, The Vamprockerz - Zombie 2k10 (Andr\u00e9 Picar Remix Edit).txt",
         "0762d200c9da95f239d731f77c7a914b"
       ]
     },
@@ -1739,7 +1739,7 @@
     },
     "125": {
       "audio": [
-        "audio/1544667 Smoof - Deja Vu (Nina Divorc\u251c\u2310 Remix).mp3",
+        "audio/1544667 Smoof - Deja Vu (Nina Divorc\u00e9 Remix).mp3",
         "6482bbaff140dd980b880d41da6d8d98"
       ],
       "meta": [
@@ -1747,7 +1747,7 @@
         null
       ],
       "key": [
-        "keys/1544667 Smoof - Deja Vu (Nina Divorc\u251c\u2310 Remix).txt",
+        "keys/1544667 Smoof - Deja Vu (Nina Divorc\u00e9 Remix).txt",
         "734a549313f86931cc26e0ebfe288eed"
       ]
     },
@@ -4119,7 +4119,7 @@
     },
     "295": {
       "audio": [
-        "audio/287952 SL2 - On A Ragga Tip \u0393\u00c7\u00ff97 (Original Mix).mp3",
+        "audio/287952 SL2 - On A Ragga Tip \u201897 (Original Mix).mp3",
         "5cb1b7272bbb0cb7288c22e19c721636"
       ],
       "meta": [
@@ -4127,7 +4127,7 @@
         null
       ],
       "key": [
-        "keys/287952 SL2 - On A Ragga Tip \u0393\u00c7\u00ff97 (Original Mix).txt",
+        "keys/287952 SL2 - On A Ragga Tip \u201897 (Original Mix).txt",
         "4cb131ba56a45e07aba554da78ae5109"
       ]
     },
@@ -5267,15 +5267,15 @@
     },
     "377": {
       "audio": [
-        "audio/297506 Forteba - I\u0393\u00c7\u00d6ll Never Die (Original Mix).mp3",
+        "audio/297506 Forteba - I\u2019ll Never Die (Original Mix).mp3",
         "6df2fed1afca435f8ef02d602cd8e796"
       ],
       "meta": [
-        "meta/297506 Forteba - I\u0393\u00c7\u00d6ll Never Die (Original Mix).json",
+        "meta/297506 Forteba - I\u2019ll Never Die (Original Mix).json",
         "2f38bc136348ab57d23a2a8f2544d023"
       ],
       "key": [
-        "keys/297506 Forteba - I\u0393\u00c7\u00d6ll Never Die (Original Mix).txt",
+        "keys/297506 Forteba - I\u2019ll Never Die (Original Mix).txt",
         "7890d2e6c8fa7ff42faf206eba52feec"
       ]
     },
@@ -6611,21 +6611,21 @@
     },
     "473": {
       "audio": [
-        "audio/298080 Atnarko - Don\u0393\u00c7\u00d6t Ya Know (Original Mix).mp3",
+        "audio/298080 Atnarko - Don\u2019t Ya Know (Original Mix).mp3",
         "6ad6992e19029b7c56f133f8752815d0"
       ],
       "meta": [
-        "meta/298080 Atnarko - Don\u0393\u00c7\u00d6t Ya Know (Original Mix).json",
+        "meta/298080 Atnarko - Don\u2019t Ya Know (Original Mix).json",
         "737f8c364c0040480145276bc04fea88"
       ],
       "key": [
-        "keys/298080 Atnarko - Don\u0393\u00c7\u00d6t Ya Know (Original Mix).txt",
+        "keys/298080 Atnarko - Don\u2019t Ya Know (Original Mix).txt",
         "7086957917b2ef588b31169e6b7deef3"
       ]
     },
     "474": {
       "audio": [
-        "audio/298082 Atnarko - Don\u0393\u00c7\u00d6t Ya Know (Jimpster Remix).mp3",
+        "audio/298082 Atnarko - Don\u2019t Ya Know (Jimpster Remix).mp3",
         "d1a418a08a410cf658d9fd73a163137b"
       ],
       "meta": [
@@ -6633,7 +6633,7 @@
         null
       ],
       "key": [
-        "keys/298082 Atnarko - Don\u0393\u00c7\u00d6t Ya Know (Jimpster Remix).txt",
+        "keys/298082 Atnarko - Don\u2019t Ya Know (Jimpster Remix).txt",
         "f2a340b8b1d3014391122e7a73620657"
       ]
     },
@@ -6947,7 +6947,7 @@
     },
     "497": {
       "audio": [
-        "audio/298332 Quentin Harris - U Don\u251c\u00f3\u0393\u00e9\u00bc\u0393\u00e4\u00f3t Know feat. Cordell McClary (Big Room Mix).mp3",
+        "audio/298332 Quentin Harris - U Don\u00e2\u20ac\u2122t Know feat. Cordell McClary (Big Room Mix).mp3",
         "180cc01ea1d8a1cbeed3137a449f122c"
       ],
       "meta": [
@@ -6955,7 +6955,7 @@
         null
       ],
       "key": [
-        "keys/298332 Quentin Harris - U Don\u251c\u00f3\u0393\u00e9\u00bc\u0393\u00e4\u00f3t Know feat. Cordell McClary (Big Room Mix).txt",
+        "keys/298332 Quentin Harris - U Don\u00e2\u20ac\u2122t Know feat. Cordell McClary (Big Room Mix).txt",
         "9ab051cf45588e2b8620aabf7a633dee"
       ]
     },
@@ -9551,7 +9551,7 @@
     },
     "683": {
       "audio": [
-        "audio/3014758 Ramon, Miguel Valbuena, DJ Pinas - B\u251c\u2551scame Feat. Layla (Original Extended Version).mp3",
+        "audio/3014758 Ramon, Miguel Valbuena, DJ Pinas - B\u00fascame Feat. Layla (Original Extended Version).mp3",
         "b3808ee0d6b81ce46c4543251966c0d0"
       ],
       "meta": [
@@ -9559,7 +9559,7 @@
         null
       ],
       "key": [
-        "keys/3014758 Ramon, Miguel Valbuena, DJ Pinas - B\u251c\u2551scame Feat. Layla (Original Extended Version).txt",
+        "keys/3014758 Ramon, Miguel Valbuena, DJ Pinas - B\u00fascame Feat. Layla (Original Extended Version).txt",
         "4a6ab28b0e0f8ecf574d13056fbd92bb"
       ]
     },
@@ -11357,7 +11357,7 @@
     },
     "812": {
       "audio": [
-        "audio/367369 Midnight Society - That\u0393\u00c7\u00d6s It feat. Corbo & Mirage (Midnight Society & Corbo Mix).mp3",
+        "audio/367369 Midnight Society - That\u2019s It feat. Corbo & Mirage (Midnight Society & Corbo Mix).mp3",
         "613db4964971645cf17cfb45f3b3cf2e"
       ],
       "meta": [
@@ -11365,7 +11365,7 @@
         null
       ],
       "key": [
-        "keys/367369 Midnight Society - That\u0393\u00c7\u00d6s It feat. Corbo & Mirage (Midnight Society & Corbo Mix).txt",
+        "keys/367369 Midnight Society - That\u2019s It feat. Corbo & Mirage (Midnight Society & Corbo Mix).txt",
         "863ee8cdaefc09f152e9469eec8eff1f"
       ]
     },
@@ -11917,15 +11917,15 @@
     },
     "852": {
       "audio": [
-        "audio/3865255 G\u251c\u255dnter Schickert - Wanderer (Original Mix).mp3",
+        "audio/3865255 G\u00fcnter Schickert - Wanderer (Original Mix).mp3",
         "e805a4dd680c8e619f3c1843dcf14c61"
       ],
       "meta": [
-        "meta/3865255 G\u251c\u255dnter Schickert - Wanderer (Original Mix).json",
+        "meta/3865255 G\u00fcnter Schickert - Wanderer (Original Mix).json",
         "6e2393f92b888b2968431f472d3d27f1"
       ],
       "key": [
-        "keys/3865255 G\u251c\u255dnter Schickert - Wanderer (Original Mix).txt",
+        "keys/3865255 G\u00fcnter Schickert - Wanderer (Original Mix).txt",
         "9ab051cf45588e2b8620aabf7a633dee"
       ]
     },
@@ -13289,7 +13289,7 @@
     },
     "950": {
       "audio": [
-        "audio/4340765 Stephanie O\u252c\u2524 Hara - Everlasting Love (Original Mix).mp3",
+        "audio/4340765 Stephanie O\u00b4 Hara - Everlasting Love (Original Mix).mp3",
         "a69447e11338cdee0e37041edcb2bfd7"
       ],
       "meta": [
@@ -13297,7 +13297,7 @@
         null
       ],
       "key": [
-        "keys/4340765 Stephanie O\u252c\u2524 Hara - Everlasting Love (Original Mix).txt",
+        "keys/4340765 Stephanie O\u00b4 Hara - Everlasting Love (Original Mix).txt",
         "a1cb7dc964eed1e35ee4294c5b7f8e74"
       ]
     },
@@ -17909,15 +17909,15 @@
     },
     "1280": {
       "audio": [
-        "audio/6086331 Urselle - What\u252c\u2524s Up (Original Mix).mp3",
+        "audio/6086331 Urselle - What\u00b4s Up (Original Mix).mp3",
         "e6a349098afee308cc8f876b145841df"
       ],
       "meta": [
-        "meta/6086331 Urselle - What\u252c\u2524s Up (Original Mix).json",
+        "meta/6086331 Urselle - What\u00b4s Up (Original Mix).json",
         "a8fa5b767aad598555f692d1006cc8d9"
       ],
       "key": [
-        "keys/6086331 Urselle - What\u252c\u2524s Up (Original Mix).txt",
+        "keys/6086331 Urselle - What\u00b4s Up (Original Mix).txt",
         "3fd804d25d5c04221601ac1905a51b8c"
       ]
     },
@@ -18217,7 +18217,7 @@
     },
     "1302": {
       "audio": [
-        "audio/617609 R\u251c\u2310el Carter - Des Regards (Original Mix).mp3",
+        "audio/617609 R\u00e9el Carter - Des Regards (Original Mix).mp3",
         "940f3a2020f77b65b7de4f8888c8e3ba"
       ],
       "meta": [
@@ -18225,7 +18225,7 @@
         null
       ],
       "key": [
-        "keys/617609 R\u251c\u2310el Carter - Des Regards (Original Mix).txt",
+        "keys/617609 R\u00e9el Carter - Des Regards (Original Mix).txt",
         "db3aa0a4d753803e64a63236cbc63f61"
       ]
     },
