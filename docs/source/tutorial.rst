@@ -38,6 +38,26 @@ Usage
 
     import mirdata
 
+
+Initializing a dataset
+^^^^^^^^^^^^^^^^^^^^^^
+
+Print a list of all availalbe dataset loaders by calling:
+
+.. code-block:: python
+
+    import mirdata
+    print(mirdata.list_datasets())
+
+To use a loader, (for example, 'orchset') you need to initialize it by calling:
+
+.. code-block:: python
+
+    import mirdata
+    orchset = mirdata.initialize('orchset')
+
+Now `orchset` is a `Dataset` object contianing common methods, described below.
+
 Downloading a dataset
 ^^^^^^^^^^^^^^^^^^^^^
 

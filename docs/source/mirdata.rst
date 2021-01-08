@@ -4,11 +4,9 @@
 Initializing
 ------------
 
-.. automodule:: mirdata.initialize
-   :members:
+.. autofunction:: mirdata.initialize
 
-.. automodule:: mirdata.list_datasets
-   :members:
+.. autofunction:: mirdata.list_datasets
 
 
 Dataset Loaders
