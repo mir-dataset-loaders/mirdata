@@ -1,6 +1,5 @@
 """mirdata annotation data types
 """
-from typing import BinaryIO, Optional, TextIO, Tuple, Union
 import numpy as np
 
 
@@ -42,7 +41,7 @@ class SectionData(Annotation):
             (as floats) in seconds in the form [start_time, end_time]
             times should be positive and intervals should have
             non-negative duration
-        labels (np.ndarray or None): list of labels (as strings)
+        labels (list or None): list of labels (as strings)
 
     """
 
