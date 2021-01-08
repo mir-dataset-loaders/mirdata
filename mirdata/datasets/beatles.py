@@ -90,10 +90,16 @@ class Track(core.Track):
 
         self._data_home = data_home
         self._track_paths = DATA.index["tracks"][track_id]
-        self.beats_path = core.none_path_join([self._data_home, self._track_paths["beat"][0]])
+        self.beats_path = core.none_path_join(
+            [self._data_home, self._track_paths["beat"][0]]
+        )
         self.chords_path = os.path.join(self._data_home, self._track_paths["chords"][0])
-        self.keys_path = core.none_path_join([self._data_home, self._track_paths["keys"][0]])
-        self.sections_path = os.path.join(self._data_home, self._track_paths["sections"][0])
+        self.keys_path = core.none_path_join(
+            [self._data_home, self._track_paths["keys"][0]]
+        )
+        self.sections_path = os.path.join(
+            self._data_home, self._track_paths["sections"][0]
+        )
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
         self.title = os.path.basename(self._track_paths["sections"][0]).split(".")[0]
@@ -119,8 +125,8 @@ class Track(core.Track):
         """The track's audio
 
         Returns:
-            np.ndarray: audio signal
-            float: sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -143,35 +149,35 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_audio(faudio: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Beatles audio file.
 
     Args:
-        faudio: path or file-like object pointing to an audio file
+        fhandle(str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        np.ndarray - the mono audio signal
-        float - The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
-    return librosa.load(faudio, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
-def load_beats(fbeats: TextIO) -> annotations.BeatData:
+def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load Beatles format beat data from a file
 
     Args:
-        fbeats: path or file-like object pointing to a beat annotation file
+        fhandle(str or file-like): path or file-like object pointing to a beat annotation file
 
     Returns:
         BeatData: loaded beat data
 
     """
     beat_times, beat_positions = [], []
-    dialect = csv.Sniffer().sniff(fbeats.read(1024))
-    fbeats.seek(0)
-    reader = csv.reader(fbeats, dialect)
+    dialect = csv.Sniffer().sniff(fhandle.read(1024))
+    fhandle.seek(0)
+    reader = csv.reader(fhandle, dialect)
     for line in reader:
         beat_times.append(float(line[0]))
         beat_positions.append(line[-1])
@@ -186,20 +192,20 @@ def load_beats(fbeats: TextIO) -> annotations.BeatData:
 
 
 @io.coerce_to_string_io
-def load_chords(fchords: TextIO) -> annotations.ChordData:
+def load_chords(fhandle: TextIO) -> annotations.ChordData:
     """Load Beatles format chord data from a file
 
     Args:
-        fchords: path or file-like object pointing to a chord annotation file
+        fhandle(str or file-like): path or file-like object pointing to a chord annotation file
 
     Returns:
         ChordData: loaded chord data
 
     """
     start_times, end_times, chords = [], [], []
-    dialect = csv.Sniffer().sniff(fchords.read(1024))
-    fchords.seek(0)
-    reader = csv.reader(fchords, dialect)
+    dialect = csv.Sniffer().sniff(fhandle.read(1024))
+    fhandle.seek(0)
+    reader = csv.reader(fhandle, dialect)
     for line in reader:
         start_times.append(float(line[0]))
         end_times.append(float(line[1]))
@@ -209,18 +215,18 @@ def load_chords(fchords: TextIO) -> annotations.ChordData:
 
 
 @io.coerce_to_string_io
-def load_key(fkeys: TextIO) -> annotations.KeyData:
+def load_key(fhandle: TextIO) -> annotations.KeyData:
     """Load Beatles format key data from a file
 
     Args:
-        fkeys: path or file-like object pointing to a key annotation file
+        fhandle(str or file-like): path or file-like object pointing to a key annotation file
 
     Returns:
         KeyData: loaded key data
 
     """
     start_times, end_times, keys = [], [], []
-    reader = csv.reader(fkeys, delimiter="\t")
+    reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         if line[2] == "Key":
             start_times.append(float(line[0]))
@@ -231,17 +237,17 @@ def load_key(fkeys: TextIO) -> annotations.KeyData:
 
 
 @io.coerce_to_string_io
-def load_sections(fsections: TextIO) -> annotations.SectionData:
+def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load Beatles format section data from a file
 
     Args:
-        fsections: path or file-like object pointing to a section annotation file
+        fhandle(str or file-like): path or file-like object pointing to a section annotation file
 
     Returns:
         SectionData: loaded section data
     """
     start_times, end_times, sections = [], [], []
-    reader = csv.reader(fsections, delimiter="\t")
+    reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start_times.append(float(line[0]))
         end_times.append(float(line[1]))
