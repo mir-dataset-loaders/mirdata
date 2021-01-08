@@ -86,7 +86,7 @@ class Track(core.Track):
         metadata_path (str): sections annotation path
         title (str): title of the track
         track_id (str): track id
-    
+
     Cached Properties:
         key (str): musical key annotation
         artists (list): list of artists involved
@@ -269,8 +269,7 @@ def load_artist(metadata_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The giantsteps_key dataset
-    """
+    """The giantsteps_key dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(

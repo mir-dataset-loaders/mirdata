@@ -44,6 +44,7 @@ DATA = core.LargeData("gtzan_genre_index.json")
 
 LICENSE_INFO = "Unfortunately we couldn't find the license information for the GTZAN_genre dataset."
 
+
 class Track(core.Track):
     """gtzan_genre Track class
 
@@ -123,8 +124,7 @@ def load_audio(audio_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The gtzan_genre dataset
-    """
+    """The gtzan_genre dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(

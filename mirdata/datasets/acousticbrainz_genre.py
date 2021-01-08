@@ -221,7 +221,7 @@ class Track(core.Track):
 
         Returns:
             str: date
-        
+
         """
         return load_extractor(self.path)["metadata"]["date"]
 
@@ -337,8 +337,8 @@ class Track(core.Track):
                 - 'bpm_histogram_second_peak_bpm', 'bpm_histogram_second_peak_spread', 'bpm_histogram_second_peak_weight':
                   descriptors characterizing highest and second highest peak of the BPM histogram. Algorithms:
                   BpmHistogramDescriptors
-                - 'beats_loudness', 'beats_loudness_band_ratio': spectral energy computed on beats segments of audio 
-                  across the whole spectrum, and ratios of energy in 6 frequency bands. 
+                - 'beats_loudness', 'beats_loudness_band_ratio': spectral energy computed on beats segments of audio
+                  across the whole spectrum, and ratios of energy in 6 frequency bands.
                   Algorithms: BeatsLoudness, SingleBeatLoudness
                 - 'onset_rate': number of detected onsets per second. Algorithms: OnsetRate
                 - 'danceability': danceability estimate. Algorithms: Danceability
@@ -350,7 +350,7 @@ class Track(core.Track):
 
         Returns:
              jams.JAMS: return track data in jam format
-        
+
         """
         return jams_utils.jams_converter(
             metadata={
@@ -383,8 +383,7 @@ def load_extractor(path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The acousticbrainz genre dataset
-    """
+    """The acousticbrainz genre dataset"""
 
     def __init__(self, data_home=None, index=None):
         super().__init__(
@@ -408,7 +407,7 @@ class Dataset(core.Dataset):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
             force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. 
+                If True, existing files are overwritten by the downloaded files.
                 By default False.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.
@@ -476,7 +475,7 @@ class Dataset(core.Dataset):
 
         Returns:
              dict: {`track_id`: track data}
-             
+
         """
 
         acousticbrainz_genre_data = {

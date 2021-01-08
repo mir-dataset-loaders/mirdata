@@ -26,7 +26,7 @@ and respect the dataset's license.
 
 class cached_property(object):
     """Cached propery decorator
-    
+
     A property that is only computed once per instance and then replaces
     itself with an ordinary attribute. Deleting the attribute resets the
     property.
@@ -48,7 +48,7 @@ class cached_property(object):
 
 def docstring_inherit(parent):
     """Decorator function to inherit docstrings from the parent class.
-    
+
     Adds documented Attributes from the parent to the child docs.
 
     """
@@ -179,7 +179,7 @@ class Dataset(object):
         """Load all tracks in the dataset
 
         Returns:
-            dict: 
+            dict:
                 {`track_id`: track data}
 
         Raises:
@@ -193,7 +193,7 @@ class Dataset(object):
 
         Returns:
             Track: a Track object instantiated by a random track_id
-        
+
         """
         return self.track(random.choice(self.track_ids))
 
@@ -250,7 +250,7 @@ class Dataset(object):
         Args:
             verbose (bool): If False, don't print output
 
-        Returns:        
+        Returns:
             * list - files in the index but are missing locally
             * list - files which have an invalid checksum
 

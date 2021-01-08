@@ -143,6 +143,7 @@ We do not grant any rights for redistribution or modification. All data collecti
 were gathered by the COFLA team. COFLA 2015. All rights reserved.
 """
 
+
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, "cante100Meta.xml")
     if not os.path.exists(metadata_path):
@@ -234,7 +235,7 @@ class Track(core.Track):
         title (str): title of the track song
         release (str): release where the track can be found
         duration (str): duration in seconds of the track
-    
+
     Cached Properties:
         melody (F0Data): annotated melody
         notes (NoteData): annotated notes
@@ -415,8 +416,7 @@ def load_notes(notes_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The cante100 dataset
-    """
+    """The cante100 dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(

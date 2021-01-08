@@ -37,7 +37,7 @@ def jams_converter(
         spectrum_cante100_path (str or None):
             A path to the corresponding spectrum file, or None.
         beat_data (list or None):
-            A list of tuples of (annotations.BeatData, str), where str describes 
+            A list of tuples of (annotations.BeatData, str), where str describes
             the annotation (e.g. 'beats_1').
         chord_data (list or None):
             A list of tuples of (annotations.ChordData, str), where str describes the annotation.

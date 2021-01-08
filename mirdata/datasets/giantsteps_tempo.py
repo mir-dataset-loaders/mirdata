@@ -115,6 +115,7 @@ DOWNLOAD_INFO = """
 
 LICENSE_INFO = "Unfortunately we couldn't find the license information for the GiantSteps_tempo dataset."
 
+
 class Track(core.Track):
     """giantsteps_tempo track class
 
@@ -127,7 +128,7 @@ class Track(core.Track):
         track_id (str): track id
         annotation_v1_path (str): track annotation v1 path
         annotation_v2_path (str): track annotation v2 path
-    
+
     Cached Properties:
         genre (dict): Human-labeled metadata annotation
         tempo (list): List of annotations.TempoData, ordered by confidence
@@ -221,7 +222,7 @@ def load_genre(path):
 
     Returns:
         str: loaded genre data
-        
+
     """
     if path is None:
         return None
@@ -262,8 +263,7 @@ def load_tempo(tempo_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The giantsteps_tempo dataset
-    """
+    """The giantsteps_tempo dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(

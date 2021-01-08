@@ -68,7 +68,9 @@ REMOTES = {
     )
 }
 
-LICENSE_INFO = "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+LICENSE_INFO = (
+    "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+)
 
 
 def _load_metadata(metadata_path):
@@ -382,7 +384,7 @@ def load_tempo(tempo_path):
         tempo_path (str): Local path where the tempo annotation is stored.
 
     Returns:
-        dict: 
+        dict:
             {'tempo_apm': tempo in aksharas per minute (APM)
              'tempo_bpm': tempo in beats per minute (BPM)
              'sama_interval': median duration (in seconds) of one tāla cycle
@@ -484,7 +486,10 @@ def load_sections(sections_path):
         for line in reader:
             if line != "\n":
                 intervals.append(
-                    [float(line[0]), float(line[0]) + float(line[2]),]
+                    [
+                        float(line[0]),
+                        float(line[0]) + float(line[2]),
+                    ]
                 )
                 section_labels.append(str(line[3]))
 
@@ -532,8 +537,7 @@ def load_phrases(phrases_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The saraga_carnatic dataset
-    """
+    """The saraga_carnatic dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(

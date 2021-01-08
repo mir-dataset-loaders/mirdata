@@ -313,7 +313,7 @@ def _position_in_bar(beat_positions, beat_times):
     Args:
         beat_positions (np.ndarray): raw rwc beat positions
         beat_times (np.ndarray): raw rwc time stamps
-    
+
     Returns:
         * np.ndarray: normalized beat positions
         * np.ndarray: normalized time stamps
@@ -400,8 +400,7 @@ def _duration_to_sec(duration):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The rwc_classical dataset
-    """
+    """The rwc_classical dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(

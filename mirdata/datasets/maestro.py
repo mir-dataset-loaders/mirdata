@@ -78,7 +78,10 @@ REMOTES = {
     ),
 }
 
-LICENSE_INFO = "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
+LICENSE_INFO = (
+    "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
+)
+
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, "maestro-v2.0.0.json")
@@ -247,8 +250,7 @@ def load_audio(audio_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The maestro dataset
-    """
+    """The maestro dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(
@@ -281,7 +283,7 @@ class Dataset(core.Dataset):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
             force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. 
+                If True, existing files are overwritten by the downloaded files.
                 By default False.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.

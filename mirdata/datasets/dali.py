@@ -73,7 +73,9 @@ DOWNLOAD_INFO = """
         ...
 """
 
-LICENSE_INFO = "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License."
+LICENSE_INFO = (
+    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License."
+)
 
 
 def _load_metadata(data_home):
@@ -300,8 +302,7 @@ def load_annotations_class(annotations_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The dali dataset
-    """
+    """The dali dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(

@@ -308,15 +308,16 @@ def load_lyrics(lyrics_path):
                 pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T, lyrics, pronunciations,
+        np.array([start_times, end_times]).T,
+        lyrics,
+        pronunciations,
     )
     return lyrics_data
 
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The ikala dataset
-    """
+    """The ikala dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(

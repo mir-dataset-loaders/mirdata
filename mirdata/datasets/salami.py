@@ -306,8 +306,7 @@ def load_sections(sections_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The salami dataset
-    """
+    """The salami dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(

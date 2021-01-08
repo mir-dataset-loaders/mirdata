@@ -429,8 +429,7 @@ def load_drum_events(midi_path, midi=None):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The groove_midi dataset
-    """
+    """The groove_midi dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(
@@ -467,7 +466,7 @@ class Dataset(core.Dataset):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
             force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. 
+                If True, existing files are overwritten by the downloaded files.
                 By default False.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.

@@ -165,7 +165,7 @@ def load_audio(audio_path):
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
-        
+
     """
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
@@ -174,8 +174,7 @@ def load_audio(audio_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The mridangam_stroke dataset
-    """
+    """The mridangam_stroke dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(
