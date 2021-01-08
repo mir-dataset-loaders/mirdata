@@ -18,8 +18,7 @@ list of annotations omits some metadata for brevity, and we document the dataset
 primary annotations only. The number of tracks indicates the number of unique "tracks"
 in a dataset, but it may not reflect the actual size or diversity of a dataset,
 as tracks can vary greatly in length (from a few seconds to a few minutes),
-and may be homogeneous. For specific information about the contents of each dataset,
-click the link provided in the "Module" column.
+and may be homogeneous.
 
 "Downloadable" possible values:
 
@@ -134,7 +133,8 @@ The table above provides annotation types as a guide for choosing appropriate da
 but it is difficult to generically categorize annotation types, as they depend on varying
 definitions and their meaning can change depending on the type of music they correspond to.
 Here we provide a rough guide to the types in this table, but we **strongly recommend** reading
-the dataset specific documentation to ensure the data is as you expect.
+the dataset specific documentation to ensure the data is as you expect. To see how these annotation
+types are implemented in ``mirdata`` see :ref:`annotations`.
 
 
 .. _beats:

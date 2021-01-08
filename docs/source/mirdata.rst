@@ -220,6 +220,7 @@ Core
 .. automodule:: mirdata.core
    :members:
 
+.. _annotations:
 
 Annotations
 -----------
