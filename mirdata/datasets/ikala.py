@@ -57,8 +57,8 @@ DOWNLOAD_INFO = """
 """
 
 LICENSE_INFO = """
-    When it was distributed, Ikala used to have a custom license. 
-    Visit http://mac.citi.sinica.edu.tw/ikala/ for more details.
+When it was distributed, Ikala used to have a custom license. 
+Visit http://mac.citi.sinica.edu.tw/ikala/ for more details.
 """
 
 

@@ -12,6 +12,14 @@ from mirdata import validate
 
 MAX_STR_LEN = 100
 DOCS_URL = "https://mirdata.readthedocs.io/en/latest/source/mirdata.html"
+DISCLAIMER = """
+******************************************************************************************
+DISCLAIMER: mirdata is a software package with its own license which is independent from
+the datasets' ones. We don't take any responsibility for possible inaccuracies in the
+licenses' information provided in mirdata. It is the user's responsibility to be informed
+and respect the dataset's license.
+******************************************************************************************
+"""
 
 ##### decorators ######
 
@@ -198,14 +206,7 @@ class Dataset(object):
         """Print the license"""
         print("========== License ==========")
         print(self._license_info)
-        print(""" 
-        ******************************************************************************************
-        DISCLAIMER: mirdata is a software package with its own license which is independent from
-        the datasets' ones. We don't take any responsibility for possible inaccuracies in the 
-        licenses' information provided in mirdata. It is the user's responsibility to respect the 
-        dataset's license.
-        ******************************************************************************************
-        """)
+        print(DISCLAIMER)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=True):
         """Download data to `save_dir` and optionally print a message.

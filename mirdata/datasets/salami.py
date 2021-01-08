@@ -54,10 +54,10 @@ DOWNLOAD_INFO = """
 """
 
 LICENSE_INFO = """
-    This data is released under a Creative Commons 0 license, effectively dedicating it to 
-    the public domain. More information about this dedication and your rights, please see the 
-    details here: http://creativecommons.org/publicdomain/zero/1.0/ and
-    http://creativecommons.org/publicdomain/zero/1.0/legalcode.
+This data is released under a Creative Commons 0 license, effectively dedicating it to 
+the public domain. More information about this dedication and your rights, please see the 
+details here: http://creativecommons.org/publicdomain/zero/1.0/ and
+http://creativecommons.org/publicdomain/zero/1.0/legalcode.
 """
 
 

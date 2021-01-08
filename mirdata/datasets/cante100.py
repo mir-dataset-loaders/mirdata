@@ -140,8 +140,7 @@ DOWNLOAD_INFO = """
 LICENSE_INFO = """
 The provided datasets are offered free of charge for internal non-commercial use.
 We do not grant any rights for redistribution or modification. All data collections
-were gathered by the COFLA team.
-COFLA 2015. All rights reserved.
+were gathered by the COFLA team. COFLA 2015. All rights reserved.
 """
 
 def _load_metadata(data_home):
