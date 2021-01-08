@@ -11,7 +11,7 @@ from mirdata import download_utils
 from mirdata import validate
 
 MAX_STR_LEN = 100
-
+DOCS_URL = "https://mirdata.readthedocs.io/en/latest/source/mirdata.html"
 
 ##### decorators ######
 
@@ -119,6 +119,7 @@ class Dataset(object):
         self.remotes = remotes
         self._download_info = download_info
         self._license_info = license_info
+        self.readme = "{}#module-mirdata.datasets.{}".format(DOCS_URL, self.name)
 
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
