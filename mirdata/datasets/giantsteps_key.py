@@ -22,7 +22,7 @@
     description of the properties of this dataset can be found:
 
     .. code-block:: latex
-    
+
         Ángel Faraldo (2017). Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination.
         PhD Thesis. Universitat Pompeu Fabra, Barcelona.
 
@@ -34,12 +34,16 @@
 """
 
 import json
-import librosa
 import os
+from typing import BinaryIO, Dict, List, Optional, TextIO, Tuple
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
+from mirdata import io
 
 BIBTEX = """@inproceedings{knees2015two,
   title={Two data sets for tempo estimation and key detection in electronic dance music annotated from user corrections},
@@ -115,28 +119,28 @@ class Track(core.Track):
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
 
     @core.cached_property
-    def key(self):
+    def key(self) -> Optional[str]:
         return load_key(self.keys_path)
 
     @core.cached_property
-    def artists(self):
+    def artists(self) -> Optional[List[str]]:
         return load_artist(self.metadata_path)
 
     @core.cached_property
-    def genres(self):
+    def genres(self) -> Optional[Dict[str, List[str]]]:
         return load_genre(self.metadata_path)
 
     @core.cached_property
-    def tempo(self):
+    def tempo(self) -> Optional[str]:
         return load_tempo(self.metadata_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -160,109 +164,79 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_key audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): path pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_key(keys_path):
+@io.coerce_to_string_io
+def load_key(fhandle: TextIO) -> str:
     """Load giantsteps_key format key data from a file
 
     Args:
-        keys_path (str): path to key annotation file
+        fhandle(str or file-like): File like object or string pointing to key annotation file
 
     Returns:
         str: loaded key data
 
     """
-    if keys_path is None:
-        return None
-
-    if not os.path.exists(keys_path):
-        raise IOError("keys_path {} does not exist".format(keys_path))
-
-    with open(keys_path) as f:
-        key = f.readline()
-
-    return key
+    return fhandle.readline()
 
 
-def load_tempo(metadata_path):
+@io.coerce_to_string_io
+def load_tempo(fhandle: TextIO) -> str:
     """Load giantsteps_key tempo data from a file
 
     Args:
-        metadata_path (str): path to metadata annotation file
+        fhandle(str or file-like): File-like object or string pointing to metadata annotation file
 
     Returns:
         str: loaded tempo data
 
     """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-
+    meta = json.load(fhandle)
     return meta["bpm"]
 
 
-def load_genre(metadata_path):
+@io.coerce_to_string_io
+def load_genre(fhandle: TextIO) -> Dict[str, List[str]]:
     """Load giantsteps_key genre data from a file
 
     Args:
-        metadata_path (str): path to metadata annotation file
+        fhandle(str or file-like): File-like object or path pointing to metadata annotation file
 
     Returns:
         dict: `{'genres': [...], 'subgenres': [...]}`
 
     """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-
+    meta = json.load(fhandle)
     return {
         "genres": [genre["name"] for genre in meta["genres"]],
         "sub_genres": [genre["name"] for genre in meta["sub_genres"]],
     }
 
 
-def load_artist(metadata_path):
+@io.coerce_to_string_io
+def load_artist(fhandle: TextIO) -> List[str]:
     """Load giantsteps_key tempo data from a file
 
     Args:
-        metadata_path (str): path to metadata annotation file
+        fhandle(str or file-like): File-like object or path pointing to metadata annotation file
 
     Returns:
         list: list of artists involved in the track.
 
     """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
+    meta = json.load(fhandle)
 
     return [artist["name"] for artist in meta["artists"]]
 
