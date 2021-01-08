@@ -130,6 +130,15 @@ REMOTE_INDEX = {
 
 DATA = core.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
 
+LICENSE_INFO = """
+The MediaEval AcousticBrainz Genre AllMusic dataset is offered free of charge for 
+internal non-commercial use only.  You may not redistribute, publically communicate 
+or modify it, unless expressly permitted by the Universitat Pompeu Fabra (UPF) or by 
+applicable law. The individual contents of the dataset may be protected by copyright, 
+and a non-transferrable limited license to reproduce and use the same is granted 
+for the indicated purpose only.
+ """
+
 
 class Track(core.Track):
     """AcousticBrainz Genre Dataset track class
