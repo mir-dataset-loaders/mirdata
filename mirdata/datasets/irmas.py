@@ -92,11 +92,15 @@ IRMAS Loader
 import csv
 
 import os
+from typing import BinaryIO, List, Optional, TextIO, Tuple
+
 import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
+from mirdata import io
 
 BIBTEX = """
 @dataset{juan_j_bosch_2014_1290750,
@@ -246,7 +250,7 @@ class Track(core.Track):
             return load_pred_inst(self.annotation_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio signal
 
         Returns:
@@ -274,49 +278,41 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a IRMAS dataset audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=44100, mono=False)
 
 
-def load_pred_inst(annotation_path):
+@io.coerce_to_string_io
+def load_pred_inst(fhandle: TextIO) -> List[str]:
     """Load predominant instrument of track
 
     Args:
-        annotation_path (str): Local path where the test annotations are stored.
+        fhandle(str or file-like): File-like object or path where the test annotations are stored.
 
     Returns:
-        str: test track predominant instrument(s) annotations
-
+        list(str): test track predominant instrument(s) annotations
     """
-    if annotation_path is None:
-        return None
-
-    if not os.path.exists(annotation_path):
-        raise IOError("annotation_path {} does not exist".format(annotation_path))
-
     pred_inst = []
-    with open(annotation_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=" ")
-        for line in reader:
-            inst_code = line[0][:3]
-            assert (
-                inst_code in INST_DICT
-            ), "Instrument {} not in instrument dictionary".format(inst_code)
-            pred_inst.append(inst_code)
+    reader = csv.reader(fhandle, delimiter=" ")
+    for line in reader:
+        inst_code = line[0][:3]
+        assert (
+            inst_code in INST_DICT
+        ), "Instrument {} not in instrument dictionary".format(inst_code)
+        pred_inst.append(inst_code)
 
-        return pred_inst
+    return pred_inst
 
 
 @core.docstring_inherit(core.Dataset)
