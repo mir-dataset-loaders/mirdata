@@ -25,7 +25,7 @@
 
         The style-variation pieces were recorded to represent various styles of jazz.
         They include four well-known public-domain pieces and consist of
-        
+
         1. Vocal jazz: 2 pieces (including "Aura Lee")
         2. Big band jazz: 2 pieces (including "The Entertainer")
         3. Modal jazz: 2 pieces
@@ -44,12 +44,16 @@
 import csv
 import logging
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
+import numpy as np
 
+from mirdata import annotations
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
+from mirdata import io
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (
@@ -211,20 +215,20 @@ class Track(core.Track):
         self.instruments = self._track_metadata["instruments"]
 
     @core.cached_property
-    def sections(self):
+    def sections(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_path)
 
     @core.cached_property
-    def beats(self):
+    def beats(self) -> Optional[annotations.BeatData]:
         return load_beats(self.beats_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
