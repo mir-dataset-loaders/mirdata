@@ -380,13 +380,13 @@ def load_tempo(tempo_path):
         tempo_path (str): Local path where the tempo annotation is stored.
 
     Returns:
-        dict: 
-            {'tempo_apm': tempo in aksharas per minute (APM)
-             'tempo_bpm': tempo in beats per minute (BPM)
-             'sama_interval': median duration (in seconds) of one tāla cycle
-             'beats_per_cycle': number of beats in one cycle of the tāla
-             'subdivisions': number of aksharas per beat of the tāla
-            }
+        dict: Dictionary of tempo information with the following keys:
+
+            - tempo_apm: tempo in aksharas per minute (APM)
+            - tempo_bpm: tempo in beats per minute (BPM)
+            - sama_interval: median duration (in seconds) of one tāla cycle
+            - beats_per_cycle: number of beats in one cycle of the tāla
+            - subdivisions: number of aksharas per beat of the tāla
 
     """
     if tempo_path is None:
