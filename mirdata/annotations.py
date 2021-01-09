@@ -1,6 +1,5 @@
 """mirdata annotation data types
 """
-
 import numpy as np
 
 
@@ -17,7 +16,7 @@ class BeatData(Annotation):
     """BeatData object
 
     Attributes:
-        times (np.ndarray or None): array of time stamps (as floats) in seconds
+        times (np.ndarray): array of time stamps (as floats) in seconds
             with positive, strictly increasing values
         positions (np.ndarray or None): array of beat positions (as ints)
             e.g. 1, 2, 3, 4
@@ -26,7 +25,7 @@ class BeatData(Annotation):
 
     def __init__(self, times, positions=None):
         validate_array_like(times, np.ndarray, float)
-        validate_array_like(positions, np.ndarray, int)
+        validate_array_like(positions, np.ndarray, int, none_allowed=True)
         validate_lengths_equal([times, positions])
         validate_times(times)
 
@@ -38,7 +37,7 @@ class SectionData(Annotation):
     """SectionData object
 
     Attributes:
-        intervals (np.ndarray or None): (n x 2) array of intervals
+        intervals (np.ndarray): (n x 2) array of intervals
             (as floats) in seconds in the form [start_time, end_time]
             times should be positive and intervals should have
             non-negative duration
@@ -48,7 +47,7 @@ class SectionData(Annotation):
 
     def __init__(self, intervals, labels=None):
         validate_array_like(intervals, np.ndarray, float)
-        validate_array_like(labels, list, str)
+        validate_array_like(labels, list, str, none_allowed=True)
         validate_lengths_equal([intervals, labels])
         validate_intervals(intervals)
 
@@ -60,20 +59,19 @@ class NoteData(Annotation):
     """NoteData object
 
     Attributes:
-        intervals (np.ndarray or None): (n x 2) array of intervals
+        intervals (np.ndarray): (n x 2) array of intervals
             (as floats) in seconds in the form [start_time, end_time]
             with positive time stamps and end_time >= start_time.
-        notes (np.ndarray or None): array of notes (as floats) in Hz
+        notes (np.ndarray): array of notes (as floats) in Hz
         confidence (np.ndarray or None): array of confidence values
             between 0 and 1
 
     """
 
     def __init__(self, intervals, notes, confidence=None):
-
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(notes, np.ndarray, float)
-        validate_array_like(confidence, np.ndarray, float)
+        validate_array_like(confidence, np.ndarray, float, none_allowed=True)
         validate_lengths_equal([intervals, notes, confidence])
         validate_intervals(intervals)
         validate_confidence(confidence)
@@ -90,17 +88,16 @@ class ChordData(Annotation):
         intervals (np.ndarray or None): (n x 2) array of intervals
             (as floats) in seconds in the form [start_time, end_time]
             with positive time stamps and end_time >= start_time.
-        labels (list or None): list chord labels (as strings)
+        labels (list): list chord labels (as strings)
         confidence (np.ndarray or None): array of confidence values
             between 0 and 1
 
     """
 
     def __init__(self, intervals, labels, confidence=None):
-
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(labels, list, str)
-        validate_array_like(confidence, np.ndarray, float)
+        validate_array_like(confidence, np.ndarray, float, none_allowed=True)
         validate_lengths_equal([intervals, labels, confidence])
         validate_intervals(intervals)
         validate_confidence(confidence)
@@ -114,9 +111,9 @@ class F0Data(Annotation):
     """F0Data object
 
     Attributes:
-        times (np.ndarray or None): array of time stamps (as floats) in seconds
+        times (np.ndarray): array of time stamps (as floats) in seconds
             with positive, strictly increasing values
-        frequencies (np.ndarray or None): array of frequency values (as floats)
+        frequencies (np.ndarray): array of frequency values (as floats)
             in Hz
         confidence (np.ndarray or None): array of confidence values
             between 0 and 1
@@ -124,10 +121,9 @@ class F0Data(Annotation):
     """
 
     def __init__(self, times, frequencies, confidence=None):
-
         validate_array_like(times, np.ndarray, float)
         validate_array_like(frequencies, np.ndarray, float)
-        validate_array_like(confidence, np.ndarray, float)
+        validate_array_like(confidence, np.ndarray, float, none_allowed=True)
         validate_lengths_equal([times, frequencies, confidence])
         validate_times(times)
         validate_confidence(confidence)
@@ -141,9 +137,9 @@ class MultiF0Data(Annotation):
     """MultiF0Data object
 
     Attributes:
-        times (np.ndarray or None): array of time stamps (as floats) in seconds
+        times (np.ndarray): array of time stamps (as floats) in seconds
             with positive, strictly increasing values
-        frequency_list (list or None): list of lists of frequency values (as floats)
+        frequency_list (list): list of lists of frequency values (as floats)
             in Hz
         confidence_list (list or None): list of lists of confidence values
             between 0 and 1
@@ -153,7 +149,7 @@ class MultiF0Data(Annotation):
     def __init__(self, times, frequency_list, confidence_list=None):
         validate_array_like(times, np.ndarray, float)
         validate_array_like(frequency_list, list, list)
-        validate_array_like(confidence_list, list, list)
+        validate_array_like(confidence_list, list, list, none_allowed=True)
         validate_lengths_equal([times, frequency_list, confidence_list])
         validate_times(times)
 
@@ -166,15 +162,14 @@ class KeyData(Annotation):
     """KeyData object
 
     Attributes:
-        intervals (np.ndarray or None): (n x 2) array of intervals
+        intervals (np.ndarray): (n x 2) array of intervals
             (as floats) in seconds in the form [start_time, end_time]
             with positive time stamps and end_time >= start_time.
-        keys (list or None): list key labels (as strings)
+        keys (list): list key labels (as strings)
 
     """
 
     def __init__(self, intervals, keys):
-
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(keys, list, str)
         validate_lengths_equal([intervals, keys])
@@ -188,19 +183,18 @@ class LyricData(Annotation):
     """LyricData object
 
     Attributes:
-        intervals (np.ndarray or None): (n x 2) array of intervals
+        intervals (np.ndarray): (n x 2) array of intervals
             (as floats) in seconds in the form [start_time, end_time]
             with positive time stamps and end_time >= start_time.
-        lyrics (list or None): list of lyrics (as strings)
+        lyrics (list): list of lyrics (as strings)
         pronunciations (list or None): list of pronunciations (as strings)
 
     """
 
     def __init__(self, intervals, lyrics, pronunciations=None):
-
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(lyrics, list, str)
-        validate_array_like(pronunciations, list, str)
+        validate_array_like(pronunciations, list, str, none_allowed=True)
         validate_lengths_equal([intervals, lyrics, pronunciations])
         validate_intervals(intervals)
 
@@ -213,20 +207,19 @@ class TempoData(Annotation):
     """TempoData object
 
     Attributes:
-        intervals (np.ndarray or None): (n x 2) array of intervals
+        intervals (np.ndarray): (n x 2) array of intervals
             (as floats) in seconds in the form [start_time, end_time]
             with positive time stamps and end_time >= start_time.
-        value (list or None): array of tempo values (as floats)
+        value (list): array of tempo values (as floats)
         confidence (np.ndarray or None): array of confidence values
             between 0 and 1
 
     """
 
     def __init__(self, intervals, value, confidence=None):
-
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(value, np.ndarray, float)
-        validate_array_like(confidence, np.ndarray, float)
+        validate_array_like(confidence, np.ndarray, float, none_allowed=True)
         validate_lengths_equal([intervals, value, confidence])
         validate_intervals(intervals)
         validate_confidence(confidence)
@@ -240,15 +233,14 @@ class EventData(Annotation):
     """TempoData object
 
     Attributes:
-        intervals (np.ndarray or None): (n x 2) array of intervals
+        intervals (np.ndarray): (n x 2) array of intervals
             (as floats) in seconds in the form [start_time, end_time]
             with positive time stamps and end_time >= start_time.
-        events (list or None): list of event labels (as strings)
+        events (list): list of event labels (as strings)
 
     """
 
     def __init__(self, intervals, events):
-
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(events, list, str)
         validate_lengths_equal([intervals, events])
@@ -258,15 +250,16 @@ class EventData(Annotation):
         self.events = events
 
 
-def validate_array_like(array_like, expected_type, expected_dtype):
+def validate_array_like(array_like, expected_type, expected_dtype, none_allowed=False):
     """Validate that array-like object is well formed
 
     If array_like is None, validation passes automatically.
 
     Args:
         array_like (array-like): object to validate
-        expected_type : expected type, either list or np.ndarray
-        expected_dtype : expected dtype
+        expected_type (type): expected type, either list or np.ndarray
+        expected_dtype (type): expected dtype
+        none_allowed (bool): if True, allows array to be None
 
     Raises:
         TypeError: if type/dtype does not match expected_type/expected_dtype
@@ -274,7 +267,10 @@ def validate_array_like(array_like, expected_type, expected_dtype):
 
     """
     if array_like is None:
-        return
+        if none_allowed:
+            return
+        else:
+            raise ValueError("array_like cannot be None")
 
     assert expected_type in [
         list,

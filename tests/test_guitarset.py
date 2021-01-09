@@ -45,8 +45,11 @@ def test_track():
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
-    assert type(track.pitch_contours["E"]) is annotations.F0Data
-    assert type(track.notes["E"]) is annotations.NoteData
+    assert track.pitch_contours["E"] is None
+    assert track.notes["E"] is None
+
+    assert isinstance(track.pitch_contours["e"], annotations.F0Data)
+    assert isinstance(track.notes["e"], annotations.NoteData)
 
 
 def test_load_beats():

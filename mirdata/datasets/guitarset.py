@@ -398,7 +398,7 @@ def load_pitch_contour(jams_path, string_num):
     anno = anno_arr.search(data_source=str(string_num))[0]
     times, values = anno.to_event_values()
     if len(times) == 0:
-        return annotations.F0Data(None, None)
+        return None
     frequencies = [v["frequency"] for v in values]
     return annotations.F0Data(times, np.array(frequencies))
 
@@ -422,7 +422,7 @@ def load_notes(jams_path, string_num):
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()
     if len(values) == 0:
-        return annotations.NoteData(None, None)
+        return None
     return annotations.NoteData(intervals, np.array(values))
 
 
