@@ -51,12 +51,17 @@ import glob
 import logging
 import os
 import shutil
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils, jams_utils, core, annotations
+from mirdata import annotations
+from mirdata import core
+from mirdata import download_utils
+from mirdata import io
+from mirdata import jams_utils
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -307,12 +312,12 @@ class Track(core.Track):
         )
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[Optional[np.ndarray], Optional[float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -344,40 +349,34 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+def load_audio(path: str) -> Tuple[Optional[np.ndarray], Optional[float]]:
     """Load a Groove MIDI audio file.
 
     Args:
-        audio_path (str): path to audio file
+        path: path to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if audio_path is None:
+    if not path:
         return None, None
-
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=22050, mono=True)
+    return librosa.load(path, sr=22050, mono=True)
 
 
-def load_midi(midi_path):
+@io.coerce_to_bytes_io
+def load_midi(fhandle: BinaryIO) -> Optional[pretty_midi.PrettyMIDI]:
     """Load a Groove MIDI midi file.
 
     Args:
-        midi_path (str): path to midi file
+        fhandle(str or file-like): File-like object or path to midi file
 
     Returns:
         midi_data (pretty_midi.PrettyMIDI): pretty_midi object
 
     """
-    if not os.path.exists(midi_path):
-        raise IOError("midi_path {} does not exist".format(midi_path))
-
-    return pretty_midi.PrettyMIDI(midi_path)
+    return pretty_midi.PrettyMIDI(fhandle)
 
 
 def load_beats(midi_path, midi=None):
@@ -468,7 +467,7 @@ class Dataset(core.Dataset):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
             force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. 
+                If True, existing files are overwritten by the downloaded files.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.
 
