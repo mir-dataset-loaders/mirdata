@@ -35,20 +35,7 @@ show_authors = False
 
 
 # -- Mock dependencies -------------------------------------------------------
-
-# # Mock the dependencies
-from unittest.mock import MagicMock
-
-
-class Mock(MagicMock):
-    @classmethod
-    def __getattr__(cls, name):
-        return MagicMock()
-
-
-MOCK_MODULES = ["librosa", "numpy", "jams", "pretty_midi", "DALI"]
-
-sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+autodoc_mock_imports = ["librosa", "numpy", "jams", "pretty_midi", "DALI"]
 
 
 # # -- General configuration ---------------------------------------------------
