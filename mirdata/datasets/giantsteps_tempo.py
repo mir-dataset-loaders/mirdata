@@ -113,7 +113,7 @@ DOWNLOAD_INFO = """
     and copy the folder to {}
 """
 
-LICENSE_INFO = "Unfortunately we couldn't find the license information for the GiantSteps_tempo dataset."
+LICENSE_INFO = "Creative Commons Attribution Share Alike 4.0 International."
 
 
 class Track(core.Track):
