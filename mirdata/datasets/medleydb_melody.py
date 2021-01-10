@@ -46,7 +46,7 @@ DOWNLOAD_INFO = """
     {}
 """
 
-LICENSE_INFO = "http://creativecommons.org/licenses/by-nc-sa/4.0/."
+LICENSE_INFO = "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
 
 
 def _load_metadata(data_home):
