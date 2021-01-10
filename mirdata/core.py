@@ -80,7 +80,6 @@ class Dataset(object):
         bibtex (str): dataset citation/s in bibtex format
         readme (str): a link to information about the dataset
         remotes (dict): data to be downloaded
-        download_info (str): download instructions or caveats
         track (core.Track): an uninstantiated Track object
         readme (str): information about the dataset
 

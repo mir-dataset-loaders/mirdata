@@ -38,6 +38,26 @@ Usage
 
     import mirdata
 
+
+Initializing a dataset
+^^^^^^^^^^^^^^^^^^^^^^
+
+Print a list of all available dataset loaders by calling:
+
+.. code-block:: python
+
+    import mirdata
+    print(mirdata.list_datasets())
+
+To use a loader, (for example, 'orchset') you need to initialize it by calling:
+
+.. code-block:: python
+
+    import mirdata
+    orchset = mirdata.initialize('orchset')
+
+Now ``orchset`` is a ``Dataset`` object containing common methods, described below.
+
 Downloading a dataset
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -129,7 +149,7 @@ For big datasets: In future ``mirdata`` versions, a random validation will be in
 Accessing annotations
 ^^^^^^^^^^^^^^^^^^^^^
 
-We can chose a random track with ``choice_track()`` method.
+We can choose a random track from a dataset with the ``choice_track()`` method.
 
 .. admonition:: Example Index
     :class: dropdown
@@ -160,17 +180,18 @@ We can chose a random track with ``choice_track()`` method.
             )
 
 
-We can access to specific tracks by id. The ids are specified in the dataset index.
-In the next example we take the first track of the index, and then we retrieve the melody
+We can also access specific tracks by id. 
+The available track ids can be acessed via the `.track_ids` attribute.
+In the next example we take the first track id, and then we retrieve the melody
 annotation.
 
 .. code-block:: python
 
-    orchset_ids = orchset.track_ids  # Load list of track ids of the dataset
-    orchset_data = orchset.load_tracks()  # Load dataset tracks
-    example_track = orchset_data[orchset_ids[0]]  # Get first track of the index
+    orchset_ids = orchset.track_ids  # the list of orchset's track ids
+    orchset_data = orchset.load_tracks()  # Load all tracks in the dataset
+    example_track = orchset_data[orchset_ids[0]]  # Get the first track
 
-    # Accessing to track melody annotation
+    # Accessing the track's melody annotation
     example_melody = example_track.melody
 
 
@@ -178,15 +199,16 @@ Alternatively, we don't need to load the whole dataset to get a single track.
 
 .. code-block:: python
 
-    orchset_ids = orchset.track_ids  # Load list of track ids of the dataset
-    example_melody = orchset.track(orchset_ids[0]).melody  # Get melody from first track in the index
+    orchset_ids = orchset.track_ids  # the list of orchset's track ids
+    example_track = orchset.track(orchset_ids[0])  # load this particular track
+    example_melody = example_track.melody  # Get the melody from first track
 
 
-Accessing audio and annotations remotely
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Accessing data remotely
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Annotations can also be accessed through ``load_*()`` methods in case, for instance, that your data don't live locally
-but in a remote path. If you specify the path where to find the annotation, you can use the module's loading functions directly. Let's
+Annotations can also be accessed through ``load_*()`` methods which may be useful, for instance, when your data isn't available locally. 
+If you specify the annotation's path, you can use the module's loading functions directly. Let's
 see an example.
 
 .. admonition:: Accessing annotations remotely example
@@ -230,19 +252,19 @@ see an example.
 Annotation classes
 ^^^^^^^^^^^^^^^^^^
 
-``mirdata`` uses several diffent data classes to store annotations. These data classes are meant to standarize the organization for
-all the loaders, and keep compatibility with `JAMS <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
+``mirdata`` defines annotation-specific data classes. These data classes are meant to standarize the format for
+all loaders, and are compatibly with `JAMS <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
-The list and descriptions of available annotation classes can be found `in this link <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.annotations>`_.
+The list and descriptions of available annotation classes can be found `at this link <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.annotations>`_.
 
-.. note:: These classes are extendable in case a certain loader requires it.
+.. note:: These classes may be extended in the case that a loader requires it.
 
 Iterating over datasets and annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In general, most datasets are a collection of tracks. Each track has an audio with its own annotations.
+In general, most datasets are a collection of tracks, and in most cases each track has an audio file along with annotations.
 
-With the ``load_tracks()`` method, all the tracks (so including their respective audio and annotations) can be loaded
-in a dictionary with the ids as keys and tracks as items.
+With the ``load_tracks()`` method, all tracks are loaded as a dictionary with the ids as keys and 
+track objects (which include their respective audio and annotations, which are lazy-loaded on access) as values.
 
 .. code-block:: python
 
@@ -251,41 +273,14 @@ in a dictionary with the ids as keys and tracks as items.
         print(key, track.title, track.audio_path)
 
 
-Alternatively, we can run over the ``track_ids`` list to access directly to each track in the dataset.
+Alternatively, we can loop over the ``track_ids`` list to directly access each track in the dataset.
 
 .. code-block:: python
 
     orchset = mirdata.initialize('orchset')
     for track_id in orchset.track_ids:
-        print(track_id, orchset.track(track_id).title,  orchset.track(track_id).audio_path)
 
-
-Working with remote index
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For the end user there is no difference between the remote and local indexes. However, indexes can get really large when there are a lot of tracks
-in the dataset. For that reason, sometimes storing and accessing an index remotely can be really convenient.
-
-However, to contribute to the library using remote indexes you have to add in ``utils.LargeData(...)`` the remote_index argument with a
-``download_utils.RemoteFileMetadata`` dictionary with the remote index information.
-
-.. code-block:: python
-    
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
-
-
-.. code-block:: python
-
-    REMOTE_INDEX = {
-        "REMOTE_INDEX": download_utils.RemoteFileMetadata(
-            filename="acousticbrainz_genre_index.json.zip",
-            url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
-            checksum="810f1c003f53cbe58002ba96e6d4d138",
-            destination_dir="",
-        )
-    }
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
-
+        print(track_id, orchset.track(track_id).title, orchset.track(track_id).audio_path)
 
 
 Basic example: including mirdata in your pipeline

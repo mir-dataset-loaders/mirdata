@@ -1,16 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import sys
 import pytest
 import numpy as np
 
 import mirdata
 from mirdata import core
-
-if sys.version_info.major == 3:
-    builtin_module_name = "builtins"
-else:
-    builtin_module_name = "__builtin__"
 
 
 def test_track_repr():
