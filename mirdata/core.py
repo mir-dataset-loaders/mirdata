@@ -84,12 +84,10 @@ class Dataset(object):
 
     Attributes:
         data_home (str): path where mirdata will look for the dataset
-        index (dict or None): the dataset's file index
         name (str): the identifier of the dataset
         bibtex (str or None): dataset citation/s in bibtex format
         remotes (dict or None): data to be downloaded
         download_info (str or None): download instructions or caveats
-        license_info (str or None): license of the dataset
         readme (str): information about the dataset
         track (function): a function which inputs a track_id (str) and
             returns (mirdata.core.Track or None)
