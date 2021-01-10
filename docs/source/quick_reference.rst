@@ -34,7 +34,6 @@ and may be homogeneous.
 Find the API documentation for each of the below datasets in :ref:`api`.
 
 .. include:: table.rst
-.. include:: table_.rst
 
 Annotation Types
 ================
