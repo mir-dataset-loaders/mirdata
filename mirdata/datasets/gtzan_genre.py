@@ -124,7 +124,8 @@ def load_audio(audio_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The gtzan_genre dataset
+    """
+    The gtzan_genre dataset
     """
 
     def __init__(self, data_home=None):

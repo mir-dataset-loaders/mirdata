@@ -250,7 +250,8 @@ def load_audio(audio_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The maestro dataset
+    """
+    The maestro dataset
     """
 
     def __init__(self, data_home=None):

@@ -429,7 +429,8 @@ def load_drum_events(midi_path, midi=None):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The groove_midi dataset
+    """
+    The groove_midi dataset
     """
 
     def __init__(self, data_home=None):

@@ -317,7 +317,8 @@ def load_lyrics(lyrics_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The ikala dataset
+    """
+    The ikala dataset
     """
 
     def __init__(self, data_home=None):

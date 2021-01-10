@@ -537,7 +537,8 @@ def load_phrases(phrases_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The saraga_carnatic dataset
+    """
+    The saraga_carnatic dataset
     """
 
     def __init__(self, data_home=None):

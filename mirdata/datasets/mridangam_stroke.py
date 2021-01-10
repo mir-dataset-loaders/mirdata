@@ -174,7 +174,8 @@ def load_audio(audio_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The mridangam_stroke dataset
+    """
+    The mridangam_stroke dataset
     """
 
     def __init__(self, data_home=None):

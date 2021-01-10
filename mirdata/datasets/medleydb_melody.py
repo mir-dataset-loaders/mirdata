@@ -252,7 +252,8 @@ def load_melody3(melody_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The medleydb_melody dataset
+    """
+    The medleydb_melody dataset
     """
 
     def __init__(self, data_home=None):

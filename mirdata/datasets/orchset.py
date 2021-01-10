@@ -297,7 +297,8 @@ def load_melody(melody_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The orchset dataset
+    """
+    The orchset dataset
     """
 
     def __init__(self, data_home=None):
