@@ -1,6 +1,14 @@
 .. _api:
 
 
+Initializing
+------------
+
+.. autofunction:: mirdata.initialize
+
+.. autofunction:: mirdata.list_datasets
+
+
 Dataset Loaders
 ---------------
 
@@ -213,9 +221,6 @@ tonality_classicaldb
 
 Core
 ----
-
-.. automodule:: mirdata.initialize
-   :members:
 
 .. automodule:: mirdata.core
    :members:

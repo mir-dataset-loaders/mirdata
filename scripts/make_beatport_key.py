@@ -4,8 +4,7 @@ import json
 import os
 
 
-beatport_key_INDEX_PATH = '../mirdata/indexes/beatport_key_index.json'
-BEATLES_ANNOTATION_SCHEMA = ['JAMS']
+beatport_key_INDEX_PATH = '../mirdata/datasets/indexes/beatport_key_index.json'
 
 
 def md5(file_path):
@@ -30,7 +29,11 @@ def make_beatport_key_index(data_path):
     meta_dir = os.path.join(data_path, 'meta')
     audio_dir = os.path.join(data_path, 'audio')
     key_dir = os.path.join(data_path, 'keys')
-    beatport_key_index = {}
+    beatport_key_index = {
+        'version': '1.0.0',
+        'tracks': {},
+        'metadata': None,
+    }
     for track_id, ann_dir in enumerate(sorted(os.listdir(key_dir))):
         if '.txt' in ann_dir:
             codec = '.mp3'
@@ -42,7 +45,7 @@ def make_beatport_key_index(data_path):
             else:
                 meta = (meta_path.replace(data_path + '/', ''), md5(meta_path))
 
-            beatport_key_index[track_id] = {
+            beatport_key_index['tracks'][track_id] = {
                 'audio': (audio_path.replace(data_path + '/', ''), md5(audio_path)),
                 'meta': meta,
                 'key': (chord_path.replace(data_path + '/', ''), md5(chord_path)),
