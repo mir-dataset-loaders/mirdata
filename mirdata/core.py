@@ -67,7 +67,9 @@ def docstring_inherit(parent):
 
 
 def copy_docs(original):
-    """Decorator function to copy docs from one function to another"""
+    """
+    Decorator function to copy docs from one function to another
+    """
 
     def wrapper(target):
         target.__doc__ = original.__doc__

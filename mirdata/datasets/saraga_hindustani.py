@@ -357,7 +357,7 @@ def load_tempo(tempo_path):
     Returns:
         dict:
             Dictionary of tempo information with the following keys:
-            
+
             - tempo: median tempo for the section in mātrās per minute (MPM)
             - matra_interval: tempo expressed as the duration of the mātra (essentially
               dividing 60 by tempo, expressed in seconds)
