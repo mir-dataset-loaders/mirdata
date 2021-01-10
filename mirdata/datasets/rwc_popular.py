@@ -342,7 +342,8 @@ def load_vocal_activity(vocal_activity_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The rwc_popular dataset"""
+    """The rwc_popular dataset
+    """
 
     def __init__(self, data_home=None):
         super().__init__(

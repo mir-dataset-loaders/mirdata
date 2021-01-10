@@ -271,7 +271,8 @@ def load_artist(metadata_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The beatport_key dataset"""
+    """The beatport_key dataset
+    """
 
     def __init__(self, data_home=None):
         super().__init__(

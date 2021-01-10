@@ -308,7 +308,8 @@ def _fix_newpoint(beat_positions):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The beatles dataset"""
+    """The beatles dataset
+    """
 
     def __init__(self, data_home=None):
         super().__init__(

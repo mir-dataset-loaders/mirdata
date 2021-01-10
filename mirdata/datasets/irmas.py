@@ -321,7 +321,8 @@ def load_pred_inst(annotation_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The irmas dataset"""
+    """The irmas dataset
+    """
 
     def __init__(self, data_home=None):
         super().__init__(

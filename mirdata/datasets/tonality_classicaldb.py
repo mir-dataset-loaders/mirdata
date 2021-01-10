@@ -288,7 +288,8 @@ def load_musicbrainz(musicbrainz_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The tonality_classicaldb dataset"""
+    """The tonality_classicaldb dataset
+    """
 
     def __init__(self, data_home=None):
         super().__init__(

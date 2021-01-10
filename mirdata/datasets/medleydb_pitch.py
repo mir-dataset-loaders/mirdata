@@ -195,7 +195,8 @@ def load_pitch(pitch_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The medleydb_pitch dataset"""
+    """The medleydb_pitch dataset
+    """
 
     def __init__(self, data_home=None):
         super().__init__(

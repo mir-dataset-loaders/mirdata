@@ -263,7 +263,8 @@ def load_tempo(tempo_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The giantsteps_tempo dataset"""
+    """The giantsteps_tempo dataset
+    """
 
     def __init__(self, data_home=None):
         super().__init__(

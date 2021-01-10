@@ -393,7 +393,8 @@ def load_extractor(path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The acousticbrainz genre dataset"""
+    """The acousticbrainz genre dataset
+    """
 
     def __init__(self, data_home=None, index=None):
         super().__init__(

@@ -177,7 +177,8 @@ def load_audio(audio_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The medley_solos_db dataset"""
+    """The medley_solos_db dataset
+    """
 
     def __init__(self, data_home=None):
         super().__init__(
