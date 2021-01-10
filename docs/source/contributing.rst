@@ -309,8 +309,29 @@ csv files).
 
 Before you submit your loader make sure to:
 
-1. Add your module to ``docs/source/mirdata.rst``
-2. Add your module to ``docs/source/quick_reference.rst``
+1. Add your module to ``docs/source/mirdata.rst`` following an alphabetical order
+2. Add your module to ``docs/source/table.rst`` following an alphabetical order as follows:
+
+.. code-block:: rst
+
+    * - Dataset
+      - Downloadable?
+      - Annotation Types
+      - Tracks
+      - License
+
+An example of this for the ``Beatport EDM key`` dataset:
+
+.. code-block:: rst
+
+   * - Beatport EDM key
+     - - audio: ✅
+       - annotations: ✅
+     - - global :ref:`key`
+     - 1486
+     - .. image:: https://licensebuttons.net/l/by-sa/3.0/88x31.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
 
 (you can check that this was done correctly by clicking on the readthedocs check when you open a PR)
 
