@@ -14,6 +14,8 @@ into a standard format to be used for experimenting or evaluating. ``mirdata`` d
 
     import mirdata
 
+    print(mirdata.list_datasets())
+
     tinysol = mirdata.initialize('tinysol')
     tinysol.download()
 
