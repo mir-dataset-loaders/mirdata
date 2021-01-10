@@ -353,14 +353,15 @@ def load_tempo(tempo_path):
     Returns:
         dict: 
             Dictionary of tempo information with the following keys:
-            * 'tempo': median tempo for the section in mātrās per minute (MPM)
-            * 'matra_interval': tempo expressed as the duration of the mātra (essentially
+            
+            - tempo: median tempo for the section in mātrās per minute (MPM)
+            - matra_interval: tempo expressed as the duration of the mātra (essentially
               dividing 60 by tempo, expressed in seconds)
-            * 'sama_interval': median duration of one tāl cycle in the section
-            * 'matras_per_cycle': indicator of the structure of the tāl, showing the number
+            - sama_interval: median duration of one tāl cycle in the section
+            - matras_per_cycle: indicator of the structure of the tāl, showing the number
               of mātrā in a cycle of the tāl of the recording
-            * 'start_time': start time of the section
-            * 'duration': duration of the section
+            - start_time: start time of the section
+            - duration: duration of the section
 
     """
     if tempo_path is None:
@@ -442,7 +443,7 @@ def load_sama(sama_path):
             beat_times.append(float(line[0]))
             beat_positions.append(1)
 
-    if not beat_times or beat_times[0] == -1.:
+    if not beat_times or beat_times[0] == -1.0:
         return None
 
     return annotations.BeatData(np.array(beat_times), np.array(beat_positions))

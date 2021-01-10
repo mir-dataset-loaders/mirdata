@@ -11,7 +11,7 @@ from mirdata import download_utils
 from mirdata import validate
 
 MAX_STR_LEN = 100
-
+DOCS_URL = "https://mirdata.readthedocs.io/en/latest/source/mirdata.html"
 
 ##### decorators ######
 
@@ -78,6 +78,7 @@ class Dataset(object):
         data_home (str): path where mirdata will look for the dataset
         name (str): the identifier of the dataset
         bibtex (str): dataset citation/s in bibtex format
+        readme (str): a link to information about the dataset
         remotes (dict): data to be downloaded
         track (core.Track): an uninstantiated Track object
         readme (str): information about the dataset
@@ -113,6 +114,7 @@ class Dataset(object):
         self.bibtex = bibtex
         self.remotes = remotes
         self._download_info = download_info
+        self.readme = "{}#module-mirdata.datasets.{}".format(DOCS_URL, self.name)
 
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)

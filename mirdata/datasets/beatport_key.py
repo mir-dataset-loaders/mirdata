@@ -350,4 +350,3 @@ class Dataset(core.Dataset):
                 s = s.replace(find, replace)
                 with open(filepath, "w") as f:
                     f.write(s)
-
