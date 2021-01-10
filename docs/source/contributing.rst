@@ -333,7 +333,8 @@ An example of this for the ``Beatport EDM key`` dataset:
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
 
-(you can check that this was done correctly by clicking on the readthedocs check when you open a PR)
+(you can check that this was done correctly by clicking on the readthedocs check when you open a PR). You can find license
+badges images and links `here <https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba>`_.
 
 Pull Request template
 ^^^^^^^^^^^^^^^^^^^^^
