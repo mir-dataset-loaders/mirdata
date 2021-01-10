@@ -131,12 +131,13 @@ REMOTE_INDEX = {
 DATA = core.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
 
 LICENSE_INFO = """
-The MediaEval AcousticBrainz Genre AllMusic dataset is offered free of charge for 
-internal non-commercial use only.  You may not redistribute, publically communicate 
-or modify it, unless expressly permitted by the Universitat Pompeu Fabra (UPF) or by 
-applicable law. The individual contents of the dataset may be protected by copyright, 
-and a non-transferrable limited license to reproduce and use the same is granted 
-for the indicated purpose only.
+This dataset is composed of 4 subdatasets. Three of them are Creative Commons Attribution 
+Non Commercial Share Alike 4.0 International and the other one is non-comercial. Details 
+about which license correspond to each subdataset can be found in the following websites:
+
+* https://zenodo.org/record/2553414#.X_nxnOn7RUI 
+* https://zenodo.org/record/2554044#.X_nw2en7RUI
+ 
  """
 
 
