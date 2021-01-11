@@ -73,6 +73,10 @@ DOWNLOAD_INFO = """
         ...
 """
 
+LICENSE_INFO = (
+    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License."
+)
+
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, os.path.join("dali_metadata.json"))
@@ -298,7 +302,8 @@ def load_annotations_class(annotations_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The dali dataset
+    """
+    The dali dataset
     """
 
     def __init__(self, data_home=None):
@@ -310,6 +315,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

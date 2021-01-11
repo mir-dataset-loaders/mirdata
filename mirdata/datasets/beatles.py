@@ -50,6 +50,10 @@ DOWNLOAD_INFO = """
     and copy the Beatles folder to {}
 """
 
+LICENSE_INFO = (
+    "Unfortunately we couldn't find the license information for the Beatles dataset."
+)
+
 
 class Track(core.Track):
     """Beatles track class
@@ -129,7 +133,7 @@ class Track(core.Track):
 
         Returns:
             jams.JAMS: return track data in jam format
-    
+
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
@@ -285,7 +289,7 @@ def load_sections(sections_path):
 
 def _fix_newpoint(beat_positions):
     """Fills in missing beat position labels by inferring the beat position
-        from neighboring beats.
+    from neighboring beats.
 
     """
     while np.any(beat_positions == "New Point"):
@@ -304,8 +308,8 @@ def _fix_newpoint(beat_positions):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The beatles dataset
-
+    """
+    The beatles dataset
     """
 
     def __init__(self, data_home=None):
@@ -317,6 +321,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

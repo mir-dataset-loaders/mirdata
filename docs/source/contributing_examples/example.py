@@ -17,7 +17,12 @@
 
 import logging
 import os
-# -- import whatever you need here
+import json
+import librosa
+import csv
+import numpy as np
+# -- import whatever you need here and remove
+# -- example imports you won't use
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -51,6 +56,11 @@ DOWNLOAD_INFO = """
 Include any information you want to be printed when dataset.download() is called.
 These can be instructions for how to download the dataset (e.g. request access on zenodo),
 caveats about the download, etc
+"""
+
+# -- Include the dataset's license information
+LICENSE_INFO = """
+The dataset's license information goes here.
 """
 
 # -- change this to load any top-level metadata
@@ -166,7 +176,7 @@ class MultiTrack(core.MultiTrack):
         self._data_home = data_home
         # these three attributes below must have exactly these names
         self.track_ids = [...] # define which track_ids should be part of the multitrack
-        self.tracks = {t: Track(t, self._data_home) for t in track_ids}
+        self.tracks = {t: Track(t, self._data_home) for t in self.track_ids}
         self.track_audio_property = "audio" # the property of Track which returns the relevant audio file for mixing
 
         # -- optionally add any multitrack specific attributes here

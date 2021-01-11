@@ -75,6 +75,8 @@ REMOTES = {
     )
 }
 
+LICENSE_INFO = "Creative Commons Attribution 4.0 International (CC BY 4.0) License."
+
 DRUM_MAPPING = {
     36: {"Roland": "Kick", "General MIDI": "Bass Drum 1", "Simplified": "Bass (36)"},
     38: {
@@ -427,7 +429,8 @@ def load_drum_events(midi_path, midi=None):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The groove_midi dataset
+    """
+    The groove_midi dataset
     """
 
     def __init__(self, data_home=None):
@@ -438,6 +441,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)
@@ -464,7 +468,7 @@ class Dataset(core.Dataset):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
             force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. 
+                If True, existing files are overwritten by the downloaded files.
                 By default False.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.
