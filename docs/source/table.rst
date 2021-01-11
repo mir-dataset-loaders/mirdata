@@ -204,7 +204,7 @@
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
    * - Saraga Carnatic
-     - - audio: ✅ (multichannel)
+     - - audio: ✅
        - annotations: ✅
      - - :ref:`f0`
        - Vocal :ref:`f0`
