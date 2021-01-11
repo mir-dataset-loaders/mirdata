@@ -1,52 +1,56 @@
 # -*- coding: utf-8 -*-
 """GuitarSet Loader
 
-GuitarSet provides audio recordings of a variety of musical excerpts
-played on an acoustic guitar, along with time-aligned annotations
-including pitch contours, string and fret positions, chords, beats,
-downbeats, and keys.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-GuitarSet contains 360 excerpts that are close to 30 seconds in length.
-The 360 excerpts are the result of the following combinations:
+    GuitarSet provides audio recordings of a variety of musical excerpts
+    played on an acoustic guitar, along with time-aligned annotations
+    including pitch contours, string and fret positions, chords, beats,
+    downbeats, and keys.
 
-- 6 players
-- 2 versions: comping (harmonic accompaniment) and soloing (melodic improvisation)
-- 5 styles: Rock, Singer-Songwriter, Bossa Nova, Jazz, and Funk
-- 3 Progressions: 12 Bar Blues, Autumn Leaves, and Pachelbel Canon.
-- 2 Tempi: slow and fast.
+    GuitarSet contains 360 excerpts that are close to 30 seconds in length.
+    The 360 excerpts are the result of the following combinations:
 
-The tonality (key) of each excerpt is sampled uniformly at random.
+    - 6 players
+    - 2 versions: comping (harmonic accompaniment) and soloing (melodic improvisation)
+    - 5 styles: Rock, Singer-Songwriter, Bossa Nova, Jazz, and Funk
+    - 3 Progressions: 12 Bar Blues, Autumn Leaves, and Pachelbel Canon.
+    - 2 Tempi: slow and fast.
 
-GuitarSet was recorded with the help of a hexaphonic pickup, which outputs
-signals for each string separately, allowing automated note-level annotation.
-Excerpts are recorded with both the hexaphonic pickup and a Neumann U-87
-condenser microphone as reference.
-3 audio recordings are provided with each excerpt with the following suffix:
+    The tonality (key) of each excerpt is sampled uniformly at random.
 
-- hex: original 6 channel wave file from hexaphonic pickup
-- hex_cln: hex wave files with interference removal applied
-- mic: monophonic recording from reference microphone
-- mix: monophonic mixture of original 6 channel file
+    GuitarSet was recorded with the help of a hexaphonic pickup, which outputs
+    signals for each string separately, allowing automated note-level annotation.
+    Excerpts are recorded with both the hexaphonic pickup and a Neumann U-87
+    condenser microphone as reference.
+    3 audio recordings are provided with each excerpt with the following suffix:
 
-Each of the 360 excerpts has an accompanying JAMS file which stores 16 annotations.
-Pitch:
+    - hex: original 6 channel wave file from hexaphonic pickup
+    - hex_cln: hex wave files with interference removal applied
+    - mic: monophonic recording from reference microphone
+    - mix: monophonic mixture of original 6 channel file
 
-- 6 pitch_contour annotations (1 per string)
-- 6 midi_note annotations (1 per string)
+    Each of the 360 excerpts has an accompanying JAMS file which stores 16 annotations.
+    Pitch:
 
-Beat and Tempo:
+    - 6 pitch_contour annotations (1 per string)
+    - 6 midi_note annotations (1 per string)
 
-- 1 beat_position annotation
-- 1 tempo annotation
+    Beat and Tempo:
 
-Chords:
+    - 1 beat_position annotation
+    - 1 tempo annotation
 
-- 2 chord annotations: instructed and performed. The instructed chord annotation
-is a digital version of the lead sheet that's provided to the player, and the
-performed chord annotations are inferred from note annotations, using
-segmentation and root from the digital lead sheet annotation.
+    Chords:
 
-For more details, please visit: http://github.com/marl/guitarset/
+    - 2 chord annotations: instructed and performed. The instructed chord annotation
+      is a digital version of the lead sheet that's provided to the player, and the
+      performed chord annotations are inferred from note annotations, using
+      segmentation and root from the digital lead sheet annotation.
+
+    For more details, please visit: http://github.com/marl/guitarset/
+
 """
 import logging
 import os
@@ -56,7 +60,7 @@ import numpy as np
 
 from mirdata import download_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import annotations
 
 
 BIBTEX = """@inproceedings{xi2018guitarset,
@@ -106,7 +110,7 @@ _STYLE_DICT = {
     "Funk": "Funk",
 }
 _GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
-DATA = utils.LargeData("guitarset_index.json")
+DATA = core.LargeData("guitarset_index.json")
 
 
 class Track(core.Track):
@@ -130,16 +134,38 @@ class Track(core.Track):
         tempo (float): BPM of the track
         track_id (str): track id
 
+    Cached Properties:
+        beats (BeatData): beat positions
+        leadsheet_chords (ChordData): chords as written in the leadsheet
+        inferred_chords (ChordData): chords inferred from played transcription
+        key_mode (KeyData): key and mode
+        pitch_contours (dict):
+            Pitch contours per string
+            - 'E': F0Data(...)
+            - 'A': F0Data(...)
+            - 'D': F0Data(...)
+            - 'G': F0Data(...)
+            - 'B': F0Data(...)
+            - 'e': F0Data(...)
+        notes (dict):
+            Notes per string
+            - 'E': NoteData(...)
+            - 'A': NoteData(...)
+            - 'D': NoteData(...)
+            - 'G': NoteData(...)
+            - 'B': NoteData(...)
+            - 'e': NoteData(...)
+
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in GuitarSet".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         self.audio_hex_cln_path = os.path.join(
             self._data_home, self._track_paths["audio_hex_cln"][0]
@@ -162,94 +188,102 @@ class Track(core.Track):
         self.tempo = float(tempo)
         self.style = _STYLE_DICT[style[:-1]]
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
-        """BeatData: the track's beat positions"""
         return load_beats(self.jams_path)
 
-    @utils.cached_property
+    @core.cached_property
     def leadsheet_chords(self):
-        """ChordData: the track's chords as written in the leadsheet"""
         if self.mode == "solo":
             logging.info(
                 "Chord annotations for solo excerpts are the same with the comp excerpt."
             )
         return load_chords(self.jams_path, leadsheet_version=True)
 
-    @utils.cached_property
+    @core.cached_property
     def inferred_chords(self):
-        """ChordData: the track's chords inferred from played transcription"""
         if self.mode == "solo":
             logging.info(
-                "Chord annotations for solo excerpts are the same with the comp excerpt."
+                "Chord annotations for solo excerpts are the same as the comp excerpt."
             )
         return load_chords(self.jams_path, leadsheet_version=False)
 
-    @utils.cached_property
+    @core.cached_property
     def key_mode(self):
-        """KeyData: the track's key and mode"""
         return load_key_mode(self.jams_path)
 
-    @utils.cached_property
+    @core.cached_property
     def pitch_contours(self):
-        """(dict): a dict that contains 6 F0Data.
-        From Low E string to high e string.
-        {
-            'E': F0Data(...),
-            'A': F0Data(...),
-            ...
-            'e': F0Data(...)
-        }
-        """
         contours = {}
         # iterate over 6 strings
         for i in range(6):
             contours[_GUITAR_STRINGS[i]] = load_pitch_contour(self.jams_path, i)
         return contours
 
-    @utils.cached_property
+    @core.cached_property
     def notes(self):
-        """dict: a dict that contains 6 NoteData.
-        From Low E string to high e string.
-        {
-            'E': NoteData(...),
-            'A': NoteData(...),
-            ...
-            'e': NoteData(...)
-        }
-        """
         notes = {}
         # iterate over 6 strings
         for i in range(6):
-            notes[_GUITAR_STRINGS[i]] = load_note_ann(self.jams_path, i)
+            notes[_GUITAR_STRINGS[i]] = load_notes(self.jams_path, i)
         return notes
 
     @property
     def audio_mic(self):
-        """(np.ndarray, float): stereo microphone audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         audio, sr = load_audio(self.audio_mic_path)
         return audio, sr
 
     @property
     def audio_mix(self):
-        """(np.ndarray, float): stereo mix audio signal, sample rate"""
+        """Mixture audio (mono)
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         audio, sr = load_audio(self.audio_mix_path)
         return audio, sr
 
     @property
     def audio_hex(self):
-        """(np.ndarray, float): raw hexaphonic audio signal, sample rate"""
+        """Hexaphonic audio (6-channels) with one channel per string
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         audio, sr = load_multitrack_audio(self.audio_hex_path)
         return audio, sr
 
     @property
     def audio_hex_cln(self):
-        """(np.ndarray, float): bleed-removed hexaphonic audio signal, sample rate"""
+        """Hexaphonic audio (6-channels) with one channel per string
+           after bleed removal
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         audio, sr = load_multitrack_audio(self.audio_hex_cln_path)
         return audio, sr
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams.load(self.jams_path)
 
 
@@ -260,8 +294,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -276,8 +310,8 @@ def load_multitrack_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -286,25 +320,35 @@ def load_multitrack_audio(audio_path):
 
 
 def load_beats(jams_path):
+    """Load a Guitarset beats annotation.
+
+    Args:
+        jams_path (str): Path of the jams annotation file
+
+    Returns:
+        BeatData: Beat data
+    """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
     anno = jam.search(namespace="beat_position")[0]
     times, values = anno.to_event_values()
     positions = [int(v["position"]) for v in values]
-    return utils.BeatData(times, positions)
+    return annotations.BeatData(times, np.array(positions))
 
 
 def load_chords(jams_path, leadsheet_version=True):
-    """
+    """Load a guitarset chord annotation.
+
     Args:
         jams_path (str): Path of the jams annotation file
-        leadsheet_version (Bool)
+        leadsheet_version (Bool):
             Whether or not to load the leadsheet version of the chord annotation
             If False, load the infered version.
 
     Returns:
-        (ChordData): Chord data
+        ChordData: Chord data
+
     """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
@@ -314,25 +358,38 @@ def load_chords(jams_path, leadsheet_version=True):
     else:
         anno = jam.search(namespace="chord")[1]
     intervals, values = anno.to_interval_values()
-    return utils.ChordData(intervals, values)
+    return annotations.ChordData(intervals, values)
 
 
 def load_key_mode(jams_path):
+    """Load a Guitarset key-mode annotation.
+
+    Args:
+        jams_path (str): Path of the jams annotation file
+
+    Returns:
+        KeyData: Key data
+
+    """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
     jam = jams.load(jams_path)
     anno = jam.search(namespace="key_mode")[0]
     intervals, values = anno.to_interval_values()
-    return utils.KeyData(intervals[:, 0], intervals[:, 1], values)
+    return annotations.KeyData(intervals, values)
 
 
 def load_pitch_contour(jams_path, string_num):
-    """
+    """Load a guitarset pitch contour annotation for a given string
+
     Args:
         jams_path (str): Path of the jams annotation file
+        string_num (int), in range(6): Which string to load.
+            0 is the Low E string, 5 is the high e string.
 
-    string_num (int), in range(6): Which string to load.
-        0 is the Low E string, 5 is the high e string.
+    Returns:
+        F0Data: Pitch contour data for the given string
+
     """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
@@ -340,17 +397,23 @@ def load_pitch_contour(jams_path, string_num):
     anno_arr = jam.search(namespace="pitch_contour")
     anno = anno_arr.search(data_source=str(string_num))[0]
     times, values = anno.to_event_values()
+    if len(times) == 0:
+        return None
     frequencies = [v["frequency"] for v in values]
-    return utils.F0Data(times, frequencies, np.ones_like(times))
+    return annotations.F0Data(times, np.array(frequencies))
 
 
-def load_note_ann(jams_path, string_num):
-    """
+def load_notes(jams_path, string_num):
+    """Load a guitarset note annotation for a given string
+
     Args:
         jams_path (str): Path of the jams annotation file
+        string_num (int), in range(6): Which string to load.
+            0 is the Low E string, 5 is the high e string.
 
-    string_num (int), in range(6): Which string to load.
-        0 is the Low E string, 5 is the high e string.
+    Returns:
+        NoteData: Note data for the given string
+
     """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
@@ -358,4 +421,50 @@ def load_note_ann(jams_path, string_num):
     anno_arr = jam.search(namespace="note_midi")
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()
-    return utils.NoteData(intervals, values, np.ones_like(values))
+    if len(values) == 0:
+        return None
+    return annotations.NoteData(intervals, np.array(values))
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The guitarset dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="guitarset",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_multitrack_audio)
+    def load_multitrack_audio(self, *args, **kwargs):
+        return load_multitrack_audio(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)
+
+    @core.copy_docs(load_chords)
+    def load_chords(self, *args, **kwargs):
+        return load_chords(*args, **kwargs)
+
+    @core.copy_docs(load_key_mode)
+    def load_key_mode(self, *args, **kwargs):
+        return load_key_mode(*args, **kwargs)
+
+    @core.copy_docs(load_pitch_contour)
+    def load_pitch_contour(self, *args, **kwargs):
+        return load_pitch_contour(*args, **kwargs)
+
+    @core.copy_docs(load_notes)
+    def load_notes(self, *args, **kwargs):
+        return load_notes(*args, **kwargs)

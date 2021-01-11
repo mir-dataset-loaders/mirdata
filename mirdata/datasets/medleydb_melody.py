@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 """MedleyDB melody Dataset Loader
 
-MedleyDB is a dataset of annotated, royalty-free multitrack recordings.
-MedleyDB was curated primarily to support research on melody extraction,
-addressing important shortcomings of existing collections. For each song
-we provide melody f0 annotations as well as instrument activations for
-evaluating automatic instrument recognition.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: https://medleydb.weebly.com
+    MedleyDB melody is a subset of the MedleyDB dataset containing only
+    the mixtures and melody annotations.
+
+    MedleyDB is a dataset of annotated, royalty-free multitrack recordings.
+    MedleyDB was curated primarily to support research on melody extraction,
+    addressing important shortcomings of existing collections. For each song
+    we provide melody f0 annotations as well as instrument activations for
+    evaluating automatic instrument recognition.
+
+    For more details, please visit: https://medleydb.weebly.com
 
 """
 
@@ -21,7 +27,7 @@ import os
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import annotations
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
@@ -55,7 +61,7 @@ def _load_metadata(data_home):
     return metadata
 
 
-DATA = utils.LargeData("medleydb_melody_index.json", _load_metadata)
+DATA = core.LargeData("medleydb_melody_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -77,10 +83,15 @@ class Track(core.Track):
         title (str): title
         track_id (str): track id
 
+    Cached Properties:
+        melody1 (F0Data): the pitch of the single most predominant source (often the voice)
+        melody2 (F0Data): the pitch of the predominant source for each point in time
+        melody3 (MultiF0Data): the pitch of any melodic source. Allows for more than one f0 value at a time
+
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in medleydb_melody".format(track_id)
             )
@@ -88,7 +99,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.melody1_path = os.path.join(
             self._data_home, self._track_paths["melody1"][0]
         )
@@ -120,29 +131,37 @@ class Track(core.Track):
         self.is_instrumental = self._track_metadata["is_instrumental"]
         self.n_sources = self._track_metadata["n_sources"]
 
-    @utils.cached_property
+    @core.cached_property
     def melody1(self):
-        """F0Data: The pitch of the single most predominant source (often the voice)"""
         return load_melody(self.melody1_path)
 
-    @utils.cached_property
+    @core.cached_property
     def melody2(self):
-        """F0Data: The pitch of the predominant source for each point in time"""
         return load_melody(self.melody2_path)
 
-    @utils.cached_property
+    @core.cached_property
     def melody3(self):
-        """MultipitchData: The pitch of any melodic source. Allows for more than one f0 value at a time."""
         return load_melody3(self.melody3_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
-        # jams does not support multipitch, so we skip melody3
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
+        # jams does not support multiF0, so we skip melody3
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.melody1, "melody1"), (self.melody2, "melody2")],
@@ -157,8 +176,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -168,6 +187,18 @@ def load_audio(audio_path):
 
 
 def load_melody(melody_path):
+    """Load a MedleyDB melody1 or melody2 annotation file
+
+    Args:
+        melody_path (str): path to a melody annotation file
+
+    Raises:
+        IOError: if melody_path does not exist
+
+    Returns:
+        F0Data: melody data
+
+    """
     if not os.path.exists(melody_path):
         raise IOError("melody_path {} does not exist".format(melody_path))
 
@@ -182,11 +213,23 @@ def load_melody(melody_path):
     times = np.array(times)
     freqs = np.array(freqs)
     confidence = (freqs > 0).astype(float)
-    melody_data = utils.F0Data(times, freqs, confidence)
+    melody_data = annotations.F0Data(times, freqs, confidence)
     return melody_data
 
 
 def load_melody3(melody_path):
+    """Load a MedleyDB melody3 annotation file
+
+    Args:
+        melody_path (str): melody 3 melody annotation path
+
+    Raises:
+        IOError: if melody_path does not exist
+
+    Returns:
+        MultiF0Data: melody 3 annotation data
+
+    """
     if not os.path.exists(melody_path):
         raise IOError("melody_path {} does not exist".format(melody_path))
 
@@ -201,5 +244,33 @@ def load_melody3(melody_path):
             conf_list.append([float(float(v) > 0) for v in line[1:]])
 
     times = np.array(times)
-    melody_data = utils.MultipitchData(times, freqs_list, conf_list)
+    melody_data = annotations.MultiF0Data(times, freqs_list, conf_list)
     return melody_data
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The medleydb_melody dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="medleydb_melody",
+            track_object=Track,
+            bibtex=BIBTEX,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_melody)
+    def load_melody(self, *args, **kwargs):
+        return load_melody(*args, **kwargs)
+
+    @core.copy_docs(load_melody3)
+    def load_melody3(self, *args, **kwargs):
+        return load_melody3(*args, **kwargs)

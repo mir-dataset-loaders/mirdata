@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
 """iKala Dataset Loader
 
-The iKala dataset is comprised of 252 30-second excerpts sampled from 206 iKala
-songs (plus 100 hidden excerpts reserved for MIREX).
-The music accompaniment and the singing voice are recorded at the left and right
-channels respectively and can be found under the Wavfile directory.
-In addition, the human-labeled pitch contours and timestamped lyrics can be
-found under PitchLabel and Lyrics respectively.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: http://mac.citi.sinica.edu.tw/ikala/
+    The iKala dataset is comprised of 252 30-second excerpts sampled from 206 iKala
+    songs (plus 100 hidden excerpts reserved for MIREX).
+    The music accompaniment and the singing voice are recorded at the left and right
+    channels respectively and can be found under the Wavfile directory.
+    In addition, the human-labeled pitch contours and timestamped lyrics can be
+    found under PitchLabel and Lyrics respectively.
+
+    For more details, please visit: http://mac.citi.sinica.edu.tw/ikala/
+
 """
 
 import csv
@@ -20,12 +24,13 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import annotations
 
 
 BIBTEX = """@inproceedings{chan2015vocal,
     title={Vocal activity informed singing voice separation with the iKala dataset},
-    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and Jang, Roger},
+    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and 
+    Jang, Roger},
     booktitle={2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
     pages={718--722},
     year={2015},
@@ -74,7 +79,7 @@ def _load_metadata(data_home):
     return singer_map
 
 
-DATA = utils.LargeData("ikala_index.json", _load_metadata)
+DATA = core.LargeData("ikala_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -92,10 +97,14 @@ class Track(core.Track):
         song_id (str): song id of the track
         track_id (str): track id
 
+    Cached Properties:
+        f0 (F0Data): human-annotated singing voice pitch
+        lyrics (LyricsData): human-annotated lyrics
+
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in iKala".format(track_id))
 
         self.track_id = track_id
@@ -103,7 +112,7 @@ class Track(core.Track):
         metadata = DATA.metadata(data_home)
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.f0_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
         self.lyrics_path = os.path.join(self._data_home, self._track_paths["lyrics"][0])
 
@@ -116,33 +125,54 @@ class Track(core.Track):
         else:
             self.singer_id = None
 
-    @utils.cached_property
+    @core.cached_property
     def f0(self):
-        """F0Data: The human-annotated singing voice pitch"""
         return load_f0(self.f0_path)
 
-    @utils.cached_property
+    @core.cached_property
     def lyrics(self):
-        """LyricData: The human-annotated lyrics"""
         return load_lyrics(self.lyrics_path)
 
     @property
     def vocal_audio(self):
-        """(np.ndarray, float): mono vocal audio signal, sample rate"""
+        """solo vocal audio (mono)
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_vocal_audio(self.audio_path)
 
     @property
     def instrumental_audio(self):
-        """(np.ndarray, float): mono instrumental audio signal, sample rate"""
+        """instrumental audio (mono)
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_instrumental_audio(self.audio_path)
 
     @property
     def mix_audio(self):
-        """(np.ndarray, float): mono mixture audio signal, sample rate"""
+        """mixture audio (mono)
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_mix_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.f0, None)],
@@ -157,14 +187,14 @@ class Track(core.Track):
 
 
 def load_vocal_audio(audio_path):
-    """Load an ikala vocal.
+    """Load ikala vocal audio
 
     Args:
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -176,14 +206,14 @@ def load_vocal_audio(audio_path):
 
 
 def load_instrumental_audio(audio_path):
-    """Load an ikala instrumental.
+    """Load ikala instrumental audio
 
     Args:
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -201,8 +231,8 @@ def load_mix_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
@@ -214,6 +244,18 @@ def load_mix_audio(audio_path):
 
 
 def load_f0(f0_path):
+    """Load an ikala f0 annotation
+
+    Args:
+        f0_path (str): path to f0 annotation file
+
+    Raises:
+        IOError: If f0_path does not exist
+
+    Returns:
+        F0Data: the f0 annotation data
+
+    """
     if not os.path.exists(f0_path):
         raise IOError("f0_path {} does not exist".format(f0_path))
 
@@ -223,11 +265,23 @@ def load_f0(f0_path):
     f0_hz = librosa.midi_to_hz(f0_midi) * (f0_midi > 0)
     confidence = (f0_hz > 0).astype(float)
     times = (np.arange(len(f0_midi)) * TIME_STEP) + (TIME_STEP / 2.0)
-    f0_data = utils.F0Data(times, f0_hz, confidence)
+    f0_data = annotations.F0Data(times, f0_hz, confidence)
     return f0_data
 
 
 def load_lyrics(lyrics_path):
+    """Load an ikala lyrics annotation
+
+    Args:
+        lyrics_path (str): path to lyric annotation file
+
+    Raises:
+        IOError: if lyrics_path does not exist
+
+    Returns:
+        LyricData: lyric annotation data
+
+    """
     if not os.path.exists(lyrics_path):
         raise IOError("lyrics_path {} does not exist".format(lyrics_path))
 
@@ -244,14 +298,48 @@ def load_lyrics(lyrics_path):
             lyrics.append(line[2])
             if len(line) > 2:
                 pronunciation = " ".join(line[3:])
-                pronunciations.append(pronunciation if pronunciation != "" else None)
+                pronunciations.append(pronunciation)
             else:
-                pronunciations.append(None)
+                pronunciations.append("")
 
-    lyrics_data = utils.LyricData(
-        np.array(start_times),
-        np.array(end_times),
-        np.array(lyrics),
-        np.array(pronunciations),
+    lyrics_data = annotations.LyricData(
+        np.array([start_times, end_times]).T, lyrics, pronunciations,
     )
     return lyrics_data
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The ikala dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="ikala",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_vocal_audio)
+    def load_vocal_audio(self, *args, **kwargs):
+        return load_vocal_audio(*args, **kwargs)
+
+    @core.copy_docs(load_instrumental_audio)
+    def load_instrumental_audio(self, *args, **kwargs):
+        return load_instrumental_audio(*args, **kwargs)
+
+    @core.copy_docs(load_mix_audio)
+    def load_mix_audio(self, *args, **kwargs):
+        return load_mix_audio(*args, **kwargs)
+
+    @core.copy_docs(load_f0)
+    def load_f0(self, *args, **kwargs):
+        return load_f0(*args, **kwargs)
+
+    @core.copy_docs(load_lyrics)
+    def load_lyrics(self, *args, **kwargs):
+        return load_lyrics(*args, **kwargs)

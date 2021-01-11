@@ -195,7 +195,7 @@ def test_download_zip_file(mocker, mock_file, mock_unzip):
     mock_file.return_value = "foo"
     download_utils.download_zip_file("a", "b", True)
 
-    mock_file.assert_called_once_with("a", "b", True)
+    mock_file.assert_called_once_with("a", "b", True, True)
     mock_unzip.assert_called_once_with("foo", cleanup=True)
     if os.path.exists('a'):
         shutil.rmtree('a')
@@ -205,7 +205,7 @@ def test_download_tar_file(mocker, mock_file, mock_untar):
     mock_file.return_value = "foo"
     download_utils.download_tar_file("a", "b", True)
 
-    mock_file.assert_called_once_with("a", "b", True)
+    mock_file.assert_called_once_with("a", "b", True, True)
     mock_untar.assert_called_once_with("foo", cleanup=True)
     if os.path.exists('a'):
         shutil.rmtree('a')
@@ -230,8 +230,12 @@ def test_extractall_cp437(mocker, mock_file, mock_unzip):
     for expected_file in expected_files:
         expected_file_location = os.path.join('tests', 'resources', expected_file)
         assert not os.path.exists(expected_file_location)
-    true_files = [file for file in os.listdir(os.path.join('tests','resources')) if re.match(r'(pic.*).jpg', file) or re.match(r'(Beno.*).txt', file)]
+    true_files = [
+        file
+        for file in os.listdir(os.path.join('tests', 'resources'))
+        if re.match(r'(pic.*).jpg', file) or re.match(r'(Beno.*).txt', file)
+    ]
     for true_file in true_files:
         true_file_location = os.path.join('tests', 'resources', true_file)
         os.remove(true_file_location)
-    shutil.rmtree(os.path.join('tests', 'resources','__MACOSX'))
+    shutil.rmtree(os.path.join('tests', 'resources', '__MACOSX'))

@@ -1,26 +1,30 @@
 # -*- coding: utf-8 -*-
 """Medley-solos-DB Dataset Loader.
 
-Medley-solos-DB is a cross-collection dataset for automatic musical instrument
-recognition in solo recordings.
-It consists of a training set of 3-second audio clips, which are extracted from
-the MedleyDB dataset (Bittner et al., ISMIR 2014) as well as a test set of
-3-second clips, which are extracted from the solosDB dataset (Essid et al.,
-IEEE TASLP 2009).
-Each of these clips contains a single instrument among a taxonomy of eight:
+.. admonition:: Dataset Info
+    :class: dropdown
 
-    0. clarinet,
-    1. distorted electric guitar,
-    2. female singer,
-    3. flute,
-    4. piano,
-    5. tenor saxophone,
-    6. trumpet, and
-    7. violin.
+    Medley-solos-DB is a cross-collection dataset for automatic musical instrument
+    recognition in solo recordings. It consists of a training set of 3-second audio 
+    clips, which are extracted from the MedleyDB dataset (Bittner et al., ISMIR 2014) 
+    as well as a test set of 3-second clips, which are extracted from the solosDB 
+    dataset (Essid et al., IEEE TASLP 2009).
 
-The Medley-solos-DB dataset is the dataset that is used in the benchmarks of
-musical instrument recognition in the publications of Lostanlen and Cella
-(ISMIR 2016) and Andén et al. (IEEE TSP 2019).
+    Each of these clips contains a single instrument among a taxonomy of eight:
+
+        0. clarinet,
+        1. distorted electric guitar,
+        2. female singer,
+        3. flute,
+        4. piano,
+        5. tenor saxophone,
+        6. trumpet, and
+        7. violin.
+
+    The Medley-solos-DB dataset is the dataset that is used in the benchmarks of
+    musical instrument recognition in the publications of Lostanlen and Cella
+    (ISMIR 2016) and Andén et al. (IEEE TSP 2019).
+
 """
 
 import csv
@@ -31,7 +35,6 @@ import os
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 BIBTEX = """@inproceedings{lostanlen2019ismir,
     title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
@@ -82,7 +85,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("medley_solos_db_index.json", _load_metadata)
+DATA = core.LargeData("medley_solos_db_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -102,7 +105,7 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in Medley-solos-DB".format(track_id)
             )
@@ -110,7 +113,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -132,11 +135,22 @@ class Track(core.Track):
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path, metadata=self._track_metadata
         )
@@ -149,11 +163,31 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 
     return librosa.load(audio_path, sr=22050, mono=True)
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The medley_solos_db dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="medley_solos_db",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)

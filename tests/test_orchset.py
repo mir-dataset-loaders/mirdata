@@ -3,7 +3,7 @@ import os, shutil
 import numpy as np
 
 from mirdata.datasets import orchset
-from mirdata import utils, download_utils
+from mirdata import annotations, download_utils
 from tests.test_utils import run_track_tests
 
 
@@ -33,7 +33,7 @@ def test_track():
         "only_brass": False,
     }
 
-    expected_property_types = {"melody": utils.F0Data}
+    expected_property_types = {"melody": annotations.F0Data}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -71,7 +71,7 @@ def test_load_melody():
     melody_data = orchset.load_melody(melody_path)
 
     # check types
-    assert type(melody_data) == utils.F0Data
+    assert type(melody_data) == annotations.F0Data
     assert type(melody_data.times) is np.ndarray
     assert type(melody_data.frequencies) is np.ndarray
     assert type(melody_data.confidence) is np.ndarray
@@ -178,7 +178,9 @@ def test_download(httpserver):
             destination_dir=None,
         )
     }
-    orchset._download(data_home, remotes, None, None, False, True)
+    dataset = orchset.Dataset(data_home)
+    dataset.remotes = remotes
+    dataset.download(remotes, False, True)
 
     assert os.path.exists(data_home)
     assert not os.path.exists(os.path.join(data_home, "Orchset"))

@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """RWC Popular Dataset Loader
 
-The Popular Music Database consists of 100 songs — 20 songs with English lyrics
-performed in the style of popular music typical of songs on the American hit
-charts in the 1980s, and 80 songs with Japanese lyrics performed in the style of
-modern Japanese popular music typical of songs on the Japanese hit charts in
-the 1990s.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
+    The Popular Music Database consists of 100 songs — 20 songs with English lyrics
+    performed in the style of popular music typical of songs on the American hit
+    charts in the 1980s, and 80 songs with Japanese lyrics performed in the style of
+    modern Japanese popular music typical of songs on the Japanese hit charts in
+    the 1990s.
+
+    For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
+
 """
 import csv
 import logging
@@ -19,7 +23,7 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import annotations
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (
@@ -142,7 +146,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("rwc_popular_index.json", _load_metadata)
+DATA = core.LargeData("rwc_popular_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -162,7 +166,7 @@ class Track(core.Track):
         instruments (str): List of used instruments
         piece_number (str): Piece number, [1-50]
         sections_path (str): path of the section annotation file
-        singer_information (str): TODO
+        singer_information (str): could be male, female or vocal group
         suffix (str): M01-M04
         tempo (str): Tempo of the track in BPM
         title (str): title
@@ -170,10 +174,16 @@ class Track(core.Track):
         track_number (str): CD track number
         voca_inst_path (str): path of the vocal/instrumental annotation file
 
+    Cached Properties:
+        sections (SectionData): human-labeled section annotation
+        beats (BeatData): human-labeled beat annotation
+        chords (ChordData): human-labeled chord annotation
+        vocal_instrument_activity (EventData): human-labeled vocal/instrument activity
+
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in RWC-Popular".format(track_id)
             )
@@ -181,7 +191,7 @@ class Track(core.Track):
         self.track_id = track_id
         self._data_home = data_home
 
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.sections_path = os.path.join(
             self._data_home, self._track_paths["sections"][0]
         )
@@ -222,33 +232,40 @@ class Track(core.Track):
         self.instruments = self._track_metadata["instruments"]
         self.drum_information = self._track_metadata["drum_information"]
 
-    @utils.cached_property
+    @core.cached_property
     def sections(self):
-        """SectionData: human-labeled section annotation"""
         return load_sections(self.sections_path)
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
-        """BeatData: human-labeled beat annotation"""
         return load_beats(self.beats_path)
 
-    @utils.cached_property
+    @core.cached_property
     def chords(self):
-        """ChordData: human-labeled chord annotation"""
         return load_chords(self.chords_path)
 
-    @utils.cached_property
+    @core.cached_property
     def vocal_instrument_activity(self):
-        """EventData: human-labeled vocal/instrument activity"""
-        return load_voca_inst(self.voca_inst_path)
+        return load_vocal_activity(self.voca_inst_path)
 
     @property
     def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+           * np.ndarray - audio signal
+           * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.beats, None)],
@@ -259,6 +276,15 @@ class Track(core.Track):
 
 
 def load_chords(chords_path):
+    """Load rwc chord data from a file
+
+    Args:
+        chords_path (str): path to chord annotation file
+
+    Returns:
+        ChordData: chord data
+
+    """
     if not os.path.exists(chords_path):
         raise IOError("chords_path {} does not exist".format(chords_path))
 
@@ -274,18 +300,29 @@ def load_chords(chords_path):
                 ends.append(float(line[1]))
                 chords.append(line[2])
 
-    return utils.ChordData(np.array([begs, ends]).T, chords)
+    return annotations.ChordData(np.array([begs, ends]).T, chords)
 
 
-def load_voca_inst(voca_inst_path):
-    if not os.path.exists(voca_inst_path):
-        raise IOError("voca_inst_path {} does not exist".format(voca_inst_path))
+def load_vocal_activity(vocal_activity_path):
+    """Load rwc vocal activity data from a file
+
+    Args:
+        vocal_activity_path (str): path to vocal activity annotation file
+
+    Returns:
+        EventData: vocal activity data
+
+    """
+    if not os.path.exists(vocal_activity_path):
+        raise IOError(
+            "vocal_activity_path {} does not exist".format(vocal_activity_path)
+        )
 
     begs = []  # timestamps of vocal-instrument activity beginnings
     ends = []  # timestamps of vocal-instrument activity endings
     events = []  # vocal-instrument activity labels
 
-    with open(voca_inst_path, "r") as fhandle:
+    with open(vocal_activity_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter="\t")
         raw_data = []
         for line in reader:
@@ -299,4 +336,41 @@ def load_voca_inst(voca_inst_path):
             ends.append(float(raw_data[i + 1][0]))
             events.append(raw_data[i][1])
 
-    return utils.EventData(np.array(begs), np.array(ends), np.array(events))
+    return annotations.EventData(np.array([begs, ends]).T, events)
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """The rwc_popular dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="rwc_popular",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)
+
+    @core.copy_docs(load_chords)
+    def load_chords(self, *args, **kwargs):
+        return load_chords(*args, **kwargs)
+
+    @core.copy_docs(load_vocal_activity)
+    def load_vocal_activity(self, *args, **kwargs):
+        return load_vocal_activity(*args, **kwargs)
