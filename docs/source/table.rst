@@ -203,8 +203,8 @@
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
-   * - Saraga
-     - - audio: ✅
+   * - Saraga Carnatic
+     - - audio: ✅ (multichannel)
        - annotations: ✅
      - - :ref:`f0`
        - Vocal :ref:`f0`
@@ -213,7 +213,20 @@
        - :ref:`beats` (samas)
        - :ref:`sections`
        - :ref:`tonic`
-     - 305
+     - 249
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - Saraga Hindustani
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`tempo`
+       - :ref:`phrases`
+       - :ref:`beats` (samas)
+       - :ref:`sections`
+       - :ref:`tonic`
+     - 108
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
