@@ -45,8 +45,13 @@ def test_validation(skip_remote, dataset):
     # run validation
     missing_files, invalid_checksums = dataset.validate(verbose=True)
 
-    assert missing_files == {key:{} for key in dataset._index.keys() if not key == "version"}
-    assert invalid_checksums == {key:{} for key in dataset._index.keys() if not key == "version"}
+    exclude = []
+    if "exclude" in dataset._index:
+        exclude = dataset._index
+    exclude.append("version")
+
+    assert missing_files == {key: {} for key in dataset._index.keys() if key not in exclude}
+    assert invalid_checksums == {key: {} for key in dataset._index.keys() if key not in exclude}
 
 
 def test_load(skip_remote, dataset):
