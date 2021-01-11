@@ -100,6 +100,18 @@ DOWNLOAD_INFO = """
     and copy the RWC-Classical folder to {}
 """
 
+LICENSE_INFO = """
+From the dataset's owner webpage:
+
+'Users who have submitted the Pledge and received authorization may freely use the database for research purposes 
+without facing the usual copyright restrictions, but all of the copyrights and neighboring rights connected with 
+this database belong to the National Institute of Advanced Industrial Science and Technology and are managed by the 
+RWC Music Database Administrator. Persons or organizations that have not submitted a Pledge and that have not 
+received authorization may not use the database.'
+
+See https://staff.aist.go.jp/m.goto/RWC-MDB/ for more details.
+"""
+
 
 def _load_metadata(data_home):
 
@@ -301,7 +313,7 @@ def _position_in_bar(beat_positions, beat_times):
     Args:
         beat_positions (np.ndarray): raw rwc beat positions
         beat_times (np.ndarray): raw rwc time stamps
-    
+
     Returns:
         * np.ndarray: normalized beat positions
         * np.ndarray: normalized time stamps
@@ -388,7 +400,8 @@ def _duration_to_sec(duration):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The rwc_classical dataset
+    """
+    The rwc_classical dataset
     """
 
     def __init__(self, data_home=None):
@@ -400,6 +413,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

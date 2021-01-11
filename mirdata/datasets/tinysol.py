@@ -78,6 +78,8 @@ REMOTES = {
 
 STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
 
+LICENSE_INFO = "Creative Commons Attribution 4.0 International Public License."
+
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, "annotation", "TinySOL_metadata.csv")
@@ -230,7 +232,8 @@ def load_audio(audio_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The tinysol dataset
+    """
+    The tinysol dataset
     """
 
     def __init__(self, data_home=None):
@@ -241,6 +244,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

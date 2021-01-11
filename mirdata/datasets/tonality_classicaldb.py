@@ -89,6 +89,10 @@ DOWNLOAD_INFO = """
 """
 DATA = core.LargeData("tonality_classicaldb_index.json")
 
+LICENSE_INFO = (
+    "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+)
+
 
 class Track(core.Track):
     """tonality_classicaldb track class
@@ -284,7 +288,8 @@ def load_musicbrainz(musicbrainz_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The tonality_classicaldb dataset
+    """
+    The tonality_classicaldb dataset
     """
 
     def __init__(self, data_home=None):
@@ -296,6 +301,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

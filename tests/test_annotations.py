@@ -31,9 +31,9 @@ def test_beat_data():
     beat_data2 = annotations.BeatData(times, positions)
     assert np.allclose(beat_data2.times, times)
     assert np.allclose(beat_data2.positions, positions)
-    beat_data3 = annotations.BeatData(None, None)
-    assert beat_data3.times is None
-    assert beat_data3.positions is None
+
+    with pytest.raises(ValueError):
+        annotations.BeatData(None, None)
 
     with pytest.raises(TypeError):
         annotations.BeatData([1.0, 2.0])
@@ -57,9 +57,9 @@ def test_section_data():
     section_data2 = annotations.SectionData(intervals, labels)
     assert np.allclose(section_data2.intervals, intervals)
     assert section_data2.labels == labels
-    section_data3 = annotations.SectionData(None, None)
-    assert section_data3.intervals is None
-    assert section_data3.labels is None
+
+    with pytest.raises(ValueError):
+        annotations.SectionData(None, None)
 
     with pytest.raises(TypeError):
         annotations.SectionData([1.0, 2.0])
@@ -92,10 +92,12 @@ def test_note_data():
     assert np.allclose(note_data2.intervals, intervals)
     assert np.allclose(note_data2.notes, notes)
     assert np.allclose(note_data2.confidence, confidence)
-    note_data3 = annotations.NoteData(None, None)
-    assert note_data3.intervals is None
-    assert note_data3.notes is None
-    assert note_data3.confidence is None
+
+    with pytest.raises(ValueError):
+        annotations.NoteData(None, notes)
+
+    with pytest.raises(ValueError):
+        annotations.NoteData(intervals, None)
 
     with pytest.raises(TypeError):
         annotations.NoteData([1.0, 2.0], notes)
@@ -177,7 +179,10 @@ def test_event_data():
 
 
 def test_validate_array_like():
-    annotations.validate_array_like(None, list, str)
+    with pytest.raises(ValueError):
+        annotations.validate_array_like(None, list, str)
+
+    annotations.validate_array_like(None, list, str, none_allowed=True)
 
     with pytest.raises(TypeError):
         annotations.validate_array_like([1, 2], np.ndarray, str)

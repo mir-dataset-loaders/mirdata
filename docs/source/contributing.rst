@@ -292,6 +292,33 @@ Working with big datasets
 In the development of large datasets, it is advisable to create an index as small as possible to optimize the implementation process
 of the dataset loader and pass the tests.
 
+
+Working with remote indexes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For the end-user there is no difference between the remote and local indexes. However, indexes can get large when there are a lot of tracks
+in the dataset. In these cases, storing and accessing an index remotely can be convenient.
+
+However, to contribute to the library using remote indexes you have to add in ``utils.LargeData(...)`` the remote_index argument with a
+``download_utils.RemoteFileMetadata`` dictionary with the remote index information.
+
+.. code-block:: python
+    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+
+
+.. code-block:: python
+
+    REMOTE_INDEX = {
+        "REMOTE_INDEX": download_utils.RemoteFileMetadata(
+            filename="acousticbrainz_genre_index.json.zip",
+            url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
+            checksum="810f1c003f53cbe58002ba96e6d4d138",
+            destination_dir="",
+        )
+    }
+    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+
+
 .. _reducing_test_space:
 
 Reducing the testing space usage
@@ -309,10 +336,32 @@ csv files).
 
 Before you submit your loader make sure to:
 
-1. Add your module to ``docs/source/mirdata.rst``
-2. Add your module to ``docs/source/quick_reference.rst``
+1. Add your module to ``docs/source/mirdata.rst`` following an alphabetical order
+2. Add your module to ``docs/source/table.rst`` following an alphabetical order as follows:
 
-(you can check that this was done correctly by clicking on the readthedocs check when you open a PR)
+.. code-block:: rst
+
+    * - Dataset
+      - Downloadable?
+      - Annotation Types
+      - Tracks
+      - License
+
+An example of this for the ``Beatport EDM key`` dataset:
+
+.. code-block:: rst
+
+   * - Beatport EDM key
+     - - audio: ✅
+       - annotations: ✅
+     - - global :ref:`key`
+     - 1486
+     - .. image:: https://licensebuttons.net/l/by-sa/3.0/88x31.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
+
+(you can check that this was done correctly by clicking on the readthedocs check when you open a PR). You can find license
+badges images and links `here <https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba>`_.
 
 Pull Request template
 ^^^^^^^^^^^^^^^^^^^^^

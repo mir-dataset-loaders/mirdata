@@ -53,6 +53,13 @@ DOWNLOAD_INFO = """
     and copy the Salami folder to {}
 """
 
+LICENSE_INFO = """
+This data is released under a Creative Commons 0 license, effectively dedicating it to 
+the public domain. More information about this dedication and your rights, please see the 
+details here: http://creativecommons.org/publicdomain/zero/1.0/ and
+http://creativecommons.org/publicdomain/zero/1.0/legalcode.
+"""
+
 
 def _load_metadata(data_home):
 
@@ -299,7 +306,8 @@ def load_sections(sections_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The salami dataset
+    """
+    The salami dataset
     """
 
     def __init__(self, data_home=None):
@@ -311,6 +319,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

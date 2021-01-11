@@ -18,8 +18,7 @@ list of annotations omits some metadata for brevity, and we document the dataset
 primary annotations only. The number of tracks indicates the number of unique "tracks"
 in a dataset, but it may not reflect the actual size or diversity of a dataset,
 as tracks can vary greatly in length (from a few seconds to a few minutes),
-and may be homogeneous. For specific information about the contents of each dataset,
-click the link provided in the "Module" column.
+and may be homogeneous.
 
 "Downloadable" possible values:
 
@@ -34,98 +33,7 @@ click the link provided in the "Module" column.
 
 Find the API documentation for each of the below datasets in :ref:`api`.
 
-+---------------------+---------------------+---------------------------+--------+
-| Dataset             | Downloadable?       | Annotation Types          | Tracks |
-+=====================+=====================+===========================+========+
-| AcousticBrainz      | - audio: ❌         | - :ref:`genre`            | >4M    |
-| Genre               | - annotations: ✅   |                           |        |
-|                     | - features: ✅      |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-|  Beatport EDM key   | - audio: ✅         | - global :ref:`key`       | 1486   |
-|                     | - annotations: ✅   |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-| cante100            | - audio: 🔑         | - :ref:`F0`               | 100    |
-|                     | - annotations: ✅   | - :ref:`notes`            |        |
-+---------------------+---------------------+---------------------------+--------+
-| DALI                | - audio: 📺         | - :ref:`lyrics`           | 5358   |
-|                     | - annotations: ✅   | - Vocal :ref:`notes`      |        |
-+---------------------+---------------------+---------------------------+--------+
-| | Groove MIDI       | - audio: ✅         | - :ref:`beats`            | 1150   |
-| | Dataset           | - midi: ✅          | - :ref:`tempo`            |        |
-|                     |                     | - :ref:`drums`            |        |
-+---------------------+---------------------+---------------------------+--------+
-| Gtzan-Genre         | - audio: ✅         | - :ref:`genre`            | 1000   |
-|                     | - annotations: ✅   |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-| | Giantsteps EDM    | - audio: ❌         | - :ref:`genre`            | 664    |
-| | tempo Dataset     | - annotations: ✅   | - :ref:`tempo`            |        |
-|                     |                     |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-| Giantsteps EDM key  | - audio: ✅         | - global :ref:`key`       | 500    |
-|                     | - annotations: ✅   |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-| GuitarSet           | - audio: ✅         | - :ref:`beats`            | 360    |
-|                     | - annotations: ✅   | - :ref:`chords`           |        |
-|                     |                     | - :ref:`key`              |        |
-|                     |                     | - :ref:`notes`            |        |
-|                     |                     | - :ref:`f0`               |        |
-|                     |                     | - :ref:`tempo`            |        |
-+---------------------+---------------------+---------------------------+--------+
-| iKala               | - audio: ❌         | - Vocal :ref:`F0`         | 252    |
-|                     | - annotations: ❌   | - :ref:`lyrics`           |        |
-+---------------------+---------------------+---------------------------+--------+
-| IRMAS               | - audio: ✅         | - :ref:`instruments`      | 9579   |
-|                     | - annotations: ✅   | - :ref:`genre`            |        |
-+---------------------+---------------------+---------------------------+--------+
-| MAESTRO             | - audio: ✅         | - Piano :ref:`notes`      | 1282   |
-|                     | - annotations: ✅   |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-| Medley-solos-DB     | - audio: ✅         | - :ref:`instruments`      | 21571  |
-|                     | - annotations: ✅   |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-| | MedleyDB          | - audio: 🔑         | - :ref:`melody` :ref:`f0` | 108    |
-| | Melody Subset     | - annotations: ✅   |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-| | MedleyDB Pitch    | - audio: 🔑         | - :ref:`f0`               | 103    |
-| | Tracking Subset   | - annotations: ✅   | - :ref:`instruments`      |        |
-+---------------------+---------------------+---------------------------+--------+
-| Mridangam Stroke    | - audio: ✅         | - :ref:`stroke-name`      | 6977   |
-|                     | - annotations: ✅   | - :ref:`tonic`            |        |
-+---------------------+---------------------+---------------------------+--------+
-| Orchset             | - audio: ✅         | - :ref:`melody` :ref:`f0` | 64     |
-|                     | - annotations: ✅   |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-| RWC Classical       | - audio: ❌         | - :ref:`beats`            | 50     |
-|                     | - annotations: ✅   | - :ref:`sections`         |        |
-+---------------------+---------------------+---------------------------+--------+
-| RWC Jazz            | - audio: ❌         | - :ref:`beats`            | 50     |
-|                     | - annotations: ✅   | - :ref:`sections`         |        |
-+---------------------+---------------------+---------------------------+--------+
-| RWC Pop             | - audio: ❌         | - :ref:`beats`            | 100    |
-|                     | - annotations: ✅   | - :ref:`sections`         |        |
-|                     |                     | - :ref:`vocal-activity`   |        |
-|                     |                     | - :ref:`chords`           |        |
-|                     |                     | - :ref:`tempo`            |        |
-+---------------------+---------------------+---------------------------+--------+
-| Salami              | - audio: ❌         | - :ref:`sections`         | 1359   |
-|                     | - annotations: ✅   |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-| Saraga              | - audio: ✅         | - :ref:`tempo`            | 305    |
-|                     | - annotations: ✅   | - :ref:`phrases`          |        |
-|                     |                     | - :ref:`f0`               |        |
-|                     |                     | - :ref:`f0` (vocal)       |        |
-|                     |                     | - :ref:`sections` (samas) |        |
-|                     |                     | - :ref:`sections`         |        |
-|                     |                     | - :ref:`tonic`            |        |
-+---------------------+---------------------+---------------------------+--------+
-| TinySOL             | - audio: ✅         | - :ref:`instruments`      | 2913   |
-|                     | - annotations: ✅   | - :ref:`technique`        |        |
-|                     |                     | - :ref:`notes`            |        |
-+---------------------+---------------------+---------------------------+--------+
-|  Tonality           | - audio: ❌         | - global :ref:`key`       | 881    |
-|  ClassicalDB        | - annotations: ✅   |                           |        |
-+---------------------+---------------------+---------------------------+--------+
-
+.. include:: table.rst
 
 Annotation Types
 ================
@@ -134,7 +42,8 @@ The table above provides annotation types as a guide for choosing appropriate da
 but it is difficult to generically categorize annotation types, as they depend on varying
 definitions and their meaning can change depending on the type of music they correspond to.
 Here we provide a rough guide to the types in this table, but we **strongly recommend** reading
-the dataset specific documentation to ensure the data is as you expect.
+the dataset specific documentation to ensure the data is as you expect. To see how these annotation
+types are implemented in ``mirdata`` see :ref:`annotations`.
 
 
 .. _beats:

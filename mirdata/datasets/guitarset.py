@@ -112,6 +112,8 @@ _STYLE_DICT = {
 _GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
 DATA = core.LargeData("guitarset_index.json")
 
+LICENSE_INFO = "MIT License."
+
 
 class Track(core.Track):
     """guitarset Track class
@@ -398,7 +400,7 @@ def load_pitch_contour(jams_path, string_num):
     anno = anno_arr.search(data_source=str(string_num))[0]
     times, values = anno.to_event_values()
     if len(times) == 0:
-        return annotations.F0Data(None, None)
+        return None
     frequencies = [v["frequency"] for v in values]
     return annotations.F0Data(times, np.array(frequencies))
 
@@ -422,13 +424,14 @@ def load_notes(jams_path, string_num):
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()
     if len(values) == 0:
-        return annotations.NoteData(None, None)
+        return None
     return annotations.NoteData(intervals, np.array(values))
 
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The guitarset dataset
+    """
+    The guitarset dataset
     """
 
     def __init__(self, data_home=None):
@@ -439,6 +442,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

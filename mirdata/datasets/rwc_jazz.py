@@ -57,6 +57,7 @@ from mirdata.datasets.rwc_classical import (
     load_sections,
     load_audio,
     _duration_to_sec,
+    LICENSE_INFO,
 )
 
 BIBTEX = """@inproceedings{goto2002rwc,
@@ -245,7 +246,8 @@ class Track(core.Track):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The rwc_jazz dataset
+    """
+    The rwc_jazz dataset
     """
 
     def __init__(self, data_home=None):
@@ -257,6 +259,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)
