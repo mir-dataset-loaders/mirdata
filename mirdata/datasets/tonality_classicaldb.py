@@ -58,7 +58,7 @@ REMOTES = {
     ),
     "musicbrainz_metadata": download_utils.RemoteFileMetadata(
         filename="musicbrainz_metadata.zip",
-        url="https://zenodo.org/record/1095691/files/musicbrainz_metadata.zip?download=1",
+        url="https://zenodo.org/record/4283868/files/musicbrainz_metadata.zip?download=1",
         checksum="4a77ecc6a9410a59feeffa1152cb6edc",
         destination_dir=".",
     ),
@@ -70,7 +70,7 @@ REMOTES = {
     ),
     "spectrums": download_utils.RemoteFileMetadata(
         filename="spectrums.zip",
-        url="https://zenodo.org/record/1095691/files/spectrums.zip?download=1",
+        url="https://zenodo.org/record/4283868/files/spectrums.zip?download=1",
         checksum="63a79033d608ba95fb559a33e2f70d3a",
         destination_dir=".",
     ),
