@@ -198,12 +198,16 @@ class Dataset(object):
         return self.track(random.choice(self.track_ids))
 
     def cite(self):
-        """Print the reference"""
+        """
+        Print the reference
+        """
         print("========== BibTeX ==========")
         print(self.bibtex)
 
     def license(self):
-        """Print the license"""
+        """
+        Print the license
+        """
         print("========== License ==========")
         print(self._license_info)
         print(DISCLAIMER)
