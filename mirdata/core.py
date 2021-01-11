@@ -12,13 +12,21 @@ from mirdata import validate
 
 MAX_STR_LEN = 100
 DOCS_URL = "https://mirdata.readthedocs.io/en/latest/source/mirdata.html"
+DISCLAIMER = """
+******************************************************************************************
+DISCLAIMER: mirdata is a software package with its own license which is independent from
+this dataset's license. We don not take responsibility for possible inaccuracies in the
+license information provided in mirdata. It is the user's responsibility to be informed
+and respect the dataset's license.
+******************************************************************************************
+"""
 
 ##### decorators ######
 
 
 class cached_property(object):
     """Cached propery decorator
-    
+
     A property that is only computed once per instance and then replaces
     itself with an ordinary attribute. Deleting the attribute resets the
     property.
@@ -40,7 +48,7 @@ class cached_property(object):
 
 def docstring_inherit(parent):
     """Decorator function to inherit docstrings from the parent class.
-    
+
     Adds documented Attributes from the parent to the child docs.
 
     """
@@ -59,7 +67,9 @@ def docstring_inherit(parent):
 
 
 def copy_docs(original):
-    """Decorator function to copy docs from one function to another"""
+    """
+    Decorator function to copy docs from one function to another
+    """
 
     def wrapper(target):
         target.__doc__ = original.__doc__
@@ -77,11 +87,11 @@ class Dataset(object):
     Attributes:
         data_home (str): path where mirdata will look for the dataset
         name (str): the identifier of the dataset
-        bibtex (str): dataset citation/s in bibtex format
-        readme (str): a link to information about the dataset
-        remotes (dict): data to be downloaded
-        track (core.Track): an uninstantiated Track object
+        bibtex (str or None): dataset citation/s in bibtex format
+        remotes (dict or None): data to be downloaded
         readme (str): information about the dataset
+        track (function): a function which inputs a track_id (str) and
+            returns (mirdata.core.Track or None)
 
     """
 
@@ -94,6 +104,7 @@ class Dataset(object):
         bibtex=None,
         remotes=None,
         download_info=None,
+        license_info=None,
     ):
         """Dataset init method
 
@@ -105,6 +116,7 @@ class Dataset(object):
             bibtex (str or None): dataset citation/s in bibtex format
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
+            license_info (str or None): license of the dataset
 
         """
         self.name = name
@@ -114,6 +126,7 @@ class Dataset(object):
         self.bibtex = bibtex
         self.remotes = remotes
         self._download_info = download_info
+        self._license_info = license_info
         self.readme = "{}#module-mirdata.datasets.{}".format(DOCS_URL, self.name)
 
         # this is a hack to be able to have dataset-specific docstrings
@@ -166,7 +179,7 @@ class Dataset(object):
         """Load all tracks in the dataset
 
         Returns:
-            dict: 
+            dict:
                 {`track_id`: track data}
 
         Raises:
@@ -180,14 +193,24 @@ class Dataset(object):
 
         Returns:
             Track: a Track object instantiated by a random track_id
-        
+
         """
         return self.track(random.choice(self.track_ids))
 
     def cite(self):
-        """Print the reference"""
+        """
+        Print the reference
+        """
         print("========== BibTeX ==========")
         print(self.bibtex)
+
+    def license(self):
+        """
+        Print the license
+        """
+        print("========== License ==========")
+        print(self._license_info)
+        print(DISCLAIMER)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=True):
         """Download data to `save_dir` and optionally print a message.
@@ -231,7 +254,7 @@ class Dataset(object):
         Args:
             verbose (bool): If False, don't print output
 
-        Returns:        
+        Returns:
             * list - files in the index but are missing locally
             * list - files which have an invalid checksum
 

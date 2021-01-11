@@ -41,7 +41,7 @@ def initialize(dataset_name, data_home=None):
             see mirdata.DATASETS for a complete list of possibilities
         data_home (str or None): path where the data lives. If None
             uses the default location.
-    
+
     Returns:
         Dataset: a mirdata.core.Dataset object
 

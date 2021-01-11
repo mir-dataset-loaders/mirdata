@@ -56,6 +56,11 @@ DOWNLOAD_INFO = """
     and copy the iKala folder to {}
 """
 
+LICENSE_INFO = """
+When it was distributed, Ikala used to have a custom license. 
+Visit http://mac.citi.sinica.edu.tw/ikala/ for more details.
+"""
+
 
 def _load_metadata(data_home):
     id_map_path = os.path.join(data_home, "id_mapping.txt")
@@ -303,14 +308,17 @@ def load_lyrics(lyrics_path):
                 pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T, lyrics, pronunciations,
+        np.array([start_times, end_times]).T,
+        lyrics,
+        pronunciations,
     )
     return lyrics_data
 
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The ikala dataset
+    """
+    The ikala dataset
     """
 
     def __init__(self, data_home=None):
@@ -322,6 +330,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_vocal_audio)

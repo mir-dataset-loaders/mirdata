@@ -157,6 +157,10 @@ INST_DICT = [
 
 GENRE_DICT = ["cou_fol", "cla", "pop_roc", "lat_sou", "jaz_blu"]
 
+LICENSE_INFO = (
+    "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License."
+)
+
 
 class Track(core.Track):
     """IRMAS track class
@@ -172,7 +176,7 @@ class Track(core.Track):
         train (bool): flag to identify if the track is from the training of the testing dataset
         genre (str): string containing the namecode of the genre of the track.
         drum (bool): flag to identify if the track contains drums or not.
-        
+
     Cached Properties:
         instrument (list): list of predominant instruments as str
 
@@ -294,7 +298,7 @@ def load_pred_inst(annotation_path):
 
     Returns:
         str: test track predominant instrument(s) annotations
-    
+
     """
     if annotation_path is None:
         return None
@@ -317,7 +321,8 @@ def load_pred_inst(annotation_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The irmas dataset
+    """
+    The irmas dataset
     """
 
     def __init__(self, data_home=None):
@@ -328,6 +333,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

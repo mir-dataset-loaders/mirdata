@@ -46,6 +46,10 @@ DOWNLOAD_INFO = """
     {}
 """
 
+LICENSE_INFO = (
+    "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
+)
+
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(data_home, "medleydb_melody_metadata.json")
@@ -250,7 +254,8 @@ def load_melody3(melody_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The medleydb_melody dataset
+    """
+    The medleydb_melody dataset
     """
 
     def __init__(self, data_home=None):
@@ -261,6 +266,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

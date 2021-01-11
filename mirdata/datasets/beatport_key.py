@@ -69,6 +69,8 @@ REMOTES = {
 
 DATA = core.LargeData("beatport_key_index.json")
 
+LICENSE_INFO = "Creative Commons Attribution Share Alike 4.0 International."
+
 
 class Track(core.Track):
     """beatport_key track class
@@ -83,7 +85,7 @@ class Track(core.Track):
         metadata_path (str): sections annotation path
         title (str): title of the track
         track_id (str): track id
-    
+
     Cached Properties:
         key (list): list of annotated musical keys
         artists (list): artists involved in the track
@@ -269,7 +271,8 @@ def load_artist(metadata_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The beatport_key dataset
+    """
+    The beatport_key dataset
     """
 
     def __init__(self, data_home=None):
@@ -280,6 +283,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)
@@ -310,7 +314,7 @@ class Dataset(core.Dataset):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
             force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. 
+                If True, existing files are overwritten by the downloaded files.
                 By default False.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.

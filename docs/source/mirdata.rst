@@ -51,18 +51,18 @@ dali
    :inherited-members:
 
 
-giantsteps_tempo
-^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.datasets.giantsteps_tempo
-   :members:
-   :inherited-members:
-
-
 giantsteps_key
 ^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.giantsteps_key
+   :members:
+   :inherited-members:
+
+
+giantsteps_tempo
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.giantsteps_tempo
    :members:
    :inherited-members:
 
@@ -115,6 +115,14 @@ maestro
    :inherited-members:
 
 
+medley_solos_db
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.medley_solos_db
+   :members:
+   :inherited-members:
+
+
 medleydb\_melody
 ^^^^^^^^^^^^^^^^
 
@@ -127,14 +135,6 @@ medleydb\_pitch
 ^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.medleydb_pitch
-   :members:
-   :inherited-members:
-
-
-medley_solos_db
-^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.datasets.medley_solos_db
    :members:
    :inherited-members:
 
@@ -225,6 +225,7 @@ Core
 .. automodule:: mirdata.core
    :members:
 
+.. _annotations:
 
 Annotations
 -----------

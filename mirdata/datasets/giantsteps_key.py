@@ -71,6 +71,8 @@ REMOTES = {
 
 DATA = core.LargeData("giantsteps_key_index.json")
 
+LICENSE_INFO = "Creative Commons Attribution Share Alike 4.0 International."
+
 
 class Track(core.Track):
     """giantsteps_key track class
@@ -84,7 +86,7 @@ class Track(core.Track):
         metadata_path (str): sections annotation path
         title (str): title of the track
         track_id (str): track id
-    
+
     Cached Properties:
         key (str): musical key annotation
         artists (list): list of artists involved
@@ -267,7 +269,8 @@ def load_artist(metadata_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The giantsteps_key dataset
+    """
+    The giantsteps_key dataset
     """
 
     def __init__(self, data_home=None):
@@ -278,6 +281,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)
