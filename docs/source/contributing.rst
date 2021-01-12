@@ -412,9 +412,6 @@ documentation from the code's docstrings. We use the `napoleon <https://www.sphi
 for building docs in Google docstring style. See the next section for docstring conventions.
 
 
-Docstrings
-----------
-
 mirdata uses `Google's Docstring formatting style <https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings>`_.
 Here are some common examples.
 
@@ -512,7 +509,7 @@ We use the following libraries for loading data from files:
 +-------------------------+-------------+
 | Format                  | library     |
 +=========================+=============+
-| audio (.wav, .mp3, ...) | librosa     |
+| audio (wav, mp3, ...)   | librosa     |
 +-------------------------+-------------+
 | midi                    | pretty_midi |
 +-------------------------+-------------+
