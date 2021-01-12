@@ -401,3 +401,172 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
 4. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing. 
    If they are passing locally but failing in the check, open an `issue` and we can help debug.
 
+
+Documentation
+#############
+
+This documentation is in `rst format <https://docutils.sourceforge.io/docs/user/rst/quickref.html>`_.
+It is built using `Sphinx <https://www.sphinx-doc.org/en/master/index.html>`_ and hosted on `readthedocs <https://readthedocs.org/>`_.
+The API documentation is built using `autodoc <https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html>`_, which autogenerates
+documentation from the code's docstrings. We use the `napoleon <https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html>`_ plugin
+for building docs in Google docstring style. See the next section for docstring conventions.
+
+
+mirdata uses `Google's Docstring formatting style <https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings>`_.
+Here are some common examples.
+
+.. note::
+    The small formatting details in these examples are important. Differences in new lines, indentation, and spacing make
+    a difference in how the documentation is rendered. For example writing ``Returns:`` will render correctly, but ``Returns``
+    or ``Returns :`` will not. 
+
+
+Functions:
+
+.. code-block:: python
+
+    def add_to_list(list_of_numbers, scalar):
+        """Add a scalar to every element of a list.
+        You can write a continuation of the function description here on the next line.
+
+        You can optionally write more about the function here. If you want to add an example
+        of how this function can be used, you can do it like below.
+
+        Example:
+            .. code-block:: python
+
+            foo = add_to_list([1, 2, 3], 2)
+
+        Args:
+            list_of_numbers (list): A short description that fits on one line.
+            scalar (float):
+                Description of the second parameter. If there is a lot to say you can
+                overflow to a second line.
+
+        Returns:
+            list: Description of the return. The type here is not in parentheses
+
+        """
+        return [x + scalar for x in list_of_numbers]
+
+
+Functions with more than one return value:
+
+.. code-block:: python
+
+    def multiple_returns():
+        """This function has no arguments, but more than one return value. Autodoc with napoleon doesn't handle this well,
+        and we use this formatting as a workaround.
+
+        Returns:
+            * int - the first return value
+            * bool - the second return value
+
+        """
+        return 42, True
+
+
+One-line docstrings
+
+.. code-block:: python
+
+    def some_function():
+        """
+        One line docstrings must be on their own separate line, or autodoc does not build them properly
+        """
+        ...
+
+
+Objects
+
+.. code-block:: python
+
+    """Description of the class
+    overflowing to a second line if it's long
+
+    Some more details here
+
+    Args:
+        foo (str): First argument to the __init__ method
+        bar (int): Second argument to the __init__ method
+
+    Attributes:
+        foobar (str): First track attribute
+        barfoo (bool): Second track attribute
+
+    Cached Properties:
+        foofoo (list): Cached properties are special mirdata attributes
+        barbar (None): They are lazy loaded properties.
+        barf (bool): Document them with this special header.
+
+    """
+
+
+Conventions
+###########
+
+Loading from files
+^^^^^^^^^^^^^^^^^^
+
+We use the following libraries for loading data from files:
+
++-------------------------+-------------+
+| Format                  | library     |
++=========================+=============+
+| audio (wav, mp3, ...)   | librosa     |
++-------------------------+-------------+
+| midi                    | pretty_midi |
++-------------------------+-------------+
+| json                    | json        |
++-------------------------+-------------+
+| csv                     | csv         |
++-------------------------+-------------+
+| jams                    | jams        |
++-------------------------+-------------+
+
+Track Attributes
+^^^^^^^^^^^^^^^^
+Custom track attributes should be global, track-level data.
+For some datasets, there is a separate, dataset-level metadata file
+with track-level metadata, e.g. as a csv. When a single file is needed
+for more than one track, we recommend using writing a ``_load_metadata`` method
+and passing it to a ``LargeData`` object, which is available globally throughout 
+the module to avoid loading the same file multiple times.
+
+Load methods vs Track properties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Track properties and cached properties should be trivial, and directly call a ``load_*`` method.
+There should be no additional logic in a track property/cached property, and instead all logic
+should be done in the load method. We separate these because the track properties are only usable
+when data is available locally - when data is remote, the load methods are used instead.
+
+Missing Data
+^^^^^^^^^^^^
+If a Track has a property, for example a type of annotation, that is present for some tracks and not others,
+the property should be set to `None` when it isn't available.
+
+The index should only contain key-values for files that exist.
+
+Custom Decorators
+#################
+
+cached_property
+^^^^^^^^^^^^^^^
+This is used primarily for Track objects.
+
+This decorator causes an Object's function to behave like
+an attribute (aka, like the ``@property`` decorator), but caches
+the value in memory after it is first accessed. This is used
+for data which is relatively large and loaded from files.
+
+docstring_inherit
+^^^^^^^^^^^^^^^^^
+This decorator is used for children of the Dataset object, and
+copies the Attributes from the parent class to the docstring of the child.
+This gives us clear and complete docs without a lot of copy-paste.
+
+copy_docs
+^^^^^^^^^
+This decorator is used mainly for a dataset's ``load_`` functions, which
+are attached to a loader's Dataset object. The attached function is identical,
+and this decorator simply copies the docstring from another function.
