@@ -51,7 +51,7 @@ There are two ways of citing mirdata:
 
 If you are using the library for your work, please cite the version you used as indexed at Zenodo:
 
-DOI
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4355859.svg)](https://doi.org/10.5281/zenodo.4355859)
 
 If you refer to mirdata's design principles, motivation etc., please cite the following [paper](https://zenodo.org/record/3527750#.X-Inp5NKhUI):
 
@@ -72,6 +72,9 @@ in International Society for Music Information Retrieval (ISMIR) Conference, 201
   year={2019}
 }
 ```
+
+When working with datasets, please cite the version of `mirdata` that you are using (given by the `DOI` above) **AND** include the reference of the dataset,
+which can be found in the respective dataset loader using the `cite()` method. 
 
 ### Contributing a new dataset loader
 

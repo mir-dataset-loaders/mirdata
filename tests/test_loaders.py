@@ -87,6 +87,9 @@ def test_dataset_attributes(httpserver):
             dataset.bibtex is not None
         ), "No BIBTEX information provided for {}".format(dataset_name)
         assert (
+                dataset._license_info is not None
+        ), "No LICENSE information provided for {}".format(dataset_name)
+        assert (
             isinstance(dataset.remotes, dict) or dataset.remotes is None
         ), "{}.REMOTES must be a dictionary".format(dataset_name)
         assert isinstance(dataset._index, dict), "{}.DATA is not properly set".format(
@@ -106,7 +109,7 @@ def test_dataset_attributes(httpserver):
             clean_remote_dataset(dataset_name)
 
 
-def test_cite(httpserver):
+def test_cite_and_license(httpserver):
     for dataset_name in DATASETS:
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
         if dataset_name not in REMOTE_DATASETS:
@@ -118,6 +121,11 @@ def test_cite(httpserver):
         text_trap = io.StringIO()
         sys.stdout = text_trap
         dataset.cite()
+        sys.stdout = sys.__stdout__
+
+        text_trap = io.StringIO()
+        sys.stdout = text_trap
+        dataset.license()
         sys.stdout = sys.__stdout__
         if dataset_name in REMOTE_DATASETS:
             clean_remote_dataset(dataset_name)

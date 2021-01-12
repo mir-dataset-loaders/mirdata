@@ -58,7 +58,7 @@ REMOTES = {
     ),
     "musicbrainz_metadata": download_utils.RemoteFileMetadata(
         filename="musicbrainz_metadata.zip",
-        url="https://zenodo.org/record/1095691/files/musicbrainz_metadata.zip?download=1",
+        url="https://zenodo.org/record/4283868/files/musicbrainz_metadata.zip?download=1",
         checksum="4a77ecc6a9410a59feeffa1152cb6edc",
         destination_dir=".",
     ),
@@ -70,7 +70,7 @@ REMOTES = {
     ),
     "spectrums": download_utils.RemoteFileMetadata(
         filename="spectrums.zip",
-        url="https://zenodo.org/record/1095691/files/spectrums.zip?download=1",
+        url="https://zenodo.org/record/4283868/files/spectrums.zip?download=1",
         checksum="63a79033d608ba95fb559a33e2f70d3a",
         destination_dir=".",
     ),
@@ -88,6 +88,10 @@ DOWNLOAD_INFO = """
     and copy the folder to {} directory
 """
 DATA = core.LargeData("tonality_classicaldb_index.json")
+
+LICENSE_INFO = (
+    "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+)
 
 
 class Track(core.Track):
@@ -284,7 +288,8 @@ def load_musicbrainz(musicbrainz_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The tonality_classicaldb dataset
+    """
+    The tonality_classicaldb dataset
     """
 
     def __init__(self, data_home=None):
@@ -296,6 +301,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

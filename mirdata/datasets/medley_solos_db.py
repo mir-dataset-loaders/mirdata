@@ -57,6 +57,8 @@ REMOTES = {
     ),
 }
 
+LICENSE_INFO = "Creative Commons Attribution 4.0 International."
+
 
 def _load_metadata(data_home):
     metadata_path = os.path.join(
@@ -175,7 +177,8 @@ def load_audio(audio_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The medley_solos_db dataset
+    """
+    The medley_solos_db dataset
     """
 
     def __init__(self, data_home=None):
@@ -186,6 +189,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)

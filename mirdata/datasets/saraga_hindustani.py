@@ -68,6 +68,10 @@ REMOTES = {
     )
 }
 
+LICENSE_INFO = (
+    "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+)
+
 
 def _load_metadata(metadata_path):
     if not os.path.exists(metadata_path):
@@ -351,9 +355,9 @@ def load_tempo(tempo_path):
         tempo_path (str): Local path where the tempo annotation is stored.
 
     Returns:
-        dict: 
+        dict:
             Dictionary of tempo information with the following keys:
-            
+
             - tempo: median tempo for the section in mātrās per minute (MPM)
             - matra_interval: tempo expressed as the duration of the mātra (essentially
               dividing 60 by tempo, expressed in seconds)
@@ -473,7 +477,10 @@ def load_sections(sections_path):
         for line in reader:
             if line:
                 intervals.append(
-                    [float(line[0]), float(line[0]) + float(line[2]),]
+                    [
+                        float(line[0]),
+                        float(line[0]) + float(line[2]),
+                    ]
                 )
                 section_labels.append(str(line[3]) + "-" + str(line[1]))
 
@@ -522,7 +529,8 @@ def load_phrases(phrases_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The saraga_hindustani dataset
+    """
+    The saraga_hindustani dataset
     """
 
     def __init__(self, data_home=None):
@@ -533,6 +541,7 @@ class Dataset(core.Dataset):
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            license_info=LICENSE_INFO,
         )
 
     @core.copy_docs(load_audio)
