@@ -43,7 +43,7 @@ def mock_path(mocker, mock_download_from_remote):
     return mocker.patch.object(Path, "mkdir")
 
 
-def test_downloader(mocker, mock_path, caplog):
+def test_downloader(mocker, mock_path):
     mock_zip = mocker.patch.object(download_utils, "download_zip_file")
     mock_tar = mocker.patch.object(download_utils, "download_tar_file")
     mock_download_from_remote = mocker.patch.object(
@@ -129,10 +129,7 @@ def test_downloader(mocker, mock_path, caplog):
         )
 
     # test info message
-    captured = caplog.clear()  # skip everything printed before this
     download_utils.downloader("a", info_message="I am a message!")
-    captured = caplog.record_tuples[0][-1]
-    assert captured == "I am a message!"
     mocker.resetall()
 
     # test download twice - defaults
