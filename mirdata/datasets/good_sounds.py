@@ -194,3 +194,24 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The giantsteps_tempo dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="good_sounds",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info="",
+            license_info="Creative Commons Attribution Share Alike 4.0 International.",
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
