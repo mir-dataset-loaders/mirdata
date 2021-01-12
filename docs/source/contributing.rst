@@ -422,6 +422,7 @@ Here are some common examples.
 
 
 Functions:
+
 .. code-block:: python
 
     def add_to_list(list_of_numbers, scalar):
@@ -450,6 +451,7 @@ Functions:
 
 
 Functions with more than one return value:
+
 .. code-block:: python
 
     def multiple_returns():
@@ -465,6 +467,7 @@ Functions with more than one return value:
 
 
 One-line docstrings
+
 .. code-block:: python
 
     def some_function():
@@ -475,6 +478,7 @@ One-line docstrings
 
 
 Objects
+
 .. code-block:: python
 
     """Description of the class
