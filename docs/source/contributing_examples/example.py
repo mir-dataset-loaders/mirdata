@@ -280,7 +280,7 @@ class Dataset(core.Dataset):
 # -- if your dataset needs to overwrite the default download logic, do it here.
 # -- this function is usually not necessary unless you need very custom download logic
 def download(
-    self, partial_download=None, force_overwrite=False, cleanup=True
+    self, partial_download=None, force_overwrite=False, cleanup=False
 ):
     """Download the dataset
 
@@ -290,7 +290,6 @@ def download(
             If None, all data is downloaded
         force_overwrite (bool):
             If True, existing files are overwritten by the downloaded files. 
-            By default False.
         cleanup (bool):
             Whether to delete any zip/tar files after extracting.
 

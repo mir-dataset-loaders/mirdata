@@ -306,7 +306,7 @@ class Dataset(core.Dataset):
     def load_artist(self, *args, **kwargs):
         return load_artist(*args, **kwargs)
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
+    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
         """Download the dataset
 
         Args:
@@ -314,8 +314,7 @@ class Dataset(core.Dataset):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
             force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-                By default False.
+                If True, existing files are overwritten by the downloaded files. 
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.
 
