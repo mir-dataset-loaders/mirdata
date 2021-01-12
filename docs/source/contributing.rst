@@ -402,13 +402,8 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
    If they are passing locally but failing in the check, open an `issue` and we can help debug.
 
 
-Further Information
-###################
-
-This section details the conventions we use in mirdata.
-
-This Documentation
-------------------
+Documentation
+#############
 
 This documentation is in `rst format <https://docutils.sourceforge.io/docs/user/rst/quickref.html>`_.
 It is built using `Sphinx <https://www.sphinx-doc.org/en/master/index.html>`_ and hosted on `readthedocs <https://readthedocs.org/>`_.
@@ -507,7 +502,7 @@ Cached Properties:
 
 
 Conventions
------------
+###########
 
 Loading from files
 ^^^^^^^^^^^^^^^^^^
@@ -552,7 +547,7 @@ the property should be set to `None` when it isn't available.
 The index should only contain key-values for files that exist.
 
 Custom Decorators
------------------
+#################
 
 cached_property
 ^^^^^^^^^^^^^^^
