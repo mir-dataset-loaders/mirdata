@@ -191,6 +191,30 @@ def test_download(httpserver):
         )
     )
 
+    # test downloading again
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite
+    dataset.download(None, False, False)
+    dataset.download(None, True, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite and cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, True, False)
+
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
@@ -227,6 +251,9 @@ def test_download(httpserver):
         )
     )
 
+    # test downloading again
+    dataset.download(["midi"], False, False)
+
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
@@ -262,6 +289,9 @@ def test_download(httpserver):
             "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
         )
     )
+
+    # test downloading again
+    dataset.download(["metadata"], False, False)
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)

@@ -180,7 +180,7 @@ def test_download(httpserver):
     }
     dataset = orchset.Dataset(data_home)
     dataset.remotes = remotes
-    dataset.download(remotes, False, True)
+    dataset.download(None, False, False)
 
     assert os.path.exists(data_home)
     assert not os.path.exists(os.path.join(data_home, "Orchset"))
@@ -193,6 +193,30 @@ def test_download(httpserver):
     assert os.path.exists(track.audio_path_mono)
     assert os.path.exists(track.audio_path_stereo)
     assert os.path.exists(track.melody_path)
+
+    # test downloading again
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite
+    dataset.download(None, False, False)
+    dataset.download(None, True, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite and cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, True, False)
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)

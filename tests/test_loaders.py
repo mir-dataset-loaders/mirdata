@@ -150,14 +150,21 @@ def test_download(mocker, httpserver):
             dataset_name
         )
         params = signature(dataset.download).parameters
+
         expected_params = [
-            "partial_download",
-            "force_overwrite",
-            "cleanup",
+            ("partial_download", None),
+            ("force_overwrite", False),
+            ("cleanup", False),
         ]
-        assert set(params) == set(
-            expected_params
-        ), "{}.download must have parameters {}".format(dataset_name, expected_params)
+        for exp in expected_params:
+            assert exp[0] in params, "{}.download must have {} as a parameter".format(
+                dataset_name, exp[0]
+            )
+            assert (
+                params[exp[0]].default == exp[1]
+            ), "The default value of {} in {}.download must be {}".format(
+                dataset_name, exp[0], exp[1]
+            )
 
         # check that the download method can be called without errors
         if dataset.remotes != {}:
