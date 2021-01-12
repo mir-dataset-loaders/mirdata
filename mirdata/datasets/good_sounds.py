@@ -79,7 +79,7 @@ import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils, jams_utils, core, utils
+from mirdata import download_utils, jams_utils, core
 
 
 BIBTEX = """@inproceedings{romani2015real,
@@ -98,7 +98,7 @@ REMOTES = {
     )
 }
 
-DATA = utils.LargeData("good_sounds_index.json")
+DATA = core.LargeData("good_sounds_index.json")
 
 
 class Track(core.Track):
@@ -123,7 +123,7 @@ class Track(core.Track):
         self._data_home = data_home
         self._track_paths = DATA.index['tracks'][track_id]
 
-        self.audio_path = utils.none_path_join(
+        self.audio_path = core.none_path_join(
             [self._data_home, self._track_paths["audio"][0]]
         )
 
@@ -133,12 +133,12 @@ class Track(core.Track):
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
-    @utils.cached_property
+    @core.cached_property
     def get_sound_info(self):
         """dict: The entity containing the sounds annotations."""
         return DATA.index["sounds"][str(DATA.index["takes"][self.track_id]["sound_id"])]
 
-    @utils.cached_property
+    @core.cached_property
     def get_take_info(self):
         """dict: A sound can have several takes as some of them were recorded using different microphones at the same
         time. Each take has an associated audio file."""
@@ -146,14 +146,14 @@ class Track(core.Track):
         take_info["filename"] = self.audio_path
         return take_info
 
-    @utils.cached_property
+    @core.cached_property
     def get_ratings_info(self):
         """dict: A pack is a group of sounds from the same recording session. The audio files are organised in the
         *sound_files* directory in subfolders with the pack name to which they belong."""
         sound_id = str(DATA.index["takes"][self.track_id]["sound_id"])
         return list(filter(lambda rating: rating['sound_id'] == sound_id, DATA.index["ratings"].values()))
 
-    @utils.cached_property
+    @core.cached_property
     def get_pack_info(self):
         """dict: Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first
          project prototype. Please read the paper for more detailed information."""
