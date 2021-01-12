@@ -538,7 +538,7 @@ Load methods vs Track properties
 Track properties and cached properties should be trivial, and directly call a ``load_*`` method.
 There should be no additional logic in a track property/cached property, and instead all logic
 should be done in the load method. We separate these because the track properties are only usable
-when data is availalbe locally - when data is remote, the load methods are used instead.
+when data is available locally - when data is remote, the load methods are used instead.
 
 Missing Data
 ^^^^^^^^^^^^
