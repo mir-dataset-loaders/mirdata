@@ -122,5 +122,29 @@ def test_download(httpserver):
     assert os.path.exists(track.midi_path)
     assert os.path.exists(track.audio_path)
 
+    # test downloading again
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite
+    dataset.download(None, False, False)
+    dataset.download(None, True, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite and cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, True, False)
+
     if os.path.exists(data_home):
         shutil.rmtree(data_home)

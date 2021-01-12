@@ -412,7 +412,7 @@ class Dataset(core.Dataset):
     def load_extractor(self, *args, **kwargs):
         return load_extractor(*args, **kwargs)
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
+    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
         """Download the dataset
 
         Args:
