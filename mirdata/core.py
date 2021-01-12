@@ -189,7 +189,7 @@ class Dataset(object):
         print("========== BibTeX ==========")
         print(self.bibtex)
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
+    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
         """Download data to `save_dir` and optionally print a message.
 
         Args:
