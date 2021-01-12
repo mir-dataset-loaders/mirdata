@@ -420,85 +420,85 @@ Here are some common examples.
 
 .. note::
     The small formatting details in these examples are important. Differences in new lines, indentation, and spacing make
-    a difference in how the documentation is rendered. For example writing `Returns:` will render correctly, but `Returns`
-    or `Returns :` will not. 
+    a difference in how the documentation is rendered. For example writing ``Returns:`` will render correctly, but ``Returns``
+    or ``Returns :`` will not. 
 
 
 Functions:
 .. code-block:: python
 
-def add_to_list(list_of_numbers, scalar):
-    """Add a scalar to every element of a list.
-    You can write a continuation of the function description here on the next line.
+    def add_to_list(list_of_numbers, scalar):
+        """Add a scalar to every element of a list.
+        You can write a continuation of the function description here on the next line.
 
-    You can optionally write more about the function here. If you want to add an example
-    of how this function can be used, you can do it like below.
+        You can optionally write more about the function here. If you want to add an example
+        of how this function can be used, you can do it like below.
 
-    Example:
-        .. code-block:: python
+        Example:
+            .. code-block:: python
 
-        foo = add_to_list([1, 2, 3], 2)
+            foo = add_to_list([1, 2, 3], 2)
 
-    Args:
-        list_of_numbers (list): A short description that fits on one line.
-        scalar (float):
-            Description of the second parameter. If there is a lot to say you can
-            overflow to a second line.
+        Args:
+            list_of_numbers (list): A short description that fits on one line.
+            scalar (float):
+                Description of the second parameter. If there is a lot to say you can
+                overflow to a second line.
 
-    Returns:
-        list: Description of the return. The type here is not in parentheses
+        Returns:
+            list: Description of the return. The type here is not in parentheses
 
-    """
-    return [x + scalar for x in list_of_numbers]
+        """
+        return [x + scalar for x in list_of_numbers]
 
 
 Functions with more than one return value:
 .. code-block:: python
 
-def multiple_returns():
-    """This function has no arguments, but more than one return value. Autodoc with napoleon doesn't handle this well,
-    and we use this formatting as a workaround.
+    def multiple_returns():
+        """This function has no arguments, but more than one return value. Autodoc with napoleon doesn't handle this well,
+        and we use this formatting as a workaround.
 
-    Returns:
-        * int - the first return value
-        * bool - the second return value
+        Returns:
+            * int - the first return value
+            * bool - the second return value
 
-    """
-    return 42, True
+        """
+        return 42, True
 
 
 One-line docstrings
 .. code-block:: python
 
-def some_function():
-    """
-    One line docstrings must be on their own separate line, or autodoc does not build them properly
-    """
-    ...
+    def some_function():
+        """
+        One line docstrings must be on their own separate line, or autodoc does not build them properly
+        """
+        ...
 
 
 Objects
 .. code-block:: python
 
-"""Description of the class
-overflowing to a second line if it's long
+    """Description of the class
+    overflowing to a second line if it's long
 
-Some more details here
+    Some more details here
 
-Args:
-    foo (str): First argument to the __init__ method
-    bar (int): Second argument to the __init__ method
+    Args:
+        foo (str): First argument to the __init__ method
+        bar (int): Second argument to the __init__ method
 
-Attributes:
-    foobar (str): First track attribute
-    barfoo (bool): Second track attribute
+    Attributes:
+        foobar (str): First track attribute
+        barfoo (bool): Second track attribute
 
-Cached Properties:
-    foofoo (list): Cached properties are special mirdata attributes
-    barbar (None): They are lazy loaded properties.
-    barf (bool): Document them with this special header.
+    Cached Properties:
+        foofoo (list): Cached properties are special mirdata attributes
+        barbar (None): They are lazy loaded properties.
+        barf (bool): Document them with this special header.
 
-"""
+    """
 
 
 Conventions
@@ -520,7 +520,7 @@ We use the following libraries for loading data from files:
 +-------------------------+-------------+
 | csv                     | csv         |
 +-------------------------+-------------+
-| jams                    | jams         |
+| jams                    | jams        |
 +-------------------------+-------------+
 
 Track Attributes
@@ -528,13 +528,13 @@ Track Attributes
 Custom track attributes should be global, track-level data.
 For some datasets, there is a separate, dataset-level metadata file
 with track-level metadata, e.g. as a csv. When a single file is needed
-for more than one track, we recommend using writing a `_load_metadata` method
-and passing it to a `LargeData` object, which is available globally throughout 
+for more than one track, we recommend using writing a ``_load_metadata`` method
+and passing it to a ``LargeData`` object, which is available globally throughout 
 the module to avoid loading the same file multiple times.
 
 Load methods vs Track properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Track properties and cached properties should be trivial, and directly call a `load_*` method.
+Track properties and cached properties should be trivial, and directly call a ``load_*`` method.
 There should be no additional logic in a track property/cached property, and instead all logic
 should be done in the load method. We separate these because the track properties are only usable
 when data is availalbe locally - when data is remote, the load methods are used instead.
@@ -554,7 +554,7 @@ cached_property
 This is used primarily for Track objects.
 
 This decorator causes an Object's function to behave like
-an attribute (aka, like the @property decorator), but caches
+an attribute (aka, like the ``@property`` decorator), but caches
 the value in memory after it is first accessed. This is used
 for data which is relatively large and loaded from files.
 
@@ -566,6 +566,6 @@ This gives us clear and complete docs without a lot of copy-paste.
 
 copy_docs
 ^^^^^^^^^
-This decorator is used mainly for a dataset's `load_` functions, which
+This decorator is used mainly for a dataset's ``load_`` functions, which
 are attached to a loader's Dataset object. The attached function is identical,
 and this decorator simply copies the docstring from another function.
