@@ -90,8 +90,7 @@ class Dataset(object):
         bibtex (str or None): dataset citation/s in bibtex format
         remotes (dict or None): data to be downloaded
         readme (str): information about the dataset
-        track (function): a function which inputs a track_id (str) and
-            returns (mirdata.core.Track or None)
+        track (function): a function mapping a track_id to a mirdata.core.Track
 
     """
 
