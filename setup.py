@@ -50,7 +50,6 @@ if __name__ == "__main__":
                 "coveralls>=1.7.0",
             ],
             "docs": [
-                "dali-dataset==1.1",
                 "numpydoc",
                 "recommonmark",
                 "sphinx>=3.4.0",

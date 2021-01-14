@@ -2,7 +2,7 @@ import functools
 import io
 from typing import BinaryIO, Callable, Optional, TextIO, TypeVar, Union
 
-T = TypeVar('T')  # Can be anything
+T = TypeVar("T")  # Can be anything
 
 
 def coerce_to_string_io(

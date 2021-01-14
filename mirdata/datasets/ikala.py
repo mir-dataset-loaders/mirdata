@@ -298,7 +298,9 @@ def load_lyrics(fhandle: TextIO) -> annotations.LyricData:
             pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T, lyrics, pronunciations,
+        np.array([start_times, end_times]).T,
+        lyrics,
+        pronunciations,
     )
     return lyrics_data
 
