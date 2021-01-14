@@ -32,7 +32,6 @@ def test_track():
         "track_id": "008",
     }
 
-
     expected_property_types = {
         "melody": annotations.F0Data,
         "notes": annotations.NoteData,

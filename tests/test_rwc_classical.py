@@ -103,8 +103,8 @@ def test_load_sections():
 
     # empty file
     section_path = (
-            "tests/resources/mir_datasets/rwc_classical/"
-            + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C025_A.CHORUS.TXT"
+        "tests/resources/mir_datasets/rwc_classical/"
+        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C025_A.CHORUS.TXT"
     )
 
     section_data = rwc_classical.load_sections(section_path)

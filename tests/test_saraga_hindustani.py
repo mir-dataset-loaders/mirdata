@@ -337,7 +337,7 @@ def test_load_phrases():
     track = saraga_hindustani.Track("71_Bilaskhani_Todi", data_home=data_home)
     phrases_path = track.phrases_path
     parsed_phrases_add = saraga_hindustani.load_phrases(phrases_path)
-    assert parsed_phrases_add.events == ['rg', '']
+    assert parsed_phrases_add.events == ["rg", ""]
 
 
 def test_load_tempo():
@@ -493,4 +493,3 @@ def test_load_audio():
     assert audio.shape[0] == 2
 
     assert saraga_hindustani.load_audio(None) is None
-

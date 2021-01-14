@@ -7,35 +7,35 @@ from mirdata.datasets import irmas
 
 
 def test_track():
-    default_trackid = '1'
-    default_trackid_train = '0189__2'
+    default_trackid = "1"
+    default_trackid_train = "0189__2"
     data_home = "tests/resources/mir_datasets/irmas"
     track = irmas.Track(default_trackid, data_home=data_home)
     track_train = irmas.Track(default_trackid_train, data_home=data_home)
     expected_attributes = {
-        'annotation_path': "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
+        "annotation_path": "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.txt",
-        'audio_path': "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
+        "audio_path": "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.wav",
-        'track_id': '1',
-        'predominant_instrument': None,
-        'genre': None,
-        'drum': None,
-        'train': False,
+        "track_id": "1",
+        "predominant_instrument": None,
+        "genre": None,
+        "drum": None,
+        "train": False,
     }
     expected_attributes_train = {
-        'annotation_path': "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/"
+        "annotation_path": "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/"
         + "[cla][cla]0189__2.wav",
-        'audio_path': "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/"
+        "audio_path": "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/"
         + "[cla][cla]0189__2.wav",
-        'track_id': '0189__2',
-        'predominant_instrument': 'cla',
-        'genre': 'cla',
-        'drum': None,
-        'train': True,
+        "track_id": "0189__2",
+        "predominant_instrument": "cla",
+        "genre": "cla",
+        "drum": None,
+        "train": True,
     }
 
-    expected_property_test_types = {'instrument': list}
+    expected_property_test_types = {"instrument": list}
 
     run_track_tests(track, expected_attributes, expected_property_test_types)
     run_track_tests(
@@ -59,12 +59,12 @@ def test_to_jams():
     assert jam_train.validate()
 
     # Test the training data parsers
-    assert jam_train.sandbox["instrument"] == ['cla']
-    assert jam_train.sandbox["genre"] == 'cla'
+    assert jam_train.sandbox["instrument"] == ["cla"]
+    assert jam_train.sandbox["genre"] == "cla"
     assert jam_train.sandbox["train"] is True
 
     # Testing samples
-    default_trackid_test = '1'
+    default_trackid_test = "1"
     data_home = "tests/resources/mir_datasets/irmas"
     track_test = irmas.Track(default_trackid_test, data_home=data_home)
     jam_test = track_test.to_jams()
@@ -73,7 +73,7 @@ def test_to_jams():
     assert jam_test.validate()
 
     # Test the testing genre parser
-    assert jam_test.sandbox["instrument"] == ['gel', 'voi']
+    assert jam_test.sandbox["instrument"] == ["gel", "voi"]
     assert jam_test.sandbox["train"] is False
 
 
@@ -85,7 +85,7 @@ def test_load_pred_inst():
     )
 
     pred_inst_train = os.path.basename(os.path.dirname(pred_inst_audio_train))
-    assert pred_inst_train == 'cla'
+    assert pred_inst_train == "cla"
 
     # Testing samples
     pred_inst_ann_path_test = (
@@ -95,5 +95,5 @@ def test_load_pred_inst():
     pred_inst_data_test = irmas.load_pred_inst(pred_inst_ann_path_test)
     assert type(pred_inst_data_test) is list
     assert type(pred_inst_data_test[0]) is str
-    assert pred_inst_data_test == ['gel', 'voi']
+    assert pred_inst_data_test == ["gel", "voi"]
     assert irmas.load_pred_inst(None) is None

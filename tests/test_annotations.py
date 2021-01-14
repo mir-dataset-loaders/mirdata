@@ -235,4 +235,3 @@ def test_validate_intervals():
 
     with pytest.raises(ValueError):
         annotations.validate_intervals(np.array([[0, 1], [1, 0.5]]))
-

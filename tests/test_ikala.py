@@ -23,7 +23,6 @@ def test_track():
         "lyrics_path": "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab",
     }
 
-
     expected_property_types = {
         "f0": annotations.F0Data,
         "lyrics": annotations.LyricData,
