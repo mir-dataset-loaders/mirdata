@@ -53,7 +53,7 @@ if __name__ == "__main__":
                 "dali-dataset==1.1",
                 "numpydoc",
                 "recommonmark",
-                "sphinx",
+                "sphinx>=3.4.0",
                 "sphinxcontrib-napoleon",
                 "sphinx_rtd_theme",
             ],
