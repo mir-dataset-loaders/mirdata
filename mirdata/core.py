@@ -11,7 +11,7 @@ from mirdata import download_utils
 from mirdata import validate
 
 MAX_STR_LEN = 100
-DOCS_URL = "https://mirdata.readthedocs.io/en/latest/source/mirdata.html"
+DOCS_URL = "https://mirdata.readthedocs.io/en/stable/source/mirdata.html"
 DISCLAIMER = """
 ******************************************************************************************
 DISCLAIMER: mirdata is a software package with its own license which is independent from

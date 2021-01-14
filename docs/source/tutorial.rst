@@ -204,6 +204,8 @@ Alternatively, we don't need to load the whole dataset to get a single track.
     example_melody = example_track.melody  # Get the melody from first track
 
 
+.. _Remote Data Example: 
+
 Accessing data remotely
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -255,7 +257,7 @@ Annotation classes
 ``mirdata`` defines annotation-specific data classes. These data classes are meant to standarize the format for
 all loaders, and are compatibly with `JAMS <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
-The list and descriptions of available annotation classes can be found `at this link <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.annotations>`_.
+The list and descriptions of available annotation classes can be found in :ref:`annotations`.
 
 .. note:: These classes may be extended in the case that a loader requires it.
 
