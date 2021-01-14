@@ -20,6 +20,7 @@ import gzip
 import logging
 import os
 import pickle
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -28,6 +29,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 # this is the package, needed to load the annotations.
 # DALI-dataset is only installed if the user explicitly declares
@@ -64,9 +66,9 @@ DOWNLOAD_INFO = """
     Once downloaded, unzip the file DALI_v1.0.zip
     and place the result in:
     {}
-    
+
     Use the function dali_code.get_audio you can find at:
-    https://github.com/gabolsgabs/DALI for getting the audio 
+    https://github.com/gabolsgabs/DALI for getting the audio
     and place them in "audio" folder with the following structure:
     > Dali
         > audio
@@ -174,32 +176,32 @@ class Track(core.Track):
             self.audio_path = None
 
     @core.cached_property
-    def notes(self):
+    def notes(self) -> annotations.NoteData:
         return load_annotations_granularity(self.annotation_path, "notes")
 
     @core.cached_property
-    def words(self):
+    def words(self) -> annotations.NoteData:
         return load_annotations_granularity(self.annotation_path, "words")
 
     @core.cached_property
-    def lines(self):
+    def lines(self) -> annotations.NoteData:
         return load_annotations_granularity(self.annotation_path, "lines")
 
     @core.cached_property
-    def paragraphs(self):
+    def paragraphs(self) -> annotations.NoteData:
         return load_annotations_granularity(self.annotation_path, "paragraphs")
 
     @core.cached_property
-    def annotation_object(self):
+    def annotation_object(self) -> DALI.Annotations:
         return load_annotations_class(self.annotation_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -223,20 +225,19 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
     """Load a DALI audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 def load_annotations_granularity(annotations_path, granularity):
@@ -250,9 +251,6 @@ def load_annotations_granularity(annotations_path, granularity):
         NoteData for granularity='notes' or LyricData otherwise
 
     """
-    if not os.path.exists(annotations_path):
-        raise IOError("annotations_path {} does not exist".format(annotations_path))
-
     try:
         with gzip.open(annotations_path, "rb") as f:
             output = pickle.load(f)

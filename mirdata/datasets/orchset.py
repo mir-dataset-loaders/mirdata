@@ -18,6 +18,8 @@ import glob
 import logging
 import os
 import shutil
+from typing import BinaryIO, Optional, TextIO, Tuple
+
 import librosa
 import numpy as np
 
@@ -25,6 +27,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 BIBTEX = """@article{bosch2016evaluation,
     title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
@@ -191,11 +194,11 @@ class Track(core.Track):
         self.only_brass = self._track_metadata["only_brass"]
 
     @core.cached_property
-    def melody(self):
+    def melody(self) -> Optional[annotations.F0Data]:
         return load_melody(self.melody_path)
 
     @property
-    def audio_mono(self):
+    def audio_mono(self) -> Optional[Tuple[np.ndarray, float]]:
         """the track's audio (mono)
 
         Returns:
@@ -206,7 +209,7 @@ class Track(core.Track):
         return load_audio_mono(self.audio_path_mono)
 
     @property
-    def audio_stereo(self):
+    def audio_stereo(self) -> Optional[Tuple[np.ndarray, float]]:
         """the track's audio (stereo)
 
         Returns:
@@ -230,45 +233,42 @@ class Track(core.Track):
         )
 
 
-def load_audio_mono(audio_path):
+@io.coerce_to_bytes_io
+def load_audio_mono(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load an Orchset audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_audio_stereo(audio_path):
+@io.coerce_to_bytes_io
+def load_audio_stereo(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load an Orchset audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
-        * np.ndarray - the mono audio signal
+        * np.ndarray - the stereo audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=False)
+    return librosa.load(fhandle, sr=None, mono=False)
 
 
-def load_melody(melody_path):
+@io.coerce_to_string_io
+def load_melody(fhandle: TextIO) -> annotations.F0Data:
     """Load an Orchset melody annotation file
 
     Args:
-        melody_path (str): path to melody annotation file
+        fhandle(str or file-like): File-like object or path to melody annotation file
 
     Raises:
         IOError: if melody_path doesn't exist
@@ -276,18 +276,15 @@ def load_melody(melody_path):
     Returns:
         F0Data: melody annotation data
     """
-    if not os.path.exists(melody_path):
-        raise IOError("melody_path {} does not exist".format(melody_path))
 
     times = []
     freqs = []
     confidence = []
-    with open(melody_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
-            confidence.append(0.0 if line[1] == "0" else 1.0)
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[1]))
+        confidence.append(0.0 if line[1] == "0" else 1.0)
 
     melody_data = annotations.F0Data(
         np.array(times), np.array(freqs), np.array(confidence)
@@ -332,7 +329,7 @@ class Dataset(core.Dataset):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
             force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. 
+                If True, existing files are overwritten by the downloaded files.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.
 

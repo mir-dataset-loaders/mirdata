@@ -19,15 +19,18 @@
 
 import csv
 import json
-import librosa
 import logging
-import numpy as np
 import os
+from typing import BinaryIO, cast, Optional, TextIO, Tuple
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
@@ -40,7 +43,7 @@ DOWNLOAD_INFO = """
     To download this dataset, visit:
     https://zenodo.org/record/2628782#.XKZdABNKh24
     and request access.
-    
+
     Once downloaded, unzip the file MedleyDB-Melody.zip
     and copy the result to:
     {}
@@ -136,24 +139,24 @@ class Track(core.Track):
         self.n_sources = self._track_metadata["n_sources"]
 
     @core.cached_property
-    def melody1(self):
+    def melody1(self) -> Optional[annotations.F0Data]:
         return load_melody(self.melody1_path)
 
     @core.cached_property
-    def melody2(self):
+    def melody2(self) -> Optional[annotations.F0Data]:
         return load_melody(self.melody2_path)
 
     @core.cached_property
-    def melody3(self):
+    def melody3(self) -> Optional[annotations.MultiF0Data]:
         return load_melody3(self.melody3_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -173,28 +176,27 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MedleyDB audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_melody(melody_path):
+@io.coerce_to_string_io
+def load_melody(fhandle: TextIO) -> annotations.F0Data:
     """Load a MedleyDB melody1 or melody2 annotation file
 
     Args:
-        melody_path (str): path to a melody annotation file
+        fhandle(str or file-like): File-like object or path to a melody annotation file
 
     Raises:
         IOError: if melody_path does not exist
@@ -203,29 +205,25 @@ def load_melody(melody_path):
         F0Data: melody data
 
     """
-    if not os.path.exists(melody_path):
-        raise IOError("melody_path {} does not exist".format(melody_path))
-
     times = []
     freqs = []
-    with open(melody_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[1]))
 
     times = np.array(times)
     freqs = np.array(freqs)
-    confidence = (freqs > 0).astype(float)
-    melody_data = annotations.F0Data(times, freqs, confidence)
-    return melody_data
+    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
+    return annotations.F0Data(times, freqs, confidence)
 
 
-def load_melody3(melody_path):
+@io.coerce_to_string_io
+def load_melody3(fhandle: TextIO) -> annotations.MultiF0Data:
     """Load a MedleyDB melody3 annotation file
 
     Args:
-        melody_path (str): melody 3 melody annotation path
+        fhandle(str or file-like): File-like object or melody 3 melody annotation path
 
     Raises:
         IOError: if melody_path does not exist
@@ -234,18 +232,14 @@ def load_melody3(melody_path):
         MultiF0Data: melody 3 annotation data
 
     """
-    if not os.path.exists(melody_path):
-        raise IOError("melody_path {} does not exist".format(melody_path))
-
     times = []
     freqs_list = []
     conf_list = []
-    with open(melody_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs_list.append([float(v) for v in line[1:]])
-            conf_list.append([float(float(v) > 0) for v in line[1:]])
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        times.append(float(line[0]))
+        freqs_list.append([float(v) for v in line[1:]])
+        conf_list.append([float(float(v) > 0) for v in line[1:]])
 
     times = np.array(times)
     melody_data = annotations.MultiF0Data(times, freqs_list, conf_list)

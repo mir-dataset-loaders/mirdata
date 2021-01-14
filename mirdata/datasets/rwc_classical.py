@@ -37,7 +37,7 @@
         96: 3rd beat
 
     In 6/8 time signature, they correspond as follows:
-    
+
     .. code-block:: latex
 
         384: 1st beat in a measure (i.e., downbeat position)
@@ -53,6 +53,7 @@
 import csv
 import logging
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -61,6 +62,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 BIBTEX = """@inproceedings{goto2002rwc,
   title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
@@ -103,10 +105,10 @@ DOWNLOAD_INFO = """
 LICENSE_INFO = """
 From the dataset's owner webpage:
 
-'Users who have submitted the Pledge and received authorization may freely use the database for research purposes 
-without facing the usual copyright restrictions, but all of the copyrights and neighboring rights connected with 
-this database belong to the National Institute of Advanced Industrial Science and Technology and are managed by the 
-RWC Music Database Administrator. Persons or organizations that have not submitted a Pledge and that have not 
+'Users who have submitted the Pledge and received authorization may freely use the database for research purposes
+without facing the usual copyright restrictions, but all of the copyrights and neighboring rights connected with
+this database belong to the National Institute of Advanced Industrial Science and Technology and are managed by the
+RWC Music Database Administrator. Persons or organizations that have not submitted a Pledge and that have not
 received authorization may not use the database.'
 
 See https://staff.aist.go.jp/m.goto/RWC-MDB/ for more details.
@@ -227,20 +229,20 @@ class Track(core.Track):
         self.category = self._track_metadata["category"]
 
     @core.cached_property
-    def sections(self):
+    def sections(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_path)
 
     @core.cached_property
-    def beats(self):
+    def beats(self) -> Optional[annotations.BeatData]:
         return load_beats(self.beats_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -260,46 +262,41 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a RWC audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_sections(sections_path):
+@io.coerce_to_string_io
+def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
     """Load rwc section data from a file
 
     Args:
-        sections_path (str): path to sections annotation file
+        fhandle(str or file-like): File-like object or path to sections annotation file
 
     Returns:
         SectionData: section data
 
     """
-    if not os.path.exists(sections_path):
-        raise IOError("sections_path {} does not exist".format(sections_path))
-
     begs = []  # timestamps of section beginnings
     ends = []  # timestamps of section endings
     secs = []  # section labels
 
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            begs.append(float(line[0]) / 100.0)
-            ends.append(float(line[1]) / 100.0)
-            secs.append(line[2])
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        begs.append(float(line[0]) / 100.0)
+        ends.append(float(line[1]) / 100.0)
+        secs.append(line[2])
 
     if not begs:  # some files are empty
         return None
@@ -315,8 +312,8 @@ def _position_in_bar(beat_positions, beat_times):
         beat_times (np.ndarray): raw rwc time stamps
 
     Returns:
-        * np.ndarray: normalized beat positions
-        * np.ndarray: normalized time stamps
+        * np.ndarray - normalized beat positions
+        * np.ndarray - normalized time stamps
 
     """
     # Remove -1
@@ -344,32 +341,30 @@ def _position_in_bar(beat_positions, beat_times):
     return beat_positions_corrected, beat_times_corrected
 
 
-def load_beats(beats_path):
+@io.coerce_to_string_io
+def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load rwc beat data from a file
 
     Args:
-        beats_path (str): path to beats annotation file
+        fhandle(str or file-like): File-like object or path to beats annotation file
 
     Returns:
         BeatData: beat data
 
     """
-    if not os.path.exists(beats_path):
-        raise IOError("beats_path {} does not exist".format(beats_path))
 
     beat_times = []  # timestamps of beat interval beginnings
     beat_positions = []  # beat position inside the bar
 
-    with open(beats_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            beat_times.append(float(line[0]) / 100.0)
-            beat_positions.append(int(line[2]))
-    beat_positions, beat_times = _position_in_bar(
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        beat_times.append(float(line[0]) / 100.0)
+        beat_positions.append(int(line[2]))
+    beat_positions_in_bar, beat_times = _position_in_bar(
         np.array(beat_positions), np.array(beat_times)
     )
 
-    return annotations.BeatData(beat_times, beat_positions.astype(int))
+    return annotations.BeatData(beat_times, beat_positions_in_bar.astype(int))
 
 
 def _duration_to_sec(duration):

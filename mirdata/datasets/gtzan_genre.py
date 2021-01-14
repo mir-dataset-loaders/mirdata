@@ -17,12 +17,16 @@
 
 """
 
-import librosa
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
+from mirdata import io
 
 
 BIBTEX = """@article{tzanetakis2002gtzan,
@@ -76,12 +80,12 @@ class Track(core.Track):
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -105,20 +109,19 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a GTZAN audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    audio, sr = librosa.load(audio_path, sr=22050, mono=True)
+    audio, sr = librosa.load(fhandle, sr=22050, mono=True)
     return audio, sr
 
 

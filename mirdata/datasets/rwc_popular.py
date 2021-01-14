@@ -16,6 +16,7 @@
 import csv
 import logging
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -24,6 +25,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (
@@ -234,28 +236,28 @@ class Track(core.Track):
         self.drum_information = self._track_metadata["drum_information"]
 
     @core.cached_property
-    def sections(self):
+    def sections(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_path)
 
     @core.cached_property
-    def beats(self):
+    def beats(self) -> Optional[annotations.BeatData]:
         return load_beats(self.beats_path)
 
     @core.cached_property
-    def chords(self):
+    def chords(self) -> Optional[annotations.ChordData]:
         return load_chords(self.chords_path)
 
     @core.cached_property
-    def vocal_instrument_activity(self):
+    def vocal_instrument_activity(self) -> Optional[annotations.EventData]:
         return load_vocal_activity(self.voca_inst_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -276,59 +278,50 @@ class Track(core.Track):
         )
 
 
-def load_chords(chords_path):
+@io.coerce_to_string_io
+def load_chords(fhandle: TextIO) -> annotations.ChordData:
     """Load rwc chord data from a file
 
     Args:
-        chords_path (str): path to chord annotation file
+        fhandle(str or file-like): File-like object or path to chord annotation file
 
     Returns:
         ChordData: chord data
 
     """
-    if not os.path.exists(chords_path):
-        raise IOError("chords_path {} does not exist".format(chords_path))
-
     begs = []  # timestamps of chord beginnings
     ends = []  # timestamps of chord endings
     chords = []  # chord labels
 
-    if os.path.exists(chords_path):
-        with open(chords_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter="\t")
-            for line in reader:
-                begs.append(float(line[0]))
-                ends.append(float(line[1]))
-                chords.append(line[2])
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        begs.append(float(line[0]))
+        ends.append(float(line[1]))
+        chords.append(line[2])
 
     return annotations.ChordData(np.array([begs, ends]).T, chords)
 
 
-def load_vocal_activity(vocal_activity_path):
+@io.coerce_to_string_io
+def load_vocal_activity(fhandle: TextIO) -> annotations.EventData:
     """Load rwc vocal activity data from a file
 
     Args:
-        vocal_activity_path (str): path to vocal activity annotation file
+        fhandle(str or file-like): File-like object or path to vocal activity annotation file
 
     Returns:
         EventData: vocal activity data
 
     """
-    if not os.path.exists(vocal_activity_path):
-        raise IOError(
-            "vocal_activity_path {} does not exist".format(vocal_activity_path)
-        )
-
     begs = []  # timestamps of vocal-instrument activity beginnings
     ends = []  # timestamps of vocal-instrument activity endings
     events = []  # vocal-instrument activity labels
 
-    with open(vocal_activity_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        raw_data = []
-        for line in reader:
-            if line[0] != "Piece No.":
-                raw_data.append(line)
+    reader = csv.reader(fhandle, delimiter="\t")
+    raw_data = []
+    for line in reader:
+        if line[0] != "Piece No.":
+            raw_data.append(line)
 
     for i in range(len(raw_data)):
         # Parsing vocal-instrument activity as intervals (beg, end, event)

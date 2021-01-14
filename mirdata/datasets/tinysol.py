@@ -45,13 +45,17 @@
 """
 
 import csv
-import librosa
 import logging
 import os
+from typing import BinaryIO, Optional, Tuple
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
+from mirdata import io
 
 BIBTEX = """@inproceedings{cella2020preprint,
   author={Cella, Carmine Emanuele and Ghisi, Daniele and Lostanlen, Vincent and
@@ -191,12 +195,12 @@ class Track(core.Track):
         self.is_resampled = self._track_metadata["Resampled"]
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -213,21 +217,19 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a TinySOL audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @core.docstring_inherit(core.Dataset)

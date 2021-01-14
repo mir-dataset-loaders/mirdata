@@ -4,8 +4,8 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    MedleyDB Pitch is a pitch-tracking subset of the MedleyDB dataset 
-    containing only f0-annotated, monophonic stems. 
+    MedleyDB Pitch is a pitch-tracking subset of the MedleyDB dataset
+    containing only f0-annotated, monophonic stems.
 
     MedleyDB is a dataset of annotated, royalty-free multitrack recordings.
     MedleyDB was curated primarily to support research on melody extraction,
@@ -19,15 +19,18 @@
 
 import csv
 import json
-import librosa
 import logging
-import numpy as np
 import os
+from typing import BinaryIO, cast, Optional, TextIO, Tuple
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
@@ -41,7 +44,7 @@ DOWNLOAD_INFO = """
     To download this dataset, visit:
     https://zenodo.org/record/2620624#.XKZc7hNKh24
     and request access.
-    
+
     Once downloaded, unzip the file MedleyDB-Pitch.zip
     and copy the result to:
     {}
@@ -119,16 +122,16 @@ class Track(core.Track):
         self.genre = self._track_metadata["genre"]
 
     @core.cached_property
-    def pitch(self):
+    def pitch(self) -> Optional[annotations.F0Data]:
         return load_pitch(self.pitch_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -147,24 +150,23 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MedleyDB audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_pitch(pitch_path):
+@io.coerce_to_string_io
+def load_pitch(fhandle: TextIO) -> annotations.F0Data:
     """load a MedleyDB pitch annotation file
 
     Args:
@@ -177,20 +179,17 @@ def load_pitch(pitch_path):
         F0Data: pitch annotation
 
     """
-    if not os.path.exists(pitch_path):
-        raise IOError("pitch_path {} does not exist".format(pitch_path))
 
     times = []
     freqs = []
-    with open(pitch_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[1]))
 
     times = np.array(times)
     freqs = np.array(freqs)
-    confidence = (freqs > 0).astype(float)
+    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
     pitch_data = annotations.F0Data(times, freqs, confidence)
     return pitch_data
 
