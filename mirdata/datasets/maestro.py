@@ -36,6 +36,7 @@ import glob
 import logging
 import os
 import shutil
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -45,6 +46,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 
 BIBTEX = """@inproceedings{
@@ -157,7 +159,7 @@ class Track(core.Track):
             self.duration = None
 
     @core.cached_property
-    def midi(self):
+    def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
         return load_midi(self.midi_path)
 
     @core.cached_property
@@ -165,12 +167,12 @@ class Track(core.Track):
         return load_notes(self.midi_path, self.midi)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -189,20 +191,18 @@ class Track(core.Track):
         )
 
 
-def load_midi(midi_path):
+@io.coerce_to_bytes_io
+def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
     """Load a MAESTRO midi file.
 
     Args:
-        midi_path (str): path to midi file
+        fhandle(str or file-like): File-like object or path to midi file
 
     Returns:
         pretty_midi.PrettyMIDI: pretty_midi object
 
     """
-    if not os.path.exists(midi_path):
-        raise IOError("midi_path {} does not exist".format(midi_path))
-
-    return pretty_midi.PrettyMIDI(midi_path)
+    return pretty_midi.PrettyMIDI(fhandle)
 
 
 def load_notes(midi_path, midi=None):
@@ -232,20 +232,19 @@ def load_notes(midi_path, midi=None):
     )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MAESTRO audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @core.docstring_inherit(core.Dataset)
@@ -285,7 +284,7 @@ class Dataset(core.Dataset):
                 A list of keys of remotes to partially download.
                 If None, all data is downloaded
             force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. 
+                If True, existing files are overwritten by the downloaded files.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.
 

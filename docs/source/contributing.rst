@@ -506,7 +506,7 @@ Conventions
 ###########
 
 Loading from files
-^^^^^^^^^^^^^^^^^^
+------------------
 
 We use the following libraries for loading data from files:
 
@@ -525,7 +525,7 @@ We use the following libraries for loading data from files:
 +-------------------------+-------------+
 
 Track Attributes
-^^^^^^^^^^^^^^^^
+----------------
 Custom track attributes should be global, track-level data.
 For some datasets, there is a separate, dataset-level metadata file
 with track-level metadata, e.g. as a csv. When a single file is needed
@@ -534,14 +534,14 @@ and passing it to a ``LargeData`` object, which is available globally throughout
 the module to avoid loading the same file multiple times.
 
 Load methods vs Track properties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 Track properties and cached properties should be trivial, and directly call a ``load_*`` method.
 There should be no additional logic in a track property/cached property, and instead all logic
 should be done in the load method. We separate these because the track properties are only usable
 when data is available locally - when data is remote, the load methods are used instead.
 
 Missing Data
-^^^^^^^^^^^^
+------------
 If a Track has a property, for example a type of annotation, that is present for some tracks and not others,
 the property should be set to `None` when it isn't available.
 
@@ -551,7 +551,7 @@ Custom Decorators
 #################
 
 cached_property
-^^^^^^^^^^^^^^^
+---------------
 This is used primarily for Track objects.
 
 This decorator causes an Object's function to behave like
@@ -560,13 +560,29 @@ the value in memory after it is first accessed. This is used
 for data which is relatively large and loaded from files.
 
 docstring_inherit
-^^^^^^^^^^^^^^^^^
+-----------------
 This decorator is used for children of the Dataset object, and
 copies the Attributes from the parent class to the docstring of the child.
 This gives us clear and complete docs without a lot of copy-paste.
 
 copy_docs
-^^^^^^^^^
+---------
 This decorator is used mainly for a dataset's ``load_`` functions, which
 are attached to a loader's Dataset object. The attached function is identical,
 and this decorator simply copies the docstring from another function.
+
+coerce_to_bytes_io/coerce_to_string_io
+--------------------------------------
+These are two decorators used to simplify the loading of various `Track` members
+in addition to giving users the ability to use file streams instead of paths in
+case the data is in a remote location e.g. GCS. The decorators modify the function
+to:
+
+- Return `None` if `None` if passed in.
+- Open a file if a string path is passed in either `'w'` mode for `string_io` or `wb` for `bytes_io` and
+  pass the file handle to the decorated function.
+- Pass the file handle to the decorated function if a file-like object is passed.
+
+This cannot be used if the function to be decorated takes multiple arguments.
+`coerce_to_bytes_io` should not be used if trying to load an mp3 with librosa as libsndfile does not support
+`mp3` yet and `audioread` expects a path.

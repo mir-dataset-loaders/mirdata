@@ -5,9 +5,9 @@
     :class: dropdown
 
     Medley-solos-DB is a cross-collection dataset for automatic musical instrument
-    recognition in solo recordings. It consists of a training set of 3-second audio 
-    clips, which are extracted from the MedleyDB dataset (Bittner et al., ISMIR 2014) 
-    as well as a test set of 3-second clips, which are extracted from the solosDB 
+    recognition in solo recordings. It consists of a training set of 3-second audio
+    clips, which are extracted from the MedleyDB dataset (Bittner et al., ISMIR 2014)
+    as well as a test set of 3-second clips, which are extracted from the solosDB
     dataset (Essid et al., IEEE TASLP 2009).
 
     Each of these clips contains a single instrument among a taxonomy of eight:
@@ -28,13 +28,17 @@
 """
 
 import csv
-import librosa
 import logging
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
+from mirdata import io
 
 BIBTEX = """@inproceedings{lostanlen2019ismir,
     title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
@@ -136,12 +140,12 @@ class Track(core.Track):
         self.subset = self._track_metadata["subset"]
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -158,21 +162,19 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Medley Solos DB audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=22050, mono=True)
+    return librosa.load(fhandle, sr=22050, mono=True)
 
 
 @core.docstring_inherit(core.Dataset)

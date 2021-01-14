@@ -12,6 +12,8 @@
 
 import csv
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
+
 import librosa
 import numpy as np
 
@@ -19,6 +21,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 
 DATA = core.LargeData("beatles_index.json")
@@ -102,28 +105,28 @@ class Track(core.Track):
         self.title = os.path.basename(self._track_paths["sections"][0]).split(".")[0]
 
     @core.cached_property
-    def beats(self):
+    def beats(self) -> Optional[annotations.BeatData]:
         return load_beats(self.beats_path)
 
     @core.cached_property
-    def chords(self):
+    def chords(self) -> Optional[annotations.ChordData]:
         return load_chords(self.chords_path)
 
     @core.cached_property
-    def key(self):
+    def key(self) -> Optional[annotations.KeyData]:
         return load_key(self.keys_path)
 
     @core.cached_property
-    def sections(self):
+    def sections(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-            np.ndarray: audio signal
-            float: sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -145,149 +148,115 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Beatles audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_beats(beats_path):
+@io.coerce_to_string_io
+def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load Beatles format beat data from a file
 
     Args:
-        beats_path (str): path to beat annotation file
+        fhandle(str or file-like): path or file-like object pointing to a beat annotation file
 
     Returns:
         BeatData: loaded beat data
 
     """
-    if beats_path is None:
-        return None
-
-    if not os.path.exists(beats_path):
-        raise IOError("beats_path {} does not exist".format(beats_path))
-
     beat_times, beat_positions = [], []
-    with open(beats_path, "r") as fhandle:
-        dialect = csv.Sniffer().sniff(fhandle.read(1024))
-        fhandle.seek(0)
-        reader = csv.reader(fhandle, dialect)
-        for line in reader:
-            beat_times.append(float(line[0]))
-            beat_positions.append(line[-1])
+    dialect = csv.Sniffer().sniff(fhandle.read(1024))
+    fhandle.seek(0)
+    reader = csv.reader(fhandle, dialect)
+    for line in reader:
+        beat_times.append(float(line[0]))
+        beat_positions.append(line[-1])
 
     beat_positions = _fix_newpoint(np.array(beat_positions))
     # After fixing New Point labels convert positions to int
-    beat_positions = [int(b) for b in beat_positions]
-
-    beat_data = annotations.BeatData(np.array(beat_times), np.array(beat_positions))
+    beat_data = annotations.BeatData(
+        np.array(beat_times), np.array([int(b) for b in beat_positions])
+    )
 
     return beat_data
 
 
-def load_chords(chords_path):
+@io.coerce_to_string_io
+def load_chords(fhandle: TextIO) -> annotations.ChordData:
     """Load Beatles format chord data from a file
 
     Args:
-        chords_path (str): path to chord annotation file
+        fhandle(str or file-like): path or file-like object pointing to a chord annotation file
 
     Returns:
         ChordData: loaded chord data
 
     """
-    if chords_path is None:
-        return None
-
-    if not os.path.exists(chords_path):
-        raise IOError("chords_path {} does not exist".format(chords_path))
-
     start_times, end_times, chords = [], [], []
-    with open(chords_path, "r") as f:
-        dialect = csv.Sniffer().sniff(f.read(1024))
-        f.seek(0)
-        reader = csv.reader(f, dialect)
-        for line in reader:
-            start_times.append(float(line[0]))
-            end_times.append(float(line[1]))
-            chords.append(line[2])
+    dialect = csv.Sniffer().sniff(fhandle.read(1024))
+    fhandle.seek(0)
+    reader = csv.reader(fhandle, dialect)
+    for line in reader:
+        start_times.append(float(line[0]))
+        end_times.append(float(line[1]))
+        chords.append(line[2])
 
-    chord_data = annotations.ChordData(np.array([start_times, end_times]).T, chords)
-
-    return chord_data
+    return annotations.ChordData(np.array([start_times, end_times]).T, chords)
 
 
-def load_key(keys_path):
+@io.coerce_to_string_io
+def load_key(fhandle: TextIO) -> annotations.KeyData:
     """Load Beatles format key data from a file
 
     Args:
-        keys_path (str): path to key annotation file
+        fhandle(str or file-like): path or file-like object pointing to a key annotation file
 
     Returns:
         KeyData: loaded key data
 
     """
-    if keys_path is None:
-        return None
-
-    if not os.path.exists(keys_path):
-        raise IOError("keys_path {} does not exist".format(keys_path))
-
     start_times, end_times, keys = [], [], []
-    with open(keys_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            if line[2] == "Key":
-                start_times.append(float(line[0]))
-                end_times.append(float(line[1]))
-                keys.append(line[3])
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        if line[2] == "Key":
+            start_times.append(float(line[0]))
+            end_times.append(float(line[1]))
+            keys.append(line[3])
 
-    key_data = annotations.KeyData(np.array([start_times, end_times]).T, keys)
-
-    return key_data
+    return annotations.KeyData(np.array([start_times, end_times]).T, keys)
 
 
-def load_sections(sections_path):
+@io.coerce_to_string_io
+def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load Beatles format section data from a file
 
     Args:
-        sections_path (str): path to section annotation file
+        fhandle(str or file-like): path or file-like object pointing to a section annotation file
 
     Returns:
         SectionData: loaded section data
-
     """
-    if sections_path is None:
-        return None
-
-    if not os.path.exists(sections_path):
-        raise IOError("sections_path {} does not exist".format(sections_path))
-
     start_times, end_times, sections = [], [], []
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            start_times.append(float(line[0]))
-            end_times.append(float(line[1]))
-            sections.append(line[3])
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        start_times.append(float(line[0]))
+        end_times.append(float(line[1]))
+        sections.append(line[3])
 
-    section_data = annotations.SectionData(
-        np.array([start_times, end_times]).T, sections
-    )
-
-    return section_data
+    return annotations.SectionData(np.array([start_times, end_times]).T, sections)
 
 
-def _fix_newpoint(beat_positions):
+def _fix_newpoint(beat_positions: np.ndarray) -> np.ndarray:
     """Fills in missing beat position labels by inferring the beat position
     from neighboring beats.
 

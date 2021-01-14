@@ -49,6 +49,7 @@ import csv
 import os
 import logging
 import xml.etree.ElementTree as ET
+from typing import BinaryIO, cast, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -57,6 +58,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 
 BIBTEX = """@dataset{nadine_kroher_2018_1322542,
@@ -124,9 +126,9 @@ REMOTES = {
 
 DOWNLOAD_INFO = """
         This loader is designed to load the spectrum, as it is available for download.
-        However, the loader supports audio as well. Unfortunately the audio files of the 
-        cante100 dataset are not available for free download, but upon request. However, 
-        you can request de audio in both links here: 
+        However, the loader supports audio as well. Unfortunately the audio files of the
+        cante100 dataset are not available for free download, but upon request. However,
+        you can request de audio in both links here:
         ==> http://www.cofla-project.com/?page_id=208
         ==> https://zenodo.org/record/1324183
         Then, locate the downloaded the cante100audio folder like this:
@@ -277,31 +279,31 @@ class Track(core.Track):
         self.duration = self._track_metadata["duration"]
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
 
     @property
-    def spectrogram(self):
+    def spectrogram(self) -> Optional[np.ndarray]:
         """spectrogram of The track's audio
 
         Returns:
-            (np.ndarray): spectrogram
+            np.ndarray: spectrogram
         """
         return load_spectrogram(self.spectrogram_path)
 
     @core.cached_property
-    def melody(self):
+    def melody(self) -> Optional[annotations.F0Data]:
         return load_melody(self.f0_path)
 
     @core.cached_property
-    def notes(self):
+    def notes(self) -> Optional[annotations.NoteData]:
         return load_notes(self.notes_path)
 
     def to_jams(self):
@@ -320,92 +322,82 @@ class Track(core.Track):
         )
 
 
-def load_spectrogram(spectrogram_path):
+@io.coerce_to_string_io
+def load_spectrogram(fhandle: TextIO) -> np.ndarray:
     """Load a cante100 dataset spectrogram file.
 
     Args:
-        spectrogram_path (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         np.ndarray: spectrogram
 
     """
-    if not os.path.exists(spectrogram_path):
-        raise IOError("spectrogram_path {} does not exist".format(spectrogram_path))
-    parsed_spectrogram = np.genfromtxt(spectrogram_path, delimiter=" ")
+    parsed_spectrogram = np.genfromtxt(fhandle, delimiter=" ")
     spectrogram = parsed_spectrogram.astype(np.float)
 
     return spectrogram
 
 
-def load_audio(audio_path):
+def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a cante100 audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str): path to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    audio, sr = librosa.load(audio_path, sr=22050, mono=False)
-    return audio, sr
+    return librosa.load(fhandle, sr=22050, mono=False)
 
 
-def load_melody(f0_path):
+@io.coerce_to_string_io
+def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """Load cante100 f0 annotations
 
     Args:
-        f0_path (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to melody annotation file
 
     Returns:
         F0Data: predominant melody
 
     """
-    if not os.path.exists(f0_path):
-        raise IOError("f0_path {} does not exist".format(f0_path))
-
     times = []
     freqs = []
-    with open(f0_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[1]))
 
     times = np.array(times)
     freqs = np.array(freqs)
-    confidence = (freqs > 0).astype(float)
+    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
 
     return annotations.F0Data(times, freqs, confidence)
 
 
-def load_notes(notes_path):
+@io.coerce_to_string_io
+def load_notes(fhandle: TextIO) -> annotations.NoteData:
     """Load note data from the annotation files
 
     Args:
-        notes_path (str): path to notes file
+        fhandle (str or file-like): path or file-like object pointing to a notes annotation file
 
     Returns:
         NoteData: note annotations
 
     """
-    if not os.path.exists(notes_path):
-        raise IOError("notes_path {} does not exist".format(notes_path))
-
     intervals = []
     pitches = []
     confidence = []
-    with open(notes_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            intervals.append([line[0], float(line[0]) + float(line[1])])
-            # Convert midi value to frequency
-            pitches.append((440 / 32) * (2 ** ((int(line[2]) - 9) / 12)))
-            confidence.append(1.0)
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        intervals.append([line[0], float(line[0]) + float(line[1])])
+        # Convert midi value to frequency
+        pitches.append((440 / 32) * (2 ** ((int(line[2]) - 9) / 12)))
+        confidence.append(1.0)
 
     return annotations.NoteData(
         np.array(intervals, dtype="float"),

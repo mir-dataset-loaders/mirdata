@@ -18,6 +18,7 @@
 import csv
 import logging
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -26,6 +27,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 BIBTEX = """@inproceedings{smith2011salami,
     title={Design and creation of a large-scale database of structural annotations.},
@@ -54,8 +56,8 @@ DOWNLOAD_INFO = """
 """
 
 LICENSE_INFO = """
-This data is released under a Creative Commons 0 license, effectively dedicating it to 
-the public domain. More information about this dedication and your rights, please see the 
+This data is released under a Creative Commons 0 license, effectively dedicating it to
+the public domain. More information about this dedication and your rights, please see the
 details here: http://creativecommons.org/publicdomain/zero/1.0/ and
 http://creativecommons.org/publicdomain/zero/1.0/legalcode.
 """
@@ -190,36 +192,28 @@ class Track(core.Track):
         self.genre = self._track_metadata["genre"]
 
     @core.cached_property
-    def sections_annotator_1_uppercase(self):
-        if self.sections_annotator1_uppercase_path is None:
-            return None
+    def sections_annotator_1_uppercase(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_annotator1_uppercase_path)
 
     @core.cached_property
-    def sections_annotator_1_lowercase(self):
-        if self.sections_annotator1_lowercase_path is None:
-            return None
+    def sections_annotator_1_lowercase(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_annotator1_lowercase_path)
 
     @core.cached_property
-    def sections_annotator_2_uppercase(self):
-        if self.sections_annotator2_uppercase_path is None:
-            return None
+    def sections_annotator_2_uppercase(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_annotator2_uppercase_path)
 
     @core.cached_property
-    def sections_annotator_2_lowercase(self):
-        if self.sections_annotator2_lowercase_path is None:
-            return None
+    def sections_annotator_2_lowercase(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_annotator2_lowercase_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -253,46 +247,37 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a Salami audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_sections(sections_path):
+@io.coerce_to_string_io
+def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load salami sections data from a file
 
     Args:
-        sections_path (str): path to sectin annotation file
+        fhandle(str or file-like): File-like object or path to sectin annotation file
 
     Returns:
         SectionData: section data
 
     """
-    if sections_path is None:
-        return None
-
-    if not os.path.exists(sections_path):
-        raise IOError("sections_path {} does not exist".format(sections_path))
-
     times = []
     secs = []
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            times.append(float(line[0]))
-            secs.append(line[1])
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        times.append(float(line[0]))
+        secs.append(line[1])
     times = np.array(times)
     secs = np.array(secs)
 
