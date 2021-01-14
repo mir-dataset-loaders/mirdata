@@ -368,9 +368,10 @@ This is the result of the example above.
 
 You can see that ``very_bad_melody_extractor`` performs very badly!
 
+.. _Using mirdata with tensorflow:
 
-Using mirdata with tf.data.Dataset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using mirdata with tensorflow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following is a simple example of a generator that can be used to create a tensorflow Dataset.
 

@@ -303,6 +303,7 @@ However, to contribute to the library using remote indexes you have to add in ``
 ``download_utils.RemoteFileMetadata`` dictionary with the remote index information.
 
 .. code-block:: python
+
     DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
 
 
