@@ -481,8 +481,6 @@ def test_load_sama():
     assert parsed_sama is None
 
 
-
-
 def test_load_sections():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
     track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
@@ -553,7 +551,9 @@ def test_load_tempo():
 
     assert saraga_carnatic.load_tempo(None) is None
 
-    track = saraga_carnatic.Track("115_Idhu_Thaano_Thillai_Sthalam", data_home=data_home)
+    track = saraga_carnatic.Track(
+        "115_Idhu_Thaano_Thillai_Sthalam", data_home=data_home
+    )
     tempo_path = track.tempo_path
     parsed_tempo = saraga_carnatic.load_tempo(tempo_path)
     assert parsed_tempo is None
@@ -664,4 +664,3 @@ def test_load_audio():
     assert audio.shape[0] == 2
 
     assert saraga_carnatic.load_audio(None) is None
-

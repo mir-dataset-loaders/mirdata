@@ -363,4 +363,3 @@ def test_extractall_cp437(mocker, mock_download_from_remote, mock_unzip):
         true_file_location = os.path.join("tests", "resources", true_file)
         os.remove(true_file_location)
     shutil.rmtree(os.path.join("tests", "resources", "__MACOSX"))
-
