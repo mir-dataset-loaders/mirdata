@@ -570,3 +570,19 @@ copy_docs
 This decorator is used mainly for a dataset's ``load_`` functions, which
 are attached to a loader's Dataset object. The attached function is identical,
 and this decorator simply copies the docstring from another function.
+
+coerce_to_bytes_io/coerce_to_string_io
+--------------------------------------
+These are two decorators used to simplify the loading of various `Track` members
+in addition to giving users the ability to use file streams instead of paths in
+case the data is in a remote location e.g. GCS. The decorators modify the function
+to:
+
+- Return `None` if `None` if passed in.
+- Open a file if a string path is passed in either `'w'` mode for `string_io` or `wb` for `bytes_io` and
+  pass the file handle to the decorated function.
+- Pass the file handle to the decorated function if a file-like object is passed.
+
+This cannot be used if the function to be decorated takes multiple arguments.
+`coerce_to_bytes_io` should not be used if trying to load an mp3 with librosa as libsndfile does not support
+`mp3` yet and `audioread` expects a path.
