@@ -108,14 +108,23 @@ To facilitate the use of the dataset, we provide two options regarding the file 
 
 """
 
+LICENSE_INFO = """
+Apache License 2.0
+
+
+ """
+
 import json
+import shutil
+
 import librosa
 import os
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+
+import h5py
 
 BIBTEX = """@inproceedings{yesiler2019,
     author = "Furkan Yesiler and Chris Tralie and Albin Correya and Diego F. Silva and Philip Tovstogan and Emilia G{\'{o}}mez and Xavier Serra",
@@ -333,11 +342,11 @@ REMOTES = {
 }
 
 
-DATA = utils.LargeData("da_tacos_index.json")
+DATA = core.LargeData("da_tacos_index.json")
 
 
 class Track(core.Track):
-    """giantsteps_key track class
+    """da_tacos track class
 
     Args:
         track_id (str): track id of the track
@@ -357,7 +366,6 @@ class Track(core.Track):
             )
 
         self.track_id = track_id
-
         self._data_home = data_home
         self._track_paths = DATA.index['tracks'][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
@@ -371,3 +379,101 @@ class Track(core.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         pass
+
+
+def HD5F_to_json(path):
+    data = h5py.File(path)
+    pre, ext = os.path.splitext(path)
+    json_path = pre + '.json'
+    with open(json_path, 'w') as fp:
+        json.dump(data, fp)
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The acousticbrainz genre dataset
+    """
+
+    def __init__(self, data_home=None, index=None):
+        super().__init__(
+            data_home,
+            index=DATA.index if index is None else index,
+            name="acousticbrainz_genre",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            license_info=LICENSE_INFO,
+        )
+
+    @core.copy_docs(load_extractor)
+    def load_extractor(self, *args, **kwargs):
+        return load_extractor(*args, **kwargs)
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files.
+                By default False.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        if not os.path.exists(self.data_home):
+            os.makedirs(self.data_home)
+        # Create these directories if doesn't exist
+        train = "acousticbrainz-mediaeval-train"
+        train_dir = os.path.join(self.data_home, train)
+        if not os.path.isdir(train_dir):
+            os.mkdir(train_dir)
+        validate = "acousticbrainz-mediaeval-validation"
+        validate_dir = os.path.join(self.data_home, validate)
+        if not os.path.isdir(validate_dir):
+            os.mkdir(validate_dir)
+
+        # start to download
+        for key, remote in self.remotes.items():
+            # check overwrite
+            file_downloaded = False
+            if not force_overwrite:
+                fold, first_dir = key.split("-")
+                first_dir_path = os.path.join(
+                    train_dir if fold == "train" else validate_dir, first_dir
+                )
+                if os.path.isdir(first_dir_path):
+                    file_downloaded = True
+                    print(
+                        "File "
+                        + remote.filename
+                        + " downloaded. Skip download (force_overwrite=False)."
+                    )
+            if not file_downloaded:
+                #  if this typical error happend it repeat download
+                download_utils.downloader(
+                    self.data_home,
+                    remotes={key: remote},
+                    partial_download=None,
+                    info_message=None,
+                    force_overwrite=True,
+                    cleanup=cleanup,
+                )
+            # move from a temporary directory to final one
+            source_dir = os.path.join(
+                self.data_home, "temp", train if "train" in key else validate
+            )
+            target_dir = train_dir if "train" in key else validate_dir
+            dir_names = os.listdir(source_dir)
+            for dir_name in dir_names:
+                shutil.move(
+                    os.path.join(source_dir, dir_name),
+                    os.path.join(target_dir, dir_name),
+                )
