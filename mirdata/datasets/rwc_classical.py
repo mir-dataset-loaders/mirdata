@@ -1,45 +1,59 @@
 # -*- coding: utf-8 -*-
 """RWC Classical Dataset Loader
 
- The Classical Music Database consists of 50 pieces:
-* Symphonies: 4 pieces
-* Concerti: 2 pieces
-* Orchestral music: 4 pieces
-* Chamber music: 10 pieces
-* Solo performances: 24 pieces
-* Vocal performances: 6 pieces
+.. admonition:: Dataset Info
+    :class: dropdown
 
-Note about Beat annotations:
+    The Classical Music Database consists of 50 pieces
 
-In general, 48 corresponds to the duration of a quarter note (crotchet).
-24 corresponds to the duration of an eighth note (quaver).
-384 corresponds to the position of a downbeat.
+    * Symphonies: 4 pieces
+    * Concerti: 2 pieces
+    * Orchestral music: 4 pieces
+    * Chamber music: 10 pieces
+    * Solo performances: 24 pieces
+    * Vocal performances: 6 pieces
 
-In 4/4 time signature, they correspond as follows:
-384: 1st beat in a measure (i.e., downbeat position)
-48: 2nd beat
-96: 3rd beat
-144 4th beat
+    **A note about the Beat annotations:**
 
-In 3/4 time signature, they correspond as follows:
-384: 1st beat in a measure (i.e., downbeat position)
-48: 2nd beat
-96: 3rd beat
+    - 48 corresponds to the duration of a quarter note (crotchet)
+    - 24 corresponds to the duration of an eighth note (quaver)
+    - 384 corresponds to the position of a downbeat
 
-In 6/8 time signature, they correspond as follows:
-384: 1st beat in a measure (i.e., downbeat position)
-24: 2nd beat
-48: 3rd beat
-72: 4th beat
-96: 5th beat
-120: 6th beat
+    In 4/4 time signature, they correspond as follows:
 
+    .. code-block:: latex
 
-For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html
+        384: 1st beat in a measure (i.e., downbeat position)
+        48: 2nd beat
+        96: 3rd beat
+        144 4th beat
+
+    In 3/4 time signature, they correspond as follows:
+
+    .. code-block:: latex
+
+        384: 1st beat in a measure (i.e., downbeat position)
+        48: 2nd beat
+        96: 3rd beat
+
+    In 6/8 time signature, they correspond as follows:
+
+    .. code-block:: latex
+
+        384: 1st beat in a measure (i.e., downbeat position)
+        24: 2nd beat
+        48: 3rd beat
+        72: 4th beat
+        96: 5th beat
+        120: 6th beat
+
+    For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-c.html
+
 """
 import csv
 import logging
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -47,7 +61,8 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import annotations
+from mirdata import io
 
 BIBTEX = """@inproceedings{goto2002rwc,
   title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
@@ -85,6 +100,18 @@ DOWNLOAD_INFO = """
             > audio/rwc-c-m0i with i in [1 .. 6]
             > metadata-master/
     and copy the RWC-Classical folder to {}
+"""
+
+LICENSE_INFO = """
+From the dataset's owner webpage:
+
+'Users who have submitted the Pledge and received authorization may freely use the database for research purposes
+without facing the usual copyright restrictions, but all of the copyrights and neighboring rights connected with
+this database belong to the National Institute of Advanced Industrial Science and Technology and are managed by the
+RWC Music Database Administrator. Persons or organizations that have not submitted a Pledge and that have not
+received authorization may not use the database.'
+
+See https://staff.aist.go.jp/m.goto/RWC-MDB/ for more details.
 """
 
 
@@ -131,7 +158,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("rwc_classical_index.json", _load_metadata)
+DATA = core.LargeData("rwc_classical_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -155,17 +182,21 @@ class Track(core.Track):
         track_id (str): track id
         track_number (str): CD track number of this Track
 
+    Cached Properties:
+        sections (SectionData): human-labeled section annotations
+        beats (BeatData): human-labeled beat annotations
+
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in rwc_classical".format(track_id)
             )
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.sections_path = os.path.join(
             self._data_home, self._track_paths["sections"][0]
         )
@@ -197,23 +228,32 @@ class Track(core.Track):
         self.duration = self._track_metadata["duration"]
         self.category = self._track_metadata["category"]
 
-    @utils.cached_property
-    def sections(self):
-        """SectionData: human labeled section annotations"""
+    @core.cached_property
+    def sections(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_path)
 
-    @utils.cached_property
-    def beats(self):
-        """BeatData: human labeled beat annotations"""
+    @core.cached_property
+    def beats(self) -> Optional[annotations.BeatData]:
         return load_beats(self.beats_path)
 
     @property
-    def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.beats, None)],
@@ -222,44 +262,59 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a RWC audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_sections(sections_path):
-    if not os.path.exists(sections_path):
-        raise IOError("sections_path {} does not exist".format(sections_path))
+@io.coerce_to_string_io
+def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
+    """Load rwc section data from a file
 
+    Args:
+        fhandle(str or file-like): File-like object or path to sections annotation file
+
+    Returns:
+        SectionData: section data
+
+    """
     begs = []  # timestamps of section beginnings
     ends = []  # timestamps of section endings
     secs = []  # section labels
 
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            begs.append(float(line[0]) / 100.0)
-            ends.append(float(line[1]) / 100.0)
-            secs.append(line[2])
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        begs.append(float(line[0]) / 100.0)
+        ends.append(float(line[1]) / 100.0)
+        secs.append(line[2])
 
-    return utils.SectionData(np.array([begs, ends]).T, secs)
+    if not begs:  # some files are empty
+        return None
+
+    return annotations.SectionData(np.array([begs, ends]).T, secs)
 
 
 def _position_in_bar(beat_positions, beat_times):
-    """
-    Mapping to beat position in bar (e.g. 1, 2, 3, 4).
+    """Map raw rwc eat data to beat position in bar (e.g. 1, 2, 3, 4).
+
+    Args:
+        beat_positions (np.ndarray): raw rwc beat positions
+        beat_times (np.ndarray): raw rwc time stamps
+
+    Returns:
+        * np.ndarray - normalized beat positions
+        * np.ndarray - normalized time stamps
+
     """
     # Remove -1
     _beat_positions = np.delete(beat_positions, np.where(beat_positions == -1))
@@ -286,26 +341,42 @@ def _position_in_bar(beat_positions, beat_times):
     return beat_positions_corrected, beat_times_corrected
 
 
-def load_beats(beats_path):
-    if not os.path.exists(beats_path):
-        raise IOError("beats_path {} does not exist".format(beats_path))
+@io.coerce_to_string_io
+def load_beats(fhandle: TextIO) -> annotations.BeatData:
+    """Load rwc beat data from a file
+
+    Args:
+        fhandle(str or file-like): File-like object or path to beats annotation file
+
+    Returns:
+        BeatData: beat data
+
+    """
 
     beat_times = []  # timestamps of beat interval beginnings
     beat_positions = []  # beat position inside the bar
 
-    with open(beats_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            beat_times.append(float(line[0]) / 100.0)
-            beat_positions.append(int(line[2]))
-    beat_positions, beat_times = _position_in_bar(
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        beat_times.append(float(line[0]) / 100.0)
+        beat_positions.append(int(line[2]))
+    beat_positions_in_bar, beat_times = _position_in_bar(
         np.array(beat_positions), np.array(beat_times)
     )
 
-    return utils.BeatData(beat_times, beat_positions.astype(int))
+    return annotations.BeatData(beat_times, beat_positions_in_bar.astype(int))
 
 
 def _duration_to_sec(duration):
+    """Convert min:sec duration values to seconds
+
+    Args:
+        duration (str): duration in form min:sec
+
+    Returns:
+        float: duration in seconds
+
+    """
     if type(duration) == str:
         if ":" in duration:
             if len(duration.split(":")) <= 2:
@@ -316,3 +387,38 @@ def _duration_to_sec(duration):
                 )  # mistake in annotation in RM-J044
             total_secs = float(minutes) * 60 + float(secs)
             return total_secs
+    else:
+        raise ValueError(
+            "Expected duration to have type str, got {}".format(type(duration))
+        )
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The rwc_classical dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="rwc_classical",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)

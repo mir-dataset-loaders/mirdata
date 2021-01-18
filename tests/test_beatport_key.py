@@ -3,7 +3,6 @@
 import numpy as np
 
 from mirdata.datasets import beatport_key
-from mirdata import utils
 from tests.test_utils import run_track_tests
 
 
@@ -31,7 +30,7 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 44100, "sample rate {} is not 44100".format(sr)
-    assert audio.shape == (5292000,), "audio shape {} was not (5292000,)".format(
+    assert audio.shape == (88200,), "audio shape {} was not (88200,)".format(
         audio.shape
     )
 
@@ -89,7 +88,8 @@ def test_find_replace():
         "tests/resources/mir_datasets/beatport_key/find_replace.json", "w"
     ) as the_file:
         the_file.write('{"probando": nan}')
-    beatport_key.find_replace(
+    dataset = beatport_key.Dataset()
+    dataset._find_replace(
         "tests/resources/mir_datasets/beatport_key", ": nan", ": null", "*.json"
     )
     f = open("tests/resources/mir_datasets/beatport_key/find_replace.json", "r")

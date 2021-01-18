@@ -1,47 +1,57 @@
 # -*- coding: utf-8 -*-
+"""Mridangam Stroke Dataset Loader
 
-"""
-Mridangam Stroke Dataset Loader
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The Mridangam Stroke dataset is a collection of individual strokes of
-the Mridangam in various tonics. The dataset comprises of 10 different
-strokes played on Mridangams with 6 different tonic values. The audio
-examples were recorded from a professional Carnatic percussionist in a
-semi-anechoic studio conditions by Akshay Anantapadmanabhan.
+    The Mridangam Stroke dataset is a collection of individual strokes of
+    the Mridangam in various tonics. The dataset comprises of 10 different
+    strokes played on Mridangams with 6 different tonic values. The audio
+    examples were recorded from a professional Carnatic percussionist in a
+    semi-anechoic studio conditions by Akshay Anantapadmanabhan.
 
-Total audio samples: 6977
+    Total audio samples: 6977
 
-Used microphones:
-* SM-58 microphones
-* H4n ZOOM recorder.
+    Used microphones:
 
-Audio specifications
-* Sampling frequency: 44.1 kHz
-* Bit-depth: 16 bit
-* Audio format: .wav
+    * SM-58 microphones
+    * H4n ZOOM recorder.
 
-The dataset can be used for training models for each Mridangam stroke. The
-presentation of the dataset took place on the IEEE International Conference
-on Acoustics, Speech and Signal Processing (ICASSP 2013) on May 2013.
-You can read the full publication here: https://repositori.upf.edu/handle/10230/25756
+    Audio specifications:
 
-Mridangam Dataset is annotated by storing the informat of each track in their filenames.
-The structure of the filename is:
-<TrackID>__<AuthorName>__<StrokeName>-<Tonic>-<InstanceNum>.wav
+    * Sampling frequency: 44.1 kHz
+    * Bit-depth: 16 bit
+    * Audio format: .wav
 
-The dataset is made available by CompMusic under a Creative Commons
-Attribution 3.0 Unported (CC BY 3.0) License.
+    The dataset can be used for training models for each Mridangam stroke. The
+    presentation of the dataset took place on the IEEE International Conference
+    on Acoustics, Speech and Signal Processing (ICASSP 2013) on May 2013.
+    You can read the full publication here: https://repositori.upf.edu/handle/10230/25756
 
-For more details, please visit: https://compmusic.upf.edu/mridangam-stroke-dataset
+    Mridangam Dataset is annotated by storing the informat of each track in their filenames.
+    The structure of the filename is:
+
+    .. code-block:: bash
+
+        <TrackID>__<AuthorName>__<StrokeName>-<Tonic>-<InstanceNum>.wav
+
+    The dataset is made available by CompMusic under a Creative Commons
+    Attribution 3.0 Unported (CC BY 3.0) License.
+
+    For more details, please visit: https://compmusic.upf.edu/mridangam-stroke-dataset
+
 """
 
 import os
+
 import librosa
+import numpy as np
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import io
 
 BIBTEX = """@article{Anantapadmanabhan2013,
     author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
@@ -65,7 +75,7 @@ REMOTES = {
     ),
 }
 
-DATA = utils.LargeData("mridangam_stroke_index.json")
+DATA = core.LargeData("mridangam_stroke_index.json")
 
 
 STROKE_DICT = {
@@ -84,28 +94,32 @@ STROKE_DICT = {
 
 TONIC_DICT = {"B", "C", "C#", "D", "D#", "E"}
 
+LICENSE_INFO = "Creative Commons Attribution 3.0 Unported (CC BY 3.0) License."
+
 
 class Track(core.Track):
     """Mridangam Stroke track class
+
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/Mridangam-Stroke`
+
     Attributes:
         track_id (str): track id
         audio_path (str): audio path
         stroke_name (str): name of the Mridangam stroke present in Track
         tonic (str): tonic of the stroke in the Track
+
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in Example".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
@@ -122,12 +136,23 @@ class Track(core.Track):
         )
 
     @property
-    def audio(self):
-        """(String): audio signal, sample rate"""
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             tags_open_data=[(self.stroke_name, "stroke_name")],
@@ -135,14 +160,37 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Mridangam Stroke Dataset audio file.
+
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
+
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=44100, mono=True)
+    return librosa.load(fhandle, sr=44100, mono=True)
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The mridangam_stroke dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="mridangam_stroke",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            license_info=LICENSE_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)

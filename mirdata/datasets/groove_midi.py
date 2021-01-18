@@ -1,58 +1,67 @@
 # -*- coding: utf-8 -*-
 """Groove MIDI Loader
 
-The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
-synthesized audio of human-performed, tempo-aligned expressive drumming.
-The dataset contains 1,150 MIDI files and over 22,000 measures of drumming.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-To enable a wide range of experiments and encourage comparisons between methods
-on the same data, Gillick et al. created a new dataset of drum performances
-recorded in MIDI format. They hired professional drummers and asked them to
-perform in multiple styles to a click track on a Roland TD-11 electronic drum kit.
-They also recorded the aligned, high-quality synthesized audio from the TD-11 and
-include it in the release.
+    The Groove MIDI Dataset (GMD) is composed of 13.6 hours of aligned MIDI and
+    synthesized audio of human-performed, tempo-aligned expressive drumming.
+    The dataset contains 1,150 MIDI files and over 22,000 measures of drumming.
 
-The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
-existing ones:
+    To enable a wide range of experiments and encourage comparisons between methods
+    on the same data, Gillick et al. created a new dataset of drum performances
+    recorded in MIDI format. They hired professional drummers and asked them to
+    perform in multiple styles to a click track on a Roland TD-11 electronic drum kit.
+    They also recorded the aligned, high-quality synthesized audio from the TD-11 and
+    include it in the release.
 
-* The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000
-  measures of drumming.
-* Each performance was played along with a metronome set at a specific tempo
-  by the drummer.
-* The data includes performances by a total of 10 drummers, with more than 80%
-  of duration coming from hired professionals. The professionals were able to
-  improvise in a wide range of styles, resulting in a diverse dataset.
-* The drummers were instructed to play a mix of long sequences (several minutes
-  of continuous playing) and short beats and fills.
-* Each performance is annotated with a genre (provided by the drummer), tempo,
-  and anonymized drummer ID.
-* Most of the performances are in 4/4 time, with a few examples from other time
-  signatures.
-* Four drummers were asked to record the same set of 10 beats in their own
-  style. These are included in the test set split, labeled eval-session/groove1-10.
-* In addition to the MIDI recordings that are the primary source of data for the
-  experiments in this work, the authors captured the synthesized audio outputs of
-  the drum set and aligned them to within 2ms of the corresponding MIDI files.
+    The Groove MIDI Dataset (GMD), has several attributes that distinguish it from
+    existing ones:
 
-A train/validation/test split configuration is provided for easier comparison of
-model accuracy on various tasks.
+    * The dataset contains about 13.6 hours, 1,150 MIDI files, and over 22,000
+      measures of drumming.
+    * Each performance was played along with a metronome set at a specific tempo
+      by the drummer.
+    * The data includes performances by a total of 10 drummers, with more than 80%
+      of duration coming from hired professionals. The professionals were able to
+      improvise in a wide range of styles, resulting in a diverse dataset.
+    * The drummers were instructed to play a mix of long sequences (several minutes
+      of continuous playing) and short beats and fills.
+    * Each performance is annotated with a genre (provided by the drummer), tempo,
+      and anonymized drummer ID.
+    * Most of the performances are in 4/4 time, with a few examples from other time
+      signatures.
+    * Four drummers were asked to record the same set of 10 beats in their own
+      style. These are included in the test set split, labeled eval-session/groove1-10.
+    * In addition to the MIDI recordings that are the primary source of data for the
+      experiments in this work, the authors captured the synthesized audio outputs of
+      the drum set and aligned them to within 2ms of the corresponding MIDI files.
 
-The dataset is made available by Google LLC under a Creative Commons
-Attribution 4.0 International (CC BY 4.0) License.
+    A train/validation/test split configuration is provided for easier comparison of
+    model accuracy on various tasks.
 
-For more details, please visit: http://magenta.tensorflow.org/datasets/groove
+    The dataset is made available by Google LLC under a Creative Commons
+    Attribution 4.0 International (CC BY 4.0) License.
+
+    For more details, please visit: http://magenta.tensorflow.org/datasets/groove
+
 """
 import csv
 import glob
 import logging
 import os
 import shutil
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils, jams_utils, core, utils
+from mirdata import annotations
+from mirdata import core
+from mirdata import download_utils
+from mirdata import io
+from mirdata import jams_utils
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -70,6 +79,8 @@ REMOTES = {
         destination_dir=None,
     )
 }
+
+LICENSE_INFO = "Creative Commons Attribution 4.0 International (CC BY 4.0) License."
 
 DRUM_MAPPING = {
     36: {"Roland": "Kick", "General MIDI": "Bass Drum 1", "Simplified": "Bass (36)"},
@@ -225,7 +236,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("groove_midi_index.json", _load_metadata)
+DATA = core.LargeData("groove_midi_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -239,7 +250,7 @@ class Track(core.Track):
         session (str): Type of session  (ex. 'session1', 'eval_session')
         track_id (str): track id of the track (ex. 'drummer1/eval_session/1')
         style (str): Style (genre, groove type) of the track (ex. 'funk/groove1')
-        tempo (int): Track tempo in beats per minute (ex. 138)
+        tempo (int): track tempo in beats per minute (ex. 138)
         beat_type (str): Whether the track is a beat or a fill (ex. 'beat')
         time_signature (str): Time signature of the track (ex. '4-4', '6-8')
         midi_path (str): Path to the midi file
@@ -247,10 +258,16 @@ class Track(core.Track):
         duration (float): Duration of the midi file in seconds
         split (str): Whether the track is for a train/valid/test set. One of
             'train', 'valid' or 'test'.
+
+    Cached Properties:
+        beats (BeatData): Machine-generated beat annotations
+        drum_events (EventData): Annotated drum kit events
+        midi (pretty_midi.PrettyMIDI): object containing MIDI information
+
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in Groove MIDI".format(track_id)
             )
@@ -258,7 +275,7 @@ class Track(core.Track):
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -290,32 +307,40 @@ class Track(core.Track):
 
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
-        self.audio_path = utils.none_path_join(
+        self.audio_path = core.none_path_join(
             [self._data_home, self._track_paths["audio"][0]]
         )
 
     @property
-    def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+    def audio(self) -> Tuple[Optional[np.ndarray], Optional[float]]:
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
-    @utils.cached_property
+    @core.cached_property
     def beats(self):
-        """BeatData: machine-generated beat annotation"""
         return load_beats(self.midi_path, self.midi)
 
-    @utils.cached_property
+    @core.cached_property
     def drum_events(self):
-        """EventData: annotated drum kit events"""
         return load_drum_events(self.midi_path, self.midi)
 
-    @utils.cached_property
+    @core.cached_property
     def midi(self):
-        """(obj): prettyMIDI obj"""
         return load_midi(self.midi_path)
 
     def to_jams(self):
-        # Initialize top-level JAMS container
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             beat_data=[(self.beats, "midi beats")],
             tempo_data=[(self.tempo, "midi tempo")],
@@ -324,40 +349,34 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+def load_audio(path: str) -> Tuple[Optional[np.ndarray], Optional[float]]:
     """Load a Groove MIDI audio file.
 
     Args:
-        audio_path (str): path to audio file
+        path: path to an audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
-    if audio_path is None:
+    if not path:
         return None, None
-
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=22050, mono=True)
+    return librosa.load(path, sr=22050, mono=True)
 
 
-def load_midi(midi_path):
+@io.coerce_to_bytes_io
+def load_midi(fhandle: BinaryIO) -> Optional[pretty_midi.PrettyMIDI]:
     """Load a Groove MIDI midi file.
 
     Args:
-        midi_path (str): path to midi file
+        fhandle(str or file-like): File-like object or path to midi file
 
     Returns:
         midi_data (pretty_midi.PrettyMIDI): pretty_midi object
 
     """
-    if not os.path.exists(midi_path):
-        raise IOError("midi_path {} does not exist".format(midi_path))
-
-    return pretty_midi.PrettyMIDI(midi_path)
+    return pretty_midi.PrettyMIDI(fhandle)
 
 
 def load_beats(midi_path, midi=None):
@@ -369,7 +388,7 @@ def load_beats(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        beat_data (BeatData)
+        annotations.BeatData: machine generated beat data
 
     """
     if midi is None:
@@ -378,7 +397,7 @@ def load_beats(midi_path, midi=None):
     beat_range = np.arange(0, len(beat_times))
     meter = midi.time_signature_changes[0]
     beat_positions = 1 + np.mod(beat_range, meter.numerator)
-    return utils.BeatData(beat_times, beat_positions)
+    return annotations.BeatData(beat_times, beat_positions)
 
 
 def load_drum_events(midi_path, midi=None):
@@ -390,7 +409,7 @@ def load_drum_events(midi_path, midi=None):
             if None, the midi object is loaded using midi_path
 
     Returns:
-        drum_events (EventData)
+        annotations.EventData: drum event data
 
     """
     if midi is None:
@@ -402,47 +421,92 @@ def load_drum_events(midi_path, midi=None):
     for note in midi.instruments[0].notes:
         start_times.append(note.start)
         end_times.append(note.end)
-        events.append(DRUM_MAPPING[note.pitch])
-    return utils.EventData(np.array(start_times), np.array(end_times), np.array(events))
+        events.append(DRUM_MAPPING[note.pitch]["Roland"])
+
+    return annotations.EventData(np.array([start_times, end_times]).T, events)
 
 
-def _download(
-    save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
-):
-    """Download the dataset.
-
-    Args:
-        save_dir (str):
-            The directory to download the data
-        remotes (dict or None):
-            A dictionary of RemoteFileMetadata tuples of data in zip format.
-            If None, there is no data to download
-        partial_download (list or None):
-            A list of keys to partially download the remote objects of the download dict.
-            If None, all data is downloaded
-        info_message (str or None):
-            A string of info to print when this function is called.
-            If None, no string is printed.
-        force_overwrite (bool):
-            If True, existing files are overwritten by the downloaded files.
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
-
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
     """
-    download_utils.downloader(
-        save_dir,
-        remotes=remotes,
-        info_message=None,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
+    The groove_midi dataset
+    """
 
-    # files get downloaded to a folder called groove - move everything up a level
-    groove_dir = os.path.join(save_dir, "groove")
-    groove_files = glob.glob(os.path.join(groove_dir, "*"))
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="groove_midi",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            license_info=LICENSE_INFO,
+        )
 
-    for fpath in groove_files:
-        shutil.move(fpath, save_dir)
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
 
-    if os.path.exists(groove_dir):
-        shutil.rmtree(groove_dir)
+    @core.copy_docs(load_midi)
+    def load_midi(self, *args, **kwargs):
+        return load_midi(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)
+
+    @core.copy_docs(load_drum_events)
+    def load_drum_events(self, *args, **kwargs):
+        return load_drum_events(*args, **kwargs)
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        download_utils.downloader(
+            self.data_home,
+            partial_download=partial_download,
+            remotes=self.remotes,
+            info_message=None,
+            force_overwrite=force_overwrite,
+            cleanup=cleanup,
+        )
+
+        # files get downloaded to a folder called groove - move everything up a level
+        groove_dir = os.path.join(self.data_home, "groove")
+        if not os.path.exists(groove_dir):
+            logging.info(
+                "Groove MIDI data not downloaded, because it probably already exists on your computer. "
+                + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
+                + "existing files and download from scratch"
+            )
+            return
+
+        groove_files = glob.glob(os.path.join(groove_dir, "*"))
+
+        for fpath in groove_files:
+            target_path = os.path.join(self.data_home, os.path.basename(fpath))
+            if os.path.exists(target_path):
+                logging.info(
+                    "{} already exists. Run with force_overwrite=True to download from scratch".format(
+                        target_path
+                    )
+                )
+                continue
+            shutil.move(fpath, self.data_home)
+
+        if os.path.exists(groove_dir):
+            shutil.rmtree(groove_dir)

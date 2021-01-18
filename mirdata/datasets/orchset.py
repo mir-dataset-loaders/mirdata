@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """ORCHSET Dataset Loader
 
-Orchset is intended to be used as a dataset for the development and
-evaluation of melody extraction algorithms. This collection contains
-64 audio excerpts focused on symphonic music with their corresponding
-annotation of the melody.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
+    Orchset is intended to be used as a dataset for the development and
+    evaluation of melody extraction algorithms. This collection contains
+    64 audio excerpts focused on symphonic music with their corresponding
+    annotation of the melody.
+
+    For more details, please visit: https://zenodo.org/record/1289786#.XREpzaeZPx6
 
 """
 
@@ -15,13 +18,16 @@ import glob
 import logging
 import os
 import shutil
+from typing import BinaryIO, Optional, TextIO, Tuple
+
 import librosa
 import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import annotations
+from mirdata import io
 
 BIBTEX = """@article{bosch2016evaluation,
     title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
@@ -41,6 +47,10 @@ REMOTES = {
         destination_dir=None,
     )
 }
+
+LICENSE_INFO = (
+    "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+)
 
 
 def _load_metadata(data_home):
@@ -103,7 +113,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("orchset_index.json", _load_metadata)
+DATA = core.LargeData("orchset_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -129,16 +139,19 @@ class Track(core.Track):
         track_id (str): track id
         work (str): The musical work
 
+    Cached Properties:
+        melody (F0Data): melody annotation
+
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in orchset".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.melody_path = os.path.join(self._data_home, self._track_paths["melody"][0])
 
         metadata = DATA.metadata(data_home)
@@ -180,23 +193,39 @@ class Track(core.Track):
         self.only_winds = self._track_metadata["only_winds"]
         self.only_brass = self._track_metadata["only_brass"]
 
-    @utils.cached_property
-    def melody(self):
-        """F0Data: melody annotation"""
+    @core.cached_property
+    def melody(self) -> Optional[annotations.F0Data]:
         return load_melody(self.melody_path)
 
     @property
-    def audio_mono(self):
-        """(np.ndarray, float): mono audio signal, sample rate"""
+    def audio_mono(self) -> Optional[Tuple[np.ndarray, float]]:
+        """the track's audio (mono)
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+
+        """
         return load_audio_mono(self.audio_path_mono)
 
     @property
-    def audio_stereo(self):
-        """(np.ndarray, float): stereo audio signal, sample rate"""
+    def audio_stereo(self) -> Optional[Tuple[np.ndarray, float]]:
+        """the track's audio (stereo)
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+
+        """
         return load_audio_stereo(self.audio_path_stereo)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path_mono,
             f0_data=[(self.melody, "annotated melody")],
@@ -204,92 +233,138 @@ class Track(core.Track):
         )
 
 
-def load_audio_mono(audio_path):
-    """Load a Orchset audio file.
+@io.coerce_to_bytes_io
+def load_audio_mono(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load an Orchset audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_audio_stereo(audio_path):
-    """Load a Orchset audio file.
+@io.coerce_to_bytes_io
+def load_audio_stereo(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load an Orchset audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the stereo audio signal
+        * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=None, mono=False)
+    return librosa.load(fhandle, sr=None, mono=False)
 
 
-def _download(
-    save_dir, remotes, partial_download, info_message, force_overwrite, cleanup
-):
-    """Download the dataset.
+@io.coerce_to_string_io
+def load_melody(fhandle: TextIO) -> annotations.F0Data:
+    """Load an Orchset melody annotation file
 
     Args:
-        save_dir (str):
-            The directory to download the data
-        remotes (dict or None):
-            A dictionary of RemoteFileMetadata tuples of data in zip format.
-            If None, there is no data to download
-        partial_download (list or None):
-            A list of keys to partially download the remote objects of the download dict.
-            If None, all data is downloaded
-        info_message (str or None):
-            A string of info to print when this function is called.
-            If None, no string is printed.
-        force_overwrite (bool):
-            If True, existing files are overwritten by the downloaded files.
-        cleanup (bool):
-            Whether to delete the zip/tar file after extracting.
+        fhandle(str or file-like): File-like object or path to melody annotation file
 
+    Raises:
+        IOError: if melody_path doesn't exist
+
+    Returns:
+        F0Data: melody annotation data
     """
-    download_utils.downloader(
-        save_dir,
-        remotes=remotes,
-        info_message=None,
-        force_overwrite=force_overwrite,
-        cleanup=cleanup,
-    )
-    # files get downloaded to a folder called Orchset - move everything up a level
-    duplicated_orchset_dir = os.path.join(save_dir, "Orchset")
-    orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, "*"))
-    for fpath in orchset_files:
-        shutil.move(fpath, save_dir)
-    if os.path.exists(duplicated_orchset_dir):
-        shutil.rmtree(duplicated_orchset_dir)
-
-
-def load_melody(melody_path):
-    if not os.path.exists(melody_path):
-        raise IOError("melody_path {} does not exist".format(melody_path))
 
     times = []
     freqs = []
     confidence = []
-    with open(melody_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
-            confidence.append(0.0 if line[1] == "0" else 1.0)
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[1]))
+        confidence.append(0.0 if line[1] == "0" else 1.0)
 
-    melody_data = utils.F0Data(np.array(times), np.array(freqs), np.array(confidence))
+    melody_data = annotations.F0Data(
+        np.array(times), np.array(freqs), np.array(confidence)
+    )
     return melody_data
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The orchset dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="orchset",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            license_info=LICENSE_INFO,
+        )
+
+    @core.copy_docs(load_audio_mono)
+    def load_audio_mono(self, *args, **kwargs):
+        return load_audio_mono(*args, **kwargs)
+
+    @core.copy_docs(load_audio_stereo)
+    def load_audio_stereo(self, *args, **kwargs):
+        return load_audio_stereo(*args, **kwargs)
+
+    @core.copy_docs(load_melody)
+    def load_melody(self, *args, **kwargs):
+        return load_melody(*args, **kwargs)
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        download_utils.downloader(
+            self.data_home,
+            remotes=self.remotes,
+            info_message=None,
+            force_overwrite=force_overwrite,
+            cleanup=cleanup,
+        )
+        # files get downloaded to a folder called Orchset - move everything up a level
+        duplicated_orchset_dir = os.path.join(self.data_home, "Orchset")
+        if not os.path.exists(duplicated_orchset_dir):
+            logging.info(
+                "Orchset data not downloaded, because it probably already exists on your computer. "
+                + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
+                + "existing files and download from scratch"
+            )
+            return
+
+        orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, "*"))
+        for fpath in orchset_files:
+            target_path = os.path.join(self.data_home, os.path.basename(fpath))
+            if os.path.exists(target_path):
+                logging.info(
+                    "{} already exists. Run with force_overwrite=True to download from scratch".format(
+                        target_path
+                    )
+                )
+                continue
+            shutil.move(fpath, self.data_home)
+
+        shutil.rmtree(duplicated_orchset_dir)

@@ -2,7 +2,7 @@
 
 import numpy as np
 from mirdata.datasets import salami
-from mirdata import utils
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -36,10 +36,10 @@ def test_track():
     }
 
     expected_property_types = {
-        "sections_annotator_1_uppercase": utils.SectionData,
-        "sections_annotator_1_lowercase": utils.SectionData,
-        "sections_annotator_2_uppercase": utils.SectionData,
-        "sections_annotator_2_lowercase": utils.SectionData,
+        "sections_annotator_1_uppercase": annotations.SectionData,
+        "sections_annotator_1_lowercase": annotations.SectionData,
+        "sections_annotator_2_uppercase": annotations.SectionData,
+        "sections_annotator_2_lowercase": annotations.SectionData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -81,8 +81,8 @@ def test_track():
     }
 
     # test that cached properties don't fail and have the expected type
-    assert type(track.sections_annotator_1_uppercase) is utils.SectionData
-    assert type(track.sections_annotator_1_lowercase) is utils.SectionData
+    assert type(track.sections_annotator_1_uppercase) is annotations.SectionData
+    assert type(track.sections_annotator_1_lowercase) is annotations.SectionData
     assert track.sections_annotator_2_uppercase is None
     assert track.sections_annotator_2_lowercase is None
 
@@ -106,8 +106,8 @@ def test_track():
     # test that cached properties don't fail and have the expected type
     assert track.sections_annotator_1_uppercase is None
     assert track.sections_annotator_1_lowercase is None
-    assert type(track.sections_annotator_2_uppercase) is utils.SectionData
-    assert type(track.sections_annotator_2_lowercase) is utils.SectionData
+    assert type(track.sections_annotator_2_uppercase) is annotations.SectionData
+    assert type(track.sections_annotator_2_lowercase) is annotations.SectionData
 
 
 def test_to_jams():
@@ -179,7 +179,7 @@ def test_load_sections():
     section_data = salami.load_sections(sections_path)
 
     # check types
-    assert type(section_data) == utils.SectionData
+    assert type(section_data) == annotations.SectionData
     assert type(section_data.intervals) is np.ndarray
     assert type(section_data.labels) is list
 

@@ -1,55 +1,61 @@
 # -*- coding: utf-8 -*-
 """TinySOL Dataset Loader.
 
-TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14
-different instruments:
+.. admonition:: Dataset Info
+    :class: dropdown
 
-    Bass Tuba
-    French Horn
-    Trombone
-    Trumpet in C
-    Accordion
-    Contrabass
-    Violin
-    Viola
-    Violoncello
-    Bassoon
-    Clarinet in B-flat
-    Flute
-    Oboe
-    Alto Saxophone
+    TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14
+    different instruments:
 
+    - Bass Tuba
+    - French Horn
+    - Trombone
+    - Trumpet in C
+    - Accordion
+    - Contrabass
+    - Violin
+    - Viola
+    - Violoncello
+    - Bassoon
+    - Clarinet in B-flat
+    - Flute
+    - Oboe
+    - Alto Saxophone
 
-These sounds were originally recorded at Ircam in Paris (France) between 1996
-and 1999, as part of a larger project named Studio On Line (SOL). Although SOL
-contains many combinations of mutes and extended playing techniques, TinySOL
-purely consists of sounds played in the so-called "ordinary" style, and in
-absence of mute.
+    These sounds were originally recorded at Ircam in Paris (France) between 1996
+    and 1999, as part of a larger project named Studio On Line (SOL). Although SOL
+    contains many combinations of mutes and extended playing techniques, TinySOL
+    purely consists of sounds played in the so-called "ordinary" style, and in
+    absence of mute.
 
-TinySOL can be used for education and research purposes. In particular, it can
-be employed as a dataset for training and/or evaluating music information
-retrieval (MIR) systems, for tasks such as instrument recognition or
-fundamental frequency estimation. For this purpose, we provide an official 5-fold
-split of TinySOL as a metadata attribute. This split has been carefully balanced
-in terms of instrumentation, pitch range, and dynamics. For the sake of research
-reproducibility, we encourage users of TinySOL to adopt this split and report
-their results in terms of average performance across folds.
+    TinySOL can be used for education and research purposes. In particular, it can
+    be employed as a dataset for training and/or evaluating music information
+    retrieval (MIR) systems, for tasks such as instrument recognition or
+    fundamental frequency estimation. For this purpose, we provide an official 5-fold
+    split of TinySOL as a metadata attribute. This split has been carefully balanced
+    in terms of instrumentation, pitch range, and dynamics. For the sake of research
+    reproducibility, we encourage users of TinySOL to adopt this split and report
+    their results in terms of average performance across folds.
 
-We encourage TinySOL users to subscribe to the Ircam Forum so that they can
-have access to larger versions of SOL.
+    We encourage TinySOL users to subscribe to the Ircam Forum so that they can
+    have access to larger versions of SOL.
 
-For more details, please visit: https://www.orch-idea.org/
+    For more details, please visit: https://www.orch-idea.org/
+
 """
 
 import csv
-import librosa
 import logging
 import os
+from typing import BinaryIO, Optional, Tuple
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import io
 
 BIBTEX = """@inproceedings{cella2020preprint,
   author={Cella, Carmine Emanuele and Ghisi, Daniele and Lostanlen, Vincent and
@@ -75,6 +81,8 @@ REMOTES = {
 }
 
 STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
+
+LICENSE_INFO = "Creative Commons Attribution 4.0 International Public License."
 
 
 def _load_metadata(data_home):
@@ -112,7 +120,7 @@ def _load_metadata(data_home):
     return metadata_index
 
 
-DATA = utils.LargeData("tinysol_index.json", _load_metadata)
+DATA = core.LargeData("tinysol_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -141,13 +149,13 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError("{} is not a valid track ID in TinySOL".format(track_id))
 
         self.track_id = track_id
 
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
 
         metadata = DATA.metadata(data_home)
         if metadata is not None and track_id in metadata:
@@ -168,9 +176,7 @@ class Track(core.Track):
                 "Resampled": None,
             }
 
-        self.audio_path = os.path.join(
-            self._data_home, "audio", self._track_paths["audio"][0]
-        )
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
         self.family = self._track_metadata["Family"]
         self.instrument_abbr = self._track_metadata["Instrument (abbr.)"]
@@ -189,29 +195,60 @@ class Track(core.Track):
         self.is_resampled = self._track_metadata["Resampled"]
 
     @property
-    def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path, metadata=self._track_metadata
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a TinySOL audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle(str or file-like): File-like object or path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
+    return librosa.load(fhandle, sr=None, mono=True)
 
-    return librosa.load(audio_path, sr=None, mono=True)
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The tinysol dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            index=DATA.index,
+            name="tinysol",
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            license_info=LICENSE_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
