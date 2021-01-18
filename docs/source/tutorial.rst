@@ -270,7 +270,7 @@ track objects (which include their respective audio and annotations, which are l
 
     orchset = mirdata.initialize('orchset')
     for key, track in orchset.load_tracks().items():
-        print(key, track.title, track.audio_path)
+        print(key, track.audio_path)
 
 
 Alternatively, we can loop over the ``track_ids`` list to directly access each track in the dataset.
@@ -280,7 +280,7 @@ Alternatively, we can loop over the ``track_ids`` list to directly access each t
     orchset = mirdata.initialize('orchset')
     for track_id in orchset.track_ids:
 
-        print(track_id, orchset.track(track_id).title, orchset.track(track_id).audio_path)
+        print(track_id, orchset.track(track_id).audio_path)
 
 
 Basic example: including mirdata in your pipeline
