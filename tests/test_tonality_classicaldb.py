@@ -137,4 +137,3 @@ def test_load_musicbrainz_metadata():
     assert musicbrainz_metadata_data == musicbrainz_metadata_annotated
 
     assert tonality_classicaldb.load_musicbrainz(None) is None
-

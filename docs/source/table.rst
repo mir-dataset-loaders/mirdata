@@ -184,7 +184,7 @@
      - 50
      - :rwc:`\ `
 
-   * - RWC classical
+   * - RWC popular
      - - audio: ❌
        - annotations: ✅
      - - :ref:`beats`
