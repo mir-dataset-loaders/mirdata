@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Utilities for converting mirdata Annotation objects to jams format.
 """
 import os

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """ORCHSET Dataset Loader
 
 .. admonition:: Dataset Info

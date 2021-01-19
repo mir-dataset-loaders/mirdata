@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """beatport_key Dataset Loader
 
 .. admonition:: Dataset Info

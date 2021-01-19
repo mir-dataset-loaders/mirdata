@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """giantsteps_tempo Dataset Loader
 
 .. admonition:: Dataset Info

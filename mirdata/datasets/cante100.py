@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 cante100 Loader
 

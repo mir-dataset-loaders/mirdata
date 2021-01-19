@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Saraga Dataset Loader
 
 .. admonition:: Dataset Info

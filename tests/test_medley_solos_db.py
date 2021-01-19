@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from mirdata.datasets import medley_solos_db
 from tests.test_utils import run_track_tests
 

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """GTZAN-Genre Dataset Loader
 
 .. admonition:: Dataset Info
