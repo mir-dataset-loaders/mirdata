@@ -4,6 +4,11 @@
 Overview
 ########
 
+.. code-block::
+
+    pip install mirdata
+
+
 ``mirdata`` is a library which aims to standardize how audio datasets are accessed in Python, 
 removing the need for writing custom loaders in every project, and improving reproducibility.
 Working with datasets usually requires an often cumbersome step of downloading data and writing 
