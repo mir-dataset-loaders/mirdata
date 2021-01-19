@@ -132,7 +132,7 @@ def get_dataset_version(module):
         "ikala": None,  # http://mac.citi.sinica.edu.tw/ikala/
         "irmas": "1.0",  # https://zenodo.org/record/1290750/
         "maestro": "2.0.0",  # https://magenta.tensorflow.org/datasets/maestro
-        "medley_solos_db": None,  # https://mirdata.readthedocs.io/en/latest/source/mirdata.html
+        "medley_solos_db": "1.2",  # https://zenodo.org/record/1344103
         "medleydb_melody": "5.0",  # https://zenodo.org/record/2628782#.X6BKOJNKi3J
         "medleydb_pitch": "2.0",  # https://zenodo.org/record/2620624#.XKZc7hNKh24
         "mridangam_stroke": "1.5",  # https://zenodo.org/record/1265188#.X6BKhpNKi3J
