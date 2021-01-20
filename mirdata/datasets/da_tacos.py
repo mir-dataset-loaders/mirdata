@@ -109,10 +109,8 @@ To facilitate the use of the dataset, we provide two options regarding the file 
 """
 
 LICENSE_INFO = """
-Apache License 2.0
-
-
- """
+Creative Commons Attribution Non Commercial Share Alike 4.0 International
+"""
 
 import json
 import shutil
@@ -171,72 +169,72 @@ REMOTES = {
         checksum="8beb1d8fa39f95b79d5f502a41fd5f0c",
         destination_dir=".",
     ),
-    "benchmark_mfcc": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_mfcc.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_mfcc.zip?download=1",
-        checksum="a3be0cd80754043a8c238cf501062789",
-        destination_dir=".",
-    ),
-    "benchmark_files-01": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_01.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_01.zip?download=1",
-        checksum="587da0fd07dfa94822cb38f4bc59268b",
-        destination_dir=".",
-    ),
-    "benchmark_files-02": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_02.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_02.zip?download=1",
-        checksum="881b8282e94a0d988005c8d820d86a1e",
-        destination_dir=".",
-    ),
-    "benchmark_files-03": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_03.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_03.zip?download=1",
-        checksum="253e80f0545cfceb60d3e8c53cd713b8",
-        destination_dir=".",
-    ),
-    "benchmark_files-04": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_04.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_04.zip?download=1",
-        checksum="e3d6e0aa2997958217fb76d468772af2",
-        destination_dir=".",
-    ),
-    "benchmark_files-05": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_05.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_05.zip?download=1",
-        checksum="330a851adbd636767113765a659aa11b",
-        destination_dir=".",
-    ),
-    "benchmark_files-06": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_06.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_06.zip?download=1",
-        checksum="20161af64fdb9074e60f9725c127efb5",
-        destination_dir=".",
-    ),
-    "benchmark_files-07": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_07.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_07.zip?download=1",
-        checksum="3d752d1790ef2cd4571fc7e41190047a",
-        destination_dir=".",
-    ),
-    "benchmark_files-08": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_08.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_08.zip?download=1",
-        checksum="9d699164ddad3d62c08ccd9f58e6654c",
-        destination_dir=".",
-    ),
-    "benchmark_files-09": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_09.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_09.zip?download=1",
-        checksum="0478c01272184507006f0d94e0eccb44",
-        destination_dir=".",
-    ),
-    "benchmark_files-10": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_single_files_10.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_10.zip?download=1",
-        checksum="eafcfa789e148c7b88e056b740b2a876",
-        destination_dir=".",
-    ),
+    # "benchmark_mfcc": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_mfcc.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_mfcc.zip?download=1",
+    #     checksum="a3be0cd80754043a8c238cf501062789",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-01": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_01.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_01.zip?download=1",
+    #     checksum="587da0fd07dfa94822cb38f4bc59268b",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-02": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_02.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_02.zip?download=1",
+    #     checksum="881b8282e94a0d988005c8d820d86a1e",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-03": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_03.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_03.zip?download=1",
+    #     checksum="253e80f0545cfceb60d3e8c53cd713b8",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-04": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_04.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_04.zip?download=1",
+    #     checksum="e3d6e0aa2997958217fb76d468772af2",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-05": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_05.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_05.zip?download=1",
+    #     checksum="330a851adbd636767113765a659aa11b",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-06": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_06.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_06.zip?download=1",
+    #     checksum="20161af64fdb9074e60f9725c127efb5",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-07": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_07.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_07.zip?download=1",
+    #     checksum="3d752d1790ef2cd4571fc7e41190047a",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-08": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_08.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_08.zip?download=1",
+    #     checksum="9d699164ddad3d62c08ccd9f58e6654c",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-09": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_09.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_09.zip?download=1",
+    #     checksum="0478c01272184507006f0d94e0eccb44",
+    #     destination_dir=".",
+    # ),
+    # "benchmark_files-10": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_single_files_10.zip",
+    #     url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_single_files_10.zip?download=1",
+    #     checksum="eafcfa789e148c7b88e056b740b2a876",
+    #     destination_dir=".",
+    # ),
     "coveranalysis_tags": download_utils.RemoteFileMetadata(
             filename="da-tacos_coveranalysis_subset_tags.zip",
             url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_tags.zip?download=1",
@@ -279,66 +277,66 @@ REMOTES = {
             checksum="11371910cad7012daaa81a5fe9dfa1c0",
             destination_dir=".",
     ),
-    "coveranalysis_files-01": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_subset_single_files_01.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_01.zip?download=1",
-            checksum="d35729c8b44b0905037e3a5e8095dc57",
-            destination_dir=".",
-    ),
-    "coveranalysis_files-02": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_subset_single_files_02.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_02.zip?download=1",
-            checksum="b51530bd78e9aa4016f1f888fccc6d83",
-            destination_dir=".",
-    ),
-    "coveranalysis_files-03": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_subset_single_files_03.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_03.zip?download=1",
-            checksum="b44d17ca910afcd23be8e89f758409df",
-            destination_dir=".",
-    ),
-    "coveranalysis_files-04": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_subset_single_files_04.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_04.zip?download=1",
-            checksum="81ac479a6f435e3b302c48a19d4e50b4",
-            destination_dir=".",
-    ),
-    "coveranalysis_files-05": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_subset_single_files_05.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_05.zip?download=1",
-            checksum="cc24d95454d410974c4ca2f943b55a93",
-            destination_dir=".",
-    ),
-    "coveranalysis_files-06": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_subset_single_files_06.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_06.zip?download=1",
-            checksum="2aa19419e06058398a9bc4f2db00b0ca",
-            destination_dir=".",
-    ),
-    "coveranalysis_files-07": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_subset_single_files_07.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_07.zip?download=1",
-            checksum="ef7f5365b183b071fb52883e470a9a26",
-            destination_dir=".",
-    ),
-    "coveranalysis_files-08": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_subset_single_files_08.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_08.zip?download=1",
-            checksum="3cf6039c9fa477c6f786e6e51fe41605",
-            destination_dir=".",
-    ),
-    "coveranalysis_files-09": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_subset_single_files_09.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_09.zip?download=1",
-            checksum="d54d9e9755b5ac9f3b346b2529c87165",
-            destination_dir=".",
-    ),
-    "coveranalysis_files-10": download_utils.RemoteFileMetadata(
-            filename="da-tacos_coveranalysis_single_files_10.zip",
-            url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_single_files_10.zip?download=1",
-            checksum="aeebc1c0a457aebe06136d2c83b29440",
-            destination_dir=".",
-    )
+    # "coveranalysis_files-01": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_subset_single_files_01.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_01.zip?download=1",
+    #         checksum="d35729c8b44b0905037e3a5e8095dc57",
+    #         destination_dir=".",
+    # ),
+    # "coveranalysis_files-02": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_subset_single_files_02.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_02.zip?download=1",
+    #         checksum="b51530bd78e9aa4016f1f888fccc6d83",
+    #         destination_dir=".",
+    # ),
+    # "coveranalysis_files-03": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_subset_single_files_03.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_03.zip?download=1",
+    #         checksum="b44d17ca910afcd23be8e89f758409df",
+    #         destination_dir=".",
+    # ),
+    # "coveranalysis_files-04": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_subset_single_files_04.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_04.zip?download=1",
+    #         checksum="81ac479a6f435e3b302c48a19d4e50b4",
+    #         destination_dir=".",
+    # ),
+    # "coveranalysis_files-05": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_subset_single_files_05.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_05.zip?download=1",
+    #         checksum="cc24d95454d410974c4ca2f943b55a93",
+    #         destination_dir=".",
+    # ),
+    # "coveranalysis_files-06": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_subset_single_files_06.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_06.zip?download=1",
+    #         checksum="2aa19419e06058398a9bc4f2db00b0ca",
+    #         destination_dir=".",
+    # ),
+    # "coveranalysis_files-07": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_subset_single_files_07.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_07.zip?download=1",
+    #         checksum="ef7f5365b183b071fb52883e470a9a26",
+    #         destination_dir=".",
+    # ),
+    # "coveranalysis_files-08": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_subset_single_files_08.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_08.zip?download=1",
+    #         checksum="3cf6039c9fa477c6f786e6e51fe41605",
+    #         destination_dir=".",
+    # ),
+    # "coveranalysis_files-09": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_subset_single_files_09.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_single_files_09.zip?download=1",
+    #         checksum="d54d9e9755b5ac9f3b346b2529c87165",
+    #         destination_dir=".",
+    # ),
+    # "coveranalysis_files-10": download_utils.RemoteFileMetadata(
+    #         filename="da-tacos_coveranalysis_single_files_10.zip",
+    #         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_single_files_10.zip?download=1",
+    #         checksum="aeebc1c0a457aebe06136d2c83b29440",
+    #         destination_dir=".",
+    # )
 }
 
 
@@ -389,6 +387,14 @@ def HD5F_to_json(path):
         json.dump(data, fp)
 
 
+def load_benchmark_tracks():
+    pass
+
+
+def load_cover_tracks():
+    pass
+
+
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
@@ -398,17 +404,13 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None, index=None):
         super().__init__(
             data_home,
-            index=DATA.index if index is None else index,
-            name="acousticbrainz_genre",
-            track_object=Track,
-            bibtex=BIBTEX,
-            remotes=REMOTES,
+            # index=DATA.index if index is None else index,
+            name="da_tacos",
+            # track_object=Track,
+            # bibtex=BIBTEX,
+            # remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
-
-    @core.copy_docs(load_extractor)
-    def load_extractor(self, *args, **kwargs):
-        return load_extractor(*args, **kwargs)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=False):
         """Download the dataset
@@ -428,52 +430,55 @@ class Dataset(core.Dataset):
             IOError: if a downloaded file's checksum is different from expected
 
         """
-        if not os.path.exists(self.data_home):
-            os.makedirs(self.data_home)
-        # Create these directories if doesn't exist
-        train = "acousticbrainz-mediaeval-train"
-        train_dir = os.path.join(self.data_home, train)
-        if not os.path.isdir(train_dir):
-            os.mkdir(train_dir)
-        validate = "acousticbrainz-mediaeval-validation"
-        validate_dir = os.path.join(self.data_home, validate)
-        if not os.path.isdir(validate_dir):
-            os.mkdir(validate_dir)
-
-        # start to download
-        for key, remote in self.remotes.items():
-            # check overwrite
-            file_downloaded = False
-            if not force_overwrite:
-                fold, first_dir = key.split("-")
-                first_dir_path = os.path.join(
-                    train_dir if fold == "train" else validate_dir, first_dir
-                )
-                if os.path.isdir(first_dir_path):
-                    file_downloaded = True
-                    print(
-                        "File "
-                        + remote.filename
-                        + " downloaded. Skip download (force_overwrite=False)."
-                    )
-            if not file_downloaded:
-                #  if this typical error happend it repeat download
-                download_utils.downloader(
-                    self.data_home,
-                    remotes={key: remote},
-                    partial_download=None,
-                    info_message=None,
-                    force_overwrite=True,
-                    cleanup=cleanup,
-                )
-            # move from a temporary directory to final one
-            source_dir = os.path.join(
-                self.data_home, "temp", train if "train" in key else validate
-            )
-            target_dir = train_dir if "train" in key else validate_dir
-            dir_names = os.listdir(source_dir)
-            for dir_name in dir_names:
-                shutil.move(
-                    os.path.join(source_dir, dir_name),
-                    os.path.join(target_dir, dir_name),
-                )
+        # if not os.path.exists(self.data_home):
+        #     os.makedirs(self.data_home)
+        # # Create these directories if doesn't exist
+        # train = "acousticbrainz-mediaeval-train"
+        # train_dir = os.path.join(self.data_home, train)
+        # if not os.path.isdir(train_dir):
+        #     os.mkdir(train_dir)
+        # validate = "acousticbrainz-mediaeval-validation"
+        # validate_dir = os.path.join(self.data_home, validate)
+        # if not os.path.isdir(validate_dir):
+        #     os.mkdir(validate_dir)
+        #
+        # # start to download
+        # for key, remote in self.remotes.items():
+        #     # check overwrite
+        #     file_downloaded = False
+        #     if not force_overwrite:
+        #         fold, first_dir = key.split("-")
+        #         first_dir_path = os.path.join(
+        #             train_dir if fold == "train" else validate_dir, first_dir
+        #         )
+        #         if os.path.isdir(first_dir_path):
+        #             file_downloaded = True
+        #             print(
+        #                 "File "
+        #                 + remote.filename
+        #                 + " downloaded. Skip download (force_overwrite=False)."
+        #             )
+        #     if not file_downloaded:
+        #         #  if this typical error happend it repeat download
+        #         download_utils.downloader(
+        #             self.data_home,
+        #             remotes={key: remote},
+        #             partial_download=None,
+        #             info_message=None,
+        #             force_overwrite=True,
+        #             cleanup=cleanup,
+        #         )
+        #     # move from a temporary directory to final one
+        #     source_dir = os.path.join(
+        #         self.data_home, "temp", train if "train" in key else validate
+        #     )
+        #     target_dir = train_dir if "train" in key else validate_dir
+        #     dir_names = os.listdir(source_dir)
+        #     for dir_name in dir_names:
+        #         shutil.move(
+        #             os.path.join(source_dir, dir_name),
+        #             os.path.join(target_dir, dir_name),
+        #         )
+        for file in os.listdir(self.data_home):
+            if file.endswith(".h5"):
+                print(os.path.join("/mydir", file))
