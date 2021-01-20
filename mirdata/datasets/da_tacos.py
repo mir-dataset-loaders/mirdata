@@ -107,6 +107,9 @@ To facilitate the use of the dataset, we provide two options regarding the file 
 
 
 """
+from typing import Tuple, Optional
+
+from pandas import np
 
 LICENSE_INFO = """
 Creative Commons Attribution Non Commercial Share Alike 4.0 International
@@ -374,17 +377,70 @@ class Track(core.Track):
             else None
         )
 
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
+    @core.cached_property
+    def cens(self) -> np.array:
+        return load_cens(self.cens_path)
+
+    @core.cached_property
+    def crema(self) -> np.array:
+        return load_crema(self.crema_path)
+
+    @core.cached_property
+    def hpcp(self) -> np.array:
+        return load_hpcp(self.hpcp_path)
+
+    @core.cached_property
+    def key(self) -> str:
+        return load_key(self.key_path)
+
+    @core.cached_property
+    def madmom(self) -> np.array:
+        return load_madmom(self.madmom_path)
+
+    @core.cached_property
+    def mfcc(self) -> np.array:
+        return load_mfcc(self.mfcc_path)
+
+    @core.cached_property
+    def tags(self) -> dict:
+        return load_tags(self.tags_path)
+
+    def to_jams(self) -> Optional[Tuple[np.ndarray, float]]:
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         pass
 
 
-def HD5F_to_json(path):
-    data = h5py.File(path)
-    pre, ext = os.path.splitext(path)
-    json_path = pre + '.json'
-    with open(json_path, 'w') as fp:
-        json.dump(data, fp)
+def load_cens(path):
+    pass
+
+
+def load_crema(path):
+    pass
+
+
+def load_hpcp(path):
+    pass
+
+
+def load_key(path):
+    pass
+
+
+def load_madmom(path):
+    pass
+
+
+def load_mfcc(path):
+    pass
+
+
+def load_tags(path):
+    pass
 
 
 def load_benchmark_tracks():
