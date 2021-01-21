@@ -72,20 +72,6 @@ LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
 
-
-def _load_metadata(metadata_path):
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    with open(metadata_path) as f:
-        metadata = json.load(f)
-        data_home = metadata_path.split("/" + metadata_path.split("/")[-4])[0]
-        metadata["data_home"] = data_home
-
-        return metadata
-
-
 DATA = core.LargeData("compmusic_carnatic_varnam_index", _load_metadata)
 
 
@@ -142,89 +128,25 @@ class Track(core.Track):
         self.notation_path = core.none_path_join(
             [self._data_home, self._track_paths["notation"][0]]
         )
-        self.metadata_path = core.none_path_join(
-            [self._data_home, self._track_paths["metadata"][0]]
+        self.tonic_path = core.none_path_join(
+            [self._data_home, self._track_paths["tonic"][0]]
         )
 
         # Track attributes
-        metadata = DATA.metadata(self.metadata_path)
-        if (
-            metadata is not None
-            and metadata["title"].replace(" ", "_") in self.track_id
-        ):
-            self._track_metadata = metadata
-        else:
-            # in case the metadata is missing
-            self._track_metadata = {
-                "raaga": None,
-                "form": None,
-                "title": None,
-                "work": None,
-                "length": None,
-                "taala": None,
-                "album_artists": None,
-                "mbid": None,
-                "artists": None,
-                "concert": None,
-            }
-
-        self.title = self._track_metadata["title"]
-        self.artists = self._track_metadata["artists"]
-        self.album_artists = self._track_metadata["album_artists"]
-        self.mbid = self._track_metadata["mbid"]
-        self.raaga = (
-            self._track_metadata["raaga"]
-            if "raaga" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.form = (
-            self._track_metadata["form"]
-            if "form" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.work = (
-            self._track_metadata["work"]
-            if "work" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.taala = (
-            self._track_metadata["taala"]
-            if "taala" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.concert = (
-            self._track_metadata["concert"]
-            if "concert" in self._track_metadata.keys() is not None
-            else None
-        )
+        self.artist = self.track_id.split('_')[0]
+        self.raaga = self.track_id.split('_')[1]
 
     @core.cached_property
     def tonic(self):
-        return load_tonic(self.ctonic_path)
+        return load_tonic(self.tonic_path, self.artist)
 
     @core.cached_property
-    def pitch(self):
-        return load_pitch(self.pitch_path)
-
-    @core.cached_property
-    def pitch_vocal(self):
-        return load_pitch(self.pitch_vocal_path)
-
-    @core.cached_property
-    def tempo(self):
-        return load_tempo(self.tempo_path)
-
-    @core.cached_property
-    def sama(self):
+    def taala(self):
         return load_sama(self.sama_path)
 
     @core.cached_property
-    def sections(self):
+    def notation(self):
         return load_sections(self.sections_path)
-
-    @core.cached_property
-    def phrases(self):
-        return load_phrases(self.phrases_path)
 
     @property
     def audio(self):
@@ -251,9 +173,9 @@ class Track(core.Track):
             section_data=[(self.sections, "sections")],
             event_data=[(self.phrases, "phrases")],
             metadata={
-                "tempo": self.tempo,
                 "tonic": self.tonic,
-                "metadata": self._track_metadata,
+                "artist": self.artist,
+                "raaga": self.raaga,
             },
         )
 
@@ -274,15 +196,16 @@ def load_audio(audio_path):
 
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(audio_path, sr=22100, mono=False)
 
 
-def load_tonic(tonic_path):
+def load_tonic(tonic_path, artist):
     """Load track absolute tonic
 
     Args:
         tonic_path (str): Local path where the tonic path is stored.
             If `None`, returns None.
+        artist (str): Artists name to identify the tonic
 
     Returns:
         int: Tonic annotation in Hz
@@ -294,53 +217,21 @@ def load_tonic(tonic_path):
     if not os.path.exists(tonic_path):
         raise IOError("tonic_path {} does not exist".format(tonic_path))
 
+    tonic = 0
     with open(tonic_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
+        reader = csv.reader(fhandle, delimiter=":")
         for line in reader:
-            tonic = float(line[0])
+            if line[0] == artist:
+                tonic = line[1]
 
     return tonic
 
 
-def load_pitch(pitch_path):
-    """Load pitch
-
-    Args:
-        pitch path (str): Local path where the pitch annotation is stored.
-            If `None`, returns None.
-
-    Returns:
-        F0Data: pitch annotation
-
-    """
-    if pitch_path is None:
-        return None
-
-    if not os.path.exists(pitch_path):
-        raise IOError("melody_path {} does not exist".format(pitch_path))
-
-    times = []
-    freqs = []
-    with open(pitch_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
-
-    if not times:
-        return None
-
-    times = np.array(times)
-    freqs = np.array(freqs)
-    confidence = (freqs > 0).astype(float)
-    return annotations.F0Data(times, freqs, confidence)
-
-
-def load_tempo(tempo_path):
+def load_taala(taala_path):
     """Load tempo from carnatic collection
 
     Args:
-        tempo_path (str): Local path where the tempo annotation is stored.
+        taala_path (str): Local path where the taala annotation is stored.
 
     Returns:
 
@@ -354,15 +245,13 @@ def load_tempo(tempo_path):
 
 
     """
-    if tempo_path is None:
+    if taala_path is None:
         return None
 
-    if not os.path.exists(tempo_path):
-        raise IOError("tempo_path {} does not exist".format(tempo_path))
+    if not os.path.exists(taala_path):
+        raise IOError("tempo_path {} does not exist".format(taala_path))
 
-    tempo_annotation = {}
-
-    with open(tempo_path, "r") as fhandle:
+    with open(taala_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter=",")
         tempo_data = next(reader)
         tempo_apm = tempo_data[0]
@@ -393,74 +282,7 @@ def load_tempo(tempo_path):
     return tempo_annotation
 
 
-def load_sama(sama_path):
-    """Load sama
-
-    Args:
-        sama_path (str): Local path where the sama annotation is stored.
-            If `None`, returns None.
-
-    Returns:
-        BeatData: sama annotations
-
-    """
-    if sama_path is None:
-        return None
-
-    if not os.path.exists(sama_path):
-        raise IOError("sama_path {} does not exist".format(sama_path))
-
-    beat_times = []
-    beat_positions = []
-    with open(sama_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            beat_times.append(float(line[0]))
-            beat_positions.append(1)
-
-    if not beat_times or beat_times[0] == -1.0:
-        return None
-
-    return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
-
-
-def load_sections(sections_path):
-    """Load sections from carnatic collection
-
-    Args:
-        sections_path (str): Local path where the section annotation is stored.
-
-    Returns:
-        SectionData: section annotations for track
-
-    """
-    if sections_path is None:
-        return None
-
-    if not os.path.exists(sections_path):
-        raise IOError("sections_path {} does not exist".format(sections_path))
-
-    intervals = []
-    section_labels = []
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            if line != "\n":
-                intervals.append(
-                    [
-                        float(line[0]),
-                        float(line[0]) + float(line[2]),
-                    ]
-                )
-                section_labels.append(str(line[3]))
-
-        if not intervals:
-            return None
-
-    return annotations.SectionData(np.array(intervals), section_labels)
-
-
-def load_phrases(phrases_path):
+def load_notation(notation_path):
     """Load phrases
 
     Args:
@@ -506,7 +328,7 @@ class Dataset(core.Dataset):
         super().__init__(
             data_home,
             index=DATA.index,
-            name="saraga_carnatic",
+            name="compmusic_carnatic_varnam",
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
@@ -521,22 +343,10 @@ class Dataset(core.Dataset):
     def load_tonic(self, *args, **kwargs):
         return load_tonic(*args, **kwargs)
 
-    @core.copy_docs(load_pitch)
-    def load_pitch(self, *args, **kwargs):
-        return load_pitch(*args, **kwargs)
+    @core.copy_docs(load_taala)
+    def load_taala(self, *args, **kwargs):
+        return load_taala(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
-    def load_tempo(self, *args, **kwargs):
-        return load_tempo(*args, **kwargs)
-
-    @core.copy_docs(load_sama)
-    def load_sama(self, *args, **kwargs):
-        return load_sama(*args, **kwargs)
-
-    @core.copy_docs(load_sections)
-    def load_sections(self, *args, **kwargs):
-        return load_sections(*args, **kwargs)
-
-    @core.copy_docs(load_phrases)
-    def load_phrases(self, *args, **kwargs):
-        return load_phrases(*args, **kwargs)
+    @core.copy_docs(load_notation)
+    def load_notation(self, *args, **kwargs):
+        return load_notation(*args, **kwargs)
