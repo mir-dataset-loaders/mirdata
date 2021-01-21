@@ -30,7 +30,6 @@ def md5(file_path):
 
 
 def make_da_tacos_index(data_path):
-    da_tacos_index = {}
     metadata = {}
     tracks = {}
     for subset in ['benchmark', 'coveranalysis']:

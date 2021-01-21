@@ -109,12 +109,8 @@ To facilitate the use of the dataset, we provide two options regarding the file 
 """
 from typing import Tuple, Optional
 
-from pandas import np
-
-LICENSE_INFO = """
-Creative Commons Attribution Non Commercial Share Alike 4.0 International
-"""
-
+from jams import JAMS
+import numpy as np
 import json
 import shutil
 
@@ -124,9 +120,12 @@ import os
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-
+import deepdish as dd
 import h5py
 
+LICENSE_INFO = """
+Creative Commons Attribution Non Commercial Share Alike 4.0 International
+"""
 BIBTEX = """@inproceedings{yesiler2019,
     author = "Furkan Yesiler and Chris Tralie and Albin Correya and Diego F. Silva and Philip Tovstogan and Emilia G{\'{o}}mez and Xavier Serra",
     title = "{Da-TACOS}: A Dataset for Cover Song Identification and Understanding",
@@ -226,9 +225,13 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
-        audio_path (str): track audio path
-        keys_path (str): key annotation path
-        metadata_path (str): sections annotation path
+        cens_path (str): cens annotation path
+        crema_path (str): crema annotation path
+        hpcp_path (str): hpcp annotation path
+        key_path (str): key annotation path
+        madmom_path (str): madmom annotation path
+        mfcc_path (str): mfcc annotation path
+        tags_path (str): tags annotation path
         track_id (str): track id
 
     """
@@ -242,13 +245,34 @@ class Track(core.Track):
         self.track_id = track_id
         self._data_home = data_home
         self._track_paths = DATA.index['tracks'][track_id]
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.keys_path = os.path.join(self._data_home, self._track_paths["key"][0])
-        self.metadata_path = (
-            os.path.join(self._data_home, self._track_paths["meta"][0])
-            if self._track_paths["meta"][0] is not None
-            else None
-        )
+        self.cens_path = os.path.join(self._data_home, self._track_paths["cens"][0])
+        self.crema_path = os.path.join(self._data_home, self._track_paths["crema"][0])
+        self.hpcp_path = os.path.join(self._data_home, self._track_paths["hpcp"][0])
+        self.key_path = os.path.join(self._data_home, self._track_paths["key"][0])
+        self.madmom_path = os.path.join(self._data_home, self._track_paths["madmom"][0])
+        self.mfcc_path = os.path.join(self._data_home, self._track_paths["mfcc"][0])
+        self.tags_path = core.none_path_join([self._data_home, self._track_paths["tags"][0]])
+
+    @core.cached_property
+    def subset(self) -> str:
+        return self.track_id.split('#')[0]
+
+    @core.cached_property
+    def work_id(self) -> str:
+        return self.track_id.split('#')[1]
+
+    # alias of work_id
+    @core.cached_property
+    def label(self) -> str:
+        return self.work_id
+
+    @core.cached_property
+    def performance_id(self) -> str:
+        return self.track_id.split('#')[2]
+
+    @core.cached_property
+    def metadata(self) -> dict:
+        return DATA.index['metadata'][self.work_id][self.performance_id]
 
     @core.cached_property
     def cens(self) -> np.array:
@@ -263,7 +287,7 @@ class Track(core.Track):
         return load_hpcp(self.hpcp_path)
 
     @core.cached_property
-    def key(self) -> str:
+    def key(self) -> dict:
         return load_key(self.key_path)
 
     @core.cached_property
@@ -275,53 +299,223 @@ class Track(core.Track):
         return load_mfcc(self.mfcc_path)
 
     @core.cached_property
-    def tags(self) -> dict:
+    def tags(self) -> list:
         return load_tags(self.tags_path)
 
-    def to_jams(self) -> Optional[Tuple[np.ndarray, float]]:
+    def to_jams(self) -> JAMS:
         """Get the track's data in jams format
 
         Returns:
             jams.JAMS: the track's data in jams format
 
         """
-        pass
+        return jams_utils.jams_converter(
+            metadata={
+                "title": self.title,
+                "key": self.key,
+                "spectrum": self.spectrum,
+                "hpcp": self.hpcp,
+                "musicbrainz_metatada": self.musicbrainz_metadata,
+            },
+        )
 
 
 def load_cens(path):
-    pass
+    """Load da_tacos cens features from a file
+
+        Args:
+            path(str or file-like): File-like object or path to features file
+
+        Returns:
+            np.array: cens features
+
+    """
+    return dd.io.load(path)['chroma_cens']
 
 
 def load_crema(path):
-    pass
+    """Load da_tacos crema features from a file
+
+        Args:
+            path(str or file-like): File-like object or path to features file
+
+        Returns:
+            np.array: crema features
+
+    """
+    return dd.io.load(path)['crema']
 
 
 def load_hpcp(path):
-    pass
+    """Load da_tacos hpcp features from a file
+
+        Args:
+            path(str or file-like): File-like object or path to features file
+
+        Returns:
+            np.array: hpcp features
+
+    """
+    return dd.io.load(path)['hpcp']
 
 
 def load_key(path):
-    pass
+    """Load da_tacos key features from a file.
+
+        Args:
+            path(str or file-like): File-like object or path to features file
+
+        Returns:
+            dict: key
+
+        Examples:
+            {'key': 'C', 'scale': 'major', 'strength': 0.8449875116348267}
+
+    """
+    return dd.io.load(path)['key_extractor']
 
 
 def load_madmom(path):
-    pass
+    """Load da_tacos madmom features from a file
+
+        Args:
+            path(str or file-like): File-like object or path to features file
+
+        Returns:
+            dict: madmom features
+
+        Examples:
+            {
+               "novfn":"array("[
+                  0.01775683,
+                  0.00553825,
+                  0.00302445,
+                  "...",
+                  0.0027212,
+                  0.00570413,
+                  0.01260976
+               ]")",
+               "onsets":"array("[
+                  47,
+                  116,
+                  187,
+                  ...
+                  11568,
+                  11610,
+                  11649
+               ]")",
+               "snovfn":"array("[
+                  0.,
+                  0.,
+                  0.,
+                  "...",
+                  0.,
+                  0.,
+                  0.
+               ]")",
+               "tempos":"array("[
+                  [
+                     5.94059406e+01,
+                     2.07677787e-01
+                  ],
+                  [
+                     1.20000000e+02,
+                     1.38685472e-01
+                  ],
+                  [
+                     2.40000000e+02,
+                     1.24457522e-01
+                  ],
+                  [
+                     4.76190476e+01,
+                     1.17567189e-01
+                  ],
+                  [
+                     7.89473684e+01,
+                     1.05035187e-01
+                  ],
+                  [
+                     6.81818182e+01,
+                     5.60316640e-02
+                  ],
+                  [
+                     4.44444444e+01,
+                     4.91360210e-02
+                  ],
+                  [
+                     5.26315789e+01,
+                     4.55353848e-02
+                  ],
+                  [
+                     4.28571429e+01,
+                     3.97281834e-02
+                  ],
+                  [
+                     9.52380952e+01,
+                     3.47324676e-02
+                  ],
+                  [
+                     1.01694915e+02,
+                     3.14065039e-02
+                  ],
+                  [
+                     4.02684564e+01,
+                     2.74462787e-02
+                  ],
+                  [
+                     1.57894737e+02,
+                     2.25603397e-02
+                  ]
+               ]")"
+            }
+
+    """
+    return dd.io.load(path)['madmom_features']
 
 
 def load_mfcc(path):
-    pass
+    """Load da_tacos mfcc from a file
+
+        Args:
+            path(str or file-like): File-like object or path to features file
+
+        Returns:
+            np.array: mfcc
+
+    """
+    return dd.io.load(path)['mfcc_htk']
 
 
 def load_tags(path):
-    pass
+    """Load da_tacos tags from a file
+
+        Args:
+            path(str or file-like): File-like object or path to features file
+
+        Returns:
+            list: tags
+
+        Examples: [('rock', '0.127'), ('pop', '0.014'), ('alternative', '0.051'), ('indie', '0.048'), ('electronic',
+         '0.050'), ('female vocalists', '0.017'), ('dance', '0.005'), ('00s', '0.008'), ('alternative rock',
+         '0.019'), ('jazz', '0.351'), ('beautiful', '0.020'), ('metal', '0.024'), ('chillout', '0.029'),
+         ('male vocalists', '0.007'), ('classic rock', '0.028'), ('soul', '0.023'), ('indie rock', '0.011'),
+         ('Mellow', '0.042'), ('electronica', '0.021'), ('80s', '0.020'), ('folk', '0.175'), ('90s', '0.013'),
+         ('chill', '0.028'), ('instrumental', '0.225'), ('punk', '0.005'), ('oldies', '0.002'), ('blues', '0.075'),
+         ('hard rock', '0.011'), ('ambient', '0.078'), ('acoustic', '0.118'), ('experimental', '0.075'),
+         ('female vocalist', '0.003'), ('guitar', '0.117'), ('Hip-Hop', '0.060'), ('70s', '0.017'), ('party',
+         '0.002'), ('country', '0.009'), ('easy listening', '0.011'), ('sexy', '0.002'), ('catchy', '0.001'),
+         ('funk', '0.027'), ('electro', '0.008'), ('heavy metal', '0.009'), ('Progressive rock', '0.080'), ('60s',
+         '0.003'), ('rnb', '0.005'), ('indie pop', '0.003'), ('sad', '0.014'), ('House', '0.003'), ('happy',
+         '0.001')]
 
 
-def load_benchmark_tracks():
-    pass
+    """
+    if path is None:
+        tags = None
+    else:
+        tags = dd.io.load(path)['tags']
+    return tags
 
-
-def load_cover_tracks():
-    pass
 
 
 @core.docstring_inherit(core.Dataset)
@@ -333,81 +527,71 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None, index=None):
         super().__init__(
             data_home,
-            # index=DATA.index if index is None else index,
+            index=DATA.index if index is None else index,
             name="da_tacos",
-            # track_object=Track,
-            # bibtex=BIBTEX,
-            # remotes=REMOTES,
+            track_object=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
-        """Download the dataset
+    @core.copy_docs(load_cens)
+    def load_cens(self, *args, **kwargs):
+        return load_cens(*args, **kwargs)
+
+    @core.copy_docs(load_crema)
+    def load_crema(self, *args, **kwargs):
+        return load_crema(*args, **kwargs)
+
+    @core.copy_docs(load_hpcp)
+    def load_hpcp(self, *args, **kwargs):
+        return load_hpcp(*args, **kwargs)
+
+    @core.copy_docs(load_key)
+    def load_key(self, *args, **kwargs):
+        return load_key(*args, **kwargs)
+
+    @core.copy_docs(load_mfcc)
+    def load_mfcc(self, *args, **kwargs):
+        return load_mfcc(*args, **kwargs)
+
+    @core.copy_docs(load_madmom)
+    def load_madmom(self, *args, **kwargs):
+        return load_madmom(*args, **kwargs)
+
+    @core.copy_docs(load_tags)
+    def load_tags(self, *args, **kwargs):
+        return load_tags(*args, **kwargs)
+
+    def filter_index(self, search_key):
+        """Load from da_tacos genre dataset the indexes that match with search_key.
 
         Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-                By default False.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
+            search_key (str): regex to match with folds, mbid or genres
 
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
+        Returns:
+             dict: {`track_id`: track data}
 
         """
-        # if not os.path.exists(self.data_home):
-        #     os.makedirs(self.data_home)
-        # # Create these directories if doesn't exist
-        # train = "acousticbrainz-mediaeval-train"
-        # train_dir = os.path.join(self.data_home, train)
-        # if not os.path.isdir(train_dir):
-        #     os.mkdir(train_dir)
-        # validate = "acousticbrainz-mediaeval-validation"
-        # validate_dir = os.path.join(self.data_home, validate)
-        # if not os.path.isdir(validate_dir):
-        #     os.mkdir(validate_dir)
-        #
-        # # start to download
-        # for key, remote in self.remotes.items():
-        #     # check overwrite
-        #     file_downloaded = False
-        #     if not force_overwrite:
-        #         fold, first_dir = key.split("-")
-        #         first_dir_path = os.path.join(
-        #             train_dir if fold == "train" else validate_dir, first_dir
-        #         )
-        #         if os.path.isdir(first_dir_path):
-        #             file_downloaded = True
-        #             print(
-        #                 "File "
-        #                 + remote.filename
-        #                 + " downloaded. Skip download (force_overwrite=False)."
-        #             )
-        #     if not file_downloaded:
-        #         #  if this typical error happend it repeat download
-        #         download_utils.downloader(
-        #             self.data_home,
-        #             remotes={key: remote},
-        #             partial_download=None,
-        #             info_message=None,
-        #             force_overwrite=True,
-        #             cleanup=cleanup,
-        #         )
-        #     # move from a temporary directory to final one
-        #     source_dir = os.path.join(
-        #         self.data_home, "temp", train if "train" in key else validate
-        #     )
-        #     target_dir = train_dir if "train" in key else validate_dir
-        #     dir_names = os.listdir(source_dir)
-        #     for dir_name in dir_names:
-        #         shutil.move(
-        #             os.path.join(source_dir, dir_name),
-        #             os.path.join(target_dir, dir_name),
-        #         )
-        for file in os.listdir(self.data_home):
-            if file.endswith(".h5"):
-                print(os.path.join("/mydir", file))
+        acousticbrainz_genre_data = {
+            k: v for k, v in self._index["tracks"].items() if search_key in k
+        }
+        return acousticbrainz_genre_data
+
+    def load_benchmark_tracks(self):
+        """Load from da_tacos dataset the benchmark subset tracks.
+
+                Returns:
+                    dict: {`track_id`: track data}
+
+        """
+        return self.filter_index("benchmark#")
+
+    def load_coveranalysis_tracks(self):
+        """Load from da_tacos dataset the coveranalysis subset tracks.
+
+                Returns:
+                    dict: {`track_id`: track data}
+
+        """
+        return self.filter_index("coveranalysis#")
