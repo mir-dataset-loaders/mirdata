@@ -191,7 +191,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Tonality classicalDB audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -206,7 +206,7 @@ def load_key(fhandle: TextIO) -> str:
     """Load Tonality classicalDB format key data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to key annotation file
+        fhandle (str or file-like): File-like object or path to key annotation file
 
     Returns:
         str: musical key data
@@ -223,7 +223,7 @@ def load_spectrum(fhandle: TextIO) -> np.ndarray:
     """Load Tonality classicalDB spectrum data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to spectrum file
+        fhandle (str or file-like): File-like object or path to spectrum file
 
     Returns:
         np.ndarray: spectrum data
@@ -239,7 +239,7 @@ def load_hpcp(fhandle: TextIO) -> np.ndarray:
     """Load Tonality classicalDB HPCP feature from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to HPCP file
+        fhandle (str or file-like): File-like object or path to HPCP file
 
     Returns:
         np.ndarray: loaded HPCP data
@@ -254,7 +254,7 @@ def load_musicbrainz(fhandle: TextIO) -> Dict[Any, Any]:
     """Load Tonality classicalDB musicbraiz metadata from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to musicbrainz metadata file
+        fhandle (str or file-like): File-like object or path to musicbrainz metadata file
 
     Returns:
         dict: musicbrainz metadata

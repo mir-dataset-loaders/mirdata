@@ -230,7 +230,7 @@ def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
     """Load a DALI audio file.
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to an audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal

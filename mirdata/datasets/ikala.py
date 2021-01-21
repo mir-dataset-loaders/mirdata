@@ -198,7 +198,7 @@ def load_vocal_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load ikala vocal audio
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - audio signal
@@ -215,7 +215,7 @@ def load_instrumental_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load ikala instrumental audio
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - audio signal
@@ -232,7 +232,7 @@ def load_mix_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load an ikala mix.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - audio signal
@@ -249,7 +249,7 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
     """Load an ikala f0 annotation
 
     Args:
-        fhandle(str or file-like): File-like object or path to f0 annotation file
+        fhandle (str or file-like): File-like object or path to f0 annotation file
 
     Raises:
         IOError: If f0_path does not exist
@@ -272,7 +272,7 @@ def load_lyrics(fhandle: TextIO) -> annotations.LyricData:
     """Load an ikala lyrics annotation
 
     Args:
-        fhandle(str or file-like): File-like object or path to lyric annotation file
+        fhandle (str or file-like): File-like object or path to lyric annotation file
 
     Raises:
         IOError: if lyrics_path does not exist
@@ -298,9 +298,7 @@ def load_lyrics(fhandle: TextIO) -> annotations.LyricData:
             pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T,
-        lyrics,
-        pronunciations,
+        np.array([start_times, end_times]).T, lyrics, pronunciations,
     )
     return lyrics_data
 

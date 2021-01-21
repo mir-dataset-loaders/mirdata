@@ -181,7 +181,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MedleyDB audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -196,7 +196,7 @@ def load_melody(fhandle: TextIO) -> annotations.F0Data:
     """Load a MedleyDB melody1 or melody2 annotation file
 
     Args:
-        fhandle(str or file-like): File-like object or path to a melody annotation file
+        fhandle (str or file-like): File-like object or path to a melody annotation file
 
     Raises:
         IOError: if melody_path does not exist
@@ -223,7 +223,7 @@ def load_melody3(fhandle: TextIO) -> annotations.MultiF0Data:
     """Load a MedleyDB melody3 annotation file
 
     Args:
-        fhandle(str or file-like): File-like object or melody 3 melody annotation path
+        fhandle (str or file-like): File-like object or melody 3 melody annotation path
 
     Raises:
         IOError: if melody_path does not exist

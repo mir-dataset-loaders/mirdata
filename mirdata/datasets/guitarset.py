@@ -292,7 +292,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Guitarset audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -307,7 +307,7 @@ def load_multitrack_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Guitarset multitrack audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -322,7 +322,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load a Guitarset beats annotation.
 
     Args:
-        fhandle(str or file-like): File-like object or path of the jams annotation file
+        fhandle (str or file-like): File-like object or path of the jams annotation file
 
     Returns:
         BeatData: Beat data
@@ -363,7 +363,7 @@ def load_key_mode(fhandle: TextIO) -> annotations.KeyData:
     """Load a Guitarset key-mode annotation.
 
     Args:
-        fhandle(str or file-like): File-like object or path of the jams annotation file
+        fhandle (str or file-like): File-like object or path of the jams annotation file
 
     Returns:
         KeyData: Key data

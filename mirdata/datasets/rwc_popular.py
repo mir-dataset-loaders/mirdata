@@ -283,7 +283,7 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
     """Load rwc chord data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to chord annotation file
+        fhandle (str or file-like): File-like object or path to chord annotation file
 
     Returns:
         ChordData: chord data
@@ -307,7 +307,7 @@ def load_vocal_activity(fhandle: TextIO) -> annotations.EventData:
     """Load rwc vocal activity data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to vocal activity annotation file
+        fhandle (str or file-like): File-like object or path to vocal activity annotation file
 
     Returns:
         EventData: vocal activity data

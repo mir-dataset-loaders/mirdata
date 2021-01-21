@@ -114,7 +114,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a GTZAN audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal

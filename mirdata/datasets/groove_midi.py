@@ -370,7 +370,7 @@ def load_midi(fhandle: BinaryIO) -> Optional[pretty_midi.PrettyMIDI]:
     """Load a Groove MIDI midi file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to midi file
+        fhandle (str or file-like): File-like object or path to midi file
 
     Returns:
         midi_data (pretty_midi.PrettyMIDI): pretty_midi object

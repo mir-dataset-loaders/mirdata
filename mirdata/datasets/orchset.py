@@ -238,7 +238,7 @@ def load_audio_mono(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load an Orchset audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -253,7 +253,7 @@ def load_audio_stereo(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load an Orchset audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the stereo audio signal
@@ -268,7 +268,7 @@ def load_melody(fhandle: TextIO) -> annotations.F0Data:
     """Load an Orchset melody annotation file
 
     Args:
-        fhandle(str or file-like): File-like object or path to melody annotation file
+        fhandle (str or file-like): File-like object or path to melody annotation file
 
     Raises:
         IOError: if melody_path doesn't exist

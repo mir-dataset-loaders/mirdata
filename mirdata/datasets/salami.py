@@ -251,7 +251,7 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a Salami audio file.
 
     Args:
-        fhandle(str or file-like): path to audio file
+        fhandle (str or file-like): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -266,7 +266,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load salami sections data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to sectin annotation file
+        fhandle (str or file-like): File-like object or path to sectin annotation file
 
     Returns:
         SectionData: section data

@@ -168,7 +168,7 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_key audio file.
 
     Args:
-        fhandle(str or file-like): path pointing to an audio file
+        fhandle (str or file-like): path pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -183,7 +183,7 @@ def load_key(fhandle: TextIO) -> str:
     """Load giantsteps_key format key data from a file
 
     Args:
-        fhandle(str or file-like): File like object or string pointing to key annotation file
+        fhandle (str or file-like): File like object or string pointing to key annotation file
 
     Returns:
         str: loaded key data
@@ -197,7 +197,7 @@ def load_tempo(fhandle: TextIO) -> str:
     """Load giantsteps_key tempo data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or string pointing to metadata annotation file
+        fhandle (str or file-like): File-like object or string pointing to metadata annotation file
 
     Returns:
         str: loaded tempo data
@@ -212,7 +212,7 @@ def load_genre(fhandle: TextIO) -> Dict[str, List[str]]:
     """Load giantsteps_key genre data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path pointing to metadata annotation file
+        fhandle (str or file-like): File-like object or path pointing to metadata annotation file
 
     Returns:
         dict: `{'genres': [...], 'subgenres': [...]}`
@@ -230,7 +230,7 @@ def load_artist(fhandle: TextIO) -> List[str]:
     """Load giantsteps_key tempo data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path pointing to metadata annotation file
+        fhandle (str or file-like): File-like object or path pointing to metadata annotation file
 
     Returns:
         list: list of artists involved in the track.

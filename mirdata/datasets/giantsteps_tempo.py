@@ -204,7 +204,7 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_tempo audio file.
 
     Args:
-        fhandle(str or file-like): path to audio file
+        fhandle (str or file-like): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -233,7 +233,7 @@ def load_tempo(fhandle: TextIO) -> annotations.TempoData:
     """Load giantsteps_tempo tempo data from a file ordered by confidence
 
     Args:
-        fhandle(str or file-like): File-like object or path to tempo annotation file
+        fhandle (str or file-like): File-like object or path to tempo annotation file
 
     Returns:
         annotations.TempoData: Tempo data

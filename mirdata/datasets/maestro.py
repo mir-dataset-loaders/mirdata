@@ -196,7 +196,7 @@ def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
     """Load a MAESTRO midi file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to midi file
+        fhandle (str or file-like): File-like object or path to midi file
 
     Returns:
         pretty_midi.PrettyMIDI: pretty_midi object
@@ -237,7 +237,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MAESTRO audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal

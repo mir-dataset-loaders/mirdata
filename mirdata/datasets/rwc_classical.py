@@ -267,7 +267,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a RWC audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -282,7 +282,7 @@ def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
     """Load rwc section data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to sections annotation file
+        fhandle (str or file-like): File-like object or path to sections annotation file
 
     Returns:
         SectionData: section data
@@ -346,7 +346,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load rwc beat data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to beats annotation file
+        fhandle (str or file-like): File-like object or path to beats annotation file
 
     Returns:
         BeatData: beat data

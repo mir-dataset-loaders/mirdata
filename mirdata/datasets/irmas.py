@@ -283,7 +283,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a IRMAS dataset audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -298,7 +298,7 @@ def load_pred_inst(fhandle: TextIO) -> List[str]:
     """Load predominant instrument of track
 
     Args:
-        fhandle(str or file-like): File-like object or path where the test annotations are stored.
+        fhandle (str or file-like): File-like object or path where the test annotations are stored.
 
     Returns:
         list(str): test track predominant instrument(s) annotations
