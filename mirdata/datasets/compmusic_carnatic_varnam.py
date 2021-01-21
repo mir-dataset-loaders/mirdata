@@ -33,7 +33,7 @@
 
 import numpy as np
 import os
-import json
+from xml.dom import minidom
 import logging
 import librosa
 import csv
@@ -72,7 +72,25 @@ LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
 
-DATA = core.LargeData("compmusic_carnatic_varnam_index", _load_metadata)
+
+def _load_metadata(metadata_path):
+
+    if not os.path.exists(metadata_path):
+        logging.info("Metadata file {} not found.".format(metadata_path))
+        return None
+
+    metadata = {}
+    with open(metadata_path, 'r') as fhandle:
+        reader = csv.reader(fhandle, delimiter=":")
+        for line in reader:
+            metadata[line[0]] = float(line[1].split(' ')[1])
+
+    metadata['data_home'] = metadata_path.split('compmusic_carnatic_varnam')[0]
+
+    return metadata
+
+
+DATA = core.LargeData("compmusic_carnatic_varnam_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -128,25 +146,27 @@ class Track(core.Track):
         self.notation_path = core.none_path_join(
             [self._data_home, self._track_paths["notation"][0]]
         )
-        self.tonic_path = core.none_path_join(
-            [self._data_home, self._track_paths["tonic"][0]]
+        self.metadata_path = core.none_path_join(
+            [self._data_home, DATA.index["metadata"][0]]
         )
 
-        # Track attributes
+        # -- Track attributes --
+        # Load metadata (containing tonic information)
+        metadata = DATA.metadata(self.metadata_path)
+        if metadata is not None:
+            self.tonic = metadata[self.track_id.split('_')[0]]
+        else:
+            self.tonic = None
         self.artist = self.track_id.split('_')[0]
         self.raaga = self.track_id.split('_')[1]
 
     @core.cached_property
-    def tonic(self):
-        return load_tonic(self.tonic_path, self.artist)
-
-    @core.cached_property
     def taala(self):
-        return load_sama(self.sama_path)
+        return load_taala(self.taala_path)
 
     @core.cached_property
     def notation(self):
-        return load_sections(self.sections_path)
+        return load_notation(self.notation_path)
 
     @property
     def audio(self):
@@ -199,34 +219,6 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=22100, mono=False)
 
 
-def load_tonic(tonic_path, artist):
-    """Load track absolute tonic
-
-    Args:
-        tonic_path (str): Local path where the tonic path is stored.
-            If `None`, returns None.
-        artist (str): Artists name to identify the tonic
-
-    Returns:
-        int: Tonic annotation in Hz
-
-    """
-    if tonic_path is None:
-        return None
-
-    if not os.path.exists(tonic_path):
-        raise IOError("tonic_path {} does not exist".format(tonic_path))
-
-    tonic = 0
-    with open(tonic_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=":")
-        for line in reader:
-            if line[0] == artist:
-                tonic = line[1]
-
-    return tonic
-
-
 def load_taala(taala_path):
     """Load tempo from carnatic collection
 
@@ -249,37 +241,28 @@ def load_taala(taala_path):
         return None
 
     if not os.path.exists(taala_path):
-        raise IOError("tempo_path {} does not exist".format(taala_path))
+        raise IOError("taala_path {} does not exist".format(taala_path))
 
-    with open(taala_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        tempo_data = next(reader)
-        tempo_apm = tempo_data[0]
-        tempo_bpm = tempo_data[1]
-        sama_interval = tempo_data[2]
-        beats_per_cycle = tempo_data[3]
-        subdivisions = tempo_data[4]
+    # Load svl file
+    dom = minidom.parse(taala_path)
 
-        if "NaN" in tempo_data or " NaN" in tempo_data or "NaN " in tempo_data:
-            return None
+    # Load data
+    data = dom.getElementsByTagName('data')[0]
 
-        tempo_annotation["tempo_apm"] = (
-            float(tempo_apm) if "." in tempo_apm else int(tempo_apm)
-        )
-        tempo_annotation["tempo_bpm"] = (
-            float(tempo_bpm) if "." in tempo_bpm else int(tempo_bpm)
-        )
-        tempo_annotation["sama_interval"] = (
-            float(sama_interval) if "." in sama_interval else int(sama_interval)
-        )
-        tempo_annotation["beats_per_cycle"] = (
-            float(beats_per_cycle) if "." in beats_per_cycle else int(beats_per_cycle)
-        )
-        tempo_annotation["subdivisions"] = (
-            float(subdivisions) if "." in subdivisions else int(subdivisions)
-        )
+    # Store points and calculate total length
+    points = data.getElementsByTagName('dataset')[0].getElementsByTagName('point')
+    num_points = len(points)
 
-    return tempo_annotation
+    # Parse sampling frequency
+    fs = float(data.getElementsByTagName('model')[0].getAttribute('sampleRate'))
+
+    beat_times = []
+    beat_positions = []
+    for beat in range(num_points):
+        beat_times.append(float(points[beat].getAttribute('frame')) / fs)
+        beat_positions.append(1)
+
+    return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
 
 
 def load_notation(notation_path):
@@ -293,27 +276,27 @@ def load_notation(notation_path):
         EventData: phrases annotation for track
 
     """
-    if phrases_path is None:
+    if notation_path is None:
         return None
 
-    if not os.path.exists(phrases_path):
-        raise IOError("sections_path {} does not exist".format(phrases_path))
+    if not os.path.exists(notation_path):
+        raise IOError("notation_path {} does not exist".format(notation_path))
 
+    sections = ['pallavi', 'anupallavi', 'muktayiswaram', 'charanam', 'chittiswaram']
     start_times = []
     end_times = []
     events = []
-    with open(phrases_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            start_times.append(float(line[0]))
-            end_times.append(float(line[0]) + float(line[2]))
-            if len(line) == 4:
-                events.append(str(line[3].split("\n")[0]))
-            else:
-                events.append("")
 
-    if not start_times:
-        return None
+    with open(notation_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter='-')
+        for row in reader:
+            events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
+
+    events = [x for x in events if len(x) < 3 or x in sections]
+
+    sections_index = []
+    for i in sections:
+        sections_index.append(events.index(i))
 
     return annotations.EventData(np.array([start_times, end_times]).T, events)
 
@@ -338,10 +321,6 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
-
-    @core.copy_docs(load_tonic)
-    def load_tonic(self, *args, **kwargs):
-        return load_tonic(*args, **kwargs)
 
     @core.copy_docs(load_taala)
     def load_taala(self, *args, **kwargs):

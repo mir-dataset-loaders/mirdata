@@ -7,33 +7,29 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = "sreevidya_sahana"
+    default_trackid = "dharini_abhogi"
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_varnam"
     track = compmusic_carnatic_varnam.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        "track_id": "sreevidya_sahana",
-        "audio_path": "tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/"
-        + "Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/"
-        + "Bhuvini Dasudane/Bhuvini Dasudane.mp3.mp3",
-        "audio_ghatam_path": "tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/"
-        + "Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/"
-        + "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-ghatam.mp3",
-        "audio_mridangam_left_path": "tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/"
-        + "Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/"
-        + "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-left.mp3",
-        "audio_mridangam_right_path": "tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/"
-        + "Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/"
-        + "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-right.mp3",
-        "raaga":
-        "artist":
+        "track_id": "dharini_abhogi",
+        "audio_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.0/"
+        + "Audio/223578__gopalkoduri__carnatic-varnam-by-dharini-in-abhogi-raaga.mp3",
+        "taala_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.0/"
+        + "Notations_Annotations/annotations/taalas/abhogi/dharini.svl",
+        "notation_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.0/"
+        + "Notations_Annotations/notations/abhogi.yaml",
+        "metadata_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.0/"
+        + "Notations_Annotations/annotations/tonics.yaml",
+        "tonic": 200.58,
+        "raaga": 'abhogi',
+        "artist": 'dharini',
     }
 
     expected_property_types = {
         "audio": (np.ndarray, float),
-        "tonic": float,
-        "taala":
-        "notation":
+        "taala": annotations.BeatData,
+        "notation": str,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -248,23 +244,49 @@ def test_to_jams():
     assert metadata["data_home"] == "tests/resources/mir_datasets/saraga_carnatic"
 
 
-def test_load_tonic():
+def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_varnam"
-    track = compmusic_carnatic_varnam.Track("sreevidya_sahana", data_home=data_home)
-    tonic_path = track.tonic_path
-    parsed_tonic = compmusic_carnatic_varnam.load_tonic(tonic_path, artist)
-    assert parsed_tonic == 210.07
-    assert compmusic_carnatic_varnam.load_tonic(None) is None
+    track = compmusic_carnatic_varnam.Track("dharini_abhogi", data_home=data_home)
+    parsed_tonic = track.tonic
+    assert parsed_tonic == 200.58
+
+
+def test_load_taala():
+    data_home = "tests/resources/mir_datasets/compmusic_carnatic_varnam"
+    track = compmusic_carnatic_varnam.Track("dharini_abhogi", data_home=data_home)
+    taala_path = track.taala_path
+    parsed_taala = compmusic_carnatic_varnam.load_taala(taala_path)
+
+    # Check types
+    assert type(parsed_taala) == annotations.BeatData
+    assert type(parsed_taala.times) is np.ndarray
+    assert type(parsed_taala.positions) is np.ndarray
+
+    # Check values
+    assert np.array_equal(parsed_taala.times, np.array([
+        3.1299319727891155, 3.7754648526077097, 4.519818594104309, 5.188299319727891
+    ]))
+    assert np.array_equal(parsed_taala.positions, np.array([1, 1, 1, 1]))
+    assert compmusic_carnatic_varnam.load_taala(None) is None
+
+
+def test_load_notation():
+    data_home = "tests/resources/mir_datasets/compmusic_carnatic_varnam"
+    track = compmusic_carnatic_varnam.Track("dharini_abhogi", data_home=data_home)
+    notation_path = track.notation_path
+    parsed_notation = compmusic_carnatic_varnam.load_notation(notation_path)
+
+    print(parsed_notation)
+    assert parsed_notation == 1
 
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_varnam"
-    track = compmusic_carnatic_varnam.Track("sreevidya_sahana", data_home=data_home)
+    track = compmusic_carnatic_varnam.Track("dharini_abhogi", data_home=data_home)
     audio_path = track.audio_path
     audio, sr = compmusic_carnatic_varnam.load_audio(audio_path)
 
-    assert sr == 44100
+    assert sr == 22100
     assert type(audio) == np.ndarray
-    assert audio.shape[0] == 2
 
-    assert saraga_carnatic.load_audio(None) is None
+    assert compmusic_carnatic_varnam.load_audio(None) is None
