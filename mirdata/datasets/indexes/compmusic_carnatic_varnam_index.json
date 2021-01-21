@@ -13,6 +13,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/sahana/sreevidya.svl",
         "17056acc6389763cf52d49563803c897"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "badrinarayanan_kalyani": {
@@ -27,6 +31,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/kalyani/badrinarayanan.svl",
         "dc7b9cb3137d99318194348f1d9b7866"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "dharini_abhogi": {
@@ -41,6 +49,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/abhogi/dharini.svl",
         "b88e020c86effa282804bef6eea41216"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "prasanna_mohanam": {
@@ -55,6 +67,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/mohanam/prasanna.svl",
         "11e468ec2008437a828423d17b19c7c6"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "prasanna_begada": {
@@ -69,6 +85,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/begada/prasanna.svl",
         "5fb8f03d779cbc7fc3b367d96d6a752b"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "badrinarayanan_sri": {
@@ -83,6 +103,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/sri/badrinarayanan.svl",
         "d6c7d7ae8db50c0ab57c671840cd6bb2"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "ramakrishnamurthy_sahana": {
@@ -97,6 +121,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/sahana/ramakrishnamurthy.svl",
         "2db7696d1d9e3ff263150a15cbd9eb9d"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "ramakrishnamurthy_saveri": {
@@ -111,6 +139,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/saveri/ramakrishnamurthy.svl",
         "8777757a5469820737ee9c6f6615d8b5"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "prasanna_kalyani": {
@@ -125,6 +157,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/kalyani/prasanna.svl",
         "4d0865198f3a5f7291ec911a9293d27a"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "ramakrishnamurthy_abhogi": {
@@ -139,6 +175,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/abhogi/ramakrishnamurthy.svl",
         "f4acbb64825aa0090436f206b8b4bf51"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "dharini_saveri": {
@@ -153,6 +193,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/saveri/dharini.svl",
         "1a8ed78cf2f0de1aff4b9a53dd253a8b"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "prasanna_saveri": {
@@ -167,6 +211,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/saveri/prasanna.svl",
         "5bdec8d0cc6d8a270dc29ee0f0cbf559"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "prasanna_abhogi": {
@@ -181,6 +229,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/abhogi/prasanna.svl",
         "1e2cfda720e6d27f3e04fa1108053751"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "vignesh_kalyani": {
@@ -195,6 +247,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/kalyani/vignesh.svl",
         "9ec1e7d71f6e21df8877f6dc05b33c0d"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "ramakrishnamurthy_kalyani": {
@@ -209,6 +265,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/kalyani/ramakrishnamurthy.svl",
         "e96cacdc14fe415922deeab7e7d4488b"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "vignesh_sri": {
@@ -223,6 +283,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/sri/vignesh.svl",
         "716776e1c7fa091102f43e40618db404"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "vignesh_begada": {
@@ -237,6 +301,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/begada/vignesh.svl",
         "2e83660f2e1d9b55d94e5b53dcc21476"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "sreevidya_saveri": {
@@ -251,6 +319,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/saveri/sreevidya.svl",
         "4e717c12675b10eb837394dcd6ee12d6"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "ramakrishnamurthy_sri": {
@@ -265,6 +337,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/sri/ramakrishnamurthy.svl",
         "27e8597f4a5b851028f5b96d5c4287b9"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "badrinarayanan_mohanam": {
@@ -279,6 +355,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/mohanam/badrinarayanan.svl",
         "e1a7e7d2f7ae15b562ef86607ee170c6"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "badrinarayanan_saveri": {
@@ -293,6 +373,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/saveri/badrinarayanan.svl",
         "29cb7e7cf857883d3d105ff89318a7d4"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "ramakrishnamurthy_mohanam": {
@@ -307,6 +391,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/mohanam/ramakrishnamurthy.svl",
         "2c000ef8ca6f62245085c8154bafd6bd"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "dharini_mohanam": {
@@ -321,6 +409,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/mohanam/dharini.svl",
         "5acc6818cb1d76040fc2da052dede450"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "sreevidya_begada": {
@@ -335,6 +427,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/begada/sreevidya.svl",
         "7816f57ec24f560d5e7b09b2db05f4be"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "vignesh_sahana": {
@@ -349,6 +445,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/sahana/vignesh.svl",
         "2eb333e149bc5d59531995437450ceca"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "vignesh_abhogi": {
@@ -363,6 +463,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/abhogi/vignesh.svl",
         "c148349674ca00cd4e6d8d594d1349b7"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "sreevidya_abhogi": {
@@ -377,6 +481,10 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/abhogi/sreevidya.svl",
         "35891ae937c2ef6d52b1ff6979cc9ee0"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     },
     "dharini_sahana": {
@@ -391,11 +499,11 @@
       "taala": [
         "Notations_Annotations/annotations/taalas/sahana/dharini.svl",
         "ca1357ee2c089da8d3532578e5761f65"
+      ],
+      "tonic": [
+        "Notations_Annotations/annotations/tonics.yaml",
+        "e3c4b1ad9218f7982ae477478db6c4b4"
       ]
     }
-  },
-  "metadata": [
-    "Notations_Annotations/annotations/tonics.yaml",
-    "e3c4b1ad9218f7982ae477478db6c4b4"
-  ]
+  }
 }

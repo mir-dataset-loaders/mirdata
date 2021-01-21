@@ -86,7 +86,7 @@ def _load_metadata(metadata_path):
         return metadata
 
 
-DATA = core.LargeData("saraga_carnatic_index.json", _load_metadata)
+DATA = core.LargeData("compmusic_carnatic_varnam_index", _load_metadata)
 
 
 class Track(core.Track):
@@ -132,56 +132,15 @@ class Track(core.Track):
 
         # Audio path
         self.audio_path = os.path.join(
-            self._data_home, self._track_paths["audio-mix"][0]
+            self._data_home, self._track_paths["audio"][0]
         )
-
-        # Multitrack audios path
-        if self._track_paths["audio-ghatam"][0] is not None:
-            self.audio_ghatam_path = os.path.join(
-                self._data_home, self._track_paths["audio-ghatam"][0]
-            )
-        if self._track_paths["audio-mridangam-left"][0] is not None:
-            self.audio_mridangam_left_path = os.path.join(
-                self._data_home, self._track_paths["audio-mridangam-left"][0]
-            )
-        if self._track_paths["audio-mridangam-right"][0] is not None:
-            self.audio_mridangam_right_path = os.path.join(
-                self._data_home, self._track_paths["audio-mridangam-right"][0]
-            )
-        if self._track_paths["audio-violin"][0] is not None:
-            self.audio_violin_path = os.path.join(
-                self._data_home, self._track_paths["audio-violin"][0]
-            )
-        if self._track_paths["audio-vocal-s"][0] is not None:
-            self.audio_vocal_s_path = os.path.join(
-                self._data_home, self._track_paths["audio-vocal-s"][0]
-            )
-        if self._track_paths["audio-vocal"][0] is not None:
-            self.audio_vocal_path = os.path.join(
-                self._data_home, self._track_paths["audio-vocal"][0]
-            )
 
         # Annotation paths
-        self.ctonic_path = core.none_path_join(
-            [self._data_home, self._track_paths["ctonic"][0]]
+        self.taala_path = core.none_path_join(
+            [self._data_home, self._track_paths["taala"][0]]
         )
-        self.pitch_path = core.none_path_join(
-            [self._data_home, self._track_paths["pitch"][0]]
-        )
-        self.pitch_vocal_path = core.none_path_join(
-            [self._data_home, self._track_paths["pitch-vocal"][0]]
-        )
-        self.tempo_path = core.none_path_join(
-            [self._data_home, self._track_paths["tempo"][0]]
-        )
-        self.sama_path = core.none_path_join(
-            [self._data_home, self._track_paths["sama"][0]]
-        )
-        self.sections_path = core.none_path_join(
-            [self._data_home, self._track_paths["sections"][0]]
-        )
-        self.phrases_path = core.none_path_join(
-            [self._data_home, self._track_paths["phrases"][0]]
+        self.notation_path = core.none_path_join(
+            [self._data_home, self._track_paths["notation"][0]]
         )
         self.metadata_path = core.none_path_join(
             [self._data_home, self._track_paths["metadata"][0]]
