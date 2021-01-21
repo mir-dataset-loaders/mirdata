@@ -141,19 +141,19 @@ class Track(core.Track):
         self.title = self.audio_path.replace(".wav", "").split("/")[-1]
 
     @core.cached_property
-    def key(self) -> str:
+    def key(self) -> Optional[str]:
         return load_key(self.key_path)
 
     @core.cached_property
-    def spectrum(self) -> np.ndarray:
+    def spectrum(self) -> Optional[np.ndarray]:
         return load_spectrum(self.spectrum_path)
 
     @core.cached_property
-    def hpcp(self) -> np.ndarray:
+    def hpcp(self) -> Optional[np.ndarray]:
         return load_hpcp(self.hpcp_path)
 
     @core.cached_property
-    def musicbrainz_metadata(self) -> Dict[Any, Any]:
+    def musicbrainz_metadata(self) -> Optional[Dict[Any, Any]]:
         return load_musicbrainz(self.musicbrainz_path)
 
     @property
