@@ -49,17 +49,17 @@ def make_compmusic_varnam_index(dataset_data_path):
 
                     dataset_index['tracks'][idx] = {
                         'audio': [
-                            os.path.join(top_level, song),
+                            os.path.join('carnatic_varnam_1.0', top_level, song),
                             md5(os.path.join(dataset_data_path, top_level, song))
                         ],
                         'notation': [
-                            os.path.join(notations_path, notation_file),
+                            os.path.join('carnatic_varnam_1.0', notations_path, notation_file),
                             md5(os.path.join(
                                 dataset_data_path, notations_path, notation_file
                             ))
                         ],
                         'taala': [
-                            os.path.join(annotations_path, taala_path),
+                            os.path.join('carnatic_varnam_1.0', annotations_path, taala_path),
                             md5(os.path.join(
                                 dataset_data_path, annotations_path, taala_path
                             ))
@@ -67,7 +67,7 @@ def make_compmusic_varnam_index(dataset_data_path):
                     }
 
     dataset_index['metadata'] = [
-        os.path.join(annotations_path, 'tonics.yaml'),
+        os.path.join('carnatic_varnam_1.0', annotations_path, 'tonics.yaml'),
         md5(os.path.join(
             dataset_data_path, annotations_path, 'tonics.yaml'
         ))
