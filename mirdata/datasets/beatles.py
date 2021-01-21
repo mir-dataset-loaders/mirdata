@@ -153,7 +153,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Beatles audio file.
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to an audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -168,7 +168,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load Beatles format beat data from a file
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to a beat annotation file
+        fhandle (str or file-like): path or file-like object pointing to a beat annotation file
 
     Returns:
         BeatData: loaded beat data
@@ -196,7 +196,7 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
     """Load Beatles format chord data from a file
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to a chord annotation file
+        fhandle (str or file-like): path or file-like object pointing to a chord annotation file
 
     Returns:
         ChordData: loaded chord data
@@ -219,7 +219,7 @@ def load_key(fhandle: TextIO) -> annotations.KeyData:
     """Load Beatles format key data from a file
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to a key annotation file
+        fhandle (str or file-like): path or file-like object pointing to a key annotation file
 
     Returns:
         KeyData: loaded key data
@@ -241,7 +241,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load Beatles format section data from a file
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to a section annotation file
+        fhandle (str or file-like): path or file-like object pointing to a section annotation file
 
     Returns:
         SectionData: loaded section data
