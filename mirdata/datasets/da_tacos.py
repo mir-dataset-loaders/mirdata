@@ -311,12 +311,18 @@ class Track(core.Track):
         """
         return jams_utils.jams_converter(
             metadata={
-                "title": self.title,
-                "key": self.key,
-                "spectrum": self.spectrum,
+                "work_id": self.work_id,
+                "performance_id": self.performance_id,
+                "subset": self.subset,
+                "label": self.label,
+                "cens": self.cens,
+                "crema": self.crema,
                 "hpcp": self.hpcp,
-                "musicbrainz_metatada": self.musicbrainz_metadata,
-            },
+                "key": self.key,
+                "madmom": self.madmom,
+                "mfcc": self.mfcc,
+                "tags": self.tags,
+            }
         )
 
 
