@@ -121,7 +121,6 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 import deepdish as dd
-import h5py
 
 LICENSE_INFO = """
 Creative Commons Attribution Non Commercial Share Alike 4.0 International
