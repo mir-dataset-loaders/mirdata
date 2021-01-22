@@ -6,6 +6,7 @@ import os
 import random
 import types
 import numpy as np
+from typing import Any
 
 from mirdata import download_utils
 from mirdata import validate
@@ -38,8 +39,7 @@ class cached_property(object):
         self.__doc__ = getattr(func, "__doc__")
         self.func = func
 
-    def __get__(self, obj, cls):
-        # type: (Any, type) -> Any
+    def __get__(self, obj: Any, cls: type) -> Any:
         if obj is None:
             return self
         value = obj.__dict__[self.func.__name__] = self.func(obj)
