@@ -272,7 +272,7 @@ class Track(core.Track):
 
     @core.cached_property
     def metadata(self) -> dict:
-        return DATA.index['metadata'][self.work_id][self.performance_id]
+        return DATA.index['metadata'][self.track_id]
 
     @core.cached_property
     def cens(self) -> np.array:
