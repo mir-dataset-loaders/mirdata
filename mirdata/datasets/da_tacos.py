@@ -214,7 +214,21 @@ REMOTES = {
     )
 }
 
-DATA = core.LargeData("da_tacos_index.json")
+
+def _load_metadata(data_home):
+    metadata_index = {}
+    for subset in ['benchmark', 'coveranalysis']:
+        path_subset = os.path.join(data_home, 'da-tacos_metadata', 'da-tacos_' + subset + '_subset_metadata.json')
+        with open(path_subset) as f:
+            meta = json.load(f)
+        for work_id in meta.keys():
+            for performance_id in meta[work_id].keys():
+                track_id = subset + '#' + work_id + '#' + performance_id
+                metadata_index[track_id] = meta[work_id][performance_id]
+    return metadata_index
+
+
+DATA = core.LargeData("da_tacos_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -251,6 +265,9 @@ class Track(core.Track):
         self.madmom_path = os.path.join(self._data_home, self._track_paths["madmom"][0])
         self.mfcc_path = os.path.join(self._data_home, self._track_paths["mfcc"][0])
         self.tags_path = core.none_path_join([self._data_home, self._track_paths["tags"][0]])
+        # metadata
+        metadata = DATA.metadata(data_home)
+        self._track_metadata = metadata[track_id]
 
     @core.cached_property
     def subset(self) -> str:
@@ -271,7 +288,7 @@ class Track(core.Track):
 
     @core.cached_property
     def metadata(self) -> dict:
-        return DATA.index['metadata'][self.track_id]
+        return self._track_metadata
 
     @core.cached_property
     def cens(self) -> np.array:

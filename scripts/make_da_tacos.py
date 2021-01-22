@@ -64,7 +64,7 @@ def make_da_tacos_index(data_path):
                     'mfcc': (mfcc_path.replace(data_path + '/', ''), md5(mfcc_path)),
                     'tags': (tags_path.replace(data_path + '/', ''), md5(tags_path)) if subset == 'coveranalysis' else (None, None)
                 }
-                metadata[track_id] = meta[work_id][performance_id]
+            metadata[subset] = (path_subset.replace(data_path + '/', ''), md5(path_subset))
     da_tacos_index = {
         'version': '1.0.0',
         'tracks': tracks,
