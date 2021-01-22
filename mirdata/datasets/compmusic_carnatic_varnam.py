@@ -1,34 +1,38 @@
 # -*- coding: utf-8 -*-
-"""Saraga Dataset Loader
+"""CompMusic Carnatic Varnam Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
-    This dataset contains time aligned melody, rhythm and structural annotations of Carnatic Music tracks, extracted
-    from the large open Indian Art Music corpora of CompMusic.
+    Carnatic varnam dataset is a collection of 28 solo vocal recordings, recorded for our research on intonation
+    analysis of Carnatic raagas. The collection has the audio recordings, taala cycle annotations and notations in a
+    machine readable format.
 
-    The dataset contains the following manual annotations referring to audio files:
+    **Audio music content**
+    They feature 7 varnams in 7 rāgas sung by 5 young professional singers who received training for more than 15 years.
+    They are all set to Adi taala. Measuring the intonation variations require absolutely clean pitch contours. For
+    this, all the varṇaṁs are recorded without accompanying instruments, except the drone.
 
-    - Section and tempo annotations stored as start and end timestamps together with the name of the section and
-      tempo during the section (in a separate file)
-    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps. 
-    - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
-      ({S, r, R, g, G, m, M, P, d, D, n, N}). 
-    - Audio features automatically extracted and stored: pitch and tonic.
-    - The annotations are stored in text files, named as the audio filename but with the respective extension at the
-      end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
+    **Taala annotations**
+    The recordings are annotated with taala cycles, each annotation marking the starting of a cycle. We have later
+    automatically divided each cycle into 8 equal parts. The annotations are made available as sonic visualizer
+    annotation layers. Each annotation is of the format m.n where m is the cycle number and n is the division within
+    the cycle. All m.1 annotations are manually done, whereas m.[2-8] are automatically labelled.
 
-    The dataset contains a total of 249 tracks.
-    A total of 168 tracks have multitrack audio.
+    **Notations**
+    The notations for 7 varnams are procured from an archive curated by Shivkumar, in word document format. They are
+    manually converted to a machine readable format (yaml). Each file is essentially a dictionary with section names
+    of the composition as keys. Each section is represented as a list of cycles. Each cycle in turn has a list of
+    divisions.
 
-    The files of this dataset are shared with the following license:
-    Creative Commons Attribution Non Commercial Share Alike 4.0 International
+    **Sections**
+    From the information inferred from both Taala and Notations, we have included Section annotations in this loader.
+    These sections refer to the typical Carnatic Varnam structure.
 
-    Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
-
-    For more information about the dataset as well as IAM and annotations, please refer to:
-    https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
-
+    **Possible uses of the dataset**
+    The distinct advantage of this dataset is the free availability of the audio content. Along with the annotations,
+    it can be used for melodic analyses: characterizing intonation, motif discovery and tonic identification. The
+    availability of a machine readable notation files allows the dataset to be used for audio-score alignment.
 """
 
 import numpy as np
@@ -44,18 +48,18 @@ from mirdata import core
 from mirdata import annotations
 
 BIBTEX = """
-@dataset{bozkurt_b_2018_4301737,
-  author       = {Bozkurt, B. and
-                  Srinivasamurthy, A. and
-                  Gulati, S. and
+@dataset{koduri_g_k_2014_1257118,
+  author       = {Koduri, G. K. and
+                  Ishwar, V. and
+                  Serrà, J. and
                   Serra, X.},
-  title        = {Saraga: research datasets of Indian Art Music},
-  month        = may,
-  year         = 2018,
+  title        = {Carnatic Varnam Dataset},
+  month        = feb,
+  year         = 2014,
   publisher    = {Zenodo},
-  version      = {1.5},
-  doi          = {10.5281/zenodo.4301737},
-  url          = {https://doi.org/10.5281/zenodo.4301737}
+  version      = {1.0},
+  doi          = {10.5281/zenodo.1257118},
+  url          = {https://doi.org/10.5281/zenodo.1257118}
 }
 """
 
@@ -69,7 +73,7 @@ REMOTES = {
 }
 
 LICENSE_INFO = (
-    "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+    "Creative Commons Attribution Non Commercial No Derivatives 4.0 International"
 )
 
 
@@ -94,7 +98,7 @@ DATA = core.LargeData("compmusic_carnatic_varnam_index.json", _load_metadata)
 
 
 class Track(core.Track):
-    """Saraga Track Carnatic class
+    """CompMusic Carnatic Varnam Track class
 
     Args:
         track_id (str): track id of the track
@@ -102,24 +106,14 @@ class Track(core.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        title (str): Title of the piece in the track
-        mbid (str): MusicBrainz ID of the track
-        album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
-        artists (list, dicts): list of dicts containing information of the featuring artists in the track
-        raaga (list, dict): list of dicts containing information about the raagas present in the track
-        form (list, dict): list of dicts containing information about the forms present in the track
-        work (list, dicts): list of dicts containing the work present in the piece, and its mbid
-        taala (list, dicts): list of dicts containing the talas present in the track and its uuid
-        concert (list, dicts): list of dicts containing the concert where the track is present and its mbid
+        tonic (float): float identifying the absolute tonic of the track
+        artist (str): string identifying the performing artist in the track
+        raaga (str): string identifying the raaga present in the track
 
     Cached Properties:
-        tonic (float): tonic annotation
-        pitch (F0Data): pitch annotation
-        pitch_vocal (F0Data): vocal pitch annotation
-        tempo (dict): tempo annotations
-        sama (BeatData): sama section annotations
+        taala (BeatData): taala annotations
+        notation (EventData): note notations in IAM solfège symbols representation
         sections (SectionData): track section annotations
-        phrases (SectionData): phrase annotations
 
     """
 
@@ -166,7 +160,11 @@ class Track(core.Track):
 
     @core.cached_property
     def notation(self):
-        return load_notation(self.notation_path)
+        return load_notation(self.notation_path, self.taala_path)
+
+    @core.cached_property
+    def sections(self):
+        return load_sections(self.notation_path, self.taala_path)
 
     @property
     def audio(self):
@@ -188,20 +186,19 @@ class Track(core.Track):
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            beat_data=[(self.sama, "sama")],
-            f0_data=[(self.pitch, "pitch"), (self.pitch_vocal, "pitch_vocal")],
+            beat_data=[(self.taala, "taala")],
             section_data=[(self.sections, "sections")],
-            event_data=[(self.phrases, "phrases")],
+            event_data=[(self.notation, "notation")],
             metadata={
-                "tonic": self.tonic,
-                "artist": self.artist,
+                "performer": self.artist,
                 "raaga": self.raaga,
+                "tonic": self.tonic
             },
         )
 
 
 def load_audio(audio_path):
-    """Load a Saraga Carnatic audio file.
+    """Load a CompMusic Carnatic Varnam audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -220,22 +217,13 @@ def load_audio(audio_path):
 
 
 def load_taala(taala_path):
-    """Load tempo from carnatic collection
+    """Load taala annotation
 
     Args:
         taala_path (str): Local path where the taala annotation is stored.
 
     Returns:
-
-        dict: Dictionary of tempo information with the following keys:
-
-            - tempo_apm: tempo in aksharas per minute (APM)
-            - tempo_bpm: tempo in beats per minute (BPM)
-            - sama_interval: median duration (in seconds) of one tāla cycle
-            - beats_per_cycle: number of beats in one cycle of the tāla
-            - subdivisions: number of aksharas per beat of the tāla
-
-
+        BeatData: taala annotation for track
     """
     if taala_path is None:
         return None
@@ -265,46 +253,116 @@ def load_taala(taala_path):
     return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
 
 
-def load_notation(notation_path):
-    """Load phrases
+def load_notation(notation_path, taala_path):
+    """Load notation (notes)
 
     Args:
-        phrases_path (str): Local path where the phrase annotation is stored.
+        notation_path (str): Local path where the phrase annotation is stored.
             If `None`, returns None.
+        taala_path (str): Local path where the taala annotation is stored.
 
     Returns:
-        EventData: phrases annotation for track
+        EventData: melodic notation for track
 
     """
     if notation_path is None:
         return None
+    if taala_path is None:
+        return None
 
     if not os.path.exists(notation_path):
         raise IOError("notation_path {} does not exist".format(notation_path))
+    if not os.path.exists(taala_path):
+        raise IOError("taala_path {} does not exist".format(taala_path))
 
-    sections = ['pallavi', 'anupallavi', 'muktayiswaram', 'charanam', 'chittiswaram']
     start_times = []
     end_times = []
     events = []
+
+    dom = minidom.parse(taala_path)
+    data = dom.getElementsByTagName('data')[0]
+    points = data.getElementsByTagName('dataset')[0].getElementsByTagName('point')
+    num_points = len(points)
+    fs = float(data.getElementsByTagName('model')[0].getAttribute('sampleRate'))
+
+    prev_timestamp = 0
+    for beat in range(num_points):
+        start_times.append(prev_timestamp)
+        end_times.append(float(points[beat].getAttribute('frame')) / fs)
+        prev_timestamp = float(points[beat].getAttribute('frame')) / fs
 
     with open(notation_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter='-')
         for row in reader:
             events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
 
-    events = [x for x in events if len(x) < 3 or x in sections]
-
-    sections_index = []
-    for i in sections:
-        sections_index.append(events.index(i))
+        thr = events.index('pallavi')  # Get notation
+        events = events[thr:]
+        events = [x for x in events if len(x) < 3]  # Remove keys
 
     return annotations.EventData(np.array([start_times, end_times]).T, events)
+
+
+def load_sections(notation_path, taala_path):
+    """Load secitons
+
+    Args:
+        notation_path (str): Local path where the phrase annotation is stored.
+            If `None`, returns None.
+        taala_path (str): Local path where the taala annotation is stored.
+
+    Returns:
+        SectionData: section annotation for track
+
+    """
+    if notation_path is None:
+        return None
+    if taala_path is None:
+        return None
+
+    if not os.path.exists(notation_path):
+        raise IOError("notation_path {} does not exist".format(notation_path))
+    if not os.path.exists(taala_path):
+        raise IOError("taala_path {} does not exist".format(taala_path))
+
+    start_times = []
+    end_times = []
+    events = []
+
+    dom = minidom.parse(taala_path)
+    data = dom.getElementsByTagName('data')[0]
+    points = data.getElementsByTagName('dataset')[0].getElementsByTagName('point')
+    num_points = len(points)
+    fs = float(data.getElementsByTagName('model')[0].getAttribute('sampleRate'))
+
+    prev_timestamp = 0
+    for beat in range(num_points):
+        start_times.append(prev_timestamp)
+        end_times.append(float(points[beat].getAttribute('frame')) / fs)
+        prev_timestamp = float(points[beat].getAttribute('frame')) / fs
+
+    intervals = []
+    section_labels = ['pallavi', 'anupallavi', 'muktayiswaram', 'charanam', 'chittiswaram']
+    with open(notation_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter='-')
+        for row in reader:
+            events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
+
+        section_indexes = []
+        for section in section_labels:
+            section_indexes.append(events.index(section))
+        section_indexes.append(len(end_times)-1)  # Add last index to section indexes
+
+        for i in np.arange(1, len(section_indexes)):
+            intervals.append([start_times[section_indexes[i-1]+1], end_times[section_indexes[i]-1]])
+
+    return annotations.SectionData(np.array(intervals), section_labels)
 
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The saraga_carnatic dataset
+    The compmusic_carnatic_varnam dataset
     """
 
     def __init__(self, data_home=None):
@@ -329,3 +387,7 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_notation)
     def load_notation(self, *args, **kwargs):
         return load_notation(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
