@@ -57,6 +57,14 @@ dali
    :inherited-members:
 
 
+da_tacos
+^^^^
+
+.. automodule:: mirdata.datasets.da_tacos
+   :members:
+   :inherited-members:
+
+
 giantsteps_key
 ^^^^^^^^^^^^^^
 
