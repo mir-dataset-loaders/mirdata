@@ -225,6 +225,7 @@ def _load_metadata(data_home):
             for performance_id in meta[work_id].keys():
                 track_id = subset + '#' + work_id + '#' + performance_id
                 metadata_index[track_id] = meta[work_id][performance_id]
+    metadata_index["data_home"] = data_home
     return metadata_index
 
 
