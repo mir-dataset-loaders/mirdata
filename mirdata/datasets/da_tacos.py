@@ -311,6 +311,7 @@ class Track(core.Track):
         """
         return jams_utils.jams_converter(
             metadata={
+                "duration": 0.0,
                 "work_id": self.work_id,
                 "performance_id": self.performance_id,
                 "subset": self.subset,
@@ -321,7 +322,7 @@ class Track(core.Track):
                 "key": self.key,
                 "madmom": self.madmom,
                 "mfcc": self.mfcc,
-                "tags": self.tags,
+                "tags": self.tags
             }
         )
 
@@ -584,7 +585,7 @@ class Dataset(core.Dataset):
         }
         return acousticbrainz_genre_data
 
-    def load_benchmark_tracks(self):
+    def benchmark_tracks(self):
         """Load from da_tacos dataset the benchmark subset tracks.
 
                 Returns:
@@ -593,7 +594,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("benchmark#")
 
-    def load_coveranalysis_tracks(self):
+    def coveranalysis_tracks(self):
         """Load from da_tacos dataset the coveranalysis subset tracks.
 
                 Returns:

@@ -20,6 +20,7 @@ CUSTOM_TEST_TRACKS = {
     "cante100": "008",
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
+    "da_tacos": "coveranalysis#W_163992#P_547131",
     "giantsteps_tempo": "113",
     "guitarset": "03_BN3-119-G_solo",
     "irmas": "1",
@@ -32,7 +33,7 @@ CUSTOM_TEST_TRACKS = {
     "salami": "2",
     "saraga_carnatic": "116_Bhuvini_Dasudane",
     "saraga_hindustani": "59_Bairagi",
-    "tinysol": "Fl-ord-C4-mf-N-T14d",
+    "tinysol": "Fl-ord-C4-mf-N-T14d"
 }
 
 REMOTE_DATASETS = {
