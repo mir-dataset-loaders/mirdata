@@ -53,6 +53,19 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
+    * - Da-tacos
+     - - chromagrams (crema, hpcp, cens)
+       - madmom features
+       - automatic extracted keys
+       - MFCC
+       - annotations: ✅
+     - - :ref:`lyrics`
+       - Vocal :ref:`notes`
+     - - benchmark 15000 tracks
+       - coveranalysis 10000 tracks
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
    * - Giantsteps key
      - - audio: ✅
        - annotations: ✅
