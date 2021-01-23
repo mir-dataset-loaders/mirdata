@@ -10002,8 +10002,10 @@
       ]
     }
   },
-  "metadata": [
-    "MTG-otmm_makam_recognition_dataset-f14c0d0/annotations.json",
-    "cef58197640db506d23d56d5c9393b59"
-  ]
+  "metadata": {
+    "annotation_metadata": [
+      "MTG-otmm_makam_recognition_dataset-f14c0d0/annotations.json",
+      "cef58197640db506d23d56d5c9393b59"
+    ]
+  }
 }

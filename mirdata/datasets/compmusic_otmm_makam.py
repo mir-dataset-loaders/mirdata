@@ -98,7 +98,7 @@ DATA = core.LargeData("otmm_makam_index.json", _load_metadata)
 
 
 class Track(core.Track):
-    """Saraga Track Carnatic class
+    """OTMM Makam Track class
 
     Args:
         track_id (str): track id of the track
@@ -146,7 +146,7 @@ class Track(core.Track):
             [self._data_home, self._track_paths["metadata"][0]]
         )
 
-        self.metadata_path = os.path.join(data_home, DATA.index["metadata"][0])
+        self.metadata_path = os.path.join(data_home, DATA.index["metadata"]["annotation_metadata"][0])
         metadata_annotations = DATA.metadata(self.metadata_path)[track_id]
         if metadata_annotations is not None:
             self.tonic = metadata_annotations['tonic']
@@ -156,7 +156,7 @@ class Track(core.Track):
         self._track_metadata = load_track_metadata(self.track_metadata_path)
         self.usul = (
             self._track_metadata['usul'][0]['attribute_key']
-            if "usul" in self._track_metadata.keys() is not None
+            if "usul" in self._track_metadata.keys() is not None and self._track_metadata['usul']
             else None
         )
         self.title = (
@@ -171,7 +171,7 @@ class Track(core.Track):
         )
         self.form = (
             self._track_metadata['form'][0]['attribute_key']
-            if "form" in self._track_metadata.keys() is not None
+            if "form" in self._track_metadata.keys() is not None and self._track_metadata['form']
             else None
         )
         self.artists = (
@@ -181,7 +181,7 @@ class Track(core.Track):
         )
         self.work = (
             self._track_metadata['works'][0]['title']
-            if "works" in self._track_metadata.keys() is not None
+            if "works" in self._track_metadata.keys() is not None and self._track_metadata['title']
             else None
         )
         self.instrumentation = (
@@ -207,6 +207,7 @@ class Track(core.Track):
                 "makam": self.makam,
                 "tonic": self.tonic,
                 "mbid": self.mbid,
+                "duration": self._track_metadata['duration'],
                 "metadata": self._track_metadata,
             },
         )
@@ -262,7 +263,7 @@ def load_track_metadata(track_metadata_path):
         return None
 
     if not os.path.exists(track_metadata_path):
-        raise IOError("melody_path {} does not exist".format(track_metadata_path))
+        raise IOError("track_metadata_path {} does not exist".format(track_metadata_path))
 
     with open(track_metadata_path) as r:
         metadata = json.load(r)
@@ -273,14 +274,14 @@ def load_track_metadata(track_metadata_path):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The saraga_carnatic dataset
+    The compmusic_otmm_makam dataset
     """
 
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
             index=DATA.index,
-            name="saraga_carnatic",
+            name="compmusic_otmm_makam",
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
