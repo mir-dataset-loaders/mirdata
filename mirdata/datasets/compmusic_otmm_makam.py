@@ -4,7 +4,7 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    This repository hosts the dataset designed to test makam recognition methodologies on Ottoman-Turkish makam music.
+    This dataset is designed to test makam recognition methodologies on Ottoman-Turkish makam music.
     It is composed of 50 recording from each of the 20 most common makams in CompMusic Project's Dunya Ottoman-Turkish
     Makam Music collection. Currently the dataset is the largest makam recognition dataset.
 
@@ -106,24 +106,19 @@ class Track(core.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        title (str): Title of the piece in the track
+        makam (str): string referring to the makam represented in the track
+        tonic (float): tonic annotation
         mbid (str): MusicBrainz ID of the track
-        album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
+        title (str): Title of the piece in the track
+        mb_url (str): MusicBrainz link of the track
         artists (list, dicts): list of dicts containing information of the featuring artists in the track
-        raaga (list, dict): list of dicts containing information about the raagas present in the track
         form (list, dict): list of dicts containing information about the forms present in the track
-        work (list, dicts): list of dicts containing the work present in the piece, and its mbid
-        taala (list, dicts): list of dicts containing the talas present in the track and its uuid
-        concert (list, dicts): list of dicts containing the concert where the track is present and its mbid
+        work (str): string representing the work present in the piece
+        usul (str): string representing the usul present in the piece
+        instrumentation (str): string representing the instrumentation line-up in the piece
 
     Cached Properties:
-        tonic (float): tonic annotation
         pitch (F0Data): pitch annotation
-        pitch_vocal (F0Data): vocal pitch annotation
-        tempo (dict): tempo annotations
-        sama (BeatData): sama section annotations
-        sections (SectionData): track section annotations
-        phrases (SectionData): phrase annotations
 
     """
 
