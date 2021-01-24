@@ -10,7 +10,8 @@ def test_track():
 
     default_trackid = "59_Bairagi"
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track(default_trackid, data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "59_Bairagi",
@@ -31,97 +32,6 @@ def test_track():
         + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.mphrases-manual.txt",
         "metadata_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
         + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.json",
-        "album_artists": [
-            {"mbid": "653fa2f8-85f8-4829-871f-7c2506ea9b48", "name": "Ajoy Chakrabarty"}
-        ],
-        "artists": [
-            {
-                "instrument": {
-                    "mbid": "d92884b7-ee0c-46d5-96f3-918196ba8c5b",
-                    "name": "Voice",
-                },
-                "attributes": "lead vocals",
-                "lead": True,
-                "artist": {
-                    "mbid": "653fa2f8-85f8-4829-871f-7c2506ea9b48",
-                    "name": "Ajoy Chakrabarty",
-                },
-            },
-            {
-                "instrument": {
-                    "mbid": "c43c7647-077d-4d60-a01b-769de71b82f2",
-                    "name": "Harmonium",
-                },
-                "attributes": "",
-                "lead": False,
-                "artist": {
-                    "mbid": "afbb34e8-1f87-4dd4-81ec-b6145af4d72f",
-                    "name": "Paromita Mukherjee",
-                },
-            },
-            {
-                "instrument": {
-                    "mbid": "18e6998b-e53b-415b-b484-d3ac286da99d",
-                    "name": "Tabla",
-                },
-                "attributes": "",
-                "lead": False,
-                "artist": {
-                    "mbid": "beee80e6-aa99-451c-9edb-dcda8c2fce8a",
-                    "name": "Indranil Bhaduri",
-                },
-            },
-        ],
-        "forms": [
-            {
-                "common_name": "Khayal",
-                "uuid": "7ed81b92-aea6-4f4b-bffb-c12d80012d37",
-                "name": "Khyāl",
-            }
-        ],
-        "layas": [
-            {
-                "common_name": "Vilambit",
-                "uuid": "ee58d24a-60aa-4b16-bfcf-edd105118738",
-                "name": "Vilaṁbit",
-            }
-        ],
-        "mbid": "b71c2774-2532-4692-8761-5452e2a83118",
-        "raags": [
-            {
-                "common_name": "Bairagi",
-                "uuid": "b143adaa-f1a6-4de4-8985-a5bd35e96279",
-                "name": "Bairāgi",
-            }
-        ],
-        "release": [
-            {
-                "mbid": "ae0f2366-9a4f-4534-9376-ac123e881f64",
-                "title": "Geetinandan : Part-3",
-            }
-        ],
-        "taals": [
-            {
-                "common_name": "Ektaal",
-                "uuid": "7cb20903-5f64-4f15-8713-2fb4fcca2b5b",
-                "name": "ēktāl",
-            },
-            {
-                "common_name": "Ektaal",
-                "uuid": "7cb20903-5f64-4f15-8713-2fb4fcca2b5b",
-                "name": "ēktāl",
-            },
-        ],
-        "works": [
-            {
-                "mbid": "b8925ff6-9c8f-4184-8fc8-d358cfdea79b",
-                "title": "Mere Maname Baso Ram Abhiram Puran Ho Sab Kaam",
-            },
-            {
-                "mbid": "d7a184c3-0187-4912-8708-8d12a4bd9b0a",
-                "title": "Bar Bar Har Gai",
-            },
-        ],
     }
 
     expected_property_types = {
@@ -132,6 +42,7 @@ def test_track():
         "sama": annotations.BeatData,
         "sections": annotations.SectionData,
         "tonic": float,
+        "metadata": dict,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -144,7 +55,8 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track("59_Bairagi")
     jam = track.to_jams()
 
     assert jam["sandbox"].tonic == 138.591315
@@ -196,7 +108,8 @@ def test_to_jams():
 
 def test_load_tonic():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track("59_Bairagi")
     tonic_path = track.ctonic_path
     parsed_tonic = saraga_hindustani.load_tonic(tonic_path)
     assert parsed_tonic == 138.591315
@@ -205,7 +118,8 @@ def test_load_tonic():
 
 def test_load_pitch():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track("59_Bairagi")
     pitch_path = track.pitch_path
     parsed_pitch = saraga_hindustani.load_pitch(pitch_path)
 
@@ -251,7 +165,8 @@ def test_load_pitch():
 
 def test_load_sama():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track("59_Bairagi")
     sama_path = track.sama_path
     parsed_sama = saraga_hindustani.load_sama(sama_path)
 
@@ -268,7 +183,7 @@ def test_load_sama():
     assert saraga_hindustani.load_sama(None) is None
 
     # Test empty sama
-    track = saraga_hindustani.Track("71_Bilaskhani_Todi", data_home=data_home)
+    track = dataset.track("71_Bilaskhani_Todi")
     sama_path = track.sama_path
     parsed_empty_sama = saraga_hindustani.load_sama(sama_path)
     assert parsed_empty_sama is None
@@ -276,7 +191,8 @@ def test_load_sama():
 
 def test_load_sections():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track("59_Bairagi")
     sections_path = track.sections_path
     parsed_sections = saraga_hindustani.load_sections(sections_path)
 
@@ -302,7 +218,7 @@ def test_load_sections():
     assert saraga_hindustani.load_sections(None) is None
 
     # Test empty sections
-    track = saraga_hindustani.Track("71_Bilaskhani_Todi", data_home=data_home)
+    track = dataset.track("71_Bilaskhani_Todi")
     sections_path = track.sections_path
     parsed_empty_sections = saraga_hindustani.load_sections(sections_path)
     assert parsed_empty_sections is None
@@ -310,7 +226,8 @@ def test_load_sections():
 
 def test_load_phrases():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track("59_Bairagi")
     phrases_path = track.phrases_path
     parsed_phrases = saraga_hindustani.load_phrases(phrases_path)
 
@@ -334,7 +251,7 @@ def test_load_phrases():
     assert saraga_hindustani.load_phrases(None) is None
 
     # Test phrases with no information
-    track = saraga_hindustani.Track("71_Bilaskhani_Todi", data_home=data_home)
+    track = dataset.track("71_Bilaskhani_Todi")
     phrases_path = track.phrases_path
     parsed_phrases_add = saraga_hindustani.load_phrases(phrases_path)
     assert parsed_phrases_add.events == ["rg", ""]
@@ -342,7 +259,8 @@ def test_load_phrases():
 
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track("59_Bairagi")
     tempo_path = track.tempo_path
     parsed_tempo = saraga_hindustani.load_tempo(tempo_path)
 
@@ -383,9 +301,10 @@ def test_load_tempo():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track("59_Bairagi")
     metadata_path = track.metadata_path
-    parsed_metadata = saraga_hindustani._load_metadata(metadata_path)
+    parsed_metadata = saraga_hindustani.load_metadata(metadata_path)
 
     assert parsed_metadata["title"] == "Bairagi"
     assert parsed_metadata["raags"] == [
@@ -477,14 +396,12 @@ def test_load_metadata():
             "name": "Vilaṁbit",
         }
     ]
-    assert (
-        parsed_metadata["data_home"] == "tests/resources/mir_datasets/saraga_hindustani"
-    )
 
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    track = saraga_hindustani.Track("59_Bairagi", data_home=data_home)
+    dataset = saraga_hindustani.Dataset(data_home)
+    track = dataset.track("59_Bairagi")
     audio_path = track.audio_path
     audio, sr = saraga_hindustani.load_audio(audio_path)
 

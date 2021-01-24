@@ -64,29 +64,7 @@ Visit http://mac.citi.sinica.edu.tw/ikala/ for more details.
 """
 
 
-def _load_metadata(data_home):
-    id_map_path = os.path.join(data_home, "id_mapping.txt")
-    if not os.path.exists(id_map_path):
-        logging.info(
-            "Metadata file {} not found.".format(id_map_path)
-            + "You can download the metadata file for ikala by running ikala.download"
-        )
-        return None
-
-    with open(id_map_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        singer_map = {}
-        for line in reader:
-            if line[0] == "singer":
-                continue
-            singer_map[line[1]] = line[0]
-
-    singer_map["data_home"] = data_home
-
-    return singer_map
-
-
-DATA = core.LargeData("ikala_index.json", _load_metadata)
+DATA = core.LargeData("ikala_index.json")
 
 
 class Track(core.Track):
@@ -110,27 +88,20 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in iKala".format(track_id))
+    def __init__(
+        self, track_id, data_home, dataset_name, index, metadata,
+    ):
+        super().__init__(
+            track_id, data_home, dataset_name, index, metadata,
+        )
 
-        self.track_id = track_id
-
-        metadata = DATA.metadata(data_home)
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
         self.f0_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
         self.lyrics_path = os.path.join(self._data_home, self._track_paths["lyrics"][0])
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.song_id = track_id.split("_")[0]
         self.section = track_id.split("_")[1]
-
-        if metadata is not None and self.song_id in metadata:
-            self.singer_id = metadata[self.song_id]
-        else:
-            self.singer_id = None
+        self.singer_id = self._track_metadata.get(self.song_id)
 
     @core.cached_property
     def f0(self) -> Optional[annotations.F0Data]:
@@ -320,6 +291,28 @@ class Dataset(core.Dataset):
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+        id_map_path = os.path.join(self.data_home, "id_mapping.txt")
+        if not os.path.exists(id_map_path):
+            logging.info(
+                "Metadata file {} not found.".format(id_map_path)
+                + "You can download the metadata file for ikala by running ikala.download"
+            )
+            return None
+
+        with open(id_map_path, "r") as fhandle:
+            reader = csv.reader(fhandle, delimiter="\t")
+            singer_map = {}
+            for line in reader:
+                if line[0] == "singer":
+                    continue
+                singer_map[line[1]] = line[0]
+
+        singer_map["data_home"] = self.data_home
+
+        return singer_map
 
     @core.copy_docs(load_vocal_audio)
     def load_vocal_audio(self, *args, **kwargs):

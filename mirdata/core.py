@@ -5,8 +5,9 @@ import json
 import os
 import random
 import types
-import numpy as np
 from typing import Any
+
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import validate
@@ -146,6 +147,10 @@ class Dataset(object):
 
         return repr_string
 
+    @cached_property
+    def _metadata(self):
+        return None
+
     @property
     def default_path(self):
         """Get the default path for the dataset
@@ -172,7 +177,9 @@ class Dataset(object):
         if self._track_object is None:
             raise NotImplementedError
         else:
-            return self._track_object(track_id, self.data_home)
+            return self._track_object(
+                track_id, self.data_home, self.name, self._index, self._metadata
+            )
 
     def load_tracks(self):
         """Load all tracks in the dataset
@@ -270,6 +277,44 @@ class Track(object):
     See the docs for each dataset loader's Track class for details
 
     """
+
+    def __init__(
+        self, track_id, data_home, dataset_name, index, metadata=None,
+    ):
+        """Track init method. Sets boilerplate attributes, including:
+
+        - ``track_id``
+        - ``_dataset_name``
+        - ``_data_home``
+        - ``_track_paths``
+        - ``_track_metadata``
+
+        Args:
+            track_id (str): track id
+            data_home (str): path where mirdata will look for the dataset
+            dataset_name (str): the identifier of the dataset
+            index (dict): the dataset's file index
+                Typically accessed via the .index attribute of a LargeData object
+            metadata (dict or None): a dictionary of metadata or None
+    
+        """
+        if track_id not in index["tracks"]:
+            raise ValueError(
+                "{} is not a valid track_id in {}".format(track_id, dataset_name)
+            )
+
+        self.track_id = track_id
+        self._dataset_name = dataset_name
+
+        self._data_home = data_home
+        self._track_paths = index["tracks"][track_id]
+
+        if metadata and track_id in metadata:
+            self._track_metadata = metadata[track_id]
+        elif metadata:
+            self._track_metadata = metadata
+        else:
+            self._track_metadata = {}
 
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]
@@ -449,16 +494,12 @@ def none_path_join(partial_path_list):
 
 
 class LargeData(object):
-    def __init__(self, index_file, metadata_load_fn=None, remote_index=None):
+    def __init__(self, index_file, remote_index=None):
         """Object which loads and caches large data the first time it's accessed.
 
         Args:
             index_file: str
                 File name of checksum index file to be passed to `load_json_index`
-            metadata_load_fn: function
-                Function which returns a metadata dictionary.
-                If None, assume the dataset has no metadata. When the
-                `metadata` attribute is called, raises a NotImplementedError
 
         Cached Properties:
             index (dict): dataset index
@@ -466,7 +507,6 @@ class LargeData(object):
         """
         self._metadata = None
         self.index_file = index_file
-        self.metadata_load_fn = metadata_load_fn
         self.remote_index = remote_index
 
     @cached_property
@@ -481,22 +521,3 @@ class LargeData(object):
                 download_utils.downloader(path_indexes, remotes=self.remote_index)
         return load_json_index(self.index_file)
 
-    def metadata(self, data_home):
-        """Dataset metadata
-
-        Args:
-            data_home (str): path where the dataset lives
-
-        Raises:
-            NotImplementedError: if self.metadata_load_fn is not set
-
-        Returns:
-            Object: data loaded by self.metadata_load_fn
-
-        """
-        if self.metadata_load_fn is None:
-            raise NotImplementedError
-
-        if self._metadata is None or self._metadata["data_home"] != data_home:
-            self._metadata = self.metadata_load_fn(data_home)
-        return self._metadata

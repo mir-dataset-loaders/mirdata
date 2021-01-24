@@ -28,6 +28,7 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core, annotations
 
+NAME = NAME
 
 # -- Add any relevant citations here
 BIBTEX = """
@@ -101,28 +102,27 @@ class Track(core.Track):
         # -- Add any of the dataset specific attributes here
 
     """
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
-            raise ValueError(
-                '{} is not a valid track ID in Example'.format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
-
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        
+        # -- this sets the following attributes:
+        # -- * track_id
+        # -- * _dataset_name
+        # -- * _data_home
+        # -- * _track_paths
+        # -- * _track_metadata
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name=dataset_name,
+            index=index,
+            metadata=metadata,
+        )
+        
         # -- add any dataset specific attributes here
         self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths['annotation'][0])
-
-        # -- if the user doesn't have a metadata file, load None
-        self._metadata = DATA.metadata(data_home)
-        if self._metadata is not None and track_id in self._metadata:
-            self.some_metadata = self._metadata[track_id]['some_metadata']
-        else:
-            self.some_metadata = None
 
     # -- `annotation` will behave like an attribute, but it will only be loaded
     # -- and saved when someone accesses it. Useful when loading slightly
@@ -257,7 +257,7 @@ class Dataset(core.Dataset):
         super().__init__(
             data_home,
             index=DATA.index,
-            name="Example",
+            name=NAME,
             track_object=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,

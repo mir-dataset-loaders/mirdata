@@ -112,14 +112,12 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in Example".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self, track_id, data_home, dataset_name, index, metadata,
+    ):
+        super().__init__(
+            track_id, data_home, dataset_name, index, metadata,
+        )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
