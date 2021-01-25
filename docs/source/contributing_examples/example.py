@@ -28,8 +28,6 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core, annotations
 
-NAME = NAME
-
 # -- Add any relevant citations here
 BIBTEX = """
 @article{article-minimal,
@@ -66,26 +64,7 @@ LICENSE_INFO = """
 The dataset's license information goes here.
 """
 
-# -- change this to load any top-level metadata
-## delete this function if you don't have global metadata
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, 'example_metadta.csv')
-    if not os.path.exists(metadata_path):
-        logging.info('Metadata file {} not found.'.format(metadata_path))
-        return None
-
-    # load metadata however makes sense for your dataset
-    metadata_path = os.path.join(data_home, 'example_metadata.json')
-    with open(metadata_path, 'r') as fhandle:
-        metadata = json.load(fhandle)
-
-    metadata['data_home'] = data_home
-
-    return metadata
-
-
-DATA = core.LargeData('example_index.json', _load_metadata)
-# DATA = core.LargeData('example_index.json')  ## use this if your dataset has no metadata
+DATA = core.LargeData('example_index.json')
 
 
 class Track(core.Track):
@@ -275,6 +254,19 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_annotation)
     def load_annotation(self, *args, **kwargs):
         return load_annotation(*args, **kwargs)
+
+    # -- if your dataset has a top-level metadata file, write a loader for it here
+    # -- you do not have to include this function if there is no metadata 
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, 'example_metadta.csv')
+
+        # load metadata however makes sense for your dataset
+        metadata_path = os.path.join(data_home, 'example_metadata.json')
+        with open(metadata_path, 'r') as fhandle:
+            metadata = json.load(fhandle)
+
+        return metadata
 
     # -- if your dataset needs to overwrite the default download logic, do it here.
     # -- this function is usually not necessary unless you need very custom download logic

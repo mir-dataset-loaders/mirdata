@@ -200,8 +200,8 @@ You may find these examples useful as references:
 * `A simple, fully downloadable dataset <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py>`_
 * `A dataset which is partially downloadable <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/beatles.py>`_
 * `A dataset with restricted access data <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/medleydb_melody.py#L33>`_
-* `A dataset which uses global metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
-* `A dataset which does not use global metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
+* `A dataset which uses dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
+* `A dataset which does not use dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
 * `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
 * `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
 
@@ -530,9 +530,10 @@ Track Attributes
 Custom track attributes should be global, track-level data.
 For some datasets, there is a separate, dataset-level metadata file
 with track-level metadata, e.g. as a csv. When a single file is needed
-for more than one track, we recommend using writing a ``_load_metadata`` method
-and passing it to a ``LargeData`` object, which is available globally throughout 
-the module to avoid loading the same file multiple times.
+for more than one track, we recommend using writing a ``_metadata`` cached property
+in the Dataset object (see the dataset module example code above). When this is specified,
+it will populate a tracks hidden `_track_metadata` field, which can be accessed from
+the Track object.
 
 Load methods vs Track properties
 --------------------------------
