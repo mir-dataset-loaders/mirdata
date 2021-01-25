@@ -160,10 +160,19 @@ class Track(core.Track):
     """
 
     def __init__(
-        self, track_id, data_home, dataset_name, index, metadata,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
     ):
         super().__init__(
-            track_id, data_home, dataset_name, index, metadata,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
 
         self.path = core.none_path_join([self._data_home, self._track_paths["data"][0]])
@@ -363,7 +372,10 @@ class Dataset(core.Dataset):
     """
 
     def __init__(
-        self, data_home=None, remote_index=None, remote_index_name=None,
+        self,
+        data_home=None,
+        remote_index=None,
+        remote_index_name=None,
     ):
         if remote_index and remote_index_name:
             data = core.LargeData(remote_index_name, remote_index=remote_index)

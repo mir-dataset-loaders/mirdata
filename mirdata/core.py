@@ -279,7 +279,12 @@ class Track(object):
     """
 
     def __init__(
-        self, track_id, data_home, dataset_name, index, metadata=None,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata=None,
     ):
         """Track init method. Sets boilerplate attributes, including:
 
@@ -296,7 +301,7 @@ class Track(object):
             index (dict): the dataset's file index
                 Typically accessed via the .index attribute of a LargeData object
             metadata (dict or None): a dictionary of metadata or None
-    
+
         """
         if track_id not in index["tracks"]:
             raise ValueError(

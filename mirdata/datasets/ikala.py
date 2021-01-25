@@ -89,10 +89,19 @@ class Track(core.Track):
     """
 
     def __init__(
-        self, track_id, data_home, dataset_name, index, metadata,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
     ):
         super().__init__(
-            track_id, data_home, dataset_name, index, metadata,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
 
         self.f0_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
@@ -269,7 +278,9 @@ def load_lyrics(fhandle: TextIO) -> annotations.LyricData:
             pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T, lyrics, pronunciations,
+        np.array([start_times, end_times]).T,
+        lyrics,
+        pronunciations,
     )
     return lyrics_data
 
