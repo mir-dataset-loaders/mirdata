@@ -83,7 +83,7 @@ def copy_docs(original):
 
 
 class Dataset(object):
-    """mirdata Dataset object
+    """mirdata Dataset class
 
     Attributes:
         data_home (str): path where mirdata will look for the dataset
@@ -100,7 +100,7 @@ class Dataset(object):
         data_home=None,
         index=None,
         name=None,
-        track_object=None,
+        track_class=None,
         bibtex=None,
         remotes=None,
         download_info=None,
@@ -112,7 +112,7 @@ class Dataset(object):
             data_home (str or None): path where mirdata will look for the dataset
             index (dict or None): the dataset's file index
             name (str or None): the identifier of the dataset
-            track_object (mirdata.core.Track or None): an uninstantiated Track object
+            track_class (mirdata.core.Track or None): a Track class
             bibtex (str or None): dataset citation/s in bibtex format
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
@@ -122,7 +122,7 @@ class Dataset(object):
         self.name = name
         self.data_home = self.default_path if data_home is None else data_home
         self._index = index
-        self._track_object = track_object
+        self._track_class = track_class
         self.bibtex = bibtex
         self.remotes = remotes
         self._download_info = download_info
@@ -131,7 +131,7 @@ class Dataset(object):
 
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
-        self.track.__doc__ = self._track_object.__doc__  # set the docstring
+        self.track.__doc__ = self._track_class.__doc__  # set the docstring
 
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
@@ -140,7 +140,7 @@ class Dataset(object):
         repr_string += "Call the .cite method for bibtex citations.\n"
         repr_string += "-" * MAX_STR_LEN
         repr_string += "\n\n\n"
-        if self._track_object is not None:
+        if self._track_class is not None:
             repr_string += self.track.__doc__
             repr_string += "-" * MAX_STR_LEN
             repr_string += "\n"
@@ -171,13 +171,13 @@ class Dataset(object):
             track_id (str): track id of the track
 
         Returns:
-           Track: an instance of this dataset's Track object
+           Track: a Track object
 
         """
-        if self._track_object is None:
+        if self._track_class is None:
             raise NotImplementedError
         else:
-            return self._track_object(
+            return self._track_class(
                 track_id, self.data_home, self.name, self._index, self._metadata
             )
 
@@ -189,7 +189,7 @@ class Dataset(object):
                 {`track_id`: track data}
 
         Raises:
-            NotImplementedError: If the dataset does not support Track objects
+            NotImplementedError: If the dataset does not support Tracks
 
         """
         return {track_id: self.track(track_id) for track_id in self.track_ids}
@@ -520,4 +520,3 @@ class LargeData(object):
                 path_indexes = os.path.join(working_dir, "datasets/indexes")
                 download_utils.downloader(path_indexes, remotes=self.remote_index)
         return load_json_index(self.index_file)
-

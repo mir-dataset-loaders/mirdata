@@ -199,7 +199,7 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="rwc_jazz",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,

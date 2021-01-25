@@ -60,7 +60,7 @@ the ``please-do-not-edit`` flag is used.
 1. Create an index
 ------------------
 
-``mirdata``'s structure relies on ``JSON`` objects called `indexes`. Indexes contain information about the structure of the
+``mirdata``'s structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
 dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
@@ -222,7 +222,7 @@ To finish your contribution, include tests that check the integrity of your load
     * For each audio/annotation file, reduce the audio length to 1-2 seconds and remove all but a few of the annotations.
     * If the dataset has a metadata file, reduce the length to a few lines.
 
-2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other 
+2. Test all of the dataset specific code, e.g. the public attributes of the Track class, the load functions and any other 
    custom functions you wrote. See the `tests folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/tests>`_ for reference.
    If your loader has a custom download function, add tests similar to 
    `this loader <https://github.com/mir-dataset-loaders/mirdata/blob/master/tests/test_groove_midi.py#L96>`_.
@@ -231,7 +231,7 @@ To finish your contribution, include tests that check the integrity of your load
 
 
 .. note::  We have written automated tests for all loader's ``cite``, ``download``, ``validate``, ``load``, ``track_ids`` functions, 
-           as well as some basic edge cases of the ``Track`` object, so you don't need to write tests for these!
+           as well as some basic edge cases of the ``Track`` class, so you don't need to write tests for these!
 
 
 .. _test_file:
@@ -531,9 +531,9 @@ Custom track attributes should be global, track-level data.
 For some datasets, there is a separate, dataset-level metadata file
 with track-level metadata, e.g. as a csv. When a single file is needed
 for more than one track, we recommend using writing a ``_metadata`` cached property
-in the Dataset object (see the dataset module example code above). When this is specified,
+in the Dataset class (see the dataset module example code above). When this is specified,
 it will populate a tracks hidden `_track_metadata` field, which can be accessed from
-the Track object.
+the Track class.
 
 Load methods vs Track properties
 --------------------------------
@@ -554,7 +554,7 @@ Custom Decorators
 
 cached_property
 ---------------
-This is used primarily for Track objects.
+This is used primarily for Track classes.
 
 This decorator causes an Object's function to behave like
 an attribute (aka, like the ``@property`` decorator), but caches
@@ -563,14 +563,14 @@ for data which is relatively large and loaded from files.
 
 docstring_inherit
 -----------------
-This decorator is used for children of the Dataset object, and
+This decorator is used for children of the Dataset class, and
 copies the Attributes from the parent class to the docstring of the child.
 This gives us clear and complete docs without a lot of copy-paste.
 
 copy_docs
 ---------
 This decorator is used mainly for a dataset's ``load_`` functions, which
-are attached to a loader's Dataset object. The attached function is identical,
+are attached to a loader's Dataset class. The attached function is identical,
 and this decorator simply copies the docstring from another function.
 
 coerce_to_bytes_io/coerce_to_string_io

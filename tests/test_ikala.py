@@ -138,4 +138,3 @@ def test_load_metadata():
     assert metadata["data_home"] == data_home
     assert metadata["10161"] == "1"
     assert metadata["21025"] == "1"
-

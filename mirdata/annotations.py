@@ -13,7 +13,7 @@ class Annotation(object):
 
 
 class BeatData(Annotation):
-    """BeatData object
+    """BeatData class
 
     Attributes:
         times (np.ndarray): array of time stamps (as floats) in seconds
@@ -34,7 +34,7 @@ class BeatData(Annotation):
 
 
 class SectionData(Annotation):
-    """SectionData object
+    """SectionData class
 
     Attributes:
         intervals (np.ndarray): (n x 2) array of intervals
@@ -56,7 +56,7 @@ class SectionData(Annotation):
 
 
 class NoteData(Annotation):
-    """NoteData object
+    """NoteData class
 
     Attributes:
         intervals (np.ndarray): (n x 2) array of intervals
@@ -82,7 +82,7 @@ class NoteData(Annotation):
 
 
 class ChordData(Annotation):
-    """ChordData object
+    """ChordData class
 
     Attributes:
         intervals (np.ndarray or None): (n x 2) array of intervals
@@ -108,7 +108,7 @@ class ChordData(Annotation):
 
 
 class F0Data(Annotation):
-    """F0Data object
+    """F0Data class
 
     Attributes:
         times (np.ndarray): array of time stamps (as floats) in seconds
@@ -134,7 +134,7 @@ class F0Data(Annotation):
 
 
 class MultiF0Data(Annotation):
-    """MultiF0Data object
+    """MultiF0Data class
 
     Attributes:
         times (np.ndarray): array of time stamps (as floats) in seconds
@@ -159,7 +159,7 @@ class MultiF0Data(Annotation):
 
 
 class KeyData(Annotation):
-    """KeyData object
+    """KeyData class
 
     Attributes:
         intervals (np.ndarray): (n x 2) array of intervals
@@ -180,7 +180,7 @@ class KeyData(Annotation):
 
 
 class LyricData(Annotation):
-    """LyricData object
+    """LyricData class
 
     Attributes:
         intervals (np.ndarray): (n x 2) array of intervals
@@ -204,7 +204,7 @@ class LyricData(Annotation):
 
 
 class TempoData(Annotation):
-    """TempoData object
+    """TempoData class
 
     Attributes:
         intervals (np.ndarray): (n x 2) array of intervals
@@ -230,7 +230,7 @@ class TempoData(Annotation):
 
 
 class EventData(Annotation):
-    """TempoData object
+    """TempoData class
 
     Attributes:
         intervals (np.ndarray): (n x 2) array of intervals

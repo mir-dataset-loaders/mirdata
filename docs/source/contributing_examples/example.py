@@ -175,7 +175,7 @@ class MultiTrack(core.MultiTrack):
         """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
         return load_audio(self.audio_path)
 
-    # -- multitrack objects are themselves Tracks, and also need a to_jams method
+    # -- multitrack classes are themselves Tracks, and also need a to_jams method
     # -- for any mixture-level annotations
     def to_jams(self):
         """Jams: the track's data in jams format"""
@@ -237,14 +237,14 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name=NAME,
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
-    # -- Copy any loaders you wrote that should be part of the Dataset object
+    # -- Copy any loaders you wrote that should be part of the Dataset class
     # -- use this core.copy_docs decorator to copy the docs from the original
     # -- load_ function
     @core.copy_docs(load_audio)

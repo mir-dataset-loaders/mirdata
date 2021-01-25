@@ -34,7 +34,6 @@
 import numpy as np
 import os
 import json
-import logging
 import librosa
 import csv
 
@@ -502,7 +501,7 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="saraga_hindustani",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,

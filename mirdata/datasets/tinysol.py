@@ -184,7 +184,7 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="tinysol",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
