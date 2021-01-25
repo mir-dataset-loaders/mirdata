@@ -218,7 +218,9 @@ REMOTES = {
 
 def _load_metadata(data_home):
     metadata_index = {}
-    for subset in ["benchmark", "coveranalysis"]:
+    metadata_paths = []
+    subsets = ["benchmark", "coveranalysis"]
+    for subset in subsets:
         path_subset = os.path.join(
             data_home,
             "da-tacos_metadata",
@@ -226,10 +228,13 @@ def _load_metadata(data_home):
         )
         if not os.path.exists(path_subset):
             logging.info(
-                "Metadata file {} not found.".format(metadata_path)
+                "Metadata file {} not found.".format(path_subset)
                 + "You can download the metadata file by running download()"
             )
             return None
+        metadata_paths.append(path_subset)
+
+    for subset, path_subset in zip(subsets, metadata_paths):
         with open(path_subset) as f:
             meta = json.load(f)
         for work_id in meta.keys():
