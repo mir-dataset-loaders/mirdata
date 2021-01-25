@@ -218,11 +218,11 @@ REMOTES = {
 
 def _load_metadata(data_home):
     metadata_index = {}
-    for subset in ['benchmark', 'coveranalysis']:
+    for subset in ["benchmark", "coveranalysis"]:
         path_subset = os.path.join(
             data_home,
-            'da-tacos_metadata',
-            'da-tacos_' + subset + '_subset_metadata.json',
+            "da-tacos_metadata",
+            "da-tacos_" + subset + "_subset_metadata.json",
         )
         if not os.path.exists(path_subset):
             logging.info(
@@ -234,7 +234,7 @@ def _load_metadata(data_home):
             meta = json.load(f)
         for work_id in meta.keys():
             for performance_id in meta[work_id].keys():
-                track_id = subset + '#' + work_id + '#' + performance_id
+                track_id = subset + "#" + work_id + "#" + performance_id
                 metadata_index[track_id] = meta[work_id][performance_id]
     metadata_index["data_home"] = data_home
     return metadata_index
@@ -262,14 +262,14 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
+        if track_id not in DATA.index["tracks"]:
             raise ValueError(
                 "{} is not a valid track ID in da-tacos dataset".format(track_id)
             )
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
+        self._track_paths = DATA.index["tracks"][track_id]
         self.cens_path = os.path.join(self._data_home, self._track_paths["cens"][0])
         self.crema_path = os.path.join(self._data_home, self._track_paths["crema"][0])
         self.hpcp_path = os.path.join(self._data_home, self._track_paths["hpcp"][0])
@@ -281,15 +281,17 @@ class Track(core.Track):
         )
         # metadata
         metadata = DATA.metadata(data_home)
-        self._track_metadata = metadata[track_id] if track_id and metadata is not None in metadata else {}
+        self._track_metadata = (
+            metadata[track_id] if track_id and metadata is not None in metadata else {}
+        )
 
     @core.cached_property
     def subset(self) -> str:
-        return self.track_id.split('#')[0]
+        return self.track_id.split("#")[0]
 
     @core.cached_property
     def work_id(self) -> str:
-        return self.track_id.split('#')[1]
+        return self.track_id.split("#")[1]
 
     # alias of work_id
     @core.cached_property
@@ -298,7 +300,7 @@ class Track(core.Track):
 
     @core.cached_property
     def performance_id(self) -> str:
-        return self.track_id.split('#')[2]
+        return self.track_id.split("#")[2]
 
     @core.cached_property
     def metadata(self) -> dict:
@@ -367,7 +369,7 @@ def load_cens(path):
         np.array: cens features
 
     """
-    return dd.io.load(path)['chroma_cens']
+    return dd.io.load(path)["chroma_cens"]
 
 
 def load_crema(path):
@@ -380,7 +382,7 @@ def load_crema(path):
         np.array: crema features
 
     """
-    return dd.io.load(path)['crema']
+    return dd.io.load(path)["crema"]
 
 
 def load_hpcp(path):
@@ -393,7 +395,7 @@ def load_hpcp(path):
         np.array: hpcp features
 
     """
-    return dd.io.load(path)['hpcp']
+    return dd.io.load(path)["hpcp"]
 
 
 def load_key(path):
@@ -409,7 +411,7 @@ def load_key(path):
         {'key': 'C', 'scale': 'major', 'strength': 0.8449875116348267}
 
     """
-    return dd.io.load(path)['key_extractor']
+    return dd.io.load(path)["key_extractor"]
 
 
 def load_madmom(path):
@@ -507,7 +509,7 @@ def load_madmom(path):
         }
 
     """
-    return dd.io.load(path)['madmom_features']
+    return dd.io.load(path)["madmom_features"]
 
 
 def load_mfcc(path):
@@ -520,7 +522,7 @@ def load_mfcc(path):
         np.array: mfcc
 
     """
-    return dd.io.load(path)['mfcc_htk']
+    return dd.io.load(path)["mfcc_htk"]
 
 
 def load_tags(path):
@@ -550,7 +552,7 @@ def load_tags(path):
     if path is None:
         tags = None
     else:
-        tags = dd.io.load(path)['tags']
+        tags = dd.io.load(path)["tags"]
     return tags
 
 

@@ -25,18 +25,18 @@ def test_track():
     }
 
     expected_property_types = {
-        'cens': np.ndarray,
-        'crema': np.ndarray,
-        'hpcp': np.ndarray,
-        'key': dict,
-        'madmom': dict,
-        'metadata': dict,
-        'mfcc': np.ndarray,
-        'performance_id': str,
-        'subset': str,
-        'tags': list,
-        'work_id': str,
-        'label': str,
+        "cens": np.ndarray,
+        "crema": np.ndarray,
+        "hpcp": np.ndarray,
+        "key": dict,
+        "madmom": dict,
+        "metadata": dict,
+        "mfcc": np.ndarray,
+        "performance_id": str,
+        "subset": str,
+        "tags": list,
+        "work_id": str,
+        "label": str,
     }
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -116,18 +116,18 @@ def test_track():
     }
 
     expected_property_types = {
-        'cens': np.ndarray,
-        'crema': np.ndarray,
-        'hpcp': np.ndarray,
-        'key': dict,
-        'madmom': dict,
-        'metadata': dict,
-        'mfcc': np.ndarray,
-        'performance_id': str,
-        'subset': str,
-        'tags': list,
-        'work_id': str,
-        'label': str,
+        "cens": np.ndarray,
+        "crema": np.ndarray,
+        "hpcp": np.ndarray,
+        "key": dict,
+        "madmom": dict,
+        "metadata": dict,
+        "mfcc": np.ndarray,
+        "performance_id": str,
+        "subset": str,
+        "tags": list,
+        "work_id": str,
+        "label": str,
     }
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -209,9 +209,9 @@ def test_load_key():
 
     assert len(key_data.keys()) == 3
 
-    assert key_data['key'] == 'C'
-    assert key_data['scale'] == 'major'
-    assert key_data['strength'] == 0.9512807726860046
+    assert key_data["key"] == "C"
+    assert key_data["scale"] == "major"
+    assert key_data["strength"] == 0.9512807726860046
 
 
 def test_load_madmom():
