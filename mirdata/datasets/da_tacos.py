@@ -216,6 +216,12 @@ REMOTES = {
 
 
 def _load_metadata(data_home):
+    if not os.path.exists(metadata_path):
+        logging.info(
+            "Metadata file {} not found.".format(metadata_path)
+            + "You can download the metadata file by running download()"
+        )
+        return None
     metadata_index = {}
     for subset in ['benchmark', 'coveranalysis']:
         path_subset = os.path.join(
@@ -274,7 +280,7 @@ class Track(core.Track):
         )
         # metadata
         metadata = DATA.metadata(data_home)
-        self._track_metadata = metadata[track_id] if track_id in metadata else {}
+        self._track_metadata = metadata[track_id] if track_id and metadata is not None in metadata else {}
 
     @core.cached_property
     def subset(self) -> str:
