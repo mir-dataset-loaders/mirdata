@@ -33,7 +33,7 @@ CUSTOM_TEST_TRACKS = {
     "salami": "2",
     "saraga_carnatic": "116_Bhuvini_Dasudane",
     "saraga_hindustani": "59_Bairagi",
-    "tinysol": "Fl-ord-C4-mf-N-T14d"
+    "tinysol": "Fl-ord-C4-mf-N-T14d",
 }
 
 REMOTE_DATASETS = {

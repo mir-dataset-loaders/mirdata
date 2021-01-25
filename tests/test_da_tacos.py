@@ -14,20 +14,13 @@ def test_track():
     track = da_tacos.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        "cens_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5",
-        "crema_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5",
-        "hpcp_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_hpcp/W_163992_hpcp/P_547131_hpcp.h5",
-        "key_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_key/W_163992_key/P_547131_key.h5",
-        "madmom_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_madmom/W_163992_madmom/P_547131_madmom.h5",
-        "mfcc_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5",
-        "tags_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5",
+        "cens_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5",
+        "crema_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5",
+        "hpcp_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_hpcp/W_163992_hpcp/P_547131_hpcp.h5",
+        "key_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_key/W_163992_key/P_547131_key.h5",
+        "madmom_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_madmom/W_163992_madmom/P_547131_madmom.h5",
+        "mfcc_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5",
+        "tags_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5",
         "track_id": "coveranalysis#W_163992#P_547131",
     }
 
@@ -43,8 +36,7 @@ def test_track():
         'subset': str,
         'tags': list,
         'work_id': str,
-        'label': str
-
+        'label': str,
     }
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -68,8 +60,7 @@ def test_to_jams():
 
 
 def test_load_tags():
-    tags_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5"
+    tags_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5"
     tags_data = da_tacos.load_tags(tags_path)
 
     assert type(tags_data) == list
@@ -80,8 +71,7 @@ def test_load_tags():
 
 
 def test_load_cens():
-    cens_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5"
+    cens_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5"
     cens_data = da_tacos.load_cens(cens_path)
 
     assert type(cens_data) == np.ndarray
@@ -91,14 +81,15 @@ def test_load_cens():
 
 
 def test_load_crema():
-    crema_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5"
+    crema_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5"
     crema_data = da_tacos.load_crema(crema_path)
 
     assert type(crema_data) == np.ndarray
 
     assert crema_data.shape[0] == 15226
-    assert crema_data.shape[1] == 12# -*- coding: utf-8 -*-
+    assert crema_data.shape[1] == 12  # -*- coding: utf-8 -*-
+
+
 import sys
 
 import librosa
@@ -114,20 +105,13 @@ def test_track():
     track = da_tacos.Track(default_trackid, data_home=data_home)
 
     expected_attributes = {
-        "cens_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5",
-        "crema_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5",
-        "hpcp_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_hpcp/W_163992_hpcp/P_547131_hpcp.h5",
-        "key_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_key/W_163992_key/P_547131_key.h5",
-        "madmom_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_madmom/W_163992_madmom/P_547131_madmom.h5",
-        "mfcc_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5",
-        "tags_path":
-            "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5",
+        "cens_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5",
+        "crema_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5",
+        "hpcp_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_hpcp/W_163992_hpcp/P_547131_hpcp.h5",
+        "key_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_key/W_163992_key/P_547131_key.h5",
+        "madmom_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_madmom/W_163992_madmom/P_547131_madmom.h5",
+        "mfcc_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5",
+        "tags_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5",
         "track_id": "coveranalysis#W_163992#P_547131",
     }
 
@@ -143,8 +127,7 @@ def test_track():
         'subset': str,
         'tags': list,
         'work_id': str,
-        'label': str
-
+        'label': str,
     }
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -168,8 +151,7 @@ def test_to_jams():
 
 
 def test_load_tags():
-    tags_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5"
+    tags_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5"
     tags_data = da_tacos.load_tags(tags_path)
 
     assert type(tags_data) == list
@@ -180,8 +162,7 @@ def test_load_tags():
 
 
 def test_load_cens():
-    cens_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5"
+    cens_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5"
     cens_data = da_tacos.load_cens(cens_path)
 
     assert type(cens_data) == np.ndarray
@@ -191,8 +172,7 @@ def test_load_cens():
 
 
 def test_load_crema():
-    crema_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5"
+    crema_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5"
     crema_data = da_tacos.load_crema(crema_path)
 
     assert type(crema_data) == np.ndarray
@@ -202,8 +182,7 @@ def test_load_crema():
 
 
 def test_load_hpcp():
-    hpcp_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_hpcp/W_163992_hpcp/P_547131_hpcp.h5"
+    hpcp_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_hpcp/W_163992_hpcp/P_547131_hpcp.h5"
     hpcp_data = da_tacos.load_hpcp(hpcp_path)
 
     assert type(hpcp_data) == np.ndarray
@@ -213,8 +192,7 @@ def test_load_hpcp():
 
 
 def test_load_mfcc():
-    mfcc_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5"
+    mfcc_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5"
     mfcc_data = da_tacos.load_mfcc(mfcc_path)
 
     assert type(mfcc_data) == np.ndarray
@@ -224,8 +202,7 @@ def test_load_mfcc():
 
 
 def test_load_key():
-    key_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_key/W_163992_key/P_547131_key.h5"
+    key_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_key/W_163992_key/P_547131_key.h5"
     key_data = da_tacos.load_key(key_path)
 
     assert type(key_data) == dict
@@ -238,15 +215,9 @@ def test_load_key():
 
 
 def test_load_madmom():
-    madmom_path = \
-        "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_madmom/W_163992_madmom/P_547131_madmom.h5"
+    madmom_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_madmom/W_163992_madmom/P_547131_madmom.h5"
     madmom_data = da_tacos.load_madmom(madmom_path)
 
     assert type(madmom_data) == dict
 
     assert len(madmom_data.keys()) == 4
-
-
-
-
-
