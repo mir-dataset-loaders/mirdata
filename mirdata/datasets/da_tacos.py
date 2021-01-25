@@ -211,14 +211,18 @@ REMOTES = {
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_mfcc.zip?download=1",
         checksum="11371910cad7012daaa81a5fe9dfa1c0",
         destination_dir=".",
-    )
+    ),
 }
 
 
 def _load_metadata(data_home):
     metadata_index = {}
     for subset in ['benchmark', 'coveranalysis']:
-        path_subset = os.path.join(data_home, 'da-tacos_metadata', 'da-tacos_' + subset + '_subset_metadata.json')
+        path_subset = os.path.join(
+            data_home,
+            'da-tacos_metadata',
+            'da-tacos_' + subset + '_subset_metadata.json',
+        )
         with open(path_subset) as f:
             meta = json.load(f)
         for work_id in meta.keys():
@@ -265,7 +269,9 @@ class Track(core.Track):
         self.key_path = os.path.join(self._data_home, self._track_paths["key"][0])
         self.madmom_path = os.path.join(self._data_home, self._track_paths["madmom"][0])
         self.mfcc_path = os.path.join(self._data_home, self._track_paths["mfcc"][0])
-        self.tags_path = core.none_path_join([self._data_home, self._track_paths["tags"][0]])
+        self.tags_path = core.none_path_join(
+            [self._data_home, self._track_paths["tags"][0]]
+        )
         # metadata
         metadata = DATA.metadata(data_home)
         self._track_metadata = metadata[track_id] if track_id in metadata else {}
@@ -339,7 +345,7 @@ class Track(core.Track):
                 "key": self.key,
                 "madmom": self.madmom,
                 "mfcc": self.mfcc,
-                "tags": self.tags
+                "tags": self.tags,
             }
         )
 
@@ -347,11 +353,11 @@ class Track(core.Track):
 def load_cens(path):
     """Load da_tacos cens features from a file
 
-        Args:
-            path(str or file-like): File-like object or path to features file
+    Args:
+        path(str or file-like): File-like object or path to features file
 
-        Returns:
-            np.array: cens features
+    Returns:
+        np.array: cens features
 
     """
     return dd.io.load(path)['chroma_cens']
@@ -360,11 +366,11 @@ def load_cens(path):
 def load_crema(path):
     """Load da_tacos crema features from a file
 
-        Args:
-            path(str or file-like): File-like object or path to features file
+    Args:
+        path(str or file-like): File-like object or path to features file
 
-        Returns:
-            np.array: crema features
+    Returns:
+        np.array: crema features
 
     """
     return dd.io.load(path)['crema']
@@ -373,11 +379,11 @@ def load_crema(path):
 def load_hpcp(path):
     """Load da_tacos hpcp features from a file
 
-        Args:
-            path(str or file-like): File-like object or path to features file
+    Args:
+        path(str or file-like): File-like object or path to features file
 
-        Returns:
-            np.array: hpcp features
+    Returns:
+        np.array: hpcp features
 
     """
     return dd.io.load(path)['hpcp']
@@ -386,14 +392,14 @@ def load_hpcp(path):
 def load_key(path):
     """Load da_tacos key features from a file.
 
-        Args:
-            path(str or file-like): File-like object or path to features file
+    Args:
+        path(str or file-like): File-like object or path to features file
 
-        Returns:
-            dict: key
+    Returns:
+        dict: key
 
-        Examples:
-            {'key': 'C', 'scale': 'major', 'strength': 0.8449875116348267}
+    Examples:
+        {'key': 'C', 'scale': 'major', 'strength': 0.8449875116348267}
 
     """
     return dd.io.load(path)['key_extractor']
@@ -402,96 +408,96 @@ def load_key(path):
 def load_madmom(path):
     """Load da_tacos madmom features from a file
 
-        Args:
-            path(str or file-like): File-like object or path to features file
+    Args:
+        path(str or file-like): File-like object or path to features file
 
-        Returns:
-            dict: madmom features
+    Returns:
+        dict: madmom features
 
-        Examples:
-            {
-               "novfn":"array("[
-                  0.01775683,
-                  0.00553825,
-                  0.00302445,
-                  "...",
-                  0.0027212,
-                  0.00570413,
-                  0.01260976
-               ]")",
-               "onsets":"array("[
-                  47,
-                  116,
-                  187,
-                  ...
-                  11568,
-                  11610,
-                  11649
-               ]")",
-               "snovfn":"array("[
-                  0.,
-                  0.,
-                  0.,
-                  "...",
-                  0.,
-                  0.,
-                  0.
-               ]")",
-               "tempos":"array("[
-                  [
-                     5.94059406e+01,
-                     2.07677787e-01
-                  ],
-                  [
-                     1.20000000e+02,
-                     1.38685472e-01
-                  ],
-                  [
-                     2.40000000e+02,
-                     1.24457522e-01
-                  ],
-                  [
-                     4.76190476e+01,
-                     1.17567189e-01
-                  ],
-                  [
-                     7.89473684e+01,
-                     1.05035187e-01
-                  ],
-                  [
-                     6.81818182e+01,
-                     5.60316640e-02
-                  ],
-                  [
-                     4.44444444e+01,
-                     4.91360210e-02
-                  ],
-                  [
-                     5.26315789e+01,
-                     4.55353848e-02
-                  ],
-                  [
-                     4.28571429e+01,
-                     3.97281834e-02
-                  ],
-                  [
-                     9.52380952e+01,
-                     3.47324676e-02
-                  ],
-                  [
-                     1.01694915e+02,
-                     3.14065039e-02
-                  ],
-                  [
-                     4.02684564e+01,
-                     2.74462787e-02
-                  ],
-                  [
-                     1.57894737e+02,
-                     2.25603397e-02
-                  ]
-               ]")"
-            }
+    Examples:
+        {
+           "novfn":"array("[
+              0.01775683,
+              0.00553825,
+              0.00302445,
+              "...",
+              0.0027212,
+              0.00570413,
+              0.01260976
+           ]")",
+           "onsets":"array("[
+              47,
+              116,
+              187,
+              ...
+              11568,
+              11610,
+              11649
+           ]")",
+           "snovfn":"array("[
+              0.,
+              0.,
+              0.,
+              "...",
+              0.,
+              0.,
+              0.
+           ]")",
+           "tempos":"array("[
+              [
+                 5.94059406e+01,
+                 2.07677787e-01
+              ],
+              [
+                 1.20000000e+02,
+                 1.38685472e-01
+              ],
+              [
+                 2.40000000e+02,
+                 1.24457522e-01
+              ],
+              [
+                 4.76190476e+01,
+                 1.17567189e-01
+              ],
+              [
+                 7.89473684e+01,
+                 1.05035187e-01
+              ],
+              [
+                 6.81818182e+01,
+                 5.60316640e-02
+              ],
+              [
+                 4.44444444e+01,
+                 4.91360210e-02
+              ],
+              [
+                 5.26315789e+01,
+                 4.55353848e-02
+              ],
+              [
+                 4.28571429e+01,
+                 3.97281834e-02
+              ],
+              [
+                 9.52380952e+01,
+                 3.47324676e-02
+              ],
+              [
+                 1.01694915e+02,
+                 3.14065039e-02
+              ],
+              [
+                 4.02684564e+01,
+                 2.74462787e-02
+              ],
+              [
+                 1.57894737e+02,
+                 2.25603397e-02
+              ]
+           ]")"
+        }
 
     """
     return dd.io.load(path)['madmom_features']
@@ -500,11 +506,11 @@ def load_madmom(path):
 def load_mfcc(path):
     """Load da_tacos mfcc from a file
 
-        Args:
-            path(str or file-like): File-like object or path to features file
+    Args:
+        path(str or file-like): File-like object or path to features file
 
-        Returns:
-            np.array: mfcc
+    Returns:
+        np.array: mfcc
 
     """
     return dd.io.load(path)['mfcc_htk']
@@ -513,24 +519,24 @@ def load_mfcc(path):
 def load_tags(path):
     """Load da_tacos tags from a file
 
-        Args:
-            path(str or file-like): File-like object or path to features file
+    Args:
+        path(str or file-like): File-like object or path to features file
 
-        Returns:
-            list: tags
+    Returns:
+        list: tags
 
-        Examples: [('rock', '0.127'), ('pop', '0.014'), ('alternative', '0.051'), ('indie', '0.048'), ('electronic',
-         '0.050'), ('female vocalists', '0.017'), ('dance', '0.005'), ('00s', '0.008'), ('alternative rock',
-         '0.019'), ('jazz', '0.351'), ('beautiful', '0.020'), ('metal', '0.024'), ('chillout', '0.029'),
-         ('male vocalists', '0.007'), ('classic rock', '0.028'), ('soul', '0.023'), ('indie rock', '0.011'),
-         ('Mellow', '0.042'), ('electronica', '0.021'), ('80s', '0.020'), ('folk', '0.175'), ('90s', '0.013'),
-         ('chill', '0.028'), ('instrumental', '0.225'), ('punk', '0.005'), ('oldies', '0.002'), ('blues', '0.075'),
-         ('hard rock', '0.011'), ('ambient', '0.078'), ('acoustic', '0.118'), ('experimental', '0.075'),
-         ('female vocalist', '0.003'), ('guitar', '0.117'), ('Hip-Hop', '0.060'), ('70s', '0.017'), ('party',
-         '0.002'), ('country', '0.009'), ('easy listening', '0.011'), ('sexy', '0.002'), ('catchy', '0.001'),
-         ('funk', '0.027'), ('electro', '0.008'), ('heavy metal', '0.009'), ('Progressive rock', '0.080'), ('60s',
-         '0.003'), ('rnb', '0.005'), ('indie pop', '0.003'), ('sad', '0.014'), ('House', '0.003'), ('happy',
-         '0.001')]
+    Examples: [('rock', '0.127'), ('pop', '0.014'), ('alternative', '0.051'), ('indie', '0.048'), ('electronic',
+     '0.050'), ('female vocalists', '0.017'), ('dance', '0.005'), ('00s', '0.008'), ('alternative rock',
+     '0.019'), ('jazz', '0.351'), ('beautiful', '0.020'), ('metal', '0.024'), ('chillout', '0.029'),
+     ('male vocalists', '0.007'), ('classic rock', '0.028'), ('soul', '0.023'), ('indie rock', '0.011'),
+     ('Mellow', '0.042'), ('electronica', '0.021'), ('80s', '0.020'), ('folk', '0.175'), ('90s', '0.013'),
+     ('chill', '0.028'), ('instrumental', '0.225'), ('punk', '0.005'), ('oldies', '0.002'), ('blues', '0.075'),
+     ('hard rock', '0.011'), ('ambient', '0.078'), ('acoustic', '0.118'), ('experimental', '0.075'),
+     ('female vocalist', '0.003'), ('guitar', '0.117'), ('Hip-Hop', '0.060'), ('70s', '0.017'), ('party',
+     '0.002'), ('country', '0.009'), ('easy listening', '0.011'), ('sexy', '0.002'), ('catchy', '0.001'),
+     ('funk', '0.027'), ('electro', '0.008'), ('heavy metal', '0.009'), ('Progressive rock', '0.080'), ('60s',
+     '0.003'), ('rnb', '0.005'), ('indie pop', '0.003'), ('sad', '0.014'), ('House', '0.003'), ('happy',
+     '0.001')]
 
 
     """
@@ -539,7 +545,6 @@ def load_tags(path):
     else:
         tags = dd.io.load(path)['tags']
     return tags
-
 
 
 @core.docstring_inherit(core.Dataset)
@@ -605,8 +610,8 @@ class Dataset(core.Dataset):
     def benchmark_tracks(self):
         """Load from da_tacos dataset the benchmark subset tracks.
 
-                Returns:
-                    dict: {`track_id`: track data}
+        Returns:
+            dict: {`track_id`: track data}
 
         """
         return self.filter_index("benchmark#")
@@ -614,8 +619,8 @@ class Dataset(core.Dataset):
     def coveranalysis_tracks(self):
         """Load from da_tacos dataset the coveranalysis subset tracks.
 
-                Returns:
-                    dict: {`track_id`: track data}
+        Returns:
+            dict: {`track_id`: track data}
 
         """
         return self.filter_index("coveranalysis#")
