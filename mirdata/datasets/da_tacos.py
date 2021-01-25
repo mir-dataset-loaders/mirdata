@@ -268,7 +268,7 @@ class Track(core.Track):
         self.tags_path = core.none_path_join([self._data_home, self._track_paths["tags"][0]])
         # metadata
         metadata = DATA.metadata(data_home)
-        self._track_metadata = metadata[track_id]
+        self._track_metadata = metadata[track_id] if track_id in metadata else {}
 
     @core.cached_property
     def subset(self) -> str:
