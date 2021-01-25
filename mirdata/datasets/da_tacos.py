@@ -120,6 +120,7 @@ import os
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
+import logging
 import deepdish as dd
 
 LICENSE_INFO = """
