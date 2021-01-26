@@ -12,7 +12,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
     data_home = "tests/resources/mir_datasets/maestro"
-    track = maestro.Track(default_trackid, data_home=data_home)
+    dataset = maestro.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1",
@@ -78,10 +79,10 @@ def test_load_notes():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/maestro"
-    metadata = maestro._load_metadata(data_home)
+    dataset = maestro.Dataset(data_home)
+    metadata = dataset._metadata
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
 
-    assert metadata["data_home"] == data_home
     assert metadata[default_trackid] == {
         "canonical_composer": "Alban Berg",
         "canonical_title": "Sonata Op. 1",
@@ -91,8 +92,6 @@ def test_load_metadata():
         "audio_filename": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav",
         "duration": 698.661160312,
     }
-    metadata_none = maestro._load_metadata("asdf/asdf")
-    assert metadata_none is None
 
 
 def test_download_partial(httpserver):

@@ -10,7 +10,8 @@ from mirdata.datasets import mridangam_stroke
 def test_track():
     default_trackid = "224030"
     data_home = "tests/resources/mir_datasets/mridangam_stroke"
-    track = mridangam_stroke.Track(default_trackid, data_home=data_home)
+    dataset = mridangam_stroke.Dataset(data_home)
+    track = dataset.track(default_trackid)
     expected_attributes = {
         "audio_path": "tests/resources/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/"
         + "B/224030__akshaylaya__bheem-b-001.wav",
@@ -29,7 +30,8 @@ def test_track():
 def test_to_jams():
     default_trackid = "224030"
     data_home = "tests/resources/mir_datasets/mridangam_stroke"
-    track = mridangam_stroke.Track(default_trackid, data_home=data_home)
+    dataset = mridangam_stroke.Dataset(data_home)
+    track = dataset.track(default_trackid)
     jam = track.to_jams()
 
     # Validate Mridangam schema

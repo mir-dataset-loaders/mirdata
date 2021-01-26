@@ -162,14 +162,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in GuitarSet".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.audio_hex_cln_path = os.path.join(
             self._data_home, self._track_paths["audio_hex_cln"][0]
@@ -292,7 +299,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Guitarset audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -307,7 +314,7 @@ def load_multitrack_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Guitarset multitrack audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -322,7 +329,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load a Guitarset beats annotation.
 
     Args:
-        fhandle(str or file-like): File-like object or path of the jams annotation file
+        fhandle (str or file-like): File-like object or path of the jams annotation file
 
     Returns:
         BeatData: Beat data
@@ -363,7 +370,7 @@ def load_key_mode(fhandle: TextIO) -> annotations.KeyData:
     """Load a Guitarset key-mode annotation.
 
     Args:
-        fhandle(str or file-like): File-like object or path of the jams annotation file
+        fhandle (str or file-like): File-like object or path of the jams annotation file
 
     Returns:
         KeyData: Key data
@@ -433,7 +440,7 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="guitarset",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,

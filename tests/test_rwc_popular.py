@@ -11,7 +11,8 @@ def test_track():
 
     default_trackid = "RM-P001"
     data_home = "tests/resources/mir_datasets/rwc_popular"
-    track = rwc_popular.Track(default_trackid, data_home=data_home)
+    dataset = rwc_popular.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "RM-P001",
@@ -55,7 +56,8 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/rwc_popular"
-    track = rwc_popular.Track("RM-P001", data_home=data_home)
+    dataset = rwc_popular.Dataset(data_home)
+    track = dataset.track("RM-P001")
     jam = track.to_jams()
 
     beats = jam.search(namespace="beat")[0]["data"]
@@ -197,8 +199,8 @@ def test_load_vocal_activity():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/rwc_popular"
-    metadata = rwc_popular._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
+    dataset = rwc_popular.Dataset(data_home)
+    metadata = dataset._metadata
     assert metadata["RM-P001"] == {
         "piece_number": "No. 1",
         "suffix": "M01",

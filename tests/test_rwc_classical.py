@@ -10,7 +10,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "RM-C003"
     data_home = "tests/resources/mir_datasets/rwc_classical"
-    track = rwc_classical.Track(default_trackid, data_home=data_home)
+    dataset = rwc_classical.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "RM-C003",
@@ -46,7 +47,8 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/rwc_classical"
-    track = rwc_classical.Track("RM-C003", data_home=data_home)
+    dataset = rwc_classical.Dataset(data_home)
+    track = dataset.track("RM-C003")
     jam = track.to_jams()
 
     beats = jam.search(namespace="beat")[0]["data"]
@@ -185,8 +187,8 @@ def test_load_beats():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/rwc_classical"
-    metadata = rwc_classical._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
+    dataset = rwc_classical.Dataset(data_home)
+    metadata = dataset._metadata
     assert metadata["RM-C003"] == {
         "piece_number": "No. 3",
         "suffix": "M01",

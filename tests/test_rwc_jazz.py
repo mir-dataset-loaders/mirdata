@@ -9,7 +9,8 @@ def test_track():
 
     default_trackid = "RM-J004"
     data_home = "tests/resources/mir_datasets/rwc_jazz"
-    track = rwc_jazz.Track(default_trackid, data_home=data_home)
+    dataset = rwc_jazz.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "RM-J004",
@@ -45,7 +46,8 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/rwc_jazz"
-    track = rwc_jazz.Track("RM-J004", data_home=data_home)
+    dataset = rwc_jazz.Dataset(data_home)
+    track = dataset.track("RM-J004")
     jam = track.to_jams()
 
     beats = jam.search(namespace="beat")[0]["data"]
@@ -107,8 +109,8 @@ def test_to_jams():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/rwc_jazz"
-    metadata = rwc_jazz._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
+    dataset = rwc_jazz.Dataset(data_home)
+    metadata = dataset._metadata
     assert metadata["RM-J004"] == {
         "piece_number": "No. 4",
         "suffix": "M01",
@@ -129,6 +131,3 @@ def test_load_metadata():
         "variation": "Style (Free jazz)",
         "instruments": "Pf & Bs & Dr & Gt & Ts & Fl & Bar",
     }
-
-    metadata_none = rwc_jazz._load_metadata("asdf/asdf")
-    assert metadata_none is None

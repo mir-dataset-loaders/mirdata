@@ -10,8 +10,9 @@ def test_track():
     default_trackid = "1"
     default_trackid_train = "0189__2"
     data_home = "tests/resources/mir_datasets/irmas"
-    track = irmas.Track(default_trackid, data_home=data_home)
-    track_train = irmas.Track(default_trackid_train, data_home=data_home)
+    dataset = irmas.Dataset(data_home)
+    track = dataset.track(default_trackid)
+    track_train = dataset.track(default_trackid_train)
     expected_attributes = {
         "annotation_path": "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
         + "02 - And The Body Will Die-8.txt",
@@ -52,7 +53,8 @@ def test_to_jams():
     # Training samples
     default_trackid_train = "0189__2"
     data_home = "tests/resources/mir_datasets/irmas"
-    track_train = irmas.Track(default_trackid_train, data_home=data_home)
+    dataset = irmas.Dataset(data_home)
+    track_train = dataset.track(default_trackid_train)
     jam_train = track_train.to_jams()
 
     # Validate Mridangam schema
@@ -66,7 +68,8 @@ def test_to_jams():
     # Testing samples
     default_trackid_test = "1"
     data_home = "tests/resources/mir_datasets/irmas"
-    track_test = irmas.Track(default_trackid_test, data_home=data_home)
+    dataset = irmas.Dataset(data_home)
+    track_test = dataset.track(default_trackid_test)
     jam_test = track_test.to_jams()
 
     # Validate Mridangam schema

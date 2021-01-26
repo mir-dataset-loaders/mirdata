@@ -44,9 +44,11 @@ import json
 import os
 import shutil
 
-from mirdata import download_utils, core
+from mirdata import download_utils, core, io
 from mirdata import jams_utils
 
+
+NAME = "acousticbrainz_genre"
 
 BIBTEX = """
 @inproceedings{bogdanov2019acousticbrainz,
@@ -151,58 +153,33 @@ class Track(core.Track):
 
     Attributes:
         track_id (str): track id
+        genre (list): human-labeled genre and subgenres list
+        mbid (str): musicbrainz id
+        mbid_group (str): musicbrainz id group
 
     """
 
-    def __init__(self, track_id, data_home, remote_index=None, remote_index_name=None):
-        if remote_index is not None and remote_index_name is not None:
-            data = core.LargeData(remote_index_name, remote_index=remote_index)
-        else:
-            data = DATA
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        if track_id not in data.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in AcousticBrainz genre Dataset".format(
-                    track_id
-                )
-            )
-
-        self.track_id = track_id
-        self._data_home = data_home
-        self._track_paths = data.index["tracks"][track_id]
         self.path = core.none_path_join([self._data_home, self._track_paths["data"][0]])
-
-    # Genre
-    @property
-    def genre(self):
-        """human-labeled genre and subgenres list
-
-        Returns:
-            list: human-labeled genre and subgenres list
-
-        """
-        return [genre for genre in self.track_id.split("#")[2:]]
-
-    # Music Brainz
-    @property
-    def mbid(self):
-        """musicbrainz id
-
-        Returns:
-            str: mbid
-
-        """
-        return self.track_id.split("#")[0]
-
-    @property
-    def mbid_group(self):
-        """musicbrainz id group
-
-        Returns:
-            str: mbid group
-
-        """
-        return self.track_id.split("#")[1]
+        self.genre = [genre for genre in self.track_id.split("#")[4:] if genre != ""]
+        self.mbid = self.track_id.split("#")[2]
+        self.mbid_group = self.track_id.split("#")[3]
+        self.split = self.track_id.split("#")[1]
 
     # Metadata
     @property
@@ -372,22 +349,19 @@ class Track(core.Track):
         )
 
 
-def load_extractor(path):
+@io.coerce_to_string_io
+def load_extractor(fhandle):
     """Load a AcousticBrainz Dataset json file with all the features and metadata.
 
     Args:
-        path (str): path to features and metadata path
+        fhandle (str or file-like): path or file-like object pointing to a json file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(path):
-        raise IOError("path {} does not exist".format(path))
-
-    with open(path) as json_file:
-        meta = json.load(json_file)
+    meta = json.load(fhandle)
     return meta
 
 
@@ -397,12 +371,23 @@ class Dataset(core.Dataset):
     The acousticbrainz genre dataset
     """
 
-    def __init__(self, data_home=None, index=None):
+    def __init__(
+        self,
+        data_home=None,
+        remote_index=None,
+        remote_index_name=None,
+    ):
+        if remote_index and remote_index_name:
+            data = core.LargeData(remote_index_name, remote_index=remote_index)
+            index = data.index
+        else:
+            index = None
+
         super().__init__(
             data_home,
             index=DATA.index if index is None else index,
-            name="acousticbrainz_genre",
-            track_object=Track,
+            name=NAME,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
@@ -453,7 +438,7 @@ class Dataset(core.Dataset):
                 )
                 if os.path.isdir(first_dir_path):
                     file_downloaded = True
-                    print(
+                    logging.info(
                         "File "
                         + remote.filename
                         + " downloaded. Skip download (force_overwrite=False)."

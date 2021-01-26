@@ -14,12 +14,12 @@
     6. Include a description about how the data can be accessed and the license it uses (if applicable)
 
 """
-
-import logging
-import os
-import json
-import librosa
 import csv
+import logging
+import json
+import os
+
+import librosa
 import numpy as np
 # -- import whatever you need here and remove
 # -- example imports you won't use
@@ -28,14 +28,15 @@ from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core, annotations
 
-
 # -- Add any relevant citations here
-BIBTEX = """@article{article-minimal,
-    author = "L[eslie] B. Lamport",
-    title = "The Gnats and Gnus Document Preparation System",
-    journal = "G-Animal's Journal",
-    year = "1986"
-}"""
+BIBTEX = """
+@article{article-minimal,
+  author = "L[eslie] B. Lamport",
+  title = "The Gnats and Gnus Document Preparation System",
+  journal = "G-Animal's Journal",
+  year = "1986"
+}
+"""
 
 # -- REMOTES is a dictionary containing all files that need to be downloaded.
 # -- The keys should be descriptive (e.g. 'annotations', 'audio').
@@ -63,26 +64,7 @@ LICENSE_INFO = """
 The dataset's license information goes here.
 """
 
-# -- change this to load any top-level metadata
-## delete this function if you don't have global metadata
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, 'example_metadta.csv')
-    if not os.path.exists(metadata_path):
-        logging.info('Metadata file {} not found.'.format(metadata_path))
-        return None
-
-    # load metadata however makes sense for your dataset
-    metadata_path = os.path.join(data_home, 'example_metadata.json')
-    with open(metadata_path, 'r') as fhandle:
-        metadata = json.load(fhandle)
-
-    metadata['data_home'] = data_home
-
-    return metadata
-
-
-DATA = core.LargeData('example_index.json', _load_metadata)
-# DATA = core.LargeData('example_index.json')  ## use this if your dataset has no metadata
+DATA = core.LargeData('example_index.json')
 
 
 class Track(core.Track):
@@ -99,28 +81,27 @@ class Track(core.Track):
         # -- Add any of the dataset specific attributes here
 
     """
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index:
-            raise ValueError(
-                '{} is not a valid track ID in Example'.format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index[track_id]
-
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        
+        # -- this sets the following attributes:
+        # -- * track_id
+        # -- * _dataset_name
+        # -- * _data_home
+        # -- * _track_paths
+        # -- * _track_metadata
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name=dataset_name,
+            index=index,
+            metadata=metadata,
+        )
+        
         # -- add any dataset specific attributes here
         self.audio_path = os.path.join(
             self._data_home, self._track_paths['audio'][0])
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths['annotation'][0])
-
-        # -- if the user doesn't have a metadata file, load None
-        self._metadata = DATA.metadata(data_home)
-        if self._metadata is not None and track_id in self._metadata:
-            self.some_metadata = self._metadata[track_id]['some_metadata']
-        else:
-            self.some_metadata = None
 
     # -- `annotation` will behave like an attribute, but it will only be loaded
     # -- and saved when someone accesses it. Useful when loading slightly
@@ -194,7 +175,7 @@ class MultiTrack(core.MultiTrack):
         """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
         return load_audio(self.audio_path)
 
-    # -- multitrack objects are themselves Tracks, and also need a to_jams method
+    # -- multitrack classes are themselves Tracks, and also need a to_jams method
     # -- for any mixture-level annotations
     def to_jams(self):
         """Jams: the track's data in jams format"""
@@ -206,43 +187,39 @@ class MultiTrack(core.MultiTrack):
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle):
     """Load a Example audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        * np.ndarray - the mono audio signal
+        * np.ndarray - the audio signal
         * float - The sample rate of the audio file
 
     """
     # -- for example, the code below. This should be dataset specific!
     # -- By default we load to mono
     # -- change this if it doesn't make sense for your dataset.
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=None, mono=True)
 
 
 # -- Write any necessary loader functions for loading the dataset's data
-def load_annotation(annotation_path):
+@io.coerce_to_string_io
+def load_annotation(fhandle):
 
     # -- if there are some file paths for this annotation type in this dataset's
     # -- index that are None/null, uncomment the lines below.
     # if annotation_path is None:
     #     return None
 
-    if not os.path.exists(annotation_path):
-        raise IOError("annotation_path {} does not exist".format(annotation_path))
-
-    with open(annotation_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=' ')
-        intervals = []
-        annotation = []
-        for line in reader:
-            intervals.append([float(line[0]), float(line[1])])
-            annotation.append(line[2])
+    reader = csv.reader(fhandle, delimiter=' ')
+    intervals = []
+    annotation = []
+    for line in reader:
+        intervals.append([float(line[0]), float(line[1])])
+        annotation.append(line[2])
 
     annotation_data = annotations.EventData(
         np.array(intervals), np.array(annotation)
@@ -259,14 +236,15 @@ class Dataset(core.Dataset):
         super().__init__(
             data_home,
             index=DATA.index,
-            name="Example",
-            track_object=Track,
+            name=NAME,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
         )
 
-    # -- Copy any loaders you wrote that should be part of the Dataset object
+    # -- Copy any loaders you wrote that should be part of the Dataset class
     # -- use this core.copy_docs decorator to copy the docs from the original
     # -- load_ function
     @core.copy_docs(load_audio)
@@ -277,28 +255,41 @@ class Dataset(core.Dataset):
     def load_annotation(self, *args, **kwargs):
         return load_annotation(*args, **kwargs)
 
-# -- if your dataset needs to overwrite the default download logic, do it here.
-# -- this function is usually not necessary unless you need very custom download logic
-def download(
-    self, partial_download=None, force_overwrite=False, cleanup=False
-):
-    """Download the dataset
+    # -- if your dataset has a top-level metadata file, write a loader for it here
+    # -- you do not have to include this function if there is no metadata 
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, 'example_metadta.csv')
 
-    Args:
-        partial_download (list or None):
-            A list of keys of remotes to partially download.
-            If None, all data is downloaded
-        force_overwrite (bool):
-            If True, existing files are overwritten by the downloaded files. 
-        cleanup (bool):
-            Whether to delete any zip/tar files after extracting.
+        # load metadata however makes sense for your dataset
+        metadata_path = os.path.join(data_home, 'example_metadata.json')
+        with open(metadata_path, 'r') as fhandle:
+            metadata = json.load(fhandle)
 
-    Raises:
-        ValueError: if invalid keys are passed to partial_download
-        IOError: if a downloaded file's checksum is different from expected
+        return metadata
 
-    """
-    # see download_utils.downloader for basic usage - if you only need to call downloader
-    # once, you do not need this function at all.
-    # only write a custom function if you need it!
+    # -- if your dataset needs to overwrite the default download logic, do it here.
+    # -- this function is usually not necessary unless you need very custom download logic
+    def download(
+        self, partial_download=None, force_overwrite=False, cleanup=False
+    ):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files. 
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        # see download_utils.downloader for basic usage - if you only need to call downloader
+        # once, you do not need this function at all.
+        # only write a custom function if you need it!
 

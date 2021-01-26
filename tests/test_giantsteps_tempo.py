@@ -10,7 +10,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "113"
     data_home = "tests/resources/mir_datasets/giantsteps_tempo"
-    track = giantsteps_tempo.Track(default_trackid, data_home=data_home)
+    dataset = giantsteps_tempo.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "audio_path": "tests/resources/mir_datasets/giantsteps_tempo/audio/28952.LOFI.mp3",
