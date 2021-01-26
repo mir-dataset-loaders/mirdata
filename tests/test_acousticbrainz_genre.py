@@ -25,22 +25,24 @@ def test_track(httpserver):
             destination_dir="",
         )
     }
-    track = acousticbrainz_genre.Track(
-        default_trackid,
-        data_home=data_home,
+
+    dataset = acousticbrainz_genre.Dataset(
+        data_home,
         remote_index=remote_index,
         remote_index_name="acousticbrainz_genre_dataset_little_test.json",
     )
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "path": "tests/resources/mir_datasets/acousticbrainz_genre/acousticbrainz-mediaeval-validation/be/be9e01e5-8f93-494d-bbaa-ddcc5a52f629.json",
         "track_id": "tagtraum#validation#be9e01e5-8f93-494d-bbaa-ddcc5a52f629#2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960#trance########",
+        "genre": ["trance"],
+        "mbid": "be9e01e5-8f93-494d-bbaa-ddcc5a52f629",
+        "mbid_group": "2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960",
+        "split": "validation",
     }
 
     expected_property_types = {
-        "genre": list,
-        "mbid": str,
-        "mbid_group": str,
         "artist": str,
         "title": str,
         "date": str,
@@ -3938,12 +3940,12 @@ def test_to_jams(httpserver):
             destination_dir="",
         )
     }
-    track = acousticbrainz_genre.Track(
-        trackid,
-        data_home=data_home,
+    dataset = acousticbrainz_genre.Dataset(
+        data_home,
         remote_index=remote_index,
         remote_index_name="acousticbrainz_genre_dataset_little_test.json",
     )
+    track = dataset.track(trackid)
 
     jam_ground_truth = jams_utils.jams_converter(
         metadata={
@@ -3979,10 +3981,11 @@ def test_filter_index(httpserver):
             destination_dir="",
         )
     }
-    DATA_test = core.LargeData(
-        "acousticbrainz_genre_dataset_little_test.json", remote_index=remote_index
+
+    dataset = acousticbrainz_genre.Dataset(
+        remote_index=remote_index,
+        remote_index_name="acousticbrainz_genre_dataset_little_test.json",
     )
-    dataset = acousticbrainz_genre.Dataset(index=DATA_test.index)
     index = dataset.load_all_train()
     assert len(index) == 8
     index = dataset.load_all_validation()
@@ -4036,7 +4039,21 @@ def test_download(httpserver):
             destination_dir="temp",
         )
     }
-    dataset = acousticbrainz_genre.Dataset(data_home)
+
+    remote_index = {
+        "index": download_utils.RemoteFileMetadata(
+            filename="acousticbrainz_genre_dataset_little_test.json.zip",
+            url=httpserver.url,
+            checksum="c5fbdd4f8b7de383796a34143cb44c4f",
+            destination_dir="",
+        )
+    }
+
+    dataset = acousticbrainz_genre.Dataset(
+        data_home,
+        remote_index=remote_index,
+        remote_index_name="acousticbrainz_genre_dataset_little_test.json",
+    )
     dataset.remotes = remotes
     dataset.download(data_home, False, False)
 
@@ -4071,7 +4088,7 @@ def test_download(httpserver):
             destination_dir="temp",
         )
     }
-    dataset = acousticbrainz_genre.Dataset(data_home)
+
     dataset.remotes = remotes
     dataset.download(data_home, False, False)
 

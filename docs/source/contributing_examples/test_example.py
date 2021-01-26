@@ -10,7 +10,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "some_id"
     data_home = "tests/resources/mir_datasets/dataset"
-    track = example.Track(default_trackid, data_home=data_home)
+    dataset = example.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "some_id",
@@ -36,8 +37,10 @@ def test_track():
 
 def test_to_jams():
 
+    default_trackid = "some_id"
     data_home = "tests/resources/mir_datasets/dataset"
-    track = example.Track("some_id", data_home=data_home)
+    dataset = example.Dataset(data_home)
+    track = dataset.track(default_trackid)
     jam = track.to_jams()
 
     annotations = jam.search(namespace="annotation")[0]["data"]
@@ -64,11 +67,9 @@ def test_load_annotation():
     # ... etc
 
 
-def test_load_metadata():
+def test_metadata():
     data_home = "tests/resources/mir_datasets/dataset"
-    metadata = example._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
+    dataset = example.Dataset(data_home)
+    metadata = dataset._metadata
     assert metadata["some_id"] == "something"
 
-    metadata_none = example._load_metadata("asdf/asdf")
-    assert metadata_none is None

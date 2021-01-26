@@ -192,51 +192,7 @@ DRUM_MAPPING = {
 }
 
 
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "info.csv")
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata_index = {}
-    with open(metadata_path, "r") as fhandle:
-        csv_reader = csv.reader(fhandle, delimiter=",")
-        next(csv_reader)
-        for row in csv_reader:
-            (
-                drummer,
-                session,
-                track_id,
-                style,
-                bpm,
-                beat_type,
-                time_signature,
-                midi_filename,
-                audio_filename,
-                duration,
-                split,
-            ) = row
-            metadata_index[str(track_id)] = {
-                "drummer": str(drummer),
-                "session": str(session),
-                "track_id": str(track_id),
-                "style": str(style),
-                "tempo": int(bpm),
-                "beat_type": str(beat_type),
-                "time_signature": str(time_signature),
-                "midi_filename": str(midi_filename),
-                "audio_filename": str(audio_filename),
-                "duration": float(duration),
-                "split": str(split),
-            }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = core.LargeData("groove_midi_index.json", _load_metadata)
+DATA = core.LargeData("groove_midi_index.json")
 
 
 class Track(core.Track):
@@ -266,44 +222,32 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in Groove MIDI".format(track_id)
-            )
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "drummer": None,
-                "session": None,
-                "style": None,
-                "tempo": None,
-                "beat_type": None,
-                "time_signature": None,
-                "midi_filename": None,
-                "audio_filename": None,
-                "duration": None,
-                "split": None,
-            }
-
-        self.drummer = self._track_metadata["drummer"]
-        self.session = self._track_metadata["session"]
-        self.style = self._track_metadata["style"]
-        self.tempo = self._track_metadata["tempo"]
-        self.beat_type = self._track_metadata["beat_type"]
-        self.time_signature = self._track_metadata["time_signature"]
-        self.duration = self._track_metadata["duration"]
-        self.split = self._track_metadata["split"]
-        self.midi_filename = self._track_metadata["midi_filename"]
-        self.audio_filename = self._track_metadata["audio_filename"]
+        self.drummer = self._track_metadata.get("drummer")
+        self.session = self._track_metadata.get("session")
+        self.style = self._track_metadata.get("style")
+        self.tempo = self._track_metadata.get("tempo")
+        self.beat_type = self._track_metadata.get("beat_type")
+        self.time_signature = self._track_metadata.get("time_signature")
+        self.duration = self._track_metadata.get("duration")
+        self.split = self._track_metadata.get("split")
+        self.midi_filename = self._track_metadata.get("midi_filename")
+        self.audio_filename = self._track_metadata.get("audio_filename")
 
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
@@ -370,7 +314,7 @@ def load_midi(fhandle: BinaryIO) -> Optional[pretty_midi.PrettyMIDI]:
     """Load a Groove MIDI midi file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to midi file
+        fhandle (str or file-like): File-like object or path to midi file
 
     Returns:
         midi_data (pretty_midi.PrettyMIDI): pretty_midi object
@@ -437,7 +381,7 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="groove_midi",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
@@ -458,6 +402,47 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_drum_events)
     def load_drum_events(self, *args, **kwargs):
         return load_drum_events(*args, **kwargs)
+
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "info.csv")
+
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        metadata_index = {}
+        with open(metadata_path, "r") as fhandle:
+            csv_reader = csv.reader(fhandle, delimiter=",")
+            next(csv_reader)
+            for row in csv_reader:
+                (
+                    drummer,
+                    session,
+                    track_id,
+                    style,
+                    bpm,
+                    beat_type,
+                    time_signature,
+                    midi_filename,
+                    audio_filename,
+                    duration,
+                    split,
+                ) = row
+                metadata_index[str(track_id)] = {
+                    "drummer": str(drummer),
+                    "session": str(session),
+                    "track_id": str(track_id),
+                    "style": str(style),
+                    "tempo": int(bpm),
+                    "beat_type": str(beat_type),
+                    "time_signature": str(time_signature),
+                    "midi_filename": str(midi_filename),
+                    "audio_filename": str(audio_filename),
+                    "duration": float(duration),
+                    "split": str(split),
+                }
+
+        return metadata_index
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=False):
         """Download the dataset

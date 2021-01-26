@@ -34,7 +34,6 @@
 import numpy as np
 import os
 import json
-import logging
 import librosa
 import csv
 
@@ -73,20 +72,7 @@ LICENSE_INFO = (
 )
 
 
-def _load_metadata(metadata_path):
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    with open(metadata_path) as f:
-        metadata = json.load(f)
-        data_home = metadata_path.split("/" + metadata_path.split("/")[-4])[0]
-        metadata["data_home"] = data_home
-
-        return metadata
-
-
-DATA = core.LargeData("saraga_hindustani_index.json", _load_metadata)
+DATA = core.LargeData("saraga_hindustani_index.json")
 
 
 class Track(core.Track):
@@ -98,16 +84,14 @@ class Track(core.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        title (str): Title of the piece in the track
-        mbid (str): MusicBrainz ID of the track
-        album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
-        artists (list, dicts): list of dicts containing information of the featuring artists in the track
-        raags (list, dict): list of dicts containing information about the raags present in the track
-        forms (list, dict): list of dicts containing information about the forms present in the track
-        release (list, dicts): list of dicts containing information of the release where the track is found
-        works (list, dicts): list of dicts containing the work present in the piece, and its mbid
-        taals (list, dicts): list of dicts containing the taals present in the track and its uuid
-        layas (list, dicts): list of dicts containing the layas present in the track and its uuid
+        audio_path (str): path to audio file
+        ctonic_path (str): path to ctonic annotation file
+        pitch_path (str): path to pitch annotation file
+        tempo_path (str): path to tempo annotation file
+        sama_path (str): path to sama annotation file
+        sections_path (str): path to sections annotation file
+        phrases_path (str): path to phrases annotation file
+        metadata_path (str): path to metadata annotation file
 
     Cached Properties:
         tonic (float): tonic annotation
@@ -116,19 +100,36 @@ class Track(core.Track):
         sama (BeatData): Sama section annotations
         sections (SectionData): track section annotations
         phrases (EventData): phrase annotations
+        metadata (dict): track metadata with the following fields
+
+            - title (str): Title of the piece in the track
+            - mbid (str): MusicBrainz ID of the track
+            - album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
+            - artists (list, dicts): list of dicts containing information of the featuring artists in the track
+            - raags (list, dict): list of dicts containing information about the raags present in the track
+            - forms (list, dict): list of dicts containing information about the forms present in the track
+            - release (list, dicts): list of dicts containing information of the release where the track is found
+            - works (list, dicts): list of dicts containing the work present in the piece, and its mbid
+            - taals (list, dicts): list of dicts containing the taals present in the track and its uuid
+            - layas (list, dicts): list of dicts containing the layas present in the track and its uuid
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in Saraga Hindustani".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         # Audio path
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
@@ -156,64 +157,6 @@ class Track(core.Track):
             [self._data_home, self._track_paths["metadata"][0]]
         )
 
-        # Track attributes
-        metadata = DATA.metadata(self.metadata_path)
-        if (
-            metadata is not None
-            and metadata["title"].replace(" ", "_") in self.track_id
-        ):
-            self._track_metadata = metadata
-        else:
-            # in case the metadata is missing
-            self._track_metadata = {
-                "title": None,
-                "raags": None,
-                "length": None,
-                "album_artists": None,
-                "forms": None,
-                "mbid": None,
-                "artists": None,
-                "release": None,
-                "works": None,
-                "taals": None,
-                "layas": None,
-            }
-
-        self.title = self._track_metadata["title"]
-        self.artists = self._track_metadata["artists"]
-        self.album_artists = self._track_metadata["album_artists"]
-        self.mbid = self._track_metadata["mbid"]
-        self.raags = (
-            self._track_metadata["raags"]
-            if "raags" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.forms = (
-            self._track_metadata["forms"]
-            if "forms" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.release = (
-            self._track_metadata["release"]
-            if "release" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.works = (
-            self._track_metadata["works"]
-            if "works" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.taals = (
-            self._track_metadata["taals"]
-            if "taals" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.layas = (
-            self._track_metadata["layas"]
-            if "layas" in self._track_metadata.keys() is not None
-            else None
-        )
-
     @core.cached_property
     def tonic(self):
         return load_tonic(self.ctonic_path)
@@ -237,6 +180,10 @@ class Track(core.Track):
     @core.cached_property
     def phrases(self):
         return load_phrases(self.phrases_path)
+
+    @core.cached_property
+    def metadata(self):
+        return load_metadata(self.metadata_path)
 
     @property
     def audio(self):
@@ -265,7 +212,7 @@ class Track(core.Track):
             metadata={
                 "tempo": self.tempo,
                 "tonic": self.tonic,
-                "metadata": self._track_metadata,
+                "metadata": self.metadata,
             },
         )
 
@@ -527,6 +474,34 @@ def load_phrases(phrases_path):
     return annotations.EventData(np.array([start_times, end_times]).T, events)
 
 
+def load_metadata(metadata_path):
+    """Load a Saraga Hindustani metadata file
+
+    Args:
+        metadata_path (str): path to metadata json file
+
+    Returns:
+        dict: metadata with the following fields
+
+            - title (str): Title of the piece in the track
+            - mbid (str): MusicBrainz ID of the track
+            - album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
+            - artists (list, dicts): list of dicts containing information of the featuring artists in the track
+            - raags (list, dict): list of dicts containing information about the raags present in the track
+            - forms (list, dict): list of dicts containing information about the forms present in the track
+            - release (list, dicts): list of dicts containing information of the release where the track is found
+            - works (list, dicts): list of dicts containing the work present in the piece, and its mbid
+            - taals (list, dicts): list of dicts containing the taals present in the track and its uuid
+            - layas (list, dicts): list of dicts containing the layas present in the track and its uuid
+
+    """
+
+    with open(metadata_path) as f:
+        metadata = json.load(f)
+
+        return metadata
+
+
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
@@ -538,7 +513,7 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="saraga_hindustani",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,

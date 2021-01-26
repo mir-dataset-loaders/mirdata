@@ -5,8 +5,9 @@ import json
 import os
 import random
 import types
-import numpy as np
 from typing import Any
+
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import validate
@@ -82,7 +83,7 @@ def copy_docs(original):
 
 
 class Dataset(object):
-    """mirdata Dataset object
+    """mirdata Dataset class
 
     Attributes:
         data_home (str): path where mirdata will look for the dataset
@@ -99,7 +100,7 @@ class Dataset(object):
         data_home=None,
         index=None,
         name=None,
-        track_object=None,
+        track_class=None,
         bibtex=None,
         remotes=None,
         download_info=None,
@@ -111,7 +112,7 @@ class Dataset(object):
             data_home (str or None): path where mirdata will look for the dataset
             index (dict or None): the dataset's file index
             name (str or None): the identifier of the dataset
-            track_object (mirdata.core.Track or None): an uninstantiated Track object
+            track_class (mirdata.core.Track or None): a Track class
             bibtex (str or None): dataset citation/s in bibtex format
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
@@ -121,7 +122,7 @@ class Dataset(object):
         self.name = name
         self.data_home = self.default_path if data_home is None else data_home
         self._index = index
-        self._track_object = track_object
+        self._track_class = track_class
         self.bibtex = bibtex
         self.remotes = remotes
         self._download_info = download_info
@@ -130,7 +131,7 @@ class Dataset(object):
 
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
-        self.track.__doc__ = self._track_object.__doc__  # set the docstring
+        self.track.__doc__ = self._track_class.__doc__  # set the docstring
 
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
@@ -139,12 +140,16 @@ class Dataset(object):
         repr_string += "Call the .cite method for bibtex citations.\n"
         repr_string += "-" * MAX_STR_LEN
         repr_string += "\n\n\n"
-        if self._track_object is not None:
+        if self._track_class is not None:
             repr_string += self.track.__doc__
             repr_string += "-" * MAX_STR_LEN
             repr_string += "\n"
 
         return repr_string
+
+    @cached_property
+    def _metadata(self):
+        return None
 
     @property
     def default_path(self):
@@ -166,13 +171,15 @@ class Dataset(object):
             track_id (str): track id of the track
 
         Returns:
-           Track: an instance of this dataset's Track object
+           Track: a Track object
 
         """
-        if self._track_object is None:
+        if self._track_class is None:
             raise NotImplementedError
         else:
-            return self._track_object(track_id, self.data_home)
+            return self._track_class(
+                track_id, self.data_home, self.name, self._index, self._metadata
+            )
 
     def load_tracks(self):
         """Load all tracks in the dataset
@@ -182,7 +189,7 @@ class Dataset(object):
                 {`track_id`: track data}
 
         Raises:
-            NotImplementedError: If the dataset does not support Track objects
+            NotImplementedError: If the dataset does not support Tracks
 
         """
         return {track_id: self.track(track_id) for track_id in self.track_ids}
@@ -270,6 +277,49 @@ class Track(object):
     See the docs for each dataset loader's Track class for details
 
     """
+
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata=None,
+    ):
+        """Track init method. Sets boilerplate attributes, including:
+
+        - ``track_id``
+        - ``_dataset_name``
+        - ``_data_home``
+        - ``_track_paths``
+        - ``_track_metadata``
+
+        Args:
+            track_id (str): track id
+            data_home (str): path where mirdata will look for the dataset
+            dataset_name (str): the identifier of the dataset
+            index (dict): the dataset's file index
+                Typically accessed via the .index attribute of a LargeData object
+            metadata (dict or None): a dictionary of metadata or None
+
+        """
+        if track_id not in index["tracks"]:
+            raise ValueError(
+                "{} is not a valid track_id in {}".format(track_id, dataset_name)
+            )
+
+        self.track_id = track_id
+        self._dataset_name = dataset_name
+
+        self._data_home = data_home
+        self._track_paths = index["tracks"][track_id]
+
+        if metadata and track_id in metadata:
+            self._track_metadata = metadata[track_id]
+        elif metadata:
+            self._track_metadata = metadata
+        else:
+            self._track_metadata = None
 
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]
@@ -449,16 +499,12 @@ def none_path_join(partial_path_list):
 
 
 class LargeData(object):
-    def __init__(self, index_file, metadata_load_fn=None, remote_index=None):
+    def __init__(self, index_file, remote_index=None):
         """Object which loads and caches large data the first time it's accessed.
 
         Args:
             index_file: str
                 File name of checksum index file to be passed to `load_json_index`
-            metadata_load_fn: function
-                Function which returns a metadata dictionary.
-                If None, assume the dataset has no metadata. When the
-                `metadata` attribute is called, raises a NotImplementedError
 
         Cached Properties:
             index (dict): dataset index
@@ -466,7 +512,6 @@ class LargeData(object):
         """
         self._metadata = None
         self.index_file = index_file
-        self.metadata_load_fn = metadata_load_fn
         self.remote_index = remote_index
 
     @cached_property
@@ -480,23 +525,3 @@ class LargeData(object):
                 path_indexes = os.path.join(working_dir, "datasets/indexes")
                 download_utils.downloader(path_indexes, remotes=self.remote_index)
         return load_json_index(self.index_file)
-
-    def metadata(self, data_home):
-        """Dataset metadata
-
-        Args:
-            data_home (str): path where the dataset lives
-
-        Raises:
-            NotImplementedError: if self.metadata_load_fn is not set
-
-        Returns:
-            Object: data loaded by self.metadata_load_fn
-
-        """
-        if self.metadata_load_fn is None:
-            raise NotImplementedError
-
-        if self._metadata is None or self._metadata["data_home"] != data_home:
-            self._metadata = self.metadata_load_fn(data_home)
-        return self._metadata

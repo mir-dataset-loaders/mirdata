@@ -94,16 +94,22 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in beatport_key".format(track_id)
-            )
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.keys_path = os.path.join(self._data_home, self._track_paths["key"][0])
         self.metadata_path = (
@@ -280,7 +286,7 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="beatport_key",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
