@@ -292,19 +292,6 @@ def test_load_and_trackids(httpserver):
                 dataset_name, dataset_name
             )
 
-            try:
-                dataset_data_default = dataset_default.load_tracks()
-            except:
-                assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-            assert (
-                type(dataset_data_default) is dict
-            ), "{}.load should return a dictionary".format(dataset_name)
-            assert (
-                len(dataset_data_default.keys()) == trackid_len
-            ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
-                dataset_name, dataset_name
-            )
         if dataset_name in REMOTE_DATASETS:
             clean_remote_dataset(dataset_name)
 
@@ -337,15 +324,6 @@ def test_track(httpserver):
             trackid = CUSTOM_TEST_TRACKS[dataset_name]
         else:
             trackid = dataset.track_ids[0]
-
-        try:
-            track_default = dataset_default.track(trackid)
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert track_default._data_home == os.path.join(
-            DEFAULT_DATA_HOME, dataset.name
-        ), "{}: Track._data_home path is not set as expected".format(dataset_name)
 
         # test data home specified
         try:

@@ -207,7 +207,6 @@ def test_metadata():
     data_home = "tests/resources/mir_datasets/cante100"
     dataset = cante100.Dataset(data_home)
     metadata = dataset._metadata
-    assert metadata["data_home"] == data_home
     assert metadata["008"] == {
         "musicBrainzID": "4eebe839-82bb-426e-914d-7c4525dd9dad",
         "artist": "Toronjo",

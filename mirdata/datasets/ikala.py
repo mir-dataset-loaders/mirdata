@@ -307,11 +307,7 @@ class Dataset(core.Dataset):
     def _metadata(self):
         id_map_path = os.path.join(self.data_home, "id_mapping.txt")
         if not os.path.exists(id_map_path):
-            logging.info(
-                "Metadata file {} not found.".format(id_map_path)
-                + "You can download the metadata file for ikala by running ikala.download"
-            )
-            return None
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         with open(id_map_path, "r") as fhandle:
             reader = csv.reader(fhandle, delimiter="\t")
@@ -320,8 +316,6 @@ class Dataset(core.Dataset):
                 if line[0] == "singer":
                     continue
                 singer_map[line[1]] = line[0]
-
-        singer_map["data_home"] = self.data_home
 
         return singer_map
 

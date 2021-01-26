@@ -319,7 +319,7 @@ class Track(object):
         elif metadata:
             self._track_metadata = metadata
         else:
-            self._track_metadata = {}
+            self._track_metadata = None
 
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]

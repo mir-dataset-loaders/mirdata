@@ -197,13 +197,11 @@ class Dataset(core.Dataset):
         metadata_path = os.path.join(self.data_home, "medleydb_pitch_metadata.json")
 
         if not os.path.exists(metadata_path):
-            logging.info("Metadata file {} not found.".format(metadata_path))
-            return None
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         with open(metadata_path, "r") as fhandle:
             metadata = json.load(fhandle)
 
-        metadata["data_home"] = self.data_home
         return metadata
 
     @core.copy_docs(load_audio)

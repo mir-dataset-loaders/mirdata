@@ -207,7 +207,6 @@ def test_load_metadata():
     data_home = "tests/resources/mir_datasets/salami"
     dataset = salami.Dataset(data_home)
     metadata = dataset._metadata
-    assert metadata["data_home"] == data_home
     assert metadata["2"] == {
         "source": "Codaich",
         "annotator_1_id": "5",

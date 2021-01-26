@@ -246,11 +246,10 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "maestro-v2.0.0.json")
+        
         if not os.path.exists(metadata_path):
-            logging.info("Metadata file {} not found.".format(metadata_path))
-            return None
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        # load metadata however makes sense for your dataset
         with open(metadata_path, "r") as fhandle:
             raw_metadata = json.load(fhandle)
 
@@ -258,8 +257,6 @@ class Dataset(core.Dataset):
         for mdata in raw_metadata:
             track_id = mdata["midi_filename"].split(".")[0]
             metadata[track_id] = mdata
-
-        metadata["data_home"] = self.data_home
 
         return metadata
 

@@ -201,7 +201,6 @@ def test_load_metadata():
     data_home = "tests/resources/mir_datasets/rwc_popular"
     dataset = rwc_popular.Dataset(data_home)
     metadata = dataset._metadata
-    assert metadata["data_home"] == data_home
     assert metadata["RM-P001"] == {
         "piece_number": "No. 1",
         "suffix": "M01",

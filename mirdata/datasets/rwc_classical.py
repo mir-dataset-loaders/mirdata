@@ -366,11 +366,7 @@ class Dataset(core.Dataset):
         metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-c.csv")
 
         if not os.path.exists(metadata_path):
-            logging.info(
-                "Metadata file {} not found.".format(metadata_path)
-                + "You can download the metadata file by running download()"
-            )
-            return None
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         with open(metadata_path, "r") as fhandle:
             dialect = csv.Sniffer().sniff(fhandle.read(1024))
@@ -398,8 +394,6 @@ class Dataset(core.Dataset):
                 "duration": _duration_to_sec(line[6]),
                 "category": line[7],
             }
-
-        metadata_index["data_home"] = self.data_home
 
         return metadata_index
 

@@ -128,7 +128,6 @@ def test_load_metadata():
     data_home = "tests/resources/mir_datasets/medleydb_melody"
     dataset = medleydb_melody.Dataset(data_home)
     metadata = dataset._metadata
-    assert metadata["data_home"] == data_home
     assert metadata["MusicDelta_Beethoven"] == {
         "audio_path": "medleydb_melody/audio/MusicDelta_Beethoven_MIX.wav",
         "melody1_path": "medleydb_melody/melody1/MusicDelta_Beethoven_MELODY1.csv",

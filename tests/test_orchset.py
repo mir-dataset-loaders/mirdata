@@ -88,7 +88,6 @@ def test_load_metadata():
     data_home = "tests/resources/mir_datasets/orchset"
     dataset = orchset.Dataset(data_home)
     metadata = dataset._metadata
-    assert metadata["data_home"] == data_home
     assert metadata["Beethoven-S3-I-ex1"] == {
         "predominant_melodic_instruments-raw": "strings+winds",
         "predominant_melodic_instruments-normalized": ["strings", "winds"],

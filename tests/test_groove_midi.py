@@ -71,7 +71,6 @@ def test_load_metadata():
     dataset = groove_midi.Dataset(data_home)
     metadata = dataset._metadata
 
-    assert metadata["data_home"] == data_home
     assert metadata["drummer1/eval_session/1"] == {
         "drummer": "drummer1",
         "session": "drummer1/eval_session",

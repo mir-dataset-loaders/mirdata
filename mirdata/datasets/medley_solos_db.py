@@ -167,8 +167,7 @@ class Dataset(core.Dataset):
         )
 
         if not os.path.exists(metadata_path):
-            logging.info("Metadata file {} not found.".format(metadata_path))
-            return None
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata_index = {}
         with open(metadata_path, "r") as fhandle:
@@ -182,8 +181,6 @@ class Dataset(core.Dataset):
                     "instrument_id": int(instrument_id),
                     "song_id": int(song_id),
                 }
-
-        metadata_index["data_home"] = self.data_home
 
         return metadata_index
 

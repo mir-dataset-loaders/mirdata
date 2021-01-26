@@ -111,7 +111,6 @@ def test_load_metadata():
     data_home = "tests/resources/mir_datasets/rwc_jazz"
     dataset = rwc_jazz.Dataset(data_home)
     metadata = dataset._metadata
-    assert metadata["data_home"] == data_home
     assert metadata["RM-J004"] == {
         "piece_number": "No. 4",
         "suffix": "M01",

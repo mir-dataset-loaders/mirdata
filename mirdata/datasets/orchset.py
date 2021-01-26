@@ -245,8 +245,7 @@ class Dataset(core.Dataset):
         )
 
         if not os.path.exists(predominant_inst_path):
-            logging.info("Metadata file {} not found.".format(predominant_inst_path))
-            return None
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         with open(predominant_inst_path, "r") as fhandle:
             reader = csv.reader(fhandle, delimiter=",")
@@ -292,8 +291,6 @@ class Dataset(core.Dataset):
                 "work": "-".join(id_split[1:-1]),
                 "excerpt": id_split[-1][2:],
             }
-
-        metadata_index["data_home"] = self.data_home
 
         return metadata_index
 

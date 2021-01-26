@@ -80,7 +80,6 @@ def test_load_metadata():
     data_home = "tests/resources/mir_datasets/medleydb_pitch"
     dataset = medleydb_pitch.Dataset(data_home)
     metadata = dataset._metadata
-    assert metadata["data_home"] == data_home
     assert metadata["AClassicEducation_NightOwl_STEM_08"] == {
         "audio_path": "medleydb_pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",
         "pitch_path": "medleydb_pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv",

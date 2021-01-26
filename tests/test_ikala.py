@@ -135,6 +135,5 @@ def test_load_metadata():
     data_home = "tests/resources/mir_datasets/ikala"
     dataset = ikala.Dataset(data_home)
     metadata = dataset._metadata
-    assert metadata["data_home"] == data_home
     assert metadata["10161"] == "1"
     assert metadata["21025"] == "1"

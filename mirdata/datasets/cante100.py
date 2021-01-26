@@ -350,12 +350,7 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "cante100Meta.xml")
         if not os.path.exists(metadata_path):
-            logging.info(
-                "Metadata file {} not found.".format(metadata_path)
-                + "You can download the metadata file for cante100 "
-                + "by running cante100.download()"
-            )
-            return None
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         tree = ET.parse(metadata_path)
         root = tree.getroot()
@@ -393,7 +388,6 @@ class Dataset(core.Dataset):
         durations = [m + s for (m, s) in zip(minutes, seconds)]
 
         metadata = dict()
-        metadata["data_home"] = self.data_home
         for i, j in zip(indexes, range(len(artists))):
             metadata[i] = {
                 "musicBrainzID": identifiers[j],

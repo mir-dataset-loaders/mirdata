@@ -83,7 +83,6 @@ def test_load_metadata():
     metadata = dataset._metadata
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
 
-    assert metadata["data_home"] == data_home
     assert metadata[default_trackid] == {
         "canonical_composer": "Alban Berg",
         "canonical_title": "Sonata Op. 1",
