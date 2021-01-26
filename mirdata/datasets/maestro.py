@@ -246,7 +246,7 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "maestro-v2.0.0.json")
-        
+
         if not os.path.exists(metadata_path):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 

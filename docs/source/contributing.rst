@@ -530,10 +530,36 @@ Track Attributes
 Custom track attributes should be global, track-level data.
 For some datasets, there is a separate, dataset-level metadata file
 with track-level metadata, e.g. as a csv. When a single file is needed
-for more than one track, we recommend using writing a ``_metadata`` cached property
+for more than one track, we recommend using writing a ``_metadata`` cached property (which
+returns a dictionary, either keyed by track_id or freeform)
 in the Dataset class (see the dataset module example code above). When this is specified,
-it will populate a tracks hidden `_track_metadata` field, which can be accessed from
+it will populate a track's hidden ``_track_metadata`` field, which can be accessed from
 the Track class.
+
+For example, if ``_metadata`` returns a dictionary of the form:
+
+.. code-block:: python
+
+    {
+        'track1': {
+            'artist': 'A',
+            'genre': 'Z'
+        },
+        'track2': {
+            'artist': 'B',
+            'genre': 'Y'
+        }
+    }
+
+the ``_track metadata`` for ``track_id=track2`` will be:
+
+.. code-block:: python
+
+    {
+        'artist': 'B',
+        'genre': 'Y'
+    }
+
 
 Load methods vs Track properties
 --------------------------------
