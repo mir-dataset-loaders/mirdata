@@ -114,6 +114,9 @@ class Track(core.Track):
         taala (BeatData): taala annotations
         notation (EventData): note notations in IAM solfège symbols representation
         sections (SectionData): track section annotations
+        mbid (str): musicbrainz id of the composition
+        arohanam (list, str): arohanam annotation of the related raaga
+        avarohanam (list, str): avarohanam annotation of the related raaga
 
     """
 
@@ -141,7 +144,7 @@ class Track(core.Track):
             [self._data_home, self._track_paths["notation"][0]]
         )
         self.metadata_path = core.none_path_join(
-            [self._data_home, DATA.index["metadata"][0]]
+            [self._data_home, DATA.index["metadata"]["annotation_metadata"][0]]
         )
 
         # -- Track attributes --
@@ -165,6 +168,20 @@ class Track(core.Track):
     @core.cached_property
     def sections(self):
         return load_sections(self.notation_path, self.taala_path)
+
+    @core.cached_property
+    def mbid(self):
+        return load_mbid(self.notation_path)
+
+    @core.cached_property
+    def arohanam(self):
+        moorchanas = load_moorchanas(self.notation_path)
+        return moorchanas[0]
+
+    @core.cached_property
+    def avarohanam(self):
+        moorchanas = load_moorchanas(self.notation_path)
+        return moorchanas[1]
 
     @property
     def audio(self):
@@ -192,7 +209,9 @@ class Track(core.Track):
             metadata={
                 "performer": self.artist,
                 "raaga": self.raaga,
-                "tonic": self.tonic
+                "tonic": self.tonic,
+                "arohanam": self.arohanam,
+                "avarohanam": self.avarohanam
             },
         )
 
@@ -213,7 +232,7 @@ def load_audio(audio_path):
 
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=22100, mono=False)
+    return librosa.load(audio_path, sr=None, mono=False)
 
 
 def load_taala(taala_path):
@@ -304,7 +323,7 @@ def load_notation(notation_path, taala_path):
 
 
 def load_sections(notation_path, taala_path):
-    """Load secitons
+    """Load sections
 
     Args:
         notation_path (str): Local path where the phrase annotation is stored.
@@ -359,6 +378,64 @@ def load_sections(notation_path, taala_path):
     return annotations.SectionData(np.array(intervals), section_labels)
 
 
+def load_mbid(notation_path):
+    """Load musicbrainz id
+
+    Args:
+        notation_path (str): Local path where the phrase annotation is stored.
+            If `None`, returns None.
+
+    Returns:
+        string: musicbrainz id for the composition
+
+    """
+    if notation_path is None:
+        return None
+
+    if not os.path.exists(notation_path):
+        raise IOError("notation_path {} does not exist".format(notation_path))
+
+    with open(notation_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=':')
+        for row in reader:
+            if row[0] == 'mbid':
+                return row[-1].replace("'", "").replace(" ", "")
+
+
+def load_moorchanas(notation_path):
+    """Load arohanam and avarohanam annotations
+
+    Args:
+        notation_path (str): Local path where the phrase annotation is stored.
+            If `None`, returns None.
+
+    Returns:
+        (list, string): section annotation for track
+
+    """
+    if notation_path is None:
+        return None
+
+    if not os.path.exists(notation_path):
+        raise IOError("notation_path {} does not exist".format(notation_path))
+
+    notes = []
+    with open(notation_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter='-')
+        for row in reader:
+            if row[0] == 'pallavi:':
+                break
+            notes.append(str(row[-1].replace(" ", "")))
+
+    arohanam_ind = notes.index('arohana:') + 1  # Get left boundary of arohanam notations
+    avarohanam_ind = notes.index('avarohana:') + 1  # Get left boundary of avarohanam notations
+
+    arohanam = notes[arohanam_ind:avarohanam_ind-1]  # Get arohanam
+    avarohanam = notes[avarohanam_ind:]  # Get avarohanam
+
+    return [arohanam, avarohanam]
+
+
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
@@ -391,3 +468,11 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_sections)
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_mbid)
+    def load_mbid(self, *args, **kwargs):
+        return load_mbid(*args, **kwargs)
+
+    @core.copy_docs(load_moorchanas)
+    def load_moorchanas(self, *args, **kwargs):
+        return load_moorchanas(*args, **kwargs)

@@ -31,6 +31,9 @@ def test_track():
         "taala": annotations.BeatData,
         "notation": annotations.EventData,
         "sections": annotations.SectionData,
+        "mbid": str,
+        "arohanam": list,
+        "avarohanam": list
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -147,6 +150,30 @@ def test_load_notation():
             ]
         ),
     )
+
+
+def test_load_mbid():
+    data_home = "tests/resources/mir_datasets/compmusic_carnatic_varnam"
+    track = compmusic_carnatic_varnam.Track("dharini_abhogi", data_home=data_home)
+    notation_path = track.notation_path
+    parsed_mbid = compmusic_carnatic_varnam.load_mbid(notation_path)
+
+    assert type(parsed_mbid) == str
+    assert parsed_mbid == '6ef7a09c-e08d-46a4-b8bf-891d20e87457'
+
+
+def test_load_moorchanas():
+    data_home = "tests/resources/mir_datasets/compmusic_carnatic_varnam"
+    track = compmusic_carnatic_varnam.Track("dharini_abhogi", data_home=data_home)
+    notation_path = track.notation_path
+    parsed_moorchanas = compmusic_carnatic_varnam.load_moorchanas(notation_path)
+
+    print(parsed_moorchanas)
+    assert type(parsed_moorchanas) == list
+    assert type(parsed_moorchanas[0]) == list
+    assert type(parsed_moorchanas[0][0]) == str
+    assert parsed_moorchanas[0] == ['S', 'R2', 'G1', 'M1', 'D2', 'S^']
+    assert parsed_moorchanas[1] == ['S^', 'D2', 'M1', 'G1', 'R2', 'S']
 
 
 def test_load_sections():

@@ -31,7 +31,9 @@ def make_compmusic_varnam_index(dataset_data_path):
     dataset_index = {
         'version': 1.0,
         'tracks': {},
-        'metadata': {}
+        'metadata': {
+            'annotation_metadata': []
+        }
     }
 
     annotations_path = 'Notations_Annotations/annotations'
@@ -66,7 +68,7 @@ def make_compmusic_varnam_index(dataset_data_path):
                         ]
                     }
 
-    dataset_index['metadata'] = [
+    dataset_index['metadata']['annotation_metadata'] = [
         os.path.join('carnatic_varnam_1.0', annotations_path, 'tonics.yaml'),
         md5(os.path.join(
             dataset_data_path, annotations_path, 'tonics.yaml'
