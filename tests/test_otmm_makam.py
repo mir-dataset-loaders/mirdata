@@ -387,8 +387,7 @@ def test_load_pitch():
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
     track = compmusic_otmm_makam.Track("cafcdeaf-e966-4ff0-84fb-f660d2b68365", data_home=data_home)
-    annotation_metadata_path = track.metadata_path
-    parsed_annotation_metadata = compmusic_otmm_makam._load_metadata(annotation_metadata_path)
+    parsed_annotation_metadata = compmusic_otmm_makam._load_metadata(data_home)
 
     track_id = list(parsed_annotation_metadata.keys())[0]
     assert track_id == "cafcdeaf-e966-4ff0-84fb-f660d2b68365"

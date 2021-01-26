@@ -72,6 +72,7 @@ LICENSE_INFO = (
 
 
 def _load_metadata(metadata_path):
+    metadata_path = os.path.join(metadata_path, "MTG-otmm_makam_recognition_dataset-f14c0d0", "annotations.json")
     if not os.path.exists(metadata_path):
         logging.info("Metadata file {} not found.".format(metadata_path))
         return None
@@ -141,12 +142,11 @@ class Track(core.Track):
             [self._data_home, self._track_paths["metadata"][0]]
         )
 
-        self.metadata_path = os.path.join(data_home, DATA.index["metadata"]["annotation_metadata"][0])
-        metadata_annotations = DATA.metadata(self.metadata_path)[track_id]
-        if metadata_annotations is not None:
-            self.tonic = metadata_annotations['tonic']
-            self.makam = metadata_annotations['makam']
-            self.mbid = metadata_annotations['mbid']
+        metadata_annotations = DATA.metadata(data_home=data_home)
+        if metadata_annotations is not None and track_id in metadata_annotations.keys():
+            self.tonic = metadata_annotations[track_id]['tonic']
+            self.makam = metadata_annotations[track_id]['makam']
+            self.mbid = metadata_annotations[track_id]['mbid']
 
         self._track_metadata = load_track_metadata(self.track_metadata_path)
         self.usul = (
