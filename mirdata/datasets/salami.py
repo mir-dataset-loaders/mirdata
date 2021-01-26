@@ -63,52 +63,7 @@ http://creativecommons.org/publicdomain/zero/1.0/legalcode.
 """
 
 
-def _load_metadata(data_home):
-
-    metadata_path = os.path.join(
-        data_home,
-        os.path.join(
-            "salami-data-public-hierarchy-corrections", "metadata", "metadata.csv"
-        ),
-    )
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    with open(metadata_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        raw_data = []
-        for line in reader:
-            if line != []:
-                if line[0] == "SONG_ID":
-                    continue
-                raw_data.append(line)
-
-    metadata_index = {}
-    for line in raw_data:
-        track_id = line[0]
-        duration = None
-        if line[5] != "":
-            duration = float(line[5])
-        metadata_index[track_id] = {
-            "source": line[1],
-            "annotator_1_id": line[2],
-            "annotator_2_id": line[3],
-            "duration": duration,
-            "title": line[7],
-            "artist": line[8],
-            "annotator_1_time": line[10],
-            "annotator_2_time": line[11],
-            "class": line[14],
-            "genre": line[15],
-        }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = core.LargeData("salami_index.json", _load_metadata)
+DATA = core.LargeData("salami_index.json")
 
 
 class Track(core.Track):
@@ -141,14 +96,21 @@ class Track(core.Track):
         sections_annotator_2_lowercase (SectionData): annotations in hierarchy level 1 from annotator 2
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in Salami".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
         self.sections_annotator1_uppercase_path = core.none_path_join(
             [self._data_home, self._track_paths["annotator_1_uppercase"][0]]
         )
@@ -162,34 +124,17 @@ class Track(core.Track):
             [self._data_home, self._track_paths["annotator_2_lowercase"][0]]
         )
 
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata.keys():
-            self._track_metadata = metadata[track_id]
-        else:
-            # annotations with missing metadata
-            self._track_metadata = {
-                "source": None,
-                "annotator_1_id": None,
-                "annotator_2_id": None,
-                "duration": None,
-                "title": None,
-                "artist": None,
-                "annotator_1_time": None,
-                "annotator_2_time": None,
-                "class": None,
-                "genre": None,
-            }
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.source = self._track_metadata["source"]
-        self.annotator_1_id = self._track_metadata["annotator_1_id"]
-        self.annotator_2_id = self._track_metadata["annotator_2_id"]
-        self.duration = self._track_metadata["duration"]
-        self.title = self._track_metadata["title"]
-        self.artist = self._track_metadata["artist"]
-        self.annotator_1_time = self._track_metadata["annotator_1_time"]
-        self.annotator_2_time = self._track_metadata["annotator_2_time"]
-        self.broad_genre = self._track_metadata["class"]
-        self.genre = self._track_metadata["genre"]
+        self.source = self._track_metadata.get("source")
+        self.annotator_1_id = self._track_metadata.get("annotator_1_id")
+        self.annotator_2_id = self._track_metadata.get("annotator_2_id")
+        self.duration = self._track_metadata.get("duration")
+        self.title = self._track_metadata.get("title")
+        self.artist = self._track_metadata.get("artist")
+        self.annotator_1_time = self._track_metadata.get("annotator_1_time")
+        self.annotator_2_time = self._track_metadata.get("annotator_2_time")
+        self.broad_genre = self._track_metadata.get("class")
+        self.genre = self._track_metadata.get("genre")
 
     @core.cached_property
     def sections_annotator_1_uppercase(self) -> Optional[annotations.SectionData]:
@@ -251,7 +196,7 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a Salami audio file.
 
     Args:
-        fhandle(str or file-like): path to audio file
+        fhandle (str or file-like): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -266,7 +211,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load salami sections data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to sectin annotation file
+        fhandle (str or file-like): File-like object or path to sectin annotation file
 
     Returns:
         SectionData: section data
@@ -300,12 +245,54 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="salami",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+
+        metadata_path = os.path.join(
+            self.data_home,
+            os.path.join(
+                "salami-data-public-hierarchy-corrections", "metadata", "metadata.csv"
+            ),
+        )
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        with open(metadata_path, "r") as fhandle:
+            reader = csv.reader(fhandle, delimiter=",")
+            raw_data = []
+            for line in reader:
+                if line != []:
+                    if line[0] == "SONG_ID":
+                        continue
+                    raw_data.append(line)
+
+        metadata_index = {}
+        for line in raw_data:
+            track_id = line[0]
+            duration = None
+            if line[5] != "":
+                duration = float(line[5])
+            metadata_index[track_id] = {
+                "source": line[1],
+                "annotator_1_id": line[2],
+                "annotator_2_id": line[3],
+                "duration": duration,
+                "title": line[7],
+                "artist": line[8],
+                "annotator_1_time": line[10],
+                "annotator_2_time": line[11],
+                "class": line[14],
+                "genre": line[15],
+            }
+
+        return metadata_index
 
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):

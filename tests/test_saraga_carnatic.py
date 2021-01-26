@@ -9,7 +9,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "116_Bhuvini_Dasudane"
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track(default_trackid, data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "116_Bhuvini_Dasudane",
@@ -56,91 +57,6 @@ def test_track():
         "metadata_path": "tests/resources/mir_datasets/saraga_carnatic/saraga1.5_carnatic/"
         + "Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/"
         + "Bhuvini Dasudane/Bhuvini Dasudane.json",
-        "raaga": [
-            {
-                "uuid": "42dd0ccb-f92a-4622-ae5d-a3be571b4939",
-                "name": "Śrīranjani",
-                "common_name": "shri ranjani",
-            }
-        ],
-        "form": [{"name": "Kriti"}],
-        "title": "Bhuvini Dasudane",
-        "work": [
-            {
-                "mbid": "4d05ce9b-c45e-4c85-9eca-941d68b61132",
-                "title": "Bhuvini Dasudane",
-            }
-        ],
-        "taala": [
-            {
-                "uuid": "c788c38a-b53a-48cb-b7bf-d11769260c4d",
-                "name": "Ādi",
-                "common_name": "adi",
-            }
-        ],
-        "album_artists": [
-            {
-                "mbid": "e09b0542-84e1-45ad-b09a-a05a9ad0cb83",
-                "name": "Cherthala Ranganatha Sharma",
-            }
-        ],
-        "mbid": "9f5a5452-14cb-4af0-9289-4833854ee60d",
-        "artists": [
-            {
-                "instrument": {
-                    "mbid": "c5aa7d98-c14d-4ff1-8afb-f8743c62496c",
-                    "name": "Ghatam",
-                },
-                "attributes": "",
-                "lead": False,
-                "artist": {
-                    "mbid": "19f93366-5d58-47f1-bc4f-9225ac7af6ba",
-                    "name": "N Guruprasad",
-                },
-            },
-            {
-                "instrument": {
-                    "mbid": "f689271c-37bc-4c49-92a3-a14b15ee5d0e",
-                    "name": "Mridangam",
-                },
-                "attributes": "",
-                "lead": False,
-                "artist": {
-                    "mbid": "39c1d741-6154-418b-bf4b-12c77ba13873",
-                    "name": "Srimushnam V Raja Rao",
-                },
-            },
-            {
-                "instrument": {
-                    "mbid": "089f123c-0f7d-4105-a64e-49de81ca8fa4",
-                    "name": "Violin",
-                },
-                "attributes": "",
-                "lead": False,
-                "artist": {
-                    "mbid": "a2df55e3-d141-4767-862e-77adca691d4b",
-                    "name": "B.U. Ganesh Prasad",
-                },
-            },
-            {
-                "instrument": {
-                    "mbid": "d92884b7-ee0c-46d5-96f3-918196ba8c5b",
-                    "name": "Voice",
-                },
-                "attributes": "lead vocals",
-                "lead": True,
-                "artist": {
-                    "mbid": "e09b0542-84e1-45ad-b09a-a05a9ad0cb83",
-                    "name": "Cherthala Ranganatha Sharma",
-                },
-            },
-        ],
-        "concert": [
-            {
-                "mbid": "0816586d-c83e-4c79-a0aa-9b0e578f408d",
-                "title": "Cherthala Ranganatha Sharma at Arkay",
-            }
-        ],
     }
 
     expected_property_types = {
@@ -158,6 +74,7 @@ def test_track():
         "sama": annotations.BeatData,
         "sections": annotations.SectionData,
         "tonic": float,
+        "metadata": dict,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -170,7 +87,8 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track("116_Bhuvini_Dasudane")
     jam = track.to_jams()
 
     # Tonic
@@ -370,12 +288,12 @@ def test_to_jams():
             "title": "Cherthala Ranganatha Sharma at Arkay",
         }
     ]
-    assert metadata["data_home"] == "tests/resources/mir_datasets/saraga_carnatic"
 
 
 def test_load_tonic():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track("116_Bhuvini_Dasudane")
     tonic_path = track.ctonic_path
     parsed_tonic = saraga_carnatic.load_tonic(tonic_path)
     assert parsed_tonic == 201.740890
@@ -384,7 +302,8 @@ def test_load_tonic():
 
 def test_load_pitch():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track("116_Bhuvini_Dasudane")
     pitch_path = track.pitch_path
     parsed_pitch = saraga_carnatic.load_pitch(pitch_path)
 
@@ -416,7 +335,6 @@ def test_load_pitch():
         parsed_pitch.confidence, np.array([0.0, 1.0, 1.0, 1.0, 1.0, 1.0])
     )
 
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
     pitch_vocal_path = track.pitch_vocal_path
     parsed_vocal_pitch = saraga_carnatic.load_pitch(pitch_vocal_path)
 
@@ -462,7 +380,8 @@ def test_load_pitch():
 
 def test_load_sama():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track("116_Bhuvini_Dasudane")
     sama_path = track.sama_path
     parsed_sama = saraga_carnatic.load_sama(sama_path)
 
@@ -476,14 +395,15 @@ def test_load_sama():
     assert np.array_equal(parsed_sama.positions, np.array([1, 1, 1]))
     assert saraga_carnatic.load_sama(None) is None
 
-    track = saraga_carnatic.Track("117_Karuna_Nidhi_Illalo", data_home=data_home)
+    track = dataset.track("117_Karuna_Nidhi_Illalo")
     parsed_sama = track.sama
     assert parsed_sama is None
 
 
 def test_load_sections():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track("116_Bhuvini_Dasudane")
     sections_path = track.sections_path
     parsed_sections = saraga_carnatic.load_sections(sections_path)
 
@@ -508,7 +428,8 @@ def test_load_sections():
 
 def test_load_phrases():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track("116_Bhuvini_Dasudane")
     phrases_path = track.phrases_path
     parsed_phrases = saraga_carnatic.load_phrases(phrases_path)
 
@@ -534,7 +455,8 @@ def test_load_phrases():
 
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track("116_Bhuvini_Dasudane")
     tempo_path = track.tempo_path
     parsed_tempo = saraga_carnatic.load_tempo(tempo_path)
 
@@ -551,9 +473,7 @@ def test_load_tempo():
 
     assert saraga_carnatic.load_tempo(None) is None
 
-    track = saraga_carnatic.Track(
-        "115_Idhu_Thaano_Thillai_Sthalam", data_home=data_home
-    )
+    track = dataset.track("115_Idhu_Thaano_Thillai_Sthalam")
     tempo_path = track.tempo_path
     parsed_tempo = saraga_carnatic.load_tempo(tempo_path)
     assert parsed_tempo is None
@@ -561,9 +481,10 @@ def test_load_tempo():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track("116_Bhuvini_Dasudane")
     metadata_path = track.metadata_path
-    parsed_metadata = saraga_carnatic._load_metadata(metadata_path)
+    parsed_metadata = saraga_carnatic.load_metadata(metadata_path)
 
     assert parsed_metadata["raaga"] == [
         {
@@ -648,14 +569,12 @@ def test_load_metadata():
             "title": "Cherthala Ranganatha Sharma at Arkay",
         }
     ]
-    assert (
-        parsed_metadata["data_home"] == "tests/resources/mir_datasets/saraga_carnatic"
-    )
 
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/saraga_carnatic"
-    track = saraga_carnatic.Track("116_Bhuvini_Dasudane", data_home=data_home)
+    dataset = saraga_carnatic.Dataset(data_home)
+    track = dataset.track("116_Bhuvini_Dasudane")
     audio_path = track.audio_path
     audio, sr = saraga_carnatic.load_audio(audio_path)
 

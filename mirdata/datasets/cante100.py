@@ -146,80 +146,7 @@ were gathered by the COFLA team. COFLA 2015. All rights reserved.
 """
 
 
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "cante100Meta.xml")
-    if not os.path.exists(metadata_path):
-        logging.info(
-            "Metadata file {} not found.".format(metadata_path)
-            + "You can download the metadata file for cante100 "
-            + "by running cante100.download()"
-        )
-        return None
-
-    tree = ET.parse(metadata_path)
-    root = tree.getroot()
-
-    # ids
-    indexes = []
-    for child in root:
-        index = child.attrib.get("id")
-        if len(index) == 1:
-            index = "00" + index
-            indexes.append(index)
-            continue
-        if len(index) == 2:
-            index = "0" + index
-            indexes.append(index)
-            continue
-        else:
-            indexes.append(index)
-
-    # musicBrainzID
-    identifiers = []
-    for ident in root.iter("musicBrainzID"):
-        identifiers.append(ident.text)
-
-    # artist
-    artists = []
-    for artist in root.iter("artist"):
-        artists.append(artist.text)
-
-    # titles
-    titles = []
-    for title in root.iter("title"):
-        titles.append(title.text)
-
-    # releases
-    releases = []
-    for release in root.iter("anthology"):
-        releases.append(release.text)
-
-    # duration
-    durations = []
-    minutes = []
-    for minute in root.iter("duration_m"):
-        minutes.append(float(minute.text) * 60)
-    seconds = []
-    for second in root.iter("duration_s"):
-        seconds.append(float(second.text))
-    for i in np.arange(len(minutes)):
-        durations.append(minutes[i] + seconds[i])
-
-    metadata = dict()
-    metadata["data_home"] = data_home
-    for i, j in zip(indexes, range(len(artists))):
-        metadata[i] = {
-            "musicBrainzID": identifiers[j],
-            "artist": artists[j],
-            "title": titles[j],
-            "release": releases[j],
-            "duration": durations[j],
-        }
-
-    return metadata
-
-
-DATA = core.LargeData("cante100_index.json", _load_metadata)
+DATA = core.LargeData("cante100_index.json")
 
 
 class Track(core.Track):
@@ -244,15 +171,22 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in Example".format(track_id))
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
-
-        self._data_home = data_home
-
-        self._track_paths = DATA.index["tracks"][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.spectrogram_path = os.path.join(
             self._data_home, self._track_paths["spectrum"][0]
@@ -260,23 +194,11 @@ class Track(core.Track):
         self.f0_path = os.path.join(self._data_home, self._track_paths["f0"][0])
         self.notes_path = os.path.join(self._data_home, self._track_paths["notes"][0])
 
-        metadata = DATA.metadata(data_home=data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "musicBrainzID": None,
-                "artist": None,
-                "title": None,
-                "release": None,
-                "duration": None,
-            }
-
-        self.identifier = self._track_metadata["musicBrainzID"]
-        self.artist = self._track_metadata["artist"]
-        self.title = self._track_metadata["title"]
-        self.release = self._track_metadata["release"]
-        self.duration = self._track_metadata["duration"]
+        self.identifier = self._track_metadata.get("musicBrainzID")
+        self.artist = self._track_metadata.get("artist")
+        self.title = self._track_metadata.get("title")
+        self.release = self._track_metadata.get("release")
+        self.duration = self._track_metadata.get("duration")
 
     @property
     def audio(self) -> Tuple[np.ndarray, float]:
@@ -417,12 +339,65 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="cante100",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "cante100Meta.xml")
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        tree = ET.parse(metadata_path)
+        root = tree.getroot()
+
+        # ids
+        indexes = []
+        for child in root:
+            index = child.attrib.get("id")
+            if len(index) == 1:
+                index = "00" + index
+                indexes.append(index)
+                continue
+            if len(index) == 2:
+                index = "0" + index
+                indexes.append(index)
+                continue
+            else:
+                indexes.append(index)
+
+        # musicBrainzID
+        identifiers = [ident.text for ident in root.iter("musicBrainzID")]
+
+        # artist
+        artists = [artist.text for artist in root.iter("artist")]
+
+        # titles
+        titles = [title.text for title in root.iter("title")]
+
+        # releases
+        releases = [release.text for release in root.iter("anthology")]
+
+        # duration
+        minutes = [float(minute.text) * 60 for minute in root.iter("duration_m")]
+        seconds = [float(second.text) for second in root.iter("duration_s")]
+        durations = [m + s for (m, s) in zip(minutes, seconds)]
+
+        metadata = dict()
+        for i, j in zip(indexes, range(len(artists))):
+            metadata[i] = {
+                "musicBrainzID": identifiers[j],
+                "artist": artists[j],
+                "title": titles[j],
+                "release": releases[j],
+                "duration": durations[j],
+            }
+
+        return metadata
 
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):

@@ -115,50 +115,7 @@ See https://staff.aist.go.jp/m.goto/RWC-MDB/ for more details.
 """
 
 
-def _load_metadata(data_home):
-
-    metadata_path = os.path.join(data_home, "metadata-master", "rwc-c.csv")
-
-    if not os.path.exists(metadata_path):
-        logging.info(
-            "Metadata file {} not found.".format(metadata_path)
-            + "You can download the metadata file by running download()"
-        )
-        return None
-
-    with open(metadata_path, "r") as fhandle:
-        dialect = csv.Sniffer().sniff(fhandle.read(1024))
-        fhandle.seek(0)
-        reader = csv.reader(fhandle, dialect)
-        raw_data = []
-        for line in reader:
-            if line[0] != "Piece No.":
-                raw_data.append(line)
-
-    metadata_index = {}
-    for line in raw_data:
-        if line[0] == "Piece No.":
-            continue
-        p = "00" + line[0].split(".")[1][1:]
-        track_id = "RM-C{}".format(p[len(p) - 3 :])
-
-        metadata_index[track_id] = {
-            "piece_number": line[0],
-            "suffix": line[1],
-            "track_number": line[2],
-            "title": line[3],
-            "composer": line[4],
-            "artist": line[5],
-            "duration": _duration_to_sec(line[6]),
-            "category": line[7],
-        }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = core.LargeData("rwc_classical_index.json", _load_metadata)
+DATA = core.LargeData("rwc_classical_index.json")
 
 
 class Track(core.Track):
@@ -188,45 +145,37 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in rwc_classical".format(track_id)
-            )
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
         self.sections_path = os.path.join(
             self._data_home, self._track_paths["sections"][0]
         )
         self.beats_path = os.path.join(self._data_home, self._track_paths["beats"][0])
 
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "piece_number": None,
-                "suffix": None,
-                "track_number": None,
-                "title": None,
-                "composer": None,
-                "artist": None,
-                "duration": None,
-                "category": None,
-            }
-
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-        self.piece_number = self._track_metadata["piece_number"]
-        self.suffix = self._track_metadata["suffix"]
-        self.track_number = self._track_metadata["track_number"]
-        self.title = self._track_metadata["title"]
-        self.composer = self._track_metadata["composer"]
-        self.artist = self._track_metadata["artist"]
-        self.duration = self._track_metadata["duration"]
-        self.category = self._track_metadata["category"]
+        self.piece_number = self._track_metadata.get("piece_number")
+        self.suffix = self._track_metadata.get("suffix")
+        self.track_number = self._track_metadata.get("track_number")
+        self.title = self._track_metadata.get("title")
+        self.composer = self._track_metadata.get("composer")
+        self.artist = self._track_metadata.get("artist")
+        self.duration = self._track_metadata.get("duration")
+        self.category = self._track_metadata.get("category")
 
     @core.cached_property
     def sections(self) -> Optional[annotations.SectionData]:
@@ -267,7 +216,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a RWC audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -282,7 +231,7 @@ def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
     """Load rwc section data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to sections annotation file
+        fhandle (str or file-like): File-like object or path to sections annotation file
 
     Returns:
         SectionData: section data
@@ -346,7 +295,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load rwc beat data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to beats annotation file
+        fhandle (str or file-like): File-like object or path to beats annotation file
 
     Returns:
         BeatData: beat data
@@ -404,12 +353,49 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="rwc_classical",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+
+        metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-c.csv")
+
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        with open(metadata_path, "r") as fhandle:
+            dialect = csv.Sniffer().sniff(fhandle.read(1024))
+            fhandle.seek(0)
+            reader = csv.reader(fhandle, dialect)
+            raw_data = []
+            for line in reader:
+                if line[0] != "Piece No.":
+                    raw_data.append(line)
+
+        metadata_index = {}
+        for line in raw_data:
+            if line[0] == "Piece No.":
+                continue
+            p = "00" + line[0].split(".")[1][1:]
+            track_id = "RM-C{}".format(p[len(p) - 3 :])
+
+            metadata_index[track_id] = {
+                "piece_number": line[0],
+                "suffix": line[1],
+                "track_number": line[2],
+                "title": line[3],
+                "composer": line[4],
+                "artist": line[5],
+                "duration": _duration_to_sec(line[6]),
+                "category": line[7],
+            }
+
+        return metadata_index
 
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):

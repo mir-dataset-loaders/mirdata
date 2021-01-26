@@ -85,27 +85,7 @@ LICENSE_INFO = (
 )
 
 
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "maestro-v2.0.0.json")
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    # load metadata however makes sense for your dataset
-    with open(metadata_path, "r") as fhandle:
-        raw_metadata = json.load(fhandle)
-
-    metadata = {}
-    for mdata in raw_metadata:
-        track_id = mdata["midi_filename"].split(".")[0]
-        metadata[track_id] = mdata
-
-    metadata["data_home"] = data_home
-
-    return metadata
-
-
-DATA = core.LargeData("maestro_index.json", _load_metadata)
+DATA = core.LargeData("maestro_index.json")
 
 
 class Track(core.Track):
@@ -132,31 +112,30 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in MAESTRO".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
-        self._metadata = DATA.metadata(data_home)
-        if self._metadata is not None and track_id in self._metadata:
-            self.canonical_composer = self._metadata[track_id]["canonical_composer"]
-            self.canonical_title = self._metadata[track_id]["canonical_title"]
-            self.split = self._metadata[track_id]["split"]
-            self.year = self._metadata[track_id]["year"]
-            self.duration = self._metadata[track_id]["duration"]
-        else:
-            self.canonical_composer = None
-            self.canonical_title = None
-            self.split = None
-            self.year = None
-            self.duration = None
+        self.canonical_composer = self._track_metadata.get("canonical_composer")
+        self.canonical_title = self._track_metadata.get("canonical_title")
+        self.split = self._track_metadata.get("split")
+        self.year = self._track_metadata.get("year")
+        self.duration = self._track_metadata.get("duration")
 
     @core.cached_property
     def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
@@ -187,7 +166,7 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             note_data=[(self.notes, None)],
-            metadata=self._metadata,
+            metadata=self._track_metadata,
         )
 
 
@@ -196,7 +175,7 @@ def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
     """Load a MAESTRO midi file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to midi file
+        fhandle (str or file-like): File-like object or path to midi file
 
     Returns:
         pretty_midi.PrettyMIDI: pretty_midi object
@@ -237,7 +216,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MAESTRO audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -258,11 +237,28 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="maestro",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "maestro-v2.0.0.json")
+
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        with open(metadata_path, "r") as fhandle:
+            raw_metadata = json.load(fhandle)
+
+        metadata = {}
+        for mdata in raw_metadata:
+            track_id = mdata["midi_filename"].split(".")[0]
+            metadata[track_id] = mdata
+
+        return metadata
 
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):

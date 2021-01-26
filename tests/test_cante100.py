@@ -14,7 +14,9 @@ TEST_DATA_HOME = "tests/resources/mir_datasets/cante100"
 
 def test_track():
     default_trackid = "008"
-    track = cante100.Track(default_trackid, data_home=TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME)
+    track = dataset.track(default_trackid)
+
     expected_attributes = {
         "artist": "Toronjo",
         "duration": 179.0,
@@ -42,7 +44,8 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "008"
-    track = cante100.Track(default_trackid, data_home=TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME)
+    track = dataset.track(default_trackid)
     jam = track.to_jams()
 
     # Validate cante100 jam schema
@@ -99,7 +102,8 @@ def test_to_jams():
 
 
 def test_load_melody():
-    track = cante100.Track("008", data_home=TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME)
+    track = dataset.track("008")
     f0_path = track.f0_path
     f0_data = cante100.load_melody(f0_path)
 
@@ -130,7 +134,8 @@ def test_load_melody():
 
 
 def test_load_notes():
-    track = cante100.Track("008", data_home=TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME)
+    track = dataset.track("008")
     notes_path = track.notes_path
     notes_data = cante100.load_notes(notes_path)
 
@@ -177,7 +182,8 @@ def test_load_notes():
 
 
 def test_load_spectrum():
-    track = cante100.Track("008", data_home=TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME)
+    track = dataset.track("008")
     spectrogram_path = track.spectrogram_path
     spectrogram = cante100.load_spectrogram(spectrogram_path)
     assert spectrogram.shape[0] == 5
@@ -187,7 +193,8 @@ def test_load_spectrum():
 
 
 def test_load_audio():
-    track = cante100.Track("008", data_home=TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME)
+    track = dataset.track("008")
     audio_path = track.audio_path
     audio, sr = cante100.load_audio(audio_path)
     assert sr == 22050
@@ -196,10 +203,10 @@ def test_load_audio():
     assert type(audio) is np.ndarray
 
 
-def test_load_metadata():
+def test_metadata():
     data_home = "tests/resources/mir_datasets/cante100"
-    metadata = cante100._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
+    dataset = cante100.Dataset(data_home)
+    metadata = dataset._metadata
     assert metadata["008"] == {
         "musicBrainzID": "4eebe839-82bb-426e-914d-7c4525dd9dad",
         "artist": "Toronjo",

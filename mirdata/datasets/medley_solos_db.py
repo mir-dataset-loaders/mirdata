@@ -64,34 +64,7 @@ REMOTES = {
 LICENSE_INFO = "Creative Commons Attribution 4.0 International."
 
 
-def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, "annotation", "Medley-solos-DB_metadata.csv"
-    )
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata_index = {}
-    with open(metadata_path, "r") as fhandle:
-        csv_reader = csv.reader(fhandle, delimiter=",")
-        next(csv_reader)
-        for row in csv_reader:
-            subset, instrument_str, instrument_id, song_id, track_id = row
-            metadata_index[str(track_id)] = {
-                "subset": str(subset),
-                "instrument": str(instrument_str),
-                "instrument_id": int(instrument_id),
-                "song_id": int(song_id),
-            }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = core.LargeData("medley_solos_db_index.json", _load_metadata)
+DATA = core.LargeData("medley_solos_db_index.json")
 
 
 class Track(core.Track):
@@ -110,34 +83,27 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in Medley-solos-DB".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "instrument": None,
-                "instrument_id": None,
-                "song_id": None,
-                "subset": None,
-                "track_id": None,
-            }
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.instrument = self._track_metadata["instrument"]
-        self.instrument_id = self._track_metadata["instrument_id"]
-        self.song_id = self._track_metadata["song_id"]
-        self.subset = self._track_metadata["subset"]
+        self.instrument = self._track_metadata.get("instrument")
+        self.instrument_id = self._track_metadata.get("instrument_id")
+        self.song_id = self._track_metadata.get("song_id")
+        self.subset = self._track_metadata.get("subset")
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -167,7 +133,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Medley Solos DB audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -188,11 +154,35 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="medley_solos_db",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(
+            self.data_home, "annotation", "Medley-solos-DB_metadata.csv"
+        )
+
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        metadata_index = {}
+        with open(metadata_path, "r") as fhandle:
+            csv_reader = csv.reader(fhandle, delimiter=",")
+            next(csv_reader)
+            for row in csv_reader:
+                subset, instrument_str, instrument_id, song_id, track_id = row
+                metadata_index[str(track_id)] = {
+                    "subset": str(subset),
+                    "instrument": str(instrument_str),
+                    "instrument_id": int(instrument_id),
+                    "song_id": int(song_id),
+                }
+
+        return metadata_index
 
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):

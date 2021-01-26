@@ -11,7 +11,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "0"
     data_home = "tests/resources/mir_datasets/tonality_classicaldb"
-    track = tonality_classicaldb.Track(default_trackid, data_home=data_home)
+    dataset = tonality_classicaldb.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "audio_path": "tests/resources/mir_datasets/tonality_classicaldb/audio/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.wav",
@@ -40,7 +41,8 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/tonality_classicaldb"
-    track = tonality_classicaldb.Track("0", data_home=data_home)
+    dataset = tonality_classicaldb.Dataset(data_home)
+    track = dataset.track("0")
     jam = track.to_jams()
     assert jam["sandbox"]["key"] == "D major", "key does not match expected"
     assert (

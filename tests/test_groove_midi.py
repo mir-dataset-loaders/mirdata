@@ -11,7 +11,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "drummer1/eval_session/1"
     data_home = "tests/resources/mir_datasets/groove_midi"
-    track = groove_midi.Track(default_trackid, data_home=data_home)
+    dataset = groove_midi.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "drummer": "drummer1",
@@ -67,9 +68,9 @@ def test_track():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/groove_midi"
-    metadata = groove_midi._load_metadata(data_home)
+    dataset = groove_midi.Dataset(data_home)
+    metadata = dataset._metadata
 
-    assert metadata["data_home"] == data_home
     assert metadata["drummer1/eval_session/1"] == {
         "drummer": "drummer1",
         "session": "drummer1/eval_session",
@@ -83,8 +84,6 @@ def test_load_metadata():
         "duration": 27.872308,
         "split": "test",
     }
-    metadata_none = groove_midi._load_metadata("asdf/asdf")
-    assert metadata_none is None
 
 
 def test_load_audio():
@@ -118,7 +117,7 @@ def test_download(httpserver):
     assert not os.path.exists(os.path.join(data_home, "groove"))
 
     assert os.path.exists(os.path.join(data_home, "info.csv"))
-    track = groove_midi.Track("drummer1/eval_session/1", data_home=data_home)
+    track = dataset.track("drummer1/eval_session/1")
     assert os.path.exists(track.midi_path)
     assert os.path.exists(track.audio_path)
 

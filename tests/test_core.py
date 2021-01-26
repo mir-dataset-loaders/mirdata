@@ -61,7 +61,7 @@ def test_dataset_errors():
         mirdata.initialize("not_a_dataset")
 
     d = mirdata.initialize("orchset")
-    d._track_object = None
+    d._track_class = None
     with pytest.raises(NotImplementedError):
         d.track("asdf")
 

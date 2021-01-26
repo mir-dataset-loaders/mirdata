@@ -80,19 +80,7 @@ LICENSE_INFO = (
 )
 
 
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, os.path.join("dali_metadata.json"))
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-    with open(metadata_path, "r") as fhandle:
-        metadata_index = json.load(fhandle)
-
-    metadata_index["data_home"] = data_home
-    return metadata_index
-
-
-DATA = core.LargeData("dali_index.json", _load_metadata)
+DATA = core.LargeData("dali_index.json")
 
 
 class Track(core.Track):
@@ -126,54 +114,39 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in DALI".format(track_id))
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths["annot"][0]
         )
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-            self._track_metadata["album"] = metadata[track_id]["metadata"]["album"]
-            self._track_metadata["release_date"] = metadata[track_id]["metadata"][
-                "release_date"
-            ]
-            self._track_metadata["language"] = metadata[track_id]["metadata"][
-                "language"
-            ]
-            self.audio_url = self._track_metadata["audio"]["url"]
-            self.url_working = self._track_metadata["audio"]["working"]
-            self.ground_truth = self._track_metadata["ground-truth"]
-            self.artist = self._track_metadata["artist"]
-            self.title = self._track_metadata["title"]
-            self.dataset_version = self._track_metadata["dataset_version"]
-            self.scores_ncc = self._track_metadata["scores"]["NCC"]
-            self.scores_manual = self._track_metadata["scores"]["manual"]
-            self.album = self._track_metadata["album"]
-            self.release_date = self._track_metadata["release_date"]
-            self.language = self._track_metadata["language"]
-            self.audio_path = os.path.join(
-                self._data_home, self._track_paths["audio"][0]
-            )
-        else:
-            self.audio_url = None
-            self.url_working = None
-            self.ground_truth = None
-            self.artist = None
-            self.title = None
-            self.dataset_version = None
-            self.scores_ncc = None
-            self.scores_manual = None
-            self.album = None
-            self.release_date = None
-            self.language = None
-            self.audio_path = None
+        self.audio_url = self._track_metadata.get("audio", {}).get("url")
+        self.url_working = self._track_metadata.get("audio", {}).get("working")
+        self.ground_truth = self._track_metadata.get("ground-truth")
+        self.artist = self._track_metadata.get("artist")
+        self.title = self._track_metadata.get("title")
+        self.dataset_version = self._track_metadata.get("dataset_version")
+        self.scores_ncc = self._track_metadata.get("scores", {}).get("NCC")
+        self.scores_manual = self._track_metadata.get("scores", {}).get("manual")
+        self.album = self._track_metadata.get("metadata", {}).get("album")
+        self.release_date = self._track_metadata.get("metadata", {}).get("release_date")
+        self.genres = self._track_metadata.get("metadata", {}).get("genres")
+        self.language = self._track_metadata.get("metadata", {}).get("language")
 
     @core.cached_property
     def notes(self) -> annotations.NoteData:
@@ -230,7 +203,7 @@ def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
     """Load a DALI audio file.
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to an audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -309,12 +282,23 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="dali",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, os.path.join("dali_metadata.json"))
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        with open(metadata_path, "r") as fhandle:
+            metadata_index = json.load(fhandle)
+
+        return metadata_index
 
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):

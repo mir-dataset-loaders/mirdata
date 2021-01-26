@@ -9,7 +9,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "1"
     data_home = "tests/resources/mir_datasets/beatport_key"
-    track = beatport_key.Track(default_trackid, data_home=data_home)
+    dataset = beatport_key.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "audio_path": "tests/resources/mir_datasets/beatport_key/audio/100066 Lindstrom - Monsteer (Original Mix).mp3",
@@ -37,7 +38,8 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/beatport_key"
-    track = beatport_key.Track("1", data_home=data_home)
+    dataset = beatport_key.Dataset(data_home)
+    track = dataset.track("1")
     jam = track.to_jams()
     assert jam["sandbox"]["key"] == ["D minor"], "key does not match expected"
 

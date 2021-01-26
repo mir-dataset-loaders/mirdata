@@ -99,16 +99,22 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in giantsteps_key".format(track_id)
-            )
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.keys_path = os.path.join(self._data_home, self._track_paths["key"][0])
         self.metadata_path = (
@@ -168,7 +174,7 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_key audio file.
 
     Args:
-        fhandle(str or file-like): path pointing to an audio file
+        fhandle (str or file-like): path pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -183,7 +189,7 @@ def load_key(fhandle: TextIO) -> str:
     """Load giantsteps_key format key data from a file
 
     Args:
-        fhandle(str or file-like): File like object or string pointing to key annotation file
+        fhandle (str or file-like): File like object or string pointing to key annotation file
 
     Returns:
         str: loaded key data
@@ -197,7 +203,7 @@ def load_tempo(fhandle: TextIO) -> str:
     """Load giantsteps_key tempo data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or string pointing to metadata annotation file
+        fhandle (str or file-like): File-like object or string pointing to metadata annotation file
 
     Returns:
         str: loaded tempo data
@@ -212,7 +218,7 @@ def load_genre(fhandle: TextIO) -> Dict[str, List[str]]:
     """Load giantsteps_key genre data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path pointing to metadata annotation file
+        fhandle (str or file-like): File-like object or path pointing to metadata annotation file
 
     Returns:
         dict: `{'genres': [...], 'subgenres': [...]}`
@@ -230,7 +236,7 @@ def load_artist(fhandle: TextIO) -> List[str]:
     """Load giantsteps_key tempo data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path pointing to metadata annotation file
+        fhandle (str or file-like): File-like object or path pointing to metadata annotation file
 
     Returns:
         list: list of artists involved in the track.
@@ -252,7 +258,7 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="giantsteps_key",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,

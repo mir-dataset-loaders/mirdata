@@ -10,7 +10,8 @@ def test_track():
 
     default_trackid = "4b196e6c99574dd49ad00d56e132712b"
     data_home = "tests/resources/mir_datasets/dali"
-    track = dali.Track(default_trackid, data_home=data_home)
+    dataset = dali.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "album": "Mezmerize",
@@ -21,6 +22,7 @@ def test_track():
         + "audio/4b196e6c99574dd49ad00d56e132712b.mp3",
         "audio_url": "zUzd9KyIDrM",
         "dataset_version": 1,
+        "genres": ["Pop", "Rock", "Hard Rock", "Metal"],
         "ground_truth": False,
         "language": "english",
         "release_date": "2005",
