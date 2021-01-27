@@ -34,7 +34,6 @@
 import numpy as np
 import os
 import json
-import logging
 import csv
 
 from mirdata import download_utils
@@ -71,31 +70,7 @@ LICENSE_INFO = (
 )
 
 
-def _load_metadata(metadata_path):
-    metadata_path = os.path.join(metadata_path, "MTG-otmm_makam_recognition_dataset-f14c0d0", "annotations.json")
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata = {}
-    with open(metadata_path) as f:
-        meta = json.load(f)
-        for track in meta:
-            index = track['mbid'].split("/")[-1]
-            metadata[index] = {
-                "makam": track['makam'],
-                "tonic": track['tonic'],
-                "mbid": index
-            }
-
-        temp = metadata_path.split('/')[-2]
-        data_home = metadata_path.split(temp)[0]
-        metadata["data_home"] = data_home
-
-        return metadata
-
-
-DATA = core.LargeData("otmm_makam_index.json", _load_metadata)
+DATA = core.LargeData("otmm_makam_index.json")
 
 
 class Track(core.Track):
@@ -110,84 +85,47 @@ class Track(core.Track):
         makam (str): string referring to the makam represented in the track
         tonic (float): tonic annotation
         mbid (str): MusicBrainz ID of the track
-        title (str): Title of the piece in the track
-        mb_url (str): MusicBrainz link of the track
-        artists (list, dicts): list of dicts containing information of the featuring artists in the track
-        form (list, dict): list of dicts containing information about the forms present in the track
-        work (str): string representing the work present in the piece
-        usul (str): string representing the usul present in the piece
-        instrumentation (str): string representing the instrumentation line-up in the piece
 
     Cached Properties:
         pitch (F0Data): pitch annotation
+        mb_tags (dict): dictionary containing the raw editorial track metadata from music brainz
 
     """
-
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in Saraga Carnatic".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
         # Annotation paths
         self.pitch_path = core.none_path_join(
             [self._data_home, self._track_paths["pitch"][0]]
         )
-        self.track_metadata_path = core.none_path_join(
+        self.mb_tags_path = core.none_path_join(
             [self._data_home, self._track_paths["metadata"][0]]
         )
 
-        metadata_annotations = DATA.metadata(data_home=data_home)
-        if metadata_annotations is not None and track_id in metadata_annotations.keys():
-            self.tonic = metadata_annotations[track_id]['tonic']
-            self.makam = metadata_annotations[track_id]['makam']
-            self.mbid = metadata_annotations[track_id]['mbid']
-
-        self._track_metadata = load_track_metadata(self.track_metadata_path)
-        self.usul = (
-            self._track_metadata['usul'][0]['attribute_key']
-            if "usul" in self._track_metadata.keys() is not None and self._track_metadata['usul']
-            else None
-        )
-        self.title = (
-            self._track_metadata['releases'][0]['title']
-            if "title" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.mb_url = (
-            self._track_metadata['url']
-            if "url" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.form = (
-            self._track_metadata['form'][0]['attribute_key']
-            if "form" in self._track_metadata.keys() is not None and self._track_metadata['form']
-            else None
-        )
-        self.artists = (
-            self._track_metadata['artists']
-            if "artists" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.work = (
-            self._track_metadata['works'][0]['title']
-            if "works" in self._track_metadata.keys() is not None and self._track_metadata['title']
-            else None
-        )
-        self.instrumentation = (
-            self._track_metadata['instrumentation_voicing']
-            if "instrumentation_voicing" in self._track_metadata.keys() is not None
-            else None
-        )
+        # Get attributes
+        self.tonic = self._track_metadata.get("tonic")
+        self.makam = self._track_metadata.get("makam")
+        self.mbid = self._track_metadata.get("mbid")
 
     @core.cached_property
     def pitch(self):
         return load_pitch(self.pitch_path)
+
+    @core.cached_property
+    def mb_tags(self):
+        return load_mb_tags(self.mb_tags_path)
 
     def to_jams(self):
         """Get the track's data in jams format
@@ -202,8 +140,8 @@ class Track(core.Track):
                 "makam": self.makam,
                 "tonic": self.tonic,
                 "mbid": self.mbid,
-                "duration": self._track_metadata['duration'],
-                "metadata": self._track_metadata,
+                "duration": self.mb_tags['duration'],
+                "metadata":  self.mb_tags,
             },
         )
 
@@ -229,7 +167,7 @@ def load_pitch(pitch_path):
 
     times = []
     freqs = []
-    with open(pitch_path, "r") as fhandle:
+    with open(pitch_path, 'r') as fhandle:
         reader = csv.reader(fhandle, delimiter=",")
         for line in reader:
             freqs.append(float(line[0]))
@@ -243,7 +181,7 @@ def load_pitch(pitch_path):
     return annotations.F0Data(times, freqs, confidence)
 
 
-def load_track_metadata(track_metadata_path):
+def load_mb_tags(mb_tags_path):
     """Load track metadata
 
         Args:
@@ -254,16 +192,16 @@ def load_track_metadata(track_metadata_path):
             Dict: metadata of the track
 
         """
-    if track_metadata_path is None:
+    if mb_tags_path is None:
         return None
 
-    if not os.path.exists(track_metadata_path):
-        raise IOError("track_metadata_path {} does not exist".format(track_metadata_path))
+    if not os.path.exists(mb_tags_path):
+        raise IOError("track_metadata_path {} does not exist".format(mb_tags_path))
 
-    with open(track_metadata_path) as r:
-        metadata = json.load(r)
+    with open(mb_tags_path) as r:
+        mb_tags = json.load(r)
 
-    return metadata
+    return mb_tags
 
 
 @core.docstring_inherit(core.Dataset)
@@ -277,11 +215,34 @@ class Dataset(core.Dataset):
             data_home,
             index=DATA.index,
             name="compmusic_otmm_makam",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "MTG-otmm_makam_recognition_dataset-f14c0d0", "annotations.json")
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        metadata = {}
+        with open(metadata_path) as f:
+            meta = json.load(f)
+            for track in meta:
+                index = track['mbid'].split("/")[-1]
+                metadata[index] = {
+                    "makam": track['makam'],
+                    "tonic": track['tonic'],
+                    "mbid": index
+                }
+
+            temp = metadata_path.split('/')[-2]
+            data_home = metadata_path.split(temp)[0]
+            metadata["data_home"] = data_home
+
+        return metadata
 
     @core.copy_docs(load_pitch)
     def load_pitch(self, *args, **kwargs):

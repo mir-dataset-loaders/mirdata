@@ -7,18 +7,18 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
-    track = compmusic_otmm_makam.Track(default_trackid, data_home=data_home)
+    track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+
+    dataset = compmusic_otmm_makam.Dataset(data_home)
+    track = dataset.track(track_id)
 
     expected_attributes = {
         "track_id": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
         "pitch_path": "tests/resources/mir_datasets/compmusic_otmm_makam/"
         + "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch",
-        "track_metadata_path": "tests/resources/mir_datasets/compmusic_otmm_makam/"
+        "mb_tags_path": "tests/resources/mir_datasets/compmusic_otmm_makam/"
         + "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json",
-        "metadata_path": "tests/resources/mir_datasets/compmusic_otmm_makam/"
-        + "MTG-otmm_makam_recognition_dataset-f14c0d0/annotations.json",
         "form": "sarki",
         "instrumentation": "Solo vocal with accompaniment",
         "mb_url": "http://musicbrainz.org/work/cafcdeaf-e966-4ff0-84fb-f660d2b68365",
@@ -76,6 +76,7 @@ def test_track():
 
     expected_property_types = {
         "pitch": annotations.F0Data,
+        "mb_tags": dict,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -83,7 +84,10 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
-    track = compmusic_otmm_makam.Track("cafcdeaf-e966-4ff0-84fb-f660d2b68365", data_home=data_home)
+    track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+
+    dataset = compmusic_otmm_makam.Dataset(data_home)
+    track = dataset.track(track_id)
     jam = track.to_jams()
 
     # Sandbox
@@ -356,7 +360,10 @@ def test_to_jams():
 
 def test_load_pitch():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
-    track = compmusic_otmm_makam.Track("cafcdeaf-e966-4ff0-84fb-f660d2b68365", data_home=data_home)
+    track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+
+    dataset = compmusic_otmm_makam.Dataset(data_home)
+    track = dataset.track(track_id)
     pitch_path = track.pitch_path
     parsed_pitch = compmusic_otmm_makam.load_pitch(pitch_path)
 
@@ -386,27 +393,31 @@ def test_load_pitch():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
-    track = compmusic_otmm_makam.Track("cafcdeaf-e966-4ff0-84fb-f660d2b68365", data_home=data_home)
-    parsed_annotation_metadata = compmusic_otmm_makam._load_metadata(data_home)
+    dataset = compmusic_otmm_makam.Dataset(data_home)
+    metadata = dataset._metadata
+    # trackid = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
-    track_id = list(parsed_annotation_metadata.keys())[0]
+    track_id = list(metadata.keys())[0]
     assert track_id == "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
-    assert parsed_annotation_metadata[track_id]["tonic"] == 260.0
-    assert parsed_annotation_metadata[track_id]["makam"] == "Kurdilihicazkar"
-    assert parsed_annotation_metadata[track_id]["mbid"] == "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+    assert metadata[track_id]["tonic"] == 260.0
+    assert metadata[track_id]["makam"] == "Kurdilihicazkar"
+    assert metadata[track_id]["mbid"] == "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
     assert (
-        parsed_annotation_metadata["data_home"] == "tests/resources/mir_datasets/compmusic_otmm_makam/"
+        metadata["data_home"] == "tests/resources/mir_datasets/compmusic_otmm_makam/"
     )
 
 
-def test_load_track_metadata():
+def test_load_mb_tags():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
-    track = compmusic_otmm_makam.Track("cafcdeaf-e966-4ff0-84fb-f660d2b68365", data_home=data_home)
-    track_metadata_path = track.track_metadata_path
-    parsed_track_metadata = compmusic_otmm_makam.load_track_metadata(track_metadata_path)
+    track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
-    assert parsed_track_metadata["usul"] == [
+    dataset = compmusic_otmm_makam.Dataset(data_home)
+    track = dataset.track(track_id)
+    mb_tags_path = track.mb_tags_path
+    mb_tags = compmusic_otmm_makam.load_mb_tags(mb_tags_path)
+
+    assert mb_tags["usul"] == [
         {
             "attribute_key": "aksak",
             "mb_attribute": "Aksak",
@@ -418,7 +429,7 @@ def test_load_track_metadata():
             "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
         }
     ]
-    assert parsed_track_metadata["makam"] == [
+    assert mb_tags["makam"] == [
         {
             "attribute_key": "kurdilihicazkar",
             "mb_attribute": "K\u00fcrdilihicazkar",
@@ -430,24 +441,24 @@ def test_load_track_metadata():
             "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
         }
     ]
-    assert parsed_track_metadata["releases"] == [
+    assert mb_tags["releases"] == [
         {
             "mbid": "aa4ec600-4b32-451c-9c51-226001dd51ef",
             "title": "T\u00fcrk M\u00fczi\u011finde 75 B\u00fcy\u00fck Bestekar/ 75 Great Composers In Turkish Classical Music"
         }
     ]
-    assert parsed_track_metadata["title"] == "A\u015fka Merak\u0131m Ezelden"
-    assert parsed_track_metadata["url"] == "http://musicbrainz.org/work/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
-    assert parsed_track_metadata["artist_credits"] == [
+    assert mb_tags["title"] == "A\u015fka Merak\u0131m Ezelden"
+    assert mb_tags["url"] == "http://musicbrainz.org/work/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+    assert mb_tags["artist_credits"] == [
         {
             "mbid": "fd8bceee-b3a4-4870-851a-0374f5542751",
             "name": "Bekir \u00dcnl\u00fcataer"
         }
     ]
-    assert parsed_track_metadata["sampling_frequency"] == 44100
-    assert parsed_track_metadata["instrumentation_voicing"] == "Solo vocal with accompaniment"
-    assert parsed_track_metadata["mbid"] == "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
-    assert parsed_track_metadata["form"] == [
+    assert mb_tags["sampling_frequency"] == 44100
+    assert mb_tags["instrumentation_voicing"] == "Solo vocal with accompaniment"
+    assert mb_tags["mbid"] == "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+    assert mb_tags["form"] == [
         {
             "attribute_key": "sarki",
             "mb_attribute": "\u015eark\u0131",
@@ -459,8 +470,8 @@ def test_load_track_metadata():
             "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
         }
     ]
-    assert parsed_track_metadata["bit_rate"] == 160
-    assert parsed_track_metadata["artists"] == [
+    assert mb_tags["bit_rate"] == 160
+    assert mb_tags["artists"] == [
         {
             "mbid": "1aa10fb2-d9e1-489c-b66f-543e94cf0cbe",
             "attribute-list": [
@@ -635,9 +646,9 @@ def test_load_track_metadata():
             "name": "Bekir \u00dcnl\u00fcataer"
         }
     ]
-    assert parsed_track_metadata["duration"] == 275
-    assert parsed_track_metadata["path"] == "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
-    assert parsed_track_metadata["works"] == [
+    assert mb_tags["duration"] == 275
+    assert mb_tags["path"] == "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
+    assert mb_tags["works"] == [
         {
             "mbid": "753ff394-dec1-422b-991f-227d8f848532",
             "title": "A\u015fka Merak\u0131m Ezelden"
