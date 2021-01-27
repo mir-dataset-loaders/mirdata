@@ -24,143 +24,54 @@ def test_track():
         "mb_url": "http://musicbrainz.org/work/cafcdeaf-e966-4ff0-84fb-f660d2b68365",
         "title": "Türk Müziğinde 75 Büyük Bestekar/ 75 Great Composers In Turkish Classical Music",
         "artists": [
-            {
-                'mbid': '1aa10fb2-d9e1-489c-b66f-543e94cf0cbe',
-                'attribute-list': ['violin'],
-                'type': 'instrument',
-                'name': 'Tuncay Düzagaç',
-            },
-            {
-                'mbid': '1ed6c08e-9d5b-4e5c-a0a4-41acb3445000',
-                'attribute-list': ['accordion'],
-                'type': 'instrument',
-                'name': 'Ceyhun Çelikten',
-            },
-            {
-                'mbid': '30380155-5974-4cf5-aed9-60371470005d',
-                'attribute-list': ['oud'],
-                'type': 'instrument',
-                'name': 'Yıldıran Güz',
-            },
-            {
-                'mbid': '3411c847-4801-4a19-893c-521e5719cf44',
-                'attribute-list': ['clarinet'],
-                'type': 'instrument',
-                'name': 'Şükrü Kabacı',
-            },
-            {
-                'mbid': '4d3ff01d-71c1-4c1c-9a44-4e4448cfb9f8',
-                'attribute-list': ['cello'],
-                'type': 'instrument',
-                'name': 'Özer Arkun',
-            },
-            {
-                'mbid': '5121835d-84fb-44c6-8eed-8a8da4c444ba',
-                'attribute-list': ['ney'],
-                'type': 'instrument',
-                'name': 'Ahmet Şahin',
-            },
-            {
-                'mbid': '64944130-34f4-43bf-914f-e741a04e8350',
-                'attribute-list': ['strings'],
-                'type': 'instrument',
-                'name': 'Kempa Yaylı Grubu',
-            },
-            {
-                'mbid': '70c930f4-be11-48c6-97b8-b31547a31497',
-                'attribute-list': ['viola'],
-                'type': 'instrument',
-                'name': 'İbrahim Şentürk',
-            },
-            {
-                'mbid': '72a54b29-9c8d-4ec7-8c12-233bb9f4551a',
-                'attribute-list': ['viola'],
-                'type': 'instrument',
-                'name': 'Metin Kabacı',
-            },
-            {
-                'mbid': '8c968ab9-1a75-4ad2-b4a1-faa1f51d0006',
-                'attribute-list': ['kanun'],
-                'type': 'instrument',
-                'name': 'Taner Sayacıoğlu',
-            },
-            {
-                'mbid': '8c98c6c1-63a8-4573-9a76-31dc41fec8ad',
-                'attribute-list': ['ney'],
-                'type': 'instrument',
-                'name': 'Eyüp Hamiş',
-            },
-            {
-                'mbid': '9b6e98f8-b695-45da-8c9c-68d4bab460fd',
-                'attribute-list': ['tanbur'],
-                'type': 'instrument',
-                'name': 'Murat Aydemir',
-            },
-            {
-                'mbid': 'b5e2f977-cadd-458a-8171-cafdfe6a331c',
-                'attribute-list': ['percussion'],
-                'type': 'instrument',
-                'name': 'Fahrettin Yarkın',
-            },
-            {
-                'mbid': 'cab02cb9-d0b2-4ba5-8ea3-e5c6ab46b005',
-                'attribute-list': ['violin'],
-                'type': 'instrument',
-                'name': 'Baki Kemancı',
-            },
-            {
-                'mbid': 'cdc69411-25f2-4fe3-88e5-41da2b8c474b',
-                'attribute-list': ['violin'],
-                'type': 'instrument',
-                'name': 'Ayhan Şenyaylar',
-            },
-            {
-                'mbid': 'cfe6aea2-c362-4760-9ad1-b95db1605b6e',
-                'attribute-list': ['cello'],
-                'type': 'instrument',
-                'name': 'Uğur Işık',
-            },
-            {
-                'mbid': 'd695dfaa-01f8-4a16-a538-5ccbad58de19',
-                'attribute-list': ['oud'],
-                'type': 'instrument',
-                'name': 'Yurdal Tokcan',
-            },
-            {
-                'mbid': 'd858c208-8ab3-4588-b1d7-f54d24a72f20',
-                'attribute-list': ['kanun'],
-                'type': 'instrument',
-                'name': 'Turgut Özüfler',
-            },
-            {
-                'mbid': 'df0ac610-a810-4e74-a767-57fe69495953',
-                'attribute-list': ['classical kemençe'],
-                'type': 'instrument',
-                'name': 'Hasan Esen',
-            },
-            {
-                'mbid': 'ec6ed4c6-d7e4-4911-9234-30720f72abc8',
-                'attribute-list': ['violin'],
-                'type': 'instrument',
-                'name': 'Timur Şenyaylar',
-            },
-            {
-                'mbid': 'f1b1b605-59d0-4ef7-b2a6-1f0256187caa',
-                'attribute-list': ['violin'],
-                'type': 'instrument',
-                'name': 'Tarık Kemancı',
-            },
-            {
-                'mbid': 'fd8bceee-b3a4-4870-851a-0374f5542751',
-                'type': 'vocal',
-                'name': 'Bekir Ünlüataer',
-            },
-        ],
+            {'mbid': '1aa10fb2-d9e1-489c-b66f-543e94cf0cbe', 'attribute-list': ['violin'], 'type': 'instrument',
+             'name': 'Tuncay Düzagaç'},
+            {'mbid': '1ed6c08e-9d5b-4e5c-a0a4-41acb3445000', 'attribute-list': ['accordion'], 'type': 'instrument',
+             'name': 'Ceyhun Çelikten'},
+            {'mbid': '30380155-5974-4cf5-aed9-60371470005d', 'attribute-list': ['oud'], 'type': 'instrument',
+             'name': 'Yıldıran Güz'},
+            {'mbid': '3411c847-4801-4a19-893c-521e5719cf44', 'attribute-list': ['clarinet'], 'type': 'instrument',
+             'name': 'Şükrü Kabacı'},
+            {'mbid': '4d3ff01d-71c1-4c1c-9a44-4e4448cfb9f8', 'attribute-list': ['cello'], 'type': 'instrument',
+             'name': 'Özer Arkun'},
+            {'mbid': '5121835d-84fb-44c6-8eed-8a8da4c444ba', 'attribute-list': ['ney'], 'type': 'instrument',
+             'name': 'Ahmet Şahin'},
+            {'mbid': '64944130-34f4-43bf-914f-e741a04e8350', 'attribute-list': ['strings'], 'type': 'instrument',
+             'name': 'Kempa Yaylı Grubu'},
+            {'mbid': '70c930f4-be11-48c6-97b8-b31547a31497', 'attribute-list': ['viola'], 'type': 'instrument',
+             'name': 'İbrahim Şentürk'},
+            {'mbid': '72a54b29-9c8d-4ec7-8c12-233bb9f4551a', 'attribute-list': ['viola'], 'type': 'instrument',
+             'name': 'Metin Kabacı'},
+            {'mbid': '8c968ab9-1a75-4ad2-b4a1-faa1f51d0006', 'attribute-list': ['kanun'], 'type': 'instrument',
+             'name': 'Taner Sayacıoğlu'},
+            {'mbid': '8c98c6c1-63a8-4573-9a76-31dc41fec8ad', 'attribute-list': ['ney'], 'type': 'instrument',
+             'name': 'Eyüp Hamiş'},
+            {'mbid': '9b6e98f8-b695-45da-8c9c-68d4bab460fd', 'attribute-list': ['tanbur'], 'type': 'instrument',
+             'name': 'Murat Aydemir'},
+            {'mbid': 'b5e2f977-cadd-458a-8171-cafdfe6a331c', 'attribute-list': ['percussion'],
+             'type': 'instrument', 'name': 'Fahrettin Yarkın'},
+            {'mbid': 'cab02cb9-d0b2-4ba5-8ea3-e5c6ab46b005', 'attribute-list': ['violin'], 'type': 'instrument',
+             'name': 'Baki Kemancı'},
+            {'mbid': 'cdc69411-25f2-4fe3-88e5-41da2b8c474b', 'attribute-list': ['violin'], 'type': 'instrument',
+             'name': 'Ayhan Şenyaylar'},
+            {'mbid': 'cfe6aea2-c362-4760-9ad1-b95db1605b6e', 'attribute-list': ['cello'], 'type': 'instrument',
+             'name': 'Uğur Işık'},
+            {'mbid': 'd695dfaa-01f8-4a16-a538-5ccbad58de19', 'attribute-list': ['oud'], 'type': 'instrument',
+             'name': 'Yurdal Tokcan'},
+            {'mbid': 'd858c208-8ab3-4588-b1d7-f54d24a72f20', 'attribute-list': ['kanun'], 'type': 'instrument',
+             'name': 'Turgut Özüfler'},
+            {'mbid': 'df0ac610-a810-4e74-a767-57fe69495953', 'attribute-list': ['classical kemençe'],
+             'type': 'instrument', 'name': 'Hasan Esen'},
+            {'mbid': 'ec6ed4c6-d7e4-4911-9234-30720f72abc8', 'attribute-list': ['violin'], 'type': 'instrument',
+             'name': 'Timur Şenyaylar'},
+            {'mbid': 'f1b1b605-59d0-4ef7-b2a6-1f0256187caa', 'attribute-list': ['violin'], 'type': 'instrument',
+             'name': 'Tarık Kemancı'},
+            {'mbid': 'fd8bceee-b3a4-4870-851a-0374f5542751', 'type': 'vocal', 'name': 'Bekir Ünlüataer'}],
         "usul": "aksak",
         "work": "Aşka Merakım Ezelden",
         "makam": "Kurdilihicazkar",
         "mbid": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
-        "tonic": 260.0,
+        "tonic": 260.0
     }
 
     expected_property_types = {
@@ -188,26 +99,10 @@ def test_to_jams():
     pitches = jam.search(namespace="pitch_contour")[0]["data"]
     assert len(pitches) == 9
     assert [pitch.time for pitch in pitches] == [
-        0.0000,
-        0.0029,
-        0.0058,
-        0.0087,
-        0.0116,
-        0.0145,
-        0.0174,
-        0.0203,
-        0.0232,
+        0.0000, 0.0029, 0.0058, 0.0087, 0.0116, 0.0145, 0.0174, 0.0203, 0.0232
     ]
     assert [pitch.duration for pitch in pitches] == [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
     ]
     assert [pitch.value for pitch in pitches] == [
         {'index': 0, 'frequency': 208.5, 'voiced': True},
@@ -220,17 +115,7 @@ def test_to_jams():
         {'index': 0, 'frequency': 234.3, 'voiced': True},
         {'index': 0, 'frequency': 235.1, 'voiced': True},
     ]
-    assert [pitch.confidence for pitch in pitches] == [
-        1.0,
-        1.0,
-        1.0,
-        0.0,
-        0.0,
-        0.0,
-        1.0,
-        1.0,
-        1.0,
-    ]
+    assert [pitch.confidence for pitch in pitches] == [1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0]
 
     # Metadata
     metadata = jam["sandbox"].metadata
@@ -238,41 +123,38 @@ def test_to_jams():
         {
             "attribute_key": "aksak",
             "mb_attribute": "Aksak",
-            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532",
+            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532"
         },
         {
             "attribute_key": "aksak",
             "mb_tag": "aksak",
-            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365",
-        },
+            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+        }
     ]
     assert metadata["makam"] == [
         {
             "attribute_key": "kurdilihicazkar",
             "mb_attribute": "K\u00fcrdilihicazkar",
-            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532",
+            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532"
         },
         {
             "attribute_key": "kurdilihicazkar",
             "mb_tag": "k\u00fcrdilihicazkar",
-            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365",
-        },
+            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+        }
     ]
     assert metadata["releases"] == [
         {
             "mbid": "aa4ec600-4b32-451c-9c51-226001dd51ef",
-            "title": "T\u00fcrk M\u00fczi\u011finde 75 B\u00fcy\u00fck Bestekar/ 75 Great Composers In Turkish Classical Music",
+            "title": "T\u00fcrk M\u00fczi\u011finde 75 B\u00fcy\u00fck Bestekar/ 75 Great Composers In Turkish Classical Music"
         }
     ]
     assert metadata["title"] == "A\u015fka Merak\u0131m Ezelden"
-    assert (
-        metadata["url"]
-        == "http://musicbrainz.org/work/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
-    )
+    assert metadata["url"] == "http://musicbrainz.org/work/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
     assert metadata["artist_credits"] == [
         {
             "mbid": "fd8bceee-b3a4-4870-851a-0374f5542751",
-            "name": "Bekir \u00dcnl\u00fcataer",
+            "name": "Bekir \u00dcnl\u00fcataer"
         }
     ]
     assert metadata["sampling_frequency"] == 44100
@@ -282,157 +164,196 @@ def test_to_jams():
         {
             "attribute_key": "sarki",
             "mb_attribute": "\u015eark\u0131",
-            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532",
+            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532"
         },
         {
             "attribute_key": "sarki",
             "mb_tag": "\u015fark\u0131",
-            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365",
-        },
+            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+        }
     ]
     assert metadata["bit_rate"] == 160
     assert metadata["artists"] == [
         {
             "mbid": "1aa10fb2-d9e1-489c-b66f-543e94cf0cbe",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Tuncay D\u00fczaga\u00e7",
+            "name": "Tuncay D\u00fczaga\u00e7"
         },
         {
             "mbid": "1ed6c08e-9d5b-4e5c-a0a4-41acb3445000",
-            "attribute-list": ["accordion"],
+            "attribute-list": [
+                "accordion"
+            ],
             "type": "instrument",
-            "name": "Ceyhun \u00c7elikten",
+            "name": "Ceyhun \u00c7elikten"
         },
         {
             "mbid": "30380155-5974-4cf5-aed9-60371470005d",
-            "attribute-list": ["oud"],
+            "attribute-list": [
+                "oud"
+            ],
             "type": "instrument",
-            "name": "Y\u0131ld\u0131ran G\u00fcz",
+            "name": "Y\u0131ld\u0131ran G\u00fcz"
         },
         {
             "mbid": "3411c847-4801-4a19-893c-521e5719cf44",
-            "attribute-list": ["clarinet"],
+            "attribute-list": [
+                "clarinet"
+            ],
             "type": "instrument",
-            "name": "\u015e\u00fckr\u00fc Kabac\u0131",
+            "name": "\u015e\u00fckr\u00fc Kabac\u0131"
         },
         {
             "mbid": "4d3ff01d-71c1-4c1c-9a44-4e4448cfb9f8",
-            "attribute-list": ["cello"],
+            "attribute-list": [
+                "cello"
+            ],
             "type": "instrument",
-            "name": "\u00d6zer Arkun",
+            "name": "\u00d6zer Arkun"
         },
         {
             "mbid": "5121835d-84fb-44c6-8eed-8a8da4c444ba",
-            "attribute-list": ["ney"],
+            "attribute-list": [
+                "ney"
+            ],
             "type": "instrument",
-            "name": "Ahmet \u015eahin",
+            "name": "Ahmet \u015eahin"
         },
         {
             "mbid": "64944130-34f4-43bf-914f-e741a04e8350",
-            "attribute-list": ["strings"],
+            "attribute-list": [
+                "strings"
+            ],
             "type": "instrument",
-            "name": "Kempa Yayl\u0131 Grubu",
+            "name": "Kempa Yayl\u0131 Grubu"
         },
         {
             "mbid": "70c930f4-be11-48c6-97b8-b31547a31497",
-            "attribute-list": ["viola"],
+            "attribute-list": [
+                "viola"
+            ],
             "type": "instrument",
-            "name": "\u0130brahim \u015eent\u00fcrk",
+            "name": "\u0130brahim \u015eent\u00fcrk"
         },
         {
             "mbid": "72a54b29-9c8d-4ec7-8c12-233bb9f4551a",
-            "attribute-list": ["viola"],
+            "attribute-list": [
+                "viola"
+            ],
             "type": "instrument",
-            "name": "Metin Kabac\u0131",
+            "name": "Metin Kabac\u0131"
         },
         {
             "mbid": "8c968ab9-1a75-4ad2-b4a1-faa1f51d0006",
-            "attribute-list": ["kanun"],
+            "attribute-list": [
+                "kanun"
+            ],
             "type": "instrument",
-            "name": "Taner Sayac\u0131o\u011flu",
+            "name": "Taner Sayac\u0131o\u011flu"
         },
         {
             "mbid": "8c98c6c1-63a8-4573-9a76-31dc41fec8ad",
-            "attribute-list": ["ney"],
+            "attribute-list": [
+                "ney"
+            ],
             "type": "instrument",
-            "name": "Ey\u00fcp Hami\u015f",
+            "name": "Ey\u00fcp Hami\u015f"
         },
         {
             "mbid": "9b6e98f8-b695-45da-8c9c-68d4bab460fd",
-            "attribute-list": ["tanbur"],
+            "attribute-list": [
+                "tanbur"
+            ],
             "type": "instrument",
-            "name": "Murat Aydemir",
+            "name": "Murat Aydemir"
         },
         {
             "mbid": "b5e2f977-cadd-458a-8171-cafdfe6a331c",
-            "attribute-list": ["percussion"],
+            "attribute-list": [
+                "percussion"
+            ],
             "type": "instrument",
-            "name": "Fahrettin Yark\u0131n",
+            "name": "Fahrettin Yark\u0131n"
         },
         {
             "mbid": "cab02cb9-d0b2-4ba5-8ea3-e5c6ab46b005",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Baki Kemanc\u0131",
+            "name": "Baki Kemanc\u0131"
         },
         {
             "mbid": "cdc69411-25f2-4fe3-88e5-41da2b8c474b",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Ayhan \u015eenyaylar",
+            "name": "Ayhan \u015eenyaylar"
         },
         {
             "mbid": "cfe6aea2-c362-4760-9ad1-b95db1605b6e",
-            "attribute-list": ["cello"],
+            "attribute-list": [
+                "cello"
+            ],
             "type": "instrument",
-            "name": "U\u011fur I\u015f\u0131k",
+            "name": "U\u011fur I\u015f\u0131k"
         },
         {
             "mbid": "d695dfaa-01f8-4a16-a538-5ccbad58de19",
-            "attribute-list": ["oud"],
+            "attribute-list": [
+                "oud"
+            ],
             "type": "instrument",
-            "name": "Yurdal Tokcan",
+            "name": "Yurdal Tokcan"
         },
         {
             "mbid": "d858c208-8ab3-4588-b1d7-f54d24a72f20",
-            "attribute-list": ["kanun"],
+            "attribute-list": [
+                "kanun"
+            ],
             "type": "instrument",
-            "name": "Turgut \u00d6z\u00fcfler",
+            "name": "Turgut \u00d6z\u00fcfler"
         },
         {
             "mbid": "df0ac610-a810-4e74-a767-57fe69495953",
-            "attribute-list": ["classical kemen\u00e7e"],
+            "attribute-list": [
+                "classical kemen\u00e7e"
+            ],
             "type": "instrument",
-            "name": "Hasan Esen",
+            "name": "Hasan Esen"
         },
         {
             "mbid": "ec6ed4c6-d7e4-4911-9234-30720f72abc8",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Timur \u015eenyaylar",
+            "name": "Timur \u015eenyaylar"
         },
         {
             "mbid": "f1b1b605-59d0-4ef7-b2a6-1f0256187caa",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Tar\u0131k Kemanc\u0131",
+            "name": "Tar\u0131k Kemanc\u0131"
         },
         {
             "mbid": "fd8bceee-b3a4-4870-851a-0374f5542751",
             "type": "vocal",
-            "name": "Bekir \u00dcnl\u00fcataer",
-        },
+            "name": "Bekir \u00dcnl\u00fcataer"
+        }
     ]
     assert metadata["duration"] == 275
-    assert (
-        metadata["path"]
-        == "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
-    )
+    assert metadata["path"] == "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
     assert metadata["works"] == [
         {
             "mbid": "753ff394-dec1-422b-991f-227d8f848532",
-            "title": "A\u015fka Merak\u0131m Ezelden",
+            "title": "A\u015fka Merak\u0131m Ezelden"
         }
     ]
 
@@ -455,13 +376,13 @@ def test_load_pitch():
     # Check values
     assert np.array_equal(
         parsed_pitch.times,
-        np.array(
-            [0.0000, 0.0029, 0.0058, 0.0087, 0.0116, 0.0145, 0.0174, 0.0203, 0.0232]
-        ),
+        np.array([0.0000, 0.0029, 0.0058, 0.0087, 0.0116, 0.0145, 0.0174, 0.0203, 0.0232]),
     )
     assert np.array_equal(
         parsed_pitch.frequencies,
-        np.array([208.5, 209.1, 209.6, 0.0, 0.0, 0.0, 232.5, 234.3, 235.1]),
+        np.array(
+            [208.5, 209.1, 209.6, 0.0, 0.0, 0.0, 232.5, 234.3, 235.1]
+        ),
     )
     assert np.array_equal(
         parsed_pitch.confidence, np.array([1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0])
@@ -482,7 +403,9 @@ def test_load_metadata():
     assert metadata[track_id]["tonic"] == 260.0
     assert metadata[track_id]["makam"] == "Kurdilihicazkar"
     assert metadata[track_id]["mbid"] == "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
-    assert metadata["data_home"] == "tests/resources/mir_datasets/compmusic_otmm_makam/"
+    assert (
+        metadata["data_home"] == "tests/resources/mir_datasets/compmusic_otmm_makam/"
+    )
 
 
 def test_load_mb_tags():
@@ -498,41 +421,38 @@ def test_load_mb_tags():
         {
             "attribute_key": "aksak",
             "mb_attribute": "Aksak",
-            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532",
+            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532"
         },
         {
             "attribute_key": "aksak",
             "mb_tag": "aksak",
-            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365",
-        },
+            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+        }
     ]
     assert mb_tags["makam"] == [
         {
             "attribute_key": "kurdilihicazkar",
             "mb_attribute": "K\u00fcrdilihicazkar",
-            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532",
+            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532"
         },
         {
             "attribute_key": "kurdilihicazkar",
             "mb_tag": "k\u00fcrdilihicazkar",
-            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365",
-        },
+            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+        }
     ]
     assert mb_tags["releases"] == [
         {
             "mbid": "aa4ec600-4b32-451c-9c51-226001dd51ef",
-            "title": "T\u00fcrk M\u00fczi\u011finde 75 B\u00fcy\u00fck Bestekar/ 75 Great Composers In Turkish Classical Music",
+            "title": "T\u00fcrk M\u00fczi\u011finde 75 B\u00fcy\u00fck Bestekar/ 75 Great Composers In Turkish Classical Music"
         }
     ]
     assert mb_tags["title"] == "A\u015fka Merak\u0131m Ezelden"
-    assert (
-        mb_tags["url"]
-        == "http://musicbrainz.org/work/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
-    )
+    assert mb_tags["url"] == "http://musicbrainz.org/work/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
     assert mb_tags["artist_credits"] == [
         {
             "mbid": "fd8bceee-b3a4-4870-851a-0374f5542751",
-            "name": "Bekir \u00dcnl\u00fcataer",
+            "name": "Bekir \u00dcnl\u00fcataer"
         }
     ]
     assert mb_tags["sampling_frequency"] == 44100
@@ -542,156 +462,196 @@ def test_load_mb_tags():
         {
             "attribute_key": "sarki",
             "mb_attribute": "\u015eark\u0131",
-            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532",
+            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532"
         },
         {
             "attribute_key": "sarki",
             "mb_tag": "\u015fark\u0131",
-            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365",
-        },
+            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+        }
     ]
     assert mb_tags["bit_rate"] == 160
     assert mb_tags["artists"] == [
         {
             "mbid": "1aa10fb2-d9e1-489c-b66f-543e94cf0cbe",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Tuncay D\u00fczaga\u00e7",
+            "name": "Tuncay D\u00fczaga\u00e7"
         },
         {
             "mbid": "1ed6c08e-9d5b-4e5c-a0a4-41acb3445000",
-            "attribute-list": ["accordion"],
+            "attribute-list": [
+                "accordion"
+            ],
             "type": "instrument",
-            "name": "Ceyhun \u00c7elikten",
+            "name": "Ceyhun \u00c7elikten"
         },
         {
             "mbid": "30380155-5974-4cf5-aed9-60371470005d",
-            "attribute-list": ["oud"],
+            "attribute-list": [
+                "oud"
+            ],
             "type": "instrument",
-            "name": "Y\u0131ld\u0131ran G\u00fcz",
+            "name": "Y\u0131ld\u0131ran G\u00fcz"
         },
         {
             "mbid": "3411c847-4801-4a19-893c-521e5719cf44",
-            "attribute-list": ["clarinet"],
+            "attribute-list": [
+                "clarinet"
+            ],
             "type": "instrument",
-            "name": "\u015e\u00fckr\u00fc Kabac\u0131",
+            "name": "\u015e\u00fckr\u00fc Kabac\u0131"
         },
         {
             "mbid": "4d3ff01d-71c1-4c1c-9a44-4e4448cfb9f8",
-            "attribute-list": ["cello"],
+            "attribute-list": [
+                "cello"
+            ],
             "type": "instrument",
-            "name": "\u00d6zer Arkun",
+            "name": "\u00d6zer Arkun"
         },
         {
             "mbid": "5121835d-84fb-44c6-8eed-8a8da4c444ba",
-            "attribute-list": ["ney"],
+            "attribute-list": [
+                "ney"
+            ],
             "type": "instrument",
-            "name": "Ahmet \u015eahin",
+            "name": "Ahmet \u015eahin"
         },
         {
             "mbid": "64944130-34f4-43bf-914f-e741a04e8350",
-            "attribute-list": ["strings"],
+            "attribute-list": [
+                "strings"
+            ],
             "type": "instrument",
-            "name": "Kempa Yayl\u0131 Grubu",
+            "name": "Kempa Yayl\u0131 Grubu"
         },
         {
             "mbid": "70c930f4-be11-48c6-97b8-b31547a31497",
-            "attribute-list": ["viola"],
+            "attribute-list": [
+                "viola"
+            ],
             "type": "instrument",
-            "name": "\u0130brahim \u015eent\u00fcrk",
+            "name": "\u0130brahim \u015eent\u00fcrk"
         },
         {
             "mbid": "72a54b29-9c8d-4ec7-8c12-233bb9f4551a",
-            "attribute-list": ["viola"],
+            "attribute-list": [
+                "viola"
+            ],
             "type": "instrument",
-            "name": "Metin Kabac\u0131",
+            "name": "Metin Kabac\u0131"
         },
         {
             "mbid": "8c968ab9-1a75-4ad2-b4a1-faa1f51d0006",
-            "attribute-list": ["kanun"],
+            "attribute-list": [
+                "kanun"
+            ],
             "type": "instrument",
-            "name": "Taner Sayac\u0131o\u011flu",
+            "name": "Taner Sayac\u0131o\u011flu"
         },
         {
             "mbid": "8c98c6c1-63a8-4573-9a76-31dc41fec8ad",
-            "attribute-list": ["ney"],
+            "attribute-list": [
+                "ney"
+            ],
             "type": "instrument",
-            "name": "Ey\u00fcp Hami\u015f",
+            "name": "Ey\u00fcp Hami\u015f"
         },
         {
             "mbid": "9b6e98f8-b695-45da-8c9c-68d4bab460fd",
-            "attribute-list": ["tanbur"],
+            "attribute-list": [
+                "tanbur"
+            ],
             "type": "instrument",
-            "name": "Murat Aydemir",
+            "name": "Murat Aydemir"
         },
         {
             "mbid": "b5e2f977-cadd-458a-8171-cafdfe6a331c",
-            "attribute-list": ["percussion"],
+            "attribute-list": [
+                "percussion"
+            ],
             "type": "instrument",
-            "name": "Fahrettin Yark\u0131n",
+            "name": "Fahrettin Yark\u0131n"
         },
         {
             "mbid": "cab02cb9-d0b2-4ba5-8ea3-e5c6ab46b005",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Baki Kemanc\u0131",
+            "name": "Baki Kemanc\u0131"
         },
         {
             "mbid": "cdc69411-25f2-4fe3-88e5-41da2b8c474b",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Ayhan \u015eenyaylar",
+            "name": "Ayhan \u015eenyaylar"
         },
         {
             "mbid": "cfe6aea2-c362-4760-9ad1-b95db1605b6e",
-            "attribute-list": ["cello"],
+            "attribute-list": [
+                "cello"
+            ],
             "type": "instrument",
-            "name": "U\u011fur I\u015f\u0131k",
+            "name": "U\u011fur I\u015f\u0131k"
         },
         {
             "mbid": "d695dfaa-01f8-4a16-a538-5ccbad58de19",
-            "attribute-list": ["oud"],
+            "attribute-list": [
+                "oud"
+            ],
             "type": "instrument",
-            "name": "Yurdal Tokcan",
+            "name": "Yurdal Tokcan"
         },
         {
             "mbid": "d858c208-8ab3-4588-b1d7-f54d24a72f20",
-            "attribute-list": ["kanun"],
+            "attribute-list": [
+                "kanun"
+            ],
             "type": "instrument",
-            "name": "Turgut \u00d6z\u00fcfler",
+            "name": "Turgut \u00d6z\u00fcfler"
         },
         {
             "mbid": "df0ac610-a810-4e74-a767-57fe69495953",
-            "attribute-list": ["classical kemen\u00e7e"],
+            "attribute-list": [
+                "classical kemen\u00e7e"
+            ],
             "type": "instrument",
-            "name": "Hasan Esen",
+            "name": "Hasan Esen"
         },
         {
             "mbid": "ec6ed4c6-d7e4-4911-9234-30720f72abc8",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Timur \u015eenyaylar",
+            "name": "Timur \u015eenyaylar"
         },
         {
             "mbid": "f1b1b605-59d0-4ef7-b2a6-1f0256187caa",
-            "attribute-list": ["violin"],
+            "attribute-list": [
+                "violin"
+            ],
             "type": "instrument",
-            "name": "Tar\u0131k Kemanc\u0131",
+            "name": "Tar\u0131k Kemanc\u0131"
         },
         {
             "mbid": "fd8bceee-b3a4-4870-851a-0374f5542751",
             "type": "vocal",
-            "name": "Bekir \u00dcnl\u00fcataer",
-        },
+            "name": "Bekir \u00dcnl\u00fcataer"
+        }
     ]
     assert mb_tags["duration"] == 275
-    assert (
-        mb_tags["path"]
-        == "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
-    )
+    assert mb_tags["path"] == "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
     assert mb_tags["works"] == [
         {
             "mbid": "753ff394-dec1-422b-991f-227d8f848532",
-            "title": "A\u015fka Merak\u0131m Ezelden",
+            "title": "A\u015fka Merak\u0131m Ezelden"
         }
     ]
+
