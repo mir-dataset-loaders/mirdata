@@ -106,7 +106,6 @@ def downloader(
 
             if remotes[k].unpack_directories:
                 for src_dir in remotes[k].unpack_directories:
-                    print(src_dir)
 
                     # path to destination directory
                     destination_dir = (
@@ -315,9 +314,6 @@ def move_directory_contents(source_dir, target_dir):
 
     """
     # files get downloaded to a folder called Orchset - move everything up a level
-    print("I am here")
-    print(source_dir)
-    print(target_dir)
     directory_contents = glob.glob(os.path.join(source_dir, "*"))
     for fpath in directory_contents:
         target_path = os.path.join(target_dir, os.path.basename(fpath))
