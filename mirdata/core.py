@@ -298,7 +298,12 @@ class Track(object):
     """
 
     def __init__(
-        self, track_id, data_home, dataset_name, index, metadata=None,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata=None,
     ):
         """Track init method. Sets boilerplate attributes, including:
 

@@ -112,10 +112,19 @@ class Track(core.Track):
     """
 
     def __init__(
-        self, track_id, data_home, dataset_name, index, metadata,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
     ):
         super().__init__(
-            track_id, data_home, dataset_name, index, metadata,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
 
         # Audio path
@@ -411,7 +420,10 @@ def load_sections(sections_path):
         for line in reader:
             if line:
                 intervals.append(
-                    [float(line[0]), float(line[0]) + float(line[2]),]
+                    [
+                        float(line[0]),
+                        float(line[0]) + float(line[2]),
+                    ]
                 )
                 section_labels.append(str(line[3]) + "-" + str(line[1]))
 

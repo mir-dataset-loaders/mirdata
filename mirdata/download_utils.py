@@ -331,4 +331,3 @@ def move_directory_contents(source_dir, target_dir):
         shutil.move(fpath, target_dir)
 
     shutil.rmtree(source_dir)
-
