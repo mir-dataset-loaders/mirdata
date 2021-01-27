@@ -29,11 +29,7 @@ def md5(file_path):
 
 def make_otmm_index(dataset_data_path):
 
-    otmm_index = {
-        'version': 'dlfm2016',
-        'tracks': {},
-        'metadata': []
-    }
+    otmm_index = {'version': 'dlfm2016', 'tracks': {}, 'metadata': []}
 
     for makam in os.listdir(os.path.join(dataset_data_path, 'data')):
         if '.' not in makam:
@@ -45,17 +41,31 @@ def make_otmm_index(dataset_data_path):
 
                     otmm_index['tracks'][index] = {
                         "metadata": [
-                            os.path.join('MTG-otmm_makam_recognition_dataset-f14c0d0', 'data', makam, track),
-                            md5(os.path.join(dataset_data_path, 'data', makam, track))
+                            os.path.join(
+                                'MTG-otmm_makam_recognition_dataset-f14c0d0',
+                                'data',
+                                makam,
+                                track,
+                            ),
+                            md5(os.path.join(dataset_data_path, 'data', makam, track)),
                         ],
                         "pitch": [
-                            os.path.join('MTG-otmm_makam_recognition_dataset-f14c0d0', 'data', makam, pitch_path),
-                            md5(os.path.join(dataset_data_path, 'data', makam, pitch_path))
+                            os.path.join(
+                                'MTG-otmm_makam_recognition_dataset-f14c0d0',
+                                'data',
+                                makam,
+                                pitch_path,
+                            ),
+                            md5(
+                                os.path.join(
+                                    dataset_data_path, 'data', makam, pitch_path
+                                )
+                            ),
                         ],
                     }
     otmm_index['metadata'] = [
         os.path.join('MTG-otmm_makam_recognition_dataset-f14c0d0', 'annotations.json'),
-        md5(os.path.join(dataset_data_path, 'annotations.json'))
+        md5(os.path.join(dataset_data_path, 'annotations.json')),
     ]
 
     with open(OTMM_INDEX_PATH, 'w') as fhandle:
@@ -69,9 +79,13 @@ def main(args):
 
 
 if __name__ == '__main__':
-    PARSER = argparse.ArgumentParser(description='Make OTMM Makam Recognition index file.')
+    PARSER = argparse.ArgumentParser(
+        description='Make OTMM Makam Recognition index file.'
+    )
     PARSER.add_argument(
-        'dataset_data_path', type=str, help='Path to OTMM Makam Recognition data folder.'
+        'dataset_data_path',
+        type=str,
+        help='Path to OTMM Makam Recognition data folder.',
     )
 
     main(PARSER.parse_args())

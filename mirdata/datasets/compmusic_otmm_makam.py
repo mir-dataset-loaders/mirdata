@@ -91,6 +91,7 @@ class Track(core.Track):
         mb_tags (dict): dictionary containing the raw editorial track metadata from music brainz
 
     """
+
     def __init__(
         self,
         track_id,
@@ -141,7 +142,7 @@ class Track(core.Track):
                 "tonic": self.tonic,
                 "mbid": self.mbid,
                 "duration": self.mb_tags['duration'],
-                "metadata":  self.mb_tags,
+                "metadata": self.mb_tags,
             },
         )
 
@@ -173,7 +174,7 @@ def load_pitch(pitch_path):
             freqs.append(float(line[0]))
 
     for i in np.arange(len(freqs)):
-        times.append(round(float(time_step*i), 4))
+        times.append(round(float(time_step * i), 4))
 
     times = np.array(times)
     freqs = np.array(freqs)
@@ -184,14 +185,14 @@ def load_pitch(pitch_path):
 def load_mb_tags(mb_tags_path):
     """Load track metadata
 
-        Args:
-            track metadata path (str): Local path where the metadata of the track is stored.
-                If `None`, returns None.
+    Args:
+        track metadata path (str): Local path where the metadata of the track is stored.
+            If `None`, returns None.
 
-        Returns:
-            Dict: metadata of the track
+    Returns:
+        Dict: metadata of the track
 
-        """
+    """
     if mb_tags_path is None:
         return None
 
@@ -223,7 +224,11 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "MTG-otmm_makam_recognition_dataset-f14c0d0", "annotations.json")
+        metadata_path = os.path.join(
+            self.data_home,
+            "MTG-otmm_makam_recognition_dataset-f14c0d0",
+            "annotations.json",
+        )
         if not os.path.exists(metadata_path):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
@@ -235,7 +240,7 @@ class Dataset(core.Dataset):
                 metadata[index] = {
                     "makam": track['makam'],
                     "tonic": track['tonic'],
-                    "mbid": index
+                    "mbid": index,
                 }
 
             temp = metadata_path.split('/')[-2]
