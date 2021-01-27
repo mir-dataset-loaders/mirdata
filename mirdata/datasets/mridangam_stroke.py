@@ -71,11 +71,8 @@ REMOTES = {
         filename="mridangam_stroke_1.5.zip",
         url="https://zenodo.org/record/4068196/files/mridangam_stroke_1.5.zip?download=1",
         checksum="39af55b2476b94c7946bec24331ec01a",  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
     ),
 }
-
-DATA = core.LargeData("mridangam_stroke_index.json")
 
 
 STROKE_DICT = {
@@ -113,19 +110,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
@@ -190,7 +178,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="mridangam_stroke",
             track_class=Track,
             bibtex=BIBTEX,

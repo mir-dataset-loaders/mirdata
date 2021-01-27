@@ -95,14 +95,11 @@ BIBTEX = """@inproceedings{knees2015two,
   url-pdf={http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf},
 }"""
 
-DATA = core.LargeData("giantsteps_tempo_index.json")
-
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip",
         url="https://github.com/GiantSteps/giantsteps-tempo-dataset/archive/0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip",
         checksum="8fdafbaf505fe3f293bd912c92b72ac8",
-        destination_dir="",
     )
 }
 DOWNLOAD_INFO = """
@@ -139,19 +136,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.annotation_v1_path = os.path.join(
@@ -264,7 +252,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="giantsteps_tempo",
             track_class=Track,
             bibtex=BIBTEX,

@@ -80,9 +80,6 @@ LICENSE_INFO = (
 )
 
 
-DATA = core.LargeData("dali_index.json")
-
-
 class Track(core.Track):
     """DALI melody Track class
 
@@ -115,19 +112,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         self.annotation_path = os.path.join(
@@ -280,7 +268,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="dali",
             track_class=Track,
             bibtex=BIBTEX,

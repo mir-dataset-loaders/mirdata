@@ -42,7 +42,6 @@ REMOTES = {
         filename="salami-data-public-hierarchy-corrections.zip",
         url="https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip",
         checksum="194add2601c09a7279a7433288de81fd",
-        destination_dir=None,
     )
 }
 DOWNLOAD_INFO = """
@@ -61,9 +60,6 @@ the public domain. More information about this dedication and your rights, pleas
 details here: http://creativecommons.org/publicdomain/zero/1.0/ and
 http://creativecommons.org/publicdomain/zero/1.0/legalcode.
 """
-
-
-DATA = core.LargeData("salami_index.json")
 
 
 class Track(core.Track):
@@ -97,19 +93,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
         self.sections_annotator1_uppercase_path = core.none_path_join(
             [self._data_home, self._track_paths["annotator_1_uppercase"][0]]
@@ -243,7 +230,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="salami",
             track_class=Track,
             bibtex=BIBTEX,

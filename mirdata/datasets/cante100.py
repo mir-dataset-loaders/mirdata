@@ -113,13 +113,11 @@ REMOTES = {
         filename="cante100Meta.xml",
         url="https://zenodo.org/record/1322542/files/cante100Meta.xml?download=1",
         checksum="6cce186ce77a06541cdb9f0a671afb46",  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
     ),
     "README": download_utils.RemoteFileMetadata(
         filename="cante100_README.txt",
         url="https://zenodo.org/record/1322542/files/cante100_README.txt?download=1",
         checksum="184209b7e7d816fa603f0c7f481c0aae",  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
     ),
 }
 
@@ -146,9 +144,6 @@ were gathered by the COFLA team. COFLA 2015. All rights reserved.
 """
 
 
-DATA = core.LargeData("cante100_index.json")
-
-
 class Track(core.Track):
     """cante100 track class
 
@@ -172,19 +167,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
@@ -337,7 +323,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="cante100",
             track_class=Track,
             bibtex=BIBTEX,

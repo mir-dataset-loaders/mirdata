@@ -44,8 +44,6 @@ REMOTES = {
     )
 }
 
-DATA = core.LargeData("gtzan_genre_index.json")
-
 LICENSE_INFO = "Unfortunately we couldn't find the license information for the GTZAN_genre dataset."
 
 
@@ -63,19 +61,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         self.genre = track_id.split(".")[0]
@@ -139,7 +128,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="gtzan_genre",
             track_class=Track,
             bibtex=BIBTEX,

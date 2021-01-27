@@ -64,28 +64,24 @@ REMOTES = {
         filename="maestro-v2.0.0.zip",
         url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.zip",
         checksum="7a6c23536ebcf3f50b1f00ac253886a7",
-        destination_dir="",
+        unpack_directories=["maestro-v2.0.0"],
     ),
     "midi": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0-midi.zip",
         url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0-midi.zip",
         checksum="8a45cc678a8b23cd7bad048b1e9034c5",
-        destination_dir="",
+        unpack_directories=["maestro-v2.0.0"],
     ),
     "metadata": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0.json",
         url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json",
         checksum="576172af1cdc4efddcf0be7d260d48f7",
-        destination_dir="maestro-v2.0.0",
     ),
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
 )
-
-
-DATA = core.LargeData("maestro_index.json")
 
 
 class Track(core.Track):
@@ -113,19 +109,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
@@ -235,7 +222,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="maestro",
             track_class=Track,
             bibtex=BIBTEX,
@@ -303,28 +289,3 @@ class Dataset(core.Dataset):
             cleanup=cleanup,
         )
 
-        # files get downloaded to a folder called maestro-v2.0.0
-        # move everything up a level
-        maestro_dir = os.path.join(self.data_home, "maestro-v2.0.0")
-        if not os.path.exists(maestro_dir):
-            logging.info(
-                "Maestro data not downloaded, because it probably already exists on your computer. "
-                + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
-                + "existing files and download from scratch"
-            )
-            return
-        maestro_files = glob.glob(os.path.join(maestro_dir, "*"))
-
-        for fpath in maestro_files:
-            target_path = os.path.join(self.data_home, os.path.basename(fpath))
-            if os.path.exists(target_path):
-                logging.info(
-                    "{} already exists. Run with force_overwrite=True to download from scratch".format(
-                        target_path
-                    )
-                )
-                continue
-            shutil.move(fpath, self.data_home)
-
-        if os.path.exists(maestro_dir):
-            shutil.rmtree(maestro_dir)

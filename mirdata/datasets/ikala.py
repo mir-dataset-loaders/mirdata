@@ -44,7 +44,6 @@ REMOTES = {
         filename="id_mapping.txt",
         url="http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt",
         checksum="81097b587804ce93e56c7a331ba06abc",
-        destination_dir=None,
     )
 }
 DOWNLOAD_INFO = """
@@ -62,9 +61,6 @@ LICENSE_INFO = """
 When it was distributed, Ikala used to have a custom license.
 Visit http://mac.citi.sinica.edu.tw/ikala/ for more details.
 """
-
-
-DATA = core.LargeData("ikala_index.json")
 
 
 class Track(core.Track):
@@ -89,19 +85,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         self.f0_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
@@ -278,9 +265,7 @@ def load_lyrics(fhandle: TextIO) -> annotations.LyricData:
             pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T,
-        lyrics,
-        pronunciations,
+        np.array([start_times, end_times]).T, lyrics, pronunciations,
     )
     return lyrics_data
 
@@ -294,7 +279,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="ikala",
             track_class=Track,
             bibtex=BIBTEX,

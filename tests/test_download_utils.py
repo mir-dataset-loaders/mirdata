@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+from pathlib import Path
 import shutil
 import sys
 import zipfile
@@ -9,13 +10,6 @@ import re
 from mirdata import download_utils
 
 import pytest
-
-if sys.version_info.major == 3:
-    builtin_module_name = "builtins"
-    from pathlib import Path
-else:
-    builtin_module_name = "__builtin__"
-    from pathlib2 import Path
 
 
 @pytest.fixture
@@ -51,14 +45,14 @@ def test_downloader(mocker, mock_path):
     )
 
     zip_remote = download_utils.RemoteFileMetadata(
-        filename="remote.zip", url="a", checksum=("1234"), destination_dir=None
+        filename="remote.zip", url="a", checksum=("1234")
     )
     tar_remote = download_utils.RemoteFileMetadata(
-        filename="remote.tar.gz", url="a", checksum=("1234"), destination_dir=None
+        filename="remote.tar.gz", url="a", checksum=("1234")
     )
 
     file_remote = download_utils.RemoteFileMetadata(
-        filename="remote.txt", url="a", checksum=("1234"), destination_dir=None
+        filename="remote.txt", url="a", checksum=("1234")
     )
 
     # Zip only
@@ -162,7 +156,6 @@ def test_downloader_with_server_file(httpserver):
         filename="remote.wav",
         url=httpserver.url,
         checksum=("3f77d0d69dc41b3696f074ad6bf2852f"),
-        destination_dir=None,
     )
 
     save_dir = "tests/resources/tmp_download_test"
@@ -195,7 +188,6 @@ def test_downloader_with_server_zip(httpserver):
         filename="remote.zip",
         url=httpserver.url,
         checksum=("7a31ccfa28bfa3fb112d16c96e9d9a89"),
-        destination_dir=None,
     )
 
     save_dir = "tests/resources/_tmp_test_download_utils"
@@ -235,7 +227,6 @@ def test_downloader_with_server_tar(httpserver):
         filename="remote.tar.gz",
         url=httpserver.url,
         checksum=("9042f5eebdcd0b94aa7a3c9bf12dc51d"),
-        destination_dir=None,
     )
 
     save_dir = "tests/resources/_tmp_test_download_utils"
@@ -268,7 +259,6 @@ def test_download_from_remote(httpserver, tmpdir):
         filename="remote.wav",
         url=httpserver.url,
         checksum=("3f77d0d69dc41b3696f074ad6bf2852f"),
-        destination_dir=None,
     )
 
     download_path = download_utils.download_from_remote(TEST_REMOTE, str(tmpdir), False)
@@ -293,10 +283,7 @@ def test_download_from_remote_raises_IOError(httpserver, tmpdir):
     httpserver.serve_content("File not found!", 404)
 
     TEST_REMOTE = download_utils.RemoteFileMetadata(
-        filename="remote.wav",
-        url=httpserver.url,
-        checksum=("1234"),
-        destination_dir=None,
+        filename="remote.wav", url=httpserver.url, checksum=("1234"),
     )
 
     with pytest.raises(IOError):

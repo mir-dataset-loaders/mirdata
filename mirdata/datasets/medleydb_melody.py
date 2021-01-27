@@ -54,9 +54,6 @@ LICENSE_INFO = (
 )
 
 
-DATA = core.LargeData("medleydb_melody_index.json")
-
-
 class Track(core.Track):
     """medleydb_melody Track class
 
@@ -84,19 +81,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         self.melody1_path = os.path.join(
@@ -234,7 +222,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="medleydb_melody",
             track_class=Track,
             bibtex=BIBTEX,

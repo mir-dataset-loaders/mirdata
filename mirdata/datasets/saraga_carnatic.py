@@ -63,16 +63,12 @@ REMOTES = {
         filename="saraga1.5_carnatic.zip",
         url="https://zenodo.org/record/4301737/files/saraga1.5_carnatic.zip?download=1",
         checksum="e4fcd380b4f6d025964cd16aee00273d",
-        destination_dir=None,
     )
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
-
-
-DATA = core.LargeData("saraga_carnatic_index.json")
 
 
 class Track(core.Track):
@@ -123,19 +119,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         # Audio path
@@ -469,10 +456,7 @@ def load_sections(sections_path):
         for line in reader:
             if line != "\n":
                 intervals.append(
-                    [
-                        float(line[0]),
-                        float(line[0]) + float(line[2]),
-                    ]
+                    [float(line[0]), float(line[0]) + float(line[2]),]
                 )
                 section_labels.append(str(line[3]))
 
@@ -527,7 +511,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="saraga_carnatic",
             track_class=Track,
             bibtex=BIBTEX,

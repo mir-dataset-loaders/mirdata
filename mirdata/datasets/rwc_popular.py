@@ -65,7 +65,6 @@ REMOTES = {
         filename="master.zip",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir="",
     ),
     "annotations_beat": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-P-2001.BEAT.zip",
@@ -104,9 +103,6 @@ DOWNLOAD_INFO = """
 """
 
 
-DATA = core.LargeData("rwc_popular_index.json")
-
-
 class Track(core.Track):
     """rwc_popular Track class
 
@@ -141,19 +137,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
         self.sections_path = os.path.join(
             self._data_home, self._track_paths["sections"][0]
@@ -284,7 +271,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="rwc_popular",
             track_class=Track,
             bibtex=BIBTEX,

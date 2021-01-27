@@ -73,8 +73,6 @@ REMOTES = {
     ),
 }
 
-DATA = core.LargeData("giantsteps_key_index.json")
-
 LICENSE_INFO = "Creative Commons Attribution Share Alike 4.0 International."
 
 
@@ -100,19 +98,10 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
@@ -256,7 +245,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="giantsteps_key",
             track_class=Track,
             bibtex=BIBTEX,
