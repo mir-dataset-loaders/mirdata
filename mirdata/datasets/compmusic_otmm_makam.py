@@ -141,7 +141,7 @@ class Track(core.Track):
                 "makam": self.makam,
                 "tonic": self.tonic,
                 "mbid": self.mbid,
-                "duration": self.mb_tags['duration'],
+                "duration": self.mb_tags["duration"],
                 "metadata": self.mb_tags,
             },
         )
@@ -168,7 +168,7 @@ def load_pitch(pitch_path):
 
     times = []
     freqs = []
-    with open(pitch_path, 'r') as fhandle:
+    with open(pitch_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter=",")
         for line in reader:
             freqs.append(float(line[0]))
@@ -236,14 +236,14 @@ class Dataset(core.Dataset):
         with open(metadata_path) as f:
             meta = json.load(f)
             for track in meta:
-                index = track['mbid'].split("/")[-1]
+                index = track["mbid"].split("/")[-1]
                 metadata[index] = {
-                    "makam": track['makam'],
-                    "tonic": track['tonic'],
+                    "makam": track["makam"],
+                    "tonic": track["tonic"],
                     "mbid": index,
                 }
 
-            temp = metadata_path.split('/')[-2]
+            temp = metadata_path.split("/")[-2]
             data_home = metadata_path.split(temp)[0]
             metadata["data_home"] = data_home
 
