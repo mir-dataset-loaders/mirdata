@@ -35,11 +35,14 @@ import numpy as np
 import os
 import json
 import csv
+from typing import TextIO
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
+
 
 BIBTEX = """
 @software{sertan_senturk_2016_58413,
@@ -147,7 +150,8 @@ class Track(core.Track):
         )
 
 
-def load_pitch(pitch_path):
+@io.coerce_to_string_io
+def load_pitch(fhandle: TextIO) -> annotations.F0Data:
     """Load pitch
 
     Args:
@@ -158,20 +162,13 @@ def load_pitch(pitch_path):
         F0Data: pitch annotation
 
     """
-    if pitch_path is None:
-        return None
-
-    if not os.path.exists(pitch_path):
-        raise IOError("melody_path {} does not exist".format(pitch_path))
-
     time_step = 0.0029
 
     times = []
     freqs = []
-    with open(pitch_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            freqs.append(float(line[0]))
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        freqs.append(float(line[0]))
 
     for i in np.arange(len(freqs)):
         times.append(round(float(time_step * i), 4))
@@ -182,7 +179,8 @@ def load_pitch(pitch_path):
     return annotations.F0Data(times, freqs, confidence)
 
 
-def load_mb_tags(mb_tags_path):
+@io.coerce_to_string_io
+def load_mb_tags(fhandle: TextIO) -> dict:
     """Load track metadata
 
     Args:
@@ -193,14 +191,7 @@ def load_mb_tags(mb_tags_path):
         Dict: metadata of the track
 
     """
-    if mb_tags_path is None:
-        return None
-
-    if not os.path.exists(mb_tags_path):
-        raise IOError("track_metadata_path {} does not exist".format(mb_tags_path))
-
-    with open(mb_tags_path) as r:
-        mb_tags = json.load(r)
+    mb_tags = json.load(fhandle)
 
     return mb_tags
 
@@ -252,3 +243,7 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_pitch)
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
+
+    @core.copy_docs(load_mb_tags)
+    def load_mb_tags(self, *args, **kwargs):
+        return load_mb_tags(*args, **kwargs)
