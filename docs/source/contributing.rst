@@ -392,7 +392,7 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
 
 ::
 
-    black --target-version py37 --skip-string-normalization mirdata/
+    black --target-version py38 mirdata/ tests/
 
 2. the test coverage is too low -- this means that there are too many new lines of code introduced that are not tested.
 
