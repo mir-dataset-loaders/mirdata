@@ -160,7 +160,7 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
         F0Data: pitch annotation
 
     """
-    time_step = 0.0029
+    time_step = 128 / 44100  # hop-size / fs
 
     times = []
     freqs = []
@@ -170,7 +170,7 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
         freqs.append(float(line[0]))
 
     for i in np.arange(len(freqs)):
-        times.append(round(float(time_step * i), 4))
+        times.append(float(time_step * i))
 
     times = np.array(times)
     freqs = np.array(freqs)
