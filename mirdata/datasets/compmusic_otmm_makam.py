@@ -43,7 +43,6 @@ from mirdata import core
 from mirdata import annotations
 from mirdata import io
 
-
 BIBTEX = """
 @software{sertan_senturk_2016_58413,
   author       = {Sertan Senturk and
@@ -71,7 +70,6 @@ REMOTES = {
 LICENSE_INFO = (
     "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"
 )
-
 
 DATA = core.LargeData("otmm_makam_index.json")
 
@@ -166,6 +164,7 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
 
     times = []
     freqs = []
+    confidence = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         freqs.append(float(line[0]))
@@ -175,7 +174,9 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
 
     times = np.array(times)
     freqs = np.array(freqs)
-    confidence = (freqs > 0).astype(float)
+    for i in freqs:
+        confidence.append(1.0) if i > 0 else confidence.append(0.0)
+    confidence = np.array(confidence)
     return annotations.F0Data(times, freqs, confidence)
 
 
@@ -191,9 +192,8 @@ def load_mb_tags(fhandle: TextIO) -> dict:
         Dict: metadata of the track
 
     """
-    mb_tags = json.load(fhandle)
 
-    return mb_tags
+    return json.load(fhandle)
 
 
 @core.docstring_inherit(core.Dataset)
@@ -226,11 +226,11 @@ class Dataset(core.Dataset):
         metadata = {}
         with open(metadata_path) as f:
             meta = json.load(f)
-            for track in meta:
-                index = track["mbid"].split("/")[-1]
+            for i in meta:
+                index = i["mbid"].split("/")[-1]
                 metadata[index] = {
-                    "makam": track["makam"],
-                    "tonic": track["tonic"],
+                    "makam": i["makam"],
+                    "tonic": i["tonic"],
                     "mbid": index,
                 }
 
