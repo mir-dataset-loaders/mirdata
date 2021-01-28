@@ -203,6 +203,166 @@ class Dataset(object):
         """
         return self.track(random.choice(self.track_ids))
 
+    def choice_n_tracks(self, samples=1, condition=None):
+        """Choose a random number of track with a condition.
+
+        If no condition is provided (None) choice_n_tracks returns the number of random samples provided.
+
+        Args:
+            samples (int): number of random samples
+            condition (function(track)): condition to match the sample rates
+
+        Examples:
+            .. code-block:: python
+                >>> import mirdata
+
+                >>> md = mirdata.initialize('mridangam_stroke')
+
+                >>> md.choice_n_tracks()
+                {'226819': Track(
+                  audio_path="...onedafranco/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/C#/226819__akshaylaya__ta-csh-039.wav",
+                  stroke_name="ta",
+                  tonic="C#",
+                  track_id="226819",
+                  audio: The track's audio
+                        Returns,
+                )}
+
+                >>> md.choice_n_tracks(samples=2)
+                {'224258': Track(
+                  audio_path="...monedafranco/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/B/224258__akshaylaya__dhin-b-040.wav",
+                  stroke_name="dhin",
+                  tonic="B",
+                  track_id="224258",
+                  audio: The track's audio
+                        Returns,
+                ), '225173': Track(
+                  audio_path="...amonedafranco/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/B/225173__akshaylaya__thi-b-392.wav",
+                  stroke_name="thi",
+                  tonic="B",
+                  track_id="225173",
+                  audio: The track's audio
+                        Returns,
+                )}
+
+            >>> def is_stroke(track):
+            ...     return track.stroke == 'ta'
+            ...
+
+            >>> md.choice_n_tracks(samples=2, condition=is_stroke)
+            {'230487': Track(
+              audio_path="...ramonedafranco/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/E/230487__akshaylaya__ta-e-045.wav",
+              stroke_name="ta",
+              tonic="E",
+              track_id="230487",
+              audio: The track's audio
+                    Returns,
+            ), '226943': Track(
+              audio_path="...onedafranco/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/C#/226943__akshaylaya__ta-csh-163.wav",
+              stroke_name="ta",
+              tonic="C#",
+              track_id="226943",
+              audio: The track's audio
+                    Returns,
+            )}
+
+        Returns:
+            dict:
+                [{`track_id`: }, ...]
+
+
+        """
+        if condition is None:
+            choice_possibilities = self.track_ids
+        else:
+            try:
+                choice_possibilities = [track_id for track_id in self.track_ids if condition(self.track(track_id))]
+            except AttributeError:
+                raise Exception("Condition function tries to access a wrong track attribute")
+
+        if len(choice_possibilities) < samples:
+            raise Exception("There are more samples than choice possibilities.")
+
+        return {random_choice: self.track(random_choice)
+                for random_choice in random.choices(choice_possibilities, k=samples)}
+
+    def choice_stratified_n_tracks(self, samples=1, stratified_attribute=None):
+        """Choose a random number of track stratified by stratified_attribute.
+
+        If no stratified_attribute is provided (None) choice_n_tracks returns the number of random samples provided.
+
+        Args:
+            samples (int): number of random samples
+            stratified_attribute (function(track)): function that return atrribute to stratify.
+
+        Examples:
+            .. code-block:: python
+                >>> import mirdata
+
+                >>> md = mirdata.initialize('mridangam_stroke')
+                >>> def get_stroke(track):
+                ...     return track.stroke_name
+
+
+                >>> md.choice_stratified_n_tracks(samples=2, stratified_attribute=get_stroke)
+                {'bheem': [Track(
+                  audio_path="...onedafranco/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/E/230154__akshaylaya__bheem-e-019.wav",
+                  stroke_name="bheem",
+                  tonic="E",
+                  track_id="230154",
+                  audio: The track's audio
+                        Returns,
+                ), Track(
+                  audio_path="...onedafranco/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/E/230157__akshaylaya__bheem-e-022.wav",
+                  stroke_name="bheem",
+                  tonic="E",
+                  track_id="230157",
+                  audio: The track's audio
+                        Returns,
+                )],
+                ...  ...
+                'thom': [Track(
+                  audio_path="...edafranco/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/D#/230081__akshaylaya__thom-dsh-074.wav",
+                  stroke_name="thom",
+                  tonic="D#",
+                  track_id="230081",
+                  audio: The track's audio
+                        Returns,
+                ), Track(
+                  audio_path="...monedafranco/mir_datasets/mridangam_stroke/mridangam_stroke_1.5/D/228572__akshaylaya__thom-d-049.wav",
+                  stroke_name="thom",
+                  tonic="D",
+                  track_id="228572",
+                  audio: The track's audio
+                        Returns,
+                )]}
+
+        Returns:
+            dict:
+                {`category`: [track, ...],...}
+
+
+        """
+        if stratified_attribute is None:
+            choice_possibilities = {"all": self.track_ids}
+        else:
+            try:
+                choice_possibilities = {}
+                for track_id in self.track_ids:
+                    category = stratified_attribute(self.track(track_id))
+                    if category not in choice_possibilities:
+                        choice_possibilities[category] = [track_id]
+                    else:
+                        choice_possibilities[category] = choice_possibilities[category] + [track_id]
+            except AttributeError:
+                raise Exception("Condition function tries to access a wrong track attribute")
+
+        for k, c in choice_possibilities.items():
+            if len(c) < samples:
+                raise Exception("There are more samples than choice possibilities for strattified class " + k)
+
+        return {k: [self.track(t) for t in random.choices(cs, k=samples)] for k, cs in choice_possibilities.items()}
+
     def cite(self):
         """
         Print the reference
