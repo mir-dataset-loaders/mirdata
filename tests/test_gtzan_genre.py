@@ -9,7 +9,8 @@ TEST_DATA_HOME = "tests/resources/mir_datasets/gtzan_genre"
 
 def test_track():
     default_trackid = "country.00000"
-    track = gtzan_genre.Track(default_trackid, data_home=TEST_DATA_HOME)
+    dataset = gtzan_genre.Dataset(TEST_DATA_HOME)
+    track = dataset.track(default_trackid)
     expected_attributes = {
         "genre": "country",
         "audio_path": "tests/resources/mir_datasets/gtzan_genre/"
@@ -24,13 +25,15 @@ def test_track():
 
 
 def test_hiphop():
-    track = gtzan_genre.Track("hiphop.00000", data_home=TEST_DATA_HOME)
+    dataset = gtzan_genre.Dataset(TEST_DATA_HOME)
+    track = dataset.track("hiphop.00000")
     assert track.genre == "hip-hop"
 
 
 def test_to_jams():
     default_trackid = "country.00000"
-    track = gtzan_genre.Track(default_trackid, data_home=TEST_DATA_HOME)
+    dataset = gtzan_genre.Dataset(TEST_DATA_HOME)
+    track = dataset.track(default_trackid)
     jam = track.to_jams()
 
     # Validate GTZAN schema

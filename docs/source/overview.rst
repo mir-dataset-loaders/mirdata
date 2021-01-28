@@ -4,6 +4,11 @@
 Overview
 ########
 
+.. code-block::
+
+    pip install mirdata
+
+
 ``mirdata`` is a library which aims to standardize how audio datasets are accessed in Python, 
 removing the need for writing custom loaders in every project, and improving reproducibility.
 Working with datasets usually requires an often cumbersome step of downloading data and writing 
@@ -137,8 +142,8 @@ See the contributing docs :ref:`create_index` for more information about mirdata
 annotations
 ###########
 
-mirdata provdes ``Annotation`` objects of various kinds which provide a standard interface to different
-annotation formats. These objects are compatible with the ``mir_eval`` library's expected format, as well
+mirdata provdes ``Annotation`` classes of various kinds which provide a standard interface to different
+annotation formats. These classes are compatible with the ``mir_eval`` library's expected format, as well
 as with the jams format. The format can be easily extended to other formats, if requested.
 
 

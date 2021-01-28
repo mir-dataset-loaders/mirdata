@@ -14,7 +14,14 @@ mirdata
  * loading annotation files to a common format, consistent with ``mir_eval``
  * parsing track level metadata for detailed evaluations.
 
+
+.. code-block::
+
+    pip install mirdata
+
+
 For more details on how to use the library see the :ref:`tutorial`.
+
 
 Citing mirdata
 --------------
