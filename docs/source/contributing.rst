@@ -5,26 +5,39 @@ Contributing
 ############
 
 We encourage contributions to mirdata, especially new dataset loaders. To contribute a new loader, follow the
-steps indicated below and create a Pull Request (PR) to the github repository.
+steps indicated below and create a Pull Request (PR) to the github repository. For any doubt or comment about
+your contribution, you can always submit an issue or open a discussion in the repository.
 
 - `Issue Tracker <https://github.com/mir-dataset-loaders/mirdata/issues>`_
 - `Source Code <https://github.com/mir-dataset-loaders/mirdata>`_
 
 
-Installing and running tests
-#############################
+Installing mirdata for development purposes
+###########################################
+
+To install ``mirdata`` for development purposes:
+
+    - First run:
+
+    .. code-block:: console
+
+        git clone https://github.com/mir-dataset-loaders/mirdata.git
+
+    - Then, after opening source data library you have to install the dependencies for updating the documentation
+      and running tests:
+
+    .. code-block:: console
+
+        pip install .
+        pip install .[tests]
+        pip install .[docs]
+        pip install .[dali]
 
 
-First, clone the repository from github:
-
-.. code-block:: bash
-
-    git clone git@github.com:mir-dataset-loaders/mirdata.git
-
-
-We recommend you install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions 
-and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7. 
-Once ``pyenv`` and the Python versions are configured, install ``pytest``. Finally, run :
+We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
+and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7.
+Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the pytest
+plugins to automatically test your code successfully. Finally, run:
 
 .. code-block:: bash
 
