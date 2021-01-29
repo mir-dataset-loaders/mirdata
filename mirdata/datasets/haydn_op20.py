@@ -302,6 +302,27 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    # @core.copy_docs(load_audio)
-    # def load_chj(self, *args, **kwargs):
-    #     return load_audio(*args, **kwargs)
+    @core.copy_docs(show_score)
+    def show_score(self, *args, **kwargs):
+        return show_score(*args, **kwargs)
+
+    @core.copy_docs(load_score)
+    def load_score(self, *args, **kwargs):
+        return load_score(*args, **kwargs)
+
+    @core.copy_docs(load_key)
+    def load_key(self, *args, **kwargs):
+        return load_key(*args, **kwargs)
+
+    @core.copy_docs(load_chord)
+    def load_chord(self, *args, **kwargs):
+        return load_chord(*args, **kwargs)
+
+    @core.copy_docs(load_roman_numerals)
+    def load_roman_numerals(self, *args, **kwargs):
+        return load_roman_numerals(*args, **kwargs)
+
+    @core.copy_docs(load_midi_path)
+    def load_midi_path(self, *args, **kwargs):
+        return load_midi_path(*args, **kwargs)
+
