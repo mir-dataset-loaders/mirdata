@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Core mirdata classes
 """
 import json

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """DALI Dataset Loader
 
 .. admonition:: Dataset Info
