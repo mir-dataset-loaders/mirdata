@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 from mirdata.datasets import salami
 from mirdata import annotations

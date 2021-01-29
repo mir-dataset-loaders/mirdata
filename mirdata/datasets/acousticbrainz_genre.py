@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Acoustic Brainz Genre dataset
 
 .. admonition:: Dataset Info

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """RWC Classical Dataset Loader
 
 .. admonition:: Dataset Info

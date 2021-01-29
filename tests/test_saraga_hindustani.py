@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 from mirdata import annotations
 from mirdata.datasets import saraga_hindustani
