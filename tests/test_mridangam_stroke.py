@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import os
 
 from tests.test_utils import run_track_tests

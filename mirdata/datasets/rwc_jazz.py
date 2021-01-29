@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """RWC Jazz Dataset Loader.
 
 .. admonition:: Dataset Info
