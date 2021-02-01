@@ -1,6 +1,7 @@
 """Utility functions for mirdata"""
 
 import hashlib
+import logging
 import os
 import tqdm
 
@@ -31,7 +32,7 @@ def log_message(message, verbose=True):
 
     """
     if verbose:
-        print(message)
+        logging.info(message)
 
 
 def validate(local_path, checksum):

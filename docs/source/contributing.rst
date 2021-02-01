@@ -310,27 +310,20 @@ Working with remote indexes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the end-user there is no difference between the remote and local indexes. However, indexes can get large when there are a lot of tracks
-in the dataset. In these cases, storing and accessing an index remotely can be convenient.
-
-However, to contribute to the library using remote indexes you have to add in ``utils.LargeData(...)`` the remote_index argument with a
-``download_utils.RemoteFileMetadata`` dictionary with the remote index information.
+in the dataset. In these cases, storing and accessing an index remotely can be convenient. Large indexes can be added to REMOTES, 
+and will be downloaded with the rest of the dataset. For example:
 
 .. code-block:: python
 
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+    "index": download_utils.RemoteFileMetadata(
+        filename="acousticbrainz_genre_index.json.zip",
+        url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
+        checksum="810f1c003f53cbe58002ba96e6d4d138",
+    )
 
 
-.. code-block:: python
-
-    REMOTE_INDEX = {
-        "REMOTE_INDEX": download_utils.RemoteFileMetadata(
-            filename="acousticbrainz_genre_index.json.zip",
-            url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
-            checksum="810f1c003f53cbe58002ba96e6d4d138",
-            destination_dir="",
-        )
-    }
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+Unlike local indexes, the remote indexes will live in the ``data_home`` directory. When creating the ``Dataset``
+object, specify the ``custom_index_path`` to where the index will be downloaded (as a relative path to ``data_home``).
 
 
 .. _reducing_test_space:

@@ -23,8 +23,6 @@ from mirdata import annotations
 from mirdata import io
 
 
-DATA = core.LargeData("beatles_index.json")
-
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
     author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte,
@@ -189,7 +187,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
         beat_times.append(float(line[0]))
         beat_positions.append(line[-1])
 
-    beat_positions = _fix_newpoint(np.array(beat_positions))
+    beat_positions = _fix_newpoint(np.array(beat_positions))  # type: ignore
     # After fixing New Point labels convert positions to int
     beat_data = annotations.BeatData(
         np.array(beat_times), np.array([int(b) for b in beat_positions])
@@ -291,7 +289,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="beatles",
             track_class=Track,
             bibtex=BIBTEX,

@@ -118,30 +118,23 @@ REMOTES = {
         filename="IRMAS-TrainingData.zip",
         url="https://zenodo.org/record/1290750/files/IRMAS-TrainingData.zip?download=1",
         checksum="4fd9f5ed5a18d8e2687e6360b5f60afe",
-        destination_dir=None,
     ),
     "testing_data_1": download_utils.RemoteFileMetadata(
         filename="IRMAS-TestingData-Part1.zip",
         url="https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part1.zip?download=1",
         checksum="5a2e65520dcedada565dff2050bb2a56",
-        destination_dir=None,
     ),
     "testing_data_2": download_utils.RemoteFileMetadata(
         filename="IRMAS-TestingData-Part2.zip",
         url="https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part2.zip?download=1",
         checksum="afb0c8ea92f34ee653693106be95c895",
-        destination_dir=None,
     ),
     "testing_data_3": download_utils.RemoteFileMetadata(
         filename="IRMAS-TestingData-Part3.zip",
         url="https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part3.zip?download=1",
         checksum="9b3fb2d0c89cdc98037121c25bd5b556",
-        destination_dir=None,
     ),
 }
-
-
-DATA = core.LargeData("irmas_index.json")
 
 
 INST_DICT = [
@@ -330,7 +323,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="irmas",
             track_class=Track,
             bibtex=BIBTEX,

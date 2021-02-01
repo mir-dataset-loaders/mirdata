@@ -106,13 +106,11 @@ list is passed to the ``download()`` function through the ``partial_download`` v
                 filename="cante100Meta.xml",
                 url="https://zenodo.org/record/1322542/files/cante100Meta.xml?download=1",
                 checksum="6cce186ce77a06541cdb9f0a671afb46",  # the md5 checksum
-                destination_dir=None,  # relative path for where to unzip the data, or None
             ),
             "README": download_utils.RemoteFileMetadata(
                 filename="cante100_README.txt",
                 url="https://zenodo.org/record/1322542/files/cante100_README.txt?download=1",
                 checksum="184209b7e7d816fa603f0c7f481c0aae",  # the md5 checksum
-                destination_dir=None,  # relative path for where to unzip the data, or None
             ),
         }
 

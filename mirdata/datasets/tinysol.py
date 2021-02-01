@@ -84,9 +84,6 @@ STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
 LICENSE_INFO = "Creative Commons Attribution 4.0 International Public License."
 
 
-DATA = core.LargeData("tinysol_index.json")
-
-
 class Track(core.Track):
     """tinysol Track class
 
@@ -190,7 +187,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="tinysol",
             track_class=Track,
             bibtex=BIBTEX,

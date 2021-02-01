@@ -43,16 +43,13 @@ REMOTES = {
         filename="Orchset_dataset_0.zip",
         url="https://zenodo.org/record/1289786/files/Orchset_dataset_0.zip?download=1",
         checksum="cf6fe52d64624f61ee116c752fb318ca",
-        destination_dir=None,
+        unpack_directories=["Orchset"],
     )
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
-
-
-DATA = core.LargeData("orchset_index.json")
 
 
 class Track(core.Track):
@@ -228,7 +225,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="orchset",
             track_class=Track,
             bibtex=BIBTEX,
@@ -304,51 +300,3 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_melody)
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
-
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        download_utils.downloader(
-            self.data_home,
-            remotes=self.remotes,
-            info_message=None,
-            force_overwrite=force_overwrite,
-            cleanup=cleanup,
-        )
-        # files get downloaded to a folder called Orchset - move everything up a level
-        duplicated_orchset_dir = os.path.join(self.data_home, "Orchset")
-        if not os.path.exists(duplicated_orchset_dir):
-            logging.info(
-                "Orchset data not downloaded, because it probably already exists on your computer. "
-                + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
-                + "existing files and download from scratch"
-            )
-            return
-
-        orchset_files = glob.glob(os.path.join(duplicated_orchset_dir, "*"))
-        for fpath in orchset_files:
-            target_path = os.path.join(self.data_home, os.path.basename(fpath))
-            if os.path.exists(target_path):
-                logging.info(
-                    "{} already exists. Run with force_overwrite=True to download from scratch".format(
-                        target_path
-                    )
-                )
-                continue
-            shutil.move(fpath, self.data_home)
-
-        shutil.rmtree(duplicated_orchset_dir)

@@ -111,7 +111,6 @@ _STYLE_DICT = {
     "Funk": "Funk",
 }
 _GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
-DATA = core.LargeData("guitarset_index.json")
 
 LICENSE_INFO = "MIT License."
 
@@ -437,7 +436,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="guitarset",
             track_class=Track,
             bibtex=BIBTEX,

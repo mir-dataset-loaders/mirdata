@@ -91,7 +91,6 @@ DOWNLOAD_INFO = """
             > musicbrainz_metadata/
     and copy the folder to {} directory
 """
-DATA = core.LargeData("tonality_classicaldb_index.json")
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
@@ -276,7 +275,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="tonality_classicaldb",
             track_class=Track,
             bibtex=BIBTEX,
