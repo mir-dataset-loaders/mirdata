@@ -713,8 +713,23 @@ def test_special_turkish_characters():
     dataset = compmusic_otmm_makam.Dataset(data_home)
     track = dataset.track(track_id)
     mb_tags_path = track.mb_tags_path
-    special_characters = compmusic_otmm_makam.load_mb_tags(mb_tags_path)["special_turkish_characters"]
+    special_characters = compmusic_otmm_makam.load_mb_tags(mb_tags_path)[
+        "special_turkish_characters"
+    ]
 
     assert special_characters == [
-        "ç", "Ç", "ğ", "Ğ", "ı", "İ", "i", "İ", "ö", "Ö", "ş", "Ş", "ü", "Ü"
+        "ç",
+        "Ç",
+        "ğ",
+        "Ğ",
+        "ı",
+        "İ",
+        "i",
+        "İ",
+        "ö",
+        "Ö",
+        "ş",
+        "Ş",
+        "ü",
+        "Ü",
     ]
