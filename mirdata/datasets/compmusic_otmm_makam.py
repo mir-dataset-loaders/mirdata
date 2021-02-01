@@ -70,8 +70,6 @@ LICENSE_INFO = (
     "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"
 )
 
-DATA = core.LargeData("otmm_makam_index.json")
-
 
 class Track(core.Track):
     """OTMM Makam Track class
@@ -194,7 +192,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="compmusic_otmm_makam",
             track_class=Track,
             bibtex=BIBTEX,
