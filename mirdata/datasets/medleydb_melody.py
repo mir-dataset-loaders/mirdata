@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """MedleyDB melody Dataset Loader
 
 .. admonition:: Dataset Info

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """MAESTRO Dataset Loader
 
 .. admonition:: Dataset Info

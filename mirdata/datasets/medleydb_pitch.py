@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """MedleyDB pitch Dataset Loader
 
 .. admonition:: Dataset Info

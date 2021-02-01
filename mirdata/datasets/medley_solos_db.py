@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Medley-solos-DB Dataset Loader.
 
 .. admonition:: Dataset Info

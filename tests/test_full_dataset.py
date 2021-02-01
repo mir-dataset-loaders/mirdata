@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 This test takes a long time, but it makes sure that the datset can be locally downloaded,
 validated successfully, and loaded.
