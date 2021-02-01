@@ -1,127 +1,125 @@
 # -*- coding: utf-8 -*-
 """da-tacos Dataset Loader
 
-Da-TACOS: a dataset for cover song identification and understanding. It contains two subsets, namely the benchmark subset (for benchmarking cover song identification systems) and the cover analysis subset (for analyzing the links among cover songs), with pre-extracted features and metadata for 15,000 and 10,000 songs, respectively. The annotations included in the metadata are obtained with the API of SecondHandSongs.com. All audio files we use to extract features are encoded in MP3 format and their sample rate is 44.1 kHz. Da-TACOS does not contain any audio files. For the results of our analyses on modifiable musical characteristics using the cover analysis subset and our initial benchmarking of 7 state-of-the-art cover song identification algorithms on the benchmark subset, you can look at our publication.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-For organizing the data, we use the structure of SecondHandSongs where each song is called a ‘performance’, and each clique (cover group) is called a ‘work’. Based on this, the file names of the songs are their unique performance IDs (PID, e.g. P_22), and their labels with respect to their cliques are their work IDs (WID, e.g. W_14).
+    Da-TACOS: a dataset for cover song identification and understanding. It contains two subsets, namely the benchmark subset (for benchmarking cover song identification systems) and the cover analysis subset (for analyzing the links among cover songs), with pre-extracted features and metadata for 15,000 and 10,000 songs, respectively. The annotations included in the metadata are obtained with the API of SecondHandSongs.com. All audio files we use to extract features are encoded in MP3 format and their sample rate is 44.1 kHz. Da-TACOS does not contain any audio files. For the results of our analyses on modifiable musical characteristics using the cover analysis subset and our initial benchmarking of 7 state-of-the-art cover song identification algorithms on the benchmark subset, you can look at our publication.
 
-Metadata for each song includes
+    For organizing the data, we use the structure of SecondHandSongs where each song is called a ‘performance’, and each clique (cover group) is called a ‘work’. Based on this, the file names of the songs are their unique performance IDs (PID, e.g. P_22), and their labels with respect to their cliques are their work IDs (WID, e.g. W_14).
 
-performance title,
-performance artist,
-work title,
-work artist,
-release year,
-SecondHandSongs.com performance ID,
-SecondHandSongs.com work ID,
-whether the song is instrumental or not.
-In addition, we matched the original metadata with MusicBrainz to obtain MusicBrainz ID (MBID), song length and genre/style tags. We would like to note that MusicBrainz related information is not available for all the songs in Da-TACOS, and since we used just our metadata for matching, we include all possible MBIDs for a particular songs.
+    Metadata for each song includes
 
-For facilitating reproducibility in cover song identification (CSI) research, we propose a framework for feature extraction and benchmarking in our supplementary repository: acoss. The feature extraction component is designed to help CSI researchers to find the most commonly used features for CSI in a single address. The parameter values we used to extract the features in Da-TACOS are shared in the same repository. Moreover, the benchmarking component includes our implementations of 7 state-of-the-art CSI systems. We provide the performance results of an initial benchmarking of those 7 systems on the benchmark subset of Da-TACOS. We encourage other CSI researchers to contribute to acoss with implementing their favorite feature extraction algorithms and their CSI systems to build up a knowledge base where CSI research can reach larger audiences.
+    performance title,
+    performance artist,
+    work title,
+    work artist,
+    release year,
+    SecondHandSongs.com performance ID,
+    SecondHandSongs.com work ID,
+    whether the song is instrumental or not.
+    In addition, we matched the original metadata with MusicBrainz to obtain MusicBrainz ID (MBID), song length and genre/style tags. We would like to note that MusicBrainz related information is not available for all the songs in Da-TACOS, and since we used just our metadata for matching, we include all possible MBIDs for a particular songs.
 
-The instructions for how to download and use the dataset are shared below. Please contact us if you have any questions or requests.
+    For facilitating reproducibility in cover song identification (CSI) research, we propose a framework for feature extraction and benchmarking in our supplementary repository: acoss. The feature extraction component is designed to help CSI researchers to find the most commonly used features for CSI in a single address. The parameter values we used to extract the features in Da-TACOS are shared in the same repository. Moreover, the benchmarking component includes our implementations of 7 state-of-the-art CSI systems. We provide the performance results of an initial benchmarking of those 7 systems on the benchmark subset of Da-TACOS. We encourage other CSI researchers to contribute to acoss with implementing their favorite feature extraction algorithms and their CSI systems to build up a knowledge base where CSI research can reach larger audiences.
 
-1. Structure
+    The instructions for how to download and use the dataset are shared below. Please contact us if you have any questions or requests.
 
-1.1. Metadata
+    1. Structure
 
-We provide two metadata files that contain information about the benchmark subset and the cover analysis subset. Both metadata files are stored as python dictionaries in .json format, and have the same hierarchical structure.
+    1.1. Metadata
 
-An example to load the metadata files in python:
+    We provide two metadata files that contain information about the benchmark subset and the cover analysis subset. Both metadata files are stored as python dictionaries in .json format, and have the same hierarchical structure.
 
-import json
+    An example to load the metadata files in python:
 
-with open('./da-tacos_metadata/da-tacos_benchmark_subset_metadata.json') as f:
-	benchmark_metadata = json.load(f)
-The python dictionary obtained with the code above will have the respective WIDs as keys. Each key will provide the song dictionaries that contain the metadata regarding the songs that belong to their WIDs. An example can be seen below:
+    import json
 
-"W_163992": { # work id
-	"P_547131": { # performance id of the first song belonging to the clique 'W_163992'
-		"work_title": "Trade Winds, Trade Winds",
-		"work_artist": "Aki Aleong",
-		"perf_title": "Trade Winds, Trade Winds",
-		"perf_artist": "Aki Aleong",
-		"release_year": "1961",
-		"work_id": "W_163992",
-		"perf_id": "P_547131",
-		"instrumental": "No",
-		"perf_artist_mbid": "9bfa011f-8331-4c9a-b49b-d05bc7916605",
-		"mb_performances": {
-			"4ce274b3-0979-4b39-b8a3-5ae1de388c4a": {
-				"length": "175000"
-			},
-			"7c10ba3b-6f1d-41ab-8b20-14b2567d384a": {
-				"length": "177653"
-			}
-		}
-	},
-	"P_547140": { # performance id of the second song belonging to the clique 'W_163992'
-		"work_title": "Trade Winds, Trade Winds",
-		"work_artist": "Aki Aleong",
-		"perf_title": "Trade Winds, Trade Winds",
-		"perf_artist": "Dodie Stevens",
-		"release_year": "1961",
-		"work_id": "W_163992",
-		"perf_id": "P_547140",
-		"instrumental": "No"
-	}
-}
-1.2. Pre-extracted features
+    with open('./da-tacos_metadata/da-tacos_benchmark_subset_metadata.json') as f:
+        benchmark_metadata = json.load(f)
+    The python dictionary obtained with the code above will have the respective WIDs as keys. Each key will provide the song dictionaries that contain the metadata regarding the songs that belong to their WIDs. An example can be seen below:
 
-The list of features included in Da-TACOS can be seen below. All the features are extracted with acoss repository that uses open-source feature extraction libraries such as Essentia, LibROSA, and Madmom.
+    "W_163992": { # work id
+        "P_547131": { # performance id of the first song belonging to the clique 'W_163992'
+            "work_title": "Trade Winds, Trade Winds",
+            "work_artist": "Aki Aleong",
+            "perf_title": "Trade Winds, Trade Winds",
+            "perf_artist": "Aki Aleong",
+            "release_year": "1961",
+            "work_id": "W_163992",
+            "perf_id": "P_547131",
+            "instrumental": "No",
+            "perf_artist_mbid": "9bfa011f-8331-4c9a-b49b-d05bc7916605",
+            "mb_performances": {
+                "4ce274b3-0979-4b39-b8a3-5ae1de388c4a": {
+                    "length": "175000"
+                },
+                "7c10ba3b-6f1d-41ab-8b20-14b2567d384a": {
+                    "length": "177653"
+                }
+            }
+        },
+        "P_547140": { # performance id of the second song belonging to the clique 'W_163992'
+            "work_title": "Trade Winds, Trade Winds",
+            "work_artist": "Aki Aleong",
+            "perf_title": "Trade Winds, Trade Winds",
+            "perf_artist": "Dodie Stevens",
+            "release_year": "1961",
+            "work_id": "W_163992",
+            "perf_id": "P_547140",
+            "instrumental": "No"
+        }
+    }
+    1.2. Pre-extracted features
 
-To facilitate the use of the dataset, we provide two options regarding the file structure.
+    The list of features included in Da-TACOS can be seen below. All the features are extracted with acoss repository that uses open-source feature extraction libraries such as Essentia, LibROSA, and Madmom.
 
-1- In da-tacos_benchmark_subset_single_files and da-tacos_coveranalysis_subset_single_files folders, we organize the data based on their respective cliques, and one file contains all the features for that particular song.
+    To facilitate the use of the dataset, we provide two options regarding the file structure.
 
-{
-	"chroma_cens": numpy.ndarray,
-	"crema": numpy.ndarray,
-	"hpcp": numpy.ndarray,
-	"key_extractor": {
-		"key": numpy.str_,
-		"scale": numpy.str_,_
-		"strength": numpy.float64
-	},
-	"madmom_features": {
-		"novfn": numpy.ndarray,
-		"onsets": numpy.ndarray,
-		"snovfn": numpy.ndarray,
-		"tempos": numpy.ndarray
-	}
-	"mfcc_htk": numpy.ndarray,
-	"tags": list of (numpy.str_, numpy.str_)
-	"label": numpy.str_,
-	"track_id": numpy.str_
-}
+    1- In da-tacos_benchmark_subset_single_files and da-tacos_coveranalysis_subset_single_files folders, we organize the data based on their respective cliques, and one file contains all the features for that particular song.
 
-
-2- In da-tacos_benchmark_subset_FEATURE and da-tacos_coveranalysis_subset_FEATURE folders, the data is organized based on their cliques as well, but each of these folders contain only one feature per song. For instance, if you want to test your system that uses HPCP features, you can download da-tacos_benchmark_subset_hpcp to access the pre-computed HPCP features. An example for the contents in those files can be seen below:
-
-{
-	"hpcp": numpy.ndarray,
-	"label": numpy.str_,
-	"track_id": numpy.str_
-}
+    {
+        "chroma_cens": numpy.ndarray,
+        "crema": numpy.ndarray,
+        "hpcp": numpy.ndarray,
+        "key_extractor": {
+            "key": numpy.str_,
+            "scale": numpy.str_,_
+            "strength": numpy.float64
+        },
+        "madmom_features": {
+            "novfn": numpy.ndarray,
+            "onsets": numpy.ndarray,
+            "snovfn": numpy.ndarray,
+            "tempos": numpy.ndarray
+        }
+        "mfcc_htk": numpy.ndarray,
+        "tags": list of (numpy.str_, numpy.str_)
+        "label": numpy.str_,
+        "track_id": numpy.str_
+    }
 
 
+    2- In da-tacos_benchmark_subset_FEATURE and da-tacos_coveranalysis_subset_FEATURE folders, the data is organized based on their cliques as well, but each of these folders contain only one feature per song. For instance, if you want to test your system that uses HPCP features, you can download da-tacos_benchmark_subset_hpcp to access the pre-computed HPCP features. An example for the contents in those files can be seen below:
+
+    {
+        "hpcp": numpy.ndarray,
+        "label": numpy.str_,
+        "track_id": numpy.str_
+    }
 
 """
+import json
+import logging
+import os
 from typing import Tuple, Optional
 
-from jams import JAMS
-import numpy as np
-import json
-import shutil
-
-import librosa
-import os
-
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-import logging
 import deepdish as dd
+from jams import JAMS
+import librosa
+import numpy as np
+
+from mirdata import download_utils, jams_utils, core
+
 
 LICENSE_INFO = """
 Creative Commons Attribution Non Commercial Share Alike 4.0 International
@@ -214,38 +212,6 @@ REMOTES = {
         destination_dir=".",
     ),
 }
-
-
-def _load_metadata(data_home):
-    metadata_index = {}
-    metadata_paths = []
-    subsets = ["benchmark", "coveranalysis"]
-    for subset in subsets:
-        path_subset = os.path.join(
-            data_home,
-            "da-tacos_metadata",
-            "da-tacos_" + subset + "_subset_metadata.json",
-        )
-        if not os.path.exists(path_subset):
-            logging.info(
-                "Metadata file {} not found.".format(path_subset)
-                + "You can download the metadata file by running download()"
-            )
-            return None
-        metadata_paths.append(path_subset)
-
-    for subset, path_subset in zip(subsets, metadata_paths):
-        with open(path_subset) as f:
-            meta = json.load(f)
-        for work_id in meta.keys():
-            for performance_id in meta[work_id].keys():
-                track_id = subset + "#" + work_id + "#" + performance_id
-                metadata_index[track_id] = meta[work_id][performance_id]
-    metadata_index["data_home"] = data_home
-    return metadata_index
-
-
-DATA = core.LargeData("da_tacos_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -567,16 +533,43 @@ class Dataset(core.Dataset):
     The acousticbrainz genre dataset
     """
 
-    def __init__(self, data_home=None, index=None):
+    def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index if index is None else index,
             name="da_tacos",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
+
+    def _metadata(self):
+        metadata_index = {}
+        metadata_paths = []
+        subsets = ["benchmark", "coveranalysis"]
+        for subset in subsets:
+            path_subset = os.path.join(
+                self.data_home,
+                "da-tacos_metadata",
+                "da-tacos_" + subset + "_subset_metadata.json",
+            )
+            if not os.path.exists(path_subset):
+                logging.info(
+                    "Metadata file {} not found.".format(path_subset)
+                    + "You can download the metadata file by running download()"
+                )
+                return None
+            metadata_paths.append(path_subset)
+
+        for subset, path_subset in zip(subsets, metadata_paths):
+            with open(path_subset) as f:
+                meta = json.load(f)
+            for work_id in meta.keys():
+                for performance_id in meta[work_id].keys():
+                    track_id = subset + "#" + work_id + "#" + performance_id
+                    metadata_index[track_id] = meta[work_id][performance_id]
+
+        return metadata_index
 
     @core.copy_docs(load_cens)
     def load_cens(self, *args, **kwargs):
