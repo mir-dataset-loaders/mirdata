@@ -1,8 +1,10 @@
 """Utilities for downloading from the web.
 """
 
+import glob
 import logging
 import os
+import shutil
 import tarfile
 import urllib
 import zipfile
@@ -22,14 +24,19 @@ class RemoteFileMetadata(object):
         url (str): the remote file's url
         checksum (str): the remote file's md5 checksum
         destination_dir (str or None): the relative path for where to save the file
+        unpack_directories (list or None): list of relative directories. For each directory
+            the contents will be moved to destination_dir (or data_home if not provieds)
 
     """
 
-    def __init__(self, filename, url, checksum, destination_dir):
+    def __init__(
+        self, filename, url, checksum, destination_dir=None, unpack_directories=None
+    ):
         self.filename = filename
         self.url = url
         self.checksum = checksum
         self.destination_dir = destination_dir
+        self.unpack_directories = unpack_directories
 
 
 def downloader(
@@ -95,6 +102,28 @@ def downloader(
                 download_tar_file(remotes[k], save_dir, force_overwrite, cleanup)
             else:
                 download_from_remote(remotes[k], save_dir, force_overwrite)
+
+            if remotes[k].unpack_directories:
+                for src_dir in remotes[k].unpack_directories:
+
+                    # path to destination directory
+                    destination_dir = (
+                        os.path.join(save_dir, remotes[k].destination_dir)
+                        if remotes[k].destination_dir
+                        else save_dir
+                    )
+                    # path to directory to unpack
+                    source_dir = os.path.join(destination_dir, src_dir)
+
+                    if not os.path.exists(source_dir):
+                        logging.info(
+                            "Data not downloaded, because it probably already exists on your computer. "
+                            + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
+                            + "existing files and download from scratch"
+                        )
+                        return
+
+                    move_directory_contents(source_dir, destination_dir)
 
     if info_message is not None:
         logging.info(info_message.format(save_dir))
@@ -273,3 +302,26 @@ def untar(tar_path, cleanup):
     tfile.close()
     if cleanup:
         os.remove(tar_path)
+
+
+def move_directory_contents(source_dir, target_dir):
+    """Move the contents of source_dir into target_dir, and delete source_dir
+
+    Args:
+        source_dir (str): path to source directory
+        target_dir (str): path to target directory
+
+    """
+    directory_contents = glob.glob(os.path.join(source_dir, "*"))
+    for fpath in directory_contents:
+        target_path = os.path.join(target_dir, os.path.basename(fpath))
+        if os.path.exists(target_path):
+            logging.info(
+                "{} already exists. Run with force_overwrite=True to download from scratch".format(
+                    target_path
+                )
+            )
+            continue
+        shutil.move(fpath, target_dir)
+
+    shutil.rmtree(source_dir)

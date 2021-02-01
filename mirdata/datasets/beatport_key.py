@@ -66,8 +66,6 @@ REMOTES = {
     ),
 }
 
-DATA = core.LargeData("beatport_key_index.json")
-
 LICENSE_INFO = "Creative Commons Attribution Share Alike 4.0 International."
 
 
@@ -283,7 +281,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="beatport_key",
             track_class=Track,
             bibtex=BIBTEX,

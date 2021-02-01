@@ -63,8 +63,6 @@ LICENSE_INFO = """
 The dataset's license information goes here.
 """
 
-DATA = core.LargeData('example_index.json')
-
 
 class Track(core.Track):
     """Example track class
@@ -234,7 +232,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name=NAME,
             track_class=Track,
             bibtex=BIBTEX,

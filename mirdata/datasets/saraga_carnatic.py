@@ -62,16 +62,12 @@ REMOTES = {
         filename="saraga1.5_carnatic.zip",
         url="https://zenodo.org/record/4301737/files/saraga1.5_carnatic.zip?download=1",
         checksum="e4fcd380b4f6d025964cd16aee00273d",
-        destination_dir=None,
     )
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
-
-
-DATA = core.LargeData("saraga_carnatic_index.json")
 
 
 class Track(core.Track):
@@ -526,7 +522,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="saraga_carnatic",
             track_class=Track,
             bibtex=BIBTEX,

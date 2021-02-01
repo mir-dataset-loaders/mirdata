@@ -87,7 +87,6 @@ REMOTES = {
         filename="master.zip",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir="",
     ),
 }
 DOWNLOAD_INFO = """
@@ -112,9 +111,6 @@ received authorization may not use the database.'
 
 See https://staff.aist.go.jp/m.goto/RWC-MDB/ for more details.
 """
-
-
-DATA = core.LargeData("rwc_classical_index.json")
 
 
 class Track(core.Track):
@@ -350,7 +346,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="rwc_classical",
             track_class=Track,
             bibtex=BIBTEX,

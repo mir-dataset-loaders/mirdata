@@ -43,7 +43,6 @@ REMOTES = {
         filename="id_mapping.txt",
         url="http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt",
         checksum="81097b587804ce93e56c7a331ba06abc",
-        destination_dir=None,
     )
 }
 DOWNLOAD_INFO = """
@@ -61,9 +60,6 @@ LICENSE_INFO = """
 When it was distributed, Ikala used to have a custom license.
 Visit http://mac.citi.sinica.edu.tw/ikala/ for more details.
 """
-
-
-DATA = core.LargeData("ikala_index.json")
 
 
 class Track(core.Track):
@@ -293,7 +289,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="ikala",
             track_class=Track,
             bibtex=BIBTEX,

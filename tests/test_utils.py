@@ -1,20 +1,13 @@
 import itertools
+import json
 import os
-import sys
 import types
 
 import mirdata
-from mirdata import core, validate, download_utils
+from mirdata import validate
 
-import json
+
 import pytest
-
-from mirdata.core import LargeData
-
-if sys.version_info.major == 3:
-    builtin_module_name = "builtins"
-else:
-    builtin_module_name = "__builtin__"
 
 DEFAULT_DATA_HOME = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
 
@@ -83,38 +76,12 @@ def mock_validate_index(mocker):
     return mocker.patch.object(validate, "validate_index")
 
 
-def test_remote_index(httpserver):
-    httpserver.serve_content(
-        open(
-            "tests/resources/download/acousticbrainz_genre_dataset_little_test.json",
-            "rb",
-        ).read()
-    )
-    REMOTE_INDEX = {
-        "remote_index": download_utils.RemoteFileMetadata(
-            filename="acousticbrainz_genre_dataset_little_test.json",
-            url=httpserver.url,
-            checksum="50cf34e2e40e3df4c1cd582d08fa4506",  # the md5 checksum
-            destination_dir=".",  # relative path for where to unzip the data, or None
-        )
-    }
-
-    DATA = LargeData(
-        "acousticbrainz_genre_dataset_little_test.json", remote_index=REMOTE_INDEX
-    )
-    ind = DATA.index
-    assert len(ind["tracks"]) == 16
-    os.remove("mirdata/datasets/indexes/acousticbrainz_genre_dataset_little_test.json")
-
-
 def test_md5(mocker):
     audio_file = b"audio1234"
 
     expected_checksum = "6dc00d1bac757abe4ea83308dde68aab"
 
-    mocker.patch(
-        "%s.open" % builtin_module_name, new=mocker.mock_open(read_data=audio_file)
-    )
+    mocker.patch("builtins.open", new=mocker.mock_open(read_data=audio_file))
 
     md5_checksum = validate.md5("test_file_path")
     assert expected_checksum == md5_checksum
