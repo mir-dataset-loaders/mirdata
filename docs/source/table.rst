@@ -43,7 +43,11 @@
      - 100
      - :cante:`\ `
 
-   * - (CompMusic) OTMM Makam
+   * - .. line-block::
+
+        (CompMusic)
+        OTMM Makam
+
      - - audio: ✅
        - annotations: ✅
      - - :ref:`f0`
