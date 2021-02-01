@@ -1,5 +1,5 @@
 # mirdata
-common loaders for Music Information Retrieval (MIR) datasets. Find the API documentation [here](https://mirdata.readthedocs.io/en/latest/).
+common loaders for Music Information Retrieval (MIR) datasets. Find the API documentation [here](https://mirdata.readthedocs.io/).
 
 [![CircleCI](https://circleci.com/gh/mir-dataset-loaders/mirdata.svg?style=svg)](https://circleci.com/gh/mir-dataset-loaders/mirdata)
 [![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
@@ -33,7 +33,7 @@ orchset.validate()  # validate that all the expected files are there
 example_track = orchset.choice_track()  # choose a random example track
 print(example_track)  # see the available data
 ```
-See the [documentation](https://mirdata.readthedocs.io/en/latest/) for more examples and the API reference.
+See the [documentation](https://mirdata.readthedocs.io/) for more examples and the API reference.
 
 
 ### Currently supported datasets
@@ -41,7 +41,7 @@ See the [documentation](https://mirdata.readthedocs.io/en/latest/) for more exam
 
 Supported datasets include [AcousticBrainz](https://zenodo.org/record/2553414#.X8jTgulKhhE), [DALI](https://github.com/gabolsgabs/DALI), [Guitarset](http://github.com/marl/guitarset/), [MAESTRO](https://magenta.tensorflow.org/datasets/maestro), [TinySOL](https://www.orch-idea.org/), among many others.
 
-For the **complete list** of supported datasets, see the [documentation](https://mirdata.readthedocs.io/en/latest/source/quick_reference.html)
+For the **complete list** of supported datasets, see the [documentation](https://mirdata.readthedocs.io/en/stable/source/quick_reference.html)
 
 
 ### Citing

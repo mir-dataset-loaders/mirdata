@@ -8,6 +8,7 @@ Initializing
 
 .. autofunction:: mirdata.list_datasets
 
+.. _Datasets API:
 
 Dataset Loaders
 ---------------

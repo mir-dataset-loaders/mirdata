@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 import shutil
 import pretty_midi
@@ -12,7 +11,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
     data_home = "tests/resources/mir_datasets/maestro"
-    track = maestro.Track(default_trackid, data_home=data_home)
+    dataset = maestro.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1",
@@ -78,10 +78,10 @@ def test_load_notes():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/maestro"
-    metadata = maestro._load_metadata(data_home)
+    dataset = maestro.Dataset(data_home)
+    metadata = dataset._metadata
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
 
-    assert metadata["data_home"] == data_home
     assert metadata[default_trackid] == {
         "canonical_composer": "Alban Berg",
         "canonical_title": "Sonata Op. 1",
@@ -91,8 +91,6 @@ def test_load_metadata():
         "audio_filename": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav",
         "duration": 698.661160312,
     }
-    metadata_none = maestro._load_metadata("asdf/asdf")
-    assert metadata_none is None
 
 
 def test_download_partial(httpserver):
@@ -108,19 +106,18 @@ def test_download_partial(httpserver):
             filename="1-maestro-v2.0.0.json",
             url=httpserver.url,
             checksum=("d41d8cd98f00b204e9800998ecf8427e"),
-            destination_dir=None,
+            unpack_directories=["maestro-v2.0.0"],
         ),
         "midi": download_utils.RemoteFileMetadata(
             filename="2-maestro-v2.0.0.json",
             url=httpserver.url,
             checksum=("d41d8cd98f00b204e9800998ecf8427e"),
-            destination_dir=None,
+            unpack_directories=["maestro-v2.0.0"],
         ),
         "metadata": download_utils.RemoteFileMetadata(
             filename="3-maestro-v2.0.0.json",
             url=httpserver.url,
             checksum=("d41d8cd98f00b204e9800998ecf8427e"),
-            destination_dir="maestro-v2.0.0",
         ),
     }
     dataset = maestro.Dataset(data_home)
@@ -167,7 +164,7 @@ def test_download(httpserver):
             filename="maestro-v2.0.0.zip",
             url=httpserver.url,
             checksum=("625180ffa41cd9f2ab7252dd954b9e8a"),
-            destination_dir=None,
+            unpack_directories=["maestro-v2.0.0"],
         )
     }
     dataset = maestro.Dataset(data_home)
@@ -228,7 +225,7 @@ def test_download(httpserver):
             filename="maestro-v2.0.0-midi.zip",
             url=httpserver.url,
             checksum=("c82283fff347ed2bd833693c09a9f01d"),
-            destination_dir=None,
+            unpack_directories=["maestro-v2.0.0"],
         )
     }
     dataset.remotes = remotes
@@ -267,7 +264,6 @@ def test_download(httpserver):
             filename="maestro-v2.0.0.json",
             url=httpserver.url,
             checksum=("d41d8cd98f00b204e9800998ecf8427e"),
-            destination_dir=None,
         )
     }
     dataset.remotes = remotes

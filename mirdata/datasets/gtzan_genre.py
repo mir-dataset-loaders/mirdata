@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """GTZAN-Genre Dataset Loader
 
 .. admonition:: Dataset Info
@@ -44,8 +43,6 @@ REMOTES = {
     )
 }
 
-DATA = core.LargeData("gtzan_genre_index.json")
-
 LICENSE_INFO = "Unfortunately we couldn't find the license information for the GTZAN_genre dataset."
 
 
@@ -62,16 +59,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in GTZAN-Genre".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.genre = track_id.split(".")[0]
         if self.genre == "hiphop":
@@ -114,7 +116,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a GTZAN audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -134,9 +136,8 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="gtzan_genre",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,

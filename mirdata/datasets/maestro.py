@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """MAESTRO Dataset Loader
 
 .. admonition:: Dataset Info
@@ -64,48 +63,24 @@ REMOTES = {
         filename="maestro-v2.0.0.zip",
         url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.zip",
         checksum="7a6c23536ebcf3f50b1f00ac253886a7",
-        destination_dir="",
+        unpack_directories=["maestro-v2.0.0"],
     ),
     "midi": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0-midi.zip",
         url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0-midi.zip",
         checksum="8a45cc678a8b23cd7bad048b1e9034c5",
-        destination_dir="",
+        unpack_directories=["maestro-v2.0.0"],
     ),
     "metadata": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0.json",
         url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json",
         checksum="576172af1cdc4efddcf0be7d260d48f7",
-        destination_dir="maestro-v2.0.0",
     ),
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
 )
-
-
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "maestro-v2.0.0.json")
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    # load metadata however makes sense for your dataset
-    with open(metadata_path, "r") as fhandle:
-        raw_metadata = json.load(fhandle)
-
-    metadata = {}
-    for mdata in raw_metadata:
-        track_id = mdata["midi_filename"].split(".")[0]
-        metadata[track_id] = mdata
-
-    metadata["data_home"] = data_home
-
-    return metadata
-
-
-DATA = core.LargeData("maestro_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -132,31 +107,30 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in MAESTRO".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
-        self._metadata = DATA.metadata(data_home)
-        if self._metadata is not None and track_id in self._metadata:
-            self.canonical_composer = self._metadata[track_id]["canonical_composer"]
-            self.canonical_title = self._metadata[track_id]["canonical_title"]
-            self.split = self._metadata[track_id]["split"]
-            self.year = self._metadata[track_id]["year"]
-            self.duration = self._metadata[track_id]["duration"]
-        else:
-            self.canonical_composer = None
-            self.canonical_title = None
-            self.split = None
-            self.year = None
-            self.duration = None
+        self.canonical_composer = self._track_metadata.get("canonical_composer")
+        self.canonical_title = self._track_metadata.get("canonical_title")
+        self.split = self._track_metadata.get("split")
+        self.year = self._track_metadata.get("year")
+        self.duration = self._track_metadata.get("duration")
 
     @core.cached_property
     def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
@@ -187,7 +161,7 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             note_data=[(self.notes, None)],
-            metadata=self._metadata,
+            metadata=self._track_metadata,
         )
 
 
@@ -196,7 +170,7 @@ def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
     """Load a MAESTRO midi file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to midi file
+        fhandle (str or file-like): File-like object or path to midi file
 
     Returns:
         pretty_midi.PrettyMIDI: pretty_midi object
@@ -237,7 +211,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MAESTRO audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -256,13 +230,29 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="maestro",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "maestro-v2.0.0.json")
+
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        with open(metadata_path, "r") as fhandle:
+            raw_metadata = json.load(fhandle)
+
+        metadata = {}
+        for mdata in raw_metadata:
+            track_id = mdata["midi_filename"].split(".")[0]
+            metadata[track_id] = mdata
+
+        return metadata
 
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):
@@ -306,29 +296,3 @@ class Dataset(core.Dataset):
             force_overwrite=force_overwrite,
             cleanup=cleanup,
         )
-
-        # files get downloaded to a folder called maestro-v2.0.0
-        # move everything up a level
-        maestro_dir = os.path.join(self.data_home, "maestro-v2.0.0")
-        if not os.path.exists(maestro_dir):
-            logging.info(
-                "Maestro data not downloaded, because it probably already exists on your computer. "
-                + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
-                + "existing files and download from scratch"
-            )
-            return
-        maestro_files = glob.glob(os.path.join(maestro_dir, "*"))
-
-        for fpath in maestro_files:
-            target_path = os.path.join(self.data_home, os.path.basename(fpath))
-            if os.path.exists(target_path):
-                logging.info(
-                    "{} already exists. Run with force_overwrite=True to download from scratch".format(
-                        target_path
-                    )
-                )
-                continue
-            shutil.move(fpath, self.data_home)
-
-        if os.path.exists(maestro_dir):
-            shutil.rmtree(maestro_dir)

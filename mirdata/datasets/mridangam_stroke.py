@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Mridangam Stroke Dataset Loader
 
 .. admonition:: Dataset Info
@@ -71,11 +70,8 @@ REMOTES = {
         filename="mridangam_stroke_1.5.zip",
         url="https://zenodo.org/record/4068196/files/mridangam_stroke_1.5.zip?download=1",
         checksum="39af55b2476b94c7946bec24331ec01a",  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
     ),
 }
-
-DATA = core.LargeData("mridangam_stroke_index.json")
 
 
 STROKE_DICT = {
@@ -112,14 +108,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in Example".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
@@ -165,7 +168,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Mridangam Stroke Dataset audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -183,9 +186,8 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="mridangam_stroke",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,

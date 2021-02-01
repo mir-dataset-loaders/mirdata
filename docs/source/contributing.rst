@@ -5,26 +5,39 @@ Contributing
 ############
 
 We encourage contributions to mirdata, especially new dataset loaders. To contribute a new loader, follow the
-steps indicated below and create a Pull Request (PR) to the github repository.
+steps indicated below and create a Pull Request (PR) to the github repository. For any doubt or comment about
+your contribution, you can always submit an issue or open a discussion in the repository.
 
 - `Issue Tracker <https://github.com/mir-dataset-loaders/mirdata/issues>`_
 - `Source Code <https://github.com/mir-dataset-loaders/mirdata>`_
 
 
-Installing and running tests
-#############################
+Installing mirdata for development purposes
+###########################################
+
+To install ``mirdata`` for development purposes:
+
+    - First run:
+
+    .. code-block:: console
+
+        git clone https://github.com/mir-dataset-loaders/mirdata.git
+
+    - Then, after opening source data library you have to install the dependencies for updating the documentation
+      and running tests:
+
+    .. code-block:: console
+
+        pip install .
+        pip install .[tests]
+        pip install .[docs]
+        pip install .[dali]
 
 
-First, clone the repository from github:
-
-.. code-block:: bash
-
-    git clone git@github.com:mir-dataset-loaders/mirdata.git
-
-
-We recommend you install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions 
-and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7. 
-Once ``pyenv`` and the Python versions are configured, install ``pytest``. Finally, run :
+We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
+and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7.
+Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the pytest
+plugins to automatically test your code successfully. Finally, run:
 
 .. code-block:: bash
 
@@ -60,7 +73,7 @@ the ``please-do-not-edit`` flag is used.
 1. Create an index
 ------------------
 
-``mirdata``'s structure relies on ``JSON`` objects called `indexes`. Indexes contain information about the structure of the
+``mirdata``'s structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
 dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
@@ -200,8 +213,8 @@ You may find these examples useful as references:
 * `A simple, fully downloadable dataset <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py>`_
 * `A dataset which is partially downloadable <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/beatles.py>`_
 * `A dataset with restricted access data <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/medleydb_melody.py#L33>`_
-* `A dataset which uses global metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
-* `A dataset which does not use global metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
+* `A dataset which uses dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
+* `A dataset which does not use dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
 * `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
 * `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
 
@@ -222,7 +235,7 @@ To finish your contribution, include tests that check the integrity of your load
     * For each audio/annotation file, reduce the audio length to 1-2 seconds and remove all but a few of the annotations.
     * If the dataset has a metadata file, reduce the length to a few lines.
 
-2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other 
+2. Test all of the dataset specific code, e.g. the public attributes of the Track class, the load functions and any other 
    custom functions you wrote. See the `tests folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/tests>`_ for reference.
    If your loader has a custom download function, add tests similar to 
    `this loader <https://github.com/mir-dataset-loaders/mirdata/blob/master/tests/test_groove_midi.py#L96>`_.
@@ -231,7 +244,7 @@ To finish your contribution, include tests that check the integrity of your load
 
 
 .. note::  We have written automated tests for all loader's ``cite``, ``download``, ``validate``, ``load``, ``track_ids`` functions, 
-           as well as some basic edge cases of the ``Track`` object, so you don't need to write tests for these!
+           as well as some basic edge cases of the ``Track`` class, so you don't need to write tests for these!
 
 
 .. _test_file:
@@ -297,26 +310,20 @@ Working with remote indexes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the end-user there is no difference between the remote and local indexes. However, indexes can get large when there are a lot of tracks
-in the dataset. In these cases, storing and accessing an index remotely can be convenient.
-
-However, to contribute to the library using remote indexes you have to add in ``utils.LargeData(...)`` the remote_index argument with a
-``download_utils.RemoteFileMetadata`` dictionary with the remote index information.
-
-.. code-block:: python
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
-
+in the dataset. In these cases, storing and accessing an index remotely can be convenient. Large indexes can be added to REMOTES, 
+and will be downloaded with the rest of the dataset. For example:
 
 .. code-block:: python
 
-    REMOTE_INDEX = {
-        "REMOTE_INDEX": download_utils.RemoteFileMetadata(
-            filename="acousticbrainz_genre_index.json.zip",
-            url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
-            checksum="810f1c003f53cbe58002ba96e6d4d138",
-            destination_dir="",
-        )
-    }
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+    "index": download_utils.RemoteFileMetadata(
+        filename="acousticbrainz_genre_index.json.zip",
+        url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
+        checksum="810f1c003f53cbe58002ba96e6d4d138",
+    )
+
+
+Unlike local indexes, the remote indexes will live in the ``data_home`` directory. When creating the ``Dataset``
+object, specify the ``custom_index_path`` to where the index will be downloaded (as a relative path to ``data_home``).
 
 
 .. _reducing_test_space:
@@ -391,7 +398,7 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
 
 ::
 
-    black --target-version py37 --skip-string-normalization mirdata/
+    black --target-version py38 mirdata/ tests/
 
 2. the test coverage is too low -- this means that there are too many new lines of code introduced that are not tested.
 
@@ -529,9 +536,36 @@ Track Attributes
 Custom track attributes should be global, track-level data.
 For some datasets, there is a separate, dataset-level metadata file
 with track-level metadata, e.g. as a csv. When a single file is needed
-for more than one track, we recommend using writing a ``_load_metadata`` method
-and passing it to a ``LargeData`` object, which is available globally throughout 
-the module to avoid loading the same file multiple times.
+for more than one track, we recommend using writing a ``_metadata`` cached property (which
+returns a dictionary, either keyed by track_id or freeform)
+in the Dataset class (see the dataset module example code above). When this is specified,
+it will populate a track's hidden ``_track_metadata`` field, which can be accessed from
+the Track class.
+
+For example, if ``_metadata`` returns a dictionary of the form:
+
+.. code-block:: python
+
+    {
+        'track1': {
+            'artist': 'A',
+            'genre': 'Z'
+        },
+        'track2': {
+            'artist': 'B',
+            'genre': 'Y'
+        }
+    }
+
+the ``_track metadata`` for ``track_id=track2`` will be:
+
+.. code-block:: python
+
+    {
+        'artist': 'B',
+        'genre': 'Y'
+    }
+
 
 Load methods vs Track properties
 --------------------------------
@@ -552,7 +586,7 @@ Custom Decorators
 
 cached_property
 ---------------
-This is used primarily for Track objects.
+This is used primarily for Track classes.
 
 This decorator causes an Object's function to behave like
 an attribute (aka, like the ``@property`` decorator), but caches
@@ -561,14 +595,14 @@ for data which is relatively large and loaded from files.
 
 docstring_inherit
 -----------------
-This decorator is used for children of the Dataset object, and
+This decorator is used for children of the Dataset class, and
 copies the Attributes from the parent class to the docstring of the child.
 This gives us clear and complete docs without a lot of copy-paste.
 
 copy_docs
 ---------
 This decorator is used mainly for a dataset's ``load_`` functions, which
-are attached to a loader's Dataset object. The attached function is identical,
+are attached to a loader's Dataset class. The attached function is identical,
 and this decorator simply copies the docstring from another function.
 
 coerce_to_bytes_io/coerce_to_string_io

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import pytest
 import numpy as np
 
@@ -61,7 +59,7 @@ def test_dataset_errors():
         mirdata.initialize("not_a_dataset")
 
     d = mirdata.initialize("orchset")
-    d._track_object = None
+    d._track_class = None
     with pytest.raises(NotImplementedError):
         d.track("asdf")
 
@@ -70,6 +68,10 @@ def test_dataset_errors():
 
     with pytest.raises(NotImplementedError):
         d.choice_track()
+
+    d = mirdata.initialize("acousticbrainz_genre")
+    with pytest.raises(FileNotFoundError):
+        d._index
 
 
 def test_multitrack_basic():

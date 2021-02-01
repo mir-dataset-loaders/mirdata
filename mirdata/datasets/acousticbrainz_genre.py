@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Acoustic Brainz Genre dataset
 
 .. admonition:: Dataset Info
@@ -41,12 +40,12 @@
 """
 
 import json
-import os
-import shutil
 
-from mirdata import download_utils, core
+from mirdata import download_utils, core, io
 from mirdata import jams_utils
 
+
+NAME = "acousticbrainz_genre"
 
 BIBTEX = """
 @inproceedings{bogdanov2019acousticbrainz,
@@ -58,77 +57,82 @@ BIBTEX = """
 }
 """
 REMOTES = {
+    "index": download_utils.RemoteFileMetadata(
+        filename="acousticbrainz_genre_index.json.zip",
+        url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
+        checksum="810f1c003f53cbe58002ba96e6d4d138",
+    ),
     "validation-01": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-validation-01234567.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-validation-01234567.tar.bz2?download=1",
         checksum="f21f9c5e398713139cca9790b656faf9",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-validation",
+        unpack_directories=["acousticbrainz-mediaeval-validation"],
     ),
     "validation-89": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-validation-89abcdef.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-validation-89abcdef.tar.bz2?download=1",
         checksum="34f47394ac6d8face4399f48e2b98ebe",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-validation",
+        unpack_directories=["acousticbrainz-mediaeval-validation"],
     ),
     "train-01": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features--train-01.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features--train-01.tar.bz2?download=1",
         checksum="db7157b5112022d609652dd21c632090",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-train",
+        unpack_directories=["acousticbrainz-mediaeval-train"],
     ),
     "train-23": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-train-23.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-23.tar.bz2?download=1",
         checksum="79581967a1be5c52e83be21261d1ef6c",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-train",
+        unpack_directories=["acousticbrainz-mediaeval-train"],
     ),
     "train-45": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-train-45.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-45.tar.bz2?download=1",
         checksum="0e48fa319fa48e5cf95eea8118d2e882",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-train",
+        unpack_directories=["acousticbrainz-mediaeval-train"],
     ),
     "train-67": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-train-67.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-67.tar.bz2?download=1",
         checksum="22ca7f1fea8a86459b7fda4530f00070",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-train",
+        unpack_directories=["acousticbrainz-mediaeval-train"],
     ),
     "train-89": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-train-89.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-89.tar.bz2?download=1",
         checksum="c6e4a2ef1b0e8ed535197b868f8c7302",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-train",
+        unpack_directories=["acousticbrainz-mediaeval-train"],
     ),
     "train-ab": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-train-ab.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-ab.tar.bz2?download=1",
         checksum="513d5f306dd4f3799c137423ee444051",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-train",
+        unpack_directories=["acousticbrainz-mediaeval-train"],
     ),
     "train-cd": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-train-cd.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-cd.tar.bz2?download=1",
         checksum="422d75d70d583decec0b2761865092a7",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-train",
+        unpack_directories=["acousticbrainz-mediaeval-train"],
     ),
     "train-ef": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-train-ef.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-train-ef.tar.bz2?download=1",
         checksum="021ab25a5fd1b020521824e7fce9c775",
-        destination_dir="temp",
+        destination_dir="acousticbrainz-mediaeval-train",
+        unpack_directories=["acousticbrainz-mediaeval-train"],
     ),
 }
-REMOTE_INDEX = {
-    "REMOTE_INDEX": download_utils.RemoteFileMetadata(
-        filename="acousticbrainz_genre_index.json.zip",
-        url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
-        checksum="810f1c003f53cbe58002ba96e6d4d138",
-        destination_dir="",
-    )
-}
-
-DATA = core.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
 
 LICENSE_INFO = """
 This dataset is composed of 4 subdatasets. Three of them are Creative Commons Attribution 
@@ -151,58 +155,33 @@ class Track(core.Track):
 
     Attributes:
         track_id (str): track id
+        genre (list): human-labeled genre and subgenres list
+        mbid (str): musicbrainz id
+        mbid_group (str): musicbrainz id group
 
     """
 
-    def __init__(self, track_id, data_home, remote_index=None, remote_index_name=None):
-        if remote_index is not None and remote_index_name is not None:
-            data = core.LargeData(remote_index_name, remote_index=remote_index)
-        else:
-            data = DATA
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        if track_id not in data.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in AcousticBrainz genre Dataset".format(
-                    track_id
-                )
-            )
-
-        self.track_id = track_id
-        self._data_home = data_home
-        self._track_paths = data.index["tracks"][track_id]
         self.path = core.none_path_join([self._data_home, self._track_paths["data"][0]])
-
-    # Genre
-    @property
-    def genre(self):
-        """human-labeled genre and subgenres list
-
-        Returns:
-            list: human-labeled genre and subgenres list
-
-        """
-        return [genre for genre in self.track_id.split("#")[2:]]
-
-    # Music Brainz
-    @property
-    def mbid(self):
-        """musicbrainz id
-
-        Returns:
-            str: mbid
-
-        """
-        return self.track_id.split("#")[0]
-
-    @property
-    def mbid_group(self):
-        """musicbrainz id group
-
-        Returns:
-            str: mbid group
-
-        """
-        return self.track_id.split("#")[1]
+        self.genre = [genre for genre in self.track_id.split("#")[4:] if genre != ""]
+        self.mbid = self.track_id.split("#")[2]
+        self.mbid_group = self.track_id.split("#")[3]
+        self.split = self.track_id.split("#")[1]
 
     # Metadata
     @property
@@ -372,22 +351,19 @@ class Track(core.Track):
         )
 
 
-def load_extractor(path):
+@io.coerce_to_string_io
+def load_extractor(fhandle):
     """Load a AcousticBrainz Dataset json file with all the features and metadata.
 
     Args:
-        path (str): path to features and metadata path
+        fhandle (str or file-like): path or file-like object pointing to a json file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(path):
-        raise IOError("path {} does not exist".format(path))
-
-    with open(path) as json_file:
-        meta = json.load(json_file)
+    meta = json.load(fhandle)
     return meta
 
 
@@ -397,88 +373,20 @@ class Dataset(core.Dataset):
     The acousticbrainz genre dataset
     """
 
-    def __init__(self, data_home=None, index=None):
+    def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index if index is None else index,
-            name="acousticbrainz_genre",
-            track_object=Track,
+            name=NAME,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
+            custom_index_path="acousticbrainz_genre_index.json",
         )
 
     @core.copy_docs(load_extractor)
     def load_extractor(self, *args, **kwargs):
         return load_extractor(*args, **kwargs)
-
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-                By default False.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        if not os.path.exists(self.data_home):
-            os.makedirs(self.data_home)
-        # Create these directories if doesn't exist
-        train = "acousticbrainz-mediaeval-train"
-        train_dir = os.path.join(self.data_home, train)
-        if not os.path.isdir(train_dir):
-            os.mkdir(train_dir)
-        validate = "acousticbrainz-mediaeval-validation"
-        validate_dir = os.path.join(self.data_home, validate)
-        if not os.path.isdir(validate_dir):
-            os.mkdir(validate_dir)
-
-        # start to download
-        for key, remote in self.remotes.items():
-            # check overwrite
-            file_downloaded = False
-            if not force_overwrite:
-                fold, first_dir = key.split("-")
-                first_dir_path = os.path.join(
-                    train_dir if fold == "train" else validate_dir, first_dir
-                )
-                if os.path.isdir(first_dir_path):
-                    file_downloaded = True
-                    print(
-                        "File "
-                        + remote.filename
-                        + " downloaded. Skip download (force_overwrite=False)."
-                    )
-            if not file_downloaded:
-                #  if this typical error happend it repeat download
-                download_utils.downloader(
-                    self.data_home,
-                    remotes={key: remote},
-                    partial_download=None,
-                    info_message=None,
-                    force_overwrite=True,
-                    cleanup=cleanup,
-                )
-            # move from a temporary directory to final one
-            source_dir = os.path.join(
-                self.data_home, "temp", train if "train" in key else validate
-            )
-            target_dir = train_dir if "train" in key else validate_dir
-            dir_names = os.listdir(source_dir)
-            for dir_name in dir_names:
-                shutil.move(
-                    os.path.join(source_dir, dir_name),
-                    os.path.join(target_dir, dir_name),
-                )
 
     def filter_index(self, search_key):
         """Load from AcousticBrainz genre dataset the indexes that match with search_key.

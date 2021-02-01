@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """giantsteps_tempo Dataset Loader
 
 .. admonition:: Dataset Info
@@ -95,14 +94,11 @@ BIBTEX = """@inproceedings{knees2015two,
   url-pdf={http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf},
 }"""
 
-DATA = core.LargeData("giantsteps_tempo_index.json")
-
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip",
         url="https://github.com/GiantSteps/giantsteps-tempo-dataset/archive/0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip",
         checksum="8fdafbaf505fe3f293bd912c92b72ac8",
-        destination_dir="",
     )
 }
 DOWNLOAD_INFO = """
@@ -138,16 +134,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in giantsteps_tempo".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.annotation_v1_path = os.path.join(
             self._data_home, self._track_paths["annotation_v1"][0]
@@ -204,7 +205,7 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_tempo audio file.
 
     Args:
-        fhandle(str or file-like): path to audio file
+        fhandle (str or file-like): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -233,7 +234,7 @@ def load_tempo(fhandle: TextIO) -> annotations.TempoData:
     """Load giantsteps_tempo tempo data from a file ordered by confidence
 
     Args:
-        fhandle(str or file-like): File-like object or path to tempo annotation file
+        fhandle (str or file-like): File-like object or path to tempo annotation file
 
     Returns:
         annotations.TempoData: Tempo data
@@ -259,9 +260,8 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="giantsteps_tempo",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
