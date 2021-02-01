@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Mridangam Stroke Dataset Loader
 
 .. admonition:: Dataset Info

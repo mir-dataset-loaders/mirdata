@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """TinySOL Dataset Loader.
 
 .. admonition:: Dataset Info

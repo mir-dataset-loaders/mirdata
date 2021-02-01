@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """iKala Dataset Loader
 
 .. admonition:: Dataset Info

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """GuitarSet Loader
 
 .. admonition:: Dataset Info

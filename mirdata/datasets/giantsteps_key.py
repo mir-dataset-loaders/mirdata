@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """giantsteps_key Dataset Loader
 
 .. admonition:: Dataset Info

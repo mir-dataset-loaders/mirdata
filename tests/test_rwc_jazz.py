@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from mirdata.datasets import rwc_jazz
 from mirdata import annotations
 from tests.test_utils import run_track_tests

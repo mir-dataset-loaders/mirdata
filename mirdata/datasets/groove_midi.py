@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Groove MIDI Loader
 
 .. admonition:: Dataset Info
