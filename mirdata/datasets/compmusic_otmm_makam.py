@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """OTMM Makam Recognition Dataset Loader
 
 .. admonition:: Dataset Info
