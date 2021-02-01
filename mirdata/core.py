@@ -97,30 +97,39 @@ class Dataset(object):
     def __init__(
         self,
         data_home=None,
-        index=None,
         name=None,
         track_class=None,
         bibtex=None,
         remotes=None,
         download_info=None,
         license_info=None,
+        custom_index_path=None,
     ):
         """Dataset init method
 
         Args:
             data_home (str or None): path where mirdata will look for the dataset
-            index (dict or None): the dataset's file index
             name (str or None): the identifier of the dataset
             track_class (mirdata.core.Track or None): a Track class
             bibtex (str or None): dataset citation/s in bibtex format
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
             license_info (str or None): license of the dataset
+            custom_index_path (str or None): overwrites the default index path for remote indexes
 
         """
         self.name = name
         self.data_home = self.default_path if data_home is None else data_home
-        self._index = index
+        if custom_index_path:
+            self.index_path = os.path.join(self.data_home, custom_index_path)
+            self.remote_index = True
+        else:
+            self.index_path = os.path.join(
+                os.path.dirname(os.path.realpath(__file__)),
+                "datasets/indexes",
+                "{}_index.json".format(self.name),
+            )
+            self.remote_index = False
         self._track_class = track_class
         self.bibtex = bibtex
         self.remotes = remotes
@@ -145,6 +154,16 @@ class Dataset(object):
             repr_string += "\n"
 
         return repr_string
+
+    @cached_property
+    def _index(self):
+        if self.remote_index and not os.path.exists(self.index_path):
+            raise FileNotFoundError(
+                "This dataset's index is not available locally. You may need to first run .download()"
+            )
+        with open(self.index_path) as fhandle:
+            index = json.load(fhandle)
+        return index
 
     @cached_property
     def _metadata(self):
@@ -298,7 +317,6 @@ class Track(object):
             data_home (str): path where mirdata will look for the dataset
             dataset_name (str): the identifier of the dataset
             index (dict): the dataset's file index
-                Typically accessed via the .index attribute of a LargeData object
             metadata (dict or None): a dictionary of metadata or None
 
         """
@@ -474,12 +492,6 @@ class MultiTrack(Track):
         return self.get_target(list(self.tracks.keys()))
 
 
-def load_json_index(filename):
-    working_dir = os.path.dirname(os.path.realpath(__file__))
-    with open(os.path.join(working_dir, "datasets/indexes", filename)) as f:
-        return json.load(f)
-
-
 def none_path_join(partial_path_list):
     """Join a list of partial paths. If any part of the path is None,
     returns None.
@@ -495,32 +507,3 @@ def none_path_join(partial_path_list):
         return None
     else:
         return os.path.join(*partial_path_list)
-
-
-class LargeData(object):
-    def __init__(self, index_file, remote_index=None):
-        """Object which loads and caches large data the first time it's accessed.
-
-        Args:
-            index_file: str
-                File name of checksum index file to be passed to `load_json_index`
-
-        Cached Properties:
-            index (dict): dataset index
-
-        """
-        self._metadata = None
-        self.index_file = index_file
-        self.remote_index = remote_index
-
-    @cached_property
-    def index(self):
-        if self.remote_index is not None:
-            working_dir = os.path.dirname(os.path.realpath(__file__))
-            path_index_file = os.path.join(
-                working_dir, "datasets/indexes", self.index_file
-            )
-            if not os.path.isfile(path_index_file):
-                path_indexes = os.path.join(working_dir, "datasets/indexes")
-                download_utils.downloader(path_indexes, remotes=self.remote_index)
-        return load_json_index(self.index_file)

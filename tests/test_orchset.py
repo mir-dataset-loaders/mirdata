@@ -1,4 +1,5 @@
-import os, shutil
+import os
+import shutil
 import numpy as np
 
 from mirdata.datasets import orchset
@@ -173,7 +174,7 @@ def test_download(httpserver):
             filename="Orchset_dataset_0.zip",
             url=httpserver.url,
             checksum=("4794bc3514f7e8d1727f0d975d6d1ee2"),
-            destination_dir=None,
+            unpack_directories=["Orchset"],
         )
     }
     dataset = orchset.Dataset(data_home)

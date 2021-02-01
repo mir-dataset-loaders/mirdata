@@ -41,44 +41,13 @@ REMOTE_DATASETS = {
         "remote_checksum": "c5fbdd4f8b7de383796a34143cb44c4f",
     }
 }
+TEST_DATA_HOME = "tests/resources/mir_datasets"
 
 
-def create_remote_index(httpserver, dataset_name):
-    httpserver.serve_content(
-        open(REMOTE_DATASETS[dataset_name]["local_index"], "rb").read()
-    )
-    remote_index = {
-        "index": download_utils.RemoteFileMetadata(
-            filename=REMOTE_DATASETS[dataset_name]["remote_filename"],
-            url=httpserver.url,
-            checksum=REMOTE_DATASETS[dataset_name]["remote_checksum"],
-            destination_dir="",
-        )
-    }
-    data_remote = core.LargeData(
-        REMOTE_DATASETS[dataset_name]["filename"], remote_index=remote_index
-    )
-    return data_remote.index
-
-
-def clean_remote_dataset(dataset_name):
-    os.remove(
-        os.path.join(
-            "mirdata/datasets/indexes", REMOTE_DATASETS[dataset_name]["filename"]
-        )
-    )
-
-
-def test_dataset_attributes(httpserver):
+def test_dataset_attributes():
     for dataset_name in DATASETS:
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        if dataset_name not in REMOTE_DATASETS:
-            dataset = module.Dataset()
-        else:
-            # TODO fix these tests
-            continue
-            # remote_index = create_remote_index(httpserver, dataset_name)
-            # dataset = module.Dataset(remote_index=remote_index)
+        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
 
         assert (
             dataset.name == dataset_name
@@ -105,20 +74,11 @@ def test_dataset_attributes(httpserver):
             dataset_name
         )
 
-        if dataset_name in REMOTE_DATASETS:
-            clean_remote_dataset(dataset_name)
 
-
-def test_cite_and_license(httpserver):
+def test_cite_and_license():
     for dataset_name in DATASETS:
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        if dataset_name not in REMOTE_DATASETS:
-            dataset = module.Dataset()
-        else:
-            # TODO fix these tests
-            continue
-            # remote_index = create_remote_index(httpserver, dataset_name)
-            # dataset = module.Dataset(remote_index=remote_index)
+        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
 
         text_trap = io.StringIO()
         sys.stdout = text_trap
@@ -129,25 +89,17 @@ def test_cite_and_license(httpserver):
         sys.stdout = text_trap
         dataset.license()
         sys.stdout = sys.__stdout__
-        if dataset_name in REMOTE_DATASETS:
-            clean_remote_dataset(dataset_name)
 
 
 KNOWN_ISSUES = {}  # key is module, value is REMOTE key
-DOWNLOAD_EXCEPTIONS = ["maestro", "acousticbrainz_genre"]
+DOWNLOAD_EXCEPTIONS = ["maestro"]
 
 
-def test_download(mocker, httpserver):
+def test_download(mocker):
     for dataset_name in DATASETS:
         print(dataset_name)
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        if dataset_name not in REMOTE_DATASETS:
-            dataset = module.Dataset()
-        else:
-            # TODO fix these tests
-            continue
-            # remote_index = create_remote_index(httpserver, dataset_name)
-            # dataset = module.Dataset(remote_index=remote_index)
+        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
 
         # test parameters & defaults
         assert callable(dataset.download), "{}.download is not callable".format(
@@ -204,26 +156,16 @@ def test_download(mocker, httpserver):
                 dataset.download()
             except:
                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-        if dataset_name in REMOTE_DATASETS:
-            clean_remote_dataset(dataset_name)
 
 
 # This is magically skipped by the the remote fixture `skip_local` in conftest.py
 # when tests are run with the --local flag
-def test_validate(skip_local, httpserver):
+def test_validate(skip_local):
     for dataset_name in DATASETS:
         data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
 
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        if dataset_name not in REMOTE_DATASETS:
-            dataset = module.Dataset(data_home)
-            dataset_default = module.Dataset(data_home=None)
-        else:
-            # TODO fix these tests
-            continue
-            # remote_index = create_remote_index(httpserver, dataset_name)
-            # dataset = module.Dataset(data_home, index=remote_index)
-            # dataset_default = module.Dataset(data_home=None, index=remote_index)
+        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
 
         try:
             dataset.validate()
@@ -235,25 +177,12 @@ def test_validate(skip_local, httpserver):
         except:
             assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
-        try:
-            dataset_default.validate(verbose=False)
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
-
-def test_load_and_trackids(httpserver):
+def test_load_and_trackids():
     for dataset_name in DATASETS:
         data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        if dataset_name not in REMOTE_DATASETS:
-            dataset = module.Dataset(data_home)
-            dataset_default = module.Dataset()
-        else:
-            continue
-            # TODO - fix the dataset class to work with remote index
-            # remote_index = create_remote_index(httpserver, dataset_name)
-            # dataset = module.Dataset(data_home, index=remote_index)
-            # dataset_default = module.Dataset(index=remote_index)
+        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
 
         try:
             track_ids = dataset.track_ids
@@ -281,8 +210,8 @@ def test_load_and_trackids(httpserver):
             except:
                 assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
 
-            assert (
-                type(dataset_data) is dict
+            assert isinstance(
+                dataset_data, dict
             ), "{}.load should return a dictionary".format(dataset_name)
             assert (
                 len(dataset_data.keys()) == trackid_len
@@ -290,26 +219,15 @@ def test_load_and_trackids(httpserver):
                 dataset_name, dataset_name
             )
 
-        if dataset_name in REMOTE_DATASETS:
-            clean_remote_dataset(dataset_name)
 
-
-def test_track(httpserver):
+def test_track():
     data_home_dir = "tests/resources/mir_datasets"
 
     for dataset_name in DATASETS:
         data_home = os.path.join(data_home_dir, dataset_name)
 
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        if dataset_name not in REMOTE_DATASETS:
-            dataset = module.Dataset(data_home)
-            dataset_default = module.Dataset()
-        else:
-            continue
-            # TODO - fix the dataset class to work with remote index
-            # remote_index = create_remote_index(httpserver, dataset_name)
-            # dataset = module.Dataset(data_home, index=remote_index)
-            # dataset_default = module.Dataset(index=remote_index)
+        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
 
         # if the dataset doesn't have a track object, make sure it raises a value error
         # and move on to the next dataset
@@ -389,16 +307,10 @@ SKIP = {
 }
 
 
-def test_load_methods(httpserver):
+def test_load_methods():
     for dataset_name in DATASETS:
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        if dataset_name not in REMOTE_DATASETS:
-            dataset = module.Dataset()
-        else:
-            # TODO fix these tests
-            continue
-            # remote_index = create_remote_index(httpserver, dataset_name)
-            # dataset = module.Dataset(remote_index=remote_index)
+        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
 
         all_methods = dir(dataset)
         load_methods = [
@@ -442,19 +354,13 @@ def test_load_methods(httpserver):
 CUSTOM_TEST_MTRACKS = {}
 
 
-def test_multitracks(httpserver):
+def test_multitracks():
     data_home_dir = "tests/resources/mir_datasets"
 
     for dataset_name in DATASETS:
 
         module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        if dataset_name not in REMOTE_DATASETS:
-            dataset = module.Dataset()
-        else:
-            # TODO fix these tests
-            continue
-            # remote_index = create_remote_index(httpserver, dataset_name)
-            # dataset = module.Dataset(remote_index=remote_index)
+        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
 
         # TODO this is currently an opt-in test. Make it an opt out test
         # once #265 is addressed
@@ -496,5 +402,3 @@ def test_multitracks(httpserver):
         assert jam.validate(), "Jams validation failed for {}.MultiTrack({})".format(
             dataset_name, mtrack_id
         )
-        if dataset_name in REMOTE_DATASETS:
-            clean_remote_dataset(dataset_name)

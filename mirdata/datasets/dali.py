@@ -79,9 +79,6 @@ LICENSE_INFO = (
 )
 
 
-DATA = core.LargeData("dali_index.json")
-
-
 class Track(core.Track):
     """DALI melody Track class
 
@@ -279,7 +276,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="dali",
             track_class=Track,
             bibtex=BIBTEX,

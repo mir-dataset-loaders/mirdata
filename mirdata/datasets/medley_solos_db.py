@@ -63,9 +63,6 @@ REMOTES = {
 LICENSE_INFO = "Creative Commons Attribution 4.0 International."
 
 
-DATA = core.LargeData("medley_solos_db_index.json")
-
-
 class Track(core.Track):
     """medley_solos_db Track class
 
@@ -151,7 +148,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="medley_solos_db",
             track_class=Track,
             bibtex=BIBTEX,

@@ -41,7 +41,6 @@ REMOTES = {
         filename="salami-data-public-hierarchy-corrections.zip",
         url="https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip",
         checksum="194add2601c09a7279a7433288de81fd",
-        destination_dir=None,
     )
 }
 DOWNLOAD_INFO = """
@@ -60,9 +59,6 @@ the public domain. More information about this dedication and your rights, pleas
 details here: http://creativecommons.org/publicdomain/zero/1.0/ and
 http://creativecommons.org/publicdomain/zero/1.0/legalcode.
 """
-
-
-DATA = core.LargeData("salami_index.json")
 
 
 class Track(core.Track):
@@ -222,8 +218,8 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     for line in reader:
         times.append(float(line[0]))
         secs.append(line[1])
-    times = np.array(times)
-    secs = np.array(secs)
+    times = np.array(times)  # type: ignore
+    secs = np.array(secs)  # type: ignore
 
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
@@ -242,7 +238,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="salami",
             track_class=Track,
             bibtex=BIBTEX,

@@ -105,7 +105,7 @@ def test_download(httpserver):
             filename="groove-v1-0.0.zip",
             url=httpserver.url,
             checksum=("97a9a888d2a65cc87bb26e74df08b011"),
-            destination_dir=None,
+            unpack_directories=["groove"],
         )
     }
     dataset = groove_midi.Dataset(data_home)
