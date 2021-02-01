@@ -20,11 +20,6 @@ acousticbrainz_genre
    :members:
    :inherited-members:
 
-ab_genre
-^^^^^^^
-
-.. automodule:: mirdata.datasets.acousticbrainz_genre
-   :members:
 
 beatles
 ^^^^^^^
