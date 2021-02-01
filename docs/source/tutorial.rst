@@ -8,26 +8,10 @@ Installation
 ------------
 
 To install ``mirdata``:
+
     .. code-block:: console
 
         pip install mirdata
-
-To install ``mirdata`` for development purposes:
-    - First run:
-
-    .. code-block:: console
-
-        git clone https://github.com/mir-dataset-loaders/mirdata.git
-
-    - Then, after opening source data library you have to install the dependencies:
-
-    .. code-block:: console
-
-        pip install .
-        pip install .[tests]
-        pip install .[docs]
-        pip install .[dali]
-
 
 Usage
 -----

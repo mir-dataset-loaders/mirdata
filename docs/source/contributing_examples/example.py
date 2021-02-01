@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Example Dataset Loader
 
 .. admonition:: Dataset Info
