@@ -188,8 +188,8 @@ def load_melody(fhandle: TextIO) -> annotations.F0Data:
         times.append(float(line[0]))
         freqs.append(float(line[1]))
 
-    times = np.array(times)
-    freqs = np.array(freqs)
+    times = np.array(times)  # type: ignore
+    freqs = np.array(freqs)  # type: ignore
     confidence = (cast(np.ndarray, freqs) > 0).astype(float)
     return annotations.F0Data(times, freqs, confidence)
 
@@ -217,7 +217,7 @@ def load_melody3(fhandle: TextIO) -> annotations.MultiF0Data:
         freqs_list.append([float(v) for v in line[1:]])
         conf_list.append([float(float(v) > 0) for v in line[1:]])
 
-    times = np.array(times)
+    times = np.array(times)  # type: ignore
     melody_data = annotations.MultiF0Data(times, freqs_list, conf_list)
     return melody_data
 

@@ -219,8 +219,8 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     for line in reader:
         times.append(float(line[0]))
         secs.append(line[1])
-    times = np.array(times)
-    secs = np.array(secs)
+    times = np.array(times)  # type: ignore
+    secs = np.array(secs)  # type: ignore
 
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))

@@ -188,7 +188,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
         beat_times.append(float(line[0]))
         beat_positions.append(line[-1])
 
-    beat_positions = _fix_newpoint(np.array(beat_positions))
+    beat_positions = _fix_newpoint(np.array(beat_positions))  # type: ignore
     # After fixing New Point labels convert positions to int
     beat_data = annotations.BeatData(
         np.array(beat_times), np.array([int(b) for b in beat_positions])
