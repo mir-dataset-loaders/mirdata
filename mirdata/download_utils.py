@@ -313,7 +313,6 @@ def move_directory_contents(source_dir, target_dir):
         target_dir (str): path to target directory
 
     """
-    # files get downloaded to a folder called Orchset - move everything up a level
     directory_contents = glob.glob(os.path.join(source_dir, "*"))
     for fpath in directory_contents:
         target_path = os.path.join(target_dir, os.path.basename(fpath))

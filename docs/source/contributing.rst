@@ -297,7 +297,7 @@ Working with remote indexes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the end-user there is no difference between the remote and local indexes. However, indexes can get large when there are a lot of tracks
-in the dataset. In these cases, storing and accessing an index remotely can be convenient. Large indexes can added to REMOTES, 
+in the dataset. In these cases, storing and accessing an index remotely can be convenient. Large indexes can be added to REMOTES, 
 and will be downloaded with the rest of the dataset. For example:
 
 .. code-block:: python
