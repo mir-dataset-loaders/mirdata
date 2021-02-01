@@ -45,7 +45,7 @@ from mirdata import io
 
 BIBTEX = """
 @software{sertan_senturk_2016_58413,
-  author       = {Sertan Senturk and
+  author       = {Sertan Şentürk and
                   Altuğ Karakurt},
   title        = {{otmm_makam_recognition_dataset: Ottoman-Turkish
                    Makam Music Makam Recognition Dataset}},
@@ -89,7 +89,7 @@ class Track(core.Track):
 
     Cached Properties:
         pitch (F0Data): pitch annotation
-        mb_tags (dict): dictionary containing the raw editorial track metadata from music brainz
+        mb_tags (dict): dictionary containing the raw editorial track metadata from MusicBrainz
 
     """
 
@@ -162,21 +162,11 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
     """
     time_step = 128 / 44100  # hop-size / fs
 
-    times = []
-    freqs = []
-    confidence = []
     reader = csv.reader(fhandle, delimiter=",")
-    for line in reader:
-        freqs.append(float(line[0]))
+    freqs = np.array([float(line[0]) for line in reader])
+    times = np.array(np.arange(len(freqs)) * time_step)
+    confidence = np.array((freqs > 0.0).astype(float))
 
-    for i in np.arange(len(freqs)):
-        times.append(float(time_step * i))
-
-    times = np.array(times)
-    freqs = np.array(freqs)
-    for i in freqs:
-        confidence.append(1.0) if i > 0 else confidence.append(0.0)
-    confidence = np.array(confidence)
     return annotations.F0Data(times, freqs, confidence)
 
 

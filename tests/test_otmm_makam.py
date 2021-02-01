@@ -484,7 +484,6 @@ def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
     dataset = compmusic_otmm_makam.Dataset(data_home)
     metadata = dataset._metadata
-    # trackid = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
     track_id = list(metadata.keys())[0]
     assert track_id == "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
@@ -704,4 +703,18 @@ def test_load_mb_tags():
             "mbid": "753ff394-dec1-422b-991f-227d8f848532",
             "title": "A\u015fka Merak\u0131m Ezelden",
         }
+    ]
+
+
+def test_special_turkish_characters():
+    data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
+    track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+
+    dataset = compmusic_otmm_makam.Dataset(data_home)
+    track = dataset.track(track_id)
+    mb_tags_path = track.mb_tags_path
+    special_characters = compmusic_otmm_makam.load_mb_tags(mb_tags_path)["special_turkish_characters"]
+
+    assert special_characters == [
+        "ç", "Ç", "ğ", "Ğ", "ı", "İ", "i", "İ", "ö", "Ö", "ş", "Ş", "ü", "Ü"
     ]

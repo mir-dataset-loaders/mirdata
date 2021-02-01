@@ -4,7 +4,7 @@ import json
 import os
 
 
-OTMM_INDEX_PATH = '../mirdata/datasets/indexes/otmm_makam_index.json'
+OTMM_MAKAM_INDEX_PATH = '../mirdata/datasets/indexes/otmm_makam_index.json'
 
 
 def md5(file_path):
@@ -27,7 +27,7 @@ def md5(file_path):
     return hash_md5.hexdigest()
 
 
-def make_otmm_index(dataset_data_path):
+def make_otmm_makam_index(dataset_data_path):
 
     otmm_index = {'version': 'dlfm2016', 'tracks': {}, 'metadata': []}
 
@@ -68,13 +68,13 @@ def make_otmm_index(dataset_data_path):
         md5(os.path.join(dataset_data_path, 'annotations.json')),
     ]
 
-    with open(OTMM_INDEX_PATH, 'w') as fhandle:
+    with open(OTMM_MAKAM_INDEX_PATH, 'w') as fhandle:
         json.dump(otmm_index, fhandle, indent=2)
 
 
 def main(args):
     print("creating index...")
-    make_otmm_index(args.dataset_data_path)
+    make_otmm_makam_index(args.dataset_data_path)
     print("done!")
 
 

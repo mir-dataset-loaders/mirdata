@@ -235,5 +235,8 @@
             "mbid": "753ff394-dec1-422b-991f-227d8f848532", 
             "title": "A\u015fka Merak\u0131m Ezelden"
         }
+    ],
+    "special_turkish_characters": [
+        "ç", "Ç", "ğ", "Ğ", "ı", "İ", "i", "İ", "ö", "Ö", "ş", "Ş", "ü", "Ü"
     ]
 }
