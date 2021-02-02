@@ -141,6 +141,9 @@ class Dataset(object):
         self.track = lambda track_id: self._track(track_id)
         self.track.__doc__ = self._track_class.__doc__  # set the docstring
 
+        self.multitrack = lambda mtrack_id: self._multitrack(mtrack_id)
+        self.multitrack.__doc__ = self._multitrack_object.__doc__  # set the docstring
+
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
         repr_string += "-" * MAX_STR_LEN
@@ -199,6 +202,19 @@ class Dataset(object):
                 track_id, self.data_home, self.name, self._index, self._metadata
             )
 
+    def _multitrack(self, mtrack_id):
+        """Load a multitrack by mtrack_id.
+        Hidden helper function that gets called as a lambda.
+        Args:
+            mtrack_id (str): mtrack id of the multitrack
+        Returns:
+            multitrack (dataset.MultiTrack): an instance of this dataset's MultiTrack object
+        """
+        if self._multitrack_object is None:
+            raise NotImplementedError
+        else:
+            return self._multitrack_object(mtrack_id, self.data_home)
+
     def load_tracks(self):
         """Load all tracks in the dataset
 
@@ -212,6 +228,19 @@ class Dataset(object):
         """
         return {track_id: self.track(track_id) for track_id in self.track_ids}
 
+    def load_multitracks(self):
+        """Load all multitracks in the dataset
+
+        Returns:
+            dict:
+                {`mtrack_id`: multitrack data}
+
+        Raises:
+            NotImplementedError: If the dataset does not support Multitracks
+
+        """
+        return {mtrack_id: self.multitrack(mtrack_id) for mtrack_id in self.mtrack_ids}
+
     def choice_track(self):
         """Choose a random track
 
@@ -219,7 +248,10 @@ class Dataset(object):
             Track: a Track object instantiated by a random track_id
 
         """
-        return self.track(random.choice(self.track_ids))
+        try:
+            return list(self._index['tracks'].keys())
+        except KeyError:
+            raise KeyError('This dataset does not have tracks')
 
     def cite(self):
         """
@@ -271,6 +303,19 @@ class Dataset(object):
 
         """
         return list(self._index["tracks"].keys())
+
+    @cached_property
+    def mtrack_ids(self):
+        """Return multitrack ids
+
+        Returns:
+            (list): A list of multi-track ids
+        """
+        try:
+            return list(self._index['multitracks'].keys())
+        except KeyError:
+            raise KeyError('This dataset does not have multitracks')
+
 
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version
