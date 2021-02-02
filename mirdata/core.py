@@ -436,6 +436,48 @@ class MultiTrack(Track):
 
     """
 
+    def __init__(
+        self,
+        mtrack_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata=None,
+    ):
+        """Multitrack init method. Sets boilerplate attributes, including:
+
+        - ``mtrack_id``
+        - ``_dataset_name``
+        - ``_data_home``
+        - ``_multitrack_paths``
+        - ``_multitrack_metadata``
+
+        Args:
+            mtrack_id (str): multitrack id
+            data_home (str): path where mirdata will look for the dataset
+            dataset_name (str): the identifier of the dataset
+            index (dict): the dataset's file index
+            metadata (dict or None): a dictionary of metadata or None
+
+        """
+        if mtrack_id not in index["multitracks"]:
+            raise ValueError(
+                "{} is not a valid mtrack_id in {}".format(mtrack_id, dataset_name)
+            )
+
+        self.mtrack_id = mtrack_id
+        self._dataset_name = dataset_name
+
+        self._data_home = data_home
+        self._multitrack_paths = index["multitracks"][mtrack_id]
+
+        if metadata and mtrack_id in metadata:
+            self._multitrack_metadata = metadata[mtrack_id]
+        elif metadata:
+            self._multitrack_metadata = metadata
+        else:
+            self._multitrack_metadata = None
+
     def _check_mixable(self):
         if not hasattr(self, "tracks") or not hasattr(self, "track_audio_property"):
             raise NotImplementedError(
