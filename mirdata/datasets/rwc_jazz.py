@@ -149,14 +149,37 @@ class Track(core.Track):
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-        self.piece_number = self._track_metadata.get("piece_number")
-        self.suffix = self._track_metadata.get("suffix")
-        self.track_number = self._track_metadata.get("track_number")
-        self.title = self._track_metadata.get("title")
-        self.artist = self._track_metadata.get("artist")
-        self.duration = self._track_metadata.get("duration")
-        self.variation = self._track_metadata.get("variation")
-        self.instruments = self._track_metadata.get("instruments")
+    @property
+    def piece_number(self):
+        return self._track_metadata.get("piece_number")
+
+    @property
+    def suffix(self):
+        return self._track_metadata.get("suffix")
+
+    @property
+    def track_number(self):
+        return self._track_metadata.get("track_number")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def variation(self):
+        return self._track_metadata.get("variation")
+
+    @property
+    def instruments(self):
+        return self._track_metadata.get("instruments")
 
     @core.cached_property
     def sections(self) -> Optional[annotations.SectionData]:

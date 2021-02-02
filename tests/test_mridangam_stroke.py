@@ -18,7 +18,7 @@ def test_track():
         "tonic": "B",
     }
 
-    run_track_tests(track, expected_attributes, {})
+    run_track_tests(track, expected_attributes, {"audio": tuple})
 
     audio, sr = track.audio
     assert sr == 44100

@@ -10,7 +10,7 @@ import requests
 
 import mirdata
 from mirdata import core, download_utils
-from tests.test_utils import DEFAULT_DATA_HOME
+from tests.test_utils import DEFAULT_DATA_HOME, get_attributes_and_properties
 
 DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
@@ -19,6 +19,7 @@ CUSTOM_TEST_TRACKS = {
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
     "giantsteps_tempo": "113",
+    "gtzan_genre": "country.00000",
     "guitarset": "03_BN3-119-G_solo",
     "irmas": "1",
     "medley_solos_db": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
@@ -255,6 +256,18 @@ def test_track():
             track_test, "to_jams"
         ), "{}.track must have a to_jams method".format(dataset_name)
 
+        # test calling all attributes, properties and cached properties
+        track_data = get_attributes_and_properties(track_test)
+
+        for attr in track_data["attributes"]:
+            ret = getattr(track_test, attr)
+
+        for prop in track_data["properties"]:
+            ret = getattr(track_test, prop)
+
+        for cprop in track_data["cached_properties"]:
+            ret = getattr(track_test, cprop)
+
         # Validate JSON schema
         try:
             jam = track_test.to_jams()
@@ -276,6 +289,46 @@ def test_track():
 
         with pytest.raises(ValueError):
             dataset.track("~faketrackid~?!")
+
+
+# This tests the case where there is no data in data_home.
+# It makes sure that the track can be initialized and the
+# attributes accessed, but that anything requiring data
+# files errors (all properties and cached properties).
+def test_track_placeholder_case():
+    data_home_dir = "not/a/real/path"
+
+    for dataset_name in DATASETS:
+        data_home = os.path.join(data_home_dir, dataset_name)
+
+        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
+        dataset = module.Dataset(os.path.join(data_home, dataset_name))
+
+        if dataset._track_class is None or dataset.remote_index:
+            continue
+
+        if dataset_name in CUSTOM_TEST_TRACKS:
+            trackid = CUSTOM_TEST_TRACKS[dataset_name]
+        else:
+            trackid = dataset.track_ids[0]
+
+        try:
+            track_test = dataset.track(trackid)
+        except:
+            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+
+        track_data = get_attributes_and_properties(track_test)
+
+        for attr in track_data["attributes"]:
+            ret = getattr(track_test, attr)
+
+        for prop in track_data["properties"]:
+            with pytest.raises(Exception):
+                ret = getattr(track_test, prop)
+
+        for cprop in track_data["cached_properties"]:
+            with pytest.raises(Exception):
+                ret = getattr(track_test, cprop)
 
 
 # for load_* functions which require more than one argument

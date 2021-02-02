@@ -58,13 +58,6 @@ def test_track():
     }
 
     expected_property_types = {
-        "audio-mix": (np.ndarray, float),
-        "audio-ghatam": (np.ndarray, float),
-        "audio-mridangam-left": (np.ndarray, float),
-        "audio-mridangam-right": (np.ndarray, float),
-        "audio-violin": (np.ndarray, float),
-        "audio-vocal-s": (np.ndarray, float),
-        "audio-vocal": (np.ndarray, float),
         "tempo": dict,
         "phrases": annotations.EventData,
         "pitch": annotations.F0Data,
@@ -73,6 +66,7 @@ def test_track():
         "sections": annotations.SectionData,
         "tonic": float,
         "metadata": dict,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

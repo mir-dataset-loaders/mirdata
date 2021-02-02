@@ -106,12 +106,30 @@ class Track(core.Track):
         )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.artist = self._track_metadata.get("artist")
-        self.title = self._track_metadata.get("title")
-        self.genre = self._track_metadata.get("genre")
-        self.is_excerpt = self._track_metadata.get("is_excerpt")
-        self.is_instrumental = self._track_metadata.get("is_instrumental")
-        self.n_sources = self._track_metadata.get("n_sources")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def genre(self):
+        return self._track_metadata.get("genre")
+
+    @property
+    def is_excerpt(self):
+        return self._track_metadata.get("is_excerpt")
+
+    @property
+    def is_instrumental(self):
+        return self._track_metadata.get("is_instrumental")
+
+    @property
+    def n_sources(self):
+        return self._track_metadata.get("n_sources")
 
     @core.cached_property
     def melody1(self) -> Optional[annotations.F0Data]:
