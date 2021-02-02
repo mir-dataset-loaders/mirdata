@@ -234,22 +234,51 @@ class Track(core.Track):
             metadata,
         )
 
-        self.drummer = self._track_metadata.get("drummer")
-        self.session = self._track_metadata.get("session")
-        self.style = self._track_metadata.get("style")
-        self.tempo = self._track_metadata.get("tempo")
-        self.beat_type = self._track_metadata.get("beat_type")
-        self.time_signature = self._track_metadata.get("time_signature")
-        self.duration = self._track_metadata.get("duration")
-        self.split = self._track_metadata.get("split")
-        self.midi_filename = self._track_metadata.get("midi_filename")
-        self.audio_filename = self._track_metadata.get("audio_filename")
-
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
         self.audio_path = core.none_path_join(
             [self._data_home, self._track_paths["audio"][0]]
         )
+
+    @property
+    def drummer(self):
+        return self._track_metadata.get("drummer")
+
+    @property
+    def session(self):
+        return self._track_metadata.get("session")
+
+    @property
+    def style(self):
+        return self._track_metadata.get("style")
+
+    @property
+    def tempo(self):
+        return self._track_metadata.get("tempo")
+
+    @property
+    def beat_type(self):
+        return self._track_metadata.get("beat_type")
+
+    @property
+    def time_signature(self):
+        return self._track_metadata.get("time_signature")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def split(self):
+        return self._track_metadata.get("split")
+
+    @property
+    def midi_filename(self):
+        return self._track_metadata.get("midi_filename")
+
+    @property
+    def audio_filename(self):
+        return self._track_metadata.get("audio_filename")
 
     @property
     def audio(self) -> Tuple[Optional[np.ndarray], Optional[float]]:

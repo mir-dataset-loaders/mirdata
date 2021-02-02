@@ -158,6 +158,18 @@ class Track(core.Track):
         genre (list): human-labeled genre and subgenres list
         mbid (str): musicbrainz id
         mbid_group (str): musicbrainz id group
+        artist (list): the track's artist/s
+        title (list): the track's title
+        date (list): the track's release date/s
+        filename (str): the track's filename
+        album (list): the track's album/s
+        track_number (list): the track number/s
+        tonal (dict): dictionary of acousticbrainz tonal features
+        low_level (dict): dictionary of acousticbrainz low-level features
+        rhythm (dict): dictionary of acousticbrainz rhythm features
+
+    Cached Properties:
+        acousticbrainz_metadata (dict): dictionary of metadata provided by AcousticBrainz
 
     """
 
@@ -189,30 +201,30 @@ class Track(core.Track):
         """metadata artist annotation
 
         Returns:
-            str: artist
+            list: artist
 
         """
-        return load_extractor(self.path)["metadata"]["artist"]
+        return self.acousticbrainz_metadata["metadata"]["tags"]["artist"]
 
     @property
     def title(self):
         """metadata title annotation
 
         Returns:
-            str: title
+            list: title
 
         """
-        return load_extractor(self.path)["metadata"]["title"]
+        return self.acousticbrainz_metadata["metadata"]["tags"]["title"]
 
     @property
     def date(self):
         """metadata date annotation
 
         Returns:
-            str: date
+            list: date
 
         """
-        return load_extractor(self.path)["metadata"]["date"]
+        return self.acousticbrainz_metadata["metadata"]["tags"]["date"]
 
     @property
     def file_name(self):
@@ -221,25 +233,25 @@ class Track(core.Track):
         Returns:
             str: file name
         """
-        return load_extractor(self.path)["metadata"]["file_name"]
+        return self.acousticbrainz_metadata["metadata"]["tags"]["file_name"]
 
     @property
     def album(self):
         """metadata album annotation
 
         Returns:
-            str: album
+            list: album
         """
-        return load_extractor(self.path)["metadata"]["album"]
+        return self.acousticbrainz_metadata["metadata"]["tags"]["album"]
 
     @property
     def tracknumber(self):
         """metadata tracknumber annotation
 
         Returns:
-            str: tracknumber
+            list: tracknumber
         """
-        return load_extractor(self.path)["metadata"]["tracknumber"]
+        return self.acousticbrainz_metadata["metadata"]["tags"]["tracknumber"]
 
     @property
     def tonal(self):
@@ -262,11 +274,11 @@ class Track(core.Track):
                   ChordsDescriptors
 
         """
-        return load_extractor(self.path)["tonal"]
+        return self.acousticbrainz_metadata["tonal"]
 
     @property
     def low_level(self):
-        """low_level track descritors.
+        """low_level track descriptors.
 
         Returns:
            dict:
@@ -309,7 +321,7 @@ class Track(core.Track):
                   SpectralContrast
 
         """
-        return load_extractor(self.path)["low_level"]
+        return self.acousticbrainz_metadata["lowlevel"]
 
     @property
     def rhythm(self):
@@ -332,7 +344,11 @@ class Track(core.Track):
                 - 'onset_rate': number of detected onsets per second. Algorithms: OnsetRate
                 - 'danceability': danceability estimate. Algorithms: Danceability
         """
-        return load_extractor(self.path)["metadata"]["rhythm"]
+        return self.acousticbrainz_metadata["rhythm"]
+
+    @core.cached_property
+    def acousticbrainz_metadata(self):
+        return load_extractor(self.path)
 
     def to_jams(self):
         """the track's data in jams format
@@ -344,9 +360,9 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             metadata={
                 "features": load_extractor(self.path),
-                "duration": load_extractor(self.path)["metadata"]["audio_properties"][
-                    "length"
-                ],
+                "duration": self.acousticbrainz_metadata["metadata"][
+                    "audio_properties"
+                ]["length"],
             }
         )
 
@@ -363,8 +379,7 @@ def load_extractor(fhandle):
         * float - The sample rate of the audio file
 
     """
-    meta = json.load(fhandle)
-    return meta
+    return json.load(fhandle)
 
 
 @core.docstring_inherit(core.Dataset)

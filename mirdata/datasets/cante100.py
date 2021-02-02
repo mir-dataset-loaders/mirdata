@@ -188,11 +188,25 @@ class Track(core.Track):
         self.f0_path = os.path.join(self._data_home, self._track_paths["f0"][0])
         self.notes_path = os.path.join(self._data_home, self._track_paths["notes"][0])
 
-        self.identifier = self._track_metadata.get("musicBrainzID")
-        self.artist = self._track_metadata.get("artist")
-        self.title = self._track_metadata.get("title")
-        self.release = self._track_metadata.get("release")
-        self.duration = self._track_metadata.get("duration")
+    @property
+    def identifier(self):
+        return self._track_metadata.get("musicBrainzID")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def release(self):
+        return self._track_metadata.get("release")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
 
     @property
     def audio(self) -> Tuple[np.ndarray, float]:

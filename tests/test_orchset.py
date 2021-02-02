@@ -34,7 +34,11 @@ def test_track():
         "only_brass": False,
     }
 
-    expected_property_types = {"melody": annotations.F0Data}
+    expected_property_types = {
+        "melody": annotations.F0Data,
+        "audio_mono": tuple,
+        "audio_stereo": tuple,
+    }
 
     run_track_tests(track, expected_attributes, expected_property_types)
 

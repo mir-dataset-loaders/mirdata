@@ -23,7 +23,7 @@ def test_track():
         "genre": "Singer/Songwriter",
     }
 
-    expected_property_types = {"pitch": annotations.F0Data}
+    expected_property_types = {"pitch": annotations.F0Data, "audio": tuple}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 

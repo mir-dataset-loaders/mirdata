@@ -28,6 +28,7 @@ def test_track():
         "spectrum": np.ndarray,
         "hpcp": np.ndarray,
         "musicbrainz_metadata": dict,
+        "audio": tuple,
     }
     run_track_tests(track, expected_attributes, expected_property_types)
 

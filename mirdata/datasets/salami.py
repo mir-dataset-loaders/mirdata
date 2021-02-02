@@ -120,16 +120,46 @@ class Track(core.Track):
         )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.source = self._track_metadata.get("source")
-        self.annotator_1_id = self._track_metadata.get("annotator_1_id")
-        self.annotator_2_id = self._track_metadata.get("annotator_2_id")
-        self.duration = self._track_metadata.get("duration")
-        self.title = self._track_metadata.get("title")
-        self.artist = self._track_metadata.get("artist")
-        self.annotator_1_time = self._track_metadata.get("annotator_1_time")
-        self.annotator_2_time = self._track_metadata.get("annotator_2_time")
-        self.broad_genre = self._track_metadata.get("class")
-        self.genre = self._track_metadata.get("genre")
+
+    @property
+    def source(self):
+        return self._track_metadata.get("source")
+
+    @property
+    def annotator_1_id(self):
+        return self._track_metadata.get("annotator_1_id")
+
+    @property
+    def annotator_2_id(self):
+        return self._track_metadata.get("annotator_2_id")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def annotator_1_time(self):
+        return self._track_metadata.get("annotator_1_time")
+
+    @property
+    def annotator_2_time(self):
+        return self._track_metadata.get("annotator_2_time")
+
+    @property
+    def broad_genre(self):
+        return self._track_metadata.get("class")
+
+    @property
+    def genre(self):
+        return self._track_metadata.get("genre")
 
     @core.cached_property
     def sections_annotator_1_uppercase(self) -> Optional[annotations.SectionData]:
