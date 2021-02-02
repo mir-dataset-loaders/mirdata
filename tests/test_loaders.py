@@ -291,6 +291,10 @@ def test_track():
             dataset.track("~faketrackid~?!")
 
 
+# This tests the case where there is no data in data_home.
+# It makes sure that the track can be initialized and the
+# attributes accessed, but that anything requiring data
+# files errors (all properties and cached properties).
 def test_track_placeholder_case():
     data_home_dir = "not/a/real/path"
 
