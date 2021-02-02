@@ -93,10 +93,22 @@ class Track(core.Track):
         self.pitch_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.instrument = self._track_metadata.get("instrument")
-        self.artist = self._track_metadata.get("artist")
-        self.title = self._track_metadata.get("title")
-        self.genre = self._track_metadata.get("genre")
+
+    @property
+    def instrument(self):
+        return self._track_metadata.get("instrument")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def genre(self):
+        return self._track_metadata.get("genre")
 
     @core.cached_property
     def pitch(self) -> Optional[annotations.F0Data]:

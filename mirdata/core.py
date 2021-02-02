@@ -196,7 +196,11 @@ class Dataset(object):
             raise NotImplementedError
         else:
             return self._track_class(
-                track_id, self.data_home, self.name, self._index, self._metadata
+                track_id,
+                self.data_home,
+                self.name,
+                self._index,
+                lambda: self._metadata,
             )
 
     def load_tracks(self):
@@ -330,13 +334,16 @@ class Track(object):
 
         self._data_home = data_home
         self._track_paths = index["tracks"][track_id]
+        self._metadata = metadata
 
-        if metadata and track_id in metadata:
-            self._track_metadata = metadata[track_id]
+    @property
+    def _track_metadata(self):
+        metadata = self._metadata()
+        if metadata and self.track_id in metadata:
+            return metadata[self.track_id]
         elif metadata:
-            self._track_metadata = metadata
-        else:
-            self._track_metadata = None
+            return metadata
+        return None
 
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]

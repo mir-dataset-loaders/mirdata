@@ -126,11 +126,25 @@ class Track(core.Track):
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
-        self.canonical_composer = self._track_metadata.get("canonical_composer")
-        self.canonical_title = self._track_metadata.get("canonical_title")
-        self.split = self._track_metadata.get("split")
-        self.year = self._track_metadata.get("year")
-        self.duration = self._track_metadata.get("duration")
+    @property
+    def canonical_composer(self):
+        return self._track_metadata.get("canonical_composer")
+
+    @property
+    def canonical_title(self):
+        return self._track_metadata.get("canonical_title")
+
+    @property
+    def split(self):
+        return self._track_metadata.get("split")
+
+    @property
+    def year(self):
+        return self._track_metadata.get("year")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
 
     @core.cached_property
     def midi(self) -> Optional[pretty_midi.PrettyMIDI]:

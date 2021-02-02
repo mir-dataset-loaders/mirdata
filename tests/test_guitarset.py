@@ -38,6 +38,10 @@ def test_track():
         "key_mode": annotations.KeyData,
         "pitch_contours": dict,
         "notes": dict,
+        "audio_mic": tuple,
+        "audio_mix": tuple,
+        "audio_hex": tuple,
+        "audio_hex_cln": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

@@ -33,7 +33,6 @@ def test_track():
     }
 
     expected_property_types = {
-        "audio": (np.ndarray, float),
         "tempo": dict,
         "phrases": annotations.EventData,
         "pitch": annotations.F0Data,
@@ -41,6 +40,7 @@ def test_track():
         "sections": annotations.SectionData,
         "tonic": float,
         "metadata": dict,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

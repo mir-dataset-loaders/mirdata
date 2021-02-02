@@ -31,6 +31,7 @@ def test_track():
         "chords": annotations.ChordData,
         "key": annotations.KeyData,
         "sections": annotations.SectionData,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

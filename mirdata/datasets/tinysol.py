@@ -127,18 +127,53 @@ class Track(core.Track):
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-        self.family = self._track_metadata.get("Family")
-        self.instrument_abbr = self._track_metadata.get("Instrument (abbr.)")
-        self.instrument_full = self._track_metadata.get("Instrument (in full)")
-        self.technique_abbr = self._track_metadata.get("Technique (abbr.)")
-        self.technique_full = self._track_metadata.get("Technique (in full)")
-        self.pitch = self._track_metadata.get("Pitch")
-        self.pitch_id = self._track_metadata.get("Pitch ID")
-        self.dynamics = self._track_metadata.get("Dynamics")
-        self.dynamics_id = self._track_metadata.get("Dynamics ID")
-        self.instance_id = self._track_metadata.get("Instance ID")
-        self.string_id = self._track_metadata.get("String ID")
-        self.is_resampled = self._track_metadata.get("Resampled")
+    @property
+    def family(self):
+        return self._track_metadata.get("Family")
+
+    @property
+    def instrument_abbr(self):
+        return self._track_metadata.get("Instrument (abbr.)")
+
+    @property
+    def instrument_full(self):
+        return self._track_metadata.get("Instrument (in full)")
+
+    @property
+    def technique_abbr(self):
+        return self._track_metadata.get("Technique (abbr.)")
+
+    @property
+    def technique_full(self):
+        return self._track_metadata.get("Technique (in full)")
+
+    @property
+    def pitch(self):
+        return self._track_metadata.get("Pitch")
+
+    @property
+    def pitch_id(self):
+        return self._track_metadata.get("Pitch ID")
+
+    @property
+    def dynamics(self):
+        return self._track_metadata.get("Dynamics")
+
+    @property
+    def dynamics_id(self):
+        return self._track_metadata.get("Dynamics ID")
+
+    @property
+    def instance_id(self):
+        return self._track_metadata.get("Instance ID")
+
+    @property
+    def string_id(self):
+        return self._track_metadata.get("String ID")
+
+    @property
+    def is_resampled(self):
+        return self._track_metadata.get("Resampled")
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
