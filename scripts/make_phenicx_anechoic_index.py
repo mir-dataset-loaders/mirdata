@@ -27,24 +27,6 @@ def md5(file_path):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
-# 'version': 1,
-#   'tracks': {
-#      "beethoven-bassoon": {
-#           'audio_bassoon1': (path, checksum),
-#           'audio_bassoon2': (path, checksum),
-#           'notes': (path, checksum)
-#      }
-#      "mahler-bassoon" : {...}
-#      ...
-#   },
-#   'multitracks': {
-#     "beethoven": {
-#          'tracks': ['beethoven-bassoon', 'beethoven-clarinet', ...],
-#          'audio': ('beethoven/mix/path', checksum)
-#      }
-#     "mahler": ...
-#   },
-
 
 def make_dataset_index(data_path):
 
@@ -64,6 +46,7 @@ def make_dataset_index(data_path):
     totalinstruments = [20, 39, 30, 10]
     ninstruments = [10, 10, 10, 8]
     index = {'version':1}
+
     index['tracks'] = {}
     index['multitracks'] = {}
 
@@ -78,7 +61,7 @@ def make_dataset_index(data_path):
             for audio_path in audio_files
         ]
         set_instruments = list(set(instruments))
-        #import pdb;pdb.set_trace()
+
         assert (
             len(instruments) == totalinstruments[ip]
         ), 'audio files for some instruments are missing'
@@ -96,6 +79,7 @@ def make_dataset_index(data_path):
             index['tracks'][piece+'-'+instrument] = {}
             index['multitracks'][piece]['tracks'].append(piece+'-'+instrument)
 
+
             #### add audios
             instrument_audio_files = sorted(
                 glob.glob(os.path.join(data_path, 'audio', piece, instrument + '*.wav'))
@@ -111,7 +95,9 @@ def make_dataset_index(data_path):
                     )
                 )
                 source = os.path.basename(audio_file).replace('.wav', '')
+
                 index['tracks'][piece+'-'+instrument]['audio_'+source] = (
+
                     'audio/{}/{}'.format(piece, os.path.basename(audio_file)),
                     audio_checksum,
                 )
@@ -148,6 +134,7 @@ def make_dataset_index(data_path):
                 score_checksum,
             )
             index['tracks'][piece+'-'+instrument]['notes_original'] = (
+
                 'annotations/{}/{}_o.txt'.format(piece, instrument),
                 score_original_checksum,
             )

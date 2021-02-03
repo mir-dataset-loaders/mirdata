@@ -103,20 +103,6 @@ DATASET_SECTIONS = {
 class Track(core.Track):
     """Phenicx-Anechoic Track class
 
-    Args:
-        track_id (str): track id of the track
-
-    Attributes:
-        audio_path (list(str)): path to the audio files
-        notes_path (list(str)): path to the audio files
-        notes_original_path (list(str)): path to the audio files
-        instrument (str): the name of the instrument
-        piece (str): the name of the piece
-        n_voices (int): the number of voices in this instrument
-        track_id (str): track id
-
-    Cached Properties:
-        melody (F0Data): melody annotation
 
     """
 
@@ -136,14 +122,13 @@ class Track(core.Track):
             metadata,
         )
 
-        self.instrument = self.track_id.split('-')[1]
-        self.piece = self.track_id.split('-')[0]
+        self.instrument = self.track_id.split('-')[-1]
 
         self.audio_paths = [os.path.join(
             self._data_home, self._track_paths[key][0]
         ) for key in self._track_paths if 'audio_' in key]
 
-        self.n_voices = len(self.audio_paths)
+        self.n_instruments = len(self.audio_paths)
 
         self.notes_path = os.path.join(
             self._data_home, self._track_paths['notes'][0]
@@ -163,12 +148,12 @@ class Track(core.Track):
 
         """
         audio_mix,sr = load_audio(self.audio_paths[0])
-        for i in range(1,self.n_voices):
+        for i in range(1,self.n_instruments):
             audio,_ = load_audio(self.audio_paths[i])
             audio_mix += audio
         return audio_mix,sr
 
-    def get_audio_voice(self,id_voice) -> Optional[Tuple[np.ndarray, float]]:
+    def get_audio(self,id_instrument) -> Optional[Tuple[np.ndarray, float]]:
         """the track's audio (mono)
 
         Returns:
@@ -176,7 +161,7 @@ class Track(core.Track):
             * float - The sample rate of the audio file
 
         """
-        return load_audio(self.audio_paths[id_voice])
+        return load_audio(self.audio_paths[id_instrument])
 
     def to_jams(self):
         """Get the track's data in jams format
