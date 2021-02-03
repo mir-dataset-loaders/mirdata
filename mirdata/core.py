@@ -91,6 +91,7 @@ class Dataset(object):
         remotes (dict or None): data to be downloaded
         readme (str): information about the dataset
         track (function): a function mapping a track_id to a mirdata.core.Track
+        multitrack (function): a function mapping a mtrack_id to a mirdata.core.Multitrack
 
     """
 
@@ -99,6 +100,7 @@ class Dataset(object):
         data_home=None,
         name=None,
         track_class=None,
+        multitrack_class=None,
         bibtex=None,
         remotes=None,
         download_info=None,
@@ -111,6 +113,7 @@ class Dataset(object):
             data_home (str or None): path where mirdata will look for the dataset
             name (str or None): the identifier of the dataset
             track_class (mirdata.core.Track or None): a Track class
+            multitrack_class (mirdata.core.Multitrack or None): a Multitrack class
             bibtex (str or None): dataset citation/s in bibtex format
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
@@ -131,6 +134,7 @@ class Dataset(object):
             )
             self.remote_index = False
         self._track_class = track_class
+        self._multitrack_class = multitrack_class
         self.bibtex = bibtex
         self.remotes = remotes
         self._download_info = download_info
@@ -141,7 +145,7 @@ class Dataset(object):
         self.track = lambda track_id: self._track(track_id)
         self.track.__doc__ = self._track_class.__doc__  # set the docstring
         self.multitrack = lambda mtrack_id: self._multitrack(mtrack_id)
-        self.multitrack.__doc__ = self._multitrack_object.__doc__  # set the docstring
+        self.multitrack.__doc__ = self._multitrack_class.__doc__  # set the docstring
 
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
@@ -152,6 +156,10 @@ class Dataset(object):
         repr_string += "\n\n\n"
         if self._track_class is not None:
             repr_string += self.track.__doc__
+            repr_string += "-" * MAX_STR_LEN
+            repr_string += "\n"
+        if self._multitrack_class is not None:
+            repr_string += self.multitrack.__doc__
             repr_string += "-" * MAX_STR_LEN
             repr_string += "\n"
 
@@ -207,16 +215,26 @@ class Dataset(object):
 
     def _multitrack(self, mtrack_id):
         """Load a multitrack by mtrack_id.
+
         Hidden helper function that gets called as a lambda.
+
         Args:
             mtrack_id (str): mtrack id of the multitrack
+
         Returns:
-            multitrack (dataset.MultiTrack): an instance of this dataset's MultiTrack object
+            MultiTrack: an instance of this dataset's MultiTrack object
+
         """
-        if self._multitrack_object is None:
+        if self._multitrack_class is None:
             raise NotImplementedError
         else:
-            return self._multitrack_object(mtrack_id, self.data_home)
+            return self._multitrack_class(
+                mtrack_id,
+                self.data_home,
+                self.name,
+                self._index,
+                lambda: self._metadata,
+            )
 
     def load_tracks(self):
         """Load all tracks in the dataset
@@ -453,13 +471,16 @@ class MultiTrack(Track):
 
         self._data_home = data_home
         self._multitrack_paths = index["multitracks"][mtrack_id]
+        self._multitrack_metadata = multitrack_metadata
 
+
+    @property
+    def _multitrack_metadata(self):
         if metadata and mtrack_id in metadata:
-            self._multitrack_metadata = metadata[mtrack_id]
+            return metadata[mtrack_id]
         elif metadata:
-            self._multitrack_metadata = metadata
-        else:
-            self._multitrack_metadata = None
+            return metadata
+        return None
 
     def _check_mixable(self):
         if not hasattr(self, "tracks") or not hasattr(self, "track_audio_property"):
