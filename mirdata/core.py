@@ -271,6 +271,15 @@ class Dataset(object):
         """
         return self.track(random.choice(self.track_ids))
 
+    def choice_multitrack(self):
+        """Choose a random multitrack
+
+        Returns:
+            Multitrack: a Multitrack object instantiated by a random mtrack_id
+
+        """
+        return self.multitrack(random.choice(self.mtrack_ids))
+
     def cite(self):
         """
         Print the reference
