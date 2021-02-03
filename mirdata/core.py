@@ -140,6 +140,8 @@ class Dataset(object):
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
         self.track.__doc__ = self._track_class.__doc__  # set the docstring
+        self.multitrack = lambda mtrack_id: self._multitrack(mtrack_id)
+        self.multitrack.__doc__ = self._multitrack_object.__doc__  # set the docstring
 
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
@@ -203,6 +205,19 @@ class Dataset(object):
                 lambda: self._metadata,
             )
 
+    def _multitrack(self, mtrack_id):
+        """Load a multitrack by mtrack_id.
+        Hidden helper function that gets called as a lambda.
+        Args:
+            mtrack_id (str): mtrack id of the multitrack
+        Returns:
+            multitrack (dataset.MultiTrack): an instance of this dataset's MultiTrack object
+        """
+        if self._multitrack_object is None:
+            raise NotImplementedError
+        else:
+            return self._multitrack_object(mtrack_id, self.data_home)
+
     def load_tracks(self):
         """Load all tracks in the dataset
 
@@ -215,6 +230,19 @@ class Dataset(object):
 
         """
         return {track_id: self.track(track_id) for track_id in self.track_ids}
+
+    def load_multitracks(self):
+        """Load all multitracks in the dataset
+
+        Returns:
+            dict:
+                {`mtrack_id`: multitrack data}
+
+        Raises:
+            NotImplementedError: If the dataset does not support Multitracks
+
+        """
+        return {mtrack_id: self.multitrack(mtrack_id) for mtrack_id in self.mtrack_ids}
 
     def choice_track(self):
         """Choose a random track
@@ -390,6 +418,48 @@ class MultiTrack(Track):
     a mastered mix), its own metadata and its own annotations.
 
     """
+
+    def __init__(
+        self,
+        mtrack_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata=None,
+    ):
+        """Multitrack init method. Sets boilerplate attributes, including:
+
+        - ``mtrack_id``
+        - ``_dataset_name``
+        - ``_data_home``
+        - ``_multitrack_paths``
+        - ``_multitrack_metadata``
+
+        Args:
+            mtrack_id (str): multitrack id
+            data_home (str): path where mirdata will look for the dataset
+            dataset_name (str): the identifier of the dataset
+            index (dict): the dataset's file index
+            metadata (dict or None): a dictionary of metadata or None
+
+        """
+        if mtrack_id not in index["multitracks"]:
+            raise ValueError(
+                "{} is not a valid mtrack_id in {}".format(mtrack_id, dataset_name)
+            )
+
+        self.mtrack_id = mtrack_id
+        self._dataset_name = dataset_name
+
+        self._data_home = data_home
+        self._multitrack_paths = index["multitracks"][mtrack_id]
+
+        if metadata and mtrack_id in metadata:
+            self._multitrack_metadata = metadata[mtrack_id]
+        elif metadata:
+            self._multitrack_metadata = metadata
+        else:
+            self._multitrack_metadata = None
 
     def _check_mixable(self):
         if not hasattr(self, "tracks") or not hasattr(self, "track_audio_property"):
