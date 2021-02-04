@@ -34,7 +34,7 @@ def jams_converter(
             the audio file will be read to compute the duration. If None,
             'duration' must be a field in the metadata dictionary, or the
             resulting jam object will not validate.
-        spectrum_cante100_path (str or None):
+        spectrogram_path (str or None):
             A path to the corresponding spectrum file, or None.
         beat_data (list or None):
             A list of tuples of (annotations.BeatData, str), where str describes

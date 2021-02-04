@@ -44,6 +44,14 @@ cante100
    :inherited-members:
 
 
+compmusic_otmm_makam
+^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_otmm_makam
+   :members:
+   :inherited-members:
+
+
 dali
 ^^^^
 
