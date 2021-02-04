@@ -465,7 +465,7 @@ def load_tags(path):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The acousticbrainz genre dataset
+    The da_tacos genre dataset
     """
 
     def __init__(self, data_home=None):
@@ -544,10 +544,10 @@ class Dataset(core.Dataset):
              dict: {`track_id`: track data}
 
         """
-        acousticbrainz_genre_data = {
+        data = {
             k: v for k, v in self._index["tracks"].items() if search_key in k
         }
-        return acousticbrainz_genre_data
+        return data
 
     def benchmark_tracks(self):
         """Load from da_tacos dataset the benchmark subset tracks.
