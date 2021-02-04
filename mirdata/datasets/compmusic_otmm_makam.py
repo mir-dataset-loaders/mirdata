@@ -75,6 +75,10 @@ class Track(core.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
+        pitch_path (str): local path where the pitch annotation is stored
+        mb_tags_path (str): local path where the MusicBrainz tags annotation is stored
+
+    Properties:
         makam (str): string referring to the makam represented in the track
         tonic (float): tonic annotation
         mbid (str): MusicBrainz ID of the track
