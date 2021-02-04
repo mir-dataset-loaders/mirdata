@@ -105,7 +105,10 @@ class Track(core.Track):
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.song_id = track_id.split("_")[0]
         self.section = track_id.split("_")[1]
-        self.singer_id = self._track_metadata.get(self.song_id)
+
+    @property
+    def singer_id(self):
+        return self._track_metadata.get(self.song_id)
 
     @core.cached_property
     def f0(self) -> Optional[annotations.F0Data]:

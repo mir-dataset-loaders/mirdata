@@ -37,6 +37,7 @@ def test_track():
         "beats": annotations.BeatData,
         "drum_events": annotations.EventData,
         "midi": pretty_midi.PrettyMIDI,
+        "audio": tuple,
     }
 
     assert track._track_paths == {

@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from mirdata import jams_utils, download_utils, core
+from mirdata import download_utils
 from mirdata.datasets import acousticbrainz_genre
 from tests.test_utils import run_track_tests
 
@@ -23,15 +23,16 @@ def test_track():
     }
 
     expected_property_types = {
-        "artist": str,
-        "title": str,
-        "date": str,
+        "artist": list,
+        "title": list,
+        "date": list,
         "file_name": str,
-        "album": str,
-        "tracknumber": str,
+        "album": list,
+        "tracknumber": list,
         "tonal": dict,
         "low_level": dict,
         "rhythm": dict,
+        "acousticbrainz_metadata": dict,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

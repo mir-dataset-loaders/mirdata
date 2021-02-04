@@ -33,6 +33,7 @@ def test_track():
         "melody1": annotations.F0Data,
         "melody2": annotations.F0Data,
         "melody3": annotations.MultiF0Data,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

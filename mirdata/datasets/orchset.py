@@ -103,19 +103,50 @@ class Track(core.Track):
         self.audio_path_stereo = os.path.join(
             self._data_home, self._track_paths["audio_stereo"][0]
         )
-        self.composer = self._track_metadata.get("composer")
-        self.work = self._track_metadata.get("work")
-        self.excerpt = self._track_metadata.get("excerpt")
-        self.predominant_melodic_instruments = self._track_metadata.get(
-            "predominant_melodic_instruments-normalized"
-        )
-        self.alternating_melody = self._track_metadata.get("alternating_melody")
-        self.contains_winds = self._track_metadata.get("contains_winds")
-        self.contains_strings = self._track_metadata.get("contains_strings")
-        self.contains_brass = self._track_metadata.get("contains_brass")
-        self.only_strings = self._track_metadata.get("only_strings")
-        self.only_winds = self._track_metadata.get("only_winds")
-        self.only_brass = self._track_metadata.get("only_brass")
+
+    @property
+    def composer(self):
+        return self._track_metadata.get("composer")
+
+    @property
+    def work(self):
+        return self._track_metadata.get("work")
+
+    @property
+    def excerpt(self):
+        return self._track_metadata.get("excerpt")
+
+    @property
+    def predominant_melodic_instruments(self):
+        return self._track_metadata.get("predominant_melodic_instruments-normalized")
+
+    @property
+    def alternating_melody(self):
+        return self._track_metadata.get("alternating_melody")
+
+    @property
+    def contains_winds(self):
+        return self._track_metadata.get("contains_winds")
+
+    @property
+    def contains_strings(self):
+        return self._track_metadata.get("contains_strings")
+
+    @property
+    def contains_brass(self):
+        return self._track_metadata.get("contains_brass")
+
+    @property
+    def only_strings(self):
+        return self._track_metadata.get("only_strings")
+
+    @property
+    def only_winds(self):
+        return self._track_metadata.get("only_winds")
+
+    @property
+    def only_brass(self):
+        return self._track_metadata.get("only_brass")
 
     @core.cached_property
     def melody(self) -> Optional[annotations.F0Data]:

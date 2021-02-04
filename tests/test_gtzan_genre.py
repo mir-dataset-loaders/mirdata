@@ -17,7 +17,8 @@ def test_track():
         + "gtzan_genre/genres/country/country.00000.wav",
         "track_id": "country.00000",
     }
-    run_track_tests(track, expected_attributes, {})
+    expected_properties = {"audio": tuple}
+    run_track_tests(track, expected_attributes, expected_properties)
 
     audio, sr = track.audio
     assert sr == 22050
