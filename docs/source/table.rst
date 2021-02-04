@@ -36,7 +36,6 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
-
    * - cante100
      - - audio: 🔑
        - annotations: ✅
@@ -44,6 +43,18 @@
      - 100
      - :cante:`\ `
 
+   * - .. line-block::
+
+        (CompMusic)
+        OTMM Makam
+
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`tonic`
+     - 1000
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - DALI
      - - audio: 📺
@@ -109,7 +120,6 @@
      - 252
      - :ikala:`\ `
 
-
    * - IRMAS
      - - audio: ✅
        - annotations: ✅
@@ -168,17 +178,6 @@
      - 64
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
-
-
-   * - OTMM Makam (CompMusic)
-     - - audio: ✅
-       - annotations: ✅
-     - - :ref:`f0`
-       - :ref:`tonic`
-     - 1000
-     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
-          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
-
 
    * - RWC classical
      - - audio: ❌

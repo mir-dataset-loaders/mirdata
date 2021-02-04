@@ -1,8 +1,0 @@
-*.mp3
-*.wav
-*DS_Store
-*.pyc
-*.mediaartlocal*
-.idea
-.ipynb_checkpoints
-experiments

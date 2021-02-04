@@ -30,17 +30,13 @@
     It can be used and optimized for any modal music culture. Further details are explained in the publication above.
 """
 
-import numpy as np
-import os
-import json
 import csv
+import json
+import os
 from typing import TextIO
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+import numpy as np
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 BIBTEX = """
 @software{sertan_senturk_2016_58413,
@@ -62,15 +58,12 @@ REMOTES = {
         filename="otmm_makam_recognition_dataset-dlfm2016.zip",
         url="https://zenodo.org/record/58413/files/otmm_makam_recognition_dataset-dlfm2016.zip?download=1",
         checksum="c2b9c8bdcbdcf15745b245adfc793145",
-        destination_dir=None,
     )
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"
 )
-
-DATA = core.LargeData("otmm_makam_index.json")
 
 
 class Track(core.Track):
@@ -152,8 +145,7 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
     """Load pitch
 
     Args:
-        pitch path (str): Local path where the pitch annotation is stored.
-            If `None`, returns None.
+        fhandle (str or file-like): path or file-like object pointing to a pitch annotation file
 
     Returns:
         F0Data: pitch annotation
@@ -174,8 +166,7 @@ def load_mb_tags(fhandle: TextIO) -> dict:
     """Load track metadata
 
     Args:
-        track metadata path (str): Local path where the metadata of the track is stored.
-            If `None`, returns None.
+        fhandle (str or file-like): path or file-like object pointing to musicbrainz metadata file
 
     Returns:
         Dict: metadata of the track
@@ -194,7 +185,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="compmusic_otmm_makam",
             track_class=Track,
             bibtex=BIBTEX,
