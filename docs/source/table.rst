@@ -56,7 +56,7 @@
     * - Da-tacos
      - - chromagrams (crema, hpcp, cens)
        - madmom features
-       - automatic extracted keys
+       - automatically extracted keys
        - MFCC
        - annotations: ✅
      - - :ref:`lyrics`
