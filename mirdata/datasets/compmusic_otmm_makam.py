@@ -108,10 +108,17 @@ class Track(core.Track):
             [self._data_home, self._track_paths["metadata"][0]]
         )
 
-        # Get attributes
-        self.tonic = self._track_metadata.get("tonic")
-        self.makam = self._track_metadata.get("makam")
-        self.mbid = self._track_metadata.get("mbid")
+    @property
+    def tonic(self):
+        return self._track_metadata.get("tonic")
+
+    @property
+    def makam(self):
+        return self._track_metadata.get("makam")
+
+    @property
+    def mbid(self):
+        return self._track_metadata.get("mbid")
 
     @core.cached_property
     def pitch(self):
