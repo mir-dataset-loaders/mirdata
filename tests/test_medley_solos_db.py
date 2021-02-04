@@ -18,7 +18,7 @@ def test_track():
         "subset": "validation",
     }
 
-    expected_property_types = {}
+    expected_property_types = {"audio": tuple}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 

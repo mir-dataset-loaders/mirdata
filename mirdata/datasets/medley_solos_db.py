@@ -63,9 +63,6 @@ REMOTES = {
 LICENSE_INFO = "Creative Commons Attribution 4.0 International."
 
 
-DATA = core.LargeData("medley_solos_db_index.json")
-
-
 class Track(core.Track):
     """medley_solos_db Track class
 
@@ -99,10 +96,22 @@ class Track(core.Track):
         )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.instrument = self._track_metadata.get("instrument")
-        self.instrument_id = self._track_metadata.get("instrument_id")
-        self.song_id = self._track_metadata.get("song_id")
-        self.subset = self._track_metadata.get("subset")
+
+    @property
+    def instrument(self):
+        return self._track_metadata.get("instrument")
+
+    @property
+    def instrument_id(self):
+        return self._track_metadata.get("instrument_id")
+
+    @property
+    def song_id(self):
+        return self._track_metadata.get("song_id")
+
+    @property
+    def subset(self):
+        return self._track_metadata.get("subset")
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -151,7 +160,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="medley_solos_db",
             track_class=Track,
             bibtex=BIBTEX,

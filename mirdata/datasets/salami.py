@@ -41,7 +41,6 @@ REMOTES = {
         filename="salami-data-public-hierarchy-corrections.zip",
         url="https://github.com/bmcfee/salami-data-public/archive/hierarchy-corrections.zip",
         checksum="194add2601c09a7279a7433288de81fd",
-        destination_dir=None,
     )
 }
 DOWNLOAD_INFO = """
@@ -60,9 +59,6 @@ the public domain. More information about this dedication and your rights, pleas
 details here: http://creativecommons.org/publicdomain/zero/1.0/ and
 http://creativecommons.org/publicdomain/zero/1.0/legalcode.
 """
-
-
-DATA = core.LargeData("salami_index.json")
 
 
 class Track(core.Track):
@@ -124,16 +120,46 @@ class Track(core.Track):
         )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.source = self._track_metadata.get("source")
-        self.annotator_1_id = self._track_metadata.get("annotator_1_id")
-        self.annotator_2_id = self._track_metadata.get("annotator_2_id")
-        self.duration = self._track_metadata.get("duration")
-        self.title = self._track_metadata.get("title")
-        self.artist = self._track_metadata.get("artist")
-        self.annotator_1_time = self._track_metadata.get("annotator_1_time")
-        self.annotator_2_time = self._track_metadata.get("annotator_2_time")
-        self.broad_genre = self._track_metadata.get("class")
-        self.genre = self._track_metadata.get("genre")
+
+    @property
+    def source(self):
+        return self._track_metadata.get("source")
+
+    @property
+    def annotator_1_id(self):
+        return self._track_metadata.get("annotator_1_id")
+
+    @property
+    def annotator_2_id(self):
+        return self._track_metadata.get("annotator_2_id")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def annotator_1_time(self):
+        return self._track_metadata.get("annotator_1_time")
+
+    @property
+    def annotator_2_time(self):
+        return self._track_metadata.get("annotator_2_time")
+
+    @property
+    def broad_genre(self):
+        return self._track_metadata.get("class")
+
+    @property
+    def genre(self):
+        return self._track_metadata.get("genre")
 
     @core.cached_property
     def sections_annotator_1_uppercase(self) -> Optional[annotations.SectionData]:
@@ -222,8 +248,8 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     for line in reader:
         times.append(float(line[0]))
         secs.append(line[1])
-    times = np.array(times)
-    secs = np.array(secs)
+    times = np.array(times)  # type: ignore
+    secs = np.array(secs)  # type: ignore
 
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
@@ -242,7 +268,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="salami",
             track_class=Track,
             bibtex=BIBTEX,

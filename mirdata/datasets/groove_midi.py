@@ -75,7 +75,7 @@ REMOTES = {
         filename="groove-v1-0.0.zip",
         url="http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip",
         checksum="99db7e2a087761a913b2abfb19e86181",
-        destination_dir=None,
+        unpack_directories=["groove"],
     )
 }
 
@@ -191,9 +191,6 @@ DRUM_MAPPING = {
 }
 
 
-DATA = core.LargeData("groove_midi_index.json")
-
-
 class Track(core.Track):
     """Groove MIDI Track class
 
@@ -237,22 +234,51 @@ class Track(core.Track):
             metadata,
         )
 
-        self.drummer = self._track_metadata.get("drummer")
-        self.session = self._track_metadata.get("session")
-        self.style = self._track_metadata.get("style")
-        self.tempo = self._track_metadata.get("tempo")
-        self.beat_type = self._track_metadata.get("beat_type")
-        self.time_signature = self._track_metadata.get("time_signature")
-        self.duration = self._track_metadata.get("duration")
-        self.split = self._track_metadata.get("split")
-        self.midi_filename = self._track_metadata.get("midi_filename")
-        self.audio_filename = self._track_metadata.get("audio_filename")
-
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
         self.audio_path = core.none_path_join(
             [self._data_home, self._track_paths["audio"][0]]
         )
+
+    @property
+    def drummer(self):
+        return self._track_metadata.get("drummer")
+
+    @property
+    def session(self):
+        return self._track_metadata.get("session")
+
+    @property
+    def style(self):
+        return self._track_metadata.get("style")
+
+    @property
+    def tempo(self):
+        return self._track_metadata.get("tempo")
+
+    @property
+    def beat_type(self):
+        return self._track_metadata.get("beat_type")
+
+    @property
+    def time_signature(self):
+        return self._track_metadata.get("time_signature")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def split(self):
+        return self._track_metadata.get("split")
+
+    @property
+    def midi_filename(self):
+        return self._track_metadata.get("midi_filename")
+
+    @property
+    def audio_filename(self):
+        return self._track_metadata.get("audio_filename")
 
     @property
     def audio(self) -> Tuple[Optional[np.ndarray], Optional[float]]:
@@ -378,7 +404,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="groove_midi",
             track_class=Track,
             bibtex=BIBTEX,
@@ -442,55 +467,3 @@ class Dataset(core.Dataset):
                 }
 
         return metadata_index
-
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        download_utils.downloader(
-            self.data_home,
-            partial_download=partial_download,
-            remotes=self.remotes,
-            info_message=None,
-            force_overwrite=force_overwrite,
-            cleanup=cleanup,
-        )
-
-        # files get downloaded to a folder called groove - move everything up a level
-        groove_dir = os.path.join(self.data_home, "groove")
-        if not os.path.exists(groove_dir):
-            logging.info(
-                "Groove MIDI data not downloaded, because it probably already exists on your computer. "
-                + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
-                + "existing files and download from scratch"
-            )
-            return
-
-        groove_files = glob.glob(os.path.join(groove_dir, "*"))
-
-        for fpath in groove_files:
-            target_path = os.path.join(self.data_home, os.path.basename(fpath))
-            if os.path.exists(target_path):
-                logging.info(
-                    "{} already exists. Run with force_overwrite=True to download from scratch".format(
-                        target_path
-                    )
-                )
-                continue
-            shutil.move(fpath, self.data_home)
-
-        if os.path.exists(groove_dir):
-            shutil.rmtree(groove_dir)

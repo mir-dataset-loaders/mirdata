@@ -62,16 +62,12 @@ REMOTES = {
         filename="saraga1.5_hindustani.zip",
         url="https://zenodo.org/record/4301737/files/saraga1.5_hindustani.zip?download=1",
         checksum="ea9ed2885ea37a1b10e42f60cf299702",
-        destination_dir=None,
     )
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
-
-
-DATA = core.LargeData("saraga_hindustani_index.json")
 
 
 class Track(core.Track):
@@ -510,7 +506,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="saraga_hindustani",
             track_class=Track,
             bibtex=BIBTEX,

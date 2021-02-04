@@ -177,8 +177,64 @@ multitracks
 
 .. admonition:: Index Examples - Multitracks
     :class: dropdown, warning
+    
+ If the version `1.0` of a given multitrack dataset has the structure:
 
-    Coming soon
+    .. code-block:: javascript
+
+        > Example_Dataset/
+            > audio/
+                multitrack1-voice1.wav
+                multitrack1-voice2.wav
+                multitrack1-accompaniment.wav
+                multitrack1-mix.wav
+                multitrack2-voice1.wav
+                multitrack2-voice2.wav
+                multitrack2-accompaniment.wav
+                multitrack2-mix.wav
+            > annotations/
+                multitrack1-voice-f0.csv
+                multitrack2-voice-f0.csv
+                multitrack1-f0.csv
+                multitrack2-f0.csv
+            > metadata/
+                metadata_file.csv
+
+    The top level directory is ``Example_Dataset`` and the relative path for ``multitrack1-voice1``
+    would be ``audio/multitrack1-voice1.wav``. Any unavailable fields are indicated with `null`. A possible index file for this example would be:
+    
+.. code-block:: javascript
+
+{ "version": 1,
+  "tracks": {
+     "multitrack1-voice": {
+          "audio_voice1": ('audio/multitrack1-voice1.wav', checksum), 
+          "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),  
+          "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum)
+     }
+     "multitrack1-accompaniment": {
+          "audio_accompaniment": ('audio/multitrack1-accompaniment.wav', checksum)
+     }
+     "multitrack2-voice" : {...}
+     ...
+  },
+  "multitracks": {
+    "multitrack1": {
+         "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],    
+         "audio": ('audio/multitrack1-mix.wav', checksum)
+         "f0": ('annotations/multitrack1-f0.csv', checksum)
+     }
+    "multitrack2": ...
+  },
+  "metadata": {
+    "metadata_file": [
+        "metadata/metadata_file.csv",
+        "7a41b280c7b74e2ddac5184708f9525b"
+        ]
+  }
+}
+  
+Note that in this examples we group ``audio_voice1`` and ``audio_voice2`` in a single Track because the annotation ``voice-f0`` annotation corresponds to their mixture. In contrast, the annotation ``voice-f0`` is extracted from the multitrack mix and it is stored in the ``multitracks`` group. The multitrack ``multitrack1`` has an additional track ``multitrack1-mix.wav`` which may be the master track, the final mix, the recording of ``multitrack1`` with another microphone. 
 
 records
 ^^^^^^^
@@ -310,27 +366,20 @@ Working with remote indexes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the end-user there is no difference between the remote and local indexes. However, indexes can get large when there are a lot of tracks
-in the dataset. In these cases, storing and accessing an index remotely can be convenient.
-
-However, to contribute to the library using remote indexes you have to add in ``utils.LargeData(...)`` the remote_index argument with a
-``download_utils.RemoteFileMetadata`` dictionary with the remote index information.
+in the dataset. In these cases, storing and accessing an index remotely can be convenient. Large indexes can be added to REMOTES, 
+and will be downloaded with the rest of the dataset. For example:
 
 .. code-block:: python
 
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+    "index": download_utils.RemoteFileMetadata(
+        filename="acousticbrainz_genre_index.json.zip",
+        url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
+        checksum="810f1c003f53cbe58002ba96e6d4d138",
+    )
 
 
-.. code-block:: python
-
-    REMOTE_INDEX = {
-        "REMOTE_INDEX": download_utils.RemoteFileMetadata(
-            filename="acousticbrainz_genre_index.json.zip",
-            url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
-            checksum="810f1c003f53cbe58002ba96e6d4d138",
-            destination_dir="",
-        )
-    }
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+Unlike local indexes, the remote indexes will live in the ``data_home`` directory. When creating the ``Dataset``
+object, specify the ``custom_index_path`` to where the index will be downloaded (as a relative path to ``data_home``).
 
 
 .. _reducing_test_space:
