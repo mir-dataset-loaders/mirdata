@@ -169,6 +169,12 @@ REMOTES = {
         checksum="8beb1d8fa39f95b79d5f502a41fd5f0c",
         destination_dir=".",
     ),
+    "benchmark_mfcc": download_utils.RemoteFileMetadata(
+        filename="da-tacos_benchmark_subset_mfcc.zip",
+        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_mfcc.zip?download=1",
+        checksum="a3be0cd80754043a8c238cf501062789",
+        destination_dir=".",
+    ),
     "coveranalysis_tags": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_tags.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_tags.zip?download=1",
