@@ -331,6 +331,17 @@ class Dataset(object):
         """
         return list(self._index["tracks"].keys())
 
+    @cached_property
+    def mtrack_ids(self):
+        """Return track ids
+
+        Returns:
+            list: A list of track ids
+
+        """
+        return list(self._index["multitracks"].keys())
+
+
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version
 
@@ -484,10 +495,12 @@ class MultiTrack(Track):
 
         self._index = index
         self.track_ids = self._index["multitracks"][self.mtrack_id]["tracks"]
+        #self.mtrack_ids = self._index["multitracks"].keys()
+
 
     @property
     def tracks(self):
-        return {t: Track(t, self.data_home, self.dataset_name, self._index, self._metadata) for t in self.track_ids}
+        return {t: Track(t, self._data_home, self._dataset_name, self._index, self._metadata) for t in self.track_ids}
 
     @property
     def track_audio_property(self):
