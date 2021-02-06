@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 from mirdata.datasets import salami
 from mirdata import annotations
@@ -41,6 +39,7 @@ def test_track():
         "sections_annotator_1_lowercase": annotations.SectionData,
         "sections_annotator_2_uppercase": annotations.SectionData,
         "sections_annotator_2_lowercase": annotations.SectionData,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

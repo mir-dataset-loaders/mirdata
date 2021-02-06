@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 
 from mirdata.datasets import rwc_popular
@@ -43,6 +41,7 @@ def test_track():
         "sections": annotations.SectionData,
         "chords": annotations.ChordData,
         "vocal_instrument_activity": annotations.EventData,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

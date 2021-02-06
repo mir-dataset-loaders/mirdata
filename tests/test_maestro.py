@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 import shutil
 import pretty_midi
@@ -34,6 +33,7 @@ def test_track():
     expected_property_types = {
         "notes": annotations.NoteData,
         "midi": pretty_midi.PrettyMIDI,
+        "audio": tuple,
     }
 
     assert track._track_paths == {
@@ -107,19 +107,18 @@ def test_download_partial(httpserver):
             filename="1-maestro-v2.0.0.json",
             url=httpserver.url,
             checksum=("d41d8cd98f00b204e9800998ecf8427e"),
-            destination_dir=None,
+            unpack_directories=["maestro-v2.0.0"],
         ),
         "midi": download_utils.RemoteFileMetadata(
             filename="2-maestro-v2.0.0.json",
             url=httpserver.url,
             checksum=("d41d8cd98f00b204e9800998ecf8427e"),
-            destination_dir=None,
+            unpack_directories=["maestro-v2.0.0"],
         ),
         "metadata": download_utils.RemoteFileMetadata(
             filename="3-maestro-v2.0.0.json",
             url=httpserver.url,
             checksum=("d41d8cd98f00b204e9800998ecf8427e"),
-            destination_dir="maestro-v2.0.0",
         ),
     }
     dataset = maestro.Dataset(data_home)
@@ -166,7 +165,7 @@ def test_download(httpserver):
             filename="maestro-v2.0.0.zip",
             url=httpserver.url,
             checksum=("625180ffa41cd9f2ab7252dd954b9e8a"),
-            destination_dir=None,
+            unpack_directories=["maestro-v2.0.0"],
         )
     }
     dataset = maestro.Dataset(data_home)
@@ -227,7 +226,7 @@ def test_download(httpserver):
             filename="maestro-v2.0.0-midi.zip",
             url=httpserver.url,
             checksum=("c82283fff347ed2bd833693c09a9f01d"),
-            destination_dir=None,
+            unpack_directories=["maestro-v2.0.0"],
         )
     }
     dataset.remotes = remotes
@@ -266,7 +265,6 @@ def test_download(httpserver):
             filename="maestro-v2.0.0.json",
             url=httpserver.url,
             checksum=("d41d8cd98f00b204e9800998ecf8427e"),
-            destination_dir=None,
         )
     }
     dataset.remotes = remotes

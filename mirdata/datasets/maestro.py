@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """MAESTRO Dataset Loader
 
 .. admonition:: Dataset Info
@@ -64,28 +63,24 @@ REMOTES = {
         filename="maestro-v2.0.0.zip",
         url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.zip",
         checksum="7a6c23536ebcf3f50b1f00ac253886a7",
-        destination_dir="",
+        unpack_directories=["maestro-v2.0.0"],
     ),
     "midi": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0-midi.zip",
         url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0-midi.zip",
         checksum="8a45cc678a8b23cd7bad048b1e9034c5",
-        destination_dir="",
+        unpack_directories=["maestro-v2.0.0"],
     ),
     "metadata": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0.json",
         url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json",
         checksum="576172af1cdc4efddcf0be7d260d48f7",
-        destination_dir="maestro-v2.0.0",
     ),
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
 )
-
-
-DATA = core.LargeData("maestro_index.json")
 
 
 class Track(core.Track):
@@ -131,11 +126,25 @@ class Track(core.Track):
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
-        self.canonical_composer = self._track_metadata.get("canonical_composer")
-        self.canonical_title = self._track_metadata.get("canonical_title")
-        self.split = self._track_metadata.get("split")
-        self.year = self._track_metadata.get("year")
-        self.duration = self._track_metadata.get("duration")
+    @property
+    def canonical_composer(self):
+        return self._track_metadata.get("canonical_composer")
+
+    @property
+    def canonical_title(self):
+        return self._track_metadata.get("canonical_title")
+
+    @property
+    def split(self):
+        return self._track_metadata.get("split")
+
+    @property
+    def year(self):
+        return self._track_metadata.get("year")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
 
     @core.cached_property
     def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
@@ -235,7 +244,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="maestro",
             track_class=Track,
             bibtex=BIBTEX,
@@ -302,29 +310,3 @@ class Dataset(core.Dataset):
             force_overwrite=force_overwrite,
             cleanup=cleanup,
         )
-
-        # files get downloaded to a folder called maestro-v2.0.0
-        # move everything up a level
-        maestro_dir = os.path.join(self.data_home, "maestro-v2.0.0")
-        if not os.path.exists(maestro_dir):
-            logging.info(
-                "Maestro data not downloaded, because it probably already exists on your computer. "
-                + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
-                + "existing files and download from scratch"
-            )
-            return
-        maestro_files = glob.glob(os.path.join(maestro_dir, "*"))
-
-        for fpath in maestro_files:
-            target_path = os.path.join(self.data_home, os.path.basename(fpath))
-            if os.path.exists(target_path):
-                logging.info(
-                    "{} already exists. Run with force_overwrite=True to download from scratch".format(
-                        target_path
-                    )
-                )
-                continue
-            shutil.move(fpath, self.data_home)
-
-        if os.path.exists(maestro_dir):
-            shutil.rmtree(maestro_dir)

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This script modifies indexes from mirdata <= 0.3.0b0 to support versions, and to check integrity of
 # tracks, multitracks, metadata and tables. The structure of indexes will now be:
 #

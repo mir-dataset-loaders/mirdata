@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import os
 
 from tests.test_utils import run_track_tests
@@ -36,7 +34,10 @@ def test_track():
         "train": True,
     }
 
-    expected_property_test_types = {"instrument": list}
+    expected_property_test_types = {
+        "instrument": list,
+        "audio": tuple,
+    }
 
     run_track_tests(track, expected_attributes, expected_property_test_types)
     run_track_tests(

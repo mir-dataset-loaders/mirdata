@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 cante100 Loader
 
@@ -113,13 +112,11 @@ REMOTES = {
         filename="cante100Meta.xml",
         url="https://zenodo.org/record/1322542/files/cante100Meta.xml?download=1",
         checksum="6cce186ce77a06541cdb9f0a671afb46",  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
     ),
     "README": download_utils.RemoteFileMetadata(
         filename="cante100_README.txt",
         url="https://zenodo.org/record/1322542/files/cante100_README.txt?download=1",
         checksum="184209b7e7d816fa603f0c7f481c0aae",  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
     ),
 }
 
@@ -144,9 +141,6 @@ The provided datasets are offered free of charge for internal non-commercial use
 We do not grant any rights for redistribution or modification. All data collections
 were gathered by the COFLA team. COFLA 2015. All rights reserved.
 """
-
-
-DATA = core.LargeData("cante100_index.json")
 
 
 class Track(core.Track):
@@ -194,11 +188,25 @@ class Track(core.Track):
         self.f0_path = os.path.join(self._data_home, self._track_paths["f0"][0])
         self.notes_path = os.path.join(self._data_home, self._track_paths["notes"][0])
 
-        self.identifier = self._track_metadata.get("musicBrainzID")
-        self.artist = self._track_metadata.get("artist")
-        self.title = self._track_metadata.get("title")
-        self.release = self._track_metadata.get("release")
-        self.duration = self._track_metadata.get("duration")
+    @property
+    def identifier(self):
+        return self._track_metadata.get("musicBrainzID")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def release(self):
+        return self._track_metadata.get("release")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
 
     @property
     def audio(self) -> Tuple[np.ndarray, float]:
@@ -256,7 +264,7 @@ def load_spectrogram(fhandle: TextIO) -> np.ndarray:
 
     """
     parsed_spectrogram = np.genfromtxt(fhandle, delimiter=" ")
-    spectrogram = parsed_spectrogram.astype(np.float)
+    spectrogram = parsed_spectrogram.astype(np.float64)
 
     return spectrogram
 
@@ -293,8 +301,8 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
         times.append(float(line[0]))
         freqs.append(float(line[1]))
 
-    times = np.array(times)
-    freqs = np.array(freqs)
+    times = np.array(times)  # type: ignore
+    freqs = np.array(freqs)  # type: ignore
     confidence = (cast(np.ndarray, freqs) > 0).astype(float)
 
     return annotations.F0Data(times, freqs, confidence)
@@ -337,7 +345,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="cante100",
             track_class=Track,
             bibtex=BIBTEX,

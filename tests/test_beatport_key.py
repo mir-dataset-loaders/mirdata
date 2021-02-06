@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 
 from mirdata.datasets import beatport_key
@@ -25,6 +23,7 @@ def test_track():
         "genres": dict,
         "artists": list,
         "tempo": int,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

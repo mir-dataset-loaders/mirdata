@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 
 from mirdata.datasets import ikala
@@ -27,6 +25,9 @@ def test_track():
     expected_property_types = {
         "f0": annotations.F0Data,
         "lyrics": annotations.LyricData,
+        "vocal_audio": tuple,
+        "instrumental_audio": tuple,
+        "mix_audio": tuple,
     }
 
     assert track._track_paths == {

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """giantsteps_key Dataset Loader
 
 .. admonition:: Dataset Info
@@ -72,8 +71,6 @@ REMOTES = {
         destination_dir=".",
     ),
 }
-
-DATA = core.LargeData("giantsteps_key_index.json")
 
 LICENSE_INFO = "Creative Commons Attribution Share Alike 4.0 International."
 
@@ -256,7 +253,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="giantsteps_key",
             track_class=Track,
             bibtex=BIBTEX,

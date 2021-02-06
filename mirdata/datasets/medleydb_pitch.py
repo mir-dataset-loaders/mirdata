@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """MedleyDB pitch Dataset Loader
 
 .. admonition:: Dataset Info
@@ -55,9 +54,6 @@ LICENSE_INFO = (
 )
 
 
-DATA = core.LargeData("medleydb_pitch_index.json")
-
-
 class Track(core.Track):
     """medleydb_pitch Track class
 
@@ -97,10 +93,22 @@ class Track(core.Track):
         self.pitch_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.instrument = self._track_metadata.get("instrument")
-        self.artist = self._track_metadata.get("artist")
-        self.title = self._track_metadata.get("title")
-        self.genre = self._track_metadata.get("genre")
+
+    @property
+    def instrument(self):
+        return self._track_metadata.get("instrument")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def genre(self):
+        return self._track_metadata.get("genre")
 
     @core.cached_property
     def pitch(self) -> Optional[annotations.F0Data]:
@@ -168,8 +176,8 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
         times.append(float(line[0]))
         freqs.append(float(line[1]))
 
-    times = np.array(times)
-    freqs = np.array(freqs)
+    times = np.array(times)  # type: ignore
+    freqs = np.array(freqs)  # type: ignore
     confidence = (cast(np.ndarray, freqs) > 0).astype(float)
     pitch_data = annotations.F0Data(times, freqs, confidence)
     return pitch_data
@@ -184,7 +192,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="medleydb_pitch",
             track_class=Track,
             bibtex=BIBTEX,

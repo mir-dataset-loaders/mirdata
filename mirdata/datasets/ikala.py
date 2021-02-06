@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """iKala Dataset Loader
 
 .. admonition:: Dataset Info
@@ -44,7 +43,6 @@ REMOTES = {
         filename="id_mapping.txt",
         url="http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt",
         checksum="81097b587804ce93e56c7a331ba06abc",
-        destination_dir=None,
     )
 }
 DOWNLOAD_INFO = """
@@ -62,9 +60,6 @@ LICENSE_INFO = """
 When it was distributed, Ikala used to have a custom license.
 Visit http://mac.citi.sinica.edu.tw/ikala/ for more details.
 """
-
-
-DATA = core.LargeData("ikala_index.json")
 
 
 class Track(core.Track):
@@ -110,7 +105,10 @@ class Track(core.Track):
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.song_id = track_id.split("_")[0]
         self.section = track_id.split("_")[1]
-        self.singer_id = self._track_metadata.get(self.song_id)
+
+    @property
+    def singer_id(self):
+        return self._track_metadata.get(self.song_id)
 
     @core.cached_property
     def f0(self) -> Optional[annotations.F0Data]:
@@ -294,7 +292,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="ikala",
             track_class=Track,
             bibtex=BIBTEX,

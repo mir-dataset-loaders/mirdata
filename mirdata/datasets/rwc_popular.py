@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """RWC Popular Dataset Loader
 
 .. admonition:: Dataset Info
@@ -65,7 +64,6 @@ REMOTES = {
         filename="master.zip",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir="",
     ),
     "annotations_beat": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-P-2001.BEAT.zip",
@@ -102,9 +100,6 @@ DOWNLOAD_INFO = """
             > metadata-master/
     and copy the RWC-Popular folder to {}
 """
-
-
-DATA = core.LargeData("rwc_popular_index.json")
 
 
 class Track(core.Track):
@@ -166,16 +161,45 @@ class Track(core.Track):
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-        self.piece_number = self._track_metadata.get("piece_number")
-        self.suffix = self._track_metadata.get("suffix")
-        self.track_number = self._track_metadata.get("track_number")
-        self.title = self._track_metadata.get("title")
-        self.artist = self._track_metadata.get("artist")
-        self.singer_information = self._track_metadata.get("singer_information")
-        self.duration = self._track_metadata.get("duration")
-        self.tempo = self._track_metadata.get("tempo")
-        self.instruments = self._track_metadata.get("instruments")
-        self.drum_information = self._track_metadata.get("drum_information")
+    @property
+    def piece_number(self):
+        return self._track_metadata.get("piece_number")
+
+    @property
+    def suffix(self):
+        return self._track_metadata.get("suffix")
+
+    @property
+    def track_number(self):
+        return self._track_metadata.get("track_number")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def singer_information(self):
+        return self._track_metadata.get("singer_information")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def tempo(self):
+        return self._track_metadata.get("tempo")
+
+    @property
+    def instruments(self):
+        return self._track_metadata.get("instruments")
+
+    @property
+    def drum_information(self):
+        return self._track_metadata.get("drum_information")
 
     @core.cached_property
     def sections(self) -> Optional[annotations.SectionData]:
@@ -284,7 +308,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="rwc_popular",
             track_class=Track,
             bibtex=BIBTEX,

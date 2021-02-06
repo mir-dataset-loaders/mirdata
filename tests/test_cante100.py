@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import os
 import numpy as np
 
@@ -37,6 +35,8 @@ def test_track():
     expected_property_types = {
         "melody": annotations.F0Data,
         "notes": annotations.NoteData,
+        "audio": tuple,
+        "spectrogram": np.ndarray,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
