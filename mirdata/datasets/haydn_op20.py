@@ -122,7 +122,10 @@ class Track(core.Track):
 
     @core.cached_property
     def score(self) -> music21.stream.Score:
-        return load_score(self.humdrum_annotated_path)
+        sc = load_score(self.humdrum_annotated_path)
+        rna = list(sc.flat.getElementsByClass('RomanNumeral'))
+        sc.remove(rna, recurse=True)
+        return sc
 
     @core.cached_property
     def keys(self, resolution=28) -> List[dict]:
