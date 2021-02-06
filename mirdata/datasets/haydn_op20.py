@@ -213,7 +213,7 @@ def load_key(path, resolution=28):
             continue
         time = int(round(float(offset * resolution)))
         tonicizedKey = rn.secondaryRomanNumeralKey
-        key = tonicizedKey if tonicizedKey else rn.key
+        key = tonicizedKey or rn.key
         annotations.append({
             'time': time,
             'key': key
