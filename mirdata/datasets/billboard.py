@@ -1,5 +1,11 @@
-"""
+"""McGill Billboard Dataset Loader
 
+.. admonition:: Dataset Info
+    :class: dropdown
+
+    The McGill Billboard dataset includes annotations and audio features corresponding to 890 slots from a random sample of Billboard chart slots.
+    It also includes metadata like Billboard chart date, peak rank, artist name, etc.
+    Details can be found at https://ddmal.music.mcgill.ca/research/The_McGill_Billboard_Project_(Chord_Analysis_Dataset)
 """
 
 import csv
