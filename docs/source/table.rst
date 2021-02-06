@@ -36,6 +36,12 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
+ * - McGill Billboard
+     - - audio: 🔑
+       - annotations: ✅
+     - - global :ref:`chords`
+     - 890
+
    * - cante100
      - - audio: 🔑
        - annotations: ✅
