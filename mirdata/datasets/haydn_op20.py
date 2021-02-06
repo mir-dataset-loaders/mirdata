@@ -165,7 +165,7 @@ class Track(core.Track):
 
 
 def load_score(path):
-    """Load haydn op20 score from a file with music21 format (music21.stream.Score).
+    """Load haydn op20 score with annotations from a file with music21 format (music21.stream.Score).
 
             Args:
                 path: path to hrm annotations
@@ -175,6 +175,8 @@ def load_score(path):
 
     """
     score = music21.converter.parse(path, format='humdrum')
+    rna = list(score.flat.getElementsByClass('RomanNumeral'))
+    score.remove(rna, recurse=True)
     return score
 
 
