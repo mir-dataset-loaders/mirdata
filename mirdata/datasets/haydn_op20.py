@@ -2,7 +2,7 @@
 """haydn op20 Dataset Loader
 
 ..
-    This dataset hqs a relative dependency Music21
+    This dataset has a relative dependency Music21
     admonition:: Dataset Info
     This dataset accompanies the Master Thesis from Nestor Napoles. It is a manually-annotated corpus of harmonic
     analysis in **harm syntax.
@@ -289,7 +289,6 @@ class Dataset(core.Dataset):
     """
     The haydn op20 dataset
     """
-
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
