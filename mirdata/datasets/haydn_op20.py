@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """haydn op20 Dataset Loader
 
 ..
@@ -122,10 +121,7 @@ class Track(core.Track):
 
     @core.cached_property
     def score(self) -> music21.stream.Score:
-        sc = load_score(self.humdrum_annotated_path)
-        rna = list(sc.flat.getElementsByClass('RomanNumeral'))
-        sc.remove(rna, recurse=True)
-        return sc
+        return load_score(self.humdrum_annotated_path)
 
     @core.cached_property
     def keys(self, resolution=28) -> List[dict]:
