@@ -18,42 +18,47 @@ from mirdata import core
 from mirdata import annotations
 from mirdata import io
 
-BIBTEX = """@inproceedings{burgoyne_billboard,
+BIBTEX = """
+@inproceedings{burgoyne_billboard,
 author = {Burgoyne, John Ashley and Wild, Jonathan and Fujinaga, Ichiro},
 year = {2011},
 title = {An {Expert} {Ground} {Truth} {Set} for {Audio} {Chord} {Recognition} and {Music} {Analysis}},
 booktitle={Proceedings of the 12th International Society for Music Information Retrieval Conference, ISMIR}
-}"""
+}
+
+@phdthesis{phdthesis,
+  author       = {Burgoyne, John Ashley}, 
+  title        = {Stochastic {Processes} and {Database}-{Driven} {Musicology}},
+  school       = {McGill University, Montréal, Québec},
+  year         = 2012,
+}
+"""
+
 REMOTES = {
     "index": download_utils.RemoteFileMetadata(
         filename="billboard-2.0-index.csv",
         url="https://www.dropbox.com/s/o0olz0uwl9z9stb/billboard-2.0-index.csv?dl=1",
         checksum="c47d304c212725998839cf9bb1a417aa",
-        destination_dir="annotation",
     ),
     "annotation_salami": download_utils.RemoteFileMetadata(
         filename="billboard-2.0-salami_chords.tar.gz",
         url="https://www.dropbox.com/s/2lvny9ves8kns4o/billboard-2.0-salami_chords.tar.gz?dl=1",
         checksum="6954a6fad962a111e69c9c80cb87d3a5",
-        destination_dir="annotation",
     ),
     "annotation_lab": download_utils.RemoteFileMetadata(
         filename="billboard-2.0.1-lab.tar.gz",
         url="https://www.dropbox.com/s/t390alzrkx0c9yt/billboard-2.0.1-lab.tar.gz?dl=1",
         checksum="a7b1fa6a7e454bf73ced7c29207aa597",
-        destination_dir="annotation",
     ),
     "annotation_mirex13": download_utils.RemoteFileMetadata(
         filename="billboard-2.0.1-mirex.tar.gz",
         url="https://www.dropbox.com/s/fg8lvy79o7etiyc/billboard-2.0.1-mirex.tar.gz?dl=1",
         checksum="97e5754699f3b45aa5cc70d8a7611c54",
-        destination_dir="annotation",
     ),
     "annotation_chordino": download_utils.RemoteFileMetadata(
         filename="billboard-2.0-chordino.tar.gz",
         url="https://www.dropbox.com/s/e9dm23vbawg9dsw/billboard-2.0-chordino.tar.gz?dl=1",
         checksum="530218e8d7077bbd4b08b45f447f5e8f",
-        destination_dir="annotation",
     ),
 }
 
@@ -252,13 +257,13 @@ def load_chords(fhandle: TextIO):
     start_times = []
     end_times = []
     chords = []
-    for l in fhandle:
-        l = l.rstrip()
-        if l:
-            start, end, label = l.split("\t")
-            start_times.append(float(start))
-            end_times.append(float(end))
-            chords.append(label)
+
+    reader = csv.reader(fhandle, delimiter="\t")
+    for l in reader:
+        if len(l):
+            start_times.append(float(l[0]))
+            end_times.append(float(l[1]))
+            chords.append(l[2])
 
     chord_data = annotations.ChordData(np.array([start_times, end_times]).T, chords)
     return chord_data
@@ -421,7 +426,7 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(
-            self.data_home, "annotation", "billboard-2.0-index.csv"
+            self.data_home, "billboard-2.0-index.csv"
         )
 
         if not os.path.exists(metadata_path):
@@ -452,43 +457,3 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
-
-    def download(self, force_overwrite=False, cleanup=False):
-        """Download the dataset
-
-        Args:
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        """
-        info_message = """
-            Unfortunately the audio files of the McGill-Billboard dataset are not available
-            for download. If you have the McGill-Billboard dataset, place the contents into a
-            folder called McGill-Billboard with the following structure:
-                > billboard/
-                    > annotation/
-                    > audio/
-            and copy the billboard folder to {}
-        """.format(
-            self.data_home
-        )
-
-        annotations_dir = os.path.join(self.data_home, "annotation")
-        sub_dir = os.path.join(annotations_dir, "McGill-Billboard")
-
-        download_utils.downloader(
-            self.data_home,
-            remotes=REMOTES,
-            info_message=info_message,
-            force_overwrite=force_overwrite,
-            cleanup=cleanup,
-        )
-
-        if os.path.exists(sub_dir):
-            for f in os.listdir(sub_dir):
-                target_dir = os.path.join(sub_dir, f)
-                if not os.path.exists(target_dir):
-                    shutil.move(target_dir, annotations_dir)
-            shutil.rmtree(sub_dir)

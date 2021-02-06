@@ -34,16 +34,16 @@ def make_index(data_path):
         k = row[0]
         _index[k] = row[1:]
 
-    annotations_dir = os.path.join(data_path, "annotations")
+    annotations_dir = os.path.join(data_path, "McGill-Billboard")
     audio_dir = os.path.join(data_path, "audio")
     anns = sorted(os.listdir(annotations_dir))
 
     track_ids = []
     index = {}
     index = {
-        'version': '2.0',
-        'tracks': {},
-        'metadata': None,
+        "version": "2.0",
+        "tracks": {},
+        "metadata": None,
     }
 
     txtfiles = []
@@ -88,36 +88,36 @@ def make_index(data_path):
 
                     bothchroma = os.path.join(annotations_dir, a, "bothchroma.csv")
                     tuning = os.path.join(annotations_dir, a, "tuning.csv")
-                    
+
                     index["tracks"][track_id] = {
                         "audio": (audio_rel, audio_checksum),
                         "salami": (annot_rel, annot_checksum),
                         "bothchroma": (
-                            os.path.join("annotation", a, "bothchroma.csv"),
-                            md5(bothchroma)
+                            os.path.join("McGill-Billboard", a, "bothchroma.csv"),
+                            md5(bothchroma),
                         ),
                         "tuning": (
-                            os.path.join("annotation", a, "tuning.csv"),
-                            md5(tuning)
+                            os.path.join("McGill-Billboard", a, "tuning.csv"),
+                            md5(tuning),
                         ),
                         "lab_full": (
-                            os.path.join("annotation", a, "full.lab"),
+                            os.path.join("McGill-Billboard", a, "full.lab"),
                             md5(full_fp),
                         ),
                         "lab_majmin7": (
-                            os.path.join("annotation", a, "majmin7.lab"),
+                            os.path.join("McGill-Billboard", a, "majmin7.lab"),
                             md5(majmin7),
                         ),
                         "lab_majmin7inv": (
-                            os.path.join("annotation", a, "majmin7inv.lab"),
+                            os.path.join("McGill-Billboard", a, "majmin7inv.lab"),
                             md5(majmin7inv),
                         ),
                         "lab_majmin": (
-                            os.path.join("annotation", a, "majmin.lab"),
+                            os.path.join("McGill-Billboard", a, "majmin.lab"),
                             md5(majmin),
                         ),
                         "lab_majmininv": (
-                            os.path.join("annotation", a, "majmininv.lab"),
+                            os.path.join("McGill-Billboard", a, "majmininv.lab"),
                             md5(majmininv),
                         ),
                     }
