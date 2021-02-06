@@ -113,9 +113,7 @@ def test_load_chords():
     dataset = billboard.Dataset(data_home)
     track = dataset.track(default_trackid)
 
-    chords = track.chords
-
-    full_chords = chords["full"]
+    full_chords = track.chords_full
 
     # check types
     assert type(full_chords) == annotations.ChordData

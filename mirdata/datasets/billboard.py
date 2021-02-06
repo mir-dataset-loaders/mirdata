@@ -67,21 +67,24 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
-        audio_path (str): path of the audio file
-        dynamics (str): dynamics abbreviation. Ex: pp, mf, ff, etc.
-        dynamics_id (int): pp=0, p=1, mf=2, f=3, ff=4
-        family (str): instrument family encoded by its English name
-        instance_id (int): instance ID. Either equal to 0, 1, 2, or 3.
-        instrument_abbr (str): instrument abbreviation
-        instrument_full (str): instrument encoded by its English name
-        is_resampled (bool): True if this sample was pitch-shifted from a neighbor; False if it was genuinely recorded.
-        pitch (str): string containing English pitch class and octave number
-        pitch_id (int): MIDI note index, where middle C ("C4") corresponds to 60
-        string_id (NoneType): string ID. By musical convention, the first
-            string is the highest. On wind instruments, this is replaced by `None`.
-        technique_abbr (str): playing technique abbreviation
-        technique_full (str): playing technique encoded by its English name
         track_id (str): track id
+        audio_path (str): audio path of the track
+        chords_full (ChordData): HTK-style LAB files for the chord annotations (full)
+        chords_majmin7 (ChordData): HTK-style LAB files for the chord annotations (majmin7)
+        chords_majmin7inv (ChordData): HTK-style LAB files for the chord annotations (majmin7inv)
+        chords_majmin (ChordData): HTK-style LAB files for the chord annotations (majmin)
+        chords_majmininv (ChordData): HTK-style LAB files for the chord annotations(majmininv)
+        chroma (np.array): Array containing the non-negative-least-squares chroma vectors
+        tuning (np.array): Array containing the tuning estimates
+        sections (SectionData): Letter-annotated section data (A,B,A')
+        named_sections (SectionData): Name-annotated section data (intro, verse, chorus)
+        chart date (str): release date of the track
+        target rank (int):
+        actual rank (int):
+        title (str): title of the track
+        artist (str): artist name
+        peak rank (int): Highest rank on the Billboard chart.
+        weeks on chart (int): Number of weeks on the chart.
 
     """
 
@@ -153,20 +156,24 @@ class Track(core.Track):
         return self._track_metadata.get("weeks_on_chart")
 
     @core.cached_property
-    def chords(self):
-        return {
-            "full": load_chords(self.lab_full_path),
-            "majmin7": load_chords(self.lab_majmin7_path),
-            "majmin7inv": load_chords(self.lab_majmin7inv_path),
-            "majmin": load_chords(self.lab_majmin_path),
-            "majmininv": load_chords(self.lab_majmininv_path),
-        }
+    def chords_full(self):
+        return load_chords(self.lab_full_path)
 
     @core.cached_property
-    def salami_metadata(self):
-        return _parse_salami_metadata(
-            os.path.join(self._data_home, self._track_paths["salami"][0])
-        )
+    def chords_majmin7(self):
+        return load_chords(self.lab_majmin7_path)
+
+    @core.cached_property
+    def chords_majmin7inv(self):
+        return load_chords(self.lab_majmin7inv_path)
+
+    @core.cached_property
+    def chords_majmin(self):
+        return load_chords(self.lab_majmin_path)
+
+    @core.cached_property
+    def chords_majmininv(self):
+        return load_chords(self.lab_majmininv_path)
 
     @core.cached_property
     def chroma(self):
@@ -190,6 +197,12 @@ class Track(core.Track):
         return load_sections(
             os.path.join(self._data_home, self._track_paths["salami"][0]),
             section_type="name",
+        )
+
+    @core.cached_property
+    def salami_metadata(self):
+        return parse_salami_metadata(
+            os.path.join(self._data_home, self._track_paths["salami"][0])
         )
 
     @property
@@ -293,6 +306,25 @@ def load_sections(fpath, section_type: str) -> annotations.SectionData:
         np.array([start_times, end_times]).T, sections
     )
     return section_data
+
+
+@io.coerce_to_string_io
+def parse_salami_metadata(fhandle: TextIO):
+    s = fhandle.read().split("\n")
+    o = {}
+    for x in s:
+        if x.startswith("#"):
+            if x[2:].startswith("title:"):
+                o["title"] = x[9:]
+            if x[2:].startswith("artist:"):
+                o["artist"] = x[10:]
+            if x[2:].startswith("metre:"):
+                o["meter"] = o.get("meter", []) + [x[9:]]
+            if x[2:].startswith("tonic:"):
+                o["tonic"] = o.get("tonic", []) + [x[9:]]
+        else:
+            break
+    return o
 
 
 def _parse_salami(fhandle):
@@ -421,7 +453,6 @@ class Dataset(core.Dataset):
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    
     def download(self, force_overwrite=False, cleanup=False):
         """Download the dataset
 
@@ -447,15 +478,17 @@ class Dataset(core.Dataset):
         annotations_dir = os.path.join(self.data_home, "annotation")
         sub_dir = os.path.join(annotations_dir, "McGill-Billboard")
 
-        # download_utils.downloader(
-        #     self.data_home,
-        #     remotes=REMOTES,
-        #     info_message=info_message,
-        #     force_overwrite=force_overwrite,
-        #     cleanup=cleanup,
-        # )
+        download_utils.downloader(
+            self.data_home,
+            remotes=REMOTES,
+            info_message=info_message,
+            force_overwrite=force_overwrite,
+            cleanup=cleanup,
+        )
 
         if os.path.exists(sub_dir):
             for f in os.listdir(sub_dir):
-                    shutil.move(os.path.join(sub_dir, f), annotations_dir)
+                target_dir = os.path.join(sub_dir, f)
+                if not os.path.exists(target_dir):
+                    shutil.move(target_dir, annotations_dir)
             shutil.rmtree(sub_dir)
