@@ -27,8 +27,14 @@ def test_track():
             "McGill-Billboard/0003/bothchroma.csv",
             "c92ee46045f5bacd681543e8b9aa55b8",
         ],
-        "tuning": ["McGill-Billboard/0003/tuning.csv", "31c744b447b739bc8c4ed29891dc1fb1"],
-        "lab_full": ["McGill-Billboard/0003/full.lab", "59c73209de645ef7e4e4293f4d6882b3"],
+        "tuning": [
+            "McGill-Billboard/0003/tuning.csv",
+            "31c744b447b739bc8c4ed29891dc1fb1",
+        ],
+        "lab_full": [
+            "McGill-Billboard/0003/full.lab",
+            "59c73209de645ef7e4e4293f4d6882b3",
+        ],
         "lab_majmin7": [
             "McGill-Billboard/0003/majmin7.lab",
             "59c73209de645ef7e4e4293f4d6882b3",
@@ -207,7 +213,6 @@ def test_load_chroma():
     assert chroma.shape[0] == 5666
     assert chroma.shape[1] == 25
 
-
     default_trackid = "3"
     data_home = "tests/resources/mir_datasets/billboard"
     dataset = billboard.Dataset(data_home)
@@ -216,7 +221,6 @@ def test_load_chroma():
     chroma = track.chroma
     assert chroma.shape[0] == 3250
     assert chroma.shape[1] == 25
-
 
 
 def test_load_tuning():

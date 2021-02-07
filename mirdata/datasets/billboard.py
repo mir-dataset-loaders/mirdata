@@ -438,9 +438,7 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(
-            self.data_home, "billboard-2.0-index.csv"
-        )
+        metadata_path = os.path.join(self.data_home, "billboard-2.0-index.csv")
 
         if not os.path.exists(metadata_path):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
