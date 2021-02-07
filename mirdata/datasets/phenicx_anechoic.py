@@ -239,6 +239,7 @@ class MultiTrack(core.MultiTrack):
         data_home,
         dataset_name,
         index,
+        track_class=Track,
         metadata=None,
     ):
         super().__init__(
@@ -246,6 +247,7 @@ class MultiTrack(core.MultiTrack):
             data_home,
             dataset_name,
             index,
+            Track,
             metadata,
         )
 
@@ -261,16 +263,11 @@ class MultiTrack(core.MultiTrack):
         self.piece = self.mtrack_id
 
     @property
-    def tracks(self):
-        #### this property is redefined here to make use of the Track object defined above
-        return {t: Track(t, self._data_home, self._dataset_name, self._index, self._metadata) for t in self.track_ids}
-
-    @property
     def track_audio_property(self):
         #### the attribute of Track which returns the relevant audio file for mixing
         return 'audio'
 
-    def get_audio_instrument(self,instrument):
+    def get_audio_for_instrument(self,instrument):
         """Get the audio for a particular instrument
 
         Args:
@@ -282,7 +279,7 @@ class MultiTrack(core.MultiTrack):
         """
         return getattr(self.tracks[self.instruments[instrument]], self.track_audio_property)[0]
 
-    def get_audio_section(self,section):
+    def get_audio_for_section(self,section):
         """Get the audio for a particular section
 
         Args:
@@ -323,7 +320,7 @@ class MultiTrack(core.MultiTrack):
 
         return annotations.NoteData(intervals, values)
 
-    def get_notes_instrument(self,instrument, notes_property='notes'):
+    def get_notes_for_instrument(self,instrument, notes_property='notes'):
         """Get the notes for a particular instrument
 
         Args:
@@ -336,7 +333,7 @@ class MultiTrack(core.MultiTrack):
         """
         return getattr(self.tracks[self.instruments[instrument]], notes_property)
 
-    def get_notes_section(self,section, notes_property='notes'):
+    def get_notes_for_section(self,section, notes_property='notes'):
         """Get the notes for a particular section
 
         Args:

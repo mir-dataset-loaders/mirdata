@@ -463,6 +463,7 @@ class MultiTrack(Track):
         data_home,
         dataset_name,
         index,
+        track_class,
         metadata=None,
     ):
         """Multitrack init method. Sets boilerplate attributes, including:
@@ -492,15 +493,15 @@ class MultiTrack(Track):
         self._data_home = data_home
         self._multitrack_paths = index["multitracks"][self.mtrack_id]
         self._metadata = metadata
+        self._track_class = track_class
 
         self._index = index
         self.track_ids = self._index["multitracks"][self.mtrack_id]["tracks"]
-        #self.mtrack_ids = self._index["multitracks"].keys()
 
 
     @property
     def tracks(self):
-        return {t: Track(t, self._data_home, self._dataset_name, self._index, self._metadata) for t in self.track_ids}
+        return {t: self._track_class(t, self._data_home, self._dataset_name, self._index, self._metadata) for t in self.track_ids}
 
     @property
     def track_audio_property(self):
