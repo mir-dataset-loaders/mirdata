@@ -72,7 +72,7 @@ LICENSE_INFO = "Creative Commons Attribution 4.0 International Public License."
 
 
 class Track(core.Track):
-    """Billboard Dataset Track class
+    """McGill Billboard Dataset Track class
 
     Args:
         track_id (str): track id of the track
@@ -86,7 +86,7 @@ class Track(core.Track):
         chords_majmin (ChordData): HTK-style LAB files for the chord annotations (majmin)
         chords_majmininv (ChordData): HTK-style LAB files for the chord annotations(majmininv)
         chroma (np.array): Array containing the non-negative-least-squares chroma vectors
-        tuning (np.array): Array containing the tuning estimates
+        tuning (list): List containing the tuning estimates
         sections (SectionData): Letter-annotated section data (A,B,A')
         named_sections (SectionData): Name-annotated section data (intro, verse, chorus)
         chart date (str): release date of the track
@@ -188,13 +188,20 @@ class Track(core.Track):
 
     @core.cached_property
     def chroma(self):
+        """
+        NNLS chroma vectors from the NNLS chroma Vamp plug-in
+        """
+        # removed the first column since it contains metadata.
         with open(self.bothchroma_path, "r") as f:
-            return np.array([l for l in csv.reader(f)])
+            return np.array([l for l in csv.reader(f)])[:, 1:].astype(np.float32)
 
     @core.cached_property
     def tuning(self):
+        """
+        Tuning from NNLS chroma Vamp plug-in
+        """
         with open(self.tuning_path, "r") as f:
-            return np.array([l for l in csv.reader(f)])
+            return next(csv.reader(f))[1:]
 
     @core.cached_property
     def sections(self):

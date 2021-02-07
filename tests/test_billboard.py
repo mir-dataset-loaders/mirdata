@@ -55,11 +55,11 @@ def test_track():
 
 
 # def test_to_jams():
-#     default_trackid = "3"
-#     data_home = "tests/resources/mir_datasets/billboard"
-#     dataset = billboard.Dataset(data_home)
-#     track = dataset.track(default_trackid)
 
+#     # default_trackid = "3"
+#     # data_home = "tests/resources/mir_datasets/billboard"
+#     # dataset = billboard.Dataset(data_home)
+#     # track = dataset.track(default_trackid)
 
 #     jam = track.to_jams()
 
@@ -113,12 +113,10 @@ def test_load_chords():
 
     full_chords = track.chords_full
 
-    # check types
     assert type(full_chords) == annotations.ChordData
     assert type(full_chords.intervals) is np.ndarray
     assert type(full_chords.labels) is list
 
-    # check values
     assert full_chords.labels[:36] == [
         "N",
         "N",
@@ -167,12 +165,10 @@ def test_load_sections():
 
     sections = track.sections
 
-    # check types
     assert type(sections) == annotations.SectionData
     assert type(sections.intervals) is np.ndarray
     assert type(sections.labels) is list
 
-    # check values
     assert np.array_equal(
         sections.labels,
         np.array(["A'", "A", "B", "C", "A", "B", "D", "E", "F", "A'", "B", "G", "Z"]),
@@ -199,6 +195,40 @@ def test_load_sections():
             ]
         ),
     )
+
+
+def test_load_chroma():
+    default_trackid = "35"
+    data_home = "tests/resources/mir_datasets/billboard"
+    dataset = billboard.Dataset(data_home)
+    track = dataset.track(default_trackid)
+
+    chroma = track.chroma
+    assert chroma.shape[0] == 5666
+    assert chroma.shape[1] == 25
+
+
+    default_trackid = "3"
+    data_home = "tests/resources/mir_datasets/billboard"
+    dataset = billboard.Dataset(data_home)
+    track = dataset.track(default_trackid)
+
+    chroma = track.chroma
+    assert chroma.shape[0] == 3250
+    assert chroma.shape[1] == 25
+
+
+
+def test_load_tuning():
+    default_trackid = "35"
+    data_home = "tests/resources/mir_datasets/billboard"
+    dataset = billboard.Dataset(data_home)
+    track = dataset.track(default_trackid)
+
+    tuning = track.tuning
+
+    assert type(tuning) == list
+    assert len(tuning) == 4
 
 
 def test_load_metadata():
