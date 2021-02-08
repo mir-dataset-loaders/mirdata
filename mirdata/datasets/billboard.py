@@ -41,7 +41,7 @@ booktitle={Proceedings of the 12th International Society for Music Information R
 """
 
 REMOTES = {
-    "index": download_utils.RemoteFileMetadata(
+    "metadata": download_utils.RemoteFileMetadata(
         filename="billboard-2.0-index.csv",
         url="https://www.dropbox.com/s/o0olz0uwl9z9stb/billboard-2.0-index.csv?dl=1",
         checksum="c47d304c212725998839cf9bb1a417aa",
