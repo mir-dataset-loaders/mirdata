@@ -21,9 +21,16 @@ def run_track_tests(track, expected_attributes, expected_property_types):
         assert expected_attributes[attr] == getattr(track, attr)
 
     # test track property types
-    for prop in track_attr["cached_properties"]:
+    for prop in track_attr["cached_properties"] + track_attr["properties"]:
         print("{}: {}".format(prop, type(getattr(track, prop))))
-        assert isinstance(getattr(track, prop), expected_property_types[prop])
+        if prop in expected_property_types:
+            assert isinstance(getattr(track, prop), expected_property_types[prop])
+        elif prop in expected_attributes:
+            assert expected_attributes[prop] == getattr(track, prop)
+        else:
+            assert (
+                False
+            ), "{} not in expected_property_types or expected_attributes".format(prop)
 
 
 def get_attributes_and_properties(class_instance):

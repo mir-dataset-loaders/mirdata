@@ -25,6 +25,7 @@ def test_track():
         "tempo": annotations.TempoData,
         "tempo_v2": annotations.TempoData,
         "genre": str,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

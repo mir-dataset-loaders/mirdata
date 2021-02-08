@@ -131,18 +131,53 @@ class Track(core.Track):
         )
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-        self.audio_url = self._track_metadata.get("audio", {}).get("url")
-        self.url_working = self._track_metadata.get("audio", {}).get("working")
-        self.ground_truth = self._track_metadata.get("ground-truth")
-        self.artist = self._track_metadata.get("artist")
-        self.title = self._track_metadata.get("title")
-        self.dataset_version = self._track_metadata.get("dataset_version")
-        self.scores_ncc = self._track_metadata.get("scores", {}).get("NCC")
-        self.scores_manual = self._track_metadata.get("scores", {}).get("manual")
-        self.album = self._track_metadata.get("metadata", {}).get("album")
-        self.release_date = self._track_metadata.get("metadata", {}).get("release_date")
-        self.genres = self._track_metadata.get("metadata", {}).get("genres")
-        self.language = self._track_metadata.get("metadata", {}).get("language")
+    @property
+    def audio_url(self):
+        return self._track_metadata.get("audio", {}).get("url")
+
+    @property
+    def url_working(self):
+        return self._track_metadata.get("audio", {}).get("working")
+
+    @property
+    def ground_truth(self):
+        return self._track_metadata.get("ground-truth")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def dataset_version(self):
+        return self._track_metadata.get("dataset_version")
+
+    @property
+    def scores_ncc(self):
+        return self._track_metadata.get("scores", {}).get("NCC")
+
+    @property
+    def scores_manual(self):
+        return self._track_metadata.get("scores", {}).get("manual")
+
+    @property
+    def album(self):
+        return self._track_metadata.get("metadata", {}).get("album")
+
+    @property
+    def release_date(self):
+        return self._track_metadata.get("metadata", {}).get("release_date")
+
+    @property
+    def genres(self):
+        return self._track_metadata.get("metadata", {}).get("genres")
+
+    @property
+    def language(self):
+        return self._track_metadata.get("metadata", {}).get("language")
 
     @core.cached_property
     def notes(self) -> annotations.NoteData:

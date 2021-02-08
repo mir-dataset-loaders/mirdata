@@ -39,6 +39,7 @@ def test_track():
         "lines": annotations.LyricData,
         "paragraphs": annotations.LyricData,
         "annotation_object": DALI.Annotations,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

@@ -33,6 +33,7 @@ def test_track():
     expected_property_types = {
         "notes": annotations.NoteData,
         "midi": pretty_midi.PrettyMIDI,
+        "audio": tuple,
     }
 
     assert track._track_paths == {

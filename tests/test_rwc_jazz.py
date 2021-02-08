@@ -31,6 +31,7 @@ def test_track():
     expected_property_types = {
         "beats": annotations.BeatData,
         "sections": annotations.SectionData,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
