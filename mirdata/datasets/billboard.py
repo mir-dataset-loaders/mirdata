@@ -13,7 +13,7 @@ import logging
 import os
 import shutil
 import re
-from typing import BinaryIO, TextIO, Optional, Tuple
+from typing import BinaryIO, TextIO, Optional, Tuple, Dict, List
 
 import librosa
 import numpy as np
@@ -283,19 +283,22 @@ def load_chords(fhandle: TextIO):
 
 
 @io.coerce_to_string_io
-def _parse_timed_sections(fhandle: TextIO):
+def _parse_timed_sections(fhandle: TextIO) -> List:
     salami = _parse_salami(fhandle)
+    assert salami is not None
     timed_sections = _timed_sections(salami)
     return timed_sections
 
 
-def load_sections(fpath, section_type: str) -> annotations.SectionData:
+def load_sections(fpath: str, section_type: str):
     """Private function to load SALAMI format sections data from a file
     Args:
         sections_path (str):
     """
 
     timed_sections = _parse_timed_sections(fpath)
+    assert timed_sections is not None
+
     # Clean sections
     timed_sections_clean = [ts for ts in timed_sections if ts["section"] is not None]
 
@@ -337,56 +340,63 @@ def parse_salami_metadata(fhandle: TextIO):
             if x[2:].startswith("artist:"):
                 o["artist"] = x[10:]
             if x[2:].startswith("metre:"):
-                o["meter"] = o.get("meter", []) + [x[9:]]
+                o["meter"] = x[9:]
             if x[2:].startswith("tonic:"):
-                o["tonic"] = o.get("tonic", []) + [x[9:]]
+                o["tonic"] = x[9:]
         else:
             break
     return o
 
 
-def _parse_salami(fhandle):
+@io.coerce_to_string_io
+def _parse_salami(fhandle: TextIO) -> Dict:
     """
     Author:
         Brian Whitman
         brian@echonest.com
         https://gist.github.com/bwhitman/11453443
-    Parse a salami_chords.txt file and return a dict with all the stuff innit
+    Parse a salami_chords.txt file and return a dict with all the stuff in it
     """
     s = fhandle.read().split("\n")
-    o = {}
-    for x in s:
-        if x.startswith("#"):
-            if x[2:].startswith("title:"):
-                o["title"] = x[9:]
-            if x[2:].startswith("artist:"):
-                o["artist"] = x[10:]
-            if x[2:].startswith("metre:"):
-                o["meter"] = o.get("meter", []) + [x[9:]]
-            if x[2:].startswith("tonic:"):
-                o["tonic"] = o.get("tonic", []) + [x[9:]]
-        elif len(x) > 1:
-            spot = x.find("\t")
-            if spot > 0:
-                time = float(x[0:spot])
-                event = {}
-                event["time"] = time
-                rest = x[spot + 1 :]
-                items = rest.split(", ")
-                for i in items:
-                    chords = re.findall(r"(?=\| (.*?) \|)", i)
-                    section = i.split("|")
-                    if len(section) == 1 and not ("(" in section or ")" in section):
-                        event["section"] = section[0]
-                    if len(chords):
-                        event["chords"] = chords
-                    else:
-                        event["notes"] = event.get("notes", []) + [i]
-                o["events"] = o.get("events", []) + [event]
+
+    def parse(s):
+        o = {}
+        o["events"] = []
+        for x in s:
+            if x.startswith("#"):
+                if x[2:].startswith("title:"):
+                    o["title"] = x[9:]
+                if x[2:].startswith("artist:"):
+                    o["artist"] = x[10:]
+                if x[2:].startswith("metre:"):
+                    o["meter"] = x[9:]
+                if x[2:].startswith("tonic:"):
+                    o["tonic"] = x[9:]
+            elif len(x) > 1:
+                spot = x.find("\t")
+                if spot > 0:
+                    time = float(x[0:spot])
+                    event = {}
+                    event["time"] = time
+                    event["notes"] = []
+                    rest = x[spot + 1 :]
+                    items = rest.split(", ")
+                    for i in items:
+                        chords = re.findall(r"(?=\| (.*?) \|)", i)
+                        section = i.split("|")
+                        if len(section) == 1 and not ("(" in section or ")" in section):
+                            event["section"] = section[0]
+                        if len(chords):
+                            event["chords"] = chords
+                        else:
+                            event["notes"].append(i)
+                    o["events"].append(event)
+
+    o = parse(s)
     return o
 
 
-def _timed_sections(parsed):
+def _timed_sections(parsed: Dict) -> List:
     """
     Author:
         Brian Whitman
