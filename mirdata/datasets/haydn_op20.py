@@ -70,7 +70,6 @@ REMOTES = {
     )
 }
 DOWNLOAD_INFO = ""
-DATA = core.LargeData("haydn_op20_index.json")
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
@@ -116,9 +115,6 @@ class Track(core.Track):
         self.humdrum_annotated_path = os.path.join(self._data_home, self._track_paths["annotations"][0])
         self.title = os.path.splitext(self._track_paths["annotations"][0])[0]
 
-    def show(self):
-        show_score(self.humdrum_annotated_path)
-
     @core.cached_property
     def score(self) -> music21.stream.Score:
         return load_score(self.humdrum_annotated_path)
@@ -154,10 +150,10 @@ class Track(core.Track):
             metadata={
                 "duration": self.duration,
                 "title": self.title,
-                "keys": self.keys,
+                "key": self.keys,
+                "chords": self.chords,
                 "roman_numerals": self.roman_numerals,
                 "midi_path": self.midi_path,
-                "score": self.score,
                 "humdrum_annotated_path": self.humdrum_annotated_path
             },
         )
@@ -173,22 +169,12 @@ def load_score(path):
                 music21.stream.Score: score in music21 format
 
     """
+    if not os.path.exists(path):
+        raise IOError
     score = music21.converter.parse(path, format='humdrum')
     rna = list(score.flat.getElementsByClass('RomanNumeral'))
     score.remove(rna, recurse=True)
     return score
-
-
-def show_score(path):
-    """Show score in Musescore 3. Required to have Musescore 3 installed.
-
-            Args:
-                path: path to hrm annotations
-
-
-    """
-    score = music21.converter.parse(path, format='humdrum')
-    score.show()
 
 
 def load_key(path, resolution=28):
@@ -201,6 +187,8 @@ def load_key(path, resolution=28):
             List[dict]: musical key data and time
 
     """
+    if not os.path.exists(path):
+        raise IOError
     score = music21.converter.parse(path, format='humdrum')
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass('RomanNumeral'))}
     annotations = []
@@ -227,11 +215,12 @@ def load_midi_path(path):
                 str: midi file path
 
     """
+    if not os.path.exists(path):
+        raise IOError
     midi_path = os.path.splitext(path)[0] + '.midi'
     if not os.path.exists(midi_path):
         score = music21.converter.parse(path, format='humdrum')
         score.write('midi', fp=midi_path)
-    print(midi_path)
     return midi_path
 
 
@@ -245,6 +234,8 @@ def load_roman_numerals(path, resolution=28):
                 List[dict]: musical roman numerals data and time
 
     """
+    if not os.path.exists(path):
+        raise IOError
     score = music21.converter.parse(path, format='humdrum')
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass('RomanNumeral'))}
     annotations = []
@@ -270,6 +261,8 @@ def load_chord(path, resolution=28):
                 List[dict`]: musical roman numerals data and time
 
     """
+    if not os.path.exists(path):
+        raise IOError
     score = music21.converter.parse(path, format='humdrum')
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass('RomanNumeral'))}
     annotations = []
@@ -293,7 +286,6 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="haydn_op20",
             track_class=Track,
             bibtex=BIBTEX,
@@ -301,10 +293,6 @@ class Dataset(core.Dataset):
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
-
-    @core.copy_docs(show_score)
-    def show_score(self, *args, **kwargs):
-        return show_score(*args, **kwargs)
 
     @core.copy_docs(load_score)
     def load_score(self, *args, **kwargs):

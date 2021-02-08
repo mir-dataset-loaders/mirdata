@@ -17,7 +17,8 @@ def run_track_tests(track, expected_attributes, expected_property_types):
 
     # test track attributes
     for attr in track_attr["attributes"]:
-        print("{}: {}".format(attr, getattr(track, attr)))        assert expected_attributes[attr] == getattr(track, attr)
+        print("{}: {}".format(attr, getattr(track, attr)))
+        assert expected_attributes[attr] == getattr(track, attr)
 
     # test track property types
     for prop in track_attr["cached_properties"] + track_attr["properties"]:
