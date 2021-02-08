@@ -238,15 +238,24 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in da-tacos dataset".format(track_id)
-            )
+    def __init__(
+            self,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.track_id = track_id
         self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
         self.cens_path = os.path.join(self._data_home, self._track_paths["cens"][0])
         self.crema_path = os.path.join(self._data_home, self._track_paths["crema"][0])
         self.hpcp_path = os.path.join(self._data_home, self._track_paths["hpcp"][0])
@@ -255,11 +264,6 @@ class Track(core.Track):
         self.mfcc_path = os.path.join(self._data_home, self._track_paths["mfcc"][0])
         self.tags_path = core.none_path_join(
             [self._data_home, self._track_paths["tags"][0]]
-        )
-        # metadata
-        metadata = DATA.metadata(data_home)
-        self._track_metadata = (
-            metadata[track_id] if track_id and metadata is not None in metadata else {}
         )
 
     @core.cached_property
@@ -478,6 +482,7 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
+    @core.cached_property
     def _metadata(self):
         metadata_index = {}
         metadata_paths = []
