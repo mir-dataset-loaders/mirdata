@@ -284,7 +284,8 @@ def load_chords(fhandle: TextIO):
 
 @io.coerce_to_string_io
 def _parse_timed_sections(fhandle: TextIO) -> List:
-    salami = _parse_salami(fhandle)
+    lines = fhandle.read().split("\n")
+    salami = _parse_salami(lines)
     assert salami is not None
     timed_sections = _timed_sections(salami)
     return timed_sections
@@ -348,8 +349,7 @@ def parse_salami_metadata(fhandle: TextIO):
     return o
 
 
-@io.coerce_to_string_io
-def _parse_salami(fhandle: TextIO) -> Dict:
+def _parse_salami(s: List) -> Dict:
     """
     Author:
         Brian Whitman
@@ -357,7 +357,6 @@ def _parse_salami(fhandle: TextIO) -> Dict:
         https://gist.github.com/bwhitman/11453443
     Parse a salami_chords.txt file and return a dict with all the stuff in it
     """
-    s = fhandle.read().split("\n")
 
     def parse(s):
         o = {}
@@ -391,6 +390,7 @@ def _parse_salami(fhandle: TextIO) -> Dict:
                         else:
                             event["notes"].append(i)
                     o["events"].append(event)
+        return o
 
     o = parse(s)
     return o
