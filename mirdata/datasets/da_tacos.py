@@ -350,6 +350,9 @@ def load_cens(path):
         np.array: cens features
 
     """
+    if not os.path.exists(path):
+        raise IOError
+
     return dd.io.load(path)["chroma_cens"]
 
 
@@ -363,6 +366,8 @@ def load_crema(path):
         np.array: crema features
 
     """
+    if not os.path.exists(path):
+        raise IOError
     return dd.io.load(path)["crema"]
 
 
@@ -376,6 +381,8 @@ def load_hpcp(path):
         np.array: hpcp features
 
     """
+    if not os.path.exists(path):
+        raise IOError
     return dd.io.load(path)["hpcp"]
 
 
@@ -392,6 +399,8 @@ def load_key(path):
         {'key': 'C', 'scale': 'major', 'strength': 0.8449875116348267}
 
     """
+    if not os.path.exists(path):
+        raise IOError
     return dd.io.load(path)["key_extractor"]
 
 
@@ -419,6 +428,8 @@ def load_madmom(path):
         }
 
     """
+    if not os.path.exists(path):
+        raise IOError
     return dd.io.load(path)["madmom_features"]
 
 
@@ -432,6 +443,8 @@ def load_mfcc(path):
         np.array: mfcc
 
     """
+    if not os.path.exists(path):
+        raise IOError
     return dd.io.load(path)["mfcc_htk"]
 
 
@@ -462,6 +475,9 @@ def load_tags(path):
     if path is None:
         tags = None
     else:
+        if not os.path.exists(path):
+            raise IOError
+
         tags = dd.io.load(path)["tags"]
     return tags
 
