@@ -380,6 +380,9 @@ class Track(object):
     def to_jams(self):
         raise NotImplementedError
 
+    def get_path(self, key):
+        return none_path_join([self._data_home, self._track_paths[key][0]])
+
 
 class MultiTrack(Track):
     """MultiTrack class.

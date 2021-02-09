@@ -104,13 +104,10 @@ class Track(core.Track):
             index,
             metadata,
         )
+
         # Annotation paths
-        self.pitch_path = core.none_path_join(
-            [self._data_home, self._track_paths["pitch"][0]]
-        )
-        self.mb_tags_path = core.none_path_join(
-            [self._data_home, self._track_paths["metadata"][0]]
-        )
+        self.pitch_path = self.get_path("pitch")
+        self.mb_tags_path = self.get_path("metadata")
 
     @property
     def tonic(self):
