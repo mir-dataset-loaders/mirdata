@@ -97,6 +97,7 @@ class Track(core.Track):
         midi_path (str): path to midi
         score (music21.stream.Score): music21 score
     """
+
     def __init__(
         self,
         track_id,
@@ -112,7 +113,9 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.humdrum_annotated_path = os.path.join(self._data_home, self._track_paths["annotations"][0])
+        self.humdrum_annotated_path = os.path.join(
+            self._data_home, self._track_paths["annotations"][0]
+        )
         self.title = os.path.splitext(self._track_paths["annotations"][0])[0]
 
     @core.cached_property
@@ -133,7 +136,7 @@ class Track(core.Track):
 
     @core.cached_property
     def duration(self) -> int:
-        return self.chords[-1]['time']
+        return self.chords[-1]["time"]
 
     @core.cached_property
     def midi_path(self) -> str:
@@ -154,7 +157,7 @@ class Track(core.Track):
                 "chords": self.chords,
                 "roman_numerals": self.roman_numerals,
                 "midi_path": self.midi_path,
-                "humdrum_annotated_path": self.humdrum_annotated_path
+                "humdrum_annotated_path": self.humdrum_annotated_path,
             },
         )
 
@@ -162,17 +165,17 @@ class Track(core.Track):
 def load_score(path):
     """Load haydn op20 score with annotations from a file with music21 format (music21.stream.Score).
 
-            Args:
-                path: path to hrm annotations
+    Args:
+        path: path to hrm annotations
 
-            Returns:
-                music21.stream.Score: score in music21 format
+    Returns:
+        music21.stream.Score: score in music21 format
 
     """
     if not os.path.exists(path):
         raise IOError
-    score = music21.converter.parse(path, format='humdrum')
-    rna = list(score.flat.getElementsByClass('RomanNumeral'))
+    score = music21.converter.parse(path, format="humdrum")
+    rna = list(score.flat.getElementsByClass("RomanNumeral"))
     score.remove(rna, recurse=True)
     return score
 
@@ -180,17 +183,17 @@ def load_score(path):
 def load_key(path, resolution=28):
     """Load haydn op20 key data from a file
 
-        Args:
-            path: path to hrm annotations
+    Args:
+        path: path to hrm annotations
 
-        Returns:
-            List[dict]: musical key data and time
+    Returns:
+        List[dict]: musical key data and time
 
     """
     if not os.path.exists(path):
         raise IOError
-    score = music21.converter.parse(path, format='humdrum')
-    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass('RomanNumeral'))}
+    score = music21.converter.parse(path, format="humdrum")
+    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
     annotations = []
     for offset, rn in rna.items():
         if not rn:
@@ -198,83 +201,74 @@ def load_key(path, resolution=28):
         time = int(round(float(offset * resolution)))
         tonicizedKey = rn.secondaryRomanNumeralKey
         key = tonicizedKey or rn.key
-        annotations.append({
-            'time': time,
-            'key': key
-        })
+        annotations.append({"time": time, "key": key})
     return annotations
 
 
 def load_midi_path(path):
     """Load path to midi file of haydn op20 musical piece
 
-            Args:
-                path: path to hrm annotations
+    Args:
+        path: path to hrm annotations
 
-            Returns:
-                str: midi file path
+    Returns:
+        str: midi file path
 
     """
     if not os.path.exists(path):
         raise IOError
-    midi_path = os.path.splitext(path)[0] + '.midi'
+    midi_path = os.path.splitext(path)[0] + ".midi"
     if not os.path.exists(midi_path):
-        score = music21.converter.parse(path, format='humdrum')
-        score.write('midi', fp=midi_path)
+        score = music21.converter.parse(path, format="humdrum")
+        score.write("midi", fp=midi_path)
     return midi_path
 
 
 def load_roman_numerals(path, resolution=28):
     """Load haydn op20 roman numerals data from a file
 
-            Args:
-                path: path to hrm annotations
+    Args:
+        path: path to hrm annotations
 
-            Returns:
-                List[dict]: musical roman numerals data and time
+    Returns:
+        List[dict]: musical roman numerals data and time
 
     """
     if not os.path.exists(path):
         raise IOError
-    score = music21.converter.parse(path, format='humdrum')
-    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass('RomanNumeral'))}
+    score = music21.converter.parse(path, format="humdrum")
+    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
     annotations = []
     for offset, rn in rna.items():
         if not rn:
             continue
         time = int(round(float(offset * resolution)))
         figure = rn.figure
-        annotations.append({
-            'time': time,
-            'roman_numeral': figure
-        })
+        annotations.append({"time": time, "roman_numeral": figure})
     return annotations
 
 
 def load_chord(path, resolution=28):
     """Load haydn op20 chords data from a file
 
-            `Args:
-                path: path to hrm annotations
+    `Args:
+        path: path to hrm annotations
 
-            Returns:
-                List[dict`]: musical roman numerals data and time
+    Returns:
+        List[dict`]: musical roman numerals data and time
 
     """
     if not os.path.exists(path):
         raise IOError
-    score = music21.converter.parse(path, format='humdrum')
-    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass('RomanNumeral'))}
+    score = music21.converter.parse(path, format="humdrum")
+    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
     annotations = []
     for offset, rn in rna.items():
         if not rn:
             continue
         time = int(round(float(offset * resolution)))
         chord = rn.pitchedCommonName
-        annotations.append({
-            'time': time,
-            "chord": chord
-        })
+        annotations.append({"time": time, "chord": chord})
     return annotations
 
 
@@ -283,6 +277,7 @@ class Dataset(core.Dataset):
     """
     The haydn op20 dataset
     """
+
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
@@ -313,4 +308,3 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_midi_path)
     def load_midi_path(self, *args, **kwargs):
         return load_midi_path(*args, **kwargs)
-

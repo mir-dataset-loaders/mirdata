@@ -23,7 +23,7 @@ def test_track():
         "roman_numerals": list,
         "keys": list,
         "score": object,
-        "midi_path": str
+        "midi_path": str,
     }
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -33,21 +33,15 @@ def test_to_jam():
     dataset = haydn_op20.Dataset(data_home)
     track = dataset.track("0")
     jam = track.to_jams()
+    assert jam["file_metadata"]["title"] == "op20n1-01", "title does not match expected"
+    assert jam["file_metadata"]["duration"] == 12152, "duration does not match expected"
     assert (
-            jam["file_metadata"]["title"]
-            == 'op20n1-01'
-    ), "title does not match expected"
-    assert (
-            jam["file_metadata"]["duration"]
-            == 12152
+        jam["sandbox"]["humdrum_annotated_path"]
+        == "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
     ), "duration does not match expected"
     assert (
-            jam["sandbox"]["humdrum_annotated_path"]
-            == 'tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm'
-    ), "duration does not match expected"
-    assert (
-            jam["sandbox"]["midi_path"]
-            == 'tests/resources/mir_datasets/haydn_op20/op20n1-01.midi'
+        jam["sandbox"]["midi_path"]
+        == "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
     ), "duration does not match expected"
     assert type(jam["sandbox"]["chords"]) == list
     assert type(jam["sandbox"]["key"]) == list
@@ -85,5 +79,4 @@ def test_load_midi_path():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
     midi_path = haydn_op20.load_midi_path(path)
     assert type(midi_path) == str
-    assert midi_path == 'tests/resources/mir_datasets/haydn_op20/op20n1-01.midi'
-
+    assert midi_path == "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
