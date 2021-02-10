@@ -356,7 +356,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     return librosa.load(fhandle, sr=None, mono=True)
 
 
-@io.coerce_to_bytes_io
+@io.coerce_to_string_io
 def load_score(fhandle: TextIO) -> annotations.NoteData:
     """Load a Phenicx-Anechoic score file.
 
@@ -368,14 +368,14 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
     """
 
     #### read start, end times
-    intervals = np.loadtxt(fhandle, delimiter=",", usecols=[0, 1], dtype=np.float)
+    intervals = np.loadtxt(fhandle, delimiter=",", usecols=[0, 1], dtype=np.float_)
 
     #### read notes as string
     fhandle.seek(0)
     content = fhandle.readlines()
     values = np.array(
         [
-            librosa.note_to_hz(line.decode().split(",")[2].strip("\n"))
+            librosa.note_to_hz(line.split(",")[2].strip("\n"))
             for line in content
         ]
     )
