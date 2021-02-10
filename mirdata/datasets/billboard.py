@@ -83,8 +83,17 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
-        track_id (str): track id
+        track_id (str): the index for the sample entry
         audio_path (str): audio path of the track
+        chart date (str): the date of the chart for the entry
+        target rank (int): the desired rank on that chart
+        actual rank (int): the rank of the song actually annotated, which may be up to 2 ranks higher or lower than the target rank
+        title (str): the title of the song annotated
+        artist (str): the name of the artist performing the song annotated
+        peak rank (int): the highest rank the song annotated ever achieved on the Billboard Hot 100
+        weeks on chart (int): the number of weeks the song annotated spent on the Billboard Hot 100 chart in total
+
+    Cached Properties:
         chords_full (ChordData): HTK-style LAB files for the chord annotations (full)
         chords_majmin7 (ChordData): HTK-style LAB files for the chord annotations (majmin7)
         chords_majmin7inv (ChordData): HTK-style LAB files for the chord annotations (majmin7inv)
@@ -94,14 +103,7 @@ class Track(core.Track):
         tuning (list): List containing the tuning estimates
         sections (SectionData): Letter-annotated section data (A,B,A')
         named_sections (SectionData): Name-annotated section data (intro, verse, chorus)
-        chart date (str): release date of the track
-        target rank (int):
-        actual rank (int):
-        title (str): title of the track
-        artist (str): artist name
-        peak rank (int): Highest rank on the Billboard chart.
-        weeks on chart (int): Number of weeks on the chart.
-
+        salami_metadata (dict): Metadata of the Salami LAB file
     """
 
     def __init__(
