@@ -163,12 +163,12 @@ class Track(core.Track):
 def split_score_annotations(path):
     """Load haydn op20 score and annotations divided.
 
-        Args:
-            path: path to hrm annotations
+    Args:
+        path: path to hrm annotations
 
-        Returns:
-            music21.stream.Score: score in music21 format
-            dict: roman numerals
+    Returns:
+        music21.stream.Score: score in music21 format
+        dict: roman numerals
     """
     if not os.path.exists(path):
         raise IOError
