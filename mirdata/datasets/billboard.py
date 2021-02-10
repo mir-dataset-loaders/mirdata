@@ -249,7 +249,19 @@ class Track(core.Track):
 
         """
         return jams_utils.jams_converter(
-            audio_path=self.audio_path, metadata=self._track_metadata
+            audio_path=self.audio_path,
+            chord_data=[
+                (self.chords_full, "Full chords"),
+                (self.chords_majmin, "Major/minor chords"),
+                (self.chords_majmininv, "Major/minor chords with inversions"),
+                (self.chords_majmin7, "Major/minor chords with 7th"),
+                (self.chords_majmin7inv, "Major/minor chords with 7th and inversions"),
+            ],
+            section_data=[
+                (self.sections, "Sections annotated using section letters"),
+                (self.named_sections, "Sections annotated using section names"),
+            ],
+            metadata=self._track_metadata,
         )
 
 

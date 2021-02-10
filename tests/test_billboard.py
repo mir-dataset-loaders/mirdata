@@ -70,55 +70,57 @@ def test_track():
     assert type(track.salami_metadata) is dict
 
 
-# def test_to_jams():
+def test_to_jams():
 
-#     # default_trackid = "3"
-#     # data_home = "tests/resources/mir_datasets/billboard"
-#     # dataset = billboard.Dataset(data_home)
-#     # track = dataset.track(default_trackid)
+    default_trackid = "3"
+    data_home = "tests/resources/mir_datasets/billboard"
+    dataset = billboard.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
-#     jam = track.to_jams()
+    jam = track.to_jams()
 
-#     segments = jam.search(namespace="segment")[0]["data"]
-#     print([segment.time for segment in segments])
-#     assert [segment.time for segment in segments] == [
-#         0.073469387,
-#         22.346394557,
-#         49.23802721,
-#         76.123990929,
-#         102.924353741,
-#         130.206598639,
-#     ]
+    segments = jam.search(namespace="segment")[0]["data"]
+    assert [segment.time for segment in segments] == [
+        0.073469387,
+        22.346394557,
+        49.23802721,
+        76.123990929,
+        102.924353741,
+        130.206598639,
+    ]
 
-#     assert [segment.duration for segment in segments] == [
-#         22.27292517,
-#         26.891632653,
-#         26.885963719000003,
-#         26.800362812000003,
-#         27.282244897999988,
-#         20.70278911600002,
-#     ]
+    assert [segment.duration for segment in segments] == [
+        22.27292517,
+        26.891632653,
+        26.885963719000003,
+        26.800362812000003,
+        27.282244897999988,
+        20.70278911600002,
+    ]
 
-#     assert [segment.value for segment in segments] == [
-#         ("A", "intro"),
-#         ("B", "verse"),
-#         ("B", "verse"),
-#         ("A", "interlude"),
-#         ("B", "verse"),
-#         ("A", "interlude"),
-#     ]
+    assert [segment.value for segment in segments] == ["A", "B", "B", "A", "B", "A"]
 
-#     assert [segment.confidence for segment in segments] == [
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#         None,
-#     ]
+    assert [segment.confidence for segment in segments] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
 
-#     assert jam["file_metadata"]["title"] == "I Don't Mind"
-#     assert jam["file_metadata"]["artist"] == "James Brown"
+    named_segments = jam.search(namespace="segment")[1]["data"]
+    assert [segment.value for segment in named_segments] == [
+        "intro",
+        "verse",
+        "verse",
+        "interlude",
+        "verse",
+        "interlude",
+    ]
+
+    assert jam["file_metadata"]["title"] == "I Don't Mind"
+    assert jam["file_metadata"]["artist"] == "James Brown"
 
 
 def test_load_chords():
