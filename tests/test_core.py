@@ -76,7 +76,7 @@ def test_dataset_errors():
 
 def test_multitrack_basic():
     class TestTrack(core.Track):
-        def __init__(self, key):
+        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
             self.key = key
 
         @property
@@ -87,30 +87,39 @@ def test_multitrack_basic():
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
+            self.track_ids = []
 
     mtrack = TestMultiTrack1("test", "foo")
 
     with pytest.raises(NotImplementedError):
         mtrack.to_jams()
 
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(KeyError):
         mtrack.get_target(["a"])
 
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(AssertionError):
         mtrack.get_random_target()
 
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(AssertionError):
         mtrack.get_mix()
 
     class TestMultiTrack2(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
-            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_property = "f"
+            self._dataset_name = "foo"
+            self._index = None
+            self._metadata = None
+            self._track_class = TestTrack
+            self.track_ids = ["a", "b", "c"]
 
         def to_jams(self):
             return None
+
+        @property
+        def track_audio_property(self):
+            #### the attribute of Track which returns the relevant audio file for mixing
+            return "f"
 
     mtrack = TestMultiTrack2("test", "foo")
     mtrack.to_jams()
@@ -121,7 +130,7 @@ def test_multitrack_basic():
 
 def test_multitrack_mixing():
     class TestTrack(core.Track):
-        def __init__(self, key):
+        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
             self.key = key
 
         @property
@@ -132,8 +141,16 @@ def test_multitrack_mixing():
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
-            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_property = "f"
+            self._dataset_name = "foo"
+            self._index = None
+            self._metadata = None
+            self._track_class = TestTrack
+            self.track_ids = ["a", "b", "c"]
+
+        @property
+        def track_audio_property(self):
+            #### the attribute of Track which returns the relevant audio file for mixing
+            return "f"
 
     mtrack = TestMultiTrack("test", "foo")
 
@@ -197,7 +214,7 @@ def test_multitrack_mixing():
 
 def test_multitrack_unequal_len():
     class TestTrack(core.Track):
-        def __init__(self, key):
+        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
             self.key = key
 
         @property
@@ -208,8 +225,16 @@ def test_multitrack_unequal_len():
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
-            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_property = "f"
+            self._dataset_name = "foo"
+            self._index = None
+            self._metadata = None
+            self._track_class = TestTrack
+            self.track_ids = ["a", "b", "c"]
+
+        @property
+        def track_audio_property(self):
+            #### the attribute of Track which returns the relevant audio file for mixing
+            return "f"
 
     mtrack = TestMultiTrack("test", "foo")
 
@@ -227,7 +252,7 @@ def test_multitrack_unequal_len():
 
 def test_multitrack_unequal_sr():
     class TestTrack(core.Track):
-        def __init__(self, key):
+        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
             self.key = key
 
         @property
@@ -238,8 +263,16 @@ def test_multitrack_unequal_sr():
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
-            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_property = "f"
+            self._dataset_name = "foo"
+            self._index = None
+            self._metadata = None
+            self._track_class = TestTrack
+            self.track_ids = ["a", "b", "c"]
+
+        @property
+        def track_audio_property(self):
+            #### the attribute of Track which returns the relevant audio file for mixing
+            return "f"
 
     mtrack = TestMultiTrack("test", "foo")
 
@@ -250,7 +283,7 @@ def test_multitrack_unequal_sr():
 def test_multitrack_mono():
     ### no first channel - audio shapes (100,)
     class TestTrack(core.Track):
-        def __init__(self, key):
+        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
             self.key = key
 
         @property
@@ -261,8 +294,16 @@ def test_multitrack_mono():
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
-            self.tracks = {t: TestTrack(t) for t in ["a", "b", "c"]}
-            self.track_audio_property = "f"
+            self._dataset_name = "foo"
+            self._index = None
+            self._metadata = None
+            self._track_class = TestTrack
+            self.track_ids = ["a", "b", "c"]
+
+        @property
+        def track_audio_property(self):
+            #### the attribute of Track which returns the relevant audio file for mixing
+            return "f"
 
     mtrack = TestMultiTrack("test", "foo")
 
@@ -276,7 +317,7 @@ def test_multitrack_mono():
 
     ### one channel mono shape (1, 100)
     class TestTrack1(core.Track):
-        def __init__(self, key):
+        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
             self.key = key
 
         @property
@@ -287,8 +328,16 @@ def test_multitrack_mono():
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
-            self.tracks = {t: TestTrack1(t) for t in ["a", "b", "c"]}
-            self.track_audio_property = "f"
+            self._dataset_name = "foo"
+            self._index = None
+            self._metadata = None
+            self._track_class = TestTrack
+            self.track_ids = ["a", "b", "c"]
+
+        @property
+        def track_audio_property(self):
+            #### the attribute of Track which returns the relevant audio file for mixing
+            return "f"
 
     mtrack = TestMultiTrack1("test", "foo")
 

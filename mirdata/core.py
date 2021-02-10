@@ -341,7 +341,6 @@ class Dataset(object):
         """
         return list(self._index["multitracks"].keys())
 
-
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version
 
@@ -367,12 +366,7 @@ class Track(object):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata=None,
+        self, track_id, data_home, dataset_name, index, metadata=None,
     ):
         """Track init method. Sets boilerplate attributes, including:
 
@@ -458,13 +452,7 @@ class MultiTrack(Track):
     """
 
     def __init__(
-        self,
-        mtrack_id,
-        data_home,
-        dataset_name,
-        index,
-        track_class,
-        metadata=None,
+        self, mtrack_id, data_home, dataset_name, index, track_class, metadata=None,
     ):
         """Multitrack init method. Sets boilerplate attributes, including:
 
@@ -498,10 +486,14 @@ class MultiTrack(Track):
         self._index = index
         self.track_ids = self._index["multitracks"][self.mtrack_id]["tracks"]
 
-
     @property
     def tracks(self):
-        return {t: self._track_class(t, self._data_home, self._dataset_name, self._index, self._metadata) for t in self.track_ids}
+        return {
+            t: self._track_class(
+                t, self._data_home, self._dataset_name, self._index, self._metadata
+            )
+            for t in self.track_ids
+        }
 
     @property
     def track_audio_property(self):
@@ -595,6 +587,7 @@ class MultiTrack(Track):
 
         """
         tracks = list(self.tracks.keys())
+        assert len(tracks)>0
         if n_tracks is not None and n_tracks < len(tracks):
             tracks = np.random.choice(tracks, n_tracks, replace=False)
 
@@ -612,7 +605,9 @@ class MultiTrack(Track):
             np.ndarray: mixture audio with shape (n_samples, n_channels)
 
         """
-        return self.get_target(list(self.tracks.keys()))
+        tracks = list(self.tracks.keys())
+        assert len(tracks)>0
+        return self.get_target(tracks)
 
 
 def none_path_join(partial_path_list):
