@@ -109,9 +109,7 @@ class Track(core.Track):
 
         self.keys_path = self.get_path("key")
         self.metadata_path = (
-            self.get_path("meta")
-            if self._track_paths["meta"][0] is not None
-            else None
+            self.get_path("meta") if self._track_paths["meta"][0] is not None else None
         )
 
         self.audio_path = self.get_path("audio")
