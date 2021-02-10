@@ -22,7 +22,7 @@ def test_track():
         "chords": list,
         "roman_numerals": list,
         "keys": list,
-        "score": object,
+        "score": music21.stream.Score,
         "midi_path": str,
     }
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -59,6 +59,9 @@ def test_load_key():
     key = haydn_op20.load_key(path)
     assert type(key) == list
     assert len(key) == 156
+    assert key[0]['time'] == 0
+    assert key[-1]['time'] == 12152
+    assert type(key[0]['key']) == music21.key.Key
 
 
 def test_load_chords():
@@ -66,6 +69,10 @@ def test_load_chords():
     chords = haydn_op20.load_chords(path)
     assert type(chords) == list
     assert len(chords) == 156
+    assert chords[0]['time'] == 0
+    assert chords[-1]['time'] == 12152
+    assert chords[0]['chord'] == 'Eb-major triad'
+    assert chords[-1]['chord'] == 'Eb-major triad'
 
 
 def test_load_roman_numerals():
@@ -73,6 +80,10 @@ def test_load_roman_numerals():
     roman_numerals = haydn_op20.load_roman_numerals(path)
     assert type(roman_numerals) == list
     assert len(roman_numerals) == 156
+    assert roman_numerals[0]['time'] == 0
+    assert roman_numerals[-1]['time'] == 12152
+    assert roman_numerals[0]['roman_numeral'] == 'I'
+    assert roman_numerals[-1]['roman_numeral'] == 'I'
 
 
 def test_load_midi_path():
