@@ -255,7 +255,7 @@ class Track(core.Track):
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load a TinySOL audio file.
+    """Load a Billboard audio file.
 
     Args:
         fhandle (str or file-like): File-like object or path to audio file
@@ -270,9 +270,14 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 @io.coerce_to_string_io
 def load_chords(fhandle: TextIO):
-    """Private function to load LAB format chord data from a file
+    """Load chords from a Salami LAB file.
+
     Args:
-        chords_path (str):
+        fhandle (str or file-like): path to audio file
+
+    Returns:
+        ChordData: chord data
+
     """
     start_times = []
     end_times = []
@@ -299,9 +304,15 @@ def _parse_timed_sections(fhandle: TextIO) -> List:
 
 
 def load_sections(fpath: str, section_type: str):
-    """Private function to load SALAMI format sections data from a file
+    """Load chords from a Salami LAB file.
+
     Args:
-        sections_path (str):
+        fpath (str): path to audio file
+        section_type (str): section type (options: letter, name)
+
+    Returns:
+        SectionData: section data
+
     """
 
     timed_sections = _parse_timed_sections(fpath)

@@ -36,7 +36,7 @@ beatport_key
    :inherited-members:
 
 billboard
-^^^^^^^
+^^^^^^^^^
 
 .. automodule:: mirdata.datasets.billboard
    :members:
