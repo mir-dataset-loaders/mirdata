@@ -1,3 +1,4 @@
+import pytest
 import numpy as np
 from mirdata.datasets import billboard
 from mirdata import annotations
@@ -201,6 +202,12 @@ def test_load_sections():
             ]
         ),
     )
+
+    with pytest.raises(ValueError):
+        sections = billboard.load_sections(
+            "tests/resources/mir_datasets/billboard/McGill-Billboard/0035/salami_chords.txt",
+            "no_section_type",
+        )
 
 
 def test_load_chroma():
