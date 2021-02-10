@@ -294,15 +294,6 @@ def load_chords(fhandle: TextIO):
     return chord_data
 
 
-@io.coerce_to_string_io
-def _parse_timed_sections(fhandle: TextIO) -> List:
-    lines = fhandle.read().split("\n")
-    salami = _parse_salami(lines)
-    assert salami is not None
-    timed_sections = _timed_sections(salami)
-    return timed_sections
-
-
 def load_sections(fpath: str, section_type: str):
     """Load chords from a Salami LAB file.
 
@@ -349,7 +340,7 @@ def load_sections(fpath: str, section_type: str):
 
 
 @io.coerce_to_string_io
-def parse_salami_metadata(fhandle: TextIO):
+def _parse_salami_metadata(fhandle: TextIO):
     s = fhandle.read().split("\n")
     o = {}
     for x in s:
@@ -365,6 +356,15 @@ def parse_salami_metadata(fhandle: TextIO):
         else:
             break
     return o
+
+
+@io.coerce_to_string_io
+def _parse_timed_sections(fhandle: TextIO) -> List:
+    lines = fhandle.read().split("\n")
+    salami = _parse_salami(lines)
+    assert salami is not None
+    timed_sections = _timed_sections(salami)
+    return timed_sections
 
 
 def _parse_salami(s: List) -> Dict:
