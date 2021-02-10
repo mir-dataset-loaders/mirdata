@@ -68,7 +68,12 @@ REMOTES = {
     ),
 }
 
-LICENSE_INFO = "Creative Commons Attribution 4.0 International Public License."
+LICENSE_INFO = """
+This data is released under a Creative Commons 0 license, effectively dedicating it to
+the public domain. More information about this dedication and your rights, please see the
+details here: http://creativecommons.org/publicdomain/zero/1.0/ and
+http://creativecommons.org/publicdomain/zero/1.0/legalcode.
+"""
 
 
 class Track(core.Track):
