@@ -43,7 +43,7 @@
 import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
 
-from mirdata import core
+from mirdata import core, io
 from mirdata import download_utils
 from mirdata import jams_utils
 import music21
@@ -160,50 +160,50 @@ class Track(core.Track):
         )
 
 
-def split_score_annotations(path):
+def split_score_annotations(fhandle: TextIO):
     """Load haydn op20 score and annotations divided.
 
     Args:
-        path: path to hrm annotations
+        fhandle (str or file-like): path to hrm annotations
 
     Returns:
         music21.stream.Score: score in music21 format
         dict: roman numerals
     """
-    if not os.path.exists(path):
+    if not os.path.exists(fhandle):
         raise IOError
-    score = music21.converter.parse(path, format="humdrum")
+    score = music21.converter.parse(fhandle, format="humdrum")
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
     score.remove(rna, recurse=True)
     print(type(rna))
     return score, rna
 
 
-def load_score(path):
+def load_score(fhandle: TextIO):
     """Load haydn op20 score with annotations from a file with music21 format (music21.stream.Score).
 
     Args:
-        path: path to hrm annotations
+        fhandle (str or file-like): path to hrm annotations
 
     Returns:
         music21.stream.Score: score in music21 format
 
     """
-    score, rna = split_score_annotations(path)
+    score, rna = split_score_annotations(fhandle)
     return score
 
 
-def load_key(path, resolution=28):
+def load_key(fhandle: TextIO, resolution=28):
     """Load haydn op20 key data from a file
 
     Args:
-        path: path to hrm annotations
+        fhandle (str or file-like): path to hrm annotations
 
     Returns:
         List[dict]: musical key data and time
 
     """
-    _, rna = split_score_annotations(path)
+    _, rna = split_score_annotations(fhandle)
     annotations = []
     for offset, rn in rna.items():
         if not rn:
@@ -215,34 +215,36 @@ def load_key(path, resolution=28):
     return annotations
 
 
-def load_midi_path(path):
+@io.coerce_to_string_io
+def load_midi_path(fhandle: TextIO):
     """Load path to midi file of haydn op20 musical piece
 
     Args:
-        path: path to hrm annotations
+        fhandle (str or file-like): path to hrm annotations
 
     Returns:
         str: midi file path
 
     """
-    midi_path = os.path.splitext(path)[0] + ".midi"
+    midi_path = os.path.splitext(fhandle.read())[0] + ".midi"
     if not os.path.exists(midi_path):
-        score, _ = split_score_annotations(path)
+        score, _ = split_score_annotations(fhandle)
         score.write("midi", fp=midi_path)
     return midi_path
 
 
-def load_roman_numerals(path, resolution=28):
+@io.coerce_to_string_io
+def load_roman_numerals(fhandle: TextIO, resolution=28):
     """Load haydn op20 roman numerals data from a file
 
     Args:
-        path: path to hrm annotations
+        fhandle (str or file-like): path to hrm annotations
 
     Returns:
         List[dict]: musical roman numerals data and time
 
     """
-    _, rna = split_score_annotations(path)
+    _, rna = split_score_annotations(fhandle)
     annotations = []
     for offset, rn in rna.items():
         if not rn:
@@ -253,17 +255,18 @@ def load_roman_numerals(path, resolution=28):
     return annotations
 
 
-def load_chords(path, resolution=28):
+@io.coerce_to_string_io
+def load_chords(fhandle: TextIO, resolution=28):
     """Load haydn op20 chords data from a file
 
     `Args:
-        path: path to hrm annotations
+        fhandle (str or file-like): path to hrm annotations
 
     Returns:
-        List[dict`]: musical roman numerals data and time
+        List[dict`]: musical chords data and time
 
     """
-    _, rna = split_score_annotations(path)
+    _, rna = split_score_annotations(fhandle)
     annotations = []
     for offset, rn in rna.items():
         if not rn:
