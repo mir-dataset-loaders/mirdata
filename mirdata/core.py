@@ -587,7 +587,7 @@ class MultiTrack(Track):
 
         """
         tracks = list(self.tracks.keys())
-        assert len(tracks)>0
+        assert len(tracks) > 0
         if n_tracks is not None and n_tracks < len(tracks):
             tracks = np.random.choice(tracks, n_tracks, replace=False)
 
@@ -606,7 +606,7 @@ class MultiTrack(Track):
 
         """
         tracks = list(self.tracks.keys())
-        assert len(tracks)>0
+        assert len(tracks) > 0
         return self.get_target(tracks)
 
 

@@ -76,7 +76,9 @@ def test_dataset_errors():
 
 def test_multitrack_basic():
     class TestTrack(core.Track):
-        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
+        def __init__(
+            self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
+        ):
             self.key = key
 
         @property
@@ -130,7 +132,9 @@ def test_multitrack_basic():
 
 def test_multitrack_mixing():
     class TestTrack(core.Track):
-        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
+        def __init__(
+            self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
+        ):
             self.key = key
 
         @property
@@ -214,7 +218,9 @@ def test_multitrack_mixing():
 
 def test_multitrack_unequal_len():
     class TestTrack(core.Track):
-        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
+        def __init__(
+            self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
+        ):
             self.key = key
 
         @property
@@ -252,7 +258,9 @@ def test_multitrack_unequal_len():
 
 def test_multitrack_unequal_sr():
     class TestTrack(core.Track):
-        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
+        def __init__(
+            self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
+        ):
             self.key = key
 
         @property
@@ -283,7 +291,9 @@ def test_multitrack_unequal_sr():
 def test_multitrack_mono():
     ### no first channel - audio shapes (100,)
     class TestTrack(core.Track):
-        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
+        def __init__(
+            self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
+        ):
             self.key = key
 
         @property
@@ -317,7 +327,9 @@ def test_multitrack_mono():
 
     ### one channel mono shape (1, 100)
     class TestTrack1(core.Track):
-        def __init__(self, key, data_home="foo", dataset_name="foo", index=None, metadata=None):
+        def __init__(
+            self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
+        ):
             self.key = key
 
         @property

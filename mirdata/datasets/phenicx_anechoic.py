@@ -374,10 +374,7 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
     fhandle.seek(0)
     content = fhandle.readlines()
     values = np.array(
-        [
-            librosa.note_to_hz(line.split(",")[2].strip("\n"))
-            for line in content
-        ]
+        [librosa.note_to_hz(line.split(",")[2].strip("\n")) for line in content]
     )
 
     return annotations.NoteData(intervals, values)
