@@ -120,7 +120,7 @@
      - 252
      - :ikala:`\ `
 
-    * - Haydn op20
+   * - Haydn op20
      - - scores: ✅
        - annotations: ✅
      - - :ref:`chords`
