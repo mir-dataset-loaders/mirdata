@@ -122,6 +122,24 @@ def test_to_jams():
     assert jam["file_metadata"]["title"] == "I Don't Mind"
     assert jam["file_metadata"]["artist"] == "James Brown"
 
+    chords = jam.search(namespace="chord")[0]["data"]
+    assert [chord.value for chord in chords][:10] == [
+        "N",
+        "N",
+        "N",
+        "A:min",
+        "A:min",
+        "C:maj",
+        "C:maj",
+        "A:min",
+        "A:min",
+        "C:maj",
+    ]
+
+    chords = jam.search(namespace="chord")
+    assert len(chords) == 5
+    assert chords[0]["sandbox"]["name"] == "Full chords"
+
 
 def test_load_chords():
     default_trackid = "35"
