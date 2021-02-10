@@ -84,8 +84,8 @@ REMOTES = {
         filename="PHENICX-Anechoic.zip",
         url="https://zenodo.org/record/840025/files/PHENICX-Anechoic.zip?download=1",
         checksum="7fec47568263476ecac0103aef608629",
-        destination_dir="..",
-        # unpack_directories=["PHENICX-Anechoic"]
+        #destination_dir="..",
+        unpack_directories=["PHENICX-Anechoic"]
     )
 }
 
@@ -169,6 +169,7 @@ class Track(core.Track):
             * float - The sample rate of the audio file
 
         """
+        assert self.audio_paths is not None
         audio_mix, sr = load_audio(self.audio_paths[0])
 
         for i in range(1, self.n_voices):
