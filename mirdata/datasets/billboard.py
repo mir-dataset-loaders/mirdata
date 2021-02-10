@@ -195,8 +195,10 @@ class Track(core.Track):
 
     @core.cached_property
     def chroma(self):
-        """
-        NNLS chroma vectors from the NNLS chroma Vamp plug-in
+        """Non-negative-least-squares (NNLS) chroma vectors from the Chordino Vamp plug-in
+        
+        Returns:
+            np.ndarray - NNLS chroma vector
         """
         # removed the first column since it contains metadata.
         with open(self.bothchroma_path, "r") as f:
@@ -204,8 +206,10 @@ class Track(core.Track):
 
     @core.cached_property
     def tuning(self):
-        """
-        Tuning from NNLS chroma Vamp plug-in
+        """Tuning estimates from the Chordino Vamp plug-in
+
+        Returns:
+            list - list of of tuning estimates []
         """
         with open(self.tuning_path, "r") as f:
             return next(csv.reader(f))[1:]
