@@ -160,6 +160,25 @@ class Track(core.Track):
         )
 
 
+def split_score_annotations(path):
+    """Load haydn op20 score and annotations divided.
+
+        Args:
+            path: path to hrm annotations
+
+        Returns:
+            music21.stream.Score: score in music21 format
+            dict: roman numerals
+    """
+    if not os.path.exists(path):
+        raise IOError
+    score = music21.converter.parse(path, format="humdrum")
+    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
+    score.remove(rna, recurse=True)
+    print(type(rna))
+    return score, rna
+
+
 def load_score(path):
     """Load haydn op20 score with annotations from a file with music21 format (music21.stream.Score).
 
@@ -170,11 +189,7 @@ def load_score(path):
         music21.stream.Score: score in music21 format
 
     """
-    if not os.path.exists(path):
-        raise IOError
-    score = music21.converter.parse(path, format="humdrum")
-    rna = list(score.flat.getElementsByClass("RomanNumeral"))
-    score.remove(rna, recurse=True)
+    score, rna = split_score_annotations(path)
     return score
 
 
@@ -188,10 +203,7 @@ def load_key(path, resolution=28):
         List[dict]: musical key data and time
 
     """
-    if not os.path.exists(path):
-        raise IOError
-    score = music21.converter.parse(path, format="humdrum")
-    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
+    _, rna = split_score_annotations(path)
     annotations = []
     for offset, rn in rna.items():
         if not rn:
@@ -213,11 +225,9 @@ def load_midi_path(path):
         str: midi file path
 
     """
-    if not os.path.exists(path):
-        raise IOError
     midi_path = os.path.splitext(path)[0] + ".midi"
     if not os.path.exists(midi_path):
-        score = music21.converter.parse(path, format="humdrum")
+        score, _ = split_score_annotations(path)
         score.write("midi", fp=midi_path)
     return midi_path
 
@@ -232,10 +242,7 @@ def load_roman_numerals(path, resolution=28):
         List[dict]: musical roman numerals data and time
 
     """
-    if not os.path.exists(path):
-        raise IOError
-    score = music21.converter.parse(path, format="humdrum")
-    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
+    _, rna = split_score_annotations(path)
     annotations = []
     for offset, rn in rna.items():
         if not rn:
@@ -256,10 +263,7 @@ def load_chords(path, resolution=28):
         List[dict`]: musical roman numerals data and time
 
     """
-    if not os.path.exists(path):
-        raise IOError
-    score = music21.converter.parse(path, format="humdrum")
-    rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
+    _, rna = split_score_annotations(path)
     annotations = []
     for offset, rn in rna.items():
         if not rn:
