@@ -52,6 +52,7 @@ import numpy as np
 from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import download_utils
+from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
 from mirdata import io
