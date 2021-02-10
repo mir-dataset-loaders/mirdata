@@ -80,12 +80,12 @@ BIBTEX = """
 """
 
 REMOTES = {
-    'all': download_utils.RemoteFileMetadata(
-        filename='PHENICX-Anechoic.zip',
-        url='https://zenodo.org/record/840025/files/PHENICX-Anechoic.zip?download=1',
-        checksum='7fec47568263476ecac0103aef608629',
-        destination_dir='..',
-        #unpack_directories=["PHENICX-Anechoic"]
+    "all": download_utils.RemoteFileMetadata(
+        filename="PHENICX-Anechoic.zip",
+        url="https://zenodo.org/record/840025/files/PHENICX-Anechoic.zip?download=1",
+        checksum="7fec47568263476ecac0103aef608629",
+        destination_dir="..",
+        # unpack_directories=["PHENICX-Anechoic"]
     )
 }
 
@@ -94,17 +94,18 @@ Creative Commons Attribution Non Commercial Share Alike 4.0 International
 """
 
 DATASET_SECTIONS = {
-    'doublebass': 'strings',
-    'cello': 'strings',
-    'clarinet': 'woodwinds',
-    'viola': 'strings',
-    'violin': 'strings',
-    'oboe': 'woodwinds',
-    'flute': 'woodwinds',
-    'trumpet': 'brass',
-    'bassoon': 'woodwinds',
-    'horn': 'brass',
+    "doublebass": "strings",
+    "cello": "strings",
+    "clarinet": "woodwinds",
+    "viola": "strings",
+    "violin": "strings",
+    "oboe": "woodwinds",
+    "flute": "woodwinds",
+    "trumpet": "brass",
+    "bassoon": "woodwinds",
+    "horn": "brass",
 }
+
 
 class Track(core.Track):
     """Phenicx-Anechoic Track class
@@ -127,36 +128,27 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
-        self.instrument = self.track_id.split('-')[1]
-        self.piece = self.track_id.split('-')[0]
+        self.instrument = self.track_id.split("-")[1]
+        self.piece = self.track_id.split("-")[0]
 
-        self.audio_paths = [os.path.join(
-            self._data_home, self._track_paths[key][0]
-        ) for key in self._track_paths if 'audio_' in key]
+        self.audio_paths = [
+            os.path.join(self._data_home, self._track_paths[key][0])
+            for key in self._track_paths
+            if "audio_" in key
+        ]
 
         self.n_voices = len(self.audio_paths)
 
-        self.notes_path = os.path.join(
-            self._data_home, self._track_paths['notes'][0]
-        )
+        self.notes_path = os.path.join(self._data_home, self._track_paths["notes"][0])
 
         self.notes_original_path = os.path.join(
-            self._data_home, self._track_paths['notes_original'][0]
+            self._data_home, self._track_paths["notes_original"][0]
         )
 
     @property
@@ -168,12 +160,12 @@ class Track(core.Track):
             * float - The sample rate of the audio file
 
         """
-        audio_mix,sr = load_audio(self.audio_paths[0])
+        audio_mix, sr = load_audio(self.audio_paths[0])
 
-        for i in range(1,self.n_voices):
-            audio,_ = load_audio(self.audio_paths[i])
+        for i in range(1, self.n_voices):
+            audio, _ = load_audio(self.audio_paths[i])
             audio_mix += audio
-        return audio_mix,sr
+        return audio_mix, sr
 
     @core.cached_property
     def notes(self) -> Optional[annotations.NoteData]:
@@ -195,7 +187,7 @@ class Track(core.Track):
         """
         return load_score(self.notes_original_path)
 
-    def get_audio_voice(self,id_voice) -> Optional[Tuple[np.ndarray, float]]:
+    def get_audio_voice(self, id_voice: int) -> Optional[Tuple[np.ndarray, float]]:
         """the track's audio
 
         Returns:
@@ -203,6 +195,7 @@ class Track(core.Track):
             * float - The sample rate of the audio file
 
         """
+        assert id_voice < self.n_voices
         return load_audio(self.audio_paths[id_voice])
 
     def to_jams(self):
@@ -213,10 +206,8 @@ class Track(core.Track):
 
         """
         return jams_utils.jams_converter(
-            audio_path=self.audio_paths[0],
-            note_data=[(self.notes, "aligned notes")]
+            audio_path=self.audio_paths[0], note_data=[(self.notes, "aligned notes")]
         )
-
 
 
 class MultiTrack(core.MultiTrack):
@@ -234,6 +225,7 @@ class MultiTrack(core.MultiTrack):
         mtrack_id (str): multitrack id
         tracks (list): list of track ids within this multitrack
     """
+
     def __init__(
         self,
         mtrack_id,
@@ -244,21 +236,16 @@ class MultiTrack(core.MultiTrack):
         metadata=None,
     ):
         super().__init__(
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            Track,
-            metadata,
+            mtrack_id, data_home, dataset_name, index, Track, metadata,
         )
 
         #### parse the keys for the dictionary of instruments and strings
         self.instruments = {
-                source.replace(self.mtrack_id+'-', ''):source
-                for source in self.track_ids
-            }
-        self.sections = {'brass':[],'strings':[],'woodwinds':[]}
-        for instrument,track_id in self.instruments.items():
+            source.replace(self.mtrack_id + "-", ""): source
+            for source in self.track_ids
+        }
+        self.sections = {"brass": [], "strings": [], "woodwinds": []}
+        for instrument, track_id in self.instruments.items():
             self.sections[DATASET_SECTIONS[instrument]].append(track_id)
 
         self.piece = self.mtrack_id
@@ -266,9 +253,9 @@ class MultiTrack(core.MultiTrack):
     @property
     def track_audio_property(self):
         #### the attribute of Track which returns the relevant audio file for mixing
-        return 'audio'
+        return "audio"
 
-    def get_audio_for_instrument(self,instrument):
+    def get_audio_for_instrument(self, instrument):
         """Get the audio for a particular instrument
 
         Args:
@@ -278,9 +265,12 @@ class MultiTrack(core.MultiTrack):
             np.ndarray: instrument audio with shape (n_samples, n_channels)
 
         """
-        return getattr(self.tracks[self.instruments[instrument]], self.track_audio_property)[0]
+        assert instrument in self.instruments.keys()
+        return getattr(
+            self.tracks[self.instruments[instrument]], self.track_audio_property
+        )[0]
 
-    def get_audio_for_section(self,section):
+    def get_audio_for_section(self, section):
         """Get the audio for a particular section
 
         Args:
@@ -290,9 +280,10 @@ class MultiTrack(core.MultiTrack):
             np.ndarray: section audio with shape (n_samples, n_channels)
 
         """
+        assert section in self.sections.keys()
         return self.get_target(self.sections[section])
 
-    def get_notes_target(self, track_keys, notes_property='notes'):
+    def get_notes_target(self, track_keys, notes_property="notes"):
         """Get the notes for all the tracks
 
         Args:
@@ -313,15 +304,15 @@ class MultiTrack(core.MultiTrack):
         intervals = np.vstack(intervals)
 
         #### sort on the start time
-        ind = np.argsort(intervals[:,0], axis=0)
-        start_times = np.take_along_axis(intervals[:,0], ind, axis=0)
-        end_times = np.take_along_axis(intervals[:,1], ind, axis=0)
-        intervals = np.vstack([start_times,end_times]).T
+        ind = np.argsort(intervals[:, 0], axis=0)
+        start_times = np.take_along_axis(intervals[:, 0], ind, axis=0)
+        end_times = np.take_along_axis(intervals[:, 1], ind, axis=0)
+        intervals = np.vstack([start_times, end_times]).T
         values = np.take_along_axis(values, ind, axis=0)
 
         return annotations.NoteData(intervals, values)
 
-    def get_notes_for_instrument(self,instrument, notes_property='notes'):
+    def get_notes_for_instrument(self, instrument, notes_property="notes"):
         """Get the notes for a particular instrument
 
         Args:
@@ -334,7 +325,7 @@ class MultiTrack(core.MultiTrack):
         """
         return getattr(self.tracks[self.instruments[instrument]], notes_property)
 
-    def get_notes_for_section(self,section, notes_property='notes'):
+    def get_notes_for_section(self, section, notes_property="notes"):
         """Get the notes for a particular section
 
         Args:
@@ -345,7 +336,9 @@ class MultiTrack(core.MultiTrack):
             NoteData: Note data for the section
 
         """
-        return self.get_notes_target(self.sections[section], notes_property=notes_property)
+        return self.get_notes_target(
+            self.sections[section], notes_property=notes_property
+        )
 
 
 @io.coerce_to_bytes_io
@@ -380,7 +373,12 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
     #### read notes as string
     fhandle.seek(0)
     content = fhandle.readlines()
-    values = np.array([librosa.note_to_hz(line.decode().split(',')[2].strip('\n')) for line in content])
+    values = np.array(
+        [
+            librosa.note_to_hz(line.decode().split(",")[2].strip("\n"))
+            for line in content
+        ]
+    )
 
     return annotations.NoteData(intervals, values)
 
