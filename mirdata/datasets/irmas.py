@@ -193,10 +193,10 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.annotation_path = os.path.join(
-            self._data_home, self._track_paths["annotation"][0]
-        )
+
+        self.annotation_path = self.get_path("annotation")
+
+        self.audio_path = self.get_path("audio")
 
         # Dataset attributes
         self.predominant_instrument = None

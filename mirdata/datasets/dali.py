@@ -126,10 +126,9 @@ class Track(core.Track):
             metadata,
         )
 
-        self.annotation_path = os.path.join(
-            self._data_home, self._track_paths["annot"][0]
-        )
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.annotation_path = self.get_path("annot")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def audio_url(self):
