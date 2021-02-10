@@ -233,7 +233,7 @@ def test_load_sections():
     )
 
     with pytest.raises(ValueError):
-        sections = billboard.load_sections(
+        sections = billboard._load_sections(
             "tests/resources/mir_datasets/billboard/McGill-Billboard/0035/salami_chords.txt",
             "no_section_type",
         )

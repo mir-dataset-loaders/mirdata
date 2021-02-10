@@ -213,15 +213,13 @@ class Track(core.Track):
     @core.cached_property
     def sections(self):
         return load_sections(
-            os.path.join(self._data_home, self._track_paths["salami"][0]),
-            section_type="letter",
+            os.path.join(self._data_home, self._track_paths["salami"][0])
         )
 
     @core.cached_property
     def named_sections(self):
-        return load_sections(
-            os.path.join(self._data_home, self._track_paths["salami"][0]),
-            section_type="name",
+        return load_named_sections(
+            os.path.join(self._data_home, self._track_paths["salami"][0])
         )
 
     @core.cached_property
@@ -306,17 +304,33 @@ def load_chords(fhandle: TextIO):
     return chord_data
 
 
-def load_sections(fpath: str, section_type: str):
-    """Load chords from a Salami LAB file.
+def load_sections(fpath: str):
+    """Load letter-annotated sections from a Salami LAB file.
 
     Args:
         fpath (str): path to audio file
-        section_type (str): section type (options: letter, name)
 
     Returns:
         SectionData: section data
 
     """
+    return _load_sections(fpath, "letter")
+
+
+def load_named_sections(fpath: str):
+    """Load name-annotated sections from a Salami LAB file.
+
+    Args:
+        fpath (str): path to audio file
+
+    Returns:
+        SectionData: section data
+
+    """
+    return _load_sections(fpath, "name")
+
+
+def _load_sections(fpath: str, section_type: str):
 
     timed_sections = _parse_timed_sections(fpath)
     assert timed_sections is not None
@@ -512,6 +526,10 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_sections)
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_named_sections)
+    def load_named_sections(self, *args, **kwargs):
+        return load_named_sections(*args, **kwargs)
 
     @core.copy_docs(load_chords)
     def load_chords(self, *args, **kwargs):
