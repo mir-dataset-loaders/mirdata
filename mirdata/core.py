@@ -366,7 +366,12 @@ class Track(object):
     """
 
     def __init__(
-        self, track_id, data_home, dataset_name, index, metadata=None,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata=None,
     ):
         """Track init method. Sets boilerplate attributes, including:
 
@@ -452,7 +457,13 @@ class MultiTrack(Track):
     """
 
     def __init__(
-        self, mtrack_id, data_home, dataset_name, index, track_class, metadata=None,
+        self,
+        mtrack_id,
+        data_home,
+        dataset_name,
+        index,
+        track_class,
+        metadata=None,
     ):
         """Multitrack init method. Sets boilerplate attributes, including:
 
