@@ -196,7 +196,7 @@ class Track(core.Track):
     @core.cached_property
     def chroma(self):
         """Non-negative-least-squares (NNLS) chroma vectors from the Chordino Vamp plug-in
-        
+
         Returns:
             np.ndarray - NNLS chroma vector
         """
