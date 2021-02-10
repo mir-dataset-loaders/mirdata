@@ -226,7 +226,7 @@ class Track(core.Track):
 
     @core.cached_property
     def salami_metadata(self):
-        return parse_salami_metadata(
+        return _parse_salami_metadata(
             os.path.join(self._data_home, self._track_paths["salami"][0])
         )
 

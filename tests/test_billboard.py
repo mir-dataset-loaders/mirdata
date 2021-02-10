@@ -58,7 +58,16 @@ def test_track():
     assert track.artist == "James Brown"
 
     # test that cached properties don't fail and have the expected type
+    assert type(track.chords_full) is annotations.ChordData
+    assert type(track.chords_majmin7) is annotations.ChordData
+    assert type(track.chords_majmin7inv) is annotations.ChordData
+    assert type(track.chords_majmin) is annotations.ChordData
+    assert type(track.chords_majmininv) is annotations.ChordData
+    assert type(track.chroma) is np.ndarray
+    assert type(track.tuning) is list
     assert type(track.sections) is annotations.SectionData
+    assert type(track.named_sections) is annotations.SectionData
+    assert type(track.salami_metadata) is dict
 
 
 # def test_to_jams():
