@@ -63,7 +63,7 @@ def test_load_key():
 
 def test_load_chords():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
-    chords = haydn_op20.load_chord(path)
+    chords = haydn_op20.load_chords(path)
     assert type(chords) == list
     assert len(chords) == 156
 

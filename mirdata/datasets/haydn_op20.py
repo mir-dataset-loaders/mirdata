@@ -1,43 +1,43 @@
 """haydn op20 Dataset Loader
 
 ..
-    This dataset has a relative dependency Music21
-    admonition:: Dataset Info
-    This dataset accompanies the Master Thesis from Nestor Napoles. It is a manually-annotated corpus of harmonic
-    analysis in **harm syntax.
+    This dataset has a relative dependency with Music21.
+    .. admonition:: Dataset Info :class: dropdown
+        This dataset accompanies the Master Thesis from Nestor Napoles. It is a manually-annotated corpus of harmonic
+        analysis in harm syntax.
 
-    The dataset contains the following scores:
-    Haydn, Joseph
-        1. E-flat major, op. 20 no. 1, Hob. III-31
-            I. Allegro moderato
-            II. Menuetto. Allegretto
-            III. Affettuoso e sostenuto
-            IV. Finale. Presto
-        2. C major, op. 20 no. 2, Hob. III-32
-            I. Moderato
-            II. Capriccio. Adagio
-            III. Menuetto. Allegretto
-            IV. Fuga a 4 soggetti
-        3. G minor, op. 20 no. 3, Hob. III-33
-            I. Allegro con spirito
-            II. Menuetto. Allegretto
-            III. Poco adagio
-            IV. Finale. Allegro molto
-        4. D major, op. 20 no. 4, Hob. III-34
-            I. Allegro di molto
-            II. Un poco adagio e affettuoso
-            III. Menuet alla Zingarese & Trio
-            IV. Presto e scherzando
-        5. F minor, op. 20 no. 5, Hob. III-35
-            I. Allegro moderato
-            II. Menuetto
-            III. Adagio
-            IV. Finale. Fuga a due soggetti
-        6. A major, op. 20 no. 6, Hob. III-36
-            I. Allegro di molto e scherzando
-            II. Adagio. Cantabile
-            III. Menuetto. Allegretto
-            IV. Fuga a 3 soggetti. Allegro
+        The dataset contains the following scores:
+        Haydn, Joseph
+            1. E-flat major, op. 20 no. 1, Hob. III-31
+                I. Allegro moderato
+                II. Menuetto. Allegretto
+                III. Affettuoso e sostenuto
+                IV. Finale. Presto
+            2. C major, op. 20 no. 2, Hob. III-32
+                I. Moderato
+                II. Capriccio. Adagio
+                III. Menuetto. Allegretto
+                IV. Fuga a 4 soggetti
+            3. G minor, op. 20 no. 3, Hob. III-33
+                I. Allegro con spirito
+                II. Menuetto. Allegretto
+                III. Poco adagio
+                IV. Finale. Allegro molto
+            4. D major, op. 20 no. 4, Hob. III-34
+                I. Allegro di molto
+                II. Un poco adagio e affettuoso
+                III. Menuet alla Zingarese & Trio
+                IV. Presto e scherzando
+            5. F minor, op. 20 no. 5, Hob. III-35
+                I. Allegro moderato
+                II. Menuetto
+                III. Adagio
+                IV. Finale. Fuga a due soggetti
+            6. A major, op. 20 no. 6, Hob. III-36
+                I. Allegro di molto e scherzando
+                II. Adagio. Cantabile
+                III. Menuetto. Allegretto
+                IV. Fuga a 3 soggetti. Allegro
 """
 
 import os
@@ -88,11 +88,9 @@ class Track(core.Track):
         humdrum_annotated_path (str): path to humdrum annotated score
 
     Cached Properties:
-        key (str): key annotation
-        score (np.array): computed audio spectrum
-        keys (list): annotated local key
-        roman_numerals (list): MusicBrainz metadata
-        chords (list): annotated local key
+        keys (list): annotated local keys.
+        roman_numerals (list): annotated roman_numerals.
+        chords (list): annotated chords.
         duration (int): relative duration
         midi_path (str): path to midi
         score (music21.stream.Score): music21 score
@@ -132,7 +130,7 @@ class Track(core.Track):
 
     @core.cached_property
     def chords(self, resolution=28) -> List[dict]:
-        return load_roman_numerals(self.humdrum_annotated_path, resolution)
+        return load_chords(self.humdrum_annotated_path, resolution)
 
     @core.cached_property
     def duration(self) -> int:
@@ -248,7 +246,7 @@ def load_roman_numerals(path, resolution=28):
     return annotations
 
 
-def load_chord(path, resolution=28):
+def load_chords(path, resolution=28):
     """Load haydn op20 chords data from a file
 
     `Args:
@@ -297,9 +295,9 @@ class Dataset(core.Dataset):
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_chord)
-    def load_chord(self, *args, **kwargs):
-        return load_chord(*args, **kwargs)
+    @core.copy_docs(load_chords)
+    def load_chords(self, *args, **kwargs):
+        return load_chords(*args, **kwargs)
 
     @core.copy_docs(load_roman_numerals)
     def load_roman_numerals(self, *args, **kwargs):
