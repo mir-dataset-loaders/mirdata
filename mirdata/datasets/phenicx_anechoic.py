@@ -169,7 +169,6 @@ class Track(core.Track):
             * float - The sample rate of the audio file
 
         """
-        assert self.audio_paths is not None and isinstance(self.audio_paths,list)
         audio_mix, sr = load_audio(self.audio_paths[0])
 
         for i in range(1, self.n_voices):
