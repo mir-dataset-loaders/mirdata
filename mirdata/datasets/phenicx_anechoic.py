@@ -172,9 +172,9 @@ class Track(core.Track):
         assert self.audio_paths is not None
         audio_mix, sr = load_audio(self.audio_paths[0])
 
-        for i in range(1, self.n_voices):
-            audio, _ = load_audio(self.audio_paths[i])
-            audio_mix += audio
+        # for i in range(1, self.n_voices):
+        #     audio, _ = load_audio(self.audio_paths[i])
+        #     audio_mix += audio
         return audio_mix, sr
 
     @core.cached_property
