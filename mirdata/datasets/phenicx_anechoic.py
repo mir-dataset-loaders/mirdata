@@ -169,13 +169,12 @@ class Track(core.Track):
             * float - The sample rate of the audio file
 
         """
-        if isinstance(self.audio_paths,list) and len(self.audio_paths)>0:
-            audio_mix, sr = load_audio(self.audio_paths[0])
-            for i in range(1, self.n_voices):
-                audio, _ = load_audio(self.audio_paths[i])
-                audio_mix += audio
-        else:
-            audio_mix, sr = load_audio(self.audio_paths)
+        assert self.audio_paths is not None and isinstance(self.audio_paths,list)
+        audio_mix, sr = load_audio(self.audio_paths[0])
+
+        for i in range(1, self.n_voices):
+            audio, _ = load_audio(self.audio_paths[i])
+            audio_mix += audio
         return audio_mix, sr
 
     @core.cached_property
