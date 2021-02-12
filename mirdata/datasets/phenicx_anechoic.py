@@ -169,10 +169,14 @@ class Track(core.Track):
             * float - The sample rate of the audio file
 
         """
-        audio_mix, sr = load_audio(self.audio_paths[0])
+        x = load_audio(self.audio_paths[0])
+        assert x is not None, "path %s does not exit".format(self.audio_paths[0])
+        audio_mix, sr = x
 
         for i in range(1, self.n_voices):
-            audio, _ = load_audio(self.audio_paths[i])
+            x = load_audio(self.audio_paths[i])
+            assert x is not None, "path %s does not exit".format(self.audio_paths[0])
+            audio, _ = x
             audio_mix += audio
         return audio_mix, sr
 
