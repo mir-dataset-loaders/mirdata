@@ -176,6 +176,9 @@ def test_multitrack_basic():
     with pytest.raises(AttributeError):
         mtrack._multitrack_medata
 
+    with pytest.raises(NotImplementedError):
+        mtrack.track_audio_property
+
     class TestMultiTrack2(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
@@ -199,6 +202,7 @@ def test_multitrack_basic():
     mtrack.to_jams()
     mtrack.get_target(["a"])
     mtrack.get_random_target()
+    metadata = mtrack._multitrack_metadata
 
 
 def test_multitrack_mixing():

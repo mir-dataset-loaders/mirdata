@@ -512,7 +512,7 @@ class MultiTrack(Track):
 
     @property
     def _multitrack_metadata(self):
-        metadata = self._metadata()
+        metadata = self._metadata
         if metadata and self.mtrack_id in metadata:
             return metadata[self.mtrack_id]
         elif metadata:
