@@ -118,6 +118,9 @@ def test_dataset_errors():
         d.track("asdf")
 
     with pytest.raises(NotImplementedError):
+        d.multitrack("asdf")
+
+    with pytest.raises(NotImplementedError):
         d.load_tracks()
 
     with pytest.raises(KeyError):
@@ -126,9 +129,16 @@ def test_dataset_errors():
     with pytest.raises(NotImplementedError):
         d.choice_track()
 
+    with pytest.raises(KeyError):
+        d.choice_multitrack()
+
     d = mirdata.initialize("acousticbrainz_genre")
     with pytest.raises(FileNotFoundError):
         d._index
+
+    d = mirdata.initialize("phenicx_anechoic")
+    with pytest.raises(ValueError):
+        d._multitrack("a")
 
 
 def test_multitrack_basic():
@@ -137,7 +147,6 @@ def test_multitrack_basic():
             self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
         ):
             self.key = key
-            self._metadata = {1: "a", "b": 2}
 
         @property
         def f(self):
@@ -148,6 +157,7 @@ def test_multitrack_basic():
             self.mtrack_id = mtrack_id
             self._data_home = data_home
             self.track_ids = []
+            self.mtrack_ids = []
 
     mtrack = TestMultiTrack1("test", "foo")
 
