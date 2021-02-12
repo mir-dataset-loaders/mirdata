@@ -176,14 +176,6 @@ class Track(core.Track):
             audio_mix += audio
         audio_mix /= self.n_voices
 
-        # assert x is not None, "path %s does not exit".format(self.audio_paths[0])
-        # audio_mix, sr = x
-
-        # for i in range(1, self.n_voices):
-        #     x = load_audio(self.audio_paths[i])
-        #     assert x is not None, "path %s does not exit".format(self.audio_paths[0])
-        #     audio, _ = x
-        #     audio_mix += audio
         return audio_mix, sr
 
     @core.cached_property

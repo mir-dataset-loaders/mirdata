@@ -158,8 +158,11 @@ def test_multitrack_basic():
             self._data_home = data_home
             self.track_ids = []
             self.mtrack_ids = []
+            self._metadata = None
 
     mtrack = TestMultiTrack1("test", "foo")
+
+    assert mtrack._multitrack_metadata is None
 
     with pytest.raises(NotImplementedError):
         mtrack.to_jams()
@@ -180,7 +183,7 @@ def test_multitrack_basic():
         mtrack.track_audio_property
 
     class TestMultiTrack2(core.MultiTrack):
-        def __init__(self, mtrack_id, data_home):
+        def __init__(self, mtrack_id, data_home, metadata):
             self.mtrack_id = mtrack_id
             self._data_home = data_home
             self._dataset_name = "foo"
@@ -188,7 +191,7 @@ def test_multitrack_basic():
             self._metadata = None
             self._track_class = TestTrack
             self.track_ids = ["a", "b", "c"]
-            self._metadata = {1: "a", "b": 2}
+            self._metadata = metadata
 
         def to_jams(self):
             return None
@@ -198,10 +201,13 @@ def test_multitrack_basic():
             #### the attribute of Track which returns the relevant audio file for mixing
             return "f"
 
-    mtrack = TestMultiTrack2("test", "foo")
+    mtrack = TestMultiTrack2("test", "foo", {1: "a", "b": 2})
     mtrack.to_jams()
     mtrack.get_target(["a"])
     mtrack.get_random_target()
+    metadata = mtrack._multitrack_metadata
+
+    mtrack = TestMultiTrack2("test", "foo", {"test": "a"})
     metadata = mtrack._multitrack_metadata
 
 
