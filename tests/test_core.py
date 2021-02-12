@@ -102,6 +102,9 @@ def test_dataset():
     dataset = mirdata.initialize("ikala")
     assert isinstance(dataset, core.Dataset)
 
+    dataset = mirdata.initialize("phenicx_anechoic")
+    assert isinstance(dataset, core.Dataset)
+
     print(dataset)  # test that repr doesn't fail
 
 
@@ -117,6 +120,9 @@ def test_dataset_errors():
     with pytest.raises(NotImplementedError):
         d.load_tracks()
 
+    with pytest.raises(KeyError):
+        d.load_multitracks()
+
     with pytest.raises(NotImplementedError):
         d.choice_track()
 
@@ -131,6 +137,7 @@ def test_multitrack_basic():
             self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
         ):
             self.key = key
+            self._metadata = {1: "a", "b": 2}
 
         @property
         def f(self):
@@ -156,6 +163,9 @@ def test_multitrack_basic():
     with pytest.raises(AssertionError):
         mtrack.get_mix()
 
+    with pytest.raises(AttributeError):
+        mtrack._multitrack_medata
+
     class TestMultiTrack2(core.MultiTrack):
         def __init__(self, mtrack_id, data_home):
             self.mtrack_id = mtrack_id
@@ -165,6 +175,7 @@ def test_multitrack_basic():
             self._metadata = None
             self._track_class = TestTrack
             self.track_ids = ["a", "b", "c"]
+            self._metadata = {1: "a", "b": 2}
 
         def to_jams(self):
             return None
@@ -178,7 +189,6 @@ def test_multitrack_basic():
     mtrack.to_jams()
     mtrack.get_target(["a"])
     mtrack.get_random_target()
-    mtrack.get_mix()
 
 
 def test_multitrack_mixing():
@@ -297,6 +307,9 @@ def test_multitrack_unequal_len():
 
     with pytest.raises(ValueError):
         mtrack.get_target(["a", "b", "c"])
+
+    with pytest.raises(KeyError):
+        mtrack.get_target(["d", "e"])
 
     target1 = mtrack.get_target(["a", "b", "c"], enforce_length=False)
     assert target1.shape[0] == 2
