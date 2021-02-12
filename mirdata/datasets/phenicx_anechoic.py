@@ -49,7 +49,7 @@ import os, glob, re
 import jams
 import librosa
 import numpy as np
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, cast
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -169,15 +169,21 @@ class Track(core.Track):
             * float - The sample rate of the audio file
 
         """
-        x = load_audio(self.audio_paths[0])
-        assert x is not None, "path %s does not exit".format(self.audio_paths[0])
-        audio_mix, sr = x
+        audio_mix, sr = cast(Tuple[np.ndarray, float], load_audio(self.audio_paths[0]))
 
         for i in range(1, self.n_voices):
-            x = load_audio(self.audio_paths[i])
-            assert x is not None, "path %s does not exit".format(self.audio_paths[0])
-            audio, _ = x
+            audio, _ = cast(Tuple[np.ndarray, float], load_audio(self.audio_paths[i]))
             audio_mix += audio
+        audio_mix /= self.n_voices
+
+        # assert x is not None, "path %s does not exit".format(self.audio_paths[0])
+        # audio_mix, sr = x
+
+        # for i in range(1, self.n_voices):
+        #     x = load_audio(self.audio_paths[i])
+        #     assert x is not None, "path %s does not exit".format(self.audio_paths[0])
+        #     audio, _ = x
+        #     audio_mix += audio
         return audio_mix, sr
 
     @core.cached_property
