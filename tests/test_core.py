@@ -41,6 +41,57 @@ def test_track_repr():
         test_track.to_jams()
 
 
+def test_multitrack_repr():
+    class TestTrack(core.Track):
+        def __init__(self):
+            self.a = "asdf"
+
+    class TestMultiTrack(core.MultiTrack):
+        def __init__(self, mtrack_id, data_home):
+            self.a = "asdf"
+            self.b = 1.2345678
+            self.c = {1: "a", "b": 2}
+            self._d = "hidden"
+            self.e = None
+            self.long = "a" + "b" * 50 + "c" * 50
+            self.mtrack_id = mtrack_id
+            self._data_home = data_home
+            self._dataset_name = "foo"
+            self._index = None
+            self._metadata = None
+            self._track_class = TestTrack
+            self.track_ids = ["a", "b", "c"]
+
+        @property
+        def f(self):
+            """ThisObjectType: I have a docstring"""
+            return None
+
+        @property
+        def g(self):
+            """I have an improper docstring"""
+            return None
+
+        def h(self):
+            return "I'm a function!"
+
+    expected1 = """Track(\n  a="asdf",\n  b=1.2345678,\n  """
+    expected2 = """c={1: \'a\', \'b\': 2},\n  e=None,\n  """
+    expected3 = """long="...{}",\n  """.format("b" * 50 + "c" * 50)
+    expected4 = """mtrack_id="test",\n  track_ids=[\'a\', \'b\', \'c\'],\n  """
+    expected5 = """f: ThisObjectType,\n  g: I have an improper docstring,\n  """
+    expected6 = """track_audio_property: ,\n  tracks: ,\n)"""
+
+    test_mtrack = TestMultiTrack("test", "foo")
+    actual = test_mtrack.__repr__()
+    assert (
+        actual == expected1 + expected2 + expected3 + expected4 + expected5 + expected6
+    )
+
+    with pytest.raises(NotImplementedError):
+        test_mtrack.to_jams()
+
+
 def test_dataset():
     dataset = mirdata.initialize("guitarset")
     assert isinstance(dataset, core.Dataset)
