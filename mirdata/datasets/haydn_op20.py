@@ -122,15 +122,15 @@ class Track(core.Track):
 
     @core.cached_property
     def keys(self, resolution=28) -> List[dict]:
-        return load_key(self.humdrum_annotated_path, resolution)
+        return load_key(self.humdrum_annotated_path)
 
     @core.cached_property
     def roman_numerals(self, resolution=28) -> List[dict]:
-        return load_roman_numerals(self.humdrum_annotated_path, resolution)
+        return load_roman_numerals(self.humdrum_annotated_path)
 
     @core.cached_property
     def chords(self, resolution=28) -> List[dict]:
-        return load_chords(self.humdrum_annotated_path, resolution)
+        return load_chords(self.humdrum_annotated_path)
 
     @core.cached_property
     def duration(self) -> int:
@@ -170,15 +170,15 @@ def split_score_annotations(fhandle: TextIO):
         music21.stream.Score: score in music21 format
         dict: roman numerals
     """
-    if not os.path.exists(fhandle):
+    if not os.path.exists(fhandle.name):
         raise IOError
-    score = music21.converter.parse(fhandle, format="humdrum")
+    score = music21.converter.parse(fhandle.name, format="humdrum")
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
     score.remove(rna, recurse=True)
-    print(type(rna))
     return score, rna
 
 
+@io.coerce_to_string_io
 def load_score(fhandle: TextIO):
     """Load haydn op20 score with annotations from a file with music21 format (music21.stream.Score).
 
@@ -193,6 +193,7 @@ def load_score(fhandle: TextIO):
     return score
 
 
+@io.coerce_to_string_io
 def load_key(fhandle: TextIO, resolution=28):
     """Load haydn op20 key data from a file
 
@@ -226,8 +227,8 @@ def load_midi_path(fhandle: TextIO):
         str: midi file path
 
     """
-    midi_path = os.path.splitext(fhandle.read())[0] + ".midi"
-    if not os.path.exists(midi_path):
+    midi_path = os.path.splitext(fhandle.name)[0] + ".midi"
+    if not os.path.exists(fhandle.name):
         score, _ = split_score_annotations(fhandle)
         score.write("midi", fp=midi_path)
     return midi_path
@@ -256,7 +257,7 @@ def load_roman_numerals(fhandle: TextIO, resolution=28):
 
 
 @io.coerce_to_string_io
-def load_chords(fhandle: TextIO, resolution=28):
+def load_chords(fhandle: TextIO, resolution: int = 28):
     """Load haydn op20 chords data from a file
 
     `Args:
