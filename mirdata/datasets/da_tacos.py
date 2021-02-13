@@ -111,15 +111,14 @@
 import json
 import logging
 import os
-from typing import Tuple, Optional
+from typing import Tuple, Optional, TextIO
 
 import deepdish as dd
 from jams import JAMS
 import librosa
 import numpy as np
 
-from mirdata import download_utils, jams_utils, core
-
+from mirdata import download_utils, jams_utils, core, io
 
 LICENSE_INFO = """
 Creative Commons Attribution Non Commercial Share Alike 4.0 International
@@ -340,57 +339,61 @@ class Track(core.Track):
         )
 
 
-def load_cens(path):
+@io.coerce_to_string_io
+def load_cens(fhandle: TextIO):
     """Load da_tacos cens features from a file
 
     Args:
-        path(str or file-like): File-like object or path to features file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         np.array: cens features
 
     """
-    if not os.path.exists(path):
+    if not os.path.exists(fhandle.name):
         raise IOError
 
-    return dd.io.load(path)["chroma_cens"]
+    return dd.io.load(fhandle.name)["chroma_cens"]
 
 
-def load_crema(path):
+@io.coerce_to_string_io
+def load_crema(fhandle: TextIO):
     """Load da_tacos crema features from a file
 
     Args:
-        path(str or file-like): File-like object or path to features file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         np.array: crema features
 
     """
-    if not os.path.exists(path):
+    if not os.path.exists(fhandle.name):
         raise IOError
-    return dd.io.load(path)["crema"]
+    return dd.io.load(fhandle.name)["crema"]
 
 
-def load_hpcp(path):
+@io.coerce_to_string_io
+def load_hpcp(fhandle: TextIO):
     """Load da_tacos hpcp features from a file
 
     Args:
-        path(str or file-like): File-like object or path to features file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         np.array: hpcp features
 
     """
-    if not os.path.exists(path):
+    if not os.path.exists(fhandle.name):
         raise IOError
-    return dd.io.load(path)["hpcp"]
+    return dd.io.load(fhandle.name)["hpcp"]
 
 
-def load_key(path):
+@io.coerce_to_string_io
+def load_key(fhandle: TextIO):
     """Load da_tacos key features from a file.
 
     Args:
-        path(str or file-like): File-like object or path to features file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         dict: key
@@ -399,16 +402,17 @@ def load_key(path):
         {'key': 'C', 'scale': 'major', 'strength': 0.8449875116348267}
 
     """
-    if not os.path.exists(path):
+    if not os.path.exists(fhandle.name):
         raise IOError
-    return dd.io.load(path)["key_extractor"]
+    return dd.io.load(fhandle.name)["key_extractor"]
 
 
-def load_madmom(path):
+@io.coerce_to_string_io
+def load_madmom(fhandle: TextIO):
     """Load da_tacos madmom features from a file
 
     Args:
-        path(str or file-like): File-like object or path to features file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         dict: madmom features
@@ -428,31 +432,33 @@ def load_madmom(path):
         }
 
     """
-    if not os.path.exists(path):
+    if not os.path.exists(fhandle.name):
         raise IOError
-    return dd.io.load(path)["madmom_features"]
+    return dd.io.load(fhandle.name)["madmom_features"]
 
 
-def load_mfcc(path):
+@io.coerce_to_string_io
+def load_mfcc(fhandle: TextIO):
     """Load da_tacos mfcc from a file
 
     Args:
-        path(str or file-like): File-like object or path to features file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         np.array: mfcc
 
     """
-    if not os.path.exists(path):
+    if not os.path.exists(fhandle.name):
         raise IOError
-    return dd.io.load(path)["mfcc_htk"]
+    return dd.io.load(fhandle.name)["mfcc_htk"]
 
 
-def load_tags(path):
+@io.coerce_to_string_io
+def load_tags(fhandle: TextIO):
     """Load da_tacos tags from a file
 
     Args:
-        path(str or file-like): File-like object or path to features file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         list: tags
@@ -472,13 +478,13 @@ def load_tags(path):
 
 
     """
-    if path is None:
+    if fhandle is None:
         tags = None
     else:
-        if not os.path.exists(path):
+        if not os.path.exists(fhandle.name):
             raise IOError
 
-        tags = dd.io.load(path)["tags"]
+        tags = dd.io.load(fhandle.name)["tags"]
     return tags
 
 
