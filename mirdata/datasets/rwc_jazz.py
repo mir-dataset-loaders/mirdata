@@ -1,46 +1,58 @@
-# -*- coding: utf-8 -*-
 """RWC Jazz Dataset Loader.
 
-The Jazz Music Database consists of 50 pieces:
+.. admonition:: Dataset Info
+    :class: dropdown
 
-* Instrumentation variations: 35 pieces (5 pieces × 7 instrumentations).
-The instrumentation-variation pieces were recorded to obtain different versions
-of the same piece; i.e., different arrangements performed by different player
-instrumentations. Five standard-style jazz pieces were originally composed
-and then performed in modern-jazz style using the following seven instrumentations:
-1. Piano solo
-2. Guitar solo
-3. Duo: Vibraphone + Piano, Flute + Piano, and Piano + Bass
-4. Piano trio: Piano + Bass + Drums
-5. Piano trio + Trumpet or Tenor saxophone
-6. Octet: Piano trio + Guitar + Alto saxophone + Baritone saxophone + Tenor saxophone × 2
-7. Piano trio + Vibraphone or Flute
+    The Jazz Music Database consists of 50 pieces:
 
-* Style variations: 9 pieces
-The style-variation pieces were recorded to represent various styles of jazz.
-They include four well-known public-domain pieces and consist of
-1. Vocal jazz: 2 pieces (including "Aura Lee")
-2. Big band jazz: 2 pieces (including "The Entertainer")
-3. Modal jazz: 2 pieces
-4. Funky jazz: 2 pieces (including "Silent Night")
-5. Free jazz: 1 piece (including "Joyful, Joyful, We Adore Thee")
-Fusion (crossover): 6 pieces
-The fusion pieces were recorded to obtain music that combines elements of jazz
-with other styles such as popular, rock, and latin. They include music with an
-eighth-note feel, music with a sixteenth-note feel, and Latin jazz music.
+    - **Instrumentation variations:** 35 pieces (5 pieces × 7 instrumentations).
 
-For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html
+        The instrumentation-variation pieces were recorded to obtain different versions
+        of the same piece; i.e., different arrangements performed by different player
+        instrumentations. Five standard-style jazz pieces were originally composed
+        and then performed in modern-jazz style using the following seven instrumentations:
+
+        1. Piano solo
+        2. Guitar solo
+        3. Duo: Vibraphone + Piano, Flute + Piano, and Piano + Bass
+        4. Piano trio: Piano + Bass + Drums
+        5. Piano trio + Trumpet or Tenor saxophone
+        6. Octet: Piano trio + Guitar + Alto saxophone + Baritone saxophone + Tenor saxophone × 2
+        7. Piano trio + Vibraphone or Flute
+
+    - **Style variations:** 9 pieces
+
+        The style-variation pieces were recorded to represent various styles of jazz.
+        They include four well-known public-domain pieces and consist of
+
+        1. Vocal jazz: 2 pieces (including "Aura Lee")
+        2. Big band jazz: 2 pieces (including "The Entertainer")
+        3. Modal jazz: 2 pieces
+        4. Funky jazz: 2 pieces (including "Silent Night")
+        5. Free jazz: 1 piece (including "Joyful, Joyful, We Adore Thee")
+
+    - **Fusion (crossover):** 6 pieces
+
+        The fusion pieces were recorded to obtain music that combines elements of jazz
+        with other styles such as popular, rock, and latin. They include music with an
+        eighth-note feel, music with a sixteenth-note feel, and Latin jazz music.
+
+    For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-j.html
+
 """
 import csv
 import logging
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
+import numpy as np
 
+from mirdata import annotations
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import io
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (
@@ -48,6 +60,7 @@ from mirdata.datasets.rwc_classical import (
     load_sections,
     load_audio,
     _duration_to_sec,
+    LICENSE_INFO,
 )
 
 BIBTEX = """@inproceedings{goto2002rwc,
@@ -62,7 +75,6 @@ REMOTES = {
         filename="master.zip",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir="",
     ),
     "annotations_beat": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-J-2001.BEAT.zip",
@@ -89,52 +101,6 @@ DOWNLOAD_INFO = """
 """
 
 
-def _load_metadata(data_home):
-
-    metadata_path = os.path.join(data_home, "metadata-master", "rwc-j.csv")
-
-    if not os.path.exists(metadata_path):
-        logging.info(
-            "Metadata file {} not found.".format(metadata_path)
-            + "You can download the metadata file by running download()"
-        )
-        return None
-
-    with open(metadata_path, "r") as fhandle:
-        dialect = csv.Sniffer().sniff(fhandle.read(1024))
-        fhandle.seek(0)
-        reader = csv.reader(fhandle, dialect)
-        raw_data = []
-        for line in reader:
-            if line[0] != "Piece No.":
-                raw_data.append(line)
-
-    metadata_index = {}
-    for line in raw_data:
-        if line[0] == "Piece No.":
-            continue
-        p = "00" + line[0].split(".")[1][1:]
-        track_id = "RM-J{}".format(p[len(p) - 3 :])
-
-        metadata_index[track_id] = {
-            "piece_number": line[0],
-            "suffix": line[1],
-            "track_number": line[2],
-            "title": line[3],
-            "artist": line[4],
-            "duration": _duration_to_sec(line[5]),
-            "variation": line[6],
-            "instruments": line[7],
-        }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = utils.LargeData("rwc_jazz_index.json", _load_metadata)
-
-
 class Track(core.Track):
     """rwc_jazz Track class
 
@@ -153,69 +119,164 @@ class Track(core.Track):
         title (str): Title of The track.
         track_id (str): track id
         track_number (str): CD track number of this Track
-        variation (str): TODO
+        variation (str):  style variations
+
+    Cached Properties:
+        sections (SectionData): human-labeled section data
+        beats (BeatData): human-labeled beat data
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
-            raise ValueError("{} is not a valid track ID in RWC-Jazz".format(track_id))
-
-        self.track_id = track_id
-        self._data_home = data_home
-
-        self._track_paths = DATA.index['tracks'][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
         self.sections_path = os.path.join(
             self._data_home, self._track_paths["sections"][0]
         )
         self.beats_path = os.path.join(self._data_home, self._track_paths["beats"][0])
 
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "piece_number": None,
-                "suffix": None,
-                "track_number": None,
-                "title": None,
-                "artist": None,
-                "duration": None,
-                "variation": None,
-                "instruments": None,
-            }
-
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
-        self.piece_number = self._track_metadata["piece_number"]
-        self.suffix = self._track_metadata["suffix"]
-        self.track_number = self._track_metadata["track_number"]
-        self.title = self._track_metadata["title"]
-        self.artist = self._track_metadata["artist"]
-        self.duration = self._track_metadata["duration"]
-        self.variation = self._track_metadata["variation"]
-        self.instruments = self._track_metadata["instruments"]
+    @property
+    def piece_number(self):
+        return self._track_metadata.get("piece_number")
 
-    @utils.cached_property
-    def sections(self):
-        """SectionData: human-labeled section data"""
+    @property
+    def suffix(self):
+        return self._track_metadata.get("suffix")
+
+    @property
+    def track_number(self):
+        return self._track_metadata.get("track_number")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def variation(self):
+        return self._track_metadata.get("variation")
+
+    @property
+    def instruments(self):
+        return self._track_metadata.get("instruments")
+
+    @core.cached_property
+    def sections(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_path)
 
-    @utils.cached_property
-    def beats(self):
-        """BeatData: human-labeled beat data"""
+    @core.cached_property
+    def beats(self) -> Optional[annotations.BeatData]:
         return load_beats(self.beats_path)
 
     @property
-    def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[(self.beats, None)],
             section_data=[(self.sections, None)],
             metadata=self._track_metadata,
         )
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The rwc_jazz dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            name="rwc_jazz",
+            track_class=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
+        )
+
+    @core.cached_property
+    def _metadata(self):
+
+        metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-j.csv")
+
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        with open(metadata_path, "r") as fhandle:
+            dialect = csv.Sniffer().sniff(fhandle.read(1024))
+            fhandle.seek(0)
+            reader = csv.reader(fhandle, dialect)
+            raw_data = []
+            for line in reader:
+                if line[0] != "Piece No.":
+                    raw_data.append(line)
+
+        metadata_index = {}
+        for line in raw_data:
+            if line[0] == "Piece No.":
+                continue
+            p = "00" + line[0].split(".")[1][1:]
+            track_id = "RM-J{}".format(p[len(p) - 3 :])
+
+            metadata_index[track_id] = {
+                "piece_number": line[0],
+                "suffix": line[1],
+                "track_number": line[2],
+                "title": line[3],
+                "artist": line[4],
+                "duration": _duration_to_sec(line[5]),
+                "variation": line[6],
+                "instruments": line[7],
+            }
+
+        return metadata_index
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @core.copy_docs(load_beats)
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)

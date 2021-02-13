@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from mirdata.datasets import medley_solos_db
 from tests.test_utils import run_track_tests
 
@@ -7,7 +5,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "d07b1fc0-567d-52c2-fef4-239f31c9d40e"
     data_home = "tests/resources/mir_datasets/medley_solos_db"
-    track = medley_solos_db.Track(default_trackid, data_home=data_home)
+    dataset = medley_solos_db.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
@@ -19,7 +18,7 @@ def test_track():
         "subset": "validation",
     }
 
-    expected_property_types = {}
+    expected_property_types = {"audio": tuple}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -31,9 +30,8 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/medley_solos_db"
-    track = medley_solos_db.Track(
-        "d07b1fc0-567d-52c2-fef4-239f31c9d40e", data_home=data_home
-    )
+    dataset = medley_solos_db.Dataset(data_home)
+    track = dataset.track("d07b1fc0-567d-52c2-fef4-239f31c9d40e")
     jam = track.to_jams()
 
     assert jam["sandbox"]["instrument"] == "flute"

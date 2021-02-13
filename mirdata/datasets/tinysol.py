@@ -1,55 +1,60 @@
-# -*- coding: utf-8 -*-
 """TinySOL Dataset Loader.
 
-TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14
-different instruments:
+.. admonition:: Dataset Info
+    :class: dropdown
 
-    Bass Tuba
-    French Horn
-    Trombone
-    Trumpet in C
-    Accordion
-    Contrabass
-    Violin
-    Viola
-    Violoncello
-    Bassoon
-    Clarinet in B-flat
-    Flute
-    Oboe
-    Alto Saxophone
+    TinySOL is a dataset of 2913 samples, each containing a single musical note from one of 14
+    different instruments:
 
+    - Bass Tuba
+    - French Horn
+    - Trombone
+    - Trumpet in C
+    - Accordion
+    - Contrabass
+    - Violin
+    - Viola
+    - Violoncello
+    - Bassoon
+    - Clarinet in B-flat
+    - Flute
+    - Oboe
+    - Alto Saxophone
 
-These sounds were originally recorded at Ircam in Paris (France) between 1996
-and 1999, as part of a larger project named Studio On Line (SOL). Although SOL
-contains many combinations of mutes and extended playing techniques, TinySOL
-purely consists of sounds played in the so-called "ordinary" style, and in
-absence of mute.
+    These sounds were originally recorded at Ircam in Paris (France) between 1996
+    and 1999, as part of a larger project named Studio On Line (SOL). Although SOL
+    contains many combinations of mutes and extended playing techniques, TinySOL
+    purely consists of sounds played in the so-called "ordinary" style, and in
+    absence of mute.
 
-TinySOL can be used for education and research purposes. In particular, it can
-be employed as a dataset for training and/or evaluating music information
-retrieval (MIR) systems, for tasks such as instrument recognition or
-fundamental frequency estimation. For this purpose, we provide an official 5-fold
-split of TinySOL as a metadata attribute. This split has been carefully balanced
-in terms of instrumentation, pitch range, and dynamics. For the sake of research
-reproducibility, we encourage users of TinySOL to adopt this split and report
-their results in terms of average performance across folds.
+    TinySOL can be used for education and research purposes. In particular, it can
+    be employed as a dataset for training and/or evaluating music information
+    retrieval (MIR) systems, for tasks such as instrument recognition or
+    fundamental frequency estimation. For this purpose, we provide an official 5-fold
+    split of TinySOL as a metadata attribute. This split has been carefully balanced
+    in terms of instrumentation, pitch range, and dynamics. For the sake of research
+    reproducibility, we encourage users of TinySOL to adopt this split and report
+    their results in terms of average performance across folds.
 
-We encourage TinySOL users to subscribe to the Ircam Forum so that they can
-have access to larger versions of SOL.
+    We encourage TinySOL users to subscribe to the Ircam Forum so that they can
+    have access to larger versions of SOL.
 
-For more details, please visit: https://www.orch-idea.org/
+    For more details, please visit: https://www.orch-idea.org/
+
 """
 
 import csv
-import librosa
 import logging
 import os
+from typing import BinaryIO, Optional, Tuple
+
+import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
+from mirdata import io
 
 BIBTEX = """@inproceedings{cella2020preprint,
   author={Cella, Carmine Emanuele and Ghisi, Daniele and Lostanlen, Vincent and
@@ -76,43 +81,7 @@ REMOTES = {
 
 STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
 
-
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "annotation", "TinySOL_metadata.csv")
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata_index = {}
-    with open(metadata_path, "r") as fhandle:
-        csv_reader = csv.reader(fhandle, delimiter=",")
-        next(csv_reader)
-        for row in csv_reader:
-            key = os.path.splitext(os.path.split(row[0])[1])[0]
-            metadata_index[key] = {
-                "Fold": int(row[1]),
-                "Family": row[2],
-                "Instrument (abbr.)": row[3],
-                "Instrument (in full)": row[4],
-                "Technique (abbr.)": row[5],
-                "Technique (in full)": row[6],
-                "Pitch": row[7],
-                "Pitch ID": int(row[8]),
-                "Dynamics": row[9],
-                "Dynamics ID": int(row[10]),
-                "Instance ID": int(row[11]),
-                "Resampled": (row[13] == "TRUE"),
-            }
-            if len(row[12]) > 0:
-                metadata_index[key]["String ID"] = int(float(row[12]))
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = utils.LargeData("tinysol_index.json", _load_metadata)
+LICENSE_INFO = "Creative Commons Attribution 4.0 International Public License."
 
 
 class Track(core.Track):
@@ -140,78 +109,160 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
-            raise ValueError("{} is not a valid track ID in TinySOL".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
-
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "Family": None,
-                "Instrument (abbr.)": None,
-                "Instrument (in full)": None,
-                "Technique (abbr.)": None,
-                "Technique (in full)": None,
-                "Pitch": None,
-                "Pitch ID": None,
-                "Dynamics": None,
-                "Dynamics ID": None,
-                "Instance ID": None,
-                "String ID": None,
-                "Resampled": None,
-            }
-
-        self.audio_path = os.path.join(
-            self._data_home, "audio", self._track_paths["audio"][0]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
 
-        self.family = self._track_metadata["Family"]
-        self.instrument_abbr = self._track_metadata["Instrument (abbr.)"]
-        self.instrument_full = self._track_metadata["Instrument (in full)"]
-        self.technique_abbr = self._track_metadata["Technique (abbr.)"]
-        self.technique_full = self._track_metadata["Technique (in full)"]
-        self.pitch = self._track_metadata["Pitch"]
-        self.pitch_id = self._track_metadata["Pitch ID"]
-        self.dynamics = self._track_metadata["Dynamics"]
-        self.dynamics_id = self._track_metadata["Dynamics ID"]
-        self.instance_id = self._track_metadata["Instance ID"]
-        if "String ID" in self._track_metadata:
-            self.string_id = self._track_metadata["String ID"]
-        else:
-            self.string_id = None
-        self.is_resampled = self._track_metadata["Resampled"]
+        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
     @property
-    def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+    def family(self):
+        return self._track_metadata.get("Family")
+
+    @property
+    def instrument_abbr(self):
+        return self._track_metadata.get("Instrument (abbr.)")
+
+    @property
+    def instrument_full(self):
+        return self._track_metadata.get("Instrument (in full)")
+
+    @property
+    def technique_abbr(self):
+        return self._track_metadata.get("Technique (abbr.)")
+
+    @property
+    def technique_full(self):
+        return self._track_metadata.get("Technique (in full)")
+
+    @property
+    def pitch(self):
+        return self._track_metadata.get("Pitch")
+
+    @property
+    def pitch_id(self):
+        return self._track_metadata.get("Pitch ID")
+
+    @property
+    def dynamics(self):
+        return self._track_metadata.get("Dynamics")
+
+    @property
+    def dynamics_id(self):
+        return self._track_metadata.get("Dynamics ID")
+
+    @property
+    def instance_id(self):
+        return self._track_metadata.get("Instance ID")
+
+    @property
+    def string_id(self):
+        return self._track_metadata.get("String ID")
+
+    @property
+    def is_resampled(self):
+        return self._track_metadata.get("Resampled")
+
+    @property
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path, metadata=self._track_metadata
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a TinySOL audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
+    return librosa.load(fhandle, sr=None, mono=True)
 
-    return librosa.load(audio_path, sr=None, mono=True)
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The tinysol dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            name="tinysol",
+            track_class=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            license_info=LICENSE_INFO,
+        )
+
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(
+            self.data_home, "annotation", "TinySOL_metadata.csv"
+        )
+
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        metadata_index = {}
+        with open(metadata_path, "r") as fhandle:
+            csv_reader = csv.reader(fhandle, delimiter=",")
+            next(csv_reader)
+            for row in csv_reader:
+                key = os.path.splitext(os.path.split(row[0])[1])[0]
+                metadata_index[key] = {
+                    "Fold": int(row[1]),
+                    "Family": row[2],
+                    "Instrument (abbr.)": row[3],
+                    "Instrument (in full)": row[4],
+                    "Technique (abbr.)": row[5],
+                    "Technique (in full)": row[6],
+                    "Pitch": row[7],
+                    "Pitch ID": int(row[8]),
+                    "Dynamics": row[9],
+                    "Dynamics ID": int(row[10]),
+                    "Instance ID": int(row[11]),
+                    "Resampled": (row[13] == "TRUE"),
+                }
+                if len(row[12]) > 0:
+                    metadata_index[key]["String ID"] = int(float(row[12]))
+
+        return metadata_index
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)

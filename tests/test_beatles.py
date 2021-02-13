@@ -1,16 +1,15 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 
 from mirdata.datasets import beatles
-from mirdata import utils
+from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
 def test_track():
     default_trackid = "0111"
     data_home = "tests/resources/mir_datasets/beatles"
-    track = beatles.Track(default_trackid, data_home=data_home)
+    dataset = beatles.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "audio_path": "tests/resources/mir_datasets/beatles/"
@@ -28,10 +27,11 @@ def test_track():
     }
 
     expected_property_types = {
-        "beats": utils.BeatData,
-        "chords": utils.ChordData,
-        "key": utils.KeyData,
-        "sections": utils.SectionData,
+        "beats": annotations.BeatData,
+        "chords": annotations.ChordData,
+        "key": annotations.KeyData,
+        "sections": annotations.SectionData,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -42,7 +42,7 @@ def test_track():
         audio.shape
     )
 
-    track = beatles.Track("10212", data_home=data_home)
+    track = dataset.track("10212")
     assert track.beats is None, "expected track.beats to be None, got {}".format(
         track.beats
     )
@@ -52,7 +52,8 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/beatles"
-    track = beatles.Track("0111", data_home=data_home)
+    dataset = beatles.Dataset(data_home)
+    track = dataset.track("0111")
     jam = track.to_jams()
 
     beats = jam.search(namespace="beat")[0]["data"]
@@ -158,21 +159,21 @@ def test_load_beats():
     )
     beat_data = beatles.load_beats(beats_path)
 
-    assert type(beat_data) == utils.BeatData, "beat_data is not type utils.BeatData"
     assert (
-        type(beat_data.beat_times) == np.ndarray
-    ), "beat_data.beat_times is not an np.ndarray"
+        type(beat_data) == annotations.BeatData
+    ), "beat_data is not type annotations.BeatData"
+    assert type(beat_data.times) == np.ndarray, "beat_data.times is not an np.ndarray"
     assert (
-        type(beat_data.beat_positions) == np.ndarray
-    ), "beat_data.beat_positions is not an np.ndarray"
+        type(beat_data.positions) == np.ndarray
+    ), "beat_data.positions is not an np.ndarray"
 
     assert np.array_equal(
-        beat_data.beat_times,
+        beat_data.times,
         np.array([13.249, 13.959, 14.416, 14.965, 15.453, 15.929, 16.428]),
-    ), "beat_data.beat_times different than expected"
+    ), "beat_data.times different than expected"
     assert np.array_equal(
-        beat_data.beat_positions, np.array([2, 3, 4, 1, 2, 3, 4])
-    ), "beat_data.beat_positions different from expected"
+        beat_data.positions, np.array([2, 3, 4, 1, 2, 3, 4])
+    ), "beat_data.positions different from expected"
 
     assert beatles.load_beats(None) is None, "load_beats(None) should return None"
 
@@ -184,7 +185,7 @@ def test_load_chords():
     )
     chord_data = beatles.load_chords(chords_path)
 
-    assert type(chord_data) == utils.ChordData
+    assert type(chord_data) == annotations.ChordData
     assert type(chord_data.intervals) == np.ndarray
     assert type(chord_data.labels) == list
 
@@ -206,12 +207,12 @@ def test_load_key():
     )
     key_data = beatles.load_key(key_path)
 
-    assert type(key_data) == utils.KeyData
-    assert type(key_data.start_times) == np.ndarray
+    assert type(key_data) == annotations.KeyData
+    assert type(key_data.intervals) == np.ndarray
 
-    assert np.array_equal(key_data.start_times, np.array([0.000]))
-    assert np.array_equal(key_data.end_times, np.array([119.333]))
-    assert np.array_equal(key_data.keys, np.array(["E"]))
+    assert np.array_equal(key_data.intervals[:, 0], np.array([0.000]))
+    assert np.array_equal(key_data.intervals[:, 1], np.array([119.333]))
+    assert np.array_equal(key_data.keys, ["E"])
 
     assert beatles.load_key(None) is None
 
@@ -223,7 +224,7 @@ def test_load_sections():
     )
     section_data = beatles.load_sections(sections_path)
 
-    assert type(section_data) == utils.SectionData
+    assert type(section_data) == annotations.SectionData
     assert type(section_data.intervals) == np.ndarray
     assert type(section_data.labels) == list
 
@@ -235,15 +236,14 @@ def test_load_sections():
 
 
 def test_fix_newpoint():
-    beat_positions1 = np.array(["4", "1", "2", "New Point", "4"])
-    new_beat_positions1 = beatles._fix_newpoint(beat_positions1)
-    assert np.array_equal(new_beat_positions1, np.array(["4", "1", "2", "3", "4"]))
+    positions1 = np.array(["4", "1", "2", "New Point", "4"])
+    new_positions1 = beatles._fix_newpoint(positions1)
+    assert np.array_equal(new_positions1, np.array(["4", "1", "2", "3", "4"]))
 
-    beat_positions2 = np.array(["1", "2", "New Point"])
-    new_beat_positions2 = beatles._fix_newpoint(beat_positions2)
-    assert np.array_equal(new_beat_positions2, np.array(["1", "2", "3"]))
+    positions2 = np.array(["1", "2", "New Point"])
+    new_positions2 = beatles._fix_newpoint(positions2)
+    assert np.array_equal(new_positions2, np.array(["1", "2", "3"]))
 
-    beat_positions3 = np.array(["New Point", "2", "3"])
-    new_beat_positions3 = beatles._fix_newpoint(beat_positions3)
-    assert np.array_equal(new_beat_positions3, np.array(["1", "2", "3"]))
-
+    positions3 = np.array(["New Point", "2", "3"])
+    new_positions3 = beatles._fix_newpoint(positions3)
+    assert np.array_equal(new_positions3, np.array(["1", "2", "3"]))

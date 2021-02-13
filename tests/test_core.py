@@ -1,16 +1,8 @@
-# -*- coding: utf-8 -*-
-
-import sys
 import pytest
 import numpy as np
 
 import mirdata
 from mirdata import core
-
-if sys.version_info.major == 3:
-    builtin_module_name = "builtins"
-else:
-    builtin_module_name = "__builtin__"
 
 
 def test_track_repr():
@@ -48,24 +40,15 @@ def test_track_repr():
     with pytest.raises(NotImplementedError):
         test_track.to_jams()
 
-    class NoDocsTrack(core.Track):
-        @property
-        def no_doc(self):
-            return "whee!"
-
-    bad_track = NoDocsTrack()
-    with pytest.raises(ValueError):
-        bad_track.__repr__()
-
 
 def test_dataset():
-    dataset = mirdata.Dataset("guitarset")
+    dataset = mirdata.initialize("guitarset")
     assert isinstance(dataset, core.Dataset)
 
-    dataset = mirdata.Dataset("rwc_jazz")
+    dataset = mirdata.initialize("rwc_jazz")
     assert isinstance(dataset, core.Dataset)
 
-    dataset = mirdata.Dataset("ikala")
+    dataset = mirdata.initialize("ikala")
     assert isinstance(dataset, core.Dataset)
 
     print(dataset)  # test that repr doesn't fail
@@ -73,10 +56,10 @@ def test_dataset():
 
 def test_dataset_errors():
     with pytest.raises(ValueError):
-        core.Dataset("not_a_dataset")
+        mirdata.initialize("not_a_dataset")
 
-    d = core.Dataset("orchset")
-    d._track_object = None
+    d = mirdata.initialize("orchset")
+    d._track_class = None
     with pytest.raises(NotImplementedError):
         d.track("asdf")
 
@@ -85,6 +68,10 @@ def test_dataset_errors():
 
     with pytest.raises(NotImplementedError):
         d.choice_track()
+
+    d = mirdata.initialize("acousticbrainz_genre")
+    with pytest.raises(FileNotFoundError):
+        d._index
 
 
 def test_multitrack_basic():

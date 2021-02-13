@@ -1,16 +1,17 @@
-# -*- coding: utf-8 -*-
-import os, shutil
+import os
+import shutil
 import numpy as np
 
 from mirdata.datasets import orchset
-from mirdata import utils, download_utils
+from mirdata import annotations, download_utils
 from tests.test_utils import run_track_tests
 
 
 def test_track():
     default_trackid = "Beethoven-S3-I-ex1"
     data_home = "tests/resources/mir_datasets/orchset"
-    track = orchset.Track(default_trackid, data_home=data_home)
+    dataset = orchset.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "Beethoven-S3-I-ex1",
@@ -33,7 +34,11 @@ def test_track():
         "only_brass": False,
     }
 
-    expected_property_types = {"melody": utils.F0Data}
+    expected_property_types = {
+        "melody": annotations.F0Data,
+        "audio_mono": tuple,
+        "audio_stereo": tuple,
+    }
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -49,7 +54,8 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/orchset"
-    track = orchset.Track("Beethoven-S3-I-ex1", data_home=data_home)
+    dataset = orchset.Dataset(data_home)
+    track = dataset.track("Beethoven-S3-I-ex1")
     jam = track.to_jams()
 
     f0s = jam.search(namespace="pitch_contour")[0]["data"]
@@ -71,7 +77,7 @@ def test_load_melody():
     melody_data = orchset.load_melody(melody_path)
 
     # check types
-    assert type(melody_data) == utils.F0Data
+    assert type(melody_data) == annotations.F0Data
     assert type(melody_data.times) is np.ndarray
     assert type(melody_data.frequencies) is np.ndarray
     assert type(melody_data.confidence) is np.ndarray
@@ -84,8 +90,8 @@ def test_load_melody():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/orchset"
-    metadata = orchset._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
+    dataset = orchset.Dataset(data_home)
+    metadata = dataset._metadata
     assert metadata["Beethoven-S3-I-ex1"] == {
         "predominant_melodic_instruments-raw": "strings+winds",
         "predominant_melodic_instruments-normalized": ["strings", "winds"],
@@ -157,9 +163,6 @@ def test_load_metadata():
         "excerpt": "2",
     }
 
-    metadata_none = orchset._load_metadata("asdf/asdf")
-    assert metadata_none is None
-
 
 def test_download(httpserver):
     data_home = "tests/resources/mir_datasets/orchset_download"
@@ -175,10 +178,12 @@ def test_download(httpserver):
             filename="Orchset_dataset_0.zip",
             url=httpserver.url,
             checksum=("4794bc3514f7e8d1727f0d975d6d1ee2"),
-            destination_dir=None,
+            unpack_directories=["Orchset"],
         )
     }
-    orchset._download(data_home, remotes, None, None, False, True)
+    dataset = orchset.Dataset(data_home)
+    dataset.remotes = remotes
+    dataset.download(None, False, False)
 
     assert os.path.exists(data_home)
     assert not os.path.exists(os.path.join(data_home, "Orchset"))
@@ -187,10 +192,34 @@ def test_download(httpserver):
     assert os.path.exists(
         os.path.join(data_home, "Orchset - Predominant Melodic Instruments.csv")
     )
-    track = orchset.Track("Beethoven-S3-I-ex1", data_home=data_home)
+    track = dataset.track("Beethoven-S3-I-ex1")
     assert os.path.exists(track.audio_path_mono)
     assert os.path.exists(track.audio_path_stereo)
     assert os.path.exists(track.melody_path)
+
+    # test downloading again
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite
+    dataset.download(None, False, False)
+    dataset.download(None, True, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite and cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, True, False)
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)

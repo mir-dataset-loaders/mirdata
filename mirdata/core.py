@@ -1,127 +1,218 @@
-# -*- coding: utf-8 -*-
-"""core mirdata classes
+"""Core mirdata classes
 """
-import importlib
+import json
 import os
 import random
 import types
+from typing import Any
+
 import numpy as np
 
-import mirdata
 from mirdata import download_utils
-from mirdata import utils
+from mirdata import validate
 
 MAX_STR_LEN = 100
-DATASETS = mirdata.DATASETS
+DOCS_URL = "https://mirdata.readthedocs.io/en/stable/source/mirdata.html"
+DISCLAIMER = """
+******************************************************************************************
+DISCLAIMER: mirdata is a software package with its own license which is independent from
+this dataset's license. We don not take responsibility for possible inaccuracies in the
+license information provided in mirdata. It is the user's responsibility to be informed
+and respect the dataset's license.
+******************************************************************************************
+"""
+
+##### decorators ######
 
 
-class Dataset(object):
-    """mirdata Dataset object
+class cached_property(object):
+    """Cached propery decorator
 
-    Usage example:
-    orchset = mirdata.Dataset('orchset')  # get the orchset dataset
-    orchset.download()  # download orchset
-    orchset.validate()  # validate orchset
-    track = orchset.choice_track()  # load a random track
-    print(track)  # see what data a track contains
-    orchset.track_ids()  # load all track ids
-
-    Attributes:
-        name (str): the identifier of the dataset
-        bibtex (str): dataset citation/s in bibtex format
-        remotes (dict): data to be downloaded
-        index (dict): dataset file index
-        download_info (str): download instructions or caveats
-        track (mirdata.core.Track): function that inputs a track_id
-        readme (str): information about the dataset
-        data_home (str): path where mirdata will look for the dataset
+    A property that is only computed once per instance and then replaces
+    itself with an ordinary attribute. Deleting the attribute resets the
+    property.
+    Source: https://github.com/bottlepy/bottle/commit/fa7733e075da0d790d809aa3d2f53071897e6f76
 
     """
 
-    def __init__(self, dataset, data_home=None):
-        """Inits a dataset by name and data location"""
-        if dataset not in DATASETS:
-            raise ValueError(
-                "{} is not a valid dataset in mirdata. Valid datsets are:\n{}".format(
-                    dataset, ",".join(DATASETS)
-                )
-            )
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset))
-        self.name = dataset
-        self.bibtex = getattr(module, "BIBTEX", None)
-        self._remotes = getattr(module, "REMOTES", None)
-        self._index = module.DATA.index
-        self._download_info = getattr(module, "DOWNLOAD_INFO", None)
-        self._track_object = getattr(module, "Track", None)
-        self._download_fn = getattr(module, "_download", download_utils.downloader)
-        self._readme_str = module.__doc__
+    def __init__(self, func):
+        self.__doc__ = getattr(func, "__doc__")
+        self.func = func
 
-        if data_home is None:
-            self.data_home = self.default_path
+    def __get__(self, obj: Any, cls: type) -> Any:
+        if obj is None:
+            return self
+        value = obj.__dict__[self.func.__name__] = self.func(obj)
+        return value
+
+
+def docstring_inherit(parent):
+    """Decorator function to inherit docstrings from the parent class.
+
+    Adds documented Attributes from the parent to the child docs.
+
+    """
+
+    def inherit(obj):
+        spaces = "    "
+        if not str(obj.__doc__).__contains__("Attributes:"):
+            obj.__doc__ += "\n" + spaces + "Attributes:\n"
+        obj.__doc__ = str(obj.__doc__).rstrip() + "\n"
+        for attribute in parent.__doc__.split("Attributes:\n")[-1].lstrip().split("\n"):
+            obj.__doc__ += spaces * 2 + str(attribute).lstrip().rstrip() + "\n"
+
+        return obj
+
+    return inherit
+
+
+def copy_docs(original):
+    """
+    Decorator function to copy docs from one function to another
+    """
+
+    def wrapper(target):
+        target.__doc__ = original.__doc__
+        return target
+
+    return wrapper
+
+
+##### Core Classes #####
+
+
+class Dataset(object):
+    """mirdata Dataset class
+
+    Attributes:
+        data_home (str): path where mirdata will look for the dataset
+        name (str): the identifier of the dataset
+        bibtex (str or None): dataset citation/s in bibtex format
+        remotes (dict or None): data to be downloaded
+        readme (str): information about the dataset
+        track (function): a function mapping a track_id to a mirdata.core.Track
+
+    """
+
+    def __init__(
+        self,
+        data_home=None,
+        name=None,
+        track_class=None,
+        bibtex=None,
+        remotes=None,
+        download_info=None,
+        license_info=None,
+        custom_index_path=None,
+    ):
+        """Dataset init method
+
+        Args:
+            data_home (str or None): path where mirdata will look for the dataset
+            name (str or None): the identifier of the dataset
+            track_class (mirdata.core.Track or None): a Track class
+            bibtex (str or None): dataset citation/s in bibtex format
+            remotes (dict or None): data to be downloaded
+            download_info (str or None): download instructions or caveats
+            license_info (str or None): license of the dataset
+            custom_index_path (str or None): overwrites the default index path for remote indexes
+
+        """
+        self.name = name
+        self.data_home = self.default_path if data_home is None else data_home
+        if custom_index_path:
+            self.index_path = os.path.join(self.data_home, custom_index_path)
+            self.remote_index = True
         else:
-            self.data_home = data_home
+            self.index_path = os.path.join(
+                os.path.dirname(os.path.realpath(__file__)),
+                "datasets/indexes",
+                "{}_index.json".format(self.name),
+            )
+            self.remote_index = False
+        self._track_class = track_class
+        self.bibtex = bibtex
+        self.remotes = remotes
+        self._download_info = download_info
+        self._license_info = license_info
+        self.readme = "{}#module-mirdata.datasets.{}".format(DOCS_URL, self.name)
 
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
-        self.track.__doc__ = self._track_object.__doc__  # set the docstring
-
-        # inherit any public load functions from the module
-        for method_name in dir(module):
-            if method_name.startswith("load_"):
-                method = getattr(module, method_name)
-                setattr(self, method_name, method)
-                # getattr(self, method_name).__doc__ = method.__doc__
+        self.track.__doc__ = self._track_class.__doc__  # set the docstring
 
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
         repr_string += "-" * MAX_STR_LEN
-        repr_string += "\n"
-        repr_string += (
-            "Call the .readme method for complete documentation of this dataset.\n"
-        )
+        repr_string += "\n\n\n"
         repr_string += "Call the .cite method for bibtex citations.\n"
         repr_string += "-" * MAX_STR_LEN
-        repr_string += "\n"
-        if self._track_object is not None:
+        repr_string += "\n\n\n"
+        if self._track_class is not None:
             repr_string += self.track.__doc__
             repr_string += "-" * MAX_STR_LEN
             repr_string += "\n"
 
         return repr_string
 
+    @cached_property
+    def _index(self):
+        if self.remote_index and not os.path.exists(self.index_path):
+            raise FileNotFoundError(
+                "This dataset's index is not available locally. You may need to first run .download()"
+            )
+        with open(self.index_path) as fhandle:
+            index = json.load(fhandle)
+        return index
+
+    @cached_property
+    def _metadata(self):
+        return None
+
     @property
     def default_path(self):
         """Get the default path for the dataset
 
         Returns:
-            default_path (str): Local path to the dataset
+            str: Local path to the dataset
+
         """
         mir_datasets_dir = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
         return os.path.join(mir_datasets_dir, self.name)
 
     def _track(self, track_id):
         """Load a track by track_id.
+
         Hidden helper function that gets called as a lambda.
 
         Args:
             track_id (str): track id of the track
 
         Returns:
-            track (dataset.Track): an instance of this dataset's Track object
+           Track: a Track object
+
         """
-        if self._track_object is None:
+        if self._track_class is None:
             raise NotImplementedError
         else:
-            return self._track_object(track_id, self.data_home)
+            return self._track_class(
+                track_id,
+                self.data_home,
+                self.name,
+                self._index,
+                lambda: self._metadata,
+            )
 
     def load_tracks(self):
         """Load all tracks in the dataset
 
         Returns:
-            (dict): {`track_id`: track data}
+            dict:
+                {`track_id`: track data}
 
         Raises:
-            NotImplementedError: If the dataset does not support Track objects
+            NotImplementedError: If the dataset does not support Tracks
+
         """
         return {track_id: self.track(track_id) for track_id in self.track_ids}
 
@@ -129,20 +220,27 @@ class Dataset(object):
         """Choose a random track
 
         Returns:
-            track (dataset.Track): a random Track object
+            Track: a Track object instantiated by a random track_id
+
         """
         return self.track(random.choice(self.track_ids))
 
-    def readme(self):
-        """Print the dataset's readme."""
-        print(self._readme_str)
-
     def cite(self):
-        """Print the reference"""
+        """
+        Print the reference
+        """
         print("========== BibTeX ==========")
         print(self.bibtex)
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
+    def license(self):
+        """
+        Print the license
+        """
+        print("========== License ==========")
+        print(self._license_info)
+        print(DISCLAIMER)
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
         """Download data to `save_dir` and optionally print a message.
 
         Args:
@@ -159,23 +257,24 @@ class Dataset(object):
             IOError: if a downloaded file's checksum is different from expected
 
         """
-        self._download_fn(
+        download_utils.downloader(
             self.data_home,
-            remotes=self._remotes,
+            remotes=self.remotes,
             partial_download=partial_download,
             info_message=self._download_info,
             force_overwrite=force_overwrite,
             cleanup=cleanup,
         )
 
-    @utils.cached_property
+    @cached_property
     def track_ids(self):
         """Return track ids
 
         Returns:
-            (list): A list of track ids
+            list: A list of track ids
+
         """
-        return list(self._index['tracks'].keys())
+        return list(self._index["tracks"].keys())
 
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version
@@ -184,19 +283,68 @@ class Dataset(object):
             verbose (bool): If False, don't print output
 
         Returns:
-            missing_files (list): List of file paths that are in the dataset index
-                but missing locally
-            invalid_checksums (list): List of file paths that file exists in the dataset
-                index but has a different checksum compare to the reference checksum
+            * list - files in the index but are missing locally
+            * list - files which have an invalid checksum
 
         """
-        missing_files, invalid_checksums = utils.validator(
+        missing_files, invalid_checksums = validate.validator(
             self._index, self.data_home, verbose=verbose
         )
         return missing_files, invalid_checksums
 
 
 class Track(object):
+    """Track base class
+
+    See the docs for each dataset loader's Track class for details
+
+    """
+
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata=None,
+    ):
+        """Track init method. Sets boilerplate attributes, including:
+
+        - ``track_id``
+        - ``_dataset_name``
+        - ``_data_home``
+        - ``_track_paths``
+        - ``_track_metadata``
+
+        Args:
+            track_id (str): track id
+            data_home (str): path where mirdata will look for the dataset
+            dataset_name (str): the identifier of the dataset
+            index (dict): the dataset's file index
+            metadata (dict or None): a dictionary of metadata or None
+
+        """
+        if track_id not in index["tracks"]:
+            raise ValueError(
+                "{} is not a valid track_id in {}".format(track_id, dataset_name)
+            )
+
+        self.track_id = track_id
+        self._dataset_name = dataset_name
+
+        self._data_home = data_home
+        self._track_paths = index["tracks"][track_id]
+        self._metadata = metadata
+
+    @property
+    def _track_metadata(self):
+        metadata = self._metadata()
+        if metadata and self.track_id in metadata:
+            return metadata[self.track_id]
+        elif metadata:
+            return metadata
+        return None
+
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]
         attributes = [
@@ -219,9 +367,11 @@ class Track(object):
                 continue
 
             if val.__doc__ is None:
-                raise ValueError("{} has no documentation".format(prop))
+                doc = ""
+            else:
+                doc = val.__doc__
 
-            val_type_str = val.__doc__.split(":")[0]
+            val_type_str = doc.split(":")[0]
             repr_str += "  {}: {},\n".format(prop, val_type_str)
 
         repr_str += ")"
@@ -260,7 +410,7 @@ class MultiTrack(Track):
                 of the longest track
 
         Returns:
-            target (np.ndarray): target audio with shape (n_channels, n_samples)
+            np.ndarray: target audio with shape (n_channels, n_samples)
 
         Raises:
             ValueError:
@@ -321,9 +471,10 @@ class MultiTrack(Track):
             max_weight (float): maximum possible weight when mixing
 
         Returns:
-            target (np.ndarray): mixture audio with shape (n_samples, n_channels)
-            tracks (list): list of keys of included tracks
-            weights (list): list of weights used to mix tracks
+            * np.ndarray - mixture audio with shape (n_samples, n_channels)
+            * list - list of keys of included tracks
+            * list - list of weights used to mix tracks
+
         """
         self._check_mixable()
         tracks = list(self.tracks.keys())
@@ -341,7 +492,25 @@ class MultiTrack(Track):
             track_keys (list): list of track keys to mix together
 
         Returns:
-            target (np.ndarray): mixture audio with shape (n_samples, n_channels)
+            np.ndarray: mixture audio with shape (n_samples, n_channels)
+
         """
         self._check_mixable()
         return self.get_target(list(self.tracks.keys()))
+
+
+def none_path_join(partial_path_list):
+    """Join a list of partial paths. If any part of the path is None,
+    returns None.
+
+    Args:
+        partial_path_list (list): List of partial paths
+
+    Returns:
+        str or None: joined path string or None
+
+    """
+    if None in partial_path_list:
+        return None
+    else:
+        return os.path.join(*partial_path_list)

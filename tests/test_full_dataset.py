@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 This test takes a long time, but it makes sure that the datset can be locally downloaded,
 validated successfully, and loaded.
@@ -18,7 +17,7 @@ def dataset(test_dataset):
     elif test_dataset not in mirdata.DATASETS:
         raise ValueError("{} is not a dataset in mirdata".format(test_dataset))
     data_home = os.path.join("tests/resources/mir_datasets_full", test_dataset)
-    return mirdata.Dataset(test_dataset, data_home)
+    return mirdata.initialize(test_dataset, data_home)
 
 
 # This is magically skipped by the the remote fixture `skip_remote` in conftest.py
@@ -45,8 +44,12 @@ def test_validation(skip_remote, dataset):
     # run validation
     missing_files, invalid_checksums = dataset.validate(verbose=True)
 
-    assert missing_files == {key:{} for key in dataset._index.keys() if not key == "version"}
-    assert invalid_checksums == {key:{} for key in dataset._index.keys() if not key == "version"}
+    assert missing_files == {
+        key: {} for key in dataset._index.keys() if not key == "version"
+    }
+    assert invalid_checksums == {
+        key: {} for key in dataset._index.keys() if not key == "version"
+    }
 
 
 def test_load(skip_remote, dataset):
@@ -85,8 +88,12 @@ def test_index(skip_remote, dataset):
 
     okeys = ["tracks", "multitracks", "records"]
 
-    if  "version" not in dataset._index.keys():
+    if "version" not in dataset._index.keys():
         raise NotImplementedError("The top-level key 'version' is missing in the index")
 
     if not any(key in dataset._index.keys() for key in okeys):
-        raise NotImplementedError("At least one of the optional top-level keys {} should be in the index".format(okeys))
+        raise NotImplementedError(
+            "At least one of the optional top-level keys {} should be in the index".format(
+                okeys
+            )
+        )
