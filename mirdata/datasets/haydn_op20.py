@@ -121,15 +121,15 @@ class Track(core.Track):
         return load_score(self.humdrum_annotated_path)
 
     @core.cached_property
-    def keys(self, resolution=28) -> List[dict]:
+    def keys(self, resolution=28) -> Optional[List[dict]]:
         return load_key(self.humdrum_annotated_path)
 
     @core.cached_property
-    def roman_numerals(self, resolution=28) -> List[dict]:
+    def roman_numerals(self, resolution=28) -> Optional[List[dict]]:
         return load_roman_numerals(self.humdrum_annotated_path)
 
     @core.cached_property
-    def chords(self, resolution=28) -> List[dict]:
+    def chords(self, resolution=28) -> Optional[List[dict]]:
         return load_chords(self.humdrum_annotated_path)
 
     @core.cached_property
@@ -137,7 +137,7 @@ class Track(core.Track):
         return self.chords[-1]["time"]
 
     @core.cached_property
-    def midi_path(self) -> str:
+    def midi_path(self) -> Optional[str]:
         return load_midi_path(self.humdrum_annotated_path)
 
     def to_jams(self):
