@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Queen Dataset Loader
 
 The Queen Dataset includes chord, key, and segmentation
@@ -29,13 +28,14 @@ Chuks Chiejine
 
 import csv
 import os
+from typing import Tuple, TextIO
+
 import librosa
 import numpy as np
 
-from mirdata import download_utils
+from mirdata import download_utils, annotations, io
 from mirdata import jams_utils
 from mirdata import core
-from mirdata import utils
 
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
@@ -45,8 +45,9 @@ BIBTEX = """@inproceedings{mauch2009beatles,
     year={2009},
     series = {ISMIR}
 }"""
-
-
+LICENSE_INFO = (
+    "Unfortunately we couldn't find the license information for the Queen dataset."
+)
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="Queen Annotations.tar.gz",
@@ -67,8 +68,6 @@ DOWNLOAD_INFO = """
         and copy Queen folder to {}
 """
 
-DATA = utils.LargeData("queen_index.json")
-
 
 class Track(core.Track):
     """Queen track class
@@ -85,44 +84,55 @@ class Track(core.Track):
         track_id (str): track id
 
     """
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
-            raise ValueError("{} is not a valid track ID in Queen".format(track_id))
 
-        self.track_id = track_id
+    def __init__(
+            self,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
-        self.chords_path = utils.none_path_join(
+        self.chords_path = core.none_path_join(
             [self._data_home, self._track_paths["chords"][0]]
         )
-        self.keys_path = utils.none_path_join(
+        self.keys_path = core.none_path_join(
             [self._data_home, self._track_paths["keys"][0]]
         )
-        self.sections_path = os.path.join(
-            self._data_home, self._track_paths["sections"][0]
+        self.sections_path = core.none_path_join(
+            [self._data_home, self._track_paths["sections"][0]]
         )
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = core.none_path_join(
+            [self._data_home, self._track_paths["audio"][0]]
+        )
 
         self.title = os.path.basename(self._track_paths["sections"][0]).split(".")[0]
 
-    @utils.cached_property
-    def chords(self):
+    @core.cached_property
+    def chords(self) -> annotations.ChordData:
         """ChordData: chord annotation"""
         return load_chords(self.chords_path)
 
-    @utils.cached_property
-    def key(self):
+    @core.cached_property
+    def key(self) -> annotations.KeyData:
         """KeyData: key annotation"""
         return load_key(self.keys_path)
 
-    @utils.cached_property
-    def sections(self):
+    @core.cached_property
+    def sections(self) -> annotations.SectionData:
         """SectionData: section annotation"""
         return load_sections(self.sections_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
@@ -137,109 +147,112 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+def load_audio(fhandle: TextIO) -> Tuple[np.ndarray, float]:
     """Load a Queen audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         y (np.ndarray): the mono audio signal
         sr (float): The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_chords(chords_path):
+@io.coerce_to_bytes_io
+def load_chords(fhandle: TextIO) -> annotations.ChordData:
     """Load Queen format chord data from a file
 
     Args:
-        chords_path (str): path to chord annotation file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         (utils.ChordData): loaded chord data
 
     """
-    if chords_path is None:
-        return None
-
-    if not os.path.exists(chords_path):
-        raise IOError("chords_path {} does not exist".format(chords_path))
-
     start_times, end_times, chords = [], [], []
-    with open(chords_path, "r") as f:
-        dialect = csv.Sniffer().sniff(f.read(1024))
-        f.seek(0)
-        reader = csv.reader(f, dialect)
-        for line in reader:
-            start_times.append(float(line[0]))
-            end_times.append(float(line[1]))
-            chords.append(line[2])
+    f = open(fhandle.name, 'r')
+    reader = csv.reader(f, delimiter='\t')
+    for line in reader:
+        start_times.append(float(line[0]))
+        end_times.append(float(line[1]))
+        chords.append(line[2])
 
-    chord_data = utils.ChordData(np.array([start_times, end_times]).astype(np.float).T, chords)
-
-    return chord_data
+    return annotations.ChordData(np.array([start_times, end_times]).T, chords)
 
 
-def load_key(keys_path):
+@io.coerce_to_bytes_io
+def load_key(fhandle: TextIO) -> annotations.KeyData:
     """Load Queen format key data from a file
 
     Args:
-        keys_path (str): path to key annotation file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        (utils.KeyData): loaded key data
+        (annotations.KeyData): loaded key data
 
     """
-    if keys_path is None:
-        return None
-
-    if not os.path.exists(keys_path):
-        raise IOError("keys_path {} does not exist".format(keys_path))
-
     start_times, end_times, keys = [], [], []
-    with open(keys_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            # silence sections are not included
-            if line[2] == "Key":
-                start_times.append(float(line[0]))
-                end_times.append(float(line[1]))
-                keys.append(line[3])
+    f = open(fhandle.name, 'r')
+    reader = csv.reader(f, delimiter='\t')
+    for line in reader:
+        if line[2] == "Key":
+            start_times.append(float(line[0]))
+            end_times.append(float(line[1]))
+            keys.append(line[3])
 
-    key_data = utils.KeyData(np.array(start_times).astype(np.float), np.array(end_times).astype(np.float), np.array(keys))
-
-    return key_data
+    return annotations.KeyData(np.array([start_times, end_times]).T, keys)
 
 
-def load_sections(sections_path):
+@io.coerce_to_bytes_io
+def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load Queen format section data from a file
 
     Args:
-        sections_path (str): path to section annotation file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        (utils.SectionData): loaded section data
+        (annotations.SectionData): loaded section data
 
     """
-    if sections_path is None:
-        return None
-
-    if not os.path.exists(sections_path):
-        raise IOError("sections_path {} does not exist".format(sections_path))
-
     start_times, end_times, sections = [], [], []
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            start_times.append(float(line[0]))
-            end_times.append(float(line[1]))
-            sections.append(line[3])
+    f = open(fhandle.name, 'r')
+    reader = csv.reader(f, delimiter='\t')
+    for line in reader:
+        start_times.append(float(line[0]))
+        end_times.append(float(line[1]))
+        sections.append(line[3])
 
-    section_data = utils.SectionData(np.array([start_times, end_times]).astype(np.float).T, sections)
+    return annotations.SectionData(np.array([start_times, end_times]).T, sections)
 
-    return section_data
 
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The beatles dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            name="queen",
+            track_class=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
+            license_info=LICENSE_INFO,
+        )
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_chords)
+    def load_chords(self, *args, **kwargs):
+        return load_chords(*args, **kwargs)
+
+    @core.copy_docs(load_sections)
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)

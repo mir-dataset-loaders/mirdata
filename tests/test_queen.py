@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 
 import numpy as np
 
-from mirdata import utils
+from mirdata import annotations
 from mirdata.datasets import queen
 from tests.test_utils import run_track_tests
 
@@ -10,7 +9,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "0"
     data_home = "tests/resources/mir_datasets/queen"
-    track = queen.Track(default_trackid, data_home=data_home)
+    dataset = queen.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "audio_path": "tests/resources/mir_datasets/queen/audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
@@ -25,9 +25,10 @@ def test_track():
     }
 
     expected_property_types = {
-        "chords": utils.ChordData,
-        "key": utils.KeyData,
-        "sections": utils.SectionData,
+        "chords": annotations.ChordData,
+        "key": annotations.KeyData,
+        "sections": annotations.SectionData,
+        "audio": tuple
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -41,7 +42,8 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/queen"
-    track = queen.Track("0", data_home=data_home)
+    dataset = queen.Dataset(data_home)
+    track = dataset.track("0")
     jam = track.to_jams()
     segments = jam.search(namespace="segment")[0]["data"]
 
@@ -197,7 +199,7 @@ def test_load_chords():
     chords_path = "tests/resources/mir_datasets/queen/annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
     chord_data = queen.load_chords(chords_path)
 
-    assert type(chord_data) == utils.ChordData
+    assert type(chord_data) == annotations.ChordData
     assert type(chord_data.intervals) == np.ndarray
     assert type(chord_data.labels) == list
 
@@ -319,12 +321,12 @@ def test_load_key():
     )
     key_data = queen.load_key(key_path)
 
-    assert type(key_data) == utils.KeyData
-    assert type(key_data.start_times) == np.ndarray
+    assert type(key_data) == annotations.KeyData
+    assert type(key_data.intervals) == np.ndarray
 
-    assert np.array_equal(key_data.start_times, np.array([0.456, 83.139, 108.519, 142.649, 183.411, 206.713, 339.87]))
-    assert np.array_equal(key_data.end_times, np.array([83.139, 108.519, 142.649, 183.411, 206.713, 339.87, 353.076]))
-    assert np.array_equal(key_data.keys, np.array(['Bb', 'Eb', 'Bb', 'Eb', 'A', 'Eb', 'F']))
+    assert np.array_equal(key_data.intervals[:, 0], np.array([0.456, 83.139, 108.519, 142.649, 183.411, 206.713, 339.87]))
+    assert np.array_equal(key_data.intervals[:, 1], np.array([83.139, 108.519, 142.649, 183.411, 206.713, 339.87, 353.076]))
+    assert np.array_equal(key_data.keys, ['Bb', 'Eb', 'Bb', 'Eb', 'A', 'Eb', 'F'])
 
     assert queen.load_key(None) is None
 
@@ -335,7 +337,7 @@ def test_load_sections():
     )
     section_data = queen.load_sections(sections_path)
 
-    assert type(section_data) == utils.SectionData
+    assert type(section_data) == annotations.SectionData
     assert type(section_data.intervals) == np.ndarray
     assert type(section_data.labels) == list
 
