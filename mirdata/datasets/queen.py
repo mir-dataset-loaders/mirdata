@@ -28,7 +28,7 @@ Chuks Chiejine
 
 import csv
 import os
-from typing import Tuple, TextIO
+from typing import Tuple, TextIO, Optional
 
 import librosa
 import numpy as np
@@ -117,22 +117,22 @@ class Track(core.Track):
         self.title = os.path.basename(self._track_paths["sections"][0]).split(".")[0]
 
     @core.cached_property
-    def chords(self) -> annotations.ChordData:
+    def chords(self) -> Optional[annotations.ChordData]:
         """ChordData: chord annotation"""
         return load_chords(self.chords_path)
 
     @core.cached_property
-    def key(self) -> annotations.KeyData:
+    def key(self) -> Optional[annotations.KeyData]:
         """KeyData: key annotation"""
         return load_key(self.keys_path)
 
     @core.cached_property
-    def sections(self) -> annotations.SectionData:
+    def sections(self) -> Optional[annotations.SectionData]:
         """SectionData: section annotation"""
         return load_sections(self.sections_path)
 
     @property
-    def audio(self) -> Tuple[np.ndarray, float]:
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """(np.ndarray, float): audio signal, sample rate"""
         return load_audio(self.audio_path)
 
