@@ -226,6 +226,11 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
+        subset (str): subset which belongs track.
+        work_id (str): id of global original track
+        label (str): alias of work_id
+        performance_id (str): id of cover track
+        metadata (dict): metadata info
         cens_path (str): cens annotation path
         crema_path (str): crema annotation path
         hpcp_path (str): hpcp annotation path
@@ -234,7 +239,6 @@ class Track(core.Track):
         mfcc_path (str): mfcc annotation path
         tags_path (str): tags annotation path
         track_id (str): track id
-
     """
 
     def __init__(
@@ -265,26 +269,11 @@ class Track(core.Track):
             [self._data_home, self._track_paths["tags"][0]]
         )
 
-    @core.cached_property
-    def subset(self) -> str:
-        return self.track_id.split("#")[0]
-
-    @core.cached_property
-    def work_id(self) -> str:
-        return self.track_id.split("#")[1]
-
-    # alias of work_id
-    @core.cached_property
-    def label(self) -> str:
-        return self.work_id
-
-    @core.cached_property
-    def performance_id(self) -> str:
-        return self.track_id.split("#")[2]
-
-    @core.cached_property
-    def metadata(self) -> dict:
-        return self._track_metadata
+        self.subset = self.track_id.split("#")[0]
+        self.work_id = self.track_id.split("#")[1]
+        self.label = self.work_id
+        self.performance_id = self.track_id.split("#")[2]
+        self.metadata = self._track_metadata
 
     @core.cached_property
     def cens(self) -> np.array:
