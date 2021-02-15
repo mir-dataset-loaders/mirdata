@@ -161,7 +161,7 @@ def load_audio(fhandle: TextIO) -> Tuple[np.ndarray, float]:
     return librosa.load(fhandle, sr=None, mono=True)
 
 
-@io.coerce_to_bytes_io
+@io.coerce_to_string_io
 def load_chords(fhandle: TextIO) -> annotations.ChordData:
     """Load Queen format chord data from a file
 
@@ -183,7 +183,7 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
     return annotations.ChordData(np.array([start_times, end_times]).T, chords)
 
 
-@io.coerce_to_bytes_io
+@io.coerce_to_string_io
 def load_key(fhandle: TextIO) -> annotations.KeyData:
     """Load Queen format key data from a file
 
@@ -206,7 +206,7 @@ def load_key(fhandle: TextIO) -> annotations.KeyData:
     return annotations.KeyData(np.array([start_times, end_times]).T, keys)
 
 
-@io.coerce_to_bytes_io
+@io.coerce_to_string_io
 def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load Queen format section data from a file
 
