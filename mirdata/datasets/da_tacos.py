@@ -242,12 +242,12 @@ class Track(core.Track):
     """
 
     def __init__(
-            self,
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
     ):
         super().__init__(
             track_id,
@@ -276,15 +276,15 @@ class Track(core.Track):
         self.metadata = self._track_metadata
 
     @core.cached_property
-    def cens(self) -> np.array:
+    def cens(self) -> np.darray:
         return load_cens(self.cens_path)
 
     @core.cached_property
-    def crema(self) -> np.array:
+    def crema(self) -> np.darray:
         return load_crema(self.crema_path)
 
     @core.cached_property
-    def hpcp(self) -> np.array:
+    def hpcp(self) -> np.darray:
         return load_hpcp(self.hpcp_path)
 
     @core.cached_property
@@ -292,11 +292,11 @@ class Track(core.Track):
         return load_key(self.key_path)
 
     @core.cached_property
-    def madmom(self) -> np.array:
+    def madmom(self) -> np.darray:
         return load_madmom(self.madmom_path)
 
     @core.cached_property
-    def mfcc(self) -> np.array:
+    def mfcc(self) -> np.darray:
         return load_mfcc(self.mfcc_path)
 
     @core.cached_property
@@ -450,7 +450,7 @@ def load_tags(fhandle: TextIO):
         fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
-        list: tags
+        list: tags, in the form [(tag, confidence), ...]
 
     Examples: [('rock', '0.127'), ('pop', '0.014'), ('alternative', '0.051'), ('indie', '0.048'), ('electronic',
      '0.050'), ('female vocalists', '0.017'), ('dance', '0.005'), ('00s', '0.008'), ('alternative rock',
@@ -560,9 +560,7 @@ class Dataset(core.Dataset):
              dict: {`track_id`: track data}
 
         """
-        data = {
-            k: v for k, v in self._index["tracks"].items() if search_key in k
-        }
+        data = {k: v for k, v in self._index["tracks"].items() if search_key in k}
         return data
 
     def benchmark_tracks(self):
