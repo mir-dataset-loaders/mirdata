@@ -276,15 +276,15 @@ class Track(core.Track):
         self.metadata = self._track_metadata
 
     @core.cached_property
-    def cens(self) -> np.darray:
+    def cens(self) -> np.ndarray:
         return load_cens(self.cens_path)
 
     @core.cached_property
-    def crema(self) -> np.darray:
+    def crema(self) -> np.ndarray:
         return load_crema(self.crema_path)
 
     @core.cached_property
-    def hpcp(self) -> np.darray:
+    def hpcp(self) -> np.ndarray:
         return load_hpcp(self.hpcp_path)
 
     @core.cached_property
@@ -292,11 +292,11 @@ class Track(core.Track):
         return load_key(self.key_path)
 
     @core.cached_property
-    def madmom(self) -> np.darray:
+    def madmom(self) -> np.ndarray:
         return load_madmom(self.madmom_path)
 
     @core.cached_property
-    def mfcc(self) -> np.darray:
+    def mfcc(self) -> np.ndarray:
         return load_mfcc(self.mfcc_path)
 
     @core.cached_property
