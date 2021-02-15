@@ -292,7 +292,7 @@ class Track(core.Track):
         return load_key(self.key_path)
 
     @core.cached_property
-    def madmom(self) -> Optional[np.ndarray]:
+    def madmom(self) -> Optional[dict]:
         return load_madmom(self.madmom_path)
 
     @core.cached_property
@@ -339,9 +339,6 @@ def load_cens(fhandle: TextIO):
         np.array: cens features
 
     """
-    if not os.path.exists(fhandle.name):
-        raise IOError
-
     return dd.io.load(fhandle.name)["chroma_cens"]
 
 
@@ -356,8 +353,6 @@ def load_crema(fhandle: TextIO):
         np.array: crema features
 
     """
-    if not os.path.exists(fhandle.name):
-        raise IOError
     return dd.io.load(fhandle.name)["crema"]
 
 
@@ -372,8 +367,6 @@ def load_hpcp(fhandle: TextIO):
         np.array: hpcp features
 
     """
-    if not os.path.exists(fhandle.name):
-        raise IOError
     return dd.io.load(fhandle.name)["hpcp"]
 
 
@@ -391,8 +384,6 @@ def load_key(fhandle: TextIO):
         {'key': 'C', 'scale': 'major', 'strength': 0.8449875116348267}
 
     """
-    if not os.path.exists(fhandle.name):
-        raise IOError
     return dd.io.load(fhandle.name)["key_extractor"]
 
 
@@ -421,8 +412,6 @@ def load_madmom(fhandle: TextIO):
         }
 
     """
-    if not os.path.exists(fhandle.name):
-        raise IOError
     return dd.io.load(fhandle.name)["madmom_features"]
 
 
@@ -437,8 +426,6 @@ def load_mfcc(fhandle: TextIO):
         np.array: mfcc
 
     """
-    if not os.path.exists(fhandle.name):
-        raise IOError
     return dd.io.load(fhandle.name)["mfcc_htk"]
 
 
@@ -464,8 +451,6 @@ def load_tags(fhandle: TextIO):
      ('funk', '0.027'), ('electro', '0.008'), ('heavy metal', '0.009'), ('Progressive rock', '0.080'), ('60s',
      '0.003'), ('rnb', '0.005'), ('indie pop', '0.003'), ('sad', '0.014'), ('House', '0.003'), ('happy',
      '0.001')]
-
-
     """
     if fhandle is None:
         tags = None
