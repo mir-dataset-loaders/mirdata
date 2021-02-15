@@ -121,15 +121,15 @@ class Track(core.Track):
         return load_score(self.humdrum_annotated_path)
 
     @core.cached_property
-    def keys(self, resolution=28) -> Optional[List[dict]]:
+    def keys(self) -> Optional[List[dict]]:
         return load_key(self.humdrum_annotated_path)
 
     @core.cached_property
-    def roman_numerals(self, resolution=28) -> Optional[List[dict]]:
+    def roman_numerals(self) -> Optional[List[dict]]:
         return load_roman_numerals(self.humdrum_annotated_path)
 
     @core.cached_property
-    def chords(self, resolution=28) -> Optional[List[dict]]:
+    def chords(self) -> Optional[List[dict]]:
         return load_chords(self.humdrum_annotated_path)
 
     @core.cached_property
@@ -170,8 +170,6 @@ def split_score_annotations(fhandle: TextIO):
         music21.stream.Score: score in music21 format
         dict: roman numerals
     """
-    if not os.path.exists(fhandle.name):
-        raise IOError
     score = music21.converter.parse(fhandle.name, format="humdrum")
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
     score.remove(rna, recurse=True)
