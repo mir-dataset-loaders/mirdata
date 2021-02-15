@@ -36,6 +36,13 @@ beatport_key
    :members:
    :inherited-members:
 
+billboard
+^^^^^^^^^
+
+.. automodule:: mirdata.datasets.billboard
+   :members:
+   :inherited-members:
+
 
 cante100
 ^^^^^^^^
