@@ -1,0 +1,1301 @@
+id,chart_date,target_rank,actual_rank,title,artist,peak_rank,weeks_on_chart
+1,1987-07-11,82,,,,,
+2,1973-08-04,14,,,,,
+3,1961-07-03,56,57,I Don't Mind,James Brown,47,8
+4,1971-08-07,32,31,You've Got A Friend,"Roberta Flack,Donny Hathaway",29,12
+5,1976-07-10,51,,,,,
+6,1980-08-02,15,16,The Rose,Bette Midler,3,25
+7,1972-10-07,37,,,,,
+8,1963-04-13,67,,,,,
+9,1991-05-25,48,,,,,
+10,1984-03-24,49,51,An Innocent Man,Billy Joel,10,18
+11,1960-01-25,97,,,,,
+12,1980-11-15,65,63,Lookin' For Love,Johnny Lee,5,21
+13,1973-08-18,14,,,,,
+14,1969-01-04,56,,,,,
+15,1976-08-07,21,21,Last Child,Aerosmith,21,15
+16,1984-07-28,37,39,She Bop,Cyndi Lauper,3,18
+17,1981-02-28,91,,,,,
+18,1981-01-31,56,55,Kiss On My List,Daryl Hall & John Oates,1,23
+19,1976-10-09,88,87,Here's Some Love,Tanya Tucker,82,5
+20,1976-03-06,66,,,,,
+21,1980-08-02,91,90,Just Can't Wait,The J. Geils Band,78,5
+22,1971-11-20,18,19,Never My Love,The 5th Dimension,12,11
+23,1985-12-07,88,87,And She Was,Talking Heads,54,20
+24,1978-08-26,20,,,,,
+25,1971-07-17,38,36,Chicago,Graham Nash,35,11
+26,1966-05-07,88,86,Sweet Talkin' Guy,The Chiffons,10,10
+27,1979-07-07,41,41,Rock 'N' Roll Fantasy,Bad Company,13,20
+28,1962-09-15,94,,,,,
+29,1973-11-10,44,46,The Joker,Steve Miller Band,1,20
+30,1970-12-05,18,18,Indiana Wants Me,R. Dean Taylor,5,15
+31,1971-12-04,93,,,,,
+32,1975-04-05,15,,,,,
+33,1978-02-11,99,100,Crazy On You,Heart,35,19
+34,1978-03-04,30,29,If I Can't Have You,Yvonne Elliman,1,22
+35,1971-05-01,67,65,Freedom,Jimi Hendrix,59,8
+36,1969-05-17,61,,,,,
+37,1968-04-13,67,65,Foggy Mountain Breakdown,Flatt & Scruggs,55,12
+38,1971-09-11,73,,,,,
+39,1974-09-14,17,17,It's Only Rock 'N Roll (But I Like It),The Rolling Stones,16,10
+40,1990-06-09,30,28,The Power,Snap,2,22
+41,1971-11-06,28,27,Absolutely Right,Five Man Electrical Band,26,8
+42,1963-09-21,94,,,,,
+43,1989-02-25,50,48,Two Hearts,Phil Collins,1,18
+44,1985-04-06,25,24,Some Like It Hot,The Power Station,6,18
+45,1974-01-19,93,,,,,
+46,1972-07-01,12,12,I'll Take You There,The Staple Singers,1,15
+47,1965-01-16,87,,,,,
+48,1980-04-26,19,,,,,
+49,1964-08-08,36,36,People,Barbra Streisand,5,19
+50,1964-07-11,23,24,Love Me Do,The Beatles,1,14
+51,1980-03-08,66,66,Carrie,Cliff Richard,34,11
+52,1965-01-02,86,,,,,
+53,1973-06-30,80,81,Over The Hills And Far Away,Led Zeppelin,51,8
+54,1964-09-05,71,73,Last Kiss,J. Frank Wilson & The Cavaliers,2,20
+55,1987-03-07,56,56,Smoking Gun,The Robert Cray Band,22,14
+56,1965-06-19,72,74,I Love You So,Bobbi Martin,70,7
+57,1984-02-18,81,,,,,
+58,1972-05-20,87,,,,,
+59,1969-10-11,33,33,Is That All There Is,Peggy Lee,11,10
+60,1960-03-07,67,,,,,
+61,1968-11-16,95,96,I Put A Spell On You,Creedence Clearwater Revival,58,9
+62,1985-09-28,90,89,Hurts To Be In Love,Gino Vannelli,57,12
+63,1972-01-15,68,,,,,
+64,1967-08-26,54,53,Cry Softly Lonely One,Roy Orbison,52,6
+65,1960-04-11,11,,,,,
+66,1988-06-18,57,58,Do You Love Me,The Contours,3,34
+67,1962-06-16,99,97,Bongo Stomp,Little Joey & The Flips,35,8
+68,1985-08-17,98,99,Black Cars,Gino Vannelli,42,16
+69,1959-06-29,20,,,,,
+70,1969-11-15,12,12,Hot Fun In The Summertime,Sly & The Family Stone,2,16
+71,1978-09-30,43,43,Paradise By The Dashboard Light,Meat Loaf,39,10
+72,1969-09-06,5,5,Get Together,The Youngbloods,5,25
+73,1976-06-12,49,49,Crazy On You,Heart,35,19
+74,1965-03-27,14,12,Nowhere To Run,Martha & The Vandellas,8,11
+75,1977-01-29,56,54,Drivin' Wheel,Foghat,34,10
+76,1984-10-13,79,,,,,
+77,1978-08-19,27,28,Reminiscing,Little River Band,3,20
+78,1988-12-24,46,46,Dial My Heart,The Boys,13,19
+79,1967-07-29,56,58,Cold Sweat - Part 1,James Brown,7,12
+80,1961-06-05,38,,,,,
+81,1986-08-23,69,69,You Can Call Me Al,Paul Simon,23,29
+82,1961-04-10,65,,,,,
+83,1984-04-07,33,34,Red Red Wine,UB40,1,40
+84,1979-12-15,57,,,,,
+85,1987-08-22,12,10,I Just Can't Stop Loving You,Michael Jackson With Siedah Garrett,1,12
+86,1973-04-21,22,21,Space Oddity,David Bowie,15,14
+87,1972-09-16,68,,,,,
+88,1967-04-22,57,57,Buy For Me The Rain,Nitty Gritty Dirt Band,45,7
+89,1981-08-15,25,24,Fire And Ice,Pat Benatar,17,15
+90,1975-11-22,86,,,,,
+91,1983-08-20,41,42,True,Spandau Ballet,4,18
+92,1982-11-06,59,60,Shock The Monkey,Peter Gabriel,29,18
+93,1987-12-12,67,,,,,
+94,1971-06-19,83,85,Wild Horses,The Rolling Stones,28,8
+95,1976-12-04,65,65,Drivin' Wheel,Foghat,34,10
+96,1964-10-24,73,,,,,
+97,1991-08-10,14,14,Motownphilly,Boyz II Men,3,24
+98,1981-11-07,84,,,,,
+99,1987-01-31,88,86,A Trick Of The Night,Bananarama,76,7
+100,1971-11-27,11,11,Maggie May,Rod Stewart,1,17
+101,1980-03-08,85,85,A Lesson In Leavin',Dottie West,73,5
+102,1970-09-26,65,66,For The Good Times,Ray Price,11,24
+103,1959-02-16,11,,,,,
+104,1983-06-18,23,22,We Two,Little River Band,22,12
+105,1980-03-08,60,62,The Spirit Of Radio,Rush,51,8
+106,1971-06-05,18,18,If,Bread,4,12
+107,1974-10-26,9,8,Sweet Home Alabama,Lynyrd Skynyrd,8,17
+108,1967-11-25,21,,,,,
+109,1970-01-24,83,83,Ma Belle Amie,The Tee Set,5,12
+110,1980-03-15,72,,,,,
+111,1966-06-04,33,32,Eight Miles High,The Byrds,14,9
+112,1962-01-27,27,27,Letter Full Of Tears,Gladys Knight & The Pips,19,11
+113,1984-10-20,76,,,,,
+114,1968-03-30,60,60,Sunshine Of Your Love,Cream,5,26
+115,1958-12-29,52,52,Sweet Little Rock And Roll,Chuck Berry,47,9
+116,1972-12-02,48,48,Let It Rain,Eric Clapton,48,13
+117,1966-02-19,41,,,,,
+118,1969-05-10,77,,,,,
+119,1970-11-28,61,61,Stand By Me,"David Ruffin,Jimmy Ruffin",61,7
+120,1963-09-28,1,3,Be My Baby,The Ronettes,2,13
+121,1970-09-12,67,,,,,
+122,1987-02-21,75,74,Have You Ever Loved Somebody,Freddie Jackson,69,9
+123,1960-12-19,64,64,Silent Night,Bing Crosby,54,2
+124,1978-12-23,14,13,Promises,Eric Clapton,9,18
+125,1972-10-07,76,,,,,
+126,1975-11-01,28,29,Blue Eyes Crying In The Rain,Willie Nelson,21,18
+127,1962-08-25,44,44,Stop The Wedding,Etta James,34,8
+128,1972-09-30,32,33,Brandy (You're A Fine Girl),Looking Glass,1,16
+129,1975-05-24,58,,,,,
+130,1972-06-24,24,24,Tumbling Dice,The Rolling Stones,7,10
+131,1981-10-31,76,75,I Wouldn't Have Missed It For The World,Ronnie Milsap,20,17
+132,1978-04-29,72,,,,,
+133,1963-07-20,24,24,Detroit City,Bobby Bare,16,12
+134,1967-01-07,49,47,I Had Too Much To Dream (Last Night),The Electric Prunes,11,14
+135,1985-07-13,94,,,,,
+136,1964-08-15,76,,,,,
+137,1991-09-14,76,,,,,
+138,1963-07-13,78,,,,,
+139,1990-09-29,79,79,The Way You Do The Things You Do,UB40,6,25
+140,1974-06-29,43,41,La Grange,ZZ Top,41,19
+141,1982-12-04,39,39,Shock The Monkey,Peter Gabriel,29,18
+142,1970-01-17,96,,,,,
+143,1963-10-12,77,,,,,
+144,1976-07-24,74,,,,,
+145,1961-12-18,22,20,Runaround Sue,Dion,1,14
+146,1975-05-10,82,,,,,
+147,1961-02-06,32,32,Wheels,The String-A-Longs,3,16
+148,1982-03-27,30,31,Spirits In The Material World,The Police,11,13
+149,1979-07-21,38,38,Just When I Needed You Most,Randy Vanwarmer,4,20
+150,1984-09-29,7,6,What's Love Got To Do With It,Tina Turner,1,28
+151,1990-02-03,80,,,,,
+152,1986-06-21,76,,,,,
+153,1961-05-01,52,50,Walk Right Back,The Everly Brothers,7,13
+154,1980-02-09,62,63,Lonely Eyes,Robert John,41,11
+155,1985-04-20,28,27,Forever Man,Eric Clapton,26,12
+156,1965-05-01,61,,,,,
+157,1959-08-24,8,8,Sleep Walk,Santo & Johnny,1,18
+158,1986-03-22,52,52,Something About You,Level 42,7,27
+159,1961-10-30,35,34,Little Sister,Elvis Presley,5,13
+160,1963-04-20,93,91,If You Need Me,Solomon Burke,37,11
+161,1974-06-08,86,,,,,
+162,1960-01-04,77,79,Sweet Nothin's,Brenda Lee,4,24
+163,1972-06-10,84,,,,,
+164,1960-08-29,24,,,,,
+165,1964-10-03,73,,,,,
+166,1964-02-29,12,,,,,
+167,1974-06-08,38,39,No Charge,Melba Montgomery,39,10
+168,1967-09-16,9,9,San Franciscan Nights,The Animals,9,10
+169,1961-06-19,96,95,Sea Of Heartbreak,Don Gibson,21,14
+170,1983-02-19,19,20,Twilight Zone,Golden Earring,10,27
+171,1964-07-04,77,,,,,
+172,1963-06-29,67,69,If You Need Me,Solomon Burke,37,11
+173,1972-06-03,71,,,,,
+174,1984-05-26,71,,,,,
+175,1981-02-28,66,,,,,
+176,1970-08-08,26,27,25 Or 6 To 4,Chicago,4,20
+177,1977-02-05,74,74,I've Got Love On My Mind,Natalie Cole,5,21
+178,1983-11-26,99,,,,,
+179,1962-09-01,67,66,You Can't Judge A Book By The Cover,Bo Diddley,48,10
+180,1972-07-01,69,68,Beautiful,Gordon Lightfoot,58,11
+181,1983-03-19,80,79,Always Something There To Remind Me,Naked Eyes,8,22
+182,1974-09-21,67,68,Annie's Song,John Denver,1,17
+183,1979-12-15,34,35,Chiquitita,Abba,29,12
+184,1988-04-30,12,11,Always On My Mind,Pet Shop Boys,4,14
+185,1958-10-27,31,29,Just A Dream,Jimmy Clanton,4,18
+186,1988-10-08,67,,,,,
+187,1977-11-05,20,18,Help Is On Its Way,Little River Band,14,22
+188,1979-07-28,7,7,I Want You To Want Me,Cheap Trick,7,19
+189,1961-09-18,87,,,,,
+190,1975-02-08,20,20,Never Can Say Goodbye,Gloria Gaynor,9,17
+191,1968-07-20,66,64,People Got To Be Free,The Rascals,1,14
+192,1959-11-02,30,29,Unforgettable,Dinah Washington,17,13
+193,1978-09-30,96,96,Shadow Dancing,Andy Gibb,1,25
+194,1974-12-21,38,36,Willie And The Hand Jive,Eric Clapton,26,9
+195,1972-07-29,8,7,School's Out,Alice Cooper,7,13
+196,1962-05-12,36,34,Love Me Warm And Tender,Paul Anka,12,12
+197,1983-02-26,81,,,,,
+198,1985-03-16,36,36,Along Comes A Woman,Chicago,14,16
+199,1980-10-11,40,41,Could I Have This Dance,Anne Murray,33,14
+200,1975-03-22,92,,,,,
+201,1983-10-15,58,,,,,
+202,1973-04-21,29,28,Love Train,The O'Jays,1,14
+203,1969-12-06,80,81,"Wonderful World, Beautiful People",Jimmy Cliff,25,11
+204,1970-08-29,35,34,I Want To Take You Higher,Ike & Tina Turner,34,18
+205,1983-01-15,94,93,Pressure,Billy Joel,20,17
+206,1977-03-05,20,20,Maybe I'm Amazed,Paul McCartney,10,13
+207,1987-09-05,36,37,Back In The High Life Again,Steve Winwood,13,21
+208,1976-08-21,65,67,Another Rainy Day In New York City,Chicago,32,9
+209,1974-05-04,99,97,Already Gone,Eagles,32,15
+210,1971-02-20,22,24,She's A Lady,Tom Jones,2,14
+211,1968-03-16,59,,,,,
+212,1961-08-28,41,42,It's Gonna Work Out Fine,Ike & Tina Turner,14,15
+213,1962-12-29,36,36,Comin' Home Baby,Mel Torme,36,11
+214,1959-02-09,94,95,(Night Time Is) The Right Time,Ray Charles,95,1
+215,1976-10-30,12,10,Magic Man,Heart,9,23
+216,1972-04-08,29,30,Do Your Thing,Isaac Hayes,30,11
+217,1981-04-11,60,61,Jessie's Girl,Rick Springfield,1,32
+218,1976-10-09,26,24,Fernando,Abba,13,16
+219,1981-06-13,17,,,,,
+220,1962-11-17,62,61,Ramblin' Rose,"Nat ""King"" Cole",2,16
+221,1974-09-28,39,38,Feel Like Makin' Love,Roberta Flack,1,16
+222,1973-11-10,49,49,For Ol' Times Sake,Elvis Presley,41,9
+223,1983-09-03,89,89,Wanna Be Startin' Somethin',Michael Jackson,5,15
+224,1969-03-15,18,18,Galveston,Glen Campbell,4,12
+225,1982-02-13,76,,,,,
+226,1962-05-12,60,,,,,
+227,1981-11-21,57,55,Promises In The Dark,Pat Benatar,38,11
+228,1989-09-02,96,95,Still Cruisin,The Beach Boys,93,3
+229,1969-07-19,78,79,Honky Tonk Women,The Rolling Stones,1,15
+230,1977-09-10,76,,,,,
+231,1977-07-02,23,24,"Knowing Me, Knowing You",Abba,14,15
+232,1990-06-09,52,,,,,
+233,1966-11-05,13,,,,,
+234,1971-11-20,77,75,Life Is A Carnival,The Band,72,6
+235,1974-12-28,65,65,Back Home Again,John Denver,5,16
+236,1987-05-23,95,95,"Tonight, Tonight, Tonight",Genesis,3,15
+237,1985-07-27,54,,,,,
+238,1980-01-05,95,97,You Decorated My Life,Kenny Rogers,7,18
+239,1975-06-07,77,79,Sail On Sailor,The Beach Boys,49,17
+240,1978-01-14,14,16,Just The Way You Are,Billy Joel,3,27
+241,1962-12-29,40,38,White Christmas,Bing Crosby,12,13
+242,1991-02-16,50,49,Because I Love You (The Postman Song),Stevie B,1,23
+243,1961-04-24,69,,,,,
+244,1966-11-12,17,16,"Have You Seen Your Mother, Baby, Standing In The Shadow?",The Rolling Stones,9,7
+245,1978-03-18,66,68,It Amazes Me,John Denver,59,7
+246,1975-10-11,14,15,Rhinestone Cowboy,Glen Campbell,1,23
+247,1974-01-05,94,93,Last Kiss,J. Frank Wilson & The Cavaliers,2,20
+248,1971-11-13,42,42,I'd Love To Change The World,Ten Years After,40,12
+249,1979-05-19,32,30,Old Time Rock & Roll,Bob Seger,28,18
+250,1960-02-08,6,5,Handy Man,Jimmy Jones,2,18
+251,1969-12-27,97,95,Theme From Electric Surfboard,Brother Jack McDuff,95,2
+252,1970-10-03,96,,,,,
+253,1962-12-22,10,10,Love Came To Me,Dion,10,11
+254,1986-03-22,12,14,Sanctify Yourself,Simple Minds,14,14
+255,1981-07-18,77,,,,,
+256,1973-11-03,95,93,Smokin' In The Boy's Room,Brownsville Station,3,19
+257,1968-11-16,38,40,Shape Of Things To Come,Max Frost & The Troopers,22,12
+258,1991-08-03,90,88,Don't Treat Me Bad,Firehouse,19,23
+259,1979-07-14,59,60,Born To Be Alive,Patrick Hernandez,16,19
+260,1971-04-17,4,4,She's A Lady,Tom Jones,2,14
+261,1968-11-02,31,30,In-A-Gadda-Da-Vida,Iron Butterfly,30,17
+262,1961-09-18,91,,,,,
+263,1974-03-02,35,34,Last Kiss,Wednesday,34,18
+264,1967-09-16,43,42,Dandelion,The Rolling Stones,14,8
+265,1972-04-29,33,34,(Last Night) I Didn't Get To Sleep At All,The 5th Dimension,8,16
+266,1973-01-06,86,,,,,
+267,1964-03-07,47,47,Worried Guy,Johnny Tillotson,37,7
+268,1980-05-31,90,90,Time For Me To Fly,REO Speedwagon,56,13
+269,1973-07-28,12,13,Money,Pink Floyd,13,15
+270,1963-11-23,44,44,In My Room,The Beach Boys,23,11
+271,1986-03-08,40,38,Addicted To Love,Robert Palmer,1,22
+272,1960-01-25,40,,,,,
+273,1988-11-19,89,,,,,
+274,1965-11-06,68,,,,,
+275,1981-11-21,55,55,Promises In The Dark,Pat Benatar,38,11
+276,1970-10-17,25,24,Patches,Clarence Carter,4,14
+277,1962-10-06,77,,,,,
+278,1982-01-09,19,20,Waiting On A Friend,The Rolling Stones,13,15
+279,1979-06-30,79,78,Born To Be Alive,Patrick Hernandez,16,19
+280,1967-01-07,87,88,It Takes Two,"Marvin Gaye,Kim Weston",14,12
+281,1988-01-30,20,19,There's The Girl,Heart,12,17
+282,1979-10-06,41,39,Gotta Serve Somebody,Bob Dylan,24,12
+283,1980-08-30,57,,,,,
+284,1966-02-05,29,28,These Boots Are Made For Walkin',Nancy Sinatra,1,14
+285,1986-11-01,35,,,,,
+286,1991-02-09,89,,,,,
+287,1980-08-23,73,,,,,
+288,1964-02-15,32,34,As Usual,Brenda Lee,12,11
+289,1968-01-27,84,83,Guitar Man,Elvis Presley,28,20
+290,1972-11-18,51,52,Long Dark Road,The Hollies,26,11
+291,1978-01-21,74,73,The Way You Do The Things You Do,Rita Coolidge,20,11
+292,1970-08-29,10,10,25 Or 6 To 4,Chicago,4,20
+293,1981-12-26,18,20,Every Little Thing She Does Is Magic,The Police,3,19
+294,1968-08-24,78,79,Mr. Bojangles,Jerry Jeff Walker,77,5
+295,1978-04-29,91,92,Just The Way You Are,Billy Joel,3,27
+296,1975-10-04,19,18,Lyin' Eyes,Eagles,2,14
+297,1971-12-18,72,71,That's The Way I Feel About Cha,Bobby Womack,27,13
+298,1969-12-27,64,,,,,
+299,1973-06-16,50,,,,,
+300,1987-09-26,1,2,Here I Go Again,Whitesnake,1,28
+301,1972-02-05,69,,,,,
+302,1964-03-28,80,78,Do You Want To Know A Secret,The Beatles,2,11
+303,1982-08-21,74,74,Break It To Me Gently,Juice Newton,11,17
+304,1990-04-28,24,26,The Humpty Dance,Digital Underground,11,23
+305,1974-08-03,31,,,,,
+306,1979-05-12,4,5,In The Navy,Village People,3,18
+307,1980-03-01,5,7,Cruisin',Smokey Robinson,4,25
+308,1966-07-30,42,43,You Can't Roller Skate In A Buffalo Herd,Roger Miller,40,6
+309,1984-11-03,21,20,All Through The Night,Cyndi Lauper,5,19
+310,1983-01-15,13,14,The Other Guy,Little River Band,11,18
+311,1989-09-30,46,,,,,
+312,1980-04-12,69,69,Daydream Believer,Anne Murray,12,17
+313,1980-02-23,51,,,,,
+314,1965-11-27,8,9,I Got You (I Feel Good),James Brown,3,12
+315,1974-02-16,35,35,Come And Get Your Love,Redbone,5,23
+316,1988-02-06,80,,,,,
+317,1979-11-10,28,29,Dream Police,Cheap Trick,26,10
+318,1961-04-03,12,12,Wheels,The String-A-Longs,3,16
+319,1976-06-26,14,15,I Want You,Marvin Gaye,15,13
+320,1972-01-08,100,98,Floy Joy,The Supremes,16,12
+321,1963-01-05,33,,,,,
+322,1958-12-01,79,78,Bird Dog,The Everly Brothers,2,19
+323,1979-11-17,27,27,Dream Police,Cheap Trick,26,10
+324,1975-07-26,72,73,When Will I Be Loved,Linda Ronstadt,2,19
+325,1974-02-23,85,87,Let Me Get To Know You,Paul Anka,80,8
+326,1975-03-29,58,57,My Boy,Elvis Presley,20,11
+327,1966-07-30,80,,,,,
+328,1967-11-18,63,,,,,
+329,1987-03-07,58,56,Smoking Gun,The Robert Cray Band,22,14
+330,1967-01-21,70,71,Go Where You Wanna Go,The 5th Dimension,16,10
+331,1974-01-19,22,22,Jungle Boogie,Kool & The Gang,4,22
+332,1982-02-27,34,35,Waiting On A Friend,The Rolling Stones,13,15
+333,1971-09-11,53,,,,,
+334,1984-01-28,73,73,Somebody s Watching Me,Rockwell,2,19
+335,1962-11-10,7,9,Do You Love Me,The Contours,3,34
+336,1977-08-13,5,4,(Your Love Has Lifted Me) Higher And Higher,Rita Coolidge,2,27
+337,1979-08-25,34,,,,,
+338,1981-12-26,84,82,Through The Years,Kenny Rogers,13,15
+339,1991-02-16,27,28,Deeper Shade Of Soul,Urban Dance Squad,21,18
+340,1987-08-29,52,,,,,
+341,1977-09-17,17,17,Easy,Commodores,4,22
+342,1990-03-17,37,,,,,
+343,1971-02-13,9,9,If I Were Your Woman,Gladys Knight & The Pips,9,15
+344,1983-04-09,94,,,,,
+345,1974-03-02,25,25,Doo Doo Doo Doo Doo (Heartbreaker),The Rolling Stones,15,11
+346,1976-11-06,76,75,Living It Down,Freddy Fender,72,4
+347,1977-07-23,63,62,Sunflower,Glen Campbell,39,11
+348,1989-11-04,14,15,The Best,Tina Turner,15,14
+349,1991-03-09,85,86,Don t Treat Me Bad,Firehouse,19,23
+350,1973-06-23,61,,,,,
+351,1975-01-25,55,55,Roll On Down The Highway,Bachman-Turner Overdrive,14,11
+352,1991-11-09,31,31,Good Vibrations,Marky Mark,1,19
+353,1984-11-17,27,27,I Can't Drive 55,Sammy Hagar,26,16
+354,1975-04-05,2,2,Philadelphia Freedom,Elton John,1,21
+355,1964-06-20,44,42,"I Rise, I Fall",Johnny Tillotson,36,8
+356,1961-07-03,21,20,Dum Dum,Brenda Lee,4,12
+357,1987-02-28,77,,,,,
+358,1973-02-24,73,73,Superman,Donna Fargo,41,9
+359,1988-02-13,93,92,Just Like Heaven,The Cure,40,19
+360,1970-08-15,38,37,I Want To Take You Higher,Ike & Tina Turner,34,18
+361,1977-01-15,23,25,This Song,George Harrison,25,11
+362,1974-02-09,42,43,Last Kiss,Wednesday,34,18
+363,1964-09-26,98,,,,,
+364,1970-04-04,18,18,Evil Ways,Santana,9,13
+365,1977-04-23,86,,,,,
+366,1973-08-25,9,11,Feelin' Stronger Every Day,Chicago,10,16
+367,1977-08-27,31,31,Undercover Angel,Alan O'Day,1,25
+368,1986-07-12,39,,,,,
+369,1967-01-07,66,66,Kind Of A Drag,The Buckinghams,1,13
+370,1989-10-07,23,24,Kisses On The Wind,Neneh Cherry,8,14
+371,1963-06-29,40,41,Losing You,Brenda Lee,6,13
+372,1983-08-20,95,94,Scarlet Fever,Kenny Rogers,94,2
+373,1991-09-07,29,,,,,
+374,1971-10-16,98,,,,,
+375,1960-04-11,61,,,,,
+376,1983-02-12,30,,,,,
+377,1973-09-22,68,70,I Can't Stand The Rain,Ann Peebles,38,21
+378,1990-04-28,25,26,The Humpty Dance,Digital Underground,11,23
+379,1961-04-10,57,,,,,
+380,1974-06-08,41,42,Best Thing That Ever Happened To Me,Gladys Knight & The Pips,3,17
+381,1973-03-31,63,63,Hocus Pocus,Focus,9,19
+382,1991-06-08,76,76,Where The Streets Have No Name,Pet Shop Boys,72,7
+383,1966-08-13,19,20,Sunshine Superman,Donovan,1,13
+384,1985-08-10,2,3,If You Love Somebody Set Them Free,Sting,3,18
+385,1990-04-14,23,25,Hold On,Wilson Phillips,1,25
+386,1970-12-26,57,56,I Really Don't Want To Know,Elvis Presley,21,9
+387,1964-11-14,18,18,Time Is On My Side,The Rolling Stones,6,13
+388,1959-08-10,96,,,,,
+389,1984-11-17,89,89,Tenderness,General Public,27,18
+390,1976-06-26,38,40,Young Hearts Run Free,Candi Staton,20,16
+391,1969-06-07,19,19,It's Your Thing,The Isley Brothers,2,14
+392,1977-12-24,2,,,,,
+393,1980-07-26,22,22,Misunderstanding,Genesis,14,18
+394,1974-09-14,33,,,,,
+395,1977-04-02,54,54,Here Come Those Tears Again,Jackson Browne,23,9
+396,1958-09-22,32,33,Fever,Peggy Lee,8,16
+397,1969-12-27,47,48,Kozmic Blues,Janis Joplin,41,9
+398,1959-02-23,92,,,,,
+399,1959-01-19,14,13,One Night,Elvis Presley,4,17
+400,1975-01-25,53,54,Woman To Woman,Shirley Brown,22,14
+401,1985-06-22,17,19,The Goonies R Good Enough,Cyndi Lauper,10,15
+402,1964-10-17,4,5,Last Kiss,J. Frank Wilson & The Cavaliers,2,20
+403,1967-05-13,32,32,I Never Loved A Man (The Way I Love You),Aretha Franklin,9,11
+404,1962-12-08,12,11,He's A Rebel,The Crystals,1,18
+405,1986-06-28,33,,,,,
+406,1975-03-08,88,88,Amie,Pure Prairie League,27,13
+407,1987-05-16,71,72,Wild Horses,Gino Vannelli,55,15
+408,1966-12-31,57,,,,,
+409,1987-08-08,19,,,,,
+410,1961-02-20,28,27,Jimmy's Girl,Johnny Tillotson,25,11
+411,1981-06-06,82,,,,,
+412,1972-11-25,78,80,Sunday Morning Sunshine,Harry Chapin,75,6
+413,1965-08-21,51,,,,,
+414,1991-06-01,91,93,Someone,The Rembrandts,78,10
+415,1976-01-24,34,33,Golden Years,David Bowie,10,21
+416,1968-03-02,69,,,,,
+417,1982-12-11,47,47,"(You're So Square) Baby, I Don't Care",Joni Mitchell,47,9
+418,1967-12-23,16,17,Chain Of Fools,Aretha Franklin,2,12
+419,1979-04-07,26,26,Blow Away,George Harrison,16,14
+420,1962-07-14,45,,,,,
+421,1969-04-26,48,46,Pinball Wizard,The Who,19,11
+422,1969-08-09,75,,,,,
+423,1974-11-30,60,,,,,
+424,1988-05-14,28,,,,,
+425,1963-02-02,47,48,See See Rider,LaVern Baker,34,11
+426,1985-11-09,32,32,I m Goin  Down,Bruce Springsteen,9,13
+427,1969-01-11,63,62,Bluebirds Over The Mountain,The Beach Boys,61,6
+428,1959-03-02,24,,,,,
+429,1971-05-29,5,6,Put Your Hand In The Hand,Ocean,2,14
+430,1984-05-12,77,77,I Want A New Drug,Huey Lewis,6,19
+431,1977-02-26,77,,,,,
+432,1971-01-09,65,64,One Bad Apple,The Osmonds,1,15
+433,1972-09-23,47,47,If I Could Reach You,The 5th Dimension,10,15
+434,1960-03-07,15,15,Where Or When,Dion,3,16
+435,1959-10-19,97,,,,,
+436,1975-03-29,76,,,,,
+437,1966-10-29,65,,,,,
+438,1963-08-24,55,,,,,
+439,1963-02-09,6,7,Ruby Baby,Dion,2,13
+440,1984-03-03,48,,,,,
+441,1966-03-19,58,,,,,
+442,1990-12-22,54,52,World In My Eyes,Depeche Mode,52,10
+443,1981-12-05,99,97,Better Things,The Kinks,92,8
+444,1971-01-09,31,29,I Really Don't Want To Know,Elvis Presley,21,9
+445,1975-05-03,43,43,Old Days,Chicago,5,11
+446,1974-12-14,44,42,Back Home Again,John Denver,5,16
+447,1989-09-16,70,,,,,
+448,1984-05-26,22,22,Jump (for My Love),The Pointer Sisters,3,24
+449,1968-08-10,59,,,,,
+450,1981-08-22,6,5,Jessie's Girl,Rick Springfield,1,32
+451,1989-03-11,83,81,Got It Made,"Crosby, Stills, Nash",69,8
+452,1989-07-15,65,64,Don't Say You Love Me,Billy Squier,58,15
+453,1973-04-28,83,,,,,
+454,1974-09-07,10,11,Feel Like Makin' Love,Roberta Flack,1,16
+455,1962-06-09,31,32,Walk On The Wild Side (Part 1),Jimmy Smith,21,11
+456,1978-07-22,94,96,With A Little Luck,Paul McCartney,1,18
+457,1964-06-13,76,78,Not Fade Away,The Rolling Stones,48,13
+458,1986-03-08,37,38,Addicted To Love,Robert Palmer,1,22
+459,1981-02-07,68,,,,,
+460,1984-09-15,84,,,,,
+461,1963-03-30,54,56,On Broadway,The Drifters,9,10
+462,1963-09-07,35,,,,,
+463,1982-08-21,78,78,Seasons Of The Heart,John Denver,78,5
+464,1984-09-15,39,39,Flesh For Fantasy,Billy Idol,29,12
+465,1987-07-11,52,52,Give To Live,Sammy Hagar,23,17
+466,1987-08-15,21,,,,,
+467,1967-05-20,73,73,Little Bit O' Soul,The Music Explosion,2,16
+468,1966-08-20,41,42,Ain't Too Proud To Beg,The Temptations,13,13
+469,1988-07-02,56,56,In Your Soul,Corey Hart,38,10
+470,1987-05-30,48,,,,,
+471,1964-01-04,15,14,As Usual,Brenda Lee,12,11
+472,1978-01-28,43,44,Sweet Music Man,Kenny Rogers,44,8
+473,1969-10-25,13,13,Come Together,The Beatles,1,16
+474,1969-10-18,83,84,Silver Threads And Golden Needles,The Cowsills,74,7
+475,1980-01-05,56,56,Daydream Believer,Anne Murray,12,17
+476,1991-08-24,19,18,I Adore Mi Amor,Color Me Badd,1,20
+477,1967-08-26,18,18,Carrie-Anne,The Hollies,9,13
+478,1978-12-02,65,65,One Last Kiss,The J. Geils Band,35,13
+479,1964-11-21,56,56,Wendy,The Beach Boys,44,6
+480,1981-06-27,49,50,Give It To Me Baby,Rick James,40,14
+481,1969-03-22,17,17,"Baby, Baby Don't Cry",The Miracles,8,14
+482,1981-08-15,62,61,I'm In Love,"Evelyn ""Champagne"" King",40,14
+483,1973-06-16,13,11,Right Place Wrong Time,Dr. John,9,20
+484,1962-07-07,65,65,Heart In Hand,Brenda Lee,15,8
+485,1977-05-07,31,30,Rich Girl,Daryl Hall & John Oates,1,20
+486,1986-03-08,83,,,,,
+487,1986-03-08,48,,,,,
+488,1965-11-20,10,,,,,
+489,1984-12-22,72,,,,,
+490,1974-07-06,51,51,My Thang,James Brown,29,13
+491,1986-01-18,25,,,,,
+492,1981-03-21,14,15,Don't Stand So Close To Me,The Police,10,18
+493,1984-06-16,80,,,,,
+494,1981-10-10,94,96,I Don't Need You,Kenny Rogers,3,18
+495,1963-11-23,59,,,,,
+496,1962-08-04,97,,,,,
+497,1974-08-31,82,81,City In The Sky,The Staple Singers,79,7
+498,1985-04-06,100,,,,,
+499,1965-07-10,69,,,,,
+500,1959-04-27,93,93,The Battle Of New Orleans,Johnny Horton,1,20
+501,1978-07-01,17,17,Last Dance,Donna Summer,3,21
+502,1965-07-03,20,21,I've Been Loving You Too Long (To Stop Now),Otis Redding,21,11
+503,1991-11-09,30,31,Good Vibrations,Marky Mark,1,19
+504,1974-01-19,1,2,The Joker,Steve Miller Band,1,20
+505,1963-05-25,2,,,,,
+506,1977-02-19,33,33,After The Lovin',Engelbert Humperdinck,8,19
+507,1980-01-19,22,22,Still,Commodores,1,20
+508,1973-09-29,58,58,For Ol' Times Sake,Elvis Presley,41,9
+509,1963-04-27,71,,,,,
+510,1964-03-28,96,97,How Blue Can You Get,B.B. King,97,2
+511,1962-06-09,61,61,Oh My Angel,Bertha Tillman,61,9
+512,1982-06-12,67,66,Going To A Go-Go,The Rolling Stones,25,11
+513,1972-11-18,29,,,,,
+514,1989-01-21,19,,,,,
+515,1961-07-03,51,50,Fool That I Am,Etta James,50,6
+516,1963-07-20,31,33,Those Lazy-Hazy-Crazy Days Of Summer,"Nat ""King"" Cole",6,12
+517,1981-05-30,16,16,All Those Years Ago,George Harrison,2,16
+518,1969-10-18,64,64,Suite: Judy Blue Eyes,"Crosby, Stills & Nash",21,12
+519,1972-07-01,61,,,,,
+520,1973-05-05,83,,,,,
+521,1990-08-11,86,85,The Humpty Dance,Digital Underground,11,23
+522,1976-08-21,20,20,Young Hearts Run Free,Candi Staton,20,16
+523,1972-07-08,80,,,,,
+524,1985-05-11,78,80,Private Dancer,Tina Turner,7,18
+525,1975-05-10,44,44,Trampled Under Foot,Led Zeppelin,38,7
+526,1986-10-04,60,62,Love Comes Quickly,Pet Shop Boys,62,8
+527,1964-05-30,72,,,,,
+528,1969-07-05,8,7,Crystal Blue Persuasion,Tommy James,2,15
+529,1983-05-21,93,,,,,
+530,1990-12-22,87,89,This House,Tracie Spencer,3,23
+531,1985-12-14,59,58,Running Up That Hill,Kate Bush,30,20
+532,1962-06-23,94,,,,,
+533,1961-08-28,65,65,"Baby, You're Right",James Brown,49,4
+534,1965-04-24,87,,,,,
+535,1968-05-04,51,,,,,
+536,1981-07-11,40,,,,,
+537,1970-09-19,34,35,Indiana Wants Me,R. Dean Taylor,5,15
+538,1989-09-30,82,,,,,
+539,1980-12-06,48,48,Stop This Game,Cheap Trick,48,12
+540,1979-12-22,93,92,With You I'm Born Again,Billy Preston,4,29
+541,1970-01-17,14,,,,,
+542,1984-10-27,6,6,Wake Me Up Before You Go-Go,Wham!,1,24
+543,1968-12-28,31,30,If I Can Dream,Elvis Presley,12,13
+544,1965-10-23,74,,,,,
+545,1973-10-20,85,85,Redneck Friend,Jackson Browne,85,10
+546,1977-03-12,80,79,Disco Inferno,The Trammps,11,29
+547,1978-09-02,54,54,Almost Like Being In Love,Michael Johnson,32,12
+548,1987-10-03,82,,,,,
+549,1966-04-30,93,92,Double Shot (Of My Baby's Love),Swingin' Medallions,17,13
+550,1978-12-23,69,71,Shake Your Groove Thing,Peaches & Herb,5,22
+551,1984-05-26,44,,,,,
+552,1979-08-04,40,40,Born To Be Alive,Patrick Hernandez,16,19
+553,1983-06-25,49,48,Maniac,Michael Sembello,1,22
+554,1963-01-12,98,100,Walk Right In,The Moments,82,5
+555,1978-08-12,70,69,Surrender,Cheap Trick,62,8
+556,1979-09-01,41,,,,,
+557,1961-10-23,15,,,,,
+558,1979-01-06,73,,,,,
+559,1979-01-27,31,31,Baby I'm Burnin',Dolly Parton,25,14
+560,1970-05-30,4,4,Cecilia,Simon & Garfunkel,4,13
+561,1980-08-16,22,24,Boulevard,Jackson Browne,19,16
+562,1961-07-10,56,54,Fool That I Am,Etta James,50,6
+563,1968-11-09,81,,,,,
+564,1971-05-08,97,,,,,
+565,1967-09-09,87,89,Judy,Elvis Presley,78,5
+566,1972-11-18,57,,,,,
+567,1989-03-04,25,25,The Look,Roxette,1,19
+568,1979-05-19,64,65,Dance Away,Roxy Music,44,9
+569,1962-03-10,33,,,,,
+570,1963-06-15,76,75,Six Days On The Road,Dave Dudley,32,11
+571,1961-05-29,65,65,Quarter To Three,Gary U.S. Bonds,1,15
+572,1986-01-18,39,38,"Tarzan Boy (From ""Teenage Mutant Ninja Turtles III"")",Baltimora,13,38
+573,1975-07-19,59,59,"Oh Me, Oh My (Dreams In My Arms)",Al Green,48,6
+574,1985-05-11,34,34,Along Comes A Woman,Chicago,14,16
+575,1991-01-12,65,,,,,
+576,1968-11-09,44,,,,,
+577,1970-10-10,85,84,Let's Work Together,Canned Heat,26,11
+578,1989-01-21,27,27,Giving You The Best That I Got,Anita Baker,3,22
+579,1965-07-31,86,86,Heart Full Of Soul,The Yardbirds,9,12
+580,1962-05-26,75,75,I Found A Love,The Falcons,75,9
+581,1970-10-24,5,,,,,
+582,1971-04-03,52,50,I Don't Blame You At All,The Miracles,18,12
+583,1961-08-07,57,58,Amor,Ben E. King,18,10
+584,1987-01-31,68,,,,,
+585,1968-12-07,30,28,Too Weak To Fight,Clarence Carter,13,15
+586,1974-07-13,92,,,,,
+587,1965-08-14,6,6,Unchained Melody,The Righteous Brothers,4,13
+588,1978-01-14,10,10,We Are The Champions,Queen,4,27
+589,1982-10-09,36,36,Southern Cross,"Crosby, Stills & Nash",18,17
+590,1987-02-07,23,23,Talk To Me,Chico DeBarge,21,20
+591,1980-03-15,99,99,The Long Run,Eagles,8,15
+592,1989-03-04,42,43,All She Wants Is,Duran Duran,22,13
+593,1980-03-15,43,,,,,
+594,1982-10-16,74,73,Situation,Yaz,73,8
+595,1959-08-03,84,,,,,
+596,1962-02-10,19,19,Letter Full Of Tears,Gladys Knight & The Pips,19,11
+597,1964-11-07,31,30,Time Is On My Side,The Rolling Stones,6,13
+598,1964-04-25,34,32,Wish Someone Would Care,Irma Thomas,17,12
+599,1991-07-27,99,99,Hey Stoopid,Alice Cooper,78,5
+600,1985-12-21,54,52,"Tarzan Boy (From ""Teenage Mutant Ninja Turtles III"")",Baltimora,13,38
+601,1974-09-28,88,90,I Can Help,Billy Swan,1,18
+602,1991-04-06,88,,,,,
+603,1959-08-10,53,55,Sleep Walk,Santo & Johnny,1,18
+604,1978-07-01,41,,,,,
+605,1970-03-28,45,44,The Thrill Is Gone,B.B. King,15,14
+606,1973-12-29,58,57,I Love,Tom T. Hall,12,16
+607,1974-12-21,50,49,Everlasting Love,Carl Carlton,6,15
+608,1982-03-06,18,18,Harden My Heart,Quarterflash,3,24
+609,1964-11-21,66,,,,,
+610,1978-04-08,44,44,Rocket Ride,Kiss,39,10
+611,1987-04-18,38,,,,,
+612,1970-12-19,88,,,,,
+613,1971-02-13,52,,,,,
+614,1969-06-28,59,60,I Want To Take You Higher,Sly & The Family Stone,38,16
+615,1978-09-23,9,9,Hot Child In The City,Nick Gilder,1,31
+616,1968-06-01,2,1,Mrs. Robinson,Simon & Garfunkel,1,13
+617,1961-09-04,31,32,(Marie's the Name) His Latest Flame,Elvis Presley,4,11
+618,1964-07-04,47,46,Everybody Loves Somebody,Dean Martin,1,15
+619,1967-12-23,22,23,If I Could Build My Whole World Around You,"Marvin Gaye,Tammi Terrell",10,11
+620,1987-07-25,82,80,"Twistin  The Night Away (From ""Innerspace"")",Rod Stewart,80,4
+621,1984-08-18,1,1,Ghostbusters,Ray Parker Jr.,1,21
+622,1980-08-16,61,,,,,
+623,1970-09-05,83,82,It's Only Make Believe,Glen Campbell,10,12
+624,1959-07-20,99,,,,,
+625,1973-09-01,29,30,Higher Ground,Stevie Wonder,4,14
+626,1991-08-10,82,,,,,
+627,1990-05-26,91,92,Nick Of Time,Bonnie Raitt,92,3
+628,1990-03-31,44,43,Hold On,Wilson Phillips,1,25
+629,1983-04-02,14,14,Beat It,Michael Jackson,1,25
+630,1961-06-26,68,,,,,
+631,1971-09-04,36,37,If You Really Love Me,Stevie Wonder,8,14
+632,1967-12-02,15,,,,,
+633,1983-03-05,72,71,Maneater,Daryl Hall & John Oates,1,23
+634,1987-04-25,47,48,Brass Monkey,Beastie Boys,48,10
+635,1964-07-04,21,22,The Little Old Lady (From Pasadena),Jan & Dean,3,11
+636,1977-02-05,25,24,After The Lovin',Engelbert Humperdinck,8,19
+637,1983-08-13,22,23,Human Nature,Michael Jackson,7,14
+638,1963-05-04,45,45,Out Of My Mind,Johnny Tillotson,24,10
+639,1986-05-31,91,,,,,
+640,1973-06-09,79,77,Think,James Brown,33,16
+641,1981-07-04,61,,,,,
+642,1963-11-23,68,,,,,
+643,1967-01-28,99,100,The People In Me,The Music Machine,66,8
+644,1987-05-09,80,,,,,
+645,1968-03-23,1,1,(Sittin' On) The Dock Of The Bay,Otis Redding,1,16
+646,1984-01-28,6,,,,,
+647,1987-03-21,85,85,Caught Up In The Rapture,Anita Baker,37,18
+648,1988-02-20,3,2,What Have I Done To Deserve This?,Pet Shop Boys,2,12
+649,1970-11-07,61,61,Stoned Love,The Supremes,7,14
+650,1964-03-28,8,8,"Hello, Dolly!",Louis Armstrong,1,22
+651,1983-01-29,80,78,It's Raining Men,The Weather Girls,46,11
+652,1964-09-19,83,,,,,
+653,1974-09-14,32,,,,,
+654,1982-01-30,75,73,Tainted Love,Soft Cell,8,43
+655,1976-08-28,67,66,Sunrise,Eric Carmen,34,10
+656,1980-08-16,79,79,Years From Now,Dr. Hook,51,9
+657,1988-08-13,89,90,In Your Soul,Corey Hart,38,10
+658,1964-11-14,23,22,Ask Me,Elvis Presley,12,12
+659,1982-02-06,4,4,Harden My Heart,Quarterflash,3,24
+660,1988-01-02,16,18,There's The Girl,Heart,12,17
+661,1969-01-25,47,,,,,
+662,1972-01-29,44,45,Looking For A Love,The J. Geils Band,39,10
+663,1980-08-09,61,62,He's So Shy,Pointer Sisters,3,26
+664,1972-01-22,40,39,Looking For A Love,The J. Geils Band,39,10
+665,1984-11-24,70,,,,,
+666,1962-04-28,76,,,,,
+667,1989-12-16,69,,,,,
+668,1975-02-22,42,41,Big Yellow Taxi,Joni Mitchell,24,16
+669,1966-07-30,43,43,You Can't Roller Skate In A Buffalo Herd,Roger Miller,40,6
+670,1991-06-08,10,12,Silent Lucidity,Queensryche,9,17
+671,1977-11-19,78,80,Heaven's Just A Sin Away,The Kendalls,69,7
+672,1963-05-25,60,59,Baby Workout,Jackie Wilson,5,12
+673,1971-06-19,93,,,,,
+674,1963-12-14,13,13,Sugar Shack,The Fireballs,1,15
+675,1968-11-23,84,85,With A Little Help From My Friends,Joe Cocker,68,6
+676,1961-07-10,49,,,,,
+677,1971-06-05,20,20,Don't Knock My Love - Pt. 1,Wilson Pickett,13,12
+678,1964-10-31,95,95,Chained And Bound,Otis Redding,70,7
+679,1958-12-01,87,,,,,
+680,1981-08-15,51,51,All Those Years Ago,George Harrison,2,16
+681,1987-06-27,38,38,With Or Without You,U2,1,18
+682,1972-08-19,1,2,Brandy (You're A Fine Girl),Looking Glass,1,16
+683,1982-01-16,70,72,That Girl,Stevie Wonder,4,18
+684,1973-08-11,11,11,Feelin' Stronger Every Day,Chicago,10,16
+685,1991-05-11,10,11,Silent Lucidity,Queensryche,9,17
+686,1960-06-20,75,,,,,
+687,1988-01-23,2,2,Need You Tonight,INXS,1,24
+688,1968-08-24,70,72,On The Road Again,Canned Heat,16,11
+689,1964-10-10,82,82,"The Anaheim, Azusa & Cucamonga Sewing Circle, Book Review And Timing Association",Jan & Dean,77,3
+690,1981-07-04,22,23,Queen Of Hearts,Juice Newton,2,27
+691,1966-12-10,52,51,Tell It Like It Is,Aaron Neville,2,14
+692,1973-01-27,75,77,Fever,Rita Coolidge,76,7
+693,1961-08-14,73,,,,,
+694,1962-11-03,12,,,,,
+695,1980-07-26,33,33,Boulevard,Jackson Browne,19,16
+696,1965-06-05,76,78,Too Many Rivers,Brenda Lee,13,13
+697,1989-06-10,91,,,,,
+698,1985-08-17,83,85,People Get Ready,Jeff Beck,48,10
+699,1979-03-10,81,82,Heartaches,Bachman-Turner Overdrive,60,7
+700,1970-11-07,74,72,Does Anybody Really Know What Time It Is?,Chicago,7,13
+701,1983-07-23,54,55,White Wedding,Billy Idol,36,13
+702,1969-08-30,80,,,,,
+703,1960-02-08,25,,,,,
+704,1960-08-08,77,,,,,
+705,1977-08-20,69,67,Baby Don't Change Your Mind,Gladys Knight & The Pips,52,11
+706,1972-12-16,19,20,Living In The Past,Jethro Tull,11,14
+707,1959-03-16,61,60,This Should Go On Forever,Rod Bernard,20,11
+708,1976-04-17,31,29,Sara Smile,Daryl Hall & John Oates,4,28
+709,1987-02-28,56,56,Caught Up In The Rapture,Anita Baker,37,18
+710,1991-03-23,57,,,,,
+711,1981-09-19,37,36,Some Days Are Diamonds (Some Days Are Stone),John Denver,36,20
+712,1964-03-14,10,,,,,
+713,1971-09-18,56,58,Ko-Ko Joe,Jerry Reed,51,6
+714,1983-12-10,80,,,,,
+715,1966-09-10,29,,,,,
+716,1981-07-11,36,35,Lady (You Bring Me Up),Commodores,8,22
+717,1971-09-18,64,,,,,
+718,1991-01-26,2,,,,,
+719,1984-07-28,51,,,,,
+720,1972-12-23,47,46,Rocky Mountain High,John Denver,9,19
+721,1977-12-24,98,100,Help Is On Its Way,Little River Band,14,22
+722,1962-06-23,34,36,Where Are You,Dinah Washington,36,10
+723,1969-03-15,67,67,Maybe Tomorrow,Badfinger,67,6
+724,1986-11-22,91,,,,,
+725,1970-12-12,22,23,For The Good Times,Ray Price,11,24
+726,1963-01-12,81,79,Would It Make Any Difference To You,Etta James,64,7
+727,1965-03-27,2,4,Eight Days A Week,The Beatles,1,10
+728,1976-03-13,55,55,Breaking Up Is Hard To Do,Neil Sedaka,1,25
+729,1986-05-24,42,42,Pretty In Pink,Psychedelic Furs,41,11
+730,1961-09-04,30,32,(Marie's the Name) His Latest Flame,Elvis Presley,4,11
+731,1977-04-16,43,42,Lucille,Kenny Rogers,5,19
+732,1967-12-23,91,,,,,
+733,1958-08-18,16,17,Bird Dog,The Everly Brothers,2,19
+734,1965-11-13,38,39,I Will,Dean Martin,10,10
+735,1976-09-25,16,15,Getaway,"Earth, Wind & Fire",12,19
+736,1982-07-10,13,13,Do I Do,Stevie Wonder,13,14
+737,1978-09-02,52,50,Shadow Dancing,Andy Gibb,1,25
+738,1963-09-28,47,,,,,
+739,1971-10-30,66,,,,,
+740,1959-10-12,48,46,Living Doll,Cliff Richard,30,13
+741,1983-10-01,63,62,Love Is A Battlefield,Pat Benatar,5,22
+742,1990-05-26,52,50,The Power,Snap,2,22
+743,1979-06-16,48,47,One Way Or Another,Blondie,24,14
+744,1961-03-27,67,,,,,
+745,1977-06-18,87,,,,,
+746,1958-12-15,20,18,That Old Black Magic,Louis Prima & Keely Smith,18,13
+747,1989-01-14,52,52,Baby Can I Hold You,Tracy Chapman,48,12
+748,1965-12-25,60,61,Crying Time,Ray Charles,6,15
+749,1973-11-24,39,40,D'yer Mak'er,Led Zeppelin,20,16
+750,1959-03-02,44,,,,,
+751,1971-10-02,86,86,I'd Love To Change The World,Ten Years After,40,12
+752,1971-12-25,58,57,Levon,Elton John,24,10
+753,1975-05-17,47,,,,,
+754,1986-10-18,97,,,,,
+755,1973-11-24,49,51,Smokin' In The Boy's Room,Brownsville Station,3,19
+756,1962-01-20,89,,,,,
+757,1990-11-24,70,71,World In My Eyes,Depeche Mode,52,10
+758,1974-08-10,45,45,Come Monday,Jimmy Buffett,30,14
+759,1968-03-30,76,74,Foggy Mountain Breakdown,Flatt & Scruggs,55,12
+760,1972-08-12,79,,,,,
+761,1977-07-09,62,63,Walk Right In,Dr. Hook,46,10
+762,1973-12-08,62,64,Walk Like A Man,Grand Funk Railroad,19,12
+763,1974-04-20,95,,,,,
+764,1962-02-03,34,,,,,
+765,1969-02-01,33,33,Too Weak To Fight,Clarence Carter,13,15
+766,1964-12-05,11,12,Ask Me,Elvis Presley,12,12
+767,1974-08-03,4,5,The Night Chicago Died,Paper Lace,1,17
+768,1982-03-06,6,5,That Girl,Stevie Wonder,4,18
+769,1984-11-10,14,12,All Through The Night,Cyndi Lauper,5,19
+770,1969-03-15,85,84,Hair,The Cowsills,2,15
+771,1963-08-10,44,,,,,
+772,1986-08-23,39,39,Press,Paul McCartney,21,11
+773,1959-10-19,33,33,I Want To Walk You Home,Fats Domino,8,13
+774,1958-11-17,56,,,,,
+775,1991-08-17,69,69,Walking In Memphis,Marc Cohn,13,23
+776,1985-04-20,16,14,Along Comes A Woman,Chicago,14,16
+777,1965-10-30,15,14,Rescue Me,Fontella Bass,4,13
+778,1976-09-04,42,,,,,
+779,1974-03-02,50,51,A Very Special Love Song,Charlie Rich,11,14
+780,1964-10-24,64,65,Time Is On My Side,The Rolling Stones,6,13
+781,1963-04-06,36,37,On Broadway,The Drifters,9,10
+782,1991-02-23,63,65,Because I Love You (The Postman Song),Stevie B,1,23
+783,1978-12-02,26,28,Hot Child In The City,Nick Gilder,1,31
+784,1984-10-27,88,,,,,
+785,1966-03-05,92,90,(You're My) Soul And Inspiration,The Righteous Brothers,1,13
+786,1980-08-02,86,,,,,
+787,1958-09-01,58,58,The Ways Of A Woman In Love,Johnny Cash,24,11
+788,1960-12-31,2,3,Last Date,Floyd Cramer,2,20
+789,1962-04-28,40,40,Hey! Baby,Bruce Channel,1,14
+790,1962-06-16,21,21,Everybody Loves Me But You,Brenda Lee,6,11
+791,1988-03-05,12,11,"Hungry Eyes (From ""Dirty Dancing"")",Eric Carmen,4,24
+792,1959-06-01,38,40,Almost Grown,Chuck Berry,32,12
+793,1978-01-21,64,65,My Way,Elvis Presley,22,12
+794,1985-01-12,90,88,Catch My Fall,Billy Idol,50,11
+795,1976-05-15,35,35,I Want You,Marvin Gaye,15,13
+796,1974-11-23,29,27,"You're The First, The Last, My Everything",Barry White,2,15
+797,1977-06-25,51,51,I Don't Love You Anymore,Teddy Pendergrass,41,14
+798,1981-09-19,39,39,Straight From The Heart,The Allman Brothers Band,39,11
+799,1963-06-29,79,,,,,
+800,1976-08-07,71,73,Magic Man,Heart,9,23
+801,1986-09-27,35,,,,,
+802,1980-09-20,87,86,Theme From The Dukes Of Hazzard (Good Ol' Boys),Waylon Jennings,21,23
+803,1986-09-13,38,40,True Colors,Cyndi Lauper,1,20
+804,1979-01-06,16,15,September,"Earth, Wind & Fire",8,17
+805,1958-09-15,6,5,Just A Dream,Jimmy Clanton,4,18
+806,1977-11-26,7,7,We're All Alone,Rita Coolidge,7,20
+807,1978-12-02,63,64,You Took The Words Right Out Of My Mouth,Meat Loaf,39,13
+808,1959-11-09,62,,,,,
+809,1984-11-03,87,88,On The Wings Of A Nightingale,Everly Brothers,50,12
+810,1990-09-15,3,5,Unskinny Bop,Poison,3,19
+811,1980-08-30,97,98,Let's Get Serious,Jermaine Jackson,9,23
+812,1981-12-19,74,72,Super Freak (Part I),Rick James,16,24
+813,1967-04-22,32,33,California Nights,Lesley Gore,16,14
+814,1960-03-21,67,67,Big Iron,Marty Robbins,26,10
+815,1990-03-10,77,,,,,
+816,1960-03-14,18,17,Where Or When,Dion,3,16
+817,1958-09-01,90,,,,,
+818,1984-11-10,8,8,Blue Jean,David Bowie,8,18
+819,1971-08-07,10,10,Mercy Mercy Me (The Ecology),Marvin Gaye,4,12
+820,1965-10-09,82,,,,,
+821,1989-12-30,7,8,Just Like Jesse James,Cher,8,18
+822,1959-02-09,14,12,I Cried A Tear,LaVern Baker,6,21
+823,1978-02-25,77,79,Lovely Day,Bill Withers,30,12
+824,1976-03-27,31,29,50 Ways To Leave Your Lover,Paul Simon,1,17
+825,1989-07-01,17,,,,,
+826,1968-11-02,87,,,,,
+827,1990-02-10,28,29,Just A Friend,Biz Markie,9,22
+828,1968-07-20,46,47,Journey To The Center Of The Mind,The Amboy Dukes,16,12
+829,1990-09-08,50,,,,,
+830,1981-10-24,11,11,Tryin' To Live My Life Without You,Bob Seger,5,19
+831,1980-03-08,48,48,Sexy Eyes,Dr. Hook,5,21
+832,1982-01-23,32,30,Through The Years,Kenny Rogers,13,15
+833,1986-08-09,83,83,You Can Call Me Al,Paul Simon,23,29
+834,1969-07-12,4,3,Good Morning Starshine,Oliver,3,13
+835,1989-08-26,81,,,,,
+836,1961-04-03,86,,,,,
+837,1986-09-13,37,35,Sweet Love,Anita Baker,8,22
+838,1962-08-18,77,79,Surfin' Safari,The Beach Boys,14,17
+839,1975-07-19,23,23,When Will I Be Loved,Linda Ronstadt,2,19
+840,1963-04-20,94,,,,,
+841,1968-10-05,22,23,Born To Be Wild,Steppenwolf,2,13
+842,1973-11-03,38,40,Goodbye Yellow Brick Road,Elton John,2,17
+843,1989-11-11,45,47,If I Could Turn Back Time,Cher,3,23
+844,1983-08-20,53,54,Burning Down The House,Talking Heads,9,20
+845,1988-01-23,3,4,Got My Mind Set On You,George Harrison,1,22
+846,1979-06-02,48,49,Dance Away,Roxy Music,44,9
+847,1972-11-11,55,55,Sweet Surrender,Bread,15,11
+848,1965-10-09,18,18,"Liar, Liar",The Castaways,12,14
+849,1988-07-09,28,28,Do You Love Me,The Contours,3,34
+850,1984-04-28,64,62,Jump (for My Love),The Pointer Sisters,3,24
+851,1977-10-08,91,,,,,
+852,1969-05-03,82,80,Bad Moon Rising,Creedence Clearwater Revival,2,14
+853,1964-02-15,56,54,I Saw Her Standing There,The Beatles,14,11
+854,1969-10-18,43,,,,,
+855,1987-02-07,26,,,,,
+856,1991-07-20,67,67,I Like The Way (The Kissing Game),Hi-Five,1,23
+857,1970-09-12,34,32,Get Up (I Feel Like Being Like A) Sex Machine (Part 1),James Brown,15,9
+858,1986-10-25,99,,,,,
+859,1980-09-13,42,43,Make A Little Magic,Nitty Gritty Dirt Band,25,16
+860,1976-01-03,91,,,,,
+861,1982-11-27,68,67,You've Got Another Thing Comin',Judas Priest,67,7
+862,1960-03-07,87,,,,,
+863,1961-02-06,33,32,Wheels,The String-A-Longs,3,16
+864,1981-05-30,48,48,Elvira,Oak Ridge Boys,5,22
+865,1982-03-20,24,24,Don't Talk To Strangers,Rick Springfield,2,21
+866,1968-11-16,68,,,,,
+867,1967-08-19,58,,,,,
+868,1976-06-12,27,,,,,
+869,1970-01-03,52,,,,,
+870,1985-11-30,66,65,And She Was,Talking Heads,54,20
+871,1958-10-13,28,,,,,
+872,1975-11-22,28,28,Secret Love,Freddy Fender,20,11
+873,1959-08-24,26,25,The Battle Of New Orleans,Johnny Horton,1,20
+874,1973-02-24,71,73,Superman,Donna Fargo,41,9
+875,1977-02-05,39,39,She Thinks I Still Care,Elvis Presley,31,13
+876,1971-02-13,71,,,,,
+877,1986-04-12,62,,,,,
+878,1966-11-26,49,,,,,
+879,1986-08-02,56,55,Walk This Way,Run-D.M.C.,4,16
+880,1976-02-21,91,,,,,
+881,1981-04-04,11,12,Don't Stand So Close To Me,The Police,10,18
+882,1984-03-17,4,3,Somebody's Watching Me,Rockwell,2,19
+883,1988-11-26,14,,,,,
+884,1989-05-20,89,89,One,Metallica,35,15
+885,1990-10-06,60,61,The Way You Do The Things You Do,UB40,6,25
+886,1984-08-25,69,71,Dance Hall Days,Wang Chung,16,22
+887,1989-09-09,99,99,Me Myself And I,De La Soul,34,17
+888,1977-08-06,67,67,Baby Don't Change Your Mind,Gladys Knight & The Pips,52,11
+889,1988-10-15,7,7,Don't You Know What The Night Can Do?,Steve Winwood,6,17
+890,1966-07-16,29,31,Let's Go Get Stoned,Ray Charles,31,9
+891,1967-04-22,82,83,Happy Jack,The Who,24,9
+892,1962-08-04,99,,,,,
+893,1970-07-25,24,25,War,Edwin Starr,1,15
+894,1981-07-04,91,91,On And On And On,Abba,90,6
+895,1974-05-11,77,78,A Dream Goes On Forever,Todd Rundgren,69,6
+896,1967-03-11,25,27,California Nights,Lesley Gore,16,14
+897,1986-08-16,95,,,,,
+898,1981-04-25,11,11,I Can't Stand It,Eric Clapton,10,17
+899,1980-05-24,71,,,,,
+900,1968-02-24,4,4,I Wish It Would Rain,The Temptations,4,14
+901,1971-02-13,68,67,Country Road,James Taylor,37,8
+902,1974-09-21,73,72,"Honey, Honey",Abba,27,10
+903,1963-09-28,3,3,Be My Baby,The Ronettes,2,13
+904,1966-04-23,60,61,Till The End Of The Day,The Kinks,50,8
+905,1970-08-15,35,33,Teach Your Children,"Crosby, Stills & Nash",16,11
+906,1970-07-04,45,,,,,
+907,1964-04-04,22,,,,,
+908,1968-02-10,79,,,,,
+909,1989-08-19,32,32,Kisses On The Wind,Neneh Cherry,8,14
+910,1980-07-05,85,86,Time For Me To Fly,REO Speedwagon,56,13
+911,1990-05-26,4,4,Hold On,Wilson Phillips,1,25
+912,1973-03-17,57,,,,,
+913,1989-04-22,8,8,Girl You Know It's True,Milli Vanilli,2,26
+914,1977-01-15,96,97,If Not You,Dr. Hook,55,11
+915,1972-09-09,63,63,Sweet Caroline (Good Times Never Seemed So Good),Bobby Womack,51,9
+916,1978-12-23,13,13,Promises,Eric Clapton,9,18
+917,1974-01-05,62,60,Love Song,Anne Murray,12,17
+918,1984-09-15,47,,,,,
+919,1989-08-19,87,,,,,
+920,1982-09-25,23,23,Hot In The City,Billy Idol,23,27
+921,1979-03-10,86,,,,,
+922,1987-03-14,48,,,,,
+923,1967-09-16,89,88,Judy,Elvis Presley,78,5
+924,1985-08-03,49,,,,,
+925,1976-10-23,26,25,The Best Disco In Town,The Ritchie Family,17,20
+926,1960-11-07,44,44,Perfidia,The Ventures,15,13
+927,1969-09-06,54,53,"Out Of Sight, Out Of Mind",Little Anthony & The Imperials,52,9
+928,1968-05-25,13,12,Mony Mony,Tommy James,3,17
+929,1987-05-23,64,65,Dirty Water,Rock And Hyde,61,10
+930,1976-02-21,52,,,,,
+931,1976-04-17,77,,,,,
+932,1971-05-08,44,45,Treat Her Like A Lady,Cornelius Brothers & Sister Rose,3,18
+933,1968-06-29,54,53,Eleanor Rigby,Ray Charles,35,10
+934,1982-07-03,61,,,,,
+935,1968-04-20,1,3,Cry Like A Baby,The Box Tops,2,15
+936,1986-10-18,87,,,,,
+937,1963-03-16,17,,,,,
+938,1980-07-05,19,,,,,
+939,1991-01-26,8,,,,,
+940,1974-08-03,3,3,Feel Like Makin' Love,Roberta Flack,1,16
+941,1986-08-16,93,91,Like A Rock,Bob Seger,12,13
+942,1971-04-03,91,,,,,
+943,1968-10-05,50,49,I Found A True Love,Wilson Pickett,42,7
+944,1980-05-17,37,36,Starting Over Again,Dolly Parton,36,10
+945,1971-07-24,41,39,Riders On The Storm,The Doors,14,12
+946,1968-01-20,7,8,I Second That Emotion,The Miracles,4,15
+947,1967-09-16,65,65,Fakin' It,Simon & Garfunkel,23,8
+948,1962-03-17,25,24,The Twist,Chubby Checker,1,38
+949,1982-12-18,42,,,,,
+950,1971-12-11,8,8,All I Ever Need Is You,Sonny & Cher,7,15
+951,1983-11-26,53,,,,,
+952,1979-03-31,66,65,Feelin' Satisfied,Boston,46,7
+953,1975-09-13,92,,,,,
+954,1959-02-02,20,19,I Cried A Tear,LaVern Baker,6,21
+955,1979-04-21,60,,,,,
+956,1982-07-31,33,35,Eye In The Sky,The Alan Parsons Project,3,25
+957,1974-09-21,83,,,,,
+958,1978-07-29,3,3,Miss You,The Rolling Stones,1,20
+959,1964-04-25,52,,,,,
+960,1991-06-22,66,,,,,
+961,1978-05-06,32,30,Take A Chance On Me,Abba,3,18
+962,1974-10-19,11,,,,,
+963,1981-05-16,82,84,The Stroke,Billy Squier,17,20
+964,1967-01-07,63,65,Hello Hello,"The Sopwith ""Camel""",26,10
+965,1967-03-25,45,45,Sweet Soul Music,Arthur Conley,2,15
+966,1965-08-07,74,,,,,
+967,1976-11-06,65,67,Breezin',George Benson,63,6
+968,1966-10-29,29,31,Coming On Strong,Brenda Lee,11,13
+969,1980-10-18,58,57,Don't Ask Me Why,Billy Joel,19,15
+970,1983-12-10,92,94,Modern Love,David Bowie,14,13
+971,1968-10-19,78,,,,,
+972,1963-10-19,78,,,,,
+973,1983-04-30,81,83,Little Too Late,Pat Benatar,20,14
+974,1988-09-17,57,58,"Kokomo (From The ""Cocktail"" Soundtrack)",The Beach Boys,1,28
+975,1963-02-02,40,,,,,
+976,1966-07-16,6,,,,,
+977,1970-01-31,17,,,,,
+978,1971-03-06,84,82,The Look Of Love,Isaac Hayes,79,5
+979,1984-04-28,99,97,Karma Chameleon,Culture Club,1,22
+980,1977-02-19,74,,,,,
+981,1986-11-01,97,99,Venus,Bananarama,1,19
+982,1991-11-02,88,88,Unforgettable,Natalie Cole,14,17
+983,1963-11-30,47,,,,,
+984,1963-07-06,4,4,Hello Stranger,Barbara Lewis,3,14
+985,1974-08-10,68,69,Dancing Machine,The Jacksons,2,22
+986,1977-01-22,3,3,You Make Me Feel Like Dancing,Leo Sayer,1,21
+987,1978-12-09,87,88,Baby I'm Burnin',Dolly Parton,25,14
+988,1971-06-05,17,18,If,Bread,4,12
+989,1979-10-27,51,,,,,
+990,1966-05-28,36,36,Shapes Of Things,The Yardbirds,11,11
+991,1974-12-07,79,78,The Bitch Is Back,Elton John,4,14
+992,1985-05-18,22,24,Nightshift,Commodores,3,22
+993,1971-01-16,27,25,There Goes My Everything,Elvis Presley,21,9
+994,1986-01-11,77,,,,,
+995,1982-11-27,3,2,Gloria,Laura Branigan,2,36
+996,1970-08-22,35,35,I Want To Take You Higher,Ike & Tina Turner,34,18
+997,1964-01-25,75,,,,,
+998,1971-10-09,18,,,,,
+999,1973-04-21,38,39,Hocus Pocus,Focus,9,19
+1000,1986-04-05,35,,,,,
+1001,1967-11-11,14,,,,,
+1002,1982-03-20,19,18,Freeze-Frame,The J. Geils Band,4,16
+1003,1978-01-28,3,1,Baby Come Back,Player,1,32
+1004,1985-08-24,36,,,,,
+1005,1961-04-17,73,,,,,
+1006,1961-06-26,34,35,Three Hearts In A Tangle,Roy Drusky,35,16
+1007,1990-10-20,25,25,Unchained Melody,Righteous Brothers,13,44
+1008,1964-01-11,70,,,,,
+1009,1975-09-06,93,95,The Millionaire,Dr. Hook,95,5
+1010,1975-09-13,39,,,,,
+1011,1989-07-29,46,44,I Drove All Night,Cyndi Lauper,6,15
+1012,1991-02-23,14,13,All This Time,Sting,5,15
+1013,1984-02-11,45,44,Time Will Reveal,Debarge,18,18
+1014,1976-07-24,47,47,Play That Funky Music,Wild Cherry,1,25
+1015,1961-08-14,16,,,,,
+1016,1977-04-16,54,53,Disco Inferno,The Trammps,11,29
+1017,1986-07-19,30,,,,,
+1018,1965-07-10,85,83,In The Midnight Hour,Wilson Pickett,21,12
+1019,1989-12-16,35,36,The Arms Of Orion,Prince (With Sheena Easton),36,14
+1020,1973-05-26,64,65,Hey You! Get Off My Mountain,The Dramatics,43,12
+1021,1967-07-01,60,60,Soul Dance Number Three,Wilson Pickett,55,5
+1022,1978-09-09,90,92,Surrender,Cheap Trick,62,8
+1023,1981-11-28,30,,,,,
+1024,1960-05-16,93,93,Baby What You Want Me To Do,Jimmy Reed,37,14
+1025,1973-08-11,64,64,Over The Hills And Far Away,Led Zeppelin,51,8
+1026,1962-09-08,52,,,,,
+1027,1985-02-16,70,72,Lucky,Greg Kihn,30,12
+1028,1968-05-11,49,,,,,
+1029,1991-11-09,69,,,,,
+1030,1980-11-15,88,,,,,
+1031,1985-09-07,1,3,We Don't Need Another Hero (Thunderdome),Tina Turner,2,18
+1032,1973-04-07,50,52,Down And Out In New York City,James Brown,50,7
+1033,1967-11-18,92,94,Goin' Back,The Byrds,89,3
+1034,1973-02-10,93,91,Sugar Magnolia,Grateful Dead,91,2
+1035,1971-11-20,30,,,,,
+1036,1989-03-11,39,,,,,
+1037,1961-12-04,44,44,Town Without Pity,Gene Pitney,13,16
+1038,1982-02-13,80,,,,,
+1039,1989-09-02,13,12,Girl I m Gonna Miss You,Milli Vanilli,1,21
+1040,1978-05-20,24,24,Lay Down Sally,Eric Clapton,3,23
+1041,1962-06-09,6,6,It Keeps Right On A-Hurtin',Johnny Tillotson,3,12
+1042,1972-01-22,75,75,Oh Me Oh My (I'm A Fool For You Baby),Aretha Franklin,73,4
+1043,1983-09-10,46,45,Is There Something I Should Know,Duran Duran,4,17
+1044,1967-01-07,23,23,I've Passed This Way Before,Jimmy Ruffin,17,11
+1045,1978-04-15,18,16,Count On Me,Jefferson Starship,8,14
+1046,1962-02-03,92,94,Jamie,Eddie Holland,30,11
+1047,1988-12-17,86,,,,,
+1048,1968-12-14,22,23,Hooked On A Feeling,B.J. Thomas,5,16
+1049,1963-10-05,41,,,,,
+1050,1975-07-05,12,,,,,
+1051,1982-01-09,46,46,My Kinda Lover,Billy Squier,45,10
+1052,1980-07-05,93,94,Another Brick In The Wall (Part II),Pink Floyd,1,25
+1053,1980-03-08,22,24,Heartbreaker,Pat Benatar,23,18
+1054,1968-12-14,66,65,I Walk Alone,Marty Robbins,65,8
+1055,1959-09-21,50,49,My Wish Came True,Elvis Presley,12,11
+1056,1979-09-08,3,3,After The Love Has Gone,"Earth, Wind & Fire",2,17
+1057,1963-01-26,96,,,,,
+1058,1971-08-21,24,23,Ain't No Sunshine,Bill Withers,3,16
+1059,1962-10-20,86,86,I've Been Everywhere,Hank Snow,68,8
+1060,1960-07-25,44,,,,,
+1061,1975-02-22,4,2,Best Of My Love,Eagles,1,19
+1062,1986-06-28,14,15,Tuff Enuff,The Fabulous Thunderbirds,10,19
+1063,1963-06-08,40,39,This Little Girl,Dion,21,8
+1064,1979-09-22,5,6,Sad Eyes,Robert John,1,27
+1065,1962-10-20,67,,,,,
+1066,1985-12-14,44,44,My Hometown,Bruce Springsteen,6,15
+1067,1985-11-30,75,76,Hurts To Be In Love,Gino Vannelli,57,12
+1068,1974-12-07,35,34,Never Can Say Goodbye,Gloria Gaynor,9,17
+1069,1974-12-07,24,24,Must Of Got Lost,The J. Geils Band,12,11
+1070,1979-02-03,37,37,Every Time I Think Of You,The Babys,13,16
+1071,1977-08-06,44,43,Rock And Roll Never Forgets,Bob Seger,41,8
+1072,1959-11-16,17,17,Be My Guest,Fats Domino,8,14
+1073,1976-08-07,42,42,Devil Woman,Cliff Richard,6,22
+1074,1986-06-28,45,,,,,
+1075,1966-08-06,100,,,,,
+1076,1978-09-02,91,93,Can We Still Be Friends,Todd Rundgren,29,15
+1077,1978-03-04,89,,,,,
+1078,1978-11-25,41,41,There'll Never Be,Switch,36,13
+1079,1972-07-08,47,,,,,
+1080,1972-10-21,50,,,,,
+1081,1963-07-20,63,,,,,
+1082,1982-07-17,19,18,Take Me Down,Alabama,18,13
+1083,1986-06-21,78,,,,,
+1084,1984-12-15,11,10,All Through The Night,Cyndi Lauper,5,19
+1085,1970-06-06,9,9,Make Me Smile,Chicago,9,14
+1086,1977-05-28,65,64,Don't Leave Me This Way,Thelma Houston,1,24
+1087,1965-10-23,72,71,There But For Fortune,Joan Baez,50,7
+1088,1989-10-07,76,,,,,
+1089,1987-12-12,89,90,Who Will You Run To,Heart,7,22
+1090,1982-06-19,89,,,,,
+1091,1962-09-29,44,44,He's A Rebel,The Crystals,1,18
+1092,1988-03-19,68,,,,,
+1093,1974-11-30,1,1,I Can Help,Billy Swan,1,18
+1094,1961-11-20,91,92,There's No Other (Like My Baby),The Crystals,20,9
+1095,1977-07-09,91,,,,,
+1096,1970-01-31,56,56,Look-Ka Py Py,The Meters,56,10
+1097,1979-07-28,32,31,After The Love Has Gone,"Earth, Wind & Fire",2,17
+1098,1985-03-09,17,15,Private Dancer,Tina Turner,7,18
+1099,1962-06-16,46,46,Where Are You,Dinah Washington,36,10
+1100,1967-12-23,24,23,If I Could Build My Whole World Around You,"Marvin Gaye,Tammi Terrell",10,11
+1101,1962-04-28,70,71,(I was) Born To Cry,Dion,42,7
+1102,1982-11-27,13,12,Rock This Town,Stray Cats,9,21
+1103,1962-03-24,31,32,The Twist,Chubby Checker,1,38
+1104,1987-03-07,33,32,What You Get Is What You See,Tina Turner,13,14
+1105,1973-09-15,62,,,,,
+1106,1990-04-07,76,74,Bust A Move,Young MC,7,39
+1107,1976-12-11,49,49,"Ob-La-Di, Ob-La-Da",The Beatles,49,7
+1108,1963-01-05,99,,,,,
+1109,1988-09-10,56,58,It Takes Two,Rob Base,36,16
+1110,1972-12-09,79,77,Reelin' & Rockin',Chuck Berry,27,13
+1111,1963-08-17,99,98,Land Of 1000 Dances,Chris Kenner,77,7
+1112,1980-12-06,33,33,Never Knew Love Like This Before,Stephanie Mills,6,25
+1113,1960-07-11,66,65,Lonely Weekends,Charlie Rich,22,21
+1114,1969-01-11,3,3,Wichita Lineman,Glen Campbell,3,15
+1115,1979-10-06,57,,,,,
+1116,1961-04-10,30,31,Ebony Eyes,The Everly Brothers,8,12
+1117,1967-12-09,49,47,If I Could Build My Whole World Around You,"Marvin Gaye,Tammi Terrell",10,11
+1118,1964-10-10,47,45,Funny Girl,Barbra Streisand,44,9
+1119,1985-04-20,96,94,Will The Wolf Survive,Los Lobos,78,5
+1120,1960-05-09,42,43,Big Iron,Marty Robbins,26,10
+1121,1966-11-26,18,17,A Hazy Shade Of Winter,Simon & Garfunkel,13,9
+1122,1990-09-08,64,,,,,
+1123,1960-06-27,34,34,Lonely Weekends,Charlie Rich,22,21
+1124,1975-12-06,52,52,Carry Me,"David Crosby,Graham Nash",52,6
+1125,1965-09-18,25,26,Treat Her Right,Roy Head,2,11
+1126,1986-07-26,3,3,Invisible Touch,Genesis,1,17
+1127,1971-02-13,12,13,One Less Bell To Answer,The 5th Dimension,2,19
+1128,1976-12-25,35,,,,,
+1129,1988-12-17,26,,,,,
+1130,1980-01-19,43,,,,,
+1131,1967-09-09,24,,,,,
+1132,1963-07-06,11,12,Those Lazy-Hazy-Crazy Days Of Summer,"Nat ""King"" Cole",6,12
+1133,1980-03-08,15,15,Cruisin',Smokey Robinson,4,25
+1134,1961-08-14,51,51,Mighty Good Lovin',The Miracles,51,6
+1135,1971-09-25,40,41,Loving Her Was Easier (Than Anything I'll Ever Do Again),Kris Kristofferson,26,13
+1136,1969-09-20,8,7,Get Together,The Youngbloods,5,25
+1137,1991-03-30,48,,,,,
+1138,1976-12-18,43,42,Torn Between Two Lovers,Mary MacGregor,1,22
+1139,1975-10-11,71,70,Are You Sure Hank Done It This Way,Waylon Jennings,60,9
+1140,1990-02-03,100,100,Oh Father,Madonna,20,13
+1141,1963-12-07,26,26,Talk Back Trembling Lips,Johnny Tillotson,7,13
+1142,1964-09-19,12,12,A Hard Day's Night,The Beatles,1,13
+1143,1981-03-21,9,9,I Love A Rainy Night,Eddie Rabbitt,1,28
+1144,1989-09-30,38,,,,,
+1145,1991-11-16,74,74,Tell Me What You Want Me To Do,Tevin Campbell,6,25
+1146,1968-11-16,10,9,"Abraham, Martin And John",Dion,4,14
+1147,1972-04-15,10,10,A Cowboys Work Is Never Done,Sonny & Cher,8,13
+1148,1989-01-28,84,85,I Don't Want Your Love,Duran Duran,4,16
+1149,1958-08-18,99,100,Going To Chicago Blues,Count Basie,100,1
+1150,1983-01-29,84,85,Rock This Town,Stray Cats,9,21
+1151,1966-03-26,9,8,(You're My) Soul And Inspiration,The Righteous Brothers,1,13
+1152,1963-01-19,36,37,Love Came To Me,Dion,10,11
+1153,1965-12-11,27,26,The Sounds Of Silence,Simon & Garfunkel,1,14
+1154,1966-05-28,99,99,Think Of Me,Buck Owens,74,5
+1155,1978-03-18,27,25,Running On Empty,Jackson Browne,11,17
+1156,1966-09-17,75,,,,,
+1157,1977-10-22,95,95,Easy,Commodores,4,22
+1158,1990-04-07,81,,,,,
+1159,1976-06-12,64,,,,,
+1160,1959-08-24,54,55,I Got Stripes,Johnny Cash,43,11
+1161,1982-03-27,34,34,Daddy's Home,Cliff Richard,23,13
+1162,1979-12-01,29,28,Cruisin',Smokey Robinson,4,25
+1163,1973-04-14,73,73,My Love,Paul McCartney,1,18
+1164,1976-06-19,87,88,Ten Percent,Double Exposure,54,9
+1165,1969-10-11,83,,,,,
+1166,1959-02-02,21,19,I Cried A Tear,LaVern Baker,6,21
+1167,1984-04-07,61,61,Rebel Yell,Billy Idol,46,14
+1168,1976-07-24,75,77,Ode To Billie Joe,Bobbie Gentry,1,20
+1169,1991-08-24,26,26,"Right Here, Right Now",Jesus Jones,2,25
+1170,1968-05-25,32,33,Summertime Blues,Blue Cheer,14,13
+1171,1977-03-19,4,4,Night Moves,Bob Seger,4,21
+1172,1985-10-05,31,,,,,
+1173,1986-07-26,58,59,Live To Tell,Madonna,1,18
+1174,1978-02-25,19,20,Happy Anniversary,Little River Band,16,18
+1175,1990-08-18,9,,,,,
+1176,1960-08-15,67,,,,,
+1177,1980-07-05,6,6,Against The Wind,Bob Seger,5,17
+1178,1969-11-29,49,51,I Want You Back,The Jacksons,1,19
+1179,1968-06-15,81,,,,,
+1180,1971-03-27,66,68,Lucky Man,"Emerson, Lake & Palmer",48,19
+1181,1966-06-04,14,14,Kicks,Paul Revere & The Raiders,4,14
+1182,1967-07-22,70,70,My World Fell Down,Sagittarius,70,5
+1183,1985-04-27,65,64,Private Dancer,Tina Turner,7,18
+1184,1977-01-08,91,,,,,
+1185,1989-02-04,70,,,,,
+1186,1969-01-04,54,53,"Baby, Baby Don't Cry",The Miracles,8,14
+1187,1984-12-08,47,,,,,
+1188,1988-04-23,11,11,Man In The Mirror,Michael Jackson,1,16
+1189,1960-12-12,75,,,,,
+1190,1976-01-24,54,53,Only Sixteen,Dr. Hook,6,22
+1191,1972-05-06,43,,,,,
+1192,1967-02-18,24,26,Standing In The Shadows Of Love,Four Tops,6,10
+1193,1964-12-12,30,29,She's A Woman,The Beatles,4,9
+1194,1971-10-23,40,42,The Year That Clayton Delaney Died,Tom T. Hall,42,12
+1195,1991-01-12,20,,,,,
+1196,1985-04-06,12,,,,,
+1197,1983-11-19,50,48,I Won't Stand In Your Way,Stray Cats,35,12
+1198,1972-03-04,21,,,,,
+1199,1963-10-05,12,,,,,
+1200,1977-10-29,78,76,Echoes Of Love,The Doobie Brothers,66,7
+1201,1978-09-02,1,2,Three Times A Lady,Commodores,1,20
+1202,1961-11-13,50,,,,,
+1203,1982-07-31,96,95,Island Of Lost Souls,Blondie,37,10
+1204,1979-12-22,75,76,Heartbreaker,Pat Benatar,23,18
+1205,1975-07-26,58,,,,,
+1206,1975-04-05,89,,,,,
+1207,1978-03-11,76,,,,,
+1208,1983-03-19,52,50,Even Now,Bob Seger,12,12
+1209,1986-06-21,87,,,,,
+1210,1962-04-21,86,86,Lovers Who Wander,Dion,3,12
+1211,1964-03-07,14,13,You Don't Own Me,Lesley Gore,2,13
+1212,1965-09-18,23,22,Baby Don't Go,Sonny & Cher,8,12
+1213,1965-03-20,40,39,I Don't Want To Spoil The Party,The Beatles,39,6
+1214,1961-05-01,60,,,,,
+1215,1965-03-20,79,,,,,
+1216,1988-04-30,6,,,,,
+1217,1978-09-23,99,98,Last Dance,Donna Summer,3,21
+1218,1973-06-30,20,20,Behind Closed Doors,Charlie Rich,15,19
+1219,1966-07-02,74,,,,,
+1220,1970-06-06,6,6,Get Ready,Rare Earth,4,20
+1221,1967-12-02,83,82,I'm In Love,Wilson Pickett,45,10
+1222,1980-03-15,58,59,Carrie,Cliff Richard,34,11
+1223,1983-07-23,28,29,I'll Tumble 4 Ya,Culture Club,9,16
+1224,1958-10-06,79,,,,,
+1225,1965-01-23,84,85,I've Got A Tiger By The Tail,Buck Owens,25,9
+1226,1989-02-18,21,22,All She Wants Is,Duran Duran,22,13
+1227,1970-09-05,5,6,25 Or 6 To 4,Chicago,4,20
+1228,1975-12-13,5,5,Saturday Night,Bay City Rollers,1,17
+1229,1971-06-19,68,67,You've Got A Friend,"Roberta Flack,Donny Hathaway",29,12
+1230,1985-08-10,86,,,,,
+1231,1975-06-28,55,,,,,
+1232,1979-11-03,29,28,Heaven Must Have Sent You,Bonnie Pointer,11,23
+1233,1971-04-17,84,,,,,
+1234,1986-12-13,24,24,Amanda,Boston,1,18
+1235,1973-09-22,81,81,For Ol' Times Sake,Elvis Presley,41,9
+1236,1958-11-10,24,,,,,
+1237,1986-07-05,34,34,Something About You,Level 42,7,27
+1238,1985-06-22,82,,,,,
+1239,1961-01-09,6,5,Will You Love Me Tomorrow,The Shirelles,1,19
+1240,1978-11-18,17,17,Alive Again,Chicago,14,13
+1241,1963-03-16,94,,,,,
+1242,1978-05-20,77,75,Last Dance,Donna Summer,3,21
+1243,1960-01-04,95,,,,,
+1244,1965-10-30,33,32,Help!,The Beatles,1,13
+1245,1973-10-20,10,10,Paper Roses,Marie Osmond,5,16
+1246,1982-05-22,88,86,Happy Man,Greg Kihn Band,62,7
+1247,1964-10-31,40,40,20-75,Willie Mitchell,31,10
+1248,1962-06-30,10,12,That's Old Fashioned (That's The Way Love Should Be),The Everly Brothers,9,9
+1249,1976-09-25,20,21,Rock'n Me,Steve Miller Band,1,18
+1250,1977-07-16,83,85,Baby Don't Change Your Mind,Gladys Knight & The Pips,52,11
+1251,1968-04-27,73,,,,,
+1252,1990-08-18,81,,,,,
+1253,1962-10-20,15,15,All Alone Am I,Brenda Lee,3,15
+1254,1977-10-22,77,,,,,
+1255,1964-10-17,1,,,,,
+1256,1982-02-20,26,26,Abacab,Genesis,26,14
+1257,1975-01-18,81,80,Lovin' You,Minnie Riperton,1,18
+1258,1980-12-27,3,4,Lady,Kenny Rogers,1,25
+1259,1968-03-23,99,,,,,
+1260,1991-09-14,61,62,"Right Here, Right Now",Jesus Jones,2,25
+1261,1970-09-26,38,38,El Condor Pasa,Simon & Garfunkel,18,11
+1262,1969-05-10,75,,,,,
+1263,1960-04-04,79,80,Baby What You Want Me To Do,Jimmy Reed,37,14
+1264,1973-11-03,8,,,,,
+1265,1966-10-01,51,51,If I Were A Carpenter,Bobby Darin,8,11
+1266,1969-10-04,7,6,Honky Tonk Women,The Rolling Stones,1,15
+1267,1974-02-23,43,42,"Rock And Roll, Hoochie Koo",Rick Derringer,23,14
+1268,1973-03-17,96,97,Frankenstein,Edgar Winter,1,20
+1269,1984-11-17,36,35,Who Wears These Shoes?,Elton John,16,14
+1270,1990-04-28,78,77,Lambada,Kaoma,46,12
+1271,1980-07-05,3,3,The Rose,Bette Midler,3,25
+1272,1964-12-12,25,25,Sidewalk Surfin',Jan & Dean,25,8
+1273,1979-11-10,48,47,We Don't Talk Anymore,Cliff Richard,7,20
+1274,1984-10-06,5,5,She Bop,Cyndi Lauper,3,18
+1275,1963-09-14,11,,,,,
+1276,1989-05-27,21,22,Baby Don't Forget My Number,Milli Vanilli,1,21
+1277,1986-05-24,37,36,American Storm,Bob Seger,13,14
+1278,1963-02-23,46,,,,,
+1279,1984-01-14,26,26,Let The Music Play,Shannon,8,24
+1280,1971-06-12,8,8,Treat Her Like A Lady,Cornelius Brothers & Sister Rose,3,18
+1281,1988-07-30,30,29,When It's Love,Van Halen,29,2
+1282,1977-02-05,49,49,Crackerbox Palace,George Harrison,19,11
+1283,1967-02-11,17,18,Standing In The Shadows Of Love,Four Tops,6,10
+1284,1979-01-20,85,,,,,
+1285,1980-12-20,68,68,Upside Down,Diana Ross,1,29
+1286,1981-04-25,31,30,Sukiyaki,A Taste Of Honey,3,24
+1287,1959-08-24,69,70,Johnny Reb,Johnny Horton,54,8
+1288,1986-09-06,48,,,,,
+1289,1991-07-27,80,80,There She Goes,The La's,49,10
+1290,1967-04-22,2,2,Happy Together,The Turtles,1,15
+1291,1982-07-24,86,,,,,
+1292,1963-03-09,17,19,He's So Fine,The Chiffons,1,15
+1293,1991-02-02,95,,,,,
+1294,1979-03-10,93,,,,,
+1295,1982-03-20,84,,,,,
+1296,1983-07-02,34,36,White Wedding,Billy Idol,36,13
+1297,1961-03-13,7,9,Ebony Eyes,The Everly Brothers,8,12
+1298,1988-02-20,52,,,,,
+1299,1969-05-31,100,,,,,
+1300,1991-06-29,84,83,Where The Streets Have No Name,Pet Shop Boys,72,7
