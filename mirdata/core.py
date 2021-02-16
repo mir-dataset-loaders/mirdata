@@ -513,4 +513,3 @@ class MultiTrack(Track):
         """
         self._check_mixable()
         return self.get_target(list(self.tracks.keys()))
-
