@@ -301,12 +301,7 @@ class Track(object):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata=None,
+        self, track_id, data_home, dataset_name, index, metadata=None,
     ):
         """Track init method. Sets boilerplate attributes, including:
 
@@ -321,7 +316,7 @@ class Track(object):
             data_home (str): path where mirdata will look for the dataset
             dataset_name (str): the identifier of the dataset
             index (dict): the dataset's file index
-            metadata (dict or None): a dictionary of metadata or None
+            metadata (function or None): a function returning a dictionary of metadata or None
 
         """
         if track_id not in index["tracks"]:
@@ -338,6 +333,9 @@ class Track(object):
 
     @property
     def _track_metadata(self):
+        if not self._metadata:
+            raise ValueError("This Track does not have metadata.")
+
         metadata = self._metadata()
         if metadata and self.track_id in metadata:
             return metadata[self.track_id]
