@@ -198,74 +198,6 @@ def test_dataset_errors():
         d._multitrack("a")
 
 
-# def test_multitrack_basic():
-#     class TestTrack(core.Track):
-#         def __init__(
-#             self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
-#         ):
-#             self.key = key
-
-#         @property
-#         def f(self):
-#             return np.random.uniform(-1, 1, (2, 100)), 1000
-
-#     class TestMultiTrack1(core.MultiTrack):
-#         def __init__(self, mtrack_id, data_home):
-#             self.mtrack_id = mtrack_id
-#             self._data_home = data_home
-#             self.track_ids = []
-#             self.mtrack_ids = []
-#             self._metadata = lambda : None
-
-#     mtrack = TestMultiTrack1("test", "foo")
-
-#     with pytest.raises(NotImplementedError):
-#         mtrack.to_jams()
-
-#     with pytest.raises(KeyError):
-#         mtrack.get_target(["a"])
-
-#     with pytest.raises(AssertionError):
-#         mtrack.get_random_target()
-
-#     with pytest.raises(AssertionError):
-#         mtrack.get_mix()
-
-#     assert mtrack._multitrack_metadata is None
-#     with pytest.raises(ValueError):
-#         print(mtrack._multitrack_metadata)
-
-#     with pytest.raises(NotImplementedError):
-#         mtrack.track_audio_property
-
-#     class TestMultiTrack2(core.MultiTrack):
-#         def __init__(self, mtrack_id, data_home, metadata):
-#             self.mtrack_id = mtrack_id
-#             self._data_home = data_home
-#             self._dataset_name = "foo"
-#             self._index = None
-#             self._track_class = TestTrack
-#             self.track_ids = ["a", "b", "c"]
-#             self._metadata = metadata
-
-#         def to_jams(self):
-#             return None
-
-#         @property
-#         def track_audio_property(self):
-#             #### the attribute of Track which returns the relevant audio file for mixing
-#             return "f"
-
-#     mtrack = TestMultiTrack2("test", "foo", {1: "a", "b": 2})
-#     mtrack.to_jams()
-#     mtrack.get_target(["a"])
-#     mtrack.get_random_target()
-#     metadata = mtrack._multitrack_metadata
-
-#     mtrack = TestMultiTrack2("test", "foo", {"test": "a"})
-#     metadata = mtrack._multitrack_metadata
-
-
 def test_multitrack():
     index_tracks = {
         "tracks": {
@@ -388,22 +320,37 @@ def test_multitrack_mixing():
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), 1000
 
-    class TestMultiTrack(core.MultiTrack):
-        def __init__(self, mtrack_id, data_home):
-            self.mtrack_id = mtrack_id
-            self._data_home = data_home
-            self._dataset_name = "foo"
-            self._index = None
-            self._metadata = None
-            self._track_class = TestTrack
-            self.track_ids = ["a", "b", "c"]
+    class TestMultiTrack1(core.MultiTrack):
+        def __init__(
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class=TestTrack,
+            metadata=None,
+        ):
+            super().__init__(
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                TestTrack,
+                metadata,
+            )
+
+        def to_jams(self):
+            return None
 
         @property
         def track_audio_property(self):
-            #### the attribute of Track which returns the relevant audio file for mixing
             return "f"
 
-    mtrack = TestMultiTrack("test", "foo")
+    index = {"multitracks": {"ab": {"tracks": ["a", "b", "c"]}}}
+    mtrack_id = "ab"
+    dataset_name = "test"
+    data_home = "tests/resources/mir_datasets"
+    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
 
     target1 = mtrack.get_target(["a", "c"])
     assert target1.shape == (2, 100)
@@ -474,22 +421,37 @@ def test_multitrack_unequal_len():
         def f(self):
             return np.random.uniform(-1, 1, (2, np.random.randint(50, 100))), 1000
 
-    class TestMultiTrack(core.MultiTrack):
-        def __init__(self, mtrack_id, data_home):
-            self.mtrack_id = mtrack_id
-            self._data_home = data_home
-            self._dataset_name = "foo"
-            self._index = None
-            self._metadata = None
-            self._track_class = TestTrack
-            self.track_ids = ["a", "b", "c"]
+    class TestMultiTrack1(core.MultiTrack):
+        def __init__(
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class=TestTrack,
+            metadata=None,
+        ):
+            super().__init__(
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                TestTrack,
+                metadata,
+            )
+
+        def to_jams(self):
+            return None
 
         @property
         def track_audio_property(self):
-            #### the attribute of Track which returns the relevant audio file for mixing
             return "f"
 
-    mtrack = TestMultiTrack("test", "foo")
+    index = {"multitracks": {"ab": {"tracks": ["a", "b", "c"]}}}
+    mtrack_id = "ab"
+    dataset_name = "test"
+    data_home = "tests/resources/mir_datasets"
+    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
 
     with pytest.raises(ValueError):
         mtrack.get_target(["a", "b", "c"])
@@ -517,22 +479,37 @@ def test_multitrack_unequal_sr():
         def f(self):
             return np.random.uniform(-1, 1, (2, 100)), np.random.randint(10, 1000)
 
-    class TestMultiTrack(core.MultiTrack):
-        def __init__(self, mtrack_id, data_home):
-            self.mtrack_id = mtrack_id
-            self._data_home = data_home
-            self._dataset_name = "foo"
-            self._index = None
-            self._metadata = None
-            self._track_class = TestTrack
-            self.track_ids = ["a", "b", "c"]
+    class TestMultiTrack1(core.MultiTrack):
+        def __init__(
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class=TestTrack,
+            metadata=None,
+        ):
+            super().__init__(
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                TestTrack,
+                metadata,
+            )
+
+        def to_jams(self):
+            return None
 
         @property
         def track_audio_property(self):
-            #### the attribute of Track which returns the relevant audio file for mixing
             return "f"
 
-    mtrack = TestMultiTrack("test", "foo")
+    index = {"multitracks": {"ab": {"tracks": ["a", "b", "c"]}}}
+    mtrack_id = "ab"
+    dataset_name = "test"
+    data_home = "tests/resources/mir_datasets"
+    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
 
     with pytest.raises(ValueError):
         mtrack.get_target(["a", "b", "c"])
@@ -550,22 +527,37 @@ def test_multitrack_mono():
         def f(self):
             return np.random.uniform(-1, 1, (100)), 1000
 
-    class TestMultiTrack(core.MultiTrack):
-        def __init__(self, mtrack_id, data_home):
-            self.mtrack_id = mtrack_id
-            self._data_home = data_home
-            self._dataset_name = "foo"
-            self._index = None
-            self._metadata = None
-            self._track_class = TestTrack
-            self.track_ids = ["a", "b", "c"]
+    class TestMultiTrack1(core.MultiTrack):
+        def __init__(
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class=TestTrack,
+            metadata=None,
+        ):
+            super().__init__(
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                TestTrack,
+                metadata,
+            )
+
+        def to_jams(self):
+            return None
 
         @property
         def track_audio_property(self):
-            #### the attribute of Track which returns the relevant audio file for mixing
             return "f"
 
-    mtrack = TestMultiTrack("test", "foo")
+    index = {"multitracks": {"ab": {"tracks": ["a", "b", "c"]}}}
+    mtrack_id = "ab"
+    dataset_name = "test"
+    data_home = "tests/resources/mir_datasets"
+    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
 
     target1 = mtrack.get_target(["a", "c"])
     assert target1.shape == (1, 100)
@@ -587,21 +579,36 @@ def test_multitrack_mono():
             return np.random.uniform(-1, 1, (1, 100)), 1000
 
     class TestMultiTrack1(core.MultiTrack):
-        def __init__(self, mtrack_id, data_home):
-            self.mtrack_id = mtrack_id
-            self._data_home = data_home
-            self._dataset_name = "foo"
-            self._index = None
-            self._metadata = None
-            self._track_class = TestTrack
-            self.track_ids = ["a", "b", "c"]
+        def __init__(
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class=TestTrack,
+            metadata=None,
+        ):
+            super().__init__(
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                TestTrack,
+                metadata,
+            )
+
+        def to_jams(self):
+            return None
 
         @property
         def track_audio_property(self):
-            #### the attribute of Track which returns the relevant audio file for mixing
             return "f"
 
-    mtrack = TestMultiTrack1("test", "foo")
+    index = {"multitracks": {"ab": {"tracks": ["a", "b", "c"]}}}
+    mtrack_id = "ab"
+    dataset_name = "test"
+    data_home = "tests/resources/mir_datasets"
+    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
 
     target1 = mtrack.get_target(["a", "c"])
     assert target1.shape == (1, 100)
