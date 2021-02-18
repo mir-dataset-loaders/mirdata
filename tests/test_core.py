@@ -198,7 +198,142 @@ def test_dataset_errors():
         d._multitrack("a")
 
 
-def test_multitrack_basic():
+# def test_multitrack_basic():
+#     class TestTrack(core.Track):
+#         def __init__(
+#             self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
+#         ):
+#             self.key = key
+
+#         @property
+#         def f(self):
+#             return np.random.uniform(-1, 1, (2, 100)), 1000
+
+#     class TestMultiTrack1(core.MultiTrack):
+#         def __init__(self, mtrack_id, data_home):
+#             self.mtrack_id = mtrack_id
+#             self._data_home = data_home
+#             self.track_ids = []
+#             self.mtrack_ids = []
+#             self._metadata = lambda : None
+
+#     mtrack = TestMultiTrack1("test", "foo")
+
+#     with pytest.raises(NotImplementedError):
+#         mtrack.to_jams()
+
+#     with pytest.raises(KeyError):
+#         mtrack.get_target(["a"])
+
+#     with pytest.raises(AssertionError):
+#         mtrack.get_random_target()
+
+#     with pytest.raises(AssertionError):
+#         mtrack.get_mix()
+
+#     assert mtrack._multitrack_metadata is None
+#     with pytest.raises(ValueError):
+#         print(mtrack._multitrack_metadata)
+
+#     with pytest.raises(NotImplementedError):
+#         mtrack.track_audio_property
+
+#     class TestMultiTrack2(core.MultiTrack):
+#         def __init__(self, mtrack_id, data_home, metadata):
+#             self.mtrack_id = mtrack_id
+#             self._data_home = data_home
+#             self._dataset_name = "foo"
+#             self._index = None
+#             self._track_class = TestTrack
+#             self.track_ids = ["a", "b", "c"]
+#             self._metadata = metadata
+
+#         def to_jams(self):
+#             return None
+
+#         @property
+#         def track_audio_property(self):
+#             #### the attribute of Track which returns the relevant audio file for mixing
+#             return "f"
+
+#     mtrack = TestMultiTrack2("test", "foo", {1: "a", "b": 2})
+#     mtrack.to_jams()
+#     mtrack.get_target(["a"])
+#     mtrack.get_random_target()
+#     metadata = mtrack._multitrack_metadata
+
+#     mtrack = TestMultiTrack2("test", "foo", {"test": "a"})
+#     metadata = mtrack._multitrack_metadata
+
+
+def test_multitrack():
+    index_tracks = {
+        "tracks": {
+            "a": {
+                "audio": (None, None),
+                "annotation": ("asdf/asdd", "asdfasdfasdfasdf"),
+            },
+            "b": {
+                "audio": (None, None),
+                "annotation": ("asdf/asdd", "asdfasdfasdfasdf"),
+            },
+        }
+    }
+    index_mtracks = {"multitracks": {"ab": {"tracks": ["a", "b"]}}}
+    index = {}
+    index.update(index_tracks)
+    index.update(index_mtracks)
+    mtrack_id = "ab"
+    dataset_name = "test"
+    data_home = "tests/resources/mir_datasets"
+    mtrack = core.MultiTrack(mtrack_id, data_home, dataset_name, index, core.Track)
+
+    assert mtrack.mtrack_id == mtrack_id
+    assert mtrack._dataset_name == dataset_name
+    assert mtrack._data_home == data_home
+    assert list(mtrack.tracks.keys()) == ["a", "b"]
+    assert mtrack._metadata is None
+    with pytest.raises(ValueError):
+        mtrack._track_metadata
+
+    with pytest.raises(NotImplementedError):
+        mtrack.to_jams()
+
+    with pytest.raises(KeyError):
+        mtrack.get_target(["c"])
+
+    with pytest.raises(NotImplementedError):
+        mtrack.get_random_target()
+
+    with pytest.raises(NotImplementedError):
+        mtrack.get_mix()
+
+    with pytest.raises(NotImplementedError):
+        mtrack.track_audio_property
+
+    # tracks with metadata
+    metadata_mtrack_index = lambda: {"ab": {"x": 1, "y": 2, "z": 3}}
+    metadata_global = lambda: {"asdf": [1, 2, 3], "asdd": [4, 5, 6]}
+    metadata_none = lambda: None
+
+    mtrack_metadata_tidx = core.MultiTrack(
+        mtrack_id, data_home, dataset_name, index, core.Track, metadata_mtrack_index
+    )
+    assert mtrack_metadata_tidx._multitrack_metadata == {"x": 1, "y": 2, "z": 3}
+
+    mtrack_metadata_global = core.MultiTrack(
+        mtrack_id, data_home, dataset_name, index, core.Track, metadata_global
+    )
+    assert mtrack_metadata_global._multitrack_metadata == {
+        "asdf": [1, 2, 3],
+        "asdd": [4, 5, 6],
+    }
+
+    mtrack_metadata_none = core.MultiTrack(
+        mtrack_id, data_home, dataset_name, index, core.Track, metadata_none
+    )
+    assert mtrack_metadata_none._multitrack_metadata is None
+
     class TestTrack(core.Track):
         def __init__(
             self, key, data_home="foo", dataset_name="foo", index=None, metadata=None
@@ -210,62 +345,36 @@ def test_multitrack_basic():
             return np.random.uniform(-1, 1, (2, 100)), 1000
 
     class TestMultiTrack1(core.MultiTrack):
-        def __init__(self, mtrack_id, data_home):
-            self.mtrack_id = mtrack_id
-            self._data_home = data_home
-            self.track_ids = []
-            self.mtrack_ids = []
-            self._metadata = None
-
-    mtrack = TestMultiTrack1("test", "foo")
-
-    assert mtrack._multitrack_metadata is None
-
-    with pytest.raises(NotImplementedError):
-        mtrack.to_jams()
-
-    with pytest.raises(KeyError):
-        mtrack.get_target(["a"])
-
-    with pytest.raises(AssertionError):
-        mtrack.get_random_target()
-
-    with pytest.raises(AssertionError):
-        mtrack.get_mix()
-
-    with pytest.raises(AttributeError):
-        mtrack._multitrack_medata
-
-    with pytest.raises(NotImplementedError):
-        mtrack.track_audio_property
-
-    class TestMultiTrack2(core.MultiTrack):
-        def __init__(self, mtrack_id, data_home, metadata):
-            self.mtrack_id = mtrack_id
-            self._data_home = data_home
-            self._dataset_name = "foo"
-            self._index = None
-            self._metadata = None
-            self._track_class = TestTrack
-            self.track_ids = ["a", "b", "c"]
-            self._metadata = metadata
+        def __init__(
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class=TestTrack,
+            metadata=None,
+        ):
+            super().__init__(
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                TestTrack,
+                metadata,
+            )
 
         def to_jams(self):
             return None
 
         @property
         def track_audio_property(self):
-            #### the attribute of Track which returns the relevant audio file for mixing
             return "f"
 
-    mtrack = TestMultiTrack2("test", "foo", {1: "a", "b": 2})
+    # import pdb;pdb.set_trace()
+    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, core.Track)
     mtrack.to_jams()
     mtrack.get_target(["a"])
     mtrack.get_random_target()
-    metadata = mtrack._multitrack_metadata
-
-    mtrack = TestMultiTrack2("test", "foo", {"test": "a"})
-    metadata = mtrack._multitrack_metadata
 
 
 def test_multitrack_mixing():

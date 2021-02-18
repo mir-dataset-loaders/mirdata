@@ -114,8 +114,8 @@ class Track(core.Track):
 
     Attributes:
         audio_path (list): path to the audio files
-        notes_path (list): path to the audio files
-        notes_original_path (list): path to the audio files
+        notes_path (list): path to the score files
+        notes_original_path (list): path to the original score files
         instrument (str): the name of the instrument
         piece (str): the name of the piece
         n_voices (int): the number of voices in this instrument
@@ -230,10 +230,12 @@ class MultiTrack(core.MultiTrack):
 
 
     Attributes:
-        audio_path (str): path to the audio files associated with this track
-        annotation_path (str): path to the annotations files associated with this track
+        track_audio_property (str): the attribute of track which is used for mixing
         mtrack_id (str): multitrack id
-        tracks (list): list of track ids within this multitrack
+        piece (str): the classical music piece associated with this multitrack
+        tracks (dict): dict of track ids and the corresponding Tracks
+        instruments (dict): dict of instruments and the corresponding track
+        sections (dict): dict of sections and the corresponding list of tracks for each section
     """
 
     def __init__(

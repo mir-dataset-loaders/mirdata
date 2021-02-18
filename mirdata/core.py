@@ -498,7 +498,7 @@ class MultiTrack(Track):
             data_home (str): path where mirdata will look for the dataset
             dataset_name (str): the identifier of the dataset
             index (dict): the dataset's file index
-            metadata (dict or None): a dictionary of metadata or None
+            metadata (function or None): a function returning a dictionary of metadata or None
 
         """
         if mtrack_id not in index["multitracks"]:
@@ -534,7 +534,13 @@ class MultiTrack(Track):
     def _multitrack_metadata(self):
         if not self._metadata:
             raise ValueError("This MultiTrack does not have metadata")
+
         metadata = self._metadata()
+        if metadata and self.mtrack_id in metadata:
+            return metadata[self.mtrack_id]
+        elif metadata:
+            return metadata
+        return None
 
     def get_target(self, track_keys, weights=None, average=True, enforce_length=True):
         """Get target which is a linear mixture of tracks
