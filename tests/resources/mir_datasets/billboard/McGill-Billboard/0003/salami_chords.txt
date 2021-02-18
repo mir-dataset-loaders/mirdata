@@ -1,0 +1,30 @@
+# title: I Don't mind
+# artist: James Brown
+# metre: 6/8
+# tonic: C
+
+0.0	silence
+7.3469387e-2	A, intro, | A:min | A:min | C:maj | C:maj |
+8.714013605	| A:min | A:min | C:maj | C:maj |
+15.611995464	| A:min | A:min | C:maj | C:maj |
+22.346394557	B, verse, | A:min | A:min | C:maj | C:maj |, (voice
+29.219433106	| A:min | A:min | C:maj | C:maj |
+36.279501133	| F:maj | F:maj | D:maj | D:maj |
+43.053922902	| G:maj | G:maj | C:maj | C:maj |
+49.23802721	B, verse, | A:maj | A:maj | C:maj | C:maj |
+56.185079365	| A:maj | A:maj | C:maj | C:maj |
+63.007732426	| F:maj | F:maj | D:maj | D:maj |
+69.942857142	| G:maj | G:maj | C:maj | C:maj |, voice)
+76.123990929	A, interlude, | A:min | A:min | C:maj | C:maj |
+82.811201814	| A:min | A:min | C:maj | C:maj |
+89.535532879	| F:maj | F:maj | D:maj | D:maj |
+96.418956916	| G:maj | G:maj | C:maj | C:maj |, (guitar)
+102.924353741	B, verse, | A:maj | A:maj | C:maj | C:maj |, (voice
+109.886984126	| A:maj | A:maj | C:maj | C:maj |
+116.791473922	| F:maj | F:maj | D:maj | D:maj |
+123.887596371	| G:maj | G:maj | C:maj | C:maj |, voice)
+130.206598639	A, interlude, | A:min | A:min | C:maj | C:maj |
+137.039523809	| A:min | A:min | C:maj | C:maj |
+143.499319727	| A:min |
+148.723809523	silence
+150.909387755	end

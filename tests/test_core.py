@@ -5,6 +5,63 @@ import mirdata
 from mirdata import core
 
 
+def test_track():
+    index = {
+        "tracks": {
+            "a": {
+                "audio": (None, None),
+                "annotation": ("asdf/asdd", "asdfasdfasdfasdf"),
+            }
+        }
+    }
+    track_id = "a"
+    dataset_name = "test"
+    data_home = "tests/resources/mir_datasets"
+    track = core.Track(track_id, data_home, dataset_name, index)
+
+    assert track.track_id == track_id
+    assert track._dataset_name == dataset_name
+    assert track._data_home == data_home
+    assert track._track_paths == {
+        "audio": (None, None),
+        "annotation": ("asdf/asdd", "asdfasdfasdfasdf"),
+    }
+    assert track._metadata is None
+    with pytest.raises(ValueError):
+        track._track_metadata
+
+    with pytest.raises(NotImplementedError):
+        track.to_jams()
+
+    path_good = track.get_path("annotation")
+    assert path_good == "tests/resources/mir_datasets/asdf/asdd"
+    path_none = track.get_path("audio")
+    assert path_none is None
+
+    # tracks with metadata
+    metadata_track_index = lambda: {"a": {"x": 1, "y": 2, "z": 3}}
+    metadata_global = lambda: {"asdf": [1, 2, 3], "asdd": [4, 5, 6]}
+    metadata_none = lambda: None
+
+    track_metadata_tidx = core.Track(
+        track_id, data_home, dataset_name, index, metadata_track_index
+    )
+    assert track_metadata_tidx._track_metadata == {"x": 1, "y": 2, "z": 3}
+
+    track_metadata_global = core.Track(
+        track_id, data_home, dataset_name, index, metadata_global
+    )
+    assert track_metadata_global._track_metadata == {
+        "asdf": [1, 2, 3],
+        "asdd": [4, 5, 6],
+    }
+
+    track_metadata_none = core.Track(
+        track_id, data_home, dataset_name, index, metadata_none
+    )
+    assert track_metadata_none._track_metadata is None
+
+
 def test_track_repr():
     class TestTrack(core.Track):
         def __init__(self):
