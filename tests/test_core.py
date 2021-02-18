@@ -224,9 +224,10 @@ def test_multitrack():
     assert mtrack._dataset_name == dataset_name
     assert mtrack._data_home == data_home
     assert list(mtrack.tracks.keys()) == ["a", "b"]
+
     assert mtrack._metadata is None
     with pytest.raises(ValueError):
-        mtrack._track_metadata
+        mtrack._multitrack_metadata
 
     with pytest.raises(NotImplementedError):
         mtrack.to_jams()
