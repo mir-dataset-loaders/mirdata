@@ -84,7 +84,6 @@ REMOTES = {
         filename="PHENICX-Anechoic.zip",
         url="https://zenodo.org/record/840025/files/PHENICX-Anechoic.zip?download=1",
         checksum="7fec47568263476ecac0103aef608629",
-        # destination_dir="..",
         unpack_directories=["PHENICX-Anechoic"],
     )
 }

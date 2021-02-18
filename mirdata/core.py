@@ -233,6 +233,7 @@ class Dataset(object):
                 self.data_home,
                 self.name,
                 self._index,
+                self._track_class,
                 lambda: self._metadata,
             )
 
@@ -508,16 +509,13 @@ class MultiTrack(Track):
 
     @property
     def track_audio_property(self):
-        raise NotImplementedError("Mixing is not possible in this dataset")
+        raise NotImplementedError("Mixing is not supported for this dataset")
 
     @property
     def _multitrack_metadata(self):
-        metadata = self._metadata
-        if metadata and self.mtrack_id in metadata:
-            return metadata[self.mtrack_id]
-        elif metadata:
-            return metadata
-        return None
+        if not self._metadata:
+            raise ValueError("This MultiTrack does not have metadata")
+        metadata = self._metadata()
 
     def get_target(self, track_keys, weights=None, average=True, enforce_length=True):
         """Get target which is a linear mixture of tracks
