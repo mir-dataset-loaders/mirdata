@@ -176,19 +176,11 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_hex_cln_path = os.path.join(
-            self._data_home, self._track_paths["audio_hex_cln"][0]
-        )
-        self.audio_hex_path = os.path.join(
-            self._data_home, self._track_paths["audio_hex"][0]
-        )
-        self.audio_mic_path = os.path.join(
-            self._data_home, self._track_paths["audio_mic"][0]
-        )
-        self.audio_mix_path = os.path.join(
-            self._data_home, self._track_paths["audio_mix"][0]
-        )
-        self.jams_path = os.path.join(self._data_home, self._track_paths["jams"][0])
+        self.audio_hex_cln_path = self.get_path("audio_hex_cln")
+        self.audio_hex_path = self.get_path("audio_hex")
+        self.audio_mic_path = self.get_path("audio_mic")
+        self.audio_mix_path = self.get_path("audio_mix")
+        self.jams_path = self.get_path("jams")
 
         title_list = track_id.split("_")  # [PID, S-T-K, mode, rec_mode]
         style, tempo, _ = title_list[1].split("-")  # [style, tempo, key]

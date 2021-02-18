@@ -149,13 +149,11 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.annotation_v1_path = os.path.join(
-            self._data_home, self._track_paths["annotation_v1"][0]
-        )
-        self.annotation_v2_path = os.path.join(
-            self._data_home, self._track_paths["annotation_v2"][0]
-        )
+
+        self.annotation_v1_path = self.get_path("annotation_v1")
+        self.annotation_v2_path = self.get_path("annotation_v2")
+
+        self.audio_path = self.get_path("audio")
 
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1].split(".")[0]
 
