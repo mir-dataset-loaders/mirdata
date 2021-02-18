@@ -321,7 +321,7 @@ class Track(object):
             data_home (str): path where mirdata will look for the dataset
             dataset_name (str): the identifier of the dataset
             index (dict): the dataset's file index
-            metadata (dict or None): a dictionary of metadata or None
+            metadata (function or None): a function returning a dictionary of metadata or None
 
         """
         if track_id not in index["tracks"]:
@@ -338,6 +338,9 @@ class Track(object):
 
     @property
     def _track_metadata(self):
+        if not self._metadata:
+            raise ValueError("This Track does not have metadata.")
+
         metadata = self._metadata()
         if metadata and self.track_id in metadata:
             return metadata[self.track_id]
@@ -379,6 +382,22 @@ class Track(object):
 
     def to_jams(self):
         raise NotImplementedError
+
+    def get_path(self, key):
+        """Get absolute path to track audio and annotations. Returns None if
+        the path in the index is None
+
+        Args:
+            key (string): Index key of the audio or annotation type
+
+        Returns:
+            str or None: joined path string or None
+
+        """
+        if self._track_paths[key][0] is None:
+            return None
+        else:
+            return os.path.join(self._data_home, self._track_paths[key][0])
 
 
 class MultiTrack(Track):
@@ -497,20 +516,3 @@ class MultiTrack(Track):
         """
         self._check_mixable()
         return self.get_target(list(self.tracks.keys()))
-
-
-def none_path_join(partial_path_list):
-    """Join a list of partial paths. If any part of the path is None,
-    returns None.
-
-    Args:
-        partial_path_list (list): List of partial paths
-
-    Returns:
-        str or None: joined path string or None
-
-    """
-    if None in partial_path_list:
-        return None
-    else:
-        return os.path.join(*partial_path_list)

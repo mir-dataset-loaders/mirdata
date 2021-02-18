@@ -124,7 +124,7 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
         # Parse stroke name annotation from audio file name
         self.stroke_name = self.audio_path.split("__")[2].split("-")[0]

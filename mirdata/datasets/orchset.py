@@ -95,14 +95,11 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.melody_path = os.path.join(self._data_home, self._track_paths["melody"][0])
 
-        self.audio_path_mono = os.path.join(
-            self._data_home, self._track_paths["audio_mono"][0]
-        )
-        self.audio_path_stereo = os.path.join(
-            self._data_home, self._track_paths["audio_stereo"][0]
-        )
+        self.melody_path = self.get_path("melody")
+
+        self.audio_path_mono = self.get_path("audio_mono")
+        self.audio_path_stereo = self.get_path("audio_stereo")
 
     @property
     def composer(self):

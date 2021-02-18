@@ -95,10 +95,8 @@ class Track(core.Track):
         )
         
         # -- add any dataset specific attributes here
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths['audio'][0])
-        self.annotation_path = os.path.join(
-            self._data_home, self._track_paths['annotation'][0])
+        self.audio_path = self.get_path("audio")
+        self.annotation_path = self.get_path("annotation")
 
     # -- `annotation` will behave like an attribute, but it will only be loaded
     # -- and saved when someone accesses it. Useful when loading slightly

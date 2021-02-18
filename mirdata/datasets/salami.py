@@ -106,20 +106,13 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.sections_annotator1_uppercase_path = core.none_path_join(
-            [self._data_home, self._track_paths["annotator_1_uppercase"][0]]
-        )
-        self.sections_annotator1_lowercase_path = core.none_path_join(
-            [self._data_home, self._track_paths["annotator_1_lowercase"][0]]
-        )
-        self.sections_annotator2_uppercase_path = core.none_path_join(
-            [self._data_home, self._track_paths["annotator_2_uppercase"][0]]
-        )
-        self.sections_annotator2_lowercase_path = core.none_path_join(
-            [self._data_home, self._track_paths["annotator_2_lowercase"][0]]
-        )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.sections_annotator1_uppercase_path = self.get_path("annotator_1_uppercase")
+        self.sections_annotator1_lowercase_path = self.get_path("annotator_1_lowercase")
+        self.sections_annotator2_uppercase_path = self.get_path("annotator_2_uppercase")
+        self.sections_annotator2_lowercase_path = self.get_path("annotator_2_lowercase")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def source(self):
