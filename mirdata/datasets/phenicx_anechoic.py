@@ -186,6 +186,10 @@ class Track(core.Track):
     def get_audio_voice(self, id_voice: int) -> Optional[Tuple[np.ndarray, float]]:
         """the track's audio
 
+        Args:
+            id_voice (int): The integer identifier for the voice
+                e.g. 2 for bassoon-2
+
         Returns:
             * np.ndarray - the mono audio signal
             * float - The sample rate of the audio file
@@ -214,7 +218,6 @@ class MultiTrack(core.MultiTrack):
         data_home (str): Local path where the dataset is stored.
             If `None`, looks for the data in the default directory, `~/mir_datasets/Phenicx-Anechoic`
 
-
     Attributes:
         track_audio_property (str): the attribute of track which is used for mixing
         mtrack_id (str): multitrack id
@@ -222,6 +225,7 @@ class MultiTrack(core.MultiTrack):
         tracks (dict): dict of track ids and the corresponding Tracks
         instruments (dict): dict of instruments and the corresponding track
         sections (dict): dict of sections and the corresponding list of tracks for each section
+
     """
 
     def __init__(
@@ -285,8 +289,8 @@ class MultiTrack(core.MultiTrack):
         """Get the notes for all the tracks
 
         Args:
-            * track_keys (list): list of track keys to get the NoteData for
-            * notes_property (str): the attribute associated with NoteData, notes or notes_original
+            track_keys (list): list of track keys to get the NoteData for
+            notes_property (str): the attribute associated with NoteData, notes or notes_original
 
         Returns:
             NoteData: Note data for the tracks
@@ -314,8 +318,8 @@ class MultiTrack(core.MultiTrack):
         """Get the notes for a particular instrument
 
         Args:
-            * instrument (str): the instrument to get the notes for
-            * notes_property (str): the attribute associated with NoteData, notes or notes_original
+            instrument (str): the instrument to get the notes for
+            notes_property (str): the attribute associated with NoteData, notes or notes_original
 
         Returns:
             NoteData: Note data for the instrument
@@ -327,8 +331,8 @@ class MultiTrack(core.MultiTrack):
         """Get the notes for a particular section
 
         Args:
-            * section (str): the section to get the notes for
-            * notes_property (str): the attribute associated with NoteData, notes or notes_original
+            section (str): the section to get the notes for
+            notes_property (str): the attribute associated with NoteData, notes or notes_original
 
         Returns:
             NoteData: Note data for the section
