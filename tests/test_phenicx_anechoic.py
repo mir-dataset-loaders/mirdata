@@ -59,7 +59,7 @@ def test_get_audio_voice():
     assert sr == 44100
     assert y.shape == (44100,)
 
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         y, sr = track.get_audio_voice(5)
 
 
@@ -175,7 +175,7 @@ def test_get_audio_for_instrument():
     y = mtrack.get_audio_for_instrument("violin")
     assert y.shape == (44100,)
 
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         y = mtrack.get_audio_for_instrument("guitar")
 
 
@@ -188,7 +188,7 @@ def test_get_audio_for_section():
     y = mtrack.get_audio_for_section("strings")
     assert y.shape == (1, 44100)
 
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         y = mtrack.get_audio_for_section("synths")
 
 

@@ -127,10 +127,19 @@ class Track(core.Track):
     """
 
     def __init__(
-        self, track_id, data_home, dataset_name, index, metadata,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
     ):
         super().__init__(
-            track_id, data_home, dataset_name, index, metadata,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
 
         self.instrument = self.track_id.split("-")[1]
@@ -195,7 +204,8 @@ class Track(core.Track):
             * float - The sample rate of the audio file
 
         """
-        assert id_voice < self.n_voices
+        if id_voice >= self.n_voices:
+            raise ValueError("id_voice={} is out of range".format(id_voice))
         return load_audio(self.audio_paths[id_voice])
 
     def to_jams(self):
@@ -234,11 +244,16 @@ class MultiTrack(core.MultiTrack):
         data_home,
         dataset_name,
         index,
-        track_class=Track,
-        metadata=None,
+        track_class,
+        metadata,
     ):
         super().__init__(
-            mtrack_id, data_home, dataset_name, index, Track, metadata,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            Track,
+            metadata,
         )
 
         #### parse the keys for the dictionary of instruments and strings
@@ -267,7 +282,13 @@ class MultiTrack(core.MultiTrack):
             np.ndarray: instrument audio with shape (n_samples, n_channels)
 
         """
-        assert instrument in self.instruments.keys()
+        if instrument not in self.instruments.keys():
+            raise ValueError(
+                "instrument={} is not in this multitrack. Must be one of {}".format(
+                    instrument, self.instruments.keys()
+                )
+            )
+
         return getattr(
             self.tracks[self.instruments[instrument]], self.track_audio_property
         )[0]
@@ -282,7 +303,12 @@ class MultiTrack(core.MultiTrack):
             np.ndarray: section audio with shape (n_samples, n_channels)
 
         """
-        assert section in self.sections.keys()
+        if section not in self.sections.keys():
+            raise ValueError(
+                "section={} is not valid for this multitrack, must be one of {}".format(
+                    section, self.sections.keys()
+                )
+            )
         return self.get_target(self.sections[section])
 
     def get_notes_target(self, track_keys, notes_property="notes"):

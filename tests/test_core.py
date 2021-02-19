@@ -17,7 +17,7 @@ def test_track():
     track_id = "a"
     dataset_name = "test"
     data_home = "tests/resources/mir_datasets"
-    track = core.Track(track_id, data_home, dataset_name, index)
+    track = core.Track(track_id, data_home, dataset_name, index, lambda: None)
 
     assert track.track_id == track_id
     assert track._dataset_name == dataset_name
@@ -26,8 +26,8 @@ def test_track():
         "audio": (None, None),
         "annotation": ("asdf/asdd", "asdfasdfasdfasdf"),
     }
-    assert track._metadata is None
-    with pytest.raises(ValueError):
+    assert track._metadata() is None
+    with pytest.raises(AttributeError):
         track._track_metadata
 
     with pytest.raises(NotImplementedError):
@@ -59,7 +59,8 @@ def test_track():
     track_metadata_none = core.Track(
         track_id, data_home, dataset_name, index, metadata_none
     )
-    assert track_metadata_none._track_metadata is None
+    with pytest.raises(AttributeError):
+        track_metadata_none._track_metadata
 
 
 def test_track_repr():
@@ -171,22 +172,22 @@ def test_dataset_errors():
 
     d = mirdata.initialize("orchset")
     d._track_class = None
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(AttributeError):
         d.track("asdf")
 
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(AttributeError):
         d.multitrack("asdf")
 
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(AttributeError):
         d.load_tracks()
 
-    with pytest.raises(KeyError):
+    with pytest.raises(AttributeError):
         d.load_multitracks()
 
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(AttributeError):
         d.choice_track()
 
-    with pytest.raises(KeyError):
+    with pytest.raises(AttributeError):
         d.choice_multitrack()
 
     d = mirdata.initialize("acousticbrainz_genre")
@@ -218,15 +219,17 @@ def test_multitrack():
     mtrack_id = "ab"
     dataset_name = "test"
     data_home = "tests/resources/mir_datasets"
-    mtrack = core.MultiTrack(mtrack_id, data_home, dataset_name, index, core.Track)
+    mtrack = core.MultiTrack(
+        mtrack_id, data_home, dataset_name, index, core.Track, lambda: None
+    )
 
     assert mtrack.mtrack_id == mtrack_id
     assert mtrack._dataset_name == dataset_name
     assert mtrack._data_home == data_home
     assert list(mtrack.tracks.keys()) == ["a", "b"]
 
-    assert mtrack._metadata is None
-    with pytest.raises(ValueError):
+    assert mtrack._metadata() is None
+    with pytest.raises(AttributeError):
         mtrack._multitrack_metadata
 
     with pytest.raises(NotImplementedError):
@@ -265,7 +268,8 @@ def test_multitrack():
     mtrack_metadata_none = core.MultiTrack(
         mtrack_id, data_home, dataset_name, index, core.Track, metadata_none
     )
-    assert mtrack_metadata_none._multitrack_metadata is None
+    with pytest.raises(AttributeError):
+        mtrack_metadata_none._multitrack_metadata
 
     class TestTrack(core.Track):
         def __init__(
@@ -284,15 +288,15 @@ def test_multitrack():
             data_home,
             dataset_name,
             index,
-            track_class=TestTrack,
-            metadata=None,
+            track_class,
+            metadata,
         ):
             super().__init__(
                 mtrack_id,
                 data_home,
                 dataset_name,
                 index,
-                TestTrack,
+                track_class,
                 metadata,
             )
 
@@ -304,7 +308,9 @@ def test_multitrack():
             return "f"
 
     # import pdb;pdb.set_trace()
-    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, core.Track)
+    mtrack = TestMultiTrack1(
+        mtrack_id, data_home, dataset_name, index, TestTrack, lambda: None
+    )
     mtrack.to_jams()
     mtrack.get_target(["a"])
     mtrack.get_random_target()
@@ -328,15 +334,15 @@ def test_multitrack_mixing():
             data_home,
             dataset_name,
             index,
-            track_class=TestTrack,
-            metadata=None,
+            track_class,
+            metadata,
         ):
             super().__init__(
                 mtrack_id,
                 data_home,
                 dataset_name,
                 index,
-                TestTrack,
+                track_class,
                 metadata,
             )
 
@@ -351,7 +357,9 @@ def test_multitrack_mixing():
     mtrack_id = "ab"
     dataset_name = "test"
     data_home = "tests/resources/mir_datasets"
-    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
+    mtrack = TestMultiTrack1(
+        mtrack_id, data_home, dataset_name, index, TestTrack, lambda: None
+    )
 
     target1 = mtrack.get_target(["a", "c"])
     assert target1.shape == (2, 100)
@@ -429,15 +437,15 @@ def test_multitrack_unequal_len():
             data_home,
             dataset_name,
             index,
-            track_class=TestTrack,
-            metadata=None,
+            track_class,
+            metadata,
         ):
             super().__init__(
                 mtrack_id,
                 data_home,
                 dataset_name,
                 index,
-                TestTrack,
+                track_class,
                 metadata,
             )
 
@@ -452,7 +460,9 @@ def test_multitrack_unequal_len():
     mtrack_id = "ab"
     dataset_name = "test"
     data_home = "tests/resources/mir_datasets"
-    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
+    mtrack = TestMultiTrack1(
+        mtrack_id, data_home, dataset_name, index, TestTrack, lambda: None
+    )
 
     with pytest.raises(ValueError):
         mtrack.get_target(["a", "b", "c"])
@@ -487,15 +497,15 @@ def test_multitrack_unequal_sr():
             data_home,
             dataset_name,
             index,
-            track_class=TestTrack,
-            metadata=None,
+            track_class,
+            metadata,
         ):
             super().__init__(
                 mtrack_id,
                 data_home,
                 dataset_name,
                 index,
-                TestTrack,
+                track_class,
                 metadata,
             )
 
@@ -510,7 +520,14 @@ def test_multitrack_unequal_sr():
     mtrack_id = "ab"
     dataset_name = "test"
     data_home = "tests/resources/mir_datasets"
-    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
+    mtrack = TestMultiTrack1(
+        mtrack_id,
+        data_home,
+        dataset_name,
+        index,
+        TestTrack,
+        lambda: track_metadata_none,
+    )
 
     with pytest.raises(ValueError):
         mtrack.get_target(["a", "b", "c"])
@@ -535,15 +552,15 @@ def test_multitrack_mono():
             data_home,
             dataset_name,
             index,
-            track_class=TestTrack,
-            metadata=None,
+            track_class,
+            metadata,
         ):
             super().__init__(
                 mtrack_id,
                 data_home,
                 dataset_name,
                 index,
-                TestTrack,
+                track_class,
                 metadata,
             )
 
@@ -558,7 +575,9 @@ def test_multitrack_mono():
     mtrack_id = "ab"
     dataset_name = "test"
     data_home = "tests/resources/mir_datasets"
-    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
+    mtrack = TestMultiTrack1(
+        mtrack_id, data_home, dataset_name, index, TestTrack, lambda: None
+    )
 
     target1 = mtrack.get_target(["a", "c"])
     assert target1.shape == (1, 100)
@@ -586,15 +605,15 @@ def test_multitrack_mono():
             data_home,
             dataset_name,
             index,
-            track_class=TestTrack,
-            metadata=None,
+            track_class,
+            metadata,
         ):
             super().__init__(
                 mtrack_id,
                 data_home,
                 dataset_name,
                 index,
-                TestTrack,
+                track_class,
                 metadata,
             )
 
@@ -609,7 +628,9 @@ def test_multitrack_mono():
     mtrack_id = "ab"
     dataset_name = "test"
     data_home = "tests/resources/mir_datasets"
-    mtrack = TestMultiTrack1(mtrack_id, data_home, dataset_name, index, TestTrack)
+    mtrack = TestMultiTrack1(
+        mtrack_id, data_home, dataset_name, index, TestTrack, lambda: None
+    )
 
     target1 = mtrack.get_target(["a", "c"])
     assert target1.shape == (1, 100)

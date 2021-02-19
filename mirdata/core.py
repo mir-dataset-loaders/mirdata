@@ -203,7 +203,7 @@ class Dataset(object):
 
         """
         if self._track_class is None:
-            raise NotImplementedError
+            raise AttributeError("This dataset does not have tracks")
         else:
             return self._track_class(
                 track_id,
@@ -226,7 +226,7 @@ class Dataset(object):
 
         """
         if self._multitrack_class is None:
-            raise NotImplementedError
+            raise AttributeError("This dataset does not have multitracks")
         else:
             return self._multitrack_class(
                 mtrack_id,
@@ -330,6 +330,8 @@ class Dataset(object):
             list: A list of track ids
 
         """
+        if "tracks" not in self._index:
+            raise AttributeError("This dataset does not have tracks")
         return list(self._index["tracks"].keys())
 
     @cached_property
@@ -340,6 +342,8 @@ class Dataset(object):
             list: A list of track ids
 
         """
+        if "multitracks" not in self._index:
+            raise AttributeError("This dataset does not have multitracks")
         return list(self._index["multitracks"].keys())
 
     def validate(self, verbose=True):
@@ -372,7 +376,7 @@ class Track(object):
         data_home,
         dataset_name,
         index,
-        metadata=None,
+        metadata,
     ):
         """Track init method. Sets boilerplate attributes, including:
 
@@ -404,15 +408,12 @@ class Track(object):
 
     @property
     def _track_metadata(self):
-        if not self._metadata:
-            raise ValueError("This Track does not have metadata.")
-
         metadata = self._metadata()
         if metadata and self.track_id in metadata:
             return metadata[self.track_id]
         elif metadata:
             return metadata
-        return None
+        raise AttributeError("This Track does not have metadata.")
 
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]
@@ -483,7 +484,7 @@ class MultiTrack(Track):
         dataset_name,
         index,
         track_class,
-        metadata=None,
+        metadata,
     ):
         """Multitrack init method. Sets boilerplate attributes, including:
 
@@ -532,15 +533,12 @@ class MultiTrack(Track):
 
     @property
     def _multitrack_metadata(self):
-        if not self._metadata:
-            raise ValueError("This MultiTrack does not have metadata")
-
         metadata = self._metadata()
         if metadata and self.mtrack_id in metadata:
             return metadata[self.mtrack_id]
         elif metadata:
             return metadata
-        return None
+        raise AttributeError("This MultiTrack does not have metadata")
 
     def get_target(self, track_keys, weights=None, average=True, enforce_length=True):
         """Get target which is a linear mixture of tracks
