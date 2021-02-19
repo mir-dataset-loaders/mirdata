@@ -172,7 +172,7 @@ orchset
 
 
 phenicx_anechoic
-^^^^^^^
+^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.phenicx_anechoic
    :members:
