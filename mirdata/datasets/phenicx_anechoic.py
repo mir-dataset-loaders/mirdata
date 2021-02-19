@@ -127,37 +127,23 @@ class Track(core.Track):
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+        self, track_id, data_home, dataset_name, index, metadata,
     ):
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
 
         self.instrument = self.track_id.split("-")[1]
         self.piece = self.track_id.split("-")[0]
 
         self.audio_paths = [
-            os.path.join(self._data_home, self._track_paths[key][0])
-            for key in self._track_paths
-            if "audio_" in key
+            self.get_path(key) for key in self._track_paths if "audio_" in key
         ]
 
         self.n_voices = len(self.audio_paths)
 
-        self.notes_path = os.path.join(self._data_home, self._track_paths["notes"][0])
-
-        self.notes_original_path = os.path.join(
-            self._data_home, self._track_paths["notes_original"][0]
-        )
+        self.notes_path = self.get_path("notes")
+        self.notes_original_path = self.get_path("notes_original")
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -248,12 +234,7 @@ class MultiTrack(core.MultiTrack):
         metadata=None,
     ):
         super().__init__(
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            Track,
-            metadata,
+            mtrack_id, data_home, dataset_name, index, Track, metadata,
         )
 
         #### parse the keys for the dictionary of instruments and strings
