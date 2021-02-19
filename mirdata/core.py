@@ -91,6 +91,7 @@ class Dataset(object):
         remotes (dict or None): data to be downloaded
         readme (str): information about the dataset
         track (function): a function mapping a track_id to a mirdata.core.Track
+        multitrack (function): a function mapping a mtrack_id to a mirdata.core.Multitrack
 
     """
 
@@ -99,6 +100,7 @@ class Dataset(object):
         data_home=None,
         name=None,
         track_class=None,
+        multitrack_class=None,
         bibtex=None,
         remotes=None,
         download_info=None,
@@ -111,6 +113,7 @@ class Dataset(object):
             data_home (str or None): path where mirdata will look for the dataset
             name (str or None): the identifier of the dataset
             track_class (mirdata.core.Track or None): a Track class
+            multitrack_class (mirdata.core.Multitrack or None): a Multitrack class
             bibtex (str or None): dataset citation/s in bibtex format
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
@@ -131,6 +134,7 @@ class Dataset(object):
             )
             self.remote_index = False
         self._track_class = track_class
+        self._multitrack_class = multitrack_class
         self.bibtex = bibtex
         self.remotes = remotes
         self._download_info = download_info
@@ -140,6 +144,8 @@ class Dataset(object):
         # this is a hack to be able to have dataset-specific docstrings
         self.track = lambda track_id: self._track(track_id)
         self.track.__doc__ = self._track_class.__doc__  # set the docstring
+        self.multitrack = lambda mtrack_id: self._multitrack(mtrack_id)
+        self.multitrack.__doc__ = self._multitrack_class.__doc__  # set the docstring
 
     def __repr__(self):
         repr_string = "The {} dataset\n".format(self.name)
@@ -150,6 +156,10 @@ class Dataset(object):
         repr_string += "\n\n\n"
         if self._track_class is not None:
             repr_string += self.track.__doc__
+            repr_string += "-" * MAX_STR_LEN
+            repr_string += "\n"
+        if self._multitrack_class is not None:
+            repr_string += self.multitrack.__doc__
             repr_string += "-" * MAX_STR_LEN
             repr_string += "\n"
 
@@ -193,13 +203,37 @@ class Dataset(object):
 
         """
         if self._track_class is None:
-            raise NotImplementedError
+            raise AttributeError("This dataset does not have tracks")
         else:
             return self._track_class(
                 track_id,
                 self.data_home,
                 self.name,
                 self._index,
+                lambda: self._metadata,
+            )
+
+    def _multitrack(self, mtrack_id):
+        """Load a multitrack by mtrack_id.
+
+        Hidden helper function that gets called as a lambda.
+
+        Args:
+            mtrack_id (str): mtrack id of the multitrack
+
+        Returns:
+            MultiTrack: an instance of this dataset's MultiTrack object
+
+        """
+        if self._multitrack_class is None:
+            raise AttributeError("This dataset does not have multitracks")
+        else:
+            return self._multitrack_class(
+                mtrack_id,
+                self.data_home,
+                self.name,
+                self._index,
+                self._track_class,
                 lambda: self._metadata,
             )
 
@@ -216,6 +250,19 @@ class Dataset(object):
         """
         return {track_id: self.track(track_id) for track_id in self.track_ids}
 
+    def load_multitracks(self):
+        """Load all multitracks in the dataset
+
+        Returns:
+            dict:
+                {`mtrack_id`: multitrack data}
+
+        Raises:
+            NotImplementedError: If the dataset does not support Multitracks
+
+        """
+        return {mtrack_id: self.multitrack(mtrack_id) for mtrack_id in self.mtrack_ids}
+
     def choice_track(self):
         """Choose a random track
 
@@ -224,6 +271,15 @@ class Dataset(object):
 
         """
         return self.track(random.choice(self.track_ids))
+
+    def choice_multitrack(self):
+        """Choose a random multitrack
+
+        Returns:
+            Multitrack: a Multitrack object instantiated by a random mtrack_id
+
+        """
+        return self.multitrack(random.choice(self.mtrack_ids))
 
     def cite(self):
         """
@@ -274,7 +330,21 @@ class Dataset(object):
             list: A list of track ids
 
         """
+        if "tracks" not in self._index:
+            raise AttributeError("This dataset does not have tracks")
         return list(self._index["tracks"].keys())
+
+    @cached_property
+    def mtrack_ids(self):
+        """Return track ids
+
+        Returns:
+            list: A list of track ids
+
+        """
+        if "multitracks" not in self._index:
+            raise AttributeError("This dataset does not have multitracks")
+        return list(self._index["multitracks"].keys())
 
     def validate(self, verbose=True):
         """Validate if the stored dataset is a valid version
@@ -306,7 +376,7 @@ class Track(object):
         data_home,
         dataset_name,
         index,
-        metadata=None,
+        metadata,
     ):
         """Track init method. Sets boilerplate attributes, including:
 
@@ -338,15 +408,12 @@ class Track(object):
 
     @property
     def _track_metadata(self):
-        if not self._metadata:
-            raise ValueError("This Track does not have metadata.")
-
         metadata = self._metadata()
         if metadata and self.track_id in metadata:
             return metadata[self.track_id]
         elif metadata:
             return metadata
-        return None
+        raise AttributeError("This Track does not have metadata.")
 
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]
@@ -405,16 +472,89 @@ class MultiTrack(Track):
 
     A multitrack class is a collection of track objects and their associated audio
     that can be mixed together.
-    A multitrack is iteslf a Track, and can have its own associated audio (such as
+    A multitrack is itself a Track, and can have its own associated audio (such as
     a mastered mix), its own metadata and its own annotations.
 
     """
 
-    def _check_mixable(self):
-        if not hasattr(self, "tracks") or not hasattr(self, "track_audio_property"):
-            raise NotImplementedError(
-                "This MultiTrack has no tracks/track_audio_property. Cannot perform mixing"
+    def __init__(
+        self,
+        mtrack_id,
+        data_home,
+        dataset_name,
+        index,
+        track_class,
+        metadata,
+    ):
+        """Multitrack init method. Sets boilerplate attributes, including:
+
+        - ``mtrack_id``
+        - ``_dataset_name``
+        - ``_data_home``
+        - ``_multitrack_paths``
+        - ``_multitrack_metadata``
+
+        Args:
+            mtrack_id (str): multitrack id
+            data_home (str): path where mirdata will look for the dataset
+            dataset_name (str): the identifier of the dataset
+            index (dict): the dataset's file index
+            metadata (function or None): a function returning a dictionary of metadata or None
+
+        """
+        if mtrack_id not in index["multitracks"]:
+            raise ValueError(
+                "{} is not a valid mtrack_id in {}".format(mtrack_id, dataset_name)
             )
+
+        self.mtrack_id = mtrack_id
+        self._dataset_name = dataset_name
+
+        self._data_home = data_home
+        self._multitrack_paths = index["multitracks"][self.mtrack_id]
+        self._metadata = metadata
+        self._track_class = track_class
+
+        self._index = index
+        self.track_ids = self._index["multitracks"][self.mtrack_id]["tracks"]
+
+    @property
+    def tracks(self):
+        return {
+            t: self._track_class(
+                t, self._data_home, self._dataset_name, self._index, self._metadata
+            )
+            for t in self.track_ids
+        }
+
+    @property
+    def track_audio_property(self):
+        raise NotImplementedError("Mixing is not supported for this dataset")
+
+    @property
+    def _multitrack_metadata(self):
+        metadata = self._metadata()
+        if metadata and self.mtrack_id in metadata:
+            return metadata[self.mtrack_id]
+        elif metadata:
+            return metadata
+        raise AttributeError("This MultiTrack does not have metadata")
+
+    def get_path(self, key):
+        """Get absolute path to multitrack audio and annotations. Returns None if
+        the path in the index is None
+
+        Args:
+            key (string): Index key of the audio or annotation type
+
+        Returns:
+            str or None: joined path string or None
+
+        """
+        if self._multitrack_paths[key][0] is None:
+            return None
+        else:
+            return os.path.join(self._data_home, self._multitrack_paths[key][0])
 
     def get_target(self, track_keys, weights=None, average=True, enforce_length=True):
         """Get target which is a linear mixture of tracks
@@ -437,7 +577,6 @@ class MultiTrack(Track):
                 if enforce_length=True and lengths are not equal
 
         """
-        self._check_mixable()
         signals = []
         lengths = []
         sample_rates = []
@@ -495,8 +634,8 @@ class MultiTrack(Track):
             * list - list of weights used to mix tracks
 
         """
-        self._check_mixable()
         tracks = list(self.tracks.keys())
+        assert len(tracks) > 0
         if n_tracks is not None and n_tracks < len(tracks):
             tracks = np.random.choice(tracks, n_tracks, replace=False)
 
@@ -514,5 +653,6 @@ class MultiTrack(Track):
             np.ndarray: mixture audio with shape (n_samples, n_channels)
 
         """
-        self._check_mixable()
-        return self.get_target(list(self.tracks.keys()))
+        tracks = list(self.tracks.keys())
+        assert len(tracks) > 0
+        return self.get_target(tracks)

@@ -76,12 +76,12 @@ def validate_files(file_dict, data_home, verbose):
     missing = {}
     invalid = {}
     for file_id, file in tqdm.tqdm(file_dict.items(), disable=not verbose):
-        # multitrack case
-        if file_id is "tracks":
-            continue
-        # tracks
-        else:
-            for tracks in file.keys():
+        for tracks in file.keys():
+            # multitrack case
+            if tracks == "tracks":
+                continue
+            # tracks
+            else:
                 filepath = file[tracks][0]
                 checksum = file[tracks][1]
                 if filepath is not None:
