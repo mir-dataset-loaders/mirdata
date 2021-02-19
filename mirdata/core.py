@@ -540,6 +540,22 @@ class MultiTrack(Track):
             return metadata
         raise AttributeError("This MultiTrack does not have metadata")
 
+    def get_path(self, key):
+        """Get absolute path to multitrack audio and annotations. Returns None if
+        the path in the index is None
+
+        Args:
+            key (string): Index key of the audio or annotation type
+
+        Returns:
+            str or None: joined path string or None
+
+        """
+        if self._multitrack_paths[key][0] is None:
+            return None
+        else:
+            return os.path.join(self._data_home, self._multitrack_paths[key][0])
+
     def get_target(self, track_keys, weights=None, average=True, enforce_length=True):
         """Get target which is a linear mixture of tracks
 
