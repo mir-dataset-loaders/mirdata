@@ -296,10 +296,21 @@ def test_multitrack():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self, mtrack_id, data_home, dataset_name, index, track_class, metadata,
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class,
+            metadata,
         ):
             super().__init__(
-                mtrack_id, data_home, dataset_name, index, track_class, metadata,
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                track_class,
+                metadata,
             )
 
         def to_jams(self):
@@ -331,10 +342,21 @@ def test_multitrack_mixing():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self, mtrack_id, data_home, dataset_name, index, track_class, metadata,
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class,
+            metadata,
         ):
             super().__init__(
-                mtrack_id, data_home, dataset_name, index, track_class, metadata,
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                track_class,
+                metadata,
             )
 
         def to_jams(self):
@@ -423,10 +445,21 @@ def test_multitrack_unequal_len():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self, mtrack_id, data_home, dataset_name, index, track_class, metadata,
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class,
+            metadata,
         ):
             super().__init__(
-                mtrack_id, data_home, dataset_name, index, track_class, metadata,
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                track_class,
+                metadata,
             )
 
         def to_jams(self):
@@ -472,10 +505,21 @@ def test_multitrack_unequal_sr():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self, mtrack_id, data_home, dataset_name, index, track_class, metadata,
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class,
+            metadata,
         ):
             super().__init__(
-                mtrack_id, data_home, dataset_name, index, track_class, metadata,
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                track_class,
+                metadata,
             )
 
         def to_jams(self):
@@ -516,10 +560,21 @@ def test_multitrack_mono():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self, mtrack_id, data_home, dataset_name, index, track_class, metadata,
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class,
+            metadata,
         ):
             super().__init__(
-                mtrack_id, data_home, dataset_name, index, track_class, metadata,
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                track_class,
+                metadata,
             )
 
         def to_jams(self):
@@ -558,10 +613,21 @@ def test_multitrack_mono():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self, mtrack_id, data_home, dataset_name, index, track_class, metadata,
+            self,
+            mtrack_id,
+            data_home,
+            dataset_name,
+            index,
+            track_class,
+            metadata,
         ):
             super().__init__(
-                mtrack_id, data_home, dataset_name, index, track_class, metadata,
+                mtrack_id,
+                data_home,
+                dataset_name,
+                index,
+                track_class,
+                metadata,
             )
 
         def to_jams(self):
