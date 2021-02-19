@@ -374,7 +374,7 @@ def test_load_methods():
             method_name = load_method.__name__
 
             # skip default methods
-            if method_name == "load_tracks":
+            if method_name == "load_tracks" or method_name == "load_multitracks":
                 continue
 
             # skip overrides, add to the SKIP dictionary to skip a specific load method

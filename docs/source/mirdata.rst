@@ -171,6 +171,14 @@ orchset
    :inherited-members:
 
 
+phenicx_anechoic
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.phenicx_anechoic
+   :members:
+   :inherited-members:
+
+
 rwc_classical
 ^^^^^^^^^^^^^
 

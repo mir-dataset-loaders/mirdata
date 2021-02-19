@@ -33,6 +33,14 @@ def run_track_tests(track, expected_attributes, expected_property_types):
             ), "{} not in expected_property_types or expected_attributes".format(prop)
 
 
+def run_multitrack_tests(mtrack):
+    tracks = getattr(mtrack, "tracks")
+    track_ids = getattr(mtrack, "track_ids")
+    assert list(tracks.keys()) == track_ids
+    for k, track in tracks.items():
+        assert getattr(track, "track_id") in track_ids
+
+
 def get_attributes_and_properties(class_instance):
     attributes = []
     properties = []
