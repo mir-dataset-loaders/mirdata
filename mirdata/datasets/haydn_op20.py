@@ -226,7 +226,7 @@ def load_midi_path(fhandle: TextIO):
 
     """
     midi_path = os.path.splitext(fhandle.name)[0] + ".midi"
-    if not os.path.exists(fhandle.name):
+    if not os.path.exists(midi_path):
         score, _ = split_score_annotations(fhandle)
         score.write("midi", fp=midi_path)
     return midi_path
