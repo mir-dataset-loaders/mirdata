@@ -3,7 +3,47 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    TODO
+    Description:
+
+    This dataset is a collection of boundary annotations of a cappella singing performed by
+    Beijing Opera (Jingju, 京剧) professional and amateur singers.
+
+    Contents:
+    1. wav.zip: audio files in .wav format, mono or stereo.
+    2. pycode.zip: util code for parsing the .textgrid annotation
+    3. catalogue*.csv: recording metadata, source separation recordings are not included.
+    4. textgrid.zip: phrase, syllable and phoneme annotation in Praat .textgrid format
+    5. annotation_txt.zip: phrase, syllable and phoneme time boundaries (second) and labels in .txt format
+        *phrase_char: phrase-level time boundaries, labeled in Mandarin characters
+        *phrase: phrase-level time boundaries, labeled in Mandarin pinyin
+        *syllable: syllable-level time boundaries, labeled in Mandarin pinyin
+        *phoneme: phoneme-level time boundaries, labeled in X-SAMPA
+
+    The boundaries (onset and offset) have been annotated in both Praat TextGrid (textgrid.zip) and
+    .txt (annotation_txt.zip) format hierarchically:
+    1. phrase (line)
+    2. syllable
+    3. phoneme
+
+    Singing units in pinyin and X-SAMPA have been annotated to a jingju a cappella singing audio dataset.
+
+    The corresponding audio files are the a cappella singing arias recordings, which are stereo or mono,
+    sampled at 44.1 kHz, and stored as .wav files. The .wav files are recorded by two institutes: those file
+    names ending with ‘qm’ are recorded by C4DM, Queen Mary University of London; others file names ending with
+    ‘upf’ or ‘lon’ are recorded by MTG-UPF. Additionally, another collection of 15 clean singing recordings is
+    included in this dataset. They are extracted from the commercial recordings which originally contains karaoke
+    accompaniment and mixed versions.
+
+    Additional details:
+    Annotation format, units, parsing code and other information please refer to:
+    https://github.com/MTG/jingjuPhonemeAnnotation
+
+    License information:
+    Textgrid annotations are licensed under Creative Commons Attribution-NonCommercial 4.0 International License.
+    Wav audio ending with ‘upf’ or ‘lon’ is licensed under Creative Commons Attribution-NonCommercial 4.0 International.
+    For the license of .wav audio ending with ‘qm’ from C4DM Queen Mary University of London, please refer to
+    this page http://isophonics.org/SingingVoiceDataset
+
 """
 
 import csv
@@ -15,19 +55,68 @@ from mirdata import annotations, core, download_utils, io, jams_utils
 from typing import BinaryIO, Optional, TextIO, Tuple
 
 BIBTEX = """
-TODO
+@dataset{rong_gong_2018_1323561,
+  author       = {Rong Gong and
+                  Rafael Caro Repetto and
+                  Yile Yang and
+                  Xavier Serra},
+  title        = {Jingju a cappella singing dataset part1},
+  month        = jul,
+  year         = 2018,
+  publisher    = {Zenodo},
+  version      = 7,
+  doi          = {10.5281/zenodo.1323561},
+  url          = {https://doi.org/10.5281/zenodo.1323561}
+}
+@article{black2014automatic,
+  title={Automatic identification of emotional cues in Chinese opera singing},
+  author={Black, Dawn AA and Li, Ma and Tian, Mi},
+  journal={ICMPC, Seoul, South Korea},
+  year={2014}
+}
 """
 
-REMOTES = {  # TODO
-    "all": download_utils.RemoteFileMetadata(
-        filename="otmm_makam_recognition_dataset-dlfm2016.zip",
-        url="https://zenodo.org/record/58413/files/otmm_makam_recognition_dataset-dlfm2016.zip?download=1",
-        checksum="c2b9c8bdcbdcf15745b245adfc793145",
+REMOTES = {
+    "annotation_txt": download_utils.RemoteFileMetadata(
+        filename="annotation_txt.zip",
+        url="https://zenodo.org/record/1323561/files/annotation_txt.zip?download=1",
+        checksum="851c9c3fe195fd20bec42d32ddd9deb7",
+    ),
+    "catalogue_dan": download_utils.RemoteFileMetadata(
+        filename="catalogue - dan.csv",
+        url="https://zenodo.org/record/1323561/files/catalogue%20-%20dan.csv?download=1",
+        checksum="82ce90bd8508b1ae12c6a1fe489618a4",
+    ),
+    "catalogue_laosheng": download_utils.RemoteFileMetadata(
+        filename="catalogue - laosheng.csv",
+        url="https://zenodo.org/record/1323561/files/catalogue%20-%20laosheng.csv?download=1",
+        checksum="768fa00ce1f8880ae5480fae103ecc06",
+    ),
+    "readme": download_utils.RemoteFileMetadata(
+        filename="readme.txt",
+        url="https://zenodo.org/record/1323561/files/readme.txt?download=1",
+        checksum="f1113d4c03b379a6a23d85e2c215d54b",
+    ),
+    "textgrid": download_utils.RemoteFileMetadata(
+        filename="textgrid.zip",
+        url="https://zenodo.org/record/1323561/files/textgrid.zip?download=1",
+        checksum="8088161679f519d13f96dc1be9f53bdd",
+    ),
+    "wav": download_utils.RemoteFileMetadata(
+        filename="wav.zip",
+        url="https://zenodo.org/record/1323561/files/wav.zip?download=1",
+        checksum="4722abda831c20b169a62b2754b15bea",
+    ),
+    "pycode": download_utils.RemoteFileMetadata(
+        filename="pycode.zip",
+        url="https://zenodo.org/record/1323561/files/pycode.zip?download=1",
+        checksum="1e4c9b2a9a584d13736196fff6e41951",
     )
 }
 
 LICENSE_INFO = (
-    "Creative Commons Attribution Non-Commercial 4.0 International"
+    "upf or lon: Creative Commons Attribution Non-Commercial 4.0 International",
+    "qm: http://isophonics.org/SingingVoiceDataset"
 )
 
 
