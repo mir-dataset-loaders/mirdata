@@ -181,12 +181,11 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.spectrogram_path = os.path.join(
-            self._data_home, self._track_paths["spectrum"][0]
-        )
-        self.f0_path = os.path.join(self._data_home, self._track_paths["f0"][0])
-        self.notes_path = os.path.join(self._data_home, self._track_paths["notes"][0])
+        self.spectrogram_path = self.get_path("spectrum")
+        self.f0_path = self.get_path("f0")
+        self.notes_path = self.get_path("notes")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def identifier(self):

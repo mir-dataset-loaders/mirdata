@@ -150,16 +150,13 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.sections_path = os.path.join(
-            self._data_home, self._track_paths["sections"][0]
-        )
-        self.beats_path = os.path.join(self._data_home, self._track_paths["beats"][0])
-        self.chords_path = os.path.join(self._data_home, self._track_paths["chords"][0])
-        self.voca_inst_path = os.path.join(
-            self._data_home, self._track_paths["voca_inst"][0]
-        )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.sections_path = self.get_path("sections")
+        self.beats_path = self.get_path("beats")
+        self.chords_path = self.get_path("chords")
+        self.voca_inst_path = self.get_path("voca_inst")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def piece_number(self):

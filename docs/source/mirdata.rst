@@ -171,12 +171,20 @@ orchset
    :inherited-members:
 
 
+phenicx_anechoic
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.phenicx_anechoic
+   :members:
+   :inherited-members:
+
+
 Queen
 ^^^^^^^
 
 .. automodule:: mirdata.datasets.queen
    :members:
-
+   
 
 rwc_classical
 ^^^^^^^^^^^^^
