@@ -134,56 +134,25 @@ class Track(core.Track):
         )
 
         # Audio path
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths["audio-mix"][0]
-        )
+        self.audio_path = self.get_path("audio-mix")
 
         # Multitrack audio paths
-
-        self.audio_ghatam_path = core.none_path_join(
-            [self._data_home, self._track_paths["audio-ghatam"][0]]
-        )
-        self.audio_mridangam_left_path = core.none_path_join(
-            [self._data_home, self._track_paths["audio-mridangam-left"][0]]
-        )
-        self.audio_mridangam_right_path = core.none_path_join(
-            [self._data_home, self._track_paths["audio-mridangam-right"][0]]
-        )
-        self.audio_violin_path = core.none_path_join(
-            [self._data_home, self._track_paths["audio-violin"][0]]
-        )
-        self.audio_vocal_s_path = core.none_path_join(
-            [self._data_home, self._track_paths["audio-vocal-s"][0]]
-        )
-        self.audio_vocal_path = core.none_path_join(
-            [self._data_home, self._track_paths["audio-vocal"][0]]
-        )
+        self.audio_ghatam_path = self.get_path("audio-ghatam")
+        self.audio_mridangam_left_path = self.get_path("audio-mridangam-left")
+        self.audio_mridangam_right_path = self.get_path("audio-mridangam-right")
+        self.audio_violin_path = self.get_path("audio-violin")
+        self.audio_vocal_s_path = self.get_path("audio-vocal-s")
+        self.audio_vocal_path = self.get_path("audio-vocal")
 
         # Annotation paths
-        self.ctonic_path = core.none_path_join(
-            [self._data_home, self._track_paths["ctonic"][0]]
-        )
-        self.pitch_path = core.none_path_join(
-            [self._data_home, self._track_paths["pitch"][0]]
-        )
-        self.pitch_vocal_path = core.none_path_join(
-            [self._data_home, self._track_paths["pitch-vocal"][0]]
-        )
-        self.tempo_path = core.none_path_join(
-            [self._data_home, self._track_paths["tempo"][0]]
-        )
-        self.sama_path = core.none_path_join(
-            [self._data_home, self._track_paths["sama"][0]]
-        )
-        self.sections_path = core.none_path_join(
-            [self._data_home, self._track_paths["sections"][0]]
-        )
-        self.phrases_path = core.none_path_join(
-            [self._data_home, self._track_paths["phrases"][0]]
-        )
-        self.metadata_path = core.none_path_join(
-            [self._data_home, self._track_paths["metadata"][0]]
-        )
+        self.ctonic_path = self.get_path("ctonic")
+        self.pitch_path = self.get_path("pitch")
+        self.pitch_vocal_path = self.get_path("pitch-vocal")
+        self.tempo_path = self.get_path("tempo")
+        self.sama_path = self.get_path("sama")
+        self.sections_path = self.get_path("sections")
+        self.phrases_path = self.get_path("phrases")
+        self.metadata_path = self.get_path("metadata")
 
     @core.cached_property
     def metadata(self):

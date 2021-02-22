@@ -112,13 +112,11 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.keys_path = os.path.join(self._data_home, self._track_paths["key"][0])
-        self.metadata_path = (
-            os.path.join(self._data_home, self._track_paths["meta"][0])
-            if self._track_paths["meta"][0] is not None
-            else None
-        )
+        self.keys_path = self.get_path("key")
+        self.metadata_path = self.get_path("meta")
+
+        self.audio_path = self.get_path("audio")
+
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
 
     @core.cached_property

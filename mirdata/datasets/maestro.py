@@ -123,8 +123,9 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
+        self.midi_path = self.get_path("midi")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def canonical_composer(self):
