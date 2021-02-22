@@ -122,28 +122,15 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-
-        self.salami_path = os.path.join(self._data_home, self._track_paths["salami"][0])
-        self.lab_full_path = os.path.join(
-            self._data_home, self._track_paths["lab_full"][0]
-        )
-        self.lab_majmin7_path = os.path.join(
-            self._data_home, self._track_paths["lab_majmin7"][0]
-        )
-        self.lab_majmin7inv_path = os.path.join(
-            self._data_home, self._track_paths["lab_majmin7inv"][0]
-        )
-        self.lab_majmin_path = os.path.join(
-            self._data_home, self._track_paths["lab_majmin"][0]
-        )
-        self.lab_majmininv_path = os.path.join(
-            self._data_home, self._track_paths["lab_majmininv"][0]
-        )
-        self.bothchroma_path = os.path.join(
-            self._data_home, self._track_paths["bothchroma"][0]
-        )
-        self.tuning_path = os.path.join(self._data_home, self._track_paths["tuning"][0])
+        self.audio_path = self.get_path("audio")
+        self.salami_path = self.get_path("salami")
+        self.lab_full_path = self.get_path("lab_full")
+        self.lab_majmin7_path = self.get_path("lab_majmin7")
+        self.lab_majmin7inv_path = self.get_path("lab_majmin7inv")
+        self.lab_majmin_path = self.get_path("lab_majmin")
+        self.lab_majmininv_path = self.get_path("lab_majmininv")
+        self.bothchroma_path = self.get_path("bothchroma")
+        self.tuning_path = self.get_path("tuning")
 
     @property
     def chart_date(self):
