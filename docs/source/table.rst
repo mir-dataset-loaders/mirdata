@@ -9,9 +9,8 @@
      - License
 
    * - AcousticBrainz Genre
-     - - audio: ❌
+     - - audio: 🧮
        - annotations: ✅
-       - features: ✅
      - - :ref:`genre`
      - >4M
      - - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
@@ -74,11 +73,8 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
-    * - Da-tacos
-     - - chromagrams (crema, hpcp, cens)
-       - madmom features
-       - automatically extracted keys
-       - MFCC
+   * - Da-TACOS
+     - - audio: 🧮
        - annotations: ✅
      - - :ref:`lyrics`
        - Vocal :ref:`notes`
@@ -96,7 +92,7 @@
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
    * - Giantsteps tempo
-     - - audio: : ❌
+     - - audio: 📺
        - annotations: ✅
      - - global :ref:`genre`
        - global :ref:`tempo`
@@ -115,7 +111,7 @@
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
    * - Gtzan-Genre
-     - - audio: : ✅
+     - - audio: ✅
        - annotations: ✅
      - global :ref:`genre`
      - 1000
@@ -160,7 +156,7 @@
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - Medley-solos-DB
-     - - audio: : ✅
+     - - audio: ✅
        - annotations: ✅
      - :ref:`instruments`
      - 21571
@@ -283,7 +279,7 @@
           :target: https://creativecommons.org/licenses/by/4.0/
 
    * - Tonality ClassicalDB
-     - - audio: ❌
+     - - audio: 🧮
        - annotations: ✅
      - Global :ref:`key`
      - 881
