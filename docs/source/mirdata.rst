@@ -59,6 +59,14 @@ compmusic_otmm_makam
    :inherited-members:
 
 
+compmusic_jingju_acappella
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_jingju_acappella
+   :members:
+   :inherited-members:
+
+
 dali
 ^^^^
 

@@ -239,7 +239,6 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """
     return librosa.load(fhandle, sr=44100, mono=True)
 
-
 @io.coerce_to_string_io
 def load_phonemes(fhandle: TextIO) -> annotations.EventData:
     """Load phonemes
