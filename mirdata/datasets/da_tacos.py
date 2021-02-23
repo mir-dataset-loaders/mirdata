@@ -285,6 +285,14 @@ class Track(core.Track):
         mfcc_path (str): mfcc annotation path
         tags_path (str): tags annotation path
         track_id (str): track id
+        work_title (str): title of the work
+        work_artist (str): original artist of the work
+        performance_title (str): title of the performance
+        performance_artist (str): artist of the performance
+        release_year (str): release year
+        is_instrumental (bool): True if the track is instrumental
+        performance_artist_mbid (str): musicbrainz id of the performance artist
+        mb_performances (dict): musicbrainz ids of performances
 
     Cached Properties:
         cens (np.ndarray): chroma-cens features
@@ -326,6 +334,38 @@ class Track(core.Track):
         self.work_id = self.track_id.split("#")[1]
         self.label = self.work_id
         self.performance_id = self.track_id.split("#")[2]
+
+    @property
+    def work_title(self) -> str:
+        return self._track_metadata.get("work_title")
+
+    @property
+    def work_artist(self) -> str:
+        return self._track_metadata.get("work_artist")
+
+    @property
+    def performance_title(self) -> str:
+        return self._track_metadata.get("perf_title")
+
+    @property
+    def performance_artist(self) -> str:
+        return self._track_metadata.get("perf_artist")
+
+    @property
+    def release_year(self) -> str:
+        return self._track_metadata.get("release_year")
+
+    @property
+    def is_instrumental(self) -> bool:
+        return self._track_metadata.get("instrumental") == "Yes"
+
+    @property
+    def performance_artist_mbid(self) -> str:
+        return self._track_metadata.get("perf_artist_mbid")
+
+    @property
+    def mb_performances(self) -> dict:
+        return self._track_metadata.get("mb_performances")
 
     @core.cached_property
     def cens(self) -> Optional[np.ndarray]:
@@ -481,14 +521,7 @@ def load_tags(fhandle: TextIO):
         [('rock', '0.127'), ('pop', '0.014'), ...]
 
     """
-    if fhandle is None:
-        tags = None
-    else:
-        if not os.path.exists(fhandle.name):
-            raise IOError
-
-        tags = dd.io.load(fhandle.name)["tags"]
-    return tags
+    return dd.io.load(fhandle.name)["tags"]
 
 
 @core.docstring_inherit(core.Dataset)
