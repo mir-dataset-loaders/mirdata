@@ -45,66 +45,6 @@
     their favorite feature extraction algorithms and their CSI systems to build up a knowledge base where 
     CSI research can reach larger audiences.
 
-    Structure
-    ---------
-
-    Metadata
-    ^^^^^^^^
-
-    We provide two metadata files that contain information about the benchmark subset and the 
-    cover analysis subset. Both metadata files are stored as python dictionaries in .json format, 
-    and have the same hierarchical structure.
-
-    An example to load the metadata files in python:
-
-    .. code-block:: python
-
-        import json
-
-        with open('./da-tacos_metadata/da-tacos_benchmark_subset_metadata.json') as f:
-            benchmark_metadata = json.load(f)
-    
-    The python dictionary obtained with the code above will have the respective WIDs as keys. 
-    Each key will provide the song dictionaries that contain the metadata regarding the songs 
-    that belong to their WIDs. An example can be seen below:
-
-    .. admonition:: Accessing annotations remotely example
-        :class: dropdown
-
-        .. code-block:: json
-
-            "W_163992": { # work id
-                "P_547131": { # performance id of the first song belonging to the clique 'W_163992'
-                    "work_title": "Trade Winds, Trade Winds",
-                    "work_artist": "Aki Aleong",
-                    "perf_title": "Trade Winds, Trade Winds",
-                    "perf_artist": "Aki Aleong",
-                    "release_year": "1961",
-                    "work_id": "W_163992",
-                    "perf_id": "P_547131",
-                    "instrumental": "No",
-                    "perf_artist_mbid": "9bfa011f-8331-4c9a-b49b-d05bc7916605",
-                    "mb_performances": {
-                        "4ce274b3-0979-4b39-b8a3-5ae1de388c4a": {
-                            "length": "175000"
-                        },
-                        "7c10ba3b-6f1d-41ab-8b20-14b2567d384a": {
-                            "length": "177653"
-                        }
-                    }
-                },
-                "P_547140": { # performance id of the second song belonging to the clique 'W_163992'
-                    "work_title": "Trade Winds, Trade Winds",
-                    "work_artist": "Aki Aleong",
-                    "perf_title": "Trade Winds, Trade Winds",
-                    "perf_artist": "Dodie Stevens",
-                    "release_year": "1961",
-                    "work_id": "W_163992",
-                    "perf_id": "P_547140",
-                    "instrumental": "No"
-                }
-            }
-    
     Pre-extracted features
     ^^^^^^^^^^^^^^^^^^^^^^
 
