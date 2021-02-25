@@ -336,7 +336,7 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            name="TONAS",
+            name="tonas",
             track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
