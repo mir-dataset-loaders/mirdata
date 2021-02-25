@@ -30,7 +30,7 @@ TONAS Loader
 """
 import csv
 import os
-from typing import cast, Optional, TextIO, Tuple
+from typing import cast, Optional, TextIO, Tuple, List
 
 import librosa
 import numpy as np
@@ -76,7 +76,7 @@ BIBTEX = """
 """
 
 
-REMOTES = {}
+REMOTES = None
 
 DOWNLOAD_INFO = """
         Unfortunately, the TONAS dataset is not available to be shared openly. However,
@@ -272,17 +272,17 @@ def load_f0(fhandle: TextIO) -> F0DataTonas:
         freqs.append(float(line[2]))
         freqs_corr.append(float(line[3]))
 
-    times = np.array(times)
-    freqs = np.array(freqs)
-    freqs_corr = np.array(freqs_corr)
-    energies = np.array(energies)
+    times = np.array(times, dtype="float")  # type: ignore
+    freqs = np.array(freqs, dtype="float")  # type: ignore
+    freqs_corr = np.array(freqs_corr, dtype="float")  # type: ignore
+    energies = np.array(energies, dtype="float")  # type: ignore
     confidence = (cast(np.ndarray, freqs_corr) > 0).astype(float)
 
     return F0DataTonas(times, freqs, freqs_corr, energies, confidence)
 
 
 @io.coerce_to_string_io
-def load_notes(fhandle: TextIO) -> [NoteDataTonas, float]:
+def load_notes(fhandle: TextIO) -> Tuple[NoteDataTonas, float]:
     """Load note data from the annotation files
 
     Args:
