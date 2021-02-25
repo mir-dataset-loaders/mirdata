@@ -94,18 +94,15 @@ to Music Technology Group, Universitat Pompeu Fabra. All Rights Reserved.
 
 
 class NoteDataTonas(annotations.NoteData):
-
     def __init__(self, intervals, notes, energies, confidence=None):
-        super().__init__(
-            intervals,
-            notes,
-            confidence
-        )
+        super().__init__(intervals, notes, confidence)
 
         annotations.validate_array_like(intervals, np.ndarray, float)
         annotations.validate_array_like(notes, np.ndarray, float)
         annotations.validate_array_like(energies, np.ndarray, float)
-        annotations.validate_array_like(confidence, np.ndarray, float, none_allowed=True)
+        annotations.validate_array_like(
+            confidence, np.ndarray, float, none_allowed=True
+        )
         annotations.validate_lengths_equal([intervals, notes, energies, confidence])
         annotations.validate_intervals(intervals)
         annotations.validate_confidence(confidence)
@@ -117,20 +114,21 @@ class NoteDataTonas(annotations.NoteData):
 
 
 class F0DataTonas(annotations.F0Data):
-
-    def __init__(self, times, automatic_frequencies, frequencies, energies, confidence=None):
-        super().__init__(
-            times,
-            frequencies,
-            confidence
-        )
+    def __init__(
+        self, times, automatic_frequencies, frequencies, energies, confidence=None
+    ):
+        super().__init__(times, frequencies, confidence)
 
         annotations.validate_array_like(times, np.ndarray, float)
         annotations.validate_array_like(automatic_frequencies, np.ndarray, float)
         annotations.validate_array_like(frequencies, np.ndarray, float)
         annotations.validate_array_like(energies, np.ndarray, float)
-        annotations.validate_array_like(confidence, np.ndarray, float, none_allowed=True)
-        annotations.validate_lengths_equal([times, automatic_frequencies, frequencies, energies, confidence])
+        annotations.validate_array_like(
+            confidence, np.ndarray, float, none_allowed=True
+        )
+        annotations.validate_lengths_equal(
+            [times, automatic_frequencies, frequencies, energies, confidence]
+        )
         annotations.validate_times(times)
         annotations.validate_confidence(confidence)
 
@@ -236,6 +234,7 @@ class Track(core.Track):
             metadata=self._track_metadata,
         )
 
+
 def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a cante100 audio file.
 
@@ -280,6 +279,7 @@ def load_f0(fhandle: TextIO) -> F0DataTonas:
 
     return F0DataTonas(times, freqs, freqs_corr, energies, confidence)
 
+
 @io.coerce_to_string_io
 def load_notes(fhandle: TextIO) -> [NoteDataTonas, float]:
     """Load note data from the annotation files
@@ -307,17 +307,24 @@ def load_notes(fhandle: TextIO) -> [NoteDataTonas, float]:
         energy.append(float(line[3]))
         confidence.append(1.0)
 
-    return NoteDataTonas(
-        np.array(intervals, dtype="float"),
-        np.array(pitches, dtype="float"),
-        np.array(energy, dtype="float"),
-        np.array(confidence, dtype="float"),
-    ), tuning_freq
+    return (
+        NoteDataTonas(
+            np.array(intervals, dtype="float"),
+            np.array(pitches, dtype="float"),
+            np.array(energy, dtype="float"),
+            np.array(confidence, dtype="float"),
+        ),
+        tuning_freq,
+    )
+
 
 # Function to convert MIDI to Hz with certain tuning freq
 def midi_to_hz(midi_note, tuning_deviation):
-    tuning_frequency = 440 * (2 ** (tuning_deviation / 1200))  # Frequency of A (common value is 440Hz)
+    tuning_frequency = 440 * (
+        2 ** (tuning_deviation / 1200)
+    )  # Frequency of A (common value is 440Hz)
     return (tuning_frequency / 32) * (2 ** ((midi_note - 9) / 12)), tuning_frequency
+
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
@@ -343,15 +350,17 @@ class Dataset(core.Dataset):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata = {}
-        with open(metadata_path, 'r', errors='ignore') as f:
-            reader = csv.reader((x.replace('\0', '') for x in f), delimiter='\t')  # Fix wrong byte
+        with open(metadata_path, "r", errors="ignore") as f:
+            reader = csv.reader(
+                (x.replace("\0", "") for x in f), delimiter="\t"
+            )  # Fix wrong byte
             for line in reader:
                 if line:  # Do not consider empty lines
                     index = line[0].replace(".wav", "")
                     metadata[index] = {
-                        'style': line[1],
-                        'title': line[2],
-                        'singer': line[3],
+                        "style": line[1],
+                        "title": line[2],
+                        "singer": line[3],
                     }
 
         return metadata

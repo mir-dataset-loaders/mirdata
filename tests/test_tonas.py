@@ -6,6 +6,7 @@ from mirdata.datasets import tonas
 
 TEST_DATA_HOME = "tests/resources/mir_datasets/TONAS"
 
+
 def test_track():
     default_trackid = "01-D_AMairena"
     dataset = tonas.Dataset(TEST_DATA_HOME)
@@ -29,7 +30,7 @@ def test_track():
         "singer": str,
         "style": str,
         "title": str,
-        "tuning_frequency": float
+        "tuning_frequency": float,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -46,18 +47,13 @@ def test_to_jams():
 
     # Validate melody
     f0 = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [note.time for note in f0] == [
-        0.197,
-        0.209,
-        0.221,
-        0.232
-    ]
+    assert [note.time for note in f0] == [0.197, 0.209, 0.221, 0.232]
     assert [note.duration for note in f0] == [0.0, 0.0, 0.0, 0.0]
     assert [note.value for note in f0] == [
-        {'index': 0, 'frequency': 0.0, 'voiced': False},
-        {'index': 0, 'frequency': 379.299, 'voiced': True},
-        {'index': 0, 'frequency': 379.299, 'voiced': True},
-        {'index': 0, 'frequency': 379.299, 'voiced': True},
+        {"index": 0, "frequency": 0.0, "voiced": False},
+        {"index": 0, "frequency": 379.299, "voiced": True},
+        {"index": 0, "frequency": 379.299, "voiced": True},
+        {"index": 0, "frequency": 379.299, "voiced": True},
     ]
     assert [note.confidence for note in f0] == [0.0, 1.0, 1.0, 1.0]
 
@@ -102,44 +98,24 @@ def test_load_melody():
     # check values
     assert np.array_equal(
         f0_data.times,
+        np.array([0.197, 0.209, 0.221, 0.232]),
+    )
+    assert np.array_equal(
+        f0_data.automatic_frequencies,
         np.array(
             [
-                0.197,
-                0.209,
-                0.221,
-                0.232
+                0.000,
+                0.000,
+                143.918,
+                143.918,
             ]
         ),
     )
     assert np.array_equal(
-        f0_data.automatic_frequencies, np.array(
-            [
-                0.000,
-                0.000,
-                143.918,
-                143.918,
-            ]
-        )
+        f0_data.frequencies, np.array([0.000, 379.299, 379.299, 379.299])
     )
     assert np.array_equal(
-        f0_data.frequencies, np.array(
-            [
-                0.000,
-                379.299,
-                379.299,
-                379.299
-            ]
-        )
-    )
-    assert np.array_equal(
-        f0_data.energies, np.array(
-            [
-                0.00000309,
-                0.00000286,
-                0.00000715,
-                0.00001545
-            ]
-        )
+        f0_data.energies, np.array([0.00000309, 0.00000286, 0.00000715, 0.00001545])
     )
     assert np.array_equal(f0_data.confidence, np.array([0.0, 1.0, 1.0, 1.0]))
 
@@ -165,12 +141,10 @@ def test_load_notes():
 
     # check values
     assert np.array_equal(
-        notes_data.intervals[:, 0],
-        np.array([0.216667, 0.65, 2.183333, 2.566667])
+        notes_data.intervals[:, 0], np.array([0.216667, 0.65, 2.183333, 2.566667])
     )
     assert np.array_equal(
-        notes_data.intervals[:, 1],
-        np.array([0.65, 1.666667, 2.566666, 2.9])
+        notes_data.intervals[:, 1], np.array([0.65, 1.666667, 2.566666, 2.9])
     )
     assert np.array_equal(
         notes_data.energies,
@@ -186,17 +160,10 @@ def test_load_notes():
     assert np.array_equal(
         notes_data.notes,
         np.array(
-            [
-                388.8382625732775,
-                411.9597888711769,
-                388.8382625732775,
-                411.9597888711769
-            ]
+            [388.8382625732775, 411.9597888711769, 388.8382625732775, 411.9597888711769]
         ),
     )
-    assert np.array_equal(
-        notes_data.confidence, np.array([1.0, 1.0, 1.0, 1.0])
-    )
+    assert np.array_equal(notes_data.confidence, np.array([1.0, 1.0, 1.0, 1.0]))
 
 
 def test_load_audio():
