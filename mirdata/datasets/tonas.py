@@ -30,12 +30,11 @@ TONAS Loader
 """
 import csv
 import os
-from typing import cast, Optional, TextIO, Tuple, List
+from typing import cast, TextIO, Tuple, List, Union, Any, Optional
 
 import librosa
 import numpy as np
 
-from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
@@ -200,7 +199,7 @@ class Track(core.Track):
 
     @property
     def tuning_frequency(self):
-        return load_notes(self.notes_path)[1]
+        return load_tuning_frequency(self.notes_path)
 
     @property
     def audio(self) -> Tuple[np.ndarray, float]:
@@ -214,12 +213,12 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @core.cached_property
-    def f0(self) -> Optional[annotations.F0Data]:
+    def f0(self) -> Optional[F0DataTonas]:
         return load_f0(self.f0_path)
 
     @core.cached_property
-    def notes(self) -> Optional[annotations.NoteData]:
-        return load_notes(self.notes_path)[0]
+    def notes(self) -> Optional[NoteDataTonas]:
+        return load_notes(self.notes_path)
 
     def to_jams(self):
         """Get the track's data in jams format
@@ -251,7 +250,7 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_f0(fhandle: TextIO) -> F0DataTonas:
+def load_f0(fhandle: TextIO) -> Optional[F0DataTonas]:
     """Load TONAS f0 annotations
 
     Args:
@@ -282,8 +281,8 @@ def load_f0(fhandle: TextIO) -> F0DataTonas:
 
 
 @io.coerce_to_string_io
-def load_notes(fhandle: TextIO) -> Tuple[NoteDataTonas, float]:
-    """Load note data from the annotation files
+def load_notes(fhandle: TextIO) -> Optional[NoteDataTonas]:
+    """Load TONAS note data from the annotation files
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to a notes annotation file
@@ -296,35 +295,63 @@ def load_notes(fhandle: TextIO) -> Tuple[NoteDataTonas, float]:
     pitches = []
     energy = []
     confidence = []
-    tuning_freq = 0
 
     reader = csv.reader(fhandle, delimiter=",")
     tuning = next(reader)[0]
     for line in reader:
         intervals.append([line[0], float(line[0]) + float(line[1])])
         # Convert midi value to frequency
-        note_hz, tuning_freq = midi_to_hz(float(line[2]), float(tuning))
+        note_hz = midi_to_hz(float(line[2]), float(tuning))
         pitches.append(note_hz)
         energy.append(float(line[3]))
         confidence.append(1.0)
 
-    return (
-        NoteDataTonas(
-            np.array(intervals, dtype="float"),
-            np.array(pitches, dtype="float"),
-            np.array(energy, dtype="float"),
-            np.array(confidence, dtype="float"),
-        ),
-        tuning_freq,
+    note_data = NoteDataTonas(
+        np.array(intervals, dtype="float"),
+        np.array(pitches, dtype="float"),
+        np.array(energy, dtype="float"),
+        np.array(confidence, dtype="float"),
     )
 
+    return note_data
 
-# Function to convert MIDI to Hz with certain tuning freq
+
+@io.coerce_to_string_io
+def load_tuning_frequency(fhandle: TextIO) -> float:
+    """Load tuning frequency of the track with re
+
+    Args:
+        fhandle (str or file-like): path or file-like object pointing to a notes annotation file
+
+    Returns:
+        tuning_frequency (float): returns new tuning frequency considering the deviation
+
+    """
+
+    # Compute tuning frequency
+    cents_deviation = float(next(csv.reader(fhandle, delimiter=","))[0])
+    tuning_frequency = 440 * (
+        2 ** (cents_deviation / 1200)
+    )  # Frequency of A (common value is 440Hz)
+
+    return tuning_frequency
+
+
 def midi_to_hz(midi_note, tuning_deviation):
+    """Function to convert MIDI to Hz with certain tuning freq
+
+    Args:
+        midi_note (float): note represented in midi value
+        tuning_deviation (float): deviation in cents with respect to 440Hz
+
+    Returns:
+        (float): note in Hz considering the new tuning frequency
+
+    """
     tuning_frequency = 440 * (
         2 ** (tuning_deviation / 1200)
     )  # Frequency of A (common value is 440Hz)
-    return (tuning_frequency / 32) * (2 ** ((midi_note - 9) / 12)), tuning_frequency
+    return (tuning_frequency / 32) * (2 ** ((midi_note - 9) / 12))
 
 
 @core.docstring_inherit(core.Dataset)
