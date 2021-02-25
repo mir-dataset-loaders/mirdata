@@ -182,7 +182,7 @@ def load_score(fhandle: TextIO):
     """Load haydn op20 score with annotations from a file with music21 format (music21.stream.Score).
 
     Args:
-        fhandle (str or file-like): path to hrm annotations
+        fhandle (str or file-like): path to score
 
     Returns:
         music21.stream.Score: score in music21 format
@@ -197,7 +197,7 @@ def load_key(fhandle: TextIO, resolution=28):
     """Load haydn op20 key data from a file
 
     Args:
-        fhandle (str or file-like): path to hrm annotations
+        fhandle (str or file-like): path to key annotations
 
     Returns:
         List[dict]: musical key data and time
@@ -218,7 +218,7 @@ def load_midi_path(fhandle: TextIO):
     """Load path to midi file of haydn op20 musical piece
 
     Args:
-        fhandle (str or file-like): path to hrm annotations
+        fhandle (str or file-like): path to score file
 
     Returns:
         str: midi file path
@@ -236,7 +236,7 @@ def load_roman_numerals(fhandle: TextIO, resolution=28):
     """Load haydn op20 roman numerals data from a file
 
     Args:
-        fhandle (str or file-like): path to hrm annotations
+        fhandle (str or file-like): path to roman numeral annotations
 
     Returns:
         List[dict]: musical roman numerals data and time
@@ -256,7 +256,7 @@ def load_chords(fhandle: TextIO, resolution: int = 28):
     """Load haydn op20 chords data from a file
 
     `Args:
-        fhandle (str or file-like): path to hrm annotations
+        fhandle (str or file-like): path to chord annotations
 
     Returns:
         List[dict`]: musical chords data and time
