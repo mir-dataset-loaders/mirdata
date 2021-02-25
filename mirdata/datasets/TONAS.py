@@ -81,9 +81,10 @@ REMOTES = {}
 DOWNLOAD_INFO = """
         Unfortunately, the TONAS dataset is not available to be shared openly. However,
         you can request access to the dataset in the following link, providing a brief
-        explanation of the use you are going to make with it:
+        explanation of what your are going to use the dataset for:
         ==> https://zenodo.org/record/1290722
-        Then, unzip the dataset and locate it to {}
+        Then, unzip the dataset and locate it {}. If you unzip it into a different path,
+        please remember to set the right data_home when initializing the dataset.
 """
 
 LICENSE_INFO = """
@@ -335,7 +336,7 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            name="tonas",
+            name="TONAS",
             track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,

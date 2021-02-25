@@ -2,14 +2,14 @@ import numpy as np
 
 from tests.test_utils import run_track_tests
 
-from mirdata.datasets import tonas
+from mirdata.datasets import TONAS
 
 TEST_DATA_HOME = "tests/resources/mir_datasets/TONAS"
 
 
 def test_track():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = TONAS.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -24,8 +24,8 @@ def test_track():
     }
 
     expected_property_types = {
-        "f0": tonas.F0DataTonas,
-        "notes": tonas.NoteDataTonas,
+        "f0": TONAS.F0DataTonas,
+        "notes": TONAS.NoteDataTonas,
         "audio": tuple,
         "singer": str,
         "style": str,
@@ -38,7 +38,7 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = TONAS.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -82,13 +82,13 @@ def test_to_jams():
 
 def test_load_melody():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = TONAS.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
     f0_path = track.f0_path
-    f0_data = tonas.load_f0(f0_path)
+    f0_data = TONAS.load_f0(f0_path)
 
     # check types
-    assert type(f0_data) == tonas.F0DataTonas
+    assert type(f0_data) == TONAS.F0DataTonas
     assert type(f0_data.times) is np.ndarray
     assert type(f0_data.automatic_frequencies) is np.ndarray
     assert type(f0_data.frequencies) is np.ndarray
@@ -122,14 +122,14 @@ def test_load_melody():
 
 def test_load_notes():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = TONAS.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
     notes_path = track.notes_path
-    notes_data = tonas.load_notes(notes_path)[0]
-    tuning_frequency = tonas.load_notes(notes_path)[1]
+    notes_data = TONAS.load_notes(notes_path)[0]
+    tuning_frequency = TONAS.load_notes(notes_path)[1]
 
     # check types
-    assert type(notes_data) == tonas.NoteDataTonas
+    assert type(notes_data) == TONAS.NoteDataTonas
     assert type(notes_data.intervals) is np.ndarray
     assert type(notes_data.notes) is np.ndarray
     assert type(notes_data.energies) is np.ndarray
@@ -168,17 +168,17 @@ def test_load_notes():
 
 def test_load_audio():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = TONAS.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
     audio_path = track.audio_path
-    audio, sr = tonas.load_audio(audio_path)
+    audio, sr = TONAS.load_audio(audio_path)
     assert sr == 44100
     assert type(audio) is np.ndarray
 
 
 def test_metadata():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = TONAS.Dataset(TEST_DATA_HOME)
     metadata = dataset._metadata
     assert metadata[default_trackid] == {
         "title": "En el barrio de Triana",
