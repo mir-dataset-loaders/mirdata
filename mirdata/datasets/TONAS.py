@@ -83,7 +83,7 @@ DOWNLOAD_INFO = """
         you can request access to the dataset in the following link, providing a brief
         explanation of what your are going to use the dataset for:
         ==> https://zenodo.org/record/1290722
-        Then, unzip the dataset and locate it {}. If you unzip it into a different path,
+        Then, unzip the dataset and locate it to {}. If you unzip it into a different path,
         please remember to set the right data_home when initializing the dataset.
 """
 
