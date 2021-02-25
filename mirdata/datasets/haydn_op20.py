@@ -168,7 +168,7 @@ def split_score_annotations(fhandle: TextIO):
 
     Returns:
         music21.stream.Score: score in music21 format
-        dict: roman numerals
+        list: roman numerals
     """
     score = music21.converter.parse(fhandle.name, format="humdrum")
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
