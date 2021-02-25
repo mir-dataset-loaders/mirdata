@@ -170,7 +170,7 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
     """Load Queen format chord data from a file
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to an audio file
+        fhandle (str or file-like): path or file-like object pointing to a chord file
 
     Returns:
         (utils.ChordData): loaded chord data
@@ -192,7 +192,7 @@ def load_key(fhandle: TextIO) -> annotations.KeyData:
     """Load Queen format key data from a file
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to an audio file
+        fhandle (str or file-like): path or file-like object pointing to a key file
 
     Returns:
         (annotations.KeyData): loaded key data
@@ -215,7 +215,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load Queen format section data from a file
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to an audio file
+        fhandle (str or file-like): path or file-like object pointing to a section file
 
     Returns:
         (annotations.SectionData): loaded section data
