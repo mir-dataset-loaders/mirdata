@@ -83,6 +83,10 @@ class Track(core.Track):
         title (str): title of the track
         track_id (str): track id
 
+    Cached Properties:
+        chords (ChordData): human-labeled chord annotations
+        key (KeyData): local key annotations
+        sections (SectionData): section annotations
     """
 
     def __init__(
@@ -110,26 +114,34 @@ class Track(core.Track):
 
     @core.cached_property
     def chords(self) -> Optional[annotations.ChordData]:
-        """ChordData: chord annotation"""
         return load_chords(self.chords_path)
 
     @core.cached_property
     def key(self) -> Optional[annotations.KeyData]:
-        """KeyData: key annotation"""
         return load_key(self.keys_path)
 
     @core.cached_property
     def sections(self) -> Optional[annotations.SectionData]:
-        """SectionData: section annotation"""
         return load_sections(self.sections_path)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """(np.ndarray, float): audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """the track's data in jams format
+
+        Returns:
+            jams.JAMS: return track data in jam format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             section_data=[(self.sections, None)],
@@ -223,7 +235,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The beatles dataset
+    The Queen dataset
     """
 
     def __init__(self, data_home=None):
