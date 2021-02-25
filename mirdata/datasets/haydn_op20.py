@@ -173,6 +173,7 @@ def split_score_annotations(fhandle: TextIO):
     score = music21.converter.parse(fhandle.name, format="humdrum")
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
     score.remove(rna, recurse=True)
+    rna = [(offset, rn) for offset, rn in rna.items() if rn]
     return score, rna
 
 
@@ -204,9 +205,7 @@ def load_key(fhandle: TextIO, resolution=28):
     """
     _, rna = split_score_annotations(fhandle)
     annotations = []
-    for offset, rn in rna.items():
-        if not rn:
-            continue
+    for offset, rn in rna:
         time = int(round(float(offset * resolution)))
         tonicizedKey = rn.secondaryRomanNumeralKey
         key = tonicizedKey or rn.key
@@ -245,9 +244,7 @@ def load_roman_numerals(fhandle: TextIO, resolution=28):
     """
     _, rna = split_score_annotations(fhandle)
     annotations = []
-    for offset, rn in rna.items():
-        if not rn:
-            continue
+    for offset, rn in rna:
         time = int(round(float(offset * resolution)))
         figure = rn.figure
         annotations.append({"time": time, "roman_numeral": figure})
@@ -267,9 +264,7 @@ def load_chords(fhandle: TextIO, resolution: int = 28):
     """
     _, rna = split_score_annotations(fhandle)
     annotations = []
-    for offset, rn in rna.items():
-        if not rn:
-            continue
+    for offset, rn in rna:
         time = int(round(float(offset * resolution)))
         chord = rn.pitchedCommonName
         annotations.append({"time": time, "chord": chord})
