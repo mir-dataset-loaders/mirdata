@@ -145,7 +145,7 @@ class Track(core.Track):
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/cante100`
+            If `None`, looks for the data in the default directory, `~/mir_datasets/TONAS`
 
     Attributes:
         f0_path (str): local path where f0 melody annotation file is stored
@@ -236,7 +236,7 @@ class Track(core.Track):
 
 
 def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
-    """Load a cante100 audio file.
+    """Load a TONAS audio file.
 
     Args:
         fhandle (str): path to an audio file

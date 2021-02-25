@@ -29,7 +29,7 @@ def md5(file_path):
 
 def make_tonas_index(dataset_data_path):
 
-    tonas_index = {"version": "1.0", "tracks": {}, "metadata": []}
+    tonas_index = {"version": "1.0", "tracks": {}}
 
     for style in os.listdir(os.path.join(dataset_data_path)):
         if "." not in style:
@@ -54,10 +54,12 @@ def make_tonas_index(dataset_data_path):
                             md5(os.path.join(dataset_data_path, style, notes_path)),
                         ],
                     }
-    tonas_index["metadata"] = [
-        "TONAS-Metadata.txt",
-        md5(os.path.join(dataset_data_path, "TONAS-Metadata.txt")),
-    ]
+    tonas_index["metadata"] = {
+        "TONAS-Metadata": [
+            "TONAS-Metadata.txt",
+            md5(os.path.join(dataset_data_path, "TONAS-Metadata.txt")),
+        ]
+    }
 
     with open(TONAS_INDEX_PATH, "w") as fhandle:
         json.dump(tonas_index, fhandle, indent=2)

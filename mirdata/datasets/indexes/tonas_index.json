@@ -1010,8 +1010,10 @@
       ]
     }
   },
-  "metadata": [
-    "TONAS-Metadata.txt",
-    "26f2387b99e51890d39a632eb7ed58a4"
-  ]
+  "metadata": {
+    "TONAS-Metadata": [
+      "TONAS-Metadata.txt",
+      "26f2387b99e51890d39a632eb7ed58a4"
+    ]
+  }
 }
