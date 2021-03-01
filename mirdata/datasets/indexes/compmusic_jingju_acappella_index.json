@@ -21,10 +21,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan01-upf_syllable.txt",
         "3bd02a53d274291bb253e689631204c4"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan01-upf.TextGrid",
-        "4dea26dad2bc6e5b2624d4c57cd5e677"
       ]
     },
     "lsxp-Shi_ye_shuo-Ding_jun_shan-qm": {
@@ -47,10 +43,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Shi_ye_shuo-Ding_jun_shan-qm_syllable.txt",
         "67bf73ca23f3fd7e3ee11a70e4919475"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Shi_ye_shuo-Ding_jun_shan-qm.TextGrid",
-        "50147af190b667182bce5e4441b346f7"
       ]
     },
     "lsxp-Chao_xia_ying-Sha_jia_bang-lon": {
@@ -71,10 +63,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -99,10 +87,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian02-qm_syllable.txt",
         "cca81041436c72cbb0f153176dedea02"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Jiang_shen_er-San_jia_dian02-qm.TextGrid",
-        "c57fc0146458b0f7f5c1fdcc22aabc23"
       ]
     },
     "lsxp-Shen_gong_wu-Gan_lu_si-qm": {
@@ -125,10 +109,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Shen_gong_wu-Gan_lu_si-qm_syllable.txt",
         "67f1c0ace7b50f6d9a2097d2e43cc9d9"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Shen_gong_wu-Gan_lu_si-qm.TextGrid",
-        "c7f621e629527867b512dfb043ba97be"
       ]
     },
     "lsxp-Huai_nan_wang-Huai_he_ying02-qm": {
@@ -151,10 +131,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying02-qm_syllable.txt",
         "cf90900aec7e06fd248eac8f2f921e99"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Huai_nan_wang-Huai_he_ying02-qm.TextGrid",
-        "77b95437450a8709a75ba9436eb8c3b6"
       ]
     },
     "lsxp-Xi_ri_you-Zhu_lian_zhai-qm": {
@@ -177,10 +153,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Xi_ri_you-Zhu_lian_zhai-qm_syllable.txt",
         "85321214b4cad2cbd6a48dff06948fdf"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Xi_ri_you-Zhu_lian_zhai-qm.TextGrid",
-        "7b6c08f7da52f522178d51822eb62432"
       ]
     },
     "lseh-Zi_na_ri-Hong_yang_dong-qm": {
@@ -203,10 +175,6 @@
       "syllable": [
         "annotation_txt/laosheng/lseh-Zi_na_ri-Hong_yang_dong-qm_syllable.txt",
         "b841f8f30fdaa9253ae2ea94b31f26fb"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lseh-Zi_na_ri-Hong_yang_dong-qm.TextGrid",
-        "4beaae2898effeab1a638f8805b72ca0"
       ]
     },
     "lsxp-Guo_liao_yi-Wen_zhao_guan02-qm": {
@@ -229,10 +197,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan02-qm_syllable.txt",
         "d0219a302e7c954214db8b8c096a39db"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan02-qm.TextGrid",
-        "2d74939e8152ec8a0828755238b1ec89"
       ]
     },
     "lsxp-Huai_nan_wang-Huai_he_ying01-lon": {
@@ -255,10 +219,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying01-lon_syllable.txt",
         "b9eb89d85ce999864c6045dbbf8a6329"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Huai_nan_wang-Huai_he_ying01-lon.TextGrid",
-        "6ea41f5a7a669a281a6f20e8383ded99"
       ]
     },
     "lsxp-Quan_qian_sui-Gan_lu_si-qm": {
@@ -281,10 +241,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Quan_qian_sui-Gan_lu_si-qm_syllable.txt",
         "a5bc08ff43f88328cb5c0739279f1c66"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Quan_qian_sui-Gan_lu_si-qm.TextGrid",
-        "97d9c7a1db1985f14cfdf6913ec0f2ea"
       ]
     },
     "lsfxp-Yang_si_lang-Si_lang_tan_mu-lon": {
@@ -307,10 +263,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsfxp-Yang_si_lang-Si_lang_tan_mu-lon_syllable.txt",
         "e789fdcf39a20922ce5e7c675899aa6c"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsfxp-Yang_si_lang-Si_lang_tan_mu-lon.TextGrid",
-        "63736d4120667d39e3471600800fafe9"
       ]
     },
     "lsxp-Qian_bai_wan-Si_lang_tang_mu02-qm": {
@@ -331,10 +283,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -359,10 +307,6 @@
       "syllable": [
         null,
         null
-      ],
-      "textgrid": [
-        null,
-        null
       ]
     },
     "lsxp-Wo_zheng_zai-Kong_cheng_ji01-upf": {
@@ -385,10 +329,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji01-upf_syllable.txt",
         "69ca32eeb384b45e3bd37be76ff147f5"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji01-upf.TextGrid",
-        "be39c38b130fe714d87f458f9e321718"
       ]
     },
     "lsxp-Jiang_shen_er-San_jia_dian03-qm": {
@@ -409,10 +349,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -437,10 +373,6 @@
       "syllable": [
         null,
         null
-      ],
-      "textgrid": [
-        null,
-        null
       ]
     },
     "lsxp-Jiang_shen_er-San_jia_dian01-2-upf": {
@@ -463,10 +395,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-2-upf_syllable.txt",
         "05cff4afe4ab953e2f2704c53a8899d5"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-2-upf.TextGrid",
-        "f68eca3c8f7abd6f9422755f0fa1043c"
       ]
     },
     "lseh-Tan_Yang_jia-Hong_yang_dong-qm": {
@@ -489,10 +417,6 @@
       "syllable": [
         "annotation_txt/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm_syllable.txt",
         "e40d7ede55e848bc22fd47b7f7460f83"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm.TextGrid",
-        "6d44a438b050a2b4999934da4cc848fd"
       ]
     },
     "lseh-Wo_ben_shi-Qiong_lin_yan-qm": {
@@ -515,10 +439,6 @@
       "syllable": [
         "annotation_txt/laosheng/lseh-Wo_ben_shi-Qiong_lin_yan-qm_syllable.txt",
         "ea3fe2675820523d9fd7727ab8093663"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lseh-Wo_ben_shi-Qiong_lin_yan-qm.TextGrid",
-        "b62c639fb03cc8e40d77755e38cab31d"
       ]
     },
     "lsxp-Wo_zheng_zai-Kong_cheng_ji04-qm": {
@@ -541,10 +461,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji04-qm_syllable.txt",
         "2821a8b5b906e3fe4f899a23400a83fd"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji04-qm.TextGrid",
-        "8c0013c93a5457b183c764303fb8c925"
       ]
     },
     "lsxp-Wo_ben_shi-Kong_cheng_ji-qm": {
@@ -567,10 +483,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Wo_ben_shi-Kong_cheng_ji-qm_syllable.txt",
         "726322ab21a2cc1eb5234495486c9953"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Wo_ben_shi-Kong_cheng_ji-qm.TextGrid",
-        "87c54be6ae8503a2bda538bb439d1b34"
       ]
     },
     "lseh-Yi_lun_ming-Wen_zhao_guan-qm": {
@@ -593,10 +505,6 @@
       "syllable": [
         "annotation_txt/laosheng/lseh-Yi_lun_ming-Wen_zhao_guan-qm_syllable.txt",
         "8508a5efcf3247d1afc091ce0c8f7893"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lseh-Yi_lun_ming-Wen_zhao_guan-qm.TextGrid",
-        "c7d67b90e0dbea25ec3bc0ddb0c4fb0f"
       ]
     },
     "lseh-Wei_guo_jia-Hong_yang_dong02-qm": {
@@ -619,10 +527,6 @@
       "syllable": [
         "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong02-qm_syllable.txt",
         "fecfa42ec0e97e4b36a1e8149115c622"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lseh-Wei_guo_jia-Hong_yang_dong02-qm.TextGrid",
-        "361fa378e225db169a94309bc53f06eb"
       ]
     },
     "lsxp-Jiang_shen_er-San_jia_dian01-1-upf": {
@@ -645,10 +549,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-1-upf_syllable.txt",
         "47b972311d7e225ffb18e3e82ed574fe"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-1-upf.TextGrid",
-        "f996697dda76e9b2cbd0b2122ed2f003"
       ]
     },
     "lseh-Wei_guo_jia-Hong_yang_dong01-lon": {
@@ -671,10 +571,6 @@
       "syllable": [
         "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong01-lon_syllable.txt",
         "522088e424a3918cb27de026418289e0"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lseh-Wei_guo_jia-Hong_yang_dong01-lon.TextGrid",
-        "069a0f17ad4344097f7ae79f58bd26c3"
       ]
     },
     "lsxp-Qian_bai_wan-Si_lang_tang_mu01-qm": {
@@ -697,10 +593,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Qian_bai_wan-Si_lang_tang_mu01-qm_syllable.txt",
         "1c745e0f041e31e806c42e3a1a7daf05"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Qian_bai_wan-Si_lang_tang_mu01-qm.TextGrid",
-        "87d6e3bdfcbedab8f3d477ad415a1136"
       ]
     },
     "lsxp-Wo_zheng_zai-Kong_cheng_ji02-qm": {
@@ -723,10 +615,6 @@
       "syllable": [
         "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji02-qm_syllable.txt",
         "ff11c7a8553534faa29a05afe151d53b"
-      ],
-      "textgrid": [
-        "textgrid/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji02-qm.TextGrid",
-        "76a82a0d40eb2d77863e6e842391ae05"
       ]
     },
     "daxp-Zhe_cai_shi-Suo_lin_nang02-qm": {
@@ -747,10 +635,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -775,10 +659,6 @@
       "syllable": [
         "annotation_txt/danAll/dagbz-Feng_xiao_xiao-Yang_men_nv_jiang-lon_syllable.txt",
         "df7a4b5b648a28fe2d0888c3b4432b9c"
-      ],
-      "textgrid": [
-        "textgrid/danAll/dagbz-Feng_xiao_xiao-Yang_men_nv_jiang-lon.TextGrid",
-        "21e64dc82f7b42d8a1882bdcb3a74401"
       ]
     },
     "wangjiangting_dushoukong": {
@@ -801,10 +681,6 @@
       "syllable": [
         "annotation_txt/danAll/wangjiangting_dushoukong_syllable.txt",
         "ac31b491684cccbe4eede6710426f9e7"
-      ],
-      "textgrid": [
-        "textgrid/danAll/wangjiangting_dushoukong.TextGrid",
-        "1d8b3cfde33c0a0facc82a3cb33d0357"
       ]
     },
     "zhuangyuanmei_daocishi": {
@@ -827,10 +703,6 @@
       "syllable": [
         "annotation_txt/danAll/zhuangyuanmei_daocishi_syllable.txt",
         "0cf795ba5ebf2dad6b9ff25f5bcb5b9b"
-      ],
-      "textgrid": [
-        "textgrid/danAll/zhuangyuanmei_daocishi.TextGrid",
-        "fe661480e6d369eae9498c716b0f765d"
       ]
     },
     "xixiangji_manmufeng": {
@@ -853,10 +725,6 @@
       "syllable": [
         "annotation_txt/danAll/xixiangji_manmufeng_syllable.txt",
         "176ad2dd50f71f7c3df486c49eb5463b"
-      ],
-      "textgrid": [
-        "textgrid/danAll/xixiangji_manmufeng.TextGrid",
-        "ea8ecf8958b2bd9b4ac91cfdc2462cae"
       ]
     },
     "danbz-Xing_xing_zou-Mai_shui-qm": {
@@ -877,10 +745,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -905,10 +769,6 @@
       "syllable": [
         null,
         null
-      ],
-      "textgrid": [
-        null,
-        null
       ]
     },
     "xixiangji_zhenmeijiu": {
@@ -931,10 +791,6 @@
       "syllable": [
         "annotation_txt/danAll/xixiangji_zhenmeijiu_syllable.txt",
         "030cbe740d6b5863b288ced063eaefc3"
-      ],
-      "textgrid": [
-        "textgrid/danAll/xixiangji_zhenmeijiu.TextGrid",
-        "d9670d3615893e841869c8762aac7515"
       ]
     },
     "daspd-Hai_dao_bing-Gui_fei_zui_jiu01-lon": {
@@ -957,10 +813,6 @@
       "syllable": [
         "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu01-lon_syllable.txt",
         "5e10e7d10cc9ca33d917b2eba0fd1edf"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu01-lon.TextGrid",
-        "3d452c958628a941c1cff4df3ade311f"
       ]
     },
     "daxp-Chun_qiu_ting-Suo_lin_nang02-qm": {
@@ -981,10 +833,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -1009,10 +857,6 @@
       "syllable": [
         "annotation_txt/danAll/zhuangyuanmei_fudingkui_syllable.txt",
         "dafff27d1665c86863d2eefb5fbef6f6"
-      ],
-      "textgrid": [
-        "textgrid/danAll/zhuangyuanmei_fudingkui.TextGrid",
-        "c582bcdc67b4d07fe3c3c778c13dc356"
       ]
     },
     "xixiangji_xianzhishuo": {
@@ -1035,10 +879,6 @@
       "syllable": [
         "annotation_txt/danAll/xixiangji_xianzhishuo_syllable.txt",
         "e073bcffcf7b6ad7246ca2e4482b8383"
-      ],
-      "textgrid": [
-        "textgrid/danAll/xixiangji_xianzhishuo.TextGrid",
-        "ca298fe9140697094a06c1485b7c97c9"
       ]
     },
     "yutangchun_yutangchun": {
@@ -1061,10 +901,6 @@
       "syllable": [
         "annotation_txt/danAll/yutangchun_yutangchun_syllable.txt",
         "795ca2fc459ce45a5264db227a76a7d6"
-      ],
-      "textgrid": [
-        "textgrid/danAll/yutangchun_yutangchun.TextGrid",
-        "dd7d250bb16f82def0f9f4e86b6262a5"
       ]
     },
     "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai05-qm": {
@@ -1085,10 +921,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -1113,10 +945,6 @@
       "syllable": [
         "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu02-qm_syllable.txt",
         "9e4282c58bc223cdb1a566afaad2068e"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu02-qm.TextGrid",
-        "487bb62ed773b34b6c8f325c6ab9b433"
       ]
     },
     "danbz-Bei_jiu_chan-Chun_gui_men03-qm": {
@@ -1139,10 +967,6 @@
       "syllable": [
         "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men03-qm_syllable.txt",
         "00ab3c652f76f4a546aad01e2b8fe67b"
-      ],
-      "textgrid": [
-        "textgrid/danAll/danbz-Bei_jiu_chan-Chun_gui_men03-qm.TextGrid",
-        "a444f4c0247036d7ca1dffac5f5e68fd"
       ]
     },
     "xixiangji_luanchouduo": {
@@ -1165,10 +989,6 @@
       "syllable": [
         "annotation_txt/danAll/xixiangji_luanchouduo_syllable.txt",
         "3c0c675636afa6b9e954bb366a4c1f9b"
-      ],
-      "textgrid": [
-        "textgrid/danAll/xixiangji_luanchouduo.TextGrid",
-        "5244b404bacab56260ba6e16b9186c69"
       ]
     },
     "danbz-Kan_dai_wang-Ba_wang_bie_ji01-qm": {
@@ -1191,10 +1011,6 @@
       "syllable": [
         "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji01-qm_syllable.txt",
         "be5019cf9ca18d5168533074c28d4e25"
-      ],
-      "textgrid": [
-        "textgrid/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji01-qm.TextGrid",
-        "e4a4f003963d96ef57a54988d2e7866b"
       ]
     },
     "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai01-upf": {
@@ -1217,10 +1033,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai01-upf_syllable.txt",
         "39876808cf461df3fb046a7dc70a1ddb"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai01-upf.TextGrid",
-        "82608a83ac2ef6380f1800acfda565be"
       ]
     },
     "dafeh-Bi_yun_tian-Xi_xiang_ji02-qm": {
@@ -1241,10 +1053,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -1269,10 +1077,6 @@
       "syllable": [
         "annotation_txt/danAll/danbz-Qing_chen_qi-Shi_yu_zhuo-qm_syllable.txt",
         "97c9c7612db4f8b15d661af6cc85e1e3"
-      ],
-      "textgrid": [
-        "textgrid/danAll/danbz-Qing_chen_qi-Shi_yu_zhuo-qm.TextGrid",
-        "2949ebd9fc9baca40aa9b7efe0008431"
       ]
     },
     "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai03-qm": {
@@ -1293,10 +1097,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -1321,10 +1121,6 @@
       "syllable": [
         "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji03-qm_syllable.txt",
         "276d46ce5048380ebd980ca873bb0d36"
-      ],
-      "textgrid": [
-        "textgrid/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji03-qm.TextGrid",
-        "604963cfdc3206a80d9abfed7ab4bf66"
       ]
     },
     "shiwenhui_tingxiongyan": {
@@ -1347,10 +1143,6 @@
       "syllable": [
         "annotation_txt/danAll/shiwenhui_tingxiongyan_syllable.txt",
         "cb8d0f7db6a0694c3eab723994d6e9a8"
-      ],
-      "textgrid": [
-        "textgrid/danAll/shiwenhui_tingxiongyan.TextGrid",
-        "986b0f962b57d5d1ec10df0f5743a550"
       ]
     },
     "zhuangyuanmei_zhenzhushan": {
@@ -1373,10 +1165,6 @@
       "syllable": [
         "annotation_txt/danAll/zhuangyuanmei_zhenzhushan_syllable.txt",
         "8ad0062b866b797a0dac66560204c782"
-      ],
-      "textgrid": [
-        "textgrid/danAll/zhuangyuanmei_zhenzhushan.TextGrid",
-        "977ea038ca28bb5fc60b3643b4bf1731"
       ]
     },
     "danbz-Bei_jiu_chan-Chun_gui_men01-qm": {
@@ -1399,10 +1187,6 @@
       "syllable": [
         "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men01-qm_syllable.txt",
         "23085361dc0a8ec0440b685c3f3fc9e3"
-      ],
-      "textgrid": [
-        "textgrid/danAll/danbz-Bei_jiu_chan-Chun_gui_men01-qm.TextGrid",
-        "468cb0ff8f019fb4a5584f81800f6331"
       ]
     },
     "daxp-Jiao_Zhang_sheng-Hong_niang04-qm": {
@@ -1425,10 +1209,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang04-qm_syllable.txt",
         "a01005c59374e14e4ddba8f43e0d134d"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Jiao_Zhang_sheng-Hong_niang04-qm.TextGrid",
-        "f2189a01292a7979cb8161d281f94ac3"
       ]
     },
     "daxp-Chun_qiu_ting-Suo_lin_nang01-qm": {
@@ -1451,10 +1231,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang01-qm_syllable.txt",
         "29f28a2e5b86b23919d53d8d1aa20daa"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Chun_qiu_ting-Suo_lin_nang01-qm.TextGrid",
-        "9210ff90985dfb7ad1039ef8e6b0ce83"
       ]
     },
     "daxp-Jiao_Zhang_sheng-Hong_niang01-qm": {
@@ -1477,10 +1253,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang01-qm_syllable.txt",
         "871c9e61cd1c06743f6976e0900fbd85"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Jiao_Zhang_sheng-Hong_niang01-qm.TextGrid",
-        "407f342720d1ad54cb6f6034f2e6e895"
       ]
     },
     "zhuangyuanmei_zinari": {
@@ -1503,10 +1275,6 @@
       "syllable": [
         "annotation_txt/danAll/zhuangyuanmei_zinari_syllable.txt",
         "67bedeb578580e62895117861077ec32"
-      ],
-      "textgrid": [
-        "textgrid/danAll/zhuangyuanmei_zinari.TextGrid",
-        "00e772121747f3bae2d30824fdc9526e"
       ]
     },
     "daeh-You_He_hou-He_hou_ma_dian-qm": {
@@ -1529,10 +1297,6 @@
       "syllable": [
         "annotation_txt/danAll/daeh-You_He_hou-He_hou_ma_dian-qm_syllable.txt",
         "699ce02a3bf3c8e8bd3415fafa2a8804"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daeh-You_He_hou-He_hou_ma_dian-qm.TextGrid",
-        "91cb7be4fe087fe512f7e573878550ef"
       ]
     },
     "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai06-qm": {
@@ -1555,10 +1319,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai06-qm_syllable.txt",
         "c1875959f855a888cba1503e8f8a68f7"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai06-qm.TextGrid",
-        "74ab710744b3a3a951c49616e4ed4719"
       ]
     },
     "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai04-qm": {
@@ -1581,10 +1341,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai04-qm_syllable.txt",
         "599eb2df4dff0f9169be4a1a24f9995b"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai04-qm.TextGrid",
-        "b27bde4f3d0cbb2dffd7c7296da92c79"
       ]
     },
     "dafeh-Mo_lai_you-Liu_yue_xue-qm": {
@@ -1607,10 +1363,6 @@
       "syllable": [
         "annotation_txt/danAll/dafeh-Mo_lai_you-Liu_yue_xue-qm_syllable.txt",
         "d359d1dbc0992fde6e1221a097c53316"
-      ],
-      "textgrid": [
-        "textgrid/danAll/dafeh-Mo_lai_you-Liu_yue_xue-qm.TextGrid",
-        "11f778a0d1f04ca80170101ad2b10121"
       ]
     },
     "daxp-Zhe_cai_shi-Suo_lin_nang01-qm": {
@@ -1633,10 +1385,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Zhe_cai_shi-Suo_lin_nang01-qm_syllable.txt",
         "bcb1c6ee6a88115f584b84761079a7df"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Zhe_cai_shi-Suo_lin_nang01-qm.TextGrid",
-        "8a72c1c688889cf17664e34db1f59e14"
       ]
     },
     "wangjiangting_zhijianta": {
@@ -1659,10 +1407,6 @@
       "syllable": [
         "annotation_txt/danAll/wangjiangting_zhijianta_syllable.txt",
         "fa49213eefac678440ddfd24bf8e475e"
-      ],
-      "textgrid": [
-        "textgrid/danAll/wangjiangting_zhijianta.TextGrid",
-        "ae75cc8d1e09ce477f42dab6bcb38ce7"
       ]
     },
     "daxp-Chun_qiu_ting-Suo_lin_nang03-qm": {
@@ -1685,10 +1429,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang03-qm_syllable.txt",
         "4719b80c09c1441d7bbb38c36acb4688"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Chun_qiu_ting-Suo_lin_nang03-qm.TextGrid",
-        "2aeaf11dc94284267b965683830711a6"
       ]
     },
     "xixiangji_biyuntian": {
@@ -1711,10 +1451,6 @@
       "syllable": [
         "annotation_txt/danAll/xixiangji_biyuntian_syllable.txt",
         "4d4f0c9c181609bb61d0ca3b353a068e"
-      ],
-      "textgrid": [
-        "textgrid/danAll/xixiangji_biyuntian.TextGrid",
-        "20ad31755f218367e1c60692cf600264"
       ]
     },
     "zhuangyuanmei_tianbofu": {
@@ -1737,10 +1473,6 @@
       "syllable": [
         "annotation_txt/danAll/zhuangyuanmei_tianbofu_syllable.txt",
         "88023f1c6e7c8e825dd2fcbc41f80a12"
-      ],
-      "textgrid": [
-        "textgrid/danAll/zhuangyuanmei_tianbofu.TextGrid",
-        "73f89870697b94d3054bec8c34c8a556"
       ]
     },
     "daxp-Xi_ri_li-Gan_lu_si-qm": {
@@ -1763,10 +1495,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Xi_ri_li-Gan_lu_si-qm_syllable.txt",
         "968cb3ec316d430d9979e8ca04916a3e"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Xi_ri_li-Gan_lu_si-qm.TextGrid",
-        "b7c35982ae8df00274dc00382f1abe16"
       ]
     },
     "daxp-Jiao_Zhang_sheng-Hong_niang03-qm": {
@@ -1787,10 +1515,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -1815,10 +1539,6 @@
       "syllable": [
         "annotation_txt/danAll/daeh-Bie_yuan_zhong-Mei_fei-qm_syllable.txt",
         "2f33e6bce2be3e275e07a8e58f72bd11"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daeh-Bie_yuan_zhong-Mei_fei-qm.TextGrid",
-        "6056f0e7809d82e0213a27133f176181"
       ]
     },
     "daeh-Yang_Yu_huan-Tai_zhen_wai_zhuan-lon": {
@@ -1841,10 +1561,6 @@
       "syllable": [
         "annotation_txt/danAll/daeh-Yang_Yu_huan-Tai_zhen_wai_zhuan-lon_syllable.txt",
         "e296525c9d23e88705443e5f2d0872a1"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daeh-Yang_Yu_huan-Tai_zhen_wai_zhuan-lon.TextGrid",
-        "b89c82b2a3d7220a6cc9803932e5ae03"
       ]
     },
     "danbz-Bei_jiu_chan-Chun_gui_men02-qm": {
@@ -1865,10 +1581,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -1893,10 +1605,6 @@
       "syllable": [
         "annotation_txt/danAll/daspd-Du_shou_kong-Wang_jiang_ting-upf_syllable.txt",
         "f371afa4dad20df51efc735a3897b992"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daspd-Du_shou_kong-Wang_jiang_ting-upf.TextGrid",
-        "a6620915dbe0d82aa468f99282f61ff7"
       ]
     },
     "daxp-Wo_Hong_niang-Hong_niang-qm": {
@@ -1917,10 +1625,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -1945,10 +1649,6 @@
       "syllable": [
         "annotation_txt/danAll/daeh-Yi_sha_shi-Suo_lin_nang-qm_syllable.txt",
         "701d70cb6715bf4183a357f760b9388b"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daeh-Yi_sha_shi-Suo_lin_nang-qm.TextGrid",
-        "42394ea54b6a35c2e23f398f422c1934"
       ]
     },
     "daspd-Hai_dao_bing-Gui_fei_zui_jiu03-qm": {
@@ -1969,10 +1669,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -1997,10 +1693,6 @@
       "syllable": [
         "annotation_txt/danAll/xixiangji_diyilai_syllable.txt",
         "758e961f85593bc937c12dea2c05eaf6"
-      ],
-      "textgrid": [
-        "textgrid/danAll/xixiangji_diyilai.TextGrid",
-        "859be80a386f92492006ef9e551d161f"
       ]
     },
     "daxp-Jiao_Zhang_sheng-Hong_niang05-qm": {
@@ -2023,10 +1715,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang05-qm_syllable.txt",
         "a8349b71418de31dd6961f5439bdbce2"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Jiao_Zhang_sheng-Hong_niang05-qm.TextGrid",
-        "17a5ad8621bd00ef665ea91948355327"
       ]
     },
     "daxp-Guan_Shi_yin-Tian_nv_san_hua-lon": {
@@ -2049,10 +1737,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Guan_Shi_yin-Tian_nv_san_hua-lon_syllable.txt",
         "b59486f2b9faf9156b01e33ba9db3c1b"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Guan_Shi_yin-Tian_nv_san_hua-lon.TextGrid",
-        "9c5ed507c3077e71cf0c549ef0ba37d4"
       ]
     },
     "dafeh-Bi_yun_tian-Xi_xiang_ji01-qm": {
@@ -2075,10 +1759,6 @@
       "syllable": [
         "annotation_txt/danAll/dafeh-Bi_yun_tian-Xi_xiang_ji01-qm_syllable.txt",
         "b99c716ac74a852930279202b9110543"
-      ],
-      "textgrid": [
-        "textgrid/danAll/dafeh-Bi_yun_tian-Xi_xiang_ji01-qm.TextGrid",
-        "ad666e8124296efa135692bdbf934a05"
       ]
     },
     "danbz-Kan_dai_wang-Ba_wang_bie_ji02-qm": {
@@ -2099,10 +1779,6 @@
         null
       ],
       "syllable": [
-        null,
-        null
-      ],
-      "textgrid": [
         null,
         null
       ]
@@ -2127,10 +1803,6 @@
       "syllable": [
         "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai02-qm_syllable.txt",
         "e494d28c9c344992e151960af5bc9b30"
-      ],
-      "textgrid": [
-        "textgrid/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai02-qm.TextGrid",
-        "ca7f472b0a621c39ea88277446d55a9b"
       ]
     }
   },

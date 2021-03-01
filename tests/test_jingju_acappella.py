@@ -27,8 +27,7 @@ def test_track():
         "textgrid_path": "tests/resources/mir_datasets/compmusic_jingju_acappella/"
         + "textgrid/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm.TextGrid",
         "work": "“叹杨家投宋主心血用尽”——《洪羊洞》（杨延昭）",
-        "details": None
-
+        "details": None,
     }
 
     expected_property_types = {
@@ -38,7 +37,7 @@ def test_track():
         "phoneme": annotations.EventData,
         "syllable": annotations.EventData,
         "work": str,
-        "details": None.__class__
+        "details": None.__class__,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -56,30 +55,62 @@ def test_to_jams():
     assert jam["sandbox"].work == "“叹杨家投宋主心血用尽”——《洪羊洞》（杨延昭）"
 
     # Lyrics
-    phrases = jam.search(namespace="lyrics")[0]['data']
+    phrases = jam.search(namespace="lyrics")[0]["data"]
     assert len(phrases) == 6
-    assert [phrase.time for phrase in phrases] == [1.06, 28.68, 77.65, 120.04, 141.44, 193.5]
-    assert [phrase.duration for phrase in phrases] == [
-        16.860000000000003, 21.21, 32.42999999999999, 12.39, 20.180000000000007, 17.659999999999997]
-    assert [phrase.value for phrase in phrases] == [
-        'tan yang jia tou song zhu a',
-        'xin xue yong a jin',
-        'zhen na ke tan jiao meng e jiang ming sang fan ying',
-        'zong bao er chan wei fu',
-        'ruan ta kao e zhen',
-        'pa zhi pa ao bu guo chi cun guang yin'
+    assert [phrase.time for phrase in phrases] == [
+        1.06,
+        28.68,
+        77.65,
+        120.04,
+        141.44,
+        193.5,
     ]
-    assert [phrase.confidence for phrase in phrases] == [None, None, None, None, None, None]
+    assert [phrase.duration for phrase in phrases] == [
+        16.860000000000003,
+        21.21,
+        32.42999999999999,
+        12.39,
+        20.180000000000007,
+        17.659999999999997,
+    ]
+    assert [phrase.value for phrase in phrases] == [
+        "tan yang jia tou song zhu a",
+        "xin xue yong a jin",
+        "zhen na ke tan jiao meng e jiang ming sang fan ying",
+        "zong bao er chan wei fu",
+        "ruan ta kao e zhen",
+        "pa zhi pa ao bu guo chi cun guang yin",
+    ]
+    assert [phrase.confidence for phrase in phrases] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
 
     # Events
-    phonemes = jam.search(namespace="tag_open")[0]['data']
+    phonemes = jam.search(namespace="tag_open")[0]["data"]
     assert len(phonemes) == 6
     assert [phoneme.time for phoneme in phonemes] == [0.0, 1.06, 1.16, 2.53, 2.65, 2.94]
     assert [phoneme.duration for phoneme in phonemes] == [
-        1.06, 0.09999999999999987, 1.3699999999999999, 0.1200000000000001, 0.29000000000000004, 0.10999999999999988
+        1.06,
+        0.09999999999999987,
+        1.3699999999999999,
+        0.1200000000000001,
+        0.29000000000000004,
+        0.10999999999999988,
     ]
-    assert [phoneme.value for phoneme in phonemes] == ['sil', '@', "r\\'", '?', 'AU^', '9']
-    assert [phoneme.confidence for phoneme in phonemes] == [None, None, None, None, None, None]
+    assert [phoneme.value for phoneme in phonemes] == ["", "@", "r\\'", "?", "AU^", "9"]
+    assert [phoneme.confidence for phoneme in phonemes] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
 
 
 def test_load_phrases():
@@ -126,14 +157,16 @@ def test_load_phrases():
     )
     assert np.array_equal(
         parsed_phrases.lyrics,
-        np.array([
-            'tan yang jia tou song zhu a',
-            'xin xue yong a jin',
-            'zhen na ke tan jiao meng e jiang ming sang fan ying',
-            'zong bao er chan wei fu',
-            'ruan ta kao e zhen',
-            'pa zhi pa ao bu guo chi cun guang yin'
-        ])
+        np.array(
+            [
+                "tan yang jia tou song zhu a",
+                "xin xue yong a jin",
+                "zhen na ke tan jiao meng e jiang ming sang fan ying",
+                "zong bao er chan wei fu",
+                "ruan ta kao e zhen",
+                "pa zhi pa ao bu guo chi cun guang yin",
+            ]
+        ),
     )
 
     assert compmusic_jingju_acappella.load_phrases(None) is None
@@ -183,14 +216,16 @@ def test_load_phrases_char():
     )
     assert np.array_equal(
         parsed_phrases_char.lyrics,
-        np.array([
-            '叹 杨家 投 宋主 啊',
-            '心血 用 啊 尽',
-            '真 可 叹 焦盂 呃 将 命丧 番营',
-            '宗保儿 搀 为 父',
-            '软榻 靠 呃 枕',
-            '怕 只 怕 熬 不过 尺寸 光阴'
-        ])
+        np.array(
+            [
+                "叹 杨家 投 宋主 啊",
+                "心血 用 啊 尽",
+                "真 可 叹 焦盂 呃 将 命丧 番营",
+                "宗保儿 搀 为 父",
+                "软榻 靠 呃 枕",
+                "怕 只 怕 熬 不过 尺寸 光阴",
+            ]
+        ),
     )
 
     assert compmusic_jingju_acappella.load_phrases_char(None) is None
@@ -213,31 +248,13 @@ def test_load_phoneme():
     # Check values
     assert np.array_equal(
         parsed_phonemes.intervals[:, 0],
-        np.array(
-            [
-                0.00,
-                1.06,
-                1.16,
-                2.53,
-                2.65,
-                2.94
-            ]
-        ),
+        np.array([0.00, 1.06, 1.16, 2.53, 2.65, 2.94]),
     )
     assert np.array_equal(
         parsed_phonemes.intervals[:, 1],
-        np.array(
-            [
-                1.06,
-                1.16,
-                2.53,
-                2.65,
-                2.94,
-                3.05
-            ]
-        ),
+        np.array([1.06, 1.16, 2.53, 2.65, 2.94, 3.05]),
     )
-    assert parsed_phonemes.events == ["sil", "@", "r\\'", "?", "AU^", "9"]
+    assert parsed_phonemes.events == ["", "@", "r\\'", "?", "AU^", "9"]
 
     assert compmusic_jingju_acappella.load_phonemes(None) is None
 
@@ -259,35 +276,13 @@ def test_load_syllable():
     # Check values
     assert np.array_equal(
         parsed_syllable.intervals[:, 0],
-        np.array(
-            [
-                0.00,
-                1.06,
-                2.65,
-                2.94
-            ]
-        ),
+        np.array([0.00, 1.06, 2.65, 2.94]),
     )
     assert np.array_equal(
         parsed_syllable.intervals[:, 1],
-        np.array(
-            [
-                1.06,
-                2.65,
-                2.94,
-                3.76
-            ]
-        ),
+        np.array([1.06, 2.65, 2.94, 3.76]),
     )
-    assert np.array_equal(
-        parsed_syllable.events,
-        np.array([
-            'sil',
-            'tan',
-            'sil',
-            'yang'
-        ])
-    )
+    assert np.array_equal(parsed_syllable.events, np.array(["", "tan", "", "yang"]))
 
     assert compmusic_jingju_acappella.load_syllable(None) is None
 
@@ -302,4 +297,7 @@ def test_load_metadata():
 
     assert metadata[track_id]["work"] == "“叹杨家投宋主心血用尽”——《洪羊洞》（杨延昭）"
     assert metadata[track_id]["details"] is None
-    assert metadata["data_home"] == "tests/resources/mir_datasets/compmusic_jingju_acappella"
+    assert (
+        metadata["data_home"]
+        == "tests/resources/mir_datasets/compmusic_jingju_acappella"
+    )

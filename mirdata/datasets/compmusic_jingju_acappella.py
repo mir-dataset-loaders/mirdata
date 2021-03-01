@@ -19,8 +19,7 @@
         *syllable: syllable-level time boundaries, labeled in Mandarin pinyin
         *phoneme: phoneme-level time boundaries, labeled in X-SAMPA
 
-    The boundaries (onset and offset) have been annotated in both Praat TextGrid (textgrid.zip) and
-    .txt (annotation_txt.zip) format hierarchically:
+    The boundaries (onset and offset) have been annotated hierarchically:
     1. phrase (line)
     2. syllable
     3. phoneme
@@ -81,42 +80,37 @@ REMOTES = {
         filename="annotation_txt.zip",
         url="https://zenodo.org/record/1323561/files/annotation_txt.zip?download=1",
         checksum="851c9c3fe195fd20bec42d32ddd9deb7",
+        destination_dir=".",
     ),
     "catalogue_dan": download_utils.RemoteFileMetadata(
         filename="catalogue - dan.csv",
         url="https://zenodo.org/record/1323561/files/catalogue%20-%20dan.csv?download=1",
         checksum="82ce90bd8508b1ae12c6a1fe489618a4",
+        destination_dir=".",
     ),
     "catalogue_laosheng": download_utils.RemoteFileMetadata(
         filename="catalogue - laosheng.csv",
         url="https://zenodo.org/record/1323561/files/catalogue%20-%20laosheng.csv?download=1",
         checksum="768fa00ce1f8880ae5480fae103ecc06",
+        destination_dir=".",
     ),
     "readme": download_utils.RemoteFileMetadata(
         filename="readme.txt",
         url="https://zenodo.org/record/1323561/files/readme.txt?download=1",
         checksum="f1113d4c03b379a6a23d85e2c215d54b",
-    ),
-    "textgrid": download_utils.RemoteFileMetadata(
-        filename="textgrid.zip",
-        url="https://zenodo.org/record/1323561/files/textgrid.zip?download=1",
-        checksum="8088161679f519d13f96dc1be9f53bdd",
+        destination_dir=".",
     ),
     "wav": download_utils.RemoteFileMetadata(
         filename="wav.zip",
         url="https://zenodo.org/record/1323561/files/wav.zip?download=1",
         checksum="4722abda831c20b169a62b2754b15bea",
+        destination_dir=".",
     ),
-    "pycode": download_utils.RemoteFileMetadata(
-        filename="pycode.zip",
-        url="https://zenodo.org/record/1323561/files/pycode.zip?download=1",
-        checksum="1e4c9b2a9a584d13736196fff6e41951",
-    )
 }
 
 LICENSE_INFO = (
-    "upf or lon: Creative Commons Attribution Non-Commercial 4.0 International",
-    "qm: http://isophonics.org/SingingVoiceDataset"
+    "upf or lon: Creative Commons Attribution Non-Commercial 4.0 International, "
+    + "qm: http://isophonics.org/SingingVoiceDataset"
 )
 
 
@@ -134,7 +128,6 @@ class Track(core.Track):
         phrase_char_path (str): local path where the lyric phrase annotation in chinese is stored
         phrase_path (str): local path where the lyric phrase annotation in western characters is stored
         syllable_path (str): local path where the syllable annotation is stored
-        textgrid_path (str): local path where the textgrid annotation is stored
 
     Properties:
         audio (tuple): track audio
@@ -171,7 +164,6 @@ class Track(core.Track):
         self.phrase_char_path = self.get_path("phrase_char")
         self.phrase_path = self.get_path("phrase")
         self.syllable_path = self.get_path("syllable")
-        self.textgrid_path = self.get_path("textgrid")  # TODO
 
     @core.cached_property
     def phoneme(self):
@@ -239,6 +231,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """
     return librosa.load(fhandle, sr=44100, mono=True)
 
+
 @io.coerce_to_string_io
 def load_phonemes(fhandle: TextIO) -> annotations.EventData:
     """Load phonemes
@@ -259,9 +252,10 @@ def load_phonemes(fhandle: TextIO) -> annotations.EventData:
     for line in reader:
         start_times.append(float(line[0]))
         end_times.append(float(line[1]))
-        events.append(str(line[2]))
+        events.append(str(line[2] if line[2] != "sil" else ""))
 
     return annotations.EventData(np.array([start_times, end_times]).T, events)
+
 
 @io.coerce_to_string_io
 def load_phrases(fhandle: TextIO) -> annotations.LyricData:
@@ -282,12 +276,13 @@ def load_phrases(fhandle: TextIO) -> annotations.LyricData:
     for line in reader:
         start_times.append(float(line[0]))
         end_times.append(float(line[1]))
-        lyrics.append(line[2])
+        lyrics.append(line[2] if line[2] != "sil" else "")
 
     return annotations.LyricData(
         np.array([start_times, end_times]).T,
         lyrics,
     )
+
 
 @io.coerce_to_string_io
 def load_phrases_char(fhandle: TextIO) -> annotations.LyricData:
@@ -309,12 +304,13 @@ def load_phrases_char(fhandle: TextIO) -> annotations.LyricData:
     for line in reader:
         start_times.append(float(line[0]))
         end_times.append(float(line[1]))
-        lyrics.append(line[2])
+        lyrics.append(line[2] if line[2] != "sil" else "")
 
     return annotations.LyricData(
         np.array([start_times, end_times]).T,
         lyrics,
     )
+
 
 @io.coerce_to_string_io
 def load_syllable(fhandle: TextIO) -> annotations.EventData:
@@ -336,9 +332,10 @@ def load_syllable(fhandle: TextIO) -> annotations.EventData:
     for line in reader:
         start_times.append(float(line[0]))
         end_times.append(float(line[1]))
-        events.append(line[2])
+        events.append(line[2] if line[2] != "sil" else "")
 
     return annotations.EventData(np.array([start_times, end_times]).T, events)
+
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
@@ -366,20 +363,19 @@ class Dataset(core.Dataset):
             self.data_home,
             "catalogue - dan.csv",
         )
-        if not os.path.exists(metadata_path_laosheng) or not os.path.exists(metadata_path_dan):
+        if not os.path.exists(metadata_path_laosheng) or not os.path.exists(
+            metadata_path_dan
+        ):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata = {}
-        with open(metadata_path_laosheng, 'r') as fhandle:
-            reader = csv.reader(fhandle, delimiter=',')
+        with open(metadata_path_laosheng, "r") as fhandle:
+            reader = csv.reader(fhandle, delimiter=",")
             next(reader)
             for line in reader:
                 work = line[1] if line[1] else None
                 details = line[3] if line[3] else None
-                metadata[line[0]] = {
-                    'work': work,
-                    'details': details
-                }
+                metadata[line[0]] = {"work": work, "details": details}
 
             data_home = os.path.dirname(metadata_path_laosheng)
             metadata["data_home"] = data_home
