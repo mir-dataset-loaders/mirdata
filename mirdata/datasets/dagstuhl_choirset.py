@@ -1,17 +1,27 @@
-"""Example Dataset Loader
+"""Dagstuhl ChoirSet Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
-    Please include the following information at the top level docstring for the dataset's module `dataset.py`:
+    Dagstuhl ChoirSet (DCS) is a multitrack dataset of a cappella choral music.
+    The dataset includes recordings of an amateur vocal ensemble performing two
+    choir pieces in full choir and quartet settings (total duration 55min 30sec).
+    The audio data was recorded during an MIR seminar at Schloss Dagstuhl using
+    different close-up microphones (dynamic, headset and larynx microphones) to
+    capture the individual singers’ voices.
 
-    1. Describe annotations included in the dataset
-    2. Indicate the size of the datasets (e.g. number files and duration, hours)
-    3. Mention the origin of the dataset (e.g. creator, institution)
-    4. Describe the type of music included in the dataset
-    5. Indicate any relevant papers related to the dataset
-    6. Include a description about how the data can be accessed and the license it uses (if applicable)
+    For more details, we refer to:
+    Sebastian Rosenzweig (1), Helena Cuesta (2), Christof Weiß (1),
+    Frank Scherbaum (3), Emilia Gómez (2,4), and Meinard Müller (1):
+    Dagstuhl ChoirSet: A Multitrack Dataset for MIR Research on Choral Singing.
+    Transactions of the International Society for Music Information Retrieval,
+    3(1), pp. 98–110, 2020.
+    DOI: https://doi.org/10.5334/tismir.48
 
+    (1) International Audio Laboratories Erlangen, DE
+    (2) Music Technology Group, Universitat Pompeu Fabra, Barcelona, ES
+    (3) University of Potsdam, DE
+    (4) Joint Research Centre, European Commission, Seville, ES
 """
 import csv
 import logging
@@ -26,14 +36,22 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core, annotations
+from mirdata import io
 
 # -- Add any relevant citations here
 BIBTEX = """
-@article{article-minimal,
-  author = "L[eslie] B. Lamport",
-  title = "The Gnats and Gnus Document Preparation System",
-  journal = "G-Animal's Journal",
-  year = "1986"
+@article{RosenzweigCWSGM20_DCS_TISMIR,
+author    = {Sebastian Rosenzweig and Helena Cuesta and Christof Wei{\ss} and Frank Scherbaum and Emilia G{\'o}mez and Meinard M{\"u}ller},
+title     = {{D}agstuhl {ChoirSet}: {A} Multitrack Dataset for {MIR} Research on Choral Singing},
+journal   = {Transactions of the International Society for Music Information Retrieval ({TISMIR})},
+volume    = {3},
+number    = {1},
+year      = {2020},
+pages     = {98--110},
+publisher = {Ubiquity Press},
+doi       = {10.5334/tismir.48},
+url       = {http://doi.org/10.5334/tismir.48},
+url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirSet}
 }
 """
 
@@ -43,29 +61,27 @@ BIBTEX = """
 # -- correctly destination_dir to download the files following the correct structure.
 REMOTES = {
     'remote_data': download_utils.RemoteFileMetadata(
-        filename='a_zip_file.zip',
-        url='http://website/hosting/the/zipfile.zip',
+        filename='dagstuhl_choirset_metadata.json',
+        url='https://',
         checksum='00000000000000000000000000000000',  # -- the md5 checksum
-        destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
+        destination_dir='.' # -- relative path for where to unzip the data, or None
     ),
 }
 
 # -- Include any information that should be printed when downloading
 # -- remove this variable if you don't need to print anything during download
 DOWNLOAD_INFO = """
-Include any information you want to be printed when dataset.download() is called.
-These can be instructions for how to download the dataset (e.g. request access on zenodo),
-caveats about the download, etc
+Downloading dataset from Zenodo (5.1 GB)...
 """
 
 # -- Include the dataset's license information
 LICENSE_INFO = """
-The dataset's license information goes here.
+Creative Commons Attribution 4.0 International
 """
 
 
 class Track(core.Track):
-    """Example track class
+    """Dagstuhl ChoirSet track class
     # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
     # -- `scripts/print_track_docstring.py my_dataset`
     # -- note that you'll first need to have a test track (see "Adding tests to your dataset" below)
@@ -95,25 +111,126 @@ class Track(core.Track):
         )
 
         # -- add any dataset specific attributes here
-        self.audio_path = self.get_path("audio")
-        self.annotation_path = self.get_path("annotation")
+        self.audio_paths = [
+            self.get_path(key) for key in self._track_paths if "audio_" in key
+        ]
+
+        self.f0_crepe_paths = [
+            self.get_path(key) for key in self._track_paths if "f0_crepe_" in key
+        ]
+
+        self.f0_pyin_paths = [
+            self.get_path(key) for key in self._track_paths if "f0_pyin_" in key
+        ]
+
+        self.f0_manual_paths = [
+            self.get_path(key) for key in self._track_paths if "f0_manual_" in key
+        ]
+
+        self.score_path = self.get_path("score")
 
     # -- `annotation` will behave like an attribute, but it will only be loaded
     # -- and saved when someone accesses it. Useful when loading slightly
     # -- bigger files or for bigger datasets. By default, we make any time
     # -- series data loaded from a file a cached property
     @core.cached_property
-    def annotation(self):
-        """output type: description of output"""
-        return load_annotation(self.annotation_path)
+    def f0_crepe(self, mic: str):
+        """Get the CREPE F0-trajectory extracted from the specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['dyn', 'hsm', 'lrx']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self.f0_crepe_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No trajectory found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more trajectories for mic={}".format(mic))
+
+        return load_f0(mic_path)
+
+    @core.cached_property
+    def f0_pyin(self, mic: str):
+        """Get the PYIN F0-trajectory extracted from the specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['dyn', 'hsm', 'lrx']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self.f0_pyin_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No trajectory found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more trajectories for mic={}".format(mic))
+
+        return load_f0(mic_path)
+
+    @core.cached_property
+    def f0_manual(self, mic: str):
+        """Get the manually annotated F0-trajectory for specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['dyn', 'hsm', 'lrx']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self.f0_manual_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No trajectory found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more trajectories for mic={}".format(mic))
+
+        return load_f0(mic_path)
+
+    @core.cached_property
+    def score(self):
+        return load_score(self.score_path)
 
     # -- `audio` will behave like an attribute, but it will only be loaded
     # -- when someone accesses it and it won't be stored. By default, we make
     # -- any memory heavy information (like audio) properties
     @property
-    def audio(self):
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
-        return load_audio(self.audio_path)
+    def audio(self, mic: str):
+        """Get audio of the specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['dyn', 'hsm', 'lrx']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self.audio_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No microphone signal found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more microphone signals for mic={}".format(mic))
+
+        return load_audio(mic_path)
 
     # -- we use the to_jams function to convert all the annotations in the JAMS format.
     # -- The converter takes as input all the annotations in the proper format (e.g. beats
@@ -122,8 +239,8 @@ class Track(core.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            annotation_data=[(self.annotation, None)],
+            audio_path=self.audio_paths[0],
+            f0_data=[(self.annotation, None)],
             metadata=self._metadata,
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
@@ -132,12 +249,12 @@ class Track(core.Track):
 # -- if the dataset contains multitracks, you can define a MultiTrack similar to a Track
 # -- you can delete the block of code below if the dataset has no multitracks
 class MultiTrack(core.MultiTrack):
-    """Example multitrack class
+    """Dagstuhl ChoirSet multitrack class
 
     Args:
         mtrack_id (str): multitrack id
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
+            If `None`, looks for the data in the default directory, `~/mir_datasets/Dagstuhl ChoirSet`
 
     Attributes:
         mtrack_id (str): track id
@@ -183,11 +300,11 @@ class MultiTrack(core.MultiTrack):
 
 
 @io.coerce_to_bytes_io
-def load_audio(fhandle):
-    """Load a Example audio file.
+def load_audio(audio_path):
+    """Load a Dagstuhl ChoirSet audio file.
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to an audio file
+        audio_path (str): path pointing to an audio file
 
     Returns:
         * np.ndarray - the audio signal
@@ -197,7 +314,7 @@ def load_audio(fhandle):
     # -- for example, the code below. This should be dataset specific!
     # -- By default we load to mono
     # -- change this if it doesn't make sense for your dataset.
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(audio_path, sr=22050, mono=True)
 
 
 # -- Write any necessary loader functions for loading the dataset's data
@@ -224,7 +341,7 @@ def load_annotation(fhandle):
 # -- use this decorator so the docs are complete
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The Example dataset
+    """The Dagstuhl ChoirSet dataset
     """
 
     def __init__(self, data_home=None):
