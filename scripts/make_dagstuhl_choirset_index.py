@@ -34,8 +34,6 @@ def md5(file_path):
 
 def make_dataset_index(data_path):
 
-    ### define directories
-
     audio_dir = os.path.join(data_path, 'audio_wav_22050_mono')
 
     index = {
@@ -111,7 +109,14 @@ def make_dataset_index(data_path):
         for sidx, singer in enumerate(singers):
 
             track_name = "{}_{}".format(piece, singer)
-            index['tracks'][track_name] = {}
+
+            # define fields as None
+            index['tracks'][track_name] = {
+                "audio_dyn": (None, None), "audio_hsm": (None, None), "audio_lrx": (None, None),
+                "f0_crepe_dyn": (None, None), "f0_crepe_hsm": (None, None), "f0_crepe_lrx": (None, None),
+                "f0_pyin_dyn": (None, None), "f0_pyin_hsm": (None, None), "f0_pyin_lrx": (None, None),
+                "f0_manual_lrx": (None, None)
+            }
 
 
             index['multitracks'][piece]['tracks'].append(track_name)
@@ -186,6 +191,8 @@ def make_dataset_index(data_path):
                     "annotations_csv_beat/{}_Stereo_STM.wav".format(piece),
                     beats_checksum
                 )
+
+        # tracks should not be repeated
         index['multitracks'][piece]['tracks'] = list(set(index['multitracks'][piece]['tracks']))
 
 
@@ -200,7 +207,7 @@ def make_dataset_index(data_path):
 
         manual_checksum = md5(mf)
 
-        index["tracks"][track_name]["f0_manual"] = (
+        index["tracks"][track_name]["f0_manual_lrx"] = (
             "annotations_csv_F0_manual/{}".format(os.path.basename(mf)),
             manual_checksum
         )
