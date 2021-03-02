@@ -134,10 +134,11 @@ class Track(core.Track):
     # -- bigger files or for bigger datasets. By default, we make any time
     # -- series data loaded from a file a cached property
     @core.cached_property
-    def f0_crepe(self, mic: str):
-        """Get the CREPE F0-trajectory extracted from the specified microphone
+    def f0(self, mic: str, ann: str):
+        """Get F0-trajectory of specified type extracted from specified microphone
         Args:
             mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+            ann (str): Identifier of the annotation ('crepe', 'pyin', or 'manual')
 
         Returns:
             * np.ndarray - the mono audio signal
@@ -146,53 +147,14 @@ class Track(core.Track):
         if mic not in ['dyn', 'hsm', 'lrx']:
             raise ValueError("mic={} is invalid".format(mic))
 
-        mic_path = [s for s in self.f0_crepe_paths if mic in s]
-
-        if not mic_path:
-            raise ValueError("No trajectory found for mic={}".format(mic))
-
-        if len(mic_path) > 1:
-            raise ValueError("Found two or more trajectories for mic={}".format(mic))
-
-        return load_f0(mic_path)
-
-    @core.cached_property
-    def f0_pyin(self, mic: str):
-        """Get the PYIN F0-trajectory extracted from the specified microphone
-        Args:
-            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
-
-        Returns:
-            * np.ndarray - the mono audio signal
-            * float - The sample rate of the audio file
-        """
-        if mic not in ['dyn', 'hsm', 'lrx']:
-            raise ValueError("mic={} is invalid".format(mic))
-
-        mic_path = [s for s in self.f0_pyin_paths if mic in s]
-
-        if not mic_path:
-            raise ValueError("No trajectory found for mic={}".format(mic))
-
-        if len(mic_path) > 1:
-            raise ValueError("Found two or more trajectories for mic={}".format(mic))
-
-        return load_f0(mic_path)
-
-    @core.cached_property
-    def f0_manual(self, mic: str):
-        """Get the manually annotated F0-trajectory for specified microphone
-        Args:
-            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
-
-        Returns:
-            * np.ndarray - the mono audio signal
-            * float - The sample rate of the audio file
-        """
-        if mic not in ['dyn', 'hsm', 'lrx']:
-            raise ValueError("mic={} is invalid".format(mic))
-
-        mic_path = [s for s in self.f0_manual_paths if mic in s]
+        if ann == 'crepe':
+            mic_path = [s for s in self.f0_crepe_paths if mic in s]
+        elif ann == 'pyin':
+            mic_path = [s for s in self.f0_pyin_paths if mic in s]
+        elif ann == 'manual':
+            mic_path = [s for s in self.f0_manual_paths if mic in s]
+        else:
+            raise ValueError("ann={} is invalid".format(ann))
 
         if not mic_path:
             raise ValueError("No trajectory found for mic={}".format(mic))
@@ -238,10 +200,15 @@ class Track(core.Track):
     # -- object with the annotations.
     def to_jams(self):
         """Jams: the track's data in jams format"""
+
+        f0_all_paths = self.f0_crepe_paths + self.f0_pyin_paths + self.f0_manual_paths
+        f0_data = []
+        for f0_path in f0_all_paths:
+            f0_data.append((load_f0(f0_path), os.path.basename(f0_path)))
         return jams_utils.jams_converter(
             audio_path=self.audio_paths[0],
-            f0_data=[(self.annotation, None)],
-            metadata=self._metadata,
+            f0_data=f0_data,
+            note_data=[(load_score(self.score_path), 'time-aligned score representation')],
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
@@ -314,29 +281,78 @@ def load_audio(audio_path):
     # -- for example, the code below. This should be dataset specific!
     # -- By default we load to mono
     # -- change this if it doesn't make sense for your dataset.
+    if audio_path is None:
+        return None
+
+    if not os.path.exists(audio_path):
+        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
 # -- Write any necessary loader functions for loading the dataset's data
 @io.coerce_to_string_io
-def load_annotation(fhandle):
+def load_f0(f0_path):
+    """Load a Dagstuhl ChoirSet F0-trajectory.
 
-    # -- if there are some file paths for this annotation type in this dataset's
-    # -- index that are None/null, uncomment the lines below.
-    # if annotation_path is None:
-    #     return None
+        Args:
+            f0_path (str): path pointing to an F0-file
 
-    reader = csv.reader(fhandle, delimiter=' ')
-    intervals = []
-    annotation = []
-    for line in reader:
-        intervals.append([float(line[0]), float(line[1])])
-        annotation.append(line[2])
+        Returns:
+            * F0Data Object - the F0-trajectory
 
-    annotation_data = annotations.EventData(
-        np.array(intervals), np.array(annotation)
-    )
-    return annotation_data
+        """
+    if f0_path is None:
+        return None
+
+    if not os.path.exists(f0_path):
+        raise IOError("f0_path {} does not exist".format(f0_path))
+
+    times = []
+    freqs = []
+    confs = []
+    with open(f0_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
+        for line in reader:
+            times.append(float(line[0]))
+            freqs.append(float(line[1]))
+            if len(line) == 3:
+                confs.append(float(line[2]))
+
+    times = np.array(times)
+    freqs = np.array(freqs)
+    if not confs:
+        confs = None
+    else:
+        confs = np.array(confs)
+    return annotations.F0Data(times, freqs, confs)
+
+@io.coerce_to_string_io
+def load_score(score_path):
+    """Load a Dagstuhl ChoirSet time-aligned score representation.
+
+        Args:
+            score_path (str): path pointing to an score-representation-file
+
+        Returns:
+            * NoteData Object - the time-aligned score representation
+
+        """
+    if score_path is None:
+        return None
+
+    if not os.path.exists(score_path):
+        raise IOError("score_path {} does not exist".format(score_path))
+
+    intervals = np.empty((0, 2))
+    notes = []
+    with open(score_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
+        for line in reader:
+            intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
+            notes.append(float(line[2]))
+
+    notes = 440 * 2 ** ((np.array(notes) - 69)/12)  # convert MIDI pitch to Hz
+    return annotations.NoteData(intervals, notes, None)
 
 # -- use this decorator so the docs are complete
 @core.docstring_inherit(core.Dataset)
