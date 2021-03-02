@@ -36,6 +36,7 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core, annotations
+from mirdata import io
 
 # -- Add any relevant citations here
 BIBTEX = """
@@ -50,7 +51,6 @@ pages     = {98--110},
 publisher = {Ubiquity Press},
 doi       = {10.5334/tismir.48},
 url       = {http://doi.org/10.5334/tismir.48},
-url-pdf   = {2020_RosenzweigCWSGM_DagstuhlChoirSet_TISMIR_ePrint.pdf},
 url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirSet}
 }
 """
@@ -111,25 +111,126 @@ class Track(core.Track):
         )
 
         # -- add any dataset specific attributes here
-        self.audio_path = self.get_path("audio")
-        self.annotation_path = self.get_path("annotation")
+        self.audio_paths = [
+            self.get_path(key) for key in self._track_paths if "audio_" in key
+        ]
+
+        self.f0_crepe_paths = [
+            self.get_path(key) for key in self._track_paths if "f0_crepe_" in key
+        ]
+
+        self.f0_pyin_paths = [
+            self.get_path(key) for key in self._track_paths if "f0_pyin_" in key
+        ]
+
+        self.f0_manual_paths = [
+            self.get_path(key) for key in self._track_paths if "f0_manual_" in key
+        ]
+
+        self.score_path = self.get_path("score")
 
     # -- `annotation` will behave like an attribute, but it will only be loaded
     # -- and saved when someone accesses it. Useful when loading slightly
     # -- bigger files or for bigger datasets. By default, we make any time
     # -- series data loaded from a file a cached property
     @core.cached_property
-    def annotation(self):
-        """output type: description of output"""
-        return load_annotation(self.annotation_path)
+    def f0_crepe(self, mic: str):
+        """Get the CREPE F0-trajectory extracted from the specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['dyn', 'hsm', 'lrx']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self.f0_crepe_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No trajectory found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more trajectories for mic={}".format(mic))
+
+        return load_f0(mic_path)
+
+    @core.cached_property
+    def f0_pyin(self, mic: str):
+        """Get the PYIN F0-trajectory extracted from the specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['dyn', 'hsm', 'lrx']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self.f0_pyin_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No trajectory found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more trajectories for mic={}".format(mic))
+
+        return load_f0(mic_path)
+
+    @core.cached_property
+    def f0_manual(self, mic: str):
+        """Get the manually annotated F0-trajectory for specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['dyn', 'hsm', 'lrx']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self.f0_manual_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No trajectory found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more trajectories for mic={}".format(mic))
+
+        return load_f0(mic_path)
+
+    @core.cached_property
+    def score(self):
+        return load_score(self.score_path)
 
     # -- `audio` will behave like an attribute, but it will only be loaded
     # -- when someone accesses it and it won't be stored. By default, we make
     # -- any memory heavy information (like audio) properties
     @property
-    def audio(self):
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
-        return load_audio(self.audio_path)
+    def audio(self, mic: str):
+        """Get audio of the specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['dyn', 'hsm', 'lrx']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self.audio_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No microphone signal found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more microphone signals for mic={}".format(mic))
+
+        return load_audio(mic_path)
 
     # -- we use the to_jams function to convert all the annotations in the JAMS format.
     # -- The converter takes as input all the annotations in the proper format (e.g. beats
@@ -138,8 +239,8 @@ class Track(core.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            annotation_data=[(self.annotation, None)],
+            audio_path=self.audio_paths[0],
+            f0_data=[(self.annotation, None)],
             metadata=self._metadata,
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
@@ -199,11 +300,11 @@ class MultiTrack(core.MultiTrack):
 
 
 @io.coerce_to_bytes_io
-def load_audio(fhandle):
+def load_audio(audio_path):
     """Load a Dagstuhl ChoirSet audio file.
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to an audio file
+        audio_path (str): path pointing to an audio file
 
     Returns:
         * np.ndarray - the audio signal
@@ -213,7 +314,7 @@ def load_audio(fhandle):
     # -- for example, the code below. This should be dataset specific!
     # -- By default we load to mono
     # -- change this if it doesn't make sense for your dataset.
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(audio_path, sr=22050, mono=True)
 
 
 # -- Write any necessary loader functions for loading the dataset's data
