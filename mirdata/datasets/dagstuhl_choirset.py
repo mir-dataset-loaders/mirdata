@@ -60,11 +60,11 @@ url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirS
 # -- When having data that can be partially downloaded, remember to set up
 # -- correctly destination_dir to download the files following the correct structure.
 REMOTES = {
-    'remote_data': download_utils.RemoteFileMetadata(
-        filename='dagstuhl_choirset_metadata.json',
-        url='https://',
+    'full_dataset': download_utils.RemoteFileMetadata(
+        filename='DagstuhlChoirSet_V1.1.zip',
+        url='https://zenodo.org/record/3956666/files/DagstuhlChoirSet_V1.1.zip?download=1',
         checksum='00000000000000000000000000000000',  # -- the md5 checksum
-        destination_dir='.' # -- relative path for where to unzip the data, or None
+        unpack_directories=["dagstuhl_choirset"],
     ),
 }
 
@@ -221,7 +221,7 @@ class MultiTrack(core.MultiTrack):
     Args:
         mtrack_id (str): multitrack id
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/Dagstuhl ChoirSet`
+            If `None`, looks for the data in the default directory, `~/mir_datasets/dagstuhl_choirset`
 
     Attributes:
         mtrack_id (str): track id
@@ -250,9 +250,27 @@ class MultiTrack(core.MultiTrack):
         return load_annotation(self.annotation_path)
 
     @property
-    def audio(self):
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
-        return load_audio(self.audio_path)
+    def audio(self, mic: str):
+        """Get audio of the specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('stm', 'stm_reverb', 'stl' or 'str')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['stm', 'stm_reverb', 'stl', 'str']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self.audio_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No microphone signal found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more microphone signals for mic={}".format(mic))
+
+        return load_audio(mic_path)
 
     # -- multitrack classes are themselves Tracks, and also need a to_jams method
     # -- for any mixture-level annotations
@@ -363,8 +381,9 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            name=NAME,
+            name="dagstuhl_choirset",
             track_class=Track,
+            multitrack_class=MultiTrack,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
@@ -378,44 +397,10 @@ class Dataset(core.Dataset):
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_annotation)
-    def load_annotation(self, *args, **kwargs):
-        return load_annotation(*args, **kwargs)
+    @core.copy_docs(load_f0)
+    def load_f0(self, *args, **kwargs):
+        return load_f0(*args, **kwargs)
 
-    # -- if your dataset has a top-level metadata file, write a loader for it here
-    # -- you do not have to include this function if there is no metadata
-    @core.cached_property
-    def _metadata(self):
-        metadata_path = os.path.join(self.data_home, 'example_metadta.csv')
-
-        # load metadata however makes sense for your dataset
-        metadata_path = os.path.join(data_home, 'example_metadata.json')
-        with open(metadata_path, 'r') as fhandle:
-            metadata = json.load(fhandle)
-
-        return metadata
-
-    # -- if your dataset needs to overwrite the default download logic, do it here.
-    # -- this function is usually not necessary unless you need very custom download logic
-    def download(
-        self, partial_download=None, force_overwrite=False, cleanup=False
-    ):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        # see download_utils.downloader for basic usage - if you only need to call downloader
-        # once, you do not need this function at all.
-        # only write a custom function if you need it!
+    @core.copy_docs(load_score)
+    def load_score(self, *args, **kwargs):
+        return load_score(*args, **kwargs)
