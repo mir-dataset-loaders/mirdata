@@ -77,7 +77,7 @@ the ``please-do-not-edit`` flag is used.
 dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
-1. To create an index, first cereate a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
+1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
 2. Then run the script on the :ref:`canonical version` of the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index.json``.
 
 
