@@ -9,20 +9,20 @@
     Beijing Opera (Jingju, 京剧) professional and amateur singers.
 
     Contents:
-    1. wav.zip: audio files in .wav format, mono or stereo.
-    2. pycode.zip: util code for parsing the .textgrid annotation
-    3. catalogue*.csv: recording metadata, source separation recordings are not included.
-    4. textgrid.zip: phrase, syllable and phoneme annotation in Praat .textgrid format
-    5. annotation_txt.zip: phrase, syllable and phoneme time boundaries (second) and labels in .txt format
-        *phrase_char: phrase-level time boundaries, labeled in Mandarin characters
-        *phrase: phrase-level time boundaries, labeled in Mandarin pinyin
-        *syllable: syllable-level time boundaries, labeled in Mandarin pinyin
-        *phoneme: phoneme-level time boundaries, labeled in X-SAMPA
+        1. wav.zip: audio files in .wav format, mono or stereo.
+        2. pycode.zip: util code for parsing the .textgrid annotation
+        3. catalogue*.csv: recording metadata, source separation recordings are not included.
+        4. textgrid.zip: phrase, syllable and phoneme annotation in Praat .textgrid format
+        5. annotation_txt.zip: phrase, syllable and phoneme time boundaries (second) and labels in .txt format
+            * phrase_char: phrase-level time boundaries, labeled in Mandarin characters
+            * phrase: phrase-level time boundaries, labeled in Mandarin pinyin
+            * syllable: syllable-level time boundaries, labeled in Mandarin pinyin
+            * phoneme: phoneme-level time boundaries, labeled in X-SAMPA
 
     The boundaries (onset and offset) have been annotated hierarchically:
-    1. phrase (line)
-    2. syllable
-    3. phoneme
+        1. phrase (line)
+        2. syllable
+        3. phoneme
 
     Singing units in pinyin and X-SAMPA have been annotated to a jingju a cappella singing audio dataset.
 
@@ -109,8 +109,8 @@ REMOTES = {
 }
 
 LICENSE_INFO = (
-    "upf or lon: Creative Commons Attribution Non-Commercial 4.0 International, "
-    + "qm: http://isophonics.org/SingingVoiceDataset"
+    "audio files ending with upf or lon: Creative Commons Attribution Non-Commercial 4.0 International, "
+    + "audio files ending with qm: http://isophonics.org/SingingVoiceDataset"
 )
 
 
@@ -130,7 +130,6 @@ class Track(core.Track):
         syllable_path (str): local path where the syllable annotation is stored
 
     Properties:
-        audio (tuple): track audio
         work (str): string referring to the work where the track belongs
         details (float): string referring to additional details about the track
 
