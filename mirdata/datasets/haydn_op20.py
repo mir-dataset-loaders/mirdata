@@ -1,8 +1,8 @@
 """haydn op20 Dataset Loader
 
-..
-    This dataset has a relative dependency with Music21.
-    .. admonition:: Dataset Info :class: dropdown
+This dataset has as dependency the Music21 library.
+admonition:: Dataset Info
+    :class: dropdown
         This dataset accompanies the Master Thesis from Nestor Napoles. It is a manually-annotated corpus of harmonic
         analysis in harm syntax.
 
