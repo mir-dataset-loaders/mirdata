@@ -1,43 +1,45 @@
 """haydn op20 Dataset Loader
 
 This dataset has as dependency the Music21 library.
+
 admonition:: Dataset Info
     :class: dropdown
-        This dataset accompanies the Master Thesis from Nestor Napoles. It is a manually-annotated corpus of harmonic
-        analysis in harm syntax.
 
-        The dataset contains the following scores:
-        Haydn, Joseph
-            1. E-flat major, op. 20 no. 1, Hob. III-31
-                I. Allegro moderato
-                II. Menuetto. Allegretto
-                III. Affettuoso e sostenuto
-                IV. Finale. Presto
-            2. C major, op. 20 no. 2, Hob. III-32
-                I. Moderato
-                II. Capriccio. Adagio
-                III. Menuetto. Allegretto
-                IV. Fuga a 4 soggetti
-            3. G minor, op. 20 no. 3, Hob. III-33
-                I. Allegro con spirito
-                II. Menuetto. Allegretto
-                III. Poco adagio
-                IV. Finale. Allegro molto
-            4. D major, op. 20 no. 4, Hob. III-34
-                I. Allegro di molto
-                II. Un poco adagio e affettuoso
-                III. Menuet alla Zingarese & Trio
-                IV. Presto e scherzando
-            5. F minor, op. 20 no. 5, Hob. III-35
-                I. Allegro moderato
-                II. Menuetto
-                III. Adagio
-                IV. Finale. Fuga a due soggetti
-            6. A major, op. 20 no. 6, Hob. III-36
-                I. Allegro di molto e scherzando
-                II. Adagio. Cantabile
-                III. Menuetto. Allegretto
-                IV. Fuga a 3 soggetti. Allegro
+    This dataset accompanies the Master Thesis from Nestor Napoles. It is a manually-annotated corpus of harmonic
+    analysis in harm syntax.
+
+    The dataset contains the following scores:
+    Haydn, Joseph
+        1. E-flat major, op. 20 no. 1, Hob. III-31
+            I. Allegro moderato
+            II. Menuetto. Allegretto
+            III. Affettuoso e sostenuto
+            IV. Finale. Presto
+        2. C major, op. 20 no. 2, Hob. III-32
+            I. Moderato
+            II. Capriccio. Adagio
+            III. Menuetto. Allegretto
+            IV. Fuga a 4 soggetti
+        3. G minor, op. 20 no. 3, Hob. III-33
+            I. Allegro con spirito
+            II. Menuetto. Allegretto
+            III. Poco adagio
+            IV. Finale. Allegro molto
+        4. D major, op. 20 no. 4, Hob. III-34
+            I. Allegro di molto
+            II. Un poco adagio e affettuoso
+            III. Menuet alla Zingarese & Trio
+            IV. Presto e scherzando
+        5. F minor, op. 20 no. 5, Hob. III-35
+            I. Allegro moderato
+            II. Menuetto
+            III. Adagio
+            IV. Finale. Fuga a due soggetti
+        6. A major, op. 20 no. 6, Hob. III-36
+            I. Allegro di molto e scherzando
+            II. Adagio. Cantabile
+            III. Menuetto. Allegretto
+            IV. Fuga a 3 soggetti. Allegro
 """
 
 import os
