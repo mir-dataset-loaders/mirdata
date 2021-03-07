@@ -2,7 +2,7 @@
 
 This dataset has as dependency the Music21 library.
 
-admonition:: Dataset Info
+.. admonition:: Dataset Info
     :class: dropdown
 
     This dataset accompanies the Master Thesis from Nestor Napoles. It is a manually-annotated corpus of harmonic
