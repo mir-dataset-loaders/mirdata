@@ -94,12 +94,6 @@ REMOTES = {
         checksum="768fa00ce1f8880ae5480fae103ecc06",
         destination_dir=".",
     ),
-    "readme": download_utils.RemoteFileMetadata(
-        filename="readme.txt",
-        url="https://zenodo.org/record/1323561/files/readme.txt?download=1",
-        checksum="f1113d4c03b379a6a23d85e2c215d54b",
-        destination_dir=".",
-    ),
     "wav": download_utils.RemoteFileMetadata(
         filename="wav.zip",
         url="https://zenodo.org/record/1323561/files/wav.zip?download=1",
@@ -362,10 +356,11 @@ class Dataset(core.Dataset):
             self.data_home,
             "catalogue - dan.csv",
         )
-        if not os.path.exists(metadata_path_laosheng) or not os.path.exists(
-            metadata_path_dan
-        ):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+        if not os.path.exists(metadata_path_laosheng):
+            raise FileNotFoundError("laosheng metadata not found. Did you run .download()?")
+
+        if not os.path.exists(metadata_path_dan):
+            raise FileNotFoundError("dan metadata not found. Did you run .download()?")
 
         metadata = {}
         with open(metadata_path_laosheng, "r") as fhandle:
