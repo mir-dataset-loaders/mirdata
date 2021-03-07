@@ -42,31 +42,38 @@ def test_to_jam():
         jam["sandbox"]["midi_path"]
         == "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
     ), "duration does not match expected"
-    assert type(jam["sandbox"]["chords"]) == list
-    assert type(jam["sandbox"]["key"]) == list
-    assert type(jam["sandbox"]["roman_numerals"]) == list
+    assert isinstance(jam["sandbox"]["chords"], list)
+    assert jam["sandbox"]["chords"][0]["time"] == 0
+    assert jam["sandbox"]["chords"][0]["chord"] == "Eb-major triad"
+    assert isinstance(jam["sandbox"]["key"], list)
+    assert jam["sandbox"]["key"][0]["time"] == 0
+    assert isinstance(jam["sandbox"]["key"][0]["key"], music21.key.Key)
+    assert isinstance(jam["sandbox"]["roman_numerals"], list)
+    assert jam["sandbox"]["roman_numerals"][0]["time"] == 0
+    assert jam["sandbox"]["roman_numerals"][0]["roman_numeral"] == "I"
 
 
 def test_load_score():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
     score = haydn_op20.load_score(path)
-    assert type(score) == music21.stream.Score
+    assert isinstance(score, music21.stream.Score)
+    assert len(score.parts) == 4
 
 
 def test_load_key():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
     key = haydn_op20.load_key(path)
-    assert type(key) == list
+    assert isinstance(key, list)
     assert len(key) == 1
     assert key[0]["time"] == 0
     assert key[-1]["time"] == 0
-    assert type(key[0]["key"]) == music21.key.Key
+    assert isinstance(key[0]["key"], music21.key.Key)
 
 
 def test_load_chords():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
     chords = haydn_op20.load_chords(path)
-    assert type(chords) == list
+    assert isinstance(chords, list)
     assert len(chords) == 1
     assert chords[0]["time"] == 0
     assert chords[-1]["time"] == 0
@@ -77,7 +84,7 @@ def test_load_chords():
 def test_load_roman_numerals():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
     roman_numerals = haydn_op20.load_roman_numerals(path)
-    assert type(roman_numerals) == list
+    assert isinstance(roman_numerals, list)
     assert len(roman_numerals) == 1
     assert roman_numerals[0]["time"] == 0
     assert roman_numerals[-1]["time"] == 0
@@ -88,5 +95,5 @@ def test_load_roman_numerals():
 def test_load_midi_path():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
     midi_path = haydn_op20.load_midi_path(path)
-    assert type(midi_path) == str
+    assert isinstance(midi_path, str)
     assert midi_path == "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
