@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import music21
 
 from mirdata.datasets import haydn_op20
