@@ -131,7 +131,7 @@ class Track(core.Track):
 
     Properties:
         audio (tuple): track audio
-        work (str): string referring to the work where the trakc belongs
+        work (str): string referring to the work where the track belongs
         details (float): string referring to additional details about the track
 
     Cached Properties:

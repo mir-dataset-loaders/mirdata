@@ -55,19 +55,6 @@
    * - .. line-block::
 
         (CompMusic)
-        OTMM Makam
-
-     - - audio: ✅
-       - annotations: ✅
-     - - :ref:`f0`
-       - :ref:`tonic`
-     - 1000
-     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
-          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
-
-   * - .. line-block::
-
-        (CompMusic)
         Jingju A Cappella
 
      - - audio: ✅
@@ -76,6 +63,19 @@
        - :ref:`phoneme`
        - :ref:`syllable`
      - 82
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - .. line-block::
+
+        (CompMusic)
+        OTMM Makam
+
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`tonic`
+     - 1000
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 

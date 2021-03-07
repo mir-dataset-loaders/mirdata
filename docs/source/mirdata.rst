@@ -51,18 +51,18 @@ cante100
    :inherited-members:
 
 
-compmusic_otmm_makam
-^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.datasets.compmusic_otmm_makam
-   :members:
-   :inherited-members:
-
-
 compmusic_jingju_acappella
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.compmusic_jingju_acappella
+   :members:
+   :inherited-members:
+
+
+compmusic_otmm_makam
+^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_otmm_makam
    :members:
    :inherited-members:
 
