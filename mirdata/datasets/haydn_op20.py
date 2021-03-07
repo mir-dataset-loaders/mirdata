@@ -43,9 +43,7 @@
 import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
 
-from mirdata import core, io
-from mirdata import download_utils
-from mirdata import jams_utils
+from mirdata import core, io, jams_utils, download_utils
 import music21
 
 
