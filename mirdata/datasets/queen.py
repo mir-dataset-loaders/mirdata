@@ -126,7 +126,7 @@ class Track(core.Track):
         return load_sections(self.sections_path)
 
     @property
-    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:
@@ -152,19 +152,18 @@ class Track(core.Track):
         )
 
 
-@io.coerce_to_string_io
-def load_audio(fhandle: TextIO) -> Tuple[np.ndarray, float]:
-    """Load a Queen audio file.
+def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+    """Load a TONAS audio file.
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to an audio file
+        fhandle (str): path to an audio file
 
     Returns:
-        * y (np.ndarray) - the mono audio signal
-        * sr (float) - The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=None, mono=True)
+    return librosa.load(fhandle, sr=44100, mono=True)
 
 
 @io.coerce_to_string_io
