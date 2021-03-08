@@ -1,29 +1,31 @@
 """Queen Dataset Loader
 
-The Queen Dataset includes chord, key, and segmentation
-annotations for 51 Queen songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf and
-http://isophonics.net/content/reference-annotations-queen.
+.. admonition:: Dataset Info
+    :class: dropdown
+    The Queen Dataset includes chord, key, and segmentation
+    annotations for 51 Queen songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf and
+    http://isophonics.net/content/reference-annotations-queen.
 
-The CDs used in this dataset are:
-Queen: Greatest Hits I, Parlophone, 0777 7 8950424
-Queen: Greatest Hits II, Parlophone, CDP 7979712
-Queen: Greatest Hits III, Parlophone, 7243 52389421
+    The CDs used in this dataset are:
+    Queen: Greatest Hits I, Parlophone, 0777 7 8950424
+    Queen: Greatest Hits II, Parlophone, CDP 7979712
+    Queen: Greatest Hits III, Parlophone, 7243 52389421
 
-In the progress of labelling the chords, C4DM researchers used the following literature to verify their judgements:
+    In the progress of labelling the chords, C4DM researchers used the following literature to verify their judgements:
 
-Queen, Greatest Hits I, International Music Publications Ltd, London, ISBN 0-571-52828-7
+    Queen, Greatest Hits I, International Music Publications Ltd, London, ISBN 0-571-52828-7
 
-Queen, Greatest Hits II, Queen Music Ltd./EMI Music Publishing (Barnes Music Engraving), ISBN 0-86175-465-4
+    Queen, Greatest Hits II, Queen Music Ltd./EMI Music Publishing (Barnes Music Engraving), ISBN 0-86175-465-4
 
-Acknowledgements
-We'd like to thank our student annotators:
+    Acknowledgements
+    We'd like to thank our student annotators:
 
-Eric Gyingy
-Diako Rasoul
-Felix Stiller
-Helena du Toit
-Vinh Ton
-Chuks Chiejine
+    Eric Gyingy
+    Diako Rasoul
+    Felix Stiller
+    Helena du Toit
+    Vinh Ton
+    Chuks Chiejine
 """
 
 import csv

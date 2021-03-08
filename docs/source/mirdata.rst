@@ -179,7 +179,7 @@ phenicx_anechoic
    :inherited-members:
 
 
-Queen
+queen
 ^^^^^^^
 
 .. automodule:: mirdata.datasets.queen
