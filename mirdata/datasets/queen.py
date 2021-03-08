@@ -160,8 +160,8 @@ def load_audio(fhandle: TextIO) -> Tuple[np.ndarray, float]:
         fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        * y (np.ndarray): the mono audio signal
-        * sr (float): The sample rate of the audio file
+        * y (np.ndarray) - the mono audio signal
+        * sr (float) - The sample rate of the audio file
 
     """
     return librosa.load(fhandle, sr=None, mono=True)
@@ -254,6 +254,10 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_key)
+    def load_key(self, *args, **kwargs):
+        return load_key(*args, **kwargs)
 
     @core.copy_docs(load_chords)
     def load_chords(self, *args, **kwargs):
