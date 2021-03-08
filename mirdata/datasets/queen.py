@@ -36,9 +36,7 @@ from typing import Tuple, TextIO, Optional
 import librosa
 import numpy as np
 
-from mirdata import download_utils, annotations, io
-from mirdata import jams_utils
-from mirdata import core
+from mirdata import download_utils, annotations, io, core, jams_utils
 
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
