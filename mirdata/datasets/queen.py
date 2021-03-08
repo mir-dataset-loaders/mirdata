@@ -152,7 +152,7 @@ class Track(core.Track):
         )
 
 
-@io.coerce_to_bytes_io
+@io.coerce_to_string_io
 def load_audio(fhandle: TextIO) -> Tuple[np.ndarray, float]:
     """Load a Queen audio file.
 
