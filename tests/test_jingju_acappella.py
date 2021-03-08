@@ -120,7 +120,9 @@ def test_load_phrases():
     dataset = compmusic_jingju_acappella.Dataset(data_home)
     track = dataset.track(track_id)
     phrase_path = track.phrase_path
+    phrase_char_path = track.phrase_char_path
     parsed_phrases = compmusic_jingju_acappella.load_phrases(phrase_path)
+    parsed_phrases_char = compmusic_jingju_acappella.load_phrases(phrase_char_path)
 
     # Check types
     assert type(parsed_phrases) == annotations.LyricData
@@ -169,18 +171,6 @@ def test_load_phrases():
         ),
     )
 
-    assert compmusic_jingju_acappella.load_phrases(None) is None
-
-
-def test_load_phrases_char():
-    data_home = "tests/resources/mir_datasets/compmusic_jingju_acappella"
-    track_id = "lseh-Tan_Yang_jia-Hong_yang_dong-qm"
-
-    dataset = compmusic_jingju_acappella.Dataset(data_home)
-    track = dataset.track(track_id)
-    phrase_char_path = track.phrase_char_path
-    parsed_phrases_char = compmusic_jingju_acappella.load_phrases_char(phrase_char_path)
-
     # Check types
     assert type(parsed_phrases_char) == annotations.LyricData
     assert type(parsed_phrases_char.intervals) is np.ndarray
@@ -228,7 +218,7 @@ def test_load_phrases_char():
         ),
     )
 
-    assert compmusic_jingju_acappella.load_phrases_char(None) is None
+    assert compmusic_jingju_acappella.load_phrases(None) is None
 
 
 def test_load_phoneme():
