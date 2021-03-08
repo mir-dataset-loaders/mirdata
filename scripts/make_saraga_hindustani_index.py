@@ -2,29 +2,10 @@ import argparse
 import hashlib
 import json
 import os
+from mirdata.validate import md5
 
 
 SARAGA_HINDUSTANI_INDEX_PATH = '../mirdata/datasets/indexes/saraga_hindustani_index.json'
-
-
-def md5(file_path):
-    """Get md5 hash of a file.
-
-    Parameters
-    ----------
-    file_path: str
-        File path.
-
-    Returns
-    -------
-    md5_hash: str
-        md5 hash of data in file_path
-    """
-    hash_md5 = hashlib.md5()
-    with open(file_path, 'rb') as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b''):
-            hash_md5.update(chunk)
-    return hash_md5.hexdigest()
 
 
 def make_saraga_hindustani_index(dataset_data_path):
