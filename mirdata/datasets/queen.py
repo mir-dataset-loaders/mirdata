@@ -148,10 +148,11 @@ class Track(core.Track):
             section_data=[(self.sections, None)],
             chord_data=[(self.chords, None)],
             key_data=[(self.key, None)],
-            metadata={"artist": "The Queen", "title": self.title},
+            metadata={"artist": "Queen", "title": self.title},
         )
 
 
+@io.coerce_to_bytes_io
 def load_audio(fhandle: TextIO) -> Tuple[np.ndarray, float]:
     """Load a Queen audio file.
 
@@ -159,8 +160,8 @@ def load_audio(fhandle: TextIO) -> Tuple[np.ndarray, float]:
         fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * y (np.ndarray): the mono audio signal
+        * sr (float): The sample rate of the audio file
 
     """
     return librosa.load(fhandle, sr=None, mono=True)
@@ -174,7 +175,7 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
         fhandle (str or file-like): path or file-like object pointing to a chord file
 
     Returns:
-        (utils.ChordData): loaded chord data
+        (ChordData): loaded chord data
 
     """
     start_times, end_times, chords = [], [], []
@@ -196,7 +197,7 @@ def load_key(fhandle: TextIO) -> annotations.KeyData:
         fhandle (str or file-like): path or file-like object pointing to a key file
 
     Returns:
-        (annotations.KeyData): loaded key data
+        (KeyData): loaded key data
 
     """
     start_times, end_times, keys = [], [], []
@@ -219,7 +220,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
         fhandle (str or file-like): path or file-like object pointing to a section file
 
     Returns:
-        (annotations.SectionData): loaded section data
+        (SectionData): loaded section data
 
     """
     start_times, end_times, sections = [], [], []
