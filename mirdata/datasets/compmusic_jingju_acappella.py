@@ -129,8 +129,8 @@ class Track(core.Track):
 
     Cached Properties:
         phoneme (EventData): phoneme annotation
-        phrase_char (EventData): lyric phrase annotation in chinese
-        phrase (EventData): lyric phrase annotation in western characters
+        phrase_char (LyricsData): lyric phrase annotation in chinese
+        phrase (LyricsData): lyric phrase annotation in western characters
         syllable (EventData): syllable annotation
 
     """
@@ -168,7 +168,7 @@ class Track(core.Track):
 
     @core.cached_property
     def phrase_char(self):
-        return load_phrases_char(self.phrase_char_path)
+        return load_phrases(self.phrase_char_path)
 
     @core.cached_property
     def syllable(self):
@@ -252,7 +252,7 @@ def load_phonemes(fhandle: TextIO) -> annotations.EventData:
 
 @io.coerce_to_string_io
 def load_phrases(fhandle: TextIO) -> annotations.LyricData:
-    """Load phrases in western characters
+    """Load lyric phrases annotation
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to a lyric annotation file
@@ -261,34 +261,6 @@ def load_phrases(fhandle: TextIO) -> annotations.LyricData:
         LyricData: lyric phrase annotation
 
     """
-    start_times = []
-    end_times = []
-    lyrics = []
-
-    reader = csv.reader(fhandle, delimiter="\t")
-    for line in reader:
-        start_times.append(float(line[0]))
-        end_times.append(float(line[1]))
-        lyrics.append(line[2] if line[2] != "sil" else "")
-
-    return annotations.LyricData(
-        np.array([start_times, end_times]).T,
-        lyrics,
-    )
-
-
-@io.coerce_to_string_io
-def load_phrases_char(fhandle: TextIO) -> annotations.LyricData:
-    """Load phrases in chinese characters
-
-    Args:
-        fhandle (str or file-like): path or file-like object pointing to a lyric annotation file
-
-    Returns:
-        LyricData: lyric phrase annotation
-
-    """
-
     start_times = []
     end_times = []
     lyrics = []
@@ -357,7 +329,9 @@ class Dataset(core.Dataset):
             "catalogue - dan.csv",
         )
         if not os.path.exists(metadata_path_laosheng):
-            raise FileNotFoundError("laosheng metadata not found. Did you run .download()?")
+            raise FileNotFoundError(
+                "laosheng metadata not found. Did you run .download()?"
+            )
 
         if not os.path.exists(metadata_path_dan):
             raise FileNotFoundError("dan metadata not found. Did you run .download()?")
@@ -383,10 +357,6 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_phrases)
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)
-
-    @core.copy_docs(load_phrases_char)
-    def load_phrases_char(self, *args, **kwargs):
-        return load_phrases_char(*args, **kwargs)
 
     @core.copy_docs(load_syllable)
     def load_syllable(self, *args, **kwargs):
