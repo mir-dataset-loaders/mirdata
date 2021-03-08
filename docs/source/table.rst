@@ -134,8 +134,8 @@
        - midi: ✅
        - scores: ✅
        - annotations: ✅
-     - - :ref:`chords`
-       - :ref:`key`
+     - - symbolic :ref:`chords`
+       - symbolic :ref:`key`
      - 24
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
