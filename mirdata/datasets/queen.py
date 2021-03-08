@@ -2,6 +2,7 @@
 
 .. admonition:: Dataset Info
     :class: dropdown
+
     The Queen Dataset includes chord, key, and segmentation
     annotations for 51 Queen songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf and
     http://isophonics.net/content/reference-annotations-queen.
