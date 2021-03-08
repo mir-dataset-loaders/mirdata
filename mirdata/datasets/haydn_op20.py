@@ -200,7 +200,7 @@ def load_key(fhandle: TextIO, resolution=28):
         fhandle (str or file-like): path to key annotations
 
     Returns:
-        List[dict]: musical key data and relative time (offset * resolution).
+        List[dict]: musical key data and relative time (offset (Music21Object.offset) * resolution).
 
     """
     _, rna = split_score_annotations(fhandle)
@@ -239,7 +239,7 @@ def load_roman_numerals(fhandle: TextIO, resolution=28):
         fhandle (str or file-like): path to roman numeral annotations
 
     Returns:
-        List[dict]: musical roman numerals data and relative time (offset * resolution)
+        List[dict]: musical roman numerals data and relative time (offset (Music21Object.offset) * resolution)
 
     """
     _, rna = split_score_annotations(fhandle)
@@ -259,7 +259,7 @@ def load_chords(fhandle: TextIO, resolution: int = 28):
         fhandle (str or file-like): path to chord annotations
 
     Returns:
-        List[dict`]: musical chords data and relative time (offset * resolution)
+        List[dict`]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
 
     """
     _, rna = split_score_annotations(fhandle)
