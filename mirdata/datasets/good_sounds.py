@@ -143,7 +143,7 @@ class Track(core.Track):
     def __init__(self, track_id, data_home):
         if track_id not in DATA.index['tracks']:
             raise ValueError(
-                "{} is not a valid track ID in Groove MIDI".format(track_id)
+                "{} is not a valid track ID in GOOD-SOUNDS".format(track_id)
             )
 
         self.track_id = track_id
@@ -212,9 +212,6 @@ def load_audio(audio_path):
         sr (float): The sample rate of the audio file
 
     """
-    if audio_path is None:
-        return None, None
-
     if not os.path.exists(audio_path):
         raise IOError("audio_path {} does not exist".format(audio_path))
 
@@ -224,7 +221,7 @@ def load_audio(audio_path):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The giantsteps_tempo dataset
+    The GOOD-SOUNDS dataset
     """
 
     def __init__(self, data_home=None):
