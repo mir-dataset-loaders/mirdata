@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 import pytest
 import jams
@@ -41,7 +39,8 @@ def test_beats():
     beat_data_7 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                ["event A", "event B"],
             ),
             None,
         )
@@ -92,7 +91,8 @@ def test_chords():
     chord_data_1 = [
         (
             annotations.ChordData(
-                np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "A", "E"],
+                np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                ["A", "A", "E"],
             ),
             None,
         )
@@ -100,7 +100,8 @@ def test_chords():
     chord_data_2 = [
         (
             annotations.ChordData(
-                np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "B", "C"],
+                np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
+                ["A", "B", "C"],
             ),
             "chords_2",
         )
@@ -108,13 +109,15 @@ def test_chords():
     chord_data_3 = [
         (
             annotations.ChordData(
-                np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "A", "E"],
+                np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                ["A", "A", "E"],
             ),
             "chords_1",
         ),
         (
             annotations.ChordData(
-                np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T, ["A", "B", "C"],
+                np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T,
+                ["A", "B", "C"],
             ),
             "chords_2",
         ),
@@ -128,13 +131,15 @@ def test_chords():
     chord_data_5 = [
         [
             annotations.ChordData(
-                np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "A", "E"],
+                np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                ["A", "A", "E"],
             ),
             None,
         ],
         (
             annotations.ChordData(
-                np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "B", "C"],
+                np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
+                ["A", "B", "C"],
             ),
             "chords_2",
         ),
@@ -143,7 +148,8 @@ def test_chords():
     chord_data_7 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                ["event A", "event B"],
             ),
             None,
         )
@@ -259,7 +265,8 @@ def test_notes():
     note_data_7 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                ["event A", "event B"],
             ),
             None,
         )
@@ -368,7 +375,8 @@ def test_sections():
     section_data_7 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                ["event A", "event B"],
             ),
             None,
         )
@@ -566,13 +574,15 @@ def test_multi_sections():
             [
                 (
                     annotations.EventData(
-                        np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                        np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                        ["event A", "event B"],
                     ),
                     None,
                 ),
                 (
                     annotations.EventData(
-                        np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                        np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                        ["event A", "event B"],
                     ),
                     None,
                 ),
@@ -667,7 +677,8 @@ def test_keys():
     key_data_7 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                ["event A", "event B"],
             ),
             None,
         )
@@ -769,7 +780,8 @@ def test_f0s():
     f0_data_7 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                ["event A", "event B"],
             ),
             None,
         )
@@ -829,7 +841,9 @@ def test_lyrics():
     lyrics_data_1 = [
         (
             annotations.LyricData(
-                np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
+                np.array([[0.027, 0.232], [0.227, 0.742]]).T,
+                ["The", "Test"],
+                ["", ""],
             ),
             None,
         )
@@ -837,7 +851,9 @@ def test_lyrics():
     lyrics_data_2 = [
         (
             annotations.LyricData(
-                np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
+                np.array([[0.027, 0.232], [0.227, 0.742]]).T,
+                ["The", "Test"],
+                ["", ""],
             ),
             "lyrics_1",
         )
@@ -845,33 +861,43 @@ def test_lyrics():
     lyrics_data_3 = [
         (
             annotations.LyricData(
-                np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
+                np.array([[0.027, 0.232], [0.227, 0.742]]).T,
+                ["The", "Test"],
+                ["", ""],
             ),
             "lyrics_1",
         ),
         (
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T, ["is", "cool"], ["", ""],
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
+                ["is", "cool"],
+                ["", ""],
             ),
             "lyrics_2",
         ),
     ]
     lyrics_data_4 = (
         annotations.LyricData(
-            np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
+            np.array([[0.027, 0.232], [0.227, 0.742]]).T,
+            ["The", "Test"],
+            ["", ""],
         ),
         "lyrics_1",
     )
     lyrics_data_5 = [
         (
             annotations.LyricData(
-                np.array([[0.027, 0.232], [0.227, 0.742]]).T, ["The", "Test"], ["", ""],
+                np.array([[0.027, 0.232], [0.227, 0.742]]).T,
+                ["The", "Test"],
+                ["", ""],
             ),
             "lyrics_1",
         ),
         [
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T, ["is", "cool"], ["", ""],
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
+                ["is", "cool"],
+                ["", ""],
             ),
             "lyrics_2",
         ],
@@ -880,7 +906,8 @@ def test_lyrics():
     lyrics_data_7 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]).T, ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                ["event A", "event B"],
             ),
             None,
         )
@@ -987,7 +1014,8 @@ def test_events():
     event_data1 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]), ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]),
+                ["event A", "event B"],
             ),
             "I am a description",
         )
@@ -999,7 +1027,8 @@ def test_events():
         ),
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]), ["", "a great label"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]),
+                ["", "a great label"],
             ),
             "events 2",
         ),

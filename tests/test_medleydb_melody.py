@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 
 from mirdata.datasets import medleydb_melody
@@ -10,7 +8,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "MusicDelta_Beethoven"
     data_home = "tests/resources/mir_datasets/medleydb_melody"
-    track = medleydb_melody.Track(default_trackid, data_home=data_home)
+    dataset = medleydb_melody.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "MusicDelta_Beethoven",
@@ -34,6 +33,7 @@ def test_track():
         "melody1": annotations.F0Data,
         "melody2": annotations.F0Data,
         "melody3": annotations.MultiF0Data,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -46,7 +46,8 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/medleydb_melody"
-    track = medleydb_melody.Track("MusicDelta_Beethoven", data_home=data_home)
+    dataset = medleydb_melody.Dataset(data_home)
+    track = dataset.track("MusicDelta_Beethoven")
     jam = track.to_jams()
 
     f0s = jam.search(namespace="pitch_contour")[1]["data"]
@@ -124,8 +125,8 @@ def test_load_melody3():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/medleydb_melody"
-    metadata = medleydb_melody._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
+    dataset = medleydb_melody.Dataset(data_home)
+    metadata = dataset._metadata
     assert metadata["MusicDelta_Beethoven"] == {
         "audio_path": "medleydb_melody/audio/MusicDelta_Beethoven_MIX.wav",
         "melody1_path": "medleydb_melody/melody1/MusicDelta_Beethoven_MELODY1.csv",
@@ -138,6 +139,3 @@ def test_load_metadata():
         "is_instrumental": True,
         "n_sources": 18,
     }
-
-    metadata_none = medleydb_melody._load_metadata("asdf/asdf")
-    assert metadata_none is None

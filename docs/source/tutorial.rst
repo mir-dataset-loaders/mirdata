@@ -8,26 +8,10 @@ Installation
 ------------
 
 To install ``mirdata``:
+
     .. code-block:: console
 
         pip install mirdata
-
-To install ``mirdata`` for development purposes:
-    - First run:
-
-    .. code-block:: console
-
-        git clone https://github.com/mir-dataset-loaders/mirdata.git
-
-    - Then, after opening source data library you have to install the dependencies:
-
-    .. code-block:: console
-
-        pip install .
-        pip install .[tests]
-        pip install .[docs]
-        pip install .[dali]
-
 
 Usage
 -----
@@ -122,13 +106,11 @@ list is passed to the ``download()`` function through the ``partial_download`` v
                 filename="cante100Meta.xml",
                 url="https://zenodo.org/record/1322542/files/cante100Meta.xml?download=1",
                 checksum="6cce186ce77a06541cdb9f0a671afb46",  # the md5 checksum
-                destination_dir=None,  # relative path for where to unzip the data, or None
             ),
             "README": download_utils.RemoteFileMetadata(
                 filename="cante100_README.txt",
                 url="https://zenodo.org/record/1322542/files/cante100_README.txt?download=1",
                 checksum="184209b7e7d816fa603f0c7f481c0aae",  # the md5 checksum
-                destination_dir=None,  # relative path for where to unzip the data, or None
             ),
         }
 
@@ -204,6 +186,8 @@ Alternatively, we don't need to load the whole dataset to get a single track.
     example_melody = example_track.melody  # Get the melody from first track
 
 
+.. _Remote Data Example: 
+
 Accessing data remotely
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -255,7 +239,7 @@ Annotation classes
 ``mirdata`` defines annotation-specific data classes. These data classes are meant to standarize the format for
 all loaders, and are compatibly with `JAMS <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
-The list and descriptions of available annotation classes can be found `at this link <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.annotations>`_.
+The list and descriptions of available annotation classes can be found in :ref:`annotations`.
 
 .. note:: These classes may be extended in the case that a loader requires it.
 
@@ -270,7 +254,7 @@ track objects (which include their respective audio and annotations, which are l
 
     orchset = mirdata.initialize('orchset')
     for key, track in orchset.load_tracks().items():
-        print(key, track.title, track.audio_path)
+        print(key, track.audio_path)
 
 
 Alternatively, we can loop over the ``track_ids`` list to directly access each track in the dataset.
@@ -280,7 +264,7 @@ Alternatively, we can loop over the ``track_ids`` list to directly access each t
     orchset = mirdata.initialize('orchset')
     for track_id in orchset.track_ids:
 
-        print(track_id, orchset.track(track_id).title, orchset.track(track_id).audio_path)
+        print(track_id, orchset.track(track_id).audio_path)
 
 
 Basic example: including mirdata in your pipeline
@@ -366,9 +350,10 @@ This is the result of the example above.
 
 You can see that ``very_bad_melody_extractor`` performs very badly!
 
+.. _Using mirdata with tensorflow:
 
-Using mirdata with tf.data.Dataset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using mirdata with tensorflow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following is a simple example of a generator that can be used to create a tensorflow Dataset.
 

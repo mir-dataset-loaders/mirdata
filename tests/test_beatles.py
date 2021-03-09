@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 
 from mirdata.datasets import beatles
@@ -10,7 +8,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "0111"
     data_home = "tests/resources/mir_datasets/beatles"
-    track = beatles.Track(default_trackid, data_home=data_home)
+    dataset = beatles.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "audio_path": "tests/resources/mir_datasets/beatles/"
@@ -32,6 +31,7 @@ def test_track():
         "chords": annotations.ChordData,
         "key": annotations.KeyData,
         "sections": annotations.SectionData,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -42,7 +42,7 @@ def test_track():
         audio.shape
     )
 
-    track = beatles.Track("10212", data_home=data_home)
+    track = dataset.track("10212")
     assert track.beats is None, "expected track.beats to be None, got {}".format(
         track.beats
     )
@@ -52,7 +52,8 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/beatles"
-    track = beatles.Track("0111", data_home=data_home)
+    dataset = beatles.Dataset(data_home)
+    track = dataset.track("0111")
     jam = track.to_jams()
 
     beats = jam.search(namespace="beat")[0]["data"]

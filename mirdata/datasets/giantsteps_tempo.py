@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 """giantsteps_tempo Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
     GiantSteps tempo + genre is a collection of annotations for 664 2min(1) audio previews from
-    www.beatport.com, created by Richard Vogl <richard.vogl@tuwien.ac.at> and 
+    www.beatport.com, created by Richard Vogl <richard.vogl@tuwien.ac.at> and
     Peter Knees <peter.knees@tuwien.ac.at>
 
     references:
@@ -32,7 +31,7 @@
     e.g.:
     http://geo-samples.beatport.com/lofi/5377710.LOFI.mp3
 
-    To convert the audio files to .wav use the script found at 
+    To convert the audio files to .wav use the script found at
     https://github.com/GiantSteps/giantsteps-tempo-dataset/blob/master/convert_audio.sh and run:
 
     .. code-block:: bash
@@ -67,6 +66,7 @@
 
 """
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import jams
 import librosa
@@ -75,6 +75,7 @@ import numpy as np
 from mirdata import download_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 
 BIBTEX = """@inproceedings{knees2015two,
@@ -93,14 +94,11 @@ BIBTEX = """@inproceedings{knees2015two,
   url-pdf={http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf},
 }"""
 
-DATA = core.LargeData("giantsteps_tempo_index.json")
-
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip",
         url="https://github.com/GiantSteps/giantsteps-tempo-dataset/archive/0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip",
         checksum="8fdafbaf505fe3f293bd912c92b72ac8",
-        destination_dir="",
     )
 }
 DOWNLOAD_INFO = """
@@ -136,16 +134,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in giantsteps_tempo".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.annotation_v1_path = os.path.join(
             self._data_home, self._track_paths["annotation_v1"][0]
@@ -157,24 +160,24 @@ class Track(core.Track):
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1].split(".")[0]
 
     @core.cached_property
-    def genre(self):
+    def genre(self) -> Optional[str]:
         return load_genre(self.annotation_v1_path)
 
     @core.cached_property
-    def tempo(self):
+    def tempo(self) -> Optional[annotations.TempoData]:
         return load_tempo(self.annotation_v1_path)
 
     @core.cached_property
-    def tempo_v2(self):
+    def tempo_v2(self) -> Optional[annotations.TempoData]:
         return load_tempo(self.annotation_v2_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -198,23 +201,22 @@ class Track(core.Track):
         return jams.load(self.annotation_v2_path)
 
 
-def load_audio(audio_path):
+def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_tempo audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_genre(path):
+@io.coerce_to_string_io
+def load_genre(fhandle: TextIO) -> str:
     """Load genre data from a file
 
     Args:
@@ -222,35 +224,23 @@ def load_genre(path):
 
     Returns:
         str: loaded genre data
-
     """
-    if path is None:
-        return None
-
-    with open(path) as json_file:
-        annotation = jams.load(json_file)
-
+    annotation = jams.load(fhandle)
     return annotation.search(namespace="tag_open")[0]["data"][0].value
 
 
-def load_tempo(tempo_path):
+@io.coerce_to_string_io
+def load_tempo(fhandle: TextIO) -> annotations.TempoData:
     """Load giantsteps_tempo tempo data from a file ordered by confidence
 
     Args:
-        tempo_path (str): path to tempo annotation file
+        fhandle (str or file-like): File-like object or path to tempo annotation file
 
     Returns:
-        list: list of annotations.TempoData
+        annotations.TempoData: Tempo data
 
     """
-    if tempo_path is None:
-        return None
-
-    if not os.path.exists(tempo_path):
-        raise IOError("tempo_path {} does not exist".format(tempo_path))
-
-    with open(tempo_path) as json_file:
-        annotation = jams.load(json_file)
+    annotation = jams.load(fhandle)
 
     tempo = annotation.search(namespace="tempo")[0]["data"]
 
@@ -270,9 +260,8 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="giantsteps_tempo",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,

@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
-"""Utilities for converting mirdata Annotation objects to jams format.
+"""Utilities for converting mirdata Annotation classes to jams format.
 """
+import logging
 import os
 
 import jams
@@ -34,7 +34,7 @@ def jams_converter(
             the audio file will be read to compute the duration. If None,
             'duration' must be a field in the metadata dictionary, or the
             resulting jam object will not validate.
-        spectrum_cante100_path (str or None):
+        spectrogram_path (str or None):
             A path to the corresponding spectrum file, or None.
         beat_data (list or None):
             A list of tuples of (annotations.BeatData, str), where str describes
@@ -101,8 +101,8 @@ def jams_converter(
                 and metadata[key] != duration
                 and audio_path is not None
             ):
-                print(
-                    "Warning: duration provided in metadata does not"
+                logging.warning(
+                    "Duration provided in metadata does not"
                     + "match the duration computed from the audio file."
                     + "Using the duration provided by the metadata."
                 )

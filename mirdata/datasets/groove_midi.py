@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Groove MIDI Loader
 
 .. admonition:: Dataset Info
@@ -51,12 +50,17 @@ import glob
 import logging
 import os
 import shutil
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils, jams_utils, core, annotations
+from mirdata import annotations
+from mirdata import core
+from mirdata import download_utils
+from mirdata import io
+from mirdata import jams_utils
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -71,7 +75,7 @@ REMOTES = {
         filename="groove-v1-0.0.zip",
         url="http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip",
         checksum="99db7e2a087761a913b2abfb19e86181",
-        destination_dir=None,
+        unpack_directories=["groove"],
     )
 }
 
@@ -187,53 +191,6 @@ DRUM_MAPPING = {
 }
 
 
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "info.csv")
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata_index = {}
-    with open(metadata_path, "r") as fhandle:
-        csv_reader = csv.reader(fhandle, delimiter=",")
-        next(csv_reader)
-        for row in csv_reader:
-            (
-                drummer,
-                session,
-                track_id,
-                style,
-                bpm,
-                beat_type,
-                time_signature,
-                midi_filename,
-                audio_filename,
-                duration,
-                split,
-            ) = row
-            metadata_index[str(track_id)] = {
-                "drummer": str(drummer),
-                "session": str(session),
-                "track_id": str(track_id),
-                "style": str(style),
-                "tempo": int(bpm),
-                "beat_type": str(beat_type),
-                "time_signature": str(time_signature),
-                "midi_filename": str(midi_filename),
-                "audio_filename": str(audio_filename),
-                "duration": float(duration),
-                "split": str(split),
-            }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = core.LargeData("groove_midi_index.json", _load_metadata)
-
-
 class Track(core.Track):
     """Groove MIDI Track class
 
@@ -261,44 +218,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in Groove MIDI".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "drummer": None,
-                "session": None,
-                "style": None,
-                "tempo": None,
-                "beat_type": None,
-                "time_signature": None,
-                "midi_filename": None,
-                "audio_filename": None,
-                "duration": None,
-                "split": None,
-            }
-
-        self.drummer = self._track_metadata["drummer"]
-        self.session = self._track_metadata["session"]
-        self.style = self._track_metadata["style"]
-        self.tempo = self._track_metadata["tempo"]
-        self.beat_type = self._track_metadata["beat_type"]
-        self.time_signature = self._track_metadata["time_signature"]
-        self.duration = self._track_metadata["duration"]
-        self.split = self._track_metadata["split"]
-        self.midi_filename = self._track_metadata["midi_filename"]
-        self.audio_filename = self._track_metadata["audio_filename"]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
 
@@ -307,12 +241,52 @@ class Track(core.Track):
         )
 
     @property
-    def audio(self):
+    def drummer(self):
+        return self._track_metadata.get("drummer")
+
+    @property
+    def session(self):
+        return self._track_metadata.get("session")
+
+    @property
+    def style(self):
+        return self._track_metadata.get("style")
+
+    @property
+    def tempo(self):
+        return self._track_metadata.get("tempo")
+
+    @property
+    def beat_type(self):
+        return self._track_metadata.get("beat_type")
+
+    @property
+    def time_signature(self):
+        return self._track_metadata.get("time_signature")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def split(self):
+        return self._track_metadata.get("split")
+
+    @property
+    def midi_filename(self):
+        return self._track_metadata.get("midi_filename")
+
+    @property
+    def audio_filename(self):
+        return self._track_metadata.get("audio_filename")
+
+    @property
+    def audio(self) -> Tuple[Optional[np.ndarray], Optional[float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -344,40 +318,34 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+def load_audio(path: str) -> Tuple[Optional[np.ndarray], Optional[float]]:
     """Load a Groove MIDI audio file.
 
     Args:
-        audio_path (str): path to audio file
+        path: path to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if audio_path is None:
+    if not path:
         return None, None
-
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=22050, mono=True)
+    return librosa.load(path, sr=22050, mono=True)
 
 
-def load_midi(midi_path):
+@io.coerce_to_bytes_io
+def load_midi(fhandle: BinaryIO) -> Optional[pretty_midi.PrettyMIDI]:
     """Load a Groove MIDI midi file.
 
     Args:
-        midi_path (str): path to midi file
+        fhandle (str or file-like): File-like object or path to midi file
 
     Returns:
         midi_data (pretty_midi.PrettyMIDI): pretty_midi object
 
     """
-    if not os.path.exists(midi_path):
-        raise IOError("midi_path {} does not exist".format(midi_path))
-
-    return pretty_midi.PrettyMIDI(midi_path)
+    return pretty_midi.PrettyMIDI(fhandle)
 
 
 def load_beats(midi_path, midi=None):
@@ -436,9 +404,8 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="groove_midi",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
@@ -460,39 +427,43 @@ class Dataset(core.Dataset):
     def load_drum_events(self, *args, **kwargs):
         return load_drum_events(*args, **kwargs)
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=True):
-        """Download the dataset
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "info.csv")
 
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-                By default False.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
+        metadata_index = {}
+        with open(metadata_path, "r") as fhandle:
+            csv_reader = csv.reader(fhandle, delimiter=",")
+            next(csv_reader)
+            for row in csv_reader:
+                (
+                    drummer,
+                    session,
+                    track_id,
+                    style,
+                    bpm,
+                    beat_type,
+                    time_signature,
+                    midi_filename,
+                    audio_filename,
+                    duration,
+                    split,
+                ) = row
+                metadata_index[str(track_id)] = {
+                    "drummer": str(drummer),
+                    "session": str(session),
+                    "track_id": str(track_id),
+                    "style": str(style),
+                    "tempo": int(bpm),
+                    "beat_type": str(beat_type),
+                    "time_signature": str(time_signature),
+                    "midi_filename": str(midi_filename),
+                    "audio_filename": str(audio_filename),
+                    "duration": float(duration),
+                    "split": str(split),
+                }
 
-        """
-        download_utils.downloader(
-            self.data_home,
-            partial_download=partial_download,
-            remotes=self.remotes,
-            info_message=None,
-            force_overwrite=force_overwrite,
-            cleanup=cleanup,
-        )
-
-        # files get downloaded to a folder called groove - move everything up a level
-        groove_dir = os.path.join(self.data_home, "groove")
-        groove_files = glob.glob(os.path.join(groove_dir, "*"))
-
-        for fpath in groove_files:
-            shutil.move(fpath, self.data_home)
-
-        if os.path.exists(groove_dir):
-            shutil.rmtree(groove_dir)
+        return metadata_index

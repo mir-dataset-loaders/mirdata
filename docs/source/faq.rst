@@ -4,9 +4,7 @@ FAQ
 
 How do I add a new loader?
 --------------------------
-Take a look at our instructions_!
-
-.. _instructions: https://github.com/mir-dataset-loaders/mirdata/blob/master/CONTRIBUTING.md
+Take a look at our :ref:`contributing` docs!
 
 
 How do I get access to a dataset if the download function says it’s not available?
@@ -38,14 +36,10 @@ Whenever possible, the data downloaded using :code:`.download()` is the same dat
 
 Does mirdata provide data loaders for pytorch/Tensorflow?
 ---------------------------------------------------------
-For now, no. Music datasets are very widely varied in their annotation types and supported tasks. To make a data loader, there would need to be "standard" ways to encode the desired inputs/outputs - unofortunately this is not universal for most datasets and usages. Still, this library provides the necessary first step for building data loaders and it is easy to build data loaders on top of this. For a simple example, see our examples_ page.
-
-.. _examples: https://mirdata.readthedocs.io/en/latest/source/example.html#
-
-
-Why didn’t you release a version of this library in MATLAB/C/Java/R?
---------------------------------------------------------------------
-The creators of this library are Python users, so we made a libray in python. We'd be very happy to provide guidance to anyone who wants to create a version of this library in another programming languages.
+For now, no. Music datasets are very widely varied in their annotation types and supported tasks. 
+To make a data loader, there would need to be "standard" ways to encode the desired inputs/outputs - unfortunately this is not universal for most datasets and usages. 
+Still, this library provides the necessary first step for building data loaders and it is easy to build data loaders on top of this. 
+For more information, see :ref:`Using mirdata with tensorflow`.
 
 
 A download link is broken for a loader's :code:`.download()` function. What do I do?
@@ -67,7 +61,6 @@ No. All datasets have "mistakes", and we do not want to create another version o
 
 Does mirdata support data which lives off-disk?
 -----------------------------------------------
-Yes. While the simple useage of mirdata assumes that data lives on-disk, it can be used for off-disk data as well. See the "local vs remote" example in the examples_ page for details.
-
-.. _examples: https://mirdata.readthedocs.io/en/latest/source/example.html#
+Yes. While the simple useage of mirdata assumes that data lives on-disk, it can be used for off-disk data as well. 
+See :ref:`Remote Data Example` for details.
 

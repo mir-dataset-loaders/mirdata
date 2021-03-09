@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 IRMAS Loader
 
@@ -92,11 +91,15 @@ IRMAS Loader
 import csv
 
 import os
+from typing import BinaryIO, List, Optional, TextIO, Tuple
+
 import librosa
+import numpy as np
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
+from mirdata import io
 
 BIBTEX = """
 @dataset{juan_j_bosch_2014_1290750,
@@ -115,30 +118,23 @@ REMOTES = {
         filename="IRMAS-TrainingData.zip",
         url="https://zenodo.org/record/1290750/files/IRMAS-TrainingData.zip?download=1",
         checksum="4fd9f5ed5a18d8e2687e6360b5f60afe",
-        destination_dir=None,
     ),
     "testing_data_1": download_utils.RemoteFileMetadata(
         filename="IRMAS-TestingData-Part1.zip",
         url="https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part1.zip?download=1",
         checksum="5a2e65520dcedada565dff2050bb2a56",
-        destination_dir=None,
     ),
     "testing_data_2": download_utils.RemoteFileMetadata(
         filename="IRMAS-TestingData-Part2.zip",
         url="https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part2.zip?download=1",
         checksum="afb0c8ea92f34ee653693106be95c895",
-        destination_dir=None,
     ),
     "testing_data_3": download_utils.RemoteFileMetadata(
         filename="IRMAS-TestingData-Part3.zip",
         url="https://zenodo.org/record/1290750/files/IRMAS-TestingData-Part3.zip?download=1",
         checksum="9b3fb2d0c89cdc98037121c25bd5b556",
-        destination_dir=None,
     ),
 }
-
-
-DATA = core.LargeData("irmas_index.json")
 
 
 INST_DICT = [
@@ -182,14 +178,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in Example".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
         self.annotation_path = os.path.join(
             self._data_home, self._track_paths["annotation"][0]
@@ -242,11 +245,11 @@ class Track(core.Track):
     def instrument(self):
         if self.predominant_instrument is not None:
             return [self.predominant_instrument]
-        else:
-            return load_pred_inst(self.annotation_path)
+
+        return load_pred_inst(self.annotation_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio signal
 
         Returns:
@@ -274,49 +277,41 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a IRMAS dataset audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=44100, mono=False)
 
 
-def load_pred_inst(annotation_path):
+@io.coerce_to_string_io
+def load_pred_inst(fhandle: TextIO) -> List[str]:
     """Load predominant instrument of track
 
     Args:
-        annotation_path (str): Local path where the test annotations are stored.
+        fhandle (str or file-like): File-like object or path where the test annotations are stored.
 
     Returns:
-        str: test track predominant instrument(s) annotations
-
+        list(str): test track predominant instrument(s) annotations
     """
-    if annotation_path is None:
-        return None
-
-    if not os.path.exists(annotation_path):
-        raise IOError("annotation_path {} does not exist".format(annotation_path))
-
     pred_inst = []
-    with open(annotation_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=" ")
-        for line in reader:
-            inst_code = line[0][:3]
-            assert (
-                inst_code in INST_DICT
-            ), "Instrument {} not in instrument dictionary".format(inst_code)
-            pred_inst.append(inst_code)
+    reader = csv.reader(fhandle, delimiter=" ")
+    for line in reader:
+        inst_code = line[0][:3]
+        assert (
+            inst_code in INST_DICT
+        ), "Instrument {} not in instrument dictionary".format(inst_code)
+        pred_inst.append(inst_code)
 
-        return pred_inst
+    return pred_inst
 
 
 @core.docstring_inherit(core.Dataset)
@@ -328,9 +323,8 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="irmas",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,

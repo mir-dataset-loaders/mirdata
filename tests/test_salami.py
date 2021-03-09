@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 from mirdata.datasets import salami
 from mirdata import annotations
@@ -10,7 +8,8 @@ def test_track():
 
     default_trackid = "2"
     data_home = "tests/resources/mir_datasets/salami"
-    track = salami.Track(default_trackid, data_home=data_home)
+    dataset = salami.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "2",
@@ -40,6 +39,7 @@ def test_track():
         "sections_annotator_1_lowercase": annotations.SectionData,
         "sections_annotator_2_uppercase": annotations.SectionData,
         "sections_annotator_2_lowercase": annotations.SectionData,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -50,7 +50,7 @@ def test_track():
     assert y.shape == (89856,)
 
     # Test file with missing annotations
-    track = salami.Track("192", data_home=data_home)
+    track = dataset.track("192")
 
     # test attributes
     assert track.source == "Codaich"
@@ -87,7 +87,7 @@ def test_track():
     assert track.sections_annotator_2_lowercase is None
 
     # Test file with missing annotations
-    track = salami.Track("1015", data_home=data_home)
+    track = dataset.track("1015")
 
     assert track._track_paths == {
         "audio": ["audio/1015.mp3", "811a4a6b46f0c15a61bfb299b21ebdc4"],
@@ -113,7 +113,8 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/salami"
-    track = salami.Track("2", data_home=data_home)
+    dataset = salami.Dataset(data_home)
+    track = dataset.track("2")
     jam = track.to_jams()
 
     segments = jam.search(namespace="multi_segment")[0]["data"]
@@ -203,8 +204,8 @@ def test_load_sections():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/salami"
-    metadata = salami._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
+    dataset = salami.Dataset(data_home)
+    metadata = dataset._metadata
     assert metadata["2"] == {
         "source": "Codaich",
         "annotator_1_id": "5",
@@ -217,6 +218,3 @@ def test_load_metadata():
         "class": "popular",
         "genre": "Alternative_Pop___Rock",
     }
-
-    none_metadata = salami._load_metadata("asdf/asdf")
-    assert none_metadata is None

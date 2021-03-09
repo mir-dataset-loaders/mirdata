@@ -8,6 +8,7 @@ Initializing
 
 .. autofunction:: mirdata.list_datasets
 
+.. _Datasets API:
 
 Dataset Loaders
 ---------------
@@ -39,6 +40,14 @@ cante100
 ^^^^^^^^
 
 .. automodule:: mirdata.datasets.cante100
+   :members:
+   :inherited-members:
+
+
+compmusic_otmm_makam
+^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_otmm_makam
    :members:
    :inherited-members:
 

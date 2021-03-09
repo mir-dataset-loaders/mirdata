@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 
 from mirdata.datasets import ikala
@@ -10,7 +8,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "10161_chorus"
     data_home = "tests/resources/mir_datasets/ikala"
-    track = ikala.Track(default_trackid, data_home=data_home)
+    dataset = ikala.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "10161_chorus",
@@ -23,10 +22,12 @@ def test_track():
         "lyrics_path": "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab",
     }
 
-
     expected_property_types = {
         "f0": annotations.F0Data,
         "lyrics": annotations.LyricData,
+        "vocal_audio": tuple,
+        "instrumental_audio": tuple,
+        "mix_audio": tuple,
     }
 
     assert track._track_paths == {
@@ -59,7 +60,9 @@ def test_track():
 def test_to_jams():
 
     data_home = "tests/resources/mir_datasets/ikala"
-    track = ikala.Track("10161_chorus", data_home=data_home)
+    default_trackid = "10161_chorus"
+    dataset = ikala.Dataset(data_home)
+    track = dataset.track(default_trackid)
     jam = track.to_jams()
 
     lyrics = jam.search(namespace="lyric")[0]["data"]
@@ -131,10 +134,7 @@ def test_load_lyrics():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/ikala"
-    metadata = ikala._load_metadata(data_home)
-    assert metadata["data_home"] == data_home
+    dataset = ikala.Dataset(data_home)
+    metadata = dataset._metadata
     assert metadata["10161"] == "1"
     assert metadata["21025"] == "1"
-
-    metadata_none = ikala._load_metadata("asdf/asdf")
-    assert metadata_none is None

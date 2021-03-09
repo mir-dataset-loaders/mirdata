@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 
 from mirdata.datasets import giantsteps_key
@@ -9,7 +7,8 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "3"
     data_home = "tests/resources/mir_datasets/giantsteps_key"
-    track = giantsteps_key.Track(default_trackid, data_home=data_home)
+    dataset = giantsteps_key.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "audio_path": "tests/resources/mir_datasets/giantsteps_key/audio/10089 Jason Sparks - Close My Eyes feat. J. "
@@ -27,6 +26,7 @@ def test_track():
         "genres": dict,
         "artists": list,
         "tempo": int,
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -40,7 +40,8 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/giantsteps_key"
-    track = giantsteps_key.Track("3", data_home=data_home)
+    dataset = giantsteps_key.Dataset(data_home)
+    track = dataset.track("3")
     jam = track.to_jams()
     assert jam["sandbox"]["key"] == "D major", "key does not match expected"
 

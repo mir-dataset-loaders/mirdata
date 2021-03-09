@@ -35,20 +35,7 @@ show_authors = False
 
 
 # -- Mock dependencies -------------------------------------------------------
-
-# # Mock the dependencies
-from unittest.mock import MagicMock
-
-
-class Mock(MagicMock):
-    @classmethod
-    def __getattr__(cls, name):
-        return MagicMock()
-
-
-MOCK_MODULES = ["librosa", "numpy", "jams", "pretty_midi", "DALI"]
-
-sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+autodoc_mock_imports = ["librosa", "numpy", "jams", "pretty_midi", "DALI"]
 
 
 # # -- General configuration ---------------------------------------------------
@@ -72,7 +59,6 @@ extlinks = {
     "cante": ("https://zenodo.org/record/1324183#.X_nq7-n7RUI%s", "Custom"),
     "ikala": ("http://mac.citi.sinica.edu.tw/ikala/%s", "Custom"),
     "rwc": ("https://staff.aist.go.jp/m.goto/RWC-MDB/%s", "Custom"),
-
 }
 
 

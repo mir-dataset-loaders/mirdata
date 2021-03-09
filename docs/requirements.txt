@@ -3,3 +3,4 @@ dali-dataset>=1.0
 jams
 librosa>=0.7.0
 tqdm
+sphinx==3.4.0

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Mridangam Stroke Dataset Loader
 
 .. admonition:: Dataset Info
@@ -43,11 +42,15 @@
 """
 
 import os
+
 import librosa
+import numpy as np
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
+from mirdata import io
 
 BIBTEX = """@article{Anantapadmanabhan2013,
     author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
@@ -67,11 +70,8 @@ REMOTES = {
         filename="mridangam_stroke_1.5.zip",
         url="https://zenodo.org/record/4068196/files/mridangam_stroke_1.5.zip?download=1",
         checksum="39af55b2476b94c7946bec24331ec01a",  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
     ),
 }
-
-DATA = core.LargeData("mridangam_stroke_index.json")
 
 
 STROKE_DICT = {
@@ -108,14 +108,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in Example".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
 
@@ -132,12 +139,12 @@ class Track(core.Track):
         )
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -156,20 +163,18 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Mridangam Stroke Dataset audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
-
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=44100, mono=True)
+    return librosa.load(fhandle, sr=44100, mono=True)
 
 
 @core.docstring_inherit(core.Dataset)
@@ -181,9 +186,8 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="mridangam_stroke",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """GuitarSet Loader
 
 .. admonition:: Dataset Info
@@ -57,10 +56,12 @@ import os
 import jams
 import librosa
 import numpy as np
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import download_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 
 BIBTEX = """@inproceedings{xi2018guitarset,
@@ -110,7 +111,6 @@ _STYLE_DICT = {
     "Funk": "Funk",
 }
 _GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
-DATA = core.LargeData("guitarset_index.json")
 
 LICENSE_INFO = "MIT License."
 
@@ -160,14 +160,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in GuitarSet".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.audio_hex_cln_path = os.path.join(
             self._data_home, self._track_paths["audio_hex_cln"][0]
@@ -191,7 +198,7 @@ class Track(core.Track):
         self.style = _STYLE_DICT[style[:-1]]
 
     @core.cached_property
-    def beats(self):
+    def beats(self) -> Optional[annotations.BeatData]:
         return load_beats(self.jams_path)
 
     @core.cached_property
@@ -211,7 +218,7 @@ class Track(core.Track):
         return load_chords(self.jams_path, leadsheet_version=False)
 
     @core.cached_property
-    def key_mode(self):
+    def key_mode(self) -> Optional[annotations.KeyData]:
         return load_key_mode(self.jams_path)
 
     @core.cached_property
@@ -231,53 +238,49 @@ class Track(core.Track):
         return notes
 
     @property
-    def audio_mic(self):
+    def audio_mic(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
-        audio, sr = load_audio(self.audio_mic_path)
-        return audio, sr
+        return load_audio(self.audio_mic_path)
 
     @property
-    def audio_mix(self):
+    def audio_mix(self) -> Optional[Tuple[np.ndarray, float]]:
         """Mixture audio (mono)
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
-        audio, sr = load_audio(self.audio_mix_path)
-        return audio, sr
+        return load_audio(self.audio_mix_path)
 
     @property
-    def audio_hex(self):
+    def audio_hex(self) -> Optional[Tuple[np.ndarray, float]]:
         """Hexaphonic audio (6-channels) with one channel per string
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
-        audio, sr = load_multitrack_audio(self.audio_hex_path)
-        return audio, sr
+        return load_multitrack_audio(self.audio_hex_path)
 
     @property
-    def audio_hex_cln(self):
+    def audio_hex_cln(self) -> Optional[Tuple[np.ndarray, float]]:
         """Hexaphonic audio (6-channels) with one channel per string
            after bleed removal
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
-        audio, sr = load_multitrack_audio(self.audio_hex_cln_path)
-        return audio, sr
+        return load_multitrack_audio(self.audio_hex_cln_path)
 
     def to_jams(self):
         """Get the track's data in jams format
@@ -289,50 +292,47 @@ class Track(core.Track):
         return jams.load(self.jams_path)
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Guitarset audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_multitrack_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_multitrack_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Guitarset multitrack audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=False)
+    return librosa.load(fhandle, sr=None, mono=False)
 
 
-def load_beats(jams_path):
+@io.coerce_to_string_io
+def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load a Guitarset beats annotation.
 
     Args:
-        jams_path (str): Path of the jams annotation file
+        fhandle (str or file-like): File-like object or path of the jams annotation file
 
     Returns:
         BeatData: Beat data
     """
-    if not os.path.exists(jams_path):
-        raise IOError("jams_path {} does not exist".format(jams_path))
-    jam = jams.load(jams_path)
+    jam = jams.load(fhandle)
     anno = jam.search(namespace="beat_position")[0]
     times, values = anno.to_event_values()
     positions = [int(v["position"]) for v in values]
@@ -363,19 +363,18 @@ def load_chords(jams_path, leadsheet_version=True):
     return annotations.ChordData(intervals, values)
 
 
-def load_key_mode(jams_path):
+@io.coerce_to_string_io
+def load_key_mode(fhandle: TextIO) -> annotations.KeyData:
     """Load a Guitarset key-mode annotation.
 
     Args:
-        jams_path (str): Path of the jams annotation file
+        fhandle (str or file-like): File-like object or path of the jams annotation file
 
     Returns:
         KeyData: Key data
 
     """
-    if not os.path.exists(jams_path):
-        raise IOError("jams_path {} does not exist".format(jams_path))
-    jam = jams.load(jams_path)
+    jam = jams.load(fhandle)
     anno = jam.search(namespace="key_mode")[0]
     intervals, values = anno.to_interval_values()
     return annotations.KeyData(intervals, values)
@@ -437,9 +436,8 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="guitarset",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             license_info=LICENSE_INFO,

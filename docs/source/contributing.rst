@@ -5,26 +5,39 @@ Contributing
 ############
 
 We encourage contributions to mirdata, especially new dataset loaders. To contribute a new loader, follow the
-steps indicated below and create a Pull Request (PR) to the github repository.
+steps indicated below and create a Pull Request (PR) to the github repository. For any doubt or comment about
+your contribution, you can always submit an issue or open a discussion in the repository.
 
 - `Issue Tracker <https://github.com/mir-dataset-loaders/mirdata/issues>`_
 - `Source Code <https://github.com/mir-dataset-loaders/mirdata>`_
 
 
-Installing and running tests
-#############################
+Installing mirdata for development purposes
+###########################################
+
+To install ``mirdata`` for development purposes:
+
+    - First run:
+
+    .. code-block:: console
+
+        git clone https://github.com/mir-dataset-loaders/mirdata.git
+
+    - Then, after opening source data library you have to install the dependencies for updating the documentation
+      and running tests:
+
+    .. code-block:: console
+
+        pip install .
+        pip install .[tests]
+        pip install .[docs]
+        pip install .[dali]
 
 
-First, clone the repository from github:
-
-.. code-block:: bash
-
-    git clone git@github.com:mir-dataset-loaders/mirdata.git
-
-
-We recommend you install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions 
-and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7. 
-Once ``pyenv`` and the Python versions are configured, install ``pytest``. Finally, run :
+We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
+and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7.
+Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the pytest
+plugins to automatically test your code successfully. Finally, run:
 
 .. code-block:: bash
 
@@ -60,7 +73,7 @@ the ``please-do-not-edit`` flag is used.
 1. Create an index
 ------------------
 
-``mirdata``'s structure relies on ``JSON`` objects called `indexes`. Indexes contain information about the structure of the
+``mirdata``'s structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
 dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
@@ -164,8 +177,64 @@ multitracks
 
 .. admonition:: Index Examples - Multitracks
     :class: dropdown, warning
+    
+ If the version `1.0` of a given multitrack dataset has the structure:
 
-    Coming soon
+    .. code-block:: javascript
+
+        > Example_Dataset/
+            > audio/
+                multitrack1-voice1.wav
+                multitrack1-voice2.wav
+                multitrack1-accompaniment.wav
+                multitrack1-mix.wav
+                multitrack2-voice1.wav
+                multitrack2-voice2.wav
+                multitrack2-accompaniment.wav
+                multitrack2-mix.wav
+            > annotations/
+                multitrack1-voice-f0.csv
+                multitrack2-voice-f0.csv
+                multitrack1-f0.csv
+                multitrack2-f0.csv
+            > metadata/
+                metadata_file.csv
+
+    The top level directory is ``Example_Dataset`` and the relative path for ``multitrack1-voice1``
+    would be ``audio/multitrack1-voice1.wav``. Any unavailable fields are indicated with `null`. A possible index file for this example would be:
+    
+.. code-block:: javascript
+
+{ "version": 1,
+  "tracks": {
+     "multitrack1-voice": {
+          "audio_voice1": ('audio/multitrack1-voice1.wav', checksum), 
+          "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),  
+          "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum)
+     }
+     "multitrack1-accompaniment": {
+          "audio_accompaniment": ('audio/multitrack1-accompaniment.wav', checksum)
+     }
+     "multitrack2-voice" : {...}
+     ...
+  },
+  "multitracks": {
+    "multitrack1": {
+         "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],    
+         "audio": ('audio/multitrack1-mix.wav', checksum)
+         "f0": ('annotations/multitrack1-f0.csv', checksum)
+     }
+    "multitrack2": ...
+  },
+  "metadata": {
+    "metadata_file": [
+        "metadata/metadata_file.csv",
+        "7a41b280c7b74e2ddac5184708f9525b"
+        ]
+  }
+}
+  
+Note that in this examples we group ``audio_voice1`` and ``audio_voice2`` in a single Track because the annotation ``voice-f0`` annotation corresponds to their mixture. In contrast, the annotation ``voice-f0`` is extracted from the multitrack mix and it is stored in the ``multitracks`` group. The multitrack ``multitrack1`` has an additional track ``multitrack1-mix.wav`` which may be the master track, the final mix, the recording of ``multitrack1`` with another microphone. 
 
 records
 ^^^^^^^
@@ -200,8 +269,8 @@ You may find these examples useful as references:
 * `A simple, fully downloadable dataset <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py>`_
 * `A dataset which is partially downloadable <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/beatles.py>`_
 * `A dataset with restricted access data <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/medleydb_melody.py#L33>`_
-* `A dataset which uses global metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
-* `A dataset which does not use global metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
+* `A dataset which uses dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
+* `A dataset which does not use dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
 * `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
 * `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
 
@@ -222,7 +291,7 @@ To finish your contribution, include tests that check the integrity of your load
     * For each audio/annotation file, reduce the audio length to 1-2 seconds and remove all but a few of the annotations.
     * If the dataset has a metadata file, reduce the length to a few lines.
 
-2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other 
+2. Test all of the dataset specific code, e.g. the public attributes of the Track class, the load functions and any other 
    custom functions you wrote. See the `tests folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/tests>`_ for reference.
    If your loader has a custom download function, add tests similar to 
    `this loader <https://github.com/mir-dataset-loaders/mirdata/blob/master/tests/test_groove_midi.py#L96>`_.
@@ -231,7 +300,7 @@ To finish your contribution, include tests that check the integrity of your load
 
 
 .. note::  We have written automated tests for all loader's ``cite``, ``download``, ``validate``, ``load``, ``track_ids`` functions, 
-           as well as some basic edge cases of the ``Track`` object, so you don't need to write tests for these!
+           as well as some basic edge cases of the ``Track`` class, so you don't need to write tests for these!
 
 
 .. _test_file:
@@ -297,26 +366,20 @@ Working with remote indexes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the end-user there is no difference between the remote and local indexes. However, indexes can get large when there are a lot of tracks
-in the dataset. In these cases, storing and accessing an index remotely can be convenient.
-
-However, to contribute to the library using remote indexes you have to add in ``utils.LargeData(...)`` the remote_index argument with a
-``download_utils.RemoteFileMetadata`` dictionary with the remote index information.
-
-.. code-block:: python
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
-
+in the dataset. In these cases, storing and accessing an index remotely can be convenient. Large indexes can be added to REMOTES, 
+and will be downloaded with the rest of the dataset. For example:
 
 .. code-block:: python
 
-    REMOTE_INDEX = {
-        "REMOTE_INDEX": download_utils.RemoteFileMetadata(
-            filename="acousticbrainz_genre_index.json.zip",
-            url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
-            checksum="810f1c003f53cbe58002ba96e6d4d138",
-            destination_dir="",
-        )
-    }
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
+    "index": download_utils.RemoteFileMetadata(
+        filename="acousticbrainz_genre_index.json.zip",
+        url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
+        checksum="810f1c003f53cbe58002ba96e6d4d138",
+    )
+
+
+Unlike local indexes, the remote indexes will live in the ``data_home`` directory. When creating the ``Dataset``
+object, specify the ``custom_index_path`` to where the index will be downloaded (as a relative path to ``data_home``).
 
 
 .. _reducing_test_space:
@@ -391,7 +454,7 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
 
 ::
 
-    black --target-version py37 --skip-string-normalization mirdata/
+    black --target-version py38 mirdata/ tests/
 
 2. the test coverage is too low -- this means that there are too many new lines of code introduced that are not tested.
 
@@ -401,3 +464,215 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
 4. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing. 
    If they are passing locally but failing in the check, open an `issue` and we can help debug.
 
+
+Documentation
+#############
+
+This documentation is in `rst format <https://docutils.sourceforge.io/docs/user/rst/quickref.html>`_.
+It is built using `Sphinx <https://www.sphinx-doc.org/en/master/index.html>`_ and hosted on `readthedocs <https://readthedocs.org/>`_.
+The API documentation is built using `autodoc <https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html>`_, which autogenerates
+documentation from the code's docstrings. We use the `napoleon <https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html>`_ plugin
+for building docs in Google docstring style. See the next section for docstring conventions.
+
+
+mirdata uses `Google's Docstring formatting style <https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings>`_.
+Here are some common examples.
+
+.. note::
+    The small formatting details in these examples are important. Differences in new lines, indentation, and spacing make
+    a difference in how the documentation is rendered. For example writing ``Returns:`` will render correctly, but ``Returns``
+    or ``Returns :`` will not. 
+
+
+Functions:
+
+.. code-block:: python
+
+    def add_to_list(list_of_numbers, scalar):
+        """Add a scalar to every element of a list.
+        You can write a continuation of the function description here on the next line.
+
+        You can optionally write more about the function here. If you want to add an example
+        of how this function can be used, you can do it like below.
+
+        Example:
+            .. code-block:: python
+
+            foo = add_to_list([1, 2, 3], 2)
+
+        Args:
+            list_of_numbers (list): A short description that fits on one line.
+            scalar (float):
+                Description of the second parameter. If there is a lot to say you can
+                overflow to a second line.
+
+        Returns:
+            list: Description of the return. The type here is not in parentheses
+
+        """
+        return [x + scalar for x in list_of_numbers]
+
+
+Functions with more than one return value:
+
+.. code-block:: python
+
+    def multiple_returns():
+        """This function has no arguments, but more than one return value. Autodoc with napoleon doesn't handle this well,
+        and we use this formatting as a workaround.
+
+        Returns:
+            * int - the first return value
+            * bool - the second return value
+
+        """
+        return 42, True
+
+
+One-line docstrings
+
+.. code-block:: python
+
+    def some_function():
+        """
+        One line docstrings must be on their own separate line, or autodoc does not build them properly
+        """
+        ...
+
+
+Objects
+
+.. code-block:: python
+
+    """Description of the class
+    overflowing to a second line if it's long
+
+    Some more details here
+
+    Args:
+        foo (str): First argument to the __init__ method
+        bar (int): Second argument to the __init__ method
+
+    Attributes:
+        foobar (str): First track attribute
+        barfoo (bool): Second track attribute
+
+    Cached Properties:
+        foofoo (list): Cached properties are special mirdata attributes
+        barbar (None): They are lazy loaded properties.
+        barf (bool): Document them with this special header.
+
+    """
+
+
+Conventions
+###########
+
+Loading from files
+------------------
+
+We use the following libraries for loading data from files:
+
++-------------------------+-------------+
+| Format                  | library     |
++=========================+=============+
+| audio (wav, mp3, ...)   | librosa     |
++-------------------------+-------------+
+| midi                    | pretty_midi |
++-------------------------+-------------+
+| json                    | json        |
++-------------------------+-------------+
+| csv                     | csv         |
++-------------------------+-------------+
+| jams                    | jams        |
++-------------------------+-------------+
+
+Track Attributes
+----------------
+Custom track attributes should be global, track-level data.
+For some datasets, there is a separate, dataset-level metadata file
+with track-level metadata, e.g. as a csv. When a single file is needed
+for more than one track, we recommend using writing a ``_metadata`` cached property (which
+returns a dictionary, either keyed by track_id or freeform)
+in the Dataset class (see the dataset module example code above). When this is specified,
+it will populate a track's hidden ``_track_metadata`` field, which can be accessed from
+the Track class.
+
+For example, if ``_metadata`` returns a dictionary of the form:
+
+.. code-block:: python
+
+    {
+        'track1': {
+            'artist': 'A',
+            'genre': 'Z'
+        },
+        'track2': {
+            'artist': 'B',
+            'genre': 'Y'
+        }
+    }
+
+the ``_track metadata`` for ``track_id=track2`` will be:
+
+.. code-block:: python
+
+    {
+        'artist': 'B',
+        'genre': 'Y'
+    }
+
+
+Load methods vs Track properties
+--------------------------------
+Track properties and cached properties should be trivial, and directly call a ``load_*`` method.
+There should be no additional logic in a track property/cached property, and instead all logic
+should be done in the load method. We separate these because the track properties are only usable
+when data is available locally - when data is remote, the load methods are used instead.
+
+Missing Data
+------------
+If a Track has a property, for example a type of annotation, that is present for some tracks and not others,
+the property should be set to `None` when it isn't available.
+
+The index should only contain key-values for files that exist.
+
+Custom Decorators
+#################
+
+cached_property
+---------------
+This is used primarily for Track classes.
+
+This decorator causes an Object's function to behave like
+an attribute (aka, like the ``@property`` decorator), but caches
+the value in memory after it is first accessed. This is used
+for data which is relatively large and loaded from files.
+
+docstring_inherit
+-----------------
+This decorator is used for children of the Dataset class, and
+copies the Attributes from the parent class to the docstring of the child.
+This gives us clear and complete docs without a lot of copy-paste.
+
+copy_docs
+---------
+This decorator is used mainly for a dataset's ``load_`` functions, which
+are attached to a loader's Dataset class. The attached function is identical,
+and this decorator simply copies the docstring from another function.
+
+coerce_to_bytes_io/coerce_to_string_io
+--------------------------------------
+These are two decorators used to simplify the loading of various `Track` members
+in addition to giving users the ability to use file streams instead of paths in
+case the data is in a remote location e.g. GCS. The decorators modify the function
+to:
+
+- Return `None` if `None` if passed in.
+- Open a file if a string path is passed in either `'w'` mode for `string_io` or `wb` for `bytes_io` and
+  pass the file handle to the decorated function.
+- Pass the file handle to the decorated function if a file-like object is passed.
+
+This cannot be used if the function to be decorated takes multiple arguments.
+`coerce_to_bytes_io` should not be used if trying to load an mp3 with librosa as libsndfile does not support
+`mp3` yet and `audioread` expects a path.

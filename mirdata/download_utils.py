@@ -1,8 +1,10 @@
-# -*- coding: utf-8 -*-
 """Utilities for downloading from the web.
 """
 
+import glob
+import logging
 import os
+import shutil
 import tarfile
 import urllib
 import zipfile
@@ -10,6 +12,8 @@ import zipfile
 from tqdm import tqdm
 
 from mirdata.validate import md5
+
+logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
 
 
 class RemoteFileMetadata(object):
@@ -20,14 +24,19 @@ class RemoteFileMetadata(object):
         url (str): the remote file's url
         checksum (str): the remote file's md5 checksum
         destination_dir (str or None): the relative path for where to save the file
+        unpack_directories (list or None): list of relative directories. For each directory
+            the contents will be moved to destination_dir (or data_home if not provieds)
 
     """
 
-    def __init__(self, filename, url, checksum, destination_dir):
+    def __init__(
+        self, filename, url, checksum, destination_dir=None, unpack_directories=None
+    ):
         self.filename = filename
         self.url = url
         self.checksum = checksum
         self.destination_dir = destination_dir
+        self.unpack_directories = unpack_directories
 
 
 def downloader(
@@ -36,9 +45,9 @@ def downloader(
     partial_download=None,
     info_message=None,
     force_overwrite=False,
-    cleanup=True,
+    cleanup=False,
 ):
-    """Download data to `save_dir` and optionally print a message.
+    """Download data to `save_dir` and optionally log a message.
 
     Args:
         save_dir (str):
@@ -50,8 +59,8 @@ def downloader(
             A list of keys to partially download the remote objects of the download dict.
             If None, all data is downloaded
         info_message (str or None):
-            A string of info to print when this function is called.
-            If None, no string is printed.
+            A string of info to log when this function is called.
+            If None, no string is logged.
         force_overwrite (bool):
             If True, existing files are overwritten by the downloaded files.
         cleanup (bool):
@@ -61,6 +70,12 @@ def downloader(
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
+    if cleanup:
+        logging.warning(
+            "Zip and tar files will be deleted after they are uncompressed. "
+            + "If you download this dataset again, it will overwrite existing files, even if force_overwrite=False"
+        )
+
     if remotes is not None:
         if partial_download is not None:
             # check the keys in partial_download are in the download dict
@@ -68,18 +83,18 @@ def downloader(
                 [k not in remotes for k in partial_download]
             ):
                 raise ValueError(
-                    "partial_download must be a list which is a subset of {}".format(
-                        remotes.keys()
+                    "partial_download must be a list which is a subset of {}, but got {}".format(
+                        list(remotes.keys()), partial_download
                     )
                 )
             objs_to_download = partial_download
         else:
             objs_to_download = list(remotes.keys())
 
-        print("Starting to download {} to folder {}".format(objs_to_download, save_dir))
+        logging.info("Downloading {} to {}".format(objs_to_download, save_dir))
 
         for k in objs_to_download:
-            print("> downloading {}".format(k))
+            logging.info("[{}] downloading {}".format(k, remotes[k].filename))
             extension = os.path.splitext(remotes[k].filename)[-1]
             if ".zip" in extension:
                 download_zip_file(remotes[k], save_dir, force_overwrite, cleanup)
@@ -88,12 +103,36 @@ def downloader(
             else:
                 download_from_remote(remotes[k], save_dir, force_overwrite)
 
+            if remotes[k].unpack_directories:
+                for src_dir in remotes[k].unpack_directories:
+
+                    # path to destination directory
+                    destination_dir = (
+                        os.path.join(save_dir, remotes[k].destination_dir)
+                        if remotes[k].destination_dir
+                        else save_dir
+                    )
+                    # path to directory to unpack
+                    source_dir = os.path.join(destination_dir, src_dir)
+
+                    if not os.path.exists(source_dir):
+                        logging.info(
+                            "Data not downloaded, because it probably already exists on your computer. "
+                            + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
+                            + "existing files and download from scratch"
+                        )
+                        return
+
+                    move_directory_contents(source_dir, destination_dir)
+
     if info_message is not None:
-        print(info_message.format(save_dir))
+        logging.info(info_message.format(save_dir))
 
 
 class DownloadProgressBar(tqdm):
-    """Wrap `tqdm` to show download progress"""
+    """
+    Wrap `tqdm` to show download progress
+    """
 
     def update_to(self, b=1, bsize=1, tsize=None):
         if tsize is not None:
@@ -101,7 +140,7 @@ class DownloadProgressBar(tqdm):
         self.update(b * bsize - self.n)
 
 
-def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True):
+def download_from_remote(remote, save_dir, force_overwrite):
     """Download a remote dataset into path
     Fetch a dataset pointed by remote's url, save into path using remote's
     filename and ensure its integrity based on the MD5 Checksum of the
@@ -116,8 +155,6 @@ def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True)
         force_overwrite  (bool):
             If True, overwrite existing file with the downloaded file.
             If False, does not overwrite, but checks that checksum is consistent.
-        clean_up (bool):
-            If True, overwrite existing file if the checksum can not be verified.
 
     Returns:
         str: Full path of the created file.
@@ -132,15 +169,12 @@ def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True)
         os.makedirs(download_dir)
 
     download_path = os.path.join(download_dir, remote.filename)
-    if (
-        not os.path.exists(download_path)
-        or force_overwrite
-        or (
-            clean_up
-            and os.path.exists(download_path)
-            and remote.checksum != md5(download_path)
-        )
-    ):
+
+    if not os.path.exists(download_path) or force_overwrite:
+        # if we got here, we want to overwrite any existing file
+        if os.path.exists(download_path):
+            os.remove(download_path)
+
         # If file doesn't exist or we want to overwrite, download it
         with DownloadProgressBar(
             unit="B", unit_scale=True, unit_divisor=1024, miniters=1
@@ -152,7 +186,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True)
                     reporthook=t.update_to,
                     data=None,
                 )
-            except Exception as e:
+            except Exception as exc:
                 error_msg = """
                             mirdata failed to download the dataset from {}!
                             Please try again in a few minutes.
@@ -162,11 +196,17 @@ def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True)
                             """.format(
                     remote.url
                 )
-                print(error_msg)
-                raise e
+                logging.error(error_msg)
+                raise exc
+    else:
+        logging.info(
+            "{} already exists and will not be downloaded. ".format(download_path)
+            + "Rerun with force_overwrite=True to delete this file and force the download."
+        )
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
+
         raise IOError(
             "{} has an MD5 checksum ({}) "
             "differing from expected ({}), "
@@ -175,7 +215,7 @@ def download_from_remote(remote, save_dir, force_overwrite=False, clean_up=True)
     return download_path
 
 
-def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
+def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup):
     """Download and unzip a zip file.
 
     Args:
@@ -186,12 +226,10 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup=True):
         force_overwrite (bool):
             If True, overwrites existing files
         cleanup (bool):
-            If True, remove zipfile after unziping. Default=False
+            If True, remove zipfile after unziping
 
     """
-    zip_download_path = download_from_remote(
-        zip_remote, save_dir, force_overwrite, cleanup
-    )
+    zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite)
     unzip(zip_download_path, cleanup=cleanup)
 
 
@@ -222,12 +260,12 @@ def extractall_unicode(zfile, out_dir):
                 fd.write(data)
 
 
-def unzip(zip_path, cleanup=True):
+def unzip(zip_path, cleanup):
     """Unzip a zip file inside it's current directory.
 
     Args:
         zip_path (str): Path to zip file
-        cleanup (bool): If True, remove zipfile after unzipping. Default=False
+        cleanup (bool): If True, remove zipfile after unzipping
 
     """
     zfile = zipfile.ZipFile(zip_path, "r")
@@ -237,28 +275,26 @@ def unzip(zip_path, cleanup=True):
         os.remove(zip_path)
 
 
-def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup=True):
+def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup):
     """Download and untar a tar file.
 
     Args:
         tar_remote (RemoteFileMetadata): Object containing download information
         save_dir (str): Path to save downloaded file
         force_overwrite (bool): If True, overwrites existing files
-        cleanup (bool): If True, remove tarfile after untarring. Default=False
+        cleanup (bool): If True, remove tarfile after untarring
 
     """
-    tar_download_path = download_from_remote(
-        tar_remote, save_dir, force_overwrite, cleanup
-    )
+    tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite)
     untar(tar_download_path, cleanup=cleanup)
 
 
-def untar(tar_path, cleanup=True):
+def untar(tar_path, cleanup):
     """Untar a tar file inside it's current directory.
 
     Args:
         tar_path (str): Path to tar file
-        cleanup (bool): If True, remove tarfile after untarring. Default=False
+        cleanup (bool): If True, remove tarfile after untarring
 
     """
     tfile = tarfile.open(tar_path, "r")
@@ -266,3 +302,26 @@ def untar(tar_path, cleanup=True):
     tfile.close()
     if cleanup:
         os.remove(tar_path)
+
+
+def move_directory_contents(source_dir, target_dir):
+    """Move the contents of source_dir into target_dir, and delete source_dir
+
+    Args:
+        source_dir (str): path to source directory
+        target_dir (str): path to target directory
+
+    """
+    directory_contents = glob.glob(os.path.join(source_dir, "*"))
+    for fpath in directory_contents:
+        target_path = os.path.join(target_dir, os.path.basename(fpath))
+        if os.path.exists(target_path):
+            logging.info(
+                "{} already exists. Run with force_overwrite=True to download from scratch".format(
+                    target_path
+                )
+            )
+            continue
+        shutil.move(fpath, target_dir)
+
+    shutil.rmtree(source_dir)

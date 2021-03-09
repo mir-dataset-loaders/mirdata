@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """iKala Dataset Loader
 
 .. admonition:: Dataset Info
@@ -20,16 +19,18 @@ import os
 import librosa
 import logging
 import numpy as np
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core
 from mirdata import annotations
+from mirdata import io
 
 
 BIBTEX = """@inproceedings{chan2015vocal,
     title={Vocal activity informed singing voice separation with the iKala dataset},
-    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and 
+    author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and
     Jang, Roger},
     booktitle={2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
     pages={718--722},
@@ -42,7 +43,6 @@ REMOTES = {
         filename="id_mapping.txt",
         url="http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt",
         checksum="81097b587804ce93e56c7a331ba06abc",
-        destination_dir=None,
     )
 }
 DOWNLOAD_INFO = """
@@ -57,34 +57,9 @@ DOWNLOAD_INFO = """
 """
 
 LICENSE_INFO = """
-When it was distributed, Ikala used to have a custom license. 
+When it was distributed, Ikala used to have a custom license.
 Visit http://mac.citi.sinica.edu.tw/ikala/ for more details.
 """
-
-
-def _load_metadata(data_home):
-    id_map_path = os.path.join(data_home, "id_mapping.txt")
-    if not os.path.exists(id_map_path):
-        logging.info(
-            "Metadata file {} not found.".format(id_map_path)
-            + "You can download the metadata file for ikala by running ikala.download"
-        )
-        return None
-
-    with open(id_map_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        singer_map = {}
-        for line in reader:
-            if line[0] == "singer":
-                continue
-            singer_map[line[1]] = line[0]
-
-    singer_map["data_home"] = data_home
-
-    return singer_map
-
-
-DATA = core.LargeData("ikala_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -108,16 +83,22 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in iKala".format(track_id))
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
-
-        metadata = DATA.metadata(data_home)
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
         self.f0_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
         self.lyrics_path = os.path.join(self._data_home, self._track_paths["lyrics"][0])
 
@@ -125,48 +106,47 @@ class Track(core.Track):
         self.song_id = track_id.split("_")[0]
         self.section = track_id.split("_")[1]
 
-        if metadata is not None and self.song_id in metadata:
-            self.singer_id = metadata[self.song_id]
-        else:
-            self.singer_id = None
+    @property
+    def singer_id(self):
+        return self._track_metadata.get(self.song_id)
 
     @core.cached_property
-    def f0(self):
+    def f0(self) -> Optional[annotations.F0Data]:
         return load_f0(self.f0_path)
 
     @core.cached_property
-    def lyrics(self):
+    def lyrics(self) -> Optional[annotations.LyricData]:
         return load_lyrics(self.lyrics_path)
 
     @property
-    def vocal_audio(self):
+    def vocal_audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """solo vocal audio (mono)
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_vocal_audio(self.audio_path)
 
     @property
-    def instrumental_audio(self):
+    def instrumental_audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """instrumental audio (mono)
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_instrumental_audio(self.audio_path)
 
     @property
-    def mix_audio(self):
+    def mix_audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """mixture audio (mono)
 
         Returns:
-           * np.ndarray - audio signal
-           * float - sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_mix_audio(self.audio_path)
@@ -191,68 +171,63 @@ class Track(core.Track):
         )
 
 
-def load_vocal_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_vocal_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load ikala vocal audio
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
-        * np.ndarray - the mono audio signal
-        * float - The sample rate of the audio file
+        * np.ndarray - audio signal
+        * float - sample rate
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    audio, sr = librosa.load(audio_path, sr=None, mono=False)
+    audio, sr = librosa.load(fhandle, sr=None, mono=False)
     vocal_channel = audio[1, :]
     return vocal_channel, sr
 
 
-def load_instrumental_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_instrumental_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load ikala instrumental audio
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
-        * np.ndarray - the mono audio signal
-        * float - The sample rate of the audio file
+        * np.ndarray - audio signal
+        * float - sample rate
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    audio, sr = librosa.load(audio_path, sr=None, mono=False)
+    audio, sr = librosa.load(fhandle, sr=None, mono=False)
     instrumental_channel = audio[0, :]
     return instrumental_channel, sr
 
 
-def load_mix_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_mix_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load an ikala mix.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
-        * np.ndarray - the mono audio signal
-        * float - The sample rate of the audio file
+        * np.ndarray - audio signal
+        * float - sample rate
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    mixed_audio, sr = librosa.load(audio_path, sr=None, mono=True)
+    mixed_audio, sr = librosa.load(fhandle, sr=None, mono=True)
     # multipy by 2 because librosa averages the left and right channel.
     return 2.0 * mixed_audio, sr
 
 
-def load_f0(f0_path):
+@io.coerce_to_string_io
+def load_f0(fhandle: TextIO) -> annotations.F0Data:
     """Load an ikala f0 annotation
 
     Args:
-        f0_path (str): path to f0 annotation file
+        fhandle (str or file-like): File-like object or path to f0 annotation file
 
     Raises:
         IOError: If f0_path does not exist
@@ -261,11 +236,7 @@ def load_f0(f0_path):
         F0Data: the f0 annotation data
 
     """
-    if not os.path.exists(f0_path):
-        raise IOError("f0_path {} does not exist".format(f0_path))
-
-    with open(f0_path) as fhandle:
-        lines = fhandle.readlines()
+    lines = fhandle.readlines()
     f0_midi = np.array([float(line) for line in lines])
     f0_hz = librosa.midi_to_hz(f0_midi) * (f0_midi > 0)
     confidence = (f0_hz > 0).astype(float)
@@ -274,11 +245,12 @@ def load_f0(f0_path):
     return f0_data
 
 
-def load_lyrics(lyrics_path):
+@io.coerce_to_string_io
+def load_lyrics(fhandle: TextIO) -> annotations.LyricData:
     """Load an ikala lyrics annotation
 
     Args:
-        lyrics_path (str): path to lyric annotation file
+        fhandle (str or file-like): File-like object or path to lyric annotation file
 
     Raises:
         IOError: if lyrics_path does not exist
@@ -287,25 +259,21 @@ def load_lyrics(lyrics_path):
         LyricData: lyric annotation data
 
     """
-    if not os.path.exists(lyrics_path):
-        raise IOError("lyrics_path {} does not exist".format(lyrics_path))
-
     # input: start time (ms), end time (ms), lyric, [pronunciation]
-    with open(lyrics_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=" ")
-        start_times = []
-        end_times = []
-        lyrics = []
-        pronunciations = []
-        for line in reader:
-            start_times.append(float(line[0]) / 1000.0)
-            end_times.append(float(line[1]) / 1000.0)
-            lyrics.append(line[2])
-            if len(line) > 2:
-                pronunciation = " ".join(line[3:])
-                pronunciations.append(pronunciation)
-            else:
-                pronunciations.append("")
+    reader = csv.reader(fhandle, delimiter=" ")
+    start_times = []
+    end_times = []
+    lyrics = []
+    pronunciations = []
+    for line in reader:
+        start_times.append(float(line[0]) / 1000.0)
+        end_times.append(float(line[1]) / 1000.0)
+        lyrics.append(line[2])
+        if len(line) > 2:
+            pronunciation = " ".join(line[3:])
+            pronunciations.append(pronunciation)
+        else:
+            pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
         np.array([start_times, end_times]).T,
@@ -324,14 +292,29 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="ikala",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
+
+    @core.cached_property
+    def _metadata(self):
+        id_map_path = os.path.join(self.data_home, "id_mapping.txt")
+        if not os.path.exists(id_map_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        with open(id_map_path, "r") as fhandle:
+            reader = csv.reader(fhandle, delimiter="\t")
+            singer_map = {}
+            for line in reader:
+                if line[0] == "singer":
+                    continue
+                singer_map[line[1]] = line[0]
+
+        return singer_map
 
     @core.copy_docs(load_vocal_audio)
     def load_vocal_audio(self, *args, **kwargs):
