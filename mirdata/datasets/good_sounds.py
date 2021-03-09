@@ -17,35 +17,32 @@
     * instrument: flute, cello, clarinet, trumpet, violin, sax_alto, sax_tenor, sax_baritone, sax_soprano, oboe, piccolo, bass
     * note
     * octave
-    - dynamics: - for some sounds, the musical notation of the loudness level (p, mf, f..)
-    - recorded_at: - recording date and time
-    - location: - recording place
-    - player: - the musician who recorded. For detailed information about the musicians contact us.
-    - bow_velocity: - for some string instruments the velocity of the bow (slow, medieum, fast)
-    - bridge_position: - for some string instruments the position of the bow (tasto, middle, ponticello)
-    - string: - for some string instruments the number of the string in which the sound it's played (1: lowest in pitch)
-    - csv_file: - used for creation of the DB
-    - csv_id: - used for creation of the DB
-    - pack_filename: - used for creation of the DB
-    - pack_id: - used for creation of the DB
-    - attack: - for single notes, manual annotation of the onset in samples.
-    - decay: - for single notes, manual annotation of the decay in samples.
-    - sustain: - for single notes, manual annotation of the beginnig of the sustained part in samples.
-    - release: - for single notes, manual annotation of the beginnig of the release part in samples.
-    - offset: - for single notes, manual annotation of the offset in samples
-    - reference: - 1 if sound was used to create the models in the good-sounds project, 0 if not.
-    - klass: - user generated tags of the tonal qualities of the sound. They also contain information about the exercise, that could be single note or scale.
-        - "good-sound":   good examples of single note
-        - "bad": - bad example of one of the sound attributes defined in the project (please read the papers for a detailed explanation)
-        - "scale-good": good example of a one octave scale going up and down (15 notes). If the scale is minor a tagged "minor" is also available.
-        - "scale-bad": bad example scale of one of the sounds defined in the project. (15 notes up and down).
-        Other tags regarding tonal characteristics are also available.
-
-       comments: if any
-
-       semitone: midi note
-
-       pitch_reference: the reference pitch
+    * dynamics: for some sounds, the musical notation of the loudness level (p, mf, f..)
+    * recorded_at: recording date and time
+    * location: recording place
+    * player: the musician who recorded. For detailed information about the musicians contact us.
+    * bow_velocity: for some string instruments the velocity of the bow (slow, medieum, fast)
+    * bridge_position: for some string instruments the position of the bow (tasto, middle, ponticello)
+    * string: for some string instruments the number of the string in which the sound it's played (1: lowest in pitch)
+    * csv_file: used for creation of the DB
+    * csv_id: used for creation of the DB
+    * pack_filename: used for creation of the DB
+    * pack_id: used for creation of the DB
+    * attack: for single notes, manual annotation of the onset in samples.
+    * decay: for single notes, manual annotation of the decay in samples.
+    * sustain: for single notes, manual annotation of the beginnig of the sustained part in samples.
+    * release: for single notes, manual annotation of the beginnig of the release part in samples.
+    * offset: for single notes, manual annotation of the offset in samples
+    * reference: 1 if sound was used to create the models in the good-sounds project, 0 if not.
+    * klass: user generated tags of the tonal qualities of the sound. They also contain information about the exercise, that could be single note or scale.
+        * "good-sound":  good examples of single note
+        * "bad": bad example of one of the sound attributes defined in the project (please read the papers for a detailed explanation)
+        * "scale-good": good example of a one octave scale going up and down (15 notes). If the scale is minor a tagged "minor" is also available.
+        * "scale-bad": bad example scale of one of the sounds defined in the project. (15 notes up and down).
+        * Other tags regarding tonal characteristics are also available.
+            * comments: if any
+            * semitone: midi note
+            * pitch_reference: the reference pitch
 
     *****
     takes
