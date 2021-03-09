@@ -13,10 +13,12 @@
         2. pycode.zip: util code for parsing the .textgrid annotation
         3. catalogue*.csv: recording metadata, source separation recordings are not included.
         4. annotation_txt.zip: phrase, syllable and phoneme time boundaries (second) and labels in .txt format
-            1. phrase_char: phrase-level time boundaries, labeled in Mandarin characters
-            2. phrase: phrase-level time boundaries, labeled in Mandarin pinyin
-            3. syllable: syllable-level time boundaries, labeled in Mandarin pinyin
-            4. phoneme: phoneme-level time boundaries, labeled in X-SAMPA
+
+    The annotation_txt.zip folder annotations are represented as follows:
+        1. phrase_char: phrase-level time boundaries, labeled in Mandarin characters
+        2. phrase: phrase-level time boundaries, labeled in Mandarin pinyin
+        3. syllable: syllable-level time boundaries, labeled in Mandarin pinyin
+        4. phoneme: phoneme-level time boundaries, labeled in X-SAMPA
 
     The boundaries (onset and offset) have been annotated hierarchically:
         1. phrase (line)
