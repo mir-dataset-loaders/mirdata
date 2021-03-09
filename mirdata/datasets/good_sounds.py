@@ -9,7 +9,7 @@
     It is organised in 4 entities:
 
     Sounds
-    ######
+
 
     The entity containing the sounds annotations.
 
@@ -47,7 +47,7 @@
                 * pitch_reference: the reference pitch
 
     Takes
-    #####
+
 
     A sound can have several takes as some of them were recorded using different microphones at the same time. Each take has an associated audio file.
         - id
@@ -59,7 +59,7 @@
         - goodsound_id: for some of the sounds available in good-sounds.org
 
     Packs
-    #####
+
 
     A pack is a group of sounds from the same recording session. The audio files are organised in the sound_files directory in subfolders with the pack name to which they belong.
         - id
@@ -68,7 +68,7 @@
 
 
     Ratings
-    #######
+
 
     Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first project prototype. Please read the paper for more detailed information.
         - id
