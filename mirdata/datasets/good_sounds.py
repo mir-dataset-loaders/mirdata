@@ -8,11 +8,10 @@
     recordings of two kind of exercises: single notes and scales.
     It is organised in 4 entities:
 
-    *****
-    Sounds
-    *****
+    *Sounds*
 
     The entity containing the sounds annotations.
+
         * id
         * instrument: flute, cello, clarinet, trumpet, violin, sax_alto, sax_tenor, sax_baritone, sax_soprano, oboe, piccolo, bass
         * note
@@ -35,47 +34,46 @@
         * offset: for single notes, manual annotation of the offset in samples
         * reference: 1 if sound was used to create the models in the good-sounds project, 0 if not.
         * klass: user generated tags of the tonal qualities of the sound. They also contain information about the exercise, that could be single note or scale.
+
             * "good-sound":  good examples of single note
             * "bad": bad example of one of the sound attributes defined in the project (please read the papers for a detailed explanation)
             * "scale-good": good example of a one octave scale going up and down (15 notes). If the scale is minor a tagged "minor" is also available.
             * "scale-bad": bad example scale of one of the sounds defined in the project. (15 notes up and down).
             * Other tags regarding tonal characteristics are also available.
+
                 * comments: if any
                 * semitone: midi note
                 * pitch_reference: the reference pitch
 
-    *****
-    takes
-    *****
+    *Takes*
+
     A sound can have several takes as some of them were recorded using different microphones at the same time. Each take has an associated audio file.
-    - id
-    - microphone
-    - filename: the name of the associated audio file
-    - original_filename:
-    - freesound_id: for some sounds uploaded to freesound.org
-    - sound_id: the id of the sound in the DB
-    - goodsound_id: for some of the sounds available in good-sounds.org
+        - id
+        - microphone
+        - filename: the name of the associated audio file
+        - original_filename:
+        - freesound_id: for some sounds uploaded to freesound.org
+        - sound_id: the id of the sound in the DB
+        - goodsound_id: for some of the sounds available in good-sounds.org
 
-    *****
-    packs
-    *****
+    *Packs*
+
     A pack is a group of sounds from the same recording session. The audio files are organised in the sound_files directory in subfolders with the pack name to which they belong.
-    - id
-    - name
-    - description
+        - id
+        - name
+        - description
 
-    *****
-    ratings
-    *****
+
+    *Ratings*
 
     Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first project prototype. Please read the paper for more detailed information.
-    - id
-    - mark: the rate or score.
-    - type: the klass of the sound. Related to the tags of the sound.
-    - created_at
-    - comments
-    - sound_id
-    - rater: the musician who rated the sound.
+        - id
+        - mark: the rate or score.
+        - type: the klass of the sound. Related to the tags of the sound.
+        - created_at
+        - comments
+        - sound_id
+        - rater: the musician who rated the sound.
 
 
 """
