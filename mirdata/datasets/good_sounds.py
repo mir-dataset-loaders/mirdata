@@ -13,10 +13,10 @@
     *****
 
     The entity containing the sounds annotations.
-    - id -
-    - instrument: - flute, cello, clarinet, trumpet, violin, sax_alto, sax_tenor, sax_baritone, sax_soprano, oboe, piccolo, bass
-    - note -
-    - octave -
+    * id
+    * instrument: flute, cello, clarinet, trumpet, violin, sax_alto, sax_tenor, sax_baritone, sax_soprano, oboe, piccolo, bass
+    * note
+    * octave
     - dynamics: - for some sounds, the musical notation of the loudness level (p, mf, f..)
     - recorded_at: - recording date and time
     - location: - recording place
@@ -35,10 +35,10 @@
     - offset: - for single notes, manual annotation of the offset in samples
     - reference: - 1 if sound was used to create the models in the good-sounds project, 0 if not.
     - klass: - user generated tags of the tonal qualities of the sound. They also contain information about the exercise, that could be single note or scale.
-        - "good-sound": -  good examples of single note
+        - "good-sound":   good examples of single note
         - "bad": - bad example of one of the sound attributes defined in the project (please read the papers for a detailed explanation)
-        - "scale-good": - good example of a one octave scale going up and down (15 notes). If the scale is minor a tagged "minor" is also available.
-        - "scale-bad": - bad example scale of one of the sounds defined in the project. (15 notes up and down).
+        - "scale-good": good example of a one octave scale going up and down (15 notes). If the scale is minor a tagged "minor" is also available.
+        - "scale-bad": bad example scale of one of the sounds defined in the project. (15 notes up and down).
         Other tags regarding tonal characteristics are also available.
 
        comments: if any
