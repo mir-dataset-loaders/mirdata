@@ -95,17 +95,11 @@ class Track(core.Track):
             metadata,
         )
 
-        self.melody1_path = os.path.join(
-            self._data_home, self._track_paths["melody1"][0]
-        )
-        self.melody2_path = os.path.join(
-            self._data_home, self._track_paths["melody2"][0]
-        )
-        self.melody3_path = os.path.join(
-            self._data_home, self._track_paths["melody3"][0]
-        )
+        self.melody1_path = self.get_path("melody1")
+        self.melody2_path = self.get_path("melody2")
+        self.melody3_path = self.get_path("melody3")
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
     @property
     def artist(self):

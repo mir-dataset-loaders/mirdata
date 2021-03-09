@@ -36,6 +36,15 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
+   * - Billboard (McGill)
+     - - audio: 🔑
+       - annotations: ✅
+     - - :ref:`chords`
+       - :ref:`sections`
+     - 890
+     - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
+          :target: http://creativecommons.org/publicdomain/zero/1.0/
+
    * - cante100
      - - audio: 🔑
        - annotations: ✅
@@ -187,6 +196,15 @@
        - annotations: ✅
      - Melody :ref:`f0`
      - 64
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - PHENICX-Anechoic
+     - - multitrack audio: ✅
+       - annotations: ✅
+     - - Aligned score :ref:`notes`
+       - Original score :ref:`notes`
+     - 4
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 

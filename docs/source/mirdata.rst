@@ -35,6 +35,13 @@ beatport_key
    :members:
    :inherited-members:
 
+billboard
+^^^^^^^^^
+
+.. automodule:: mirdata.datasets.billboard
+   :members:
+   :inherited-members:
+
 
 cante100
 ^^^^^^^^
@@ -168,6 +175,14 @@ orchset
 ^^^^^^^
 
 .. automodule:: mirdata.datasets.orchset
+   :members:
+   :inherited-members:
+
+
+phenicx_anechoic
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.phenicx_anechoic
    :members:
    :inherited-members:
 

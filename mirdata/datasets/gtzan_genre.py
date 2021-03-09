@@ -79,7 +79,7 @@ class Track(core.Track):
         if self.genre == "hiphop":
             self.genre = "hip-hop"
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:

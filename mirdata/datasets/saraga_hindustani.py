@@ -127,30 +127,16 @@ class Track(core.Track):
         )
 
         # Audio path
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
         # Annotation paths
-        self.ctonic_path = core.none_path_join(
-            [self._data_home, self._track_paths["ctonic"][0]]
-        )
-        self.pitch_path = core.none_path_join(
-            [self._data_home, self._track_paths["pitch"][0]]
-        )
-        self.tempo_path = core.none_path_join(
-            [self._data_home, self._track_paths["tempo"][0]]
-        )
-        self.sama_path = core.none_path_join(
-            [self._data_home, self._track_paths["sama"][0]]
-        )
-        self.sections_path = core.none_path_join(
-            [self._data_home, self._track_paths["sections"][0]]
-        )
-        self.phrases_path = core.none_path_join(
-            [self._data_home, self._track_paths["phrases"][0]]
-        )
-        self.metadata_path = core.none_path_join(
-            [self._data_home, self._track_paths["metadata"][0]]
-        )
+        self.ctonic_path = self.get_path("ctonic")
+        self.pitch_path = self.get_path("pitch")
+        self.tempo_path = self.get_path("tempo")
+        self.sama_path = self.get_path("sama")
+        self.sections_path = self.get_path("sections")
+        self.phrases_path = self.get_path("phrases")
+        self.metadata_path = self.get_path("metadata")
 
     @core.cached_property
     def tonic(self):

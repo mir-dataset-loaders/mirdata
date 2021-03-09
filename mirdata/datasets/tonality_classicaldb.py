@@ -132,15 +132,14 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.key_path = os.path.join(self._data_home, self._track_paths["key"][0])
-        self.spectrum_path = os.path.join(
-            self._data_home, self._track_paths["spectrum"][0]
-        )
-        self.musicbrainz_path = os.path.join(
-            self._data_home, self._track_paths["mb"][0]
-        )
-        self.hpcp_path = os.path.join(self._data_home, self._track_paths["HPCP"][0])
+
+        self.key_path = self.get_path("key")
+        self.spectrum_path = self.get_path("spectrum")
+        self.musicbrainz_path = self.get_path("mb")
+        self.hpcp_path = self.get_path("HPCP")
+
+        self.audio_path = self.get_path("audio")
+
         self.title = self.audio_path.replace(".wav", "").split("/")[-1]
 
     @core.cached_property
