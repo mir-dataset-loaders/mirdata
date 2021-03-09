@@ -12,12 +12,11 @@
         1. wav.zip: audio files in .wav format, mono or stereo.
         2. pycode.zip: util code for parsing the .textgrid annotation
         3. catalogue*.csv: recording metadata, source separation recordings are not included.
-        4. textgrid.zip: phrase, syllable and phoneme annotation in Praat .textgrid format
-        5. annotation_txt.zip: phrase, syllable and phoneme time boundaries (second) and labels in .txt format
-            * phrase_char: phrase-level time boundaries, labeled in Mandarin characters
-            * phrase: phrase-level time boundaries, labeled in Mandarin pinyin
-            * syllable: syllable-level time boundaries, labeled in Mandarin pinyin
-            * phoneme: phoneme-level time boundaries, labeled in X-SAMPA
+        4. annotation_txt.zip: phrase, syllable and phoneme time boundaries (second) and labels in .txt format
+            1. phrase_char: phrase-level time boundaries, labeled in Mandarin characters
+            2. phrase: phrase-level time boundaries, labeled in Mandarin pinyin
+            3. syllable: syllable-level time boundaries, labeled in Mandarin pinyin
+            4. phoneme: phoneme-level time boundaries, labeled in X-SAMPA
 
     The boundaries (onset and offset) have been annotated hierarchically:
         1. phrase (line)
@@ -122,8 +121,6 @@ class Track(core.Track):
         phrase_char_path (str): local path where the lyric phrase annotation in chinese is stored
         phrase_path (str): local path where the lyric phrase annotation in western characters is stored
         syllable_path (str): local path where the syllable annotation is stored
-
-    Properties:
         work (str): string referring to the work where the track belongs
         details (float): string referring to additional details about the track
 
