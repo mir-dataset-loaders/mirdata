@@ -64,10 +64,8 @@
    * - Giantsteps tempo
      - - audio: : ❌
        - annotations: ✅
-     - - `sounds <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
-       - `takes <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
-       - `packs <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
-       - `ratings <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
+     - - global :ref:`genre`
+       - global :ref:`tempo`
      - 664
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
@@ -75,9 +73,11 @@
    * - Good Sounds
      - - audio: : ✅
        - annotations: ✅
-     - - global :ref:`genre`
-       - global :ref:`tempo`
-     - 664
+     - - `sounds <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
+       - `takes <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
+       - `packs <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
+       - `ratings <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
+     - 19118
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
