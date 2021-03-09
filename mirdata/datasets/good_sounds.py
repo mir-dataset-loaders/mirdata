@@ -126,8 +126,6 @@ REMOTES = {
     )
 }
 
-DATA = core.LargeData("good_sounds_index.json")
-
 
 class Track(core.Track):
     """GOOD-SOUNDS Track class
@@ -140,11 +138,21 @@ class Track(core.Track):
         audio_path (str): Path to the audio file
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index['tracks']:
-            raise ValueError(
-                "{} is not a valid track ID in GOOD-SOUNDS".format(track_id)
-            )
+    def __init__(
+            self,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.track_id = track_id
 
