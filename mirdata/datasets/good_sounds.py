@@ -96,9 +96,33 @@ BIBTEX = """@inproceedings{romani2015real,
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="good-sounds.zip",
-        url="https://zenodo.org/record/820937/files/good-sounds.zip?download=1",
+        url="https://zenodo.org/record/4588740/files/good-sounds.zip?download=1",
         checksum="2137bbb2d32c1d60aa51e1301225f541",
-        destination_dir="../../../../Desktop/good_sounds",
+        destination_dir=".",
+    ),
+    "packs": download_utils.RemoteFileMetadata(
+        filename="packs.json",
+        url="https://zenodo.org/record/4588740/files/packs.json?download=1",
+        checksum="3b512c280f8be64ccb59b0b294e84610",
+        destination_dir=".",
+    ),
+    "ratings": download_utils.RemoteFileMetadata(
+        filename="ratings.json",
+        url="https://zenodo.org/record/4588740/files/ratings.json?download=1",
+        checksum="b50b95fc7eb996b31a7cd290070f8059",
+        destination_dir=".",
+    ),
+    "sounds": download_utils.RemoteFileMetadata(
+        filename="sounds.json",
+        url="https://zenodo.org/record/4588740/files/sounds.json?download=1",
+        checksum="a60d90a964fd567ebc2e4b4e3f2990f2",
+        destination_dir=".",
+    ),
+    "takes": download_utils.RemoteFileMetadata(
+        filename="takes.json",
+        url="https://zenodo.org/record/4588740/files/takes.json?download=1",
+        checksum="318e840031397314907e7f9420f2abeb",
+        destination_dir=".",
     )
 }
 
