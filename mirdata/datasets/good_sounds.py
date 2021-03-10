@@ -81,10 +81,13 @@
 
 
 """
+import json
 import os
-import librosa
-from mirdata import download_utils, jams_utils, core
+from typing import Optional, Tuple, BinaryIO
 
+import librosa
+import numpy as np
+from mirdata import download_utils, jams_utils, core, io
 
 BIBTEX = """@inproceedings{romani2015real,
   title={A Real-Time System for Measuring Sound Goodness in Instrumental Sounds},
@@ -94,12 +97,6 @@ BIBTEX = """@inproceedings{romani2015real,
   organization={Audio Engineering Society}
 }"""
 REMOTES = {
-    "all": download_utils.RemoteFileMetadata(
-        filename="good-sounds.zip",
-        url="https://zenodo.org/record/4588740/files/good-sounds.zip?download=1",
-        checksum="2137bbb2d32c1d60aa51e1301225f541",
-        destination_dir=".",
-    ),
     "packs": download_utils.RemoteFileMetadata(
         filename="packs.json",
         url="https://zenodo.org/record/4588740/files/packs.json?download=1",
@@ -123,7 +120,13 @@ REMOTES = {
         url="https://zenodo.org/record/4588740/files/takes.json?download=1",
         checksum="318e840031397314907e7f9420f2abeb",
         destination_dir=".",
-    )
+    ),
+    "all": download_utils.RemoteFileMetadata(
+        filename="good-sounds.zip",
+        url="https://zenodo.org/record/4588740/files/good-sounds.zip?download=1",
+        checksum="2137bbb2d32c1d60aa51e1301225f541",
+        destination_dir=".",
+    ),
 }
 
 
@@ -155,29 +158,29 @@ class Track(core.Track):
         )
 
         self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index['tracks'][track_id]
-
-        self.audio_path = core.none_path_join(
-            [self._data_home, self._track_paths["audio"][0]]
-        )
+        self.audio_path = self.get_path("audio")
 
     @property
-    def audio(self):
-        """(np.ndarray, float): audio signal, sample rate"""
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     @core.cached_property
     def get_sound_info(self):
         """dict: The entity containing the sounds annotations."""
-        return DATA.index["sounds"][str(DATA.index["takes"][self.track_id]["sound_id"])]
+        return self._metadata()["sounds"][str(self._metadata()["takes"][self.track_id]["sound_id"])]
 
     @core.cached_property
     def get_take_info(self):
         """dict: A sound can have several takes as some of them were recorded using different microphones at the same
         time. Each take has an associated audio file."""
-        take_info = DATA.index["takes"][self.track_id]
+        take_info = self._metadata()["takes"][self.track_id]
         take_info["filename"] = self.audio_path
         return take_info
 
@@ -185,15 +188,15 @@ class Track(core.Track):
     def get_ratings_info(self):
         """dict: A pack is a group of sounds from the same recording session. The audio files are organised in the
         *sound_files* directory in subfolders with the pack name to which they belong."""
-        sound_id = str(DATA.index["takes"][self.track_id]["sound_id"])
-        return list(filter(lambda rating: rating['sound_id'] == sound_id, DATA.index["ratings"].values()))
+        sound_id = str(self._metadata()["takes"][self.track_id]["sound_id"])
+        return list(filter(lambda rating: rating['sound_id'] == sound_id, self._metadata()["ratings"].values()))
 
     @core.cached_property
     def get_pack_info(self):
         """dict: Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first
          project prototype. Please read the paper for more detailed information."""
-        return DATA.index["packs"][
-            str(DATA.index["sounds"][str(DATA.index["takes"][self.track_id]["sound_id"])]["pack_id"])
+        return self._metadata()["packs"][
+            str(self._metadata()["sounds"][str(self._metadata()["takes"][self.track_id]["sound_id"])]["pack_id"])
         ]
 
     def to_jams(self):
@@ -209,21 +212,19 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
-    """Load a GOOD-SOUNDS audio file.
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load a Beatles audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        y (np.ndarray): the mono audio signal
-        sr (float): The sample rate of the audio file
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-
-    return librosa.load(audio_path, sr=22050, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @core.docstring_inherit(core.Dataset)
@@ -235,14 +236,41 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            index=DATA.index,
             name="good_sounds",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info="",
             license_info="Creative Commons Attribution Share Alike 4.0 International.",
         )
+
+    @core.cached_property
+    def _metadata(self):
+        packs = os.path.join(self.data_home, "packs.json")
+        if not os.path.exists(packs):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+        with open(packs, "r") as fhandle:
+            packs = json.load(fhandle)
+
+        ratings = os.path.join(self.data_home, "ratings.json")
+        if not os.path.exists(ratings):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+        with open(ratings, "r") as fhandle:
+            ratings = json.load(fhandle)
+
+        sounds = os.path.join(self.data_home, "sounds.json")
+        if not os.path.exists(sounds):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+        with open(sounds, "r") as fhandle:
+            sounds = json.load(fhandle)
+
+        takes = os.path.join(self.data_home, "takes.json")
+        if not os.path.exists(takes):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+        with open(takes, "r") as fhandle:
+            takes = json.load(fhandle)
+
+        return {"packs": packs, "ratings": ratings, "sounds": sounds, "takes": takes}
 
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):

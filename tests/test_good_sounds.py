@@ -7,8 +7,10 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "1"
+
     data_home = "tests/resources/mir_datasets/good_sounds"
-    track = good_sounds.Track(default_trackid, data_home=data_home)
+    dataset = good_sounds.Dataset(data_home)
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         'audio_path': 'tests/resources/mir_datasets/good_sounds/good-sounds/sound_files/flute_almudena_reference/akg/0000.wav',
@@ -16,6 +18,7 @@ def test_track():
     }
 
     expected_property_types = {
+        'audio': tuple,
         'get_pack_info': dict,
         'get_ratings_info': list,
         'get_sound_info': dict,
@@ -25,15 +28,18 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
     audio, sr = track.audio
-    assert sr == 22050, "sample rate {} is not 44100".format(sr)
-    assert audio.shape == (176400,), "audio shape {} was not (176400,)".format(
+    assert sr == 48000, "sample rate {} is not 44100".format(sr)
+    assert audio.shape == (384000,), "audio shape {} was not (384000,)".format(
         audio.shape
     )
 
 
 def test_to_jams():
+    default_trackid = "1"
     data_home = "tests/resources/mir_datasets/good_sounds"
-    track = good_sounds.Track("1", data_home=data_home)
+    dataset = good_sounds.Dataset(data_home)
+    track = dataset.track(default_trackid)
+
     jam = track.to_jams()
     ground_truth_sound = {
                 "id": 1,
