@@ -189,7 +189,7 @@ class Track(core.Track):
             metadata,
         )
 
-        self.path = core.none_path_join([self._data_home, self._track_paths["data"][0]])
+        self.path = self.get_path("data")
         self.genre = [genre for genre in self.track_id.split("#")[4:] if genre != ""]
         self.mbid = self.track_id.split("#")[2]
         self.mbid_group = self.track_id.split("#")[3]

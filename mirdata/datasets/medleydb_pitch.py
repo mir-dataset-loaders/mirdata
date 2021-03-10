@@ -90,9 +90,9 @@ class Track(core.Track):
             metadata,
         )
 
-        self.pitch_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
+        self.pitch_path = self.get_path("pitch")
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
     @property
     def instrument(self):

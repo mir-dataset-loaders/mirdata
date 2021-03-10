@@ -99,10 +99,11 @@ class Track(core.Track):
             metadata,
         )
 
-        self.f0_path = os.path.join(self._data_home, self._track_paths["pitch"][0])
-        self.lyrics_path = os.path.join(self._data_home, self._track_paths["lyrics"][0])
+        self.f0_path = self.get_path("pitch")
+        self.lyrics_path = self.get_path("lyrics")
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
+
         self.song_id = track_id.split("_")[0]
         self.section = track_id.split("_")[1]
 
