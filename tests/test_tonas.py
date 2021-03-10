@@ -24,8 +24,8 @@ def test_track():
     }
 
     expected_property_types = {
-        "f0": tonas.F0DataTonas,
-        "notes": tonas.NoteDataTonas,
+        "f0": tonas.F0Data,
+        "notes": tonas.NoteData,
         "audio": tuple,
         "singer": str,
         "style": str,
@@ -88,7 +88,7 @@ def test_load_melody():
     f0_data = tonas.load_f0(f0_path)
 
     # check types
-    assert type(f0_data) == tonas.F0DataTonas
+    assert type(f0_data) == tonas.F0Data
     assert type(f0_data.times) is np.ndarray
     assert type(f0_data.automatic_frequencies) is np.ndarray
     assert type(f0_data.frequencies) is np.ndarray
@@ -129,7 +129,7 @@ def test_load_notes():
     tuning_frequency = tonas.load_tuning_frequency(notes_path)
 
     # check types
-    assert type(notes_data) == tonas.NoteDataTonas
+    assert type(notes_data) == tonas.NoteData
     assert type(notes_data.intervals) is np.ndarray
     assert type(notes_data.notes) is np.ndarray
     assert type(notes_data.energies) is np.ndarray

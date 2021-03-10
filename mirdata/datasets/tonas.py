@@ -93,7 +93,7 @@ to Music Technology Group, Universitat Pompeu Fabra. All Rights Reserved.
 """
 
 
-class NoteDataTonas(annotations.NoteData):
+class NoteData(annotations.NoteData):
     def __init__(self, intervals, notes, energies, confidence=None):
         super().__init__(intervals, notes, confidence)
 
@@ -113,7 +113,7 @@ class NoteDataTonas(annotations.NoteData):
         self.confidence = confidence
 
 
-class F0DataTonas(annotations.F0Data):
+class F0Data(annotations.F0Data):
     def __init__(
         self, times, automatic_frequencies, frequencies, energies, confidence=None
     ):
@@ -159,7 +159,7 @@ class Track(core.Track):
         tuning_frequency (float): tuning frequency of the symbolic notation
 
     Cached Properties:
-        melody (F0DataTonas): annotated melody in extended F0Data format
+        melody (F0Data): annotated melody in extended F0Data format
         notes (NoteData): annotated notes
 
     """
@@ -213,11 +213,11 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @core.cached_property
-    def f0(self) -> Optional[F0DataTonas]:
+    def f0(self) -> Optional[F0Data]:
         return load_f0(self.f0_path)
 
     @core.cached_property
-    def notes(self) -> Optional[NoteDataTonas]:
+    def notes(self) -> Optional[NoteData]:
         return load_notes(self.notes_path)
 
     def to_jams(self):
@@ -250,14 +250,14 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_f0(fhandle: TextIO) -> Optional[F0DataTonas]:
+def load_f0(fhandle: TextIO) -> Optional[F0Data]:
     """Load TONAS f0 annotations
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to f0 annotation file
 
     Returns:
-        F0DataTonas: predominant f0 melody
+        F0Data: predominant f0 melody
 
     """
     times = []
@@ -277,11 +277,11 @@ def load_f0(fhandle: TextIO) -> Optional[F0DataTonas]:
     energies = np.array(energies, dtype="float")  # type: ignore
     confidence = (cast(np.ndarray, freqs_corr) > 0).astype(float)
 
-    return F0DataTonas(times, freqs, freqs_corr, energies, confidence)
+    return F0Data(times, freqs, freqs_corr, energies, confidence)
 
 
 @io.coerce_to_string_io
-def load_notes(fhandle: TextIO) -> Optional[NoteDataTonas]:
+def load_notes(fhandle: TextIO) -> Optional[NoteData]:
     """Load TONAS note data from the annotation files
 
     Args:
@@ -306,7 +306,7 @@ def load_notes(fhandle: TextIO) -> Optional[NoteDataTonas]:
         energy.append(float(line[3]))
         confidence.append(1.0)
 
-    note_data = NoteDataTonas(
+    note_data = NoteData(
         np.array(intervals, dtype="float"),
         np.array(pitches, dtype="float"),
         np.array(energy, dtype="float"),
