@@ -205,34 +205,35 @@ multitracks
     
 .. code-block:: javascript
 
-{ "version": 1,
-  "tracks": {
-     "multitrack1-voice": {
-          "audio_voice1": ('audio/multitrack1-voice1.wav', checksum), 
-          "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),  
-          "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum)
-     }
-     "multitrack1-accompaniment": {
-          "audio_accompaniment": ('audio/multitrack1-accompaniment.wav', checksum)
-     }
-     "multitrack2-voice" : {...}
-     ...
-  },
-  "multitracks": {
-    "multitrack1": {
-         "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],    
-         "audio": ('audio/multitrack1-mix.wav', checksum)
-         "f0": ('annotations/multitrack1-f0.csv', checksum)
-     }
-    "multitrack2": ...
-  },
-  "metadata": {
-    "metadata_file": [
-        "metadata/metadata_file.csv",
-        "7a41b280c7b74e2ddac5184708f9525b"
-        ]
-  }
-}
+    { 
+        "version": 1,
+        "tracks": {
+            "multitrack1-voice": {
+                "audio_voice1": ('audio/multitrack1-voice1.wav', checksum), 
+                "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),  
+                "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum)
+            }
+            "multitrack1-accompaniment": {
+                "audio_accompaniment": ('audio/multitrack1-accompaniment.wav', checksum)
+            }
+            "multitrack2-voice" : {...}
+            ...
+        },
+        "multitracks": {
+            "multitrack1": {
+                "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],    
+                "audio": ('audio/multitrack1-mix.wav', checksum)
+                "f0": ('annotations/multitrack1-f0.csv', checksum)
+            }
+            "multitrack2": ...
+        },
+        "metadata": {
+            "metadata_file": [
+                "metadata/metadata_file.csv",
+                "7a41b280c7b74e2ddac5184708f9525b"
+                ]
+        }
+    }
   
 Note that in this examples we group ``audio_voice1`` and ``audio_voice2`` in a single Track because the annotation ``voice-f0`` annotation corresponds to their mixture. In contrast, the annotation ``voice-f0`` is extracted from the multitrack mix and it is stored in the ``multitracks`` group. The multitrack ``multitrack1`` has an additional track ``multitrack1-mix.wav`` which may be the master track, the final mix, the recording of ``multitrack1`` with another microphone. 
 
