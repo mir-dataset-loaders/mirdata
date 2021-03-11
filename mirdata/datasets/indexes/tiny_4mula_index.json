@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "id_mapping": [
+      "id_mapping.txt",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ]
+  },
+  "tracks": {
+    "3ade68b6g3429fda3": {
+      "melspectrogram": [
+        "melspectrogram/3ade68b6g3429fda3.npy",
+        "48e73ce04441102228f179b6be1d2a48"
+      ],
+      "annotation": [
+        "annotation/3ade68b6g3429fda3.tsv",
+        "e96f6c430cff0c8ce0717187c8af57eb"
+      ]
+    },
+    "3ade68b7g3a828ea3": {
+      "melspectrogram": [
+        "melspectrogram/3ade68b7g3a828ea3.npy",
+        "6d7f50b37532586404fb7f923712b6a0"
+      ],
+      "annotation": [
+        "annotation/3ade68b7g3a828ea3.tsv",
+        "f82ca877ed25b94f0708b8dd2ec24146"
+      ]
+    },
+    "3ade68b8g01eeefa3": {
+      "melspectrogram": [
+        "melspectrogram/3ade68b8g01eeefa3.npy",
+        "97d2df18ac7783676ea5f2715cc87c37"
+      ],
+      "annotation": [
+        "annotation/3ade68b8g01eeefa3.csv",
+        "deb9105d4de3dc884f63d8eabb650c81"
+      ]
+    },
+    "3ade68b8g2f8fd0b3": {
+      "melspectrogram": [
+        "melspectrogram/3ade68b8g2f8fd0b3.npy",
+        "8df3ddb77f3c463b7d8d2bc7b1f1fa8c"
+      ],
+      "annotation": [
+        "annotation/3ade68b8g2f8fd0b3.csv",
+        "054968196c3aaacf6b0ce0233cd2e2db"
+      ]
+    },
+    "3ade68b8g58029fa3": {
+      "melspectrogram": [
+        "melspectrogram/3ade68b8g58029fa3.npy",
+        "f8aad107276619a772cde21bbbd2dfdb"
+      ],
+      "annotation": [
+        "annotation/3ade68b8g58029fa3.csv",
+        "ce1da5352769f788e5fb3dbe27b1f9f0"
+      ]
+    },
+    "3ade68b8g81b5d0b3": {
+      "melspectrogram": [
+        "melspectrogram/3ade68b8g81b5d0b3.npy",
+        "ed5f4551254c01b4b9b8c7d85d76843a"
+      ],
+      "annotation": [
+        "annotation/3ade68b8g81b5d0b3.csv",
+        "cf2b215ee4959ab3820cb23fbaad9d87"
+      ]
+    },
+    "3ade68b8gb43dd0b3": {
+      "melspectrogram": [
+        "melspectrogram/3ade68b8gb43dd0b3.npy",
+        "258948b5f6f3a8a16c17818a03b30226"
+      ],
+      "annotation": [
+        "annotation/3ade68b8gb43dd0b3.csv",
+        "b0aaeb212a0c8c730914e52bb455229e"
+      ]
+    },
+    "3ade68b8gddc5c0b3": {
+      "melspectrogram": [
+        "melspectrogram/3ade68b8gddc5c0b3.npy",
+        "295cd6b6b469ec7d260a3777624073d7"
+      ],
+      "annotation": [
+        "annotation/3ade68b8gddc5c0b3.csv",
+        "6a6b7cd22953eaeae3d470937bf6b315"
+      ]
+    }
+  }
+}
