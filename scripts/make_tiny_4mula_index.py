@@ -7,11 +7,10 @@ from numpy import save
 import pyarrow.parquet as pq
 from tqdm import tqdm
 
-DATASET_INDEX_PATH = "../mirdata/datasets/indexes/4mula_tiny_index.json"
+DATASET_INDEX_PATH = "../mirdata/datasets/indexes/tiny_4mula_index.json"
 
 
-def make_4mula_tiny_index(dataset_data_path):
-
+def make_tiny_4mula_index(dataset_data_path):
     annotation_dir = os.path.join(dataset_data_path["dataset_folder"], "annotation")
     melspectrogram_dir = os.path.join(dataset_data_path["dataset_folder"], "melspectrogram")
 
@@ -27,7 +26,6 @@ def make_4mula_tiny_index(dataset_data_path):
     # top-key level tracks
     index_tracks = {}
     for track in tqdm(batches):
-
         with open(f"{annotation_dir}/{track.column('music_id')[0]}.tsv", 'w') as f:
             f.write(
                 'music_id\tmusic_name\tmusic_lang\t'
@@ -41,7 +39,7 @@ def make_4mula_tiny_index(dataset_data_path):
                 f"{track.column('related_art')[0]}\t{track.column('related_music')[0]}\t{track.column('musicnn_tags')[0]}")
 
         with open(f"{melspectrogram_dir}/{track.column('music_id')[0]}.npy", 'wb') as f:
-            save(f, track.column('melspectrogram')[0])
+            save(f, track.column('melspectrogram')[0].as_py())
 
         audio_checksum = md5(
             os.path.join(dataset_data_path["dataset_folder"], f"melspectrogram/{track.column('music_id')[0]}.npy")
@@ -50,21 +48,15 @@ def make_4mula_tiny_index(dataset_data_path):
             os.path.join(dataset_data_path["dataset_folder"], f"annotation/{track.column('music_id')[0]}.tsv")
         )
 
-        index_tracks[track.column('music_id')[0]] = {
+        index_tracks[str(track.column('music_id')[0])] = {
             "melspectrogram": (f"melspectrogram/{track.column('music_id')[0]}.npy", audio_checksum),
-            "annotation": (f"annotation/{track.column('music_id')[0]}.csv", annotation_checksum)
+            "annotation": (f"annotation/{track.column('music_id')[0]}.tsv", annotation_checksum)
         }
-
-
-    # top-key level metadata
-
-    index_metadata = {"metadata": None}
 
     # top-key level version
     dataset_index = {"version": "1.0"}
 
     # combine all in dataset index
-    dataset_index.update(index_metadata)
     dataset_index.update({"tracks": index_tracks})
 
     with open(DATASET_INDEX_PATH, "w") as fhandle:
@@ -72,7 +64,7 @@ def make_4mula_tiny_index(dataset_data_path):
 
 
 def main(dataset_data_path: dict):
-    make_4mula_tiny_index(dataset_data_path)
+    make_tiny_4mula_index(dataset_data_path)
 
 
 if __name__ == "__main__":
@@ -90,7 +82,5 @@ if __name__ == "__main__":
                                 checksum="b1caba387baa22a7b16893702a3214f7")
 
     dataset_data_path = download_from_remote(remote, save_dir=destination_dir, force_overwrite=False)
-    print(dataset_data_path)
     args = {"dataset_folder": dataset_data_path.split(filename)[0], "filename": filename}
-    print(args)
-
+    main(args)
