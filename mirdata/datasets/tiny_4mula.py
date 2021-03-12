@@ -6,6 +6,7 @@
     This dataset is a tiny version extracted by 4MuLA dataset:
 
     .. code-block:: latex
+
         "4MuLA: A Multitask, Multimodal, and Multilingual Dataset of Music Lyrics and Audio Features."
         by Angelo Cesar Mendes da Silva, Diego Furtado Silva, and Ricardo Marcondes Marcacini.
         In Proceedings of the Brazilian Symposium on Multimedia and the Web (WebMedia '20). 2020.
@@ -14,36 +15,34 @@
 
     The dataset consists of 1988 musics represents by melspectrogram and metadata. It
     contains 27 genres and 93 artists. The audio file is not available. All attributes are:
-        [
-         'music_id', 'music_name', 'music_lang', 'music_lyrics', 'art_id',
-         'art_name', 'art_rank', 'main_genre', 'related_genre', 'related_art',
-         'related_music', 'musicnn_tags', 'melspectrogram'
-        ]
+    ['music_id', 'music_name', 'music_lang', 'music_lyrics', 'art_id',
+    'art_name', 'art_rank', 'main_genre', 'related_genre', 'related_art',
+    'related_music', 'musicnn_tags', 'melspectrogram']
 
 """
 import os
 from mirdata.download_utils import RemoteFileMetadata, downloader
 from mirdata import core, jams_utils
-from pandas import read_csv, read_parquet
 from numpy import load, ndarray
+from pandas import read_csv, read_parquet
 
-BIBTEX = """@inproceedings{10.1145/3428658.3431089,
-    author = {da Silva, Angelo Cesar Mendes and Silva, Diego Furtado and Marcacini, Ricardo Marcondes},
-    title = {4MuLA: A Multitask, Multimodal, and Multilingual Dataset of Music Lyrics and Audio Features},
-    year = {2020},
-    isbn = {9781450381963},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/3428658.3431089},
-    doi = {10.1145/3428658.3431089},    
-    booktitle = {Proceedings of the Brazilian Symposium on Multimedia and the Web},
-    pages = {145–148},
-    numpages = {4},
-    keywords = {latin musical dataset, music dataset, multimodal musical dataset},
-    location = {S\~{a}o Lu\'{\i}s, Brazil},
-    series = {WebMedia '20}
-}
-"""
+
+BIBTEX = """inproceedings{10.1145/3428658.3431089,
+  author = {da Silva, Angelo Cesar Mendes and Silva, Diego Furtado and Marcacini, Ricardo Marcondes},
+  title = {4MuLA: A Multitask, Multimodal, and Multilingual Dataset of Music Lyrics and Audio Features},
+  year = {2020},
+  isbn = {9781450381963},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3428658.3431089},
+  doi = {10.1145/3428658.3431089},    
+  booktitle = {Proceedings of the Brazilian Symposium on Multimedia and the Web},
+  pages = {145–148},
+  numpages = {4},
+  keywords = {latin musical dataset, music dataset, multimodal musical dataset},
+  location = {S\~{a}o Lu\'{\i}s, Brazil},
+  series = {WebMedia '20}
+}"""
 
 REMOTES = {
     "dataset": RemoteFileMetadata(
@@ -57,10 +56,10 @@ REMOTES = {
 LICENSE_INFO = "Creative Commons Attribution 4.0 International."
 
 DOWNLOAD_INFO = """
-    This loader is designed to load the melspectrogram and metadata, as it is available for download.
-    Unfortunately the audio files of the 4MULA dataset are not available
-    for download. You can more details and follow the updates in our repository: 
-    ==> https://github.com/4mulaDataset/4mula    
+  This loader is designed to load the melspectrogram and metadata, as it is available for download.
+  Unfortunately the audio files of the 4MULA dataset are not available
+  for download. You can more details and follow the updates in our repository: 
+  ==> https://github.com/4mulaDataset/4mula    
 """
 
 DEFAULT_COLUMNS = ['music_id', 'music_name', 'music_lang', 'music_lyrics', 'art_id', 'art_name',
