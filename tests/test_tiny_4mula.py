@@ -3,8 +3,6 @@ import numpy as np
 from mirdata.datasets import tiny_4mula
 from tests.test_utils import run_track_tests
 
-from tests.test_utils import DEFAULT_DATA_HOME
-
 TEST_DATA_HOME = "tests/resources/mir_datasets/tiny_4mula"
 
 
@@ -21,13 +19,20 @@ def test_track():
         'main_genre': 'Romantic',
         'music_id': '3ade68b6g3429fda3',
         'music_lang': 'pt-br',
-        'music_lyrics': 'Cheia de manias\\nToda dengosa\\nMenina bonita\\nSabe que é gostosa\\n\\nCom esse seu jeito \\n'
-                        'Faz o que quer de mim\\nDomina o meu coração\\nEu fico sem saber o que fazer\\nQuero te deixar '
-                        '\\nVocê não quer, não quer \\n\\nEntão me ajude a segurar\\nEssa barra que é gostar de você\\n'
-                        'Então me ajude a segurar\\nEssa barra que é gostar de você, êh\\n\\nDidididiê\\nDidididiê ê ê'
-                        '\\nDidididiê\\n\\nSe estou na sua casa quero ir pro cinema\\nVocê não gosta\\nUm motelzinho '
-                        'você fecha a porta\\n\\nEntão me ajude a segurar\\nEssa barra que é gostar de você\\nEntão me '
-                        'ajude a segurar\\nEssa barra que é gostar de você, êh\\n\\nDidididiê\\nDidididiê ê ê\\nDidididiê',
+        'music_lyrics': 'Cheia de manias\\nToda dengosa\\nMenina bonita'
+                        '\\nSabe que é gostosa\\n\\nCom esse seu jeito \\n'
+                        'Faz o que quer de mim\\nDomina o meu coração'
+                        '\\nEu fico sem saber o que fazer\\nQuero te deixar '
+                        '\\nVocê não quer, não quer \\n\\nEntão me ajude a segurar'
+                        '\\nEssa barra que é gostar de você\\n'
+                        'Então me ajude a segurar\\nEssa barra que é gostar de você, êh'
+                        '\\n\\nDidididiê\\nDidididiê ê ê'
+                        '\\nDidididiê\\n\\nSe estou na sua casa quero ir pro cinema'
+                        '\\nVocê não gosta\\nUm motelzinho '
+                        'você fecha a porta\\n\\nEntão me ajude a segurar'
+                        '\\nEssa barra que é gostar de você\\nEntão me '
+                        'ajude a segurar\\nEssa barra que é gostar de você, êh'
+                        '\\n\\nDidididiê\\nDidididiê ê ê\\nDidididiê',
         'music_name': 'Cheia de Manias',
         'musicnn_tags': ['classical', 'strings', 'violin'],
         'related_art': [{'id': '3ade68b5g6a58eda3', 'name': 'Só Pra Contrariar'},

@@ -36,7 +36,8 @@ def make_tiny_4mula_index(dataset_data_path):
                 f"{track.column('music_id')[0]}\t{track.column('music_name')[0]}\t{track.column('music_lang')[0]}\t"
                 f"{track.column('music_lyrics')[0]}\t{track.column('art_id')[0]}\t{track.column('art_name')[0]}\t"
                 f"{track.column('art_rank')[0]}\t{track.column('main_genre')[0]}\t{track.column('related_genre')[0]}\t"
-                f"{track.column('related_art')[0]}\t{track.column('related_music')[0]}\t{track.column('musicnn_tags')[0]}")
+                f"{track.column('related_art')[0]}\t{track.column('related_music')[0]}"
+                f"\t{track.column('musicnn_tags')[0]}")
 
         with open(f"{melspectrogram_dir}/{track.column('music_id')[0]}.npy", 'wb') as f:
             save(f, track.column('melspectrogram')[0].as_py())
