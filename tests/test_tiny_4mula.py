@@ -93,7 +93,7 @@ def test_melspectrogram():
 
 
 def test_load_melspectrogram():
-    _4mula_path = f"{TEST_DATA_HOME}/4mula_tiny.parquet"
+    _4mula_path = f"{TEST_DATA_HOME}/_test_4mula_tiny.parquet"
     melspectrogram_data = tiny_4mula.load_melspectrogram(_4mula_path)
 
     # check types
