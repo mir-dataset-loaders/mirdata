@@ -7,7 +7,7 @@ from numpy import save
 import pyarrow.parquet as pq
 from tqdm import tqdm
 
-DATASET_INDEX_PATH = "../mirdata/datasets/indexes/tiny_4mula_index.json"
+DATASET_INDEX_PATH = "mirdata/datasets/indexes/tiny_4mula_index.json"
 
 
 def make_tiny_4mula_index(dataset_data_path):
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     args = PARSER.parse_args()
 
     filename = "4mula_tiny.parquet"
-    destination_dir = "4mula" if len(args.dataset_data_path) is 0 else args.dataset_data_path
+    destination_dir = "4mula" if len(args.dataset_data_path) == 0 else args.dataset_data_path
 
     remote = RemoteFileMetadata(url="https://zenodo.org/record/4585498/files/4mula_tiny.parquet?download=1",
                                 filename=f"{filename}", destination_dir=destination_dir,
