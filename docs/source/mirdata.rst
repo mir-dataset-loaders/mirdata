@@ -220,6 +220,14 @@ tinysol
    :inherited-members:
 
 
+tiny_4mula
+^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.tiny_4mula
+   :members:
+   :inherited-members:
+
+
 tonality_classicaldb
 ^^^^^^^^^^^^^^^^^^^^
 
