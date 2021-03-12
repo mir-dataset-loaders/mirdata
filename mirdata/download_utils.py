@@ -6,7 +6,7 @@ import logging
 import os
 import shutil
 import tarfile
-import urllib
+import urllib.request as urllib
 import zipfile
 
 from tqdm import tqdm
@@ -180,7 +180,7 @@ def download_from_remote(remote, save_dir, force_overwrite):
             unit="B", unit_scale=True, unit_divisor=1024, miniters=1
         ) as t:
             try:
-                urllib.request.urlretrieve(
+                urllib.urlretrieve(
                     remote.url,
                     filename=download_path,
                     reporthook=t.update_to,
