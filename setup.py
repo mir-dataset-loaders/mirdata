@@ -37,6 +37,8 @@ if __name__ == "__main__":
             "jams",
             "requests",
             "pretty_midi >= 0.2.8",
+            "pyarrow",
+            "pandas >= 1.2.0"
         ],
         extras_require={
             "tests": [
