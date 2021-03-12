@@ -62,9 +62,21 @@ DOWNLOAD_INFO = """
   ==> https://github.com/4mulaDataset/4mula    
 """
 
-DEFAULT_COLUMNS = ['music_id', 'music_name', 'music_lang', 'music_lyrics', 'art_id', 'art_name',
-                   'art_rank', 'main_genre', 'related_genre', 'related_art', 'related_music',
-                   'musicnn_tags', 'melspectrogram']
+DEFAULT_COLUMNS = [
+    "music_id",
+    "music_name",
+    "music_lang",
+    "music_lyrics",
+    "art_id",
+    "art_name",
+    "art_rank",
+    "main_genre",
+    "related_genre",
+    "related_art",
+    "related_music",
+    "musicnn_tags",
+    "melspectrogram",
+]
 
 
 class Track(core.Track):
@@ -98,12 +110,12 @@ class Track(core.Track):
     """
 
     def __init__(
-            self,
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
     ):
         super().__init__(
             track_id,
@@ -113,8 +125,12 @@ class Track(core.Track):
             metadata,
         )
 
-        self.annotation_path = os.path.join(self._data_home, self._track_paths["annotation"][0])
-        self.melspectrogram_path = os.path.join(self._data_home, self._track_paths["melspectrogram"][0])
+        self.annotation_path = os.path.join(
+            self._data_home, self._track_paths["annotation"][0]
+        )
+        self.melspectrogram_path = os.path.join(
+            self._data_home, self._track_paths["melspectrogram"][0]
+        )
 
     @property
     def music_id(self):
@@ -185,20 +201,20 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             spectrogram_path=self.melspectrogram_path,
             metadata={
-                'art_id': self.art_id,
-                'art_name': self.art_name,
-                'art_rank': self.art_rank,
-                'main_genre': self.main_genre,
-                'music_id': self.music_id,
-                'music_lang': self.music_lang,
-                'music_lyrics': self.music_lyrics,
-                'music_name': self.music_name,
-                'musicnn_tags': self.musicnn_tags,
-                'related_art': self.related_art,
-                'related_genre': self.related_genre,
-                'related_music': self.related_music,
-                'duration': 30  # approximation
-            }
+                "art_id": self.art_id,
+                "art_name": self.art_name,
+                "art_rank": self.art_rank,
+                "main_genre": self.main_genre,
+                "music_id": self.music_id,
+                "music_lang": self.music_lang,
+                "music_lyrics": self.music_lyrics,
+                "music_name": self.music_name,
+                "musicnn_tags": self.musicnn_tags,
+                "related_art": self.related_art,
+                "related_genre": self.related_genre,
+                "related_music": self.related_music,
+                "duration": 30,  # approximation
+            },
         )
 
 
@@ -216,7 +232,7 @@ def load_melspectrogram(fhandle: str) -> ndarray:
     if not os.path.isfile(str(fhandle)):
         raise FileNotFoundError("Dataset not found. Did you run .download()?")
     df = read_parquet(fhandle, columns=["melspectrogram"])
-    return df['melspectrogram'].values
+    return df["melspectrogram"].values
 
 
 def load_by_columns(fhandle: str, columns: list = DEFAULT_COLUMNS):
@@ -257,9 +273,20 @@ class Dataset(core.Dataset):
         metadata_path = os.path.join(self.data_home, "4mula_tiny.parquet")
         if not os.path.exists(metadata_path):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-        columns = ['music_id', 'music_name', 'music_lang', 'music_lyrics', 'art_id', 'art_name',
-                   'art_rank', 'main_genre', 'related_genre', 'related_art', 'related_music',
-                   'musicnn_tags']
+        columns = [
+            "music_id",
+            "music_name",
+            "music_lang",
+            "music_lyrics",
+            "art_id",
+            "art_name",
+            "art_rank",
+            "main_genre",
+            "related_genre",
+            "related_art",
+            "related_music",
+            "musicnn_tags",
+        ]
         return read_parquet(metadata_path, columns=columns)
 
     @core.copy_docs(load_melspectrogram)
