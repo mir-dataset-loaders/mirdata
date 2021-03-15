@@ -116,6 +116,7 @@ class NoteData(annotations.NoteData):
         self.energies = energies
         self.confidence = confidence
 
+
 # F0 extension for Tonas to support energy annotation
 class F0Data(annotations.F0Data):
     def __init__(
