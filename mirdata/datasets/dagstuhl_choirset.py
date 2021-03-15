@@ -256,7 +256,7 @@ class MultiTrack(core.MultiTrack):
         """Get beat annotation"""
         return load_beat(self.beat_path)
 
-    #@property
+    @property
     def audio(self, mic='STM'):
         """Get audio of the specified microphone
         Args:
@@ -305,16 +305,16 @@ def load_audio(audio_path):
     # -- for example, the code below. This should be dataset specific!
     # -- By default we load to mono
     # -- change this if it doesn't make sense for your dataset.
-    if audio_path is None:
-        return None
+    #if audio_path is None:
+     #   return None
 
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
+    #if not os.path.exists(audio_path):
+        #raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
 # -- Write any necessary loader functions for loading the dataset's data
-@io.coerce_to_string_io
+#@io.coerce_to_string_io
 def load_f0(f0_path):
     """Load a Dagstuhl ChoirSet F0-trajectory.
 
@@ -345,13 +345,13 @@ def load_f0(f0_path):
     times = np.array(times)
     freqs = np.array(freqs)
     if not confs:
-        confs = None
+        confs = np.array([None]).astype(float)
     else:
         confs = np.array(confs)
     return annotations.F0Data(times, freqs, confs)
 
 
-@io.coerce_to_string_io
+#@io.coerce_to_string_io
 def load_score(score_path):
     """Load a Dagstuhl ChoirSet time-aligned score representation.
 
@@ -380,7 +380,7 @@ def load_score(score_path):
     return annotations.NoteData(intervals, notes, None)
 
 
-@io.coerce_to_string_io
+#@io.coerce_to_string_io
 def load_beat(beat_path):
     """Load a Dagstuhl ChoirSet beat annotation.
 

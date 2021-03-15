@@ -44,118 +44,68 @@ def test_track():
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
-    y, sr = track.audio
+
+def test_audio():
+    default_trackid = "DCS_LI_QuartetB_Take04_B2"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
+    track = dataset.track(default_trackid)
+
+    y, sr = track.audio()
     assert sr == 22050
     assert y.shape == (22050,)
 
+    y, sr = track.audio('LRX')
+    assert sr == 22050
+    assert y.shape == (22050,)
 
-def test_get_audio_voice():
-    default_trackid = "beethoven-violin"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
-    dataset = phenicx_anechoic.Dataset(data_home)
-    track = dataset.track(default_trackid)
+    y, sr = track.audio('HSM')
+    assert sr == 22050
+    assert y.shape == (22050,)
 
-    y, sr = track.get_audio_voice(1)
-    y, sr = track.audio
-    assert sr == 44100
-    assert y.shape == (44100,)
+    y, sr = track.audio('DYN')
+    assert sr == 22050
+    assert y.shape == (22050,)
 
     with pytest.raises(ValueError):
-        y, sr = track.get_audio_voice(5)
+        y, sr = track.audio('abc')
 
 
-def test_to_jams():
-    default_trackid = "beethoven-violin"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
-    dataset = phenicx_anechoic.Dataset(data_home)
+def test_to_jams_track():
+    default_trackid = "DCS_LI_QuartetB_Take04_B2"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
     assert jam.validate()
 
     notes = jam.annotations[0]["data"]
-    assert [note.time for note in notes] == [4.284082, 4.284082, 4.284082]
-    assert [note.duration for note in notes] == [
-        0.9872560000000004,
-        0.9872560000000004,
-        0.9872560000000004,
-    ]
-    assert [note.value for note in notes] == [
-        220.0,
-        329.6275569128699,
-        554.3652619537442,
-    ]
+    assert [note.time for note in notes] == [0.1600, 2.5165, 3.3487, 4.8130, 5.7252]
+    assert [note.duration for note in notes] == (np.array([2.5165, 3.3487, 4.8130, 5.7252, 6.3774]) - np.array([0.1600, 2.5165, 3.3487, 4.8130, 5.7252])).tolist()
+    assert [note.value for note in notes] == (2 ** ((np.array([48, 48, 48, 48, 48])-69)/12) * 440).tolist()
 
-
-def test_load_score():
-    # load a file which exists
-    score_path = (
-        "tests/resources/mir_datasets/phenicx_anechoic/annotations/beethoven/violin.txt"
-    )
-    note_data = phenicx_anechoic.load_score(score_path)
-
-    # check types
-    assert type(note_data) == annotations.NoteData
-    assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
-
-    # check values
-    assert np.array_equal(
-        note_data.intervals,
-        np.array([[4.284082, 5.271338], [4.284082, 5.271338], [4.284082, 5.271338]]),
-    )
-    assert np.allclose(note_data.notes, np.array([220.0, 329.62755691, 554.36526195]))
+    f0s = jam.annotations[1]["data"]
+    assert [f0.time for f0 in f0s] == [0.0, 0.01, 0.02, 0.03, 0.04]
+    assert [f0.value['frequency'] for f0 in f0s] == [204.329447420415, 205.1518935649711, 205.52465246964104, 205.45427855215388, 205.51663864023027]
+    assert [f0.confidence for f0 in f0s] == [0.050135254859924316, 0.02886691689491272, 0.0374043881893158, 0.04053276777267456, 0.053232729434967034]
 
 
 def test_multitrack():
-    default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
-    dataset = phenicx_anechoic.Dataset(data_home)
+    default_trackid = "DCS_LI_QuartetB_Take04"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
-    # import pdb;pdb.set_trace()
+
     expected_attributes = {
-        "mtrack_id": "beethoven",
+        "mtrack_id": "DCS_LI_QuartetB_Take04",
         "track_audio_property": "audio",
         "track_ids": [
-            "beethoven-horn",
-            "beethoven-doublebass",
-            "beethoven-violin",
-            "beethoven-bassoon",
-            "beethoven-flute",
-            "beethoven-clarinet",
-            "beethoven-viola",
-            "beethoven-oboe",
-            "beethoven-cello",
-            "beethoven-trumpet",
-        ],
-        "instruments": {
-            "horn": "beethoven-horn",
-            "doublebass": "beethoven-doublebass",
-            "violin": "beethoven-violin",
-            "bassoon": "beethoven-bassoon",
-            "flute": "beethoven-flute",
-            "clarinet": "beethoven-clarinet",
-            "viola": "beethoven-viola",
-            "oboe": "beethoven-oboe",
-            "cello": "beethoven-cello",
-            "trumpet": "beethoven-trumpet",
-        },
-        "sections": {
-            "brass": ["beethoven-horn", "beethoven-trumpet"],
-            "strings": [
-                "beethoven-doublebass",
-                "beethoven-violin",
-                "beethoven-viola",
-                "beethoven-cello",
-            ],
-            "woodwinds": [
-                "beethoven-bassoon",
-                "beethoven-flute",
-                "beethoven-clarinet",
-                "beethoven-oboe",
-            ],
-        },
-        "piece": "beethoven",
+            "DCS_LI_QuartetB_Take04_B2",
+            "DCS_LI_QuartetB_Take04_A2",
+            "DCS_LI_QuartetB_Take04_T2",
+            "DCS_LI_QuartetB_Take04_S1",
+        ]
     }
 
     expected_property_types = {
