@@ -227,6 +227,7 @@ class MultiTrack(core.MultiTrack):
         tracks (dict): {track_id: Track}
         track_audio_attribute (str): the name of the attribute of Track which
             returns the audio to be mixed
+        beat_path (str): path to beat annotation
         # -- Add any of the dataset specific attributes here
 
 
@@ -248,7 +249,12 @@ class MultiTrack(core.MultiTrack):
             metadata=metadata,
         )
 
-        self.beat_path = self.get_path(self._index["multitracks"][self.mtrack_id]["beat"])
+        self.beat_path = self.get_path("beat")
+
+    @property
+    def track_audio_property(self):
+        #### the attribute of Track which returns the relevant audio file for mixing
+        return "audio"
 
     # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
@@ -256,35 +262,38 @@ class MultiTrack(core.MultiTrack):
         """Get beat annotation"""
         return load_beat(self.beat_path)
 
-    @property
-    def audio(self, mic='STM'):
+    #@property
+    def audio(self, mic="STM"):
         """Get audio of the specified microphone
         Args:
-            mic (str): Identifier of the microphone ('STM', 'StereoReverb', 'STL' or 'STR')
+            mic (str): Identifier of the microphone ("STM", "StereoReverb", "STL" or "STR")
 
         Returns:
             * np.ndarray - the mono audio signal
             * float - The sample rate of the audio file
         """
-        if mic not in ['STM', 'StereoReverb', 'STL', 'STR']:
+        if mic == 'STM':
+            mic_path = self.get_path("audio_stm")
+        elif mic == 'StereoReverb':
+            mic_path = self.get_path("audio_rev")
+        elif mic == 'STL':
+            mic_path = self.get_path("audio_stl")
+        elif mic == 'STR':
+            mic_path = self.get_path("audio_str")
+        else:
             raise ValueError("mic={} is invalid".format(mic))
-
-        mic_path = [s for s in self._multitrack_paths if mic in s]
 
         if not mic_path:
             raise ValueError("No microphone signal found for mic={}".format(mic))
 
-        if len(mic_path) > 1:
-            raise ValueError("Found two or more microphone signals for mic={}".format(mic))
-
-        return load_audio(mic_path[0])
+        return load_audio(mic_path)
 
     # -- multitrack classes are themselves Tracks, and also need a to_jams method
     # -- for any mixture-level annotations
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self._multitrack_paths[0],
+            audio_path=self.get_path("audio_stm"),
             beat_data=[(load_beat(self.beat_path), 'beats')]
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
@@ -401,9 +410,10 @@ def load_beat(beat_path):
     with open(beat_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter=",")
         for line in reader:
-            times.append(float(line[2]))
+            times.append(float(line[0]))
 
-    positions = np.arange(times).astype(int) + 1
+    times = np.array(times)
+    positions = np.arange(1, len(times)+1).astype(int)
     return annotations.BeatData(times, positions)
 
 

@@ -45,7 +45,7 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
 
-def test_audio():
+def test_audio_track():
     default_trackid = "DCS_LI_QuartetB_Take04_B2"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
     dataset = dagstuhl_choirset.Dataset(data_home)
@@ -101,155 +101,60 @@ def test_multitrack():
         "mtrack_id": "DCS_LI_QuartetB_Take04",
         "track_audio_property": "audio",
         "track_ids": [
-            "DCS_LI_QuartetB_Take04_B2",
-            "DCS_LI_QuartetB_Take04_A2",
-            "DCS_LI_QuartetB_Take04_T2",
             "DCS_LI_QuartetB_Take04_S1",
-        ]
+            "DCS_LI_QuartetB_Take04_B2",
+            "DCS_LI_QuartetB_Take04_T2",
+            "DCS_LI_QuartetB_Take04_A2",
+        ],
+        "beat_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
     }
 
     expected_property_types = {
         "tracks": dict,
         "track_audio_property": str,
+        "beat": annotations.BeatData,
+        "audio": tuple,
     }
 
     run_track_tests(mtrack, expected_attributes, expected_property_types)
     run_multitrack_tests(mtrack)
 
 
-def test_get_audio_for_instrument():
-    default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
-    dataset = phenicx_anechoic.Dataset(data_home)
+def test_audio_multitrack():
+    default_trackid = "DCS_LI_QuartetB_Take04"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
 
-    y = mtrack.get_audio_for_instrument("violin")
-    assert y.shape == (44100,)
+    y, sr = mtrack.audio("STM")
+    assert sr == 22050
+    assert y.shape == (22050,)
+
+    y, sr = mtrack.audio("StereoReverb")
+    assert sr == 22050
+    assert y.shape == (22050,)
+
+    y, sr = mtrack.audio("STL")
+    assert sr == 22050
+    assert y.shape == (22050,)
+
+    y, sr = mtrack.audio("STR")
+    assert sr == 22050
+    assert y.shape == (22050,)
 
     with pytest.raises(ValueError):
-        y = mtrack.get_audio_for_instrument("guitar")
+        y, sr = mtrack.audio('abc')
 
 
-def test_get_audio_for_section():
-    default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
-    dataset = phenicx_anechoic.Dataset(data_home)
+def test_to_jams_multitrack():
+    default_trackid = "DCS_LI_QuartetB_Take04"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
 
-    y = mtrack.get_audio_for_section("strings")
-    assert y.shape == (1, 44100)
+    jam = mtrack.to_jams()
+    assert jam.validate()
 
-    with pytest.raises(ValueError):
-        y = mtrack.get_audio_for_section("synths")
-
-
-def test_get_notes_target():
-    default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
-    dataset = phenicx_anechoic.Dataset(data_home)
-    mtrack = dataset.multitrack(default_trackid)
-
-    track_keys = ["beethoven-viola", "beethoven-violin"]
-    note_data = mtrack.get_notes_target(track_keys, notes_property="notes")
-
-    # check types
-    assert type(note_data) == annotations.NoteData
-    assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
-
-    # check values
-    assert np.array_equal(
-        note_data.intervals,
-        np.array(
-            [
-                [4.284082, 5.271338],
-                [4.284082, 5.271338],
-                [4.284082, 5.271338],
-                [4.310204, 4.910204],
-                [4.310204, 4.910204],
-                [8.359184, 12.004082],
-            ]
-        ),
-    )
-    assert np.allclose(
-        note_data.notes,
-        np.array([220.0, 329.62755691, 554.36526195, 220.0, 329.62755691, 220.0]),
-    )
-
-
-def test_get_notes_for_instrument():
-    default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
-    dataset = phenicx_anechoic.Dataset(data_home)
-    mtrack = dataset.multitrack(default_trackid)
-
-    note_data = mtrack.get_notes_for_instrument(
-        instrument="violin", notes_property="notes"
-    )
-    # import pdb;pdb.set_trace()
-
-    # check types
-    assert type(note_data) == annotations.NoteData
-    assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
-
-    # check values
-    assert np.array_equal(
-        note_data.intervals,
-        np.array([[4.284082, 5.271338], [4.284082, 5.271338], [4.284082, 5.271338]]),
-    )
-    assert np.allclose(note_data.notes, np.array([220.0, 329.62755691, 554.36526195]))
-
-
-def test_get_notes_for_section():
-    default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
-    dataset = phenicx_anechoic.Dataset(data_home)
-    mtrack = dataset.multitrack(default_trackid)
-
-    note_data = mtrack.get_notes_for_section(section="strings", notes_property="notes")
-
-    # check types
-    assert type(note_data) == annotations.NoteData
-    assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
-
-    # check values
-    assert np.array_equal(
-        note_data.intervals,
-        np.array(
-            [
-                [4.260862, 6.780091],
-                [4.284082, 5.271338],
-                [4.284082, 5.271338],
-                [4.284082, 5.271338],
-                [4.310204, 4.910204],
-                [4.310204, 4.910204],
-                [4.331995, 6.621655],
-                [8.359184, 12.004082],
-                [12.167256, 14.038594],
-                [12.213696, 13.862268],
-                [19.783401, 21.656599],
-                [19.841451, 21.462971],
-            ]
-        ),
-    )
-    assert np.allclose(
-        note_data.notes,
-        np.array(
-            [
-                55.0,
-                220.0,
-                329.62755691,
-                554.36526195,
-                220.0,
-                329.62755691,
-                110.0,
-                220.0,
-                51.9130872,
-                103.82617439,
-                48.9994295,
-                97.998859,
-            ]
-        ),
-    )
+    beats = jam.annotations[0]["data"]
+    assert [beat.time for beat in beats] == [0.174149660, 0.949115646, 1.724081633, 2.525170068, 3.308843537]
+    assert [beat.value for beat in beats] == [1, 2, 3, 4, 5]
