@@ -132,22 +132,22 @@ class Track(core.Track):
     # -- bigger files or for bigger datasets. By default, we make any time
     # -- series data loaded from a file a cached property
     @core.cached_property
-    def f0(self, mic: str, ann: str):
+    def f0(self, mic='LRX', ann='CREPE'):
         """Get F0-trajectory of specified type extracted from specified microphone
         Args:
-            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
-            ann (str): Identifier of the annotation ('crepe', 'pyin', or 'manual')
+            mic (str): Identifier of the microphone ('DYN', 'HSM', or 'LRX')
+            ann (str): Identifier of the annotation ('CREPE', 'PYIN', or 'manual')
 
         Returns:
             * np.ndarray - the mono audio signal
             * float - The sample rate of the audio file
         """
-        if mic not in ['dyn', 'hsm', 'lrx']:
+        if mic not in ['DYN', 'HSM', 'LRX']:
             raise ValueError("mic={} is invalid".format(mic))
 
-        if ann == 'crepe':
+        if ann == 'CREPE':
             mic_path = [s for s in self.f0_crepe_paths if mic in s]
-        elif ann == 'pyin':
+        elif ann == 'PYIN':
             mic_path = [s for s in self.f0_pyin_paths if mic in s]
         elif ann == 'manual':
             mic_path = [s for s in self.f0_manual_paths if mic in s]
@@ -171,16 +171,16 @@ class Track(core.Track):
     # -- when someone accesses it and it won't be stored. By default, we make
     # -- any memory heavy information (like audio) properties
     #@property
-    def audio(self, mic: str):
+    def audio(self, mic='LRX'):
         """Get audio of the specified microphone
         Args:
-            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+            mic (str): Identifier of the microphone ('DYN', 'HSM', or 'LRX')
 
         Returns:
             * np.ndarray - the mono audio signal
             * float - The sample rate of the audio file
         """
-        if mic not in ['dyn', 'hsm', 'lrx']:
+        if mic not in ['DYN', 'HSM', 'LRX']:
             raise ValueError("mic={} is invalid".format(mic))
 
         mic_path = [s for s in self.audio_paths if mic in s]
@@ -257,16 +257,16 @@ class MultiTrack(core.MultiTrack):
         return load_beat(self.beat_path)
 
     #@property
-    def audio(self, mic: str):
+    def audio(self, mic='STM'):
         """Get audio of the specified microphone
         Args:
-            mic (str): Identifier of the microphone ('stm', 'stm_reverb', 'stl' or 'str')
+            mic (str): Identifier of the microphone ('STM', 'StereoReverb', 'STL' or 'STR')
 
         Returns:
             * np.ndarray - the mono audio signal
             * float - The sample rate of the audio file
         """
-        if mic not in ['stm', 'stm_reverb', 'stl', 'str']:
+        if mic not in ['STM', 'StereoReverb', 'STL', 'STR']:
             raise ValueError("mic={} is invalid".format(mic))
 
         mic_path = [s for s in self._multitrack_paths if mic in s]
