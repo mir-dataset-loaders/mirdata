@@ -24,8 +24,6 @@
     (4) Joint Research Centre, European Commission, Seville, ES
 """
 import csv
-import logging
-import json
 import os
 
 import librosa
@@ -60,11 +58,11 @@ url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirS
 # -- When having data that can be partially downloaded, remember to set up
 # -- correctly destination_dir to download the files following the correct structure.
 REMOTES = {
-    'remote_data': download_utils.RemoteFileMetadata(
-        filename='dagstuhl_choirset_metadata.json',
-        url='https://',
+    'full_dataset': download_utils.RemoteFileMetadata(
+        filename='DagstuhlChoirSet_V1.1.zip',
+        url='https://zenodo.org/record/3956666/files/DagstuhlChoirSet_V1.1.zip?download=1',
         checksum='00000000000000000000000000000000',  # -- the md5 checksum
-        destination_dir='.' # -- relative path for where to unzip the data, or None
+        unpack_directories=["dagstuhl_choirset"],
     ),
 }
 
@@ -103,8 +101,8 @@ class Track(core.Track):
         # -- * _track_paths
         # -- * _track_metadata
         super().__init__(
-            track_id,
-            data_home,
+            track_id=track_id,
+            data_home=data_home,
             dataset_name=dataset_name,
             index=index,
             metadata=metadata,
@@ -162,16 +160,17 @@ class Track(core.Track):
         if len(mic_path) > 1:
             raise ValueError("Found two or more trajectories for mic={}".format(mic))
 
-        return load_f0(mic_path)
+        return load_f0(mic_path[0])
 
     @core.cached_property
     def score(self):
+        """Get time-aligned score representation"""
         return load_score(self.score_path)
 
     # -- `audio` will behave like an attribute, but it will only be loaded
     # -- when someone accesses it and it won't be stored. By default, we make
     # -- any memory heavy information (like audio) properties
-    @property
+    #@property
     def audio(self, mic: str):
         """Get audio of the specified microphone
         Args:
@@ -192,7 +191,7 @@ class Track(core.Track):
         if len(mic_path) > 1:
             raise ValueError("Found two or more microphone signals for mic={}".format(mic))
 
-        return load_audio(mic_path)
+        return load_audio(mic_path[0])
 
     # -- we use the to_jams function to convert all the annotations in the JAMS format.
     # -- The converter takes as input all the annotations in the proper format (e.g. beats
@@ -221,7 +220,7 @@ class MultiTrack(core.MultiTrack):
     Args:
         mtrack_id (str): multitrack id
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/Dagstuhl ChoirSet`
+            If `None`, looks for the data in the default directory, `~/mir_datasets/dagstuhl_choirset`
 
     Attributes:
         mtrack_id (str): track id
@@ -230,38 +229,63 @@ class MultiTrack(core.MultiTrack):
             returns the audio to be mixed
         # -- Add any of the dataset specific attributes here
 
-    """
-    def __init__(self, mtrack_id, data_home):
-        self.mtrack_id = mtrack_id
-        self._data_home = data_home
-        # these three attributes below must have exactly these names
-        self.track_ids = [...] # define which track_ids should be part of the multitrack
-        self.tracks = {t: Track(t, self._data_home) for t in self.track_ids}
-        self.track_audio_property = "audio" # the property of Track which returns the relevant audio file for mixing
 
-        # -- optionally add any multitrack specific attributes here
-        self.mix_path = ...  # this can be called whatever makes sense for the datasets
-        self.annotation_path = ...
+    """
+    def __init__(self,
+        mtrack_id,
+        data_home,
+        dataset_name,
+        index,
+        track_class,
+        metadata):
+
+        super().__init__(
+            mtrack_id=mtrack_id,
+            data_home=data_home,
+            dataset_name=dataset_name,
+            index=index,
+            track_class=track_class,
+            metadata=metadata,
+        )
+
+        self.beat_path = self.get_path(self._index["multitracks"][self.mtrack_id]["beat"])
 
     # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
-    def annotation(self):
-        """output type: description of output"""
-        return load_annotation(self.annotation_path)
+    def beat(self):
+        """Get beat annotation"""
+        return load_beat(self.beat_path)
 
-    @property
-    def audio(self):
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
-        return load_audio(self.audio_path)
+    #@property
+    def audio(self, mic: str):
+        """Get audio of the specified microphone
+        Args:
+            mic (str): Identifier of the microphone ('stm', 'stm_reverb', 'stl' or 'str')
+
+        Returns:
+            * np.ndarray - the mono audio signal
+            * float - The sample rate of the audio file
+        """
+        if mic not in ['stm', 'stm_reverb', 'stl', 'str']:
+            raise ValueError("mic={} is invalid".format(mic))
+
+        mic_path = [s for s in self._multitrack_paths if mic in s]
+
+        if not mic_path:
+            raise ValueError("No microphone signal found for mic={}".format(mic))
+
+        if len(mic_path) > 1:
+            raise ValueError("Found two or more microphone signals for mic={}".format(mic))
+
+        return load_audio(mic_path[0])
 
     # -- multitrack classes are themselves Tracks, and also need a to_jams method
     # -- for any mixture-level annotations
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.mix_path,
-            annotation_data=[(self.annotation, None)],
-            ...
+            audio_path=self._multitrack_paths[0],
+            beat_data=[(load_beat(self.beat_path), 'beats')]
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
@@ -326,6 +350,7 @@ def load_f0(f0_path):
         confs = np.array(confs)
     return annotations.F0Data(times, freqs, confs)
 
+
 @io.coerce_to_string_io
 def load_score(score_path):
     """Load a Dagstuhl ChoirSet time-aligned score representation.
@@ -354,6 +379,34 @@ def load_score(score_path):
     notes = 440 * 2 ** ((np.array(notes) - 69)/12)  # convert MIDI pitch to Hz
     return annotations.NoteData(intervals, notes, None)
 
+
+@io.coerce_to_string_io
+def load_beat(beat_path):
+    """Load a Dagstuhl ChoirSet beat annotation.
+
+        Args:
+            beat_path (str): path pointing to a beat annotation file
+
+        Returns:
+            * NoteData Object - the beat annotation
+
+        """
+    if beat_path is None:
+        return None
+
+    if not os.path.exists(beat_path):
+        raise IOError("score_path {} does not exist".format(beat_path))
+
+    times = []
+    with open(beat_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
+        for line in reader:
+            times.append(float(line[2]))
+
+    positions = np.arange(times).astype(int) + 1
+    return annotations.BeatData(times, positions)
+
+
 # -- use this decorator so the docs are complete
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
@@ -363,8 +416,9 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None):
         super().__init__(
             data_home,
-            name=NAME,
+            name="dagstuhl_choirset",
             track_class=Track,
+            multitrack_class=MultiTrack,
             bibtex=BIBTEX,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
@@ -378,44 +432,14 @@ class Dataset(core.Dataset):
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_annotation)
-    def load_annotation(self, *args, **kwargs):
-        return load_annotation(*args, **kwargs)
+    @core.copy_docs(load_f0)
+    def load_f0(self, *args, **kwargs):
+        return load_f0(*args, **kwargs)
 
-    # -- if your dataset has a top-level metadata file, write a loader for it here
-    # -- you do not have to include this function if there is no metadata
-    @core.cached_property
-    def _metadata(self):
-        metadata_path = os.path.join(self.data_home, 'example_metadta.csv')
+    @core.copy_docs(load_score)
+    def load_score(self, *args, **kwargs):
+        return load_score(*args, **kwargs)
 
-        # load metadata however makes sense for your dataset
-        metadata_path = os.path.join(data_home, 'example_metadata.json')
-        with open(metadata_path, 'r') as fhandle:
-            metadata = json.load(fhandle)
-
-        return metadata
-
-    # -- if your dataset needs to overwrite the default download logic, do it here.
-    # -- this function is usually not necessary unless you need very custom download logic
-    def download(
-        self, partial_download=None, force_overwrite=False, cleanup=False
-    ):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        # see download_utils.downloader for basic usage - if you only need to call downloader
-        # once, you do not need this function at all.
-        # only write a custom function if you need it!
+    @core.copy_docs(load_beat)
+    def load_beat(self, *args, **kwargs):
+        return load_beat(*args, **kwargs)
