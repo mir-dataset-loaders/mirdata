@@ -24,8 +24,6 @@
     (4) Joint Research Centre, European Commission, Seville, ES
 """
 import csv
-import logging
-import json
 import os
 
 import librosa
@@ -103,8 +101,8 @@ class Track(core.Track):
         # -- * _track_paths
         # -- * _track_metadata
         super().__init__(
-            track_id,
-            data_home,
+            track_id=track_id,
+            data_home=data_home,
             dataset_name=dataset_name,
             index=index,
             metadata=metadata,
@@ -162,16 +160,17 @@ class Track(core.Track):
         if len(mic_path) > 1:
             raise ValueError("Found two or more trajectories for mic={}".format(mic))
 
-        return load_f0(mic_path)
+        return load_f0(mic_path[0])
 
     @core.cached_property
     def score(self):
+        """Get time-aligned score representation"""
         return load_score(self.score_path)
 
     # -- `audio` will behave like an attribute, but it will only be loaded
     # -- when someone accesses it and it won't be stored. By default, we make
     # -- any memory heavy information (like audio) properties
-    @property
+    #@property
     def audio(self, mic: str):
         """Get audio of the specified microphone
         Args:
@@ -192,7 +191,7 @@ class Track(core.Track):
         if len(mic_path) > 1:
             raise ValueError("Found two or more microphone signals for mic={}".format(mic))
 
-        return load_audio(mic_path)
+        return load_audio(mic_path[0])
 
     # -- we use the to_jams function to convert all the annotations in the JAMS format.
     # -- The converter takes as input all the annotations in the proper format (e.g. beats
@@ -230,26 +229,34 @@ class MultiTrack(core.MultiTrack):
             returns the audio to be mixed
         # -- Add any of the dataset specific attributes here
 
-    """
-    def __init__(self, mtrack_id, data_home):
-        self.mtrack_id = mtrack_id
-        self._data_home = data_home
-        # these three attributes below must have exactly these names
-        self.track_ids = [...] # define which track_ids should be part of the multitrack
-        self.tracks = {t: Track(t, self._data_home) for t in self.track_ids}
-        self.track_audio_property = "audio" # the property of Track which returns the relevant audio file for mixing
 
-        # -- optionally add any multitrack specific attributes here
-        self.mix_path = ...  # this can be called whatever makes sense for the datasets
-        self.annotation_path = ...
+    """
+    def __init__(self,
+        mtrack_id,
+        data_home,
+        dataset_name,
+        index,
+        track_class,
+        metadata):
+
+        super().__init__(
+            mtrack_id=mtrack_id,
+            data_home=data_home,
+            dataset_name=dataset_name,
+            index=index,
+            track_class=track_class,
+            metadata=metadata,
+        )
+
+        self.beat_path = self.get_path(self._index["multitracks"][self.mtrack_id]["beat"])
 
     # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
-    def annotation(self):
-        """output type: description of output"""
-        return load_annotation(self.annotation_path)
+    def beat(self):
+        """Get beat annotation"""
+        return load_beat(self.beat_path)
 
-    @property
+    #@property
     def audio(self, mic: str):
         """Get audio of the specified microphone
         Args:
@@ -262,7 +269,7 @@ class MultiTrack(core.MultiTrack):
         if mic not in ['stm', 'stm_reverb', 'stl', 'str']:
             raise ValueError("mic={} is invalid".format(mic))
 
-        mic_path = [s for s in self.audio_paths if mic in s]
+        mic_path = [s for s in self._multitrack_paths if mic in s]
 
         if not mic_path:
             raise ValueError("No microphone signal found for mic={}".format(mic))
@@ -270,16 +277,15 @@ class MultiTrack(core.MultiTrack):
         if len(mic_path) > 1:
             raise ValueError("Found two or more microphone signals for mic={}".format(mic))
 
-        return load_audio(mic_path)
+        return load_audio(mic_path[0])
 
     # -- multitrack classes are themselves Tracks, and also need a to_jams method
     # -- for any mixture-level annotations
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.mix_path,
-            annotation_data=[(self.annotation, None)],
-            ...
+            audio_path=self._multitrack_paths[0],
+            beat_data=[(load_beat(self.beat_path), 'beats')]
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
@@ -344,6 +350,7 @@ def load_f0(f0_path):
         confs = np.array(confs)
     return annotations.F0Data(times, freqs, confs)
 
+
 @io.coerce_to_string_io
 def load_score(score_path):
     """Load a Dagstuhl ChoirSet time-aligned score representation.
@@ -371,6 +378,34 @@ def load_score(score_path):
 
     notes = 440 * 2 ** ((np.array(notes) - 69)/12)  # convert MIDI pitch to Hz
     return annotations.NoteData(intervals, notes, None)
+
+
+@io.coerce_to_string_io
+def load_beat(beat_path):
+    """Load a Dagstuhl ChoirSet beat annotation.
+
+        Args:
+            beat_path (str): path pointing to a beat annotation file
+
+        Returns:
+            * NoteData Object - the beat annotation
+
+        """
+    if beat_path is None:
+        return None
+
+    if not os.path.exists(beat_path):
+        raise IOError("score_path {} does not exist".format(beat_path))
+
+    times = []
+    with open(beat_path, "r") as fhandle:
+        reader = csv.reader(fhandle, delimiter=",")
+        for line in reader:
+            times.append(float(line[2]))
+
+    positions = np.arange(times).astype(int) + 1
+    return annotations.BeatData(times, positions)
+
 
 # -- use this decorator so the docs are complete
 @core.docstring_inherit(core.Dataset)
@@ -404,3 +439,7 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_score)
     def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)
+
+    @core.copy_docs(load_beat)
+    def load_beat(self, *args, **kwargs):
+        return load_beat(*args, **kwargs)
