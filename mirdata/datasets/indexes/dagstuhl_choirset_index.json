@@ -1,5 +1,5 @@
 {
-  "version": 1.1,
+  "version": "1.2.2",
   "tracks": {
     "DCS_LI_Basses_Take01_B1": {
       "audio_dyn": [
@@ -24788,12 +24788,16 @@
         "audio_wav_22050_mono/DCS_LI_Basses_Take01_StereoReverb_STM.wav",
         "39149f838ec797e1c2de7500ac0bdc1f"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_LI_Basses_Take01_B3",
-        "DCS_LI_Basses_Take01_B2",
-        "DCS_LI_Basses_Take01_B4",
         "DCS_LI_Basses_Take01_B5",
-        "DCS_LI_Basses_Take01_B1"
+        "DCS_LI_Basses_Take01_B1",
+        "DCS_LI_Basses_Take01_B4",
+        "DCS_LI_Basses_Take01_B3",
+        "DCS_LI_Basses_Take01_B2"
       ]
     },
     "DCS_LI_Basses_Take02": {
@@ -24813,12 +24817,16 @@
         "audio_wav_22050_mono/DCS_LI_Basses_Take02_StereoReverb_STM.wav",
         "683d59e3dde7f7da96768ce374c942eb"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
+        "DCS_LI_Basses_Take02_B3",
         "DCS_LI_Basses_Take02_B5",
-        "DCS_LI_Basses_Take02_B1",
-        "DCS_LI_Basses_Take02_B2",
         "DCS_LI_Basses_Take02_B4",
-        "DCS_LI_Basses_Take02_B3"
+        "DCS_LI_Basses_Take02_B2",
+        "DCS_LI_Basses_Take02_B1"
       ]
     },
     "DCS_LI_Basses_Take03": {
@@ -24838,11 +24846,15 @@
         "audio_wav_22050_mono/DCS_LI_Basses_Take03_StereoReverb_STM.wav",
         "a8ce37321834d2ad1b068feabbc311b4"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_LI_Basses_Take03_B1",
+        "DCS_LI_Basses_Take03_B2",
         "DCS_LI_Basses_Take03_B4",
-        "DCS_LI_Basses_Take03_B3",
-        "DCS_LI_Basses_Take03_B2"
+        "DCS_LI_Basses_Take03_B1",
+        "DCS_LI_Basses_Take03_B3"
       ]
     },
     "DCS_LI_Basses_Take04": {
@@ -24862,11 +24874,15 @@
         "audio_wav_22050_mono/DCS_LI_Basses_Take04_StereoReverb_STM.wav",
         "7bb1364061e1fdd95b7fed2ee91a37a9"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_LI_Basses_Take04_B1",
         "DCS_LI_Basses_Take04_B2",
         "DCS_LI_Basses_Take04_B4",
-        "DCS_LI_Basses_Take04_B3"
+        "DCS_LI_Basses_Take04_B3",
+        "DCS_LI_Basses_Take04_B1"
       ]
     },
     "DCS_LI_Basses_Take05": {
@@ -24886,9 +24902,13 @@
         "audio_wav_22050_mono/DCS_LI_Basses_Take05_StereoReverb_STM.wav",
         "cc65e993293e92799d9de166a7ea4e93"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_LI_Basses_Take05_B3",
-        "DCS_LI_Basses_Take05_B1"
+        "DCS_LI_Basses_Take05_B1",
+        "DCS_LI_Basses_Take05_B3"
       ]
     },
     "DCS_LI_Basses_Take06": {
@@ -24907,6 +24927,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_LI_Basses_Take06_StereoReverb_STM.wav",
         "41f4a6f65976a6f348a03a3e0bdf0885"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_LI_Basses_Take06_B1"
@@ -24929,6 +24953,10 @@
         "audio_wav_22050_mono/DCS_LI_FullChoir_Solo01_StereoReverb_STM.wav",
         "4d96b103799049531e5c9cb0566a5321"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_LI_FullChoir_Solo01_B2"
       ]
@@ -24949,6 +24977,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_LI_FullChoir_Solo02_StereoReverb_STM.wav",
         "9c5a781874c88ac0157821d10190046a"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_LI_FullChoir_Solo02_B1"
@@ -24971,6 +25003,10 @@
         "audio_wav_22050_mono/DCS_LI_FullChoir_Solo03_StereoReverb_STM.wav",
         "6cb8e3e0ea01753bd697ff6777b40c55"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_LI_FullChoir_Solo03_T2"
       ]
@@ -24991,6 +25027,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_LI_FullChoir_Solo04_StereoReverb_STM.wav",
         "bae186cf64edf075e45d6ede23d6827b"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_LI_FullChoir_Solo04_T1"
@@ -25013,6 +25053,10 @@
         "audio_wav_22050_mono/DCS_LI_FullChoir_Solo05_StereoReverb_STM.wav",
         "854a6afe706f57b9b7f3310dcdb3ab73"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_LI_FullChoir_Solo05_A2"
       ]
@@ -25033,6 +25077,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_LI_FullChoir_Solo06_StereoReverb_STM.wav",
         "9b401438c11c35e9deddba4722b1e028"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_LI_FullChoir_Solo06_A1"
@@ -25055,6 +25103,10 @@
         "audio_wav_22050_mono/DCS_LI_FullChoir_Solo07_StereoReverb_STM.wav",
         "3bfb8cd300925146933b32bb2cfea18a"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_LI_FullChoir_Solo07_S1"
       ]
@@ -25075,6 +25127,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_LI_FullChoir_Solo08_StereoReverb_STM.wav",
         "899a4d93f1c916d0933c6b917e18d859"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_LI_FullChoir_Solo08_S2"
@@ -25097,19 +25153,19 @@
         "audio_wav_22050_mono/DCS_LI_FullChoir_Take01_StereoReverb_STM.wav",
         "13b1fcb66b847763fd03ec48c8872d83"
       ],
-      "tracks": [
-        "DCS_LI_FullChoir_Take01_T2",
-        "DCS_LI_FullChoir_Take01_B2",
-        "DCS_LI_FullChoir_Take01_A2",
-        "DCS_LI_FullChoir_Take01_S2",
-        "DCS_LI_FullChoir_Take01_B1",
-        "DCS_LI_FullChoir_Take01_S1",
-        "DCS_LI_FullChoir_Take01_A1",
-        "DCS_LI_FullChoir_Take01_T1"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_FullChoir_Take01_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_FullChoir_Take01_Stereo_STM.csv",
         "6d7d802e97d88cc42bdf5d0d1cf70b0d"
+      ],
+      "tracks": [
+        "DCS_LI_FullChoir_Take01_A2",
+        "DCS_LI_FullChoir_Take01_B1",
+        "DCS_LI_FullChoir_Take01_T2",
+        "DCS_LI_FullChoir_Take01_A1",
+        "DCS_LI_FullChoir_Take01_B2",
+        "DCS_LI_FullChoir_Take01_S1",
+        "DCS_LI_FullChoir_Take01_T1",
+        "DCS_LI_FullChoir_Take01_S2"
       ]
     },
     "DCS_LI_FullChoir_Take02": {
@@ -25129,19 +25185,19 @@
         "audio_wav_22050_mono/DCS_LI_FullChoir_Take02_StereoReverb_STM.wav",
         "855e06ff06ada5eec02f28458318721f"
       ],
-      "tracks": [
-        "DCS_LI_FullChoir_Take02_B1",
-        "DCS_LI_FullChoir_Take02_A1",
-        "DCS_LI_FullChoir_Take02_T1",
-        "DCS_LI_FullChoir_Take02_S1",
-        "DCS_LI_FullChoir_Take02_T2",
-        "DCS_LI_FullChoir_Take02_A2",
-        "DCS_LI_FullChoir_Take02_S2",
-        "DCS_LI_FullChoir_Take02_B2"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_FullChoir_Take02_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_FullChoir_Take02_Stereo_STM.csv",
         "853816078ee728010a39b84ff9012aef"
+      ],
+      "tracks": [
+        "DCS_LI_FullChoir_Take02_S1",
+        "DCS_LI_FullChoir_Take02_S2",
+        "DCS_LI_FullChoir_Take02_B2",
+        "DCS_LI_FullChoir_Take02_B1",
+        "DCS_LI_FullChoir_Take02_T1",
+        "DCS_LI_FullChoir_Take02_A1",
+        "DCS_LI_FullChoir_Take02_A2",
+        "DCS_LI_FullChoir_Take02_T2"
       ]
     },
     "DCS_LI_FullChoir_Take03": {
@@ -25161,19 +25217,19 @@
         "audio_wav_22050_mono/DCS_LI_FullChoir_Take03_StereoReverb_STM.wav",
         "78f6407b70382167aa7e72794cf97707"
       ],
+      "beat": [
+        "annotations_csv_beat/DCS_LI_FullChoir_Take03_Stereo_STM.csv",
+        "aee157aab886e34c7dd390bbb2e8ce5e"
+      ],
       "tracks": [
+        "DCS_LI_FullChoir_Take03_A1",
+        "DCS_LI_FullChoir_Take03_S2",
+        "DCS_LI_FullChoir_Take03_T2",
+        "DCS_LI_FullChoir_Take03_B1",
         "DCS_LI_FullChoir_Take03_T1",
         "DCS_LI_FullChoir_Take03_A2",
-        "DCS_LI_FullChoir_Take03_T2",
         "DCS_LI_FullChoir_Take03_S1",
-        "DCS_LI_FullChoir_Take03_S2",
-        "DCS_LI_FullChoir_Take03_B2",
-        "DCS_LI_FullChoir_Take03_A1",
-        "DCS_LI_FullChoir_Take03_B1"
-      ],
-      "beat": [
-        "annotations_csv_beat/DCS_LI_FullChoir_Take03_Stereo_STM.wav",
-        "aee157aab886e34c7dd390bbb2e8ce5e"
+        "DCS_LI_FullChoir_Take03_B2"
       ]
     },
     "DCS_LI_QuartetA_Overacted": {
@@ -25193,11 +25249,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetA_Overacted_StereoReverb_STM.wav",
         "f5c040537ab70ffa50a67971a0bb4dde"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_LI_QuartetA_Overacted_B1",
-        "DCS_LI_QuartetA_Overacted_A1",
         "DCS_LI_QuartetA_Overacted_T1",
-        "DCS_LI_QuartetA_Overacted_S2"
+        "DCS_LI_QuartetA_Overacted_S2",
+        "DCS_LI_QuartetA_Overacted_A1"
       ]
     },
     "DCS_LI_QuartetA_Solo01": {
@@ -25216,6 +25276,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_LI_QuartetA_Solo01_StereoReverb_STM.wav",
         "2a22894802332d11998da0d03249f200"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_LI_QuartetA_Solo01_B1"
@@ -25238,6 +25302,10 @@
         "audio_wav_22050_mono/DCS_LI_QuartetA_Solo02_StereoReverb_STM.wav",
         "f5b54d62036c5dc47187249d4957d393"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_LI_QuartetA_Solo02_T1"
       ]
@@ -25258,6 +25326,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_LI_QuartetA_Solo03_StereoReverb_STM.wav",
         "67385fa8b22c7ea204e6feef950ee363"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_LI_QuartetA_Solo03_A1"
@@ -25280,6 +25352,10 @@
         "audio_wav_22050_mono/DCS_LI_QuartetA_Solo04_StereoReverb_STM.wav",
         "b41727f83f6ddde95c374ba6e5d44d6d"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_LI_QuartetA_Solo04_S2"
       ]
@@ -25301,15 +25377,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetA_Take01_StereoReverb_STM.wav",
         "e8196867f381bead3c4372f601ede840"
       ],
-      "tracks": [
-        "DCS_LI_QuartetA_Take01_B1",
-        "DCS_LI_QuartetA_Take01_A1",
-        "DCS_LI_QuartetA_Take01_T1",
-        "DCS_LI_QuartetA_Take01_S2"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetA_Take01_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_QuartetA_Take01_Stereo_STM.csv",
         "8d936df7c448b63947189d028a3336a2"
+      ],
+      "tracks": [
+        "DCS_LI_QuartetA_Take01_T1",
+        "DCS_LI_QuartetA_Take01_S2",
+        "DCS_LI_QuartetA_Take01_A1",
+        "DCS_LI_QuartetA_Take01_B1"
       ]
     },
     "DCS_LI_QuartetA_Take02": {
@@ -25329,15 +25405,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetA_Take02_StereoReverb_STM.wav",
         "3b56b678039aa10e2c05c315a39cee6d"
       ],
-      "tracks": [
-        "DCS_LI_QuartetA_Take02_S2",
-        "DCS_LI_QuartetA_Take02_B1",
-        "DCS_LI_QuartetA_Take02_A1",
-        "DCS_LI_QuartetA_Take02_T1"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetA_Take02_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_QuartetA_Take02_Stereo_STM.csv",
         "0a9e0448994a83576618f9f0bce51488"
+      ],
+      "tracks": [
+        "DCS_LI_QuartetA_Take02_T1",
+        "DCS_LI_QuartetA_Take02_A1",
+        "DCS_LI_QuartetA_Take02_B1",
+        "DCS_LI_QuartetA_Take02_S2"
       ]
     },
     "DCS_LI_QuartetA_Take03": {
@@ -25357,15 +25433,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetA_Take03_StereoReverb_STM.wav",
         "8689c10993222759cc1bc116245925d9"
       ],
-      "tracks": [
-        "DCS_LI_QuartetA_Take03_S2",
-        "DCS_LI_QuartetA_Take03_B1",
-        "DCS_LI_QuartetA_Take03_A1",
-        "DCS_LI_QuartetA_Take03_T1"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetA_Take03_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_QuartetA_Take03_Stereo_STM.csv",
         "4047ffea7ee87ebfa039c33fcb2e21df"
+      ],
+      "tracks": [
+        "DCS_LI_QuartetA_Take03_T1",
+        "DCS_LI_QuartetA_Take03_S2",
+        "DCS_LI_QuartetA_Take03_A1",
+        "DCS_LI_QuartetA_Take03_B1"
       ]
     },
     "DCS_LI_QuartetA_Take04": {
@@ -25385,15 +25461,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetA_Take04_StereoReverb_STM.wav",
         "bf3cb1270431aba82967d7295376aa94"
       ],
-      "tracks": [
-        "DCS_LI_QuartetA_Take04_T1",
-        "DCS_LI_QuartetA_Take04_B1",
-        "DCS_LI_QuartetA_Take04_A1",
-        "DCS_LI_QuartetA_Take04_S2"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetA_Take04_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_QuartetA_Take04_Stereo_STM.csv",
         "0c8d2e3afd31cc2d9b0abc105d2cc5cf"
+      ],
+      "tracks": [
+        "DCS_LI_QuartetA_Take04_A1",
+        "DCS_LI_QuartetA_Take04_B1",
+        "DCS_LI_QuartetA_Take04_T1",
+        "DCS_LI_QuartetA_Take04_S2"
       ]
     },
     "DCS_LI_QuartetA_Take05": {
@@ -25413,15 +25489,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetA_Take05_StereoReverb_STM.wav",
         "ade735fb8dd6985a8d541b3c730ca90e"
       ],
+      "beat": [
+        "annotations_csv_beat/DCS_LI_QuartetA_Take05_Stereo_STM.csv",
+        "4d0560d9de08f68234f3eec3dec699b4"
+      ],
       "tracks": [
-        "DCS_LI_QuartetA_Take05_A1",
         "DCS_LI_QuartetA_Take05_B1",
         "DCS_LI_QuartetA_Take05_S2",
+        "DCS_LI_QuartetA_Take05_A1",
         "DCS_LI_QuartetA_Take05_T1"
-      ],
-      "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetA_Take05_Stereo_STM.wav",
-        "4d0560d9de08f68234f3eec3dec699b4"
       ]
     },
     "DCS_LI_QuartetA_Take06": {
@@ -25441,15 +25517,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetA_Take06_StereoReverb_STM.wav",
         "8373c4aa59f4a91bbff7407711ea8d3b"
       ],
+      "beat": [
+        "annotations_csv_beat/DCS_LI_QuartetA_Take06_Stereo_STM.csv",
+        "86839f05527d81b50f18bb6db95c5bb3"
+      ],
       "tracks": [
         "DCS_LI_QuartetA_Take06_B1",
-        "DCS_LI_QuartetA_Take06_S2",
         "DCS_LI_QuartetA_Take06_A1",
+        "DCS_LI_QuartetA_Take06_S2",
         "DCS_LI_QuartetA_Take06_T1"
-      ],
-      "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetA_Take06_Stereo_STM.wav",
-        "86839f05527d81b50f18bb6db95c5bb3"
       ]
     },
     "DCS_LI_QuartetB_Overacted": {
@@ -25469,11 +25545,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetB_Overacted_StereoReverb_STM.wav",
         "8063cf4e5a21f2ab57c6fc8c05aa0a5c"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_LI_QuartetB_Overacted_A2",
         "DCS_LI_QuartetB_Overacted_S1",
+        "DCS_LI_QuartetB_Overacted_T2",
         "DCS_LI_QuartetB_Overacted_B2",
-        "DCS_LI_QuartetB_Overacted_T2"
+        "DCS_LI_QuartetB_Overacted_A2"
       ]
     },
     "DCS_LI_QuartetB_Solo01": {
@@ -25492,6 +25572,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_LI_QuartetB_Solo01_StereoReverb_STM.wav",
         "3b4d86ce05f50e76a942bc461840c2dd"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_LI_QuartetB_Solo01_B2"
@@ -25514,6 +25598,10 @@
         "audio_wav_22050_mono/DCS_LI_QuartetB_Solo02_StereoReverb_STM.wav",
         "d342b3d422271e2fa15329362cbc6f90"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_LI_QuartetB_Solo02_T2"
       ]
@@ -25534,6 +25622,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_LI_QuartetB_Solo03_StereoReverb_STM.wav",
         "11777f8e76d4a038e16813b36bd40122"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_LI_QuartetB_Solo03_A2"
@@ -25556,6 +25648,10 @@
         "audio_wav_22050_mono/DCS_LI_QuartetB_Solo04_StereoReverb_STM.wav",
         "d593d31dfd66b083f21b65db78ac3857"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_LI_QuartetB_Solo04_S1"
       ]
@@ -25577,15 +25673,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetB_Take01_StereoReverb_STM.wav",
         "291798145f7a23d575ccd9b96b006b3d"
       ],
-      "tracks": [
-        "DCS_LI_QuartetB_Take01_B2",
-        "DCS_LI_QuartetB_Take01_A2",
-        "DCS_LI_QuartetB_Take01_T2",
-        "DCS_LI_QuartetB_Take01_S1"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetB_Take01_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_QuartetB_Take01_Stereo_STM.csv",
         "c0d82bbbdbfb5eeea4f4fdce6e957737"
+      ],
+      "tracks": [
+        "DCS_LI_QuartetB_Take01_A2",
+        "DCS_LI_QuartetB_Take01_S1",
+        "DCS_LI_QuartetB_Take01_B2",
+        "DCS_LI_QuartetB_Take01_T2"
       ]
     },
     "DCS_LI_QuartetB_Take02": {
@@ -25605,15 +25701,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetB_Take02_StereoReverb_STM.wav",
         "f36660d6aae2938f479ea283bf4ca23a"
       ],
-      "tracks": [
-        "DCS_LI_QuartetB_Take02_T2",
-        "DCS_LI_QuartetB_Take02_A2",
-        "DCS_LI_QuartetB_Take02_B2",
-        "DCS_LI_QuartetB_Take02_S1"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetB_Take02_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_QuartetB_Take02_Stereo_STM.csv",
         "379ba7215fdcf3ab149cff87c191b63e"
+      ],
+      "tracks": [
+        "DCS_LI_QuartetB_Take02_B2",
+        "DCS_LI_QuartetB_Take02_A2",
+        "DCS_LI_QuartetB_Take02_S1",
+        "DCS_LI_QuartetB_Take02_T2"
       ]
     },
     "DCS_LI_QuartetB_Take03": {
@@ -25633,15 +25729,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetB_Take03_StereoReverb_STM.wav",
         "e09c8ef7548469c4275ec68d2176df52"
       ],
-      "tracks": [
-        "DCS_LI_QuartetB_Take03_S1",
-        "DCS_LI_QuartetB_Take03_B2",
-        "DCS_LI_QuartetB_Take03_T2",
-        "DCS_LI_QuartetB_Take03_A2"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetB_Take03_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_QuartetB_Take03_Stereo_STM.csv",
         "5480637134b6b05706a7b6edc4023984"
+      ],
+      "tracks": [
+        "DCS_LI_QuartetB_Take03_A2",
+        "DCS_LI_QuartetB_Take03_S1",
+        "DCS_LI_QuartetB_Take03_T2",
+        "DCS_LI_QuartetB_Take03_B2"
       ]
     },
     "DCS_LI_QuartetB_Take04": {
@@ -25661,15 +25757,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_StereoReverb_STM.wav",
         "57ccce05e9eefd0357f343b8e9c2c9eb"
       ],
-      "tracks": [
-        "DCS_LI_QuartetB_Take04_S1",
-        "DCS_LI_QuartetB_Take04_B2",
-        "DCS_LI_QuartetB_Take04_T2",
-        "DCS_LI_QuartetB_Take04_A2"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv",
         "99fc75932d36aa7edb07b20c45a5d1d4"
+      ],
+      "tracks": [
+        "DCS_LI_QuartetB_Take04_T2",
+        "DCS_LI_QuartetB_Take04_B2",
+        "DCS_LI_QuartetB_Take04_A2",
+        "DCS_LI_QuartetB_Take04_S1"
       ]
     },
     "DCS_LI_QuartetB_Take05": {
@@ -25689,15 +25785,15 @@
         "audio_wav_22050_mono/DCS_LI_QuartetB_Take05_StereoReverb_STM.wav",
         "7f2a3d54253cc377c684f7a08fe01100"
       ],
+      "beat": [
+        "annotations_csv_beat/DCS_LI_QuartetB_Take05_Stereo_STM.csv",
+        "018fbd53472e6450d641997d56579889"
+      ],
       "tracks": [
-        "DCS_LI_QuartetB_Take05_A2",
         "DCS_LI_QuartetB_Take05_T2",
+        "DCS_LI_QuartetB_Take05_A2",
         "DCS_LI_QuartetB_Take05_B2",
         "DCS_LI_QuartetB_Take05_S1"
-      ],
-      "beat": [
-        "annotations_csv_beat/DCS_LI_QuartetB_Take05_Stereo_STM.wav",
-        "018fbd53472e6450d641997d56579889"
       ]
     },
     "DCS_SE_Basses_Tuning01": {
@@ -25717,12 +25813,16 @@
         "audio_wav_22050_mono/DCS_SE_Basses_Tuning01_StereoReverb_STM.wav",
         "0f1dcf45db3f8113bc6061ef4a29d296"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_Basses_Tuning01_B5",
-        "DCS_SE_Basses_Tuning01_B4",
+        "DCS_SE_Basses_Tuning01_B1",
         "DCS_SE_Basses_Tuning01_B2",
         "DCS_SE_Basses_Tuning01_B3",
-        "DCS_SE_Basses_Tuning01_B1"
+        "DCS_SE_Basses_Tuning01_B4"
       ]
     },
     "DCS_SE_Basses_Tuning02": {
@@ -25742,12 +25842,16 @@
         "audio_wav_22050_mono/DCS_SE_Basses_Tuning02_StereoReverb_STM.wav",
         "87c492cf182f4b6cca525dae11ac793f"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_Basses_Tuning02_B5",
-        "DCS_SE_Basses_Tuning02_B3",
-        "DCS_SE_Basses_Tuning02_B1",
         "DCS_SE_Basses_Tuning02_B4",
-        "DCS_SE_Basses_Tuning02_B2"
+        "DCS_SE_Basses_Tuning02_B5",
+        "DCS_SE_Basses_Tuning02_B2",
+        "DCS_SE_Basses_Tuning02_B3",
+        "DCS_SE_Basses_Tuning02_B1"
       ]
     },
     "DCS_SE_Basses_Unison01": {
@@ -25767,10 +25871,14 @@
         "audio_wav_22050_mono/DCS_SE_Basses_Unison01_StereoReverb_STM.wav",
         "ba9202ef42bd9da75b3db2546e15f331"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_Basses_Unison01_B3",
-        "DCS_SE_Basses_Unison01_B1",
         "DCS_SE_Basses_Unison01_B2",
+        "DCS_SE_Basses_Unison01_B1",
         "DCS_SE_Basses_Unison01_B4",
         "DCS_SE_Basses_Unison01_B5"
       ]
@@ -25792,15 +25900,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown01_StereoReverb_STM.wav",
         "3d2a7d7059158a079eda8ee0f5f7d51f"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown01_T1",
-        "DCS_SE_FullChoir_ScaleUpDown01_T2",
-        "DCS_SE_FullChoir_ScaleUpDown01_S2",
-        "DCS_SE_FullChoir_ScaleUpDown01_B2",
-        "DCS_SE_FullChoir_ScaleUpDown01_A2",
         "DCS_SE_FullChoir_ScaleUpDown01_A1",
+        "DCS_SE_FullChoir_ScaleUpDown01_S2",
+        "DCS_SE_FullChoir_ScaleUpDown01_T2",
+        "DCS_SE_FullChoir_ScaleUpDown01_T1",
         "DCS_SE_FullChoir_ScaleUpDown01_S1",
-        "DCS_SE_FullChoir_ScaleUpDown01_B1"
+        "DCS_SE_FullChoir_ScaleUpDown01_B1",
+        "DCS_SE_FullChoir_ScaleUpDown01_B2",
+        "DCS_SE_FullChoir_ScaleUpDown01_A2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown02": {
@@ -25820,15 +25932,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown02_StereoReverb_STM.wav",
         "dfe114f6d1603e0fd1379d42124d2c30"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown02_S1",
-        "DCS_SE_FullChoir_ScaleUpDown02_B2",
-        "DCS_SE_FullChoir_ScaleUpDown02_T1",
-        "DCS_SE_FullChoir_ScaleUpDown02_T2",
-        "DCS_SE_FullChoir_ScaleUpDown02_B1",
-        "DCS_SE_FullChoir_ScaleUpDown02_S2",
         "DCS_SE_FullChoir_ScaleUpDown02_A2",
-        "DCS_SE_FullChoir_ScaleUpDown02_A1"
+        "DCS_SE_FullChoir_ScaleUpDown02_S1",
+        "DCS_SE_FullChoir_ScaleUpDown02_S2",
+        "DCS_SE_FullChoir_ScaleUpDown02_T1",
+        "DCS_SE_FullChoir_ScaleUpDown02_B2",
+        "DCS_SE_FullChoir_ScaleUpDown02_T2",
+        "DCS_SE_FullChoir_ScaleUpDown02_A1",
+        "DCS_SE_FullChoir_ScaleUpDown02_B1"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown03": {
@@ -25848,15 +25964,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown03_StereoReverb_STM.wav",
         "4fc525a78c194e308af9a6e3cd1e1fb7"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown03_B2",
-        "DCS_SE_FullChoir_ScaleUpDown03_A2",
-        "DCS_SE_FullChoir_ScaleUpDown03_S1",
         "DCS_SE_FullChoir_ScaleUpDown03_A1",
-        "DCS_SE_FullChoir_ScaleUpDown03_S2",
-        "DCS_SE_FullChoir_ScaleUpDown03_T1",
+        "DCS_SE_FullChoir_ScaleUpDown03_S1",
+        "DCS_SE_FullChoir_ScaleUpDown03_A2",
+        "DCS_SE_FullChoir_ScaleUpDown03_B1",
         "DCS_SE_FullChoir_ScaleUpDown03_T2",
-        "DCS_SE_FullChoir_ScaleUpDown03_B1"
+        "DCS_SE_FullChoir_ScaleUpDown03_B2",
+        "DCS_SE_FullChoir_ScaleUpDown03_T1",
+        "DCS_SE_FullChoir_ScaleUpDown03_S2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown04": {
@@ -25876,15 +25996,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown04_StereoReverb_STM.wav",
         "bb143c207286ed304b942df3f1d4215f"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown04_S2",
         "DCS_SE_FullChoir_ScaleUpDown04_B1",
-        "DCS_SE_FullChoir_ScaleUpDown04_A2",
-        "DCS_SE_FullChoir_ScaleUpDown04_B2",
-        "DCS_SE_FullChoir_ScaleUpDown04_T1",
         "DCS_SE_FullChoir_ScaleUpDown04_A1",
+        "DCS_SE_FullChoir_ScaleUpDown04_S2",
+        "DCS_SE_FullChoir_ScaleUpDown04_T1",
+        "DCS_SE_FullChoir_ScaleUpDown04_B2",
+        "DCS_SE_FullChoir_ScaleUpDown04_T2",
         "DCS_SE_FullChoir_ScaleUpDown04_S1",
-        "DCS_SE_FullChoir_ScaleUpDown04_T2"
+        "DCS_SE_FullChoir_ScaleUpDown04_A2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown05": {
@@ -25904,15 +26028,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown05_StereoReverb_STM.wav",
         "814813cffd1b949f40da71db7e9604a6"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown05_A2",
-        "DCS_SE_FullChoir_ScaleUpDown05_A1",
         "DCS_SE_FullChoir_ScaleUpDown05_S1",
-        "DCS_SE_FullChoir_ScaleUpDown05_B2",
-        "DCS_SE_FullChoir_ScaleUpDown05_T1",
-        "DCS_SE_FullChoir_ScaleUpDown05_B1",
+        "DCS_SE_FullChoir_ScaleUpDown05_A2",
+        "DCS_SE_FullChoir_ScaleUpDown05_T2",
+        "DCS_SE_FullChoir_ScaleUpDown05_A1",
         "DCS_SE_FullChoir_ScaleUpDown05_S2",
-        "DCS_SE_FullChoir_ScaleUpDown05_T2"
+        "DCS_SE_FullChoir_ScaleUpDown05_B1",
+        "DCS_SE_FullChoir_ScaleUpDown05_T1",
+        "DCS_SE_FullChoir_ScaleUpDown05_B2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown06": {
@@ -25932,15 +26060,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown06_StereoReverb_STM.wav",
         "10954b4a34c5bd8e4cea5ff3a86a9cb4"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown06_S1",
-        "DCS_SE_FullChoir_ScaleUpDown06_T1",
-        "DCS_SE_FullChoir_ScaleUpDown06_B1",
-        "DCS_SE_FullChoir_ScaleUpDown06_A1",
-        "DCS_SE_FullChoir_ScaleUpDown06_T2",
-        "DCS_SE_FullChoir_ScaleUpDown06_S2",
         "DCS_SE_FullChoir_ScaleUpDown06_B2",
-        "DCS_SE_FullChoir_ScaleUpDown06_A2"
+        "DCS_SE_FullChoir_ScaleUpDown06_S2",
+        "DCS_SE_FullChoir_ScaleUpDown06_T2",
+        "DCS_SE_FullChoir_ScaleUpDown06_S1",
+        "DCS_SE_FullChoir_ScaleUpDown06_B1",
+        "DCS_SE_FullChoir_ScaleUpDown06_A2",
+        "DCS_SE_FullChoir_ScaleUpDown06_A1",
+        "DCS_SE_FullChoir_ScaleUpDown06_T1"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown07": {
@@ -25960,14 +26092,18 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown07_StereoReverb_STM.wav",
         "2bb201775845edeb93918a3175a8b57d"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown07_T1",
-        "DCS_SE_FullChoir_ScaleUpDown07_A1",
-        "DCS_SE_FullChoir_ScaleUpDown07_B2",
-        "DCS_SE_FullChoir_ScaleUpDown07_S1",
         "DCS_SE_FullChoir_ScaleUpDown07_S2",
         "DCS_SE_FullChoir_ScaleUpDown07_A2",
         "DCS_SE_FullChoir_ScaleUpDown07_B1",
+        "DCS_SE_FullChoir_ScaleUpDown07_A1",
+        "DCS_SE_FullChoir_ScaleUpDown07_B2",
+        "DCS_SE_FullChoir_ScaleUpDown07_S1",
+        "DCS_SE_FullChoir_ScaleUpDown07_T1",
         "DCS_SE_FullChoir_ScaleUpDown07_T2"
       ]
     },
@@ -25988,15 +26124,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown08_StereoReverb_STM.wav",
         "7c1713f87c58d5e0c42d825893ee366d"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown08_B1",
+        "DCS_SE_FullChoir_ScaleUpDown08_S1",
         "DCS_SE_FullChoir_ScaleUpDown08_S2",
-        "DCS_SE_FullChoir_ScaleUpDown08_B2",
-        "DCS_SE_FullChoir_ScaleUpDown08_T1",
-        "DCS_SE_FullChoir_ScaleUpDown08_T2",
-        "DCS_SE_FullChoir_ScaleUpDown08_A1",
         "DCS_SE_FullChoir_ScaleUpDown08_A2",
-        "DCS_SE_FullChoir_ScaleUpDown08_S1"
+        "DCS_SE_FullChoir_ScaleUpDown08_T2",
+        "DCS_SE_FullChoir_ScaleUpDown08_B1",
+        "DCS_SE_FullChoir_ScaleUpDown08_B2",
+        "DCS_SE_FullChoir_ScaleUpDown08_A1",
+        "DCS_SE_FullChoir_ScaleUpDown08_T1"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown09": {
@@ -26016,15 +26156,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown09_StereoReverb_STM.wav",
         "4f14773be2e5f7ead151f68223b4fc09"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_FullChoir_ScaleUpDown09_T1",
-        "DCS_SE_FullChoir_ScaleUpDown09_S2",
         "DCS_SE_FullChoir_ScaleUpDown09_A1",
-        "DCS_SE_FullChoir_ScaleUpDown09_B2",
-        "DCS_SE_FullChoir_ScaleUpDown09_B1",
-        "DCS_SE_FullChoir_ScaleUpDown09_T2",
         "DCS_SE_FullChoir_ScaleUpDown09_A2",
-        "DCS_SE_FullChoir_ScaleUpDown09_S1"
+        "DCS_SE_FullChoir_ScaleUpDown09_S1",
+        "DCS_SE_FullChoir_ScaleUpDown09_B1",
+        "DCS_SE_FullChoir_ScaleUpDown09_B2",
+        "DCS_SE_FullChoir_ScaleUpDown09_S2",
+        "DCS_SE_FullChoir_ScaleUpDown09_T2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown10": {
@@ -26044,15 +26188,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown10_StereoReverb_STM.wav",
         "39a0530045adaea569e9ffbb031162a2"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown10_T2",
-        "DCS_SE_FullChoir_ScaleUpDown10_B1",
-        "DCS_SE_FullChoir_ScaleUpDown10_B2",
-        "DCS_SE_FullChoir_ScaleUpDown10_S1",
         "DCS_SE_FullChoir_ScaleUpDown10_S2",
+        "DCS_SE_FullChoir_ScaleUpDown10_T2",
+        "DCS_SE_FullChoir_ScaleUpDown10_S1",
+        "DCS_SE_FullChoir_ScaleUpDown10_A2",
         "DCS_SE_FullChoir_ScaleUpDown10_T1",
+        "DCS_SE_FullChoir_ScaleUpDown10_B1",
         "DCS_SE_FullChoir_ScaleUpDown10_A1",
-        "DCS_SE_FullChoir_ScaleUpDown10_A2"
+        "DCS_SE_FullChoir_ScaleUpDown10_B2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown11": {
@@ -26072,15 +26220,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown11_StereoReverb_STM.wav",
         "1ef12c1ed6ad1c0d367210a6840b47b1"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown11_B1",
-        "DCS_SE_FullChoir_ScaleUpDown11_A1",
         "DCS_SE_FullChoir_ScaleUpDown11_S2",
-        "DCS_SE_FullChoir_ScaleUpDown11_B2",
         "DCS_SE_FullChoir_ScaleUpDown11_T2",
+        "DCS_SE_FullChoir_ScaleUpDown11_B1",
         "DCS_SE_FullChoir_ScaleUpDown11_A2",
-        "DCS_SE_FullChoir_ScaleUpDown11_T1",
-        "DCS_SE_FullChoir_ScaleUpDown11_S1"
+        "DCS_SE_FullChoir_ScaleUpDown11_A1",
+        "DCS_SE_FullChoir_ScaleUpDown11_S1",
+        "DCS_SE_FullChoir_ScaleUpDown11_B2",
+        "DCS_SE_FullChoir_ScaleUpDown11_T1"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown12": {
@@ -26100,15 +26252,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown12_StereoReverb_STM.wav",
         "f6cf5745903b3af782a2e19721519a91"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown12_B2",
-        "DCS_SE_FullChoir_ScaleUpDown12_A1",
         "DCS_SE_FullChoir_ScaleUpDown12_S1",
-        "DCS_SE_FullChoir_ScaleUpDown12_B1",
+        "DCS_SE_FullChoir_ScaleUpDown12_S2",
         "DCS_SE_FullChoir_ScaleUpDown12_T1",
-        "DCS_SE_FullChoir_ScaleUpDown12_A2",
+        "DCS_SE_FullChoir_ScaleUpDown12_B1",
         "DCS_SE_FullChoir_ScaleUpDown12_T2",
-        "DCS_SE_FullChoir_ScaleUpDown12_S2"
+        "DCS_SE_FullChoir_ScaleUpDown12_A2",
+        "DCS_SE_FullChoir_ScaleUpDown12_A1",
+        "DCS_SE_FullChoir_ScaleUpDown12_B2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown13": {
@@ -26128,15 +26284,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown13_StereoReverb_STM.wav",
         "78938c546eabf5fb9bfdf7cd86bd7e12"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown13_A2",
-        "DCS_SE_FullChoir_ScaleUpDown13_B1",
-        "DCS_SE_FullChoir_ScaleUpDown13_A1",
         "DCS_SE_FullChoir_ScaleUpDown13_T2",
         "DCS_SE_FullChoir_ScaleUpDown13_S1",
+        "DCS_SE_FullChoir_ScaleUpDown13_A2",
+        "DCS_SE_FullChoir_ScaleUpDown13_A1",
+        "DCS_SE_FullChoir_ScaleUpDown13_S2",
         "DCS_SE_FullChoir_ScaleUpDown13_B2",
-        "DCS_SE_FullChoir_ScaleUpDown13_T1",
-        "DCS_SE_FullChoir_ScaleUpDown13_S2"
+        "DCS_SE_FullChoir_ScaleUpDown13_B1",
+        "DCS_SE_FullChoir_ScaleUpDown13_T1"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown14": {
@@ -26156,13 +26316,17 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown14_StereoReverb_STM.wav",
         "9063a52836b815d39451e933e49c6594"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_FullChoir_ScaleUpDown14_S1",
-        "DCS_SE_FullChoir_ScaleUpDown14_A1",
         "DCS_SE_FullChoir_ScaleUpDown14_B2",
         "DCS_SE_FullChoir_ScaleUpDown14_S2",
-        "DCS_SE_FullChoir_ScaleUpDown14_T2",
+        "DCS_SE_FullChoir_ScaleUpDown14_A1",
         "DCS_SE_FullChoir_ScaleUpDown14_B1",
+        "DCS_SE_FullChoir_ScaleUpDown14_T2",
         "DCS_SE_FullChoir_ScaleUpDown14_T1",
         "DCS_SE_FullChoir_ScaleUpDown14_A2"
       ]
@@ -26184,15 +26348,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown15_StereoReverb_STM.wav",
         "22d3105e68eb971fc8f5a2d60eeab28f"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown15_A1",
-        "DCS_SE_FullChoir_ScaleUpDown15_T2",
-        "DCS_SE_FullChoir_ScaleUpDown15_B2",
-        "DCS_SE_FullChoir_ScaleUpDown15_S1",
-        "DCS_SE_FullChoir_ScaleUpDown15_T1",
-        "DCS_SE_FullChoir_ScaleUpDown15_A2",
         "DCS_SE_FullChoir_ScaleUpDown15_B1",
-        "DCS_SE_FullChoir_ScaleUpDown15_S2"
+        "DCS_SE_FullChoir_ScaleUpDown15_T2",
+        "DCS_SE_FullChoir_ScaleUpDown15_S2",
+        "DCS_SE_FullChoir_ScaleUpDown15_A2",
+        "DCS_SE_FullChoir_ScaleUpDown15_T1",
+        "DCS_SE_FullChoir_ScaleUpDown15_S1",
+        "DCS_SE_FullChoir_ScaleUpDown15_A1",
+        "DCS_SE_FullChoir_ScaleUpDown15_B2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown16": {
@@ -26212,15 +26380,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown16_StereoReverb_STM.wav",
         "52c64882f5c1ddde6cbb12a6b064be54"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_FullChoir_ScaleUpDown16_S2",
-        "DCS_SE_FullChoir_ScaleUpDown16_T2",
-        "DCS_SE_FullChoir_ScaleUpDown16_B2",
-        "DCS_SE_FullChoir_ScaleUpDown16_S1",
         "DCS_SE_FullChoir_ScaleUpDown16_A2",
         "DCS_SE_FullChoir_ScaleUpDown16_T1",
-        "DCS_SE_FullChoir_ScaleUpDown16_B1",
-        "DCS_SE_FullChoir_ScaleUpDown16_A1"
+        "DCS_SE_FullChoir_ScaleUpDown16_A1",
+        "DCS_SE_FullChoir_ScaleUpDown16_B2",
+        "DCS_SE_FullChoir_ScaleUpDown16_T2",
+        "DCS_SE_FullChoir_ScaleUpDown16_S1",
+        "DCS_SE_FullChoir_ScaleUpDown16_B1"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown17": {
@@ -26240,15 +26412,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown17_StereoReverb_STM.wav",
         "263a66aaa2bd11522d4e39c57a2bdbf9"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown17_T1",
-        "DCS_SE_FullChoir_ScaleUpDown17_S1",
-        "DCS_SE_FullChoir_ScaleUpDown17_A2",
-        "DCS_SE_FullChoir_ScaleUpDown17_S2",
-        "DCS_SE_FullChoir_ScaleUpDown17_B1",
         "DCS_SE_FullChoir_ScaleUpDown17_T2",
-        "DCS_SE_FullChoir_ScaleUpDown17_A1",
-        "DCS_SE_FullChoir_ScaleUpDown17_B2"
+        "DCS_SE_FullChoir_ScaleUpDown17_S2",
+        "DCS_SE_FullChoir_ScaleUpDown17_B2",
+        "DCS_SE_FullChoir_ScaleUpDown17_A2",
+        "DCS_SE_FullChoir_ScaleUpDown17_S1",
+        "DCS_SE_FullChoir_ScaleUpDown17_T1",
+        "DCS_SE_FullChoir_ScaleUpDown17_B1",
+        "DCS_SE_FullChoir_ScaleUpDown17_A1"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown18": {
@@ -26268,14 +26444,18 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown18_StereoReverb_STM.wav",
         "35d4078c2156e7da49e22039bb80f647"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown18_T1",
-        "DCS_SE_FullChoir_ScaleUpDown18_A1",
-        "DCS_SE_FullChoir_ScaleUpDown18_S2",
-        "DCS_SE_FullChoir_ScaleUpDown18_T2",
+        "DCS_SE_FullChoir_ScaleUpDown18_S1",
         "DCS_SE_FullChoir_ScaleUpDown18_A2",
         "DCS_SE_FullChoir_ScaleUpDown18_B1",
-        "DCS_SE_FullChoir_ScaleUpDown18_S1",
+        "DCS_SE_FullChoir_ScaleUpDown18_T1",
+        "DCS_SE_FullChoir_ScaleUpDown18_S2",
+        "DCS_SE_FullChoir_ScaleUpDown18_T2",
+        "DCS_SE_FullChoir_ScaleUpDown18_A1",
         "DCS_SE_FullChoir_ScaleUpDown18_B2"
       ]
     },
@@ -26296,14 +26476,18 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown19_StereoReverb_STM.wav",
         "d29490483e46df09fe054fbde84aec47"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown19_B1",
-        "DCS_SE_FullChoir_ScaleUpDown19_T2",
-        "DCS_SE_FullChoir_ScaleUpDown19_A1",
         "DCS_SE_FullChoir_ScaleUpDown19_B2",
         "DCS_SE_FullChoir_ScaleUpDown19_S2",
-        "DCS_SE_FullChoir_ScaleUpDown19_A2",
+        "DCS_SE_FullChoir_ScaleUpDown19_A1",
+        "DCS_SE_FullChoir_ScaleUpDown19_B1",
+        "DCS_SE_FullChoir_ScaleUpDown19_T2",
         "DCS_SE_FullChoir_ScaleUpDown19_T1",
+        "DCS_SE_FullChoir_ScaleUpDown19_A2",
         "DCS_SE_FullChoir_ScaleUpDown19_S1"
       ]
     },
@@ -26324,15 +26508,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown20_StereoReverb_STM.wav",
         "7cf9fcd41b80b2db91fcf01b6d04ff49"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown20_B2",
-        "DCS_SE_FullChoir_ScaleUpDown20_B1",
-        "DCS_SE_FullChoir_ScaleUpDown20_S2",
-        "DCS_SE_FullChoir_ScaleUpDown20_T1",
-        "DCS_SE_FullChoir_ScaleUpDown20_S1",
         "DCS_SE_FullChoir_ScaleUpDown20_T2",
+        "DCS_SE_FullChoir_ScaleUpDown20_S1",
+        "DCS_SE_FullChoir_ScaleUpDown20_S2",
+        "DCS_SE_FullChoir_ScaleUpDown20_A1",
         "DCS_SE_FullChoir_ScaleUpDown20_A2",
-        "DCS_SE_FullChoir_ScaleUpDown20_A1"
+        "DCS_SE_FullChoir_ScaleUpDown20_T1",
+        "DCS_SE_FullChoir_ScaleUpDown20_B1",
+        "DCS_SE_FullChoir_ScaleUpDown20_B2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown21": {
@@ -26352,15 +26540,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown21_StereoReverb_STM.wav",
         "fd99baf2c8a0f9a78decd283245f31e3"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown21_T1",
-        "DCS_SE_FullChoir_ScaleUpDown21_S2",
-        "DCS_SE_FullChoir_ScaleUpDown21_B1",
-        "DCS_SE_FullChoir_ScaleUpDown21_A1",
-        "DCS_SE_FullChoir_ScaleUpDown21_B2",
         "DCS_SE_FullChoir_ScaleUpDown21_A2",
+        "DCS_SE_FullChoir_ScaleUpDown21_B2",
+        "DCS_SE_FullChoir_ScaleUpDown21_A1",
+        "DCS_SE_FullChoir_ScaleUpDown21_T2",
+        "DCS_SE_FullChoir_ScaleUpDown21_B1",
         "DCS_SE_FullChoir_ScaleUpDown21_S1",
-        "DCS_SE_FullChoir_ScaleUpDown21_T2"
+        "DCS_SE_FullChoir_ScaleUpDown21_T1",
+        "DCS_SE_FullChoir_ScaleUpDown21_S2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown22": {
@@ -26380,15 +26572,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown22_StereoReverb_STM.wav",
         "7785e90039f66c2c8a529655867c60b5"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown22_B1",
         "DCS_SE_FullChoir_ScaleUpDown22_B2",
-        "DCS_SE_FullChoir_ScaleUpDown22_A1",
-        "DCS_SE_FullChoir_ScaleUpDown22_A2",
+        "DCS_SE_FullChoir_ScaleUpDown22_T1",
         "DCS_SE_FullChoir_ScaleUpDown22_S1",
+        "DCS_SE_FullChoir_ScaleUpDown22_B1",
         "DCS_SE_FullChoir_ScaleUpDown22_T2",
         "DCS_SE_FullChoir_ScaleUpDown22_S2",
-        "DCS_SE_FullChoir_ScaleUpDown22_T1"
+        "DCS_SE_FullChoir_ScaleUpDown22_A2",
+        "DCS_SE_FullChoir_ScaleUpDown22_A1"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown23": {
@@ -26408,15 +26604,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown23_StereoReverb_STM.wav",
         "3f3b5d2077b3754547766ac46753e6b8"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown23_T2",
         "DCS_SE_FullChoir_ScaleUpDown23_T1",
-        "DCS_SE_FullChoir_ScaleUpDown23_S1",
-        "DCS_SE_FullChoir_ScaleUpDown23_A2",
-        "DCS_SE_FullChoir_ScaleUpDown23_B2",
         "DCS_SE_FullChoir_ScaleUpDown23_S2",
+        "DCS_SE_FullChoir_ScaleUpDown23_B1",
         "DCS_SE_FullChoir_ScaleUpDown23_A1",
-        "DCS_SE_FullChoir_ScaleUpDown23_B1"
+        "DCS_SE_FullChoir_ScaleUpDown23_A2",
+        "DCS_SE_FullChoir_ScaleUpDown23_S1",
+        "DCS_SE_FullChoir_ScaleUpDown23_T2",
+        "DCS_SE_FullChoir_ScaleUpDown23_B2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDown24": {
@@ -26436,14 +26636,18 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDown24_StereoReverb_STM.wav",
         "bc19cf4070908e159b873b3bf539e371"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDown24_T2",
-        "DCS_SE_FullChoir_ScaleUpDown24_B1",
-        "DCS_SE_FullChoir_ScaleUpDown24_B2",
-        "DCS_SE_FullChoir_ScaleUpDown24_A2",
         "DCS_SE_FullChoir_ScaleUpDown24_A1",
         "DCS_SE_FullChoir_ScaleUpDown24_T1",
+        "DCS_SE_FullChoir_ScaleUpDown24_B2",
+        "DCS_SE_FullChoir_ScaleUpDown24_B1",
         "DCS_SE_FullChoir_ScaleUpDown24_S2",
+        "DCS_SE_FullChoir_ScaleUpDown24_A2",
+        "DCS_SE_FullChoir_ScaleUpDown24_T2",
         "DCS_SE_FullChoir_ScaleUpDown24_S1"
       ]
     },
@@ -26464,16 +26668,20 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDownPiano01_StereoReverb_STM.wav",
         "917c93e29eda6d63037199d8ec2a9304"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDownPiano01_Piano",
-        "DCS_SE_FullChoir_ScaleUpDownPiano01_B1",
-        "DCS_SE_FullChoir_ScaleUpDownPiano01_A2",
         "DCS_SE_FullChoir_ScaleUpDownPiano01_B2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano01_A1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano01_Piano",
+        "DCS_SE_FullChoir_ScaleUpDownPiano01_A2",
         "DCS_SE_FullChoir_ScaleUpDownPiano01_T1",
         "DCS_SE_FullChoir_ScaleUpDownPiano01_S1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano01_B1",
         "DCS_SE_FullChoir_ScaleUpDownPiano01_S2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano01_T2"
+        "DCS_SE_FullChoir_ScaleUpDownPiano01_T2",
+        "DCS_SE_FullChoir_ScaleUpDownPiano01_A1"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDownPiano02": {
@@ -26493,16 +26701,20 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDownPiano02_StereoReverb_STM.wav",
         "fb945ddd1b3bf83327449470d013e7cb"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDownPiano02_S1",
-        "DCS_SE_FullChoir_ScaleUpDownPiano02_T2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano02_A1",
         "DCS_SE_FullChoir_ScaleUpDownPiano02_B1",
-        "DCS_SE_FullChoir_ScaleUpDownPiano02_B2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano02_Piano",
+        "DCS_SE_FullChoir_ScaleUpDownPiano02_S2",
+        "DCS_SE_FullChoir_ScaleUpDownPiano02_S1",
         "DCS_SE_FullChoir_ScaleUpDownPiano02_A2",
         "DCS_SE_FullChoir_ScaleUpDownPiano02_T1",
-        "DCS_SE_FullChoir_ScaleUpDownPiano02_S2"
+        "DCS_SE_FullChoir_ScaleUpDownPiano02_T2",
+        "DCS_SE_FullChoir_ScaleUpDownPiano02_B2",
+        "DCS_SE_FullChoir_ScaleUpDownPiano02_A1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano02_Piano"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDownPiano03": {
@@ -26522,16 +26734,20 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDownPiano03_StereoReverb_STM.wav",
         "e5b141fc6c1527d1ad7ba7e09952a9fe"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_ScaleUpDownPiano03_A1",
         "DCS_SE_FullChoir_ScaleUpDownPiano03_Piano",
-        "DCS_SE_FullChoir_ScaleUpDownPiano03_T2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano03_T1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano03_A1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano03_B1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano03_B2",
         "DCS_SE_FullChoir_ScaleUpDownPiano03_S1",
         "DCS_SE_FullChoir_ScaleUpDownPiano03_S2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano03_B1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano03_T1",
         "DCS_SE_FullChoir_ScaleUpDownPiano03_A2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano03_B2"
+        "DCS_SE_FullChoir_ScaleUpDownPiano03_T2"
       ]
     },
     "DCS_SE_FullChoir_ScaleUpDownPiano04": {
@@ -26551,16 +26767,20 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_ScaleUpDownPiano04_StereoReverb_STM.wav",
         "5ab3de1716b8fa12d2e6376bbc088423"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_FullChoir_ScaleUpDownPiano04_T2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano04_A2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano04_A1",
-        "DCS_SE_FullChoir_ScaleUpDownPiano04_Piano",
         "DCS_SE_FullChoir_ScaleUpDownPiano04_B2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano04_S2",
-        "DCS_SE_FullChoir_ScaleUpDownPiano04_T1",
         "DCS_SE_FullChoir_ScaleUpDownPiano04_B1",
-        "DCS_SE_FullChoir_ScaleUpDownPiano04_S1"
+        "DCS_SE_FullChoir_ScaleUpDownPiano04_T1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano04_S2",
+        "DCS_SE_FullChoir_ScaleUpDownPiano04_A2",
+        "DCS_SE_FullChoir_ScaleUpDownPiano04_S1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano04_A1",
+        "DCS_SE_FullChoir_ScaleUpDownPiano04_Piano"
       ]
     },
     "DCS_SE_FullChoir_Tuning01": {
@@ -26580,14 +26800,18 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_Tuning01_StereoReverb_STM.wav",
         "00ccf22667168556a4a10242c12ba5ac"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_Tuning01_S1",
         "DCS_SE_FullChoir_Tuning01_A1",
+        "DCS_SE_FullChoir_Tuning01_A2",
+        "DCS_SE_FullChoir_Tuning01_S1",
         "DCS_SE_FullChoir_Tuning01_T1",
         "DCS_SE_FullChoir_Tuning01_S2",
-        "DCS_SE_FullChoir_Tuning01_B2",
-        "DCS_SE_FullChoir_Tuning01_A2",
         "DCS_SE_FullChoir_Tuning01_T2",
+        "DCS_SE_FullChoir_Tuning01_B2",
         "DCS_SE_FullChoir_Tuning01_B1"
       ]
     },
@@ -26608,15 +26832,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_Tuning02_StereoReverb_STM.wav",
         "607275bf73c3ff8eab0ea1e8976cf86f"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_Tuning02_A2",
         "DCS_SE_FullChoir_Tuning02_S1",
-        "DCS_SE_FullChoir_Tuning02_B2",
-        "DCS_SE_FullChoir_Tuning02_T2",
         "DCS_SE_FullChoir_Tuning02_S2",
-        "DCS_SE_FullChoir_Tuning02_A1",
+        "DCS_SE_FullChoir_Tuning02_T2",
         "DCS_SE_FullChoir_Tuning02_T1",
-        "DCS_SE_FullChoir_Tuning02_B1"
+        "DCS_SE_FullChoir_Tuning02_B1",
+        "DCS_SE_FullChoir_Tuning02_B2",
+        "DCS_SE_FullChoir_Tuning02_A2",
+        "DCS_SE_FullChoir_Tuning02_A1"
       ]
     },
     "DCS_SE_FullChoir_Tuning03": {
@@ -26636,15 +26864,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_Tuning03_StereoReverb_STM.wav",
         "7770c83497aa6eecec6bfc6689e443ea"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_Tuning03_A2",
-        "DCS_SE_FullChoir_Tuning03_B2",
-        "DCS_SE_FullChoir_Tuning03_T1",
-        "DCS_SE_FullChoir_Tuning03_T2",
         "DCS_SE_FullChoir_Tuning03_S2",
+        "DCS_SE_FullChoir_Tuning03_T2",
+        "DCS_SE_FullChoir_Tuning03_S1",
+        "DCS_SE_FullChoir_Tuning03_B2",
+        "DCS_SE_FullChoir_Tuning03_A2",
         "DCS_SE_FullChoir_Tuning03_A1",
-        "DCS_SE_FullChoir_Tuning03_B1",
-        "DCS_SE_FullChoir_Tuning03_S1"
+        "DCS_SE_FullChoir_Tuning03_T1",
+        "DCS_SE_FullChoir_Tuning03_B1"
       ]
     },
     "DCS_SE_FullChoir_Tuning04": {
@@ -26664,15 +26896,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_Tuning04_StereoReverb_STM.wav",
         "3bb5423dfc19ae8e7772f2f77fad3d1c"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_Tuning04_B1",
-        "DCS_SE_FullChoir_Tuning04_S1",
-        "DCS_SE_FullChoir_Tuning04_A2",
         "DCS_SE_FullChoir_Tuning04_S2",
+        "DCS_SE_FullChoir_Tuning04_A2",
         "DCS_SE_FullChoir_Tuning04_B2",
         "DCS_SE_FullChoir_Tuning04_T1",
-        "DCS_SE_FullChoir_Tuning04_A1",
-        "DCS_SE_FullChoir_Tuning04_T2"
+        "DCS_SE_FullChoir_Tuning04_T2",
+        "DCS_SE_FullChoir_Tuning04_B1",
+        "DCS_SE_FullChoir_Tuning04_S1",
+        "DCS_SE_FullChoir_Tuning04_A1"
       ]
     },
     "DCS_SE_FullChoir_Unison01": {
@@ -26692,15 +26928,19 @@
         "audio_wav_22050_mono/DCS_SE_FullChoir_Unison01_StereoReverb_STM.wav",
         "bea6db498fd471a6f53ca0449e39c0d3"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_FullChoir_Unison01_B2",
-        "DCS_SE_FullChoir_Unison01_T1",
-        "DCS_SE_FullChoir_Unison01_A1",
-        "DCS_SE_FullChoir_Unison01_B1",
-        "DCS_SE_FullChoir_Unison01_T2",
-        "DCS_SE_FullChoir_Unison01_A2",
         "DCS_SE_FullChoir_Unison01_S1",
-        "DCS_SE_FullChoir_Unison01_S2"
+        "DCS_SE_FullChoir_Unison01_A2",
+        "DCS_SE_FullChoir_Unison01_B1",
+        "DCS_SE_FullChoir_Unison01_A1",
+        "DCS_SE_FullChoir_Unison01_S2",
+        "DCS_SE_FullChoir_Unison01_T1",
+        "DCS_SE_FullChoir_Unison01_B2",
+        "DCS_SE_FullChoir_Unison01_T2"
       ]
     },
     "DCS_SE_QuartetA_CadenceMajor01": {
@@ -26720,11 +26960,15 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajor01_StereoReverb_STM.wav",
         "13295c1a22056994d6f7b1bb1c9feb12"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_QuartetA_CadenceMajor01_A1",
-        "DCS_SE_QuartetA_CadenceMajor01_T1",
         "DCS_SE_QuartetA_CadenceMajor01_B1",
-        "DCS_SE_QuartetA_CadenceMajor01_S2"
+        "DCS_SE_QuartetA_CadenceMajor01_S2",
+        "DCS_SE_QuartetA_CadenceMajor01_T1"
       ]
     },
     "DCS_SE_QuartetA_CadenceMajor02": {
@@ -26744,11 +26988,15 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajor02_StereoReverb_STM.wav",
         "d86de7bf954202cd0ee67db9e5a41e76"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
+        "DCS_SE_QuartetA_CadenceMajor02_T1",
         "DCS_SE_QuartetA_CadenceMajor02_B1",
-        "DCS_SE_QuartetA_CadenceMajor02_A1",
         "DCS_SE_QuartetA_CadenceMajor02_S2",
-        "DCS_SE_QuartetA_CadenceMajor02_T1"
+        "DCS_SE_QuartetA_CadenceMajor02_A1"
       ]
     },
     "DCS_SE_QuartetA_CadenceMajor03": {
@@ -26768,11 +27016,15 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajor03_StereoReverb_STM.wav",
         "4282b179e0f4932cfe9825b0f9d2f60b"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_QuartetA_CadenceMajor03_T1",
         "DCS_SE_QuartetA_CadenceMajor03_S2",
-        "DCS_SE_QuartetA_CadenceMajor03_B1",
-        "DCS_SE_QuartetA_CadenceMajor03_A1"
+        "DCS_SE_QuartetA_CadenceMajor03_A1",
+        "DCS_SE_QuartetA_CadenceMajor03_B1"
       ]
     },
     "DCS_SE_QuartetA_CadenceMajor04": {
@@ -26791,6 +27043,10 @@
       "audio_rev": [
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajor04_StereoReverb_STM.wav",
         "45ab245b9b6c9889cd67739262685c7c"
+      ],
+      "beat": [
+        null,
+        null
       ],
       "tracks": [
         "DCS_SE_QuartetA_CadenceMajor04_S2",
@@ -26816,11 +27072,15 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajor05_StereoReverb_STM.wav",
         "52d7ca898bbe4aab76b40720ae7a7e18"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_CadenceMajor05_A1",
-        "DCS_SE_QuartetA_CadenceMajor05_S2",
         "DCS_SE_QuartetA_CadenceMajor05_B1",
-        "DCS_SE_QuartetA_CadenceMajor05_T1"
+        "DCS_SE_QuartetA_CadenceMajor05_A1",
+        "DCS_SE_QuartetA_CadenceMajor05_T1",
+        "DCS_SE_QuartetA_CadenceMajor05_S2"
       ]
     },
     "DCS_SE_QuartetA_CadenceMajorPiano01": {
@@ -26840,12 +27100,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajorPiano01_StereoReverb_STM.wav",
         "4507d0805ec6e8ddff4555a729f50d7d"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_CadenceMajorPiano01_B1",
         "DCS_SE_QuartetA_CadenceMajorPiano01_S2",
+        "DCS_SE_QuartetA_CadenceMajorPiano01_B1",
         "DCS_SE_QuartetA_CadenceMajorPiano01_T1",
-        "DCS_SE_QuartetA_CadenceMajorPiano01_Piano",
-        "DCS_SE_QuartetA_CadenceMajorPiano01_A1"
+        "DCS_SE_QuartetA_CadenceMajorPiano01_A1",
+        "DCS_SE_QuartetA_CadenceMajorPiano01_Piano"
       ]
     },
     "DCS_SE_QuartetA_CadenceMajorPiano02": {
@@ -26865,12 +27129,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajorPiano02_StereoReverb_STM.wav",
         "5d494699275773c02a74ae5e6d9783bf"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
+        "DCS_SE_QuartetA_CadenceMajorPiano02_B1",
+        "DCS_SE_QuartetA_CadenceMajorPiano02_T1",
         "DCS_SE_QuartetA_CadenceMajorPiano02_A1",
         "DCS_SE_QuartetA_CadenceMajorPiano02_Piano",
-        "DCS_SE_QuartetA_CadenceMajorPiano02_B1",
-        "DCS_SE_QuartetA_CadenceMajorPiano02_S2",
-        "DCS_SE_QuartetA_CadenceMajorPiano02_T1"
+        "DCS_SE_QuartetA_CadenceMajorPiano02_S2"
       ]
     },
     "DCS_SE_QuartetA_CadenceMajorPiano03": {
@@ -26890,12 +27158,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajorPiano03_StereoReverb_STM.wav",
         "11f584f3be383c421596111bb1a5e2ca"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
+        "DCS_SE_QuartetA_CadenceMajorPiano03_Piano",
         "DCS_SE_QuartetA_CadenceMajorPiano03_T1",
-        "DCS_SE_QuartetA_CadenceMajorPiano03_A1",
-        "DCS_SE_QuartetA_CadenceMajorPiano03_B1",
         "DCS_SE_QuartetA_CadenceMajorPiano03_S2",
-        "DCS_SE_QuartetA_CadenceMajorPiano03_Piano"
+        "DCS_SE_QuartetA_CadenceMajorPiano03_A1",
+        "DCS_SE_QuartetA_CadenceMajorPiano03_B1"
       ]
     },
     "DCS_SE_QuartetA_CadenceMajorPiano04": {
@@ -26915,12 +27187,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajorPiano04_StereoReverb_STM.wav",
         "53d722ee72a1976973ec01bc4fd4a96d"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_QuartetA_CadenceMajorPiano04_Piano",
-        "DCS_SE_QuartetA_CadenceMajorPiano04_T1",
+        "DCS_SE_QuartetA_CadenceMajorPiano04_B1",
         "DCS_SE_QuartetA_CadenceMajorPiano04_S2",
-        "DCS_SE_QuartetA_CadenceMajorPiano04_A1",
-        "DCS_SE_QuartetA_CadenceMajorPiano04_B1"
+        "DCS_SE_QuartetA_CadenceMajorPiano04_T1",
+        "DCS_SE_QuartetA_CadenceMajorPiano04_A1"
       ]
     },
     "DCS_SE_QuartetA_CadenceMajorPiano05": {
@@ -26940,12 +27216,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMajorPiano05_StereoReverb_STM.wav",
         "1975296bab83c1019eac48f19e2a3385"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_CadenceMajorPiano05_A1",
-        "DCS_SE_QuartetA_CadenceMajorPiano05_S2",
-        "DCS_SE_QuartetA_CadenceMajorPiano05_T1",
         "DCS_SE_QuartetA_CadenceMajorPiano05_B1",
-        "DCS_SE_QuartetA_CadenceMajorPiano05_Piano"
+        "DCS_SE_QuartetA_CadenceMajorPiano05_T1",
+        "DCS_SE_QuartetA_CadenceMajorPiano05_S2",
+        "DCS_SE_QuartetA_CadenceMajorPiano05_Piano",
+        "DCS_SE_QuartetA_CadenceMajorPiano05_A1"
       ]
     },
     "DCS_SE_QuartetA_CadenceMinor01": {
@@ -26965,10 +27245,14 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMinor01_StereoReverb_STM.wav",
         "475b27b371aadae4118563c84199e54b"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_QuartetA_CadenceMinor01_T1",
-        "DCS_SE_QuartetA_CadenceMinor01_A1",
         "DCS_SE_QuartetA_CadenceMinor01_B1",
+        "DCS_SE_QuartetA_CadenceMinor01_A1",
         "DCS_SE_QuartetA_CadenceMinor01_S2"
       ]
     },
@@ -26989,11 +27273,15 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMinor02_StereoReverb_STM.wav",
         "fecd1029ab074a5329553a35f34967b3"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_CadenceMinor02_B1",
-        "DCS_SE_QuartetA_CadenceMinor02_T1",
         "DCS_SE_QuartetA_CadenceMinor02_S2",
-        "DCS_SE_QuartetA_CadenceMinor02_A1"
+        "DCS_SE_QuartetA_CadenceMinor02_B1",
+        "DCS_SE_QuartetA_CadenceMinor02_A1",
+        "DCS_SE_QuartetA_CadenceMinor02_T1"
       ]
     },
     "DCS_SE_QuartetA_CadenceMinorPiano01": {
@@ -27013,11 +27301,15 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMinorPiano01_StereoReverb_STM.wav",
         "51ba3128ef74e07b9c6bb9c0582b00a8"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_QuartetA_CadenceMinorPiano01_S2",
         "DCS_SE_QuartetA_CadenceMinorPiano01_A1",
-        "DCS_SE_QuartetA_CadenceMinorPiano01_T1",
         "DCS_SE_QuartetA_CadenceMinorPiano01_Piano",
+        "DCS_SE_QuartetA_CadenceMinorPiano01_T1",
         "DCS_SE_QuartetA_CadenceMinorPiano01_B1"
       ]
     },
@@ -27038,12 +27330,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMinorPiano02_StereoReverb_STM.wav",
         "a0c155be92af240ff589e5bdb15a7c15"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_CadenceMinorPiano02_Piano",
         "DCS_SE_QuartetA_CadenceMinorPiano02_B1",
-        "DCS_SE_QuartetA_CadenceMinorPiano02_A1",
         "DCS_SE_QuartetA_CadenceMinorPiano02_S2",
-        "DCS_SE_QuartetA_CadenceMinorPiano02_T1"
+        "DCS_SE_QuartetA_CadenceMinorPiano02_A1",
+        "DCS_SE_QuartetA_CadenceMinorPiano02_T1",
+        "DCS_SE_QuartetA_CadenceMinorPiano02_Piano"
       ]
     },
     "DCS_SE_QuartetA_CadenceMinorPiano03": {
@@ -27063,12 +27359,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_CadenceMinorPiano03_StereoReverb_STM.wav",
         "3c1991155b8705512eabc1246c2cffad"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_CadenceMinorPiano03_A1",
-        "DCS_SE_QuartetA_CadenceMinorPiano03_T1",
         "DCS_SE_QuartetA_CadenceMinorPiano03_Piano",
-        "DCS_SE_QuartetA_CadenceMinorPiano03_B1",
-        "DCS_SE_QuartetA_CadenceMinorPiano03_S2"
+        "DCS_SE_QuartetA_CadenceMinorPiano03_T1",
+        "DCS_SE_QuartetA_CadenceMinorPiano03_A1",
+        "DCS_SE_QuartetA_CadenceMinorPiano03_S2",
+        "DCS_SE_QuartetA_CadenceMinorPiano03_B1"
       ]
     },
     "DCS_SE_QuartetA_HummingPiano01": {
@@ -27088,12 +27388,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_HummingPiano01_StereoReverb_STM.wav",
         "103026d9b9cfaf4979a4c0da50ba446b"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_HummingPiano01_Piano",
-        "DCS_SE_QuartetA_HummingPiano01_T1",
-        "DCS_SE_QuartetA_HummingPiano01_S2",
         "DCS_SE_QuartetA_HummingPiano01_A1",
-        "DCS_SE_QuartetA_HummingPiano01_B1"
+        "DCS_SE_QuartetA_HummingPiano01_Piano",
+        "DCS_SE_QuartetA_HummingPiano01_S2",
+        "DCS_SE_QuartetA_HummingPiano01_B1",
+        "DCS_SE_QuartetA_HummingPiano01_T1"
       ]
     },
     "DCS_SE_QuartetA_HummingPiano02": {
@@ -27113,12 +27417,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_HummingPiano02_StereoReverb_STM.wav",
         "6afceaca406aa222296b10e1be822caf"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_HummingPiano02_A1",
-        "DCS_SE_QuartetA_HummingPiano02_S2",
         "DCS_SE_QuartetA_HummingPiano02_Piano",
+        "DCS_SE_QuartetA_HummingPiano02_B1",
         "DCS_SE_QuartetA_HummingPiano02_T1",
-        "DCS_SE_QuartetA_HummingPiano02_B1"
+        "DCS_SE_QuartetA_HummingPiano02_S2",
+        "DCS_SE_QuartetA_HummingPiano02_A1"
       ]
     },
     "DCS_SE_QuartetA_HummingPiano03": {
@@ -27138,12 +27446,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_HummingPiano03_StereoReverb_STM.wav",
         "bfccd62d0dda58977ada69a4b18effff"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
+        "DCS_SE_QuartetA_HummingPiano03_S2",
+        "DCS_SE_QuartetA_HummingPiano03_Piano",
         "DCS_SE_QuartetA_HummingPiano03_A1",
         "DCS_SE_QuartetA_HummingPiano03_B1",
-        "DCS_SE_QuartetA_HummingPiano03_Piano",
-        "DCS_SE_QuartetA_HummingPiano03_T1",
-        "DCS_SE_QuartetA_HummingPiano03_S2"
+        "DCS_SE_QuartetA_HummingPiano03_T1"
       ]
     },
     "DCS_SE_QuartetA_HummingPiano04": {
@@ -27163,11 +27475,15 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_HummingPiano04_StereoReverb_STM.wav",
         "041861a57726ca1f8f773f26ae543966"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_QuartetA_HummingPiano04_A1",
+        "DCS_SE_QuartetA_HummingPiano04_T1",
         "DCS_SE_QuartetA_HummingPiano04_B1",
         "DCS_SE_QuartetA_HummingPiano04_S2",
-        "DCS_SE_QuartetA_HummingPiano04_T1",
         "DCS_SE_QuartetA_HummingPiano04_Piano"
       ]
     },
@@ -27188,12 +27504,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_HummingPiano05_StereoReverb_STM.wav",
         "5928570ec637913d188de46cf0dca69f"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_QuartetA_HummingPiano05_Piano",
+        "DCS_SE_QuartetA_HummingPiano05_A1",
         "DCS_SE_QuartetA_HummingPiano05_S2",
-        "DCS_SE_QuartetA_HummingPiano05_B1",
         "DCS_SE_QuartetA_HummingPiano05_T1",
-        "DCS_SE_QuartetA_HummingPiano05_A1"
+        "DCS_SE_QuartetA_HummingPiano05_B1"
       ]
     },
     "DCS_SE_QuartetA_HummingPiano06": {
@@ -27213,12 +27533,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_HummingPiano06_StereoReverb_STM.wav",
         "06873ef9d90dde832ef0556223117f8e"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
+        "DCS_SE_QuartetA_HummingPiano06_S2",
         "DCS_SE_QuartetA_HummingPiano06_B1",
-        "DCS_SE_QuartetA_HummingPiano06_A1",
-        "DCS_SE_QuartetA_HummingPiano06_Piano",
         "DCS_SE_QuartetA_HummingPiano06_T1",
-        "DCS_SE_QuartetA_HummingPiano06_S2"
+        "DCS_SE_QuartetA_HummingPiano06_A1",
+        "DCS_SE_QuartetA_HummingPiano06_Piano"
       ]
     },
     "DCS_SE_QuartetA_HummingPiano07": {
@@ -27238,12 +27562,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_HummingPiano07_StereoReverb_STM.wav",
         "9d0b7557e805ec60eb10cd58ca71c598"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_QuartetA_HummingPiano07_T1",
-        "DCS_SE_QuartetA_HummingPiano07_S2",
         "DCS_SE_QuartetA_HummingPiano07_B1",
         "DCS_SE_QuartetA_HummingPiano07_Piano",
-        "DCS_SE_QuartetA_HummingPiano07_A1"
+        "DCS_SE_QuartetA_HummingPiano07_A1",
+        "DCS_SE_QuartetA_HummingPiano07_S2"
       ]
     },
     "DCS_SE_QuartetA_HummingPiano08": {
@@ -27263,12 +27591,16 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_HummingPiano08_StereoReverb_STM.wav",
         "7c0d36d2a96787401035d825791a8644"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_HummingPiano08_T1",
-        "DCS_SE_QuartetA_HummingPiano08_Piano",
+        "DCS_SE_QuartetA_HummingPiano08_B1",
         "DCS_SE_QuartetA_HummingPiano08_A1",
+        "DCS_SE_QuartetA_HummingPiano08_T1",
         "DCS_SE_QuartetA_HummingPiano08_S2",
-        "DCS_SE_QuartetA_HummingPiano08_B1"
+        "DCS_SE_QuartetA_HummingPiano08_Piano"
       ]
     },
     "DCS_SE_QuartetA_Tuning01": {
@@ -27288,9 +27620,13 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_Tuning01_StereoReverb_STM.wav",
         "b482b4cec303ca525e07659f445af362"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_Tuning01_T1",
         "DCS_SE_QuartetA_Tuning01_B1",
+        "DCS_SE_QuartetA_Tuning01_T1",
         "DCS_SE_QuartetA_Tuning01_S2",
         "DCS_SE_QuartetA_Tuning01_A1"
       ]
@@ -27312,10 +27648,14 @@
         "audio_wav_22050_mono/DCS_SE_QuartetA_Tuning02_StereoReverb_STM.wav",
         "956170b8c8c71d19d13591483f70c744"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetA_Tuning02_T1",
         "DCS_SE_QuartetA_Tuning02_S2",
         "DCS_SE_QuartetA_Tuning02_A1",
+        "DCS_SE_QuartetA_Tuning02_T1",
         "DCS_SE_QuartetA_Tuning02_B1"
       ]
     },
@@ -27336,11 +27676,15 @@
         "audio_wav_22050_mono/DCS_SE_QuartetB_Tuning01_StereoReverb_STM.wav",
         "46cf2f66e1586f208b29896177b7867a"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_SE_QuartetB_Tuning01_B2",
-        "DCS_SE_QuartetB_Tuning01_T2",
+        "DCS_SE_QuartetB_Tuning01_S1",
         "DCS_SE_QuartetB_Tuning01_A2",
-        "DCS_SE_QuartetB_Tuning01_S1"
+        "DCS_SE_QuartetB_Tuning01_B2",
+        "DCS_SE_QuartetB_Tuning01_T2"
       ]
     },
     "DCS_SE_QuartetB_Tuning02": {
@@ -27360,11 +27704,15 @@
         "audio_wav_22050_mono/DCS_SE_QuartetB_Tuning02_StereoReverb_STM.wav",
         "c90ea53881d590f5da9e3749550295a5"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
         "DCS_SE_QuartetB_Tuning02_B2",
         "DCS_SE_QuartetB_Tuning02_T2",
-        "DCS_SE_QuartetB_Tuning02_S1",
-        "DCS_SE_QuartetB_Tuning02_A2"
+        "DCS_SE_QuartetB_Tuning02_A2",
+        "DCS_SE_QuartetB_Tuning02_S1"
       ]
     },
     "DCS_TP_FullChoir_Outtake": {
@@ -27384,15 +27732,19 @@
         "audio_wav_22050_mono/DCS_TP_FullChoir_Outtake_StereoReverb_STM.wav",
         "8b5feb7a452927a862aee9c1f9da173c"
       ],
+      "beat": [
+        null,
+        null
+      ],
       "tracks": [
-        "DCS_TP_FullChoir_Outtake_A1",
+        "DCS_TP_FullChoir_Outtake_S2",
+        "DCS_TP_FullChoir_Outtake_S1",
         "DCS_TP_FullChoir_Outtake_B1",
         "DCS_TP_FullChoir_Outtake_T1",
-        "DCS_TP_FullChoir_Outtake_S1",
         "DCS_TP_FullChoir_Outtake_A2",
-        "DCS_TP_FullChoir_Outtake_B2",
-        "DCS_TP_FullChoir_Outtake_S2",
-        "DCS_TP_FullChoir_Outtake_T2"
+        "DCS_TP_FullChoir_Outtake_A1",
+        "DCS_TP_FullChoir_Outtake_T2",
+        "DCS_TP_FullChoir_Outtake_B2"
       ]
     },
     "DCS_TP_FullChoir_Take01": {
@@ -27412,19 +27764,19 @@
         "audio_wav_22050_mono/DCS_TP_FullChoir_Take01_StereoReverb_STM.wav",
         "c790740551d6ac19cbd9ed5186ff336c"
       ],
-      "tracks": [
-        "DCS_TP_FullChoir_Take01_T2",
-        "DCS_TP_FullChoir_Take01_A2",
-        "DCS_TP_FullChoir_Take01_B1",
-        "DCS_TP_FullChoir_Take01_S2",
-        "DCS_TP_FullChoir_Take01_S1",
-        "DCS_TP_FullChoir_Take01_A1",
-        "DCS_TP_FullChoir_Take01_T1",
-        "DCS_TP_FullChoir_Take01_B2"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_TP_FullChoir_Take01_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_TP_FullChoir_Take01_Stereo_STM.csv",
         "90cd0ad951933bf60da9fc560955578a"
+      ],
+      "tracks": [
+        "DCS_TP_FullChoir_Take01_B1",
+        "DCS_TP_FullChoir_Take01_T2",
+        "DCS_TP_FullChoir_Take01_A1",
+        "DCS_TP_FullChoir_Take01_S1",
+        "DCS_TP_FullChoir_Take01_B2",
+        "DCS_TP_FullChoir_Take01_T1",
+        "DCS_TP_FullChoir_Take01_S2",
+        "DCS_TP_FullChoir_Take01_A2"
       ]
     },
     "DCS_TP_FullChoir_Take02": {
@@ -27444,19 +27796,19 @@
         "audio_wav_22050_mono/DCS_TP_FullChoir_Take02_StereoReverb_STM.wav",
         "8843f47f1fd586f0b4d99dcf6892a596"
       ],
-      "tracks": [
-        "DCS_TP_FullChoir_Take02_B2",
-        "DCS_TP_FullChoir_Take02_A1",
-        "DCS_TP_FullChoir_Take02_T2",
-        "DCS_TP_FullChoir_Take02_B1",
-        "DCS_TP_FullChoir_Take02_A2",
-        "DCS_TP_FullChoir_Take02_S2",
-        "DCS_TP_FullChoir_Take02_T1",
-        "DCS_TP_FullChoir_Take02_S1"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_TP_FullChoir_Take02_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_TP_FullChoir_Take02_Stereo_STM.csv",
         "e6bd34231ddbc10fe30d0f0551c93a80"
+      ],
+      "tracks": [
+        "DCS_TP_FullChoir_Take02_T1",
+        "DCS_TP_FullChoir_Take02_B2",
+        "DCS_TP_FullChoir_Take02_S2",
+        "DCS_TP_FullChoir_Take02_B1",
+        "DCS_TP_FullChoir_Take02_T2",
+        "DCS_TP_FullChoir_Take02_A2",
+        "DCS_TP_FullChoir_Take02_A1",
+        "DCS_TP_FullChoir_Take02_S1"
       ]
     },
     "DCS_TP_FullChoir_Take03": {
@@ -27476,19 +27828,19 @@
         "audio_wav_22050_mono/DCS_TP_FullChoir_Take03_StereoReverb_STM.wav",
         "aede6320fc13cf439efa7661502f06e8"
       ],
-      "tracks": [
-        "DCS_TP_FullChoir_Take03_T1",
-        "DCS_TP_FullChoir_Take03_A2",
-        "DCS_TP_FullChoir_Take03_T2",
-        "DCS_TP_FullChoir_Take03_S1",
-        "DCS_TP_FullChoir_Take03_S2",
-        "DCS_TP_FullChoir_Take03_A1",
-        "DCS_TP_FullChoir_Take03_B1",
-        "DCS_TP_FullChoir_Take03_B2"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_TP_FullChoir_Take03_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_TP_FullChoir_Take03_Stereo_STM.csv",
         "401d0a7494b41010db4b0c78504a986b"
+      ],
+      "tracks": [
+        "DCS_TP_FullChoir_Take03_T2",
+        "DCS_TP_FullChoir_Take03_B1",
+        "DCS_TP_FullChoir_Take03_B2",
+        "DCS_TP_FullChoir_Take03_A1",
+        "DCS_TP_FullChoir_Take03_A2",
+        "DCS_TP_FullChoir_Take03_S1",
+        "DCS_TP_FullChoir_Take03_T1",
+        "DCS_TP_FullChoir_Take03_S2"
       ]
     },
     "DCS_TP_FullChoir_Take04": {
@@ -27508,19 +27860,19 @@
         "audio_wav_22050_mono/DCS_TP_FullChoir_Take04_StereoReverb_STM.wav",
         "641262ded9955ed27aa3f9a4242883b2"
       ],
-      "tracks": [
-        "DCS_TP_FullChoir_Take04_T2",
-        "DCS_TP_FullChoir_Take04_T1",
-        "DCS_TP_FullChoir_Take04_A2",
-        "DCS_TP_FullChoir_Take04_A1",
-        "DCS_TP_FullChoir_Take04_S2",
-        "DCS_TP_FullChoir_Take04_B1",
-        "DCS_TP_FullChoir_Take04_B2",
-        "DCS_TP_FullChoir_Take04_S1"
-      ],
       "beat": [
-        "annotations_csv_beat/DCS_TP_FullChoir_Take04_Stereo_STM.wav",
+        "annotations_csv_beat/DCS_TP_FullChoir_Take04_Stereo_STM.csv",
         "720da5add9de50b4b4baf9ede5fbb162"
+      ],
+      "tracks": [
+        "DCS_TP_FullChoir_Take04_B2",
+        "DCS_TP_FullChoir_Take04_B1",
+        "DCS_TP_FullChoir_Take04_A1",
+        "DCS_TP_FullChoir_Take04_A2",
+        "DCS_TP_FullChoir_Take04_T1",
+        "DCS_TP_FullChoir_Take04_T2",
+        "DCS_TP_FullChoir_Take04_S1",
+        "DCS_TP_FullChoir_Take04_S2"
       ]
     },
     "DCS_TP_QuartetA_Take01": {
@@ -27540,15 +27892,15 @@
         "audio_wav_22050_mono/DCS_TP_QuartetA_Take01_StereoReverb_STM.wav",
         "b73aa1d2756c692c51d48b1598dcd4b3"
       ],
+      "beat": [
+        "annotations_csv_beat/DCS_TP_QuartetA_Take01_Stereo_STM.csv",
+        "ead1ac4ebbc2d9d42c7d7f93ca8932a8"
+      ],
       "tracks": [
-        "DCS_TP_QuartetA_Take01_T1",
         "DCS_TP_QuartetA_Take01_A1",
+        "DCS_TP_QuartetA_Take01_T1",
         "DCS_TP_QuartetA_Take01_B1",
         "DCS_TP_QuartetA_Take01_S2"
-      ],
-      "beat": [
-        "annotations_csv_beat/DCS_TP_QuartetA_Take01_Stereo_STM.wav",
-        "ead1ac4ebbc2d9d42c7d7f93ca8932a8"
       ]
     },
     "DCS_TP_QuartetA_Take02": {
@@ -27568,15 +27920,15 @@
         "audio_wav_22050_mono/DCS_TP_QuartetA_Take02_StereoReverb_STM.wav",
         "7d1f419094ce121a4fd55f37c969c0c2"
       ],
+      "beat": [
+        "annotations_csv_beat/DCS_TP_QuartetA_Take02_Stereo_STM.csv",
+        "b0c0a8e8056cbba7aad62aa2b3797596"
+      ],
       "tracks": [
         "DCS_TP_QuartetA_Take02_B1",
+        "DCS_TP_QuartetA_Take02_T1",
         "DCS_TP_QuartetA_Take02_A1",
-        "DCS_TP_QuartetA_Take02_S2",
-        "DCS_TP_QuartetA_Take02_T1"
-      ],
-      "beat": [
-        "annotations_csv_beat/DCS_TP_QuartetA_Take02_Stereo_STM.wav",
-        "b0c0a8e8056cbba7aad62aa2b3797596"
+        "DCS_TP_QuartetA_Take02_S2"
       ]
     }
   },

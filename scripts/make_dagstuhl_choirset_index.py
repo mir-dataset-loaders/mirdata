@@ -37,10 +37,10 @@ def make_dataset_index(data_path):
     audio_dir = os.path.join(data_path, 'audio_wav_22050_mono')
 
     index = {
-        'version': 1.1,
-        'tracks': {},
-        'multitracks': {},
-        'metadata': None
+        'version': "1.2.2",
+        "tracks": {},
+        "multitracks": {},
+        "metadata": None
     }
 
     # define pieces directly from data directory
@@ -48,7 +48,7 @@ def make_dataset_index(data_path):
 
     for ip, piece in enumerate(pieces):
 
-        index['multitracks'][piece] = {}
+        index["multitracks"][piece] = {}
 
         ## add mixture audios
 
@@ -82,7 +82,7 @@ def make_dataset_index(data_path):
             audio_checksum
         )
 
-        # STL
+        # STRev
         audio_mix_dir = os.path.join(
             data_path, "audio_wav_22050_mono", "{}_StereoReverb_STM.wav".format(piece)
         )
@@ -91,6 +91,9 @@ def make_dataset_index(data_path):
             "audio_wav_22050_mono/{}_StereoReverb_STM.wav".format(piece),
             audio_checksum
         )
+
+        # beats
+        index["multitracks"][piece]["beat"] = (None, None)
 
         ## add each track inside the multitrack
 
@@ -104,7 +107,7 @@ def make_dataset_index(data_path):
         # assert len(singers) == len(mics), "number of mics does not match number of singers for {}".format(piece)
         # set_singers = set(singers)
 
-        index['multitracks'][piece]['tracks'] = []
+        index["multitracks"][piece]["tracks"] = []
 
         for sidx, singer in enumerate(singers):
 
@@ -188,7 +191,7 @@ def make_dataset_index(data_path):
                 beats_checksum = md5(beats_dir)
 
                 index["multitracks"][piece]["beat"] = (
-                    "annotations_csv_beat/{}_Stereo_STM.wav".format(piece),
+                    "annotations_csv_beat/{}_Stereo_STM.csv".format(piece),
                     beats_checksum
                 )
 
