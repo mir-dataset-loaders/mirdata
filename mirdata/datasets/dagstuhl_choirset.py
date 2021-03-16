@@ -59,10 +59,10 @@ url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirS
 # -- correctly destination_dir to download the files following the correct structure.
 REMOTES = {
     'full_dataset': download_utils.RemoteFileMetadata(
-        filename='DagstuhlChoirSet_V1.2.1.zip',
-        url='https://zenodo.org/record/4607867/files/DagstuhlChoirset_V1.2.1.zip?download=1',
-        checksum='00000000000000000000000000000000',  # -- the md5 checksum
-        unpack_directories=["dagstuhl_choirset"],
+        filename='DagstuhlChoirSet_V1.2.2.zip',
+        url='https://zenodo.org/record/4608395/files/DagstuhlChoirSet_V1.2.2.zip?download=1',
+        checksum='2f2a81852169a2e5e5d2c76d8ef82180',  # -- the md5 checksum
+        unpack_directories=["DagstuhlChoirSet_V1.2.2"],
     ),
 }
 
@@ -158,7 +158,8 @@ class Track(core.Track):
             raise ValueError("ann={} is invalid".format(ann))
 
         if not mic_path:
-            raise ValueError("No trajectory found for mic={}".format(mic))
+            return None
+            # raise ValueError("No trajectory found for mic={}".format(mic))
 
         if len(mic_path) > 1:
             raise ValueError("Found two or more trajectories for mic={}".format(mic))
@@ -168,12 +169,12 @@ class Track(core.Track):
     @core.cached_property
     def score(self):
         """Get time-aligned score representation"""
-        return load_score(self.score_path[0])
+        return load_score(self.score_path)
 
     # -- `audio` will behave like an attribute, but it will only be loaded
     # -- when someone accesses it and it won't be stored. By default, we make
     # -- any memory heavy information (like audio) properties
-    #@property
+    # @property
     def audio(self, mic='LRX'):
         """Get audio of the specified microphone
         Args:
@@ -189,7 +190,8 @@ class Track(core.Track):
         mic_path = [s for s in self.audio_paths if mic in s]
 
         if not mic_path:
-            raise ValueError("No microphone signal found for mic={}".format(mic))
+            return None
+            # raise ValueError("No microphone signal found for mic={}".format(mic))
 
         if len(mic_path) > 1:
             raise ValueError("Found two or more microphone signals for mic={}".format(mic))
@@ -210,7 +212,7 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_paths[0],
             f0_data=f0_data,
-            note_data=[(load_score(self.score_path[0]), 'time-aligned score representation')],
+            note_data=[(load_score(self.score_path), 'time-aligned score representation')],
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
@@ -290,7 +292,8 @@ class MultiTrack(core.MultiTrack):
             raise ValueError("mic={} is invalid".format(mic))
 
         if not mic_path:
-            raise ValueError("No microphone signal found for mic={}".format(mic))
+            return None
+            # raise ValueError("No microphone signal found for mic={}".format(mic))
 
         return load_audio(mic_path)
 
@@ -320,8 +323,8 @@ def load_audio(audio_path):
     # -- for example, the code below. This should be dataset specific!
     # -- By default we load to mono
     # -- change this if it doesn't make sense for your dataset.
-    # if audio_path is None:
-    #   return None
+    if audio_path is None:
+        return None
 
     # if not os.path.exists(audio_path):
     # raise IOError("audio_path {} does not exist".format(audio_path))
@@ -371,7 +374,7 @@ def load_score(score_path):
     """Load a Dagstuhl ChoirSet time-aligned score representation.
 
         Args:
-            score_path (str): path pointing to an score-representation-file
+            score_path (list): path pointing to an score-representation-file
 
         Returns:
             * NoteData Object - the time-aligned score representation
@@ -380,12 +383,15 @@ def load_score(score_path):
     if score_path is None:
         return None
 
-    if not os.path.exists(score_path):
-        raise IOError("score_path {} does not exist".format(score_path))
+    if len(score_path) == 0:
+        return None
+
+    if not os.path.exists(score_path[0]):
+        raise IOError("score_path {} does not exist".format(score_path[0]))
 
     intervals = np.empty((0, 2))
     notes = []
-    with open(score_path, "r") as fhandle:
+    with open(score_path[0], "r") as fhandle:
         reader = csv.reader(fhandle, delimiter=",")
         for line in reader:
             intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
@@ -419,7 +425,7 @@ def load_beat(beat_path):
             times.append(float(line[0]))
 
     times = np.array(times)
-    positions = np.arange(1, len(times)+1).astype(int)
+    positions = np.arange(1, len(times) + 1).astype(int)
     return annotations.BeatData(times, positions)
 
 
