@@ -193,7 +193,7 @@ class Track(core.Track):
         return take_info
 
     @core.cached_property
-    def get_ratings_info(self) -> dict:
+    def get_ratings_info(self) -> list:
         sound_id = str(self._metadata()["takes"][self.track_id]["sound_id"])
         return list(
             filter(
