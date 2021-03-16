@@ -123,7 +123,7 @@ REMOTES = {
     ),
     "all": download_utils.RemoteFileMetadata(
         filename="good-sounds.zip",
-        url="https://zenodo.org/record/4588740/files/good-sounds.zip?download=1",
+        url="https://zenodo.org/record/820937/files/good-sounds.zip?download=1",
         checksum="2137bbb2d32c1d60aa51e1301225f541",
         destination_dir=".",
     ),
@@ -139,6 +139,15 @@ class Track(core.Track):
     Attributes:
         track_id (str): track id of the track
         audio_path (str): Path to the audio file
+
+    Cached Properties:
+        audio (tuple):
+        get_ratings_info (dict):  Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first
+            project prototype. Please read the paper for more detailed information.
+        get_pack_info (dict):
+        get_sound_info (dict): The entity containing the sounds annotations.
+        get_take_info (dict): A sound can have several takes as some of them were recorded using different microphones at the same
+            time. Each take has an associated audio file.
     """
 
     def __init__(
@@ -172,29 +181,22 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @core.cached_property
-    def get_sound_info(self):
-        """dict: The entity containing the sounds annotations."""
+    def get_sound_info(self) -> dict:
         return self._metadata()["sounds"][str(self._metadata()["takes"][self.track_id]["sound_id"])]
 
     @core.cached_property
-    def get_take_info(self):
-        """dict: A sound can have several takes as some of them were recorded using different microphones at the same
-        time. Each take has an associated audio file."""
+    def get_take_info(self) -> dict:
         take_info = self._metadata()["takes"][self.track_id]
         take_info["filename"] = self.audio_path
         return take_info
 
     @core.cached_property
-    def get_ratings_info(self):
-        """dict: A pack is a group of sounds from the same recording session. The audio files are organised in the
-        *sound_files* directory in subfolders with the pack name to which they belong."""
+    def get_ratings_info(self) -> dict:
         sound_id = str(self._metadata()["takes"][self.track_id]["sound_id"])
         return list(filter(lambda rating: rating['sound_id'] == sound_id, self._metadata()["ratings"].values()))
 
     @core.cached_property
-    def get_pack_info(self):
-        """dict: Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first
-         project prototype. Please read the paper for more detailed information."""
+    def get_pack_info(self) -> dict:
         return self._metadata()["packs"][
             str(self._metadata()["sounds"][str(self._metadata()["takes"][self.track_id]["sound_id"])]["pack_id"])
         ]
@@ -248,7 +250,7 @@ class Dataset(core.Dataset):
     def _metadata(self):
         packs = os.path.join(self.data_home, "packs.json")
         if not os.path.exists(packs):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+                raise FileNotFoundError("Metadata not found. Did you run .download()?")
         with open(packs, "r") as fhandle:
             packs = json.load(fhandle)
 
