@@ -59,10 +59,10 @@ url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirS
 # -- correctly destination_dir to download the files following the correct structure.
 REMOTES = {
     'full_dataset': download_utils.RemoteFileMetadata(
-        filename='DagstuhlChoirSet_V1.1.zip',
-        url='https://zenodo.org/record/3956666/files/DagstuhlChoirSet_V1.1.zip?download=1',
-        checksum='00000000000000000000000000000000',  # -- the md5 checksum
-        unpack_directories=["dagstuhl_choirset"],
+        filename='DagstuhlChoirSet_V1.2.2.zip',
+        url='https://zenodo.org/record/4608395/files/DagstuhlChoirSet_V1.2.2.zip?download=1',
+        checksum='2f2a81852169a2e5e5d2c76d8ef82180',  # -- the md5 checksum
+        unpack_directories=["DagstuhlChoirSet_V1.2.2"],
     ),
 }
 
@@ -92,6 +92,7 @@ class Track(core.Track):
         # -- Add any of the dataset specific attributes here
 
     """
+
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
 
         # -- this sets the following attributes:
@@ -110,44 +111,46 @@ class Track(core.Track):
 
         # -- add any dataset specific attributes here
         self.audio_paths = [
-            self.get_path(key) for key in self._track_paths if "audio_" in key
+            self.get_path(key) for key in self._track_paths if "audio_" in key if self.get_path(key)
         ]
 
         self.f0_crepe_paths = [
-            self.get_path(key) for key in self._track_paths if "f0_crepe_" in key
+            self.get_path(key) for key in self._track_paths if "f0_crepe_" in key if self.get_path(key)
         ]
 
         self.f0_pyin_paths = [
-            self.get_path(key) for key in self._track_paths if "f0_pyin_" in key
+            self.get_path(key) for key in self._track_paths if "f0_pyin_" in key if self.get_path(key)
         ]
 
         self.f0_manual_paths = [
-            self.get_path(key) for key in self._track_paths if "f0_manual_" in key
+            self.get_path(key) for key in self._track_paths if "f0_manual_" in key if self.get_path(key)
         ]
 
-        self.score_path = self.get_path("score")
+        self.score_path = [
+            self.get_path(key) for key in self._track_paths if "score" in key if self.get_path(key)
+        ]
 
     # -- `annotation` will behave like an attribute, but it will only be loaded
     # -- and saved when someone accesses it. Useful when loading slightly
     # -- bigger files or for bigger datasets. By default, we make any time
     # -- series data loaded from a file a cached property
     @core.cached_property
-    def f0(self, mic: str, ann: str):
+    def f0(self, mic='LRX', ann='CREPE'):
         """Get F0-trajectory of specified type extracted from specified microphone
         Args:
-            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
-            ann (str): Identifier of the annotation ('crepe', 'pyin', or 'manual')
+            mic (str): Identifier of the microphone ('DYN', 'HSM', or 'LRX')
+            ann (str): Identifier of the annotation ('CREPE', 'PYIN', or 'manual')
 
         Returns:
             * np.ndarray - the mono audio signal
             * float - The sample rate of the audio file
         """
-        if mic not in ['dyn', 'hsm', 'lrx']:
+        if mic not in ['DYN', 'HSM', 'LRX']:
             raise ValueError("mic={} is invalid".format(mic))
 
-        if ann == 'crepe':
+        if ann == 'CREPE':
             mic_path = [s for s in self.f0_crepe_paths if mic in s]
-        elif ann == 'pyin':
+        elif ann == 'PYIN':
             mic_path = [s for s in self.f0_pyin_paths if mic in s]
         elif ann == 'manual':
             mic_path = [s for s in self.f0_manual_paths if mic in s]
@@ -155,7 +158,8 @@ class Track(core.Track):
             raise ValueError("ann={} is invalid".format(ann))
 
         if not mic_path:
-            raise ValueError("No trajectory found for mic={}".format(mic))
+            return None
+            # raise ValueError("No trajectory found for mic={}".format(mic))
 
         if len(mic_path) > 1:
             raise ValueError("Found two or more trajectories for mic={}".format(mic))
@@ -170,23 +174,24 @@ class Track(core.Track):
     # -- `audio` will behave like an attribute, but it will only be loaded
     # -- when someone accesses it and it won't be stored. By default, we make
     # -- any memory heavy information (like audio) properties
-    #@property
-    def audio(self, mic: str):
+    # @property
+    def audio(self, mic='LRX'):
         """Get audio of the specified microphone
         Args:
-            mic (str): Identifier of the microphone ('dyn', 'hsm', or 'lrx')
+            mic (str): Identifier of the microphone ('DYN', 'HSM', or 'LRX')
 
         Returns:
             * np.ndarray - the mono audio signal
             * float - The sample rate of the audio file
         """
-        if mic not in ['dyn', 'hsm', 'lrx']:
+        if mic not in ['DYN', 'HSM', 'LRX']:
             raise ValueError("mic={} is invalid".format(mic))
 
         mic_path = [s for s in self.audio_paths if mic in s]
 
         if not mic_path:
-            raise ValueError("No microphone signal found for mic={}".format(mic))
+            return None
+            # raise ValueError("No microphone signal found for mic={}".format(mic))
 
         if len(mic_path) > 1:
             raise ValueError("Found two or more microphone signals for mic={}".format(mic))
@@ -227,17 +232,19 @@ class MultiTrack(core.MultiTrack):
         tracks (dict): {track_id: Track}
         track_audio_attribute (str): the name of the attribute of Track which
             returns the audio to be mixed
+        beat_path (str): path to beat annotation
         # -- Add any of the dataset specific attributes here
 
 
     """
+
     def __init__(self,
-        mtrack_id,
-        data_home,
-        dataset_name,
-        index,
-        track_class,
-        metadata):
+                 mtrack_id,
+                 data_home,
+                 dataset_name,
+                 index,
+                 track_class,
+                 metadata):
 
         super().__init__(
             mtrack_id=mtrack_id,
@@ -248,44 +255,55 @@ class MultiTrack(core.MultiTrack):
             metadata=metadata,
         )
 
-        self.beat_path = self.get_path(self._index["multitracks"][self.mtrack_id]["beat"])
+        self.beat_path = [
+            self.get_path(key) for key in self._multitrack_paths if "beat" in key if self.get_path(key)
+        ]
+
+    @property
+    def track_audio_property(self):
+        #### the attribute of Track which returns the relevant audio file for mixing
+        return "audio"
 
     # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
     def beat(self):
         """Get beat annotation"""
-        return load_beat(self.beat_path)
+        return load_beat(self.beat_path[0])
 
-    #@property
-    def audio(self, mic: str):
+    # @property
+    def audio(self, mic="STM"):
         """Get audio of the specified microphone
         Args:
-            mic (str): Identifier of the microphone ('stm', 'stm_reverb', 'stl' or 'str')
+            mic (str): Identifier of the microphone ("STM", "StereoReverb", "STL" or "STR")
 
         Returns:
             * np.ndarray - the mono audio signal
             * float - The sample rate of the audio file
         """
-        if mic not in ['stm', 'stm_reverb', 'stl', 'str']:
+        if mic == 'STM':
+            mic_path = self.get_path("audio_stm")
+        elif mic == 'StereoReverb':
+            mic_path = self.get_path("audio_rev")
+        elif mic == 'STL':
+            mic_path = self.get_path("audio_stl")
+        elif mic == 'STR':
+            mic_path = self.get_path("audio_str")
+        else:
             raise ValueError("mic={} is invalid".format(mic))
 
-        mic_path = [s for s in self._multitrack_paths if mic in s]
-
         if not mic_path:
-            raise ValueError("No microphone signal found for mic={}".format(mic))
+            return None
+            # raise ValueError("No microphone signal found for mic={}".format(mic))
 
-        if len(mic_path) > 1:
-            raise ValueError("Found two or more microphone signals for mic={}".format(mic))
-
-        return load_audio(mic_path[0])
+        return load_audio(mic_path)
 
     # -- multitrack classes are themselves Tracks, and also need a to_jams method
     # -- for any mixture-level annotations
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self._multitrack_paths[0],
-            beat_data=[(load_beat(self.beat_path), 'beats')]
+            audio_path=self.get_path("audio_stm"),
+            beat_data=[(load_beat(self.beat_path[0]), 'beats')]
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
@@ -308,13 +326,13 @@ def load_audio(audio_path):
     if audio_path is None:
         return None
 
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
+    # if not os.path.exists(audio_path):
+    # raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
 # -- Write any necessary loader functions for loading the dataset's data
-@io.coerce_to_string_io
+# @io.coerce_to_string_io
 def load_f0(f0_path):
     """Load a Dagstuhl ChoirSet F0-trajectory.
 
@@ -345,18 +363,18 @@ def load_f0(f0_path):
     times = np.array(times)
     freqs = np.array(freqs)
     if not confs:
-        confs = None
+        confs = np.array([None]).astype(float)
     else:
         confs = np.array(confs)
     return annotations.F0Data(times, freqs, confs)
 
 
-@io.coerce_to_string_io
+# @io.coerce_to_string_io
 def load_score(score_path):
     """Load a Dagstuhl ChoirSet time-aligned score representation.
 
         Args:
-            score_path (str): path pointing to an score-representation-file
+            score_path (list): path pointing to an score-representation-file
 
         Returns:
             * NoteData Object - the time-aligned score representation
@@ -365,22 +383,25 @@ def load_score(score_path):
     if score_path is None:
         return None
 
-    if not os.path.exists(score_path):
-        raise IOError("score_path {} does not exist".format(score_path))
+    if len(score_path) == 0:
+        return None
+
+    if not os.path.exists(score_path[0]):
+        raise IOError("score_path {} does not exist".format(score_path[0]))
 
     intervals = np.empty((0, 2))
     notes = []
-    with open(score_path, "r") as fhandle:
+    with open(score_path[0], "r") as fhandle:
         reader = csv.reader(fhandle, delimiter=",")
         for line in reader:
             intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
             notes.append(float(line[2]))
 
-    notes = 440 * 2 ** ((np.array(notes) - 69)/12)  # convert MIDI pitch to Hz
+    notes = 440 * 2 ** ((np.array(notes) - 69) / 12)  # convert MIDI pitch to Hz
     return annotations.NoteData(intervals, notes, None)
 
 
-@io.coerce_to_string_io
+# @io.coerce_to_string_io
 def load_beat(beat_path):
     """Load a Dagstuhl ChoirSet beat annotation.
 
@@ -401,9 +422,10 @@ def load_beat(beat_path):
     with open(beat_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter=",")
         for line in reader:
-            times.append(float(line[2]))
+            times.append(float(line[0]))
 
-    positions = np.arange(times).astype(int) + 1
+    times = np.array(times)
+    positions = np.arange(1, len(times) + 1).astype(int)
     return annotations.BeatData(times, positions)
 
 
