@@ -151,12 +151,12 @@ class Track(core.Track):
     """
 
     def __init__(
-            self,
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
     ):
         super().__init__(
             track_id,
@@ -182,7 +182,9 @@ class Track(core.Track):
 
     @core.cached_property
     def get_sound_info(self) -> dict:
-        return self._metadata()["sounds"][str(self._metadata()["takes"][self.track_id]["sound_id"])]
+        return self._metadata()["sounds"][
+            str(self._metadata()["takes"][self.track_id]["sound_id"])
+        ]
 
     @core.cached_property
     def get_take_info(self) -> dict:
@@ -193,12 +195,21 @@ class Track(core.Track):
     @core.cached_property
     def get_ratings_info(self) -> dict:
         sound_id = str(self._metadata()["takes"][self.track_id]["sound_id"])
-        return list(filter(lambda rating: rating['sound_id'] == sound_id, self._metadata()["ratings"].values()))
+        return list(
+            filter(
+                lambda rating: rating["sound_id"] == sound_id,
+                self._metadata()["ratings"].values(),
+            )
+        )
 
     @core.cached_property
     def get_pack_info(self) -> dict:
         return self._metadata()["packs"][
-            str(self._metadata()["sounds"][str(self._metadata()["takes"][self.track_id]["sound_id"])]["pack_id"])
+            str(
+                self._metadata()["sounds"][
+                    str(self._metadata()["takes"][self.track_id]["sound_id"])
+                ]["pack_id"]
+            )
         ]
 
     def to_jams(self):
@@ -210,7 +221,7 @@ class Track(core.Track):
                 "take": self.get_take_info,
                 "ratings": self.get_ratings_info,
                 "pack": self.get_pack_info,
-            }
+            },
         )
 
 
@@ -250,7 +261,7 @@ class Dataset(core.Dataset):
     def _metadata(self):
         packs = os.path.join(self.data_home, "packs.json")
         if not os.path.exists(packs):
-                raise FileNotFoundError("Metadata not found. Did you run .download()?")
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
         with open(packs, "r") as fhandle:
             packs = json.load(fhandle)
 

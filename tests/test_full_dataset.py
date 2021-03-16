@@ -49,8 +49,12 @@ def test_validation(skip_remote, dataset):
         exclude = dataset._index["exclude"] + ["exclude"]
     exclude.append("version")
 
-    assert missing_files == {key: {} for key in dataset._index.keys() if key not in exclude}
-    assert invalid_checksums == {key: {} for key in dataset._index.keys() if key not in exclude}
+    assert missing_files == {
+        key: {} for key in dataset._index.keys() if key not in exclude
+    }
+    assert invalid_checksums == {
+        key: {} for key in dataset._index.keys() if key not in exclude
+    }
 
 
 def test_load(skip_remote, dataset):

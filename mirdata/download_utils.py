@@ -246,8 +246,13 @@ def extractall_unicode(zfile, out_dir):
     for m in zfile.infolist():
         data = zfile.read(m)  # extract zipped data into memory
 
-        if m.filename.encode("cp437", errors="ignore").decode() != m.filename.encode("utf8", errors="ignore").decode():
-            disk_file_name = os.path.join(out_dir, m.filename.encode("cp437", errors="ignore").decode())
+        if (
+            m.filename.encode("cp437", errors="ignore").decode()
+            != m.filename.encode("utf8", errors="ignore").decode()
+        ):
+            disk_file_name = os.path.join(
+                out_dir, m.filename.encode("cp437", errors="ignore").decode()
+            )
         else:
             disk_file_name = os.path.join(out_dir, m.filename)
 
