@@ -33,7 +33,8 @@ def test_track():
         "f0_manual_paths": [
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv"
         ],
-        "score_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv",
+        "score_path": ["tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv"
+        ],
     }
 
     expected_property_types = {
@@ -106,7 +107,9 @@ def test_multitrack():
             "DCS_LI_QuartetB_Take04_T2",
             "DCS_LI_QuartetB_Take04_A2",
         ],
-        "beat_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
+        "beat_path": [
+            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
+        ],
     }
 
     expected_property_types = {

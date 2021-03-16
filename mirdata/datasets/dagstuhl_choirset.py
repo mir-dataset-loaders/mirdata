@@ -59,8 +59,8 @@ url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirS
 # -- correctly destination_dir to download the files following the correct structure.
 REMOTES = {
     'full_dataset': download_utils.RemoteFileMetadata(
-        filename='DagstuhlChoirSet_V1.1.zip',
-        url='https://zenodo.org/record/3956666/files/DagstuhlChoirSet_V1.1.zip?download=1',
+        filename='DagstuhlChoirSet_V1.2.1.zip',
+        url='https://zenodo.org/record/4607867/files/DagstuhlChoirset_V1.2.1.zip?download=1',
         checksum='00000000000000000000000000000000',  # -- the md5 checksum
         unpack_directories=["dagstuhl_choirset"],
     ),
@@ -92,6 +92,7 @@ class Track(core.Track):
         # -- Add any of the dataset specific attributes here
 
     """
+
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
 
         # -- this sets the following attributes:
@@ -110,22 +111,24 @@ class Track(core.Track):
 
         # -- add any dataset specific attributes here
         self.audio_paths = [
-            self.get_path(key) for key in self._track_paths if "audio_" in key
+            self.get_path(key) for key in self._track_paths if "audio_" in key if self.get_path(key)
         ]
 
         self.f0_crepe_paths = [
-            self.get_path(key) for key in self._track_paths if "f0_crepe_" in key
+            self.get_path(key) for key in self._track_paths if "f0_crepe_" in key if self.get_path(key)
         ]
 
         self.f0_pyin_paths = [
-            self.get_path(key) for key in self._track_paths if "f0_pyin_" in key
+            self.get_path(key) for key in self._track_paths if "f0_pyin_" in key if self.get_path(key)
         ]
 
         self.f0_manual_paths = [
-            self.get_path(key) for key in self._track_paths if "f0_manual_" in key
+            self.get_path(key) for key in self._track_paths if "f0_manual_" in key if self.get_path(key)
         ]
 
-        self.score_path = self.get_path("score")
+        self.score_path = [
+            self.get_path(key) for key in self._track_paths if "score" in key if self.get_path(key)
+        ]
 
     # -- `annotation` will behave like an attribute, but it will only be loaded
     # -- and saved when someone accesses it. Useful when loading slightly
@@ -165,7 +168,7 @@ class Track(core.Track):
     @core.cached_property
     def score(self):
         """Get time-aligned score representation"""
-        return load_score(self.score_path)
+        return load_score(self.score_path[0])
 
     # -- `audio` will behave like an attribute, but it will only be loaded
     # -- when someone accesses it and it won't be stored. By default, we make
@@ -207,7 +210,7 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_paths[0],
             f0_data=f0_data,
-            note_data=[(load_score(self.score_path), 'time-aligned score representation')],
+            note_data=[(load_score(self.score_path[0]), 'time-aligned score representation')],
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
@@ -232,13 +235,14 @@ class MultiTrack(core.MultiTrack):
 
 
     """
+
     def __init__(self,
-        mtrack_id,
-        data_home,
-        dataset_name,
-        index,
-        track_class,
-        metadata):
+                 mtrack_id,
+                 data_home,
+                 dataset_name,
+                 index,
+                 track_class,
+                 metadata):
 
         super().__init__(
             mtrack_id=mtrack_id,
@@ -249,7 +253,9 @@ class MultiTrack(core.MultiTrack):
             metadata=metadata,
         )
 
-        self.beat_path = self.get_path("beat")
+        self.beat_path = [
+            self.get_path(key) for key in self._multitrack_paths if "beat" in key if self.get_path(key)
+        ]
 
     @property
     def track_audio_property(self):
@@ -260,9 +266,9 @@ class MultiTrack(core.MultiTrack):
     @core.cached_property
     def beat(self):
         """Get beat annotation"""
-        return load_beat(self.beat_path)
+        return load_beat(self.beat_path[0])
 
-    #@property
+    # @property
     def audio(self, mic="STM"):
         """Get audio of the specified microphone
         Args:
@@ -294,7 +300,7 @@ class MultiTrack(core.MultiTrack):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.get_path("audio_stm"),
-            beat_data=[(load_beat(self.beat_path), 'beats')]
+            beat_data=[(load_beat(self.beat_path[0]), 'beats')]
         )
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
@@ -314,16 +320,16 @@ def load_audio(audio_path):
     # -- for example, the code below. This should be dataset specific!
     # -- By default we load to mono
     # -- change this if it doesn't make sense for your dataset.
-    #if audio_path is None:
-     #   return None
+    # if audio_path is None:
+    #   return None
 
-    #if not os.path.exists(audio_path):
-        #raise IOError("audio_path {} does not exist".format(audio_path))
+    # if not os.path.exists(audio_path):
+    # raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
 # -- Write any necessary loader functions for loading the dataset's data
-#@io.coerce_to_string_io
+# @io.coerce_to_string_io
 def load_f0(f0_path):
     """Load a Dagstuhl ChoirSet F0-trajectory.
 
@@ -360,7 +366,7 @@ def load_f0(f0_path):
     return annotations.F0Data(times, freqs, confs)
 
 
-#@io.coerce_to_string_io
+# @io.coerce_to_string_io
 def load_score(score_path):
     """Load a Dagstuhl ChoirSet time-aligned score representation.
 
@@ -385,11 +391,11 @@ def load_score(score_path):
             intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
             notes.append(float(line[2]))
 
-    notes = 440 * 2 ** ((np.array(notes) - 69)/12)  # convert MIDI pitch to Hz
+    notes = 440 * 2 ** ((np.array(notes) - 69) / 12)  # convert MIDI pitch to Hz
     return annotations.NoteData(intervals, notes, None)
 
 
-#@io.coerce_to_string_io
+# @io.coerce_to_string_io
 def load_beat(beat_path):
     """Load a Dagstuhl ChoirSet beat annotation.
 
