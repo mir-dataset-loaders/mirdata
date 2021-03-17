@@ -262,7 +262,7 @@ class MultiTrack(core.MultiTrack):
     @property
     def track_audio_property(self):
         #### the attribute of Track which returns the relevant audio file for mixing
-        return "audio"
+        return "audio_dyn"
 
     # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property

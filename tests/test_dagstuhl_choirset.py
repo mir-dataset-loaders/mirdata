@@ -102,10 +102,10 @@ def test_multitrack():
         "mtrack_id": "DCS_LI_QuartetB_Take04",
         "track_audio_property": "audio",
         "track_ids": [
-            "DCS_LI_QuartetB_Take04_S1",
-            "DCS_LI_QuartetB_Take04_B2",
-            "DCS_LI_QuartetB_Take04_T2",
             "DCS_LI_QuartetB_Take04_A2",
+            "DCS_LI_QuartetB_Take04_B2",
+            "DCS_LI_QuartetB_Take04_S1",
+            "DCS_LI_QuartetB_Take04_T2",
         ],
         "beat_path": [
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
