@@ -249,18 +249,16 @@ def make_dataset_index(data_path):
         json.dump(index, fhandle, indent=2)
 
 
-# def main(args):
-def main():
-    #make_dataset_index(args.data_path)
-    make_dataset_index('/Users/helenacuesta/Desktop/DagstuhlChoirSet_V1.2.2')
+def main(args):
+    make_dataset_index(args.data_path)
 
 #
-# if __name__ == '__main__':
-#     PARSER = argparse.ArgumentParser(description='Make Phenicx-anechoic index file.')
-#     PARSER.add_argument(
-#         'data_path', type=str, help='Path to Phenicx-anechoic data folder.'
-#     )
-#
-#     main(PARSER.parse_args())
+if __name__ == '__main__':
+    PARSER = argparse.ArgumentParser(description='Make Dagstuhl ChoirSet index file.')
+    PARSER.add_argument(
+        'data_path', type=str, help='Path to Dagsthul ChoirSet data folder.'
+    )
+
+    main(PARSER.parse_args())
 
 main()
