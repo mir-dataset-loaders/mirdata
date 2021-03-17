@@ -39,8 +39,7 @@ def make_dataset_index(data_path):
     index = {
         'version': "1.2.2",
         "tracks": {},
-        "multitracks": {},
-        "metadata": None
+        "multitracks": {}
     }
 
     # define pieces directly from data directory
@@ -261,4 +260,3 @@ if __name__ == '__main__':
 
     main(PARSER.parse_args())
 
-main()

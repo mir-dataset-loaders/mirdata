@@ -3250,7 +3250,7 @@
       ],
       "f0_manual_lrx": [
         "annotations_csv_F0_manual/DCS_LI_QuartetA_Take04_A1_LRX.csv",
-        "0ef1c1a598f199a15b0dc2ef178a311b"
+        "9e6bb54c69110c5895033d4fd995497c"
       ],
       "score": [
         "annotations_csv_scorerepresentation/DCS_LI_QuartetA_Take04_Stereo_STM_A.csv",
@@ -3296,7 +3296,7 @@
       ],
       "f0_manual_lrx": [
         "annotations_csv_F0_manual/DCS_LI_QuartetA_Take04_B1_LRX.csv",
-        "5b6c94bfe4596dfd824ae476b68a88c0"
+        "a450c3a71c769dd425133fa1aa0f29c5"
       ],
       "score": [
         "annotations_csv_scorerepresentation/DCS_LI_QuartetA_Take04_Stereo_STM_B.csv",
@@ -3342,7 +3342,7 @@
       ],
       "f0_manual_lrx": [
         "annotations_csv_F0_manual/DCS_LI_QuartetA_Take04_S2_LRX.csv",
-        "545ff99b2fa92b0c85409cc7c900c6eb"
+        "af3a4deb7ac28710c98de5a68c84dd2d"
       ],
       "score": [
         "annotations_csv_scorerepresentation/DCS_LI_QuartetA_Take04_Stereo_STM_S.csv",
@@ -3388,7 +3388,7 @@
       ],
       "f0_manual_lrx": [
         "annotations_csv_F0_manual/DCS_LI_QuartetA_Take04_T1_LRX.csv",
-        "59e163e17f5f026a9c86f352b866a3e1"
+        "fce1979fda1145b791267034ad1073f8"
       ],
       "score": [
         "annotations_csv_scorerepresentation/DCS_LI_QuartetA_Take04_Stereo_STM_T.csv",
@@ -4690,7 +4690,7 @@
       ],
       "f0_manual_lrx": [
         "annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_A2_LRX.csv",
-        "d1f7fa9c29d6c41ff612ba58328f6cc6"
+        "05272f5c199ff7725863e528e82f5d62"
       ],
       "score": [
         "annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_A.csv",
@@ -4736,7 +4736,7 @@
       ],
       "f0_manual_lrx": [
         "annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv",
-        "29022d40bab941a788e16d9a4af825f4"
+        "eb34fe08c087fe42ef10506b27958d00"
       ],
       "score": [
         "annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv",
@@ -4782,7 +4782,7 @@
       ],
       "f0_manual_lrx": [
         "annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_S1_LRX.csv",
-        "8b436ace4aa6890275a5ff4e4945f577"
+        "1b24d86810f5671bc9374585e1f59ac3"
       ],
       "score": [
         "annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_S.csv",
@@ -4828,7 +4828,7 @@
       ],
       "f0_manual_lrx": [
         "annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_T2_LRX.csv",
-        "2b3c08678b24ab3a6e745f4c2f04d83a"
+        "69627058d300b55dc30fedf6267dd735"
       ],
       "score": [
         "annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_T.csv",
