@@ -95,13 +95,20 @@ def make_dataset_index(data_path):
         # beats
         index["multitracks"][piece]["beat"] = (None, None)
 
+        # piano
+        index["multitracks"][piece]["audio_spl"] = (None, None)
+        index["multitracks"][piece]["audio_spr"] = (None, None)
+
         ## add each track inside the multitrack
 
         audio_files = sorted(
             glob.glob(os.path.join(audio_dir, '{}*.wav'.format(piece)))
         )
 
-        singers = [singer.split('_')[-2] for singer in audio_files if not 'Stereo' in singer]
+        singers = [singer.split('_')[-2] for singer in audio_files if not "Stereo" in singer]
+
+        # second step to remove piano from singers
+        singers = [singer for singer in singers if "Piano" not in singer]
 
         # mics = [singer.split('_')[-1].split('.')[0] for singer in audio_files if not 'Stereo' in singer]
         # assert len(singers) == len(mics), "number of mics does not match number of singers for {}".format(piece)
@@ -109,7 +116,7 @@ def make_dataset_index(data_path):
 
         index["multitracks"][piece]["tracks"] = []
 
-        for sidx, singer in enumerate(singers):
+        for sidx, singer in enumerate(sorted(singers)):
 
             track_name = "{}_{}".format(piece, singer)
 
@@ -126,7 +133,7 @@ def make_dataset_index(data_path):
 
             mics = [mic.split('_')[-1].split('.')[0] for mic in glob.glob(os.path.join(
                 audio_dir, "{}_{}*.wav".format(piece, singer))
-            )]
+            ) if mic not in ['SPL', 'SPR']]
 
             ### add all fields for each track
 
@@ -195,8 +202,29 @@ def make_dataset_index(data_path):
                     beats_checksum
                 )
 
+        ## check if piano track exists and add it to the mtrack if so
+
+        audio_pianoL_dir = os.path.join(
+            data_path, "audio_wav_22050_mono", "{}_Piano_SPL.wav".format(piece)
+        )
+        if os.path.exists(audio_pianoL_dir):
+
+            # add piano SPL
+            audio_checksum = md5(audio_pianoL_dir)
+            index["multitracks"][piece]["audio_spl"] = (
+                "audio_wav_22050_mono/{}_Piano_SPL.wav".format(piece),
+                audio_checksum
+            )
+
+            # add piano SPR
+            audio_checksum = md5(audio_pianoL_dir.replace("SPL", "SPR"))
+            index["multitracks"][piece]["audio_spr"] = (
+                "audio_wav_22050_mono/{}_Piano_SPR.wav".format(piece),
+                audio_checksum
+            )
+
         # tracks should not be repeated
-        index['multitracks'][piece]['tracks'] = list(set(index['multitracks'][piece]['tracks']))
+        index['multitracks'][piece]['tracks'] = sorted(list(set(index['multitracks'][piece]['tracks'])))
 
 
     ## add the manual annotations to their corresponding tracks
@@ -224,7 +252,7 @@ def make_dataset_index(data_path):
 # def main(args):
 def main():
     #make_dataset_index(args.data_path)
-    make_dataset_index('/Users/helenacuesta/Desktop/DagstuhlChoirSet')
+    make_dataset_index('/Users/helenacuesta/Desktop/DagstuhlChoirSet_V1.2.2')
 
 #
 # if __name__ == '__main__':
