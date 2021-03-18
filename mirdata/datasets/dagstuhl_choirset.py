@@ -50,10 +50,10 @@ url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirS
 """
 
 REMOTES = {
-    'full_dataset': download_utils.RemoteFileMetadata(
-        filename='DagstuhlChoirSet_V1.2.2.zip',
-        url='https://zenodo.org/record/4608395/files/DagstuhlChoirSet_V1.2.2.zip?download=1',
-        checksum='2f2a81852169a2e5e5d2c76d8ef82180',
+    "full_dataset": download_utils.RemoteFileMetadata(
+        filename="DagstuhlChoirSet_V1.2.2.zip",
+        url="https://zenodo.org/record/4608395/files/DagstuhlChoirSet_V1.2.2.zip?download=1",
+        checksum="2f2a81852169a2e5e5d2c76d8ef82180",
         unpack_directories=["DagstuhlChoirSet_V1.2.2"],
     ),
 }
@@ -70,18 +70,18 @@ Creative Commons Attribution 4.0 International
 class Track(core.Track):
     """Dagstuhl ChoirSet Track class
 
-        Args:
-            track_id (str): track id of the track
+    Args:
+        track_id (str): track id of the track
 
-        Attributes:
-            audio_paths (list): paths to audio files
-            f0_paths (list): paths to F0-trajectories
-            score_paths (list): paths to time-aligned score representation
-            track_id (str): track id
+    Attributes:
+        audio_paths (list): paths to audio files
+        f0_paths (list): paths to F0-trajectories
+        score_paths (list): paths to time-aligned score representation
+        track_id (str): track id
 
-        Cached Properties:
-            f0 (annotations.F0Data): returns specified F0-trajectory
-            score (annotations.NoteData): returns time-aligned score representation
+    Cached Properties:
+        f0 (annotations.F0Data): returns specified F0-trajectory
+        score (annotations.NoteData): returns time-aligned score representation
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -95,15 +95,24 @@ class Track(core.Track):
         )
 
         self.audio_paths = [
-            self.get_path(key) for key in self._track_paths if "audio" in key if self.get_path(key)
+            self.get_path(key)
+            for key in self._track_paths
+            if "audio" in key
+            if self.get_path(key)
         ]
 
         self.f0_paths = [
-            self.get_path(key) for key in self._track_paths if "f0" in key if self.get_path(key)
+            self.get_path(key)
+            for key in self._track_paths
+            if "f0" in key
+            if self.get_path(key)
         ]
 
         self.score_paths = [
-            self.get_path(key) for key in self._track_paths if "score" in key if self.get_path(key)
+            self.get_path(key)
+            for key in self._track_paths
+            if "score" in key
+            if self.get_path(key)
         ]
 
     @core.cached_property
@@ -122,7 +131,12 @@ class Track(core.Track):
         if ann.lower() not in ["crepe", "pyin", "manual"]:
             raise ValueError("ann={} is invalid".format(ann))
 
-        f0_path = [s for s in self.f0_paths if mic.lower() in s.lower() if ann.lower() in s.lower()]
+        f0_path = [
+            s
+            for s in self.f0_paths
+            if mic.lower() in s.lower()
+            if ann.lower() in s.lower()
+        ]
 
         if not f0_path:
             return None
@@ -166,7 +180,9 @@ class Track(core.Track):
             return None
 
         if len(audio_path) > 1:
-            raise ValueError("Found two or more microphone signals for mic={}".format(mic))
+            raise ValueError(
+                "Found two or more microphone signals for mic={}".format(mic)
+            )
 
         return load_audio(audio_path[0])
 
@@ -214,13 +230,9 @@ class MultiTrack(core.MultiTrack):
 
     """
 
-    def __init__(self,
-                 mtrack_id,
-                 data_home,
-                 dataset_name,
-                 index,
-                 track_class,
-                 metadata):
+    def __init__(
+        self, mtrack_id, data_home, dataset_name, index, track_class, metadata
+    ):
 
         super().__init__(
             mtrack_id=mtrack_id,
@@ -232,11 +244,17 @@ class MultiTrack(core.MultiTrack):
         )
 
         self.audio_paths = [
-            self.get_path(key) for key in self._multitrack_paths if "audio" in key if self.get_path(key)
+            self.get_path(key)
+            for key in self._multitrack_paths
+            if "audio" in key
+            if self.get_path(key)
         ]
 
         self.beat_paths = [
-            self.get_path(key) for key in self._multitrack_paths if "beat" in key if self.get_path(key)
+            self.get_path(key)
+            for key in self._multitrack_paths
+            if "beat" in key
+            if self.get_path(key)
         ]
 
     @core.cached_property
@@ -255,7 +273,9 @@ class MultiTrack(core.MultiTrack):
             return None
 
         if len(self.beat_paths) > 1:
-            raise ValueError("Found two or more beat annotations:{}".format(self.beat_paths))
+            raise ValueError(
+                "Found two or more beat annotations:{}".format(self.beat_paths)
+            )
 
         return load_beat(self.beat_paths[0])
 
@@ -280,7 +300,9 @@ class MultiTrack(core.MultiTrack):
             return None
 
         if len(audio_path) > 1:
-            raise ValueError("Found two or more microphone signals for mic={}".format(mic))
+            raise ValueError(
+                "Found two or more microphone signals for mic={}".format(mic)
+            )
 
         return load_audio(audio_path[0])
 
@@ -293,8 +315,7 @@ class MultiTrack(core.MultiTrack):
             beat_data = load_beat(self.beat_paths[0])
 
         return jams_utils.jams_converter(
-            audio_path=self.audio_paths[0],
-            beat_data=[(beat_data, "beat")]
+            audio_path=self.audio_paths[0], beat_data=[(beat_data, "beat")]
         )
 
 
@@ -319,11 +340,11 @@ def load_audio(audio_path):
 def load_f0(f0_path):
     """Load a Dagstuhl ChoirSet F0-trajectory.
 
-        Args:
-            f0_path (str): path pointing to an F0-file
+    Args:
+        f0_path (str): path pointing to an F0-file
 
-        Returns:
-            F0Data Object - the F0-trajectory
+    Returns:
+        F0Data Object - the F0-trajectory
     """
     if f0_path is None:
         return None
@@ -351,11 +372,11 @@ def load_f0(f0_path):
 def load_score(score_path):
     """Load a Dagstuhl ChoirSet time-aligned score representation.
 
-        Args:
-            score_path (str): path pointing to an score-representation-file
+    Args:
+        score_path (str): path pointing to an score-representation-file
 
-        Returns:
-            NoteData Object - the time-aligned score representation
+    Returns:
+        NoteData Object - the time-aligned score representation
     """
     if score_path is None:
         return None
@@ -375,11 +396,11 @@ def load_score(score_path):
 def load_beat(beat_path):
     """Load a Dagstuhl ChoirSet beat annotation.
 
-        Args:
-            beat_path (str): path pointing to a beat annotation file
+    Args:
+        beat_path (str): path pointing to a beat annotation file
 
-        Returns:
-            BeatData Object - the beat annotation
+    Returns:
+        BeatData Object - the beat annotation
     """
     if beat_path is None:
         return None
@@ -397,8 +418,7 @@ def load_beat(beat_path):
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The Dagstuhl ChoirSet dataset
-    """
+    """The Dagstuhl ChoirSet dataset"""
 
     def __init__(self, data_home=None):
         super().__init__(
