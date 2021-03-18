@@ -51,10 +51,10 @@ url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirS
 
 REMOTES = {
     "full_dataset": download_utils.RemoteFileMetadata(
-        filename="DagstuhlChoirSet_V1.2.2.zip",
-        url="https://zenodo.org/record/4608395/files/DagstuhlChoirSet_V1.2.2.zip?download=1",
-        checksum="2f2a81852169a2e5e5d2c76d8ef82180",
-        unpack_directories=["DagstuhlChoirSet_V1.2.2"],
+        filename="DagstuhlChoirSet_V1.2.3.zip",
+        url="https://zenodo.org/record/4618287/files/DagstuhlChoirSet_V1.2.3.zip?download=1",
+        checksum="82b95faa634d0c9fc05c81e0868f0217",
+        unpack_directories=["DagstuhlChoirSet_V1.2.3"],
     ),
 }
 
