@@ -1,7 +1,6 @@
 import numpy as np
 import pytest
 
-from mirdata.datasets import phenicx_anechoic
 from mirdata.datasets import dagstuhl_choirset
 from mirdata import annotations
 from tests.test_utils import run_track_tests, run_multitrack_tests
@@ -20,20 +19,16 @@ def test_track():
             "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_HSM.wav",
             "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_LRX.wav",
         ],
-        "f0_crepe_paths": [
+        "f0_paths": [
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv",
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_HSM.csv",
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_LRX.csv",
-        ],
-        "f0_pyin_paths": [
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_DYN.csv",
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_HSM.csv",
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_LRX.csv",
-        ],
-        "f0_manual_paths": [
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv"
         ],
-        "score_path": ["tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv"
+        "score_paths": ["tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv"
         ],
     }
 
@@ -107,7 +102,13 @@ def test_multitrack():
             "DCS_LI_QuartetB_Take04_S1",
             "DCS_LI_QuartetB_Take04_T2",
         ],
-        "beat_path": [
+        "audio_paths": [
+            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STM.wav",
+            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STR.wav",
+            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STL.wav",
+            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_StereoReverb_STM.wav",
+        ],
+        "beat_paths": [
             "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
         ],
     }
@@ -133,7 +134,7 @@ def test_audio_multitrack():
     assert sr == 22050
     assert y.shape == (22050,)
 
-    y, sr = mtrack.audio("StereoReverb")
+    y, sr = mtrack.audio("stereoreverb_stm")
     assert sr == 22050
     assert y.shape == (22050,)
 
