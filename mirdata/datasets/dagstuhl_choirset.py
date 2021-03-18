@@ -28,15 +28,12 @@ import os
 
 import librosa
 import numpy as np
-# -- import whatever you need here and remove
-# -- example imports you won't use
 
 from mirdata import download_utils
 from mirdata import jams_utils
 from mirdata import core, annotations
 from mirdata import io
 
-# -- Add any relevant citations here
 BIBTEX = """
 @article{RosenzweigCWSGM20_DCS_TISMIR,
 author    = {Sebastian Rosenzweig and Helena Cuesta and Christof Wei{\ss} and Frank Scherbaum and Emilia G{\'o}mez and Meinard M{\"u}ller},
@@ -53,54 +50,46 @@ url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirS
 }
 """
 
-# -- REMOTES is a dictionary containing all files that need to be downloaded.
-# -- The keys should be descriptive (e.g. 'annotations', 'audio').
-# -- When having data that can be partially downloaded, remember to set up
-# -- correctly destination_dir to download the files following the correct structure.
 REMOTES = {
     'full_dataset': download_utils.RemoteFileMetadata(
         filename='DagstuhlChoirSet_V1.2.2.zip',
         url='https://zenodo.org/record/4608395/files/DagstuhlChoirSet_V1.2.2.zip?download=1',
-        checksum='2f2a81852169a2e5e5d2c76d8ef82180',  # -- the md5 checksum
+        checksum='2f2a81852169a2e5e5d2c76d8ef82180',
         unpack_directories=["DagstuhlChoirSet_V1.2.2"],
     ),
 }
 
-# -- Include any information that should be printed when downloading
-# -- remove this variable if you don't need to print anything during download
 DOWNLOAD_INFO = """
 Downloading dataset from Zenodo (5.1 GB)...
 """
 
-# -- Include the dataset's license information
 LICENSE_INFO = """
 Creative Commons Attribution 4.0 International
 """
 
 
 class Track(core.Track):
-    """Dagstuhl ChoirSet track class
-    # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
-    # -- `scripts/print_track_docstring.py my_dataset`
-    # -- note that you'll first need to have a test track (see "Adding tests to your dataset" below)
+    """dagstuhl_choirset Track class
 
-    Args:
-        track_id (str): track id of the track
+        Args:
+            track_id (str): track id of the track
 
-    Attributes:
-        track_id (str): track id
-        # -- Add any of the dataset specific attributes here
+        Attributes:
+            audio_paths (list): TODO
+            f0_crepe_paths (list): TODO
+            f0_manual_paths (list): TODO
+            f0_pyin_paths (list): TODO
+            score_path (list): TODO
+            track_id (str): track id
+
+        Cached Properties:
+            f0 (F0Data): TODO
+            score (NoteData): TODO
 
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
 
-        # -- this sets the following attributes:
-        # -- * track_id
-        # -- * _dataset_name
-        # -- * _data_home
-        # -- * _track_paths
-        # -- * _track_metadata
         super().__init__(
             track_id=track_id,
             data_home=data_home,
@@ -109,7 +98,6 @@ class Track(core.Track):
             metadata=metadata,
         )
 
-        # -- add any dataset specific attributes here
         self.audio_paths = [
             self.get_path(key) for key in self._track_paths if "audio_" in key if self.get_path(key)
         ]
@@ -130,10 +118,6 @@ class Track(core.Track):
             self.get_path(key) for key in self._track_paths if "score" in key if self.get_path(key)
         ]
 
-    # -- `annotation` will behave like an attribute, but it will only be loaded
-    # -- and saved when someone accesses it. Useful when loading slightly
-    # -- bigger files or for bigger datasets. By default, we make any time
-    # -- series data loaded from a file a cached property
     @core.cached_property
     def f0(self, mic='LRX', ann='CREPE'):
         """Get F0-trajectory of specified type extracted from specified microphone
@@ -159,7 +143,6 @@ class Track(core.Track):
 
         if not mic_path:
             return None
-            # raise ValueError("No trajectory found for mic={}".format(mic))
 
         if len(mic_path) > 1:
             raise ValueError("Found two or more trajectories for mic={}".format(mic))
@@ -168,13 +151,14 @@ class Track(core.Track):
 
     @core.cached_property
     def score(self):
-        """Get time-aligned score representation"""
+        """Get time-aligned score representation
+        Args:
+
+        Returns:
+            NoteData Object - the time-aligned score representation
+        """
         return load_score(self.score_path)
 
-    # -- `audio` will behave like an attribute, but it will only be loaded
-    # -- when someone accesses it and it won't be stored. By default, we make
-    # -- any memory heavy information (like audio) properties
-    # @property
     def audio(self, mic='LRX'):
         """Get audio of the specified microphone
         Args:
@@ -191,17 +175,12 @@ class Track(core.Track):
 
         if not mic_path:
             return None
-            # raise ValueError("No microphone signal found for mic={}".format(mic))
 
         if len(mic_path) > 1:
             raise ValueError("Found two or more microphone signals for mic={}".format(mic))
 
         return load_audio(mic_path[0])
 
-    # -- we use the to_jams function to convert all the annotations in the JAMS format.
-    # -- The converter takes as input all the annotations in the proper format (e.g. beats
-    # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
-    # -- object with the annotations.
     def to_jams(self):
         """Jams: the track's data in jams format"""
 
@@ -214,11 +193,8 @@ class Track(core.Track):
             f0_data=f0_data,
             note_data=[(load_score(self.score_path), 'time-aligned score representation')],
         )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
 
 
-# -- if the dataset contains multitracks, you can define a MultiTrack similar to a Track
-# -- you can delete the block of code below if the dataset has no multitracks
 class MultiTrack(core.MultiTrack):
     """Dagstuhl ChoirSet multitrack class
 
@@ -229,12 +205,12 @@ class MultiTrack(core.MultiTrack):
 
     Attributes:
         mtrack_id (str): track id
-        tracks (dict): {track_id: Track}
-        track_audio_attribute (str): the name of the attribute of Track which
-            returns the audio to be mixed
         beat_path (str): path to beat annotation
-        # -- Add any of the dataset specific attributes here
 
+    Cached Properties:
+        track_audio_property (str): the name of the attribute of Track which
+            returns the audio to be mixed
+        beat (beatData): Beat annotation
 
     """
 
@@ -259,18 +235,20 @@ class MultiTrack(core.MultiTrack):
             self.get_path(key) for key in self._multitrack_paths if "beat" in key if self.get_path(key)
         ]
 
-    @property
+    @core.cached_property
     def track_audio_property(self):
-        #### the attribute of Track which returns the relevant audio file for mixing
         return "audio_dyn"
 
-    # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
     def beat(self):
-        """Get beat annotation"""
+        """Get beat annotation
+        Args:
+
+        Returns:
+            BeatData Object - the beat annotation
+        """
         return load_beat(self.beat_path[0])
 
-    # @property
     def audio(self, mic="STM"):
         """Get audio of the specified microphone
         Args:
@@ -293,19 +271,15 @@ class MultiTrack(core.MultiTrack):
 
         if not mic_path:
             return None
-            # raise ValueError("No microphone signal found for mic={}".format(mic))
 
         return load_audio(mic_path)
 
-    # -- multitrack classes are themselves Tracks, and also need a to_jams method
-    # -- for any mixture-level annotations
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.get_path("audio_stm"),
             beat_data=[(load_beat(self.beat_path[0]), 'beats')]
         )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
 
 
 @io.coerce_to_bytes_io
@@ -320,19 +294,12 @@ def load_audio(audio_path):
         * float - The sample rate of the audio file
 
     """
-    # -- for example, the code below. This should be dataset specific!
-    # -- By default we load to mono
-    # -- change this if it doesn't make sense for your dataset.
     if audio_path is None:
         return None
 
-    # if not os.path.exists(audio_path):
-    # raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
-# -- Write any necessary loader functions for loading the dataset's data
-# @io.coerce_to_string_io
 def load_f0(f0_path):
     """Load a Dagstuhl ChoirSet F0-trajectory.
 
@@ -340,14 +307,10 @@ def load_f0(f0_path):
             f0_path (str): path pointing to an F0-file
 
         Returns:
-            * F0Data Object - the F0-trajectory
-
-        """
+            F0Data Object - the F0-trajectory
+    """
     if f0_path is None:
         return None
-
-    if not os.path.exists(f0_path):
-        raise IOError("f0_path {} does not exist".format(f0_path))
 
     times = []
     freqs = []
@@ -369,7 +332,6 @@ def load_f0(f0_path):
     return annotations.F0Data(times, freqs, confs)
 
 
-# @io.coerce_to_string_io
 def load_score(score_path):
     """Load a Dagstuhl ChoirSet time-aligned score representation.
 
@@ -377,9 +339,8 @@ def load_score(score_path):
             score_path (list): path pointing to an score-representation-file
 
         Returns:
-            * NoteData Object - the time-aligned score representation
-
-        """
+            NoteData Object - the time-aligned score representation
+    """
     if score_path is None:
         return None
 
@@ -401,7 +362,6 @@ def load_score(score_path):
     return annotations.NoteData(intervals, notes, None)
 
 
-# @io.coerce_to_string_io
 def load_beat(beat_path):
     """Load a Dagstuhl ChoirSet beat annotation.
 
@@ -409,14 +369,10 @@ def load_beat(beat_path):
             beat_path (str): path pointing to a beat annotation file
 
         Returns:
-            * NoteData Object - the beat annotation
-
-        """
+            BeatData Object - the beat annotation
+    """
     if beat_path is None:
         return None
-
-    if not os.path.exists(beat_path):
-        raise IOError("score_path {} does not exist".format(beat_path))
 
     times = []
     with open(beat_path, "r") as fhandle:
@@ -429,7 +385,6 @@ def load_beat(beat_path):
     return annotations.BeatData(times, positions)
 
 
-# -- use this decorator so the docs are complete
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """The Dagstuhl ChoirSet dataset
@@ -447,9 +402,6 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    # -- Copy any loaders you wrote that should be part of the Dataset class
-    # -- use this core.copy_docs decorator to copy the docs from the original
-    # -- load_ function
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
