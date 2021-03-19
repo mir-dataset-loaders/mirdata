@@ -59,6 +59,13 @@ compmusic_otmm_makam
    :inherited-members:
 
 
+dagstuhl_choirset
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.dagstuhl_choirset
+   :members:
+   :inherited-members:
+
 dali
 ^^^^
 
