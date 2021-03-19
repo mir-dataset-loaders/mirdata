@@ -37,7 +37,7 @@ def make_dataset_index(data_path):
     audio_dir = os.path.join(data_path, 'audio_wav_22050_mono')
 
     index = {
-        'version': "1.2.2",
+        'version': "1.2.3",
         "tracks": {},
         "multitracks": {}
     }
