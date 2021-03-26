@@ -98,13 +98,13 @@ def test_track():
         "music_lyrics": str,
         "art_id": str,
         "art_name": str,
-        "art_rank": np.int64,
+        "art_rank": int,
         "main_genre": str,
         "related_genre": list,
         "related_artist": list,
         "related_music": list,
         "musicnn_tags": list,
-        "melspectrogram": np.ndarray,
+        "load_spectrogram": np.ndarray,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -127,7 +127,7 @@ def test_melspectrogram():
 
 
 def test_load_melspectrogram():
-    _4mula_path = f"{TEST_DATA_HOME}/_test_4mula_tiny.parquet"
+    _4mula_path = f"{TEST_DATA_HOME}/4mula_tiny.parquet"
     melspectrogram_data = tiny_4mula.load_melspectrogram(_4mula_path)
 
     # check types

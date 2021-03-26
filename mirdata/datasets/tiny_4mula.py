@@ -128,51 +128,51 @@ class Track(core.Track):
 
     @property
     def music_id(self):
-        return self._track_metadata.get("music_id")[0]
+        return self._track_metadata.get("music_id")
 
     @property
     def music_name(self):
-        return self._track_metadata.get("music_name")[0]
+        return self._track_metadata.get("music_name")
 
     @property
     def music_lang(self):
-        return self._track_metadata.get("music_lang")[0]
+        return self._track_metadata.get("music_lang")
 
     @property
     def music_lyrics(self):
-        return self._track_metadata.get("music_lyrics")[0]
+        return self._track_metadata.get("music_lyrics")
 
     @property
     def art_id(self):
-        return self._track_metadata.get("art_id")[0]
+        return self._track_metadata.get("art_id")
 
     @property
     def art_name(self):
-        return self._track_metadata.get("art_name")[0]
+        return self._track_metadata.get("art_name")
 
     @property
     def art_rank(self):
-        return self._track_metadata.get("art_rank")[0]
+        return self._track_metadata.get("art_rank")
 
     @property
     def main_genre(self):
-        return self._track_metadata.get("main_genre")[0]
+        return self._track_metadata.get("main_genre")
 
     @property
     def related_art(self):
-        return eval(self._track_metadata.get("related_art")[0])
+        return eval(self._track_metadata.get("related_art"))
 
     @property
     def related_genre(self):
-        return eval(self._track_metadata.get("related_genre")[0])
+        return eval(self._track_metadata.get("related_genre"))
 
     @property
     def related_music(self):
-        return eval(self._track_metadata.get("related_music")[0])
+        return eval(self._track_metadata.get("related_music"))
 
     @property
     def musicnn_tags(self):
-        return eval(self._track_metadata.get("musicnn_tags")[0])
+        return eval(self._track_metadata.get("musicnn_tags"))
 
     @property
     def load_spectrogram(self):
@@ -207,7 +207,7 @@ def load_melspectrogram(fhandle: str) -> np.ndarray:
         raise FileNotFoundError("Dataset not found. Did you run .download()?")
     df = pq.ParquetFile(fhandle)
     df = df.read(columns=["melspectrogram"])
-    return df.to_pandas(split_blocks=True, self_destruct=True).values
+    return df.to_pandas(split_blocks=True, self_destruct=True).melspectrogram.values
 
 
 @core.docstring_inherit(core.Dataset)
