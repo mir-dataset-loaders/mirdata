@@ -253,17 +253,17 @@ class Dataset(core.Dataset):
         for i, j in zip(df["music_id"], range(len(df["music_id"]))):
             metadata[i] = {
                 "music_id": df["music_id"][j],
-                "music_name": df.get(["music_name"][j], ""),
-                "music_lang": df.get(["music_lang"][j], ""),
-                "music_lyrics": df.get(["music_lyrics"][j], ""),
-                "art_id": df.get(["art_id"][j], ""),
-                "art_name": df.get(["art_name"][j], ""),
-                "art_rank": df.get(["art_rank"][j], ""),
-                "main_genre": df.get(["main_genre"][j], ""),
-                "related_genre": df.get(["related_genre"][j], []),
-                "related_art": df.get(["related_art"][j], []),
-                "related_music": df.get(["related_music"][j], []),
-                "musicnn_tags": df.get(["musicnn_tags"][j], []),
+                "music_name": df["music_name"][j],
+                "music_lang": df["music_lang"][j],
+                "music_lyrics": df["music_lyrics"][j],
+                "art_id": df["art_id"][j],
+                "art_name": df["art_name"][j],
+                "art_rank": df["art_rank"][j],
+                "main_genre": df["main_genre"][j],
+                "related_genre": df["related_genre"][j],
+                "related_art": df["related_art"][j],
+                "related_music": df["related_music"][j],
+                "musicnn_tags": df["musicnn_tags"][j],
             }
         return metadata
 

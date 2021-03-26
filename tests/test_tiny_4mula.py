@@ -114,7 +114,7 @@ def test_melspectrogram():
     default_trackid = "3ade68b6g3429fda3"
     dataset = tiny_4mula.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
-    melspectrogram_data = track.melspectrogram
+    melspectrogram_data = track.load_spectrogram
 
     # check types
     assert type(melspectrogram_data) is np.ndarray
