@@ -13,21 +13,20 @@
         DOI:https://doi.org/10.1145/3428658.3431089
 
 
-    The dataset consists of 1988 musics represents by melspectrogram and metadata. It
-    contains 27 genres and 93 artists. The audio file is not available. All attributes are:
+    The dataset consists of 1988 music recordings represented by melspectrogram and metadata. It
+    conveys 27 genres and 93 artists. The audios file are not available. The metadata includes the following attributes:
     ['music_id', 'music_name', 'music_lang', 'music_lyrics', 'art_id',
     'art_name', 'art_rank', 'main_genre', 'related_genre', 'related_art',
     'related_music', 'musicnn_tags', 'melspectrogram']
 
 """
 import os
-from mirdata.download_utils import RemoteFileMetadata, downloader
+import pyarrow.parquet as pq
+from mirdata.download_utils import RemoteFileMetadata
 from mirdata import core, jams_utils
-from numpy import load, ndarray
-from pandas import read_csv, read_parquet
+import numpy as np
 
-
-BIBTEX = """inproceedings{10.1145/3428658.3431089,
+BIBTEX = """@inproceedings{10.1145/3428658.3431089,
   author = {da Silva, Angelo Cesar Mendes and Silva, Diego Furtado and Marcacini, Ricardo Marcondes},
   title = {4MuLA: A Multitask, Multimodal, and Multilingual Dataset of Music Lyrics and Audio Features},
   year = {2020},
@@ -58,7 +57,7 @@ LICENSE_INFO = "Creative Commons Attribution 4.0 International."
 DOWNLOAD_INFO = """
   This loader is designed to load the melspectrogram and metadata, as it is available for download.
   Unfortunately the audio files of the 4MULA dataset are not available
-  for download. You can more details and follow the updates in our repository: 
+  for download. You can more details and follow the updates in the following repository: 
   ==> https://github.com/4mulaDataset/4mula    
 """
 
@@ -100,22 +99,17 @@ class Track(core.Track):
         related_art (list): others artist related to artist
         related_music (list): others music related to track
         musicnn_tags (list): top-3 tags got by Musicnn
-        melspectrogram (numpy.ndarray): melspectrogram extracted by librosa
-
-
-    Cached Properties:
-        melspectrogram: melspectrogram in npy file
-        annotation: csv file with annotated metadata (all attributes, except melspectrogram)
+        melspectrogram (numpy.ndarray): melspectrogram extracted by librosa using default params
 
     """
 
     def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
+            self,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
     ):
         super().__init__(
             track_id,
@@ -181,15 +175,8 @@ class Track(core.Track):
         return eval(self._track_metadata.get("musicnn_tags")[0])
 
     @property
-    def _track_metadata(self):
-        metadata = read_csv(self.annotation_path, sep="\t")
-        if not metadata.empty:
-            return metadata
-        return None
-
-    @property
-    def melspectrogram(self):
-        return load(self.melspectrogram_path, allow_pickle=True)
+    def load_spectrogram(self):
+        return np.load(self.melspectrogram_path, allow_pickle=True)
 
     def to_jams(self):
         """Get the track's data in jams format
@@ -198,27 +185,16 @@ class Track(core.Track):
             jams.JAMS: the track's data in jams format
 
         """
+        metadata = self._track_metadata
+        metadata.update({"duration": 30})  # approximation
+
         return jams_utils.jams_converter(
             spectrogram_path=self.melspectrogram_path,
-            metadata={
-                "art_id": self.art_id,
-                "art_name": self.art_name,
-                "art_rank": self.art_rank,
-                "main_genre": self.main_genre,
-                "music_id": self.music_id,
-                "music_lang": self.music_lang,
-                "music_lyrics": self.music_lyrics,
-                "music_name": self.music_name,
-                "musicnn_tags": self.musicnn_tags,
-                "related_art": self.related_art,
-                "related_genre": self.related_genre,
-                "related_music": self.related_music,
-                "duration": 30,  # approximation
-            },
+            metadata=metadata
         )
 
 
-def load_melspectrogram(fhandle: str) -> ndarray:
+def load_melspectrogram(fhandle: str) -> np.ndarray:
     """Load a tiny_4mula dataset melspectrogram.
 
     Args:
@@ -228,27 +204,11 @@ def load_melspectrogram(fhandle: str) -> ndarray:
         numpy.ndarray: melspectrogram
 
     """
-    print(str(fhandle))
     if not os.path.isfile(str(fhandle)):
         raise FileNotFoundError("Dataset not found. Did you run .download()?")
-    df = read_parquet(fhandle, columns=["melspectrogram"])
-    return df["melspectrogram"].values
-
-
-def load_by_columns(fhandle: str, columns: list = DEFAULT_COLUMNS):
-    """Load a tiny_4mula dataset filtering by columns.
-
-    Args:
-        fhandle (str): path pointing to the dataset file
-        columns (list): attributes to filter in dataset read
-
-    Returns:
-        pandas.DataFrame: tiny_4mula dataset filtered by columns
-
-    """
-    if not os.path.isfile(str(fhandle)):
-        raise FileNotFoundError("Dataset not found. Did you run .download()?")
-    return read_parquet(fhandle, columns=columns)
+    df = pq.ParquetFile(fhandle)
+    df = df.read(columns=["melspectrogram"])
+    return df.to_pandas(split_blocks=True, self_destruct=True).values
 
 
 @core.docstring_inherit(core.Dataset)
@@ -269,7 +229,7 @@ class Dataset(core.Dataset):
         )
 
     @core.cached_property
-    def metadata(self):
+    def _metadata(self):
         metadata_path = os.path.join(self.data_home, "4mula_tiny.parquet")
         if not os.path.exists(metadata_path):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
@@ -287,33 +247,27 @@ class Dataset(core.Dataset):
             "related_music",
             "musicnn_tags",
         ]
-        return read_parquet(metadata_path, columns=columns)
+        df = pq.ParquetFile(metadata_path)
+        df = df.read(columns=columns).to_pydict()
+
+        metadata = dict()
+        for i, j in zip(df["music_id"], range(len(df["music_id"]))):
+            metadata[i] = {
+                "music_id": df["music_id"][j],
+                "music_name": df.get(["music_name"][j], ""),
+                "music_lang": df.get(["music_lang"][j], ""),
+                "music_lyrics": df.get(["music_lyrics"][j], ""),
+                "art_id": df.get(["art_id"][j], ""),
+                "art_name": df.get(["art_name"][j], ""),
+                "art_rank": df.get(["art_rank"][j], ""),
+                "main_genre": df.get(["main_genre"][j], ""),
+                "related_genre": df.get(["related_genre"][j], []),
+                "related_art": df.get(["related_art"][j], []),
+                "related_music": df.get(["related_music"][j], []),
+                "musicnn_tags": df.get(["musicnn_tags"][j], []),
+            }
+        return metadata
 
     @core.copy_docs(load_melspectrogram)
     def load_spectrogram(self, *args, **kwargs):
         return load_melspectrogram(*args, **kwargs)
-
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        downloader(
-            self.data_home,
-            remotes=REMOTES,
-            partial_download=partial_download,
-            force_overwrite=force_overwrite,
-            cleanup=cleanup,
-        )
