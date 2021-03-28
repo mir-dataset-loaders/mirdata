@@ -20,19 +20,19 @@ def test_track():
         "music_id": "3ade68b6g3429fda3",
         "music_lang": "pt-br",
         "music_lyrics": "Cheia de manias\\nToda dengosa\\nMenina bonita"
-                        "\\nSabe que é gostosa\\n\\nCom esse seu jeito \\n"
-                        "Faz o que quer de mim\\nDomina o meu coração"
-                        "\\nEu fico sem saber o que fazer\\nQuero te deixar "
-                        "\\nVocê não quer, não quer \\n\\nEntão me ajude a segurar"
-                        "\\nEssa barra que é gostar de você\\n"
-                        "Então me ajude a segurar\\nEssa barra que é gostar de você, êh"
-                        "\\n\\nDidididiê\\nDidididiê ê ê"
-                        "\\nDidididiê\\n\\nSe estou na sua casa quero ir pro cinema"
-                        "\\nVocê não gosta\\nUm motelzinho "
-                        "você fecha a porta\\n\\nEntão me ajude a segurar"
-                        "\\nEssa barra que é gostar de você\\nEntão me "
-                        "ajude a segurar\\nEssa barra que é gostar de você, êh"
-                        "\\n\\nDidididiê\\nDidididiê ê ê\\nDidididiê",
+        "\\nSabe que é gostosa\\n\\nCom esse seu jeito \\n"
+        "Faz o que quer de mim\\nDomina o meu coração"
+        "\\nEu fico sem saber o que fazer\\nQuero te deixar "
+        "\\nVocê não quer, não quer \\n\\nEntão me ajude a segurar"
+        "\\nEssa barra que é gostar de você\\n"
+        "Então me ajude a segurar\\nEssa barra que é gostar de você, êh"
+        "\\n\\nDidididiê\\nDidididiê ê ê"
+        "\\nDidididiê\\n\\nSe estou na sua casa quero ir pro cinema"
+        "\\nVocê não gosta\\nUm motelzinho "
+        "você fecha a porta\\n\\nEntão me ajude a segurar"
+        "\\nEssa barra que é gostar de você\\nEntão me "
+        "ajude a segurar\\nEssa barra que é gostar de você, êh"
+        "\\n\\nDidididiê\\nDidididiê ê ê\\nDidididiê",
         "music_name": "Cheia de Manias",
         "musicnn_tags": ["classical", "strings", "violin"],
         "related_art": [
