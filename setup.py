@@ -37,8 +37,6 @@ if __name__ == "__main__":
             "jams",
             "requests",
             "pretty_midi >= 0.2.8",
-            "pyarrow",
-            "pandas"
         ],
         extras_require={
             "tests": [
@@ -50,6 +48,7 @@ if __name__ == "__main__":
                 "testcontainers>=2.3",
                 "future==0.17.1",
                 "coveralls>=1.7.0",
+                "pyarrow",
             ],
             "docs": [
                 "numpydoc",

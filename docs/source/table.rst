@@ -251,16 +251,7 @@
      - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by/4.0/
 
-   * - Tonality ClassicalDB
-     - - audio: ❌
-       - annotations: ✅
-     - Global :ref:`key`
-     - 881
-     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
-          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
-
-
-   * - 4MuLA (tiny version)
+   * - Tiny_4MuLA
      - - audio: ❌
        - annotations: ✅
        - features: ✅
@@ -270,3 +261,11 @@
      - 1988
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
+
+   * - Tonality ClassicalDB
+     - - audio: ❌
+       - annotations: ✅
+     - Global :ref:`key`
+     - 881
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
