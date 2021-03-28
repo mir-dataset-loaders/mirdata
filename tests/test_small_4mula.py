@@ -20,19 +20,19 @@ def test_track():
         "music_id": "3ade68b6g3429fda3",
         "music_lang": "pt-br",
         "music_lyrics": "Cheia de manias\\nToda dengosa\\nMenina bonita"
-        "\\nSabe que é gostosa\\n\\nCom esse seu jeito \\n"
-        "Faz o que quer de mim\\nDomina o meu coração"
-        "\\nEu fico sem saber o que fazer\\nQuero te deixar "
-        "\\nVocê não quer, não quer \\n\\nEntão me ajude a segurar"
-        "\\nEssa barra que é gostar de você\\n"
-        "Então me ajude a segurar\\nEssa barra que é gostar de você, êh"
-        "\\n\\nDidididiê\\nDidididiê ê ê"
-        "\\nDidididiê\\n\\nSe estou na sua casa quero ir pro cinema"
-        "\\nVocê não gosta\\nUm motelzinho "
-        "você fecha a porta\\n\\nEntão me ajude a segurar"
-        "\\nEssa barra que é gostar de você\\nEntão me "
-        "ajude a segurar\\nEssa barra que é gostar de você, êh"
-        "\\n\\nDidididiê\\nDidididiê ê ê\\nDidididiê",
+                        "\\nSabe que é gostosa\\n\\nCom esse seu jeito \\n"
+                        "Faz o que quer de mim\\nDomina o meu coração"
+                        "\\nEu fico sem saber o que fazer\\nQuero te deixar "
+                        "\\nVocê não quer, não quer \\n\\nEntão me ajude a segurar"
+                        "\\nEssa barra que é gostar de você\\n"
+                        "Então me ajude a segurar\\nEssa barra que é gostar de você, êh"
+                        "\\n\\nDidididiê\\nDidididiê ê ê"
+                        "\\nDidididiê\\n\\nSe estou na sua casa quero ir pro cinema"
+                        "\\nVocê não gosta\\nUm motelzinho "
+                        "você fecha a porta\\n\\nEntão me ajude a segurar"
+                        "\\nEssa barra que é gostar de você\\nEntão me "
+                        "ajude a segurar\\nEssa barra que é gostar de você, êh"
+                        "\\n\\nDidididiê\\nDidididiê ê ê\\nDidididiê",
         "music_name": "Cheia de Manias",
         "musicnn_tags": ["classical", "strings", "violin"],
         "related_art": [
@@ -98,13 +98,13 @@ def test_track():
         "music_lyrics": str,
         "art_id": str,
         "art_name": str,
-        "art_rank": np.int64,
+        "art_rank": int,
         "main_genre": str,
         "related_genre": list,
         "related_artist": list,
         "related_music": list,
         "musicnn_tags": list,
-        "melspectrogram": np.ndarray,
+        "load_spectrogram": np.ndarray,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -114,7 +114,7 @@ def test_melspectrogram():
     default_trackid = "3ade68b6g3429fda3"
     dataset = small_4mula.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
-    melspectrogram_data = track.melspectrogram
+    melspectrogram_data = track.load_spectrogram
 
     # check types
     assert type(melspectrogram_data) is np.ndarray
@@ -127,7 +127,7 @@ def test_melspectrogram():
 
 
 def test_load_melspectrogram():
-    _4mula_path = f"{TEST_DATA_HOME}/_test_4mula_small.parquet"
+    _4mula_path = f"{TEST_DATA_HOME}/4mula_small.parquet"
     melspectrogram_data = small_4mula.load_melspectrogram(_4mula_path)
 
     # check types

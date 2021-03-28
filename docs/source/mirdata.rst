@@ -212,6 +212,14 @@ saraga_hindustani
    :inherited-members:
 
 
+small_4mula
+^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.small_4mula
+   :members:
+   :inherited-members:
+
+
 tinysol
 ^^^^^^^
 

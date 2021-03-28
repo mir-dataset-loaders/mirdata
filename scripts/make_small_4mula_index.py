@@ -78,9 +78,9 @@ if __name__ == "__main__":
     filename = "4mula_small.parquet"
     destination_dir = "4mula" if len(args.dataset_data_path) == 0 else args.dataset_data_path
 
-    remote = RemoteFileMetadata(url="https://zenodo.org/record/4585498/files/4mula_tiny.parquet?download=1",
+    remote = RemoteFileMetadata(url="https://zenodo.org/record/4636802/files/4mula_small.parquet?download=1",
                                 filename=f"{filename}", destination_dir=destination_dir,
-                                checksum="b1caba387baa22a7b16893702a3214f7")
+                                checksum="30210cf6f52449c8d0670fc0942410c4")
 
     dataset_data_path = download_from_remote(remote, save_dir=destination_dir, force_overwrite=False)
     args = {"dataset_folder": dataset_data_path.split(filename)[0], "filename": filename}
