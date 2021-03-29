@@ -7,9 +7,9 @@ TONAS Loader
     This dataset contains a music collection of 72 sung excerpts representative of three a cappella singing styles
     (Deblas, and two variants of Martinete). It has been developed within the COFLA research project context.
     The distribution is as follows:
-        1. 16 Deblas
-        2. 36 Martinete 1
-        3. 20 Martinete 2
+    1. 16 Deblas
+    2. 36 Martinete 1
+    3. 20 Martinete 2
 
     This collection was built in the context of a study on similarity and style classification of flamenco a cappella
     singing styles (Tonas) by the flamenco expert Dr. Joaquin Mora, Universidad de Sevilla.
