@@ -33,6 +33,7 @@ CUSTOM_TEST_TRACKS = {
     "saraga_carnatic": "116_Bhuvini_Dasudane",
     "saraga_hindustani": "59_Bairagi",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
+    "dagstuhl_choirset": "DCS_LI_QuartetB_Take04_B2",
 }
 
 REMOTE_DATASETS = {
