@@ -126,7 +126,7 @@ def test_load_notes():
     track = dataset.track(default_trackid)
     notes_path = track.notes_path
     notes_data = tonas.load_notes(notes_path)
-    tuning_frequency = tonas.load_tuning_frequency(notes_path)
+    tuning_frequency = tonas._load_tuning_frequency(notes_path)
 
     # check types
     assert type(notes_data) == tonas.NoteData

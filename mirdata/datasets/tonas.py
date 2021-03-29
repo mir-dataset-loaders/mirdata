@@ -28,8 +28,17 @@ TONAS Loader
     TONAS dataset can be obtained upon request. Please refer to this link: https://zenodo.org/record/1290722 to
     request access and follow the indications of the .download() method for a proper storing and organization
     of the TONAS dataset.
-    When TONAS is used for academic research, we would highly appreciate if scientific publications of works
-    partly based on the TONAS dataset quote the following publication:
+
+    Citing this dataset:
+    When TONAS is used for academic research, we would highly appreciate if scientific publications of works partly
+    based on the TONAS dataset quote the following publication:
+    - Music material: Mora, J., Gomez, F., Gomez, E., Escobar-Borrego, F.J., Diaz-Banez, J.M. (2010). Melodic
+    Characterization and Similarity in A Cappella Flamenco Cantes. 11th International Society for Music Information
+    Retrieval Conference (ISMIR 2010).
+    - Transcriptions: Gomez, E., Bonada, J. (in Press). Towards Computer-Assisted Flamenco Transcription: An
+    Experimental Comparison of Automatic Transcription Algorithms As Applied to A Cappella Singing.
+    Computer Music Journal.
+
 
 """
 import csv
@@ -39,25 +48,12 @@ from typing import cast, TextIO, Tuple, Optional
 import librosa
 import numpy as np
 
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import jams_utils, core, annotations, io
 
 
 BIBTEX = """
-@dataset{cofla_computational_analysis_of_flamenco_2013_1290722,
-    author       = {COFLA (COmputational analysis of FLAmenco music) team},
-    title        = {{TONAS: a dataset of flamenco a cappella sung 
-                     melodies with corresponding manual transcriptions}},
-    month        = mar,
-    year         = 2013,
-    publisher    = {Zenodo},
-    version      = {1.0},
-    doi          = {10.5281/zenodo.1290722},
-    url          = {https://doi.org/10.5281/zenodo.1290722}
-}
-@inproceedings{inproceedings,
+Music material:
+@inproceedings{tonas_music,
     author = {Mora, Joaquin and Gómez, Francisco and Gómez, Emilia
               and Borrego, Francisco Javier and Díaz-Báñez, José},
     year = {2010},
@@ -65,7 +61,9 @@ BIBTEX = """
     pages = {351-356},
     title = {Characterization and Similarity in A Cappella Flamenco Cantes.}
 }
-@ARTICLE{6791736,
+
+Transcriptions:
+@inproceedings{tonas_annotations,
     author = {E. {Gómez} and J. {Bonada}},
     journal = {Computer Music Journal},
     title = {Towards Computer-Assisted Flamenco Transcription: An Experimental 
@@ -96,8 +94,22 @@ modify it. Dataset by COFLA team. Copyright © 2012 COFLA project, Universidad d
 to Music Technology Group, Universitat Pompeu Fabra. All Rights Reserved.
 """
 
-# NoteData extension for Tonas to support energy annotation
+
 class NoteData(annotations.NoteData):
+    """
+    This is an extended version of standard NoteData class to support energy annotation.
+
+    Attributes:
+        intervals (np.ndarray): (n x 2) array of intervals
+            (as floats) in seconds in the form [start_time, end_time]
+            with positive time stamps and end_time >= start_time.
+        notes (np.ndarray): array of notes (as floats) in Hz
+        energies (np.ndarray): array of energies (as floats) of each note
+        confidence (np.ndarray or None): array of confidence values
+            between 0 and 1
+
+    """
+
     def __init__(self, intervals, notes, energies, confidence=None):
         super().__init__(intervals, notes, confidence)
 
@@ -117,8 +129,23 @@ class NoteData(annotations.NoteData):
         self.confidence = confidence
 
 
-# F0 extension for Tonas to support energy annotation
 class F0Data(annotations.F0Data):
+    """
+    This is an extended version of standard F0Data class to support energy and estimated frequency values annotations.
+
+    Attributes:
+        times (np.ndarray): array of time stamps (as floats) in seconds
+            with positive, strictly increasing values
+        automatic_frequencies (np.ndarray): array of automatically extracted frequency values (as floats)
+            in Hz
+        frequencies (np.ndarray): array of manually corrected frequency values (as floats)
+            in Hz
+        energies (np.ndarray): array of energi values (as floats)
+        confidence (np.ndarray or None): array of confidence values
+            between 0 and 1
+
+    """
+
     def __init__(
         self, times, automatic_frequencies, frequencies, energies, confidence=None
     ):
@@ -202,7 +229,7 @@ class Track(core.Track):
 
     @property
     def tuning_frequency(self):
-        return load_tuning_frequency(self.notes_path)
+        return _load_tuning_frequency(self.notes_path)
 
     @property
     def audio(self) -> Tuple[np.ndarray, float]:
@@ -274,10 +301,10 @@ def load_f0(fhandle: TextIO) -> Optional[F0Data]:
         freqs.append(float(line[2]))
         freqs_corr.append(float(line[3]))
 
-    times = np.array(times, dtype="float")  # type: ignore
-    freqs = np.array(freqs, dtype="float")  # type: ignore
-    freqs_corr = np.array(freqs_corr, dtype="float")  # type: ignore
-    energies = np.array(energies, dtype="float")  # type: ignore
+    times = np.array(times, dtype="float")
+    freqs = np.array(freqs, dtype="float")
+    freqs_corr = np.array(freqs_corr, dtype="float")
+    energies = np.array(energies, dtype="float")
     confidence = (cast(np.ndarray, freqs_corr) > 0).astype(float)
 
     return F0Data(times, freqs, freqs_corr, energies, confidence)
@@ -304,7 +331,7 @@ def load_notes(fhandle: TextIO) -> Optional[NoteData]:
     for line in reader:
         intervals.append([line[0], float(line[0]) + float(line[1])])
         # Convert midi value to frequency
-        note_hz = midi_to_hz(float(line[2]), float(tuning))
+        note_hz = _midi_to_hz(float(line[2]), float(tuning))
         pitches.append(note_hz)
         energy.append(float(line[3]))
         confidence.append(1.0)
@@ -320,7 +347,7 @@ def load_notes(fhandle: TextIO) -> Optional[NoteData]:
 
 
 @io.coerce_to_string_io
-def load_tuning_frequency(fhandle: TextIO) -> float:
+def _load_tuning_frequency(fhandle: TextIO) -> float:
     """Load tuning frequency of the track with re
 
     Args:
@@ -340,7 +367,7 @@ def load_tuning_frequency(fhandle: TextIO) -> float:
     return tuning_frequency
 
 
-def midi_to_hz(midi_note, tuning_deviation):
+def _midi_to_hz(midi_note, tuning_deviation):
     """Function to convert MIDI to Hz with certain tuning freq
 
     Args:
