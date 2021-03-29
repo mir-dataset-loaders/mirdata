@@ -3,7 +3,7 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The Queen Dataset includes chord, key, and segmentation
+    Queen Dataset includes chord, key, and segmentation
     annotations for 51 Queen songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf and
     http://isophonics.net/content/reference-annotations-queen.
 
@@ -47,7 +47,7 @@ BIBTEX = """@inproceedings{mauch2009beatles,
     series = {ISMIR}
 }"""
 LICENSE_INFO = (
-    "Unfortunately we couldn't find the license information for the Queen dataset."
+    "Unfortunately we couldn't find the license information for Queen dataset."
 )
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
@@ -111,7 +111,7 @@ class Track(core.Track):
         self.sections_path = self.get_path("sections")
         self.audio_path = self.get_path("audio")
 
-        self.title = os.path.basename(self.get_path("sections")).split(".")[0]
+        self.title = os.path.basename(self.sections_path).split(".")[0]
 
     @core.cached_property
     def chords(self) -> Optional[annotations.ChordData]:
@@ -152,8 +152,9 @@ class Track(core.Track):
         )
 
 
+@io.coerce_to_bytes_io
 def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
-    """Load a TONAS audio file.
+    """Load a Queen audio file.
 
     Args:
         fhandle (str): path to an audio file
@@ -178,8 +179,7 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
 
     """
     start_times, end_times, chords = [], [], []
-    f = open(fhandle.name, "r")
-    reader = csv.reader(f, delimiter="\t")
+    reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start_times.append(float(line[0]))
         end_times.append(float(line[1]))
@@ -200,8 +200,7 @@ def load_key(fhandle: TextIO) -> annotations.KeyData:
 
     """
     start_times, end_times, keys = [], [], []
-    f = open(fhandle.name, "r")
-    reader = csv.reader(f, delimiter="\t")
+    reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         if line[2] == "Key":
             start_times.append(float(line[0]))
@@ -223,8 +222,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
 
     """
     start_times, end_times, sections = [], [], []
-    f = open(fhandle.name, "r")
-    reader = csv.reader(f, delimiter="\t")
+    reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start_times.append(float(line[0]))
         end_times.append(float(line[1]))
@@ -236,7 +234,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The Queen dataset
+    Queen dataset
     """
 
     def __init__(self, data_home=None):
