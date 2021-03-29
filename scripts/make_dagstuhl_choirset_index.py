@@ -1,39 +1,17 @@
 import argparse
 import glob
-import hashlib
+from mirdata.validate import md5
 import json
 import os
-import string
 
 DATASET_INDEX_PATH = "../mirdata/datasets/indexes/dagstuhl_choirset_index.json"
-
 
 NO_SCORE = [
     "Basses", "Overacted", "SE", "Solo", "Outtake"
 ]
 
-def md5(file_path):
-    """Get md5 hash of a file.
-
-    Parameters
-    ----------
-    file_path: str
-        File path.
-
-    Returns
-    -------
-    md5_hash: str
-        md5 hash of data in file_path
-    """
-    hash_md5 = hashlib.md5()
-    with open(file_path, 'rb') as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b''):
-            hash_md5.update(chunk)
-    return hash_md5.hexdigest()
-
 
 def make_dataset_index(data_path):
-
     audio_dir = os.path.join(data_path, 'audio_wav_22050_mono')
 
     index = {
@@ -43,7 +21,8 @@ def make_dataset_index(data_path):
     }
 
     # define pieces directly from data directory
-    pieces = sorted(list(set(["_".join(filename.split('/')[-1].split('_')[:4]) for filename in glob.glob(os.path.join(audio_dir, '*.wav'))])))
+    pieces = sorted(list(set(["_".join(filename.split('/')[-1].split('_')[:4]) for filename in
+                              glob.glob(os.path.join(audio_dir, '*.wav'))])))
 
     for ip, piece in enumerate(pieces):
 
@@ -127,7 +106,6 @@ def make_dataset_index(data_path):
                 "f0_manual_lrx": (None, None)
             }
 
-
             index['multitracks'][piece]['tracks'].append(track_name)
 
             mics = [mic.split('_')[-1].split('.')[0] for mic in glob.glob(os.path.join(
@@ -175,9 +153,9 @@ def make_dataset_index(data_path):
 
                 # some have no associated score
                 if not any(x in piece for x in NO_SCORE):
-
                     score_dir = os.path.join(
-                        data_path, "annotations_csv_scorerepresentation", "{}_Stereo_STM_{}.csv".format(piece, singer[0])
+                        data_path, "annotations_csv_scorerepresentation",
+                        "{}_Stereo_STM_{}.csv".format(piece, singer[0])
                     )
                     score_checksum = md5(score_dir)
 
@@ -189,7 +167,6 @@ def make_dataset_index(data_path):
             ## add beats for the full songs when available
 
             if not any(x in piece for x in NO_SCORE):
-
                 ## add beats
                 beats_dir = os.path.join(
                     data_path, "annotations_csv_beat", "{}_Stereo_STM.csv".format(piece)
@@ -207,7 +184,6 @@ def make_dataset_index(data_path):
             data_path, "audio_wav_22050_mono", "{}_Piano_SPL.wav".format(piece)
         )
         if os.path.exists(audio_pianoL_dir):
-
             # add piano SPL
             audio_checksum = md5(audio_pianoL_dir)
             index["multitracks"][piece]["audio_spl"] = (
@@ -225,7 +201,6 @@ def make_dataset_index(data_path):
         # tracks should not be repeated
         index['multitracks'][piece]['tracks'] = sorted(list(set(index['multitracks'][piece]['tracks'])))
 
-
     ## add the manual annotations to their corresponding tracks
     manual_files = sorted(
         glob.glob(os.path.join(
@@ -242,8 +217,6 @@ def make_dataset_index(data_path):
             manual_checksum
         )
 
-
-
     with open(DATASET_INDEX_PATH, 'w') as fhandle:
         json.dump(index, fhandle, indent=2)
 
@@ -251,12 +224,12 @@ def make_dataset_index(data_path):
 def main(args):
     make_dataset_index(args.data_path)
 
+
 #
 if __name__ == '__main__':
     PARSER = argparse.ArgumentParser(description='Make Dagstuhl ChoirSet index file.')
     PARSER.add_argument(
-        'data_path', type=str, help='Path to Dagsthul ChoirSet data folder.'
+        'data_path', type=str, help='Path to Dagstuhl ChoirSet data folder.'
     )
 
     main(PARSER.parse_args())
-

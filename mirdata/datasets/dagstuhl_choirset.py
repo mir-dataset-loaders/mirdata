@@ -28,10 +28,7 @@ import csv
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core, annotations
-from mirdata import io
+from mirdata import download_utils, jams_utils, core, annotations, io
 
 BIBTEX = """
 @article{RosenzweigCWSGM20_DCS_TISMIR,
