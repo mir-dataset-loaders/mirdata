@@ -60,8 +60,8 @@
      - - audio: ✅
        - annotations: ✅
      - - :ref:`lyrics`
-       - :ref:`phoneme`
-       - :ref:`syllable`
+       - :ref:`phonemes`
+       - :ref:`syllables`
      - 82
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0

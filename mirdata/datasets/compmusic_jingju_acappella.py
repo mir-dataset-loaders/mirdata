@@ -4,9 +4,8 @@
     :class: dropdown
 
     Description:
-
-    This dataset is a collection of boundary annotations of a cappella singing performed by
-    Beijing Opera (Jingju, 京剧) professional and amateur singers.
+        This dataset is a collection of boundary annotations of a cappella singing performed by
+        Beijing Opera (Jingju, 京剧) professional and amateur singers.
 
     Contents:
         1. wav.zip: audio files in .wav format, mono or stereo.
@@ -25,24 +24,26 @@
         2. syllable
         3. phoneme
 
-    Singing units in pinyin and X-SAMPA have been annotated to a jingju a cappella singing audio dataset.
+    Annotation details:
+        Singing units in pinyin and X-SAMPA have been annotated to a jingju a cappella singing audio dataset.
 
-    The corresponding audio files are the a cappella singing arias recordings, which are stereo or mono,
-    sampled at 44.1 kHz, and stored as .wav files. The .wav files are recorded by two institutes: those file
-    names ending with ‘qm’ are recorded by C4DM, Queen Mary University of London; others file names ending with
-    ‘upf’ or ‘lon’ are recorded by MTG-UPF. Additionally, another collection of 15 clean singing recordings is
-    included in this dataset. They are extracted from the commercial recordings which originally contains karaoke
-    accompaniment and mixed versions.
+    Audio details:
+        The corresponding audio files are the a cappella singing arias recordings, which are stereo or mono,
+        sampled at 44.1 kHz, and stored as .wav files. The .wav files are recorded by two institutes: those file
+        names ending with ‘qm’ are recorded by C4DM, Queen Mary University of London; others file names ending with
+        ‘upf’ or ‘lon’ are recorded by MTG-UPF. Additionally, another collection of 15 clean singing recordings is
+        included in this dataset. They are extracted from the commercial recordings which originally contains karaoke
+        accompaniment and mixed versions.
 
     Additional details:
-    Annotation format, units, parsing code and other information please refer to:
-    https://github.com/MTG/jingjuPhonemeAnnotation
+        Annotation format, units, parsing code and other information please refer to:
+        https://github.com/MTG/jingjuPhonemeAnnotation
 
     License information:
-    Textgrid annotations are licensed under Creative Commons Attribution-NonCommercial 4.0 International License.
-    Wav audio ending with ‘upf’ or ‘lon’ is licensed under Creative Commons Attribution-NonCommercial 4.0 International.
-    For the license of .wav audio ending with ‘qm’ from C4DM Queen Mary University of London, please refer to
-    this page http://isophonics.org/SingingVoiceDataset
+        Textgrid annotations are licensed under Creative Commons Attribution-NonCommercial 4.0 International License.
+        Wav audio ending with ‘upf’ or ‘lon’ is licensed under Creative Commons Attribution-NonCommercial 4.0 International.
+        For the license of .wav audio ending with ‘qm’ from C4DM Queen Mary University of London, please refer to
+        this page http://isophonics.org/SingingVoiceDataset
 
 """
 
