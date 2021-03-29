@@ -126,7 +126,7 @@ class Track(core.Track):
         return load_sections(self.sections_path)
 
     @property
-    def audio(self) -> Tuple[np.ndarray, float]:
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
