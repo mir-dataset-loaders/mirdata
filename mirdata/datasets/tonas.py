@@ -294,20 +294,22 @@ def load_f0(fhandle: TextIO) -> Optional[F0Data]:
     freqs = []
     freqs_corr = []
     energies = []
+    confidence = []
     reader = np.genfromtxt(fhandle)
     for line in reader:
         times.append(float(line[0]))
         energies.append(float(line[1]))
         freqs.append(float(line[2]))
         freqs_corr.append(float(line[3]))
+        confidence.append(1.0) if float(line[3]) > 0 else confidence.append(0.0)
 
-    times = np.array(times, dtype="float")
-    freqs = np.array(freqs, dtype="float")
-    freqs_corr = np.array(freqs_corr, dtype="float")
-    energies = np.array(energies, dtype="float")
-    confidence = (cast(np.ndarray, freqs_corr) > 0).astype(float)
-
-    return F0Data(times, freqs, freqs_corr, energies, confidence)
+    return F0Data(
+        np.array(times, dtype="float"),
+        np.array(freqs, dtype="float"),
+        np.array(freqs_corr, dtype="float"),
+        np.array(energies, dtype="float"),
+        np.array(confidence, dtype="float"),
+    )
 
 
 @io.coerce_to_string_io
