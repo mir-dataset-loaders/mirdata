@@ -112,7 +112,6 @@ class Track(core.Track):
             if self.get_path(key)
         ]
 
-    @core.cached_property
     def f0(self, mic="lrx", ann="crepe"):
         """Get F0-trajectory of specified type extracted from specified microphone
         Args:
@@ -138,12 +137,8 @@ class Track(core.Track):
         if not f0_path:
             return None
 
-        if len(f0_path) > 1:
-            raise ValueError("Found two or more trajectories for mic={}".format(mic))
-
         return load_f0(f0_path[0])
 
-    @core.cached_property
     def score(self):
         """Get time-aligned score representation
         Args:
@@ -153,9 +148,6 @@ class Track(core.Track):
         """
         if not self.score_paths:
             return None
-
-        if len(self.score_paths) > 1:
-            raise ValueError("Found two or more scores:{}".format(self.score_paths))
 
         return load_score(self.score_paths[0])
 
@@ -175,11 +167,6 @@ class Track(core.Track):
 
         if not audio_path:
             return None
-
-        if len(audio_path) > 1:
-            raise ValueError(
-                "Found two or more microphone signals for mic={}".format(mic)
-            )
 
         return load_audio(audio_path[0])
 
@@ -254,11 +241,9 @@ class MultiTrack(core.MultiTrack):
             if self.get_path(key)
         ]
 
-    @core.cached_property
     def track_audio_property(self):
         return "audio_dyn"
 
-    @core.cached_property
     def beat(self):
         """Get beat annotation
         Args:
@@ -268,11 +253,6 @@ class MultiTrack(core.MultiTrack):
         """
         if not self.beat_paths:
             return None
-
-        if len(self.beat_paths) > 1:
-            raise ValueError(
-                "Found two or more beat annotations:{}".format(self.beat_paths)
-            )
 
         return load_beat(self.beat_paths[0])
 
@@ -295,11 +275,6 @@ class MultiTrack(core.MultiTrack):
 
         if not audio_path:
             return None
-
-        if len(audio_path) > 1:
-            raise ValueError(
-                "Found two or more microphone signals for mic={}".format(mic)
-            )
 
         return load_audio(audio_path[0])
 
@@ -328,9 +303,6 @@ def load_audio(audio_path):
         * float - The sample rate of the audio file
 
     """
-    if audio_path is None:
-        return None
-
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
@@ -343,9 +315,6 @@ def load_f0(f0_path):
     Returns:
         F0Data Object - the F0-trajectory
     """
-    if f0_path is None:
-        return None
-
     times = []
     freqs = []
     confs = []
@@ -375,9 +344,6 @@ def load_score(score_path):
     Returns:
         NoteData Object - the time-aligned score representation
     """
-    if score_path is None:
-        return None
-
     intervals = np.empty((0, 2))
     notes = []
     with open(score_path, "r") as fhandle:
@@ -399,9 +365,6 @@ def load_beat(beat_path):
     Returns:
         BeatData Object - the beat annotation
     """
-    if beat_path is None:
-        return None
-
     times = []
     with open(beat_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter=",")

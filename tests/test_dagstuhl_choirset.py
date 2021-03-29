@@ -67,6 +67,39 @@ def test_audio_track():
     with pytest.raises(ValueError):
         y, sr = track.audio("abc")
 
+    default_trackid = "DCS_SE_QuartetB_Tuning02_S1"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
+    track = dataset.track(default_trackid)
+    assert None == track.audio("hsm")
+
+
+def test_f0_track():
+    default_trackid = "DCS_LI_QuartetB_Take04_B2"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
+    track = dataset.track(default_trackid)
+
+    with pytest.raises(ValueError):
+        f0_traj = track.f0(mic="lrxa", ann="crepe")
+
+    with pytest.raises(ValueError):
+        f0_traj = track.f0(mic="lrx", ann="crepae")
+
+    with pytest.raises(ValueError):
+        f0_traj = track.f0(mic="lrdsx", ann="credfpae")
+
+    assert None == track.f0(mic="dyn", ann="manual")
+
+
+def test_score_track():
+    default_trackid = "DCS_TP_FullChoir_Outtake_A1"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
+    track = dataset.track(default_trackid)
+
+    assert None == track.score()
+
 
 def test_to_jams_track():
     default_trackid = "DCS_LI_QuartetB_Take04_B2"
@@ -142,6 +175,15 @@ def test_multitrack():
     run_multitrack_tests(mtrack)
 
 
+def test_beat_multitrack():
+    default_trackid = "DCS_LI_QuartetB_Solo03"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
+    mtrack = dataset.multitrack(default_trackid)
+
+    assert None == mtrack.beat()
+
+
 def test_audio_multitrack():
     default_trackid = "DCS_LI_QuartetB_Take04"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
@@ -163,6 +205,8 @@ def test_audio_multitrack():
     y, sr = mtrack.audio("STR")
     assert sr == 22050
     assert y.shape == (22050,)
+
+    assert None == mtrack.audio("spl")
 
     with pytest.raises(ValueError):
         y, sr = mtrack.audio("abc")
