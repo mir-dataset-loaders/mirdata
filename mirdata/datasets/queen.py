@@ -31,7 +31,7 @@
 
 import csv
 import os
-from typing import Tuple, TextIO, Optional
+from typing import Tuple, TextIO, Optional, BinaryIO
 
 import librosa
 import numpy as np
@@ -153,7 +153,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Queen audio file.
 
     Args:
