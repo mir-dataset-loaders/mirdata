@@ -3,28 +3,10 @@ import hashlib
 import json
 import os
 import csv
+from mirdata.validate import md5
+
 
 INDEX_PATH = "../mirdata/datasets/indexes/billboard_index.json"
-
-
-def md5(file_path):
-    """Get md5 hash of a file.
-
-    Parameters
-    ----------
-    file_path: str
-        File path.
-
-    Returns
-    -------
-    md5_hash: str
-        md5 hash of data in file_path
-    """
-    hash_md5 = hashlib.md5()
-    with open(file_path, "rb") as fhandle:
-        for chunk in iter(lambda: fhandle.read(4096), b""):
-            hash_md5.update(chunk)
-    return hash_md5.hexdigest()
 
 
 def make_index(data_path):
