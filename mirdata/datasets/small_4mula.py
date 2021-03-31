@@ -26,7 +26,7 @@ import pyarrow.parquet as pq
 from mirdata.download_utils import RemoteFileMetadata
 from mirdata import core, jams_utils
 
-BIBTEX = """inproceedings{10.1145/3428658.3431089,
+BIBTEX = """@inproceedings{10.1145/3428658.3431089,
   author = {da Silva, Angelo Cesar Mendes and Silva, Diego Furtado and Marcacini, Ricardo Marcondes},
   title = {4MuLA: A Multitask, Multimodal, and Multilingual Dataset of Music Lyrics and Audio Features},
   year = {2020},
