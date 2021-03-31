@@ -25,7 +25,7 @@ def make_small_4mula_index(dataset_data_path):
 
     # top-key level tracks
     index_tracks = {}
-    for track in tqdm(batches):
+    for track in tqdm(batches, total=9661):
         with open(f"{annotation_dir}/{track.column('music_id')[0]}.tsv", 'w') as f:
             f.write(
                 'music_id\tmusic_name\tmusic_lang\t'
