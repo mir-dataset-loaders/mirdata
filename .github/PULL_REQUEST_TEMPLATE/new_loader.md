@@ -18,7 +18,7 @@ Please include the following information at the top level docstring for the data
 - [ ] Create a script in `scripts/`, e.g. `make_my_dataset_index.py`, which generates an index file.
 - [ ] Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`.
 - [ ] Create a module in mirdata, e.g. `mirdata/my_dataset.py`
-- [ ] Create tests for your loader in `tests/`, e.g. `test_my_dataset.py`
+- [ ] Create tests for your loader in `tests/datasets/`, e.g. `test_my_dataset.py`
 - [ ] Add your module to `docs/source/mirdata.rst` and `docs/source/quick_reference.rst`
 - [ ] Run `tests/test_full_dataset.py` on your dataset.
 
