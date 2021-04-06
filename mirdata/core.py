@@ -188,9 +188,6 @@ class Dataset(object):
 
         """
         mir_datasets_dir = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
-        # Adapt dataset default path for TONAS
-        if self.name == "tonas":
-            self.name = "TONAS"
         return os.path.join(mir_datasets_dir, self.name)
 
     def _track(self, track_id):

@@ -80,12 +80,14 @@ Transcriptions:
 REMOTES = None
 
 DOWNLOAD_INFO = """
+        PLEASE READ CAREFULLY ALL THE INFORMATION SO YOU DON'T MISS ANY STEP:
         Unfortunately, the TONAS dataset is not available to be shared openly. However,
         you can request access to the dataset in the following link, providing a brief
         explanation of what your are going to use the dataset for:
         ==> https://zenodo.org/record/1290722
-        Then, unzip the dataset and locate it to {}. If you unzip it into a different path,
-        please remember to set the right data_home when initializing the dataset.
+        Then, unzip the dataset, change the dataset name to: "tonas" (with lowercase),
+        and locate it to {}. If you unzip it into a different path, please remember to set the 
+        right data_home when initializing the dataset.
 """
 
 LICENSE_INFO = """
@@ -112,21 +114,9 @@ class NoteData(annotations.NoteData):
 
     def __init__(self, intervals, notes, energies, confidence=None):
         super().__init__(intervals, notes, confidence)
-
-        annotations.validate_array_like(intervals, np.ndarray, float)
-        annotations.validate_array_like(notes, np.ndarray, float)
         annotations.validate_array_like(energies, np.ndarray, float)
-        annotations.validate_array_like(
-            confidence, np.ndarray, float, none_allowed=True
-        )
         annotations.validate_lengths_equal([intervals, notes, energies, confidence])
-        annotations.validate_intervals(intervals)
-        annotations.validate_confidence(confidence)
-
-        self.intervals = intervals
-        self.notes = notes
         self.energies = energies
-        self.confidence = confidence
 
 
 class F0Data(annotations.F0Data):
@@ -150,25 +140,13 @@ class F0Data(annotations.F0Data):
         self, times, automatic_frequencies, frequencies, energies, confidence=None
     ):
         super().__init__(times, frequencies, confidence)
-
-        annotations.validate_array_like(times, np.ndarray, float)
         annotations.validate_array_like(automatic_frequencies, np.ndarray, float)
-        annotations.validate_array_like(frequencies, np.ndarray, float)
         annotations.validate_array_like(energies, np.ndarray, float)
-        annotations.validate_array_like(
-            confidence, np.ndarray, float, none_allowed=True
-        )
         annotations.validate_lengths_equal(
             [times, automatic_frequencies, frequencies, energies, confidence]
         )
-        annotations.validate_times(times)
-        annotations.validate_confidence(confidence)
-
-        self.times = times
         self.automatic_frequencies = automatic_frequencies
-        self.frequencies = frequencies
         self.energies = energies
-        self.confidence = confidence
 
 
 class Track(core.Track):
