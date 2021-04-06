@@ -6,7 +6,6 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "1"
-
     data_home = "tests/resources/mir_datasets/good_sounds"
     dataset = good_sounds.Dataset(data_home)
     track = dataset.track(default_trackid)
