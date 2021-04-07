@@ -346,7 +346,7 @@ def test_extractall_cp437(mocker, mock_download_from_remote, mock_unzip):
         file
         for file in os.listdir(os.path.join("tests", "resources", "utfissue"))
         if re.match(r"(pic.*).jpg", file)
-        or re.match(r"(Beno.*).txt" or re.match(r"Icon*"), file)
+        or re.match(r"(Beno.*).txt", file) or re.match(r"Icon*", file)
     ]
     for true_file in true_files:
         true_file_location = os.path.join("tests", "resources", "utfissue", true_file)
