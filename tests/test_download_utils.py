@@ -322,16 +322,22 @@ def test_download_tar_file(mocker, mock_download_from_remote, mock_untar):
 
 
 def test_extractall_unicode(mocker, mock_download_from_remote, mock_unzip):
-    zfile = zipfile.ZipFile("tests/resources/utfissue.zip", "r")
-    download_utils.extractall_unicode(zfile, os.path.dirname("tests/resources/"))
-    zfile.close()
-    expected_files = ["pic👨‍👩‍👧‍👦🎂.jpg", "Benoît.txt", "Icon"]
-    for expected_file in expected_files:
-        expected_file_location = os.path.join(
-            "tests", "resources", "utfissue", expected_file
-        )
-        assert os.path.exists(expected_file_location)
-        os.remove(expected_file_location)
+    zip_files = ("tests/resources/utfissue.zip", "tests/resources/utfissuewin.zip")
+    expected_files_all = (
+        ["pic👨‍👩‍👧‍👦🎂.jpg", "Benoît.txt", "Icon"],
+        ["pic👨‍👩‍👧‍👦🎂.jpg", "BenoŒt.txt", "Icon"],
+    )
+    for zipf, expected_files in zip(zip_files, expected_files_all):
+        zfile = zipfile.ZipFile(zipf, "r")
+        download_utils.extractall_unicode(zfile, os.path.dirname("tests/resources/"))
+        zfile.close()
+        # expected_files = ["pic👨‍👩‍👧‍👦🎂.jpg", "Benoît.txt", "Icon"]
+        for expected_file in expected_files:
+            expected_file_location = os.path.join(
+                "tests", "resources", "utfissue", expected_file
+            )
+            assert os.path.exists(expected_file_location)
+            os.remove(expected_file_location)
 
 
 def test_extractall_cp437(mocker, mock_download_from_remote, mock_unzip):
@@ -342,14 +348,5 @@ def test_extractall_cp437(mocker, mock_download_from_remote, mock_unzip):
     for expected_file in expected_files:
         expected_file_location = os.path.join("tests", "resources", expected_file)
         assert not os.path.exists(expected_file_location)
-    true_files = [
-        file
-        for file in os.listdir(os.path.join("tests", "resources", "utfissue"))
-        if re.match(r"(pic.*).jpg", file)
-        or re.match(r"(Beno.*).txt", file) or re.match(r"Icon*", file)
-    ]
-    for true_file in true_files:
-        true_file_location = os.path.join("tests", "resources", "utfissue", true_file)
-        os.remove(true_file_location)
     shutil.rmtree(os.path.join("tests", "resources", "__MACOSX"))
     shutil.rmtree(os.path.join("tests", "resources", "utfissue"))

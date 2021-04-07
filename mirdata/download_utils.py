@@ -257,7 +257,7 @@ def extractall_unicode(zfile, out_dir):
             filename = name.encode("utf8")
 
         ### check for irmas filename encoding
-        if filename.decode() != name.encode("utf8").decode():
+        if filename.decode(errors="ignore") != name.encode("utf8").decode():
             filename = name.encode("cp437")
 
         ### detect encoding
