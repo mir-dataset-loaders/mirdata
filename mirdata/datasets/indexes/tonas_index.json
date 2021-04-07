@@ -1,0 +1,1019 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "69-M2_ElTorta": {
+      "audio": [
+        "Martinetes2/69-M2_ElTorta.wav",
+        "ed6071f2bf2fcab94fec43d7e0ff31b8"
+      ],
+      "f0": [
+        "Martinetes2/69-M2_ElTorta.f0.Corrected",
+        "655094e74310789c6911655a828ecd01"
+      ],
+      "notes": [
+        "Martinetes2/69-M2_ElTorta.notes.Corrected",
+        "76ada81262cee24189276e5569757489"
+      ]
+    },
+    "67-M2_EMorente": {
+      "audio": [
+        "Martinetes2/67-M2_EMorente.wav",
+        "59e9a524728dc2b71f8753ff0db29214"
+      ],
+      "f0": [
+        "Martinetes2/67-M2_EMorente.f0.Corrected",
+        "b0cc8d248f4558b7ee63ffb152d46924"
+      ],
+      "notes": [
+        "Martinetes2/67-M2_EMorente.notes.Corrected",
+        "d77a6f7965f9a5701c4220df0e752742"
+      ]
+    },
+    "78-M2_NiniodeBarbate": {
+      "audio": [
+        "Martinetes2/78-M2_NiniodeBarbate.wav",
+        "4aa6730cbb521e1224cd6e4a239ddbf7"
+      ],
+      "f0": [
+        "Martinetes2/78-M2_NiniodeBarbate.f0.Corrected",
+        "7192ddfb5a0bfa89dfb89ffc60602069"
+      ],
+      "notes": [
+        "Martinetes2/78-M2_NiniodeBarbate.notes.Corrected",
+        "fb4123986a32e430ea3ae03d39ac283a"
+      ]
+    },
+    "74-M2_MPoveda": {
+      "audio": [
+        "Martinetes2/74-M2_MPoveda.wav",
+        "7b89423ea57d0410eed5afb6808026aa"
+      ],
+      "f0": [
+        "Martinetes2/74-M2_MPoveda.f0.Corrected",
+        "3faf16d8540a9a46ed6425929fa71d64"
+      ],
+      "notes": [
+        "Martinetes2/74-M2_MPoveda.notes.Corrected",
+        "7a5793781341d75561432c273a639dd2"
+      ]
+    },
+    "81-M2_SDonday": {
+      "audio": [
+        "Martinetes2/81-M2_SDonday.wav",
+        "44a35a6f9b01eda963fcb2dfbe42115a"
+      ],
+      "f0": [
+        "Martinetes2/81-M2_SDonday.f0.Corrected",
+        "1ebef67c0911122288f1d7aa6ee5e851"
+      ],
+      "notes": [
+        "Martinetes2/81-M2_SDonday.notes.Corrected",
+        "91ea7f06be26a5a328ca43bbbd5d5307"
+      ]
+    },
+    "64-M2_Barullo": {
+      "audio": [
+        "Martinetes2/64-M2_Barullo.wav",
+        "14a2b4be87a848eca9b7fb72d72b64b3"
+      ],
+      "f0": [
+        "Martinetes2/64-M2_Barullo.f0.Corrected",
+        "938ca6a04d50ea148175433bdc3205f8"
+      ],
+      "notes": [
+        "Martinetes2/64-M2_Barullo.notes.Corrected",
+        "d7e1c806d01fb598aa69b7875236a51e"
+      ]
+    },
+    "73-M2_MMairena": {
+      "audio": [
+        "Martinetes2/73-M2_MMairena.wav",
+        "7a758bf155601910efc1fea8bac386d6"
+      ],
+      "f0": [
+        "Martinetes2/73-M2_MMairena.f0.Corrected",
+        "2ff2bcb8245890610734d2f37b262ee7"
+      ],
+      "notes": [
+        "Martinetes2/73-M2_MMairena.notes.Corrected",
+        "3514f0e2175e471218fffd06e5c730ce"
+      ]
+    },
+    "82-M2_TiaAnicalaPiriniaca": {
+      "audio": [
+        "Martinetes2/82-M2_TiaAnicalaPiriniaca.wav",
+        "6db36f1d108f747633fe8b83f171529c"
+      ],
+      "f0": [
+        "Martinetes2/82-M2_TiaAnicalaPiriniaca.f0.Corrected",
+        "cf8ba481930760243c7a5beeaf761557"
+      ],
+      "notes": [
+        "Martinetes2/82-M2_TiaAnicalaPiriniaca.notes.Corrected",
+        "48bc910d050ce96a2a4526e4708c8cca"
+      ]
+    },
+    "68-M2_ElChaqueta": {
+      "audio": [
+        "Martinetes2/68-M2_ElChaqueta.wav",
+        "e260c0499931a661d872678cfc18a824"
+      ],
+      "f0": [
+        "Martinetes2/68-M2_ElChaqueta.f0.Corrected",
+        "df382e5ce1eb8e53ebf7924f73c60d76"
+      ],
+      "notes": [
+        "Martinetes2/68-M2_ElChaqueta.notes.Corrected",
+        "29135721d8a2ed4fe68c4b1a3776c2e6"
+      ]
+    },
+    "76-M2_MariaSolea": {
+      "audio": [
+        "Martinetes2/76-M2_MariaSolea.wav",
+        "38c75234cd276257a0149f25cb5d9ce5"
+      ],
+      "f0": [
+        "Martinetes2/76-M2_MariaSolea.f0.Corrected",
+        "23314884ce5e6e99fc2025ac08464936"
+      ],
+      "notes": [
+        "Martinetes2/76-M2_MariaSolea.notes.Corrected",
+        "2111a5c06fef08dec7e0b70ecca9d1f4"
+      ]
+    },
+    "80-M2_Rancapinos": {
+      "audio": [
+        "Martinetes2/80-M2_Rancapinos.wav",
+        "9496592e008f18b8ba370e869ce603b4"
+      ],
+      "f0": [
+        "Martinetes2/80-M2_Rancapinos.f0.Corrected",
+        "5be51c3a3d74d018bca7e88c06d2da36"
+      ],
+      "notes": [
+        "Martinetes2/80-M2_Rancapinos.notes.Corrected",
+        "8315c7f3c19e865af9c90372ecb2921e"
+      ]
+    },
+    "63-M2_AMairena": {
+      "audio": [
+        "Martinetes2/63-M2_AMairena.wav",
+        "7e4e7ca0a6c6eb1226c8721e60281a0d"
+      ],
+      "f0": [
+        "Martinetes2/63-M2_AMairena.f0.Corrected",
+        "1df504eb0d095d6bd016ba6c42bfe149"
+      ],
+      "notes": [
+        "Martinetes2/63-M2_AMairena.notes.Corrected",
+        "297d0232cf698ed8e2c1ee6b2b25c275"
+      ]
+    },
+    "79-M2_PSanz": {
+      "audio": [
+        "Martinetes2/79-M2_PSanz.wav",
+        "bc711eeb99414cd96989c555637112eb"
+      ],
+      "f0": [
+        "Martinetes2/79-M2_PSanz.f0.Corrected",
+        "1df5bf8ccd54daafeaab395505d92386"
+      ],
+      "notes": [
+        "Martinetes2/79-M2_PSanz.notes.Corrected",
+        "d4c0e76feb38edbf6e2fe90861988e0b"
+      ]
+    },
+    "70-M2_ElZambo": {
+      "audio": [
+        "Martinetes2/70-M2_ElZambo.wav",
+        "02c8e1c88fd35d2cf773ac18b9358301"
+      ],
+      "f0": [
+        "Martinetes2/70-M2_ElZambo.f0.Corrected",
+        "0ecc726c9f6a8850ae4fd5f4158e4733"
+      ],
+      "notes": [
+        "Martinetes2/70-M2_ElZambo.notes.Corrected",
+        "478ac13c51de9023059430e34208345d"
+      ]
+    },
+    "75-M2_ManolilloelHerrao": {
+      "audio": [
+        "Martinetes2/75-M2_ManolilloelHerrao.wav",
+        "37303159a95937ee1cc0f3428733f1a3"
+      ],
+      "f0": [
+        "Martinetes2/75-M2_ManolilloelHerrao.f0.Corrected",
+        "27cb611372affa2596427260f2513f40"
+      ],
+      "notes": [
+        "Martinetes2/75-M2_ManolilloelHerrao.notes.Corrected",
+        "cb5e480e0f14ffa21286b32b0bd6bcca"
+      ]
+    },
+    "65-M2_Chocolate": {
+      "audio": [
+        "Martinetes2/65-M2_Chocolate.wav",
+        "7889e4c182864a03d594169d7463f724"
+      ],
+      "f0": [
+        "Martinetes2/65-M2_Chocolate.f0.Corrected",
+        "5ab9d38b3047b0b269b04cd24ddc0280"
+      ],
+      "notes": [
+        "Martinetes2/65-M2_Chocolate.notes.Corrected",
+        "2803982c9412238effc9c19cb4aab3d8"
+      ]
+    },
+    "72-M2_MAgujetas": {
+      "audio": [
+        "Martinetes2/72-M2_MAgujetas.wav",
+        "8ea6fd478243290b6d380e9639290f68"
+      ],
+      "f0": [
+        "Martinetes2/72-M2_MAgujetas.f0.Corrected",
+        "20d7b76afabef4ae6f6cc4a331da193a"
+      ],
+      "notes": [
+        "Martinetes2/72-M2_MAgujetas.notes.Corrected",
+        "215af02f5f773b660e14504d93f71533"
+      ]
+    },
+    "77-M2_Matrona": {
+      "audio": [
+        "Martinetes2/77-M2_Matrona.wav",
+        "207abae5dba6491e591d4086e26917f6"
+      ],
+      "f0": [
+        "Martinetes2/77-M2_Matrona.f0.Corrected",
+        "01ca329106336a94cc581041d1eba7c2"
+      ],
+      "notes": [
+        "Martinetes2/77-M2_Matrona.notes.Corrected",
+        "c02a27c0c1734eddabde19b4c36d4fd6"
+      ]
+    },
+    "66-M2_DAgujetas": {
+      "audio": [
+        "Martinetes2/66-M2_DAgujetas.wav",
+        "487dcb1fe38e53e4cfb445ce3a8f0190"
+      ],
+      "f0": [
+        "Martinetes2/66-M2_DAgujetas.f0.Corrected",
+        "c2d44f63a46cccf11dd0327ae79b1d1d"
+      ],
+      "notes": [
+        "Martinetes2/66-M2_DAgujetas.notes.Corrected",
+        "8df8094f5f0d2c41a3b059b65490062d"
+      ]
+    },
+    "71-M2_EnriqueSotoSordera": {
+      "audio": [
+        "Martinetes2/71-M2_EnriqueSotoSordera.wav",
+        "36b666a8bf3e608eee9e8de51005c65c"
+      ],
+      "f0": [
+        "Martinetes2/71-M2_EnriqueSotoSordera.f0.Corrected",
+        "b8ce9d7997a3d42786bb6d65f751ae6b"
+      ],
+      "notes": [
+        "Martinetes2/71-M2_EnriqueSotoSordera.notes.Corrected",
+        "aab9567f793f4bc56435416012ffab48"
+      ]
+    },
+    "32-M1_PdeLucia": {
+      "audio": [
+        "Martinetes1/32-M1_PdeLucia.wav",
+        "a60b6c1084609eea2b5241f7744d3e3e"
+      ],
+      "f0": [
+        "Martinetes1/32-M1_PdeLucia.f0.Corrected",
+        "ef1146f9082f4ca10927f806032e2138"
+      ],
+      "notes": [
+        "Martinetes1/32-M1_PdeLucia.notes.Corrected",
+        "3dbb79c6251adff3aeefa4d8b623ace9"
+      ]
+    },
+    "29-M1_MSimon-Martinete": {
+      "audio": [
+        "Martinetes1/29-M1_MSimon-Martinete.wav",
+        "e401e384b23f9a7883d32ec26a33bd60"
+      ],
+      "f0": [
+        "Martinetes1/29-M1_MSimon-Martinete.f0.Corrected",
+        "d5dfc9f808991d18119fd9aad8b3a42e"
+      ],
+      "notes": [
+        "Martinetes1/29-M1_MSimon-Martinete.notes.Corrected",
+        "1accab3bf5bb9149e0294f032d1f0217"
+      ]
+    },
+    "35-M1_Turronero": {
+      "audio": [
+        "Martinetes1/35-M1_Turronero.wav",
+        "81b997a865db0781d44a6cd000034b04"
+      ],
+      "f0": [
+        "Martinetes1/35-M1_Turronero.f0.Corrected",
+        "8894901093c3fb5d6eacc377e040a79e"
+      ],
+      "notes": [
+        "Martinetes1/35-M1_Turronero.notes.Corrected",
+        "0a52eceb28cd3292f25c83dcec16e37d"
+      ]
+    },
+    "43-M1_ElChocolate": {
+      "audio": [
+        "Martinetes1/43-M1_ElChocolate.wav",
+        "d7e711febf0b8892b44ff06c4dd1bb8f"
+      ],
+      "f0": [
+        "Martinetes1/43-M1_ElChocolate.f0.Corrected",
+        "5ed6ec60368f0dc30147e547b36092f0"
+      ],
+      "notes": [
+        "Martinetes1/43-M1_ElChocolate.notes.Corrected",
+        "dc21031c586023cfc7f1e99c1921ce24"
+      ]
+    },
+    "51-M1_JuanTalega": {
+      "audio": [
+        "Martinetes1/51-M1_JuanTalega.wav",
+        "f9fdb85296133a0cdb3cbf4775a728ad"
+      ],
+      "f0": [
+        "Martinetes1/51-M1_JuanTalega.f0.Corrected",
+        "35759a25a35c9c24b9dd7a845d9e98a6"
+      ],
+      "notes": [
+        "Martinetes1/51-M1_JuanTalega.notes.Corrected",
+        "5a9e4af78b253a68c205dba48386e6ab"
+      ]
+    },
+    "48-M1_JuanTalega": {
+      "audio": [
+        "Martinetes1/48-M1_JuanTalega.wav",
+        "885f7267aa0ce5687580872205498c56"
+      ],
+      "f0": [
+        "Martinetes1/48-M1_JuanTalega.f0.Corrected",
+        "250bd290851a555a67f0a913d0a0a025"
+      ],
+      "notes": [
+        "Martinetes1/48-M1_JuanTalega.notes.Corrected",
+        "120251c176ab9cc0c4dee640d2de8b9d"
+      ]
+    },
+    "24-M1_AMairena-Martinete": {
+      "audio": [
+        "Martinetes1/24-M1_AMairena-Martinete.wav",
+        "3816466eae3518c7189292016a4d1670"
+      ],
+      "f0": [
+        "Martinetes1/24-M1_AMairena-Martinete.f0.Corrected",
+        "ed9d27e2b3294efd60361b2681904c28"
+      ],
+      "notes": [
+        "Martinetes1/24-M1_AMairena-Martinete.notes.Corrected",
+        "4e68663c30ff4fc51e3bd96c1b49d5ff"
+      ]
+    },
+    "59-M1_Pedrosanz": {
+      "audio": [
+        "Martinetes1/59-M1_Pedrosanz.wav",
+        "70fa61b4b49cf6ae9851731020ba2684"
+      ],
+      "f0": [
+        "Martinetes1/59-M1_Pedrosanz.f0.Corrected",
+        "f5815b0bc903b91d84ef1cad0faa125a"
+      ],
+      "notes": [
+        "Martinetes1/59-M1_Pedrosanz.notes.Corrected",
+        "a3703ef5c209e7a17a2b1d5f40f5d0b9"
+      ]
+    },
+    "56-M1_NinioGloria": {
+      "audio": [
+        "Martinetes1/56-M1_NinioGloria.wav",
+        "bbf0216a3543d310c77fdb19cf9340f3"
+      ],
+      "f0": [
+        "Martinetes1/56-M1_NinioGloria.f0.Corrected",
+        "be6599fd32dd49fef36e1ea3683fb206"
+      ],
+      "notes": [
+        "Martinetes1/56-M1_NinioGloria.notes.Corrected",
+        "f5b045a381aeea84719eac5fb5dd532a"
+      ]
+    },
+    "50-M1_JuanTalega": {
+      "audio": [
+        "Martinetes1/50-M1_JuanTalega.wav",
+        "f52770875163b7eb8fb41e0c1c6b3ea0"
+      ],
+      "f0": [
+        "Martinetes1/50-M1_JuanTalega.f0.Corrected",
+        "8e4aaeaca5a26f17409b9239ce04b60f"
+      ],
+      "notes": [
+        "Martinetes1/50-M1_JuanTalega.notes.Corrected",
+        "3bba8f5b70be2c63c59062d28d04b60f"
+      ]
+    },
+    "37-M1_AntonioAgujetas": {
+      "audio": [
+        "Martinetes1/37-M1_AntonioAgujetas.wav",
+        "50b7c0f3e4859404197e81205d04f9b2"
+      ],
+      "f0": [
+        "Martinetes1/37-M1_AntonioAgujetas.f0.Corrected",
+        "ef20fbd1dc4e3f0119afb05fe3c24975"
+      ],
+      "notes": [
+        "Martinetes1/37-M1_AntonioAgujetas.notes.Corrected",
+        "c5e0708a880bee32f1204edba677152c"
+      ]
+    },
+    "49-M1_JuanTalega": {
+      "audio": [
+        "Martinetes1/49-M1_JuanTalega.wav",
+        "ccdbd739bf167815f388e7abce1a087e"
+      ],
+      "f0": [
+        "Martinetes1/49-M1_JuanTalega.f0.Corrected",
+        "0a32143156624fbfd5db5cb5eb217657"
+      ],
+      "notes": [
+        "Martinetes1/49-M1_JuanTalega.notes.Corrected",
+        "7d70d032697f9b662395702d33c44c7f"
+      ]
+    },
+    "26-M1_Chocolate-Martinete": {
+      "audio": [
+        "Martinetes1/26-M1_Chocolate-Martinete.wav",
+        "52937bcfdf505905fb2d672697a0ed20"
+      ],
+      "f0": [
+        "Martinetes1/26-M1_Chocolate-Martinete.f0.Corrected",
+        "3ae61911e909575623d0378daf04e706"
+      ],
+      "notes": [
+        "Martinetes1/26-M1_Chocolate-Martinete.notes.Corrected",
+        "334b5d26b92c155ee23bcef43fcbba06"
+      ]
+    },
+    "40-M1_CurroMairena": {
+      "audio": [
+        "Martinetes1/40-M1_CurroMairena.wav",
+        "eb93da3858f97b5d0b382fa772fc0161"
+      ],
+      "f0": [
+        "Martinetes1/40-M1_CurroMairena.f0.Corrected",
+        "3be0a052a39ddc502103b2e9125b3b68"
+      ],
+      "notes": [
+        "Martinetes1/40-M1_CurroMairena.notes.Corrected",
+        "5877a8e3822c9df0b53a491d5af70186"
+      ]
+    },
+    "33-M1_Talegon": {
+      "audio": [
+        "Martinetes1/33-M1_Talegon.wav",
+        "ddeabed5c426a7e2093c2f3ece471bc8"
+      ],
+      "f0": [
+        "Martinetes1/33-M1_Talegon.f0.Corrected",
+        "e62b0b316497f08298243c41a890e6fe"
+      ],
+      "notes": [
+        "Martinetes1/33-M1_Talegon.notes.Corrected",
+        "5bbd30e2392a1a4df253e8ea9aa3388a"
+      ]
+    },
+    "38-M1_AntonioMairena": {
+      "audio": [
+        "Martinetes1/38-M1_AntonioMairena.wav",
+        "7094ecbd83c2bb6670982760e4ab061d"
+      ],
+      "f0": [
+        "Martinetes1/38-M1_AntonioMairena.f0.Corrected",
+        "3dfd2827f73a55c7d09ee6f1c342aeb5"
+      ],
+      "notes": [
+        "Martinetes1/38-M1_AntonioMairena.notes.Corrected",
+        "fa404913d8cecc2e987d47ca8b442f45"
+      ]
+    },
+    "46-M1_EnriqueMorente": {
+      "audio": [
+        "Martinetes1/46-M1_EnriqueMorente.wav",
+        "f17c60c02cd40f6793e4807d87049196"
+      ],
+      "f0": [
+        "Martinetes1/46-M1_EnriqueMorente.f0.Corrected",
+        "cbbea4479ee9522811faa0471f1ab47e"
+      ],
+      "notes": [
+        "Martinetes1/46-M1_EnriqueMorente.notes.Corrected",
+        "0a7ce03e12bfde59da9de04a2d0f80dc"
+      ]
+    },
+    "52-M1_ManueldeAngustias": {
+      "audio": [
+        "Martinetes1/52-M1_ManueldeAngustias.wav",
+        "a1af33ec4edb8994f5977199f5f6672f"
+      ],
+      "f0": [
+        "Martinetes1/52-M1_ManueldeAngustias.f0.Corrected",
+        "6c596b457523ca0c1a1407a0f6ff0e28"
+      ],
+      "notes": [
+        "Martinetes1/52-M1_ManueldeAngustias.notes.Corrected",
+        "a4a5df6d01265b857c03362ba482d18a"
+      ]
+    },
+    "44-M1_ElIndioGitano": {
+      "audio": [
+        "Martinetes1/44-M1_ElIndioGitano.wav",
+        "193b401871ceedba22758228b1647176"
+      ],
+      "f0": [
+        "Martinetes1/44-M1_ElIndioGitano.f0.Corrected",
+        "2ecc482d4e72d8747147a6718e605fb1"
+      ],
+      "notes": [
+        "Martinetes1/44-M1_ElIndioGitano.notes.Corrected",
+        "06d4f1e57c6c0e28f382a745dc7e8f3c"
+      ]
+    },
+    "53-M1_MiguelVargas": {
+      "audio": [
+        "Martinetes1/53-M1_MiguelVargas.wav",
+        "3f558c0f9a11b2949a513fa7e9e63bd0"
+      ],
+      "f0": [
+        "Martinetes1/53-M1_MiguelVargas.f0.Corrected",
+        "5124743f7e996ebe0f064746dcf7ec63"
+      ],
+      "notes": [
+        "Martinetes1/53-M1_MiguelVargas.notes.Corrected",
+        "d8fb3a6be9e76071540f7fd523887749"
+      ]
+    },
+    "39-M1_Chaqueta": {
+      "audio": [
+        "Martinetes1/39-M1_Chaqueta.wav",
+        "4d84ca4f9a879431d9f7262fa24ecb50"
+      ],
+      "f0": [
+        "Martinetes1/39-M1_Chaqueta.f0.Corrected",
+        "e4bc9b18fa630a2f88ec340bc66a5352"
+      ],
+      "notes": [
+        "Martinetes1/39-M1_Chaqueta.notes.Corrected",
+        "559c46ee91570ca8731ade881db13422"
+      ]
+    },
+    "41-M1_DiegoClavel": {
+      "audio": [
+        "Martinetes1/41-M1_DiegoClavel.wav",
+        "0f314e570284c9abb2fd50753c4249d7"
+      ],
+      "f0": [
+        "Martinetes1/41-M1_DiegoClavel.f0.Corrected",
+        "8425fe2c4f49f32acd66af2991a34a6d"
+      ],
+      "notes": [
+        "Martinetes1/41-M1_DiegoClavel.notes.Corrected",
+        "22bd94ba4d79f8220dd653cee91a4942"
+      ]
+    },
+    "61-M1_TioMollino": {
+      "audio": [
+        "Martinetes1/61-M1_TioMollino.wav",
+        "320c16a27d2b4703ee74cdd3616d7464"
+      ],
+      "f0": [
+        "Martinetes1/61-M1_TioMollino.f0.Corrected",
+        "38a6d7bf82ccdaf58be82475ea17aadf"
+      ],
+      "notes": [
+        "Martinetes1/61-M1_TioMollino.notes.Corrected",
+        "60880bfba4500d7b7686f36ff59d9f32"
+      ]
+    },
+    "47-M1_JoseMendez": {
+      "audio": [
+        "Martinetes1/47-M1_JoseMendez.wav",
+        "ebcd28132d44bcec8ba8ea4b4f66bbe2"
+      ],
+      "f0": [
+        "Martinetes1/47-M1_JoseMendez.f0.Corrected",
+        "2fb04b896b0d6e9398da3887e1192e58"
+      ],
+      "notes": [
+        "Martinetes1/47-M1_JoseMendez.notes.Corrected",
+        "9e14445a8cc52a1c690809c19c7b4ec5"
+      ]
+    },
+    "28-M1_JHeredia-Martinete": {
+      "audio": [
+        "Martinetes1/28-M1_JHeredia-Martinete.wav",
+        "b1cfbc542918589f6095544248c40839"
+      ],
+      "f0": [
+        "Martinetes1/28-M1_JHeredia-Martinete.f0.Corrected",
+        "d5dfc9f808991d18119fd9aad8b3a42e"
+      ],
+      "notes": [
+        "Martinetes1/28-M1_JHeredia-Martinete.notes.Corrected",
+        "6bf3868f1ad643b64eb80e291623b50b"
+      ]
+    },
+    "57-M1_PacoelLobo": {
+      "audio": [
+        "Martinetes1/57-M1_PacoelLobo.wav",
+        "e6b656cf8cd1723fdd392302de055d40"
+      ],
+      "f0": [
+        "Martinetes1/57-M1_PacoelLobo.f0.Corrected",
+        "c1fdf28a6adb78e2bae95941709d3b1a"
+      ],
+      "notes": [
+        "Martinetes1/57-M1_PacoelLobo.notes.Corrected",
+        "19dd1e9aa8f2cff0a626f4b8fa8603f2"
+      ]
+    },
+    "25-M1_ChanoLobato-Martinete": {
+      "audio": [
+        "Martinetes1/25-M1_ChanoLobato-Martinete.wav",
+        "a2f2c9be5aa65482446354e702a82d40"
+      ],
+      "f0": [
+        "Martinetes1/25-M1_ChanoLobato-Martinete.f0.Corrected",
+        "24d344eff7b355333f9086dc6b35e68b"
+      ],
+      "notes": [
+        "Martinetes1/25-M1_ChanoLobato-Martinete.notes.Corrected",
+        "26531992b2821b8849d8344e07a74740"
+      ]
+    },
+    "27-M1_JAlmaden-Martinete": {
+      "audio": [
+        "Martinetes1/27-M1_JAlmaden-Martinete.wav",
+        "c7cffbeb40f535c32f8a648c72da9ec1"
+      ],
+      "f0": [
+        "Martinetes1/27-M1_JAlmaden-Martinete.f0.Corrected",
+        "0e68e8b42691ac3dfc873c3f1e7a4bf0"
+      ],
+      "notes": [
+        "Martinetes1/27-M1_JAlmaden-Martinete.notes.Corrected",
+        "70845fdc467ac6eb4af8a4f09bf735e7"
+      ]
+    },
+    "34-M1_TPabon": {
+      "audio": [
+        "Martinetes1/34-M1_TPabon.wav",
+        "a95a62977384b3be1b064d0464e206de"
+      ],
+      "f0": [
+        "Martinetes1/34-M1_TPabon.f0.Corrected",
+        "c60abb6bef818c90bf484d6f945f427a"
+      ],
+      "notes": [
+        "Martinetes1/34-M1_TPabon.notes.Corrected",
+        "a7824fa905261df2a82acce4eee4c782"
+      ]
+    },
+    "36-M1_AMairena": {
+      "audio": [
+        "Martinetes1/36-M1_AMairena.wav",
+        "06efd44a3da6d1cc0b1efd167bf94884"
+      ],
+      "f0": [
+        "Martinetes1/36-M1_AMairena.f0.Corrected",
+        "232c3184ac041e8c259529375c192c5a"
+      ],
+      "notes": [
+        "Martinetes1/36-M1_AMairena.notes.Corrected",
+        "1f6f8a858cf59a246bde8e2c5005ad89"
+      ]
+    },
+    "54-M1_Mijitahijo": {
+      "audio": [
+        "Martinetes1/54-M1_Mijitahijo.wav",
+        "bdb6b96825fc4cc59032852c9a3deabf"
+      ],
+      "f0": [
+        "Martinetes1/54-M1_Mijitahijo.f0.Corrected",
+        "5096168ae7160b9f9f1495de72cd0ba4"
+      ],
+      "notes": [
+        "Martinetes1/54-M1_Mijitahijo.notes.Corrected",
+        "913939eb6bc674b72dfd9acf25fe03b7"
+      ]
+    },
+    "45-M1_ElNegrodelPuerto": {
+      "audio": [
+        "Martinetes1/45-M1_ElNegrodelPuerto.wav",
+        "e848e1004b5663ad164e3e0fc0d4b38e"
+      ],
+      "f0": [
+        "Martinetes1/45-M1_ElNegrodelPuerto.f0.Corrected",
+        "c195c4e2663f8a965a0e1c8fef10c707"
+      ],
+      "notes": [
+        "Martinetes1/45-M1_ElNegrodelPuerto.notes.Corrected",
+        "d7b68a860125865ace7ca21a4bb97a1a"
+      ]
+    },
+    "31-M1_Naranjito": {
+      "audio": [
+        "Martinetes1/31-M1_Naranjito.wav",
+        "ded40666fb200aef32d760364e6c9d87"
+      ],
+      "f0": [
+        "Martinetes1/31-M1_Naranjito.f0.Corrected",
+        "ee148860c7501e31f053d6a40d20ba4f"
+      ],
+      "notes": [
+        "Martinetes1/31-M1_Naranjito.notes.Corrected",
+        "cdb18bdb84615d26d86c7aa20c3a9432"
+      ]
+    },
+    "30-M1_MVargas-Martinete": {
+      "audio": [
+        "Martinetes1/30-M1_MVargas-Martinete.wav",
+        "71aeb21f2ba97d8673295a2aa6ce5245"
+      ],
+      "f0": [
+        "Martinetes1/30-M1_MVargas-Martinete.f0.Corrected",
+        "dba162dbc5e4d2cb3038be6358d11ea9"
+      ],
+      "notes": [
+        "Martinetes1/30-M1_MVargas-Martinete.notes.Corrected",
+        "28662ea9e1e2f17e2f0877a650618756"
+      ]
+    },
+    "58-M1_PansequitoTriana": {
+      "audio": [
+        "Martinetes1/58-M1_PansequitoTriana.wav",
+        "fedb048947a937d25e94fb82b66f5776"
+      ],
+      "f0": [
+        "Martinetes1/58-M1_PansequitoTriana.f0.Corrected",
+        "d76eb069558fb4baa7697009cdc357f3"
+      ],
+      "notes": [
+        "Martinetes1/58-M1_PansequitoTriana.notes.Corrected",
+        "5b05248ab82599d0f154297d129b8a73"
+      ]
+    },
+    "42-M1_DiegoRubichi": {
+      "audio": [
+        "Martinetes1/42-M1_DiegoRubichi.wav",
+        "189564a793a20feb85217de38d8c5972"
+      ],
+      "f0": [
+        "Martinetes1/42-M1_DiegoRubichi.f0.Corrected",
+        "1006e66fbfbe60615501ada938604805"
+      ],
+      "notes": [
+        "Martinetes1/42-M1_DiegoRubichi.notes.Corrected",
+        "6ce0c992ef7eae03bc3558a2d126b731"
+      ]
+    },
+    "03-D_Chocolate": {
+      "audio": [
+        "Deblas/03-D_Chocolate.wav",
+        "b0ef852fb0e640405050c3952432852c"
+      ],
+      "f0": [
+        "Deblas/03-D_Chocolate.f0.Corrected",
+        "bd0eb78094a2ef99c32e65f118ee2fb3"
+      ],
+      "notes": [
+        "Deblas/03-D_Chocolate.notes.Corrected",
+        "d437835ab77c0cb26d3307bf567bb68c"
+      ]
+    },
+    "21-D_RafaelRomeroElGallina": {
+      "audio": [
+        "Deblas/21-D_RafaelRomeroElGallina.wav",
+        "ea1c4f610eecf231add404cf97e8dfe9"
+      ],
+      "f0": [
+        "Deblas/21-D_RafaelRomeroElGallina.f0.Corrected",
+        "f56c5445879bbd9d5065a37994b93cff"
+      ],
+      "notes": [
+        "Deblas/21-D_RafaelRomeroElGallina.notes.Corrected",
+        "71b763d1a91cf9cc7b9b77a633c1515a"
+      ]
+    },
+    "14-D_AMairena": {
+      "audio": [
+        "Deblas/14-D_AMairena.wav",
+        "b8238219795e1e9354b79a6f26ac7d4f"
+      ],
+      "f0": [
+        "Deblas/14-D_AMairena.f0.Corrected",
+        "8b0e641fb15344138663347d463b44fe"
+      ],
+      "notes": [
+        "Deblas/14-D_AMairena.notes.Corrected",
+        "798dd5bc72aece7c4654ab7f1b651416"
+      ]
+    },
+    "01-D_AMairena": {
+      "audio": [
+        "Deblas/01-D_AMairena.wav",
+        "16bb4018062ed0e99e60dbbd2d4bf5c7"
+      ],
+      "f0": [
+        "Deblas/01-D_AMairena.f0.Corrected",
+        "4add95af47286e40657bcbbf21c57dc8"
+      ],
+      "notes": [
+        "Deblas/01-D_AMairena.notes.Corrected",
+        "a827c3bdfb98ee851ffb3a008dd08dde"
+      ]
+    },
+    "06-D_MSimon": {
+      "audio": [
+        "Deblas/06-D_MSimon.wav",
+        "47b322d61ab43fcc5b2e09bafc6a34ad"
+      ],
+      "f0": [
+        "Deblas/06-D_MSimon.f0.Corrected",
+        "e2c1435b1f7c9309ce7660d79013ed06"
+      ],
+      "notes": [
+        "Deblas/06-D_MSimon.notes.Corrected",
+        "4a7fefb962d38cc7b434e4aeff22096c"
+      ]
+    },
+    "16-D_JMerce": {
+      "audio": [
+        "Deblas/16-D_JMerce.wav",
+        "40adb9066aa431ddf0a9b5f9c532313e"
+      ],
+      "f0": [
+        "Deblas/16-D_JMerce.f0.Corrected",
+        "d00af33adab291d87d0ebfc6d2ebc362"
+      ],
+      "notes": [
+        "Deblas/16-D_JMerce.notes.Corrected",
+        "825ec629d6de1997d53258023238d7c0"
+      ]
+    },
+    "07-D_MVargas": {
+      "audio": [
+        "Deblas/07-D_MVargas.wav",
+        "90dac9386f3e55289dd352cd6a952d97"
+      ],
+      "f0": [
+        "Deblas/07-D_MVargas.f0.Corrected",
+        "36dcf4b4fa4d545873747582837723e5"
+      ],
+      "notes": [
+        "Deblas/07-D_MVargas.notes.Corrected",
+        "5341904024c270ab37f815180211065f"
+      ]
+    },
+    "04-D_JAlmaden": {
+      "audio": [
+        "Deblas/04-D_JAlmaden.wav",
+        "426332eba97b4179d30d355d2b1fadb8"
+      ],
+      "f0": [
+        "Deblas/04-D_JAlmaden.f0.Corrected",
+        "85014f1319b33d11503d3d152edbe1f8"
+      ],
+      "notes": [
+        "Deblas/04-D_JAlmaden.notes.Corrected",
+        "4497245e5916cd34a522d3290c993591"
+      ]
+    },
+    "09-D_PdeLucia": {
+      "audio": [
+        "Deblas/09-D_PdeLucia.wav",
+        "ac91792116fbee2083ef149ed9e92951"
+      ],
+      "f0": [
+        "Deblas/09-D_PdeLucia.f0.Corrected",
+        "03873a93b8e342a0ce5b5163469aa74c"
+      ],
+      "notes": [
+        "Deblas/09-D_PdeLucia.notes.Corrected",
+        "c0c594cd110b0780e7e5a083ed594a71"
+      ]
+    },
+    "11-D_TPabon": {
+      "audio": [
+        "Deblas/11-D_TPabon.wav",
+        "bdfb8a1cc54388e125b43f5218b97c40"
+      ],
+      "f0": [
+        "Deblas/11-D_TPabon.f0.Corrected",
+        "0b4bfce1e1318b408321c67b2301cde5"
+      ],
+      "notes": [
+        "Deblas/11-D_TPabon.notes.Corrected",
+        "d2a6af1078bf8a0bf5383d8d49dfb3ba"
+      ]
+    },
+    "08-D_Naranjito": {
+      "audio": [
+        "Deblas/08-D_Naranjito.wav",
+        "3a3646386814c73c77ff680423d71995"
+      ],
+      "f0": [
+        "Deblas/08-D_Naranjito.f0.Corrected",
+        "d659d249dea4cb77ebde890ec843e23c"
+      ],
+      "notes": [
+        "Deblas/08-D_Naranjito.notes.Corrected",
+        "eda707a5f2ab501a5ef49bcd073043c8"
+      ]
+    },
+    "05-D_JHeredia": {
+      "audio": [
+        "Deblas/05-D_JHeredia.wav",
+        "27e8a40eb7e2af3db17d33f308a48459"
+      ],
+      "f0": [
+        "Deblas/05-D_JHeredia.f0.Corrected",
+        "9220e5feadef7d42de75ba698d12a8af"
+      ],
+      "notes": [
+        "Deblas/05-D_JHeredia.notes.Corrected",
+        "50173a7270aba2120b82a0cb51f229f5"
+      ]
+    },
+    "18-D_DiegoClavel": {
+      "audio": [
+        "Deblas/18-D_DiegoClavel.wav",
+        "0a763ca08829d920c7e3d18581dc21f8"
+      ],
+      "f0": [
+        "Deblas/18-D_DiegoClavel.f0.Corrected",
+        "01601de93d562339d8109f2fc7ba2a0d"
+      ],
+      "notes": [
+        "Deblas/18-D_DiegoClavel.notes.Corrected",
+        "2623b323ea651ef1f1bc58b88185edfb"
+      ]
+    },
+    "02-D_ChanoLobato": {
+      "audio": [
+        "Deblas/02-D_ChanoLobato.wav",
+        "7913926d4a709327eaa3576eb4fff37f"
+      ],
+      "f0": [
+        "Deblas/02-D_ChanoLobato.f0.Corrected",
+        "ef76cd0c12e70b193ad1f513807b8bdf"
+      ],
+      "notes": [
+        "Deblas/02-D_ChanoLobato.notes.Corrected",
+        "52f1b0710236eedcd540a3bfc6c13639"
+      ]
+    },
+    "12-D_Turronero": {
+      "audio": [
+        "Deblas/12-D_Turronero.wav",
+        "e1c9cb45048102d3cf310e126f9641f6"
+      ],
+      "f0": [
+        "Deblas/12-D_Turronero.f0.Corrected",
+        "290e1ab97263fbbc4857a081fc86039d"
+      ],
+      "notes": [
+        "Deblas/12-D_Turronero.notes.Corrected",
+        "6865666e721a9ad64d5ac55a16ff7106"
+      ]
+    },
+    "10-D_TalegondeCordoba": {
+      "audio": [
+        "Deblas/10-D_TalegondeCordoba.wav",
+        "bf179bfae25b055f1e8f1bf6e7b494e5"
+      ],
+      "f0": [
+        "Deblas/10-D_TalegondeCordoba.f0.Corrected",
+        "a42ee82ba56abbd8596f207dda29f6a5"
+      ],
+      "notes": [
+        "Deblas/10-D_TalegondeCordoba.notes.Corrected",
+        "f7d3ea0cb779706461bb204f60b089fa"
+      ]
+    }
+  },
+  "metadata": {
+    "TONAS-Metadata": [
+      "TONAS-Metadata.txt",
+      "26f2387b99e51890d39a632eb7ed58a4"
+    ]
+  }
+}
