@@ -268,7 +268,7 @@ def extractall_unicode(zfile, out_dir):
         else:
             filename = filename.decode(errors="ignore")
 
-        disk_file_name = os.path.join(out_dir, name)
+        disk_file_name = os.path.join(out_dir, filename)
 
         dir_name = os.path.dirname(disk_file_name)
         if not os.path.exists(dir_name):
