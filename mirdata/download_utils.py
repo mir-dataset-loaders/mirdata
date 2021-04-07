@@ -251,17 +251,17 @@ def extractall_unicode(zfile, out_dir):
         name = m.filename
         try:
             ### non-utf encoding
-            filename = name.encode('cp437')
+            filename = name.encode("cp437")
         except UnicodeEncodeError:
             ### utf encoding
-            filename = name.encode('utf8')
+            filename = name.encode("utf8")
 
         ### check for irmas filename encoding
         if filename.decode() != name.encode("utf8").decode():
             filename = name.encode("cp437")
 
         ### detect encoding
-        encoding = chardet.detect(filename)['encoding']
+        encoding = chardet.detect(filename)["encoding"]
         ### decode with the encoding and ignore errors in filename
         filename = filename.decode(encoding, errors="ignore")
 
@@ -274,6 +274,7 @@ def extractall_unicode(zfile, out_dir):
         if not os.path.isdir(disk_file_name):
             with open(disk_file_name, "wb") as fd:
                 fd.write(data)
+
 
 def unzip(zip_path, cleanup):
     """Unzip a zip file inside it's current directory.
