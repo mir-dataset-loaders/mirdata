@@ -187,6 +187,13 @@ phenicx_anechoic
    :inherited-members:
 
 
+queen
+^^^^^^^
+
+.. automodule:: mirdata.datasets.queen
+   :members:
+   
+
 rwc_classical
 ^^^^^^^^^^^^^
 
