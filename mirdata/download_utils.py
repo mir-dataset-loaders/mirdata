@@ -263,7 +263,10 @@ def extractall_unicode(zfile, out_dir):
         ### detect encoding
         encoding = chardet.detect(filename)["encoding"]
         ### decode with the encoding and ignore errors in filename
-        filename = filename.decode(encoding, errors="ignore")
+        if encoding is not None:
+            filename = filename.decode(encoding, errors="ignore")
+        else:
+            filename = filename.decode(errors="ignore")
 
         disk_file_name = os.path.join(out_dir, name)
 
