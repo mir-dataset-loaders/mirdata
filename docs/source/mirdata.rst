@@ -258,6 +258,14 @@ tonality_classicaldb
    :inherited-members:
 
 
+tonas
+^^^^^
+
+.. automodule:: mirdata.datasets.tonas
+   :members:
+   :inherited-members:
+
+
 Core
 ----
 
