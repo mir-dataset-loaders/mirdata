@@ -34,6 +34,7 @@ CUSTOM_TEST_TRACKS = {
     "saraga_carnatic": "116_Bhuvini_Dasudane",
     "saraga_hindustani": "59_Bairagi",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
+    "tonas": "01-D_AMairena",
 }
 
 REMOTE_DATASETS = {

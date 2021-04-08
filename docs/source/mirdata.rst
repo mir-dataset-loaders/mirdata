@@ -187,6 +187,13 @@ phenicx_anechoic
    :inherited-members:
 
 
+queen
+^^^^^^^
+
+.. automodule:: mirdata.datasets.queen
+   :members:
+   
+
 rwc_classical
 ^^^^^^^^^^^^^
 
@@ -247,6 +254,14 @@ tonality_classicaldb
 ^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.tonality_classicaldb
+   :members:
+   :inherited-members:
+
+
+tonas
+^^^^^
+
+.. automodule:: mirdata.datasets.tonas
    :members:
    :inherited-members:
 
