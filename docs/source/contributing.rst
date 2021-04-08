@@ -11,7 +11,7 @@ your contribution, you can always submit an issue or open a discussion in the re
 - `Issue Tracker <https://github.com/mir-dataset-loaders/mirdata/issues>`_
 - `Source Code <https://github.com/mir-dataset-loaders/mirdata>`_
 
-To reduce friction, we may make commits on top of contributors PRs. If you do not want us
+To reduce friction, we may make commits on top of contributor's PRs. If you do not want us
 to, please tag your PR with ``please-do-not-edit``.
 
 
@@ -64,9 +64,9 @@ The steps to add a new dataset loader to ``mirdata`` are:
 
 Before starting, check if your dataset falls into one of these non-standard cases:
 
-* Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
-* Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
-* Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
+- Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
+- Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
+- Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
 
 
 .. _create_index:
@@ -268,15 +268,15 @@ To quickstart a new module:
 
 You may find these examples useful as references:
 
-* `A simple, fully downloadable dataset <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py>`_
-* `A dataset which is partially downloadable <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/beatles.py>`_
-* `A dataset with restricted access data <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/medleydb_melody.py#L33>`_
-* `A dataset which uses dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
-* `A dataset which does not use dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
-* `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
-* `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
-* `A dataset with extra dependencies <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/dali.py>`_
-* `A dataset with has multitracks <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/phenicx_anechoic.py>`_
+- `A simple, fully downloadable dataset <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py>`_
+- `A dataset which is partially downloadable <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/beatles.py>`_
+- `A dataset with restricted access data <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/medleydb_melody.py#L33>`_
+- `A dataset which uses dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
+- `A dataset which does not use dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
+- `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
+- `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
+- `A dataset with extra dependencies <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/dali.py>`_
+- `A dataset with has multitracks <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/phenicx_anechoic.py>`_
 
 For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
 
