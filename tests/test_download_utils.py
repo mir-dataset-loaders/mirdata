@@ -331,7 +331,6 @@ def test_extractall_unicode(mocker, mock_download_from_remote, mock_unzip):
         zfile = zipfile.ZipFile(zipf, "r")
         download_utils.extractall_unicode(zfile, os.path.dirname("tests/resources/"))
         zfile.close()
-        # expected_files = ["pic👨‍👩‍👧‍👦🎂.jpg", "Benoît.txt", "Icon"]
         for expected_file in expected_files:
             expected_file_location = os.path.join(
                 "tests", "resources", "utfissue", expected_file
