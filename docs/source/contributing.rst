@@ -65,7 +65,7 @@ The steps to add a new dataset loader to ``mirdata`` are:
 Before starting, check if your dataset falls into one of these non-standard cases:
 
 * Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
-* Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependecies_>`_
+* Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
 * Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
 
 
@@ -476,7 +476,7 @@ Common non-standard cases
 .. _not_open:
 
 Not fully-downloadable datasets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 Sometimes, parts of music datasets are not freely available due to e.g. copyright restrictions. In these
 cases, we aim to make sure that the version used in mirdata is the original one, and not a variant.
@@ -491,7 +491,7 @@ cases, we aim to make sure that the version used in mirdata is the original one,
 .. _extra_dependencies:
 
 Datasets needing extra dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------
 
 If a new dataset requires a library that is not included setup.py, please open an issue.
 In general, if the new libary will be useful for many future datasets, we will add it as a 
@@ -520,7 +520,7 @@ it should be imported as follows:
 .. _multiple_versions:
 
 Datasets with multiple versions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 We do not currently support datasets with multiple versions, however we are actively working on supporting them.
 For the latest progress, see `the open issue <https://github.com/mir-dataset-loaders/mirdata/issues/489>`_.
