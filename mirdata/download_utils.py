@@ -252,12 +252,13 @@ def extractall_unicode(zfile, out_dir):
 
         # if block to deal with irmas and good-sounds archives
         # check if the zip archive does not have the encoding info set
-        if m.flag_bits & ZIP_FILENAME_UTF8_FLAG == 0:
-            # encode-decode filename only if it's different than the original name
-            if filename.encode("cp437").decode(errors="ignore") != filename:
-                filename_bytes = filename.encode("cp437")
-                guessed_encoding = chardet.detect(filename_bytes)["encoding"] or "utf8"
-                filename = filename_bytes.decode(guessed_encoding, "replace")
+        # encode-decode filename only if it's different than the original name
+        if (m.flag_bits & ZIP_FILENAME_UTF8_FLAG == 0) and filename.encode(
+            "cp437"
+        ).decode(errors="ignore") != filename:
+            filename_bytes = filename.encode("cp437")
+            guessed_encoding = chardet.detect(filename_bytes)["encoding"] or "utf8"
+            filename = filename_bytes.decode(guessed_encoding, "replace")
 
         disk_file_name = os.path.join(out_dir, filename)
 
