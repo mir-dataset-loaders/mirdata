@@ -8,6 +8,7 @@ import shutil
 import tarfile
 import urllib
 import zipfile
+import chardet
 
 from tqdm import tqdm
 
@@ -243,13 +244,23 @@ def extractall_unicode(zfile, out_dir):
         out_dir (str): Output folder
 
     """
+    ZIP_FILENAME_UTF8_FLAG = 0x800
+
     for m in zfile.infolist():
         data = zfile.read(m)  # extract zipped data into memory
+        filename = m.filename
 
-        if m.filename.encode("cp437").decode() != m.filename.encode("utf8").decode():
-            disk_file_name = os.path.join(out_dir, m.filename.encode("cp437").decode())
-        else:
-            disk_file_name = os.path.join(out_dir, m.filename)
+        # if block to deal with irmas and good-sounds archives
+        # check if the zip archive does not have the encoding info set
+        # encode-decode filename only if it's different than the original name
+        if (m.flag_bits & ZIP_FILENAME_UTF8_FLAG == 0) and filename.encode(
+            "cp437"
+        ).decode(errors="ignore") != filename:
+            filename_bytes = filename.encode("cp437")
+            guessed_encoding = chardet.detect(filename_bytes)["encoding"] or "utf8"
+            filename = filename_bytes.decode(guessed_encoding, "replace")
+
+        disk_file_name = os.path.join(out_dir, filename)
 
         dir_name = os.path.dirname(disk_file_name)
         if not os.path.exists(dir_name):
