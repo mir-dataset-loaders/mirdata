@@ -494,7 +494,7 @@ Datasets needing extra dependencies
 -----------------------------------
 
 If a new dataset requires a library that is not included setup.py, please open an issue.
-In general, if the new libary will be useful for many future datasets, we will add it as a 
+In general, if the new library will be useful for many future datasets, we will add it as a 
 dependency. If it is specific to one dataset, we will add it as an optional dependency.
 
 To add an optional dependency, add the dataset name as a key in `extras_require` in setup.py,
