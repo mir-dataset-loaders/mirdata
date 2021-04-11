@@ -17,6 +17,7 @@ import csv
 import logging
 import json
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -106,7 +107,7 @@ class Track(core.Track):
     # -- such as a table mapping track ids to composers for the full dataset,
     # -- add them as properties like instead of in the __init__.
     @property
-    def composer(self):
+    def composer(self) -> Optional[str]:
         return self._track_metadata.get("composer")
 
     # -- `annotation` will behave like an attribute, but it will only be loaded
@@ -114,7 +115,7 @@ class Track(core.Track):
     # -- bigger files or for bigger datasets. By default, we make any time
     # -- series data loaded from a file a cached property
     @core.cached_property
-    def annotation(self):
+    def annotation(self) -> Optional[annotations.EventData]:
         """output type: description of output"""
         return load_annotation(self.annotation_path)
 
@@ -122,7 +123,7 @@ class Track(core.Track):
     # -- when someone accesses it and it won't be stored. By default, we make
     # -- any memory heavy information (like audio) properties
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
         return load_audio(self.audio_path)
 
@@ -172,12 +173,12 @@ class MultiTrack(core.MultiTrack):
 
     # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
-    def annotation(self):
+    def annotation(self) -> Optional[annotations.EventData]:
         """output type: description of output"""
         return load_annotation(self.annotation_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
         return load_audio(self.audio_path)
 
@@ -198,7 +199,7 @@ class MultiTrack(core.MultiTrack):
 # -- It also checks if the file exists
 # -- and, if None is passed, None will be returned 
 @io.coerce_to_bytes_io
-def load_audio(fhandle):
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Example audio file.
 
     Args:
@@ -222,7 +223,7 @@ def load_audio(fhandle):
 # -- It also checks if the file exists
 # -- and, if None is passed, None will be returned 
 @io.coerce_to_string_io
-def load_annotation(fhandle):
+def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
 
     # -- because of the decorator, the file is already open
     reader = csv.reader(fhandle, delimiter=' ')
