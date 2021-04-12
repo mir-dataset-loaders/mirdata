@@ -37,6 +37,7 @@ if __name__ == "__main__":
             "jams",
             "requests",
             "pretty_midi >= 0.2.8",
+            "chardet",
         ],
         extras_require={
             "tests": [

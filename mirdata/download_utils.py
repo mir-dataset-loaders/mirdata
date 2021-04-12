@@ -1,6 +1,7 @@
 """Utilities for downloading from the web.
 """
 
+import chardet
 import glob
 import logging
 import os
@@ -8,7 +9,6 @@ import shutil
 import tarfile
 import urllib
 import zipfile
-import chardet
 
 from tqdm import tqdm
 
@@ -244,29 +244,22 @@ def extractall_unicode(zfile, out_dir):
         out_dir (str): Output folder
 
     """
+    ZIP_FILENAME_UTF8_FLAG = 0x800
+
     for m in zfile.infolist():
         data = zfile.read(m)  # extract zipped data into memory
 
-        ### get filename
-        name = m.filename
-        try:
-            ### non-utf encoding
-            filename = name.encode('cp437')
-        except UnicodeEncodeError:
-            ### utf encoding
-            filename = name.encode('utf8')
+        filename = m.filename
 
-        ### check for irmas filename encoding
-        if filename.decode() != name.encode("utf8").decode():
-            filename = name.encode("cp437")
-
-        ### detect encoding
-        encoding = chardet.detect(filename)['encoding']
-        ### decode with the encoding and ignore errors in filename
-        if encoding is not None:
-            filename = filename.decode(encoding, errors="ignore")
-        else:
-            filename = filename.decode(errors="ignore")
+        # if block to deal with irmas and good-sounds archives
+        # check if the zip archive does not have the encoding info set
+        # encode-decode filename only if it's different than the original name
+        if (m.flag_bits & ZIP_FILENAME_UTF8_FLAG == 0) and filename.encode(
+            "cp437"
+        ).decode(errors="ignore") != filename:
+            filename_bytes = filename.encode("cp437")
+            guessed_encoding = chardet.detect(filename_bytes)["encoding"] or "utf8"
+            filename = filename_bytes.decode(guessed_encoding, "replace")
 
         disk_file_name = os.path.join(out_dir, filename)
 
