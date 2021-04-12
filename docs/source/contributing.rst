@@ -11,6 +11,9 @@ your contribution, you can always submit an issue or open a discussion in the re
 - `Issue Tracker <https://github.com/mir-dataset-loaders/mirdata/issues>`_
 - `Source Code <https://github.com/mir-dataset-loaders/mirdata>`_
 
+To reduce friction, we may make commits on top of contributor's PRs. If you do not want us
+to, please tag your PR with ``please-do-not-edit``.
+
 
 Installing mirdata for development purposes
 ###########################################
@@ -58,15 +61,13 @@ The steps to add a new dataset loader to ``mirdata`` are:
 3. `Add tests <add_tests_>`_
 4. `Submit your loader <submit_loader_>`_
 
-**Before starting**, if your dataset **is not fully downloadable** you should:
 
+Before starting, check if your dataset falls into one of these non-standard cases:
 
-1. Contact the mirdata team by opening an issue or PR so we can discuss how to proceed with the closed dataset.
-2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the 
-   dataset creator, or by verifying equivalence with several other copies of the dataset.
+- Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
+- Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
+- Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
 
-To reduce friction, we will make commits on top of contributors PRs by default unless
-the ``please-do-not-edit`` flag is used.
 
 .. _create_index:
 
@@ -267,13 +268,15 @@ To quickstart a new module:
 
 You may find these examples useful as references:
 
-* `A simple, fully downloadable dataset <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py>`_
-* `A dataset which is partially downloadable <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/beatles.py>`_
-* `A dataset with restricted access data <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/medleydb_melody.py#L33>`_
-* `A dataset which uses dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
-* `A dataset which does not use dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
-* `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
-* `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
+- `A simple, fully downloadable dataset <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py>`_
+- `A dataset which is partially downloadable <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/beatles.py>`_
+- `A dataset with restricted access data <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/medleydb_melody.py#L33>`_
+- `A dataset which uses dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
+- `A dataset which does not use dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
+- `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
+- `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
+- `A dataset with extra dependencies <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/dali.py>`_
+- `A dataset with has multitracks <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/phenicx_anechoic.py>`_
 
 For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
 
@@ -466,6 +469,63 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
    If they are passing locally but failing in the check, open an `issue` and we can help debug.
 
 
+Common non-standard cases
+#########################
+
+
+.. _not_open:
+
+Not fully-downloadable datasets
+-------------------------------
+
+Sometimes, parts of music datasets are not freely available due to e.g. copyright restrictions. In these
+cases, we aim to make sure that the version used in mirdata is the original one, and not a variant.
+
+**Before starting** a PR, if a dataset **is not fully downloadable**:
+
+1. Contact the mirdata team by opening an issue or PR so we can discuss how to proceed with the closed dataset.
+2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the 
+   dataset creator, or by verifying equivalence with several other copies of the dataset.
+
+
+.. _extra_dependencies:
+
+Datasets needing extra dependencies
+-----------------------------------
+
+If a new dataset requires a library that is not included setup.py, please open an issue.
+In general, if the new library will be useful for many future datasets, we will add it as a 
+dependency. If it is specific to one dataset, we will add it as an optional dependency.
+
+To add an optional dependency, add the dataset name as a key in `extras_require` in setup.py,
+and list any additional dependencies. When importing these optional dependencies in the dataset
+module, use a try/except clause and log instructions if the user hasn't installed the extra
+requriements. 
+
+For example, if a module called `example_dataset` requires a module called `asdf`, 
+it should be imported as follows:
+
+.. code-block:: python
+
+    try:
+        import asdf
+    except ImportError:
+        logging.error(
+            "In order to use example_dataset you must have asdf installed. "
+            "Please reinstall mirdata using `pip install 'mirdata[example_dataset]'"
+        )
+        raise ImportError
+
+
+.. _multiple_versions:
+
+Datasets with multiple versions
+-------------------------------
+
+We do not currently support datasets with multiple versions, however we are actively working on supporting them.
+For the latest progress, see `the open issue <https://github.com/mir-dataset-loaders/mirdata/issues/489>`_.
+
+
 Documentation
 #############
 
@@ -587,6 +647,9 @@ We use the following libraries for loading data from files:
 +-------------------------+-------------+
 | jams                    | jams        |
 +-------------------------+-------------+
+
+If a file format needed for a dataset is not included in this list, please see the extra dependencies section.
+# TODO
 
 Track Attributes
 ----------------
