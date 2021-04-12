@@ -70,7 +70,7 @@
     Ratings
 
 
-    Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first project prototype. Please read the paper for more detailed information.
+    Some musicians self-rated their performance in a 0-10 goodness scale for the user evaluation of the first project prototype. Please read the paper for more detailed information.
         - id
         - mark: the rate or score.
         - type: the klass of the sound. Related to the tags of the sound.
