@@ -1,0 +1,237 @@
+"""
+Freesound One-Shot Percussive Sounds Dataset Loader
+
+.. admonition:: Dataset Info
+    :class: dropdown
+
+    Introduction:
+    This dataset contains 10254 one-shot (single event) percussive sounds from freesound.org and the
+    corresponding timbral analysis. These were used to train the generative model for "Neural Percussive
+    Synthesis Parameterised by High-Level Timbral Features".
+
+    Dataset Construction:
+    To collect this dataset, the following steps were performed:
+    * Freesound was queried with words associated with percussive instruments, such as "percussion", "kick",
+    "wood" or "clave". Only sounds with less than one second of effective duration were selected.
+    * This stage retrieved some audio clips that contained multiple sound events or that were of low quality.
+    Therefore, we listened to all the retrieved sounds and manually discarded the sounds presenting one of these
+    characteristics. For this, the percussive-annotator was used.
+    * The sounds were then cut or padded to have 1-second length, normalized and downsampled to 16kHz.
+    * Finally, the sounds were analyzed with the AudioCommons Extractor, to obtain the AudioCommons timbral
+    descriptors. This information is contained in the 'analysis' folder.
+
+    Dataset Organisation:
+    The dataset contains two folders and two files in the root directory:
+    * 'one_shot_percussive_sounds' encloses the pre-processed audio files. These are named '<freesound_sound_id>.wav'
+    * 'analysis' holds the AudioCommons analysis files for each of the sounds in the dataset. This analysis is
+    stored as a .json file, named '<freesound_sound_id>_analysis.json', with a key for each of the features extracted.
+    Two more files are present in the root directory of the dataset: this 'README' and the 'licenses.json'.
+    The latter one is a '.json' file containing the name, the username of the uploader and the license for each of
+    the sounds in the dataset.
+
+    Authors and Contact:
+    This dataset was developed by António Ramires, Pritish Chadna, Xavier Favory, Emilia Gómez and Xavier Serra.
+    Any questions related to this dataset please contact:
+    António Ramires (antonio.ramires@upf.edu / aframires@gmail.com)
+
+    Acknowledgements:
+    This work has received funding from the European Union's Horizon 2020 research and innovation programme under
+    the Marie Skłodowska-Curie grant agreement No. 765068 (MIP-Frontiers).
+    This work has received funding from the European Union's Horizon 2020 research and innovation programme under
+    grant agreement No. 770376 (TROMPA).
+
+"""
+
+import os
+from typing import TextIO, Tuple, Optional
+
+import librosa
+import numpy as np
+import json
+
+from mirdata import download_utils, jams_utils, core, io
+
+
+BIBTEX = """
+@inproceedings{ramires2020, 
+author = "Antonio Ramires and Pritish Chandna and Xavier Favory and Emilia Gómez and Xavier Serra",
+title = "Neural Percussive Synthesis Parametrerised by High-Level Timbral Features",
+booktitle = "Proc. of the IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP)",
+year = "2020" }
+"""
+
+
+REMOTES = {
+    "audio": download_utils.RemoteFileMetadata(
+        filename="one_shot_percussive_sounds.zip",
+        url="https://zenodo.org/record/3665275/files/one_shot_percussive_sounds.zip?download=1",
+        checksum="278994c2a7b92a24a4daad99f40c13db",
+    ),
+    "analysis": download_utils.RemoteFileMetadata(
+        filename="analysis.zip",
+        url="https://zenodo.org/record/3665275/files/analysis.zip?download=1",
+        checksum="c67ce39d5aa6c6a7f88eedf7eb7d933e ",
+    ),
+    "metadata": download_utils.RemoteFileMetadata(
+        filename="licenses.txt",
+        url="https://zenodo.org/record/3665275/files/licenses.txt?download=1",
+        checksum="25f95a0e38d3ac4ae868f56c378fbccb",
+    ),
+    "readme": download_utils.RemoteFileMetadata(
+        filename="README.md",
+        url="https://zenodo.org/record/3665275/files/README.md?download=1",
+        checksum="afec91c033db607e2fc83c09940abd15",
+    ),
+}
+
+LICENSE_INFO = """
+The dataset is licensed under The Creative Commons Attribution Non Commercial Share Alike 4.0 International.
+Please check the specific license of each sound by running track.license
+"""
+
+
+class Track(core.Track):
+    """Freesound one-shot percussive sounds track class
+
+    Args:
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets/freesound_one_shot_percussive_sounds`
+
+    Attributes:
+        analysis_path (str): local path where the analysis file is stored
+        audio_path(str): local path where audio file is stored
+        track_id (str): track id
+        filename (str): filename of the track
+        username (str): username of the Freesound uploader of the track
+        license (str): link to license of the track file
+
+    Cached Properties:
+        analysis (dict): analysis parameters of the track in form of Python dictionary
+
+    """
+
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
+
+        self.analysis_path = self.get_path("analysis")
+        self.audio_path = self.get_path("audio")
+
+    @property
+    def filename(self):
+        return self._track_metadata.get("name")
+
+    @property
+    def username(self):
+        return self._track_metadata.get("username")
+
+    @property
+    def license(self):
+        return self._track_metadata.get("license")
+
+    @property
+    def audio(self) -> Tuple[np.ndarray, float]:
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
+        return load_audio(self.audio_path)
+
+    @core.cached_property
+    def analysis(self) -> Optional[dict]:
+        return load_analysis(self.analysis_path)
+
+    def to_jams(self):
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
+        jams_metadata = dict(self._track_metadata)
+        jams_metadata.update(self.analysis)
+        return jams_utils.jams_converter(
+            audio_path=self.audio_path, metadata=jams_metadata
+        )
+
+
+def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+    """Load the track audio file.
+
+    Args:
+        fhandle (str): path to an audio file
+
+    Returns:
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
+
+    """
+    return librosa.load(fhandle, sr=16000, mono=True)
+
+
+@io.coerce_to_string_io
+def load_analysis(fhandle: TextIO) -> Optional[dict]:
+    """Load analysis json file
+
+    Args:
+        fhandle (str or file-like): path or file-like object pointing to f0 annotation file
+
+    Returns:
+        analysis: track analysis dict
+
+    """
+    analysis = json.load(fhandle)
+
+    return analysis
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The Freesound One-Shot Percussive Sounds dataset
+    """
+
+    def __init__(self, data_home=None):
+        super().__init__(
+            data_home,
+            name="freesound_one_shot_percussive_sounds",
+            track_class=Track,
+            bibtex=BIBTEX,
+            remotes=REMOTES,
+            license_info=LICENSE_INFO,
+        )
+
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "licenses.txt")
+        if not os.path.exists(metadata_path):
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        with open(metadata_path, "r", errors="ignore") as f:
+            metadata = json.load(f)
+
+        return metadata
+
+    @core.copy_docs(load_audio)
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @core.copy_docs(load_analysis)
+    def load_analysis(self, *args, **kwargs):
+        return load_analysis(*args, **kwargs)

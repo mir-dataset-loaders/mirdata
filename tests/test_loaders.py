@@ -20,6 +20,7 @@ CUSTOM_TEST_TRACKS = {
     "compmusic_otmm_makam": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
+    "freesound_one_shot_percussive_sounds": "183",
     "giantsteps_tempo": "113",
     "gtzan_genre": "country.00000",
     "guitarset": "03_BN3-119-G_solo",
