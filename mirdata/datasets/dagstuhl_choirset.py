@@ -94,22 +94,19 @@ class Track(core.Track):
         self.audio_paths = [
             self.get_path(key)
             for key in self._track_paths
-            if "audio" in key
-            if self.get_path(key)
+            if "audio" in key and self.get_path(key)
         ]
 
         self.f0_paths = [
             self.get_path(key)
             for key in self._track_paths
-            if "f0" in key
-            if self.get_path(key)
+            if "f0" in key and self.get_path(key)
         ]
 
         self.score_paths = [
             self.get_path(key)
             for key in self._track_paths
-            if "score" in key
-            if self.get_path(key)
+            if "score" in key and self.get_path(key)
         ]
 
     def f0(self, mic="lrx", ann="crepe"):
@@ -173,14 +170,11 @@ class Track(core.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
 
-        if not self.f0_paths:
-            f0_data = None
-        else:
-            f0_data = []
-            f0_types = ["F0_PYIN", "F0_CREPE", "F0_manual"]
-            for f0_path in self.f0_paths:
-                f0_type = [s for s in f0_types if s in f0_path]
-                f0_data.append((load_f0(f0_path), f0_type[0]))
+        f0_data = []
+        f0_types = ["F0_PYIN", "F0_CREPE", "F0_manual"]
+        for f0_path in self.f0_paths:
+            f0_type = [s for s in f0_types if s in f0_path]
+            f0_data.append((load_f0(f0_path), f0_type[0]))
 
         if not self.score_paths:
             score_data = None
@@ -230,15 +224,13 @@ class MultiTrack(core.MultiTrack):
         self.audio_paths = [
             self.get_path(key)
             for key in self._multitrack_paths
-            if "audio" in key
-            if self.get_path(key)
+            if "audio" in key and self.get_path(key)
         ]
 
         self.beat_paths = [
             self.get_path(key)
             for key in self._multitrack_paths
-            if "beat" in key
-            if self.get_path(key)
+            if "beat" in key and self.get_path(key)
         ]
 
     def track_audio_property(self):
@@ -306,11 +298,12 @@ def load_audio(audio_path):
     return librosa.load(audio_path, sr=22050, mono=True)
 
 
-def load_f0(f0_path):
+@io.coerce_to_string_io
+def load_f0(fhandle):
     """Load a Dagstuhl ChoirSet F0-trajectory.
 
     Args:
-        f0_path (str): path pointing to an F0-file
+        fhandle (str or file-like): File-like object or path to F0 file
 
     Returns:
         F0Data Object - the F0-trajectory
@@ -318,13 +311,12 @@ def load_f0(f0_path):
     times = []
     freqs = []
     confs = []
-    with open(f0_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
-            if len(line) == 3:
-                confs.append(float(line[2]))
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[1]))
+        if len(line) == 3:
+            confs.append(float(line[2]))
 
     times = np.array(times)
     freqs = np.array(freqs)
@@ -335,41 +327,41 @@ def load_f0(f0_path):
     return annotations.F0Data(times, freqs, confs)
 
 
-def load_score(score_path):
+@io.coerce_to_string_io
+def load_score(fhandle):
     """Load a Dagstuhl ChoirSet time-aligned score representation.
 
     Args:
-        score_path (str): path pointing to an score-representation-file
+        fhandle (str or file-like): File-like object or path to score representation file
 
     Returns:
         NoteData Object - the time-aligned score representation
     """
     intervals = np.empty((0, 2))
     notes = []
-    with open(score_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
-            notes.append(float(line[2]))
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
+        notes.append(float(line[2]))
 
     notes = 440 * 2 ** ((np.array(notes) - 69) / 12)  # convert MIDI pitch to Hz
     return annotations.NoteData(intervals, notes, None)
 
 
-def load_beat(beat_path):
+@io.coerce_to_string_io
+def load_beat(fhandle):
     """Load a Dagstuhl ChoirSet beat annotation.
 
     Args:
-        beat_path (str): path pointing to a beat annotation file
+        fhandle (str or file-like): File-like object or path to beat annotation file
 
     Returns:
         BeatData Object - the beat annotation
     """
     times = []
-    with open(beat_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            times.append(float(line[0]))
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        times.append(float(line[0]))
 
     times = np.array(times)
     positions = np.arange(1, len(times) + 1).astype(int)
