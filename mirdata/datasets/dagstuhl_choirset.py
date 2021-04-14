@@ -24,6 +24,7 @@
     (4) Joint Research Centre, European Commission, Seville, ES
 """
 import csv
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -32,17 +33,17 @@ from mirdata import download_utils, jams_utils, core, annotations, io
 
 BIBTEX = """
 @article{RosenzweigCWSGM20_DCS_TISMIR,
-author    = {Sebastian Rosenzweig and Helena Cuesta and Christof Wei{\ss} and Frank Scherbaum and Emilia G{\'o}mez and Meinard M{\"u}ller},
-title     = {{D}agstuhl {ChoirSet}: {A} Multitrack Dataset for {MIR} Research on Choral Singing},
-journal   = {Transactions of the International Society for Music Information Retrieval ({TISMIR})},
-volume    = {3},
-number    = {1},
-year      = {2020},
-pages     = {98--110},
-publisher = {Ubiquity Press},
-doi       = {10.5334/tismir.48},
-url       = {http://doi.org/10.5334/tismir.48},
-url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirSet}
+    author    = {Sebastian Rosenzweig and Helena Cuesta and Christof Wei{\ss} and Frank Scherbaum and Emilia G{\'o}mez and Meinard M{\"u}ller},
+    title     = {{D}agstuhl {ChoirSet}: {A} Multitrack Dataset for {MIR} Research on Choral Singing},
+    journal   = {Transactions of the International Society for Music Information Retrieval ({TISMIR})},
+    volume    = {3},
+    number    = {1},
+    year      = {2020},
+    pages     = {98--110},
+    publisher = {Ubiquity Press},
+    doi       = {10.5334/tismir.48},
+    url       = {http://doi.org/10.5334/tismir.48},
+    url-demo  = {https://www.audiolabs-erlangen.de/resources/MIR/2020-DagstuhlChoirSet}
 }
 """
 
@@ -54,10 +55,6 @@ REMOTES = {
         unpack_directories=["DagstuhlChoirSet_V1.2.3"],
     ),
 }
-
-DOWNLOAD_INFO = """
-Downloading dataset from Zenodo (5.1 GB)...
-"""
 
 LICENSE_INFO = """
 Creative Commons Attribution 4.0 International
@@ -71,14 +68,28 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
-        audio_paths (list): paths to audio files
-        f0_paths (list): paths to F0-trajectories
-        score_paths (list): paths to time-aligned score representation
-        track_id (str): track id
+        audio_dyn_path (str): dynamic microphone audio path
+        audio_hsm_path (str): headset microphone audio path
+        audio_lrx_path (str): larynx microphone audio path
+        f0_crepe_dyn_path (str): crepe f0 annotation for dynamic microphone path
+        f0_crepe_hsm_path (str): crepe f0 annotation for headset microphone path
+        f0_crepe_lrx_path (str): crepe f0 annotation for larynx microphone path
+        f0_pyin_dyn_path (str): pyin f0 annotation for dynamic microphone path
+        f0_pyin_hsm_path (str): pyin f0 annotation for headset microphone path
+        f0_pyin_lrx_path (str): pyin f0 annotation for larynx microphone path
+        f0_manual_lrx_path (str): manual f0 annotation for larynx microphone path
+        score_path (str): score annotation path
 
     Cached Properties:
-        f0 (annotations.F0Data): returns specified F0-trajectory
-        score (annotations.NoteData): returns time-aligned score representation
+        f0_crepe_dyn (F0Data): algorithm-labeled (crepe) f0 annotations for dynamic microphone
+        f0_crepe_hsn (F0Data): algorithm-labeled (crepe) f0 annotations for headset microphone
+        f0_crepe_lrx (F0Data): algorithm-labeled (crepe) f0 annotations for larynx microphone
+        f0_pyin_dyn (F0Data): algorithm-labeled (pyin) f0 annotations for dynamic microphone
+        f0_pyin_hsn (F0Data): algorithm-labeled (pyin) f0 annotations for headset microphone
+        f0_pyin_lrx (F0Data): algorithm-labeled (pyin) f0 annotations for larynx microphone
+        f0_manual_lrx (F0Data): manually labeled f0 annotations for larynx microphone
+        score (NoteData): time-aligned score representation
+
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -91,100 +102,114 @@ class Track(core.Track):
             metadata=metadata,
         )
 
-        self.audio_paths = [
-            self.get_path(key)
-            for key in self._track_paths
-            if "audio" in key and self.get_path(key)
-        ]
+        self.audio_dyn_path = self.get_path("audio_dyn")
+        self.audio_hsm_path = self.get_path("audio_hsm")
+        self.audio_lrx_path = self.get_path("audio_lrx")
 
-        self.f0_paths = [
-            self.get_path(key)
-            for key in self._track_paths
-            if "f0" in key and self.get_path(key)
-        ]
+        self.f0_crepe_dyn_path = self.get_path("f0_crepe_dyn")
+        self.f0_crepe_hsm_path = self.get_path("f0_crepe_hsm")
+        self.f0_crepe_lrx_path = self.get_path("f0_crepe_lrx")
 
-        self.score_paths = [
-            self.get_path(key)
-            for key in self._track_paths
-            if "score" in key and self.get_path(key)
-        ]
+        self.f0_pyin_dyn_path = self.get_path("f0_pyin_dyn")
+        self.f0_pyin_hsm_path = self.get_path("f0_pyin_hsm")
+        self.f0_pyin_lrx_path = self.get_path("f0_pyin_lrx")
 
-    def f0(self, mic="lrx", ann="crepe"):
-        """Get F0-trajectory of specified type extracted from specified microphone
-        Args:
-            mic (str): Identifier of the microphone ("dyn", "hsm", or "lrx")
-            ann (str): Identifier of the annotation ("crepe", "pyin", or "manual")
+        self.f0_manual_lrx_path = self.get_path("f0_manual_lrx")
 
-        Returns:
-            F0Data Object: F0-trajectory
-        """
-        if mic.lower() not in ["dyn", "hsm", "lrx"]:
-            raise ValueError("mic={} is invalid".format(mic))
+        self.score_path = self.get_path("score")
 
-        if ann.lower() not in ["crepe", "pyin", "manual"]:
-            raise ValueError("ann={} is invalid".format(ann))
+    @core.cached_property
+    def f0_crepe_dyn(self) -> Optional[annotations.F0Data]:
+        return load_f0(self.f0_crepe_dyn_path)
 
-        f0_path = [
-            s
-            for s in self.f0_paths
-            if mic.lower() in s.lower()
-            if ann.lower() in s.lower()
-        ]
+    @core.cached_property
+    def f0_crepe_hsm(self) -> Optional[annotations.F0Data]:
+        return load_f0(self.f0_crepe_hsm_path)
 
-        if not f0_path:
-            return None
+    @core.cached_property
+    def f0_crepe_lrx(self) -> Optional[annotations.F0Data]:
+        return load_f0(self.f0_crepe_lrx_path)
 
-        return load_f0(f0_path[0])
+    @core.cached_property
+    def f0_pyin_dyn(self) -> Optional[annotations.F0Data]:
+        return load_f0(self.f0_pyin_dyn_path)
 
-    def score(self):
-        """Get time-aligned score representation
-        Args:
+    @core.cached_property
+    def f0_pyin_hsm(self) -> Optional[annotations.F0Data]:
+        return load_f0(self.f0_pyin_hsm_path)
 
-        Returns:
-            NoteData Object - the time-aligned score representation
-        """
-        if not self.score_paths:
-            return None
+    @core.cached_property
+    def f0_pyin_lrx(self) -> Optional[annotations.F0Data]:
+        return load_f0(self.f0_pyin_lrx_path)
 
-        return load_score(self.score_paths[0])
+    @core.cached_property
+    def f0_manual_lrx(self) -> Optional[annotations.F0Data]:
+        return load_f0(self.f0_manual_lrx_path)
 
-    def audio(self, mic="lrx"):
-        """Get audio of the specified microphone
-        Args:
-            mic (str): Identifier of the microphone ("dyn", "hsm", or "lrx")
+    @core.cached_property
+    def score(self) -> Optional[annotations.NoteData]:
+        return load_score(self.score_path)
+
+    @property
+    def audio_dyn(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The audio for the track's dynamic microphone (if available)
 
         Returns:
-            * np.ndarray - the mono audio signal
-            * float - The sample rate of the audio file
+            * np.ndarray - audio signal
+            * float - sample rate
+
         """
-        if mic.lower() not in ["dyn", "hsm", "lrx"]:
-            raise ValueError("mic={} is invalid".format(mic))
+        return load_audio(self.audio_dyn_path)
 
-        audio_path = [s for s in self.audio_paths if mic.lower() in s.lower()]
+    @property
+    def audio_hsm(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The audio for the track's headset microphone (if available)
 
-        if not audio_path:
-            return None
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
 
-        return load_audio(audio_path[0])
+        """
+        return load_audio(self.audio_hsm_path)
+
+    @property
+    def audio_lrx(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The audio for the track's larynx microphone (if available)
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
+        return load_audio(self.audio_lrx_path)
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
 
-        f0_data = []
-        f0_types = ["F0_PYIN", "F0_CREPE", "F0_manual"]
-        for f0_path in self.f0_paths:
-            f0_type = [s for s in f0_types if s in f0_path]
-            f0_data.append((load_f0(f0_path), f0_type[0]))
+        f0_data = [
+            (self.f0_crepe_dyn, "crepe - DYN"),
+            (self.f0_crepe_hsm, "crepe - HSM"),
+            (self.f0_crepe_lrx, "crepe - LRX"),
+            (self.f0_pyin_dyn, "pyin - DYN"),
+            (self.f0_pyin_hsm, "pyin - HSM"),
+            (self.f0_pyin_lrx, "pyin - LRX"),
+            (self.f0_manual_lrx, "manual - LRX"),
+        ]
+        # remove missing annotations from the list
+        f0_data = [tup for tup in f0_data if tup[1]]
+        score_data = [(self.score, "score")] if self.score else None
 
-        if not self.score_paths:
-            score_data = None
+        if self.audio_hsm_path:
+            audio_path = self.audio_hsm_path
+        elif self.audio_dyn_path:
+            audio_path = self.audio_dyn_path
         else:
-            score_data = load_score(self.score_paths[0])
+            audio_path = self.audio_lrx_path
 
         return jams_utils.jams_converter(
-            audio_path=self.audio_paths[0],
+            audio_path=audio_path,
             f0_data=f0_data,
-            note_data=[(score_data, "score")],
+            note_data=score_data,
         )
 
 
@@ -197,13 +222,15 @@ class MultiTrack(core.MultiTrack):
             If `None`, looks for the data in the default directory, `~/mir_datasets/dagstuhl_choirset`
 
     Attributes:
-        mtrack_id (str): track id
-        audio_paths (list): paths to audio files
-        beat_paths (list): path to beat annotation
+        audio_stm_path (str): path to room mic (mono mixdown) audio file
+        audio_str_path (str): path to room mic (right channel) audio file
+        audio_stl_path (str): path to room mic (left channel) audio file
+        audio_rev_path (str): path to room mic with artifical reverb (mono mixdown) audio file
+        audio_spl_path (str): path to piano accompaniment (left channel) audio file
+        audio_spr_path (str): path to piano accompaniement (right channel) audio file
+        beat_path (str): path to beat annotation file
 
     Cached Properties:
-        track_audio_property (str): the name of the attribute of Track which
-            returns the audio to be mixed
         beat (annotations.BeatData): Beat annotation
 
     """
@@ -221,70 +248,100 @@ class MultiTrack(core.MultiTrack):
             metadata=metadata,
         )
 
-        self.audio_paths = [
-            self.get_path(key)
-            for key in self._multitrack_paths
-            if "audio" in key and self.get_path(key)
-        ]
+        self.audio_stm_path = self.get_path("audio_stm")
+        self.audio_str_path = self.get_path("audio_str")
+        self.audio_stl_path = self.get_path("audio_stl")
+        self.audio_rev_path = self.get_path("audio_rev")
+        self.audio_spl_path = self.get_path("audio_spl")
+        self.audio_spr_path = self.get_path("audio_spr")
+        self.beat_path = self.get_path("beat")
 
-        self.beat_paths = [
-            self.get_path(key)
-            for key in self._multitrack_paths
-            if "beat" in key and self.get_path(key)
-        ]
-
+    @property
     def track_audio_property(self):
         return "audio_dyn"
 
-    def beat(self):
-        """Get beat annotation
-        Args:
+    @core.cached_property
+    def beat(self) -> Optional[annotations.BeatData]:
+        return load_beat(self.beat_path)
+
+    @property
+    def audio_stm(self) -> Tuple[np.ndarray, float]:
+        """The audio for the room mic (mono mixdown)
 
         Returns:
-            BeatData Object - the beat annotation
+            * np.ndarray - audio signal
+            * float - sample rate
+
         """
-        if not self.beat_paths:
-            return None
+        return load_audio(self.audio_stm_path)
 
-        return load_beat(self.beat_paths[0])
-
-    def audio(self, mic="stm"):
-        """Get audio of the specified microphone
-        Args:
-            mic (str): Identifier of the microphone ("stm", "stereoreverb_stm", "stl", "str", "spl", or "spr")
+    @property
+    def audio_str(self) -> Tuple[np.ndarray, float]:
+        """The audio for the room mic (right channel)
 
         Returns:
-            * np.ndarray - the mono audio signal
-            * float - The sample rate of the audio file
+            * np.ndarray - audio signal
+            * float - sample rate
+
         """
-        if mic.lower() not in ["stm", "stereoreverb_stm", "stl", "str", "spl", "spr"]:
-            raise ValueError("mic={} is invalid".format(mic))
+        return load_audio(self.audio_str_path)
 
-        audio_path = [s for s in self.audio_paths if mic.lower() in s.lower()]
+    @property
+    def audio_stl(self) -> Tuple[np.ndarray, float]:
+        """The audio for the room mic (left channel)
 
-        if mic.lower() == "stm":
-            audio_path = [s for s in audio_path if "stereo_stm" in s.lower()]
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
 
-        if not audio_path:
-            return None
+        """
+        return load_audio(self.audio_stl_path)
 
-        return load_audio(audio_path[0])
+    @property
+    def audio_rev(self) -> Tuple[np.ndarray, float]:
+        """The audio for the room mic with artifical reverb (mono mixdown)
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
+        return load_audio(self.audio_rev_path)
+
+    @property
+    def audio_spl(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The audio for the piano accompaniment DI (left channel)
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
+        return load_audio(self.audio_spl_path)
+
+    @property
+    def audio_spr(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The audio for the piano accompaniment DI (right channel)
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
+        return load_audio(self.audio_spr_path)
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
 
-        if not self.beat_paths:
-            beat_data = None
-        else:
-            beat_data = load_beat(self.beat_paths[0])
+        beat_data = [(self.beat, "beat")] if self.beat else None
 
         return jams_utils.jams_converter(
-            audio_path=self.audio_paths[0], beat_data=[(beat_data, "beat")]
+            audio_path=self.audio_stm_path, beat_data=beat_data
         )
 
 
 @io.coerce_to_bytes_io
-def load_audio(audio_path):
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Dagstuhl ChoirSet audio file.
 
     Args:
@@ -295,11 +352,11 @@ def load_audio(audio_path):
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(audio_path, sr=22050, mono=True)
+    return librosa.load(fhandle, sr=22050, mono=True)
 
 
 @io.coerce_to_string_io
-def load_f0(fhandle):
+def load_f0(fhandle: TextIO) -> annotations.F0Data:
     """Load a Dagstuhl ChoirSet F0-trajectory.
 
     Args:
@@ -317,18 +374,17 @@ def load_f0(fhandle):
         freqs.append(float(line[1]))
         if len(line) == 3:
             confs.append(float(line[2]))
+        else:
+            confs.append(float(1.0))
 
     times = np.array(times)
     freqs = np.array(freqs)
-    if not confs:
-        confs = np.array([None]).astype(float)
-    else:
-        confs = np.array(confs)
+    confs = np.array(confs)
     return annotations.F0Data(times, freqs, confs)
 
 
 @io.coerce_to_string_io
-def load_score(fhandle):
+def load_score(fhandle: TextIO) -> annotations.NoteData:
     """Load a Dagstuhl ChoirSet time-aligned score representation.
 
     Args:
@@ -344,12 +400,11 @@ def load_score(fhandle):
         intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
         notes.append(float(line[2]))
 
-    notes = 440 * 2 ** ((np.array(notes) - 69) / 12)  # convert MIDI pitch to Hz
-    return annotations.NoteData(intervals, notes, None)
+    return annotations.NoteData(intervals, librosa.midi_to_hz(notes), None)
 
 
 @io.coerce_to_string_io
-def load_beat(fhandle):
+def load_beat(fhandle: TextIO) -> annotations.BeatData:
     """Load a Dagstuhl ChoirSet beat annotation.
 
     Args:
@@ -359,12 +414,20 @@ def load_beat(fhandle):
         BeatData Object - the beat annotation
     """
     times = []
+    positions = []
+    position = 0
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
+        raw_position = float(line[1])
+        if np.floor(raw_position) == raw_position:
+            position = 1
+        else:
+            position += 1
+        positions.append(position)
 
     times = np.array(times)
-    positions = np.arange(1, len(times) + 1).astype(int)
+    positions = np.array(positions)
     return annotations.BeatData(times, positions)
 
 
@@ -382,7 +445,6 @@ class Dataset(core.Dataset):
             multitrack_class=MultiTrack,
             bibtex=BIBTEX,
             remotes=REMOTES,
-            download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
