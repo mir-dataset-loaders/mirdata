@@ -153,10 +153,6 @@ class Track(core.Track):
         return self._track_metadata.get("ac_analysis")
 
     @property
-    def license(self):
-        return self._track_metadata.get("license")
-
-    @property
     def freesound_previews(self):
         return self._track_metadata.get("previews")
 
