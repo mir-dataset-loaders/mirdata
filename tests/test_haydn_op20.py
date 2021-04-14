@@ -62,7 +62,7 @@ def test_load_score():
 
 def test_load_key():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
-    key = haydn_op20.load_key(path)
+    key = haydn_op20.load_key_music21(path)
     assert isinstance(key, list)
     assert len(key) == 1
     assert key[0]["time"] == 0

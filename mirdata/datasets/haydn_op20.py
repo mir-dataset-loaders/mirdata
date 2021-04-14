@@ -45,9 +45,12 @@ This dataset has as dependency the Music21 library.
 import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
 
+import numpy as np
+
 from mirdata import core, io, jams_utils, download_utils
 import music21
 
+from mirdata.annotations import KeyData, ChordData
 
 BIBTEX = """
 @dataset{nestor_napoles_lopez_2017_1095630,
@@ -121,8 +124,12 @@ class Track(core.Track):
         return load_score(self.humdrum_annotated_path)
 
     @core.cached_property
-    def keys(self) -> Optional[List[dict]]:
+    def keys(self) -> Optional[KeyData]:
         return load_key(self.humdrum_annotated_path)
+
+    @core.cached_property
+    def keys_music21(self) -> Optional[List[dict]]:
+        return load_key_music21(self.humdrum_annotated_path)
 
     @core.cached_property
     def roman_numerals(self) -> Optional[List[dict]]:
@@ -192,17 +199,7 @@ def load_score(fhandle: TextIO):
     return score
 
 
-@io.coerce_to_string_io
-def load_key(fhandle: TextIO, resolution=28):
-    """Load haydn op20 key data from a file
-
-    Args:
-        fhandle (str or file-like): path to key annotations
-
-    Returns:
-        List[dict]: musical key data and relative time (offset (Music21Object.offset) * resolution).
-
-    """
+def load_key_base(fhandle, resolution):
     _, rna = split_score_annotations(fhandle)
     annotations = []
     for offset, rn in rna:
@@ -211,6 +208,44 @@ def load_key(fhandle: TextIO, resolution=28):
         key = tonicizedKey or rn.key
         annotations.append({"time": time, "key": key})
     return annotations
+
+
+@io.coerce_to_string_io
+def load_key(fhandle: TextIO, resolution=28):
+    """Load haydn op20 key data from a file
+
+    Args:
+        fhandle (str or file-like): path to key annotations
+
+    Returns:
+        KeyData: loaded key data
+
+    """
+    keys = load_key_base(fhandle, resolution)
+    start_times, end_times, key_names = [0], [], [str(keys[0]['key'])]
+    for ii, k in enumerate(keys):
+        if str(k['key']).replace('-', 'b') != key_names[-1]:
+            end_times.append(keys[ii - 1]['time'])
+            start_times.append(keys[ii]['time'])
+            key_names.append(str(keys[ii]['key']).replace('-', 'b'))
+    end_times.append(keys[-1]['time'])
+    for s, e, k in zip(start_times, end_times, key_names):
+        print(s, e, k)
+    return KeyData(np.array([start_times, end_times]).astype(float).T, key_names)
+
+
+@io.coerce_to_string_io
+def load_key_music21(fhandle: TextIO, resolution=28):
+    """Load haydn op20 key data from a file in music21 format
+
+    Args:
+        fhandle (str or file-like): path to key annotations
+
+    Returns:
+        List[dict]: musical key data and relative time (offset (Music21Object.offset) * resolution).
+
+    """
+    return load_key_base(fhandle, resolution)
 
 
 @io.coerce_to_string_io
@@ -292,9 +327,9 @@ class Dataset(core.Dataset):
     def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @core.copy_docs(load_key_music21)
     def load_key(self, *args, **kwargs):
-        return load_key(*args, **kwargs)
+        return load_key_music21(*args, **kwargs)
 
     @core.copy_docs(load_chords)
     def load_chords(self, *args, **kwargs):
