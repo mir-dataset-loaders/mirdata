@@ -14,14 +14,18 @@ def test_track():
     expected_attributes = {
         "audio_path": "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/"
         + "one_shot_percussive_sounds/1/183.wav",
-        "analysis_path": "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/"
+        "file_metadata_path": "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/"
         + "analysis/1/183_analysis.json",
         "track_id": "183",
     }
 
     expected_property_types = {
         "audio": tuple,
-        "analysis": dict,
+        "tags": list,
+        "freesound_previews": dict,
+        "freesound_analysis": dict,
+        "audiocommons_analysis": dict,
+        "file_metadata": dict,
         "filename": str,
         "username": str,
         "license": str,
@@ -44,58 +48,110 @@ def test_to_jams():
 
     # Check jam sandbox
     jam_metadata = jam.sandbox
-    assert jam_metadata["lossless"] == 1.0
-    assert jam_metadata["codec"] == "pcm_s16le"
-    assert jam_metadata["bitrate"] == 256000.0
-    assert jam_metadata["samplerate"] == 16000.0
-    assert jam_metadata["channels"] == 1.0
-    assert jam_metadata["audio_md5"] == "dd11a896b4d08c2a93d6480bb3e40016"
-    assert jam_metadata["loudness"] == -18.421449661254883
-    assert jam_metadata["dynamic_range"] == 0.0
-    assert jam_metadata["temporal_centroid"] == 0.4129089415073395
-    assert jam_metadata["log_attack_time"] == -1.4238076210021973
-    assert jam_metadata["filesize"] == 11108
-    assert jam_metadata["single_event"] is True
-    assert jam_metadata["hardness"] == 63.75773273351933
-    assert jam_metadata["depth"] == 44.40461964558294
-    assert jam_metadata["brightness"] == 72.8391772655705
-    assert jam_metadata["roughness"] == 69.52154422554737
-    assert jam_metadata["warmth"] == 35.066030998902875
-    assert jam_metadata["sharpness"] == 61.042021710446086
-    assert jam_metadata["boominess"] == 23.631757376023458
-    assert jam_metadata["reverb"] is False
+    assert jam_metadata["name"] == "1.wav"
+    assert jam_metadata["username"] == "plagasul"
+    assert jam_metadata["license"] == "http://creativecommons.org/licenses/by/3.0/"
+    assert jam_metadata["tags"] == [
+        "Zil",
+        "Cymbals",
+        "Finger",
+        "Percussion",
+        "Hand",
+        "Zyl",
+        "Bell",
+        "Chimes",
+    ]
+    assert jam_metadata["previews"] == {
+        "preview_lq_ogg": "https://freesound.org/data/previews/414/183_394391-lq.ogg",
+        "preview_lq_mp3": "https://freesound.org/data/previews/414/183_394391-lq.mp3",
+        "preview_hq_mp3": "https://freesound.org/data/previews/414/183_394391-hq.mp3",
+        "preview_hq_ogg": "https://freesound.org/data/previews/414/183_394391-hq.ogg",
+    }
+    assert jam_metadata["analysis"] == {
+        "lowlevel": {
+            "average_loudness": 0.0028868783722041064,
+            "silence_rate_30dB": {
+                "min": 1.0,
+                "max": 1.0,
+                "dvar2": 0.0,
+                "dmean2": 0.0,
+                "dmean": 0.0,
+                "var": 0.0,
+                "dvar": 0.0,
+                "mean": 1.0,
+            },
+            "stopFrame": 5.999972947644955,
+            "startFrame": 0.0,
+        },
+        "sfx": {
+            "duration": 0.31421999239346726,
+            "logattacktime": {
+                "max": -1.7424356459399086,
+                "mean": -1.7424356459399086,
+                "min": -1.7424356459399086,
+            },
+            "effective_duration": {
+                "max": 0.3105442902494931,
+                "mean": 0.3105442902494931,
+                "min": 0.3105442902494931,
+            },
+            "temporal_centroid": {
+                "max": 0.5048781145009638,
+                "mean": 0.5048781145009638,
+                "min": 0.5048781145009638,
+            },
+            "temporal_decrease": {
+                "max": 0.010950043054148862,
+                "mean": 0.010950043054148862,
+                "min": 0.010950043054148862,
+            },
+        },
+    }
+    assert jam_metadata["ac_analysis"] == {
+        "ac_tempo_confidence": 0.0,
+        "ac_note_confidence": 0.4735875129699707,
+        "ac_depth": 5.746736899993124,
+        "ac_note_midi": 100,
+        "ac_temporal_centroid": 0.17407511174678802,
+        "ac_warmth": 16.86232842111746,
+        "ac_loop": False,
+        "ac_hardness": 78.2319728568732,
+        "ac_loudness": -14.819193840026855,
+        "ac_reverb": False,
+        "ac_roughness": 73.50090654168224,
+        "ac_log_attack_time": -1.741891860961914,
+        "ac_boominess": 0.0,
+        "ac_note_frequency": 2611.37890625,
+        "ac_tempo": 0,
+        "ac_brightness": 86.5129643484791,
+        "ac_sharpness": 86.05006458619545,
+        "ac_tonality_confidence": 0.7178749442100525,
+        "ac_dynamic_range": 0.0,
+        "ac_note_name": "E7",
+        "ac_tonality": "F minor",
+        "ac_single_event": True,
+    }
 
 
 def test_load_analysis():
     default_trackid = "183"
     dataset = freesound_one_shot_percussive_sounds.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
-    analysis_path = track.analysis_path
-    analysis = freesound_one_shot_percussive_sounds.load_analysis(analysis_path)
+    file_metadata_path = track.file_metadata_path
+    file_metadata = freesound_one_shot_percussive_sounds.load_file_metadata(
+        file_metadata_path
+    )
 
-    # check analysis elements
-    assert type(analysis) is dict
-    assert analysis.get("duration") == 0.34575000405311584
-    assert analysis.get("lossless") == 1.0
-    assert analysis.get("codec") == "pcm_s16le"
-    assert analysis.get("bitrate") == 256000.0
-    assert analysis.get("samplerate") == 16000.0
-    assert analysis.get("channels") == 1.0
-    assert analysis.get("audio_md5") == "dd11a896b4d08c2a93d6480bb3e40016"
-    assert analysis.get("loudness") == -18.421449661254883
-    assert analysis.get("dynamic_range") == 0.0
-    assert analysis.get("temporal_centroid") == 0.4129089415073395
-    assert analysis.get("log_attack_time") == -1.4238076210021973
-    assert analysis.get("filesize") == 11108
-    assert analysis.get("single_event") is True
-    assert analysis.get("hardness") == 63.75773273351933
-    assert analysis.get("depth") == 44.40461964558294
-    assert analysis.get("brightness") == 72.8391772655705
-    assert analysis.get("roughness") == 69.52154422554737
-    assert analysis.get("warmth") == 35.066030998902875
-    assert analysis.get("sharpness") == 61.042021710446086
-    assert analysis.get("boominess") == 23.631757376023458
-    assert analysis.get("reverb") is False
+    # check file metadata elements
+    assert type(file_metadata) is dict
+    assert file_metadata.get("duration") == 0.34575000405311584
+    assert file_metadata.get("lossless") == 1.0
+    assert file_metadata.get("codec") == "pcm_s16le"
+    assert file_metadata.get("bitrate") == 256000.0
+    assert file_metadata.get("samplerate") == 16000.0
+    assert file_metadata.get("channels") == 1.0
+    assert file_metadata.get("audio_md5") == "dd11a896b4d08c2a93d6480bb3e40016"
+    assert file_metadata.get("filesize") == 11108
 
 
 def test_load_audio():
@@ -112,7 +168,7 @@ def test_metadata():
     default_trackid = "183"
     dataset = freesound_one_shot_percussive_sounds.Dataset(TEST_DATA_HOME)
     metadata = dataset._metadata
-    print(metadata[default_trackid])
+
     assert type(metadata) is dict
     assert metadata[default_trackid].get("name") == "1.wav"
     assert metadata[default_trackid].get("username") == "plagasul"
@@ -120,3 +176,96 @@ def test_metadata():
         metadata[default_trackid].get("license")
         == "http://creativecommons.org/licenses/by/3.0/"
     )
+    assert metadata[default_trackid].get("duration") == 0.34575000405311584
+
+    # Check tags
+    assert type(metadata[default_trackid].get("tags")) is list
+    assert metadata[default_trackid].get("tags") == [
+        "Zil",
+        "Cymbals",
+        "Finger",
+        "Percussion",
+        "Hand",
+        "Zyl",
+        "Bell",
+        "Chimes",
+    ]
+
+    # Check previews
+    assert type(metadata[default_trackid].get("previews")) is dict
+    assert metadata[default_trackid].get("previews") == {
+        "preview_lq_ogg": "https://freesound.org/data/previews/414/183_394391-lq.ogg",
+        "preview_lq_mp3": "https://freesound.org/data/previews/414/183_394391-lq.mp3",
+        "preview_hq_mp3": "https://freesound.org/data/previews/414/183_394391-hq.mp3",
+        "preview_hq_ogg": "https://freesound.org/data/previews/414/183_394391-hq.ogg",
+    }
+
+    # Check freesound analysis
+    assert type(metadata[default_trackid].get("analysis")) is dict
+    assert metadata[default_trackid].get("analysis") == {
+        "lowlevel": {
+            "average_loudness": 0.0028868783722041064,
+            "silence_rate_30dB": {
+                "min": 1.0,
+                "max": 1.0,
+                "dvar2": 0.0,
+                "dmean2": 0.0,
+                "dmean": 0.0,
+                "var": 0.0,
+                "dvar": 0.0,
+                "mean": 1.0,
+            },
+            "stopFrame": 5.999972947644955,
+            "startFrame": 0.0,
+        },
+        "sfx": {
+            "duration": 0.31421999239346726,
+            "logattacktime": {
+                "max": -1.7424356459399086,
+                "mean": -1.7424356459399086,
+                "min": -1.7424356459399086,
+            },
+            "effective_duration": {
+                "max": 0.3105442902494931,
+                "mean": 0.3105442902494931,
+                "min": 0.3105442902494931,
+            },
+            "temporal_centroid": {
+                "max": 0.5048781145009638,
+                "mean": 0.5048781145009638,
+                "min": 0.5048781145009638,
+            },
+            "temporal_decrease": {
+                "max": 0.010950043054148862,
+                "mean": 0.010950043054148862,
+                "min": 0.010950043054148862,
+            },
+        },
+    }
+
+    # Check audiocommons analysis
+    assert type(metadata[default_trackid].get("ac_analysis")) is dict
+    assert metadata[default_trackid].get("ac_analysis") == {
+        "ac_tempo_confidence": 0.0,
+        "ac_note_confidence": 0.4735875129699707,
+        "ac_depth": 5.746736899993124,
+        "ac_note_midi": 100,
+        "ac_temporal_centroid": 0.17407511174678802,
+        "ac_warmth": 16.86232842111746,
+        "ac_loop": False,
+        "ac_hardness": 78.2319728568732,
+        "ac_loudness": -14.819193840026855,
+        "ac_reverb": False,
+        "ac_roughness": 73.50090654168224,
+        "ac_log_attack_time": -1.741891860961914,
+        "ac_boominess": 0.0,
+        "ac_note_frequency": 2611.37890625,
+        "ac_tempo": 0,
+        "ac_brightness": 86.5129643484791,
+        "ac_sharpness": 86.05006458619545,
+        "ac_tonality_confidence": 0.7178749442100525,
+        "ac_dynamic_range": 0.0,
+        "ac_note_name": "E7",
+        "ac_tonality": "F minor",
+        "ac_single_event": True,
+    }

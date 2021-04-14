@@ -18,7 +18,7 @@ Freesound One-Shot Percussive Sounds Dataset Loader
     characteristics. For this, the percussive-annotator was used.
     * The sounds were then cut or padded to have 1-second length, normalized and downsampled to 16kHz.
     * Finally, the sounds were analyzed with the AudioCommons Extractor, to obtain the AudioCommons timbral
-    descriptors. This information is contained in the 'analysis' folder.
+    descriptors. This information is contained in the 'analysis' folder and also in sound_info_analysis.json.
 
     Dataset Organisation:
     The dataset contains two folders and two files in the root directory:
@@ -28,6 +28,7 @@ Freesound One-Shot Percussive Sounds Dataset Loader
     Two more files are present in the root directory of the dataset: this 'README' and the 'licenses.json'.
     The latter one is a '.json' file containing the name, the username of the uploader and the license for each of
     the sounds in the dataset.
+    * 'sound_info_analysis.json' contains metadata, and Freesound and AudioCommons analysis of each sound.
 
     Authors and Contact:
     This dataset was developed by António Ramires, Pritish Chadna, Xavier Favory, Emilia Gómez and Xavier Serra.
@@ -70,7 +71,12 @@ REMOTES = {
     "analysis": download_utils.RemoteFileMetadata(
         filename="analysis.zip",
         url="https://zenodo.org/record/3665275/files/analysis.zip?download=1",
-        checksum="c67ce39d5aa6c6a7f88eedf7eb7d933e ",
+        checksum="c67ce39d5aa6c6a7f88eedf7eb7d933e",
+    ),
+    "sound_info_analysis": download_utils.RemoteFileMetadata(
+        filename="sound_info_analysis.json",
+        url="https://zenodo.org/record/4687854/files/sound_info_analysis.json?download=1",
+        checksum="b51913a801bd59c2583d5f0e6f3c05b9",
     ),
     "metadata": download_utils.RemoteFileMetadata(
         filename="licenses.txt",
@@ -99,15 +105,19 @@ class Track(core.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets/freesound_one_shot_percussive_sounds`
 
     Attributes:
-        analysis_path (str): local path where the analysis file is stored
+        file_metadata_path (str): local path where the analysis file is stored and from where we get the file metadata
         audio_path(str): local path where audio file is stored
         track_id (str): track id
         filename (str): filename of the track
         username (str): username of the Freesound uploader of the track
         license (str): link to license of the track file
+        tags (list): list of tags of the track
+        freesound_previews (dict): dict of Freesound previews of the track
+        freesound_analysis (str): dict of analysis parameters computed in Freesound using Essentia extractor
+        audiocommons_analysis (str): dict of analysis parameters computed using AudioCommons Extractor
 
     Cached Properties:
-        analysis (dict): analysis parameters of the track in form of Python dictionary
+        file_metadata (dict): metadata parameters of the track file in form of Python dictionary
 
     """
 
@@ -127,8 +137,28 @@ class Track(core.Track):
             metadata,
         )
 
-        self.analysis_path = self.get_path("analysis")
+        self.file_metadata_path = self.get_path("analysis")
         self.audio_path = self.get_path("audio")
+
+    @property
+    def tags(self):
+        return self._track_metadata.get("tags")
+
+    @property
+    def freesound_analysis(self):
+        return self._track_metadata.get("analysis")
+
+    @property
+    def audiocommons_analysis(self):
+        return self._track_metadata.get("ac_analysis")
+
+    @property
+    def license(self):
+        return self._track_metadata.get("license")
+
+    @property
+    def freesound_previews(self):
+        return self._track_metadata.get("previews")
 
     @property
     def filename(self):
@@ -154,8 +184,8 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @core.cached_property
-    def analysis(self) -> Optional[dict]:
-        return load_analysis(self.analysis_path)
+    def file_metadata(self) -> Optional[dict]:
+        return load_file_metadata(self.file_metadata_path)
 
     def to_jams(self):
         """Get the track's data in jams format
@@ -165,7 +195,7 @@ class Track(core.Track):
 
         """
         jams_metadata = dict(self._track_metadata)
-        jams_metadata.update(self.analysis)
+        jams_metadata.update(self.file_metadata)
         return jams_utils.jams_converter(
             audio_path=self.audio_path, metadata=jams_metadata
         )
@@ -186,8 +216,8 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_analysis(fhandle: TextIO) -> Optional[dict]:
-    """Load analysis json file
+def load_file_metadata(fhandle: TextIO) -> Optional[dict]:
+    """Extract file metadata from analysis json file
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to f0 annotation file
@@ -196,9 +226,28 @@ def load_analysis(fhandle: TextIO) -> Optional[dict]:
         analysis: track analysis dict
 
     """
-    analysis = json.load(fhandle)
+    file_metadata = json.load(fhandle)
+    # Dropping analysis keys that are included in dataset general metadata files
+    keys_to_drop = [
+        "loudness",
+        "dynamic_range",
+        "temporal_centroid",
+        "log_attack_time",
+        "single_event",
+        "hardness",
+        "depth",
+        "brightness",
+        "roughness",
+        "warmth",
+        "sharpness",
+        "boominess",
+        "reverb",
+    ]
 
-    return analysis
+    for key in keys_to_drop:
+        file_metadata.pop(key)
+
+    return file_metadata
 
 
 @core.docstring_inherit(core.Dataset)
@@ -219,12 +268,28 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "licenses.txt")
-        if not os.path.exists(metadata_path):
+        license_path = os.path.join(self.data_home, "licenses.txt")
+        if not os.path.exists(license_path):
+            raise FileNotFoundError("Licenses file not found. Did you run .download()?")
+
+        sound_info_path = os.path.join(self.data_home, "sound_info_analysis.json")
+        if not os.path.exists(sound_info_path):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        with open(metadata_path, "r", errors="ignore") as f:
-            metadata = json.load(f)
+        metadata = {}
+        with open(sound_info_path, "r", errors="ignore") as f:
+            sound_info = json.load(f)
+            for track in sound_info:
+                track_id = str(track.pop("id"))
+                metadata[track_id] = track
+
+        with open(license_path, "r", errors="ignore") as f:
+            license_dict = json.load(f)
+            for track_key in license_dict.keys():
+                metadata[track_key]["username"] = license_dict[track_key].get(
+                    "username"
+                )
+                metadata[track_key]["license"] = license_dict[track_key].get("license")
 
         return metadata
 
@@ -232,6 +297,6 @@ class Dataset(core.Dataset):
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_analysis)
-    def load_analysis(self, *args, **kwargs):
-        return load_analysis(*args, **kwargs)
+    @core.copy_docs(load_file_metadata)
+    def load_file_metadata(self, *args, **kwargs):
+        return load_file_metadata(*args, **kwargs)

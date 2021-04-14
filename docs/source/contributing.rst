@@ -13,7 +13,7 @@ your contribution, you can always submit an issue or open a discussion in the re
 
 To reduce friction, we may make commits on top of contributor's PRs. If you do not want us
 to, please tag your PR with ``please-do-not-edit``.
-
+exit
 
 Installing mirdata for development purposes
 ###########################################

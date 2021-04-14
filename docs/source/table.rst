@@ -92,7 +92,8 @@
    * - Freesound One-Shot Percussive Sounds
      - - audio: ✅
        - annotations: ✅
-     - Metadata & analysis
+     - - :ref:`tags`
+       - Analysis
      - 10254
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
