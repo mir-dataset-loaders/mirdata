@@ -7,8 +7,26 @@
     The dataset includes recordings of an amateur vocal ensemble performing two
     choir pieces in full choir and quartet settings (total duration 55min 30sec).
     The audio data was recorded during an MIR seminar at Schloss Dagstuhl using
-    different close-up microphones (dynamic, headset and larynx microphones) to
-    capture the individual singers’ voices.
+    different close-up microphones to capture the individual singers’ voices:
+
+    * Larynx microphone (LRX): contact microphone attached to the singer's throat.
+    * Dynamic microphone (DYN): handheld dynamic microphone.
+    * Headset microphone (HSM): microphone close to the singer's mouth.
+
+    LRX, DYN and HSM recordings are provided on the Track level.
+    All tracks in the dataset have a LRX recording, while only a subset has DYN and HSM recordings.
+
+    In addition to the close-up microphone tracks, the dataset also provides the following recordings:
+
+    * Room microphone mixdown (STM): mixdown of the stereo room microphone.
+    * Room microphone left (STL): left channel of the stereo microphone.
+    * Room microphone right (STR): right channel of the stereo microphone.
+    * Room microphone mixdown with reverb (StereoReverb_STM): STM signal with artificial reverb.
+    * Piano left (SPL): left channel of the piano accompaniment.
+    * Piano right (SPR): right channel of the piano accompaniment.
+
+    All room microphone and piano recordings are provided on the Multitrack level.
+    All multitracks have room microphone signals, while only a subset has piano recordings.
 
     For more details, we refer to:
     Sebastian Rosenzweig (1), Helena Cuesta (2), Christof Weiß (1),
@@ -265,7 +283,7 @@ class MultiTrack(core.MultiTrack):
         return load_beat(self.beat_path)
 
     @property
-    def audio_stm(self) -> Tuple[np.ndarray, float]:
+    def audio_stm(self) -> Optional[Tuple[np.ndarray, float]]:
         """The audio for the room mic (mono mixdown)
 
         Returns:
@@ -276,7 +294,7 @@ class MultiTrack(core.MultiTrack):
         return load_audio(self.audio_stm_path)
 
     @property
-    def audio_str(self) -> Tuple[np.ndarray, float]:
+    def audio_str(self) -> Optional[Tuple[np.ndarray, float]]:
         """The audio for the room mic (right channel)
 
         Returns:
@@ -287,7 +305,7 @@ class MultiTrack(core.MultiTrack):
         return load_audio(self.audio_str_path)
 
     @property
-    def audio_stl(self) -> Tuple[np.ndarray, float]:
+    def audio_stl(self) -> Optional[Tuple[np.ndarray, float]]:
         """The audio for the room mic (left channel)
 
         Returns:
@@ -298,7 +316,7 @@ class MultiTrack(core.MultiTrack):
         return load_audio(self.audio_stl_path)
 
     @property
-    def audio_rev(self) -> Tuple[np.ndarray, float]:
+    def audio_rev(self) -> Optional[Tuple[np.ndarray, float]]:
         """The audio for the room mic with artifical reverb (mono mixdown)
 
         Returns:
@@ -377,10 +395,7 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
         else:
             confs.append(float(1.0))
 
-    times = np.array(times)
-    freqs = np.array(freqs)
-    confs = np.array(confs)
-    return annotations.F0Data(times, freqs, confs)
+    return annotations.F0Data(np.array(times), np.array(freqs), np.array(confs))
 
 
 @io.coerce_to_string_io
@@ -426,9 +441,7 @@ def load_beat(fhandle: TextIO) -> annotations.BeatData:
             position += 1
         positions.append(position)
 
-    times = np.array(times)
-    positions = np.array(positions)
-    return annotations.BeatData(times, positions)
+    return annotations.BeatData(np.array(times), np.array(positions))
 
 
 @core.docstring_inherit(core.Dataset)

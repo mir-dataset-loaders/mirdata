@@ -2,8 +2,6 @@ import argparse
 import importlib
 import itertools
 import types
-import sys
-sys.path.append('../mirdata')
 import mirdata
 
 
