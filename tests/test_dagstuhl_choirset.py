@@ -14,29 +14,31 @@ def test_track():
 
     expected_attributes = {
         "track_id": "DCS_LI_QuartetB_Take04_B2",
-        "audio_paths": [
-            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_DYN.wav",
-            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_HSM.wav",
-            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_LRX.wav",
-        ],
-        "f0_paths": [
-            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv",
-            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_HSM.csv",
-            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_LRX.csv",
-            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_DYN.csv",
-            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_HSM.csv",
-            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_LRX.csv",
-            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv",
-        ],
-        "score_paths": [
-            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv"
-        ],
+        "audio_dyn_path": "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_DYN.wav",
+        "audio_hsm_path": "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_HSM.wav",
+        "audio_lrx_path": "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_LRX.wav",
+        "f0_crepe_dyn_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv",
+        "f0_crepe_hsm_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_HSM.csv",
+        "f0_crepe_lrx_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_LRX.csv",
+        "f0_pyin_dyn_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_DYN.csv",
+        "f0_pyin_hsm_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_HSM.csv",
+        "f0_pyin_lrx_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_LRX.csv",
+        "f0_manual_lrx_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv",
+        "score_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv",
     }
 
     expected_property_types = {
-        "f0": annotations.F0Data,
+        "f0_crepe_dyn": annotations.F0Data,
+        "f0_crepe_hsm": annotations.F0Data,
+        "f0_crepe_lrx": annotations.F0Data,
+        "f0_pyin_dyn": annotations.F0Data,
+        "f0_pyin_hsm": annotations.F0Data,
+        "f0_pyin_lrx": annotations.F0Data,
+        "f0_manual_lrx": annotations.F0Data,
         "score": annotations.NoteData,
-        "audio": tuple,
+        "audio_dyn": tuple,
+        "audio_hsm": tuple,
+        "audio_lrx": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -48,48 +50,119 @@ def test_audio_track():
     dataset = dagstuhl_choirset.Dataset(data_home)
     track = dataset.track(default_trackid)
 
-    y, sr = track.audio()
+    y, sr = track.audio_dyn
     assert sr == 22050
     assert y.shape == (22050,)
 
-    y, sr = track.audio("LRX")
+    y, sr = track.audio_lrx
     assert sr == 22050
     assert y.shape == (22050,)
 
-    y, sr = track.audio("HSM")
+    y, sr = track.audio_hsm
     assert sr == 22050
     assert y.shape == (22050,)
-
-    y, sr = track.audio("DYN")
-    assert sr == 22050
-    assert y.shape == (22050,)
-
-    with pytest.raises(ValueError):
-        y, sr = track.audio("abc")
 
     default_trackid = "DCS_SE_QuartetB_Tuning02_S1"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
     dataset = dagstuhl_choirset.Dataset(data_home)
     track = dataset.track(default_trackid)
-    assert None == track.audio("hsm")
+    assert track.audio_hsm is None
 
 
-def test_f0_track():
-    default_trackid = "DCS_LI_QuartetB_Take04_B2"
-    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home)
-    track = dataset.track(default_trackid)
+def test_load_f0():
+    f0_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv"
+    f0 = dagstuhl_choirset.load_f0(f0_path)
+    assert isinstance(f0, annotations.F0Data)
 
-    with pytest.raises(ValueError):
-        f0_traj = track.f0(mic="lrxa", ann="crepe")
+    assert np.array_equal(f0.times, np.array([0.0, 0.01, 0.02, 0.03, 0.04]))
+    assert np.array_equal(
+        f0.frequencies,
+        np.array(
+            [
+                204.329447420415,
+                205.1518935649711,
+                205.52465246964104,
+                205.45427855215388,
+                205.51663864023027,
+            ]
+        ),
+    )
+    assert np.array_equal(
+        f0.confidence,
+        np.array(
+            [
+                0.050135254859924316,
+                0.02886691689491272,
+                0.0374043881893158,
+                0.04053276777267456,
+                0.053232729434967034,
+            ]
+        ),
+    )
 
-    with pytest.raises(ValueError):
-        f0_traj = track.f0(mic="lrx", ann="crepae")
+    f0_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv"
+    f0 = dagstuhl_choirset.load_f0(f0_path)
+    assert isinstance(f0, annotations.F0Data)
 
-    with pytest.raises(ValueError):
-        f0_traj = track.f0(mic="lrdsx", ann="credfpae")
+    assert np.array_equal(
+        f0.times,
+        np.array([0.400544218, 0.406349206, 0.412154195, 0.417959184, 0.423764172]),
+    )
+    assert np.array_equal(
+        f0.frequencies,
+        np.array(
+            [
+                129.387,
+                126.634,
+                125.182,
+                124.943,
+                124.491,
+            ]
+        ),
+    )
+    assert np.array_equal(f0.confidence, np.array([1, 1, 1, 1, 1]))
 
-    assert None == track.f0(mic="dyn", ann="manual")
+
+def test_load_score():
+
+    score_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv"
+    score = dagstuhl_choirset.load_score(score_path)
+    assert isinstance(score, annotations.NoteData)
+
+    assert np.array_equal(
+        score.intervals,
+        np.array(
+            [
+                [0.1600, 2.5165],
+                [2.5165, 3.3487],
+                [3.3487, 4.8130],
+                [4.8130, 5.7252],
+                [5.7252, 6.3774],
+            ]
+        ),
+    )
+
+    assert np.allclose(
+        score.notes,
+        np.array(
+            [130.81278265, 130.81278265, 130.81278265, 130.81278265, 130.81278265]
+        ),
+    )
+    assert score.confidence is None
+
+
+def test_load_beat():
+
+    beat_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
+    beat = dagstuhl_choirset.load_beat(beat_path)
+    assert isinstance(beat, annotations.BeatData)
+
+    assert np.array_equal(
+        beat.times,
+        np.array([0.174149660, 0.949115646, 1.724081633, 2.525170068, 3.308843537]),
+    )
+
+    assert np.array_equal(beat.positions, np.array([1, 2, 3, 4, 1]))
 
 
 def test_score_track():
@@ -98,7 +171,7 @@ def test_score_track():
     dataset = dagstuhl_choirset.Dataset(data_home)
     track = dataset.track(default_trackid)
 
-    assert None == track.score()
+    assert track.score is None
 
 
 def test_to_jams_track():
@@ -146,21 +219,18 @@ def test_multitrack():
 
     expected_attributes = {
         "mtrack_id": "DCS_LI_QuartetB_Take04",
-        "track_audio_property": "audio",
+        "audio_stm_path": "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STM.wav",
+        "audio_str_path": "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STR.wav",
+        "audio_stl_path": "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STL.wav",
+        "audio_rev_path": "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_StereoReverb_STM.wav",
+        "audio_spl_path": None,
+        "audio_spr_path": None,
+        "beat_path": "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv",
         "track_ids": [
             "DCS_LI_QuartetB_Take04_A2",
             "DCS_LI_QuartetB_Take04_B2",
             "DCS_LI_QuartetB_Take04_S1",
             "DCS_LI_QuartetB_Take04_T2",
-        ],
-        "audio_paths": [
-            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STM.wav",
-            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STR.wav",
-            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STL.wav",
-            "tests/resources/mir_datasets/dagstuhl_choirset/audio_wav_22050_mono/DCS_LI_QuartetB_Take04_StereoReverb_STM.wav",
-        ],
-        "beat_paths": [
-            "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
         ],
     }
 
@@ -168,7 +238,12 @@ def test_multitrack():
         "tracks": dict,
         "track_audio_property": str,
         "beat": annotations.BeatData,
-        "audio": tuple,
+        "audio_stm": tuple,
+        "audio_str": tuple,
+        "audio_stl": tuple,
+        "audio_rev": tuple,
+        "audio_spl": type(None),
+        "audio_spr": type(None),
     }
 
     run_track_tests(mtrack, expected_attributes, expected_property_types)
@@ -181,7 +256,7 @@ def test_beat_multitrack():
     dataset = dagstuhl_choirset.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
 
-    assert None == mtrack.beat()
+    assert mtrack.beat is None
 
 
 def test_audio_multitrack():
@@ -190,26 +265,23 @@ def test_audio_multitrack():
     dataset = dagstuhl_choirset.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
 
-    y, sr = mtrack.audio("STM")
+    y, sr = mtrack.audio_stm
     assert sr == 22050
     assert y.shape == (22050,)
 
-    y, sr = mtrack.audio("stereoreverb_stm")
+    y, sr = mtrack.audio_rev
     assert sr == 22050
     assert y.shape == (22050,)
 
-    y, sr = mtrack.audio("STL")
+    y, sr = mtrack.audio_stl
     assert sr == 22050
     assert y.shape == (22050,)
 
-    y, sr = mtrack.audio("STR")
+    y, sr = mtrack.audio_str
     assert sr == 22050
     assert y.shape == (22050,)
 
-    assert None == mtrack.audio("spl")
-
-    with pytest.raises(ValueError):
-        y, sr = mtrack.audio("abc")
+    assert mtrack.audio_spl is None
 
 
 def test_to_jams_multitrack():
@@ -229,4 +301,4 @@ def test_to_jams_multitrack():
         2.525170068,
         3.308843537,
     ]
-    assert [beat.value for beat in beats] == [1, 2, 3, 4, 5]
+    assert [beat.value for beat in beats] == [1, 2, 3, 4, 1]
