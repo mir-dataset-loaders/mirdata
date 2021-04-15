@@ -123,6 +123,13 @@ Musical note events, typically encoded as sequences of start time, end time, lab
 indicates a musical pitch, which may be in a number of formats/granularities, including midi note numbers,
 Hertz, or pitch class.
 
+.. _phonemes:
+
+Phonemes
+^^^^^^^^
+Sung phonemes of the lead vocal lyrics. Likewise the annotations of lyrics, it can be represented as a stream
+of characters, or it can be time-aligned by start and end times, and the phoneme comprised in each interval.
+
 .. _phrases:
 
 Phrases
@@ -168,6 +175,14 @@ Stroke Name
 ^^^^^^^^^^^
 An open "tag" to identify an instrument stroke name or type. Used for instruments that have specific
 stroke labels.
+
+.. _syllables:
+
+Syllables
+^^^^^^^^^
+Additional representation of the sung lyrics but structured as syllables instead of complete sentences. It can
+be annotated as time-aligned events where the events are the syllables happening at certain time
+intervals. Otherwise, they can be represented as a stream of strings, grouped by meaningful syllable structures.
 
 .. _tonic:
 

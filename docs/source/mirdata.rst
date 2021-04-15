@@ -51,6 +51,14 @@ cante100
    :inherited-members:
 
 
+compmusic_jingju_acappella
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_jingju_acappella
+   :members:
+   :inherited-members:
+
+
 compmusic_otmm_makam
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -186,6 +194,13 @@ phenicx_anechoic
    :inherited-members:
 
 
+queen
+^^^^^^^
+
+.. automodule:: mirdata.datasets.queen
+   :members:
+   
+
 rwc_classical
 ^^^^^^^^^^^^^
 
@@ -246,6 +261,14 @@ tonality_classicaldb
 ^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.tonality_classicaldb
+   :members:
+   :inherited-members:
+
+
+tonas
+^^^^^
+
+.. automodule:: mirdata.datasets.tonas
    :members:
    :inherited-members:
 

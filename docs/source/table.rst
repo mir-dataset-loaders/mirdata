@@ -24,6 +24,7 @@
      - - :ref:`beats`
        - :ref:`chords`
        - :ref:`sections`
+       - :ref:`key`
        - :ref:`vocal-activity`
      - 180
      - ❌
@@ -51,6 +52,20 @@
      - :ref:`f0`
      - 100
      - :cante:`\ `
+
+   * - .. line-block::
+
+        (CompMusic)
+        Jingju A Cappella
+
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`lyrics`
+       - :ref:`phonemes`
+       - :ref:`syllables`
+     - 82
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - .. line-block::
 
@@ -207,6 +222,15 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - Queen
+     - - audio: ❌
+       - annotations: ✅
+     - - :ref:`chords`
+       - :ref:`sections`
+       - :ref:`key`
+     - 51
+     - ❌          
+
    * - RWC classical
      - - audio: ❌
        - annotations: ✅
@@ -286,3 +310,11 @@
      - 881
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - TONAS
+     - - audio: 🔑
+       - annotations: 🔑
+     - - :ref:`f0`
+       - :ref:`notes`
+     - 72
+     - :tonas:`\ `
