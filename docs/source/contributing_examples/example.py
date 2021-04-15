@@ -17,15 +17,14 @@ import csv
 import logging
 import json
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 # -- import whatever you need here and remove
 # -- example imports you won't use
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core, annotations
+from mirdata import download_utils, jams_utils, core, annotations
 
 # -- Add any relevant citations here
 BIBTEX = """
@@ -34,6 +33,12 @@ BIBTEX = """
   title = "The Gnats and Gnus Document Preparation System",
   journal = "G-Animal's Journal",
   year = "1986"
+},
+@article{article-minimal2,
+  author = "L[eslie] B. Lamport",
+  title = "The Gnats and Gnus Document Preparation System 2",
+  journal = "G-Animal's Journal",
+  year = "1987"
 }
 """
 
@@ -98,12 +103,19 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
         self.annotation_path = self.get_path("annotation")
 
+    # -- If the dataset has metadata that needs to be accessed by Tracks,
+    # -- such as a table mapping track ids to composers for the full dataset,
+    # -- add them as properties like instead of in the __init__.
+    @property
+    def composer(self) -> Optional[str]:
+        return self._track_metadata.get("composer")
+
     # -- `annotation` will behave like an attribute, but it will only be loaded
     # -- and saved when someone accesses it. Useful when loading slightly
     # -- bigger files or for bigger datasets. By default, we make any time
     # -- series data loaded from a file a cached property
     @core.cached_property
-    def annotation(self):
+    def annotation(self) -> Optional[annotations.EventData]:
         """output type: description of output"""
         return load_annotation(self.annotation_path)
 
@@ -111,7 +123,7 @@ class Track(core.Track):
     # -- when someone accesses it and it won't be stored. By default, we make
     # -- any memory heavy information (like audio) properties
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
         return load_audio(self.audio_path)
 
@@ -161,12 +173,12 @@ class MultiTrack(core.MultiTrack):
 
     # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
-    def annotation(self):
+    def annotation(self) -> Optional[annotations.EventData]:
         """output type: description of output"""
         return load_annotation(self.annotation_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
         return load_audio(self.audio_path)
 
@@ -182,8 +194,12 @@ class MultiTrack(core.MultiTrack):
         # -- see the documentation for `jams_utils.jams_converter for all fields
 
 
+# -- this decorator allows this function to take a string or an open bytes file as input
+# -- and in either case converts it to an open file handle.
+# -- It also checks if the file exists
+# -- and, if None is passed, None will be returned 
 @io.coerce_to_bytes_io
-def load_audio(fhandle):
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Example audio file.
 
     Args:
@@ -201,14 +217,15 @@ def load_audio(fhandle):
 
 
 # -- Write any necessary loader functions for loading the dataset's data
+
+# -- this decorator allows this function to take a string or an open file as input
+# -- and in either case converts it to an open file handle.
+# -- It also checks if the file exists
+# -- and, if None is passed, None will be returned 
 @io.coerce_to_string_io
-def load_annotation(fhandle):
+def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
 
-    # -- if there are some file paths for this annotation type in this dataset's
-    # -- index that are None/null, uncomment the lines below.
-    # if annotation_path is None:
-    #     return None
-
+    # -- because of the decorator, the file is already open
     reader = csv.reader(fhandle, delimiter=' ')
     intervals = []
     annotation = []
