@@ -2,7 +2,6 @@ import argparse
 import importlib
 import itertools
 import types
-
 import mirdata
 
 
@@ -22,6 +21,7 @@ TEST_TRACKIDS = {
     "rwc_popular": "RM-P001",
     "salami": "2",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
+    "dagstuhl_choirset": "DCS_LI_QuartetB_Take04_B2",
 }
 
 
@@ -61,7 +61,7 @@ def get_attributes_and_properties(class_instance):
 
 
 def main(args):
-    data_home = "tests/resources/mir_datasets/{}".format(dataset.name)
+    data_home = "tests/resources/mir_datasets/{}".format(args.dataset)
     print(data_home)
 
     dataset = mirdata.initialize(args.dataset, data_home=data_home)
