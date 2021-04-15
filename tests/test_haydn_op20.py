@@ -47,6 +47,7 @@ def test_to_jam():
         jam["sandbox"]["midi_path"]
         == "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
     ), "duration does not match expected"
+
     assert isinstance(jam["sandbox"]["chords_music21"], list)
     assert jam["sandbox"]["chords_music21"][0]["time"] == 0
     assert jam["sandbox"]["chords_music21"][0]["chord"] == "Eb-major triad"
