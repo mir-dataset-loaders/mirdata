@@ -130,7 +130,7 @@
      - :ikala:`\ `
 
    * - Haydn op20
-     - - audio: ❌
+     - - audio: N/A
        - midi: ✅
        - scores: ✅
        - annotations: ✅
