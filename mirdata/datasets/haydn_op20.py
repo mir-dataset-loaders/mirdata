@@ -140,6 +140,10 @@ class Track(core.Track):
         return load_chords(self.humdrum_annotated_path)
 
     @core.cached_property
+    def chords_music21(self) -> Optional[List[dict]]:
+        return load_chords_music21(self.humdrum_annotated_path)
+
+    @core.cached_property
     def duration(self) -> int:
         return self.chords[-1]["time"]
 
@@ -155,6 +159,8 @@ class Track(core.Track):
 
         """
         return jams_utils.jams_converter(
+            chord_data=[(self.chords, None)],
+            key_data=[(self.keys, None)],
             metadata={
                 "duration": self.duration,
                 "title": self.title,
@@ -225,12 +231,10 @@ def load_key(fhandle: TextIO, resolution=28):
     start_times, end_times, key_names = [0], [], [str(keys[0]['key'])]
     for ii, k in enumerate(keys):
         if str(k['key']).replace('-', 'b') != key_names[-1]:
-            end_times.append(keys[ii - 1]['time'])
+            end_times.append(keys[ii]['time'] - 1)
             start_times.append(keys[ii]['time'])
             key_names.append(str(keys[ii]['key']).replace('-', 'b'))
     end_times.append(keys[-1]['time'])
-    for s, e, k in zip(start_times, end_times, key_names):
-        print(s, e, k)
     return KeyData(np.array([start_times, end_times]).astype(float).T, key_names)
 
 
@@ -286,15 +290,14 @@ def load_roman_numerals(fhandle: TextIO, resolution=28):
     return annotations
 
 
-@io.coerce_to_string_io
-def load_chords(fhandle: TextIO, resolution: int = 28):
-    """Load haydn op20 chords data from a file
+def load_chords_base(fhandle: TextIO, resolution: int = 28):
+    """Load haydn op20 chords data from a file in music21 format
 
-    `Args:
-        fhandle (str or file-like): path to chord annotations
+        `Args:
+            fhandle (str or file-like): path to chord annotations
 
-    Returns:
-        List[dict`]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
+        Returns:
+            List[dict`]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
 
     """
     _, rna = split_score_annotations(fhandle)
@@ -304,6 +307,41 @@ def load_chords(fhandle: TextIO, resolution: int = 28):
         chord = rn.pitchedCommonName
         annotations.append({"time": time, "chord": chord})
     return annotations
+
+@io.coerce_to_string_io
+def load_chords(fhandle: TextIO, resolution: int = 28):
+    """Load haydn op20 chords data from a file
+    `Args:
+        fhandle (str or file-like): path to chord annotations
+
+    Returns:
+        List[dict`]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
+
+    """
+    chords = load_chords_base(fhandle, resolution)
+    start_times, end_times, chord_names = [0], [], [str(chords[0]['chord'])]
+    for ii, k in enumerate(chords):
+        if str(k['chord']).replace('-', 'b') != chord_names[-1]:
+            end_times.append(chords[ii]['time'] - 1)
+            start_times.append(chords[ii]['time'])
+            chord_names.append(str(chords[ii]['chord']).replace('-', 'b'))
+    end_times.append(chords[-1]['time'])
+    for s, e, k in zip(start_times, end_times, chord_names):
+        print(s, e, k)
+
+
+@io.coerce_to_string_io
+def load_chords_music21(fhandle: TextIO, resolution: int = 28):
+    """Load haydn op20 chords data from a file in music21 format
+
+    `Args:
+        fhandle (str or file-like): path to chord annotations
+
+    Returns:
+        List[dict`]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
+
+    """
+    return load_chords_base(fhandle, resolution)
 
 
 @core.docstring_inherit(core.Dataset)
@@ -331,9 +369,9 @@ class Dataset(core.Dataset):
     def load_key(self, *args, **kwargs):
         return load_key_music21(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @core.copy_docs(load_chords_music21)
     def load_chords(self, *args, **kwargs):
-        return load_chords(*args, **kwargs)
+        return load_chords_music21(*args, **kwargs)
 
     @core.copy_docs(load_roman_numerals)
     def load_roman_numerals(self, *args, **kwargs):
