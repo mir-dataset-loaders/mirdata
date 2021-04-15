@@ -1,0 +1,1819 @@
+{
+  "version": 7.0,
+  "tracks": {
+    "lsxp-Guo_liao_yi-Wen_zhao_guan01-upf": {
+      "audio": [
+        "wav/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan01-upf.wav",
+        "2d2af70fcfd08664c0491681cc5815bc"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan01-upf_phoneme.txt",
+        "0ec3cf09e37ad5b51754fb3b9dc2415f"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan01-upf_phrase_char.txt",
+        "b7d96dd4cb4b6025d38a2c8408c7691f"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan01-upf_phrase.txt",
+        "6c862e54e74df622d0ac266e0c5618a8"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan01-upf_syllable.txt",
+        "3bd02a53d274291bb253e689631204c4"
+      ]
+    },
+    "lsxp-Shi_ye_shuo-Ding_jun_shan-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Shi_ye_shuo-Ding_jun_shan-qm.wav",
+        "2b040af767d9dda8ec3eadb5620bf1b5"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Shi_ye_shuo-Ding_jun_shan-qm_phoneme.txt",
+        "7c67da39cb7a3ba54df80b4e8560717d"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Shi_ye_shuo-Ding_jun_shan-qm_phrase_char.txt",
+        "6a2a01c3d4a57cb9b3530ffc1536058a"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Shi_ye_shuo-Ding_jun_shan-qm_phrase.txt",
+        "d4402211562178b7502a7309135d5121"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Shi_ye_shuo-Ding_jun_shan-qm_syllable.txt",
+        "67bf73ca23f3fd7e3ee11a70e4919475"
+      ]
+    },
+    "lsxp-Chao_xia_ying-Sha_jia_bang-lon": {
+      "audio": [
+        "wav/laosheng/lsxp-Chao_xia_ying-Sha_jia_bang-lon.wav",
+        "d0822fce597c537b9663fec2c92c9d74"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "lsxp-Jiang_shen_er-San_jia_dian02-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Jiang_shen_er-San_jia_dian02-qm.wav",
+        "53fad643f1f88a789b7869a5c010ae7d"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian02-qm_phoneme.txt",
+        "2b82defbec0332965a23ecb3d013b2d7"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian02-qm_phrase_char.txt",
+        "af3d21b4d88f338148cc293b17fd297a"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian02-qm_phrase.txt",
+        "500bf71a2e6864a51ba7cc3712ba3994"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian02-qm_syllable.txt",
+        "cca81041436c72cbb0f153176dedea02"
+      ]
+    },
+    "lsxp-Shen_gong_wu-Gan_lu_si-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Shen_gong_wu-Gan_lu_si-qm.wav",
+        "89690abb5631cc9ac4e0c66cfe37340c"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Shen_gong_wu-Gan_lu_si-qm_phoneme.txt",
+        "275d03ffc9ae23d6feb5100366fd7fc9"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Shen_gong_wu-Gan_lu_si-qm_phrase_char.txt",
+        "7102409346d9fb398a578f37589a34d5"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Shen_gong_wu-Gan_lu_si-qm_phrase.txt",
+        "1d3affe1980f61b3d8fb4464f769fc3e"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Shen_gong_wu-Gan_lu_si-qm_syllable.txt",
+        "67f1c0ace7b50f6d9a2097d2e43cc9d9"
+      ]
+    },
+    "lsxp-Huai_nan_wang-Huai_he_ying02-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Huai_nan_wang-Huai_he_ying02-qm.WAV",
+        "0ca71910216700d64df0bb49c0498429"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying02-qm_phoneme.txt",
+        "888032ded7604d7603514368b1558429"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying02-qm_phrase_char.txt",
+        "eed569f33905dabae4c9a7b90c8732be"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying02-qm_phrase.txt",
+        "c2d44ef89c365b16d6e8f9f880ce140e"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying02-qm_syllable.txt",
+        "cf90900aec7e06fd248eac8f2f921e99"
+      ]
+    },
+    "lsxp-Xi_ri_you-Zhu_lian_zhai-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Xi_ri_you-Zhu_lian_zhai-qm.wav",
+        "d1e58e708d92f963c952ff8c8ee20817"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Xi_ri_you-Zhu_lian_zhai-qm_phoneme.txt",
+        "d23e3544e0ae0d96d9f765b7d7ea6845"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Xi_ri_you-Zhu_lian_zhai-qm_phrase_char.txt",
+        "15d8671973ef85656831161d56611dea"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Xi_ri_you-Zhu_lian_zhai-qm_phrase.txt",
+        "2224ff4c73c2f190a20160c434e844bf"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Xi_ri_you-Zhu_lian_zhai-qm_syllable.txt",
+        "85321214b4cad2cbd6a48dff06948fdf"
+      ]
+    },
+    "lseh-Zi_na_ri-Hong_yang_dong-qm": {
+      "audio": [
+        "wav/laosheng/lseh-Zi_na_ri-Hong_yang_dong-qm.wav",
+        "b22e32bad2e715928cfd15b826dcaae0"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lseh-Zi_na_ri-Hong_yang_dong-qm_phoneme.txt",
+        "3bd2a193d47bee5bf3eaa62ec8a85683"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lseh-Zi_na_ri-Hong_yang_dong-qm_phrase_char.txt",
+        "e8bb1a2beed8bb1ed08869814faa5ba4"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lseh-Zi_na_ri-Hong_yang_dong-qm_phrase.txt",
+        "5c875d5c65e72c5141266120867321ec"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lseh-Zi_na_ri-Hong_yang_dong-qm_syllable.txt",
+        "b841f8f30fdaa9253ae2ea94b31f26fb"
+      ]
+    },
+    "lsxp-Guo_liao_yi-Wen_zhao_guan02-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan02-qm.wav",
+        "94d198280deeb275cc638b23c0212e72"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan02-qm_phoneme.txt",
+        "4711348a45ea9f9d580d044d1f67a344"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan02-qm_phrase_char.txt",
+        "a594b47f68f73fdfc48131e41801250e"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan02-qm_phrase.txt",
+        "969b8d25adae62a97be7e36916bf918b"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Guo_liao_yi-Wen_zhao_guan02-qm_syllable.txt",
+        "d0219a302e7c954214db8b8c096a39db"
+      ]
+    },
+    "lsxp-Huai_nan_wang-Huai_he_ying01-lon": {
+      "audio": [
+        "wav/laosheng/lsxp-Huai_nan_wang-Huai_he_ying01-lon.wav",
+        "073f5c898a3b36eda3257c1e0a0b01da"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying01-lon_phoneme.txt",
+        "86210519bab9e9beade174b2744df76c"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying01-lon_phrase_char.txt",
+        "458ce897c0f6dcb27159294144196ca6"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying01-lon_phrase.txt",
+        "4110384d270fd37e1a047bd5f240af9b"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Huai_nan_wang-Huai_he_ying01-lon_syllable.txt",
+        "b9eb89d85ce999864c6045dbbf8a6329"
+      ]
+    },
+    "lsxp-Quan_qian_sui-Gan_lu_si-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Quan_qian_sui-Gan_lu_si-qm.wav",
+        "0000f580496076da6f6973fe0cd9ff69"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Quan_qian_sui-Gan_lu_si-qm_phoneme.txt",
+        "1f66f403ee70ecf4ad9b331677817a0b"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Quan_qian_sui-Gan_lu_si-qm_phrase_char.txt",
+        "1e0690482cc4b00c652838ae93b358c8"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Quan_qian_sui-Gan_lu_si-qm_phrase.txt",
+        "b4caefb147ebe7e0f8b166af4465d090"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Quan_qian_sui-Gan_lu_si-qm_syllable.txt",
+        "a5bc08ff43f88328cb5c0739279f1c66"
+      ]
+    },
+    "lsfxp-Yang_si_lang-Si_lang_tan_mu-lon": {
+      "audio": [
+        "wav/laosheng/lsfxp-Yang_si_lang-Si_lang_tan_mu-lon.wav",
+        "4271b6395a13e117421e45ec048448a4"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsfxp-Yang_si_lang-Si_lang_tan_mu-lon_phoneme.txt",
+        "3cf7d84f662338b36c6a3a0b934965ce"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsfxp-Yang_si_lang-Si_lang_tan_mu-lon_phrase_char.txt",
+        "dbe19649f31086e0a5bea04c9e65cc78"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsfxp-Yang_si_lang-Si_lang_tan_mu-lon_phrase.txt",
+        "016b3576bbeef4b725275e6519dc70d5"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsfxp-Yang_si_lang-Si_lang_tan_mu-lon_syllable.txt",
+        "e789fdcf39a20922ce5e7c675899aa6c"
+      ]
+    },
+    "lsxp-Qian_bai_wan-Si_lang_tang_mu02-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Qian_bai_wan-Si_lang_tang_mu02-qm.wav",
+        "389823368b31341e077d7e81f559f1b2"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "lsxp-Wo_zheng_zai-Kong_cheng_ji03-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji03-qm.wav",
+        "789fa4ccd1c700a55d164c18ffb8b06d"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "lsxp-Wo_zheng_zai-Kong_cheng_ji01-upf": {
+      "audio": [
+        "wav/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji01-upf.wav",
+        "f58df7ca5aceeaaaca56c00b56bc20f7"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji01-upf_phoneme.txt",
+        "bb942bfbc8ae68fbe85ec6e15f6c4eb6"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji01-upf_phrase_char.txt",
+        "523122d7b782db005491ec86812bed23"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji01-upf_phrase.txt",
+        "d544413ea9493fadace4aef45fd9b93c"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji01-upf_syllable.txt",
+        "69ca32eeb384b45e3bd37be76ff147f5"
+      ]
+    },
+    "lsxp-Jiang_shen_er-San_jia_dian03-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Jiang_shen_er-San_jia_dian03-qm.wav",
+        "f9b5602fbc355e355be098b109704e86"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "lsxp-Huai_nan_wang-Huai_he_ying03-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Huai_nan_wang-Huai_he_ying03-qm.WAV",
+        "c1919bf620a29e875331faf2a40fad13"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "lsxp-Jiang_shen_er-San_jia_dian01-2-upf": {
+      "audio": [
+        "wav/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-2-upf.wav",
+        "0aefb68124ffc1f0595b7554422dea04"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-2-upf_phoneme.txt",
+        "320f645edfe82aab56640dfbd547631a"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-2-upf_phrase_char.txt",
+        "2d916d0b5376e1bce429eb9920c3ea0f"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-2-upf_phrase.txt",
+        "fadabc3a8509fb108426b9b82f924326"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-2-upf_syllable.txt",
+        "05cff4afe4ab953e2f2704c53a8899d5"
+      ]
+    },
+    "lseh-Tan_Yang_jia-Hong_yang_dong-qm": {
+      "audio": [
+        "wav/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm.wav",
+        "5efe78979789687adc2921501587388e"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm_phoneme.txt",
+        "a5dc6529c593f475c86058bc6cd34e41"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm_phrase_char.txt",
+        "6767ab429cfe31489c795880931420da"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm_phrase.txt",
+        "af7e90849d23dadf33bd065f46b9a975"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm_syllable.txt",
+        "e40d7ede55e848bc22fd47b7f7460f83"
+      ]
+    },
+    "lseh-Wo_ben_shi-Qiong_lin_yan-qm": {
+      "audio": [
+        "wav/laosheng/lseh-Wo_ben_shi-Qiong_lin_yan-qm.wav",
+        "293d623fb9854320cbfd556582d97ea7"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lseh-Wo_ben_shi-Qiong_lin_yan-qm_phoneme.txt",
+        "13b99a45b07c7ee61a51b5aa717c8269"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lseh-Wo_ben_shi-Qiong_lin_yan-qm_phrase_char.txt",
+        "18cff3e5497d3cff5939a5b70078838e"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lseh-Wo_ben_shi-Qiong_lin_yan-qm_phrase.txt",
+        "d60234fdc3fe36881c95b210187af87a"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lseh-Wo_ben_shi-Qiong_lin_yan-qm_syllable.txt",
+        "ea3fe2675820523d9fd7727ab8093663"
+      ]
+    },
+    "lsxp-Wo_zheng_zai-Kong_cheng_ji04-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji04-qm.wav",
+        "e5e0e0f553912fea7722e893c0edf4ca"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji04-qm_phoneme.txt",
+        "9527a7370318c4c54c4b080d1b990d96"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji04-qm_phrase_char.txt",
+        "5bd3b78ccde761b4971a9ce73d776c57"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji04-qm_phrase.txt",
+        "d662f140f9528f645c7b2d179aa873ad"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji04-qm_syllable.txt",
+        "2821a8b5b906e3fe4f899a23400a83fd"
+      ]
+    },
+    "lsxp-Wo_ben_shi-Kong_cheng_ji-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Wo_ben_shi-Kong_cheng_ji-qm.wav",
+        "30df3095708bcf29e51254d652a82984"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Wo_ben_shi-Kong_cheng_ji-qm_phoneme.txt",
+        "30f01310553fb67f79b23696d37c511f"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Wo_ben_shi-Kong_cheng_ji-qm_phrase_char.txt",
+        "9b42b1668d8b62576d54a6c401f285ba"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Wo_ben_shi-Kong_cheng_ji-qm_phrase.txt",
+        "6fce5bd64e20483a4cb6accd020efb48"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Wo_ben_shi-Kong_cheng_ji-qm_syllable.txt",
+        "726322ab21a2cc1eb5234495486c9953"
+      ]
+    },
+    "lseh-Yi_lun_ming-Wen_zhao_guan-qm": {
+      "audio": [
+        "wav/laosheng/lseh-Yi_lun_ming-Wen_zhao_guan-qm.wav",
+        "dcae83db6cdee4393b5e5867d9d795de"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lseh-Yi_lun_ming-Wen_zhao_guan-qm_phoneme.txt",
+        "5bf8f1f8040e77fadd6e865333578f59"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lseh-Yi_lun_ming-Wen_zhao_guan-qm_phrase_char.txt",
+        "89c2b1a17c1ad89e0b7c40b86795f985"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lseh-Yi_lun_ming-Wen_zhao_guan-qm_phrase.txt",
+        "0211d9fc5d3a3ddc9965323b569b5f0c"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lseh-Yi_lun_ming-Wen_zhao_guan-qm_syllable.txt",
+        "8508a5efcf3247d1afc091ce0c8f7893"
+      ]
+    },
+    "lseh-Wei_guo_jia-Hong_yang_dong02-qm": {
+      "audio": [
+        "wav/laosheng/lseh-Wei_guo_jia-Hong_yang_dong02-qm.wav",
+        "9c4e242dc349b07c1740711b453b2db7"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong02-qm_phoneme.txt",
+        "720acfedf9ab5e016a1085597a836033"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong02-qm_phrase_char.txt",
+        "e94d3d0ddb1e597e4d8322fbd1cd47b9"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong02-qm_phrase.txt",
+        "4c553ba78811949b9c219ba63723b37c"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong02-qm_syllable.txt",
+        "fecfa42ec0e97e4b36a1e8149115c622"
+      ]
+    },
+    "lsxp-Jiang_shen_er-San_jia_dian01-1-upf": {
+      "audio": [
+        "wav/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-1-upf.wav",
+        "89dae3e703dd87a535bd4e0fa883d8cc"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-1-upf_phoneme.txt",
+        "6b2f2f67a05a96593bce2ba1106cef27"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-1-upf_phrase_char.txt",
+        "853b9e99fc7565a6b21526144e8e7edc"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-1-upf_phrase.txt",
+        "9c453655d82acfbca05afe7e17e256a2"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Jiang_shen_er-San_jia_dian01-1-upf_syllable.txt",
+        "47b972311d7e225ffb18e3e82ed574fe"
+      ]
+    },
+    "lseh-Wei_guo_jia-Hong_yang_dong01-lon": {
+      "audio": [
+        "wav/laosheng/lseh-Wei_guo_jia-Hong_yang_dong01-lon.wav",
+        "1ae3e33111e49cb6625442139cfbdcad"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong01-lon_phoneme.txt",
+        "5e8ed500674354817bc4752b597db634"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong01-lon_phrase_char.txt",
+        "3c9af23b7349ce488f0c377c64a7014d"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong01-lon_phrase.txt",
+        "67b7bc83c25635198fec715c445e501b"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lseh-Wei_guo_jia-Hong_yang_dong01-lon_syllable.txt",
+        "522088e424a3918cb27de026418289e0"
+      ]
+    },
+    "lsxp-Qian_bai_wan-Si_lang_tang_mu01-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Qian_bai_wan-Si_lang_tang_mu01-qm.wav",
+        "a1f4e16b9279d2557760ccf57ced30c0"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Qian_bai_wan-Si_lang_tang_mu01-qm_phoneme.txt",
+        "883e6667ea7b76de0ed1cb60a83c2918"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Qian_bai_wan-Si_lang_tang_mu01-qm_phrase_char.txt",
+        "8d833d49ebf518dd3bdf04eb9893176d"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Qian_bai_wan-Si_lang_tang_mu01-qm_phrase.txt",
+        "bde68d3331e05b64da14668a10347d2b"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Qian_bai_wan-Si_lang_tang_mu01-qm_syllable.txt",
+        "1c745e0f041e31e806c42e3a1a7daf05"
+      ]
+    },
+    "lsxp-Wo_zheng_zai-Kong_cheng_ji02-qm": {
+      "audio": [
+        "wav/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji02-qm.wav",
+        "65badc3b0735dc98fe8b5219365bc44b"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji02-qm_phoneme.txt",
+        "4816a18d26841630ecd5b388f1756c16"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji02-qm_phrase_char.txt",
+        "1508ec1fcb8ba6b68d66524fd300463e"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji02-qm_phrase.txt",
+        "16d966d2aa9b62fcf7d0c2d170336974"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lsxp-Wo_zheng_zai-Kong_cheng_ji02-qm_syllable.txt",
+        "ff11c7a8553534faa29a05afe151d53b"
+      ]
+    },
+    "daxp-Zhe_cai_shi-Suo_lin_nang02-qm": {
+      "audio": [
+        "wav/danAll/daxp-Zhe_cai_shi-Suo_lin_nang02-qm.wav",
+        "6045e9c192cc8ffeed1c1d7af75f8bde"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "dagbz-Feng_xiao_xiao-Yang_men_nv_jiang-lon": {
+      "audio": [
+        "wav/danAll/dagbz-Feng_xiao_xiao-Yang_men_nv_jiang-lon.wav",
+        "2468cd918449391dd5e2989b6d1aa324"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/dagbz-Feng_xiao_xiao-Yang_men_nv_jiang-lon_phoneme.txt",
+        "2b01f81618f38671a9309ae8a1f7cc33"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/dagbz-Feng_xiao_xiao-Yang_men_nv_jiang-lon_phrase_char.txt",
+        "8e90c1ba43d3e196b141124daaa6801e"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/dagbz-Feng_xiao_xiao-Yang_men_nv_jiang-lon_phrase.txt",
+        "bb177af33b9a0bc3d14ab2880b19521a"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/dagbz-Feng_xiao_xiao-Yang_men_nv_jiang-lon_syllable.txt",
+        "df7a4b5b648a28fe2d0888c3b4432b9c"
+      ]
+    },
+    "wangjiangting_dushoukong": {
+      "audio": [
+        "wav/danAll/wangjiangting_dushoukong.wav",
+        "e869f66fc5f6450a7e7e86512861030f"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/wangjiangting_dushoukong_phoneme.txt",
+        "9ffca429a499077e4530016817da54ad"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/wangjiangting_dushoukong_phrase_char.txt",
+        "b16690be89e323701bf88ce442a33f25"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/wangjiangting_dushoukong_phrase.txt",
+        "b64726ba1673b2ae2302ea4b00f2c08e"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/wangjiangting_dushoukong_syllable.txt",
+        "ac31b491684cccbe4eede6710426f9e7"
+      ]
+    },
+    "zhuangyuanmei_daocishi": {
+      "audio": [
+        "wav/danAll/zhuangyuanmei_daocishi.wav",
+        "eaa1392879f233aab38146ebc8c06834"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/zhuangyuanmei_daocishi_phoneme.txt",
+        "cb0badfe9a1c80904e96064f422d83cc"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/zhuangyuanmei_daocishi_phrase_char.txt",
+        "a862ed8ca1a49cda298c572b6e0b2fd7"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/zhuangyuanmei_daocishi_phrase.txt",
+        "8f4b5ab56efbbe59fdecc4ae08341761"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/zhuangyuanmei_daocishi_syllable.txt",
+        "0cf795ba5ebf2dad6b9ff25f5bcb5b9b"
+      ]
+    },
+    "xixiangji_manmufeng": {
+      "audio": [
+        "wav/danAll/xixiangji_manmufeng.wav",
+        "6d881492c63c155474c0efc4858c5320"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/xixiangji_manmufeng_phoneme.txt",
+        "44d2f3568f1a75664b7c7307d336c737"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/xixiangji_manmufeng_phrase_char.txt",
+        "d8cd7e82edcb4adbface0e00ffb87661"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/xixiangji_manmufeng_phrase.txt",
+        "508f11f729eb4aa8f5b4e6d9b5ec31d2"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/xixiangji_manmufeng_syllable.txt",
+        "176ad2dd50f71f7c3df486c49eb5463b"
+      ]
+    },
+    "danbz-Xing_xing_zou-Mai_shui-qm": {
+      "audio": [
+        "wav/danAll/danbz-Xing_xing_zou-Mai_shui-qm.wav",
+        "9d11ca29f527b59b126d2cee92bef8f2"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "daxp-Jiao_Zhang_sheng-Hong_niang02-qm": {
+      "audio": [
+        "wav/danAll/daxp-Jiao_Zhang_sheng-Hong_niang02-qm.wav",
+        "d0cd74831381c6230e853c03d4bf2c5d"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "xixiangji_zhenmeijiu": {
+      "audio": [
+        "wav/danAll/xixiangji_zhenmeijiu.wav",
+        "ec828dd984eaded1bd22e4cbdfbccfbe"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/xixiangji_zhenmeijiu_phoneme.txt",
+        "e22983276c31f9c79e1cf0aab0f8eed7"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/xixiangji_zhenmeijiu_phrase_char.txt",
+        "260bd5b39440f02412db98ab5f301c10"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/xixiangji_zhenmeijiu_phrase.txt",
+        "d4f329c8903f79da8df35ed9d649d82b"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/xixiangji_zhenmeijiu_syllable.txt",
+        "030cbe740d6b5863b288ced063eaefc3"
+      ]
+    },
+    "daspd-Hai_dao_bing-Gui_fei_zui_jiu01-lon": {
+      "audio": [
+        "wav/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu01-lon.wav",
+        "7dd8b5a3c0461caac495a8d7c9c0f419"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu01-lon_phoneme.txt",
+        "d9c54ce984de150dabf1f8adcb1266b6"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu01-lon_phrase_char.txt",
+        "dde371f03cc24d64961d8e4795a51b2d"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu01-lon_phrase.txt",
+        "e845fc13922c60f39bdda5da9350a2c4"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu01-lon_syllable.txt",
+        "5e10e7d10cc9ca33d917b2eba0fd1edf"
+      ]
+    },
+    "daxp-Chun_qiu_ting-Suo_lin_nang02-qm": {
+      "audio": [
+        "wav/danAll/daxp-Chun_qiu_ting-Suo_lin_nang02-qm.wav",
+        "77ce1dd847072e495db4c0d6a1b55d04"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "zhuangyuanmei_fudingkui": {
+      "audio": [
+        "wav/danAll/zhuangyuanmei_fudingkui.wav",
+        "8f37330b9d5c1c264b4b0eacd518ba30"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/zhuangyuanmei_fudingkui_phoneme.txt",
+        "dad8b877d7bd9b2e03e2ffdc4c889dd4"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/zhuangyuanmei_fudingkui_phrase_char.txt",
+        "c673eb32aef999bd5b1af29c81130229"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/zhuangyuanmei_fudingkui_phrase.txt",
+        "4c013f97e011854bfe450d003bc783c3"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/zhuangyuanmei_fudingkui_syllable.txt",
+        "dafff27d1665c86863d2eefb5fbef6f6"
+      ]
+    },
+    "xixiangji_xianzhishuo": {
+      "audio": [
+        "wav/danAll/xixiangji_xianzhishuo.wav",
+        "bc4909e557495b610622e858bced6ed1"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/xixiangji_xianzhishuo_phoneme.txt",
+        "1bbcd23f85a01b4f79567017b8078e66"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/xixiangji_xianzhishuo_phrase_char.txt",
+        "5ddeec1ae947f16846673b6f02bfced6"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/xixiangji_xianzhishuo_phrase.txt",
+        "d67568ca4881fbc7428d42c832db650a"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/xixiangji_xianzhishuo_syllable.txt",
+        "e073bcffcf7b6ad7246ca2e4482b8383"
+      ]
+    },
+    "yutangchun_yutangchun": {
+      "audio": [
+        "wav/danAll/yutangchun_yutangchun.wav",
+        "2f8768429c0a79f11f60a395100dfffd"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/yutangchun_yutangchun_phoneme.txt",
+        "d67ca11b4f1cc062c05b5558675e7874"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/yutangchun_yutangchun_phrase_char.txt",
+        "199c84f072bb60f8fef28afdddc2d792"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/yutangchun_yutangchun_phrase.txt",
+        "25d9e0bbf9039e743ee1f8b768d03864"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/yutangchun_yutangchun_syllable.txt",
+        "795ca2fc459ce45a5264db227a76a7d6"
+      ]
+    },
+    "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai05-qm": {
+      "audio": [
+        "wav/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai05-qm.wav",
+        "85493b1aec99a39c5377902bf25c09be"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "daspd-Hai_dao_bing-Gui_fei_zui_jiu02-qm": {
+      "audio": [
+        "wav/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu02-qm.wav",
+        "5641b9dcd8130d742a335fa2c2ebf44c"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu02-qm_phoneme.txt",
+        "9252ee13e7613e0496e1b556d7e53d1e"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu02-qm_phrase_char.txt",
+        "ed08eab371ef32e12a6b9b41164c5663"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu02-qm_phrase.txt",
+        "3455f277d596cc7a65c1905324eb08bb"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu02-qm_syllable.txt",
+        "9e4282c58bc223cdb1a566afaad2068e"
+      ]
+    },
+    "danbz-Bei_jiu_chan-Chun_gui_men03-qm": {
+      "audio": [
+        "wav/danAll/danbz-Bei_jiu_chan-Chun_gui_men03-qm.wav",
+        "621a58883b9be0eab69f1e51263c758a"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men03-qm_phoneme.txt",
+        "c91c8a585723f2b67e92cb24d4b6ff7b"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men03-qm_phrase_char.txt",
+        "ce57f773e94c0b0355bcd4889f019731"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men03-qm_phrase.txt",
+        "4a813e944d6a8baf6a92772e273c96cd"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men03-qm_syllable.txt",
+        "00ab3c652f76f4a546aad01e2b8fe67b"
+      ]
+    },
+    "xixiangji_luanchouduo": {
+      "audio": [
+        "wav/danAll/xixiangji_luanchouduo.wav",
+        "b39e64ee2a275cae3f64a4452554b3b6"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/xixiangji_luanchouduo_phoneme.txt",
+        "57ec87fcdd7911e8aca18b8432479bdf"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/xixiangji_luanchouduo_phrase_char.txt",
+        "b304cc77295ac0d961d662cba0221349"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/xixiangji_luanchouduo_phrase.txt",
+        "7e87ce75e1bd267db09bba6b83e18f4e"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/xixiangji_luanchouduo_syllable.txt",
+        "3c0c675636afa6b9e954bb366a4c1f9b"
+      ]
+    },
+    "danbz-Kan_dai_wang-Ba_wang_bie_ji01-qm": {
+      "audio": [
+        "wav/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji01-qm.wav",
+        "eee841432df39de8912968a02a07b4b9"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji01-qm_phoneme.txt",
+        "970e433642f469b93c0e3e61f82049ed"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji01-qm_phrase_char.txt",
+        "964e3f466f2fc41436114a1940c32b37"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji01-qm_phrase.txt",
+        "382f2ad68cb388f3a218068e0abcf542"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji01-qm_syllable.txt",
+        "be5019cf9ca18d5168533074c28d4e25"
+      ]
+    },
+    "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai01-upf": {
+      "audio": [
+        "wav/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai01-upf.wav",
+        "a9f30915c09fec6ae50c3bb949ea5055"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai01-upf_phoneme.txt",
+        "35a6524f3ae7ba0d370f759f342e0ad4"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai01-upf_phrase_char.txt",
+        "50df0297867c18b31cb546a234a02ad4"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai01-upf_phrase.txt",
+        "3fabcb49a21d4d4dd61f6e2083f97604"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai01-upf_syllable.txt",
+        "39876808cf461df3fb046a7dc70a1ddb"
+      ]
+    },
+    "dafeh-Bi_yun_tian-Xi_xiang_ji02-qm": {
+      "audio": [
+        "wav/danAll/dafeh-Bi_yun_tian-Xi_xiang_ji02-qm.wav",
+        "52814aba13abc5d0a594e8d24f0c1be8"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "danbz-Qing_chen_qi-Shi_yu_zhuo-qm": {
+      "audio": [
+        "wav/danAll/danbz-Qing_chen_qi-Shi_yu_zhuo-qm.wav",
+        "127192fa4f599622931d51b10cb2227a"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/danbz-Qing_chen_qi-Shi_yu_zhuo-qm_phoneme.txt",
+        "e8718673010e780a29eebc52d5aa54f2"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/danbz-Qing_chen_qi-Shi_yu_zhuo-qm_phrase_char.txt",
+        "951b5c07cd97b855519b25c990f5a3f4"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/danbz-Qing_chen_qi-Shi_yu_zhuo-qm_phrase.txt",
+        "72087c18a9894c3df54ee40c78252f90"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/danbz-Qing_chen_qi-Shi_yu_zhuo-qm_syllable.txt",
+        "97c9c7612db4f8b15d661af6cc85e1e3"
+      ]
+    },
+    "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai03-qm": {
+      "audio": [
+        "wav/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai03-qm.wav",
+        "1e6be8fad6be44c7be825c85fdcc137d"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "danbz-Kan_dai_wang-Ba_wang_bie_ji03-qm": {
+      "audio": [
+        "wav/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji03-qm.wav",
+        "123ab6baef792c7d7b3e83aa84d4aa3d"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji03-qm_phoneme.txt",
+        "4f2f358d5065220a79ff33b117ddfcab"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji03-qm_phrase_char.txt",
+        "bf9fc8446536e486ff67e96d5a7ca07c"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji03-qm_phrase.txt",
+        "80a725a94e793e19435141919c012d35"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji03-qm_syllable.txt",
+        "276d46ce5048380ebd980ca873bb0d36"
+      ]
+    },
+    "shiwenhui_tingxiongyan": {
+      "audio": [
+        "wav/danAll/shiwenhui_tingxiongyan.wav",
+        "af54719c1bb2ca0110b1a3a77f4028b8"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/shiwenhui_tingxiongyan_phoneme.txt",
+        "e5177ea2adb0b8dfaafcd8f20d271929"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/shiwenhui_tingxiongyan_phrase_char.txt",
+        "9899de806b5886cf1bf0c3b768c0c0fb"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/shiwenhui_tingxiongyan_phrase.txt",
+        "822462b10b46d61db580d2a4d90a821e"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/shiwenhui_tingxiongyan_syllable.txt",
+        "cb8d0f7db6a0694c3eab723994d6e9a8"
+      ]
+    },
+    "zhuangyuanmei_zhenzhushan": {
+      "audio": [
+        "wav/danAll/zhuangyuanmei_zhenzhushan.wav",
+        "b58a36b1d08db39debc513477d3fd504"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/zhuangyuanmei_zhenzhushan_phoneme.txt",
+        "e6cf99693ee9a8e7730c2a2073794b01"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/zhuangyuanmei_zhenzhushan_phrase_char.txt",
+        "7fe1aedb444dc19c7a37d921cf998b29"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/zhuangyuanmei_zhenzhushan_phrase.txt",
+        "773680ea11983024caa5731e8b554ebc"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/zhuangyuanmei_zhenzhushan_syllable.txt",
+        "8ad0062b866b797a0dac66560204c782"
+      ]
+    },
+    "danbz-Bei_jiu_chan-Chun_gui_men01-qm": {
+      "audio": [
+        "wav/danAll/danbz-Bei_jiu_chan-Chun_gui_men01-qm.wav",
+        "e2b0d1d94cb39f9ce2d71ecf1196327c"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men01-qm_phoneme.txt",
+        "506a92a3bbf3cf43fec669c7422bcaa7"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men01-qm_phrase_char.txt",
+        "a0694a865f125def60cd035d33471b74"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men01-qm_phrase.txt",
+        "19271f25e9d6823018ddc30c191512b0"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/danbz-Bei_jiu_chan-Chun_gui_men01-qm_syllable.txt",
+        "23085361dc0a8ec0440b685c3f3fc9e3"
+      ]
+    },
+    "daxp-Jiao_Zhang_sheng-Hong_niang04-qm": {
+      "audio": [
+        "wav/danAll/daxp-Jiao_Zhang_sheng-Hong_niang04-qm.wav",
+        "091d895983b84b18a702d2708217efc6"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang04-qm_phoneme.txt",
+        "6aa95ae2423a4059ddc3f6c816dca550"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang04-qm_phrase_char.txt",
+        "3dc12243c66e78266300d9f2b6ee0572"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang04-qm_phrase.txt",
+        "894e605e9d33ac55c17e2cedf7950c96"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang04-qm_syllable.txt",
+        "a01005c59374e14e4ddba8f43e0d134d"
+      ]
+    },
+    "daxp-Chun_qiu_ting-Suo_lin_nang01-qm": {
+      "audio": [
+        "wav/danAll/daxp-Chun_qiu_ting-Suo_lin_nang01-qm.wav",
+        "f5fbf522115a5f2e2af0db29ef71ffd8"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang01-qm_phoneme.txt",
+        "7da9a5701c5d79193f64c68dd87bf981"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang01-qm_phrase_char.txt",
+        "ca06444463f3d6fb8be719c2f767c4e4"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang01-qm_phrase.txt",
+        "9bb733ae08d36e4ee8965f9a3c937dde"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang01-qm_syllable.txt",
+        "29f28a2e5b86b23919d53d8d1aa20daa"
+      ]
+    },
+    "daxp-Jiao_Zhang_sheng-Hong_niang01-qm": {
+      "audio": [
+        "wav/danAll/daxp-Jiao_Zhang_sheng-Hong_niang01-qm.wav",
+        "a0578bcc7aa6556fe0e3c85763984c1a"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang01-qm_phoneme.txt",
+        "8a0114454709a71cf15bdde95cf26061"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang01-qm_phrase_char.txt",
+        "fbfee2380bca767131973d6d56667919"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang01-qm_phrase.txt",
+        "4a8d0499bc80d6a405fe772c174e7883"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang01-qm_syllable.txt",
+        "871c9e61cd1c06743f6976e0900fbd85"
+      ]
+    },
+    "zhuangyuanmei_zinari": {
+      "audio": [
+        "wav/danAll/zhuangyuanmei_zinari.wav",
+        "29c3b29c6ec5788fa2de2f3aef8d4a35"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/zhuangyuanmei_zinari_phoneme.txt",
+        "582889f68133a19d78a94bc216a1badd"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/zhuangyuanmei_zinari_phrase_char.txt",
+        "7993d48d41f5828a26fdee235a5a01f9"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/zhuangyuanmei_zinari_phrase.txt",
+        "455de50ce6dde64fa1e1d5ff68f73e43"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/zhuangyuanmei_zinari_syllable.txt",
+        "67bedeb578580e62895117861077ec32"
+      ]
+    },
+    "daeh-You_He_hou-He_hou_ma_dian-qm": {
+      "audio": [
+        "wav/danAll/daeh-You_He_hou-He_hou_ma_dian-qm.wav",
+        "e3b554b1e3b92c34c5eeb6b347d6fa29"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daeh-You_He_hou-He_hou_ma_dian-qm_phoneme.txt",
+        "582720db0bdb5d8ed8bada1ff1e786e1"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daeh-You_He_hou-He_hou_ma_dian-qm_phrase_char.txt",
+        "7ae63e76bc6de0b3d3ca21d9d7874b25"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daeh-You_He_hou-He_hou_ma_dian-qm_phrase.txt",
+        "2b2558bb3a2f81077bc28781887a0d4e"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daeh-You_He_hou-He_hou_ma_dian-qm_syllable.txt",
+        "699ce02a3bf3c8e8bd3415fafa2a8804"
+      ]
+    },
+    "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai06-qm": {
+      "audio": [
+        "wav/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai06-qm.wav",
+        "6d051adabbbee61882fe830d5e61e5f6"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai06-qm_phoneme.txt",
+        "2f92ab888bfc72ae1aa9dd1d3382fdae"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai06-qm_phrase_char.txt",
+        "1b7f6ac9d5d1576a4221ed96e081ca7f"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai06-qm_phrase.txt",
+        "89ec62aefd5b4b6d495b8042bcba1001"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai06-qm_syllable.txt",
+        "c1875959f855a888cba1503e8f8a68f7"
+      ]
+    },
+    "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai04-qm": {
+      "audio": [
+        "wav/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai04-qm.wav",
+        "6705ee3cb1ef76b8e03c7ccf569b0ca3"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai04-qm_phoneme.txt",
+        "985e06a77f293e60966dd63cea2739a7"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai04-qm_phrase_char.txt",
+        "34a6e9c6c6f228b3c58ab246d422a8ac"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai04-qm_phrase.txt",
+        "b0c0d149f7eab174b23b5390a33d9544"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai04-qm_syllable.txt",
+        "599eb2df4dff0f9169be4a1a24f9995b"
+      ]
+    },
+    "dafeh-Mo_lai_you-Liu_yue_xue-qm": {
+      "audio": [
+        "wav/danAll/dafeh-Mo_lai_you-Liu_yue_xue-qm.wav",
+        "763b66e673a5fa5ca3dd299a7ced50aa"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/dafeh-Mo_lai_you-Liu_yue_xue-qm_phoneme.txt",
+        "300dd60b98038de002a8acbe78b4524d"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/dafeh-Mo_lai_you-Liu_yue_xue-qm_phrase_char.txt",
+        "c677c558f3fcd42fcb3eda660dc05aca"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/dafeh-Mo_lai_you-Liu_yue_xue-qm_phrase.txt",
+        "067665324cadec5662aaf2fb05197702"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/dafeh-Mo_lai_you-Liu_yue_xue-qm_syllable.txt",
+        "d359d1dbc0992fde6e1221a097c53316"
+      ]
+    },
+    "daxp-Zhe_cai_shi-Suo_lin_nang01-qm": {
+      "audio": [
+        "wav/danAll/daxp-Zhe_cai_shi-Suo_lin_nang01-qm.wav",
+        "e0e6f7d5cb92551560ec74e771dbb5f3"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Zhe_cai_shi-Suo_lin_nang01-qm_phoneme.txt",
+        "1b904814ecc15d1013959027f82804b7"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Zhe_cai_shi-Suo_lin_nang01-qm_phrase_char.txt",
+        "da1bedc3153c227dc3cde2e06feac4aa"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Zhe_cai_shi-Suo_lin_nang01-qm_phrase.txt",
+        "06ccd51d23a3291c5cdd2c8edd7c5216"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Zhe_cai_shi-Suo_lin_nang01-qm_syllable.txt",
+        "bcb1c6ee6a88115f584b84761079a7df"
+      ]
+    },
+    "wangjiangting_zhijianta": {
+      "audio": [
+        "wav/danAll/wangjiangting_zhijianta.wav",
+        "318b87866fb8c5b3481bbecf78577452"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/wangjiangting_zhijianta_phoneme.txt",
+        "1909e3974387c78ccdfc4dc2569e2ece"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/wangjiangting_zhijianta_phrase_char.txt",
+        "e1cc6756804988c3e9c5e496b4e4851e"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/wangjiangting_zhijianta_phrase.txt",
+        "24f25d32b7667bb41ceb6bb661877ca1"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/wangjiangting_zhijianta_syllable.txt",
+        "fa49213eefac678440ddfd24bf8e475e"
+      ]
+    },
+    "daxp-Chun_qiu_ting-Suo_lin_nang03-qm": {
+      "audio": [
+        "wav/danAll/daxp-Chun_qiu_ting-Suo_lin_nang03-qm.wav",
+        "9b049c4876a73bc56d93a9fb8a4bf32a"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang03-qm_phoneme.txt",
+        "159d8df6d0b1d318acfb71f0b60d8476"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang03-qm_phrase_char.txt",
+        "cc9ff4afabdc1acf6d265cfb8f6c58be"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang03-qm_phrase.txt",
+        "7e8e090a910457a515e87abd375c02e0"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Chun_qiu_ting-Suo_lin_nang03-qm_syllable.txt",
+        "4719b80c09c1441d7bbb38c36acb4688"
+      ]
+    },
+    "xixiangji_biyuntian": {
+      "audio": [
+        "wav/danAll/xixiangji_biyuntian.wav",
+        "ab0787635a2d75991eaaa0b57f47ce92"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/xixiangji_biyuntian_phoneme.txt",
+        "c996e68a540611a903eb1f923fde9e65"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/xixiangji_biyuntian_phrase_char.txt",
+        "997ffba21ba9d1f491ce338fdfa23e27"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/xixiangji_biyuntian_phrase.txt",
+        "37e208c292fc2fb73c7179c68321f4ec"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/xixiangji_biyuntian_syllable.txt",
+        "4d4f0c9c181609bb61d0ca3b353a068e"
+      ]
+    },
+    "zhuangyuanmei_tianbofu": {
+      "audio": [
+        "wav/danAll/zhuangyuanmei_tianbofu.wav",
+        "8909d47476139c3d7b9eb7ce1b0ae3b2"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/zhuangyuanmei_tianbofu_phoneme.txt",
+        "4256af1b47a3270220696cd0a4768acd"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/zhuangyuanmei_tianbofu_phrase_char.txt",
+        "e8e74654a3c582a63b6cc45ee8337aa5"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/zhuangyuanmei_tianbofu_phrase.txt",
+        "ce6b798c817e31a412646dd057c4bdbf"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/zhuangyuanmei_tianbofu_syllable.txt",
+        "88023f1c6e7c8e825dd2fcbc41f80a12"
+      ]
+    },
+    "daxp-Xi_ri_li-Gan_lu_si-qm": {
+      "audio": [
+        "wav/danAll/daxp-Xi_ri_li-Gan_lu_si-qm.wav",
+        "8bb2ad3d403fdeda000fb511549d6404"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Xi_ri_li-Gan_lu_si-qm_phoneme.txt",
+        "a9f35dc98911f0a2365c2b47db46a94a"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Xi_ri_li-Gan_lu_si-qm_phrase_char.txt",
+        "95aeb8b684be6bab77abdf07a0154101"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Xi_ri_li-Gan_lu_si-qm_phrase.txt",
+        "af39a99a961907a9a35622bef73cc98b"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Xi_ri_li-Gan_lu_si-qm_syllable.txt",
+        "968cb3ec316d430d9979e8ca04916a3e"
+      ]
+    },
+    "daxp-Jiao_Zhang_sheng-Hong_niang03-qm": {
+      "audio": [
+        "wav/danAll/daxp-Jiao_Zhang_sheng-Hong_niang03-qm.wav",
+        "5ad90010ff04c52a65876f5326847a4b"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "daeh-Bie_yuan_zhong-Mei_fei-qm": {
+      "audio": [
+        "wav/danAll/daeh-Bie_yuan_zhong-Mei_fei-qm.wav",
+        "b412066c4cf190d6af860431768f28e1"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daeh-Bie_yuan_zhong-Mei_fei-qm_phoneme.txt",
+        "122f93a2c64faaa9c029313f2ded3309"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daeh-Bie_yuan_zhong-Mei_fei-qm_phrase_char.txt",
+        "a16f44f957fce50a0c6d94377885f97c"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daeh-Bie_yuan_zhong-Mei_fei-qm_phrase.txt",
+        "99bc0463ca2c28b232001834848323fa"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daeh-Bie_yuan_zhong-Mei_fei-qm_syllable.txt",
+        "2f33e6bce2be3e275e07a8e58f72bd11"
+      ]
+    },
+    "daeh-Yang_Yu_huan-Tai_zhen_wai_zhuan-lon": {
+      "audio": [
+        "wav/danAll/daeh-Yang_Yu_huan-Tai_zhen_wai_zhuan-lon.wav",
+        "a1d8075973acc51ef5f8b11e077a4af5"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daeh-Yang_Yu_huan-Tai_zhen_wai_zhuan-lon_phoneme.txt",
+        "964e6be7333d422d14585c3a6179e825"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daeh-Yang_Yu_huan-Tai_zhen_wai_zhuan-lon_phrase_char.txt",
+        "ed8f22f022af325675f9ec1ae55dcdb2"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daeh-Yang_Yu_huan-Tai_zhen_wai_zhuan-lon_phrase.txt",
+        "e275c213fee47b508b924059feee6900"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daeh-Yang_Yu_huan-Tai_zhen_wai_zhuan-lon_syllable.txt",
+        "e296525c9d23e88705443e5f2d0872a1"
+      ]
+    },
+    "danbz-Bei_jiu_chan-Chun_gui_men02-qm": {
+      "audio": [
+        "wav/danAll/danbz-Bei_jiu_chan-Chun_gui_men02-qm.wav",
+        "5b496b2aa141082171172855602e394b"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "daspd-Du_shou_kong-Wang_jiang_ting-upf": {
+      "audio": [
+        "wav/danAll/daspd-Du_shou_kong-Wang_jiang_ting-upf.wav",
+        "30188bc94f6a571700afd34536411b93"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daspd-Du_shou_kong-Wang_jiang_ting-upf_phoneme.txt",
+        "367b9746bbf98c241cdd7dbc9c586898"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daspd-Du_shou_kong-Wang_jiang_ting-upf_phrase_char.txt",
+        "e0038af32a5411307e05b999060b19c1"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daspd-Du_shou_kong-Wang_jiang_ting-upf_phrase.txt",
+        "1c980d8fa254e3b59ae49abf5c131824"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daspd-Du_shou_kong-Wang_jiang_ting-upf_syllable.txt",
+        "f371afa4dad20df51efc735a3897b992"
+      ]
+    },
+    "daxp-Wo_Hong_niang-Hong_niang-qm": {
+      "audio": [
+        "wav/danAll/daxp-Wo_Hong_niang-Hong_niang-qm.wav",
+        "b689d75235337c475e0955aaa3fa7052"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "daeh-Yi_sha_shi-Suo_lin_nang-qm": {
+      "audio": [
+        "wav/danAll/daeh-Yi_sha_shi-Suo_lin_nang-qm.wav",
+        "0cebf5a6d432eb4b547f6d6de0106e87"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daeh-Yi_sha_shi-Suo_lin_nang-qm_phoneme.txt",
+        "4857cb99d26b81ef0fc9d728c20183ef"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daeh-Yi_sha_shi-Suo_lin_nang-qm_phrase_char.txt",
+        "baef040b736424897e44fc5c1e8b494a"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daeh-Yi_sha_shi-Suo_lin_nang-qm_phrase.txt",
+        "e395afe15ab904125735215b846821e3"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daeh-Yi_sha_shi-Suo_lin_nang-qm_syllable.txt",
+        "701d70cb6715bf4183a357f760b9388b"
+      ]
+    },
+    "daspd-Hai_dao_bing-Gui_fei_zui_jiu03-qm": {
+      "audio": [
+        "wav/danAll/daspd-Hai_dao_bing-Gui_fei_zui_jiu03-qm.wav",
+        "deb12aa1f3e6a368ae3413821457f2f5"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "xixiangji_diyilai": {
+      "audio": [
+        "wav/danAll/xixiangji_diyilai.wav",
+        "2c2c0bebeca53f022be074df76f63b84"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/xixiangji_diyilai_phoneme.txt",
+        "e4f18a596a5290e520766a829160f1ae"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/xixiangji_diyilai_phrase_char.txt",
+        "56cb911ec01b44ab188c0edfc0608366"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/xixiangji_diyilai_phrase.txt",
+        "6bcbc8fde58884d771b13ffe73327f07"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/xixiangji_diyilai_syllable.txt",
+        "758e961f85593bc937c12dea2c05eaf6"
+      ]
+    },
+    "daxp-Jiao_Zhang_sheng-Hong_niang05-qm": {
+      "audio": [
+        "wav/danAll/daxp-Jiao_Zhang_sheng-Hong_niang05-qm.wav",
+        "3e6e0d658d05aa1c62890c4cdbb7c64d"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang05-qm_phoneme.txt",
+        "0d5f2ea33056ffce620db487be21d604"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang05-qm_phrase_char.txt",
+        "9077459263df9e6d4cc5745bba187a82"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang05-qm_phrase.txt",
+        "03242b11a1be5c40401371aed0287cd1"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Jiao_Zhang_sheng-Hong_niang05-qm_syllable.txt",
+        "a8349b71418de31dd6961f5439bdbce2"
+      ]
+    },
+    "daxp-Guan_Shi_yin-Tian_nv_san_hua-lon": {
+      "audio": [
+        "wav/danAll/daxp-Guan_Shi_yin-Tian_nv_san_hua-lon.wav",
+        "770977a67fa49b2734d723e0228240d2"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Guan_Shi_yin-Tian_nv_san_hua-lon_phoneme.txt",
+        "6c14bf9ed11e8a2e731f25f8f1c099ea"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Guan_Shi_yin-Tian_nv_san_hua-lon_phrase_char.txt",
+        "531a6bfb51eeae679dfedd54c8255a0f"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Guan_Shi_yin-Tian_nv_san_hua-lon_phrase.txt",
+        "f5fb9dcacf8889b02b73a853b570f53c"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Guan_Shi_yin-Tian_nv_san_hua-lon_syllable.txt",
+        "b59486f2b9faf9156b01e33ba9db3c1b"
+      ]
+    },
+    "dafeh-Bi_yun_tian-Xi_xiang_ji01-qm": {
+      "audio": [
+        "wav/danAll/dafeh-Bi_yun_tian-Xi_xiang_ji01-qm.wav",
+        "9a3b9d81ae6237e281a8c25c9674f311"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/dafeh-Bi_yun_tian-Xi_xiang_ji01-qm_phoneme.txt",
+        "67815aef696e154ab6cd578e029c7c47"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/dafeh-Bi_yun_tian-Xi_xiang_ji01-qm_phrase_char.txt",
+        "c5a80fe985f231116c1064f1ad027b34"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/dafeh-Bi_yun_tian-Xi_xiang_ji01-qm_phrase.txt",
+        "35e0f7d08a113fa621dbd1b3712ac461"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/dafeh-Bi_yun_tian-Xi_xiang_ji01-qm_syllable.txt",
+        "b99c716ac74a852930279202b9110543"
+      ]
+    },
+    "danbz-Kan_dai_wang-Ba_wang_bie_ji02-qm": {
+      "audio": [
+        "wav/danAll/danbz-Kan_dai_wang-Ba_wang_bie_ji02-qm.wav",
+        "c6f9ba97b6148637ab2d289c1ded6400"
+      ],
+      "phoneme": [
+        null,
+        null
+      ],
+      "phrase_char": [
+        null,
+        null
+      ],
+      "phrase": [
+        null,
+        null
+      ],
+      "syllable": [
+        null,
+        null
+      ]
+    },
+    "daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai02-qm": {
+      "audio": [
+        "wav/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai02-qm.wav",
+        "b17df288d43c2abdde6f775a39925c15"
+      ],
+      "phoneme": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai02-qm_phoneme.txt",
+        "63d8d334b2961a52ebb22ca4c257f1c8"
+      ],
+      "phrase_char": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai02-qm_phrase_char.txt",
+        "c6a7d557f43bdc4e0a77687839cb56d2"
+      ],
+      "phrase": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai02-qm_phrase.txt",
+        "7ea1d359b2502577133b5a84315f1f5c"
+      ],
+      "syllable": [
+        "annotation_txt/danAll/daxp-Meng_ting_de-Mu_Gui_ying_gua_shuai02-qm_syllable.txt",
+        "e494d28c9c344992e151960af5bc9b30"
+      ]
+    }
+  },
+  "metadata": {
+    "laosheng_metadata": [
+      "catalogue - laosheng.csv",
+      "768fa00ce1f8880ae5480fae103ecc06"
+    ],
+    "dan_metadata": [
+      "catalogue - dan.csv",
+      "82ce90bd8508b1ae12c6a1fe489618a4"
+    ]
+  }
+}
