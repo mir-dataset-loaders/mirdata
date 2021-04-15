@@ -1,7 +1,10 @@
 import music21
 
+from mirdata.annotations import KeyData, ChordData
 from mirdata.datasets import haydn_op20
 from tests.test_utils import run_track_tests
+
+import numpy as np
 
 
 def test_track():
@@ -18,9 +21,11 @@ def test_track():
 
     expected_property_types = {
         "duration": int,
-        "chords": list,
+        "chords": ChordData,
+        "chords_music21": list,
         "roman_numerals": list,
-        "keys": list,
+        "keys": KeyData,
+        "keys_music21": list,
         "score": music21.stream.Score,
         "midi_path": str,
     }
@@ -42,15 +47,34 @@ def test_to_jam():
         jam["sandbox"]["midi_path"]
         == "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
     ), "duration does not match expected"
-    assert isinstance(jam["sandbox"]["chords"], list)
-    assert jam["sandbox"]["chords"][0]["time"] == 0
-    assert jam["sandbox"]["chords"][0]["chord"] == "Eb-major triad"
-    assert isinstance(jam["sandbox"]["key"], list)
-    assert jam["sandbox"]["key"][0]["time"] == 0
-    assert isinstance(jam["sandbox"]["key"][0]["key"], music21.key.Key)
+    assert isinstance(jam["sandbox"]["chords_music21"], list)
+    assert jam["sandbox"]["chords_music21"][0]["time"] == 0
+    assert jam["sandbox"]["chords_music21"][0]["chord"] == "Eb-major triad"
+    assert isinstance(jam["sandbox"]["keys_music21"], list)
+    assert jam["sandbox"]["keys_music21"][0]["time"] == 0
+    assert isinstance(jam["sandbox"]["keys_music21"][0]["key"], music21.key.Key)
     assert isinstance(jam["sandbox"]["roman_numerals"], list)
     assert jam["sandbox"]["roman_numerals"][0]["time"] == 0
     assert jam["sandbox"]["roman_numerals"][0]["roman_numeral"] == "I"
+
+    chord_data = jam["sandbox"]["chord"]
+    assert type(chord_data) == ChordData
+    assert type(chord_data.intervals) == np.ndarray
+    assert type(chord_data.labels) == list
+    assert np.array_equal(chord_data.intervals[:, 0], np.array([0.0]))
+    assert np.array_equal(chord_data.intervals[:, 1], np.array([0.0]))
+    assert np.array_equal(chord_data.labels, np.array(["Eb-major triad"]))
+    assert haydn_op20.load_chords(None) is None
+
+    key_data = jam["sandbox"]["key"]
+    assert type(key_data) == KeyData
+    assert type(key_data.intervals) == np.ndarray
+
+    assert np.array_equal(key_data.intervals[:, 0], np.array([0.0]))
+    assert np.array_equal(key_data.intervals[:, 1], np.array([0.0]))
+    assert np.array_equal(key_data.keys, ["Eb major"])
+
+    assert haydn_op20.load_key(None) is None
 
 
 def test_load_score():
@@ -62,16 +86,38 @@ def test_load_score():
 
 def test_load_key():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
-    key = haydn_op20.load_key_music21(path)
-    assert isinstance(key, list)
-    assert len(key) == 1
-    assert key[0]["time"] == 0
-    assert key[-1]["time"] == 0
-    assert isinstance(key[0]["key"], music21.key.Key)
+
+    key_data = haydn_op20.load_key(path)
+    assert type(key_data) == KeyData
+    assert type(key_data.intervals) == np.ndarray
+
+    assert np.array_equal(key_data.intervals[:, 0], np.array([0.0]))
+    assert np.array_equal(key_data.intervals[:, 1], np.array([0.0]))
+    assert np.array_equal(key_data.keys, ["Eb major"])
+
+    assert haydn_op20.load_key(None) is None
+
+    key_music21 = haydn_op20.load_key_music21(path)
+    assert isinstance(key_music21, list)
+    assert len(key_music21) == 1
+    assert key_music21[0]["time"] == 0
+    assert key_music21[-1]["time"] == 0
+    assert isinstance(key_music21[0]["key"], music21.key.Key)
 
 
 def test_load_chords():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
+
+    chord_data = haydn_op20.load_chords(path)
+
+    assert type(chord_data) == ChordData
+    assert type(chord_data.intervals) == np.ndarray
+    assert type(chord_data.labels) == list
+    assert np.array_equal(chord_data.intervals[:, 0], np.array([0.0]))
+    assert np.array_equal(chord_data.intervals[:, 1], np.array([0.0]))
+    assert np.array_equal(chord_data.labels, np.array(["Eb-major triad"]))
+    assert haydn_op20.load_chords(None) is None
+
     chords = haydn_op20.load_chords_music21(path)
     assert isinstance(chords, list)
     assert len(chords) == 1
