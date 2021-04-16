@@ -188,10 +188,10 @@ intervals. Otherwise, they can be represented as a stream of strings, grouped by
 
 Tags
 ^^^^
-This is a broad annotation type that is used to label music and sounds into certain classes. For example, we can use
-it to store the tag or class of an instrument classification dataset. Tags are typically represented as a list of
-strings, being each string a tag where track belongs to. It can also be a single string, if the track is assigned to
-a single class.
+This is a broad annotation type that is used to label music and sounds, that often spans multiple categories. For
+example, music can be labeled with tags pertaining to the instruments present, the musical style, the mood, etc. Tags
+are often free-form and may not have a structured taxonomy/set of labels. They are typically represented as a list of
+strings, sometimes with associated weights/confidences.
 
 .. _tonic:
 
