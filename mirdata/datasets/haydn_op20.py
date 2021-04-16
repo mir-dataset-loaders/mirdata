@@ -10,36 +10,36 @@ This dataset has as dependency the Music21 library.
 
     The dataset contains the following scores:
     Haydn, Joseph
-        1. E-flat major, op. 20 no. 1, Hob. III-31
-            I. Allegro moderato
-            II. Menuetto. Allegretto
-            III. Affettuoso e sostenuto
-            IV. Finale. Presto
-        2. C major, op. 20 no. 2, Hob. III-32
-            I. Moderato
-            II. Capriccio. Adagio
-            III. Menuetto. Allegretto
-            IV. Fuga a 4 soggetti
-        3. G minor, op. 20 no. 3, Hob. III-33
-            I. Allegro con spirito
-            II. Menuetto. Allegretto
-            III. Poco adagio
-            IV. Finale. Allegro molto
-        4. D major, op. 20 no. 4, Hob. III-34
-            I. Allegro di molto
-            II. Un poco adagio e affettuoso
-            III. Menuet alla Zingarese & Trio
-            IV. Presto e scherzando
-        5. F minor, op. 20 no. 5, Hob. III-35
-            I. Allegro moderato
-            II. Menuetto
-            III. Adagio
-            IV. Finale. Fuga a due soggetti
-        6. A major, op. 20 no. 6, Hob. III-36
-            I. Allegro di molto e scherzando
-            II. Adagio. Cantabile
-            III. Menuetto. Allegretto
-            IV. Fuga a 3 soggetti. Allegro
+    1. E-flat major, op. 20 no. 1, Hob. III-31
+        I. Allegro moderato
+        II. Menuetto. Allegretto
+        III. Affettuoso e sostenuto
+        IV. Finale. Presto
+    2. C major, op. 20 no. 2, Hob. III-32
+        I. Moderato
+        II. Capriccio. Adagio
+        III. Menuetto. Allegretto
+        IV. Fuga a 4 soggetti
+    3. G minor, op. 20 no. 3, Hob. III-33
+        I. Allegro con spirito
+        II. Menuetto. Allegretto
+        III. Poco adagio
+        IV. Finale. Allegro molto
+    4. D major, op. 20 no. 4, Hob. III-34
+        I. Allegro di molto
+        II. Un poco adagio e affettuoso
+        III. Menuet alla Zingarese & Trio
+        IV. Presto e scherzando
+    5. F minor, op. 20 no. 5, Hob. III-35
+        I. Allegro moderato
+        II. Menuetto
+        III. Adagio
+        IV. Finale. Fuga a due soggetti
+    6. A major, op. 20 no. 6, Hob. III-36
+        I. Allegro di molto e scherzando
+        II. Adagio. Cantabile
+        III. Menuetto. Allegretto
+        IV. Fuga a 3 soggetti. Allegro
 """
 
 import os
@@ -294,11 +294,11 @@ def load_roman_numerals(fhandle: TextIO, resolution=28):
 def load_chords_base(fhandle: TextIO, resolution: int = 28):
     """Load haydn op20 chords data from a file in music21 format
 
-    `Args:
+    Args:
         fhandle (str or file-like): path to chord annotations
 
     Returns:
-        List[dict`]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
+        List[dict]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
 
     """
     _, rna = split_score_annotations(fhandle)
@@ -313,11 +313,11 @@ def load_chords_base(fhandle: TextIO, resolution: int = 28):
 @io.coerce_to_string_io
 def load_chords(fhandle: TextIO, resolution: int = 28):
     """Load haydn op20 chords data from a file
-    `Args:
+    Args:
         fhandle (str or file-like): path to chord annotations
 
     Returns:
-        List[dict`]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
+        ChordData: chord annotations
 
     """
     chords = load_chords_base(fhandle, resolution)
@@ -335,11 +335,11 @@ def load_chords(fhandle: TextIO, resolution: int = 28):
 def load_chords_music21(fhandle: TextIO, resolution: int = 28):
     """Load haydn op20 chords data from a file in music21 format
 
-    `Args:
+    Args:
         fhandle (str or file-like): path to chord annotations
 
     Returns:
-        List[dict`]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
+        List[dict]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
 
     """
     return load_chords_base(fhandle, resolution)
