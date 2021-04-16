@@ -165,7 +165,7 @@ class Track(core.Track):
         return self._track_metadata.get("license")
 
     @property
-    def audio(self) -> Tuple[np.ndarray, float]:
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:

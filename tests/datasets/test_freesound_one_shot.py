@@ -22,7 +22,7 @@ def test_track():
     expected_property_types = {
         "audio": tuple,
         "tags": list,
-        "freesound_previews": dict,
+        "freesound_preview_urls": dict,
         "freesound_analysis": dict,
         "audiocommons_analysis": dict,
         "file_metadata": dict,
