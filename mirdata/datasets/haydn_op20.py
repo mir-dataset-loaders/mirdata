@@ -184,6 +184,7 @@ def split_score_annotations(fhandle: TextIO):
         List[Tuple[Any, Any]]: roman numerals
     """
     score = music21.converter.parse(fhandle.name, format="humdrum")
+
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
     score.remove(rna, recurse=True)
     rna_clean = [(offset, rn) for offset, rn in rna.items() if rn]
