@@ -67,9 +67,11 @@ class Track(core.Track):
         humdrum_annotated_path (str): path to humdrum annotated score
 
     Cached Properties:
-        keys (list): annotated local keys.
+        keys (KeyData): annotated local keys.
+        keys_music21 (list): annotated local keys.
         roman_numerals (list): annotated roman_numerals.
-        chords (list): annotated chords.
+        chords (ChordData): annotated chords.
+        chords_music21 (list): annotated chords.
         duration (int): relative duration
         midi_path (str): path to midi
         score (music21.stream.Score): music21 score
