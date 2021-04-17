@@ -5,7 +5,7 @@ Freesound One-Shot Percussive Sounds Dataset Loader
     :class: dropdown
 
     Introduction:
-    ^^^^^^^^^^^^
+
     This dataset contains 10254 one-shot (single event) percussive sounds from freesound.org, a timbral
     analysis computed by two different extractors (FreesoundExtractor from Essentia and AudioCommons Extractor),
     and a list of tags. There is also metadata information about the audio file, since the audio specifications
@@ -13,7 +13,7 @@ Freesound One-Shot Percussive Sounds Dataset Loader
     for "Neural Percussive Synthesis Parameterised by High-Level Timbral Features".
 
     Dataset Construction:
-    ^^^^^^^^^^^^^^^^^^^^^
+
     To collect this dataset, the following steps were performed:
     * Freesound was queried with words associated with percussive instruments, such as "percussion", "kick",
     "wood" or "clave". Only sounds with less than one second of effective duration were selected.
@@ -26,18 +26,17 @@ Freesound One-Shot Percussive Sounds Dataset Loader
     descriptors.
 
     Authors and Contact:
-    ^^^^^^^^^^^^^^^^^^^^
+
     This dataset was developed by António Ramires, Pritish Chadna, Xavier Favory, Emilia Gómez and Xavier Serra.
     Any questions related to this dataset please contact:
     António Ramires (antonio.ramires@upf.edu / aframires@gmail.com)
 
     Acknowledgements:
-    ^^^^^^^^^^^^^^^^^
+
     This work has received funding from the European Union's Horizon 2020 research and innovation programme under
     the Marie Skłodowska-Curie grant agreement No. 765068 (MIP-Frontiers).
     This work has received funding from the European Union's Horizon 2020 research and innovation programme under
     grant agreement No. 770376 (TROMPA).
-
 """
 
 import json, os
