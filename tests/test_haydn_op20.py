@@ -61,19 +61,32 @@ def test_to_jam():
     assert type(chord_data) == ChordData
     assert type(chord_data.intervals) == np.ndarray
     assert type(chord_data.labels) == list
-    assert np.array_equal(chord_data.intervals[:, 0], np.array([0., 364., 392., 644.]))
-    assert np.array_equal(chord_data.intervals[:, 1], np.array([363., 391., 643., 644.]))
-    assert np.array_equal(chord_data.labels, np.array(
-        ['Eb-major triad', 'Bb-dominant seventh chord', 'Eb-major triad', 'F-dominant seventh chord']))
+    assert np.array_equal(
+        chord_data.intervals[:, 0], np.array([0.0, 364.0, 392.0, 644.0])
+    )
+    assert np.array_equal(
+        chord_data.intervals[:, 1], np.array([363.0, 391.0, 643.0, 644.0])
+    )
+    assert np.array_equal(
+        chord_data.labels,
+        np.array(
+            [
+                "Eb-major triad",
+                "Bb-dominant seventh chord",
+                "Eb-major triad",
+                "F-dominant seventh chord",
+            ]
+        ),
+    )
     assert haydn_op20.load_chords(None) is None
 
     key_data = jam["sandbox"]["key"]
     assert type(key_data) == KeyData
     assert type(key_data.intervals) == np.ndarray
 
-    assert np.array_equal(key_data.intervals[:, 0], np.array([0., 644.]))
-    assert np.array_equal(key_data.intervals[:, 1], np.array([643., 644.]))
-    assert np.array_equal(key_data.keys, ['Eb major', 'Bb major'])
+    assert np.array_equal(key_data.intervals[:, 0], np.array([0.0, 644.0]))
+    assert np.array_equal(key_data.intervals[:, 1], np.array([643.0, 644.0]))
+    assert np.array_equal(key_data.keys, ["Eb major", "Bb major"])
 
     assert haydn_op20.load_key(None) is None
 
@@ -92,9 +105,9 @@ def test_load_key():
     assert type(key_data) == KeyData
     assert type(key_data.intervals) == np.ndarray
 
-    assert np.array_equal(key_data.intervals[:, 0], np.array([0., 644.]))
-    assert np.array_equal(key_data.intervals[:, 1], np.array([643., 644.]))
-    assert np.array_equal(key_data.keys, ['Eb major', 'Bb major'])
+    assert np.array_equal(key_data.intervals[:, 0], np.array([0.0, 644.0]))
+    assert np.array_equal(key_data.intervals[:, 1], np.array([643.0, 644.0]))
+    assert np.array_equal(key_data.keys, ["Eb major", "Bb major"])
 
     assert haydn_op20.load_key(None) is None
 
@@ -114,9 +127,23 @@ def test_load_chords():
     assert type(chord_data) == ChordData
     assert type(chord_data.intervals) == np.ndarray
     assert type(chord_data.labels) == list
-    assert np.array_equal(chord_data.intervals[:, 0], np.array([0., 364., 392., 644.]))
-    assert np.array_equal(chord_data.intervals[:, 1], np.array([363., 391., 643., 644.]))
-    assert np.array_equal(chord_data.labels, np.array(['Eb-major triad', 'Bb-dominant seventh chord', 'Eb-major triad', 'F-dominant seventh chord']))
+    assert np.array_equal(
+        chord_data.intervals[:, 0], np.array([0.0, 364.0, 392.0, 644.0])
+    )
+    assert np.array_equal(
+        chord_data.intervals[:, 1], np.array([363.0, 391.0, 643.0, 644.0])
+    )
+    assert np.array_equal(
+        chord_data.labels,
+        np.array(
+            [
+                "Eb-major triad",
+                "Bb-dominant seventh chord",
+                "Eb-major triad",
+                "F-dominant seventh chord",
+            ]
+        ),
+    )
     assert haydn_op20.load_chords(None) is None
 
     chords = haydn_op20.load_chords_music21(path)
@@ -124,8 +151,8 @@ def test_load_chords():
     assert len(chords) == 4
     assert chords[0]["time"] == 0
     assert chords[-1]["time"] == 644
-    assert chords[0]["chord"] == 'Eb-major triad'
-    assert chords[-1]["chord"] == 'F-dominant seventh chord'
+    assert chords[0]["chord"] == "Eb-major triad"
+    assert chords[-1]["chord"] == "F-dominant seventh chord"
 
 
 def test_load_roman_numerals():
