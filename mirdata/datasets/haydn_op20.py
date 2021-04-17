@@ -9,10 +9,10 @@
     This dataset contains 30 pieces composed by Joseph Haydn in symbolic format, which have each been manually
     annotated with harmonic analyses.
 """
-import logging
 import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
 
+import music21
 import numpy as np
 
 from mirdata import core, io, jams_utils, download_utils
@@ -50,8 +50,6 @@ REMOTES = {
         destination_dir=".",
     )
 }
-DOWNLOAD_INFO = ""
-
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
@@ -341,7 +339,6 @@ class Dataset(core.Dataset):
             track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
-            download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
