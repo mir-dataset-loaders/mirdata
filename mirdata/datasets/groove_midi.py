@@ -70,6 +70,13 @@ BIBTEX = """@inproceedings{groove2019,
     Booktitle = {International Conference on Machine Learning (ICML)},
     Year = {2019},
 }"""
+
+INDEXES = {
+    "default": "1.0.0",
+    "test": "1.0.0",
+    "1.0.0": core.Index(filename="groove_midi_index_1.0.0.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="groove-v1-0.0.zip",
@@ -399,12 +406,14 @@ class Dataset(core.Dataset):
     The groove_midi dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="groove_midi",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

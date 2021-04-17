@@ -51,6 +51,12 @@ BIBTEX = """@inproceedings{Meseguer-Brocal_2018,
     Year = {2018}
 }"""
 
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="dali_index_1.0.json"),
+}
+
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
         filename="dali_metadata.json",
@@ -307,12 +313,14 @@ class Dataset(core.Dataset):
     The dali dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="dali",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

@@ -45,6 +45,13 @@ BIBTEX = """@inproceedings{lostanlen2019ismir,
     booktitle={International Society of Music Information Retrieval (ISMIR)},
     year={2016}
 }"""
+
+INDEXES = {
+    "default": "1.2",
+    "test": "1.2",
+    "1.2": core.Index(filename="medley_solos_db_index_1.2.json"),
+}
+
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="Medley-solos-DB_metadata.csv",
@@ -157,12 +164,14 @@ class Dataset(core.Dataset):
     The medley_solos_db dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="medley_solos_db",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

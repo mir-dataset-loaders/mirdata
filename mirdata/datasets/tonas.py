@@ -76,8 +76,11 @@ Transcriptions:
     doi = {10.1162/COMJ_a_00180}}
 """
 
-
-REMOTES = None
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="tonas_index_1.0.json"),
+}
 
 DOWNLOAD_INFO = """
         PLEASE READ CAREFULLY ALL THE INFORMATION SO YOU DON'T MISS ANY STEP:
@@ -370,13 +373,14 @@ class Dataset(core.Dataset):
     The TONAS dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="tonas",
             track_class=Track,
             bibtex=BIBTEX,
-            remotes=REMOTES,
+            indexes=INDEXES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )

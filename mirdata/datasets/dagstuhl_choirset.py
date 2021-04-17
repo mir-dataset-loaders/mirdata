@@ -65,6 +65,12 @@ BIBTEX = """
 }
 """
 
+INDEXES = {
+    "default": "1.2.3",
+    "test": "1.2.3",
+    "1.2.3": core.Index(filename="dagstuhl_choirset_index_1.2.3.json"),
+}
+
 REMOTES = {
     "full_dataset": download_utils.RemoteFileMetadata(
         filename="DagstuhlChoirSet_V1.2.3.zip",
@@ -450,13 +456,15 @@ class Dataset(core.Dataset):
     The Dagstuhl ChoirSet dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="dagstuhl_choirset",
             track_class=Track,
             multitrack_class=MultiTrack,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

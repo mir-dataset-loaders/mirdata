@@ -65,6 +65,12 @@ BIBTEX = """@article{Anantapadmanabhan2013,
     year = {2013}
 }"""
 
+INDEXES = {
+    "default": "1.5",
+    "test": "1.5",
+    "1.5": core.Index(filename="mridangam_stroke_index_1.5.json"),
+}
+
 REMOTES = {
     "remote_data": download_utils.RemoteFileMetadata(
         filename="mridangam_stroke_1.5.zip",
@@ -183,12 +189,14 @@ class Dataset(core.Dataset):
     The mridangam_stroke dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="mridangam_stroke",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

@@ -49,6 +49,13 @@ BIBTEX = """@inproceedings{mauch2009beatles,
 LICENSE_INFO = (
     "Unfortunately we couldn't find the license information for Queen dataset."
 )
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="queen_index_1.0.json"),
+}
+
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="Queen Annotations.tar.gz",
@@ -237,12 +244,14 @@ class Dataset(core.Dataset):
     Queen dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="queen",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
