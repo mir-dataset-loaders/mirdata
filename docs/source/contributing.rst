@@ -512,6 +512,7 @@ multiple versions can be defined by creating additional indexes. Indexes follow 
 naming convention <datasetname>_index_<version>.json, thus a dataset with two 
 versions simply has two index files. Different versions are tracked using the
 ``INDEXES`` variable:
+
 .. code-block:: python
 
     INDEXES = {
@@ -521,6 +522,7 @@ versions simply has two index files. Different versions are tracked using the
         "2.0": core.Index(filename="example_index_2.0.json"),
         "sample": core.Index(filename="example_index_sample.json")
     }
+
 
 By default, mirdata loads the version specified as ``default`` in ``INDEXES``
 when running ``mirdata.initialize('example')``, but a specific version can
