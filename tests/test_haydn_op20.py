@@ -38,7 +38,7 @@ def test_to_jam():
     track = dataset.track("0")
     jam = track.to_jams()
     assert jam["file_metadata"]["title"] == "op20n1-01", "title does not match expected"
-    assert jam["file_metadata"]["duration"] == 0, "duration does not match expected"
+    assert jam["file_metadata"]["duration"] == 644, "duration does not match expected"
     assert (
         jam["sandbox"]["humdrum_annotated_path"]
         == "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
@@ -61,18 +61,19 @@ def test_to_jam():
     assert type(chord_data) == ChordData
     assert type(chord_data.intervals) == np.ndarray
     assert type(chord_data.labels) == list
-    assert np.array_equal(chord_data.intervals[:, 0], np.array([0.0]))
-    assert np.array_equal(chord_data.intervals[:, 1], np.array([0.0]))
-    assert np.array_equal(chord_data.labels, np.array(["Eb-major triad"]))
+    assert np.array_equal(chord_data.intervals[:, 0], np.array([0., 364., 392., 644.]))
+    assert np.array_equal(chord_data.intervals[:, 1], np.array([363., 391., 643., 644.]))
+    assert np.array_equal(chord_data.labels, np.array(
+        ['Eb-major triad', 'Bb-dominant seventh chord', 'Eb-major triad', 'F-dominant seventh chord']))
     assert haydn_op20.load_chords(None) is None
 
     key_data = jam["sandbox"]["key"]
     assert type(key_data) == KeyData
     assert type(key_data.intervals) == np.ndarray
 
-    assert np.array_equal(key_data.intervals[:, 0], np.array([0.0]))
-    assert np.array_equal(key_data.intervals[:, 1], np.array([0.0]))
-    assert np.array_equal(key_data.keys, ["Eb major"])
+    assert np.array_equal(key_data.intervals[:, 0], np.array([0., 644.]))
+    assert np.array_equal(key_data.intervals[:, 1], np.array([643., 644.]))
+    assert np.array_equal(key_data.keys, ['Eb major', 'Bb major'])
 
     assert haydn_op20.load_key(None) is None
 
@@ -91,17 +92,17 @@ def test_load_key():
     assert type(key_data) == KeyData
     assert type(key_data.intervals) == np.ndarray
 
-    assert np.array_equal(key_data.intervals[:, 0], np.array([0.0]))
-    assert np.array_equal(key_data.intervals[:, 1], np.array([0.0]))
-    assert np.array_equal(key_data.keys, ["Eb major"])
+    assert np.array_equal(key_data.intervals[:, 0], np.array([0., 644.]))
+    assert np.array_equal(key_data.intervals[:, 1], np.array([643., 644.]))
+    assert np.array_equal(key_data.keys, ['Eb major', 'Bb major'])
 
     assert haydn_op20.load_key(None) is None
 
     key_music21 = haydn_op20.load_key_music21(path)
     assert isinstance(key_music21, list)
-    assert len(key_music21) == 1
+    assert len(key_music21) == 4
     assert key_music21[0]["time"] == 0
-    assert key_music21[-1]["time"] == 0
+    assert key_music21[-1]["time"] == 644
     assert isinstance(key_music21[0]["key"], music21.key.Key)
 
 
@@ -113,29 +114,29 @@ def test_load_chords():
     assert type(chord_data) == ChordData
     assert type(chord_data.intervals) == np.ndarray
     assert type(chord_data.labels) == list
-    assert np.array_equal(chord_data.intervals[:, 0], np.array([0.0]))
-    assert np.array_equal(chord_data.intervals[:, 1], np.array([0.0]))
-    assert np.array_equal(chord_data.labels, np.array(["Eb-major triad"]))
+    assert np.array_equal(chord_data.intervals[:, 0], np.array([0., 364., 392., 644.]))
+    assert np.array_equal(chord_data.intervals[:, 1], np.array([363., 391., 643., 644.]))
+    assert np.array_equal(chord_data.labels, np.array(['Eb-major triad', 'Bb-dominant seventh chord', 'Eb-major triad', 'F-dominant seventh chord']))
     assert haydn_op20.load_chords(None) is None
 
     chords = haydn_op20.load_chords_music21(path)
     assert isinstance(chords, list)
-    assert len(chords) == 1
+    assert len(chords) == 4
     assert chords[0]["time"] == 0
-    assert chords[-1]["time"] == 0
-    assert chords[0]["chord"] == "Eb-major triad"
-    assert chords[-1]["chord"] == "Eb-major triad"
+    assert chords[-1]["time"] == 644
+    assert chords[0]["chord"] == 'Eb-major triad'
+    assert chords[-1]["chord"] == 'F-dominant seventh chord'
 
 
 def test_load_roman_numerals():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
     roman_numerals = haydn_op20.load_roman_numerals(path)
     assert isinstance(roman_numerals, list)
-    assert len(roman_numerals) == 1
+    assert len(roman_numerals) == 4
     assert roman_numerals[0]["time"] == 0
-    assert roman_numerals[-1]["time"] == 0
+    assert roman_numerals[-1]["time"] == 644
     assert roman_numerals[0]["roman_numeral"] == "I"
-    assert roman_numerals[-1]["roman_numeral"] == "I"
+    assert roman_numerals[-1]["roman_numeral"] == "V43/V"
 
 
 def test_load_midi_path():
