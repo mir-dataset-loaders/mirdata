@@ -42,6 +42,21 @@ BIBTEX = """
 }
 """
 
+# -- INDEXES specifies different versions of a dataset
+# -- "default" and "test" specify which key should be used
+# -- by default, and when running tests.
+# -- Some datasets have a "sample" version, which is a mini-version
+# -- that makes it easier to try out a large dataset without needing
+# -- to download the whole thing.
+# -- If there is no sample version, simply set "test": "1.0".
+# -- If the default data is remote, there must be a local sample for tests!
+INDEXES = {
+    "default": "1.0",
+    "test": "sample",
+    "1.0": core.Index(filename="example_index_1.0.json"),
+    "sample": core.Index(filename="example_index_sample.json")
+}
+
 # -- REMOTES is a dictionary containing all files that need to be downloaded.
 # -- The keys should be descriptive (e.g. 'annotations', 'audio').
 # -- When having data that can be partially downloaded, remember to set up
@@ -81,6 +96,9 @@ class Track(core.Track):
     Attributes:
         track_id (str): track id
         # -- Add any of the dataset specific attributes here
+
+    Cached Properties:
+        annotation (EventData): a description of this annotation
 
     """
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -157,6 +175,9 @@ class MultiTrack(core.MultiTrack):
         track_audio_attribute (str): the name of the attribute of Track which
             returns the audio to be mixed
         # -- Add any of the dataset specific attributes here
+
+    Cached Properties:
+        annotation (EventData): a description of this annotation
 
     """
     def __init__(self, mtrack_id, data_home):
@@ -244,12 +265,14 @@ class Dataset(core.Dataset):
     """The Example dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name=NAME,
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

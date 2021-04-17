@@ -64,9 +64,10 @@ The steps to add a new dataset loader to ``mirdata`` are:
 
 Before starting, check if your dataset falls into one of these non-standard cases:
 
-- Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
-- Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
-- Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
+* Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
+* Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
+* Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
+* Is the index large (e.g. > 5 MB)? If so, see `this section <large_index_>`_
 
 
 .. _create_index:
@@ -78,8 +79,9 @@ Before starting, check if your dataset falls into one of these non-standard case
 dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
-1. To create an index, first cereate a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
-2. Then run the script on the :ref:`canonical version` of the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index.json``.
+1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
+2. Then run the script on the the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index_<version>.json``.
+   where <version> indicates which version of the dataset was used (e.g. 1.0).
 
 
 .. _index example:
@@ -300,7 +302,8 @@ To finish your contribution, include tests that check the integrity of your load
    If your loader has a custom download function, add tests similar to 
    `this loader <https://github.com/mir-dataset-loaders/mirdata/blob/master/tests/test_groove_midi.py#L96>`_.
 3. Locally run ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset`` before submitting your loader to make 
-   sure everything is working.
+   sure everything is working. If your dataset has `multiple versions <multiple_versions_>`_, test each (non-default) version
+   by running ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset --dataset-version my_version``.
 
 
 .. note::  We have written automated tests for all loader's ``cite``, ``download``, ``validate``, ``load``, ``track_ids`` functions, 
@@ -522,8 +525,68 @@ it should be imported as follows:
 Datasets with multiple versions
 -------------------------------
 
-We do not currently support datasets with multiple versions, however we are actively working on supporting them.
-For the latest progress, see `the open issue <https://github.com/mir-dataset-loaders/mirdata/issues/489>`_.
+There are some datasets where the loading code is the same, but there are multiple
+versions of the data (e.g. updated annotations, or an additional set of tracks which
+follow the same paradigm). In this case, only one loader should be written, and
+multiple versions can be defined by creating additional indexes. Indexes follow the
+naming convention <datasetname>_index_<version>.json, thus a dataset with two 
+versions simply has two index files. Different versions are tracked using the
+``INDEXES`` variable:
+.. code-block:: python
+
+    INDEXES = {
+        "default": "1.0",
+        "test": "sample",
+        "1.0": core.Index(filename="example_index_1.0.json"),
+        "2.0": core.Index(filename="example_index_2.0.json"),
+        "sample": core.Index(filename="example_index_sample.json")
+    }
+
+By default, mirdata loads the version specified as ``default`` in ``INDEXES``
+when running ``mirdata.initialize('example')``, but a specific version can
+be loaded by running ``mirdata.initialize('example', version='2.0')``.
+
+Different indexes can refer to different subsets of the same larger dataset, 
+or can reference completely different data. All data needed for all versions
+should be specified via keys in ``REMOTES``, and by default, mirdata will
+download everything. If one version only needs a subset
+of the data in ``REMOTES``, it can be specified using the ``partial_download``
+argument of ``core.Index``. For example, if ``REMOTES`` has the keys
+``['audio', 'v1-annotations', 'v2-annotations']``, the ``INDEXES`` dictionary
+could look like:
+
+.. code-block:: python
+
+    INDEXES = {
+        "default": "1.0",
+        "test": "1.0",
+        "1.0": core.Index(filename="example_index_1.0.json", partial_download=['audio', 'v1-annotations']),
+        "2.0": core.Index(filename="example_index_2.0.json", partial_download=['audio', 'v2-annotations']),
+    }
+
+
+.. _large_index:
+
+Datasets with large indexes
+---------------------------
+
+Large indexes should be stored remotely, rather than checked in to the mirdata repository.
+mirdata has a `zenodo community <https://zenodo.org/communities/mirdata/?page=1&size=20>`_
+where larger indexes can be uploaded as "datasets".
+
+When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and 
+``checksum`` to the ``Index`` class:
+
+.. code-block:: python
+
+    "1.0": core.Index(
+        filename="example_index_1.0.json",  # the name of the index file
+        url=<url>,  # the download link
+        checksum=<checksum>,  # the md5 checksum
+    )
+
+Remote indexes get downloaded along with the data when calling ``.download()``,
+and are stored in ``<data_home>/mirdata_indexes``.
 
 
 Documentation
