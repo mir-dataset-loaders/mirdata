@@ -23,8 +23,8 @@ try:
     import music21
 except ImportError:
     logging.error(
-        "In order to use example_dataset you must have asdf installed. "
-        "Please reinstall mirdata using `pip install 'mirdata[example_dataset]'"
+        "In order to use haydn_op20 you must have music21 installed. "
+        "Please reinstall mirdata using `pip install 'mirdata[haydn_op20]'"
     )
     raise ImportError
 
