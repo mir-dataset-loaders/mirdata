@@ -20,7 +20,7 @@ from mirdata import core, io, jams_utils, download_utils
 import logging
 
 try:
-    import asdf
+    import music21
 except ImportError:
     logging.error(
         "In order to use example_dataset you must have asdf installed. "
@@ -157,7 +157,7 @@ def _split_score_annotations(fhandle: TextIO):
 
     Returns:
         music21.stream.Score: score in music21 format
-        List[Tuple[Any, Any]]: roman numerals
+        list: list of roman numerals [(time in seconds, roman numeral)]
     """
     score = music21.converter.parse(fhandle.name, format="humdrum")
 
@@ -183,6 +183,16 @@ def load_score(fhandle: TextIO):
 
 
 def _load_key_base(fhandle, resolution):
+    """Load haydn op20 key data from a file in music21 format
+
+        Args:
+            fhandle (str or file-like): path to key annotations
+            resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
+
+        Returns:
+            list: musical key data and relative time (offset (Music21Object.offset) * resolution) [(time in PPQ, local key)]
+
+    """
     _, rna = _split_score_annotations(fhandle)
     annotations = []
     for offset, rn in rna:
@@ -225,7 +235,7 @@ def load_key_music21(fhandle: TextIO, resolution=28):
         resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
-        List[dict]: musical key data and relative time (offset (Music21Object.offset) * resolution).
+        list: musical key data and relative time (offset (Music21Object.offset) * resolution) [(time in PPQ, local key)]
 
     """
     return _load_key_base(fhandle, resolution)
