@@ -82,6 +82,14 @@ dali
    :inherited-members:
 
 
+freesound_one_shot_percussive_sounds
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.freesound_one_shot_percussive_sounds
+   :members:
+   :inherited-members:
+
+
 giantsteps_key
 ^^^^^^^^^^^^^^
 
