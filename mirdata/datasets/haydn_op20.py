@@ -285,6 +285,7 @@ def _load_chords_base(fhandle: TextIO, resolution: int = 28):
 @io.coerce_to_string_io
 def load_chords(fhandle: TextIO, resolution: int = 28):
     """Load haydn op20 chords data from a file
+
     Args:
         fhandle (str or file-like): path to chord annotations
         resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
