@@ -191,6 +191,7 @@ def load_key(fhandle: TextIO, resolution=28):
 
     Args:
         fhandle (str or file-like): path to key annotations
+        resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
         KeyData: loaded key data
@@ -213,6 +214,7 @@ def load_key_music21(fhandle: TextIO, resolution=28):
 
     Args:
         fhandle (str or file-like): path to key annotations
+        resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
         List[dict]: musical key data and relative time (offset (Music21Object.offset) * resolution).
@@ -245,6 +247,7 @@ def load_roman_numerals(fhandle: TextIO, resolution=28):
 
     Args:
         fhandle (str or file-like): path to roman numeral annotations
+        resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
         List[dict]: musical roman numerals data and relative time (offset (Music21Object.offset) * resolution)
@@ -264,6 +267,7 @@ def _load_chords_base(fhandle: TextIO, resolution: int = 28):
 
     Args:
         fhandle (str or file-like): path to chord annotations
+        resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
         List[dict]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
@@ -283,6 +287,7 @@ def load_chords(fhandle: TextIO, resolution: int = 28):
     """Load haydn op20 chords data from a file
     Args:
         fhandle (str or file-like): path to chord annotations
+        resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
         ChordData: chord annotations
@@ -305,6 +310,7 @@ def load_chords_music21(fhandle: TextIO, resolution: int = 28):
 
     Args:
         fhandle (str or file-like): path to chord annotations
+        resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
         List[dict]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
