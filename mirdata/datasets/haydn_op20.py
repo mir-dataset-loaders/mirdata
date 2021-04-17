@@ -1,7 +1,5 @@
 """haydn op20 Dataset Loader
 
-This dataset has as dependency the Music21 library.
-
 .. admonition:: Dataset Info
     :class: dropdown
 
@@ -11,14 +9,24 @@ This dataset has as dependency the Music21 library.
     This dataset contains 30 pieces composed by Joseph Haydn in symbolic format, which have each been manually
     annotated with harmonic analyses.
 """
-
+import logging
 import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
 
 import numpy as np
 
 from mirdata import core, io, jams_utils, download_utils
-import music21
+
+import logging
+
+try:
+    import asdf
+except ImportError:
+    logging.error(
+        "In order to use example_dataset you must have asdf installed. "
+        "Please reinstall mirdata using `pip install 'mirdata[example_dataset]'"
+    )
+    raise ImportError
 
 from mirdata.annotations import KeyData, ChordData
 
