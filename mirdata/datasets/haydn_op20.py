@@ -185,12 +185,12 @@ def load_score(fhandle: TextIO):
 def _load_key_base(fhandle, resolution):
     """Load haydn op20 key data from a file in music21 format
 
-        Args:
-            fhandle (str or file-like): path to key annotations
-            resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
+    Args:
+        fhandle (str or file-like): path to key annotations
+        resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
-        Returns:
-            list: musical key data and relative time (offset (Music21Object.offset) * resolution) [(time in PPQ, local key)]
+    Returns:
+        list: musical key data and relative time (offset (Music21Object.offset) * resolution) [(time in PPQ, local key)]
 
     """
     _, rna = _split_score_annotations(fhandle)
@@ -268,7 +268,7 @@ def load_roman_numerals(fhandle: TextIO, resolution=28):
         resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
-        List[dict]: musical roman numerals data and relative time (offset (Music21Object.offset) * resolution)
+        list: musical roman numerals data and relative time (offset (Music21Object.offset) * resolution) [(time in PPQ, roman numerals)]
 
     """
     _, rna = _split_score_annotations(fhandle)
@@ -288,7 +288,7 @@ def _load_chords_base(fhandle: TextIO, resolution: int = 28):
         resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
-        List[dict]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
+        list: musical chords data and relative time (offset (Music21Object.offset) * resolution) [(time in PPQ, chord)]
 
     """
     _, rna = _split_score_annotations(fhandle)
@@ -332,7 +332,7 @@ def load_chords_music21(fhandle: TextIO, resolution: int = 28):
         resolution (int): the number of pulses, or ticks, per quarter note (PPQ)
 
     Returns:
-        List[dict]: musical chords data and relative time (offset (Music21Object.offset) * resolution)
+        list: musical chords data and relative time (offset (Music21Object.offset) * resolution) [(time in PPQ, chord)]
 
     """
     return _load_chords_base(fhandle, resolution)
