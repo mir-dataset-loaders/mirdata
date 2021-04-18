@@ -12,7 +12,6 @@
 import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
 
-import music21
 import numpy as np
 
 from mirdata import core, io, jams_utils, download_utils
