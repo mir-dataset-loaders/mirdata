@@ -32,6 +32,59 @@ def test_track():
     )
 
 
+def test_track_properties_and_attributes():
+    default_trackid = "1"
+    data_home = "tests/resources/mir_datasets/good_sounds"
+    dataset = good_sounds.Dataset(data_home)
+    track = dataset.track(default_trackid)
+    ground_truth_sound = {
+        "id": 1,
+        "instrument": "flute",
+        "note": "C",
+        "octave": 4,
+        "dynamics": "mf",
+        "recorded_at": "2013-10-28 12:00:00.000000",
+        "location": "upf studio",
+        "player": "almudena",
+        "bow_velocity": None,
+        "bridge_position": None,
+        "string": None,
+        "csv_file": 1,
+        "csv_id": 1,
+        "pack_filename": "0000.wav",
+        "pack_id": 1,
+        "attack": 105810,
+        "decay": 110629,
+        "sustain": None,
+        "release": 332406,
+        "offset": 343765,
+        "reference": 1,
+        "klass": "good-sound",
+        "comments": None,
+        "semitone": 48,
+        "pitch_reference": 442,
+    }
+    ground_truth_take = {
+        "id": 1,
+        "microphone": "akg",
+        "filename": "tests/resources/mir_datasets/good_sounds/good-sounds/sound_files/flute_almudena_reference/akg/0000.wav",
+        "original_filename": "AKG-costado-Left-01 render 001",
+        "freesound_id": None,
+        "sound_id": 1,
+        "goodsound_id": None,
+    }
+    ground_truth_ratings = []
+    ground_truth_pack = {
+        "id": 1,
+        "name": "flute_almudena_reference",
+        "description": "Play reference notes",
+    }
+    assert track.get_sound_info == ground_truth_sound
+    assert track.get_take_info == ground_truth_take
+    assert track.get_pack_info == ground_truth_pack
+    assert track.get_ratings_info == ground_truth_ratings
+
+
 def test_to_jams():
     default_trackid = "1"
     data_home = "tests/resources/mir_datasets/good_sounds"
