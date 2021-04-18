@@ -264,8 +264,12 @@ class Dataset(core.Dataset):
         sounds = os.path.join(self.data_home, "sounds.json")
         takes = os.path.join(self.data_home, "takes.json")
 
-        if not os.path.exists(packs) or not os.path.exists(ratings) or \
-           not os.path.exists(sounds) or not os.path.exists(takes):
+        if (
+            not os.path.exists(packs)
+            or not os.path.exists(ratings)
+            or not os.path.exists(sounds)
+            or not os.path.exists(takes)
+        ):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
         with open(packs, "r") as fhandle:
             packs = json.load(fhandle)
