@@ -260,26 +260,22 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         packs = os.path.join(self.data_home, "packs.json")
-        if not os.path.exists(packs):
+        ratings = os.path.join(self.data_home, "ratings.json")
+        sounds = os.path.join(self.data_home, "sounds.json")
+        takes = os.path.join(self.data_home, "takes.json")
+
+        if not os.path.exists(packs) or not os.path.exists(ratings) or \
+           not os.path.exists(sounds) or not os.path.exists(takes):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
         with open(packs, "r") as fhandle:
             packs = json.load(fhandle)
 
-        ratings = os.path.join(self.data_home, "ratings.json")
-        if not os.path.exists(ratings):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
         with open(ratings, "r") as fhandle:
             ratings = json.load(fhandle)
 
-        sounds = os.path.join(self.data_home, "sounds.json")
-        if not os.path.exists(sounds):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
         with open(sounds, "r") as fhandle:
             sounds = json.load(fhandle)
 
-        takes = os.path.join(self.data_home, "takes.json")
-        if not os.path.exists(takes):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
         with open(takes, "r") as fhandle:
             takes = json.load(fhandle)
 
