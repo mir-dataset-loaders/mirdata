@@ -58,5 +58,6 @@ if __name__ == "__main__":
                 "sphinx_rtd_theme",
             ],
             "dali": ["dali-dataset==1.1"],
+            "haydn_op20": ["music21"],
         },
     )

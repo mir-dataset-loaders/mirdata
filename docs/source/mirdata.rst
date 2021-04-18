@@ -130,6 +130,14 @@ guitarset
    :inherited-members:
 
 
+haydn_op20
+^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.haydn_op20
+   :members:
+   :inherited-members:
+
+
 ikala
 ^^^^^
 
