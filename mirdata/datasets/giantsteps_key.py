@@ -53,9 +53,9 @@ BIBTEX = """@inproceedings{knees2015two,
 }"""
 
 INDEXES = {
-    "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="giantsteps_key_index_1.0.json"),
+    "default": "+",
+    "test": "+",
+    "+": core.Index(filename="giantsteps_key_index_+.json"),
 }
 
 REMOTES = {
