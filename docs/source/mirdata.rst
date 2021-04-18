@@ -67,10 +67,25 @@ compmusic_otmm_makam
    :inherited-members:
 
 
+dagstuhl_choirset
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.dagstuhl_choirset
+   :members:
+   :inherited-members:
+
 dali
 ^^^^
 
 .. automodule:: mirdata.datasets.dali
+   :members:
+   :inherited-members:
+
+
+freesound_one_shot_percussive_sounds
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.freesound_one_shot_percussive_sounds
    :members:
    :inherited-members:
 
@@ -119,6 +134,14 @@ guitarset
 ^^^^^^^^^
 
 .. automodule:: mirdata.datasets.guitarset
+   :members:
+   :inherited-members:
+
+
+haydn_op20
+^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.haydn_op20
    :members:
    :inherited-members:
 

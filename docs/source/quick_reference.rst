@@ -184,6 +184,15 @@ Additional representation of the sung lyrics but structured as syllables instead
 be annotated as time-aligned events where the events are the syllables happening at certain time
 intervals. Otherwise, they can be represented as a stream of strings, grouped by meaningful syllable structures.
 
+.. _tags:
+
+Tags
+^^^^
+This is a broad annotation type that is used to label music and sounds, that often spans multiple categories. For
+example, music can be labeled with tags pertaining to the instruments present, the musical style, the mood, etc. Tags
+are often free-form and may not have a structured taxonomy/set of labels. They are typically represented as a list of
+strings, sometimes with associated weights/confidences.
+
 .. _tonic:
 
 Tonic

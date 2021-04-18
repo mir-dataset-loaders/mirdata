@@ -80,12 +80,30 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - Dagstuhl ChoirSet
+     - - multitrack audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`beats`
+       - :ref:`notes`
+     - 108
+     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by/4.0/
+
    * - DALI
      - - audio: 📺
        - annotations: ✅
      - - :ref:`lyrics`
        - Vocal :ref:`notes`
      - 5358
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
+   * - Freesound One-Shot Percussive Sounds
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`tags`
+     - 10254
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -154,6 +172,17 @@
        - :ref:`lyrics`
      - 252
      - :ikala:`\ `
+
+   * - Haydn op20
+     - - audio: N/A
+       - midi: ✅
+       - scores: ✅
+       - annotations: ✅
+     - - symbolic :ref:`chords`
+       - symbolic :ref:`key`
+     - 24
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - IRMAS
      - - audio: ✅
