@@ -124,7 +124,7 @@ class Track(core.Track):
 
     @core.cached_property
     def midi_path(self) -> Optional[str]:
-        return load_midi_path(self.humdrum_annotated_path)
+        return convert_and_save_to_midi(self.humdrum_annotated_path)
 
     def to_jams(self):
         """Get the track's data in jams format
@@ -241,8 +241,8 @@ def load_key_music21(fhandle: TextIO, resolution=28):
 
 
 @io.coerce_to_string_io
-def load_midi_path(fhandle: TextIO):
-    """Load path to midi file of haydn op20 musical piece
+def convert_and_save_to_midi(fhandle: TextIO):
+    """convert to midi file and return the midi path
 
     Args:
         fhandle (str or file-like): path to score file
@@ -369,6 +369,6 @@ class Dataset(core.Dataset):
     def load_roman_numerals(self, *args, **kwargs):
         return load_roman_numerals(*args, **kwargs)
 
-    @core.copy_docs(load_midi_path)
+    @core.copy_docs(convert_and_save_to_midi)
     def load_midi_path(self, *args, **kwargs):
-        return load_midi_path(*args, **kwargs)
+        return convert_and_save_to_midi(*args, **kwargs)

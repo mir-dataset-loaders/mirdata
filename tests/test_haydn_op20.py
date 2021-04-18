@@ -168,6 +168,6 @@ def test_load_roman_numerals():
 
 def test_load_midi_path():
     path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
-    midi_path = haydn_op20.load_midi_path(path)
+    midi_path = haydn_op20.convert_and_save_to_midi(path)
     assert isinstance(midi_path, str)
     assert midi_path == "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
