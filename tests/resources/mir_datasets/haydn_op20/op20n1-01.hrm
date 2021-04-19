@@ -1,0 +1,102 @@
+!!!COM: Haydn, Franz Joseph
+!!!OTL: String Quartet in E-flat Major
+!!!OPS: Opus 20
+!!!ONM: No. 1
+!!!OMD: Allegro moderato
+!!!OMV: 1
+!!!SCT: H III:31
+!!!SCA: Thematisch-bibliographisches Werkevererzeichnis (A. van Hoboken)
+!!!YOR: Trautwein Edition
+!!!ENC: Frances Bennion
+!!!ENC: Harmonic analysis by Nestor Napoles and Rafael Caro
+!!!CDT: 1732/3/31/-1809/5/31/
+!!!CNT: Oesterreich
+!!!YEC: Copyright (c) 1994, 2000 Center for Computer Assisted Research in the Humanities
+!!!YEM: Rights to all derivative editions reserved.
+!!!YEM: Refer to licensing agreement for further details.
+!!!YEN: United States of America
+**harm	**commentary	**kern	**kern	**kern	**kern
+*k[b-e-a-]	*k[b-e-a-]	*k[b-e-a-]	*k[b-e-a-]	*k[b-e-a-]	*k[b-e-a-]
+*E-:	*E-:	*E-:	*E-:	*E-:	*E-:
+*	*	*clefF4	*clefC3	*clefG2	*clefG2
+*M4/4	*M4/4	*M4/4	*M4/4	*M4/4	*M4/4
+*staff1/2/3/4	*	*staff1	*staff2	*staff3	*staff4
+I	Start exposition section	8E-	4g	1r	4b-
+.	.	8EE-	.	.	.
+.	.	4r	8a-	.	8cc
+.	.	.	8f	.	8a-
+.	.	8E-	8e-	.	4g
+.	.	8EE-	8B-	.	.
+.	.	4r	8c	.	8a-
+.	.	.	8A-	.	8f
+=2	=2	=2	=2	=2	=2
+.	.	8E-	4.G	1r	4e-
+.	.	8EE-	.	.	.
+.	.	8EE-	.	.	8d
+.	.	8EE-	8A-	.	8c
+.	.	8EE-	8G	.	8B-
+.	.	8E-	8G	.	8B-
+.	.	8D	8F	.	8B-
+.	.	8C	8E-	.	8B-
+=3	=3	=3	=3	=3	=3
+.	.	8BB-	8D	1r	4.B-
+.	.	8AA-	8c	.	.
+.	.	8GG	8B-	.	.
+.	.	8FF	8A-	.	16c
+.	.	.	.	.	16d
+.	.	4EE-	4G	.	16e-
+.	.	.	.	.	16f
+.	.	.	.	.	16g
+.	.	.	.	.	16a-
+.	.	4r	4r	.	16b-
+.	.	.	.	.	16cc
+.	.	.	.	.	16dd
+.	.	.	.	.	16ee-
+=4	=4	=4	=4	=4	=4
+.	.	3..r	8r	1r	4b-
+.	.	.	8g	.	.
+V7	.	.	8f	.	4a-
+.	.	.	8B-	.	.
+I	.	.	4e-	.	4g
+.	.	24r	.	.	.
+.	.	8EE-	.	.	.
+.	.	24GG	4r	.	4r
+.	.	24EE-	.	.	.
+.	.	24GG	.	.	.
+.	.	24BB-	.	.	.
+.	.	24GG	.	.	.
+.	.	24BB-	.	.	.
+=5	=5	=5	=5	=5	=5
+.	.	8E-	4g	1r	4b-
+.	.	8EE-	.	.	.
+.	.	4r	8a-	.	8cc
+.	.	.	8f	.	8a-
+.	.	8E-	8e-	.	4g
+.	.	8EE-	8B-	.	.
+.	.	4r	8c	.	8a-
+.	.	.	8A-	.	8f
+=6	=6	=6	=6	=6	=6
+.	.	1r	8G	1r	4e-
+.	.	.	8e-	.	.
+.	.	.	8d	.	8.f
+.	.	.	8B-	.	.
+.	.	.	.	.	32e-
+.	.	.	.	.	32f
+.	.	.	8e-	.	4g
+.	.	.	8d	.	.
+V7c/V	.	.	8c	.	8.a
+
+
+==	==	==	==	==	==
+*-	*-	*-	*-	*-	*-
+!!!RWG1: This file contains only pitch and duration data.
+!!!RWG2: Transposing instruments are not transposed.
+!!!RWG3: Spines may have incompatible meters.
+!!!RWG4: Durations of rests and tied notes may be interpreted.
+!!!RWG: Key is interpreted using the Humdrum key tool.
+!!!GTL: 6 Divertimentos ("Sun")
+!!!AFT: stage1
+!!!END: 1997/04/15
+!!!KEY: 3333551138
+!!!EMD: Converted from MuseData to Humdrum Dec 16, 2000, by Andreas Kornstaedt using muse2kern.
+!!!EMD: Manual editing by Craig Sapp, Nov 2001
