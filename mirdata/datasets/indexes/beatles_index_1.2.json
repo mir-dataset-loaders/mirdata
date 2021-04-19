@@ -1,0 +1,3965 @@
+{
+  "version": "1.2",
+  "tracks": {
+    "0201": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/01_-_It_Won't_Be_Long.wav",
+        "2cebdf1aed0beca7159f56849c2836b6"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/01_-_It_Won't_Be_Long.txt",
+        "f805bf636115331b856818ee56fa533c"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/01_-_It_Won't_Be_Long.lab",
+        "f513e463c0b1d64ce6ce5e986ae40767"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/01_-_It_Won't_Be_Long.lab",
+        "a671e1f362147e29faab7886c0264b1d"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/01_-_It_Won't_Be_Long.lab",
+        "53e6d803afca5ba01f632be3717a6457"
+      ]
+    },
+    "0202": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/02_-_All_I've_Got_To_Do.wav",
+        "93cd687666b30dbe81e1c88831ffa4b6"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/02_-_All_I've_Got_To_Do.txt",
+        "149044abf9876f0dfac0adb8f35625d9"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/02_-_All_I've_Got_To_Do.lab",
+        "d10e932edb0bed7d31c3279f63a5e0bf"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/02_-_All_I've_Got_To_Do.lab",
+        "52d0b95e6115c3f00ebc33ed2943162a"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/02_-_All_I've_Got_To_Do.lab",
+        "9fd41e03c00f6c7a09d3fe35816a1213"
+      ]
+    },
+    "0203": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/03_-_All_My_Loving.wav",
+        "8bd653d08dea90e46ce673f6644c2bbb"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/03_-_All_My_Loving.txt",
+        "71c040bd33013a306c771f7b73e960ce"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/03_-_All_My_Loving.lab",
+        "a131ccc96819f0e33b94df85b220c09d"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/03_-_All_My_Loving.lab",
+        "da68aeec1572dca18db7f4a79c8ae9a8"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/03_-_All_My_Loving.lab",
+        "f9b0724af867e2f9bde23c6c0b718799"
+      ]
+    },
+    "0204": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/04_-_Don't_Bother_Me.wav",
+        "09af495b7920bdaf8c1d16e174b918ae"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/04_-_Don't_Bother_Me.txt",
+        "271423a18792f471652c8b3622564250"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/04_-_Don't_Bother_Me.lab",
+        "523f1c1b491a086daf07e15bbe7ccf9c"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/04_-_Don't_Bother_Me.lab",
+        "82a01748bfce252809fba30277be834f"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/04_-_Don't_Bother_Me.lab",
+        "619cd04a7b47e180224addecb29cb97c"
+      ]
+    },
+    "0205": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/05_-_Little_Child.wav",
+        "dd85a6b4758c77ebc47f7ec352d66ec3"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/05_-_Little_Child.txt",
+        "813606c666d9d0eb65819eca482a615b"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/05_-_Little_Child.lab",
+        "9edba53ae012c9faa81aa34410569d6b"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/05_-_Little_Child.lab",
+        "cfd869a8ce4dfedb6e8dfeb69d9c5326"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/05_-_Little_Child.lab",
+        "b8392dee0b805529f3f248a22dde68fe"
+      ]
+    },
+    "0206": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/06_-_Till_There_Was_You.wav",
+        "eff6de00934b8a630c31c326bee18aec"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/06_-_Till_There_Was_You.txt",
+        "8a2da5278ba282d9ad67da7d692758a5"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/06_-_Till_There_Was_You.lab",
+        "51f78ffaf191165ccb877de109b1e1de"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/06_-_Till_There_Was_You.lab",
+        "e2f1c1cabd09def27a3be2c558da9102"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/06_-_Till_There_Was_You.lab",
+        "5b9ac61254285769e12560002daa691e"
+      ]
+    },
+    "0207": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/07_-_Please_Mister_Postman.wav",
+        "2820a76ca5f1c5fb00b05659ddfcf5a6"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/07_-_Please_Mister_Postman.txt",
+        "59583cf6148a4d5213237fb89adcb60b"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/07_-_Please_Mister_Postman.lab",
+        "aba19ba317f2dd2de4ed2cbfb12ebfba"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/07_-_Please_Mister_Postman.lab",
+        "f16ba203738f9ae918ebfc2b2c85938a"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/07_-_Please_Mister_Postman.lab",
+        "91ad98e20f6fb70948742d7560f5b7ae"
+      ]
+    },
+    "0208": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/08_-_Roll_Over_Beethoven.wav",
+        "4868cb7eacfca7b363684475c0bffc55"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/08_-_Roll_Over_Beethoven.txt",
+        "66f0842839626e25275c09160b357ebd"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/08_-_Roll_Over_Beethoven.lab",
+        "ac087f30fce7da3424faf9910b980c40"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/08_-_Roll_Over_Beethoven.lab",
+        "6d5b6c0c60b8dccea7004a3d2d830523"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/08_-_Roll_Over_Beethoven.lab",
+        "b6ca7653976cbcbfc3f616d7a48e2805"
+      ]
+    },
+    "0209": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/09_-_Hold_Me_Tight.wav",
+        "49d28be2065a8254d5f0bc987f75067b"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/09_-_Hold_Me_Tight.txt",
+        "e0f744ec827a4ed5972984890d7d13f4"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/09_-_Hold_Me_Tight.lab",
+        "ed3efed0d4c7d80b3bd7c3de69ae8248"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/09_-_Hold_Me_Tight.lab",
+        "dd5e5ef3cf3f2d627b5df3a486d72038"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/09_-_Hold_Me_Tight.lab",
+        "103b28438d312fe5aebd086572d3a1e1"
+      ]
+    },
+    "0210": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/10_-_You_Really_Got_A_Hold_On_Me.wav",
+        "614df6c7c7bfebc250614394d11db4d1"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/10_-_You_Really_Got_A_Hold_On_Me.txt",
+        "67e8488f0cfb61bd1e9f26d81d1a899b"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/10_-_You_Really_Got_A_Hold_On_Me.lab",
+        "62c5d263d417e693f418cfdc9b463b47"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/10_-_You_Really_Got_A_Hold_On_Me.lab",
+        "9990101290e7114417905e419c14aca3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/10_-_You_Really_Got_A_Hold_On_Me.lab",
+        "e48c2200c839aa262ca566a0529e4a70"
+      ]
+    },
+    "0211": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/11_-_I_Wanna_Be_Your_Man.wav",
+        "bcbb825ceabf1321e13251b11d2692ae"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/11_-_I_Wanna_Be_Your_Man.txt",
+        "b79c0421528c05e6a9ec7c35070ff2a3"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/11_-_I_Wanna_Be_Your_Man.lab",
+        "5d9d253ebbd35851a212031ed58d8fc8"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/11_-_I_Wanna_Be_Your_Man.lab",
+        "ef1172245c29f02c18a8c114405d657f"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/11_-_I_Wanna_Be_Your_Man.lab",
+        "ade40d821ce7bec40cec1da8e81ea79d"
+      ]
+    },
+    "0212": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/12_-_Devil_In_Her_Heart.wav",
+        "cfccd1e9e239202c446a9f19a9f66adc"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/12_-_Devil_In_Her_Heart.txt",
+        "3337af55d7793eb4cdda39c55df24677"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/12_-_Devil_In_Her_Heart.lab",
+        "27911e9723cd7f00f42863cc99cc5a54"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/12_-_Devil_In_Her_Heart.lab",
+        "511f5885fd5471a21551abb5ff4c78ad"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/12_-_Devil_In_Her_Heart.lab",
+        "54fdf88859fee939b17605606bf0262c"
+      ]
+    },
+    "0213": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/13_-_Not_A_Second_Time.wav",
+        "435298a31d52d538d0b7e40b9a6f2533"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/13_-_Not_A_Second_Time.txt",
+        "d97fcfcadfc3c4ce63f8229d863cc858"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/13_-_Not_A_Second_Time.lab",
+        "6c476997d08eabe99ba5e27cbb0b085e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/13_-_Not_A_Second_Time.lab",
+        "ef414c535fb101449bdb309836f57bb2"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/13_-_Not_A_Second_Time.lab",
+        "492d28bf3db90a3f0454b2637767b009"
+      ]
+    },
+    "0214": {
+      "audio": [
+        "audio/02_-_With_the_Beatles/14_-_Money.wav",
+        "a63fb0b1b2cddc05b283db69fbf7c051"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/02_-_With_the_Beatles/14_-_Money.txt",
+        "1b7f2618498530577edf61fb128156e7"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/02_-_With_the_Beatles/14_-_Money.lab",
+        "b5f0db8f41027f0f215d7f4abcc41aea"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/02_-_With_the_Beatles/14_-_Money.lab",
+        "1dc767fd859c66aa4b33cda202182e90"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/02_-_With_the_Beatles/14_-_Money.lab",
+        "fcba319a6be95a7a6ddd0186e12af380"
+      ]
+    },
+    "0401": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/01_-_No_Reply.wav",
+        "3ea83c6f60e3a02016d38b518178d436"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/01_-_No_Reply.txt",
+        "11f00c9ea6f84e5ff0c570d5a4089f39"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/01_-_No_Reply.lab",
+        "40fd451b2bae136149ed68c219a38376"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/01_-_No_Reply.lab",
+        "3e134c7296da8aaf6eca2df46b43815e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/01_-_No_Reply.lab",
+        "92fd2db918096b80feb5dcec60704c25"
+      ]
+    },
+    "0402": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/02_-_I'm_a_Loser.wav",
+        "c1d12aaeab7b37a6b929eb07187dde82"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/02_-_I'm_a_Loser.txt",
+        "c85c7d4e1ae3a2cdb5c553de91443cfa"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/02_-_I'm_a_Loser.lab",
+        "fb2b4a7abb575e4d0ee99a2cc1146425"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/02_-_I'm_a_Loser.lab",
+        "2fbc9097d4ad702aae76f77fa0f3398d"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/02_-_I'm_a_Loser.lab",
+        "ec2113c9741884a6e9a01637b6b0f811"
+      ]
+    },
+    "0403": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/03_-_Baby's_In_Black.wav",
+        "bd4a643ef9248b4c7c1e3a9394d059af"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/03_-_Baby's_In_Black.txt",
+        "9b66901fc53e4840bcb44e837e2bc1cc"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/03_-_Baby's_In_Black.lab",
+        "e91f0aff18c9c7182a877e4b8afd0cef"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/03_-_Baby's_In_Black.lab",
+        "c40ee47ca85d3c207d0501109d9680a3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/03_-_Baby's_In_Black.lab",
+        "e4d1c7f4e9fd56f0b47e10c1e80d751d"
+      ]
+    },
+    "0404": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/04_-_Rock_and_Roll_Music.wav",
+        "222aa15743d65cbcb97207a7c88741cd"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/04_-_Rock_and_Roll_Music.txt",
+        "12c9c0b75375c4223531dc0c6e337a36"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/04_-_Rock_and_Roll_Music.lab",
+        "8b50d7cf7975a7e3ea5de4929795b6fa"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/04_-_Rock_and_Roll_Music.lab",
+        "a4acd0c3041aecbeb03b256e51d8fd67"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/04_-_Rock_and_Roll_Music.lab",
+        "1bab8cb4d304aa0a1f4f3a6982b2dad7"
+      ]
+    },
+    "0405": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/05_-_I'll_Follow_the_Sun.wav",
+        "9c51911ffd1f1e14f206281b27f79cd3"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/05_-_I'll_Follow_the_Sun.txt",
+        "417910f38de8059415ba5767bf671dc5"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/05_-_I'll_Follow_the_Sun.lab",
+        "61bf3943df150a82d22ece403ea8a5e6"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/05_-_I'll_Follow_the_Sun.lab",
+        "4bc902528d5dfffb5fa1ffa3ada0c18d"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/05_-_I'll_Follow_the_Sun.lab",
+        "a8c04ebd06f69f6147561e075111e41e"
+      ]
+    },
+    "0406": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/06_-_Mr._Moonlight.wav",
+        "12adac49ea1ff8c3a41cd861a0093284"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/06_-_Mr._Moonlight.txt",
+        "0c47b645a04c99b92b34ce030c042804"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/06_-_Mr._Moonlight.lab",
+        "1a827ed404298517d7f060753381dd44"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/06_-_Mr._Moonlight.lab",
+        "557f6f1a7c227becc69e7f97e2efd9f5"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/06_-_Mr._Moonlight.lab",
+        "3c977b354aaf058258801179af434616"
+      ]
+    },
+    "0407": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/07_-_Kansas_City-_Hey,_Hey,_Hey,_Hey.wav",
+        "98dd5cc491e98d63e0630b34b29787d3"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/07_-_Kansas_City-_Hey,_Hey,_Hey,_Hey.txt",
+        "348f4b9e46de74dad361846293a631ae"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/07_-_Kansas_City-_Hey,_Hey,_Hey,_Hey.lab",
+        "7e7064bb1489902f63029f3d7159cf6a"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/07_-_Kansas_City-_Hey,_Hey,_Hey,_Hey.lab",
+        "f08a36bbde71f6a706c31b48982f2783"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/07_-_Kansas_City-_Hey,_Hey,_Hey,_Hey.lab",
+        "89e935c5e181cc8332988c7dfd1cc981"
+      ]
+    },
+    "0408": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/08_-_Eight_Days_a_Week.wav",
+        "d7a24474b729a85a78a53753512532f0"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/08_-_Eight_Days_a_Week.txt",
+        "453c7433df43cae605d2a01aa1f0d797"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/08_-_Eight_Days_a_Week.lab",
+        "7435dd4590f209143ef4615ab189787b"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/08_-_Eight_Days_a_Week.lab",
+        "5cf3dd1d32cc99e61b44c0270374704b"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/08_-_Eight_Days_a_Week.lab",
+        "5b1b308bd42d379af5c3e00035450e77"
+      ]
+    },
+    "0409": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/09_-_Words_of_Love.wav",
+        "f5439e64d44671904f56e8db9d2d20fe"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/09_-_Words_of_Love.txt",
+        "1bbf71606618313a7a4f8733211170e5"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/09_-_Words_of_Love.lab",
+        "c121ff60323a5c9a484e9565331eefa6"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/09_-_Words_of_Love.lab",
+        "3fb03af2105adee4210115348467874d"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/09_-_Words_of_Love.lab",
+        "810b812d8a22274da30bd010a2a8705a"
+      ]
+    },
+    "0410": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/10_-_Honey_Don't.wav",
+        "862bcf8fe610c2125d2423e9066ae740"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/10_-_Honey_Don't.txt",
+        "4f315d701d94b870f75d2bc18b10bc80"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/10_-_Honey_Don't.lab",
+        "187bfe9aa284257800ba5d70cfc4425c"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/10_-_Honey_Don't.lab",
+        "afdc148526e39a97dee2e1f5112399c7"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/10_-_Honey_Don't.lab",
+        "a1b91e548b7555ab6c47694c86c81070"
+      ]
+    },
+    "0411": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/11_-_Every_Little_Thing.wav",
+        "e8367c5f5bcbd71dff1590907a738e9a"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/11_-_Every_Little_Thing.txt",
+        "ab6204e08ac96be594d0fd6d631d0cc6"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/11_-_Every_Little_Thing.lab",
+        "34969545b6b915725b06c32d59b5e92f"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/11_-_Every_Little_Thing.lab",
+        "992f494762fcfaec4e25f011f0ac7173"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/11_-_Every_Little_Thing.lab",
+        "1bb28a67edba5c3c6bcdeb82075465b8"
+      ]
+    },
+    "0412": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/12_-_I_Don't_Want_to_Spoil_the_Party.wav",
+        "c21d66f7dd3c81e0357ee05764400127"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/12_-_I_Don't_Want_to_Spoil_the_Party.txt",
+        "46d8b8a4311fe4ec6ec5d2fc8829959b"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/12_-_I_Don't_Want_to_Spoil_the_Party.lab",
+        "e6348c16c6c0c0ffaac2f69bf0646aff"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/12_-_I_Don't_Want_to_Spoil_the_Party.lab",
+        "7ef82ca56e35339438c18744d0133ddf"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/12_-_I_Don't_Want_to_Spoil_the_Party.lab",
+        "ab9359f5731d25ea2fff2b55b5300dab"
+      ]
+    },
+    "0413": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/13_-_What_You're_Doing.wav",
+        "c1578712c410747b6f5de3d52d0fc550"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/13_-_What_You're_Doing.txt",
+        "a66ff456c9ed7059ea0c97e407b88b6d"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/13_-_What_You're_Doing.lab",
+        "72e705757f7239c2c719d6139325cd2c"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/13_-_What_You're_Doing.lab",
+        "a562e9b085be69355f1792b62082a426"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/13_-_What_You're_Doing.lab",
+        "4cd4e6d3566189f58c0d0f531d906bb7"
+      ]
+    },
+    "0414": {
+      "audio": [
+        "audio/04_-_Beatles_for_Sale/14_-_Everybody's_Trying_to_Be_My_Baby.wav",
+        "b5dc4370ae3e86cab07e8c4f07d9dd37"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/04_-_Beatles_for_Sale/14_-_Everybody's_Trying_to_Be_My_Baby.txt",
+        "b8e7c4865e71a9a2417cfdef8d3e74b2"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/04_-_Beatles_for_Sale/14_-_Everybody's_Trying_to_Be_My_Baby.lab",
+        "f214c2cfceef294440ba248ca0353fed"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/04_-_Beatles_for_Sale/14_-_Everybody's_Trying_to_Be_My_Baby.lab",
+        "24c3151d5dee129c6a819011ed8e3303"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/04_-_Beatles_for_Sale/14_-_Everybody's_Trying_to_Be_My_Baby.lab",
+        "f76abbe6ae67703ea7c7933b527253e4"
+      ]
+    },
+    "0301": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/01_-_A_Hard_Day's_Night.wav",
+        "f4f35ceb6c70c0cd51ce689b16ba0f9f"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/01_-_A_Hard_Day's_Night.txt",
+        "20c2d0e3dd2dfccaf2fa2eda5609c0de"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/01_-_A_Hard_Day's_Night.lab",
+        "a2166c92a6e65eca5ad294de9004d59c"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/01_-_A_Hard_Day's_Night.lab",
+        "116cd8dc3a669b9722f764bd173c7e16"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/01_-_A_Hard_Day's_Night.lab",
+        "a18f9c2319c6e7f809807a1831d95821"
+      ]
+    },
+    "0302": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/02_-_I_Should_Have_Known_Better.wav",
+        "0ddf62e45ac3b82b84348bb52b2b8e7b"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/02_-_I_Should_Have_Known_Better.txt",
+        "09eb194cb5d048f3a1a5e30e702c386e"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/02_-_I_Should_Have_Known_Better.lab",
+        "f1b7b728f373dd75e79069ff68b51f99"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/02_-_I_Should_Have_Known_Better.lab",
+        "81fc41765353c44ac886d84f970f0099"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/02_-_I_Should_Have_Known_Better.lab",
+        "3679b18c56d638a28503ca2e415ba90f"
+      ]
+    },
+    "0303": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/03_-_If_I_Fell.wav",
+        "b1b980a6a01687938b69d97c24d89d68"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/03_-_If_I_Fell.txt",
+        "03a4c9192a55d844c57e4dab7baa3b22"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/03_-_If_I_Fell.lab",
+        "de55fa2d81aef61f702094039605cf2b"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/03_-_If_I_Fell.lab",
+        "cf5375192a2de5f778f9d7ba1950e689"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/03_-_If_I_Fell.lab",
+        "fe5e5b46a1e404a63fec48b83d35f892"
+      ]
+    },
+    "0304": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/04_-_I'm_Happy_Just_To_Dance_With_You.wav",
+        "34f57b5afa606c1f8e99cf4580a62f58"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/04_-_I'm_Happy_Just_To_Dance_With_You.txt",
+        "ed78e6479ca00bf67fdf82f3ece983cd"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/04_-_I'm_Happy_Just_To_Dance_With_You.lab",
+        "f87a8b8f62e654b0abb34489254b76ae"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/04_-_I'm_Happy_Just_To_Dance_With_You.lab",
+        "11c4dfaf6b5bfdf2a1bf666a9324c69c"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/04_-_I'm_Happy_Just_To_Dance_With_You.lab",
+        "f492ef77f94edd4299ec7d372d3cbedd"
+      ]
+    },
+    "0305": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/05_-_And_I_Love_Her.wav",
+        "8aee4793e785636174f3c59f6378830b"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/05_-_And_I_Love_Her.txt",
+        "6b918defd5092c70632f06e1657b7c8a"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/05_-_And_I_Love_Her.lab",
+        "630233a7b132a87a2b08bd97932fb341"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/05_-_And_I_Love_Her.lab",
+        "88bb3b0c735f2462d1d06a6aa9f26ad5"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/05_-_And_I_Love_Her.lab",
+        "542b12cbe175950c963fe8f25dead0d1"
+      ]
+    },
+    "0306": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/06_-_Tell_Me_Why.wav",
+        "91e30b1a3e56183ae20498f831f4c7d0"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/06_-_Tell_Me_Why.txt",
+        "0b2170ae687733a5e086d318943bb9d7"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/06_-_Tell_Me_Why.lab",
+        "35691035c93e654cefa655611cd998db"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/06_-_Tell_Me_Why.lab",
+        "8747461d048d5e5ecb607fe0a294a05e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/06_-_Tell_Me_Why.lab",
+        "4d3ea4c45da472de8fcb0f79b69be321"
+      ]
+    },
+    "0307": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/07_-_Can't_Buy_Me_Love.wav",
+        "135012f73e1082fb6793bd8ddf6380cc"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/07_-_Can't_Buy_Me_Love.txt",
+        "c743f71f8ccf65a0b8ce1c87b246cd6b"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/07_-_Can't_Buy_Me_Love.lab",
+        "85a4d4a43c936c1c2c3ce44316f95294"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/07_-_Can't_Buy_Me_Love.lab",
+        "0cf04d9ddec8fac460c27292ccf23076"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/07_-_Can't_Buy_Me_Love.lab",
+        "5530d358ade24ffc13403a5f50ee2837"
+      ]
+    },
+    "0308": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/08_-_Any_Time_At_All.wav",
+        "98b94395dc177641fdb9a006500d9da2"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/08_-_Any_Time_At_All.txt",
+        "06711ec958e1b53276a27069b3fce2af"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/08_-_Any_Time_At_All.lab",
+        "98c9cdc690956a015a78da928422640f"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/08_-_Any_Time_At_All.lab",
+        "60b9a2ce6beb8d392a0c81dda501c945"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/08_-_Any_Time_At_All.lab",
+        "39c498541b25965ba0a1dc5d1121f5d2"
+      ]
+    },
+    "0309": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/09_-_I'll_Cry_Instead.wav",
+        "7e6c73f557558cc8753a13c2a90569af"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/09_-_I'll_Cry_Instead.txt",
+        "8331c14bea6a20fc1a7c6d1c01352d20"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/09_-_I'll_Cry_Instead.lab",
+        "9acee5b4ad3857840d81450d1013e1b4"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/09_-_I'll_Cry_Instead.lab",
+        "eef1dcbd14f2e2effe44a941a47f031e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/09_-_I'll_Cry_Instead.lab",
+        "af2f9184de66324213d286d34529d728"
+      ]
+    },
+    "0310": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/10_-_Things_We_Said_Today.wav",
+        "806ebf1b32e69ed32983e628e4274f33"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/10_-_Things_We_Said_Today.txt",
+        "9a8b31944fef447aed276cd0977bac4a"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/10_-_Things_We_Said_Today.lab",
+        "8f60ef4c4381502eec9738e82bf9de86"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/10_-_Things_We_Said_Today.lab",
+        "f27f9a024cea7f12c247ddb95d60ca06"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/10_-_Things_We_Said_Today.lab",
+        "523dc44ad20419f42429a34cd8963ce4"
+      ]
+    },
+    "0311": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/11_-_When_I_Get_Home.wav",
+        "50a5550e1e7ca7dbcaefa1a3df0e02fc"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/11_-_When_I_Get_Home.txt",
+        "1de1585fa320b2f84f2e5f1d1621ebfe"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/11_-_When_I_Get_Home.lab",
+        "136dd0bf31aa7d9d8156d45a6dd5f863"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/11_-_When_I_Get_Home.lab",
+        "9c62c71aa1e9ce2b162e36f9841c3f28"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/11_-_When_I_Get_Home.lab",
+        "7baf66628aab20d335bd4e1dcbe40639"
+      ]
+    },
+    "0312": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/12_-_You_Can't_Do_That.wav",
+        "65920d930b2ea2df0e218767d04a7aee"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/12_-_You_Can't_Do_That.txt",
+        "fafa3af5fbd3d188255525be90f3aed8"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/12_-_You_Can't_Do_That.lab",
+        "ad88ae20ba11bc599d90b5f22dc82a32"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/12_-_You_Can't_Do_That.lab",
+        "d350c6990c87692faf78b5652aaad374"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/12_-_You_Can't_Do_That.lab",
+        "3e6642a614ffec46582f7892dafe161a"
+      ]
+    },
+    "0313": {
+      "audio": [
+        "audio/03_-_A_Hard_Day's_Night/13_-_I'll_Be_Back.wav",
+        "046f4fb69b861811626aa192c8e7090b"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/03_-_A_Hard_Day's_Night/13_-_I'll_Be_Back.txt",
+        "164ff5ce7a5694f7c3610ea629fb1563"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/03_-_A_Hard_Day's_Night/13_-_I'll_Be_Back.lab",
+        "0c85bbd5868b61890186cf84bda19078"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/03_-_A_Hard_Day's_Night/13_-_I'll_Be_Back.lab",
+        "5890e5fb7f2a31c9038472ee7f494b51"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/03_-_A_Hard_Day's_Night/13_-_I'll_Be_Back.lab",
+        "e96522a7f4432680f7369227c8c30571"
+      ]
+    },
+    "0101": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/01_-_I_Saw_Her_Standing_There.wav",
+        "b72fc7a5e353e1fbb0f6922302cb9c34"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/01_-_I_Saw_Her_Standing_There.txt",
+        "2070df8c62d9573f2221d764facfba0b"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/01_-_I_Saw_Her_Standing_There.lab",
+        "8f3d8147d675aa4ee07a30d978477f6f"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/01_-_I_Saw_Her_Standing_There.lab",
+        "f8bcbb615ad3ac139a9a3b98e0db09f9"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/01_-_I_Saw_Her_Standing_There.lab",
+        "616fcc84856f14f7c68c64a8ec84127b"
+      ]
+    },
+    "0102": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/02_-_Misery.wav",
+        "64ecc7ada77096e7c39213d3f5c8b8f5"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/02_-_Misery.txt",
+        "0b435ca099f51f68290533c1b478d389"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/02_-_Misery.lab",
+        "ff38b88ef52575beeb10ad218d822f60"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/02_-_Misery.lab",
+        "436edae4076f3a63b43b02b1295ab609"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/02_-_Misery.lab",
+        "bb8b0ca866fc2423edde01325d6e34f7"
+      ]
+    },
+    "0103": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/03_-_Anna_(Go_To_Him).wav",
+        "e568f4b45dacd126d04ee2c9b2373e3d"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/03_-_Anna_(Go_To_Him).txt",
+        "8cdae9766d052c91e6d280f2a0b8650d"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/03_-_Anna_(Go_To_Him).lab",
+        "d81743ed306bf6570781916e14e3b6eb"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/03_-_Anna_(Go_To_Him).lab",
+        "25308ef8468f33afd1e0517fcb9fa98b"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/03_-_Anna_(Go_To_Him).lab",
+        "b5926fa8ea14e41f4c3d80e4be5c2379"
+      ]
+    },
+    "0104": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/04_-_Chains.wav",
+        "d1a1c28069875ea8c2a806e168e7cba5"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/04_-_Chains.txt",
+        "9f0751c7b0d51127a8e5094fdfba021e"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/04_-_Chains.lab",
+        "a43d353091c488743146e31966992a72"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/04_-_Chains.lab",
+        "70b2a55b2640265240f0bc42532ee327"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/04_-_Chains.lab",
+        "30b4d29696b2d7c0109d77cb70bc4f24"
+      ]
+    },
+    "0105": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/05_-_Boys.wav",
+        "5b3f959c881511dbf52051426069baad"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/05_-_Boys.txt",
+        "c0b4a2b769ba22b77cd6396aaf4d23f8"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/05_-_Boys.lab",
+        "0afb0d61860a429a4055188c58a2a446"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/05_-_Boys.lab",
+        "4e14b4146889b7be750807181b1954b0"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/05_-_Boys.lab",
+        "4755073e306d5dfff90f0701ba0ecf4c"
+      ]
+    },
+    "0106": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/06_-_Ask_Me_Why.wav",
+        "4b4e67d20f93231681aed77389b68ab4"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/06_-_Ask_Me_Why.txt",
+        "a2802f7aacb5cfae8402f290dcc2a6fb"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/06_-_Ask_Me_Why.lab",
+        "0f2b7e2c27d633ff1c1e0bc4734cfddf"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/06_-_Ask_Me_Why.lab",
+        "c120bcca4abee0698b9c2723e6ecd3c3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/06_-_Ask_Me_Why.lab",
+        "6ba11246100e6d5d98c1d730bc8b62c9"
+      ]
+    },
+    "0107": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/07_-_Please_Please_Me.wav",
+        "7d779608982fe207cc3d6cc8fc33388d"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/07_-_Please_Please_Me.txt",
+        "7f4d51de2c2f8a37e049d490b62d978c"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/07_-_Please_Please_Me.lab",
+        "50969dc346fe4b80168704b89df1febd"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/07_-_Please_Please_Me.lab",
+        "5749efcc815222fcd1bf41e4f12c4a91"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/07_-_Please_Please_Me.lab",
+        "ea1b21eb7bb7bfc4c2e1d0d799f9c758"
+      ]
+    },
+    "0108": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/08_-_Love_Me_Do.wav",
+        "6f07a51987a76cde082a23d3fbd3557e"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/08_-_Love_Me_Do.txt",
+        "f27a4669cc43836688bac7ffb97b77e2"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/08_-_Love_Me_Do.lab",
+        "7a83513ede293fb73178d914eb867eee"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/08_-_Love_Me_Do.lab",
+        "f46e22e3d03922967ad0d46c78155d37"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/08_-_Love_Me_Do.lab",
+        "a9e56c5ceb962db0095747e4372a9e63"
+      ]
+    },
+    "0109": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/09_-_P._S._I_Love_You.wav",
+        "d6626d4a863b55527a5d6765073a7716"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/09_-_P._S._I_Love_You.txt",
+        "8c6c44c500193dc61105a1685ce88459"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/09_-_P._S._I_Love_You.lab",
+        "7e02841f3116833788fb9f49908320d5"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/09_-_P._S._I_Love_You.lab",
+        "be38b4c54653c2a6dddfc52fa842f4d5"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/09_-_P._S._I_Love_You.lab",
+        "654ef8debb4b116907970b309da5ce34"
+      ]
+    },
+    "0110": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/10_-_Baby_It's_You.wav",
+        "f1a5026f88adc6d6d69b6e28188d3465"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/10_-_Baby_It's_You.txt",
+        "4f6557c1a006386d120eff55e0ab3e29"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/10_-_Baby_It's_You.lab",
+        "7037e1445348ef161c1bcdb08fa0b007"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/10_-_Baby_It's_You.lab",
+        "3cb0f0cce29505457920051b3d976e72"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/10_-_Baby_It's_You.lab",
+        "b0cfc5e7eae91c981d3dc849edae2415"
+      ]
+    },
+    "0111": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav",
+        "1b57c2f78ae0f19eed1ae7fbf747e12d"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt",
+        "f698ad2d802bf62fe10f59ea8b4af9f6"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        "24f12726a510c0321aa06cac95f27915"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        "ca194503b783ed20521a1429411f3094"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        "509125d527dae09cdee832fc0a6e0580"
+      ]
+    },
+    "0112": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/12_-_A_Taste_Of_Honey.wav",
+        "8f2d238db2aa3298db5a4f6dd58f66be"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/12_-_A_Taste_Of_Honey.txt",
+        "8400e85e3142531687994c43cb70bd3b"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/12_-_A_Taste_Of_Honey.lab",
+        "832b7deee6f8bd2b417ff07e81966497"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/12_-_A_Taste_Of_Honey.lab",
+        "c8fd04f2fff893fdecb5b670919b18a4"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/12_-_A_Taste_Of_Honey.lab",
+        "f4bf224ca3bad8766c7c5bf01e2499de"
+      ]
+    },
+    "0113": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/13_-_There's_A_Place.wav",
+        "bd39ab76e8897b2d18acb74afb60c510"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/13_-_There's_A_Place.txt",
+        "8ded04088e142d4bd3e83241121e554d"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/13_-_There's_A_Place.lab",
+        "1e2c25934230dd51cff79f9755e159f6"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/13_-_There's_A_Place.lab",
+        "66ba63a3867c54d4adb579d72bff1b0f"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/13_-_There's_A_Place.lab",
+        "9fe117c067da48875754d9d46f516df2"
+      ]
+    },
+    "0114": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/14_-_Twist_And_Shout.wav",
+        "7e8ece3eb30750c7ccd483b0d7db9b1f"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/14_-_Twist_And_Shout.txt",
+        "f6f725d53bfaa21c3e62044083f8b310"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/14_-_Twist_And_Shout.lab",
+        "2e75f0cb87f0a86c20fc033389829f1e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/14_-_Twist_And_Shout.lab",
+        "1127555fd25d8ad077a0bf874cdfb12e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/14_-_Twist_And_Shout.lab",
+        "cad0d8345ba356630af06108548cbf4c"
+      ]
+    },
+    "0701": {
+      "audio": [
+        "audio/07_-_Revolver/01_-_Taxman.wav",
+        "0a390732941c0e99d28f1bc4801f2744"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/01_-_Taxman.txt",
+        "bf5e4d7a78d19365ad346a231afd942c"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/01_-_Taxman.lab",
+        "648f5eebf03e5f6f0cbf5ecbb7b5a576"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/01_-_Taxman.lab",
+        "729de2f823793c0d5112a240b5a81659"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/01_-_Taxman.lab",
+        "cc8157dcc075728e670f539341701322"
+      ]
+    },
+    "0702": {
+      "audio": [
+        "audio/07_-_Revolver/02_-_Eleanor_Rigby.wav",
+        "b92b26175e2c73511bfe8455ac2ac7b7"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/02_-_Eleanor_Rigby.txt",
+        "604223a366d4da5ba0cdc723f66bfab0"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/02_-_Eleanor_Rigby.lab",
+        "d06bd917298c4ef313d684ec077fcbd4"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/02_-_Eleanor_Rigby.lab",
+        "c314c54605bb6a5ef6d35e7bfaeba943"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/02_-_Eleanor_Rigby.lab",
+        "5104bc9ec656a97870fb35c6d48cdac6"
+      ]
+    },
+    "0703": {
+      "audio": [
+        "audio/07_-_Revolver/03_-_I'm_Only_Sleeping.wav",
+        "e7c620ed8f973ffa4420ad1480d4720c"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/03_-_I'm_Only_Sleeping.txt",
+        "85644ddcf112e3314e0d8c455f0b0a0a"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/03_-_I'm_Only_Sleeping.lab",
+        "8d507337b425d3bd5c25b0c1df5782b3"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/03_-_I'm_Only_Sleeping.lab",
+        "0a5e7b0182fd0548ad5c5085a0897a6f"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/03_-_I'm_Only_Sleeping.lab",
+        "8358856eacfea58e2b3937d614cbe368"
+      ]
+    },
+    "0704": {
+      "audio": [
+        "audio/07_-_Revolver/04_-_Love_You_To.wav",
+        "bf89208cb482c1f350ff00033ec7506a"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/04_-_Love_You_To.txt",
+        "ba6877a01fd3b9209dcf42a09de69deb"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/04_-_Love_You_To.lab",
+        "cca0a738d16271cae2b491ff360824ea"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/04_-_Love_You_To.lab",
+        "81b47d7f34bd58f77225d5bd865502b6"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/04_-_Love_You_To.lab",
+        "6784883f1f22e4caf615f9e1fb670bec"
+      ]
+    },
+    "0705": {
+      "audio": [
+        "audio/07_-_Revolver/05_-_Here,_There_And_Everywhere.wav",
+        "23646b679c560c1686e76af0236e3665"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/05_-_Here,_There_And_Everywhere.txt",
+        "b794f70f6dc9d720102c43333cf47bbc"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/05_-_Here,_There_And_Everywhere.lab",
+        "de707a88f765a394f8b867ec093e0d25"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/05_-_Here,_There_And_Everywhere.lab",
+        "1d7d9ff5b92753d56ff65f1b73964ef2"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/05_-_Here,_There_And_Everywhere.lab",
+        "33865a14fef4a91e18b112de8dc7cfab"
+      ]
+    },
+    "0706": {
+      "audio": [
+        "audio/07_-_Revolver/06_-_Yellow_Submarine.wav",
+        "bef5bf2fe602095d0b02aaaa1a15b484"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/06_-_Yellow_Submarine.txt",
+        "8d83339cc6a2ce68a06b868d2c9d8076"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/06_-_Yellow_Submarine.lab",
+        "e04ab984ae766c22fc6fd8f55fb353fd"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/06_-_Yellow_Submarine.lab",
+        "4b4f60f608d3d1de009f47fbce0b524f"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/06_-_Yellow_Submarine.lab",
+        "4eb531fedf0120ea9b7b3b864aa4efa4"
+      ]
+    },
+    "0707": {
+      "audio": [
+        "audio/07_-_Revolver/07_-_She_Said_She_Said.wav",
+        "b341a75a7849f70edef0ea2d06f7d6ea"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/07_-_She_Said_She_Said.txt",
+        "affb7e5c659ab0a8bd2d4a6be46d8014"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/07_-_She_Said_She_Said.lab",
+        "1fb326fcc999867f2804e580056a9a08"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/07_-_She_Said_She_Said.lab",
+        "476f95c35c8ed5bb30c0fb5b0124e65c"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/07_-_She_Said_She_Said.lab",
+        "57121e246131dc28e5f03a17e4fed398"
+      ]
+    },
+    "0708": {
+      "audio": [
+        "audio/07_-_Revolver/08_-_Good_Day_Sunshine.wav",
+        "3086a3db86922cfac2b3687e72a77ea4"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/08_-_Good_Day_Sunshine.txt",
+        "7fe71f443cc3d185918958dfed7eef50"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/08_-_Good_Day_Sunshine.lab",
+        "f0e2bd3441aa377d9a1857d125cfcec7"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/08_-_Good_Day_Sunshine.lab",
+        "57fbb953eb5c040ae9c9780a0d9b393c"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/08_-_Good_Day_Sunshine.lab",
+        "79805d34d54a02c32430220b6528c1e8"
+      ]
+    },
+    "0709": {
+      "audio": [
+        "audio/07_-_Revolver/09_-_And_Your_Bird_Can_Sing.wav",
+        "1b4a49fe732db7ac63ad6ad3c5b11e8d"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/09_-_And_Your_Bird_Can_Sing.txt",
+        "10f5499251e33e3500e930ec277385a0"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/09_-_And_Your_Bird_Can_Sing.lab",
+        "1ff3ffae058d219337e3b12602ed1c4d"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/09_-_And_Your_Bird_Can_Sing.lab",
+        "01c213657e019ab1a67ecdc491496eea"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/09_-_And_Your_Bird_Can_Sing.lab",
+        "d19e2f961e5ce388d0407cca17438bcf"
+      ]
+    },
+    "0710": {
+      "audio": [
+        "audio/07_-_Revolver/10_-_For_No_One.wav",
+        "569d29dc37ee0d8abf6c0fba7cc9afe5"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/10_-_For_No_One.txt",
+        "49214d35d55d14ab04a152cbaa8b21d3"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/10_-_For_No_One.lab",
+        "e8f7620530afb2e55019cea7ca67f63b"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/10_-_For_No_One.lab",
+        "8474ec7b11ee3a145f7297cc8b7882e9"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/10_-_For_No_One.lab",
+        "f0ab04c84750a13000d63411ac259fae"
+      ]
+    },
+    "0711": {
+      "audio": [
+        "audio/07_-_Revolver/11_-_Doctor_Robert.wav",
+        "8feb73a2b80f7153472f54c455315123"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/11_-_Doctor_Robert.txt",
+        "4921579f7a07e53177e33faf15a01b65"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/11_-_Doctor_Robert.lab",
+        "4d2c1aa0b5663752e95d13eeca05cc9a"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/11_-_Doctor_Robert.lab",
+        "fdef41a67efac0d20a85b92ee755ef54"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/11_-_Doctor_Robert.lab",
+        "353428251110f968abecd0a82bd6da17"
+      ]
+    },
+    "0712": {
+      "audio": [
+        "audio/07_-_Revolver/12_-_I_Want_To_Tell_You.wav",
+        "09c832fb125c33a1fe2e3352fc9839fd"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/12_-_I_Want_To_Tell_You.txt",
+        "7b301fd5cf1c1e80903b61596d884673"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/12_-_I_Want_To_Tell_You.lab",
+        "4d53e5cc68183f68931b243fc4eedf35"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/12_-_I_Want_To_Tell_You.lab",
+        "669b4bbb0ba69291505be04152fde33e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/12_-_I_Want_To_Tell_You.lab",
+        "b977c5f652bdfc9d2e2e10248c4e5fbc"
+      ]
+    },
+    "0713": {
+      "audio": [
+        "audio/07_-_Revolver/13_-_Got_To_Get_You_Into_My_Life.wav",
+        "900c5a9b10b9ca7e4297bb47ae188ee1"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/13_-_Got_To_Get_You_Into_My_Life.txt",
+        "84efbc46d0aca087cdad10ec58ecf5a4"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/13_-_Got_To_Get_You_Into_My_Life.lab",
+        "a749b15d32f348118c451d21f107fa1d"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/13_-_Got_To_Get_You_Into_My_Life.lab",
+        "f699043a9d7cc1d267c2be3857038b13"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/13_-_Got_To_Get_You_Into_My_Life.lab",
+        "f1de762db2f4395ec24d1ee68262ad39"
+      ]
+    },
+    "0714": {
+      "audio": [
+        "audio/07_-_Revolver/14_-_Tomorrow_Never_Knows.wav",
+        "91fd441164f843355b63cdbf1719f45a"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/07_-_Revolver/14_-_Tomorrow_Never_Knows.txt",
+        "8ecaf7e03b5e34e4cce7a7d6fccc5e33"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/07_-_Revolver/14_-_Tomorrow_Never_Knows.lab",
+        "828a6f6b9f3fbf10829437333d6452c3"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/07_-_Revolver/14_-_Tomorrow_Never_Knows.lab",
+        "906a9d3fc9804a8598e8f259d9b6c14c"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/07_-_Revolver/14_-_Tomorrow_Never_Knows.lab",
+        "931d5b82cee2bf1ad59faa4d967d9f50"
+      ]
+    },
+    "1101": {
+      "audio": [
+        "audio/11_-_Abbey_Road/01_-_Come_Together.wav",
+        "1c01e96517fd1a105e97b1a6ddf69cc4"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/01_-_Come_Together.txt",
+        "3d238c6f8e100ae76cdf07e7bf060be3"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/01_-_Come_Together.lab",
+        "46b97f9a9f079642815f9bf1abe27a65"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/01_-_Come_Together.lab",
+        "dfbb3fabc416a93b76b6514a011dd097"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/01_-_Come_Together.lab",
+        "9c645edfbb0e01742b923730c33c2b4c"
+      ]
+    },
+    "1102": {
+      "audio": [
+        "audio/11_-_Abbey_Road/02_-_Something.wav",
+        "405472cbf78b82d386d5b60c61deadca"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/02_-_Something.txt",
+        "c6dbd9a19420567e33d6b7556a18ec28"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/02_-_Something.lab",
+        "99694403cf83efe2b21a64b62ce196c4"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/02_-_Something.lab",
+        "a41149625e7107a93bc55920e985de57"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/02_-_Something.lab",
+        "9c5ceb4bb9d525e926e0a1ed73272d2c"
+      ]
+    },
+    "1103": {
+      "audio": [
+        "audio/11_-_Abbey_Road/03_-_Maxwell's_Silver_Hammer.wav",
+        "dab7846e4c0a01236851fdc9a1fb2faa"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/03_-_Maxwell's_Silver_Hammer.txt",
+        "4b3797b7308d6b89399fa2cce515770f"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/03_-_Maxwell's_Silver_Hammer.lab",
+        "dcd96b0c6ef090007e9a9042bd1335ce"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/03_-_Maxwell's_Silver_Hammer.lab",
+        "00d4aaf274fe96a3e5fd671be8e66407"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/03_-_Maxwell's_Silver_Hammer.lab",
+        "30b4796d2e4e26443557848d9afa7bf2"
+      ]
+    },
+    "1104": {
+      "audio": [
+        "audio/11_-_Abbey_Road/04_-_Oh!_Darling.wav",
+        "8dbf9725d81dad9113d198afbde61acd"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/04_-_Oh!_Darling.txt",
+        "11fa891f4226b26ed9b17f53a17db715"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/04_-_Oh!_Darling.lab",
+        "4f623938b90c573c126580b49f753af8"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/04_-_Oh!_Darling.lab",
+        "d5233b887618ec7f4fee423b52a2dda7"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/04_-_Oh!_Darling.lab",
+        "ef0bb2ed8044686c81d90e9889a951d4"
+      ]
+    },
+    "1105": {
+      "audio": [
+        "audio/11_-_Abbey_Road/05_-_Octopus's_Garden.wav",
+        "510597d5ef9ba9a43fed1d490e072d89"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/05_-_Octopus's_Garden.txt",
+        "3944d1cc80d79bc3dbfa2e723c5695e7"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/05_-_Octopus's_Garden.lab",
+        "a05c0b168c0d742d120c1f2b526a367c"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/05_-_Octopus's_Garden.lab",
+        "21a5017b4842a06d4cd94b757f2d525e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/05_-_Octopus's_Garden.lab",
+        "c7738633d541068e6016ec925e266869"
+      ]
+    },
+    "1106": {
+      "audio": [
+        "audio/11_-_Abbey_Road/06_-_I_Want_You.wav",
+        "cd9cfab436015f1f8b52b84c6864a40b"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/06_-_I_Want_You.txt",
+        "df66e69dc47e74edade4272524b783ed"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/06_-_I_Want_You.lab",
+        "0afb8b8f3404185bd6a7a153477e500e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/06_-_I_Want_You.lab",
+        "b817b2689983ee0a2c3c5901508ef5e3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/06_-_I_Want_You.lab",
+        "0e9db61eae19f7bf67de1418e82a83d8"
+      ]
+    },
+    "1107": {
+      "audio": [
+        "audio/11_-_Abbey_Road/07_-_Here_Comes_The_Sun.wav",
+        "d5c1cbdd03a854fc48e9318d1afb4c18"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/07_-_Here_Comes_The_Sun.txt",
+        "313bc7bb3b9e227a49aa520cd95ae96a"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/07_-_Here_Comes_The_Sun.lab",
+        "b8db8bb32b491abaa9f65295e2afd6fc"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/07_-_Here_Comes_The_Sun.lab",
+        "8764f867bcd0bd2d87ba1fc7d28827ed"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/07_-_Here_Comes_The_Sun.lab",
+        "db0bb9ff63847093d02f0d115f78a79d"
+      ]
+    },
+    "1108": {
+      "audio": [
+        "audio/11_-_Abbey_Road/08_-_Because.wav",
+        "addc287ea0a445616258d2f39936f358"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/08_-_Because.txt",
+        "1f435d09d0663f37197b6209c64ecbb1"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/08_-_Because.lab",
+        "a0f5fecc5c61dedf7f951097bdc9b564"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/08_-_Because.lab",
+        "609642d048f029bb29f593b84976323f"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/08_-_Because.lab",
+        "8bcb716e8a9ecc63ff00ce95935f1b13"
+      ]
+    },
+    "1109": {
+      "audio": [
+        "audio/11_-_Abbey_Road/09_-_You_Never_Give_Me_Your_Money.wav",
+        "f39ab99c8ef6484b5ad092cba010c6dc"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/09_-_You_Never_Give_Me_Your_Money.txt",
+        "9d9ee6bf72e8b9ef46631384d12e76cc"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/09_-_You_Never_Give_Me_Your_Money.lab",
+        "6de27cbe56743a3351dfe716b8242f2d"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/09_-_You_Never_Give_Me_Your_Money.lab",
+        "91bf8ce25fc75dc1e8c02b3fd33a85e3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/09_-_You_Never_Give_Me_Your_Money.lab",
+        "dcd6375758f4f412d7af4d3a221189d9"
+      ]
+    },
+    "1110": {
+      "audio": [
+        "audio/11_-_Abbey_Road/10_-_Sun_King.wav",
+        "47e0f9e6f0e1c877ca804f7e96f73152"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/10_-_Sun_King.txt",
+        "9a5211bd6ea05973db8cc6bfba0d9113"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/10_-_Sun_King.lab",
+        "255b73b33355f6c94096b03f6ba21277"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/10_-_Sun_King.lab",
+        "18ebfb61af29096851cd6dd32985afc0"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/10_-_Sun_King.lab",
+        "88943f1d4fdc3b6ed070f2406a62c91f"
+      ]
+    },
+    "1111": {
+      "audio": [
+        "audio/11_-_Abbey_Road/11_-_Mean_Mr_Mustard.wav",
+        "4755fea640a2ae192219ed9717ea2dca"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/11_-_Mean_Mr_Mustard.txt",
+        "a363e0f1fb446c6646422fd16ef5813c"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/11_-_Mean_Mr_Mustard.lab",
+        "60e5c4608f2a1b8a3cbe5c6470814659"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/11_-_Mean_Mr_Mustard.lab",
+        "b24e693f1492652b7ccd8ad90b3bfeb3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/11_-_Mean_Mr_Mustard.lab",
+        "37bc652dce7561124766a6c5c10f30ba"
+      ]
+    },
+    "1112": {
+      "audio": [
+        "audio/11_-_Abbey_Road/12_-_Polythene_Pam.wav",
+        "1aafc303b0f03ea087fe8f767e5ff9d9"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/12_-_Polythene_Pam.txt",
+        "2e4f761f8a124cc187940875922c0242"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/12_-_Polythene_Pam.lab",
+        "f3f1a5fd4d12d934fccdccafd936a4a5"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/12_-_Polythene_Pam.lab",
+        "8067b7b0bb8559596a3ba54d70628fe3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/12_-_Polythene_Pam.lab",
+        "225bc0e2e4f61d4f6d22115b2da72493"
+      ]
+    },
+    "1113": {
+      "audio": [
+        "audio/11_-_Abbey_Road/13_-_She_Came_In_Through_The_Bathroom_Window.wav",
+        "27547436c44c75870b00834b71a1a441"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/13_-_She_Came_In_Through_The_Bathroom_Window.txt",
+        "bbcbbaad01caa0a875bfde67ac4692a6"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/13_-_She_Came_In_Through_The_Bathroom_Window.lab",
+        "82a40f022833dd48b2008706a37e3b78"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/13_-_She_Came_In_Through_The_Bathroom_Window.lab",
+        "fb54a39008d4b2dfe11569af34a2009d"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/13_-_She_Came_In_Through_The_Bathroom_Window.lab",
+        "95bb51658f6e69c3058d2d1e5226d26b"
+      ]
+    },
+    "1114": {
+      "audio": [
+        "audio/11_-_Abbey_Road/14_-_Golden_Slumbers.wav",
+        "d23ec447588885235072972b959adb09"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/14_-_Golden_Slumbers.txt",
+        "d4cb7081311d4772afca6292b13faa8d"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/14_-_Golden_Slumbers.lab",
+        "a65c96ffb32251b5b49d1298ee84c537"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/14_-_Golden_Slumbers.lab",
+        "0f9bbb4ed92217ac2dfbc0190a80b2f1"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/14_-_Golden_Slumbers.lab",
+        "54c0f57b718d66bf088645638e9d49dc"
+      ]
+    },
+    "1115": {
+      "audio": [
+        "audio/11_-_Abbey_Road/15_-_Carry_That_Weight.wav",
+        "e7e8335d27526f38093bd0f8c931e3f4"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/15_-_Carry_That_Weight.txt",
+        "0ab448355a5a5da7306c2d5a2350d07b"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/15_-_Carry_That_Weight.lab",
+        "c2f57ec11efd7285530d676fb7229cfb"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/15_-_Carry_That_Weight.lab",
+        "0bbfed58dd95d109ea82c61461b35ffc"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/15_-_Carry_That_Weight.lab",
+        "65c9a64236aa9afb226fa709a4ff0913"
+      ]
+    },
+    "1116": {
+      "audio": [
+        "audio/11_-_Abbey_Road/16_-_The_End.wav",
+        "fcdf9d894f8675f877caf5e53420d59c"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/16_-_The_End.txt",
+        "7795f791b1bc55ecdd4947424c6f38be"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/16_-_The_End.lab",
+        "2e7f4c153a2a95fee3392939a4e421f4"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/16_-_The_End.lab",
+        "617bc2b843f39d96ffb197ff7d318779"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/16_-_The_End.lab",
+        "2bb0832d6300386c7de32d8781bbbbe7"
+      ]
+    },
+    "1117": {
+      "audio": [
+        "audio/11_-_Abbey_Road/17_-_Her_Majesty.wav",
+        "5779e1881da328671dff168fdc7121f1"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/11_-_Abbey_Road/17_-_Her_Majesty.txt",
+        "98d6e10c345fe8de96ba325ff0ad61ea"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/11_-_Abbey_Road/17_-_Her_Majesty.lab",
+        "048abd5280e2e9ce3b7675fb63384616"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/11_-_Abbey_Road/17_-_Her_Majesty.lab",
+        "fd5ed714a0a98d8e0639262752b64f44"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/11_-_Abbey_Road/17_-_Her_Majesty.lab",
+        "4ac36f8727d625d93c4a6c5d6ab2747b"
+      ]
+    },
+    "0601": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/01_-_Drive_My_Car.wav",
+        "c31f061a08961c6f8e6987f47db1169d"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/01_-_Drive_My_Car.txt",
+        "1c24d3290b311e532a6f322da763925d"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/01_-_Drive_My_Car.lab",
+        "8f7ceef0ddd4c029374cea02ae2f7ccb"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/01_-_Drive_My_Car.lab",
+        "4ccc51843235aa655a390801d0a6eba3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/01_-_Drive_My_Car.lab",
+        "296352bfa8489deb2376a48910eeab86"
+      ]
+    },
+    "0602": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/02_-_Norwegian_Wood_(This_Bird_Has_Flown).wav",
+        "570ed57308355dd7738afd33dd336321"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/02_-_Norwegian_Wood_(This_Bird_Has_Flown).txt",
+        "7a8c8c2f238bd7bb6610451dc16dc61d"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/02_-_Norwegian_Wood_(This_Bird_Has_Flown).lab",
+        "95ade12db9c7e48d6b3e4b64fb0383c6"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/02_-_Norwegian_Wood_(This_Bird_Has_Flown).lab",
+        "9e30d54d49aefae4a9e72a97b1abb003"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/02_-_Norwegian_Wood_(This_Bird_Has_Flown).lab",
+        "a8f1fa6fe9d72333aed4dfa2c59204f5"
+      ]
+    },
+    "0603": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/03_-_You_Won't_See_Me.wav",
+        "7b3900daf8623703176bc10d3997db5f"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/03_-_You_Won't_See_Me.txt",
+        "b4cc25592634d344c682b219cd3456b5"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/03_-_You_Won't_See_Me.lab",
+        "5d4b842992478d215f245384c403941e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/03_-_You_Won't_See_Me.lab",
+        "8cfd6d313df0348dbdb99eff70b63e1e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/03_-_You_Won't_See_Me.lab",
+        "a5fbf4f88bb49af44b07823df6bd42e8"
+      ]
+    },
+    "0604": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/04_-_Nowhere_Man.wav",
+        "c5ddc7982f10cf762222725f1a16f2c2"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/04_-_Nowhere_Man.txt",
+        "5fe8df9258fe21da61e610db1955bf4a"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/04_-_Nowhere_Man.lab",
+        "0185b410452f8b3c235354e85b794b65"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/04_-_Nowhere_Man.lab",
+        "c56121b89633ee88c77000295c7c0dc0"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/04_-_Nowhere_Man.lab",
+        "369a1beae0e8f728cc79e65b38dd8c94"
+      ]
+    },
+    "0605": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/05_-_Think_For_Yourself.wav",
+        "6deb71209c4602f1da7815dff97d2360"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/05_-_Think_For_Yourself.txt",
+        "45aced2d3348da49e5dca390fef58e44"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/05_-_Think_For_Yourself.lab",
+        "606f451ba7ff88208583ebd7a5759ccb"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/05_-_Think_For_Yourself.lab",
+        "cc0ffc0619d6b2f5aa910d2cdd5e40dc"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/05_-_Think_For_Yourself.lab",
+        "ee20737f8bb38c17190fea44fedfcadc"
+      ]
+    },
+    "0606": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/06_-_The_Word.wav",
+        "d135b1f29de5668778b5835f719fd92e"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/06_-_The_Word.txt",
+        "092d3432ecd06315338b2f74df32b07f"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/06_-_The_Word.lab",
+        "89e9c099524bd180d670c5cf0d88070e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/06_-_The_Word.lab",
+        "bc36535451f9e0e3f1d9451f9129ca21"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/06_-_The_Word.lab",
+        "ce0567a2879a86509b32467f2ec48389"
+      ]
+    },
+    "0607": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/07_-_Michelle.wav",
+        "4e0c7ea8e349f58eba28cb52d7a36001"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/07_-_Michelle.txt",
+        "e5ec7e60627913a3f1d321e778ec90e5"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/07_-_Michelle.lab",
+        "6d85df7104fa8921d8878753df1bf7da"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/07_-_Michelle.lab",
+        "e43a117c2b9a6ecd4739ae0935668614"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/07_-_Michelle.lab",
+        "ad780c836236494a0b44332918847859"
+      ]
+    },
+    "0608": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/08_-_What_Goes_On.wav",
+        "fbc7807128259d66b04d941d236151df"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/08_-_What_Goes_On.txt",
+        "fccd92cd91250833ecc312b43c24cd9e"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/08_-_What_Goes_On.lab",
+        "424837b093b386c541aa7c318da879ba"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/08_-_What_Goes_On.lab",
+        "dd22eae942ff2fe889328da02d50abd1"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/08_-_What_Goes_On.lab",
+        "0a52d2ff2357b9c07f4dbe5bf6cefdba"
+      ]
+    },
+    "0609": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/09_-_Girl.wav",
+        "3041ca1b230dbd22bc8d1ca3acff3f87"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/09_-_Girl.txt",
+        "470a8a11ee8b59c3cafa897a516589bb"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/09_-_Girl.lab",
+        "22d178b8644b85cf1613cd4d23d01d4e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/09_-_Girl.lab",
+        "d30446f34e3c8a0490ddc55f05573172"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/09_-_Girl.lab",
+        "fe7082b9e6f7ecd2c167370ee93e23c3"
+      ]
+    },
+    "0610": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/10_-_I'm_Looking_Through_You.wav",
+        "f1e2374befbc866a6928f43af48df211"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/10_-_I'm_Looking_Through_You.txt",
+        "97ae68ac48135109e9a54ae79cc28e71"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/10_-_I'm_Looking_Through_You.lab",
+        "daa7cce6855a226d55df96f8553c4eb8"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/10_-_I'm_Looking_Through_You.lab",
+        "80b3663597137d7db9d7bf79a4677f45"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/10_-_I'm_Looking_Through_You.lab",
+        "5e110ed5ffaf47565c9c97757aa8cb82"
+      ]
+    },
+    "0611": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/11_-_In_My_Life.wav",
+        "ecd17dc034cb9df9ad674f425dac5d25"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/11_-_In_My_Life.txt",
+        "e645423062a388eb189c2a6ec8ea7d75"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/11_-_In_My_Life.lab",
+        "7bfd2cb14aa29337bfb9d9441ad74218"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/11_-_In_My_Life.lab",
+        "884dee58bc9d4ecfcca39521fa4b3e0b"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/11_-_In_My_Life.lab",
+        "f61fc5576e155503282ee5c78a6c1269"
+      ]
+    },
+    "0612": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/12_-_Wait.wav",
+        "a7415f89587f4960e19aacaa0e23f004"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/12_-_Wait.txt",
+        "5544bc518d588b82fc8ea9663c3e514b"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/12_-_Wait.lab",
+        "2f3f91212981f9ec1ceb53cb64e78231"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/12_-_Wait.lab",
+        "15e02732baa44ac5edecd71711a60998"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/12_-_Wait.lab",
+        "6c717ed0d9414cd1458355b136f5ed8a"
+      ]
+    },
+    "0613": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/13_-_If_I_Needed_Someone.wav",
+        "46558f58db6acd155bf3a360a38ec2e8"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/13_-_If_I_Needed_Someone.txt",
+        "dc1b71b152671becbab33c590a0f2d52"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/13_-_If_I_Needed_Someone.lab",
+        "e5eb9d246a21ba2007e13bd6c4446a40"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/13_-_If_I_Needed_Someone.lab",
+        "c7f3c79f0f03d4c7e4f3756476d8bdcd"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/13_-_If_I_Needed_Someone.lab",
+        "33008ab58c8d28aee3a21d5508241c4c"
+      ]
+    },
+    "0614": {
+      "audio": [
+        "audio/06_-_Rubber_Soul/14_-_Run_For_Your_Life.wav",
+        "0694fc1ba1d6c71b19fc3a569a46f023"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/06_-_Rubber_Soul/14_-_Run_For_Your_Life.txt",
+        "9b8ed02d928ab733f80ffd2231ffa5ff"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/06_-_Rubber_Soul/14_-_Run_For_Your_Life.lab",
+        "ef1107260348947e4f47d5305fca41fc"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/06_-_Rubber_Soul/14_-_Run_For_Your_Life.lab",
+        "a28ec359197b74815e3249a9be55e245"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/06_-_Rubber_Soul/14_-_Run_For_Your_Life.lab",
+        "c3e3e84db8622b1ae7cc5cc4800a8568"
+      ]
+    },
+    "1201": {
+      "audio": [
+        "audio/12_-_Let_It_Be/01_-_Two_of_Us.wav",
+        "223da09fac728e79361a4a7e6f4f558f"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/01_-_Two_of_Us.txt",
+        "f209cb36d14743b2344e88a6acb8c491"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/01_-_Two_of_Us.lab",
+        "7ecc420307bed74a1d34fa69ba2f3568"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/01_-_Two_of_Us.lab",
+        "7b25c2642f4117f4eaf774a6a2206231"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/01_-_Two_of_Us.lab",
+        "d88c6b7496dfd8df31f281dc97fc7607"
+      ]
+    },
+    "1202": {
+      "audio": [
+        "audio/12_-_Let_It_Be/02_-_Dig_a_Pony.wav",
+        "4ed244f19afbb0302c20605f8d245f33"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/02_-_Dig_a_Pony.txt",
+        "f2c2a0b2bfca1108a2d2377108631cbe"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/02_-_Dig_a_Pony.lab",
+        "67ee823e29c62d24f7824e6d74a477c5"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/02_-_Dig_a_Pony.lab",
+        "54cd0ac9c05d1ca9a4cbabb23729f1f5"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/02_-_Dig_a_Pony.lab",
+        "97aaefc80f1a854b9ebb4b3fc4456f15"
+      ]
+    },
+    "1203": {
+      "audio": [
+        "audio/12_-_Let_It_Be/03_-_Across_the_Universe.wav",
+        "2b8d79dac2f32fbf38d75c497fc897f0"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/03_-_Across_the_Universe.txt",
+        "ebb73e1d113fae12bed8122cfa141ea1"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/03_-_Across_the_Universe.lab",
+        "0ca05d244d301a39b7bcc91217fc773f"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/03_-_Across_the_Universe.lab",
+        "fba80ad9b12915a69a28d304f813738b"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/03_-_Across_the_Universe.lab",
+        "245be86d91844b7efe75db1a2055f5a9"
+      ]
+    },
+    "1204": {
+      "audio": [
+        "audio/12_-_Let_It_Be/04_-_I_Me_Mine.wav",
+        "50b7d51c48ea4c8be8d0718455407db3"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/04_-_I_Me_Mine.txt",
+        "9556a445cd0e509b3d07d3304b0efe43"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/04_-_I_Me_Mine.lab",
+        "85aa43bd171581594b26e77fc6938f73"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/04_-_I_Me_Mine.lab",
+        "fbb31347373c7f07581e95f69cbb2226"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/04_-_I_Me_Mine.lab",
+        "84b0c0829367985a23008a1f89002f23"
+      ]
+    },
+    "1205": {
+      "audio": [
+        "audio/12_-_Let_It_Be/05_-_Dig_It.wav",
+        "3fc4a0acff4b282c116aef1765f48b78"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/05_-_Dig_It.txt",
+        "fadab65a88bb48dda9cb42e48ae9c081"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/05_-_Dig_It.lab",
+        "8627a5e75214f6376dde9b6391257f19"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/05_-_Dig_It.lab",
+        "7762d065219c82564958be33aeaca508"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/05_-_Dig_It.lab",
+        "d34d4c6115bd13e9526ecd1dafd76e48"
+      ]
+    },
+    "1206": {
+      "audio": [
+        "audio/12_-_Let_It_Be/06_-_Let_It_Be.wav",
+        "2e0e0503390707fdc778ef1da5c4304b"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/06_-_Let_It_Be.txt",
+        "15a1e3e83ecb5491be731072bf8164e5"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/06_-_Let_It_Be.lab",
+        "5d6758ebbce8d51ca2888d02925f346b"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/06_-_Let_It_Be.lab",
+        "accf9eff2ea61a30a0d5f39304297624"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/06_-_Let_It_Be.lab",
+        "da84dc7e3e6e273f5d0d9cfeec509927"
+      ]
+    },
+    "1207": {
+      "audio": [
+        "audio/12_-_Let_It_Be/07_-_Maggie_Mae.wav",
+        "8113acd8536cb57a0e398f8678287087"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/07_-_Maggie_Mae.txt",
+        "69a034e916dc333cb08f073a25ccc03f"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/07_-_Maggie_Mae.lab",
+        "efe4e844551a0486b81d676bfc8db5ff"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/07_-_Maggie_Mae.lab",
+        "6f04480fad41c10efb71dfe9b2bb9a90"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/07_-_Maggie_Mae.lab",
+        "4f7e693de38de6311433d82b35f98ec0"
+      ]
+    },
+    "1208": {
+      "audio": [
+        "audio/12_-_Let_It_Be/08_-_I've_Got_A_Feeling.wav",
+        "79957054522f743cd35287612d421cc8"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/08_-_I've_Got_A_Feeling.txt",
+        "73f5bbfb386d8ec766406d372dea705a"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/08_-_I've_Got_A_Feeling.lab",
+        "ab36ccc9b5ac6f958ce30ba10d1365f9"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/08_-_I've_Got_A_Feeling.lab",
+        "19799eae8deb9820e8665a827499d7db"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/08_-_I've_Got_A_Feeling.lab",
+        "0cbd79a5bdb57fb6945c3f3c838c577f"
+      ]
+    },
+    "1209": {
+      "audio": [
+        "audio/12_-_Let_It_Be/09_-_One_After_909.wav",
+        "84025b92e9b438b9190e2e7b69d45976"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/09_-_One_After_909.txt",
+        "d65f46f2e275b725dcd9fa63f9d4ea21"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/09_-_One_After_909.lab",
+        "83ac4bd211abb30edd69bd218f7cfa5a"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/09_-_One_After_909.lab",
+        "e4391387c03d34f0c73ff7caf40e5a54"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/09_-_One_After_909.lab",
+        "97c71d095a9b7cad775066bfb4ed810c"
+      ]
+    },
+    "1210": {
+      "audio": [
+        "audio/12_-_Let_It_Be/10_-_The_Long_and_Winding_Road.wav",
+        "338a5b0d9d68bb3adcb800987e43ae64"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/10_-_The_Long_and_Winding_Road.txt",
+        "6fbcb7e1d93321faaee736702613d3c3"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/10_-_The_Long_and_Winding_Road.lab",
+        "0ce0e684922cdfbd2d45cd40e1d13468"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/10_-_The_Long_and_Winding_Road.lab",
+        "5b4f9bff80ae0cd38370193cfad8b07d"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/10_-_The_Long_and_Winding_Road.lab",
+        "c35b8f810ca11e4ea8bf8f45620ec0f2"
+      ]
+    },
+    "1211": {
+      "audio": [
+        "audio/12_-_Let_It_Be/11_-_For_You_Blue.wav",
+        "1d54d0c7d3c6c442cb1f14d56703471a"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/11_-_For_You_Blue.txt",
+        "22ebca690895ae28f615ad9093f24324"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/11_-_For_You_Blue.lab",
+        "afcd6dca63ec2eac5f960b3c174ae252"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/11_-_For_You_Blue.lab",
+        "c76b6f460fd7062de4704616978f6a4b"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/11_-_For_You_Blue.lab",
+        "874c4fe98edb1f4a1da49e63e62e6b70"
+      ]
+    },
+    "1212": {
+      "audio": [
+        "audio/12_-_Let_It_Be/12_-_Get_Back.wav",
+        "02477997f0d6d4a7ca94aea0fea5ad8d"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/12_-_Let_It_Be/12_-_Get_Back.txt",
+        "46f30ad83132e616938109306104930c"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/12_-_Let_It_Be/12_-_Get_Back.lab",
+        "2d55c1fd5b95ecb378a200defa44a3b6"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/12_-_Let_It_Be/12_-_Get_Back.lab",
+        "4a409f3e1fb3999250ec3efaa4f942dd"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/12_-_Let_It_Be/12_-_Get_Back.lab",
+        "5680b03f8bcd3d740fd4e7edffac40e6"
+      ]
+    },
+    "0801": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/01_-_Sgt._Pepper's_Lonely_Hearts_Club_Band.wav",
+        "a02057c8ca1cfdc131045a09e2d15c58"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/01_-_Sgt._Pepper's_Lonely_Hearts_Club_Band.txt",
+        "2e73f861253f9488f385d091b0858059"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/01_-_Sgt._Pepper's_Lonely_Hearts_Club_Band.lab",
+        "87935ea872f51e4876f967ce1ff9781c"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/01_-_Sgt._Pepper's_Lonely_Hearts_Club_Band.lab",
+        "2f1895812c0f0346f430facaa10bc21f"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/01_-_Sgt._Pepper's_Lonely_Hearts_Club_Band.lab",
+        "2510e6eee01d996239f928bbc5db051e"
+      ]
+    },
+    "0802": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/02_-_With_A_Little_Help_From_My_Friends.wav",
+        "8adbc3039c155455848f1fbe24049824"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/02_-_With_A_Little_Help_From_My_Friends.txt",
+        "e935bfd67188391ca9e3728a7a99912f"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/02_-_With_A_Little_Help_From_My_Friends.lab",
+        "e5efedc94c4a7744baa8bd3c73c8123a"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/02_-_With_A_Little_Help_From_My_Friends.lab",
+        "7bcbce10c8a2cf0854da043576e9fbb2"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/02_-_With_A_Little_Help_From_My_Friends.lab",
+        "870b74078f64f9c316c87e445e314460"
+      ]
+    },
+    "0803": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/03_-_Lucy_In_The_Sky_With_Diamonds.wav",
+        "b7497ff2bf909bebaef878dabe214973"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/03_-_Lucy_In_The_Sky_With_Diamonds.txt",
+        "cbbcf0cfd77922b4897d7ae1aceaa1c9"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/03_-_Lucy_In_The_Sky_With_Diamonds.lab",
+        "4be7cc35126151a284fdea28e137767d"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/03_-_Lucy_In_The_Sky_With_Diamonds.lab",
+        "0440b504f03940e0b14f74ab8434a849"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/03_-_Lucy_In_The_Sky_With_Diamonds.lab",
+        "03ea2cbc9328823891be6f92c5ba41dc"
+      ]
+    },
+    "0804": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/04_-_Getting_Better.wav",
+        "699927f06a25454e17561745ec386646"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/04_-_Getting_Better.txt",
+        "e5b6acf7922f881ae2d2c0e425a41a18"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/04_-_Getting_Better.lab",
+        "985195070d0cdba6b95cdd8ce10d1449"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/04_-_Getting_Better.lab",
+        "6011a103ddd22fe2f0a71278834d055b"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/04_-_Getting_Better.lab",
+        "a203be406baa3a96e58ddccf20a3a232"
+      ]
+    },
+    "0805": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/05_-_Fixing_A_Hole.wav",
+        "f6d3d0d576566f6afe15a48f3b200a62"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/05_-_Fixing_A_Hole.txt",
+        "07141ce407b51a65d0121924c5769f72"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/05_-_Fixing_A_Hole.lab",
+        "181c86ebfc79d35ae5bfbc567603cb99"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/05_-_Fixing_A_Hole.lab",
+        "6ef7f75e3fd98188b4d7c7248fbafc85"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/05_-_Fixing_A_Hole.lab",
+        "da8fff5467738df0bd31194ff1810708"
+      ]
+    },
+    "0806": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/06_-_She's_Leaving_Home.wav",
+        "1b5cf5501ec10e0a759efe736e9145f4"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/06_-_She's_Leaving_Home.txt",
+        "83e2b305dacc863a871a7b8131d7f3d1"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/06_-_She's_Leaving_Home.lab",
+        "20b580c7cb9027e0013bb8cd03c19b40"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/06_-_She's_Leaving_Home.lab",
+        "f8ae82c13b27cc1074454c1e99da05c7"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/06_-_She's_Leaving_Home.lab",
+        "546f21ccfd8d04aa751169293986c2c1"
+      ]
+    },
+    "0807": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/07_-_Being_For_The_Benefit_Of_Mr._Kite!.wav",
+        "5d2f4fb8d61a2b7a9c12c24817380911"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/07_-_Being_For_The_Benefit_Of_Mr._Kite!.txt",
+        "888d38efa1804d33a8f4885a3cf37796"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/07_-_Being_For_The_Benefit_Of_Mr._Kite!.lab",
+        "47ce01eb2c2d32cf0e7fa07599da430e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/07_-_Being_For_The_Benefit_Of_Mr._Kite!.lab",
+        "e2263daaa738cdac50b7d2a7fe59d9be"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/07_-_Being_For_The_Benefit_Of_Mr._Kite!.lab",
+        "d73234858f1909c4692f35bfdd190ac2"
+      ]
+    },
+    "0808": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/08_-_Within_You_Without_You.wav",
+        "2fb82a308d2f9075f2f31590d3ab62c9"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/08_-_Within_You_Without_You.txt",
+        "ed6ca5d1a52850b277ba0ce645271a46"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/08_-_Within_You_Without_You.lab",
+        "df19ae341b0fa1161592440ec7b763d2"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/08_-_Within_You_Without_You.lab",
+        "20e78bdbbce2d8f3211937006b0b3d05"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/08_-_Within_You_Without_You.lab",
+        "a008e1fd86db77dd865e52dbbb1b34ae"
+      ]
+    },
+    "0809": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/09_-_When_I'm_Sixty-Four.wav",
+        "98015d71d9e5dded7c55365f3e1c49d3"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/09_-_When_I'm_Sixty-Four.txt",
+        "f81986c85cda523399b309c680212fcc"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/09_-_When_I'm_Sixty-Four.lab",
+        "e27be6a812d37f065578e843dfd868a7"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/09_-_When_I'm_Sixty-Four.lab",
+        "5f2246005ef9d5742ba1c46afcd1369f"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/09_-_When_I'm_Sixty-Four.lab",
+        "32b503f9fd8974bf1c4cc306b0e729c6"
+      ]
+    },
+    "0810": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/10_-_Lovely_Rita.wav",
+        "15c69d66ec8ed07fa83044a56736ceae"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/10_-_Lovely_Rita.txt",
+        "bdea56f380f2eaf4301d022752423039"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/10_-_Lovely_Rita.lab",
+        "9e00f9212903ff731f047abaefaff30c"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/10_-_Lovely_Rita.lab",
+        "095d465a3bd8f34718cd2360f9d809f5"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/10_-_Lovely_Rita.lab",
+        "b14b2f4902610ef22d0c099a9370443d"
+      ]
+    },
+    "0811": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/11_-_Good_Morning_Good_Morning.wav",
+        "4abffd4277a2c23af08497009ff47793"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/11_-_Good_Morning_Good_Morning.txt",
+        "d8fd9442f8606bdee314ed15f6aff084"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/11_-_Good_Morning_Good_Morning.lab",
+        "26006aada2d0f693cfdd69803155ced3"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/11_-_Good_Morning_Good_Morning.lab",
+        "68f9f69d854da2e3f255f19bfd271fab"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/11_-_Good_Morning_Good_Morning.lab",
+        "33022f69b99d22f4c11f8cc66058ba4e"
+      ]
+    },
+    "0812": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/12_-_Sgt._Pepper's_Lonely_Hearts_Club_Band_(Reprise).wav",
+        "9d15445b048cd257bfa54fdd07ec7afe"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/12_-_Sgt._Pepper's_Lonely_Hearts_Club_Band_(Reprise).txt",
+        "7d8a3cf26d7836914436b881cc017440"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/12_-_Sgt._Pepper's_Lonely_Hearts_Club_Band_(Reprise).lab",
+        "48270ef3351f07559884f483741379a8"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/12_-_Sgt._Pepper's_Lonely_Hearts_Club_Band_(Reprise).lab",
+        "7d6705c4924df33c9eeced471da3b824"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/12_-_Sgt._Pepper's_Lonely_Hearts_Club_Band_(Reprise).lab",
+        "b13eda34e5c0b6691cc2d7274e11afb5"
+      ]
+    },
+    "0813": {
+      "audio": [
+        "audio/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/13_-_A_Day_In_The_Life.wav",
+        "49a26283dc4044243e4510fad2053cea"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/13_-_A_Day_In_The_Life.txt",
+        "91df6c53fa0a9fb6b03eaeb51c37e55a"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/13_-_A_Day_In_The_Life.lab",
+        "3983eb3deabe9bb292ee00d1c8b753dd"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/13_-_A_Day_In_The_Life.lab",
+        "1f5a608e5e4035ade1779c9ee8391b74"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/08_-_Sgt._Pepper's_Lonely_Hearts_Club_Band/13_-_A_Day_In_The_Life.lab",
+        "63bc73adf732714204b0d7ccd0b42684"
+      ]
+    },
+    "10201": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_01_-_Birthday.wav",
+        "74dfac0b442d6d226251e788fe74700d"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_01_-_Birthday.txt",
+        "2620f6652b85aa6121f056eb36ec007a"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_01_-_Birthday.lab",
+        "1b411290be36eea933c4f118a3946896"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_01_-_Birthday.lab",
+        "313edffbbe8700fc524947ea3d5ac372"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_01_-_Birthday.lab",
+        "4da346fa7ca2d11532f4cdb11e0eb5fc"
+      ]
+    },
+    "10202": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_02_-_Yer_Blues.wav",
+        "ceb5367deb9db0947cd3b1f30506030e"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_02_-_Yer_Blues.txt",
+        "a7f3987add61e2ea149b6d75b7f3c2d3"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_02_-_Yer_Blues.lab",
+        "16216f3754b78016d1e246a14bcc0086"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_02_-_Yer_Blues.lab",
+        "f041d4d6f7e07bc7c67660884c4962dc"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_02_-_Yer_Blues.lab",
+        "91bb8a89ecf2eb9f8d813e53cd077a53"
+      ]
+    },
+    "10203": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_03_-_Mother_Nature's_Son.wav",
+        "7618efae25abadbb0a5dbe0e8ecee0fb"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_03_-_Mother_Nature's_Son.txt",
+        "f53651cb17832ab47f841ab285297973"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_03_-_Mother_Nature's_Son.lab",
+        "c1505cece715f765c2e26ac0dede0335"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_03_-_Mother_Nature's_Son.lab",
+        "bf4363d3313b7bcce0632a9d09633c63"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_03_-_Mother_Nature's_Son.lab",
+        "4378eed768b3f541aca58ab2ef258c76"
+      ]
+    },
+    "10204": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_04_-_Everybody's_Got_Something_To_Hide_Except_Me_and_My_Monkey.wav",
+        "608c7427af13bcf84f64f3c3d7c03af2"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_04_-_Everybody's_Got_Something_To_Hide_Except_Me_and_My_Monkey.txt",
+        "3f1d31e5669e747c77f85d31273b0796"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_04_-_Everybody's_Got_Something_To_Hide_Except_Me_and_My_Monkey.lab",
+        "3bb9c22b2494bc229c479d8913c3b790"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_04_-_Everybody's_Got_Something_To_Hide_Except_Me_and_My_Monkey.lab",
+        "88379fbe3036b7ace41226f2c65745a2"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_04_-_Everybody's_Got_Something_To_Hide_Except_Me_and_My_Monkey.lab",
+        "6394c138c7f2cd617e1e61c4ce727be4"
+      ]
+    },
+    "10205": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_05_-_Sexy_Sadie.wav",
+        "fc5a88509783cb56da677470f0229396"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_05_-_Sexy_Sadie.txt",
+        "1523b698cb49105f5a5afad960691b5c"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_05_-_Sexy_Sadie.lab",
+        "dcf3b054c0c8766da5d0dd9ff743d4c7"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_05_-_Sexy_Sadie.lab",
+        "1627564255573b8e4d288b62438f9b54"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_05_-_Sexy_Sadie.lab",
+        "bc4d2f283c1d1413d4ab43233c5ab164"
+      ]
+    },
+    "10206": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_06_-_Helter_Skelter.wav",
+        "c500e063084e65b6eb6f0eb2ea8f0261"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_06_-_Helter_Skelter.txt",
+        "1fd8af27a1ddb6906dffe7407ac15b0f"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_06_-_Helter_Skelter.lab",
+        "1ec72b160c52804b39c035e39a670d8d"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_06_-_Helter_Skelter.lab",
+        "357bd0212a7a0039d8f8050fa8efb808"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_06_-_Helter_Skelter.lab",
+        "127667feebbca1a03cc0a864183ff1af"
+      ]
+    },
+    "10207": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_07_-_Long_Long_Long.wav",
+        "e89f74f01e324351ec41e4d4d79cee24"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_07_-_Long_Long_Long.txt",
+        "a07b4f63c7627f25635c9f68f210e621"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_07_-_Long_Long_Long.lab",
+        "9f76ab6312d87b6ca5a753d2a293f683"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_07_-_Long_Long_Long.lab",
+        "f9eae6781dcef8996becfb50275ee29e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_07_-_Long_Long_Long.lab",
+        "9564b23306c97005cb280661b41e0bcb"
+      ]
+    },
+    "10208": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_08_-_Revolution_1.wav",
+        "ac56bf092f14f40a6e5ffec7079e7cec"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_08_-_Revolution_1.txt",
+        "c916cabf39f2ee76a8205773228e6bfb"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_08_-_Revolution_1.lab",
+        "5e5389f1c02538ad582c0079019664e4"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_08_-_Revolution_1.lab",
+        "4b05a36e0b53764107e4932421dbc38c"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_08_-_Revolution_1.lab",
+        "c52027561a39bec590b9d16845615424"
+      ]
+    },
+    "10209": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_09_-_Honey_Pie.wav",
+        "c2511c6d231f4eb66554db8a706e64e4"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_09_-_Honey_Pie.txt",
+        "c12b98d57ff9740489041b35b002b9c2"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_09_-_Honey_Pie.lab",
+        "7fa411eb017dc0ba79754d770ce3f66d"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_09_-_Honey_Pie.lab",
+        "8795873f4cc16b8e8b71a4fc441be98e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_09_-_Honey_Pie.lab",
+        "2c82b4f23640dd18326d7fb64fa03f16"
+      ]
+    },
+    "10210": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_10_-_Savoy_Truffle.wav",
+        "3c74e4d540723c524a01a6a1c5396356"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_10_-_Savoy_Truffle.txt",
+        "30e9ac2c904099f84d5afeee5fe3b5a5"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_10_-_Savoy_Truffle.lab",
+        "ff9c74496dc8a025e1e2714b9d84980e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_10_-_Savoy_Truffle.lab",
+        "dc43fa140e31af763751965c2ffddc1f"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_10_-_Savoy_Truffle.lab",
+        "3f043f0066d894fad30771986810382c"
+      ]
+    },
+    "10211": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_11_-_Cry_Baby_Cry.wav",
+        "f63fb6cf57975962ebd1e13fec588cd5"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_11_-_Cry_Baby_Cry.txt",
+        "652747d7b9fbd94eaef22770a20ca953"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_11_-_Cry_Baby_Cry.lab",
+        "4b9a4acd52e801f67ca56f6739420ebe"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_11_-_Cry_Baby_Cry.lab",
+        "ecddae7ce2ab150622909dd55bec1940"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_11_-_Cry_Baby_Cry.lab",
+        "8edfda152e81fd128c2ba1ca1e4d39fa"
+      ]
+    },
+    "10212": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_12_-_Revolution_9.wav",
+        "b2db9d775f17f0416d5ae3a0791fc9fb"
+      ],
+      "beat": [
+        null,
+        null
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_12_-_Revolution_9.lab",
+        "8bbe521a2c59d8d74247cd8f77ac865a"
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_12_-_Revolution_9.lab",
+        "95352965ee852479bbdc51e936038ecd"
+      ]
+    },
+    "10213": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_13_-_Good_Night.wav",
+        "81564b8f8f9d913dc4f0523eb49f252f"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD2_-_The_Beatles/CD2_-_13_-_Good_Night.txt",
+        "56403d5909f384921a3acbe0bff00a5f"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_13_-_Good_Night.lab",
+        "a2578abbe16e26ca5c6c326d0c6367c5"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD2_-_The_Beatles/CD2_-_13_-_Good_Night.lab",
+        "204ca0591347887deab4fd27af4e9de3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_13_-_Good_Night.lab",
+        "8f2be1e5e74771a7e431aea466cdebad"
+      ]
+    },
+    "0901": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/01_-_Magical_Mystery_Tour.wav",
+        "34437d8aec49882b2b9e24ff46cb7564"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/01_-_Magical_Mystery_Tour.txt",
+        "16a3351dd2da4919b531c1679b6f312f"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/01_-_Magical_Mystery_Tour.lab",
+        "6cdedbac955df201fd445acbab1ef2e1"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/01_-_Magical_Mystery_Tour.lab",
+        "40f26af0559d80599646a1bd3a87a273"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/01_-_Magical_Mystery_Tour.lab",
+        "3d7c5e4679b71981ab9f6daace88177b"
+      ]
+    },
+    "0902": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/02_-_The_Fool_On_The_Hill.wav",
+        "48e76a5569296e194117c3266a8df5fa"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/02_-_The_Fool_On_The_Hill.txt",
+        "418c16a85e3f7d70058695bccaa9cb53"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/02_-_The_Fool_On_The_Hill.lab",
+        "3a853ca26d4f917115b9e0b9ed04df17"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/02_-_The_Fool_On_The_Hill.lab",
+        "02ea467635da083c7bc09ab14af42826"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/02_-_The_Fool_On_The_Hill.lab",
+        "0363dcac6017e7151e161efdacf909ff"
+      ]
+    },
+    "0903": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/03_-_Flying.wav",
+        "4187b7a2e69bacab06f10877129e2f51"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/03_-_Flying.txt",
+        "00671ce082a2862f82a5b4a2a4d5d1ca"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/03_-_Flying.lab",
+        "d6d462ebea059dd65c49b8d111790ff0"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/03_-_Flying.lab",
+        "b9045932416487562ab158b613450cdb"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/03_-_Flying.lab",
+        "22f6f90060b7b76ee0cb2eff64ad5dfa"
+      ]
+    },
+    "0904": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/04_-_Blue_Jay_Way.wav",
+        "3af87b85afc78ec9d4be0bcd524e7bd1"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/04_-_Blue_Jay_Way.txt",
+        "26185f211c26d17a72a098e260c6b700"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/04_-_Blue_Jay_Way.lab",
+        "9cd5293276d7ea98b15c49c6e9ceb45d"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/04_-_Blue_Jay_Way.lab",
+        "77d590c368ccd311c27a6eb21cec144b"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/04_-_Blue_Jay_Way.lab",
+        "a6ec345e1ac728bdf22581d31972b221"
+      ]
+    },
+    "0905": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/05_-_Your_Mother_Should_Know.wav",
+        "941138101ba3a034be181e52daa57438"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/05_-_Your_Mother_Should_Know.txt",
+        "8338f5de428e7f02a02bd935ad2818d1"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/05_-_Your_Mother_Should_Know.lab",
+        "c91158d58c8aecfcb90266b67f6ffc5a"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/05_-_Your_Mother_Should_Know.lab",
+        "0ffa3c1be272ae31dc77cebe3a5c269a"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/05_-_Your_Mother_Should_Know.lab",
+        "dd2785ae35fd562a1337cfa685615be4"
+      ]
+    },
+    "0906": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/06_-_I_Am_The_Walrus.wav",
+        "ac75430caf8d536cbd3a612c539e310a"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/06_-_I_Am_The_Walrus.txt",
+        "2c9fac6a92fc7c162f2585fc369a383e"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/06_-_I_Am_The_Walrus.lab",
+        "d38b60d00f89e85a11ddacdb6f50bfca"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/06_-_I_Am_The_Walrus.lab",
+        "a23975eff286634029747ab767b7b98a"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/06_-_I_Am_The_Walrus.lab",
+        "48ae55919182e6c95e169328f0a9fea9"
+      ]
+    },
+    "0907": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/07_-_Hello_Goodbye.wav",
+        "99a8540739b650d78d096c4bb94d1574"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/07_-_Hello_Goodbye.txt",
+        "605bf3e6148c60fdc53c11d5554a617e"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/07_-_Hello_Goodbye.lab",
+        "1e541cf7c07a28e5930f2c573ad57a86"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/07_-_Hello_Goodbye.lab",
+        "3bbcbd2cef284b1e5669f68aa6b9b172"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/07_-_Hello_Goodbye.lab",
+        "efdf5db70670f367b0df0e2e19972a9f"
+      ]
+    },
+    "0908": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/08_-_Strawberry_Fields_Forever.wav",
+        "b19b939c74841dc318b6d8aeb673d775"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/08_-_Strawberry_Fields_Forever.txt",
+        "151e44597d49d7adeebfb8b8b9fe8f29"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/08_-_Strawberry_Fields_Forever.lab",
+        "f9efc8e1acf205a7630289663519dc77"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/08_-_Strawberry_Fields_Forever.lab",
+        "2edcbf4c5ae8fddd8c98282c9eccb7d4"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/08_-_Strawberry_Fields_Forever.lab",
+        "34eb3a06c8d61ec56cc3085ca36a2e4f"
+      ]
+    },
+    "0909": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/09_-_Penny_Lane.wav",
+        "2b1d6822d5fd708d60564a16e41f7ae6"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/09_-_Penny_Lane.txt",
+        "35291772d4d5006060e05445acfa669f"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/09_-_Penny_Lane.lab",
+        "89fbf1d06e566aa65d3fa999b5ff2c68"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/09_-_Penny_Lane.lab",
+        "244ba5d4069622b7361c58aa461163c1"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/09_-_Penny_Lane.lab",
+        "2146deccb17cbfa7f371f10e5e615ab0"
+      ]
+    },
+    "0910": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/10_-_Baby_You're_A_Rich_Man.wav",
+        "a6a1348051db6d4b7b9b9c8743d3da28"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/10_-_Baby_You're_A_Rich_Man.txt",
+        "a4b7170427ea9631dd03b525a34c81d7"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/10_-_Baby_You're_A_Rich_Man.lab",
+        "e9a887473ea102e527410c73c0046140"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/10_-_Baby_You're_A_Rich_Man.lab",
+        "b797ea7cd3412335cab09564a8ddbb75"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/10_-_Baby_You're_A_Rich_Man.lab",
+        "a9f19e6755711067d28774162f8cacd3"
+      ]
+    },
+    "0911": {
+      "audio": [
+        "audio/09_-_Magical_Mystery_Tour/11_-_All_You_Need_Is_Love.wav",
+        "307cfeebeda14f9cc802d85f31312b28"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/09_-_Magical_Mystery_Tour/11_-_All_You_Need_Is_Love.txt",
+        "ffdd49993e54a1018d1c6fab9735e62f"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/09_-_Magical_Mystery_Tour/11_-_All_You_Need_Is_Love.lab",
+        "49482cea132df4b244d770a1a5b67f8e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/09_-_Magical_Mystery_Tour/11_-_All_You_Need_Is_Love.lab",
+        "916e9964d79c1f945ec2b09218c26110"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/09_-_Magical_Mystery_Tour/11_-_All_You_Need_Is_Love.lab",
+        "e682246290e17d8d3323374e2a2c7ded"
+      ]
+    },
+    "0501": {
+      "audio": [
+        "audio/05_-_Help!/01_-_Help!.wav",
+        "2b7fa8750bbe1e6972777cfa65e43e4d"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/01_-_Help!.txt",
+        "01f5bcfb47fba1b598572ddfe86515b7"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/01_-_Help!.lab",
+        "38a2df4b5d643ac6662234efe50a4b78"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/01_-_Help!.lab",
+        "2206ce5944e8a4571646e64653e8749e"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/01_-_Help!.lab",
+        "b7c60f45cf75f23b8df50da0a76c69c6"
+      ]
+    },
+    "0502": {
+      "audio": [
+        "audio/05_-_Help!/02_-_The_Night_Before.wav",
+        "c5d31a9360560e6544feb341918f6c86"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/02_-_The_Night_Before.txt",
+        "5ed610b519b4271cbf42940e49379ae3"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/02_-_The_Night_Before.lab",
+        "b1f6b3d57a6832f7083051f930960f39"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/02_-_The_Night_Before.lab",
+        "a84af8989126650f593431a164536e8b"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/02_-_The_Night_Before.lab",
+        "73bbc6b26de05d0f9ed82ceb14043bb2"
+      ]
+    },
+    "0503": {
+      "audio": [
+        "audio/05_-_Help!/03_-_You've_Got_To_Hide_Your_Love_Away.wav",
+        "4209be0fef496800c4cf4b2b15080f4b"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/03_-_You've_Got_To_Hide_Your_Love_Away.txt",
+        "63f6678991f3be9a57b66fe2d1d642cf"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/03_-_You've_Got_To_Hide_Your_Love_Away.lab",
+        "a5fb81a73ae2d55c88f900e2e124dd56"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/03_-_You've_Got_To_Hide_Your_Love_Away.lab",
+        "007792f5457c3201764b8cca09ecea21"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/03_-_You've_Got_To_Hide_Your_Love_Away.lab",
+        "99681c110966b14d795db931bbfc22a6"
+      ]
+    },
+    "0504": {
+      "audio": [
+        "audio/05_-_Help!/04_-_I_Need_You.wav",
+        "c54169dbdaed929647c1ebc3304c6b53"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/04_-_I_Need_You.txt",
+        "d5ff59c707deb752fda2f585868f46e6"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/04_-_I_Need_You.lab",
+        "bcd4a345b12b5f47b04ffd45b8d2c6f8"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/04_-_I_Need_You.lab",
+        "69713ad17bb691cf0279096b9e1666bb"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/04_-_I_Need_You.lab",
+        "8f6c38e8fa5059985e41b8b65ab92f40"
+      ]
+    },
+    "0505": {
+      "audio": [
+        "audio/05_-_Help!/05_-_Another_Girl.wav",
+        "2e15026bf888a5542ec39a93fa4c6dd6"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/05_-_Another_Girl.txt",
+        "4d4b24dde7afb8260438e2aa253db58d"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/05_-_Another_Girl.lab",
+        "abb7ca5678c503c0bb67473f4c515c26"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/05_-_Another_Girl.lab",
+        "7a54b00479e7ff1882c7e705497a8c44"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/05_-_Another_Girl.lab",
+        "e894244c42d35782451d2ac905acebaf"
+      ]
+    },
+    "0506": {
+      "audio": [
+        "audio/05_-_Help!/06_-_You're_Going_To_Lose_That_Girl.wav",
+        "3636e1a3f4df9bf9a38e2f202ab5cc84"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/06_-_You're_Going_To_Lose_That_Girl.txt",
+        "30fe3248444f7640299ab590f477f036"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/06_-_You're_Going_To_Lose_That_Girl.lab",
+        "a2ed881f185dec516b7fa65c2bf24476"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/06_-_You're_Going_To_Lose_That_Girl.lab",
+        "e4a8eaffc25b0d84941f5b76f90df9dd"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/06_-_You're_Going_To_Lose_That_Girl.lab",
+        "580406547cffe51429eedd70052bd4fd"
+      ]
+    },
+    "0507": {
+      "audio": [
+        "audio/05_-_Help!/07_-_Ticket_To_Ride.wav",
+        "28addc114ad116e2ef8f0bbf310434de"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/07_-_Ticket_To_Ride.txt",
+        "e7c0d2ecc13f698911df30663a641847"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/07_-_Ticket_To_Ride.lab",
+        "e4482594de45a6c74a1a933ca63e9d2b"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/07_-_Ticket_To_Ride.lab",
+        "151f42dcd0aec43940745ddc6b99af92"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/07_-_Ticket_To_Ride.lab",
+        "8c24fc765d98c9db8af91628497e7bea"
+      ]
+    },
+    "0508": {
+      "audio": [
+        "audio/05_-_Help!/08_-_Act_Naturally.wav",
+        "63f65d49a4ceb9e1048d149da2a11e12"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/08_-_Act_Naturally.txt",
+        "6c6b6840401a26ea267054f61b4592e0"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/08_-_Act_Naturally.lab",
+        "bacf157330a6fc7be13472c6f2a1c794"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/08_-_Act_Naturally.lab",
+        "1989095c2496dbc8d82fc1624d06422d"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/08_-_Act_Naturally.lab",
+        "66e244ab28ebe435fa06dd9b2b5a3b4e"
+      ]
+    },
+    "0509": {
+      "audio": [
+        "audio/05_-_Help!/09_-_It's_Only_Love.wav",
+        "76fc0d643073da1e8176feebdcc6802c"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/09_-_It's_Only_Love.txt",
+        "db0a5de2fe154ceccce8c59300e3f36d"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/09_-_It's_Only_Love.lab",
+        "7e26c36742e440a194464fe3c694d9f5"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/09_-_It's_Only_Love.lab",
+        "677380fe75d79805239d3e687641dae6"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/09_-_It's_Only_Love.lab",
+        "9b51055189c2152e30285509dac917df"
+      ]
+    },
+    "0510": {
+      "audio": [
+        "audio/05_-_Help!/10_-_You_Like_Me_Too_Much.wav",
+        "4212ff4df54687cbbe733385f158bc75"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/10_-_You_Like_Me_Too_Much.txt",
+        "6ac48006cc420a4f02e64f80241c3323"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/10_-_You_Like_Me_Too_Much.lab",
+        "457ceea53c032edbbd0a8608875117c7"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/10_-_You_Like_Me_Too_Much.lab",
+        "2abf1c0fbe578e966058c97cb0a7f2e0"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/10_-_You_Like_Me_Too_Much.lab",
+        "29d192a7ba83aa433c65fe6e2551a829"
+      ]
+    },
+    "0511": {
+      "audio": [
+        "audio/05_-_Help!/11_-_Tell_Me_What_You_See.wav",
+        "e303fb8bd8f0e2b582212c05894ce40e"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/11_-_Tell_Me_What_You_See.txt",
+        "0e55ddb76291708e0eda03c59e05da7c"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/11_-_Tell_Me_What_You_See.lab",
+        "b8a3bfddc36ddbe389e0fa2904a2da7c"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/11_-_Tell_Me_What_You_See.lab",
+        "4de324145415dfe3ba30445aed0b3586"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/11_-_Tell_Me_What_You_See.lab",
+        "dcfb24f71c6c39f61f189c1d688de8e8"
+      ]
+    },
+    "0512": {
+      "audio": [
+        "audio/05_-_Help!/12_-_I've_Just_Seen_a_Face.wav",
+        "663c379a8234b0559111d5424d87889e"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/12_-_I've_Just_Seen_a_Face.txt",
+        "4c65d13a803f591bda47388c1ca28f2c"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/12_-_I've_Just_Seen_a_Face.lab",
+        "7bb6000860934bbb63c59564bffd280b"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/12_-_I've_Just_Seen_a_Face.lab",
+        "174eb6f5e3945616f791c3ba071865e3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/12_-_I've_Just_Seen_a_Face.lab",
+        "003c5bec4524cf146de7666d30e2cae7"
+      ]
+    },
+    "0513": {
+      "audio": [
+        "audio/05_-_Help!/13_-_Yesterday.wav",
+        "fd392b95b6b736d46393fead9355e692"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/13_-_Yesterday.txt",
+        "5372c8180fe7e4f029f11f34f844510a"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/13_-_Yesterday.lab",
+        "49a7fbe8e049955b96cd56c1692c3c47"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/13_-_Yesterday.lab",
+        "5c3bc960cb61d410872b235e52e4fd1c"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/13_-_Yesterday.lab",
+        "a50441d70bd652427b3abb9da3a91087"
+      ]
+    },
+    "0514": {
+      "audio": [
+        "audio/05_-_Help!/14_-_Dizzy_Miss_Lizzy.wav",
+        "20df39f80001da7154f2d04e6ea7177f"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/05_-_Help!/14_-_Dizzy_Miss_Lizzy.txt",
+        "c0e686f85f2a3580617438e7989e7084"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/05_-_Help!/14_-_Dizzy_Miss_Lizzy.lab",
+        "f167ceac98cf4120f65735a52d750feb"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/05_-_Help!/14_-_Dizzy_Miss_Lizzy.lab",
+        "8cecbbb03be390aa7a48a8b84d81353c"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/05_-_Help!/14_-_Dizzy_Miss_Lizzy.lab",
+        "d2514ff35c7ddd53c32f12ba4028bf9a"
+      ]
+    },
+    "10101": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_01_-_Back_in_the_USSR.wav",
+        "0743274bd505ad90d5bdb619078d9e9b"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_01_-_Back_in_the_USSR.txt",
+        "f143ab39a3fa21af2c8bebf999541987"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_01_-_Back_in_the_USSR.lab",
+        "33eeb922f7e9f05fd1946e1637773a0b"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_01_-_Back_in_the_USSR.lab",
+        "95a9751d0a0146ad0a5592561afb90f5"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_01_-_Back_in_the_USSR.lab",
+        "bbbf8fedf527b5a055ca412549b45b32"
+      ]
+    },
+    "10102": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_02_-_Dear_Prudence.wav",
+        "3be65857c3b9e76e5011a763e2407ee0"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_02_-_Dear_Prudence.txt",
+        "1e5da01807f528d4c724223fe39904b4"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_02_-_Dear_Prudence.lab",
+        "d549ac41147f8ec4f7b0920d78226931"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_02_-_Dear_Prudence.lab",
+        "3eab99a43a95770d0222a1e00482c9db"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_02_-_Dear_Prudence.lab",
+        "463e8b6fb205553fdacaf29c1defdbc8"
+      ]
+    },
+    "10103": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_03_-_Glass_Onion.wav",
+        "b79e24b6a95aba0d411787916c285564"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_03_-_Glass_Onion.txt",
+        "c1f8ce7026c6bef6fe21828ab3a7680d"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_03_-_Glass_Onion.lab",
+        "b59eb9be27d7ff3d1fcb88d4a4997367"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_03_-_Glass_Onion.lab",
+        "30f536bb7353da309b03c579ef575896"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_03_-_Glass_Onion.lab",
+        "8c1b823afde292e05c84f26beec55a10"
+      ]
+    },
+    "10104": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_04_-_Ob-La-Di,_Ob-La-Da.wav",
+        "cfe1479c77be87cc5f0f793dfdb44a56"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_04_-_Ob-La-Di,_Ob-La-Da.txt",
+        "88d54d9a0efb699f402b6d4d50d4f725"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_04_-_Ob-La-Di,_Ob-La-Da.lab",
+        "f4ad5fe794e054ec4461ff06f53e669d"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_04_-_Ob-La-Di,_Ob-La-Da.lab",
+        "bd2c7100ad1d79221c8bd401cb1712d8"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_04_-_Ob-La-Di,_Ob-La-Da.lab",
+        "d4be800873d4a227127c123df7a82464"
+      ]
+    },
+    "10105": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_05_-_Wild_Honey_Pie.wav",
+        "bb8d4cbefcab68aabed83134f92c4a0c"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_05_-_Wild_Honey_Pie.txt",
+        "df4c3474b0a0c04f8e3b97f0e915bcf7"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_05_-_Wild_Honey_Pie.lab",
+        "577be43e1f6888800be989b0a85e4b04"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_05_-_Wild_Honey_Pie.lab",
+        "a1fa9da441eab33830c9ec2579f588c1"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_05_-_Wild_Honey_Pie.lab",
+        "471b79eaf6e590fcd59692d1384f8ab4"
+      ]
+    },
+    "10106": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_06_-_The_Continuing_Story_of_Bungalow_Bill.wav",
+        "fcb6245a60b161b66d2c8832b6d2c316"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_06_-_The_Continuing_Story_of_Bungalow_Bill.txt",
+        "998bb6d1bfe8af540c5e4bb96efab0aa"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_06_-_The_Continuing_Story_of_Bungalow_Bill.lab",
+        "48672653eb1a6a93348fc56fdb1c9b36"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_06_-_The_Continuing_Story_of_Bungalow_Bill.lab",
+        "4fd5b2c0d9cce6939ebc64a18111dfe0"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_06_-_The_Continuing_Story_of_Bungalow_Bill.lab",
+        "93ccfeec27c49a826905b7844da04edd"
+      ]
+    },
+    "10107": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_07_-_While_My_Guitar_Gently_Weeps.wav",
+        "b49cf3379a4aea77091dcb3dd6e1e163"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_07_-_While_My_Guitar_Gently_Weeps.txt",
+        "8a170b7516801410d15d634abf196084"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_07_-_While_My_Guitar_Gently_Weeps.lab",
+        "ef9aa66cd78b261b1f58b22b29eb1821"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_07_-_While_My_Guitar_Gently_Weeps.lab",
+        "889538041382a79a5a9c75543c1e7e39"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_07_-_While_My_Guitar_Gently_Weeps.lab",
+        "7ceb18ff38e16bf413585fecc4cad910"
+      ]
+    },
+    "10108": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_08_-_Happiness_is_a_Warm_Gun.wav",
+        "0dbf4778ca811181d68475ce49c51c44"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_08_-_Happiness_is_a_Warm_Gun.txt",
+        "b59b88282f420b968fa8afac3b3d30aa"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_08_-_Happiness_is_a_Warm_Gun.lab",
+        "8e4f5cd161c39095d05a69ec3e58fb51"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_08_-_Happiness_is_a_Warm_Gun.lab",
+        "527f40bedd7e0090b5cd8124ba10ddc2"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_08_-_Happiness_is_a_Warm_Gun.lab",
+        "c3db48a2bfd783617b5c0daafb5e1203"
+      ]
+    },
+    "10109": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_09_-_Martha_My_Dear.wav",
+        "f4cadcbc174d66adfc366f88e0cd7800"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_09_-_Martha_My_Dear.txt",
+        "b07ad7e10fbfa032e03612cff670eb29"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_09_-_Martha_My_Dear.lab",
+        "ad913f405ac6b9c285302b1d5f2c991e"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_09_-_Martha_My_Dear.lab",
+        "5dcc41625e06c2c4489957ea2006c075"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_09_-_Martha_My_Dear.lab",
+        "a352b6eb509fe335275f7c836d8c9c6f"
+      ]
+    },
+    "10110": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_10_-_I'm_So_Tired.wav",
+        "da2ce04c69080d6b752e39140628f293"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_10_-_I'm_So_Tired.txt",
+        "4f9ea284def6950cb3c6f9b3727029a3"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_10_-_I'm_So_Tired.lab",
+        "5d21a20edc7f92a3fa4a4b3621f92e88"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_10_-_I'm_So_Tired.lab",
+        "52acd7cf8d93ca605876ca71026e9c13"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_10_-_I'm_So_Tired.lab",
+        "841936dd10863c1bfb4eed70701f4c32"
+      ]
+    },
+    "10111": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_11_-_Black_Bird.wav",
+        "f2b01eff36a65efd12fefd8f1e82d627"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_11_-_Black_Bird.txt",
+        "e07bc652eaee0e514ed80a051dfa7ed6"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_11_-_Black_Bird.lab",
+        "6fac7f45282fecec680ed5183f9c4c61"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_11_-_Black_Bird.lab",
+        "5ac6bfcdabee61847f154fb0582f72a7"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_11_-_Black_Bird.lab",
+        "271911d6e50e726e9a8a55ddc76249a6"
+      ]
+    },
+    "10112": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_12_-_Piggies.wav",
+        "47bfc3073bee3b7e11d24c80718acf6e"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_12_-_Piggies.txt",
+        "8464fdf87fbae301df45a4640b312417"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_12_-_Piggies.lab",
+        "8d07199b0ef69be580cce75d309f78e7"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_12_-_Piggies.lab",
+        "77d9fafacb0d687eb068ce07e1e4ccbf"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_12_-_Piggies.lab",
+        "ce807ad97bb6d3b7d8c474d4befc4e18"
+      ]
+    },
+    "10113": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_13_-_Rocky_Raccoon.wav",
+        "312b0c98c2537c03b7ca74f171ba4478"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_13_-_Rocky_Raccoon.txt",
+        "f7f295dfdef735c92d1515f8697528e1"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_13_-_Rocky_Raccoon.lab",
+        "766b0d6931fdcf4c5d09b755facb42a2"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_13_-_Rocky_Raccoon.lab",
+        "b47b2f8562c32260be4c921abde205b3"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_13_-_Rocky_Raccoon.lab",
+        "7a43073ddbf23a6b68671c7b3f48fcc8"
+      ]
+    },
+    "10114": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_14_-_Don't_Pass_Me_By.wav",
+        "5522a89d564d086de691997f1582c41c"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_14_-_Don't_Pass_Me_By.txt",
+        "795d9dcd537c174a3f130780a58aadff"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_14_-_Don't_Pass_Me_By.lab",
+        "94474159c8e04bdf8d35010df38f74fb"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_14_-_Don't_Pass_Me_By.lab",
+        "f76bfb7712eef39ea989b21e0f0f13fd"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_14_-_Don't_Pass_Me_By.lab",
+        "a0b0861d2a8c4618fe8b73330d8997a9"
+      ]
+    },
+    "10115": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_15_-_Why_Don't_We_Do_It_In_The_Road.wav",
+        "f34a01e6450e8cfc3770605a439fa1b5"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_15_-_Why_Don't_We_Do_It_In_The_Road.txt",
+        "f5ed27fce8d9d2b38a62d116bc552969"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_15_-_Why_Don't_We_Do_It_In_The_Road.lab",
+        "237437c4f420711776744a4bf056ec26"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_15_-_Why_Don't_We_Do_It_In_The_Road.lab",
+        "1da18698728aa1e252b5db1edd73cc18"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_15_-_Why_Don't_We_Do_It_In_The_Road.lab",
+        "e42fb3854221b6feb3cba34ff786c79b"
+      ]
+    },
+    "10116": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_16_-_I_Will.wav",
+        "77caedc153bb669caf6794edc1460e78"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_16_-_I_Will.txt",
+        "63d86ea8759b2fe2a722f6bb106d80b1"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_16_-_I_Will.lab",
+        "6265756eaf9fa0ebc590fa02eb47fdee"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_16_-_I_Will.lab",
+        "3ab4eb4e5ab2204f6e21b667f8da0612"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_16_-_I_Will.lab",
+        "3ff241242249569b1ee0bd0dabb81bb3"
+      ]
+    },
+    "10117": {
+      "audio": [
+        "audio/10CD1_-_The_Beatles/CD1_-_17_-_Julia.wav",
+        "28705b4e28e15598a9bbf884630ad5fb"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/10CD1_-_The_Beatles/CD1_-_17_-_Julia.txt",
+        "99a320d61c7dcb16564973c81ad5e888"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD1_-_The_Beatles/CD1_-_17_-_Julia.lab",
+        "d42c66307d831d9f263c72a03f024029"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/10CD1_-_The_Beatles/CD1_-_17_-_Julia.lab",
+        "8f6d52b95fc5602472bb834ff8b35552"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD1_-_The_Beatles/CD1_-_17_-_Julia.lab",
+        "5567706d5daaea876d3dee1792ac3195"
+      ]
+    }
+  }
+}

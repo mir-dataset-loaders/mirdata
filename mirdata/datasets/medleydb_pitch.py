@@ -39,6 +39,11 @@ BIBTEX = """@inproceedings{bittner2014medleydb,
     Title = {Medley{DB}: A Multitrack Dataset for Annotation-Intensive {MIR} Research},
     Year = {2014}
 }"""
+INDEXES = {
+    "default": "2.0",
+    "test": "2.0",
+    "2.0": core.Index(filename="medleydb_pitch_index_2.0.json"),
+}
 DOWNLOAD_INFO = """
     To download this dataset, visit:
     https://zenodo.org/record/2620624#.XKZc7hNKh24
@@ -189,12 +194,14 @@ class Dataset(core.Dataset):
     The medleydb_pitch dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="medleydb_pitch",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )

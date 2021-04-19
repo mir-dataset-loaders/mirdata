@@ -45,6 +45,13 @@ BIBTEX = """@phdthesis {3897,
     url = {https://doi.org/10.5281/zenodo.1154586},
     author = {{\'A}ngel Faraldo}
 }"""
+
+INDEXES = {
+    "default": "1.0.0",
+    "test": "1.0.0",
+    "1.0.0": core.Index(filename="beatport_key_index_1.0.0.json"),
+}
+
 REMOTES = {
     "keys": download_utils.RemoteFileMetadata(
         filename="keys.zip",
@@ -276,12 +283,14 @@ class Dataset(core.Dataset):
     The beatport_key dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="beatport_key",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
@@ -326,6 +335,7 @@ class Dataset(core.Dataset):
         download_utils.downloader(
             self.data_home,
             remotes=self.remotes,
+            index=self._index_data,
             partial_download=partial_download,
             force_overwrite=force_overwrite,
             cleanup=cleanup,

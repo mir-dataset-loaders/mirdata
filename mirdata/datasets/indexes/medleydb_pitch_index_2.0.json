@@ -1,0 +1,1041 @@
+{
+  "version": "2.0",
+  "tracks": {
+    "AClassicEducation_NightOwl_STEM_08": {
+      "audio": [
+        "audio/AClassicEducation_NightOwl_STEM_08.wav",
+        "6cfb976517cf377863ba0ef6c66c6a07"
+      ],
+      "pitch": [
+        "pitch/AClassicEducation_NightOwl_STEM_08.csv",
+        "67009ae37766c37d3c29146bf763e06d"
+      ]
+    },
+    "AClassicEducation_NightOwl_STEM_13": {
+      "audio": [
+        "audio/AClassicEducation_NightOwl_STEM_13.wav",
+        "a897c9b59f3159a63563403b0f9401a9"
+      ],
+      "pitch": [
+        "pitch/AClassicEducation_NightOwl_STEM_13.csv",
+        "3f7909e6c250bce8b2a7e8af1c4edccf"
+      ]
+    },
+    "AimeeNorwich_Child_STEM_04": {
+      "audio": [
+        "audio/AimeeNorwich_Child_STEM_04.wav",
+        "f849c1a9a5b7c70fa45351f15c69dc9c"
+      ],
+      "pitch": [
+        "pitch/AimeeNorwich_Child_STEM_04.csv",
+        "42eaeff581199be7499055c6b5c85b7e"
+      ]
+    },
+    "AimeeNorwich_Flying_STEM_15": {
+      "audio": [
+        "audio/AimeeNorwich_Flying_STEM_15.wav",
+        "553cee76c1a0a6b3b16731e72101a99c"
+      ],
+      "pitch": [
+        "pitch/AimeeNorwich_Flying_STEM_15.csv",
+        "2614139342adf239c85bde946a27d34a"
+      ]
+    },
+    "AlexanderRoss_GoodbyeBolero_STEM_06": {
+      "audio": [
+        "audio/AlexanderRoss_GoodbyeBolero_STEM_06.wav",
+        "c82e8c7151397911625d428231b368e1"
+      ],
+      "pitch": [
+        "pitch/AlexanderRoss_GoodbyeBolero_STEM_06.csv",
+        "fc409d5dbf04f6df39658e957d72251d"
+      ]
+    },
+    "AlexanderRoss_VelvetCurtain_STEM_06": {
+      "audio": [
+        "audio/AlexanderRoss_VelvetCurtain_STEM_06.wav",
+        "f7db5d7ec986c5c57984f72d27311903"
+      ],
+      "pitch": [
+        "pitch/AlexanderRoss_VelvetCurtain_STEM_06.csv",
+        "94fdc67c488a9e268abd5b715cb7b123"
+      ]
+    },
+    "Auctioneer_OurFutureFaces_STEM_08": {
+      "audio": [
+        "audio/Auctioneer_OurFutureFaces_STEM_08.wav",
+        "343ef57863af55cc1da9c4d9555199ec"
+      ],
+      "pitch": [
+        "pitch/Auctioneer_OurFutureFaces_STEM_08.csv",
+        "d84258893aa417bd371fc238b7b6c74d"
+      ]
+    },
+    "AvaLuna_Waterduct_STEM_08": {
+      "audio": [
+        "audio/AvaLuna_Waterduct_STEM_08.wav",
+        "4b7a3e616edd531c764f6beb1b24c849"
+      ],
+      "pitch": [
+        "pitch/AvaLuna_Waterduct_STEM_08.csv",
+        "2febe0faa8856c98c377dfd1b394a46a"
+      ]
+    },
+    "BigTroubles_Phantom_STEM_04": {
+      "audio": [
+        "audio/BigTroubles_Phantom_STEM_04.wav",
+        "bcbe20673bc6f386468beed74f3385b6"
+      ],
+      "pitch": [
+        "pitch/BigTroubles_Phantom_STEM_04.csv",
+        "a7cefcd765082922a77ecd692bac9733"
+      ]
+    },
+    "BrandonWebster_YesSirICanFly_STEM_02": {
+      "audio": [
+        "audio/BrandonWebster_YesSirICanFly_STEM_02.wav",
+        "11ce60acc8fef6ff82eacc97d7fe7076"
+      ],
+      "pitch": [
+        "pitch/BrandonWebster_YesSirICanFly_STEM_02.csv",
+        "c4e574e6b5749fb82129534944438f32"
+      ]
+    },
+    "CelestialShore_DieForUs_STEM_01": {
+      "audio": [
+        "audio/CelestialShore_DieForUs_STEM_01.wav",
+        "358a7b6a4a94c2228d5aedf9376b9a7b"
+      ],
+      "pitch": [
+        "pitch/CelestialShore_DieForUs_STEM_01.csv",
+        "4983e091c38076e8a0398a6b1724c7a1"
+      ]
+    },
+    "CelestialShore_DieForUs_STEM_02": {
+      "audio": [
+        "audio/CelestialShore_DieForUs_STEM_02.wav",
+        "4489c64791e743898e4c8d5998de1393"
+      ],
+      "pitch": [
+        "pitch/CelestialShore_DieForUs_STEM_02.csv",
+        "96d8c962dd9e4d9176ecfd7197fad5b4"
+      ]
+    },
+    "ClaraBerryAndWooldog_AirTraffic_STEM_08": {
+      "audio": [
+        "audio/ClaraBerryAndWooldog_AirTraffic_STEM_08.wav",
+        "45b5449106e587071aaab916ac19a441"
+      ],
+      "pitch": [
+        "pitch/ClaraBerryAndWooldog_AirTraffic_STEM_08.csv",
+        "82b2b4bf5eaac9e6d4f900ba42bd48c2"
+      ]
+    },
+    "ClaraBerryAndWooldog_Stella_STEM_07": {
+      "audio": [
+        "audio/ClaraBerryAndWooldog_Stella_STEM_07.wav",
+        "b563be86b43819cdf5a078d8b7039f96"
+      ],
+      "pitch": [
+        "pitch/ClaraBerryAndWooldog_Stella_STEM_07.csv",
+        "a70e1867c6d4350b9bde8742d1d6b878"
+      ]
+    },
+    "ClaraBerryAndWooldog_WaltzForMyVictims_STEM_05": {
+      "audio": [
+        "audio/ClaraBerryAndWooldog_WaltzForMyVictims_STEM_05.wav",
+        "8d19f40edbd5feffc0e02875a38efb51"
+      ],
+      "pitch": [
+        "pitch/ClaraBerryAndWooldog_WaltzForMyVictims_STEM_05.csv",
+        "f10e643fded96304995efda7c7689528"
+      ]
+    },
+    "Creepoid_OldTree_STEM_07": {
+      "audio": [
+        "audio/Creepoid_OldTree_STEM_07.wav",
+        "41addb979f518e74727069a8ed66d427"
+      ],
+      "pitch": [
+        "pitch/Creepoid_OldTree_STEM_07.csv",
+        "fdb0a226895beafab319e095ce2a3216"
+      ]
+    },
+    "Creepoid_OldTree_STEM_08": {
+      "audio": [
+        "audio/Creepoid_OldTree_STEM_08.wav",
+        "7594c0b4712709b3e9003b59670bf5a3"
+      ],
+      "pitch": [
+        "pitch/Creepoid_OldTree_STEM_08.csv",
+        "5581f66044e32a964dc470b55fdec2c8"
+      ]
+    },
+    "DreamersOfTheGhetto_HeavyLove_STEM_06": {
+      "audio": [
+        "audio/DreamersOfTheGhetto_HeavyLove_STEM_06.wav",
+        "66be93e0879915549b5dc2e157799490"
+      ],
+      "pitch": [
+        "pitch/DreamersOfTheGhetto_HeavyLove_STEM_06.csv",
+        "afda5c05dfccca806f2df7d7d2b6f03b"
+      ]
+    },
+    "EthanHein_1930sSynthAndUprightBass_STEM_04": {
+      "audio": [
+        "audio/EthanHein_1930sSynthAndUprightBass_STEM_04.wav",
+        "e71ac034e53cd79bc4dcacfae9bd66a5"
+      ],
+      "pitch": [
+        "pitch/EthanHein_1930sSynthAndUprightBass_STEM_04.csv",
+        "58a51a24cf5f1526358b8c211ba6e5ab"
+      ]
+    },
+    "FacesOnFilm_WaitingForGa_STEM_03": {
+      "audio": [
+        "audio/FacesOnFilm_WaitingForGa_STEM_03.wav",
+        "db5373705a86589641e02555928a6035"
+      ],
+      "pitch": [
+        "pitch/FacesOnFilm_WaitingForGa_STEM_03.csv",
+        "3f3dc0cb3d8dea7bc5f741757209544d"
+      ]
+    },
+    "HeladoNegro_MitadDelMundo_STEM_08": {
+      "audio": [
+        "audio/HeladoNegro_MitadDelMundo_STEM_08.wav",
+        "7183633917b96d99b7fc2f3f64151752"
+      ],
+      "pitch": [
+        "pitch/HeladoNegro_MitadDelMundo_STEM_08.csv",
+        "53e3d9acb87969d9d3c734a27c2fc582"
+      ]
+    },
+    "HezekiahJones_BorrowedHeart_STEM_04": {
+      "audio": [
+        "audio/HezekiahJones_BorrowedHeart_STEM_04.wav",
+        "36eb526376ccac4774b1fb7af71aad92"
+      ],
+      "pitch": [
+        "pitch/HezekiahJones_BorrowedHeart_STEM_04.csv",
+        "378e06910b64dff1f24a7e4220091ec4"
+      ]
+    },
+    "HezekiahJones_BorrowedHeart_STEM_10": {
+      "audio": [
+        "audio/HezekiahJones_BorrowedHeart_STEM_10.wav",
+        "4567afb06d4adb83a2073b30674a4057"
+      ],
+      "pitch": [
+        "pitch/HezekiahJones_BorrowedHeart_STEM_10.csv",
+        "acbdb093406e100954594b560d63a917"
+      ]
+    },
+    "HopAlong_SisterCities_STEM_07": {
+      "audio": [
+        "audio/HopAlong_SisterCities_STEM_07.wav",
+        "1bb97ef5c521b2763f089568ca288043"
+      ],
+      "pitch": [
+        "pitch/HopAlong_SisterCities_STEM_07.csv",
+        "f08351cfd78fc789ebed8c2ff40835a3"
+      ]
+    },
+    "InvisibleFamiliars_DisturbingWildlife_STEM_09": {
+      "audio": [
+        "audio/InvisibleFamiliars_DisturbingWildlife_STEM_09.wav",
+        "703e846bfd2cca550fb87354d482121e"
+      ],
+      "pitch": [
+        "pitch/InvisibleFamiliars_DisturbingWildlife_STEM_09.csv",
+        "b3da6064d296abb1cc85b85de1b8932f"
+      ]
+    },
+    "LizNelson_Coldwar_STEM_02": {
+      "audio": [
+        "audio/LizNelson_Coldwar_STEM_02.wav",
+        "2edd1f516ee5db93566ef0f4d6ecb4fe"
+      ],
+      "pitch": [
+        "pitch/LizNelson_Coldwar_STEM_02.csv",
+        "c6e2743b5792f30ac80c3a1382e1d5bc"
+      ]
+    },
+    "LizNelson_Rainfall_STEM_01": {
+      "audio": [
+        "audio/LizNelson_Rainfall_STEM_01.wav",
+        "0716f51d5a4362447759be2507883c10"
+      ],
+      "pitch": [
+        "pitch/LizNelson_Rainfall_STEM_01.csv",
+        "ca6660bc478374c1f7d42d3812cc159f"
+      ]
+    },
+    "Lushlife_ToynbeeSuite_STEM_04": {
+      "audio": [
+        "audio/Lushlife_ToynbeeSuite_STEM_04.wav",
+        "e0dd8517bcf6b3f8caa5454694dd51ea"
+      ],
+      "pitch": [
+        "pitch/Lushlife_ToynbeeSuite_STEM_04.csv",
+        "8e32a6ec565a0bedaa0dd39ecdebd2bf"
+      ]
+    },
+    "MatthewEntwistle_DontYouEver_STEM_07": {
+      "audio": [
+        "audio/MatthewEntwistle_DontYouEver_STEM_07.wav",
+        "1e060756f2db4cf0ffab9e797424eeed"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_DontYouEver_STEM_07.csv",
+        "3387017d1b2fea8bff71e965eacc9b1d"
+      ]
+    },
+    "MatthewEntwistle_FairerHopes_STEM_11": {
+      "audio": [
+        "audio/MatthewEntwistle_FairerHopes_STEM_11.wav",
+        "3311bfe1fcd2dcf85eb50a068fa17081"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_FairerHopes_STEM_11.csv",
+        "1086a2dbed2f0f7fceb467d3404e9abb"
+      ]
+    },
+    "MatthewEntwistle_FairerHopes_STEM_14": {
+      "audio": [
+        "audio/MatthewEntwistle_FairerHopes_STEM_14.wav",
+        "4e61de47ef80e475e07544e30fc7232b"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_FairerHopes_STEM_14.csv",
+        "fb51697dd75c70c4a8f5f95fc0494837"
+      ]
+    },
+    "MatthewEntwistle_ImpressionsOfSaturn_STEM_01": {
+      "audio": [
+        "audio/MatthewEntwistle_ImpressionsOfSaturn_STEM_01.wav",
+        "7bcf70a50f79ee5a428373227d3a6caf"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_ImpressionsOfSaturn_STEM_01.csv",
+        "f6df7f650ee3fb902661ad083dec7317"
+      ]
+    },
+    "MatthewEntwistle_ImpressionsOfSaturn_STEM_07": {
+      "audio": [
+        "audio/MatthewEntwistle_ImpressionsOfSaturn_STEM_07.wav",
+        "5edc0f77b56b7aff80921a72df544362"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_ImpressionsOfSaturn_STEM_07.csv",
+        "49995bac39c621440e24775659afa50d"
+      ]
+    },
+    "MatthewEntwistle_ImpressionsOfSaturn_STEM_08": {
+      "audio": [
+        "audio/MatthewEntwistle_ImpressionsOfSaturn_STEM_08.wav",
+        "1df5462e92b6ddde72053532b901e11f"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_ImpressionsOfSaturn_STEM_08.csv",
+        "bfcf4902b07d687834022fc9487a1e1a"
+      ]
+    },
+    "MatthewEntwistle_ImpressionsOfSaturn_STEM_09": {
+      "audio": [
+        "audio/MatthewEntwistle_ImpressionsOfSaturn_STEM_09.wav",
+        "ab6c2e93c71b45f855efdc88428812f6"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_ImpressionsOfSaturn_STEM_09.csv",
+        "43edf6bfa1e475d9a5cc3f6b6842726f"
+      ]
+    },
+    "MatthewEntwistle_TheArch_STEM_10": {
+      "audio": [
+        "audio/MatthewEntwistle_TheArch_STEM_10.wav",
+        "37cf610ee337857801bfb33720f415eb"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_TheArch_STEM_10.csv",
+        "466597ee7ca8d4825a338448ca9289f9"
+      ]
+    },
+    "MatthewEntwistle_TheFlaxenField_STEM_01": {
+      "audio": [
+        "audio/MatthewEntwistle_TheFlaxenField_STEM_01.wav",
+        "f1d8f83966e2209d1d0d03d2bfea4e56"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_TheFlaxenField_STEM_01.csv",
+        "5b2ac43eae27f1deb3e0c16d9c46bb2b"
+      ]
+    },
+    "MatthewEntwistle_TheFlaxenField_STEM_02": {
+      "audio": [
+        "audio/MatthewEntwistle_TheFlaxenField_STEM_02.wav",
+        "e34f00c57c8aa7546a9f01780a6b01c3"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_TheFlaxenField_STEM_02.csv",
+        "dc34cee640373af52b0b214c8e45ef61"
+      ]
+    },
+    "MatthewEntwistle_TheFlaxenField_STEM_04": {
+      "audio": [
+        "audio/MatthewEntwistle_TheFlaxenField_STEM_04.wav",
+        "bce47c9de7986dd59d7cb9f80bff3845"
+      ],
+      "pitch": [
+        "pitch/MatthewEntwistle_TheFlaxenField_STEM_04.csv",
+        "952ebd26fd7d89081163edda09f9d103"
+      ]
+    },
+    "Meaxic_TakeAStep_STEM_04": {
+      "audio": [
+        "audio/Meaxic_TakeAStep_STEM_04.wav",
+        "828a86a38d8fef5b2789f18cba1517c4"
+      ],
+      "pitch": [
+        "pitch/Meaxic_TakeAStep_STEM_04.csv",
+        "a79f2d6f50e3491ff1062a24d39afe59"
+      ]
+    },
+    "Meaxic_YouListen_STEM_01": {
+      "audio": [
+        "audio/Meaxic_YouListen_STEM_01.wav",
+        "717ac83b8042a23d974df3ac758b9fe1"
+      ],
+      "pitch": [
+        "pitch/Meaxic_YouListen_STEM_01.csv",
+        "bf4d17dabd6bb0d6a2559c471f2b49bb"
+      ]
+    },
+    "MusicDelta_80sRock_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_80sRock_STEM_04.wav",
+        "4243f3a4f2bfe398fce87b19fa63db76"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_80sRock_STEM_04.csv",
+        "c2fc510b0d4634adb46ef8c805c7ae9c"
+      ]
+    },
+    "MusicDelta_Beatles_STEM_07": {
+      "audio": [
+        "audio/MusicDelta_Beatles_STEM_07.wav",
+        "5d7da5636c51a08b0d416b8acbe7fb4f"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Beatles_STEM_07.csv",
+        "492966cb5ace26a19f995c96898af9f5"
+      ]
+    },
+    "MusicDelta_Beatles_STEM_08": {
+      "audio": [
+        "audio/MusicDelta_Beatles_STEM_08.wav",
+        "a022380eb6beaec66f3bba9bfc8a7f31"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Beatles_STEM_08.csv",
+        "2a1a896bde2b40b1bcb1a4b45b5e5b52"
+      ]
+    },
+    "MusicDelta_BebopJazz_STEM_02": {
+      "audio": [
+        "audio/MusicDelta_BebopJazz_STEM_02.wav",
+        "36e52e52160bb9922029932b1c7d3ec7"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_BebopJazz_STEM_02.csv",
+        "3c5b84ae2872826c5cc0511e9950899f"
+      ]
+    },
+    "MusicDelta_BebopJazz_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_BebopJazz_STEM_04.wav",
+        "127aebd1ba0da87d9ff3f5368a450ade"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_BebopJazz_STEM_04.csv",
+        "688495d83e5e53be573c2439635b5ad2"
+      ]
+    },
+    "MusicDelta_BebopJazz_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_BebopJazz_STEM_05.wav",
+        "f3775784e2a659071410c988f7d707e8"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_BebopJazz_STEM_05.csv",
+        "147376733e0b0aaa16ba2280c22d08c8"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_06": {
+      "audio": [
+        "audio/MusicDelta_Beethoven_STEM_06.wav",
+        "44ecf13971048db049b6b5906edcdd9e"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Beethoven_STEM_06.csv",
+        "c9cf042054f836d5d9adefc819db63a6"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_08": {
+      "audio": [
+        "audio/MusicDelta_Beethoven_STEM_08.wav",
+        "54bffce53367aa7b24abdc4b2ae70461"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Beethoven_STEM_08.csv",
+        "cbaec2b97cc257293a434a340fa2edb9"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_10": {
+      "audio": [
+        "audio/MusicDelta_Beethoven_STEM_10.wav",
+        "937d47baba86beb790a49dbc81daaca1"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Beethoven_STEM_10.csv",
+        "a3100a6be06be3953748fe5e64e03a14"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_14": {
+      "audio": [
+        "audio/MusicDelta_Beethoven_STEM_14.wav",
+        "adc49960f7ffa01506f06839710510ea"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Beethoven_STEM_14.csv",
+        "3e8ca418f74d5f555876d94687cc603e"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_16": {
+      "audio": [
+        "audio/MusicDelta_Beethoven_STEM_16.wav",
+        "4c03f55577306cc6e18aa1e93df0da74"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Beethoven_STEM_16.csv",
+        "9f544fa72b8bcb31111abdfaa1d08061"
+      ]
+    },
+    "MusicDelta_Britpop_STEM_07": {
+      "audio": [
+        "audio/MusicDelta_Britpop_STEM_07.wav",
+        "f756042d1a23a794988849df09fa3a6c"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Britpop_STEM_07.csv",
+        "4fb7e57a9cc4d7012854f318f0fe365d"
+      ]
+    },
+    "MusicDelta_Britpop_STEM_08": {
+      "audio": [
+        "audio/MusicDelta_Britpop_STEM_08.wav",
+        "a2d782e9639a988bf0bb1259e0f5b62f"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Britpop_STEM_08.csv",
+        "fa2383fca861a090f0ff3ed640c98c89"
+      ]
+    },
+    "MusicDelta_ChineseChaoZhou_STEM_01": {
+      "audio": [
+        "audio/MusicDelta_ChineseChaoZhou_STEM_01.wav",
+        "2bb85118e323ccb7133b094dcbd2bf05"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseChaoZhou_STEM_01.csv",
+        "928c8aec30ac923de498949ba4f70569"
+      ]
+    },
+    "MusicDelta_ChineseChaoZhou_STEM_02": {
+      "audio": [
+        "audio/MusicDelta_ChineseChaoZhou_STEM_02.wav",
+        "25171177caa16b8c34a66710be90df43"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseChaoZhou_STEM_02.csv",
+        "ffa5da8e9a859e5ceacd142649f14e6e"
+      ]
+    },
+    "MusicDelta_ChineseDrama_STEM_01": {
+      "audio": [
+        "audio/MusicDelta_ChineseDrama_STEM_01.wav",
+        "efc796c834d0af20fd5a746fce0bf1f8"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseDrama_STEM_01.csv",
+        "ae1c98c839559b9df0a10aafcd6714c7"
+      ]
+    },
+    "MusicDelta_ChineseDrama_STEM_02": {
+      "audio": [
+        "audio/MusicDelta_ChineseDrama_STEM_02.wav",
+        "f50dbbde87afe7db1a316aa57a6d6de7"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseDrama_STEM_02.csv",
+        "26bd226c4b094991a99d99b1095c1be3"
+      ]
+    },
+    "MusicDelta_ChineseHenan_STEM_01": {
+      "audio": [
+        "audio/MusicDelta_ChineseHenan_STEM_01.wav",
+        "7c672b0b99ea6abbe9d58556caaaabd5"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseHenan_STEM_01.csv",
+        "7827748ed1f083158b59765c6d452281"
+      ]
+    },
+    "MusicDelta_ChineseHenan_STEM_02": {
+      "audio": [
+        "audio/MusicDelta_ChineseHenan_STEM_02.wav",
+        "28332c453e31236340e0a1fa67c98bf4"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseHenan_STEM_02.csv",
+        "f03cbbcebd06be55e2f8adb48dddd310"
+      ]
+    },
+    "MusicDelta_ChineseJiangNan_STEM_01": {
+      "audio": [
+        "audio/MusicDelta_ChineseJiangNan_STEM_01.wav",
+        "c3c3b9edbe03ebd753010cd7c8264cb9"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseJiangNan_STEM_01.csv",
+        "f6ec5d3f4b971684ee5088713c37daf7"
+      ]
+    },
+    "MusicDelta_ChineseXinJing_STEM_01": {
+      "audio": [
+        "audio/MusicDelta_ChineseXinJing_STEM_01.wav",
+        "46ad88fc47e1373e8247c2d8d2e740af"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseXinJing_STEM_01.csv",
+        "f021a44107de71621be6b5121d33d998"
+      ]
+    },
+    "MusicDelta_ChineseYaoZu_STEM_01": {
+      "audio": [
+        "audio/MusicDelta_ChineseYaoZu_STEM_01.wav",
+        "ed20146ed10c0814d6241cdbc8e492eb"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseYaoZu_STEM_01.csv",
+        "68dfdfee255199317235364f8dfc4efd"
+      ]
+    },
+    "MusicDelta_ChineseYaoZu_STEM_02": {
+      "audio": [
+        "audio/MusicDelta_ChineseYaoZu_STEM_02.wav",
+        "45a661e724b94f49aad929f4c701b8ef"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ChineseYaoZu_STEM_02.csv",
+        "d9a4ae7eb85f837270ce2674402a2f65"
+      ]
+    },
+    "MusicDelta_CoolJazz_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_CoolJazz_STEM_04.wav",
+        "1dfccb1973adc5f68d2f9a9bb39d5446"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_CoolJazz_STEM_04.csv",
+        "d4c16ca2a3c489513449f54ee3a3fd11"
+      ]
+    },
+    "MusicDelta_CoolJazz_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_CoolJazz_STEM_05.wav",
+        "db1d5e8dfc01170da77f7a52730cbe44"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_CoolJazz_STEM_05.csv",
+        "e5c56003e06c7d25bd90bf17d7daa8b5"
+      ]
+    },
+    "MusicDelta_Country1_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_Country1_STEM_05.wav",
+        "af1a0ae27aff9c5484306165b96d216f"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Country1_STEM_05.csv",
+        "18dd75ba7e0e5d712cec9c4ef46945bd"
+      ]
+    },
+    "MusicDelta_Country2_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_Country2_STEM_05.wav",
+        "21389b5e33307227c970b2721a538cf2"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Country2_STEM_05.csv",
+        "7932a9548ece732347ebc4f402c13687"
+      ]
+    },
+    "MusicDelta_Disco_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_Disco_STEM_04.wav",
+        "3cea8e5056312ab22dfa0b6da5cfd002"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Disco_STEM_04.csv",
+        "24a2f87909f3f4c7f4500764129a7c3b"
+      ]
+    },
+    "MusicDelta_FreeJazz_STEM_03": {
+      "audio": [
+        "audio/MusicDelta_FreeJazz_STEM_03.wav",
+        "bec210bb5c3a0f3c74b3d4f664870482"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_FreeJazz_STEM_03.csv",
+        "7865d20293aeccc560e35bb2e96eda3c"
+      ]
+    },
+    "MusicDelta_FunkJazz_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_FunkJazz_STEM_04.wav",
+        "985e73ed82217b916d980b227c651445"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_FunkJazz_STEM_04.csv",
+        "66580eea34a6827703a582b931be7921"
+      ]
+    },
+    "MusicDelta_FusionJazz_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_FusionJazz_STEM_05.wav",
+        "b9ab1e8533aed75d7538ce97ca5b1d62"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_FusionJazz_STEM_05.csv",
+        "bec89aff9cc2ca7afdb6e3d70f378838"
+      ]
+    },
+    "MusicDelta_FusionJazz_STEM_06": {
+      "audio": [
+        "audio/MusicDelta_FusionJazz_STEM_06.wav",
+        "01df46f42d6c1686b73046498750d7aa"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_FusionJazz_STEM_06.csv",
+        "34d6b852b020653c864545757e66b634"
+      ]
+    },
+    "MusicDelta_Gospel_STEM_06": {
+      "audio": [
+        "audio/MusicDelta_Gospel_STEM_06.wav",
+        "21df91fb5186e3bb29b3c2b7bf7de79c"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Gospel_STEM_06.csv",
+        "8bf7d5ded39d945be8aba31f980da3ec"
+      ]
+    },
+    "MusicDelta_GriegTrolltog_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_GriegTrolltog_STEM_05.wav",
+        "c63fb4fab3666a1970fc556355ad6233"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_GriegTrolltog_STEM_05.csv",
+        "64e12db603c44a1c20167d92199dd8a6"
+      ]
+    },
+    "MusicDelta_GriegTrolltog_STEM_07": {
+      "audio": [
+        "audio/MusicDelta_GriegTrolltog_STEM_07.wav",
+        "b1f8f5b6467a8b4f57f3938f4d8be939"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_GriegTrolltog_STEM_07.csv",
+        "9f33994ae64e95adf6f060ca2cd60d30"
+      ]
+    },
+    "MusicDelta_Grunge_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_Grunge_STEM_05.wav",
+        "d1a32ffc5ac8cae4562aa850d0f249f7"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Grunge_STEM_05.csv",
+        "a04fe626b9136b33494f54386870d8c7"
+      ]
+    },
+    "MusicDelta_Hendrix_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_Hendrix_STEM_04.wav",
+        "5e1dbac3f05d018616c6df34d3ff1ec4"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Hendrix_STEM_04.csv",
+        "9b1bf38201ea1ad87c6f5290440521e2"
+      ]
+    },
+    "MusicDelta_LatinJazz_STEM_01": {
+      "audio": [
+        "audio/MusicDelta_LatinJazz_STEM_01.wav",
+        "0357bf20cb4489444e9e1931212784d0"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_LatinJazz_STEM_01.csv",
+        "74a5b37b9581c236310ee19f0be69e80"
+      ]
+    },
+    "MusicDelta_LatinJazz_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_LatinJazz_STEM_04.wav",
+        "ec97df30a2fe81e6625fe309b964100e"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_LatinJazz_STEM_04.csv",
+        "c7dde35b6823df57d794c285016e400b"
+      ]
+    },
+    "MusicDelta_LatinJazz_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_LatinJazz_STEM_05.wav",
+        "df9bfe9b5142972ac87df56a5654aa67"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_LatinJazz_STEM_05.csv",
+        "c8a8aba15983eb273697be5ee2805a7d"
+      ]
+    },
+    "MusicDelta_ModalJazz_STEM_02": {
+      "audio": [
+        "audio/MusicDelta_ModalJazz_STEM_02.wav",
+        "90d8d2463525ad2c3eeeccb3968ce9ef"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ModalJazz_STEM_02.csv",
+        "4ebf85e23909854682f110af45ad58c2"
+      ]
+    },
+    "MusicDelta_ModalJazz_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_ModalJazz_STEM_04.wav",
+        "67b5279d56862d043dfdfc1d14f6e531"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ModalJazz_STEM_04.csv",
+        "a5d16cd5524e1a7955c7ad68366b7d52"
+      ]
+    },
+    "MusicDelta_ModalJazz_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_ModalJazz_STEM_05.wav",
+        "6e695da16648f50727455cf060ba7f49"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_ModalJazz_STEM_05.csv",
+        "126c47c21b6c001fdec97df820c209d6"
+      ]
+    },
+    "MusicDelta_Pachelbel_STEM_01": {
+      "audio": [
+        "audio/MusicDelta_Pachelbel_STEM_01.wav",
+        "8a14aaf2f5b7addb942d147fbf7ac4a2"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Pachelbel_STEM_01.csv",
+        "6c34a3916b40fd994224f5d8d2e9a400"
+      ]
+    },
+    "MusicDelta_Pachelbel_STEM_03": {
+      "audio": [
+        "audio/MusicDelta_Pachelbel_STEM_03.wav",
+        "171fdcfc3111b4aa753c3b476efcd7b2"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Pachelbel_STEM_03.csv",
+        "00c562df60ff69d7d638d1c57e485fcc"
+      ]
+    },
+    "MusicDelta_Pachelbel_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_Pachelbel_STEM_04.wav",
+        "44105a43c17854395ed8ad9955cb86b3"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Pachelbel_STEM_04.csv",
+        "876ef7d758a854a094fc1a2c8e28946b"
+      ]
+    },
+    "MusicDelta_Punk_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_Punk_STEM_04.wav",
+        "e374acdaca5d43a1f4fdf33e65253aa9"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Punk_STEM_04.csv",
+        "d43173595896c1236a7faa96732abcb9"
+      ]
+    },
+    "MusicDelta_Reggae_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_Reggae_STEM_04.wav",
+        "6a6b4aacc7c1e626cf1fa425ad2c4397"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Reggae_STEM_04.csv",
+        "fc025b0ee4b30abc7edd83cded106352"
+      ]
+    },
+    "MusicDelta_Rock_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_Rock_STEM_05.wav",
+        "eaf78805716719b38c546f7f44a9c349"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Rock_STEM_05.csv",
+        "cd74878db4818b3b9de89fb6f731940b"
+      ]
+    },
+    "MusicDelta_Rockabilly_STEM_05": {
+      "audio": [
+        "audio/MusicDelta_Rockabilly_STEM_05.wav",
+        "6c803976a800bf8d85bf9ccc42e7daf7"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_Rockabilly_STEM_05.csv",
+        "5051a2646df3bd27edf2ce0df81e83e9"
+      ]
+    },
+    "MusicDelta_SwingJazz_STEM_04": {
+      "audio": [
+        "audio/MusicDelta_SwingJazz_STEM_04.wav",
+        "eb0a9b3671485b7631b77504a27cd713"
+      ],
+      "pitch": [
+        "pitch/MusicDelta_SwingJazz_STEM_04.csv",
+        "977d69466c1dcbc3a3c31ec8476e7335"
+      ]
+    },
+    "NightPanther_Fire_STEM_07": {
+      "audio": [
+        "audio/NightPanther_Fire_STEM_07.wav",
+        "2d7ddf410fe49bec268156e9ea6c41f1"
+      ],
+      "pitch": [
+        "pitch/NightPanther_Fire_STEM_07.csv",
+        "f389de689f801018028900c81d24a36b"
+      ]
+    },
+    "PortStWillow_StayEven_STEM_08": {
+      "audio": [
+        "audio/PortStWillow_StayEven_STEM_08.wav",
+        "507b5fbc0c435905526a98a6ee6a65a7"
+      ],
+      "pitch": [
+        "pitch/PortStWillow_StayEven_STEM_08.csv",
+        "d4559e2e67a7bff47dc380317e19e1c7"
+      ]
+    },
+    "SecretMountains_HighHorse_STEM_01": {
+      "audio": [
+        "audio/SecretMountains_HighHorse_STEM_01.wav",
+        "9c3d5ba35940ff0f7e244f5fb7f15605"
+      ],
+      "pitch": [
+        "pitch/SecretMountains_HighHorse_STEM_01.csv",
+        "d16c51983c26853c26d047565c7b6d00"
+      ]
+    },
+    "SecretMountains_HighHorse_STEM_09": {
+      "audio": [
+        "audio/SecretMountains_HighHorse_STEM_09.wav",
+        "e215e7ce192359ca2400158b73d91a0c"
+      ],
+      "pitch": [
+        "pitch/SecretMountains_HighHorse_STEM_09.csv",
+        "e69820824e8db0544e8c0ed040354d76"
+      ]
+    },
+    "StevenClark_Bounty_STEM_08": {
+      "audio": [
+        "audio/StevenClark_Bounty_STEM_08.wav",
+        "8ba00432bc4085ba14da30546b5b658d"
+      ],
+      "pitch": [
+        "pitch/StevenClark_Bounty_STEM_08.csv",
+        "dba30c0c950e3c94366839302c47fe10"
+      ]
+    },
+    "StrandOfOaks_Spacestation_STEM_04": {
+      "audio": [
+        "audio/StrandOfOaks_Spacestation_STEM_04.wav",
+        "14024c4b488fe0ac230db23283915264"
+      ],
+      "pitch": [
+        "pitch/StrandOfOaks_Spacestation_STEM_04.csv",
+        "016b00e3dd92090d2a6c8d108f0c25b5"
+      ]
+    },
+    "SweetLights_YouLetMeDown_STEM_02": {
+      "audio": [
+        "audio/SweetLights_YouLetMeDown_STEM_02.wav",
+        "1816b57f5de2374dc761366f85a30144"
+      ],
+      "pitch": [
+        "pitch/SweetLights_YouLetMeDown_STEM_02.csv",
+        "a22bed48f03cbd5491a7d13e43522fc6"
+      ]
+    },
+    "SweetLights_YouLetMeDown_STEM_08": {
+      "audio": [
+        "audio/SweetLights_YouLetMeDown_STEM_08.wav",
+        "b147a1d6f6770db5a354514a01133d5c"
+      ],
+      "pitch": [
+        "pitch/SweetLights_YouLetMeDown_STEM_08.csv",
+        "e4aa22f4b0b7810454cb724af000a17b"
+      ]
+    },
+    "TheDistricts_Vermont_STEM_05": {
+      "audio": [
+        "audio/TheDistricts_Vermont_STEM_05.wav",
+        "3c21a392e52891608c9a28c0381626a5"
+      ],
+      "pitch": [
+        "pitch/TheDistricts_Vermont_STEM_05.csv",
+        "e075b16541eee6209193acb4c1c69916"
+      ]
+    },
+    "TheScarletBrand_LesFleursDuMal_STEM_08": {
+      "audio": [
+        "audio/TheScarletBrand_LesFleursDuMal_STEM_08.wav",
+        "1909f06ce7f5e10786a2c39b2bcb5615"
+      ],
+      "pitch": [
+        "pitch/TheScarletBrand_LesFleursDuMal_STEM_08.csv",
+        "8e1457e3198140a106ad3507eda8c408"
+      ]
+    },
+    "TheSoSoGlos_Emergency_STEM_05": {
+      "audio": [
+        "audio/TheSoSoGlos_Emergency_STEM_05.wav",
+        "bccab18743da34aef7bb212d283ea914"
+      ],
+      "pitch": [
+        "pitch/TheSoSoGlos_Emergency_STEM_05.csv",
+        "babc78dc810c9f90993f55d7909115cb"
+      ]
+    }
+  },
+  "metadata": {
+    "medleydb_pitch_metadata": [
+      "medleydb_pitch_metadata.json",
+      "0507b05c14549beccf17ba04d02f50aa"
+    ]
+  }
+}

@@ -79,6 +79,12 @@ BIBTEX = """
 }
 """
 
+INDEXES = {
+    "default": "1",
+    "test": "1",
+    "1": core.Index(filename="phenicx_anechoic_index_1.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="PHENICX-Anechoic.zip",
@@ -414,13 +420,15 @@ class Dataset(core.Dataset):
     The Phenicx-Anechoic dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="phenicx_anechoic",
             track_class=Track,
             multitrack_class=MultiTrack,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
