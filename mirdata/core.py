@@ -4,7 +4,8 @@ import json
 import os
 import random
 import types
-from typing import Any
+from typing import Any, List, Optional
+
 
 import numpy as np
 
@@ -668,7 +669,30 @@ class MultiTrack(Track):
 
 
 class Index(object):
-    def __init__(self, filename, url=None, checksum=None, partial_download=None):
+    """Class for storing information about dataset indexes.
+
+    Args:
+        filename (str): The index filename (not path), e.g. "example_dataset_index_1.2.json"
+        url (str or None): None if index is not remote, or a url to download from
+        checksum (str or None): None if index is not remote, or the md5 checksum of the file
+        partial_download (list or None): if provided, specifies a subset of Dataset.remotes
+            corresponding to this index to be downloaded. If None, all Dataset.remotes will
+            be downloaded when calling Dataset.download()
+
+    Attributes:
+        remote (download_utils.RemoteFileMetadata or None): None if index is not remote, or
+            a RemoteFileMetadata object
+        partial_download (list or None): a list of keys to partially download, or None
+
+    """
+
+    def __init__(
+        self,
+        filename: str,
+        url: Optional[str] = None,
+        checksum: Optional[str] = None,
+        partial_download: Optional[List[str]] = None,
+    ):
         self.filename = filename
         if url and checksum:
             self.remote = download_utils.RemoteFileMetadata(
@@ -686,7 +710,15 @@ class Index(object):
 
         self.partial_download = partial_download
 
-    def get_path(self, data_home):
+    def get_path(self, data_home: str) -> str:
+        """Get the absolute path to the index file
+
+        Args:
+            data_home (str): Path where the dataset's data lives
+
+        Returns:
+            str: absolute path to the index file
+        """
         # if the index is downloaded from remote, it is in the same folder
         # as the data
         if self.remote:
