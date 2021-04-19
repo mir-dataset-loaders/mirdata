@@ -694,6 +694,7 @@ class Index(object):
         partial_download: Optional[List[str]] = None,
     ):
         self.filename = filename
+        self.remote: Optional[download_utils.RemoteFileMetadata]
         if url and checksum:
             self.remote = download_utils.RemoteFileMetadata(
                 filename=filename,
