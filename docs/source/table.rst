@@ -127,10 +127,9 @@
    * - Good Sounds
      - - audio: : ✅
        - annotations: ✅
-     - - `sounds <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
-       - `takes <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
-       - `packs <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
-       - `ratings <https://mirdata.readthedocs.io/en/latest/source/mirdata.html#module-mirdata.datasets.good_sounds>`_
+     - - instrument :ref:`instrument`
+       - sound quality metadata
+       - instrument metadata
      - 16308
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0

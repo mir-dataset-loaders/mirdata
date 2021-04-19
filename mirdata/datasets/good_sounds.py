@@ -140,8 +140,7 @@ class Track(core.Track):
         audio_path (str): Path to the audio file
 
     Cached Properties:
-        audio (tuple):
-        ratings_info (dict):  Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first
+        ratings_info (dict):  Some musicians self-rated some sounds in a 0-10 goodness scale for the user evaluation of the first
             project prototype. Please read the paper for more detailed information.
         pack_info (dict):
         sound_info (dict): The entity containing the sounds annotations.
