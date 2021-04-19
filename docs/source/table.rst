@@ -127,7 +127,7 @@
    * - Good Sounds
      - - audio: : ✅
        - annotations: ✅
-     - - instrument :ref:`instrument`
+     - - instrument :ref:`instruments`
        - sound quality metadata
        - instrument metadata
      - 16308
