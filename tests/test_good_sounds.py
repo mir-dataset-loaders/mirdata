@@ -17,10 +17,10 @@ def test_track():
 
     expected_property_types = {
         "audio": tuple,
-        "get_pack_info": dict,
-        "get_ratings_info": list,
-        "get_sound_info": dict,
-        "get_take_info": dict,
+        "pack_info": dict,
+        "ratings_info": list,
+        "sound_info": dict,
+        "take_info": dict,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -79,10 +79,10 @@ def test_track_properties_and_attributes():
         "name": "flute_almudena_reference",
         "description": "Play reference notes",
     }
-    assert track.get_sound_info == ground_truth_sound
-    assert track.get_take_info == ground_truth_take
-    assert track.get_pack_info == ground_truth_pack
-    assert track.get_ratings_info == ground_truth_ratings
+    assert track.sound_info == ground_truth_sound
+    assert track.take_info == ground_truth_take
+    assert track.pack_info == ground_truth_pack
+    assert track.ratings_info == ground_truth_ratings
 
 
 def test_to_jams():

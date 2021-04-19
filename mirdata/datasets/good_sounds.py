@@ -121,7 +121,7 @@ REMOTES = {
         checksum="318e840031397314907e7f9420f2abeb",
         destination_dir=".",
     ),
-    "all": download_utils.RemoteFileMetadata(
+    "audios": download_utils.RemoteFileMetadata(
         filename="good-sounds.zip",
         url="https://zenodo.org/record/820937/files/good-sounds.zip?download=1",
         checksum="2137bbb2d32c1d60aa51e1301225f541",
@@ -137,16 +137,15 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
-        track_id (str): track id of the track
         audio_path (str): Path to the audio file
 
     Cached Properties:
         audio (tuple):
-        get_ratings_info (dict):  Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first
+        ratings_info (dict):  Some musicians rated some sounds in a 0-10 goodness scale for the user evaluation of the first
             project prototype. Please read the paper for more detailed information.
-        get_pack_info (dict):
-        get_sound_info (dict): The entity containing the sounds annotations.
-        get_take_info (dict): A sound can have several takes as some of them were recorded using different microphones at the same
+        pack_info (dict):
+        sound_info (dict): The entity containing the sounds annotations.
+        take_info (dict): A sound can have several takes as some of them were recorded using different microphones at the same
             time. Each take has an associated audio file.
     """
 
@@ -181,19 +180,19 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @core.cached_property
-    def get_sound_info(self) -> dict:
+    def sound_info(self) -> dict:
         return self._metadata()["sounds"][
             str(self._metadata()["takes"][self.track_id]["sound_id"])
         ]
 
     @core.cached_property
-    def get_take_info(self) -> dict:
+    def take_info(self) -> dict:
         take_info = self._metadata()["takes"][self.track_id]
         take_info["filename"] = self.audio_path
         return take_info
 
     @core.cached_property
-    def get_ratings_info(self) -> list:
+    def ratings_info(self) -> list:
         sound_id = str(self._metadata()["takes"][self.track_id]["sound_id"])
         return list(
             filter(
@@ -203,7 +202,7 @@ class Track(core.Track):
         )
 
     @core.cached_property
-    def get_pack_info(self) -> dict:
+    def pack_info(self) -> dict:
         return self._metadata()["packs"][
             str(
                 self._metadata()["sounds"][
@@ -217,10 +216,10 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             metadata={
-                "sound": self.get_sound_info,
-                "take": self.get_take_info,
-                "ratings": self.get_ratings_info,
-                "pack": self.get_pack_info,
+                "sound": self.sound_info,
+                "take": self.take_info,
+                "ratings": self.ratings_info,
+                "pack": self.pack_info,
             },
         )
 
@@ -253,7 +252,6 @@ class Dataset(core.Dataset):
             track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
-            download_info="",
             license_info="Creative Commons Attribution Share Alike 4.0 International.",
         )
 
