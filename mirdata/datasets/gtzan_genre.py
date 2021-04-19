@@ -34,6 +34,13 @@ BIBTEX = """@article{tzanetakis2002gtzan,
   journal={Music Analysis, Retrieval and Synthesis for Audio Signals},
   year={2002}
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="gtzan_genre_index_1.0.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="genres.tar.gz",
@@ -133,12 +140,14 @@ class Dataset(core.Dataset):
     The gtzan_genre dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="gtzan_genre",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

@@ -56,6 +56,18 @@ BIBTEX = """
   organization={International Society for Music Information Retrieval (ISMIR)}
 }
 """
+
+INDEXES = {
+    "default": "1.0",
+    "test": "sample",
+    "1.0": core.Index(
+        filename="acousticbrainz_genre_index_1.0.json",
+        url="https://zenodo.org/record/4698408/files/acousticbrainz_genre_index_1.0.json.zip?download=1",
+        checksum="ee2837b04d8dd6ab0507f5b975314b7e",
+    ),
+    "sample": core.Index(filename="acousticbrainz_genre_index_sample.json"),
+}
+
 REMOTES = {
     "index": download_utils.RemoteFileMetadata(
         filename="acousticbrainz_genre_index.json.zip",
@@ -388,15 +400,16 @@ class Dataset(core.Dataset):
     The acousticbrainz genre dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name=NAME,
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
-            custom_index_path="acousticbrainz_genre_index.json",
         )
 
     @core.copy_docs(load_extractor)

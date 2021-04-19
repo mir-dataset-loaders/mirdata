@@ -56,6 +56,11 @@ booktitle = "Proc. of the IEEE Int. Conf. on Acoustics, Speech and Signal Proces
 year = "2020" }
 """
 
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="freesound_one_shot_percussive_sounds_index_1.0.json"),
+}
 
 REMOTES = {
     "audio": download_utils.RemoteFileMetadata(
@@ -248,12 +253,14 @@ class Dataset(core.Dataset):
     The Freesound One-Shot Percussive Sounds dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="freesound_one_shot_percussive_sounds",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

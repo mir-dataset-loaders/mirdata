@@ -70,6 +70,13 @@ BIBTEX = """@inproceedings{goto2002rwc,
   year={2002},
   series={ISMIR},
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="rwc_jazz_index_1.0.json"),
+}
+
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
         filename="master.zip",
@@ -220,12 +227,14 @@ class Dataset(core.Dataset):
     The rwc_jazz dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="rwc_jazz",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

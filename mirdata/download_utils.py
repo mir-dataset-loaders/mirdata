@@ -43,6 +43,7 @@ class RemoteFileMetadata(object):
 def downloader(
     save_dir,
     remotes=None,
+    index=None,
     partial_download=None,
     info_message=None,
     force_overwrite=False,
@@ -56,9 +57,12 @@ def downloader(
         remotes (dict or None):
             A dictionary of RemoteFileMetadata tuples of data in zip format.
             If None, there is no data to download
+        index (core.Index):
+            A mirdata Index class, which may contain a remote index to be downloaded
+            or a subset of remotes to download by default.
         partial_download (list or None):
             A list of keys to partially download the remote objects of the download dict.
-            If None, all data is downloaded
+            If None, all data specified by the index is downloaded
         info_message (str or None):
             A string of info to log when this function is called.
             If None, no string is logged.
@@ -71,14 +75,27 @@ def downloader(
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
+    if not index:
+        raise ValueError("Index must be specified.")
+
     if cleanup:
         logging.warning(
             "Zip and tar files will be deleted after they are uncompressed. "
             + "If you download this dataset again, it will overwrite existing files, even if force_overwrite=False"
         )
 
-    if remotes is not None:
-        if partial_download is not None:
+    if index.remote:
+        # add index to remotes
+        if not remotes:
+            remotes = {}
+        remotes["index"] = index.remote
+
+    # if partial download is specified, use it. Otherwise, use the
+    # partial download specified by the index.
+    partial_download = partial_download if partial_download else index.partial_download
+
+    if remotes:
+        if partial_download:
             # check the keys in partial_download are in the download dict
             if not isinstance(partial_download, list) or any(
                 [k not in remotes for k in partial_download]
