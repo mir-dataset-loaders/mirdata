@@ -41,6 +41,12 @@ BIBTEX = """
   url={https://doi.org/10.5281/zenodo.1095630}
 }"""
 
+INDEXES = {
+    "default": "1.3",
+    "test": "1.3",
+    "1.3": core.Index(filename="haydn_op20_index_1.3.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="haydnop20v1.3_annotated.zip",
@@ -343,12 +349,13 @@ class Dataset(core.Dataset):
     The haydn op20 dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
             name="haydn_op20",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
