@@ -279,7 +279,7 @@ You may find these examples useful as references:
     - `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
     - `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
     - `A dataset with extra dependencies <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/dali.py>`_
-    - `A dataset which has multitracks <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/phenicx_anechoic.py>`_
+    - `A dataset with has multitracks <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/phenicx_anechoic.py>`_
 
 For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
 
@@ -693,9 +693,10 @@ We use the following libraries for loading data from files:
 +-------------------------+-------------+
 | jams                    | jams        |
 +-------------------------+-------------+
+| yaml                    | pyyaml      |
++-------------------------+-------------+
 
-If a file format needed for a dataset is not included in this list, please see the extra dependencies section.
-# TODO
+If a file format needed for a dataset is not included in this list, please see `this section <extra_dependencies_>`_
 
 Track Attributes
 ----------------
