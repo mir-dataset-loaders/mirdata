@@ -98,13 +98,13 @@ class Track(core.Track):
             - rater: the musician who rated the sound.
         pack_info (dict): A dictionary containing the entity Pack. A pack is a group of sounds from the same recording
             session. The audio files are organised in the sound_files directory in subfolders with the pack name to which
-            they belong. The following metadata is associated with the entity Pack:
+            they belong. The following metadata is associated with the entity Pack.
                 - id
                 - name
                 - description
         sound_info (dict): A dictionary containing the entity Sound. A sound can have several takes as some of them were
             recorded using different microphones at the same time. Each take has an associated audio file. The following
-            metadata is associated with the entity Sound:
+            metadata is associated with the entity Sound.
                 - id
                 - microphone
                 - filename: the name of the associated audio file
@@ -114,7 +114,7 @@ class Track(core.Track):
                 - goodsound_id: for some of the sounds available in good-sounds.org
         take_info (dict): A dictionary containing the entity Take. A sound can have several takes as some of them were
             recorded using different microphones at the same time. Each take has an associated audio file.
-            The annotations:
+            The annotations.
                 * id
                 * instrument: flute, cello, clarinet, trumpet, violin, sax_alto, sax_tenor, sax_baritone, sax_soprano, oboe,
                     piccolo, bass
