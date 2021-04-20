@@ -21,6 +21,11 @@ def test_track():
         "ratings_info": list,
         "sound_info": dict,
         "take_info": dict,
+        "microphone": str,
+        "instrument": str,
+        "klass": str,
+        "semitone": int,
+        "pitch_reference": int,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -83,7 +88,11 @@ def test_track_properties_and_attributes():
     assert track.take_info == ground_truth_take
     assert track.pack_info == ground_truth_pack
     assert track.ratings_info == ground_truth_ratings
-
+    assert track.microphone == "akg"
+    assert track.instrument == "akg"
+    assert track.klass == "good-sound"
+    assert track.semitone == 48
+    assert track.pitch_reference == 442
 
 def test_to_jams():
     default_trackid = "1"
@@ -138,3 +147,8 @@ def test_to_jams():
     assert jam["sandbox"].take == ground_truth_take
     assert jam["sandbox"].pack == ground_truth_pack
     assert jam["sandbox"].ratings == ground_truth_ratings
+    assert jam["sandbox"].microphone == "akg"
+    assert jam["sandbox"].instrument == "flute"
+    assert jam["sandbox"].klass == "good-sound"
+    assert jam["sandbox"].semitone == 48
+    assert jam["sandbox"].pitch_reference == 442
