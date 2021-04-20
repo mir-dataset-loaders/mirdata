@@ -99,9 +99,9 @@ class Track(core.Track):
         pack_info (dict): A dictionary containing the entity Pack. A pack is a group of sounds from the same recording
             session. The audio files are organised in the sound_files directory in subfolders with the pack name to which
             they belong. The following metadata is associated with the entity Pack.
-                - id
-                - name
-                - description
+            - id
+            - name
+            - description
         sound_info (dict): A dictionary containing the entity Sound. A sound can have several takes as some of them were
             recorded using different microphones at the same time. Each take has an associated audio file. The following
             metadata is associated with the entity Sound.
@@ -116,8 +116,7 @@ class Track(core.Track):
             recorded using different microphones at the same time. Each take has an associated audio file.
             The annotations.
             * id
-            * instrument: flute, cello, clarinet, trumpet, violin, sax_alto, sax_tenor, sax_baritone, sax_soprano, oboe,
-                piccolo, bass
+            * instrument: flute, cello, clarinet, trumpet, violin, sax_alto, sax_tenor, sax_baritone, sax_soprano, oboe, piccolo, bass
             * note
             * octave
             * dynamics: for some sounds, the musical notation of the loudness level (p, mf, f..)
@@ -147,6 +146,7 @@ class Track(core.Track):
             * comments: if any
             * semitone: midi note
             * pitch_reference: the reference pitch
+
     """
 
     def __init__(
