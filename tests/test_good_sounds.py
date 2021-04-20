@@ -89,7 +89,7 @@ def test_track_properties_and_attributes():
     assert track.pack_info == ground_truth_pack
     assert track.ratings_info == ground_truth_ratings
     assert track.microphone == "akg"
-    assert track.instrument == "akg"
+    assert track.instrument == "flute"
     assert track.klass == "good-sound"
     assert track.semitone == 48
     assert track.pitch_reference == 442
