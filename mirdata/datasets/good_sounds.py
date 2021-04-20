@@ -223,23 +223,23 @@ class Track(core.Track):
 
     @core.cached_property
     def microphone(self) -> str:
-        return self.take_info['microphone']
+        return self.take_info["microphone"]
 
     @core.cached_property
     def instrument(self) -> str:
-        return self.sound_info['instrument']
+        return self.sound_info["instrument"]
 
     @core.cached_property
     def klass(self) -> str:
-        return self.sound_info['klass']\
+        return self.sound_info["klass"]
 
     @core.cached_property
     def semitone(self) -> str:
-        return self.sound_info['semitone']
+        return self.sound_info["semitone"]
 
     @core.cached_property
     def pitch_reference(self) -> str:
-        return self.sound_info['pitch_reference']
+        return self.sound_info["pitch_reference"]
 
     def to_jams(self):
         # Initialize top-level JAMS container

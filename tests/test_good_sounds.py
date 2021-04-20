@@ -94,6 +94,7 @@ def test_track_properties_and_attributes():
     assert track.semitone == 48
     assert track.pitch_reference == 442
 
+
 def test_to_jams():
     default_trackid = "1"
     data_home = "tests/resources/mir_datasets/good_sounds"
