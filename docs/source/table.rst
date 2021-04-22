@@ -124,6 +124,16 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
+   * - Good Sounds
+     - - audio: : ✅
+       - annotations: ✅
+     - - instrument :ref:`instruments`
+       - sound quality metadata
+       - instrument metadata
+     - 16308
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
    * - Groove MIDI
      - - audio: ✅
        - midi: ✅
