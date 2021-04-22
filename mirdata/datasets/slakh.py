@@ -21,16 +21,15 @@
     For more information see http://www.slakh.com/
 
 """
-import csv
-import logging
-import json
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
+import pretty_midi
+import yaml
 
-from mirdata import download_utils, jams_utils, core, annotations
+from mirdata import io, download_utils, jams_utils, core, annotations
 
 BIBTEX = """
 @inproceedings{manilow2019cutting,
@@ -45,47 +44,58 @@ BIBTEX = """
 INDEXES = {
     "default": "2100-redux",
     "test": "baby",
-    "2100-redux": core.Index(filename="slakh_index_2100-redux.json", partial_download=['2100-redux']),
-    "baby": core.Index(filename="slakh_index_baby.json", partial_download=['baby'])
+    "2100-redux": core.Index(
+        filename="slakh_index_2100-redux.json", partial_download=["2100-redux"]
+    ),
+    "baby": core.Index(filename="slakh_index_baby.json", partial_download=["baby"]),
 }
 
 REMOTES = {
-    '2100-redux': download_utils.RemoteFileMetadata(
-        filename='slakh2100_flac_redux.tar.gz',
-        url='https://zenodo.org/record/4599666/files/slakh2100_flac_redux.tar.gz?download=1',
-        checksum='f4b71b6c45ac9b506f59788456b3f0c4',
+    "2100-redux": download_utils.RemoteFileMetadata(
+        filename="slakh2100_flac_redux.tar.gz",
+        url="https://zenodo.org/record/4599666/files/slakh2100_flac_redux.tar.gz?download=1",
+        checksum="f4b71b6c45ac9b506f59788456b3f0c4",
     ),
-    'baby': download_utils.RemoteFileMetadata(
-        filename='babyslakh_16k.tar.gz',
-        url='https://zenodo.org/record/4603870/files/babyslakh_16k.tar.gz?download=1',
-        checksum='311096dc2bde7d61c97e930edbfc7f78',
-    )
+    "baby": download_utils.RemoteFileMetadata(
+        filename="babyslakh_16k.tar.gz",
+        url="https://zenodo.org/record/4603870/files/babyslakh_16k.tar.gz?download=1",
+        checksum="311096dc2bde7d61c97e930edbfc7f78",
+    ),
 }
 
 LICENSE_INFO = """
 Creative Commons Attribution 4.0 International
 """
 
+SPLITS = ["train", "validation", "test"]
+
 
 class Track(core.Track):
-    """slakh track class
-    # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
-    # -- `scripts/print_track_docstring.py my_dataset`
-    # -- note that you'll first need to have a test track (see "Adding tests to your dataset" below)
-
-    Args:
-        track_id (str): track id of the track
+    """slakh Track class
 
     Attributes:
+        audio_path (str): path to the track's audio file
+        data_split (str or None): one of 'train', 'validation', or 'test'
+        metadata_path (str): path to the multitrack's metadata file
+        midi_path (str): path to the track's midi file
+        mtrack_id (str): the track's multitrack id
         track_id (str): track id
-        # -- Add any of the dataset specific attributes here
+        instrument (str): MIDI instrument class
+        integrated_loudness (float): integrated loudness (dB) of this track
+            as calculated by the ITU-R BS.1770-4 spec
+        is_drum (bool): whether the "drum" flag is true for this MIDI track
+        midi_program_name (str): MIDI instrument program name
+        plugin_name (str): patch/plugin name that rendered the audio file
+        program_number (int): MIDI instrument program number
 
     Cached Properties:
-        annotation (EventData): a description of this annotation
+        midi (PrettyMIDI): midi data used to generate the audio
+        notes (NoteData): note representation of the midi data
 
     """
+
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
-        
+
         super().__init__(
             track_id,
             data_home,
@@ -93,131 +103,172 @@ class Track(core.Track):
             index=index,
             metadata=metadata,
         )
-        
+
         self.mtrack_id = self.track_id.split("-")[0]
         self.audio_path = self.get_path("audio")
         self.midi_path = self.get_path("midi")
         self.metadata_path = self.get_path("metadata")
 
+        # split (train/validation/test) is part of the relative filepath in the index
+        self.data_split = None  # for baby_slakh, there are no data splits - set to None
+        if index["version"] == "2100-redux":
+            self.data_split = self._track_paths["audio"][0].split(os.sep)[0]
+            assert self.data_split in SPLITS
+
     @core.cached_property
-    def _track_metadata(self):
-        with open(self.metadata_path, 'r') as fhandle:
+    def _track_metadata(self) -> dict:
+        with open(self.metadata_path, "r") as fhandle:
             metadata = yaml.safe_load(fhandle)
         return metadata["stems"][self.track_id.split("-")[1]]
 
     @property
-    def instrument(self):
-        return self._track_metadata["inst_class"]
-    
-    @property
-    def integrated_loudness(self):
-        return self._track_metadata["integrated_loudness"]
-    
-    @property
-    def is_drum(self):
-        return self._track_metadata["is_drum"]
+    def instrument(self) -> Optional[str]:
+        return self._track_metadata.get("inst_class")
 
     @property
-    def midi_program_name(self):
-        return self._track_metadata["midi_program_name"]
+    def integrated_loudness(self) -> Optional[float]:
+        return self._track_metadata.get("integrated_loudness")
 
     @property
-    def plugin_name(self):
-        return self._track_metadata["plugin_name"]
+    def is_drum(self) -> Optional[bool]:
+        return self._track_metadata.get("is_drum")
 
     @property
-    def program_number(self):
-        return self._track_metadata["program_num"]
+    def midi_program_name(self) -> Optional[str]:
+        return self._track_metadata.get("midi_program_name")
 
-    @core.cached_property
-    def midi(self) -> Optional[pretty_midi.PrettyMidi]:
-        """output type: description of output"""
-        return load_midi(self.midi_path)
+    @property
+    def plugin_name(self) -> Optional[str]:
+        return self._track_metadata.get("plugin_name")
+
+    @property
+    def program_number(self) -> Optional[int]:
+        return self._track_metadata.get("program_num")
 
     @core.cached_property
-    def notes(self) -> Optional[annotations.NoteData]:
-        """output type: description of output"""
-        return load_notes(self.midi_path)
+    def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
+        return io.load_midi(self.midi_path)
+
+    @core.cached_property
+    def notes(self) -> annotations.NoteData:
+        return io.load_notes_from_midi(self.midi_path, self.midi)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
-    # -- we use the to_jams function to convert all the annotations in the JAMS format.
-    # -- The converter takes as input all the annotations in the proper format (e.g. beats
-    # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
-    # -- object with the annotations.
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            annotation_data=[(self.annotation, None)],
-            metadata=self._metadata,
+            note_data=[(self.notes, "Notes")],
         )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
 
 
-# -- if the dataset contains multitracks, you can define a MultiTrack similar to a Track
-# -- you can delete the block of code below if the dataset has no multitracks
 class MultiTrack(core.MultiTrack):
     """slakh multitrack class
-
-    Args:
-        mtrack_id (str): multitrack id
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/slakh`
 
     Attributes:
         mtrack_id (str): track id
         tracks (dict): {track_id: Track}
-        track_audio_attribute (str): the name of the attribute of Track which
+        track_audio_property (str): the name of the attribute of Track which
             returns the audio to be mixed
-        # -- Add any of the dataset specific attributes here
+        mix_path (str): path to the multitrack mix audio
+        midi_path (str): path to the full midi data used to generate the mixture
+        metadata_path (str): path to the multitrack metadata file
+        data_split (str or None): one of 'train', 'validation', or 'test'
+        uuid (str): File name of the original MIDI file from Lakh, sans extension
+        lakh_midi_dir (str): Path to the original MIDI file from a fresh download of Lakh
+        normalized (bool): whether the mix and stems were normalized according to the ITU-R BS.1770-4 spec
+        overall_gain (float): gain applied to every stem to make sure mixture does not clip when stems are summed
 
     Cached Properties:
-        annotation (EventData): a description of this annotation
+        midi (PrettyMIDI): midi data used to generate the mixture audio
+        notes (NoteData): note representation of the midi data
 
     """
-    def __init__(self, mtrack_id, data_home):
-        self.mtrack_id = mtrack_id
-        self._data_home = data_home
-        # these three attributes below must have exactly these names
-        self.track_ids = [...] # define which track_ids should be part of the multitrack
-        self.tracks = {t: Track(t, self._data_home) for t in self.track_ids}
-        self.track_audio_property = "audio" # the property of Track which returns the relevant audio file for mixing
 
-        # -- optionally add any multitrack specific attributes here
-        self.mix_path = ...  # this can be called whatever makes sense for the datasets
-        self.annotation_path = ...
+    def __init__(
+        self, mtrack_id, data_home, dataset_name, index, track_class, metadata
+    ):
+        super().__init__(
+            mtrack_id=mtrack_id,
+            data_home=data_home,
+            dataset_name=dataset_name,
+            index=index,
+            track_class=track_class,
+            metadata=metadata,
+        )
+        self.mix_path = self.get_path("mix")
+        self.midi_path = self.get_path("midi")
+        self.metadata_path = self.get_path("metadata")
 
-    # -- multitracks can optionally have mix-level cached properties and properties
+        # split (train/validation/test) is determined by the relative filepath in the index
+        self.data_split = None  # for baby_slakh, there are no data splits - set to None
+        if index["version"] == "2100-redux":
+            self.data_split = self._multitrack_paths["mix"][0].split(os.sep)[0]
+            assert self.data_split in SPLITS
+
+    @property
+    def track_audio_property(self) -> str:
+        return "audio"
+
     @core.cached_property
-    def annotation(self) -> Optional[annotations.EventData]:
-        """output type: description of output"""
-        return load_annotation(self.annotation_path)
+    def _multitrack_metadata(self) -> dict:
+        with open(self.metadata_path, "r") as fhandle:
+            metadata = yaml.safe_load(fhandle)
+        return metadata
+
+    @property
+    def uuid(self) -> Optional[str]:
+        return self._multitrack_metadata.get("UUID")
+
+    @property
+    def lakh_midi_dir(self) -> Optional[str]:
+        return self._multitrack_metadata.get("lmd_midi_dir")
+
+    @property
+    def normalized(self) -> Optional[bool]:
+        return self._multitrack_metadata.get("normalized")
+
+    @property
+    def overall_gain(self) -> Optional[float]:
+        return self._multitrack_metadata.get("overall_gain")
+
+    @core.cached_property
+    def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
+        return io.load_midi(self.midi_path)
+
+    @core.cached_property
+    def notes(self) -> annotations.NoteData:
+        return io.load_notes_from_midi(self.midi_path, self.midi)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
-        return load_audio(self.audio_path)
+        """The track's audio
 
-    # -- multitrack classes are themselves Tracks, and also need a to_jams method
-    # -- for any mixture-level annotations
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
+        return load_audio(self.mix_path)
+
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.mix_path,
-            annotation_data=[(self.annotation, None)],
-            ...
+            note_data=[(self.notes, "Notes")],
         )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
 
 
-# -- this decorator allows this function to take a string or an open bytes file as input
-# -- and in either case converts it to an open file handle.
-# -- It also checks if the file exists
-# -- and, if None is passed, None will be returned 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a slakh audio file.
@@ -230,99 +281,34 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         * float - The sample rate of the audio file
 
     """
-    # -- for slakh, the code below. This should be dataset specific!
-    # -- By default we load to mono
-    # -- change this if it doesn't make sense for your dataset.
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=False)
 
 
-# -- Write any necessary loader functions for loading the dataset's data
-
-# -- this decorator allows this function to take a string or an open file as input
-# -- and in either case converts it to an open file handle.
-# -- It also checks if the file exists
-# -- and, if None is passed, None will be returned 
-@io.coerce_to_string_io
-def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
-
-    # -- because of the decorator, the file is already open
-    reader = csv.reader(fhandle, delimiter=' ')
-    intervals = []
-    annotation = []
-    for line in reader:
-        intervals.append([float(line[0]), float(line[1])])
-        annotation.append(line[2])
-
-    annotation_data = annotations.EventData(
-        np.array(intervals), np.array(annotation)
-    )
-    return annotation_data
-
-# -- use this decorator so the docs are complete
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The slakh dataset
-    """
+    """The slakh dataset"""
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
             version,
-            name=NAME,
+            name="slakh",
             track_class=Track,
+            multitrack_class=MultiTrack,
             bibtex=BIBTEX,
             indexes=INDEXES,
             remotes=REMOTES,
-            download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
-    # -- Copy any loaders you wrote that should be part of the Dataset class
-    # -- use this core.copy_docs decorator to copy the docs from the original
-    # -- load_ function
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_annotation)
-    def load_annotation(self, *args, **kwargs):
-        return load_annotation(*args, **kwargs)
+    @core.copy_docs(io.load_midi)
+    def load_midi(self, *args, **kwargs):
+        return io.load_midi(*args, **kwargs)
 
-    # -- if your dataset has a top-level metadata file, write a loader for it here
-    # -- you do not have to include this function if there is no metadata 
-    @core.cached_property
-    def _metadata(self):
-        metadata_path = os.path.join(self.data_home, 'slakh_metadta.csv')
-
-        # load metadata however makes sense for your dataset
-        metadata_path = os.path.join(data_home, 'slakh_metadata.json')
-        with open(metadata_path, 'r') as fhandle:
-            metadata = json.load(fhandle)
-
-        return metadata
-
-    # -- if your dataset needs to overwrite the default download logic, do it here.
-    # -- this function is usually not necessary unless you need very custom download logic
-    def download(
-        self, partial_download=None, force_overwrite=False, cleanup=False
-    ):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files. 
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        # see download_utils.downloader for basic usage - if you only need to call downloader
-        # once, you do not need this function at all.
-        # only write a custom function if you need it!
-
+    @core.copy_docs(io.load_notes_from_midi)
+    def load_notes_from_midi(self, *args, **kwargs):
+        return io.load_notes_from_midi(*args, **kwargs)

@@ -1,9 +1,38 @@
 import tempfile
 from io import BufferedReader, BytesIO, StringIO, TextIOWrapper
 
+import numpy as np
 import pytest
 
 from mirdata import io
+
+
+def test_load_midi():
+    midi_file = (
+        "tests/resources/mir_datasets/maestro/2018/"
+        + "MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi"
+    )
+    midi = io.load_midi(midi_file)
+    assert len(midi.instruments) == 1
+    assert len(midi.instruments[0].notes) == 4197
+
+
+def test_load_notes_from_midi():
+    midi_file = (
+        "tests/resources/mir_datasets/maestro/2018/"
+        + "MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi"
+    )
+    notes_from_file = io.load_notes_from_midi(midi_file)
+    midi = io.load_midi(midi_file)
+    notes_from_midi = io.load_notes_from_midi(midi=midi)
+    for notes in [notes_from_file, notes_from_midi]:
+        expected_intervals = np.array([[0.98307292, 1.80989583], [1.78385417, 1.90625]])
+        assert np.allclose(notes.intervals[0:2], expected_intervals)
+        assert np.allclose(notes.notes[0:2], np.array([391.99543598, 523.2511306]))
+        assert np.allclose(notes.confidence[0:2], np.array([0.40944882, 0.52755906]))
+
+    with pytest.raises(ValueError):
+        io.load_notes_from_midi(None, None)
 
 
 def test_coerce_to_string_with_none():
