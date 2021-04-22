@@ -91,7 +91,7 @@ def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
 
 
 def load_notes_from_midi(
-    midi_path: Optional[Union[str, TextIO]] = None,
+    midi_path: Optional[Union[str, BinaryIO]] = None,
     midi: Optional[pretty_midi.PrettyMIDI] = None,
 ) -> annotations.NoteData:
     """Load note data from a midi file or
@@ -113,7 +113,7 @@ def load_notes_from_midi(
     intervals = []
     pitches = []
     confidence = []
-    for instrument in midi.instruments:
+    for instrument in midi.instruments:  # type: ignore
         for note in instrument.notes:
             intervals.append([note.start, note.end])
             pitches.append(librosa.midi_to_hz(note.pitch))
