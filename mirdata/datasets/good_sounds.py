@@ -42,6 +42,11 @@ BIBTEX = """@inproceedings{romani2015real,
   year={2015},
   organization={Audio Engineering Society}
 }"""
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="good_sounds_index_1.0.json"),
+}
 REMOTES = {
     "packs": download_utils.RemoteFileMetadata(
         filename="packs.json",
@@ -280,12 +285,14 @@ class Dataset(core.Dataset):
     The GOOD-SOUNDS dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="good_sounds",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info="Creative Commons Attribution Share Alike 4.0 International.",
         )
