@@ -482,7 +482,10 @@ In general, if the new library will be useful for many future datasets, we will 
 dependency. If it is specific to one dataset, we will add it as an optional dependency.
 
 To add an optional dependency, add the dataset name as a key in `extras_require` in setup.py,
-and list any additional dependencies. When importing these optional dependencies in the dataset
+and list any additional dependencies. Additionally, mock the dependecies in docs/conf.py
+by adding it to the `autodoc_mock_imports` list.
+
+When importing these optional dependencies in the dataset
 module, use a try/except clause and log instructions if the user hasn't installed the extra
 requriements. 
 
