@@ -64,6 +64,13 @@ BIBTEX = """@inproceedings{cella2020preprint,
   bootktitle={Under review},
   year={2020}
 }"""
+
+INDEXES = {
+    "default": "6.0",
+    "test": "6.0",
+    "6.0": core.Index(filename="tinysol_index_6.0.json"),
+}
+
 REMOTES = {
     "audio": download_utils.RemoteFileMetadata(
         filename="TinySOL.tar.gz",
@@ -219,12 +226,14 @@ class Dataset(core.Dataset):
     The tinysol dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="tinysol",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

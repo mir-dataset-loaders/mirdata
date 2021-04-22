@@ -22,7 +22,7 @@ def list_datasets():
     return DATASETS
 
 
-def initialize(dataset_name, data_home=None):
+def initialize(dataset_name, data_home=None, version="default"):
     """Load a mirdata dataset by name
 
     Example:
@@ -40,6 +40,8 @@ def initialize(dataset_name, data_home=None):
             see mirdata.DATASETS for a complete list of possibilities
         data_home (str or None): path where the data lives. If None
             uses the default location.
+        version (str or None): which version of the dataset to load.
+            If None, the default version is loaded.
 
     Returns:
         Dataset: a mirdata.core.Dataset object
@@ -49,4 +51,5 @@ def initialize(dataset_name, data_home=None):
         raise ValueError("Invalid dataset {}".format(dataset_name))
 
     module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-    return module.Dataset(data_home=data_home)
+
+    return module.Dataset(data_home=data_home, version=version)

@@ -53,6 +53,11 @@ BIBTEX = """@article{gomez2006tonal,
   journal={Department of Information and Communication Technologies},
   year={2006}
 }"""
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="tonality_classicaldb_index_1.0.json"),
+}
 REMOTES = {
     "keys": download_utils.RemoteFileMetadata(
         filename="keys.zip",
@@ -271,12 +276,14 @@ class Dataset(core.Dataset):
     The tonality_classicaldb dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="tonality_classicaldb",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

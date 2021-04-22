@@ -77,6 +77,12 @@ BIBTEX = """
 }
 """
 
+INDEXES = {
+    "default": "7.0",
+    "test": "7.0",
+    "7.0": core.Index(filename="compmusic_jingju_acappella_index_7.0.json"),
+}
+
 REMOTES = {
     "annotation_txt": download_utils.RemoteFileMetadata(
         filename="annotation_txt.zip",
@@ -308,12 +314,14 @@ class Dataset(core.Dataset):
     The compmusic_jingju_acappella dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="compmusic_jingju_acappella",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

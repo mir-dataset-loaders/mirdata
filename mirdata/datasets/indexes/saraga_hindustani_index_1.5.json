@@ -1,0 +1,3677 @@
+{
+  "version": 1.5,
+  "tracks": {
+    "0_Raag_Shree": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Shree by Deborshee Bhattacharya/Raag Shree/Raag Shree.mp3.mp3",
+        "761aaf231aee64e11d38f0b2d8f4f911"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Shree by Deborshee Bhattacharya/Raag Shree/Raag Shree.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Shree by Deborshee Bhattacharya/Raag Shree/Raag Shree.pitch.txt",
+        "c0b05ca5687433eaa0c9b7599d619e01"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Shree by Deborshee Bhattacharya/Raag Shree/Raag Shree.tempo-manual.txt",
+        "2508ac1405d5f3f32f65ae8d9c25a3c2"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Shree by Deborshee Bhattacharya/Raag Shree/Raag Shree.sama-manual.txt",
+        "d9f2bc28be14cf283a151dc2144fe609"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Shree by Deborshee Bhattacharya/Raag Shree/Raag Shree.sections-manual-p.txt",
+        "b2273a21783e77842424a849f097ab6a"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Shree by Deborshee Bhattacharya/Raag Shree/Raag Shree.mphrases-manual.txt",
+        "6beca792fad966578caddcb284f99bb9"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Shree by Deborshee Bhattacharya/Raag Shree/Raag Shree.json",
+        "42c90b4524791720ecea3faafeddd84c"
+      ]
+    },
+    "1_Nirgun_Bhajan": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Nirgun Bhajan/Nirgun Bhajan.mp3.mp3",
+        "6affb9236b82c98ddb39ca776efeb370"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Nirgun Bhajan/Nirgun Bhajan.ctonic.txt",
+        "c772b835ffcd5e5a030909734b51dcfc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Nirgun Bhajan/Nirgun Bhajan.pitch.txt",
+        "f825a2d79db1150fdb590b2f70c44f45"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Nirgun Bhajan/Nirgun Bhajan.tempo-manual.txt",
+        "e914df0598814361091200b7f809a71d"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Nirgun Bhajan/Nirgun Bhajan.sama-manual.txt",
+        "73901432b7ce61b6c37237f4c7429732"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Nirgun Bhajan/Nirgun Bhajan.sections-manual-p.txt",
+        "4a511bace51a226d852ea2253332d031"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Nirgun Bhajan/Nirgun Bhajan.json",
+        "3d6bba5cf24940bafc29e4d139c355d8"
+      ]
+    },
+    "2_Raag_Lagan_Gandhar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Raag Lagan Gandhar/Raag Lagan Gandhar.mp3.mp3",
+        "7fdffa6451a511fc662e71c695603fef"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Raag Lagan Gandhar/Raag Lagan Gandhar.ctonic.txt",
+        "bd1745dc74e6a3d372ed5276adea4ad8"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Raag Lagan Gandhar/Raag Lagan Gandhar.pitch.txt",
+        "06a8a7be515adbc54a34f8e6982683a2"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Raag Lagan Gandhar/Raag Lagan Gandhar.tempo-manual.txt",
+        "35dbb7b035dd3c0f2caa6258de9bb72b"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Raag Lagan Gandhar/Raag Lagan Gandhar.sama-manual.txt",
+        "d867d1a79decfe8700d4992a8ee573cb"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Raag Lagan Gandhar/Raag Lagan Gandhar.sections-manual-p.txt",
+        "d2d3ba045cd28345659fd24ba9ba600b"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Lagan Gandhar & Nirgun Bhajan by Kumar Gandharva/Raag Lagan Gandhar/Raag Lagan Gandhar.json",
+        "2bf483a64bb7ef63d1129cbda9d33cf4"
+      ]
+    },
+    "3_Raag_Dhani": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Dhani/Raag Dhani.mp3.mp3",
+        "489a0cba7b3a978a82ff66b553bad5ac"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Dhani/Raag Dhani.ctonic.txt",
+        "85e73e9aef41510568a7a6a243a431a6"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Dhani/Raag Dhani.pitch.txt",
+        "8e953d5ac52b2142cde0d9a24df1b96d"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Dhani/Raag Dhani.tempo-manual.txt",
+        "b7437aa69a6156241ccc9414264c046a"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Dhani/Raag Dhani.sama-manual.txt",
+        "e1a6eb4d54a098b0ecf8d8f53d2f3f81"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Dhani/Raag Dhani.sections-manual-p.txt",
+        "866683de741614e609d7a3b566bc542d"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Dhani/Raag Dhani.mphrases-manual.txt",
+        "3c7a113cb8f171cf4ce1d653764db1b9"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Dhani/Raag Dhani.json",
+        "bf153b5cace1f21d9564f4a44a50acf6"
+      ]
+    },
+    "4_Raag_Bhimpalasi": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Bhimpalasi/Raag Bhimpalasi.mp3.mp3",
+        "f580ee1db9e82d320de3c7f8809d3e21"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Bhimpalasi/Raag Bhimpalasi.ctonic.txt",
+        "85e73e9aef41510568a7a6a243a431a6"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Bhimpalasi/Raag Bhimpalasi.pitch.txt",
+        "6e3bebee6de8f5cc2775172cc6dfa134"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Bhimpalasi/Raag Bhimpalasi.tempo-manual.txt",
+        "7f959ec8b3bb32b07bf01ac65fbb3a24"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Bhimpalasi/Raag Bhimpalasi.sama-manual.txt",
+        "787262861cf8f510c4d7ff9f01c50621"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Bhimpalasi/Raag Bhimpalasi.sections-manual-p.txt",
+        "0f5c54890e564be3de82e05d9c55fc90"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Bhimpalasi/Raag Bhimpalasi.mphrases-manual.txt",
+        "36c80ec373eb3ae023a8e4dc54721a87"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Bhimpalasi/Raag Bhimpalasi.json",
+        "56fa0309ff98aad44d86f7ce7b95c042"
+      ]
+    },
+    "5_Raag_Kalyan": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Kalyan/Raag Kalyan.mp3.mp3",
+        "4189e6e714aff0458065617479a195a8"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Kalyan/Raag Kalyan.ctonic.txt",
+        "85e73e9aef41510568a7a6a243a431a6"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Kalyan/Raag Kalyan.pitch.txt",
+        "664cf3c75db7bb244f335bface59f974"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Kalyan/Raag Kalyan.tempo-manual.txt",
+        "83bfc6e9befa0d76ba1409b76a1d4b21"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Kalyan/Raag Kalyan.sama-manual.txt",
+        "a0a4ae9746c9ee1680077c8ca5c36807"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Kalyan/Raag Kalyan.sections-manual-p.txt",
+        "0e273426cb9d7eeaf800c9a46dee7935"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Kalyan/Raag Kalyan.mphrases-manual.txt",
+        "3b1c389b73099e80a5f977732e7af399"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Kalyan, Bhimpalasi & Dhani by Satyasheel Deshpande/Raag Kalyan/Raag Kalyan.json",
+        "09632a2ad04b5b83cd8f9dec8c9b8297"
+      ]
+    },
+    "6_Bhairavi_Bhajan": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Bhairavi Bhajan/Bhairavi Bhajan.mp3.mp3",
+        "84a988fc5a6d94b799151a28036a068a"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Bhairavi Bhajan/Bhairavi Bhajan.ctonic.txt",
+        "35ec5f5bae40a4d591418e5c1212680c"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Bhairavi Bhajan/Bhairavi Bhajan.pitch.txt",
+        "b2215f9c3df22d80f4d9bd11039d1485"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Bhairavi Bhajan/Bhairavi Bhajan.tempo-manual.txt",
+        "1f85b62b800965b945f804b492ed7b2d"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Bhairavi Bhajan/Bhairavi Bhajan.sama-manual.txt",
+        "f7e6c271ab79769345f5861d547d616f"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Bhairavi Bhajan/Bhairavi Bhajan.sections-manual-p.txt",
+        "e2c3e68bc922b3ee6302bda679f0407c"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Bhairavi Bhajan/Bhairavi Bhajan.json",
+        "87267431ad2b21654c0a1261ea8f79fa"
+      ]
+    },
+    "7_Raag_Bageshree": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Raag Bageshree/Raag Bageshree.mp3.mp3",
+        "469604cc4f539fd3c1f5998ccdab5958"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Raag Bageshree/Raag Bageshree.ctonic.txt",
+        "35ec5f5bae40a4d591418e5c1212680c"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Raag Bageshree/Raag Bageshree.pitch.txt",
+        "8f5f9d0040dd5c987b81fa178fe67f4b"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Raag Bageshree/Raag Bageshree.tempo-manual.txt",
+        "a6fe4bb7cabb1ec2b02a899cabb825c9"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Raag Bageshree/Raag Bageshree.sama-manual.txt",
+        "a35c40999cbec843d7ce90d2cbd2d380"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Raag Bageshree/Raag Bageshree.sections-manual-p.txt",
+        "f8b00bd522d0abb627ec472aa36a72e3"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bageshree & Bhairavi Bhajan by Satyasheel Deshpande/Raag Bageshree/Raag Bageshree.json",
+        "94aa2b31c01f7154f7151c23071be9b0"
+      ]
+    },
+    "8_Raag_Kedar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Kedar & Jog by Ajoy Chakrabarty/Raag Kedar/Raag Kedar.mp3.mp3",
+        "ebc5c9887d0d82e459aeb9035b6bc8ba"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Kedar & Jog by Ajoy Chakrabarty/Raag Kedar/Raag Kedar.ctonic.txt",
+        "68682ad878bb865f4e9ca9819ccb1201"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Kedar & Jog by Ajoy Chakrabarty/Raag Kedar/Raag Kedar.pitch.txt",
+        "14ac4482171d2a00ac9869856e94d588"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Kedar & Jog by Ajoy Chakrabarty/Raag Kedar/Raag Kedar.json",
+        "7ae96603d5e078b9c52892648d2fa727"
+      ]
+    },
+    "9_Raag_Jog": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Kedar & Jog by Ajoy Chakrabarty/Raag Jog/Raag Jog.mp3.mp3",
+        "6dae3f43d3e1fdbcbda9c418450a230d"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Kedar & Jog by Ajoy Chakrabarty/Raag Jog/Raag Jog.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Kedar & Jog by Ajoy Chakrabarty/Raag Jog/Raag Jog.pitch.txt",
+        "1cf3501e20f6365e4d4b3ec9d3f0ffab"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Kedar & Jog by Ajoy Chakrabarty/Raag Jog/Raag Jog.json",
+        "703d63ec28a55d137fc113ed494c5ab7"
+      ]
+    },
+    "10_Raag_Lalit": {
+      "audio": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Lalit/Raag Lalit.mp3.mp3",
+        "eceb13acfa24edaa35afdba01210fd35"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Lalit/Raag Lalit.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Lalit/Raag Lalit.pitch.txt",
+        "45a26fb70a3a70dfb99bc8a919622406"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Lalit/Raag Lalit.json",
+        "b23da4616bc88ea51e369fee7829e552"
+      ]
+    },
+    "11_Raag_Marwa": {
+      "audio": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Marwa/Raag Marwa.mp3.mp3",
+        "32c29199d69bee815e8ffd1a35596fad"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Marwa/Raag Marwa.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Marwa/Raag Marwa.pitch.txt",
+        "64716465d43920b9c4cca23de8eb1947"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Marwa/Raag Marwa.json",
+        "c76681211b5b6df85378e5b0cfb97d05"
+      ]
+    },
+    "12_Raag_Yaman": {
+      "audio": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Yaman/Raag Yaman.mp3.mp3",
+        "6a6da176a2e5beadb43b405576c4fe08"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Yaman/Raag Yaman.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Yaman/Raag Yaman.pitch.txt",
+        "59c35499740953f9dee941ecca38f798"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Yaman/Raag Yaman.json",
+        "2892743329bf2c19e5777299d5340d6a"
+      ]
+    },
+    "13_Raag_Bilaskhani_Todi": {
+      "audio": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Bilaskhani Todi/Raag Bilaskhani Todi.mp3.mp3",
+        "584fabbc5c485694e21fbb1ccc29d86c"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Bilaskhani Todi/Raag Bilaskhani Todi.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Bilaskhani Todi/Raag Bilaskhani Todi.pitch.txt",
+        "8883ece31a44345acd42aa19497a6d50"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Bilaskhani Todi/Raag Bilaskhani Todi.json",
+        "ca7b3db9ee2d63414dbdecfc8625e047"
+      ]
+    },
+    "14_Raag_Madhukauns": {
+      "audio": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Madhukauns/Raag Madhukauns.mp3.mp3",
+        "be79a2c8e87d6c29c04f39dc144b898d"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Madhukauns/Raag Madhukauns.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Madhukauns/Raag Madhukauns.pitch.txt",
+        "45afda86cdf5df125d13eefc0183e708"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Madhukauns/Raag Madhukauns.json",
+        "820df232ca7bb2f683436e3b85f0060c"
+      ]
+    },
+    "15_Raag_Desh": {
+      "audio": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Desh/Raag Desh.mp3.mp3",
+        "766cd34f02fd915e288fcf0b4ccc13d2"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Desh/Raag Desh.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Desh/Raag Desh.pitch.txt",
+        "fac30fd27a06c3325166f6f6747d8f6d"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Desh/Raag Desh.json",
+        "3795f6ad4f6ab0aa51e81cd212ba8e3b"
+      ]
+    },
+    "16_Raag_Puriya_Dhanashree": {
+      "audio": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Puriya Dhanashree/Raag Puriya Dhanashree.mp3.mp3",
+        "8b1e12eae7507fe1b2a8a911c3dfafc6"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Puriya Dhanashree/Raag Puriya Dhanashree.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Puriya Dhanashree/Raag Puriya Dhanashree.pitch.txt",
+        "e7d7f65dc616c51d400b18193d74af53"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Puriya Dhanashree/Raag Puriya Dhanashree.json",
+        "ef46e5a5730902e0e9bf030e4c694969"
+      ]
+    },
+    "17_Raag_Miyan_Malhar": {
+      "audio": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Miyan Malhar/Raag Miyan Malhar.mp3.mp3",
+        "a6c7511278f46e94ab214385641473c9"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Miyan Malhar/Raag Miyan Malhar.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Miyan Malhar/Raag Miyan Malhar.pitch.txt",
+        "72e4923987c5b9ca71562602c65cdf6d"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Hindustani Alaps by Kaustuv Kanti Ganguli/Raag Miyan Malhar/Raag Miyan Malhar.json",
+        "d7934cda27e12423790d508d8653161b"
+      ]
+    },
+    "18_Raag_Bhairav": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Bhairav/Raag Bhairav.mp3.mp3",
+        "bfdb61473f9190eadac7309edf0126f1"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Bhairav/Raag Bhairav.ctonic.txt",
+        "35b5b420e2335e2c8e561e0eed14133f"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Bhairav/Raag Bhairav.pitch.txt",
+        "fd55b9ae6dc732566d973a79cdbbcc17"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Bhairav/Raag Bhairav.tempo-manual.txt",
+        "afdc2055bceddd0f0a0a8f51c7ee5154"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Bhairav/Raag Bhairav.sama-manual.txt",
+        "d47edeacc67fbce0fb4552a4d51507f5"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Bhairav/Raag Bhairav.sections-manual-p.txt",
+        "e540205ff42d317f36ca10ffbb4b753e"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Bhairav/Raag Bhairav.mphrases-manual.txt",
+        "ed408f34e42a4fd5826e74b2626f9f8c"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Bhairav/Raag Bhairav.json",
+        "4cb4537b7bf9b1e25fbdf7ea36d959aa"
+      ]
+    },
+    "19_Raag_Dhani": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Dhani/Raag Dhani.mp3.mp3",
+        "715a7967b0e7eeada8b4750b347759fe"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Dhani/Raag Dhani.ctonic.txt",
+        "c8cfe7a6ed55a7d24de4af99d907aa5d"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Dhani/Raag Dhani.pitch.txt",
+        "345c55567a7264f24dc9660c91326633"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Dhani/Raag Dhani.tempo-manual.txt",
+        "461430bc5e0fc402068552debf9b3339"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Dhani/Raag Dhani.sama-manual.txt",
+        "1ec5c68348afdb7ec4b1604ecfe15296"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Dhani/Raag Dhani.sections-manual-p.txt",
+        "eeccca46ff6ac07f35796a642871ca37"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Dhani/Raag Dhani.mphrases-manual.txt",
+        "e7aa899f4ee8c864e1c16176ee1bf96f"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhairav & Dhani by Kumar Gandharva/Raag Dhani/Raag Dhani.json",
+        "7fdf9bba19171d6a481ceade1e0056cd"
+      ]
+    },
+    "20_Raag_Abhogi": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Abhogi/Raag Abhogi.mp3.mp3",
+        "469a3a8719110205ae07d6dd8c2a1e0c"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Abhogi/Raag Abhogi.ctonic.txt",
+        "3dd11d0bdcff6e8e98bc503c3753aaa7"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Abhogi/Raag Abhogi.pitch.txt",
+        "d86718d948a6b80ea9c48736ccdbb690"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Abhogi/Raag Abhogi.json",
+        "3ce0a33aa9dd28ae16d1f616c2cd6f14"
+      ]
+    },
+    "21_Raag_Khamaj": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Khamaj/Raag Khamaj.mp3.mp3",
+        "49ace292bea7d6c86da3abf83b78171a"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Khamaj/Raag Khamaj.ctonic.txt",
+        "68682ad878bb865f4e9ca9819ccb1201"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Khamaj/Raag Khamaj.pitch.txt",
+        "8119916b9d99ed7b753a66161b48b903"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Khamaj/Raag Khamaj.json",
+        "d404f063ef8b43da8c35b7e7e86f462f"
+      ]
+    },
+    "22_Raag_Rageshri": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Rageshri/Raag Rageshri.mp3.mp3",
+        "ae7d5a8241de9f0e28721a7aa9734f51"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Rageshri/Raag Rageshri.ctonic.txt",
+        "35ec5f5bae40a4d591418e5c1212680c"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Rageshri/Raag Rageshri.pitch.txt",
+        "98abd5dc99a285bb339e584f44e3d6d3"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Abhogi, Rageshree & Khamaj by Ajoy Chakrabarty/Raag Rageshri/Raag Rageshri.json",
+        "7c891ac4829ea86c136114c9af80d40d"
+      ]
+    },
+    "23_Raag_Mian_Malhar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Mian Malhar/Raag Mian Malhar.mp3.mp3",
+        "a78b1da11039d8f16aaf6893e1b7a2fd"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Mian Malhar/Raag Mian Malhar.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Mian Malhar/Raag Mian Malhar.pitch.txt",
+        "45b668ae28b9698047cbc05ff5a1bc35"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Mian Malhar/Raag Mian Malhar.tempo-manual.txt",
+        "f5ad3623fe12e30318a003acd0119f66"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Mian Malhar/Raag Mian Malhar.sama-manual.txt",
+        "a94af6e6d1f5918f5212c54237d091f3"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Mian Malhar/Raag Mian Malhar.sections-manual-p.txt",
+        "7c794419b3669c5e428361600b14eef9"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Mian Malhar/Raag Mian Malhar.json",
+        "eb39aa9ea0888d3be16b0ccd83955557"
+      ]
+    },
+    "24_Raag_Ramdasi_Malhar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Ramdasi Malhar/Raag Ramdasi Malhar.mp3.mp3",
+        "0da2a17a742d7558c5455632341a3bb9"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Ramdasi Malhar/Raag Ramdasi Malhar.ctonic.txt",
+        "85e73e9aef41510568a7a6a243a431a6"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Ramdasi Malhar/Raag Ramdasi Malhar.pitch.txt",
+        "9705772bf90a3a20fdd8bbecb5620a3f"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Ramdasi Malhar/Raag Ramdasi Malhar.tempo-manual.txt",
+        "b54cddd25778bd6449ad4c390d12122a"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Ramdasi Malhar/Raag Ramdasi Malhar.sama-manual.txt",
+        "37e9ce05ed6d63644a3bf75023308a8c"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Ramdasi Malhar/Raag Ramdasi Malhar.sections-manual-p.txt",
+        "85c501ea5cff000eaa5f240405b693ab"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Deborshee Bhattacharya/Raag Ramdasi Malhar/Raag Ramdasi Malhar.json",
+        "9932b7aa349b8692caa84f568edc7040"
+      ]
+    },
+    "25_Raag_Marwa": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Marwa/Raag Marwa.mp3.mp3",
+        "39ac0b2b9067016a3d67e4e602767603"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Marwa/Raag Marwa.ctonic.txt",
+        "8b55e62dd029952888bba114879f3edf"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Marwa/Raag Marwa.pitch.txt",
+        "bb140b08b20482d27b2d7a979b0da671"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Marwa/Raag Marwa.tempo-manual.txt",
+        "9bfdc8bfea9fd7747b991f630da164da"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Marwa/Raag Marwa.sama-manual.txt",
+        "922f00c42da0f693ec5d0418a2b6c066"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Marwa/Raag Marwa.sections-manual-p.txt",
+        "ad8833789343007c3b7f207e83c8e3d8"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Marwa/Raag Marwa.mphrases-manual.txt",
+        "f015e488eb646942a8ff6ba9e064e084"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Marwa/Raag Marwa.json",
+        "4ddd857929cebdfa50ba5f8ca1091eb1"
+      ]
+    },
+    "26_Raag_Shree": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Shree/Raag Shree.mp3.mp3",
+        "de12b08ef9f4ec49b6c9750a08e58d50"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Shree/Raag Shree.ctonic.txt",
+        "8b55e62dd029952888bba114879f3edf"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Shree/Raag Shree.pitch.txt",
+        "69e82003c1ce18e96584c4be57e8aef0"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Shree/Raag Shree.tempo-manual.txt",
+        "ae1b5eff74e50fe7868d78433536988e"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Shree/Raag Shree.sama-manual.txt",
+        "c1d0dc27071a3ae1a431de280a660579"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Shree/Raag Shree.sections-manual-p.txt",
+        "f896790b6158a2a0c3f966b1715c2904"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Shree/Raag Shree.mphrases-manual.txt",
+        "b0b6d7df8f2626768b23a50f0ccf201b"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Marwa & Shree by Omkar Dadarkar/Raag Shree/Raag Shree.json",
+        "06742e71dad586686973452d1eebfa50"
+      ]
+    },
+    "27_Raag_Bihag": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bihag by Deborshee Bhattacharya/Raag Bihag/Raag Bihag.mp3.mp3",
+        "de1238c7d0f4a90c5ccdc2bc0e96631e"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bihag by Deborshee Bhattacharya/Raag Bihag/Raag Bihag.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bihag by Deborshee Bhattacharya/Raag Bihag/Raag Bihag.pitch.txt",
+        "c44d02e4cb399751b930e8a934132227"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bihag by Deborshee Bhattacharya/Raag Bihag/Raag Bihag.tempo-manual.txt",
+        "e2f2c25af84535d4d3a521e305fb0b98"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bihag by Deborshee Bhattacharya/Raag Bihag/Raag Bihag.sama-manual.txt",
+        "af563aa525a4b5302d0c8edfc17c5f6f"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bihag by Deborshee Bhattacharya/Raag Bihag/Raag Bihag.sections-manual-p.txt",
+        "c1e9bfb00a9b41753b7032f255b8dfbc"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bihag by Deborshee Bhattacharya/Raag Bihag/Raag Bihag.mphrases-manual.txt",
+        "65db32a9cfe499343493acf14f6f67ab"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bihag by Deborshee Bhattacharya/Raag Bihag/Raag Bihag.json",
+        "d6192f542b5078199df27090e94a5846"
+      ]
+    },
+    "28_Raag_Mian_Malhar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Mian Malhar/Raag Mian Malhar.mp3.mp3",
+        "ff8d3ea48e82ee70e66d79ab632e2ce3"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Mian Malhar/Raag Mian Malhar.ctonic.txt",
+        "35ec5f5bae40a4d591418e5c1212680c"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Mian Malhar/Raag Mian Malhar.pitch.txt",
+        "14ac82a80c8ce9c802b1a3978899e592"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Mian Malhar/Raag Mian Malhar.tempo-manual.txt",
+        "82c9e82c0d3051ed636e787d73081582"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Mian Malhar/Raag Mian Malhar.sama-manual.txt",
+        "fdabc5f3d088b5367696fcfd0c52983a"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Mian Malhar/Raag Mian Malhar.sections-manual-p.txt",
+        "8bc50b4e0015a80c056011ca20ed1125"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Mian Malhar/Raag Mian Malhar.json",
+        "566a95b47587e29c1e5826055b9d5dc3"
+      ]
+    },
+    "29_Raag_Ramdasi_Malhar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Ramdasi Malhar/Raag Ramdasi Malhar.mp3.mp3",
+        "f5280e387b3f7079f6ac010a74c4dc99"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Ramdasi Malhar/Raag Ramdasi Malhar.ctonic.txt",
+        "35ec5f5bae40a4d591418e5c1212680c"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Ramdasi Malhar/Raag Ramdasi Malhar.pitch.txt",
+        "8e40ce7673541163dd16b3828816e9cd"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Ramdasi Malhar/Raag Ramdasi Malhar.tempo-manual.txt",
+        "9cc8325322a7a7e0897ce79626fc7b15"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Ramdasi Malhar/Raag Ramdasi Malhar.sama-manual.txt",
+        "e47f25c0540421427d4dacf428d4cc91"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Ramdasi Malhar/Raag Ramdasi Malhar.sections-manual-p.txt",
+        "ef330bd94d6d8cfe92b082751fa5feff"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Mian Malhar & Ramdasi Malhar by Satyasheel Deshpande/Raag Ramdasi Malhar/Raag Ramdasi Malhar.json",
+        "d026a094d841e56d57ac5f650ca50493"
+      ]
+    },
+    "30_Raag_Bahar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Bahar/Raag Bahar.mp3.mp3",
+        "dd9270f8c86a4fe15b544f4f90c4ea38"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Bahar/Raag Bahar.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Bahar/Raag Bahar.pitch.txt",
+        "7ce428f1133a6b5dcc8ed9cbe4eed225"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Bahar/Raag Bahar.tempo-manual.txt",
+        "23ad038bc2f8aa48030b3de50f0f9e46"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Bahar/Raag Bahar.sama-manual.txt",
+        "911b06249f1fc824c297d66694172e80"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Bahar/Raag Bahar.sections-manual-p.txt",
+        "5dd5e1c2b266d414e607dc212ccd9edb"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Bahar/Raag Bahar.mphrases-manual.txt",
+        "0b596d5cff6e0bd92533729af4aa19f4"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Bahar/Raag Bahar.json",
+        "93142a751ac93737d3b13df1084dce8e"
+      ]
+    },
+    "31_Raag_Yaman": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Yaman/Raag Yaman.mp3.mp3",
+        "dc9d86310921ef92b9d02c7d768cb523"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Yaman/Raag Yaman.ctonic.txt",
+        "3e3ba24a513ff4c013456dd0db9926fa"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Yaman/Raag Yaman.pitch.txt",
+        "d14daaf8f8c679bbd3ed97b06eb78be6"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Yaman/Raag Yaman.tempo-manual.txt",
+        "d60b73e3ddf2dd7f869f3634c2f4ba9c"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Yaman/Raag Yaman.sama-manual.txt",
+        "afdb9f616f3f628143ba7e765b6b5f29"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Yaman/Raag Yaman.sections-manual-p.txt",
+        "8720a553d864b8c84d0bbbfdac74424f"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Yaman/Raag Yaman.mphrases-manual.txt",
+        "388418a1dd30a731da8d3282427a2d22"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Yaman/Raag Yaman.json",
+        "7d28b871cf3f888ac2e2d93458f66db6"
+      ]
+    },
+    "32_Raag_Gaud_Malhar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Gaud Malhar/Raag Gaud Malhar.mp3.mp3",
+        "76b48d02c20b0a016ab3706c491695db"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Gaud Malhar/Raag Gaud Malhar.ctonic.txt",
+        "f0fff50a434f6d6acf44c0cf40e466e2"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Gaud Malhar/Raag Gaud Malhar.pitch.txt",
+        "4792c37d621653df684e6235fc602caa"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Gaud Malhar/Raag Gaud Malhar.tempo-manual.txt",
+        "bd1ca59aee672394498ac3876f5f3d82"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Gaud Malhar/Raag Gaud Malhar.sama-manual.txt",
+        "f439249ecb5271a746594294264326bc"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Gaud Malhar/Raag Gaud Malhar.sections-manual-p.txt",
+        "af1ca4849e3e6de58444e77ceec999f5"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Gaud Malhar/Raag Gaud Malhar.mphrases-manual.txt",
+        "04702f69c6e161cc71f037d34487780b"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bahar, Gaud Malhar & Yaman by Omkar Dadarkar/Raag Gaud Malhar/Raag Gaud Malhar.json",
+        "7c820ae5123bf9e25609cf5ed4826101"
+      ]
+    },
+    "33_Raag_Lalit": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Lalit/Raag Lalit.mp3.mp3",
+        "aa7ebca285e8c72f9bf31a08bdb7f591"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Lalit/Raag Lalit.ctonic.txt",
+        "f7746d90fc7c032db1cc575f146ca435"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Lalit/Raag Lalit.pitch.txt",
+        "f4614cd5129c651b8fdc46aa2c2caf5a"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Lalit/Raag Lalit.tempo-manual.txt",
+        "76847e201aa8c37e02c85bc543129bb9"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Lalit/Raag Lalit.sama-manual.txt",
+        "e49b14617be3555f71bcf6f584727df8"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Lalit/Raag Lalit.sections-manual-p.txt",
+        "5bc9e6bf9f791d220a663226a31916e4"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Lalit/Raag Lalit.mphrases-manual.txt",
+        "b0483daeafd02ca1b85814109b1ee122"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Lalit/Raag Lalit.json",
+        "58dd7120bb636713e9042f5bd510e35b"
+      ]
+    },
+    "34_Raag_Bibhas": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Bibhas/Raag Bibhas.mp3.mp3",
+        "4b980597de9831381b0cc9c8f6511ac0"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Bibhas/Raag Bibhas.ctonic.txt",
+        "f7746d90fc7c032db1cc575f146ca435"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Bibhas/Raag Bibhas.pitch.txt",
+        "62f45ceca890082c6e1819ef3e12d585"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Bibhas/Raag Bibhas.tempo-manual.txt",
+        "ee556341c0ffcd3e0ccdb1b4bec814b9"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Bibhas/Raag Bibhas.sama-manual.txt",
+        "2f8d4c21cebe853503ddd7f83d9a01d7"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Bibhas/Raag Bibhas.sections-manual-p.txt",
+        "2dc61fe8acfde9e4550e06893ffdb3ce"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Bibhas/Raag Bibhas.mphrases-manual.txt",
+        "93a8dd89d9d5037d83cfdc9259a0a459"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Lalit & Bibhas by Omkar Dadarkar/Raag Bibhas/Raag Bibhas.json",
+        "7502c3d5fe29443d34969a5394e86ba3"
+      ]
+    },
+    "35_Raag_Lalit_Pancham": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Lalit Pancham/Raag Lalit Pancham.mp3.mp3",
+        "b79f8087b15b14690d545b7bcc080587"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Lalit Pancham/Raag Lalit Pancham.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Lalit Pancham/Raag Lalit Pancham.pitch.txt",
+        "bd5b0c9bb364827712b9aaecf9a78188"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Lalit Pancham/Raag Lalit Pancham.json",
+        "4d7a0bdb787ec8fae35577030b748be2"
+      ]
+    },
+    "36_Bhairavi_Thumri": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.mp3.mp3",
+        "0f3d108090921e451f9c9415059af1cb"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.ctonic.txt",
+        "99f8915c8950e2092524e48535ce1ab3"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.pitch.txt",
+        "d9ac5779d97cdb06ed88c4f0898cd91c"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.json",
+        "29f2d36eaf0735ad2fba2751f282bf2f"
+      ]
+    },
+    "37_Raag_Shree": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.mp3.mp3",
+        "c7bffe800ebb63544e9457dd2197470f"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.pitch.txt",
+        "87b38cd6bfba6520efea28113fab1099"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Shree, Lalit Pancham & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.json",
+        "262740b1884a324d3aa675b66d1a8afd"
+      ]
+    },
+    "38_Raag_Multani": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Multani/Raag Multani.mp3.mp3",
+        "81fb3bb19aba9cfda5a7e84f1ebaaed9"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Multani/Raag Multani.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Multani/Raag Multani.pitch.txt",
+        "9459a27d4be1dcddce16970ea50180c7"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Multani/Raag Multani.tempo-manual.txt",
+        "6fa1952fda43d9226e991cfd6e8ab243"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Multani/Raag Multani.sama-manual.txt",
+        "88e63f989773f2d636761b9a78b7787c"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Multani/Raag Multani.sections-manual-p.txt",
+        "2677e91b8cd941ce009a5b2c43e8957f"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Multani/Raag Multani.mphrases-manual.txt",
+        "d34d23e42201a53c8a79b4886f288a4e"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Multani/Raag Multani.json",
+        "0a8fd48ae1788eda22ba58bb10655fcd"
+      ]
+    },
+    "39_Raag_Bhimpalasi": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Bhimpalasi/Raag Bhimpalasi.mp3.mp3",
+        "faea8d50bd887c950220f1b408d1894b"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Bhimpalasi/Raag Bhimpalasi.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Bhimpalasi/Raag Bhimpalasi.pitch.txt",
+        "3e09717ffabe272c6e634836627a3f4b"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Bhimpalasi/Raag Bhimpalasi.tempo-manual.txt",
+        "a658cce775fa96d6a8f92a1b88c59840"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Bhimpalasi/Raag Bhimpalasi.sama-manual.txt",
+        "27263a72a87a4b4ca51403212370448d"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Bhimpalasi/Raag Bhimpalasi.sections-manual-p.txt",
+        "d9f8e8fcfb3d9b34fbcec334dcc0b3da"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Bhimpalasi/Raag Bhimpalasi.mphrases-manual.txt",
+        "fe3f9a16585f7f4122efa373faf89c01"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhimpalasi & Multani by Omkar Dadarkar/Raag Bhimpalasi/Raag Bhimpalasi.json",
+        "2638288bb15348d6cc453109e30de2ed"
+      ]
+    },
+    "40_Raag_Jog": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Jog & Kirwani Bhajan by Kaustuv Kanti Ganguli/Raag Jog/Raag Jog.mp3.mp3",
+        "2e949d3593a243d7c34a71e398f73c6e"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Jog & Kirwani Bhajan by Kaustuv Kanti Ganguli/Raag Jog/Raag Jog.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Jog & Kirwani Bhajan by Kaustuv Kanti Ganguli/Raag Jog/Raag Jog.pitch.txt",
+        "43fdbe395aeb3f871ae4826215583b50"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Jog & Kirwani Bhajan by Kaustuv Kanti Ganguli/Raag Jog/Raag Jog.json",
+        "71dbcd51b5fc2d2180c5404739ca80f4"
+      ]
+    },
+    "41_Kirwani_Bhajan": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Jog & Kirwani Bhajan by Kaustuv Kanti Ganguli/Kirwani Bhajan/Kirwani Bhajan.mp3.mp3",
+        "d8c4d5f6be92df4044d20d23b76ba2a6"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Jog & Kirwani Bhajan by Kaustuv Kanti Ganguli/Kirwani Bhajan/Kirwani Bhajan.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Jog & Kirwani Bhajan by Kaustuv Kanti Ganguli/Kirwani Bhajan/Kirwani Bhajan.pitch.txt",
+        "5f9f47b7d1402917317b7a11a30c070a"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Jog & Kirwani Bhajan by Kaustuv Kanti Ganguli/Kirwani Bhajan/Kirwani Bhajan.json",
+        "95fb9d59410c516c4dfdfde3405fc447"
+      ]
+    },
+    "42_Raag_Bhatiyar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Bhatiyar/Raag Bhatiyar.mp3.mp3",
+        "4f492c38ce57f5ed77eaeb83ef94ee8b"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Bhatiyar/Raag Bhatiyar.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Bhatiyar/Raag Bhatiyar.pitch.txt",
+        "6f0c0a83e56e31098bc9e2c00b63e6a6"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Bhatiyar/Raag Bhatiyar.tempo-manual.txt",
+        "77629efabd41aad5908a649595df0399"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Bhatiyar/Raag Bhatiyar.sama-manual.txt",
+        "77a58acffa34de072de6d7f5b90c137e"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Bhatiyar/Raag Bhatiyar.sections-manual-p.txt",
+        "7fefc2243a19ca9c6cab2d791bc2e3db"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Bhatiyar/Raag Bhatiyar.mphrases-manual.txt",
+        "f9a4c968ab3c2844f8f8b560b53b9656"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Raag Bhatiyar/Raag Bhatiyar.json",
+        "89342d1266839e00eac2bb3edd79dfee"
+      ]
+    },
+    "43_Bhairavi_Thumri": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.mp3.mp3",
+        "79829e16a263130914312dc89ed7f53c"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.pitch.txt",
+        "907d112cfaa347afc2ef085a2f880cf2"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.tempo-manual.txt",
+        "48fce29e07030923431813ca02171131"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.sama-manual.txt",
+        "a51fbe6e380864c70426df6ee313574f"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.sections-manual-p.txt",
+        "d4b9df141ba2a3c444ddc613bcc71193"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.mphrases-manual.txt",
+        "6c13fc1185b002aaa4425175e64528d3"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhatiyar & Bhairavi Thumri by Kaustuv Kanti Ganguli/Bhairavi Thumri/Bhairavi Thumri.json",
+        "752b289d2e6b50cd08c0ff34b0b793bc"
+      ]
+    },
+    "44_Raag_Abhogi": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Abhogi/Raag Abhogi.mp3.mp3",
+        "42d7f1c692956cf9d5ece72d479cf458"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Abhogi/Raag Abhogi.ctonic.txt",
+        "99f8915c8950e2092524e48535ce1ab3"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Abhogi/Raag Abhogi.pitch.txt",
+        "a4a6f9c82c35ae88a998b0893b9de0ac"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Abhogi/Raag Abhogi.tempo-manual.txt",
+        "64e7f47ab0c146b1ea7d192293f4db08"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Abhogi/Raag Abhogi.sama-manual.txt",
+        "36938a3dd2c92e7ed187e3014f6425ad"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Abhogi/Raag Abhogi.sections-manual-p.txt",
+        "86bf4a4620cc329a1d562dbbcaa3d915"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Abhogi/Raag Abhogi.mphrases-manual.txt",
+        "5d2d406b69ff4db035b2555b70184189"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Abhogi/Raag Abhogi.json",
+        "f71467386b2b810bfa7aa66806e76c48"
+      ]
+    },
+    "45_Raag_Megh": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Megh/Raag Megh.mp3.mp3",
+        "bf8b82651aeed7993911f7c61beb8b25"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Megh/Raag Megh.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Megh/Raag Megh.pitch.txt",
+        "ca090e2697a8f9358b560f8f36949e20"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Megh/Raag Megh.tempo-manual.txt",
+        "b105836b437062ddcc7e38ecdc44e585"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Megh/Raag Megh.sama-manual.txt",
+        "565f36451b3ee88e41767fd459cccbae"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Megh/Raag Megh.sections-manual-p.txt",
+        "140a28077727050a33352338657fd2af"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Megh/Raag Megh.mphrases-manual.txt",
+        "1011bed65d9481da491bbc4ae8e0d9ec"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Abhogi & Megh by Anol Chatterjee/Raag Megh/Raag Megh.json",
+        "53ef594236f5f989f4549dc6be49542b"
+      ]
+    },
+    "46_Raag_Bhimpalasi": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Bhimpalasi/Raag Bhimpalasi.mp3.mp3",
+        "f6a10dd25dd96c4712870c1f7cf12fa7"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Bhimpalasi/Raag Bhimpalasi.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Bhimpalasi/Raag Bhimpalasi.pitch.txt",
+        "8dcc63a29a9850803c266885ecd3d3b1"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Bhimpalasi/Raag Bhimpalasi.tempo-manual.txt",
+        "cb29d2d39de4a9d47b6acf8319d4663b"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Bhimpalasi/Raag Bhimpalasi.sama-manual.txt",
+        "2809ce4278a5d2595649fba3726cec1f"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Bhimpalasi/Raag Bhimpalasi.sections-manual-p.txt",
+        "5eff743a77807720b8945b93d6d09f19"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Bhimpalasi/Raag Bhimpalasi.mphrases-manual.txt",
+        "343b7c53641abc9ddef05d8436b47f28"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Bhimpalasi/Raag Bhimpalasi.json",
+        "224acd4033e0a9e0276f1a7719974c42"
+      ]
+    },
+    "47_Raag_Puriya": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Puriya/Raag Puriya.mp3.mp3",
+        "7d4b1b99c2438c692e6a547f09079094"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Puriya/Raag Puriya.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Puriya/Raag Puriya.pitch.txt",
+        "4f28f75c7b49aeb5e933ed9f0ed61f7e"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Puriya/Raag Puriya.tempo-manual.txt",
+        "6afaf4ac0b3eae0d6a76a298cbeae174"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Puriya/Raag Puriya.sama-manual.txt",
+        "a6821ab9cef3623c3f5e10b6274a1342"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Puriya/Raag Puriya.sections-manual-p.txt",
+        "f81520bad12d6c123389f40b3427c475"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Puriya/Raag Puriya.mphrases-manual.txt",
+        "bc4e5d0bcec7e3186d85c17c5463db4c"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Puriya & Bhimpalasi by Brajeshwar Mukherjee/Raag Puriya/Raag Puriya.json",
+        "8c533dbad5f6abb8e359431962f2a425"
+      ]
+    },
+    "48_Raag_Bahar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Bahar/Raag Bahar.mp3.mp3",
+        "bbed224e4870f3d258dfd8dd676c02c9"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Bahar/Raag Bahar.ctonic.txt",
+        "d3425a258ad6087f281a8f4831344b69"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Bahar/Raag Bahar.pitch.txt",
+        "359ac237b492bef6a3fcb9b30bad7abb"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Bahar/Raag Bahar.tempo-manual.txt",
+        "d8c869240b92f86cf181110006170d4d"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Bahar/Raag Bahar.sama-manual.txt",
+        "47d3f8d42c0078b701cf1cf234be75d2"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Bahar/Raag Bahar.sections-manual-p.txt",
+        "b1267ca4873345f3e468e7efb0d82c4c"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Bahar/Raag Bahar.json",
+        "43072e42e2efa4dbf27edb5ee0b8473f"
+      ]
+    },
+    "49_Raag_Sawani": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Sawani/Raag Sawani.mp3.mp3",
+        "86d71dc1680f0778ab6821a4ef9a9b45"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Sawani/Raag Sawani.ctonic.txt",
+        "d3425a258ad6087f281a8f4831344b69"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Sawani/Raag Sawani.pitch.txt",
+        "00df442fbb01b0c4c225866a4fc75680"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Sawani/Raag Sawani.tempo-manual.txt",
+        "791df3f4ecb1cf908e6a0aac69c66781"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Sawani/Raag Sawani.sama-manual.txt",
+        "5b0e6f8e19442e130fb0e403002f3dbb"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Sawani/Raag Sawani.sections-manual-p.txt",
+        "6629a2ddd7965e00fd449dddc16fd0aa"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Sawani & Bahar by Ulhas Kashalkar/Raag Sawani/Raag Sawani.json",
+        "1284d2002e0b03195909e7bdb0c1a2c2"
+      ]
+    },
+    "50_Irani_Bhairavi_Thumri": {
+      "audio": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3",
+        "221c4b721b699e0a08cd20e493b854c3"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt",
+        "99f8915c8950e2092524e48535ce1ab3"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt",
+        "ff77413921c32cd45cd58e6e3159a06c"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt",
+        "a99a247cc9d90adb4c87e81906775f3f"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt",
+        "7e6de134a6bc2737df99b725fcf601b4"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt",
+        "deb0957c028e51646c6f7c55344fd501"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt",
+        "39edd271e739ee29aa0189b1dac4125d"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json",
+        "0a13707b48db7d99ba3d51e7ce656d04"
+      ]
+    },
+    "51_Raag_Bairagi": {
+      "audio": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.mp3.mp3",
+        "a21136e763d076ce5368803ba0e91a59"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.pitch.txt",
+        "1942ef8633b65dea611c4d233aa853a9"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.tempo-manual.txt",
+        "c239f5e958f7b8217991ca809a877f74"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.sama-manual.txt",
+        "47e7b24835096d4fdf5f7f4309e5204f"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.sections-manual-p.txt",
+        "15c7ece955fdcc4a739e07c6b276282e"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.mphrases-manual.txt",
+        "73ee7e370565feaf8226eeda5a8972d6"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.json",
+        "dfb9a3236df4578902a0dcecad91ef8c"
+      ]
+    },
+    "52_Raag_Saraswati": {
+      "audio": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Saraswati/Raag Saraswati.mp3.mp3",
+        "9a26178b84fdcd5dfef7f6580b9a493d"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Saraswati/Raag Saraswati.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Saraswati/Raag Saraswati.pitch.txt",
+        "448d1818931307c7f0f6b84eba0b1bf2"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Saraswati/Raag Saraswati.tempo-manual.txt",
+        "dba2ab2b439fceec0471aa697412bca7"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Saraswati/Raag Saraswati.sama-manual.txt",
+        "e26bb4811a1118f86af8a40b1bce1116"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Saraswati/Raag Saraswati.sections-manual-p.txt",
+        "9e6834a2a8b4419cb430a0e9381ef9eb"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Saraswati/Raag Saraswati.mphrases-manual.txt",
+        "f8c299f834c8fa18877e7dbd4af770dd"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Saraswati/Raag Saraswati.json",
+        "97cb10a0e5ac3a92983c5683886db89c"
+      ]
+    },
+    "53_Raag_Todi": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Todi by Kumar Gandharva/Raag Todi/Raag Todi.mp3.mp3",
+        "9b9ea1658f0d8cc00f9257c27ccc6b5e"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Todi by Kumar Gandharva/Raag Todi/Raag Todi.ctonic.txt",
+        "476c313bcbcbd1709c544a6a372404bb"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Todi by Kumar Gandharva/Raag Todi/Raag Todi.pitch.txt",
+        "159e5f66ce6b204703d60926a39d3827"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Todi by Kumar Gandharva/Raag Todi/Raag Todi.json",
+        "465fd6c3ac5da4b7a8c817fd54c8812b"
+      ]
+    },
+    "54_Raag_Chandrakauns": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Chandrakauns/Raag Chandrakauns.mp3.mp3",
+        "cab9ab4e2c225939f603a9ae86fd1296"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Chandrakauns/Raag Chandrakauns.ctonic.txt",
+        "4c0d51885e5e865342e30f8b27ea3728"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Chandrakauns/Raag Chandrakauns.pitch.txt",
+        "49b23aefd4ebe65c615e55999aa9787f"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Chandrakauns/Raag Chandrakauns.tempo-manual.txt",
+        "fc4744582c7ae665a4ea795495ddb47c"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Chandrakauns/Raag Chandrakauns.sama-manual.txt",
+        "e29d9aa86324a415f7ab6351c0d87fde"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Chandrakauns/Raag Chandrakauns.sections-manual-p.txt",
+        "57e013cae07d4468e52747a64d70c888"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Chandrakauns/Raag Chandrakauns.mphrases-manual.txt",
+        "57f56ff88b86cfbba8228b72de87e052"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Chandrakauns/Raag Chandrakauns.json",
+        "39a40d320c01556c0d6d4415fb74d55c"
+      ]
+    },
+    "55_Majh_Khamaj_Thumri": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Majh Khamaj Thumri/Majh Khamaj Thumri.mp3.mp3",
+        "2aafd2b246bdb47c909354b126a1a5c5"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Majh Khamaj Thumri/Majh Khamaj Thumri.ctonic.txt",
+        "4c0d51885e5e865342e30f8b27ea3728"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Majh Khamaj Thumri/Majh Khamaj Thumri.pitch.txt",
+        "1c85d9b249238045a8f844d3105e363c"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Majh Khamaj Thumri/Majh Khamaj Thumri.tempo-manual.txt",
+        "50521db86e34061bfe533c16271aad92"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Majh Khamaj Thumri/Majh Khamaj Thumri.sama-manual.txt",
+        "cf416164a8459e4a73e263ba78ed69b9"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Majh Khamaj Thumri/Majh Khamaj Thumri.sections-manual-p.txt",
+        "c0b64e1ead4a29025af8261e7bd8c9e9"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Majh Khamaj Thumri/Majh Khamaj Thumri.mphrases-manual.txt",
+        "2e4e9331cf27441a093c984f271e1e7f"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Majh Khamaj Thumri/Majh Khamaj Thumri.json",
+        "17ad3fec5d41725b29a451427f76fa1d"
+      ]
+    },
+    "56_Raag_Malkauns": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Malkauns/Raag Malkauns.mp3.mp3",
+        "dd2b430086522d0618edb799d7fbd081"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Malkauns/Raag Malkauns.ctonic.txt",
+        "4c0d51885e5e865342e30f8b27ea3728"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Malkauns/Raag Malkauns.pitch.txt",
+        "c94ec140eef2a9dd298a7d5f4764b7f9"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Malkauns/Raag Malkauns.tempo-manual.txt",
+        "829ab19dd653f5276a7fa7641d6f5789"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Malkauns/Raag Malkauns.sama-manual.txt",
+        "b6e4c6bfb05076b02f05411fb314d8c3"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Malkauns/Raag Malkauns.sections-manual-p.txt",
+        "6f96c9f8aed793d8211ad24faf888fdc"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Malkauns/Raag Malkauns.mphrases-manual.txt",
+        "190685353c1cd96a662cdd622c2a495f"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Malkauns, Chandrakauns & Majh Khamaj Thumri by Satyasheel Deshpande/Raag Malkauns/Raag Malkauns.json",
+        "6a026412132c51f0ad47a7a65b90c2a4"
+      ]
+    },
+    "57_Raag_Hameer": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Hameer/Raag Hameer.mp3.mp3",
+        "8de4b0c48a39fffe9069f5be188d23c4"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Hameer/Raag Hameer.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Hameer/Raag Hameer.pitch.txt",
+        "0dc89766e85618e086f6348bb15b68e7"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Hameer/Raag Hameer.tempo-manual.txt",
+        "431a1706c1761075ca407ab0d69b8530"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Hameer/Raag Hameer.sama-manual.txt",
+        "f04c33c23628a4092e777f2f1676e7d7"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Hameer/Raag Hameer.sections-manual-p.txt",
+        "79a15bf12c6b049124af18bdcd66fe25"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Hameer/Raag Hameer.mphrases-manual.txt",
+        "741104106b274ef4783c175ea78bf82b"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Hameer/Raag Hameer.json",
+        "cc28f0e55870750d4858912b3137cfee"
+      ]
+    },
+    "58_Raag_Jog": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Jog/Raag Jog.mp3.mp3",
+        "7a3ff1512610dbc68f72155724f80e81"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Jog/Raag Jog.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Jog/Raag Jog.pitch.txt",
+        "37b7960de1ce3707103deaac7c85bbcf"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Jog/Raag Jog.tempo-manual.txt",
+        "83263706ae419a9ba8e45ae31e5d56b7"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Jog/Raag Jog.sama-manual.txt",
+        "d34d472d046773b5f5e8990794c22f58"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Jog/Raag Jog.sections-manual-p.txt",
+        "619462eec7b65f6ce81d13f35a9c4498"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Jog/Raag Jog.mphrases-manual.txt",
+        "551b0f894b2aaa3ee6dcd99b2fdb4c6e"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Jog & Hameer by Brajeshwar Mukherjee/Raag Jog/Raag Jog.json",
+        "c038a4d8d55d3ad33f37ad1098fde940"
+      ]
+    },
+    "59_Bairagi": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.mp3.mp3",
+        "0f9cb9b653a5a2f194fbe271941688f5"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.pitch.txt",
+        "6c82da0d34153ebf7174e4d1a1231da8"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.tempo-manual.txt",
+        "fedfba3e5ed5ea19bb42619fd9ced015"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.sama-manual.txt",
+        "41f69e896bf15af7b855a52533dae62f"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.sections-manual-p.txt",
+        "a7e0e6617ad5af8c92063f6a90a248fa"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.mphrases-manual.txt",
+        "a0055f11a73af7dcaf214e38af40801d"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.json",
+        "f149ee58c7ef771c1aef66f984493443"
+      ]
+    },
+    "60_Taal_and_Sur_of_Thekas": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Taal and Sur of Thekas/Taal and Sur of Thekas.mp3.mp3",
+        "ab8cea326410edf53abdbae6ee418141"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Taal and Sur of Thekas/Taal and Sur of Thekas.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Taal and Sur of Thekas/Taal and Sur of Thekas.pitch.txt",
+        "c21102942fe98d40582b4c09d56438d6"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Taal and Sur of Thekas/Taal and Sur of Thekas.tempo-manual.txt",
+        "eb4194ddb7b3b8e60b295363a1873812"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Taal and Sur of Thekas/Taal and Sur of Thekas.sama-manual.txt",
+        "eb844645e8e61de0a4cf4b991e65e63e"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Taal and Sur of Thekas/Taal and Sur of Thekas.sections-manual-p.txt",
+        "2bf35662aa55b29e4a673b46cb7ef84d"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Taal and Sur of Thekas/Taal and Sur of Thekas.json",
+        "642332e2827cce94ddad52a0b0c2d075"
+      ]
+    },
+    "61_Shrutinandan_Concept_-_an_Introduction_by_Pandit_Ajoy_Chakrabarty": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty.mp3.mp3",
+        "3397adf388ea1661f3464e1c637e1cc2"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty.pitch.txt",
+        "2877b9b682470c0c3bccb4b1b576115e"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty.tempo-manual.txt",
+        "46263f31a1e93de9f3f9ad3faa70ec6f"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty.sama-manual.txt",
+        "eb844645e8e61de0a4cf4b991e65e63e"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty.sections-manual-p.txt",
+        "4cad607bbbdd758214d8c6868c88051a"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty/Shrutinandan Concept - an Introduction by Pandit Ajoy Chakrabarty.json",
+        "81e22515479de580828308f5494ee790"
+      ]
+    },
+    "62_Malkauns": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Malkauns/Malkauns.mp3.mp3",
+        "2b012131b004815882a37e0a984ef221"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Malkauns/Malkauns.ctonic.txt",
+        "f48ad2441b1d9e7c3bba25b439bcb8fd"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Malkauns/Malkauns.pitch.txt",
+        "f65df970ac594574b829d05a5c6aa2da"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Malkauns/Malkauns.tempo-manual.txt",
+        "e19401994620145a3b7eec8905b33041"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Malkauns/Malkauns.sama-manual.txt",
+        "0d64392009a6904275d5e5d9a1ec1bd3"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Malkauns/Malkauns.sections-manual-p.txt",
+        "6776eda6354cde1f36385ce1c4755d31"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Malkauns/Malkauns.mphrases-manual.txt",
+        "7a3a814bc02bbaea60f81e6f2b1b3aa4"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Malkauns/Malkauns.json",
+        "215ac6db99acfa53d60eb6fb64cad7ad"
+      ]
+    },
+    "63_Multani": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Multani/Multani.mp3.mp3",
+        "e538cc1e2c08d946926341df4da5f3ef"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Multani/Multani.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Multani/Multani.pitch.txt",
+        "ca419cd72776b1a8bdd3b1765ebdc172"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Multani/Multani.tempo-manual.txt",
+        "358b07172894f3f98b5367bb639d5eaa"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Multani/Multani.sama-manual.txt",
+        "22e02c5dfa19cc2db8433d9fdfbb3fa5"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Multani/Multani.sections-manual-p.txt",
+        "2bd11e7b37efd717ba79d1a4c5ef9482"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Multani/Multani.mphrases-manual.txt",
+        "85333f253317b7474a315ff4d80bfcdc"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Multani/Multani.json",
+        "105b039e222a50a31959a97d4c230976"
+      ]
+    },
+    "64_Todi": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Todi/Todi.mp3.mp3",
+        "7c5c65c514d06a72db8b62f4dceaecb3"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Todi/Todi.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Todi/Todi.pitch.txt",
+        "31916d3aeedba55f7f9a52261dae2e22"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Todi/Todi.tempo-manual.txt",
+        "b0eb66c61b2b5e027271f2b1af1e04b0"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Todi/Todi.sama-manual.txt",
+        "255ff142bd929f226c3e2be1bf564e3c"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Todi/Todi.sections-manual-p.txt",
+        "faeefce214b52bfc84b60188346ff8b9"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Todi/Todi.mphrases-manual.txt",
+        "ee1276c3f348470be3315b3ae1f716a6"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Todi/Todi.json",
+        "a39a005f15bf30ac29ad1d3958954021"
+      ]
+    },
+    "65_Nat_Bhairon": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Nat Bhairon/Nat Bhairon.mp3.mp3",
+        "5031aaaae3c6715de21b9726201a7e99"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Nat Bhairon/Nat Bhairon.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Nat Bhairon/Nat Bhairon.pitch.txt",
+        "c58cc082e3f8c31532da53eac8b61515"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Nat Bhairon/Nat Bhairon.tempo-manual.txt",
+        "d0d1892d097c6c78565d8560fd7e67b6"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Nat Bhairon/Nat Bhairon.sama-manual.txt",
+        "b19b3235f16e62a828e9143769b83625"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Nat Bhairon/Nat Bhairon.sections-manual-p.txt",
+        "e09c0938a48d101fd548b5836752a443"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Nat Bhairon/Nat Bhairon.mphrases-manual.txt",
+        "1efeef379688cbd59851454654feed8c"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Nat Bhairon/Nat Bhairon.json",
+        "a21f37a41eb8bf12b9a5b287176549d8"
+      ]
+    },
+    "66_Aahir_Bhairon": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Aahir Bhairon/Aahir Bhairon.mp3.mp3",
+        "d2294f221132f63927f39b36f10cd0a9"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Aahir Bhairon/Aahir Bhairon.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Aahir Bhairon/Aahir Bhairon.pitch.txt",
+        "b7d16933a0d0c468f52c35732327b5c0"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Aahir Bhairon/Aahir Bhairon.tempo-manual.txt",
+        "0cb40c3caae442072559f14483dc8007"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Aahir Bhairon/Aahir Bhairon.sama-manual.txt",
+        "ea6bb8f529aeb08474df9da696b2f6a7"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Aahir Bhairon/Aahir Bhairon.sections-manual-p.txt",
+        "fa9095017334329ce0946a112ec526d5"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Aahir Bhairon/Aahir Bhairon.mphrases-manual.txt",
+        "b3d5b9ef5a50c1423d38ca31581e60da"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Aahir Bhairon/Aahir Bhairon.json",
+        "2cce50f4fb94bbe99d865fbccf746788"
+      ]
+    },
+    "67_Sudh_Sarang": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Sarang/Sudh Sarang.mp3.mp3",
+        "a501aa76faf2e9b37a8a895a0d4cde42"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Sarang/Sudh Sarang.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Sarang/Sudh Sarang.pitch.txt",
+        "b380b8464173ad92848cc43e754449ce"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Sarang/Sudh Sarang.tempo-manual.txt",
+        "a36c0564212706a0a8e3075ede98dff5"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Sarang/Sudh Sarang.sama-manual.txt",
+        "5bd20c982cf67e86bd17b9b348f840b6"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Sarang/Sudh Sarang.sections-manual-p.txt",
+        "15f8fd6539d3f0db74203b4f2fed0ed7"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Sarang/Sudh Sarang.mphrases-manual.txt",
+        "ecc764dc011d2efc16cf0f073ffae10b"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Sarang/Sudh Sarang.json",
+        "621fdb7c1de333c76e306462d7d8ae3f"
+      ]
+    },
+    "68_Raageshree": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Raageshree/Raageshree.mp3.mp3",
+        "1f2744317331d1d74795bca168e86764"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Raageshree/Raageshree.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Raageshree/Raageshree.pitch.txt",
+        "ea7e03c1cdcf84df30629fb2264d7db4"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Raageshree/Raageshree.tempo-manual.txt",
+        "a3224cfef2ba3a8f7b40ccaad1603043"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Raageshree/Raageshree.sama-manual.txt",
+        "fb61c3a912b0474431b2fa22e58bd6c4"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Raageshree/Raageshree.sections-manual-p.txt",
+        "3d452c7c6e59747970d6488c6b4cabd8"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Raageshree/Raageshree.mphrases-manual.txt",
+        "e34b4913d58492de5a3c8dfa0c4a2b59"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Raageshree/Raageshree.json",
+        "2c64368bc60f4c6646c89bb8340ab162"
+      ]
+    },
+    "69_Sudh_Kalyan": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Kalyan/Sudh Kalyan.mp3.mp3",
+        "d6ef8e2971bf9a42af7fa5fb026a3d60"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Kalyan/Sudh Kalyan.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Kalyan/Sudh Kalyan.pitch.txt",
+        "9b517f90b78119b12226b67dcc1ce298"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Kalyan/Sudh Kalyan.tempo-manual.txt",
+        "a87eab207ff34ab7b22c91a9b722cd14"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Kalyan/Sudh Kalyan.sama-manual.txt",
+        "ba455a3afe49acee0a95eff3b24c8344"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Kalyan/Sudh Kalyan.sections-manual-p.txt",
+        "1c9d3f80f1c70a57b4d26bb62fd9c7ce"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Kalyan/Sudh Kalyan.mphrases-manual.txt",
+        "10ac8d1a4b0300d21793e067dedbb491"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Sudh Kalyan/Sudh Kalyan.json",
+        "80dcabfe67541c292c3e1800dca5b5f1"
+      ]
+    },
+    "70_Lyrics_of_all_the_Bandishes": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Lyrics of all the Bandishes/Lyrics of all the Bandishes.mp3.mp3",
+        "579900e559a792f6f7fc2ad526818fad"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Lyrics of all the Bandishes/Lyrics of all the Bandishes.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Lyrics of all the Bandishes/Lyrics of all the Bandishes.pitch.txt",
+        "e118d92c0b22f13e3ecfd3e78f7ec33b"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Lyrics of all the Bandishes/Lyrics of all the Bandishes.tempo-manual.txt",
+        "c9ebeb31faa0d302df1b5c285f6abade"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Lyrics of all the Bandishes/Lyrics of all the Bandishes.sama-manual.txt",
+        "eb844645e8e61de0a4cf4b991e65e63e"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Lyrics of all the Bandishes/Lyrics of all the Bandishes.sections-manual-p.txt",
+        "ee84b043453d7bd70a9fa9fdec2a588e"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Lyrics of all the Bandishes/Lyrics of all the Bandishes.json",
+        "1a20b47fd931a657c18c39fbf8928f33"
+      ]
+    },
+    "71_Bilaskhani_Todi": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bilaskhani Todi/Bilaskhani Todi.mp3.mp3",
+        "28e0e4e49848627b9b788972f9df4128"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bilaskhani Todi/Bilaskhani Todi.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bilaskhani Todi/Bilaskhani Todi.pitch.txt",
+        "675c0ace61e266f0056f81696fc049d5"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bilaskhani Todi/Bilaskhani Todi.tempo-manual.txt",
+        "67368aec4584cef736a7ce0a76a879e8"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bilaskhani Todi/Bilaskhani Todi.sama-manual.txt",
+        "47e55083f3c1570acf7d43e7cf240989"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bilaskhani Todi/Bilaskhani Todi.sections-manual-p.txt",
+        "f76f979d9303ccf2b94eecb9e55219c2"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bilaskhani Todi/Bilaskhani Todi.mphrases-manual.txt",
+        "b56a0c46c908d1b1df065476c394f56d"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Bilaskhani Todi/Bilaskhani Todi.json",
+        "87585e992f10a52b75210a2341eca704"
+      ]
+    },
+    "72_Maru_Bihag": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Maru Bihag/Maru Bihag.mp3.mp3",
+        "d630f6fffa3c01a23831d607fe2a9444"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Maru Bihag/Maru Bihag.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Maru Bihag/Maru Bihag.pitch.txt",
+        "e63372b3e833a922ceedb036f471662d"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Maru Bihag/Maru Bihag.tempo-manual.txt",
+        "667223f54c187b2556725d5f19cbb7c0"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Maru Bihag/Maru Bihag.sama-manual.txt",
+        "8cedd00bc0336161939eabdfadf64260"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Maru Bihag/Maru Bihag.sections-manual-p.txt",
+        "b721eb8ceb241f786ade4a882dc43ad0"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Maru Bihag/Maru Bihag.mphrases-manual.txt",
+        "0ad29aa2bfc627583d5352eb05aaaf40"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Maru Bihag/Maru Bihag.json",
+        "96da6bf5dbb5df8b2898bded15571b0a"
+      ]
+    },
+    "73_Kalavati": {
+      "audio": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Kalavati/Kalavati.mp3.mp3",
+        "f1c01f515a7c9e08079dc686eb26b445"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Kalavati/Kalavati.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Kalavati/Kalavati.pitch.txt",
+        "96ce32d1fd243d80b1bf2949cb7286e4"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Kalavati/Kalavati.tempo-manual.txt",
+        "c91926d55b2aeb1a1b0917eab4eae5b6"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Kalavati/Kalavati.sama-manual.txt",
+        "b11c8d1a15bf6c325e17c2b18f6108d8"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Kalavati/Kalavati.sections-manual-p.txt",
+        "b7dbd59e82f228b7ce03edb4f35b0828"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Kalavati/Kalavati.mphrases-manual.txt",
+        "f40482a371a255ba7c5e488ef0b3d0df"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Geetinandan : Part-3 by Ajoy Chakrabarty/Kalavati/Kalavati.json",
+        "1560ffa6312f49fe57cbccb4dce5303a"
+      ]
+    },
+    "74_Raag_Marwa": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Marwa/Raag Marwa.mp3.mp3",
+        "3956af09708a683d8cc6980f28ace665"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Marwa/Raag Marwa.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Marwa/Raag Marwa.pitch.txt",
+        "d6866598383374cf2422123c53f20e42"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Marwa/Raag Marwa.tempo-manual.txt",
+        "0e5f609e871b01d3afc82d7b4ed997f6"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Marwa/Raag Marwa.sama-manual.txt",
+        "40ae1887901fdee4b71fb908f1c1a445"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Marwa/Raag Marwa.sections-manual-p.txt",
+        "1b5b131b47d63fa9e1031cd7d8fb4362"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Marwa/Raag Marwa.mphrases-manual.txt",
+        "157441815eaf9ee56a1629d2745cdb6b"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Marwa/Raag Marwa.json",
+        "65e6d9b03cb63d8ef1a3f5582b651f5a"
+      ]
+    },
+    "75_Raag_Hameer": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Hameer/Raag Hameer.mp3.mp3",
+        "3dabf35da3760d450d3c3a24db503183"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Hameer/Raag Hameer.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Hameer/Raag Hameer.pitch.txt",
+        "bb743f377c96049a971112e2bb954472"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Hameer/Raag Hameer.tempo-manual.txt",
+        "aa774b4474333ade9ecc80bbc7b3fbe5"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Hameer/Raag Hameer.sama-manual.txt",
+        "0d3bc4fe5f23f0b28356e69e74915823"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Hameer/Raag Hameer.sections-manual-p.txt",
+        "dde6311a746a51a62c90393c2fd674ed"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Hameer/Raag Hameer.mphrases-manual.txt",
+        "588b7971d0a2daba29b083546c80208a"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Marwa & Hameer by Sameehan Kashalkar/Raag Hameer/Raag Hameer.json",
+        "2655fb106aa91275232d0d1029dada9d"
+      ]
+    },
+    "76_Raag_Ahir_Bhairon": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Ahir Bhairon/Raag Ahir Bhairon.mp3.mp3",
+        "d0fa76381fb86817e12ca3642b1133dc"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Ahir Bhairon/Raag Ahir Bhairon.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Ahir Bhairon/Raag Ahir Bhairon.pitch.txt",
+        "f7f087a8a105a8c753a5353bf1f883fe"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Ahir Bhairon/Raag Ahir Bhairon.tempo-manual.txt",
+        "6b51ef7755f58b5475394abfe0832e4f"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Ahir Bhairon/Raag Ahir Bhairon.sama-manual.txt",
+        "59c1b57ba82d60e5701d13d331a334a0"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Ahir Bhairon/Raag Ahir Bhairon.sections-manual-p.txt",
+        "d1216b56afece73a08462eda3ffbfc5b"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Ahir Bhairon/Raag Ahir Bhairon.mphrases-manual.txt",
+        "cfc1c67ccd1e89cedea38538826081b5"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Ahir Bhairon/Raag Ahir Bhairon.json",
+        "6950fc0fca82cffe287f08a9f3b7cfad"
+      ]
+    },
+    "77_Raag_Todi": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Todi/Raag Todi.mp3.mp3",
+        "f6e6fd57aea100fecab894e351e84a4a"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Todi/Raag Todi.ctonic.txt",
+        "f0fff50a434f6d6acf44c0cf40e466e2"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Todi/Raag Todi.pitch.txt",
+        "f770032f3674fac164032c0021e5dfcf"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Todi/Raag Todi.tempo-manual.txt",
+        "b0b51162df538d9c8b5186644796a145"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Todi/Raag Todi.sama-manual.txt",
+        "05ab223b8cfeb7cac9b5cbc3d5fedd2e"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Todi/Raag Todi.sections-manual-p.txt",
+        "f07b253b8927be8f8b52d1bc9f23db85"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Todi/Raag Todi.mphrases-manual.txt",
+        "2c6976a91e15c7f0942adab398879581"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Ahir Bhairon & Todi by Omkar Dadarkar/Raag Todi/Raag Todi.json",
+        "83721d594d958223356566a525c7c439"
+      ]
+    },
+    "78_Raag_Poorva": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Poorva/Raag Poorva.mp3.mp3",
+        "2205fa1c67ea0fe68a8c61c89d86481b"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Poorva/Raag Poorva.ctonic.txt",
+        "85e73e9aef41510568a7a6a243a431a6"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Poorva/Raag Poorva.pitch.txt",
+        "c7e3a6b6c4ac49b22114946d07f28433"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Poorva/Raag Poorva.tempo-manual.txt",
+        "6e2271a4a95573596804c5bc7d0c1c04"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Poorva/Raag Poorva.sama-manual.txt",
+        "915b4f0871a00e34170ec11d013c1192"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Poorva/Raag Poorva.sections-manual-p.txt",
+        "42ba0d49e5552c62d4c69deb8aedb9b5"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Poorva/Raag Poorva.json",
+        "e456ab3f95dacf2eec9e86b8d13e92b9"
+      ]
+    },
+    "79_Raag_Gaud_Malhar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Gaud Malhar/Raag Gaud Malhar.mp3.mp3",
+        "093f1defcc1739f0861047a975c145ad"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Gaud Malhar/Raag Gaud Malhar.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Gaud Malhar/Raag Gaud Malhar.pitch.txt",
+        "648a9bed246c62648c423a84ccad142c"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Gaud Malhar/Raag Gaud Malhar.tempo-manual.txt",
+        "ca3eb61aaf901ef41d34fa61c50a481e"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Gaud Malhar/Raag Gaud Malhar.sama-manual.txt",
+        "41ee2d435504e698976e0d5b4dfbf5f3"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Gaud Malhar/Raag Gaud Malhar.sections-manual-p.txt",
+        "af21f0931e8dca91b41caf800f5bbe50"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Poorva & Gaud Malhar by Sameehan Kashalkar/Raag Gaud Malhar/Raag Gaud Malhar.json",
+        "03c882d288203a55169de8a075ed8889"
+      ]
+    },
+    "80_Bhairavi_Dadra": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Bhairavi Dadra/Bhairavi Dadra.mp3.mp3",
+        "d1aaad56f39f074d11b692d4ab2bedba"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Bhairavi Dadra/Bhairavi Dadra.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Bhairavi Dadra/Bhairavi Dadra.pitch.txt",
+        "bef3844bc8852fabea8891904a8165cc"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Bhairavi Dadra/Bhairavi Dadra.tempo-manual.txt",
+        "af1913335f4804a1302127551ac42c8e"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Bhairavi Dadra/Bhairavi Dadra.sama-manual.txt",
+        "c2f55ed51dbbb61075d8ef9498e62865"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Bhairavi Dadra/Bhairavi Dadra.sections-manual-p.txt",
+        "6b2f0e89e22b1bc77497a36b5e438003"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Bhairavi Dadra/Bhairavi Dadra.mphrases-manual.txt",
+        "b1971d1fb2a52a7061f5f338110e8de3"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Bhairavi Dadra/Bhairavi Dadra.json",
+        "da8846368dc4d645aabbfec20ef0ee0b"
+      ]
+    },
+    "81_Raag_Bihag": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Raag Bihag/Raag Bihag.mp3.mp3",
+        "e0acbf9a8180b0b186ee44873a5056d1"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Raag Bihag/Raag Bihag.ctonic.txt",
+        "f1e6465e79c5e687112b7b2a656c049d"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Raag Bihag/Raag Bihag.pitch.txt",
+        "0b14d29191be50254856daa15f6198d7"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Raag Bihag/Raag Bihag.tempo-manual.txt",
+        "a01c84b0298a75e879242933d0f8b41a"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Raag Bihag/Raag Bihag.sama-manual.txt",
+        "d0d6659073677bf2cdd85bb3d7323d27"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Raag Bihag/Raag Bihag.sections-manual-p.txt",
+        "290af007ff9044acbdcafd3eaba554f8"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Raag Bihag/Raag Bihag.mphrases-manual.txt",
+        "b6268ed48e8fc8f245d1f9e4b98d90b8"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bihag & Bhairavi Dadra by Omkar Dadarkar/Raag Bihag/Raag Bihag.json",
+        "911463c8e46db11d6f41ba3352304c4f"
+      ]
+    },
+    "82_Raag_Paraj": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Paraj/Raag Paraj.mp3.mp3",
+        "95554ca79295e84b970257c5c1c9cdf2"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Paraj/Raag Paraj.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Paraj/Raag Paraj.pitch.txt",
+        "c9c2ce6e81ae9324df285bac58357f20"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Paraj/Raag Paraj.tempo-manual.txt",
+        "29645e4ae6ba9e3283676997e64ce543"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Paraj/Raag Paraj.sama-manual.txt",
+        "a755a5e4f8e1708842cc8bd71079f24a"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Paraj/Raag Paraj.sections-manual-p.txt",
+        "46102e83489fceb31f7fa65821d86d7a"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Paraj/Raag Paraj.json",
+        "a075e8b56fea184b946f60acd5f96fdf"
+      ]
+    },
+    "83_Raag_Bhoopali": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Bhoopali/Raag Bhoopali.mp3.mp3",
+        "b59c4262b503cef7e3da2114bdac3440"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Bhoopali/Raag Bhoopali.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Bhoopali/Raag Bhoopali.pitch.txt",
+        "30aec4d994bc88d53badf0051602e40d"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Bhoopali/Raag Bhoopali.tempo-manual.txt",
+        "915636ed7780ade0b5c571274267a708"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Bhoopali/Raag Bhoopali.sama-manual.txt",
+        "6058491f9af862b5fa041d9e4faf7bb1"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Bhoopali/Raag Bhoopali.sections-manual-p.txt",
+        "6d87bc13802077a0a2699d185fd8da8a"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhoopali & Paraj by Sameehan Kashalkar/Raag Bhoopali/Raag Bhoopali.json",
+        "673b218dd97ca6f8be4c2b36c045a4f3"
+      ]
+    },
+    "84_Raag_Kedar": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Kedar/Raag Kedar.mp3.mp3",
+        "bdec55d346dadf7815538da967b5e9f5"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Kedar/Raag Kedar.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Kedar/Raag Kedar.pitch.txt",
+        "1ee66542984adc87fbd2709ce443e371"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Kedar/Raag Kedar.tempo-manual.txt",
+        "e43e388060753fe676f395d2d14fe894"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Kedar/Raag Kedar.sama-manual.txt",
+        "787486bc6d8fa5bda45354addfeae8a6"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Kedar/Raag Kedar.sections-manual-p.txt",
+        "bc516dc0019c52195dfe3897dea32044"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Kedar/Raag Kedar.mphrases-manual.txt",
+        "3002594f6d0120364c63e2e7e458d23b"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Kedar/Raag Kedar.json",
+        "e236155f6b1bc22f6da9cfc084cf119e"
+      ]
+    },
+    "85_Raag_Sohani": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Sohani/Raag Sohani.mp3.mp3",
+        "63ee86057ed03586749c0b886b2122b9"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Sohani/Raag Sohani.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Sohani/Raag Sohani.pitch.txt",
+        "1af7a05a1cc89b65b3d26cc82397f5d1"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Sohani/Raag Sohani.tempo-manual.txt",
+        "10b410b6e92a263413f3dc7f5a5c75aa"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Sohani/Raag Sohani.sama-manual.txt",
+        "2245b9c6a1afaded8fb27c2f1f0d512a"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Sohani/Raag Sohani.sections-manual-p.txt",
+        "cf281363ecfe86f5e7efd23e7dff73c0"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Kedar & Sohani by Sameehan Kashalkar/Raag Sohani/Raag Sohani.json",
+        "c90ed8aa6649be79de2b0085842f1129"
+      ]
+    },
+    "86_Raag_Khat_Todi": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Khat Todi/Raag Khat Todi.mp3.mp3",
+        "b8a0581ab1b856075c0bef7f6e4f7d63"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Khat Todi/Raag Khat Todi.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Khat Todi/Raag Khat Todi.pitch.txt",
+        "6214edf60f7873d6eb3779cc4b5e9209"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Khat Todi/Raag Khat Todi.json",
+        "fbdc619c89886bc0982642045fa8d628"
+      ]
+    },
+    "87_Raag_Ramgauri_&_Gauri": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Ramgauri & Gauri/Raag Ramgauri & Gauri.mp3.mp3",
+        "234f8f976e6d04f7294b1d859521cc7f"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Ramgauri & Gauri/Raag Ramgauri & Gauri.ctonic.txt",
+        "f0fff50a434f6d6acf44c0cf40e466e2"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Ramgauri & Gauri/Raag Ramgauri & Gauri.pitch.txt",
+        "b78d1fc0c53c53afd632fe77c20dd897"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Ramgauri & Gauri/Raag Ramgauri & Gauri.json",
+        "0dd05bf0afb106972427884183636a26"
+      ]
+    },
+    "88_Raag_Dagori_Deepki": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Dagori_Deepki/Raag Dagori_Deepki.mp3.mp3",
+        "6d67b243fa5e0b60a413f91d95f9ff12"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Dagori_Deepki/Raag Dagori_Deepki.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Dagori_Deepki/Raag Dagori_Deepki.pitch.txt",
+        "e8be0d8e8cf42551ec216da57e44bfc7"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Dagori_Deepki/Raag Dagori_Deepki.json",
+        "3469f8ef41ae6b17b9645dd0008d3271"
+      ]
+    },
+    "89_Raag_Sohani": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Sohani/Raag Sohani.mp3.mp3",
+        "67664c6b1f580e7e49d6989cb677479a"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Sohani/Raag Sohani.ctonic.txt",
+        "f7746d90fc7c032db1cc575f146ca435"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Sohani/Raag Sohani.pitch.txt",
+        "c336fd1217c27f153a91a91312689f1e"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Sohani/Raag Sohani.json",
+        "96ebe763d3269cc0fe253962372113ba"
+      ]
+    },
+    "90_Raag_Triveni": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Triveni/Raag Triveni.mp3.mp3",
+        "b2c9672e28c9675c9fb939d448b9cdec"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Triveni/Raag Triveni.ctonic.txt",
+        "ee3444286d10a66d903e8ad04ec7300a"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Triveni/Raag Triveni.pitch.txt",
+        "4002e21968a51c0d47cb49fa8c3f17de"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Triveni/Raag Triveni.json",
+        "3753afae450f6d6153baf403431d3d8c"
+      ]
+    },
+    "91_Raag_Komal_Rishav_Aasavari": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Komal Rishav Aasavari/Raag Komal Rishav Aasavari.mp3.mp3",
+        "9073a4fbe0de5800a3de0c7091960f57"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Komal Rishav Aasavari/Raag Komal Rishav Aasavari.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Komal Rishav Aasavari/Raag Komal Rishav Aasavari.pitch.txt",
+        "d484773baa1c0fdd70e25c5cbe20694b"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Komal Rishav Aasavari/Raag Komal Rishav Aasavari.json",
+        "984cf792df82cd7199cd50db8a89818b"
+      ]
+    },
+    "92_Raag_Sooha_Kanada": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Sooha Kanada/Raag Sooha Kanada.mp3.mp3",
+        "0a6f62df47d67becf9adde061995accc"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Sooha Kanada/Raag Sooha Kanada.ctonic.txt",
+        "ec986950e8d0f197b7e6cb00aa424485"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Sooha Kanada/Raag Sooha Kanada.pitch.txt",
+        "c8316994aada8b1ac6bc5a5a29689176"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Sooha Kanada/Raag Sooha Kanada.json",
+        "858ed5f5f8b4c36da488c3cbde6754cf"
+      ]
+    },
+    "93_Raag_Lalita_Gauri": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Lalita Gauri/Raag Lalita Gauri.mp3.mp3",
+        "fbd5ec1512207c996a703cd5b941fc3f"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Lalita Gauri/Raag Lalita Gauri.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Lalita Gauri/Raag Lalita Gauri.pitch.txt",
+        "327ad79128b580be49f0116f7f75c2e6"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Lalita Gauri/Raag Lalita Gauri.json",
+        "89baa02006cf7b9a47ff556f5d67c762"
+      ]
+    },
+    "94_Raag_Hindol_Pancham": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Hindol Pancham/Raag Hindol Pancham.mp3.mp3",
+        "d3a390f8d07c95733699d841299bcdd8"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Hindol Pancham/Raag Hindol Pancham.ctonic.txt",
+        "35ec5f5bae40a4d591418e5c1212680c"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Hindol Pancham/Raag Hindol Pancham.pitch.txt",
+        "945e3b175cfeb13bd10516d2ea460865"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Hindol Pancham/Raag Hindol Pancham.json",
+        "1f64f23213a6a8f49f87ce630aefabe0"
+      ]
+    },
+    "95_Raag_Basanti_Kedar": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Basanti Kedar/Raag Basanti Kedar.mp3.mp3",
+        "225a5e8b0a04785df3040004f5bb5bbe"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Basanti Kedar/Raag Basanti Kedar.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Basanti Kedar/Raag Basanti Kedar.pitch.txt",
+        "b4738f7560954cd31eb35a87d889906a"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Basanti Kedar/Raag Basanti Kedar.json",
+        "24b5d002fa4338056ab85491747c14c4"
+      ]
+    },
+    "96_Raag_Nat_Kamod": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Nat Kamod/Raag Nat Kamod.mp3.mp3",
+        "46854462bbfe8520febe59d267c5e518"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Nat Kamod/Raag Nat Kamod.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Nat Kamod/Raag Nat Kamod.pitch.txt",
+        "9e5db387458e9a93b0a42ecab7ddb07f"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Nat Kamod/Raag Nat Kamod.json",
+        "1e9636b0cace1621236517a6c6494f27"
+      ]
+    },
+    "97_Raag_Jogiya": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Jogiya/Raag Jogiya.mp3.mp3",
+        "eae27e59335c80b1d58d2b862a79c5ab"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Jogiya/Raag Jogiya.ctonic.txt",
+        "c086d2f0624fe8444400a066d7f14a68"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Jogiya/Raag Jogiya.pitch.txt",
+        "a46f04b3d2b2fedb3264f252849e4c78"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Jogiya/Raag Jogiya.json",
+        "afe15d1c3f779acf689474849f510f91"
+      ]
+    },
+    "98_Raag_Jait_Kalyan": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Jait Kalyan/Raag Jait Kalyan.mp3.mp3",
+        "0caf0267fc0abcd999e698a91c8fb8dc"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Jait Kalyan/Raag Jait Kalyan.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Jait Kalyan/Raag Jait Kalyan.pitch.txt",
+        "9f5eb85628aa2c6951c378f52bc49d29"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Jait Kalyan/Raag Jait Kalyan.json",
+        "4d1f43decfa3d6897823e68def5c2311"
+      ]
+    },
+    "99_Raag_Khokar": {
+      "audio": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Khokar/Raag Khokar.mp3.mp3",
+        "231e18ca20646deb1686c2c770572816"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Khokar/Raag Khokar.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Khokar/Raag Khokar.pitch.txt",
+        "e1808f6062dc2fa093744ee7a870ef7a"
+      ],
+      "tempo": [
+        null,
+        null
+      ],
+      "sama": [
+        null,
+        null
+      ],
+      "sections": [
+        null,
+        null
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Anaahata by Milind Malshe/Raag Khokar/Raag Khokar.json",
+        "0a5c5300e0aa296e78ce90cff189ee31"
+      ]
+    },
+    "100_Raga_Shree_-_Khayal": {
+      "audio": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Shree - Khayal/Raga Shree - Khayal.mp3.mp3",
+        "e20b5f3b59cc510603460eb7fc59cca4"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Shree - Khayal/Raga Shree - Khayal.ctonic.txt",
+        "ff5e0aac0d20facb89f0648a33367f51"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Shree - Khayal/Raga Shree - Khayal.pitch.txt",
+        "64173b55a750944c05cc2cf127f77a49"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Shree - Khayal/Raga Shree - Khayal.tempo-manual.txt",
+        "fa19d14b2449d5896750472da99c6879"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Shree - Khayal/Raga Shree - Khayal.sama-manual.txt",
+        "701ba5c26a53085ef7ac1f0d6b89f3da"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Shree - Khayal/Raga Shree - Khayal.sections-manual-p.txt",
+        "4d18579cb7b8a9c0fc3dbadae7835028"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Shree - Khayal/Raga Shree - Khayal.mphrases-manual.txt",
+        "3f4bcb751eba4f585b346b60242fadea"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Shree - Khayal/Raga Shree - Khayal.json",
+        "f8d7ecd72ddb5599fd244343907760f3"
+      ]
+    },
+    "101_Introductory_speech_by_Ajoy_Chakrabarty": {
+      "audio": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty.mp3.mp3",
+        "731990a9aba439626234ca8a23dfcb94"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty.ctonic.txt",
+        "e4bc6fad091a41d8e9969de00473c788"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty.pitch.txt",
+        "f45eae0785ddc8151389b82a9c370741"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty.tempo-manual.txt",
+        "91889142aca67aec38c197d529c70b1b"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty.sama-manual.txt",
+        "eb844645e8e61de0a4cf4b991e65e63e"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty.sections-manual-p.txt",
+        "0a0fe3568bc76e4eaa2414ad802b1cd2"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty/Introductory speech by Ajoy Chakrabarty.json",
+        "3301e1149bafd264d7b068d263f07986"
+      ]
+    },
+    "102_Introduction_about_Ajoy_Chakrabarty": {
+      "audio": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty.mp3.mp3",
+        "e82a935aaabead5a3639918218180b7e"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty.ctonic.txt",
+        "e4bc6fad091a41d8e9969de00473c788"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty.pitch.txt",
+        "876f9befe36ec885bef14455734a7b69"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty.tempo-manual.txt",
+        "63d0ba34e52b8ba02c6521a986d40940"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty.sama-manual.txt",
+        "eb844645e8e61de0a4cf4b991e65e63e"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty.sections-manual-p.txt",
+        "875e22e6e9e5934a69716d6d8a8eb2cd"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty/Introduction about Ajoy Chakrabarty.json",
+        "091b75eca727ad682e7087f448801f97"
+      ]
+    },
+    "103_Thumri_in_Piloo": {
+      "audio": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Thumri in Piloo/Thumri in Piloo.mp3.mp3",
+        "c7749353fa0720b6037e8bf8c908ada7"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Thumri in Piloo/Thumri in Piloo.ctonic.txt",
+        "ff5e0aac0d20facb89f0648a33367f51"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Thumri in Piloo/Thumri in Piloo.pitch.txt",
+        "2a8bc5dc326edc730ec85a21a4f2a78a"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Thumri in Piloo/Thumri in Piloo.tempo-manual.txt",
+        "a59e08196c17882fb7678cf5e120972b"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Thumri in Piloo/Thumri in Piloo.sama-manual.txt",
+        "3dbc3d8dd4319e558e36e606af780b99"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Thumri in Piloo/Thumri in Piloo.sections-manual-p.txt",
+        "7ff19cdde8de0915c2e6260818c7dcb8"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Thumri in Piloo/Thumri in Piloo.json",
+        "dec7774e27a2448875a3c96cf84555d1"
+      ]
+    },
+    "104_Raga_Lalit_-_Khayal": {
+      "audio": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Lalit - Khayal/Raga Lalit - Khayal.mp3.mp3",
+        "a6cac0fe3af3c4837fa8d82c66644a94"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Lalit - Khayal/Raga Lalit - Khayal.ctonic.txt",
+        "e4bc6fad091a41d8e9969de00473c788"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Lalit - Khayal/Raga Lalit - Khayal.pitch.txt",
+        "efe29cb1ba11aabbccec3faac06639bd"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Lalit - Khayal/Raga Lalit - Khayal.tempo-manual.txt",
+        "8ef08428448499425b1ee72da3034545"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Lalit - Khayal/Raga Lalit - Khayal.sama-manual.txt",
+        "53b6a66965699690c81130e04063972c"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Lalit - Khayal/Raga Lalit - Khayal.sections-manual-p.txt",
+        "d7308f3ab3c8f25907937e6ab4b32917"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Lalit - Khayal/Raga Lalit - Khayal.mphrases-manual.txt",
+        "1be43c08d3ffa951e21d00638158c251"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Subha Chale Sham Dhale by Ajoy Chakrabarty/Raga Lalit - Khayal/Raga Lalit - Khayal.json",
+        "4676329644f2aee1a2655fb84dcf9bc1"
+      ]
+    },
+    "105_Raag_Bhoopali": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Bhoopali/Raag Bhoopali.mp3.mp3",
+        "732572b6652b795b1fa3f5a1ab979700"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Bhoopali/Raag Bhoopali.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Bhoopali/Raag Bhoopali.pitch.txt",
+        "caa875c6246ccc6ed564289bb86c0946"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Bhoopali/Raag Bhoopali.tempo-manual.txt",
+        "0ac5282e21b26ac3a274d842cf6da3cd"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Bhoopali/Raag Bhoopali.sama-manual.txt",
+        "932bf06c2ee12a93e0eec38c0419d3d0"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Bhoopali/Raag Bhoopali.sections-manual-p.txt",
+        "ae850636c3261635b93b060c5f261832"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Bhoopali/Raag Bhoopali.mphrases-manual.txt",
+        "ec7dff35f3792985dfa39973ca5c202a"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Bhoopali/Raag Bhoopali.json",
+        "93e90aef049d64f6ae8813e61887e05a"
+      ]
+    },
+    "106_Raag_Gavti": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Gavti/Raag Gavti.mp3.mp3",
+        "b72b4a2bbf7df2bf9eae91602dd42ed1"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Gavti/Raag Gavti.ctonic.txt",
+        "3c71ab9c58b60e64317af9af57f859fc"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Gavti/Raag Gavti.pitch.txt",
+        "d61308037cca338473fa3026aaba7345"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Gavti/Raag Gavti.tempo-manual.txt",
+        "e20a5a1fb80ff7f8a9341af7b7e397e2"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Gavti/Raag Gavti.sama-manual.txt",
+        "bec78e8c814542c899ebfcd1a9172bf7"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Gavti/Raag Gavti.sections-manual-p.txt",
+        "c3eb783f9ea299ac130d5d32bd8ae663"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Gavti/Raag Gavti.mphrases-manual.txt",
+        "321f7dca3087fdd57a72410fc4ad4528"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Bhoopali & Gavti by Omkar Dadarkar/Raag Gavti/Raag Gavti.json",
+        "49e186dbc7397ce4527143b0a8e2ba71"
+      ]
+    },
+    "107_Raag_Shree": {
+      "audio": [
+        "saraga1.5_hindustani/Raag Shree by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.mp3.mp3",
+        "5822b9624134959157ebb4588c01db86"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/Raag Shree by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/Raag Shree by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.pitch.txt",
+        "fa535982ac906f38bd7c45e72a3276d8"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/Raag Shree by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.tempo-manual.txt",
+        "302692557db40764e4430b3306806839"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/Raag Shree by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.sama-manual.txt",
+        "e1db70e61389d9a2021b9936468cf631"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/Raag Shree by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.sections-manual-p.txt",
+        "8c6a0531c651d4ab7806a9b389240dec"
+      ],
+      "phrases": [
+        null,
+        null
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/Raag Shree by Kaustuv Kanti Ganguli/Raag Shree/Raag Shree.json",
+        "b955d409e7d17c9e9bc8d2f02706dd8f"
+      ]
+    }
+  }
+}

@@ -38,6 +38,13 @@ BIBTEX = """@article{bosch2016evaluation,
     year={2016},
     publisher={Taylor \\& Francis}
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="orchset_index_1.0.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="Orchset_dataset_0.zip",
@@ -250,12 +257,14 @@ class Dataset(core.Dataset):
     The orchset dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="orchset",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

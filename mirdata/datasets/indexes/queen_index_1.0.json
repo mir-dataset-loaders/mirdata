@@ -1,0 +1,923 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "0": {
+      "audio": [
+        "audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
+        "9b129e72ae143115b03da2a6b857d7c7"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "4650afab9ebdf3958aa8596a56f49e2b"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "3d95f67b9cafb4c6554af048ac11df03"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "dd5e10558aaad0aec7797167d0139285"
+      ]
+    },
+    "1": {
+      "audio": [
+        "audio/Greatest Hits I/02 Another One Bites The Dust.flac",
+        "7cba13b9406be90ad0958ab7a7851a42"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/02 Another One Bites The Dust.lab",
+        "a4566ad5282f8b1143c69ec6e6856126"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/02 Another One Bites The Dust.lab",
+        "7ddbab0363b48eb4f9dd9a2736d6e5b4"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/02 Another One Bites The Dust.lab",
+        "0c4adbb82ca917c4fe9a0586c332d3d0"
+      ]
+    },
+    "2": {
+      "audio": [
+        "audio/Greatest Hits I/03 Killer Queen.flac",
+        "bf1018426c77c605015e20771aae482a"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/03 Killer Queen.lab",
+        "fede5dcb6e34d92e6d0528229781444d"
+      ]
+    },
+    "3": {
+      "audio": [
+        "audio/Greatest Hits I/04 Fat Bottomed Girls.flac",
+        "71dccbffe34045a7e60a5b256162594d"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/04 Fat Bottomed Girls.lab",
+        "2eb8acfc6aa5c103a740aa729db28a9c"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/04 Fat Bottomed Girls.lab",
+        "ea718c39dea8d29a100d1b2872ebc4ea"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/04 Fat Bottomed Girls.lab",
+        "8d6ccdd07ad3549b613e52c2f7f523e6"
+      ]
+    },
+    "4": {
+      "audio": [
+        "audio/Greatest Hits I/05 Bicycle Race.flac",
+        "cb7a2536b8fc62d9fc5dc79c7afe5875"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/05 Bicycle Race.lab",
+        "6a08b31d68a7d373cb9cae5225c1bf82"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/05 Bicycle Race.lab",
+        "51ba00d26ec3a55cc0f8d0653309592f"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/05 Bicycle Race.lab",
+        "8d0dbd5dc4e1b438ae8c2da0e9483a32"
+      ]
+    },
+    "5": {
+      "audio": [
+        "audio/Greatest Hits I/06 You're My Best Friend.flac",
+        "f7ac34ad20dd144c8bff5651ee1aa5e7"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/06 You're My Best Friend.lab",
+        "16ca5692ec2c81ed85892362d1fcdccc"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/06 You're My Best Friend.lab",
+        "b3cc061d139c437b184c7367d6096623"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/06 You're My Best Friend.lab",
+        "fa273033b82a3358bf964fe938456fe7"
+      ]
+    },
+    "6": {
+      "audio": [
+        "audio/Greatest Hits I/07 Don't Stop Me Now.flac",
+        "15ef2e2789533439bde0ca433d28b2d3"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/07 Don't Stop Me Now.lab",
+        "b5663649dfe6e14a81f2ec06332a693c"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/07 Don't Stop Me Now.lab",
+        "c76bb625ed9ee598cb440aa958089bf1"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/07 Don't Stop Me Now.lab",
+        "827f6889662f832e96a32ff0f5eaa942"
+      ]
+    },
+    "7": {
+      "audio": [
+        "audio/Greatest Hits I/08 Save Me.flac",
+        "331d293febe85cd2052f5cc5bc71ffd9"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/08 Save Me.lab",
+        "bc561df3ccb4ab3f1643171da824e469"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/08 Save Me.lab",
+        "ac6f1959125c5a1bd2bf26c5482e9653"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/08 Save Me.lab",
+        "799d6b5e6da3d164474d6970f4119fd0"
+      ]
+    },
+    "8": {
+      "audio": [
+        "audio/Greatest Hits I/09 Crazy Little Thing Called Love.flac",
+        "d9b149c291013dced42d6542ce485c70"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/09 Crazy Little Thing Called Love.lab",
+        "c48b6632df6c1594e1fbd25aa90694b5"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/09 Crazy Little Thing Called Love.lab",
+        "234103776d783795ff48c95e8cc343b4"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/09 Crazy Little Thing Called Love.lab",
+        "e859673f59d64aa383674ff655797936"
+      ]
+    },
+    "9": {
+      "audio": [
+        "audio/Greatest Hits I/10 Somebody To Love.flac",
+        "017a52447c9dafb1c558c4eafc6cd77e"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/10 Somebody To Love.lab",
+        "3772e879b12fb7ebb74dd3d43de38652"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/10 Somebody To Love.lab",
+        "7fc635c54b45e0c0e5bb4a56f4b74ede"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/10 Somebody To Love.lab",
+        "970fc9fe580f65e0112dfe1768fb8c6c"
+      ]
+    },
+    "10": {
+      "audio": [
+        "audio/Greatest Hits I/11 Now I'm Here.flac",
+        "3361415f88f867c69ff29b0a6f78b1df"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/11 Now I'm Here.lab",
+        "c164918b484a38a093a951567d1535f4"
+      ]
+    },
+    "11": {
+      "audio": [
+        "audio/Greatest Hits I/12 Good Old-Fashioned Lover Boy.flac",
+        "9820a3816a922c077b12ed590ca88540"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/12 Good Old-Fashioned Lover Boy.lab",
+        "08f89fd676aa5432e7a60425c0d69b6b"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/12 Good Old-Fashioned Lover Boy.lab",
+        "8f2fa02fe57abfd4f1d0e484c0949883"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/12 Good Old-Fashioned Lover Boy.lab",
+        "a43c12fb4bcf44a787856ad387633785"
+      ]
+    },
+    "12": {
+      "audio": [
+        "audio/Greatest Hits I/13 Play The Game.flac",
+        "1ed282ecc295c36f6d9ae6a75f3907b8"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/13 Play The Game.lab",
+        "2217df5ebafc18c1ecdf673ad9fbc1f7"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/13 Play The Game.lab",
+        "97bd59d34f3272b9dbb75fdec5483635"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/13 Play The Game.lab",
+        "045cca87c855eed01eaf83ffd9c11643"
+      ]
+    },
+    "13": {
+      "audio": [
+        "audio/Greatest Hits I/14 Flash.flac",
+        "06cc34c44068a80d4468973390b3dc8a"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/14 Flash.lab",
+        "0ea5858c419f4f43a5de9d4ddde20a92"
+      ]
+    },
+    "14": {
+      "audio": [
+        "audio/Greatest Hits I/15 Seven Seas Of Rhye.flac",
+        "c7a71cb4a3c8ef18125a9bb70b737ef3"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/15 Seven Seas Of Rhye.lab",
+        "9e2477f3c89ada7018b283c5adac9864"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/15 Seven Seas Of Rhye.lab",
+        "fafe5448efa4e0c3026c8bc50a849fdb"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/15 Seven Seas Of Rhye.lab",
+        "f4ff031092f2f7a613086140df9a7b4e"
+      ]
+    },
+    "15": {
+      "audio": [
+        "audio/Greatest Hits I/16 We Will Rock You.flac",
+        "88a7e75c6dbf4a2002b942596dd23a80"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/16 We Will Rock You.lab",
+        "df73a82eb689d078eeb700fd0d213d2a"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/16 We Will Rock You.lab",
+        "e599a03a0fe0460e75542696fe682528"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/16 We Will Rock You.lab",
+        "a4868a6617ef4f1c00f8e6a6784e9295"
+      ]
+    },
+    "16": {
+      "audio": [
+        "audio/Greatest Hits I/17 We Are The Champions.flac",
+        "f5135963e6d58c25e4506b5cfccf57c9"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/17 We Are The Champions.lab",
+        "cef5a776180b76b05fd12c5768623cae"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/17 We Are The Champions.lab",
+        "54a701583923b33e28eac9c7f351b374"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/17 We Are The Champions.lab",
+        "3ad4e802c4646ea884c65685ef915b46"
+      ]
+    },
+    "17": {
+      "audio": [
+        "audio/Greatest Hits II/01 A Kind Of Magic.flac",
+        "861adeacb99a8c1950ad9b07aa862cf0"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits II/01 A Kind Of Magic.lab",
+        "f6e35b3985db178993bef3745064e442"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits II/01 A Kind Of Magic.lab",
+        "9c965e3508498387c8d88f26d4feaa2f"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/01 A Kind Of Magic.lab",
+        "0feab4fa3099b271c1bedfcf944e5768"
+      ]
+    },
+    "18": {
+      "audio": [
+        "audio/Greatest Hits II/02 Under Pressure.flac",
+        "c9249de8cdd4bedc9aefce238012ae62"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/02 Under Pressure.lab",
+        "c0e582f54f3b99d34705932204201de1"
+      ]
+    },
+    "19": {
+      "audio": [
+        "audio/Greatest Hits II/03 Radio Ga Ga.flac",
+        "561c8c37cea56a82cbc4312fd465732a"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/03 Radio Ga Ga.lab",
+        "616b644f510ef6cc9495f598956c36cc"
+      ]
+    },
+    "20": {
+      "audio": [
+        "audio/Greatest Hits II/04 I Want It All.flac",
+        "1e9f2f756f2498cf71bcae359b129186"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits II/04 I Want It All.lab",
+        "ecc34de5930d1d67fa1d7c7f5661915a"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits II/04 I Want It All.lab",
+        "74e94bcfcfb5ce6ac9076990eccbc1d4"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/04 I Want It All.lab",
+        "09728bfaa0e954e1662b2e4643263c8d"
+      ]
+    },
+    "21": {
+      "audio": [
+        "audio/Greatest Hits II/05 I Want To Break Free.flac",
+        "0b779145b3bd42e92fb62e8a92b2b094"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits II/05 I Want To Break Free.lab",
+        "18e11b8f10090fddae27c4917c7160f7"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits II/05 I Want To Break Free.lab",
+        "f8032aa5c4b563e6af79fedfa1421fac"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/05 I Want To Break Free.lab",
+        "16f30315c16b824d95f4aded76d70c17"
+      ]
+    },
+    "22": {
+      "audio": [
+        "audio/Greatest Hits II/06 Innuendo.flac",
+        "b63b23ffce4eb19ef764b1890ed667fd"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/06 Innuendo.lab",
+        "b558203f9a3a903bcae928e45e663d31"
+      ]
+    },
+    "23": {
+      "audio": [
+        "audio/Greatest Hits II/07 It's A Hard Life.flac",
+        "1c32a04e7cae97e68504fd4953a45322"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/07 It's A Hard Life.lab",
+        "c28109dd9d47383bbf72065fabaabb4b"
+      ]
+    },
+    "24": {
+      "audio": [
+        "audio/Greatest Hits II/08 Breakthru.flac",
+        "7e4f5318c69878a34fab315bbc88841b"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/08 Breakthru.lab",
+        "b47319ac5319df7fcfd0608c9864e9bd"
+      ]
+    },
+    "25": {
+      "audio": [
+        "audio/Greatest Hits II/09 Who Wants To Live Forever.flac",
+        "d71adb79ab3c8405293e3afb7a61cd66"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits II/09 Who Wants To Live Forever.lab",
+        "761c86f26a8d98466678d8804d530c91"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits II/09 Who Wants To Live Forever.lab",
+        "6a34e0084da7c995ee2e0e38856673d7"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/09 Who Wants To Live Forever.lab",
+        "745d4ee305f18ea46a9adf56cd02b9ee"
+      ]
+    },
+    "26": {
+      "audio": [
+        "audio/Greatest Hits II/10 Headlong.flac",
+        "9cec7f492bf774f5cdb41e607057aa84"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/10 Headlong.lab",
+        "5bfb534c8c0c60a570203e6c8b1a89d2"
+      ]
+    },
+    "27": {
+      "audio": [
+        "audio/Greatest Hits II/11 The Miracle.flac",
+        "32d287ef207c9ecb4c2d989fde7e5203"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/11 The Miracle.lab",
+        "4b8c5c52c3b4adcc3aedc876f6ae65ef"
+      ]
+    },
+    "28": {
+      "audio": [
+        "audio/Greatest Hits II/12 I'm Going Slightly Mad.flac",
+        "dfcd61115b09e83defd2c18a920b84ed"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/12 I'm Going Slightly Mad.lab",
+        "34b2f351e25b90d36ab580aad79a8bc7"
+      ]
+    },
+    "29": {
+      "audio": [
+        "audio/Greatest Hits II/13 The Invisible Man.flac",
+        "b3a9c3eeb14e1c66ef86ef92f09303f9"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/13 The Invisible Man.lab",
+        "c0ba233a286b48cc462879da15bd1eab"
+      ]
+    },
+    "30": {
+      "audio": [
+        "audio/Greatest Hits II/14 Hammer To Fall.flac",
+        "e0fdf979459403925de28980c7743501"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits II/14 Hammer To Fall.lab",
+        "bb335e48e29f35df27945150cd02bd3a"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits II/14 Hammer To Fall.lab",
+        "23ae95dcec951c05b48fbf38225fde2f"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/14 Hammer To Fall.lab",
+        "a9add607b927852f4f57e751859be36b"
+      ]
+    },
+    "31": {
+      "audio": [
+        "audio/Greatest Hits II/15 Friends Will Be Friends.flac",
+        "53f5c839e7a01fe7ac8f30ba21ed4628"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits II/15 Friends Will Be Friends.lab",
+        "6708fab7c83c35feb4b65f28ae18b580"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits II/15 Friends Will Be Friends.lab",
+        "a095dbaaf864bb8d55324bc9c87e4872"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/15 Friends Will Be Friends.lab",
+        "2e65869225e17d8da100c58085f55428"
+      ]
+    },
+    "32": {
+      "audio": [
+        "audio/Greatest Hits II/16 The Show Must Go On.flac",
+        "48bbd741e6da84a50a6b487a1fd3b042"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/16 The Show Must Go On.lab",
+        "752ebdf0af0035b5834e470d92d8ffb4"
+      ]
+    },
+    "33": {
+      "audio": [
+        "audio/Greatest Hits II/17 One Vision.flac",
+        "2ad879298013c56b9473f06c12ef7da4"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits II/17 One Vision.lab",
+        "54d0982ccbeb6d841b0e2d2f7c7933e3"
+      ]
+    },
+    "34": {
+      "audio": [
+        "audio/Greatest Hits III/01 The Show Must Go On.flac",
+        "78b89c976159d02f26de78561950865c"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/01 The Show Must Go On.lab",
+        "7124115d8bc2ecec6ee766766da5439e"
+      ]
+    },
+    "35": {
+      "audio": [
+        "audio/Greatest Hits III/02 Under Pressure.flac",
+        "3cb909a0b5fb66fd47a8ac464cb83094"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/02 Under Pressure.lab",
+        "d7b43585b02563025c94cd98fb864502"
+      ]
+    },
+    "36": {
+      "audio": [
+        "audio/Greatest Hits III/03 Barcelona.flac",
+        "a3d2920d43e4c54940b05ce2c2de5a9e"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/03 Barcelona.lab",
+        "4cb3dd169dbf581f79de3ba76466eb3c"
+      ]
+    },
+    "37": {
+      "audio": [
+        "audio/Greatest Hits III/04 Too Much Love Will Kill You.flac",
+        "f9dd9e125abbe5af82c30246618534cd"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/04 Too Much Love Will Kill You.lab",
+        "d6bf94c0e55aae8894d871ce3469e494"
+      ]
+    },
+    "38": {
+      "audio": [
+        "audio/Greatest Hits III/05 Somebody To Love.flac",
+        "ae58e7000b07720229027a97d5b35723"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/05 Somebody To Love.lab",
+        "b39f5b803503dfdc9efa7c10a7b0f2ab"
+      ]
+    },
+    "39": {
+      "audio": [
+        "audio/Greatest Hits III/06 You Don't Fool Me.flac",
+        "baba4615dcaa11b25e309a3e919a5f6c"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/06 You Don't Fool Me.lab",
+        "1c7c46f7d0c14b52878a73cbe457d5a3"
+      ]
+    },
+    "40": {
+      "audio": [
+        "audio/Greatest Hits III/07 Heaven For Everyone.flac",
+        "1e9d4792f021e7699982e9517f52844d"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/07 Heaven For Everyone.lab",
+        "de73de583246b5a24b23a2d00f3779a5"
+      ]
+    },
+    "41": {
+      "audio": [
+        "audio/Greatest Hits III/08 Las Palabras De Amor.flac",
+        "c3e294709962fb6d7ecc65a089c54882"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/08 Las Palabras De Amor.lab",
+        "94ebbc66afe73ec35901a58f6f433da7"
+      ]
+    },
+    "42": {
+      "audio": [
+        "audio/Greatest Hits III/09 Driven By You.flac",
+        "b73e99cdbe0a27f8477e60bff17c4b9b"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/09 Driven By You.lab",
+        "ec02ec668d5eb531f61c6a6975fcc879"
+      ]
+    },
+    "43": {
+      "audio": [
+        "audio/Greatest Hits III/10 Living On My Own.flac",
+        "da4178c1efacb20c28daf81c6317c7a4"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/10 Living On My Own.lab",
+        "b7034c73722f952bb01faf5f5f3c7740"
+      ]
+    },
+    "44": {
+      "audio": [
+        "audio/Greatest Hits III/11 Let Me Live.flac",
+        "141c1dc2a9449fa1d970ce35b7418c57"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/11 Let Me Live.lab",
+        "a78f3f26eb3ad637414d24ebfbd87131"
+      ]
+    },
+    "45": {
+      "audio": [
+        "audio/Greatest Hits III/12 The Great Pretender.flac",
+        "33a52f61eba9af20e3b0320e73ae591b"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/12 The Great Pretender.lab",
+        "014eaa266b30149b5b3670046924345b"
+      ]
+    },
+    "46": {
+      "audio": [
+        "audio/Greatest Hits III/13 Princes Of The Universe.flac",
+        "3e224ef21786c35b5331625a40c43926"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/13 Princes Of The Universe.lab",
+        "83bdd5390b457be273cfa84280fcdae5"
+      ]
+    },
+    "47": {
+      "audio": [
+        "audio/Greatest Hits III/14 Another One Bites The Dust.flac",
+        "33dd5cfdaeb92f431197281b8cb863e6"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/14 Another One Bites The Dust.lab",
+        "ce7ae756b29aa3a256876c3937c8c3bd"
+      ]
+    },
+    "48": {
+      "audio": [
+        "audio/Greatest Hits III/15 No-One But You.flac",
+        "302e72bdcaf5eff3753da290884c6e5b"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/15 No-One But You.lab",
+        "fa43c8da93640bf157b527619d568106"
+      ]
+    },
+    "49": {
+      "audio": [
+        "audio/Greatest Hits III/16 These Are The Days Of Our Lives.flac",
+        "53080e5a423bb9b4073d599f50421c21"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/16 These Are The Days Of Our Lives.lab",
+        "c45a7e68bc1d072a00fd1b1716307358"
+      ]
+    },
+    "50": {
+      "audio": [
+        "audio/Greatest Hits III/17 Thank God It's Christmas.flac",
+        "438ebeba2b6d5d273efb002a0ed3223a"
+      ],
+      "chords": [
+        null,
+        null
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits III/17 Thank God It's Christmas.lab",
+        "f0373916d8e6fc9b760bf83960cd289f"
+      ]
+    }
+  }
+}
