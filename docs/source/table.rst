@@ -38,7 +38,7 @@
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
    * - Billboard (McGill)
-     - - audio: 🔑
+     - - audio: ❌
        - annotations: ✅
      - - :ref:`chords`
        - :ref:`sections`
