@@ -67,17 +67,22 @@ LICENSE_INFO = """
 Creative Commons Attribution 4.0 International
 """
 
-SPLITS = ["train", "validation", "test"]
+SPLITS = ["train", "validation", "test", "omitted"]
 
 
 class Track(core.Track):
     """slakh Track class
 
     Attributes:
-        audio_path (str): path to the track's audio file
-        data_split (str or None): one of 'train', 'validation', or 'test'
+        audio_path (str or None): path to the track's audio file. For some unusual tracks,
+            such as sound effects, there is no audio and this attribute is None.
+        data_split (str or None): one of 'train', 'validation', 'test', or 'omitted'.
+            'omitted' tracks are part of slack2100-redux which were found to be
+            duplicates in the original slackh2011.
+            In baby slakh there are no splits, so this attribute is None.
         metadata_path (str): path to the multitrack's metadata file
-        midi_path (str): path to the track's midi file
+        midi_path (str or None): path to the track's midi file. For some unusual tracks,
+            such as sound effects, there is no midi and this attribute is None.
         mtrack_id (str): the track's multitrack id
         track_id (str): track id
         instrument (str): MIDI instrument class
@@ -90,7 +95,9 @@ class Track(core.Track):
 
     Cached Properties:
         midi (PrettyMIDI): midi data used to generate the audio
+            Some unusual tracks have no midi - in this case this will be None
         notes (NoteData): note representation of the midi data
+            Some unusual tracks have no audio - in this case this will be None
 
     """
 
@@ -183,7 +190,9 @@ class MultiTrack(core.MultiTrack):
         mix_path (str): path to the multitrack mix audio
         midi_path (str): path to the full midi data used to generate the mixture
         metadata_path (str): path to the multitrack metadata file
-        data_split (str or None): one of 'train', 'validation', or 'test'
+        data_split (str or None): one of 'train', 'validation', 'test', or 'omitted'.
+            'omitted' tracks are part of slack2100-redux which were found to be
+            duplicates in the original slackh2011.
         uuid (str): File name of the original MIDI file from Lakh, sans extension
         lakh_midi_dir (str): Path to the original MIDI file from a fresh download of Lakh
         normalized (bool): whether the mix and stems were normalized according to the ITU-R BS.1770-4 spec

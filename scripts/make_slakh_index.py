@@ -29,7 +29,7 @@ def make_dataset_index(dataset_data_path, version):
         topdir = "babyslakh_16k"
         fmt = "wav"
     else:
-        splits = ["train", "validation", "test"]
+        splits = ["train", "validation", "test", "omitted"]
         topdir = "slakh2100_flac_redux"
         fmt = "flac"
 
@@ -63,8 +63,6 @@ def make_dataset_index(dataset_data_path, version):
             }
 
             for track_id in track_ids:
-                # TODO - check what to do if neither the midi nor audio exists
-                # but the stem is part of the metadata
                 audio_path = os.path.join(
                     mtrack_path, "stems", "{}.{}".format(track_id, fmt)
                 )
