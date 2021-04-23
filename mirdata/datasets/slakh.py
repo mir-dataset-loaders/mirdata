@@ -18,6 +18,10 @@
     - Slakh2100-redux: a deduplicated version of Slack2100 containing 1710 multitracks
     - baby-slakh: a mini version with 16k wav audio and only the first 20 tracks
 
+    This dataset was created at Mitsubishi Electric Research Labl (MERL) and
+    Interactive Audio Lab at Northwestern University by Ethan Manilow, 
+    Gordon Wichern, Prem Seetharaman, and Jonathan Le Roux.
+
     For more information see http://www.slakh.com/
 
 """
