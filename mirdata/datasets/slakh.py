@@ -116,11 +116,16 @@ class Track(core.Track):
         self.midi_path = self.get_path("midi")
         self.metadata_path = self.get_path("metadata")
 
-        # split (train/validation/test) is part of the relative filepath in the index
+        # split (train/validation/test/omitted) is part of the relative filepath in the index
         self.data_split = None  # for baby_slakh, there are no data splits - set to None
         if index["version"] == "2100-redux":
-            self.data_split = self._track_paths["audio"][0].split(os.sep)[0]
-            assert self.data_split in SPLITS
+            self.data_split = self._track_paths["audio"][0].split(os.sep)[1]
+            print(self._track_paths["audio"][0])
+            assert (
+                self.data_split in SPLITS
+            ), "{} not a valid split - should be one of {}.".format(
+                self.data_split, SPLITS
+            )
 
     @core.cached_property
     def _track_metadata(self) -> dict:

@@ -57,7 +57,6 @@ def test_track():
     assert audio.shape == (16000 * 2,)
 
 
-@pytest.mark.skip("TODO: enable this when the full index is complete")
 def test_track_full():
     default_trackid = "Track00001-S00"
     data_home = "tests/resources/mir_datasets/slakh"
@@ -67,9 +66,9 @@ def test_track_full():
     expected_attributes = {
         "track_id": "Track00001-S00",
         "mtrack_id": "Track00001",
-        "audio_path": "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/stems/S00.wav",
-        "midi_path": "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/MIDI/S00.mid",
-        "metadata_path": "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/metadata.yaml",
+        "audio_path": "tests/resources/mir_datasets/slakh/slakh2100_flac_redux/train/Track00001/stems/S00.flac",
+        "midi_path": "tests/resources/mir_datasets/slakh/slakh2100_flac_redux/train/Track00001/MIDI/S00.mid",
+        "metadata_path": "tests/resources/mir_datasets/slakh/slakh2100_flac_redux/train/Track00001/metadata.yaml",
         "instrument": "Guitar",
         "integrated_loudness": -12.82074180245363,
         "is_drum": False,
@@ -87,16 +86,16 @@ def test_track_full():
 
     assert track_full._track_paths == {
         "audio": [
-            "babyslakh_16k/Track00001/stems/S00.wav",
-            "ea0e7b3d996bb3fedfbf9ee43b5c414f",
+            "slakh2100_flac_redux/train/Track00001/stems/S00.flac",
+            "bb4a50848831853a086e0f6e5b595804",
         ],
         "midi": [
-            "babyslakh_16k/Track00001/MIDI/S00.mid",
+            "slakh2100_flac_redux/train/Track00001/MIDI/S00.mid",
             "68f9d227a4fd70acdcd80a5bd3b69e22",
         ],
         "metadata": [
-            "babyslakh_16k/Track00001/metadata.yaml",
-            "ffde21b0625fd72ba04103ca55f6765d",
+            "slakh2100_flac_redux/train/Track00001/metadata.yaml",
+            "5258ffe8376e16e5e34b71e7323c0477",
         ],
     }
 
@@ -104,8 +103,8 @@ def test_track_full():
 
     # test audio loading functions
     audio, sr = track_full.audio
-    assert sr == 16000
-    assert audio.shape == (16000 * 2,)
+    assert sr == 44100
+    assert audio.shape == (44100 * 2,)
 
 
 def test_to_jams():
