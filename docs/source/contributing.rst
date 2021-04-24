@@ -336,7 +336,7 @@ To run one specific test file:
 
 ::
 
-    pytest tests/test_ikala.py
+    pytest tests/datasets/test_ikala.py
 
 
 Finally, there is one local test you should run, which we can't easily run in our testing environment.
