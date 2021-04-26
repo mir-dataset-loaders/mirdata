@@ -7,12 +7,12 @@ import os
 from mirdata.validate import md5
 
 
-mtg_jamendo_autotagging_moodtheme_INDEX_PATH = '../mirdata/datasets/indexes/mtg_jamendo_autotagging_moodtheme.json'
+mtg_jamendo_autotagging_moodtheme_INDEX_PATH = '../mirdata/datasets/indexes/mtg_jamendo_autotagging_moodtheme_index_1.0.json'
 
 
 def make_mtg_jamendo_autotagging_moodtheme_index(data_path):
     mtg_jamendo_autotagging_moodtheme_index = {
-        'version': '1.0.0',
+        'version': '1.0',
         'tracks': {}
     }
     meta_path = os.path.join(data_path, "metadata", "data", "autotagging_moodtheme.tsv")
