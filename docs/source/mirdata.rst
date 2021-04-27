@@ -69,7 +69,7 @@ dali
 
 
 da_tacos
-^^^^
+^^^^^^^^
 
 .. automodule:: mirdata.datasets.da_tacos
    :members:

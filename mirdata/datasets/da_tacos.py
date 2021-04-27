@@ -125,12 +125,12 @@ REMOTES = {
         checksum="b8aed83c45687a6bac76de3da1799237",
         destination_dir=".",
     ),
-    "benchmark_cens": download_utils.RemoteFileMetadata(
-        filename="da-tacos_benchmark_subset_cens.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_cens.zip?download=1",
-        checksum="842a8112d7ece43059d3f04dd4a3ee65",
-        destination_dir=".",
-    ),
+    # "benchmark_cens": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_benchmark_subset_cens.zip",
+    #     url="https://zenodo.org/record/4717628/files/da-tacos_benchmark_subset_cens.zip?download=1",
+    #     checksum="b32aab63ee401f0f8baec8aa35eb0975",
+    #     destination_dir=".",
+    # ),
     "benchmark_crema": download_utils.RemoteFileMetadata(
         filename="da-tacos_benchmark_subset_crema.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_crema.zip?download=1",
@@ -167,12 +167,12 @@ REMOTES = {
         checksum="4b9d4cd5beca571e1d614c9a77580f8c",
         destination_dir=".",
     ),
-    "coveranalysis_cens": download_utils.RemoteFileMetadata(
-        filename="da-tacos_coveranalysis_subset_cens.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_cens.zip?download=1",
-        checksum="b141652eb633d3d8086f74b92bd12e14",
-        destination_dir=".",
-    ),
+    # "coveranalysis_cens": download_utils.RemoteFileMetadata(
+    #     filename="da-tacos_coveranalysis_subset_cens.zip",
+    #     url="https://zenodo.org/record/4717628/files/da-tacos_coveranalysis_subset_cens.zip?download=1",
+    #     checksum="7eb56dd3a44fa7d90cc6643bc446e79b",
+    #     destination_dir=".",
+    # ),
     "coveranalysis_crema": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_crema.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_crema.zip?download=1",
@@ -225,6 +225,8 @@ class Track(core.Track):
         mfcc_path (str): mfcc annotation path
         tags_path (str): tags annotation path
         track_id (str): track id
+
+    Properties:
         work_title (str): title of the work
         work_artist (str): original artist of the work
         performance_title (str): title of the performance
