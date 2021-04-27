@@ -53,6 +53,12 @@ BIBTEX = """
 }
 """
 
+INDEXES = {
+    "default": "dlfm2016",
+    "test": "dlfm2016",
+    "dlfm2016": core.Index(filename="compmusic_otmm_makam_index_dlfm2016.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="otmm_makam_recognition_dataset-dlfm2016.zip",
@@ -77,8 +83,6 @@ class Track(core.Track):
     Attributes:
         pitch_path (str): local path where the pitch annotation is stored
         mb_tags_path (str): local path where the MusicBrainz tags annotation is stored
-
-    Properties:
         makam (str): string referring to the makam represented in the track
         tonic (float): tonic annotation
         mbid (str): MusicBrainz ID of the track
@@ -190,12 +194,14 @@ class Dataset(core.Dataset):
     The compmusic_otmm_makam dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="compmusic_otmm_makam",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

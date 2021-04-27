@@ -51,6 +51,13 @@ BIBTEX = """@inproceedings{knees2015two,
   year={2015},
   organization={International Society for Music Information Retrieval (ISMIR)}
 }"""
+
+INDEXES = {
+    "default": "+",
+    "test": "+",
+    "+": core.Index(filename="giantsteps_key_index_+.json"),
+}
+
 REMOTES = {
     "audio": download_utils.RemoteFileMetadata(
         filename="audio.zip",
@@ -248,12 +255,14 @@ class Dataset(core.Dataset):
     The giantsteps_key dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="giantsteps_key",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

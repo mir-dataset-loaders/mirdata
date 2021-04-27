@@ -59,6 +59,13 @@ BIBTEX = """@inproceedings{goto2002rwc,
   series={ISMIR},
   note={Cite this if using vocal-instrumental activity annotations},
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="rwc_popular_index_1.0.json"),
+}
+
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
         filename="master.zip",
@@ -302,12 +309,14 @@ class Dataset(core.Dataset):
     The rwc_popular dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="rwc_popular",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

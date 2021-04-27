@@ -94,6 +94,12 @@ BIBTEX = """@inproceedings{knees2015two,
   url-pdf={http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf},
 }"""
 
+INDEXES = {
+    "default": "2.0",
+    "test": "2.0",
+    "2.0": core.Index(filename="giantsteps_tempo_index_2.0.json"),
+}
+
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb.zip",
@@ -255,12 +261,14 @@ class Dataset(core.Dataset):
     The giantsteps_tempo dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="giantsteps_tempo",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

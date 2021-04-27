@@ -1,4 +1,3 @@
-import importlib
 import inspect
 from inspect import signature
 import io
@@ -9,17 +8,19 @@ import requests
 
 
 import mirdata
-from mirdata import core, download_utils
-from tests.test_utils import DEFAULT_DATA_HOME, get_attributes_and_properties
+from mirdata import core
+from tests.test_utils import get_attributes_and_properties
 
 DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
     "cante100": "008",
+    "compmusic_jingju_acappella": "lseh-Tan_Yang_jia-Hong_yang_dong-qm",
     "compmusic_otmm_makam": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
     "da_tacos": "coveranalysis#W_163992#P_547131",
+    "freesound_one_shot_percussive_sounds": "183",
     "giantsteps_tempo": "113",
     "gtzan_genre": "country.00000",
     "guitarset": "03_BN3-119-G_solo",
@@ -34,23 +35,18 @@ CUSTOM_TEST_TRACKS = {
     "saraga_carnatic": "116_Bhuvini_Dasudane",
     "saraga_hindustani": "59_Bairagi",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
+    "dagstuhl_choirset": "DCS_LI_QuartetB_Take04_B2",
+    "tonas": "01-D_AMairena",
 }
 
-REMOTE_DATASETS = {
-    "acousticbrainz_genre": {
-        "local_index": "tests/resources/download/acousticbrainz_genre_dataset_little_test.json.zip",
-        "filename": "acousticbrainz_genre_dataset_little_test.json",
-        "remote_filename": "acousticbrainz_genre_dataset_little_test.json.zip",
-        "remote_checksum": "c5fbdd4f8b7de383796a34143cb44c4f",
-    }
-}
 TEST_DATA_HOME = "tests/resources/mir_datasets"
 
 
 def test_dataset_attributes():
     for dataset_name in DATASETS:
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
 
         assert (
             dataset.name == dataset_name
@@ -80,8 +76,9 @@ def test_dataset_attributes():
 
 def test_cite_and_license():
     for dataset_name in DATASETS:
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
 
         text_trap = io.StringIO()
         sys.stdout = text_trap
@@ -101,8 +98,9 @@ DOWNLOAD_EXCEPTIONS = ["maestro"]
 def test_download(mocker):
     for dataset_name in DATASETS:
         print(dataset_name)
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
 
         # test parameters & defaults
         assert callable(dataset.download), "{}.download is not callable".format(
@@ -165,10 +163,9 @@ def test_download(mocker):
 # when tests are run with the --local flag
 def test_validate(skip_local):
     for dataset_name in DATASETS:
-        data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
-
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
 
         try:
             dataset.validate()
@@ -183,9 +180,9 @@ def test_validate(skip_local):
 
 def test_load_and_trackids():
     for dataset_name in DATASETS:
-        data_home = os.path.join("tests/resources/mir_datasets", dataset_name)
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
 
         try:
             track_ids = dataset.track_ids
@@ -224,13 +221,12 @@ def test_load_and_trackids():
 
 
 def test_track():
-    data_home_dir = "tests/resources/mir_datasets"
 
     for dataset_name in DATASETS:
-        data_home = os.path.join(data_home_dir, dataset_name)
 
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
 
         # if the dataset doesn't have a track object, make sure it raises a value error
         # and move on to the next dataset
@@ -302,11 +298,9 @@ def test_track_placeholder_case():
 
     for dataset_name in DATASETS:
         data_home = os.path.join(data_home_dir, dataset_name)
+        dataset = mirdata.initialize(dataset_name, data_home, version="test")
 
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        dataset = module.Dataset(os.path.join(data_home, dataset_name))
-
-        if dataset._track_class is None or dataset.remote_index:
+        if not dataset._track_class:
             continue
 
         if dataset_name in CUSTOM_TEST_TRACKS:
@@ -364,8 +358,9 @@ SKIP = {
 
 def test_load_methods():
     for dataset_name in DATASETS:
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
 
         all_methods = dir(dataset)
         load_methods = [
@@ -414,8 +409,9 @@ def test_multitracks():
 
     for dataset_name in DATASETS:
 
-        module = importlib.import_module("mirdata.datasets.{}".format(dataset_name))
-        dataset = module.Dataset(os.path.join(TEST_DATA_HOME, dataset_name))
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
 
         # TODO this is currently an opt-in test. Make it an opt out test
         # once #265 is addressed

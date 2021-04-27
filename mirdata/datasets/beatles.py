@@ -32,6 +32,12 @@ BIBTEX = """@inproceedings{mauch2009beatles,
     series = {ISMIR}
 }"""
 
+INDEXES = {
+    "default": "1.2",
+    "test": "1.2",
+    "1.2": core.Index(filename="beatles_index_1.2.json"),
+}
+
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="The Beatles Annotations.tar.gz",
@@ -281,12 +287,14 @@ class Dataset(core.Dataset):
     The beatles dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="beatles",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
