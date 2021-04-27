@@ -1,13 +1,13 @@
 import numpy as np
 
-from mirdata.datasets import good_sounds
+from mirdata.datasets import mtg_jamendo_autotagging_moodtheme
 from tests.test_utils import run_track_tests
 
 
 def test_track():
     default_trackid = "track_0000948"
     data_home = "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
-    dataset = good_sounds.Dataset(data_home)
+    dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -17,15 +17,10 @@ def test_track():
 
     expected_property_types = {
         "audio": tuple,
-        "pack_info": dict,
-        "ratings_info": list,
-        "sound_info": dict,
-        "take_info": dict,
-        "microphone": str,
-        "instrument": str,
-        "klass": str,
-        "semitone": int,
-        "pitch_reference": int,
+        "artist_id": str,
+        "album_id": str,
+        "duration": float,
+        "tags": str
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
