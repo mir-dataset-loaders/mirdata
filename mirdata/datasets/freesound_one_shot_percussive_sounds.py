@@ -39,7 +39,8 @@ Freesound One-Shot Percussive Sounds Dataset Loader
     grant agreement No. 770376 (TROMPA).
 """
 
-import json, os
+import json
+import os
 from typing import BinaryIO, TextIO, Tuple, Optional
 
 import librosa
@@ -50,10 +51,11 @@ from mirdata import download_utils, jams_utils, core, io
 
 BIBTEX = """
 @inproceedings{ramires2020, 
-author = "Antonio Ramires and Pritish Chandna and Xavier Favory and Emilia Gómez and Xavier Serra",
-title = "Neural Percussive Synthesis Parametrerised by High-Level Timbral Features",
-booktitle = "Proc. of the IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP)",
-year = "2020" }
+    author = "Antonio Ramires and Pritish Chandna and Xavier Favory and Emilia Gómez and Xavier Serra",
+    title = "Neural Percussive Synthesis Parametrerised by High-Level Timbral Features",
+    booktitle = "Proc. of the IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP)",
+    year = "2020"
+}
 """
 
 INDEXES = {

@@ -18,18 +18,13 @@
 
 import csv
 import json
-import logging
 import os
 from typing import BinaryIO, cast, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, io, jams_utils
 
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
@@ -184,7 +179,7 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
     times = np.array(times)  # type: ignore
     freqs = np.array(freqs)  # type: ignore
     confidence = (cast(np.ndarray, freqs) > 0).astype(float)
-    pitch_data = annotations.F0Data(times, freqs, confidence)
+    pitch_data = annotations.F0Data(times, "s", freqs, "hz", confidence, "binary")
     return pitch_data
 
 

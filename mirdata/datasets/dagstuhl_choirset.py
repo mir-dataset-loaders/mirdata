@@ -401,7 +401,9 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
         else:
             confs.append(float(1.0))
 
-    return annotations.F0Data(np.array(times), np.array(freqs), np.array(confs))
+    return annotations.F0Data(
+        np.array(times), "s", np.array(freqs), "hz", np.array(confs), "likelihood"
+    )
 
 
 @io.coerce_to_string_io
@@ -421,7 +423,7 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
         intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
         notes.append(float(line[2]))
 
-    return annotations.NoteData(intervals, librosa.midi_to_hz(notes), None)
+    return annotations.NoteData(intervals, "s", librosa.midi_to_hz(notes), "hz")
 
 
 @io.coerce_to_string_io
@@ -447,7 +449,7 @@ def load_beat(fhandle: TextIO) -> annotations.BeatData:
             position += 1
         positions.append(position)
 
-    return annotations.BeatData(np.array(times), np.array(positions))
+    return annotations.BeatData(np.array(times), "s", np.array(positions), "bar_index")
 
 
 @core.docstring_inherit(core.Dataset)

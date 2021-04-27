@@ -191,7 +191,10 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     beat_positions = _fix_newpoint(np.array(beat_positions))  # type: ignore
     # After fixing New Point labels convert positions to int
     beat_data = annotations.BeatData(
-        np.array(beat_times), np.array([int(b) for b in beat_positions])
+        np.array(beat_times),
+        "s",
+        np.array([int(b) for b in beat_positions]),
+        "bar_index",
     )
 
     return beat_data
@@ -217,7 +220,9 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
         end_times.append(float(line[1]))
         chords.append(line[2])
 
-    return annotations.ChordData(np.array([start_times, end_times]).T, chords)
+    return annotations.ChordData(
+        np.array([start_times, end_times]).T, "s", chords, "harte"
+    )
 
 
 @io.coerce_to_string_io
@@ -239,7 +244,9 @@ def load_key(fhandle: TextIO) -> annotations.KeyData:
             end_times.append(float(line[1]))
             keys.append(line[3])
 
-    return annotations.KeyData(np.array([start_times, end_times]).T, keys)
+    return annotations.KeyData(
+        np.array([start_times, end_times]).T, "s", keys, "key_mode"
+    )
 
 
 @io.coerce_to_string_io
@@ -259,7 +266,9 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
         end_times.append(float(line[1]))
         sections.append(line[3])
 
-    return annotations.SectionData(np.array([start_times, end_times]).T, sections)
+    return annotations.SectionData(
+        np.array([start_times, end_times]).T, "s", sections, "open"
+    )
 
 
 def _fix_newpoint(beat_positions: np.ndarray) -> np.ndarray:

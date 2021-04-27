@@ -13,20 +13,13 @@
 """
 
 import csv
-import glob
-import logging
 import os
-import shutil
 from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 BIBTEX = """@article{bosch2016evaluation,
     title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
@@ -246,7 +239,7 @@ def load_melody(fhandle: TextIO) -> annotations.F0Data:
         confidence.append(0.0 if line[1] == "0" else 1.0)
 
     melody_data = annotations.F0Data(
-        np.array(times), np.array(freqs), np.array(confidence)
+        np.array(times), "s", np.array(freqs), "hz", np.array(confidence), "binary"
     )
     return melody_data
 

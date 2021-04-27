@@ -9,14 +9,13 @@
     This dataset contains 30 pieces composed by Joseph Haydn in symbolic format, which have each been manually
     annotated with harmonic analyses.
 """
+import logging
 import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
 
 import numpy as np
 
 from mirdata import core, io, jams_utils, download_utils
-
-import logging
 
 try:
     import music21
@@ -226,9 +225,14 @@ def load_key(fhandle: TextIO, resolution=28):
         if str(k["key"]).replace("-", "b") != key_names[-1]:
             end_times.append(keys[ii]["time"] - 1)
             start_times.append(keys[ii]["time"])
-            key_names.append(str(keys[ii]["key"]).replace("-", "b"))
+            key_names.append(str(keys[ii]["key"]).replace("-", "b").replace(" ", ":"))
     end_times.append(keys[-1]["time"])
-    return KeyData(np.array([start_times, end_times]).astype(float).T, key_names)
+    return KeyData(
+        np.array([start_times, end_times]).astype(float).T,
+        "ticks",
+        key_names,
+        "key_mode",
+    )
 
 
 @io.coerce_to_string_io
@@ -325,7 +329,9 @@ def load_chords(fhandle: TextIO, resolution: int = 28):
             start_times.append(chords[ii]["time"])
             chord_names.append(str(chords[ii]["chord"]))
     end_times.append(chords[-1]["time"])
-    return ChordData(np.array([start_times, end_times]).astype(float).T, chord_names)
+    return ChordData(
+        np.array([start_times, end_times]).astype(float).T, "ticks", chord_names, "open"
+    )
 
 
 @io.coerce_to_string_io

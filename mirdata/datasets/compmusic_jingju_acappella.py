@@ -253,7 +253,9 @@ def load_phonemes(fhandle: TextIO) -> annotations.EventData:
         end_times.append(float(line[1]))
         events.append(str(line[2] if line[2] != "sil" else ""))
 
-    return annotations.EventData(np.array([start_times, end_times]).T, events)
+    return annotations.LyricData(
+        np.array([start_times, end_times]).T, "s", events, "pronunciations_open"
+    )
 
 
 @io.coerce_to_string_io
@@ -278,8 +280,7 @@ def load_phrases(fhandle: TextIO) -> annotations.LyricData:
         lyrics.append(line[2] if line[2] != "sil" else "")
 
     return annotations.LyricData(
-        np.array([start_times, end_times]).T,
-        lyrics,
+        np.array([start_times, end_times]).T, "s", lyrics, "words"
     )
 
 
@@ -305,7 +306,9 @@ def load_syllable(fhandle: TextIO) -> annotations.EventData:
         end_times.append(float(line[1]))
         events.append(line[2] if line[2] != "sil" else "")
 
-    return annotations.EventData(np.array([start_times, end_times]).T, events)
+    return annotations.LyricData(
+        np.array([start_times, end_times]).T, "s", events, "syllable_open"
+    )
 
 
 @core.docstring_inherit(core.Dataset)

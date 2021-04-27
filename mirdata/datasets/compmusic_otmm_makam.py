@@ -169,8 +169,9 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
     freqs = np.array([float(line[0]) for line in reader])
     times = np.array(np.arange(len(freqs)) * time_step)
     confidence = np.array((freqs > 0.0).astype(float))
+    freqs = np.abs(freqs)
 
-    return annotations.F0Data(times, freqs, confidence)
+    return annotations.F0Data(times, "s", freqs, "hz", confidence, "binary")
 
 
 @io.coerce_to_string_io

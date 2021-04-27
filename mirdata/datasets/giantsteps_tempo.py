@@ -72,10 +72,7 @@ import jams
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """@inproceedings{knees2015two,
@@ -250,8 +247,11 @@ def load_tempo(fhandle: TextIO) -> annotations.TempoData:
 
     return annotations.TempoData(
         np.array([[t.time for t in tempo], [t.time + t.duration for t in tempo]]).T,
+        "s",
         np.array([t.value for t in tempo]),
+        "bpm",
         np.array([t.confidence for t in tempo]),
+        "likelihood",
     )
 
 

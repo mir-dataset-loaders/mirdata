@@ -46,7 +46,6 @@ cante100 Loader
 """
 import csv
 import os
-import logging
 import xml.etree.ElementTree as ET
 from typing import BinaryIO, cast, Optional, TextIO, Tuple
 
@@ -273,11 +272,12 @@ def load_spectrogram(fhandle: TextIO) -> np.ndarray:
     return spectrogram
 
 
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a cante100 audio file.
 
     Args:
-        fhandle (str): path to an audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -292,7 +292,8 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """Load cante100 f0 annotations
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to melody annotation file
+        fhandle (str or file-like): path or file-like object pointing
+            to melody annotation file
 
     Returns:
         F0Data: predominant melody
@@ -308,8 +309,8 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     times = np.array(times)  # type: ignore
     freqs = np.array(freqs)  # type: ignore
     confidence = (cast(np.ndarray, freqs) > 0).astype(float)
-
-    return annotations.F0Data(times, freqs, confidence)
+    freqs = np.abs(freqs)
+    return annotations.F0Data(times, "s", freqs, "hz", confidence, "binary")
 
 
 @io.coerce_to_string_io
@@ -335,8 +336,11 @@ def load_notes(fhandle: TextIO) -> annotations.NoteData:
 
     return annotations.NoteData(
         np.array(intervals, dtype="float"),
+        "s",
         np.array(pitches, dtype="float"),
+        "hz",
         np.array(confidence, dtype="float"),
+        "binary",
     )
 
 
