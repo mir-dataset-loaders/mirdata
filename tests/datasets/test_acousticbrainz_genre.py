@@ -10,7 +10,7 @@ def test_track():
     default_trackid = "tagtraum#validation#be9e01e5-8f93-494d-bbaa-ddcc5a52f629#2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960#trance########"
     data_home = "tests/resources/mir_datasets/acousticbrainz_genre"
 
-    dataset = acousticbrainz_genre.Dataset(data_home)
+    dataset = acousticbrainz_genre.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -49,7 +49,7 @@ def test_to_jams():
     data_home = "tests/resources/mir_datasets/acousticbrainz_genre"
     trackid = "tagtraum#validation#be9e01e5-8f93-494d-bbaa-ddcc5a52f629#2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960#trance########"
 
-    dataset = acousticbrainz_genre.Dataset(data_home)
+    dataset = acousticbrainz_genre.Dataset(data_home, version="test")
     track = dataset.track(trackid)
 
     jam = track.to_jams()
@@ -58,7 +58,7 @@ def test_to_jams():
 def test_filter_index():
 
     data_home = "tests/resources/mir_datasets/acousticbrainz_genre"
-    dataset = acousticbrainz_genre.Dataset(data_home)
+    dataset = acousticbrainz_genre.Dataset(data_home, version="test")
     index = dataset.load_all_train()
     assert len(index) == 8
     index = dataset.load_all_validation()
@@ -101,7 +101,7 @@ def test_download(httpserver):
         )
     }
 
-    dataset = acousticbrainz_genre.Dataset(data_home)
+    dataset = acousticbrainz_genre.Dataset(data_home, version="test")
     dataset.remotes = remotes
     dataset.download()
 

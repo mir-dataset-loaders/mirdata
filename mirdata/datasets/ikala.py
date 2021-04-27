@@ -37,6 +37,13 @@ BIBTEX = """@inproceedings{chan2015vocal,
     year={2015},
     organization={IEEE}
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="ikala_index_1.0.json"),
+}
+
 TIME_STEP = 0.032  # seconds
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
@@ -45,6 +52,7 @@ REMOTES = {
         checksum="81097b587804ce93e56c7a331ba06abc",
     )
 }
+
 DOWNLOAD_INFO = """
     Unfortunately the iKala dataset is not available for download.
     If you have the iKala dataset, place the contents into a folder called
@@ -290,12 +298,14 @@ class Dataset(core.Dataset):
     The ikala dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="ikala",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

@@ -40,6 +40,12 @@ booktitle={Proceedings of the 12th International Society for Music Information R
 }
 """
 
+INDEXES = {
+    "default": "2.0",
+    "test": "2.0",
+    "2.0": core.Index(filename="billboard_index_2.0.json"),
+}
+
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
         filename="billboard-2.0-index.csv",
@@ -471,12 +477,14 @@ class Dataset(core.Dataset):
     The McGill Billboard dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="billboard",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

@@ -88,6 +88,11 @@ BIBTEX = """@dataset{nadine_kroher_2018_1322542,
 }
 """
 
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="cante100_index_1.0.json"),
+}
 
 REMOTES = {
     "spectrogram": download_utils.RemoteFileMetadata(
@@ -341,12 +346,14 @@ class Dataset(core.Dataset):
     The cante100 dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="cante100",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

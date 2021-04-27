@@ -57,6 +57,12 @@ BIBTEX = """
 }
 """
 
+INDEXES = {
+    "default": "1.5",
+    "test": "1.5",
+    "1.5": core.Index(filename="saraga_carnatic_index_1.5.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="saraga1.5_carnatic.zip",
@@ -488,12 +494,14 @@ class Dataset(core.Dataset):
     The saraga_carnatic dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="saraga_carnatic",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )

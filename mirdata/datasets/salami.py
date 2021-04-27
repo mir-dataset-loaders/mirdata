@@ -36,6 +36,13 @@ BIBTEX = """@inproceedings{smith2011salami,
     year={2011},
     series = {ISMIR},
 }"""
+
+INDEXES = {
+    "default": "2.0-corrected",
+    "test": "2.0-corrected",
+    "2.0-corrected": core.Index(filename="salami_index_2.0-corrected.json"),
+}
+
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="salami-data-public-hierarchy-corrections.zip",
@@ -258,12 +265,14 @@ class Dataset(core.Dataset):
     The salami dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="salami",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

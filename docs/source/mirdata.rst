@@ -52,6 +52,14 @@ cante100
    :inherited-members:
 
 
+compmusic_jingju_acappella
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_jingju_acappella
+   :members:
+   :inherited-members:
+
+
 compmusic_otmm_makam
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -59,6 +67,13 @@ compmusic_otmm_makam
    :members:
    :inherited-members:
 
+
+dagstuhl_choirset
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.dagstuhl_choirset
+   :members:
+   :inherited-members:
 
 dali
 ^^^^
@@ -68,10 +83,18 @@ dali
    :inherited-members:
 
 
+
 da_tacos
 ^^^^^^^^
 
 .. automodule:: mirdata.datasets.da_tacos
+
+
+
+freesound_one_shot_percussive_sounds
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.freesound_one_shot_percussive_sounds
    :members:
    :inherited-members:
 
@@ -88,6 +111,14 @@ giantsteps_tempo
 ^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.giantsteps_tempo
+   :members:
+   :inherited-members:
+
+
+good_sounds
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.good_sounds
    :members:
    :inherited-members:
 
@@ -112,6 +143,14 @@ guitarset
 ^^^^^^^^^
 
 .. automodule:: mirdata.datasets.guitarset
+   :members:
+   :inherited-members:
+
+
+haydn_op20
+^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.haydn_op20
    :members:
    :inherited-members:
 
@@ -188,6 +227,13 @@ phenicx_anechoic
    :inherited-members:
 
 
+queen
+^^^^^^^
+
+.. automodule:: mirdata.datasets.queen
+   :members:
+   
+
 rwc_classical
 ^^^^^^^^^^^^^
 
@@ -248,6 +294,14 @@ tonality_classicaldb
 ^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.tonality_classicaldb
+   :members:
+   :inherited-members:
+
+
+tonas
+^^^^^
+
+.. automodule:: mirdata.datasets.tonas
    :members:
    :inherited-members:
 

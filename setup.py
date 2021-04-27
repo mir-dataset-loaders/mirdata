@@ -37,6 +37,7 @@ if __name__ == "__main__":
             "jams",
             "requests",
             "pretty_midi >= 0.2.8",
+            "chardet",
         ],
         extras_require={
             "tests": [
@@ -58,5 +59,6 @@ if __name__ == "__main__":
             ],
             "dali": ["dali-dataset==1.1"],
             "da_tacos": ["deepdish"],
+            "haydn_op20": ["music21"],
         },
     )

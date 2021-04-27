@@ -70,6 +70,13 @@ BIBTEX = """@inproceedings{goto2002rwc,
   year={2002},
   series={ISMIR},
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="rwc_classical_index_1.0.json"),
+}
+
 REMOTES = {
     "annotations_beat": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-C-2001.BEAT.zip",
@@ -364,12 +371,14 @@ class Dataset(core.Dataset):
     The rwc_classical dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="rwc_classical",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,

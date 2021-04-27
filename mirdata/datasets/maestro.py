@@ -58,6 +58,12 @@ BIBTEX = """@inproceedings{
 }
 """
 
+INDEXES = {
+    "default": "2.0.0",
+    "test": "2.0.0",
+    "2.0.0": core.Index(filename="maestro_index_2.0.0.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0.zip",
@@ -242,12 +248,14 @@ class Dataset(core.Dataset):
     The maestro dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="maestro",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
@@ -307,6 +315,7 @@ class Dataset(core.Dataset):
         download_utils.downloader(
             self.data_home,
             remotes=self.remotes,
+            index=self._index_data,
             partial_download=partial_download,
             force_overwrite=force_overwrite,
             cleanup=cleanup,
