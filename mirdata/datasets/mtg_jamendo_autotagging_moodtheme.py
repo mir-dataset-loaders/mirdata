@@ -119,8 +119,10 @@ class Track(core.Track):
         audio_path (str): Path to the audio file
 
     Cached Properties:
-        artist_id (str): jamendo id
-
+        artist_id (str): JAMENDO artist id
+        album_id (str): JAMENDO album id
+        duration (float): track duration
+        tags (str): autotagging moodtheme annotations
 
     """
 
@@ -184,7 +186,6 @@ class Track(core.Track):
         )
 
 
-@io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MTG_jamendo_autotagging_moodtheme audio file.
 
@@ -196,7 +197,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=None, mono=True)
+    return librosa.load(fhandle, sr=44100, mono=False)
 
 
 @core.docstring_inherit(core.Dataset)
@@ -209,7 +210,7 @@ class Dataset(core.Dataset):
         super().__init__(
             data_home,
             version,
-            name="good_sounds",
+            name="mtg_jamendo_autotagging_moodtheme",
             track_class=Track,
             bibtex=BIBTEX,
             download_info=DOWNLOAD_INFO,
