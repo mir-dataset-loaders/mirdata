@@ -21,7 +21,6 @@ def test_track():
         "mfcc_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5",
         "tags_path": "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5",
         "track_id": "coveranalysis#W_163992#P_547131",
-        "work_id": "W_163992",
         "performance_id": "P_547131",
         "subset": "coveranalysis",
         "label": "W_163992",

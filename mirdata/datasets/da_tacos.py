@@ -124,12 +124,12 @@ REMOTES = {
         checksum="b8aed83c45687a6bac76de3da1799237",
         destination_dir=".",
     ),
-    # "benchmark_cens": download_utils.RemoteFileMetadata(
-    #     filename="da-tacos_benchmark_subset_cens.zip",
-    #     url="https://zenodo.org/record/4717628/files/da-tacos_benchmark_subset_cens.zip?download=1",
-    #     checksum="b32aab63ee401f0f8baec8aa35eb0975",
-    #     destination_dir=".",
-    # ),
+    "benchmark_cens": download_utils.RemoteFileMetadata(
+        filename="da-tacos_benchmark_subset_cens.zip",
+        url="https://zenodo.org/record/4717628/files/da-tacos_benchmark_subset_cens.zip?download=1",
+        checksum="b32aab63ee401f0f8baec8aa35eb0975",
+        destination_dir=".",
+    ),
     "benchmark_crema": download_utils.RemoteFileMetadata(
         filename="da-tacos_benchmark_subset_crema.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_crema.zip?download=1",
@@ -166,12 +166,12 @@ REMOTES = {
         checksum="4b9d4cd5beca571e1d614c9a77580f8c",
         destination_dir=".",
     ),
-    # "coveranalysis_cens": download_utils.RemoteFileMetadata(
-    #     filename="da-tacos_coveranalysis_subset_cens.zip",
-    #     url="https://zenodo.org/record/4717628/files/da-tacos_coveranalysis_subset_cens.zip?download=1",
-    #     checksum="7eb56dd3a44fa7d90cc6643bc446e79b",
-    #     destination_dir=".",
-    # ),
+    "coveranalysis_cens": download_utils.RemoteFileMetadata(
+        filename="da-tacos_coveranalysis_subset_cens.zip",
+        url="https://zenodo.org/record/4717628/files/da-tacos_coveranalysis_subset_cens.zip?download=1",
+        checksum="7eb56dd3a44fa7d90cc6643bc446e79b",
+        destination_dir=".",
+    ),
     "coveranalysis_crema": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_crema.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_crema.zip?download=1",
@@ -202,6 +202,11 @@ REMOTES = {
         checksum="11371910cad7012daaa81a5fe9dfa1c0",
         destination_dir=".",
     ),
+}
+INDEXES = {
+    "default": "1.1",
+    "test": "1.1",
+    "1.1": core.Index(filename="da_tacos_index_1.1.json"),
 }
 
 
@@ -471,12 +476,14 @@ class Dataset(core.Dataset):
     The Da-TACOS genre dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="da_tacos",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
