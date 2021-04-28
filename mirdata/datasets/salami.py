@@ -213,19 +213,19 @@ class Track(core.Track):
         )
 
 
-@io.coerce_to_bytes_io
-def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a Salami audio file.
 
     Args:
-        fhandle (str or file-like): path to audio file
+        fpath (str): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=None, mono=True)
+    return librosa.load(fpath, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
@@ -254,7 +254,8 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     return annotations.SectionData(
         np.array([times_revised[:-1], times_revised[1:]]).T,
         "s",
-        list(secs_revised[:-1], "open"),
+        list(secs_revised[:-1]),
+        "open",
     )
 
 

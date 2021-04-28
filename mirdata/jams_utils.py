@@ -495,11 +495,17 @@ def f0s_to_jams(f0_data, description=None):
     if f0_data is not None:
         if not isinstance(f0_data, annotations.F0Data):
             raise TypeError("Type should be F0Data.")
-        for t, f, c in zip(f0_data.times, f0_data.frequencies, f0_data.confidence):
+        if f0_data.confidence is None:
+            conf = [None for t in f0_data.times]
+        else:
+            conf = f0_data.confidence
+        for t, f, v, c in zip(
+            f0_data.times, f0_data.frequencies, f0_data.voicing, conf
+        ):
             jannot_f0.append(
                 time=t,
                 duration=0.0,
-                value={"index": 0, "frequency": f, "voiced": f > 0},
+                value={"index": 0, "frequency": f, "voiced": v},
                 confidence=c,
             )
     if description is not None:

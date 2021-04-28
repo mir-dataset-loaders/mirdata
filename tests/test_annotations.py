@@ -20,7 +20,9 @@ def test_repr():
         np.array([1.0, 2.0]), "s", np.array([1, 2]), "bar_index"
     )
     assert (
-        beat_data.__repr__() == "BeatData(position_unit, positions, time_unit, times)"
+        beat_data.__repr__()
+        == "BeatData(confidence, confidence_unit, "
+        + "position_unit, positions, time_unit, times)"
     )
 
 
@@ -128,13 +130,11 @@ def test_chord_data():
 def test_f0_data():
     times = np.array([1.0, 2.0, 3.0])
     frequencies = np.array([100.0, 150.0, 120.0])
-    confidence = np.array([0.1, 0.4, 0.2])
-    f0_data = annotations.F0Data(
-        times, "s", frequencies, "hz", confidence, "likelihood"
-    )
+    voicing = np.array([0.1, 0.4, 0.2])
+    f0_data = annotations.F0Data(times, "s", frequencies, "hz", voicing, "continuous")
     assert np.allclose(f0_data.times, times)
     assert np.allclose(f0_data.frequencies, frequencies)
-    assert np.allclose(f0_data.confidence, confidence)
+    assert np.allclose(f0_data.voicing, voicing)
 
 
 def test_multif0_data():

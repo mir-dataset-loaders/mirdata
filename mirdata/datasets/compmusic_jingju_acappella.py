@@ -208,8 +208,12 @@ class Track(core.Track):
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            lyrics_data=[(self.phrase, "phrases"), (self.phrase_char, "phrases_char")],
-            event_data=[(self.phoneme, "phoneme"), (self.syllable, "syllable")],
+            lyrics_data=[
+                (self.phrase, "phrases"),
+                (self.phrase_char, "phrases_char"),
+                (self.phoneme, "phoneme"),
+                (self.syllable, "syllable"),
+            ],
             metadata={
                 "work": self.work,
                 "details": self.details,
@@ -232,14 +236,14 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_phonemes(fhandle: TextIO) -> annotations.EventData:
+def load_phonemes(fhandle: TextIO) -> annotations.LyricData:
     """Load phonemes
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to a phoneme annotation file
 
     Returns:
-        EventData: phoneme annotation
+        LyricData: phoneme annotation
 
     """
 
@@ -285,14 +289,14 @@ def load_phrases(fhandle: TextIO) -> annotations.LyricData:
 
 
 @io.coerce_to_string_io
-def load_syllable(fhandle: TextIO) -> annotations.EventData:
+def load_syllable(fhandle: TextIO) -> annotations.LyricData:
     """Load syllable
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to a syllable annotation file
 
     Returns:
-        EventData: syllable annotation
+        LyricData: syllable annotation
 
     """
 

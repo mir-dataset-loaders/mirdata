@@ -169,19 +169,19 @@ class Track(core.Track):
         )
 
 
-@io.coerce_to_string_io
-def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_key audio file.
 
     Args:
-        fhandle (str or file-like): str or file-like pointing to an audio file
+        fpath (str): str pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=None, mono=True)
+    return librosa.load(fpath, sr=None, mono=True)
 
 
 @io.coerce_to_string_io

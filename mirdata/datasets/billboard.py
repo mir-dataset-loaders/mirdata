@@ -290,13 +290,13 @@ def load_chords(fhandle: TextIO):
 
     reader = csv.reader(fhandle, delimiter="\t")
     for l in reader:
-        if len(l):
+        if len(l) > 0:
             start_times.append(float(l[0]))
             end_times.append(float(l[1]))
             chords.append(l[2])
 
     chord_data = annotations.ChordData(
-        np.array([start_times, end_times]).T, "s", chords, "harte"
+        np.array([start_times, end_times]).T, "s", chords, "jams"
     )
     return chord_data
 

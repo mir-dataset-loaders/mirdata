@@ -328,6 +328,8 @@ Annotations
 
 .. autodata:: mirdata.annotations.TIME_UNITS
 
+.. autodata:: mirdata.annotations.VOICING_UNITS
+
 .. automodule:: mirdata.annotations
    :members:
 

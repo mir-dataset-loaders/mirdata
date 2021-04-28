@@ -42,7 +42,7 @@
     (4) Joint Research Centre, European Commission, Seville, ES
 """
 import csv
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, List
 
 import librosa
 import numpy as np
@@ -391,18 +391,36 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
     """
     times = []
     freqs = []
+    voicings = []
+    confs: Optional[List[Optional[float]]]
     confs = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        voicings.append(float(freq_val > 0))
+        freqs.append(np.abs(freq_val))
         if len(line) == 3:
             confs.append(float(line[2]))
         else:
-            confs.append(float(1.0))
+            confs.append(None)
+
+    if all([not c for c in confs]):
+        confs = None
+        conf_unit = None
+    else:
+        confs = np.array(confs)
+        conf_unit = "likelihood"
 
     return annotations.F0Data(
-        np.array(times), "s", np.array(freqs), "hz", np.array(confs), "likelihood"
+        np.array(times),
+        "s",
+        np.array(freqs),
+        "hz",
+        np.array(voicings),
+        "binary",
+        confs,
+        conf_unit,
     )
 
 

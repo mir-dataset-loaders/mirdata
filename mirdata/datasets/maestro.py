@@ -214,7 +214,7 @@ def load_notes(midi_path, midi=None):
     for note in midi.instruments[0].notes:
         intervals.append([note.start, note.end])
         pitches.append(librosa.midi_to_hz(note.pitch))
-        confidence.append(note.velocity)
+        confidence.append(float(note.velocity))
     return annotations.NoteData(
         np.array(intervals),
         "s",

@@ -171,15 +171,18 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
 
     times = []
     freqs = []
+    voicing = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        freqs.append(freq_val)
+        voicing.append(float(freq_val > 0))
 
     times = np.array(times)  # type: ignore
     freqs = np.array(freqs)  # type: ignore
-    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
-    pitch_data = annotations.F0Data(times, "s", freqs, "hz", confidence, "binary")
+    voicing = np.array(voicing)  # type: ignore
+    pitch_data = annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
     return pitch_data
 
 

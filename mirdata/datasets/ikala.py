@@ -123,6 +123,10 @@ class Track(core.Track):
     def lyrics(self) -> Optional[annotations.LyricData]:
         return load_lyrics(self.lyrics_path)
 
+    @core.cached_property
+    def pronunciations(self) -> Optional[annotations.LyricData]:
+        return load_pronunciations(self.lyrics_path)
+
     @property
     def vocal_audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """solo vocal audio (mono)
@@ -244,10 +248,10 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
     lines = fhandle.readlines()
     f0_midi = np.array([float(line) for line in lines])
     f0_hz = librosa.midi_to_hz(f0_midi) * (f0_midi > 0)
-    confidence = (f0_hz > 0).astype(float)
+    voicing = (f0_hz > 0).astype(float)
     f0_hz = np.abs(f0_hz)
     times = (np.arange(len(f0_midi)) * TIME_STEP) + (TIME_STEP / 2.0)
-    f0_data = annotations.F0Data(times, "s", f0_hz, "hz", confidence, "binary")
+    f0_data = annotations.F0Data(times, "s", f0_hz, "hz", voicing, "binary")
     return f0_data
 
 

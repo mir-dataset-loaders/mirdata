@@ -272,19 +272,19 @@ def load_spectrogram(fhandle: TextIO) -> np.ndarray:
     return spectrogram
 
 
-@io.coerce_to_bytes_io
-def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a cante100 audio file.
 
     Args:
-        fhandle (str or file-like): File-like object or path to audio file
+        fpath (str): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=22050, mono=False)
+    return librosa.load(fpath, sr=22050, mono=False)
 
 
 @io.coerce_to_string_io
@@ -301,16 +301,18 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """
     times = []
     freqs = []
+    voicing = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        freqs.append(np.abs(freq_val))
+        voicing.append(float(freq_val > 0))
 
     times = np.array(times)  # type: ignore
     freqs = np.array(freqs)  # type: ignore
-    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
-    freqs = np.abs(freqs)
-    return annotations.F0Data(times, "s", freqs, "hz", confidence, "binary")
+    voicing = np.array(voicing)  # type: ignore
+    return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
 @io.coerce_to_string_io

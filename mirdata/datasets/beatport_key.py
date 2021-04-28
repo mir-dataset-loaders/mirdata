@@ -114,7 +114,6 @@ class Track(core.Track):
 
         self.keys_path = self.get_path("key")
         self.metadata_path = self.get_path("meta")
-
         self.audio_path = self.get_path("audio")
 
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
@@ -165,19 +164,19 @@ class Track(core.Track):
         )
 
 
-@io.coerce_to_bytes_io
-def load_audio(fhandle):
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath):
     """Load a beatport_key audio file.
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to an audio file
+        fpath (str): path to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=None, mono=True)
+    return librosa.load(fpath, sr=None, mono=True)
 
 
 @io.coerce_to_string_io

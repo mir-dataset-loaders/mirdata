@@ -57,7 +57,7 @@ def test_to_jams():
         {"frequency": 0.0, "index": 0, "voiced": False},
         {"frequency": 965.992, "index": 0, "voiced": True},
     ]
-    assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
+    assert [f0.confidence for f0 in f0s] == [None, None]
 
     assert jam["file_metadata"]["title"] == "Beethoven"
     assert jam["file_metadata"]["artist"] == "MusicDelta"
@@ -72,17 +72,17 @@ def test_load_melody():
     melody_data = medleydb_melody.load_melody(melody_path)
 
     # check types
-    assert type(melody_data) == annotations.F0Data
-    assert type(melody_data.times) is np.ndarray
-    assert type(melody_data.frequencies) is np.ndarray
-    assert type(melody_data.confidence) is np.ndarray
+    assert isinstance(melody_data, annotations.F0Data)
+    assert isinstance(melody_data.times, np.ndarray)
+    assert isinstance(melody_data.frequencies, np.ndarray)
+    assert isinstance(melody_data.voicing, np.ndarray)
 
     # check values
     assert np.array_equal(
         melody_data.times, np.array([0.0058049886621315194, 0.052244897959183675])
     )
     assert np.array_equal(melody_data.frequencies, np.array([0.0, 965.99199999999996]))
-    assert np.array_equal(melody_data.confidence, np.array([0.0, 1.0]))
+    assert np.array_equal(melody_data.voicing, np.array([0.0, 1.0]))
 
 
 def test_load_melody3():

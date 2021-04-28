@@ -17,6 +17,7 @@ BEAT_POSITION_UNITS = {
 
 CHORD_UNITS = {
     "harte": "chords in harte format, e.g. Ab:maj7",
+    "jams": "chords in jams 'chord' format",
     "open": "no strict schema or units",
 }
 
@@ -24,6 +25,7 @@ CONFIDENCE_UNITS = {
     "likelihood": "score between 0 and 1",
     "velocity": "MIDI velocity between 0 and 127",
     "binary": "0 or 1",
+    "energy": "energy value, measured as the sum of a squared signal",
 }
 
 EVENT_UNITS = {"open": "no scrict schema or units"}
@@ -49,7 +51,12 @@ TEMPO_UNITS = {"bpm": "beats per minute"}
 TIME_UNITS = {
     "s": "seconds",
     "ms": "miliseconds",
-    "tick": "MIDI ticks",
+    "ticks": "MIDI ticks",
+}
+
+VOICING_UNITS = {
+    "binary": "voicing indicators as 0 or 1",
+    "continuous": "voicing indicators as continuous values between 0 and 1",
 }
 
 
@@ -69,23 +76,36 @@ class BeatData(Annotation):
         times (np.ndarray): array of time stamps with positive,
             strictly increasing values
         time_unit (str): time unit, one of TIME_UNITS
-        positions (np.ndarray or None): array of beat positions in the format
+        positions (np.ndarray): array of beat positions in the format
             of position_unit. For all units, values of 0 indicate beats which
             fall outside of a measure.
         position_unit (str): beat position unit, one of BEAT_POSITION_UNITS
+        confidence (np.ndarray): array of confidence values
+        confidence_unit (str): confidence unit, one of CONFIDENCE_UNITS
 
     """
 
-    def __init__(self, times, time_unit, positions, position_unit):
+    def __init__(
+        self,
+        times,
+        time_unit,
+        positions,
+        position_unit,
+        confidence=None,
+        confidence_unit=None,
+    ):
         validate_array_like(times, np.ndarray, float)
         validate_lengths_equal([times, positions])
         validate_times(times, time_unit)
         validate_beat_positions(positions, position_unit)
+        validate_confidence(confidence, confidence_unit)
 
         self.times = times
         self.time_unit = time_unit
         self.positions = positions
         self.position_unit = position_unit
+        self.confidence = confidence
+        self.confidence_unit = confidence_unit
 
 
 class SectionData(Annotation):
@@ -211,6 +231,9 @@ class F0Data(Annotation):
         time_unit (str): time unit, one of TIME_UNITS
         frequencies (np.ndarray): array of frequency values (as floats)
         frequency_unit (str): frequency unit, one of PITCH_UNITS
+        voicing (np.ndarray): array of voicing values, indicating whether or
+            not a time frame has an active pitch
+        voicing_unit (str): voicing unit, one of VOICING_UNITS
         confidence (np.ndarray or None): array of confidence values
         confidence_unit (str or None): confidence unit, one of CONFIDENCE_UNITS
 
@@ -222,23 +245,40 @@ class F0Data(Annotation):
         time_unit,
         frequencies,
         frequency_unit,
+        voicing,
+        voicing_unit,
         confidence=None,
         confidence_unit=None,
     ):
         validate_array_like(times, np.ndarray, float)
         validate_array_like(frequencies, np.ndarray, float)
+        validate_array_like(voicing, np.ndarray, float)
         validate_array_like(confidence, np.ndarray, float, none_allowed=True)
-        validate_lengths_equal([times, frequencies, confidence])
+        validate_lengths_equal([times, frequencies, voicing, confidence])
         validate_times(times, time_unit)
         validate_pitches(frequencies, frequency_unit)
+        validate_voicing(voicing, voicing_unit)
         validate_confidence(confidence, confidence_unit)
+        if any(voicing[frequencies == 0] != 0):
+            raise ValueError("Found frequencies with value 0, but a nonzero voicing.")
 
         self.times = times
         self.time_unit = time_unit
         self.frequencies = frequencies
         self.frequency_unit = frequency_unit
-        self.confidence = confidence
+        self.voicing = voicing
+        self.voicing_unit = voicing_unit
+        self._confidence = confidence
         self.confidence_unit = confidence_unit
+
+    @property
+    def confidence(self):
+        logging.warning(
+            "Warning: the AIP for annotations.F0Data.confidence has changed. "
+            + "For most datasets, confidence will now be None, and "
+            + "F0Data.voicing should be used instead."
+        )
+        return self._confidence
 
 
 class MultiF0Data(Annotation):
@@ -569,34 +609,69 @@ def validate_confidence(confidence, confidence_unit):
         return
 
     validate_unit(confidence_unit, CONFIDENCE_UNITS)
-
-    confidence_shape = np.shape(confidence)
-    if len(confidence_shape) != 1:
-        raise ValueError(
-            f"Confidence should be 1d, but array has shape {confidence_shape}"
-        )
+    if isinstance(confidence[0], list):
+        confidence_flat = [c for subconf in confidence for c in subconf]
+    else:
+        confidence_flat = confidence
 
     if confidence_unit == "likelihood" and (
-        np.any([np.any(np.array(c) < 0) for c in confidence])
-        or np.any([np.any(np.array(c) > 1) for c in confidence])
+        any([c < 0 for c in confidence_flat]) or any([c > 1 for c in confidence_flat])
     ):
         raise ValueError(
             "confidence with unit 'likelihood' should be between 0 and 1. "
             + "Found values outside [0, 1]."
         )
 
-    if confidence_unit == "binary" and set(confidence) != set([0, 1]):
+    if confidence_unit == "energy" and any([c < 0 for c in confidence_flat]):
+        raise ValueError(
+            "confidence with unit 'energy' should be nonnegative. "
+            + "Found negative values."
+        )
+
+    if confidence_unit == "binary" and any([c not in [0, 1] for c in confidence_flat]):
         raise ValueError(
             "confidence with unit 'binary' should only have values of 0 or 1. "
             + "Found non-binary values."
         )
 
     if confidence_unit == "velocity" and (
-        (confidence < 0).any() or (confidence > 127).any()
+        any([c < 0 for c in confidence_flat]) or any([c > 127 for c in confidence_flat])
     ):
         raise ValueError(
             "confidence with unit 'velocity' should be between 0 and 127. "
             + "Found values outside [0, 127]."
+        )
+
+
+def validate_voicing(voicing, voicing_unit):
+    """Validate if voicing is well-formed.
+
+    Args:
+        voicing (np.ndarray): an array of voicing values
+        voicing_unit (str): one of VOICING_UNITS
+
+    Raises:
+        ValueError: if voicing values are incompatible with the unit
+
+    """
+    validate_unit(voicing_unit, VOICING_UNITS)
+
+    voicing_shape = np.shape(voicing)
+    if len(voicing_shape) != 1:
+        raise ValueError(f"voicings should be 1d, but array has shape {voicing_shape}")
+
+    if voicing_unit == "continuous" and (
+        any([c < 0 for c in voicing]) or any([c > 1 for c in voicing])
+    ):
+        raise ValueError(
+            "voicing with unit 'continuous' should be between 0 and 1. "
+            + "Found values outside [0, 1]."
+        )
+
+    if voicing_unit == "binary" and any([c not in [0, 1] for c in voicing]):
+        raise ValueError(
+            "voicing with unit 'binary' should only have values of 0 or 1. "
+            + "Found non-binary values."
         )
 
 
@@ -641,11 +716,20 @@ def validate_chord_labels(chords, chord_unit):
     """
     validate_unit(chord_unit, CHORD_UNITS)
 
-    if chord_unit == "harte":
-        pattern = namespace("chord_harte")["properties"]["value"]["pattern"]
+    if chord_unit in ["harte", "jams"]:
+        if chord_unit == "harte":
+            pattern = namespace("chord_harte")["properties"]["value"]["pattern"]
+        elif chord_unit == "jams":
+            pattern = namespace("chord")["properties"]["value"]["pattern"]
+
         matches = [re.match(pattern, c) for c in chords]
         if not all(matches):
-            raise ValueError("chords don't conform to chord_unit harte")
+            non_matches = [c for (c, m) in zip(chords, matches) if not m]
+            raise ValueError(
+                "chords {} don't conform to chord_unit {}".format(
+                    non_matches, chord_unit
+                )
+            )
 
 
 def validate_key_labels(keys, key_unit):
@@ -665,7 +749,10 @@ def validate_key_labels(keys, key_unit):
         pattern = namespace("key_mode")["properties"]["value"]["pattern"]
         matches = [re.match(pattern, c) for c in keys]
         if not all(matches):
-            raise ValueError("keys don't conform to key_unit harte")
+            non_matches = [k for (k, m) in zip(keys, matches) if not m]
+            raise ValueError(
+                "keys {} don't conform to key_unit key-mode".format(non_matches)
+            )
 
 
 def validate_times(times, time_unit):

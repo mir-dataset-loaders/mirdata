@@ -201,19 +201,21 @@ class Track(core.Track):
         )
 
 
-@io.coerce_to_bytes_io
-def load_audio(fhandle):
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(audio_path):
     """Load a Saraga Hindustani audio file.
 
     Args:
-        fhandle (str or file-like): path to audio file
+        audio_path (str): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=44100, mono=False)
+    if audio_path is None:
+        return None
+    return librosa.load(audio_path, sr=44100, mono=False)
 
 
 @io.coerce_to_string_io
@@ -258,8 +260,8 @@ def load_pitch(fhandle):
 
     times = np.array(times)
     freqs = np.array(freqs)
-    confidence = (freqs > 0).astype(float)
-    return annotations.F0Data(times, "s", freqs, "hz", confidence, "binary")
+    voicing = (freqs > 0).astype(float)
+    return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
 @io.coerce_to_string_io
@@ -360,7 +362,7 @@ def load_sama(fhandle):
 
 
 @io.coerce_to_string_io
-def load_sections(sections_path):
+def load_sections(fhandle):
     """Load tracks sections
 
     Args:
@@ -370,36 +372,29 @@ def load_sections(sections_path):
         SectionData: section annotations for track
 
     """
-    if sections_path is None:
-        return None
-
-    if not os.path.exists(sections_path):
-        raise IOError("sections_path {} does not exist".format(sections_path))
-
     intervals = []
     section_labels = []
 
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            if line:
-                intervals.append(
-                    [
-                        float(line[0]),
-                        float(line[0]) + float(line[2]),
-                    ]
-                )
-                section_labels.append(str(line[3]) + "-" + str(line[1]))
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        if line:
+            intervals.append(
+                [
+                    float(line[0]),
+                    float(line[0]) + float(line[2]),
+                ]
+            )
+            section_labels.append(str(line[3]) + "-" + str(line[1]))
 
     # Return None if sections file is empty
     if not intervals:
         return None
 
-    return annotations.SectionData(np.array(intervals), section_labels)
+    return annotations.SectionData(np.array(intervals), "s", section_labels, "open")
 
 
 @io.coerce_to_string_io
-def load_phrases(phrases_path):
+def load_phrases(fhandle):
     """Load phrases
 
     Args:
@@ -410,24 +405,18 @@ def load_phrases(phrases_path):
         EventData: phrases annotation for track
 
     """
-    if phrases_path is None:
-        return None
-
-    if not os.path.exists(phrases_path):
-        raise IOError("phrases_path {} does not exist".format(phrases_path))
-
     start_times = []
     end_times = []
     events = []
-    with open(phrases_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            start_times.append(float(line[0]))
-            end_times.append(float(line[0]) + float(line[2]))
-            if len(line) == 4:
-                events.append(str(line[3].split("\n")[0]))
-            else:
-                events.append("")
+
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        start_times.append(float(line[0]))
+        end_times.append(float(line[0]) + float(line[2]))
+        if len(line) == 4:
+            events.append(str(line[3].split("\n")[0]))
+        else:
+            events.append("")
 
     if not start_times:
         return None
@@ -438,7 +427,7 @@ def load_phrases(phrases_path):
 
 
 @io.coerce_to_string_io
-def load_metadata(metadata_path):
+def load_metadata(fhandle):
     """Load a Saraga Hindustani metadata file
 
     Args:
@@ -459,11 +448,7 @@ def load_metadata(metadata_path):
             - layas (list, dicts): list of dicts containing the layas present in the track and its uuid
 
     """
-
-    with open(metadata_path) as f:
-        metadata = json.load(f)
-
-        return metadata
+    return json.load(fhandle)
 
 
 @core.docstring_inherit(core.Dataset)

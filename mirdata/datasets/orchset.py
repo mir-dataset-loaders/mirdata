@@ -231,15 +231,15 @@ def load_melody(fhandle: TextIO) -> annotations.F0Data:
 
     times = []
     freqs = []
-    confidence = []
+    voicing = []
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         times.append(float(line[0]))
         freqs.append(float(line[1]))
-        confidence.append(0.0 if line[1] == "0" else 1.0)
+        voicing.append(0.0 if line[1] == "0" else 1.0)
 
     melody_data = annotations.F0Data(
-        np.array(times), "s", np.array(freqs), "hz", np.array(confidence), "binary"
+        np.array(times), "s", np.array(freqs), "hz", np.array(voicing), "binary"
     )
     return melody_data
 
