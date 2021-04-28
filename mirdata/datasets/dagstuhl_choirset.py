@@ -392,7 +392,8 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
     times = []
     freqs = []
     voicings = []
-    confs: Optional[List[Optional[float]]]
+    confs: List[Optional[float]]
+    conf_array: Optional[np.ndarray]
     confs = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
@@ -406,10 +407,10 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
             confs.append(None)
 
     if all([not c for c in confs]):
-        confs = None
+        conf_array = None
         conf_unit = None
     else:
-        confs = np.array(confs)
+        conf_array = np.array(confs)
         conf_unit = "likelihood"
 
     return annotations.F0Data(
@@ -419,7 +420,7 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
         "hz",
         np.array(voicings),
         "binary",
-        confs,
+        conf_array,
         conf_unit,
     )
 
