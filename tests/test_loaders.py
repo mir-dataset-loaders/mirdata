@@ -335,10 +335,6 @@ EXCEPTIONS = {
         "load_notes": {"string_num": 1},
         "load_chords": {"leadsheet_version": False},
     },
-    "saraga": {
-        "load_tempo": {"iam_style": "carnatic"},
-        "load_sections": {"iam_style": "carnatic"},
-    },
     "tonas": {"load_f0": {"corrected": True}},
 }
 SKIP = {
