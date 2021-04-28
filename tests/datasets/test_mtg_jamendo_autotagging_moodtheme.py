@@ -20,7 +20,7 @@ def test_track():
         "artist_id": str,
         "album_id": str,
         "duration": float,
-        "tags": str
+        "tags": str,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -39,10 +39,10 @@ def test_track_properties_and_attributes():
     track = dataset.track(default_trackid)
 
     assert track.track_id == default_trackid
-    assert track.artist_id == 'artist_000087'
-    assert track.album_id == 'album_000149'
+    assert track.artist_id == "artist_000087"
+    assert track.album_id == "album_000149"
     assert track.duration == 212.7
-    assert track.tags == 'mood/theme---background'
+    assert track.tags == "mood/theme---background"
 
 
 def test_to_jams():
@@ -52,7 +52,7 @@ def test_to_jams():
     track = dataset.track(default_trackid)
     jam = track.to_jams()
     assert jam["sandbox"].track_id == default_trackid
-    assert jam["sandbox"].artist_id == 'artist_000087'
-    assert jam["sandbox"].album_id == 'album_000149'
+    assert jam["sandbox"].artist_id == "artist_000087"
+    assert jam["sandbox"].album_id == "album_000149"
     assert jam.file_metadata.duration == 212.7
-    assert jam["sandbox"].tags == 'mood/theme---background'
+    assert jam["sandbox"].tags == "mood/theme---background"

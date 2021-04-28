@@ -159,19 +159,19 @@ class Track(core.Track):
 
     @core.cached_property
     def artist_id(self) -> str:
-        return self._metadata()['metadata'][self.track_id]["ARTIST_ID"]
+        return self._metadata()["metadata"][self.track_id]["ARTIST_ID"]
 
     @core.cached_property
     def album_id(self) -> str:
-        return self._metadata()['metadata'][self.track_id]["ALBUM_ID"]
+        return self._metadata()["metadata"][self.track_id]["ALBUM_ID"]
 
     @core.cached_property
     def duration(self) -> float:
-        return float(self._metadata()['metadata'][self.track_id]["DURATION"])
+        return float(self._metadata()["metadata"][self.track_id]["DURATION"])
 
     @core.cached_property
     def tags(self) -> str:
-        return self._metadata()['metadata'][self.track_id]["TAGS"]
+        return self._metadata()["metadata"][self.track_id]["TAGS"]
 
     def to_jams(self):
         # Initialize top-level JAMS container
@@ -182,8 +182,8 @@ class Track(core.Track):
                 "artist_id": self.artist_id,
                 "album_id": self.album_id,
                 "duration": self.duration,
-                "tags": self.tags
-            }
+                "tags": self.tags,
+            },
         )
 
 
@@ -221,40 +221,112 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        meta_path = os.path.join(self.data_home, "metadata/data/autotagging_moodtheme.tsv")
-        if (
-            not os.path.exists(meta_path)
-        ):
+        meta_path = os.path.join(
+            self.data_home, "metadata/data/autotagging_moodtheme.tsv"
+        )
+        if not os.path.exists(meta_path):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         with open(meta_path, "r") as fhandle:
-            d = list(csv.DictReader(fhandle, delimiter="\t", fieldnames=["TRACK_ID", "ARTIST_ID", "ALBUM_ID", "PATH",
-                                                                         "DURATION", "TAGS"]))
-            meta = {m["TRACK_ID"]: {
-                "ARTIST_ID": m["ARTIST_ID"],
-                "ALBUM_ID": m["ALBUM_ID"],
-                "PATH": m["PATH"],
-                "DURATION": m["DURATION"],
-                "TAGS": m["TAGS"]
-            } for m in d[1:]}
+            d = list(
+                csv.DictReader(
+                    fhandle,
+                    delimiter="\t",
+                    fieldnames=[
+                        "TRACK_ID",
+                        "ARTIST_ID",
+                        "ALBUM_ID",
+                        "PATH",
+                        "DURATION",
+                        "TAGS",
+                    ],
+                )
+            )
+            meta = {
+                m["TRACK_ID"]: {
+                    "ARTIST_ID": m["ARTIST_ID"],
+                    "ALBUM_ID": m["ALBUM_ID"],
+                    "PATH": m["PATH"],
+                    "DURATION": m["DURATION"],
+                    "TAGS": m["TAGS"],
+                }
+                for m in d[1:]
+            }
 
         split = []
         for ii in range(5):
             split = {}
-            path_train = os.path.join(self.data_home, "metadata", "data", "splits", "split-" + str(ii), "autotagging_moodtheme-train.tsv")
+            path_train = os.path.join(
+                self.data_home,
+                "metadata",
+                "data",
+                "splits",
+                "split-" + str(ii),
+                "autotagging_moodtheme-train.tsv",
+            )
             with open(path_train, "r") as fhandle:
-                d = list(csv.DictReader(fhandle, delimiter="\t", fieldnames=["TRACK_ID", "ARTIST_ID", "ALBUM_ID", "PATH",
-                                                                             "DURATION", "TAGS"]))
+                d = list(
+                    csv.DictReader(
+                        fhandle,
+                        delimiter="\t",
+                        fieldnames=[
+                            "TRACK_ID",
+                            "ARTIST_ID",
+                            "ALBUM_ID",
+                            "PATH",
+                            "DURATION",
+                            "TAGS",
+                        ],
+                    )
+                )
                 split["train"] = [m["TRACK_ID"] for m in d[1:]]
-            path_validation = os.path.join(self.data_home, "metadata", "data", "splits", "split-" + str(ii), "autotagging_moodtheme-validation.tsv")
+            path_validation = os.path.join(
+                self.data_home,
+                "metadata",
+                "data",
+                "splits",
+                "split-" + str(ii),
+                "autotagging_moodtheme-validation.tsv",
+            )
             with open(path_validation, "r") as fhandle:
-                d = list(csv.DictReader(fhandle, delimiter="\t", fieldnames=["TRACK_ID", "ARTIST_ID", "ALBUM_ID", "PATH",
-                                                                             "DURATION", "TAGS"]))
+                d = list(
+                    csv.DictReader(
+                        fhandle,
+                        delimiter="\t",
+                        fieldnames=[
+                            "TRACK_ID",
+                            "ARTIST_ID",
+                            "ALBUM_ID",
+                            "PATH",
+                            "DURATION",
+                            "TAGS",
+                        ],
+                    )
+                )
                 split["validation"] = [m["TRACK_ID"] for m in d[1:]]
-            path_test = os.path.join(self.data_home, "metadata", "data", "splits", "split-" + str(ii), "autotagging_moodtheme-test.tsv")
+            path_test = os.path.join(
+                self.data_home,
+                "metadata",
+                "data",
+                "splits",
+                "split-" + str(ii),
+                "autotagging_moodtheme-test.tsv",
+            )
             with open(path_test, "r") as fhandle:
-                d = list(csv.DictReader(fhandle, delimiter="\t", fieldnames=["TRACK_ID", "ARTIST_ID", "ALBUM_ID", "PATH",
-                                                                             "DURATION", "TAGS"]))
+                d = list(
+                    csv.DictReader(
+                        fhandle,
+                        delimiter="\t",
+                        fieldnames=[
+                            "TRACK_ID",
+                            "ARTIST_ID",
+                            "ALBUM_ID",
+                            "PATH",
+                            "DURATION",
+                            "TAGS",
+                        ],
+                    )
+                )
                 split["test"] = [m["TRACK_ID"] for m in d[1:]]
         return {"metadata": meta, "split": split}
 
@@ -264,12 +336,12 @@ class Dataset(core.Dataset):
 
     def load_split(self, num):
         """Load a MTG_jamendo_autotagging_moodtheme pre-defined split. There are five different train/validation/tests splits.
-            Args:
-                 num (int): split to be reatrieved from 0 to 4
-            Returns:
-                * dict: {`track_id`: track data} - the train split
-                * dict: {`track_id`: track data} - the validation split
-                * dict: {`track_id`: track data} - the test split
+        Args:
+             num (int): split to be reatrieved from 0 to 4
+        Returns:
+            * dict: {`track_id`: track data} - the train split
+            * dict: {`track_id`: track data} - the validation split
+            * dict: {`track_id`: track data} - the test split
 
         """
         if not (0 <= num <= 4):
@@ -277,15 +349,17 @@ class Dataset(core.Dataset):
 
         meta = self._metadata
         train_tracks = {
-            k: v for k, v in self._index["tracks"].items() if k in meta[num]['train']
+            k: v for k, v in self._index["tracks"].items() if k in meta[num]["train"]
         }
 
         validation_tracks = {
-            k: v for k, v in self._index["tracks"].items() if k in meta[num]['validation']
+            k: v
+            for k, v in self._index["tracks"].items()
+            if k in meta[num]["validation"]
         }
 
         test_tracks = {
-            k: v for k, v in self._index["tracks"].items() if k in meta[num]['test']
+            k: v for k, v in self._index["tracks"].items() if k in meta[num]["test"]
         }
 
         return train_tracks, validation_tracks, test_tracks
