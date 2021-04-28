@@ -308,28 +308,6 @@ Core
 Annotations
 -----------
 
-.. autodata:: mirdata.annotations.BEAT_POSTIION_UNITS
-
-.. autodata:: mirdata.annotations.CHORD_UNITS
-
-.. autodata:: mirdata.annotations.CONFIDENCE_UNITS
-
-.. autodata:: mirdata.annotations.EVENT_UNITS
-
-.. autodata:: mirdata.annotations.KEY_UNITS
-
-.. autodata:: mirdata.annotations.LYRIC_UNITS
-
-.. autodata:: mirdata.annotations.PITCH_UNITS
-
-.. autodata:: mirdata.annotations.SECTION_UNITS
-
-.. autodata:: mirdata.annotations.TEMPO_UNITS
-
-.. autodata:: mirdata.annotations.TIME_UNITS
-
-.. autodata:: mirdata.annotations.VOICING_UNITS
-
 .. automodule:: mirdata.annotations
    :members:
 

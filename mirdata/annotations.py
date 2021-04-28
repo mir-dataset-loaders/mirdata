@@ -7,7 +7,7 @@ from jams.schema import namespace
 import librosa
 import numpy as np
 
-
+#: Beat position units
 BEAT_POSITION_UNITS = {
     "bar_index": "beat index within a bar, 1-indexed",
     "global_index": "beat index within full track, 1-indexed",
@@ -15,12 +15,14 @@ BEAT_POSITION_UNITS = {
     "gloabl_frac": "bar_frac, but where the integer part indicates the bar. e.g. 4.25",
 }
 
+#: Chord units
 CHORD_UNITS = {
     "harte": "chords in harte format, e.g. Ab:maj7",
     "jams": "chords in jams 'chord' format",
     "open": "no strict schema or units",
 }
 
+#: Confidence units
 CONFIDENCE_UNITS = {
     "likelihood": "score between 0 and 1",
     "velocity": "MIDI velocity between 0 and 127",
@@ -28,32 +30,41 @@ CONFIDENCE_UNITS = {
     "energy": "energy value, measured as the sum of a squared signal",
 }
 
+#: Event units
 EVENT_UNITS = {"open": "no scrict schema or units"}
 
+#: Key units
 KEY_UNITS = {"key_mode": "key labels in key-mode format, e.g. G#:minor"}
 
+#: Lyric units
 LYRIC_UNITS = {
     "words": "lyrics as words or phrases",
     "syllable_open": "lyrics segmented by syllable, no strict schema",
     "pronunciations_open": "lyric pronunciations, no strict schema",
 }
 
+#: Pitch units
 PITCH_UNITS = {
     "hz": "hertz",
     "midi": "MIDI note number",
     "pc": "pitch class, e.g. G#",
     "note_name": "pc with octave, e.g. Ab4",
 }
+
+#: Section units
 SECTION_UNITS = {"open": "no scrict schema or units"}
 
+#: Tempo units
 TEMPO_UNITS = {"bpm": "beats per minute"}
 
+#: Time units
 TIME_UNITS = {
     "s": "seconds",
     "ms": "miliseconds",
     "ticks": "MIDI ticks",
 }
 
+#: Voicing units
 VOICING_UNITS = {
     "binary": "voicing indicators as 0 or 1",
     "continuous": "voicing indicators as continuous values between 0 and 1",
