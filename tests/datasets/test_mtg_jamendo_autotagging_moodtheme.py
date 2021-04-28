@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 
 from mirdata.datasets import mtg_jamendo_autotagging_moodtheme
 from tests.test_utils import run_track_tests
@@ -77,3 +78,6 @@ def test_split_load_tracks():
     assert len(dataset.split_load_tracks(4)[0].keys()) == 1
     assert len(dataset.split_load_tracks(4)[1].keys()) == 1
     assert len(dataset.split_load_tracks(4)[2].keys()) == 1
+
+    with pytest.raises(Exception):
+        dataset.split_load_tracks(-1)
