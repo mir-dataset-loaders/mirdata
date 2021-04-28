@@ -3,6 +3,7 @@
 
 .. admonition:: Dataset Info
     :class: dropdown
+
     The MTG Jamendo autotagging mood/theme Dataset is a new open dataset for music auto-tagging. It
     is built using music available at Jamendo under Creative Commons licenses and tags provided by content uploaders. The
     dataset contains over 19,000 full audio tracks with 195 tags from mood/theme. It is provided
