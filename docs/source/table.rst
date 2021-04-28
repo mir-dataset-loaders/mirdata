@@ -192,6 +192,14 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/3.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/3.0
 
+    * - MTG_jamendo_autotagging_moodtheme
+     - - audio: ✅
+       - annotations: ✅
+     - - moodtheme annotations
+     - >18000
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
    * - MAESTRO
      - - audio: ✅
        - annotations: ✅
