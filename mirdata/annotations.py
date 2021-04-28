@@ -11,8 +11,8 @@ import numpy as np
 BEAT_POSITION_UNITS = {
     "bar_index": "beat index within a bar, 1-indexed",
     "global_index": "beat index within full track, 1-indexed",
-    "bar_frac": "beat position as fractions of bars, e.g. 0.25",
-    "gloabl_frac": "bar_frac, but where the integer part indicates the bar. e.g. 4.25",
+    "bar_fraction": "beat position as fractions of bars, e.g. 0.25",
+    "global_fraction": "bar_frac, but where the integer part indicates the bar. e.g. 4.25",
 }
 
 #: Chord units
@@ -707,6 +707,9 @@ def validate_pitches(pitches, pitch_unit):
             + "rather than negative pitch values."
         )
 
+    if pitch_unit == "midi" and np.any([np.any(np.array(p) > 127) for p in pitches]):
+        raise ValueError("pitches in midi format cannot be larger than 127. ")
+
     if pitch_unit in ["pc", "note_name"]:
         try:
             librosa.note_to_midi(pitches)
@@ -756,7 +759,7 @@ def validate_key_labels(keys, key_unit):
     """
     validate_unit(key_unit, KEY_UNITS)
 
-    if key_unit == "key-mode":
+    if key_unit == "key_mode":
         pattern = namespace("key_mode")["properties"]["value"]["pattern"]
         matches = [re.match(pattern, c) for c in keys]
         if not all(matches):
