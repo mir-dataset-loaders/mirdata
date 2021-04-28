@@ -60,7 +60,9 @@ def test_to_jams():
 
 
 def test_split_load_tracks():
-    dataset = mtg_jamendo_autotagging_moodtheme.Dataset("tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme")
+    dataset = mtg_jamendo_autotagging_moodtheme.Dataset(
+        "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
+    )
     assert len(dataset.split_load_tracks(0)[0].keys()) == 1
     assert len(dataset.split_load_tracks(0)[1].keys()) == 1
     assert len(dataset.split_load_tracks(0)[2].keys()) == 1

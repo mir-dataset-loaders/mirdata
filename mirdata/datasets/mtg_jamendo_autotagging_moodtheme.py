@@ -350,17 +350,21 @@ class Dataset(core.Dataset):
 
         meta = self._metadata
         train_tracks = {
-            k: v for k, v in self._index["tracks"].items() if k in meta['splits'][num]["train"]
+            k: v
+            for k, v in self._index["tracks"].items()
+            if k in meta["splits"][num]["train"]
         }
 
         validation_tracks = {
             k: v
             for k, v in self._index["tracks"].items()
-            if k in meta['splits'][num]["validation"]
+            if k in meta["splits"][num]["validation"]
         }
 
         test_tracks = {
-            k: v for k, v in self._index["tracks"].items() if k in meta['splits'][num]["test"]
+            k: v
+            for k, v in self._index["tracks"].items()
+            if k in meta["splits"][num]["test"]
         }
 
         return train_tracks, validation_tracks, test_tracks
