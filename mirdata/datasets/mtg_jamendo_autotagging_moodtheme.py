@@ -198,7 +198,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=None, mono=False)
 
 
 @core.docstring_inherit(core.Dataset)
