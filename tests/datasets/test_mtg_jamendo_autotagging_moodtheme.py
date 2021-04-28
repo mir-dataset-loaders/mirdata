@@ -27,7 +27,8 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 44100, "sample rate {} is not 44100".format(sr)
-    assert audio.shape == (2, 9378600), "audio shape {} was not (2, 9378600)".format(
+    # jamendo audios are creative commons :)
+    assert audio.shape == (2, 44100), "audio shape {} was not (2, 44100)".format(
         audio.shape
     )
 
