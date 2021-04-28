@@ -253,7 +253,7 @@ class Dataset(core.Dataset):
                 for m in d[1:]
             }
 
-        split = []
+        splits = []
         for ii in range(5):
             split = {}
             path_train = os.path.join(
@@ -328,7 +328,8 @@ class Dataset(core.Dataset):
                     )
                 )
                 split["test"] = [m["TRACK_ID"] for m in d[1:]]
-        return {"metadata": meta, "split": split}
+            splits.append(split)
+        return {"metadata": meta, "splits": splits}
 
     @core.copy_docs(load_audio)
     def load_audio(self, *args, **kwargs):
@@ -349,17 +350,17 @@ class Dataset(core.Dataset):
 
         meta = self._metadata
         train_tracks = {
-            k: v for k, v in self._index["tracks"].items() if k in meta[num]["train"]
+            k: v for k, v in self._index["tracks"].items() if k in meta['splits'][num]["train"]
         }
 
         validation_tracks = {
             k: v
             for k, v in self._index["tracks"].items()
-            if k in meta[num]["validation"]
+            if k in meta['splits'][num]["validation"]
         }
 
         test_tracks = {
-            k: v for k, v in self._index["tracks"].items() if k in meta[num]["test"]
+            k: v for k, v in self._index["tracks"].items() if k in meta['splits'][num]["test"]
         }
 
         return train_tracks, validation_tracks, test_tracks
