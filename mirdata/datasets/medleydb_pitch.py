@@ -24,7 +24,7 @@ from typing import BinaryIO, cast, Optional, TextIO, Tuple
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, io, jams_utils
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
@@ -38,6 +38,13 @@ INDEXES = {
     "default": "2.0",
     "test": "2.0",
     "2.0": core.Index(filename="medleydb_pitch_index_2.0.json"),
+}
+REMOTES = {
+    "notes_pyin": download_utils.RemoteFileMetadata(
+        filename="medleydb-pitch-pyin-notes.zip",
+        url="https://zenodo.org/record/4728793/files/medleydb-pitch-pyin-notes.zip?download=1",
+        checksum="464af0c8db7b6e70d87f833eb551a8fb",
+    ),
 }
 DOWNLOAD_INFO = """
     To download this dataset, visit:
@@ -200,6 +207,7 @@ class Dataset(core.Dataset):
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,
+            remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
