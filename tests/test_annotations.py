@@ -261,7 +261,7 @@ def test_validate_beat_positions():
         annotations.validate_beat_positions(np.array([0, 1.1, 2]), "global_index")
 
     with pytest.raises(ValueError):
-        annotations.validate_beat_positions(np.array([15, 16, 17]), "bar_index")
+        annotations.validate_beat_positions(np.array([15, 16, 40]), "bar_index")
 
     with pytest.raises(ValueError):
         annotations.validate_beat_positions(
