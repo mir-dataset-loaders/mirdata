@@ -589,7 +589,8 @@ def validate_beat_positions(positions, position_unit):
             + "Found fractional values."
         )
 
-    if position_unit == "bar_index" and np.max(positions) > 16:
+    # we expect no more than 32 beats per bar - this can be changed if a need arises!
+    if position_unit == "bar_index" and np.max(positions) > 32:
         raise ValueError(
             "beats with bar_index units should have indexes "
             + "which start from 1 at the beginning of every measure. "
