@@ -9,9 +9,7 @@
 """
 
 import csv
-import logging
 import os
-import shutil
 import re
 from typing import BinaryIO, TextIO, Optional, Tuple, Dict, List
 
@@ -292,12 +290,14 @@ def load_chords(fhandle: TextIO):
 
     reader = csv.reader(fhandle, delimiter="\t")
     for l in reader:
-        if len(l):
+        if len(l) > 0:
             start_times.append(float(l[0]))
             end_times.append(float(l[1]))
             chords.append(l[2])
 
-    chord_data = annotations.ChordData(np.array([start_times, end_times]).T, chords)
+    chord_data = annotations.ChordData(
+        np.array([start_times, end_times]).T, "s", chords, "jams"
+    )
     return chord_data
 
 
@@ -305,7 +305,7 @@ def load_sections(fpath: str):
     """Load letter-annotated sections from a Salami LAB file.
 
     Args:
-        fpath (str): path to audio file
+        fpath (str): path to sections file
 
     Returns:
         SectionData: section data
@@ -318,7 +318,7 @@ def load_named_sections(fpath: str):
     """Load name-annotated sections from a Salami LAB file.
 
     Args:
-        fpath (str): path to audio file
+        fpath (str): path to sections file
 
     Returns:
         SectionData: section data
@@ -357,7 +357,7 @@ def _load_sections(fpath: str, section_type: str):
             sections.append(timed_sections_clean[idx]["section"][section_label_idx])
 
     section_data = annotations.SectionData(
-        np.array([start_times, end_times]).T, sections
+        np.array([start_times, end_times]).T, "s", sections, "open"
     )
     return section_data
 

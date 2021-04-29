@@ -34,8 +34,8 @@ def test_track():
         "audio": tuple,
         "phrase": annotations.LyricData,
         "phrase_char": annotations.LyricData,
-        "phoneme": annotations.EventData,
-        "syllable": annotations.EventData,
+        "phoneme": annotations.LyricData,
+        "syllable": annotations.LyricData,
         "work": str,
         "details": None.__class__,
     }
@@ -90,8 +90,7 @@ def test_to_jams():
         None,
     ]
 
-    # Events
-    phonemes = jam.search(namespace="tag_open")[0]["data"]
+    phonemes = jam.search(namespace="lyrics")[2]["data"]
     assert len(phonemes) == 6
     assert [phoneme.time for phoneme in phonemes] == [0.0, 1.06, 1.16, 2.53, 2.65, 2.94]
     assert [phoneme.duration for phoneme in phonemes] == [
@@ -128,7 +127,6 @@ def test_load_phrases():
     assert type(parsed_phrases) == annotations.LyricData
     assert type(parsed_phrases.intervals) is np.ndarray
     assert type(parsed_phrases.lyrics) is list
-    assert type(parsed_phrases.pronunciations) is None.__class__
 
     # Check values
     assert np.array_equal(
@@ -175,7 +173,6 @@ def test_load_phrases():
     assert type(parsed_phrases_char) == annotations.LyricData
     assert type(parsed_phrases_char.intervals) is np.ndarray
     assert type(parsed_phrases_char.lyrics) is list
-    assert type(parsed_phrases_char.pronunciations) is None.__class__
 
     # Check values
     assert np.array_equal(
@@ -231,9 +228,9 @@ def test_load_phoneme():
     parsed_phonemes = compmusic_jingju_acappella.load_phonemes(phoneme_path)
 
     # Check types
-    assert type(parsed_phonemes) == annotations.EventData
+    assert type(parsed_phonemes) == annotations.LyricData
     assert type(parsed_phonemes.intervals) is np.ndarray
-    assert type(parsed_phonemes.events) is list
+    assert type(parsed_phonemes.lyrics) is list
 
     # Check values
     assert np.array_equal(
@@ -244,7 +241,7 @@ def test_load_phoneme():
         parsed_phonemes.intervals[:, 1],
         np.array([1.06, 1.16, 2.53, 2.65, 2.94, 3.05]),
     )
-    assert parsed_phonemes.events == ["", "@", "r\\'", "?", "AU^", "9"]
+    assert parsed_phonemes.lyrics == ["", "@", "r\\'", "?", "AU^", "9"]
 
     assert compmusic_jingju_acappella.load_phonemes(None) is None
 
@@ -259,9 +256,9 @@ def test_load_syllable():
     parsed_syllable = compmusic_jingju_acappella.load_syllable(syllable_path)
 
     # Check types
-    assert type(parsed_syllable) == annotations.EventData
+    assert type(parsed_syllable) == annotations.LyricData
     assert type(parsed_syllable.intervals) is np.ndarray
-    assert type(parsed_syllable.events) is list
+    assert type(parsed_syllable.lyrics) is list
 
     # Check values
     assert np.array_equal(
@@ -272,7 +269,7 @@ def test_load_syllable():
         parsed_syllable.intervals[:, 1],
         np.array([1.06, 2.65, 2.94, 3.76]),
     )
-    assert np.array_equal(parsed_syllable.events, np.array(["", "tan", "", "yang"]))
+    assert np.array_equal(parsed_syllable.lyrics, np.array(["", "tan", "", "yang"]))
 
     assert compmusic_jingju_acappella.load_syllable(None) is None
 

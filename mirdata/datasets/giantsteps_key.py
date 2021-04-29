@@ -33,16 +33,13 @@
 """
 
 import json
-import os
 from typing import BinaryIO, Dict, List, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import core, download_utils, jams_utils, io
+
 
 BIBTEX = """@inproceedings{knees2015two,
   title={Two data sets for tempo estimation and key detection in electronic dance music annotated from user corrections},
@@ -172,18 +169,19 @@ class Track(core.Track):
         )
 
 
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_key audio file.
 
     Args:
-        fhandle (str or file-like): path pointing to an audio file
+        fpath (str): str pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=None, mono=True)
+    return librosa.load(fpath, sr=None, mono=True)
 
 
 @io.coerce_to_string_io

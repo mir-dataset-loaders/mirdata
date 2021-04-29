@@ -13,18 +13,12 @@
 
 """
 import csv
-import logging
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
-import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (
@@ -269,7 +263,7 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
         ends.append(float(line[1]))
         chords.append(line[2])
 
-    return annotations.ChordData(np.array([begs, ends]).T, chords)
+    return annotations.ChordData(np.array([begs, ends]).T, "s", chords, "harte")
 
 
 @io.coerce_to_string_io
@@ -300,7 +294,7 @@ def load_vocal_activity(fhandle: TextIO) -> annotations.EventData:
             ends.append(float(raw_data[i + 1][0]))
             events.append(raw_data[i][1])
 
-    return annotations.EventData(np.array([begs, ends]).T, events)
+    return annotations.EventData(np.array([begs, ends]).T, "s", events, "open")
 
 
 @core.docstring_inherit(core.Dataset)

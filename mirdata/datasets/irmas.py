@@ -89,17 +89,13 @@ IRMAS Loader
 
 """
 import csv
-
 import os
 from typing import BinaryIO, List, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import core, download_utils, io, jams_utils
 
 BIBTEX = """
 @dataset{juan_j_bosch_2014_1290750,
