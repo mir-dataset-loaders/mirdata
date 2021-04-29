@@ -279,25 +279,25 @@ def test_validate_confidence():
     annotations.validate_confidence(np.array([0, 57.3, 127]), "velocity")
 
     with pytest.raises(ValueError):
-        annotations.validate_confidence(np.array([0, 1, 1, 0]), "asdf")
+        annotations.validate_confidence(np.array([0, 1, 1, 0.0]), "asdf")
 
     with pytest.raises(ValueError):
-        annotations.validate_confidence(np.array([[0, 1], [0, 2]]), "likelihood")
+        annotations.validate_confidence(np.array([[0, 1, 0, 2.0]]), "likelihood")
 
     with pytest.raises(ValueError):
-        annotations.validate_confidence(np.array([[0, 1], [0, -1]]), "likelihood")
+        annotations.validate_confidence(np.array([[0, 1, 0, -1.0]]), "likelihood")
 
     with pytest.raises(ValueError):
-        annotations.validate_confidence(np.array([[0, 1], [0, -1]]), "energy")
+        annotations.validate_confidence(np.array([[0, 1, 0, -1.0]]), "energy")
 
     with pytest.raises(ValueError):
-        annotations.validate_confidence(np.array([0, 2]), "binary")
+        annotations.validate_confidence(np.array([0, 2.0]), "binary")
 
     with pytest.raises(ValueError):
-        annotations.validate_confidence(np.array([-1, 60]), "velocity")
+        annotations.validate_confidence(np.array([-1, 60.0]), "velocity")
 
     with pytest.raises(ValueError):
-        annotations.validate_confidence(np.array([60, 128]), "velocity")
+        annotations.validate_confidence(np.array([60, 128.0]), "velocity")
 
 
 def test_validate_voicing():
