@@ -86,7 +86,7 @@ def test_to_jam():
 
     assert np.array_equal(key_data.intervals[:, 0], np.array([0.0, 644.0]))
     assert np.array_equal(key_data.intervals[:, 1], np.array([643.0, 644.0]))
-    assert np.array_equal(key_data.keys, ["Eb major", "Bb major"])
+    assert np.array_equal(key_data.keys, ["Eb:major", "Bb:major"])
 
     assert haydn_op20.load_key(None) is None
 
@@ -107,7 +107,7 @@ def test_load_key():
 
     assert np.array_equal(key_data.intervals[:, 0], np.array([0.0, 644.0]))
     assert np.array_equal(key_data.intervals[:, 1], np.array([643.0, 644.0]))
-    assert np.array_equal(key_data.keys, ["Eb major", "Bb major"])
+    assert np.array_equal(key_data.keys, ["Eb:major", "Bb:major"])
 
     assert haydn_op20.load_key(None) is None
 

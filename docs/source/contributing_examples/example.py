@@ -254,8 +254,11 @@ def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
         intervals.append([float(line[0]), float(line[1])])
         annotation.append(line[2])
 
+    # there are several annotation types in annotations.py
+    # They should be initialized with data, followed by their units
+    # see annotations.py for a complete list of types and units.
     annotation_data = annotations.EventData(
-        np.array(intervals), np.array(annotation)
+        np.array(intervals), "s", np.array(annotation), "open"
     )
     return annotation_data
 

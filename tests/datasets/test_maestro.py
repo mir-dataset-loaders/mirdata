@@ -74,7 +74,7 @@ def test_load_notes():
     expected_intervals = np.array([[0.98307292, 1.80989583], [1.78385417, 1.90625]])
     assert np.allclose(notes.intervals[0:2], expected_intervals)
     assert np.allclose(notes.notes[0:2], np.array([391.99543598, 523.2511306]))
-    assert np.allclose(notes.confidence[0:2], np.array([0.40944882, 0.52755906]))
+    assert np.allclose(notes.confidence[0:2], np.array([52, 67]))
 
 
 def test_load_metadata():

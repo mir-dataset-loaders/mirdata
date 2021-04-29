@@ -53,15 +53,13 @@
 """
 import logging
 import os
+from typing import BinaryIO, Optional, TextIO, Tuple
+
 import jams
 import librosa
 import numpy as np
-from typing import BinaryIO, Optional, TextIO, Tuple
 
-from mirdata import download_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """@inproceedings{xi2018guitarset,
@@ -205,7 +203,7 @@ class Track(core.Track):
             logging.info(
                 "Chord annotations for solo excerpts are the same with the comp excerpt."
             )
-        return load_chords(self.jams_path, leadsheet_version=True)
+        return load_chords(self.jams_path, True)
 
     @core.cached_property
     def inferred_chords(self):
@@ -213,7 +211,7 @@ class Track(core.Track):
             logging.info(
                 "Chord annotations for solo excerpts are the same as the comp excerpt."
             )
-        return load_chords(self.jams_path, leadsheet_version=False)
+        return load_chords(self.jams_path, False)
 
     @core.cached_property
     def key_mode(self) -> Optional[annotations.KeyData]:
@@ -325,7 +323,8 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load a Guitarset beats annotation.
 
     Args:
-        fhandle (str or file-like): File-like object or path of the jams annotation file
+        fhandle (str or file-like): File-like object or path
+            of the jams annotation file
 
     Returns:
         BeatData: Beat data
@@ -334,14 +333,15 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     anno = jam.search(namespace="beat_position")[0]
     times, values = anno.to_event_values()
     positions = [int(v["position"]) for v in values]
-    return annotations.BeatData(times, np.array(positions))
+    return annotations.BeatData(times, "s", np.array(positions), "bar_index")
 
 
-def load_chords(jams_path, leadsheet_version=True):
+# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
+def load_chords(jams_path, leadsheet_version):
     """Load a guitarset chord annotation.
 
     Args:
-        jams_path (str): Path of the jams annotation file
+        jams_path (str): path to the jams annotation file
         leadsheet_version (Bool):
             Whether or not to load the leadsheet version of the chord annotation
             If False, load the infered version.
@@ -352,13 +352,14 @@ def load_chords(jams_path, leadsheet_version=True):
     """
     if not os.path.exists(jams_path):
         raise IOError("jams_path {} does not exist".format(jams_path))
+
     jam = jams.load(jams_path)
     if leadsheet_version:
         anno = jam.search(namespace="chord")[0]
     else:
         anno = jam.search(namespace="chord")[1]
     intervals, values = anno.to_interval_values()
-    return annotations.ChordData(intervals, values)
+    return annotations.ChordData(intervals, "s", values, "harte")
 
 
 @io.coerce_to_string_io
@@ -375,14 +376,15 @@ def load_key_mode(fhandle: TextIO) -> annotations.KeyData:
     jam = jams.load(fhandle)
     anno = jam.search(namespace="key_mode")[0]
     intervals, values = anno.to_interval_values()
-    return annotations.KeyData(intervals, values)
+    return annotations.KeyData(intervals, "s", values, "key_mode")
 
 
+# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
 def load_pitch_contour(jams_path, string_num):
     """Load a guitarset pitch contour annotation for a given string
 
     Args:
-        jams_path (str): Path of the jams annotation file
+        jams_path (str): path to the jams annotation file
         string_num (int), in range(6): Which string to load.
             0 is the Low E string, 5 is the high e string.
 
@@ -399,14 +401,18 @@ def load_pitch_contour(jams_path, string_num):
     if len(times) == 0:
         return None
     frequencies = [v["frequency"] for v in values]
-    return annotations.F0Data(times, np.array(frequencies))
+    voicing = [float(v["voiced"]) for v in values]
+    return annotations.F0Data(
+        times, "s", np.array(frequencies), "hz", np.array(voicing), "binary"
+    )
 
 
+# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
 def load_notes(jams_path, string_num):
     """Load a guitarset note annotation for a given string
 
     Args:
-        jams_path (str): Path of the jams annotation file
+        jams_path (str): path to the jams annotation file
         string_num (int), in range(6): Which string to load.
             0 is the Low E string, 5 is the high e string.
 
@@ -422,7 +428,7 @@ def load_notes(jams_path, string_num):
     intervals, values = anno.to_interval_values()
     if len(values) == 0:
         return None
-    return annotations.NoteData(intervals, np.array(values))
+    return annotations.NoteData(intervals, "s", np.array(values), "midi")
 
 
 @core.docstring_inherit(core.Dataset)

@@ -44,18 +44,12 @@
     For more details, please visit: https://www.upf.edu/web/mtg/phenicx-anechoic
 
 """
-import logging
-import os, glob, re
-import jams
-import librosa
-import numpy as np
 from typing import BinaryIO, Optional, TextIO, Tuple, cast
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+import librosa
+import numpy as np
+
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
@@ -344,7 +338,7 @@ class MultiTrack(core.MultiTrack):
         intervals = np.vstack([start_times, end_times]).T
         values = np.take_along_axis(values, ind, axis=0)
 
-        return annotations.NoteData(intervals, values)
+        return annotations.NoteData(intervals, "s", values, "hz")
 
     def get_notes_for_instrument(self, instrument, notes_property="notes"):
         """Get the notes for a particular instrument
@@ -411,7 +405,7 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
         [librosa.note_to_hz(line.split(",")[2].strip("\n")) for line in content]
     )
 
-    return annotations.NoteData(intervals, values)
+    return annotations.NoteData(intervals, "s", values, "hz")
 
 
 @core.docstring_inherit(core.Dataset)

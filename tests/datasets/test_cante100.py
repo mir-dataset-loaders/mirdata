@@ -67,10 +67,10 @@ def test_to_jams():
         {"index": 0, "frequency": 137.0, "voiced": True},
         {"index": 0, "frequency": 220.34, "voiced": True},
         {"index": 0, "frequency": 400.0, "voiced": True},
-        {"index": 0, "frequency": -110.0, "voiced": False},
-        {"index": 0, "frequency": -110.0, "voiced": False},
+        {"index": 0, "frequency": 110.0, "voiced": False},
+        {"index": 0, "frequency": 110.0, "voiced": False},
     ]
-    assert [note.confidence for note in melody] == [0.0, 1.0, 1.0, 1.0, 0.0, 0.0]
+    assert [note.confidence for note in melody] == [None, None, None, None, None, None]
 
     # Validate note transciption
     notes = jam.search(namespace="note_hz")[0]["data"]
@@ -111,7 +111,7 @@ def test_load_melody():
     assert type(f0_data) == annotations.F0Data
     assert type(f0_data.times) is np.ndarray
     assert type(f0_data.frequencies) is np.ndarray
-    assert type(f0_data.confidence) is np.ndarray
+    assert type(f0_data.voicing) is np.ndarray
 
     # check values
     assert np.array_equal(
@@ -128,9 +128,9 @@ def test_load_melody():
         ),
     )
     assert np.array_equal(
-        f0_data.frequencies, np.array([0.0, 137.0, 220.34, 400.0, -110.0, -110.0])
+        f0_data.frequencies, np.array([0.0, 137.0, 220.34, 400.0, 110.0, 110.0])
     )
-    assert np.array_equal(f0_data.confidence, np.array([0.0, 1.0, 1.0, 1.0, 0.0, 0.0]))
+    assert np.array_equal(f0_data.voicing, np.array([0.0, 1.0, 1.0, 1.0, 0.0, 0.0]))
 
 
 def test_load_notes():

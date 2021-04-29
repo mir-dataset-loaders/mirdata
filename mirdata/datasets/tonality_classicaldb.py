@@ -35,16 +35,12 @@
 
 import csv
 import json
-import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import core
-from mirdata import download_utils
-from mirdata import io
-from mirdata import jams_utils
+from mirdata import core, download_utils, io, jams_utils
 
 
 BIBTEX = """@article{gomez2006tonal,

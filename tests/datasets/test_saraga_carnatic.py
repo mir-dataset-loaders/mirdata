@@ -106,7 +106,14 @@ def test_to_jams():
         {"index": 0, "frequency": 400.4300000, "voiced": True},
         {"index": 0, "frequency": 600.12300000, "voiced": True},
     ]
-    assert [pitch.confidence for pitch in pitches] == [0.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    assert [pitch.confidence for pitch in pitches] == [
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
 
     pitches_vocal = jam.search(namespace="pitch_contour")[1]["data"]
     assert len(pitches_vocal) == 6
@@ -135,12 +142,12 @@ def test_to_jams():
         {"index": 0, "frequency": 0.000000000000000000e00, "voiced": False},
     ]
     assert [pitch_vocal.confidence for pitch_vocal in pitches_vocal] == [
-        0.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        0.0,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
     ]
 
     # Tempo
@@ -158,7 +165,7 @@ def test_to_jams():
     assert len(samas) == 3
     assert [sama.time for sama in samas] == [4.894, 10.229, 15.724]
     assert [sama.duration for sama in samas] == [0.0, 0.0, 0.0]
-    assert [sama.value for sama in samas] == [1, 1, 1]
+    assert [sama.value for sama in samas] == [1, 2, 3]
     assert [sama.confidence for sama in samas] == [None, None, None]
 
     # Sections
@@ -303,7 +310,7 @@ def test_load_pitch():
     assert type(parsed_pitch) == annotations.F0Data
     assert type(parsed_pitch.times) is np.ndarray
     assert type(parsed_pitch.frequencies) is np.ndarray
-    assert type(parsed_pitch.confidence) is np.ndarray
+    assert type(parsed_pitch.voicing) is np.ndarray
 
     # Check values
     assert np.array_equal(
@@ -324,7 +331,7 @@ def test_load_pitch():
         ),
     )
     assert np.array_equal(
-        parsed_pitch.confidence, np.array([0.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+        parsed_pitch.voicing, np.array([0.0, 1.0, 1.0, 1.0, 1.0, 1.0])
     )
 
     pitch_vocal_path = track.pitch_vocal_path
@@ -334,7 +341,7 @@ def test_load_pitch():
     assert type(parsed_vocal_pitch) == annotations.F0Data
     assert type(parsed_vocal_pitch.times) is np.ndarray
     assert type(parsed_vocal_pitch.frequencies) is np.ndarray
-    assert type(parsed_vocal_pitch.confidence) is np.ndarray
+    assert type(parsed_vocal_pitch.voicing) is np.ndarray
 
     # Check values
     assert np.array_equal(
@@ -364,7 +371,7 @@ def test_load_pitch():
         ),
     )
     assert np.array_equal(
-        parsed_vocal_pitch.confidence, np.array([0.0, 1.0, 1.0, 1.0, 1.0, 0.0])
+        parsed_vocal_pitch.voicing, np.array([0.0, 1.0, 1.0, 1.0, 1.0, 0.0])
     )
 
     assert saraga_carnatic.load_pitch(None) is None
@@ -384,7 +391,7 @@ def test_load_sama():
 
     # Check values
     assert np.array_equal(parsed_sama.times, np.array([4.894, 10.229, 15.724]))
-    assert np.array_equal(parsed_sama.positions, np.array([1, 1, 1]))
+    assert np.array_equal(parsed_sama.positions, np.array([1, 2, 3]))
     assert saraga_carnatic.load_sama(None) is None
 
     track = dataset.track("117_Karuna_Nidhi_Illalo")

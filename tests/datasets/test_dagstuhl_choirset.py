@@ -120,7 +120,7 @@ def test_load_f0():
             ]
         ),
     )
-    assert np.array_equal(f0.confidence, np.array([1, 1, 1, 1, 1]))
+    assert np.array_equal(f0.voicing, np.array([1, 1, 1, 1, 1]))
 
 
 def test_load_score():
