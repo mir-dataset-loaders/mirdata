@@ -55,27 +55,6 @@ def coerce_to_bytes_io(
     return wrapper
 
 
-# @coerce_to_bytes_io
-# def load_audio(
-#     fhandle: BinaryIO, samplerate: Optional[float], mono: bool
-# ) -> Tuple[np.ndarray, float]:
-#     """Load an audio file.
-
-#     Args:
-#         fhandle (str or file-like): File-like object or path to audio file
-#         samplerate (float or None): Sample rate at which to load file, or None
-#             which loads the native sample rate of the audio file
-#         mono (bool): if True, loads audio as mono, averaging multiple channels
-#             if present. if False, loads audio with the native number of channels.
-
-#     Returns:
-#         * np.ndarray - the mono audio signal
-#         * float - The sample rate of the audio file
-
-#     """
-#     return librosa.load(fhandle, sr=samplerate, mono=mono)
-
-
 @coerce_to_bytes_io
 def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
     """Load a midi file.
