@@ -6,6 +6,7 @@ import re
 from jams.schema import namespace
 import librosa
 import numpy as np
+import scipy
 
 #: Beat position units
 BEAT_POSITION_UNITS = {
@@ -194,6 +195,65 @@ class NoteData(Annotation):
         )
         return self.pitches
 
+    def to_sparse_matrix(self, time_scale, frequency_scale, onsets_only=False):
+        """Convert note annotations to indexes of a sparse matrix (piano roll)
+
+        Args:
+            time_scale (np.ndarray): array of matrix time stamps in seconds
+            frequency_scale (np.ndarray): array of matrix frequency values in seconds
+            onsets_only (bool, optional): If True, returns an onset piano roll.
+                Defaults to False.
+
+        Returns:
+            * sparse_index (np.ndarray): Array of sparce indices
+            * confidence (np.ndarray): Array of confidence values for each index
+        """
+        intervals = time_to_seconds(self.intervals, self.interval_unit)
+        freqs_hz = pitch_to_hz(self.pitches, self.pitch_unit)
+        confidence = confidence_to_likelihood(self.confidence, self.confidence_unit)
+
+        time_index_0 = closest_index(
+            intervals[:, 0, np.newaxis], time_scale[:, np.newaxis]
+        )
+        freq_indexes = closest_index(
+            np.log(freqs_hz)[:, np.newaxis], np.log(frequency_scale)[:, np.newaxis]
+        )
+        if onsets_only:
+            onset_index = []
+            confidences = []
+            for t0, f, c in zip(time_index_0, freq_indexes, confidence):
+                onset_index.append([t0, f])
+                confidences.append(c)
+            return np.array(onset_index), np.array(confidences)
+
+        time_index_1 = closest_index(
+            intervals[:, 1, np.newaxis], time_scale[:, np.newaxis]
+        )
+        sparse_index = []
+        confidences = []
+        for t0, t1, f, c in zip(time_index_0, time_index_1, freq_indexes, confidence):
+            sparse_index.extend([[t, f] for t in range(t0, t1)])
+            confidences.extend([c for _ in range(t0, t1)])
+
+        return sparse_index, confidences
+
+    def to_matrix(self, time_scale, frequency_scale, onsets_only=False):
+        """Convert f0 data to a matrix (piano roll) defined by a time and frequency scale
+
+        Args:
+            time_scale (np.array): times in seconds
+            frequency_scale (np.array): frequencies in hz
+            onsets_only (bool, optional): If True, returns an onset piano roll.
+                Defaults to False.
+
+        Returns:
+            np.ndarray: 2D matrix of shape len(time_scale) x len(frequency_scale)
+        """
+        index, voicing = self.to_sparse_matrix(time_scale, frequency_scale, onsets_only)
+        matrix = np.zeros((len(time_scale), len(frequency_scale)))
+        matrix[index[:, 0], index[:, 1]] = voicing
+        return matrix
+
 
 class ChordData(Annotation):
     """ChordData class
@@ -290,6 +350,61 @@ class F0Data(Annotation):
             + "F0Data.voicing should be used instead."
         )
         return self._confidence
+
+    def to_sparse_matrix(self, time_scale, frequency_scale):
+        """
+        Convert F0 annotation to sparse matrix indices for a time-frequency matrix.
+
+        Args:
+            time_scale (np.array): times in seconds
+            frequency_scale (np.array): frequencies in hz
+
+        Returns:
+            * f0_sparse: np.array
+                [(time_index, frequency_index)]
+            * voicing: np.array
+                voicing for each sparse index
+        """
+        times = time_to_seconds(self.times, self.time_unit)
+        freqs_hz = pitch_to_hz(self.frequencies, self.frequency_unit)
+
+        freqs_new, voicing_new = resample_f0_series(
+            times,
+            freqs_hz,
+            self.voicing,
+            time_scale,
+        )
+
+        # get indexes in matrix
+        nonzero_freqs = freqs_new > 0  # find indexes for frequencies not equal to 0
+        freqs_new[freqs_new == 0] = 1  # change zero frequency value to avoid NaN
+        time_indexes = np.arange(len(time_scale))
+        freq_indexes = closest_index(
+            np.log(freqs_new)[:, np.newaxis], np.log(frequency_scale)[:, np.newaxis]
+        )
+
+        # create sparse index
+        index = [
+            (t, f)
+            for t, f in zip(time_indexes[nonzero_freqs], freq_indexes[nonzero_freqs])
+        ]
+
+        return np.array(index), voicing_new[nonzero_freqs]
+
+    def to_matrix(self, time_scale, frequency_scale):
+        """Convert f0 data to a matrix (piano roll) defined by a time and frequency scale
+
+        Args:
+            time_scale (np.array): times in seconds
+            frequency_scale (np.array): frequencies in hz
+
+        Returns:
+            np.ndarray: 2D matrix of shape len(time_scale) x len(frequency_scale)
+        """
+        index, voicing = self.to_sparse_matrix(time_scale, frequency_scale)
+        matrix = np.zeros((len(time_scale), len(frequency_scale)))
+        matrix[index[:, 0], index[:, 1]] = voicing
+        return matrix
 
 
 class MultiF0Data(Annotation):
@@ -473,6 +588,156 @@ class EventData(Annotation):
         self.interval_unit = interval_unit
         self.events = events
         self.event_unit = event_unit
+
+
+def time_to_seconds(times, time_unit):
+    """Convert a time array to seconds
+
+    Args:
+        times (np.ndarray): array of time values in units time_unit
+        time_unit (str): time unit, one of TIME_UNITS
+
+    Raises:
+        ValueError: If time unit is not convertable to seconds
+
+    Returns:
+        np.ndarray: times in seconds
+    """
+    if time_unit == "s":
+        return times
+    elif time_unit == "ms":
+        return times / 100.0
+
+    raise NotImplementedError(
+        "Conversion of time in units {} to seconds is not supported".format(time_unit)
+    )
+
+
+def pitch_to_hz(pitches, pitch_unit):
+    """Convert pitch values to Hz
+
+    Args:
+        pitches (np.array): array of pitch values
+        pitch_unit (str): unit of pitch, one of PITCH_UNITS
+
+    Raises:
+        NotImplementedError: If conversion from given unit is not supported
+
+    Returns:
+        np.array: array of pitch values in Hz
+    """
+    if pitch_unit == "hz":
+        return pitches
+    elif pitch_unit == "midi":
+        return librosa.midi_to_hz(pitches)
+    elif pitch_unit == "note_name":
+        return librosa.note_to_hz(pitches)
+
+    raise NotImplementedError(
+        "Conversion of pitch in units {} to Hz is not supported".format(pitch_unit)
+    )
+
+
+def confidence_to_likelihood(confidence, confidence_unit):
+    """Convert confidence values to likelihoods
+
+    Args:
+        confidence (np.array): array of confidence values
+        confidence_unit (str): unit of confidence, one of CONFIDENCE_UNITS
+
+    Raises:
+        NotImplementedError: If conversion is not supported
+
+    Returns:
+        np.array: array of confidence values as likelihoods
+    """
+    if confidence_unit in ["likelihood", "binary"]:
+        return confidence
+    elif confidence_unit == "velocity":
+        return confidence / 127.0
+
+    raise NotImplementedError(
+        "Conversion of confidence in units {} to likelihood is not supported".format(
+            confidence_unit
+        )
+    )
+
+
+def closest_index(input_array, target_array):
+    """Get array of indices of target_array that are closest to the input_array
+
+    Args:
+        input_array (np.ndarray): (n x 2) array of input values
+        target_array (np.ndarray): (m x 2) array of target values)
+
+    Returns:
+        np.ndarray: array of shape (n x 1) of indexes into target_array
+    """
+    return np.argmin(
+        scipy.spatial.distance.cdist(input_array, target_array),
+        axis=1,
+    )
+
+
+def resample_f0_series(times, frequencies, voicing, times_new):
+    """Resample an f0 series. This function is adapted from
+    mir_eval.resample_melody_series at:
+    https://github.com/craffel/mir_eval/blob/master/mir_eval/melody.py#L212
+
+    Args:
+        times (np.ndarray): times in seconds
+        frequencies (np.ndarray): frequencies in hz
+        voicing (np.ndarray): voicing as binary or confidence
+        times_new (np.ndarray): new time base, in seconds
+
+    Returns:
+        tuple: frequency_resampled, voicing_resampled
+
+    """
+    # Round to avoid floating point problems
+    times = np.round(times, 10)
+    times_new = np.round(times_new, 10)
+    # Add in an additional sample if we'll be asking for a time too large
+    if times_new.max() > times.max():
+        times = np.append(times, times_new.max())
+        frequencies = np.append(frequencies, 0)
+        voicing = np.append(voicing, 0)
+
+    # Add in an additional sample if the original times don't start at zero
+    if times[0] > 0:
+        times = np.insert(times, 0, 0)
+        frequencies = np.insert(frequencies, 0, frequencies[0])
+        voicing = np.insert(voicing, 0, voicing[0])
+
+    # We need to fix zero transitions if interpolation is not zero or nearest
+    # Fill in zero values with the last reported frequency
+    # to avoid erroneous values when resampling
+    frequencies_held = np.array(frequencies)
+    for n, frequency in enumerate(frequencies[1:]):
+        if frequency == 0:
+            frequencies_held[n + 1] = frequencies_held[n]
+    # Linearly interpolate frequencies
+    frequencies_resampled = scipy.interpolate.interp1d(
+        times, frequencies_held, "linear"
+    )(times_new)
+    # Retain zeros
+    frequency_mask = scipy.interpolate.interp1d(times, frequencies, "zero")(times_new)
+    frequencies_resampled *= frequency_mask != 0
+
+    # Use nearest-neighbor for voicing if it was used for frequencies
+    # if voicing is not binary, use linear interpolation
+    is_binary_voicing = np.all(
+        np.logical_or(np.equal(voicing, 0), np.equal(voicing, 1))
+    )
+    if not is_binary_voicing:
+        voicing_resampled = scipy.interpolate.interp1d(times, voicing, "linear")(
+            times_new
+        )
+    else:
+        voicing_resampled = scipy.interpolate.interp1d(times, voicing, "nearest")(
+            times_new
+        )
+    return frequencies_resampled, voicing_resampled
 
 
 def validate_array_like(array_like, expected_type, expected_dtype, none_allowed=False):
