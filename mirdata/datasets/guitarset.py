@@ -434,6 +434,7 @@ def load_pitch_contour(jams_path, string_num):
         return None
     frequencies = np.array([v["frequency"] for v in values])
     voicing = np.array([float(v["voiced"]) for v in values])
+    voicing[frequencies == 0] = 0
 
     filled_times, filled_freqs, filled_voicing = _fill_pitch_contour(
         times, frequencies, voicing, np.max(times), CONTOUR_HOP
