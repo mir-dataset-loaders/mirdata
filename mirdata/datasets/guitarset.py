@@ -360,7 +360,7 @@ def load_chords(jams_path, leadsheet_version):
     else:
         anno = jam.search(namespace="chord")[1]
     intervals, values = anno.to_interval_values()
-    return annotations.ChordData(intervals, "s", values, "harte")
+    return annotations.ChordData(intervals, "s", values, "jams")
 
 
 @io.coerce_to_string_io
