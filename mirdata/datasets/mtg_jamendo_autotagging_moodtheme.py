@@ -6,42 +6,16 @@
 
     The MTG Jamendo autotagging mood/theme Dataset is a new open dataset for music auto-tagging. It
     is built using music available at Jamendo under Creative Commons licenses and tags provided by content uploaders. The
-    dataset contains over 19,000 full audio tracks with 195 tags from mood/theme. It is provided
+    dataset contains 18,486 full audio tracks with 195 tags from mood/theme. It is provided
     five fixed data splits for a better and fair replication.
 
     The moodtheme tags are:
 
-    dreamy
-    emotion
-    filmmusic
-    energic
-    energy
-    inspirational
-    lovesong
-    melancholy
-    relaxed
-    melancolic
-    sadness
-    filmscore
-    romance
-    hope
-    motivation
-    happiness
-    sports
-    cinema
-    relaxation
-    child
-    kids
-    relaxingmusic
-    trailermusic
-    lovemusic
-    joy
-    xmas
-    epicmusic
-    motivate
-    darkness
-    sciencefiction
-    festif
+    action, adventure, advertising, ambiental, background, ballad, calm, children, christmas, commercial, cool,
+    corporate, dark, deep, documentary, drama, dramatic, dream, emotional, energetic, epic, fast, film, fun, funny,
+    game, groovy, happy, heavy, holiday, hopeful, horror, inspiring, love, meditative, melancholic, mellow, melodic,
+    motivational, movie, nature, party, positive, powerful, relaxing, retro, romantic, sad, sexy, slow, soft,
+    soundscape, space, sport, summer, trailer, travel, upbeat, uplifting.
 
     Emotion and theme recognition is a popular task in music information retrieval that is relevant for music search and
     recommendation systems.
@@ -84,7 +58,7 @@ INDEXES = {
     "1.0": core.Index(filename="mtg_jamendo_autotagging_moodtheme_index_1.0.json"),
 }
 DOWNLOAD_INFO = """
-    The audio files can be downloaded following the path described in https://multimediaeval.github.io/2019-Emotion-and-Theme-Recognition-in-Music-Task/
+    The audio files can be downloaded following the path described in https://github.com/MTG/mtg-jamendo-dataset#downloading-the-data
     
     To download audio, unpack and validate all tar archives:
     
@@ -216,7 +190,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             download_info=DOWNLOAD_INFO,
             indexes=INDEXES,
-            license_info="Creative Commons Attribution Share Alike 4.0 International.",
+            license_info="Creative Commons Attribution NonCommercial Share Alike 4.0 International.",
         )
 
     @core.cached_property
@@ -338,7 +312,7 @@ class Dataset(core.Dataset):
     def split_load_tracks(self, num):
         """Load a MTG_jamendo_autotagging_moodtheme pre-defined split. There are five different train/validation/tests splits.
         Args:
-             num (int): split to be reatrieved from 0 to 4
+             num (int): split to be retrieved from 0 to 4
         Returns:
             * dict: {`track_id`: track data} - the train split
             * dict: {`track_id`: track data} - the validation split
