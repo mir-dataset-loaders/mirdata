@@ -31,21 +31,14 @@
 """
 
 import json
-import glob
-import logging
 import os
-import shutil
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """@inproceedings{

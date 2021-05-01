@@ -1,6 +1,7 @@
 """Utilities for downloading from the web.
 """
 
+import chardet
 import glob
 import logging
 import os
@@ -8,7 +9,6 @@ import shutil
 import tarfile
 import urllib
 import zipfile
-import chardet
 
 from tqdm import tqdm
 
@@ -265,6 +265,7 @@ def extractall_unicode(zfile, out_dir):
 
     for m in zfile.infolist():
         data = zfile.read(m)  # extract zipped data into memory
+
         filename = m.filename
 
         # if block to deal with irmas and good-sounds archives

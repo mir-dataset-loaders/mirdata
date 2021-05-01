@@ -72,6 +72,7 @@ def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
 def load_notes_from_midi(
     midi_path: Optional[Union[str, BinaryIO]] = None,
     midi: Optional[pretty_midi.PrettyMIDI] = None,
+    skip_drums: Bool = True,
 ) -> annotations.NoteData:
     """Load note data from a midi file or
 
@@ -79,6 +80,7 @@ def load_notes_from_midi(
         midi_path (str or None): path to midi file or None
         midi (pretty_midi.PrettyMIDI or None): pre-loaded midi object or None
             if None, the midi object is loaded using midi_path
+        skip_drums (bool): if True, skips notes from intruments which are drums.
 
     Returns:
         NoteData: note annotations
@@ -93,10 +95,18 @@ def load_notes_from_midi(
     pitches = []
     confidence = []
     for instrument in midi.instruments:  # type: ignore
+        if instrument.is_drum and skip_drums:
+            continue
+
         for note in instrument.notes:
             intervals.append([note.start, note.end])
-            pitches.append(librosa.midi_to_hz(note.pitch))
-            confidence.append(note.velocity / 127.0)
+            pitches.append(note.pitch)
+            confidence.append(note.velocity)
     return annotations.NoteData(
-        np.array(intervals), np.array(pitches), np.array(confidence)
+        np.array(intervals),
+        "s",
+        np.array(pitches),
+        "midi",
+        np.array(confidence),
+        "velocity",
     )

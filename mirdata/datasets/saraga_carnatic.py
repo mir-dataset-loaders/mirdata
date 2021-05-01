@@ -32,14 +32,10 @@
 
 import csv
 import json
-import os
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -224,11 +220,12 @@ class Track(core.Track):
         )
 
 
-def load_metadata(metadata_path):
+@io.coerce_to_string_io
+def load_metadata(fhandle):
     """Load a Saraga Carnatic metadata file
 
     Args:
-        metadata_path (str): path to metadata json file
+        fhandle (str or file-like): File-like object or path to metadata json
 
     Returns:
         dict: metadata with the following fields
@@ -244,12 +241,10 @@ def load_metadata(metadata_path):
             - concert (list, dicts): list of dicts containing the concert where the track is present and its mbid
 
     """
-    with open(metadata_path) as f:
-        metadata = json.load(f)
-
-        return metadata
+    return json.load(fhandle)
 
 
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(audio_path):
     """Load a Saraga Carnatic audio file.
 
@@ -263,79 +258,61 @@ def load_audio(audio_path):
     """
     if audio_path is None:
         return None
-
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=44100, mono=False)
 
 
-def load_tonic(tonic_path):
+@io.coerce_to_string_io
+def load_tonic(fhandle):
     """Load track absolute tonic
 
     Args:
-        tonic_path (str): Local path where the tonic path is stored.
-            If `None`, returns None.
+        fhandle (str or file-like): Local path where the tonic path is stored.
 
     Returns:
         int: Tonic annotation in Hz
 
     """
-    if tonic_path is None:
-        return None
-
-    if not os.path.exists(tonic_path):
-        raise IOError("tonic_path {} does not exist".format(tonic_path))
-
-    with open(tonic_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            tonic = float(line[0])
-
+    reader = csv.reader(fhandle, delimiter="\t")
+    tonic = float(next(reader)[0])
     return tonic
 
 
-def load_pitch(pitch_path):
+@io.coerce_to_string_io
+def load_pitch(fhandle):
     """Load pitch
 
     Args:
-        pitch path (str): Local path where the pitch annotation is stored.
-            If `None`, returns None.
+        fhandle (str or file-like): Local path where the pitch annotation is stored.
 
     Returns:
         F0Data: pitch annotation
 
     """
-    if pitch_path is None:
-        return None
-
-    if not os.path.exists(pitch_path):
-        raise IOError("melody_path {} does not exist".format(pitch_path))
-
     times = []
     freqs = []
-    with open(pitch_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
+
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[1]))
 
     if not times:
         return None
 
     times = np.array(times)
     freqs = np.array(freqs)
-    confidence = (freqs > 0).astype(float)
-    return annotations.F0Data(times, freqs, confidence)
+    voicing = (freqs > 0).astype(float)
+    return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
-def load_tempo(tempo_path):
+@io.coerce_to_string_io
+def load_tempo(fhandle):
     """Load tempo from carnatic collection
 
     Args:
-        tempo_path (str): Local path where the tempo annotation is stored.
+        fhandle (str or file-like): Local path where the tempo annotation is stored.
 
     Returns:
-
         dict: Dictionary of tempo information with the following keys:
 
             - tempo_apm: tempo in aksharas per minute (APM)
@@ -344,148 +321,128 @@ def load_tempo(tempo_path):
             - beats_per_cycle: number of beats in one cycle of the tāla
             - subdivisions: number of aksharas per beat of the tāla
 
-
     """
-    if tempo_path is None:
-        return None
-
-    if not os.path.exists(tempo_path):
-        raise IOError("tempo_path {} does not exist".format(tempo_path))
-
     tempo_annotation = {}
 
-    with open(tempo_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        tempo_data = next(reader)
-        tempo_apm = tempo_data[0]
-        tempo_bpm = tempo_data[1]
-        sama_interval = tempo_data[2]
-        beats_per_cycle = tempo_data[3]
-        subdivisions = tempo_data[4]
+    reader = csv.reader(fhandle, delimiter=",")
+    tempo_data = next(reader)
+    tempo_apm = tempo_data[0]
+    tempo_bpm = tempo_data[1]
+    sama_interval = tempo_data[2]
+    beats_per_cycle = tempo_data[3]
+    subdivisions = tempo_data[4]
 
-        if "NaN" in tempo_data or " NaN" in tempo_data or "NaN " in tempo_data:
-            return None
+    if "NaN" in tempo_data or " NaN" in tempo_data or "NaN " in tempo_data:
+        return None
 
-        tempo_annotation["tempo_apm"] = (
-            float(tempo_apm) if "." in tempo_apm else int(tempo_apm)
-        )
-        tempo_annotation["tempo_bpm"] = (
-            float(tempo_bpm) if "." in tempo_bpm else int(tempo_bpm)
-        )
-        tempo_annotation["sama_interval"] = (
-            float(sama_interval) if "." in sama_interval else int(sama_interval)
-        )
-        tempo_annotation["beats_per_cycle"] = (
-            float(beats_per_cycle) if "." in beats_per_cycle else int(beats_per_cycle)
-        )
-        tempo_annotation["subdivisions"] = (
-            float(subdivisions) if "." in subdivisions else int(subdivisions)
-        )
+    tempo_annotation["tempo_apm"] = (
+        float(tempo_apm) if "." in tempo_apm else int(tempo_apm)
+    )
+    tempo_annotation["tempo_bpm"] = (
+        float(tempo_bpm) if "." in tempo_bpm else int(tempo_bpm)
+    )
+    tempo_annotation["sama_interval"] = (
+        float(sama_interval) if "." in sama_interval else int(sama_interval)
+    )
+    tempo_annotation["beats_per_cycle"] = (
+        float(beats_per_cycle) if "." in beats_per_cycle else int(beats_per_cycle)
+    )
+    tempo_annotation["subdivisions"] = (
+        float(subdivisions) if "." in subdivisions else int(subdivisions)
+    )
 
     return tempo_annotation
 
 
-def load_sama(sama_path):
+@io.coerce_to_string_io
+def load_sama(fhandle):
     """Load sama
 
     Args:
-        sama_path (str): Local path where the sama annotation is stored.
-            If `None`, returns None.
+        fhandle (str or file-like): Local path where the sama annotation is stored.
 
     Returns:
         BeatData: sama annotations
 
     """
-    if sama_path is None:
-        return None
-
-    if not os.path.exists(sama_path):
-        raise IOError("sama_path {} does not exist".format(sama_path))
-
     beat_times = []
     beat_positions = []
-    with open(sama_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            beat_times.append(float(line[0]))
-            beat_positions.append(1)
+    idx = 1
+
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        beat_times.append(float(line[0]))
+        beat_positions.append(idx)
+        idx += 1
 
     if not beat_times or beat_times[0] == -1.0:
         return None
 
-    return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
+    return annotations.BeatData(
+        np.array(beat_times), "s", np.array(beat_positions), "global_index"
+    )
 
 
-def load_sections(sections_path):
+@io.coerce_to_string_io
+def load_sections(fhandle):
     """Load sections from carnatic collection
 
     Args:
-        sections_path (str): Local path where the section annotation is stored.
+        fhandle (str or file-like): Local path where the section annotation is stored.
 
     Returns:
         SectionData: section annotations for track
 
     """
-    if sections_path is None:
-        return None
-
-    if not os.path.exists(sections_path):
-        raise IOError("sections_path {} does not exist".format(sections_path))
-
     intervals = []
     section_labels = []
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            if line != "\n":
-                intervals.append(
-                    [
-                        float(line[0]),
-                        float(line[0]) + float(line[2]),
-                    ]
-                )
-                section_labels.append(str(line[3]))
 
-        if not intervals:
-            return None
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        if line != "\n":
+            intervals.append(
+                [
+                    float(line[0]),
+                    float(line[0]) + float(line[2]),
+                ]
+            )
+            section_labels.append(str(line[3]))
 
-    return annotations.SectionData(np.array(intervals), section_labels)
+    if not intervals:
+        return None
+
+    return annotations.SectionData(np.array(intervals), "s", section_labels, "open")
 
 
-def load_phrases(phrases_path):
+@io.coerce_to_string_io
+def load_phrases(fhandle):
     """Load phrases
 
     Args:
-        phrases_path (str): Local path where the phrase annotation is stored.
-            If `None`, returns None.
+        fhandle (str or file-like): Local path where the phrase annotation is stored.
 
     Returns:
         EventData: phrases annotation for track
 
     """
-    if phrases_path is None:
-        return None
-
-    if not os.path.exists(phrases_path):
-        raise IOError("sections_path {} does not exist".format(phrases_path))
-
     start_times = []
     end_times = []
     events = []
-    with open(phrases_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            start_times.append(float(line[0]))
-            end_times.append(float(line[0]) + float(line[2]))
-            if len(line) == 4:
-                events.append(str(line[3].split("\n")[0]))
-            else:
-                events.append("")
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        start_times.append(float(line[0]))
+        end_times.append(float(line[0]) + float(line[2]))
+        if len(line) == 4:
+            events.append(str(line[3].split("\n")[0]))
+        else:
+            events.append("")
 
     if not start_times:
         return None
 
-    return annotations.EventData(np.array([start_times, end_times]).T, events)
+    return annotations.EventData(
+        np.array([start_times, end_times]).T, "s", events, "open"
+    )
 
 
 @core.docstring_inherit(core.Dataset)

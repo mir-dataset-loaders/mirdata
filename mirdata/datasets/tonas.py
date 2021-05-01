@@ -42,13 +42,14 @@ TONAS Loader
 
 """
 import csv
+import logging
 import os
-from typing import cast, TextIO, Tuple, Optional
+from typing import TextIO, Tuple, Optional
 
 import librosa
 import numpy as np
 
-from mirdata import jams_utils, core, annotations, io
+from mirdata import annotations, jams_utils, core, io
 
 
 BIBTEX = """
@@ -100,58 +101,6 @@ to Music Technology Group, Universitat Pompeu Fabra. All Rights Reserved.
 """
 
 
-class NoteData(annotations.NoteData):
-    """
-    This is an extended version of standard NoteData class to support energy annotation.
-
-    Attributes:
-        intervals (np.ndarray): (n x 2) array of intervals
-            (as floats) in seconds in the form [start_time, end_time]
-            with positive time stamps and end_time >= start_time.
-        notes (np.ndarray): array of notes (as floats) in Hz
-        energies (np.ndarray): array of energies (as floats) of each note
-        confidence (np.ndarray or None): array of confidence values
-            between 0 and 1
-
-    """
-
-    def __init__(self, intervals, notes, energies, confidence=None):
-        super().__init__(intervals, notes, confidence)
-        annotations.validate_array_like(energies, np.ndarray, float)
-        annotations.validate_lengths_equal([intervals, notes, energies, confidence])
-        self.energies = energies
-
-
-class F0Data(annotations.F0Data):
-    """
-    This is an extended version of standard F0Data class to support energy and estimated frequency values annotations.
-
-    Attributes:
-        times (np.ndarray): array of time stamps (as floats) in seconds
-            with positive, strictly increasing values
-        automatic_frequencies (np.ndarray): array of automatically extracted frequency values (as floats)
-            in Hz
-        frequencies (np.ndarray): array of manually corrected frequency values (as floats)
-            in Hz
-        energies (np.ndarray): array of energi values (as floats)
-        confidence (np.ndarray or None): array of confidence values
-            between 0 and 1
-
-    """
-
-    def __init__(
-        self, times, automatic_frequencies, frequencies, energies, confidence=None
-    ):
-        super().__init__(times, frequencies, confidence)
-        annotations.validate_array_like(automatic_frequencies, np.ndarray, float)
-        annotations.validate_array_like(energies, np.ndarray, float)
-        annotations.validate_lengths_equal(
-            [times, automatic_frequencies, frequencies, energies, confidence]
-        )
-        self.automatic_frequencies = automatic_frequencies
-        self.energies = energies
-
-
 class Track(core.Track):
     """TONAS track class
 
@@ -170,7 +119,8 @@ class Track(core.Track):
         tuning_frequency (float): tuning frequency of the symbolic notation
 
     Cached Properties:
-        melody (F0Data): annotated melody in extended F0Data format
+        f0_automatic (F0Data): automatically extracted f0
+        f0_corrected (F0Data): manually corrected f0 annotations
         notes (NoteData): annotated notes
 
     """
@@ -224,11 +174,24 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @core.cached_property
-    def f0(self) -> Optional[F0Data]:
-        return load_f0(self.f0_path)
+    def f0_automatic(self) -> Optional[annotations.F0Data]:
+        return load_f0(self.f0_path, False)
 
     @core.cached_property
-    def notes(self) -> Optional[NoteData]:
+    def f0_corrected(self) -> Optional[annotations.F0Data]:
+        return load_f0(self.f0_path, True)
+
+    @property
+    def f0(self):
+        logging.warning(
+            "Deprecation warning: Track.f0 is deprecated and will "
+            + "be removed in a future version. Use Track.f0_automatic "
+            + "or Track.f0_corrected"
+        )
+        return self.f0_corrected
+
+    @core.cached_property
+    def notes(self) -> Optional[annotations.NoteData]:
         return load_notes(self.notes_path)
 
     def to_jams(self):
@@ -260,12 +223,14 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     return librosa.load(fhandle, sr=44100, mono=True)
 
 
-@io.coerce_to_string_io
-def load_f0(fhandle: TextIO) -> Optional[F0Data]:
+# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
+def load_f0(fpath: str, corrected: bool) -> Optional[annotations.F0Data]:
     """Load TONAS f0 annotations
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to f0 annotation file
+        fpath (str): path pointing to f0 annotation file
+        corrected (bool): if True, loads manually corrected frequency values
+            otherwise, loads automatically extracted frequency values
 
     Returns:
         F0Data: predominant f0 melody
@@ -275,26 +240,32 @@ def load_f0(fhandle: TextIO) -> Optional[F0Data]:
     freqs = []
     freqs_corr = []
     energies = []
-    confidence = []
-    reader = np.genfromtxt(fhandle)
-    for line in reader:
-        times.append(float(line[0]))
-        energies.append(float(line[1]))
-        freqs.append(float(line[2]))
-        freqs_corr.append(float(line[3]))
-        confidence.append(1.0) if float(line[3]) > 0 else confidence.append(0.0)
+    with open(fpath, "r") as fhandle:
+        reader = np.genfromtxt(fhandle)
+        for line in reader:
+            times.append(float(line[0]))
+            freqs.append(float(line[2]))
+            freqs_corr.append(float(line[3]))
+            energies.append(float(line[1]))
 
-    return F0Data(
+    freq_array = np.array(freqs_corr if corrected else freqs, dtype="float")
+    energy_array = np.array(energies, dtype="float")
+    voicing_array = (freq_array > 0).astype("float")
+
+    return annotations.F0Data(
         np.array(times, dtype="float"),
-        np.array(freqs, dtype="float"),
-        np.array(freqs_corr, dtype="float"),
-        np.array(energies, dtype="float"),
-        np.array(confidence, dtype="float"),
+        "s",
+        freq_array,
+        "hz",
+        voicing_array,
+        "binary",
+        energy_array,
+        "energy",
     )
 
 
 @io.coerce_to_string_io
-def load_notes(fhandle: TextIO) -> Optional[NoteData]:
+def load_notes(fhandle: TextIO) -> Optional[annotations.NoteData]:
     """Load TONAS note data from the annotation files
 
     Args:
@@ -307,7 +278,6 @@ def load_notes(fhandle: TextIO) -> Optional[NoteData]:
     intervals = []
     pitches = []
     energy = []
-    confidence = []
 
     reader = csv.reader(fhandle, delimiter=",")
     tuning = next(reader)[0]
@@ -317,13 +287,14 @@ def load_notes(fhandle: TextIO) -> Optional[NoteData]:
         note_hz = _midi_to_hz(float(line[2]), float(tuning))
         pitches.append(note_hz)
         energy.append(float(line[3]))
-        confidence.append(1.0)
 
-    note_data = NoteData(
+    note_data = annotations.NoteData(
         np.array(intervals, dtype="float"),
+        "s",
         np.array(pitches, dtype="float"),
+        "hz",
         np.array(energy, dtype="float"),
-        np.array(confidence, dtype="float"),
+        "energy",
     )
 
     return note_data

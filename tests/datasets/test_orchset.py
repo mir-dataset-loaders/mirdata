@@ -66,7 +66,7 @@ def test_to_jams():
         {"frequency": 0.0, "index": 0, "voiced": False},
         {"frequency": 622.254, "index": 0, "voiced": True},
     ]
-    assert [f0.confidence for f0 in f0s] == [0.0, 0.0, 1.0]
+    assert [f0.confidence for f0 in f0s] == [None, None, None]
 
     assert jam["sandbox"]["alternating_melody"] == True
 
@@ -77,15 +77,15 @@ def test_load_melody():
     melody_data = orchset.load_melody(melody_path)
 
     # check types
-    assert type(melody_data) == annotations.F0Data
-    assert type(melody_data.times) is np.ndarray
-    assert type(melody_data.frequencies) is np.ndarray
-    assert type(melody_data.confidence) is np.ndarray
+    assert isinstance(melody_data, annotations.F0Data)
+    assert isinstance(melody_data.times, np.ndarray)
+    assert isinstance(melody_data.frequencies, np.ndarray)
+    assert isinstance(melody_data.voicing, np.ndarray)
 
     # check values
     assert np.array_equal(melody_data.times, np.array([0.0, 0.08, 0.09]))
     assert np.array_equal(melody_data.frequencies, np.array([0.0, 0.0, 622.254]))
-    assert np.array_equal(melody_data.confidence, np.array([0.0, 0.0, 1.0]))
+    assert np.array_equal(melody_data.voicing, np.array([0.0, 0.0, 1.0]))
 
 
 def test_load_metadata():

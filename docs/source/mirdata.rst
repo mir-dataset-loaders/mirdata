@@ -106,6 +106,14 @@ giantsteps_tempo
    :inherited-members:
 
 
+good_sounds
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.good_sounds
+   :members:
+   :inherited-members:
+
+
 groove_midi
 ^^^^^^^^^^^
 

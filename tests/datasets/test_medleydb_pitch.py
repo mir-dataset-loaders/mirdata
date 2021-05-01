@@ -46,7 +46,7 @@ def test_to_jams():
         {"frequency": 0.0, "index": 0, "voiced": False},
         {"frequency": 191.877, "index": 0, "voiced": True},
     ]
-    assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
+    assert [f0.confidence for f0 in f0s] == [None, None]
 
     assert jam["file_metadata"]["title"] == "NightOwl"
     assert jam["file_metadata"]["artist"] == "AClassicEducation"
@@ -61,17 +61,17 @@ def test_load_pitch():
     pitch_data = medleydb_pitch.load_pitch(pitch_path)
 
     # check types
-    assert type(pitch_data) == annotations.F0Data
-    assert type(pitch_data.times) is np.ndarray
-    assert type(pitch_data.frequencies) is np.ndarray
-    assert type(pitch_data.confidence) is np.ndarray
+    assert isinstance(pitch_data, annotations.F0Data)
+    assert isinstance(pitch_data.times, np.ndarray)
+    assert isinstance(pitch_data.frequencies, np.ndarray)
+    assert isinstance(pitch_data.voicing, np.ndarray)
 
     # check values
     assert np.array_equal(
         pitch_data.times, np.array([0.06965986394557823, 0.07546485260770976])
     )
     assert np.array_equal(pitch_data.frequencies, np.array([0.0, 191.877]))
-    assert np.array_equal(pitch_data.confidence, np.array([0.0, 1.0]))
+    assert np.array_equal(pitch_data.voicing, np.array([0.0, 1.0]))
 
 
 def test_load_metadata():

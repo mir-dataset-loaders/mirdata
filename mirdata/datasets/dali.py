@@ -276,12 +276,11 @@ def load_annotations_granularity(annotations_path, granularity):
         ends.append(round(annot["time"][1], 3))
         text.append(annot["text"])
     if granularity == "notes":
-
         annotation = annotations.NoteData(
-            np.array([begs, ends]).T, np.array(notes), None
+            np.array([begs, ends]).T, "s", np.array(notes), "hz"
         )
     else:
-        annotation = annotations.LyricData(np.array([begs, ends]).T, text, None)
+        annotation = annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
     return annotation
 
 

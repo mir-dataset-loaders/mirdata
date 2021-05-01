@@ -38,7 +38,7 @@
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
    * - Billboard (McGill)
-     - - audio: 🔑
+     - - audio: ❌
        - annotations: ✅
      - - :ref:`chords`
        - :ref:`sections`
@@ -49,7 +49,8 @@
    * - cante100
      - - audio: 🔑
        - annotations: ✅
-     - :ref:`f0`
+     - - :ref:`f0`
+       - Vocal :ref:`notes`
      - 100
      - :cante:`\ `
 
@@ -121,6 +122,16 @@
      - - global :ref:`genre`
        - global :ref:`tempo`
      - 664
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
+   * - Good Sounds
+     - - audio: : ✅
+       - annotations: ✅
+     - - instrument :ref:`instruments`
+       - sound quality metadata
+       - instrument metadata
+     - 16308
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
