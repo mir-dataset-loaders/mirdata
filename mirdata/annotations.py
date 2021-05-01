@@ -23,8 +23,8 @@ CHORD_UNITS = {
     "open": "no strict schema or units",
 }
 
-#: Confidence units
-CONFIDENCE_UNITS = {
+#: Amplitude/voicing units
+AMPLITUDE_UNITS = {
     "likelihood": "score between 0 and 1",
     "velocity": "MIDI velocity between 0 and 127",
     "binary": "0 or 1",
@@ -66,10 +66,7 @@ TIME_UNITS = {
 }
 
 #: Voicing units
-VOICING_UNITS = {
-    "binary": "voicing indicators as 0 or 1",
-    "continuous": "voicing indicators as continuous values between 0 and 1",
-}
+VOICING_UNITS = {k: AMPLITUDE_UNITS[k] for k in ["binary", "likelihood"]}
 
 
 class Annotation(object):
@@ -93,7 +90,7 @@ class BeatData(Annotation):
             fall outside of a measure.
         position_unit (str): beat position unit, one of BEAT_POSITION_UNITS
         confidence (np.ndarray): array of confidence values
-        confidence_unit (str): confidence unit, one of CONFIDENCE_UNITS
+        confidence_unit (str): confidence unit, one of AMPLITUDE_UNITS
 
     """
 
@@ -159,7 +156,7 @@ class NoteData(Annotation):
         pitches (np.ndarray): array of pitches
         pitch_unit (str): note unit, one of PITCH_UNITS
         confidence (np.ndarray or None): array of confidence values
-        confidence_unit (str or None): confidence unit, one of CONFIDENCE_UNITS
+        confidence_unit (str or None): confidence unit, one of AMPLITUDE_UNITS
 
     """
 
@@ -201,6 +198,7 @@ class NoteData(Annotation):
         time_scale_unit,
         frequency_scale,
         frequency_scale_unit,
+        amplitude_unit="binary",
         onsets_only=False,
     ):
         """Convert note annotations to indexes of a sparse matrix (piano roll)
@@ -210,12 +208,14 @@ class NoteData(Annotation):
             time_scale_unit (str): units for time scale values, one of TIME_UNITS
             frequency_scale (np.ndarray): array of matrix frequency values in seconds
             frequency_scale_unit (str): units for frequency scale values, one of PITCH_UNITS
+            amplitude_unit (str): units for amplitude values, one of AMPLITUDE_UNITS.
+                Defaults to "binary".
             onsets_only (bool, optional): If True, returns an onset piano roll.
                 Defaults to False.
 
         Returns:
             * sparse_index (np.ndarray): Array of sparce indices
-            * confidence (np.ndarray): Array of confidence values for each index
+            * amplitude (np.ndarray): Array of amplitude values for each index
         """
         intervals = convert_time_units(
             self.intervals, self.interval_unit, time_scale_unit
@@ -223,7 +223,15 @@ class NoteData(Annotation):
         freqs_hz = convert_pitch_units(
             self.pitches, self.pitch_unit, frequency_scale_unit
         )
-        confidence = confidence_to_likelihood(self.confidence, self.confidence_unit)
+
+        if self.confidence is not None:
+            confidence = convert_amplitude_units(
+                self.confidence, self.confidence_unit, amplitude_unit
+            )
+        else:
+            confidence = convert_amplitude_units(
+                np.ones((freqs_hz.shape)), "binary", amplitude_unit
+            )
 
         time_index_0 = closest_index(
             intervals[:, 0, np.newaxis], time_scale[:, np.newaxis]
@@ -252,12 +260,12 @@ class NoteData(Annotation):
                 continue
 
             t_start = max([t0, 0])
-            t_end = min([t1, max_idx])
+            t_end = (t1 if t1 != -1 else max_idx) + 1
 
             sparse_index.extend([[t, f] for t in range(t_start, t_end)])
             confidences.extend([c for _ in range(t_start, t_end)])
 
-        return sparse_index, confidences
+        return np.array(sparse_index), np.array(confidences)
 
     def to_matrix(
         self,
@@ -265,6 +273,7 @@ class NoteData(Annotation):
         time_scale_unit,
         frequency_scale,
         frequency_scale_unit,
+        amplitude_unit="binary",
         onsets_only=False,
     ):
         """Convert f0 data to a matrix (piano roll) defined by a time and frequency scale
@@ -285,6 +294,7 @@ class NoteData(Annotation):
             time_scale_unit,
             frequency_scale,
             frequency_scale_unit,
+            amplitude_unit,
             onsets_only,
         )
         matrix = np.zeros((len(time_scale), len(frequency_scale)))
@@ -304,7 +314,7 @@ class ChordData(Annotation):
         labels (list): list chord labels (as strings)
         label_unit (str): chord label schema
         confidence (np.ndarray or None): array of confidence values
-        confidence_unit (str or None): confidence unit, one of CONFIDENCE_UNITS
+        confidence_unit (str or None): confidence unit, one of AMPLITUDE_UNITS
     """
 
     def __init__(
@@ -343,7 +353,7 @@ class F0Data(Annotation):
             not a time frame has an active pitch
         voicing_unit (str): voicing unit, one of VOICING_UNITS
         confidence (np.ndarray or None): array of confidence values
-        confidence_unit (str or None): confidence unit, one of CONFIDENCE_UNITS
+        confidence_unit (str or None): confidence unit, one of AMPLITUDE_UNITS
 
     """
 
@@ -364,6 +374,7 @@ class F0Data(Annotation):
         validate_array_like(confidence, np.ndarray, float, none_allowed=True)
         validate_lengths_equal([times, frequencies, voicing, confidence])
         validate_times(times, time_unit)
+        validate_uniform_times(times)
         validate_pitches(frequencies, frequency_unit)
         validate_voicing(voicing, voicing_unit)
         validate_confidence(confidence, confidence_unit)
@@ -428,10 +439,7 @@ class F0Data(Annotation):
 
         # Use nearest-neighbor for voicing if it was used for frequencies
         # if voicing is not binary, use linear interpolation
-        is_binary_voicing = np.all(
-            np.logical_or(np.equal(voicing, 0), np.equal(voicing, 1))
-        )
-        if not is_binary_voicing:
+        if self.voicing_unit != "binary":
             voicing_resampled = scipy.interpolate.interp1d(
                 times, voicing, "linear", bounds_error=False, fill_value=0
             )(times_new)
@@ -440,13 +448,20 @@ class F0Data(Annotation):
                 times, voicing, "nearest", bounds_error=False, fill_value=0
             )(times_new)
 
-        confidence_resampled = (
-            scipy.interpolate.interp1d(
+        voicing_resampled[frequencies_resampled == 0] = 0
+
+        if confidence is None:
+            confidence_resampled = None
+        # binary confidence
+        elif self.confidence_unit == "binary":
+            confidence_resampled = scipy.interpolate.interp1d(
+                times, confidence, "nearest", bounds_error=False, fill_value=0
+            )(times_new)
+        # nonbinary confidence
+        else:
+            confidence_resampled = scipy.interpolate.interp1d(
                 times, confidence, "linear", bounds_error=False, fill_value=0
             )(times_new)
-            if confidence is not None
-            else None
-        )
 
         return F0Data(
             times_new,
@@ -460,7 +475,12 @@ class F0Data(Annotation):
         )
 
     def to_sparse_index(
-        self, time_scale, time_scale_unit, frequency_scale, frequency_scale_unit
+        self,
+        time_scale,
+        time_scale_unit,
+        frequency_scale,
+        frequency_scale_unit,
+        amplitude_unit="binary",
     ):
         """
         Convert F0 annotation to sparse matrix indices for a time-frequency matrix.
@@ -470,12 +490,14 @@ class F0Data(Annotation):
             time_scale_unit (str): time scale units, one of TIME_UNITS
             frequency_scale (np.array): frequencies in frequency_unit
             frequency_scale_unit (str): frequency scale units, one of PITCH_UNITS
+            amplitude_unit (str): amplitude units, one of AMPLITUDE_UNITS
+                Defaults to "binary".
 
         Returns:
             * f0_sparse: np.array
                 [(time_index, frequency_index)]
-            * voicing: np.array
-                voicing for each sparse index
+            * amplitude: np.array
+                amplitude for each sparse index
         """
         f0dat = self.resample(time_scale, time_scale_unit)
         frequencies = convert_pitch_units(
@@ -497,11 +519,29 @@ class F0Data(Annotation):
             for t, f in zip(time_indexes[nonzero_freqs], freq_indexes[nonzero_freqs])
             if t != -1 and f != -1
         ]
+        voicing = np.array(
+            [
+                v
+                for (v, t, f) in zip(
+                    f0dat.voicing[nonzero_freqs],
+                    time_indexes[nonzero_freqs],
+                    freq_indexes[nonzero_freqs],
+                )
+                if t != -1 and f != -1
+            ]
+        )
 
-        return np.array(index), f0dat.voicing[nonzero_freqs]
+        return np.array(index), convert_amplitude_units(
+            voicing, self.voicing_unit, amplitude_unit
+        )
 
     def to_matrix(
-        self, time_scale, time_scale_unit, frequency_scale, frequency_scale_unit
+        self,
+        time_scale,
+        time_scale_unit,
+        frequency_scale,
+        frequency_scale_unit,
+        amplitude_unit="binary",
     ):
         """Convert f0 data to a matrix (piano roll) defined by a time and frequency scale
 
@@ -510,12 +550,18 @@ class F0Data(Annotation):
             time_scale_unit (str): time scale units, one of TIME_UNITS
             frequency_scale (np.array): frequencies in frequency_unit
             frequency_scale_unit (str): frequency scale units, one of PITCH_UNITS
+            amplitude_unit (str): amplitude units, one of AMPLITUDE_UNITS
+                Defaults to "binary".
 
         Returns:
             np.ndarray: 2D matrix of shape len(time_scale) x len(frequency_scale)
         """
         index, voicing = self.to_sparse_index(
-            time_scale, time_scale_unit, frequency_scale, frequency_scale_unit
+            time_scale,
+            time_scale_unit,
+            frequency_scale,
+            frequency_scale_unit,
+            amplitude_unit,
         )
         matrix = np.zeros((len(time_scale), len(frequency_scale)))
         matrix[index[:, 0], index[:, 1]] = voicing
@@ -532,7 +578,7 @@ class MultiF0Data(Annotation):
         frequency_list (list): list of lists of frequency values (as floats)
         frequency_unit (str): frequency unit, one of PITCH_UNITS
         confidence_list (np.ndarray or None): list of lists of confidence values
-        confidence_unit (str or None): confidence unit, one of CONFIDENCE_UNITS
+        confidence_unit (str or None): confidence unit, one of AMPLITUDE_UNITS
 
     """
 
@@ -550,6 +596,7 @@ class MultiF0Data(Annotation):
         validate_array_like(confidence_list, list, list, none_allowed=True)
         validate_lengths_equal([times, frequency_list, confidence_list])
         validate_times(times, time_unit)
+        validate_uniform_times(times)
         validate_pitches(frequency_list, frequency_unit)
         validate_confidence(confidence_list, confidence_unit)
 
@@ -593,13 +640,13 @@ class MultiF0Data(Annotation):
 
         # create array of frequencies plus additional empty element at the end for
         # target time stamps that are out of the interpolation range
-        freq_vals = self.frequency_list + [np.array([])]
+        freq_vals = self.frequency_list + [[]]
 
         # map interpolated indices back to frequency values
         frequencies_resampled = [freq_vals[i] for i in new_frequency_index.astype(int)]
 
         if self.confidence_list is not None:
-            confidence_vals = self.confidence_list + [np.array([])]
+            confidence_vals = self.confidence_list + [[]]
             confidence_resampled = [
                 confidence_vals[i] for i in new_frequency_index.astype(int)
             ]
@@ -616,7 +663,12 @@ class MultiF0Data(Annotation):
         )
 
     def to_sparse_index(
-        self, time_scale, time_scale_unit, frequency_scale, frequency_scale_unit
+        self,
+        time_scale,
+        time_scale_unit,
+        frequency_scale,
+        frequency_scale_unit,
+        amplitude_unit="binary",
     ):
         """
         Convert MultiF0 annotation to sparse matrix indices for a time-frequency matrix.
@@ -626,12 +678,14 @@ class MultiF0Data(Annotation):
             time_scale_unit (str): time scale units, one of TIME_UNITS
             frequency_scale (np.array): frequencies in frequency_unit
             frequency_scale_unit (str): frequency scale units, one of PITCH_UNITS
+            amplitude_unit (str): amplitude units, one of AMPLITUDE_UNITS
+                Defaults to "binary".
 
         Returns:
             * f0_sparse: np.array
                 [(time_index, frequency_index)]
-            * voicing: np.array
-                voicing for each sparse index
+            * amplitude: np.array
+                amplitude for each sparse index
         """
         multif0dat = self.resample(time_scale, time_scale_unit)
         frequencies = convert_pitch_units(
@@ -642,12 +696,15 @@ class MultiF0Data(Annotation):
         time_indexes_flattened = np.array(
             [t for (t, f_list) in zip(time_indexes, frequencies) for f in f_list]
         )
-        frequencies_flattened = [f for f_list in frequencies for f in f_list]
-        confidence_flattened = (
-            np.array([c for c_list in multif0dat.confidence_list for c in c_list])
-            if multif0dat.confidence_list is None
-            else np.ones((len(time_indexes_flattened),))
-        )
+        frequencies_flattened = np.array([f for f_list in frequencies for f in f_list])
+        if multif0dat.confidence_list is None:
+            confidence_flattened = np.ones((len(time_indexes_flattened),))
+            conf_unit = "binary"
+        else:
+            confidence_flattened = np.array(
+                [c for c_list in multif0dat.confidence_list for c in c_list]
+            )
+            conf_unit = self.confidence_unit
 
         # get frequency indexes in matrix
         nonzero_freqs = (
@@ -669,10 +726,17 @@ class MultiF0Data(Annotation):
             )
             if t != -1 and f != -1
         ]
-        return np.array(index), confidence_flattened[nonzero_freqs]
+        return np.array(index), convert_amplitude_units(
+            confidence_flattened[nonzero_freqs], conf_unit, amplitude_unit
+        )
 
     def to_matrix(
-        self, time_scale, time_scale_unit, frequency_scale, frequency_scale_unit
+        self,
+        time_scale,
+        time_scale_unit,
+        frequency_scale,
+        frequency_scale_unit,
+        amplitude_unit="binary",
     ):
         """Convert f0 data to a matrix (piano roll) defined by a time and frequency scale
 
@@ -681,12 +745,18 @@ class MultiF0Data(Annotation):
             time_scale_unit (str): time scale units, one of TIME_UNITS
             frequency_scale (np.array): frequencies in frequency_unit
             frequency_scale_unit (str): frequency scale units, one of PITCH_UNITS
+            amplitude_unit (str): amplitude units, one of AMPLITUDE_UNITS
+                Defaults to "binary".
 
         Returns:
             np.ndarray: 2D matrix of shape len(time_scale) x len(frequency_scale)
         """
         index, voicing = self.to_sparse_index(
-            time_scale, time_scale_unit, frequency_scale, frequency_scale_unit
+            time_scale,
+            time_scale_unit,
+            frequency_scale,
+            frequency_scale_unit,
+            amplitude_unit,
         )
         matrix = np.zeros((len(time_scale), len(frequency_scale)))
         matrix[index[:, 0], index[:, 1]] = voicing
@@ -773,7 +843,7 @@ class TempoData(Annotation):
         tempos (list): array of tempo values (as floats)
         tempo_unit (str): tempo unit, one of TEMPO_UNITS
         confidence (np.ndarray or None): array of confidence values
-        confidence_unit (str or None): confidence unit, one of CONFIDENCE_UNITS
+        confidence_unit (str or None): confidence unit, one of AMPLITUDE_UNITS
 
     """
 
@@ -851,6 +921,8 @@ def convert_time_units(times, time_unit, target_time_unit):
     Returns:
         np.ndarray: times in units target_time_unit
     """
+    if time_unit == "ticks" and target_time_unit == "ticks":
+        return times
 
     def _to_seconds(times, time_unit):
         """Convert times in time_unit to seconds"""
@@ -892,6 +964,8 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
     Returns:
         np.array: array of pitch values in target_pitch_unit
     """
+    if pitch_unit == "pc" and target_pitch_unit == "pc":
+        return pitches
 
     def _to_hz(pitches, pitch_unit):
         """Convert pitches in pitch_unit to Hz"""
@@ -899,7 +973,7 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
             return pitches
 
         if pitch_unit == "midi":
-            zero_idx = pitches[pitches == 0]
+            zero_idx = pitches == 0
             pitches_hz = librosa.midi_to_hz(pitches)
             pitches_hz[zero_idx] = 0
             return pitches_hz
@@ -915,7 +989,7 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
             return pitches_hz
 
         if target_pitch_unit == "midi":
-            zero_idx = pitches_hz[pitches_hz == 0]
+            zero_idx = pitches_hz == 0
             pitches_midi = librosa.hz_to_midi(pitches_hz)
             pitches_midi[zero_idx] = 0
             return pitches_midi
@@ -935,29 +1009,47 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
         )
 
 
-def confidence_to_likelihood(confidence, confidence_unit):
-    """Convert confidence values to likelihoods
+def convert_amplitude_units(amplitude, amplitude_unit, target_amplitude_unit):
+    """Convert amplitude values to likelihoods
 
     Args:
-        confidence (np.array): array of confidence values
-        confidence_unit (str): unit of confidence, one of CONFIDENCE_UNITS
+        amplitude (np.array): array of amplitude values
+        amplitude_unit (str): unit of amplitude, one of AMPLITUDE_UNITS
+        target_amplitude_unit (str): target unit of amplitude, one of AMPLITUDE_UNITS
 
     Raises:
         NotImplementedError: If conversion is not supported
 
     Returns:
-        np.array: array of confidence values as likelihoods
+        np.array: array of amplitude values as in target amplitude unit
     """
-    if confidence_unit in ["likelihood", "binary"]:
-        return confidence
-    elif confidence_unit == "velocity":
-        return confidence / 127.0
 
-    raise NotImplementedError(
-        "Conversion of confidence in units {} to likelihood is not supported".format(
-            confidence_unit
+    def _to_likelihood(amplitude, amplitude_unit):
+        if amplitude_unit in ["likelihood", "binary"]:
+            return amplitude
+        if amplitude_unit == "velocity":
+            return amplitude / 127.0
+        raise NotImplementedError
+
+    def _from_likelihood(amplitude, target_amplitude_unit):
+        if target_amplitude_unit == "likelihood":
+            return amplitude
+        if target_amplitude_unit == "binary":
+            return np.ceil(amplitude)
+        if target_amplitude_unit == "velocity":
+            return amplitude * 127.0
+        raise NotImplementedError
+
+    try:
+        return _from_likelihood(
+            _to_likelihood(amplitude, amplitude_unit), target_amplitude_unit
         )
-    )
+    except NotImplementedError:
+        raise NotImplementedError(
+            "Conversion of amplitude in units {} to {} is not supported".format(
+                amplitude_unit, target_amplitude_unit
+            )
+        )
 
 
 def closest_index(input_array, target_array):
@@ -1116,7 +1208,7 @@ def validate_confidence(confidence, confidence_unit):
 
     Args:
         confidence (np.ndarray): an array of confidence values
-        confidence_unit (str): one of CONFIDENCE_UNITS
+        confidence_unit (str): one of AMPLITUDE_UNITS
 
     Raises:
         ValueError: if confidence values are incompatible with the unit
@@ -1125,7 +1217,7 @@ def validate_confidence(confidence, confidence_unit):
     if confidence is None:
         return
 
-    validate_unit(confidence_unit, CONFIDENCE_UNITS)
+    validate_unit(confidence_unit, AMPLITUDE_UNITS)
     if isinstance(confidence[0], list):
         confidence_flat = [c for subconf in confidence for c in subconf]
     else:
@@ -1177,11 +1269,11 @@ def validate_voicing(voicing, voicing_unit):
     if len(voicing_shape) != 1:
         raise ValueError(f"voicings should be 1d, but array has shape {voicing_shape}")
 
-    if voicing_unit == "continuous" and (
+    if voicing_unit == "likelihood" and (
         any([c < 0 for c in voicing]) or any([c > 1 for c in voicing])
     ):
         raise ValueError(
-            "voicing with unit 'continuous' should be between 0 and 1. "
+            "voicing with unit 'likelihood' should be between 0 and 1. "
             + "Found values outside [0, 1]."
         )
 
@@ -1355,3 +1447,12 @@ def validate_unit(unit, unit_values, allow_none=False):
 
     if unit not in unit_values:
         raise ValueError("unit={} is not one of {}".format(unit, unit_values))
+
+
+def validate_uniform_times(times):
+    time_diffs = np.diff(times)
+    median_diff = np.median(time_diffs)
+    if any(np.abs(time_diffs - median_diff) > 0.01):
+        raise ValueError(
+            "time stamps should be uniformly spaced, but found non-uniform spacing"
+        )
