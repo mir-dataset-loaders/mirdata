@@ -18,18 +18,13 @@
 
 import csv
 import json
-import logging
 import os
 from typing import BinaryIO, cast, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, io, jams_utils
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
@@ -200,15 +195,18 @@ def load_melody(fhandle: TextIO) -> annotations.F0Data:
     """
     times = []
     freqs = []
+    voicing = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        freqs.append(freq_val)
+        voicing.append(float(freq_val > 0))
 
     times = np.array(times)  # type: ignore
     freqs = np.array(freqs)  # type: ignore
-    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
-    return annotations.F0Data(times, freqs, confidence)
+    voicing = np.array(voicing)  # type: ignore
+    return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
 @io.coerce_to_string_io
@@ -235,7 +233,9 @@ def load_melody3(fhandle: TextIO) -> annotations.MultiF0Data:
         conf_list.append([float(float(v) > 0) for v in line[1:]])
 
     times = np.array(times)  # type: ignore
-    melody_data = annotations.MultiF0Data(times, freqs_list, conf_list)
+    melody_data = annotations.MultiF0Data(
+        times, "s", freqs_list, "hz", conf_list, "binary"
+    )
     return melody_data
 
 

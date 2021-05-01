@@ -9,14 +9,13 @@
     This dataset contains 30 pieces composed by Joseph Haydn in symbolic format, which have each been manually
     annotated with harmonic analyses.
 """
+import logging
 import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
 
 import numpy as np
 
 from mirdata import core, io, jams_utils, download_utils
-
-import logging
 
 try:
     import music21
@@ -208,6 +207,18 @@ def _load_key_base(fhandle, resolution):
     return annotations
 
 
+def _format_key_string(key_string):
+    """Format a key string to match key_mode format
+
+    Args:
+        key_string (str): unformatted key string
+
+    Returns:
+        str: key_mode format key string
+    """
+    return key_string.replace("-", "b").replace(" ", ":")
+
+
 @io.coerce_to_string_io
 def load_key(fhandle: TextIO, resolution=28):
     """Load haydn op20 key data from a file
@@ -221,14 +232,23 @@ def load_key(fhandle: TextIO, resolution=28):
 
     """
     keys = _load_key_base(fhandle, resolution)
-    start_times, end_times, key_names = [0], [], [str(keys[0]["key"]).replace("-", "b")]
-    for ii, k in enumerate(keys):
-        if str(k["key"]).replace("-", "b") != key_names[-1]:
-            end_times.append(keys[ii]["time"] - 1)
-            start_times.append(keys[ii]["time"])
-            key_names.append(str(keys[ii]["key"]).replace("-", "b"))
+    start_times = [0]
+    end_times = []
+    key_names = [_format_key_string(str(keys[0]["key"]))]
+    for i, k in enumerate(keys):
+        this_key_string = _format_key_string(str(k["key"]))
+        # if this is a new key, add it to the list
+        if this_key_string != key_names[-1]:
+            end_times.append(keys[i]["time"] - 1)
+            start_times.append(keys[i]["time"])
+            key_names.append(this_key_string)
     end_times.append(keys[-1]["time"])
-    return KeyData(np.array([start_times, end_times]).astype(float).T, key_names)
+    return KeyData(
+        np.array([start_times, end_times]).astype(float).T,
+        "ticks",
+        key_names,
+        "key_mode",
+    )
 
 
 @io.coerce_to_string_io
@@ -325,7 +345,9 @@ def load_chords(fhandle: TextIO, resolution: int = 28):
             start_times.append(chords[ii]["time"])
             chord_names.append(str(chords[ii]["chord"]))
     end_times.append(chords[-1]["time"])
-    return ChordData(np.array([start_times, end_times]).astype(float).T, chord_names)
+    return ChordData(
+        np.array([start_times, end_times]).astype(float).T, "ticks", chord_names, "open"
+    )
 
 
 @io.coerce_to_string_io
@@ -365,11 +387,19 @@ class Dataset(core.Dataset):
         return load_score(*args, **kwargs)
 
     @core.copy_docs(load_key_music21)
-    def load_key(self, *args, **kwargs):
+    def load_key_music21(self, *args, **kwargs):
         return load_key_music21(*args, **kwargs)
 
-    @core.copy_docs(load_chords_music21)
+    @core.copy_docs(load_key)
+    def load_key(self, *args, **kwargs):
+        return load_key(*args, **kwargs)
+
+    @core.copy_docs(load_chords)
     def load_chords(self, *args, **kwargs):
+        return load_chords(*args, **kwargs)
+
+    @core.copy_docs(load_chords_music21)
+    def load_chords_music21(self, *args, **kwargs):
         return load_chords_music21(*args, **kwargs)
 
     @core.copy_docs(load_roman_numerals)

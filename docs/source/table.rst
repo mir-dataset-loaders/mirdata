@@ -49,7 +49,8 @@
    * - cante100
      - - audio: 🔑
        - annotations: ✅
-     - :ref:`f0`
+     - - :ref:`f0`
+       - Vocal :ref:`notes`
      - 100
      - :cante:`\ `
 
