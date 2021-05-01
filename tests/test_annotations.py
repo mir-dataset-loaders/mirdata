@@ -87,13 +87,13 @@ def test_note_data():
     confidence = np.array([0.1, 0.4, 0.2])
     note_data = annotations.NoteData(intervals, "s", notes, "hz")
     assert np.allclose(note_data.intervals, intervals)
-    assert np.allclose(note_data.notes, notes)
+    assert np.allclose(note_data.pitches, notes)
     assert note_data.confidence is None
     note_data2 = annotations.NoteData(
         intervals, "s", notes, "hz", confidence, "likelihood"
     )
     assert np.allclose(note_data2.intervals, intervals)
-    assert np.allclose(note_data2.notes, notes)
+    assert np.allclose(note_data2.pitches, notes)
     assert np.allclose(note_data2.confidence, confidence)
 
     with pytest.raises(ValueError):
@@ -282,7 +282,7 @@ def test_f0_data():
     assert np.allclose(
         resampled_f0.voicing, np.array([0, 0, 0.1, 0.25, 0.4, 0.2, 0.0, 0.0])
     )
-    assert resampled_f0.confidence is None
+    assert resampled_f0._confidence is None
 
     resampled_f0 = f0_data2.resample(new_times, "s")
     assert resampled_f0.time_unit == "s"
@@ -298,7 +298,7 @@ def test_f0_data():
         resampled_f0.voicing, np.array([0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0])
     )
     assert np.allclose(
-        resampled_f0.confidence, np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0])
+        resampled_f0._confidence, np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0])
     )
 
     resampled_f0 = f0_data3.resample(new_times, "s")
@@ -315,7 +315,7 @@ def test_f0_data():
         resampled_f0.voicing, np.array([0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0])
     )
     assert np.allclose(
-        resampled_f0.confidence, np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 1.0, 0.5])
+        resampled_f0._confidence, np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 1.0, 0.5])
     )
 
     # test to_sparse_index
@@ -457,7 +457,7 @@ def test_tempo_data():
         intervals, "s", value, "bpm", confidence, "likelihood"
     )
     assert np.allclose(tempo_data.intervals, intervals)
-    assert np.allclose(tempo_data.value, value)
+    assert np.allclose(tempo_data.tempos, value)
     assert np.allclose(tempo_data.confidence, confidence)
 
     with pytest.raises(ValueError):
