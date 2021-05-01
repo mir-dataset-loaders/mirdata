@@ -370,7 +370,10 @@ class F0Data(Annotation):
         confidence_unit=None,
     ):
         validate_array_like(times, np.ndarray, float)
-        validate_array_like(frequencies, np.ndarray, float)
+        if frequency_unit in ["note_name", "pc"]:
+            validate_array_like(frequencies, np.ndarray, None)
+        else:
+            validate_array_like(frequencies, np.ndarray, float)
         validate_array_like(voicing, np.ndarray, float)
         validate_array_like(confidence, np.ndarray, float, none_allowed=True)
         validate_lengths_equal([times, frequencies, voicing, confidence])
@@ -1108,7 +1111,11 @@ def validate_array_like(array_like, expected_type, expected_dtype, none_allowed=
     ):
         raise TypeError(f"List elements should all have type {expected_dtype}")
 
-    if expected_type == np.ndarray and array_like.dtype != expected_dtype:
+    if (
+        expected_type == np.ndarray
+        and array_like.dtype != expected_dtype
+        and expected_dtype is not None
+    ):
         raise TypeError(
             f"Array should have dtype {expected_dtype} but has {array_like.dtype}"
         )

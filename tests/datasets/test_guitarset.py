@@ -53,6 +53,24 @@ def test_track():
     assert isinstance(track.notes["e"], annotations.NoteData)
 
 
+def test_fill_pitch_contour():
+    times = np.array([1, 3, 4, 6])
+    freqs = np.array([40, 50, 60, 70])
+    voicings = np.array([1, 1, 1, 1])
+    t, f, v = guitarset._fill_pitch_contour(times, freqs, voicings, 7, 1)
+    te = np.array([0, 1, 2, 3, 4, 5, 6])
+    fe = np.array([0, 40, 0, 50, 60, 0, 70])
+    ve = np.array([0, 1, 0, 1, 1, 0, 1])
+    assert np.array_equal(t, te)
+    assert np.array_equal(f, fe)
+    assert np.array_equal(v, ve)
+
+    t, f, v = guitarset._fill_pitch_contour(times, freqs, voicings, 8, 1, duration=7)
+    assert np.array_equal(t, te)
+    assert np.array_equal(f, fe)
+    assert np.array_equal(v, ve)
+
+
 def test_load_beats():
     default_trackid = "03_BN3-119-G_solo"
     dataset = guitarset.Dataset(TEST_DATA_HOME)

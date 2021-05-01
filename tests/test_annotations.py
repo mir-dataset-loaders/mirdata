@@ -131,6 +131,14 @@ def test_note_data():
     assert np.allclose(sparse_index, expected_index)
     assert np.allclose(conf, expected_conf)
 
+    sparse_index, conf = note_data.to_sparse_index(
+        np.array([1.0, 1.5, 2.0, 2.5, 3.0]), "s", frequency_scale, "hz"
+    )
+    expected_index = [[0, 1], [1, 1], [2, 1], [2, 2], [3, 2], [4, 2]]
+    expected_conf = np.array([1, 1, 1, 1, 1, 1])
+    assert np.allclose(sparse_index, expected_index)
+    assert np.allclose(conf, expected_conf)
+
     sparse_index, conf = note_data2.to_sparse_index(
         time_scale, "s", frequency_scale, "hz", "likelihood"
     )
@@ -317,6 +325,17 @@ def test_f0_data():
     assert np.allclose(
         resampled_f0._confidence, np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 1.0, 0.5])
     )
+
+    f0_note_class = annotations.F0Data(
+        times,
+        "s",
+        np.array(["A", "B", "B", "F#"]),
+        "note_name",
+        voicing,
+        "likelihood",
+    )
+    with pytest.raises(NotImplementedError):
+        f0_note_class.resample(new_times, "s")
 
     # test to_sparse_index
     time_scale = np.array([0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5])
@@ -605,6 +624,14 @@ def test_convert_amplitude_units():
 
     with pytest.raises(NotImplementedError):
         annotations.convert_amplitude_units(conf_velocity, "asdf", "velocity")
+
+
+def test_closest_index():
+    input_array = np.array([1, 5, 7, 2])[:, np.newaxis]
+    target_array = np.array([2, 6])[:, np.newaxis]
+    actual = annotations.closest_index(input_array, target_array)
+    expected = np.array([-1, 1, -1, 0])
+    assert np.array_equal(actual, expected)
 
 
 def test_validate_array_like():
