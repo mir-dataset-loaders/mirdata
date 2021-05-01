@@ -274,7 +274,7 @@ def test_validate_confidence():
     annotations.validate_confidence(np.array([0, 1, 1, 0]), "binary")
     annotations.validate_confidence(np.array([1, 1, 1, 1]), "binary")
     annotations.validate_confidence(np.array([0.1, 0, 0.5]), "likelihood")
-    annotations.validate_confidence(np.array([[0.1, 0], [0.5]]), "likelihood")
+    annotations.validate_confidence([[0.1, 0], [0.5]], "likelihood")
     annotations.validate_confidence(np.array([0.1, 0, 0.5]), "energy")
     annotations.validate_confidence(np.array([0, 57.3, 127]), "velocity")
 

@@ -167,3 +167,22 @@ def test_multitrack():
 
     run_track_tests(mtrack, expected_attributes, expected_property_types)
     run_multitrack_tests(mtrack)
+
+
+def test_multitrack_to_jams():
+
+    default_mtrackid = "Track00001"
+    data_home = "tests/resources/mir_datasets/slakh"
+    dataset = slakh.Dataset(data_home, version="test")
+    track = dataset.multitrack(default_mtrackid)
+    jam = track.to_jams()
+
+    notes = jam.annotations[0]["data"][:2]
+    assert [annotation.time for annotation in notes] == [
+        0.7811520833333333,
+        1.2420318125,
+    ]
+    assert [annotation.duration for annotation in notes] == [
+        0.4765027708333335,
+        0.25778018749999987,
+    ]

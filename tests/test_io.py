@@ -25,11 +25,14 @@ def test_load_notes_from_midi():
     notes_from_file = io.load_notes_from_midi(midi_file)
     midi = io.load_midi(midi_file)
     notes_from_midi = io.load_notes_from_midi(midi=midi)
-    for notes in [notes_from_file, notes_from_midi]:
+    for note_data in [notes_from_file, notes_from_midi]:
         expected_intervals = np.array([[0.98307292, 1.80989583], [1.78385417, 1.90625]])
-        assert np.allclose(notes.intervals[0:2], expected_intervals)
-        assert np.allclose(notes.notes[0:2], np.array([391.99543598, 523.2511306]))
-        assert np.allclose(notes.confidence[0:2], np.array([0.40944882, 0.52755906]))
+        assert np.allclose(note_data.intervals[0:2], expected_intervals)
+        assert note_data.interval_unit == "s"
+        assert np.allclose(note_data.pitches[0:2], np.array([67.0, 72.0]))
+        assert note_data.pitch_unit == "midi"
+        assert np.allclose(note_data.confidence[0:2], np.array([52.0, 67.0]))
+        assert note_data.confidence_unit == "velocity"
 
     with pytest.raises(ValueError):
         io.load_notes_from_midi(None, None)

@@ -31,6 +31,7 @@
 """
 
 import json
+import logging
 import os
 from typing import BinaryIO, Optional, Tuple
 
@@ -152,6 +153,10 @@ class Track(core.Track):
 
     @core.cached_property
     def notes(self):
+        logging.warning(
+            "The default unit for maestro pitch and velocity values have"
+            + " changed in mirdata >0.3.3 from hz/confidence to midi/velocity"
+        )
         return io.load_notes_from_midi(self.midi_path, self.midi)
 
     @property

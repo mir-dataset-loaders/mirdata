@@ -167,7 +167,7 @@ class Track(core.Track):
 
     @core.cached_property
     def notes(self) -> annotations.NoteData:
-        return io.load_notes_from_midi(self.midi_path, self.midi)
+        return io.load_notes_from_midi(self.midi_path, self.midi, skip_drums=True)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:

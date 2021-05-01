@@ -72,7 +72,7 @@ def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
 def load_notes_from_midi(
     midi_path: Optional[Union[str, BinaryIO]] = None,
     midi: Optional[pretty_midi.PrettyMIDI] = None,
-    skip_drums: Bool = True,
+    skip_drums: bool = True,
 ) -> annotations.NoteData:
     """Load note data from a midi file or
 
@@ -98,6 +98,8 @@ def load_notes_from_midi(
         if instrument.is_drum and skip_drums:
             continue
 
+        # remove notes which have start_time >= end_time
+        instrument.remove_invalid_notes()
         for note in instrument.notes:
             intervals.append([note.start, note.end])
             pitches.append(note.pitch)
@@ -105,8 +107,8 @@ def load_notes_from_midi(
     return annotations.NoteData(
         np.array(intervals),
         "s",
-        np.array(pitches),
+        np.array(pitches, dtype=float),
         "midi",
-        np.array(confidence),
+        np.array(confidence, dtype=float),
         "velocity",
     )
