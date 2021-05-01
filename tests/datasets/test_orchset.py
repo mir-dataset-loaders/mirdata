@@ -59,7 +59,7 @@ def test_to_jams():
     jam = track.to_jams()
 
     f0s = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [f0.time for f0 in f0s] == [0.0, 0.08, 0.09]
+    assert [f0.time for f0 in f0s] == [0.07, 0.08, 0.09]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0, 0.0]
     assert [f0.value for f0 in f0s] == [
         {"frequency": 0.0, "index": 0, "voiced": False},
@@ -83,7 +83,7 @@ def test_load_melody():
     assert isinstance(melody_data.voicing, np.ndarray)
 
     # check values
-    assert np.array_equal(melody_data.times, np.array([0.0, 0.08, 0.09]))
+    assert np.array_equal(melody_data.times, np.array([0.07, 0.08, 0.09]))
     assert np.array_equal(melody_data.frequencies, np.array([0.0, 0.0, 622.254]))
     assert np.array_equal(melody_data.voicing, np.array([0.0, 0.0, 1.0]))
 
