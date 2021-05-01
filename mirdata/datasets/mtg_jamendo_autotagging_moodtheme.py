@@ -196,9 +196,7 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        meta_path = os.path.join(
-            self.data_home, "data/autotagging_moodtheme.tsv"
-        )
+        meta_path = os.path.join(self.data_home, "data/autotagging_moodtheme.tsv")
         if not os.path.exists(meta_path):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
