@@ -46,7 +46,6 @@ cante100 Loader
 """
 import csv
 import os
-import logging
 import xml.etree.ElementTree as ET
 from typing import BinaryIO, cast, Optional, TextIO, Tuple
 
@@ -273,18 +272,19 @@ def load_spectrogram(fhandle: TextIO) -> np.ndarray:
     return spectrogram
 
 
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a cante100 audio file.
 
     Args:
-        fhandle (str): path to an audio file
+        fpath (str): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=22050, mono=False)
+    return librosa.load(fpath, sr=22050, mono=False)
 
 
 @io.coerce_to_string_io
@@ -292,7 +292,8 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """Load cante100 f0 annotations
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to melody annotation file
+        fhandle (str or file-like): path or file-like object pointing
+            to melody annotation file
 
     Returns:
         F0Data: predominant melody
@@ -300,16 +301,18 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """
     times = []
     freqs = []
+    voicing = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        freqs.append(np.abs(freq_val))
+        voicing.append(float(freq_val > 0))
 
     times = np.array(times)  # type: ignore
     freqs = np.array(freqs)  # type: ignore
-    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
-
-    return annotations.F0Data(times, freqs, confidence)
+    voicing = np.array(voicing)  # type: ignore
+    return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
 @io.coerce_to_string_io
@@ -335,8 +338,11 @@ def load_notes(fhandle: TextIO) -> annotations.NoteData:
 
     return annotations.NoteData(
         np.array(intervals, dtype="float"),
+        "s",
         np.array(pitches, dtype="float"),
+        "hz",
         np.array(confidence, dtype="float"),
+        "binary",
     )
 
 

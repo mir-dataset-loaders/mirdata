@@ -15,18 +15,14 @@
 
 """
 import csv
-import logging
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
+
 
 BIBTEX = """@inproceedings{smith2011salami,
     title={Design and creation of a large-scale database of structural annotations.},
@@ -217,18 +213,19 @@ class Track(core.Track):
         )
 
 
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a Salami audio file.
 
     Args:
-        fhandle (str or file-like): path to audio file
+        fpath (str): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=None, mono=True)
+    return librosa.load(fpath, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
@@ -236,7 +233,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load salami sections data from a file
 
     Args:
-        fhandle (str or file-like): File-like object or path to sectin annotation file
+        fhandle (str or file-like): File-like object or path to section annotation file
 
     Returns:
         SectionData: section data
@@ -255,7 +252,10 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
     return annotations.SectionData(
-        np.array([times_revised[:-1], times_revised[1:]]).T, list(secs_revised[:-1])
+        np.array([times_revised[:-1], times_revised[1:]]).T,
+        "s",
+        list(secs_revised[:-1]),
+        "open",
     )
 
 

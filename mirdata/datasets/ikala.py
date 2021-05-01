@@ -13,19 +13,14 @@
     For more details, please visit: http://mac.citi.sinica.edu.tw/ikala/
 
 """
-
 import csv
 import os
-import librosa
-import logging
-import numpy as np
 from typing import BinaryIO, Optional, TextIO, Tuple
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+import librosa
+import numpy as np
+
+from mirdata import annotations, core, download_utils, jams_utils, io
 
 
 BIBTEX = """@inproceedings{chan2015vocal,
@@ -88,6 +83,7 @@ class Track(core.Track):
     Cached Properties:
         f0 (F0Data): human-annotated singing voice pitch
         lyrics (LyricsData): human-annotated lyrics
+        pronunciations (LyricsData): human-annotation lyric pronunciations
 
     """
 
@@ -126,6 +122,10 @@ class Track(core.Track):
     @core.cached_property
     def lyrics(self) -> Optional[annotations.LyricData]:
         return load_lyrics(self.lyrics_path)
+
+    @core.cached_property
+    def pronunciations(self) -> Optional[annotations.LyricData]:
+        return load_pronunciations(self.lyrics_path)
 
     @property
     def vocal_audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -248,9 +248,10 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
     lines = fhandle.readlines()
     f0_midi = np.array([float(line) for line in lines])
     f0_hz = librosa.midi_to_hz(f0_midi) * (f0_midi > 0)
-    confidence = (f0_hz > 0).astype(float)
+    voicing = (f0_hz > 0).astype(float)
+    f0_hz = np.abs(f0_hz)
     times = (np.arange(len(f0_midi)) * TIME_STEP) + (TIME_STEP / 2.0)
-    f0_data = annotations.F0Data(times, f0_hz, confidence)
+    f0_data = annotations.F0Data(times, "s", f0_hz, "hz", voicing, "binary")
     return f0_data
 
 
@@ -285,9 +286,44 @@ def load_lyrics(fhandle: TextIO) -> annotations.LyricData:
             pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
+        np.array([start_times, end_times]).T, "s", lyrics, "words"
+    )
+    return lyrics_data
+
+
+@io.coerce_to_string_io
+def load_pronunciations(fhandle: TextIO) -> annotations.LyricData:
+    """Load an ikala pronunciation annotation
+
+    Args:
+        fhandle (str or file-like): File-like object or path to lyric annotation file
+
+    Raises:
+        IOError: if lyrics_path does not exist
+
+    Returns:
+        LyricData: pronunciation annotation data
+
+    """
+    # input: start time (ms), end time (ms), lyric, [pronunciation]
+    reader = csv.reader(fhandle, delimiter=" ")
+    start_times = []
+    end_times = []
+    pronunciations = []
+    for line in reader:
+        start_times.append(float(line[0]) / 1000.0)
+        end_times.append(float(line[1]) / 1000.0)
+        if len(line) > 2:
+            pronunciation = " ".join(line[3:])
+            pronunciations.append(pronunciation)
+        else:
+            pronunciations.append("")
+
+    lyrics_data = annotations.LyricData(
         np.array([start_times, end_times]).T,
-        lyrics,
+        "s",
         pronunciations,
+        "pronunciations_open",
     )
     return lyrics_data
 
@@ -346,3 +382,7 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_lyrics)
     def load_lyrics(self, *args, **kwargs):
         return load_lyrics(*args, **kwargs)
+
+    @core.copy_docs(load_pronunciations)
+    def load_pronunciations(self, *args, **kwargs):
+        return load_pronunciations(*args, **kwargs)

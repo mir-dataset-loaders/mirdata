@@ -42,7 +42,7 @@
     (4) Joint Research Centre, European Commission, Seville, ES
 """
 import csv
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, List
 
 import librosa
 import numpy as np
@@ -391,17 +391,38 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
     """
     times = []
     freqs = []
+    voicings = []
+    confs: List[Optional[float]]
+    conf_array: Optional[np.ndarray]
     confs = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        voicings.append(float(freq_val > 0))
+        freqs.append(np.abs(freq_val))
         if len(line) == 3:
             confs.append(float(line[2]))
         else:
-            confs.append(float(1.0))
+            confs.append(None)
 
-    return annotations.F0Data(np.array(times), np.array(freqs), np.array(confs))
+    if all([not c for c in confs]):
+        conf_array = None
+        conf_unit = None
+    else:
+        conf_array = np.array(confs)
+        conf_unit = "likelihood"
+
+    return annotations.F0Data(
+        np.array(times),
+        "s",
+        np.array(freqs),
+        "hz",
+        np.array(voicings),
+        "binary",
+        conf_array,
+        conf_unit,
+    )
 
 
 @io.coerce_to_string_io
@@ -421,7 +442,7 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
         intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
         notes.append(float(line[2]))
 
-    return annotations.NoteData(intervals, librosa.midi_to_hz(notes), None)
+    return annotations.NoteData(intervals, "s", librosa.midi_to_hz(notes), "hz")
 
 
 @io.coerce_to_string_io
@@ -447,7 +468,7 @@ def load_beat(fhandle: TextIO) -> annotations.BeatData:
             position += 1
         positions.append(position)
 
-    return annotations.BeatData(np.array(times), np.array(positions))
+    return annotations.BeatData(np.array(times), "s", np.array(positions), "bar_index")
 
 
 @core.docstring_inherit(core.Dataset)

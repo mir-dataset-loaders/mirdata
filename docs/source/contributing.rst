@@ -336,7 +336,7 @@ To run one specific test file:
 
 ::
 
-    pytest tests/test_ikala.py
+    pytest tests/datasets/test_ikala.py
 
 
 Finally, there is one local test you should run, which we can't easily run in our testing environment.
@@ -360,14 +360,6 @@ We've added one extra convenience flag for this test, for getting the tests runn
 
 
 which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually all pass without this flag.
-
-.. _working_big_datasets:
-
-Working with big datasets
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In the development of large datasets, it is advisable to create an index as small as possible to optimize the implementation process
-of the dataset loader and pass the tests.
 
 
 .. _reducing_test_space:
