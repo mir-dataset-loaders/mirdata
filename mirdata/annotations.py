@@ -214,8 +214,9 @@ class NoteData(Annotation):
                 Defaults to False.
 
         Returns:
-            * sparse_index (np.ndarray): Array of sparce indices
+            * sparse_index (np.ndarray): Array of sparce indices [(time_index, frequency_index)]
             * amplitude (np.ndarray): Array of amplitude values for each index
+
         """
         intervals = convert_time_units(
             self.intervals, self.interval_unit, time_scale_unit
@@ -494,10 +495,9 @@ class F0Data(Annotation):
                 Defaults to "binary".
 
         Returns:
-            * f0_sparse: np.array
-                [(time_index, frequency_index)]
-            * amplitude: np.array
-                amplitude for each sparse index
+            * sparse_index (np.ndarray): Array of sparce indices [(time_index, frequency_index)]
+            * amplitude (np.ndarray): Array of amplitude values for each index
+
         """
         f0dat = self.resample(time_scale, time_scale_unit)
         frequencies = convert_pitch_units(
@@ -682,10 +682,9 @@ class MultiF0Data(Annotation):
                 Defaults to "binary".
 
         Returns:
-            * f0_sparse: np.array
-                [(time_index, frequency_index)]
-            * amplitude: np.array
-                amplitude for each sparse index
+            * sparse_index (np.ndarray): Array of sparce indices [(time_index, frequency_index)]
+            * amplitude (np.ndarray): Array of amplitude values for each index
+
         """
         multif0dat = self.resample(time_scale, time_scale_unit)
         frequencies = convert_pitch_units(
