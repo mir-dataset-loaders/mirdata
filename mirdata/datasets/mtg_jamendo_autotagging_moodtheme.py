@@ -69,7 +69,7 @@ DOWNLOAD_INFO = """
     
     Later add the files to a folder into mir_datasets called audio/ with the following structure:
         > mtg_jamendo_autotagging_moodtheme/
-            > audio/
+            > audios/
                 > 00/
                 ...
                 > 99/
