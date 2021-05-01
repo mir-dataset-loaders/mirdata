@@ -103,7 +103,7 @@ def test_load_notes():
     note_path = (
         "tests/resources/mir_datasets/medleydb_pitch/"
         + "medleydb-pitch-pyin-notes/AimeeNorwich_"
-        + "Flying_STEM_15_vamp_pyin_pyin_notes"
+        + "Flying_STEM_15_vamp_pyin_pyin_notes.csv"
     )
     note_data = medleydb_pitch.load_notes(note_path)
     assert note_data is None
