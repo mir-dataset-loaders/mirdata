@@ -197,7 +197,7 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         meta_path = os.path.join(
-            self.data_home, "metadata/data/autotagging_moodtheme.tsv"
+            self.data_home, "data/autotagging_moodtheme.tsv"
         )
         if not os.path.exists(meta_path):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
@@ -233,7 +233,6 @@ class Dataset(core.Dataset):
             split = {}
             path_train = os.path.join(
                 self.data_home,
-                "metadata",
                 "data",
                 "splits",
                 "split-" + str(ii),
@@ -257,7 +256,6 @@ class Dataset(core.Dataset):
                 split["train"] = [m["TRACK_ID"] for m in d[1:]]
             path_validation = os.path.join(
                 self.data_home,
-                "metadata",
                 "data",
                 "splits",
                 "split-" + str(ii),
@@ -281,7 +279,6 @@ class Dataset(core.Dataset):
                 split["validation"] = [m["TRACK_ID"] for m in d[1:]]
             path_test = os.path.join(
                 self.data_home,
-                "metadata",
                 "data",
                 "splits",
                 "split-" + str(ii),
