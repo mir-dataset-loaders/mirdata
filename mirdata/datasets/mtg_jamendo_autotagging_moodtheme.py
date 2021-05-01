@@ -190,6 +190,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             download_info=DOWNLOAD_INFO,
             indexes=INDEXES,
+            remotes=REMOTES,
             license_info="Creative Commons Attribution NonCommercial Share Alike 4.0 International.",
         )
 
