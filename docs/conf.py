@@ -35,7 +35,15 @@ show_authors = False
 
 
 # -- Mock dependencies -------------------------------------------------------
-autodoc_mock_imports = ["librosa", "numpy", "jams", "pretty_midi", "DALI", "music21"]
+autodoc_mock_imports = [
+    "librosa",
+    "numpy",
+    "jams",
+    "pretty_midi",
+    "DALI",
+    "music21",
+    "scipy",
+]
 
 
 # # -- General configuration ---------------------------------------------------
