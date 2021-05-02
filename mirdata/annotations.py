@@ -2,6 +2,7 @@
 """
 import logging
 import re
+from typing import List, Optional
 
 from jams.schema import namespace
 import librosa
@@ -301,6 +302,61 @@ class NoteData(Annotation):
         matrix = np.zeros((len(time_scale), len(frequency_scale)))
         matrix[index[:, 0], index[:, 1]] = voicing
         return matrix
+
+    def to_multif0(self, time_hop, time_hop_unit, max_time=None):
+        """Convert note annotation to multiple f0 format.
+
+        Args:
+            time_hop (float): time between time stamps in multif0 annotation
+            time_hop_unit (str): unit for time_hop, and resulting multif0 data.
+                One of TIME_UNITS
+            max_time (float, optional): Maximum time stamp in time_hop units.
+                Defaults to None, in which case the maximum note interval
+                time is used.
+
+        Returns:
+            MultiF0Data: multif0 annotation
+        """
+        intervals = convert_time_units(
+            self.intervals, self.interval_unit, time_hop_unit
+        )
+        note_time_max = np.max(intervals[:, 1])
+        max_time = note_time_max if not max_time else max_time
+        if max_time < note_time_max:
+            raise ValueError(
+                "max_time = {} cannot be smaller than the last note interval = {}".format(
+                    max_time, note_time_max
+                )
+            )
+        times = np.arange(0, max_time + time_hop, time_hop)
+        frequency_list: List[list] = [[] for _ in times]
+        confidence_list: Optional[List[list]] = [[] for _ in times]
+        if self.confidence is not None:
+
+            for t0, t1, pch, conf in zip(
+                intervals[:, 0], intervals[:, 1], self.pitches, self.confidence
+            ):
+                for i in range(
+                    int(np.round(t0 / time_hop)), int(np.round(t1 / time_hop)) + 1
+                ):
+                    frequency_list[i].append(pch)
+                    confidence_list[i].append(conf)
+        else:
+            for t0, t1, pch in zip(intervals[:, 0], intervals[:, 1], self.pitches):
+                for i in range(
+                    int(np.round(t0 / time_hop)), int(np.round(t1 / time_hop)) + 1
+                ):
+                    frequency_list[i].append(pch)
+            confidence_list = None
+
+        return MultiF0Data(
+            times,
+            time_hop_unit,
+            frequency_list,
+            self.pitch_unit,
+            confidence_list,
+            self.confidence_unit,
+        )
 
 
 class ChordData(Annotation):
