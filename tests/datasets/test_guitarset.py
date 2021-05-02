@@ -53,6 +53,24 @@ def test_track():
     assert isinstance(track.notes["e"], annotations.NoteData)
 
 
+def test_fill_pitch_contour():
+    times = np.array([1, 3, 4, 6])
+    freqs = np.array([40, 50, 60, 70])
+    voicings = np.array([1, 1, 1, 1])
+    t, f, v = guitarset._fill_pitch_contour(times, freqs, voicings, 7, 1)
+    te = np.array([0, 1, 2, 3, 4, 5, 6])
+    fe = np.array([0, 40, 0, 50, 60, 0, 70])
+    ve = np.array([0, 1, 0, 1, 1, 0, 1])
+    assert np.array_equal(t, te)
+    assert np.array_equal(f, fe)
+    assert np.array_equal(v, ve)
+
+    t, f, v = guitarset._fill_pitch_contour(times, freqs, voicings, 8, 1, duration=7)
+    assert np.array_equal(t, te)
+    assert np.array_equal(f, fe)
+    assert np.array_equal(v, ve)
+
+
 def test_load_beats():
     default_trackid = "03_BN3-119-G_solo"
     dataset = guitarset.Dataset(TEST_DATA_HOME)
@@ -90,31 +108,31 @@ def test_load_contours():
     assert np.allclose(
         track.pitch_contours["e"].times[:10],
         [
-            0.7670358269999724,
-            0.7728408159999844,
-            0.778645804000007,
-            0.7844507929999054,
-            0.7902557819999174,
-            0.79606076999994,
-            0.801865758999952,
-            0.8076707479999641,
-            0.8134757359999867,
-            0.8192807249999987,
+            0.0,
+            0.00580499,
+            0.01160998,
+            0.01741497,
+            0.02321995,
+            0.02902494,
+            0.03482993,
+            0.04063492,
+            0.04643991,
+            0.0522449,
         ],
     )
     assert np.allclose(
         track.pitch_contours["e"].frequencies[:10],
         [
-            393.388,
-            393.301,
-            393.386,
-            393.348,
-            393.377,
-            393.389,
-            393.389,
-            393.351,
-            393.352,
-            393.37,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
         ],
     )
     assert track.pitch_contours["e"].confidence is None
