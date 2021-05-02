@@ -39,6 +39,7 @@ if __name__ == "__main__":
             "pretty_midi >= 0.2.8",
             "chardet",
             "pyyaml",
+            "scipy",
         ],
         extras_require={
             "tests": [

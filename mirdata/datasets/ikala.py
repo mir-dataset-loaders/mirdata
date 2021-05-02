@@ -34,9 +34,10 @@ BIBTEX = """@inproceedings{chan2015vocal,
 }"""
 
 INDEXES = {
-    "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="ikala_index_1.0.json"),
+    "default": "2.0",
+    "test": "2.0",
+    "1.0": core.Index(filename="ikala_index_1.0.json", partial_download=["metadata"]),
+    "2.0": core.Index(filename="ikala_index_2.0.json"),
 }
 
 TIME_STEP = 0.032  # seconds
@@ -45,11 +46,16 @@ REMOTES = {
         filename="id_mapping.txt",
         url="http://mac.citi.sinica.edu.tw/ikala/id_mapping.txt",
         checksum="81097b587804ce93e56c7a331ba06abc",
-    )
+    ),
+    "notes_pyin": download_utils.RemoteFileMetadata(
+        filename="ikala-pyin-notes.zip",
+        url="https://zenodo.org/record/4728756/files/ikala-pyin-notes.zip?download=1",
+        checksum="8b9464a48b11bf26762de9c18a3a51ea",
+    ),
 }
 
 DOWNLOAD_INFO = """
-    Unfortunately the iKala dataset is not available for download.
+    Unfortunately most of the iKala dataset is not available for download.
     If you have the iKala dataset, place the contents into a folder called
     iKala with the following structure:
         > iKala/
@@ -74,6 +80,7 @@ class Track(core.Track):
     Attributes:
         audio_path (str): path to the track's audio file
         f0_path (str): path to the track's f0 annotation file
+        notes_pyin_path (str): path to the note annotation file
         lyrics_path (str): path to the track's lyric annotation file
         section (str): section. Either 'verse' or 'chorus'
         singer_id (str): singer id
@@ -82,6 +89,7 @@ class Track(core.Track):
 
     Cached Properties:
         f0 (F0Data): human-annotated singing voice pitch
+        notes_pyin (NoteData): notes estimated by the pyin algorithm
         lyrics (LyricsData): human-annotated lyrics
         pronunciations (LyricsData): human-annotation lyric pronunciations
 
@@ -105,6 +113,7 @@ class Track(core.Track):
 
         self.f0_path = self.get_path("pitch")
         self.lyrics_path = self.get_path("lyrics")
+        self.notes_pyin_path = self.get_path("notes_pyin")
 
         self.audio_path = self.get_path("audio")
 
@@ -118,6 +127,10 @@ class Track(core.Track):
     @core.cached_property
     def f0(self) -> Optional[annotations.F0Data]:
         return load_f0(self.f0_path)
+
+    @core.cached_property
+    def notes_pyin(self) -> Optional[annotations.NoteData]:
+        return load_notes(self.notes_pyin_path)
 
     @core.cached_property
     def lyrics(self) -> Optional[annotations.LyricData]:
@@ -170,6 +183,7 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.f0, None)],
+            note_data=[(self.notes_pyin, "pyin estimated notes")],
             lyrics_data=[(self.lyrics, None)],
             metadata={
                 "section": self.section,
@@ -253,6 +267,31 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
     times = (np.arange(len(f0_midi)) * TIME_STEP) + (TIME_STEP / 2.0)
     f0_data = annotations.F0Data(times, "s", f0_hz, "hz", voicing, "binary")
     return f0_data
+
+
+@io.coerce_to_string_io
+def load_notes(fhandle: TextIO) -> Optional[annotations.NoteData]:
+    """load a note annotation file
+
+    Args:
+        fhandle (str or file-like): str or file-like to note annotation file
+
+    Raises:
+        IOError: if file doesn't exist
+
+    Returns:
+        NoteData: note annotation
+
+    """
+    intervals = []
+    freqs = []
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        start_time = float(line[0])
+        intervals.append([start_time, start_time + float(line[1])])
+        freqs.append(float(line[2]))
+
+    return annotations.NoteData(np.array(intervals), "s", np.array(freqs), "hz")
 
 
 @io.coerce_to_string_io
@@ -378,6 +417,10 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_f0)
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
+
+    @core.copy_docs(load_notes)
+    def load_notes(self, *args, **kwargs):
+        return load_notes(*args, **kwargs)
 
     @core.copy_docs(load_lyrics)
     def load_lyrics(self, *args, **kwargs):

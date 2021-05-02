@@ -115,6 +115,7 @@ _STYLE_DICT = {
     "Funk": "Funk",
 }
 _GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
+CONTOUR_HOP = 256.0 / 44100
 
 LICENSE_INFO = "MIT License."
 
@@ -359,7 +360,7 @@ def load_chords(jams_path, leadsheet_version):
     else:
         anno = jam.search(namespace="chord")[1]
     intervals, values = anno.to_interval_values()
-    return annotations.ChordData(intervals, "s", values, "harte")
+    return annotations.ChordData(intervals, "s", values, "jams")
 
 
 @io.coerce_to_string_io
@@ -377,6 +378,37 @@ def load_key_mode(fhandle: TextIO) -> annotations.KeyData:
     anno = jam.search(namespace="key_mode")[0]
     intervals, values = anno.to_interval_values()
     return annotations.KeyData(intervals, "s", values, "key_mode")
+
+
+def _fill_pitch_contour(times, freqs, voicing, max_time, contour_hop, duration=None):
+    """Fill a pitch contour with missing time stamps (during unpitched frames)
+
+    Args:
+        times (np.array): array of time stamps in seconds
+        freqs (np.array): array of pitch values in Hz
+        voicing (np.array): array of voicings
+        max_time (float): maximum time stamp
+        contour_hop (float): hop size in seconds
+        duration (float, optional): Total duration. Defaults to None.
+
+    Returns:
+        tuple: filled_times, filled_frequencies, filled_voicing
+    """
+    if duration is not None and max_time > duration:
+        max_time = duration
+    n_stamps = int(np.floor((max_time / contour_hop)))
+    filled_times = np.arange(n_stamps) * contour_hop
+    filled_freqs = np.zeros((len(filled_times),))
+    filled_voicing = np.zeros((len(filled_times),))
+
+    for time, freq, voc in zip(times, freqs, voicing):
+        t_idx = int(np.round(time / contour_hop))
+        if time > max_time or t_idx >= n_stamps:
+            continue
+        filled_freqs[t_idx] = freq
+        filled_voicing[t_idx] = voc
+
+    return filled_times, filled_freqs, filled_voicing
 
 
 # no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
@@ -400,10 +432,16 @@ def load_pitch_contour(jams_path, string_num):
     times, values = anno.to_event_values()
     if len(times) == 0:
         return None
-    frequencies = [v["frequency"] for v in values]
-    voicing = [float(v["voiced"]) for v in values]
+    frequencies = np.array([v["frequency"] for v in values])
+    voicing = np.array([float(v["voiced"]) for v in values])
+    voicing[frequencies == 0] = 0
+
+    filled_times, filled_freqs, filled_voicing = _fill_pitch_contour(
+        times, frequencies, voicing, np.max(times), CONTOUR_HOP
+    )
+
     return annotations.F0Data(
-        times, "s", np.array(frequencies), "hz", np.array(voicing), "binary"
+        filled_times, "s", filled_freqs, "hz", filled_voicing, "binary"
     )
 
 
