@@ -20,10 +20,12 @@ def test_track():
         "singer_id": "1",
         "f0_path": "tests/resources/mir_datasets/ikala/PitchLabel/10161_chorus.pv",
         "lyrics_path": "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab",
+        "notes_pyin_path": "tests/resources/mir_datasets/ikala/ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
     }
 
     expected_property_types = {
         "f0": annotations.F0Data,
+        "notes_pyin": annotations.NoteData,
         "lyrics": annotations.LyricData,
         "pronunciations": annotations.LyricData,
         "vocal_audio": tuple,
@@ -34,6 +36,10 @@ def test_track():
     assert track._track_paths == {
         "audio": ["Wavfile/10161_chorus.wav", "278ae003cb0d323e99b9a643c0f2eeda"],
         "pitch": ["PitchLabel/10161_chorus.pv", "0d93a011a9e668fd80673049089bbb14"],
+        "notes_pyin": [
+            "ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
+            "015856455537ab232140746f2df7b857",
+        ],
         "lyrics": ["Lyrics/10161_chorus.lab", "79bbeb72b422056fd43be4e8d63319ce"],
     }
 
@@ -97,6 +103,22 @@ def test_load_f0():
     assert np.array_equal(f0_data.times, np.array([0.016, 0.048]))
     assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.946404518887]))
     assert np.array_equal(f0_data.voicing, np.array([0.0, 1.0]))
+
+
+def test_load_notes():
+    notes_path = "tests/resources/mir_datasets/ikala/ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv"
+    note_data = ikala.load_notes(notes_path)
+
+    # check types
+    assert type(note_data) == annotations.NoteData
+
+    # check values
+    assert np.allclose(
+        note_data.intervals,
+        np.array([[1.35256236, 1.7414966], [1.85759637, 1.9969161]]),
+    )
+    assert np.allclose(note_data.notes, np.array([234.328, 261.992]))
+    assert note_data.confidence is None
 
 
 def test_load_lyrics():
