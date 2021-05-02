@@ -36,12 +36,10 @@ DATASETS = [
     "groove_midi",
     "gtzan_genre",
     "guitarset",
-    "ikala",
     "irmas",
     "maestro",
     "medley_solos_db",
     "medleydb_melody",
-    "medleydb_pitch",
     "mridangam_stroke",
     "orchset",
     "rwc_classical",
@@ -73,16 +71,12 @@ def get_metadata_paths(module):
         "groove_midi": {"info": "info.csv"},
         "gtzan_genre": None,
         "guitarset": None,
-        "ikala": {"id_mapping": "id_mapping.txt"},
         "irmas": None,
         "maestro": {"maestro-v2.0.0": "maestro-v2.0.0.json"},
         "medley_solos_db": {
             "Medley-solos-DB_metadata": os.path.join(
                 "annotation", "Medley-solos-DB_metadata.csv"
             )
-        },
-        "medleydb_melody": {
-            "medleydb_melody_metadata": "medleydb_melody_metadata.json"
         },
         "medleydb_pitch": {"medleydb_pitch_metadata": "medleydb_pitch_metadata.json"},
         "mridangam_stroke": None,
@@ -196,7 +190,7 @@ def update_index(all_indexes):
 
 
 def test_index(dataset_names):
-    """ Test if updated indexes are as expected.
+    """Test if updated indexes are as expected.
     Parameters
     ----------
     dataset_names (list): list of dataset names

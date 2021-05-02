@@ -19,12 +19,12 @@
 import csv
 import json
 import os
-from typing import BinaryIO, cast, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, io, jams_utils
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
@@ -35,9 +35,17 @@ BIBTEX = """@inproceedings{bittner2014medleydb,
     Year = {2014}
 }"""
 INDEXES = {
-    "default": "2.0",
-    "test": "2.0",
-    "2.0": core.Index(filename="medleydb_pitch_index_2.0.json"),
+    "default": "3.0",
+    "test": "3.0",
+    "2.0": core.Index(filename="medleydb_pitch_index_2.0.json", partial_download=[]),
+    "3.0": core.Index(filename="medleydb_pitch_index_3.0.json"),
+}
+REMOTES = {
+    "notes_pyin": download_utils.RemoteFileMetadata(
+        filename="medleydb-pitch-pyin-notes.zip",
+        url="https://zenodo.org/record/4728793/files/medleydb-pitch-pyin-notes.zip?download=1",
+        checksum="464af0c8db7b6e70d87f833eb551a8fb",
+    ),
 }
 DOWNLOAD_INFO = """
     To download this dataset, visit:
@@ -65,12 +73,15 @@ class Track(core.Track):
         audio_path (str): path to the audio file
         genre (str): genre
         instrument (str): instrument of the track
+        notes_pyin_path (str): path to the pyin note annotation file
         pitch_path (str): path to the pitch annotation file
         title (str): title
         track_id (str): track id
 
     Cached Properties:
         pitch (F0Data): human annotated pitch
+        notes_pyin (NoteData): notes estimated by the pyin algorithm.
+            Not available in version 2.0
 
     """
 
@@ -91,7 +102,7 @@ class Track(core.Track):
         )
 
         self.pitch_path = self.get_path("pitch")
-
+        self.notes_pyin_path = self.get_path("notes_pyin")
         self.audio_path = self.get_path("audio")
 
     @property
@@ -114,6 +125,10 @@ class Track(core.Track):
     def pitch(self) -> Optional[annotations.F0Data]:
         return load_pitch(self.pitch_path)
 
+    @core.cached_property
+    def notes_pyin(self) -> Optional[annotations.NoteData]:
+        return load_notes(self.notes_pyin_path)
+
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
@@ -135,6 +150,7 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.pitch, "annotated pitch")],
+            note_data=[(self.notes_pyin, "pyin note estimate")],
             metadata=self._track_metadata,
         )
 
@@ -159,16 +175,15 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
     """load a MedleyDB pitch annotation file
 
     Args:
-        pitch_path (str): path to pitch annotation file
+        fhandle (str or file-like): str or file-like to pitch annotation file
 
     Raises:
-        IOError: if pitch_path doesn't exist
+        IOError: if the path doesn't exist
 
     Returns:
         F0Data: pitch annotation
 
     """
-
     times = []
     freqs = []
     voicing = []
@@ -179,11 +194,38 @@ def load_pitch(fhandle: TextIO) -> annotations.F0Data:
         freqs.append(freq_val)
         voicing.append(float(freq_val > 0))
 
-    times = np.array(times)  # type: ignore
-    freqs = np.array(freqs)  # type: ignore
-    voicing = np.array(voicing)  # type: ignore
-    pitch_data = annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
-    return pitch_data
+    return annotations.F0Data(
+        np.array(times), "s", np.array(freqs), "hz", np.array(voicing), "binary"
+    )
+
+
+@io.coerce_to_string_io
+def load_notes(fhandle: TextIO) -> Optional[annotations.NoteData]:
+    """load a note annotation file
+
+    Args:
+        fhandle (str or file-like): str or file-like to note annotation file
+
+    Raises:
+        IOError: if file doesn't exist
+
+    Returns:
+        NoteData: note annotation
+
+    """
+    intervals = []
+    freqs = []
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        start_time = float(line[0])
+        intervals.append([start_time, start_time + float(line[1])])
+        freqs.append(float(line[2]))
+
+    # if file is empty, return None
+    if len(intervals) == 0:
+        return None
+
+    return annotations.NoteData(np.array(intervals), "s", np.array(freqs), "hz")
 
 
 @core.docstring_inherit(core.Dataset)
@@ -200,6 +242,7 @@ class Dataset(core.Dataset):
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,
+            remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
@@ -223,3 +266,7 @@ class Dataset(core.Dataset):
     @core.copy_docs(load_pitch)
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
+
+    @core.copy_docs(load_notes)
+    def load_notes(self, *args, **kwargs):
+        return load_notes(*args, **kwargs)
