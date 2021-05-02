@@ -85,20 +85,6 @@
         "ffde21b0625fd72ba04103ca55f6765d"
       ]
     },
-    "Track00001-S06": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00001/metadata.yaml",
-        "ffde21b0625fd72ba04103ca55f6765d"
-      ]
-    },
     "Track00001-S07": {
       "audio": [
         "babyslakh_16k/Track00001/stems/S07.wav",
@@ -295,34 +281,6 @@
         "49becd4e3aa260c2d28a719651f7f235"
       ]
     },
-    "Track00002-S10": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00002/metadata.yaml",
-        "49becd4e3aa260c2d28a719651f7f235"
-      ]
-    },
-    "Track00002-S11": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00002/metadata.yaml",
-        "49becd4e3aa260c2d28a719651f7f235"
-      ]
-    },
     "Track00003-S00": {
       "audio": [
         "babyslakh_16k/Track00003/stems/S00.wav",
@@ -387,20 +345,6 @@
       "midi": [
         "babyslakh_16k/Track00003/MIDI/S04.mid",
         "248f68659f1548c71e74452aaecb6f24"
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00003/metadata.yaml",
-        "a895939a878acd0437e2f03a43e14766"
-      ]
-    },
-    "Track00003-S05": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
       ],
       "metadata": [
         "babyslakh_16k/Track00003/metadata.yaml",
@@ -695,20 +639,6 @@
       "midi": [
         "babyslakh_16k/Track00005/MIDI/S08.mid",
         "7cfe7da0ed7ccb9ca2cf65c6d9ec916d"
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00005/metadata.yaml",
-        "f00ed61d725e5cacc8eb262900045c30"
-      ]
-    },
-    "Track00005-S09": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
       ],
       "metadata": [
         "babyslakh_16k/Track00005/metadata.yaml",
@@ -1331,34 +1261,6 @@
         "2933450ec70fb1642c8d61d147a20ebf"
       ]
     },
-    "Track00009-S08": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00009/metadata.yaml",
-        "2933450ec70fb1642c8d61d147a20ebf"
-      ]
-    },
-    "Track00009-S09": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00009/metadata.yaml",
-        "2933450ec70fb1642c8d61d147a20ebf"
-      ]
-    },
     "Track00009-S10": {
       "audio": [
         "babyslakh_16k/Track00009/stems/S10.wav",
@@ -1815,20 +1717,6 @@
       "midi": [
         "babyslakh_16k/Track00013/MIDI/S01.mid",
         "beb21dd6f632a7fb6c173a6a5eeb16df"
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00013/metadata.yaml",
-        "ffb9160993eacb21557155213ac6a7ce"
-      ]
-    },
-    "Track00013-S02": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
       ],
       "metadata": [
         "babyslakh_16k/Track00013/metadata.yaml",
@@ -2367,20 +2255,6 @@
         "00b90aee2ac858b0193782243fa9072a"
       ]
     },
-    "Track00016-S13": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00016/metadata.yaml",
-        "00b90aee2ac858b0193782243fa9072a"
-      ]
-    },
     "Track00016-S14": {
       "audio": [
         null,
@@ -2459,20 +2333,6 @@
       "midi": [
         "babyslakh_16k/Track00017/MIDI/S03.mid",
         "c9e3e9368ef4c8de23466992bfba601e"
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00017/metadata.yaml",
-        "9c0d6af07fee05e14a2d2cad847dccc3"
-      ]
-    },
-    "Track00017-S04": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
       ],
       "metadata": [
         "babyslakh_16k/Track00017/metadata.yaml",
@@ -2731,34 +2591,6 @@
         "4284c56e6b7c0ca5eb09517f0643cb32"
       ]
     },
-    "Track00018-S12": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00018/metadata.yaml",
-        "4284c56e6b7c0ca5eb09517f0643cb32"
-      ]
-    },
-    "Track00018-S13": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00018/metadata.yaml",
-        "4284c56e6b7c0ca5eb09517f0643cb32"
-      ]
-    },
     "Track00018-S14": {
       "audio": [
         "babyslakh_16k/Track00018/stems/S14.wav",
@@ -2879,20 +2711,6 @@
       "midi": [
         "babyslakh_16k/Track00019/MIDI/S04.mid",
         "04c1f84797f60a420c54ef6f398d63a5"
-      ],
-      "metadata": [
-        "babyslakh_16k/Track00019/metadata.yaml",
-        "b34ab8f1c6333e12efd95b3801343ec1"
-      ]
-    },
-    "Track00019-S05": {
-      "audio": [
-        null,
-        null
-      ],
-      "midi": [
-        null,
-        null
       ],
       "metadata": [
         "babyslakh_16k/Track00019/metadata.yaml",
@@ -3175,7 +2993,6 @@
         "Track00001-S03",
         "Track00001-S04",
         "Track00001-S05",
-        "Track00001-S06",
         "Track00001-S07",
         "Track00001-S08",
         "Track00001-S09",
@@ -3205,9 +3022,7 @@
         "Track00002-S06",
         "Track00002-S07",
         "Track00002-S08",
-        "Track00002-S09",
-        "Track00002-S10",
-        "Track00002-S11"
+        "Track00002-S09"
       ],
       "midi": [
         "babyslakh_16k/Track00002/all_src.mid",
@@ -3229,7 +3044,6 @@
         "Track00003-S02",
         "Track00003-S03",
         "Track00003-S04",
-        "Track00003-S05",
         "Track00003-S06",
         "Track00003-S07",
         "Track00003-S08"
@@ -3283,7 +3097,6 @@
         "Track00005-S06",
         "Track00005-S07",
         "Track00005-S08",
-        "Track00005-S09",
         "Track00005-S10",
         "Track00005-S11",
         "Track00005-S12",
@@ -3392,8 +3205,6 @@
         "Track00009-S05",
         "Track00009-S06",
         "Track00009-S07",
-        "Track00009-S08",
-        "Track00009-S09",
         "Track00009-S10",
         "Track00009-S11",
         "Track00009-S12"
@@ -3491,7 +3302,6 @@
       "tracks": [
         "Track00013-S00",
         "Track00013-S01",
-        "Track00013-S02",
         "Track00013-S03",
         "Track00013-S04",
         "Track00013-S05",
@@ -3578,7 +3388,6 @@
         "Track00016-S10",
         "Track00016-S11",
         "Track00016-S12",
-        "Track00016-S13",
         "Track00016-S14",
         "Track00016-S15"
       ],
@@ -3601,7 +3410,6 @@
         "Track00017-S01",
         "Track00017-S02",
         "Track00017-S03",
-        "Track00017-S04",
         "Track00017-S05",
         "Track00017-S06",
         "Track00017-S07",
@@ -3636,8 +3444,6 @@
         "Track00018-S09",
         "Track00018-S10",
         "Track00018-S11",
-        "Track00018-S12",
-        "Track00018-S13",
         "Track00018-S14",
         "Track00018-S15",
         "Track00018-S16",
@@ -3663,7 +3469,6 @@
         "Track00019-S02",
         "Track00019-S03",
         "Track00019-S04",
-        "Track00019-S05",
         "Track00019-S06",
         "Track00019-S07",
         "Track00019-S08",

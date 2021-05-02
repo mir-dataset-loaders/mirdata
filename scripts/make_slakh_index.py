@@ -49,29 +49,33 @@ def make_dataset_index(dataset_data_path, version):
             with open(metadata_path, "r") as fhandle:
                 metadata = yaml.safe_load(fhandle)
 
-            track_ids = metadata["stems"].keys()
-            midi_path = os.path.join(mtrack_path, "all_src.mid")
+            mtrack_midi_path = os.path.join(mtrack_path, "all_src.mid")
             mix_path = os.path.join(mtrack_path, "mix.{}".format(fmt))
 
-            multitrack_index[mtrack_id] = {
-                "tracks": [
-                    "{}-{}".format(mtrack_id, track_id) for track_id in track_ids
-                ],
-                "midi": get_file_info(midi_path),
-                "mix": get_file_info(mix_path),
-                "metadata": get_file_info(metadata_path),
-            }
-
-            for track_id in track_ids:
+            track_ids = []
+            for track_id in metadata["stems"].keys():
                 audio_path = os.path.join(
                     mtrack_path, "stems", "{}.{}".format(track_id, fmt)
                 )
                 midi_path = os.path.join(mtrack_path, "MIDI", "{}.mid".format(track_id))
-                track_index["{}-{}".format(mtrack_id, track_id)] = {
+                midi_file_info = get_file_info(midi_path)
+                # skip tracks where there is no midi information (and thus no audio)
+                if midi_file_info[0] is None:
+                    continue
+                track_id = "{}-{}".format(mtrack_id, track_id)
+                track_ids.append(track_id)
+                track_index[track_id] = {
                     "audio": get_file_info(audio_path),
-                    "midi": get_file_info(midi_path),
+                    "midi": [midi_file_info[0], midi_file_info[1]],
                     "metadata": get_file_info(metadata_path),
                 }
+
+            multitrack_index[mtrack_id] = {
+                "tracks": track_ids,
+                "midi": get_file_info(mtrack_midi_path),
+                "mix": get_file_info(mix_path),
+                "metadata": get_file_info(metadata_path),
+            }
 
     # top-key level version
     dataset_index = {
