@@ -73,6 +73,14 @@ Creative Commons Attribution 4.0 International
 
 SPLITS = ["train", "validation", "test", "omitted"]
 
+#: Mixing group to program number mapping
+MIXING_GROUPS = {
+    "piano": [0, 1, 2, 3, 4, 5, 6, 7],
+    "guitar": [24, 25, 26, 27, 28, 29, 30, 31],
+    "bass": [32, 33, 34, 35, 36, 37, 38, 39],
+    "drums": [128],
+}
+
 
 class Track(core.Track):
     """slakh Track class
@@ -95,13 +103,16 @@ class Track(core.Track):
         is_drum (bool): whether the "drum" flag is true for this MIDI track
         midi_program_name (str): MIDI instrument program name
         plugin_name (str): patch/plugin name that rendered the audio file
+        mixing_group (str): which mixing group the track belongs to.
+            One of MIXING_GROUPS.
         program_number (int): MIDI instrument program number
 
     Cached Properties:
         midi (PrettyMIDI): midi data used to generate the audio
-            Some unusual tracks have no midi - in this case this will be None
-        notes (NoteData): note representation of the midi data
-            Some unusual tracks have no audio - in this case this will be None
+        notes (NoteData or None): note representation of the midi data.
+            If there are no notes in the midi file, returns None.
+        multif0 (MultiF0Data or None): multif0 representaation of the midi data.
+            If there are no notes in the midi file, returns None.
 
     """
 
@@ -124,7 +135,6 @@ class Track(core.Track):
         self.data_split = None  # for baby_slakh, there are no data splits - set to None
         if index["version"] == "2100-redux":
             self.data_split = self._track_paths["audio"][0].split(os.sep)[1]
-            print(self._track_paths["audio"][0])
             assert (
                 self.data_split in SPLITS
             ), "{} not a valid split - should be one of {}.".format(
@@ -161,13 +171,26 @@ class Track(core.Track):
     def program_number(self) -> Optional[int]:
         return self._track_metadata.get("program_num")
 
+    @property
+    def mixing_group(self) -> Optional[str]:
+        group = [k for k, v in MIXING_GROUPS.items() if self.program_number in v]
+        if len(group) == 0:
+            return None
+        return group[0]
+
     @core.cached_property
     def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
         return io.load_midi(self.midi_path)
 
     @core.cached_property
-    def notes(self) -> annotations.NoteData:
+    def notes(self) -> Optional[annotations.NoteData]:
         return io.load_notes_from_midi(self.midi_path, self.midi, skip_drums=True)
+
+    @core.cached_property
+    def multif0(self) -> Optional[annotations.MultiF0Data]:
+        return io.load_multif0_from_midi(
+            self.midi_path, self.midi, skip_drums=True, pitch_bend=False
+        )
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -210,6 +233,7 @@ class MultiTrack(core.MultiTrack):
     Cached Properties:
         midi (PrettyMIDI): midi data used to generate the mixture audio
         notes (NoteData): note representation of the midi data
+        multif0 (MultiF0Data): multif0 representation of the midi data
 
     """
 
@@ -265,8 +289,14 @@ class MultiTrack(core.MultiTrack):
         return io.load_midi(self.midi_path)
 
     @core.cached_property
-    def notes(self) -> annotations.NoteData:
+    def notes(self) -> Optional[annotations.NoteData]:
         return io.load_notes_from_midi(self.midi_path, self.midi)
+
+    @core.cached_property
+    def multif0(self) -> Optional[annotations.MultiF0Data]:
+        return io.load_multif0_from_midi(
+            self.midi_path, self.midi, skip_drums=True, pitch_bend=False
+        )
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -285,6 +315,48 @@ class MultiTrack(core.MultiTrack):
             audio_path=self.mix_path,
             note_data=[(self.notes, "Notes")],
         )
+
+    def get_submix_by_group(self, target_groups):
+        """Create submixes grouped by instrument type. Creates one submix
+        per target group, plus one additional "other" group for any remaining sources.
+        Only tracks with available audio are mixed.
+
+        Args:
+            target_groups (list): List of target groups. Elements should be one of
+                MIXING_GROUPS, e.g. ["bass", "guitar"]
+
+        Returns:
+            * submixes (dict): {group: audio_signal} of submixes
+            * groups (dict): {group: list of track ids} of submixes
+
+        """
+        groups = {}
+        submixes = {}
+        tracks_with_audio = [
+            track for track in self.tracks.values() if track.audio_path
+        ]
+        in_group = []
+        for group in target_groups:
+            groups[group] = [
+                track.track_id
+                for track in tracks_with_audio
+                if track.mixing_group == group
+            ]
+            in_group.extend(groups[group])
+
+            submixes[group] = (
+                None if len(groups[group]) == 0 else self.get_target(groups[group])
+            )
+
+        groups["other"] = [
+            track.track_id
+            for track in tracks_with_audio
+            if track.track_id not in in_group
+        ]
+        submixes["other"] = (
+            None if len(groups["other"]) == 0 else self.get_target(groups["other"])
+        )
+        return submixes, groups
 
 
 @io.coerce_to_bytes_io
@@ -330,3 +402,7 @@ class Dataset(core.Dataset):
     @core.copy_docs(io.load_notes_from_midi)
     def load_notes_from_midi(self, *args, **kwargs):
         return io.load_notes_from_midi(*args, **kwargs)
+
+    @core.copy_docs(io.load_multif0_from_midi)
+    def load_multif0_from_midi(self, *args, **kwargs):
+        return io.load_multif0_from_midi(*args, **kwargs)

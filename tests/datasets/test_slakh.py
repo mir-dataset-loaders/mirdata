@@ -25,12 +25,14 @@ def test_track():
         "midi_program_name": "Distortion Guitar",
         "plugin_name": "elektrik_guitar.nkm",
         "program_number": 30,
+        "mixing_group": "guitar",
         "data_split": None,
     }
 
     expected_property_types = {
         "midi": pretty_midi.PrettyMIDI,
         "notes": annotations.NoteData,
+        "multif0": annotations.MultiF0Data,
         "audio": tuple,
     }
 
@@ -56,6 +58,11 @@ def test_track():
     assert sr == 16000
     assert audio.shape == (16000 * 2,)
 
+    # test a track which has no notes
+    track_id = "Track00007-S00"
+    track = dataset.track(track_id)
+    assert track.notes is None
+
 
 def test_track_full():
     default_trackid = "Track00001-S00"
@@ -75,12 +82,14 @@ def test_track_full():
         "midi_program_name": "Distortion Guitar",
         "plugin_name": "elektrik_guitar.nkm",
         "program_number": 30,
+        "mixing_group": "guitar",
         "data_split": "train",
     }
 
     expected_property_types = {
         "midi": pretty_midi.PrettyMIDI,
         "notes": annotations.NoteData,
+        "multif0": annotations.MultiF0Data,
         "audio": tuple,
     }
 
@@ -145,7 +154,6 @@ def test_multitrack():
             "Track00001-S03",
             "Track00001-S04",
             "Track00001-S05",
-            "Track00001-S06",
             "Track00001-S07",
             "Track00001-S08",
             "Track00001-S09",
@@ -162,11 +170,48 @@ def test_multitrack():
         "track_audio_property": str,
         "midi": pretty_midi.PrettyMIDI,
         "notes": annotations.NoteData,
+        "multif0": annotations.MultiF0Data,
         "audio": tuple,
     }
 
     run_track_tests(mtrack, expected_attributes, expected_property_types)
     run_multitrack_tests(mtrack)
+
+    # test submixing
+    submixes, groups = mtrack.get_submix_by_group(["guitar", "drums"])
+    assert list(submixes.keys()) == ["guitar", "drums", "other"]
+    assert submixes["drums"].shape == (1, 2 * 16000)
+    assert submixes["guitar"].shape == (1, 2 * 16000)
+    assert submixes["other"].shape == (1, 2 * 16000)
+    assert list(groups.keys()) == ["guitar", "drums", "other"]
+    assert groups["guitar"] == ["Track00001-S00", "Track00001-S07", "Track00001-S08"]
+    assert groups["drums"] == ["Track00001-S01"]
+    assert groups["other"] == [
+        "Track00001-S02",
+        "Track00001-S03",
+        "Track00001-S04",
+        "Track00001-S05",
+        "Track00001-S09",
+        "Track00001-S10",
+    ]
+
+    submixes, groups = mtrack.get_submix_by_group(["asdf"])
+    assert list(submixes.keys()) == ["asdf", "other"]
+    assert submixes["asdf"] is None
+    assert submixes["other"].shape == (1, 2 * 16000)
+    assert groups["asdf"] == []
+    assert groups["other"] == [
+        "Track00001-S00",
+        "Track00001-S01",
+        "Track00001-S02",
+        "Track00001-S03",
+        "Track00001-S04",
+        "Track00001-S05",
+        "Track00001-S07",
+        "Track00001-S08",
+        "Track00001-S09",
+        "Track00001-S10",
+    ]
 
 
 def test_multitrack_to_jams():
