@@ -627,9 +627,9 @@ class NoteData(Annotation):
         self,
         intervals: np.ndarray,
         interval_unit: str,
-        pitches: np.array,
+        pitches: np.ndarray,
         pitch_unit: str,
-        confidence: Optional[np.array] = None,
+        confidence: Optional[np.ndarray] = None,
         confidence_unit: Optional[str] = None,
     ):
         validate_array_like(intervals, np.ndarray, float)
@@ -648,7 +648,7 @@ class NoteData(Annotation):
         self.confidence_unit = confidence_unit
 
     @property
-    def notes(self) -> np.array:
+    def notes(self) -> np.ndarray:
         logging.warning(
             "Deprecation warning: NoteData.notes will be removed in a future version."
             + "Use NoteData.pitches"
@@ -657,9 +657,9 @@ class NoteData(Annotation):
 
     def to_sparse_index(
         self,
-        time_scale: np.array,
+        time_scale: np.ndarray,
         time_scale_unit: str,
-        frequency_scale: np.array,
+        frequency_scale: np.ndarray,
         frequency_scale_unit: str,
         amplitude_unit: str = "binary",
         onsets_only: bool = False,
@@ -733,9 +733,9 @@ class NoteData(Annotation):
 
     def to_matrix(
         self,
-        time_scale: np.array,
+        time_scale: np.ndarray,
         time_scale_unit: str,
-        frequency_scale: np.array,
+        frequency_scale: np.ndarray,
         frequency_scale_unit: str,
         amplitude_unit: str = "binary",
         onsets_only: bool = False,
@@ -743,9 +743,9 @@ class NoteData(Annotation):
         """Convert f0 data to a matrix (piano roll) defined by a time and frequency scale
 
         Args:
-            time_scale (np.array): array of matrix time stamps in seconds
+            time_scale (np.ndarray): array of matrix time stamps in seconds
             time_scale_unit (str): units for time scale values, one of TIME_UNITS
-            frequency_scale (np.array): array of matrix frequency values in seconds
+            frequency_scale (np.ndarray): array of matrix frequency values in seconds
             frequency_scale_unit (str): units for frequency scale values, one of PITCH_UNITS
             onsets_only (bool, optional): If True, returns an onset piano roll.
                 Defaults to False.
