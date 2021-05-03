@@ -2,6 +2,7 @@
 """
 import logging
 import re
+from typing import List, Optional, Tuple
 
 from jams.schema import namespace
 import librosa
@@ -142,165 +143,6 @@ class SectionData(Annotation):
         self.interval_unit = interval_unit
         self.labels = labels
         self.label_unit = label_unit
-
-
-class NoteData(Annotation):
-    """NoteData class
-
-    Attributes:
-        intervals (np.ndarray): (n x 2) array of intervals
-            in the form [start_time, end_time]. Times should be positive
-            and intervals should have non-negative duration
-        interval_unit (str): unit of the time values in intervals. One
-            of TIME_UNITS.
-        pitches (np.ndarray): array of pitches
-        pitch_unit (str): note unit, one of PITCH_UNITS
-        confidence (np.ndarray or None): array of confidence values
-        confidence_unit (str or None): confidence unit, one of AMPLITUDE_UNITS
-
-    """
-
-    def __init__(
-        self,
-        intervals,
-        interval_unit,
-        pitches,
-        pitch_unit,
-        confidence=None,
-        confidence_unit=None,
-    ):
-        validate_array_like(intervals, np.ndarray, float)
-        validate_array_like(pitches, np.ndarray, float)
-        validate_array_like(confidence, np.ndarray, float, none_allowed=True)
-        validate_lengths_equal([intervals, pitches, confidence])
-        validate_intervals(intervals, interval_unit)
-        validate_pitches(pitches, pitch_unit)
-        validate_confidence(confidence, confidence_unit)
-
-        self.intervals = intervals
-        self.interval_unit = interval_unit
-        self.pitches = pitches
-        self.pitch_unit = pitch_unit
-        self.confidence = confidence
-        self.confidence_unit = confidence_unit
-
-    @property
-    def notes(self):
-        logging.warning(
-            "Deprecation warning: NoteData.notes will be removed in a future version."
-            + "Use NoteData.pitches"
-        )
-        return self.pitches
-
-    def to_sparse_index(
-        self,
-        time_scale,
-        time_scale_unit,
-        frequency_scale,
-        frequency_scale_unit,
-        amplitude_unit="binary",
-        onsets_only=False,
-    ):
-        """Convert note annotations to indexes of a sparse matrix (piano roll)
-
-        Args:
-            time_scale (np.ndarray): array of matrix time stamps in seconds
-            time_scale_unit (str): units for time scale values, one of TIME_UNITS
-            frequency_scale (np.ndarray): array of matrix frequency values in seconds
-            frequency_scale_unit (str): units for frequency scale values, one of PITCH_UNITS
-            amplitude_unit (str): units for amplitude values, one of AMPLITUDE_UNITS.
-                Defaults to "binary".
-            onsets_only (bool, optional): If True, returns an onset piano roll.
-                Defaults to False.
-
-        Returns:
-            * sparse_index (np.ndarray): Array of sparce indices [(time_index, frequency_index)]
-            * amplitude (np.ndarray): Array of amplitude values for each index
-
-        """
-        intervals = convert_time_units(
-            self.intervals, self.interval_unit, time_scale_unit
-        )
-        freqs_hz = convert_pitch_units(
-            self.pitches, self.pitch_unit, frequency_scale_unit
-        )
-
-        if self.confidence is not None:
-            confidence = convert_amplitude_units(
-                self.confidence, self.confidence_unit, amplitude_unit
-            )
-        else:
-            confidence = convert_amplitude_units(
-                np.ones((freqs_hz.shape)), "binary", amplitude_unit
-            )
-
-        time_index_0 = closest_index(
-            intervals[:, 0, np.newaxis], time_scale[:, np.newaxis]
-        )
-        freq_indexes = closest_index(
-            np.log(freqs_hz)[:, np.newaxis], np.log(frequency_scale)[:, np.newaxis]
-        )
-        if onsets_only:
-            onset_index = []
-            confidences = []
-            for t0, f, c in zip(time_index_0, freq_indexes, confidence):
-                if t0 == -1 or f == -1:
-                    continue
-                onset_index.append([t0, f])
-                confidences.append(c)
-            return np.array(onset_index), np.array(confidences)
-
-        time_index_1 = closest_index(
-            intervals[:, 1, np.newaxis], time_scale[:, np.newaxis]
-        )
-        max_idx = len(time_scale) - 1
-        sparse_index = []
-        confidences = []
-        for t0, t1, f, c in zip(time_index_0, time_index_1, freq_indexes, confidence):
-            if f == -1 or (t0 == -1 and t1 == -1):
-                continue
-
-            t_start = max([t0, 0])
-            t_end = (t1 if t1 != -1 else max_idx) + 1
-
-            sparse_index.extend([[t, f] for t in range(t_start, t_end)])
-            confidences.extend([c for _ in range(t_start, t_end)])
-
-        return np.array(sparse_index), np.array(confidences)
-
-    def to_matrix(
-        self,
-        time_scale,
-        time_scale_unit,
-        frequency_scale,
-        frequency_scale_unit,
-        amplitude_unit="binary",
-        onsets_only=False,
-    ):
-        """Convert f0 data to a matrix (piano roll) defined by a time and frequency scale
-
-        Args:
-            time_scale (np.ndarray): array of matrix time stamps in seconds
-            time_scale_unit (str): units for time scale values, one of TIME_UNITS
-            frequency_scale (np.ndarray): array of matrix frequency values in seconds
-            frequency_scale_unit (str): units for frequency scale values, one of PITCH_UNITS
-            onsets_only (bool, optional): If True, returns an onset piano roll.
-                Defaults to False.
-
-        Returns:
-            np.ndarray: 2D matrix of shape len(time_scale) x len(frequency_scale)
-        """
-        index, voicing = self.to_sparse_index(
-            time_scale,
-            time_scale_unit,
-            frequency_scale,
-            frequency_scale_unit,
-            amplitude_unit,
-            onsets_only,
-        )
-        matrix = np.zeros((len(time_scale), len(frequency_scale)))
-        matrix[index[:, 0], index[:, 1]] = voicing
-        return matrix
 
 
 class ChordData(Annotation):
@@ -763,6 +605,221 @@ class MultiF0Data(Annotation):
         matrix = np.zeros((len(time_scale), len(frequency_scale)))
         matrix[index[:, 0], index[:, 1]] = voicing
         return matrix
+
+
+class NoteData(Annotation):
+    """NoteData class
+
+    Attributes:
+        intervals (np.ndarray): (n x 2) array of intervals
+            in the form [start_time, end_time]. Times should be positive
+            and intervals should have non-negative duration
+        interval_unit (str): unit of the time values in intervals. One
+            of TIME_UNITS.
+        pitches (np.ndarray): array of pitches
+        pitch_unit (str): note unit, one of PITCH_UNITS
+        confidence (np.ndarray or None): array of confidence values
+        confidence_unit (str or None): confidence unit, one of AMPLITUDE_UNITS
+
+    """
+
+    def __init__(
+        self,
+        intervals: np.ndarray,
+        interval_unit: str,
+        pitches: np.ndarray,
+        pitch_unit: str,
+        confidence: Optional[np.ndarray] = None,
+        confidence_unit: Optional[str] = None,
+    ):
+        validate_array_like(intervals, np.ndarray, float)
+        validate_array_like(pitches, np.ndarray, float)
+        validate_array_like(confidence, np.ndarray, float, none_allowed=True)
+        validate_lengths_equal([intervals, pitches, confidence])
+        validate_intervals(intervals, interval_unit)
+        validate_pitches(pitches, pitch_unit)
+        validate_confidence(confidence, confidence_unit)
+
+        self.intervals = intervals
+        self.interval_unit = interval_unit
+        self.pitches = pitches
+        self.pitch_unit = pitch_unit
+        self.confidence = confidence
+        self.confidence_unit = confidence_unit
+
+    @property
+    def notes(self) -> np.ndarray:
+        logging.warning(
+            "Deprecation warning: NoteData.notes will be removed in a future version."
+            + "Use NoteData.pitches"
+        )
+        return self.pitches
+
+    def to_sparse_index(
+        self,
+        time_scale: np.ndarray,
+        time_scale_unit: str,
+        frequency_scale: np.ndarray,
+        frequency_scale_unit: str,
+        amplitude_unit: str = "binary",
+        onsets_only: bool = False,
+    ) -> Tuple[np.ndarray, np.ndarray]:
+        """Convert note annotations to indexes of a sparse matrix (piano roll)
+
+        Args:
+            time_scale (np.array): array of matrix time stamps in seconds
+            time_scale_unit (str): units for time scale values, one of TIME_UNITS
+            frequency_scale (np.array): array of matrix frequency values in seconds
+            frequency_scale_unit (str): units for frequency scale values, one of PITCH_UNITS
+            amplitude_unit (str): units for amplitude values, one of AMPLITUDE_UNITS.
+                Defaults to "binary".
+            onsets_only (bool, optional): If True, returns an onset piano roll.
+                Defaults to False.
+
+        Returns:
+            * sparse_index (np.ndarray): Array of sparce indices [(time_index, frequency_index)]
+            * amplitude (np.ndarray): Array of amplitude values for each index
+
+        """
+        intervals = convert_time_units(
+            self.intervals, self.interval_unit, time_scale_unit
+        )
+        freqs_hz = convert_pitch_units(
+            self.pitches, self.pitch_unit, frequency_scale_unit
+        )
+
+        if self.confidence is not None:
+            confidence = convert_amplitude_units(
+                self.confidence, self.confidence_unit, amplitude_unit
+            )
+        else:
+            confidence = convert_amplitude_units(
+                np.ones((freqs_hz.shape)), "binary", amplitude_unit
+            )
+
+        time_index_0 = closest_index(
+            intervals[:, 0, np.newaxis], time_scale[:, np.newaxis]
+        )
+        freq_indexes = closest_index(
+            np.log(freqs_hz)[:, np.newaxis], np.log(frequency_scale)[:, np.newaxis]
+        )
+        if onsets_only:
+            onset_index = []
+            confidences = []
+            for t0, f, c in zip(time_index_0, freq_indexes, confidence):
+                if t0 == -1 or f == -1:
+                    continue
+                onset_index.append([t0, f])
+                confidences.append(c)
+            return np.array(onset_index), np.array(confidences)
+
+        time_index_1 = closest_index(
+            intervals[:, 1, np.newaxis], time_scale[:, np.newaxis]
+        )
+        max_idx = len(time_scale) - 1
+        sparse_index = []
+        confidences = []
+        for t0, t1, f, c in zip(time_index_0, time_index_1, freq_indexes, confidence):
+            if f == -1 or (t0 == -1 and t1 == -1):
+                continue
+
+            t_start = max([t0, 0])
+            t_end = (t1 if t1 != -1 else max_idx) + 1
+
+            sparse_index.extend([[t, f] for t in range(t_start, t_end)])
+            confidences.extend([c for _ in range(t_start, t_end)])
+
+        return np.array(sparse_index), np.array(confidences)
+
+    def to_matrix(
+        self,
+        time_scale: np.ndarray,
+        time_scale_unit: str,
+        frequency_scale: np.ndarray,
+        frequency_scale_unit: str,
+        amplitude_unit: str = "binary",
+        onsets_only: bool = False,
+    ) -> np.ndarray:
+        """Convert f0 data to a matrix (piano roll) defined by a time and frequency scale
+
+        Args:
+            time_scale (np.ndarray): array of matrix time stamps in seconds
+            time_scale_unit (str): units for time scale values, one of TIME_UNITS
+            frequency_scale (np.ndarray): array of matrix frequency values in seconds
+            frequency_scale_unit (str): units for frequency scale values, one of PITCH_UNITS
+            onsets_only (bool, optional): If True, returns an onset piano roll.
+                Defaults to False.
+
+        Returns:
+            np.ndarray: 2D matrix of shape len(time_scale) x len(frequency_scale)
+        """
+        index, voicing = self.to_sparse_index(
+            time_scale,
+            time_scale_unit,
+            frequency_scale,
+            frequency_scale_unit,
+            amplitude_unit,
+            onsets_only,
+        )
+        matrix = np.zeros((len(time_scale), len(frequency_scale)))
+        matrix[index[:, 0], index[:, 1]] = voicing
+        return matrix
+
+    def to_multif0(
+        self, time_hop: float, time_hop_unit: str, max_time: Optional[float] = None
+    ) -> MultiF0Data:
+        """Convert note annotation to multiple f0 format.
+
+        Args:
+            time_hop (float): time between time stamps in multif0 annotation
+            time_hop_unit (str): unit for time_hop, and resulting multif0 data.
+                One of TIME_UNITS
+            max_time (float, optional): Maximum time stamp in time_hop units.
+                Defaults to None, in which case the maximum note interval
+                time is used.
+
+        Returns:
+            MultiF0Data: multif0 annotation
+        """
+        intervals = convert_time_units(
+            self.intervals, self.interval_unit, time_hop_unit
+        )
+        note_time_max = np.max(intervals[:, 1])
+        max_time = note_time_max if not max_time else max_time
+        if max_time < note_time_max:
+            raise ValueError(
+                "max_time = {} cannot be smaller than the last note interval = {}".format(
+                    max_time, note_time_max
+                )
+            )
+        times = np.arange(0, max_time + time_hop, time_hop)
+        frequency_list: List[List[float]] = [[] for _ in times]
+        confidence_list: List[List[float]] = [[] for _ in times]
+        if self.confidence is not None:
+
+            for t0, t1, pch, conf in zip(
+                intervals[:, 0], intervals[:, 1], self.pitches, self.confidence
+            ):
+                for i in range(
+                    int(np.round(t0 / time_hop)), int(np.round(t1 / time_hop)) + 1
+                ):
+                    frequency_list[i].append(pch)
+                    confidence_list[i].append(conf)
+        else:
+            for t0, t1, pch in zip(intervals[:, 0], intervals[:, 1], self.pitches):
+                for i in range(
+                    int(np.round(t0 / time_hop)), int(np.round(t1 / time_hop)) + 1
+                ):
+                    frequency_list[i].append(pch)
+
+        return MultiF0Data(
+            times,
+            time_hop_unit,
+            frequency_list,
+            self.pitch_unit,
+            None if self.confidence is None else confidence_list,
+            self.confidence_unit,
+        )
 
 
 class KeyData(Annotation):
