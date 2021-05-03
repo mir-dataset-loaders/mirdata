@@ -230,6 +230,54 @@ def test_note_data():
     )
     assert np.allclose(matrix, expected)
 
+    # test to_multif0
+    mf0_data = note_data2.to_multif0(0.5, "s")
+    assert mf0_data.time_unit == "s"
+    assert mf0_data.frequency_unit == "hz"
+    assert mf0_data.confidence_unit == "likelihood"
+    assert np.allclose(mf0_data.times, np.array([0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]))
+    assert mf0_data.frequency_list == [
+        [],
+        [],
+        [100.0],
+        [100.0, 150.0],
+        [100.0, 150.0, 120.0],
+        [150.0, 120.0],
+        [150.0, 120.0],
+    ]
+    assert mf0_data.confidence_list == [
+        [],
+        [],
+        [0.1],
+        [0.1, 0.4],
+        [0.1, 0.4, 0.2],
+        [0.4, 0.2],
+        [0.4, 0.2],
+    ]
+
+    mf0_data = note_data.to_multif0(500, "ms", max_time=3500.0)
+    assert mf0_data.time_unit == "ms"
+    assert mf0_data.frequency_unit == "hz"
+    assert mf0_data.confidence_unit is None
+    assert np.allclose(
+        mf0_data.times,
+        np.array([0.0, 500.0, 1000.0, 1500.0, 2000.0, 2500.0, 3000.0, 3500.0]),
+    )
+    assert mf0_data.frequency_list == [
+        [],
+        [],
+        [100.0],
+        [100.0, 150.0],
+        [100.0, 150.0, 120.0],
+        [150.0, 120.0],
+        [150.0, 120.0],
+        [],
+    ]
+    assert mf0_data.confidence_list is None
+
+    with pytest.raises(ValueError):
+        mf0_data = note_data.to_multif0(0.5, "s", max_time=2.5)
+
 
 def test_chord_data():
     intervals = np.array([[1.0, 2.0], [1.5, 3.0], [2.0, 3.0]])
