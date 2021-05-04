@@ -53,7 +53,7 @@
 """
 import logging
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple, Dict
+from typing import BinaryIO, Optional, TextIO, Tuple, Dict, List
 
 import jams
 import librosa
@@ -238,7 +238,7 @@ class Track(core.Track):
             ],
         )
         times = contours[max_times].times
-        frequency_list = [[] for _ in times]
+        frequency_list: List[list] = [[] for _ in times]
         for contour in contours:
             if contour is None:
                 continue
