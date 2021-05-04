@@ -231,13 +231,13 @@ class Track(core.Track):
     @core.cached_property
     def multif0(self) -> annotations.MultiF0Data:
         contours: List[annotations.F0Data] = list(self.pitch_contours.values())
-        max_times: int = np.argmax(
+        max_times = np.argmax(
             [
                 0 if contour_data is None else len(contour_data.times)
                 for contour_data in contours
             ],
-        )
-        times = contours[max_times].times
+        )  # type: ignore
+        times = contours[max_times].times  # type: ignore
         frequency_list: List[list] = [[] for _ in times]
         for contour in contours:
             if contour is None:
