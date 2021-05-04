@@ -37,7 +37,9 @@ def test_track():
         "inferred_chords": annotations.ChordData,
         "key_mode": annotations.KeyData,
         "pitch_contours": dict,
+        "multif0": annotations.MultiF0Data,
         "notes": dict,
+        "notes_all": annotations.NoteData
         "audio_mic": tuple,
         "audio_mix": tuple,
         "audio_hex": tuple,

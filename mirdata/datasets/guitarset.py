@@ -53,7 +53,7 @@
 """
 import logging
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, Dict
 
 import jams
 import librosa
@@ -154,6 +154,7 @@ class Track(core.Track):
             - 'G': F0Data(...)
             - 'B': F0Data(...)
             - 'e': F0Data(...)
+        multif0 (MultiF0Data): all pitch contour data as one multif0 annotation
         notes (dict):
             Notes per string
             - 'E': NoteData(...)
@@ -162,6 +163,7 @@ class Track(core.Track):
             - 'G': NoteData(...)
             - 'B': NoteData(...)
             - 'e': NoteData(...)
+        notes_all (NoteData): all note data as one note annotation
 
     """
 
@@ -219,7 +221,7 @@ class Track(core.Track):
         return load_key_mode(self.jams_path)
 
     @core.cached_property
-    def pitch_contours(self):
+    def pitch_contours(self) -> Dict[annotations.F0Data]:
         contours = {}
         # iterate over 6 strings
         for i in range(6):
@@ -227,12 +229,33 @@ class Track(core.Track):
         return contours
 
     @core.cached_property
-    def notes(self):
+    def multif0(self) -> annotations.MultiF0Data:
+        contours = self.pitch_contours.values()
+        max_times = np.argmax([len(contour_data.times) for contour_data in contours])
+        times = contours[max_times].times
+        frequency_list = [[] for _ in times]
+        for contour in contours:
+            for i, f in enumerate(contour.frequencies):
+                if f > 0:
+                    frequency_list[i].append(f)
+        return annotations.MultiF0Data(times, "s", frequency_list, "hz")
+
+    @core.cached_property
+    def notes(self) -> Dict[annotations.NoteData]:
         notes = {}
         # iterate over 6 strings
         for i in range(6):
             notes[_GUITAR_STRINGS[i]] = load_notes(self.jams_path, i)
         return notes
+
+    @core.cached_property
+    def notes_all(self) -> annotations.NoteData:
+        intervals = []
+        pitches = []
+        for note_data in self.notes.values():
+            intervals.extend(note_data.intervals)
+            pitches.extend(note_data.pitches)
+        return annotations.NoteData(intervals, "s", pitches, "midi")
 
     @property
     def audio_mic(self) -> Optional[Tuple[np.ndarray, float]]:
