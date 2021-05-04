@@ -624,11 +624,11 @@ class MultiF0Data(Annotation):
 
         Returns:
             * times (np.ndarray): array of uniformly spaced time stamps in seconds
-            * frequency_list (list): list of lists of frequency values in Hz
+            * frequency_list (list): list of np.array of frequency values in Hz
         """
         times = convert_time_units(self.times, self.time_unit, "s")
         frequency_list = [
-            convert_pitch_units(flist, self.frequency_unit, "hz")
+            convert_pitch_units(np.array(flist), self.frequency_unit, "hz")
             for flist in self.frequency_list
         ]
         return times, frequency_list

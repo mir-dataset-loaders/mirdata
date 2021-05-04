@@ -1,5 +1,6 @@
 import sys
 import pytest
+import mir_eval
 import numpy as np
 
 import mirdata
@@ -286,6 +287,12 @@ def test_note_data():
     assert np.allclose(intervals_me, intervals)
     assert np.allclose(pitches_me, notes)
     assert np.allclose(velocity_me, np.array([0, 127.0, 127.0]))
+    scores = mir_eval.transcription.evaluate(
+        intervals_me, pitches_me, intervals_me, pitches_me
+    )
+    scores = mir_eval.transcription_velocity.evaluate(
+        intervals_me, pitches_me, velocity_me, intervals_me, pitches_me, velocity_me
+    )
 
     note_data = annotations.NoteData(
         intervals, "ms", np.array([60.0, 70.0, 100.0]), "midi"
@@ -296,6 +303,9 @@ def test_note_data():
     )
     assert np.allclose(pitches_me, np.array([261.6255653, 466.16376152, 2637.0204553]))
     assert velocity_me is None
+    scores = mir_eval.transcription.evaluate(
+        intervals_me, pitches_me, intervals_me, pitches_me
+    )
 
 
 def test_chord_data():
@@ -441,6 +451,9 @@ def test_f0_data():
     assert np.allclose(times_me, times)
     assert np.allclose(frequencies, frequency_me)
     assert np.allclose(voicing, voicing_me)
+    scores = mir_eval.melody.evaluate(
+        times_me, frequency_me, times_me, frequency_me, voicing_me, voicing_me
+    )
 
 
 def test_multif0_data():
@@ -524,7 +537,11 @@ def test_multif0_data():
 
     times_me, frequencies_me = f0_data.to_mir_eval()
     assert np.allclose(times_me, times)
-    assert frequencies_me == frequencies
+    for flist, farr in zip(frequencies, frequencies_me):
+        assert np.allclose(flist, farr)
+    scores = mir_eval.multipitch.evaluate(
+        times_me, frequencies_me, times_me, frequencies_me
+    )
 
 
 def test_key_data():
