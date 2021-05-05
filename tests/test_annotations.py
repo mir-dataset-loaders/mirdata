@@ -97,6 +97,20 @@ def test_note_data():
     assert np.allclose(note_data2.pitches, notes)
     assert np.allclose(note_data2.confidence, confidence)
 
+    intervals_dup = np.array([[1.0, 2.0], [1.5, 3.0], [1.0, 2.0], [2.0, 3.0]])
+    notes_dup = np.array([100.0, 150.0, 100.0, 120.0])
+    confidence_dup = np.array([0.1, 0.4, 0.5, 0.2])
+    note_data_dup = annotations.NoteData(intervals_dup, "s", notes_dup, "hz")
+    assert np.allclose(note_data_dup.intervals, intervals)
+    assert np.allclose(note_data_dup.pitches, notes)
+    assert note_data_dup.confidence is None
+    note_data2_dup = annotations.NoteData(
+        intervals_dup, "s", notes_dup, "hz", confidence_dup, "likelihood"
+    )
+    assert np.allclose(note_data2_dup.intervals, intervals)
+    assert np.allclose(note_data2_dup.pitches, notes)
+    assert np.allclose(note_data2_dup.confidence, confidence)
+
     with pytest.raises(ValueError):
         annotations.NoteData(None, "s", notes, "hz")
 
@@ -457,9 +471,9 @@ def test_f0_data():
 
 
 def test_multif0_data():
-    times = np.array([1.0, 2.0])
-    frequencies = [[100.0], [150.0, 120.0]]
-    confidence = [[0.1], [0.4, 0.2]]
+    times = np.array([1.0, 2.0, 3.0])
+    frequencies = [[100.0], [150.0, 120.0], []]
+    confidence = [[0.1], [0.4, 0.2], []]
     f0_data = annotations.MultiF0Data(
         times, "s", frequencies, "hz", confidence, "likelihood"
     )
@@ -477,6 +491,28 @@ def test_multif0_data():
     assert f0_data2.frequency_unit == "hz"
     assert f0_data2.confidence_list is None
     assert f0_data2.confidence_unit is None
+
+    # test duplicates
+    times_dup = np.array([1.0, 2.0, 3.0])
+    frequencies_dup = [[100.0], [150.0, 120.0, 150.0], []]
+    confidence_dup = [[0.1], [0.4, 0.2, 0.3], []]
+    f0_data_dup = annotations.MultiF0Data(
+        times_dup, "s", frequencies_dup, "hz", confidence_dup, "likelihood"
+    )
+    assert np.allclose(f0_data_dup.times, times)
+    assert f0_data_dup.time_unit == "s"
+    assert f0_data_dup.frequency_list == frequencies
+    assert f0_data_dup.frequency_unit == "hz"
+    assert f0_data_dup.confidence_list == confidence
+    assert f0_data_dup.confidence_unit == "likelihood"
+
+    f0_data2_dup = annotations.MultiF0Data(times_dup, "s", frequencies_dup, "hz")
+    assert np.allclose(f0_data2_dup.times, times)
+    assert f0_data2_dup.time_unit == "s"
+    assert f0_data2_dup.frequency_list == frequencies
+    assert f0_data2_dup.frequency_unit == "hz"
+    assert f0_data2_dup.confidence_list is None
+    assert f0_data2_dup.confidence_unit is None
 
     # test resample
     time_scale = np.array([0.5, 1.0, 1.5])

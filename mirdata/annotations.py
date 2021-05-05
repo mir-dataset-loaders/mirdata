@@ -465,6 +465,34 @@ class MultiF0Data(Annotation):
         self.confidence_list = confidence_list
         self.confidence_unit = confidence_unit
 
+        self._remove_duplicates()
+
+    def _remove_duplicates(self):
+        new_frequency_list = []
+        new_confidence_list = []
+        confidence_list = (
+            [[0 for _ in flist] for flist in self.frequency_list]
+            if self.confidence_list is None
+            else self.confidence_list
+        )
+
+        for flist, clist in zip(self.frequency_list, confidence_list):
+            tmp_flist = []
+            tmp_clist = []
+            for f, c in zip(flist, clist):
+                if f in tmp_flist:
+                    continue
+                tmp_flist.append(f)
+                tmp_clist.append(c)
+
+            new_frequency_list.append(tmp_flist)
+            new_confidence_list.append(tmp_clist)
+
+        self.frequency_list = new_frequency_list
+        self.confidence_list = (
+            None if self.confidence_list is None else new_confidence_list
+        )
+
     def resample(self, times_new, times_new_unit):
         """Resample annotation to a new time scale. This function is adapted from:
         https://github.com/craffel/mir_eval/blob/master/mir_eval/multipitch.py#L104
@@ -674,6 +702,8 @@ class NoteData(Annotation):
         self.confidence = confidence
         self.confidence_unit = confidence_unit
 
+        self._remove_duplicates()
+
     @property
     def notes(self) -> np.ndarray:
         logging.warning(
@@ -681,6 +711,41 @@ class NoteData(Annotation):
             + "Use NoteData.pitches"
         )
         return self.pitches
+
+    def _remove_duplicates(self):
+        new_intervals = []
+        new_pitches = []
+        used_indexes = []
+        for i, (interval, pitch) in enumerate(zip(self.intervals, self.pitches)):
+            # if this pitch has an identical interval and pitch value
+            # as an existing one, skip it
+            if list(interval) in new_intervals:
+                matching_pitches = [
+                    p
+                    for p, iv in zip(new_pitches, new_intervals)
+                    if np.allclose(interval, iv)
+                ]
+                if pitch in matching_pitches:
+                    continue
+
+            new_intervals.append(list(interval))
+            new_pitches.append(pitch)
+            used_indexes.append(i)
+
+        self.intervals = np.array(new_intervals)
+        self.pitches = np.array(new_pitches)
+        self.confidence = (
+            None
+            if self.confidence is None
+            else np.array([self.confidence[i] for i in used_indexes])
+        )
+
+    def __add__(self, note_data):
+        if note_data is None:
+            return self
+        # skip repeated notes
+        new_intervals = []
+        new_pitches = []
 
     def to_sparse_index(
         self,
