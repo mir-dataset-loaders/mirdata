@@ -204,9 +204,10 @@ REMOTES = {
     ),
 }
 INDEXES = {
-    "default": "1.1",
-    "test": "1.1",
-    "1.1": core.Index(filename="da_tacos_index_1.1.json"),
+    "default": "1.1_crema",
+    "test": "1.1_full",
+    "1.1_crema": core.Index(filename="da_tacos_index_1.1_crema.json"),
+    "1.1_full": core.Index(filename="da_tacos_index_1.1_full.json"),
 }
 
 
