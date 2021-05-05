@@ -1,5 +1,6 @@
 import sys
 import pytest
+import mir_eval
 import numpy as np
 
 import mirdata
@@ -278,6 +279,34 @@ def test_note_data():
     with pytest.raises(ValueError):
         mf0_data = note_data.to_multif0(0.5, "s", max_time=2.5)
 
+    # test to mireval
+    note_data = annotations.NoteData(
+        intervals, "s", notes, "hz", np.array([0.0, 1.0, 1.0]), "binary"
+    )
+    intervals_me, pitches_me, velocity_me = note_data.to_mir_eval()
+    assert np.allclose(intervals_me, intervals)
+    assert np.allclose(pitches_me, notes)
+    assert np.allclose(velocity_me, np.array([0, 127.0, 127.0]))
+    scores = mir_eval.transcription.evaluate(
+        intervals_me, pitches_me, intervals_me, pitches_me
+    )
+    scores = mir_eval.transcription_velocity.evaluate(
+        intervals_me, pitches_me, velocity_me, intervals_me, pitches_me, velocity_me
+    )
+
+    note_data = annotations.NoteData(
+        intervals, "ms", np.array([60.0, 70.0, 100.0]), "midi"
+    )
+    intervals_me, pitches_me, velocity_me = note_data.to_mir_eval()
+    assert np.allclose(
+        intervals_me, np.array([[0.001, 0.002], [0.0015, 0.003], [0.002, 0.003]])
+    )
+    assert np.allclose(pitches_me, np.array([261.6255653, 466.16376152, 2637.0204553]))
+    assert velocity_me is None
+    scores = mir_eval.transcription.evaluate(
+        intervals_me, pitches_me, intervals_me, pitches_me
+    )
+
 
 def test_chord_data():
     intervals = np.array([[1.0, 2.0], [1.5, 3.0], [2.0, 3.0]])
@@ -417,6 +446,15 @@ def test_f0_data():
     )
     assert np.allclose(matrix, expected_matrix)
 
+    # test to mir_eval
+    times_me, frequency_me, voicing_me = f0_data.to_mir_eval()
+    assert np.allclose(times_me, times)
+    assert np.allclose(frequencies, frequency_me)
+    assert np.allclose(voicing, voicing_me)
+    scores = mir_eval.melody.evaluate(
+        times_me, frequency_me, times_me, frequency_me, voicing_me, voicing_me
+    )
+
 
 def test_multif0_data():
     times = np.array([1.0, 2.0])
@@ -496,6 +534,14 @@ def test_multif0_data():
         ]
     )
     assert np.allclose(matrix, matrix_expected)
+
+    times_me, frequencies_me = f0_data.to_mir_eval()
+    assert np.allclose(times_me, times)
+    for flist, farr in zip(frequencies, frequencies_me):
+        assert np.allclose(flist, farr)
+    scores = mir_eval.multipitch.evaluate(
+        times_me, frequencies_me, times_me, frequencies_me
+    )
 
 
 def test_key_data():
