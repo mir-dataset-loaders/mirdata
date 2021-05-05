@@ -134,7 +134,7 @@ class Track(core.Track):
         # split (train/validation/test/omitted) is part of the relative filepath in the index
         self.data_split = None  # for baby_slakh, there are no data splits - set to None
         if index["version"] == "2100-redux":
-            self.data_split = self._track_paths["audio"][0].split(os.sep)[1]
+            self.data_split = self._track_paths["metadata"][0].split(os.sep)[1]
             assert (
                 self.data_split in SPLITS
             ), "{} not a valid split - should be one of {}.".format(
