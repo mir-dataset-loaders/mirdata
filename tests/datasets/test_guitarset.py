@@ -37,7 +37,9 @@ def test_track():
         "inferred_chords": annotations.ChordData,
         "key_mode": annotations.KeyData,
         "pitch_contours": dict,
+        "multif0": annotations.MultiF0Data,
         "notes": dict,
+        "notes_all": annotations.NoteData,
         "audio_mic": tuple,
         "audio_mix": tuple,
         "audio_hex": tuple,
@@ -51,6 +53,39 @@ def test_track():
 
     assert isinstance(track.pitch_contours["e"], annotations.F0Data)
     assert isinstance(track.notes["e"], annotations.NoteData)
+
+
+def test_notes_and_all_notes():
+    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    track = dataset.track("03_BN3-119-G_solo")
+    notes_all = track.notes_all
+    for note in track.notes.values():
+        if note is None:
+            continue
+        for interval, pitch in zip(note.intervals, note.pitches):
+            assert interval in notes_all.intervals
+            assert pitch in notes_all.pitches
+        assert note.interval_unit == notes_all.interval_unit
+        assert note.pitch_unit == notes_all.pitch_unit
+        assert note.confidence_unit == notes_all.confidence_unit
+
+
+def test_contours_and_multif0():
+    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    track = dataset.track("03_BN3-119-G_solo")
+    multif0 = track.multif0
+    for contour in track.pitch_contours.values():
+        if contour is None:
+            continue
+        assert np.allclose(contour.times[:100], multif0.times[:100])
+        for i, f in enumerate(contour.frequencies):
+            if f > 0:
+                assert f in multif0.frequency_list[i]
+            else:
+                assert f not in multif0.frequency_list[i]
+
+        assert contour.time_unit == multif0.time_unit
+        assert contour.frequency_unit == multif0.frequency_unit
 
 
 def test_fill_pitch_contour():

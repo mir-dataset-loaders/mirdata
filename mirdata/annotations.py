@@ -412,6 +412,19 @@ class F0Data(Annotation):
         matrix[index[:, 0], index[:, 1]] = voicing
         return matrix
 
+    def to_mir_eval(self):
+        """Convert units and format to what is expected by mir_eval.melody.evaluate
+
+        Returns:
+            * times (np.ndarray) - uniformly spaced times in seconds
+            * frequencies (np.ndarray) - frequency values in hz
+            * voicing (np.ndarray) - voicings, as likelihood values
+        """
+        times = convert_time_units(self.times, self.time_unit, "s")
+        frequencies = convert_pitch_units(self.frequencies, self.frequency_unit, "hz")
+        voicing = convert_amplitude_units(self.voicing, self.voicing_unit, "likelihood")
+        return times, frequencies, voicing
+
 
 class MultiF0Data(Annotation):
     """MultiF0Data class
@@ -605,6 +618,20 @@ class MultiF0Data(Annotation):
         matrix = np.zeros((len(time_scale), len(frequency_scale)))
         matrix[index[:, 0], index[:, 1]] = voicing
         return matrix
+
+    def to_mir_eval(self):
+        """Convert annotation into the format expected by mir_eval.multipitch.evaluate
+
+        Returns:
+            * times (np.ndarray): array of uniformly spaced time stamps in seconds
+            * frequency_list (list): list of np.array of frequency values in Hz
+        """
+        times = convert_time_units(self.times, self.time_unit, "s")
+        frequency_list = [
+            convert_pitch_units(np.array(flist), self.frequency_unit, "hz")
+            for flist in self.frequency_list
+        ]
+        return times, frequency_list
 
 
 class NoteData(Annotation):
@@ -820,6 +847,26 @@ class NoteData(Annotation):
             None if self.confidence is None else confidence_list,
             self.confidence_unit,
         )
+
+    def to_mir_eval(self):
+        """Convert data to the format expected by mir_eval.transcription.evaluate and
+        mir_eval.transcription_velocity.evaluate
+
+        Returns:
+            * intervals (np.ndarray) - (n x 2) array of intervals of start time, end time in seconds
+            * pitches (np.ndarray) - array of pitch values in hz
+            * velocity (optional, np.ndarray) - array of velocity values between 0 and 127
+        """
+        intervals = convert_time_units(self.intervals, self.interval_unit, "s")
+        pitches = convert_pitch_units(self.pitches, self.pitch_unit, "hz")
+        velocity = (
+            None
+            if self.confidence is None
+            else convert_amplitude_units(
+                self.confidence, self.confidence_unit, "velocity"
+            )
+        )
+        return intervals, pitches, velocity
 
 
 class KeyData(Annotation):
