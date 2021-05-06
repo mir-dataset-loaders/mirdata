@@ -129,6 +129,52 @@ def test_note_data():
     with pytest.raises(ValueError):
         annotations.NoteData(intervals, "s", np.array([1.0]), "hz")
 
+    # test add
+    note_data_add = note_data + note_data
+    assert np.allclose(note_data_add.intervals, intervals)
+    assert np.allclose(note_data_add.pitches, notes)
+    assert note_data_add.confidence is None
+
+    note_data_add = note_data + None
+    assert np.allclose(note_data_add.intervals, intervals)
+    assert np.allclose(note_data_add.pitches, notes)
+    assert note_data_add.confidence is None
+
+    note_data2_add = note_data2 + note_data2
+    assert np.allclose(note_data2_add.intervals, intervals)
+    assert np.allclose(note_data2_add.pitches, notes)
+    assert np.allclose(note_data2_add.confidence, confidence)
+
+    note_data_add = note_data + note_data2
+    assert np.allclose(note_data_add.intervals, intervals)
+    assert np.allclose(note_data_add.pitches, notes)
+    assert note_data_add.confidence is None
+
+    note_data_add = annotations.NoteData(
+        np.array([[1.0, 2.0]]),
+        "s",
+        np.array([32.7]),
+        "hz",
+        np.array([0.1]),
+        "likelihood",
+    ) + annotations.NoteData(
+        np.array([[100, 1000.0]]),
+        "ms",
+        np.array([20.0]),
+        "midi",
+        np.array([127.0]),
+        "velocity",
+    )
+    assert np.allclose(note_data_add.intervals, np.array([[1.0, 2.0], [0.1, 1.0]]))
+    assert np.allclose(note_data_add.pitches, np.array([32.7, 25.9565436]))
+    assert np.allclose(note_data_add.confidence, np.array([0.1, 1.0]))
+    assert note_data_add.interval_unit == "s"
+    assert note_data_add.pitch_unit == "hz"
+    assert note_data_add.confidence_unit == "likelihood"
+
+    with pytest.raises(TypeError):
+        note_data + 1
+
     # test to_sparse index
     time_scale = np.array([0, 0.5, 1.0, 1.5, 2.0, 2.5])
     frequency_scale = np.array([50.0, 90.0, 130.0])
@@ -469,6 +515,23 @@ def test_f0_data():
         times_me, frequency_me, times_me, frequency_me, voicing_me, voicing_me
     )
 
+    # test to multif0
+    mf0_data = f0_data.to_multif0()
+    assert np.allclose(mf0_data.times, f0_data.times)
+    assert mf0_data.time_unit == f0_data.time_unit
+    assert mf0_data.frequency_list == [[100.0], [150.0], [], [120.0]]
+    assert mf0_data.frequency_unit == f0_data.frequency_unit
+    assert mf0_data.confidence_list is None
+    assert mf0_data.confidence_unit == f0_data.confidence_unit
+
+    mf0_data = f0_data2.to_multif0()
+    assert np.allclose(mf0_data.times, f0_data2.times)
+    assert mf0_data.time_unit == f0_data2.time_unit
+    assert mf0_data.frequency_list == [[100.0], [150.0], [], [120.0]]
+    assert mf0_data.frequency_unit == f0_data2.frequency_unit
+    assert mf0_data.confidence_list == [[0.0], [0.0], [], [0.0]]
+    assert mf0_data.confidence_unit == f0_data2.confidence_unit
+
 
 def test_multif0_data():
     times = np.array([1.0, 2.0, 3.0])
@@ -531,6 +594,81 @@ def test_multif0_data():
     assert np.allclose(mf0_rsmp.times, time_scale)
     assert mf0_rsmp.frequency_list == [[], [100.0], [100.0]]
     assert mf0_rsmp.confidence_list is None
+
+    # test add
+    mf0_add = f0_data + f0_data
+    assert np.allclose(mf0_add.times, f0_data.times)
+    assert mf0_add.time_unit == f0_data.time_unit
+    assert mf0_add.frequency_list == f0_data.frequency_list
+    assert mf0_add.frequency_unit == f0_data.frequency_unit
+    assert mf0_add.confidence_list == f0_data.confidence_list
+    assert mf0_add.confidence_unit == f0_data.confidence_unit
+
+    mf0_add = f0_data2 + f0_data2
+    assert np.allclose(mf0_add.times, f0_data2.times)
+    assert mf0_add.time_unit == f0_data2.time_unit
+    assert mf0_add.frequency_list == f0_data2.frequency_list
+    assert mf0_add.frequency_unit == f0_data2.frequency_unit
+    assert mf0_add.confidence_list == f0_data2.confidence_list
+    assert mf0_add.confidence_unit == f0_data2.confidence_unit
+
+    mf0_add = f0_data + None
+    assert np.allclose(mf0_add.times, f0_data.times)
+    assert mf0_add.time_unit == f0_data.time_unit
+    assert mf0_add.frequency_list == f0_data.frequency_list
+    assert mf0_add.frequency_unit == f0_data.frequency_unit
+    assert mf0_add.confidence_list == f0_data.confidence_list
+    assert mf0_add.confidence_unit == f0_data.confidence_unit
+
+    mf0_add = f0_data + f0_data2
+    assert np.allclose(mf0_add.times, f0_data.times)
+    assert mf0_add.time_unit == f0_data.time_unit
+    assert mf0_add.frequency_list == f0_data.frequency_list
+    assert mf0_add.frequency_unit == f0_data.frequency_unit
+    assert mf0_add.confidence_list is None
+    assert mf0_add.confidence_unit is None
+
+    mf0_add = f0_data + annotations.MultiF0Data(
+        np.array([1000.0, 2000.0, 3000.0, 4000.0]),
+        "ms",
+        [[20.0], [30.0, 43.0], [], []],
+        "midi",
+    )
+    assert np.allclose(mf0_add.times, np.array([1.0, 2.0, 3.0, 4.0]))
+    assert mf0_add.time_unit == f0_data.time_unit
+    assert mf0_add.frequency_list == [
+        [100.0, 25.956543598746574],
+        [150.0, 120.0, 46.2493028389543, 97.99885899543733],
+        [],
+        [],
+    ]
+    assert mf0_add.frequency_unit == f0_data.frequency_unit
+    assert mf0_add.confidence_list is None
+    assert mf0_add.confidence_unit is None
+
+    # mf0 + F0Data
+    mf0_add = f0_data + annotations.F0Data(
+        np.array([1000.0, 2000.0, 3000.0, 4000.0]),
+        "ms",
+        np.array([20.0, 30.0, 0.0, 30.0]),
+        "midi",
+        np.array([1.0, 1.0, 0.0, 1.0]),
+        "binary",
+    )
+    assert np.allclose(mf0_add.times, np.array([1.0, 2.0, 3.0, 4.0]))
+    assert mf0_add.time_unit == f0_data.time_unit
+    assert mf0_add.frequency_list == [
+        [100.0, 25.956543598746574],
+        [150.0, 120.0, 46.2493028389543],
+        [],
+        [46.2493028389543],
+    ]
+    assert mf0_add.frequency_unit == f0_data.frequency_unit
+    assert mf0_add.confidence_list is None
+    assert mf0_add.confidence_unit is None
+
+    with pytest.raises(TypeError):
+        f0_data + 1
 
     # test sparse index
     frequency_scale = np.array([50.0, 90.0, 130.0])
@@ -699,6 +837,10 @@ def test_convert_pitch_units():
     expected = np.array([70.0, 81.0])
     assert np.allclose(actual, expected)
 
+    actual = annotations.convert_pitch_units([[100.0], [127.0], []], "hz", "midi")
+    expected = [[43.34995771500077], [47.48789967897007], []]
+    assert actual == expected
+
     with pytest.raises(NotImplementedError):
         annotations.convert_pitch_units(pitches_note, "note_name", "pc")
 
@@ -738,6 +880,12 @@ def test_convert_amplitude_units():
     actual = annotations.convert_amplitude_units(confidence, "likelihood", "velocity")
     expected = np.array([88.9, 127.0, 50.8, 0])
     assert np.allclose(actual, expected)
+
+    actual = annotations.convert_amplitude_units(
+        [[0.7], [1.0, 0.4], [], [0.0]], "likelihood", "velocity"
+    )
+    expected = [[88.89999999999999], [127.0, 50.800000000000004], [], [0]]
+    assert actual == expected
 
     actual = annotations.convert_amplitude_units(conf_velocity, "velocity", "binary")
     expected = np.array([1, 1, 0])
@@ -786,9 +934,15 @@ def test_validate_array_like():
 def test_validate_lengths_equal():
     annotations.validate_lengths_equal([np.array([0, 1])])
     annotations.validate_lengths_equal([np.array([]), None])
+    annotations.validate_lengths_equal([np.array([0]), np.array([1]), np.array([2])])
 
     with pytest.raises(ValueError):
         annotations.validate_lengths_equal([np.array([0, 1]), np.array([0])])
+
+    with pytest.raises(ValueError):
+        annotations.validate_lengths_equal(
+            [np.array([0]), np.array([1]), np.array([2, 3])]
+        )
 
 
 def test_validate_tempos():

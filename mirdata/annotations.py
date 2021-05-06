@@ -412,6 +412,30 @@ class F0Data(Annotation):
         matrix[index[:, 0], index[:, 1]] = voicing
         return matrix
 
+    def to_multif0(self):
+        """Convert annotation to multif0 format
+
+        Returns:
+            MultiF0Data: data in multif0 format
+
+        """
+        frequency_list = [[f] if f > 0 else [] for f in self.frequencies]
+        confidence_list = (
+            None
+            if self._confidence is None
+            else [
+                [c] if f > 0 else [] for c, f in zip(self._confidence, self.frequencies)
+            ]
+        )
+        return MultiF0Data(
+            self.times,
+            self.time_unit,
+            frequency_list,
+            self.frequency_unit,
+            confidence_list,
+            self.confidence_unit,
+        )
+
     def to_mir_eval(self):
         """Convert units and format to what is expected by mir_eval.melody.evaluate
 
@@ -475,7 +499,6 @@ class MultiF0Data(Annotation):
             if self.confidence_list is None
             else self.confidence_list
         )
-
         for flist, clist in zip(self.frequency_list, confidence_list):
             tmp_flist = []
             tmp_clist = []
@@ -491,6 +514,69 @@ class MultiF0Data(Annotation):
         self.frequency_list = new_frequency_list
         self.confidence_list = (
             None if self.confidence_list is None else new_confidence_list
+        )
+
+    def __add__(self, other):
+        if other is None:
+            return self
+
+        if isinstance(other, F0Data):
+            other = other.to_multif0()
+
+        if not isinstance(other, MultiF0Data):
+            raise TypeError("Unable to add type {} to MultiF0 data".format(type(other)))
+
+        other_times = convert_time_units(other.times, other.time_unit, self.time_unit)
+        if np.max(other_times) > np.max(self.times):
+            data_resamp = self.resample(other_times, self.time_unit)
+            times = other_times
+            this_data = data_resamp
+            other_data = other
+        else:
+            other_resamp = other.resample(self.times, self.time_unit)
+            times = self.times
+            this_data = self
+            other_data = other_resamp
+
+        this_frequency_list = [[f for f in flist] for flist in this_data.frequency_list]
+        other_frequency_list = convert_pitch_units(
+            other_data.frequency_list, other.frequency_unit, self.frequency_unit
+        )
+
+        for i, flist in enumerate(other_frequency_list):
+            this_frequency_list[i].extend(flist)
+
+        this_has_confidence = this_data.confidence_list is not None
+        other_has_confidence = other_data.confidence_unit is not None
+        this_confidence_unit = this_data.confidence_unit
+        if this_has_confidence and other_has_confidence:
+            this_confidence_list = [
+                [c for c in clist] for clist in this_data.confidence_list
+            ]
+            other_confidence_list = convert_amplitude_units(
+                other_data.confidence_list,
+                other.confidence_unit,
+                self.confidence_unit,
+            )
+            for i, clist in enumerate(other_confidence_list):
+                this_confidence_list[i].extend(clist)
+        elif not this_has_confidence and not other_has_confidence:
+            this_confidence_list = None
+        else:
+            logging.warning(
+                "Adding two MultiF0Data where one has confidence=None "
+                + "and the other does not. The sum will have confidence=None."
+            )
+            this_confidence_list = None
+            this_confidence_unit = None
+
+        return MultiF0Data(
+            times,
+            self.time_unit,
+            this_frequency_list,
+            self.frequency_unit,
+            this_confidence_list,
+            this_confidence_unit,
         )
 
     def resample(self, times_new, times_new_unit):
@@ -611,8 +697,19 @@ class MultiF0Data(Annotation):
             )
             if t != -1 and f != -1
         ]
+        confidence_out = np.array(
+            [
+                c
+                for c, t, f in zip(
+                    confidence_flattened[nonzero_freqs],
+                    time_indexes_flattened[nonzero_freqs],
+                    freq_indexes[nonzero_freqs],
+                )
+                if t != -1 and f != -1
+            ]
+        )
         return np.array(index), convert_amplitude_units(
-            confidence_flattened[nonzero_freqs], conf_unit, amplitude_unit
+            confidence_out, conf_unit, amplitude_unit
         )
 
     def to_matrix(
@@ -740,12 +837,50 @@ class NoteData(Annotation):
             else np.array([self.confidence[i] for i in used_indexes])
         )
 
-    def __add__(self, note_data):
-        if note_data is None:
+    def __add__(self, other):
+
+        if other is None:
             return self
-        # skip repeated notes
-        new_intervals = []
-        new_pitches = []
+
+        if not isinstance(other, NoteData):
+            raise TypeError("Unable to add type {} to NoteData".format(type(other)))
+        # convert to the current units
+        intervals = convert_time_units(
+            other.intervals, other.interval_unit, self.interval_unit
+        )
+        pitches = convert_pitch_units(other.pitches, other.pitch_unit, self.pitch_unit)
+
+        if other.confidence is None and self.confidence is None:
+            new_confidence = None
+            new_confidence_unit = None
+        elif other.confidence is not None and self.confidence is not None:
+            new_confidence = np.concatenate(
+                [
+                    self.confidence,
+                    convert_amplitude_units(
+                        other.confidence,
+                        other.confidence_unit,
+                        self.confidence_unit,
+                    ),
+                ]
+            )
+            new_confidence_unit = self.confidence_unit
+        else:
+            logging.warning(
+                "Adding two NoteData objects but one has confidence=None and "
+                + "the other does not. The resulting confidence will be None"
+            )
+            new_confidence = None
+            new_confidence_unit = None
+
+        return NoteData(
+            np.vstack([self.intervals, intervals]),
+            self.interval_unit,
+            np.concatenate([self.pitches, pitches]),
+            self.pitch_unit,
+            new_confidence,
+            new_confidence_unit,
+        )
 
     def to_sparse_index(
         self,
@@ -1135,6 +1270,15 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
     Returns:
         np.array: array of pitch values in target_pitch_unit
     """
+    # if input is a nested list, call this function recursively
+    if isinstance(pitches, list) and isinstance(pitches[0], list):
+        return [
+            []
+            if len(plist) == 0
+            else list(convert_pitch_units(plist, pitch_unit, target_pitch_unit))
+            for plist in pitches
+        ]
+
     if pitch_unit == "pc" and target_pitch_unit == "pc":
         return pitches
 
@@ -1194,6 +1338,18 @@ def convert_amplitude_units(amplitude, amplitude_unit, target_amplitude_unit):
     Returns:
         np.array: array of amplitude values as in target amplitude unit
     """
+    # if input is a nested list, call this function recursively
+    if isinstance(amplitude, list) and isinstance(amplitude[0], list):
+        return [
+            []
+            if len(alist) == 0
+            else list(
+                convert_amplitude_units(
+                    np.array(alist), amplitude_unit, target_amplitude_unit
+                )
+            )
+            for alist in amplitude
+        ]
 
     def _to_likelihood(amplitude, amplitude_unit):
         if amplitude_unit in ["likelihood", "binary"]:
@@ -1308,7 +1464,7 @@ def validate_lengths_equal(array_list):
     if len(array_list) == 1:
         return
 
-    for att1, att2 in zip(array_list[:1], array_list[1:]):
+    for att1, att2 in zip(array_list[:-1], array_list[1:]):
         if att1 is None or att2 is None:
             continue
 
