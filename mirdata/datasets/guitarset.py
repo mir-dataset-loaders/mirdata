@@ -257,15 +257,14 @@ class Track(core.Track):
         return notes
 
     @core.cached_property
-    def notes_all(self) -> annotations.NoteData:
-        intervals = []
-        pitches = []
+    def notes_all(self) -> Optional[annotations.NoteData]:
+        all_note_data = None
         for note_data in self.notes.values():
-            if note_data is None:
-                continue
-            intervals.extend(note_data.intervals)
-            pitches.extend(note_data.pitches)
-        return annotations.NoteData(np.array(intervals), "s", np.array(pitches), "midi")
+            if all_note_data is None:
+                all_note_data = note_data
+            else:
+                all_note_data += note_data
+        return all_note_data
 
     @property
     def audio_mic(self) -> Optional[Tuple[np.ndarray, float]]:
