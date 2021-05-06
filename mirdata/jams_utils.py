@@ -495,7 +495,7 @@ def f0s_to_jams(f0_data, description=None):
     if f0_data is not None:
         if not isinstance(f0_data, annotations.F0Data):
             raise TypeError("Type should be F0Data.")
-        if f0_data.confidence is None:
+        if f0_data._confidence is None:
             conf = [None for t in f0_data.times]
         else:
             conf = f0_data._confidence

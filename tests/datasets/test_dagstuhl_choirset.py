@@ -96,7 +96,7 @@ def test_load_f0():
         ),
     )
     assert np.array_equal(
-        f0.confidence,
+        f0._confidence,
         np.array(
             [
                 0.050135254859924316,
@@ -151,7 +151,7 @@ def test_load_score():
     )
 
     assert np.allclose(
-        score.notes,
+        score.pitches,
         np.array(
             [130.81278265, 130.81278265, 130.81278265, 130.81278265, 130.81278265]
         ),

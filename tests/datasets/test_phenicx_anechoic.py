@@ -96,14 +96,14 @@ def test_load_score():
     # check types
     assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
+    assert type(note_data.pitches) is np.ndarray
 
     # check values
     assert np.array_equal(
         note_data.intervals,
         np.array([[4.284082, 5.271338], [4.284082, 5.271338], [4.284082, 5.271338]]),
     )
-    assert np.allclose(note_data.notes, np.array([220.0, 329.62755691, 554.36526195]))
+    assert np.allclose(note_data.pitches, np.array([220.0, 329.62755691, 554.36526195]))
 
 
 def test_multitrack():
@@ -204,7 +204,7 @@ def test_get_notes_target():
     # check types
     assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
+    assert type(note_data.pitches) is np.ndarray
 
     # check values
     assert np.array_equal(
@@ -221,7 +221,7 @@ def test_get_notes_target():
         ),
     )
     assert np.allclose(
-        note_data.notes,
+        note_data.pitches,
         np.array([220.0, 329.62755691, 220.0, 220.0, 329.62755691, 554.36526195]),
     )
 
@@ -235,19 +235,18 @@ def test_get_notes_for_instrument():
     note_data = mtrack.get_notes_for_instrument(
         instrument="violin", notes_property="notes"
     )
-    # import pdb;pdb.set_trace()
 
     # check types
     assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
+    assert type(note_data.pitches) is np.ndarray
 
     # check values
     assert np.array_equal(
         note_data.intervals,
         np.array([[4.284082, 5.271338], [4.284082, 5.271338], [4.284082, 5.271338]]),
     )
-    assert np.allclose(note_data.notes, np.array([220.0, 329.62755691, 554.36526195]))
+    assert np.allclose(note_data.pitches, np.array([220.0, 329.62755691, 554.36526195]))
 
 
 def test_get_notes_for_section():
@@ -261,7 +260,7 @@ def test_get_notes_for_section():
     # check types
     assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
+    assert type(note_data.pitches) is np.ndarray
 
     # check values
     assert np.array_equal(
@@ -284,7 +283,7 @@ def test_get_notes_for_section():
         ),
     )
     assert np.allclose(
-        note_data.notes,
+        note_data.pitches,
         np.array(
             [
                 55.0,

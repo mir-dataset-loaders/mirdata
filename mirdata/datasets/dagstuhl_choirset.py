@@ -315,7 +315,7 @@ class MultiTrack(core.MultiTrack):
         ]
         multif0 = None
         for track in self.tracks.values():
-            f0_data = None
+            f0_data: Optional[annotations.F0Data] = None
             # get the best f0 annotation we can for this track
             for f0_attr in f0_priority:
                 if getattr(track, f0_attr) is not None:
@@ -323,7 +323,7 @@ class MultiTrack(core.MultiTrack):
                     break
 
             if multif0 is None:
-                multif0 = f0_data.to_multif0()
+                multif0 = f0_data.to_multif0()  # type: ignore
             else:
                 multif0 += f0_data
 
