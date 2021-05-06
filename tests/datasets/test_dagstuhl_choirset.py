@@ -238,6 +238,8 @@ def test_multitrack():
         "tracks": dict,
         "track_audio_property": str,
         "beat": annotations.BeatData,
+        "notes": annotations.NoteData,
+        "multif0": annotations.MultiF0Data,
         "audio_stm": tuple,
         "audio_str": tuple,
         "audio_stl": tuple,

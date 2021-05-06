@@ -256,6 +256,8 @@ class MultiTrack(core.MultiTrack):
 
     Cached Properties:
         beat (annotations.BeatData): Beat annotation
+        notes (annotations.NoteData): Note annotation
+        multif0 (annotations.MultiF0Data): Aggregate of f0 annotations for tracks
 
     """
 
@@ -287,6 +289,48 @@ class MultiTrack(core.MultiTrack):
     @core.cached_property
     def beat(self) -> Optional[annotations.BeatData]:
         return load_beat(self.beat_path)
+
+    @core.cached_property
+    def notes(self) -> Optional[annotations.NoteData]:
+        tracks_with_notes = [t for t in self.tracks.values() if t.score is not None]
+        if len(tracks_with_notes) == 0:
+            return None
+
+        notes = tracks_with_notes[0].score
+        if len(tracks_with_notes) > 1:
+            for track in tracks_with_notes[1:]:
+                notes += track.score
+        return notes
+
+    @core.cached_property
+    def multif0(self) -> Optional[annotations.MultiF0Data]:
+        f0_priority = [
+            "f0_manual_lrx",
+            "f0_crepe_lrx",
+            "f0_pyin_lrx",
+            "f0_crepe_hsn",
+            "f0_pyin_hsn",
+            "f0_crepe_dyn",
+            "f0_pyin_dyn",
+        ]
+        multif0 = None
+        for track in self.tracks.values():
+            f0_data = None
+            # get the best f0 annotation we can for this track
+            for f0_attr in f0_priority:
+                if getattr(track, f0_attr) is not None:
+                    f0_data = getattr(track, f0_attr)
+                    break
+            # if any track is not annotated, a multif0 annotation cannot be created
+            if f0_data is None:
+                return None
+
+            if multif0 is None:
+                multif0 = f0_data.to_multif0()
+            else:
+                multif0 += f0_data
+
+        return multif0
 
     @property
     def audio_stm(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -411,6 +455,9 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
         conf_unit = None
     else:
         conf_array = np.array(confs)
+        new_voicings = (conf_array >= 0.5).astype(float)
+        new_voicings[voicings == 0] = 0.0
+        voicings = new_voicings
         conf_unit = "likelihood"
 
     return annotations.F0Data(
@@ -434,15 +481,18 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
 
     Returns:
         NoteData Object - the time-aligned score representation
+
     """
-    intervals = np.empty((0, 2))
+    intervals = []
     notes = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
-        intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
+        intervals.append([float(line[0]), float(line[1])])
         notes.append(float(line[2]))
 
-    return annotations.NoteData(intervals, "s", librosa.midi_to_hz(notes), "hz")
+    return annotations.NoteData(
+        np.array(intervals), "s", librosa.midi_to_hz(notes), "hz"
+    )
 
 
 @io.coerce_to_string_io
