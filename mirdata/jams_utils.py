@@ -366,7 +366,7 @@ def notes_to_jams(note_data, description):
         if not isinstance(note_data, annotations.NoteData):
             raise TypeError("Type should be NoteData.")
         for beg, end, n in zip(
-            note_data.intervals[:, 0], note_data.intervals[:, 1], note_data.notes
+            note_data.intervals[:, 0], note_data.intervals[:, 1], note_data.pitches
         ):
             jannot_note.append(time=beg, duration=end - beg, value=n)
     if description is not None:
@@ -498,7 +498,7 @@ def f0s_to_jams(f0_data, description=None):
         if f0_data.confidence is None:
             conf = [None for t in f0_data.times]
         else:
-            conf = f0_data.confidence
+            conf = f0_data._confidence
         for t, f, v, c in zip(
             f0_data.times, f0_data.frequencies, f0_data.voicing, conf
         ):

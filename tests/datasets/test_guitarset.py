@@ -64,7 +64,7 @@ def test_notes_and_all_notes():
             continue
         for interval, pitch in zip(note.intervals, note.pitches):
             assert interval in notes_all.intervals
-            assert pitch in notes_all.pitches
+            assert int(pitch) in notes_all.pitches.astype(int)
         assert note.interval_unit == notes_all.interval_unit
         assert note.pitch_unit == notes_all.pitch_unit
         assert note.confidence_unit == notes_all.confidence_unit

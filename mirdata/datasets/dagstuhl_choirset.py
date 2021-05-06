@@ -321,9 +321,6 @@ class MultiTrack(core.MultiTrack):
                 if getattr(track, f0_attr) is not None:
                     f0_data = getattr(track, f0_attr)
                     break
-            # if any track is not annotated, a multif0 annotation cannot be created
-            if f0_data is None:
-                return None
 
             if multif0 is None:
                 multif0 = f0_data.to_multif0()
@@ -455,9 +452,6 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
         conf_unit = None
     else:
         conf_array = np.array(confs)
-        new_voicings = (conf_array >= 0.5).astype(float)
-        new_voicings[voicings == 0] = 0.0
-        voicings = new_voicings
         conf_unit = "likelihood"
 
     return annotations.F0Data(

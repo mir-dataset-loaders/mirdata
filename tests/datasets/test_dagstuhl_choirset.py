@@ -69,6 +69,14 @@ def test_audio_track():
     assert track.audio_hsm is None
 
 
+def test_mtrack_no_notes():
+    default_mtrackid = "DCS_SE_Basses_Tuning01"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
+    mtrack = dataset.multitrack(default_mtrackid)
+    assert mtrack.notes is None
+
+
 def test_load_f0():
     f0_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv"
     f0 = dagstuhl_choirset.load_f0(f0_path)
