@@ -308,8 +308,8 @@ class MultiTrack(core.MultiTrack):
             "f0_manual_lrx",
             "f0_crepe_lrx",
             "f0_pyin_lrx",
-            "f0_crepe_hsn",
-            "f0_pyin_hsn",
+            "f0_crepe_hsm",
+            "f0_pyin_hsm",
             "f0_crepe_dyn",
             "f0_pyin_dyn",
         ]
