@@ -122,7 +122,8 @@ class Track(core.Track):
         track_id (str): track id
 
     Cached Properties:
-        melody (F0Data): melody annotation
+        notes (NoteData): notes annotations that have been time-aligned to the audio
+        notes_original (NoteData): original score representation, not time-aligned
 
     """
 
