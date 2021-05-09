@@ -64,7 +64,7 @@ def test_notes_and_all_notes():
             continue
         for interval, pitch in zip(note.intervals, note.pitches):
             assert interval in notes_all.intervals
-            assert pitch in notes_all.pitches
+            assert int(pitch) in notes_all.pitches.astype(int)
         assert note.interval_unit == notes_all.interval_unit
         assert note.pitch_unit == notes_all.pitch_unit
         assert note.confidence_unit == notes_all.confidence_unit
@@ -170,7 +170,7 @@ def test_load_contours():
             0.0,
         ],
     )
-    assert track.pitch_contours["e"].confidence is None
+    assert track.pitch_contours["e"]._confidence is None
 
 
 def test_load_notes():
@@ -185,7 +185,8 @@ def test_load_notes():
         track.notes["e"].intervals[:, 1], [1.2604598639455844, 1.7336798185940552, 2.0]
     )
     assert np.allclose(
-        track.notes["e"].notes, [67.0576287044242, 71.03221526299762, 71.03297250121584]
+        track.notes["e"].pitches,
+        [67.0576287044242, 71.03221526299762, 71.03297250121584],
     )
     assert track.notes["e"].confidence is None
 
