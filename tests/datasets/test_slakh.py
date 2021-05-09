@@ -115,6 +115,11 @@ def test_track_full():
     assert sr == 44100
     assert audio.shape == (44100 * 2,)
 
+    # this catches a bug, where we got the datasplit
+    # logic wrong for the full version
+    mtrack = dataset_full.multitrack("Track00001")
+    assert mtrack.data_split == "train"
+
 
 def test_load_tracks():
     # this test catches a bug we had when initializing tracks with no audio!

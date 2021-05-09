@@ -255,8 +255,8 @@ class MultiTrack(core.MultiTrack):
         # split (train/validation/test) is determined by the relative filepath in the index
         self.data_split = None  # for baby_slakh, there are no data splits - set to None
         if index["version"] == "2100-redux":
-            self.data_split = self._multitrack_paths["mix"][0].split(os.sep)[0]
-            assert self.data_split in SPLITS
+            self.data_split = self._multitrack_paths["mix"][0].split(os.sep)[1]
+            assert self.data_split in SPLITS, "{} not in SPLITS".format(self.data_split)
 
     @property
     def track_audio_property(self) -> str:
