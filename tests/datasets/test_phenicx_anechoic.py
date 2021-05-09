@@ -96,14 +96,14 @@ def test_load_score():
     # check types
     assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
+    assert type(note_data.pitches) is np.ndarray
 
     # check values
     assert np.array_equal(
         note_data.intervals,
         np.array([[4.284082, 5.271338], [4.284082, 5.271338], [4.284082, 5.271338]]),
     )
-    assert np.allclose(note_data.notes, np.array([220.0, 329.62755691, 554.36526195]))
+    assert np.allclose(note_data.pitches, np.array([220.0, 329.62755691, 554.36526195]))
 
 
 def test_multitrack():
@@ -204,25 +204,25 @@ def test_get_notes_target():
     # check types
     assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
+    assert type(note_data.pitches) is np.ndarray
 
     # check values
     assert np.array_equal(
         note_data.intervals,
         np.array(
             [
-                [4.284082, 5.271338],
-                [4.284082, 5.271338],
-                [4.284082, 5.271338],
                 [4.310204, 4.910204],
                 [4.310204, 4.910204],
                 [8.359184, 12.004082],
+                [4.284082, 5.271338],
+                [4.284082, 5.271338],
+                [4.284082, 5.271338],
             ]
         ),
     )
     assert np.allclose(
-        note_data.notes,
-        np.array([220.0, 329.62755691, 554.36526195, 220.0, 329.62755691, 220.0]),
+        note_data.pitches,
+        np.array([220.0, 329.62755691, 220.0, 220.0, 329.62755691, 554.36526195]),
     )
 
 
@@ -235,19 +235,18 @@ def test_get_notes_for_instrument():
     note_data = mtrack.get_notes_for_instrument(
         instrument="violin", notes_property="notes"
     )
-    # import pdb;pdb.set_trace()
 
     # check types
     assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
+    assert type(note_data.pitches) is np.ndarray
 
     # check values
     assert np.array_equal(
         note_data.intervals,
         np.array([[4.284082, 5.271338], [4.284082, 5.271338], [4.284082, 5.271338]]),
     )
-    assert np.allclose(note_data.notes, np.array([220.0, 329.62755691, 554.36526195]))
+    assert np.allclose(note_data.pitches, np.array([220.0, 329.62755691, 554.36526195]))
 
 
 def test_get_notes_for_section():
@@ -261,7 +260,7 @@ def test_get_notes_for_section():
     # check types
     assert type(note_data) == annotations.NoteData
     assert type(note_data.intervals) is np.ndarray
-    assert type(note_data.notes) is np.ndarray
+    assert type(note_data.pitches) is np.ndarray
 
     # check values
     assert np.array_equal(
@@ -269,35 +268,35 @@ def test_get_notes_for_section():
         np.array(
             [
                 [4.260862, 6.780091],
-                [4.284082, 5.271338],
-                [4.284082, 5.271338],
-                [4.284082, 5.271338],
-                [4.310204, 4.910204],
-                [4.310204, 4.910204],
-                [4.331995, 6.621655],
-                [8.359184, 12.004082],
                 [12.167256, 14.038594],
-                [12.213696, 13.862268],
                 [19.783401, 21.656599],
+                [4.284082, 5.271338],
+                [4.284082, 5.271338],
+                [4.284082, 5.271338],
+                [4.310204, 4.910204],
+                [4.310204, 4.910204],
+                [8.359184, 12.004082],
+                [4.331995, 6.621655],
+                [12.213696, 13.862268],
                 [19.841451, 21.462971],
             ]
         ),
     )
     assert np.allclose(
-        note_data.notes,
+        note_data.pitches,
         np.array(
             [
                 55.0,
+                51.9130872,
+                48.9994295,
                 220.0,
                 329.62755691,
                 554.36526195,
                 220.0,
                 329.62755691,
-                110.0,
                 220.0,
-                51.9130872,
+                110.0,
                 103.82617439,
-                48.9994295,
                 97.998859,
             ]
         ),

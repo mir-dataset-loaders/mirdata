@@ -322,23 +322,14 @@ class MultiTrack(core.MultiTrack):
             NoteData: Note data for the tracks
 
         """
-        values = []
-        intervals = []
+        notes_target = None
         for k in track_keys:
             score = getattr(self.tracks[k], notes_property)
-            values.append(score.notes)
-            intervals.append(score.intervals)
-        values = np.hstack(values)
-        intervals = np.vstack(intervals)
-
-        #### sort on the start time
-        ind = np.argsort(intervals[:, 0], axis=0)
-        start_times = np.take_along_axis(intervals[:, 0], ind, axis=0)
-        end_times = np.take_along_axis(intervals[:, 1], ind, axis=0)
-        intervals = np.vstack([start_times, end_times]).T
-        values = np.take_along_axis(values, ind, axis=0)
-
-        return annotations.NoteData(intervals, "s", values, "hz")
+            if notes_target is None:
+                notes_target = score
+            else:
+                notes_target += score
+        return notes_target
 
     def get_notes_for_instrument(self, instrument, notes_property="notes"):
         """Get the notes for a particular instrument

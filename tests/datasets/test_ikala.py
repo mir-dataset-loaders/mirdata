@@ -117,7 +117,7 @@ def test_load_notes():
         note_data.intervals,
         np.array([[1.35256236, 1.7414966], [1.85759637, 1.9969161]]),
     )
-    assert np.allclose(note_data.notes, np.array([234.328, 261.992]))
+    assert np.allclose(note_data.pitches, np.array([234.328, 261.992]))
     assert note_data.confidence is None
 
 
