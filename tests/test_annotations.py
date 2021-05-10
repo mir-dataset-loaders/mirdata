@@ -165,9 +165,9 @@ def test_note_data():
         np.array([127.0]),
         "velocity",
     )
-    assert np.allclose(note_data_add.intervals, np.array([[1.0, 2.0], [0.1, 1.0]]))
-    assert np.allclose(note_data_add.pitches, np.array([32.7, 25.9565436]))
-    assert np.allclose(note_data_add.confidence, np.array([0.1, 1.0]))
+    assert np.allclose(note_data_add.intervals, np.array([[0.1, 1.0], [1.0, 2.0]]))
+    assert np.allclose(note_data_add.pitches, np.array([25.9565436, 32.7]))
+    assert np.allclose(note_data_add.confidence, np.array([1.0, 0.1]))
     assert note_data_add.interval_unit == "s"
     assert note_data_add.pitch_unit == "hz"
     assert note_data_add.confidence_unit == "likelihood"
