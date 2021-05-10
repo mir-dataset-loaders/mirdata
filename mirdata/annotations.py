@@ -811,7 +811,6 @@ class NoteData(Annotation):
 
     def _remove_duplicates(self):
         # deduplicate if matching interval and pitch
-        stacked = np.hstack([self.intervals, self.pitches[:, np.newaxis]])
         unq, unq_idx = np.unique(
             np.hstack([self.intervals, self.pitches[:, np.newaxis]]),
             axis=0,
