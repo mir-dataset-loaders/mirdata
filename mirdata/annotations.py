@@ -810,32 +810,16 @@ class NoteData(Annotation):
         return self.pitches
 
     def _remove_duplicates(self):
-        new_intervals = []
-        new_pitches = []
-        used_indexes = []
-        for i, (interval, pitch) in enumerate(zip(self.intervals, self.pitches)):
-            # if this pitch has an identical interval and pitch value
-            # as an existing one, skip it
-            if list(interval) in new_intervals:
-                matching_pitches = [
-                    p
-                    for p, iv in zip(new_pitches, new_intervals)
-                    if np.allclose(interval, iv)
-                ]
-                if pitch in matching_pitches:
-                    continue
-
-            new_intervals.append(list(interval))
-            new_pitches.append(pitch)
-            used_indexes.append(i)
-
-        self.intervals = np.array(new_intervals)
-        self.pitches = np.array(new_pitches)
-        self.confidence = (
-            None
-            if self.confidence is None
-            else np.array([self.confidence[i] for i in used_indexes])
+        # deduplicate if matching interval and pitch
+        unq, unq_idx = np.unique(
+            np.hstack([self.intervals, self.pitches[:, np.newaxis]]),
+            axis=0,
+            return_index=True,
         )
+        self.intervals = unq[:, :2]
+        self.pitches = unq[:, 2]
+        if self.confidence is not None:
+            self.confidence = self.confidence[unq_idx]
 
     def __add__(self, other):
 
