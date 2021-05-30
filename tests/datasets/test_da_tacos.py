@@ -9,7 +9,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "coveranalysis#W_163992#P_547131"
     data_home = "tests/resources/mir_datasets/da_tacos"
-    dataset = da_tacos.Dataset(data_home)
+    dataset = da_tacos.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -53,7 +53,7 @@ def test_track():
 def test_to_jams():
     default_trackid = "coveranalysis#W_163992#P_547131"
     data_home = "tests/resources/mir_datasets/da_tacos"
-    dataset = da_tacos.Dataset(data_home)
+    dataset = da_tacos.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     jam = track.to_jams()
