@@ -49,9 +49,10 @@ import numpy as np
 #
 
 import mirdata
-dt = mirdata.initialize("mtg_jamendo_autotagging_moodtheme")
+dt = mirdata.initialize('da_tacos')
 
 
 
-# dt.download()
-print(dt.validate())
+dt.download()
+
+
