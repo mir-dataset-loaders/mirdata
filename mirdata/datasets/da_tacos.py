@@ -212,8 +212,9 @@ REMOTES = {
     ),
 }
 INDEXES = {
-    "default": "1.1_crema",
+    "default": "1.1_full",
     "test": "1.1_full",
+    "crema": "1.1_crema",
     "1.1_crema": core.Index(filename="da_tacos_index_1.1_crema.json"),
     "1.1_full": core.Index(filename="da_tacos_index_1.1_full.json"),
 }
@@ -585,3 +586,35 @@ class Dataset(core.Dataset):
 
         """
         return self.filter_index("coveranalysis#")
+
+
+    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
+        """Download the dataset
+        Args:
+            partial_download (str):
+                A list of keys of remotes to partially download.
+                If None, crema data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+        """
+        if partial_download is None or partial_download == "crema":
+            partial_download = ["benchmark_crema", "coveranalysis_crema"]
+        elif "all" in partial_download:
+            partial_download = ["metadata", "benchmark_cens", "benchmark_crema", "benchmark_hpcp", "benchmark_key",
+                                "benchmark_madmom", "benchmark_mfcc", "coveranalysis_tags", "coveranalysis_cens",
+                                "coveranalysis_crema", "coveranalysis_hpcp", "coveranalysis_key",
+                                "coveranalysis_madmom", "coveranalysis_mfcc"]
+
+        download_utils.downloader(
+            self.data_home,
+            remotes=self.remotes,
+            index=self._index_data,
+            partial_download=partial_download,
+            force_overwrite=force_overwrite,
+            cleanup=cleanup,
+        )
