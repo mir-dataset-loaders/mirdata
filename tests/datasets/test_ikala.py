@@ -20,11 +20,14 @@ def test_track():
         "singer_id": "1",
         "f0_path": "tests/resources/mir_datasets/ikala/PitchLabel/10161_chorus.pv",
         "lyrics_path": "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab",
+        "notes_pyin_path": "tests/resources/mir_datasets/ikala/ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
     }
 
     expected_property_types = {
         "f0": annotations.F0Data,
+        "notes_pyin": annotations.NoteData,
         "lyrics": annotations.LyricData,
+        "pronunciations": annotations.LyricData,
         "vocal_audio": tuple,
         "instrumental_audio": tuple,
         "mix_audio": tuple,
@@ -33,6 +36,10 @@ def test_track():
     assert track._track_paths == {
         "audio": ["Wavfile/10161_chorus.wav", "278ae003cb0d323e99b9a643c0f2eeda"],
         "pitch": ["PitchLabel/10161_chorus.pv", "0d93a011a9e668fd80673049089bbb14"],
+        "notes_pyin": [
+            "ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
+            "015856455537ab232140746f2df7b857",
+        ],
         "lyrics": ["Lyrics/10161_chorus.lab", "79bbeb72b422056fd43be4e8d63319ce"],
     }
 
@@ -78,7 +85,7 @@ def test_to_jams():
         {"frequency": 0.0, "index": 0, "voiced": False},
         {"frequency": 260.946404518887, "index": 0, "voiced": True},
     ]
-    assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
+    assert [f0.confidence for f0 in f0s] == [None, None]
 
 
 def test_load_f0():
@@ -90,46 +97,70 @@ def test_load_f0():
     assert type(f0_data) == annotations.F0Data
     assert type(f0_data.times) is np.ndarray
     assert type(f0_data.frequencies) is np.ndarray
-    assert type(f0_data.confidence) is np.ndarray
+    assert type(f0_data.voicing) is np.ndarray
 
     # check values
     assert np.array_equal(f0_data.times, np.array([0.016, 0.048]))
     assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.946404518887]))
-    assert np.array_equal(f0_data.confidence, np.array([0.0, 1.0]))
+    assert np.array_equal(f0_data.voicing, np.array([0.0, 1.0]))
+
+
+def test_load_notes():
+    notes_path = "tests/resources/mir_datasets/ikala/ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv"
+    note_data = ikala.load_notes(notes_path)
+
+    # check types
+    assert type(note_data) == annotations.NoteData
+
+    # check values
+    assert np.allclose(
+        note_data.intervals,
+        np.array([[1.35256236, 1.7414966], [1.85759637, 1.9969161]]),
+    )
+    assert np.allclose(note_data.pitches, np.array([234.328, 261.992]))
+    assert note_data.confidence is None
 
 
 def test_load_lyrics():
     # load a file without pronunciations
     lyrics_path_simple = "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab"
     lyrics_data_simple = ikala.load_lyrics(lyrics_path_simple)
+    pronunciation_data_simple = ikala.load_pronunciations(lyrics_path_simple)
 
     # check types
     assert type(lyrics_data_simple) is annotations.LyricData
     assert type(lyrics_data_simple.intervals) is np.ndarray
     assert type(lyrics_data_simple.lyrics) is list
-    assert type(lyrics_data_simple.pronunciations) is list
 
     # check values
     assert np.array_equal(lyrics_data_simple.intervals[:, 0], np.array([0.027, 0.232]))
     assert np.array_equal(lyrics_data_simple.intervals[:, 1], np.array([0.232, 0.968]))
     assert np.array_equal(lyrics_data_simple.lyrics, ["JUST", "WANNA"])
-    assert np.array_equal(lyrics_data_simple.pronunciations, ["", ""])
+    assert np.array_equal(
+        pronunciation_data_simple.intervals[:, 0], np.array([0.027, 0.232])
+    )
+    assert np.array_equal(
+        pronunciation_data_simple.intervals[:, 1], np.array([0.232, 0.968])
+    )
+    assert np.array_equal(pronunciation_data_simple.lyrics, ["", ""])
 
     # load a file with pronunciations
     lyrics_path_pronun = "tests/resources/mir_datasets/ikala/Lyrics/10164_chorus.lab"
     lyrics_data_pronun = ikala.load_lyrics(lyrics_path_pronun)
+    pronun_data = ikala.load_pronunciations(lyrics_path_pronun)
 
     # check types
     assert type(lyrics_data_pronun) is annotations.LyricData
     assert type(lyrics_data_pronun.intervals) is np.ndarray
     assert type(lyrics_data_pronun.lyrics) is list
-    assert type(lyrics_data_pronun.pronunciations) is list
 
     # check values
     assert np.array_equal(lyrics_data_pronun.intervals[:, 0], np.array([0.021, 0.571]))
     assert np.array_equal(lyrics_data_pronun.intervals[:, 1], np.array([0.189, 1.415]))
     assert np.array_equal(lyrics_data_pronun.lyrics, ["ASDF", "EVERYBODY"])
-    assert np.array_equal(lyrics_data_pronun.pronunciations, ["t i au", ""])
+    assert np.array_equal(pronun_data.intervals[:, 0], np.array([0.021, 0.571]))
+    assert np.array_equal(pronun_data.intervals[:, 1], np.array([0.189, 1.415]))
+    assert np.array_equal(pronun_data.lyrics, ["t i au", ""])
 
 
 def test_load_metadata():

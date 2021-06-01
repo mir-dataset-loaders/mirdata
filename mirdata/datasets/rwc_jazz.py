@@ -41,18 +41,12 @@
 
 """
 import csv
-import logging
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Optional, Tuple
 
-import librosa
 import numpy as np
 
-from mirdata import annotations
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import annotations, core, download_utils, jams_utils
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (

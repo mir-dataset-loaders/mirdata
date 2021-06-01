@@ -219,15 +219,15 @@ def test_to_jams():
         {"index": 0, "frequency": 235.1, "voiced": True},
     ]
     assert [pitch.confidence for pitch in pitches] == [
-        1.0,
-        1.0,
-        1.0,
-        0.0,
-        0.0,
-        0.0,
-        1.0,
-        1.0,
-        1.0,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
     ]
 
     # Metadata
@@ -448,7 +448,7 @@ def test_load_pitch():
     assert type(parsed_pitch) == annotations.F0Data
     assert type(parsed_pitch.times) is np.ndarray
     assert type(parsed_pitch.frequencies) is np.ndarray
-    assert type(parsed_pitch.confidence) is np.ndarray
+    assert type(parsed_pitch.voicing) is np.ndarray
 
     # Check values
     assert np.array_equal(
@@ -472,7 +472,7 @@ def test_load_pitch():
         np.array([208.5, 209.1, 209.6, 0.0, 0.0, 0.0, 232.5, 234.3, 235.1]),
     )
     assert np.array_equal(
-        parsed_pitch.confidence, np.array([1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0])
+        parsed_pitch.voicing, np.array([1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0])
     )
 
     assert compmusic_otmm_makam.load_pitch(None) is None

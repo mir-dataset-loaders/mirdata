@@ -45,12 +45,9 @@ import os
 
 import librosa
 import numpy as np
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import core, download_utils, io, jams_utils
 
 BIBTEX = """@article{Anantapadmanabhan2013,
     author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},

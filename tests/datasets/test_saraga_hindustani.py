@@ -125,7 +125,7 @@ def test_load_pitch():
     assert type(parsed_pitch) == annotations.F0Data
     assert type(parsed_pitch.times) is np.ndarray
     assert type(parsed_pitch.frequencies) is np.ndarray
-    assert type(parsed_pitch.confidence) is np.ndarray
+    assert type(parsed_pitch.voicing) is np.ndarray
 
     # Check values
     assert np.array_equal(
@@ -155,7 +155,7 @@ def test_load_pitch():
         ),
     )
     assert np.array_equal(
-        parsed_pitch.confidence, np.array([0.0, 1.0, 1.0, 1.0, 1.0, 0.0])
+        parsed_pitch.voicing, np.array([0.0, 1.0, 1.0, 1.0, 1.0, 0.0])
     )
 
     assert saraga_hindustani.load_pitch(None) is None
@@ -177,7 +177,7 @@ def test_load_sama():
     assert np.array_equal(
         parsed_sama.times, np.array([68.385, 123.804, 179.069, 234.339])
     )
-    assert np.array_equal(parsed_sama.positions, np.array([1, 1, 1, 1]))
+    assert np.array_equal(parsed_sama.positions, np.array([1, 2, 3, 4]))
     assert saraga_hindustani.load_sama(None) is None
 
     # Test empty sama
