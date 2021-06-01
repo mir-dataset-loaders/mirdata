@@ -371,7 +371,7 @@ def load_beats(midi_path, midi=None):
     beat_range = np.arange(0, len(beat_times))
     meter = midi.time_signature_changes[0]
     beat_positions = 1 + np.mod(beat_range, meter.numerator)
-    return annotations.BeatData(beat_times, beat_positions)
+    return annotations.BeatData(beat_times, "s", beat_positions, "bar_index")
 
 
 def load_drum_events(midi_path, midi=None):
@@ -397,7 +397,9 @@ def load_drum_events(midi_path, midi=None):
         end_times.append(note.end)
         events.append(DRUM_MAPPING[note.pitch]["Roland"])
 
-    return annotations.EventData(np.array([start_times, end_times]).T, events)
+    return annotations.EventData(
+        np.array([start_times, end_times]).T, "s", events, "open"
+    )
 
 
 @core.docstring_inherit(core.Dataset)

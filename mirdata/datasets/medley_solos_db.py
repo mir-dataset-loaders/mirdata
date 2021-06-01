@@ -27,17 +27,13 @@
 """
 
 import csv
-import logging
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import core, download_utils, io, jams_utils
 
 BIBTEX = """@inproceedings{lostanlen2019ismir,
     title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},

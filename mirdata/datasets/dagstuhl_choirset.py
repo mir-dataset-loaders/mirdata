@@ -42,7 +42,7 @@
     (4) Joint Research Centre, European Commission, Seville, ES
 """
 import csv
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, List
 
 import librosa
 import numpy as np
@@ -256,6 +256,8 @@ class MultiTrack(core.MultiTrack):
 
     Cached Properties:
         beat (annotations.BeatData): Beat annotation
+        notes (annotations.NoteData): Note annotation
+        multif0 (annotations.MultiF0Data): Aggregate of f0 annotations for tracks
 
     """
 
@@ -287,6 +289,45 @@ class MultiTrack(core.MultiTrack):
     @core.cached_property
     def beat(self) -> Optional[annotations.BeatData]:
         return load_beat(self.beat_path)
+
+    @core.cached_property
+    def notes(self) -> Optional[annotations.NoteData]:
+        tracks_with_notes = [t for t in self.tracks.values() if t.score is not None]
+        if len(tracks_with_notes) == 0:
+            return None
+
+        notes = tracks_with_notes[0].score
+        if len(tracks_with_notes) > 1:
+            for track in tracks_with_notes[1:]:
+                notes += track.score
+        return notes
+
+    @core.cached_property
+    def multif0(self) -> Optional[annotations.MultiF0Data]:
+        f0_priority = [
+            "f0_manual_lrx",
+            "f0_crepe_lrx",
+            "f0_pyin_lrx",
+            "f0_crepe_hsm",
+            "f0_pyin_hsm",
+            "f0_crepe_dyn",
+            "f0_pyin_dyn",
+        ]
+        multif0 = None
+        for track in self.tracks.values():
+            f0_data: Optional[annotations.F0Data] = None
+            # get the best f0 annotation we can for this track
+            for f0_attr in f0_priority:
+                if getattr(track, f0_attr) is not None:
+                    f0_data = getattr(track, f0_attr)
+                    break
+
+            if multif0 is None:
+                multif0 = f0_data.to_multif0()  # type: ignore
+            else:
+                multif0 += f0_data
+
+        return multif0
 
     @property
     def audio_stm(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -391,17 +432,38 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
     """
     times = []
     freqs = []
+    voicings = []
+    confs: List[Optional[float]]
+    conf_array: Optional[np.ndarray]
     confs = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        voicings.append(float(freq_val > 0))
+        freqs.append(np.abs(freq_val))
         if len(line) == 3:
             confs.append(float(line[2]))
         else:
-            confs.append(float(1.0))
+            confs.append(None)
 
-    return annotations.F0Data(np.array(times), np.array(freqs), np.array(confs))
+    if all([not c for c in confs]):
+        conf_array = None
+        conf_unit = None
+    else:
+        conf_array = np.array(confs)
+        conf_unit = "likelihood"
+
+    return annotations.F0Data(
+        np.array(times),
+        "s",
+        np.array(freqs),
+        "hz",
+        np.array(voicings),
+        "binary",
+        conf_array,
+        conf_unit,
+    )
 
 
 @io.coerce_to_string_io
@@ -413,15 +475,18 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
 
     Returns:
         NoteData Object - the time-aligned score representation
+
     """
-    intervals = np.empty((0, 2))
+    intervals = []
     notes = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
-        intervals = np.vstack([intervals, [float(line[0]), float(line[1])]])
+        intervals.append([float(line[0]), float(line[1])])
         notes.append(float(line[2]))
 
-    return annotations.NoteData(intervals, librosa.midi_to_hz(notes), None)
+    return annotations.NoteData(
+        np.array(intervals), "s", librosa.midi_to_hz(notes), "hz"
+    )
 
 
 @io.coerce_to_string_io
@@ -447,7 +512,7 @@ def load_beat(fhandle: TextIO) -> annotations.BeatData:
             position += 1
         positions.append(position)
 
-    return annotations.BeatData(np.array(times), np.array(positions))
+    return annotations.BeatData(np.array(times), "s", np.array(positions), "bar_index")
 
 
 @core.docstring_inherit(core.Dataset)

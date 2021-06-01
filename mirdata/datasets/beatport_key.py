@@ -29,9 +29,7 @@ import fnmatch
 import json
 import librosa
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
+from mirdata import core, download_utils, jams_utils, io
 
 BIBTEX = """@phdthesis {3897,
     title = {Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination},
@@ -116,7 +114,6 @@ class Track(core.Track):
 
         self.keys_path = self.get_path("key")
         self.metadata_path = self.get_path("meta")
-
         self.audio_path = self.get_path("audio")
 
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
@@ -167,113 +164,88 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath):
     """Load a beatport_key audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fpath (str): path to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fpath, sr=None, mono=True)
 
 
-def load_key(keys_path):
+@io.coerce_to_string_io
+def load_key(fhandle):
     """Load beatport_key format key data from a file
 
     Args:
-        keys_path (str): path to key annotation file
+        fhandle (str or file-like): path or file-like object pointing to
+            a key annotation file
 
     Returns:
         list: list of annotated keys
 
     """
-    if keys_path is None:
-        return None
-
-    if not os.path.exists(keys_path):
-        raise IOError("keys_path {} does not exist".format(keys_path))
-
-    with open(keys_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="|")
-        keys = next(reader)
+    reader = csv.reader(fhandle, delimiter="|")
+    keys = next(reader)
 
     # standarize 'Unknown'  to 'X'
     keys = ["x" if k.lower() == "unknown" else k for k in keys]
     return keys
 
 
-def load_tempo(metadata_path):
+@io.coerce_to_string_io
+def load_tempo(fhandle):
     """Load beatport_key tempo data from a file
 
     Args:
-        metadata_path (str): path to metadata annotation file
+        fhandle (str or file-like): path or file-like object pointing to
+            metadata file
 
     Returns:
         str: tempo in beats per minute
 
     """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-
-    return meta["bpm"]
+    return json.load(fhandle)["bpm"]
 
 
-def load_genre(metadata_path):
+@io.coerce_to_string_io
+def load_genre(fhandle):
     """Load beatport_key genre data from a file
 
     Args:
-        metadata_path (str): path to metadata annotation file
+        fhandle (str or file-like): path or file-like object pointing to
+            metadata file
 
     Returns:
         dict: with the list with genres ['genres'] and list with sub-genres ['sub_genres']
 
     """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-
+    meta = json.load(fhandle)
     return {
         "genres": [genre["name"] for genre in meta["genres"]],
         "sub_genres": [genre["name"] for genre in meta["sub_genres"]],
     }
 
 
-def load_artist(metadata_path):
+@io.coerce_to_string_io
+def load_artist(fhandle):
     """Load beatport_key tempo data from a file
 
     Args:
-        metadata_path (str): path to metadata annotation file
+        fhandle (str or file-like): path or file-like object pointing to
+            metadata file
 
     Returns:
         list: list of artists involved in the track.
 
     """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-
+    meta = json.load(fhandle)
     return [artist["name"] for artist in meta["artists"]]
 
 

@@ -31,21 +31,14 @@
 """
 
 import json
-import glob
-import logging
 import os
-import shutil
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
 import pretty_midi
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """@inproceedings{
@@ -221,9 +214,14 @@ def load_notes(midi_path, midi=None):
     for note in midi.instruments[0].notes:
         intervals.append([note.start, note.end])
         pitches.append(librosa.midi_to_hz(note.pitch))
-        confidence.append(note.velocity / 127.0)
+        confidence.append(float(note.velocity))
     return annotations.NoteData(
-        np.array(intervals), np.array(pitches), np.array(confidence)
+        np.array(intervals),
+        "s",
+        np.array(pitches),
+        "hz",
+        np.array(confidence),
+        "velocity",
     )
 
 
