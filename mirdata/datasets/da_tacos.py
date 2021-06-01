@@ -100,7 +100,15 @@ import logging
 import os
 from typing import Optional, TextIO
 
-import deepdish as dd
+try:
+    import deepdish as dd
+except ImportError:
+    logging.error(
+        "In order to use Da-TACOS you must have deepdish installed. "
+        "Please reinstall mirdata using `pip3 install 'mirdata[da_tacos]'"
+    )
+    raise ImportError
+
 from jams import JAMS
 import numpy as np
 
