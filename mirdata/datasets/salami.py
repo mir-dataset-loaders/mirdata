@@ -158,20 +158,30 @@ class Track(core.Track):
         return self._track_metadata.get("genre")
 
     @core.cached_property
-    def sections_annotator_1_uppercase(self) -> Optional[annotations.SectionData]:
-        return load_sections(self.sections_annotator1_uppercase_path)
+    def sections_uppercase(self) -> Optional[annotations.MultiAnnotator]:
+        return annotations.MultiAnnotator(
+            [
+                self._track_metadata.get("annotator_1_id"),
+                self._track_metadata.get("annotator_2_id"),
+            ],
+            [
+                load_sections(self.sections_annotator1_uppercase_path),
+                load_sections(self.sections_annotator2_uppercase_path),
+            ],
+        )
 
     @core.cached_property
-    def sections_annotator_1_lowercase(self) -> Optional[annotations.SectionData]:
-        return load_sections(self.sections_annotator1_lowercase_path)
-
-    @core.cached_property
-    def sections_annotator_2_uppercase(self) -> Optional[annotations.SectionData]:
-        return load_sections(self.sections_annotator2_uppercase_path)
-
-    @core.cached_property
-    def sections_annotator_2_lowercase(self) -> Optional[annotations.SectionData]:
-        return load_sections(self.sections_annotator2_lowercase_path)
+    def sections_lowercase(self) -> Optional[annotations.MultiAnnotator]:
+        return annotations.MultiAnnotator(
+            [
+                self._track_metadata.get("annotator_1_id"),
+                self._track_metadata.get("annotator_2_id"),
+            ],
+            [
+                load_sections(self.sections_annotator1_lowercase_path),
+                load_sections(self.sections_annotator2_lowercase_path),
+            ],
+        )
 
     @property
     def audio(self) -> Tuple[np.ndarray, float]:
@@ -196,17 +206,17 @@ class Track(core.Track):
             multi_section_data=[
                 (
                     [
-                        (self.sections_annotator_1_uppercase, 0),
-                        (self.sections_annotator_1_lowercase, 1),
+                        (self.sections_uppercase.annotations[0], 0),
+                        (self.sections_lowercase.annotations[0], 1),
                     ],
-                    "annotator_1",
+                    self.sections_lowercase.annotators[0],
                 ),
                 (
                     [
-                        (self.sections_annotator_2_uppercase, 0),
-                        (self.sections_annotator_2_lowercase, 1),
+                        (self.sections_uppercase.annotations[1], 0),
+                        (self.sections_lowercase.annotations[1], 1),
                     ],
-                    "annotator_2",
+                    self.sections_lowercase.annotators[1],
                 ),
             ],
             metadata=self._track_metadata,
