@@ -215,6 +215,15 @@ def test_load_sections():
     section_data_none = salami.load_sections(None)
     assert section_data_none is None
 
+    # load an empty file
+    sections_path = (
+        "tests/resources/mir_datasets/salami/"
+        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase_empty.txt"
+    )
+
+    section_data = salami.load_sections(sections_path)
+    assert section_data is None
+
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/salami"

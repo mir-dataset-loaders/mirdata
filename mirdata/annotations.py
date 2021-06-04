@@ -1445,16 +1445,6 @@ def validate_array_like(
         for n in array_like
         if not ((n is None) and none_allowed)
     ):
-        if check_child:
-            if not all(
-                issubclass(type(n), expected_dtype)
-                for n in array_like
-                if not ((n is None) and none_allowed)
-            ):
-                raise TypeError(
-                    f"List elements should all be instances of {expected_dtype} class"
-                )
-
         raise TypeError(f"List elements should all have type {expected_dtype}")
 
     if (
