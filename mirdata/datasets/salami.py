@@ -278,7 +278,7 @@ def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_sections(fhandle: TextIO) -> annotations.SectionData:
+def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
     """Load salami sections data from a file
 
     Args:
