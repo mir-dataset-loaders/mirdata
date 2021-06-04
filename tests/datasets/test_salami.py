@@ -37,6 +37,10 @@ def test_track():
     expected_property_types = {
         "sections_uppercase": annotations.MultiAnnotator,
         "sections_lowercase": annotations.MultiAnnotator,
+        "sections_annotator_1_uppercase": annotations.SectionData,
+        "sections_annotator_1_lowercase": annotations.SectionData,
+        "sections_annotator_2_uppercase": annotations.SectionData,
+        "sections_annotator_2_lowercase": annotations.SectionData,
         "audio": tuple,
     }
 
@@ -84,6 +88,12 @@ def test_track():
     assert track.sections_uppercase.annotations[1] is None
     assert track.sections_lowercase.annotations[1] is None
 
+    # test deprecated attributes for coverage
+    assert type(track.sections_annotator_1_uppercase) is annotations.SectionData
+    assert type(track.sections_annotator_1_lowercase) is annotations.SectionData
+    assert track.sections_annotator_2_uppercase is None
+    assert track.sections_annotator_2_lowercase is None
+
     # Test file with missing annotations
     track = dataset.track("1015")
 
@@ -102,10 +112,16 @@ def test_track():
     }
 
     # test that cached properties don't fail and have the expected type
-    assert track.sections_uppercase.annotations[0] is None
+    assert track.sections_uppercase.annotators[0] is None
     assert track.sections_lowercase.annotations[0] is None
     assert type(track.sections_uppercase) is annotations.MultiAnnotator
     assert type(track.sections_lowercase) is annotations.MultiAnnotator
+
+    # test deprecated attributes for coverage
+    assert track.sections_annotator_1_uppercase is None
+    assert track.sections_annotator_1_lowercase is None
+    assert type(track.sections_annotator_2_uppercase) is annotations.SectionData
+    assert type(track.sections_annotator_2_lowercase) is annotations.SectionData
 
 
 def test_to_jams():
