@@ -171,7 +171,7 @@ class Track(core.Track):
                 load_sections(self.sections_annotator1_uppercase_path),
                 load_sections(self.sections_annotator2_uppercase_path),
             ],
-            annotations.SectionData
+            annotations.SectionData,
         )
 
     @core.cached_property
@@ -185,7 +185,7 @@ class Track(core.Track):
                 load_sections(self.sections_annotator1_lowercase_path),
                 load_sections(self.sections_annotator2_lowercase_path),
             ],
-            annotations.SectionData
+            annotations.SectionData,
         )
 
     @core.cached_property

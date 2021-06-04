@@ -92,9 +92,7 @@ class MultiAnnotator(object):
 
     def __init__(self, annotators, annotations, dtype) -> None:
         validate_array_like(annotators, list, str, none_allowed=True)
-        validate_array_like(
-            annotations, list, dtype, none_allowed=True
-        )
+        validate_array_like(annotations, list, dtype, none_allowed=True)
         validate_lengths_equal([annotators, annotations])
 
         self.annotators = annotators
@@ -398,8 +396,9 @@ class F0Data(Annotation):
             ]
         )
 
-        return np.array(index), convert_amplitude_units(
-            voicing, self.voicing_unit, amplitude_unit
+        return (
+            np.array(index),
+            convert_amplitude_units(voicing, self.voicing_unit, amplitude_unit),
         )
 
     def to_matrix(
@@ -730,8 +729,9 @@ class MultiF0Data(Annotation):
                 if t != -1 and f != -1
             ]
         )
-        return np.array(index), convert_amplitude_units(
-            confidence_out, conf_unit, amplitude_unit
+        return (
+            np.array(index),
+            convert_amplitude_units(confidence_out, conf_unit, amplitude_unit),
         )
 
     def to_matrix(
