@@ -38,7 +38,7 @@ def test_multiannotator():
         annotations.EventData(intervals_1, "s", labels_1, "open"),
         annotations.EventData(intervals_2, "s", labels_2, "open"),
     ]
-    events = annotations.MultiAnnotator(annotators, multi_annot)
+    events = annotations.MultiAnnotator(annotators, multi_annot, annotations.EventData)
 
     assert events.annotations[0].events == labels_1
     assert events.annotators[1] == "annotator_2"

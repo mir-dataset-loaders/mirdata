@@ -90,10 +90,10 @@ class MultiAnnotator(object):
 
     """
 
-    def __init__(self, annotators, annotations) -> None:
+    def __init__(self, annotators, annotations, dtype) -> None:
         validate_array_like(annotators, list, str, none_allowed=True)
         validate_array_like(
-            annotations, list, Annotation, check_child=True, none_allowed=True
+            annotations, list, dtype, none_allowed=True
         )
         validate_lengths_equal([annotators, annotations])
 
