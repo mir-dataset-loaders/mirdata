@@ -79,13 +79,15 @@ class Annotation(object):
         return repr_str
 
 
-class MultiAnnotator(Annotation):
+class MultiAnnotator(object):
     """Multiple annotator class.
     This class should be used for datasets with multiple annotators (e.g. multiple annotators per track).
 
     Attributes:
         annotators (list): list with annotator ids
-        annotations (list): list of annotations (e.g. [annotations.BeatData, annotations.ChordData]
+        annotations (list): list of annotations (e.g. [beat_data1, beat_data2] each with
+                             type BeatData or  [chord_data1, chord_data2] each with type chord data
+
     """
 
     def __init__(self, annotators, annotations) -> None:
