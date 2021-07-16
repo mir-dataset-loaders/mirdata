@@ -15,7 +15,7 @@
     145 hours of mixture data.
 
     This loader supports two versions of Slakh:
-    - Slakh2100-redux: a deduplicated version of Slack2100 containing 1710 multitracks
+    - Slakh2100-redux: a deduplicated version of slakh2100 containing 1710 multitracks
     - baby-slakh: a mini version with 16k wav audio and only the first 20 tracks
 
     This dataset was created at Mitsubishi Electric Research Labl (MERL) and
@@ -83,21 +83,22 @@ MIXING_GROUPS = {
 
 
 class Track(core.Track):
-    """slakh Track class
+    """slakh Track class, for individual stems
 
     Attributes:
         audio_path (str or None): path to the track's audio file. For some unusual tracks,
             such as sound effects, there is no audio and this attribute is None.
         data_split (str or None): one of 'train', 'validation', 'test', or 'omitted'.
-            'omitted' tracks are part of slack2100-redux which were found to be
-            duplicates in the original slackh2011.
+            'omitted' tracks are part of slakh2100-redux which were found to be
+            duplicates in the original slakh2011.
             In baby slakh there are no splits, so this attribute is None.
         metadata_path (str): path to the multitrack's metadata file
         midi_path (str or None): path to the track's midi file. For some unusual tracks,
             such as sound effects, there is no midi and this attribute is None.
         mtrack_id (str): the track's multitrack id
         track_id (str): track id
-        instrument (str): MIDI instrument class
+        instrument (str): MIDI instrument class, see link for details:
+            https://en.wikipedia.org/wiki/General_MIDI#Program_change_events
         integrated_loudness (float): integrated loudness (dB) of this track
             as calculated by the ITU-R BS.1770-4 spec
         is_drum (bool): whether the "drum" flag is true for this MIDI track
@@ -212,7 +213,8 @@ class Track(core.Track):
 
 
 class MultiTrack(core.MultiTrack):
-    """slakh multitrack class
+    """slakh multitrack class, containing information about the mix and
+    the set of associated stems
 
     Attributes:
         mtrack_id (str): track id
@@ -223,8 +225,8 @@ class MultiTrack(core.MultiTrack):
         midi_path (str): path to the full midi data used to generate the mixture
         metadata_path (str): path to the multitrack metadata file
         data_split (str or None): one of 'train', 'validation', 'test', or 'omitted'.
-            'omitted' tracks are part of slack2100-redux which were found to be
-            duplicates in the original slackh2011.
+            'omitted' tracks are part of slakh2100-redux which were found to be
+            duplicates in the original slakh2011.
         uuid (str): File name of the original MIDI file from Lakh, sans extension
         lakh_midi_dir (str): Path to the original MIDI file from a fresh download of Lakh
         normalized (bool): whether the mix and stems were normalized according to the ITU-R BS.1770-4 spec
