@@ -31,6 +31,7 @@
 """
 
 import json
+import logging
 import os
 from typing import BinaryIO, Optional, Tuple
 
@@ -148,11 +149,15 @@ class Track(core.Track):
 
     @core.cached_property
     def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
-        return load_midi(self.midi_path)
+        return io.load_midi(self.midi_path)
 
     @core.cached_property
     def notes(self):
-        return load_notes(self.midi_path, self.midi)
+        logging.warning(
+            "The default unit for maestro pitch and velocity values have"
+            + " changed in mirdata >0.3.3 from hz/confidence to midi/velocity"
+        )
+        return io.load_notes_from_midi(self.midi_path, self.midi)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -177,52 +182,6 @@ class Track(core.Track):
             note_data=[(self.notes, None)],
             metadata=self._track_metadata,
         )
-
-
-@io.coerce_to_bytes_io
-def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
-    """Load a MAESTRO midi file.
-
-    Args:
-        fhandle (str or file-like): File-like object or path to midi file
-
-    Returns:
-        pretty_midi.PrettyMIDI: pretty_midi object
-
-    """
-    return pretty_midi.PrettyMIDI(fhandle)
-
-
-def load_notes(midi_path, midi=None):
-    """Load note data from the midi file.
-
-    Args:
-        midi_path (str): path to midi file
-        midi (pretty_midi.PrettyMIDI): pre-loaded midi object or None
-            if None, the midi object is loaded using midi_path
-
-    Returns:
-        NoteData: note annotations
-
-    """
-    if midi is None:
-        midi = load_midi(midi_path)
-
-    intervals = []
-    pitches = []
-    confidence = []
-    for note in midi.instruments[0].notes:
-        intervals.append([note.start, note.end])
-        pitches.append(librosa.midi_to_hz(note.pitch))
-        confidence.append(float(note.velocity))
-    return annotations.NoteData(
-        np.array(intervals),
-        "s",
-        np.array(pitches),
-        "hz",
-        np.array(confidence),
-        "velocity",
-    )
 
 
 @io.coerce_to_bytes_io
@@ -279,13 +238,13 @@ class Dataset(core.Dataset):
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_midi)
+    @core.copy_docs(io.load_midi)
     def load_midi(self, *args, **kwargs):
-        return load_midi(*args, **kwargs)
+        return io.load_midi(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @core.copy_docs(io.load_notes_from_midi)
     def load_notes(self, *args, **kwargs):
-        return load_notes(*args, **kwargs)
+        return io.load_notes_from_midi(*args, **kwargs)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=False):
         """Download the dataset

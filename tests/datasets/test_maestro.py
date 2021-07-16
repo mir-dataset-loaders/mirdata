@@ -55,28 +55,6 @@ def test_track():
     assert audio.shape == (48000 * 2,)
 
 
-def test_load_midi():
-    midi_file = (
-        "tests/resources/mir_datasets/maestro/2018/"
-        + "MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi"
-    )
-    midi = maestro.load_midi(midi_file)
-    assert len(midi.instruments) == 1
-    assert len(midi.instruments[0].notes) == 4197
-
-
-def test_load_notes():
-    midi_file = (
-        "tests/resources/mir_datasets/maestro/2018/"
-        + "MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi"
-    )
-    notes = maestro.load_notes(midi_file)
-    expected_intervals = np.array([[0.98307292, 1.80989583], [1.78385417, 1.90625]])
-    assert np.allclose(notes.intervals[0:2], expected_intervals)
-    assert np.allclose(notes.pitches[0:2], np.array([391.99543598, 523.2511306]))
-    assert np.allclose(notes.confidence[0:2], np.array([52, 67]))
-
-
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/maestro"
     dataset = maestro.Dataset(data_home)

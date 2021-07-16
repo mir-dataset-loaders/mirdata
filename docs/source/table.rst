@@ -323,6 +323,15 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - Slakh
+     - - multitrack audio: ✅
+       - annotations: ✅
+     - - Notes :ref:`notes`
+       - Instruments :ref:`instruments`
+     - 1710
+     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by/4.0/
+
    * - Tinysol
      - - audio: ✅
        - annotations: ✅

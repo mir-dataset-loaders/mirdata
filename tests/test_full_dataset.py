@@ -52,8 +52,8 @@ def test_validation(skip_remote, dataset):
     }
 
 
-def test_load(skip_remote, dataset):
-    if dataset is None:
+def test_load_tracks(skip_remote, dataset):
+    if dataset is None or dataset._track_class is None:
         pytest.skip()
 
     # run load
@@ -79,6 +79,36 @@ def test_load(skip_remote, dataset):
             ret = getattr(track, cprop)
 
         jam = track.to_jams()
+        assert jam.validate()
+
+
+def test_load_mtracks(skip_remote, dataset):
+    if dataset is None or dataset._multitrack_class is None:
+        pytest.skip()
+
+    # run load
+    all_data = dataset.load_multitracks()
+
+    assert isinstance(all_data, dict)
+
+    mtrack_ids = dataset.mm
+    assert set(mtrack_ids) == set(all_data.keys())
+
+    # test that all attributes and properties can be called
+    for mtrack_id in tqdm.tqdm(mtrack_ids):
+        mtrack = all_data[mtrack_id]
+        mtrack_data = get_attributes_and_properties(mtrack)
+
+        for attr in mtrack_data["attributes"]:
+            ret = getattr(mtrack, attr)
+
+        for prop in mtrack_data["properties"]:
+            ret = getattr(mtrack, prop)
+
+        for cprop in mtrack_data["cached_properties"]:
+            ret = getattr(mtrack, cprop)
+
+        jam = mtrack.to_jams()
         assert jam.validate()
 
 
