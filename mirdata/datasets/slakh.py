@@ -296,6 +296,8 @@ class MultiTrack(core.MultiTrack):
 
     @core.cached_property
     def multif0(self) -> Optional[annotations.MultiF0Data]:
+        # TODO: setting pitch_bend to False by default, but there are some
+        # patches that render pitch bend in the audio.
         return io.load_multif0_from_midi(
             self.midi_path, self.midi, skip_drums=True, pitch_bend=False
         )
