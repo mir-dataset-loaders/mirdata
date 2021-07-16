@@ -273,6 +273,14 @@ saraga_hindustani
    :inherited-members:
 
 
+slakh
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.slakh
+   :members:
+   :inherited-members:
+
+
 tinysol
 ^^^^^^^
 

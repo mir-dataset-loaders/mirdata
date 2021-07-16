@@ -688,6 +688,14 @@ def test_multif0_data():
     voc_expected = np.array([1.0, 1.0])
     assert np.allclose(voc, voc_expected)
 
+    sparse_idx, voc = f0_data2.to_sparse_index(
+        time_scale, "s", np.array([40.0, 50.0, 100.0]), "midi", "binary"
+    )
+    sparse_idx_expected = np.array([[1, 0], [2, 0]])
+    assert np.allclose(sparse_idx, sparse_idx_expected)
+    voc_expected = np.array([1.0, 1.0])
+    assert np.allclose(voc, voc_expected)
+
     # test matrix
     matrix = f0_data.to_matrix(time_scale, "s", frequency_scale, "hz", "likelihood")
     matrix_expected = np.array(
@@ -994,7 +1002,7 @@ def test_validate_confidence():
     annotations.validate_confidence(np.array([0, 1, 1, 0]), "binary")
     annotations.validate_confidence(np.array([1, 1, 1, 1]), "binary")
     annotations.validate_confidence(np.array([0.1, 0, 0.5]), "likelihood")
-    annotations.validate_confidence(np.array([[0.1, 0], [0.5]]), "likelihood")
+    annotations.validate_confidence([[0.1, 0], [0.5]], "likelihood")
     annotations.validate_confidence(np.array([0.1, 0, 0.5]), "energy")
     annotations.validate_confidence(np.array([0, 57.3, 127]), "velocity")
 

@@ -20,6 +20,7 @@ TEST_TRACKIDS = {
     "rwc_jazz": "RM-J004",
     "rwc_popular": "RM-P001",
     "salami": "2",
+    "slakh": "Track00001-S01",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
     "dagstuhl_choirset": "DCS_LI_QuartetB_Take04_B2",
 }
@@ -64,7 +65,7 @@ def main(args):
     data_home = "tests/resources/mir_datasets/{}".format(args.dataset)
     print(data_home)
 
-    dataset = mirdata.initialize(args.dataset, data_home=data_home)
+    dataset = mirdata.initialize(args.dataset, data_home=data_home, version="test")
 
     if args.dataset in TEST_TRACKIDS.keys():
         track_id = TEST_TRACKIDS[args.dataset]
@@ -82,9 +83,9 @@ def main(args):
     print("    track_id (str): track id of the track")
     print("")
 
-    if len(data["attributes"]) > 0:
+    if len(data["attributes"] + data["properties"]) > 0:
         print("Attributes:")
-        for attr in data["attributes"]:
+        for attr in data["attributes"] + data["properties"]:
             if attr == "track_id":
                 print(
                     "    {} ({}): track id".format(
