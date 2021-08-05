@@ -182,7 +182,9 @@ class Dataset(object):
                 raise FileNotFoundError(
                     "This dataset's index must be downloaded. Did you run .download()?"
                 )
-            raise IOError("Dataset index was expected to be packaged with mirdata, but not found.")
+            raise IOError(
+                "Dataset index was expected to be packaged with mirdata, but not found."
+            )
 
         return index
 
@@ -407,7 +409,9 @@ class Track(object):
 
         """
         if track_id not in index["tracks"]:
-            raise ValueError("{} is not a valid track_id in {}".format(track_id, dataset_name))
+            raise ValueError(
+                "{} is not a valid track_id in {}".format(track_id, dataset_name)
+            )
 
         self.track_id = track_id
         self._dataset_name = dataset_name
@@ -427,7 +431,9 @@ class Track(object):
 
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]
-        attributes = [v for v in dir(self) if not v.startswith("_") and v not in properties]
+        attributes = [
+            v for v in dir(self) if not v.startswith("_") and v not in properties
+        ]
 
         repr_str = "Track(\n"
 
@@ -511,7 +517,9 @@ class MultiTrack(Track):
 
         """
         if mtrack_id not in index["multitracks"]:
-            raise ValueError("{} is not a valid mtrack_id in {}".format(mtrack_id, dataset_name))
+            raise ValueError(
+                "{} is not a valid mtrack_id in {}".format(mtrack_id, dataset_name)
+            )
 
         self.mtrack_id = mtrack_id
         self._dataset_name = dataset_name
@@ -597,7 +605,9 @@ class MultiTrack(Track):
 
         if len(set(sample_rates)) > 1:
             raise ValueError(
-                "Sample rates for tracks {} are not equal: {}".format(track_keys, sample_rates)
+                "Sample rates for tracks {} are not equal: {}".format(
+                    track_keys, sample_rates
+                )
             )
 
         max_length = np.max(lengths)
@@ -696,7 +706,9 @@ class Index(object):
                 destination_dir="mirdata_indexes",
             )
         elif url or checksum:
-            raise ValueError("Remote indexes must have both a url and a checksum specified.")
+            raise ValueError(
+                "Remote indexes must have both a url and a checksum specified."
+            )
         else:
             self.remote = None
 

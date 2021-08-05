@@ -31,7 +31,9 @@ class RemoteFileMetadata(object):
 
     """
 
-    def __init__(self, filename, url, checksum, destination_dir=None, unpack_directories=None):
+    def __init__(
+        self, filename, url, checksum, destination_dir=None, unpack_directories=None
+    ):
         self.filename = filename
         self.url = url
         self.checksum = checksum
@@ -138,8 +140,7 @@ def downloader(
                             "Data not downloaded, because it probably already exists on your"
                             " computer. "
                             + "Run .validate() to check, or rerun with force_overwrite=True to"
-                            " delete any "
-                            + "existing files and download from scratch"
+                            " delete any " + "existing files and download from scratch"
                         )
                         return
 
@@ -204,7 +205,9 @@ def download_from_remote(remote, save_dir, force_overwrite):
             os.remove(download_path)
 
         # If file doesn't exist or we want to overwrite, download it
-        with DownloadProgressBar(unit="B", unit_scale=True, unit_divisor=1024, miniters=1) as t:
+        with DownloadProgressBar(
+            unit="B", unit_scale=True, unit_divisor=1024, miniters=1
+        ) as t:
             try:
                 urllib.request.urlretrieve(
                     remote.url,
@@ -279,9 +282,9 @@ def extractall_unicode(zfile, out_dir):
         # if block to deal with irmas and good-sounds archives
         # check if the zip archive does not have the encoding info set
         # encode-decode filename only if it's different than the original name
-        if (m.flag_bits & ZIP_FILENAME_UTF8_FLAG == 0) and filename.encode("cp437").decode(
-            errors="ignore"
-        ) != filename:
+        if (m.flag_bits & ZIP_FILENAME_UTF8_FLAG == 0) and filename.encode(
+            "cp437"
+        ).decode(errors="ignore") != filename:
             filename_bytes = filename.encode("cp437")
             guessed_encoding = chardet.detect(filename_bytes)["encoding"] or "utf8"
             filename = filename_bytes.decode(guessed_encoding, "replace")
