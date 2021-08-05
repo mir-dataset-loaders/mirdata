@@ -5,6 +5,8 @@ import logging
 import os
 import tqdm
 
+from smart_open import open
+
 
 def md5(file_path):
     """Get md5 hash of a file.
@@ -17,7 +19,7 @@ def md5(file_path):
 
     """
     hash_md5 = hashlib.md5()
-    with open(file_path, "rb") as fhandle:
+    with open(file_path, "rb", compression="disable") as fhandle:
         for chunk in iter(lambda: fhandle.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
@@ -48,7 +50,9 @@ def validate(local_path, checksum):
 
     """
     # validate that the file exists on disk
-    if not os.path.exists(local_path):
+    try:
+        open(local_path)
+    except IOError:
         return False, False
 
     # validate that the checksum matches
@@ -221,9 +225,7 @@ def validator(dataset_index, data_home, verbose=True):
             has_any_invalid_checksum = True
 
     if not (has_any_missing_file or has_any_invalid_checksum):
-        log_message(
-            "Success: the dataset is complete and all files are valid.", verbose
-        )
+        log_message("Success: the dataset is complete and all files are valid.", verbose)
         log_message("-" * 20, verbose)
 
     return missing_files, invalid_checksums

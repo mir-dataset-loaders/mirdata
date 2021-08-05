@@ -1,10 +1,10 @@
 """Utilities for converting mirdata Annotation classes to jams format.
 """
 import logging
-import os
 
 import jams
 import librosa
+from smart_open import open, parse_uri
 
 from mirdata import annotations
 
@@ -80,9 +80,19 @@ def jams_converter(
     # duration
     duration = None
     if audio_path is not None:
-        if os.path.exists(audio_path):
+        file_uri = parse_uri(audio_path)
+        if file_uri.scheme != "file" and audio_path.endswith(".mp3"):
+            raise NotImplementedError(
+                "mirdata does not currently support conversion of remote mp3 files to jams format"
+            )
+
+        try:
+            with open(audio_path, "rb") as fhandle:
+                duration = librosa.get_duration(filename=fhandle)
+        # for local mp3s only
+        except TypeError:
             duration = librosa.get_duration(filename=audio_path)
-        else:
+        except IOError:
             raise OSError(
                 "jams conversion failed because the audio file "
                 + "for this track cannot be found, and it is required "
@@ -152,9 +162,7 @@ def jams_converter(
                     "multi_section_data should be a list of tuples, "
                     + "but contains a {} element".format(type(sections))
                 )
-            if not (
-                isinstance(sections[0], list) and isinstance(sections[0][0], tuple)
-            ):
+            if not (isinstance(sections[0], list) and isinstance(sections[0][0], tuple)):
                 raise TypeError(
                     "tuples in multi_section_data should contain a "
                     + "list of tuples, indicating annotations in the different "
@@ -391,9 +399,7 @@ def keys_to_jams(key_data, description):
     if key_data is not None:
         if not isinstance(key_data, annotations.KeyData):
             raise TypeError("Type should be KeyData.")
-        for beg, end, key in zip(
-            key_data.intervals[:, 0], key_data.intervals[:, 1], key_data.keys
-        ):
+        for beg, end, key in zip(key_data.intervals[:, 0], key_data.intervals[:, 1], key_data.keys):
             jannot_key.append(time=beg, duration=end - beg, value=key)
     if description is not None:
         jannot_key.sandbox = jams.Sandbox(name=description)
@@ -414,9 +420,7 @@ def multi_sections_to_jams(multisection_data, description):
     # sections with multiple annotators and multiple level annotations
     jannot_multi = jams.Annotation(namespace="multi_segment")
     jannot_multi.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
-    jannot_multi.annotation_metadata = jams.AnnotationMetadata(
-        annotator={"name": description}
-    )
+    jannot_multi.annotation_metadata = jams.AnnotationMetadata(annotator={"name": description})
     for sections in multisection_data:
         if sections[0] is not None:
             if not isinstance(sections[0], annotations.SectionData):
@@ -499,9 +503,7 @@ def f0s_to_jams(f0_data, description=None):
             conf = [None for t in f0_data.times]
         else:
             conf = f0_data._confidence
-        for t, f, v, c in zip(
-            f0_data.times, f0_data.frequencies, f0_data.voicing, conf
-        ):
+        for t, f, v, c in zip(f0_data.times, f0_data.frequencies, f0_data.voicing, conf):
             jannot_f0.append(
                 time=t,
                 duration=0.0,

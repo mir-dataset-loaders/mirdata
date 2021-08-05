@@ -11,6 +11,7 @@ import urllib
 import zipfile
 
 from tqdm import tqdm
+from smart_open import open, parse_uri
 
 from mirdata.validate import md5
 
@@ -30,9 +31,7 @@ class RemoteFileMetadata(object):
 
     """
 
-    def __init__(
-        self, filename, url, checksum, destination_dir=None, unpack_directories=None
-    ):
+    def __init__(self, filename, url, checksum, destination_dir=None, unpack_directories=None):
         self.filename = filename
         self.url = url
         self.checksum = checksum
@@ -81,7 +80,8 @@ def downloader(
     if cleanup:
         logging.warning(
             "Zip and tar files will be deleted after they are uncompressed. "
-            + "If you download this dataset again, it will overwrite existing files, even if force_overwrite=False"
+            + "If you download this dataset again, it will overwrite existing files, even if"
+            " force_overwrite=False"
         )
 
     if index.remote:
@@ -135,8 +135,10 @@ def downloader(
 
                     if not os.path.exists(source_dir):
                         logging.info(
-                            "Data not downloaded, because it probably already exists on your computer. "
-                            + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
+                            "Data not downloaded, because it probably already exists on your"
+                            " computer. "
+                            + "Run .validate() to check, or rerun with force_overwrite=True to"
+                            " delete any "
                             + "existing files and download from scratch"
                         )
                         return
@@ -178,6 +180,14 @@ def download_from_remote(remote, save_dir, force_overwrite):
         str: Full path of the created file.
 
     """
+    file_uri = parse_uri(save_dir)
+    if file_uri.scheme != "file":
+        raise NotImplementedError(
+            "mirdata only supports downloading to a local filesystem. "
+            "To use mirdata with a remote filesystem, download to a local filesytem, "
+            "and transfer the data to your remote filesystem, setting data_home appropriately."
+        )
+
     if remote.destination_dir is None:
         download_dir = save_dir
     else:
@@ -194,9 +204,7 @@ def download_from_remote(remote, save_dir, force_overwrite):
             os.remove(download_path)
 
         # If file doesn't exist or we want to overwrite, download it
-        with DownloadProgressBar(
-            unit="B", unit_scale=True, unit_divisor=1024, miniters=1
-        ) as t:
+        with DownloadProgressBar(unit="B", unit_scale=True, unit_divisor=1024, miniters=1) as t:
             try:
                 urllib.request.urlretrieve(
                     remote.url,
@@ -271,9 +279,9 @@ def extractall_unicode(zfile, out_dir):
         # if block to deal with irmas and good-sounds archives
         # check if the zip archive does not have the encoding info set
         # encode-decode filename only if it's different than the original name
-        if (m.flag_bits & ZIP_FILENAME_UTF8_FLAG == 0) and filename.encode(
-            "cp437"
-        ).decode(errors="ignore") != filename:
+        if (m.flag_bits & ZIP_FILENAME_UTF8_FLAG == 0) and filename.encode("cp437").decode(
+            errors="ignore"
+        ) != filename:
             filename_bytes = filename.encode("cp437")
             guessed_encoding = chardet.detect(filename_bytes)["encoding"] or "utf8"
             filename = filename_bytes.decode(guessed_encoding, "replace")

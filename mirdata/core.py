@@ -6,8 +6,8 @@ import random
 import types
 from typing import Any, List, Optional
 
-
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
 from mirdata import validate
@@ -174,14 +174,16 @@ class Dataset(object):
 
     @cached_property
     def _index(self):
-        if not os.path.exists(self.index_path) and self._index_data.remote:
-            raise FileNotFoundError("Dataset index not found. Did you run .download()?")
-        elif not os.path.exists(self.index_path):
-            raise IOError(
-                "Dataset index was expected to be availale locally, but not found."
-            )
-        with open(self.index_path) as fhandle:
-            index = json.load(fhandle)
+        try:
+            with open(self.index_path) as fhandle:
+                index = json.load(fhandle)
+        except IOError:
+            if self._index_data.remote:
+                raise FileNotFoundError(
+                    "This dataset's index must be downloaded. Did you run .download()?"
+                )
+            raise IOError("Dataset index was expected to be packaged with mirdata, but not found.")
+
         return index
 
     @cached_property
@@ -405,9 +407,7 @@ class Track(object):
 
         """
         if track_id not in index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track_id in {}".format(track_id, dataset_name)
-            )
+            raise ValueError("{} is not a valid track_id in {}".format(track_id, dataset_name))
 
         self.track_id = track_id
         self._dataset_name = dataset_name
@@ -427,9 +427,7 @@ class Track(object):
 
     def __repr__(self):
         properties = [v for v in dir(self.__class__) if not v.startswith("_")]
-        attributes = [
-            v for v in dir(self) if not v.startswith("_") and v not in properties
-        ]
+        attributes = [v for v in dir(self) if not v.startswith("_") and v not in properties]
 
         repr_str = "Track(\n"
 
@@ -513,9 +511,7 @@ class MultiTrack(Track):
 
         """
         if mtrack_id not in index["multitracks"]:
-            raise ValueError(
-                "{} is not a valid mtrack_id in {}".format(mtrack_id, dataset_name)
-            )
+            raise ValueError("{} is not a valid mtrack_id in {}".format(mtrack_id, dataset_name))
 
         self.mtrack_id = mtrack_id
         self._dataset_name = dataset_name
@@ -601,18 +597,15 @@ class MultiTrack(Track):
 
         if len(set(sample_rates)) > 1:
             raise ValueError(
-                "Sample rates for tracks {} are not equal: {}".format(
-                    track_keys, sample_rates
-                )
+                "Sample rates for tracks {} are not equal: {}".format(track_keys, sample_rates)
             )
 
         max_length = np.max(lengths)
         if any([l != max_length for l in lengths]):
             if enforce_length:
                 raise ValueError(
-                    "Track's {} audio are not the same length {}. Use enforce_length=False to pad with zeros.".format(
-                        track_keys, lengths
-                    )
+                    "Track's {} audio are not the same length {}. Use enforce_length=False to pad"
+                    " with zeros.".format(track_keys, lengths)
                 )
             else:
                 # pad signals to the max length
@@ -703,9 +696,7 @@ class Index(object):
                 destination_dir="mirdata_indexes",
             )
         elif url or checksum:
-            raise ValueError(
-                "Remote indexes must have both a url and a checksum specified."
-            )
+            raise ValueError("Remote indexes must have both a url and a checksum specified.")
         else:
             self.remote = None
 

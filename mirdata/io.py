@@ -4,6 +4,7 @@ from typing import BinaryIO, Callable, List, Optional, TextIO, TypeVar, Union
 
 import numpy as np
 import pretty_midi
+from smart_open import open
 
 from mirdata import annotations
 
@@ -175,14 +176,9 @@ def load_multif0_from_midi(
 
         # look up any pitch bend information
         do_pb = pitch_bend and len(instrument.pitch_bends) > 0
-        pb_idx = (
-            [_to_idx(p.time, time_hop) for p in instrument.pitch_bends] if do_pb else []
-        )
+        pb_idx = [_to_idx(p.time, time_hop) for p in instrument.pitch_bends] if do_pb else []
         pb_shifts = (
-            [
-                pretty_midi.utilities.pitch_bend_to_semitones(p.pitch)
-                for p in instrument.pitch_bends
-            ]
+            [pretty_midi.utilities.pitch_bend_to_semitones(p.pitch) for p in instrument.pitch_bends]
             if do_pb
             else []
         )
@@ -197,6 +193,4 @@ def load_multif0_from_midi(
     if not has_data:
         return None
 
-    return annotations.MultiF0Data(
-        times, "s", freqs_list, "midi", confidence, "velocity"
-    )
+    return annotations.MultiF0Data(times, "s", freqs_list, "midi", confidence, "velocity")
