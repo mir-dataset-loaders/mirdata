@@ -229,8 +229,8 @@ def load_melody3(fhandle: TextIO) -> annotations.MultiF0Data:
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs_list.append([float(v) for v in line[1:]])
-        conf_list.append([float(float(v) > 0) for v in line[1:]])
+        freqs_list.append([float(v) for v in line[1:] if float(v) != 0])
+        conf_list.append([1.0 for v in line[1:] if float(v) != 0])
 
     times = np.array(times)  # type: ignore
     melody_data = annotations.MultiF0Data(

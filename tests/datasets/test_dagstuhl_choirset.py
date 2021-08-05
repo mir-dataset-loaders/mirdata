@@ -69,6 +69,14 @@ def test_audio_track():
     assert track.audio_hsm is None
 
 
+def test_mtrack_no_notes():
+    default_mtrackid = "DCS_SE_Basses_Tuning01"
+    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
+    dataset = dagstuhl_choirset.Dataset(data_home)
+    mtrack = dataset.multitrack(default_mtrackid)
+    assert mtrack.notes is None
+
+
 def test_load_f0():
     f0_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv"
     f0 = dagstuhl_choirset.load_f0(f0_path)
@@ -88,7 +96,7 @@ def test_load_f0():
         ),
     )
     assert np.array_equal(
-        f0.confidence,
+        f0._confidence,
         np.array(
             [
                 0.050135254859924316,
@@ -143,7 +151,7 @@ def test_load_score():
     )
 
     assert np.allclose(
-        score.notes,
+        score.pitches,
         np.array(
             [130.81278265, 130.81278265, 130.81278265, 130.81278265, 130.81278265]
         ),
@@ -238,6 +246,8 @@ def test_multitrack():
         "tracks": dict,
         "track_audio_property": str,
         "beat": annotations.BeatData,
+        "notes": annotations.NoteData,
+        "multif0": annotations.MultiF0Data,
         "audio_stm": tuple,
         "audio_str": tuple,
         "audio_stl": tuple,
