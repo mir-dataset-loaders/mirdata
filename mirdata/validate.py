@@ -51,7 +51,8 @@ def validate(local_path, checksum):
     """
     # validate that the file exists on disk
     try:
-        open(local_path)
+        with open(local_path):
+            pass
     except IOError:
         return False, False
 

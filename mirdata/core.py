@@ -183,7 +183,8 @@ class Dataset(object):
                     "This dataset's index must be downloaded. Did you run .download()?"
                 )
             raise IOError(
-                "Dataset index was expected to be packaged with mirdata, but not found."
+                f"Dataset index for {self.name} was expected "
+                + "to be packaged with mirdata, but not found."
             )
 
         return index
