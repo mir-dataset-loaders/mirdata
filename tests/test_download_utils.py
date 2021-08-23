@@ -42,14 +42,14 @@ def test_downloader(mocker, mock_path):
     )
 
     zip_remote = download_utils.RemoteFileMetadata(
-        filename="remote.zip", url="a", checksum=("1234")
+        filename="remote.zip", url="a", checksum="1234"
     )
     tar_remote = download_utils.RemoteFileMetadata(
-        filename="remote.tar.gz", url="a", checksum=("1234")
+        filename="remote.tar.gz", url="a", checksum="1234"
     )
 
     file_remote = download_utils.RemoteFileMetadata(
-        filename="remote.txt", url="a", checksum=("1234")
+        filename="remote.txt", url="a", checksum="1234"
     )
     index = core.Index("asdf.json")
 
@@ -160,10 +160,10 @@ def test_download_index_cases(mocker, mock_path):
     )
 
     zip_remote = download_utils.RemoteFileMetadata(
-        filename="remote.zip", url="a", checksum=("1234")
+        filename="remote.zip", url="a", checksum="1234"
     )
     file_remote = download_utils.RemoteFileMetadata(
-        filename="remote.txt", url="a", checksum=("1234")
+        filename="remote.txt", url="a", checksum="1234"
     )
     index = core.Index("asdf.json")
     index_partial = core.Index("asdf.json", partial_download=["b"])
@@ -237,7 +237,7 @@ def test_downloader_with_server_file(httpserver):
     TEST_REMOTE = download_utils.RemoteFileMetadata(
         filename="remote.wav",
         url=httpserver.url,
-        checksum=("3f77d0d69dc41b3696f074ad6bf2852f"),
+        checksum="3f77d0d69dc41b3696f074ad6bf2852f",
     )
 
     save_dir = "tests/resources/tmp_download_test"
@@ -271,7 +271,7 @@ def test_downloader_with_server_zip(httpserver):
     TEST_REMOTE = download_utils.RemoteFileMetadata(
         filename="remote.zip",
         url=httpserver.url,
-        checksum=("7a31ccfa28bfa3fb112d16c96e9d9a89"),
+        checksum="7a31ccfa28bfa3fb112d16c96e9d9a89",
     )
 
     save_dir = "tests/resources/_tmp_test_download_utils"
@@ -314,7 +314,7 @@ def test_downloader_with_server_tar(httpserver):
     TEST_REMOTE = download_utils.RemoteFileMetadata(
         filename="remote.tar.gz",
         url=httpserver.url,
-        checksum=("9042f5eebdcd0b94aa7a3c9bf12dc51d"),
+        checksum="9042f5eebdcd0b94aa7a3c9bf12dc51d",
     )
 
     save_dir = "tests/resources/_tmp_test_download_utils"
@@ -347,7 +347,7 @@ def test_download_from_remote(httpserver, tmpdir):
     TEST_REMOTE = download_utils.RemoteFileMetadata(
         filename="remote.wav",
         url=httpserver.url,
-        checksum=("3f77d0d69dc41b3696f074ad6bf2852f"),
+        checksum="3f77d0d69dc41b3696f074ad6bf2852f",
     )
 
     download_path = download_utils.download_from_remote(TEST_REMOTE, str(tmpdir), False)
@@ -359,7 +359,7 @@ def test_download_from_remote_destdir(httpserver, tmpdir):
     TEST_REMOTE = download_utils.RemoteFileMetadata(
         filename="remote.wav",
         url=httpserver.url,
-        checksum=("3f77d0d69dc41b3696f074ad6bf2852f"),
+        checksum="3f77d0d69dc41b3696f074ad6bf2852f",
         destination_dir="subfolder",
     )
 
@@ -374,11 +374,24 @@ def test_download_from_remote_raises_IOError(httpserver, tmpdir):
     TEST_REMOTE = download_utils.RemoteFileMetadata(
         filename="remote.wav",
         url=httpserver.url,
-        checksum=("1234"),
+        checksum="1234",
     )
 
     with pytest.raises(IOError):
         download_utils.download_from_remote(TEST_REMOTE, str(tmpdir), False)
+
+
+def test_download_from_remote_raises_NotImplementedError(httpserver, tmpdir):
+    httpserver.serve_content("File not found!", 404)
+
+    TEST_REMOTE = download_utils.RemoteFileMetadata(
+        filename="remote.wav",
+        url=httpserver.url,
+        checksum="1234",
+    )
+
+    with pytest.raises(NotImplementedError):
+        download_utils.download_from_remote(TEST_REMOTE, "gs://asdf/asdf/asdf", False)
 
 
 def test_unzip():

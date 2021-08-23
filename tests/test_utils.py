@@ -91,7 +91,8 @@ def mock_validate_index(mocker):
     return mocker.patch.object(validate, "validate_index")
 
 
-# TODO: rewrite this!
+# TODO: rewrite this - we used to patch the built in open
+# now we need to patch smart_open
 # def test_md5(mocker):
 #     audio_file = b"audio1234"
 
