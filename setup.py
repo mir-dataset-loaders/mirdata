@@ -54,6 +54,7 @@ if __name__ == "__main__":
                 "coveralls>=1.7.0",
                 "types-PyYAML",
                 "types-chardet",
+                "smart_open[all] >= 5.0.0",
             ],
             "docs": [
                 "numpydoc",
