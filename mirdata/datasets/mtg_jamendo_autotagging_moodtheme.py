@@ -285,7 +285,7 @@ class Dataset(core.Dataset):
                     )
                 )
                 split["test"] = [m["TRACK_ID"] for m in d[1:]]
-            splits.append(split)
+            splits[split_number] = split
         return {"metadata": meta, "splits": splits}
 
     @core.copy_docs(load_audio)
