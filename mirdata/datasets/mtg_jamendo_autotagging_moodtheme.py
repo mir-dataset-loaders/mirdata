@@ -292,7 +292,7 @@ class Dataset(core.Dataset):
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    def split_load_tracks(self, num):
+    def get_track_ids_for_split(self, split_number):
         """Load a MTG_jamendo_autotagging_moodtheme pre-defined split. There are five different train/validation/tests splits.
         Args:
              num (int): split to be retrieved from 0 to 4
