@@ -132,7 +132,7 @@ class Track(core.Track):
 
     @core.cached_property
     def artist_id(self) -> str:
-        return self._metadata()["metadata"][self.track_id]["ARTIST_ID"]
+        return self._track_metadata.get("ARTIST_ID")
 
     @core.cached_property
     def album_id(self) -> str:
