@@ -416,7 +416,7 @@ class Track(object):
         self._track_paths = index["tracks"][track_id]
         self._metadata = metadata
 
-    @property
+    @cached_property
     def _track_metadata(self):
         metadata = self._metadata()
         if metadata and self.track_id in metadata:
@@ -541,7 +541,7 @@ class MultiTrack(Track):
     def track_audio_property(self):
         raise NotImplementedError("Mixing is not supported for this dataset")
 
-    @property
+    @cached_property
     def _multitrack_metadata(self):
         metadata = self._metadata()
         if metadata and self.mtrack_id in metadata:

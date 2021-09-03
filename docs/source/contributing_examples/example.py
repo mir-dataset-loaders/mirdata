@@ -134,7 +134,6 @@ class Track(core.Track):
     # -- series data loaded from a file a cached property
     @core.cached_property
     def annotation(self) -> Optional[annotations.EventData]:
-        """output type: description of output"""
         return load_annotation(self.annotation_path)
 
     # -- `audio` will behave like an attribute, but it will only be loaded
@@ -142,7 +141,13 @@ class Track(core.Track):
     # -- any memory heavy information (like audio) properties
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     # -- we use the to_jams function to convert all the annotations in the JAMS format.
@@ -172,7 +177,7 @@ class MultiTrack(core.MultiTrack):
     Attributes:
         mtrack_id (str): track id
         tracks (dict): {track_id: Track}
-        track_audio_attribute (str): the name of the attribute of Track which
+        track_audio_property (str): the name of the attribute of Track which
             returns the audio to be mixed
         # -- Add any of the dataset specific attributes here
 
@@ -180,17 +185,35 @@ class MultiTrack(core.MultiTrack):
         annotation (EventData): a description of this annotation
 
     """
-    def __init__(self, mtrack_id, data_home):
-        self.mtrack_id = mtrack_id
-        self._data_home = data_home
-        # these three attributes below must have exactly these names
-        self.track_ids = [...] # define which track_ids should be part of the multitrack
-        self.tracks = {t: Track(t, self._data_home) for t in self.track_ids}
-        self.track_audio_property = "audio" # the property of Track which returns the relevant audio file for mixing
+    def __init__(
+        self, mtrack_id, data_home, dataset_name, index, track_class, metadata
+    ):
+        # -- this sets the following attributes:
+        # -- * mtrack_id
+        # -- * _dataset_name
+        # -- * _data_home
+        # -- * _multitrack_paths
+        # -- * _metadata
+        # -- * _track_class
+        # -- * _index
+        # -- * track_ids
+        super().__init__(
+            mtrack_id=mtrack_id,
+            data_home=data_home,
+            dataset_name=dataset_name,
+            index=index,
+            track_class=track_class,
+            metadata=metadata,
+        )
 
         # -- optionally add any multitrack specific attributes here
         self.mix_path = ...  # this can be called whatever makes sense for the datasets
         self.annotation_path = ...
+
+    # If you want to support multitrack mixing in this dataset, set this property
+    @property
+    def track_audio_property(self):
+        return "audio"  # the attribute of Track, e.g. Track.audio, which returns the audio to mix
 
     # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
@@ -200,7 +223,13 @@ class MultiTrack(core.MultiTrack):
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
 
     # -- multitrack classes are themselves Tracks, and also need a to_jams method

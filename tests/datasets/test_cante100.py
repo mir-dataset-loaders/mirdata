@@ -142,7 +142,7 @@ def test_load_notes():
     # check types
     assert type(notes_data) == annotations.NoteData
     assert type(notes_data.intervals) is np.ndarray
-    assert type(notes_data.notes) is np.ndarray
+    assert type(notes_data.pitches) is np.ndarray
     assert type(notes_data.confidence) is np.ndarray
 
     # check values
@@ -164,7 +164,7 @@ def test_load_notes():
         ),
     )
     assert np.array_equal(
-        notes_data.notes,
+        notes_data.pitches,
         np.array(
             [
                 207.65234878997256,

@@ -97,13 +97,13 @@ def test_load_melody():
     assert type(f0_data_corrected.times) is np.ndarray
     assert type(f0_data_corrected.frequencies) is np.ndarray
     assert type(f0_data_corrected.voicing) is np.ndarray
-    assert type(f0_data_corrected.confidence) is np.ndarray
+    assert type(f0_data_corrected._confidence) is np.ndarray
 
     assert type(f0_data_automatic) == annotations.F0Data
     assert type(f0_data_automatic.times) is np.ndarray
     assert type(f0_data_automatic.frequencies) is np.ndarray
     assert type(f0_data_corrected.voicing) is np.ndarray
-    assert type(f0_data_automatic.confidence) is np.ndarray
+    assert type(f0_data_automatic._confidence) is np.ndarray
 
     # check values
     assert np.array_equal(
@@ -118,7 +118,7 @@ def test_load_melody():
         np.array([0.0, 1.0, 1.0, 1.0]),
     )
     assert np.array_equal(
-        f0_data_corrected.confidence,
+        f0_data_corrected._confidence,
         np.array([3.090e-06, 0.00000286, 0.00000715, 0.00001545]),
     )
 
@@ -143,7 +143,7 @@ def test_load_melody():
         np.array([0.0, 0.0, 1.0, 1.0]),
     )
     assert np.array_equal(
-        f0_data_automatic.confidence,
+        f0_data_automatic._confidence,
         np.array([3.090e-06, 2.860e-06, 0.00000715, 0.00001545]),
     )
 
@@ -159,7 +159,7 @@ def test_load_notes():
     # check types
     assert type(notes_data) == annotations.NoteData
     assert type(notes_data.intervals) is np.ndarray
-    assert type(notes_data.notes) is np.ndarray
+    assert type(notes_data.pitches) is np.ndarray
     assert type(notes_data.confidence) is np.ndarray
     assert type(tuning_frequency) is float
 
@@ -174,7 +174,7 @@ def test_load_notes():
         notes_data.intervals[:, 1], np.array([0.65, 1.666667, 2.566666, 2.9])
     )
     assert np.array_equal(
-        notes_data.notes,
+        notes_data.pitches,
         np.array(
             [388.8382625732775, 411.9597888711769, 388.8382625732775, 411.9597888711769]
         ),
