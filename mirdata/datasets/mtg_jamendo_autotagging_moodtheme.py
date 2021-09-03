@@ -236,21 +236,9 @@ class Dataset(core.Dataset):
                 "autotagging_moodtheme-train.tsv",
             )
             with open(path_train, "r") as fhandle:
-                d = list(
-                    csv.DictReader(
-                        fhandle,
-                        delimiter="\t",
-                        fieldnames=[
-                            "TRACK_ID",
-                            "ARTIST_ID",
-                            "ALBUM_ID",
-                            "PATH",
-                            "DURATION",
-                            "TAGS",
-                        ],
-                    )
-                )
-                split["train"] = [m["TRACK_ID"] for m in d[1:]]
+                reader = csv.reader(fhandle, delimiter="\t")
+                track_uris = [line[0] for line in reader]
+                split["train"] = track_uris[1:]
             path_validation = os.path.join(
                 self.data_home,
                 "data",
