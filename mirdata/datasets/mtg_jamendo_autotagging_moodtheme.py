@@ -79,7 +79,6 @@ REMOTES = {
         filename="metadata.zip",
         url="https://zenodo.org/record/3826813/files/data.zip?download=1",
         checksum="039ce10f267f6e4e9f72837c76d72b2f",
-        destination_dir=".",
     )
 }
 
