@@ -243,7 +243,7 @@ class Dataset(core.Dataset):
                 self.data_home,
                 "data",
                 "splits",
-                "split-" + str(ii),
+                f"split-{split_number}",
                 "autotagging_moodtheme-validation.tsv",
             )
             with open(path_validation, "r") as fhandle:
@@ -266,7 +266,7 @@ class Dataset(core.Dataset):
                 self.data_home,
                 "data",
                 "splits",
-                "split-" + str(ii),
+                f"split-{split_number}",
                 "autotagging_moodtheme-test.tsv",
             )
             with open(path_test, "r") as fhandle:
@@ -296,12 +296,12 @@ class Dataset(core.Dataset):
     def get_track_ids_for_split(self, split_number):
         """Load a MTG_jamendo_autotagging_moodtheme pre-defined split. There are five different train/validation/tests splits.
         Args:
-             num (int): split to be retrieved from 0 to 4
+             split_number (int): split to be retrieved from 0 to 4
         Returns:
             * dict: {"train": [...], "validation": [...], "test": [...]} - the train split
 
         """
-        if not (0 <= num <= 4):
+        if not (0 <= split_number <= 4):
             raise Exception("Splits avaiables from num 0 to 4")
 
-    return self._metadata["splits"][split_number]
+        return self._metadata["splits"][split_number]
