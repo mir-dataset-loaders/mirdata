@@ -226,7 +226,7 @@ class Dataset(core.Dataset):
             }
 
         splits = []
-        for ii in range(5):
+        for split_number in range(5):
             split = {}
             path_train = os.path.join(
                 self.data_home,
