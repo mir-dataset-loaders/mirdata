@@ -200,29 +200,18 @@ class Dataset(core.Dataset):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         with open(meta_path, "r") as fhandle:
-            d = list(
-                csv.DictReader(
-                    fhandle,
-                    delimiter="\t",
-                    fieldnames=[
-                        "TRACK_ID",
-                        "ARTIST_ID",
-                        "ALBUM_ID",
-                        "PATH",
-                        "DURATION",
-                        "TAGS",
-                    ],
-                )
-            )
-            meta = {
-                m["TRACK_ID"]: {
-                    "ARTIST_ID": m["ARTIST_ID"],
-                    "ALBUM_ID": m["ALBUM_ID"],
-                    "PATH": m["PATH"],
-                    "DURATION": m["DURATION"],
-                    "TAGS": m["TAGS"],
-                }
-                for m in d[1:]
+            reader = csv.reader(fhandle, delimiter="\t")
+            # columns are track_id, artist_id, album_id, path, duration, tags
+            track_metadata = {
+                line[0]: {
+                    "ARTIST_ID": line[1],
+                    "ALBUM_ID": line[2],
+                    "PATH": line[3],
+                    "DURATION": line[4],
+                    "TAGS": line[5]
+                } 
+                for line in reader
+                if line[0] != "TRACK_ID"  # skip first line of csv file
             }
 
         splits = []
