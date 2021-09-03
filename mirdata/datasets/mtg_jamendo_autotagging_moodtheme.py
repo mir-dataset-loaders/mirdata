@@ -297,31 +297,10 @@ class Dataset(core.Dataset):
         Args:
              num (int): split to be retrieved from 0 to 4
         Returns:
-            * dict: {`track_id`: track data} - the train split
-            * dict: {`track_id`: track data} - the validation split
-            * dict: {`track_id`: track data} - the test split
+            * dict: {"train": [...], "validation": [...], "test": [...]} - the train split
 
         """
         if not (0 <= num <= 4):
             raise Exception("Splits avaiables from num 0 to 4")
 
-        meta = self._metadata
-        train_tracks = {
-            k: v
-            for k, v in self._index["tracks"].items()
-            if k in meta["splits"][num]["train"]
-        }
-
-        validation_tracks = {
-            k: v
-            for k, v in self._index["tracks"].items()
-            if k in meta["splits"][num]["validation"]
-        }
-
-        test_tracks = {
-            k: v
-            for k, v in self._index["tracks"].items()
-            if k in meta["splits"][num]["test"]
-        }
-
-        return train_tracks, validation_tracks, test_tracks
+    return self._metadata["splits"][split_number]
