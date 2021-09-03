@@ -232,7 +232,7 @@ class Dataset(core.Dataset):
                 self.data_home,
                 "data",
                 "splits",
-                "split-" + str(ii),
+                f"split-{split_number}",
                 "autotagging_moodtheme-train.tsv",
             )
             with open(path_train, "r") as fhandle:
