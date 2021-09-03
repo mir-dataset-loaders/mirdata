@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""MTG_jamendo_autotagging_moodtheme Dataset Loader
+"""MTG jamendo autotagging moodtheme Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
@@ -7,7 +7,7 @@
     The MTG Jamendo autotagging mood/theme Dataset is a new open dataset for music auto-tagging. It
     is built using music available at Jamendo under Creative Commons licenses and tags provided by content uploaders. The
     dataset contains 18,486 full audio tracks with 195 tags from mood/theme. It is provided
-    five fixed data splits for a better and fair replication.
+    five fixed data splits for a better and fair replication. For more information please visit: https://github.com/MTG/mtg-jamendo-dataset .
 
     The moodtheme tags are:
 
@@ -21,7 +21,8 @@
     recommendation systems.
 
     This task involves the prediction of moods and themes conveyed by a music track, given the raw audio. The examples
-    of moods and themes are: happy, dark, epic, melodic, love, film, space etc. Each track is tagged with at least one
+    of moods and themes are: happy, dark, epic, melodic, love, film, space etc. The full list is available at:
+    https://github.com/mir-dataset-loaders/mirdata/pull/505 Each track is tagged with at least one
     tag that serves as a ground-truth.
 
     Acknowledgments
@@ -84,7 +85,7 @@ REMOTES = {
 
 
 class Track(core.Track):
-    """MTG_jamendo_autotagging_moodtheme Track class
+    """MTG jamendo autotagging moodtheme Track class
 
     Args:
         track_id (str): track id of the track (JAMENDO track id)
@@ -161,7 +162,7 @@ class Track(core.Track):
 
 
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load a MTG_jamendo_autotagging_moodtheme audio file.
+    """Load a MTG jamendo autotagging moodtheme audio file.
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to an audio file
@@ -177,7 +178,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The MTG_jamendo_autotagging_moodtheme dataset
+    The MTG jamendo autotagging moodtheme dataset
     """
 
     def __init__(self, data_home=None, version="default"):
@@ -208,8 +209,8 @@ class Dataset(core.Dataset):
                     "ALBUM_ID": line[2],
                     "PATH": line[3],
                     "DURATION": line[4],
-                    "TAGS": line[5]
-                } 
+                    "TAGS": line[5],
+                }
                 for line in reader
                 if line[0] != "TRACK_ID"  # skip first line of csv file
             }
@@ -260,7 +261,7 @@ class Dataset(core.Dataset):
         return load_audio(*args, **kwargs)
 
     def get_track_ids_for_split(self, split_number):
-        """Load a MTG_jamendo_autotagging_moodtheme pre-defined split. There are five different train/validation/tests splits.
+        """Load a MTG jamendo autotagging moodtheme pre-defined split. There are five different train/validation/tests splits.
         Args:
              split_number (int): split to be retrieved from 0 to 4
         Returns:
