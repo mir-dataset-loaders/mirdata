@@ -136,15 +136,15 @@ class Track(core.Track):
 
     @core.cached_property
     def album_id(self) -> str:
-        return self._metadata()["metadata"][self.track_id]["ALBUM_ID"]
+        return self._track_metadata.get("ALBUM_ID")
 
     @core.cached_property
     def duration(self) -> float:
-        return float(self._metadata()["metadata"][self.track_id]["DURATION"])
+        return float(self._track_metadata.get("DURATION"))
 
     @core.cached_property
     def tags(self) -> str:
-        return self._metadata()["metadata"][self.track_id]["TAGS"]
+        return self._track_metadata.get("TAGS")
 
     def to_jams(self):
         # Initialize top-level JAMS container
@@ -202,7 +202,7 @@ class Dataset(core.Dataset):
         with open(meta_path, "r") as fhandle:
             reader = csv.reader(fhandle, delimiter="\t")
             # columns are track_id, artist_id, album_id, path, duration, tags
-            track_metadata = {
+            meta = {
                 line[0]: {
                     "ARTIST_ID": line[1],
                     "ALBUM_ID": line[2],
@@ -214,7 +214,7 @@ class Dataset(core.Dataset):
                 if line[0] != "TRACK_ID"  # skip first line of csv file
             }
 
-        splits = []
+        splits = {}
         for split_number in range(5):
             split = {}
             path_train = os.path.join(
@@ -236,21 +236,9 @@ class Dataset(core.Dataset):
                 "autotagging_moodtheme-validation.tsv",
             )
             with open(path_validation, "r") as fhandle:
-                d = list(
-                    csv.DictReader(
-                        fhandle,
-                        delimiter="\t",
-                        fieldnames=[
-                            "TRACK_ID",
-                            "ARTIST_ID",
-                            "ALBUM_ID",
-                            "PATH",
-                            "DURATION",
-                            "TAGS",
-                        ],
-                    )
-                )
-                split["validation"] = [m["TRACK_ID"] for m in d[1:]]
+                reader = csv.reader(fhandle, delimiter="\t")
+                track_uris = [line[0] for line in reader]
+                split["validation"] = track_uris[1:]
             path_test = os.path.join(
                 self.data_home,
                 "data",
@@ -259,21 +247,10 @@ class Dataset(core.Dataset):
                 "autotagging_moodtheme-test.tsv",
             )
             with open(path_test, "r") as fhandle:
-                d = list(
-                    csv.DictReader(
-                        fhandle,
-                        delimiter="\t",
-                        fieldnames=[
-                            "TRACK_ID",
-                            "ARTIST_ID",
-                            "ALBUM_ID",
-                            "PATH",
-                            "DURATION",
-                            "TAGS",
-                        ],
-                    )
-                )
-                split["test"] = [m["TRACK_ID"] for m in d[1:]]
+                reader = csv.reader(fhandle, delimiter="\t")
+                track_uris = [line[0] for line in reader]
+                split["test"] = track_uris[1:]
+
             splits[split_number] = split
         meta["splits"] = splits
         return meta

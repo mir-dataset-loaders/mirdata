@@ -59,25 +59,25 @@ def test_to_jams():
     assert jam["sandbox"].tags == "mood/theme---background"
 
 
-def test_split_load_tracks():
+def test_get_track_ids_for_split():
     dataset = mtg_jamendo_autotagging_moodtheme.Dataset(
         "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
     )
-    assert len(dataset.split_load_tracks(0)[0].keys()) == 1
-    assert len(dataset.split_load_tracks(0)[1].keys()) == 1
-    assert len(dataset.split_load_tracks(0)[2].keys()) == 1
-    assert len(dataset.split_load_tracks(1)[0].keys()) == 1
-    assert len(dataset.split_load_tracks(1)[1].keys()) == 1
-    assert len(dataset.split_load_tracks(1)[2].keys()) == 1
-    assert len(dataset.split_load_tracks(2)[0].keys()) == 1
-    assert len(dataset.split_load_tracks(2)[1].keys()) == 1
-    assert len(dataset.split_load_tracks(2)[2].keys()) == 1
-    assert len(dataset.split_load_tracks(3)[0].keys()) == 1
-    assert len(dataset.split_load_tracks(3)[1].keys()) == 1
-    assert len(dataset.split_load_tracks(3)[2].keys()) == 1
-    assert len(dataset.split_load_tracks(4)[0].keys()) == 1
-    assert len(dataset.split_load_tracks(4)[1].keys()) == 1
-    assert len(dataset.split_load_tracks(4)[2].keys()) == 1
+    assert len(dataset.get_track_ids_for_split(0)['train']) == 1
+    assert len(dataset.get_track_ids_for_split(0)['validation']) == 1
+    assert len(dataset.get_track_ids_for_split(0)['test']) == 1
+    assert len(dataset.get_track_ids_for_split(1)['train']) == 1
+    assert len(dataset.get_track_ids_for_split(1)['validation']) == 1
+    assert len(dataset.get_track_ids_for_split(1)['test']) == 1
+    assert len(dataset.get_track_ids_for_split(2)['train']) == 1
+    assert len(dataset.get_track_ids_for_split(2)['validation']) == 1
+    assert len(dataset.get_track_ids_for_split(2)['test']) == 1
+    assert len(dataset.get_track_ids_for_split(3)['train']) == 1
+    assert len(dataset.get_track_ids_for_split(3)['validation']) == 1
+    assert len(dataset.get_track_ids_for_split(3)['test']) == 1
+    assert len(dataset.get_track_ids_for_split(4)['train']) == 1
+    assert len(dataset.get_track_ids_for_split(4)['validation']) == 1
+    assert len(dataset.get_track_ids_for_split(4)['test']) == 1
 
     with pytest.raises(Exception):
-        dataset.split_load_tracks(-1)
+        dataset.get_track_ids_for_split(-1)
