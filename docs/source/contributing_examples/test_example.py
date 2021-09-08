@@ -1,4 +1,7 @@
+"""Tests for example dataset
+"""
 import numpy as np
+import pytest
 
 from mirdata import annotations
 from mirdata.datasets import example

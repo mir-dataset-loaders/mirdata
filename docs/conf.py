@@ -42,6 +42,7 @@ autodoc_mock_imports = [
     "DALI",
     "music21",
     "deepdish",
+    "yaml",
     "scipy",
 ]
 
