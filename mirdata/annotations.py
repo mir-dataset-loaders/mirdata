@@ -659,15 +659,20 @@ class MultiF0Data(Annotation):
 
         """
         multif0dat = self.resample(time_scale, time_scale_unit)
-        frequencies = convert_pitch_units(
-            multif0dat.frequency_list, self.frequency_unit, frequency_scale_unit
-        )
         time_indexes = np.arange(len(time_scale))
 
-        time_indexes_flattened = np.array(
-            [t for (t, f_list) in zip(time_indexes, frequencies) for f in f_list]
+        frequencies_flattened = convert_pitch_units(
+            np.array([f for f_list in multif0dat.frequency_list for f in f_list]),
+            self.frequency_unit,
+            frequency_scale_unit,
         )
-        frequencies_flattened = np.array([f for f_list in frequencies for f in f_list])
+        time_indexes_flattened = np.array(
+            [
+                t
+                for (t, f_list) in zip(time_indexes, multif0dat.frequency_list)
+                for f in f_list
+            ]
+        )
         if multif0dat.confidence_list is None:
             confidence_flattened = np.ones((len(time_indexes_flattened),))
             conf_unit = "binary"

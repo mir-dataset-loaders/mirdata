@@ -1,0 +1,3522 @@
+{
+  "version": "baby",
+  "tracks": {
+    "Track00001-S00": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S00.wav",
+        "ea0e7b3d996bb3fedfbf9ee43b5c414f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S00.mid",
+        "68f9d227a4fd70acdcd80a5bd3b69e22"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00001-S01": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S01.wav",
+        "9e1ff049ce7dbb270efcde28c9392206"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S01.mid",
+        "4f7d02354ff2ff7711bfc239e51ac8ee"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00001-S02": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S02.wav",
+        "d984056672df94e1d046197c41456fe9"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S02.mid",
+        "ebc174f4f8a1c89c2a8c9ef8b9d9e3ae"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00001-S03": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S03.wav",
+        "98002d3f0cb3ce9ff59660efb8cc6f3f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S03.mid",
+        "4bf9331befcaa0dbb02322b9426130dd"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00001-S04": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S04.wav",
+        "8b190fb8f3774a4891cf6eeec899f2cb"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S04.mid",
+        "31c56abf0d23cf683f09eb69bbe0b9ea"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00001-S05": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S05.wav",
+        "ba3991d7b6942c6394dbec55b968d63c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S05.mid",
+        "c40df0d092b1eb74d4c6279ef141c6be"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00001-S07": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S07.wav",
+        "ca42e108b41daa41b2d932cdbbef3610"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S07.mid",
+        "106324b42720dbd5cab2f32abb1d2c43"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00001-S08": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S08.wav",
+        "4fc975306fad94c9e437e7f7696ebb73"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S08.mid",
+        "a9b3fc23e3237e2244217f2188c8efb7"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00001-S09": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S09.wav",
+        "6486d4a8a9c0487f5b597b354c08395e"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S09.mid",
+        "9acde011a3d1a48c4fd6b4c9d838bc63"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00001-S10": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S10.wav",
+        "82edec3c2231f233cc477f94287f55a8"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S10.mid",
+        "e97c2639abc3ef34fe18b3f979a3ca70"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00002-S00": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S00.wav",
+        "ec5118547a00c9d0adc00e22c21206b0"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S00.mid",
+        "3b75d972fa29f1f9d5fd00a71ebbc6a6"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00002-S01": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S01.wav",
+        "cc7bbd3e2aa1b105e3338d99dd769d90"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S01.mid",
+        "b89e2e63702874ca425d8a47dc3f5d33"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00002-S02": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S02.wav",
+        "738e3a903d427f71d25e806603806a90"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S02.mid",
+        "f5e453f8e765594d222e2b1467898f6a"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00002-S03": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S03.wav",
+        "546945ee806b1e813129f892133a5e5a"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S03.mid",
+        "ed6402e973dfa4dd2ebac91311da1a0c"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00002-S04": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S04.wav",
+        "ad1403bc689a7024a331dd46e2d27cf8"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S04.mid",
+        "a07b968ec371d2ec53523058cb130ed4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00002-S05": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S05.wav",
+        "7f15567923d911fecded23c4dfbad843"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S05.mid",
+        "88c43f6e1c12e2b1115e14f16ac46812"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00002-S06": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S06.wav",
+        "9e673c53eef9dbc0ca7a9499ca181f3f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S06.mid",
+        "1208084144f416c94b3a9b3fde01d0da"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00002-S07": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S07.wav",
+        "294d4f8ebe6280ed1369cd88351eef71"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S07.mid",
+        "0c34ac525ed1f294a373ab9f0843db8f"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00002-S08": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S08.wav",
+        "8c0a17fe37ea486d59d39ad772cc5515"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S08.mid",
+        "2eab0c05cf6b93d90b6c7c4907e09d18"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00002-S09": {
+      "audio": [
+        "babyslakh_16k/Track00002/stems/S09.wav",
+        "4ae725b88c55c38fd6a4105967d5f812"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/MIDI/S09.mid",
+        "afd00785fdc5f6ac5cdb4e33bbf53bc6"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00003-S00": {
+      "audio": [
+        "babyslakh_16k/Track00003/stems/S00.wav",
+        "3ff24d0a22eb14ee614f17c0a9d3bf1c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00003/MIDI/S00.mid",
+        "3f83b51acb1e3a605d3bda071ab80769"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00003/metadata.yaml",
+        "a895939a878acd0437e2f03a43e14766"
+      ]
+    },
+    "Track00003-S01": {
+      "audio": [
+        "babyslakh_16k/Track00003/stems/S01.wav",
+        "a317977eca9583e14ddaa9202154fb8c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00003/MIDI/S01.mid",
+        "0c9a60350b992c74e730de46de2644e3"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00003/metadata.yaml",
+        "a895939a878acd0437e2f03a43e14766"
+      ]
+    },
+    "Track00003-S02": {
+      "audio": [
+        "babyslakh_16k/Track00003/stems/S02.wav",
+        "77fc102ca178d11f01874eed8148f6e8"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00003/MIDI/S02.mid",
+        "8528aac32dd6ab88566a8efad7fa3c46"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00003/metadata.yaml",
+        "a895939a878acd0437e2f03a43e14766"
+      ]
+    },
+    "Track00003-S03": {
+      "audio": [
+        "babyslakh_16k/Track00003/stems/S03.wav",
+        "0a9c5cc5f03dd3ab9872a3514f965063"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00003/MIDI/S03.mid",
+        "adcdea1e470ac03e9dd3b54066bd2464"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00003/metadata.yaml",
+        "a895939a878acd0437e2f03a43e14766"
+      ]
+    },
+    "Track00003-S04": {
+      "audio": [
+        "babyslakh_16k/Track00003/stems/S04.wav",
+        "7006e0471bc9dcb4504d3c349bc2adb6"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00003/MIDI/S04.mid",
+        "248f68659f1548c71e74452aaecb6f24"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00003/metadata.yaml",
+        "a895939a878acd0437e2f03a43e14766"
+      ]
+    },
+    "Track00003-S06": {
+      "audio": [
+        "babyslakh_16k/Track00003/stems/S06.wav",
+        "6cded9f539a3fcc4c255bc7dd260e38a"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00003/MIDI/S06.mid",
+        "500485d83ce3faf2559ea037db122c57"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00003/metadata.yaml",
+        "a895939a878acd0437e2f03a43e14766"
+      ]
+    },
+    "Track00003-S07": {
+      "audio": [
+        "babyslakh_16k/Track00003/stems/S07.wav",
+        "8f5ad94fa666f9524f6650370d2e857e"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00003/MIDI/S07.mid",
+        "bf53c449d5c6512c4482df927a6fc243"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00003/metadata.yaml",
+        "a895939a878acd0437e2f03a43e14766"
+      ]
+    },
+    "Track00003-S08": {
+      "audio": [
+        "babyslakh_16k/Track00003/stems/S08.wav",
+        "5d8a187ae3d921bfde21f562f1923c52"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00003/MIDI/S08.mid",
+        "7952f4dc5000e98afbe2a068239fa0f8"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00003/metadata.yaml",
+        "a895939a878acd0437e2f03a43e14766"
+      ]
+    },
+    "Track00004-S00": {
+      "audio": [
+        "babyslakh_16k/Track00004/stems/S00.wav",
+        "ec176650307421d753fa741f00c82bbf"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/MIDI/S00.mid",
+        "bba83d10126fa3b2502bc43aefad12e2"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00004-S01": {
+      "audio": [
+        "babyslakh_16k/Track00004/stems/S01.wav",
+        "44f1433961268fbe38fa0de8fcb81bb7"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/MIDI/S01.mid",
+        "5d11f8e804867082f7df149f240fb51a"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00004-S02": {
+      "audio": [
+        "babyslakh_16k/Track00004/stems/S02.wav",
+        "951f4e2236c9081d2d35d4f068718f3f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/MIDI/S02.mid",
+        "7e2c7109e2f12754976c23da3b1b3350"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00004-S03": {
+      "audio": [
+        "babyslakh_16k/Track00004/stems/S03.wav",
+        "b60ed1c6747d112e4b09e3e8c0998abb"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/MIDI/S03.mid",
+        "596719bb19ed9ff6e127a4a82a4479b8"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00004-S04": {
+      "audio": [
+        "babyslakh_16k/Track00004/stems/S04.wav",
+        "cfb10b64ec472f942714859a1f75a6dc"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/MIDI/S04.mid",
+        "7741bde69c34493b389ba018e73a5728"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00004-S05": {
+      "audio": [
+        "babyslakh_16k/Track00004/stems/S05.wav",
+        "3d5e365dcda1ae9f2cfb45193cb00d0d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/MIDI/S05.mid",
+        "788c554b9c91a44a78e5fcb8104fdbed"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00004-S06": {
+      "audio": [
+        "babyslakh_16k/Track00004/stems/S06.wav",
+        "be8c2b796b604eab66d384edd75be347"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/MIDI/S06.mid",
+        "4146d2cb0c4bb9cddce7da87b8c773de"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00004-S07": {
+      "audio": [
+        "babyslakh_16k/Track00004/stems/S07.wav",
+        "9c8658008f19de107600d352ca2bbf88"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/MIDI/S07.mid",
+        "9075df1f4048172948002a031743859f"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00004-S08": {
+      "audio": [
+        "babyslakh_16k/Track00004/stems/S08.wav",
+        "7277ea6cfc8756973fd1f75579a58298"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/MIDI/S08.mid",
+        "6075faa3acd2d801ee76f9d00ed28df3"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00005-S00": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S00.wav",
+        "92223cc4386fc8a2f6eaf1e6f3bff64b"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S00.mid",
+        "27a786288a69090e7da22314f90b1f0e"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S01": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S01.wav",
+        "8e2dce9c05df44b2d320eb1f94806e8c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S01.mid",
+        "ef5004ba29b78472a3fb53adfa5f78bf"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S02": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S02.wav",
+        "e2379cfe20fd6132c5b9b3b94f16b23f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S02.mid",
+        "20fadde2e932ee29b2b67e6c72a92601"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S03": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S03.wav",
+        "12c1935b9516c5720ba750f66de869d0"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S03.mid",
+        "e731fb98b1a901ed2606ec2295ac6167"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S04": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S04.wav",
+        "435a9d9ec37607d0ad9671f6861ec1f4"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S04.mid",
+        "9682cf8dbaad649f75080d49b293a0fb"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S05": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S05.wav",
+        "c2e3c7dca631052a6d2bb04f7f1aec78"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S05.mid",
+        "1ba1cb2c5fd592b7167713c3fff27375"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S06": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S06.wav",
+        "7c66d215622effbb0ea72d25c2a819af"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S06.mid",
+        "195238fe370ae8416b9679ad44826b74"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S07": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S07.wav",
+        "c587f51ba4b89728d3fdda871f471d39"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S07.mid",
+        "286fa765a067c839a3ad9ba0ef00a263"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S08": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S08.wav",
+        "dde6da5944084463c8201421ecf4d2fa"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S08.mid",
+        "7cfe7da0ed7ccb9ca2cf65c6d9ec916d"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S10": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S10.wav",
+        "ca4a3da4612f8136661eab89f25ba550"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S10.mid",
+        "13db7c35b461b814edd64adc9a7d9d9e"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S11": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S11.wav",
+        "66a3d5d23034e5376a8e43a79d2223c8"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S11.mid",
+        "eed006c4ec0b863629a7cca61d573e95"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S12": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S12.wav",
+        "6b49d3d457d6aa90139d632369237f08"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S12.mid",
+        "b17be471ce86a3c34484c9d4431e1678"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00005-S13": {
+      "audio": [
+        "babyslakh_16k/Track00005/stems/S13.wav",
+        "6d6f4bd22d26b776bbd108a1ef47a097"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/MIDI/S13.mid",
+        "4262b5619c2108c0ccfde1291d6aa9a5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00006-S00": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S00.wav",
+        "b26aa5dfd8b6d1febca4a3fb4769401c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S00.mid",
+        "eacc99dd108b4838b9bff26f40aab99a"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S01": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S01.wav",
+        "8225479f041ed4c39b0fce680e0abe55"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S01.mid",
+        "a23e25c05511d4e43c9c475514c3e44a"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S02": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S02.wav",
+        "2c5efbd8a16c233a57a783caa72895ac"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S02.mid",
+        "28797eca16a5c907dafde1cbef11d070"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S03": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S03.wav",
+        "cbe28c167af81bd4a317db5ff868a0fc"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S03.mid",
+        "a1658ca20e9984cbf7a959531cc23bd4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S04": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S04.wav",
+        "282503e7196aae623a275fbcc749d9b3"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S04.mid",
+        "c3250c4a2e478b02446992d92e3b3ed4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S05": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S05.wav",
+        "fd46eb029572669246599b488340752d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S05.mid",
+        "4da1f5dffe12db02d4a3d7d34cadad52"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S06": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S06.wav",
+        "90e69043226ebf0512e7523c2913f78f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S06.mid",
+        "4d2ac4fceae9b40b6b9d9c57c652dc70"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S07": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S07.wav",
+        "75111552abbaac848b18f00e58b9268f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S07.mid",
+        "b1028e442f7df1468406b2b76491f907"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S08": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S08.wav",
+        "61d41135d753f02f084691be3f0c5545"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S08.mid",
+        "b10d456a5165034a78e01b47f1c177af"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S09": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S09.wav",
+        "73c7a469d5e684feaeae2ba2e3ff98f8"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S09.mid",
+        "fa23b09598fcf34506ebf029546dead3"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S10": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S10.wav",
+        "41ba89ad3c2686de77a2c811b8ca8385"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S10.mid",
+        "7f4106f02003fcbb43769dd536e66aee"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S11": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S11.wav",
+        "6803e547ba62ce7fdbda4ef1e1828715"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S11.mid",
+        "ab67b86b4f6be03eb0300e048dc1dcca"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S12": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S12.wav",
+        "66b7b75729a342e7b888cb9313c4ffed"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S12.mid",
+        "23a90eec00ed2ab6363f0173725b4321"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S13": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S13.wav",
+        "05c942e7d3486c29341d31ece71bf763"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S13.mid",
+        "c648c141e766125bd623eba625ae9de4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00006-S14": {
+      "audio": [
+        "babyslakh_16k/Track00006/stems/S14.wav",
+        "1dc8a68b69eaac7cb34e673dabfa0d38"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/MIDI/S14.mid",
+        "fb14b1aa025e974496e5414b330be44b"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00007-S00": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S00.wav",
+        "7855ada732006e202145b62a1b834fdc"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S00.mid",
+        "47a1483b4bbc39d6aee4b29dd8182167"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00007-S01": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S01.wav",
+        "5e43e270321c604fa01a7ff342ed5959"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S01.mid",
+        "c07c480e2814209c07c1ecce23e2ec3f"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00007-S02": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S02.wav",
+        "7fc368297c556446fbec59cedd8b5b70"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S02.mid",
+        "861f429754120aac9ec445d8930d723e"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00007-S03": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S03.wav",
+        "dd9dc5921c9945c0b480c29036db99b3"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S03.mid",
+        "0567d6e56bc2479a97fed4ff01cfa270"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00007-S04": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S04.wav",
+        "94e4e07f1fcd499a0d0765b041262410"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S04.mid",
+        "277933e5aab1573224bce3d2ceef6cff"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00007-S05": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S05.wav",
+        "a23d37d150a8a7abfb3012aad3e35f55"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S05.mid",
+        "164f4d1730436ad06b13f19b78337d84"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00007-S06": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S06.wav",
+        "040a3b289e6124ba8e374a93efda0981"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S06.mid",
+        "f253d6d48bf6609416e59910afc10642"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00007-S07": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S07.wav",
+        "385381ff0f3a845460f05593bf174f01"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S07.mid",
+        "bf2a27e1520d19f6c2f9d177ab8cc656"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00007-S08": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S08.wav",
+        "c27e29f646fb1ff9f37665a1ced96d01"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S08.mid",
+        "ba234a7104b7e9c8a8b2adaf1e91c068"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00007-S09": {
+      "audio": [
+        "babyslakh_16k/Track00007/stems/S09.wav",
+        "77dddb1e829cee1e0c68a82674f3f7f5"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/MIDI/S09.mid",
+        "250f3d1382d58878c0e3847e08187cd5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00008-S00": {
+      "audio": [
+        "babyslakh_16k/Track00008/stems/S00.wav",
+        "baffa7809cdf8de912cd5dded1c20f11"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00008/MIDI/S00.mid",
+        "590716eade0c31906632cdea60810d02"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00008/metadata.yaml",
+        "14fbde602f94a89b3c3513472f99ce22"
+      ]
+    },
+    "Track00008-S01": {
+      "audio": [
+        "babyslakh_16k/Track00008/stems/S01.wav",
+        "54af4e3d8561f4ad84ade87a5a7940cc"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00008/MIDI/S01.mid",
+        "db2ab815cf4202378882d6847155f0ba"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00008/metadata.yaml",
+        "14fbde602f94a89b3c3513472f99ce22"
+      ]
+    },
+    "Track00008-S02": {
+      "audio": [
+        "babyslakh_16k/Track00008/stems/S02.wav",
+        "b7154d83eb04b80a82b6c72c7fde8be5"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00008/MIDI/S02.mid",
+        "61e82d55486f20b36a20c968edf08d53"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00008/metadata.yaml",
+        "14fbde602f94a89b3c3513472f99ce22"
+      ]
+    },
+    "Track00008-S03": {
+      "audio": [
+        "babyslakh_16k/Track00008/stems/S03.wav",
+        "2a6a64c444ba6d087afcb06ce55da173"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00008/MIDI/S03.mid",
+        "5beb407aa12f04fbffc0e3aa4012b457"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00008/metadata.yaml",
+        "14fbde602f94a89b3c3513472f99ce22"
+      ]
+    },
+    "Track00008-S04": {
+      "audio": [
+        "babyslakh_16k/Track00008/stems/S04.wav",
+        "a320a3407f99c7debce87f7949938cee"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00008/MIDI/S04.mid",
+        "850be5b9b8cd0d352637a895d4cb3866"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00008/metadata.yaml",
+        "14fbde602f94a89b3c3513472f99ce22"
+      ]
+    },
+    "Track00008-S05": {
+      "audio": [
+        "babyslakh_16k/Track00008/stems/S05.wav",
+        "affcff3d51d16392e0ca5278e6ddc7b7"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00008/MIDI/S05.mid",
+        "b18794f23c9e3cbab32dcb3d592644a6"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00008/metadata.yaml",
+        "14fbde602f94a89b3c3513472f99ce22"
+      ]
+    },
+    "Track00008-S06": {
+      "audio": [
+        "babyslakh_16k/Track00008/stems/S06.wav",
+        "69e898961ae11104b7e7c4b651963759"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00008/MIDI/S06.mid",
+        "38f512157aa68fa53a6a8eb87391becb"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00008/metadata.yaml",
+        "14fbde602f94a89b3c3513472f99ce22"
+      ]
+    },
+    "Track00009-S00": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S00.wav",
+        "33e55b0ef49eccb9e75b672e5bd1b229"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S00.mid",
+        "40b870e9dd7fef91302d723e0b3ba78b"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S01": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S01.wav",
+        "9ace3cffb865016069dac94cf3398cf2"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S01.mid",
+        "c61d9c6fb37b919c9e061dd045774ecc"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S02": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S02.wav",
+        "f3e4b88c9af0a20fd93546660a8bcab2"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S02.mid",
+        "0871940bd53acc8fe8a331e498bc3ba5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S03": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S03.wav",
+        "07f43c0e66b58a29a766fed8daa6783d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S03.mid",
+        "472e9f1283deaeea8641bc5833722cef"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S04": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S04.wav",
+        "aa979def263396f5bc090988b845b9f3"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S04.mid",
+        "7114a357b727d4fcc0fbefed5d4feba6"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S05": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S05.wav",
+        "3fa1f0bd53b290b68ac1cbdee962d878"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S05.mid",
+        "7faa85dfe5cd051376afe8120f791860"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S06": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S06.wav",
+        "6744305704f587b0625e0ad6fe380137"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S06.mid",
+        "f9d79cc38e64f38b8f6d3cdea359c242"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S07": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S07.wav",
+        "f67932bf67704411d7b6b27f76b67ad1"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S07.mid",
+        "bc3b6edbe3e1d7849514a2195a8e7dd2"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S10": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S10.wav",
+        "430e5a2ba824d219f23cb0287c738791"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S10.mid",
+        "53025a3000c145a7c99d2ea3a9a52d5a"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S11": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S11.wav",
+        "e0d0eeb32112cce2702ef826a33d9604"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S11.mid",
+        "c9430b17da1b20388b31c3eb7314d017"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00009-S12": {
+      "audio": [
+        "babyslakh_16k/Track00009/stems/S12.wav",
+        "3ec6c1bbfe6f5b0344c63cc2e92934fd"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/MIDI/S12.mid",
+        "61372db1754541665adc13d4bbc96b7b"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00010-S00": {
+      "audio": [
+        "babyslakh_16k/Track00010/stems/S00.wav",
+        "283586ac802dbdad290548f9a0854c1f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00010/MIDI/S00.mid",
+        "b1f1131c20e2ea1c9191752305ae1102"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00010/metadata.yaml",
+        "d7d43ba43ff2e5ebeb44deb345d0aad7"
+      ]
+    },
+    "Track00010-S01": {
+      "audio": [
+        "babyslakh_16k/Track00010/stems/S01.wav",
+        "0046758c0f98b35db96c29f4a567e10c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00010/MIDI/S01.mid",
+        "f8f6aad753b9aac1294b932944bc1c4f"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00010/metadata.yaml",
+        "d7d43ba43ff2e5ebeb44deb345d0aad7"
+      ]
+    },
+    "Track00010-S02": {
+      "audio": [
+        "babyslakh_16k/Track00010/stems/S02.wav",
+        "266ea496d6c9c893ce6d4f47e24146bd"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00010/MIDI/S02.mid",
+        "5c3112d869fd8de8fcbe0949b61542eb"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00010/metadata.yaml",
+        "d7d43ba43ff2e5ebeb44deb345d0aad7"
+      ]
+    },
+    "Track00010-S03": {
+      "audio": [
+        "babyslakh_16k/Track00010/stems/S03.wav",
+        "40929adaadbf901b73d71574ab020c55"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00010/MIDI/S03.mid",
+        "9d6af85c810a6da2ee6b1f04c4bd2d67"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00010/metadata.yaml",
+        "d7d43ba43ff2e5ebeb44deb345d0aad7"
+      ]
+    },
+    "Track00010-S04": {
+      "audio": [
+        "babyslakh_16k/Track00010/stems/S04.wav",
+        "7021f114caa4adbe4f205965f64800e7"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00010/MIDI/S04.mid",
+        "124fc8c65bd2ec41cec01c23e43651e1"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00010/metadata.yaml",
+        "d7d43ba43ff2e5ebeb44deb345d0aad7"
+      ]
+    },
+    "Track00010-S05": {
+      "audio": [
+        "babyslakh_16k/Track00010/stems/S05.wav",
+        "a67bcd7392a165227396dde20c2cdafd"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00010/MIDI/S05.mid",
+        "0c1728d1e8f8b36a5f92db03be2b92e4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00010/metadata.yaml",
+        "d7d43ba43ff2e5ebeb44deb345d0aad7"
+      ]
+    },
+    "Track00010-S06": {
+      "audio": [
+        "babyslakh_16k/Track00010/stems/S06.wav",
+        "d3e2af40098e1d41f5e0359e7ad09250"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00010/MIDI/S06.mid",
+        "eb5d018b61eb563ee810c8acfb1ffc73"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00010/metadata.yaml",
+        "d7d43ba43ff2e5ebeb44deb345d0aad7"
+      ]
+    },
+    "Track00011-S00": {
+      "audio": [
+        "babyslakh_16k/Track00011/stems/S00.wav",
+        "11d5537abc69a7eb1e83b5198167d0d8"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/MIDI/S00.mid",
+        "9e10c0d4d095f85b0223d2d052abadf4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00011-S01": {
+      "audio": [
+        "babyslakh_16k/Track00011/stems/S01.wav",
+        "2daff33099520b2c0de4cf8bc6ad9972"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/MIDI/S01.mid",
+        "5680210094883be787ad34ee107423f4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00011-S02": {
+      "audio": [
+        "babyslakh_16k/Track00011/stems/S02.wav",
+        "27282111ae19ffd80a3c5b40da93e0d1"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/MIDI/S02.mid",
+        "96833b360f94d237a01224b5ad05dee6"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00011-S03": {
+      "audio": [
+        "babyslakh_16k/Track00011/stems/S03.wav",
+        "c7cedaf6250527b87a1b3985ad35b904"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/MIDI/S03.mid",
+        "28b97ff45594177c6a12d423f14c1f12"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00011-S04": {
+      "audio": [
+        "babyslakh_16k/Track00011/stems/S04.wav",
+        "68505062c080f044814b462fb53d8543"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/MIDI/S04.mid",
+        "65699d7d623a0267b55ba9a5d2e82bff"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00011-S05": {
+      "audio": [
+        "babyslakh_16k/Track00011/stems/S05.wav",
+        "7306b005f631bcd6767f6133b24c1b4c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/MIDI/S05.mid",
+        "a40c92b0951f3d19e16316002adb1d0b"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00011-S06": {
+      "audio": [
+        "babyslakh_16k/Track00011/stems/S06.wav",
+        "5388bfa9f0585dbd00b0ae680a6d1278"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/MIDI/S06.mid",
+        "3cd1bd43a05a0e77f3eeb95cc35cb430"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00011-S07": {
+      "audio": [
+        "babyslakh_16k/Track00011/stems/S07.wav",
+        "d1ab092aa8060fca1ff0005bea052b06"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/MIDI/S07.mid",
+        "6c1ac895bda650aba0b48511e87edd3b"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00011-S08": {
+      "audio": [
+        "babyslakh_16k/Track00011/stems/S08.wav",
+        "ef3ad7bfac596ed916f332f4e4bfc06a"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/MIDI/S08.mid",
+        "e701614d8d9cd60aa0ba629f68acb854"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00012-S00": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S00.wav",
+        "1b4ed7af0e50b60293a86dd5336335bb"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S00.mid",
+        "0916a13b8755074964ea8e1d84835641"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S01": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S01.wav",
+        "c150d2bdafd0878c0c7326aca1e2a0ec"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S01.mid",
+        "1ac0415cac4a0075ac3bfd6d1f1789b7"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S02": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S02.wav",
+        "5123a49da32213d03105acb7c1bdcdab"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S02.mid",
+        "ffe39aa9aa7449c3b325909ea0ba49e5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S03": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S03.wav",
+        "468fd099fbd446d1e66bb3b0bc086c6f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S03.mid",
+        "74e2dff926caae853cf702fbda15d454"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S04": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S04.wav",
+        "31046850ded11f085c59a831685d8b10"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S04.mid",
+        "e8d6df769c9283ca30eaf46fb28e8b4c"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S05": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S05.wav",
+        "64e3dbe46329c53469bdd14219a023c2"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S05.mid",
+        "5bf3c30d866c5d3690f1fe30ddc82a43"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S06": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S06.wav",
+        "cab033ad1a29b381e30e501267c9030a"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S06.mid",
+        "7e4cac883d1d42d59a4f3e9624a4198b"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S07": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S07.wav",
+        "9a329d74866c1e85b634515c76efed4d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S07.mid",
+        "06084f683f6e00010842f1ce71e5d3b5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S08": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S08.wav",
+        "c21e4acd11d1e82c464b04531a886284"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S08.mid",
+        "08527f4b2ef00a12053afad0503f1d1e"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S09": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S09.wav",
+        "bca76f8b9fc7227cb34c7754ea1d7437"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S09.mid",
+        "cf3e5292191b98fc5400cac7e13d0bbe"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S10": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S10.wav",
+        "02f1545217631648befee25af8ef82d1"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S10.mid",
+        "4854eec4df60d2648d84fabd752fcaea"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00012-S11": {
+      "audio": [
+        "babyslakh_16k/Track00012/stems/S11.wav",
+        "445596b40d37fbb98e450cf08a1cb13e"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/MIDI/S11.mid",
+        "aa0d4e03f504a96cee0b1d59e1cb0912"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00013-S00": {
+      "audio": [
+        "babyslakh_16k/Track00013/stems/S00.wav",
+        "fe044594a7f65d8a471cda2ff551d4b0"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00013/MIDI/S00.mid",
+        "957d6ab4cd04c5b80a089a2383de8d15"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00013/metadata.yaml",
+        "ffb9160993eacb21557155213ac6a7ce"
+      ]
+    },
+    "Track00013-S01": {
+      "audio": [
+        "babyslakh_16k/Track00013/stems/S01.wav",
+        "fa5d81e277c7ce28671f9c55bc67d81c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00013/MIDI/S01.mid",
+        "beb21dd6f632a7fb6c173a6a5eeb16df"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00013/metadata.yaml",
+        "ffb9160993eacb21557155213ac6a7ce"
+      ]
+    },
+    "Track00013-S03": {
+      "audio": [
+        "babyslakh_16k/Track00013/stems/S03.wav",
+        "713f43c07cd7e0fbebe3e3fe8e3960ac"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00013/MIDI/S03.mid",
+        "a0f194bc78f57aa9f196fbca51f1d3bb"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00013/metadata.yaml",
+        "ffb9160993eacb21557155213ac6a7ce"
+      ]
+    },
+    "Track00013-S04": {
+      "audio": [
+        "babyslakh_16k/Track00013/stems/S04.wav",
+        "ba7cba58da8118bf81d3827f9fb6006d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00013/MIDI/S04.mid",
+        "d2610c0a8ac0462864230a5655b9a2c4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00013/metadata.yaml",
+        "ffb9160993eacb21557155213ac6a7ce"
+      ]
+    },
+    "Track00013-S05": {
+      "audio": [
+        "babyslakh_16k/Track00013/stems/S05.wav",
+        "48ce56fc919191f423571896efafeb69"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00013/MIDI/S05.mid",
+        "ada1f1ce055d290d1623217c6dc14a75"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00013/metadata.yaml",
+        "ffb9160993eacb21557155213ac6a7ce"
+      ]
+    },
+    "Track00013-S06": {
+      "audio": [
+        "babyslakh_16k/Track00013/stems/S06.wav",
+        "f7e87ef5ad41da639245c15b8ef6cb5f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00013/MIDI/S06.mid",
+        "fe3fcd61e9548fe0f20bc377630931d5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00013/metadata.yaml",
+        "ffb9160993eacb21557155213ac6a7ce"
+      ]
+    },
+    "Track00013-S07": {
+      "audio": [
+        "babyslakh_16k/Track00013/stems/S07.wav",
+        "cbb66c765504c88ad08e9b28b5c3602a"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00013/MIDI/S07.mid",
+        "7dfe14f1469c959c5542b6f4aa02d108"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00013/metadata.yaml",
+        "ffb9160993eacb21557155213ac6a7ce"
+      ]
+    },
+    "Track00013-S08": {
+      "audio": [
+        "babyslakh_16k/Track00013/stems/S08.wav",
+        "e78deaa7147e5723de5d37f2bcbb754f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00013/MIDI/S08.mid",
+        "53077018887d982254ed336a71372de2"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00013/metadata.yaml",
+        "ffb9160993eacb21557155213ac6a7ce"
+      ]
+    },
+    "Track00014-S00": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S00.wav",
+        "8aaa7ca643483dc4ccd4e1b97086f98a"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S00.mid",
+        "d35b1d987f7a20a6714d696fb6fcb049"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S01": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S01.wav",
+        "a1f177c201a33e559b159b7a3cf3d4e7"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S01.mid",
+        "f633f98225aac271b06dfa7744cc81a2"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S02": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S02.wav",
+        "8035aa7a5eab1078ea3501ab75292b7b"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S02.mid",
+        "bfc5d91d97609c51969a4d1cfc35ec97"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S03": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S03.wav",
+        "bc6354984e8914943e8db874e7acf1b4"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S03.mid",
+        "ccf147a2f435884e9db73a9e84575aad"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S04": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S04.wav",
+        "ba41331c2f7e7582ec8cb8dc31f7e24f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S04.mid",
+        "48c0305d428bdf570d28f691ab592dc2"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S05": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S05.wav",
+        "45eb11e9a34953fafc62b47cd1ecde38"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S05.mid",
+        "105c1abafe96b0de9e798ebf0c5bb770"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S06": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S06.wav",
+        "637dd4fbc4bd6a0611b0161e06404693"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S06.mid",
+        "69f5bcec4dc1523ea0853d9354a797da"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S07": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S07.wav",
+        "5b4d5d684734919f55b73b2e1539e4d6"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S07.mid",
+        "85c980b54858a7304f70da371cb05562"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S08": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S08.wav",
+        "d60e6e788eb1867912aeabb1625b5334"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S08.mid",
+        "297f552d072606ffe93aaaffe6c55ec4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S09": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S09.wav",
+        "9c4fbafedab6eb42b25bc4dffa5fe4e7"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S09.mid",
+        "201e290f9a07d4525acc007c70cc2f18"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S10": {
+      "audio": [
+        "babyslakh_16k/Track00014/stems/S10.wav",
+        "0f97dde4d3d074073fc7fe381a2d9676"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S10.mid",
+        "3b74166fdf9fd95390fe0955c4ddd558"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00014-S11": {
+      "audio": [
+        null,
+        null
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/MIDI/S11.mid",
+        "60330b1af2205be0dca80bd028c7aafa"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00015-S00": {
+      "audio": [
+        "babyslakh_16k/Track00015/stems/S00.wav",
+        "547391bbb1a2eb6b95b98cf25ff5106d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00015/MIDI/S00.mid",
+        "a9a57fe04493e08ba8309676ddeeda1c"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00015/metadata.yaml",
+        "235641163bb56e9dc8d3290ef4d8bf43"
+      ]
+    },
+    "Track00015-S01": {
+      "audio": [
+        "babyslakh_16k/Track00015/stems/S01.wav",
+        "a5dcb21fb2ec2a291812751f32e51b0c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00015/MIDI/S01.mid",
+        "e5fad351afa8d6583bfbb6ca35cf13ea"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00015/metadata.yaml",
+        "235641163bb56e9dc8d3290ef4d8bf43"
+      ]
+    },
+    "Track00015-S02": {
+      "audio": [
+        "babyslakh_16k/Track00015/stems/S02.wav",
+        "9995b1da4e3e0d5eeb18ff181e212776"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00015/MIDI/S02.mid",
+        "07a5e0a33234f631c7365760fbeb8c37"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00015/metadata.yaml",
+        "235641163bb56e9dc8d3290ef4d8bf43"
+      ]
+    },
+    "Track00015-S03": {
+      "audio": [
+        "babyslakh_16k/Track00015/stems/S03.wav",
+        "d0870f1891c1b90c04461b75a0f01e2d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00015/MIDI/S03.mid",
+        "66f46f625aad80d50aab3004f121d331"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00015/metadata.yaml",
+        "235641163bb56e9dc8d3290ef4d8bf43"
+      ]
+    },
+    "Track00015-S04": {
+      "audio": [
+        "babyslakh_16k/Track00015/stems/S04.wav",
+        "98458e520acc0855467abdd899b35737"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00015/MIDI/S04.mid",
+        "1c05e29817992ce406e39c24ba02c5e9"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00015/metadata.yaml",
+        "235641163bb56e9dc8d3290ef4d8bf43"
+      ]
+    },
+    "Track00015-S05": {
+      "audio": [
+        "babyslakh_16k/Track00015/stems/S05.wav",
+        "dd168d0c45dfbfc05b65ba809291e343"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00015/MIDI/S05.mid",
+        "f215d2542494b0b67d368f76ad9dcb54"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00015/metadata.yaml",
+        "235641163bb56e9dc8d3290ef4d8bf43"
+      ]
+    },
+    "Track00015-S06": {
+      "audio": [
+        null,
+        null
+      ],
+      "midi": [
+        "babyslakh_16k/Track00015/MIDI/S06.mid",
+        "d86d33ae041dfac60869f0ff24a4f103"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00015/metadata.yaml",
+        "235641163bb56e9dc8d3290ef4d8bf43"
+      ]
+    },
+    "Track00016-S00": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S00.wav",
+        "8147ec471eb4a84c6784a6517a1b6e73"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S00.mid",
+        "2cbb56c0a6c766bdf9e77145b4232d33"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S01": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S01.wav",
+        "c68744bce786cb6f675991d9f6959a89"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S01.mid",
+        "ba85da18746e1cb335c7a6302aad68ea"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S02": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S02.wav",
+        "b1c9e4f57ded285aa12d620e85c4cda0"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S02.mid",
+        "0212770109461db83a1a1ad286789207"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S03": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S03.wav",
+        "0faae7ff21196c35d7ef6f43450a30dd"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S03.mid",
+        "ef5864699eaa06614e3654d05f0edc5d"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S04": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S04.wav",
+        "a9c0590406f77768d42ca7220a9fcaf4"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S04.mid",
+        "85557c62203c13c091e5ba577c4924d1"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S05": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S05.wav",
+        "1feff89387ab0d52cec31926de66c1bb"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S05.mid",
+        "439685e51182ba1e452f92e3f46bca44"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S06": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S06.wav",
+        "7914bf35fc9572a995363f5ab43d43b1"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S06.mid",
+        "b86343f033fda5b4d647f1e56c81f125"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S07": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S07.wav",
+        "71556c14349585acd73ead7da7b6f165"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S07.mid",
+        "bd014285e1ad34fa83e90e43c4b95e83"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S08": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S08.wav",
+        "4dd8c787bde3ff40b7c52f3376940b40"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S08.mid",
+        "a3f764d5feec4f744e0a38217fc4f6bf"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S09": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S09.wav",
+        "ac60949c9431205f079e62aac246a695"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S09.mid",
+        "5534ae96a30143880b63ecf49516643d"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S10": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S10.wav",
+        "c3cfc189d42eedd8b8455513607f3551"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S10.mid",
+        "cf5b265c140ca631695a415391fbb0db"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S11": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S11.wav",
+        "b21e145d8ecc79d448cb165240896614"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S11.mid",
+        "05c219c0ba8c07403ac930c87f3a3756"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S12": {
+      "audio": [
+        null,
+        null
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S12.mid",
+        "35d4fd2389f7f46b925d7c714d40821c"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S14": {
+      "audio": [
+        null,
+        null
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S14.mid",
+        "f49cc0f6f9991d386d1dcfcf064be4cb"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00016-S15": {
+      "audio": [
+        "babyslakh_16k/Track00016/stems/S15.wav",
+        "e11afc9d7289d785adbe24654514eace"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/MIDI/S15.mid",
+        "b540cf2c037ae22302a5bce180cca393"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00017-S00": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S00.wav",
+        "3a7e8dcc96de336bb6316e47768c884a"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S00.mid",
+        "df5ae849bd75d72181cab0fff6a10f43"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00017-S01": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S01.wav",
+        "fdef5c59dd42e4ecf4c8620f11afbf4d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S01.mid",
+        "127e0904a29e0179e667e2b60343bb17"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00017-S02": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S02.wav",
+        "494008066e5f07313ea2ab6f1a400e4a"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S02.mid",
+        "6831de78b1fc0a4160eddaaf35ca8a20"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00017-S03": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S03.wav",
+        "f7299ad79cb2fd8d716a6b50baadc397"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S03.mid",
+        "c9e3e9368ef4c8de23466992bfba601e"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00017-S05": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S05.wav",
+        "e6dd91681859f5d2ba4bb06d742dbfff"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S05.mid",
+        "b01d251c42efb6b875af0dca19b1af72"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00017-S06": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S06.wav",
+        "8a745bf58ecb2fcb39061f0981d9a331"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S06.mid",
+        "a9e225124a88f31a3ef8b292c1c4b3b0"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00017-S07": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S07.wav",
+        "80c84338f0910dd937187fe8e29afdc8"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S07.mid",
+        "807a9f2b0387d8879ee1407d387093c9"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00017-S08": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S08.wav",
+        "bd7207c6ae2de62bfc7030ab40f23870"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S08.mid",
+        "7ccbbac07e6d76c1ea6d78ab0638804d"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00017-S09": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S09.wav",
+        "58927764a39e58014270cd918bf78e24"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S09.mid",
+        "3f0c56d19650dc0243369bb63991e5a7"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00017-S10": {
+      "audio": [
+        "babyslakh_16k/Track00017/stems/S10.wav",
+        "4fea086b1fd32d7f175345a9464d0ad1"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/MIDI/S10.mid",
+        "0c7bffa71ed6c75c917fd61fd5968892"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00018-S00": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S00.wav",
+        "2e3d4c1d0ff310ffb0906785ed6d90b2"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S00.mid",
+        "752ffba7363b77fcb04a31f21a76d057"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S01": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S01.wav",
+        "4f7030146e9ecfdb4440e767ab721c2e"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S01.mid",
+        "052600fdba11b18c57c463297066bfc4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S02": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S02.wav",
+        "5fcbcd29cbaf58d17414a4ba2d2dbca9"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S02.mid",
+        "723bb9dad703a783bcd4ea2b60728a1b"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S03": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S03.wav",
+        "92b8d4bd986af72f73633c7d9bfc25db"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S03.mid",
+        "da968efbca6efad9d148c9910917a3c5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S04": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S04.wav",
+        "d4ea2cfb873e9d50e8a359e0af3ee8e9"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S04.mid",
+        "9b6c30e5439a5567729d31ea57f03bc9"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S05": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S05.wav",
+        "1fb8a562eb38751b47822a0f453b12c5"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S05.mid",
+        "8f1f5150b06c49f1d2739f98ea124b02"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S06": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S06.wav",
+        "4a622fac88886c024149cf125e96fdb3"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S06.mid",
+        "7ab4f4d0df6034c3a0c0c312e650770e"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S07": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S07.wav",
+        "059ed7e7b14fdba1f6d70521f20bfe44"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S07.mid",
+        "81aa68d91bfdcc89b596297c13acd354"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S08": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S08.wav",
+        "89fc37e7965ab1408cc8efcc150e6ac7"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S08.mid",
+        "4aba62c72e19983ddb1b4e0f37c238c4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S09": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S09.wav",
+        "1264de0e0c66a596175b1010774c5ae7"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S09.mid",
+        "c04ce56b8ebf1fb97a746f8829134cc1"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S10": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S10.wav",
+        "7c0fbbe728b430f17460c2dd2895161b"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S10.mid",
+        "29279a7cf72deba8a79757a9625266f5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S11": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S11.wav",
+        "4feeed3b756192446632b943267e96ef"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S11.mid",
+        "1251b217149c368907e3f7ea02de8259"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S14": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S14.wav",
+        "b382068a321948ae030545264aede3e1"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S14.mid",
+        "e08338a0727dc6e2f398781113fbe7db"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S15": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S15.wav",
+        "540b36e29181cf10aad4b3b44d2d6d33"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S15.mid",
+        "e57ad3bf1bde660d08c76f5b57e8f51f"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S16": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S16.wav",
+        "f294f930079d87b929efb6f3df53f63d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S16.mid",
+        "318fe8dcdc24d27f3c432b48cbd09415"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00018-S17": {
+      "audio": [
+        "babyslakh_16k/Track00018/stems/S17.wav",
+        "3d07fd2565aa03cc244ce0a90068bfc5"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/MIDI/S17.mid",
+        "5dc68bb42864a791fba5c4b1c8e71c2e"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00019-S00": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S00.wav",
+        "4043fd5dd01f9003b831149630d1df6e"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S00.mid",
+        "9d267b906bda3f8d63362288d65d1dae"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S01": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S01.wav",
+        "313f105bbb567514489f32bdec9964a3"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S01.mid",
+        "25c4ddd8bb57cdf695d01ea1199eee3b"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S02": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S02.wav",
+        "e0a09e3b78b36e5c032991c800da94c9"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S02.mid",
+        "b7e67780ffe6be0097261e8a68a836c8"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S03": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S03.wav",
+        "aca0c95e9d2738b73c23520d2b0fd23c"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S03.mid",
+        "91ad9e689be05884bb897e9e78c5c294"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S04": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S04.wav",
+        "e88db9db2f06d74d545c3bdec0cf0459"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S04.mid",
+        "04c1f84797f60a420c54ef6f398d63a5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S06": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S06.wav",
+        "b40d4eabf7500c01e1efaed8ce14d85d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S06.mid",
+        "31d2238b53b1cf978b5e7f59b44d0970"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S07": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S07.wav",
+        "baf2edbf037f926c7f9b50987ae8d257"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S07.mid",
+        "fa5681a2a91e45db5e2f56bea0160c6b"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S08": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S08.wav",
+        "7cc3520896c6f5600d37f986c472bbe6"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S08.mid",
+        "cabc1ac8b689725b9827c2c2ec31b0b3"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S09": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S09.wav",
+        "35999ec8fc58ead3b8d28a1851b6fde5"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S09.mid",
+        "f86ead3926aa9ea9b1cdfbf5136c96d5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S10": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S10.wav",
+        "9cf92e58bf3401d0980edf0d4d52c597"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S10.mid",
+        "fed3c456040a19e1f9362f2e1e46848a"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S11": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S11.wav",
+        "b3220b18a407107f8a8e3f2fd08f6bb8"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S11.mid",
+        "e8ec55cf1c64c26769be82553e6ecc35"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S12": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S12.wav",
+        "529fe00228403d7aabec0b315e5c79fc"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S12.mid",
+        "94585b55d6fdbdd89ab07652fa7090da"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S13": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S13.wav",
+        "5d701c1aca0cbfa7203432079da25411"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S13.mid",
+        "28a400d78e700e8ae3322dc0fcf9f11c"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00019-S14": {
+      "audio": [
+        "babyslakh_16k/Track00019/stems/S14.wav",
+        "d2d83d6bdc663a9df389bdf97c235f77"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/MIDI/S14.mid",
+        "6dd1d4be1aec6a8d4c495ef79e67c06f"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00020-S00": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S00.wav",
+        "4c126d41897250106ff210b697d070c2"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S00.mid",
+        "fb6f9d77a4429cf869b678e564740aeb"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    },
+    "Track00020-S01": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S01.wav",
+        "dba319cf0ee21f83710b548a88bc9dd7"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S01.mid",
+        "93fc8703870120838ef4db38860f2ac1"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    },
+    "Track00020-S02": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S02.wav",
+        "05c5b3c13a8d16dd5d4105c3ffa2675b"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S02.mid",
+        "a970c1ca2b1f7340f2ffb363c8a8a42d"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    },
+    "Track00020-S03": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S03.wav",
+        "f4816506df44d9c8f830a89f28af0687"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S03.mid",
+        "c83ab691fe101ebf8c90373801543d38"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    },
+    "Track00020-S04": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S04.wav",
+        "d3c096c1cb12563dd2670decd29e9e71"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S04.mid",
+        "e4a6b65b2d8c740ded0cb78bb20efd5a"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    },
+    "Track00020-S05": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S05.wav",
+        "3930e0d08814e614ebcdc5ca43671939"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S05.mid",
+        "b311a2eef8193817d23f2af66192ac9e"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    },
+    "Track00020-S06": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S06.wav",
+        "c8be00fca984b8dcb345b2b983fc9372"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S06.mid",
+        "2395401cf15b1b684c6a033b3290f9f6"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    },
+    "Track00020-S07": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S07.wav",
+        "9db6c07d0eb9db2319adba3a79bb815d"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S07.mid",
+        "a9ed8ddb2d71aaa7aa7df1805496c5de"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    },
+    "Track00020-S08": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S08.wav",
+        "a1c4437efc1e08c8b0e612263203e8c6"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S08.mid",
+        "ddf08e88421847ed9144eecb7ef9fe06"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    },
+    "Track00020-S09": {
+      "audio": [
+        "babyslakh_16k/Track00020/stems/S09.wav",
+        "353df08fb8d99db2fed60b28d92a450e"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/MIDI/S09.mid",
+        "4e5bc132ed23ea00b8d19f92e6b545ad"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    }
+  },
+  "multitracks": {
+    "Track00001": {
+      "tracks": [
+        "Track00001-S00",
+        "Track00001-S01",
+        "Track00001-S02",
+        "Track00001-S03",
+        "Track00001-S04",
+        "Track00001-S05",
+        "Track00001-S07",
+        "Track00001-S08",
+        "Track00001-S09",
+        "Track00001-S10"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/all_src.mid",
+        "1a81ae092884234f3264e2f45927f00a"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00001/mix.wav",
+        "7062e55ff514f653b365a114fbbb3bd7"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    },
+    "Track00002": {
+      "tracks": [
+        "Track00002-S00",
+        "Track00002-S01",
+        "Track00002-S02",
+        "Track00002-S03",
+        "Track00002-S04",
+        "Track00002-S05",
+        "Track00002-S06",
+        "Track00002-S07",
+        "Track00002-S08",
+        "Track00002-S09"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00002/all_src.mid",
+        "0c3b7bf33cd3d67970ecfc06339bfc49"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00002/mix.wav",
+        "b06a97a0e173ecc11bdace48f0e22a02"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00002/metadata.yaml",
+        "49becd4e3aa260c2d28a719651f7f235"
+      ]
+    },
+    "Track00003": {
+      "tracks": [
+        "Track00003-S00",
+        "Track00003-S01",
+        "Track00003-S02",
+        "Track00003-S03",
+        "Track00003-S04",
+        "Track00003-S06",
+        "Track00003-S07",
+        "Track00003-S08"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00003/all_src.mid",
+        "136e224ff9848e53c33322f58d58f1b3"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00003/mix.wav",
+        "faa81f08f99b5251da3ba85833d2cbe4"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00003/metadata.yaml",
+        "a895939a878acd0437e2f03a43e14766"
+      ]
+    },
+    "Track00004": {
+      "tracks": [
+        "Track00004-S00",
+        "Track00004-S01",
+        "Track00004-S02",
+        "Track00004-S03",
+        "Track00004-S04",
+        "Track00004-S05",
+        "Track00004-S06",
+        "Track00004-S07",
+        "Track00004-S08"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00004/all_src.mid",
+        "c613ddce3ded35d2e8cadf3511a1ffb9"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00004/mix.wav",
+        "2834c3d06788aa6eae2016c90918162c"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00004/metadata.yaml",
+        "5f67d03e7d619eadb9afc19be8b8ee62"
+      ]
+    },
+    "Track00005": {
+      "tracks": [
+        "Track00005-S00",
+        "Track00005-S01",
+        "Track00005-S02",
+        "Track00005-S03",
+        "Track00005-S04",
+        "Track00005-S05",
+        "Track00005-S06",
+        "Track00005-S07",
+        "Track00005-S08",
+        "Track00005-S10",
+        "Track00005-S11",
+        "Track00005-S12",
+        "Track00005-S13"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00005/all_src.mid",
+        "ecda548334fd9ab77510536e75238bbd"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00005/mix.wav",
+        "ef0d4791528f7a147fa03ae08f8e44aa"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00005/metadata.yaml",
+        "f00ed61d725e5cacc8eb262900045c30"
+      ]
+    },
+    "Track00006": {
+      "tracks": [
+        "Track00006-S00",
+        "Track00006-S01",
+        "Track00006-S02",
+        "Track00006-S03",
+        "Track00006-S04",
+        "Track00006-S05",
+        "Track00006-S06",
+        "Track00006-S07",
+        "Track00006-S08",
+        "Track00006-S09",
+        "Track00006-S10",
+        "Track00006-S11",
+        "Track00006-S12",
+        "Track00006-S13",
+        "Track00006-S14"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00006/all_src.mid",
+        "9f5777783d38d7d494e03e75698d2d1d"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00006/mix.wav",
+        "d9e0d27aefc78a7cede7404cb8f10129"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00006/metadata.yaml",
+        "672e9772a9587473ceab4407edbe3808"
+      ]
+    },
+    "Track00007": {
+      "tracks": [
+        "Track00007-S00",
+        "Track00007-S01",
+        "Track00007-S02",
+        "Track00007-S03",
+        "Track00007-S04",
+        "Track00007-S05",
+        "Track00007-S06",
+        "Track00007-S07",
+        "Track00007-S08",
+        "Track00007-S09"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00007/all_src.mid",
+        "1c06b0b2cd06544d9964c18e97ce3e97"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00007/mix.wav",
+        "959e7d57ce3620347765fe74b9c11373"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00007/metadata.yaml",
+        "e4e54a158ae42241dbacfbe972b39950"
+      ]
+    },
+    "Track00008": {
+      "tracks": [
+        "Track00008-S00",
+        "Track00008-S01",
+        "Track00008-S02",
+        "Track00008-S03",
+        "Track00008-S04",
+        "Track00008-S05",
+        "Track00008-S06"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00008/all_src.mid",
+        "513716f352806601367d549bd0bb373e"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00008/mix.wav",
+        "ba0df855a2296be5225ce355eba06a7d"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00008/metadata.yaml",
+        "14fbde602f94a89b3c3513472f99ce22"
+      ]
+    },
+    "Track00009": {
+      "tracks": [
+        "Track00009-S00",
+        "Track00009-S01",
+        "Track00009-S02",
+        "Track00009-S03",
+        "Track00009-S04",
+        "Track00009-S05",
+        "Track00009-S06",
+        "Track00009-S07",
+        "Track00009-S10",
+        "Track00009-S11",
+        "Track00009-S12"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00009/all_src.mid",
+        "b2be296505fd61a73ae03a0a9a8cbe05"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00009/mix.wav",
+        "622949d801fc985ca646985248cf0495"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00009/metadata.yaml",
+        "2933450ec70fb1642c8d61d147a20ebf"
+      ]
+    },
+    "Track00010": {
+      "tracks": [
+        "Track00010-S00",
+        "Track00010-S01",
+        "Track00010-S02",
+        "Track00010-S03",
+        "Track00010-S04",
+        "Track00010-S05",
+        "Track00010-S06"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00010/all_src.mid",
+        "763348b79ed855fa294a7c980392178b"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00010/mix.wav",
+        "8a14ac61488b6d4097d67e089b6926f3"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00010/metadata.yaml",
+        "d7d43ba43ff2e5ebeb44deb345d0aad7"
+      ]
+    },
+    "Track00011": {
+      "tracks": [
+        "Track00011-S00",
+        "Track00011-S01",
+        "Track00011-S02",
+        "Track00011-S03",
+        "Track00011-S04",
+        "Track00011-S05",
+        "Track00011-S06",
+        "Track00011-S07",
+        "Track00011-S08"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00011/all_src.mid",
+        "9082d742f01b4d8f283620a3f7007be5"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00011/mix.wav",
+        "06472b1fef5df45c0d0815e3a0a5ebc5"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00011/metadata.yaml",
+        "87b22855eebaf4b17098f562869a753c"
+      ]
+    },
+    "Track00012": {
+      "tracks": [
+        "Track00012-S00",
+        "Track00012-S01",
+        "Track00012-S02",
+        "Track00012-S03",
+        "Track00012-S04",
+        "Track00012-S05",
+        "Track00012-S06",
+        "Track00012-S07",
+        "Track00012-S08",
+        "Track00012-S09",
+        "Track00012-S10",
+        "Track00012-S11"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00012/all_src.mid",
+        "5e3fc014cdf94b134ec1295e4a190bd4"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00012/mix.wav",
+        "5b4917dc2a814ceae07879bf622e9324"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00012/metadata.yaml",
+        "6cda534f22a19a05be371411af6d1c86"
+      ]
+    },
+    "Track00013": {
+      "tracks": [
+        "Track00013-S00",
+        "Track00013-S01",
+        "Track00013-S03",
+        "Track00013-S04",
+        "Track00013-S05",
+        "Track00013-S06",
+        "Track00013-S07",
+        "Track00013-S08"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00013/all_src.mid",
+        "10b2949e44891af11187883262a9e060"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00013/mix.wav",
+        "c54e4d5be64b845a42a875b68ce9dba7"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00013/metadata.yaml",
+        "ffb9160993eacb21557155213ac6a7ce"
+      ]
+    },
+    "Track00014": {
+      "tracks": [
+        "Track00014-S00",
+        "Track00014-S01",
+        "Track00014-S02",
+        "Track00014-S03",
+        "Track00014-S04",
+        "Track00014-S05",
+        "Track00014-S06",
+        "Track00014-S07",
+        "Track00014-S08",
+        "Track00014-S09",
+        "Track00014-S10",
+        "Track00014-S11"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00014/all_src.mid",
+        "5db3e15bcdaf54d3335900d2aad30034"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00014/mix.wav",
+        "41ab455063fdeb5a05161e5db1831f35"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00014/metadata.yaml",
+        "595418c6a76aa9436c2e46db4f03f933"
+      ]
+    },
+    "Track00015": {
+      "tracks": [
+        "Track00015-S00",
+        "Track00015-S01",
+        "Track00015-S02",
+        "Track00015-S03",
+        "Track00015-S04",
+        "Track00015-S05",
+        "Track00015-S06"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00015/all_src.mid",
+        "44912b75e6a8d2c103587b3a2cdd19ec"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00015/mix.wav",
+        "6958528026048191a0ee021a4761a9a3"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00015/metadata.yaml",
+        "235641163bb56e9dc8d3290ef4d8bf43"
+      ]
+    },
+    "Track00016": {
+      "tracks": [
+        "Track00016-S00",
+        "Track00016-S01",
+        "Track00016-S02",
+        "Track00016-S03",
+        "Track00016-S04",
+        "Track00016-S05",
+        "Track00016-S06",
+        "Track00016-S07",
+        "Track00016-S08",
+        "Track00016-S09",
+        "Track00016-S10",
+        "Track00016-S11",
+        "Track00016-S12",
+        "Track00016-S14",
+        "Track00016-S15"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00016/all_src.mid",
+        "da41ff8258131a291e36cec39b98c5f8"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00016/mix.wav",
+        "79aaaaa8be1a650bbee3c7d80f8c3d44"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00016/metadata.yaml",
+        "00b90aee2ac858b0193782243fa9072a"
+      ]
+    },
+    "Track00017": {
+      "tracks": [
+        "Track00017-S00",
+        "Track00017-S01",
+        "Track00017-S02",
+        "Track00017-S03",
+        "Track00017-S05",
+        "Track00017-S06",
+        "Track00017-S07",
+        "Track00017-S08",
+        "Track00017-S09",
+        "Track00017-S10"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00017/all_src.mid",
+        "73e22d81fdaf62caa0b74cb7395c5cd8"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00017/mix.wav",
+        "284d9922711473b7b0711487a4890aca"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00017/metadata.yaml",
+        "9c0d6af07fee05e14a2d2cad847dccc3"
+      ]
+    },
+    "Track00018": {
+      "tracks": [
+        "Track00018-S00",
+        "Track00018-S01",
+        "Track00018-S02",
+        "Track00018-S03",
+        "Track00018-S04",
+        "Track00018-S05",
+        "Track00018-S06",
+        "Track00018-S07",
+        "Track00018-S08",
+        "Track00018-S09",
+        "Track00018-S10",
+        "Track00018-S11",
+        "Track00018-S14",
+        "Track00018-S15",
+        "Track00018-S16",
+        "Track00018-S17"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00018/all_src.mid",
+        "3cccac3e7cd68df8f01a1a61e6ef3172"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00018/mix.wav",
+        "25094b6a17c4d7dbe4745f93c3503f47"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00018/metadata.yaml",
+        "4284c56e6b7c0ca5eb09517f0643cb32"
+      ]
+    },
+    "Track00019": {
+      "tracks": [
+        "Track00019-S00",
+        "Track00019-S01",
+        "Track00019-S02",
+        "Track00019-S03",
+        "Track00019-S04",
+        "Track00019-S06",
+        "Track00019-S07",
+        "Track00019-S08",
+        "Track00019-S09",
+        "Track00019-S10",
+        "Track00019-S11",
+        "Track00019-S12",
+        "Track00019-S13",
+        "Track00019-S14"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00019/all_src.mid",
+        "97b8605f3e1d96872fcd3f9829cd13db"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00019/mix.wav",
+        "8c8586ceffcd22dc504fac6b2d1bafe3"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00019/metadata.yaml",
+        "b34ab8f1c6333e12efd95b3801343ec1"
+      ]
+    },
+    "Track00020": {
+      "tracks": [
+        "Track00020-S00",
+        "Track00020-S01",
+        "Track00020-S02",
+        "Track00020-S03",
+        "Track00020-S04",
+        "Track00020-S05",
+        "Track00020-S06",
+        "Track00020-S07",
+        "Track00020-S08",
+        "Track00020-S09"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00020/all_src.mid",
+        "07c88cc63a18e88194ceb9e05232b02e"
+      ],
+      "mix": [
+        "babyslakh_16k/Track00020/mix.wav",
+        "c3e570a5c6a97143e0fd28a684599cc0"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00020/metadata.yaml",
+        "90c84fd16f2c38f9ce60e77f4f4fc9bf"
+      ]
+    }
+  }
+}
