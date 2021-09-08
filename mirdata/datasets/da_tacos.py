@@ -215,7 +215,7 @@ INDEXES = {
     "default": "1.1_full",
     "test": "1.1_full",
     "crema": "1.1_crema",
-    "1.1_crema": core.Index(filename="da_tacos_index_1.1_crema.json"),
+    "1.1_crema": core.Index(filename="da_tacos_index_1.1_crema.json", partial_download=["benchmark_crema", "coveranalysis_crema"]),
     "1.1_full": core.Index(filename="da_tacos_index_1.1_full.json"),
 }
 
