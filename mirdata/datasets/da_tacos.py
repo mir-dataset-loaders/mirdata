@@ -602,8 +602,6 @@ class Dataset(core.Dataset):
             ValueError: if invalid keys are passed to partial_download
             IOError: if a downloaded file's checksum is different from expected
         """
-        if partial_download is None or partial_download == "crema":
-            partial_download = ["benchmark_crema", "coveranalysis_crema"]
         elif "all" in partial_download:
             partial_download = ["metadata", "benchmark_cens", "benchmark_crema", "benchmark_hpcp", "benchmark_key",
                                 "benchmark_madmom", "benchmark_mfcc", "coveranalysis_tags", "coveranalysis_cens",
