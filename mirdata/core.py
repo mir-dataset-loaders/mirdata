@@ -177,12 +177,12 @@ class Dataset(object):
         try:
             with open(self.index_path) as fhandle:
                 index = json.load(fhandle)
-        except IOError:
+        except FileNotFoundError:
             if self._index_data.remote:
                 raise FileNotFoundError(
                     "This dataset's index must be downloaded. Did you run .download()?"
                 )
-            raise IOError(
+            raise FileNotFoundError(
                 f"Dataset index for {self.name} was expected "
                 + "to be packaged with mirdata, but not found."
             )

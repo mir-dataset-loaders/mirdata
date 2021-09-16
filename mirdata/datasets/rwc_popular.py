@@ -17,6 +17,7 @@ import os
 from typing import Optional, TextIO, Tuple
 
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
@@ -74,7 +75,9 @@ REMOTES = {
     ),
     "annotations_sections": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-P-2001.CHORUS.zip",
-        url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip",
+        url=(
+            "https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip"
+        ),
         checksum="f76b3a32701fbd9bf78baa608f692a77",
         destination_dir="annotations",
     ),
@@ -321,17 +324,17 @@ class Dataset(core.Dataset):
 
         metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-p.csv")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                dialect = csv.Sniffer().sniff(fhandle.read(1024))
+                fhandle.seek(0)
+                reader = csv.reader(fhandle, dialect)
+                raw_data = []
+                for line in reader:
+                    if line[0] != "Piece No.":
+                        raw_data.append(line)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            dialect = csv.Sniffer().sniff(fhandle.read(1024))
-            fhandle.seek(0)
-            reader = csv.reader(fhandle, dialect)
-            raw_data = []
-            for line in reader:
-                if line[0] != "Piece No.":
-                    raw_data.append(line)
 
         metadata_index = {}
         for line in raw_data:

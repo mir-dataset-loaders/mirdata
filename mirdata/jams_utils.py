@@ -92,8 +92,8 @@ def jams_converter(
         # for local mp3s only
         except TypeError:
             duration = librosa.get_duration(filename=audio_path)
-        except IOError:
-            raise OSError(
+        except FileNotFoundError:
+            raise FileNotFoundError(
                 "jams conversion failed because the audio file "
                 + "for this track cannot be found, and it is required "
                 + "to compute duration."

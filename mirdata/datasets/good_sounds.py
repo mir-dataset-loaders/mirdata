@@ -33,6 +33,8 @@ from typing import Optional, Tuple, BinaryIO
 
 import librosa
 import numpy as np
+from smart_open import open
+
 from mirdata import download_utils, jams_utils, core, io
 
 BIBTEX = """@inproceedings{romani2015real,
@@ -304,24 +306,20 @@ class Dataset(core.Dataset):
         sounds = os.path.join(self.data_home, "sounds.json")
         takes = os.path.join(self.data_home, "takes.json")
 
-        if (
-            not os.path.exists(packs)
-            or not os.path.exists(ratings)
-            or not os.path.exists(sounds)
-            or not os.path.exists(takes)
-        ):
+        try:
+            with open(packs, "r") as fhandle:
+                packs = json.load(fhandle)
+
+            with open(ratings, "r") as fhandle:
+                ratings = json.load(fhandle)
+
+            with open(sounds, "r") as fhandle:
+                sounds = json.load(fhandle)
+
+            with open(takes, "r") as fhandle:
+                takes = json.load(fhandle)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-        with open(packs, "r") as fhandle:
-            packs = json.load(fhandle)
-
-        with open(ratings, "r") as fhandle:
-            ratings = json.load(fhandle)
-
-        with open(sounds, "r") as fhandle:
-            sounds = json.load(fhandle)
-
-        with open(takes, "r") as fhandle:
-            takes = json.load(fhandle)
 
         return {"packs": packs, "ratings": ratings, "sounds": sounds, "takes": takes}
 

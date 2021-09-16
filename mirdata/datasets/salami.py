@@ -16,10 +16,11 @@
 """
 import csv
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
@@ -287,17 +288,18 @@ class Dataset(core.Dataset):
                 "salami-data-public-hierarchy-corrections", "metadata", "metadata.csv"
             ),
         )
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        with open(metadata_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            raw_data = []
-            for line in reader:
-                if line != []:
-                    if line[0] == "SONG_ID":
-                        continue
-                    raw_data.append(line)
+        try:
+            with open(metadata_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                raw_data = []
+                for line in reader:
+                    if line != []:
+                        if line[0] == "SONG_ID":
+                            continue
+                        raw_data.append(line)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata_index = {}
         for line in raw_data:

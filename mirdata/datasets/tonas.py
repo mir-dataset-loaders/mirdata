@@ -48,6 +48,7 @@ from typing import TextIO, Tuple, Optional
 
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, jams_utils, core, io
 
@@ -359,22 +360,23 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "TONAS-Metadata.txt")
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata = {}
-        with open(metadata_path, "r", errors="ignore") as f:
-            reader = csv.reader(
-                (x.replace("\0", "") for x in f), delimiter="\t"
-            )  # Fix wrong byte
-            for line in reader:
-                if line:  # Do not consider empty lines
-                    index = line[0].replace(".wav", "")
-                    metadata[index] = {
-                        "style": line[1],
-                        "title": line[2],
-                        "singer": line[3],
-                    }
+        try:
+            with open(metadata_path, "r", errors="ignore") as f:
+                reader = csv.reader(
+                    (x.replace("\0", "") for x in f), delimiter="\t"
+                )  # Fix wrong byte
+                for line in reader:
+                    if line:  # Do not consider empty lines
+                        index = line[0].replace(".wav", "")
+                        metadata[index] = {
+                            "style": line[1],
+                            "title": line[2],
+                            "singer": line[3],
+                        }
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata
 

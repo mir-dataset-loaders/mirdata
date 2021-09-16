@@ -38,8 +38,9 @@ from typing import BinaryIO, Optional, Tuple
 import librosa
 import numpy as np
 import pretty_midi
+from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io, jams_utils
 
 
 BIBTEX = """@inproceedings{
@@ -73,7 +74,9 @@ REMOTES = {
     ),
     "metadata": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0.json",
-        url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json",
+        url=(
+            "https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json"
+        ),
         checksum="576172af1cdc4efddcf0be7d260d48f7",
     ),
 }
@@ -221,11 +224,11 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "maestro-v2.0.0.json")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                raw_metadata = json.load(fhandle)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            raw_metadata = json.load(fhandle)
 
         metadata = {}
         for mdata in raw_metadata:
