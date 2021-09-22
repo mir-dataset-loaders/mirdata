@@ -9,6 +9,7 @@ import shutil
 import tarfile
 import urllib
 import zipfile
+import warnings
 
 from tqdm import tqdm
 
@@ -48,6 +49,7 @@ def downloader(
     info_message=None,
     force_overwrite=False,
     cleanup=False,
+    allow_invalid_checksum=False,
 ):
     """Download data to `save_dir` and optionally log a message.
 
@@ -70,6 +72,9 @@ def downloader(
             If True, existing files are overwritten by the downloaded files.
         cleanup (bool):
             Whether to delete the zip/tar file after extracting.
+        allow_invalid_checksum (bool):
+            Allow having an invalid checksum, and whenever this happens prompt a
+            warning instead of deleting the files.
 
     """
     if not os.path.exists(save_dir):
@@ -77,6 +82,9 @@ def downloader(
 
     if not index:
         raise ValueError("Index must be specified.")
+
+    if allow_invalid_checksum:
+        cleanup = True
 
     if cleanup:
         logging.warning(
@@ -115,11 +123,11 @@ def downloader(
             logging.info("[{}] downloading {}".format(k, remotes[k].filename))
             extension = os.path.splitext(remotes[k].filename)[-1]
             if ".zip" in extension:
-                download_zip_file(remotes[k], save_dir, force_overwrite, cleanup)
+                download_zip_file(remotes[k], save_dir, force_overwrite, cleanup, allow_invalid_checksum)
             elif ".gz" in extension or ".tar" in extension or ".bz2" in extension:
-                download_tar_file(remotes[k], save_dir, force_overwrite, cleanup)
+                download_tar_file(remotes[k], save_dir, force_overwrite, cleanup, allow_invalid_checksum)
             else:
-                download_from_remote(remotes[k], save_dir, force_overwrite)
+                download_from_remote(remotes[k], save_dir, force_overwrite, allow_invalid_checksum)
 
             if remotes[k].unpack_directories:
                 for src_dir in remotes[k].unpack_directories:
@@ -158,7 +166,7 @@ class DownloadProgressBar(tqdm):
         self.update(b * bsize - self.n)
 
 
-def download_from_remote(remote, save_dir, force_overwrite):
+def download_from_remote(remote, save_dir, force_overwrite, allow_invalid_checksum):
     """Download a remote dataset into path
     Fetch a dataset pointed by remote's url, save into path using remote's
     filename and ensure its integrity based on the MD5 Checksum of the
@@ -224,16 +232,23 @@ def download_from_remote(remote, save_dir, force_overwrite):
 
     checksum = md5(download_path)
     if remote.checksum != checksum:
-
-        raise IOError(
-            "{} has an MD5 checksum ({}) "
-            "differing from expected ({}), "
-            "file may be corrupted.".format(download_path, checksum, remote.checksum)
-        )
+        if allow_invalid_checksum:
+            warnings.warn(
+                "{} has an MD5 checksum ({}) "
+                "differing from expected ({}), "
+                "file may be corrupted.".format(download_path, checksum, remote.checksum),
+                UserWarning
+            )
+        else:
+            raise IOError(
+                "{} has an MD5 checksum ({}) "
+                "differing from expected ({}), "
+                "file may be corrupted.".format(download_path, checksum, remote.checksum)
+            )
     return download_path
 
 
-def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup):
+def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup, allow_invalid_checksum):
     """Download and unzip a zip file.
 
     Args:
@@ -247,7 +262,8 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup):
             If True, remove zipfile after unziping
 
     """
-    zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite)
+    zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite,
+                                             allow_invalid_checksum)
     unzip(zip_download_path, cleanup=cleanup)
 
 
@@ -304,7 +320,8 @@ def unzip(zip_path, cleanup):
         os.remove(zip_path)
 
 
-def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup):
+def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup,
+                      allow_invalid_checksum):
     """Download and untar a tar file.
 
     Args:
@@ -314,7 +331,7 @@ def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup):
         cleanup (bool): If True, remove tarfile after untarring
 
     """
-    tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite)
+    tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite, allow_invalid_checksum)
     untar(tar_download_path, cleanup=cleanup)
 
 
