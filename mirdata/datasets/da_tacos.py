@@ -29,32 +29,32 @@
     - SecondHandSongs.com performance ID,
     - SecondHandSongs.com work ID,
     - whether the song is instrumental or not.
-    
-    In addition, we matched the original metadata with MusicBrainz to obtain MusicBrainz ID (MBID), 
-    song length and genre/style tags. We would like to note that MusicBrainz related information is 
-    not available for all the songs in Da-TACOS, and since we used just our metadata for matching, 
+
+    In addition, we matched the original metadata with MusicBrainz to obtain MusicBrainz ID (MBID),
+    song length and genre/style tags. We would like to note that MusicBrainz related information is
+    not available for all the songs in Da-TACOS, and since we used just our metadata for matching,
     we include all possible MBIDs for a particular songs.
 
-    For facilitating reproducibility in cover song identification (CSI) research, we propose a framework 
-    for feature extraction and benchmarking in our supplementary repository: acoss. The feature extraction 
-    component is designed to help CSI researchers to find the most commonly used features for CSI in a 
-    single address. The parameter values we used to extract the features in Da-TACOS are shared in the 
-    same repository. Moreover, the benchmarking component includes our implementations of 7 state-of-the-art 
-    CSI systems. We provide the performance results of an initial benchmarking of those 7 systems on the 
-    benchmark subset of Da-TACOS. We encourage other CSI researchers to contribute to acoss with implementing 
-    their favorite feature extraction algorithms and their CSI systems to build up a knowledge base where 
+    For facilitating reproducibility in cover song identification (CSI) research, we propose a framework
+    for feature extraction and benchmarking in our supplementary repository: acoss. The feature extraction
+    component is designed to help CSI researchers to find the most commonly used features for CSI in a
+    single address. The parameter values we used to extract the features in Da-TACOS are shared in the
+    same repository. Moreover, the benchmarking component includes our implementations of 7 state-of-the-art
+    CSI systems. We provide the performance results of an initial benchmarking of those 7 systems on the
+    benchmark subset of Da-TACOS. We encourage other CSI researchers to contribute to acoss with implementing
+    their favorite feature extraction algorithms and their CSI systems to build up a knowledge base where
     CSI research can reach larger audiences.
 
     Pre-extracted features
     ----------------------
 
-    The list of features included in Da-TACOS can be seen below. All the features are extracted with acoss 
+    The list of features included in Da-TACOS can be seen below. All the features are extracted with acoss
     repository that uses open-source feature extraction libraries such as Essentia, LibROSA, and Madmom.
 
     To facilitate the use of the dataset, we provide two options regarding the file structure.
 
-    1. In da-tacos_benchmark_subset_single_files and da-tacos_coveranalysis_subset_single_files folders, 
-    we organize the data based on their respective cliques, and one file contains all the features for 
+    1. In da-tacos_benchmark_subset_single_files and da-tacos_coveranalysis_subset_single_files folders,
+    we organize the data based on their respective cliques, and one file contains all the features for
     that particular song.
 
     .. code-block:: python
@@ -81,10 +81,10 @@
         }
 
 
-    2. In da-tacos_benchmark_subset_FEATURE and da-tacos_coveranalysis_subset_FEATURE folders, 
-    the data is organized based on their cliques as well, but each of these folders contain only one 
-    feature per song. For instance, if you want to test your system that uses HPCP features, you can 
-    download da-tacos_benchmark_subset_hpcp to access the pre-computed HPCP features. An example for 
+    2. In da-tacos_benchmark_subset_FEATURE and da-tacos_coveranalysis_subset_FEATURE folders,
+    the data is organized based on their cliques as well, but each of these folders contain only one
+    feature per song. For instance, if you want to test your system that uses HPCP features, you can
+    download da-tacos_benchmark_subset_hpcp to access the pre-computed HPCP features. An example for
     the contents in those files can be seen below:
 
     .. code-block:: python
@@ -101,7 +101,15 @@ import logging
 import os
 from typing import Optional, TextIO
 
-import deepdish as dd
+try:
+    import deepdish as dd
+except ImportError:
+    logging.error(
+        "In order to use Da-TACOS you must have deepdish installed. "
+        "Please reinstall mirdata using `pip3 install 'mirdata[da_tacos]'"
+    )
+    raise ImportError
+
 from jams import JAMS
 import numpy as np
 
@@ -207,9 +215,13 @@ REMOTES = {
     ),
 }
 INDEXES = {
-    "default": "1.1_crema",
+    "default": "1.1_full",
     "test": "1.1_full",
-    "1.1_crema": core.Index(filename="da_tacos_index_1.1_crema.json"),
+    "crema": "1.1_crema",
+    "1.1_crema": core.Index(
+        filename="da_tacos_index_1.1_crema.json",
+        partial_download=["benchmark_crema", "coveranalysis_crema"],
+    ),
     "1.1_full": core.Index(filename="da_tacos_index_1.1_full.json"),
 }
 
@@ -372,7 +384,7 @@ class Track(core.Track):
 
 @io.coerce_to_string_io
 def load_cens(fhandle: TextIO):
-    """Load da_tacos cens features from a file
+    """Load Da-TACOS cens features from a file
 
     Args:
         fhandle (str or file-like): File-like object or path to chroma-cens file
@@ -386,7 +398,7 @@ def load_cens(fhandle: TextIO):
 
 @io.coerce_to_string_io
 def load_crema(fhandle: TextIO):
-    """Load da_tacos crema features from a file
+    """Load Da-TACOS crema features from a file
 
     Args:
         fhandle (str or file-like): File-like object or path to crema file
@@ -400,7 +412,7 @@ def load_crema(fhandle: TextIO):
 
 @io.coerce_to_string_io
 def load_hpcp(fhandle: TextIO):
-    """Load da_tacos hpcp features from a file
+    """Load Da-TACOS hpcp features from a file
 
     Args:
         fhandle (str or file-like): File-like object or path to hpcp file
@@ -414,7 +426,7 @@ def load_hpcp(fhandle: TextIO):
 
 @io.coerce_to_string_io
 def load_key(fhandle: TextIO):
-    """Load da_tacos key features from a file.
+    """Load Da-TACOS key features from a file.
 
     Args:
         fhandle (str or file-like): File-like object or path to key file
@@ -431,7 +443,7 @@ def load_key(fhandle: TextIO):
 
 @io.coerce_to_string_io
 def load_madmom(fhandle: TextIO):
-    """Load da_tacos madmom features from a file
+    """Load Da-TACOS madmom features from a file
 
     Args:
         fhandle (str or file-like): File-like object or path to madmom file
@@ -445,7 +457,7 @@ def load_madmom(fhandle: TextIO):
 
 @io.coerce_to_string_io
 def load_mfcc(fhandle: TextIO):
-    """Load da_tacos mfcc from a file
+    """Load Da-TACOS mfcc from a file
 
     Args:
         fhandle (str or file-like): File-like object or path to mfcc file
@@ -459,7 +471,7 @@ def load_mfcc(fhandle: TextIO):
 
 @io.coerce_to_string_io
 def load_tags(fhandle: TextIO):
-    """Load da_tacos tags from a file
+    """Load Da-TACOS tags from a file
 
     Args:
         fhandle (str or file-like): File-like object or path to tags file
@@ -549,7 +561,7 @@ class Dataset(core.Dataset):
         return load_tags(*args, **kwargs)
 
     def filter_index(self, search_key):
-        """Load from da_tacos genre dataset the indexes that match with search_key.
+        """Load from Da-TACOS genre dataset the indexes that match with search_key.
 
         Args:
             search_key (str): regex to match with folds, mbid or genres
@@ -562,7 +574,7 @@ class Dataset(core.Dataset):
         return data
 
     def benchmark_tracks(self):
-        """Load from da_tacos dataset the benchmark subset tracks.
+        """Load from Da-TACOS dataset the benchmark subset tracks.
 
         Returns:
             dict: {`track_id`: track data}
@@ -571,7 +583,7 @@ class Dataset(core.Dataset):
         return self.filter_index("benchmark#")
 
     def coveranalysis_tracks(self):
-        """Load from da_tacos dataset the coveranalysis subset tracks.
+        """Load from Da-TACOS dataset the coveranalysis subset tracks.
 
         Returns:
             dict: {`track_id`: track data}

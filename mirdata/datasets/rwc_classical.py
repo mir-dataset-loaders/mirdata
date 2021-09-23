@@ -50,18 +50,13 @@
 
 """
 import csv
-import logging
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 BIBTEX = """@inproceedings{goto2002rwc,
   title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
@@ -273,7 +268,7 @@ def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
     if not begs:  # some files are empty
         return None
 
-    return annotations.SectionData(np.array([begs, ends]).T, secs)
+    return annotations.SectionData(np.array([begs, ends]).T, "s", secs, "open")
 
 
 def _position_in_bar(beat_positions, beat_times):
@@ -336,7 +331,9 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
         np.array(beat_positions), np.array(beat_times)
     )
 
-    return annotations.BeatData(beat_times, beat_positions_in_bar.astype(int))
+    return annotations.BeatData(
+        beat_times, "s", beat_positions_in_bar.astype(int), "bar_index"
+    )
 
 
 def _duration_to_sec(duration):

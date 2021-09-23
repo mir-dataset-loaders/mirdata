@@ -33,9 +33,18 @@ release = mirdata_version.version
 # Show only copyright
 show_authors = False
 
-
 # -- Mock dependencies -------------------------------------------------------
-autodoc_mock_imports = ["librosa", "numpy", "jams", "pretty_midi", "DALI", "music21", "deepdish"]
+autodoc_mock_imports = [
+    "librosa",
+    "numpy",
+    "jams",
+    "pretty_midi",
+    "DALI",
+    "music21",
+    "deepdish",
+    "yaml",
+    "scipy",
+]
 
 # # -- General configuration ---------------------------------------------------
 

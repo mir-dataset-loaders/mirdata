@@ -92,7 +92,7 @@ def test_cite_and_license():
 
 
 KNOWN_ISSUES = {}  # key is module, value is REMOTE key
-DOWNLOAD_EXCEPTIONS = ["maestro"]
+DOWNLOAD_EXCEPTIONS = ["maestro", "slakh"]
 
 
 def test_download(mocker):
@@ -334,11 +334,9 @@ EXCEPTIONS = {
     "guitarset": {
         "load_pitch_contour": {"string_num": 1},
         "load_notes": {"string_num": 1},
+        "load_chords": {"leadsheet_version": False},
     },
-    "saraga": {
-        "load_tempo": {"iam_style": "carnatic"},
-        "load_sections": {"iam_style": "carnatic"},
-    },
+    "tonas": {"load_f0": {"corrected": True}},
 }
 SKIP = {
     "acousticbrainz_genre": [

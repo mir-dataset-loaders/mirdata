@@ -171,6 +171,14 @@ irmas
    :inherited-members:
 
 
+mtg_jamendo_autotagging_moodtheme
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.mtg_jamendo_autotagging_moodtheme
+   :members:
+   :inherited-members:
+
+
 maestro
 ^^^^^^^
 
@@ -278,6 +286,14 @@ saraga_hindustani
 ^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.saraga_hindustani
+   :members:
+   :inherited-members:
+
+
+slakh
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.slakh
    :members:
    :inherited-members:
 

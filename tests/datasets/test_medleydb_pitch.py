@@ -17,13 +17,20 @@ def test_track():
         + "medleydb_pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",
         "pitch_path": "tests/resources/mir_datasets/"
         + "medleydb_pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv",
+        "notes_pyin_path": "tests/resources/mir_datasets/medleydb_pitch/"
+        + "medleydb-pitch-pyin-notes/AClassicEducation_"
+        + "NightOwl_STEM_08_vamp_pyin_pyin_notes.csv",
         "instrument": "male singer",
         "artist": "AClassicEducation",
         "title": "NightOwl",
         "genre": "Singer/Songwriter",
     }
 
-    expected_property_types = {"pitch": annotations.F0Data, "audio": tuple}
+    expected_property_types = {
+        "pitch": annotations.F0Data,
+        "notes_pyin": annotations.NoteData,
+        "audio": tuple,
+    }
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -46,7 +53,7 @@ def test_to_jams():
         {"frequency": 0.0, "index": 0, "voiced": False},
         {"frequency": 191.877, "index": 0, "voiced": True},
     ]
-    assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
+    assert [f0.confidence for f0 in f0s] == [None, None]
 
     assert jam["file_metadata"]["title"] == "NightOwl"
     assert jam["file_metadata"]["artist"] == "AClassicEducation"
@@ -61,17 +68,45 @@ def test_load_pitch():
     pitch_data = medleydb_pitch.load_pitch(pitch_path)
 
     # check types
-    assert type(pitch_data) == annotations.F0Data
-    assert type(pitch_data.times) is np.ndarray
-    assert type(pitch_data.frequencies) is np.ndarray
-    assert type(pitch_data.confidence) is np.ndarray
+    assert isinstance(pitch_data, annotations.F0Data)
+    assert isinstance(pitch_data.times, np.ndarray)
+    assert isinstance(pitch_data.frequencies, np.ndarray)
+    assert isinstance(pitch_data.voicing, np.ndarray)
 
     # check values
     assert np.array_equal(
         pitch_data.times, np.array([0.06965986394557823, 0.07546485260770976])
     )
     assert np.array_equal(pitch_data.frequencies, np.array([0.0, 191.877]))
-    assert np.array_equal(pitch_data.confidence, np.array([0.0, 1.0]))
+    assert np.array_equal(pitch_data.voicing, np.array([0.0, 1.0]))
+
+
+def test_load_notes():
+    note_path = (
+        "tests/resources/mir_datasets/medleydb_pitch/"
+        + "medleydb-pitch-pyin-notes/AClassicEducation_"
+        + "NightOwl_STEM_08_vamp_pyin_pyin_notes.csv"
+    )
+    note_data = medleydb_pitch.load_notes(note_path)
+
+    # check types
+    assert isinstance(note_data, annotations.NoteData)
+
+    # check values
+    assert np.allclose(
+        note_data.intervals,
+        np.array([[0.1044898, 0.31346939], [0.53986395, 0.73723356]]),
+    )
+    assert np.allclose(note_data.pitches, np.array([229.67, 193.925]))
+    assert note_data.confidence is None
+
+    note_path = (
+        "tests/resources/mir_datasets/medleydb_pitch/"
+        + "medleydb-pitch-pyin-notes/AimeeNorwich_"
+        + "Flying_STEM_15_vamp_pyin_pyin_notes.csv"
+    )
+    note_data = medleydb_pitch.load_notes(note_path)
+    assert note_data is None
 
 
 def test_load_metadata():

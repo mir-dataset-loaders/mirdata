@@ -44,18 +44,12 @@
     For more details, please visit: https://www.upf.edu/web/mtg/phenicx-anechoic
 
 """
-import logging
-import os, glob, re
-import jams
-import librosa
-import numpy as np
 from typing import BinaryIO, Optional, TextIO, Tuple, cast
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+import librosa
+import numpy as np
+
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
@@ -128,7 +122,8 @@ class Track(core.Track):
         track_id (str): track id
 
     Cached Properties:
-        melody (F0Data): melody annotation
+        notes (NoteData): notes annotations that have been time-aligned to the audio
+        notes_original (NoteData): original score representation, not time-aligned
 
     """
 
@@ -328,23 +323,14 @@ class MultiTrack(core.MultiTrack):
             NoteData: Note data for the tracks
 
         """
-        values = []
-        intervals = []
+        notes_target = None
         for k in track_keys:
             score = getattr(self.tracks[k], notes_property)
-            values.append(score.notes)
-            intervals.append(score.intervals)
-        values = np.hstack(values)
-        intervals = np.vstack(intervals)
-
-        #### sort on the start time
-        ind = np.argsort(intervals[:, 0], axis=0)
-        start_times = np.take_along_axis(intervals[:, 0], ind, axis=0)
-        end_times = np.take_along_axis(intervals[:, 1], ind, axis=0)
-        intervals = np.vstack([start_times, end_times]).T
-        values = np.take_along_axis(values, ind, axis=0)
-
-        return annotations.NoteData(intervals, values)
+            if notes_target is None:
+                notes_target = score
+            else:
+                notes_target += score
+        return notes_target
 
     def get_notes_for_instrument(self, instrument, notes_property="notes"):
         """Get the notes for a particular instrument
@@ -411,7 +397,7 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
         [librosa.note_to_hz(line.split(",")[2].strip("\n")) for line in content]
     )
 
-    return annotations.NoteData(intervals, values)
+    return annotations.NoteData(intervals, "s", values, "hz")
 
 
 @core.docstring_inherit(core.Dataset)

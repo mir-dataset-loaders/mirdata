@@ -37,7 +37,9 @@ def test_track():
         "inferred_chords": annotations.ChordData,
         "key_mode": annotations.KeyData,
         "pitch_contours": dict,
+        "multif0": annotations.MultiF0Data,
         "notes": dict,
+        "notes_all": annotations.NoteData,
         "audio_mic": tuple,
         "audio_mix": tuple,
         "audio_hex": tuple,
@@ -51,6 +53,57 @@ def test_track():
 
     assert isinstance(track.pitch_contours["e"], annotations.F0Data)
     assert isinstance(track.notes["e"], annotations.NoteData)
+
+
+def test_notes_and_all_notes():
+    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    track = dataset.track("03_BN3-119-G_solo")
+    notes_all = track.notes_all
+    for note in track.notes.values():
+        if note is None:
+            continue
+        for interval, pitch in zip(note.intervals, note.pitches):
+            assert interval in notes_all.intervals
+            assert int(pitch) in notes_all.pitches.astype(int)
+        assert note.interval_unit == notes_all.interval_unit
+        assert note.pitch_unit == notes_all.pitch_unit
+        assert note.confidence_unit == notes_all.confidence_unit
+
+
+def test_contours_and_multif0():
+    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    track = dataset.track("03_BN3-119-G_solo")
+    multif0 = track.multif0
+    for contour in track.pitch_contours.values():
+        if contour is None:
+            continue
+        assert np.allclose(contour.times[:100], multif0.times[:100])
+        for i, f in enumerate(contour.frequencies):
+            if f > 0:
+                assert f in multif0.frequency_list[i]
+            else:
+                assert f not in multif0.frequency_list[i]
+
+        assert contour.time_unit == multif0.time_unit
+        assert contour.frequency_unit == multif0.frequency_unit
+
+
+def test_fill_pitch_contour():
+    times = np.array([1, 3, 4, 6])
+    freqs = np.array([40, 50, 60, 70])
+    voicings = np.array([1, 1, 1, 1])
+    t, f, v = guitarset._fill_pitch_contour(times, freqs, voicings, 7, 1)
+    te = np.array([0, 1, 2, 3, 4, 5, 6])
+    fe = np.array([0, 40, 0, 50, 60, 0, 70])
+    ve = np.array([0, 1, 0, 1, 1, 0, 1])
+    assert np.array_equal(t, te)
+    assert np.array_equal(f, fe)
+    assert np.array_equal(v, ve)
+
+    t, f, v = guitarset._fill_pitch_contour(times, freqs, voicings, 8, 1, duration=7)
+    assert np.array_equal(t, te)
+    assert np.array_equal(f, fe)
+    assert np.array_equal(v, ve)
 
 
 def test_load_beats():
@@ -90,34 +143,34 @@ def test_load_contours():
     assert np.allclose(
         track.pitch_contours["e"].times[:10],
         [
-            0.7670358269999724,
-            0.7728408159999844,
-            0.778645804000007,
-            0.7844507929999054,
-            0.7902557819999174,
-            0.79606076999994,
-            0.801865758999952,
-            0.8076707479999641,
-            0.8134757359999867,
-            0.8192807249999987,
+            0.0,
+            0.00580499,
+            0.01160998,
+            0.01741497,
+            0.02321995,
+            0.02902494,
+            0.03482993,
+            0.04063492,
+            0.04643991,
+            0.0522449,
         ],
     )
     assert np.allclose(
         track.pitch_contours["e"].frequencies[:10],
         [
-            393.388,
-            393.301,
-            393.386,
-            393.348,
-            393.377,
-            393.389,
-            393.389,
-            393.351,
-            393.352,
-            393.37,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
         ],
     )
-    assert track.pitch_contours["e"].confidence is None
+    assert track.pitch_contours["e"]._confidence is None
 
 
 def test_load_notes():
@@ -132,7 +185,8 @@ def test_load_notes():
         track.notes["e"].intervals[:, 1], [1.2604598639455844, 1.7336798185940552, 2.0]
     )
     assert np.allclose(
-        track.notes["e"].notes, [67.0576287044242, 71.03221526299762, 71.03297250121584]
+        track.notes["e"].pitches,
+        [67.0576287044242, 71.03221526299762, 71.03297250121584],
     )
     assert track.notes["e"].confidence is None
 

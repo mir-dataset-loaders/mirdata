@@ -57,7 +57,7 @@ def test_to_jams():
         {"frequency": 0.0, "index": 0, "voiced": False},
         {"frequency": 965.992, "index": 0, "voiced": True},
     ]
-    assert [f0.confidence for f0 in f0s] == [0.0, 1.0]
+    assert [f0.confidence for f0 in f0s] == [None, None]
 
     assert jam["file_metadata"]["title"] == "Beethoven"
     assert jam["file_metadata"]["artist"] == "MusicDelta"
@@ -72,17 +72,17 @@ def test_load_melody():
     melody_data = medleydb_melody.load_melody(melody_path)
 
     # check types
-    assert type(melody_data) == annotations.F0Data
-    assert type(melody_data.times) is np.ndarray
-    assert type(melody_data.frequencies) is np.ndarray
-    assert type(melody_data.confidence) is np.ndarray
+    assert isinstance(melody_data, annotations.F0Data)
+    assert isinstance(melody_data.times, np.ndarray)
+    assert isinstance(melody_data.frequencies, np.ndarray)
+    assert isinstance(melody_data.voicing, np.ndarray)
 
     # check values
     assert np.array_equal(
         melody_data.times, np.array([0.0058049886621315194, 0.052244897959183675])
     )
     assert np.array_equal(melody_data.frequencies, np.array([0.0, 965.99199999999996]))
-    assert np.array_equal(melody_data.confidence, np.array([0.0, 1.0]))
+    assert np.array_equal(melody_data.voicing, np.array([0.0, 1.0]))
 
 
 def test_load_melody3():
@@ -100,26 +100,20 @@ def test_load_melody3():
     assert type(melody_data.confidence_list) is list
 
     # check values
-    assert np.array_equal(
+    assert np.allclose(
         melody_data.times,
-        np.array([0.046439909297052155, 0.052244897959183675, 0.1219047619047619]),
+        np.array([0.046439909297052155, 0.052244897959183675, 0.05804989]),
     )
     assert melody_data.frequency_list == [
-        [0.0, 0.0, 497.01600000000002, 0.0, 0.0],
-        [965.99199999999996, 996.46799999999996, 497.10599999999999, 0.0, 0.0],
-        [
-            987.32000000000005,
-            987.93200000000002,
-            495.46800000000002,
-            495.29899999999998,
-            242.98699999999999,
-        ],
+        [497.01600000000002],
+        [965.99199999999996, 996.46799999999996, 497.10599999999999],
+        [990.107, 997.608, 497.138],
     ]
 
     assert melody_data.confidence_list == [
-        [0.0, 0.0, 1.0, 0.0, 0.0],
-        [1.0, 1.0, 1.0, 0.0, 0.0],
-        [1.0, 1.0, 1.0, 1.0, 1.0],
+        [1.0],
+        [1.0, 1.0, 1.0],
+        [1.0, 1.0, 1.0],
     ]
 
 

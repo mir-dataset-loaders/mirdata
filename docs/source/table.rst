@@ -48,7 +48,8 @@
    * - cante100
      - - audio: 🔑
        - annotations: ✅
-     - :ref:`f0`
+     - - :ref:`f0`
+       - Vocal :ref:`notes`
      - 100
      - :cante:`\ `
 
@@ -199,7 +200,15 @@
        - :ref:`genre`
      - 9579
      - .. image:: https://licensebuttons.net/l/by-nc-sa/3.0/80x15.png
-          :target: https://creativecommons.org/licenses/by-sa/3.0
+          :target: https://creativecommons.org/licenses/by-nc-sa/3.0
+
+   * - MTG_jamendo_autotagging_moodtheme
+     - - audio: ✅
+       - annotations: ✅
+     - - moodtheme annotations
+     - 18448
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - MAESTRO
      - - audio: ✅
@@ -330,6 +339,15 @@
      - 108
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - Slakh
+     - - multitrack audio: ✅
+       - annotations: ✅
+     - - Notes :ref:`notes`
+       - Instruments :ref:`instruments`
+     - 1710
+     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by/4.0/
 
    * - Tinysol
      - - audio: ✅
