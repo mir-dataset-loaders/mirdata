@@ -136,9 +136,7 @@ class Track(core.Track):
         self.data_split = None  # for baby_slakh, there are no data splits - set to None
         if index["version"] == "2100-redux":
             self.data_split = self._track_paths["metadata"][0].split(os.sep)[1]
-            assert (
-                self.data_split in SPLITS
-            ), "{} not a valid split - should be one of {}.".format(
+            assert self.data_split in SPLITS, "{} not a valid split - should be one of {}.".format(
                 self.data_split, SPLITS
             )
 
@@ -239,9 +237,7 @@ class MultiTrack(core.MultiTrack):
 
     """
 
-    def __init__(
-        self, mtrack_id, data_home, dataset_name, index, track_class, metadata
-    ):
+    def __init__(self, mtrack_id, data_home, dataset_name, index, track_class, metadata):
         super().__init__(
             mtrack_id=mtrack_id,
             data_home=data_home,
@@ -336,30 +332,20 @@ class MultiTrack(core.MultiTrack):
         """
         groups = {}
         submixes = {}
-        tracks_with_audio = [
-            track for track in self.tracks.values() if track.audio_path
-        ]
+        tracks_with_audio = [track for track in self.tracks.values() if track.audio_path]
         in_group = []
         for group in target_groups:
             groups[group] = [
-                track.track_id
-                for track in tracks_with_audio
-                if track.mixing_group == group
+                track.track_id for track in tracks_with_audio if track.mixing_group == group
             ]
             in_group.extend(groups[group])
 
-            submixes[group] = (
-                None if len(groups[group]) == 0 else self.get_target(groups[group])
-            )
+            submixes[group] = None if len(groups[group]) == 0 else self.get_target(groups[group])
 
         groups["other"] = [
-            track.track_id
-            for track in tracks_with_audio
-            if track.track_id not in in_group
+            track.track_id for track in tracks_with_audio if track.track_id not in in_group
         ]
-        submixes["other"] = (
-            None if len(groups["other"]) == 0 else self.get_target(groups["other"])
-        )
+        submixes["other"] = None if len(groups["other"]) == 0 else self.get_target(groups["other"])
         return submixes, groups
 
 
@@ -380,7 +366,9 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The slakh dataset"""
+    """
+    The slakh dataset
+    """
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
