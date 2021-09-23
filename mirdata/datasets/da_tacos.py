@@ -46,6 +46,7 @@
     CSI research can reach larger audiences.
 
     Pre-extracted features
+    ----------------------
 
     The list of features included in Da-TACOS can be seen below. All the features are extracted with acoss 
     repository that uses open-source feature extraction libraries such as Essentia, LibROSA, and Madmom.
@@ -132,7 +133,9 @@ REMOTES = {
     ),
     "benchmark_crema": download_utils.RemoteFileMetadata(
         filename="da-tacos_benchmark_subset_crema.zip",
-        url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_crema.zip?download=1",
+        url=(
+            "https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_crema.zip?download=1"
+        ),
         checksum="c702a3b97a60081311bf8e7fae7b433b",
         destination_dir=".",
     ),
@@ -502,9 +505,7 @@ class Dataset(core.Dataset):
             )
             if not os.path.exists(path_subset):
                 raise FileNotFoundError(
-                    "Metadata file {} not found. Did you run .download()?".format(
-                        path_subset
-                    )
+                    "Metadata file {} not found. Did you run .download()?".format(path_subset)
                 )
 
             metadata_paths.append(path_subset)
