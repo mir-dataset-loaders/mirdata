@@ -727,6 +727,8 @@ We use the following libraries for loading data from files:
 +-------------------------+-------------+
 | yaml                    | pyyaml      |
 +-------------------------+-------------+
+| hdf5 / h5               | h5py        |
++-------------------------+-------------+
 
 If a file format needed for a dataset is not included in this list, please see `this section <extra_dependencies_>`_
 
