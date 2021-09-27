@@ -40,7 +40,7 @@ if __name__ == "__main__":
             "chardet",
             "pyyaml",
             "scipy",
-            "h5py >= 3.4.0",
+            "h5py >= 2.10.0",
         ],
         extras_require={
             "tests": [
