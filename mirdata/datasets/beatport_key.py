@@ -326,7 +326,7 @@ class Dataset(core.Dataset):
             directory (str): path to directory
             find (str): string from replace
             replace (str): string to replace
-            pattern (str): regex that must match the directories searrched
+            pattern (str): regex that must match the directories searched
 
         """
         for path, dirs, files in os.walk(os.path.abspath(directory)):

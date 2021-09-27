@@ -33,7 +33,6 @@ release = mirdata_version.version
 # Show only copyright
 show_authors = False
 
-
 # -- Mock dependencies -------------------------------------------------------
 autodoc_mock_imports = [
     "librosa",
@@ -42,11 +41,11 @@ autodoc_mock_imports = [
     "pretty_midi",
     "DALI",
     "music21",
+    "h5py",
     "yaml",
     "scipy",
     "smart_open",
 ]
-
 
 # # -- General configuration ---------------------------------------------------
 

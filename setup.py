@@ -40,6 +40,7 @@ if __name__ == "__main__":
             "chardet",
             "pyyaml",
             "scipy",
+            "h5py >= 2.10.0",
             "smart_open >= 5.0.0",
         ],
         extras_require={

@@ -20,6 +20,7 @@ acousticbrainz_genre
    :members:
    :inherited-members:
 
+
 beatles
 ^^^^^^^
 
@@ -78,6 +79,14 @@ dali
 ^^^^
 
 .. automodule:: mirdata.datasets.dali
+   :members:
+   :inherited-members:
+
+
+da_tacos
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.da_tacos
    :members:
    :inherited-members:
 
