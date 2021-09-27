@@ -162,6 +162,14 @@ irmas
    :inherited-members:
 
 
+mtg_jamendo_autotagging_moodtheme
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.mtg_jamendo_autotagging_moodtheme
+   :members:
+   :inherited-members:
+
+
 maestro
 ^^^^^^^
 
