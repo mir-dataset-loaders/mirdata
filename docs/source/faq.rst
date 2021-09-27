@@ -61,6 +61,7 @@ No. All datasets have "mistakes", and we do not want to create another version o
 
 Does mirdata support data which lives off-disk?
 -----------------------------------------------
-Yes. While the simple useage of mirdata assumes that data lives on-disk, it can be used for off-disk data as well. 
+Yes! We use the smart_open_ library, which supports non-local filesystems such as GCS and AWS. 
 See :ref:`Remote Data Example` for details.
 
+.. _smart_open: https://pypi.org/project/smart-open/
