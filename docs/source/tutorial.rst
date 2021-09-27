@@ -135,7 +135,7 @@ Accessing annotations
 
 We can choose a random track from a dataset with the ``choice_track()`` method.
 
-.. admonition:: Example Index
+.. admonition:: Loading annotations
     :class: dropdown
 
     .. code-block:: python
@@ -165,7 +165,7 @@ We can choose a random track from a dataset with the ``choice_track()`` method.
 
 
 We can also access specific tracks by id. 
-The available track ids can be acessed via the `.track_ids` attribute.
+The available track ids can be acessed via the ``.track_ids`` attribute.
 In the next example we take the first track id, and then we retrieve the melody
 annotation.
 
@@ -194,12 +194,12 @@ Accessing data on non-local filesystems
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 mirdata uses the smart_open_ library, which supports non-local filesystems such as GCS and AWS.
-If your data lives, e.g. on Google Cloud Storage (GCS), simply set the `data_home` variable accordingly
+If your data lives, e.g. on Google Cloud Storage (GCS), simply set the ``data_home`` variable accordingly
 when initializing a dataset. For example:
 
 .. _smart_open: https://pypi.org/project/smart-open/
 
-.. admonition:: Accessing annotations remotely example
+.. admonition:: Accessing annotations remotely
     :class: dropdown
 
     .. code-block:: python
@@ -208,7 +208,7 @@ when initializing a dataset. For example:
 
         orchset = mirdata.initialize("orchset", data_home="gs://my-bucket/my-subfolder/orchset")
 
-        # everything should work the same as if the data was local
+        # everything should work the same as if the data were local
         orchset.validate()
 
         example_track = orchset.choice_track()
@@ -216,9 +216,9 @@ when initializing a dataset. For example:
         y, fs = example_track.audio_mono
 
 
-    Note that the data on the remote file system must have identical folder structure to what is specified by `dataset.download()`,
+    Note that the data on the remote file system must have identical folder structure to what is specified by ``dataset.download()``,
     and we do not support downloading (i.e. writing) to remote filesystems, only reading from them. To prepare a new dataset to use with mirdata,
-    we recommend running `dataset.download()` on a local filesystem, and then manually transfering the folder contents to the remote
+    we recommend running ``dataset.download()`` on a local filesystem, and then manually transfering the folder contents to the remote
     filesystem.
 
 .. admonition:: mp3 data
@@ -232,7 +232,7 @@ Annotation classes
 ^^^^^^^^^^^^^^^^^^
 
 ``mirdata`` defines annotation-specific data classes. These data classes are meant to standarize the format for
-all loaders, and are compatibly with `JAMS <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
+all loaders, and are compatibly with ``jams <https://jams.readthedocs.io/en/stable/>``_ and ``mir_eval <https://craffel.github.io/mir_eval/>``_.
 
 The list and descriptions of available annotation classes can be found in :ref:`annotations`.
 

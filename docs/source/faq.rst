@@ -31,7 +31,7 @@ Very often, data fails vaildation because of how the files are named or how the 
 
 How do you choose the data that is used to create the checksums?
 ----------------------------------------------------------------
-Whenever possible, the data downloaded using :code:`.download()` is the same data used to create the checksums. If this isn't possible, we did our best to get the data from the original source (the dataset creator) in order to create the checksum. If this is again not possible, we found as many versions of the data as we could from different users of the dataset, computed checksums on all of them and used the version which was the most common amongst them.
+Whenever possible, the data downloaded using :code:``.download()`` is the same data used to create the checksums. If this isn't possible, we did our best to get the data from the original source (the dataset creator) in order to create the checksum. If this is again not possible, we found as many versions of the data as we could from different users of the dataset, computed checksums on all of them and used the version which was the most common amongst them.
 
 
 Does mirdata provide data loaders for pytorch/Tensorflow?
@@ -42,7 +42,7 @@ Still, this library provides the necessary first step for building data loaders 
 For more information, see :ref:`Using mirdata with tensorflow`.
 
 
-A download link is broken for a loader's :code:`.download()` function. What do I do?
+A download link is broken for a loader's :code:``.download()`` function. What do I do?
 ------------------------------------------------------------------------------------
 Please open an issue_ and tag it with the "broken link" label.
 
