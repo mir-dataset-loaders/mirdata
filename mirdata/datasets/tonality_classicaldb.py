@@ -213,7 +213,6 @@ def load_key(fhandle: TextIO) -> str:
 
     Returns:
         str: musical key data
-
     """
     reader = csv.reader(fhandle, delimiter="\n")
     key = next(reader)[0]

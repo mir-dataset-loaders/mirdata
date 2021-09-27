@@ -26,7 +26,9 @@ and may be homogeneous.
 
 * 🔑 : Available upon request
 
-* 📺 : Youtube Links only
+* 📺 : Do-it-yourself download
+
+* 🧮 : Features only
 
 * ❌ : Not available
 
