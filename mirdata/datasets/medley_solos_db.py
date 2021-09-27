@@ -32,6 +32,7 @@ from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import core, download_utils, io, jams_utils
 
@@ -178,21 +179,19 @@ class Dataset(core.Dataset):
             self.data_home, "annotation", "Medley-solos-DB_metadata.csv"
         )
 
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
         metadata_index = {}
-        with open(metadata_path, "r") as fhandle:
-            csv_reader = csv.reader(fhandle, delimiter=",")
-            next(csv_reader)
-            for row in csv_reader:
-                subset, instrument_str, instrument_id, song_id, track_id = row
-                metadata_index[str(track_id)] = {
-                    "subset": str(subset),
-                    "instrument": str(instrument_str),
-                    "instrument_id": int(instrument_id),
-                    "song_id": int(song_id),
-                }
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.DictReader(fhandle, delimiter=",")
+                for row in csv_reader:
+                    metadata_index[str(row["uuid4"])] = {
+                        "subset": row["subset"],
+                        "instrument": row["instrument"],
+                        "instrument_id": int(row["instrument_id"]),
+                        "song_id": int(row["song_id"]),
+                    }
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
 

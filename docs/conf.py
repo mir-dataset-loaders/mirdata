@@ -44,6 +44,7 @@ autodoc_mock_imports = [
     "h5py",
     "yaml",
     "scipy",
+    "smart_open",
 ]
 
 # # -- General configuration ---------------------------------------------------

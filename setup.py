@@ -41,6 +41,7 @@ if __name__ == "__main__":
             "pyyaml",
             "scipy",
             "h5py >= 2.10.0",
+            "smart_open >= 5.0.0",
         ],
         extras_require={
             "tests": [
@@ -54,6 +55,7 @@ if __name__ == "__main__":
                 "coveralls>=1.7.0",
                 "types-PyYAML",
                 "types-chardet",
+                "smart_open[all] >= 5.0.0",
             ],
             "docs": [
                 "numpydoc",
@@ -64,5 +66,8 @@ if __name__ == "__main__":
             ],
             "dali": ["dali-dataset==1.1"],
             "haydn_op20": ["music21==6.7.1"],
+            "gcs": ["smart_open[gcs]"],
+            "s3": ["smart_open[s3]"],
+            "http": ["smart_open[http]"],
         },
     )

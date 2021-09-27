@@ -1325,3 +1325,8 @@ def test_duration():
     )
     assert jam4.file_metadata.duration == 1000
     assert jam4.validate()
+
+
+def test_mp3_remote_raises_error():
+    with pytest.raises(NotImplementedError):
+        jam = jams_utils.jams_converter(audio_path="gs://asdf/asdf.mp3")
