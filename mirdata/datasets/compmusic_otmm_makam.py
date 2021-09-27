@@ -37,6 +37,7 @@ from typing import TextIO
 
 import numpy as np
 from mirdata import annotations, core, download_utils, io, jams_utils
+from smart_open import open
 
 BIBTEX = """
 @software{sertan_senturk_2016_58413,
@@ -214,23 +215,24 @@ class Dataset(core.Dataset):
             "MTG-otmm_makam_recognition_dataset-f14c0d0",
             "annotations.json",
         )
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata = {}
-        with open(metadata_path) as f:
-            meta = json.load(f)
-            for i in meta:
-                index = i["mbid"].split("/")[-1]
-                metadata[index] = {
-                    "makam": i["makam"],
-                    "tonic": i["tonic"],
-                    "mbid": index,
-                }
+        try:
+            with open(metadata_path) as f:
+                meta = json.load(f)
+                for i in meta:
+                    index = i["mbid"].split("/")[-1]
+                    metadata[index] = {
+                        "makam": i["makam"],
+                        "tonic": i["tonic"],
+                        "mbid": index,
+                    }
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-            temp = metadata_path.split("/")[-2]
-            data_home = metadata_path.split(temp)[0]
-            metadata["data_home"] = data_home
+        temp = metadata_path.split("/")[-2]
+        data_home = metadata_path.split(temp)[0]
+        metadata["data_home"] = data_home
 
         return metadata
 

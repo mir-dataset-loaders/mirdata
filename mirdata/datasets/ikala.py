@@ -19,6 +19,7 @@ from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, jams_utils, io
 
@@ -389,16 +390,16 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         id_map_path = os.path.join(self.data_home, "id_mapping.txt")
-        if not os.path.exists(id_map_path):
+        try:
+            with open(id_map_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter="\t")
+                singer_map = {}
+                for line in reader:
+                    if line[0] == "singer":
+                        continue
+                    singer_map[line[1]] = line[0]
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(id_map_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter="\t")
-            singer_map = {}
-            for line in reader:
-                if line[0] == "singer":
-                    continue
-                singer_map[line[1]] = line[0]
 
         return singer_map
 

@@ -31,6 +31,7 @@ from typing import BinaryIO, Optional, Tuple
 import librosa
 import numpy as np
 import pretty_midi
+from smart_open import open
 import yaml
 
 from mirdata import io, download_utils, jams_utils, core, annotations
@@ -144,8 +145,13 @@ class Track(core.Track):
 
     @core.cached_property
     def _track_metadata(self) -> dict:
-        with open(self.metadata_path, "r") as fhandle:
-            metadata = yaml.safe_load(fhandle)
+        try:
+            with open(self.metadata_path, "r") as fhandle:
+                metadata = yaml.safe_load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                f"track metadata for {self.track_id} not found. Did you run .download()?"
+            )
         return metadata["stems"][self.track_id.split("-")[1]]
 
     @property
@@ -266,8 +272,11 @@ class MultiTrack(core.MultiTrack):
 
     @core.cached_property
     def _multitrack_metadata(self) -> dict:
-        with open(self.metadata_path, "r") as fhandle:
-            metadata = yaml.safe_load(fhandle)
+        try:
+            with open(self.metadata_path, "r") as fhandle:
+                metadata = yaml.safe_load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
         return metadata
 
     @property

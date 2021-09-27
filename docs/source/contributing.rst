@@ -670,6 +670,43 @@ Objects
 Conventions
 ###########
 
+Opening files
+-------------
+
+Mirdata uses the smart_open library under the hood in order to support reading data from
+remote filesystems. If your loader needs to either call the python ``open`` command, or if
+it needs to use ``os.path.exists``, you'll need to include the line
+
+.. code-block:: python
+
+    from smart_open import open
+
+
+at the top of your dataset module and use ``open`` as you normally would.
+Sometimes dependency libraries accept file paths as input to certain functions and open the files
+internally - whenever possible mirdata avoids this, and passes in file-objects directly.
+
+If you just need ``os.path.exists``, you'll need to replace
+it with a try/except:
+
+.. code-block:: python
+
+    # original code that uses os.path.exists
+    file_path = "flululu.txt"
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"{file_path} not found, did you run .download?")
+    
+    with open(file_path, "r") as fhandle:
+        ...
+    
+    # replacement code that is compatible with remote filesystems
+    try:
+        with open(file_path, "r") as fhandle:
+            ...
+    except FileNotFoundError:
+        raise FileNotFoundError(f"{file_path} not found, did you run .download?")
+
+
 Loading from files
 ------------------
 
@@ -739,7 +776,7 @@ when data is available locally - when data is remote, the load methods are used 
 Missing Data
 ------------
 If a Track has a property, for example a type of annotation, that is present for some tracks and not others,
-the property should be set to `None` when it isn't available.
+the property should be set to ``None`` when it isn't available.
 
 The index should only contain key-values for files that exist.
 
@@ -769,16 +806,16 @@ and this decorator simply copies the docstring from another function.
 
 coerce_to_bytes_io/coerce_to_string_io
 --------------------------------------
-These are two decorators used to simplify the loading of various `Track` members
+These are two decorators used to simplify the loading of various ``Track`` members
 in addition to giving users the ability to use file streams instead of paths in
 case the data is in a remote location e.g. GCS. The decorators modify the function
 to:
 
-- Return `None` if `None` if passed in.
-- Open a file if a string path is passed in either `'w'` mode for `string_io` or `wb` for `bytes_io` and
+- Return ``None`` if ``None`` if passed in.
+- Open a file if a string path is passed in either ``'w'`` mode for ``string_io`` or ``wb`` for ``bytes_io`` and
   pass the file handle to the decorated function.
 - Pass the file handle to the decorated function if a file-like object is passed.
 
 This cannot be used if the function to be decorated takes multiple arguments.
-`coerce_to_bytes_io` should not be used if trying to load an mp3 with librosa as libsndfile does not support
-`mp3` yet and `audioread` expects a path.
+``coerce_to_bytes_io`` should not be used if trying to load an mp3 with librosa as libsndfile does not support
+``mp3`` yet and ``audioread`` expects a path.

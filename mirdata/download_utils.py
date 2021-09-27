@@ -11,6 +11,7 @@ import urllib
 import zipfile
 
 from tqdm import tqdm
+from smart_open import open, parse_uri
 
 from mirdata.validate import md5
 
@@ -81,7 +82,8 @@ def downloader(
     if cleanup:
         logging.warning(
             "Zip and tar files will be deleted after they are uncompressed. "
-            + "If you download this dataset again, it will overwrite existing files, even if force_overwrite=False"
+            + "If you download this dataset again, it will overwrite existing files, even if"
+            " force_overwrite=False"
         )
 
     if index.remote:
@@ -135,9 +137,10 @@ def downloader(
 
                     if not os.path.exists(source_dir):
                         logging.info(
-                            "Data not downloaded, because it probably already exists on your computer. "
-                            + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
-                            + "existing files and download from scratch"
+                            "Data not downloaded, because it probably already exists on your"
+                            " computer. "
+                            + "Run .validate() to check, or rerun with force_overwrite=True to"
+                            " delete any " + "existing files and download from scratch"
                         )
                         return
 
@@ -178,6 +181,14 @@ def download_from_remote(remote, save_dir, force_overwrite):
         str: Full path of the created file.
 
     """
+    file_uri = parse_uri(save_dir)
+    if file_uri.scheme != "file":
+        raise NotImplementedError(
+            "mirdata only supports downloading to a local filesystem. "
+            "To use mirdata with a remote filesystem, download to a local filesytem, "
+            "and transfer the data to your remote filesystem, setting data_home appropriately."
+        )
+
     if remote.destination_dir is None:
         download_dir = save_dir
     else:

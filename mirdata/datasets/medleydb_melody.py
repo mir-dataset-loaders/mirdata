@@ -19,10 +19,11 @@
 import csv
 import json
 import os
-from typing import BinaryIO, cast, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, io, jams_utils
 
@@ -261,11 +262,11 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "medleydb_melody_metadata.json")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                metadata = json.load(fhandle)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            metadata = json.load(fhandle)
 
         return metadata
 

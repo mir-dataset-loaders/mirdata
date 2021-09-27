@@ -49,6 +49,7 @@ from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import core, download_utils, io, jams_utils
 
@@ -240,31 +241,31 @@ class Dataset(core.Dataset):
             self.data_home, "annotation", "TinySOL_metadata.csv"
         )
 
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
         metadata_index = {}
-        with open(metadata_path, "r") as fhandle:
-            csv_reader = csv.reader(fhandle, delimiter=",")
-            next(csv_reader)
-            for row in csv_reader:
-                key = os.path.splitext(os.path.split(row[0])[1])[0]
-                metadata_index[key] = {
-                    "Fold": int(row[1]),
-                    "Family": row[2],
-                    "Instrument (abbr.)": row[3],
-                    "Instrument (in full)": row[4],
-                    "Technique (abbr.)": row[5],
-                    "Technique (in full)": row[6],
-                    "Pitch": row[7],
-                    "Pitch ID": int(row[8]),
-                    "Dynamics": row[9],
-                    "Dynamics ID": int(row[10]),
-                    "Instance ID": int(row[11]),
-                    "Resampled": (row[13] == "TRUE"),
-                }
-                if len(row[12]) > 0:
-                    metadata_index[key]["String ID"] = int(float(row[12]))
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.reader(fhandle, delimiter=",")
+                next(csv_reader)
+                for row in csv_reader:
+                    key = os.path.splitext(os.path.split(row[0])[1])[0]
+                    metadata_index[key] = {
+                        "Fold": int(row[1]),
+                        "Family": row[2],
+                        "Instrument (abbr.)": row[3],
+                        "Instrument (in full)": row[4],
+                        "Technique (abbr.)": row[5],
+                        "Technique (in full)": row[6],
+                        "Pitch": row[7],
+                        "Pitch ID": int(row[8]),
+                        "Dynamics": row[9],
+                        "Dynamics ID": int(row[10]),
+                        "Instance ID": int(row[11]),
+                        "Resampled": (row[13] == "TRUE"),
+                    }
+                    if len(row[12]) > 0:
+                        metadata_index[key]["String ID"] = int(float(row[12]))
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
 
