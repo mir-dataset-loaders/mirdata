@@ -45,8 +45,7 @@
     their favorite feature extraction algorithms and their CSI systems to build up a knowledge base where
     CSI research can reach larger audiences.
 
-    Pre-extracted features
-    ----------------------
+    Pre-extracted features:
 
     The list of features included in Da-TACOS can be seen below. All the features are extracted with acoss
     repository that uses open-source feature extraction libraries such as Essentia, LibROSA, and Madmom.
