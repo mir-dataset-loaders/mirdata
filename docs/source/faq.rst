@@ -43,7 +43,7 @@ For more information, see :ref:`Using mirdata with tensorflow`.
 
 
 A download link is broken for a loader's :code:``.download()`` function. What do I do?
-------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 Please open an issue_ and tag it with the "broken link" label.
 
 .. _issue: https://github.com/mir-dataset-loaders/mirdata/issues

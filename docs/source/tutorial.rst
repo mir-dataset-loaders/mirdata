@@ -232,7 +232,7 @@ Annotation classes
 ^^^^^^^^^^^^^^^^^^
 
 ``mirdata`` defines annotation-specific data classes. These data classes are meant to standarize the format for
-all loaders, and are compatibly with ``jams <https://jams.readthedocs.io/en/stable/>``_ and ``mir_eval <https://craffel.github.io/mir_eval/>``_.
+all loaders, and are compatibly with `jams <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
 The list and descriptions of available annotation classes can be found in :ref:`annotations`.
 
