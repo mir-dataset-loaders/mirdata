@@ -40,6 +40,7 @@ if __name__ == "__main__":
             "chardet",
             "pyyaml",
             "scipy",
+            "h5py >= 3.4.0",
         ],
         extras_require={
             "tests": [
@@ -62,7 +63,6 @@ if __name__ == "__main__":
                 "sphinx_rtd_theme",
             ],
             "dali": ["dali-dataset==1.1"],
-            "da_tacos": ["deepdish"],
             "haydn_op20": ["music21"],
         },
     )

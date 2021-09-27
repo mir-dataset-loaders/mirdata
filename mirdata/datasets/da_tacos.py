@@ -97,19 +97,10 @@
 
 """
 import json
-import logging
 import os
-from typing import Optional, TextIO
+from typing import Optional, BinaryIO
 
-try:
-    import deepdish as dd
-except ImportError:
-    logging.error(
-        "In order to use Da-TACOS you must have deepdish installed. "
-        "Please reinstall mirdata using `pip3 install 'mirdata[da_tacos]'"
-    )
-    raise ImportError
-
+import h5py
 from jams import JAMS
 import numpy as np
 
@@ -131,13 +122,11 @@ REMOTES = {
         filename="da-tacos_metadata.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_metadata.zip?download=1",
         checksum="b8aed83c45687a6bac76de3da1799237",
-        destination_dir=".",
     ),
     "benchmark_cens": download_utils.RemoteFileMetadata(
         filename="da-tacos_benchmark_subset_cens.zip",
         url="https://zenodo.org/record/4717628/files/da-tacos_benchmark_subset_cens.zip?download=1",
         checksum="b32aab63ee401f0f8baec8aa35eb0975",
-        destination_dir=".",
     ),
     "benchmark_crema": download_utils.RemoteFileMetadata(
         filename="da-tacos_benchmark_subset_crema.zip",
@@ -145,79 +134,66 @@ REMOTES = {
             "https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_crema.zip?download=1"
         ),
         checksum="c702a3b97a60081311bf8e7fae7b433b",
-        destination_dir=".",
     ),
     "benchmark_hpcp": download_utils.RemoteFileMetadata(
         filename="da-tacos_benchmark_subset_hpcp.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_hpcp.zip?download=1",
         checksum="f92cf3d00cc3195572381d6bbcc086de",
-        destination_dir=".",
     ),
     "benchmark_key": download_utils.RemoteFileMetadata(
         filename="da-tacos_benchmark_subset_key.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_key.zip?download=1",
         checksum="f4e6b05fa9ab46002357f371a8b0e97e",
-        destination_dir=".",
     ),
     "benchmark_madmom": download_utils.RemoteFileMetadata(
         filename="da-tacos_benchmark_subset_madmom.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_madmom.zip?download=1",
         checksum="8beb1d8fa39f95b79d5f502a41fd5f0c",
-        destination_dir=".",
     ),
     "benchmark_mfcc": download_utils.RemoteFileMetadata(
         filename="da-tacos_benchmark_subset_mfcc.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_benchmark_subset_mfcc.zip?download=1",
         checksum="a3be0cd80754043a8c238cf501062789",
-        destination_dir=".",
     ),
     "coveranalysis_tags": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_tags.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_tags.zip?download=1",
         checksum="4b9d4cd5beca571e1d614c9a77580f8c",
-        destination_dir=".",
     ),
     "coveranalysis_cens": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_cens.zip",
         url="https://zenodo.org/record/4717628/files/da-tacos_coveranalysis_subset_cens.zip?download=1",
         checksum="7eb56dd3a44fa7d90cc6643bc446e79b",
-        destination_dir=".",
     ),
     "coveranalysis_crema": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_crema.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_crema.zip?download=1",
         checksum="70252fe115e1ab4c4d74698d4ad68f4b",
-        destination_dir=".",
     ),
     "coveranalysis_hpcp": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_hpcp.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_hpcp.zip?download=1",
         checksum="961784fc2419214adf05504e9fc56cc2",
-        destination_dir=".",
     ),
     "coveranalysis_key": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_key.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_key.zip?download=1",
         checksum="6e72db855bad5805a67382bd318eee9c",
-        destination_dir=".",
     ),
     "coveranalysis_madmom": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_madmom.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_madmom.zip?download=1",
         checksum="42482eedfe9d9a8be9db3611b9d343b4",
-        destination_dir=".",
     ),
     "coveranalysis_mfcc": download_utils.RemoteFileMetadata(
         filename="da-tacos_coveranalysis_subset_mfcc.zip",
         url="https://zenodo.org/record/3520368/files/da-tacos_coveranalysis_subset_mfcc.zip?download=1",
         checksum="11371910cad7012daaa81a5fe9dfa1c0",
-        destination_dir=".",
     ),
 }
 INDEXES = {
     "default": "1.1_full",
     "test": "1.1_full",
-    "crema": "1.1_crema",
     "1.1_crema": core.Index(
         filename="da_tacos_index_1.1_crema.json",
         partial_download=["benchmark_crema", "coveranalysis_crema"],
@@ -244,7 +220,6 @@ class Track(core.Track):
         madmom_path (str): madmom annotation path
         mfcc_path (str): mfcc annotation path
         tags_path (str): tags annotation path
-        track_id (str): track id
 
     Properties:
         work_title (str): title of the work
@@ -382,8 +357,8 @@ class Track(core.Track):
         )
 
 
-@io.coerce_to_string_io
-def load_cens(fhandle: TextIO):
+@io.coerce_to_bytes_io
+def load_cens(fhandle: BinaryIO):
     """Load Da-TACOS cens features from a file
 
     Args:
@@ -393,11 +368,11 @@ def load_cens(fhandle: TextIO):
         np.ndarray: cens features
 
     """
-    return dd.io.load(fhandle.name)["chroma_cens"]
+    return h5py.File(fhandle, "r")["chroma_cens"][()]
 
 
-@io.coerce_to_string_io
-def load_crema(fhandle: TextIO):
+@io.coerce_to_bytes_io
+def load_crema(fhandle: BinaryIO):
     """Load Da-TACOS crema features from a file
 
     Args:
@@ -407,11 +382,11 @@ def load_crema(fhandle: TextIO):
         np.ndarray: crema features
 
     """
-    return dd.io.load(fhandle.name)["crema"]
+    return h5py.File(fhandle, "r")["crema"][()]
 
 
-@io.coerce_to_string_io
-def load_hpcp(fhandle: TextIO):
+@io.coerce_to_bytes_io
+def load_hpcp(fhandle: BinaryIO):
     """Load Da-TACOS hpcp features from a file
 
     Args:
@@ -421,28 +396,47 @@ def load_hpcp(fhandle: TextIO):
         np.ndarray: hpcp features
 
     """
-    return dd.io.load(fhandle.name)["hpcp"]
+    return h5py.File(fhandle, "r")["hpcp"][()]
 
 
-@io.coerce_to_string_io
-def load_key(fhandle: TextIO):
+def _dict_from_h5py(fhandle, record_key):
+    """Loads dictionary information from an hdf5 file.
+
+    Args:
+        fhandle (file-like): Open file, in binary read mode
+        record_key (str): the name of the record key to load
+
+    Returns:
+        dict: data loaded from record key of the open file
+    """
+    with h5py.File(fhandle, "r") as open_file:
+        dict_output = {
+            attr: open_file[record_key].attrs[attr]
+            for attr in list(open_file[record_key].attrs.keys())
+            if attr.lower() == attr
+        }
+    return dict_output
+
+
+@io.coerce_to_bytes_io
+def load_key(fhandle: BinaryIO):
     """Load Da-TACOS key features from a file.
 
     Args:
         fhandle (str or file-like): File-like object or path to key file
 
     Returns:
-        dict: key
+        dict: key, mode and confidence
 
     Examples:
         {'key': 'C', 'scale': 'major', 'strength': 0.8449875116348267}
 
     """
-    return dd.io.load(fhandle.name)["key_extractor"]
+    return _dict_from_h5py(fhandle, "key_extractor")
 
 
-@io.coerce_to_string_io
-def load_madmom(fhandle: TextIO):
+@io.coerce_to_bytes_io
+def load_madmom(fhandle: BinaryIO):
     """Load Da-TACOS madmom features from a file
 
     Args:
@@ -452,25 +446,25 @@ def load_madmom(fhandle: TextIO):
         dict: madmom features, with keys 'novfn', 'onsets', 'snovfn', 'tempos
 
     """
-    return dd.io.load(fhandle.name)["madmom_features"]
+    return _dict_from_h5py(fhandle, "madmom_features")
 
 
-@io.coerce_to_string_io
-def load_mfcc(fhandle: TextIO):
+@io.coerce_to_bytes_io
+def load_mfcc(fhandle: BinaryIO):
     """Load Da-TACOS mfcc from a file
 
     Args:
         fhandle (str or file-like): File-like object or path to mfcc file
 
     Returns:
-        np.ndarray: mfcc
+        np.ndarray: array of mfccs over time
 
     """
-    return dd.io.load(fhandle.name)["mfcc_htk"]
+    return h5py.File(fhandle, "r")["mfcc_htk"][()]
 
 
-@io.coerce_to_string_io
-def load_tags(fhandle: TextIO):
+@io.coerce_to_bytes_io
+def load_tags(fhandle: BinaryIO):
     """Load Da-TACOS tags from a file
 
     Args:
@@ -483,13 +477,18 @@ def load_tags(fhandle: TextIO):
         [('rock', '0.127'), ('pop', '0.014'), ...]
 
     """
-    return dd.io.load(fhandle.name)["tags"]
+    with h5py.File(fhandle, "r") as open_file:
+        tuples = [
+            (open_file["tags"][k].attrs["i0"], open_file["tags"][k].attrs["i1"])
+            for k in open_file["tags"].keys()
+        ]
+    return tuples
 
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The Da-TACOS genre dataset
+    The Da-TACOS dataset
     """
 
     def __init__(self, data_home=None, version="default"):

@@ -41,7 +41,7 @@ autodoc_mock_imports = [
     "pretty_midi",
     "DALI",
     "music21",
-    "deepdish",
+    "h5py",
     "yaml",
     "scipy",
 ]
