@@ -670,6 +670,43 @@ Objects
 Conventions
 ###########
 
+Opening files
+-------------
+
+Mirdata uses the smart_open library under the hood in order to support reading data from
+remote filesystems. If your loader needs to either call the python `open` command, or if
+it needs to use `os.path.exists`, you'll need to include the line
+
+.. code-block:: python
+
+    from smart_open import open
+
+
+at the top of your dataset module and use `open` as you normally would.
+Sometimes dependency libraries accept file paths as input to certain functions and open the files
+internally - whenever possible mirdata avoids this, and passes in file-objects directly.
+
+If you just need `os.path.exists`, you'll need to replace
+it with a try/except:
+
+.. code-block:: python
+
+    # original code that uses os.path.exists
+    file_path = "flululu.txt"
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"{file_path} not found, did you run .download?")
+    
+    with open(file_path, "r") as fhandle:
+        ...
+    
+    # replacement code that is compatible with remote filesystems
+    try:
+        with open(file_path, "r") as fhandle:
+            ...
+    except FileNotFoundError:
+        raise FileNotFoundError(f"{file_path} not found, did you run .download?")
+
+
 Loading from files
 ------------------
 
