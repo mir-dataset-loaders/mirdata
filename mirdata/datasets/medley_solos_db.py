@@ -182,15 +182,13 @@ class Dataset(core.Dataset):
         metadata_index = {}
         try:
             with open(metadata_path, "r") as fhandle:
-                csv_reader = csv.reader(fhandle, delimiter=",")
-                next(csv_reader)
+                csv_reader = csv.DictReader(fhandle, delimiter=",")
                 for row in csv_reader:
-                    subset, instrument_str, instrument_id, song_id, track_id = row
-                    metadata_index[str(track_id)] = {
-                        "subset": str(subset),
-                        "instrument": str(instrument_str),
-                        "instrument_id": int(instrument_id),
-                        "song_id": int(song_id),
+                    metadata_index[str(row["uuid4"])] = {
+                        "subset": row["subset"],
+                        "instrument": row["instrument"],
+                        "instrument_id": int(row["instrument_id"]),
+                        "song_id": int(row["song_id"]),
                     }
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")

@@ -498,10 +498,7 @@ class Dataset(core.Dataset):
             with open(metadata_path, "r") as fhandle:
                 reader = csv.reader(fhandle, delimiter=",")
                 next(reader, None)
-                raw_data = []
-                for line in reader:
-                    if line != []:
-                        raw_data.append(line)
+                raw_data = [line for line in reader if line != []]
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 

@@ -202,18 +202,10 @@ class Dataset(core.Dataset):
 
         try:
             with open(meta_path, "r") as fhandle:
-                reader = csv.reader(fhandle, delimiter="\t")
-                # columns are track_id, artist_id, album_id, path, duration, tags
+                reader = csv.DictReader(fhandle, delimiter="\t")
                 meta = {
-                    line[0]: {
-                        "ARTIST_ID": line[1],
-                        "ALBUM_ID": line[2],
-                        "PATH": line[3],
-                        "DURATION": line[4],
-                        "TAGS": line[5],
-                    }
-                    for line in reader
-                    if line[0] != "TRACK_ID"  # skip first line of csv file
+                    row["TRACK_ID"]: {k: row[k] for k in row if k != "TRACK_ID"}
+                    for row in reader
                 }
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")

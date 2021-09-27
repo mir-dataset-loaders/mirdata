@@ -5,7 +5,7 @@ import types
 
 import mirdata
 from mirdata import validate
-
+from smart_open import open
 
 import pytest
 
@@ -91,17 +91,12 @@ def mock_validate_index(mocker):
     return mocker.patch.object(validate, "validate_index")
 
 
-# TODO: rewrite this - we used to patch the built in open
-# now we need to patch smart_open
-# def test_md5(mocker):
-#     audio_file = b"audio1234"
-
-#     expected_checksum = "6dc00d1bac757abe4ea83308dde68aab"
-
-#     mocker.patch("builtins.open", new=mocker.mock_open(read_data=audio_file))
-
-#     md5_checksum = validate.md5("test_file_path")
-#     assert expected_checksum == md5_checksum
+def test_md5(mocker):
+    audio_file = b"audio1234"
+    expected_checksum = "6dc00d1bac757abe4ea83308dde68aab"
+    mocker.patch("mirdata.validate.open", new=mocker.mock_open(read_data=audio_file))
+    md5_checksum = validate.md5("test_file_path")
+    assert expected_checksum == md5_checksum
 
 
 @pytest.mark.parametrize(

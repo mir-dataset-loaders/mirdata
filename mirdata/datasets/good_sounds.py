@@ -309,17 +309,34 @@ class Dataset(core.Dataset):
         try:
             with open(packs, "r") as fhandle:
                 packs = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                "Packs metadata not found. Did you run .download()?"
+            )
 
+        try:
             with open(ratings, "r") as fhandle:
                 ratings = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                "Ratings metadata not found. Did you run .download()?"
+            )
 
+        try:
             with open(sounds, "r") as fhandle:
                 sounds = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                "Sounds metadata not found. Did you run .download()?"
+            )
 
+        try:
             with open(takes, "r") as fhandle:
                 takes = json.load(fhandle)
         except FileNotFoundError:
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+            raise FileNotFoundError(
+                "Takes metadata not found. Did you run .download()?"
+            )
 
         return {"packs": packs, "ratings": ratings, "sounds": sounds, "takes": takes}
 
