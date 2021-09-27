@@ -33,8 +33,9 @@ import os
 import csv
 import json
 
-import numpy as np
 import librosa
+import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
@@ -291,11 +292,14 @@ def load_tempo(fhandle):
     sections_abs_path = os.path.join(head, sections_path)
 
     sections = []
-    with open(sections_abs_path, "r") as fhandle2:
-        reader = csv.reader(fhandle2, delimiter=",")
-        for line in reader:
-            if line != "\n":
-                sections.append(line[3])
+    try:
+        with open(sections_abs_path, "r") as fhandle2:
+            reader = csv.reader(fhandle2, delimiter=",")
+            for line in reader:
+                if line != "\n":
+                    sections.append(line[3])
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File {sections_abs_path} not found.")
 
     section_count = 0
 

@@ -4,6 +4,7 @@ from typing import BinaryIO, Callable, List, Optional, TextIO, TypeVar, Union
 
 import numpy as np
 import pretty_midi
+from smart_open import open
 
 from mirdata import annotations
 

@@ -29,6 +29,8 @@ import fnmatch
 import json
 import librosa
 
+from smart_open import open
+
 from mirdata import core, download_utils, jams_utils, io
 
 BIBTEX = """@phdthesis {3897,

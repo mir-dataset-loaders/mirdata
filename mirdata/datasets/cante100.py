@@ -47,10 +47,11 @@ cante100 Loader
 import csv
 import os
 import xml.etree.ElementTree as ET
-from typing import BinaryIO, cast, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -108,7 +109,9 @@ REMOTES = {
     ),
     "notes": download_utils.RemoteFileMetadata(
         filename="cante100_automaticTranscription.zip",
-        url="https://zenodo.org/record/1322542/files/cante100_automaticTranscription.zip?download=1",
+        url=(
+            "https://zenodo.org/record/1322542/files/cante100_automaticTranscription.zip?download=1"
+        ),
         checksum="47fea64c744f9fe678ae5642a8f0ee8e",  # the md5 checksum
         destination_dir="cante100_automaticTranscription",  # relative path for where to unzip the data, or None
     ),
@@ -368,10 +371,12 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "cante100Meta.xml")
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        tree = ET.parse(metadata_path)
+        try:
+            with open(metadata_path, "r") as fhandle:
+                tree = ET.parse(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
         root = tree.getroot()
 
         # ids
