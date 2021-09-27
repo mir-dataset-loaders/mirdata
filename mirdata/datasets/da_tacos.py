@@ -517,7 +517,9 @@ class Dataset(core.Dataset):
             )
             if not os.path.exists(path_subset):
                 raise FileNotFoundError(
-                    "Metadata file {} not found. Did you run .download()?".format(path_subset)
+                    "Metadata file {} not found. Did you run .download()?".format(
+                        path_subset
+                    )
                 )
 
             metadata_paths.append(path_subset)
