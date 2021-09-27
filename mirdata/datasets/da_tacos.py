@@ -102,6 +102,7 @@ from typing import Optional, BinaryIO
 import h5py
 from jams import JAMS
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils, jams_utils, core, io
 
@@ -507,26 +508,21 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_index = {}
-        metadata_paths = []
-        subsets = ["benchmark", "coveranalysis"]
-        for subset in subsets:
+        for subset in ["benchmark", "coveranalysis"]:
             path_subset = os.path.join(
                 self.data_home,
                 "da-tacos_metadata",
                 "da-tacos_" + subset + "_subset_metadata.json",
             )
-            if not os.path.exists(path_subset):
+            try:
+                with open(path_subset) as f:
+                    meta = json.load(f)
+            except FileNotFoundError:
                 raise FileNotFoundError(
                     "Metadata file {} not found. Did you run .download()?".format(
                         path_subset
                     )
                 )
-
-            metadata_paths.append(path_subset)
-
-        for subset, path_subset in zip(subsets, metadata_paths):
-            with open(path_subset) as f:
-                meta = json.load(f)
             for work_id in meta.keys():
                 for performance_id in meta[work_id].keys():
                     track_id = subset + "#" + work_id + "#" + performance_id
