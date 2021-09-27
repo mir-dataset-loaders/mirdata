@@ -21,14 +21,14 @@
 
     Metadata for each song includes:
 
-    - performance title,
-    - performance artist,
-    - work title,
-    - work artist,
-    - release year,
-    - SecondHandSongs.com performance ID,
-    - SecondHandSongs.com work ID,
-    - whether the song is instrumental or not.
+        - performance title
+        - performance artist
+        - work title
+        - work artist
+        - release year
+        - SecondHandSongs.com performance ID
+        - SecondHandSongs.com work ID
+        - whether the song is instrumental or not
 
     In addition, we matched the original metadata with MusicBrainz to obtain MusicBrainz ID (MBID),
     song length and genre/style tags. We would like to note that MusicBrainz related information is
