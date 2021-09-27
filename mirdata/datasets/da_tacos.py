@@ -367,7 +367,8 @@ def load_cens(fhandle: BinaryIO):
         np.ndarray: cens features
 
     """
-    return h5py.File(fhandle, "r")["chroma_cens"][()]
+    with h5py.File(fhandle, "r") as open_h5_handle:
+        return open_h5_handle["chroma_cens"][()]
 
 
 @io.coerce_to_bytes_io
@@ -381,7 +382,8 @@ def load_crema(fhandle: BinaryIO):
         np.ndarray: crema features
 
     """
-    return h5py.File(fhandle, "r")["crema"][()]
+    with h5py.File(fhandle, "r") as open_h5_fhandle:
+        return open_h5_fhandle["crema"][()]
 
 
 @io.coerce_to_bytes_io
@@ -395,7 +397,8 @@ def load_hpcp(fhandle: BinaryIO):
         np.ndarray: hpcp features
 
     """
-    return h5py.File(fhandle, "r")["hpcp"][()]
+    with h5py.File(fhandle, "r") as open_h5_fhandle:
+        return open_h5_fhandle["hpcp"][()]
 
 
 def _dict_from_h5py(fhandle, record_key):
@@ -409,12 +412,11 @@ def _dict_from_h5py(fhandle, record_key):
         dict: data loaded from record key of the open file
     """
     with h5py.File(fhandle, "r") as open_file:
-        dict_output = {
+        return {
             attr: open_file[record_key].attrs[attr]
             for attr in list(open_file[record_key].attrs.keys())
             if attr.lower() == attr
         }
-    return dict_output
 
 
 @io.coerce_to_bytes_io
@@ -459,7 +461,8 @@ def load_mfcc(fhandle: BinaryIO):
         np.ndarray: array of mfccs over time
 
     """
-    return h5py.File(fhandle, "r")["mfcc_htk"][()]
+    with h5py.File(fhandle, "r") as open_h5_fhandle:
+        return open_h5_fhandle["mfcc_htk"][()]
 
 
 @io.coerce_to_bytes_io
@@ -477,11 +480,10 @@ def load_tags(fhandle: BinaryIO):
 
     """
     with h5py.File(fhandle, "r") as open_file:
-        tuples = [
+        return [
             (open_file["tags"][k].attrs["i0"], open_file["tags"][k].attrs["i1"])
             for k in open_file["tags"].keys()
         ]
-    return tuples
 
 
 @core.docstring_inherit(core.Dataset)
