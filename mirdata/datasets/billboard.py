@@ -15,6 +15,7 @@ from typing import BinaryIO, TextIO, Optional, Tuple, Dict, List
 
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -493,16 +494,13 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "billboard-2.0-index.csv")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                next(reader, None)
+                raw_data = [line for line in reader if line != []]
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            next(reader, None)
-            raw_data = []
-            for line in reader:
-                if line != []:
-                    raw_data.append(line)
 
         metadata_index = {}
         for line in raw_data:

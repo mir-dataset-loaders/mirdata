@@ -16,6 +16,7 @@ import csv
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from smart_open import open
 import librosa
 import numpy as np
 
@@ -269,16 +270,16 @@ class Dataset(core.Dataset):
             self.data_home, "Orchset - Predominant Melodic Instruments.csv"
         )
 
-        if not os.path.exists(predominant_inst_path):
+        try:
+            with open(predominant_inst_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                raw_data = []
+                for line in reader:
+                    if line[0] == "excerpt":
+                        continue
+                    raw_data.append(line)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(predominant_inst_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            raw_data = []
-            for line in reader:
-                if line[0] == "excerpt":
-                    continue
-                raw_data.append(line)
 
         tf_dict = {"TRUE": True, "FALSE": False}
 

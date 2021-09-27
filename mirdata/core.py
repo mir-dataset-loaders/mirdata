@@ -6,8 +6,8 @@ import random
 import types
 from typing import Any, List, Optional
 
-
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
 from mirdata import validate
@@ -174,14 +174,19 @@ class Dataset(object):
 
     @cached_property
     def _index(self):
-        if not os.path.exists(self.index_path) and self._index_data.remote:
-            raise FileNotFoundError("Dataset index not found. Did you run .download()?")
-        elif not os.path.exists(self.index_path):
-            raise IOError(
-                "Dataset index was expected to be availale locally, but not found."
+        try:
+            with open(self.index_path) as fhandle:
+                index = json.load(fhandle)
+        except FileNotFoundError:
+            if self._index_data.remote:
+                raise FileNotFoundError(
+                    "This dataset's index must be downloaded. Did you run .download()?"
+                )
+            raise FileNotFoundError(
+                f"Dataset index for {self.name} was expected "
+                + "to be packaged with mirdata, but not found."
             )
-        with open(self.index_path) as fhandle:
-            index = json.load(fhandle)
+
         return index
 
     @cached_property
@@ -610,9 +615,8 @@ class MultiTrack(Track):
         if any([l != max_length for l in lengths]):
             if enforce_length:
                 raise ValueError(
-                    "Track's {} audio are not the same length {}. Use enforce_length=False to pad with zeros.".format(
-                        track_keys, lengths
-                    )
+                    "Track's {} audio are not the same length {}. Use enforce_length=False to pad"
+                    " with zeros.".format(track_keys, lengths)
                 )
             else:
                 # pad signals to the max length

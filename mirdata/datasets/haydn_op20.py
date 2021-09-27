@@ -11,7 +11,7 @@
 """
 import logging
 import os
-from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
+from typing import Optional, TextIO, List
 
 import numpy as np
 
@@ -129,6 +129,9 @@ class Track(core.Track):
 
     @core.cached_property
     def midi_path(self) -> Optional[str]:
+        logging.warning(
+            "Deprecation warning: midi_path is deprecated and will be removed in a future version"
+        )
         return convert_and_save_to_midi(self.humdrum_annotated_path)
 
     def to_jams(self):
@@ -267,20 +270,23 @@ def load_key_music21(fhandle: TextIO, resolution=28):
 
 
 @io.coerce_to_string_io
-def convert_and_save_to_midi(fhandle: TextIO):
+def convert_and_save_to_midi(fpath: TextIO):
     """convert to midi file and return the midi path
 
     Args:
-        fhandle (str or file-like): path to score file
+        fpath (str or file-like): path to score file
 
     Returns:
         str: midi file path
 
     """
-    midi_path = os.path.splitext(fhandle.name)[0] + ".midi"
-    if not os.path.exists(midi_path):
-        score, _ = _split_score_annotations(fhandle)
-        score.write("midi", fp=midi_path)
+    logging.warning(
+        "Deprecation warning: convert_and_save_to_midi is deprecated and will be removed in a"
+        " future version."
+    )
+    midi_path = os.path.splitext(fpath.name)[0] + ".midi"
+    score, _ = _split_score_annotations(fpath)
+    score.write("midi", fp=midi_path)
     return midi_path
 
 

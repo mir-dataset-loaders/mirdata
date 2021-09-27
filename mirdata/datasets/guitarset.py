@@ -58,6 +58,7 @@ from typing import BinaryIO, Optional, TextIO, Tuple, Dict, List
 import jams
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
 
@@ -383,10 +384,12 @@ def load_chords(jams_path, leadsheet_version):
         ChordData: Chord data
 
     """
-    if not os.path.exists(jams_path):
-        raise IOError("jams_path {} does not exist".format(jams_path))
+    try:
+        with open(jams_path, "r") as fhandle:
+            jam = jams.load(fhandle)
+    except FileNotFoundError:
+        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
 
-    jam = jams.load(jams_path)
     if leadsheet_version:
         anno = jam.search(namespace="chord")[0]
     else:
@@ -456,9 +459,12 @@ def load_pitch_contour(jams_path, string_num):
         F0Data: Pitch contour data for the given string
 
     """
-    if not os.path.exists(jams_path):
-        raise IOError("jams_path {} does not exist".format(jams_path))
-    jam = jams.load(jams_path)
+    try:
+        with open(jams_path, "r") as fhandle:
+            jam = jams.load(fhandle)
+    except FileNotFoundError:
+        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+
     anno_arr = jam.search(namespace="pitch_contour")
     anno = anno_arr.search(data_source=str(string_num))[0]
     times, values = anno.to_event_values()
@@ -490,9 +496,12 @@ def load_notes(jams_path, string_num):
         NoteData: Note data for the given string
 
     """
-    if not os.path.exists(jams_path):
-        raise IOError("jams_path {} does not exist".format(jams_path))
-    jam = jams.load(jams_path)
+    try:
+        with open(jams_path) as fhandle:
+            jam = jams.load(fhandle)
+    except FileNotFoundError:
+        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+
     anno_arr = jam.search(namespace="note_midi")
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()

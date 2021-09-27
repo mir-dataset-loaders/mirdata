@@ -44,6 +44,7 @@ autodoc_mock_imports = [
     "music21",
     "yaml",
     "scipy",
+    "smart_open",
 ]
 
 
