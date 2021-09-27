@@ -389,7 +389,9 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The slakh dataset"""
+    """
+    The slakh dataset
+    """
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
