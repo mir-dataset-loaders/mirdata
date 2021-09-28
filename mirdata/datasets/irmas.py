@@ -92,6 +92,7 @@ import csv
 import os
 from typing import BinaryIO, List, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
@@ -334,10 +335,16 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.irmas.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_pred_inst)
+    @deprecated(
+        reason="Use mirdata.datasets.irmas.load_pred_inst",
+        version="0.3.4",
+    )
     def load_pred_inst(self, *args, **kwargs):
         return load_pred_inst(*args, **kwargs)

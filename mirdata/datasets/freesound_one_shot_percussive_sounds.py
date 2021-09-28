@@ -43,6 +43,7 @@ import json
 import os
 from typing import BinaryIO, TextIO, Tuple, Optional
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from smart_open import open
@@ -296,10 +297,16 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.freesound_one_shot_percussive_sounds.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_file_metadata)
+    @deprecated(
+        reason="Use mirdata.datasets.freesound_one_shot_percussive_sounds.load_file_metadata",
+        version="0.3.4",
+    )
     def load_file_metadata(self, *args, **kwargs):
         return load_file_metadata(*args, **kwargs)

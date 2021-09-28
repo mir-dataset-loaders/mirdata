@@ -37,6 +37,7 @@ import csv
 import json
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
@@ -284,22 +285,37 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_key",
+        version="0.3.4",
+    )
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_spectrum)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_spectrum",
+        version="0.3.4",
+    )
     def load_spectrum(self, *args, **kwargs):
         return load_spectrum(*args, **kwargs)
 
-    @core.copy_docs(load_hpcp)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_hpcp",
+        version="0.3.4",
+    )
     def load_hpcp(self, *args, **kwargs):
         return load_hpcp(*args, **kwargs)
 
-    @core.copy_docs(load_musicbrainz)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_musicbrainz",
+        version="0.3.4",
+    )
     def load_musicbrainz(self, *args, **kwargs):
         return load_musicbrainz(*args, **kwargs)

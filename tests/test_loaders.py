@@ -383,20 +383,14 @@ SKIP = {
 
 def test_load_methods():
     for dataset_name in DATASETS:
-        dataset = mirdata.initialize(
-            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
-        )
+        dataset_module = importlib.import_module(f"mirdata.datasets.{dataset_name}")
 
-        all_methods = dir(dataset)
+        all_methods = dir(dataset_module)
         load_methods = [
-            getattr(dataset, m) for m in all_methods if m.startswith("load_")
+            getattr(dataset_module, m) for m in all_methods if m.startswith("load_")
         ]
         for load_method in load_methods:
             method_name = load_method.__name__
-
-            # skip default methods
-            if method_name == "load_tracks" or method_name == "load_multitracks":
-                continue
 
             # skip overrides, add to the SKIP dictionary to skip a specific load method
             if dataset_name in SKIP and method_name in SKIP[dataset_name]:
@@ -408,12 +402,6 @@ def test_load_methods():
                         dataset_name, method_name
                     )
                 )
-
-            params = [
-                p
-                for p in inspect.signature(load_method).parameters.values()
-                if p.default == inspect._empty
-            ]  # get list of parameters that don't have defaults
 
             # add to the EXCEPTIONS dictionary above if your load_* function needs
             # more than one argument.

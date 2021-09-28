@@ -55,6 +55,7 @@ import logging
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple, Dict, List
 
+from deprecated.sphinx import deprecated
 import jams
 import librosa
 import numpy as np
@@ -528,30 +529,51 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_multitrack_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_multitrack_audio",
+        version="0.3.4",
+    )
     def load_multitrack_audio(self, *args, **kwargs):
         return load_multitrack_audio(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_chords",
+        version="0.3.4",
+    )
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @core.copy_docs(load_key_mode)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_key_mode",
+        version="0.3.4",
+    )
     def load_key_mode(self, *args, **kwargs):
         return load_key_mode(*args, **kwargs)
 
-    @core.copy_docs(load_pitch_contour)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_pitch_contour",
+        version="0.3.4",
+    )
     def load_pitch_contour(self, *args, **kwargs):
         return load_pitch_contour(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_notes",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

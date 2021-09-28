@@ -13,6 +13,7 @@ import os
 import re
 from typing import BinaryIO, TextIO, Optional, Tuple, Dict, List
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from smart_open import open
@@ -516,18 +517,30 @@ class Dataset(core.Dataset):
             }
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.billboard.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.billboard.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_named_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.billboard.load_named_sections",
+        version="0.3.4",
+    )
     def load_named_sections(self, *args, **kwargs):
         return load_named_sections(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(
+        reason="Use mirdata.datasets.billboard.load_chords",
+        version="0.3.4",
+    )
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)

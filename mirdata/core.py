@@ -67,18 +67,6 @@ def docstring_inherit(parent):
     return inherit
 
 
-def copy_docs(original):
-    """
-    Decorator function to copy docs from one function to another
-    """
-
-    def wrapper(target):
-        target.__doc__ = original.__doc__
-        return target
-
-    return wrapper
-
-
 ##### Core Classes #####
 
 
