@@ -768,13 +768,6 @@ the ``_track metadata`` for ``track_id=track2`` will be:
     }
 
 
-Load methods vs Track properties
---------------------------------
-Track properties and cached properties should be trivial, and directly call a ``load_*`` method.
-There should be no additional logic in a track property/cached property, and instead all logic
-should be done in the load method. We separate these because the track properties are only usable
-when data is available locally - when data is remote, the load methods are used instead.
-
 Missing Data
 ------------
 If a Track has a property, for example a type of annotation, that is present for some tracks and not others,
@@ -799,12 +792,6 @@ docstring_inherit
 This decorator is used for children of the Dataset class, and
 copies the Attributes from the parent class to the docstring of the child.
 This gives us clear and complete docs without a lot of copy-paste.
-
-copy_docs
----------
-This decorator is used mainly for a dataset's ``load_`` functions, which
-are attached to a loader's Dataset class. The attached function is identical,
-and this decorator simply copies the docstring from another function.
 
 coerce_to_bytes_io/coerce_to_string_io
 --------------------------------------

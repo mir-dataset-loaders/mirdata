@@ -35,9 +35,12 @@ import json
 import os
 from typing import TextIO
 
+from deprecated.sphinx import deprecated
 import numpy as np
-from mirdata import annotations, core, download_utils, io, jams_utils
 from smart_open import open
+
+from mirdata import annotations, core, download_utils, io, jams_utils
+
 
 BIBTEX = """
 @software{sertan_senturk_2016_58413,
@@ -236,10 +239,16 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_pitch)
+    @deprecated(
+        reason="Use mirdata.datasets.compmusic_otmm_makam.load_pitch",
+        version="0.3.4",
+    )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
-    @core.copy_docs(load_mb_tags)
+    @deprecated(
+        reason="Use mirdata.datasets.compmusic_otmm_makam.load_mb_tags",
+        version="0.3.4",
+    )
     def load_mb_tags(self, *args, **kwargs):
         return load_mb_tags(*args, **kwargs)

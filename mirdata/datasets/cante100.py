@@ -49,6 +49,7 @@ import os
 import xml.etree.ElementTree as ET
 from typing import Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from smart_open import open
@@ -423,18 +424,30 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_spectrogram)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_spectrogram",
+        version="0.3.4",
+    )
     def load_spectrogram(self, *args, **kwargs):
         return load_spectrogram(*args, **kwargs)
 
-    @core.copy_docs(load_melody)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_melody",
+        version="0.3.4",
+    )
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_notes",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

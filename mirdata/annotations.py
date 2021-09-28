@@ -4,6 +4,7 @@ import logging
 import re
 from typing import List, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 from jams.schema import namespace
 import librosa
 import numpy as np
@@ -809,8 +810,8 @@ class NoteData(Annotation):
     @property
     def notes(self) -> np.ndarray:
         logging.warning(
-            "Deprecation warning: NoteData.notes will be removed in a future version."
-            + "Use NoteData.pitches"
+            "NoteData.notes is deprecated as of 0.3.4 and will be removed in a future version. Use"
+            " NoteData.pitches."
         )
         return self.pitches
 
@@ -1120,8 +1121,8 @@ class LyricData(Annotation):
     @property
     def pronunciations(self):
         logging.warning(
-            "LyricData.pronunciations will be removed in a future version. "
-            + "Use LyricData.lyrics"
+            "LyricData.pronunciations is deprecated as of 0.3.4 and will be removed in a future"
+            " version. Use LyricData.lyrics."
         )
         return self.lyrics
 
@@ -1169,7 +1170,8 @@ class TempoData(Annotation):
     @property
     def value(self):
         logging.warning(
-            "Deprecation warning: TempoData.value will be removed in future versions. Use TempoData.tempos instead."
+            "TempoData.value is deprecated as of 0.3.4 and will be removed in a future version. Use"
+            " TempoData.tempos."
         )
         return self.tempos
 

@@ -28,6 +28,7 @@
 import os
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pretty_midi
@@ -406,18 +407,30 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.slakh.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(io.load_midi)
+    @deprecated(
+        reason="Use mirdata.datasets.slakh.load_midi",
+        version="0.3.4",
+    )
     def load_midi(self, *args, **kwargs):
         return io.load_midi(*args, **kwargs)
 
-    @core.copy_docs(io.load_notes_from_midi)
+    @deprecated(
+        reason="Use mirdata.io.load_notes_from_midi",
+        version="0.3.4",
+    )
     def load_notes_from_midi(self, *args, **kwargs):
         return io.load_notes_from_midi(*args, **kwargs)
 
-    @core.copy_docs(io.load_multif0_from_midi)
+    @deprecated(
+        reason="Use mirdata.io.load_multif0_from_midi",
+        version="0.3.4",
+    )
     def load_multif0_from_midi(self, *args, **kwargs):
         return io.load_multif0_from_midi(*args, **kwargs)

@@ -30,6 +30,7 @@ import csv
 import os
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from smart_open import open
@@ -195,6 +196,9 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.medley_solos_db.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

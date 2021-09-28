@@ -99,6 +99,7 @@ import json
 import os
 from typing import Optional, BinaryIO
 
+from deprecated.sphinx import deprecated
 import h5py
 from jams import JAMS
 import numpy as np
@@ -530,31 +531,52 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_cens)
+    @deprecated(
+        reason="Use mirdata.datasets.da_tacos.load_cens",
+        version="0.3.4",
+    )
     def load_cens(self, *args, **kwargs):
         return load_cens(*args, **kwargs)
 
-    @core.copy_docs(load_crema)
+    @deprecated(
+        reason="Use mirdata.datasets.da_tacos.load_crema",
+        version="0.3.4",
+    )
     def load_crema(self, *args, **kwargs):
         return load_crema(*args, **kwargs)
 
-    @core.copy_docs(load_hpcp)
+    @deprecated(
+        reason="Use mirdata.datasets.da_tacos.load_hpcp",
+        version="0.3.4",
+    )
     def load_hpcp(self, *args, **kwargs):
         return load_hpcp(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @deprecated(
+        reason="Use mirdata.datasets.da_tacos.load_key",
+        version="0.3.4",
+    )
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_mfcc)
+    @deprecated(
+        reason="Use mirdata.datasets.da_tacos.load_mfcc",
+        version="0.3.4",
+    )
     def load_mfcc(self, *args, **kwargs):
         return load_mfcc(*args, **kwargs)
 
-    @core.copy_docs(load_madmom)
+    @deprecated(
+        reason="Use mirdata.datasets.da_tacos.load_madmom",
+        version="0.3.4",
+    )
     def load_madmom(self, *args, **kwargs):
         return load_madmom(*args, **kwargs)
 
-    @core.copy_docs(load_tags)
+    @deprecated(
+        reason="Use mirdata.datasets.da_tacos.load_tags",
+        version="0.3.4",
+    )
     def load_tags(self, *args, **kwargs):
         return load_tags(*args, **kwargs)
 

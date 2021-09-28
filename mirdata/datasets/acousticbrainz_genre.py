@@ -38,8 +38,9 @@
     grant agreement No 688382 AudioCommons.
 
 """
-
 import json
+
+from deprecated.sphinx import deprecated
 
 from mirdata import download_utils, core, io
 from mirdata import jams_utils
@@ -71,7 +72,9 @@ INDEXES = {
 REMOTES = {
     "index": download_utils.RemoteFileMetadata(
         filename="acousticbrainz_genre_index.json.zip",
-        url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
+        url=(
+            "https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1"
+        ),
         checksum="810f1c003f53cbe58002ba96e6d4d138",
     ),
     "validation-01": download_utils.RemoteFileMetadata(
@@ -412,7 +415,10 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_extractor)
+    @deprecated(
+        reason="Use mirdata.datasets.acousticbrainz_genre.load_extractor",
+        version="0.3.4",
+    )
     def load_extractor(self, *args, **kwargs):
         return load_extractor(*args, **kwargs)
 
