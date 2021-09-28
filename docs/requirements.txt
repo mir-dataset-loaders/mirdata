@@ -5,3 +5,4 @@ chardet
 librosa>=0.7.0
 tqdm
 sphinx==3.4.0
+Deprecated>=1.2.13

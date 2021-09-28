@@ -43,6 +43,7 @@
 
 import os
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from typing import BinaryIO, Optional, Tuple
@@ -198,6 +199,9 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.mridangam_stroke.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

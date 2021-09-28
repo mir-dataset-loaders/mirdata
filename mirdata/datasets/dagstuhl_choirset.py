@@ -44,6 +44,7 @@
 import csv
 from typing import BinaryIO, Optional, TextIO, Tuple, List
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
@@ -534,18 +535,30 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_f0)
+    @deprecated(
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_f0",
+        version="0.3.4",
+    )
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
-    @core.copy_docs(load_score)
+    @deprecated(
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_score",
+        version="0.3.4",
+    )
     def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)
 
-    @core.copy_docs(load_beat)
+    @deprecated(
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_beat",
+        version="0.3.4",
+    )
     def load_beat(self, *args, **kwargs):
         return load_beat(*args, **kwargs)

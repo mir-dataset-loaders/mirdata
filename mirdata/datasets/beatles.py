@@ -13,6 +13,7 @@ import csv
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
@@ -309,18 +310,30 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.beatles.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.beatles.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(
+        reason="Use mirdata.datasets.beatles.load_chords",
+        version="0.3.4",
+    )
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.beatles.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)

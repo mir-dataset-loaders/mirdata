@@ -35,6 +35,7 @@ import logging
 import os
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pretty_midi
@@ -237,15 +238,24 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.maestro.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(io.load_midi)
+    @deprecated(
+        reason="Use mirdata.io.load_midi",
+        version="0.3.4",
+    )
     def load_midi(self, *args, **kwargs):
         return io.load_midi(*args, **kwargs)
 
-    @core.copy_docs(io.load_notes_from_midi)
+    @deprecated(
+        reason="Use mirdata.io.load_notes_from_midi",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return io.load_notes_from_midi(*args, **kwargs)
 

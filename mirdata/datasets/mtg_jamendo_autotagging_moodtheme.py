@@ -40,6 +40,7 @@ import csv
 import os
 from typing import Optional, Tuple, BinaryIO
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from mirdata import download_utils, jams_utils, core
@@ -251,7 +252,10 @@ class Dataset(core.Dataset):
         meta["splits"] = splits
         return meta
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.mtg_jamendo_autotagging_moodtheme.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 

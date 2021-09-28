@@ -49,12 +49,15 @@
 
 import csv
 import os
-
-import numpy as np
-import librosa
-from mirdata import annotations, core, download_utils, io, jams_utils
-from smart_open import open
 from typing import BinaryIO, Optional, TextIO, Tuple
+
+from deprecated.sphinx import deprecated
+import librosa
+import numpy as np
+from smart_open import open
+
+from mirdata import annotations, core, download_utils, io, jams_utils
+
 
 BIBTEX = """
 @dataset{rong_gong_2018_1323561,
@@ -365,14 +368,23 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_phonemes)
+    @deprecated(
+        reason="Use mirdata.datasets.jingju_acapella.load_phonemes",
+        version="0.3.4",
+    )
     def load_phonemes(self, *args, **kwargs):
         return load_phonemes(*args, **kwargs)
 
-    @core.copy_docs(load_phrases)
+    @deprecated(
+        reason="Use mirdata.datasets.jingju_acapella.load_phrases",
+        version="0.3.4",
+    )
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)
 
-    @core.copy_docs(load_syllable)
+    @deprecated(
+        reason="Use mirdata.datasets.jingju_acapella.load_syllable",
+        version="0.3.4",
+    )
     def load_syllable(self, *args, **kwargs):
         return load_syllable(*args, **kwargs)

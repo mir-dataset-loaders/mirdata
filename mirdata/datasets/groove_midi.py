@@ -49,6 +49,7 @@ import csv
 import os
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pretty_midi
@@ -418,19 +419,31 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_midi)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_midi",
+        version="0.3.4",
+    )
     def load_midi(self, *args, **kwargs):
         return load_midi(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_drum_events)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_drum_events",
+        version="0.3.4",
+    )
     def load_drum_events(self, *args, **kwargs):
         return load_drum_events(*args, **kwargs)
 

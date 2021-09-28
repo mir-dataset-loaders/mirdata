@@ -14,15 +14,15 @@
 
 """
 import csv
-import logging
 import json
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
-import librosa
-import numpy as np
 # -- import whatever you need here and remove
 # -- example imports you won't use
+import librosa
+import numpy as np
+from smart_open import open  # if you use the open function, make sure you include this line!
 
 from mirdata import download_utils, jams_utils, core, annotations
 
@@ -94,7 +94,8 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
-        track_id (str): track id
+        audio_path (str): path to audio file
+        annotation_path (str): path to annotation file
         # -- Add any of the dataset specific attributes here
 
     Cached Properties:
@@ -309,17 +310,6 @@ class Dataset(core.Dataset):
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
-
-    # -- Copy any loaders you wrote that should be part of the Dataset class
-    # -- use this core.copy_docs decorator to copy the docs from the original
-    # -- load_ function
-    @core.copy_docs(load_audio)
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
-
-    @core.copy_docs(load_annotation)
-    def load_annotation(self, *args, **kwargs):
-        return load_annotation(*args, **kwargs)
 
     # -- if your dataset has a top-level metadata file, write a loader for it here
     # -- you do not have to include this function if there is no metadata 

@@ -17,6 +17,7 @@ import csv
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from smart_open import open
@@ -403,30 +404,51 @@ class Dataset(core.Dataset):
 
         return singer_map
 
-    @core.copy_docs(load_vocal_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.ikala.load_vocal_audio",
+        version="0.3.4",
+    )
     def load_vocal_audio(self, *args, **kwargs):
         return load_vocal_audio(*args, **kwargs)
 
-    @core.copy_docs(load_instrumental_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.ikala.load_instrumental_audio",
+        version="0.3.4",
+    )
     def load_instrumental_audio(self, *args, **kwargs):
         return load_instrumental_audio(*args, **kwargs)
 
-    @core.copy_docs(load_mix_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.ikala.load_mix_audio",
+        version="0.3.4",
+    )
     def load_mix_audio(self, *args, **kwargs):
         return load_mix_audio(*args, **kwargs)
 
-    @core.copy_docs(load_f0)
+    @deprecated(
+        reason="Use mirdata.datasets.ikala.load_f0",
+        version="0.3.4",
+    )
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.datasets.ikala.load_notes",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)
 
-    @core.copy_docs(load_lyrics)
+    @deprecated(
+        reason="Use mirdata.datasets.ikala.load_lyrics",
+        version="0.3.4",
+    )
     def load_lyrics(self, *args, **kwargs):
         return load_lyrics(*args, **kwargs)
 
-    @core.copy_docs(load_pronunciations)
+    @deprecated(
+        reason="Use mirdata.datasets.ikala.load_pronunciations",
+        version="0.3.4",
+    )
     def load_pronunciations(self, *args, **kwargs):
         return load_pronunciations(*args, **kwargs)

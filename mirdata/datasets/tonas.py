@@ -46,6 +46,7 @@ import logging
 import os
 from typing import TextIO, Tuple, Optional
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from smart_open import open
@@ -185,9 +186,8 @@ class Track(core.Track):
     @property
     def f0(self):
         logging.warning(
-            "Deprecation warning: Track.f0 is deprecated and will "
-            + "be removed in a future version. Use Track.f0_automatic "
-            + "or Track.f0_corrected"
+            "Track.f0 is deprecated as of 0.3.4 and will be removed in a future version. Use"
+            " Track.f0_automatic or Track.f0_corrected"
         )
         return self.f0_corrected
 
@@ -380,14 +380,23 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.tonas.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_f0)
+    @deprecated(
+        reason="Use mirdata.datasets.tonas.load_f0",
+        version="0.3.4",
+    )
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.datasets.tonas.load_notes",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)
