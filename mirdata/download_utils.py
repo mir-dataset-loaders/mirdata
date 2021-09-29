@@ -123,11 +123,25 @@ def downloader(
             logging.info("[{}] downloading {}".format(k, remotes[k].filename))
             extension = os.path.splitext(remotes[k].filename)[-1]
             if ".zip" in extension:
-                download_zip_file(remotes[k], save_dir, force_overwrite, cleanup, allow_invalid_checksum)
+                download_zip_file(
+                    remotes[k],
+                    save_dir,
+                    force_overwrite,
+                    cleanup,
+                    allow_invalid_checksum,
+                )
             elif ".gz" in extension or ".tar" in extension or ".bz2" in extension:
-                download_tar_file(remotes[k], save_dir, force_overwrite, cleanup, allow_invalid_checksum)
+                download_tar_file(
+                    remotes[k],
+                    save_dir,
+                    force_overwrite,
+                    cleanup,
+                    allow_invalid_checksum,
+                )
             else:
-                download_from_remote(remotes[k], save_dir, force_overwrite, allow_invalid_checksum)
+                download_from_remote(
+                    remotes[k], save_dir, force_overwrite, allow_invalid_checksum
+                )
 
             if remotes[k].unpack_directories:
                 for src_dir in remotes[k].unpack_directories:
@@ -236,19 +250,25 @@ def download_from_remote(remote, save_dir, force_overwrite, allow_invalid_checks
             warnings.warn(
                 "{} has an MD5 checksum ({}) "
                 "differing from expected ({}), "
-                "file may be corrupted.".format(download_path, checksum, remote.checksum),
-                UserWarning
+                "file may be corrupted.".format(
+                    download_path, checksum, remote.checksum
+                ),
+                UserWarning,
             )
         else:
             raise IOError(
                 "{} has an MD5 checksum ({}) "
                 "differing from expected ({}), "
-                "file may be corrupted.".format(download_path, checksum, remote.checksum)
+                "file may be corrupted.".format(
+                    download_path, checksum, remote.checksum
+                )
             )
     return download_path
 
 
-def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup, allow_invalid_checksum):
+def download_zip_file(
+    zip_remote, save_dir, force_overwrite, cleanup, allow_invalid_checksum
+):
     """Download and unzip a zip file.
 
     Args:
@@ -262,8 +282,9 @@ def download_zip_file(zip_remote, save_dir, force_overwrite, cleanup, allow_inva
             If True, remove zipfile after unziping
 
     """
-    zip_download_path = download_from_remote(zip_remote, save_dir, force_overwrite,
-                                             allow_invalid_checksum)
+    zip_download_path = download_from_remote(
+        zip_remote, save_dir, force_overwrite, allow_invalid_checksum
+    )
     unzip(zip_download_path, cleanup=cleanup)
 
 
@@ -320,8 +341,9 @@ def unzip(zip_path, cleanup):
         os.remove(zip_path)
 
 
-def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup,
-                      allow_invalid_checksum):
+def download_tar_file(
+    tar_remote, save_dir, force_overwrite, cleanup, allow_invalid_checksum
+):
     """Download and untar a tar file.
 
     Args:
@@ -331,7 +353,9 @@ def download_tar_file(tar_remote, save_dir, force_overwrite, cleanup,
         cleanup (bool): If True, remove tarfile after untarring
 
     """
-    tar_download_path = download_from_remote(tar_remote, save_dir, force_overwrite, allow_invalid_checksum)
+    tar_download_path = download_from_remote(
+        tar_remote, save_dir, force_overwrite, allow_invalid_checksum
+    )
     untar(tar_download_path, cleanup=cleanup)
 
 
