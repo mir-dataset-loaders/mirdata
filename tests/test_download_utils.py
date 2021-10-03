@@ -170,12 +170,7 @@ def test_download_index_cases(mocker, mock_path):
     remote_index = core.Index("asdf.json", url="b", checksum="4567")
 
     # no remotes, no remote index
-    download_utils.downloader(
-        "a",
-        index=index,
-        remotes=None,
-        partial_download=None,
-    )
+    download_utils.downloader("a", index=index, remotes=None, partial_download=None)
     mock_zip.assert_not_called()
     mock_download_from_remote.assert_not_called()
     mocker.resetall()
@@ -204,10 +199,7 @@ def test_download_index_cases(mocker, mock_path):
 
     # no remotes, remote index
     download_utils.downloader(
-        "a",
-        index=remote_index,
-        remotes=None,
-        partial_download=None,
+        "a", index=remote_index, remotes=None, partial_download=None
     )
     mock_zip.assert_not_called()
     mock_download_from_remote.assert_called_once_with(remote_index.remote, "a", False)
@@ -215,10 +207,7 @@ def test_download_index_cases(mocker, mock_path):
 
     # remotes, remote index
     download_utils.downloader(
-        "a",
-        index=remote_index,
-        remotes={"b": zip_remote},
-        partial_download=None,
+        "a", index=remote_index, remotes={"b": zip_remote}, partial_download=None
     )
     mock_zip.assert_called_once_with(zip_remote, "a", False, False)
     mock_download_from_remote.assert_called_once_with(remote_index.remote, "a", False)
@@ -372,9 +361,7 @@ def test_download_from_remote_raises_IOError(httpserver, tmpdir):
     httpserver.serve_content("File not found!", 404)
 
     TEST_REMOTE = download_utils.RemoteFileMetadata(
-        filename="remote.wav",
-        url=httpserver.url,
-        checksum=("1234"),
+        filename="remote.wav", url=httpserver.url, checksum=("1234")
     )
 
     with pytest.raises(IOError):
