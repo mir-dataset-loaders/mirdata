@@ -171,12 +171,7 @@ def test_download_index_cases(mocker, mock_path):
     remote_index = core.Index("asdf.json", url="b", checksum="4567")
 
     # no remotes, no remote index
-    download_utils.downloader(
-        "a",
-        index=index,
-        remotes=None,
-        partial_download=None,
-    )
+    download_utils.downloader("a", index=index, remotes=None, partial_download=None)
     mock_zip.assert_not_called()
     mock_download_from_remote.assert_not_called()
     mocker.resetall()
@@ -205,24 +200,22 @@ def test_download_index_cases(mocker, mock_path):
 
     # no remotes, remote index
     download_utils.downloader(
-        "a",
-        index=remote_index,
-        remotes=None,
-        partial_download=None,
+        "a", index=remote_index, remotes=None, partial_download=None
     )
     mock_zip.assert_not_called()
-    mock_download_from_remote.assert_called_once_with(remote_index.remote, "a", False, False)
+    mock_download_from_remote.assert_called_once_with(
+        remote_index.remote, "a", False, False
+    )
     mocker.resetall()
 
     # remotes, remote index
     download_utils.downloader(
-        "a",
-        index=remote_index,
-        remotes={"b": zip_remote},
-        partial_download=None,
+        "a", index=remote_index, remotes={"b": zip_remote}, partial_download=None
     )
     mock_zip.assert_called_once_with(zip_remote, "a", False, False, False)
-    mock_download_from_remote.assert_called_once_with(remote_index.remote, "a", False, False)
+    mock_download_from_remote.assert_called_once_with(
+        remote_index.remote, "a", False, False
+    )
     mocker.resetall()
 
 
@@ -351,7 +344,9 @@ def test_download_from_remote(httpserver, tmpdir):
         checksum=("3f77d0d69dc41b3696f074ad6bf2852f"),
     )
 
-    download_path = download_utils.download_from_remote(TEST_REMOTE, str(tmpdir), False, False)
+    download_path = download_utils.download_from_remote(
+        TEST_REMOTE, str(tmpdir), False, False
+    )
 
 
 def test_download_from_remote_destdir(httpserver, tmpdir):
@@ -364,7 +359,9 @@ def test_download_from_remote_destdir(httpserver, tmpdir):
         destination_dir="subfolder",
     )
 
-    download_path = download_utils.download_from_remote(TEST_REMOTE, str(tmpdir), False, False)
+    download_path = download_utils.download_from_remote(
+        TEST_REMOTE, str(tmpdir), False, False
+    )
     expected_download_path = os.path.join(str(tmpdir), "subfolder", "remote.wav")
     assert expected_download_path == download_path
 
@@ -373,9 +370,7 @@ def test_download_from_remote_raises_IOError(httpserver, tmpdir):
     httpserver.serve_content("File not found!", 404)
 
     TEST_REMOTE = download_utils.RemoteFileMetadata(
-        filename="remote.wav",
-        url=httpserver.url,
-        checksum=("1234"),
+        filename="remote.wav", url=httpserver.url, checksum=("1234")
     )
 
     with pytest.raises(IOError):
@@ -405,7 +400,9 @@ def test_download_zip_file(mocker, mock_download_from_remote, mock_unzip):
     _clean("a")
 
 
-def test_download_zip_file_ignorechecksum(mocker, mock_download_from_remote, mock_unzip):
+def test_download_zip_file_ignorechecksum(
+    mocker, mock_download_from_remote, mock_unzip
+):
     mock_download_from_remote.return_value = "foo"
     download_utils.download_zip_file("a", "b", False, False, True)
 
@@ -423,13 +420,16 @@ def test_download_tar_file(mocker, mock_download_from_remote, mock_untar):
     _clean("a")
 
 
-def test_download_tar_file_ignorechecksum(mocker, mock_download_from_remote, mock_untar):
+def test_download_tar_file_ignorechecksum(
+    mocker, mock_download_from_remote, mock_untar
+):
     mock_download_from_remote.return_value = "foo"
     download_utils.download_tar_file("a", "b", False, False, True)
 
     mock_download_from_remote.assert_called_once_with("a", "b", False, True)
     mock_untar.assert_called_once_with("foo", cleanup=False)
     _clean("a")
+
 
 def test_extractall_unicode(mocker, mock_download_from_remote, mock_unzip):
     zip_files = ("tests/resources/utfissue.zip", "tests/resources/utfissuewin.zip")
