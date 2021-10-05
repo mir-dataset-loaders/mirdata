@@ -283,6 +283,29 @@ class Dataset(object):
         """
         return self.multitrack(random.choice(self.mtrack_ids))
 
+    def get_splits(self, splits, seed=42):
+        """Split the dataset for training, validation, test, etc
+
+        Args:
+            splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
+            seed (int): the seed used for the random generator, in order to enhance reproducibility. Defaults to 42
+
+        Returns:
+            list of lists: a list of lists containing the elements in each split
+        """
+
+        if np.sum(splits) != 1:
+            raise ValueError("Splits values should sum up to 1. Given {} sums {}".format(splits, np.sum(splits)))
+
+        rng = np.random.default_rng(seed=seed)  # The random generator
+        random_track_ids = rng.permutation(self.track_ids)
+
+        # Method from https://stackoverflow.com/a/14281094
+        cdf = np.cumsum(splits)
+        stops = list(map(int, cdf * len(random_track_ids)))
+        return [random_track_ids[a:b] for a, b in zip([0]+stops, stops)]
+
+
     def cite(self):
         """
         Print the reference
