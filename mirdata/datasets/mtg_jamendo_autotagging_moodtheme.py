@@ -37,13 +37,14 @@
     grant agreement No 688382 "AudioCommons".
 """
 import csv
-import json
 import os
 from typing import Optional, Tuple, BinaryIO
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
-from mirdata import download_utils, jams_utils, core, io
+from mirdata import download_utils, jams_utils, core
+from smart_open import open
 
 BIBTEX = """@conference {bogdanov2019mtg,
     author = "Bogdanov, Dmitry and Won, Minz and Tovstogan, Philip and Porter, Alastair and Serra, Xavier",
@@ -191,29 +192,24 @@ class Dataset(core.Dataset):
             download_info=DOWNLOAD_INFO,
             indexes=INDEXES,
             remotes=REMOTES,
-            license_info="Creative Commons Attribution NonCommercial Share Alike 4.0 International.",
+            license_info=(
+                "Creative Commons Attribution NonCommercial Share Alike 4.0 International."
+            ),
         )
 
     @core.cached_property
     def _metadata(self):
         meta_path = os.path.join(self.data_home, "data/autotagging_moodtheme.tsv")
-        if not os.path.exists(meta_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        with open(meta_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter="\t")
-            # columns are track_id, artist_id, album_id, path, duration, tags
-            meta = {
-                line[0]: {
-                    "ARTIST_ID": line[1],
-                    "ALBUM_ID": line[2],
-                    "PATH": line[3],
-                    "DURATION": line[4],
-                    "TAGS": line[5],
+        try:
+            with open(meta_path, "r") as fhandle:
+                reader = csv.DictReader(fhandle, delimiter="\t")
+                meta = {
+                    row["TRACK_ID"]: {k: row[k] for k in row if k != "TRACK_ID"}
+                    for row in reader
                 }
-                for line in reader
-                if line[0] != "TRACK_ID"  # skip first line of csv file
-            }
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         splits = {}
         for split_number in range(5):
@@ -256,7 +252,10 @@ class Dataset(core.Dataset):
         meta["splits"] = splits
         return meta
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.mtg_jamendo_autotagging_moodtheme.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 

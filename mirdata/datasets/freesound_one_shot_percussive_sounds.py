@@ -43,8 +43,10 @@ import json
 import os
 from typing import BinaryIO, TextIO, Tuple, Optional
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils, jams_utils, core, io
 
@@ -270,34 +272,41 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         license_path = os.path.join(self.data_home, "licenses.txt")
-        if not os.path.exists(license_path):
-            raise FileNotFoundError("Licenses file not found. Did you run .download()?")
-
         sound_info_path = os.path.join(self.data_home, "sound_info_analysis.json")
-        if not os.path.exists(sound_info_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata = {}
-        with open(sound_info_path, "r", errors="ignore") as f:
-            sound_info = json.load(f)
-            for track in sound_info:
-                track_id = str(track.pop("id"))
-                metadata[track_id] = track
+        try:
+            with open(sound_info_path, "r", errors="ignore") as f:
+                sound_info = json.load(f)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        with open(license_path, "r", errors="ignore") as f:
-            license_dict = json.load(f)
-            for track_key in license_dict.keys():
-                metadata[track_key]["username"] = license_dict[track_key].get(
-                    "username"
-                )
-                metadata[track_key]["license"] = license_dict[track_key].get("license")
+        for track in sound_info:
+            track_id = str(track.pop("id"))
+            metadata[track_id] = track
+
+        try:
+            with open(license_path, "r", errors="ignore") as f:
+                license_dict = json.load(f)
+        except FileNotFoundError:
+            raise FileNotFoundError("Licenses file not found. Did you run .download()?")
+
+        for track_key in license_dict.keys():
+            metadata[track_key]["username"] = license_dict[track_key].get("username")
+            metadata[track_key]["license"] = license_dict[track_key].get("license")
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.freesound_one_shot_percussive_sounds.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_file_metadata)
+    @deprecated(
+        reason="Use mirdata.datasets.freesound_one_shot_percussive_sounds.load_file_metadata",
+        version="0.3.4",
+    )
     def load_file_metadata(self, *args, **kwargs):
         return load_file_metadata(*args, **kwargs)

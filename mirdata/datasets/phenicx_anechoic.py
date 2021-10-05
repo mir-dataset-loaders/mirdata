@@ -46,6 +46,7 @@
 """
 from typing import BinaryIO, Optional, TextIO, Tuple, cast
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
@@ -419,10 +420,16 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.phenicx_anechoic.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_score)
+    @deprecated(
+        reason="Use mirdata.datasets.phenicx_anechoic.load_score",
+        version="0.3.4",
+    )
     def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)

@@ -27,7 +27,10 @@ import csv
 import os
 import fnmatch
 import json
+
+from deprecated.sphinx import deprecated
 import librosa
+from smart_open import open
 
 from mirdata import core, download_utils, jams_utils, io
 
@@ -267,23 +270,38 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_key",
+        version="0.3.4",
+    )
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_tempo",
+        version="0.3.4",
+    )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
-    @core.copy_docs(load_genre)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_genre",
+        version="0.3.4",
+    )
     def load_genre(self, *args, **kwargs):
         return load_genre(*args, **kwargs)
 
-    @core.copy_docs(load_artist)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_artist",
+        version="0.3.4",
+    )
     def load_artist(self, *args, **kwargs):
         return load_artist(*args, **kwargs)
 
@@ -324,7 +342,7 @@ class Dataset(core.Dataset):
             directory (str): path to directory
             find (str): string from replace
             replace (str): string to replace
-            pattern (str): regex that must match the directories searrched
+            pattern (str): regex that must match the directories searched
 
         """
         for path, dirs, files in os.walk(os.path.abspath(directory)):

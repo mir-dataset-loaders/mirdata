@@ -46,8 +46,10 @@ import logging
 import os
 from typing import TextIO, Tuple, Optional
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, jams_utils, core, io
 
@@ -184,9 +186,8 @@ class Track(core.Track):
     @property
     def f0(self):
         logging.warning(
-            "Deprecation warning: Track.f0 is deprecated and will "
-            + "be removed in a future version. Use Track.f0_automatic "
-            + "or Track.f0_corrected"
+            "Track.f0 is deprecated as of 0.3.4 and will be removed in a future version. Use"
+            " Track.f0_automatic or Track.f0_corrected"
         )
         return self.f0_corrected
 
@@ -359,33 +360,43 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "TONAS-Metadata.txt")
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata = {}
-        with open(metadata_path, "r", errors="ignore") as f:
-            reader = csv.reader(
-                (x.replace("\0", "") for x in f), delimiter="\t"
-            )  # Fix wrong byte
-            for line in reader:
-                if line:  # Do not consider empty lines
-                    index = line[0].replace(".wav", "")
-                    metadata[index] = {
-                        "style": line[1],
-                        "title": line[2],
-                        "singer": line[3],
-                    }
+        try:
+            with open(metadata_path, "r", errors="ignore") as f:
+                reader = csv.reader(
+                    (x.replace("\0", "") for x in f), delimiter="\t"
+                )  # Fix wrong byte
+                for line in reader:
+                    if line:  # Do not consider empty lines
+                        index = line[0].replace(".wav", "")
+                        metadata[index] = {
+                            "style": line[1],
+                            "title": line[2],
+                            "singer": line[3],
+                        }
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.tonas.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_f0)
+    @deprecated(
+        reason="Use mirdata.datasets.tonas.load_f0",
+        version="0.3.4",
+    )
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.datasets.tonas.load_notes",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

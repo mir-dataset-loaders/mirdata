@@ -46,8 +46,8 @@ Downloading a dataset
 ^^^^^^^^^^^^^^^^^^^^^
 
 All dataset loaders in ``mirdata`` have a ``download()`` function that allows the user to download the canonical
-version of the dataset (when available). When initializing a dataset it is important to set up correctly the directory
-where the dataset is going to be stored and retrieved.
+version of the dataset (when available). When initializing a dataset, by default, mirdata will download/read data to/from a
+default location ("~/mir_datasets"). This can be customized by specifying `data_home` in `mirdata.initialize`.
 
 Downloading a dataset into the default folder:
     In this first example, ``data_home`` is not specified. Thus, ORCHSET will be downloaded and retrieved from ``mir_datasets``
@@ -57,20 +57,21 @@ Downloading a dataset into the default folder:
 
         import mirdata
         orchset = mirdata.initialize('orchset')
-        orchset.download()  # Dataset is downloaded at user root folder
+        orchset.download()  # Dataset is downloaded to ~/mir_datasets/orchset
 
 Downloading a dataset into a specified folder:
-    Now ``data_home`` is specified and so ORCHSET will be downloaded and retrieved from it:
+    Now ``data_home`` is specified and so orchset will be read from / written to this custom location:
 
     .. code-block:: python
 
-        orchset = mirdata.initialize('orchset', data_home='Users/johnsmith/Desktop')
-        orchset.download()  # Dataset is downloaded at John Smith's desktop
+        orchset = mirdata.initialize('orchset', data_home='Users/leslieknope/Desktop/orchset123')
+        orchset.download()  # Dataset is downloaded to the folder "orchset123" Leslie Knope's desktop
+
 
 Partially downloading a dataset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``download()`` functions allows to partially download a dataset. In other words, if applicable, the user can
+The ``download()`` functions allows partial downloads of a dataset. In other words, if applicable, the user can
 select which elements of the dataset they want to download. Each dataset has a ``REMOTES`` dictionary were all
 the available elements are listed.
 
@@ -114,11 +115,12 @@ list is passed to the ``download()`` function through the ``partial_download`` v
             ),
         }
 
-An partial download example for ``cante100`` dataset could be:
+A partial download example for ``cante100`` dataset could be:
 
 .. code-block:: python
 
     cante100.download(partial_download=['spectrogram', 'melody', 'metadata'])
+
 
 Validating a dataset
 ^^^^^^^^^^^^^^^^^^^^
@@ -133,7 +135,7 @@ Accessing annotations
 
 We can choose a random track from a dataset with the ``choice_track()`` method.
 
-.. admonition:: Example Index
+.. admonition:: Loading annotations
     :class: dropdown
 
     .. code-block:: python
@@ -163,7 +165,7 @@ We can choose a random track from a dataset with the ``choice_track()`` method.
 
 
 We can also access specific tracks by id. 
-The available track ids can be acessed via the `.track_ids` attribute.
+The available track ids can be acessed via the ``.track_ids`` attribute.
 In the next example we take the first track id, and then we retrieve the melody
 annotation.
 
@@ -188,56 +190,49 @@ Alternatively, we don't need to load the whole dataset to get a single track.
 
 .. _Remote Data Example: 
 
-Accessing data remotely
-^^^^^^^^^^^^^^^^^^^^^^^
+Accessing data on non-local filesystems
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Annotations can also be accessed through ``load_*()`` methods which may be useful, for instance, when your data isn't available locally. 
-If you specify the annotation's path, you can use the module's loading functions directly. Let's
-see an example.
+mirdata uses the smart_open_ library, which supports non-local filesystems such as GCS and AWS.
+If your data lives, e.g. on Google Cloud Storage (GCS), simply set the ``data_home`` variable accordingly
+when initializing a dataset. For example:
 
-.. admonition:: Accessing annotations remotely example
+.. _smart_open: https://pypi.org/project/smart-open/
+
+.. admonition:: Accessing annotations remotely
     :class: dropdown
 
     .. code-block:: python
 
-        # Load list of track ids of the dataset
-        orchset_ids = orchset.track_ids
+        import mirdata
 
-        # Load a single track, specifying the remote location
-        example_track = orchset.track(orchset_ids[0], data_home='user/my_custom/remote_path')
-        melody_path = example_track.melody_path
+        orchset = mirdata.initialize("orchset", data_home="gs://my-bucket/my-subfolder/orchset")
 
-        print(melody_path)
-        >>> user/my_custom/remote_path/GT/Beethoven-S3-I-ex1.mel
-        print(os.path.exists(melody_path))
-        >>> False
+        # everything should work the same as if the data were local
+        orchset.validate()
 
-        # Write code here to locally download your path e.g. to a temporary file.
-        def my_downloader(remote_path):
-            # the contents of this function will depend on where your data lives, and how permanently you want the files to remain on the machine. We point you to libraries handling common use cases below.
-            # for data you would download via scp, you could use the [scp](https://pypi.org/project/scp/) library
-            # for data on google drive, use [pydrive](https://pythonhosted.org/PyDrive/)
-            # for data on google cloud storage use [google-cloud-storage](https://pypi.org/project/google-cloud-storage/)
-            return local_path_to_downloaded_data
+        example_track = orchset.choice_track()
+        melody = example_track.melody
+        y, fs = example_track.audio_mono
 
-        # Get path where youe data lives
-        temp_path = my_downloader(melody_path)
 
-        # Accessing to track melody annotation
-        example_melody = orchset.load_melody(temp_path)
+    Note that the data on the remote file system must have identical folder structure to what is specified by ``dataset.download()``,
+    and we do not support downloading (i.e. writing) to remote filesystems, only reading from them. To prepare a new dataset to use with mirdata,
+    we recommend running ``dataset.download()`` on a local filesystem, and then manually transfering the folder contents to the remote
+    filesystem.
 
-        print(example_melody.frequencies)
-        >>> array([  0.   ,   0.   ,   0.   , ..., 391.995, 391.995, 391.995])
-        print(example_melody.times)
-        >>> array([0.000e+00, 1.000e-02, 2.000e-02, ..., 1.244e+01, 1.245e+01, 1.246e+01])
+.. admonition:: mp3 data
+    :class: dropdown, warning
 
+    For a variety of reasons, mirdata doesn't support remote reading of mp3 files, so some datasets with
+    mp3 audio may have tracks unavailable attributes.
 
 
 Annotation classes
 ^^^^^^^^^^^^^^^^^^
 
 ``mirdata`` defines annotation-specific data classes. These data classes are meant to standarize the format for
-all loaders, and are compatibly with `JAMS <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
+all loaders, and are compatibly with `jams <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
 The list and descriptions of available annotation classes can be found in :ref:`annotations`.
 

@@ -33,8 +33,10 @@ import os
 import csv
 import json
 
-import numpy as np
+from deprecated.sphinx import deprecated
 import librosa
+import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
@@ -291,11 +293,14 @@ def load_tempo(fhandle):
     sections_abs_path = os.path.join(head, sections_path)
 
     sections = []
-    with open(sections_abs_path, "r") as fhandle2:
-        reader = csv.reader(fhandle2, delimiter=",")
-        for line in reader:
-            if line != "\n":
-                sections.append(line[3])
+    try:
+        with open(sections_abs_path, "r") as fhandle2:
+            reader = csv.reader(fhandle2, delimiter=",")
+            for line in reader:
+                if line != "\n":
+                    sections.append(line[3])
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File {sections_abs_path} not found.")
 
     section_count = 0
 
@@ -469,30 +474,51 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_tonic)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_tonic",
+        version="0.3.4",
+    )
     def load_tonic(self, *args, **kwargs):
         return load_tonic(*args, **kwargs)
 
-    @core.copy_docs(load_pitch)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_pitch",
+        version="0.3.4",
+    )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_tempo",
+        version="0.3.4",
+    )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
-    @core.copy_docs(load_sama)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_sama",
+        version="0.3.4",
+    )
     def load_sama(self, *args, **kwargs):
         return load_sama(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_phrases)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_phrases",
+        version="0.3.4",
+    )
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)

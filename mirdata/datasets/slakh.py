@@ -28,9 +28,11 @@
 import os
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pretty_midi
+from smart_open import open
 import yaml
 
 from mirdata import io, download_utils, jams_utils, core, annotations
@@ -144,8 +146,13 @@ class Track(core.Track):
 
     @core.cached_property
     def _track_metadata(self) -> dict:
-        with open(self.metadata_path, "r") as fhandle:
-            metadata = yaml.safe_load(fhandle)
+        try:
+            with open(self.metadata_path, "r") as fhandle:
+                metadata = yaml.safe_load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                f"track metadata for {self.track_id} not found. Did you run .download()?"
+            )
         return metadata["stems"][self.track_id.split("-")[1]]
 
     @property
@@ -266,8 +273,11 @@ class MultiTrack(core.MultiTrack):
 
     @core.cached_property
     def _multitrack_metadata(self) -> dict:
-        with open(self.metadata_path, "r") as fhandle:
-            metadata = yaml.safe_load(fhandle)
+        try:
+            with open(self.metadata_path, "r") as fhandle:
+                metadata = yaml.safe_load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
         return metadata
 
     @property
@@ -380,7 +390,9 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The slakh dataset"""
+    """
+    The slakh dataset
+    """
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
@@ -395,18 +407,30 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.slakh.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(io.load_midi)
+    @deprecated(
+        reason="Use mirdata.datasets.slakh.load_midi",
+        version="0.3.4",
+    )
     def load_midi(self, *args, **kwargs):
         return io.load_midi(*args, **kwargs)
 
-    @core.copy_docs(io.load_notes_from_midi)
+    @deprecated(
+        reason="Use mirdata.io.load_notes_from_midi",
+        version="0.3.4",
+    )
     def load_notes_from_midi(self, *args, **kwargs):
         return io.load_notes_from_midi(*args, **kwargs)
 
-    @core.copy_docs(io.load_multif0_from_midi)
+    @deprecated(
+        reason="Use mirdata.io.load_multif0_from_midi",
+        version="0.3.4",
+    )
     def load_multif0_from_midi(self, *args, **kwargs):
         return io.load_multif0_from_midi(*args, **kwargs)

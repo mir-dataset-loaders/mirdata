@@ -49,11 +49,15 @@
 
 import csv
 import os
-
-import numpy as np
-import librosa
-from mirdata import annotations, core, download_utils, io, jams_utils
 from typing import BinaryIO, Optional, TextIO, Tuple
+
+from deprecated.sphinx import deprecated
+import librosa
+import numpy as np
+from smart_open import open
+
+from mirdata import annotations, core, download_utils, io, jams_utils
+
 
 BIBTEX = """
 @dataset{rong_gong_2018_1323561,
@@ -111,7 +115,8 @@ REMOTES = {
 }
 
 LICENSE_INFO = (
-    "audio files ending with upf or lon: Creative Commons Attribution Non-Commercial 4.0 International, "
+    "audio files ending with upf or lon: Creative Commons Attribution Non-Commercial 4.0"
+    " International, "
     + "audio files ending with qm: http://isophonics.org/SingingVoiceDataset"
 )
 
@@ -339,40 +344,47 @@ class Dataset(core.Dataset):
             self.data_home,
             "catalogue - laosheng.csv",
         )
-        metadata_path_dan = os.path.join(
-            self.data_home,
-            "catalogue - dan.csv",
-        )
-        if not os.path.exists(metadata_path_laosheng):
+        # metadata_path_dan = os.path.join(
+        #     self.data_home,
+        #     "catalogue - dan.csv",
+        # )
+
+        metadata = {}
+        try:
+            with open(metadata_path_laosheng, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                next(reader)
+                for line in reader:
+                    work = line[1] if line[1] else None
+                    details = line[3] if line[3] else None
+                    metadata[line[0]] = {"work": work, "details": details}
+
+                data_home = os.path.dirname(metadata_path_laosheng)
+                metadata["data_home"] = data_home
+        except FileNotFoundError:
             raise FileNotFoundError(
                 "laosheng metadata not found. Did you run .download()?"
             )
 
-        if not os.path.exists(metadata_path_dan):
-            raise FileNotFoundError("dan metadata not found. Did you run .download()?")
-
-        metadata = {}
-        with open(metadata_path_laosheng, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            next(reader)
-            for line in reader:
-                work = line[1] if line[1] else None
-                details = line[3] if line[3] else None
-                metadata[line[0]] = {"work": work, "details": details}
-
-            data_home = os.path.dirname(metadata_path_laosheng)
-            metadata["data_home"] = data_home
-
         return metadata
 
-    @core.copy_docs(load_phonemes)
+    @deprecated(
+        reason="Use mirdata.datasets.jingju_acapella.load_phonemes",
+        version="0.3.4",
+    )
     def load_phonemes(self, *args, **kwargs):
         return load_phonemes(*args, **kwargs)
 
-    @core.copy_docs(load_phrases)
+    @deprecated(
+        reason="Use mirdata.datasets.jingju_acapella.load_phrases",
+        version="0.3.4",
+    )
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)
 
-    @core.copy_docs(load_syllable)
+    @deprecated(
+        reason="Use mirdata.datasets.jingju_acapella.load_syllable",
+        version="0.3.4",
+    )
     def load_syllable(self, *args, **kwargs):
         return load_syllable(*args, **kwargs)

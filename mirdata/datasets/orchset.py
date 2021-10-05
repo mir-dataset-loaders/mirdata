@@ -16,8 +16,10 @@ import csv
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
@@ -269,16 +271,16 @@ class Dataset(core.Dataset):
             self.data_home, "Orchset - Predominant Melodic Instruments.csv"
         )
 
-        if not os.path.exists(predominant_inst_path):
+        try:
+            with open(predominant_inst_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                raw_data = []
+                for line in reader:
+                    if line[0] == "excerpt":
+                        continue
+                    raw_data.append(line)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(predominant_inst_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            raw_data = []
-            for line in reader:
-                if line[0] == "excerpt":
-                    continue
-                raw_data.append(line)
 
         tf_dict = {"TRUE": True, "FALSE": False}
 
@@ -319,14 +321,23 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_audio_mono)
+    @deprecated(
+        reason="Use mirdata.datasets.orchset.load_audio_mono",
+        version="0.3.4",
+    )
     def load_audio_mono(self, *args, **kwargs):
         return load_audio_mono(*args, **kwargs)
 
-    @core.copy_docs(load_audio_stereo)
+    @deprecated(
+        reason="Use mirdata.datasets.orchset.load_audio_stereo",
+        version="0.3.4",
+    )
     def load_audio_stereo(self, *args, **kwargs):
         return load_audio_stereo(*args, **kwargs)
 
-    @core.copy_docs(load_melody)
+    @deprecated(
+        reason="Use mirdata.datasets.orchset.load_melody",
+        version="0.3.4",
+    )
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)

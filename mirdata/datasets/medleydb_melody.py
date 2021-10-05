@@ -19,10 +19,12 @@
 import csv
 import json
 import os
-from typing import BinaryIO, cast, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, io, jams_utils
 
@@ -261,22 +263,31 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "medleydb_melody_metadata.json")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                metadata = json.load(fhandle)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            metadata = json.load(fhandle)
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_melody.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_melody)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_melody.load_melody",
+        version="0.3.4",
+    )
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
-    @core.copy_docs(load_melody3)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_melody.load_melody3",
+        version="0.3.4",
+    )
     def load_melody3(self, *args, **kwargs):
         return load_melody3(*args, **kwargs)

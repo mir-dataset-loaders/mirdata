@@ -55,9 +55,11 @@ import logging
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple, Dict, List
 
+from deprecated.sphinx import deprecated
 import jams
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
 
@@ -383,10 +385,12 @@ def load_chords(jams_path, leadsheet_version):
         ChordData: Chord data
 
     """
-    if not os.path.exists(jams_path):
-        raise IOError("jams_path {} does not exist".format(jams_path))
+    try:
+        with open(jams_path, "r") as fhandle:
+            jam = jams.load(fhandle)
+    except FileNotFoundError:
+        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
 
-    jam = jams.load(jams_path)
     if leadsheet_version:
         anno = jam.search(namespace="chord")[0]
     else:
@@ -456,9 +460,12 @@ def load_pitch_contour(jams_path, string_num):
         F0Data: Pitch contour data for the given string
 
     """
-    if not os.path.exists(jams_path):
-        raise IOError("jams_path {} does not exist".format(jams_path))
-    jam = jams.load(jams_path)
+    try:
+        with open(jams_path, "r") as fhandle:
+            jam = jams.load(fhandle)
+    except FileNotFoundError:
+        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+
     anno_arr = jam.search(namespace="pitch_contour")
     anno = anno_arr.search(data_source=str(string_num))[0]
     times, values = anno.to_event_values()
@@ -490,9 +497,12 @@ def load_notes(jams_path, string_num):
         NoteData: Note data for the given string
 
     """
-    if not os.path.exists(jams_path):
-        raise IOError("jams_path {} does not exist".format(jams_path))
-    jam = jams.load(jams_path)
+    try:
+        with open(jams_path) as fhandle:
+            jam = jams.load(fhandle)
+    except FileNotFoundError:
+        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+
     anno_arr = jam.search(namespace="note_midi")
     anno = anno_arr.search(data_source=str(string_num))[0]
     intervals, values = anno.to_interval_values()
@@ -519,30 +529,51 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_multitrack_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_multitrack_audio",
+        version="0.3.4",
+    )
     def load_multitrack_audio(self, *args, **kwargs):
         return load_multitrack_audio(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_chords",
+        version="0.3.4",
+    )
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @core.copy_docs(load_key_mode)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_key_mode",
+        version="0.3.4",
+    )
     def load_key_mode(self, *args, **kwargs):
         return load_key_mode(*args, **kwargs)
 
-    @core.copy_docs(load_pitch_contour)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_pitch_contour",
+        version="0.3.4",
+    )
     def load_pitch_contour(self, *args, **kwargs):
         return load_pitch_contour(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.datasets.guitarset.load_notes",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

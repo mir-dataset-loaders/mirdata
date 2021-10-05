@@ -13,8 +13,10 @@ import os
 import re
 from typing import BinaryIO, TextIO, Optional, Tuple, Dict, List
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -493,16 +495,13 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "billboard-2.0-index.csv")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                next(reader, None)
+                raw_data = [line for line in reader if line != []]
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            next(reader, None)
-            raw_data = []
-            for line in reader:
-                if line != []:
-                    raw_data.append(line)
 
         metadata_index = {}
         for line in raw_data:
@@ -518,18 +517,30 @@ class Dataset(core.Dataset):
             }
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.billboard.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.billboard.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_named_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.billboard.load_named_sections",
+        version="0.3.4",
+    )
     def load_named_sections(self, *args, **kwargs):
         return load_named_sections(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(
+        reason="Use mirdata.datasets.billboard.load_chords",
+        version="0.3.4",
+    )
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)

@@ -1,11 +1,10 @@
+import importlib
 import inspect
-from inspect import signature
 import io
 import os
 import sys
 import pytest
 import requests
-
 
 import mirdata
 from mirdata import core
@@ -19,6 +18,7 @@ CUSTOM_TEST_TRACKS = {
     "compmusic_otmm_makam": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
+    "da_tacos": "coveranalysis#W_163992#P_547131",
     "freesound_one_shot_percussive_sounds": "183",
     "giantsteps_tempo": "113",
     "gtzan_genre": "country.00000",
@@ -73,6 +73,35 @@ def test_dataset_attributes():
         )
 
 
+def test_smart_open():
+    for dataset_name in DATASETS:
+        # import module
+        dataset_module = importlib.import_module(f"mirdata.datasets.{dataset_name}")
+        code_lines = inspect.getsource(dataset_module)
+
+        # check if os.path.exists is called:
+        assert "os.path.exists" not in code_lines, (
+            f"{dataset_name} uses os.path.exists, "
+            + "which does not work with remote filesystems. Instead use a try/except. "
+            + "See orchset.py for an example."
+        )
+
+        # if open is called, make sure smart open is imported
+        not_overwritten_message = (
+            f"{dataset_name} uses open, but does not overwrite it with smart_open. "
+            + "Add the line `from smart_open import open` to the top of the module."
+        )
+        overwritten_wrong_message = (
+            f"{dataset_name} overwrites open using something other than smart_open. "
+            + "Add the line `from smart_open import open` to the top of the module."
+        )
+        if "open(" in code_lines:
+            assert hasattr(dataset_module, "open"), not_overwritten_message
+            assert (
+                dataset_module.open.__module__ == "smart_open.smart_open_lib"
+            ), overwritten_wrong_message
+
+
 def test_cite_and_license():
     for dataset_name in DATASETS:
         dataset = mirdata.initialize(
@@ -105,7 +134,7 @@ def test_download(mocker):
         assert callable(dataset.download), "{}.download is not callable".format(
             dataset_name
         )
-        params = signature(dataset.download).parameters
+        params = inspect.signature(dataset.download).parameters
 
         expected_params = [
             ("partial_download", None),
@@ -212,10 +241,9 @@ def test_load_and_trackids():
             assert isinstance(
                 dataset_data, dict
             ), "{}.load should return a dictionary".format(dataset_name)
-            assert (
-                len(dataset_data.keys()) == trackid_len
-            ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
-                dataset_name, dataset_name
+            assert len(dataset_data.keys()) == trackid_len, (
+                "the dictionary returned {}.load() does not have the same number of elements as"
+                " {}.track_ids()".format(dataset_name, dataset_name)
             )
 
 
@@ -355,20 +383,14 @@ SKIP = {
 
 def test_load_methods():
     for dataset_name in DATASETS:
-        dataset = mirdata.initialize(
-            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
-        )
+        dataset_module = importlib.import_module(f"mirdata.datasets.{dataset_name}")
 
-        all_methods = dir(dataset)
+        all_methods = dir(dataset_module)
         load_methods = [
-            getattr(dataset, m) for m in all_methods if m.startswith("load_")
+            getattr(dataset_module, m) for m in all_methods if m.startswith("load_")
         ]
         for load_method in load_methods:
             method_name = load_method.__name__
-
-            # skip default methods
-            if method_name == "load_tracks" or method_name == "load_multitracks":
-                continue
 
             # skip overrides, add to the SKIP dictionary to skip a specific load method
             if dataset_name in SKIP and method_name in SKIP[dataset_name]:
@@ -380,12 +402,6 @@ def test_load_methods():
                         dataset_name, method_name
                     )
                 )
-
-            params = [
-                p
-                for p in signature(load_method).parameters.values()
-                if p.default == inspect._empty
-            ]  # get list of parameters that don't have defaults
 
             # add to the EXCEPTIONS dictionary above if your load_* function needs
             # more than one argument.

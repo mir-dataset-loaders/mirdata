@@ -53,8 +53,10 @@ import csv
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
@@ -81,7 +83,9 @@ REMOTES = {
     ),
     "annotations_sections": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-C-2001.CHORUS.zip",
-        url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip",
+        url=(
+            "https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip"
+        ),
         checksum="f77bd527510376f59f5a2eed8fd7feb3",
         destination_dir="annotations",
     ),
@@ -386,17 +390,17 @@ class Dataset(core.Dataset):
 
         metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-c.csv")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                dialect = csv.Sniffer().sniff(fhandle.read(1024))
+                fhandle.seek(0)
+                reader = csv.reader(fhandle, dialect)
+                raw_data = []
+                for line in reader:
+                    if line[0] != "Piece No.":
+                        raw_data.append(line)
+        except:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            dialect = csv.Sniffer().sniff(fhandle.read(1024))
-            fhandle.seek(0)
-            reader = csv.reader(fhandle, dialect)
-            raw_data = []
-            for line in reader:
-                if line[0] != "Piece No.":
-                    raw_data.append(line)
 
         metadata_index = {}
         for line in raw_data:
@@ -418,14 +422,23 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_classical.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_classical.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_classical.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)

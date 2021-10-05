@@ -46,15 +46,14 @@
 
 """
 import csv
-import glob
-import logging
 import os
-import shutil
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pretty_midi
+from smart_open import open
 
 from mirdata import annotations
 from mirdata import core
@@ -420,59 +419,55 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_midi)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_midi",
+        version="0.3.4",
+    )
     def load_midi(self, *args, **kwargs):
         return load_midi(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_drum_events)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_drum_events",
+        version="0.3.4",
+    )
     def load_drum_events(self, *args, **kwargs):
         return load_drum_events(*args, **kwargs)
 
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "info.csv")
-
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
         metadata_index = {}
-        with open(metadata_path, "r") as fhandle:
-            csv_reader = csv.reader(fhandle, delimiter=",")
-            next(csv_reader)
-            for row in csv_reader:
-                (
-                    drummer,
-                    session,
-                    track_id,
-                    style,
-                    bpm,
-                    beat_type,
-                    time_signature,
-                    midi_filename,
-                    audio_filename,
-                    duration,
-                    split,
-                ) = row
-                metadata_index[str(track_id)] = {
-                    "drummer": str(drummer),
-                    "session": str(session),
-                    "track_id": str(track_id),
-                    "style": str(style),
-                    "tempo": int(bpm),
-                    "beat_type": str(beat_type),
-                    "time_signature": str(time_signature),
-                    "midi_filename": str(midi_filename),
-                    "audio_filename": str(audio_filename),
-                    "duration": float(duration),
-                    "split": str(split),
-                }
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.DictReader(fhandle, delimiter=",")
+                for row in csv_reader:
+                    track_id = row["id"]
+                    metadata_index[track_id] = {
+                        key: row[key] for key in row.keys() if key != "id"
+                    }
+                    metadata_index[track_id]["tempo"] = int(
+                        metadata_index[track_id].pop("bpm")
+                    )
+                    metadata_index[track_id]["duration"] = float(
+                        metadata_index[track_id]["duration"]
+                    )
+                    metadata_index[track_id]["track_id"] = track_id
+
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index

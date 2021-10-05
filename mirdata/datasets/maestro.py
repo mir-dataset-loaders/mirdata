@@ -35,11 +35,13 @@ import logging
 import os
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pretty_midi
+from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io, jams_utils
 
 
 BIBTEX = """@inproceedings{
@@ -73,7 +75,9 @@ REMOTES = {
     ),
     "metadata": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0.json",
-        url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json",
+        url=(
+            "https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json"
+        ),
         checksum="576172af1cdc4efddcf0be7d260d48f7",
     ),
 }
@@ -221,11 +225,11 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "maestro-v2.0.0.json")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                raw_metadata = json.load(fhandle)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            raw_metadata = json.load(fhandle)
 
         metadata = {}
         for mdata in raw_metadata:
@@ -234,15 +238,24 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.maestro.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(io.load_midi)
+    @deprecated(
+        reason="Use mirdata.io.load_midi",
+        version="0.3.4",
+    )
     def load_midi(self, *args, **kwargs):
         return io.load_midi(*args, **kwargs)
 
-    @core.copy_docs(io.load_notes_from_midi)
+    @deprecated(
+        reason="Use mirdata.io.load_notes_from_midi",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return io.load_notes_from_midi(*args, **kwargs)
 

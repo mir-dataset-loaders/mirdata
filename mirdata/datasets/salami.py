@@ -16,10 +16,12 @@
 """
 import csv
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
@@ -287,17 +289,18 @@ class Dataset(core.Dataset):
                 "salami-data-public-hierarchy-corrections", "metadata", "metadata.csv"
             ),
         )
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        with open(metadata_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            raw_data = []
-            for line in reader:
-                if line != []:
-                    if line[0] == "SONG_ID":
-                        continue
-                    raw_data.append(line)
+        try:
+            with open(metadata_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                raw_data = []
+                for line in reader:
+                    if line != []:
+                        if line[0] == "SONG_ID":
+                            continue
+                        raw_data.append(line)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata_index = {}
         for line in raw_data:
@@ -320,10 +323,16 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.salami.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.salami.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
