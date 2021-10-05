@@ -466,3 +466,24 @@ def test_multitracks():
         assert jam.validate(), "Jams validation failed for {}.MultiTrack({})".format(
             dataset_name, mtrack_id
         )
+
+
+def test_random_splits():
+    for dataset_name in DATASETS:
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
+        
+        # check splits for tracks
+        if dataset._track_class:
+            splits = dataset.get_tracks_splits([0.7, 0.2, .1])
+            assert len(dataset.track_ids) == sum([len(i) for i in splits])
+            with pytest.raises(ValueError):
+                dataset.get_tracks_splits([0.7, 0.2, .0])
+        
+        # check splits for multitracks
+        if dataset._multitrack_class:
+            splits = dataset.get_mtracks_splits([0.7, 0.2, .1])
+            assert len(dataset.mtrack_ids) == sum([len(i) for i in splits])
+            with pytest.raises(ValueError):
+                dataset.get_mtracks_splits([0.7, 0.2, .0])
