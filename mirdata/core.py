@@ -295,7 +295,11 @@ class Dataset(object):
         """
 
         if not np.isclose(np.sum(splits), 1):
-            raise ValueError("Splits values should sum up to 1. Given {} sums {}".format(splits, np.sum(splits)))
+            raise ValueError(
+                "Splits values should sum up to 1. Given {} sums {}".format(
+                    splits, np.sum(splits)
+                )
+            )
 
         rng = np.random.default_rng(seed=seed)  # The random generator
         random_track_ids = rng.permutation(self.track_ids)
@@ -303,7 +307,7 @@ class Dataset(object):
         # Method from https://stackoverflow.com/a/14281094
         cdf = np.cumsum(splits)
         stops = list(map(lambda x: int(np.ceil(x)), cdf * len(random_track_ids)))
-        return [random_track_ids[a:b] for a, b in zip([0]+stops, stops)]
+        return [random_track_ids[a:b] for a, b in zip([0] + stops, stops)]
 
     def get_mtracks_splits(self, splits, seed=42):
         """Split the multitracks dataset for training, validation, test, etc
@@ -317,7 +321,11 @@ class Dataset(object):
         """
 
         if not np.isclose(np.sum(splits), 1):
-            raise ValueError("Splits values should sum up to 1. Given {} sums {}".format(splits, np.sum(splits)))
+            raise ValueError(
+                "Splits values should sum up to 1. Given {} sums {}".format(
+                    splits, np.sum(splits)
+                )
+            )
 
         rng = np.random.default_rng(seed=seed)  # The random generator
         random_mtrack_ids = rng.permutation(self.mtrack_ids)
@@ -325,8 +333,7 @@ class Dataset(object):
         # Method from https://stackoverflow.com/a/14281094
         cdf = np.cumsum(splits)
         stops = list(map(lambda x: int(np.ceil(x)), cdf * len(random_mtrack_ids)))
-        return [random_mtrack_ids[a:b] for a, b in zip([0]+stops, stops)]
-
+        return [random_mtrack_ids[a:b] for a, b in zip([0] + stops, stops)]
 
     def cite(self):
         """

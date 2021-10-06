@@ -473,23 +473,23 @@ def test_random_splits():
         dataset = mirdata.initialize(
             dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
         )
-        
+
         list_sum_up_1 = [
-            [.8, .1 , .1],
-            [.7, .2 , .1],
-            [.9, .1 , .0],
-            [.6, .3 , .1],
-            [.5, .4 , .1],
-            [.9, .05 , .05],
+            [0.8, 0.1, 0.1],
+            [0.7, 0.2, 0.1],
+            [0.9, 0.1, 0.0],
+            [0.6, 0.3, 0.1],
+            [0.5, 0.4, 0.1],
+            [0.9, 0.05, 0.05],
         ]
 
         list_not_sum_up_1 = [
-            [.8, .1, .3],
-            [.3, .1, .3],
-            [.9, .2, .3],
-            [.1, .1, .1],
-            [.95, .01, .01],
-            [.8, .1, .3],
+            [0.8, 0.1, 0.3],
+            [0.3, 0.1, 0.3],
+            [0.9, 0.2, 0.3],
+            [0.1, 0.1, 0.1],
+            [0.95, 0.01, 0.01],
+            [0.8, 0.1, 0.3],
         ]
 
         # check splits for tracks
@@ -500,7 +500,7 @@ def test_random_splits():
             for wrong_combination in list_not_sum_up_1:
                 with pytest.raises(ValueError):
                     dataset.get_tracks_splits(list_not_sum_up_1)
-        
+
         # check splits for multitracks
         if dataset._multitrack_class:
             for right_combination in list_sum_up_1:
