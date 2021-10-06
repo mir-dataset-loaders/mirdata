@@ -257,6 +257,46 @@ def test_downloader_with_server_file(httpserver):
 
     _clean(save_dir)
 
+    # test with wrong checksum: raises error
+    TEST_REMOTE = download_utils.RemoteFileMetadata(
+        filename="remote.wav",
+        url=httpserver.url,
+        checksum=("wrongchecksum"),
+    )
+    
+    with pytest.raises(OSError):
+        _clean(save_dir)
+        download_utils.downloader(save_dir, index=index, remotes={"b": TEST_REMOTE})
+
+    with pytest.raises(OSError):
+        _clean(save_dir)
+        download_utils.downloader(
+            save_dir, index=index, remotes={"b": TEST_REMOTE}, cleanup=True
+        )
+
+    with pytest.raises(OSError):
+        _clean(save_dir)
+        download_utils.downloader(
+            save_dir, index=index, remotes={"b": TEST_REMOTE}, force_overwrite=True
+        )
+
+    # test with wrong checksum: ignore error
+    with pytest.warns(UserWarning):
+        _clean(save_dir)
+        download_utils.downloader(save_dir, index=index, remotes={"b": TEST_REMOTE}, allow_invalid_checksum=True)
+
+    with pytest.warns(UserWarning):
+        _clean(save_dir)
+        download_utils.downloader(
+            save_dir, index=index, remotes={"b": TEST_REMOTE}, cleanup=True, allow_invalid_checksum=True
+        )
+
+    with pytest.warns(UserWarning):
+        _clean(save_dir)
+        download_utils.downloader(
+            save_dir, index=index, remotes={"b": TEST_REMOTE}, force_overwrite=True, allow_invalid_checksum=True
+        )
+
 
 def test_downloader_with_server_zip(httpserver):
     index = core.Index("asdf.json")
