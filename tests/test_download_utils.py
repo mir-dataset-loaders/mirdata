@@ -263,7 +263,7 @@ def test_downloader_with_server_file(httpserver):
         url=httpserver.url,
         checksum=("wrongchecksum"),
     )
-    
+
     with pytest.raises(OSError):
         _clean(save_dir)
         download_utils.downloader(save_dir, index=index, remotes={"b": TEST_REMOTE})
@@ -283,18 +283,31 @@ def test_downloader_with_server_file(httpserver):
     # test with wrong checksum: ignore error
     with pytest.warns(UserWarning):
         _clean(save_dir)
-        download_utils.downloader(save_dir, index=index, remotes={"b": TEST_REMOTE}, allow_invalid_checksum=True)
-
-    with pytest.warns(UserWarning):
-        _clean(save_dir)
         download_utils.downloader(
-            save_dir, index=index, remotes={"b": TEST_REMOTE}, cleanup=True, allow_invalid_checksum=True
+            save_dir,
+            index=index,
+            remotes={"b": TEST_REMOTE},
+            allow_invalid_checksum=True,
         )
 
     with pytest.warns(UserWarning):
         _clean(save_dir)
         download_utils.downloader(
-            save_dir, index=index, remotes={"b": TEST_REMOTE}, force_overwrite=True, allow_invalid_checksum=True
+            save_dir,
+            index=index,
+            remotes={"b": TEST_REMOTE},
+            cleanup=True,
+            allow_invalid_checksum=True,
+        )
+
+    with pytest.warns(UserWarning):
+        _clean(save_dir)
+        download_utils.downloader(
+            save_dir,
+            index=index,
+            remotes={"b": TEST_REMOTE},
+            force_overwrite=True,
+            allow_invalid_checksum=True,
         )
 
 
