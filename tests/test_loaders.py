@@ -466,3 +466,46 @@ def test_multitracks():
         assert jam.validate(), "Jams validation failed for {}.MultiTrack({})".format(
             dataset_name, mtrack_id
         )
+
+
+def test_random_splits():
+    for dataset_name in DATASETS:
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
+
+        list_sum_up_1 = [
+            [0.8, 0.1, 0.1],
+            [0.7, 0.2, 0.1],
+            [0.9, 0.1, 0.0],
+            [0.6, 0.3, 0.1],
+            [0.5, 0.4, 0.1],
+            [0.9, 0.05, 0.05],
+        ]
+
+        list_not_sum_up_1 = [
+            [0.8, 0.1, 0.3],
+            [0.3, 0.1, 0.3],
+            [0.9, 0.2, 0.3],
+            [0.1, 0.1, 0.1],
+            [0.95, 0.01, 0.01],
+            [0.8, 0.1, 0.3],
+        ]
+
+        # check splits for tracks
+        if dataset._track_class:
+            for right_combination in list_sum_up_1:
+                splits = dataset.get_tracks_splits(right_combination)
+                assert len(dataset.track_ids) == sum([len(i) for i in splits])
+            for wrong_combination in list_not_sum_up_1:
+                with pytest.raises(ValueError):
+                    dataset.get_tracks_splits(list_not_sum_up_1)
+
+        # check splits for multitracks
+        if dataset._multitrack_class:
+            for right_combination in list_sum_up_1:
+                splits = dataset.get_mtracks_splits(right_combination)
+                assert len(dataset.mtrack_ids) == sum([len(i) for i in splits])
+            for wrong_combination in list_not_sum_up_1:
+                with pytest.raises(ValueError):
+                    dataset.get_mtracks_splits(list_not_sum_up_1)
