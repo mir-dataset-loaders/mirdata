@@ -350,7 +350,13 @@ class Dataset(object):
         print(self._license_info)
         print(DISCLAIMER)
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
+    def download(
+        self,
+        partial_download=None,
+        force_overwrite=False,
+        cleanup=False,
+        allow_invalid_checksum=False,
+    ):
         """Download data to `save_dir` and optionally print a message.
 
         Args:
@@ -361,6 +367,10 @@ class Dataset(object):
                 If True, existing files are overwritten by the downloaded files.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.
+            allow_invalid_checksum (bool):
+                Allow invalid checksums of the downloaded data. Useful sometimes behind some
+                proxies that inspection the downloaded data. When having a different checksum
+                promts a warn instead of raising an exception
 
         Raises:
             ValueError: if invalid keys are passed to partial_download
@@ -375,6 +385,7 @@ class Dataset(object):
             info_message=self._download_info,
             force_overwrite=force_overwrite,
             cleanup=cleanup,
+            allow_invalid_checksum=allow_invalid_checksum,
         )
 
     @cached_property
