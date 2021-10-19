@@ -44,11 +44,10 @@ def make_vocadito_index(vocadito_data_path: str, version: str) -> None:
     }
 
     for track_id in track_ids:
-        if track_id != "13":
-            index_tracks[track_id]["lyrics"] = (
-                f"Annotations/Lyrics/vocadito_{track_id}_lyrics.txt",
-                md5(os.path.join(lyrics_dir, f"vocadito_{track_id}_lyrics.txt")),
-            )
+        index_tracks[track_id]["lyrics"] = (
+            f"Annotations/Lyrics/vocadito_{track_id}_lyrics.txt",
+            md5(os.path.join(lyrics_dir, f"vocadito_{track_id}_lyrics.txt")),
+        )
 
     # top-key level version
     vocadito_index = {

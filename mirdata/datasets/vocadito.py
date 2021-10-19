@@ -29,28 +29,25 @@ from mirdata import annotations, core, download_utils, jams_utils, io
 
 # TODO: Replace with paper citation
 BIBTEX = """
-@dataset{bittner_rachel_2021_5557945,
-  author       = {Bittner, Rachel and
-                  Pasalo, Katherine and
-                  Bosch, Juan José and
-                  Meseguer Brocal, Gabriel and
-                  Rubinstein, David},
-  title        = {{vocadito: A dataset of solo vocals with f0, note,
-                   and lyric Annotations}},
-  month        = oct,
-  year         = 2021,
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.5557945},
-  url          = {https://doi.org/10.5281/zenodo.5557945}
+@techreport{bittner2021vocadito,
+      title={vocadito: A dataset of solo vocals with $f_0$, note, and lyric annotations}, 
+      author={Rachel M. Bittner and Katherine Pasalo and Juan José Bosch and Gabriel Meseguer-Brocal and David Rubinstein},
+      year={2021},
+      month={oct},
+      eprint={2110.05580},
 }
 """
 
-INDEXES = {"1": core.Index(filename="vocadito_index_1.json")}
+INDEXES = {
+    "default": "1",
+    "test": "1",
+    "1": core.Index(filename="vocadito_index_1.json")
+}
 
 REMOTES = {
     "zenodo": download_utils.RemoteFileMetadata(
         filename="Vocadito.zip",
-        url="https://zenodo.org/record/5557945/files/vocadito.zip?download=1",
+        url="https://zenodo.org/record/5578259/files/vocadito.zip?download=1",
         checksum="0f304a0088dbab4eb9657f7e400786d8",
     ),
 }
@@ -68,12 +65,12 @@ class Track(core.Track):
         audio_path (str): path to the track's audio file
         f0_path (str): path to the track's f0 annotation file
         lyrics_path (str): path to the track's lyric annotation file
-        notes_a1_path (str): path to the track's notes annotation file for annotator A1
-        notes_a2_path (str): path to the track's notes annotation file for annotator A2
+        notes_a1_path (str): path to the track's note annotation file for annotator A1
+        notes_a2_path (str): path to the track's note annotation file for annotator A2
         track_id (str): track id
         singer_id (str): singer id
-        average_pitch (int): Average pitch in Hz
-        language (str): Track's language. May contain multiple languages.
+        average_pitch_midi (int): Average pitch in midi, computed from the f0 annotation
+        language (str): The track's language. May contain multiple languages.
 
     Cached Properties:
         f0 (F0Data): human-annotated singing voice pitch
@@ -105,10 +102,20 @@ class Track(core.Track):
 
         self.audio_path = self.get_path("audio")
 
-        self.track_id: str = track_id
-        self.singer_id: str = metadata()[track_id]["singer_id"]
-        self.average_pitch: int = metadata()[track_id]["average_pitch"]
-        self.language: str = metadata()[track_id]["language"]
+
+
+    @property
+    def singer_id(self):
+        return self._track_metadata.get("singer_id")
+
+    @property
+    def average_pitch_midi(self):
+        return self._track_metadata.get("average_pitch_midi")
+
+    @property
+    def language(self):
+        return self._track_metadata.get("language")
+
 
     @core.cached_property
     def f0(self) -> Optional[annotations.F0Data]:
@@ -147,13 +154,13 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.f0, None)],
-            # TODO: note_data=[(self.notes_pyin, "pyin estimated notes")],
-            # TODO: lyrics_data=[(self.lyrics, None)],
+            note_data=[(self.notes_a1, "notes - Annotator 1"), (self.notes_a2, "notes - Annotator 2")],
             metadata={
                 "singer_id": self.singer_id,
                 "average_pitch": int(self.average_pitch),
                 "language": self.language,
                 "track_id": self.track_id,
+                "lyrics": self.lyrics,
             },
         )
 
@@ -170,7 +177,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         * float - sample rate
 
     """
-    return librosa.load(fhandle, sr=None, mono=False)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
@@ -193,8 +200,8 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
         time_unit="s",
         frequencies=times_frequencies[:, 1],
         frequency_unit="hz",
-        voicing=np.zeros_like(times_frequencies[:, 1]),  # TODO
-        voicing_unit="binary",  # TODO
+        voicing=(frequencies > 0).astype(int),
+        voicing_unit="binary",
     )
 
 
@@ -244,7 +251,7 @@ class Dataset(core.Dataset):
     The vocadito dataset
     """
 
-    def __init__(self, data_home=None, version="1"):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
             version,
@@ -264,7 +271,7 @@ class Dataset(core.Dataset):
                 return {
                     row["track_id"]: {
                         "singer_id": row["singer_id"],
-                        "average_pitch": int(row["average_pitch"]),
+                        "average_pitch_midi": int(row["average_pitch"]),
                         "language": row["language"],
                     }
                     for row in csv.DictReader(fhandle)
@@ -272,30 +279,3 @@ class Dataset(core.Dataset):
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-    @deprecated(
-        reason="Use mirdata.datasets.vocadito.load_audio",
-        version="0.3.4",
-    )
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
-
-    @deprecated(
-        reason="Use mirdata.datasets.vocadito.load_f0",
-        version="0.3.4",
-    )
-    def load_f0(self, *args, **kwargs):
-        return load_f0(*args, **kwargs)
-
-    @deprecated(
-        reason="Use mirdata.datasets.vocadito.load_notes",
-        version="0.3.4",
-    )
-    def load_notes(self, *args, **kwargs):
-        return load_notes(*args, **kwargs)
-
-    @deprecated(
-        reason="Use mirdata.datasets.vocadito.load_lyrics",
-        version="0.3.4",
-    )
-    def load_lyrics(self, *args, **kwargs):
-        return load_lyrics(*args, **kwargs)

@@ -18,7 +18,7 @@ def test_track():
         "audio_path": "tests/resources/mir_datasets/vocadito/Audio/vocadito_1.wav",
         "singer_id": "S1",
         "language": "Tagalog",
-        "average_pitch": 50,
+        "average_pitch_midi": 50,
         "f0_path": "tests/resources/mir_datasets/vocadito/Annotations/F0/vocadito_1_f0.csv",
         "lyrics_path": "tests/resources/mir_datasets/vocadito/Annotations/Lyrics/vocadito_1_lyrics.txt",
         "notes_a1_path": "tests/resources/mir_datasets/vocadito/Annotations/Notes/vocadito_1_notesA1.csv",
