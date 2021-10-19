@@ -55,7 +55,7 @@ def test_track():
     # test audio loading functions
     audio, sr = track.audio
     assert sr == 44100
-    assert audio.shape == (44100 * 2,)
+    assert audio.shape == (1464660,)
 
 
 def test_to_jams():
@@ -93,7 +93,8 @@ def test_load_f0():
     )
     assert len(f0_data.frequencies) == 5722
     assert np.allclose(f0_data.frequencies[:2], np.array([0.0, 0.0]), atol=1e-5, rtol=0)
-    assert np.allclose(f0_data.voicing, np.zeros((5722)), atol=1e-10, rtol=0)
+    assert len(f0_data.voicing) == 5722
+    assert np.allclose(f0_data.voicing[:2], np.array([0.0, 0.0]), atol=1e-5, rtol=0)
 
 
 def test_load_notes():
@@ -146,6 +147,6 @@ def test_load_metadata():
     metadata = dataset._metadata
     assert metadata["1"] == {
         "singer_id": "S1",
-        "average_pitch": 50,
+        "average_pitch_midi": 50,
         "language": "Tagalog",
     }

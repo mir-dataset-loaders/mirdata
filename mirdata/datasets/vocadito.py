@@ -12,7 +12,7 @@
     lyrics
     language
 
-    For more details, please visit: https://zenodo.org/record/5557945
+    For more details, please visit: https://zenodo.org/record/5578807
 
 """
 import csv
@@ -30,7 +30,7 @@ from mirdata import annotations, core, download_utils, jams_utils, io
 # TODO: Replace with paper citation
 BIBTEX = """
 @techreport{bittner2021vocadito,
-      title={vocadito: A dataset of solo vocals with $f_0$, note, and lyric annotations}, 
+      title={vocadito: A dataset of solo vocals with $f_0$, note, and lyric annotations},
       author={Rachel M. Bittner and Katherine Pasalo and Juan José Bosch and Gabriel Meseguer-Brocal and David Rubinstein},
       year={2021},
       month={oct},
@@ -41,14 +41,14 @@ BIBTEX = """
 INDEXES = {
     "default": "1",
     "test": "1",
-    "1": core.Index(filename="vocadito_index_1.json")
+    "1": core.Index(filename="vocadito_index_1.json"),
 }
 
 REMOTES = {
     "zenodo": download_utils.RemoteFileMetadata(
         filename="Vocadito.zip",
-        url="https://zenodo.org/record/5578259/files/vocadito.zip?download=1",
-        checksum="0f304a0088dbab4eb9657f7e400786d8",
+        url="https://zenodo.org/record/5578807/files/vocadito.zip?download=1",
+        checksum="dea40fd18f14d899643c4ba221b33a46",
     ),
 }
 
@@ -74,7 +74,7 @@ class Track(core.Track):
 
     Cached Properties:
         f0 (F0Data): human-annotated singing voice pitch
-        lyrics (LyricsData): human-annotated lyrics
+        lyrics (List[List[str]]): human-annotated lyrics
         notes_a1 (NoteData): human-annotated notes by annotator A1
         notes_a2 (NoteData): human-annotated notes by annotator A2
     """
@@ -102,8 +102,6 @@ class Track(core.Track):
 
         self.audio_path = self.get_path("audio")
 
-
-
     @property
     def singer_id(self):
         return self._track_metadata.get("singer_id")
@@ -115,7 +113,6 @@ class Track(core.Track):
     @property
     def language(self):
         return self._track_metadata.get("language")
-
 
     @core.cached_property
     def f0(self) -> Optional[annotations.F0Data]:
@@ -154,10 +151,13 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             f0_data=[(self.f0, None)],
-            note_data=[(self.notes_a1, "notes - Annotator 1"), (self.notes_a2, "notes - Annotator 2")],
+            note_data=[
+                (self.notes_a1, "notes - Annotator 1"),
+                (self.notes_a2, "notes - Annotator 2"),
+            ],
             metadata={
                 "singer_id": self.singer_id,
-                "average_pitch": int(self.average_pitch),
+                "average_pitch_midi": int(self.average_pitch_midi),
                 "language": self.language,
                 "track_id": self.track_id,
                 "lyrics": self.lyrics,
@@ -200,7 +200,7 @@ def load_f0(fhandle: TextIO) -> annotations.F0Data:
         time_unit="s",
         frequencies=times_frequencies[:, 1],
         frequency_unit="hz",
-        voicing=(frequencies > 0).astype(int),
+        voicing=(times_frequencies[:, 1] > 0).astype(np.float64),
         voicing_unit="binary",
     )
 
@@ -278,4 +278,3 @@ class Dataset(core.Dataset):
                 }
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-

@@ -8,7 +8,7 @@ VOCADITO_INDEX_PATH = "mirdata/datasets/indexes/vocadito_index_{}.json"
 
 
 def make_vocadito_index(vocadito_data_path: str, version: str) -> None:
-    assert version in ["1"]
+    assert version == "1"
     annotations_dir = os.path.join(vocadito_data_path, "Annotations")
     f0_dir = os.path.join(annotations_dir, "F0")
     lyrics_dir = os.path.join(annotations_dir, "Lyrics")
@@ -39,15 +39,13 @@ def make_vocadito_index(vocadito_data_path: str, version: str) -> None:
                 f"Annotations/Notes/vocadito_{track_id}_notesA2.csv",
                 md5(os.path.join(notes_dir, f"vocadito_{track_id}_notesA2.csv")),
             ),
+            "lyrics": (
+                f"Annotations/Lyrics/vocadito_{track_id}_lyrics.txt",
+                md5(os.path.join(lyrics_dir, f"vocadito_{track_id}_lyrics.txt")),
+            ),
         }
         for track_id in track_ids
     }
-
-    for track_id in track_ids:
-        index_tracks[track_id]["lyrics"] = (
-            f"Annotations/Lyrics/vocadito_{track_id}_lyrics.txt",
-            md5(os.path.join(lyrics_dir, f"vocadito_{track_id}_lyrics.txt")),
-        )
 
     # top-key level version
     vocadito_index = {
