@@ -54,10 +54,7 @@
     20) ([float]) spec_cent_curve and spec_flux_curve: the inter-note timbre values, 1 per millisecond
     
     The Participant folders also contain MIDI files of the transcriptions (frame level and score level) as well as a PDF and MusicXML of the typeset solo.
-    
-    # INFORMATION ABOUT HOW TO DOWNLOAD THE DATASET HERE!
-    
-    # INFORMATION ABOUT THE LICENSE HERE!
+
     
 """
 import csv
@@ -72,7 +69,7 @@ import librosa
 import numpy as np
 from smart_open import open  # if you use the open function, make sure you include this line!
 
-from mirdata import download_utils, jams_utils, core, annotations
+from mirdata import download_utils, jams_utils, core, annotations, io
 
 # -- Add any relevant citations here
 BIBTEX = """
@@ -359,7 +356,7 @@ class MultiTrack(core.MultiTrack):
 # -- and in either case converts it to an open file handle.
 # -- It also checks if the file exists
 # -- and, if None is passed, None will be returned 
-#@io.coerce_to_bytes_io
+@io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Filosax audio file.
 
@@ -371,7 +368,9 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(audio_path, sr=None, mono=True)
+    print("Load audio")
+    print(fhandle)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 # -- Write any necessary loader functions for loading the dataset's data
@@ -380,7 +379,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 # -- and in either case converts it to an open file handle.
 # -- It also checks if the file exists
 # -- and, if None is passed, None will be returned 
-#@io.coerce_to_string_io
+@io.coerce_to_string_io
 def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
 
     # -- because of the decorator, the file is already open
