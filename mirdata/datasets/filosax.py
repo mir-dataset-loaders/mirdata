@@ -4,7 +4,7 @@
     :class: dropdown
 
     The Filosax dataset was conceived, curated and compiled by Dave Foster (a PhD student on the AIM programme at QMUL) and his supervisor Simon Dixon (C4DM @ QMUL).
-    The dataset is a collection of 48 multitrack jazz recording, where each piece has 8 corresponding audio files:
+    The dataset is a collection of 48 multitrack jazz recordings, where each piece has 8 corresponding audio files:
     
     1) The original Aebersold backing track (stereo)
     2) Bass_Drums, a mono file of a mix of bass and drums
@@ -26,42 +26,16 @@
         b) written solo (interpretation of transcribed solo)
         c) improvised solo
         
-    For each Sax recording (5 per piece), there is a corresponding .json file containing note annotations:
-    
-    1) (float) a_start_time, a_end_time, a_duration: the time stamps of the start, end and duration of the note, in seconds
-    2) (int) piece_num and bar_num: the parent piece and bar number of the start of the note
-    3) (string) musician: the participant ID
-    4) (int) bar_type: the section annotation where 0 = head, 1 = written solo, 2 = improvised solo
-    5) (float) s_start_time and s_duration: the time stamps of the score representation, in seconds
-    6) (int) crochet_num: the number of sub-divisions which define a crochet (always 24)
-    7) (int) s_rhythmic_position and s_rhythmic_duration: the start and duration of the score note (compared to crochet_num)
-    8) (int) midi_pitch: the quantised midi pitch
-    9) (bool) is_grace: is the note a grace note, associated with the following note
-    10) (int) num_chord_changes: the number of chords which accompany the note (usually 1, sometimes >1 for long notes)
-    11) (dict{int, [int, int, int]}) chord changes: the chords, where the key is the rhythmic position of the chord (using crochet_num) and the value a list [a, b, c], where:
-        a: chord_root (0 = C, 1 = C#... 11 = B)
-        b: chord_bass (0 = C, 1 = C#... 11 = B)
-        c: chord_type (0 = maj7, 1 = maj7#11, 2 = 6/9, 3 = 7, 4 = 7b9, 5 = 7#11, 6 = min7, 7 = min(maj7), 8 = dim, 9 = 1/2 dim)
-        (An additional chord is added in the case of a quaver at the end of the bar, followed by a rest on the downbeat)
-    12) (int) main_chord_num: usually 0, sometimes 1 in the quaver case described above
-    13) ([int]) scale_changes: the degree of the chromatic scale when midi_pitch is compared to chord_root
-    14) (float) loudness_max_val and loudness_max_time: the value (db) and time (seconds) of the maximum loudness (could be used for onset value)
-    15) ([float]) loudness_curve: the inter-note loudness values, 1 per millisecond
-    16) (float) pitch_average_val and pitch_average_time: the value (midi) and time (seconds) of the average pitch
-    17) ([float]) pitch_curve: the inter-note pitch values, 1 per millisecond 
-    18) (float) pitch_vib_freq and pitch_vib_ext: the vibrato frequency (Hz) and extent (midi), both 0.0 if no vibrato detected
-    19) (float) spec_cent and spec_flux: the spectral centroid and spectral flux values at the time of the maximum loudness
-    20) ([float]) spec_cent_curve and spec_flux_curve: the inter-note timbre values, 1 per millisecond
+    For each Sax recording (5 per piece), there is a corresponding .json file containing note annotations (see Note object).
     
     The Participant folders also contain MIDI files of the transcriptions (frame level and score level) as well as a PDF and MusicXML of the typeset solo.
 
-    
 """
 import csv
 import json
 import os
 import jams
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Dict, Optional, TextIO, Tuple
 
 # -- import whatever you need here and remove
 # -- Filosax imports you won't use
@@ -96,19 +70,6 @@ INDEXES = {
     "0.1": core.Index(filename="filosax_index_lite.json")
 }
 
-# -- REMOTES is a dictionary containing all files that need to be downloaded.
-# -- The keys should be descriptive (e.g. 'annotations', 'audio').
-# -- When having data that can be partially downloaded, remember to set up
-# -- correctly destination_dir to download the files following the correct structure.
-REMOTES = {
-    'remote_data': download_utils.RemoteFileMetadata(
-        filename='a_zip_file.zip',
-        url='http://website/hosting/the/zipfile.zip',
-        checksum='00000000000000000000000000000000',  # -- the md5 checksum
-        destination_dir='path/to/unzip' # -- relative path for where to unzip the data, or None
-    ),
-}
-
 # -- Include any information that should be printed when downloading
 # -- remove this variable if you don't need to print anything during download
 DOWNLOAD_INFO = """
@@ -117,9 +78,90 @@ TO DO!
 
 # -- Include the dataset's license information
 LICENSE_INFO = """
-TO DO!
+The Filosax dataset contains copyright material and is shared with researchers under the following conditions:
+1. Filosax may only be used by the individual signing below and by members of the research group or organisation of this individual. This permission is not transferable.
+2. Filosax may be used only for non-commercial research purposes.
+3. Filosax (or data enabling the its reproduction) may not be sold, leased, published or distributed to any third party without written permission from the Filosax administrator.
+4. When research results obtained using Filosax are publicly released (in the form of reports, publications, or derivative software), clear indication of the use of Filosax shall be given, usually in the form of a citation of the following paper:
+    D. Foster and S. Dixon (2021),  Filosax: A Dataset of Annotated Jazz Saxophone Recordings.
+    22nd International Society for Music Information Retrieval Conference (ISMIR).
+5. Queen Mary University of London shall not be held liable for any errors in the content of Filosax nor damage arising from the use of Filosax.
+6. The Filosax administrator may update these conditions of use at any time. 
 """
 
+class Note:
+    """Filosax Note class - dictionary wrapper to give dot properties
+
+    Args:
+        input_dict (dict): dictionary of attributes
+
+    Attributes:
+        a_start_time (float): the time stamp of the note start, in seconds
+        a_end_time (float): the time stamp of the note end, in seconds
+        a_duration (float): the duration of the note end, in seconds
+        midi_pitch (int): the quantised midi pitch
+        crochet_num (int): the number of sub-divisions which define a crochet (always 24)
+        musician (str): the participant ID
+        bar_num (int): the bar number of the start of the note
+        s_start_time (float): the time stamp of the score note start, in seconds
+        s_duration (float): the duration of the score note, in seconds
+        s_end_time (float): the time stamp of the score note end, in seconds
+        s_rhythmic_duration (int): the duration of the score note (compared to crochet_num)
+        s_rhythmic_position (int): the position in the bar of the score note start (compared to crochet_num)
+        tempo (float): the tempo at the start of the note, in beats per minute
+        bar_type (int): the section annotation where 0 = head, 1 = written solo, 2 = improvised solo
+        is_grace (bool): is the note a grace note, associated with the following note
+        chord_changes {int: str}: the chords, where the key is the rhythmic position of the chord (using crochet_num, relative to s_rhythmic_position) and the value a JAMS chord annotation  (An additional chord is added in the case of a quaver at the end of the bar, followed by a rest on the downbeat)
+        num_chord_changes (int): the number of chords which accompany the note (usually 1, sometimes >1 for long notes)
+        main_chord_num (int): usually 0, sometimes 1 in the quaver case described above
+        scale_changes [int]: the degree of the chromatic scale when midi_pitch is compared to chord_root
+        loudness_max_val (float): the value (db) of the maximum loudness
+        loudness_max_time (float): the time (seconds) of the maximum loudness (compared to a_start_time)
+        loudness_curve [float]: the inter-note loudness values, 1 per millisecond
+        pitch_average_val (float): the value (midi) of the average pitch and 
+        pitch_average_time (float): the time (seconds) of the average pitch (compared to a_start_time)
+        pitch_curve [float]: the inter-note pitch values, 1 per millisecond 
+        pitch_vib_freq (float): the vibrato frequency (Hz), 0.0 if no vibrato detected
+        pitch_vib_ext (float): the vibrato extent (midi), 0.0 if no vibrato detected
+        spec_cent (float): the spectral centroid value at the time of the maximum loudness
+        spec_flux (float): the spectral flux value at the time of the maximum loudness
+        spec_cent_curve [float]: the inter-note spectral centroid values, 1 per millisecond
+        spec_flux_curve [float]: the inter-note spectral flux values, 1 per millisecond
+
+    """
+    def __init__(self, input_dict):
+        # a_ = actual, s_ = score
+        self.a_start_time = input_dict["a_start_time"]
+        self.a_end_time = input_dict["a_end_time"]
+        self.a_duration = input_dict["a_duration"]
+        self.midi_pitch = input_dict["midi_pitch"]
+        self.crochet_num = input_dict["crochet_num"]
+        self.musician = input_dict["musician"]
+        self.bar_num = input_dict["bar_num"]
+        self.s_start_time = input_dict["s_start_time"]
+        self.s_duration = input_dict["s_duration"]
+        self.s_end_time = self.s_start_time + self.s_duration
+        self.s_rhythmic_duration = input_dict["s_rhythmic_duration"]
+        self.s_rhythmic_position = input_dict["s_rhythmic_position"]
+        self.tempo = input_dict["tempo"]
+        self.bar_type = input_dict["bar_type"]
+        self.is_grace = input_dict["is_grace"]
+        self.chord_changes = input_dict["chord_changes"]
+        self.num_chord_changes = input_dict["num_chord_changes"]
+        self.main_chord_num = input_dict["main_chord_num"]
+        self.scale_changes = input_dict["scale_changes"]
+        self.loudness_max_val = input_dict["loudness_max_val"]
+        self.loudness_max_time = input_dict["loudness_max_time"]
+        self.loudness_curve = input_dict["loudness_curve"]
+        self.pitch_average_val = input_dict["pitch_average_val"]
+        self.pitch_average_time = input_dict["pitch_average_time"]
+        self.pitch_curve = input_dict["pitch_curve"]
+        self.pitch_vib_freq = input_dict["pitch_vib_freq"]
+        self.pitch_vib_ext = input_dict["pitch_vib_ext"]
+        self.spec_cent = input_dict["spec_cent"]
+        self.spec_flux = input_dict["spec_flux"]
+        self.spec_cent_curve = input_dict["spec_cent_curve"]
+        self.spec_flux_curve = input_dict["spec_flux_curve"]
 
 class Track(core.Track):
     """Filosax track class
@@ -133,8 +175,7 @@ class Track(core.Track):
     Attributes:
         audio_path (str): path to audio file
         annotation_path (str): path to annotation file
-        test_attribute (str:)
-        # -- Add any of the dataset specific attributes here
+        notes ([Note]): an ordered list of Note objects
 
     Cached Properties:
         annotation (EventData): a description of this annotation
@@ -156,43 +197,23 @@ class Track(core.Track):
             metadata=metadata,
         )
         
-        print("Track ID =", track_id)
-        
-        self._test_attribute = "Test Attribute"
-        
         # -- add any dataset specific attributes here
         self.audio_path = self.get_path("audio")
         self.annotation_path = self.get_path("annotation")
-        
-        # TODO:
-        # The track's annotations are in a json file
-        # (This needs to be loaded (on demand) in the annotation function)
-        # Only "sax" files have annotations though!
-        # So there'll have to be some filter?
-        # The json file is a sequence of "Note" objects
-        # In the first instance, this could be loaded as [{}]
-        # Ideally, all the values would be loaded into the designated mirdata annotation format
 
-    # -- If the dataset has metadata that needs to be accessed by Tracks,
-    # -- such as a table mapping track ids to composers for the full dataset,
-    # -- add them as properties like instead of in the __init__.
-    #@property
-    #def composer(self) -> Optional[str]:
-    #    return self._track_metadata.get("composer")
-
-    # -- `annotation` will behave like an attribute, but it will only be loaded
-    # -- and saved when someone accesses it. Useful when loading slightly
-    # -- bigger files or for bigger datasets. By default, we make any time
-    # -- series data loaded from a file a cached property
     @core.cached_property
-    def annotation(self) -> Optional[annotations.EventData]:
-        #return load_annotation(self.annotation_path)
-        print("Track Annotation")
-        return "Annotations: TODO!"
+    def notes(self) -> Optional[Dict]:
+        """The track's note list - only for Sax files
 
-    # -- `audio` will behave like an attribute, but it will only be loaded
-    # -- when someone accesses it and it won't be stored. By default, we make
-    # -- any memory heavy information (like audio) properties
+        Returns:
+            * [Note] - ordered list of Note objects
+
+        """
+        if self.annotation_path == None:
+            print("Error: Annotations only available for Sax tracks")
+            return None
+        return load_annotation(self.annotation_path)
+
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
@@ -202,29 +223,11 @@ class Track(core.Track):
             * float - sample rate
 
         """
-        print("Track Audio")
         return load_audio(self.audio_path)
-    
-    @property
-    def test_attribute(self):
-        return self._test_attribute
-        
-    @test_attribute.setter
-    def test_attribute(self, value):
-        self._test_attribute = value
 
-    # -- we use the to_jams function to convert all the annotations in the JAMS format.
-    # -- The converter takes as input all the annotations in the proper format (e.g. beats
-    # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
-    # -- object with the annotations.
+    # -- JAMS format is not suitable for these annotations
     def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            annotation_data=[(self.annotation, None)],
-            metadata=self._metadata,
-        )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
+        return None
 
 
 class MultiTrack(core.MultiTrack):
@@ -345,17 +348,11 @@ class MultiTrack(core.MultiTrack):
         """
         return load_audio(self.audio_path)
 
-    # -- multitrack classes are themselves Tracks, and also need a to_jams method
-    # -- for any mixture-level annotations
     def to_jams(self):
         """Jams: the track's data in jams format"""
+        # Annotations are already in jams format
         return self.annotation
 
-
-# -- this decorator allows this function to take a string or an open bytes file as input
-# -- and in either case converts it to an open file handle.
-# -- It also checks if the file exists
-# -- and, if None is passed, None will be returned 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Filosax audio file.
@@ -368,44 +365,21 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         * float - The sample rate of the audio file
 
     """
-    print("Load audio")
-    print(fhandle)
     return librosa.load(fhandle, sr=None, mono=True)
 
-
-# -- Write any necessary loader functions for loading the dataset's data
-
-# -- this decorator allows this function to take a string or an open file as input
-# -- and in either case converts it to an open file handle.
-# -- It also checks if the file exists
-# -- and, if None is passed, None will be returned 
 @io.coerce_to_string_io
 def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
+    """Load a Filosax annotation file.
 
-    # -- because of the decorator, the file is already open
-    reader = csv.reader(fhandle, delimiter=' ')
-    intervals = []
-    annotation = []
-    for line in reader:
-        intervals.append([float(line[0]), float(line[1])])
-        annotation.append(line[2])
+    Args:
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
-    # there are several annotation types in annotations.py
-    # They should be initialized with data, followed by their units
-    # see annotations.py for a complete list of types and units.
-    annotation_data = annotations.EventData(
-        np.array(intervals), "s", np.array(annotation), "open"
-    )
-    return annotation_data
+    Returns:
+        * list[Note]: an ordered list of Note objects
 
-def load_annotation_json(annotation_path):
-    # TODO: load json file
-    with open(annotation_path) as f:
-        data = json.load(f)
-    print(data[0])
-    
-    return data
-            
+    """
+    note_dict = json.load(fhandle)["notes"]
+    return [Note(n) for n in note_dict]         
 
 # -- use this decorator so the docs are complete
 @core.docstring_inherit(core.Dataset)
@@ -422,9 +396,7 @@ class Dataset(core.Dataset):
             multitrack_class=MultiTrack,
             bibtex=BIBTEX,
             indexes=INDEXES,
-            remotes=REMOTES,
+            remotes=None,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
-        
-        print("Sanity check - Filosax init")
