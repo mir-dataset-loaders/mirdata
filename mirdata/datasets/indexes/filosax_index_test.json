@@ -1,0 +1,111 @@
+{
+  "version": 0.1,
+  "tracks": {
+    "multitrack_01_sax_1": {
+      "audio": [
+        "Participant 1/01/Sax.wav",
+        "1f269ff5b296357875704fdf81f0e340"
+      ],
+      "annotation": [
+        "Participant 1/01/annotations.json",
+        "88f07dffd72f8ae214aea76176762595"
+      ]
+    },
+    "multitrack_01_sax_2": {
+      "audio": [
+        "Participant 2/01/Sax.wav",
+        "fcd7f975048cecd4fdf3c2b8fb95e84f"
+      ],
+      "annotation": [
+        "Participant 2/01/annotations.json",
+        "7847473dcf64003be236b590a4acd7fe"
+      ]
+    },
+    "multitrack_01_bass_drums": {
+      "audio": [
+        "Backing/01/Bass_Drums.wav",
+        "ccd18351f0569dad6d58845aaef57e77"
+      ],
+      "annotation": [
+        null,
+        null
+      ]
+    },
+    "multitrack_01_piano_drums": {
+      "audio": [
+        "Backing/01/Piano_Drums.wav",
+        "e95e8980deae3a5575c8c54843f06927"
+      ],
+      "annotation": [
+        null,
+        null
+      ]
+    },
+    "multitrack_02_sax_1": {
+      "audio": [
+        "Participant 1/02/Sax.wav",
+        "f7b52a451f1a6954e5b247400f88f7dc"
+      ],
+      "annotation": [
+        "Participant 1/02/annotations.json",
+        "dfa84a49a9586bf54ed5d86d8c84d9ba"
+      ]
+    },
+    "multitrack_02_sax_2": {
+      "audio": [
+        "Participant 2/02/Sax.wav",
+        "55067f6a21b21d46ca5d18ff1cae4c7e"
+      ],
+      "annotation": [
+        "Participant 2/02/annotations.json",
+        "dfd4b8e3d16cb43c139df70caf00a792"
+      ]
+    },
+    "multitrack_02_bass_drums": {
+      "audio": [
+        "Backing/02/Bass_Drums.wav",
+        "7da374bfccafe1b2bf61ea5d3db39f33"
+      ],
+      "annotation": [
+        null,
+        null
+      ]
+    },
+    "multitrack_02_piano_drums": {
+      "audio": [
+        "Backing/02/Piano_Drums.wav",
+        "45b05635ed64da351839315bb21562b0"
+      ],
+      "annotation": [
+        null,
+        null
+      ]
+    }
+  },
+  "multitracks": {
+    "multitrack_01": {
+      "tracks": [
+        "multitrack_01_sax_1",
+        "multitrack_01_sax_2",
+        "multitrack_01_bass_drums",
+        "multitrack_01_piano_drums"
+      ],
+      "annotations": [
+        "Backing/01/annotations.jams",
+        "c239a46fc8374358a992515d446d6963"
+      ]
+    },
+    "multitrack_02": {
+      "tracks": [
+        "multitrack_02_sax_1",
+        "multitrack_02_sax_2",
+        "multitrack_02_bass_drums",
+        "multitrack_02_piano_drums"
+      ],
+      "annotations": [
+        "Backing/02/annotations.jams",
+        "033b74dab361ed9ef2b9d65d43fce53d"
+      ]
+    }
+  }
+}
