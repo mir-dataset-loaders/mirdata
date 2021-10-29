@@ -27,14 +27,14 @@ from smart_open import open
 from mirdata import annotations, core, download_utils, jams_utils, io
 
 
-# TODO: Replace with paper citation
 BIBTEX = """
 @techreport{bittner2021vocadito,
-      title={vocadito: A dataset of solo vocals with $f_0$, note, and lyric annotations},
+      title={vocadito: A dataset of solo vocals with $f_0$, note, and lyric annotations}, 
       author={Rachel M. Bittner and Katherine Pasalo and Juan José Bosch and Gabriel Meseguer-Brocal and David Rubinstein},
       year={2021},
-      month={oct},
-      eprint={2110.05580},
+      institution={Spotify},
+      number={2110.05580},
+      note={https://arxiv.org/abs/2110.05580}
 }
 """
 
