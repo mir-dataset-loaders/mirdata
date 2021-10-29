@@ -4,5 +4,6 @@ jams
 chardet
 librosa>=0.7.0
 tqdm
+docutils<0.18
 sphinx==3.4.0
 Deprecated>=1.2.13
