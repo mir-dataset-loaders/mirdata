@@ -66,8 +66,10 @@ BIBTEX = """
 # -- If the default data is remote, there must be a local sample for tests!
 INDEXES = {
     "default": "0.1",
-    "test": "0.1",
-    "0.1": core.Index(filename="filosax_index_lite.json")
+    "lite": "0.1",
+    "test": "test",
+    "0.1": core.Index(filename="filosax_index_lite.json"),
+    "test": core.Index(filename="filosax_index_test.json")
 }
 
 # -- Include any information that should be printed when downloading
@@ -336,17 +338,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return self.annotation.search(namespace='segment_open')[0]['data']
-    
-    @property
-    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """The track's audio
-
-        Returns:
-            * np.ndarray - audio signal
-            * float - sample rate
-
-        """
-        return load_audio(self.audio_path)
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
@@ -400,3 +391,6 @@ class Dataset(core.Dataset):
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
+        
+    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
+        print(DOWNLOAD_INFO)
