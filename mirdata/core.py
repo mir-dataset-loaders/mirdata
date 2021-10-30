@@ -300,6 +300,8 @@ class Dataset(object):
                     splits, np.sum(splits)
                 )
             )
+        if self._track_class is None:
+            raise AttributeError("This dataset does not have tracks")
 
         rng = np.random.default_rng(seed=seed)  # The random generator
         random_track_ids = rng.permutation(self.track_ids)
@@ -326,6 +328,8 @@ class Dataset(object):
                     splits, np.sum(splits)
                 )
             )
+        if self._multitrack_class is None:
+            raise AttributeError("This dataset does not have multitracks")
 
         rng = np.random.default_rng(seed=seed)  # The random generator
         random_mtrack_ids = rng.permutation(self.mtrack_ids)
