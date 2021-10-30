@@ -501,6 +501,17 @@ def test_random_splits():
             [0.1, 0.7],
         ]
 
+        # check wrong type of split function
+        if dataset._track_class is None:
+            for right_combination in list_sum_up_1:
+                with pytest.raises(AttributeError):
+                    dataset.get_tracks_splits(right_combination)
+
+        if dataset._multitrack_class is None:
+            for right_combination in list_sum_up_1:
+                with pytest.raises(AttributeError):
+                    dataset.get_mtracks_splits(right_combination)
+
         # check splits for tracks
         if dataset._track_class:
             for right_combination in list_sum_up_1:
@@ -508,7 +519,7 @@ def test_random_splits():
                 assert len(dataset.track_ids) == sum([len(i) for i in splits])
             for wrong_combination in list_not_sum_up_1:
                 with pytest.raises(ValueError):
-                    dataset.get_tracks_splits(list_not_sum_up_1)
+                    dataset.get_tracks_splits(wrong_combination)
 
         # check splits for multitracks
         if dataset._multitrack_class:
@@ -517,4 +528,4 @@ def test_random_splits():
                 assert len(dataset.mtrack_ids) == sum([len(i) for i in splits])
             for wrong_combination in list_not_sum_up_1:
                 with pytest.raises(ValueError):
-                    dataset.get_mtracks_splits(list_not_sum_up_1)
+                    dataset.get_mtracks_splits(wrong_combination)
