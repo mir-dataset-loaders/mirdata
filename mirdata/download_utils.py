@@ -200,6 +200,13 @@ def download_from_remote(remote, save_dir, force_overwrite, allow_invalid_checks
         str: Full path of the created file.
 
     """
+    file_uri = parse_uri(save_dir)
+    if file_uri.scheme != "file":
+        raise NotImplementedError(
+            "mirdata only supports downloading to a local filesystem. "
+            "To use mirdata with a remote filesystem, download to a local filesytem, "
+            "and transfer the data to your remote filesystem, setting data_home appropriately."
+        )
     if remote.destination_dir is None:
         download_dir = save_dir
     else:

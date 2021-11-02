@@ -282,9 +282,31 @@ class Dataset(object):
 
         """
         return self.multitrack(random.choice(self.mtrack_ids))
+    def _get_partitions(self, items, splits, seed):
+        """Helper function to get the indexes needed to split a set of ids into partitions
+        Args:
+            items (list): list of items to partition
+            splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
+            seed (int): the seed used for the random generator, in order to enhance reproducibility.
+        Returns:
+            list: a list containing the partition indexes
+        """
+        if not np.isclose(np.sum(splits), 1):
+            raise ValueError(
+                "Splits values should sum up to 1. Given {} sums {}".format(
+                    splits, np.sum(splits)
+                )
+            )
 
-    def get_tracks_splits(self, splits, seed=42):
-        """Split the tracks dataset for training, validation, test, etc
+        rng = np.random.default_rng(seed=seed)
+        shuffled_items = rng.permutation(items)
+
+        # Method from https://stackoverflow.com/a/14281094
+        cdf = np.cumsum(splits)
+        partitions = list(map(lambda x: int(np.ceil(x)), cdf * len(items)))
+        return [shuffled_items[a:b] for a, b in zip([0] + partitions, partitions)]
+    def get_track_splits(self, splits, seed=42):
+        """Split the tracks into partitions e.g. training, validation, test
 
         Args:
             splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
@@ -294,25 +316,13 @@ class Dataset(object):
             list of lists: a list of lists containing the elements in each split
         """
 
-        if not np.isclose(np.sum(splits), 1):
-            raise ValueError(
-                "Splits values should sum up to 1. Given {} sums {}".format(
-                    splits, np.sum(splits)
-                )
-            )
         if self._track_class is None:
             raise AttributeError("This dataset does not have tracks")
 
-        rng = np.random.default_rng(seed=seed)  # The random generator
-        random_track_ids = rng.permutation(self.track_ids)
+        return self._get_partitions(self.track_ids, splits, seed)
 
-        # Method from https://stackoverflow.com/a/14281094
-        cdf = np.cumsum(splits)
-        stops = list(map(lambda x: int(np.ceil(x)), cdf * len(random_track_ids)))
-        return [random_track_ids[a:b] for a, b in zip([0] + stops, stops)]
-
-    def get_mtracks_splits(self, splits, seed=42):
-        """Split the multitracks dataset for training, validation, test, etc
+    def get_mtrack_splits(self, splits, seed=42):
+        """Split the multitracks into partitions, e.g. training, validation, test
 
         Args:
             splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
@@ -322,22 +332,10 @@ class Dataset(object):
             list of lists: a list of lists containing the elements in each split
         """
 
-        if not np.isclose(np.sum(splits), 1):
-            raise ValueError(
-                "Splits values should sum up to 1. Given {} sums {}".format(
-                    splits, np.sum(splits)
-                )
-            )
         if self._multitrack_class is None:
             raise AttributeError("This dataset does not have multitracks")
 
-        rng = np.random.default_rng(seed=seed)  # The random generator
-        random_mtrack_ids = rng.permutation(self.mtrack_ids)
-
-        # Method from https://stackoverflow.com/a/14281094
-        cdf = np.cumsum(splits)
-        stops = list(map(lambda x: int(np.ceil(x)), cdf * len(random_mtrack_ids)))
-        return [random_mtrack_ids[a:b] for a, b in zip([0] + stops, stops)]
+        return self._get_partitions(self.mtrack_ids, splits, seed)
 
     def cite(self):
         """

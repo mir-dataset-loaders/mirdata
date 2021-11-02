@@ -469,63 +469,28 @@ def test_multitracks():
 
 
 def test_random_splits():
+    split = [0.9, 0.1]
     for dataset_name in DATASETS:
         dataset = mirdata.initialize(
             dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
         )
-
-        list_sum_up_1 = [
-            [0.7, 0.1, 0.1, 0.1],
-            [0.4, 0.2, 0.2, 0.2],
-            [0.5, 0.2, 0.2, 0.1],
-            [0.8, 0.1, 0.1],
-            [0.7, 0.2, 0.1],
-            [0.9, 0.1, 0.0],
-            [0.6, 0.3, 0.1],
-            [0.5, 0.4, 0.1],
-            [0.9, 0.05, 0.05],
-            [0.8, 0.2],
-            [0.1, 0.9],
-        ]
-
-        list_not_sum_up_1 = [
-            [0.8, 0.1, 0.3, 0.2],
-            [0.3, 0.1, 0.3, 0.5],
-            [0.8, 0.1, 0.3],
-            [0.3, 0.1, 0.3],
-            [0.9, 0.2, 0.3],
-            [0.1, 0.1, 0.1],
-            [0.95, 0.01, 0.01],
-            [0.8, 0.1, 0.3],
-            [0.8, 0.3],
-            [0.1, 0.7],
-        ]
-
+        
         # check wrong type of split function
         if dataset._track_class is None:
-            for right_combination in list_sum_up_1:
-                with pytest.raises(AttributeError):
-                    dataset.get_tracks_splits(right_combination)
+            with pytest.raises(AttributeError):
+                dataset.get_track_splits(split)
 
         if dataset._multitrack_class is None:
-            for right_combination in list_sum_up_1:
-                with pytest.raises(AttributeError):
-                    dataset.get_mtracks_splits(right_combination)
+            with pytest.raises(AttributeError):
+                dataset.get_mtrack_splits(split)
 
         # check splits for tracks
         if dataset._track_class:
-            for right_combination in list_sum_up_1:
-                splits = dataset.get_tracks_splits(right_combination)
-                assert len(dataset.track_ids) == sum([len(i) for i in splits])
-            for wrong_combination in list_not_sum_up_1:
-                with pytest.raises(ValueError):
-                    dataset.get_tracks_splits(wrong_combination)
+            splits = dataset.get_tracks_splits(split)
+            assert len(dataset.track_ids) == sum([len(i) for i in splits])
 
         # check splits for multitracks
         if dataset._multitrack_class:
-            for right_combination in list_sum_up_1:
-                splits = dataset.get_mtracks_splits(right_combination)
+                splits = dataset.get_mtracks_splits(split)
                 assert len(dataset.mtrack_ids) == sum([len(i) for i in splits])
-            for wrong_combination in list_not_sum_up_1:
-                with pytest.raises(ValueError):
-                    dataset.get_mtracks_splits(wrong_combination)
+
