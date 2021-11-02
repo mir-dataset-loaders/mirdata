@@ -12,6 +12,7 @@ import zipfile
 import warnings
 
 from tqdm import tqdm
+from smart_open import open, parse_uri
 
 from mirdata.validate import md5
 
