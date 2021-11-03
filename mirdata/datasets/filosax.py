@@ -29,6 +29,10 @@
     For each Sax recording (5 per piece), there is a corresponding .json file containing note annotations (see Note object).
     
     The Participant folders also contain MIDI files of the transcriptions (frame level and score level) as well as a PDF and MusicXML of the typeset solo.
+    
+    The dataset comes in 2 flavours: full (all 48 tracks and 5 sax players) and lite (5 tracks and 2 sax players).
+    Both flavours can be used with or without the backing tracks (which need to be purchased online).
+    Hence, when opening the dataset, use one of 4 versions: 'full', 'full_sax', 'lite', 'lite_sax'.
 
 """
 import csv
@@ -37,15 +41,12 @@ import os
 import jams
 from typing import BinaryIO, Dict, Optional, TextIO, Tuple
 
-# -- import whatever you need here and remove
-# -- Filosax imports you won't use
 import librosa
 import numpy as np
-from smart_open import open  # if you use the open function, make sure you include this line!
+from smart_open import open 
 
 from mirdata import download_utils, jams_utils, core, annotations, io
 
-# -- Add any relevant citations here
 BIBTEX = """
 @inproceedings{
   foster_filosax_2021,
@@ -56,29 +57,57 @@ BIBTEX = """
 }
 """
 
-# -- INDEXES specifies different versions of a dataset
-# -- "default" and "test" specify which key should be used
-# -- by default, and when running tests.
-# -- Some datasets have a "sample" version, which is a mini-version
-# -- that makes it easier to try out a large dataset without needing
-# -- to download the whole thing.
-# -- If there is no sample version, simply set "test": "1.0".
-# -- If the default data is remote, there must be a local sample for tests!
 INDEXES = {
-    "default": "0.1",
-    "lite": "0.1",
+    "default": "full_0.9",
+    "full": "full_0.9",
+    "full_sax": "full_sax_0.9",
+    "lite": "lite_1.0",
+    "lite_sax": "lite_sax_1.0",
     "test": "test",
-    "0.1": core.Index(filename="filosax_index_lite.json"),
-    "test": core.Index(filename="filosax_index_test.json")
+    "full_0.9": core.Index(filename="filosax_index_full_0.9.json"),
+    "full_sax_0.9": core.Index(filename="filosax_index_full_sax_0.9.json"),
+    "lite_1.0": core.Index(filename="filosax_index_lite_1.0.json"),
+    "lite_sax_1.0": core.Index(filename="filosax_index_lite_sax_1.0.json"),
+    "test": core.Index(filename="filosax_index_lite_1.0.json")
 }
 
-# -- Include any information that should be printed when downloading
-# -- remove this variable if you don't need to print anything during download
 DOWNLOAD_INFO = """
-TO DO!
+To download the dataset, first go to the Zenodo pages below to request access:
+
+(Full - 14.5GB)
+https://zenodo.org/record/5643843#.YYL7aS2l3UI
+
+(Lite - 558MB)
+https://zenodo.org/record/5643734#.YYLQ-i2l3UI
+
+Unzip the downloaded file to the folder /Users/<username>/mir_datasets/, and remove the version number from the folder:
+
+(Full)
+/Users/<username>/mir_datasets/Filosax
+
+(Lite)
+/Users/<username>/mir_datasets/Filosax_Lite
+
+This data is sufficient to use the dataset in the "_sax" (sax only) mode. To download the backing data, go to the Aebersold sites:
+
+(Full)
+https://www.jazzbooks.com/mm5/merchant.mvc?&Screen=WISH&Store_Code=JAJAZZ&WishList_ID=1679
+
+(Lite)
+https://www.jazzbooks.com/mm5/merchant.mvc?&Screen=WISH&Store_Code=JAJAZZ&WishList_ID=1678
+
+Put the files downloaded into the "/Aebersold" folder, and then run the appropriate script from inside the home folder:
+
+(Full)
+python Scripts/Compile_Backing.py -version full
+
+(Lite)
+python Scripts/Compile_Backing.py -version lite
+
+which populates the "/Backing" folder with edited files, which match the versions that were used in the recordings.
+
 """
 
-# -- Include the dataset's license information
 LICENSE_INFO = """
 The Filosax dataset contains copyright material and is shared with researchers under the following conditions:
 1. Filosax may only be used by the individual signing below and by members of the research group or organisation of this individual. This permission is not transferable.
@@ -132,7 +161,6 @@ class Note:
 
     """
     def __init__(self, input_dict):
-        # a_ = actual, s_ = score
         self.a_start_time = input_dict["a_start_time"]
         self.a_end_time = input_dict["a_end_time"]
         self.a_duration = input_dict["a_duration"]
@@ -177,20 +205,16 @@ class Track(core.Track):
     Attributes:
         audio_path (str): path to audio file
         annotation_path (str): path to annotation file
-        notes ([Note]): an ordered list of Note objects
-
+        midi_path (str): path to MIDI file
+        musicXML_path (str): path to musicXML file
+        pdf_path (str): path to PDF file
+        
     Cached Properties:
-        annotation (EventData): a description of this annotation
+        notes ([Note]): an ordered list of Note objects
 
     """
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         
-        # -- this sets the following attributes:
-        # -- * track_id
-        # -- * _dataset_name
-        # -- * _data_home
-        # -- * _track_paths
-        # -- * _track_metadata
         super().__init__(
             track_id,
             data_home,
@@ -199,9 +223,11 @@ class Track(core.Track):
             metadata=metadata,
         )
         
-        # -- add any dataset specific attributes here
         self.audio_path = self.get_path("audio")
         self.annotation_path = self.get_path("annotation")
+        self.midi_path = self.get_path("midi")
+        self.musicXML_path = self.get_path("musicXML")
+        self.pdf_path = self.get_path("pdf")
 
     @core.cached_property
     def notes(self) -> Optional[Dict]:
@@ -212,7 +238,7 @@ class Track(core.Track):
 
         """
         if self.annotation_path == None:
-            print("Error: Annotations only available for Sax tracks")
+            print("Error: Annotations only available for Sax tracks.")
             return None
         return load_annotation(self.annotation_path)
 
@@ -258,15 +284,6 @@ class MultiTrack(core.MultiTrack):
     def __init__(
         self, mtrack_id, data_home, dataset_name, index, track_class, metadata
     ):
-        # -- this sets the following attributes:
-        # -- * mtrack_id
-        # -- * _dataset_name
-        # -- * _data_home
-        # -- * _multitrack_paths
-        # -- * _metadata
-        # -- * _track_class
-        # -- * _index
-        # -- * track_ids
         super().__init__(
             mtrack_id=mtrack_id,
             data_home=data_home,
@@ -275,16 +292,12 @@ class MultiTrack(core.MultiTrack):
             track_class=track_class,
             metadata=metadata,
         )
-    
-        #print("MTrack ID =", mtrack_id)
         self.annotation_path = self.get_path("annotations")
 
-    # If you want to support multitrack mixing in this dataset, set this property
     @property
     def track_audio_property(self):
-        return "audio"  # the attribute of Track, e.g. Track.audio, which returns the audio to mix
+        return "audio"
 
-    # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
     def annotation(self) -> Optional[annotations.EventData]:
         """output type: .jams file"""
@@ -372,25 +385,21 @@ def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
     note_dict = json.load(fhandle)["notes"]
     return [Note(n) for n in note_dict]         
 
-# -- use this decorator so the docs are complete
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """The Filosax dataset
     """
 
     def __init__(self, data_home=None, version="default"):
+        version_name = "Filosax_Lite" if (version=="lite" or version=="lite_sax") else "Filosax"
         super().__init__(
             data_home,
             version,
-            name="Filosax",
+            name=version_name,
             track_class=Track,
             multitrack_class=MultiTrack,
             bibtex=BIBTEX,
             indexes=INDEXES,
-            remotes=None,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
-        
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
-        print(DOWNLOAD_INFO)

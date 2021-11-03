@@ -10,19 +10,19 @@ from mirdata.datasets import filosax
 from tests.test_utils import run_track_tests, run_multitrack_tests
 
 def test_track():
-    #default_trackid = "02"
-    #default_mtrackids = ['multitrack_02_sax_1', 'multitrack_02_sax_2', 'multitrack_02_bass_drums', 'multitrack_02_piano_drums']
     default_trackid = 'multitrack_02_sax_1'
     data_home = "tests/resources/mir_datasets/filosax"
     dataset = filosax.Dataset(data_home, version="test")
     filosax_data = dataset.load_tracks()
-    #filosax_ids = dataset.track_ids
     default_track = filosax_data[default_trackid]
 
     expected_attributes = {
         "track_id": "multitrack_02_sax_1",
         "audio_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.wav",
-        "annotation_path": "tests/resources/mir_datasets/filosax/Participant 1/02/annotations.json"
+        "annotation_path": "tests/resources/mir_datasets/filosax/Participant 1/02/annotations.json",
+        "midi_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.mid",
+        "musicXML_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.musicxml",
+        "pdf_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.pdf",   
     }
     
     expected_property_types = {
@@ -30,13 +30,15 @@ def test_track():
         "audio": tuple,
     }
     assert default_track._track_paths == {
-        "audio": ["Participant 1/02/Sax.wav", "f7b52a451f1a6954e5b247400f88f7dc"],
-        "annotation": ["Participant 1/02/annotations.json", "dfa84a49a9586bf54ed5d86d8c84d9ba"],
+        "audio": ["Participant 1/02/Sax.wav", "c62cd9d2ec8085461cb2ffc9deeda176"],
+        "annotation": ["Participant 1/02/annotations.json", "8424df983f30e927c5a72b3d9bb94466"],
+        "midi": ["Participant 1/02/Sax.mid", "007beb3b84dfaafbc8767148bc00c0ff"],
+        "musicXML": ["Participant 1/02/Sax.musicxml", "3846ef79efc36448ea0a8059c43935ac"],
+        "pdf": ["Participant 1/02/Sax.pdf", "69b20b5b95b8807137cc86e7c72cc861"]
     }
 
     run_track_tests(default_track, expected_attributes, expected_property_types)
 
-    # test audio loading functions
     audio, sr = default_track.audio
     assert sr == 44100
     assert audio.shape == (44100 * 5,)
