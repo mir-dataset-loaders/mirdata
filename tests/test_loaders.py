@@ -486,11 +486,11 @@ def test_random_splits():
 
         # check splits for tracks
         if dataset._track_class:
-            splits = dataset.get_tracks_splits(split)
+            splits = dataset.get_track_splits(split)
             assert len(dataset.track_ids) == sum([len(i) for i in splits])
 
         # check splits for multitracks
         if dataset._multitrack_class:
-                splits = dataset.get_mtracks_splits(split)
+                splits = dataset.get_mtrack_splits(split)
                 assert len(dataset.mtrack_ids) == sum([len(i) for i in splits])
 
