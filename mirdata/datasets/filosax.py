@@ -241,14 +241,13 @@ class Track(core.Track):
             * [Note] - ordered list of Note objects
 
         """
+        note_path = "" if self.annotation_path == None else self.annotation_path
         try:
-            if self.annotation_path != None:
-                return load_annotation(self.annotation_path)
-            else:        
-                raise FileNotFoundError 
+            with open(note_path) as fhandle:
+                note_dict = json.load(fhandle)["notes"]
         except FileNotFoundError:
-            print('Note data only available for Sax tracks.')
-        
+            raise FileNotFoundError("Note data only available for Sax tracks.")
+        return [Note(n) for n in note_dict]
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
