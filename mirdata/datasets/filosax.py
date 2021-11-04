@@ -241,7 +241,14 @@ class Track(core.Track):
             * [Note] - ordered list of Note objects
 
         """
-        return load_annotation(self.annotation_path)
+        try:
+            if self.annotation_path != None:
+                return load_annotation(self.annotation_path)
+            else:        
+                raise FileNotFoundError 
+        except FileNotFoundError:
+            print('Note data only available for Sax tracks.')
+        
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
