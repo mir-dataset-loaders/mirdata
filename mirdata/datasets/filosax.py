@@ -234,7 +234,7 @@ class Track(core.Track):
         self.pdf_path = self.get_path("pdf")
 
     @core.cached_property
-    def notes(self) -> Optional[Dict]:
+    def notes(self) -> Optional[EventData]:
         """The track's note list - only for Sax files
 
         Returns:
@@ -379,7 +379,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
+def load_annotation(fhandle: TextIO) -> List[Note]:
     """Load a Filosax annotation file.
 
     Args:
@@ -398,15 +398,10 @@ class Dataset(core.Dataset):
     """The Filosax dataset"""
 
     def __init__(self, data_home=None, version="default"):
-        version_name = (
-            "Filosax_Lite"
-            if (version == "lite" or version == "lite_sax")
-            else "Filosax"
-        )
         super().__init__(
             data_home,
             version,
-            name=version_name,
+            name="filosax",
             track_class=Track,
             multitrack_class=MultiTrack,
             bibtex=BIBTEX,
