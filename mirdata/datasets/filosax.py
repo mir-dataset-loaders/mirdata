@@ -241,9 +241,6 @@ class Track(core.Track):
             * [Note] - ordered list of Note objects
 
         """
-        if self.annotation_path == None:
-            raise Exception("Annotations only available for Sax tracks.")
-
         return load_annotation(self.annotation_path)
 
     @property
