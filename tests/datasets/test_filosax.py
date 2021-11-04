@@ -9,8 +9,9 @@ from mirdata import annotations
 from mirdata.datasets import filosax
 from tests.test_utils import run_track_tests, run_multitrack_tests
 
+
 def test_track():
-    default_trackid = 'multitrack_02_sax_1'
+    default_trackid = "multitrack_02_sax_1"
     data_home = "tests/resources/mir_datasets/filosax"
     dataset = filosax.Dataset(data_home, version="test")
     filosax_data = dataset.load_tracks()
@@ -22,19 +23,25 @@ def test_track():
         "annotation_path": "tests/resources/mir_datasets/filosax/Participant 1/02/annotations.json",
         "midi_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.mid",
         "musicXML_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.musicxml",
-        "pdf_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.pdf",   
+        "pdf_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.pdf",
     }
-    
+
     expected_property_types = {
         "notes": list,
         "audio": tuple,
     }
     assert default_track._track_paths == {
         "audio": ["Participant 1/02/Sax.wav", "c62cd9d2ec8085461cb2ffc9deeda176"],
-        "annotation": ["Participant 1/02/annotations.json", "8424df983f30e927c5a72b3d9bb94466"],
+        "annotation": [
+            "Participant 1/02/annotations.json",
+            "8424df983f30e927c5a72b3d9bb94466",
+        ],
         "midi": ["Participant 1/02/Sax.mid", "007beb3b84dfaafbc8767148bc00c0ff"],
-        "musicXML": ["Participant 1/02/Sax.musicxml", "3846ef79efc36448ea0a8059c43935ac"],
-        "pdf": ["Participant 1/02/Sax.pdf", "69b20b5b95b8807137cc86e7c72cc861"]
+        "musicXML": [
+            "Participant 1/02/Sax.musicxml",
+            "3846ef79efc36448ea0a8059c43935ac",
+        ],
+        "pdf": ["Participant 1/02/Sax.pdf", "69b20b5b95b8807137cc86e7c72cc861"],
     }
 
     run_track_tests(default_track, expected_attributes, expected_property_types)
@@ -43,45 +50,74 @@ def test_track():
     assert sr == 44100
     assert audio.shape == (44100 * 5,)
 
+
 def test_multitrack():
-    default_trackid = 'multitrack_01'
+    default_trackid = "multitrack_01"
     data_home = "tests/resources/mir_datasets/filosax"
     dataset = filosax.Dataset(data_home, version="test")
     default_track = dataset.multitrack(default_trackid)
 
     run_multitrack_tests(default_track)
 
+
 def test_to_jams():
-    default_trackid = 'multitrack_01'
+    default_trackid = "multitrack_01"
     data_home = "tests/resources/mir_datasets/filosax"
     dataset = filosax.Dataset(data_home, version="test")
     default_track = dataset.multitrack(default_trackid)
     jam = default_track.to_jams()
 
-    beats  = jam.search(namespace="beat")[0]["data"]   
+    beats = jam.search(namespace="beat")[0]["data"]
     chords = jam.search(namespace="chord")[0]["data"]
     segments = jam.search(namespace="segment_open")[0]["data"]
 
-    assert [beat.time for beat in beats] == [0.0, 1.0, 2.672448, 4.279448] 
-    assert [beat.duration for beat in beats] == [1.0, 1.6724480000000002, 1.6070000000000002, 1.6764999999999999]
-    assert [beat.value for beat in beats] == [1, 1, 1, 1] 
+    assert [beat.time for beat in beats] == [0.0, 1.0, 2.672448, 4.279448]
+    assert [beat.duration for beat in beats] == [
+        1.0,
+        1.6724480000000002,
+        1.6070000000000002,
+        1.6764999999999999,
+    ]
+    assert [beat.value for beat in beats] == [1, 1, 1, 1]
 
-    assert [chord.time for chord in chords] == [1.0, 2.672448, 4.279448] 
-    assert [chord.duration for chord in chords] == [1.6724480000000002, 1.6070000000000002, 1.6764999999999999]
+    assert [chord.time for chord in chords] == [1.0, 2.672448, 4.279448]
+    assert [chord.duration for chord in chords] == [
+        1.6724480000000002,
+        1.6070000000000002,
+        1.6764999999999999,
+    ]
     assert [chord.value for chord in chords] == ["C#:7(b9)", "C#:7(b9)", "C:7(b9)"]
 
-    assert [segment.time for segment in segments] == [1.0, 14.046292, 72.127318, 137.51004] 
-    assert [segment.duration for segment in segments] == [13.046292, 58.081026, 65.382722, 188.931246]
-    assert [segment.value for segment in segments] == ["improvised solo", "head", "written solo", "improvised solo"]
+    assert [segment.time for segment in segments] == [
+        1.0,
+        14.046292,
+        72.127318,
+        137.51004,
+    ]
+    assert [segment.duration for segment in segments] == [
+        13.046292,
+        58.081026,
+        65.382722,
+        188.931246,
+    ]
+    assert [segment.value for segment in segments] == [
+        "improvised solo",
+        "head",
+        "written solo",
+        "improvised solo",
+    ]
+
 
 def test_load_annotation():
-    annotation_path = "tests/resources/mir_datasets/filosax/Participant 1/01/annotations.json"
+    annotation_path = (
+        "tests/resources/mir_datasets/filosax/Participant 1/01/annotations.json"
+    )
     annotation_data = filosax.load_annotation(annotation_path)
 
     # check types
     assert type(annotation_data) == list
     assert type(annotation_data[0]) is filosax.Note
-    
+
     n = annotation_data[0]
 
     # check values
@@ -121,7 +157,7 @@ def test_load_annotation():
     assert len(n.spec_flux_curve) == 121
     assert n.spec_flux_curve[0] == 1.358
 
+
 def test_metadata():
     # No metadata is loaded in mirdata
     pass
-    

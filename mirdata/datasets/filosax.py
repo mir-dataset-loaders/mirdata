@@ -43,7 +43,7 @@ from typing import BinaryIO, Dict, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
-from smart_open import open 
+from smart_open import open
 
 from mirdata import download_utils, jams_utils, core, annotations, io
 
@@ -68,7 +68,7 @@ INDEXES = {
     "full_sax_0.9": core.Index(filename="filosax_index_full_sax_0.9.json"),
     "lite_1.0": core.Index(filename="filosax_index_lite_1.0.json"),
     "lite_sax_1.0": core.Index(filename="filosax_index_lite_sax_1.0.json"),
-    "test": core.Index(filename="filosax_index_lite_1.0.json")
+    "test": core.Index(filename="filosax_index_lite_1.0.json"),
 }
 
 DOWNLOAD_INFO = """
@@ -120,6 +120,7 @@ The Filosax dataset contains copyright material and is shared with researchers u
 6. The Filosax administrator may update these conditions of use at any time. 
 """
 
+
 class Note:
     """Filosax Note class - dictionary wrapper to give dot properties
 
@@ -149,9 +150,9 @@ class Note:
         loudness_max_val (float): the value (db) of the maximum loudness
         loudness_max_time (float): the time (seconds) of the maximum loudness (compared to a_start_time)
         loudness_curve [float]: the inter-note loudness values, 1 per millisecond
-        pitch_average_val (float): the value (midi) of the average pitch and 
+        pitch_average_val (float): the value (midi) of the average pitch and
         pitch_average_time (float): the time (seconds) of the average pitch (compared to a_start_time)
-        pitch_curve [float]: the inter-note pitch values, 1 per millisecond 
+        pitch_curve [float]: the inter-note pitch values, 1 per millisecond
         pitch_vib_freq (float): the vibrato frequency (Hz), 0.0 if no vibrato detected
         pitch_vib_ext (float): the vibrato extent (midi), 0.0 if no vibrato detected
         spec_cent (float): the spectral centroid value at the time of the maximum loudness
@@ -160,6 +161,7 @@ class Note:
         spec_flux_curve [float]: the inter-note spectral flux values, 1 per millisecond
 
     """
+
     def __init__(self, input_dict):
         self.a_start_time = input_dict["a_start_time"]
         self.a_end_time = input_dict["a_end_time"]
@@ -193,6 +195,7 @@ class Note:
         self.spec_cent_curve = input_dict["spec_cent_curve"]
         self.spec_flux_curve = input_dict["spec_flux_curve"]
 
+
 class Track(core.Track):
     """Filosax track class
     # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
@@ -208,13 +211,14 @@ class Track(core.Track):
         midi_path (str): path to MIDI file
         musicXML_path (str): path to musicXML file
         pdf_path (str): path to PDF file
-        
+
     Cached Properties:
         notes ([Note]): an ordered list of Note objects
 
     """
+
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
-        
+
         super().__init__(
             track_id,
             data_home,
@@ -222,7 +226,7 @@ class Track(core.Track):
             index=index,
             metadata=metadata,
         )
-        
+
         self.audio_path = self.get_path("audio")
         self.annotation_path = self.get_path("annotation")
         self.midi_path = self.get_path("midi")
@@ -281,6 +285,7 @@ class MultiTrack(core.MultiTrack):
         annotation (.jams): a .jams file containing the annotations
 
     """
+
     def __init__(
         self, mtrack_id, data_home, dataset_name, index, track_class, metadata
     ):
@@ -302,7 +307,7 @@ class MultiTrack(core.MultiTrack):
     def annotation(self) -> Optional[annotations.EventData]:
         """output type: .jams file"""
         return jams.load(self.annotation_path)
-    
+
     @property
     def name(self):
         """The track's name
@@ -312,7 +317,7 @@ class MultiTrack(core.MultiTrack):
 
         """
         return self.annotation["file_metadata"]["title"]
-    
+
     @property
     def duration(self):
         """The track's duration
@@ -322,7 +327,7 @@ class MultiTrack(core.MultiTrack):
 
         """
         return self.annotation["file_metadata"]["duration"]
-    
+
     @property
     def beats(self):
         """The times of downbeats and chord changes
@@ -331,8 +336,8 @@ class MultiTrack(core.MultiTrack):
             * SortedKeyList [Observation(time, duration, value)] - timestamp, duration (seconds), beat
 
         """
-        return self.annotation.search(namespace='beat')[0]['data']
-    
+        return self.annotation.search(namespace="beat")[0]["data"]
+
     @property
     def chords(self):
         """The times and values of chord changes
@@ -341,8 +346,8 @@ class MultiTrack(core.MultiTrack):
             * SortedKeyList [Observation(time, duration, value)] - timestamp, duration (seconds), chord symbol
 
         """
-        return self.annotation.search(namespace='chord')[0]['data']
-    
+        return self.annotation.search(namespace="chord")[0]["data"]
+
     @property
     def segments(self):
         """The times of segment changes (values are 'head', 'written solo', 'improvised solo')
@@ -350,12 +355,13 @@ class MultiTrack(core.MultiTrack):
             * SortedKeyList [Observation(time, duration, value)] - timestamp, duration (seconds), beat
 
         """
-        return self.annotation.search(namespace='segment_open')[0]['data']
+        return self.annotation.search(namespace="segment_open")[0]["data"]
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
         # Annotations are already in jams format
         return self.annotation
+
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
@@ -371,6 +377,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """
     return librosa.load(fhandle, sr=None, mono=True)
 
+
 @io.coerce_to_string_io
 def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
     """Load a Filosax annotation file.
@@ -383,15 +390,19 @@ def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
 
     """
     note_dict = json.load(fhandle)["notes"]
-    return [Note(n) for n in note_dict]         
+    return [Note(n) for n in note_dict]
+
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The Filosax dataset
-    """
+    """The Filosax dataset"""
 
     def __init__(self, data_home=None, version="default"):
-        version_name = "Filosax_Lite" if (version=="lite" or version=="lite_sax") else "Filosax"
+        version_name = (
+            "Filosax_Lite"
+            if (version == "lite" or version == "lite_sax")
+            else "Filosax"
+        )
         super().__init__(
             data_home,
             version,
