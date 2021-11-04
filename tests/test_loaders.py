@@ -474,7 +474,7 @@ def test_random_splits():
         dataset = mirdata.initialize(
             dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
         )
-        
+
         # check wrong type of split function
         if dataset._track_class is None:
             with pytest.raises(AttributeError):
@@ -491,6 +491,5 @@ def test_random_splits():
 
         # check splits for multitracks
         if dataset._multitrack_class:
-                splits = dataset.get_mtrack_splits(split)
-                assert len(dataset.mtrack_ids) == sum([len(i) for i in splits])
-
+            splits = dataset.get_mtrack_splits(split)
+            assert len(dataset.mtrack_ids) == sum([len(i) for i in splits])

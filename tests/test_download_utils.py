@@ -259,9 +259,7 @@ def test_downloader_with_server_file(httpserver):
 
     # test with wrong checksum: raises error
     TEST_REMOTE = download_utils.RemoteFileMetadata(
-        filename="remote.wav",
-        url=httpserver.url,
-        checksum=("wrongchecksum"),
+        filename="remote.wav", url=httpserver.url, checksum=("wrongchecksum")
     )
 
     with pytest.raises(OSError):

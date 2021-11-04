@@ -367,21 +367,10 @@ def test_multitrack():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -413,21 +402,10 @@ def test_multitrack_mixing():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -516,21 +494,10 @@ def test_multitrack_unequal_len():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -576,21 +543,10 @@ def test_multitrack_unequal_sr():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -631,21 +587,10 @@ def test_multitrack_mono():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -684,21 +629,10 @@ def test_multitrack_mono():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -726,12 +660,14 @@ def test_multitrack_mono():
 
 
 def test_dataset_splits():
-    empty_dataset = core.Dataset(name="test", indexes={"default": core.Index("asdf.json")})
-    
+    empty_dataset = core.Dataset(
+        name="test", indexes={"default": core.Index("asdf.json")}
+    )
+
     # test the case where there are no tracks
     with pytest.raises(AttributeError):
         empty_dataset.get_track_splits([0.9, 0.1])
-    
+
     # test the case where there are no multitracks
     with pytest.raises(AttributeError):
         empty_dataset.get_mtrack_splits([0.9, 0.1])
@@ -769,7 +705,7 @@ def test_dataset_splits():
         splits2 = empty_dataset._get_partitions(items, right_combination, 42)
         for split, split2 in zip(splits, splits2):
             assert np.array_equal(split, split2)
-        
+
     list_not_sum_up_1 = [
         [0.8, 0.1, 0.3, 0.2],
         [0.3, 0.1, 0.3, 0.5],

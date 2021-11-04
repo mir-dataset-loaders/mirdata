@@ -1055,20 +1055,14 @@ def test_lyrics():
         ),
         (
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
-                "s",
-                ["is", "cool"],
-                "words",
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T, "s", ["is", "cool"], "words"
             ),
             "lyrics_2",
         ),
     ]
     lyrics_data_4 = (
         annotations.LyricData(
-            np.array([[0.027, 0.232], [0.227, 0.742]]).T,
-            "s",
-            ["The", "Test"],
-            "words",
+            np.array([[0.027, 0.232], [0.227, 0.742]]).T, "s", ["The", "Test"], "words"
         ),
         "lyrics_1",
     )
@@ -1084,10 +1078,7 @@ def test_lyrics():
         ),
         [
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
-                "s",
-                ["is", "cool"],
-                "words",
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T, "s", ["is", "cool"], "words"
             ),
             "lyrics_2",
         ],
