@@ -208,11 +208,7 @@ class Dataset(object):
             raise AttributeError("This dataset does not have tracks")
         else:
             return self._track_class(
-                track_id,
-                self.data_home,
-                self.name,
-                self._index,
-                lambda: self._metadata,
+                track_id, self.data_home, self.name, self._index, lambda: self._metadata
             )
 
     def _multitrack(self, mtrack_id):
@@ -282,6 +278,7 @@ class Dataset(object):
 
         """
         return self.multitrack(random.choice(self.mtrack_ids))
+
     def _get_partitions(self, items, splits, seed):
         """Helper function to get the indexes needed to split a set of ids into partitions
         Args:
@@ -305,6 +302,7 @@ class Dataset(object):
         cdf = np.cumsum(splits)
         partitions = list(map(lambda x: int(np.ceil(x)), cdf * len(items)))
         return [shuffled_items[a:b] for a, b in zip([0] + partitions, partitions)]
+
     def get_track_splits(self, splits, seed=42):
         """Split the tracks into partitions e.g. training, validation, test
 
@@ -438,14 +436,7 @@ class Track(object):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
         """Track init method. Sets boilerplate attributes, including:
 
         - ``track_id``
@@ -546,13 +537,7 @@ class MultiTrack(Track):
     """
 
     def __init__(
-        self,
-        mtrack_id,
-        data_home,
-        dataset_name,
-        index,
-        track_class,
-        metadata,
+        self, mtrack_id, data_home, dataset_name, index, track_class, metadata
     ):
         """Multitrack init method. Sets boilerplate attributes, including:
 
