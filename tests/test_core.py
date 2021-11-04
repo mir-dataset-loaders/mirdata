@@ -726,7 +726,7 @@ def test_multitrack_mono():
 
 
 def test_dataset_splits():
-    empty_dataset = core.Dataset()
+    empty_dataset = core.Dataset(name="test", indexes={"default": core.Index("asdf.json")})
     
     # test the case where there are no tracks
     with pytest.raises(AttributeError):
@@ -767,7 +767,8 @@ def test_dataset_splits():
             used.update(this_split)
         # check that the split is reproducable
         splits2 = empty_dataset._get_partitions(items, right_combination, 42)
-        assert splits == splits2
+        for split, split2 in zip(splits, splits2):
+            assert np.array_equal(split, split2)
         
     list_not_sum_up_1 = [
         [0.8, 0.1, 0.3, 0.2],
