@@ -234,7 +234,7 @@ class Track(core.Track):
         self.pdf_path = self.get_path("pdf")
 
     @core.cached_property
-    def notes(self) -> Optional[Note]:
+    def notes(self) -> Optional[List[Note]]:
         """The track's note list - only for Sax files
 
         Returns:
@@ -242,8 +242,8 @@ class Track(core.Track):
 
         """
         if self.annotation_path == None:
-            print("Error: Annotations only available for Sax tracks.")
-            return None
+            raise Exception("Annotations only available for Sax tracks.")
+
         return load_annotation(self.annotation_path)
 
     @property
@@ -259,8 +259,8 @@ class Track(core.Track):
 
     def to_jams(self):
         return jams_utils.jams_converter(
-                audio_path=self.audio_path,
-            )
+            audio_path=self.audio_path,
+        )
 
 
 class MultiTrack(core.MultiTrack):
