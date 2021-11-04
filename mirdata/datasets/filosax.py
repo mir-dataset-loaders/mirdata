@@ -257,9 +257,10 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    # -- JAMS format is not suitable for these annotations
     def to_jams(self):
-        return None
+        return jams_utils.jams_converter(
+                audio_path=self.audio_path,
+            )
 
 
 class MultiTrack(core.MultiTrack):
@@ -359,7 +360,6 @@ class MultiTrack(core.MultiTrack):
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
-        # Annotations are already in jams format
         return self.annotation
 
 
