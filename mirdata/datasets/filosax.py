@@ -39,7 +39,7 @@ import csv
 import json
 import os
 import jams
-from typing import BinaryIO, Dict, Optional, TextIO, Tuple
+from typing import BinaryIO, Dict, Optional, TextIO, Tuple, List
 
 import librosa
 import numpy as np
@@ -234,7 +234,7 @@ class Track(core.Track):
         self.pdf_path = self.get_path("pdf")
 
     @core.cached_property
-    def notes(self) -> Optional[EventData]:
+    def notes(self) -> Optional[Note]:
         """The track's note list - only for Sax files
 
         Returns:
@@ -386,7 +386,7 @@ def load_annotation(fhandle: TextIO) -> List[Note]:
         fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        * list[Note]: an ordered list of Note objects
+        * List[Note]: an ordered list of Note objects
 
     """
     note_dict = json.load(fhandle)["notes"]
