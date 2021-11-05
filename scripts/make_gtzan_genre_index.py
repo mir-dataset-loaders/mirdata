@@ -14,7 +14,6 @@ def make_gtzan_genre_index(data_path):
     index = {
         'version': '1.0',
         'tracks': {},
-        'metadata': None,
     }
     audiodata_path = os.path.join(data_path, "gtzan_genre", "genres")
     for track_key, path in iter_paths(audiodata_path):
@@ -28,11 +27,15 @@ def make_gtzan_genre_index(data_path):
         try:
             genre, id = path.split('/')[-1].split('.')[:-1]
             beats_path = os.path.join("gtzan_tempo_beat-main", "beats", f"gtzan_{genre}_{id}.beats")
-            tempo_path = os.path.join("gtzan_tempo_beat-main", "tempo", f"gtzan_{genre}_{id}.bpm")
             beats_checksum = md5(os.path.join(data_path, beats_path))
-            tempo_checksum = md5(os.path.join(data_path, tempo_path))
         except:
             beats_path, beats_checksum = None, None
+
+        try:
+            tempo_path = os.path.join("gtzan_tempo_beat-main", "tempo", f"gtzan_{genre}_{id}.bpm")
+            tempo_checksum = md5(os.path.join(data_path, tempo_path))
+        except:
+            tempo_path, tempo_checksum = None, None
         index['tracks'][track_key] = {"audio": [audio_path, audio_checksum],
                                       "beats": [beats_path, beats_checksum],
                                       "tempo": [tempo_path, tempo_checksum]}

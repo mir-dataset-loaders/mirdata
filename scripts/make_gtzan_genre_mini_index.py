@@ -14,7 +14,6 @@ def make_gtzan_genre_index(data_path):
     index = {
         'version': '1.0',
         'tracks': {},
-        'metadata': None,
     }
     audiodata_path = os.path.join(data_path, "gtzan_mini-main", "genres")
     for track_key, path in iter_paths(audiodata_path):
