@@ -181,13 +181,7 @@ def test_note_data():
     sparse_index, conf = note_data.to_sparse_index(
         time_scale, "s", frequency_scale, "hz"
     )
-    expected_index = [
-        [2, 1],
-        [3, 1],
-        [4, 1],
-        [4, 2],
-        [5, 2],
-    ]
+    expected_index = [[2, 1], [3, 1], [4, 1], [4, 2], [5, 2]]
     expected_conf = np.array([1, 1, 1, 1, 1])
     assert np.allclose(sparse_index, expected_index)
     assert np.allclose(conf, expected_conf)
@@ -203,13 +197,7 @@ def test_note_data():
     sparse_index, conf = note_data2.to_sparse_index(
         time_scale, "s", frequency_scale, "hz", "likelihood"
     )
-    expected_index = [
-        [2, 1],
-        [3, 1],
-        [4, 1],
-        [4, 2],
-        [5, 2],
-    ]
+    expected_index = [[2, 1], [3, 1], [4, 1], [4, 2], [5, 2]]
     expected_conf = np.array([0.1, 0.1, 0.1, 0.2, 0.2])
     assert np.allclose(sparse_index, expected_index)
     assert np.allclose(conf, expected_conf)
@@ -217,10 +205,7 @@ def test_note_data():
     sparse_index, conf = note_data.to_sparse_index(
         time_scale, "s", frequency_scale, "hz", "binary", True
     )
-    expected_index = [
-        [2, 1],
-        [4, 2],
-    ]
+    expected_index = [[2, 1], [4, 2]]
     expected_conf = np.array([1, 1])
     assert np.allclose(sparse_index, expected_index)
     assert np.allclose(conf, expected_conf)
@@ -228,10 +213,7 @@ def test_note_data():
     sparse_index, conf = note_data2.to_sparse_index(
         time_scale, "s", frequency_scale, "hz", "likelihood", True
     )
-    expected_index = [
-        [2, 1],
-        [4, 2],
-    ]
+    expected_index = [[2, 1], [4, 2]]
     expected_conf = np.array([0.1, 0.2])
     assert np.allclose(sparse_index, expected_index)
     assert np.allclose(conf, expected_conf)
@@ -239,40 +221,19 @@ def test_note_data():
     # test to matrix
     matrix = note_data.to_matrix(time_scale, "s", frequency_scale, "hz")
     expected = np.array(
-        [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 1, 0],
-            [0, 1, 0],
-            [0, 1, 1],
-            [0, 0, 1],
-        ]
+        [[0, 0, 0], [0, 0, 0], [0, 1, 0], [0, 1, 0], [0, 1, 1], [0, 0, 1]]
     )
     assert np.allclose(matrix, expected)
 
     matrix = note_data2.to_matrix(time_scale, "s", frequency_scale, "hz", "likelihood")
     expected = np.array(
-        [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 0.1, 0],
-            [0, 0.1, 0],
-            [0, 0.1, 0.2],
-            [0, 0, 0.2],
-        ]
+        [[0, 0, 0], [0, 0, 0], [0, 0.1, 0], [0, 0.1, 0], [0, 0.1, 0.2], [0, 0, 0.2]]
     )
     assert np.allclose(matrix, expected)
 
     matrix = note_data.to_matrix(time_scale, "s", frequency_scale, "hz", "binary", True)
     expected = np.array(
-        [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 1, 0],
-            [0, 0, 0],
-            [0, 0, 1],
-            [0, 0, 0],
-        ]
+        [[0, 0, 0], [0, 0, 0], [0, 1, 0], [0, 0, 0], [0, 0, 1], [0, 0, 0]]
     )
     assert np.allclose(matrix, expected)
 
@@ -280,14 +241,7 @@ def test_note_data():
         time_scale, "s", frequency_scale, "hz", "likelihood", True
     )
     expected = np.array(
-        [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 0.1, 0],
-            [0, 0, 0],
-            [0, 0, 0.2],
-            [0, 0, 0],
-        ]
+        [[0, 0, 0], [0, 0, 0], [0, 0.1, 0], [0, 0, 0], [0, 0, 0.2], [0, 0, 0]]
     )
     assert np.allclose(matrix, expected)
 
@@ -464,12 +418,7 @@ def test_f0_data():
     )
 
     f0_note_class = annotations.F0Data(
-        times,
-        "s",
-        np.array(["A", "B", "B", "F#"]),
-        "note_name",
-        voicing,
-        "likelihood",
+        times, "s", np.array(["A", "B", "B", "F#"]), "note_name", voicing, "likelihood"
     )
     with pytest.raises(NotImplementedError):
         f0_note_class.resample(new_times, "s")
@@ -480,12 +429,7 @@ def test_f0_data():
     sparse_index, voc = f0_data.to_sparse_index(
         time_scale, "s", frequency_scale, "hz", "likelihood"
     )
-    expected_index = np.array(
-        [
-            [2, 1],
-            [3, 2],
-        ]
-    )
+    expected_index = np.array([[2, 1], [3, 2]])
     np.allclose(sparse_index, expected_index)
     expected_voc = np.array([0.1, 0.25])
     assert np.allclose(voc, expected_voc)
@@ -698,23 +642,11 @@ def test_multif0_data():
 
     # test matrix
     matrix = f0_data.to_matrix(time_scale, "s", frequency_scale, "hz", "likelihood")
-    matrix_expected = np.array(
-        [
-            [0.0, 0.0, 0.0],
-            [0.0, 0.1, 0.0],
-            [0.0, 0.1, 0.0],
-        ]
-    )
+    matrix_expected = np.array([[0.0, 0.0, 0.0], [0.0, 0.1, 0.0], [0.0, 0.1, 0.0]])
     assert np.allclose(matrix, matrix_expected)
 
     matrix = f0_data2.to_matrix(time_scale, "s", frequency_scale, "hz", "binary")
-    matrix_expected = np.array(
-        [
-            [0.0, 0.0, 0.0],
-            [0.0, 1.0, 0.0],
-            [0.0, 1.0, 0.0],
-        ]
-    )
+    matrix_expected = np.array([[0.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 1.0, 0.0]])
     assert np.allclose(matrix, matrix_expected)
 
     times_me, frequencies_me = f0_data.to_mir_eval()

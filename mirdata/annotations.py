@@ -61,11 +61,7 @@ SECTION_UNITS = {"open": "no scrict schema or units"}
 TEMPO_UNITS = {"bpm": "beats per minute"}
 
 #: Time units
-TIME_UNITS = {
-    "s": "seconds",
-    "ms": "miliseconds",
-    "ticks": "MIDI ticks",
-}
+TIME_UNITS = {"s": "seconds", "ms": "miliseconds", "ticks": "MIDI ticks"}
 
 #: Voicing units
 VOICING_UNITS = {k: AMPLITUDE_UNITS[k] for k in ["binary", "likelihood"]}
@@ -355,8 +351,7 @@ class F0Data(Annotation):
         frequencies[frequencies == 0] = 1  # change zero frequency value to avoid NaN
         time_indexes = np.arange(len(time_scale))
         freq_indexes = closest_index(
-            np.log(frequencies)[:, np.newaxis],
-            np.log(frequency_scale)[:, np.newaxis],
+            np.log(frequencies)[:, np.newaxis], np.log(frequency_scale)[:, np.newaxis]
         )
 
         # create sparse index
@@ -377,8 +372,9 @@ class F0Data(Annotation):
             ]
         )
 
-        return np.array(index), convert_amplitude_units(
-            voicing, self.voicing_unit, amplitude_unit
+        return (
+            np.array(index),
+            convert_amplitude_units(voicing, self.voicing_unit, amplitude_unit),
         )
 
     def to_matrix(
@@ -555,9 +551,7 @@ class MultiF0Data(Annotation):
                 [c for c in clist] for clist in this_data.confidence_list
             ]
             other_confidence_list = convert_amplitude_units(
-                other_data.confidence_list,
-                other.confidence_unit,
-                self.confidence_unit,
+                other_data.confidence_list, other.confidence_unit, self.confidence_unit
             )
             for i, clist in enumerate(other_confidence_list):
                 this_confidence_list[i].extend(clist)
@@ -714,8 +708,9 @@ class MultiF0Data(Annotation):
                 if t != -1 and f != -1
             ]
         )
-        return np.array(index), convert_amplitude_units(
-            confidence_out, conf_unit, amplitude_unit
+        return (
+            np.array(index),
+            convert_amplitude_units(confidence_out, conf_unit, amplitude_unit),
         )
 
     def to_matrix(
@@ -848,9 +843,7 @@ class NoteData(Annotation):
                 [
                     self.confidence,
                     convert_amplitude_units(
-                        other.confidence,
-                        other.confidence_unit,
-                        self.confidence_unit,
+                        other.confidence, other.confidence_unit, self.confidence_unit
                     ),
                 ]
             )
@@ -1100,13 +1093,7 @@ class LyricData(Annotation):
 
     """
 
-    def __init__(
-        self,
-        intervals,
-        interval_unit,
-        lyrics,
-        lyric_unit,
-    ):
+    def __init__(self, intervals, interval_unit, lyrics, lyric_unit):
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(lyrics, list, str)
         validate_lengths_equal([intervals, lyrics])
@@ -1380,10 +1367,7 @@ def closest_index(input_array, target_array):
     Returns:
         np.ndarray: array of shape (n x 1) of indexes into target_array
     """
-    indexes = np.argmin(
-        scipy.spatial.distance.cdist(input_array, target_array),
-        axis=1,
-    )
+    indexes = np.argmin(scipy.spatial.distance.cdist(input_array, target_array), axis=1)
     indexes[input_array[:, 0] > np.max(target_array[:, 0])] = -1
     indexes[input_array[:, 0] < np.min(target_array[:, 0])] = -1
 
