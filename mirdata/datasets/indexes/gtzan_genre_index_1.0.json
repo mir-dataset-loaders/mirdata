@@ -11015,8 +11015,8 @@
         null
       ],
       "tempo": [
-        "gtzan_tempo_beat-main/tempo/gtzan_reggae_00086.bpm",
-        "dc862fddca331aec12f6c42a3efdeaa6"
+        null,
+        null
       ]
     },
     "reggae.00087": {
@@ -14001,6 +14001,5 @@
         "efcaa61762099a98209ddc1b1ddd09c9"
       ]
     }
-  },
-  "metadata": null
+  }
 }
