@@ -78,6 +78,10 @@ class Track(core.Track):
         genre (str): annotated genre
         track_id (str): track id
 
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotations
+        tempo (float): global tempo annotations
+
     """
 
     def __init__(
