@@ -208,11 +208,7 @@ class Dataset(object):
             raise AttributeError("This dataset does not have tracks")
         else:
             return self._track_class(
-                track_id,
-                self.data_home,
-                self.name,
-                self._index,
-                lambda: self._metadata,
+                track_id, self.data_home, self.name, self._index, lambda: self._metadata
             )
 
     def _multitrack(self, mtrack_id):
@@ -283,6 +279,62 @@ class Dataset(object):
         """
         return self.multitrack(random.choice(self.mtrack_ids))
 
+    def _get_partitions(self, items, splits, seed):
+        """Helper function to get the indexes needed to split a set of ids into partitions
+        Args:
+            items (list): list of items to partition
+            splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
+            seed (int): the seed used for the random generator, in order to enhance reproducibility.
+        Returns:
+            list: a list containing the partition indexes
+        """
+        if not np.isclose(np.sum(splits), 1):
+            raise ValueError(
+                "Splits values should sum up to 1. Given {} sums {}".format(
+                    splits, np.sum(splits)
+                )
+            )
+
+        rng = np.random.default_rng(seed=seed)
+        shuffled_items = rng.permutation(items)
+
+        # Method from https://stackoverflow.com/a/14281094
+        cdf = np.cumsum(splits)
+        partitions = list(map(lambda x: int(np.ceil(x)), cdf * len(items)))
+        return [shuffled_items[a:b] for a, b in zip([0] + partitions, partitions)]
+
+    def get_track_splits(self, splits, seed=42):
+        """Split the tracks into partitions e.g. training, validation, test
+
+        Args:
+            splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
+            seed (int): the seed used for the random generator, in order to enhance reproducibility. Defaults to 42
+
+        Returns:
+            list of lists: a list of lists containing the elements in each split
+        """
+
+        if self._track_class is None:
+            raise AttributeError("This dataset does not have tracks")
+
+        return self._get_partitions(self.track_ids, splits, seed)
+
+    def get_mtrack_splits(self, splits, seed=42):
+        """Split the multitracks into partitions, e.g. training, validation, test
+
+        Args:
+            splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
+            seed (int): the seed used for the random generator, in order to enhance reproducibility. Defaults to 42
+
+        Returns:
+            list of lists: a list of lists containing the elements in each split
+        """
+
+        if self._multitrack_class is None:
+            raise AttributeError("This dataset does not have multitracks")
+
+        return self._get_partitions(self.mtrack_ids, splits, seed)
+
     def cite(self):
         """
         Print the reference
@@ -298,7 +350,13 @@ class Dataset(object):
         print(self._license_info)
         print(DISCLAIMER)
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
+    def download(
+        self,
+        partial_download=None,
+        force_overwrite=False,
+        cleanup=False,
+        allow_invalid_checksum=False,
+    ):
         """Download data to `save_dir` and optionally print a message.
 
         Args:
@@ -309,6 +367,10 @@ class Dataset(object):
                 If True, existing files are overwritten by the downloaded files.
             cleanup (bool):
                 Whether to delete any zip/tar files after extracting.
+            allow_invalid_checksum (bool):
+                Allow invalid checksums of the downloaded data. Useful sometimes behind some
+                proxies that inspection the downloaded data. When having a different checksum
+                promts a warn instead of raising an exception
 
         Raises:
             ValueError: if invalid keys are passed to partial_download
@@ -323,6 +385,7 @@ class Dataset(object):
             info_message=self._download_info,
             force_overwrite=force_overwrite,
             cleanup=cleanup,
+            allow_invalid_checksum=allow_invalid_checksum,
         )
 
     @cached_property
@@ -373,14 +436,7 @@ class Track(object):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
         """Track init method. Sets boilerplate attributes, including:
 
         - ``track_id``
@@ -481,13 +537,7 @@ class MultiTrack(Track):
     """
 
     def __init__(
-        self,
-        mtrack_id,
-        data_home,
-        dataset_name,
-        index,
-        track_class,
-        metadata,
+        self, mtrack_id, data_home, dataset_name, index, track_class, metadata
     ):
         """Multitrack init method. Sets boilerplate attributes, including:
 
