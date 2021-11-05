@@ -367,21 +367,10 @@ def test_multitrack():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -413,21 +402,10 @@ def test_multitrack_mixing():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -516,21 +494,10 @@ def test_multitrack_unequal_len():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -576,21 +543,10 @@ def test_multitrack_unequal_sr():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -631,21 +587,10 @@ def test_multitrack_mono():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -684,21 +629,10 @@ def test_multitrack_mono():
 
     class TestMultiTrack1(core.MultiTrack):
         def __init__(
-            self,
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            track_class,
-            metadata,
+            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
         ):
             super().__init__(
-                mtrack_id,
-                data_home,
-                dataset_name,
-                index,
-                track_class,
-                metadata,
+                mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
         def to_jams(self):
@@ -723,3 +657,67 @@ def test_multitrack_mono():
     target1 = mtrack.get_target(["a", "c"], average=False)
     assert target1.shape == (1, 100)
     assert np.max(np.abs(target1)) <= 2
+
+
+def test_dataset_splits():
+    empty_dataset = core.Dataset(
+        name="test", indexes={"default": core.Index("asdf.json")}
+    )
+
+    # test the case where there are no tracks
+    with pytest.raises(AttributeError):
+        empty_dataset.get_track_splits([0.9, 0.1])
+
+    # test the case where there are no multitracks
+    with pytest.raises(AttributeError):
+        empty_dataset.get_mtrack_splits([0.9, 0.1])
+
+    # test the partition function
+    items = [i for i in range(100)]
+    list_sum_up_1 = [
+        [0.7, 0.1, 0.1, 0.1],
+        [0.4, 0.2, 0.2, 0.2],
+        [0.5, 0.2, 0.2, 0.1],
+        [0.8, 0.1, 0.1],
+        [0.7, 0.2, 0.1],
+        [0.9, 0.1, 0.0],
+        [0.6, 0.3, 0.1],
+        [0.5, 0.4, 0.1],
+        [0.9, 0.05, 0.05],
+        [0.8, 0.2],
+        [0.1, 0.9],
+    ]
+    for right_combination in list_sum_up_1:
+        splits = empty_dataset._get_partitions(items, right_combination, 42)
+        # check that the right number of splits are created
+        assert len(splits) == len(right_combination)
+        # check that the number of total items matches
+        assert len(items) == sum([len(i) for i in splits])
+        # check that all items are used
+        assert set(items) == set([i for split_items in splits for i in split_items])
+        # check that splits are nonoverlapping
+        used = set()
+        for split in splits:
+            this_split = set(split)
+            assert not this_split.intersection(used)
+            used.update(this_split)
+        # check that the split is reproducable
+        splits2 = empty_dataset._get_partitions(items, right_combination, 42)
+        for split, split2 in zip(splits, splits2):
+            assert np.array_equal(split, split2)
+
+    list_not_sum_up_1 = [
+        [0.8, 0.1, 0.3, 0.2],
+        [0.3, 0.1, 0.3, 0.5],
+        [0.8, 0.1, 0.3],
+        [0.3, 0.1, 0.3],
+        [0.9, 0.2, 0.3],
+        [0.1, 0.1, 0.1],
+        [0.95, 0.01, 0.01],
+        [0.8, 0.1, 0.3],
+        [0.8, 0.3],
+        [0.1, 0.7],
+    ]
+    for wrong_combination in list_not_sum_up_1:
+        with pytest.raises(ValueError):
+            empty_dataset._get_partitions(items, wrong_combination, 42)

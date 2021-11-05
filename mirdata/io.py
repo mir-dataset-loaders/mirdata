@@ -167,8 +167,7 @@ def load_multif0_from_midi(
             has_data = True
             # index into times
             this_idx = range(
-                _to_idx(note.start, time_hop),
-                _to_idx(note.end, time_hop) + 1,
+                _to_idx(note.start, time_hop), _to_idx(note.end, time_hop) + 1
             )
             time_idx.extend(this_idx)
             pitch_val.extend([float(note.pitch) for _ in this_idx])
