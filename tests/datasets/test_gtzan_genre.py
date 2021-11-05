@@ -73,9 +73,6 @@ def test_load_beats():
     ), "beat_data.positions different from expected"
 
 
-
-
-
 def test_load_tempo():
     tempo_path = (
         "tests/resources/mir_datasets/gtzan_genre/"
