@@ -170,7 +170,7 @@ def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
             times=times, time_unit="s", positions=positions, position_unit="bar_index"
         )
     except OSError:
-        beat_data = None
+        return None
 
     return beat_data
 
