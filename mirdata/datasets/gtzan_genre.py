@@ -35,10 +35,14 @@ BIBTEX = """@article{tzanetakis2002gtzan,
 INDEXES = {
     "default": "1.0",
     "test": "1.0",
-    "1.0": core.Index(filename="gtzan_genre_index_1.0.json", partial_download=["all", "tempo_beat_annotations"]),
+    "1.0": core.Index(
+        filename="gtzan_genre_index_1.0.json",
+        partial_download=["all", "tempo_beat_annotations"],
+    ),
     "mini": core.Index(
-        filename="gtzan_genre_1.0_mini_index.json", partial_download=["mini", "tempo_beat_annotations"]
-    )
+        filename="gtzan_genre_1.0_mini_index.json",
+        partial_download=["mini", "tempo_beat_annotations"],
+    ),
 }
 
 REMOTES = {
@@ -58,7 +62,6 @@ REMOTES = {
         url="https://github.com/TempoBeatDownbeat/gtzan_tempo_beat/archive/refs/heads/main.zip",
         checksum="4baa58112697a8087de04558d6e97442",
     ),
-
 }
 
 LICENSE_INFO = "Unfortunately we couldn't find the license information for the GTZAN_genre dataset."
@@ -159,8 +162,9 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
             positions = beats[:, 1]
         except IndexError:
             positions = None
-        beat_data = annotations.BeatData(times=times, time_unit='s',
-                                         positions=positions, position_unit='bar_index')
+        beat_data = annotations.BeatData(
+            times=times, time_unit="s", positions=positions, position_unit="bar_index"
+        )
     except OSError:
         beat_data = None
 
