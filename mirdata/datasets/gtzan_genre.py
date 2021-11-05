@@ -58,7 +58,7 @@ REMOTES = {
         checksum="44f7f23af8363d96c59663a987f29a4c",
     ),
     "tempo_beat_annotations": download_utils.RemoteFileMetadata(
-        filename="main.zip",
+        filename="annot.zip",
         url="https://github.com/TempoBeatDownbeat/gtzan_tempo_beat/archive/refs/heads/main.zip",
         checksum="4baa58112697a8087de04558d6e97442",
     ),
@@ -149,7 +149,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_string_io
-def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
+def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load GTZAN format beat data from a file
 
     Args:
@@ -159,24 +159,21 @@ def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
         BeatData: loaded beat data
 
     """
+    beats = np.loadtxt(fhandle, ndmin=2)
+    times = beats[:, 0]
     try:
-        beats = np.loadtxt(fhandle, ndmin=2)
-        times = beats[:, 0]
-        try:
-            positions = beats[:, 1]
-        except IndexError:
-            positions = None
-        beat_data = annotations.BeatData(
-            times=times, time_unit="s", positions=positions, position_unit="bar_index"
-        )
-    except OSError:
-        return None
+        positions = beats[:, 1]
+    except IndexError:
+        positions = None
+    beat_data = annotations.BeatData(
+        times=times, time_unit="s", positions=positions, position_unit="bar_index"
+    )
 
     return beat_data
 
 
 @io.coerce_to_string_io
-def load_tempo(fhandle: TextIO) -> Optional[float]:
+def load_tempo(fhandle: TextIO) -> float:
     """Load GTZAN format tempo data from a file
 
     Args:
@@ -186,10 +183,8 @@ def load_tempo(fhandle: TextIO) -> Optional[float]:
         tempo (float): loaded tempo data
 
     """
-    try:
-        tempo = np.loadtxt(fhandle, ndmin=2)
-    except OSError:
-        tempo = None
+
+    tempo = np.loadtxt(fhandle, ndmin=2)
 
     return float(tempo)
 

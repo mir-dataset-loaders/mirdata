@@ -57,6 +57,24 @@ def test_load_beats():
 
     assert gtzan_genre.load_beats(None) is None, "load_beats(None) should return None"
 
+    # check empty positions
+    beats_path = (
+        "tests/resources/mir_datasets/gtzan_genre/"
+        + "gtzan_tempo_beat-main/beats/gtzan_country_00000_noposition.beats"
+    )
+    beat_data = gtzan_genre.load_beats(beats_path)
+
+    assert np.array_equal(
+        beat_data.times,
+        np.array([0.113, 0.829, 1.537, 2.28, 2.992]),
+    ), "beat_data.times different than expected"
+    assert np.array_equal(
+        beat_data.positions, None
+    ), "beat_data.positions different from expected"
+
+
+
+
 
 def test_load_tempo():
     tempo_path = (
