@@ -1473,6 +1473,10 @@ def validate_beat_positions(positions, position_unit):
         ValueError: if positions values are incompatible with the unit
 
     """
+
+    if positions is None:
+        return
+
     validate_unit(position_unit, BEAT_POSITION_UNITS)
 
     position_shape = np.shape(positions)

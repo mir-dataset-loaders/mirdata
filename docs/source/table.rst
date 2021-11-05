@@ -157,7 +157,9 @@
    * - Gtzan-Genre
      - - audio: ✅
        - annotations: ✅
-     - global :ref:`genre`
+     - - global :ref:`genre`
+       - :ref:`beats`
+       - :ref:`tempo`
      - 1000
      - ❌
 
