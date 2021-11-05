@@ -81,9 +81,7 @@ def test_beats():
     ]
     beat_data_8 = [
         (
-            annotations.BeatData(
-                np.array([0.2, 0.3]), "s", None, "bar_index"
-            ),
+            annotations.BeatData(np.array([0.2, 0.3]), "s", None, "bar_index"),
             None,
         )
     ]
@@ -125,8 +123,6 @@ def test_beats():
     assert duration == [0.0, 0.0]
     assert value == [None, None]
     assert confidence == [None, None]
-
-
 
     assert type(jam_1) == jams.JAMS
 

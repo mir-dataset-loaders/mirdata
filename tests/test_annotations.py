@@ -999,7 +999,6 @@ def test_validate_beat_positions():
     assert annotations.validate_beat_positions(None, "bar_fraction") == None
 
 
-
 def test_validate_confidence():
     annotations.validate_confidence(None, None)
     annotations.validate_confidence(np.array([0, 1, 1, 0]), "binary")
