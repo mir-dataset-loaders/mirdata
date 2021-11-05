@@ -149,7 +149,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_string_io
-def load_beats(fhandle: TextIO) -> annotations.BeatData:
+def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
     """Load GTZAN format beat data from a file
 
     Args:
@@ -176,7 +176,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
 
 
 @io.coerce_to_string_io
-def load_tempo(fhandle: TextIO) -> float:
+def load_tempo(fhandle: TextIO) -> Optional[float]:
     """Load GTZAN format tempo data from a file
 
     Args:
