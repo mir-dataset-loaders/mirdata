@@ -324,6 +324,7 @@ def test_track_placeholder_case():
     data_home_dir = "not/a/real/path"
 
     for dataset_name in DATASETS:
+        print(dataset_name)
         data_home = os.path.join(data_home_dir, dataset_name)
         dataset = mirdata.initialize(dataset_name, data_home, version="test")
 
@@ -478,18 +479,54 @@ def test_random_splits():
         # check wrong type of split function
         if dataset._track_class is None:
             with pytest.raises(AttributeError):
-                dataset.get_track_splits(split)
+                dataset.get_random_track_splits(split)
 
         if dataset._multitrack_class is None:
             with pytest.raises(AttributeError):
-                dataset.get_mtrack_splits(split)
+                dataset.get_random_mtrack_splits(split)
 
         # check splits for tracks
         if dataset._track_class:
-            splits = dataset.get_track_splits(split)
-            assert len(dataset.track_ids) == sum([len(i) for i in splits])
+            splits = dataset.get_random_track_splits(split)
+            assert len(dataset.track_ids) == sum([len(i) for i in splits.values()])
 
         # check splits for multitracks
         if dataset._multitrack_class:
-            splits = dataset.get_mtrack_splits(split)
-            assert len(dataset.mtrack_ids) == sum([len(i) for i in splits])
+            splits = dataset.get_random_mtrack_splits(split)
+            assert len(dataset.mtrack_ids) == sum([len(i) for i in splits.values()])
+
+
+def test_predetermined_splits():
+    required_track = ["irmas", "mtg_jamendo_autotagging_moodtheme", "slakh", "tinysol"]
+    required_mtrack = ["slakh"]
+    for dataset_name in DATASETS:
+        print(dataset_name)
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
+
+        # test custom get_track_splits functions
+        try:
+            splits = dataset.get_track_splits()
+            assert isinstance(splits, dict)
+            used_tracks = set()
+            for k in splits:
+                assert all([t in dataset.track_ids for t in splits[k]])
+                this_split = set(splits[k])
+                assert not used_tracks.intersection(this_split)
+                used_tracks.update(this_split)
+        except (AttributeError, NotImplementedError):
+            assert dataset_name not in required_track
+
+        # test custom get_mtrack_splits functions
+        try:
+            splits = dataset.get_mtrack_splits()
+            assert isinstance(splits, dict)
+            used_tracks = set()
+            for k in splits:
+                assert all([t in dataset.mtrack_ids for t in splits[k]])
+                this_split = set(splits[k])
+                assert not used_tracks.intersection(this_split)
+                used_tracks.update(this_split)
+        except (AttributeError, NotImplementedError):
+            assert dataset_name not in required_mtrack

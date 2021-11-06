@@ -279,14 +279,15 @@ class Dataset(object):
         """
         return self.multitrack(random.choice(self.mtrack_ids))
 
-    def _get_partitions(self, items, splits, seed):
+    def _get_partitions(self, items, splits, seed, partition_names=None):
         """Helper function to get the indexes needed to split a set of ids into partitions
         Args:
             items (list): list of items to partition
             splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
             seed (int): the seed used for the random generator, in order to enhance reproducibility.
+            partition_names (list): list of keys to use in the output dictionary
         Returns:
-            list: a list containing the partition indexes
+            dict: a dictionary containing the partitions
         """
         if not np.isclose(np.sum(splits), 1):
             raise ValueError(
@@ -295,39 +296,110 @@ class Dataset(object):
                 )
             )
 
+        if partition_names and len(partition_names) != len(splits):
+            raise ValueError(
+                "If partition_names is provided, it should have the same length as splits"
+            )
+
         rng = np.random.default_rng(seed=seed)
         shuffled_items = rng.permutation(items)
+
+        if not partition_names:
+            partition_names = np.arange(len(splits))
 
         # Method from https://stackoverflow.com/a/14281094
         cdf = np.cumsum(splits)
         partitions = list(map(lambda x: int(np.ceil(x)), cdf * len(items)))
-        return [shuffled_items[a:b] for a, b in zip([0] + partitions, partitions)]
+        return {
+            name: shuffled_items[a:b]
+            for name, a, b in zip(partition_names, [0] + partitions, partitions)
+        }
 
-    def get_track_splits(self, splits, seed=42):
+    def get_track_splits(self):
+        """Get predetermined track splits (e.g. train/ test)
+        released alongside this dataset
+
+        Raises:
+            AttributeError: If this dataset does not have tracks
+            NotImplementedError: If this dataset does not have predetermined splits
+
+        Returns:
+            dict: splits, keyed by split name and with values of lists of track_ids
+        """
+        if self._track_class is None:
+            raise AttributeError("This dataset does not have tracks")
+
+        if not hasattr(self.choice_track(), "split"):
+            raise NotImplementedError(
+                f"The {self.name} dataset does not have an official split. Use"
+                " get_random_track_splits instead."
+            )
+
+        splits = {}
+        for track_id in self.track_ids:
+            track = self.track(track_id)
+            if track.split in splits:
+                splits[track.split].append(track_id)
+            else:
+                splits[track.split] = [track_id]
+        return splits
+
+    def get_random_track_splits(self, splits, seed=42, split_names=None):
         """Split the tracks into partitions e.g. training, validation, test
 
         Args:
             splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
             seed (int): the seed used for the random generator, in order to enhance reproducibility. Defaults to 42
+            split_names (list): list of keys to use in the output dictionary
 
         Returns:
-            list of lists: a list of lists containing the elements in each split
+            dict: a dictionary containing the elements in each split
         """
-
         if self._track_class is None:
             raise AttributeError("This dataset does not have tracks")
 
-        return self._get_partitions(self.track_ids, splits, seed)
+        return self._get_partitions(self.track_ids, splits, seed, split_names)
 
-    def get_mtrack_splits(self, splits, seed=42):
+    def get_mtrack_splits(self):
+        """Get predetermined multitrack splits (e.g. train/ test)
+        released alongside this dataset.
+
+        Raises:
+            AttributeError: If this dataset does not have multitracks
+            NotImplementedError: If this dataset does not have predetermined splits
+
+        Returns:
+            dict: splits, keyed by split name and with values of lists of mtrack_ids
+        """
+        if self._multitrack_class is None:
+            raise AttributeError("This dataset does not have multitracks")
+
+        if not hasattr(self.choice_multitrack(), "split"):
+            raise NotImplementedError(
+                f"The {self.name} dataset does not have an official split. Use"
+                " get_random_mtrack_splits instead."
+            )
+
+        splits = {}
+        for mtrack_id in self.mtrack_ids:
+            mtrack = self.multitrack(mtrack_id)
+            if mtrack.split in splits:
+                splits[mtrack.split].append(mtrack_id)
+            else:
+                splits[mtrack.split] = [mtrack_id]
+
+        return splits
+
+    def get_random_mtrack_splits(self, splits, seed=42, split_names=None):
         """Split the multitracks into partitions, e.g. training, validation, test
 
         Args:
             splits (list of float): a list of floats that should sum up 1. It will return as many splits as elements in the list
             seed (int): the seed used for the random generator, in order to enhance reproducibility. Defaults to 42
+            split_names (list): list of keys to use in the output dictionary
 
         Returns:
-            list of lists: a list of lists containing the elements in each split
+            dict: a dictionary containing the elements in each split
         """
 
         if self._multitrack_class is None:

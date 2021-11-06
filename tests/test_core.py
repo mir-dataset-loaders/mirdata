@@ -666,11 +666,17 @@ def test_dataset_splits():
 
     # test the case where there are no tracks
     with pytest.raises(AttributeError):
-        empty_dataset.get_track_splits([0.9, 0.1])
+        empty_dataset.get_random_track_splits([0.9, 0.1])
 
     # test the case where there are no multitracks
     with pytest.raises(AttributeError):
-        empty_dataset.get_mtrack_splits([0.9, 0.1])
+        empty_dataset.get_random_mtrack_splits([0.9, 0.1])
+
+    with pytest.raises(AttributeError):
+        empty_dataset.get_track_splits()
+
+    with pytest.raises(AttributeError):
+        empty_dataset.get_mtrack_splits()
 
     # test the partition function
     items = [i for i in range(100)]
@@ -692,19 +698,39 @@ def test_dataset_splits():
         # check that the right number of splits are created
         assert len(splits) == len(right_combination)
         # check that the number of total items matches
-        assert len(items) == sum([len(i) for i in splits])
+        assert len(items) == sum([len(i) for i in splits.values()])
         # check that all items are used
-        assert set(items) == set([i for split_items in splits for i in split_items])
+        assert set(items) == set(
+            [i for split_items in splits.values() for i in split_items]
+        )
         # check that splits are nonoverlapping
         used = set()
-        for split in splits:
+        for split in splits.values():
             this_split = set(split)
             assert not this_split.intersection(used)
             used.update(this_split)
         # check that the split is reproducable
         splits2 = empty_dataset._get_partitions(items, right_combination, 42)
-        for split, split2 in zip(splits, splits2):
+        for split, split2 in zip(splits.values(), splits2.values()):
             assert np.array_equal(split, split2)
+
+    # test partition names
+    with pytest.raises(ValueError):
+        splits = empty_dataset._get_partitions(
+            items, [0.1, 0.9], 42, partition_names=["asdf"]
+        )
+
+    splits = empty_dataset._get_partitions(items, [0.1, 0.9], 42)
+    assert set(splits.keys()) == set([0, 1])
+    assert len(splits[0]) == 10
+    assert len(splits[1]) == 90
+
+    splits = empty_dataset._get_partitions(
+        items, [0.1, 0.9], 42, partition_names=["test", "train"]
+    )
+    assert set(splits.keys()) == set(["test", "train"])
+    assert len(splits["test"]) == 10
+    assert len(splits["train"]) == 90
 
     list_not_sum_up_1 = [
         [0.8, 0.1, 0.3, 0.2],
@@ -721,3 +747,24 @@ def test_dataset_splits():
     for wrong_combination in list_not_sum_up_1:
         with pytest.raises(ValueError):
             empty_dataset._get_partitions(items, wrong_combination, 42)
+
+    track_mtrack_dataset = core.Dataset(
+        name="test",
+        indexes={"default": core.Index("slakh_index_baby.json")},
+        track_class=core.Track,
+        multitrack_class=core.MultiTrack,
+    )
+
+    with pytest.raises(NotImplementedError):
+        track_mtrack_dataset.get_track_splits()
+
+    with pytest.raises(NotImplementedError):
+        track_mtrack_dataset.get_mtrack_splits()
+
+    # test one real dataset
+    test_dataset = mirdata.initialize("slakh", version="2100-redux")
+    splits = test_dataset.get_track_splits()
+    assert set(splits.keys()) == set(["train", "validation", "test", "omitted"])
+
+    splits = test_dataset.get_mtrack_splits()
+    assert set(splits.keys()) == set(["train", "validation", "test", "omitted"])

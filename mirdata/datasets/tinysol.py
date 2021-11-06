@@ -133,6 +133,10 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
+    def split(self):
+        return self._track_metadata.get("Fold")
+
+    @property
     def family(self):
         return self._track_metadata.get("Family")
 

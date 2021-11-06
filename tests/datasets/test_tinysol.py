@@ -27,6 +27,7 @@ def test_track():
         "instance_id": 0,
         "is_resampled": True,
         "string_id": None,
+        "split": 0,
     }
 
     expected_property_types = {
