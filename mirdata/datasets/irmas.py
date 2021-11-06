@@ -175,6 +175,7 @@ class Track(core.Track):
         train (bool): flag to identify if the track is from the training of the testing dataset
         genre (str): string containing the namecode of the genre of the track.
         drum (bool): flag to identify if the track contains drums or not.
+        split (str): data split ("train" or "test")
 
     Cached Properties:
         instrument (list): list of predominant instruments as str
@@ -200,49 +201,31 @@ class Track(core.Track):
         self.annotation_path = self.get_path("annotation")
 
         self.audio_path = self.get_path("audio")
-
-        # Dataset attributes
-        self.predominant_instrument = None
-        self.genre = None
-        self.drum = None
-        self.train = True
-
         self._audio_filename = self._track_paths["audio"][0]
 
-        # TRAINING TRACKS
-        if "__" in track_id:
-            self.predominant_instrument = os.path.basename(
-                os.path.dirname(self.audio_path)
-            )
-            assert (
-                self.predominant_instrument in INST_DICT
-            ), "Instrument {} not in instrument dict".format(
-                self.predominant_instrument
-            )
+        self.split = "train" if "__" in track_id else "test"
 
-            # Drum presence annotation is present
-            if "dru" in self._audio_filename or "nod" in self._audio_filename:
-                self.genre = (
-                    self._audio_filename.split(".")[0].split("[")[3].split("]")[0]
-                )
-                assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
-                    self.genre
-                )
-                self.drum = [True if "dru" in self._audio_filename else False][0]
-
-            # Drum presence annotation not present
-            else:
-                self.genre = (
-                    self._audio_filename.split(".")[0].split("[")[2].split("]")[0]
-                )
-                assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
-                    self.genre
-                )
-                self.drum = None
-
-        # TESTING TRACKS
+        # Dataset attributes
+        self.predominant_instrument = (
+            os.path.basename(os.path.dirname(self.audio_path))
+            if self.split == "train"
+            else None
+        )
+        if self.split == "train" and (
+            "dru" in self._audio_filename or "nod" in self._audio_filename
+        ):
+            self.genre = self._audio_filename.split(".")[0].split("[")[3].split("]")[0]
+            self.drum = [True if "dru" in self._audio_filename else False][0]
+        elif self.split == "train" and not (
+            "dru" in self._audio_filename or "nod" in self._audio_filename
+        ):
+            self.genre = self._audio_filename.split(".")[0].split("[")[2].split("]")[0]
+            self.drum = None
         else:
-            self.train = False
+            self.genre = None
+            self.drum = None
+
+        self.train = True if self.split == "train" else False
 
     @core.cached_property
     def instrument(self):

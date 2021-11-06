@@ -734,6 +734,10 @@ If a file format needed for a dataset is not included in this list, please see `
 
 Track Attributes
 ----------------
+If the dataset has an official e.g. train/test split, use the reserved attribute `Track.split`, or `MultiTrack.split`
+which will enable some dataset-level helper functions like `dataset.get_track_splits`. If there is no official split,
+do not use this attribute.
+
 Custom track attributes should be global, track-level data.
 For some datasets, there is a separate, dataset-level metadata file
 with track-level metadata, e.g. as a csv. When a single file is needed
