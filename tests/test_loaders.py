@@ -120,7 +120,7 @@ def test_cite_and_license():
 
 
 KNOWN_ISSUES = {}  # key is module, value is REMOTE key
-DOWNLOAD_EXCEPTIONS = ["maestro", "slakh"]
+DOWNLOAD_EXCEPTIONS = ["maestro", "slakh", "gtzan_genre"]
 
 
 def test_download(mocker):

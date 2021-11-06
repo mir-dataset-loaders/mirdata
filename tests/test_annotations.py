@@ -927,6 +927,8 @@ def test_validate_beat_positions():
         annotations.validate_beat_positions(
             np.array([0.5, 1.25, 1.5, 1.75, 2.0]), "bar_fraction"
         )
+    # check it doesn't break with empty positions
+    assert annotations.validate_beat_positions(None, "bar_fraction") == None
 
 
 def test_validate_confidence():

@@ -301,8 +301,12 @@ def beats_to_jams(beat_data, description=None):
     if beat_data is not None:
         if not isinstance(beat_data, annotations.BeatData):
             raise TypeError("Type should be BeatData.")
-        for t, p in zip(beat_data.times, beat_data.positions):
-            jannot_beat.append(time=t, duration=0.0, value=p)
+        if beat_data.positions is not None:
+            for t, p in zip(beat_data.times, beat_data.positions):
+                jannot_beat.append(time=t, duration=0.0, value=p)
+        else:
+            for t in beat_data.times:
+                jannot_beat.append(time=t, duration=0.0, value=None)
     if description is not None:
         jannot_beat.sandbox = jams.Sandbox(name=description)
     return jannot_beat
