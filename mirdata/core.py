@@ -358,7 +358,7 @@ class Dataset(object):
         if self._track_class is None:
             raise AttributeError("This dataset does not have tracks")
 
-        return self._get_partitions(self.track_ids, splits, seed)
+        return self._get_partitions(self.track_ids, splits, seed, partition_names=split_names)
 
     def get_mtrack_splits(self):
         """Get predetermined multitrack splits (e.g. train/ test)
