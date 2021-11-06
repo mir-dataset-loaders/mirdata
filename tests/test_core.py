@@ -714,6 +714,24 @@ def test_dataset_splits():
         for split, split2 in zip(splits.values(), splits2.values()):
             assert np.array_equal(split, split2)
 
+    # test partition names
+    with pytest.raises(ValueError):
+        splits = empty_dataset._get_partitions(
+            items, [0.1, 0.9], 42, partition_names=["asdf"]
+        )
+
+    splits = empty_dataset._get_partitions(items, [0.1, 0.9], 42)
+    assert set(splits.keys()) == set([0, 1])
+    assert len(splits[0]) == 10
+    assert len(splits[1]) == 90
+
+    splits = empty_dataset._get_partitions(
+        items, [0.1, 0.9], 42, partition_names=["test", "train"]
+    )
+    assert set(splits.keys()) == set(["test", "train"])
+    assert len(splits["test"]) == 10
+    assert len(splits["train"]) == 90
+
     list_not_sum_up_1 = [
         [0.8, 0.1, 0.3, 0.2],
         [0.3, 0.1, 0.3, 0.5],
