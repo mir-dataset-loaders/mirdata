@@ -765,3 +765,6 @@ def test_dataset_splits():
     test_dataset = mirdata.initialize("slakh", version="2100-redux")
     splits = test_dataset.get_track_splits()
     assert set(splits.keys()) == set(["train", "validation", "test", "omitted"])
+
+    splits = test_dataset.get_mtrack_splits()
+    assert set(splits.keys()) == set(["train", "validation", "test", "omitted"])

@@ -497,6 +497,8 @@ def test_random_splits():
 
 
 def test_predetermined_splits():
+    required_track = ["irmas", "mtg_jamendo_autotagging_moodtheme", "slakh", "tinysol"]
+    required_mtrack = ["slakh"]
     for dataset_name in DATASETS:
         print(dataset_name)
         dataset = mirdata.initialize(
@@ -514,7 +516,7 @@ def test_predetermined_splits():
                 assert not used_tracks.intersection(this_split)
                 used_tracks.update(this_split)
         except (AttributeError, NotImplementedError):
-            pass
+            assert dataset_name not in required_track
 
         # test custom get_mtrack_splits functions
         try:
@@ -527,4 +529,4 @@ def test_predetermined_splits():
                 assert not used_tracks.intersection(this_split)
                 used_tracks.update(this_split)
         except (AttributeError, NotImplementedError):
-            pass
+            assert dataset_name not in required_mtrack

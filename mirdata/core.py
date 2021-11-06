@@ -336,7 +336,8 @@ class Dataset(object):
             )
 
         splits = {}
-        for track_id, track in self.load_tracks().items():
+        for track_id in self.track_ids:
+            track = self.track(track_id)
             if track.split in splits:
                 splits[track.split].append(track_id)
             else:
@@ -380,7 +381,8 @@ class Dataset(object):
             )
 
         splits = {}
-        for mtrack_id, mtrack in self.load_mtracks().items():
+        for mtrack_id in self.mtrack_ids:
+            mtrack = self.multitrack(mtrack_id)
             if mtrack.split in splits:
                 splits[mtrack.split].append(mtrack_id)
             else:
