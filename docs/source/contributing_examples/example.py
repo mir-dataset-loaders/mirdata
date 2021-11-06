@@ -215,6 +215,10 @@ class MultiTrack(core.MultiTrack):
         self.mix_path = ...  # this can be called whatever makes sense for the datasets
         self.annotation_path = ...
 
+        # -- if the dataset has an *official* e.g. train/test split, use this
+        # -- reserved attribute (can be a property if needed)
+        self.split = ...
+
     # If you want to support multitrack mixing in this dataset, set this property
     @property
     def track_audio_property(self):

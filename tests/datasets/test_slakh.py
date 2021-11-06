@@ -188,6 +188,7 @@ def test_multitrack():
         "normalized": True,
         "overall_gain": 0.18270259567062658,
         "uuid": "1a81ae092884234f3264e2f45927f00a",
+        "split": None,
     }
 
     expected_property_types = {
