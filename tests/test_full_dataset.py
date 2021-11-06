@@ -127,3 +127,36 @@ def test_index(skip_remote, dataset):
                 okeys
             )
         )
+
+
+def test_predetermined_splits(dataset):
+    if dataset is None:
+        pytest.skip()
+
+    # test custom get_track_splits functions
+    try:
+        splits = dataset.get_track_splits()
+        assert isinstance(splits, dict)
+        used_tracks = set()
+        for k in splits:
+            assert all([t in dataset.track_ids for t in splits[k]])
+            this_split = set(splits[k])
+            assert not used_tracks.intersection(this_split)
+            used_tracks.update(this_split)
+        assert used_tracks == set(dataset.track_ids)
+    except (AttributeError, NotImplementedError):
+        pass
+
+    # test custom get_mtrack_splits functions
+    try:
+        splits = dataset.get_mtrack_splits()
+        assert isinstance(splits, dict)
+        used_tracks = set()
+        for k in splits:
+            assert all([t in dataset.mtrack_ids for t in splits[k]])
+            this_split = set(splits[k])
+            assert not used_tracks.intersection(this_split)
+            used_tracks.update(this_split)
+        assert used_tracks == set(dataset.mtrack_ids)
+    except (AttributeError, NotImplementedError):
+        pass

@@ -12,7 +12,9 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme/audios/48/948.mp3",
+        "audio_path": (
+            "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme/audios/48/948.mp3"
+        ),
         "track_id": "track_0000948",
     }
 
@@ -59,25 +61,19 @@ def test_to_jams():
     assert jam["sandbox"].tags == "mood/theme---background"
 
 
-def test_get_track_ids_for_split():
+def test_get_track_splits():
+
     dataset = mtg_jamendo_autotagging_moodtheme.Dataset(
         "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
     )
-    assert len(dataset.get_track_ids_for_split(0)["train"]) == 1
-    assert len(dataset.get_track_ids_for_split(0)["validation"]) == 1
-    assert len(dataset.get_track_ids_for_split(0)["test"]) == 1
-    assert len(dataset.get_track_ids_for_split(1)["train"]) == 1
-    assert len(dataset.get_track_ids_for_split(1)["validation"]) == 1
-    assert len(dataset.get_track_ids_for_split(1)["test"]) == 1
-    assert len(dataset.get_track_ids_for_split(2)["train"]) == 1
-    assert len(dataset.get_track_ids_for_split(2)["validation"]) == 1
-    assert len(dataset.get_track_ids_for_split(2)["test"]) == 1
-    assert len(dataset.get_track_ids_for_split(3)["train"]) == 1
-    assert len(dataset.get_track_ids_for_split(3)["validation"]) == 1
-    assert len(dataset.get_track_ids_for_split(3)["test"]) == 1
-    assert len(dataset.get_track_ids_for_split(4)["train"]) == 1
-    assert len(dataset.get_track_ids_for_split(4)["validation"]) == 1
-    assert len(dataset.get_track_ids_for_split(4)["test"]) == 1
+    for i in range(5):
+        splits = dataset.get_track_splits(split_number=i)
+        assert len(splits["train"]) == 1
+        assert len(splits["validation"]) == 1
+        assert len(splits["test"]) == 1
 
-    with pytest.raises(Exception):
-        dataset.get_track_ids_for_split(-1)
+    with pytest.raises(ValueError):
+        dataset.get_track_splits(-1)
+
+    # deprecated
+    splits = dataset.get_track_ids_for_split(0)

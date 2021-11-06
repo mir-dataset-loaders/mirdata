@@ -20,6 +20,7 @@ def test_track():
         "predominant_instrument": None,
         "genre": None,
         "drum": None,
+        "split": "test",
         "train": False,
     }
     expected_attributes_train = {
@@ -31,6 +32,7 @@ def test_track():
         "predominant_instrument": "cla",
         "genre": "cla",
         "drum": None,
+        "split": "train",
         "train": True,
     }
 
