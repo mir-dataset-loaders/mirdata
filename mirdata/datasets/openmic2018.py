@@ -46,7 +46,6 @@ from smart_open import open
 
 from mirdata import download_utils, jams_utils, core, io
 
-# -- Add any relevant citations here
 BIBTEX = """
 @inproceedings{DBLP:conf/ismir/HumphreyDM18,
   author    = {Eric Humphrey and
@@ -122,24 +121,26 @@ INSTRUMENTS = {
 
 
 class Track(core.Track):
-    """Example track class
-    # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
-    # -- `scripts/print_track_docstring.py my_dataset`
-    # -- note that you'll first need to have a test track (see "Adding tests to your dataset" below)
+    """openmic2018 Track class
 
     Args:
         track_id (str): track id of the track
 
     Attributes:
-        audio_path (str): path to audio file
-        annotation_path (str): path to annotation file
-        # -- Add any of the dataset specific attributes here
-
-    Cached Properties:
-        annotation (EventData): a description of this annotation
+        audio_path (str): path to the audio file
+        split (str): string identifier for train/test split
+        track_id (str): track id
+        vggish_path (str): path to pre-computed VGGish features
+        artist (str): name of the artist
+        audio (tuple): audio time series and sampling rate (mono, 44100 Hz)
+        genres (list): list of strings denoting genres for this track
+        instruments (dict): instrument name -> confidence (>0.5 indicates presence)
+        start_time (float): time (in seconds) where this excerpt occurs in the full recording
+        title (str): title of the track
+        url (str): web address to access the original recording on the Free Music Archive
+        vggish (tuple): np.ndarrays for frame times and pre-computed VGGish features
 
     """
-
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(
             track_id,

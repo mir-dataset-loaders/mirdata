@@ -15,6 +15,7 @@ TEST_TRACKIDS = {
     "medley_solos_db": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
     "medleydb_melody": "MusicDelta_Beethoven",
     "medleydb_pitch": "AClassicEducation_NightOwl_STEM_08",
+    "openmic2018": "000046_3840",
     "orchset": "Beethoven-S3-I-ex1",
     "rwc_classical": "RM-C003",
     "rwc_jazz": "RM-J004",
