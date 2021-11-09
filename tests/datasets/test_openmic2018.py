@@ -23,7 +23,7 @@ def test_track():
         "url": 'http://freemusicarchive.org/music/Chris_and_Nicky_Andrews/Niris/Yosemite',
         "start_time": 3.84,
         "genres": ['Experimental Pop', 'Singer-Songwriter'],
-        "split": "train",
+        "split": "split01_train",
     }
 
     expected_property_types = {

@@ -318,9 +318,10 @@ class Dataset(core.Dataset):
         metadata["split"] = pd.Series(index=metadata.index, data="")
 
         # Populate each split
-        for split in ["train", "test"]:
+        for split_file in (Path(self.data_home) / "partitions").rglob('*.csv'):
+            split = split_file.stem
             split_df = pd.read_csv(
-                Path(self.data_home) / Path("partitions") / f"split01_{split}.csv",
+                split_file,
                 header=None,
                 index_col=0,
             )
