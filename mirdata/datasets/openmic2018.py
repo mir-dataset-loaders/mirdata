@@ -306,7 +306,7 @@ class Dataset(core.Dataset):
         metadata_path = Path(self.data_home) / "openmic-2018-metadata.csv"
 
         # index column is second to last
-        with open(metadata_path, 'r') as fdesc:
+        with open(metadata_path, "r") as fdesc:
             metadata = pd.read_csv(fdesc, index_col=-2)
 
         # genres column is a json object: expand it
@@ -323,7 +323,7 @@ class Dataset(core.Dataset):
         # Populate each split
         for split_file in (Path(self.data_home) / "partitions").rglob("*.csv"):
             split = split_file.stem
-            with open(split_file, 'r') as fdesc:
+            with open(split_file, "r") as fdesc:
                 split_df = pd.read_csv(
                     fdesc,
                     header=None,
@@ -334,7 +334,7 @@ class Dataset(core.Dataset):
 
         # Tack on labels
         label_path = Path(self.data_home) / "openmic-2018-aggregated-labels.csv"
-        with open(label_path, 'r') as fdesc:
+        with open(label_path, "r") as fdesc:
             labels = pd.read_csv(fdesc, index_col=0)
         # Pivot the labels into its own dataframe
         labels = labels.pivot_table(
