@@ -19,10 +19,10 @@ def test_track():
         "track_id": "000046_3840",
         "title": "Yosemite",
         "artist": "Nicky Cook",
-        "instruments": {'clarinet': 0.1710499999999999, 'flute': 0.0, 'trumpet': 0.0},
-        "url": 'http://freemusicarchive.org/music/Chris_and_Nicky_Andrews/Niris/Yosemite',
+        "instruments": {"clarinet": 0.1710499999999999, "flute": 0.0, "trumpet": 0.0},
+        "url": "http://freemusicarchive.org/music/Chris_and_Nicky_Andrews/Niris/Yosemite",
         "start_time": 3.84,
-        "genres": ['Experimental Pop', 'Singer-Songwriter'],
+        "genres": ["Experimental Pop", "Singer-Songwriter"],
         "split": "split01_train",
     }
 
@@ -35,7 +35,7 @@ def test_track():
         "instruments": dict,
         "url": str,
         "start_time": float,
-        "genres": list
+        "genres": list,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -46,26 +46,26 @@ def test_classmap():
     dataset = openmic2018.Dataset(data_home, version="test")
 
     ref_instruments = {
-        'accordion': 0,
-        'banjo': 1,
-        'bass': 2,
-        'cello': 3,
-        'clarinet': 4,
-        'cymbals': 5,
-        'drums': 6,
-        'flute': 7,
-        'guitar': 8,
-        'mallet_percussion': 9,
-        'mandolin': 10,
-        'organ': 11,
-        'piano': 12,
-        'saxophone': 13,
-        'synthesizer': 14,
-        'trombone': 15,
-        'trumpet': 16,
-        'ukulele': 17,
-        'violin': 18,
-        'voice': 19
+        "accordion": 0,
+        "banjo": 1,
+        "bass": 2,
+        "cello": 3,
+        "clarinet": 4,
+        "cymbals": 5,
+        "drums": 6,
+        "flute": 7,
+        "guitar": 8,
+        "mallet_percussion": 9,
+        "mandolin": 10,
+        "organ": 11,
+        "piano": 12,
+        "saxophone": 13,
+        "synthesizer": 14,
+        "trombone": 15,
+        "trumpet": 16,
+        "ukulele": 17,
+        "violin": 18,
+        "voice": 19,
     }
 
     # verify that the loader works

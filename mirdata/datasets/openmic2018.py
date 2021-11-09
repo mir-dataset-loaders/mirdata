@@ -141,6 +141,7 @@ class Track(core.Track):
         vggish (tuple): np.ndarrays for frame times and pre-computed VGGish features
 
     """
+
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(
             track_id,
@@ -319,7 +320,7 @@ class Dataset(core.Dataset):
         metadata["split"] = pd.Series(index=metadata.index, data="")
 
         # Populate each split
-        for split_file in (Path(self.data_home) / "partitions").rglob('*.csv'):
+        for split_file in (Path(self.data_home) / "partitions").rglob("*.csv"):
             split = split_file.stem
             split_df = pd.read_csv(
                 split_file,
