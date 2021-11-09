@@ -293,7 +293,7 @@ class Dataset(core.Dataset):
         super().__init__(
             data_home,
             version,
-            name="OpenMIC-2018",
+            name="openmic2018",
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,
@@ -306,7 +306,8 @@ class Dataset(core.Dataset):
         metadata_path = Path(self.data_home) / "openmic-2018-metadata.csv"
 
         # index column is second to last
-        metadata = pd.read_csv(metadata_path, index_col=-2)
+        with open(metadata_path, 'r') as fdesc:
+            metadata = pd.read_csv(fdesc, index_col=-2)
 
         # genres column is a json object: expand it
         # the raw CSV file is not actually valid json, so we'll fix that with a
@@ -322,17 +323,19 @@ class Dataset(core.Dataset):
         # Populate each split
         for split_file in (Path(self.data_home) / "partitions").rglob("*.csv"):
             split = split_file.stem
-            split_df = pd.read_csv(
-                split_file,
-                header=None,
-                index_col=0,
-            )
-            split_df["split"] = split
-            metadata.update(split_df)
+            with open(split_file, 'r') as fdesc:
+                split_df = pd.read_csv(
+                    fdesc,
+                    header=None,
+                    index_col=0,
+                )
+                split_df["split"] = split
+                metadata.update(split_df)
 
         # Tack on labels
         label_path = Path(self.data_home) / "openmic-2018-aggregated-labels.csv"
-        labels = pd.read_csv(label_path, index_col=0)
+        with open(label_path, 'r') as fdesc:
+            labels = pd.read_csv(fdesc, index_col=0)
         # Pivot the labels into its own dataframe
         labels = labels.pivot_table(
             columns="instrument", values="relevance", index=labels.index
