@@ -305,9 +305,14 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = Path(self.data_home) / "openmic-2018-metadata.csv"
 
-        # index column is second to last
-        with open(metadata_path, "r") as fdesc:
-            metadata = pd.read_csv(fdesc, index_col=-2)
+        try:
+            with open(metadata_path, "r") as fdesc:
+                # index column is second to last
+                metadata = pd.read_csv(fdesc, index_col=-2)
+        except FileNotFoundError as exc:
+            raise FileNotFoundError(
+                f"Metadata file {metadata_path} not found. " "Did you run .download?"
+            ) from exc
 
         # genres column is a json object: expand it
         # the raw CSV file is not actually valid json, so we'll fix that with a
@@ -352,7 +357,12 @@ class Dataset(core.Dataset):
     def _class_map(self):
         class_path = Path(self.data_home) / "class-map.json"
 
-        with open(class_path, "r") as fd:
-            classes = json.load(fd)
+        try:
+            with open(class_path, "r") as fd:
+                classes = json.load(fd)
+        except FileNotFoundError as exc:
+            raise FileNotFoundError(
+                f"Metadata file {class_path} not found. " "Did you run .download?"
+            ) from exc
 
         return classes
