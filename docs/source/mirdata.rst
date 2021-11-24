@@ -218,6 +218,12 @@ mridangam_stroke
    :members:
    :inherited-members:
 
+orchideasol
+^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.orchideasol
+   :members:
+   :inherited-members:
 
 orchset
 ^^^^^^^

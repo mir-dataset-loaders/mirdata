@@ -252,6 +252,17 @@
      - .. image:: https://licensebuttons.net/l/by/3.0/80x15.png
           :target: https://creativecommons.org/licenses/by/3.0/
 
+  * - OrchideaSOL
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`family`
+       - :ref:`instrument`
+       - :ref:`technique`
+       - :ref:`pitch`
+     - 13265
+     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by/4.0/
+
    * - Orchset
      - - audio: ✅
        - annotations: ✅
