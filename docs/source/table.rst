@@ -253,7 +253,7 @@
           :target: https://creativecommons.org/licenses/by/3.0/
 
   * - OrchideaSOL
-     - - audio: ✅
+     - - audio: 🔑
        - annotations: ✅
      - - :ref:`family`
        - :ref:`instrument`
