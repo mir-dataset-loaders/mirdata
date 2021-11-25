@@ -155,8 +155,10 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
         self.vggish_path = self.get_path("vggish")
 
-        # -- set the split
-        self.split = self._track_metadata.get("split")
+    @property
+    def split(self):
+        """Get the pre-defined split"""
+        return self._track_metadata.get("split")
 
     @property
     def instruments(self) -> Dict[str, float]:
