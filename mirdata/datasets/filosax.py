@@ -169,7 +169,9 @@ class Note:
         self.a_start_time = input_dict["a_start_time"]
         self.a_end_time = input_dict["a_end_time"]
         self.a_duration = input_dict["a_duration"]
-        self.a_onset_time = input_dict["a_onset_time"] if "a_onset_time" in input_dict else 0.0
+        self.a_onset_time = (
+            input_dict["a_onset_time"] if "a_onset_time" in input_dict else 0.0
+        )
         self.midi_pitch = input_dict["midi_pitch"]
         self.crochet_num = input_dict["crochet_num"]
         self.musician = input_dict["musician"]
@@ -200,6 +202,7 @@ class Note:
         self.spec_flux_curve = input_dict["spec_flux_curve"]
         self.seq_len = input_dict["seq_len"] if "seq_len" in input_dict else -1
         self.seq_num = input_dict["seq_num"] if "seq_len" in input_dict else -1
+
 
 class Track(core.Track):
     """Filosax track class
@@ -368,7 +371,7 @@ class MultiTrack(core.MultiTrack):
 
         """
         return self.annotation.search(namespace="segment_open")[0]["data"]
-    
+
     @property
     def bass_drums(self):
         """The associated bass/drums track
@@ -377,7 +380,7 @@ class MultiTrack(core.MultiTrack):
 
         """
         return self.tracks[self.mtrack_id + "_bass_drums"]
-    
+
     @property
     def piano_drums(self):
         """The associated piano/drums track
@@ -386,7 +389,7 @@ class MultiTrack(core.MultiTrack):
 
         """
         return self.tracks[self.mtrack_id + "_piano_drums"]
-    
+
     @property
     def sax(self):
         """The associated sax tracks (1-5)
@@ -395,7 +398,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return [self.tracks["%s_sax_%d" % (self.mtrack_id, n)] for n in [1, 2, 3, 4, 5]]
-        
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
