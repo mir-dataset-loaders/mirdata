@@ -58,14 +58,14 @@ BIBTEX = """
 """
 
 INDEXES = {
-    "default": "full_0.9",
-    "full": "full_0.9",
-    "full_sax": "full_sax_0.9",
+    "default": "full_1.0",
+    "full": "full_1.0",
+    "full_sax": "full_sax_1.0",
     "lite": "lite_1.0",
     "lite_sax": "lite_sax_1.0",
     "test": "test",
-    "full_0.9": core.Index(filename="filosax_index_full_0.9.json"),
-    "full_sax_0.9": core.Index(filename="filosax_index_full_sax_0.9.json"),
+    "full_1.0": core.Index(filename="filosax_index_full_1.0.json"),
+    "full_sax_1.0": core.Index(filename="filosax_index_full_sax_1.0.json"),
     "lite_1.0": core.Index(filename="filosax_index_lite_1.0.json"),
     "lite_sax_1.0": core.Index(filename="filosax_index_lite_sax_1.0.json"),
     "test": core.Index(filename="filosax_index_lite_1.0.json"),
@@ -130,10 +130,11 @@ class Note:
     Attributes:
         a_start_time (float): the time stamp of the note start, in seconds
         a_end_time (float): the time stamp of the note end, in seconds
-        a_duration (float): the duration of the note end, in seconds
+        a_duration (float): the duration of the note, in seconds
+        a_onset_time (float): the onset time (compared to a_start_time) (filosax_full only, 0.0 otherwise)
         midi_pitch (int): the quantised midi pitch
         crochet_num (int): the number of sub-divisions which define a crochet (always 24)
-        musician (str): the participant ID
+        musician (int): the participant ID
         bar_num (int): the bar number of the start of the note
         s_start_time (float): the time stamp of the score note start, in seconds
         s_duration (float): the duration of the score note, in seconds
@@ -159,6 +160,8 @@ class Note:
         spec_flux (float): the spectral flux value at the time of the maximum loudness
         spec_cent_curve [float]: the inter-note spectral centroid values, 1 per millisecond
         spec_flux_curve [float]: the inter-note spectral flux values, 1 per millisecond
+        seq_len (int): the length of the phrase in which the note falls (filosax_full only, -1 otherwise)
+        seq_num (int): the note position in the phrase (filosax_full only, -1 otherwise)
 
     """
 
@@ -166,6 +169,7 @@ class Note:
         self.a_start_time = input_dict["a_start_time"]
         self.a_end_time = input_dict["a_end_time"]
         self.a_duration = input_dict["a_duration"]
+        self.a_onset_time = input_dict["a_onset_time"] if "a_onset_time" in input_dict else 0.0
         self.midi_pitch = input_dict["midi_pitch"]
         self.crochet_num = input_dict["crochet_num"]
         self.musician = input_dict["musician"]
@@ -194,7 +198,8 @@ class Note:
         self.spec_flux = input_dict["spec_flux"]
         self.spec_cent_curve = input_dict["spec_cent_curve"]
         self.spec_flux_curve = input_dict["spec_flux_curve"]
-
+        self.seq_len = input_dict["seq_len"] if "seq_len" in input_dict else -1
+        self.seq_num = input_dict["seq_num"] if "seq_len" in input_dict else -1
 
 class Track(core.Track):
     """Filosax track class
@@ -284,6 +289,9 @@ class MultiTrack(core.MultiTrack):
         beats ([Observation]): the time and beat numbers of bars and chord changes
         chords ([Observation]): the time of chord changes
         segments ([Observation]): the time of segment changes
+        bass_drums (Track): the associated bass/drums track
+        piano_drums (Track): the associated piano/drums track
+        sax [Track]: a list of associated sax tracks
 
     Cached Properties:
         annotation (.jams): a .jams file containing the annotations
@@ -360,6 +368,34 @@ class MultiTrack(core.MultiTrack):
 
         """
         return self.annotation.search(namespace="segment_open")[0]["data"]
+    
+    @property
+    def bass_drums(self):
+        """The associated bass/drums track
+        Returns:
+            * Track
+
+        """
+        return self.tracks[self.mtrack_id + "_bass_drums"]
+    
+    @property
+    def piano_drums(self):
+        """The associated piano/drums track
+        Returns:
+            * Track
+
+        """
+        return self.tracks[self.mtrack_id + "_piano_drums"]
+    
+    @property
+    def sax(self):
+        """The associated sax tracks (1-5)
+        Returns:
+            * [Track]
+
+        """
+        return [self.tracks["%s_sax_%d" % (self.mtrack_id, n)] for n in [1, 2, 3, 4, 5]]
+        
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
