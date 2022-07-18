@@ -162,7 +162,7 @@ class Track(core.Track):
 
     @property
     def instruments(self) -> Dict[str, float]:
-        """The instrments for this track.
+        """The instruments for this track.
 
         Each observed instrument for the track receives a score between 0 and 1,
         corresponding to the number of annotators who believe the instrument to be
