@@ -15,7 +15,7 @@
     7) Participant 4 Sax, a mono file of solo saxophone
     8) Participant 5 Sax, a mono file of solo saxophone
     
-    Each piece is ~6mins, so each of the 8 stems contains ~5hours of audio
+    Each piece is ~6mins long, so each of the 8 stems contains ~5hours of audio
     
     For each piece, there is a corresponding .jams file containing piece-level annotations:
     
