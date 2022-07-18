@@ -177,9 +177,8 @@ class Track(core.Track):
         scores = dict()
         for k in INSTRUMENTS:
             inst_score = self._track_metadata.get(k, np.nan)
-            if np.isnan(inst_score):
-                continue
-            scores[k] = inst_score
+            if not np.isnan(inst_score):
+                scores[k] = inst_score
         return scores
 
     @property
