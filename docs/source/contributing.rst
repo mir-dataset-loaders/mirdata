@@ -35,6 +35,7 @@ To install ``mirdata`` for development purposes:
           pip install .[tests]
           pip install .[docs]
           pip install .[dali]
+          pip install .[haydn_op20]
 
 
 We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
