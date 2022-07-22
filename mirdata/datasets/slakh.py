@@ -90,10 +90,11 @@ class Track(core.Track):
     Attributes:
         audio_path (str or None): path to the track's audio file. For some unusual tracks,
             such as sound effects, there is no audio and this attribute is None.
-        data_split (str or None): one of 'train', 'validation', 'test', or 'omitted'.
+        split (str or None): one of 'train', 'validation', 'test', or 'omitted'.
             'omitted' tracks are part of slakh2100-redux which were found to be
             duplicates in the original slakh2011.
             In baby slakh there are no splits, so this attribute is None.
+        data_split (str or None): equivalent to split (deprecated in 0.3.6)
         metadata_path (str): path to the multitrack's metadata file
         midi_path (str or None): path to the track's midi file. For some unusual tracks,
             such as sound effects, there is no midi and this attribute is None.
@@ -135,14 +136,14 @@ class Track(core.Track):
         self.metadata_path = self.get_path("metadata")
 
         # split (train/validation/test/omitted) is part of the relative filepath in the index
-        self.data_split = None  # for baby_slakh, there are no data splits - set to None
+        self.split = None  # for baby_slakh, there are no data splits - set to None
         if index["version"] == "2100-redux":
-            self.data_split = self._track_paths["metadata"][0].split(os.sep)[1]
+            self.split = self._track_paths["metadata"][0].split(os.sep)[1]
             assert (
-                self.data_split in SPLITS
-            ), "{} not a valid split - should be one of {}.".format(
-                self.data_split, SPLITS
-            )
+                self.split in SPLITS
+            ), "{} not a valid split - should be one of {}.".format(self.split, SPLITS)
+
+        self.data_split = self.split  # deprecated in 0.3.6
 
     @core.cached_property
     def _track_metadata(self) -> dict:
@@ -231,9 +232,10 @@ class MultiTrack(core.MultiTrack):
         mix_path (str): path to the multitrack mix audio
         midi_path (str): path to the full midi data used to generate the mixture
         metadata_path (str): path to the multitrack metadata file
-        data_split (str or None): one of 'train', 'validation', 'test', or 'omitted'.
+        split (str or None): one of 'train', 'validation', 'test', or 'omitted'.
             'omitted' tracks are part of slakh2100-redux which were found to be
             duplicates in the original slakh2011.
+        data_split (str or None): equivalent to split (deprecated in 0.3.6)
         uuid (str): File name of the original MIDI file from Lakh, sans extension
         lakh_midi_dir (str): Path to the original MIDI file from a fresh download of Lakh
         normalized (bool): whether the mix and stems were normalized according to the ITU-R BS.1770-4 spec
@@ -262,10 +264,12 @@ class MultiTrack(core.MultiTrack):
         self.metadata_path = self.get_path("metadata")
 
         # split (train/validation/test) is determined by the relative filepath in the index
-        self.data_split = None  # for baby_slakh, there are no data splits - set to None
+        self.split = None  # for baby_slakh, there are no data splits - set to None
         if index["version"] == "2100-redux":
-            self.data_split = self._multitrack_paths["mix"][0].split(os.sep)[1]
-            assert self.data_split in SPLITS, "{} not in SPLITS".format(self.data_split)
+            self.split = self._multitrack_paths["mix"][0].split(os.sep)[1]
+            assert self.split in SPLITS, "{} not in SPLITS".format(self.split)
+
+        self.data_split = self.split  # deprecated in 0.3.6
 
     @property
     def track_audio_property(self) -> str:

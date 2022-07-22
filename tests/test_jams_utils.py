@@ -79,11 +79,18 @@ def test_beats():
             None,
         )
     ]
+    beat_data_8 = [
+        (
+            annotations.BeatData(np.array([0.2, 0.3]), "s", None, "bar_index"),
+            None,
+        )
+    ]
 
     jam_1 = jams_utils.jams_converter(beat_data=beat_data_1)
     jam_2 = jams_utils.jams_converter(beat_data=beat_data_2)
     jam_3 = jams_utils.jams_converter(beat_data=beat_data_3)
     jam_6 = jams_utils.jams_converter(beat_data=beat_data_6)
+    jam_8 = jams_utils.jams_converter(beat_data=beat_data_8)
 
     time, duration, value, confidence = get_jam_data(jam_1, "beat", 0)
     assert time == [0.2, 0.3]
@@ -110,6 +117,12 @@ def test_beats():
     assert duration == []
     assert value == []
     assert confidence == []
+
+    time, duration, value, confidence = get_jam_data(jam_8, "beat", 0)
+    assert time == [0.2, 0.3]
+    assert duration == [0.0, 0.0]
+    assert value == [None, None]
+    assert confidence == [None, None]
 
     assert type(jam_1) == jams.JAMS
 
@@ -1055,20 +1068,14 @@ def test_lyrics():
         ),
         (
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
-                "s",
-                ["is", "cool"],
-                "words",
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T, "s", ["is", "cool"], "words"
             ),
             "lyrics_2",
         ),
     ]
     lyrics_data_4 = (
         annotations.LyricData(
-            np.array([[0.027, 0.232], [0.227, 0.742]]).T,
-            "s",
-            ["The", "Test"],
-            "words",
+            np.array([[0.027, 0.232], [0.227, 0.742]]).T, "s", ["The", "Test"], "words"
         ),
         "lyrics_1",
     )
@@ -1084,10 +1091,7 @@ def test_lyrics():
         ),
         [
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
-                "s",
-                ["is", "cool"],
-                "words",
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T, "s", ["is", "cool"], "words"
             ),
             "lyrics_2",
         ],

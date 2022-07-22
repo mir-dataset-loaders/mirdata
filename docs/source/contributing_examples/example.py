@@ -122,6 +122,10 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
         self.annotation_path = self.get_path("annotation")
 
+        # -- if the dataset has an *official* e.g. train/test split, use this
+        # -- reserved attribute (can be a property if needed)
+        self.split = ...
+
     # -- If the dataset has metadata that needs to be accessed by Tracks,
     # -- such as a table mapping track ids to composers for the full dataset,
     # -- add them as properties like instead of in the __init__.
@@ -210,6 +214,10 @@ class MultiTrack(core.MultiTrack):
         # -- optionally add any multitrack specific attributes here
         self.mix_path = ...  # this can be called whatever makes sense for the datasets
         self.annotation_path = ...
+
+        # -- if the dataset has an *official* e.g. train/test split, use this
+        # -- reserved attribute (can be a property if needed)
+        self.split = ...
 
     # If you want to support multitrack mixing in this dataset, set this property
     @property

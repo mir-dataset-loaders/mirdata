@@ -1,5 +1,4 @@
 import pretty_midi
-import pytest
 
 from mirdata import annotations
 from mirdata.datasets import slakh
@@ -18,7 +17,9 @@ def test_track():
         "mtrack_id": "Track00001",
         "audio_path": "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/stems/S00.wav",
         "midi_path": "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/MIDI/S00.mid",
-        "metadata_path": "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/metadata.yaml",
+        "metadata_path": (
+            "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/metadata.yaml"
+        ),
         "instrument": "Guitar",
         "integrated_loudness": -12.82074180245363,
         "is_drum": False,
@@ -27,6 +28,7 @@ def test_track():
         "program_number": 30,
         "mixing_group": "guitar",
         "data_split": None,
+        "split": None,
     }
 
     expected_property_types = {
@@ -74,8 +76,12 @@ def test_track_full():
         "track_id": "Track00001-S00",
         "mtrack_id": "Track00001",
         "audio_path": "tests/resources/mir_datasets/slakh/slakh2100_flac_redux/train/Track00001/stems/S00.flac",
-        "midi_path": "tests/resources/mir_datasets/slakh/slakh2100_flac_redux/train/Track00001/MIDI/S00.mid",
-        "metadata_path": "tests/resources/mir_datasets/slakh/slakh2100_flac_redux/train/Track00001/metadata.yaml",
+        "midi_path": (
+            "tests/resources/mir_datasets/slakh/slakh2100_flac_redux/train/Track00001/MIDI/S00.mid"
+        ),
+        "metadata_path": (
+            "tests/resources/mir_datasets/slakh/slakh2100_flac_redux/train/Track00001/metadata.yaml"
+        ),
         "instrument": "Guitar",
         "integrated_loudness": -12.82074180245363,
         "is_drum": False,
@@ -84,6 +90,7 @@ def test_track_full():
         "program_number": 30,
         "mixing_group": "guitar",
         "data_split": "train",
+        "split": "train",
     }
 
     expected_property_types = {
@@ -159,7 +166,9 @@ def test_multitrack():
         "mtrack_id": "Track00001",
         "midi_path": "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/all_src.mid",
         "mix_path": "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/mix.wav",
-        "metadata_path": "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/metadata.yaml",
+        "metadata_path": (
+            "tests/resources/mir_datasets/slakh/babyslakh_16k/Track00001/metadata.yaml"
+        ),
         "data_split": None,
         "track_ids": [
             "Track00001-S00",
@@ -173,10 +182,13 @@ def test_multitrack():
             "Track00001-S09",
             "Track00001-S10",
         ],
-        "lakh_midi_dir": "lmd_matched/O/O/H/TROOHTB128F931F9DF/1a81ae092884234f3264e2f45927f00a.mid",
+        "lakh_midi_dir": (
+            "lmd_matched/O/O/H/TROOHTB128F931F9DF/1a81ae092884234f3264e2f45927f00a.mid"
+        ),
         "normalized": True,
         "overall_gain": 0.18270259567062658,
         "uuid": "1a81ae092884234f3264e2f45927f00a",
+        "split": None,
     }
 
     expected_property_types = {

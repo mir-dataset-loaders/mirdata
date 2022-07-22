@@ -330,6 +330,14 @@ tonas
    :inherited-members:
 
 
+vocadito
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.vocadito
+   :members:
+   :inherited-members:
+
+
 Core
 ----
 
