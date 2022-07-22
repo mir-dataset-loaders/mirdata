@@ -320,8 +320,13 @@ def extractall_unicode(zfile, out_dir):
             "cp437"
         ).decode(errors="ignore") != filename:
             filename_bytes = filename.encode("cp437")
-            guessed_encoding = chardet.detect(filename_bytes)["encoding"] or "utf8"
-            filename = filename_bytes.decode(guessed_encoding, "replace")
+            if filename_bytes.decode("utf-8", "replace") != filename_bytes.decode(
+                errors="ignore"
+            ):
+                guessed_encoding = chardet.detect(filename_bytes)["encoding"] or "utf8"
+                filename = filename_bytes.decode(guessed_encoding, "replace")
+            else:
+                filename = filename_bytes.decode("utf-8", "replace")
 
         disk_file_name = os.path.join(out_dir, filename)
 
