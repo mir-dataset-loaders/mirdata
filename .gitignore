@@ -1,5 +1,6 @@
 tests/resources/mir_datasets_full
 tests/data/output.wav
+tests/resources/mir_datasets/haydn_op20/op20n1-01.midi
 mirdata/datasets/indexes/__MACOSX
 *.DS_Store
 

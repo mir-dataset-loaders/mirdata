@@ -169,7 +169,9 @@
    * - Gtzan-Genre
      - - audio: ✅
        - annotations: ✅
-     - global :ref:`genre`
+     - - global :ref:`genre`
+       - :ref:`beats`
+       - :ref:`tempo`
      - 1000
      - ❌
 
@@ -386,3 +388,13 @@
        - :ref:`notes`
      - 72
      - :tonas:`\ `
+   
+   * - vocadito 
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`notes`
+       - :ref:`lyrics`
+     - 40
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0

@@ -259,6 +259,26 @@ class Dataset(core.Dataset):
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
+    def get_track_splits(self, split_number=0):
+        """Get predetermined track splits released alongside this dataset
+
+        Args:
+            split_number (int): which split split_number to use (0, 1, 2, 3 or 4)
+
+        Returns:
+            dict: splits, keyed by split name and with values of lists of track_ids
+        """
+        if split_number not in [0, 1, 2, 3, 4]:
+            raise ValueError(
+                f"split_number must be 0, 1, 2, 3, or 4, got {split_number}"
+            )
+
+        return self._metadata["splits"][split_number]
+
+    @deprecated(
+        reason="Use mirdata.datasets.mtg_jamendo_autotagging_moodtheme.get_track_splits",
+        version="0.3.6",
+    )
     def get_track_ids_for_split(self, split_number):
         """Load a MTG jamendo autotagging moodtheme pre-defined split. There are five different train/validation/tests splits.
         Args:
@@ -267,7 +287,4 @@ class Dataset(core.Dataset):
             * dict: {"train": [...], "validation": [...], "test": [...]} - the train split
 
         """
-        if not (0 <= split_number <= 4):
-            raise Exception("Splits avaiables from num 0 to 4")
-
-        return self._metadata["splits"][split_number]
+        return self.get_track_splits(split_number=split_number)
