@@ -166,40 +166,40 @@ class Note:
     """
 
     def __init__(self, input_dict):
-        self.a_start_time = input_dict["a_start_time"]
-        self.a_end_time = input_dict["a_end_time"]
-        self.a_duration = input_dict["a_duration"]
+        self.a_start_time = input_dict["a_start_time"] if "a_start_time" in input_dict else 0.0
+        self.a_end_time = input_dict["a_end_time"] if "a_end_time" in input_dict else 0.0
+        self.a_duration = input_dict["a_duration"] if "a_duration" in input_dict else 0.0
         self.a_onset_time = (
             input_dict["a_onset_time"] if "a_onset_time" in input_dict else 0.0
         )
-        self.midi_pitch = input_dict["midi_pitch"]
-        self.crochet_num = input_dict["crochet_num"]
-        self.musician = input_dict["musician"]
-        self.bar_num = input_dict["bar_num"]
-        self.s_start_time = input_dict["s_start_time"]
-        self.s_duration = input_dict["s_duration"]
-        self.s_end_time = self.s_start_time + self.s_duration
-        self.s_rhythmic_duration = input_dict["s_rhythmic_duration"]
-        self.s_rhythmic_position = input_dict["s_rhythmic_position"]
-        self.tempo = input_dict["tempo"]
-        self.bar_type = input_dict["bar_type"]
-        self.is_grace = input_dict["is_grace"]
-        self.chord_changes = input_dict["chord_changes"]
-        self.num_chord_changes = input_dict["num_chord_changes"]
-        self.main_chord_num = input_dict["main_chord_num"]
-        self.scale_changes = input_dict["scale_changes"]
-        self.loudness_max_val = input_dict["loudness_max_val"]
-        self.loudness_max_time = input_dict["loudness_max_time"]
-        self.loudness_curve = input_dict["loudness_curve"]
-        self.pitch_average_val = input_dict["pitch_average_val"]
-        self.pitch_average_time = input_dict["pitch_average_time"]
-        self.pitch_curve = input_dict["pitch_curve"]
-        self.pitch_vib_freq = input_dict["pitch_vib_freq"]
-        self.pitch_vib_ext = input_dict["pitch_vib_ext"]
-        self.spec_cent = input_dict["spec_cent"]
-        self.spec_flux = input_dict["spec_flux"]
-        self.spec_cent_curve = input_dict["spec_cent_curve"]
-        self.spec_flux_curve = input_dict["spec_flux_curve"]
+        self.midi_pitch = input_dict["midi_pitch"] if "midi_pitch" in input_dict else 0
+        self.crochet_num = input_dict["crochet_num"] if "crochet_num" in input_dict else 24
+        self.musician = input_dict["musician"] if "musician" in input_dict else 1
+        self.bar_num = input_dict["bar_num"] if "bar_num" in input_dict else 1
+        self.s_start_time = input_dict["s_start_time"] if "s_start_time" in input_dict else 0.0
+        self.s_duration = input_dict["s_duration"] if "s_duration" in input_dict else 0.0
+        self.s_end_time = (self.s_start_time + self.s_duration) if "s_start_time" in input_dict else 0.0
+        self.s_rhythmic_duration = input_dict["s_rhythmic_duration"] if "s_rhythmic_duration" in input_dict else 0.0
+        self.s_rhythmic_position = input_dict["s_rhythmic_position"] if "s_rhythmic_position" in input_dict else 0.0
+        self.tempo = input_dict["tempo"] if "tempo" in input_dict else 0.0
+        self.bar_type = input_dict["bar_type"] if "bar_type" in input_dict else 1
+        self.is_grace = input_dict["is_grace"] if "is_grace" in input_dict else 0
+        self.chord_changes = input_dict["chord_changes"] if "chord_changes" in input_dict else [0]
+        self.num_chord_changes = input_dict["num_chord_changes"] if "num_chord_changes" in input_dict else 0
+        self.main_chord_num = input_dict["main_chord_num"] if "main_chord_num" in input_dict else 0
+        self.scale_changes = input_dict["scale_changes"] if "scale_changes" in input_dict else [0]
+        self.loudness_max_val = input_dict["loudness_max_val"] if "loudness_max_val" in input_dict else 0.0
+        self.loudness_max_time = input_dict["loudness_max_time"] if "loudness_max_time" in input_dict else 0.0
+        self.loudness_curve = input_dict["loudness_curve"] if "loudness_curve" in input_dict else [0.0]
+        self.pitch_average_val = input_dict["pitch_average_val"] if "pitch_average_val" in input_dict else 0.0
+        self.pitch_average_time = input_dict["pitch_average_time"] if "pitch_average_time" in input_dict else 0.0
+        self.pitch_curve = input_dict["pitch_curve"] if "pitch_curve" in input_dict else [0.0]
+        self.pitch_vib_freq = input_dict["pitch_vib_freq"] if "pitch_vib_freq" in input_dict else 0.0
+        self.pitch_vib_ext = input_dict["pitch_vib_ext"] if "pitch_vib_ext" in input_dict else 0.0
+        self.spec_cent = input_dict["spec_cent"] if "spec_cent" in input_dict else 0.0
+        self.spec_flux = input_dict["spec_flux"] if "spec_flux" in input_dict else 0.0
+        self.spec_cent_curve = input_dict["spec_cent_curve"] if "spec_cent_curve" in input_dict else [0.0]
+        self.spec_flux_curve = input_dict["spec_flux_curve"] if "spec_flux_curve" in input_dict else [0.0]
         self.seq_len = input_dict["seq_len"] if "seq_len" in input_dict else -1
         self.seq_num = input_dict["seq_num"] if "seq_len" in input_dict else -1
 
@@ -252,8 +252,7 @@ class Track(core.Track):
         note_path = "" if self.annotation_path == None else self.annotation_path
         if note_path == "":
             print("Note data only available for Sax tracks.")
-            #note_dict = {}
-            return []
+            note_dict = [{}]
         else:
             with open(note_path) as fhandle:
                 note_dict = json.load(fhandle)["notes"]
