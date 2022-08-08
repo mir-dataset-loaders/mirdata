@@ -252,10 +252,9 @@ class Track(core.Track):
         note_path = "" if self.annotation_path == None else self.annotation_path
         if note_path == "":
             print("Note data only available for Sax tracks.")
-            note_dict = [{"a_start_time": 0.0}]
-        else:
-            with open(note_path) as fhandle:
-                note_dict = json.load(fhandle)["notes"]
+            return [Note[{"a_start_time": 0.0}]]
+        with open(note_path) as fhandle:
+            note_dict = json.load(fhandle)["notes"]
         return [Note(n) for n in note_dict]
 
     @property
