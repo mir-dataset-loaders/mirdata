@@ -300,30 +300,20 @@ class Track(core.Track):
         self.pdf_path = self.get_path("pdf")
 
     @core.cached_property
-    def notes(self) -> List[Note]:
+    def notes(self) -> Optional[List[Note]]:
         """The track's note list - only for Sax files
 
         Returns:
-            * List[Note] - ordered list of Note objects
+            * [Note] - ordered list of Note objects
 
         """
         note_path = "" if self.annotation_path == None else self.annotation_path
-        return load_notes(note_path)
-
-    @io.coerce_to_string_io
-    def load_notes(fhandle: BinaryIO) -> List[Note]:
-        """The track's note list - only for Sax files
-
-        Returns:
-            * List[Note] - ordered list of Note objects
-
-        """
-        if fhandle:
-            note_dict = json.load(fhandle)["notes"]
-            return [Note(n) for n in note_dict]
-        else:
+        if note_path == "":
             print("Note data only available for Sax tracks.")
             return [Note({})]
+        with open(note_path) as fhandle:
+            note_dict = json.load(fhandle)["notes"]
+        return [Note(n) for n in note_dict]
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
