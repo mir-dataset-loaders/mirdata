@@ -19,6 +19,7 @@ CUSTOM_TEST_TRACKS = {
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
     "da_tacos": "coveranalysis#W_163992#P_547131",
+    "filosax": "multitrack_02_sax_1",
     "freesound_one_shot_percussive_sounds": "183",
     "giantsteps_tempo": "113",
     "gtzan_genre": "country.00000",
