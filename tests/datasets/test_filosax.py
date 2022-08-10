@@ -172,7 +172,6 @@ def test_metadata():
     segments = default_multitrack.segments
     bass_drums = default_multitrack.bass_drums
     piano_drums = default_multitrack.piano_drums
-    sax = default_multitrack.sax
 
     assert name == "All The Things You Are"
     assert duration == 5.0
@@ -215,4 +214,3 @@ def test_metadata():
 
     assert bass_drums.track_id == "multitrack_01_bass_drums"
     assert piano_drums.track_id == "multitrack_01_piano_drums"
-    assert sax[0].track_id == "multitrack_01_sax_1"
