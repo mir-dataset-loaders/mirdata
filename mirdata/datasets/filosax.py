@@ -311,11 +311,11 @@ class Track(core.Track):
         if note_path == "":
             print("Note data only available for Sax tracks.")
             return [Note({})]
-        #  with open(note_path) as fhandle:
-        #      note_dict = json.load(fhandle)["notes"]
-        #        return [Note(n) for n in note_dict]
         with open(note_path) as fhandle:
-            return load_annotation(fhandle)
+            note_dict = json.load(fhandle)["notes"]
+        return [Note(n) for n in note_dict]
+        # with open(note_path) as fhandle:
+        #    return load_annotation(fhandle)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
