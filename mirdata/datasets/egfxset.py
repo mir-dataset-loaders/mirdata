@@ -41,7 +41,7 @@ BIBTEX = """
 INDEXES = {
     "default": "1",
     "test": "1",
-    "1": core.Index(filename="EGFxSet_index_1.json"),
+    "1": core.Index(filename="egfxset_index_1.json"),
 }
 
 REMOTES = {

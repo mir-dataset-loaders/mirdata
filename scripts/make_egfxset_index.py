@@ -5,7 +5,7 @@ import os
 import pandas as pd
 from mirdata.validate import md5
 
-EGFXSET_INDEX_PATH = "mirdata/datasets/indexes/egfxsetset_index_{}.json"
+EGFXSET_INDEX_PATH = "mirdata/datasets/indexes/egfxset_index_{}.json"
 
 
 def make_egfxset_index(egfxset_data_path: str, version: str) -> None:
