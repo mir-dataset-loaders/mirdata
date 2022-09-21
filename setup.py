@@ -43,6 +43,7 @@ if __name__ == "__main__":
             "h5py >= 2.10.0",
             "smart_open >= 5.0.0",
             "Deprecated >= 1.2.13",
+            "pandas >= 1.0.0",
         ],
         extras_require={
             "tests": [
