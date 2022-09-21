@@ -57,28 +57,11 @@ INDEXES = {
 
 REMOTES = {
     "remote_data": download_utils.RemoteFileMetadata(
-        filename="mridangam_stroke_1.5.zip",
-        url="https://zenodo.org/record/4068196/files/mridangam_stroke_1.5.zip?download=1",
-        checksum="39af55b2476b94c7946bec24331ec01a",  # the md5 checksum
+        filename="TODO",
+        url="TODO",
+        checksum="TODO",  # the md5 checksum
     ),
 }
-
-
-STROKE_DICT = {
-    "bheem",
-    "cha",
-    "dheem",
-    "dhin",
-    "num",
-    "ta",
-    "tha",
-    "tham",
-    "thi",
-    "thom",
-}
-
-
-TONIC_DICT = {"b", "d", "rb", "rt"}
 
 LICENSE_INFO = "Creative Commons Attribution 3.0 Unported (CC BY 3.0) License."
 
@@ -93,8 +76,10 @@ class Track(core.Track):
     Attributes:
         track_id (str): track id
         audio_path (str): audio path
-        stroke_name (str): name of the Mridangam stroke present in Track
-        tonic (str): tonic of the stroke in the Track
+        onsets_b_path (str): path to B onsets
+        onsets_d_path (str): path to D onsets
+        onsets_rb_path (str): path to RB onsets
+        onsets_rt_path (str): path to RT onsets
 
     """
 
