@@ -3,9 +3,12 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    TODO
+    The Four-Way Tabla Dataset includes audio recordings of tabla solo with onset annotations for particular
+    strokes types. This dataset was published in 2021 in the context of ISMIR2021 (Online), and may be used for
+    tasks related to tabla analysis, including problems such as onset detection and stroke classification.
 
-    Total audio samples: TODO
+    Total audio samples: We do have a total of 226 samples for training and 10 for testing. Each audio has
+    an approximate duration of 1 minute.
 
     Audio specifications:
 
@@ -13,22 +16,23 @@
     * Bit-depth: 16 bit
     * Audio format: .wav
 
-    Dataset usage: TODO
+    Dataset usage: This dataset may be used for the data-driven research of tabla stroke transcription and 
+    identification. In this dataset, four important tabla characteristic strokes are considered.
 
-    Dataset structure: TODO
+    Dataset structure: The dataset is split in two subsets, containing training and testing samples. Within each
+    subset, there is a folder containing the audios, and another folder containing the onset annotations. The onset
+    annotations are organized in a folder per each stroke type: b, d, rb, rt. Therefore, the paths to onsets would
+    look like:
 
     .. code-block:: bash
 
-        <TrackID>__<AuthorName>__<StrokeName>-<Tonic>-<InstanceNum>.wav
+        train/onsets/<StrokeType>/<ID>.onsets
 
     The dataset is made available by CompMusic under a Creative Commons
     Attribution 3.0 Unported (CC BY 3.0) License.
 
-    For more details, please visit: TODO
-
 """
 
-import os
 import csv
 
 from deprecated.sphinx import deprecated
@@ -38,17 +42,11 @@ from typing import BinaryIO, Optional, Tuple
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
-BIBTEX = """@article{Anantapadmanabhan2013,
-    author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
-    doi = {10.1109/ICASSP.2013.6637633},
-    isbn = {9781479903566},
-    issn = {15206149},
-    journal = {ICASSP, IEEE International Conference on Acoustics, Speech and Signal Processing - Proceedings},
-    keywords = {Hidden Markov models, Modal Analysis, Mridangam, Non-negative Matrix Factorization,
-    automatic transcription},
-    pages = {181--185},
-    title = {{Modal analysis and transcription of strokes of the mridangam using non-negative matrix factorization}},
-    year = {2013}
+BIBTEX = """@article{RohitMA2021,
+    author = {M.A, Rohit and Bhattacharjee, Amitrajit and Rao, Preeti},
+    journal = {Proc. of the 22nd Int. Society for Music Information Retrieval Conf., Online, 2021},
+    title = {{Four-way Classification of Tabla Strokes with Models Adapted from Automatic Drum Transcription}},
+    year = {2021}
 }"""
 
 INDEXES = {
@@ -228,6 +226,7 @@ def load_onsets(fhandle):
         return None
     onsets = np.array(onsets)
 
+    # All strokes are out of an annotated metric
     beat_position = np.zeros(onsets.shape)
 
     return annotations.BeatData(onsets, "s", beat_position, "global_index")
