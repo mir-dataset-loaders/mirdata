@@ -1,4 +1,3 @@
-import os
 import numpy as np
 
 from tests.test_utils import run_track_tests
