@@ -26,11 +26,11 @@ def make_four_way_tabla_index(dataset_data_path):
                 "onsets_rb": (None, None),
                 "onsets_rt": (None, None)}
             tabla_index["tracks"][index]["audio"] = (
-                os.path.join(subset, "audios", index + ".wav"),
+                os.path.join('4way-tabla-ismir21-dataset', subset, "audios", index + ".wav"),
                 md5(os.path.join(dataset_data_path, subset, "audios", index + ".wav")))
             for stroke in srokes:
                 tabla_index["tracks"][index]["onsets_"+stroke] = (
-                    os.path.join(subset, "onsets", stroke, index + ".wav"),
+                    os.path.join('4way-tabla-ismir21-dataset', subset, "onsets", stroke, index + ".onsets"),
                     md5(os.path.join(dataset_data_path, subset, "onsets", stroke, index + ".onsets")))
 
     with open(FOUR_WAY_TABLA_INDEX_PATH, "w") as fhandle:
