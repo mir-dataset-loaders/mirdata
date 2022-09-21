@@ -228,15 +228,14 @@ def load_onsets(fhandle):
 
 
     beat_position = np.zeros(onsets.shape)
-    confidence = np.ones(onsets.shape)
 
-    return annotations.BeatData(onsets, "s", beat_position, "global_index", confidence, "binary")
+    return annotations.BeatData(onsets, "s", beat_position, "global_index")
 
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The mridangam_stroke dataset
+    The Four-Way Tabla dataset
     """
 
     def __init__(self, data_home=None, version="default"):
