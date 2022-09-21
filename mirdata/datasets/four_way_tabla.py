@@ -185,10 +185,11 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             beat_data=[
-                (self.onsets_b, "onsets_b"), 
+                (self.onsets_b, "onsets_b"),
                 (self.onsets_d, "onsets_d"),
                 (self.onsets_rb, "onsets_rb"),
-                (self.onsets_rt, "onsets_rt")],
+                (self.onsets_rt, "onsets_rt"),
+            ],
             metadata={"train": self.train},
         )
 
@@ -205,6 +206,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         * float - The sample rate of the audio file
     """
     return librosa.load(fhandle, sr=44100, mono=True)
+
 
 @io.coerce_to_string_io
 def load_onsets(fhandle):
@@ -225,7 +227,6 @@ def load_onsets(fhandle):
     if not onsets:
         return None
     onsets = np.array(onsets)
-
 
     beat_position = np.zeros(onsets.shape)
 
@@ -252,5 +253,6 @@ class Dataset(core.Dataset):
 
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
+
     def load_onsets(self, *args, **kwargs):
         return load_onsets(*args, **kwargs)

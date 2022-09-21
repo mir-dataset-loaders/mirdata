@@ -24,7 +24,7 @@ def test_track():
 
     expected_property_types = {
         "onsets_b": annotations.BeatData,
-        "onsets_d": annotations.BeatData,       
+        "onsets_d": annotations.BeatData,
         "onsets_rb": annotations.BeatData,
         "onsets_rt": annotations.BeatData,
         "audio": tuple,
