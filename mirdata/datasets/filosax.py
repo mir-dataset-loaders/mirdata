@@ -264,7 +264,7 @@ class Note:
 
 class Track(core.Track):
     """Filosax track class
-    
+
     Args:
         track_id (str): track id of the track
 
@@ -421,7 +421,7 @@ class MultiTrack(core.MultiTrack):
     @property
     def segments(self):
         """The times of segment changes (values are 'head', 'written solo', 'improvised solo')
-        
+
         Returns:
             * SortedKeyList [Observation(time, duration, value)] - timestamp, duration (seconds), beat
 
@@ -431,7 +431,7 @@ class MultiTrack(core.MultiTrack):
     @property
     def bass_drums(self):
         """The associated bass/drums track
-        
+
         Returns:
             * Track
 
@@ -441,7 +441,7 @@ class MultiTrack(core.MultiTrack):
     @property
     def piano_drums(self):
         """The associated piano/drums track
-        
+
         Returns:
             * Track
 
@@ -451,7 +451,7 @@ class MultiTrack(core.MultiTrack):
     @property
     def sax(self):
         """The associated sax tracks (1-5)
-        
+
         Returns:
             * [Track]
 
