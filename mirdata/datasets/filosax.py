@@ -80,7 +80,7 @@ https://zenodo.org/record/5643843#.YYL7aS2l3UI
 (Lite - 558MB)
 https://zenodo.org/record/5643734#.YYLQ-i2l3UI
 
-Unzip the downloaded file to the folder /Users/<username>/mir_datasets/, and remove the version number from the folder:
+Unzip the downloaded file to the folder /Users/<username>/mir_datasets/ (or wherever data_home has been assigned on initialization), and remove the version number from the folder:
 
 (Full)
 /Users/<username>/mir_datasets/Filosax
@@ -264,10 +264,7 @@ class Note:
 
 class Track(core.Track):
     """Filosax track class
-    # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
-    # -- `scripts/print_track_docstring.py my_dataset`
-    # -- note that you'll first need to have a test track (see "Adding tests to your dataset" below)
-
+    
     Args:
         track_id (str): track id of the track
 
@@ -279,7 +276,7 @@ class Track(core.Track):
         pdf_path (str): path to PDF file
 
     Cached Properties:
-        notes ([Note]): an ordered list of Note objects
+        notes (list, Note): an ordered list of Note objects
 
     """
 
@@ -314,8 +311,6 @@ class Track(core.Track):
         with open(note_path) as fhandle:
             note_dict = json.load(fhandle)["notes"]
         return [Note(n) for n in note_dict]
-        # with open(note_path) as fhandle:
-        #    return load_annotation(fhandle)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -349,9 +344,9 @@ class MultiTrack(core.MultiTrack):
             returns the audio to be mixed
         name (str): the name of the tune
         duration (float): the duration, in seconds
-        beats ([Observation]): the time and beat numbers of bars and chord changes
-        chords ([Observation]): the time of chord changes
-        segments ([Observation]): the time of segment changes
+        beats (list, Observation): the time and beat numbers of bars and chord changes
+        chords (list, Observation): the time of chord changes
+        segments (list, Observation): the time of segment changes
         bass_drums (Track): the associated bass/drums track
         piano_drums (Track): the associated piano/drums track
         sax [Track]: a list of associated sax tracks
@@ -426,6 +421,7 @@ class MultiTrack(core.MultiTrack):
     @property
     def segments(self):
         """The times of segment changes (values are 'head', 'written solo', 'improvised solo')
+        
         Returns:
             * SortedKeyList [Observation(time, duration, value)] - timestamp, duration (seconds), beat
 
@@ -435,6 +431,7 @@ class MultiTrack(core.MultiTrack):
     @property
     def bass_drums(self):
         """The associated bass/drums track
+        
         Returns:
             * Track
 
@@ -444,6 +441,7 @@ class MultiTrack(core.MultiTrack):
     @property
     def piano_drums(self):
         """The associated piano/drums track
+        
         Returns:
             * Track
 
@@ -453,6 +451,7 @@ class MultiTrack(core.MultiTrack):
     @property
     def sax(self):
         """The associated sax tracks (1-5)
+        
         Returns:
             * [Track]
 
@@ -496,7 +495,9 @@ def load_annotation(fhandle: TextIO) -> List[Note]:
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The Filosax dataset"""
+    """
+    The Filosax dataset
+    """
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
