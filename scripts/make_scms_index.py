@@ -6,7 +6,7 @@ import os
 from mirdata.validate import md5
 
 
-SCMS_INDEX_PATH = '/home/genis/mirdata/mirdata/datasets/indexes/scms_index.json'
+SCMS_INDEX_PATH = '../mirdata/datasets/indexes/scms_index_1.0.json'
 
 def make_scms_index(dataset_data_path):
 
@@ -25,7 +25,7 @@ def make_scms_index(dataset_data_path):
                 os.path.join(dataset_folder_name, 'audio', rec.split('/')[-1]), 
                 md5(os.path.join(dataset_data_path, 'audio', audio_filename))
             ),
-            'melody': (
+            'pitch': (
                 os.path.join(dataset_folder_name, 'annotations', 'melody', rec.split('/')[-1].replace('.wav', '.csv')),
                 md5(os.path.join(dataset_data_path, 'annotations', 'melody', audio_filename.replace('.wav', '.csv')))
             ),
