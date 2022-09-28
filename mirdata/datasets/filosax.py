@@ -346,7 +346,7 @@ class MultiTrack(core.MultiTrack):
         segments (list, Observation): the time of segment changes
         bass_drums (Track): the associated bass/drums track
         piano_drums (Track): the associated piano/drums track
-        sax (list, Track)): a list of associated sax tracks
+        sax (list, Track): a list of associated sax tracks
 
     Cached Properties:
         annotation (jams.JAMS): a .jams file containing the annotations
