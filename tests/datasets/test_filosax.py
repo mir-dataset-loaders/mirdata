@@ -214,3 +214,9 @@ def test_metadata():
 
     assert bass_drums.track_id == "multitrack_01_bass_drums"
     assert piano_drums.track_id == "multitrack_01_piano_drums"
+
+    annotation_data = bass_drums.notes
+    assert type(annotation_data) == list
+    assert type(annotation_data[0]) is filosax.Note
+    assert len(annotation_data) == 1
+    assert len(annotation_data[0]) == 0

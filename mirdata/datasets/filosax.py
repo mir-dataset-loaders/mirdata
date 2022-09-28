@@ -144,22 +144,22 @@ class Note:
         tempo (float): the tempo at the start of the note, in beats per minute
         bar_type (int): the section annotation where 0 = head, 1 = written solo, 2 = improvised solo
         is_grace (bool): is the note a grace note, associated with the following note
-        chord_changes {int: str}: the chords, where the key is the rhythmic position of the chord (using crochet_num, relative to s_rhythmic_position) and the value a JAMS chord annotation  (An additional chord is added in the case of a quaver at the end of the bar, followed by a rest on the downbeat)
+        chord_changes (dict): the chords, where the key is the rhythmic position of the chord (using crochet_num, relative to s_rhythmic_position) and the value a JAMS chord annotation  (An additional chord is added in the case of a quaver at the end of the bar, followed by a rest on the downbeat)
         num_chord_changes (int): the number of chords which accompany the note (usually 1, sometimes >1 for long notes)
         main_chord_num (int): usually 0, sometimes 1 in the quaver case described above
-        scale_changes [int]: the degree of the chromatic scale when midi_pitch is compared to chord_root
+        scale_changes (list, int): the degree of the chromatic scale when midi_pitch is compared to chord_root
         loudness_max_val (float): the value (db) of the maximum loudness
         loudness_max_time (float): the time (seconds) of the maximum loudness (compared to a_start_time)
-        loudness_curve [float]: the inter-note loudness values, 1 per millisecond
+        loudness_curve (list, float): the inter-note loudness values, 1 per millisecond
         pitch_average_val (float): the value (midi) of the average pitch and
         pitch_average_time (float): the time (seconds) of the average pitch (compared to a_start_time)
-        pitch_curve [float]: the inter-note pitch values, 1 per millisecond
+        pitch_curve (list, float): the inter-note pitch values, 1 per millisecond
         pitch_vib_freq (float): the vibrato frequency (Hz), 0.0 if no vibrato detected
         pitch_vib_ext (float): the vibrato extent (midi), 0.0 if no vibrato detected
         spec_cent (float): the spectral centroid value at the time of the maximum loudness
         spec_flux (float): the spectral flux value at the time of the maximum loudness
-        spec_cent_curve [float]: the inter-note spectral centroid values, 1 per millisecond
-        spec_flux_curve [float]: the inter-note spectral flux values, 1 per millisecond
+        spec_cent_curve (list, float): the inter-note spectral centroid values, 1 per millisecond
+        spec_flux_curve (list, float): the inter-note spectral flux values, 1 per millisecond
         seq_len (int): the length of the phrase in which the note falls (filosax_full only, -1 otherwise)
         seq_num (int): the note position in the phrase (filosax_full only, -1 otherwise)
 
@@ -301,16 +301,13 @@ class Track(core.Track):
         """The track's note list - only for Sax files
 
         Returns:
-            * [Note] - ordered list of Note objects
+            * [Note] - ordered list of Note objects (empty if Backing file)
 
         """
-        note_path = "" if self.annotation_path == None else self.annotation_path
-        if note_path == "":
-            print("Note data only available for Sax tracks.")
+        if not self.annotation_path:
             return [Note({})]
-        with open(note_path) as fhandle:
-            note_dict = json.load(fhandle)["notes"]
-        return [Note(n) for n in note_dict]
+        else:
+            return load_annotation(self.annotation_path)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -349,10 +346,10 @@ class MultiTrack(core.MultiTrack):
         segments (list, Observation): the time of segment changes
         bass_drums (Track): the associated bass/drums track
         piano_drums (Track): the associated piano/drums track
-        sax [Track]: a list of associated sax tracks
+        sax (list, Track)): a list of associated sax tracks
 
     Cached Properties:
-        annotation (.jams): a .jams file containing the annotations
+        annotation (jams.JAMS): a .jams file containing the annotations
 
     """
 
@@ -403,7 +400,7 @@ class MultiTrack(core.MultiTrack):
         """The times of downbeats and chord changes
 
         Returns:
-            * SortedKeyList [Observation(time, duration, value)] - timestamp, duration (seconds), beat
+            * (SortedKeyList, Observation) - timestamp, duration (seconds), beat
 
         """
         return self.annotation.search(namespace="beat")[0]["data"]
@@ -413,7 +410,7 @@ class MultiTrack(core.MultiTrack):
         """The times and values of chord changes
 
         Returns:
-            * SortedKeyList [Observation(time, duration, value)] - timestamp, duration (seconds), chord symbol
+            * (SortedKeyList, Observation) - timestamp, duration (seconds), chord symbol
 
         """
         return self.annotation.search(namespace="chord")[0]["data"]
@@ -423,7 +420,7 @@ class MultiTrack(core.MultiTrack):
         """The times of segment changes (values are 'head', 'written solo', 'improvised solo')
 
         Returns:
-            * SortedKeyList [Observation(time, duration, value)] - timestamp, duration (seconds), beat
+            * (SortedKeyList, Observation) - timestamp, duration (seconds), beat
 
         """
         return self.annotation.search(namespace="segment_open")[0]["data"]
@@ -453,7 +450,7 @@ class MultiTrack(core.MultiTrack):
         """The associated sax tracks (1-5)
 
         Returns:
-            * [Track]
+            * (list, Track)
 
         """
         return [self.tracks["%s_sax_%d" % (self.mtrack_id, n)] for n in [1, 2, 3, 4, 5]]
@@ -486,7 +483,7 @@ def load_annotation(fhandle: TextIO) -> List[Note]:
         fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        * List[Note]: an ordered list of Note objects
+        * (list, Note): an ordered list of Note objects
 
     """
     note_dict = json.load(fhandle)["notes"]
