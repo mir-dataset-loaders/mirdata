@@ -219,4 +219,4 @@ def test_metadata():
     assert type(annotation_data) == list
     assert type(annotation_data[0]) is filosax.Note
     assert len(annotation_data) == 1
-    assert len(annotation_data[0]) == 0
+    assert annotation_data[0].a_start_time == 0.0
