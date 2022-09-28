@@ -3,7 +3,20 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    TODO
+    This dataset contains time aligned vocal melody and activations for Carnatic Music recordings, extracted
+    from the Saraga Carnatic dataset. The recordings have passed through a Carnatic-aware Analysis/Synthesis framework
+    to convert automatically extracted pitch tracks into ground-truth annotations. This dataset is not meant to be listened to,
+    but to be used as training and evaluation data for the vocal pitch extraction research of Indian Art Music.
+
+    The dataset contains a total of 2460 tracks, which generally have a length of 30 seconds, in some cases a bit less.
+    All the tracks have vocals at some point.
+
+    The files of this dataset are shared with the following license:
+    Creative Commons Attribution Non Commercial Share Alike 4.0 International
+
+    Dataset compiled by: TBA
+
+    For more information about Saraga Carnatic please refer to https://mtg.github.io/saraga/.
 
 """
 
