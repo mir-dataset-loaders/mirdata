@@ -44,7 +44,7 @@ REMOTES = {
         filename="Saraga-Carnatic-Melody-Synth.zip",
         url="https://zenodo.org/record/5553925/files/Saraga-Carnatic-Melody-Synth.zip?download=1",
         checksum="08322351d024f206e21abca962e495ab",
-    ),
+    )
 }
 
 DOWNLOAD_INFO = None
@@ -78,21 +78,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_path = self.get_path("audio")
         self.pitch_path = self.get_path("pitch")
@@ -244,13 +231,17 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _artists_to_track_mapping(self):
-        mapping_path = os.path.join(self.data_home, "SCMS/artists_to_track_mapping.json")
+        mapping_path = os.path.join(
+            self.data_home, "SCMS/artists_to_track_mapping.json"
+        )
 
         try:
             with open(mapping_path, "r") as fhandle:
                 mapping = json.load(fhandle)
         except FileNotFoundError:
-            raise FileNotFoundError("Artists to track mapping not found. Did you run .download()?")
+            raise FileNotFoundError(
+                "Artists to track mapping not found. Did you run .download()?"
+            )
 
         return mapping
 
@@ -277,7 +268,7 @@ class Dataset(core.Dataset):
                     "gender": info["gender"],
                     "train": True if subset == "train" else False,
                 }
-        
+
         metadata = {}
         for idx in idxs_and_artists:
             metadata[idx[0]] = {

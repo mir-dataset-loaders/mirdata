@@ -77,7 +77,10 @@ def test_load_pitch():
     assert np.array_equal(
         pitch_data.times, np.array([0.0, 0.0029024943310657597, 0.005804988662131519])
     )
-    assert np.array_equal(pitch_data.frequencies, np.array([205.34705622484543, 205.5702056921407, 205.5604865955533]))
+    assert np.array_equal(
+        pitch_data.frequencies,
+        np.array([205.34705622484543, 205.5702056921407, 205.5604865955533]),
+    )
     assert np.array_equal(pitch_data.voicing, np.array([1.0, 1.0, 1.0]))
 
 

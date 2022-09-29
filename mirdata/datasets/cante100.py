@@ -173,21 +173,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.spectrogram_path = self.get_path("spectrum")
         self.f0_path = self.get_path("f0")
@@ -424,30 +411,20 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @deprecated(
-        reason="Use mirdata.datasets.cante100.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.cante100.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.cante100.load_spectrogram",
-        version="0.3.4",
+        reason="Use mirdata.datasets.cante100.load_spectrogram", version="0.3.4"
     )
     def load_spectrogram(self, *args, **kwargs):
         return load_spectrogram(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.cante100.load_melody",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.cante100.load_melody", version="0.3.4")
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.cante100.load_notes",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.cante100.load_notes", version="0.3.4")
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

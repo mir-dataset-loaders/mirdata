@@ -88,8 +88,7 @@ def test_download(httpserver):
 
     httpserver.serve_content(
         open(
-            "tests/resources/download/acousticbrainz_genre_index.json.zip",
-            "rb",
+            "tests/resources/download/acousticbrainz_genre_index.json.zip", "rb"
         ).read()
     )
 

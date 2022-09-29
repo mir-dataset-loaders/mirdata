@@ -131,29 +131,11 @@ def test_load_phrases():
     # Check values
     assert np.array_equal(
         parsed_phrases.intervals[:, 0],
-        np.array(
-            [
-                1.06,
-                28.68,
-                77.65,
-                120.04,
-                141.44,
-                193.5,
-            ]
-        ),
+        np.array([1.06, 28.68, 77.65, 120.04, 141.44, 193.5]),
     )
     assert np.array_equal(
         parsed_phrases.intervals[:, 1],
-        np.array(
-            [
-                17.92,
-                49.89,
-                110.08,
-                132.43,
-                161.62,
-                211.16,
-            ]
-        ),
+        np.array([17.92, 49.89, 110.08, 132.43, 161.62, 211.16]),
     )
     assert np.array_equal(
         parsed_phrases.lyrics,
@@ -177,29 +159,11 @@ def test_load_phrases():
     # Check values
     assert np.array_equal(
         parsed_phrases_char.intervals[:, 0],
-        np.array(
-            [
-                1.06,
-                28.68,
-                77.65,
-                120.04,
-                141.44,
-                193.5,
-            ]
-        ),
+        np.array([1.06, 28.68, 77.65, 120.04, 141.44, 193.5]),
     )
     assert np.array_equal(
         parsed_phrases_char.intervals[:, 1],
-        np.array(
-            [
-                17.92,
-                49.89,
-                110.08,
-                132.43,
-                161.62,
-                211.16,
-            ]
-        ),
+        np.array([17.92, 49.89, 110.08, 132.43, 161.62, 211.16]),
     )
     assert np.array_equal(
         parsed_phrases_char.lyrics,
@@ -234,12 +198,10 @@ def test_load_phoneme():
 
     # Check values
     assert np.array_equal(
-        parsed_phonemes.intervals[:, 0],
-        np.array([0.00, 1.06, 1.16, 2.53, 2.65, 2.94]),
+        parsed_phonemes.intervals[:, 0], np.array([0.00, 1.06, 1.16, 2.53, 2.65, 2.94])
     )
     assert np.array_equal(
-        parsed_phonemes.intervals[:, 1],
-        np.array([1.06, 1.16, 2.53, 2.65, 2.94, 3.05]),
+        parsed_phonemes.intervals[:, 1], np.array([1.06, 1.16, 2.53, 2.65, 2.94, 3.05])
     )
     assert parsed_phonemes.lyrics == ["", "@", "r\\'", "?", "AU^", "9"]
 
@@ -262,12 +224,10 @@ def test_load_syllable():
 
     # Check values
     assert np.array_equal(
-        parsed_syllable.intervals[:, 0],
-        np.array([0.00, 1.06, 2.65, 2.94]),
+        parsed_syllable.intervals[:, 0], np.array([0.00, 1.06, 2.65, 2.94])
     )
     assert np.array_equal(
-        parsed_syllable.intervals[:, 1],
-        np.array([1.06, 2.65, 2.94, 3.76]),
+        parsed_syllable.intervals[:, 1], np.array([1.06, 2.65, 2.94, 3.76])
     )
     assert np.array_equal(parsed_syllable.lyrics, np.array(["", "tan", "", "yang"]))
 
