@@ -91,6 +91,14 @@ da_tacos
    :inherited-members:
 
 
+filosax
+^^^^^^^
+
+.. automodule:: mirdata.datasets.filosax
+   :members:
+   :inherited-members:
+
+
 freesound_one_shot_percussive_sounds
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
