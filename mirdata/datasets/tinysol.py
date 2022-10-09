@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """TinySOL Dataset Loader.
 
 .. admonition:: Dataset Info
@@ -45,17 +44,15 @@
 """
 
 import csv
-import logging
 import os
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import core, download_utils, io, jams_utils
 
 BIBTEX = """@inproceedings{cella2020preprint,
   author={Cella, Carmine Emanuele and Ghisi, Daniele and Lostanlen, Vincent and
@@ -65,6 +62,13 @@ BIBTEX = """@inproceedings{cella2020preprint,
   bootktitle={Under review},
   year={2020}
 }"""
+
+INDEXES = {
+    "default": "6.0",
+    "test": "6.0",
+    "6.0": core.Index(filename="tinysol_index_6.0.json"),
+}
+
 REMOTES = {
     "audio": download_utils.RemoteFileMetadata(
         filename="TinySOL.tar.gz",
@@ -83,44 +87,6 @@ REMOTES = {
 STRING_ROMAN_NUMERALS = {1: "I", 2: "II", 3: "III", 4: "IV"}
 
 LICENSE_INFO = "Creative Commons Attribution 4.0 International Public License."
-
-
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "annotation", "TinySOL_metadata.csv")
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata_index = {}
-    with open(metadata_path, "r") as fhandle:
-        csv_reader = csv.reader(fhandle, delimiter=",")
-        next(csv_reader)
-        for row in csv_reader:
-            key = os.path.splitext(os.path.split(row[0])[1])[0]
-            metadata_index[key] = {
-                "Fold": int(row[1]),
-                "Family": row[2],
-                "Instrument (abbr.)": row[3],
-                "Instrument (in full)": row[4],
-                "Technique (abbr.)": row[5],
-                "Technique (in full)": row[6],
-                "Pitch": row[7],
-                "Pitch ID": int(row[8]),
-                "Dynamics": row[9],
-                "Dynamics ID": int(row[10]),
-                "Instance ID": int(row[11]),
-                "Resampled": (row[13] == "TRUE"),
-            }
-            if len(row[12]) > 0:
-                metadata_index[key]["String ID"] = int(float(row[12]))
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = core.LargeData("tinysol_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -148,51 +114,75 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in TinySOL".format(track_id))
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
+        self.audio_path = self.get_path("audio")
 
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    @property
+    def split(self):
+        return self._track_metadata.get("Fold")
 
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "Family": None,
-                "Instrument (abbr.)": None,
-                "Instrument (in full)": None,
-                "Technique (abbr.)": None,
-                "Technique (in full)": None,
-                "Pitch": None,
-                "Pitch ID": None,
-                "Dynamics": None,
-                "Dynamics ID": None,
-                "Instance ID": None,
-                "String ID": None,
-                "Resampled": None,
-            }
+    @property
+    def family(self):
+        return self._track_metadata.get("Family")
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+    @property
+    def instrument_abbr(self):
+        return self._track_metadata.get("Instrument (abbr.)")
 
-        self.family = self._track_metadata["Family"]
-        self.instrument_abbr = self._track_metadata["Instrument (abbr.)"]
-        self.instrument_full = self._track_metadata["Instrument (in full)"]
-        self.technique_abbr = self._track_metadata["Technique (abbr.)"]
-        self.technique_full = self._track_metadata["Technique (in full)"]
-        self.pitch = self._track_metadata["Pitch"]
-        self.pitch_id = self._track_metadata["Pitch ID"]
-        self.dynamics = self._track_metadata["Dynamics"]
-        self.dynamics_id = self._track_metadata["Dynamics ID"]
-        self.instance_id = self._track_metadata["Instance ID"]
-        if "String ID" in self._track_metadata:
-            self.string_id = self._track_metadata["String ID"]
-        else:
-            self.string_id = None
-        self.is_resampled = self._track_metadata["Resampled"]
+    @property
+    def instrument_full(self):
+        return self._track_metadata.get("Instrument (in full)")
+
+    @property
+    def technique_abbr(self):
+        return self._track_metadata.get("Technique (abbr.)")
+
+    @property
+    def technique_full(self):
+        return self._track_metadata.get("Technique (in full)")
+
+    @property
+    def pitch(self):
+        return self._track_metadata.get("Pitch")
+
+    @property
+    def pitch_id(self):
+        return self._track_metadata.get("Pitch ID")
+
+    @property
+    def dynamics(self):
+        return self._track_metadata.get("Dynamics")
+
+    @property
+    def dynamics_id(self):
+        return self._track_metadata.get("Dynamics ID")
+
+    @property
+    def instance_id(self):
+        return self._track_metadata.get("Instance ID")
+
+    @property
+    def string_id(self):
+        return self._track_metadata.get("String ID")
+
+    @property
+    def is_resampled(self):
+        return self._track_metadata.get("Resampled")
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -222,7 +212,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a TinySOL audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -238,17 +228,55 @@ class Dataset(core.Dataset):
     The tinysol dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="tinysol",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(
+            self.data_home, "annotation", "TinySOL_metadata.csv"
+        )
+
+        metadata_index = {}
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.reader(fhandle, delimiter=",")
+                next(csv_reader)
+                for row in csv_reader:
+                    key = os.path.splitext(os.path.split(row[0])[1])[0]
+                    metadata_index[key] = {
+                        "Fold": int(row[1]),
+                        "Family": row[2],
+                        "Instrument (abbr.)": row[3],
+                        "Instrument (in full)": row[4],
+                        "Technique (abbr.)": row[5],
+                        "Technique (in full)": row[6],
+                        "Pitch": row[7],
+                        "Pitch ID": int(row[8]),
+                        "Dynamics": row[9],
+                        "Dynamics ID": int(row[10]),
+                        "Instance ID": int(row[11]),
+                        "Resampled": (row[13] == "TRUE"),
+                    }
+                    if len(row[12]) > 0:
+                        metadata_index[key]["String ID"] = int(float(row[12]))
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        return metadata_index
+
+    @deprecated(
+        reason="Use mirdata.datasets.tinysol.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
-"""Utilities for converting mirdata Annotation objects to jams format.
+"""Utilities for converting mirdata Annotation classes to jams format.
 """
-import os
+import logging
 
 import jams
 import librosa
+from smart_open import open, parse_uri
 
 from mirdata import annotations
 
@@ -34,7 +34,7 @@ def jams_converter(
             the audio file will be read to compute the duration. If None,
             'duration' must be a field in the metadata dictionary, or the
             resulting jam object will not validate.
-        spectrum_cante100_path (str or None):
+        spectrogram_path (str or None):
             A path to the corresponding spectrum file, or None.
         beat_data (list or None):
             A list of tuples of (annotations.BeatData, str), where str describes
@@ -80,10 +80,20 @@ def jams_converter(
     # duration
     duration = None
     if audio_path is not None:
-        if os.path.exists(audio_path):
+        file_uri = parse_uri(audio_path)
+        if file_uri.scheme != "file" and audio_path.endswith(".mp3"):
+            raise NotImplementedError(
+                "mirdata does not currently support conversion of remote mp3 files to jams format"
+            )
+
+        try:
+            with open(audio_path, "rb") as fhandle:
+                duration = librosa.get_duration(filename=fhandle)
+        # for local mp3s only
+        except TypeError:
             duration = librosa.get_duration(filename=audio_path)
-        else:
-            raise OSError(
+        except FileNotFoundError:
+            raise FileNotFoundError(
                 "jams conversion failed because the audio file "
                 + "for this track cannot be found, and it is required "
                 + "to compute duration."
@@ -101,8 +111,8 @@ def jams_converter(
                 and metadata[key] != duration
                 and audio_path is not None
             ):
-                print(
-                    "Warning: duration provided in metadata does not"
+                logging.warning(
+                    "Duration provided in metadata does not"
                     + "match the duration computed from the audio file."
                     + "Using the duration provided by the metadata."
                 )
@@ -291,8 +301,12 @@ def beats_to_jams(beat_data, description=None):
     if beat_data is not None:
         if not isinstance(beat_data, annotations.BeatData):
             raise TypeError("Type should be BeatData.")
-        for t, p in zip(beat_data.times, beat_data.positions):
-            jannot_beat.append(time=t, duration=0.0, value=p)
+        if beat_data.positions is not None:
+            for t, p in zip(beat_data.times, beat_data.positions):
+                jannot_beat.append(time=t, duration=0.0, value=p)
+        else:
+            for t in beat_data.times:
+                jannot_beat.append(time=t, duration=0.0, value=None)
     if description is not None:
         jannot_beat.sandbox = jams.Sandbox(name=description)
     return jannot_beat
@@ -366,7 +380,7 @@ def notes_to_jams(note_data, description):
         if not isinstance(note_data, annotations.NoteData):
             raise TypeError("Type should be NoteData.")
         for beg, end, n in zip(
-            note_data.intervals[:, 0], note_data.intervals[:, 1], note_data.notes
+            note_data.intervals[:, 0], note_data.intervals[:, 1], note_data.pitches
         ):
             jannot_note.append(time=beg, duration=end - beg, value=n)
     if description is not None:
@@ -495,11 +509,17 @@ def f0s_to_jams(f0_data, description=None):
     if f0_data is not None:
         if not isinstance(f0_data, annotations.F0Data):
             raise TypeError("Type should be F0Data.")
-        for t, f, c in zip(f0_data.times, f0_data.frequencies, f0_data.confidence):
+        if f0_data._confidence is None:
+            conf = [None for t in f0_data.times]
+        else:
+            conf = f0_data._confidence
+        for t, f, v, c in zip(
+            f0_data.times, f0_data.frequencies, f0_data.voicing, conf
+        ):
             jannot_f0.append(
                 time=t,
                 duration=0.0,
-                value={"index": 0, "frequency": f, "voiced": f > 0},
+                value={"index": 0, "frequency": f, "voiced": v},
                 confidence=c,
             )
     if description is not None:

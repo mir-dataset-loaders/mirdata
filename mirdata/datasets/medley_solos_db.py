@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Medley-solos-DB Dataset Loader.
 
 .. admonition:: Dataset Info
@@ -28,17 +27,15 @@
 """
 
 import csv
-import logging
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import core, download_utils, io, jams_utils
 
 BIBTEX = """@inproceedings{lostanlen2019ismir,
     title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
@@ -46,6 +43,13 @@ BIBTEX = """@inproceedings{lostanlen2019ismir,
     booktitle={International Society of Music Information Retrieval (ISMIR)},
     year={2016}
 }"""
+
+INDEXES = {
+    "default": "1.2",
+    "test": "1.2",
+    "1.2": core.Index(filename="medley_solos_db_index_1.2.json"),
+}
+
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="Medley-solos-DB_metadata.csv",
@@ -64,36 +68,6 @@ REMOTES = {
 LICENSE_INFO = "Creative Commons Attribution 4.0 International."
 
 
-def _load_metadata(data_home):
-    metadata_path = os.path.join(
-        data_home, "annotation", "Medley-solos-DB_metadata.csv"
-    )
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata_index = {}
-    with open(metadata_path, "r") as fhandle:
-        csv_reader = csv.reader(fhandle, delimiter=",")
-        next(csv_reader)
-        for row in csv_reader:
-            subset, instrument_str, instrument_id, song_id, track_id = row
-            metadata_index[str(track_id)] = {
-                "subset": str(subset),
-                "instrument": str(instrument_str),
-                "instrument_id": int(instrument_id),
-                "song_id": int(song_id),
-            }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = core.LargeData("medley_solos_db_index.json", _load_metadata)
-
-
 class Track(core.Track):
     """medley_solos_db Track class
 
@@ -110,34 +84,39 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in Medley-solos-DB".format(track_id)
-            )
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
+        self.audio_path = self.get_path("audio")
 
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    @property
+    def instrument(self):
+        return self._track_metadata.get("instrument")
 
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "instrument": None,
-                "instrument_id": None,
-                "song_id": None,
-                "subset": None,
-                "track_id": None,
-            }
+    @property
+    def instrument_id(self):
+        return self._track_metadata.get("instrument_id")
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.instrument = self._track_metadata["instrument"]
-        self.instrument_id = self._track_metadata["instrument_id"]
-        self.song_id = self._track_metadata["song_id"]
-        self.subset = self._track_metadata["subset"]
+    @property
+    def song_id(self):
+        return self._track_metadata.get("song_id")
+
+    @property
+    def subset(self):
+        return self._track_metadata.get("subset")
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -167,7 +146,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Medley Solos DB audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -183,17 +162,43 @@ class Dataset(core.Dataset):
     The medley_solos_db dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="medley_solos_db",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(
+            self.data_home, "annotation", "Medley-solos-DB_metadata.csv"
+        )
+
+        metadata_index = {}
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.DictReader(fhandle, delimiter=",")
+                for row in csv_reader:
+                    metadata_index[str(row["uuid4"])] = {
+                        "subset": row["subset"],
+                        "instrument": row["instrument"],
+                        "instrument_id": int(row["instrument_id"]),
+                        "song_id": int(row["song_id"]),
+                    }
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        return metadata_index
+
+    @deprecated(
+        reason="Use mirdata.datasets.medley_solos_db.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

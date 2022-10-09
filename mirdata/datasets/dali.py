@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """DALI Dataset Loader
 
 .. admonition:: Dataset Info
@@ -20,10 +19,12 @@ import gzip
 import logging
 import os
 import pickle
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -52,6 +53,12 @@ BIBTEX = """@inproceedings{Meseguer-Brocal_2018,
     Year = {2018}
 }"""
 
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="dali_index_1.0.json"),
+}
+
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
         filename="dali_metadata.json",
@@ -78,21 +85,6 @@ DOWNLOAD_INFO = """
 LICENSE_INFO = (
     "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License."
 )
-
-
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, os.path.join("dali_metadata.json"))
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-    with open(metadata_path, "r") as fhandle:
-        metadata_index = json.load(fhandle)
-
-    metadata_index["data_home"] = data_home
-    return metadata_index
-
-
-DATA = core.LargeData("dali_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -126,54 +118,73 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in DALI".format(track_id))
-
-        self.track_id = track_id
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-        self.annotation_path = os.path.join(
-            self._data_home, self._track_paths["annot"][0]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
 
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-            self._track_metadata["album"] = metadata[track_id]["metadata"]["album"]
-            self._track_metadata["release_date"] = metadata[track_id]["metadata"][
-                "release_date"
-            ]
-            self._track_metadata["language"] = metadata[track_id]["metadata"][
-                "language"
-            ]
-            self.audio_url = self._track_metadata["audio"]["url"]
-            self.url_working = self._track_metadata["audio"]["working"]
-            self.ground_truth = self._track_metadata["ground-truth"]
-            self.artist = self._track_metadata["artist"]
-            self.title = self._track_metadata["title"]
-            self.dataset_version = self._track_metadata["dataset_version"]
-            self.scores_ncc = self._track_metadata["scores"]["NCC"]
-            self.scores_manual = self._track_metadata["scores"]["manual"]
-            self.album = self._track_metadata["album"]
-            self.release_date = self._track_metadata["release_date"]
-            self.language = self._track_metadata["language"]
-            self.audio_path = os.path.join(
-                self._data_home, self._track_paths["audio"][0]
-            )
-        else:
-            self.audio_url = None
-            self.url_working = None
-            self.ground_truth = None
-            self.artist = None
-            self.title = None
-            self.dataset_version = None
-            self.scores_ncc = None
-            self.scores_manual = None
-            self.album = None
-            self.release_date = None
-            self.language = None
-            self.audio_path = None
+        self.annotation_path = self.get_path("annot")
+
+        self.audio_path = self.get_path("audio")
+
+    @property
+    def audio_url(self):
+        return self._track_metadata.get("audio", {}).get("url")
+
+    @property
+    def url_working(self):
+        return self._track_metadata.get("audio", {}).get("working")
+
+    @property
+    def ground_truth(self):
+        return self._track_metadata.get("ground-truth")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def dataset_version(self):
+        return self._track_metadata.get("dataset_version")
+
+    @property
+    def scores_ncc(self):
+        return self._track_metadata.get("scores", {}).get("NCC")
+
+    @property
+    def scores_manual(self):
+        return self._track_metadata.get("scores", {}).get("manual")
+
+    @property
+    def album(self):
+        return self._track_metadata.get("metadata", {}).get("album")
+
+    @property
+    def release_date(self):
+        return self._track_metadata.get("metadata", {}).get("release_date")
+
+    @property
+    def genres(self):
+        return self._track_metadata.get("metadata", {}).get("genres")
+
+    @property
+    def language(self):
+        return self._track_metadata.get("metadata", {}).get("language")
 
     @core.cached_property
     def notes(self) -> annotations.NoteData:
@@ -230,7 +241,7 @@ def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
     """Load a DALI audio file.
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to an audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -267,12 +278,11 @@ def load_annotations_granularity(annotations_path, granularity):
         ends.append(round(annot["time"][1], 3))
         text.append(annot["text"])
     if granularity == "notes":
-
         annotation = annotations.NoteData(
-            np.array([begs, ends]).T, np.array(notes), None
+            np.array([begs, ends]).T, "s", np.array(notes), "hz"
         )
     else:
-        annotation = annotations.LyricData(np.array([begs, ends]).T, text, None)
+        annotation = annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
     return annotation
 
 
@@ -286,12 +296,13 @@ def load_annotations_class(annotations_path):
         DALI.annotations: DALI annotations object
 
     """
-    if not os.path.exists(annotations_path):
-        raise IOError("annotations_path {} does not exist".format(annotations_path))
-
     try:
         with gzip.open(annotations_path, "rb") as f:
             output = pickle.load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            "annotations_path {} does not exist".format(annotations_path)
+        )
     except Exception as e:
         with gzip.open(annotations_path, "r") as f:
             output = pickle.load(f)
@@ -304,26 +315,48 @@ class Dataset(core.Dataset):
     The dali dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="dali",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, os.path.join("dali_metadata.json"))
+
+        try:
+            with open(metadata_path, "r") as fhandle:
+                metadata_index = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        return metadata_index
+
+    @deprecated(
+        reason="Use mirdata.datasets.dali.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_annotations_granularity)
+    @deprecated(
+        reason="Use mirdata.datasets.dali.load_annotations_granularity",
+        version="0.3.4",
+    )
     def load_annotations_granularity(self, *args, **kwargs):
         return load_annotations_granularity(*args, **kwargs)
 
-    @core.copy_docs(load_annotations_class)
+    @deprecated(
+        reason="Use mirdata.datasets.dali.load_annotations_class",
+        version="0.3.4",
+    )
     def load_annotations_class(self, *args, **kwargs):
         return load_annotations_class(*args, **kwargs)

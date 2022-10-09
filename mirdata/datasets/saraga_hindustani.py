@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Saraga Dataset Loader
 
 .. admonition:: Dataset Info
@@ -30,18 +29,16 @@
     https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
 
 """
-
-import numpy as np
 import os
-import json
-import logging
-import librosa
 import csv
+import json
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
+from deprecated.sphinx import deprecated
+import librosa
+import numpy as np
+from smart_open import open
+
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -59,34 +56,23 @@ BIBTEX = """
 }
 """
 
+INDEXES = {
+    "default": "1.5",
+    "test": "1.5",
+    "1.5": core.Index(filename="saraga_hindustani_index_1.5.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="saraga1.5_hindustani.zip",
         url="https://zenodo.org/record/4301737/files/saraga1.5_hindustani.zip?download=1",
         checksum="ea9ed2885ea37a1b10e42f60cf299702",
-        destination_dir=None,
     )
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
-
-
-def _load_metadata(metadata_path):
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    with open(metadata_path) as f:
-        metadata = json.load(f)
-        data_home = metadata_path.split("/" + metadata_path.split("/")[-4])[0]
-        metadata["data_home"] = data_home
-
-        return metadata
-
-
-DATA = core.LargeData("saraga_hindustani_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -98,16 +84,14 @@ class Track(core.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        title (str): Title of the piece in the track
-        mbid (str): MusicBrainz ID of the track
-        album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
-        artists (list, dicts): list of dicts containing information of the featuring artists in the track
-        raags (list, dict): list of dicts containing information about the raags present in the track
-        forms (list, dict): list of dicts containing information about the forms present in the track
-        release (list, dicts): list of dicts containing information of the release where the track is found
-        works (list, dicts): list of dicts containing the work present in the piece, and its mbid
-        taals (list, dicts): list of dicts containing the taals present in the track and its uuid
-        layas (list, dicts): list of dicts containing the layas present in the track and its uuid
+        audio_path (str): path to audio file
+        ctonic_path (str): path to ctonic annotation file
+        pitch_path (str): path to pitch annotation file
+        tempo_path (str): path to tempo annotation file
+        sama_path (str): path to sama annotation file
+        sections_path (str): path to sections annotation file
+        phrases_path (str): path to phrases annotation file
+        metadata_path (str): path to metadata annotation file
 
     Cached Properties:
         tonic (float): tonic annotation
@@ -116,103 +100,48 @@ class Track(core.Track):
         sama (BeatData): Sama section annotations
         sections (SectionData): track section annotations
         phrases (EventData): phrase annotations
+        metadata (dict): track metadata with the following fields
+
+            - title (str): Title of the piece in the track
+            - mbid (str): MusicBrainz ID of the track
+            - album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
+            - artists (list, dicts): list of dicts containing information of the featuring artists in the track
+            - raags (list, dict): list of dicts containing information about the raags present in the track
+            - forms (list, dict): list of dicts containing information about the forms present in the track
+            - release (list, dicts): list of dicts containing information of the release where the track is found
+            - works (list, dicts): list of dicts containing the work present in the piece, and its mbid
+            - taals (list, dicts): list of dicts containing the taals present in the track and its uuid
+            - layas (list, dicts): list of dicts containing the layas present in the track and its uuid
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in Saraga Hindustani".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         # Audio path
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
         # Annotation paths
-        self.ctonic_path = core.none_path_join(
-            [self._data_home, self._track_paths["ctonic"][0]]
-        )
-        self.pitch_path = core.none_path_join(
-            [self._data_home, self._track_paths["pitch"][0]]
-        )
-        self.tempo_path = core.none_path_join(
-            [self._data_home, self._track_paths["tempo"][0]]
-        )
-        self.sama_path = core.none_path_join(
-            [self._data_home, self._track_paths["sama"][0]]
-        )
-        self.sections_path = core.none_path_join(
-            [self._data_home, self._track_paths["sections"][0]]
-        )
-        self.phrases_path = core.none_path_join(
-            [self._data_home, self._track_paths["phrases"][0]]
-        )
-        self.metadata_path = core.none_path_join(
-            [self._data_home, self._track_paths["metadata"][0]]
-        )
-
-        # Track attributes
-        metadata = DATA.metadata(self.metadata_path)
-        if (
-            metadata is not None
-            and metadata["title"].replace(" ", "_") in self.track_id
-        ):
-            self._track_metadata = metadata
-        else:
-            # in case the metadata is missing
-            self._track_metadata = {
-                "title": None,
-                "raags": None,
-                "length": None,
-                "album_artists": None,
-                "forms": None,
-                "mbid": None,
-                "artists": None,
-                "release": None,
-                "works": None,
-                "taals": None,
-                "layas": None,
-            }
-
-        self.title = self._track_metadata["title"]
-        self.artists = self._track_metadata["artists"]
-        self.album_artists = self._track_metadata["album_artists"]
-        self.mbid = self._track_metadata["mbid"]
-        self.raags = (
-            self._track_metadata["raags"]
-            if "raags" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.forms = (
-            self._track_metadata["forms"]
-            if "forms" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.release = (
-            self._track_metadata["release"]
-            if "release" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.works = (
-            self._track_metadata["works"]
-            if "works" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.taals = (
-            self._track_metadata["taals"]
-            if "taals" in self._track_metadata.keys() is not None
-            else None
-        )
-        self.layas = (
-            self._track_metadata["layas"]
-            if "layas" in self._track_metadata.keys() is not None
-            else None
-        )
+        self.ctonic_path = self.get_path("ctonic")
+        self.pitch_path = self.get_path("pitch")
+        self.tempo_path = self.get_path("tempo")
+        self.sama_path = self.get_path("sama")
+        self.sections_path = self.get_path("sections")
+        self.phrases_path = self.get_path("phrases")
+        self.metadata_path = self.get_path("metadata")
 
     @core.cached_property
     def tonic(self):
@@ -237,6 +166,10 @@ class Track(core.Track):
     @core.cached_property
     def phrases(self):
         return load_phrases(self.phrases_path)
+
+    @core.cached_property
+    def metadata(self):
+        return load_metadata(self.metadata_path)
 
     @property
     def audio(self):
@@ -265,11 +198,12 @@ class Track(core.Track):
             metadata={
                 "tempo": self.tempo,
                 "tonic": self.tonic,
-                "metadata": self._track_metadata,
+                "metadata": self.metadata,
             },
         )
 
 
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(audio_path):
     """Load a Saraga Hindustani audio file.
 
@@ -283,76 +217,61 @@ def load_audio(audio_path):
     """
     if audio_path is None:
         return None
-
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
     return librosa.load(audio_path, sr=44100, mono=False)
 
 
-def load_tonic(tonic_path):
+@io.coerce_to_string_io
+def load_tonic(fhandle):
     """Load track absolute tonic
 
     Args:
-        tonic_path (str): Local path where the tonic path is stored.
+        fhandle (str or file-like): Local path where the tonic path is stored.
             If `None`, returns None.
 
     Returns:
         int: Tonic annotation in Hz
 
     """
-    if tonic_path is None:
-        return None
-
-    if not os.path.exists(tonic_path):
-        raise IOError("tonic_path {} does not exist".format(tonic_path))
-
-    with open(tonic_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            tonic = float(line[0])
-
+    reader = csv.reader(fhandle, delimiter="\t")
+    tonic = float(next(reader)[0])
     return tonic
 
 
-def load_pitch(pitch_path):
+@io.coerce_to_string_io
+def load_pitch(fhandle):
     """Load automatic extracted pitch or melody
 
     Args:
-        pitch path (str): Local path where the pitch annotation is stored.
+        fhandle (str or file-like): Local path where the pitch annotation is stored.
             If `None`, returns None.
 
     Returns:
         F0Data: pitch annotation
 
     """
-    if pitch_path is None:
-        return None
-
-    if not os.path.exists(pitch_path):
-        raise IOError("pitch_path {} does not exist".format(pitch_path))
-
     times = []
     freqs = []
-    with open(pitch_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[1]))
+
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[1]))
 
     if not times:
         return None
 
     times = np.array(times)
     freqs = np.array(freqs)
-    confidence = (freqs > 0).astype(float)
-    return annotations.F0Data(times, freqs, confidence)
+    voicing = (freqs > 0).astype(float)
+    return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
-def load_tempo(tempo_path):
+@io.coerce_to_string_io
+def load_tempo(fhandle):
     """Load tempo from hindustani collection
 
     Args:
-        tempo_path (str): Local path where the tempo annotation is stored.
+        fhandle (str or file-like): Local path where the tempo annotation is stored.
 
     Returns:
         dict:
@@ -368,163 +287,173 @@ def load_tempo(tempo_path):
             - duration: duration of the section
 
     """
-    if tempo_path is None:
-        return None
-
-    if not os.path.exists(tempo_path):
-        raise IOError("tempo_path {} does not exist".format(tempo_path))
-
     tempo_annotation = {}
-    head, tail = os.path.split(tempo_path)
+    head, tail = os.path.split(fhandle.name)
     sections_path = tail.split(".")[0] + ".sections-manual-p.txt"
     sections_abs_path = os.path.join(head, sections_path)
 
     sections = []
-    with open(sections_abs_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            if line != "\n":
-                sections.append(line[3])
+    try:
+        with open(sections_abs_path, "r") as fhandle2:
+            reader = csv.reader(fhandle2, delimiter=",")
+            for line in reader:
+                if line != "\n":
+                    sections.append(line[3])
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File {sections_abs_path} not found.")
 
     section_count = 0
-    with open(tempo_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
 
-            if "NaN" in line or " NaN" in line or "NaN " in line:
-                return None
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
 
-            # Store partial tempo information
-            tempo = line[0]
-            matra = line[1]
-            sama_interval = line[2]
-            matras_per_cycle = line[3]
-            start_time = line[4]
-            duration = line[5]
+        if "NaN" in line or " NaN" in line or "NaN " in line:
+            return None
 
-            tempo_annotation[sections[section_count]] = {
-                "tempo": float(tempo) if "." in tempo else int(tempo),
-                "matra_interval": float(matra) if "." in matra else int(matra),
-                "sama_interval": float(sama_interval)
-                if "." in sama_interval
-                else int(sama_interval),
-                "matras_per_cycle": float(matras_per_cycle)
-                if "." in matras_per_cycle
-                else int(matras_per_cycle),
-                "start_time": float(start_time)
-                if "." in start_time
-                else int(start_time),
-                "duration": float(duration) if "." in duration else int(duration),
-            }
+        # Store partial tempo information
+        tempo = line[0]
+        matra = line[1]
+        sama_interval = line[2]
+        matras_per_cycle = line[3]
+        start_time = line[4]
+        duration = line[5]
 
-            section_count += 1  # Go to next section
+        tempo_annotation[sections[section_count]] = {
+            "tempo": float(tempo) if "." in tempo else int(tempo),
+            "matra_interval": float(matra) if "." in matra else int(matra),
+            "sama_interval": float(sama_interval)
+            if "." in sama_interval
+            else int(sama_interval),
+            "matras_per_cycle": float(matras_per_cycle)
+            if "." in matras_per_cycle
+            else int(matras_per_cycle),
+            "start_time": float(start_time) if "." in start_time else int(start_time),
+            "duration": float(duration) if "." in duration else int(duration),
+        }
+
+        section_count += 1  # Go to next section
 
     return tempo_annotation
 
 
-def load_sama(sama_path):
+@io.coerce_to_string_io
+def load_sama(fhandle):
     """Load sama
 
     Args:
-        sama_path (str): Local path where the sama annotation is stored.
+        fhandle (str or file-like): Local path where the sama annotation is stored.
             If `None`, returns None.
 
     Returns:
         SectionData: sama annotations
 
     """
-    if sama_path is None:
-        return None
-
-    if not os.path.exists(sama_path):
-        raise IOError("sama_path {} does not exist".format(sama_path))
-
     beat_times = []
     beat_positions = []
-    with open(sama_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            beat_times.append(float(line[0]))
-            beat_positions.append(1)
+    idx = 1
+
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        beat_times.append(float(line[0]))
+        beat_positions.append(idx)
+        idx += 1
 
     if not beat_times or beat_times[0] == -1.0:
         return None
 
-    return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
+    return annotations.BeatData(
+        np.array(beat_times), "s", np.array(beat_positions), "global_index"
+    )
 
 
-def load_sections(sections_path):
+@io.coerce_to_string_io
+def load_sections(fhandle):
     """Load tracks sections
 
     Args:
-        sections_path (str): Local path where the section annotation is stored.
+        fhandle (str or file-like): Local path where the section annotation is stored.
 
     Returns:
         SectionData: section annotations for track
 
     """
-    if sections_path is None:
-        return None
-
-    if not os.path.exists(sections_path):
-        raise IOError("sections_path {} does not exist".format(sections_path))
-
     intervals = []
     section_labels = []
 
-    with open(sections_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=",")
-        for line in reader:
-            if line:
-                intervals.append(
-                    [
-                        float(line[0]),
-                        float(line[0]) + float(line[2]),
-                    ]
-                )
-                section_labels.append(str(line[3]) + "-" + str(line[1]))
+    reader = csv.reader(fhandle, delimiter=",")
+    for line in reader:
+        if line:
+            intervals.append(
+                [
+                    float(line[0]),
+                    float(line[0]) + float(line[2]),
+                ]
+            )
+            section_labels.append(str(line[3]) + "-" + str(line[1]))
 
     # Return None if sections file is empty
     if not intervals:
         return None
 
-    return annotations.SectionData(np.array(intervals), section_labels)
+    return annotations.SectionData(np.array(intervals), "s", section_labels, "open")
 
 
-def load_phrases(phrases_path):
+@io.coerce_to_string_io
+def load_phrases(fhandle):
     """Load phrases
 
     Args:
-        phrases_path (str): Local path where the phrase annotation is stored.
+        fhandle (str or file-like): Local path where the phrase annotation is stored.
             If `None`, returns None.
 
     Returns:
         EventData: phrases annotation for track
 
     """
-    if phrases_path is None:
-        return None
-
-    if not os.path.exists(phrases_path):
-        raise IOError("phrases_path {} does not exist".format(phrases_path))
-
     start_times = []
     end_times = []
     events = []
-    with open(phrases_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="\t")
-        for line in reader:
-            start_times.append(float(line[0]))
-            end_times.append(float(line[0]) + float(line[2]))
-            if len(line) == 4:
-                events.append(str(line[3].split("\n")[0]))
-            else:
-                events.append("")
+
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        start_times.append(float(line[0]))
+        end_times.append(float(line[0]) + float(line[2]))
+        if len(line) == 4:
+            events.append(str(line[3].split("\n")[0]))
+        else:
+            events.append("")
 
     if not start_times:
         return None
 
-    return annotations.EventData(np.array([start_times, end_times]).T, events)
+    return annotations.EventData(
+        np.array([start_times, end_times]).T, "s", events, "open"
+    )
+
+
+@io.coerce_to_string_io
+def load_metadata(fhandle):
+    """Load a Saraga Hindustani metadata file
+
+    Args:
+        fhandle (str or file-like): path to metadata json file
+
+    Returns:
+        dict: metadata with the following fields
+
+            - title (str): Title of the piece in the track
+            - mbid (str): MusicBrainz ID of the track
+            - album_artists (list, dicts): list of dicts containing the album artists present in the track and its mbid
+            - artists (list, dicts): list of dicts containing information of the featuring artists in the track
+            - raags (list, dict): list of dicts containing information about the raags present in the track
+            - forms (list, dict): list of dicts containing information about the forms present in the track
+            - release (list, dicts): list of dicts containing information of the release where the track is found
+            - works (list, dicts): list of dicts containing the work present in the piece, and its mbid
+            - taals (list, dicts): list of dicts containing the taals present in the track and its uuid
+            - layas (list, dicts): list of dicts containing the layas present in the track and its uuid
+
+    """
+    return json.load(fhandle)
 
 
 @core.docstring_inherit(core.Dataset)
@@ -533,41 +462,63 @@ class Dataset(core.Dataset):
     The saraga_hindustani dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="saraga_hindustani",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_tonic)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_tonic",
+        version="0.3.4",
+    )
     def load_tonic(self, *args, **kwargs):
         return load_tonic(*args, **kwargs)
 
-    @core.copy_docs(load_pitch)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_pitch",
+        version="0.3.4",
+    )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_tempo",
+        version="0.3.4",
+    )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
-    @core.copy_docs(load_sama)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_sama",
+        version="0.3.4",
+    )
     def load_sama(self, *args, **kwargs):
         return load_sama(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_phrases)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_phrases",
+        version="0.3.4",
+    )
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)

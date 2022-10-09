@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """beatport_key Dataset Loader
 
 .. admonition:: Dataset Info
@@ -28,11 +27,12 @@ import csv
 import os
 import fnmatch
 import json
-import librosa
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
+from deprecated.sphinx import deprecated
+import librosa
+from smart_open import open
+
+from mirdata import core, download_utils, jams_utils, io
 
 BIBTEX = """@phdthesis {3897,
     title = {Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination},
@@ -46,6 +46,13 @@ BIBTEX = """@phdthesis {3897,
     url = {https://doi.org/10.5281/zenodo.1154586},
     author = {{\'A}ngel Faraldo}
 }"""
+
+INDEXES = {
+    "default": "1.0.0",
+    "test": "1.0.0",
+    "1.0.0": core.Index(filename="beatport_key_index_1.0.0.json"),
+}
+
 REMOTES = {
     "keys": download_utils.RemoteFileMetadata(
         filename="keys.zip",
@@ -66,8 +73,6 @@ REMOTES = {
         destination_dir=".",
     ),
 }
-
-DATA = core.LargeData("beatport_key_index.json")
 
 LICENSE_INFO = "Creative Commons Attribution Share Alike 4.0 International."
 
@@ -94,23 +99,26 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in beatport_key".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.keys_path = os.path.join(self._data_home, self._track_paths["key"][0])
-        self.metadata_path = (
-            os.path.join(self._data_home, self._track_paths["meta"][0])
-            if self._track_paths["meta"][0] is not None
-            else None
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
+
+        self.keys_path = self.get_path("key")
+        self.metadata_path = self.get_path("meta")
+        self.audio_path = self.get_path("audio")
+
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
 
     @core.cached_property
@@ -159,113 +167,88 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath):
     """Load a beatport_key audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fpath (str): path to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=True)
+    return librosa.load(fpath, sr=None, mono=True)
 
 
-def load_key(keys_path):
+@io.coerce_to_string_io
+def load_key(fhandle):
     """Load beatport_key format key data from a file
 
     Args:
-        keys_path (str): path to key annotation file
+        fhandle (str or file-like): path or file-like object pointing to
+            a key annotation file
 
     Returns:
         list: list of annotated keys
 
     """
-    if keys_path is None:
-        return None
-
-    if not os.path.exists(keys_path):
-        raise IOError("keys_path {} does not exist".format(keys_path))
-
-    with open(keys_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="|")
-        keys = next(reader)
+    reader = csv.reader(fhandle, delimiter="|")
+    keys = next(reader)
 
     # standarize 'Unknown'  to 'X'
     keys = ["x" if k.lower() == "unknown" else k for k in keys]
     return keys
 
 
-def load_tempo(metadata_path):
+@io.coerce_to_string_io
+def load_tempo(fhandle):
     """Load beatport_key tempo data from a file
 
     Args:
-        metadata_path (str): path to metadata annotation file
+        fhandle (str or file-like): path or file-like object pointing to
+            metadata file
 
     Returns:
         str: tempo in beats per minute
 
     """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-
-    return meta["bpm"]
+    return json.load(fhandle)["bpm"]
 
 
-def load_genre(metadata_path):
+@io.coerce_to_string_io
+def load_genre(fhandle):
     """Load beatport_key genre data from a file
 
     Args:
-        metadata_path (str): path to metadata annotation file
+        fhandle (str or file-like): path or file-like object pointing to
+            metadata file
 
     Returns:
         dict: with the list with genres ['genres'] and list with sub-genres ['sub_genres']
 
     """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-
+    meta = json.load(fhandle)
     return {
         "genres": [genre["name"] for genre in meta["genres"]],
         "sub_genres": [genre["name"] for genre in meta["sub_genres"]],
     }
 
 
-def load_artist(metadata_path):
+@io.coerce_to_string_io
+def load_artist(fhandle):
     """Load beatport_key tempo data from a file
 
     Args:
-        metadata_path (str): path to metadata annotation file
+        fhandle (str or file-like): path or file-like object pointing to
+            metadata file
 
     Returns:
         list: list of artists involved in the track.
 
     """
-    if metadata_path is None:
-        return None
-
-    if not os.path.exists(metadata_path):
-        raise IOError("metadata_path {} does not exist".format(metadata_path))
-
-    with open(metadata_path) as json_file:
-        meta = json.load(json_file)
-
+    meta = json.load(fhandle)
     return [artist["name"] for artist in meta["artists"]]
 
 
@@ -275,34 +258,50 @@ class Dataset(core.Dataset):
     The beatport_key dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="beatport_key",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_key",
+        version="0.3.4",
+    )
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_tempo",
+        version="0.3.4",
+    )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
-    @core.copy_docs(load_genre)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_genre",
+        version="0.3.4",
+    )
     def load_genre(self, *args, **kwargs):
         return load_genre(*args, **kwargs)
 
-    @core.copy_docs(load_artist)
+    @deprecated(
+        reason="Use mirdata.datasets.beatport_key.load_artist",
+        version="0.3.4",
+    )
     def load_artist(self, *args, **kwargs):
         return load_artist(*args, **kwargs)
 
@@ -326,6 +325,7 @@ class Dataset(core.Dataset):
         download_utils.downloader(
             self.data_home,
             remotes=self.remotes,
+            index=self._index_data,
             partial_download=partial_download,
             force_overwrite=force_overwrite,
             cleanup=cleanup,
@@ -342,7 +342,7 @@ class Dataset(core.Dataset):
             directory (str): path to directory
             find (str): string from replace
             replace (str): string to replace
-            pattern (str): regex that must match the directories searrched
+            pattern (str): regex that must match the directories searched
 
         """
         for path, dirs, files in os.walk(os.path.abspath(directory)):

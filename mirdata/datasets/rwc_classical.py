@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """RWC Classical Dataset Loader
 
 .. admonition:: Dataset Info
@@ -51,18 +50,15 @@
 
 """
 import csv
-import logging
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 BIBTEX = """@inproceedings{goto2002rwc,
   title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
@@ -71,6 +67,13 @@ BIBTEX = """@inproceedings{goto2002rwc,
   year={2002},
   series={ISMIR},
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="rwc_classical_index_1.0.json"),
+}
+
 REMOTES = {
     "annotations_beat": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-C-2001.BEAT.zip",
@@ -80,7 +83,9 @@ REMOTES = {
     ),
     "annotations_sections": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-C-2001.CHORUS.zip",
-        url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip",
+        url=(
+            "https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-C-2001.CHORUS.zip"
+        ),
         checksum="f77bd527510376f59f5a2eed8fd7feb3",
         destination_dir="annotations",
     ),
@@ -88,7 +93,6 @@ REMOTES = {
         filename="master.zip",
         url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
         checksum="7dbe87fedbaaa1f348625a2af1d78030",
-        destination_dir="",
     ),
 }
 DOWNLOAD_INFO = """
@@ -113,52 +117,6 @@ received authorization may not use the database.'
 
 See https://staff.aist.go.jp/m.goto/RWC-MDB/ for more details.
 """
-
-
-def _load_metadata(data_home):
-
-    metadata_path = os.path.join(data_home, "metadata-master", "rwc-c.csv")
-
-    if not os.path.exists(metadata_path):
-        logging.info(
-            "Metadata file {} not found.".format(metadata_path)
-            + "You can download the metadata file by running download()"
-        )
-        return None
-
-    with open(metadata_path, "r") as fhandle:
-        dialect = csv.Sniffer().sniff(fhandle.read(1024))
-        fhandle.seek(0)
-        reader = csv.reader(fhandle, dialect)
-        raw_data = []
-        for line in reader:
-            if line[0] != "Piece No.":
-                raw_data.append(line)
-
-    metadata_index = {}
-    for line in raw_data:
-        if line[0] == "Piece No.":
-            continue
-        p = "00" + line[0].split(".")[1][1:]
-        track_id = "RM-C{}".format(p[len(p) - 3 :])
-
-        metadata_index[track_id] = {
-            "piece_number": line[0],
-            "suffix": line[1],
-            "track_number": line[2],
-            "title": line[3],
-            "composer": line[4],
-            "artist": line[5],
-            "duration": _duration_to_sec(line[6]),
-            "category": line[7],
-        }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = core.LargeData("rwc_classical_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -188,45 +146,58 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in rwc_classical".format(track_id)
-            )
-
-        self.track_id = track_id
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-        self.sections_path = os.path.join(
-            self._data_home, self._track_paths["sections"][0]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
-        self.beats_path = os.path.join(self._data_home, self._track_paths["beats"][0])
 
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "piece_number": None,
-                "suffix": None,
-                "track_number": None,
-                "title": None,
-                "composer": None,
-                "artist": None,
-                "duration": None,
-                "category": None,
-            }
+        self.sections_path = self.get_path("sections")
+        self.beats_path = self.get_path("beats")
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
-        self.piece_number = self._track_metadata["piece_number"]
-        self.suffix = self._track_metadata["suffix"]
-        self.track_number = self._track_metadata["track_number"]
-        self.title = self._track_metadata["title"]
-        self.composer = self._track_metadata["composer"]
-        self.artist = self._track_metadata["artist"]
-        self.duration = self._track_metadata["duration"]
-        self.category = self._track_metadata["category"]
+    @property
+    def piece_number(self):
+        return self._track_metadata.get("piece_number")
+
+    @property
+    def suffix(self):
+        return self._track_metadata.get("suffix")
+
+    @property
+    def track_number(self):
+        return self._track_metadata.get("track_number")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def composer(self):
+        return self._track_metadata.get("composer")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def category(self):
+        return self._track_metadata.get("category")
 
     @core.cached_property
     def sections(self) -> Optional[annotations.SectionData]:
@@ -267,7 +238,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a RWC audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -282,7 +253,7 @@ def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
     """Load rwc section data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to sections annotation file
+        fhandle (str or file-like): File-like object or path to sections annotation file
 
     Returns:
         SectionData: section data
@@ -301,7 +272,7 @@ def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
     if not begs:  # some files are empty
         return None
 
-    return annotations.SectionData(np.array([begs, ends]).T, secs)
+    return annotations.SectionData(np.array([begs, ends]).T, "s", secs, "open")
 
 
 def _position_in_bar(beat_positions, beat_times):
@@ -346,7 +317,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load rwc beat data from a file
 
     Args:
-        fhandle(str or file-like): File-like object or path to beats annotation file
+        fhandle (str or file-like): File-like object or path to beats annotation file
 
     Returns:
         BeatData: beat data
@@ -364,7 +335,9 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
         np.array(beat_positions), np.array(beat_times)
     )
 
-    return annotations.BeatData(beat_times, beat_positions_in_bar.astype(int))
+    return annotations.BeatData(
+        beat_times, "s", beat_positions_in_bar.astype(int), "bar_index"
+    )
 
 
 def _duration_to_sec(duration):
@@ -399,26 +372,73 @@ class Dataset(core.Dataset):
     The rwc_classical dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="rwc_classical",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @core.cached_property
+    def _metadata(self):
+
+        metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-c.csv")
+
+        try:
+            with open(metadata_path, "r") as fhandle:
+                dialect = csv.Sniffer().sniff(fhandle.read(1024))
+                fhandle.seek(0)
+                reader = csv.reader(fhandle, dialect)
+                raw_data = []
+                for line in reader:
+                    if line[0] != "Piece No.":
+                        raw_data.append(line)
+        except:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        metadata_index = {}
+        for line in raw_data:
+            if line[0] == "Piece No.":
+                continue
+            p = "00" + line[0].split(".")[1][1:]
+            track_id = "RM-C{}".format(p[len(p) - 3 :])
+
+            metadata_index[track_id] = {
+                "piece_number": line[0],
+                "suffix": line[1],
+                "track_number": line[2],
+                "title": line[3],
+                "composer": line[4],
+                "artist": line[5],
+                "duration": _duration_to_sec(line[6]),
+                "category": line[7],
+            }
+
+        return metadata_index
+
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_classical.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_classical.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_classical.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)

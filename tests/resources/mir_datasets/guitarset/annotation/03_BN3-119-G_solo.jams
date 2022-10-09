@@ -301,7 +301,26 @@
         "data_source": "4"
       },
       "namespace": "note_midi",
-      "data": [],
+      "data": [
+        {
+          "time": 0.7612308390022235,
+          "duration": 0.49922902494336086,
+          "value": 120.0576287044242,
+          "confidence": null
+        },
+        {
+          "time": 1.5072852607709137,
+          "duration": 0.22639455782314144,
+          "value": 120.03221526299762,
+          "confidence": null
+        },
+        {
+          "time": 1.7806185941042258,
+          "duration": 0.21938140589577415,
+          "value": 120.03297250121584,
+          "confidence": null
+        }
+      ],
       "sandbox": {
         "trim": [
           {

@@ -33,10 +33,19 @@ release = mirdata_version.version
 # Show only copyright
 show_authors = False
 
-
 # -- Mock dependencies -------------------------------------------------------
-autodoc_mock_imports = ["librosa", "numpy", "jams", "pretty_midi", "DALI"]
-
+autodoc_mock_imports = [
+    "librosa",
+    "numpy",
+    "jams",
+    "pretty_midi",
+    "DALI",
+    "music21",
+    "h5py",
+    "yaml",
+    "scipy",
+    "smart_open",
+]
 
 # # -- General configuration ---------------------------------------------------
 
@@ -59,6 +68,7 @@ extlinks = {
     "cante": ("https://zenodo.org/record/1324183#.X_nq7-n7RUI%s", "Custom"),
     "ikala": ("http://mac.citi.sinica.edu.tw/ikala/%s", "Custom"),
     "rwc": ("https://staff.aist.go.jp/m.goto/RWC-MDB/%s", "Custom"),
+    "tonas": ("https://www.upf.edu/web/mtg/tonas/%s", "Custom"),
 }
 
 

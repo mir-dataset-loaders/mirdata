@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Groove MIDI Loader
 
 .. admonition:: Dataset Info
@@ -47,15 +46,14 @@
 
 """
 import csv
-import glob
-import logging
 import os
-import shutil
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pretty_midi
+from smart_open import open
 
 from mirdata import annotations
 from mirdata import core
@@ -71,12 +69,19 @@ BIBTEX = """@inproceedings{groove2019,
     Booktitle = {International Conference on Machine Learning (ICML)},
     Year = {2019},
 }"""
+
+INDEXES = {
+    "default": "1.0.0",
+    "test": "1.0.0",
+    "1.0.0": core.Index(filename="groove_midi_index_1.0.0.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="groove-v1-0.0.zip",
         url="http://storage.googleapis.com/magentadata/datasets/groove/groove-v1.0.0.zip",
         checksum="99db7e2a087761a913b2abfb19e86181",
-        destination_dir=None,
+        unpack_directories=["groove"],
     )
 }
 
@@ -192,53 +197,6 @@ DRUM_MAPPING = {
 }
 
 
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "info.csv")
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata_index = {}
-    with open(metadata_path, "r") as fhandle:
-        csv_reader = csv.reader(fhandle, delimiter=",")
-        next(csv_reader)
-        for row in csv_reader:
-            (
-                drummer,
-                session,
-                track_id,
-                style,
-                bpm,
-                beat_type,
-                time_signature,
-                midi_filename,
-                audio_filename,
-                duration,
-                split,
-            ) = row
-            metadata_index[str(track_id)] = {
-                "drummer": str(drummer),
-                "session": str(session),
-                "track_id": str(track_id),
-                "style": str(style),
-                "tempo": int(bpm),
-                "beat_type": str(beat_type),
-                "time_signature": str(time_signature),
-                "midi_filename": str(midi_filename),
-                "audio_filename": str(audio_filename),
-                "duration": float(duration),
-                "split": str(split),
-            }
-
-    metadata_index["data_home"] = data_home
-
-    return metadata_index
-
-
-DATA = core.LargeData("groove_midi_index.json", _load_metadata)
-
-
 class Track(core.Track):
     """Groove MIDI Track class
 
@@ -266,50 +224,65 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in Groove MIDI".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "drummer": None,
-                "session": None,
-                "style": None,
-                "tempo": None,
-                "beat_type": None,
-                "time_signature": None,
-                "midi_filename": None,
-                "audio_filename": None,
-                "duration": None,
-                "split": None,
-            }
-
-        self.drummer = self._track_metadata["drummer"]
-        self.session = self._track_metadata["session"]
-        self.style = self._track_metadata["style"]
-        self.tempo = self._track_metadata["tempo"]
-        self.beat_type = self._track_metadata["beat_type"]
-        self.time_signature = self._track_metadata["time_signature"]
-        self.duration = self._track_metadata["duration"]
-        self.split = self._track_metadata["split"]
-        self.midi_filename = self._track_metadata["midi_filename"]
-        self.audio_filename = self._track_metadata["audio_filename"]
-
-        self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
-
-        self.audio_path = core.none_path_join(
-            [self._data_home, self._track_paths["audio"][0]]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
+
+        self.midi_path = self.get_path("midi")
+
+        self.audio_path = self.get_path("audio")
+
+    @property
+    def drummer(self):
+        return self._track_metadata.get("drummer")
+
+    @property
+    def session(self):
+        return self._track_metadata.get("session")
+
+    @property
+    def style(self):
+        return self._track_metadata.get("style")
+
+    @property
+    def tempo(self):
+        return self._track_metadata.get("tempo")
+
+    @property
+    def beat_type(self):
+        return self._track_metadata.get("beat_type")
+
+    @property
+    def time_signature(self):
+        return self._track_metadata.get("time_signature")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
+
+    @property
+    def split(self):
+        return self._track_metadata.get("split")
+
+    @property
+    def midi_filename(self):
+        return self._track_metadata.get("midi_filename")
+
+    @property
+    def audio_filename(self):
+        return self._track_metadata.get("audio_filename")
 
     @property
     def audio(self) -> Tuple[Optional[np.ndarray], Optional[float]]:
@@ -370,7 +343,7 @@ def load_midi(fhandle: BinaryIO) -> Optional[pretty_midi.PrettyMIDI]:
     """Load a Groove MIDI midi file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to midi file
+        fhandle (str or file-like): File-like object or path to midi file
 
     Returns:
         midi_data (pretty_midi.PrettyMIDI): pretty_midi object
@@ -397,7 +370,7 @@ def load_beats(midi_path, midi=None):
     beat_range = np.arange(0, len(beat_times))
     meter = midi.time_signature_changes[0]
     beat_positions = 1 + np.mod(beat_range, meter.numerator)
-    return annotations.BeatData(beat_times, beat_positions)
+    return annotations.BeatData(beat_times, "s", beat_positions, "bar_index")
 
 
 def load_drum_events(midi_path, midi=None):
@@ -423,7 +396,9 @@ def load_drum_events(midi_path, midi=None):
         end_times.append(note.end)
         events.append(DRUM_MAPPING[note.pitch]["Roland"])
 
-    return annotations.EventData(np.array([start_times, end_times]).T, events)
+    return annotations.EventData(
+        np.array([start_times, end_times]).T, "s", events, "open"
+    )
 
 
 @core.docstring_inherit(core.Dataset)
@@ -432,81 +407,67 @@ class Dataset(core.Dataset):
     The groove_midi dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="groove_midi",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_midi)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_midi",
+        version="0.3.4",
+    )
     def load_midi(self, *args, **kwargs):
         return load_midi(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_drum_events)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_drum_events",
+        version="0.3.4",
+    )
     def load_drum_events(self, *args, **kwargs):
         return load_drum_events(*args, **kwargs)
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        download_utils.downloader(
-            self.data_home,
-            partial_download=partial_download,
-            remotes=self.remotes,
-            info_message=None,
-            force_overwrite=force_overwrite,
-            cleanup=cleanup,
-        )
-
-        # files get downloaded to a folder called groove - move everything up a level
-        groove_dir = os.path.join(self.data_home, "groove")
-        if not os.path.exists(groove_dir):
-            logging.info(
-                "Groove MIDI data not downloaded, because it probably already exists on your computer. "
-                + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
-                + "existing files and download from scratch"
-            )
-            return
-
-        groove_files = glob.glob(os.path.join(groove_dir, "*"))
-
-        for fpath in groove_files:
-            target_path = os.path.join(self.data_home, os.path.basename(fpath))
-            if os.path.exists(target_path):
-                logging.info(
-                    "{} already exists. Run with force_overwrite=True to download from scratch".format(
-                        target_path
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "info.csv")
+        metadata_index = {}
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.DictReader(fhandle, delimiter=",")
+                for row in csv_reader:
+                    track_id = row["id"]
+                    metadata_index[track_id] = {
+                        key: row[key] for key in row.keys() if key != "id"
+                    }
+                    metadata_index[track_id]["tempo"] = int(
+                        metadata_index[track_id].pop("bpm")
                     )
-                )
-                continue
-            shutil.move(fpath, self.data_home)
+                    metadata_index[track_id]["duration"] = float(
+                        metadata_index[track_id]["duration"]
+                    )
+                    metadata_index[track_id]["track_id"] = track_id
 
-        if os.path.exists(groove_dir):
-            shutil.rmtree(groove_dir)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        return metadata_index

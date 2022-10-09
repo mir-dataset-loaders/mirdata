@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 cante100 Loader
 
@@ -47,12 +46,13 @@ cante100 Loader
 """
 import csv
 import os
-import logging
 import xml.etree.ElementTree as ET
-from typing import BinaryIO, cast, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -89,6 +89,11 @@ BIBTEX = """@dataset{nadine_kroher_2018_1322542,
 }
 """
 
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="cante100_index_1.0.json"),
+}
 
 REMOTES = {
     "spectrogram": download_utils.RemoteFileMetadata(
@@ -105,7 +110,9 @@ REMOTES = {
     ),
     "notes": download_utils.RemoteFileMetadata(
         filename="cante100_automaticTranscription.zip",
-        url="https://zenodo.org/record/1322542/files/cante100_automaticTranscription.zip?download=1",
+        url=(
+            "https://zenodo.org/record/1322542/files/cante100_automaticTranscription.zip?download=1"
+        ),
         checksum="47fea64c744f9fe678ae5642a8f0ee8e",  # the md5 checksum
         destination_dir="cante100_automaticTranscription",  # relative path for where to unzip the data, or None
     ),
@@ -113,13 +120,11 @@ REMOTES = {
         filename="cante100Meta.xml",
         url="https://zenodo.org/record/1322542/files/cante100Meta.xml?download=1",
         checksum="6cce186ce77a06541cdb9f0a671afb46",  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
     ),
     "README": download_utils.RemoteFileMetadata(
         filename="cante100_README.txt",
         url="https://zenodo.org/record/1322542/files/cante100_README.txt?download=1",
         checksum="184209b7e7d816fa603f0c7f481c0aae",  # the md5 checksum
-        destination_dir=None,  # relative path for where to unzip the data, or None
     ),
 }
 
@@ -146,82 +151,6 @@ were gathered by the COFLA team. COFLA 2015. All rights reserved.
 """
 
 
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "cante100Meta.xml")
-    if not os.path.exists(metadata_path):
-        logging.info(
-            "Metadata file {} not found.".format(metadata_path)
-            + "You can download the metadata file for cante100 "
-            + "by running cante100.download()"
-        )
-        return None
-
-    tree = ET.parse(metadata_path)
-    root = tree.getroot()
-
-    # ids
-    indexes = []
-    for child in root:
-        index = child.attrib.get("id")
-        if len(index) == 1:
-            index = "00" + index
-            indexes.append(index)
-            continue
-        if len(index) == 2:
-            index = "0" + index
-            indexes.append(index)
-            continue
-        else:
-            indexes.append(index)
-
-    # musicBrainzID
-    identifiers = []
-    for ident in root.iter("musicBrainzID"):
-        identifiers.append(ident.text)
-
-    # artist
-    artists = []
-    for artist in root.iter("artist"):
-        artists.append(artist.text)
-
-    # titles
-    titles = []
-    for title in root.iter("title"):
-        titles.append(title.text)
-
-    # releases
-    releases = []
-    for release in root.iter("anthology"):
-        releases.append(release.text)
-
-    # duration
-    durations = []
-    minutes = []
-    for minute in root.iter("duration_m"):
-        minutes.append(float(minute.text) * 60)
-    seconds = []
-    for second in root.iter("duration_s"):
-        seconds.append(float(second.text))
-    for i in np.arange(len(minutes)):
-        durations.append(minutes[i] + seconds[i])
-
-    metadata = dict()
-    metadata["data_home"] = data_home
-    for i, j in zip(indexes, range(len(artists))):
-        metadata[i] = {
-            "musicBrainzID": identifiers[j],
-            "artist": artists[j],
-            "title": titles[j],
-            "release": releases[j],
-            "duration": durations[j],
-        }
-
-    return metadata
-
-
-DATA = core.LargeData("cante100_index.json", _load_metadata)
-
-
 class Track(core.Track):
     """cante100 track class
 
@@ -244,39 +173,47 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in Example".format(track_id))
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-
-        self._track_paths = DATA.index["tracks"][track_id]
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.spectrogram_path = os.path.join(
-            self._data_home, self._track_paths["spectrum"][0]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
-        self.f0_path = os.path.join(self._data_home, self._track_paths["f0"][0])
-        self.notes_path = os.path.join(self._data_home, self._track_paths["notes"][0])
 
-        metadata = DATA.metadata(data_home=data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "musicBrainzID": None,
-                "artist": None,
-                "title": None,
-                "release": None,
-                "duration": None,
-            }
+        self.spectrogram_path = self.get_path("spectrum")
+        self.f0_path = self.get_path("f0")
+        self.notes_path = self.get_path("notes")
 
-        self.identifier = self._track_metadata["musicBrainzID"]
-        self.artist = self._track_metadata["artist"]
-        self.title = self._track_metadata["title"]
-        self.release = self._track_metadata["release"]
-        self.duration = self._track_metadata["duration"]
+        self.audio_path = self.get_path("audio")
+
+    @property
+    def identifier(self):
+        return self._track_metadata.get("musicBrainzID")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def release(self):
+        return self._track_metadata.get("release")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
 
     @property
     def audio(self) -> Tuple[np.ndarray, float]:
@@ -334,23 +271,24 @@ def load_spectrogram(fhandle: TextIO) -> np.ndarray:
 
     """
     parsed_spectrogram = np.genfromtxt(fhandle, delimiter=" ")
-    spectrogram = parsed_spectrogram.astype(np.float)
+    spectrogram = parsed_spectrogram.astype(np.float64)
 
     return spectrogram
 
 
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a cante100 audio file.
 
     Args:
-        fhandle (str): path to an audio file
+        fpath (str): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=22050, mono=False)
+    return librosa.load(fpath, sr=22050, mono=False)
 
 
 @io.coerce_to_string_io
@@ -358,7 +296,8 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """Load cante100 f0 annotations
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to melody annotation file
+        fhandle (str or file-like): path or file-like object pointing
+            to melody annotation file
 
     Returns:
         F0Data: predominant melody
@@ -366,16 +305,18 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """
     times = []
     freqs = []
+    voicing = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        freqs.append(np.abs(freq_val))
+        voicing.append(float(freq_val > 0))
 
-    times = np.array(times)
-    freqs = np.array(freqs)
-    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
-
-    return annotations.F0Data(times, freqs, confidence)
+    times = np.array(times)  # type: ignore
+    freqs = np.array(freqs)  # type: ignore
+    voicing = np.array(voicing)  # type: ignore
+    return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
 @io.coerce_to_string_io
@@ -401,8 +342,11 @@ def load_notes(fhandle: TextIO) -> annotations.NoteData:
 
     return annotations.NoteData(
         np.array(intervals, dtype="float"),
+        "s",
         np.array(pitches, dtype="float"),
+        "hz",
         np.array(confidence, dtype="float"),
+        "binary",
     )
 
 
@@ -412,30 +356,98 @@ class Dataset(core.Dataset):
     The cante100 dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="cante100",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "cante100Meta.xml")
+
+        try:
+            with open(metadata_path, "r") as fhandle:
+                tree = ET.parse(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+        root = tree.getroot()
+
+        # ids
+        indexes = []
+        for child in root:
+            index = child.attrib.get("id")
+            if len(index) == 1:
+                index = "00" + index
+                indexes.append(index)
+                continue
+            if len(index) == 2:
+                index = "0" + index
+                indexes.append(index)
+                continue
+            else:
+                indexes.append(index)
+
+        # musicBrainzID
+        identifiers = [ident.text for ident in root.iter("musicBrainzID")]
+
+        # artist
+        artists = [artist.text for artist in root.iter("artist")]
+
+        # titles
+        titles = [title.text for title in root.iter("title")]
+
+        # releases
+        releases = [release.text for release in root.iter("anthology")]
+
+        # duration
+        minutes = [float(minute.text) * 60 for minute in root.iter("duration_m")]
+        seconds = [float(second.text) for second in root.iter("duration_s")]
+        durations = [m + s for (m, s) in zip(minutes, seconds)]
+
+        metadata = dict()
+        for i, j in zip(indexes, range(len(artists))):
+            metadata[i] = {
+                "musicBrainzID": identifiers[j],
+                "artist": artists[j],
+                "title": titles[j],
+                "release": releases[j],
+                "duration": durations[j],
+            }
+
+        return metadata
+
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_spectrogram)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_spectrogram",
+        version="0.3.4",
+    )
     def load_spectrogram(self, *args, **kwargs):
         return load_spectrogram(*args, **kwargs)
 
-    @core.copy_docs(load_melody)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_melody",
+        version="0.3.4",
+    )
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_notes",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

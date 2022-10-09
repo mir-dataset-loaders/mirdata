@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """MedleyDB melody Dataset Loader
 
 .. admonition:: Dataset Info
@@ -19,18 +18,15 @@
 
 import csv
 import json
-import logging
 import os
-from typing import BinaryIO, cast, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, io, jams_utils
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
@@ -39,6 +35,12 @@ BIBTEX = """@inproceedings{bittner2014medleydb,
     Title = {Medley{DB}: A Multitrack Dataset for Annotation-Intensive {MIR} Research},
     Year = {2014}
 }"""
+INDEXES = {
+    "default": "5.0",
+    "test": "5.0",
+    "5.0": core.Index(filename="medleydb_melody_index_5.0.json"),
+}
+
 DOWNLOAD_INFO = """
     To download this dataset, visit:
     https://zenodo.org/record/2628782#.XKZdABNKh24
@@ -52,23 +54,6 @@ DOWNLOAD_INFO = """
 LICENSE_INFO = (
     "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
 )
-
-
-def _load_metadata(data_home):
-    metadata_path = os.path.join(data_home, "medleydb_melody_metadata.json")
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    with open(metadata_path, "r") as fhandle:
-        metadata = json.load(fhandle)
-
-    metadata["data_home"] = data_home
-    return metadata
-
-
-DATA = core.LargeData("medleydb_melody_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -97,46 +82,51 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in medleydb_melody".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-        self.melody1_path = os.path.join(
-            self._data_home, self._track_paths["melody1"][0]
-        )
-        self.melody2_path = os.path.join(
-            self._data_home, self._track_paths["melody2"][0]
-        )
-        self.melody3_path = os.path.join(
-            self._data_home, self._track_paths["melody3"][0]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
 
-        metadata = DATA.metadata(data_home)
-        if metadata is not None and track_id in metadata:
-            self._track_metadata = metadata[track_id]
-        else:
-            self._track_metadata = {
-                "artist": None,
-                "title": None,
-                "genre": None,
-                "is_excerpt": None,
-                "is_instrumental": None,
-                "n_sources": None,
-            }
+        self.melody1_path = self.get_path("melody1")
+        self.melody2_path = self.get_path("melody2")
+        self.melody3_path = self.get_path("melody3")
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.artist = self._track_metadata["artist"]
-        self.title = self._track_metadata["title"]
-        self.genre = self._track_metadata["genre"]
-        self.is_excerpt = self._track_metadata["is_excerpt"]
-        self.is_instrumental = self._track_metadata["is_instrumental"]
-        self.n_sources = self._track_metadata["n_sources"]
+        self.audio_path = self.get_path("audio")
+
+    @property
+    def artist(self):
+        return self._track_metadata.get("artist")
+
+    @property
+    def title(self):
+        return self._track_metadata.get("title")
+
+    @property
+    def genre(self):
+        return self._track_metadata.get("genre")
+
+    @property
+    def is_excerpt(self):
+        return self._track_metadata.get("is_excerpt")
+
+    @property
+    def is_instrumental(self):
+        return self._track_metadata.get("is_instrumental")
+
+    @property
+    def n_sources(self):
+        return self._track_metadata.get("n_sources")
 
     @core.cached_property
     def melody1(self) -> Optional[annotations.F0Data]:
@@ -181,7 +171,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MedleyDB audio file.
 
     Args:
-        fhandle(str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -196,7 +186,7 @@ def load_melody(fhandle: TextIO) -> annotations.F0Data:
     """Load a MedleyDB melody1 or melody2 annotation file
 
     Args:
-        fhandle(str or file-like): File-like object or path to a melody annotation file
+        fhandle (str or file-like): File-like object or path to a melody annotation file
 
     Raises:
         IOError: if melody_path does not exist
@@ -207,15 +197,18 @@ def load_melody(fhandle: TextIO) -> annotations.F0Data:
     """
     times = []
     freqs = []
+    voicing = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        freqs.append(freq_val)
+        voicing.append(float(freq_val > 0))
 
-    times = np.array(times)
-    freqs = np.array(freqs)
-    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
-    return annotations.F0Data(times, freqs, confidence)
+    times = np.array(times)  # type: ignore
+    freqs = np.array(freqs)  # type: ignore
+    voicing = np.array(voicing)  # type: ignore
+    return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
 @io.coerce_to_string_io
@@ -223,7 +216,7 @@ def load_melody3(fhandle: TextIO) -> annotations.MultiF0Data:
     """Load a MedleyDB melody3 annotation file
 
     Args:
-        fhandle(str or file-like): File-like object or melody 3 melody annotation path
+        fhandle (str or file-like): File-like object or melody 3 melody annotation path
 
     Raises:
         IOError: if melody_path does not exist
@@ -238,11 +231,13 @@ def load_melody3(fhandle: TextIO) -> annotations.MultiF0Data:
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs_list.append([float(v) for v in line[1:]])
-        conf_list.append([float(float(v) > 0) for v in line[1:]])
+        freqs_list.append([float(v) for v in line[1:] if float(v) != 0])
+        conf_list.append([1.0 for v in line[1:] if float(v) != 0])
 
-    times = np.array(times)
-    melody_data = annotations.MultiF0Data(times, freqs_list, conf_list)
+    times = np.array(times)  # type: ignore
+    melody_data = annotations.MultiF0Data(
+        times, "s", freqs_list, "hz", conf_list, "binary"
+    )
     return melody_data
 
 
@@ -252,25 +247,47 @@ class Dataset(core.Dataset):
     The medleydb_melody dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="medleydb_melody",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @core.cached_property
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "medleydb_melody_metadata.json")
+
+        try:
+            with open(metadata_path, "r") as fhandle:
+                metadata = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        return metadata
+
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_melody.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_melody)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_melody.load_melody",
+        version="0.3.4",
+    )
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
-    @core.copy_docs(load_melody3)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_melody.load_melody3",
+        version="0.3.4",
+    )
     def load_melody3(self, *args, **kwargs):
         return load_melody3(*args, **kwargs)

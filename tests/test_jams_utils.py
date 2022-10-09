@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 import pytest
 import jams
@@ -21,29 +19,69 @@ def get_jam_data(jam, namespace, annot_numb):
 
 
 def test_beats():
-    beat_data_1 = [(annotations.BeatData(np.array([0.2, 0.3]), np.array([1, 2])), None)]
+    beat_data_1 = [
+        (
+            annotations.BeatData(
+                np.array([0.2, 0.3]), "s", np.array([1, 2]), "bar_index"
+            ),
+            None,
+        )
+    ]
     beat_data_2 = [
-        (annotations.BeatData(np.array([0.5, 0.7]), np.array([2, 3])), "beats_2")
+        (
+            annotations.BeatData(
+                np.array([0.5, 0.7]), "s", np.array([2, 3]), "bar_index"
+            ),
+            "beats_2",
+        )
     ]
     beat_data_3 = [
-        (annotations.BeatData(np.array([0.0, 0.3]), np.array([1, 2])), "beats_1"),
-        (annotations.BeatData(np.array([0.5, 0.8]), np.array([4, 3])), "beats_2"),
+        (
+            annotations.BeatData(
+                np.array([0.0, 0.3]), "s", np.array([1, 2]), "bar_index"
+            ),
+            "beats_1",
+        ),
+        (
+            annotations.BeatData(
+                np.array([0.5, 0.8]), "s", np.array([4, 3]), "bar_index"
+            ),
+            "beats_2",
+        ),
     ]
     beat_data_4 = (
-        annotations.BeatData(np.array([0.0, 0.3]), np.array([1, 2])),
+        annotations.BeatData(np.array([0.0, 0.3]), "s", np.array([1, 2]), "bar_index"),
         "beats_1",
     )
     beat_data_5 = [
-        (annotations.BeatData(np.array([0.0, 0.3]), np.array([1, 2])), "beats_1"),
-        [annotations.BeatData(np.array([0.5, 0.8]), np.array([4, 3])), "beats_2"],
+        (
+            annotations.BeatData(
+                np.array([0.0, 0.3]), "s", np.array([1, 2]), "bar_index"
+            ),
+            "beats_1",
+        ),
+        [
+            annotations.BeatData(
+                np.array([0.5, 0.8]), "s", np.array([4, 3]), "bar_index"
+            ),
+            "beats_2",
+        ],
     ]
     beat_data_6 = [(None, None)]
     beat_data_7 = [
         (
             annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                "s",
                 ["event A", "event B"],
+                "open",
             ),
+            None,
+        )
+    ]
+    beat_data_8 = [
+        (
+            annotations.BeatData(np.array([0.2, 0.3]), "s", None, "bar_index"),
             None,
         )
     ]
@@ -52,6 +90,7 @@ def test_beats():
     jam_2 = jams_utils.jams_converter(beat_data=beat_data_2)
     jam_3 = jams_utils.jams_converter(beat_data=beat_data_3)
     jam_6 = jams_utils.jams_converter(beat_data=beat_data_6)
+    jam_8 = jams_utils.jams_converter(beat_data=beat_data_8)
 
     time, duration, value, confidence = get_jam_data(jam_1, "beat", 0)
     assert time == [0.2, 0.3]
@@ -79,6 +118,12 @@ def test_beats():
     assert value == []
     assert confidence == []
 
+    time, duration, value, confidence = get_jam_data(jam_8, "beat", 0)
+    assert time == [0.2, 0.3]
+    assert duration == [0.0, 0.0]
+    assert value == [None, None]
+    assert confidence == [None, None]
+
     assert type(jam_1) == jams.JAMS
 
     with pytest.raises(TypeError):
@@ -94,7 +139,9 @@ def test_chords():
         (
             annotations.ChordData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 ["A", "A", "E"],
+                "harte",
             ),
             None,
         )
@@ -103,7 +150,9 @@ def test_chords():
         (
             annotations.ChordData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 ["A", "B", "C"],
+                "harte",
             ),
             "chords_2",
         )
@@ -112,21 +161,28 @@ def test_chords():
         (
             annotations.ChordData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 ["A", "A", "E"],
+                "harte",
             ),
             "chords_1",
         ),
         (
             annotations.ChordData(
                 np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T,
+                "s",
                 ["A", "B", "C"],
+                "harte",
             ),
             "chords_2",
         ),
     ]
     chord_data_4 = (
         annotations.ChordData(
-            np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T, ["A", "A", "E"]
+            np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+            "s",
+            ["A", "A", "E"],
+            "harte",
         ),
         None,
     )
@@ -134,14 +190,18 @@ def test_chords():
         [
             annotations.ChordData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 ["A", "A", "E"],
+                "harte",
             ),
             None,
         ],
         (
             annotations.ChordData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 ["A", "B", "C"],
+                "harte",
             ),
             "chords_2",
         ),
@@ -151,7 +211,9 @@ def test_chords():
         (
             annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                "s",
                 ["event A", "event B"],
+                "open",
             ),
             None,
         )
@@ -203,8 +265,11 @@ def test_notes():
         (
             annotations.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 np.array([1108.731, 1108.731, 1108.731]),
+                "hz",
                 np.array([1.0, 1.0, 1.0]),
+                "binary",
             ),
             None,
         )
@@ -213,8 +278,11 @@ def test_notes():
         (
             annotations.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 np.array([1108.731, 1108.731, 1108.731]),
+                "hz",
                 np.array([1.0, 1.0, 1.0]),
+                "binary",
             ),
             "notes_2",
         )
@@ -223,16 +291,22 @@ def test_notes():
         (
             annotations.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 np.array([1108.731, 1108.731, 1108.731]),
+                "hz",
                 np.array([1.0, 1.0, 1.0]),
+                "binary",
             ),
             "notes_1",
         ),
         (
             annotations.NoteData(
                 np.array([[0.0, 0.7, 1.0], [0.7, 1.0, 1.5]]).T,
+                "s",
                 np.array([1108.731, 1108.731, 1108.731]),
+                "hz",
                 np.array([1.0, 1.0, 1.0]),
+                "binary",
             ),
             "notes_2",
         ),
@@ -240,8 +314,11 @@ def test_notes():
     note_data_4 = (
         annotations.NoteData(
             np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+            "s",
             np.array([1108.731, 1108.731, 1108.731]),
+            "hz",
             np.array([1.0, 1.0, 1.0]),
+            "binary",
         ),
         None,
     )
@@ -249,16 +326,22 @@ def test_notes():
         [
             annotations.NoteData(
                 np.array([[0.0, 0.5, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 np.array([1108.731, 1108.731, 1108.731]),
+                "hz",
                 np.array([1.0, 1.0, 1.0]),
+                "binary",
             ),
             None,
         ],
         (
             annotations.NoteData(
                 np.array([[0.0, 0.8, 1.0], [0.5, 1.0, 1.5]]).T,
+                "s",
                 np.array([1108.731, 1108.731, 1108.731]),
+                "hz",
                 np.array([1.0, 1.0, 1.0]),
+                "binary",
             ),
             "notes_2",
         ),
@@ -268,7 +351,9 @@ def test_notes():
         (
             annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                "s",
                 ["event A", "event B"],
+                "open",
             ),
             None,
         )
@@ -320,7 +405,9 @@ def test_sections():
         (
             annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                "s",
                 ["verse A", "verse B", "verse A"],
+                "open",
             ),
             None,
         )
@@ -329,7 +416,9 @@ def test_sections():
         (
             annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                "s",
                 ["verse A", "verse B", "verse A"],
+                "open",
             ),
             "sections_2",
         )
@@ -338,14 +427,18 @@ def test_sections():
         (
             annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                "s",
                 ["verse A", "verse B", "verse A"],
+                "open",
             ),
             "sections_1",
         ),
         (
             annotations.SectionData(
                 np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 30.0]]).T,
+                "s",
                 ["verse A", "verse B", "verse C"],
+                "open",
             ),
             "sections_2",
         ),
@@ -353,7 +446,9 @@ def test_sections():
     section_data_4 = (
         annotations.SectionData(
             np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+            "s",
             ["verse A", "verse B", "verse A"],
+            "open",
         ),
         None,
     )
@@ -361,14 +456,18 @@ def test_sections():
         [
             annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                "s",
                 ["verse A", "verse B", "verse A"],
+                "open",
             ),
             None,
         ],
         (
             annotations.SectionData(
                 np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                "s",
                 ["verse A", "verse B", "verse A"],
+                "open",
             ),
             "sections_2",
         ),
@@ -378,7 +477,9 @@ def test_sections():
         (
             annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                "s",
                 ["event A", "event B"],
+                "open",
             ),
             None,
         )
@@ -432,14 +533,18 @@ def test_multi_sections():
                 (
                     annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse A", "verse B", "verse A"],
+                        "open",
                     ),
                     None,
                 ),
                 (
                     annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse a", "verse b", "verse a"],
+                        "open",
                     ),
                     None,
                 ),
@@ -454,14 +559,18 @@ def test_multi_sections():
                 (
                     annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse A", "verse B", "verse A"],
+                        "open",
                     ),
                     0,
                 ),
                 (
                     annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse a", "verse b", "verse a"],
+                        "open",
                     ),
                     1,
                 ),
@@ -475,14 +584,18 @@ def test_multi_sections():
                 (
                     annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse A", "verse B", "verse A"],
+                        "open",
                     ),
                     0,
                 ),
                 (
                     annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse a", "verse b", "verse a"],
+                        "open",
                     ),
                     1,
                 ),
@@ -494,14 +607,18 @@ def test_multi_sections():
                 (
                     annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse A", "verse B", "verse A"],
+                        "open",
                     ),
                     0,
                 ),
                 (
                     annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse a", "verse b", "verse a"],
+                        "open",
                     ),
                     1,
                 ),
@@ -514,14 +631,18 @@ def test_multi_sections():
             (
                 annotations.SectionData(
                     np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                    "s",
                     ["verse A", "verse B", "verse A"],
+                    "open",
                 ),
                 None,
             ),
             (
                 annotations.SectionData(
                     np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
+                    "s",
                     ["verse a", "verse b", "verse a"],
+                    "open",
                 ),
                 None,
             ),
@@ -534,14 +655,18 @@ def test_multi_sections():
                 (
                     annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse A", "verse B", "verse A"],
+                        "open",
                     ),
                     None,
                 ),
                 (
                     annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse a", "verse b", "verse a"],
+                        "open",
                     ),
                     None,
                 ),
@@ -555,14 +680,18 @@ def test_multi_sections():
                 (
                     annotations.SectionData(
                         np.array([[0.0, 10.0, 20.0], [10.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse A", "verse B", "verse A"],
+                        "open",
                     ),
                     None,
                 ),
                 (
                     annotations.SectionData(
                         np.array([[0.0, 15.0, 20.0], [15.0, 20.0, 25.0]]).T,
+                        "s",
                         ["verse a", "verse b", "verse a"],
+                        "open",
                     ),
                     None,
                 ),
@@ -577,14 +706,18 @@ def test_multi_sections():
                 (
                     annotations.EventData(
                         np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                        "s",
                         ["event A", "event B"],
+                        "open",
                     ),
                     None,
                 ),
                 (
                     annotations.EventData(
                         np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                        "s",
                         ["event A", "event B"],
+                        "open",
                     ),
                     None,
                 ),
@@ -661,26 +794,50 @@ def test_multi_sections():
 
 
 def test_keys():
-    key_data_1 = [(annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), None)]
-    key_data_2 = [(annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), "keys_1")]
+    key_data_1 = [
+        (
+            annotations.KeyData(np.array([[0.0], [100.0]]).T, "s", ["A"], "key_mode"),
+            None,
+        )
+    ]
+    key_data_2 = [
+        (
+            annotations.KeyData(np.array([[0.0], [100.0]]).T, "s", ["A"], "key_mode"),
+            "keys_1",
+        )
+    ]
     key_data_3 = [
-        (annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), "keys_1"),
-        (annotations.KeyData(np.array([[0.0], [50.0]]).T, ["B"]), "keys_2"),
+        (
+            annotations.KeyData(np.array([[0.0], [100.0]]).T, "s", ["A"], "key_mode"),
+            "keys_1",
+        ),
+        (
+            annotations.KeyData(np.array([[0.0], [50.0]]).T, "s", ["B"], "key_mode"),
+            "keys_2",
+        ),
     ]
     key_data_4 = (
-        annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]),
+        annotations.KeyData(np.array([[0.0], [100.0]]).T, "s", ["A"], "key_mode"),
         "keys_1",
     )
     key_data_5 = [
-        [annotations.KeyData(np.array([[0.0], [100.0]]).T, ["A"]), "keys_1"],
-        (annotations.KeyData(np.array([[0.0], [50.0]]).T, ["B"]), "keys_2"),
+        [
+            annotations.KeyData(np.array([[0.0], [100.0]]).T, "s", ["A"], "key_mode"),
+            "keys_1",
+        ],
+        (
+            annotations.KeyData(np.array([[0.0], [50.0]]).T, "s", ["B"], "key_mode"),
+            "keys_2",
+        ),
     ]
     key_data_6 = [(None, None)]
     key_data_7 = [
         (
             annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                "s",
                 ["event A", "event B"],
+                "open",
             ),
             None,
         )
@@ -731,7 +888,12 @@ def test_f0s():
     f0_data_1 = [
         (
             annotations.F0Data(
-                np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
+                np.array([0.016, 0.048]),
+                "s",
+                np.array([0.0, 260.9]),
+                "hz",
+                np.array([0.0, 1.0]),
+                "binary",
             ),
             None,
         )
@@ -739,7 +901,12 @@ def test_f0s():
     f0_data_2 = [
         (
             annotations.F0Data(
-                np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
+                np.array([0.016, 0.048]),
+                "s",
+                np.array([0.0, 260.9]),
+                "hz",
+                np.array([0.0, 1.0]),
+                "binary",
             ),
             "f0s_1",
         )
@@ -747,33 +914,58 @@ def test_f0s():
     f0_data_3 = [
         (
             annotations.F0Data(
-                np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
+                np.array([0.016, 0.048]),
+                "s",
+                np.array([0.0, 260.9]),
+                "hz",
+                np.array([0.0, 1.0]),
+                "binary",
             ),
             "f0s_1",
         ),
         (
             annotations.F0Data(
-                np.array([0.003, 0.012]), np.array([0.0, 230.5]), np.array([0.0, 1.0])
+                np.array([0.003, 0.012]),
+                "s",
+                np.array([0.0, 230.5]),
+                "hz",
+                np.array([0.0, 1.0]),
+                "binary",
             ),
             "f0s_2",
         ),
     ]
     f0_data_4 = (
         annotations.F0Data(
-            np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
+            np.array([0.016, 0.048]),
+            "s",
+            np.array([0.0, 260.9]),
+            "hz",
+            np.array([0.0, 1.0]),
+            "binary",
         ),
         "f0s_1",
     )
     f0_data_5 = [
         [
             annotations.F0Data(
-                np.array([0.016, 0.048]), np.array([0.0, 260.9]), np.array([0.0, 1.0])
+                np.array([0.016, 0.048]),
+                "s",
+                np.array([0.0, 260.9]),
+                "hz",
+                np.array([0.0, 1.0]),
+                "binary",
             ),
             "f0s_1",
         ],
         (
             annotations.F0Data(
-                np.array([0.003, 0.012]), np.array([0.0, 230.5]), np.array([0.0, 1.0])
+                np.array([0.003, 0.012]),
+                "s",
+                np.array([0.0, 230.5]),
+                "hz",
+                np.array([0.0, 1.0]),
+                "binary",
             ),
             "f0s_2",
         ),
@@ -783,7 +975,9 @@ def test_f0s():
         (
             annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                "s",
                 ["event A", "event B"],
+                "open",
             ),
             None,
         )
@@ -801,7 +995,7 @@ def test_f0s():
         {"frequency": 0.0, "index": 0, "voiced": False},
         {"frequency": 260.9, "index": 0, "voiced": True},
     ]
-    assert confidence == [0.0, 1.0]
+    assert confidence == [None, None]
 
     assert jam_2.annotations[0]["sandbox"]["name"] == "f0s_1"
 
@@ -812,7 +1006,7 @@ def test_f0s():
         {"frequency": 0.0, "index": 0, "voiced": False},
         {"frequency": 260.9, "index": 0, "voiced": True},
     ]
-    assert confidence == [0.0, 1.0]
+    assert confidence == [None, None]
 
     time, duration, value, confidence = get_jam_data(jam_3, "pitch_contour", 1)
     assert time == [0.003, 0.012]
@@ -821,7 +1015,7 @@ def test_f0s():
         {"frequency": 0.0, "index": 0, "voiced": False},
         {"frequency": 230.5, "index": 0, "voiced": True},
     ]
-    assert confidence == [0.0, 1.0]
+    assert confidence == [None, None]
 
     time, duration, value, confidence = get_jam_data(jam_6, "pitch_contour", 0)
     assert time == []
@@ -844,8 +1038,9 @@ def test_lyrics():
         (
             annotations.LyricData(
                 np.array([[0.027, 0.232], [0.227, 0.742]]).T,
+                "s",
                 ["The", "Test"],
-                ["", ""],
+                "words",
             ),
             None,
         )
@@ -854,8 +1049,9 @@ def test_lyrics():
         (
             annotations.LyricData(
                 np.array([[0.027, 0.232], [0.227, 0.742]]).T,
+                "s",
                 ["The", "Test"],
-                ["", ""],
+                "words",
             ),
             "lyrics_1",
         )
@@ -864,25 +1060,22 @@ def test_lyrics():
         (
             annotations.LyricData(
                 np.array([[0.027, 0.232], [0.227, 0.742]]).T,
+                "s",
                 ["The", "Test"],
-                ["", ""],
+                "words",
             ),
             "lyrics_1",
         ),
         (
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
-                ["is", "cool"],
-                ["", ""],
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T, "s", ["is", "cool"], "words"
             ),
             "lyrics_2",
         ),
     ]
     lyrics_data_4 = (
         annotations.LyricData(
-            np.array([[0.027, 0.232], [0.227, 0.742]]).T,
-            ["The", "Test"],
-            ["", ""],
+            np.array([[0.027, 0.232], [0.227, 0.742]]).T, "s", ["The", "Test"], "words"
         ),
         "lyrics_1",
     )
@@ -890,16 +1083,15 @@ def test_lyrics():
         (
             annotations.LyricData(
                 np.array([[0.027, 0.232], [0.227, 0.742]]).T,
+                "s",
                 ["The", "Test"],
-                ["", ""],
+                "words",
             ),
             "lyrics_1",
         ),
         [
             annotations.LyricData(
-                np.array([[0.0, 0.232], [0.227, 0.742]]).T,
-                ["is", "cool"],
-                ["", ""],
+                np.array([[0.0, 0.232], [0.227, 0.742]]).T, "s", ["is", "cool"], "words"
             ),
             "lyrics_2",
         ],
@@ -909,7 +1101,9 @@ def test_lyrics():
         (
             annotations.EventData(
                 np.array([[0.2, 0.3], [0.3, 0.4]]).T,
+                "s",
                 ["event A", "event B"],
+                "open",
             ),
             None,
         )
@@ -1016,21 +1210,21 @@ def test_events():
     event_data1 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]),
-                ["event A", "event B"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]), "s", ["event A", "event B"], "open"
             ),
             "I am a description",
         )
     ]
     event_data2 = [
         (
-            annotations.EventData(np.array([[0.2, 0.3], [0.3, 0.4]]), ["2", "event B"]),
+            annotations.EventData(
+                np.array([[0.2, 0.3], [0.3, 0.4]]), "s", ["2", "event B"], "open"
+            ),
             "events 1",
         ),
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 0.4]]),
-                ["", "a great label"],
+                np.array([[0.2, 0.3], [0.3, 0.4]]), "s", ["", "a great label"], "open"
             ),
             "events 2",
         ),
@@ -1038,8 +1232,10 @@ def test_events():
     event_data3 = [
         (
             annotations.EventData(
-                np.array([[0.2, 0.3], [0.3, 20.0]]),  # invalid because > duration
+                np.array([[0.2, 0.3], [0.3, 20.0]]),
+                "s",  # invalid because > duration
                 ["", "a great label"],
+                "open",
             ),
             "asdf",
         )
@@ -1133,3 +1329,8 @@ def test_duration():
     )
     assert jam4.file_metadata.duration == 1000
     assert jam4.validate()
+
+
+def test_mp3_remote_raises_error():
+    with pytest.raises(NotImplementedError):
+        jam = jams_utils.jams_converter(audio_path="gs://asdf/asdf.mp3")

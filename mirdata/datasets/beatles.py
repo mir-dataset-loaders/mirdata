@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Beatles Dataset Loader
 
 .. admonition:: Dataset Info
@@ -14,6 +13,7 @@ import csv
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
@@ -24,8 +24,6 @@ from mirdata import annotations
 from mirdata import io
 
 
-DATA = core.LargeData("beatles_index.json")
-
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
     author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte,
@@ -34,6 +32,12 @@ BIBTEX = """@inproceedings{mauch2009beatles,
     year={2009},
     series = {ISMIR}
 }"""
+
+INDEXES = {
+    "default": "1.2",
+    "test": "1.2",
+    "1.2": core.Index(filename="beatles_index_1.2.json"),
+}
 
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
@@ -82,25 +86,28 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError("{} is not a valid track ID in Beatles".format(track_id))
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
-        self.track_id = track_id
+        self.beats_path = self.get_path("beat")
+        self.chords_path = self.get_path("chords")
+        self.keys_path = self.get_path("keys")
+        self.sections_path = self.get_path("sections")
 
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
-        self.beats_path = core.none_path_join(
-            [self._data_home, self._track_paths["beat"][0]]
-        )
-        self.chords_path = os.path.join(self._data_home, self._track_paths["chords"][0])
-        self.keys_path = core.none_path_join(
-            [self._data_home, self._track_paths["keys"][0]]
-        )
-        self.sections_path = os.path.join(
-            self._data_home, self._track_paths["sections"][0]
-        )
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
         self.title = os.path.basename(self._track_paths["sections"][0]).split(".")[0]
 
@@ -153,7 +160,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Beatles audio file.
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to an audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
@@ -168,7 +175,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     """Load Beatles format beat data from a file
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to a beat annotation file
+        fhandle (str or file-like): path or file-like object pointing to a beat annotation file
 
     Returns:
         BeatData: loaded beat data
@@ -182,10 +189,13 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
         beat_times.append(float(line[0]))
         beat_positions.append(line[-1])
 
-    beat_positions = _fix_newpoint(np.array(beat_positions))
+    beat_positions = _fix_newpoint(np.array(beat_positions))  # type: ignore
     # After fixing New Point labels convert positions to int
     beat_data = annotations.BeatData(
-        np.array(beat_times), np.array([int(b) for b in beat_positions])
+        np.array(beat_times),
+        "s",
+        np.array([int(b) for b in beat_positions]),
+        "bar_index",
     )
 
     return beat_data
@@ -196,7 +206,7 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
     """Load Beatles format chord data from a file
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to a chord annotation file
+        fhandle (str or file-like): path or file-like object pointing to a chord annotation file
 
     Returns:
         ChordData: loaded chord data
@@ -211,7 +221,9 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
         end_times.append(float(line[1]))
         chords.append(line[2])
 
-    return annotations.ChordData(np.array([start_times, end_times]).T, chords)
+    return annotations.ChordData(
+        np.array([start_times, end_times]).T, "s", chords, "harte"
+    )
 
 
 @io.coerce_to_string_io
@@ -219,7 +231,7 @@ def load_key(fhandle: TextIO) -> annotations.KeyData:
     """Load Beatles format key data from a file
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to a key annotation file
+        fhandle (str or file-like): path or file-like object pointing to a key annotation file
 
     Returns:
         KeyData: loaded key data
@@ -233,7 +245,9 @@ def load_key(fhandle: TextIO) -> annotations.KeyData:
             end_times.append(float(line[1]))
             keys.append(line[3])
 
-    return annotations.KeyData(np.array([start_times, end_times]).T, keys)
+    return annotations.KeyData(
+        np.array([start_times, end_times]).T, "s", keys, "key_mode"
+    )
 
 
 @io.coerce_to_string_io
@@ -241,7 +255,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load Beatles format section data from a file
 
     Args:
-        fhandle(str or file-like): path or file-like object pointing to a section annotation file
+        fhandle (str or file-like): path or file-like object pointing to a section annotation file
 
     Returns:
         SectionData: loaded section data
@@ -253,7 +267,9 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
         end_times.append(float(line[1]))
         sections.append(line[3])
 
-    return annotations.SectionData(np.array([start_times, end_times]).T, sections)
+    return annotations.SectionData(
+        np.array([start_times, end_times]).T, "s", sections, "open"
+    )
 
 
 def _fix_newpoint(beat_positions: np.ndarray) -> np.ndarray:
@@ -281,30 +297,43 @@ class Dataset(core.Dataset):
     The beatles dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="beatles",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.beatles.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.beatles.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(
+        reason="Use mirdata.datasets.beatles.load_chords",
+        version="0.3.4",
+    )
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.beatles.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)

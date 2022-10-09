@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
 """Utility functions for mirdata"""
 
 import hashlib
+import logging
 import os
 import tqdm
+
+from smart_open import open
 
 
 def md5(file_path):
@@ -17,7 +19,7 @@ def md5(file_path):
 
     """
     hash_md5 = hashlib.md5()
-    with open(file_path, "rb") as fhandle:
+    with open(file_path, "rb", compression="disable") as fhandle:
         for chunk in iter(lambda: fhandle.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
@@ -32,7 +34,7 @@ def log_message(message, verbose=True):
 
     """
     if verbose:
-        print(message)
+        logging.info(message)
 
 
 def validate(local_path, checksum):
@@ -48,7 +50,10 @@ def validate(local_path, checksum):
 
     """
     # validate that the file exists on disk
-    if not os.path.exists(local_path):
+    try:
+        with open(local_path):
+            pass
+    except IOError:
         return False, False
 
     # validate that the checksum matches
@@ -76,12 +81,12 @@ def validate_files(file_dict, data_home, verbose):
     missing = {}
     invalid = {}
     for file_id, file in tqdm.tqdm(file_dict.items(), disable=not verbose):
-        # multitrack case
-        if file_id is "tracks":
-            continue
-        # tracks
-        else:
-            for tracks in file.keys():
+        for tracks in file.keys():
+            # multitrack case
+            if tracks == "tracks":
+                continue
+            # tracks
+            else:
                 filepath = file[tracks][0]
                 checksum = file[tracks][1]
                 if filepath is not None:
@@ -151,27 +156,21 @@ def validate_index(dataset_index, data_home, verbose=True):
     # check index
     if "metadata" in dataset_index and dataset_index["metadata"] is not None:
         missing_metadata, invalid_metadata = validate_metadata(
-            dataset_index["metadata"],
-            data_home,
-            verbose,
+            dataset_index["metadata"], data_home, verbose
         )
         missing_files["metadata"] = missing_metadata
         invalid_checksums["metadata"] = invalid_metadata
 
     if "tracks" in dataset_index and dataset_index["tracks"] is not None:
         missing_tracks, invalid_tracks = validate_files(
-            dataset_index["tracks"],
-            data_home,
-            verbose,
+            dataset_index["tracks"], data_home, verbose
         )
         missing_files["tracks"] = missing_tracks
         invalid_checksums["tracks"] = invalid_tracks
 
     if "multitracks" in dataset_index and dataset_index["multitracks"] is not None:
         missing_multitracks, invalid_multitracks = validate_files(
-            dataset_index["multitracks"],
-            data_home,
-            verbose,
+            dataset_index["multitracks"], data_home, verbose
         )
         missing_files["multitracks"] = missing_multitracks
         invalid_checksums["multitracks"] = invalid_multitracks

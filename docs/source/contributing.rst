@@ -5,26 +5,43 @@ Contributing
 ############
 
 We encourage contributions to mirdata, especially new dataset loaders. To contribute a new loader, follow the
-steps indicated below and create a Pull Request (PR) to the github repository.
+steps indicated below and create a Pull Request (PR) to the github repository. For any doubt or comment about
+your contribution, you can always submit an issue or open a discussion in the repository.
 
-- `Issue Tracker <https://github.com/mir-dataset-loaders/mirdata/issues>`_
-- `Source Code <https://github.com/mir-dataset-loaders/mirdata>`_
+    * `Issue Tracker <https://github.com/mir-dataset-loaders/mirdata/issues>`_
+    * `Source Code <https://github.com/mir-dataset-loaders/mirdata>`_
 
-
-Installing and running tests
-#############################
-
-
-First, clone the repository from github:
-
-.. code-block:: bash
-
-    git clone git@github.com:mir-dataset-loaders/mirdata.git
+To reduce friction, we may make commits on top of contributor's PRs. If you do not want us
+to, please tag your PR with ``please-do-not-edit``.
 
 
-We recommend you install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions 
-and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7. 
-Once ``pyenv`` and the Python versions are configured, install ``pytest``. Finally, run :
+Installing mirdata for development purposes
+###########################################
+
+To install ``mirdata`` for development purposes:
+
+    * First run:
+
+      .. code-block:: console
+
+          git clone https://github.com/mir-dataset-loaders/mirdata.git
+
+    * Then, after opening source data library you have to install the dependencies for updating the documentation
+      and running tests:
+
+      .. code-block:: console
+
+          pip install .
+          pip install .[tests]
+          pip install .[docs]
+          pip install .[dali]
+          pip install .[haydn_op20]
+
+
+We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
+and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7.
+Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the pytest
+plugins to automatically test your code successfully. Finally, run:
 
 .. code-block:: bash
 
@@ -45,27 +62,27 @@ The steps to add a new dataset loader to ``mirdata`` are:
 3. `Add tests <add_tests_>`_
 4. `Submit your loader <submit_loader_>`_
 
-**Before starting**, if your dataset **is not fully downloadable** you should:
 
+Before starting, check if your dataset falls into one of these non-standard cases:
 
-1. Contact the mirdata team by opening an issue or PR so we can discuss how to proceed with the closed dataset.
-2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the 
-   dataset creator, or by verifying equivalence with several other copies of the dataset.
+    * Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
+    * Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
+    * Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
+    * Is the index large (e.g. > 5 MB)? If so, see `this section <large_index_>`_
 
-To reduce friction, we will make commits on top of contributors PRs by default unless
-the ``please-do-not-edit`` flag is used.
 
 .. _create_index:
 
 1. Create an index
 ------------------
 
-``mirdata``'s structure relies on ``JSON`` objects called `indexes`. Indexes contain information about the structure of the
+``mirdata``'s structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
 dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
-1. To create an index, first cereate a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
-2. Then run the script on the :ref:`canonical version` of the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index.json``.
+1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
+2. Then run the script on the the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index_<version>.json``.
+   where <version> indicates which version of the dataset was used (e.g. 1.0).
 
 
 .. _index example:
@@ -163,9 +180,67 @@ multitracks
 ^^^^^^^^^^^
 
 .. admonition:: Index Examples - Multitracks
-    :class: dropdown, warning
+    :class: dropdown
+    
+    If the version `1.0` of a given multitrack dataset has the structure:
 
-    Coming soon
+    .. code-block:: javascript
+
+        > Example_Dataset/
+            > audio/
+                multitrack1-voice1.wav
+                multitrack1-voice2.wav
+                multitrack1-accompaniment.wav
+                multitrack1-mix.wav
+                multitrack2-voice1.wav
+                multitrack2-voice2.wav
+                multitrack2-accompaniment.wav
+                multitrack2-mix.wav
+            > annotations/
+                multitrack1-voice-f0.csv
+                multitrack2-voice-f0.csv
+                multitrack1-f0.csv
+                multitrack2-f0.csv
+            > metadata/
+                metadata_file.csv
+
+    The top level directory is ``Example_Dataset`` and the relative path for ``multitrack1-voice1``
+    would be ``audio/multitrack1-voice1.wav``. Any unavailable fields are indicated with `null`. A possible index file for this example would be:
+    
+    .. code-block:: javascript
+
+        { 
+            "version": 1,
+            "tracks": {
+                "multitrack1-voice": {
+                    "audio_voice1": ('audio/multitrack1-voice1.wav', checksum), 
+                    "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),  
+                    "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum)
+                }
+                "multitrack1-accompaniment": {
+                    "audio_accompaniment": ('audio/multitrack1-accompaniment.wav', checksum)
+                }
+                "multitrack2-voice" : {...}
+                ...
+            },
+            "multitracks": {
+                "multitrack1": {
+                    "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],    
+                    "audio": ('audio/multitrack1-mix.wav', checksum)
+                    "f0": ('annotations/multitrack1-f0.csv', checksum)
+                }
+                "multitrack2": ...
+            },
+            "metadata": {
+                "metadata_file": [
+                    "metadata/metadata_file.csv",
+                    "7a41b280c7b74e2ddac5184708f9525b"
+                    ]
+            }
+        }
+  
+    Note that in this examples we group ``audio_voice1`` and ``audio_voice2`` in a single Track because the annotation ``voice-f0`` annotation corresponds to their mixture. In contrast, the annotation ``voice-f0`` is extracted from the multitrack mix and it is stored in the ``multitracks`` group. The multitrack ``multitrack1`` has an additional track ``multitrack1-mix.wav`` which may be the master track, the final mix, the recording of ``multitrack1`` with another microphone. 
+
 
 records
 ^^^^^^^
@@ -197,13 +272,15 @@ To quickstart a new module:
 
 You may find these examples useful as references:
 
-* `A simple, fully downloadable dataset <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py>`_
-* `A dataset which is partially downloadable <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/beatles.py>`_
-* `A dataset with restricted access data <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/medleydb_melody.py#L33>`_
-* `A dataset which uses global metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
-* `A dataset which does not use global metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
-* `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
-* `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
+    - `A simple, fully downloadable dataset <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py>`_
+    - `A dataset which is partially downloadable <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/beatles.py>`_
+    - `A dataset with restricted access data <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/medleydb_melody.py#L33>`_
+    - `A dataset which uses dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/tinysol.py#L114>`_
+    - `A dataset which does not use dataset-level metadata <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/gtzan_genre.py#L36>`_
+    - `A dataset with a custom download function <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/maestro.py#L257>`_
+    - `A dataset with a remote index <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/acousticbrainz_genre.py>`_
+    - `A dataset with extra dependencies <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/dali.py>`_
+    - `A dataset with multitracks <https://github.com/mir-dataset-loaders/mirdata/blob/master/mirdata/datasets/phenicx_anechoic.py>`_
 
 For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
 
@@ -222,16 +299,17 @@ To finish your contribution, include tests that check the integrity of your load
     * For each audio/annotation file, reduce the audio length to 1-2 seconds and remove all but a few of the annotations.
     * If the dataset has a metadata file, reduce the length to a few lines.
 
-2. Test all of the dataset specific code, e.g. the public attributes of the Track object, the load functions and any other 
+2. Test all of the dataset specific code, e.g. the public attributes of the Track class, the load functions and any other 
    custom functions you wrote. See the `tests folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/tests>`_ for reference.
    If your loader has a custom download function, add tests similar to 
    `this loader <https://github.com/mir-dataset-loaders/mirdata/blob/master/tests/test_groove_midi.py#L96>`_.
 3. Locally run ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset`` before submitting your loader to make 
-   sure everything is working.
+   sure everything is working. If your dataset has `multiple versions <multiple_versions_>`_, test each (non-default) version
+   by running ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset --dataset-version my_version``.
 
 
 .. note::  We have written automated tests for all loader's ``cite``, ``download``, ``validate``, ``load``, ``track_ids`` functions, 
-           as well as some basic edge cases of the ``Track`` object, so you don't need to write tests for these!
+           as well as some basic edge cases of the ``Track`` class, so you don't need to write tests for these!
 
 
 .. _test_file:
@@ -259,7 +337,7 @@ To run one specific test file:
 
 ::
 
-    pytest tests/test_ikala.py
+    pytest tests/datasets/test_ikala.py
 
 
 Finally, there is one local test you should run, which we can't easily run in our testing environment.
@@ -283,41 +361,6 @@ We've added one extra convenience flag for this test, for getting the tests runn
 
 
 which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually all pass without this flag.
-
-.. _working_big_datasets:
-
-Working with big datasets
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In the development of large datasets, it is advisable to create an index as small as possible to optimize the implementation process
-of the dataset loader and pass the tests.
-
-
-Working with remote indexes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For the end-user there is no difference between the remote and local indexes. However, indexes can get large when there are a lot of tracks
-in the dataset. In these cases, storing and accessing an index remotely can be convenient.
-
-However, to contribute to the library using remote indexes you have to add in ``utils.LargeData(...)`` the remote_index argument with a
-``download_utils.RemoteFileMetadata`` dictionary with the remote index information.
-
-.. code-block:: python
-
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
-
-
-.. code-block:: python
-
-    REMOTE_INDEX = {
-        "REMOTE_INDEX": download_utils.RemoteFileMetadata(
-            filename="acousticbrainz_genre_index.json.zip",
-            url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
-            checksum="810f1c003f53cbe58002ba96e6d4d138",
-            destination_dir="",
-        )
-    }
-    DATA = utils.LargeData("acousticbrainz_genre_index.json", remote_index=REMOTE_INDEX)
 
 
 .. _reducing_test_space:
@@ -392,7 +435,7 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
 
 ::
 
-    black --target-version py37 --skip-string-normalization mirdata/
+    black --target-version py38 mirdata/ tests/
 
 2. the test coverage is too low -- this means that there are too many new lines of code introduced that are not tested.
 
@@ -401,6 +444,128 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
 
 4. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing. 
    If they are passing locally but failing in the check, open an `issue` and we can help debug.
+
+
+Common non-standard cases
+#########################
+
+
+.. _not_open:
+
+Not fully-downloadable datasets
+-------------------------------
+
+Sometimes, parts of music datasets are not freely available due to e.g. copyright restrictions. In these
+cases, we aim to make sure that the version used in mirdata is the original one, and not a variant.
+
+**Before starting** a PR, if a dataset **is not fully downloadable**:
+
+1. Contact the mirdata team by opening an issue or PR so we can discuss how to proceed with the closed dataset.
+2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the 
+   dataset creator, or by verifying equivalence with several other copies of the dataset.
+
+
+.. _extra_dependencies:
+
+Datasets needing extra dependencies
+-----------------------------------
+
+If a new dataset requires a library that is not included setup.py, please open an issue.
+In general, if the new library will be useful for many future datasets, we will add it as a 
+dependency. If it is specific to one dataset, we will add it as an optional dependency.
+
+To add an optional dependency, add the dataset name as a key in `extras_require` in setup.py,
+and list any additional dependencies. Additionally, mock the dependecies in docs/conf.py
+by adding it to the `autodoc_mock_imports` list.
+
+When importing these optional dependencies in the dataset
+module, use a try/except clause and log instructions if the user hasn't installed the extra
+requriements. 
+
+For example, if a module called `example_dataset` requires a module called `asdf`, 
+it should be imported as follows:
+
+.. code-block:: python
+
+    try:
+        import asdf
+    except ImportError:
+        logging.error(
+            "In order to use example_dataset you must have asdf installed. "
+            "Please reinstall mirdata using `pip install 'mirdata[example_dataset]'"
+        )
+        raise ImportError
+
+
+.. _multiple_versions:
+
+Datasets with multiple versions
+-------------------------------
+
+There are some datasets where the loading code is the same, but there are multiple
+versions of the data (e.g. updated annotations, or an additional set of tracks which
+follow the same paradigm). In this case, only one loader should be written, and
+multiple versions can be defined by creating additional indexes. Indexes follow the
+naming convention <datasetname>_index_<version>.json, thus a dataset with two 
+versions simply has two index files. Different versions are tracked using the
+``INDEXES`` variable:
+
+.. code-block:: python
+
+    INDEXES = {
+        "default": "1.0",
+        "test": "sample",
+        "1.0": core.Index(filename="example_index_1.0.json"),
+        "2.0": core.Index(filename="example_index_2.0.json"),
+        "sample": core.Index(filename="example_index_sample.json")
+    }
+
+
+By default, mirdata loads the version specified as ``default`` in ``INDEXES``
+when running ``mirdata.initialize('example')``, but a specific version can
+be loaded by running ``mirdata.initialize('example', version='2.0')``.
+
+Different indexes can refer to different subsets of the same larger dataset, 
+or can reference completely different data. All data needed for all versions
+should be specified via keys in ``REMOTES``, and by default, mirdata will
+download everything. If one version only needs a subset
+of the data in ``REMOTES``, it can be specified using the ``partial_download``
+argument of ``core.Index``. For example, if ``REMOTES`` has the keys
+``['audio', 'v1-annotations', 'v2-annotations']``, the ``INDEXES`` dictionary
+could look like:
+
+.. code-block:: python
+
+    INDEXES = {
+        "default": "1.0",
+        "test": "1.0",
+        "1.0": core.Index(filename="example_index_1.0.json", partial_download=['audio', 'v1-annotations']),
+        "2.0": core.Index(filename="example_index_2.0.json", partial_download=['audio', 'v2-annotations']),
+    }
+
+
+.. _large_index:
+
+Datasets with large indexes
+---------------------------
+
+Large indexes should be stored remotely, rather than checked in to the mirdata repository.
+mirdata has a `zenodo community <https://zenodo.org/communities/mirdata/?page=1&size=20>`_
+where larger indexes can be uploaded as "datasets".
+
+When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and 
+``checksum`` to the ``Index`` class:
+
+.. code-block:: python
+
+    "1.0": core.Index(
+        filename="example_index_1.0.json",  # the name of the index file
+        url=<url>,  # the download link
+        checksum=<checksum>,  # the md5 checksum
+    )
+
+Remote indexes get downloaded along with the data when calling ``.download()``,
+and are stored in ``<data_home>/mirdata_indexes``.
 
 
 Documentation
@@ -506,6 +671,43 @@ Objects
 Conventions
 ###########
 
+Opening files
+-------------
+
+Mirdata uses the smart_open library under the hood in order to support reading data from
+remote filesystems. If your loader needs to either call the python ``open`` command, or if
+it needs to use ``os.path.exists``, you'll need to include the line
+
+.. code-block:: python
+
+    from smart_open import open
+
+
+at the top of your dataset module and use ``open`` as you normally would.
+Sometimes dependency libraries accept file paths as input to certain functions and open the files
+internally - whenever possible mirdata avoids this, and passes in file-objects directly.
+
+If you just need ``os.path.exists``, you'll need to replace
+it with a try/except:
+
+.. code-block:: python
+
+    # original code that uses os.path.exists
+    file_path = "flululu.txt"
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"{file_path} not found, did you run .download?")
+    
+    with open(file_path, "r") as fhandle:
+        ...
+    
+    # replacement code that is compatible with remote filesystems
+    try:
+        with open(file_path, "r") as fhandle:
+            ...
+    except FileNotFoundError:
+        raise FileNotFoundError(f"{file_path} not found, did you run .download?")
+
+
 Loading from files
 ------------------
 
@@ -524,27 +726,57 @@ We use the following libraries for loading data from files:
 +-------------------------+-------------+
 | jams                    | jams        |
 +-------------------------+-------------+
+| yaml                    | pyyaml      |
++-------------------------+-------------+
+| hdf5 / h5               | h5py        |
++-------------------------+-------------+
+
+If a file format needed for a dataset is not included in this list, please see `this section <extra_dependencies_>`_
 
 Track Attributes
 ----------------
+If the dataset has an official e.g. train/test split, use the reserved attribute `Track.split`, or `MultiTrack.split`
+which will enable some dataset-level helper functions like `dataset.get_track_splits`. If there is no official split,
+do not use this attribute.
+
 Custom track attributes should be global, track-level data.
 For some datasets, there is a separate, dataset-level metadata file
 with track-level metadata, e.g. as a csv. When a single file is needed
-for more than one track, we recommend using writing a ``_load_metadata`` method
-and passing it to a ``LargeData`` object, which is available globally throughout 
-the module to avoid loading the same file multiple times.
+for more than one track, we recommend using writing a ``_metadata`` cached property (which
+returns a dictionary, either keyed by track_id or freeform)
+in the Dataset class (see the dataset module example code above). When this is specified,
+it will populate a track's hidden ``_track_metadata`` field, which can be accessed from
+the Track class.
 
-Load methods vs Track properties
---------------------------------
-Track properties and cached properties should be trivial, and directly call a ``load_*`` method.
-There should be no additional logic in a track property/cached property, and instead all logic
-should be done in the load method. We separate these because the track properties are only usable
-when data is available locally - when data is remote, the load methods are used instead.
+For example, if ``_metadata`` returns a dictionary of the form:
+
+.. code-block:: python
+
+    {
+        'track1': {
+            'artist': 'A',
+            'genre': 'Z'
+        },
+        'track2': {
+            'artist': 'B',
+            'genre': 'Y'
+        }
+    }
+
+the ``_track metadata`` for ``track_id=track2`` will be:
+
+.. code-block:: python
+
+    {
+        'artist': 'B',
+        'genre': 'Y'
+    }
+
 
 Missing Data
 ------------
 If a Track has a property, for example a type of annotation, that is present for some tracks and not others,
-the property should be set to `None` when it isn't available.
+the property should be set to ``None`` when it isn't available.
 
 The index should only contain key-values for files that exist.
 
@@ -553,7 +785,7 @@ Custom Decorators
 
 cached_property
 ---------------
-This is used primarily for Track objects.
+This is used primarily for Track classes.
 
 This decorator causes an Object's function to behave like
 an attribute (aka, like the ``@property`` decorator), but caches
@@ -562,28 +794,22 @@ for data which is relatively large and loaded from files.
 
 docstring_inherit
 -----------------
-This decorator is used for children of the Dataset object, and
+This decorator is used for children of the Dataset class, and
 copies the Attributes from the parent class to the docstring of the child.
 This gives us clear and complete docs without a lot of copy-paste.
 
-copy_docs
----------
-This decorator is used mainly for a dataset's ``load_`` functions, which
-are attached to a loader's Dataset object. The attached function is identical,
-and this decorator simply copies the docstring from another function.
-
 coerce_to_bytes_io/coerce_to_string_io
 --------------------------------------
-These are two decorators used to simplify the loading of various `Track` members
+These are two decorators used to simplify the loading of various ``Track`` members
 in addition to giving users the ability to use file streams instead of paths in
 case the data is in a remote location e.g. GCS. The decorators modify the function
 to:
 
-- Return `None` if `None` if passed in.
-- Open a file if a string path is passed in either `'w'` mode for `string_io` or `wb` for `bytes_io` and
+- Return ``None`` if ``None`` if passed in.
+- Open a file if a string path is passed in either ``'w'`` mode for ``string_io`` or ``wb`` for ``bytes_io`` and
   pass the file handle to the decorated function.
 - Pass the file handle to the decorated function if a file-like object is passed.
 
 This cannot be used if the function to be decorated takes multiple arguments.
-`coerce_to_bytes_io` should not be used if trying to load an mp3 with librosa as libsndfile does not support
-`mp3` yet and `audioread` expects a path.
+``coerce_to_bytes_io`` should not be used if trying to load an mp3 with librosa as libsndfile does not support
+``mp3`` yet and ``audioread`` expects a path.
