@@ -91,6 +91,14 @@ da_tacos
    :inherited-members:
 
 
+filosax
+^^^^^^^
+
+.. automodule:: mirdata.datasets.filosax
+   :members:
+   :inherited-members:
+
+
 four_way_tabla
 ^^^^^^^^^^^^^^
 

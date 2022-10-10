@@ -109,6 +109,18 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
+   * - Filosax
+     - - audio: 🔑
+       - annotations: 🔑
+       - midi: 🔑
+     - - :ref:`f0`
+       - :ref:`beats`
+       - :ref:`chords`
+       - :ref:`tempo`
+       - :ref:`notes`
+     - 48
+     - ❌
+
    * - Four-Way Tabla Stroke
      - - audio: ✅
        - annotations: ✅
