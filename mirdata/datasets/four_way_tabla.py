@@ -35,7 +35,6 @@
 
 import csv
 
-from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from typing import BinaryIO, Optional, Tuple
@@ -57,13 +56,13 @@ INDEXES = {
 
 REMOTES = {
     "remote_data": download_utils.RemoteFileMetadata(
-        filename="TODO",
-        url="TODO",
-        checksum="TODO",  # the md5 checksum
+        filename="4way-tabla-ismir21-dataset.zip",
+        url="https://zenodo.org/record/7110248/files/4way-tabla-ismir21-dataset.zip?download=1",
+        checksum="fcddb565f260d4170877f70a7c33d69d",  # the md5 checksum
     ),
 }
 
-LICENSE_INFO = "Creative Commons Attribution 3.0 Unported (CC BY 3.0) License."
+LICENSE_INFO = "Creative Commons Attribution 4.0 International License."
 
 
 class Track(core.Track):
