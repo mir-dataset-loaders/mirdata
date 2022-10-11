@@ -395,7 +395,7 @@
     }
   },
   "metadata": {
-    "annotation_metadata": [
+    "tonic_path": [
       "carnatic_varnam_1.0/Notations_Annotations/annotations/tonics.yaml",
       "e3c4b1ad9218f7982ae477478db6c4b4"
     ]

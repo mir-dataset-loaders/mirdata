@@ -35,17 +35,15 @@
     availability of a machine readable notation files allows the dataset to be used for audio-score alignment.
 """
 
-import numpy as np
 import os
-from xml.dom import minidom
-import logging
-import librosa
 import csv
+import glob
+import librosa
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
+import numpy as np
+from xml.dom import minidom
+
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 BIBTEX = """
 @dataset{koduri_g_k_2014_1257118,
@@ -65,36 +63,22 @@ BIBTEX = """
 
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
-        filename="saraga1.5_carnatic.zip",
-        url="https://zenodo.org/record/4301737/files/saraga1.5_carnatic.zip?download=1",
-        checksum="e4fcd380b4f6d025964cd16aee00273d",
+        filename="carnatic_varnam_1.0",
+        url="TODO",
+        checksum="TODO",
         destination_dir=None,
     )
+}
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="compmusic_carnatic_varnam_index.json"),
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial No Derivatives 4.0 International"
 )
-
-
-def _load_metadata(metadata_path):
-
-    if not os.path.exists(metadata_path):
-        logging.info("Metadata file {} not found.".format(metadata_path))
-        return None
-
-    metadata = {}
-    with open(metadata_path, 'r') as fhandle:
-        reader = csv.reader(fhandle, delimiter=":")
-        for line in reader:
-            metadata[line[0]] = float(line[1].split(' ')[1])
-
-    metadata['data_home'] = metadata_path.split('compmusic_carnatic_varnam')[0]
-
-    return metadata
-
-
-DATA = core.LargeData("compmusic_carnatic_varnam_index.json", _load_metadata)
 
 
 class Track(core.Track):
@@ -120,42 +104,28 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home):
-        if track_id not in DATA.index["tracks"]:
-            raise ValueError(
-                "{} is not a valid track ID in Saraga Carnatic".format(track_id)
-            )
-
-        self.track_id = track_id
-
-        self._data_home = data_home
-        self._track_paths = DATA.index["tracks"][track_id]
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         # Audio path
-        self.audio_path = os.path.join(
-            self._data_home, self._track_paths["audio"][0]
-        )
+        self.audio_path = self.get_path("audio")
 
         # Annotation paths
-        self.taala_path = core.none_path_join(
-            [self._data_home, self._track_paths["taala"][0]]
-        )
-        self.notation_path = core.none_path_join(
-            [self._data_home, self._track_paths["notation"][0]]
-        )
-        self.metadata_path = core.none_path_join(
-            [self._data_home, DATA.index["metadata"]["annotation_metadata"][0]]
-        )
-
-        # -- Track attributes --
-        # Load metadata (containing tonic information)
-        metadata = DATA.metadata(self.metadata_path)
-        if metadata is not None:
-            self.tonic = metadata[self.track_id.split('_')[0]]
-        else:
-            self.tonic = None
-        self.artist = self.track_id.split('_')[0]
-        self.raaga = self.track_id.split('_')[1]
+        self.taala_path =  self.get_path("taala")
+        self.notation_path = self.get_path("notation")
 
     @core.cached_property
     def taala(self):
@@ -182,6 +152,19 @@ class Track(core.Track):
     def avarohanam(self):
         moorchanas = load_moorchanas(self.notation_path)
         return moorchanas[1]
+        
+    @core.cached_property
+    def artist(self):
+        return self.track_id.split('_')[0]
+
+    @core.cached_property
+    def raaga(self):
+        return self.track_id.split('_')[1]
+
+    @core.cached_property
+    def tonic(self):
+        return self._track_metadata
+
 
     @property
     def audio(self):
@@ -216,8 +199,9 @@ class Track(core.Track):
         )
 
 
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(audio_path):
-    """Load a CompMusic Carnatic Varnam audio file.
+    """Load a Carnatic Varnam audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -229,13 +213,11 @@ def load_audio(audio_path):
     """
     if audio_path is None:
         return None
-
-    if not os.path.exists(audio_path):
-        raise IOError("audio_path {} does not exist".format(audio_path))
-    return librosa.load(audio_path, sr=None, mono=False)
+    return librosa.load(audio_path, sr=44100, mono=False)
 
 
-def load_taala(taala_path):
+@io.coerce_to_string_io
+def load_taala(fhandle):
     """Load taala annotation
 
     Args:
@@ -244,14 +226,8 @@ def load_taala(taala_path):
     Returns:
         BeatData: taala annotation for track
     """
-    if taala_path is None:
-        return None
-
-    if not os.path.exists(taala_path):
-        raise IOError("taala_path {} does not exist".format(taala_path))
-
     # Load svl file
-    dom = minidom.parse(taala_path)
+    dom = minidom.parse(fhandle)
 
     # Load data
     data = dom.getElementsByTagName('data')[0]
@@ -267,32 +243,32 @@ def load_taala(taala_path):
     beat_positions = []
     for beat in range(num_points):
         beat_times.append(float(points[beat].getAttribute('frame')) / fs)
-        beat_positions.append(1)
+        beat_positions.append(0)
 
-    return annotations.BeatData(np.array(beat_times), np.array(beat_positions))
+    return annotations.BeatData(
+        np.array(beat_times),
+        "s",
+        np.array(beat_positions),
+        "global_index"
+    )
 
 
-def load_notation(notation_path, taala_path):
+# no decorator here because we need two paths
+def load_notation(note_path, taala_path):
     """Load notation (notes)
 
     Args:
         notation_path (str): Local path where the phrase annotation is stored.
             If `None`, returns None.
         taala_path (str): Local path where the taala annotation is stored.
+            If `None`, returns None.
 
     Returns:
         EventData: melodic notation for track
 
     """
-    if notation_path is None:
+    if note_path is None or taala_path is None:
         return None
-    if taala_path is None:
-        return None
-
-    if not os.path.exists(notation_path):
-        raise IOError("notation_path {} does not exist".format(notation_path))
-    if not os.path.exists(taala_path):
-        raise IOError("taala_path {} does not exist".format(taala_path))
 
     start_times = []
     end_times = []
@@ -310,7 +286,7 @@ def load_notation(notation_path, taala_path):
         end_times.append(float(points[beat].getAttribute('frame')) / fs)
         prev_timestamp = float(points[beat].getAttribute('frame')) / fs
 
-    with open(notation_path, "r") as fhandle:
+    with open(note_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter='-')
         for row in reader:
             events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
@@ -319,30 +295,31 @@ def load_notation(notation_path, taala_path):
         events = events[thr:]
         events = [x for x in events if len(x) < 3]  # Remove keys
 
-    return annotations.EventData(np.array([start_times, end_times]).T, events)
+    return annotations.EventData(
+        np.array(
+            [start_times, end_times]).T,
+            "s",
+            events,
+            "open"
+        )
 
 
-def load_sections(notation_path, taala_path):
+# no decorator here because we need two paths
+def load_sections(note_path, taala_path):
     """Load sections
 
     Args:
         notation_path (str): Local path where the phrase annotation is stored.
             If `None`, returns None.
         taala_path (str): Local path where the taala annotation is stored.
+            If `None`, returns None.
 
     Returns:
         SectionData: section annotation for track
 
     """
-    if notation_path is None:
+    if note_path is None or taala_path is None:
         return None
-    if taala_path is None:
-        return None
-
-    if not os.path.exists(notation_path):
-        raise IOError("notation_path {} does not exist".format(notation_path))
-    if not os.path.exists(taala_path):
-        raise IOError("taala_path {} does not exist".format(taala_path))
 
     start_times = []
     end_times = []
@@ -362,7 +339,7 @@ def load_sections(notation_path, taala_path):
 
     intervals = []
     section_labels = ['pallavi', 'anupallavi', 'muktayiswaram', 'charanam', 'chittiswaram']
-    with open(notation_path, "r") as fhandle:
+    with open(note_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter='-')
         for row in reader:
             events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
@@ -375,57 +352,50 @@ def load_sections(notation_path, taala_path):
         for i in np.arange(1, len(section_indexes)):
             intervals.append([start_times[section_indexes[i-1]+1], end_times[section_indexes[i]-1]])
 
-    return annotations.SectionData(np.array(intervals), section_labels)
+    return annotations.SectionData(
+        np.array(intervals),
+        "s",
+        section_labels,
+        "open"
+    )
 
 
-def load_mbid(notation_path):
+@io.coerce_to_string_io
+def load_mbid(fhandle):
     """Load musicbrainz id
 
     Args:
-        notation_path (str): Local path where the phrase annotation is stored.
+        fhandle (str or file-like): Local path where the annotation is stored.
             If `None`, returns None.
 
     Returns:
         string: musicbrainz id for the composition
 
     """
-    if notation_path is None:
-        return None
-
-    if not os.path.exists(notation_path):
-        raise IOError("notation_path {} does not exist".format(notation_path))
-
-    with open(notation_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter=':')
-        for row in reader:
-            if row[0] == 'mbid':
-                return row[-1].replace("'", "").replace(" ", "")
+    reader = csv.reader(fhandle, delimiter=':')
+    for row in reader:
+        if row[0] == 'mbid':
+            return row[-1].replace("'", "").replace(" ", "")
 
 
-def load_moorchanas(notation_path):
+@io.coerce_to_string_io
+def load_moorchanas(fhandle):
     """Load arohanam and avarohanam annotations
 
     Args:
-        notation_path (str): Local path where the phrase annotation is stored.
+        fhandle (str or file-like): Local path where moorchana annotation is stored.
             If `None`, returns None.
 
     Returns:
         (list, string): section annotation for track
 
     """
-    if notation_path is None:
-        return None
-
-    if not os.path.exists(notation_path):
-        raise IOError("notation_path {} does not exist".format(notation_path))
-
     notes = []
-    with open(notation_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter='-')
-        for row in reader:
-            if row[0] == 'pallavi:':
-                break
-            notes.append(str(row[-1].replace(" ", "")))
+    reader = csv.reader(fhandle, delimiter='-')
+    for row in reader:
+        if row[0] == 'pallavi:':
+            break
+        notes.append(str(row[-1].replace(" ", "")))
 
     arohanam_ind = notes.index('arohana:') + 1  # Get left boundary of arohanam notations
     avarohanam_ind = notes.index('avarohana:') + 1  # Get left boundary of avarohanam notations
@@ -442,37 +412,65 @@ class Dataset(core.Dataset):
     The compmusic_carnatic_varnam dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
-            index=DATA.index,
+            version,
             name="compmusic_carnatic_varnam",
-            track_object=Track,
+            track_class=Track,
             bibtex=BIBTEX,
             remotes=REMOTES,
+            indexes=INDEXES,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @core.cached_property
+    def _metadata(self):
+        """Load tonic
+
+        Args:
+            fhandle (str or file-like): Local path where tonic annotations are stored.
+                If `None`, returns None.
+            track_id (str): Track ID to get the artist name
+
+        Returns:
+            (float): tonic
+
+        """
+        data_folder = self.remotes['all'].filename
+        tonics_dict = {}
+        tonics_path = os.path.join(self.data_home, data_folder, \
+            "Notations_Annotations", "annotations", "tonics.yaml")
+        with open(tonics_path, 'r') as f:
+            reader = csv.reader(f, delimiter=":")
+            for line in reader:
+                tonics_dict[line[0]] = float(line[1])
+
+        taalas_path = os.path.join(self.data_home,  data_folder, \
+            "Notations_Annotations", "annotations", "taalas")
+        out_tonic = {}
+        for taala in glob.glob(os.path.join(taalas_path, "*/")):
+            for track in glob.glob(os.path.join(taala, "*.svl")):
+                taala = taala.split("/")[-2]
+                artist = track.split("/")[-1].replace(".svl", "")
+                idx = artist + "_" + taala
+                out_tonic[idx] = tonics_dict[artist]
+        return out_tonic                
+
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_taala)
     def load_taala(self, *args, **kwargs):
         return load_taala(*args, **kwargs)
 
-    @core.copy_docs(load_notation)
     def load_notation(self, *args, **kwargs):
         return load_notation(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_mbid)
     def load_mbid(self, *args, **kwargs):
         return load_mbid(*args, **kwargs)
 
-    @core.copy_docs(load_moorchanas)
     def load_moorchanas(self, *args, **kwargs):
         return load_moorchanas(*args, **kwargs)
