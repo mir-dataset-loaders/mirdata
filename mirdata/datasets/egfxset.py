@@ -3,16 +3,14 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    EEGFxSet (Electric Guitar Effects dataset) features recordings for all clean tones in a 22-fret Stratocaster, recorded with 5 different pickup configurations, also processed through 12 popular guitar effects. Our dataset was recorded in real hardware, making it relevant for music information retrieval tasks on real music. We also include annotations for parameter settings of the effects we used.
+    EGFxSet (Electric Guitar Effects dataset) features recordings for all clean tones in a 22-fret Stratocaster, recorded with 5 different pickup configurations, also processed through 12 popular guitar effects. Our dataset was recorded in real hardware, making it relevant for music information retrieval tasks on real music. We also include annotations for parameter settings of the effects we used.
 
-    The dataset was conceived during Iran Roman's "Deep Learning for Music Information Retrieval" course imparted in the postgraduate studies in music at the UNAM (Universidad Nacional Autonoma de México). The result is a combined effort between two UNAM  postgraduate students (Hegel Pedroza and Gerardo Meza) and Iran Roman(NYU).   
-    The dataset has a total of 8,970 audio files with a 5-second duration each, summing a total time of - 12 hours and 28 minutes -.
+     was conceived during Iran Roman's "Deep Learning for Music Information Retrieval" course imparted in the postgraduate studies in music at the UNAM (Universidad Nacional Autonoma de México). The result is a combined effort between two UNAM  postgraduate students (Hegel Pedroza and Gerardo Meza) and Iran Roman(NYU).   
+    The dataset 
 
-    All possible 138 notes of a standard tuning 22 frets guitar were recorded in each one of the 5 pickup configurations, giving a total of 690 clean tone audio files ( 58 min ).
-
-    The 690 audio files were processed through 12 different audio effects employing actual guitar gear (no emulations), summing a total of 8,280 proceed audio files ( 11 hours 30 min ).
-
-    The effects employed were divided into four categories, and each category comprised three different effects. Sometimes there wer employed more than one effect from a same guitar equipment.
+    EGFxSet is a dataset of 8,970 audio files with a 5-second duration each of all guitar notes available in a Stratoscaster guitar processed through 12 different audio effects employing actual guitar gear (no emulations).
+    
+    The effects employed were divided into four categories, and each category comprised three different effects. 
 
     Categories, Models and Effects:
 
