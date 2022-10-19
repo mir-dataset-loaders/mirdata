@@ -359,7 +359,7 @@ The following is a simple example of a generator that can be used to create a te
 
         import mirdata
         import numpy as np
-        import tensorflow as tf
+        import tensorflow as tf 
 
         def orchset_generator():
             # using the default data_home
