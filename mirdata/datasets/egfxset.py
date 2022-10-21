@@ -91,10 +91,83 @@ INDEXES = {
 
 REMOTES = {
     "zenodo": download_utils.RemoteFileMetadata(
+        #eeste archivo no existe en Zenodo tenemos varios zips no 
+        #solo uno. Por lo mismo el url no jala.
         filename="EGFxSet.zip",
         url="https://zenodo.org/record/5578807/files/EGFxSet.zip?download=1",
         checksum="dea40fd18f14d899643c4ba221b33a46",
     ),
+    "bluesDriver": download_utils.RemoteFileMetadata(
+        filename="BluesDriver.zip",
+        url="https://zenodo.org/record/7044411/files/BluesDriver.zip?download=1",
+        checksum="b1d6dce9064a25a1cff2a0c40c30a2e4",  
+    ),
+    "chorus": download_utils.RemoteFileMetadata(
+        filename="Chorus.zip",
+        url="https://zenodo.org/record/7044411/files/Chorus.zip?download=1",
+        checksum="3698b3b1756917f93dadf27517d48479", 
+    ),
+    "clean": download_utils.RemoteFileMetadata(
+        filename="Clean.zip",
+        url="https://zenodo.org/record/7044411/files/Clean.zip?download=1",
+        checksum="cdb1b401960f56becc8640387910e78a", 
+    ),
+    "digitalDelay": download_utils.RemoteFileMetadata(
+        filename="Digital-Delay.zip",
+        url="https://zenodo.org/record/7044411/files/Digital-Delay.zip?download=1",
+        checksum="4a25d57bcb0083667bade7b3c42460bc", 
+    ),
+    "flanger": download_utils.RemoteFileMetadata(
+        filename="Flanger.zip",
+        url="https://zenodo.org/record/7044411/files/Flanger.zip?download=1",
+        checksum="f3f7b39c895a400d35c5b1314a1122bd",  
+    ),
+    "hallReverb": download_utils.RemoteFileMetadata(
+        filename="Hall-Reverb.zip",
+        url="https://zenodo.org/record/7044411/files/Flanger.zip?download=1",
+        checksum="c173bebdcbed50d4bc8803e0b30d6517",  
+    ),
+    "phaser": download_utils.RemoteFileMetadata(
+        filename="Phaser.zip",
+        url="https://zenodo.org/record/7044411/files/Phaser.zip?download=1",
+        checksum="1842e2643dd34d7285a77506ca540df3", 
+    ),
+    "plateReverb": download_utils.RemoteFileMetadata(
+        filename="Plate-Reverb.zip",
+        url="https://zenodo.org/record/7044411/files/Plate-Reverb.zip?download=1",
+        checksum="abbcc68d692f323e8af6aeb8d478c40d", 
+    ),
+    "rat": download_utils.RemoteFileMetadata(
+        filename="RAT.zip",
+        url="https://zenodo.org/record/7044411/files/RAT.zip?download=1",
+        checksum="afe9fc757a51d04126c23159706f4e8e",  
+    ),
+    "spring-Reverb": download_utils.RemoteFileMetadata(
+        filename="Spring-Reverb.zip",
+        url="https://zenodo.org/record/7044411/files/Spring-Reverb.zip?download=1",
+        checksum="21afc47594ed8f37db008f313e50c634", 
+    ),
+    "sweepEcho": download_utils.RemoteFileMetadata(
+        filename="Sweep-Echo.zip",
+        url="https://zenodo.org/record/7044411/files/Sweep-Echo.zip?download=1",
+        checksum="ea6dda440e9af6a19173facdf2bf17ac", 
+    ),
+    "tapeEcho": download_utils.RemoteFileMetadata(
+        filename="TapeEcho.zip",
+        url="https://zenodo.org/record/7044411/files/TapeEcho.zip?download=1",
+        checksum="77adf4a6a8ed4eb566b2b8e77735c7dc", 
+    ),
+    "tubeScreamer": download_utils.RemoteFileMetadata(
+        filename="TubeScreamer.zip",
+        url="https://zenodo.org/record/7044411/files/TubeScreamer.zip?download=1",
+        checksum="b9c46ed65037d0bd17bdf82dc3125beb", 
+    ),
+    "metadata": download_utils.RemoteFileMetadata(
+        filename="egfxset_metadata.csv",
+        url="https://zenodo.org/record/7044411/files/egfxset_metadata.csv?download=1",
+        checksum="b9c46ed65037d0bd17bdf82dc3125beb", 
+    ),
+
 }
 
 LICENSE_INFO = "Creative Commons Attribution 4.0 International"
@@ -131,7 +204,7 @@ class Track(core.Track):
             index,
             metadata,
         )
-
+        ## aqui van el self.get_path de las anotaciones?
         self.audio_path = self.get_path("audio")
 
     @property
