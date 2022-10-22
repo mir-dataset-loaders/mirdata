@@ -14,7 +14,7 @@ def make_otmm_makam_index(dataset_data_path):
     raga_index = {"version": "1.0", "tracks": {}, "metadata": []}
     dataset_folder = "RagaDataset"
 
-    traditions = ["carnatic", "hindustani"]
+    traditions = ["Carnatic", "Hindustani"]
     for trad in traditions:
         tradition_name = trad
         for raga in glob.glob(os.path.join(dataset_data_path, trad, "audio", "*/")):
@@ -24,6 +24,8 @@ def make_otmm_makam_index(dataset_data_path):
                     if "." not in artist:
                         artist_name = artist.split("/")[-2]
                         for concert in glob.glob(os.path.join(artist, "*/")):
+                            if trad == "Hindustani":
+                                print(concert)
                             if "." not in concert:
                                 concert_name = concert.split("/")[-2]
                                 for audio_basefile in glob.glob(os.path.join(concert, "*/")):
