@@ -12,27 +12,27 @@ def test_track():
 
     expected_attributes = {
         "track_id": "Aruna_Sairam.Valli_Kanavan",
-        "audio_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/" + 
-        "audio/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/" + 
-        "Valli_Kanavan.mp3",
-        "tonic_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/" + 
-        "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/" + 
-        "Valli_Kanavan.tonic",
-        "tonic_fine_tuned_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/" + 
-        "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/" + 
-        "Valli_Kanavan.tonicFine",
-        "pitch_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/" + 
-        "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/" + 
-        "Valli_Kanavan.pitch",
-        "pitch_post_processed_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/" + 
-        "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/" + 
-        "Valli_Kanavan.pitchSilIntrpPP",
-        "nyas_segments_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/" + 
-        "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/" + 
-        "Valli_Kanavan.flatSegNyas",
-        "tani_segments_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/" + 
-        "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/" + 
-        "Valli_Kanavan.taniSegKNN",
+        "audio_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        + "audio/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
+        + "Valli_Kanavan.mp3",
+        "tonic_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
+        + "Valli_Kanavan.tonic",
+        "tonic_fine_tuned_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
+        + "Valli_Kanavan.tonicFine",
+        "pitch_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
+        + "Valli_Kanavan.pitch",
+        "pitch_post_processed_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
+        + "Valli_Kanavan.pitchSilIntrpPP",
+        "nyas_segments_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
+        + "Valli_Kanavan.flatSegNyas",
+        "tani_segments_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
+        + "Valli_Kanavan.taniSegKNN",
     }
 
     expected_property_types = {
@@ -69,7 +69,7 @@ def test_to_jams():
 
     # Tonic
     assert jam["sandbox"].tonic == 174.614116
-    assert jam["sandbox"].tonic_fine_tuned == 1.739095139598397566e+02
+    assert jam["sandbox"].tonic_fine_tuned == 1.739095139598397566e02
     assert jam["sandbox"].recording == "Valli_Kanavan"
     assert jam["sandbox"].concert == "December_Season_2001"
     assert jam["sandbox"].raga == "Sencuru\u1e6d\u1e6di"
@@ -196,9 +196,7 @@ def test_load_pitch():
             ]
         ),
     )
-    assert np.array_equal(
-        parsed_pitch.voicing, np.array([1.0, 0.0, 1.0])
-    )
+    assert np.array_equal(parsed_pitch.voicing, np.array([1.0, 0.0, 1.0]))
 
     assert compmusic_raga_dataset.load_pitch(None) is None
 

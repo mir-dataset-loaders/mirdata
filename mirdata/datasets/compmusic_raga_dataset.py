@@ -69,9 +69,7 @@ REMOTES = {
     )
 }
 
-LICENSE_INFO = (
-    "TODO"
-)
+LICENSE_INFO = "TODO"
 
 
 class Track(core.Track):
@@ -206,8 +204,14 @@ class Track(core.Track):
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            f0_data=[(self.pitch, "pitch"), (self.pitch_post_processed, "pitch_post_processed")],
-            event_data=[(self.nyas_segments, "nyas_segments"), (self.tani_segments, "tani_segments")],
+            f0_data=[
+                (self.pitch, "pitch"),
+                (self.pitch_post_processed, "pitch_post_processed"),
+            ],
+            event_data=[
+                (self.nyas_segments, "nyas_segments"),
+                (self.tani_segments, "tani_segments"),
+            ],
             metadata={
                 "tonic": self.tonic,
                 "tonic_fine_tuned": self.tonic_fine_tuned,
@@ -339,19 +343,37 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         carnatic_metadata_path = os.path.join(
-            self.data_home, "RagaDataset", "Carnatic", "_info_", "path_mbid_ragaid.json")
+            self.data_home, "RagaDataset", "Carnatic", "_info_", "path_mbid_ragaid.json"
+        )
         hindustani_metadata_path = os.path.join(
-            self.data_home, "RagaDataset", "Hindustani", "_info_", "path_mbid_ragaid.json")
+            self.data_home,
+            "RagaDataset",
+            "Hindustani",
+            "_info_",
+            "path_mbid_ragaid.json",
+        )
         carnatic_mapping_path = os.path.join(
-            self.data_home, "RagaDataset", "Carnatic", "_info_", "ragaId_to_ragaName_mapping.json")
+            self.data_home,
+            "RagaDataset",
+            "Carnatic",
+            "_info_",
+            "ragaId_to_ragaName_mapping.json",
+        )
         hindustani_mapping_path = os.path.join(
-            self.data_home, "RagaDataset", "Hindustani", "_info_", "ragaId_to_ragaName_mapping.json")
+            self.data_home,
+            "RagaDataset",
+            "Hindustani",
+            "_info_",
+            "ragaId_to_ragaName_mapping.json",
+        )
 
         metadata = {}
         metadata = self.get_metadata(
-            metadata, carnatic_metadata_path, carnatic_mapping_path, "carnatic")
+            metadata, carnatic_metadata_path, carnatic_mapping_path, "carnatic"
+        )
         metadata = self.get_metadata(
-            metadata, hindustani_metadata_path, hindustani_mapping_path, "hindustani")
+            metadata, hindustani_metadata_path, hindustani_mapping_path, "hindustani"
+        )
         return metadata
 
     @staticmethod
@@ -378,7 +400,7 @@ class Dataset(core.Dataset):
                     "mbid": song_mbid,
                     "raga": mapping[ragaid],
                     "ragaid": ragaid,
-                    "tradition": tradition
+                    "tradition": tradition,
                 }
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
