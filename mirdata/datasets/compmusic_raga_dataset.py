@@ -39,8 +39,20 @@ import numpy as np
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
+
 BIBTEX = """
-    TODO
+@software{sertan_senturk_2016_58413,
+  author       = {Sertan Şentürk and
+                  Altuğ Karakurt},
+  title        = {{otmm_makam_recognition_dataset: Ottoman-Turkish
+                   Makam Music Makam Recognition Dataset}},
+  month        = jul,
+  year         = 2016,
+  publisher    = {Zenodo},
+  version      = {dlfm2016},
+  doi          = {10.5281/zenodo.58413},
+  url          = {https://doi.org/10.5281/zenodo.58413}
+}
 """
 
 INDEXES = {
@@ -204,7 +216,7 @@ class Track(core.Track):
                 "artist": self.artist,
                 "raga": self.raga,
                 "mbid": self.mbid,
-                "raga_id": self.ragaid,
+                "ragaid": self.ragaid,
                 "tradition": self.tradition,
             },
         )
@@ -290,6 +302,8 @@ def load_segments(file_path):
     with open(file_path, "r") as f:
         reader = csv.reader(f, delimiter="\t")
         for line in reader:
+            if len(line) == 1:
+                line = line[0].split(" ")
             intervals.append([float(line[0]), float(line[1])])
             if "Nyas" in file_path:
                 events.append("nyas")
