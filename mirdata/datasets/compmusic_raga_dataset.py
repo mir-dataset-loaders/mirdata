@@ -384,7 +384,11 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         carnatic_metadata_path = os.path.join(
-            self.data_home, "RagaDataset", "Carnatic", "_info_", "path_mbid_ragaid.json"
+            self.data_home,
+            "RagaDataset",
+            "Carnatic",
+            "_info_",
+            "path_mbid_ragaid.json",
         )
         hindustani_metadata_path = os.path.join(
             self.data_home,
@@ -446,15 +450,3 @@ class Dataset(core.Dataset):
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
         return metadata
-
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
-
-    def load_tonic(self, *args, **kwargs):
-        return load_tonic(*args, **kwargs)
-
-    def load_pitch(self, *args, **kwargs):
-        return load_pitch(*args, **kwargs)
-
-    def load_tempo(self, *args, **kwargs):
-        return load_segments(*args, **kwargs)

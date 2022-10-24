@@ -1,4 +1,6 @@
+import os
 import numpy as np
+import pytest
 from mirdata import annotations
 from mirdata.datasets import compmusic_raga_dataset
 from tests.test_utils import run_track_tests
@@ -263,7 +265,7 @@ def test_load_segments():
         + "Valli_Kanavan/Valli_Kanavan_empty.taniSegKNN"
     )
     assert compmusic_raga_dataset.load_nyas_segments(empty_nyas_path) is None
-    assert compmusic_raga_dataset.load_nyas_segments(empty_tani_path) is None
+    assert compmusic_raga_dataset.load_tani_segments(empty_tani_path) is None
 
 
 def test_load_audio():
@@ -278,3 +280,13 @@ def test_load_audio():
     assert audio.shape[0] == 2
 
     assert compmusic_raga_dataset.load_audio(None) is None
+
+
+def test_dataset_metadata():
+    data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
+    dataset = compmusic_raga_dataset.Dataset(data_home)
+    carnatic_mapping_path = os.path.join(
+        data_home, "RagaDataset", "Carnatic", "_info_", "ragaId_to_ragaName_mapping.json")
+    with pytest.raises(FileNotFoundError):
+        dataset.get_metadata(
+                {}, "a/fake/path", carnatic_mapping_path, "carnatic")
