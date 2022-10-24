@@ -205,17 +205,22 @@ def test_load_segments():
     data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
     dataset = compmusic_raga_dataset.Dataset(data_home)
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
-    segments_path = track.nyas_segments_path
-    parsed_segments = compmusic_raga_dataset.load_segments(segments_path)
+    nyas_segments_path = track.nyas_segments_path
+    tani_segments_path = track.tani_segments_path
+    parsed_nyas = compmusic_raga_dataset.load_nyas_segments(nyas_segments_path)
+    parsed_tani = compmusic_raga_dataset.load_tani_segments(tani_segments_path)
 
     # Check types
-    assert type(parsed_segments) is annotations.EventData
-    assert type(parsed_segments.intervals) is np.ndarray
-    assert type(parsed_segments.events) is list
+    assert type(parsed_nyas) is annotations.EventData
+    assert type(parsed_nyas.intervals) is np.ndarray
+    assert type(parsed_nyas.events) is list
+    assert type(parsed_tani) is annotations.EventData
+    assert type(parsed_tani.intervals) is np.ndarray
+    assert type(parsed_tani.events) is list
 
     # Check values
     assert np.array_equal(
-        parsed_segments.intervals,
+        parsed_nyas.intervals,
         np.array(
             [
                 [2.16887, 2.62664],
@@ -224,8 +229,19 @@ def test_load_segments():
             ]
         ),
     )
-    assert parsed_segments.events == ["nyas", "nyas", "nyas"]
-
+    assert parsed_nyas.events == ["nyas", "nyas", "nyas"]
+    assert np.array_equal(
+        parsed_tani.intervals,
+        np.array(
+            [
+                [2.16887, 2.62664],
+                [3.04886, 3.43552],
+                [5.19106, 5.50217],
+            ]
+        ),
+    )
+    assert parsed_tani.events == ["tani", "tani", "tani"]
+    
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"

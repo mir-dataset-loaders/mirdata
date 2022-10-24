@@ -294,11 +294,12 @@ def load_pitch(fhandle):
     return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
-def load_segments(file_path):
-    """Load segments
+@io.coerce_to_string_io
+def load_nyas_segments(fhandle):
+    """Load nyas segments
 
     Args:
-        fhandle (str or file-like): Local path where the pitch annotation is stored.
+        fhandle (str or file-like): Local path where the nyas segments annotation is stored.
 
     Returns:
         EventData: segment annotation
@@ -307,19 +308,41 @@ def load_segments(file_path):
     intervals = []
     events = []
 
-    if not os.path.exists(file_path):
-        return ValueError("Segments file not found.")
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        if len(line) == 1:
+            line = line[0].split(" ")
+        intervals.append([float(line[0]), float(line[1])])
+        events.append("nyas")
 
-    with open(file_path, "r") as f:
-        reader = csv.reader(f, delimiter="\t")
-        for line in reader:
-            if len(line) == 1:
-                line = line[0].split(" ")
-            intervals.append([float(line[0]), float(line[1])])
-            if "Nyas" in file_path:
-                events.append("nyas")
-            else:
-                events.append("tani")
+    if not intervals:
+        return None
+
+    intervals = np.array(intervals)
+    events = events
+    return annotations.EventData(intervals, "s", events, "open")
+
+
+@io.coerce_to_string_io
+def load_tani_segments(fhandle):
+    """Load tani segments
+
+    Args:
+        fhandle (str or file-like): Local path where the tani segments annotation is stored.
+
+    Returns:
+        EventData: segment annotation
+
+    """
+    intervals = []
+    events = []
+
+    reader = csv.reader(fhandle, delimiter="\t")
+    for line in reader:
+        if len(line) == 1:
+            line = line[0].split(" ")
+        intervals.append([float(line[0]), float(line[1])])
+        events.append("tani")
 
     if not intervals:
         return None
