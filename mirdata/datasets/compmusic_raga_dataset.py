@@ -157,11 +157,11 @@ class Track(core.Track):
 
     @core.cached_property
     def nyas_segments(self):
-        return load_segments(self.nyas_segments_path)
+        return load_nyas_segments(self.nyas_segments_path)
 
     @core.cached_property
     def tani_segments(self):
-        return load_segments(self.tani_segments_path)
+        return load_tani_segments(self.tani_segments_path)
 
     @core.cached_property
     def recording(self):

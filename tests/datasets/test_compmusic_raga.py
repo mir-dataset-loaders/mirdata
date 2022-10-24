@@ -241,7 +241,7 @@ def test_load_segments():
         ),
     )
     assert parsed_tani.events == ["tani", "tani", "tani"]
-    
+
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
