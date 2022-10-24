@@ -8,9 +8,13 @@
     associated rāga labels. These two datasets can be used to develop and evaluate approaches 
     for performing automatic rāga recognition in Indian art music.
 
-    These datasets are derived from the CompMusic corpora of Indian art music, for which each 
-    recording is associated with a MBID. With the MBID other information can be obtained using 
-    the Dunya API. 
+    These datasets are derived from the CompMusic corpora of Indian Art Music. Therefore, the
+    dataset has been compiled at the Music Technology Group, by a group of researchers working
+    on the computational analysis of Carnatic and Hindustani music within the framework of the
+    ERC-funded CompMusic project. 
+    
+    Each recording is associated with a MBID. With the MBID other information can be obtained 
+    using the Dunya API or pycompmusic. 
 
     The Carnatic subset comprises 124 hours of audio recordings and editorial metadata that 
     includes carefully curated and verified rāga labels. It contains 480 recordings belonging 
@@ -21,12 +25,12 @@
     to 30 rāgas with 10 recordings per rāga. 
 
     The dataset also includes features per each file:
-    * Tonic
-    * Tonic fine tuned
-    * Predominant pitch
-    * Post-processed pitch
-    * Nyas segments
-    * Tani segments
+    * Tonic: float indicating the recording tonic
+    * Tonic fine tuned: float indicating the manually fine-tuned recording tonic
+    * Predominant pitch: automatically-extracted predominant pitch time-series (timestamps and freq. values)
+    * Post-processed pitch: automatically-extracted and post-processed predominant pitch time-series
+    * Nyas segments: KNN-extracted segments of Nyas (start and end times provided)
+    * Tani segments: KNN-extracted segments of Tanis (start and end times provided)
 
     The dataset includes both txt files and json files that contain information about each audio 
     recording in terms of its mbid, the path of the audio/feature files and the associated rāga 
@@ -43,23 +47,21 @@ import json
 
 import librosa
 import numpy as np
+from docs.source.contributing_examples.example import DOWNLOAD_INFO
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 from smart_open import open
 
 
 BIBTEX = """
-@software{sertan_senturk_2016_58413,
-  author       = {Sertan Şentürk and
-                  Altuğ Karakurt},
-  title        = {{otmm_makam_recognition_dataset: Ottoman-Turkish
-                   Makam Music Makam Recognition Dataset}},
-  month        = jul,
+@article{gulati_2016,
+  author       = {Gulati, Sankalp and Serrà, Joan and Kaustuv Kani, Ganguli 
+                    and Sentürk, Sertan and Serra, Xavier},
+  title        = {{Time-delayed melody surfaces for raga recognition}},
   year         = 2016,
-  publisher    = {Zenodo},
-  version      = {dlfm2016},
-  doi          = {10.5281/zenodo.58413},
-  url          = {https://doi.org/10.5281/zenodo.58413}
+  pages        = 751--757,
+  journal      = {In Proceedings of the 17th International Society for Music Information 
+                    Retrieval Conference (ISMIR), New York, USA},
 }
 """
 
@@ -76,6 +78,14 @@ REMOTES = {
         checksum="TODO",
     )
 }
+
+DOWNLOAD_INFO = """While annotations and metadata are freely downloadable, the audio of this 
+    dataset has restricted access. Please access: LINK HERE and request access to the audio,
+    specifying your purpose. The audio will be shared for research purposes. In such case, when
+    access to the audio is granted, please organize the dataset as specified in the 
+    ``directory_structure.txt`` file found when you download the features and metadata using
+    the .download() method of this dataloader. 
+"""
 
 LICENSE_INFO = "TODO"
 
@@ -368,6 +378,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             indexes=INDEXES,
             remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
