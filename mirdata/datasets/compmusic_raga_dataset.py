@@ -45,6 +45,7 @@ import librosa
 import numpy as np
 
 from mirdata import annotations, core, download_utils, io, jams_utils
+from smart_open import open
 
 
 BIBTEX = """
