@@ -39,6 +39,8 @@ import librosa
 import numpy as np
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
+
 from mirdata import annotations, core, download_utils, io, jams_utils
 
 BIBTEX = """@article{RohitMA2021,
@@ -233,9 +235,3 @@ class Dataset(core.Dataset):
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
-
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
-
-    def load_onsets(self, *args, **kwargs):
-        return load_onsets(*args, **kwargs)
