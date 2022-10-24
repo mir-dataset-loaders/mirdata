@@ -47,7 +47,6 @@ import json
 
 import librosa
 import numpy as np
-from docs.source.contributing_examples.example import DOWNLOAD_INFO
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 from smart_open import open
