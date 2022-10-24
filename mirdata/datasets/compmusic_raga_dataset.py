@@ -308,7 +308,7 @@ def load_segments(file_path):
     events = []
 
     if not os.path.exists(file_path):
-        return None
+        return ValueError("Segments file not found.")
 
     with open(file_path, "r") as f:
         reader = csv.reader(f, delimiter="\t")
