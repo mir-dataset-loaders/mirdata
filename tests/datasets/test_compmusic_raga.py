@@ -286,7 +286,11 @@ def test_dataset_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
     dataset = compmusic_raga_dataset.Dataset(data_home)
     carnatic_mapping_path = os.path.join(
-        data_home, "RagaDataset", "Carnatic", "_info_", "ragaId_to_ragaName_mapping.json")
+        data_home,
+        "RagaDataset",
+        "Carnatic",
+        "_info_",
+        "ragaId_to_ragaName_mapping.json",
+    )
     with pytest.raises(FileNotFoundError):
-        dataset.get_metadata(
-                {}, "a/fake/path", carnatic_mapping_path, "carnatic")
+        dataset.get_metadata({}, "a/fake/path", carnatic_mapping_path, "carnatic")
