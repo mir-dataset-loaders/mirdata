@@ -42,16 +42,22 @@ def test_get_onsets():
     dataset = four_way_tabla.Dataset(data_home)
     track = dataset.track(default_trackid)
 
+    loaded_b = track.onsets_b
     parsed_b = four_way_tabla.load_onsets(track.onsets_b_path)
 
     # Check types
     assert type(parsed_b) == annotations.BeatData
     assert type(parsed_b.times) is np.ndarray
     assert type(parsed_b.positions) is np.ndarray
+    assert type(loaded_b) == annotations.BeatData
+    assert type(loaded_b.times) is np.ndarray
+    assert type(loaded_b.positions) is np.ndarray
 
     # Check values
     assert np.array_equal(parsed_b.times, np.array([2.395, 2.885, 65.635]))
     assert np.array_equal(parsed_b.positions, np.array([0.0, 0.0, 0.0]))
+    assert np.array_equal(loaded_b.times, np.array([2.395, 2.885, 65.635]))
+    assert np.array_equal(loaded_b.positions, np.array([0.0, 0.0, 0.0]))
     assert four_way_tabla.load_onsets(None) is None
 
     track = dataset.track("binati_SRC")
@@ -76,3 +82,15 @@ def test_to_jams():
     assert [onset.duration for onset in onsets] == [0.0, 0.0, 0.0]
     assert [onset.value for onset in onsets] == [0.0, 0.0, 0.0]
     assert [onset.confidence for onset in onsets] == [None, None, None]
+
+
+def test_load_audio():
+    default_trackid = "AHK_solo-tintal-1"
+    data_home = "tests/resources/mir_datasets/four_way_tabla"
+    dataset = four_way_tabla.Dataset(data_home)
+    track = dataset.track(default_trackid)
+    audio_path = track.audio_path
+    audio, sr = four_way_tabla.load_audio(audio_path)
+    assert sr == 44100
+    assert audio.shape == (69152,)
+    assert type(audio) is np.ndarray
