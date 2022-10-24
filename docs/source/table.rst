@@ -88,8 +88,7 @@
      - - audio: 🔑
        - annotations: ✅
      - - :ref:`f0`
-       - :ref:`pitch`
-       - :ref:`events`
+       - :ref:`phrases`
        - :ref:`tonic`
      - 780
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png

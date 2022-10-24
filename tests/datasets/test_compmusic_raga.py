@@ -225,7 +225,6 @@ def test_load_segments():
         ),
     )
     assert parsed_segments.events == ["nyas", "nyas", "nyas"]
-    assert compmusic_raga_dataset.load_segments("/a/random/path") is None
 
 
 def test_load_audio():
