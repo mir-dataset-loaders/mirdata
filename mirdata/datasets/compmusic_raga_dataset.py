@@ -1,32 +1,39 @@
-"""Saraga Dataset Loader
+"""CompMusic Raga Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
-    This dataset contains time aligned melody, rhythm and structural annotations of Carnatic Music tracks, extracted
-    from the large open Indian Art Music corpora of CompMusic.
+    Rāga datasets from CompMusicomprise two sizable datasets, one for each music tradition, 
+    Carnatic and Hindustani. These datasets comprise full length audio recordings and their 
+    associated rāga labels. These two datasets can be used to develop and evaluate approaches 
+    for performing automatic rāga recognition in Indian art music.
 
-    The dataset contains the following manual annotations referring to audio files:
+    These datasets are derived from the CompMusic corpora of Indian art music, for which each 
+    recording is associated with a MBID. With the MBID other information can be obtained using 
+    the Dunya API. 
 
-    - Section and tempo annotations stored as start and end timestamps together with the name of the section and
-      tempo during the section (in a separate file)
-    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps. 
-    - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
-      ({S, r, R, g, G, m, M, P, d, D, n, N}). 
-    - Audio features automatically extracted and stored: pitch and tonic.
-    - The annotations are stored in text files, named as the audio filename but with the respective extension at the
-      end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
+    The Carnatic subset comprises 124 hours of audio recordings and editorial metadata that 
+    includes carefully curated and verified rāga labels. It contains 480 recordings belonging 
+    to 40 rāgas with 12 recordings per rāga.
 
-    The dataset contains a total of 249 tracks.
-    A total of 168 tracks have multitrack audio.
+    The Hindustani subset comprises 116 hours of audio recordings and editorial metadata that 
+    includes carefully curated and verified rāga labels. It contains 300 recordings belonging 
+    to 30 rāgas with 10 recordings per rāga. 
 
-    The files of this dataset are shared with the following license:
-    Creative Commons Attribution Non Commercial Share Alike 4.0 International
+    The dataset also includes features per each file:
+    * Tonic
+    * Tonic fine tuned
+    * Predominant pitch
+    * Post-processed pitch
+    * Nyas segments
+    * Tani segments
 
-    Dataset compiled by: Bozkurt, B.; Srinivasamurthy, A.; Gulati, S. and Serra, X.
+    The dataset includes both txt files and json files that contain information about each audio 
+    recording in terms of its mbid, the path of the audio/feature files and the associated rāga 
+    identifier. Each rāga is assigned a unique identifier by Dunya, which is similar to the mbid 
+    in terms of purpose. A mapping of the rāga id to its transliterated name is also provided.
 
-    For more information about the dataset as well as IAM and annotations, please refer to:
-    https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
+    For more information about the dataset please refer to: https://compmusic.upf.edu/node/328
 
 """
 
@@ -288,13 +295,13 @@ def load_pitch(fhandle):
 
 
 def load_segments(file_path):
-    """Load pitch
+    """Load segments
 
     Args:
         fhandle (str or file-like): Local path where the pitch annotation is stored.
 
     Returns:
-        F0Data: pitch annotation
+        EventData: segment annotation
 
     """
     intervals = []
@@ -325,7 +332,7 @@ def load_segments(file_path):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The saraga_carnatic dataset
+    The compmusic_raga dataset
     """
 
     def __init__(self, data_home=None, version="default"):
