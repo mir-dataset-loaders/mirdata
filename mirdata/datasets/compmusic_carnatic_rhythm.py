@@ -67,7 +67,7 @@ LICENSE_INFO = (
 
 
 class Track(core.Track):
-    """Saraga Track Carnatic class
+    """CompMusic Carnatic Music Rhythm class
 
     Args:
         track_id (str): track id of the track
@@ -125,8 +125,8 @@ class Track(core.Track):
         return self._track_metadata.get("name")
 
     @core.cached_property
-    def artists(self):
-        return self._track_metadata.get("artists")
+    def artist(self):
+        return self._track_metadata.get("artist")
 
     @core.cached_property
     def release(self):
@@ -191,8 +191,21 @@ class Track(core.Track):
             audio_path=self.audio_path,
             beat_data=[(self.beats, "beats")],
             metadata={
-                "meter": self.meter
-            },
+                "meter": self.meter,
+                "mbid": self.mbid,
+                "name": self.name,
+                "artist": self.artist,
+                "release": self.release,
+                "lead_instrument_code": self.lead_instrument_code,
+                "taala": self.taala,
+                "raaga": self.raaga,
+                "start_time": self.start_time,
+                "end_time": self.end_time,
+                "length_seconds": self.length_seconds,
+                "length_minutes": self.length_minutes,
+                "num_of_beats": self.num_of_beats,
+                "num_of_samas": self.num_of_samas,
+            }
         )
 
 
@@ -258,7 +271,7 @@ def load_meter(fhandle):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The saraga_carnatic dataset
+    The compmusic_carnatic_rhythm dataset
     """
 
     def __init__(self, data_home=None, version="default"):
@@ -286,9 +299,8 @@ class Dataset(core.Dataset):
             with open(metadata_path, "rb") as fhandle:
                 reader = pd.read_excel(fhandle, sheet_name=0)
                 if self.version == "full_dataset_1.0":
-                    uid = np.array([str(x) + "_" for x in reader.loc[:, "UID"].to_list()])
-                    idxs = uid + reader.loc[:, "Name"].to_numpy()
-                    for num, idx in enumerate(idxs):
+                    uid = [str(x) for x in reader.loc[:, "UID"].to_list()]
+                    for num, idx in enumerate(uid):
                         metadata[idx] = {
                             "mbid": reader.loc[num, "MBID of the recording"],
                             "name": reader.loc[num, "Name"], 
@@ -297,18 +309,17 @@ class Dataset(core.Dataset):
                             "lead_instrument_code": reader.loc[num, "Lead Instrument Code"],
                             "taala": reader.loc[num, "Taala"],
                             "raaga": reader.loc[num, "Raaga"],
-                            "start_time": reader.loc[num, "Excerpt Start Time (s)"],
-                            "end_time": reader.loc[num, "Excerpt End Time (s)"],
-                            "length_seconds": reader.loc[num, "Length of the excerpt (s)"],
-                            "length_minutes": reader.loc[num, "Length of the excerpt (min)"],
-                            "num_of_beats": reader.loc[num, "Number of annotated beats"],
-                            "num_of_samas": reader.loc[num, "Number of samas"],
+                            "start_time": int(reader.loc[num, "Excerpt Start Time (s)"]),
+                            "end_time": int(reader.loc[num, "Excerpt End Time (s)"]),
+                            "length_seconds": int(reader.loc[num, "Length of the excerpt (s)"]),
+                            "length_minutes": float(reader.loc[num, "Length of the excerpt (min)"]),
+                            "num_of_beats": int(reader.loc[num, "Number of annotated beats"]),
+                            "num_of_samas": int(reader.loc[num, "Number of samas"]),
                         }
 
                 else:
-                    full_id = np.array([str(x) + "_" for x in reader.loc[:, "fullID"].to_list()])
-                    idxs = full_id + reader.loc[:, "Name"].to_numpy()
-                    for num, idx in enumerate(idxs):
+                    full_id = [str(x) for x in reader.loc[:, "fullID"].to_list()]
+                    for num, idx in enumerate(full_id):
                         metadata[idx] = {
                             "mbid": reader.loc[num, "MBID of the recording"],
                             "name": reader.loc[num, "Name"], 
@@ -317,8 +328,12 @@ class Dataset(core.Dataset):
                             "lead_instrument_code": reader.loc[num, "Lead Instrument Code"],
                             "taala": reader.loc[num, "Taala"],
                             "raaga": reader.loc[num, "Raaga"],
-                            "num_of_beats": reader.loc[num, "Number of annotated beats"],
-                            "num_of_samas": reader.loc[num, "Number of samas"],
+                            "start_time": "no info",
+                            "end_time": "no info",
+                            "length_seconds": "no info",
+                            "length_minutes": "no info",
+                            "num_of_beats": int(reader.loc[num, "Number of annotated beats"]),
+                            "num_of_samas": int(reader.loc[num, "Number of samas"]),
                         }
                 
         except FileNotFoundError:

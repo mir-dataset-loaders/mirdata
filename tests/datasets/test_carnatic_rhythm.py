@@ -4,22 +4,14 @@ from mirdata.datasets import compmusic_carnatic_rhythm
 from tests.test_utils import run_track_tests
 
 
-def test_track():
-    default_trackid = "1-04_Shri_Visvanatham"
+def test_track(): 
+    default_trackid = "10003"
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
-    print(dataset._metadata.keys())
-    print(track._track_metadata)
-    print(track.meter)
-    print(track.artists)
-    print(track.raaga)
-    print(track.start_time)
-
-
     expected_attributes = {
-        "track_id": "1-04_Shri_Visvanatham",
+        "track_id": "10003",
         "audio_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
         + "audio/01_10003_1-04_Shri_Visvanatham.wav",
         "beats_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
@@ -34,15 +26,15 @@ def test_track():
         "audio": tuple,
         "mbid": str,
         "name": str,
-        "artists": str,
+        "artist": str,
         "release": str,
         "lead_instrument_code": str,
         "taala": str,
         "raaga": str,
-        "start_time": None,
-        "end_time": None,
-        "length_seconds": None,
-        "length_minutes": None,
+        "start_time": str,
+        "end_time": str,
+        "length_seconds": str,
+        "length_minutes": str,
         "num_of_beats": int,
         "num_of_samas": int,
     }
@@ -52,142 +44,97 @@ def test_track():
     # test audio loading functions
     audio, sr = track.audio
     assert sr == 44100
-    assert audio.shape[0] == 2
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
-    track = dataset.track("1-04_Shri_Visvanatham")
+    track = dataset.track("10003")
     jam = track.to_jams()
 
+    print(jam)
+
     # Tonic
-    assert jam["sandbox"].tonic == 201.740890
+    assert jam["sandbox"].meter == "8/4"
 
     # Sama
-    samas = jam.search(namespace="beat")[0]["data"]
-    assert len(samas) == 3
-    assert [sama.time for sama in samas] == [4.894, 10.229, 15.724]
-    assert [sama.duration for sama in samas] == [0.0, 0.0, 0.0]
-    assert [sama.value for sama in samas] == [1, 2, 3]
-    assert [sama.confidence for sama in samas] == [None, None, None]
-
+    beats = jam.search(namespace="beat")[0]["data"]
+    assert len(beats) == 3
+    assert [beat.time for beat in beats] == [1.124172, 1.788957, 2.502540]
+    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0]
+    assert [beat.value for beat in beats] == [1, 2, 3]
+    assert [beat.confidence for beat in beats] == [None, None, None]
 
     # Metadata
-    metadata = jam["sandbox"].metadata
-    assert metadata["raaga"] == [
-        {
-            "uuid": "42dd0ccb-f92a-4622-ae5d-a3be571b4939",
-            "name": "Śrīranjani",
-            "common_name": "shri ranjani",
-        }
-    ]
-    assert metadata["form"] == [{"name": "Kriti"}]
-    assert metadata["title"] == "Bhuvini Dasudane"
-    assert metadata["work"] == [
-        {"mbid": "4d05ce9b-c45e-4c85-9eca-941d68b61132", "title": "Bhuvini Dasudane"}
-    ]
-    assert metadata["length"] == 309000
-    assert metadata["taala"] == [
-        {
-            "uuid": "c788c38a-b53a-48cb-b7bf-d11769260c4d",
-            "name": "Ādi",
-            "common_name": "adi",
-        }
-    ]
-    assert metadata["album_artists"] == [
-        {
-            "mbid": "e09b0542-84e1-45ad-b09a-a05a9ad0cb83",
-            "name": "Cherthala Ranganatha Sharma",
-        }
-    ]
-    assert metadata["mbid"] == "9f5a5452-14cb-4af0-9289-4833854ee60d"
-    assert metadata["concert"] == [
-        {
-            "mbid": "0816586d-c83e-4c79-a0aa-9b0e578f408d",
-            "title": "Cherthala Ranganatha Sharma at Arkay",
-        }
-    ]
+    assert jam["sandbox"]["mbid"] == "5769ea2f-aed4-4169-9a20-bae4cb733b8e"
+    assert jam["sandbox"]["raaga"] == "chaturdasha ragamalika"
+    assert jam["sandbox"]["taala"] == "adi"
+    assert jam["sandbox"]["name"] == "1-04_Shri_Visvanatham"
+    assert jam["sandbox"]["lead_instrument_code"] == "V"
+    assert jam["sandbox"]["start_time"] == "no info"
+    assert jam["sandbox"]["end_time"] == "no info"
+    assert jam["sandbox"]["length_seconds"] == "no info"
+    assert jam["sandbox"]["length_minutes"] == "no info"
+    assert jam["sandbox"]["num_of_beats"] == 162
+    assert jam["sandbox"]["num_of_samas"] == 21
 
 
 def test_load_meter():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
-    track = dataset.track("1-04_Shri_Visvanatham")
-    tonic_path = track.ctonic_path
+    track = dataset.track("10003")
+    tonic_path = track.meter_path
     parsed_tonic = compmusic_carnatic_rhythm.load_meter(tonic_path)
-    assert parsed_tonic == 201.740890
+    assert parsed_tonic == "8/4"
     assert compmusic_carnatic_rhythm.load_meter(None) is None
 
 
-def test_load_sama():
+def test_load_beats():
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
-    track = dataset.track("1-04_Shri_Visvanatham")
-    sama_path = track.sama_path
-    parsed_sama = compmusic_carnatic_rhythm.load_beats(sama_path)
+    track = dataset.track("10003")
+    beats_path = track.beats_path
+    parsed_beats = compmusic_carnatic_rhythm.load_beats(beats_path)
 
     # Check types
-    assert type(parsed_sama) == annotations.BeatData
-    assert type(parsed_sama.times) is np.ndarray
-    assert type(parsed_sama.positions) is np.ndarray
+    assert type(parsed_beats) == annotations.BeatData
+    assert type(parsed_beats.times) is np.ndarray
+    assert type(parsed_beats.positions) is np.ndarray
 
     # Check values
-    assert np.array_equal(parsed_sama.times, np.array([4.894, 10.229, 15.724]))
-    assert np.array_equal(parsed_sama.positions, np.array([1, 2, 3]))
-    assert compmusic_carnatic_rhythm.load_sama(None) is None
+    assert np.array_equal(parsed_beats.times, np.array([1.124172, 1.788957, 2.502540]))
+    assert np.array_equal(parsed_beats.positions, np.array([1, 2, 3]))
+    assert compmusic_carnatic_rhythm.load_beats(None) is None
 
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
-    # get dataset metadata
+    meta = dataset._metadata # get dataset metadata
+    parsed_metadata = meta["10003"] # get track metadata
 
-    assert parsed_metadata["raaga"] == [
-        {
-            "uuid": "42dd0ccb-f92a-4622-ae5d-a3be571b4939",
-            "name": "Śrīranjani",
-            "common_name": "shri ranjani",
-        }
-    ]
-    assert parsed_metadata["form"] == [{"name": "Kriti"}]
-    assert parsed_metadata["title"] == "Bhuvini Dasudane"
-    assert parsed_metadata["work"] == [
-        {"mbid": "4d05ce9b-c45e-4c85-9eca-941d68b61132", "title": "Bhuvini Dasudane"}
-    ]
-    assert parsed_metadata["length"] == 309000
-    assert parsed_metadata["taala"] == [
-        {
-            "uuid": "c788c38a-b53a-48cb-b7bf-d11769260c4d",
-            "name": "Ādi",
-            "common_name": "adi",
-        }
-    ]
-    assert parsed_metadata["album_artists"] == [
-        {
-            "mbid": "e09b0542-84e1-45ad-b09a-a05a9ad0cb83",
-            "name": "Cherthala Ranganatha Sharma",
-        }
-    ]
-    assert parsed_metadata["mbid"] == "9f5a5452-14cb-4af0-9289-4833854ee60d"
-    assert parsed_metadata["concert"] == [
-        {
-            "mbid": "0816586d-c83e-4c79-a0aa-9b0e578f408d",
-            "title": "Cherthala Ranganatha Sharma at Arkay",
-        }
-    ]
+    assert parsed_metadata["mbid"] == "5769ea2f-aed4-4169-9a20-bae4cb733b8e"
+    assert parsed_metadata["raaga"] == "chaturdasha ragamalika"
+    assert parsed_metadata["taala"] == "adi"
+    assert parsed_metadata["name"] == "1-04_Shri_Visvanatham"
+    assert parsed_metadata["lead_instrument_code"] == "V"
+    assert parsed_metadata["start_time"] == "no info"
+    assert parsed_metadata["end_time"] == "no info"
+    assert parsed_metadata["length_seconds"] == "no info"
+    assert parsed_metadata["length_minutes"] == "no info"
+    assert parsed_metadata["num_of_beats"] == 162
+    assert parsed_metadata["num_of_samas"] == 21
 
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
-    track = dataset.track("1-04_Shri_Visvanatham")
+    track = dataset.track("10003")
     audio_path = track.audio_path
     audio, sr = compmusic_carnatic_rhythm.load_audio(audio_path)
 
     assert sr == 44100
     assert type(audio) == np.ndarray
-    assert audio.shape[0] == 2
 
     assert compmusic_carnatic_rhythm.load_audio(None) is None
