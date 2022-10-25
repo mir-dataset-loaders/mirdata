@@ -1,7 +1,7 @@
 {
   "version": "subset_1.0",
   "tracks": {
-    "10003_1-04_Shri_Visvanatham": {
+    "1-04_Shri_Visvanatham": {
       "audio": [
         "CMR_subset_1.0/audio/01_10003_1-04_Shri_Visvanatham.wav",
         "ab31552f0206d68c91d20a3de6a6db66"
@@ -15,7 +15,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11001_3_Sankari_Neeve": {
+    "3_Sankari_Neeve": {
       "audio": [
         "CMR_subset_1.0/audio/01_11001_3_Sankari_Neeve.wav",
         "4f8d2a2c8d0b9d9ea400a007280e833f"
@@ -29,7 +29,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12001_8_Krishna_Nee_Begane": {
+    "8_Krishna_Nee_Begane": {
       "audio": [
         "CMR_subset_1.0/audio/01_12001_8_Krishna_Nee_Begane.wav",
         "09597b46b34e3a56b2d2002590043eff"
@@ -43,7 +43,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13001_2-02_Hecharikaga": {
+    "2-02_Hecharikaga": {
       "audio": [
         "CMR_subset_1.0/audio/01_13001_2-02_Hecharikaga.wav",
         "5b46c12e7755c869113ace2f81616979"
@@ -57,7 +57,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10004_1_Vathapi": {
+    "1_Vathapi": {
       "audio": [
         "CMR_subset_1.0/audio/02_10004_1_Vathapi.wav",
         "c244f54064e1c21b27cba5d60b9d33c8"
@@ -71,7 +71,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11004_2_Ninnuvina": {
+    "2_Ninnuvina": {
       "audio": [
         "CMR_subset_1.0/audio/02_11004_2_Ninnuvina.wav",
         "b6403d2187b7f80794bb8af5cff464e9"
@@ -85,7 +85,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12003_2-02_Pakkala_Nilabadi": {
+    "2-02_Pakkala_Nilabadi": {
       "audio": [
         "CMR_subset_1.0/audio/02_12003_2-02_Pakkala_Nilabadi.wav",
         "7b94c2d1a7757a52dd5854e34cd0a45e"
@@ -99,7 +99,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13002_2-02_Muruganin_marupeyar": {
+    "2-02_Muruganin_marupeyar": {
       "audio": [
         "CMR_subset_1.0/audio/02_13002_2-02_Muruganin_marupeyar.wav",
         "262f305e2d596aa209d1740165b5bb3b"
@@ -113,7 +113,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10005_2_Jagadanandakaraka": {
+    "2_Jagadanandakaraka": {
       "audio": [
         "CMR_subset_1.0/audio/03_10005_2_Jagadanandakaraka.wav",
         "25a5ea714dd4575ab282832064fba191"
@@ -127,7 +127,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11005_5_Nadaloludai": {
+    "5_Nadaloludai": {
       "audio": [
         "CMR_subset_1.0/audio/03_11005_5_Nadaloludai.wav",
         "984136e193aacfc011f2bf632b78a160"
@@ -141,7 +141,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12004_2-04_Viruttam_-_Drishou_Bhavaan___Taruni_Nyan___Mangalam": {
+    "2-04_Viruttam_-_Drishou_Bhavaan___Taruni_Nyan___Mangalam": {
       "audio": [
         "CMR_subset_1.0/audio/03_12004_2-04_Viruttam_-_Drishou_Bhavaan___Taruni_Nyan___Mangalam.wav",
         "0eb88a3cb1c2aab87ed6e0bb9c655d9a"
@@ -155,7 +155,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13003_02_Marivere_Dikkevvaru": {
+    "02_Marivere_Dikkevvaru": {
       "audio": [
         "CMR_subset_1.0/audio/03_13003_02_Marivere_Dikkevvaru.wav",
         "dca23be24db440f5631ad5eab75d7c46"
@@ -169,7 +169,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10007_2-01_Anandamruta_Karshini": {
+    "2-01_Anandamruta_Karshini": {
       "audio": [
         "CMR_subset_1.0/audio/04_10007_2-01_Anandamruta_Karshini.wav",
         "2fc7251532d60074642fdb8bf5d44892"
@@ -183,7 +183,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11006_48_Sendhil_Aandavan": {
+    "48_Sendhil_Aandavan": {
       "audio": [
         "CMR_subset_1.0/audio/04_11006_48_Sendhil_Aandavan.wav",
         "be59719634901c9ae907fd0a49733032"
@@ -197,7 +197,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12006_1-04_Kamalamba": {
+    "1-04_Kamalamba": {
       "audio": [
         "CMR_subset_1.0/audio/04_12006_1-04_Kamalamba.wav",
         "cbab0c310eadf6f04a36b13b423438c5"
@@ -211,7 +211,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13004_1-01_Pavanatmajagaccha": {
+    "1-01_Pavanatmajagaccha": {
       "audio": [
         "CMR_subset_1.0/audio/04_13004_1-01_Pavanatmajagaccha.wav",
         "2a592e9318e6dd8b23c2abfa31ec541f"
@@ -225,7 +225,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10008_9_Tillana": {
+    "9_Tillana": {
       "audio": [
         "CMR_subset_1.0/audio/05_10008_9_Tillana.wav",
         "7efac685d2ce641a9ddb8f0b27ecccd5"
@@ -239,7 +239,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11007_1-01_Nee_Bhakthi": {
+    "1-01_Nee_Bhakthi": {
       "audio": [
         "CMR_subset_1.0/audio/05_11007_1-01_Nee_Bhakthi.wav",
         "1b5944cd01a27005e11825515381ddf2"
@@ -253,7 +253,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12007_03_Thirukathuvam": {
+    "03_Thirukathuvam": {
       "audio": [
         "CMR_subset_1.0/audio/05_12007_03_Thirukathuvam.wav",
         "ba7b35955a16ef786d1b0b68416dbaa5"
@@ -267,7 +267,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13005_04_Nathupai": {
+    "04_Nathupai": {
       "audio": [
         "CMR_subset_1.0/audio/05_13005_04_Nathupai.wav",
         "ffaac9ddc281db21caebce80ed2c5852"
@@ -281,7 +281,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10009_1_Varnam_-_Chalamela": {
+    "1_Varnam_-_Chalamela": {
       "audio": [
         "CMR_subset_1.0/audio/06_10009_1_Varnam_-_Chalamela.wav",
         "5f6ec6118eb3bae35664235a2c8be49f"
@@ -295,7 +295,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11008_1-02_Sri_Kanchi_Nayike": {
+    "1-02_Sri_Kanchi_Nayike": {
       "audio": [
         "CMR_subset_1.0/audio/06_11008_1-02_Sri_Kanchi_Nayike.wav",
         "70950348e89e17c8a5f1d7ceeced3619"
@@ -309,7 +309,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12008_4_Muruga_Muruga": {
+    "4_Muruga_Muruga": {
       "audio": [
         "CMR_subset_1.0/audio/06_12008_4_Muruga_Muruga.wav",
         "3706ebe3e0507b697943c091aebb5b4e"
@@ -323,7 +323,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13006_8_Kommala_Koila": {
+    "8_Kommala_Koila": {
       "audio": [
         "CMR_subset_1.0/audio/06_13006_8_Kommala_Koila.wav",
         "cdac4c21624c47c220c44277f522ae1b"
@@ -337,7 +337,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10010_3_Swara_Raga": {
+    "3_Swara_Raga": {
       "audio": [
         "CMR_subset_1.0/audio/07_10010_3_Swara_Raga.wav",
         "d402c0ce0a3eaf62bed5fd4c9dfb6e60"
@@ -351,7 +351,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11010_113_Pahi_Pahi": {
+    "113_Pahi_Pahi": {
       "audio": [
         "CMR_subset_1.0/audio/07_11010_113_Pahi_Pahi.wav",
         "5af0ff4dd9028685d06b50a59f96dbd8"
@@ -365,7 +365,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12009_1-03_Sri_Matrubhutam": {
+    "1-03_Sri_Matrubhutam": {
       "audio": [
         "CMR_subset_1.0/audio/07_12009_1-03_Sri_Matrubhutam.wav",
         "c3b1ba8cf82541613af1802449f74ff1"
@@ -379,7 +379,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13007_513_Amba_Mahavani": {
+    "513_Amba_Mahavani": {
       "audio": [
         "CMR_subset_1.0/audio/07_13007_513_Amba_Mahavani.wav",
         "c39abae1fd3d65e2bc728871751b348b"
@@ -393,7 +393,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10012_2-02_Sharade_Veena_Vadana": {
+    "2-02_Sharade_Veena_Vadana": {
       "audio": [
         "CMR_subset_1.0/audio/08_10012_2-02_Sharade_Veena_Vadana.wav",
         "cc039c730f4f17c9cab0ba2e8dd8e806"
@@ -407,7 +407,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11011_313_Kaya_Roshanesham": {
+    "313_Kaya_Roshanesham": {
       "audio": [
         "CMR_subset_1.0/audio/08_11011_313_Kaya_Roshanesham.wav",
         "3b07918ce198e37ab40b8a2fad448061"
@@ -421,7 +421,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12011_04_Visalakshi": {
+    "04_Visalakshi": {
       "audio": [
         "CMR_subset_1.0/audio/08_12011_04_Visalakshi.wav",
         "f3d380e992cf688db01a56a3fd346616"
@@ -435,7 +435,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13008_1-02_Jaya_Jaya": {
+    "1-02_Jaya_Jaya": {
       "audio": [
         "CMR_subset_1.0/audio/08_13008_1-02_Jaya_Jaya.wav",
         "7d8713ba8e6b59f0b5b328f982c536a1"
@@ -449,7 +449,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10013_1113_Thillana": {
+    "1113_Thillana": {
       "audio": [
         "CMR_subset_1.0/audio/09_10013_1113_Thillana.wav",
         "e433a022ac46e16bf1f37697f872def3"
@@ -463,7 +463,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11013_3_Kamakshi": {
+    "3_Kamakshi": {
       "audio": [
         "CMR_subset_1.0/audio/09_11013_3_Kamakshi.wav",
         "c947c64c0631ac5d47108d32ba1c10db"
@@ -477,7 +477,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12012_413_Kamakshi": {
+    "413_Kamakshi": {
       "audio": [
         "CMR_subset_1.0/audio/09_12012_413_Kamakshi.wav",
         "32bdd1024dee5924071500e2141a0fdc"
@@ -491,7 +491,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13009_5_Om_Namonarayana": {
+    "5_Om_Namonarayana": {
       "audio": [
         "CMR_subset_1.0/audio/09_13009_5_Om_Namonarayana.wav",
         "7963575d39b767a4d45c5c99988b2fa6"
@@ -505,7 +505,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10014_1313_Bhagyadalakshmi": {
+    "1313_Bhagyadalakshmi": {
       "audio": [
         "CMR_subset_1.0/audio/10_10014_1313_Bhagyadalakshmi.wav",
         "0b81fc462b64bedb0dbb578bac5506e0"
@@ -519,7 +519,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11014_07_Thillana": {
+    "07_Thillana": {
       "audio": [
         "CMR_subset_1.0/audio/10_11014_07_Thillana.wav",
         "221cf0d5fb168a602b6436acd64c51b8"
@@ -533,7 +533,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12015_3_Pakkala_Nilapadi": {
+    "3_Pakkala_Nilapadi": {
       "audio": [
         "CMR_subset_1.0/audio/10_12015_3_Pakkala_Nilapadi.wav",
         "b2cb6674db6874ae31f594f026ded6d7"
@@ -547,7 +547,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13010_07_Bhogindra_Shayinam": {
+    "07_Bhogindra_Shayinam": {
       "audio": [
         "CMR_subset_1.0/audio/10_13010_07_Bhogindra_Shayinam.wav",
         "73b2bcedcc43e3aef07c200f917f7829"
@@ -561,7 +561,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10015_613_Watanala": {
+    "613_Watanala": {
       "audio": [
         "CMR_subset_1.0/audio/11_10015_613_Watanala.wav",
         "4fc5d28e090014a098dab65868d4e6ab"
@@ -575,7 +575,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11015_2_Sabapathy": {
+    "2_Sabapathy": {
       "audio": [
         "CMR_subset_1.0/audio/11_11015_2_Sabapathy.wav",
         "6f20fde59d70abe57638299572066e13"
@@ -589,7 +589,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12018_2-01_Ninne_Nammiti": {
+    "2-01_Ninne_Nammiti": {
       "audio": [
         "CMR_subset_1.0/audio/11_12018_2-01_Ninne_Nammiti.wav",
         "1980c1c8f39b72870e6218dc48c72173"
@@ -603,7 +603,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13011_4_Marivere": {
+    "4_Marivere": {
       "audio": [
         "CMR_subset_1.0/audio/11_13011_4_Marivere.wav",
         "3ca30d5652a8c2b7a43e783140ce677f"
@@ -617,7 +617,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10016_713_Kapali": {
+    "713_Kapali": {
       "audio": [
         "CMR_subset_1.0/audio/12_10016_713_Kapali.wav",
         "ca18e6d2c7c74bf7705f37d2a8b0ca63"
@@ -631,7 +631,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11016_1-03_Shankarineeve": {
+    "1-03_Shankarineeve": {
       "audio": [
         "CMR_subset_1.0/audio/12_11016_1-03_Shankarineeve.wav",
         "1eaa83866920899ce81d8fa5c3742b80"
@@ -645,7 +645,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12019_2-02_Muruga_Muruga": {
+    "2-02_Muruga_Muruga": {
       "audio": [
         "CMR_subset_1.0/audio/12_12019_2-02_Muruga_Muruga.wav",
         "3614b8d4f1fcbbcadbb35473410c0ac6"
@@ -659,7 +659,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13012_1-04_Jaya_Jaya": {
+    "1-04_Jaya_Jaya": {
       "audio": [
         "CMR_subset_1.0/audio/12_13012_1-04_Jaya_Jaya.wav",
         "dcec620f992dc67885bca3093b8bf595"
@@ -673,7 +673,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10019_04_Brochevarevarura": {
+    "04_Brochevarevarura": {
       "audio": [
         "CMR_subset_1.0/audio/13_10019_04_Brochevarevarura.wav",
         "194d52cafd089f17fa552d253e1ce58e"
@@ -687,511 +687,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11018_1_Vallabha_Nayakasya": {
-      "audio": [
-        "CMR_subset_1.0/audio/13_11018_1_Vallabha_Nayakasya.wav",
-        "5eedb0373305bed2bcff9f544b504cd3"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/13_11018_1_Vallabha_Nayakasya.beats",
-        "51b24179b7a96ccc632f30c56ca5559e"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/13_11018_1_Vallabha_Nayakasya.meter",
-        "40735ef69decd7cebd3e8be7cc186c8f"
-      ]
-    },
-    "12020_1-02_Sri_Mahaganapathi": {
-      "audio": [
-        "CMR_subset_1.0/audio/13_12020_1-02_Sri_Mahaganapathi.wav",
-        "5b83d72f3fa92a4f5e0c26b9b73da76d"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/13_12020_1-02_Sri_Mahaganapathi.beats",
-        "a090724b647689bdc08a1275e444ae82"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/13_12020_1-02_Sri_Mahaganapathi.meter",
-        "0efa76cd29585aa1d733d872fadb52e4"
-      ]
-    },
-    "13013_3_Yemaiyyarama": {
-      "audio": [
-        "CMR_subset_1.0/audio/13_13013_3_Yemaiyyarama.wav",
-        "40d613eca02bef4f84a8bee9c682c7a0"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/13_13013_3_Yemaiyyarama.beats",
-        "9262b57a49b1c448e77a3c517aadc602"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/13_13013_3_Yemaiyyarama.meter",
-        "55e13911b029af22125d9eb6e811b87c"
-      ]
-    },
-    "10021_2_Maa_Pala": {
-      "audio": [
-        "CMR_subset_1.0/audio/14_10021_2_Maa_Pala.wav",
-        "cdbe8054a062895b198cff36daf041f1"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/14_10021_2_Maa_Pala.beats",
-        "d30f385a165d65c920ededa87cf118ac"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/14_10021_2_Maa_Pala.meter",
-        "3b55c08436be9e1008bb19488c139c88"
-      ]
-    },
-    "11019_6_Lavanya_Rama": {
-      "audio": [
-        "CMR_subset_1.0/audio/14_11019_6_Lavanya_Rama.wav",
-        "cbfb382ebcb8941921efb2d1527bbcd0"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/14_11019_6_Lavanya_Rama.beats",
-        "1cec878a9b6e99049913de124f939ccb"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/14_11019_6_Lavanya_Rama.meter",
-        "40735ef69decd7cebd3e8be7cc186c8f"
-      ]
-    },
-    "12023_1-05_Janani_Ninuvina": {
-      "audio": [
-        "CMR_subset_1.0/audio/14_12023_1-05_Janani_Ninuvina.wav",
-        "67d5c3e342254fa43862c8135febb961"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/14_12023_1-05_Janani_Ninuvina.beats",
-        "c9373e1f24ec1631df9ada2b5303b78f"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/14_12023_1-05_Janani_Ninuvina.meter",
-        "0efa76cd29585aa1d733d872fadb52e4"
-      ]
-    },
-    "13014_1-03_Paripalinchu": {
-      "audio": [
-        "CMR_subset_1.0/audio/14_13014_1-03_Paripalinchu.wav",
-        "a3589d9b2b2dfaeca78fb7fe06464a8a"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/14_13014_1-03_Paripalinchu.beats",
-        "82fea634f6a1614c22f248c91a1f13fd"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/14_13014_1-03_Paripalinchu.meter",
-        "55e13911b029af22125d9eb6e811b87c"
-      ]
-    },
-    "10023_6_Thaye_Yesoda": {
-      "audio": [
-        "CMR_subset_1.0/audio/15_10023_6_Thaye_Yesoda.wav",
-        "ee0b669d5c5e36d39caf62ce96c16e37"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/15_10023_6_Thaye_Yesoda.beats",
-        "39228eb971393286104796191fa6d54f"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/15_10023_6_Thaye_Yesoda.meter",
-        "3b55c08436be9e1008bb19488c139c88"
-      ]
-    },
-    "11020_1-03_Narada_Muni": {
-      "audio": [
-        "CMR_subset_1.0/audio/15_11020_1-03_Narada_Muni.wav",
-        "c39ec0de1bf23c2b6aebbd78ac254073"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/15_11020_1-03_Narada_Muni.beats",
-        "f35b79267a18568b604da164152c3979"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/15_11020_1-03_Narada_Muni.meter",
-        "40735ef69decd7cebd3e8be7cc186c8f"
-      ]
-    },
-    "12026_3_Vandheham_Sharadham": {
-      "audio": [
-        "CMR_subset_1.0/audio/15_12026_3_Vandheham_Sharadham.wav",
-        "123175dcef6c7f069ed854b7ffb38b3d"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/15_12026_3_Vandheham_Sharadham.beats",
-        "e5a0832d8f00954632fb5a39fcf4968d"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/15_12026_3_Vandheham_Sharadham.meter",
-        "0efa76cd29585aa1d733d872fadb52e4"
-      ]
-    },
-    "13015_2-05_Sivanar_Manam": {
-      "audio": [
-        "CMR_subset_1.0/audio/15_13015_2-05_Sivanar_Manam.wav",
-        "a160f0813b22388a6991d2febf831ad2"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/15_13015_2-05_Sivanar_Manam.beats",
-        "600fa2b0756894ad68e4d0ede9c2eeae"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/15_13015_2-05_Sivanar_Manam.meter",
-        "55e13911b029af22125d9eb6e811b87c"
-      ]
-    },
-    "10025_8_Kurai_Ondrum": {
-      "audio": [
-        "CMR_subset_1.0/audio/16_10025_8_Kurai_Ondrum.wav",
-        "6b4769d696fa8cdde17c5c2a31e51bfa"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/16_10025_8_Kurai_Ondrum.beats",
-        "beae07d45bbee20aa2817df40521218a"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/16_10025_8_Kurai_Ondrum.meter",
-        "3b55c08436be9e1008bb19488c139c88"
-      ]
-    },
-    "11022_01_Maya_Tita_Swaroopini": {
-      "audio": [
-        "CMR_subset_1.0/audio/16_11022_01_Maya_Tita_Swaroopini.wav",
-        "d5b9d58606b956552aa598d50d473b57"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/16_11022_01_Maya_Tita_Swaroopini.beats",
-        "6eedaae52dbd2018bcfbc30de7398a31"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/16_11022_01_Maya_Tita_Swaroopini.meter",
-        "40735ef69decd7cebd3e8be7cc186c8f"
-      ]
-    },
-    "12028_2-01_Innamum": {
-      "audio": [
-        "CMR_subset_1.0/audio/16_12028_2-01_Innamum.wav",
-        "263c857982be3510d37cc0274ee2e405"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/16_12028_2-01_Innamum.beats",
-        "da28341f290b03f18cddc73abc40068c"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/16_12028_2-01_Innamum.meter",
-        "0efa76cd29585aa1d733d872fadb52e4"
-      ]
-    },
-    "13016_3-03_Virutham_Kandar_Anubuthi_followed_by_Muruganin_Marupeyar": {
-      "audio": [
-        "CMR_subset_1.0/audio/16_13016_3-03_Virutham_Kandar_Anubuthi_followed_by_Muruganin_Marupeyar.wav",
-        "12c520394b5256160e3394c813fbe9f8"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/16_13016_3-03_Virutham_Kandar_Anubuthi_followed_by_Muruganin_Marupeyar.beats",
-        "bd3307ea00003fe2fa0bb4a605aa5868"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/16_13016_3-03_Virutham_Kandar_Anubuthi_followed_by_Muruganin_Marupeyar.meter",
-        "55e13911b029af22125d9eb6e811b87c"
-      ]
-    },
-    "10026_2_Adi_Talam": {
-      "audio": [
-        "CMR_subset_1.0/audio/17_10026_2_Adi_Talam.wav",
-        "3e1a6dba32a585691f7bfb9b2b1714d9"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/17_10026_2_Adi_Talam.beats",
-        "c6448dfd6b862e16eea614f595a1d0e8"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/17_10026_2_Adi_Talam.meter",
-        "3b55c08436be9e1008bb19488c139c88"
-      ]
-    },
-    "11023_1-04_Nadaloludai": {
-      "audio": [
-        "CMR_subset_1.0/audio/17_11023_1-04_Nadaloludai.wav",
-        "1c4738e4d7e55c8e195cf909192218b6"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/17_11023_1-04_Nadaloludai.beats",
-        "97f9419e25b9d61ee86073cc38c52530"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/17_11023_1-04_Nadaloludai.meter",
-        "40735ef69decd7cebd3e8be7cc186c8f"
-      ]
-    },
-    "12029_3_Sree_Ganesha": {
-      "audio": [
-        "CMR_subset_1.0/audio/17_12029_3_Sree_Ganesha.wav",
-        "2e0624510f3e841e7f12c47eafab6e95"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/17_12029_3_Sree_Ganesha.beats",
-        "f60d99b3e1a66ca9ee8da982fb104797"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/17_12029_3_Sree_Ganesha.meter",
-        "0efa76cd29585aa1d733d872fadb52e4"
-      ]
-    },
-    "13017_10_Laali": {
-      "audio": [
-        "CMR_subset_1.0/audio/17_13017_10_Laali.wav",
-        "3b7cb2e101a24292657b36c7942360e5"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/17_13017_10_Laali.beats",
-        "0663c0829a75a4db469f7e6562ebe177"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/17_13017_10_Laali.meter",
-        "55e13911b029af22125d9eb6e811b87c"
-      ]
-    },
-    "10027_1-01_Varnam": {
-      "audio": [
-        "CMR_subset_1.0/audio/18_10027_1-01_Varnam.wav",
-        "1798517c7959bcfb86bf9072b350b22f"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/18_10027_1-01_Varnam.beats",
-        "229b5f5c52ecaaf7b8ad1f09627946c2"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/18_10027_1-01_Varnam.meter",
-        "3b55c08436be9e1008bb19488c139c88"
-      ]
-    },
-    "11027_2_Santhana_Gopalakrishnam": {
-      "audio": [
-        "CMR_subset_1.0/audio/18_11027_2_Santhana_Gopalakrishnam.wav",
-        "d867740a1019544b48367dd5d2d942cd"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/18_11027_2_Santhana_Gopalakrishnam.beats",
-        "32542923bfdc3c79ec8ef6d5d447b846"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/18_11027_2_Santhana_Gopalakrishnam.meter",
-        "40735ef69decd7cebd3e8be7cc186c8f"
-      ]
-    },
-    "12032_04_Endraikku_Sivakrupai": {
-      "audio": [
-        "CMR_subset_1.0/audio/18_12032_04_Endraikku_Sivakrupai.wav",
-        "c35799406353eadbb943e6c6d456c997"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/18_12032_04_Endraikku_Sivakrupai.beats",
-        "ad36ec591741e193fef3ea8ab4d5af21"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/18_12032_04_Endraikku_Sivakrupai.meter",
-        "0efa76cd29585aa1d733d872fadb52e4"
-      ]
-    },
-    "13018_11_Laali": {
-      "audio": [
-        "CMR_subset_1.0/audio/18_13018_11_Laali.wav",
-        "bcdf69499055a9f99c9b3498b22334dc"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/18_13018_11_Laali.beats",
-        "8be428a7f1f0acd152e504790a6355bb"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/18_13018_11_Laali.meter",
-        "55e13911b029af22125d9eb6e811b87c"
-      ]
-    },
-    "10028_1_Varnam": {
-      "audio": [
-        "CMR_subset_1.0/audio/19_10028_1_Varnam.wav",
-        "64e269d89e96312f80021e25b717182b"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/19_10028_1_Varnam.beats",
-        "cb01b1c035f06fd6abacbec7e0b51b50"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/19_10028_1_Varnam.meter",
-        "3b55c08436be9e1008bb19488c139c88"
-      ]
-    },
-    "11028_1-02_Re_Re_Manasa_Bhajare": {
-      "audio": [
-        "CMR_subset_1.0/audio/19_11028_1-02_Re_Re_Manasa_Bhajare.wav",
-        "c8860eb6b5bae43e5b405404c2c890e4"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/19_11028_1-02_Re_Re_Manasa_Bhajare.beats",
-        "ddeb687458e37550024abb6c0923f3c6"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/19_11028_1-02_Re_Re_Manasa_Bhajare.meter",
-        "40735ef69decd7cebd3e8be7cc186c8f"
-      ]
-    },
-    "12033_9_Laali": {
-      "audio": [
-        "CMR_subset_1.0/audio/19_12033_9_Laali.wav",
-        "1e9b42e482d9508377cc2423bfe7d791"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/19_12033_9_Laali.beats",
-        "a9c98d337f3ac6ac4b90dec613855b43"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/19_12033_9_Laali.meter",
-        "0efa76cd29585aa1d733d872fadb52e4"
-      ]
-    },
-    "13019_13_Pavvalimpu": {
-      "audio": [
-        "CMR_subset_1.0/audio/19_13019_13_Pavvalimpu.wav",
-        "313b9d789d05efb891c55e01b57701b1"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/19_13019_13_Pavvalimpu.beats",
-        "57135d296b219da62d4904613b35d9f8"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/19_13019_13_Pavvalimpu.meter",
-        "55e13911b029af22125d9eb6e811b87c"
-      ]
-    },
-    "10031_7_Samaja_Vara_Gamana": {
-      "audio": [
-        "CMR_subset_1.0/audio/20_10031_7_Samaja_Vara_Gamana.wav",
-        "4eda1ddaf8d15886ecb7c0efd7f2c58c"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/20_10031_7_Samaja_Vara_Gamana.beats",
-        "ed772d9838fae9c38b9afc03f6345055"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/20_10031_7_Samaja_Vara_Gamana.meter",
-        "3b55c08436be9e1008bb19488c139c88"
-      ]
-    },
-    "11029_6-02_Raagaratna_malikache": {
-      "audio": [
-        "CMR_subset_1.0/audio/20_11029_6-02_Raagaratna_malikache.wav",
-        "ee53684adac769d6e90345833c3ee537"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/20_11029_6-02_Raagaratna_malikache.beats",
-        "3abe8f511bbdbad791be06bf73e28bf6"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/20_11029_6-02_Raagaratna_malikache.meter",
-        "40735ef69decd7cebd3e8be7cc186c8f"
-      ]
-    },
-    "12034_2_Janani_Ninnuvina": {
-      "audio": [
-        "CMR_subset_1.0/audio/20_12034_2_Janani_Ninnuvina.wav",
-        "59c40d1b6c40a033701fd129fd1e7f2a"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/20_12034_2_Janani_Ninnuvina.beats",
-        "aaac6399036d1c29dd168b9860d7fc61"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/20_12034_2_Janani_Ninnuvina.meter",
-        "0efa76cd29585aa1d733d872fadb52e4"
-      ]
-    },
-    "13020_16_Melokovayya": {
-      "audio": [
-        "CMR_subset_1.0/audio/20_13020_16_Melokovayya.wav",
-        "aa6f39c7fb868adcac6483c5ceb1395c"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/20_13020_16_Melokovayya.beats",
-        "f184b5cc862d2eb66780a410d736661a"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/20_13020_16_Melokovayya.meter",
-        "55e13911b029af22125d9eb6e811b87c"
-      ]
-    },
-    "10034_3_Maamavthu_Shree": {
-      "audio": [
-        "CMR_subset_1.0/audio/21_10034_3_Maamavthu_Shree.wav",
-        "96d92d3de8d4377a1b9a6ef24eaa1b61"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/21_10034_3_Maamavthu_Shree.beats",
-        "e3fed37b0668b88fb7466a1c08c2c803"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/21_10034_3_Maamavthu_Shree.meter",
-        "3b55c08436be9e1008bb19488c139c88"
-      ]
-    },
-    "11033_2_Korinavara": {
-      "audio": [
-        "CMR_subset_1.0/audio/21_11033_2_Korinavara.wav",
-        "c342e246ee45f5d164f31f741a9ca13c"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/21_11033_2_Korinavara.beats",
-        "2858d880f31b75debc48b2a50ebe76f7"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/21_11033_2_Korinavara.meter",
-        "40735ef69decd7cebd3e8be7cc186c8f"
-      ]
-    },
-    "12035_1_Nidhichala": {
-      "audio": [
-        "CMR_subset_1.0/audio/21_12035_1_Nidhichala.wav",
-        "a750f0644e4c2bb6f795b79df4dd4dbd"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/21_12035_1_Nidhichala.beats",
-        "2e25f1274bc6767816aba21cd151da6c"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/21_12035_1_Nidhichala.meter",
-        "0efa76cd29585aa1d733d872fadb52e4"
-      ]
-    },
-    "13021_18_Mangalam": {
-      "audio": [
-        "CMR_subset_1.0/audio/21_13021_18_Mangalam.wav",
-        "93e59bb7d86ba0aca189f531a14eea1b"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/21_13021_18_Mangalam.beats",
-        "a14a06a814442bd7fb7d16503147b474"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/21_13021_18_Mangalam.meter",
-        "55e13911b029af22125d9eb6e811b87c"
-      ]
-    },
-    "10039_2_Swaraavali": {
-      "audio": [
-        "CMR_subset_1.0/audio/22_10039_2_Swaraavali.wav",
-        "883da02af34cff35357c084b341881e0"
-      ],
-      "beats": [
-        "CMR_subset_1.0/annotations/beats/22_10039_2_Swaraavali.beats",
-        "fc7c1db92b284be5f2a53b17a6c7dd07"
-      ],
-      "meter": [
-        "CMR_subset_1.0/annotations/meter/22_10039_2_Swaraavali.meter",
-        "3b55c08436be9e1008bb19488c139c88"
-      ]
-    },
-    "11035_1_Vallabha_Nayakasya": {
+    "1_Vallabha_Nayakasya": {
       "audio": [
         "CMR_subset_1.0/audio/22_11035_1_Vallabha_Nayakasya.wav",
         "8cbcde65be81eb439abb053e15c601ae"
@@ -1205,7 +701,497 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12036_2_Yarukkahilum": {
+    "1-02_Sri_Mahaganapathi": {
+      "audio": [
+        "CMR_subset_1.0/audio/13_12020_1-02_Sri_Mahaganapathi.wav",
+        "5b83d72f3fa92a4f5e0c26b9b73da76d"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/13_12020_1-02_Sri_Mahaganapathi.beats",
+        "a090724b647689bdc08a1275e444ae82"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/13_12020_1-02_Sri_Mahaganapathi.meter",
+        "0efa76cd29585aa1d733d872fadb52e4"
+      ]
+    },
+    "3_Yemaiyyarama": {
+      "audio": [
+        "CMR_subset_1.0/audio/13_13013_3_Yemaiyyarama.wav",
+        "40d613eca02bef4f84a8bee9c682c7a0"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/13_13013_3_Yemaiyyarama.beats",
+        "9262b57a49b1c448e77a3c517aadc602"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/13_13013_3_Yemaiyyarama.meter",
+        "55e13911b029af22125d9eb6e811b87c"
+      ]
+    },
+    "2_Maa_Pala": {
+      "audio": [
+        "CMR_subset_1.0/audio/14_10021_2_Maa_Pala.wav",
+        "cdbe8054a062895b198cff36daf041f1"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/14_10021_2_Maa_Pala.beats",
+        "d30f385a165d65c920ededa87cf118ac"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/14_10021_2_Maa_Pala.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "6_Lavanya_Rama": {
+      "audio": [
+        "CMR_subset_1.0/audio/14_11019_6_Lavanya_Rama.wav",
+        "cbfb382ebcb8941921efb2d1527bbcd0"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/14_11019_6_Lavanya_Rama.beats",
+        "1cec878a9b6e99049913de124f939ccb"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/14_11019_6_Lavanya_Rama.meter",
+        "40735ef69decd7cebd3e8be7cc186c8f"
+      ]
+    },
+    "1-05_Janani_Ninuvina": {
+      "audio": [
+        "CMR_subset_1.0/audio/14_12023_1-05_Janani_Ninuvina.wav",
+        "67d5c3e342254fa43862c8135febb961"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/14_12023_1-05_Janani_Ninuvina.beats",
+        "c9373e1f24ec1631df9ada2b5303b78f"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/14_12023_1-05_Janani_Ninuvina.meter",
+        "0efa76cd29585aa1d733d872fadb52e4"
+      ]
+    },
+    "1-03_Paripalinchu": {
+      "audio": [
+        "CMR_subset_1.0/audio/14_13014_1-03_Paripalinchu.wav",
+        "a3589d9b2b2dfaeca78fb7fe06464a8a"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/14_13014_1-03_Paripalinchu.beats",
+        "82fea634f6a1614c22f248c91a1f13fd"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/14_13014_1-03_Paripalinchu.meter",
+        "55e13911b029af22125d9eb6e811b87c"
+      ]
+    },
+    "6_Thaye_Yesoda": {
+      "audio": [
+        "CMR_subset_1.0/audio/15_10023_6_Thaye_Yesoda.wav",
+        "ee0b669d5c5e36d39caf62ce96c16e37"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/15_10023_6_Thaye_Yesoda.beats",
+        "39228eb971393286104796191fa6d54f"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/15_10023_6_Thaye_Yesoda.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "1-03_Narada_Muni": {
+      "audio": [
+        "CMR_subset_1.0/audio/15_11020_1-03_Narada_Muni.wav",
+        "c39ec0de1bf23c2b6aebbd78ac254073"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/15_11020_1-03_Narada_Muni.beats",
+        "f35b79267a18568b604da164152c3979"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/15_11020_1-03_Narada_Muni.meter",
+        "40735ef69decd7cebd3e8be7cc186c8f"
+      ]
+    },
+    "3_Vandheham_Sharadham": {
+      "audio": [
+        "CMR_subset_1.0/audio/15_12026_3_Vandheham_Sharadham.wav",
+        "123175dcef6c7f069ed854b7ffb38b3d"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/15_12026_3_Vandheham_Sharadham.beats",
+        "e5a0832d8f00954632fb5a39fcf4968d"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/15_12026_3_Vandheham_Sharadham.meter",
+        "0efa76cd29585aa1d733d872fadb52e4"
+      ]
+    },
+    "2-05_Sivanar_Manam": {
+      "audio": [
+        "CMR_subset_1.0/audio/15_13015_2-05_Sivanar_Manam.wav",
+        "a160f0813b22388a6991d2febf831ad2"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/15_13015_2-05_Sivanar_Manam.beats",
+        "600fa2b0756894ad68e4d0ede9c2eeae"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/15_13015_2-05_Sivanar_Manam.meter",
+        "55e13911b029af22125d9eb6e811b87c"
+      ]
+    },
+    "8_Kurai_Ondrum": {
+      "audio": [
+        "CMR_subset_1.0/audio/16_10025_8_Kurai_Ondrum.wav",
+        "6b4769d696fa8cdde17c5c2a31e51bfa"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/16_10025_8_Kurai_Ondrum.beats",
+        "beae07d45bbee20aa2817df40521218a"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/16_10025_8_Kurai_Ondrum.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "01_Maya_Tita_Swaroopini": {
+      "audio": [
+        "CMR_subset_1.0/audio/16_11022_01_Maya_Tita_Swaroopini.wav",
+        "d5b9d58606b956552aa598d50d473b57"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/16_11022_01_Maya_Tita_Swaroopini.beats",
+        "6eedaae52dbd2018bcfbc30de7398a31"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/16_11022_01_Maya_Tita_Swaroopini.meter",
+        "40735ef69decd7cebd3e8be7cc186c8f"
+      ]
+    },
+    "2-01_Innamum": {
+      "audio": [
+        "CMR_subset_1.0/audio/16_12028_2-01_Innamum.wav",
+        "263c857982be3510d37cc0274ee2e405"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/16_12028_2-01_Innamum.beats",
+        "da28341f290b03f18cddc73abc40068c"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/16_12028_2-01_Innamum.meter",
+        "0efa76cd29585aa1d733d872fadb52e4"
+      ]
+    },
+    "3-03_Virutham_Kandar_Anubuthi_followed_by_Muruganin_Marupeyar": {
+      "audio": [
+        "CMR_subset_1.0/audio/16_13016_3-03_Virutham_Kandar_Anubuthi_followed_by_Muruganin_Marupeyar.wav",
+        "12c520394b5256160e3394c813fbe9f8"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/16_13016_3-03_Virutham_Kandar_Anubuthi_followed_by_Muruganin_Marupeyar.beats",
+        "bd3307ea00003fe2fa0bb4a605aa5868"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/16_13016_3-03_Virutham_Kandar_Anubuthi_followed_by_Muruganin_Marupeyar.meter",
+        "55e13911b029af22125d9eb6e811b87c"
+      ]
+    },
+    "2_Adi_Talam": {
+      "audio": [
+        "CMR_subset_1.0/audio/17_10026_2_Adi_Talam.wav",
+        "3e1a6dba32a585691f7bfb9b2b1714d9"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/17_10026_2_Adi_Talam.beats",
+        "c6448dfd6b862e16eea614f595a1d0e8"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/17_10026_2_Adi_Talam.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "1-04_Nadaloludai": {
+      "audio": [
+        "CMR_subset_1.0/audio/17_11023_1-04_Nadaloludai.wav",
+        "1c4738e4d7e55c8e195cf909192218b6"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/17_11023_1-04_Nadaloludai.beats",
+        "97f9419e25b9d61ee86073cc38c52530"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/17_11023_1-04_Nadaloludai.meter",
+        "40735ef69decd7cebd3e8be7cc186c8f"
+      ]
+    },
+    "3_Sree_Ganesha": {
+      "audio": [
+        "CMR_subset_1.0/audio/17_12029_3_Sree_Ganesha.wav",
+        "2e0624510f3e841e7f12c47eafab6e95"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/17_12029_3_Sree_Ganesha.beats",
+        "f60d99b3e1a66ca9ee8da982fb104797"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/17_12029_3_Sree_Ganesha.meter",
+        "0efa76cd29585aa1d733d872fadb52e4"
+      ]
+    },
+    "10_Laali": {
+      "audio": [
+        "CMR_subset_1.0/audio/17_13017_10_Laali.wav",
+        "3b7cb2e101a24292657b36c7942360e5"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/17_13017_10_Laali.beats",
+        "0663c0829a75a4db469f7e6562ebe177"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/17_13017_10_Laali.meter",
+        "55e13911b029af22125d9eb6e811b87c"
+      ]
+    },
+    "1-01_Varnam": {
+      "audio": [
+        "CMR_subset_1.0/audio/18_10027_1-01_Varnam.wav",
+        "1798517c7959bcfb86bf9072b350b22f"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/18_10027_1-01_Varnam.beats",
+        "229b5f5c52ecaaf7b8ad1f09627946c2"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/18_10027_1-01_Varnam.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "2_Santhana_Gopalakrishnam": {
+      "audio": [
+        "CMR_subset_1.0/audio/18_11027_2_Santhana_Gopalakrishnam.wav",
+        "d867740a1019544b48367dd5d2d942cd"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/18_11027_2_Santhana_Gopalakrishnam.beats",
+        "32542923bfdc3c79ec8ef6d5d447b846"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/18_11027_2_Santhana_Gopalakrishnam.meter",
+        "40735ef69decd7cebd3e8be7cc186c8f"
+      ]
+    },
+    "04_Endraikku_Sivakrupai": {
+      "audio": [
+        "CMR_subset_1.0/audio/18_12032_04_Endraikku_Sivakrupai.wav",
+        "c35799406353eadbb943e6c6d456c997"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/18_12032_04_Endraikku_Sivakrupai.beats",
+        "ad36ec591741e193fef3ea8ab4d5af21"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/18_12032_04_Endraikku_Sivakrupai.meter",
+        "0efa76cd29585aa1d733d872fadb52e4"
+      ]
+    },
+    "11_Laali": {
+      "audio": [
+        "CMR_subset_1.0/audio/18_13018_11_Laali.wav",
+        "bcdf69499055a9f99c9b3498b22334dc"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/18_13018_11_Laali.beats",
+        "8be428a7f1f0acd152e504790a6355bb"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/18_13018_11_Laali.meter",
+        "55e13911b029af22125d9eb6e811b87c"
+      ]
+    },
+    "1_Varnam": {
+      "audio": [
+        "CMR_subset_1.0/audio/19_10028_1_Varnam.wav",
+        "64e269d89e96312f80021e25b717182b"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/19_10028_1_Varnam.beats",
+        "cb01b1c035f06fd6abacbec7e0b51b50"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/19_10028_1_Varnam.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "1-02_Re_Re_Manasa_Bhajare": {
+      "audio": [
+        "CMR_subset_1.0/audio/19_11028_1-02_Re_Re_Manasa_Bhajare.wav",
+        "c8860eb6b5bae43e5b405404c2c890e4"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/19_11028_1-02_Re_Re_Manasa_Bhajare.beats",
+        "ddeb687458e37550024abb6c0923f3c6"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/19_11028_1-02_Re_Re_Manasa_Bhajare.meter",
+        "40735ef69decd7cebd3e8be7cc186c8f"
+      ]
+    },
+    "9_Laali": {
+      "audio": [
+        "CMR_subset_1.0/audio/19_12033_9_Laali.wav",
+        "1e9b42e482d9508377cc2423bfe7d791"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/19_12033_9_Laali.beats",
+        "a9c98d337f3ac6ac4b90dec613855b43"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/19_12033_9_Laali.meter",
+        "0efa76cd29585aa1d733d872fadb52e4"
+      ]
+    },
+    "13_Pavvalimpu": {
+      "audio": [
+        "CMR_subset_1.0/audio/19_13019_13_Pavvalimpu.wav",
+        "313b9d789d05efb891c55e01b57701b1"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/19_13019_13_Pavvalimpu.beats",
+        "57135d296b219da62d4904613b35d9f8"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/19_13019_13_Pavvalimpu.meter",
+        "55e13911b029af22125d9eb6e811b87c"
+      ]
+    },
+    "7_Samaja_Vara_Gamana": {
+      "audio": [
+        "CMR_subset_1.0/audio/20_10031_7_Samaja_Vara_Gamana.wav",
+        "4eda1ddaf8d15886ecb7c0efd7f2c58c"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/20_10031_7_Samaja_Vara_Gamana.beats",
+        "ed772d9838fae9c38b9afc03f6345055"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/20_10031_7_Samaja_Vara_Gamana.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "6-02_Raagaratna_malikache": {
+      "audio": [
+        "CMR_subset_1.0/audio/20_11029_6-02_Raagaratna_malikache.wav",
+        "ee53684adac769d6e90345833c3ee537"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/20_11029_6-02_Raagaratna_malikache.beats",
+        "3abe8f511bbdbad791be06bf73e28bf6"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/20_11029_6-02_Raagaratna_malikache.meter",
+        "40735ef69decd7cebd3e8be7cc186c8f"
+      ]
+    },
+    "2_Janani_Ninnuvina": {
+      "audio": [
+        "CMR_subset_1.0/audio/20_12034_2_Janani_Ninnuvina.wav",
+        "59c40d1b6c40a033701fd129fd1e7f2a"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/20_12034_2_Janani_Ninnuvina.beats",
+        "aaac6399036d1c29dd168b9860d7fc61"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/20_12034_2_Janani_Ninnuvina.meter",
+        "0efa76cd29585aa1d733d872fadb52e4"
+      ]
+    },
+    "16_Melokovayya": {
+      "audio": [
+        "CMR_subset_1.0/audio/20_13020_16_Melokovayya.wav",
+        "aa6f39c7fb868adcac6483c5ceb1395c"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/20_13020_16_Melokovayya.beats",
+        "f184b5cc862d2eb66780a410d736661a"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/20_13020_16_Melokovayya.meter",
+        "55e13911b029af22125d9eb6e811b87c"
+      ]
+    },
+    "3_Maamavthu_Shree": {
+      "audio": [
+        "CMR_subset_1.0/audio/21_10034_3_Maamavthu_Shree.wav",
+        "96d92d3de8d4377a1b9a6ef24eaa1b61"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/21_10034_3_Maamavthu_Shree.beats",
+        "e3fed37b0668b88fb7466a1c08c2c803"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/21_10034_3_Maamavthu_Shree.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "2_Korinavara": {
+      "audio": [
+        "CMR_subset_1.0/audio/21_11033_2_Korinavara.wav",
+        "c342e246ee45f5d164f31f741a9ca13c"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/21_11033_2_Korinavara.beats",
+        "2858d880f31b75debc48b2a50ebe76f7"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/21_11033_2_Korinavara.meter",
+        "40735ef69decd7cebd3e8be7cc186c8f"
+      ]
+    },
+    "1_Nidhichala": {
+      "audio": [
+        "CMR_subset_1.0/audio/21_12035_1_Nidhichala.wav",
+        "a750f0644e4c2bb6f795b79df4dd4dbd"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/21_12035_1_Nidhichala.beats",
+        "2e25f1274bc6767816aba21cd151da6c"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/21_12035_1_Nidhichala.meter",
+        "0efa76cd29585aa1d733d872fadb52e4"
+      ]
+    },
+    "18_Mangalam": {
+      "audio": [
+        "CMR_subset_1.0/audio/21_13021_18_Mangalam.wav",
+        "93e59bb7d86ba0aca189f531a14eea1b"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/21_13021_18_Mangalam.beats",
+        "a14a06a814442bd7fb7d16503147b474"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/21_13021_18_Mangalam.meter",
+        "55e13911b029af22125d9eb6e811b87c"
+      ]
+    },
+    "2_Swaraavali": {
+      "audio": [
+        "CMR_subset_1.0/audio/22_10039_2_Swaraavali.wav",
+        "883da02af34cff35357c084b341881e0"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/22_10039_2_Swaraavali.beats",
+        "fc7c1db92b284be5f2a53b17a6c7dd07"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/22_10039_2_Swaraavali.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "2_Yarukkahilum": {
       "audio": [
         "CMR_subset_1.0/audio/22_12036_2_Yarukkahilum.wav",
         "51bce77f35838316b02325806e132fed"
@@ -1219,7 +1205,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13022_2_Hechirakaga_Rara": {
+    "2_Hechirakaga_Rara": {
       "audio": [
         "CMR_subset_1.0/audio/22_13022_2_Hechirakaga_Rara.wav",
         "210219cd0855d91c53b7cc96f503f525"
@@ -1233,7 +1219,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10040_4_Mohanakrishnana": {
+    "4_Mohanakrishnana": {
       "audio": [
         "CMR_subset_1.0/audio/23_10040_4_Mohanakrishnana.wav",
         "8fe3231f990238506e283c721048dac2"
@@ -1247,7 +1233,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11036_3_Sobhillu_Sapthaswara": {
+    "3_Sobhillu_Sapthaswara": {
       "audio": [
         "CMR_subset_1.0/audio/23_11036_3_Sobhillu_Sapthaswara.wav",
         "351ea51039abcc862e3ebf02cc4203b8"
@@ -1261,7 +1247,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12037_03_Ni_Cittamu": {
+    "03_Ni_Cittamu": {
       "audio": [
         "CMR_subset_1.0/audio/23_12037_03_Ni_Cittamu.wav",
         "42de8bfc5a1207585a2c375dc7a1072c"
@@ -1275,7 +1261,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13023_3_Gauri_Kalyana-Kurinji": {
+    "3_Gauri_Kalyana-Kurinji": {
       "audio": [
         "CMR_subset_1.0/audio/23_13023_3_Gauri_Kalyana-Kurinji.wav",
         "d92ce0f67673245099f2d36acdb4ae8b"
@@ -1289,7 +1275,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10041_7_Jaawali_Praana_naathan": {
+    "7_Jaawali_Praana_naathan": {
       "audio": [
         "CMR_subset_1.0/audio/24_10041_7_Jaawali_Praana_naathan.wav",
         "05ca51f946e8f24b76354a6a5636e0e8"
@@ -1303,7 +1289,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11038_4_Sambho_Mahadeva": {
+    "4_Sambho_Mahadeva": {
       "audio": [
         "CMR_subset_1.0/audio/24_11038_4_Sambho_Mahadeva.wav",
         "7bd16394faa3be8a7514561e023c3bd8"
@@ -1317,7 +1303,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12042_3_Sri_Mathrubhootham": {
+    "3_Sri_Mathrubhootham": {
       "audio": [
         "CMR_subset_1.0/audio/24_12042_3_Sri_Mathrubhootham.wav",
         "1234f3f9b392f4adf3a6cc434f00fc70"
@@ -1331,7 +1317,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13024_10-01_Vaa_Velava": {
+    "10-01_Vaa_Velava": {
       "audio": [
         "CMR_subset_1.0/audio/24_13024_10-01_Vaa_Velava.wav",
         "d09d7ef76cfbce031f5d5bc3c3a28ced"
@@ -1345,7 +1331,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10042_02_Narayanathe_Namonamo": {
+    "02_Narayanathe_Namonamo": {
       "audio": [
         "CMR_subset_1.0/audio/25_10042_02_Narayanathe_Namonamo.wav",
         "7373781b48d10683cdbb6c2f5355b9aa"
@@ -1359,7 +1345,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11041_4_Maathangisri": {
+    "4_Maathangisri": {
       "audio": [
         "CMR_subset_1.0/audio/25_11041_4_Maathangisri.wav",
         "a7eed14fa47036cdb2a57a775844c215"
@@ -1373,7 +1359,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12043_1-04_Anandesvarena": {
+    "1-04_Anandesvarena": {
       "audio": [
         "CMR_subset_1.0/audio/25_12043_1-04_Anandesvarena.wav",
         "bffefd7431064b1e1b9439eb3793baf7"
@@ -1387,7 +1373,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13025_4_Amma_Ravamma": {
+    "4_Amma_Ravamma": {
       "audio": [
         "CMR_subset_1.0/audio/25_13025_4_Amma_Ravamma.wav",
         "51a7ca9043c83c5257ade2061b50e406"
@@ -1401,7 +1387,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10043_1_Jalajakshi_Varnam": {
+    "1_Jalajakshi_Varnam": {
       "audio": [
         "CMR_subset_1.0/audio/26_10043_1_Jalajakshi_Varnam.wav",
         "80123a4f481b84b529b287883032a007"
@@ -1415,7 +1401,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11042_7_Pazhani": {
+    "7_Pazhani": {
       "audio": [
         "CMR_subset_1.0/audio/26_11042_7_Pazhani.wav",
         "d5c29951fc1a0ce71718666789d86482"
@@ -1429,7 +1415,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12044_2-02_Navasiddhi_Petralum": {
+    "2-02_Navasiddhi_Petralum": {
       "audio": [
         "CMR_subset_1.0/audio/26_12044_2-02_Navasiddhi_Petralum.wav",
         "2f1f9c4ba42a69dcec3274e3560b408d"
@@ -1443,7 +1429,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13026_2_Anupama_Gunambudhi": {
+    "2_Anupama_Gunambudhi": {
       "audio": [
         "CMR_subset_1.0/audio/26_13026_2_Anupama_Gunambudhi.wav",
         "e0c90487f9d34269b4c40f295f4242cf"
@@ -1457,7 +1443,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10047_2-04_Mangalam": {
+    "2-04_Mangalam": {
       "audio": [
         "CMR_subset_1.0/audio/27_10047_2-04_Mangalam.wav",
         "1832490399d81f7d782b9089cd91b2fd"
@@ -1471,7 +1457,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11045_1-05_Garuda_Gamana": {
+    "1-05_Garuda_Gamana": {
       "audio": [
         "CMR_subset_1.0/audio/27_11045_1-05_Garuda_Gamana.wav",
         "f7c34a58a77f082a6a3ee6235d2230d9"
@@ -1485,7 +1471,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12045_08_Aiyan_Azhagan_-_Azhagarkoil": {
+    "08_Aiyan_Azhagan_-_Azhagarkoil": {
       "audio": [
         "CMR_subset_1.0/audio/27_12045_08_Aiyan_Azhagan_-_Azhagarkoil.wav",
         "3dc014954db09598069a221a71ddf3cc"
@@ -1499,7 +1485,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13027_1-05_Paridanamiccite": {
+    "1-05_Paridanamiccite": {
       "audio": [
         "CMR_subset_1.0/audio/27_13027_1-05_Paridanamiccite.wav",
         "53626ad29cdcfb7674603fdd4d5efae7"
@@ -1513,7 +1499,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10048_02_Karumugil_Vannam_-Badrinath": {
+    "02_Karumugil_Vannam_-Badrinath": {
       "audio": [
         "CMR_subset_1.0/audio/28_10048_02_Karumugil_Vannam_-Badrinath.wav",
         "03fbe2c20db8603e83cd3f3f9e70a3c9"
@@ -1527,7 +1513,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11048_1-01_Gam_Ganapathe": {
+    "1-01_Gam_Ganapathe": {
       "audio": [
         "CMR_subset_1.0/audio/28_11048_1-01_Gam_Ganapathe.wav",
         "c9cc14f557f264a2a0578bd69d49fb14"
@@ -1541,7 +1527,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12046_06_Ashtapadi_-_Natha_Hare": {
+    "06_Ashtapadi_-_Natha_Hare": {
       "audio": [
         "CMR_subset_1.0/audio/28_12046_06_Ashtapadi_-_Natha_Hare.wav",
         "40369525972e0105dff7fb8d0c5909e4"
@@ -1555,7 +1541,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "13028_1-02_Purandara_Dasa": {
+    "1-02_Purandara_Dasa": {
       "audio": [
         "CMR_subset_1.0/audio/28_13028_1-02_Purandara_Dasa.wav",
         "0f58a980daa0ee37445727a588e9c42d"
@@ -1569,7 +1555,7 @@
         "55e13911b029af22125d9eb6e811b87c"
       ]
     },
-    "10049_2_Akhilandeswari": {
+    "2_Akhilandeswari": {
       "audio": [
         "CMR_subset_1.0/audio/29_10049_2_Akhilandeswari.wav",
         "9025bc551f3307a212381018515feac0"
@@ -1583,7 +1569,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11049_2-01_Enta_ninne": {
+    "2-01_Enta_ninne": {
       "audio": [
         "CMR_subset_1.0/audio/29_11049_2-01_Enta_ninne.wav",
         "c7679306d7004ab64215ed75956afa57"
@@ -1597,7 +1583,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12047_1-05_Saranam_Ayyappa": {
+    "1-05_Saranam_Ayyappa": {
       "audio": [
         "CMR_subset_1.0/audio/29_12047_1-05_Saranam_Ayyappa.wav",
         "b50d128a009dd7e1641b0c3dbf07dbcb"
@@ -1611,7 +1597,7 @@
         "0efa76cd29585aa1d733d872fadb52e4"
       ]
     },
-    "10050_7_Thillana_(Live)_Carnatic_Violi": {
+    "7_Thillana_(Live)_Carnatic_Violi": {
       "audio": [
         "CMR_subset_1.0/audio/30_10050_7_Thillana_(Live)_Carnatic_Violi.wav",
         "e400eafd144cfda57fec811ed4a997d2"
@@ -1625,7 +1611,7 @@
         "3b55c08436be9e1008bb19488c139c88"
       ]
     },
-    "11050_2-05_Madar_Pirai": {
+    "2-05_Madar_Pirai": {
       "audio": [
         "CMR_subset_1.0/audio/30_11050_2-05_Madar_Pirai.wav",
         "d0433001b63ebcbe11fc298032b764ca"
@@ -1639,7 +1625,7 @@
         "40735ef69decd7cebd3e8be7cc186c8f"
       ]
     },
-    "12048_1-03_Mamava_Karunaya": {
+    "1-03_Mamava_Karunaya": {
       "audio": [
         "CMR_subset_1.0/audio/30_12048_1-03_Mamava_Karunaya.wav",
         "1353c4752c8c245a05734d0d5ac966ce"
