@@ -1,0 +1,55 @@
+import argparse
+import hashlib
+import json
+import os
+import glob
+from mirdata.validate import md5
+
+
+#CARNATIC_RHYTHM_INDEX_PATH = '/Users/genisplaja/Desktop/mirdata/mirdata/datasets/indexes/compmusic_carnatic_rhythm_full_index.json'
+CARNATIC_RHYTHM_INDEX_PATH = '/Users/genisplaja/Desktop/mirdata/mirdata/datasets/indexes/compmusic_carnatic_rhythm_subset_index.json'
+
+
+def make_compmusic_carnatic_rhythm_index(dataset_data_path, version="full_dataset"):
+
+    cmr_index = {
+        'version': version + "_1.0",
+        'tracks': {},
+    }
+    idx = 0
+    dataset_folder_name = "CMR_" + version + "_1.0"
+    for rec in glob.glob(os.path.join(dataset_data_path, "audio", "*.wav")):
+        filename = rec.split("/")[-1]
+        idx = "_".join(filename.split("_")[1:]).replace(".wav", "")
+        cmr_index["tracks"][idx] = {
+            "audio": (
+                os.path.join(dataset_folder_name, "audio", filename),
+                md5(os.path.join(dataset_data_path, "audio", filename)),
+            ),
+            "beats": (
+                os.path.join(dataset_folder_name, "annotations", "beats", filename.replace(".wav", ".beats")),
+                md5(os.path.join(dataset_data_path, "annotations", "beats", filename.replace(".wav", ".beats"))),
+            ),
+            "meter": (
+                os.path.join(dataset_folder_name, "annotations", "meter", filename.replace(".wav", ".meter")),
+                md5(os.path.join(dataset_data_path, "annotations", "meter", filename.replace(".wav", ".meter"))),
+            )
+        }
+
+    with open(CARNATIC_RHYTHM_INDEX_PATH, 'w') as fhandle:
+        json.dump(cmr_index, fhandle, indent=2)
+
+
+def main(args):
+    print("creating index...")
+    make_compmusic_carnatic_rhythm_index(args.dataset_data_path, "subset")
+    print("done!")
+
+
+if __name__ == '__main__':
+    PARSER = argparse.ArgumentParser(description='Make CompMusic Carnatic Rhythm index file.')
+    PARSER.add_argument(
+        'dataset_data_path', type=str, help='Path to CompMusic Carnatic Rhythm data folder.'
+    )
+
+    main(PARSER.parse_args())
