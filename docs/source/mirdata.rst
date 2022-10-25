@@ -90,6 +90,13 @@ da_tacos
    :members:
    :inherited-members:
 
+egfxset
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.egfxset
+   :members:
+   :inherited-members:
+
 
 freesound_one_shot_percussive_sounds
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
