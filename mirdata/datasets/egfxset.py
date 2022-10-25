@@ -90,13 +90,6 @@ INDEXES = {
 }
 
 REMOTES = {
-    "zenodo": download_utils.RemoteFileMetadata(
-        #eeste archivo no existe en Zenodo tenemos varios zips no 
-        #solo uno. Por lo mismo el url no jala.
-        filename="EGFxSet.zip",
-        url="https://zenodo.org/record/5578807/files/EGFxSet.zip?download=1",
-        checksum="dea40fd18f14d899643c4ba221b33a46",
-    ),
     "bluesDriver": download_utils.RemoteFileMetadata(
         filename="BluesDriver.zip",
         url="https://zenodo.org/record/7044411/files/BluesDriver.zip?download=1",
@@ -123,9 +116,10 @@ REMOTES = {
         checksum="f3f7b39c895a400d35c5b1314a1122bd",  
     ),
     "hallReverb": download_utils.RemoteFileMetadata(
+        #mismo checksum?
         filename="Hall-Reverb.zip",
-        url="https://zenodo.org/record/7044411/files/Flanger.zip?download=1",
-        checksum="c173bebdcbed50d4bc8803e0b30d6517",  
+        url="https://zenodo.org/record/7044411/files/Hall-Reverb.zip?download=1",
+        checksum="f3f7b39c895a400d35c5b1314a1122bd",  
     ),
     "phaser": download_utils.RemoteFileMetadata(
         filename="Phaser.zip",
@@ -165,7 +159,7 @@ REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
         filename="egfxset_metadata.csv",
         url="https://zenodo.org/record/7044411/files/egfxset_metadata.csv?download=1",
-        checksum="b9c46ed65037d0bd17bdf82dc3125beb", 
+        checksum="ec8d160fe79469c7de8cad528d7d35e1", 
     ),
 
 }
