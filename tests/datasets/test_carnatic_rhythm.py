@@ -10,22 +10,41 @@ def test_track():
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
-    print(track)
+    print(dataset._metadata.keys())
+    print(track._track_metadata)
+    print(track.meter)
+    print(track.artists)
+    print(track.raaga)
+    print(track.start_time)
+
 
     expected_attributes = {
         "track_id": "1-04_Shri_Visvanatham",
         "audio_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
         + "audio/01_10003_1-04_Shri_Visvanatham.wav",
         "beats_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
-        + "annotations/beats/01_10003_1-04_Shri_Visvanatham.wav",
+        + "annotations/beats/01_10003_1-04_Shri_Visvanatham.beats",
         "meter_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
-        + "annotations/meter/01_10003_1-04_Shri_Visvanatham.wav"
+        + "annotations/meter/01_10003_1-04_Shri_Visvanatham.meter"
     }
 
     expected_property_types = {
         "meter": str,
         "beats": annotations.BeatData,
         "audio": tuple,
+        "mbid": str,
+        "name": str,
+        "artists": str,
+        "release": str,
+        "lead_instrument_code": str,
+        "taala": str,
+        "raaga": str,
+        "start_time": None,
+        "end_time": None,
+        "length_seconds": None,
+        "length_minutes": None,
+        "num_of_beats": int,
+        "num_of_samas": int,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)

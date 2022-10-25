@@ -116,6 +116,58 @@ class Track(core.Track):
     def meter(self):
         return load_meter(self.meter_path)
 
+    @core.cached_property
+    def mbid(self):
+        return self._track_metadata.get("mbid")
+
+    @core.cached_property
+    def name(self):
+        return self._track_metadata.get("name")
+
+    @core.cached_property
+    def artists(self):
+        return self._track_metadata.get("artists")
+
+    @core.cached_property
+    def release(self):
+        return self._track_metadata.get("release")
+
+    @core.cached_property
+    def lead_instrument_code(self):
+        return self._track_metadata.get("lead_instrument_code")
+
+    @core.cached_property
+    def taala(self):
+        return self._track_metadata.get("taala")
+
+    @core.cached_property
+    def raaga(self):
+        return self._track_metadata.get("raaga")
+
+    @core.cached_property
+    def start_time(self):
+        return self._track_metadata.get("start_time")
+
+    @core.cached_property
+    def end_time(self):
+        return self._track_metadata.get("end_time")
+
+    @core.cached_property
+    def length_seconds(self):
+        return self._track_metadata.get("length_seconds")
+
+    @core.cached_property
+    def length_minutes(self):
+        return self._track_metadata.get("length_minutes")
+
+    @core.cached_property
+    def num_of_beats(self):
+        return self._track_metadata.get("num_of_beats")
+
+    @core.cached_property
+    def num_of_samas(self):
+        return self._track_metadata.get("num_of_samas")
+
 
     @property
     def audio(self):
@@ -200,7 +252,7 @@ def load_meter(fhandle):
 
     """
     reader = csv.reader(fhandle, delimiter=",")
-    return float(next(reader))
+    return next(reader)[0]
 
 
 @core.docstring_inherit(core.Dataset)
@@ -224,21 +276,51 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         if self.version == "full_dataset_1.0":
-            metadata = os.path.join(self.data_home, "CMRfullDataset.xlsx")
+            metadata_path = os.path.join(self.data_home, "CMR_full_dataset_1.0", "CMRfullDataset.xlsx")
             
         else:
-            metadata = os.path.join(self.data_home, "CMRdataset.xlsx")
+            metadata_path = os.path.join(self.data_home, "CMR_subset_1.0", "CMRdataset.xlsx")
 
         metadata = {}
         try:
-            with open(metadata, "r") as fhandle:
-                reader = pd.ExcelFile(fhandle, sheet_name=None)
-                print(reader)
-                for line in reader:
-                    work = line[1] if line[1] else None
-                    details = line[3] if line[3] else None
-                    metadata[line[0]] = {"work": work, "details": details}
+            with open(metadata_path, "rb") as fhandle:
+                reader = pd.read_excel(fhandle, sheet_name=0)
+                if self.version == "full_dataset_1.0":
+                    uid = np.array([str(x) + "_" for x in reader.loc[:, "UID"].to_list()])
+                    idxs = uid + reader.loc[:, "Name"].to_numpy()
+                    for num, idx in enumerate(idxs):
+                        metadata[idx] = {
+                            "mbid": reader.loc[num, "MBID of the recording"],
+                            "name": reader.loc[num, "Name"], 
+                            "artist": reader.loc[num, "Artist"],
+                            "release": reader.loc[num, "Release+Volume"],
+                            "lead_instrument_code": reader.loc[num, "Lead Instrument Code"],
+                            "taala": reader.loc[num, "Taala"],
+                            "raaga": reader.loc[num, "Raaga"],
+                            "start_time": reader.loc[num, "Excerpt Start Time (s)"],
+                            "end_time": reader.loc[num, "Excerpt End Time (s)"],
+                            "length_seconds": reader.loc[num, "Length of the excerpt (s)"],
+                            "length_minutes": reader.loc[num, "Length of the excerpt (min)"],
+                            "num_of_beats": reader.loc[num, "Number of annotated beats"],
+                            "num_of_samas": reader.loc[num, "Number of samas"],
+                        }
 
+                else:
+                    full_id = np.array([str(x) + "_" for x in reader.loc[:, "fullID"].to_list()])
+                    idxs = full_id + reader.loc[:, "Name"].to_numpy()
+                    for num, idx in enumerate(idxs):
+                        metadata[idx] = {
+                            "mbid": reader.loc[num, "MBID of the recording"],
+                            "name": reader.loc[num, "Name"], 
+                            "artist": reader.loc[num, "Artist"],
+                            "release": reader.loc[num, "Release+Volume"],
+                            "lead_instrument_code": reader.loc[num, "Lead Instrument Code"],
+                            "taala": reader.loc[num, "Taala"],
+                            "raaga": reader.loc[num, "Raaga"],
+                            "num_of_beats": reader.loc[num, "Number of annotated beats"],
+                            "num_of_samas": reader.loc[num, "Number of samas"],
+                        }
+                
         except FileNotFoundError:
             raise FileNotFoundError(
                 "metadata not found. Did you run .download()?"

@@ -6,7 +6,7 @@ import glob
 from mirdata.validate import md5
 
 
-CARNATIC_RHYTHM_INDEX_PATH = '../mirdata/datasets/indexes/compmusic_carnatic_rhythm_subset_index.json'
+CARNATIC_RHYTHM_INDEX_PATH = "../mirdata/datasets/indexes/compmusic_carnatic_rhythm_full_index.json"
 
 
 def make_compmusic_carnatic_rhythm_index(dataset_data_path, version="full_dataset"):
@@ -20,9 +20,9 @@ def make_compmusic_carnatic_rhythm_index(dataset_data_path, version="full_datase
     for rec in glob.glob(os.path.join(dataset_data_path, "audio", "*.wav")):
         filename = rec.split("/")[-1]
         if version == "full_dataset":
-            idx = "_".join(filename.split("_")[1:]).replace(".wav", "")
+            idx = filename.split("_")[0]
         else:
-            idx = "_".join(filename.split("_")[2:]).replace(".wav", "")
+            idx = filename.split("_")[1]
         cmr_index["tracks"][idx] = {
             "audio": (
                 os.path.join(dataset_folder_name, "audio", filename),
@@ -44,7 +44,7 @@ def make_compmusic_carnatic_rhythm_index(dataset_data_path, version="full_datase
 
 def main(args):
     print("creating index...")
-    make_compmusic_carnatic_rhythm_index(args.dataset_data_path, "subset")
+    make_compmusic_carnatic_rhythm_index(args.dataset_data_path)
     print("done!")
 
 
