@@ -4,7 +4,7 @@ from mirdata.datasets import compmusic_carnatic_rhythm
 from tests.test_utils import run_track_tests
 
 
-def test_track(): 
+def test_track():
     default_trackid = "10003"
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
@@ -17,7 +17,7 @@ def test_track():
         "beats_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
         + "annotations/beats/01_10003_1-04_Shri_Visvanatham.beats",
         "meter_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
-        + "annotations/meter/01_10003_1-04_Shri_Visvanatham.meter"
+        + "annotations/meter/01_10003_1-04_Shri_Visvanatham.meter",
     }
 
     expected_property_types = {
@@ -107,12 +107,11 @@ def test_load_beats():
     assert compmusic_carnatic_rhythm.load_beats(None) is None
 
 
-
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
-    meta = dataset._metadata # get dataset metadata
-    parsed_metadata = meta["10003"] # get track metadata
+    meta = dataset._metadata  # get dataset metadata
+    parsed_metadata = meta["10003"]  # get track metadata
 
     assert parsed_metadata["mbid"] == "5769ea2f-aed4-4169-9a20-bae4cb733b8e"
     assert parsed_metadata["raaga"] == "chaturdasha ragamalika"
