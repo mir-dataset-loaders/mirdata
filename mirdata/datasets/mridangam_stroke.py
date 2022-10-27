@@ -43,14 +43,12 @@
 
 import os
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import core, download_utils, io, jams_utils
 
 BIBTEX = """@article{Anantapadmanabhan2013,
     author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
@@ -64,6 +62,12 @@ BIBTEX = """@article{Anantapadmanabhan2013,
     title = {{Modal analysis and transcription of strokes of the mridangam using non-negative matrix factorization}},
     year = {2013}
 }"""
+
+INDEXES = {
+    "default": "1.5",
+    "test": "1.5",
+    "1.5": core.Index(filename="mridangam_stroke_index_1.5.json"),
+}
 
 REMOTES = {
     "remote_data": download_utils.RemoteFileMetadata(
@@ -124,7 +128,7 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
         # Parse stroke name annotation from audio file name
         self.stroke_name = self.audio_path.split("__")[2].split("-")[0]
@@ -183,16 +187,21 @@ class Dataset(core.Dataset):
     The mridangam_stroke dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="mridangam_stroke",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.mridangam_stroke.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

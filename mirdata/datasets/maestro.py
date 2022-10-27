@@ -31,21 +31,17 @@
 """
 
 import json
-import glob
 import logging
 import os
-import shutil
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pretty_midi
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import core, download_utils, io, jams_utils
 
 
 BIBTEX = """@inproceedings{
@@ -57,6 +53,12 @@ BIBTEX = """@inproceedings{
   url={https://openreview.net/forum?id=r1lYRjC9F7},
 }
 """
+
+INDEXES = {
+    "default": "2.0.0",
+    "test": "2.0.0",
+    "2.0.0": core.Index(filename="maestro_index_2.0.0.json"),
+}
 
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
@@ -73,7 +75,9 @@ REMOTES = {
     ),
     "metadata": download_utils.RemoteFileMetadata(
         filename="maestro-v2.0.0.json",
-        url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json",
+        url=(
+            "https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json"
+        ),
         checksum="576172af1cdc4efddcf0be7d260d48f7",
     ),
 }
@@ -123,8 +127,9 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.midi_path = os.path.join(self._data_home, self._track_paths["midi"][0])
+        self.midi_path = self.get_path("midi")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def canonical_composer(self):
@@ -148,11 +153,15 @@ class Track(core.Track):
 
     @core.cached_property
     def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
-        return load_midi(self.midi_path)
+        return io.load_midi(self.midi_path)
 
     @core.cached_property
     def notes(self):
-        return load_notes(self.midi_path, self.midi)
+        logging.warning(
+            "The default unit for maestro pitch and velocity values have"
+            + " changed in mirdata >0.3.3 from hz/confidence to midi/velocity"
+        )
+        return io.load_notes_from_midi(self.midi_path, self.midi)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -180,47 +189,6 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_midi(fhandle: BinaryIO) -> pretty_midi.PrettyMIDI:
-    """Load a MAESTRO midi file.
-
-    Args:
-        fhandle (str or file-like): File-like object or path to midi file
-
-    Returns:
-        pretty_midi.PrettyMIDI: pretty_midi object
-
-    """
-    return pretty_midi.PrettyMIDI(fhandle)
-
-
-def load_notes(midi_path, midi=None):
-    """Load note data from the midi file.
-
-    Args:
-        midi_path (str): path to midi file
-        midi (pretty_midi.PrettyMIDI): pre-loaded midi object or None
-            if None, the midi object is loaded using midi_path
-
-    Returns:
-        NoteData: note annotations
-
-    """
-    if midi is None:
-        midi = load_midi(midi_path)
-
-    intervals = []
-    pitches = []
-    confidence = []
-    for note in midi.instruments[0].notes:
-        intervals.append([note.start, note.end])
-        pitches.append(librosa.midi_to_hz(note.pitch))
-        confidence.append(note.velocity / 127.0)
-    return annotations.NoteData(
-        np.array(intervals), np.array(pitches), np.array(confidence)
-    )
-
-
-@io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MAESTRO audio file.
 
@@ -241,12 +209,14 @@ class Dataset(core.Dataset):
     The maestro dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="maestro",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
@@ -255,11 +225,11 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "maestro-v2.0.0.json")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                raw_metadata = json.load(fhandle)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            raw_metadata = json.load(fhandle)
 
         metadata = {}
         for mdata in raw_metadata:
@@ -268,17 +238,26 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.maestro.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_midi)
+    @deprecated(
+        reason="Use mirdata.io.load_midi",
+        version="0.3.4",
+    )
     def load_midi(self, *args, **kwargs):
-        return load_midi(*args, **kwargs)
+        return io.load_midi(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.io.load_notes_from_midi",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
-        return load_notes(*args, **kwargs)
+        return io.load_notes_from_midi(*args, **kwargs)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=False):
         """Download the dataset
@@ -306,6 +285,7 @@ class Dataset(core.Dataset):
         download_utils.downloader(
             self.data_home,
             remotes=self.remotes,
+            index=self._index_data,
             partial_download=partial_download,
             force_overwrite=force_overwrite,
             cleanup=cleanup,

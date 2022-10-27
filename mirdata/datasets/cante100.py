@@ -46,12 +46,13 @@ cante100 Loader
 """
 import csv
 import os
-import logging
 import xml.etree.ElementTree as ET
-from typing import BinaryIO, cast, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -88,6 +89,11 @@ BIBTEX = """@dataset{nadine_kroher_2018_1322542,
 }
 """
 
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="cante100_index_1.0.json"),
+}
 
 REMOTES = {
     "spectrogram": download_utils.RemoteFileMetadata(
@@ -104,7 +110,9 @@ REMOTES = {
     ),
     "notes": download_utils.RemoteFileMetadata(
         filename="cante100_automaticTranscription.zip",
-        url="https://zenodo.org/record/1322542/files/cante100_automaticTranscription.zip?download=1",
+        url=(
+            "https://zenodo.org/record/1322542/files/cante100_automaticTranscription.zip?download=1"
+        ),
         checksum="47fea64c744f9fe678ae5642a8f0ee8e",  # the md5 checksum
         destination_dir="cante100_automaticTranscription",  # relative path for where to unzip the data, or None
     ),
@@ -181,12 +189,11 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.spectrogram_path = os.path.join(
-            self._data_home, self._track_paths["spectrum"][0]
-        )
-        self.f0_path = os.path.join(self._data_home, self._track_paths["f0"][0])
-        self.notes_path = os.path.join(self._data_home, self._track_paths["notes"][0])
+        self.spectrogram_path = self.get_path("spectrum")
+        self.f0_path = self.get_path("f0")
+        self.notes_path = self.get_path("notes")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def identifier(self):
@@ -269,18 +276,19 @@ def load_spectrogram(fhandle: TextIO) -> np.ndarray:
     return spectrogram
 
 
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a cante100 audio file.
 
     Args:
-        fhandle (str): path to an audio file
+        fpath (str): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=22050, mono=False)
+    return librosa.load(fpath, sr=22050, mono=False)
 
 
 @io.coerce_to_string_io
@@ -288,7 +296,8 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """Load cante100 f0 annotations
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to melody annotation file
+        fhandle (str or file-like): path or file-like object pointing
+            to melody annotation file
 
     Returns:
         F0Data: predominant melody
@@ -296,16 +305,18 @@ def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """
     times = []
     freqs = []
+    voicing = []
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         times.append(float(line[0]))
-        freqs.append(float(line[1]))
+        freq_val = float(line[1])
+        freqs.append(np.abs(freq_val))
+        voicing.append(float(freq_val > 0))
 
     times = np.array(times)  # type: ignore
     freqs = np.array(freqs)  # type: ignore
-    confidence = (cast(np.ndarray, freqs) > 0).astype(float)
-
-    return annotations.F0Data(times, freqs, confidence)
+    voicing = np.array(voicing)  # type: ignore
+    return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
 
 
 @io.coerce_to_string_io
@@ -331,8 +342,11 @@ def load_notes(fhandle: TextIO) -> annotations.NoteData:
 
     return annotations.NoteData(
         np.array(intervals, dtype="float"),
+        "s",
         np.array(pitches, dtype="float"),
+        "hz",
         np.array(confidence, dtype="float"),
+        "binary",
     )
 
 
@@ -342,12 +356,14 @@ class Dataset(core.Dataset):
     The cante100 dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="cante100",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
@@ -356,10 +372,12 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "cante100Meta.xml")
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        tree = ET.parse(metadata_path)
+        try:
+            with open(metadata_path, "r") as fhandle:
+                tree = ET.parse(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
         root = tree.getroot()
 
         # ids
@@ -406,18 +424,30 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_spectrogram)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_spectrogram",
+        version="0.3.4",
+    )
     def load_spectrogram(self, *args, **kwargs):
         return load_spectrogram(*args, **kwargs)
 
-    @core.copy_docs(load_melody)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_melody",
+        version="0.3.4",
+    )
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_notes",
+        version="0.3.4",
+    )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

@@ -19,10 +19,12 @@ import gzip
 import logging
 import os
 import pickle
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
 from mirdata import jams_utils
@@ -50,6 +52,12 @@ BIBTEX = """@inproceedings{Meseguer-Brocal_2018,
     Editor = {ISMIR}, Month = {September},
     Year = {2018}
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="dali_index_1.0.json"),
+}
 
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
@@ -126,10 +134,9 @@ class Track(core.Track):
             metadata,
         )
 
-        self.annotation_path = os.path.join(
-            self._data_home, self._track_paths["annot"][0]
-        )
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.annotation_path = self.get_path("annot")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def audio_url(self):
@@ -271,12 +278,11 @@ def load_annotations_granularity(annotations_path, granularity):
         ends.append(round(annot["time"][1], 3))
         text.append(annot["text"])
     if granularity == "notes":
-
         annotation = annotations.NoteData(
-            np.array([begs, ends]).T, np.array(notes), None
+            np.array([begs, ends]).T, "s", np.array(notes), "hz"
         )
     else:
-        annotation = annotations.LyricData(np.array([begs, ends]).T, text, None)
+        annotation = annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
     return annotation
 
 
@@ -290,12 +296,13 @@ def load_annotations_class(annotations_path):
         DALI.annotations: DALI annotations object
 
     """
-    if not os.path.exists(annotations_path):
-        raise IOError("annotations_path {} does not exist".format(annotations_path))
-
     try:
         with gzip.open(annotations_path, "rb") as f:
             output = pickle.load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            "annotations_path {} does not exist".format(annotations_path)
+        )
     except Exception as e:
         with gzip.open(annotations_path, "r") as f:
             output = pickle.load(f)
@@ -308,12 +315,14 @@ class Dataset(core.Dataset):
     The dali dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="dali",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
@@ -322,22 +331,32 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, os.path.join("dali_metadata.json"))
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        with open(metadata_path, "r") as fhandle:
-            metadata_index = json.load(fhandle)
+        try:
+            with open(metadata_path, "r") as fhandle:
+                metadata_index = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.dali.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_annotations_granularity)
+    @deprecated(
+        reason="Use mirdata.datasets.dali.load_annotations_granularity",
+        version="0.3.4",
+    )
     def load_annotations_granularity(self, *args, **kwargs):
         return load_annotations_granularity(*args, **kwargs)
 
-    @core.copy_docs(load_annotations_class)
+    @deprecated(
+        reason="Use mirdata.datasets.dali.load_annotations_class",
+        version="0.3.4",
+    )
     def load_annotations_class(self, *args, **kwargs):
         return load_annotations_class(*args, **kwargs)

@@ -1,0 +1,5198 @@
+{
+  "version": 1.0,
+  "tracks": {
+    "KB_17": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_17.wav",
+        "e42454d939bbf1511e716f075fa0284d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_17.onsets",
+        "4a160361aef2f1d6c74cbb00b96458f5"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_17.onsets",
+        "bb872bdc10ac0946044d1ca7827a0a85"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_17.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_17.onsets",
+        "998e4748cac36acf046cce6f50b39a03"
+      ]
+    },
+    "PP_comp23_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp23_t.wav",
+        "a5f8c64814e07630e0a9a94def66276f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp23_t.onsets",
+        "571acd2a94861802fb801a6dfd65804c"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp23_t.onsets",
+        "c8e98ac981133c87a8893e7e057350cb"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp23_t.onsets",
+        "5d8f92b8f096207989487b43120d4800"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp23_t.onsets",
+        "dcd2512b8f72cacc51ac2a6f15b45eb5"
+      ]
+    },
+    "RMA_22": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_22.wav",
+        "be17b598436510e9c163b4abac77a45b"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_22.onsets",
+        "619392afecf9614b3bcc66db04d5edda"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_22.onsets",
+        "724ba7475c3a2d9d525432e026375d94"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_22.onsets",
+        "3f78a47c0d425cee601787c72a0e9104"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_22.onsets",
+        "04fd65e0813ac031a73f2064e8212b0e"
+      ]
+    },
+    "T5_Luc_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Luc_05.wav",
+        "46cec2fad011a8622ba54e1ad8b66264"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Luc_05.onsets",
+        "029a78bd549f22eb57ff638903bb920a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Luc_05.onsets",
+        "54adffa5079faa6519b4c304866688f6"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Luc_05.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Luc_05.onsets",
+        "c5f489a971a2828c4006ebc8cdeaa082"
+      ]
+    },
+    "SK_kaida_1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_kaida_1.wav",
+        "7b465cd52339bc21cc6598f2d0943266"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_kaida_1.onsets",
+        "593edd70a67515a62e8601711d64f6bc"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_kaida_1.onsets",
+        "0c30224303eeab595dd6d5447e5548a7"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_kaida_1.onsets",
+        "898aea90c69d15af8ec6d203a8ff1cc4"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_kaida_1.onsets",
+        "949bfeaa79952f59077bde94dc5474c4"
+      ]
+    },
+    "T7_Pur_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Pur_01.wav",
+        "bfe03c8612c330556f6dd487a028f697"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Pur_01.onsets",
+        "34a54150d953afa412f912dcd58c773d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Pur_01.onsets",
+        "e7c099694ac5bd401a086abfb4586c9f"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Pur_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Pur_01.onsets",
+        "7e468e817c72620c3342eface89b71df"
+      ]
+    },
+    "T4_Gat_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Gat_03.wav",
+        "d1d44625019c7531934bc5aa6a61bf6c"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Gat_03.onsets",
+        "fd3ceb5b43103a4f44f4011cb89ea046"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Gat_03.onsets",
+        "6f8b26bacebbfbdc90e1aa901ebfbf51"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Gat_03.onsets",
+        "a84cb87e11519df409b88ebb12790f57"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Gat_03.onsets",
+        "b6b48ef46fcd4861091e1d5278713758"
+      ]
+    },
+    "T7_Jap_Tukuda_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Jap_Tukuda_05.wav",
+        "a91f6289d41bdb24970e505ce0e8b72c"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Jap_Tukuda_05.onsets",
+        "07b84fcaddfa518259e33630c6b9b69a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Jap_Tukuda_05.onsets",
+        "d4a29abeb090d9115d53dfa7646f05ae"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Jap_Tukuda_05.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Jap_Tukuda_05.onsets",
+        "f7aa5e25fc3aa93a251d78eb1b192bd4"
+      ]
+    },
+    "T7_Jap_Tukuda_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Jap_Tukuda_04.wav",
+        "3a7bf46f9a49688ca20a3ab2780c864d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Jap_Tukuda_04.onsets",
+        "689bff861e56c1a6abb604e3e6f7a454"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Jap_Tukuda_04.onsets",
+        "fab4b715c73ab23184a8cf07b232af22"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Jap_Tukuda_04.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Jap_Tukuda_04.onsets",
+        "e8c21317c8b0842ae3c7d25a816a3f1c"
+      ]
+    },
+    "T4_Tukuda_Ben_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_Ben_04.wav",
+        "dcabf767d8f1a2b7a72c30f680b94cce"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_Ben_04.onsets",
+        "d1e81c12881b63324a620beb03c53912"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_Ben_04.onsets",
+        "3b159fd19ca8f6ca2144ab251e4b3c9a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_Ben_04.onsets",
+        "04da36bb40bcbc7e8176196520145d83"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_Ben_04.onsets",
+        "6b84ec3c11abf2055fc394dc63da0c5e"
+      ]
+    },
+    "AS_comp116_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp116_t.wav",
+        "bcaf2dc16b06a096a3596ee8a76bd6c3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp116_t.onsets",
+        "cf097c2638769dbeffab102c14733944"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp116_t.onsets",
+        "f3a1753e601605a41c9e0a7c20ef9721"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp116_t.onsets",
+        "87d7b8cbe155c10d2b3a146e21393db4"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp116_t.onsets",
+        "2ab8fe1b72db5d5852887a1968c227ff"
+      ]
+    },
+    "T4_Gat_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Gat_02.wav",
+        "efc4c7d60098a3b645a644fe0e591c4b"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Gat_02.onsets",
+        "fc5c54e10e2392ae01ea1435b600e1a6"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Gat_02.onsets",
+        "8c0bcca1fff7b1cb742441821d0031e9"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Gat_02.onsets",
+        "c32bd33939a4b31306aec26fbd7f0902"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Gat_02.onsets",
+        "79a48869f84dce616736bafe69cf4a05"
+      ]
+    },
+    "SK_rela_1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_rela_1.wav",
+        "1457a7ef5314ffb39d55ea39cee92533"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_rela_1.onsets",
+        "5ee6fc9c88eca0d1300056fe5a8a89ed"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_rela_1.onsets",
+        "ab2f1a0777a7acb10d4bf88fdf308018"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_rela_1.onsets",
+        "7f7c5345bfb7ef2aff7978de06beaa89"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_rela_1.onsets",
+        "b0f4a94a8299a67b8a412eb5c877fe1d"
+      ]
+    },
+    "SK_teentaal": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_teentaal.wav",
+        "951aa8010538f2ed8c6ca8c2147ee78e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_teentaal.onsets",
+        "721f2e488ff367598cbad06536de774a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_teentaal.onsets",
+        "69b581930af5e9b44d355bbb92d826bd"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_teentaal.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_teentaal.onsets",
+        "3bd3f92271e41e8b8a78daa5dedcda48"
+      ]
+    },
+    "T5_Luc_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Luc_04.wav",
+        "ebb03b13d9e472200f8bfa8551c57916"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Luc_04.onsets",
+        "3c32272014f4fb967a119aa24494584d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Luc_04.onsets",
+        "7425a1b5bfdcb57db11889c6007f4de4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Luc_04.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Luc_04.onsets",
+        "8233d9486084af29fe5903378a844bab"
+      ]
+    },
+    "PP_comp82_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp82_t.wav",
+        "da8db650a2a7dbe9fbd88a3ce5798db8"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp82_t.onsets",
+        "daecceaee1d6cade9e097eb7f7246acd"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp82_t.onsets",
+        "7491ba54d593a3b0dc3a9e49bba805d4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp82_t.onsets",
+        "f43f71be7b072b2c90acd0fd80586b6a"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp82_t.onsets",
+        "18a688b8a2e1ac4974b54121d4f0a454"
+      ]
+    },
+    "RMA_23": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_23.wav",
+        "74d278838b64f629e572ffe84de0e909"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_23.onsets",
+        "b47a2b3c8b1ba6d02d649879d660536d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_23.onsets",
+        "167c9cf44f93132ef14942a7cf15de63"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_23.onsets",
+        "f54457fac8bf2c31076885db4fd5f44e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_23.onsets",
+        "051605845204567ef3de36b0f8704fc3"
+      ]
+    },
+    "PP_comp5_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp5_t.wav",
+        "517bb2bba9e7deab686b5c6b1573e8b3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp5_t.onsets",
+        "bd37b26875f1f5c7475e10509ab9c6a2"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp5_t.onsets",
+        "56edcf67b8a8c7e22d5e265c17651851"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp5_t.onsets",
+        "a6cd2750366eabd86069503554e10677"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp5_t.onsets",
+        "abc8ea78f5dcd473bb4df05e0ce16b43"
+      ]
+    },
+    "KB_16": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_16.wav",
+        "df977dff60d5cf8564433fa14fb831c7"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_16.onsets",
+        "ad75ccdb95ca1b1bc3f09af81c831124"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_16.onsets",
+        "113e3a8d924743eb0a95ba8f3fb7151a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_16.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_16.onsets",
+        "8477463c43326bad759f2d571fd79646"
+      ]
+    },
+    "KB_14": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_14.wav",
+        "432782d94278ba08f1c827f7fad564c5"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_14.onsets",
+        "9b0172d647eeb08663214a84459fe080"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_14.onsets",
+        "7bb543d5aedc1c887c2fa6783b32db58"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_14.onsets",
+        "9d99ce0fbdd84f1d75d7147287b6edc9"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_14.onsets",
+        "1f9eb0cfb521cc4a49b966ee8231a2c5"
+      ]
+    },
+    "SK_teentaal_punjabi": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_teentaal_punjabi.wav",
+        "580be705dfb072d6e7754a5d67184867"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_teentaal_punjabi.onsets",
+        "a8df41055a45927ead182530a2ca8e13"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_teentaal_punjabi.onsets",
+        "7f26e92bef6b2369284e5186813d269b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_teentaal_punjabi.onsets",
+        "0af1fd2fefbf2e40c1375b356a5b32c1"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_teentaal_punjabi.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ]
+    },
+    "RMA_21": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_21.wav",
+        "d1ef8c7e230fa0438d6ccde57c5b51e0"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_21.onsets",
+        "95c60055a190813bf864f86903fed007"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_21.onsets",
+        "41b64b937cc8571b68f9c6f1f02d0523"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_21.onsets",
+        "444a7e04b19afb12fac18484be845052"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_21.onsets",
+        "516748c52579d1265b50a6b26d02089d"
+      ]
+    },
+    "T5_Luc_06": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Luc_06.wav",
+        "ad6e9637678acad642d4ecf9a7eb625a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Luc_06.onsets",
+        "898ac747f7ab8847bbeb16e60812aa9d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Luc_06.onsets",
+        "705cebcaa3a0247554009126d5a91245"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Luc_06.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Luc_06.onsets",
+        "98f3c4dab4208d51f6d28845ced6caf5"
+      ]
+    },
+    "AS_comp114_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp114_t.wav",
+        "e1c40107b9228f5a07e8bb393d678112"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp114_t.onsets",
+        "70aeb791beb890f54e4065abfc804e7f"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp114_t.onsets",
+        "bbfc9341ef9e8890af52ef1c05f34ee9"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp114_t.onsets",
+        "17df09be7ba3243e932635e63f788b47"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp114_t.onsets",
+        "2b0ae5902b4520c057f412d7daa27ec2"
+      ]
+    },
+    "PP_comp80_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp80_t.wav",
+        "5d490bfaac685f45858a4c57aad72fe2"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp80_t.onsets",
+        "6943aefa060e3f665e7fb35f4e8126a2"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp80_t.onsets",
+        "f823beeb821f29aeac99ee7028ef4eac"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp80_t.onsets",
+        "3574526fa05a7df8d7ac3cb28a512b47"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp80_t.onsets",
+        "158d22f1ecb1084b4e55fc715774555b"
+      ]
+    },
+    "T7_Pur_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Pur_02.wav",
+        "c3a5129150ebc96726da4e2cf6b88113"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Pur_02.onsets",
+        "c0075c1fb78b338efa9258f0554575a0"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Pur_02.onsets",
+        "9040c3e70e0a2e64ef23a5569beeb206"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Pur_02.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Pur_02.onsets",
+        "99c854b8cd762e6e9fa3ec1dda3186bb"
+      ]
+    },
+    "T5_Dli_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Dli_05.wav",
+        "c391ad4f6bc67f97152864066232433c"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Dli_05.onsets",
+        "9da28e278bfbcb3596aeddc28638ce92"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Dli_05.onsets",
+        "5cfa215b7347585071074f2e69b96ffa"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Dli_05.onsets",
+        "6fce5e5a8efb9f7c1f680d19fb6c133d"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Dli_05.onsets",
+        "16f9674e1adc255433f217d57e0dc194"
+      ]
+    },
+    "T5_Dli_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Dli_04.wav",
+        "2f9ee03131a4cb13c660b8fe23bcc3b4"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Dli_04.onsets",
+        "c5082a90958031fcdc0264d345c14e9f"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Dli_04.onsets",
+        "ea28001e61eb064fd81f3242aad91368"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Dli_04.onsets",
+        "960fc0c86127e93ee7938651a3de5d45"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Dli_04.onsets",
+        "4ed1ecce1cb8b0e87428d62dcbc2c5cb"
+      ]
+    },
+    "T4_Gat_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Gat_01.wav",
+        "f6417c6de044d0c57acce7f325e1ac9e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Gat_01.onsets",
+        "0e7175507759c1d4fce91c39c47d1d57"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Gat_01.onsets",
+        "08dd0316aa2fce39b51bd2bbd40bdfaa"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Gat_01.onsets",
+        "b79c34cc47aba42adf5f1aa7553af72b"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Gat_01.onsets",
+        "7572c473360975860570774f94977a0b"
+      ]
+    },
+    "T7_Pur_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Pur_03.wav",
+        "2155464d75d16633bedaabc509b79850"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Pur_03.onsets",
+        "2734d5de7bbffafce60893c4f4031f43"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Pur_03.onsets",
+        "7035bf14ac34b275113ff5f04ab29c7b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Pur_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Pur_03.onsets",
+        "ac74244d81808172216284568c9fb8cf"
+      ]
+    },
+    "T5_Luc_07": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Luc_07.wav",
+        "76336984bee25216cd43c23544030583"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Luc_07.onsets",
+        "65803705f6007b060a2671b269212007"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Luc_07.onsets",
+        "5f33f9e6658505e8f5fd364aa7d14b60"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Luc_07.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Luc_07.onsets",
+        "c890d063ce7adeaf39b6351bd18e4f35"
+      ]
+    },
+    "RMA_20": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_20.wav",
+        "96dc4a73abada7583e192fb7a2b9f9e3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_20.onsets",
+        "cdc2c9df0095067bf98b36c128a5a0dc"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_20.onsets",
+        "7c88aa7994e12e61aed895a6991611ae"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_20.onsets",
+        "b3889d23dc2d34df0501e7961fe2c0c2"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_20.onsets",
+        "b288ca9831042c54ec61038bf008bc75"
+      ]
+    },
+    "KB_15": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_15.wav",
+        "954f7af40722559a8d6f629993c06ab9"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_15.onsets",
+        "964ab3e8c9c2f3039bea29d25729824c"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_15.onsets",
+        "e280f2efcb756bdf9feab4c7aa80a9a2"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_15.onsets",
+        "bd14aebc71525e10568e83ad2046b548"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_15.onsets",
+        "d8dc63f1547d77d9f028172967585e24"
+      ]
+    },
+    "KB_11": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_11.wav",
+        "7348873ca2fa2c8172657f5baf1dab59"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_11.onsets",
+        "19f66df9f6fa202864fcdad1a2f9da50"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_11.onsets",
+        "0d7649afdf2727cfa39569df8060db2b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_11.onsets",
+        "36c13abdfc6d777a9393b4fabd470f3b"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_11.onsets",
+        "cf2830e4e4c067602e8098e0c55ef56c"
+      ]
+    },
+    "T5_Luc_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Luc_03.wav",
+        "796a5a2ed3cc266bb32a61019edfea98"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Luc_03.onsets",
+        "42dc2b5c20f2e38a48381affc93eab57"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Luc_03.onsets",
+        "ba64e27e0cdb453be157d698502c8901"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Luc_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Luc_03.onsets",
+        "650b3b127764d2f6be7fa6b939f060db"
+      ]
+    },
+    "RMA_18": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_18.wav",
+        "4875ccbdc24be4b501c5d50519c31b88"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_18.onsets",
+        "8257b957513fe0e10830c2794263e99d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_18.onsets",
+        "28f4aaeb61ef1316d4770ffafe76504e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_18.onsets",
+        "bdeb8a9b9e95930648f0b9145936a5df"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_18.onsets",
+        "78f30d0b41fdcac2f9b6b76ab01851de"
+      ]
+    },
+    "RMA_30": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_30.wav",
+        "42400cfc8d20afd329252d6408efa196"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_30.onsets",
+        "5412b3228bdcfecde18ed5dae597fddc"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_30.onsets",
+        "d80d2a47ba2d3812d06d56c9bf15b1d6"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_30.onsets",
+        "cc9e72e93f2154bc96c7d1f80a197987"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_30.onsets",
+        "934571187a64ad9d8eb67d1fc840a854"
+      ]
+    },
+    "AS_comp109_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp109_t.wav",
+        "9f69c10aa28a635e4f50e290b8e25539"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp109_t.onsets",
+        "cf7ae89728c39d283cc3de8733661460"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp109_t.onsets",
+        "7c8dc12e0d6bff7e7b2e000731cce2b6"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp109_t.onsets",
+        "dfede9e84eb2c50e53715f8aa714dea3"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp109_t.onsets",
+        "7546326b2a89ac9e9d6c29c119974d18"
+      ]
+    },
+    "RMA_24": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_24.wav",
+        "0071466e429e30baa635bb8833def220"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_24.onsets",
+        "8ac8dc5542745d9e3b2cf3fef00195ec"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_24.onsets",
+        "13a6d4c44faae17cd8a43d7381691448"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_24.onsets",
+        "50f30ca1eef7425290cd326dafa27976"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_24.onsets",
+        "ac0a5d2b7a51f8de7177a272203eebeb"
+      ]
+    },
+    "T4_Ben_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Ben_03.wav",
+        "50bc0b70041a5d64180dfa5b71cadb96"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Ben_03.onsets",
+        "f5f7301be24e0b2131d686f36911e4e1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Ben_03.onsets",
+        "c43d4256a2b4698e696f92030b490c55"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Ben_03.onsets",
+        "55e9f31552b252b62da06cc2f45db0a7"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Ben_03.onsets",
+        "d6c4ab10fc398738bdb0967d2630885b"
+      ]
+    },
+    "PP_comp25_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp25_t.wav",
+        "9ed6cdd029d7d7a57b9366cca13b82b5"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp25_t.onsets",
+        "f199a46e023fe475789f8a24c278a098"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp25_t.onsets",
+        "50c768353691507fc153d319995a94e2"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp25_t.onsets",
+        "0839661f7b10ab410b99f74153449034"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp25_t.onsets",
+        "9a3876282f78b122cbf568c7de9fbc24"
+      ]
+    },
+    "T4_Gat_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Gat_05.wav",
+        "f1a66466ee8b88c52ecaf543df097e1b"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Gat_05.onsets",
+        "5f20720f17ef4bbe8515bec93368be97"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Gat_05.onsets",
+        "717b92e9983fddddb1be27007244cdfb"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Gat_05.onsets",
+        "c460687dcbd1866b2ed20116bb080cf9"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Gat_05.onsets",
+        "992d2d974c97c628a7f5e3c8c9a0b3c8"
+      ]
+    },
+    "T7_Jap_Tukuda_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Jap_Tukuda_03.wav",
+        "55e1968392e65c6eaea4b7902c5cd433"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Jap_Tukuda_03.onsets",
+        "0f11f7281af812f3eab2c7be0c031b66"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Jap_Tukuda_03.onsets",
+        "b29f5a3695633efc5ebae7b5cbd3f0fe"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Jap_Tukuda_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Jap_Tukuda_03.onsets",
+        "e820660a9d8caebd5dee6fb1c2d4bddd"
+      ]
+    },
+    "T4_Tukuda_Ben_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_Ben_03.wav",
+        "e66c18aa6feb433990d711dda4de37ef"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_Ben_03.onsets",
+        "2efdb1915feeaf8c5e591f0b73a6f63a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_Ben_03.onsets",
+        "c072be18fc46ff3b829a333ba1a0f93d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_Ben_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_Ben_03.onsets",
+        "6483676f4daf3dfe9e2393ee6745c5f1"
+      ]
+    },
+    "T5_Dli_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Dli_01.wav",
+        "e14d8a3d5afe6847a593d1138d18aa2c"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Dli_01.onsets",
+        "32df808b2de0be02a9b4b23b5564cb3e"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Dli_01.onsets",
+        "81c9a32b5f7353e549b1302ba0e27f34"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Dli_01.onsets",
+        "7667f8135f6a55151998d4cd19dbdc2b"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Dli_01.onsets",
+        "761d8c9d864a5972867730dbbe548d42"
+      ]
+    },
+    "T4_Tukuda_Ben_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_Ben_02.wav",
+        "af86594214a5197e78f6c532404a5569"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_Ben_02.onsets",
+        "ba41adc3f0d1dbd2fd09e9c4c71844bb"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_Ben_02.onsets",
+        "b65d9ade30572b694c0ecac5ee8315fe"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_Ben_02.onsets",
+        "41956798e4a1b5ee9f29a223e341a153"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_Ben_02.onsets",
+        "b770da36a78b2df2935dafb69c10d479"
+      ]
+    },
+    "T7_Jap_Tukuda_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Jap_Tukuda_02.wav",
+        "bb1308598af1420584a8c9c58ac89b17"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Jap_Tukuda_02.onsets",
+        "8f283bf57e570090c833a371e44d5590"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Jap_Tukuda_02.onsets",
+        "24aa4d7472c542aad8a17c20c03d3c26"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Jap_Tukuda_02.onsets",
+        "bae360b5932935e13b747bee3d91a517"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Jap_Tukuda_02.onsets",
+        "4f811bc711e12788b84d5a6c5a730b53"
+      ]
+    },
+    "T4_Gat_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Gat_04.wav",
+        "4513f7b7d9ff73c035f20d5c44ca1cbc"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Gat_04.onsets",
+        "da734562a877c000911022842da1fbbe"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Gat_04.onsets",
+        "287b8e00b1c7a55bbcc268c9b7a76144"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Gat_04.onsets",
+        "349a41d929ab55a5708518554daf1786"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Gat_04.onsets",
+        "d701c7ca75b97f1dcd7802239ed88107"
+      ]
+    },
+    "RMA_25": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_25.wav",
+        "32694d6b17fe707ae2043cc3af96ae46"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_25.onsets",
+        "3c01b1a9a7da243c1a38c96960c4ce02"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_25.onsets",
+        "4a986e8d37dda6a297714afb9947b5af"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_25.onsets",
+        "7acf8cfb4fd868d95d25340ebf163e49"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_25.onsets",
+        "dc903065bd9c1c0942077b743138a2c4"
+      ]
+    },
+    "RMA_19": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_19.wav",
+        "fd5c694fe91894aeb43bd78a3eefae5f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_19.onsets",
+        "106b9006b7b9d30ff127db6e4da00022"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_19.onsets",
+        "5fc531f469c4b3a89aa498d8d8e543df"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_19.onsets",
+        "97c3be605b707684009018ab5cb24b84"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_19.onsets",
+        "2d90fdfecd3f5b09e74303e51f46e6d4"
+      ]
+    },
+    "T5_Luc_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Luc_02.wav",
+        "2130e3f04b0bb98b3dffb83e5001fd8d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Luc_02.onsets",
+        "bb554b13afd76f82d8d65be7fd61969c"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Luc_02.onsets",
+        "f89eaf3f2061c705c3cc248fb97631ce"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Luc_02.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Luc_02.onsets",
+        "7c0dfd51b3025e35dc554decc8b79c11"
+      ]
+    },
+    "PP_comp84_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp84_t.wav",
+        "8c57ad08f33c6146aefea9da6254e46a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp84_t.onsets",
+        "9e8724f383ad35bbaa43dc07eff06242"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp84_t.onsets",
+        "eebec21ec74a52dd44aefe8abed64cb3"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp84_t.onsets",
+        "49c5563293b13aacc888ac3503a24881"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp84_t.onsets",
+        "f833a2583d9e92c6dabfe5249e763785"
+      ]
+    },
+    "PP_comp3_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp3_t.wav",
+        "f054888fddbd65c3ce28b9f20c010821"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp3_t.onsets",
+        "d90ad73173f918622b079a843ee92ad1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp3_t.onsets",
+        "fb839932633c48654c65969b2a48c5e2"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp3_t.onsets",
+        "9eb8ee45b1cf734d5300503a8305f342"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp3_t.onsets",
+        "9ee117b3ea91cb0896f7a8114f457120"
+      ]
+    },
+    "AS_comp110_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp110_t.wav",
+        "e3d583ceb6a35e3aeed14e59c3721d9c"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp110_t.onsets",
+        "8aaceb3c4ca54d091f7c624e0a46d495"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp110_t.onsets",
+        "3f419b8f85791006b58ce132ff03805b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp110_t.onsets",
+        "dadbec942a92c1c6565611414939c3d5"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp110_t.onsets",
+        "7f3d14b07fd0ade6684a42922791873d"
+      ]
+    },
+    "KB_10": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_10.wav",
+        "d9794c359e4e8e3f1a84aedf2bb87dc8"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_10.onsets",
+        "bd9c8abcdfd7c5a191971e1e0b54e310"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_10.onsets",
+        "2a34cd9b49f9f511d6905b57d42537a9"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_10.onsets",
+        "67646ea7d50b0e0d15cc14c14038183a"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_10.onsets",
+        "5cfa2ad9edc207ae5acbc81f3ccc1cdd"
+      ]
+    },
+    "KB_12": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_12.wav",
+        "f75e5f4af4444382ee0e95b62a1c5949"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_12.onsets",
+        "92aa8621e0766a09763dad3eab3c38ce"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_12.onsets",
+        "2ba36a6af8d853e5fb145dfcd4cb7aad"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_12.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_12.onsets",
+        "73549592bef0763a219fae67aacdf94e"
+      ]
+    },
+    "PP_comp86_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp86_t.wav",
+        "c4925441a916ae62afa746d6fc06f38e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp86_t.onsets",
+        "afc046091b2311e16c9c81f782414f00"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp86_t.onsets",
+        "55963ae1c561999488b9dd8540c842ca"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp86_t.onsets",
+        "ca706451266656060fd2b03bbfe308dd"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp86_t.onsets",
+        "a30b9d27d966488b9187bbcfec0130b6"
+      ]
+    },
+    "AS_comp112_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp112_t.wav",
+        "757c557b1337f8bf63aeba30c6353ec7"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp112_t.onsets",
+        "0e2d600d768b0b0e2709d11d3b9d7074"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp112_t.onsets",
+        "20691157cfc9e7e6785b3fe0f2a831c5"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp112_t.onsets",
+        "1f3e1e741f56629991734c458245983a"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp112_t.onsets",
+        "27e1f219e7e0b0661bcb83b344098b1d"
+      ]
+    },
+    "RMA_27": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_27.wav",
+        "c505e82fe161bac26eba1baa62ac43e2"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_27.onsets",
+        "733585b6b05b25fc9e3df19da2cc02cf"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_27.onsets",
+        "a76d106ec49a48600597d270761c9ca0"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_27.onsets",
+        "33cca5fb58f108a5080aec52a43d6567"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_27.onsets",
+        "08f2ee2cba55233d357a2caa528a4934"
+      ]
+    },
+    "RMA_8": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_8.wav",
+        "ea7fea779f47f0478109e8e445bffd05"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_8.onsets",
+        "e821080de37f7cfcc5f7bb641c997993"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_8.onsets",
+        "6752e44e9990875f9acb5d0acd5b7974"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_8.onsets",
+        "f7a4a754837e2d498996286c8c236486"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_8.onsets",
+        "08658d3053bd935a1c16c6e853d9b5cf"
+      ]
+    },
+    "T7_Pur_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Pur_04.wav",
+        "d2b696f520c1c7adb7a35740be889c7d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Pur_04.onsets",
+        "242b3370b6c91894299a404dc8e0a9be"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Pur_04.onsets",
+        "181f3058fe3c93f08d1db48d2ac4123d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Pur_04.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Pur_04.onsets",
+        "3e46071a98767c36dd8d7ab86ab05621"
+      ]
+    },
+    "T5_Dli_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Dli_03.wav",
+        "b024de3853c931a92e8598e7c46e8dd1"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Dli_03.onsets",
+        "4df6ab126f4de66a561689c6c35921a4"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Dli_03.onsets",
+        "ccfedcbae556e7608327855710a9b960"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Dli_03.onsets",
+        "9661668fce493e12aa28e31cf2d53cf9"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Dli_03.onsets",
+        "b61c7932c6c5c40f859e3959e70c43dc"
+      ]
+    },
+    "T5_Dli_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Dli_02.wav",
+        "ef259489357b75d764ddfb9b367bad9c"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Dli_02.onsets",
+        "cd331b23d5abb10d73bc851a64229d50"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Dli_02.onsets",
+        "d70be4c9f4ed33a26186abf65f931dc8"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Dli_02.onsets",
+        "7533a2e4accb1bfa3d3a245d8b47ae21"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Dli_02.onsets",
+        "c7c3898a643c67d6be06c1a98b628289"
+      ]
+    },
+    "T7_Jap_Tukuda_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Jap_Tukuda_01.wav",
+        "39d2262ce0b7d04084ec8015706e1b6e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Jap_Tukuda_01.onsets",
+        "cdd78788082983de0dee1efc615f2984"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Jap_Tukuda_01.onsets",
+        "a839c7646c508c308100c639dea2115a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Jap_Tukuda_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Jap_Tukuda_01.onsets",
+        "879812b50c563dd2ad4c245037b7e951"
+      ]
+    },
+    "T4_Tukuda_Ben_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_Ben_01.wav",
+        "6352ebba3a77941c444399f10a93969f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_Ben_01.onsets",
+        "86d05f25fbb68d2a397e839eb2c346f6"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_Ben_01.onsets",
+        "9d5ac124f026d20db22a4f1d6b74be6a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_Ben_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_Ben_01.onsets",
+        "89ad97197cd9687656be1bda5fa94b5c"
+      ]
+    },
+    "T7_Pur_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Pur_05.wav",
+        "ec91c998921bcb1359ce2bbba1f4d69e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Pur_05.onsets",
+        "91bef3cb02e3ebae523ea2bd7cea366e"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Pur_05.onsets",
+        "d8a003e53d6d720d8e2c4809f42152d5"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Pur_05.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Pur_05.onsets",
+        "91f193302972f35c4fe936d0095d7714"
+      ]
+    },
+    "RMA_9": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_9.wav",
+        "526ebe801dccef36f973a148c54e4f75"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_9.onsets",
+        "49a7e7d498f5b875604f1f2fb18a3517"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_9.onsets",
+        "8d1db7c52ae9866f9dd98f88ab3c52aa"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_9.onsets",
+        "43c15efdd4858f0848615a35ee38c0b7"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_9.onsets",
+        "fa833269ab7e2bb520a051c29ab99831"
+      ]
+    },
+    "RMA_26": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_26.wav",
+        "1bad4bd8f1b19d0ad182307f71212b0e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_26.onsets",
+        "a41ae650a2e5c77d0ebd589d5eea81c6"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_26.onsets",
+        "0e2d2891b901835a3af6dcdaf8825f5b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_26.onsets",
+        "d767c9e580f17a0311dfb34e62bedf4e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_26.onsets",
+        "2fec16ba3fba5016a91c80bb80a14d21"
+      ]
+    },
+    "T5_Luc_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Luc_01.wav",
+        "ded158c4cc253628ab5871c870e65606"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Luc_01.onsets",
+        "c71ea78c112202f62db0765176299ddd"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Luc_01.onsets",
+        "a2b3ccf3f1a79ce3964bf8613058e982"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Luc_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Luc_01.onsets",
+        "1cfc4b440938453c6bde223c8f4850b1"
+      ]
+    },
+    "PP_comp27_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp27_t.wav",
+        "6ebf8ecf2151ea670a7290d9e99d9ee8"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp27_t.onsets",
+        "5ba20780347c9769f9cfbc5109465462"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp27_t.onsets",
+        "6768c48c4ce1847a7a995530e77bbfe3"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp27_t.onsets",
+        "f319f02e7e4d12de9de8ee1490df8d66"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp27_t.onsets",
+        "3d04a9827a54e58556b90c397ce8980b"
+      ]
+    },
+    "T4_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_02.wav",
+        "e7fec8118db40ff11f95fc48730ac7ba"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_02.onsets",
+        "8d621f2b6d02f135920898e32d5c9297"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_02.onsets",
+        "0c0dbe0b30ff8b39aced9f157b816472"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_02.onsets",
+        "d0d82aedf97b5f50308049d4f10a09c2"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_02.onsets",
+        "ab11cc5aca355d7077b3e1774c24980c"
+      ]
+    },
+    "KB_13": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_13.wav",
+        "2e0c937c3b7d987907119d64eb0bdf5a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_13.onsets",
+        "96410ec4aea1c2bfcc9d87582deed118"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_13.onsets",
+        "4a01b25f011c5f69c848104595a7b86f"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_13.onsets",
+        "14ea79ce7c3cc538b082421957caf6e2"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_13.onsets",
+        "d4213a48649894394cf2aaf1f7c35193"
+      ]
+    },
+    "PP_comp81_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp81_t.wav",
+        "82be3b5eeed413b02cfea89ccec934d1"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp81_t.onsets",
+        "496a20b0ed8e4a20fbdcf1d8c4531d9c"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp81_t.onsets",
+        "e51654161484e3b33888c6f99c640b2e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp81_t.onsets",
+        "ce38821d1719e3fa86af5efdfb6d630d"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp81_t.onsets",
+        "29bda2b34d1a8e7bccb966e8b409151a"
+      ]
+    },
+    "T5_Gat_03_1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Gat_03_1.wav",
+        "dda4be252dde84685e5c11fa0c5d8e22"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Gat_03_1.onsets",
+        "d8445bbe82988ab77006ba3784c894c0"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Gat_03_1.onsets",
+        "b4a9dce1adc9d94184bc1975f7983e52"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Gat_03_1.onsets",
+        "875c62317dbd95f70beb0ad17f7c8bf9"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Gat_03_1.onsets",
+        "fa054e72cf79e33c5b723b84ae6b3870"
+      ]
+    },
+    "AS_comp115_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp115_t.wav",
+        "7cfdd869bb420249fcbb3561e6f79ca7"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp115_t.onsets",
+        "da397cbd39f8fda65a21f6cb765c7822"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp115_t.onsets",
+        "af71fa36b0c2a1aa7ccbeb539275d799"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp115_t.onsets",
+        "1b5feb61fa4d284341a2e55c55b7397f"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp115_t.onsets",
+        "cf7cc374e829f6a96a9691ee7d8ba5cc"
+      ]
+    },
+    "T7_Luc_jap_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Luc_jap_01.wav",
+        "00e3960514f4fecb9ef38e4c0ea0263a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Luc_jap_01.onsets",
+        "4179a0dadcb1cdc9de6bb6746b61c880"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Luc_jap_01.onsets",
+        "f674f2be790330e44287c54fa6161a1d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Luc_jap_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Luc_jap_01.onsets",
+        "d3e2bf28a7e9ea31755c358719d901e9"
+      ]
+    },
+    "SK_teentaal_mahadrut": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_teentaal_mahadrut.wav",
+        "8ffca273873dfa56e490faba84ad8b3d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_teentaal_mahadrut.onsets",
+        "39e5061762e15e882707390c88089f35"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_teentaal_mahadrut.onsets",
+        "0b8eb7c46fb6f9dd000cbf4e2a13861a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_teentaal_mahadrut.onsets",
+        "a0e9f909734ecc947d939e3a4d8e1061"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_teentaal_mahadrut.onsets",
+        "ad8defd56eb60c8ad5ac675a8819a6a4"
+      ]
+    },
+    "SK_ektaal": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_ektaal.wav",
+        "6ce4ae973cc3581815519a4420541151"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_ektaal.onsets",
+        "7e0b64284a7f32b8102eec7983910e88"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_ektaal.onsets",
+        "a09e09e61a54b0c2628cdb4a8794e702"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_ektaal.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_ektaal.onsets",
+        "ceb995b1f52707ec87bf9a7bec632142"
+      ]
+    },
+    "SK_roopak": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_roopak.wav",
+        "27c5bfc36d3535d8a24fdcebca2ae4f3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_roopak.onsets",
+        "a6e5046dc3cc94d1684361d744eabc11"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_roopak.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_roopak.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_roopak.onsets",
+        "048c2bbb9ac47e4ded275e02bfdc36ce"
+      ]
+    },
+    "PP_comp83_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp83_t.wav",
+        "d84d61ff3fb1020452636723dbb9a3f5"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp83_t.onsets",
+        "ecd464e6373b59a1babb882a6bdae4c8"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp83_t.onsets",
+        "720d52f5683e35d56c2c7736e97b3d95"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp83_t.onsets",
+        "3a1098e810caf8227e3c8e84bad2ab09"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp83_t.onsets",
+        "aa55f2717226d5f144e4ea0f5da8bd47"
+      ]
+    },
+    "PP_comp4_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp4_t.wav",
+        "05189fc348984ce22de8e81d1f1dce6a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp4_t.onsets",
+        "ce6868bc9ead3430146bc5d29f5450d1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp4_t.onsets",
+        "2d13125baa785c273f4348f41faf172e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp4_t.onsets",
+        "5739b28d0d78ad0c00a6612a86de6f22"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp4_t.onsets",
+        "170da0ab279865b0bc83e10ab2806764"
+      ]
+    },
+    "AS_comp117_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp117_t.wav",
+        "9fe8e0799da93a757440c2efdbff9e3e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp117_t.onsets",
+        "73762e02199b706562d78420ed014f52"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp117_t.onsets",
+        "c48e3596bafee8394ede8d0cae1ebd30"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp117_t.onsets",
+        "229dd56d6a0039c22d29ee3614cf845e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp117_t.onsets",
+        "88e52db6440a0017ba00cf4e50736fb8"
+      ]
+    },
+    "T7_DLI_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_DLI_01.wav",
+        "54fb11be8d72c648f024ea18256c407b"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_DLI_01.onsets",
+        "39f22d4a3da6e40de9aa925d788b9571"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_DLI_01.onsets",
+        "c9e5c75e73ec6ff248c26fc9517f9bda"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_DLI_01.onsets",
+        "4bcb46aac3309e3aa579a71b82284aec"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_DLI_01.onsets",
+        "614ac126b1cf3f8bdc46a97c56def99f"
+      ]
+    },
+    "AS_comp113_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp113_t.wav",
+        "bb63b6ad9b89ea5287106f189d8eece8"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp113_t.onsets",
+        "03ffadf777629fa5dff2cc5eb2868d9d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp113_t.onsets",
+        "5d09d9bf40ad4b9b6954018ed140732c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp113_t.onsets",
+        "c1885d6b2a66632e112c7d83e67be47d"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp113_t.onsets",
+        "d2e9394b07019e9dca62ca3a3a931e36"
+      ]
+    },
+    "KB_9": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_9.wav",
+        "81d4d607c9319eba9e874ab1b23a9dbd"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_9.onsets",
+        "c49b1c80607d18bed99763fe20b10cd4"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_9.onsets",
+        "8dc28576492fffe27c366c6a9dab733c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_9.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_9.onsets",
+        "ba9560cd22ef89253b1e107aeff88a41"
+      ]
+    },
+    "KB_8": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_8.wav",
+        "c0fda1d286393b112d5db7f11b9f941f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_8.onsets",
+        "08746121a6818fba762231506b85c306"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_8.onsets",
+        "2448cf01ec8fe3f08f0effacf2d5c5d7"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_8.onsets",
+        "2c29876ed550a0b797c20cd9ec08d40a"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_8.onsets",
+        "e0e7ad016d5f5303a95f9e20fd35cc27"
+      ]
+    },
+    "SK_uthan_1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_uthan_1.wav",
+        "cf76d642e59d8647cd73204d93d8951b"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_uthan_1.onsets",
+        "93b46f48e0186866a86b1521dcb5a224"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_uthan_1.onsets",
+        "e5734bd5ed8e138a421cae71952e1dc4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_uthan_1.onsets",
+        "ae2d7dd540d8a19a88207d700c8e8f10"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_uthan_1.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ]
+    },
+    "SK_teentaal_drut": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_teentaal_drut.wav",
+        "f14d7970529a2a17d83239771acb514d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_teentaal_drut.onsets",
+        "d09d638de361d1ba08e5ed71d47b7ce6"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_teentaal_drut.onsets",
+        "e85d26e3046483c9a30df05a097fc35d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_teentaal_drut.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_teentaal_drut.onsets",
+        "ddafc06c498e23242ea211a223b5218f"
+      ]
+    },
+    "PP_comp26_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp26_t.wav",
+        "fc72aef6134157e6f3e59fc3db04f64a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp26_t.onsets",
+        "0dcda57765a166a370cbc6bbab2e62a3"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp26_t.onsets",
+        "b53ce21ca6204d045c2e83b2d7d0beb5"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp26_t.onsets",
+        "6818c7b66b19aab10e12722de64f61e9"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp26_t.onsets",
+        "eb8efd1fed026157623b7eedb6051ea0"
+      ]
+    },
+    "AS_comp108_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp108_t.wav",
+        "f894eb3d0105dc00398836f9cacf7096"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp108_t.onsets",
+        "d9cf98c6be19efbb991a785ae6d66ed8"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp108_t.onsets",
+        "b95bac26aaa0eac0ea2d96b824be7e5a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp108_t.onsets",
+        "023e83d2da532f07e04ab4ac2e6adbfd"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp108_t.onsets",
+        "e0d5f8758425f408a9ef669993db6979"
+      ]
+    },
+    "T7_LUC_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_LUC_01.wav",
+        "ff74ec9d40b03649db12ccb5ecca1a38"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_LUC_01.onsets",
+        "03d3d30bdf92f1f77b414d6419667f9b"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_LUC_01.onsets",
+        "311abfb1be2899c7a235c99ac2fbbc5d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_LUC_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_LUC_01.onsets",
+        "76f9fff408099b73b2bfb32fde946e1f"
+      ]
+    },
+    "PP_comp19_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp19_t.wav",
+        "4dcaa6e3102df32b94740b48634e164b"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp19_t.onsets",
+        "d9019d536ea40c7c36c2ef06721441ec"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp19_t.onsets",
+        "a3bb0099ed12ca8347cc4cebe593433b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp19_t.onsets",
+        "d6dfa2c1d150f163561640563a286831"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp19_t.onsets",
+        "ee578d8c6cb67d9049fa892820c8f6fe"
+      ]
+    },
+    "AS_comp111_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp111_t.wav",
+        "b209bfdc36e21142cd984f81d1d9ddf9"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp111_t.onsets",
+        "fcadac8fcc1bfc823b5e22ff99307274"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp111_t.onsets",
+        "9e46b9fa626d0c9824ad135ad3579dda"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp111_t.onsets",
+        "00a5f1226c72741565a2d36b5d1f3114"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp111_t.onsets",
+        "6190bb1d81c1e62b0a356cedc7170c3a"
+      ]
+    },
+    "T7_Mukuda_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Mukuda_01.wav",
+        "5d425f2fee098d77c1dca17353c74462"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Mukuda_01.onsets",
+        "bc3e081e9987d1de288e0d357d402f35"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Mukuda_01.onsets",
+        "6dda2c83ab360aa8644f98b87fbf6e9f"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Mukuda_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Mukuda_01.onsets",
+        "137a024c5c8ef3fd7c687aba11941a18"
+      ]
+    },
+    "T4_Luc_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Luc_03.wav",
+        "7069f30c68abd8e49f6461e8959e2154"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Luc_03.onsets",
+        "ad1433b6bba5ab0b4805620fdde7d150"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Luc_03.onsets",
+        "85db75ee17e3e213c99472d32ee348bc"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Luc_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Luc_03.onsets",
+        "8e1d4ec425caf8b56ca7f3202d0cdcc4"
+      ]
+    },
+    "AHK_solo-tintal-5": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-5.wav",
+        "6a85eb4abc10ee310af742bf5cf7f2a8"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-5.onsets",
+        "6cf0715fcfbc613b97507e728537660e"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-5.onsets",
+        "95915a16c11615261ac6a7509bfbc714"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-5.onsets",
+        "cde21e48b7546d6edb0e0dd93962d2e6"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-5.onsets",
+        "2f85bdd531dd3ff08a22a0281bcce83c"
+      ]
+    },
+    "T5_Gat_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Gat_05.wav",
+        "c5a4a944ac155161f7a7feec5fab1309"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Gat_05.onsets",
+        "575123b5811a02001e9be34354894ea2"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Gat_05.onsets",
+        "f9ce923ce1200369a6574bcbf2476f0e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Gat_05.onsets",
+        "ad60fdeae0604e77ed0bcedf410e250a"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Gat_05.onsets",
+        "24ee4f53230864ee156af7490c9abc5e"
+      ]
+    },
+    "PP_comp31_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp31_t.wav",
+        "799692698662a9959b656a82a3326acb"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp31_t.onsets",
+        "51217bb90d2d260b67f31ea933ff5153"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp31_t.onsets",
+        "6458f9428c46b8561ca9838d23c29667"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp31_t.onsets",
+        "1c28d8c8e397c63f1391ebf16b7e439b"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp31_t.onsets",
+        "a9bbc149199feb8f3f676b15dfd0fdd4"
+      ]
+    },
+    "T7_Fur_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Fur_03.wav",
+        "1e16765c92bfdb6d0cf6117a584c76a1"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Fur_03.onsets",
+        "64b832a36b4e944655155d6ecd9e4b2e"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Fur_03.onsets",
+        "d7a9fc5a48ba4ce31e0fd758a04c48c2"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Fur_03.onsets",
+        "158bfdf0cddf5dfedb67bd96597ece87"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Fur_03.onsets",
+        "b2d8caa85fd28ac535f7ed651be603be"
+      ]
+    },
+    "SK_dadra": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_dadra.wav",
+        "9de742e515d8f1f717117df8afe45683"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_dadra.onsets",
+        "73a4225f2645caf52d6d679f0e344020"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_dadra.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_dadra.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_dadra.onsets",
+        "71a5ad1dcb01cb590e2a527db2d5ce01"
+      ]
+    },
+    "KB_6": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_6.wav",
+        "ac795903640edd47b368f8048fc887c3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_6.onsets",
+        "4f70e3a78753fd8337385657ad397a3c"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_6.onsets",
+        "69b59ae55c2ee004d02ddd89796386ab"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_6.onsets",
+        "0f5c5cf17578d9ecd552fc543b1c0285"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_6.onsets",
+        "5675ec931be504d896b17907fb482f0d"
+      ]
+    },
+    "KB_7": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_7.wav",
+        "89fbf331045b9b1614b569fe80b3e030"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_7.onsets",
+        "df804b4b02c797cbaac1309ce1f9619c"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_7.onsets",
+        "38d8d31f964dc0fe39dc7534d48ccee1"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_7.onsets",
+        "3f26c26d4faa236abbd3a16aabf7ccc8"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_7.onsets",
+        "7febf05ce0b87ff75683d73544fce2ae"
+      ]
+    },
+    "T7_Fur_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Fur_02.wav",
+        "57b882e6baaa20dd3f3f87b0282e09a2"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Fur_02.onsets",
+        "dd706e3e61e3db8ddec60275d15c1722"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Fur_02.onsets",
+        "0f962a5a8a3546049af9b5dfadb7dd24"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Fur_02.onsets",
+        "434f8d3747d7a5c421f69e15d4d12390"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Fur_02.onsets",
+        "32690b6618c99b52a92fe3d8f71321c9"
+      ]
+    },
+    "SK_ektaal_drut": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_ektaal_drut.wav",
+        "8966d2507ca72dd850abd50cfd3c9a37"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_ektaal_drut.onsets",
+        "791966aeda5dd3271e6c7132947bca3f"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_ektaal_drut.onsets",
+        "b2387afc84b05b22bd35b64a2a9263a4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_ektaal_drut.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_ektaal_drut.onsets",
+        "344eb2837a48c5965a5869049827c441"
+      ]
+    },
+    "T4_Tukuda_Japh_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_Japh_01.wav",
+        "3b9cc6f19e497b645e61aeb4ea6ce828"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_Japh_01.onsets",
+        "7b0739b9958c10dcb61dffb6279f704d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_Japh_01.onsets",
+        "51dc90ac206ec1f078c084bbc875e244"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_Japh_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_Japh_01.onsets",
+        "3e900dfc539b72eb6265c34de8474968"
+      ]
+    },
+    "T4_Dli_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Dli_01.wav",
+        "b15ae02b7fba344610d755cbd6f6057e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Dli_01.onsets",
+        "0f63b691072d96b2538ae41b0de1d30a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Dli_01.onsets",
+        "a08281c102d881fbee93597972344995"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Dli_01.onsets",
+        "60cb0fc660fd29c669be2ddaa2bfd722"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Dli_01.onsets",
+        "a1859a7902f9aa1791b99ecd8c4a7b18"
+      ]
+    },
+    "PP_comp28_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp28_t.wav",
+        "9f6e669f478c4a4ce094daedd43e6def"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp28_t.onsets",
+        "de2fc244dd796bf468e46d8d757acebb"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp28_t.onsets",
+        "bb7e63367bf3652a5009bbf6164130da"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp28_t.onsets",
+        "7f3e5a5781c091a3a19545ff6c06ac49"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp28_t.onsets",
+        "72aa12bae845a99b53ce21f40c18f381"
+      ]
+    },
+    "T5_Gat_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Gat_04.wav",
+        "c60e2eb9a6976e9cf4c3b10168701faa"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Gat_04.onsets",
+        "48d9377e7d3ad14332abbb241b36ed1e"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Gat_04.onsets",
+        "131ec4f986cf8c2cdc3275adb62d49fc"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Gat_04.onsets",
+        "cb23ca1ad64240f09bceb5d7e18352ae"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Gat_04.onsets",
+        "2228151e61f6b9e1e08ff01206984c12"
+      ]
+    },
+    "AS_comp104_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp104_t.wav",
+        "31786f537bbf1e71457fb83dd57fab41"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp104_t.onsets",
+        "de4c6dc375054b64feb1be3c7301dfab"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp104_t.onsets",
+        "a05c2552683c2dffb95602b7420b8c78"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp104_t.onsets",
+        "a061ef97a2b70fe25bf5bbe9d838d141"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp104_t.onsets",
+        "ff3d51b3f995411f0e17848032b0346e"
+      ]
+    },
+    "AHK_solo-tintal-4": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-4.wav",
+        "433d660dd42198302f30f89575d1e6c2"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-4.onsets",
+        "2d645a8a6eee5e665a2ccd4b811f6df1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-4.onsets",
+        "57008b2051d44fe1a9a589dd1cc12219"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-4.onsets",
+        "2042e13fee9d02ad8fc8fec9c54bae27"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-4.onsets",
+        "52ddd9bf7a89b239237b419ea2f37d8c"
+      ]
+    },
+    "T4_Luc_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Luc_02.wav",
+        "72c225b3549752eb1a6dbc35051c8ef1"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Luc_02.onsets",
+        "5cc869a9c40f995bd0dccd6feae59c6d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Luc_02.onsets",
+        "792af9aabad61de02bdfe7b558785b0e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Luc_02.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Luc_02.onsets",
+        "5d49a32872041b00149c2a6c007235a6"
+      ]
+    },
+    "AHK_solo-tintal-6": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-6.wav",
+        "ffb13acd054c847df0b0aabccc3da6cd"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-6.onsets",
+        "e0b5500f366b6b98b8e2c1e94b42a313"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-6.onsets",
+        "ed1756a75547a2ba1d7484ac9c3c4388"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-6.onsets",
+        "0299d694c222182cd45c3a0fb3c81351"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-6.onsets",
+        "15d17874e18ef192db39623ecd317c8d"
+      ]
+    },
+    "SK_teentaal_vilambit": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_teentaal_vilambit.wav",
+        "ee0e1f3aa0aa922097d78312f09c699a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_teentaal_vilambit.onsets",
+        "431394ca520590f855543bf0a55ae1ed"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_teentaal_vilambit.onsets",
+        "8d46cc52a5419295f1733f10f8fb904d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_teentaal_vilambit.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_teentaal_vilambit.onsets",
+        "611ee0e9a29af8d03cdeaf61e0e579d1"
+      ]
+    },
+    "T4_Dli_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Dli_03.wav",
+        "540a3dc2c22f41fd7188cad56c72e466"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Dli_03.onsets",
+        "5baf8a02b41229615795db9ac90e41a9"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Dli_03.onsets",
+        "c8f71749bd2f78dd8bd1f48b5ebd8355"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Dli_03.onsets",
+        "99d25ae5cc3a79558f0d342693ba86ed"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Dli_03.onsets",
+        "d8ddc40a3fbb7aea606af1bc5323a556"
+      ]
+    },
+    "AS_comp106_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp106_t.wav",
+        "f13755d6019c75d1957348644fcf0a55"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp106_t.onsets",
+        "e2243a873e8ea79e44500813afef560b"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp106_t.onsets",
+        "7a2749566f0852567c85677ab985dce9"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp106_t.onsets",
+        "1a21efc3908b0773c8ea13e76eb0361e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp106_t.onsets",
+        "42bd2a22771f785fd2df7bf496163823"
+      ]
+    },
+    "SK_jhoomra": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_jhoomra.wav",
+        "a3421c6d7140af2d3733c5b7bb0f0586"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_jhoomra.onsets",
+        "e138cf290d2e681b8a611397bb9ef867"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_jhoomra.onsets",
+        "f889f5c7af13d695da8f512b460ea886"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_jhoomra.onsets",
+        "f94398d29e0a721cad6f1c935a02ecfc"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_jhoomra.onsets",
+        "fc90e9093b096184a03467423ab514be"
+      ]
+    },
+    "PP_comp17_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp17_t.wav",
+        "088a34f389acb73cd21ab438d94599b3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp17_t.onsets",
+        "202ac6e0cfd63e305726501c88890160"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp17_t.onsets",
+        "bc34550d8d983883ead235e682f89e80"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp17_t.onsets",
+        "437b0eea4e0e3dbb5fdfa16b80274c06"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp17_t.onsets",
+        "c8351eab8ff42f5770c29a6d9a6bce2e"
+      ]
+    },
+    "T4_Tukuda_Japh_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_Japh_03.wav",
+        "48e238a24511900e6adcf630e0836b34"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_Japh_03.onsets",
+        "e24b94af2978210bc8a2897bead9add8"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_Japh_03.onsets",
+        "2c1de8d0328dc20e70b95dcd0a844eea"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_Japh_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_Japh_03.onsets",
+        "e96676360ada33455c8ad345676f4035"
+      ]
+    },
+    "KB_5": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_5.wav",
+        "e947d40ccf6947976a8d31ce68a508bc"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_5.onsets",
+        "62a3e7c27edbc65d9fdd13d6703aa685"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_5.onsets",
+        "3370d04a43b146cd567514829f57d3e1"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_5.onsets",
+        "a1b2c0e97af8d34b1a6a2091b00b0ff6"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_5.onsets",
+        "2887f17a5621f9c3709ae2f4733d0fad"
+      ]
+    },
+    "KB_4": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_4.wav",
+        "c616dfaaffc4a8da3ab71d3891c18c66"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_4.onsets",
+        "3442256ba2d4e59159dac543e26714d8"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_4.onsets",
+        "687c8ecc977b4c27997eeecf33a779f6"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_4.onsets",
+        "4205188b91e0fdf7b18c9e35cee30604"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_4.onsets",
+        "bf1e9d043b40be65a3323c02d5b2b5cf"
+      ]
+    },
+    "T7_Fur_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Fur_01.wav",
+        "7e524142e6d1e854d46b2b9d97a725f9"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Fur_01.onsets",
+        "cbe142f42d9d6f192a18793c1b54a18a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Fur_01.onsets",
+        "0625e34336ed959a93c93282a342f705"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Fur_01.onsets",
+        "1596dd250f942c97b7259aff4eb443cf"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Fur_01.onsets",
+        "fe867bd79bf8e8dcd44e0b633e4610c6"
+      ]
+    },
+    "T4_Tukuda_Japh_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_Japh_02.wav",
+        "a941d6a33994e13f70872b8bba81f577"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_Japh_02.onsets",
+        "bcc5f02535f0b021915cf8101f78162b"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_Japh_02.onsets",
+        "41481755f9390e9a48b7e211c930c904"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_Japh_02.onsets",
+        "5bc7b0940500fb84b6d00335ef549d80"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_Japh_02.onsets",
+        "1fe03b65f9da61a1f6b99b1ee03827ad"
+      ]
+    },
+    "T4_Dli_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Dli_02.wav",
+        "d8a181208116d1085a246b2d5a2ba07e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Dli_02.onsets",
+        "d814ef5169fcc22405528178f33545a3"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Dli_02.onsets",
+        "5d5bdee137016870611dcf0740e9ccbd"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Dli_02.onsets",
+        "639d614b8a97658df8f95e7c72e58320"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Dli_02.onsets",
+        "6b86da81883bc4659ed5e6de311a1937"
+      ]
+    },
+    "AHK_solo-tintal-7": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-7.wav",
+        "fbf030689783259c2795db6465bef45f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-7.onsets",
+        "491654a91c32eac42a085d60054401ec"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-7.onsets",
+        "3340eb5488ffbe3ca9c90805b275ac8c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-7.onsets",
+        "ac659daec95dfc644d221963eef7f8c0"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-7.onsets",
+        "93a7d952f12f57a349b55dfac2cda84d"
+      ]
+    },
+    "T4_Luc_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Luc_01.wav",
+        "b67543b20fe64d283de5ebf914c8efa4"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Luc_01.onsets",
+        "ba6cc9d30f543184777e73cbdf60fe36"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Luc_01.onsets",
+        "339920d9c1b29ce0a1daacdf6fe0e08a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Luc_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Luc_01.onsets",
+        "38b10522683d44449ad5169349904772"
+      ]
+    },
+    "AHK_solo-tintal-3": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-3.wav",
+        "889cf3e7a6775e1cae0487a59428a123"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-3.onsets",
+        "3f80513ec68695464e7c7702724859bc"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-3.onsets",
+        "53a8cd614b04bcc0e7fe659fd2212899"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-3.onsets",
+        "402ad841fccd2c637a4ec84feea8f060"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-3.onsets",
+        "1da9b033a2b6a6b3bd2d608fd5d526ec"
+      ]
+    },
+    "T4_Luc_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Luc_05.wav",
+        "e0f17cb1d0233861401eb9a308d498a6"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Luc_05.onsets",
+        "193af258a8394d0860dbdb7c3182f329"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Luc_05.onsets",
+        "a1cf2e12cbb04f5d95800a24ec4c10f4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Luc_05.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Luc_05.onsets",
+        "c944ddc643474361bc8bfd86ad258472"
+      ]
+    },
+    "T7_TAA1_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_TAA1_01.wav",
+        "eb190c6b26bb927819c42e60320ce2a2"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_TAA1_01.onsets",
+        "743d2fb9983880c787edd124a1376f36"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_TAA1_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_TAA1_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_TAA1_01.onsets",
+        "414a8fd9409da9ffa95df8f512389bc6"
+      ]
+    },
+    "T5_Gat_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Gat_03.wav",
+        "217994cc8174f20e60a4b805bd4423c1"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Gat_03.onsets",
+        "68d8960cc3ba638ba2f8d99fa3f01e35"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Gat_03.onsets",
+        "35a64dd8ccb14a8a6dfe48150fe1827c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Gat_03.onsets",
+        "d9b910de232f8e0b7c7b520f23fe94ae"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Gat_03.onsets",
+        "2dc41792a8e96378cc375972625e96c5"
+      ]
+    },
+    "SM_kayda_2": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SM_kayda_2.wav",
+        "91de7254151cc44d93092f9ad3d07a19"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SM_kayda_2.onsets",
+        "5b57193e499b85ab7e3cd2d0bbc6a1df"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SM_kayda_2.onsets",
+        "96b20d9bfbb34435dd0b17cedf00f69a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SM_kayda_2.onsets",
+        "c88de6a6fee3d6599cfdfe06d02bbf2e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SM_kayda_2.onsets",
+        "d5c7c7fc95ecb8a324ef51a903bb3743"
+      ]
+    },
+    "KB_1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_1.wav",
+        "e9f2b8143d5e2a789213cfcc9ec4b992"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_1.onsets",
+        "3bd18502a19bb16f6f56664f87fcc9be"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_1.onsets",
+        "a2a65a7dbb950872cca3001e3e17098c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_1.onsets",
+        "ef508971b52e3856848d44ba47e684de"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_1.onsets",
+        "ffd45c273d77adaa391a2646586dd956"
+      ]
+    },
+    "AS_comp102_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp102_t.wav",
+        "1cbea1d9059822dc1a35022d6710aa9c"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp102_t.onsets",
+        "e271cace01f59ef76dd584b8531a7499"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp102_t.onsets",
+        "965d6170cc659868a89b7033cbcc477a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp102_t.onsets",
+        "d8baadb1e5060dfc745801ff3422dcbd"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp102_t.onsets",
+        "c39d7c5a5e00a1eae89471beeaec99d4"
+      ]
+    },
+    "T4_Gat_pra_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Gat_pra_02.wav",
+        "88df04efb2018dcdc83da780c2dd2440"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Gat_pra_02.onsets",
+        "6e1572fe150492a7496a8a321b9dce50"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Gat_pra_02.onsets",
+        "f09d1ed75011586da94588526c9ac3d0"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Gat_pra_02.onsets",
+        "16d56cb32aaf8cd0d93706b0c5e11099"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Gat_pra_02.onsets",
+        "3769b1a395fcc59bafb12f8648eeda74"
+      ]
+    },
+    "T7_Fur_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Fur_04.wav",
+        "4200cf84c912785d6d001269042cb02f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Fur_04.onsets",
+        "96da4dc9b97bbfd55fd91156a31639a1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Fur_04.onsets",
+        "46bf2f0ccd6a055cc203f73c5521e717"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Fur_04.onsets",
+        "017014171735efb5f00d2e6202393e7e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Fur_04.onsets",
+        "b2cda51198d009a9c1a381ee0ad82c50"
+      ]
+    },
+    "T7_Rela_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Rela_01.wav",
+        "6241dcbe00b26b8b829d4849d6784dd3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Rela_01.onsets",
+        "435e1479cd336c615231983faab0adcf"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Rela_01.onsets",
+        "e3f6dc5c581e164e923d1721313f0c28"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Rela_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Rela_01.onsets",
+        "0e8dfec171025293e834c3f75dc7522c"
+      ]
+    },
+    "T5_Gat_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Gat_02.wav",
+        "1df46714a5b7d83c240aed9d9d8a4d3b"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Gat_02.onsets",
+        "d7f6f2489e6963202c49a45c5a3d6122"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Gat_02.onsets",
+        "4f2ec832585b4133c511227cdddcc52f"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Gat_02.onsets",
+        "bb830139b254aedfb45430801673f437"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Gat_02.onsets",
+        "ca4e8861636728698eb2f1f01c30f0b4"
+      ]
+    },
+    "SM_peshkar": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SM_peshkar.wav",
+        "6ebed6d990a2efdaf2686f1278761c45"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SM_peshkar.onsets",
+        "8e251fb13d7f38c1d42df4a3008e4e3e"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SM_peshkar.onsets",
+        "3d11830f7b37f37288b58833543bbbba"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SM_peshkar.onsets",
+        "eaae5ffc76b0554060b268048aa03050"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SM_peshkar.onsets",
+        "afde446a8b2f087fbd1a458d3d414d61"
+      ]
+    },
+    "T4_Luc_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Luc_04.wav",
+        "1ebfe50867693f24c6e71d698bb2f829"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Luc_04.onsets",
+        "994d29886a12abeee6bc408d510e4477"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Luc_04.onsets",
+        "2cda17633de6e20ede14b3b562abc830"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Luc_04.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Luc_04.onsets",
+        "553181acd4c5080eb1b3bf7191ff0ebf"
+      ]
+    },
+    "AHK_solo-tintal-2": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-2.wav",
+        "a73fcc2648ba6098321a9cab249c6228"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-2.onsets",
+        "586e6f8eaf76f495f6c107f14910fc52"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-2.onsets",
+        "228cb5ba4b24406500751ce3edb6032a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-2.onsets",
+        "8683a3c0c310ed5ee719cbc30e69096a"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-2.onsets",
+        "18b73e6f697f7f6eeadf2cf20d846520"
+      ]
+    },
+    "PP_comp11_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp11_t.wav",
+        "6deb369487f7d0c378a80b91ca427b44"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp11_t.onsets",
+        "95e090558392cc1364571ba9120eba5a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp11_t.onsets",
+        "e6b4c6fd3757773404d0fe33f468e7f4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp11_t.onsets",
+        "e0bb05ddc4f1e27dbee0678c16ddf3ea"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp11_t.onsets",
+        "637ae7803d7d21ce9ac8c4eef64b64f9"
+      ]
+    },
+    "T4_Luc_06": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Luc_06.wav",
+        "0d8393695b927e40a832995baad6ba92"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Luc_06.onsets",
+        "30d5044ded87edfbfbb85fa733130e62"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Luc_06.onsets",
+        "68e85e6c0d1edaf0c4fecaa42372f711"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Luc_06.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Luc_06.onsets",
+        "6926f2d6ea2a724dc42078ce709c66c5"
+      ]
+    },
+    "SM_uthan": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SM_uthan.wav",
+        "93a81dabe1296de12cacf8d17bdc2e08"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SM_uthan.onsets",
+        "928cbf5c11e998128e12532f73f0ada6"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SM_uthan.onsets",
+        "de76b1a3fed70b8843d1179c39bd7244"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SM_uthan.onsets",
+        "60418d4ee59c02b8eaf0ca6a39b7800c"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SM_uthan.onsets",
+        "806a4d3ac23fc971bde2cf333fedd5dc"
+      ]
+    },
+    "SM_kayda_1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SM_kayda_1.wav",
+        "8a9311d674071e3dc8f47e7718e95c06"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SM_kayda_1.onsets",
+        "e5f95b344309fe96c7a49bfd0868d3fe"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SM_kayda_1.onsets",
+        "74a98623c929e8288e9d72832449ba0c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SM_kayda_1.onsets",
+        "9e91954fbe9ed94757bac819d97436d7"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SM_kayda_1.onsets",
+        "4af424d76a319fca0c1a7c971062ab53"
+      ]
+    },
+    "T4_Dli_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Dli_05.wav",
+        "8293efa1efd32d44391224f14921ef1d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Dli_05.onsets",
+        "925284cb5c27312db8b583ce70ccd0a8"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Dli_05.onsets",
+        "e15cddd27e578eaeb28bb971e9b6b96b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Dli_05.onsets",
+        "a881d78da3933a83add931573178d111"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Dli_05.onsets",
+        "49a84b66094043ded458a0dee98b628e"
+      ]
+    },
+    "T4_Mukuda_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Mukuda_01.wav",
+        "c938af1b806c8b1e1087b08a8b5171c0"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Mukuda_01.onsets",
+        "39be853d28498a783c795384ccd66f3f"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Mukuda_01.onsets",
+        "f8f1248f0c33ce560033a64be17a19ef"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Mukuda_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Mukuda_01.onsets",
+        "fbe3d52ddcd8067ddb9eaeba7406b2f1"
+      ]
+    },
+    "T4_Gat_pra_00": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Gat_pra_00.wav",
+        "ea97ef33f11948f8f4bf154e461bb91d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Gat_pra_00.onsets",
+        "0dbb437e8e54935eb3b3471a81df6aa5"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Gat_pra_00.onsets",
+        "945a581174f17839cd9d0b418fba086c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Gat_pra_00.onsets",
+        "44fb7f0bde90676b25d26b83137b6383"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Gat_pra_00.onsets",
+        "7cdaeb3fbb855c502eac46349cec87ad"
+      ]
+    },
+    "T4_Tukuda_Japh_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_Japh_05.wav",
+        "7b8ce1f7ca8a9fafe09ddb78e45074e4"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_Japh_05.onsets",
+        "dbda1beae0d0a67e113dc60562d93b34"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_Japh_05.onsets",
+        "7d325e427c2fef803ea19753f8cdab9d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_Japh_05.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_Japh_05.onsets",
+        "a832e8f7ab04f70e473ca45ff37ba814"
+      ]
+    },
+    "KB_3": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_3.wav",
+        "19d43718afe01a80acc35213aba86185"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_3.onsets",
+        "da257e595bf02d600a37e0be0001fbff"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_3.onsets",
+        "30e9c112fab0205348833fa0f8ccd4f9"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_3.onsets",
+        "da2b2f4d8cabd05e774ff59ec9cfcb3f"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_3.onsets",
+        "80b0674737e90209a79da796443bf273"
+      ]
+    },
+    "KB_2": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_2.wav",
+        "85496dd88eac67030b75cd26b79a4913"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_2.onsets",
+        "3f1ff2e5120cb8bb1005e29bef88a368"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_2.onsets",
+        "3cb8b1d0c520545a186eecc32b744bcf"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_2.onsets",
+        "5c1e6f211c6f4ad667c21e2ed3f627df"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_2.onsets",
+        "f19735c388c373ea2e9f98e6901b97b4"
+      ]
+    },
+    "T4_Tukuda_Japh_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_Japh_04.wav",
+        "94f1282c838e10201472fd431ef109df"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_Japh_04.onsets",
+        "c40135e9863ff2ee9bd588e4890faa55"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_Japh_04.onsets",
+        "27b54ca21bd679a7632b1ebb9cc6daad"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_Japh_04.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_Japh_04.onsets",
+        "a7917af33e073f55c72044f141d9f8b8"
+      ]
+    },
+    "T4_Gat_pra_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Gat_pra_01.wav",
+        "1d5fb73b266d9640ef7fa15b60990ff3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Gat_pra_01.onsets",
+        "85900403d544369ce2d3d1f2f589089d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Gat_pra_01.onsets",
+        "572896c334c3977249057503f2910b0f"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Gat_pra_01.onsets",
+        "780e9ab9d63b52a0342d5043d15e917b"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Gat_pra_01.onsets",
+        "d563b4541c44457d3056546adf5bee51"
+      ]
+    },
+    "T4_Dli_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Dli_04.wav",
+        "3a087695b7e2a72ae1577885d42b330a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Dli_04.onsets",
+        "e3d6d99bd79bd29508854de943e4ce04"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Dli_04.onsets",
+        "39861f90842983d3ba471f96adad753a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Dli_04.onsets",
+        "4f9b4bd70d7ee49e1ad2d34f1478b8aa"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Dli_04.onsets",
+        "8f11fb15c360d2f2493d3586c9f62f89"
+      ]
+    },
+    "T5_Gat_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T5_Gat_01.wav",
+        "f6318ec70ac46e765a359f748f0bfc24"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T5_Gat_01.onsets",
+        "abbdc0b70c54a54cc4dee8fdd4b966e5"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T5_Gat_01.onsets",
+        "daad8fb206bac95633fa67db74ef8712"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T5_Gat_01.onsets",
+        "6b60b5134544d3df6f03562460fe54e3"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T5_Gat_01.onsets",
+        "d2b99a4a707df7afedf61b95f9778c16"
+      ]
+    },
+    "AHK_solo-tintal-1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-1.wav",
+        "1198daf006f4bf6ff6190166ddc39ed6"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-1.onsets",
+        "05d8937ab6124328e45bca25e35d6fb1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-1.onsets",
+        "739066842f38297caae54e065dd96db4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-1.onsets",
+        "ee31f8509ef3114297cefe53a3dacfdf"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-1.onsets",
+        "7bf4534f4bc6d5a27b389ea98d73192c"
+      ]
+    },
+    "T4_Tukuda_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_04.wav",
+        "337ad39564d6471e9304d0e849b915dc"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_04.onsets",
+        "8e6a6ad557d89289d595e70d2027dd8b"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_04.onsets",
+        "09255c8e6ba8acdbe6f56ab6e151892f"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_04.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_04.onsets",
+        "872ad24b3629368d342a25a21ddccf87"
+      ]
+    },
+    "KB_22": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_22.wav",
+        "faedb5d9fd60e9ca4d558deae3309689"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_22.onsets",
+        "d896aad99898025e08e3c8814aa08c9a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_22.onsets",
+        "df8370fe69ea75dc42c53af065970f43"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_22.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_22.onsets",
+        "8bd41342198c4761a4c34a5f727c06b8"
+      ]
+    },
+    "T7_Tukuda_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Tukuda_01.wav",
+        "241e29fe50ef8a7e222aaf2f89a2f0e5"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Tukuda_01.onsets",
+        "d77ce3851d823d46c1791be49ff830d3"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Tukuda_01.onsets",
+        "28d70a672652de9cba1f73d5e5fc55f1"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Tukuda_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Tukuda_01.onsets",
+        "d7cb4d62c22171ecdaac696b9cd5f61d"
+      ]
+    },
+    "RMA_17": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_17.wav",
+        "2d192edc0f328c2041711ba6bd662f09"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_17.onsets",
+        "e2a7dca7fff69939ac51281ad629dbab"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_17.onsets",
+        "63ac9b4cac7c350f373e4c1ebf36d7c5"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_17.onsets",
+        "ce70c1090a10a1ed30e84997d2bb2c62"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_17.onsets",
+        "da584f7fb464f88a5e1065ec10d2783d"
+      ]
+    },
+    "AS_comp107_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp107_t.wav",
+        "47184b098f9c7b93294e84851afdfcd6"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp107_t.onsets",
+        "eb1557713789d5b1c1fcef9752a775bc"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp107_t.onsets",
+        "dd914f9d16ae5cabe4ea99d64f2aa6d3"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp107_t.onsets",
+        "93501a19d1f65134359e1694977f5641"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp107_t.onsets",
+        "e5184186c0c38c9e690346ac478ed3e1"
+      ]
+    },
+    "RMA_4": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_4.wav",
+        "a74488b7bae60868ca1cbc0f66fe82ff"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_4.onsets",
+        "ce8a72e9b648bfbd9af37252050e1130"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_4.onsets",
+        "a23bf72fce733796f8c6bbb850c01372"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_4.onsets",
+        "201c38ea94ff4e562996bca9acfbdc89"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_4.onsets",
+        "66a2cc0d5169ca82c8d5c1c3beb89d8e"
+      ]
+    },
+    "SK_comp_4": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_comp_4.wav",
+        "62b184df035976eabf5893215254b665"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_comp_4.onsets",
+        "247a50b298c5cd7daeee169e5b422e03"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_comp_4.onsets",
+        "e0f190c1f7de58a17e944defdadaa33a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_comp_4.onsets",
+        "c23023c9aad48b2348ad1cb77f3c2f3e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_comp_4.onsets",
+        "bb9e620ecf4677245352a5fcf5263dab"
+      ]
+    },
+    "T4_Vilambit_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Vilambit_01.wav",
+        "7bc6743787314266250185264c51c1b9"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Vilambit_01.onsets",
+        "ab752e7bedd8d647e724c8e6ba574a20"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Vilambit_01.onsets",
+        "ef025dc5b15815da6040893ee5016fa3"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Vilambit_01.onsets",
+        "826f79369fc8aed377c01c52d2268c83"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Vilambit_01.onsets",
+        "b7c583ee31df0bccd15e23d8f888d167"
+      ]
+    },
+    "RMA_5": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_5.wav",
+        "4251c914f0c9ac1dc6f45705fc2feaed"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_5.onsets",
+        "b4ffe91368484e22fb946c825e601781"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_5.onsets",
+        "fca12a9e3089ff2881860d8b6d3c8666"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_5.onsets",
+        "e70217cfecc85fe66a281c326625175e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_5.onsets",
+        "b5d9c88ec00fdcb3b28feaa21340690f"
+      ]
+    },
+    "SK_comp_5": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_comp_5.wav",
+        "3bd040d92d4e6a9b44a28140bb9447a6"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_comp_5.onsets",
+        "08578e431a0c36bb4ed6bd4e32791e30"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_comp_5.onsets",
+        "724087617bf9aeb0f93512bb0f5663e6"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_comp_5.onsets",
+        "9f78a47859aa83646647854553fa4313"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_comp_5.onsets",
+        "32367450cc0d93573f8e2c0e61f9e61b"
+      ]
+    },
+    "RMA_16": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_16.wav",
+        "ceb70f31f0554afb77ef5257457958fb"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_16.onsets",
+        "09a109f83cd1080f99de523d1a44aa8f"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_16.onsets",
+        "b129be9c8fd71092ef395a31a513bd46"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_16.onsets",
+        "87469b7f8db7afc90591ade0063b52ae"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_16.onsets",
+        "6a7f5c57622ba266cdc97f4caa77f90c"
+      ]
+    },
+    "T7_TAA5_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_TAA5_01.wav",
+        "e82037369721c80217b30a88d5a41d50"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_TAA5_01.onsets",
+        "6e34df25593be3dca0a6180e1b9956b2"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_TAA5_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_TAA5_01.onsets",
+        "97877fcc91b95b1ecb7d61284b3b1875"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_TAA5_01.onsets",
+        "80a4f63e8992df427cea9fd6def60e44"
+      ]
+    },
+    "SK_ektaal_vilambit": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_ektaal_vilambit.wav",
+        "3741fe1795e484bff82747ca3aa19372"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_ektaal_vilambit.onsets",
+        "a9c5d58efbc228458f2446076d3470f1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_ektaal_vilambit.onsets",
+        "a86bd38f0aca0b4e326ae8b320670356"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_ektaal_vilambit.onsets",
+        "f2fe434119f8b27501b4549cd83b1c45"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_ektaal_vilambit.onsets",
+        "501ee921712c7f0db84af2a8bcefb63e"
+      ]
+    },
+    "PP_comp77_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp77_t.wav",
+        "553ac99d90d4a4ad4da5cd613b454942"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp77_t.onsets",
+        "cc82eebc5b5d9ae0f9fc001232986ad4"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp77_t.onsets",
+        "863cfd66d8bceb9c65438f7ecedda7ce"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp77_t.onsets",
+        "986c0bd7a5300a6eaaf9903eb2ec8f23"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp77_t.onsets",
+        "179b47a26176c949f544c4a9e84e7495"
+      ]
+    },
+    "SM_chakradhar": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SM_chakradhar.wav",
+        "5bfeaa76f3003f3a2d1e20a614bd2113"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SM_chakradhar.onsets",
+        "ac1c751ca1ed4f62f44a2f461b81ccb1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SM_chakradhar.onsets",
+        "8fbdcb7b1d72856330a3e9fe957706e5"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SM_chakradhar.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SM_chakradhar.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ]
+    },
+    "KB_23": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_23.wav",
+        "c933101924e6eb213d1848af9c168e72"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_23.onsets",
+        "a4947aa72f56a95a398af1339eeaf0b7"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_23.onsets",
+        "f18e8e4eb9ce6c93fcada681add9e01f"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_23.onsets",
+        "e97f7d98f2477c4b2a9583472281067e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_23.onsets",
+        "c4f40f994c247ac538ac795955908167"
+      ]
+    },
+    "T7_Ben_tukuda_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Ben_tukuda_01.wav",
+        "e56086e77f2952484b0bf3cb77d4b74e"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Ben_tukuda_01.onsets",
+        "809d08451e7e17aff7d834207a9831e9"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Ben_tukuda_01.onsets",
+        "0d72082f38e97b1c4fde22d5e5117d37"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Ben_tukuda_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Ben_tukuda_01.onsets",
+        "aadb04ac1805548c72d5c90cb003b2c8"
+      ]
+    },
+    "T4_Tukuda_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_05.wav",
+        "b2cea9cdf38b7db07428f67bcdc8fc6a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_05.onsets",
+        "01182cdb37424db3d01d6be5929efdc0"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_05.onsets",
+        "6299e7d0235b7ede7421d0173cb57d15"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_05.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_05.onsets",
+        "a53780ec6fc779e926dd6bcb043a50d5"
+      ]
+    },
+    "KB_21": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_21.wav",
+        "6ae40fd6cc19bb7683427a109e8a56a7"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_21.onsets",
+        "a7255b2bbfcb0e811010255c28063d63"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_21.onsets",
+        "0b113c33875948070f1bbfec4aa67bea"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_21.onsets",
+        "5bda1135487ab224eb6bf46d03af7ccc"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_21.onsets",
+        "3ecf600144f7b640e941ba38d4944f70"
+      ]
+    },
+    "T7_Ben_tukuda_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Ben_tukuda_03.wav",
+        "07115bf75fd22b1249ea3d5890ac7c39"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Ben_tukuda_03.onsets",
+        "063dba1ed9fb1628347f331edb25c602"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Ben_tukuda_03.onsets",
+        "98f247649a1559ff85d7f2f67248b6e4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Ben_tukuda_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Ben_tukuda_03.onsets",
+        "ca1b57dce967f6b0c25725ace811663d"
+      ]
+    },
+    "T7_Tukuda_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Tukuda_02.wav",
+        "02188861e2f049e043e4485f11b7cd01"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Tukuda_02.onsets",
+        "70861e1558c09248821594e88d9d2fa2"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Tukuda_02.onsets",
+        "f38b2131a85f8c0179f411eeadbe7aa1"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Tukuda_02.onsets",
+        "39629bc5e209b38d8244ac311e430028"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Tukuda_02.onsets",
+        "d06dbb48748a2e2fbc4b2af16544063f"
+      ]
+    },
+    "RMA_14": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_14.wav",
+        "a1e7757052b4542545625584c04361a4"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_14.onsets",
+        "29a93902a1ad9c09992a6c8e3b359fb8"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_14.onsets",
+        "b501e34169b6a0fe9b22d48cccf4da9e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_14.onsets",
+        "732b6da555788d958f01191974acdfe0"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_14.onsets",
+        "797ae26941d8f0debd6ce867bebe8b4d"
+      ]
+    },
+    "RMA_28": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_28.wav",
+        "58b45c2b9f2aa3bdb7728dc2cfbc8904"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_28.onsets",
+        "9120196aa30080f97f63864cd26d6ec6"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_28.onsets",
+        "b42baedeadb8761ced429914e0dc725e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_28.onsets",
+        "2a5f5e977722b926ec532c05a45245a0"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_28.onsets",
+        "94c5f41c6654a4ba3b968ac8461332f3"
+      ]
+    },
+    "T4_Pur_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Pur_05.wav",
+        "5f93bb0aba33ed0382ee2828d65eafe8"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Pur_05.onsets",
+        "b1030affe534fde367671729ce33225f"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Pur_05.onsets",
+        "d6df61bbc02d5505605880749415fd87"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Pur_05.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Pur_05.onsets",
+        "134d96801e96079c7649ccd6496097e0"
+      ]
+    },
+    "SK_comp_7": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_comp_7.wav",
+        "eef8f0018bf9e8a051ea62a559193ccf"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_comp_7.onsets",
+        "fd1c8213be053134f65cc6036094a565"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_comp_7.onsets",
+        "32371884beb89cad9d20751ddd851267"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_comp_7.onsets",
+        "469fb03a45f6bf227acb145c7189b1af"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_comp_7.onsets",
+        "4bde1004038de995b2bb9fd7564d7a70"
+      ]
+    },
+    "RMA_7": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_7.wav",
+        "d4662435e82780a4651b668479d04f45"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_7.onsets",
+        "21af7399415a786931bf27e9a0c6bf93"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_7.onsets",
+        "398939adb4f8f1817fc7350e4db81923"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_7.onsets",
+        "4b1cd9b51693a3befed8ccdfc39a16dc"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_7.onsets",
+        "e783fa56e72de5bb9326bc2d46ee0172"
+      ]
+    },
+    "AS_comp105_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp105_t.wav",
+        "f7ea51d9f09212d6175cb8857c4c4f4d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp105_t.onsets",
+        "efcf4725378a28e97f665cdfea2ba9dd"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp105_t.onsets",
+        "98936d8b367c2b0723adbb1dcdbd4e00"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp105_t.onsets",
+        "40a08e8ad6e3404c352139e04bcd2f9f"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp105_t.onsets",
+        "76b21c2232f6262bc703f85bd8b52987"
+      ]
+    },
+    "SK_comp_6": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_comp_6.wav",
+        "9a164329b6d5f29616171afeba49f2f9"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_comp_6.onsets",
+        "10f3fd10f828792512c23bd75e5d2bed"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_comp_6.onsets",
+        "ff82ce6fade92fd154cfd7a0f84baea6"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_comp_6.onsets",
+        "ebc7d8a014723d1a8e98ea9ff52cc23b"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_comp_6.onsets",
+        "c5a4c10205711cf46a38c154bb8c43ef"
+      ]
+    },
+    "RMA_6": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_6.wav",
+        "fa8bb4bc84675b7447e6e64e54826bee"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_6.onsets",
+        "24623ba21fd2e15db12558438a078ec2"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_6.onsets",
+        "865185c58ad4d5d3b5ec7c880cb76b6f"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_6.onsets",
+        "3e035536b6534b60758d78e09861e1e6"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_6.onsets",
+        "11c4ac72ca0e34c67c02cf33c431c711"
+      ]
+    },
+    "T4_Pur_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Pur_04.wav",
+        "956bafdd48ad9f39a32e1f4165c6ecd5"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Pur_04.onsets",
+        "65c9bf50a886fa5eee3ce51fd348e14a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Pur_04.onsets",
+        "93a609eec01df34a9512492efa27f4f6"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Pur_04.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Pur_04.onsets",
+        "c2af9d7becd380e0c0773c79e21b6588"
+      ]
+    },
+    "RMA_29": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_29.wav",
+        "f95e9da2fdff2c546e39f081c5491c3d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_29.onsets",
+        "eb344edea35083781225da70048d6f5f"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_29.onsets",
+        "c05e1cae8b1c2a7e5cb5fb308202c758"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_29.onsets",
+        "45123b9f4e0fcf21f9f0be35d9ccca17"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_29.onsets",
+        "25b233a6e2c6a74a6d0933ee511cad8b"
+      ]
+    },
+    "RMA_15": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_15.wav",
+        "9577bde5203783220efa98462a980e21"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_15.onsets",
+        "32d3f0bc770bdd1b8de92832d537c34d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_15.onsets",
+        "1396ec289c61d9d4f5a628b818e529a4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_15.onsets",
+        "e2296767e899a3a2c41cafa7ad79b263"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_15.onsets",
+        "fc046505c7aeecf7d5730c04f09deb93"
+      ]
+    },
+    "T7_Tukuda_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Tukuda_03.wav",
+        "00911e46120c1563e164e88221c932be"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Tukuda_03.onsets",
+        "50cf20dc61e8b8f6cb03efe7701420ef"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Tukuda_03.onsets",
+        "60fb926eec28f774bb2f0aa076ef458f"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Tukuda_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Tukuda_03.onsets",
+        "f86b7e13a65a46860aac23cbed8aeb36"
+      ]
+    },
+    "T7_TAA5_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_TAA5_02.wav",
+        "5fd435b3ca975f35ded19d0f12042193"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_TAA5_02.onsets",
+        "d6ad92d9f3af95a6065dd8e6fed1a4b6"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_TAA5_02.onsets",
+        "965c3fb0b32f387b75af8f66606519a5"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_TAA5_02.onsets",
+        "8bc2799f5d27ba4a4f46d970be76e607"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_TAA5_02.onsets",
+        "7921af3ffed6782293bfc2548f74466f"
+      ]
+    },
+    "PP_comp16new_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp16new_t.wav",
+        "21fd79fa29943c96087dda69c9ad11ad"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp16new_t.onsets",
+        "20a4ffbc478741291b51bad64085571d"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp16new_t.onsets",
+        "290f0ced0b4f2a6137dd8571ce9d831c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp16new_t.onsets",
+        "3e336b6de286727f17222c94bb70e4c1"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp16new_t.onsets",
+        "de82a9c457d165c877223fb166899561"
+      ]
+    },
+    "T7_Ben_tukuda_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Ben_tukuda_02.wav",
+        "edea514d5c768c5b8f6b50c0036e343b"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Ben_tukuda_02.onsets",
+        "2a024c963c152129b3ed3b7d413d065c"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Ben_tukuda_02.onsets",
+        "2af98c66a3f22009635a854b277b0f8a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Ben_tukuda_02.onsets",
+        "05abad3be989f7b16d98ae74106a4542"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Ben_tukuda_02.onsets",
+        "f94d19d005cdb9637c58018292121c36"
+      ]
+    },
+    "KB_20": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_20.wav",
+        "1cd766361c51ebf1526eeb0c146177e9"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_20.onsets",
+        "d2634601ae6f1329c0a13b1bcdd9750c"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_20.onsets",
+        "0c730c5879576eaf071482c5af12e6dc"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_20.onsets",
+        "166c5de57b329dac81cdee951fc3c725"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_20.onsets",
+        "7e9739da5c5cc85b7e59601a3745d2e4"
+      ]
+    },
+    "KB_24": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_24.wav",
+        "28e8ea83424435dbeec4ce23dc2c7355"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_24.onsets",
+        "9fffb1a4a68080dc3db6e69f5184dcb5"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_24.onsets",
+        "beaf4715a6830ddc09144f9d78af55b1"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_24.onsets",
+        "55c3b2f0442f38765f4c13a4ae8bc867"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_24.onsets",
+        "3eff40f6f15b70ef5d9676178e99a326"
+      ]
+    },
+    "T4_Tukuda_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_02.wav",
+        "57c883b0167e876e6e3e59a4b4722e84"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_02.onsets",
+        "1543c8b644ba7857f0f8100f9f85ff80"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_02.onsets",
+        "2dcd66cfd65dd9b85bbfc599bc0dbef1"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_02.onsets",
+        "681f8864f65e91e5c538851cbd6a75d3"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_02.onsets",
+        "8d1d4f63cf8caefaaa936e78b0adf3c1"
+      ]
+    },
+    "KB_18": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_18.wav",
+        "36be275e6b3992505f97427c2f7c55d7"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_18.onsets",
+        "9daa92710e2ccd0be462a3e7c3b3bdbd"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_18.onsets",
+        "d613528cd88c35a325adf2686aeed2fa"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_18.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_18.onsets",
+        "72c5babd98da184be0b8cd7db591ec65"
+      ]
+    },
+    "T7_Gat_tukuda_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Gat_tukuda_01.wav",
+        "0599a3fc9b9c4e41d23253d1170df148"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Gat_tukuda_01.onsets",
+        "6348b3493279b974ee20a287e455a843"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Gat_tukuda_01.onsets",
+        "c4a5656e8deab7713d0c119f5055d11d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Gat_tukuda_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Gat_tukuda_01.onsets",
+        "5311b2a32e65e212bd541468a71e0580"
+      ]
+    },
+    "AS_comp101_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp101_t.wav",
+        "599133d869e82afd3d2798885f3c2619"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp101_t.onsets",
+        "5d787c4c856b4b1a61b64afdb01592fc"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp101_t.onsets",
+        "d47170a6a61fd7f57300cd78ef0f8f0e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp101_t.onsets",
+        "0965c6a0c863e046ec777f30e4092ece"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp101_t.onsets",
+        "71ad301d20490d5eef2a958314553936"
+      ]
+    },
+    "RMA_11": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_11.wav",
+        "24dbbbd1e73c24416e11e25eb609fb50"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_11.onsets",
+        "9b1770aff6f320c08bbfbe9af9c0ccac"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_11.onsets",
+        "1d33729137b7217670813fb45ab7b9a2"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_11.onsets",
+        "e215181c8748ddf2a506d02db6988998"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_11.onsets",
+        "2811f923b19da0b6bc19c66b9ed88086"
+      ]
+    },
+    "RMA_2": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_2.wav",
+        "dace9de502fa1d4f1d8875fced1a7412"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_2.onsets",
+        "79e060ab8a67fd043cd11931979141bf"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_2.onsets",
+        "f13ed771ba484b0d974b3213c2bd9574"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_2.onsets",
+        "2aec0e4ae8c36d8affbc73c8b08d995f"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_2.onsets",
+        "c13aa8be4a45cd9fbac5d1b7fe83442c"
+      ]
+    },
+    "SK_comp_2": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_comp_2.wav",
+        "3e38318ce1d5b2058f05a0372cc88623"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_comp_2.onsets",
+        "144bce8e2f440044a7b359d9d5610149"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_comp_2.onsets",
+        "5f727404f01ba019bd2fdcebd4b78d2e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_comp_2.onsets",
+        "782a8fa25d98d42f3503be3c80040adb"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_comp_2.onsets",
+        "ca73f3f6ebd8ba5abe1078e6d5dabb6d"
+      ]
+    },
+    "T4_Drut_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Drut_02.wav",
+        "903c9a330d6b07c4f448b1bfdab92a75"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Drut_02.onsets",
+        "8d459b38b2ca1d124f23a5bc5cbaf940"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Drut_02.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Drut_02.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Drut_02.onsets",
+        "c5155487d6b57d03d2faf66456e90c81"
+      ]
+    },
+    "T4_Drut_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Drut_03.wav",
+        "c754a406076a6129b1259ffd19079f41"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Drut_03.onsets",
+        "2dd5cb58a033ad1dc84bfd4da45f7a29"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Drut_03.onsets",
+        "650e31e03bff832250832554769f89a6"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Drut_03.onsets",
+        "f1f3c41f9c673ef0f86c53e9de20f6cc"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Drut_03.onsets",
+        "7daab361a005ef0a31f28fb383b1962e"
+      ]
+    },
+    "RMA_3": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_3.wav",
+        "11bc125462a5f9692d4d829339e09c4a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_3.onsets",
+        "e14b654849570b631eed5a86adcb6971"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_3.onsets",
+        "64e45469484c85babaa16093cc926166"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_3.onsets",
+        "7934719e190e76637489b193e0200090"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_3.onsets",
+        "b7108936e89087e565dbb768e2cc02c6"
+      ]
+    },
+    "SK_comp_3": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_comp_3.wav",
+        "1c55f9419bacf674e8916462d3cb0454"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_comp_3.onsets",
+        "8b79a4a75a087609f30fa21f88b3a628"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_comp_3.onsets",
+        "838b833f8f01487b54f2fd9de7293a94"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_comp_3.onsets",
+        "3b282ca3b9ed4dd506db6a2b73262640"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_comp_3.onsets",
+        "0a0a3390360563e6ca5c60c52e57059f"
+      ]
+    },
+    "T4_Pur_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Pur_01.wav",
+        "734c81028fdc8f01377d7db191009e58"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Pur_01.onsets",
+        "c7a075bd203ccb29d40e2d3fa7238d39"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Pur_01.onsets",
+        "5bf76afd98449369ae6d0bffe9704598"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Pur_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Pur_01.onsets",
+        "ceac5a938e492a4cab8501825332bd98"
+      ]
+    },
+    "RMA_10": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_10.wav",
+        "1a12ea959d34149c7bc8c75191fe6c13"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_10.onsets",
+        "43131b2dd7d4ee43b8c6bab782cbc52e"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_10.onsets",
+        "5eb0c77116eed3dd07059f6e788853a5"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_10.onsets",
+        "57d9ceb4ad430c8294a5e4cc73250493"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_10.onsets",
+        "142decda6979e468e270acc2b124d577"
+      ]
+    },
+    "KB_19": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_19.wav",
+        "1deac582cdf72b0b0a3a9c4d5ccb573f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_19.onsets",
+        "774f1a7814e81393566db3e0e4dd3d6a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_19.onsets",
+        "62c24779568cf93e604eb67e87938f12"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_19.onsets",
+        "ed34b192bdb09594a178b61738c3d6be"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_19.onsets",
+        "7972a917c56ab2edd1d01584810b0554"
+      ]
+    },
+    "T4_Tukuda_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_03.wav",
+        "b2d2fdfafafaee33f5fd0ff81728d412"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_03.onsets",
+        "a13e4628b8a06e947e79d77da08d3af6"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_03.onsets",
+        "844715faeed8c3e0f7fb40b209226a1b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_03.onsets",
+        "c456f2304889f4e4e0525ff168a26657"
+      ]
+    },
+    "KB_25": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_25.wav",
+        "2fe64d8d285f5397df9514596d45418a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_25.onsets",
+        "0e633c9452938dc4fb611972dc609f84"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_25.onsets",
+        "8d6d5a0c11dc93962e62be9095856df3"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_25.onsets",
+        "3754680895a7a0a42f81e167bf583b26"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_25.onsets",
+        "8d22c8eaced51dbcced8a849f6e1fa76"
+      ]
+    },
+    "T4_Tukuda_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Tukuda_01.wav",
+        "ddfd58dc02a9180853cc9a0b3d4e3a3a"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Tukuda_01.onsets",
+        "bf192a31466c49f4080541fab7fc6a39"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Tukuda_01.onsets",
+        "3e21a9cfaddbbff2a2acbcda8de4914b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Tukuda_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Tukuda_01.onsets",
+        "ec0a426ab4c61bc0e9ef7187ea7fb1e6"
+      ]
+    },
+    "T7_Ben_tukuda_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Ben_tukuda_05.wav",
+        "52feed86cd1e9b69c15ec9ed4d8e9ad0"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Ben_tukuda_05.onsets",
+        "6e0342f1d1144d98a537d4d5263353c1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Ben_tukuda_05.onsets",
+        "b350e6ce5715aee79c00e9faefd0a178"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Ben_tukuda_05.onsets",
+        "f0ca1853c43a11411bf08485977046a8"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Ben_tukuda_05.onsets",
+        "a3953e5daf68d7b4c793cd925dccd550"
+      ]
+    },
+    "T7_Tukuda_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Tukuda_04.wav",
+        "1e721ace61b61ffb31e8973c6494d48d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Tukuda_04.onsets",
+        "037b360ac141b624381b72c037962ee1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Tukuda_04.onsets",
+        "7854bef0cd7773962d0949c392bad0c8"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Tukuda_04.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Tukuda_04.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ]
+    },
+    "RMA_12": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_12.wav",
+        "efd2a8ad3c96de78371910f932c1baf6"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_12.onsets",
+        "d6fbbe57721d94e0ebab72504d5fe47a"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_12.onsets",
+        "39b0c1701bde7251fca4abe3ac7d8f7e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_12.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_12.onsets",
+        "43255593433b8883d41a79e8469604ae"
+      ]
+    },
+    "T4_Pur_03": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Pur_03.wav",
+        "d63fa3eeaa96e46f7a04a2535aa473ff"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Pur_03.onsets",
+        "e38e2e2ca002b990649a2c0ef07a9f13"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Pur_03.onsets",
+        "c5e47aa81ec5bd43e06a0cb86608c6ff"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Pur_03.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Pur_03.onsets",
+        "e59c05b5580fd764a1211e2ebd537329"
+      ]
+    },
+    "T7_GAT_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_GAT_01.wav",
+        "184c256ecd8ce16e719b627d719101f8"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_GAT_01.onsets",
+        "4ee77808b1603c3405c401da4b2bb705"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_GAT_01.onsets",
+        "66af2bceec6f566356487e0a1662562d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_GAT_01.onsets",
+        "d3d08778909c97c58c65572ee690c023"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_GAT_01.onsets",
+        "edd83a31d592b02020bddc76b5dbbf17"
+      ]
+    },
+    "SK_comp_1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/SK_comp_1.wav",
+        "0d882c79b0f6f3fa530a2971731fc95d"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/SK_comp_1.onsets",
+        "9472b50cbbb34fd74cf92b470d449a4f"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/SK_comp_1.onsets",
+        "73fc3dc8c507a80f70c08725dcb85ce0"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/SK_comp_1.onsets",
+        "0a5de5640ef92b1f85ddb243ef5a9c07"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/SK_comp_1.onsets",
+        "2d583a55b4f62a518babac9aa773626f"
+      ]
+    },
+    "RMA_1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_1.wav",
+        "056265d41e3802c5a370ee8423f7c6f7"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_1.onsets",
+        "7ab5752e84cd40b46800ae6877dd51b1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_1.onsets",
+        "293636d5bded4cdc230d58a2b80ae988"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_1.onsets",
+        "88da8039bf09b0eb68c27949f5e8cce4"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_1.onsets",
+        "14afc53904f954ec7d42b66045ab5fd4"
+      ]
+    },
+    "PP_comp9_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp9_t.wav",
+        "36a73c741904ec5d6fd74d447ebeec09"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp9_t.onsets",
+        "a828065c4d65a0c871ad8a9f7f020bc8"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp9_t.onsets",
+        "08406d52744f463ef5b3f1a7c91ee14c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp9_t.onsets",
+        "0768b4d7c5b435af61dc69ff8d841e0d"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp9_t.onsets",
+        "3d88276fd4f59e6a0532e435ac16ddb8"
+      ]
+    },
+    "T4_Drut_01": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Drut_01.wav",
+        "8ba7cbde66a5c5524bfee7783e8bdc62"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Drut_01.onsets",
+        "cf245f76763ec58a7f4ef97e1731ebd3"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Drut_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Drut_01.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Drut_01.onsets",
+        "92058e8b519e69b5546413dc919ffdf3"
+      ]
+    },
+    "RMA_0": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_0.wav",
+        "92bce66289892f063296c5a76f717f4c"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_0.onsets",
+        "881c146bfc5efdc2cfe24e26b0f299d1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_0.onsets",
+        "cc0fde37026faca3a5b12486ee976d54"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_0.onsets",
+        "9e5dedb1515fe05cdbe1b8cd92a93378"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_0.onsets",
+        "51ccb64ada9b5d03e7d986c43b7b6d0a"
+      ]
+    },
+    "T4_Pur_02": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T4_Pur_02.wav",
+        "70702e53a5324fa2570604d47fc1cf60"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T4_Pur_02.onsets",
+        "032eeb9c2d5018939ba5b47e69186298"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T4_Pur_02.onsets",
+        "859a5f2048101b1f4ed63fdb61e07648"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T4_Pur_02.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T4_Pur_02.onsets",
+        "3cd4262bbfcb8ce506bbb81a004443b1"
+      ]
+    },
+    "RMA_13": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/RMA_13.wav",
+        "619ccd65be303e319138f9b019d11449"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/RMA_13.onsets",
+        "576e1c8900cc47e94d91977a2f2c0770"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/RMA_13.onsets",
+        "3a54de209e2d237d147d0fe845589e05"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/RMA_13.onsets",
+        "557fb7920b53ff2bf0717f2f3d78066b"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/RMA_13.onsets",
+        "19451e8269f71cbab9b9af6dead2ddba"
+      ]
+    },
+    "PP_comp12_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/PP_comp12_t.wav",
+        "bea599dcccffd870a40c483b2aa6bfa5"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/PP_comp12_t.onsets",
+        "2f93b074b972c7dc42ad674158f39414"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/PP_comp12_t.onsets",
+        "1dc7ba0cee40335479cafd5035020d22"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/PP_comp12_t.onsets",
+        "130336cef5a4e2d7358ea3eb425f94a0"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/PP_comp12_t.onsets",
+        "8a4fa5301438631fb8ad7ae6d310be74"
+      ]
+    },
+    "T7_Tukuda_05": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Tukuda_05.wav",
+        "11c16f0787c7c5390c8772932a58dbd3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Tukuda_05.onsets",
+        "4c18a9ff58339c56ae289248f4228505"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Tukuda_05.onsets",
+        "07a048b15f9e98d1fcb26014af6bd6f4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Tukuda_05.onsets",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Tukuda_05.onsets",
+        "486d4b76ef22ee513b205c6b6b673fb7"
+      ]
+    },
+    "AS_comp103_t": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AS_comp103_t.wav",
+        "47c0fda3b7d09abf9a51f65fd7382ca3"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AS_comp103_t.onsets",
+        "eba4bb8c399d87e1433846a5b2ead655"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AS_comp103_t.onsets",
+        "c88fe48d9ed33dcce686ce03b6972d8e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AS_comp103_t.onsets",
+        "e54534eeb9d4f7473541ed41c52407cc"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AS_comp103_t.onsets",
+        "78afd0de746b910f23a6b27e0c58c49f"
+      ]
+    },
+    "KB_26": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/KB_26.wav",
+        "2f6a5e5caeabc5d1e8fcabbfa74c5616"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/KB_26.onsets",
+        "977137e59d0dbd9f08c17e12ee123738"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/KB_26.onsets",
+        "2bcd717054f0f12f0c52751098add477"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/KB_26.onsets",
+        "467774175c8675afb62d2c05349d9a6d"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/KB_26.onsets",
+        "6226e8370d033c4d7bc75ac0976b357f"
+      ]
+    },
+    "T7_Ben_tukuda_04": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/T7_Ben_tukuda_04.wav",
+        "77d07a0383f728d0d513f4d836940e37"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/T7_Ben_tukuda_04.onsets",
+        "faf23533f7ea6eb1153ccd91d9b6fffd"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/T7_Ben_tukuda_04.onsets",
+        "fe9e34d50e3d049c7c5518b822290c5e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/T7_Ben_tukuda_04.onsets",
+        "68b8f556fd54df7b500616698c63ada4"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/T7_Ben_tukuda_04.onsets",
+        "a78a92259064544d81dc1e38bdc8b37e"
+      ]
+    },
+    "koyaliya_SRC": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/koyaliya_SRC.wav",
+        "9db1eec3f6e71eb5376c70e59fba77e6"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/koyaliya_SRC.onsets",
+        "5052c3189cc41d2a611db92d08bb4aed"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/koyaliya_SRC.onsets",
+        "a0d770630f52fb306608dd1136e7d945"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/koyaliya_SRC.onsets",
+        "c54096dedfd43a32fe2ffe6046f866ec"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/koyaliya_SRC.onsets",
+        "39ab34776a6776ff786aa1f4296c9df9"
+      ]
+    },
+    "man-legayo_DM": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/man-legayo_DM.wav",
+        "2d8436eed8211897f7bca8f0c9372fe0"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/man-legayo_DM.onsets",
+        "0d137bf5a1201cf03eddf2aaa2902afa"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/man-legayo_DM.onsets",
+        "8c8c5c9064f23f5c39a980a6492a8d4c"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/man-legayo_DM.onsets",
+        "30d29d7e2cdf5c02baabd9ebf0e70dfd"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/man-legayo_DM.onsets",
+        "f0347f6f6ad546ad5591700a6b40f9d3"
+      ]
+    },
+    "swarmalika-desh_SRC": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/swarmalika-desh_SRC.wav",
+        "fd65768a4684a3e5c489e405961ac327"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/swarmalika-desh_SRC.onsets",
+        "1f84a14b06d0258ad8d8e814d5c31e49"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/swarmalika-desh_SRC.onsets",
+        "ace11b08296b9bf2903ab6382af479ff"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/swarmalika-desh_SRC.onsets",
+        "fb810aa69fb74208cc831701984cfbea"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/swarmalika-desh_SRC.onsets",
+        "22a815b0230b8f7fc5b6123f83d66d7e"
+      ]
+    },
+    "payaliya_DM": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/payaliya_DM.wav",
+        "18ea69348b774087bc5461b7c05e8621"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/payaliya_DM.onsets",
+        "026a06ca7773e999a269ea262eefba80"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/payaliya_DM.onsets",
+        "2297ababfcec029aeb0b476c9766176a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/payaliya_DM.onsets",
+        "0dd84130a3f284c81716e929dd57c89e"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/payaliya_DM.onsets",
+        "d5758a4e4f369fa889da9e354659d6dc"
+      ]
+    },
+    "binati_SRC": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/binati_SRC.wav",
+        "d46dfd164c635e654e5105dc4803665f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/binati_SRC.onsets",
+        "09309607ab804b81fd473eba836be732"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/binati_SRC.onsets",
+        "361bd33db490f722d36edf37e0dc0d1e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/binati_SRC.onsets",
+        "e2ffc90f1cdb701ef97abe878f42ce7c"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/binati_SRC.onsets",
+        "ff85fb53630dfa6d5bde08826bb8c24a"
+      ]
+    },
+    "kachu-na_DM": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/kachu-na_DM.wav",
+        "1985b69a24554d5264fe84fceb07d8bd"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/kachu-na_DM.onsets",
+        "ce022bed6e002b9068d72058ba9f738c"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/kachu-na_DM.onsets",
+        "364e5793ab34c832dead7deaa4063e8d"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/kachu-na_DM.onsets",
+        "0cf58e745bf779858771e166da41a080"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/kachu-na_DM.onsets",
+        "0ffcaa43e3004b28b958255fe2b933ca"
+      ]
+    },
+    "tarana-darbari_UK2": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/tarana-darbari_UK2.wav",
+        "ec1a2c3bc32473fcb3ba497a6eb7b3de"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/tarana-darbari_UK2.onsets",
+        "9043ba4a81d5d739a0e1e142e3f818ea"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/tarana-darbari_UK2.onsets",
+        "78f0b4b43804a299f3101f95f31fee71"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/tarana-darbari_UK2.onsets",
+        "5fd9076c5da81b24b77fce4188304f2c"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/tarana-darbari_UK2.onsets",
+        "99c8665ab034b910d9d6d514396d6de4"
+      ]
+    },
+    "sourashtra-soma_UK2": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/sourashtra-soma_UK2.wav",
+        "ee4ae6f83a6f5e7536e1ca64341e349c"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/sourashtra-soma_UK2.onsets",
+        "f8c6166e0222ce1193ab6ed2deccc549"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/sourashtra-soma_UK2.onsets",
+        "56afb9d9347fca928dd2a938b4496076"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/sourashtra-soma_UK2.onsets",
+        "b2599283f09799f279d550b9bd29d8d1"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/sourashtra-soma_UK2.onsets",
+        "9cdb2af67cc605441c8691d12e4f275f"
+      ]
+    },
+    "eri-ali_PK": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/eri-ali_PK.wav",
+        "3b7f4066724ee8d10982bd3c0d2e849f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/eri-ali_PK.onsets",
+        "01925ddeaabc55a00fa2fe26b3a2c208"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/eri-ali_PK.onsets",
+        "be1913dd04f778cb58b7a3cd768e661a"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/eri-ali_PK.onsets",
+        "4b5ce7ffb9575ba9461bb70f31e24b78"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/eri-ali_PK.onsets",
+        "37aa89fa996ab7722e3b66d2b6315679"
+      ]
+    },
+    "shyaam_SRC": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/shyaam_SRC.wav",
+        "0e878eef9427225e7149f4ee06e5c508"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/shyaam_SRC.onsets",
+        "b19a1e8be2472763e588892fd03068a8"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/shyaam_SRC.onsets",
+        "654e10d17dc66be8492107785c305b1b"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/shyaam_SRC.onsets",
+        "a740ad0ecb8b340790667a5f4eacef00"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/shyaam_SRC.onsets",
+        "38ce54774c9855b3963ed6550163fb7c"
+      ]
+    }
+  },
+  "metadata": {}
+}

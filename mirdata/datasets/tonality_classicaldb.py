@@ -35,16 +35,13 @@
 
 import csv
 import json
-import os
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import core
-from mirdata import download_utils
-from mirdata import io
-from mirdata import jams_utils
+from mirdata import core, download_utils, io, jams_utils
 
 
 BIBTEX = """@article{gomez2006tonal,
@@ -53,6 +50,11 @@ BIBTEX = """@article{gomez2006tonal,
   journal={Department of Information and Communication Technologies},
   year={2006}
 }"""
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="tonality_classicaldb_index_1.0.json"),
+}
 REMOTES = {
     "keys": download_utils.RemoteFileMetadata(
         filename="keys.zip",
@@ -132,15 +134,14 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.key_path = os.path.join(self._data_home, self._track_paths["key"][0])
-        self.spectrum_path = os.path.join(
-            self._data_home, self._track_paths["spectrum"][0]
-        )
-        self.musicbrainz_path = os.path.join(
-            self._data_home, self._track_paths["mb"][0]
-        )
-        self.hpcp_path = os.path.join(self._data_home, self._track_paths["HPCP"][0])
+
+        self.key_path = self.get_path("key")
+        self.spectrum_path = self.get_path("spectrum")
+        self.musicbrainz_path = self.get_path("mb")
+        self.hpcp_path = self.get_path("HPCP")
+
+        self.audio_path = self.get_path("audio")
+
         self.title = self.audio_path.replace(".wav", "").split("/")[-1]
 
     @core.cached_property
@@ -213,7 +214,6 @@ def load_key(fhandle: TextIO) -> str:
 
     Returns:
         str: musical key data
-
     """
     reader = csv.reader(fhandle, delimiter="\n")
     key = next(reader)[0]
@@ -272,33 +272,50 @@ class Dataset(core.Dataset):
     The tonality_classicaldb dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="tonality_classicaldb",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_key",
+        version="0.3.4",
+    )
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_spectrum)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_spectrum",
+        version="0.3.4",
+    )
     def load_spectrum(self, *args, **kwargs):
         return load_spectrum(*args, **kwargs)
 
-    @core.copy_docs(load_hpcp)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_hpcp",
+        version="0.3.4",
+    )
     def load_hpcp(self, *args, **kwargs):
         return load_hpcp(*args, **kwargs)
 
-    @core.copy_docs(load_musicbrainz)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_musicbrainz",
+        version="0.3.4",
+    )
     def load_musicbrainz(self, *args, **kwargs):
         return load_musicbrainz(*args, **kwargs)

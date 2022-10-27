@@ -13,20 +13,15 @@
 """
 
 import csv
-import glob
-import logging
 import os
-import shutil
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 BIBTEX = """@article{bosch2016evaluation,
     title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
@@ -38,6 +33,13 @@ BIBTEX = """@article{bosch2016evaluation,
     year={2016},
     publisher={Taylor \\& Francis}
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="orchset_index_1.0.json"),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="Orchset_dataset_0.zip",
@@ -95,14 +97,11 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.melody_path = os.path.join(self._data_home, self._track_paths["melody"][0])
 
-        self.audio_path_mono = os.path.join(
-            self._data_home, self._track_paths["audio_mono"][0]
-        )
-        self.audio_path_stereo = os.path.join(
-            self._data_home, self._track_paths["audio_stereo"][0]
-        )
+        self.melody_path = self.get_path("melody")
+
+        self.audio_path_mono = self.get_path("audio_mono")
+        self.audio_path_stereo = self.get_path("audio_stereo")
 
     @property
     def composer(self):
@@ -234,15 +233,15 @@ def load_melody(fhandle: TextIO) -> annotations.F0Data:
 
     times = []
     freqs = []
-    confidence = []
+    voicing = []
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         times.append(float(line[0]))
         freqs.append(float(line[1]))
-        confidence.append(0.0 if line[1] == "0" else 1.0)
+        voicing.append(0.0 if line[1] == "0" else 1.0)
 
     melody_data = annotations.F0Data(
-        np.array(times), np.array(freqs), np.array(confidence)
+        np.array(times), "s", np.array(freqs), "hz", np.array(voicing), "binary"
     )
     return melody_data
 
@@ -253,12 +252,14 @@ class Dataset(core.Dataset):
     The orchset dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="orchset",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
@@ -270,16 +271,16 @@ class Dataset(core.Dataset):
             self.data_home, "Orchset - Predominant Melodic Instruments.csv"
         )
 
-        if not os.path.exists(predominant_inst_path):
+        try:
+            with open(predominant_inst_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                raw_data = []
+                for line in reader:
+                    if line[0] == "excerpt":
+                        continue
+                    raw_data.append(line)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(predominant_inst_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            raw_data = []
-            for line in reader:
-                if line[0] == "excerpt":
-                    continue
-                raw_data.append(line)
 
         tf_dict = {"TRUE": True, "FALSE": False}
 
@@ -320,14 +321,23 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_audio_mono)
+    @deprecated(
+        reason="Use mirdata.datasets.orchset.load_audio_mono",
+        version="0.3.4",
+    )
     def load_audio_mono(self, *args, **kwargs):
         return load_audio_mono(*args, **kwargs)
 
-    @core.copy_docs(load_audio_stereo)
+    @deprecated(
+        reason="Use mirdata.datasets.orchset.load_audio_stereo",
+        version="0.3.4",
+    )
     def load_audio_stereo(self, *args, **kwargs):
         return load_audio_stereo(*args, **kwargs)
 
-    @core.copy_docs(load_melody)
+    @deprecated(
+        reason="Use mirdata.datasets.orchset.load_melody",
+        version="0.3.4",
+    )
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)

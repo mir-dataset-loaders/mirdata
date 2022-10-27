@@ -9,9 +9,8 @@
      - License
 
    * - AcousticBrainz Genre
-     - - audio: ❌
+     - - audio: 🧮
        - annotations: ✅
-       - features: ✅
      - - :ref:`genre`
      - >4M
      - - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
@@ -24,6 +23,7 @@
      - - :ref:`beats`
        - :ref:`chords`
        - :ref:`sections`
+       - :ref:`key`
        - :ref:`vocal-activity`
      - 180
      - ❌
@@ -36,12 +36,36 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
+   * - Billboard (McGill)
+     - - audio: ❌
+       - annotations: ✅
+     - - :ref:`chords`
+       - :ref:`sections`
+     - 890
+     - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
+          :target: http://creativecommons.org/publicdomain/zero/1.0/
+
    * - cante100
      - - audio: 🔑
        - annotations: ✅
-     - :ref:`f0`
+     - - :ref:`f0`
+       - Vocal :ref:`notes`
      - 100
      - :cante:`\ `
+
+   * - .. line-block::
+
+        (CompMusic)
+        Jingju A Cappella
+
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`lyrics`
+       - :ref:`phonemes`
+       - :ref:`syllables`
+     - 82
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - .. line-block::
 
@@ -56,12 +80,60 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - Dagstuhl ChoirSet
+     - - multitrack audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`beats`
+       - :ref:`notes`
+     - 108
+     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by/4.0/
+
    * - DALI
      - - audio: 📺
        - annotations: ✅
      - - :ref:`lyrics`
        - Vocal :ref:`notes`
      - 5358
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
+   * - Da-TACOS
+     - - audio: 🧮
+       - annotations: ✅
+     - - :ref:`lyrics`
+       - Vocal :ref:`notes`
+     - - benchmark 15000 tracks
+       - coveranalysis 10000 tracks
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
+   * - Filosax
+     - - audio: 🔑
+       - annotations: 🔑
+       - midi: 🔑
+     - - :ref:`f0`
+       - :ref:`beats`
+       - :ref:`chords`
+       - :ref:`tempo`
+       - :ref:`notes`
+     - 48
+     - ❌
+
+   * - Four-Way Tabla Stroke
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`tags`
+     - 236
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
+   * - Freesound One-Shot Percussive Sounds
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`tags`
+     - 10254
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -74,11 +146,21 @@
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
    * - Giantsteps tempo
-     - - audio: : ❌
+     - - audio: 📺
        - annotations: ✅
      - - global :ref:`genre`
        - global :ref:`tempo`
      - 664
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
+   * - Good Sounds
+     - - audio: : ✅
+       - annotations: ✅
+     - - instrument :ref:`instruments`
+       - sound quality metadata
+       - instrument metadata
+     - 16308
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -93,9 +175,11 @@
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
    * - Gtzan-Genre
-     - - audio: : ✅
+     - - audio: ✅
        - annotations: ✅
-     - global :ref:`genre`
+     - - global :ref:`genre`
+       - :ref:`beats`
+       - :ref:`tempo`
      - 1000
      - ❌
 
@@ -120,6 +204,17 @@
      - 252
      - :ikala:`\ `
 
+   * - Haydn op20
+     - - audio: N/A
+       - midi: ✅
+       - scores: ✅
+       - annotations: ✅
+     - - symbolic :ref:`chords`
+       - symbolic :ref:`key`
+     - 24
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
    * - IRMAS
      - - audio: ✅
        - annotations: ✅
@@ -127,7 +222,15 @@
        - :ref:`genre`
      - 9579
      - .. image:: https://licensebuttons.net/l/by-nc-sa/3.0/80x15.png
-          :target: https://creativecommons.org/licenses/by-sa/3.0
+          :target: https://creativecommons.org/licenses/by-nc-sa/3.0
+
+   * - MTG_jamendo_autotagging_moodtheme
+     - - audio: ✅
+       - annotations: ✅
+     - - moodtheme annotations
+     - 18448
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - MAESTRO
      - - audio: ✅
@@ -138,7 +241,7 @@
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - Medley-solos-DB
-     - - audio: : ✅
+     - - audio: ✅
        - annotations: ✅
      - :ref:`instruments`
      - 21571
@@ -178,6 +281,24 @@
      - 64
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - PHENICX-Anechoic
+     - - multitrack audio: ✅
+       - annotations: ✅
+     - - Aligned score :ref:`notes`
+       - Original score :ref:`notes`
+     - 4
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - Queen
+     - - audio: ❌
+       - annotations: ✅
+     - - :ref:`chords`
+       - :ref:`sections`
+       - :ref:`key`
+     - 51
+     - ❌          
 
    * - RWC classical
      - - audio: ❌
@@ -241,6 +362,15 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - Slakh
+     - - multitrack audio: ✅
+       - annotations: ✅
+     - - Notes :ref:`notes`
+       - Instruments :ref:`instruments`
+     - 1710
+     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by/4.0/
+
    * - Small_4MuLA
      - - audio: ❌
        - annotations: ✅
@@ -274,9 +404,27 @@
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
    * - Tonality ClassicalDB
-     - - audio: ❌
+     - - audio: 🧮
        - annotations: ✅
      - Global :ref:`key`
      - 881
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - TONAS
+     - - audio: 🔑
+       - annotations: 🔑
+     - - :ref:`f0`
+       - :ref:`notes`
+     - 72
+     - :tonas:`\ `
+   
+   * - vocadito 
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`notes`
+       - :ref:`lyrics`
+     - 40
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0

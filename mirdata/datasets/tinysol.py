@@ -44,17 +44,15 @@
 """
 
 import csv
-import logging
 import os
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import core, download_utils, io, jams_utils
 
 BIBTEX = """@inproceedings{cella2020preprint,
   author={Cella, Carmine Emanuele and Ghisi, Daniele and Lostanlen, Vincent and
@@ -64,6 +62,13 @@ BIBTEX = """@inproceedings{cella2020preprint,
   bootktitle={Under review},
   year={2020}
 }"""
+
+INDEXES = {
+    "default": "6.0",
+    "test": "6.0",
+    "6.0": core.Index(filename="tinysol_index_6.0.json"),
+}
+
 REMOTES = {
     "audio": download_utils.RemoteFileMetadata(
         filename="TinySOL.tar.gz",
@@ -125,7 +130,11 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
+
+    @property
+    def split(self):
+        return self._track_metadata.get("Fold")
 
     @property
     def family(self):
@@ -219,12 +228,14 @@ class Dataset(core.Dataset):
     The tinysol dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="tinysol",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
@@ -235,34 +246,37 @@ class Dataset(core.Dataset):
             self.data_home, "annotation", "TinySOL_metadata.csv"
         )
 
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
         metadata_index = {}
-        with open(metadata_path, "r") as fhandle:
-            csv_reader = csv.reader(fhandle, delimiter=",")
-            next(csv_reader)
-            for row in csv_reader:
-                key = os.path.splitext(os.path.split(row[0])[1])[0]
-                metadata_index[key] = {
-                    "Fold": int(row[1]),
-                    "Family": row[2],
-                    "Instrument (abbr.)": row[3],
-                    "Instrument (in full)": row[4],
-                    "Technique (abbr.)": row[5],
-                    "Technique (in full)": row[6],
-                    "Pitch": row[7],
-                    "Pitch ID": int(row[8]),
-                    "Dynamics": row[9],
-                    "Dynamics ID": int(row[10]),
-                    "Instance ID": int(row[11]),
-                    "Resampled": (row[13] == "TRUE"),
-                }
-                if len(row[12]) > 0:
-                    metadata_index[key]["String ID"] = int(float(row[12]))
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.reader(fhandle, delimiter=",")
+                next(csv_reader)
+                for row in csv_reader:
+                    key = os.path.splitext(os.path.split(row[0])[1])[0]
+                    metadata_index[key] = {
+                        "Fold": int(row[1]),
+                        "Family": row[2],
+                        "Instrument (abbr.)": row[3],
+                        "Instrument (in full)": row[4],
+                        "Technique (abbr.)": row[5],
+                        "Technique (in full)": row[6],
+                        "Pitch": row[7],
+                        "Pitch ID": int(row[8]),
+                        "Dynamics": row[9],
+                        "Dynamics ID": int(row[10]),
+                        "Instance ID": int(row[11]),
+                        "Resampled": (row[13] == "TRUE"),
+                    }
+                    if len(row[12]) > 0:
+                        metadata_index[key]["String ID"] = int(float(row[12]))
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.tinysol.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

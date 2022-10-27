@@ -27,17 +27,15 @@
 """
 
 import csv
-import logging
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import core, download_utils, io, jams_utils
 
 BIBTEX = """@inproceedings{lostanlen2019ismir,
     title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
@@ -45,6 +43,13 @@ BIBTEX = """@inproceedings{lostanlen2019ismir,
     booktitle={International Society of Music Information Retrieval (ISMIR)},
     year={2016}
 }"""
+
+INDEXES = {
+    "default": "1.2",
+    "test": "1.2",
+    "1.2": core.Index(filename="medley_solos_db_index_1.2.json"),
+}
+
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="Medley-solos-DB_metadata.csv",
@@ -95,7 +100,7 @@ class Track(core.Track):
             metadata,
         )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
 
     @property
     def instrument(self):
@@ -157,12 +162,14 @@ class Dataset(core.Dataset):
     The medley_solos_db dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="medley_solos_db",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
@@ -173,24 +180,25 @@ class Dataset(core.Dataset):
             self.data_home, "annotation", "Medley-solos-DB_metadata.csv"
         )
 
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
         metadata_index = {}
-        with open(metadata_path, "r") as fhandle:
-            csv_reader = csv.reader(fhandle, delimiter=",")
-            next(csv_reader)
-            for row in csv_reader:
-                subset, instrument_str, instrument_id, song_id, track_id = row
-                metadata_index[str(track_id)] = {
-                    "subset": str(subset),
-                    "instrument": str(instrument_str),
-                    "instrument_id": int(instrument_id),
-                    "song_id": int(song_id),
-                }
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.DictReader(fhandle, delimiter=",")
+                for row in csv_reader:
+                    metadata_index[str(row["uuid4"])] = {
+                        "subset": row["subset"],
+                        "instrument": row["instrument"],
+                        "instrument_id": int(row["instrument_id"]),
+                        "song_id": int(row["song_id"]),
+                    }
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.medley_solos_db.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

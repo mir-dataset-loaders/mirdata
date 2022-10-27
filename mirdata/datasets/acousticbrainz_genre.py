@@ -38,8 +38,9 @@
     grant agreement No 688382 AudioCommons.
 
 """
-
 import json
+
+from deprecated.sphinx import deprecated
 
 from mirdata import download_utils, core, io
 from mirdata import jams_utils
@@ -56,10 +57,24 @@ BIBTEX = """
   organization={International Society for Music Information Retrieval (ISMIR)}
 }
 """
+
+INDEXES = {
+    "default": "1.0",
+    "test": "sample",
+    "1.0": core.Index(
+        filename="acousticbrainz_genre_index_1.0.json",
+        url="https://zenodo.org/record/4698408/files/acousticbrainz_genre_index_1.0.json.zip?download=1",
+        checksum="ee2837b04d8dd6ab0507f5b975314b7e",
+    ),
+    "sample": core.Index(filename="acousticbrainz_genre_index_sample.json"),
+}
+
 REMOTES = {
     "index": download_utils.RemoteFileMetadata(
         filename="acousticbrainz_genre_index.json.zip",
-        url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
+        url=(
+            "https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1"
+        ),
         checksum="810f1c003f53cbe58002ba96e6d4d138",
     ),
     "validation-01": download_utils.RemoteFileMetadata(
@@ -189,7 +204,7 @@ class Track(core.Track):
             metadata,
         )
 
-        self.path = core.none_path_join([self._data_home, self._track_paths["data"][0]])
+        self.path = self.get_path("data")
         self.genre = [genre for genre in self.track_id.split("#")[4:] if genre != ""]
         self.mbid = self.track_id.split("#")[2]
         self.mbid_group = self.track_id.split("#")[3]
@@ -388,18 +403,22 @@ class Dataset(core.Dataset):
     The acousticbrainz genre dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name=NAME,
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
-            custom_index_path="acousticbrainz_genre_index.json",
         )
 
-    @core.copy_docs(load_extractor)
+    @deprecated(
+        reason="Use mirdata.datasets.acousticbrainz_genre.load_extractor",
+        version="0.3.4",
+    )
     def load_extractor(self, *args, **kwargs):
         return load_extractor(*args, **kwargs)
 

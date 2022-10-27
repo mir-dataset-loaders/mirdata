@@ -16,16 +16,13 @@
 
 """
 
-import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import io
+from mirdata import download_utils, jams_utils, core, io, annotations
 
 
 BIBTEX = """@article{tzanetakis2002gtzan,
@@ -34,13 +31,37 @@ BIBTEX = """@article{tzanetakis2002gtzan,
   journal={Music Analysis, Retrieval and Synthesis for Audio Signals},
   year={2002}
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(
+        filename="gtzan_genre_index_1.0.json",
+        partial_download=["all", "tempo_beat_annotations"],
+    ),
+    "mini": core.Index(
+        filename="gtzan_genre_1.0_mini_index.json",
+        partial_download=["mini", "tempo_beat_annotations"],
+    ),
+}
+
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="genres.tar.gz",
         url="http://opihi.cs.uvic.ca/sound/genres.tar.gz",
         checksum="5b3d6dddb579ab49814ab86dba69e7c7",
         destination_dir="gtzan_genre",
-    )
+    ),
+    "mini": download_utils.RemoteFileMetadata(
+        filename="main.zip",
+        url="https://github.com/TempoBeatDownbeat/gtzan_mini/archive/refs/heads/main.zip",
+        checksum="44f7f23af8363d96c59663a987f29a4c",
+    ),
+    "tempo_beat_annotations": download_utils.RemoteFileMetadata(
+        filename="annot.zip",
+        url="https://github.com/TempoBeatDownbeat/gtzan_tempo_beat/archive/refs/heads/main.zip",
+        checksum="4baa58112697a8087de04558d6e97442",
+    ),
 }
 
 LICENSE_INFO = "Unfortunately we couldn't find the license information for the GTZAN_genre dataset."
@@ -56,6 +77,10 @@ class Track(core.Track):
         audio_path (str): path to the audio file
         genre (str): annotated genre
         track_id (str): track id
+
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotations
+        tempo (float): global tempo annotations
 
     """
 
@@ -79,7 +104,17 @@ class Track(core.Track):
         if self.genre == "hiphop":
             self.genre = "hip-hop"
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.audio_path = self.get_path("audio")
+        self.beats_path = self.get_path("beats")
+        self.tempo_path = self.get_path("tempo")
+
+    @core.cached_property
+    def beats(self) -> Optional[annotations.BeatData]:
+        return load_beats(self.beats_path)
+
+    @core.cached_property
+    def tempo(self) -> Optional[float]:
+        return load_tempo(self.tempo_path)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -101,6 +136,8 @@ class Track(core.Track):
         """
         return jams_utils.jams_converter(
             tags_gtzan_data=[(self.genre, "gtzan-genre")],
+            beat_data=[(self.beats, None)],
+            tempo_data=[(self.tempo, None)],
             metadata={
                 "title": "Unknown track",
                 "artist": "Unknown artist",
@@ -109,6 +146,47 @@ class Track(core.Track):
                 "curator": "George Tzanetakis",
             },
         )
+
+
+@io.coerce_to_string_io
+def load_beats(fhandle: TextIO) -> annotations.BeatData:
+    """Load GTZAN format beat data from a file
+
+    Args:
+        fhandle (str or file-like): path or file-like object pointing to a beat annotation file
+
+    Returns:
+        BeatData: loaded beat data
+
+    """
+    beats = np.loadtxt(fhandle, ndmin=2)
+    times = beats[:, 0]
+    try:
+        positions = beats[:, 1]
+    except IndexError:
+        positions = None
+    beat_data = annotations.BeatData(
+        times=times, time_unit="s", positions=positions, position_unit="bar_index"
+    )
+
+    return beat_data
+
+
+@io.coerce_to_string_io
+def load_tempo(fhandle: TextIO) -> float:
+    """Load GTZAN format tempo data from a file
+
+    Args:
+        fhandle (str or file-like): path or file-like object pointing to a beat annotation file
+
+    Returns:
+        tempo (float): loaded tempo data
+
+    """
+
+    tempo = np.loadtxt(fhandle, ndmin=2)
+
+    return float(tempo)
 
 
 @io.coerce_to_bytes_io
@@ -133,16 +211,21 @@ class Dataset(core.Dataset):
     The gtzan_genre dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="gtzan_genre",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.gtzan_genre.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

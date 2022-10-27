@@ -13,18 +13,14 @@
 
 """
 import csv
-import logging
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
-import librosa
+from deprecated.sphinx import deprecated
 import numpy as np
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (
@@ -59,6 +55,13 @@ BIBTEX = """@inproceedings{goto2002rwc,
   series={ISMIR},
   note={Cite this if using vocal-instrumental activity annotations},
 }"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "1.0",
+    "1.0": core.Index(filename="rwc_popular_index_1.0.json"),
+}
+
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
         filename="master.zip",
@@ -73,7 +76,9 @@ REMOTES = {
     ),
     "annotations_sections": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-P-2001.CHORUS.zip",
-        url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip",
+        url=(
+            "https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip"
+        ),
         checksum="f76b3a32701fbd9bf78baa608f692a77",
         destination_dir="annotations",
     ),
@@ -150,16 +155,13 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.sections_path = os.path.join(
-            self._data_home, self._track_paths["sections"][0]
-        )
-        self.beats_path = os.path.join(self._data_home, self._track_paths["beats"][0])
-        self.chords_path = os.path.join(self._data_home, self._track_paths["chords"][0])
-        self.voca_inst_path = os.path.join(
-            self._data_home, self._track_paths["voca_inst"][0]
-        )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.sections_path = self.get_path("sections")
+        self.beats_path = self.get_path("beats")
+        self.chords_path = self.get_path("chords")
+        self.voca_inst_path = self.get_path("voca_inst")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def piece_number(self):
@@ -265,7 +267,7 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
         ends.append(float(line[1]))
         chords.append(line[2])
 
-    return annotations.ChordData(np.array([begs, ends]).T, chords)
+    return annotations.ChordData(np.array([begs, ends]).T, "s", chords, "harte")
 
 
 @io.coerce_to_string_io
@@ -296,7 +298,7 @@ def load_vocal_activity(fhandle: TextIO) -> annotations.EventData:
             ends.append(float(raw_data[i + 1][0]))
             events.append(raw_data[i][1])
 
-    return annotations.EventData(np.array([begs, ends]).T, events)
+    return annotations.EventData(np.array([begs, ends]).T, "s", events, "open")
 
 
 @core.docstring_inherit(core.Dataset)
@@ -305,12 +307,14 @@ class Dataset(core.Dataset):
     The rwc_popular dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="rwc_popular",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
@@ -321,17 +325,17 @@ class Dataset(core.Dataset):
 
         metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-p.csv")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                dialect = csv.Sniffer().sniff(fhandle.read(1024))
+                fhandle.seek(0)
+                reader = csv.reader(fhandle, dialect)
+                raw_data = []
+                for line in reader:
+                    if line[0] != "Piece No.":
+                        raw_data.append(line)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            dialect = csv.Sniffer().sniff(fhandle.read(1024))
-            fhandle.seek(0)
-            reader = csv.reader(fhandle, dialect)
-            raw_data = []
-            for line in reader:
-                if line[0] != "Piece No.":
-                    raw_data.append(line)
 
         metadata_index = {}
         for line in raw_data:
@@ -355,22 +359,37 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_popular.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_popular.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_popular.load_beats",
+        version="0.3.4",
+    )
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_popular.load_chords",
+        version="0.3.4",
+    )
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @core.copy_docs(load_vocal_activity)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_popular.load_vocal_activity",
+        version="0.3.4",
+    )
     def load_vocal_activity(self, *args, **kwargs):
         return load_vocal_activity(*args, **kwargs)

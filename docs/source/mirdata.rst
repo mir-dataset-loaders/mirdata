@@ -20,6 +20,7 @@ acousticbrainz_genre
    :members:
    :inherited-members:
 
+
 beatles
 ^^^^^^^
 
@@ -35,11 +36,26 @@ beatport_key
    :members:
    :inherited-members:
 
+billboard
+^^^^^^^^^
+
+.. automodule:: mirdata.datasets.billboard
+   :members:
+   :inherited-members:
+
 
 cante100
 ^^^^^^^^
 
 .. automodule:: mirdata.datasets.cante100
+   :members:
+   :inherited-members:
+
+
+compmusic_jingju_acappella
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_jingju_acappella
    :members:
    :inherited-members:
 
@@ -52,10 +68,49 @@ compmusic_otmm_makam
    :inherited-members:
 
 
+dagstuhl_choirset
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.dagstuhl_choirset
+   :members:
+   :inherited-members:
+
 dali
 ^^^^
 
 .. automodule:: mirdata.datasets.dali
+   :members:
+   :inherited-members:
+
+
+da_tacos
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.da_tacos
+   :members:
+   :inherited-members:
+
+
+filosax
+^^^^^^^
+
+.. automodule:: mirdata.datasets.filosax
+   :members:
+   :inherited-members:
+
+
+four_way_tabla
+^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.four_way_tabla
+   :members:
+   :inherited-members:
+
+
+freesound_one_shot_percussive_sounds
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.freesound_one_shot_percussive_sounds
    :members:
    :inherited-members:
 
@@ -72,6 +127,14 @@ giantsteps_tempo
 ^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.giantsteps_tempo
+   :members:
+   :inherited-members:
+
+
+good_sounds
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.good_sounds
    :members:
    :inherited-members:
 
@@ -100,6 +163,14 @@ guitarset
    :inherited-members:
 
 
+haydn_op20
+^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.haydn_op20
+   :members:
+   :inherited-members:
+
+
 ikala
 ^^^^^
 
@@ -112,6 +183,14 @@ irmas
 ^^^^^
 
 .. automodule:: mirdata.datasets.irmas
+   :members:
+   :inherited-members:
+
+
+mtg_jamendo_autotagging_moodtheme
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.mtg_jamendo_autotagging_moodtheme
    :members:
    :inherited-members:
 
@@ -164,6 +243,21 @@ orchset
    :inherited-members:
 
 
+phenicx_anechoic
+^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.phenicx_anechoic
+   :members:
+   :inherited-members:
+
+
+queen
+^^^^^^^
+
+.. automodule:: mirdata.datasets.queen
+   :members:
+   
+
 rwc_classical
 ^^^^^^^^^^^^^
 
@@ -211,6 +305,13 @@ saraga_hindustani
    :members:
    :inherited-members:
 
+slakh
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.slakh
+   :members:
+   :inherited-members:
+
 
 small_4mula
 ^^^^^^^^^^^
@@ -240,6 +341,22 @@ tonality_classicaldb
 ^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.tonality_classicaldb
+   :members:
+   :inherited-members:
+
+
+tonas
+^^^^^
+
+.. automodule:: mirdata.datasets.tonas
+   :members:
+   :inherited-members:
+
+
+vocadito
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.vocadito
    :members:
    :inherited-members:
 

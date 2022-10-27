@@ -5,7 +5,7 @@ import types
 
 import mirdata
 from mirdata import validate
-
+from smart_open import open
 
 import pytest
 
@@ -31,6 +31,14 @@ def run_track_tests(track, expected_attributes, expected_property_types):
             assert (
                 False
             ), "{} not in expected_property_types or expected_attributes".format(prop)
+
+
+def run_multitrack_tests(mtrack):
+    tracks = getattr(mtrack, "tracks")
+    track_ids = getattr(mtrack, "track_ids")
+    assert list(tracks.keys()) == track_ids
+    for k, track in tracks.items():
+        assert getattr(track, "track_id") in track_ids
 
 
 def get_attributes_and_properties(class_instance):
@@ -85,11 +93,8 @@ def mock_validate_index(mocker):
 
 def test_md5(mocker):
     audio_file = b"audio1234"
-
     expected_checksum = "6dc00d1bac757abe4ea83308dde68aab"
-
-    mocker.patch("builtins.open", new=mocker.mock_open(read_data=audio_file))
-
+    mocker.patch("mirdata.validate.open", new=mocker.mock_open(read_data=audio_file))
     md5_checksum = validate.md5("test_file_path")
     assert expected_checksum == md5_checksum
 

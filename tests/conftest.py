@@ -8,16 +8,17 @@ def pytest_addoption(parser):
     )
     parser.addoption("--dataset", type=str, default="", help="dataset to test locally")
     parser.addoption(
+        "--dataset-version",
+        type=str,
+        default="default",
+        help="version of dataset to test locally",
+    )
+    parser.addoption(
         "--skip-download", action="store_true", default=False, help="skip download step"
     )
     parser.addoption(
         "--report-file", type=str, default="", help="dataset to test locally"
     )
-
-
-# @pytest.fixture(scope='session')
-# def local(request):
-#     return request.config.getoption('--local')
 
 
 @pytest.fixture(scope="session")
@@ -35,6 +36,11 @@ def skip_remote(request):
 @pytest.fixture(scope="session")
 def test_dataset(request):
     return request.config.getoption("--dataset")
+
+
+@pytest.fixture(scope="session")
+def dataset_version(request):
+    return request.config.getoption("--dataset-version")
 
 
 @pytest.fixture(scope="session")

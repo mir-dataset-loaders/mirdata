@@ -15,18 +15,16 @@
 
 """
 import csv
-import logging
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import download_utils
-from mirdata import jams_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io, jams_utils
+
 
 BIBTEX = """@inproceedings{smith2011salami,
     title={Design and creation of a large-scale database of structural annotations.},
@@ -36,6 +34,13 @@ BIBTEX = """@inproceedings{smith2011salami,
     year={2011},
     series = {ISMIR},
 }"""
+
+INDEXES = {
+    "default": "2.0-corrected",
+    "test": "2.0-corrected",
+    "2.0-corrected": core.Index(filename="salami_index_2.0-corrected.json"),
+}
+
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
         filename="salami-data-public-hierarchy-corrections.zip",
@@ -106,20 +111,13 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.sections_annotator1_uppercase_path = core.none_path_join(
-            [self._data_home, self._track_paths["annotator_1_uppercase"][0]]
-        )
-        self.sections_annotator1_lowercase_path = core.none_path_join(
-            [self._data_home, self._track_paths["annotator_1_lowercase"][0]]
-        )
-        self.sections_annotator2_uppercase_path = core.none_path_join(
-            [self._data_home, self._track_paths["annotator_2_uppercase"][0]]
-        )
-        self.sections_annotator2_lowercase_path = core.none_path_join(
-            [self._data_home, self._track_paths["annotator_2_lowercase"][0]]
-        )
 
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
+        self.sections_annotator1_uppercase_path = self.get_path("annotator_1_uppercase")
+        self.sections_annotator1_lowercase_path = self.get_path("annotator_1_lowercase")
+        self.sections_annotator2_uppercase_path = self.get_path("annotator_2_uppercase")
+        self.sections_annotator2_lowercase_path = self.get_path("annotator_2_lowercase")
+
+        self.audio_path = self.get_path("audio")
 
     @property
     def source(self):
@@ -217,18 +215,19 @@ class Track(core.Track):
         )
 
 
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a Salami audio file.
 
     Args:
-        fhandle (str or file-like): path to audio file
+        fpath (str): path to audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fhandle, sr=None, mono=True)
+    return librosa.load(fpath, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
@@ -236,7 +235,7 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     """Load salami sections data from a file
 
     Args:
-        fhandle (str or file-like): File-like object or path to sectin annotation file
+        fhandle (str or file-like): File-like object or path to section annotation file
 
     Returns:
         SectionData: section data
@@ -255,7 +254,10 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
     return annotations.SectionData(
-        np.array([times_revised[:-1], times_revised[1:]]).T, list(secs_revised[:-1])
+        np.array([times_revised[:-1], times_revised[1:]]).T,
+        "s",
+        list(secs_revised[:-1]),
+        "open",
     )
 
 
@@ -265,12 +267,14 @@ class Dataset(core.Dataset):
     The salami dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="salami",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
@@ -285,17 +289,18 @@ class Dataset(core.Dataset):
                 "salami-data-public-hierarchy-corrections", "metadata", "metadata.csv"
             ),
         )
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        with open(metadata_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            raw_data = []
-            for line in reader:
-                if line != []:
-                    if line[0] == "SONG_ID":
-                        continue
-                    raw_data.append(line)
+        try:
+            with open(metadata_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                raw_data = []
+                for line in reader:
+                    if line != []:
+                        if line[0] == "SONG_ID":
+                            continue
+                        raw_data.append(line)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata_index = {}
         for line in raw_data:
@@ -318,10 +323,16 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.salami.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.salami.load_sections",
+        version="0.3.4",
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)

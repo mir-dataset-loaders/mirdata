@@ -65,17 +65,14 @@
         3577631.LOFI.mp3  119
 
 """
-import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import jams
 import librosa
 import numpy as np
 
-from mirdata import download_utils
-from mirdata import core
-from mirdata import annotations
-from mirdata import io
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """@inproceedings{knees2015two,
@@ -93,6 +90,12 @@ BIBTEX = """@inproceedings{knees2015two,
   year={2018},
   url-pdf={http://www.tagtraum.com/download/2018_schreiber_tempo_giantsteps.pdf},
 }"""
+
+INDEXES = {
+    "default": "2.0",
+    "test": "2.0",
+    "2.0": core.Index(filename="giantsteps_tempo_index_2.0.json"),
+}
 
 REMOTES = {
     "annotations": download_utils.RemoteFileMetadata(
@@ -149,13 +152,11 @@ class Track(core.Track):
             index,
             metadata,
         )
-        self.audio_path = os.path.join(self._data_home, self._track_paths["audio"][0])
-        self.annotation_v1_path = os.path.join(
-            self._data_home, self._track_paths["annotation_v1"][0]
-        )
-        self.annotation_v2_path = os.path.join(
-            self._data_home, self._track_paths["annotation_v2"][0]
-        )
+
+        self.annotation_v1_path = self.get_path("annotation_v1")
+        self.annotation_v2_path = self.get_path("annotation_v2")
+
+        self.audio_path = self.get_path("audio")
 
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1].split(".")[0]
 
@@ -246,8 +247,11 @@ def load_tempo(fhandle: TextIO) -> annotations.TempoData:
 
     return annotations.TempoData(
         np.array([[t.time for t in tempo], [t.time + t.duration for t in tempo]]).T,
+        "s",
         np.array([t.value for t in tempo]),
+        "bpm",
         np.array([t.confidence for t in tempo]),
+        "likelihood",
     )
 
 
@@ -257,25 +261,36 @@ class Dataset(core.Dataset):
     The giantsteps_tempo dataset
     """
 
-    def __init__(self, data_home=None):
+    def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="giantsteps_tempo",
             track_class=Track,
             bibtex=BIBTEX,
+            indexes=INDEXES,
             remotes=REMOTES,
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_tempo.load_audio",
+        version="0.3.4",
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_genre)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_tempo.load_genre",
+        version="0.3.4",
+    )
     def load_genre(self, *args, **kwargs):
         return load_genre(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_tempo.load_tempo",
+        version="0.3.4",
+    )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)

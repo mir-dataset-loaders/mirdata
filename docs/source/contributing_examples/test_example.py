@@ -1,4 +1,7 @@
+"""Tests for example dataset
+"""
 import numpy as np
+import pytest
 
 from mirdata import annotations
 from mirdata.datasets import example
@@ -8,7 +11,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "some_id"
     data_home = "tests/resources/mir_datasets/dataset"
-    dataset = example.Dataset(data_home)
+    dataset = example.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -37,7 +40,7 @@ def test_to_jams():
 
     default_trackid = "some_id"
     data_home = "tests/resources/mir_datasets/dataset"
-    dataset = example.Dataset(data_home)
+    dataset = example.Dataset(data_home, version="test"
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -67,7 +70,7 @@ def test_load_annotation():
 
 def test_metadata():
     data_home = "tests/resources/mir_datasets/dataset"
-    dataset = example.Dataset(data_home)
+    dataset = example.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["some_id"] == "something"
 
