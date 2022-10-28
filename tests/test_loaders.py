@@ -35,7 +35,7 @@ CUSTOM_TEST_TRACKS = {
     "openmic2018": "000046_3840",
     "salami": "2",
     "saraga_carnatic": "116_Bhuvini_Dasudane",
-    "saraga_hindustani": "59_Bairagi",
+    "saraga_hindustani": "50_Irani_Bhairavi_Thumri",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
     "dagstuhl_choirset": "DCS_LI_QuartetB_Take04_B2",
     "tonas": "01-D_AMairena",
