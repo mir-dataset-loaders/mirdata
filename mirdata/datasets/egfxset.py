@@ -66,6 +66,8 @@
 
 """
 import csv
+from email.mime import audio
+import json
 import os
 from typing import BinaryIO, List, Optional, TextIO, Tuple
 
@@ -93,7 +95,7 @@ REMOTES = {
     "bluesDriver": download_utils.RemoteFileMetadata(
         filename="BluesDriver.zip",
         url="https://zenodo.org/record/7044411/files/BluesDriver.zip?download=1",
-        checksum="b1d6dce9064a25a1cff2a0c40c30a2e4",  
+        checksum="b1d6dce9064a25a1cff2a0c40c30a2e4",
     ),
     "chorus": download_utils.RemoteFileMetadata(
         filename="Chorus.zip",
@@ -119,7 +121,7 @@ REMOTES = {
         #mismo checksum?
         filename="Hall-Reverb.zip",
         url="https://zenodo.org/record/7044411/files/Hall-Reverb.zip?download=1",
-        checksum="f3f7b39c895a400d35c5b1314a1122bd",  
+        checksum="c173bebdcbed50d4bc8803e0b30d6517",  
     ),
     "phaser": download_utils.RemoteFileMetadata(
         filename="Phaser.zip",
@@ -160,7 +162,7 @@ REMOTES = {
         filename="egfxset_metadata.csv",
         url="https://zenodo.org/record/7044411/files/egfxset_metadata.csv?download=1",
         checksum="ec8d160fe79469c7de8cad528d7d35e1", 
-    ),
+    )
 
 }
 
@@ -199,15 +201,9 @@ class Track(core.Track):
             metadata,
         )
         ## aqui van el self.get_path de las anotaciones?
+        self.track_id = track_id
         self.audio_path = self.get_path("audio")
 
-    @property
-    def average_pitch_midi(self):
-        return self._track_metadata.get("average_pitch_midi")
-
-    @core.cached_property
-    def f0(self) -> Optional[annotations.F0Data]:
-        return load_f0(self.f0_path)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -229,22 +225,10 @@ class Track(core.Track):
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            f0_data=[(self.f0, None)],
-            note_data=[
-                (self.notes_a1, "notes - Annotator 1"),
-                (self.notes_a2, "notes - Annotator 2"),
-            ],
-            metadata={
-                "singer_id": self.singer_id,
-                "average_pitch_midi": int(self.average_pitch_midi),
-                "language": self.language,
-                "track_id": self.track_id,
-                "lyrics": self.lyrics,
-            },
+            metadata=self._track_metadata,
         )
 
-
-@io.coerce_to_bytes_io
+@io.coerce_to_bytes_io  
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load EGFxSet vocal audio
 
@@ -258,53 +242,6 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """
     return librosa.load(fhandle, sr=None, mono=True)
 
-
-@io.coerce_to_string_io
-def load_f0(fhandle: TextIO) -> annotations.F0Data:
-    """Load a EGFxSet f0 annotation
-
-    Args:
-        fhandle (str or file-like): File-like object or path to f0 annotation file
-
-    Raises:
-        IOError: If f0_path does not exist
-
-    Returns:
-        F0Data: the f0 annotation data
-
-    """
-    times_frequencies = np.genfromtxt(fhandle, delimiter=",")
-    return annotations.F0Data(
-        times=times_frequencies[:, 0],
-        time_unit="s",
-        frequencies=times_frequencies[:, 1],
-        frequency_unit="hz",
-        voicing=(times_frequencies[:, 1] > 0).astype(np.float64),
-        voicing_unit="binary",
-    )
-
-
-@io.coerce_to_string_io
-def load_notes(fhandle: TextIO) -> Optional[annotations.NoteData]:
-    """load a note annotation file
-
-    Args:
-        fhandle (str or file-like): str or file-like to note annotation file
-
-    Raises:
-        IOError: if file doesn't exist
-
-    Returns:
-        NoteData: note annotation
-
-    """
-    notes = np.genfromtxt(fhandle, delimiter=",")
-    return annotations.NoteData(
-        intervals=np.column_stack((notes[:, 0], notes[:, 0] + notes[:, 2])),
-        interval_unit="s",
-        pitches=notes[:, 1],
-        pitch_unit="hz",
-    )
 
 
 @core.docstring_inherit(core.Dataset)
@@ -327,14 +264,23 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "EGFxSet_metadata.csv")
+        metadata_path = os.path.join(self.data_home, "metadata", "egfxset_metadata.csv")
+        metadata_index = {}
         try:
             with open(metadata_path, "r") as fhandle:
-                return {
-                    row["track_id"]: {
-                        "average_pitch_midi": int(row["average_pitch"]),
+                csv_reader = csv.reader(fhandle, delimiter=",")
+                next(csv_reader)
+                for row in csv_reader:
+                    key = os.path.splitext(os.path.split(row[0])[1])[0]
+                    metadata_index[key] = {
+                        "Effect": int(row[1]),
+                        "Model": row[2],
+                        "Effect Type": row[3],
+                        "Knob Names": row[4],
+                        "Knob Type": row[5],
+                        "Setting": row[6],
                     }
-                    for row in csv.DictReader(fhandle)
-                }
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        return metadata_index
