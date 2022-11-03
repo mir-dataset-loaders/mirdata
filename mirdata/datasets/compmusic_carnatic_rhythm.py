@@ -55,8 +55,6 @@ import numpy as np
 from mirdata import annotations, core, io, jams_utils
 
 
-
-
 try:
     from openpyxl import load_workbook
 except ImportError:
@@ -383,7 +381,7 @@ class Dataset(core.Dataset):
                         if cell.value:
                             columns.append(cell.value)
 
-                    for row in range(2, rows+1):
+                    for row in range(2, rows + 1):
                         metadata[str(reade.cell(row, 2).value)] = {
                             "mbid": reade.cell(row, 3).value,
                             "name": reade.cell(row, 4).value,
