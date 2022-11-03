@@ -51,7 +51,6 @@ import csv
 import logging
 import librosa
 import numpy as np
-import pandas as pd
 
 from mirdata import annotations, core, io, jams_utils
 
@@ -59,7 +58,7 @@ from mirdata import annotations, core, io, jams_utils
 
 
 try:
-    import openpyxl
+    from openpyxl import load_workbook
 except ImportError:
     logging.error(
         "In order to use CompMusic Carnatic Music Rhythm you must have openpyxl installed. "
@@ -339,7 +338,7 @@ class Dataset(core.Dataset):
         metadata = {}
         try:
             with open(metadata_path, "rb") as fhandle:
-                reader = pd.read_excel(fhandle, sheet_name=0)
+                reader = load_workbook(fhandle)
                 if self.version == "full_dataset_1.0":
                     uid = [str(x) for x in reader.loc[:, "UID"].to_list()]
                     for num, idx in enumerate(uid):
@@ -370,26 +369,35 @@ class Dataset(core.Dataset):
                         }
 
                 else:
-                    full_id = [str(x) for x in reader.loc[:, "fullID"].to_list()]
-                    for num, idx in enumerate(full_id):
-                        metadata[idx] = {
-                            "mbid": reader.loc[num, "MBID of the recording"],
-                            "name": reader.loc[num, "Name"],
-                            "artist": reader.loc[num, "Artist"],
-                            "release": reader.loc[num, "Release+Volume"],
-                            "lead_instrument_code": reader.loc[
-                                num, "Lead Instrument Code"
-                            ],
-                            "taala": reader.loc[num, "Taala"],
-                            "raaga": reader.loc[num, "Raaga"],
+                    reade = reader.active
+                    rows = 0
+
+                    # Get actual number of rows
+                    for _, row in enumerate(reade, 1):
+                        if not all(col.value is None for col in row):
+                            rows += 1
+
+                    # Get actual columns
+                    columns = []
+                    for cell in reade[1]:
+                        if cell.value:
+                            columns.append(cell.value)
+
+                    for row in range(2, rows+1):
+                        metadata[str(reade.cell(row, 2).value)] = {
+                            "mbid": reade.cell(row, 3).value,
+                            "name": reade.cell(row, 4).value,
+                            "artist": reade.cell(row, 5).value,
+                            "release": reade.cell(row, 6).value,
+                            "lead_instrument_code": reade.cell(row, 7).value,
+                            "taala": reade.cell(row, 8).value,
+                            "raaga": reade.cell(row, 9).value,
                             "start_time": "no info",
                             "end_time": "no info",
                             "length_seconds": "no info",
                             "length_minutes": "no info",
-                            "num_of_beats": int(
-                                reader.loc[num, "Number of annotated beats"]
-                            ),
-                            "num_of_samas": int(reader.loc[num, "Number of samas"]),
+                            "num_of_beats": int(reade.cell(row, 10).value),
+                            "num_of_samas": int(reade.cell(row, 11).value),
                         }
 
         except FileNotFoundError:
