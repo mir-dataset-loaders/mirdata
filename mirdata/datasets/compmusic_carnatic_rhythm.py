@@ -48,12 +48,24 @@
 
 import os
 import csv
-
+import logging
 import librosa
 import numpy as np
 import pandas as pd
 
 from mirdata import annotations, core, io, jams_utils
+
+
+
+
+try:
+    import openpyxl
+except ImportError:
+    logging.error(
+        "In order to use CompMusic Carnatic Music Rhythm you must have openpyxl installed. "
+        "Please reinstall mirdata using `pip install 'mirdata[compmusic_carnatic_rhythm]'"
+    )
+    raise ImportError
 
 BIBTEX = """
 @article{srinivasamurthy_2014,
