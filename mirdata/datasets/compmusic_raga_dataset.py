@@ -71,22 +71,22 @@ INDEXES = {
 }
 
 REMOTES = {
-    "all": download_utils.RemoteFileMetadata(
-        filename="TODO",
-        url="TODO",
-        checksum="TODO",
+    "features": download_utils.RemoteFileMetadata(
+        filename="Indian Art Music Raga Recognition Dataset (features).zip",
+        url="https://zenodo.org/record/7278506/files/Indian%20Art%20Music%20Raga%20Recognition%20Dataset%20%28features%29.zip?download=1",
+        checksum="5dfc26dd1c2652ab75a62faec7f45f08",
     )
 }
 
 DOWNLOAD_INFO = """While annotations and metadata are freely downloadable, the audio of this 
-    dataset has restricted access. Please access: LINK HERE and request access to the audio,
-    specifying your purpose. The audio will be shared for research purposes. In such case, when
-    access to the audio is granted, please organize the dataset as specified in the 
-    ``directory_structure.txt`` file found when you download the features and metadata using
+    dataset has restricted access. Please access: https://zenodo.org/record/7278511 and request 
+    access to the audio, specifying your purpose. The audio will be shared for research purposes. 
+    In such case, when access to the audio is granted, please organize the dataset as specified 
+    in the ``directory_structure.txt`` file found when you download the features and metadata using
     the .download() method of this dataloader. 
 """
 
-LICENSE_INFO = "TODO"
+LICENSE_INFO = "Creative Commons Attribution 4.0 International"
 
 
 class Track(core.Track):
