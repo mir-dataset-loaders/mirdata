@@ -120,6 +120,7 @@ class Track(core.Track):
     Cached Properties:
         beats (BeatData): beats annotation
         meter (string): meter annotation
+
     """
 
     def __init__(
@@ -340,32 +341,35 @@ class Dataset(core.Dataset):
             with open(metadata_path, "rb") as fhandle:
                 reader = get_xlxs(fhandle)
                 if self.version == "full_dataset_1.0":
-                    uid = [str(x) for x in reader.loc[:, "UID"].to_list()]
-                    for num, idx in enumerate(uid):
-                        metadata[idx] = {
-                            "mbid": reader.loc[num, "MBID of the recording"],
-                            "name": reader.loc[num, "Name"],
-                            "artist": reader.loc[num, "Artist"],
-                            "release": reader.loc[num, "Release+Volume"],
-                            "lead_instrument_code": reader.loc[
-                                num, "Lead Instrument Code"
-                            ],
-                            "taala": reader.loc[num, "Taala"],
-                            "raaga": reader.loc[num, "Raaga"],
-                            "start_time": int(
-                                reader.loc[num, "Excerpt Start Time (s)"]
-                            ),
-                            "end_time": int(reader.loc[num, "Excerpt End Time (s)"]),
-                            "length_seconds": int(
-                                reader.loc[num, "Length of the excerpt (s)"]
-                            ),
-                            "length_minutes": float(
-                                reader.loc[num, "Length of the excerpt (min)"]
-                            ),
-                            "num_of_beats": int(
-                                reader.loc[num, "Number of annotated beats"]
-                            ),
-                            "num_of_samas": int(reader.loc[num, "Number of samas"]),
+                    reade = reader.active
+                    rows = 0
+
+                    # Get actual number of rows
+                    for _, row in enumerate(reade, 1):
+                        if not all(col.value is None for col in row):
+                            rows += 1
+
+                    # Get actual columns
+                    columns = []
+                    for cell in reade[1]:
+                        if cell.value:
+                            columns.append(cell.value)
+
+                    for row in range(2, rows + 1):
+                        metadata[str(reade.cell(row, 2).value)] = {
+                            "mbid": reade.cell(row, 3).value,
+                            "name": reade.cell(row, 4).value,
+                            "artist": reade.cell(row, 5).value,
+                            "release": reade.cell(row, 6).value,
+                            "lead_instrument_code": reade.cell(row, 7).value,
+                            "taala": reade.cell(row, 8).value,
+                            "raaga": reade.cell(row, 9).value,
+                            "start_time": int(reade.cell(row, 10).value),
+                            "end_time": int(reade.cell(row, 11).value),
+                            "length_seconds": int(reade.cell(row, 12).value),
+                            "length_minutes": float(reade.cell(row, 13).value),
+                            "num_of_beats": int(reade.cell(row, 14).value),
+                            "num_of_samas": int(reade.cell(row, 15).value),
                         }
 
                 else:
