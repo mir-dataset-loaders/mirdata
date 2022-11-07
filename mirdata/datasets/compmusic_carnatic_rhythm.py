@@ -57,6 +57,7 @@ from smart_open import open
 
 
 try:
+    from openpyxl import Workbook
     from openpyxl import load_workbook as get_xlxs
     from openpyxl.utils.exceptions import InvalidFileException
 except ImportError:
@@ -183,22 +184,6 @@ class Track(core.Track):
         return self._track_metadata.get("raaga")
 
     @core.cached_property
-    def start_time(self):
-        return self._track_metadata.get("start_time")
-
-    @core.cached_property
-    def end_time(self):
-        return self._track_metadata.get("end_time")
-
-    @core.cached_property
-    def length_seconds(self):
-        return self._track_metadata.get("length_seconds")
-
-    @core.cached_property
-    def length_minutes(self):
-        return self._track_metadata.get("length_minutes")
-
-    @core.cached_property
     def num_of_beats(self):
         return self._track_metadata.get("num_of_beats")
 
@@ -236,10 +221,6 @@ class Track(core.Track):
                 "lead_instrument_code": self.lead_instrument_code,
                 "taala": self.taala,
                 "raaga": self.raaga,
-                "start_time": self.start_time,
-                "end_time": self.end_time,
-                "length_seconds": self.length_seconds,
-                "length_minutes": self.length_minutes,
                 "num_of_beats": self.num_of_beats,
                 "num_of_samas": self.num_of_samas,
             },
@@ -341,7 +322,7 @@ class Dataset(core.Dataset):
             with open(metadata_path, "rb") as fhandle:
                 reader = get_xlxs(fhandle)
                 if self.version == "full_dataset_1.0":
-                    reade = reader.active
+                    reade = reader["Carnatic"]
                     rows = 0
 
                     # Get actual number of rows
@@ -356,52 +337,44 @@ class Dataset(core.Dataset):
                             columns.append(cell.value)
 
                     for row in range(2, rows + 1):
-                        metadata[str(reade.cell(row, 2).value)] = {
-                            "mbid": reade.cell(row, 3).value,
-                            "name": reade.cell(row, 4).value,
-                            "artist": reade.cell(row, 5).value,
-                            "release": reade.cell(row, 6).value,
-                            "lead_instrument_code": reade.cell(row, 7).value,
-                            "taala": reade.cell(row, 8).value,
-                            "raaga": reade.cell(row, 9).value,
-                            "start_time": int(reade.cell(row, 10).value),
-                            "end_time": int(reade.cell(row, 11).value),
-                            "length_seconds": int(reade.cell(row, 12).value),
-                            "length_minutes": float(reade.cell(row, 13).value),
-                            "num_of_beats": int(reade.cell(row, 14).value),
-                            "num_of_samas": int(reade.cell(row, 15).value),
+                        metadata[str(reade.cell(row, 1).value)] = {
+                            "mbid": reade.cell(row, 2).value,
+                            "name": reade.cell(row, 3).value,
+                            "artist": reade.cell(row, 4).value,
+                            "release": reade.cell(row, 5).value,
+                            "lead_instrument_code": reade.cell(row, 6).value,
+                            "taala": reade.cell(row, 7).value,
+                            "raaga": reade.cell(row, 8).value,
+                            "num_of_beats": int(reade.cell(row, 13).value),
+                            "num_of_samas": int(reade.cell(row, 14).value),
                         }
 
                 else:
-                    reade = reader.active
+                    reader = reader.active
                     rows = 0
 
                     # Get actual number of rows
-                    for _, row in enumerate(reade, 1):
+                    for _, row in enumerate(reader, 1):
                         if not all(col.value is None for col in row):
                             rows += 1
 
                     # Get actual columns
                     columns = []
-                    for cell in reade[1]:
+                    for cell in reader[1]:
                         if cell.value:
                             columns.append(cell.value)
 
                     for row in range(2, rows + 1):
-                        metadata[str(reade.cell(row, 2).value)] = {
-                            "mbid": reade.cell(row, 3).value,
-                            "name": reade.cell(row, 4).value,
-                            "artist": reade.cell(row, 5).value,
-                            "release": reade.cell(row, 6).value,
-                            "lead_instrument_code": reade.cell(row, 7).value,
-                            "taala": reade.cell(row, 8).value,
-                            "raaga": reade.cell(row, 9).value,
-                            "start_time": "no info",
-                            "end_time": "no info",
-                            "length_seconds": "no info",
-                            "length_minutes": "no info",
-                            "num_of_beats": int(reade.cell(row, 10).value),
-                            "num_of_samas": int(reade.cell(row, 11).value),
+                        metadata[str(reader.cell(row, 2).value)] = {
+                            "mbid": reader.cell(row, 3).value,
+                            "name": reader.cell(row, 4).value,
+                            "artist": reader.cell(row, 5).value,
+                            "release": reader.cell(row, 6).value,
+                            "lead_instrument_code": reader.cell(row, 7).value,
+                            "taala": reader.cell(row, 8).value,
+                            "raaga": reader.cell(row, 9).value,
+                            "num_of_beats": int(reader.cell(row, 10).value),
+                            "num_of_samas": int(reader.cell(row, 11).value),
                         }
 
         except FileNotFoundError:

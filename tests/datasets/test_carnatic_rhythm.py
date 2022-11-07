@@ -31,10 +31,6 @@ def test_track():
         "lead_instrument_code": str,
         "taala": str,
         "raaga": str,
-        "start_time": str,
-        "end_time": str,
-        "length_seconds": str,
-        "length_minutes": str,
         "num_of_beats": int,
         "num_of_samas": int,
     }
@@ -42,7 +38,7 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
     # test audio loading functions
-    audio, sr = track.audio
+    _, sr = track.audio
     assert sr == 44100
 
 
@@ -71,10 +67,6 @@ def test_to_jams():
     assert jam["sandbox"]["taala"] == "adi"
     assert jam["sandbox"]["name"] == "1-04_Shri_Visvanatham"
     assert jam["sandbox"]["lead_instrument_code"] == "V"
-    assert jam["sandbox"]["start_time"] == "no info"
-    assert jam["sandbox"]["end_time"] == "no info"
-    assert jam["sandbox"]["length_seconds"] == "no info"
-    assert jam["sandbox"]["length_minutes"] == "no info"
     assert jam["sandbox"]["num_of_beats"] == 162
     assert jam["sandbox"]["num_of_samas"] == 21
 
@@ -83,9 +75,9 @@ def test_load_meter():
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
     track = dataset.track("10003")
-    tonic_path = track.meter_path
-    parsed_tonic = compmusic_carnatic_rhythm.load_meter(tonic_path)
-    assert parsed_tonic == "8/4"
+    meter_path = track.meter_path
+    parsed_meter = compmusic_carnatic_rhythm.load_meter(meter_path)
+    assert parsed_meter == "8/4"
     assert compmusic_carnatic_rhythm.load_meter(None) is None
 
 
@@ -106,6 +98,13 @@ def test_load_beats():
     assert np.array_equal(parsed_beats.positions, np.array([1, 2, 3]))
     assert compmusic_carnatic_rhythm.load_beats(None) is None
 
+    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="full_dataset")
+    track = dataset.track("10001")
+    beats_path = track.beats_path
+    parsed_beats = compmusic_carnatic_rhythm.load_beats(beats_path)
+    assert parsed_beats is None
+
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
@@ -118,12 +117,22 @@ def test_load_metadata():
     assert parsed_metadata["taala"] == "adi"
     assert parsed_metadata["name"] == "1-04_Shri_Visvanatham"
     assert parsed_metadata["lead_instrument_code"] == "V"
-    assert parsed_metadata["start_time"] == "no info"
-    assert parsed_metadata["end_time"] == "no info"
-    assert parsed_metadata["length_seconds"] == "no info"
-    assert parsed_metadata["length_minutes"] == "no info"
     assert parsed_metadata["num_of_beats"] == 162
     assert parsed_metadata["num_of_samas"] == 21
+
+    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="full_dataset")
+    meta = dataset._metadata  # get dataset metadata
+    parsed_metadata = meta["10001"]  # get track metadata
+
+    assert parsed_metadata["mbid"] == "6fb02d72-120f-415a-bf46-cd455a61165c"
+    assert parsed_metadata["raaga"] == "salaga bhairavi"
+    assert parsed_metadata["taala"] == "adi"
+    assert parsed_metadata["name"] == "05_Thunga_Theera_Virajam"
+    assert parsed_metadata["artist"] == "Abhishek Raghuram"
+    assert parsed_metadata["lead_instrument_code"] == "V"
+    assert parsed_metadata["num_of_beats"] == 193
+    assert parsed_metadata["num_of_samas"] == 25
 
 
 def test_load_audio():
