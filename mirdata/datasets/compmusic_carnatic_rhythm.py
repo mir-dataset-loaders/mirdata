@@ -58,6 +58,7 @@ from smart_open import open
 
 try:
     from openpyxl import load_workbook
+    from openpyxl.utils.exceptions import InvalidFileException
 except ImportError:
     logging.error(
         "In order to use CompMusic Carnatic Music Rhythm you must have openpyxl installed. "
@@ -399,7 +400,7 @@ class Dataset(core.Dataset):
                             "num_of_samas": int(reade.cell(row, 11).value),
                         }
 
-        except:
-            raise FileNotFoundError("metadata not found. Did you run .download()?")
+        except InvalidFileException as exc:
+            raise FileNotFoundError("metadata not found. Did you run .download()?") from exc
 
         return metadata
