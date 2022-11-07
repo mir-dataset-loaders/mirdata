@@ -53,6 +53,7 @@ import librosa
 import numpy as np
 
 from mirdata import annotations, core, io, jams_utils
+from smart_open import open
 
 
 try:
@@ -398,7 +399,7 @@ class Dataset(core.Dataset):
                             "num_of_samas": int(reade.cell(row, 11).value),
                         }
 
-        except FileNotFoundError:
-            raise FileNotFoundError("metadata not found. Did you run .download()?")
+        except:
+            raise IOError("metadata not found. Did you run .download()?")
 
         return metadata
