@@ -57,7 +57,7 @@ from smart_open import open
 
 
 try:
-    from openpyxl import load_workbook
+    from openpyxl import load_workbook as get_xlxs
     from openpyxl.utils.exceptions import InvalidFileException
 except ImportError:
     logging.error(
@@ -338,7 +338,7 @@ class Dataset(core.Dataset):
         metadata = {}
         try:
             with open(metadata_path, "rb") as fhandle:
-                reader = load_workbook(fhandle)
+                reader = get_xlxs(fhandle)
                 if self.version == "full_dataset_1.0":
                     uid = [str(x) for x in reader.loc[:, "UID"].to_list()]
                     for num, idx in enumerate(uid):
@@ -400,7 +400,7 @@ class Dataset(core.Dataset):
                             "num_of_samas": int(reade.cell(row, 11).value),
                         }
 
-        except InvalidFileException as exc:
-            raise FileNotFoundError("metadata not found. Did you run .download()?") from exc
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata
