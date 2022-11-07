@@ -62,7 +62,7 @@ except ImportError:
         "In order to use CompMusic Carnatic Music Rhythm you must have openpyxl installed. "
         "Please reinstall mirdata using `pip install 'mirdata[compmusic_carnatic_rhythm]'"
     )
-    raise ImportError
+    raise
 
 BIBTEX = """
 @article{srinivasamurthy_2014,
