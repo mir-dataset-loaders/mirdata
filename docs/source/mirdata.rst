@@ -108,6 +108,14 @@ filosax
    :inherited-members:
 
 
+four_way_tabla
+^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.four_way_tabla
+   :members:
+   :inherited-members:
+
+
 freesound_one_shot_percussive_sounds
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
