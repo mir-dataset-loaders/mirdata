@@ -372,7 +372,7 @@ class Dataset(core.Dataset):
         super().__init__(
             data_home,
             version,
-            name="compmusic_raga_dataset",
+            name="compmusic_raga",
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,

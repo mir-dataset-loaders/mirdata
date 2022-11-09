@@ -68,10 +68,10 @@ compmusic_otmm_makam
    :inherited-members:
 
 
-compmusic_raga_dataset
+compmusic_raga
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.datasets.compmusic_raga_dataset
+.. automodule:: mirdata.datasets.compmusic_raga
    :members:
    :inherited-members:
 

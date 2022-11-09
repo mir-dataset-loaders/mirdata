@@ -2,37 +2,37 @@ import os
 import numpy as np
 import pytest
 from mirdata import annotations
-from mirdata.datasets import compmusic_raga_dataset
+from mirdata.datasets import compmusic_raga
 from tests.test_utils import run_track_tests
 
 
 def test_track():
     default_trackid = "Aruna_Sairam.Valli_Kanavan"
-    data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
-    dataset = compmusic_raga_dataset.Dataset(data_home)
+    data_home = "tests/resources/mir_datasets/compmusic_raga"
+    dataset = compmusic_raga.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "Aruna_Sairam.Valli_Kanavan",
-        "audio_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        "audio_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
         + "audio/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
         + "Valli_Kanavan.mp3",
-        "tonic_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        "tonic_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
         + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
         + "Valli_Kanavan.tonic",
-        "tonic_fine_tuned_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        "tonic_fine_tuned_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
         + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
         + "Valli_Kanavan.tonicFine",
-        "pitch_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        "pitch_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
         + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
         + "Valli_Kanavan.pitch",
-        "pitch_post_processed_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        "pitch_post_processed_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
         + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
         + "Valli_Kanavan.pitchSilIntrpPP",
-        "nyas_segments_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        "nyas_segments_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
         + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
         + "Valli_Kanavan.flatSegNyas",
-        "tani_segments_path": "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        "tani_segments_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
         + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
         + "Valli_Kanavan.taniSegKNN",
     }
@@ -64,8 +64,8 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
-    dataset = compmusic_raga_dataset.Dataset(data_home)
+    data_home = "tests/resources/mir_datasets/compmusic_raga"
+    dataset = compmusic_raga.Dataset(data_home)
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     jam = track.to_jams()
 
@@ -161,21 +161,21 @@ def test_to_jams():
 
 
 def test_load_tonic():
-    data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
-    dataset = compmusic_raga_dataset.Dataset(data_home)
+    data_home = "tests/resources/mir_datasets/compmusic_raga"
+    dataset = compmusic_raga.Dataset(data_home)
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     tonic_path = track.tonic_path
-    parsed_tonic = compmusic_raga_dataset.load_tonic(tonic_path)
+    parsed_tonic = compmusic_raga.load_tonic(tonic_path)
     assert parsed_tonic == 174.614116
-    assert compmusic_raga_dataset.load_tonic(None) is None
+    assert compmusic_raga.load_tonic(None) is None
 
 
 def test_load_pitch():
-    data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
-    dataset = compmusic_raga_dataset.Dataset(data_home)
+    data_home = "tests/resources/mir_datasets/compmusic_raga"
+    dataset = compmusic_raga.Dataset(data_home)
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     pitch_path = track.pitch_path
-    parsed_pitch = compmusic_raga_dataset.load_pitch(pitch_path)
+    parsed_pitch = compmusic_raga.load_pitch(pitch_path)
 
     # Check types
     assert type(parsed_pitch) == annotations.F0Data
@@ -200,24 +200,24 @@ def test_load_pitch():
     )
     assert np.array_equal(parsed_pitch.voicing, np.array([1.0, 0.0, 1.0]))
 
-    assert compmusic_raga_dataset.load_pitch(None) is None
+    assert compmusic_raga.load_pitch(None) is None
 
     empty_pitch_path = (
-        "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/"
+        "tests/resources/mir_datasets/compmusic_raga/RagaDataset/"
         + "Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/"
         + "Valli_Kanavan/Valli_Kanavan_empty.pitch"
     )
-    assert compmusic_raga_dataset.load_pitch(empty_pitch_path) is None
+    assert compmusic_raga.load_pitch(empty_pitch_path) is None
 
 
 def test_load_segments():
-    data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
-    dataset = compmusic_raga_dataset.Dataset(data_home)
+    data_home = "tests/resources/mir_datasets/compmusic_raga"
+    dataset = compmusic_raga.Dataset(data_home)
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     nyas_segments_path = track.nyas_segments_path
     tani_segments_path = track.tani_segments_path
-    parsed_nyas = compmusic_raga_dataset.load_nyas_segments(nyas_segments_path)
-    parsed_tani = compmusic_raga_dataset.load_tani_segments(tani_segments_path)
+    parsed_nyas = compmusic_raga.load_nyas_segments(nyas_segments_path)
+    parsed_tani = compmusic_raga.load_tani_segments(tani_segments_path)
 
     # Check types
     assert type(parsed_nyas) is annotations.EventData
@@ -251,40 +251,40 @@ def test_load_segments():
     )
     assert parsed_tani.events == ["tani", "tani", "tani"]
 
-    assert compmusic_raga_dataset.load_nyas_segments(None) is None
-    assert compmusic_raga_dataset.load_tani_segments(None) is None
+    assert compmusic_raga.load_nyas_segments(None) is None
+    assert compmusic_raga.load_tani_segments(None) is None
 
     empty_nyas_path = (
-        "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
         + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/"
         + "Valli_Kanavan/Valli_Kanavan_empty.flatSegNyas"
     )
     empty_tani_path = (
-        "tests/resources/mir_datasets/compmusic_raga_dataset/RagaDataset/Carnatic/"
+        "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
         + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/"
         + "Valli_Kanavan/Valli_Kanavan_empty.taniSegKNN"
     )
-    assert compmusic_raga_dataset.load_nyas_segments(empty_nyas_path) is None
-    assert compmusic_raga_dataset.load_tani_segments(empty_tani_path) is None
+    assert compmusic_raga.load_nyas_segments(empty_nyas_path) is None
+    assert compmusic_raga.load_tani_segments(empty_tani_path) is None
 
 
 def test_load_audio():
-    data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
-    dataset = compmusic_raga_dataset.Dataset(data_home)
+    data_home = "tests/resources/mir_datasets/compmusic_raga"
+    dataset = compmusic_raga.Dataset(data_home)
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     audio_path = track.audio_path
-    audio, sr = compmusic_raga_dataset.load_audio(audio_path)
+    audio, sr = compmusic_raga.load_audio(audio_path)
 
     assert sr == 44100
     assert type(audio) == np.ndarray
     assert audio.shape[0] == 2
 
-    assert compmusic_raga_dataset.load_audio(None) is None
+    assert compmusic_raga.load_audio(None) is None
 
 
 def test_dataset_metadata():
-    data_home = "tests/resources/mir_datasets/compmusic_raga_dataset"
-    dataset = compmusic_raga_dataset.Dataset(data_home)
+    data_home = "tests/resources/mir_datasets/compmusic_raga"
+    dataset = compmusic_raga.Dataset(data_home)
     carnatic_mapping_path = os.path.join(
         data_home,
         "RagaDataset",

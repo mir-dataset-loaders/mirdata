@@ -82,8 +82,7 @@
 
    * - .. line-block::
 
-        (CompMusic)
-        Raga Dataset
+        (CompMusic) Raga
 
      - - audio: 🔑
        - annotations: ✅
