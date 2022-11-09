@@ -69,6 +69,7 @@ import csv
 from email.mime import audio
 import json
 import os
+from sysconfig import get_path
 from typing import BinaryIO, List, Optional, TextIO, Tuple
 
 import librosa
@@ -203,8 +204,7 @@ class Track(core.Track):
         ## aqui van el self.get_path de las anotaciones?
         self.track_id = track_id
         self.audio_path = self.get_path("audio")
-
-
+        
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """solo guitar audio (mono)
@@ -224,8 +224,7 @@ class Track(core.Track):
 
         """
         return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata=self._track_metadata,
+            audio_path=self.audio_path
         )
 
 @io.coerce_to_bytes_io  
@@ -272,15 +271,18 @@ class Dataset(core.Dataset):
                 next(csv_reader)
                 for row in csv_reader:
                     key = os.path.splitext(os.path.split(row[0])[1])[0]
+                    '''key = Track.track_id.split("_")[0]'''
                     metadata_index[key] = {
-                        "Effect": int(row[1]),
-                        "Model": row[2],
-                        "Effect Type": row[3],
-                        "Knob Names": row[4],
-                        "Knob Type": row[5],
-                        "Setting": row[6],
+                        "Effect": row[0],
+                        "Model": row[1],
+                        "Effect Type": row[2],
+                        "Knob Names": row[3],
+                        "Knob Type": row[4],
+                        "Setting": row[5],
                     }
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
+
+        

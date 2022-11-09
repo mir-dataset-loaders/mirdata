@@ -19,10 +19,12 @@ def make_egfxset_index(egfxset_data_path: str, version: str) -> None:
 
     # top-key level tracks
     index_tracks = {
-            "{}_{}".format(fx,track_id[:-4]): (
+            "{}_{}".format(fx,track_id[:-4]):{     
+                "audio":(
                 f"{fx}/{track_id}",
-                md5(os.path.join(egfxset_data_path, f"{fx}",f"{track_id}")),
+                md5(os.path.join(egfxset_data_path, f"{fx}",f"{track_id}"))
                 )
+            }
         for fx, track_ids in fx_track_ids.items() for track_id in track_ids
     }
 

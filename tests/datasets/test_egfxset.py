@@ -2,43 +2,42 @@ import numpy as np
 import pytest
 
 from mirdata import annotations
-from mirdata.datasets import example
+from mirdata.datasets import egfxset
 from tests.test_utils import run_track_tests
 
+ids = egfxset.Dataset.track_ids
+print(ids)
 
 def test_track():
-    default_trackid = "some_id"
-    data_home = "tests/resources/mir_datasets/dataset"
-    dataset = example.Dataset(data_home, version="test")
+    default_trackid = "TapeEcho_Bridge/2-0"
+    data_home = "tests/resources/mir_datasets/egfxset"
+    dataset = egfxset.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "track_id": "some_id",
-        "audio_path": "tests/resources/mir_datasets/example/" + "Wavfile/some_id.wav",
-        "song_id": "some_id",
-        "annotation_path": "tests/resources/mir_datasets/example/annotation/some_id.pv",
+        "track_id": "TapeEcho_Bridge/2-0",
+        "audio_path": "tests/resources/mir_datasets/egfxset/" + "TapeEcho/Bridge/2-0.wav",
     }
 
-    expected_property_types = {"annotation": annotations.XData}
+    expected_property_types = {"audio": tuple}
 
     assert track._track_paths == {
-        "audio": ["Wavfile/some_id.wav", "278ae003cb0d323e99b9a643c0f2eeda"],
-        "annotation": ["Annotation/some_id.pv", "0d93a011a9e668fd80673049089bbb14"],
+        "audio": [ "TapeEcho/Bridge/2-0.wav", "bf9041e98fbc3c1145583d1601ab2d7b"],
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
     # test audio loading functions
     audio, sr = track.audio
-    assert sr == 44100
-    assert audio.shape == (44100 * 2,)
+    assert sr == 48000
+    assert audio.shape == (48000 * 5,)
 
-
+'''
 def test_to_jams():
 
-    default_trackid = "some_id"
-    data_home = "tests/resources/mir_datasets/dataset"
-    dataset = example.Dataset(data_home, version="test")
+    default_trackid = "TapeEcho_Bridge/2-0"
+    data_home = "tests/resources/mir_datasets/egfxset"
+    dataset = egfxset.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -48,13 +47,12 @@ def test_to_jams():
         0.20500000000000002,
         0.736,
     ]
-    # ... etc
 
 
 def test_load_annotation():
     # load a file which exists
     annotation_path = "tests/resources/mir_datasets/dataset/Annotation/some_id.pv"
-    annotation_data = example.load_annotation(annotation_path)
+    annotation_data = egfxset.load_annotation(annotation_path)
 
     # check types
     assert type(annotation_data) == annotations.XData
@@ -67,7 +65,12 @@ def test_load_annotation():
 
 
 def test_metadata():
-    data_home = "tests/resources/mir_datasets/dataset"
-    dataset = example.Dataset(data_home, version="test")
-    metadata = dataset._metadata
-    assert metadata["some_id"] == "something"
+    data_home = "tests/resources/mir_datasets/egfxset"
+    dataset = egfxset.Dataset(data_home, version="test")
+    default_clipid = "TapeEcho_Bridge/2-0"
+    track = dataset.track(default_clipid)
+    
+    assert track.Effect == "tape echo"
+    assert track.Model == "Line 6 DL4 Delay"
+
+    '''
