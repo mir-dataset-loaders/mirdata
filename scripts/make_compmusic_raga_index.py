@@ -9,7 +9,7 @@ from mirdata.validate import md5
 RAGA_DATASET_INDEX_PATH = "../mirdata/datasets/indexes/compmusic_raga_index.json"
 
 
-def make_otmm_makam_index(dataset_data_path):
+def make_compmusic_raga_index(dataset_data_path):
 
     raga_index = {"version": "1.0", "tracks": {}, "metadata": []}
     dataset_folder = "RagaDataset"
@@ -158,7 +158,7 @@ def make_otmm_makam_index(dataset_data_path):
 
 def main(args):
     print("creating index...")
-    make_otmm_makam_index(args.dataset_data_path)
+    make_compmusic_raga_index(args.dataset_data_path)
     print("done!")
 
 
