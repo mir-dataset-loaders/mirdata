@@ -124,14 +124,14 @@ class Track(core.Track):
         )
 
         self.audio_path = self.get_path("audio")
-
+        
     @property
-    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
+    def audio(self):
         """The track's audio
 
         Returns:
-            * np.ndarray - audio signal
-            * float - sample rate
+           * np.ndarray - audio signal
+           * float - sample rate
 
         """
         return load_audio(self.audio_path)
@@ -170,7 +170,9 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
             metadata={
-                "tonic": self.tonic},
+                "tonic": self.tonic,
+                "artist": self.artist
+            },
         )
 
 
@@ -209,17 +211,15 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        meta_paths = [
-            os.path.join(self.data_home, "CM", "annotations", "CM1.json"),
-            os.path.join(self.data_home, "CM", "annotations", "CM2.json"),
-            os.path.join(self.data_home, "CM", "annotations", "CM3.json"),
-            os.path.join(self.data_home, "IISc", "annotations", "IISc.json"),
-            os.path.join(self.data_home, "IITM", "annotations", "IITM1.json"),
-            os.path.join(self.data_home, "IITM", "annotations", "IITM2.json")
-        ]
+        centers = ["CM", "IISc", "IITM"]
+        meta_files = []
+        for center in centers:
+            meta_files = meta_files + \
+                glob.glob(os.path.join(self.data_home, "indian_art_music_tonic_1.0", center, "annotations", "*.json"))
+        meta_files = [x for x in meta_files if "IITM2" not in x]
 
         metadata = {}
-        for meta in meta_paths:
+        for meta in meta_files:
             try:
                 with open(meta, "r") as fhandle:
                     data = json.load(fhandle)
