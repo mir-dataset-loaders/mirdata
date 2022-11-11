@@ -6,30 +6,30 @@ from tests.test_utils import run_track_tests
 
 def test_track():
 
-    default_trackid = "59_Bairagi"
+    default_trackid = "50_Irani_Bhairavi_Thumri"
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "track_id": "59_Bairagi",
-        "title": "Bairagi",
+        "track_id": "50_Irani_Bhairavi_Thumri",
+        "title": "Irani Bhairavi Thumri",
         "audio_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.mp3.mp3",
+        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3",
         "ctonic_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.ctonic.txt",
+        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt",
         "pitch_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.pitch.txt",
+        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt",
         "tempo_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.tempo-manual.txt",
+        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt",
         "sama_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.sama-manual.txt",
+        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt",
         "sections_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.sections-manual-p.txt",
+        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt",
         "phrases_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.mphrases-manual.txt",
+        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt",
         "metadata_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "Geetinandan : Part-3 by Ajoy Chakrabarty/Bairagi/Bairagi.json",
+        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json",
     }
 
     expected_property_types = {
@@ -54,7 +54,7 @@ def test_track():
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
-    track = dataset.track("59_Bairagi")
+    track = dataset.track("50_Irani_Bhairavi_Thumri")
     jam = track.to_jams()
 
     assert jam["sandbox"].tonic == 138.591315
@@ -107,7 +107,7 @@ def test_to_jams():
 def test_load_tonic():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
-    track = dataset.track("59_Bairagi")
+    track = dataset.track("50_Irani_Bhairavi_Thumri")
     tonic_path = track.ctonic_path
     parsed_tonic = saraga_hindustani.load_tonic(tonic_path)
     assert parsed_tonic == 138.591315
@@ -117,7 +117,7 @@ def test_load_tonic():
 def test_load_pitch():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
-    track = dataset.track("59_Bairagi")
+    track = dataset.track("50_Irani_Bhairavi_Thumri")
     pitch_path = track.pitch_path
     parsed_pitch = saraga_hindustani.load_pitch(pitch_path)
 
@@ -164,7 +164,7 @@ def test_load_pitch():
 def test_load_sama():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
-    track = dataset.track("59_Bairagi")
+    track = dataset.track("50_Irani_Bhairavi_Thumri")
     sama_path = track.sama_path
     parsed_sama = saraga_hindustani.load_sama(sama_path)
 
@@ -181,7 +181,7 @@ def test_load_sama():
     assert saraga_hindustani.load_sama(None) is None
 
     # Test empty sama
-    track = dataset.track("71_Bilaskhani_Todi")
+    track = dataset.track("51_Raag_Bairagi")
     sama_path = track.sama_path
     parsed_empty_sama = saraga_hindustani.load_sama(sama_path)
     assert parsed_empty_sama is None
@@ -190,7 +190,7 @@ def test_load_sama():
 def test_load_sections():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
-    track = dataset.track("59_Bairagi")
+    track = dataset.track("50_Irani_Bhairavi_Thumri")
     sections_path = track.sections_path
     parsed_sections = saraga_hindustani.load_sections(sections_path)
 
@@ -216,7 +216,7 @@ def test_load_sections():
     assert saraga_hindustani.load_sections(None) is None
 
     # Test empty sections
-    track = dataset.track("71_Bilaskhani_Todi")
+    track = dataset.track("51_Raag_Bairagi")
     sections_path = track.sections_path
     parsed_empty_sections = saraga_hindustani.load_sections(sections_path)
     assert parsed_empty_sections is None
@@ -225,7 +225,7 @@ def test_load_sections():
 def test_load_phrases():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
-    track = dataset.track("59_Bairagi")
+    track = dataset.track("50_Irani_Bhairavi_Thumri")
     phrases_path = track.phrases_path
     parsed_phrases = saraga_hindustani.load_phrases(phrases_path)
 
@@ -249,7 +249,7 @@ def test_load_phrases():
     assert saraga_hindustani.load_phrases(None) is None
 
     # Test phrases with no information
-    track = dataset.track("71_Bilaskhani_Todi")
+    track = dataset.track("51_Raag_Bairagi")
     phrases_path = track.phrases_path
     parsed_phrases_add = saraga_hindustani.load_phrases(phrases_path)
     assert parsed_phrases_add.events == ["rg", ""]
@@ -258,7 +258,7 @@ def test_load_phrases():
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
-    track = dataset.track("59_Bairagi")
+    track = dataset.track("50_Irani_Bhairavi_Thumri")
     tempo_path = track.tempo_path
     parsed_tempo = saraga_hindustani.load_tempo(tempo_path)
 
@@ -300,7 +300,7 @@ def test_load_tempo():
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
-    track = dataset.track("59_Bairagi")
+    track = dataset.track("50_Irani_Bhairavi_Thumri")
     metadata_path = track.metadata_path
     parsed_metadata = saraga_hindustani.load_metadata(metadata_path)
 
@@ -399,7 +399,7 @@ def test_load_metadata():
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home)
-    track = dataset.track("59_Bairagi")
+    track = dataset.track("50_Irani_Bhairavi_Thumri")
     audio_path = track.audio_path
     audio, sr = saraga_hindustani.load_audio(audio_path)
 
