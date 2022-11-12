@@ -266,7 +266,7 @@ class Dataset(core.Dataset):
         metadata_path = os.path.join(self.data_home, "metadata", "egfxset_metadata.csv")
     #dict_vazio
         metadata_index = {}
-        tracknames = list(self.indexes['tracks'].keys())
+        tracknames = list(self._index['tracks'].keys())
         try:
             with open(metadata_path, "r") as fhandle:
                 csv_reader = csv.reader(fhandle, delimiter=",")
