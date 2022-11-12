@@ -274,7 +274,7 @@ class Dataset(core.Dataset):
                 for row in csv_reader:
                     key = os.path.splitext(os.path.split(row[0])[1])[0]
                     for track in tracknames:
-                        if track.split('_')[0] == key:
+                        if (track[:3].upper() == 'RAT' and key == 'distortion'):
                             metadata_index[track] = {
                         "Effect": row[0],
                         "Model": row[1],
@@ -282,6 +282,24 @@ class Dataset(core.Dataset):
                         "Knob Names": row[3],
                         "Knob Type": row[4],
                         "Setting": row[5]}
+                            
+                        if track[:2].upper() == key[:2].upper():
+                            metadata_index[track] = {
+                        "Effect": row[0],
+                        "Model": row[1],
+                        "Effect Type": row[2],
+                        "Knob Names": row[3],
+                        "Knob Type": row[4],
+                        "Setting": row[5]}
+                        
+                        else:
+                            metadata_index[track] = {
+                        "Effect": 'clean',
+                        "Model": 'None',
+                        "Effect Type": 'None',
+                        "Knob Names": 'None',
+                        "Knob Type": 'None',
+                        "Setting": 'None'}
                     
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
