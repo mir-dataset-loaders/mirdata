@@ -262,6 +262,32 @@ class Dataset(core.Dataset):
         )
 
     @core.cached_property
+    def self_metadata(self):
+        metadata_path = os.path.join(self.data_home, "metadata", "egfxset_metadata.csv")
+    #dict_vazio
+        metadata_index = {}
+        tracknames = list(self.indexes['tracks'].keys())
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.reader(fhandle, delimiter=",")
+                next(csv_reader)
+                for row in csv_reader:
+                    key = os.path.splitext(os.path.split(row[0])[1])[0]
+                    for track in tracknames:
+                        if track.split('_')[0] == key:
+                            metadata_index[track] = {
+                        "Effect": row[0],
+                        "Model": row[1],
+                        "Effect Type": row[2],
+                        "Knob Names": row[3],
+                        "Knob Type": row[4],
+                        "Setting": row[5]}
+                    
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+
+        return metadata_index
+    '''
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "metadata", "egfxset_metadata.csv")
         metadata_index = {}
@@ -271,7 +297,7 @@ class Dataset(core.Dataset):
                 next(csv_reader)
                 for row in csv_reader:
                     key = os.path.splitext(os.path.split(row[0])[1])[0]
-                    '''key = Track.track_id.split("_")[0]'''
+                    key = Track.track_id.split("_")[0]
                     metadata_index[key] = {
                         "Effect": row[0],
                         "Model": row[1],
@@ -284,5 +310,5 @@ class Dataset(core.Dataset):
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
-
+'''
         
