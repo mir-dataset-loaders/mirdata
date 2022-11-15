@@ -66,18 +66,15 @@
 
 """
 import csv
-from email.mime import audio
-import json
 import os
-from sysconfig import get_path
-from typing import BinaryIO, List, Optional, TextIO, Tuple
+import json
+from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, jams_utils, io
-
+from mirdata import core, download_utils, jams_utils, io
 
 BIBTEX = """
 @article{pedrozaegfxset,
@@ -201,13 +198,38 @@ class Track(core.Track):
             index,
             metadata,
         )
-        ## aqui van el self.get_path de las anotaciones?
-        self.track_id = track_id
+
         self.audio_path = self.get_path("audio")
-        
+        self.track_id = track_id
+
+    @property
+    def effect(self):
+        return self._track_metadata.get("Effect")
+
+    @property
+    def model(self):
+        return self._track_metadata.get("Model")
+
+    @property
+    def effect_type(self):
+        return self._track_metadata.get("Effect Type")
+
+    @property
+    def knob_names(self):
+        return self._track_metadata.get("Knob Names")        
+
+    @property
+    def knob_type(self):
+        return self._track_metadata.get("Knob Type")  
+
+    @property
+    def setting(self):
+        return self._track_metadata.get("Setting")      
+    
+
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """solo guitar audio (mono)
+        """Solo guitar audio (mono)
 
         Returns:
             * np.ndarray - audio signal
@@ -224,7 +246,7 @@ class Track(core.Track):
 
         """
         return jams_utils.jams_converter(
-            audio_path=self.audio_path
+            audio_path=self.audio_path, metadata=self._track_metadata
         )
 
 @io.coerce_to_bytes_io  
@@ -242,7 +264,6 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     return librosa.load(fhandle, sr=None, mono=True)
 
 
-
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
@@ -258,75 +279,58 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             indexes=INDEXES,
             remotes=REMOTES,
-            license_info=LICENSE_INFO,
-        )
-
+            license_info=LICENSE_INFO
+        )    
+    
     @core.cached_property
-    def self_metadata(self):
-        metadata_path = os.path.join(self.data_home, "metadata", "egfxset_metadata.csv")
-    #dict_vazio
+    def _metadata(self):
+        metadata_path = os.path.join(self.data_home, "egfxset_metadata.csv")
         metadata_index = {}
-        tracknames = list(self._index['tracks'].keys())
+        tracknames = self.track_ids 
         try:
-            with open(metadata_path, "r") as fhandle:
+             with open(metadata_path, "r") as fhandle:
                 csv_reader = csv.reader(fhandle, delimiter=",")
                 next(csv_reader)
                 for row in csv_reader:
                     key = os.path.splitext(os.path.split(row[0])[1])[0]
                     for track in tracknames:
-                        if (track[:3].upper() == 'RAT' and key == 'distortion'):
+
+                        if track[:3].upper() == 'RAT' and key == 'distortion':
                             metadata_index[track] = {
-                        "Effect": row[0],
-                        "Model": row[1],
-                        "Effect Type": row[2],
-                        "Knob Names": row[3],
-                        "Knob Type": row[4],
-                        "Setting": row[5]}
+                                 "Effect": row[0],
+                                 "Model": row[1],
+                                 "Effect Type": row[2],
+                                 "Knob Names": row[3],
+                                 "Knob Type": row[4],
+                                 "Setting": row[5]}
                             
                         if track[:2].upper() == key[:2].upper():
                             metadata_index[track] = {
-                        "Effect": row[0],
-                        "Model": row[1],
-                        "Effect Type": row[2],
-                        "Knob Names": row[3],
-                        "Knob Type": row[4],
-                        "Setting": row[5]}
-                        
-                        else:
+                                 "Effect": row[0],
+                                 "Model": row[1],
+                                 "Effect Type": row[2],
+                                 "Knob Names": row[3],
+                                 "Knob Type": row[4],
+                                 "Setting": row[5]}
+
+                        if track[:2].upper() == 'CL':
                             metadata_index[track] = {
-                        "Effect": 'clean',
-                        "Model": 'None',
-                        "Effect Type": 'None',
-                        "Knob Names": 'None',
-                        "Knob Type": 'None',
-                        "Setting": 'None'}
+                                 "Effect": 'clean',
+                                 "Model": 'None',
+                                 "Effect Type": 'None',
+                                 "Knob Names": 'None',
+                                 "Knob Type": 'None',
+                                 "Setting": 'None'}       
                     
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        return metadata_index
-    '''
-    def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "metadata", "egfxset_metadata.csv")
-        metadata_index = {}
-        try:
-            with open(metadata_path, "r") as fhandle:
-                csv_reader = csv.reader(fhandle, delimiter=",")
-                next(csv_reader)
-                for row in csv_reader:
-                    key = os.path.splitext(os.path.split(row[0])[1])[0]
-                    key = Track.track_id.split("_")[0]
-                    metadata_index[key] = {
-                        "Effect": row[0],
-                        "Model": row[1],
-                        "Effect Type": row[2],
-                        "Knob Names": row[3],
-                        "Knob Type": row[4],
-                        "Setting": row[5],
-                    }
-        except FileNotFoundError:
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        return metadata_index
-'''
         
+        print(metadata_index)
+        return metadata_index
+
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+
+
+'''print(Dataset._metadata(Dataset('/Users/hegel/GITs/EGFX/mirdata/tests/resources/mir_datasets_full/egfxset')))'''
