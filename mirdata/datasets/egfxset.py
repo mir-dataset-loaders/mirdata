@@ -68,6 +68,7 @@
 import csv
 import os
 from typing import BinaryIO, Optional, Tuple
+from ast import literal_eval
 
 import librosa
 import numpy as np
@@ -180,9 +181,9 @@ class Track(core.Track):
         effect (str): the effect recorded
         model (str): the model of the hardware used
         effect_type (str) the type of effect used (distortion, modulation, delay or reverb)
-        knob_names (str): an array with the knob names of the effect used
-        knob_type (str): an the type of knobs of the effect used
-        setting (str): the setting of the effect receorded
+        knob_names (list): an array with the knob names of the effect used or "None" when the recording is a clean effect sound
+        knob_type (list): an array with the type of knobs of the effect used or "None" when the recording is a clean effect sound
+        setting (list): the setting of the effect recorded or "None" when the recording is a clean effect sound
     """
 
     def __init__(
@@ -323,9 +324,9 @@ class Dataset(core.Dataset):
                                  "Effect": row[0],
                                  "Model": row[1],
                                  "Effect Type": row[2],
-                                 "Knob Names": row[3],
-                                 "Knob Type": row[4],
-                                 "Setting": row[5]}
+                                 "Knob Names": literal_eval(row[3]),
+                                 "Knob Type": literal_eval(row[4]),
+                                 "Setting": literal_eval(row[5])}
                             
                         if track[:2].upper() == key[:2].upper():
                             metadata_index[track] = {
@@ -335,9 +336,9 @@ class Dataset(core.Dataset):
                                  "Effect": row[0],
                                  "Model": row[1],
                                  "Effect Type": row[2],
-                                 "Knob Names": row[3],
-                                 "Knob Type": row[4],
-                                 "Setting": row[5]}
+                                 "Knob Names": literal_eval(row[3]),
+                                 "Knob Type": literal_eval(row[4]),
+                                 "Setting": literal_eval(row[5])}
 
                         if track[:2].upper() == 'CL':
                             metadata_index[track] = {
