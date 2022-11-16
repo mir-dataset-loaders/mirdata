@@ -67,7 +67,6 @@
 """
 import csv
 import os
-import json
 from typing import BinaryIO, Optional, Tuple
 
 import librosa
@@ -116,7 +115,6 @@ REMOTES = {
         checksum="f3f7b39c895a400d35c5b1314a1122bd",  
     ),
     "hallReverb": download_utils.RemoteFileMetadata(
-        #mismo checksum?
         filename="Hall-Reverb.zip",
         url="https://zenodo.org/record/7044411/files/Hall-Reverb.zip?download=1",
         checksum="c173bebdcbed50d4bc8803e0b30d6517",  
@@ -176,11 +174,15 @@ class Track(core.Track):
     Attributes:
         audio_path (str): path to the track's audio file
         track_id (str): track id
-        effect ...
-
-    Cached Properties:
-        f0 (F0Data): human-annotated guitar tone pitch
-        notes_a1 (NoteData): human-annotated notes by annotator A1
+        stringfret_tuple (str): the tuple of the note recorded
+        note (str): the notename of the file
+        midinote (int): the midinote value 
+        effect (str): the effect recorded
+        model (str): the model of the hardware used
+        effect_type (str) the type of effect used (distortion, modulation, delay or reverb)
+        knob_names (str): an array with the knob names of the effect used
+        knob_type (str): an the type of knobs of the effect used
+        setting (str): the setting of the effect receorded
     """
 
     def __init__(
@@ -200,8 +202,19 @@ class Track(core.Track):
         )
 
         self.audio_path = self.get_path("audio")
-        self.track_id = track_id
 
+    @property
+    def stringfret_tuple(self):
+        return self._track_metadata.get("String-fret Tuple")
+    
+    @property
+    def note(self):
+        return self._track_metadata.get("Note")
+
+    @property
+    def midinote(self):
+        return self._track_metadata.get("Midinote")
+    
     @property
     def effect(self):
         return self._track_metadata.get("Effect")
@@ -251,7 +264,7 @@ class Track(core.Track):
 
 @io.coerce_to_bytes_io  
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load EGFxSet vocal audio
+    """Load EGFxSet guitar audio
 
     Args:
         fhandle (str or file-like): File-like object or path to audio file
@@ -286,7 +299,10 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "egfxset_metadata.csv")
         metadata_index = {}
-        tracknames = self.track_ids 
+        tracknames = self.track_ids
+        cuerdas = {'1': 64, '2': 59, '3': 55, '4': 50, '5':45, '6':40}
+        #cuerdas = [64, 59, 55, 50, 45, 40]
+
         try:
              with open(metadata_path, "r") as fhandle:
                 csv_reader = csv.reader(fhandle, delimiter=",")
@@ -294,9 +310,16 @@ class Dataset(core.Dataset):
                 for row in csv_reader:
                     key = os.path.splitext(os.path.split(row[0])[1])[0]
                     for track in tracknames:
+                        
+                        noteCord = track.split('/')[1].split('-')
+                        if len(noteCord) != 2:
+                            noteCord = track.split('/')[1].split('.')
 
                         if track[:3].upper() == 'RAT' and key == 'distortion':
                             metadata_index[track] = {
+                                 "String-fret Tuple": track.split('/')[1],
+                                 "Note": librosa.midi_to_note((cuerdas[noteCord[0]] + int(float(noteCord[1])))),
+                                 "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
                                  "Effect": row[0],
                                  "Model": row[1],
                                  "Effect Type": row[2],
@@ -306,6 +329,9 @@ class Dataset(core.Dataset):
                             
                         if track[:2].upper() == key[:2].upper():
                             metadata_index[track] = {
+                                 "String-fret Tuple": track.split('/')[1],
+                                 "Note": librosa.midi_to_note((cuerdas[noteCord[0]] + int(float(noteCord[1])))),
+                                 "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
                                  "Effect": row[0],
                                  "Model": row[1],
                                  "Effect Type": row[2],
@@ -315,6 +341,9 @@ class Dataset(core.Dataset):
 
                         if track[:2].upper() == 'CL':
                             metadata_index[track] = {
+                                 "String-fret Tuple": track.split('/')[1],
+                                 "Note": librosa.midi_to_note((cuerdas[noteCord[0]] + int(float(noteCord[1])))),
+                                 "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
                                  "Effect": 'clean',
                                  "Model": 'None',
                                  "Effect Type": 'None',
@@ -330,7 +359,3 @@ class Dataset(core.Dataset):
 
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
-
-
-
-'''print(Dataset._metadata(Dataset('/Users/hegel/GITs/EGFX/mirdata/tests/resources/mir_datasets_full/egfxset')))'''
