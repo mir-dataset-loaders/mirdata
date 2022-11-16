@@ -1,5 +1,3 @@
-import os
-
 from tests.test_utils import run_track_tests
 
 from mirdata.datasets import compmusic_indian_tonic
@@ -26,8 +24,8 @@ def test_track():
             "gender": str,
             "mbid": str,
             "type": str,
-            "tradition": str
-        }
+            "tradition": str,
+        },
     )
 
     _, sr = track.audio
@@ -43,10 +41,6 @@ def test_to_jams():
 
     assert jam.validate()
 
-    print(jam)
-
     # Test annotations
     assert jam.sandbox.tonic == 131.436
     assert jam.file_metadata.artist == "T. N. Seshagopalan"
-
-

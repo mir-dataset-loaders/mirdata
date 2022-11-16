@@ -1,43 +1,45 @@
-"""Mridangam Stroke Dataset Loader
+"""Indian Art Music Tonic Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The Mridangam Stroke dataset is a collection of individual strokes of
-    the Mridangam in various tonics. The dataset comprises of 10 different
-    strokes played on Mridangams with 6 different tonic values. The audio
-    examples were recorded from a professional Carnatic percussionist in a
-    semi-anechoic studio conditions by Akshay Anantapadmanabhan.
+    This loader includes a combination of six different datasets for the task of Indian Art Music tonic identification.
 
-    Total audio samples: 6977
+    These datasets comprise audio excerpts and manually done annotations of the tonic pitch of the lead artist for each audio excerpt. 
+    Each excerpt is accompanied by its associated editorial metadata. These datasets can be used to develop and evaluate computational 
+    approaches for automatic tonic identification in Indian art music. These datasets have been used in several articles mentioned below. 
+    A majority of These datasets come from the CompMusic corpora of Indian art music, for which each recording is associated with a MBID. 
+    With the MBID other information can be obtained using the Dunya API. We here provide an overview of the tonic identification datasets. 
 
-    Used microphones:
 
-    * SM-58 microphones
-    * H4n ZOOM recorder.
+    The statistics about the datasets for tonic identification is listed in the table below. These six datasets are used in [1] for a 
+    comparative evaluation. To the best of our knowledge these are the largest datasets available for tonic identification for Indian art 
+    music. These datases vary in terms of the audio quality, recording period (decade), the number of recordings for Carnatic, Hindustani, 
+    male and female singers and instrumental and vocal excerpts. 
 
-    Audio specifications:
+    All the datasets (annotations) are version controlled. The audio files corresponding to these datsets are made available on request
+    for only research purposes. See DOWNLOAD_INFO of this loader.
 
-    * Sampling frequency: 44.1 kHz
-    * Bit-depth: 16 bit
-    * Audio format: .wav
+    The tonic annotations are availabe both in tsv and json format. The loader uses the JSON formatted annotations.
 
-    The dataset can be used for training models for each Mridangam stroke. The
-    presentation of the dataset took place on the IEEE International Conference
-    on Acoustics, Speech and Signal Processing (ICASSP 2013) on May 2013.
-    You can read the full publication here: https://repositori.upf.edu/handle/10230/25756
+    JSON: {
+        'artist': <name of the lead artist if available>, 
+        'filepath': <relative path to the audio file>,
+        'gender': <gender of the lead singer if available>,
+        'mbid': <musicbrainz id when available>,
+        'tonic': <tonic in Hz>,
+        'tradition': <Hindustani or Carnatic>,
+        'type': <vocal or instrumental>
+     }
 
-    Mridangam Dataset is annotated by storing the informat of each track in their filenames.
-    The structure of the filename is:
+    where keys of the main dictionary are the filepaths to the audio files (feature path is exactly the same with a different extension
+    of the file name).
 
-    .. code-block:: bash
+    Despite not being loaded in this dataloader, the dataset includes features, which may be integrated to the loader in future releases. However
+    these features may be easily computed following the instructions in the related paper. See BIBTEX.
 
-        <TrackID>__<AuthorName>__<StrokeName>-<Tonic>-<InstanceNum>.wav
-
-    The dataset is made available by CompMusic under a Creative Commons
-    Attribution 3.0 Unported (CC BY 3.0) License.
-
-    For more details, please visit: https://compmusic.upf.edu/mridangam-stroke-dataset
+    If you have any questions or comments about the dataset, please feel free to email: [sankalp (dot) gulati (at) gmail (dot) com], or 
+    [sankalp (dot) gulati (at) upf (dot) edu].
 
 """
 
@@ -47,9 +49,9 @@ import json
 
 import librosa
 import numpy as np
-from typing import BinaryIO, Optional, Tuple
+from typing import Tuple
 
-from mirdata import core, download_utils, io, jams_utils
+from mirdata import core, download_utils, jams_utils
 
 BIBTEX = """@article{Anantapadmanabhan2013,
     author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
@@ -78,9 +80,7 @@ REMOTES = {
     ),
 }
 
-DOWNLOAD_INFO = (
-
-)
+DOWNLOAD_INFO = ()
 
 
 LICENSE_INFO = "Creative Commons Attribution 3.0 Unported (CC BY 3.0) License."
@@ -124,7 +124,7 @@ class Track(core.Track):
         )
 
         self.audio_path = self.get_path("audio")
-        
+
     @property
     def audio(self):
         """The track's audio
@@ -169,15 +169,12 @@ class Track(core.Track):
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            metadata={
-                "tonic": self.tonic,
-                "artist": self.artist
-            },
+            metadata={"tonic": self.tonic, "artist": self.artist},
         )
 
 
-@io.coerce_to_bytes_io
-def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
+def load_audio(audio_path) -> Tuple[np.ndarray, float]:
     """Load a Mridangam Stroke Dataset audio file.
 
     Args:
@@ -187,7 +184,9 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
     """
-    return librosa.load(fhandle, sr=44100, mono=True)
+    if audio_path is None:
+        return None
+    return librosa.load(audio_path, sr=44100, mono=False)
 
 
 @core.docstring_inherit(core.Dataset)
@@ -214,8 +213,15 @@ class Dataset(core.Dataset):
         centers = ["CM", "IISc", "IITM"]
         meta_files = []
         for center in centers:
-            meta_files = meta_files + \
-                glob.glob(os.path.join(self.data_home, "indian_art_music_tonic_1.0", center, "annotations", "*.json"))
+            meta_files = meta_files + glob.glob(
+                os.path.join(
+                    self.data_home,
+                    "indian_art_music_tonic_1.0",
+                    center,
+                    "annotations",
+                    "*.json",
+                )
+            )
         meta_files = [x for x in meta_files if "IITM2" not in x]
 
         metadata = {}
@@ -236,7 +242,9 @@ class Dataset(core.Dataset):
                             }
                     else:
                         for k in list(meta.keys()):
-                            for fil in glob.glob(os.path.join(self.data_home, k, "*.mp3")):
+                            for fil in glob.glob(
+                                os.path.join(self.data_home, k, "*.mp3")
+                            ):
                                 idx = fil.split("/")[-1].replace(".mp3", "")
                                 metadata[idx] = {
                                     "tonic": float(data[k]["tonic"]),

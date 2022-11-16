@@ -6,7 +6,7 @@ import os
 from mirdata.validate import md5
 
 
-COMPMUSIC_TONIC_INDEX_PATH = "/Users/genisplaja/Desktop/mirdata/mirdata/datasets/indexes/compmusic_indian_tonic.json"
+COMPMUSIC_TONIC_INDEX_PATH = "../mirdata/datasets/indexes/compmusic_indian_tonic_1.0.json"
 
 
 def make_compmusic_indian_tonic(dataset_data_path):
