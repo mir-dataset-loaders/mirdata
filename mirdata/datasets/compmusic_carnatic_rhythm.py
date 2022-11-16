@@ -1,4 +1,4 @@
-"""Saraga Dataset Loader
+"""CompMusic Carnatic Rhythm Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
@@ -57,9 +57,7 @@ from smart_open import open
 
 
 try:
-    from openpyxl import Workbook
     from openpyxl import load_workbook as get_xlxs
-    from openpyxl.utils.exceptions import InvalidFileException
 except ImportError:
     logging.error(
         "In order to use CompMusic Carnatic Music Rhythm you must have openpyxl installed. "
@@ -290,6 +288,7 @@ def load_meter(fhandle):
 class Dataset(core.Dataset):
     """
     The compmusic_carnatic_rhythm dataset
+
     """
 
     def __init__(self, data_home=None, version="default"):
