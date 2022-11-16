@@ -51,6 +51,8 @@ import librosa
 import numpy as np
 from typing import Tuple
 
+from smart_open import open
+
 from mirdata import core, download_utils, jams_utils
 
 BIBTEX = """@article{Anantapadmanabhan2013,
@@ -80,7 +82,7 @@ REMOTES = {
     ),
 }
 
-DOWNLOAD_INFO = ()
+DOWNLOAD_INFO = "TODO"
 
 
 LICENSE_INFO = "Creative Commons Attribution 3.0 Unported (CC BY 3.0) License."
