@@ -354,7 +354,7 @@ class Dataset(core.Dataset):
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
         
-        print(metadata_index)
+        #print(metadata_index)
         return metadata_index
 
     def load_audio(self, *args, **kwargs):
