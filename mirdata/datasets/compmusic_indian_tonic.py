@@ -69,7 +69,7 @@ BIBTEX = """@article{Anantapadmanabhan2013,
 INDEXES = {
     "default": "1.0",
     "test": "1.0",
-    "1.0": core.Index(filename="compmusic_indian_tonic.json"),
+    "1.0": core.Index(filename="compmusic_indian_tonic_1.0.json"),
 }
 
 REMOTES = {
