@@ -63,7 +63,6 @@
     Knob settings
 
     For more details, please visit https://zenodo.org/record/7044411
-
 """
 import csv
 import os
@@ -177,7 +176,8 @@ class Track(core.Track):
         track_id (str): track id
         stringfret_tuple (str): the tuple of the note recorded
         note (str): the notename of the file
-        midinote (int): the midinote value 
+        midinote (int): the midinote value
+        pickup_configuration: the pickup used in the recording 
         effect (str): the effect recorded
         model (str): the model of the hardware used
         effect_type (str) the type of effect used (distortion, modulation, delay or reverb)
