@@ -215,6 +215,10 @@ class Track(core.Track):
     @property
     def midinote(self):
         return self._track_metadata.get("Midinote")
+
+    @property
+    def pickup_configuration(self):
+        return self._track_metadata.get("Pickup Configuration")
     
     @property
     def effect(self):
@@ -321,6 +325,7 @@ class Dataset(core.Dataset):
                                  "String-fret Tuple": track.split('/')[1],
                                  "Note": librosa.midi_to_note((cuerdas[noteCord[0]] + int(float(noteCord[1])))),
                                  "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
+                                 "Pickup Configuration": track.split("_")[1].split('/')[0],
                                  "Effect": row[0],
                                  "Model": row[1],
                                  "Effect Type": row[2],
@@ -333,6 +338,7 @@ class Dataset(core.Dataset):
                                  "String-fret Tuple": track.split('/')[1],
                                  "Note": librosa.midi_to_note((cuerdas[noteCord[0]] + int(float(noteCord[1])))),
                                  "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
+                                 "Pickup Configuration": track.split("_")[1].split('/')[0],
                                  "Effect": row[0],
                                  "Model": row[1],
                                  "Effect Type": row[2],
@@ -345,6 +351,7 @@ class Dataset(core.Dataset):
                                  "String-fret Tuple": track.split('/')[1],
                                  "Note": librosa.midi_to_note((cuerdas[noteCord[0]] + int(float(noteCord[1])))),
                                  "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
+                                 "Pickup Configuration": track.split("_")[1].split('/')[0],
                                  "Effect": 'clean',
                                  "Model": 'None',
                                  "Effect Type": 'None',

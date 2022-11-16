@@ -13,6 +13,7 @@ def test_track():
         "stringfret_tuple": "2-0",
         "note": "B3",
         "midinote": 59,
+        "pickup_configuration": "Bridge",
         "effect": "tape echo",
         "model": "Line 6 DL4 Delay",
         "effect_type": "delay",
@@ -44,6 +45,7 @@ def test_track():
         "stringfret_tuple": "6-22",
         "note": "D4",
         "midinote": 62,
+        "pickup_configuration": "Middle",
         "effect": "clean",
         "model": "None",
         "effect_type": "None",
@@ -79,6 +81,7 @@ def test_to_jams():
     assert jam["sandbox"]["String-fret Tuple"] == "2-0"
     assert jam["sandbox"]["Note"] == "B3"
     assert jam["sandbox"]["Midinote"] == 59
+    assert jam["sandbox"]["Pickup Configuration"] == "Bridge"
     assert jam["sandbox"]["Effect"] == "tape echo"
     assert jam["sandbox"]["Model"] == "Line 6 DL4 Delay"
     assert jam["sandbox"]["Effect Type"] == "delay"
@@ -93,6 +96,7 @@ def test_to_jams():
     assert jam["sandbox"]["String-fret Tuple"] == "6-22"
     assert jam["sandbox"]["Note"] == "D4"
     assert jam["sandbox"]["Midinote"] == 62
+    assert jam["sandbox"]["Pickup Configuration"] == "Middle"
     assert jam["sandbox"]["Effect"] == "clean"
     assert jam["sandbox"]["Model"] == "None"
     assert jam["sandbox"]["Effect Type"] == "None"
