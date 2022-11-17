@@ -188,8 +188,6 @@ def load_audio(audio_path):
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
     """
-    if audio_path is None:
-        return None
     return librosa.load(audio_path, sr=44100, mono=False)
 
 
