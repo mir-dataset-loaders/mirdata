@@ -85,7 +85,9 @@ REMOTES = {
 DOWNLOAD_INFO = "TODO"
 
 
-LICENSE_INFO = "Creative Commons Attribution 3.0 Unported (CC BY 3.0) License."
+LICENSE_INFO = (
+    "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+)
 
 
 class Track(core.Track):
@@ -176,8 +178,8 @@ class Track(core.Track):
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
-def load_audio(audio_path) -> Tuple[np.ndarray, float]:
-    """Load a Mridangam Stroke Dataset audio file.
+def load_audio(audio_path):
+    """Load a Indian Art Music Tonic audio file.
 
     Args:
         fhandle (str or file-like): File-like object or path to audio file
