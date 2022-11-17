@@ -1,6 +1,7 @@
 from mirdata.datasets import egfxset
 from tests.test_utils import run_track_tests
 
+
 def test_track():
     data_home = "tests/resources/mir_datasets/egfxset"
     dataset = egfxset.Dataset(data_home, version="test")
@@ -27,7 +28,7 @@ def test_track():
     }
 
     assert track._track_paths == {
-        "audio": ["TapeEcho/Bridge/2-0.wav","bf9041e98fbc3c1145583d1601ab2d7b"]
+        "audio": ["TapeEcho/Bridge/2-0.wav", "bf9041e98fbc3c1145583d1601ab2d7b"]
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -35,7 +36,6 @@ def test_track():
     audio, sr = track.audio
     assert sr == 48000
     assert audio.shape == (48000 * 5,)
-
 
     track = dataset.track("Clean_Middle/6-22")
 
@@ -59,7 +59,7 @@ def test_track():
     }
 
     assert track._track_paths == {
-        "audio": ["Clean/Middle/6-22.wav","93c580d88d65400804f5c8f88f715ec1"]
+        "audio": ["Clean/Middle/6-22.wav", "93c580d88d65400804f5c8f88f715ec1"]
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -74,7 +74,7 @@ def test_to_jams():
     data_home = "tests/resources/mir_datasets/egfxset"
     dataset = egfxset.Dataset(data_home, version="test")
 
-    #Case with a TapeEcho track
+    # Case with a TapeEcho track
     track = dataset.track("TapeEcho_Bridge/2-0")
     jam = track.to_jams()
 
@@ -85,11 +85,14 @@ def test_to_jams():
     assert jam["sandbox"]["Effect"] == "tape echo"
     assert jam["sandbox"]["Model"] == "Line 6 DL4 Delay"
     assert jam["sandbox"]["Effect Type"] == "delay"
-    assert jam["sandbox"]["Knob Names"] == ['effect selector', 'delay time', 'repeats', 'tweak (bass)', 'tweez (treble)', 'mix']
-    assert jam["sandbox"]["Knob Type"] == ['selector', 'rate', 'effect decay', 'eq', 'eq', 'effect amount']
-    assert jam["sandbox"]["Setting"] == ['tape echo', '120 bpm', 0.6, 0.5, 0.5, 0.5]
+    assert jam["sandbox"]["Knob Names"] == ['effect selector',
+                                            'delay time', 'repeats', 'tweak (bass)', 'tweez (treble)', 'mix']
+    assert jam["sandbox"]["Knob Type"] == ['selector',
+                                           'rate', 'effect decay', 'eq', 'eq', 'effect amount']
+    assert jam["sandbox"]["Setting"] == [
+        'tape echo', '120 bpm', 0.6, 0.5, 0.5, 0.5]
 
-    #Case with a Clean track
+    # Case with a Clean track
     track = dataset.track("Clean_Middle/6-22")
     jam = track.to_jams()
 
