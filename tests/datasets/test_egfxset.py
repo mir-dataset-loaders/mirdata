@@ -18,9 +18,16 @@ def test_track():
         "effect": "tape echo",
         "model": "Line 6 DL4 Delay",
         "effect_type": "delay",
-        "knob_names": ['effect selector', 'delay time', 'repeats', 'tweak (bass)', 'tweez (treble)', 'mix'],
-        "knob_type": ['selector', 'rate', 'effect decay', 'eq', 'eq', 'effect amount'],
-        "setting": ['tape echo', '120 bpm', 0.6, 0.5, 0.5, 0.5]
+        "knob_names": [
+            "effect selector",
+            "delay time",
+            "repeats",
+            "tweak (bass)",
+            "tweez (treble)",
+            "mix",
+        ],
+        "knob_type": ["selector", "rate", "effect decay", "eq", "eq", "effect amount"],
+        "setting": ["tape echo", "120 bpm", 0.6, 0.5, 0.5, 0.5],
     }
 
     expected_property_types = {
@@ -51,7 +58,7 @@ def test_track():
         "effect_type": "None",
         "knob_names": "None",
         "knob_type": "None",
-        "setting": "None"
+        "setting": "None",
     }
 
     expected_property_types = {
@@ -85,12 +92,23 @@ def test_to_jams():
     assert jam["sandbox"]["Effect"] == "tape echo"
     assert jam["sandbox"]["Model"] == "Line 6 DL4 Delay"
     assert jam["sandbox"]["Effect Type"] == "delay"
-    assert jam["sandbox"]["Knob Names"] == ['effect selector',
-                                            'delay time', 'repeats', 'tweak (bass)', 'tweez (treble)', 'mix']
-    assert jam["sandbox"]["Knob Type"] == ['selector',
-                                           'rate', 'effect decay', 'eq', 'eq', 'effect amount']
-    assert jam["sandbox"]["Setting"] == [
-        'tape echo', '120 bpm', 0.6, 0.5, 0.5, 0.5]
+    assert jam["sandbox"]["Knob Names"] == [
+        "effect selector",
+        "delay time",
+        "repeats",
+        "tweak (bass)",
+        "tweez (treble)",
+        "mix",
+    ]
+    assert jam["sandbox"]["Knob Type"] == [
+        "selector",
+        "rate",
+        "effect decay",
+        "eq",
+        "eq",
+        "effect amount",
+    ]
+    assert jam["sandbox"]["Setting"] == ["tape echo", "120 bpm", 0.6, 0.5, 0.5, 0.5]
 
     # Case with a Clean track
     track = dataset.track("Clean_Middle/6-22")

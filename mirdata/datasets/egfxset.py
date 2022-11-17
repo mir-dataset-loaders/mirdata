@@ -158,8 +158,7 @@ REMOTES = {
         filename="egfxset_metadata.csv",
         url="https://zenodo.org/record/7044411/files/egfxset_metadata.csv?download=1",
         checksum="ec8d160fe79469c7de8cad528d7d35e1",
-    )
-
+    ),
 }
 
 LICENSE_INFO = "Creative Commons Attribution 4.0 International"
@@ -177,7 +176,7 @@ class Track(core.Track):
         stringfret_tuple (str): the tuple of the note recorded
         note (str): the notename of the file
         midinote (int): the midinote value
-        pickup_configuration: the pickup used in the recording 
+        pickup_configuration: the pickup used in the recording
         effect (str): the effect recorded
         model (str): the model of the hardware used
         effect_type (str) the type of effect used (distortion, modulation, delay or reverb)
@@ -297,7 +296,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             indexes=INDEXES,
             remotes=REMOTES,
-            license_info=LICENSE_INFO
+            license_info=LICENSE_INFO,
         )
 
     @core.cached_property
@@ -305,7 +304,7 @@ class Dataset(core.Dataset):
         metadata_path = os.path.join(self.data_home, "egfxset_metadata.csv")
         metadata_index = {}
         tracknames = self.track_ids
-        cuerdas = {'1': 64, '2': 59, '3': 55, '4': 50, '5': 45, '6': 40}
+        cuerdas = {"1": 64, "2": 59, "3": 55, "4": 50, "5": 45, "6": 40}
 
         try:
             with open(metadata_path, "r") as fhandle:
@@ -315,52 +314,72 @@ class Dataset(core.Dataset):
                     key = os.path.splitext(os.path.split(row[0])[1])[0]
                     for track in tracknames:
 
-                        noteCord = track.split('/')[1].split('-')
+                        noteCord = track.split("/")[1].split("-")
                         if len(noteCord) != 2:
-                            noteCord = track.split('/')[1].split('.')
+                            noteCord = track.split("/")[1].split(".")
 
-                        if track[:3].upper() == 'RAT' and key == 'distortion':
+                        if track[:3].upper() == "RAT" and key == "distortion":
                             metadata_index[track] = {
-                                "String-fret Tuple": track.split('/')[1],
-                                "Note": librosa.midi_to_note((cuerdas[noteCord[0]] + int(float(noteCord[1])))),
-                                "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
-                                "Pickup Configuration": track.split("_")[1].split('/')[0],
+                                "String-fret Tuple": track.split("/")[1],
+                                "Note": librosa.midi_to_note(
+                                    (cuerdas[noteCord[0]] + int(float(noteCord[1])))
+                                ),
+                                "Midinote": (
+                                    cuerdas[noteCord[0]] + int(float(noteCord[1]))
+                                ),
+                                "Pickup Configuration": track.split("_")[1].split("/")[
+                                    0
+                                ],
                                 "Effect": row[0],
                                 "Model": row[1],
                                 "Effect Type": row[2],
                                 "Knob Names": literal_eval(row[3]),
                                 "Knob Type": literal_eval(row[4]),
-                                "Setting": literal_eval(row[5])}
+                                "Setting": literal_eval(row[5]),
+                            }
 
                         if track[:2].upper() == key[:2].upper():
                             metadata_index[track] = {
-                                "String-fret Tuple": track.split('/')[1],
-                                "Note": librosa.midi_to_note((cuerdas[noteCord[0]] + int(float(noteCord[1])))),
-                                "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
-                                "Pickup Configuration": track.split("_")[1].split('/')[0],
+                                "String-fret Tuple": track.split("/")[1],
+                                "Note": librosa.midi_to_note(
+                                    (cuerdas[noteCord[0]] + int(float(noteCord[1])))
+                                ),
+                                "Midinote": (
+                                    cuerdas[noteCord[0]] + int(float(noteCord[1]))
+                                ),
+                                "Pickup Configuration": track.split("_")[1].split("/")[
+                                    0
+                                ],
                                 "Effect": row[0],
                                 "Model": row[1],
                                 "Effect Type": row[2],
                                 "Knob Names": literal_eval(row[3]),
                                 "Knob Type": literal_eval(row[4]),
-                                "Setting": literal_eval(row[5])}
+                                "Setting": literal_eval(row[5]),
+                            }
 
-                        if track[:2].upper() == 'CL':
+                        if track[:2].upper() == "CL":
                             metadata_index[track] = {
-                                "String-fret Tuple": track.split('/')[1],
-                                "Note": librosa.midi_to_note((cuerdas[noteCord[0]] + int(float(noteCord[1])))),
-                                "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
-                                "Pickup Configuration": track.split("_")[1].split('/')[0],
-                                "Effect": 'clean',
-                                "Model": 'None',
-                                "Effect Type": 'None',
-                                "Knob Names": 'None',
-                                "Knob Type": 'None',
-                                "Setting": 'None'}
+                                "String-fret Tuple": track.split("/")[1],
+                                "Note": librosa.midi_to_note(
+                                    (cuerdas[noteCord[0]] + int(float(noteCord[1])))
+                                ),
+                                "Midinote": (
+                                    cuerdas[noteCord[0]] + int(float(noteCord[1]))
+                                ),
+                                "Pickup Configuration": track.split("_")[1].split("/")[
+                                    0
+                                ],
+                                "Effect": "clean",
+                                "Model": "None",
+                                "Effect Type": "None",
+                                "Knob Names": "None",
+                                "Knob Type": "None",
+                                "Setting": "None",
+                            }
 
         except FileNotFoundError:
-            raise FileNotFoundError(
-                "Metadata not found. Did you run .download()?")
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
 
