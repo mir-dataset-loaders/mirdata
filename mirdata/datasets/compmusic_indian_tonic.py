@@ -224,7 +224,7 @@ class Dataset(core.Dataset):
                     "*.json",
                 )
             )
-        meta_files = [x for x in meta_files if "IITM2" not in x]
+        meta_files = [x for x in meta_files if "IITM1" not in x]
 
         metadata = {}
         for meta in meta_files:
@@ -243,19 +243,16 @@ class Dataset(core.Dataset):
                                 "tradition": data[k]["tradition"],
                             }
                     else:
-                        for k in list(meta.keys()):
-                            for fil in glob.glob(
-                                os.path.join(self.data_home, k, "*.mp3")
-                            ):
-                                idx = fil.split("/")[-1].replace(".mp3", "")
-                                metadata[idx] = {
-                                    "tonic": float(data[k]["tonic"]),
-                                    "artist": data[k]["artist"],
-                                    "gender": data[k]["gender"],
-                                    "mbid": data[k]["mbid"],
-                                    "type": data[k]["type"],
-                                    "tradition": data[k]["tradition"],
-                                }
+                        for k in list(data.keys()):
+                            idx = k.split("/")[-1].replace(".mp3", "")
+                            metadata[idx] = {
+                                "tonic": float(data[k]["tonic"]),
+                                "artist": data[k]["artist"],
+                                "gender": data[k]["gender"],
+                                "mbid": data[k]["mbid"],
+                                "type": data[k]["type"],
+                                "tradition": data[k]["tradition"],
+                            }
 
             except FileNotFoundError:
                 raise FileNotFoundError("Metadata not found. Did you run .download()?")

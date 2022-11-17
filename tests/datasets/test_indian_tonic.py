@@ -70,10 +70,18 @@ def test_load_metadata():
     track.tradition == "Carnatic"
 
     default_trackid_iitm = "01-Varnam"
-    track = dataset.track(default_trackid_iitm)
-    track.tonic == 148.32
-    track.artist == "NA"
-    track.gender == "Male"
-    track.mbid == -1
-    track.type == "NA"
-    track.tradition == "NA"
+    track_iitm = dataset.track(default_trackid_iitm)
+    track_iitm.tonic == 148.32
+    track_iitm.artist == "NA"
+    track_iitm.gender == "Male"
+    track_iitm.mbid == -1
+    track_iitm.type == "NA"
+    track_iitm.tradition == "NA"
+
+    meta = dataset._metadata
+    assert meta[default_trackid_iitm]["tonic"] == track_iitm.tonic
+    assert meta[default_trackid_iitm]["artist"] == track_iitm.artist
+    assert meta[default_trackid_iitm]["gender"] == track_iitm.gender
+    assert meta[default_trackid_iitm]["mbid"] == track_iitm.mbid
+    assert meta[default_trackid_iitm]["type"] == track_iitm.type
+    assert meta[default_trackid_iitm]["tradition"] == track_iitm.tradition
