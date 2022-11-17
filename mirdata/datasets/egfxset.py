@@ -292,7 +292,7 @@ class Dataset(core.Dataset):
         super().__init__(
             data_home,
             version,
-            name="EGFxSet",
+            name="egfxset",
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,
