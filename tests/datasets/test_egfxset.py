@@ -11,7 +11,7 @@ def test_track():
     expected_attributes = {
         "track_id": "TapeEcho_Bridge/2-0",
         "audio_path": "tests/resources/mir_datasets/egfxset/TapeEcho/Bridge/2-0.wav",
-        "stringfret_tuple": "2-0",
+        "stringfret_tuple": [2, 0],
         "note": "B3",
         "midinote": 59,
         "pickup_configuration": "Bridge",
@@ -49,7 +49,7 @@ def test_track():
     expected_attributes = {
         "track_id": "Clean_Middle/6-22",
         "audio_path": "tests/resources/mir_datasets/egfxset/Clean/Middle/6-22.wav",
-        "stringfret_tuple": "6-22",
+        "stringfret_tuple": [6, 22],
         "note": "D4",
         "midinote": 62,
         "pickup_configuration": "Middle",
@@ -85,7 +85,7 @@ def test_to_jams():
     track = dataset.track("TapeEcho_Bridge/2-0")
     jam = track.to_jams()
 
-    assert jam["sandbox"]["String-fret Tuple"] == "2-0"
+    assert jam["sandbox"]["String-fret Tuple"] == [2, 0]
     assert jam["sandbox"]["Note"] == "B3"
     assert jam["sandbox"]["Midinote"] == 59
     assert jam["sandbox"]["Pickup Configuration"] == "Bridge"
@@ -114,7 +114,7 @@ def test_to_jams():
     track = dataset.track("Clean_Middle/6-22")
     jam = track.to_jams()
 
-    assert jam["sandbox"]["String-fret Tuple"] == "6-22"
+    assert jam["sandbox"]["String-fret Tuple"] == [6, 22]
     assert jam["sandbox"]["Note"] == "D4"
     assert jam["sandbox"]["Midinote"] == 62
     assert jam["sandbox"]["Pickup Configuration"] == "Middle"

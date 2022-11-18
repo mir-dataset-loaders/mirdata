@@ -6,11 +6,7 @@
     EGFxSet (Electric Guitar Effects dataset) features recordings for all clean tones in a 22-fret Stratocaster,
     recorded with 5 different pickup configurations, also processed through 12 popular guitar effects.
     Our dataset was recorded in real hardware, making it relevant for music information retrieval tasks on real music.
-    We also include annotations for parameter settings of the effects we used.
-
-    This dataset was conceived during Iran Roman's "Deep Learning for Music Information Retrieval" course
-    imparted in the postgraduate studies in music technology at the UNAM (Universidad Nacional Autónoma de México). 
-    The result is a combined effort between two UNAM postgraduate students (Hegel Pedroza and Gerardo Meza) and Iran Roman(NYU).    
+    We also include annotations for parameter settings of the effects we used.    
 
     EGFxSet is a dataset of 8,970 audio files with a 5-second duration each,
     summing a total time of - 12 hours and 28 minutes -.
@@ -18,7 +14,7 @@
     All possible 138 notes of a standard tuning 22 frets guitar were recorded in each one of the 5 pickup configurations,
     giving a total of 690 clean tone audio files ( 58 min ).
 
-    The 690 audio files were processed through 12 different audio effects employing actual guitar gear (no emulations),
+    The 690 clean audio files were processed through 12 different audio effects employing actual guitar gear (no VST emulations were used),
     summing a total of 8,280 proceed audio files ( 11 hours 30 min ).
 
     The effects employed were divided into four categories, and each category comprised three different effects.
@@ -34,7 +30,7 @@
         Modulation:
             Boss CE-3: Chorus
             MXR Phase 45: Phaser
-            Mooer E-Lady: Flangergh pr checkout 556
+            Mooer E-Lady: Flanger
 
         Delays:
             Line6 DL-4:
@@ -57,17 +53,25 @@
     Guitar pickup configuration
     Effect name
     Effect type
-    Hardware model
+    Hardware modes
     Knob names
     Knob types
     Knob settings
 
-    For more details, please visit https://zenodo.org/record/7044411
+    The dataset website is: https://egfxset.github.io/
+    The data can be accessed here: https://zenodo.org/record/7044411#.YxKdSWzMKEI
+    An ISMIR extended abstract was presented in 2022: https://ismir2022.ismir.net/program/lbd/
+
+    This dataset was conceived during Iran Roman's "Deep Learning for Music Information Retrieval" course
+    imparted in the postgraduate studies in music technology at the UNAM (Universidad Nacional Autónoma de México). 
+    The result is a combined effort between two UNAM postgraduate students (Hegel Pedroza and Gerardo Meza) and Iran Roman(NYU).
 """
+
 import csv
 import os
 from typing import BinaryIO, Optional, Tuple
 from ast import literal_eval
+import re
 
 import librosa
 import numpy as np
@@ -76,9 +80,12 @@ from smart_open import open
 from mirdata import core, download_utils, jams_utils, io
 
 BIBTEX = """
-@article{pedrozaegfxset,
-  title={EGFxSet: Electric guitar tones processed through real effects of distortion, modulation, delay and reverb},
-  author={Pedroza, Hegel and Meza, Gerardo and Roman, Iran}
+@techreport{pedroza2022egfxset,
+      title={EGFxSet: Electric guitar tones processed through real effects of distortion, modulation, delay and reverb}, 
+      author={Pedroza, Hegel and Meza, Gerardo and Roman, Iran},
+      year={2022},
+      institution={UNAM},
+      booktitle={Extended Abstracts for the Late-Breaking Demo Session of the 23rd Int. Society for Music Information Retrieval Conf., Bengaluru, India, 2022.},
 }
 """
 
@@ -172,11 +179,10 @@ class Track(core.Track):
 
     Attributes:
         audio_path (str): path to the track's audio file
-        track_id (str): track id
-        stringfret_tuple (str): the tuple of the note recorded
-        note (str): the notename of the file
+        stringfret_tuple (list): an array with the tuple of the note recorded
+        note (str): the notename of the file (i.e. D1,Eb4, etc.)
         midinote (int): the midinote value
-        pickup_configuration: the pickup used in the recording
+        pickup_configuration (string): the pickup used in the recording
         effect (str): the effect recorded
         model (str): the model of the hardware used
         effect_type (str) the type of effect used (distortion, modulation, delay or reverb)
@@ -320,7 +326,10 @@ class Dataset(core.Dataset):
 
                         if track[:3].upper() == "RAT" and key == "distortion":
                             metadata_index[track] = {
-                                "String-fret Tuple": track.split("/")[1],
+                                "String-fret Tuple": [
+                                    int(s)
+                                    for s in re.findall(r"\b\d+\b", track.split("/")[1])
+                                ],
                                 "Note": librosa.midi_to_note(
                                     (cuerdas[noteCord[0]] + int(float(noteCord[1])))
                                 ),
@@ -340,7 +349,10 @@ class Dataset(core.Dataset):
 
                         if track[:2].upper() == key[:2].upper():
                             metadata_index[track] = {
-                                "String-fret Tuple": track.split("/")[1],
+                                "String-fret Tuple": [
+                                    int(s)
+                                    for s in re.findall(r"\b\d+\b", track.split("/")[1])
+                                ],
                                 "Note": librosa.midi_to_note(
                                     (cuerdas[noteCord[0]] + int(float(noteCord[1])))
                                 ),
@@ -360,7 +372,10 @@ class Dataset(core.Dataset):
 
                         if track[:2].upper() == "CL":
                             metadata_index[track] = {
-                                "String-fret Tuple": track.split("/")[1],
+                                "String-fret Tuple": [
+                                    int(s)
+                                    for s in re.findall(r"\b\d+\b", track.split("/")[1])
+                                ],
                                 "Note": librosa.midi_to_note(
                                     (cuerdas[noteCord[0]] + int(float(noteCord[1])))
                                 ),
