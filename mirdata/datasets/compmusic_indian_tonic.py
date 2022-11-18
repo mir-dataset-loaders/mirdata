@@ -23,6 +23,7 @@
     The tonic annotations are availabe both in tsv and json format. The loader uses the JSON formatted annotations.
 
     .. code-block::
+    
         'ID': {
             'artist': <name of the lead artist if available>, 
             'filepath': <relative path to the audio file>,
