@@ -1,0 +1,136 @@
+{
+  "annotations": [
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "beat",
+      "data": [
+        {
+          "time": 0.0,
+          "duration": 1.0,
+          "value": 1,
+          "confidence": null
+        },
+        {
+          "time": 1.0,
+          "duration": 1.9518840000000002,
+          "value": 1,
+          "confidence": null
+        },
+        {
+          "time": 2.951884,
+          "duration": 2.0146719999999996,
+          "value": 1,
+          "confidence": null
+        },
+        {
+          "time": 4.966556,
+          "duration": 0.9752340000000004,
+          "value": 1,
+          "confidence": null
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "chord",
+      "data": [
+        {
+          "time": 1.0,
+          "duration": 1.9518840000000002,
+          "value": "A:7(b9)",
+          "confidence": null
+        },
+        {
+          "time": 2.951884,
+          "duration": 2.0146719999999996,
+          "value": "D:min7",
+          "confidence": null
+        },
+        {
+          "time": 4.966556,
+          "duration": 0.9752340000000004,
+          "value": "E:hdim7",
+          "confidence": null
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "segment_open",
+      "data": [
+        {
+          "time": 1.0,
+          "duration": 85.327556,
+          "value": "head",
+          "confidence": null
+        },
+        {
+          "time": 86.327556,
+          "duration": 87.54259599999999,
+          "value": "written solo",
+          "confidence": null
+        },
+        {
+          "time": 173.870152,
+          "duration": 175.354928,
+          "value": "improvised solo",
+          "confidence": null
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    }
+  ],
+  "file_metadata": {
+    "title": "Alone Together",
+    "artist": "",
+    "release": "",
+    "duration": 5.0,
+    "identifiers": {},
+    "jams_version": "0.3.4"
+  },
+  "sandbox": {}
+}

@@ -98,6 +98,22 @@ egfxset
    :inherited-members:
    
 
+filosax
+^^^^^^^
+
+.. automodule:: mirdata.datasets.filosax
+   :members:
+   :inherited-members:
+
+
+four_way_tabla
+^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.four_way_tabla
+   :members:
+   :inherited-members:
+
+
 freesound_one_shot_percussive_sounds
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -1,0 +1,277 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "multitrack_01_sax_1": {
+      "audio": [
+        "Participant 1/01/Sax.wav",
+        "2c40445f9a2aaf88731e273c688fa366"
+      ],
+      "annotation": [
+        "Participant 1/01/annotations.json",
+        "1072915c57230d009055e9ffec0714c2"
+      ],
+      "midi": [
+        "Participant 1/01/Sax.mid",
+        "c4e7284df10ff5dafce3e5db5ffb1f87"
+      ],
+      "musicXML": [
+        "Participant 1/01/Sax.musicxml",
+        "d6ed4d1b593db1cf60374d0622ad7ce8"
+      ],
+      "pdf": [
+        "Participant 1/01/Sax.pdf",
+        "d764cb6d44e8d2f103d44d7a7fde95ca"
+      ]
+    },
+    "multitrack_01_sax_2": {
+      "audio": [
+        "Participant 2/01/Sax.wav",
+        "3a3539ed1e24c634b7e0be531fbf22bf"
+      ],
+      "annotation": [
+        "Participant 2/01/annotations.json",
+        "a43c75238ac7e89d056a9d97649ef07a"
+      ],
+      "midi": [
+        "Participant 2/01/Sax.mid",
+        "f9a5668e6a1eb21a1415304941c830a7"
+      ],
+      "musicXML": [
+        "Participant 2/01/Sax.musicxml",
+        "3b9c6e2d5eef049abead7514ee2043bc"
+      ],
+      "pdf": [
+        "Participant 2/01/Sax.pdf",
+        "c0190fa5c6d36f9f99581ed477e9b585"
+      ]
+    },
+    "multitrack_02_sax_1": {
+      "audio": [
+        "Participant 1/02/Sax.wav",
+        "c62cd9d2ec8085461cb2ffc9deeda176"
+      ],
+      "annotation": [
+        "Participant 1/02/annotations.json",
+        "8424df983f30e927c5a72b3d9bb94466"
+      ],
+      "midi": [
+        "Participant 1/02/Sax.mid",
+        "007beb3b84dfaafbc8767148bc00c0ff"
+      ],
+      "musicXML": [
+        "Participant 1/02/Sax.musicxml",
+        "3846ef79efc36448ea0a8059c43935ac"
+      ],
+      "pdf": [
+        "Participant 1/02/Sax.pdf",
+        "69b20b5b95b8807137cc86e7c72cc861"
+      ]
+    },
+    "multitrack_02_sax_2": {
+      "audio": [
+        "Participant 2/02/Sax.wav",
+        "d3b103124ab53f004581c530b90108c9"
+      ],
+      "annotation": [
+        "Participant 2/02/annotations.json",
+        "d8beda19bb4530a5764ce4640caeeadf"
+      ],
+      "midi": [
+        "Participant 2/02/Sax.mid",
+        "9df69c293774c9cd9c16a6f096b7cbbc"
+      ],
+      "musicXML": [
+        "Participant 2/02/Sax.musicxml",
+        "0902dc92ab679d70de5f8f2e3ccb9338"
+      ],
+      "pdf": [
+        "Participant 2/02/Sax.pdf",
+        "b9de623a02d98daf3833b70332a3fb5d"
+      ]
+    },
+    "multitrack_03_sax_1": {
+      "audio": [
+        "Participant 1/03/Sax.wav",
+        "e985345dc0a69b553701717003c10dc9"
+      ],
+      "annotation": [
+        "Participant 1/03/annotations.json",
+        "9272dafdcbd6de8e8d5185b9c3fec03a"
+      ],
+      "midi": [
+        "Participant 1/03/Sax.mid",
+        "baef6cc00db8645649ed0ef6820200cc"
+      ],
+      "musicXML": [
+        "Participant 1/03/Sax.musicxml",
+        "b7beaec260bf7c4231be245eb27d0f4a"
+      ],
+      "pdf": [
+        "Participant 1/03/Sax.pdf",
+        "d33f2079207ef472c162c7abd22965e4"
+      ]
+    },
+    "multitrack_03_sax_2": {
+      "audio": [
+        "Participant 2/03/Sax.wav",
+        "e46be7d3a4c89361c40dfa694a298236"
+      ],
+      "annotation": [
+        "Participant 2/03/annotations.json",
+        "b5236a53b2c09c03f6be1abbbea6b637"
+      ],
+      "midi": [
+        "Participant 2/03/Sax.mid",
+        "3c40a9f31ad6172681591711547a3d53"
+      ],
+      "musicXML": [
+        "Participant 2/03/Sax.musicxml",
+        "65a5d7ea3e1fa6e46383c2d44b9784a9"
+      ],
+      "pdf": [
+        "Participant 2/03/Sax.pdf",
+        "e616b26549c284a79947782fbec6cf25"
+      ]
+    },
+    "multitrack_04_sax_1": {
+      "audio": [
+        "Participant 1/04/Sax.wav",
+        "107157d278312c6266c8ca73fc2f0b6c"
+      ],
+      "annotation": [
+        "Participant 1/04/annotations.json",
+        "9d4ec9afc1c83152e24ddaa769a7ec96"
+      ],
+      "midi": [
+        "Participant 1/04/Sax.mid",
+        "a50f075ae22939f0d8f5c7e3b22a68c6"
+      ],
+      "musicXML": [
+        "Participant 1/04/Sax.musicxml",
+        "dd827121ea761709665fc2955688fe52"
+      ],
+      "pdf": [
+        "Participant 1/04/Sax.pdf",
+        "3ae4a931252c1f6beceb8cfbc381f370"
+      ]
+    },
+    "multitrack_04_sax_2": {
+      "audio": [
+        "Participant 2/04/Sax.wav",
+        "50e95f543e4d3c14ce2a626e37d1decc"
+      ],
+      "annotation": [
+        "Participant 2/04/annotations.json",
+        "eead987af174963f5e00975716d4aaf7"
+      ],
+      "midi": [
+        "Participant 2/04/Sax.mid",
+        "354e710b143285a501a3e1d719c68c81"
+      ],
+      "musicXML": [
+        "Participant 2/04/Sax.musicxml",
+        "b746e963eede8ec40fb4b22f3f8b4ccc"
+      ],
+      "pdf": [
+        "Participant 2/04/Sax.pdf",
+        "5658cb5c348d50f1d76e74e71c19551f"
+      ]
+    },
+    "multitrack_05_sax_1": {
+      "audio": [
+        "Participant 1/05/Sax.wav",
+        "97063c1447a071ed27bcd42dac411cb6"
+      ],
+      "annotation": [
+        "Participant 1/05/annotations.json",
+        "927fde190072037792e21909e199abd4"
+      ],
+      "midi": [
+        "Participant 1/05/Sax.mid",
+        "4d7dd55d904277bf666eeab0f0b0ae3e"
+      ],
+      "musicXML": [
+        "Participant 1/05/Sax.musicxml",
+        "b207c657080701db9c894332755eaa96"
+      ],
+      "pdf": [
+        "Participant 1/05/Sax.pdf",
+        "f140013cfbb47ab438a74f9e9bc72f25"
+      ]
+    },
+    "multitrack_05_sax_2": {
+      "audio": [
+        "Participant 2/05/Sax.wav",
+        "c18c209b389b9054833c993d5396bc75"
+      ],
+      "annotation": [
+        "Participant 2/05/annotations.json",
+        "74f17df9fed82f68c92ef6d7d4244776"
+      ],
+      "midi": [
+        "Participant 2/05/Sax.mid",
+        "b403fe8b483934a018bbd53e1fe51086"
+      ],
+      "musicXML": [
+        "Participant 2/05/Sax.musicxml",
+        "0a6393bb01e758b4367760eff03d8fce"
+      ],
+      "pdf": [
+        "Participant 2/05/Sax.pdf",
+        "74dcfd3ffd7b9ca6f7c402337e4c0127"
+      ]
+    }
+  },
+  "multitracks": {
+    "multitrack_01": {
+      "tracks": [
+        "multitrack_01_sax_1",
+        "multitrack_01_sax_2"
+      ],
+      "annotations": [
+        "Backing/01/annotations.jams",
+        "3a9ea0acdcf9bcf1abb4cf658d359c37"
+      ]
+    },
+    "multitrack_02": {
+      "tracks": [
+        "multitrack_02_sax_1",
+        "multitrack_02_sax_2"
+      ],
+      "annotations": [
+        "Backing/02/annotations.jams",
+        "838e8067f20f435b9251c7e43c1d807e"
+      ]
+    },
+    "multitrack_03": {
+      "tracks": [
+        "multitrack_03_sax_1",
+        "multitrack_03_sax_2"
+      ],
+      "annotations": [
+        "Backing/03/annotations.jams",
+        "38085c59fc12a8b8414c7d667e1c0dc1"
+      ]
+    },
+    "multitrack_04": {
+      "tracks": [
+        "multitrack_04_sax_1",
+        "multitrack_04_sax_2"
+      ],
+      "annotations": [
+        "Backing/04/annotations.jams",
+        "edca3dd9590f271360321ca90f11ac51"
+      ]
+    },
+    "multitrack_05": {
+      "tracks": [
+        "multitrack_05_sax_1",
+        "multitrack_05_sax_2"
+      ],
+      "annotations": [
+        "Backing/05/annotations.jams",
+        "d867da8ece7864c747e0a444e5ab3188"
+      ]
+    }
+  }
+}
