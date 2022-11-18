@@ -11,20 +11,20 @@
 
     The dataset contains the following data:
 
-    - **AUDIO:** The pieces are chosen from the CompMusic Carnatic music collection. The pieces were chosen in four popular taalas of 
+    **AUDIO:** The pieces are chosen from the CompMusic Carnatic music collection. The pieces were chosen in four popular taalas of 
     Carnatic music, which encompasses a majority of Carnatic music. The pieces were chosen include a mix of vocal and instrumental recordings,
     new and old recordings, and to span a wide variety of forms. All pieces have a percussion accompaniment, predominantly Mridangam. The
     excerpts are full length pieces or a part of the full length pieces. There are also several different pieces by the same artist (or release
     group), and multiple instances of the same composition rendered by different artists. Each piece is uniquely identified using the MBID of the
     recording. The pieces are stereo, 160 kbps, mp3 files sampled at 44.1 kHz.
 
-    - **SAMA AND BEATS:** The primary annotations are audio synchronized time-stamps indicating the different metrical positions in the taala cycle.
+    **SAMA AND BEATS:** The primary annotations are audio synchronized time-stamps indicating the different metrical positions in the taala cycle.
     The annotations were created using Sonic Visualizer by tapping to music and manually correcting the taps. Each annotation has a time-stamp and
     an associated numeric label that indicates the position of the beat marker in the taala cycle. The marked positions in the taala cycle are shown
     with numbers, along with the corresponding label used. In each case, the sama (the start of the cycle, analogous to the downbeat) are indicated
     using the numeral 1.
 
-    - **METADATA:** For each excerpt, the taala of the piece, edupu (offset of the start of the piece, relative to the sama, measured in aksharas)
+    **METADATA:** For each excerpt, the taala of the piece, edupu (offset of the start of the piece, relative to the sama, measured in aksharas)
     of the composition, and the kalai (the cycle length scaling factor) are recorded. Each excerpt can be uniquely identified and located with the
     MBID of the recording, and the relative start and end times of the excerpt within the whole recording. A separate 5 digit taala based unique ID
     is also provided for each excerpt as a double check. The artist, release, the lead instrument, and the raaga of the piece are additional 
