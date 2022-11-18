@@ -22,15 +22,16 @@
 
     The tonic annotations are availabe both in tsv and json format. The loader uses the JSON formatted annotations.
 
-    JSON: {
-        'artist': <name of the lead artist if available>, 
-        'filepath': <relative path to the audio file>,
-        'gender': <gender of the lead singer if available>,
-        'mbid': <musicbrainz id when available>,
-        'tonic': <tonic in Hz>,
-        'tradition': <Hindustani or Carnatic>,
-        'type': <vocal or instrumental>
-     }
+    .. code-block::
+        'ID': {
+            'artist': <name of the lead artist if available>, 
+            'filepath': <relative path to the audio file>,
+            'gender': <gender of the lead singer if available>,
+            'mbid': <musicbrainz id when available>,
+            'tonic': <tonic in Hz>,
+            'tradition': <Hindustani or Carnatic>,
+            'type': <vocal or instrumental>
+        }
 
     where keys of the main dictionary are the filepaths to the audio files (feature path is exactly the same with a different extension
     of the file name).
