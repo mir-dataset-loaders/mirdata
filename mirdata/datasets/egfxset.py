@@ -69,6 +69,7 @@
 
 import csv
 import os
+import json
 from typing import BinaryIO, Optional, Tuple
 from ast import literal_eval
 import re
@@ -169,6 +170,85 @@ REMOTES = {
 }
 
 LICENSE_INFO = "Creative Commons Attribution 4.0 International"
+
+
+metadata_path = os.path.join(
+    "tests/resources/mir_datasets_full/egfxset/", "egfxset_metadata.csv"
+)
+metadata_index = {}
+with open("mirdata/datasets/indexes/egfxset_index_1.json") as f:
+    data = json.load(f)
+    trackids = data["tracks"]
+tracknames = list(trackids.keys())
+cuerdas = {"1": 64, "2": 59, "3": 55, "4": 50, "5": 45, "6": 40}
+
+try:
+    with open(metadata_path, "r") as fhandle:
+        csv_reader = csv.reader(fhandle, delimiter=",")
+        next(csv_reader)
+        for row in csv_reader:
+            key = os.path.splitext(os.path.split(row[0])[1])[0]
+            for track in tracknames:
+
+                noteCord = track.split("/")[1].split("-")
+                if len(noteCord) != 2:
+                    noteCord = track.split("/")[1].split(".")
+
+                if track[:3].upper() == "RAT" and key == "distortion":
+                    metadata_index[track] = {
+                        "String-fret Tuple": [
+                            int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
+                        ],
+                        "Note": librosa.midi_to_note(
+                            (cuerdas[noteCord[0]] + int(float(noteCord[1])))
+                        ),
+                        "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
+                        "Pickup Configuration": track.split("_")[1].split("/")[0],
+                        "Effect": row[0],
+                        "Model": row[1],
+                        "Effect Type": row[2],
+                        "Knob Names": literal_eval(row[3]),
+                        "Knob Type": literal_eval(row[4]),
+                        "Setting": literal_eval(row[5]),
+                    }
+
+                if track[:2].upper() == key[:2].upper():
+                    metadata_index[track] = {
+                        "String-fret Tuple": [
+                            int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
+                        ],
+                        "Note": librosa.midi_to_note(
+                            (cuerdas[noteCord[0]] + int(float(noteCord[1])))
+                        ),
+                        "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
+                        "Pickup Configuration": track.split("_")[1].split("/")[0],
+                        "Effect": row[0],
+                        "Model": row[1],
+                        "Effect Type": row[2],
+                        "Knob Names": literal_eval(row[3]),
+                        "Knob Type": literal_eval(row[4]),
+                        "Setting": literal_eval(row[5]),
+                    }
+
+                if track[:2].upper() == "CL":
+                    metadata_index[track] = {
+                        "String-fret Tuple": [
+                            int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
+                        ],
+                        "Note": librosa.midi_to_note(
+                            (cuerdas[noteCord[0]] + int(float(noteCord[1])))
+                        ),
+                        "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
+                        "Pickup Configuration": track.split("_")[1].split("/")[0],
+                        "Effect": "clean",
+                        "Model": "None",
+                        "Effect Type": "None",
+                        "Knob Names": "None",
+                        "Knob Type": "None",
+                        "Setting": "None",
+                    }
+except FileNotFoundError:
+    raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
 
 class Track(core.Track):
@@ -307,96 +387,8 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "egfxset_metadata.csv")
-        metadata_index = {}
-        tracknames = self.track_ids
-        cuerdas = {"1": 64, "2": 59, "3": 55, "4": 50, "5": 45, "6": 40}
-
-        try:
-            with open(metadata_path, "r") as fhandle:
-                csv_reader = csv.reader(fhandle, delimiter=",")
-                next(csv_reader)
-                for row in csv_reader:
-                    key = os.path.splitext(os.path.split(row[0])[1])[0]
-                    for track in tracknames:
-
-                        noteCord = track.split("/")[1].split("-")
-                        if len(noteCord) != 2:
-                            noteCord = track.split("/")[1].split(".")
-
-                        if track[:3].upper() == "RAT" and key == "distortion":
-                            metadata_index[track] = {
-                                "String-fret Tuple": [
-                                    int(s)
-                                    for s in re.findall(r"\b\d+\b", track.split("/")[1])
-                                ],
-                                "Note": librosa.midi_to_note(
-                                    (cuerdas[noteCord[0]] + int(float(noteCord[1])))
-                                ),
-                                "Midinote": (
-                                    cuerdas[noteCord[0]] + int(float(noteCord[1]))
-                                ),
-                                "Pickup Configuration": track.split("_")[1].split("/")[
-                                    0
-                                ],
-                                "Effect": row[0],
-                                "Model": row[1],
-                                "Effect Type": row[2],
-                                "Knob Names": literal_eval(row[3]),
-                                "Knob Type": literal_eval(row[4]),
-                                "Setting": literal_eval(row[5]),
-                            }
-
-                        if track[:2].upper() == key[:2].upper():
-                            metadata_index[track] = {
-                                "String-fret Tuple": [
-                                    int(s)
-                                    for s in re.findall(r"\b\d+\b", track.split("/")[1])
-                                ],
-                                "Note": librosa.midi_to_note(
-                                    (cuerdas[noteCord[0]] + int(float(noteCord[1])))
-                                ),
-                                "Midinote": (
-                                    cuerdas[noteCord[0]] + int(float(noteCord[1]))
-                                ),
-                                "Pickup Configuration": track.split("_")[1].split("/")[
-                                    0
-                                ],
-                                "Effect": row[0],
-                                "Model": row[1],
-                                "Effect Type": row[2],
-                                "Knob Names": literal_eval(row[3]),
-                                "Knob Type": literal_eval(row[4]),
-                                "Setting": literal_eval(row[5]),
-                            }
-
-                        if track[:2].upper() == "CL":
-                            metadata_index[track] = {
-                                "String-fret Tuple": [
-                                    int(s)
-                                    for s in re.findall(r"\b\d+\b", track.split("/")[1])
-                                ],
-                                "Note": librosa.midi_to_note(
-                                    (cuerdas[noteCord[0]] + int(float(noteCord[1])))
-                                ),
-                                "Midinote": (
-                                    cuerdas[noteCord[0]] + int(float(noteCord[1]))
-                                ),
-                                "Pickup Configuration": track.split("_")[1].split("/")[
-                                    0
-                                ],
-                                "Effect": "clean",
-                                "Model": "None",
-                                "Effect Type": "None",
-                                "Knob Names": "None",
-                                "Knob Type": "None",
-                                "Setting": "None",
-                            }
-
-        except FileNotFoundError:
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        return metadata_index
+        metadata = metadata_index
+        return metadata
 
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
