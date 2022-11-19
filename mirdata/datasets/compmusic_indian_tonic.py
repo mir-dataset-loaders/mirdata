@@ -9,13 +9,13 @@
     Each excerpt is accompanied by its associated editorial metadata. These datasets can be used to develop and evaluate computational 
     approaches for automatic tonic identification in Indian art music. These datasets have been used in several articles mentioned below. 
     A majority of These datasets come from the CompMusic corpora of Indian art music, for which each recording is associated with a MBID. 
-    With the MBID other information can be obtained using the Dunya API. We here provide an overview of the tonic identification datasets. 
+    Through the MBID other information can be obtained using the Dunya API.
 
 
-    The statistics about the datasets for tonic identification is listed in the table below. These six datasets are used in [1] for a 
-    comparative evaluation. To the best of our knowledge these are the largest datasets available for tonic identification for Indian art 
-    music. These datases vary in terms of the audio quality, recording period (decade), the number of recordings for Carnatic, Hindustani, 
-    male and female singers and instrumental and vocal excerpts. 
+    These six datasets are used for for the task of tonic identification for Indian Art Music, and can be used for a comparative evaluation. 
+    To the best of our knowledge these are the largest datasets available for tonic identification for Indian art  music. These datases vary 
+    in terms of the audio quality, recording period (decade), the number of recordings for Carnatic, Hindustani, male and female singers and 
+    instrumental and vocal excerpts. 
 
     All the datasets (annotations) are version controlled. The audio files corresponding to these datsets are made available on request
     for only research purposes. See DOWNLOAD_INFO of this loader.
@@ -23,7 +23,7 @@
     The tonic annotations are availabe both in tsv and json format. The loader uses the JSON formatted annotations.
 
     .. code-block::
-    
+
         'ID': {
             'artist': <name of the lead artist if available>, 
             'filepath': <relative path to the audio file>,
@@ -40,6 +40,10 @@
     Despite not being loaded in this dataloader, the dataset includes features, which may be integrated to the loader in future releases. However
     these features may be easily computed following the instructions in the related paper. See BIBTEX.
 
+    There are a total of 2161 audio excerpts, and while the CM collection includes aproximately 50% Carnatic and 50% Hindustani recordings, IITM and
+    IISc collections are 100% Carnatic music. The excerpts vary a lot in duration. See [this webpage](https://compmusic.upf.edu/iam-tonic-dataset) 
+    for a detailed overview of the datasets.
+
     If you have any questions or comments about the dataset, please feel free to email: [sankalp (dot) gulati (at) gmail (dot) com], or 
     [sankalp (dot) gulati (at) upf (dot) edu].
 
@@ -50,25 +54,21 @@ import glob
 import json
 
 import librosa
-import numpy as np
-from typing import Tuple
 
 from smart_open import open
 
 from mirdata import core, download_utils, jams_utils
 
-BIBTEX = """@article{Anantapadmanabhan2013,
-    author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
-    doi = {10.1109/ICASSP.2013.6637633},
-    isbn = {9781479903566},
-    issn = {15206149},
-    journal = {ICASSP, IEEE International Conference on Acoustics, Speech and Signal Processing - Proceedings},
-    keywords = {Hidden Markov models, Modal Analysis, Mridangam, Non-negative Matrix Factorization,
-    automatic transcription},
-    pages = {181--185},
-    title = {{Modal analysis and transcription of strokes of the mridangam using non-negative matrix factorization}},
-    year = {2013}
+BIBTEX = """@article{Gulati2014,
+    author = {Gulati, S. and Bellur, A. and Salamon, J. and Ranjani, H. G. and Ishwar, V. and Murthy, H. A. and Serra, X.},
+    journal = {Journal of New Music Research},
+    pages = {55--73},
+    volume = {43},
+    number = {01},
+    title = {{Automatic Tonic Identification in Indian Art Music: Approaches and Evaluation}},
+    year = {2014}
 }"""
+
 
 INDEXES = {
     "default": "1.0",
