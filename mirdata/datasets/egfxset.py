@@ -74,7 +74,6 @@ from ast import literal_eval
 import re
 
 import librosa
-import pandas
 import numpy as np
 from smart_open import open
 
@@ -312,7 +311,13 @@ class Dataset(core.Dataset):
         metadata_index = {}
         tracknames = self.track_ids
         cuerdas = {"1": 64, "2": 59, "3": 55, "4": 50, "5": 45, "6": 40}
-        pd = pandas.read_csv(metadata_path)
+
+        file_handle = open(metadata_path, "r")
+        reader = list(csv.DictReader(file_handle))
+
+        indexname = []
+        for name in reader:
+            indexname.append(name["Effect "].split(" ")[0])
 
         for track in tracknames:
 
@@ -348,8 +353,7 @@ class Dataset(core.Dataset):
                     "Setting": "None",
                 }
 
-            if pd["Effect "].str.contains(trackiden).any():
-                searchpd = pd[pd["Effect "].str.contains(trackiden)].astype("string")
+            if trackiden in indexname:
                 metadata_index[track] = {
                     "String-fret Tuple": [
                         int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
@@ -359,12 +363,18 @@ class Dataset(core.Dataset):
                     ),
                     "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
                     "Pickup Configuration": track.split("_")[1].split("/")[0],
-                    "Effect": searchpd["Effect "].item(),
-                    "Model": searchpd["Model"].item(),
-                    "Effect Type": searchpd["Effect Type"].item(),
-                    "Knob Names": literal_eval(searchpd["Knob Names"].item()),
-                    "Knob Type": literal_eval(searchpd["Knob Type"].item()),
-                    "Setting": literal_eval(searchpd["Setting "].item()),
+                    "Effect": reader[indexname.index(trackiden)]["Effect "],
+                    "Model": reader[indexname.index(trackiden)]["Model"],
+                    "Effect Type": reader[indexname.index(trackiden)]["Effect Type"],
+                    "Knob Names": literal_eval(
+                        reader[indexname.index(trackiden)]["Knob Names"]
+                    ),
+                    "Knob Type": literal_eval(
+                        reader[indexname.index(trackiden)]["Knob Type"]
+                    ),
+                    "Setting": literal_eval(
+                        reader[indexname.index(trackiden)]["Setting "]
+                    ),
                 }
 
         return metadata_index
