@@ -167,6 +167,10 @@ class Track(core.Track):
         return self._track_metadata.get("raaga")
 
     @core.cached_property
+    def laya(self):
+        return self._track_metadata.get("laya")
+
+    @core.cached_property
     def num_of_beats(self):
         return self._track_metadata.get("num_of_beats")
 
@@ -204,6 +208,7 @@ class Track(core.Track):
                 "lead_instrument_code": self.lead_instrument_code,
                 "taala": self.taala,
                 "raaga": self.raaga,
+                "laya": self.laya,
                 "num_of_beats": self.num_of_beats,
                 "num_of_samas": self.num_of_samas,
             },
@@ -325,10 +330,6 @@ class Dataset(core.Dataset):
                         "laya": reade.cell(row, 10).value,
                         "num_of_beats": int(reade.cell(row, 13).value),
                         "num_of_samas": int(reade.cell(row, 14).value),
-                        "median_matra_period": float(reade.cell(row, 15).value),
-                        "median_matras_per_min": float(reade.cell(row, 16).value),
-                        "median_ISI": float(reade.cell(row, 17).value),
-                        "median_avarts_per_min": float(reade.cell(row, 18).value),
                     }
 
         except FileNotFoundError:
