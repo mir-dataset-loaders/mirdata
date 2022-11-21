@@ -296,9 +296,7 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(
-            self.data_home, "HMR_1.0", "HMDf.xlsx"
-        )
+        metadata_path = os.path.join(self.data_home, "HMR_1.0", "HMDf.xlsx")
 
         metadata = {}
         try:
