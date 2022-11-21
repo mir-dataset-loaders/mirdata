@@ -84,7 +84,12 @@ REMOTES = {
     ),
 }
 
-DOWNLOAD_INFO = "TODO"
+DOWNLOAD_INFO = ("""
+    The audio of this dataset is private, and it is only shared for research purposes. Please refer to:
+    https://zenodo.org/record/7342372, request the audios clearly explaning why and how are you planning 
+    to use it, and then simply move the "audio" folders to the respective center ID. An example here:
+    take indian_art_music_tonic_1.0_audio/CM/audio and move it inside indian_art_music_tonic_1.0/CM, and so on.
+""")
 
 
 LICENSE_INFO = (
