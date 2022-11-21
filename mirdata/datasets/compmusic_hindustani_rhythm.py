@@ -367,9 +367,13 @@ class Dataset(core.Dataset):
                         "num_of_beats": int(reade.cell(row, 13).value),
                         "num_of_samas": int(reade.cell(row, 14).value),
                         "median_matra_period": float(reade.cell(row, 16).value),
-                        "median_matras_per_min": round(60 / float(reade.cell(row, 16).value), 2),
+                        "median_matras_per_min": round(
+                            60 / float(reade.cell(row, 16).value), 2
+                        ),
                         "median_ISI": float(reade.cell(row, 16).value) * 16,
-                        "median_avarts_per_min": round(60 / (float(reade.cell(row, 16).value) * 16), 2),
+                        "median_avarts_per_min": round(
+                            60 / (float(reade.cell(row, 16).value) * 16), 2
+                        ),
                     }
 
         except FileNotFoundError:
