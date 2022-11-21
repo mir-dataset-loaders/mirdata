@@ -34,6 +34,10 @@ def test_track():
         "laya": str,
         "num_of_beats": int,
         "num_of_samas": int,
+        "median_matra_period": float,
+        "median_matras_per_min": float,
+        "median_ISI": float,
+        "median_avarts_per_min": float,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -69,6 +73,10 @@ def test_to_jams():
     assert jam["sandbox"]["laya"] == "Vilambit"
     assert jam["sandbox"]["num_of_beats"] == 44
     assert jam["sandbox"]["num_of_samas"] == 3
+    assert jam["sandbox"]["median_matra_period"] == 2.746
+    assert jam["sandbox"]["median_matras_per_min"] == 21.85
+    assert jam["sandbox"]["median_ISI"] == 43.936
+    assert jam["sandbox"]["median_avarts_per_min"] == 1.37
 
 
 def test_load_meter():
@@ -113,6 +121,10 @@ def test_load_metadata():
     assert parsed_metadata["laya"] == "Vilambit"
     assert parsed_metadata["num_of_beats"] == 44
     assert parsed_metadata["num_of_samas"] == 3
+    assert parsed_metadata["median_matra_period"] == 2.746
+    assert parsed_metadata["median_matras_per_min"] == 21.85
+    assert parsed_metadata["median_ISI"] == 43.936
+    assert parsed_metadata["median_avarts_per_min"] == 1.37
 
 
 def test_load_audio():

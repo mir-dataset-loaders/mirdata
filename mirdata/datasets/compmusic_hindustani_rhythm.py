@@ -109,7 +109,20 @@ class Track(core.Track):
     Cached Properties:
         beats (BeatData): beats annotation
         meter (string): meter annotation
-
+        mbid (string): MusicBrainz ID
+        name (string): name of the recording in the dataset
+        artist (string): artists name
+        release (string): release name
+        lead_instrument_code (string): code for the load instrument
+        taala (string): taala annotation
+        raaga (string): raaga annotation
+        laya (string): laya annotation
+        num_of_beats (int): number of beats in annotation
+        num_of_samas (int): number of samas in annotation
+        median_matra_period (float): median matra per period
+        median_matras_per_min (float): median matras per minute
+        median_ISI (float): median ISI
+        median_avarts_per_min (float): median avarts per minute
     """
 
     def __init__(
@@ -183,6 +196,22 @@ class Track(core.Track):
     def num_of_samas(self):
         return self._track_metadata.get("num_of_samas")
 
+    @core.cached_property
+    def median_matra_period(self):
+        return self._track_metadata.get("median_matra_period")
+
+    @core.cached_property
+    def median_matras_per_min(self):
+        return self._track_metadata.get("median_matras_per_min")
+
+    @core.cached_property
+    def median_ISI(self):
+        return self._track_metadata.get("median_ISI")
+
+    @core.cached_property
+    def median_avarts_per_min(self):
+        return self._track_metadata.get("median_avarts_per_min")
+
     @property
     def audio(self):
         """The track's audio
@@ -216,6 +245,10 @@ class Track(core.Track):
                 "laya": self.laya,
                 "num_of_beats": self.num_of_beats,
                 "num_of_samas": self.num_of_samas,
+                "median_matra_period": self.median_matra_period,
+                "median_matras_per_min": self.median_matras_per_min,
+                "median_ISI": self.median_ISI,
+                "median_avarts_per_min": self.median_avarts_per_min,
             },
         )
 
@@ -333,6 +366,10 @@ class Dataset(core.Dataset):
                         "laya": reade.cell(row, 10).value,
                         "num_of_beats": int(reade.cell(row, 13).value),
                         "num_of_samas": int(reade.cell(row, 14).value),
+                        "median_matra_period": float(reade.cell(row, 16).value),
+                        "median_matras_per_min": round(60 / float(reade.cell(row, 16).value), 2),
+                        "median_ISI": float(reade.cell(row, 16).value) * 16,
+                        "median_avarts_per_min": round(60 / (float(reade.cell(row, 16).value) * 16), 2),
                     }
 
         except FileNotFoundError:
