@@ -1,3 +1,4 @@
+import pytest
 from tests.test_utils import run_track_tests
 
 from mirdata.datasets import compmusic_indian_tonic
@@ -85,3 +86,8 @@ def test_load_metadata():
     assert meta[default_trackid_iitm]["mbid"] == track_iitm.mbid
     assert meta[default_trackid_iitm]["type"] == track_iitm.type
     assert meta[default_trackid_iitm]["tradition"] == track_iitm.tradition
+
+def test_load_metadat_2():
+    dataset_2 = compmusic_indian_tonic.Dataset(data_home="tests/resources/")
+    with pytest.raises(FileNotFoundError):
+        meta_2 = dataset_2._metadata

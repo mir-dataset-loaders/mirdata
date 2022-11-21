@@ -229,8 +229,9 @@ class Dataset(core.Dataset):
         meta_files = [x for x in meta_files if "IITM1" not in x]
 
         metadata = {}
-        for meta in meta_files:
-            try:
+        try:
+            for meta in meta_files:
+                print(meta)
                 with open(meta, "r") as fhandle:
                     data = json.load(fhandle)
                     if "IITM" not in meta:
@@ -256,7 +257,7 @@ class Dataset(core.Dataset):
                                 "tradition": data[k]["tradition"],
                             }
 
-            except FileNotFoundError:
-                raise FileNotFoundError("Metadata not found. Did you run .download()?")
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata
