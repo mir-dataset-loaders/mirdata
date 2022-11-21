@@ -59,7 +59,7 @@ try:
 except ImportError:
     logging.error(
         "In order to use CompMusic Hindustani Music Rhythm you must have openpyxl installed. "
-        "Please reinstall mirdata using `pip install 'mirdata[compmusic_rhythm]'"
+        "Please reinstall mirdata using `pip install 'mirdata[compmusic_hindustani_rhythm]'"
     )
     raise
 

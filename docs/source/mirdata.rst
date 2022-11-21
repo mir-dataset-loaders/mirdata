@@ -53,7 +53,7 @@ cante100
 
 
 compmusic_hindustani_rhythm
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.compmusic_hindustani_rhythm
    :members:

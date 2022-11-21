@@ -66,6 +66,7 @@ if __name__ == "__main__":
                 "sphinxcontrib-napoleon",
                 "sphinx_rtd_theme",
             ],
+            "compmusic_hindustani_rhythm": ["openpyxl==3.0.7"],
             "dali": ["dali-dataset==1.1"],
             "haydn_op20": ["music21==6.7.1"],
             "gcs": ["smart_open[gcs]"],
