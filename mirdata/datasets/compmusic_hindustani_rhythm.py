@@ -3,46 +3,44 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    CompMusic Carnatic Rhythm Dataset is a rhythm annotated test corpus for automatic rhythm analysis tasks in Carnatic Music.
-    The collection consists of audio excerpts from the CompMusic Carnatic research corpus, manually annotated time aligned markers
-    indicating the progression through the taala cycle, and the associated taala related metadata. A brief description of the dataset
-    is provided below. For a brief overview and audio examples of taalas in Carnatic music, please see:
-    http://compmusic.upf.edu/examples-taala-carnatic
+    CompMusic Hindustani Rhythm Dataset is a rhythm annotated test corpus for automatic rhythm analysis tasks in Hindustani Music. 
+    The collection consists of audio excerpts from the CompMusic Hindustani research corpus, manually annotated time aligned markers 
+    indicating the progression through the taal cycle, and the associated taal related metadata. A brief description of the dataset
+    is provided below.
+
+    For a brief overview and audio examples of taals in Hindustani music, please see: http://compmusic.upf.edu/examples-taal-hindustani
 
     The dataset contains the following data:
 
-    **AUDIO:** The pieces are chosen from the CompMusic Carnatic music collection. The pieces were chosen in four popular taalas of 
-    Carnatic music, which encompasses a majority of Carnatic music. The pieces were chosen include a mix of vocal and instrumental recordings,
-    new and old recordings, and to span a wide variety of forms. All pieces have a percussion accompaniment, predominantly Mridangam. The
-    excerpts are full length pieces or a part of the full length pieces. There are also several different pieces by the same artist (or release
-    group), and multiple instances of the same composition rendered by different artists. Each piece is uniquely identified using the MBID of the
-    recording. The pieces are stereo, 160 kbps, mp3 files sampled at 44.1 kHz.
+    **AUDIO:** The pieces are chosen from the CompMusic Hindustani music collection. The pieces were chosen in four popular taals of Hindustani music,
+    which encompasses a majority of Hindustani khyal music. The pieces were chosen include a mix of vocal and instrumental recordings, new and old
+    recordings, and to span three lays. For each taal, there are pieces in dhrut (fast), madhya (medium) and vilambit (slow) lays (tempo class). All
+    pieces have Tabla as the percussion accompaniment. The excerpts are two minutes long. Each piece is uniquely identified using the MBID of the recording.
+    The pieces are stereo, 160 kbps, mp3 files sampled at 44.1 kHz. The audio is also available as wav files for experiments.
 
-    **SAMA AND BEATS:** The primary annotations are audio synchronized time-stamps indicating the different metrical positions in the taala cycle.
-    The annotations were created using Sonic Visualizer by tapping to music and manually correcting the taps. Each annotation has a time-stamp and
-    an associated numeric label that indicates the position of the beat marker in the taala cycle. The marked positions in the taala cycle are shown
-    with numbers, along with the corresponding label used. In each case, the sama (the start of the cycle, analogous to the downbeat) are indicated
+    **SAM, VIBHAAG AND THE MAATRAS:** The primary annotations are audio synchronized time-stamps indicating the different metrical positions in the taal cycle.
+    The sam and matras of the cycle are annotated. The annotations were created using Sonic Visualizer by tapping to music and manually correcting the taps. 
+    Each annotation has a time-stamp and an associated numeric label that indicates the position of the beat marker in the taala cycle. The annotations and the
+    associated metadata have been verified for correctness and completeness by a professional Hindustani musician and musicologist. The long thick lines show 
+    vibhaag boundaries. The numerals indicate the matra number in cycle. In each case, the sam (the start of the cycle, analogous to the downbeat) are indicated
     using the numeral 1.
 
-    **METADATA:** For each excerpt, the taala of the piece, edupu (offset of the start of the piece, relative to the sama, measured in aksharas)
-    of the composition, and the kalai (the cycle length scaling factor) are recorded. Each excerpt can be uniquely identified and located with the
-    MBID of the recording, and the relative start and end times of the excerpt within the whole recording. A separate 5 digit taala based unique ID
-    is also provided for each excerpt as a double check. The artist, release, the lead instrument, and the raaga of the piece are additional 
-    editorial metadata obtained from the release. A flag indicates if the excerpt is a full piece or only a part of a full piece. There are optional
-    comments on audio quality and annotation specifics. 
+    **METADATA:** For each excerpt, the taal and the lay of the piece are recorded. Each excerpt can be uniquely identified and located with the MBID of the
+    recording, and the relative start and end times of the excerpt within the whole recording. A separate 5 digit taal based unique ID is also provided for each
+    excerpt as a double check. The artist, release, the lead instrument, and the raag of the piece are additional editorial metadata obtained from the release.
+    There are optional comments on audio quality and annotation specifics.
 
-    Possible uses of the dataset: Possible tasks where the dataset can be used include taala, sama and beat tracking, tempo estimation and tracking,
-    taala recognition, rhythm based segmentation of musical audio, structural segmentation, audio to score/lyrics alignment, and rhythmic pattern
-    discovery.
+    The dataset consists of excerpts with a wide tempo range from 10 MPM (matras per minute) to 370 MPM. To study any effects of the tempo class, the full dataset
+    (HMDf) is also divided into two other subsets - the long cycle subset (HMDl) consisting of vilambit (slow) pieces with a median tempo between 10-60 MPM, and the
+    short cycle subset (HMDs) with madhyalay (medium, 60-150 MPM) and the drut lay (fast, 150+ MPM).
 
-    Dataset organization: The dataset consists of audio, annotations, an accompanying spreadsheet providing additional metadata. For a detailed
-    description of the organization, please see the README in the dataset.
+    **Possible uses of the dataset:** Possible tasks where the dataset can be used include taal, sama and beat tracking, tempo estimation and tracking, taal recognition,
+    rhythm based segmentation of musical audio, audio to score/lyrics alignment, and rhythmic pattern discovery.
 
-    Data Subset: A subset of this dataset consisting of 118 two minute excerpts of music is also available. The content in the subset is equaivalent
-    and is separately distributed for a quicker testing of algorithms and approaches.
+    **Dataset organization:** The dataset consists of audio, annotations, an accompanying spreadsheet providing additional metadata, a MAT-file that has identical
+    information as the spreadsheet, and a dataset description document.
 
-    The annotations files of this dataset are shared with the following license:
-    Creative Commons Attribution Non Commercial Share Alike 4.0 International
+    The annotations files of this dataset are shared with the following license: Creative Commons Attribution Non Commercial Share Alike 4.0 International
 
 """
 
@@ -66,7 +64,14 @@ except ImportError:
     raise
 
 BIBTEX = """
-TODO
+@inproceedings{Srinivasamurthy2016,
+    author = {Srinivasamurthy, Ajay and Holzapfel, Andre and Cemgil, Ali and Serra, Xavier},
+    year = {2016},
+    month = {03},
+    pages = {76-80},
+    title = {A generalized Bayesian model for tracking long metrical cycles in acoustic music signals},
+    doi = {10.1109/ICASSP.2016.7471640}
+}
 """
 
 INDEXES = {
@@ -81,7 +86,7 @@ LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
 
-DOWNLOAD_INFO = """The files of this dataset are shared under request. Please go to: https://zenodo.org/record/1264394 and request access, stating
+DOWNLOAD_INFO = """The files of this dataset are shared under request. Please go to: https://zenodo.org/record/1264742 and request access, stating
     the research-related use you will give to the dataset. Once the access is granted (it may take, at most, one day or two), please download 
     the dataset with the provided Zenodo link and uncompress and store the datasets to a desired location, and use such location to initialize the 
     dataset as follows: compmusic_hindustani_rhythm = mirdata.initialize("compmusic_hindustani_rhythm", data_home="/path/to/home/folder/of/dataset").
@@ -217,7 +222,7 @@ class Track(core.Track):
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(audio_path):
-    """Load a Saraga Carnatic audio file.
+    """Load an audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -277,7 +282,7 @@ def load_meter(fhandle):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The compmusic_carnatic_rhythm dataset
+    The compmusic_hindustani_rhythm dataset
 
     """
 
@@ -285,7 +290,7 @@ class Dataset(core.Dataset):
         super().__init__(
             data_home,
             version,
-            name="compmusic_carnatic_rhythm",
+            name="compmusic_hindustani_rhythm",
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,
