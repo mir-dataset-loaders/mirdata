@@ -109,6 +109,16 @@ Lyrics corresponding to the singing voice of the audio. These may be raw text wi
 or they may be time-aligned events. They may have varying levels of granularity (paragraph, line, word,
 phoneme, character) depending on the dataset.
 
+
+.. _meter:
+
+Meter
+^^^^^^
+Rhythmic meter for each measure. A classical example of meter in Western music would be 4/4. Details how
+many subdivisions and the length of this subdivisions that we do have per each measure.
+
+
+
 .. _melody:
 
 Melody
