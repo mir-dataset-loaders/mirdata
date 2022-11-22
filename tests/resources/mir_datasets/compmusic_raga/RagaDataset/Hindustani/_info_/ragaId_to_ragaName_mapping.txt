@@ -1,0 +1,71 @@
+98d46d9e-5100-4f24-bcd4-d0f95966c7cb	Sindhubhairavi
+5ce23030-f71d-4f5d-9d76-f91c2c182392	Dhanyāsi
+50bd048f-4482-4c5b-850c-9ad5e5ec46f1	Hussēnī
+bf4662d4-25c3-4cad-9249-4de2dc513c06	Kalyāṇi
+46997b02-f09c-4969-8138-4e1861f61967	Śrī
+1e7de02f-e77f-405a-a033-f31117aaf955	Bhairav
+118401e7-8de8-4d81-9d8e-8070889e3fa8	Darbāri
+64e5fb9e-5569-4e80-8e6c-f543af9469c7	Mālkauns
+0b3bbf97-0ec3-41da-add4-722d87329ec3	Madhukauns
+290674e0-d94c-41c1-ad99-f65fa22a1447	Madhuvanti
+9cedca68-4a9d-4170-bec3-0d1db1ff730e	Māyāmāḷavagauḷa
+700e1d92-7094-4c21-8a3b-d7b60c550edf	Behāg
+18b1acb9-dff6-47ec-873a-b2086c8d268d	Madhyamāvati
+c6b5f8d9-ebb4-46af-a020-6646fce2c77d	Sāma
+f6432fec-e9c2-4b09-9e73-c46086cbd8ea	Ahira bhairav
+7591faad-e68a-4550-b675-8082842c6056	Bāgēśrī
+b6989a44-e85d-43cf-8b95-2eae5dcd28a2	Pūrvīkaḷyāṇi
+e8a0bf54-13c6-4a09-922a-bfc744ddf38a	Varāḷi
+3af5a361-923a-465d-864d-9c7ba0c04a47	Sencuruṭṭi
+e771a74d-545d-41d5-816b-43403a818b0c	Bhūp
+f0866e71-33b2-47db-ab75-0808c41f2401	Kāṁbhōji
+f972db4d-5d16-4f9a-9841-f313e1601aaa	Karaharapriya
+e18fcaa7-1f9c-4f09-b627-0687481f4ec7	Ānandabhairavi
+48b37bed-e847-4882-8a01-5c721e07f07d	Yaman kalyāṇ
+dd59147d-8775-44ff-a36b-0d9f15b31319	Bilāsakhānī tōḍī
+2165542c-45da-4301-af82-c2e7ddbe4768	Bilahari
+f7fddfc0-8c1d-4dd2-90d5-5d51a99d61f8	Rāgēśrī
+9a071e54-3eed-48b2-83a3-1a3fd683b8e0	Kānaḍa
+3eb7ba30-4b94-432e-9618-875ee57e01ab	Mārvā
+1b05a564-059f-445b-b325-cf26318367e3	Miyān malhār
+595de771-fcc2-414c-9df6-ae4ffd898549	Hamsadhvāni
+42dd0ccb-f92a-4622-ae5d-a3be571b4939	Śrīranjani
+a4ec6633-1050-4207-8313-b017194c8fa0	Kamās
+ecd04ceb-b46c-47fc-9045-84ac9160e527	Basant
+a9413dff-91d1-4e29-ad92-c04019dce5b8	Tōḍi
+defad4cc-48aa-4372-a31a-c43624930713	Dēvagāndhāri
+40dbe1db-858f-4366-bef8-9076eb67340d	Śuddh sāraṅg
+978f4c3c-6a12-43fd-8427-c414ee17b252	Mukhāri
+39821826-3327-41d7-9cd5-e22fe7b08360	Mōhanaṁ
+839bb6b4-1577-4a78-9e5d-4906c6453274	Suraṭi
+a7d98897-e2fe-4d75-b9dc-e5b4dc88e1c6	Bihāg
+6f13484e-6fdd-402d-baf3-3835835454d0	Tōḍī
+09c179f3-8b19-4792-a852-e9fa0090e409	Kāpi
+2ed9379f-14c9-49af-8e4d-f9b63e96801f	Alahaiyā bilāval
+b143adaa-f1a6-4de4-8985-a5bd35e96279	Bairāgi
+cda9cbe9-c1aa-42bb-8b4c-e9dfc8af133c	Nāṭakurinji
+a9ee554f-f146-43e9-b2d0-9bb31fd4b57d	Kēdār
+db085e26-665d-4f4c-a2a5-95251c22b69e	Pūrvīkaḷyāṇi
+df85a0a5-b1a8-42f1-a87b-3d7c7ee33fb4	Kēdāragauḷa
+ba3242d0-8d40-4d93-865e-d2e2497ea2a8	Gauḍ malhār
+a47e9d22-847a-46e8-b589-2a3537789f5f	Sāvēri
+a99e07d5-20a0-467b-8dcd-aa5a095177fd	Lalit
+d9c603fa-875f-4b84-b851-c6a345427898	Ābhōgī
+a2f9f182-0ceb-4531-b286-b840b47a54b8	Śankarābharaṇaṁ
+e5c4d94a-b34a-42ef-acd7-f235612350e4	Gauḷa
+fa28470c-d413-44c7-94da-181f530cbfdd	Puriyā dhanaśrī
+4ce0b18d-f4df-41cf-9b40-9166199506b4	Rītigauḷa
+bdd80890-44f1-4a93-8d93-06a418781f97	Śrī
+85ccf631-4cdf-4f6c-a841-0edfcf4255d1	Kāmavardani
+123b09bd-9901-4e64-a65a-10b02c9e0597	Bhairavi
+0277eae5-3411-4b22-9fa8-1b347e7528d1	Ṣanmukhapriya
+6345e8fe-7061-4bdc-842c-dcfd4a379820	Aṭāna
+62b79291-73b0-4c77-a353-0f8bc6ed8362	Dēś
+93c73081-bdf8-4eca-b325-d736b71e9b4b	Khamāj
+b08475a2-1049-433a-be8f-105bf14718fb	Harikāmbhōji
+aa5f376f-06cd-4a69-9cc9-b1077104e0b0	Bēgaḍa
+9ebeb536-30a7-403f-8042-f7c1445c4b87	Nāṭa
+ddff55ae-20f6-4d7d-ba9e-a6c10eeebd41	Yadukula kāṁbōji
+993d6cf6-dc89-4d23-9a9f-8eeed1524872	Sahānā
+063ea5a0-23b1-4bb5-8537-3d924fe8ebb3	Jōg
+54c4214c-05b9-4acc-8f77-6d5786e43a2e	Mārūbihāg
