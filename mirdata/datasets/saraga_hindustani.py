@@ -288,6 +288,7 @@ def load_tempo(fhandle):
 
     """
     tempo_annotation = {}
+    fhandle.reconfigure(encoding="utf-8")
     head, tail = os.path.split(fhandle.name)
     sections_path = tail.split(".")[0] + ".sections-manual-p.txt"
     sections_abs_path = os.path.join(head, sections_path)
@@ -295,6 +296,7 @@ def load_tempo(fhandle):
     sections = []
     try:
         with open(sections_abs_path, "r") as fhandle2:
+            fhandle2.reconfigure(encoding="utf-8")
             reader = csv.reader(fhandle2, delimiter=",")
             for line in reader:
                 if line != "\n":
@@ -379,7 +381,7 @@ def load_sections(fhandle):
     """
     intervals = []
     section_labels = []
-
+    fhandle.reconfigure(encoding="utf-8")
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         if line:

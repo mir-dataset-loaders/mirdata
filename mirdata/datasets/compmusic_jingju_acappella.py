@@ -281,7 +281,7 @@ def load_phrases(fhandle: TextIO) -> annotations.LyricData:
     start_times = []
     end_times = []
     lyrics = []
-
+    fhandle.reconfigure(encoding="utf-8")
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start_times.append(float(line[0]))
@@ -308,7 +308,7 @@ def load_syllable(fhandle: TextIO) -> annotations.LyricData:
     start_times = []
     end_times = []
     events = []
-
+    fhandle.reconfigure(encoding="utf-8")
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start_times.append(float(line[0]))
@@ -352,6 +352,7 @@ class Dataset(core.Dataset):
         metadata = {}
         try:
             with open(metadata_path_laosheng, "r") as fhandle:
+                fhandle.reconfigure(encoding='utf-8')
                 reader = csv.reader(fhandle, delimiter=",")
                 next(reader)
                 for line in reader:

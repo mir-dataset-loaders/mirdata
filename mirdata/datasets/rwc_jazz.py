@@ -245,6 +245,7 @@ class Dataset(core.Dataset):
 
         try:
             with open(metadata_path, "r") as fhandle:
+                fhandle.reconfigure(encoding="utf-8")
                 dialect = csv.Sniffer().sniff(fhandle.read(1024))
                 fhandle.seek(0)
                 reader = csv.reader(fhandle, dialect)
