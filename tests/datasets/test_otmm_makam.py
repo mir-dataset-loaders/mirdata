@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from mirdata import annotations
 from mirdata.datasets import compmusic_otmm_makam
@@ -5,7 +6,7 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-    data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam")
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
     dataset = compmusic_otmm_makam.Dataset(data_home)
@@ -13,10 +14,10 @@ def test_track():
 
     expected_attributes = {
         "track_id": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
-        "pitch_path": "tests/resources/mir_datasets/compmusic_otmm_makam/"
-        + "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch",
-        "mb_tags_path": "tests/resources/mir_datasets/compmusic_otmm_makam/"
-        + "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json",
+        "pitch_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam/")
+        , "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch"),
+        "mb_tags_path":os.path.join(os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam/")
+        , "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json"),
         "form": "sarki",
         "instrumentation": "Solo vocal with accompaniment",
         "mb_url": "http://musicbrainz.org/work/cafcdeaf-e966-4ff0-84fb-f660d2b68365",
@@ -479,7 +480,7 @@ def test_load_pitch():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam")
     dataset = compmusic_otmm_makam.Dataset(data_home)
     metadata = dataset._metadata
 
