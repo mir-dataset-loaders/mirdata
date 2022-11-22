@@ -52,6 +52,22 @@ cante100
    :inherited-members:
 
 
+compmusic_hindustani_rhythm
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_hindustani_rhythm
+   :members:
+   :inherited-members:
+
+
+compmusic_indian_tonic
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_indian_tonic
+   :members:
+   :inherited-members:
+
+
 compmusic_jingju_acappella
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -68,12 +84,21 @@ compmusic_otmm_makam
    :inherited-members:
 
 
+compmusic_raga
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_raga
+   :members:
+   :inherited-members:
+
+
 dagstuhl_choirset
 ^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.dagstuhl_choirset
    :members:
    :inherited-members:
+
 
 dali
 ^^^^

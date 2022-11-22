@@ -109,6 +109,16 @@ Lyrics corresponding to the singing voice of the audio. These may be raw text wi
 or they may be time-aligned events. They may have varying levels of granularity (paragraph, line, word,
 phoneme, character) depending on the dataset.
 
+
+.. _meter:
+
+Meter
+^^^^^^
+Rhythmic meter for each measure. A classical example of meter in Western music would be 4/4. Details how
+many subdivisions and the length of this subdivisions that we do have per each measure.
+
+
+
 .. _melody:
 
 Melody
@@ -147,6 +157,13 @@ Sections
 Musical sections, which may be "flat" or "hierarchical", typically encoded by a sequence of
 timestamps indicating musical section boundary times. Section annotations sometimes also
 include labels for sections, which may indicate repetitions and/or the section type (e.g. Chorus, Verse).
+
+.. _segments:
+
+Segments
+^^^^^^^^
+Segments of particular musical events, e.g. segments of note stability, segments of particular melodic 
+event, and many more.
 
 .. _technique:
 
