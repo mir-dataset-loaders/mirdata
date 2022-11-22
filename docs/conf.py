@@ -45,6 +45,7 @@ autodoc_mock_imports = [
     "yaml",
     "scipy",
     "smart_open",
+    "openpyxl",
 ]
 
 # # -- General configuration ---------------------------------------------------
