@@ -67,7 +67,7 @@ BIBTEX = """
 INDEXES = {
     "default": "1.0",
     "test": "1.0",
-    "1.0": core.Index(filename="compmusic_raga_index.json"),
+    "1.0": core.Index(filename="compmusic_raga_index_1.0.json"),
 }
 
 REMOTES = {
