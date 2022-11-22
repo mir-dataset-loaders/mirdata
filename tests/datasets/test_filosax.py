@@ -20,11 +20,26 @@ def test_track():
 
     expected_attributes = {
         "track_id": "multitrack_02_sax_1",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/filosax/"),"Participant 1/02/Sax.wav"),
-        "annotation_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/filosax/"),"Participant 1/02/annotations.json"),
-        "midi_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/filosax/"),"Participant 1/02/Sax.mid"),
-        "musicXML_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/filosax/"),"Participant 1/02/Sax.musicxml"),
-        "pdf_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/filosax/"),"Participant 1/02/Sax.pdf"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/Sax.wav",
+        ),
+        "annotation_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/annotations.json",
+        ),
+        "midi_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/Sax.mid",
+        ),
+        "musicXML_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/Sax.musicxml",
+        ),
+        "pdf_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/Sax.pdf",
+        ),
     }
 
     expected_property_types = {

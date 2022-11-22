@@ -13,12 +13,18 @@ def test_track():
 
     expected_attributes = {
         "track_id": "RM-J004",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/rwc_jazz/")
-        , "audio/rwc-j-m01/4.wav"),
-        "sections_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/rwc_jazz/")
-        , "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT"),
-        "beats_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/rwc_jazz/")
-        , "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_jazz/"),
+            "audio/rwc-j-m01/4.wav",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_jazz/"),
+            "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_jazz/"),
+            "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT",
+        ),
         "piece_number": "No. 4",
         "suffix": "M01",
         "track_number": "Tr. 04",
@@ -126,7 +132,7 @@ def test_load_metadata():
         "suffix": "M04",
         "track_number": "Tr. 09",
         "title": "Joyful, Joyful, We Adore Thee",
-        "artist": (u"K’s Band"),
+        "artist": ("K’s Band"),
         "duration": 270,
         "variation": "Style (Free jazz)",
         "instruments": "Pf & Bs & Dr & Gt & Ts & Fl & Bar",

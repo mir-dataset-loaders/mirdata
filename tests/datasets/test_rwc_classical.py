@@ -14,12 +14,18 @@ def test_track():
 
     expected_attributes = {
         "track_id": "RM-C003",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/rwc_classical/")
-        , "audio/rwc-c-m01/3.wav"),
-        "sections_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/rwc_classical/")
-        , "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT"),
-        "beats_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/rwc_classical/")
-        , "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "audio/rwc-c-m01/3.wav",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+        ),
         "piece_number": "No. 3",
         "suffix": "M01",
         "track_number": "Tr. 03",

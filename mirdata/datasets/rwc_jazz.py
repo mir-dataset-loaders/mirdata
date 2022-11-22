@@ -244,8 +244,7 @@ class Dataset(core.Dataset):
         metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-j.csv")
 
         try:
-            with open(metadata_path, "r") as fhandle:
-                fhandle.reconfigure(encoding="utf-8")
+            with open(metadata_path, "r", encoding="utf-8") as fhandle:
                 dialect = csv.Sniffer().sniff(fhandle.read(1024))
                 fhandle.seek(0)
                 reader = csv.reader(fhandle, dialect)

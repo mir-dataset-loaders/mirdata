@@ -13,8 +13,10 @@ def test_track():
 
     expected_attributes = {
         "track_id": "Fl-ord-C4-mf-N-T14d",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/tinysol/")
-        , "audio/Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tinysol/"),
+            "audio/Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav",
+        ),
         "dynamics": "mf",
         "fold": 0,
         "family": "Winds",

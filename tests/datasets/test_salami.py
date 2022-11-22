@@ -14,15 +14,25 @@ def test_track():
 
     expected_attributes = {
         "track_id": "2",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/salami/"), "audio/2.mp3"),
-        "sections_annotator1_uppercase_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/salami/")
-        , "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt"),
-        "sections_annotator1_lowercase_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/salami/")
-        , "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt"),
-        "sections_annotator2_uppercase_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/salami/")
-        , "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt"),
-        "sections_annotator2_lowercase_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/salami/")
-        , "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"), "audio/2.mp3"
+        ),
+        "sections_annotator1_uppercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt",
+        ),
+        "sections_annotator1_lowercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt",
+        ),
+        "sections_annotator2_uppercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt",
+        ),
+        "sections_annotator2_lowercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt",
+        ),
         "source": "Codaich",
         "annotator_1_id": "5",
         "annotator_2_id": "8",

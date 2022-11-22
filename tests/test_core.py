@@ -36,7 +36,9 @@ def test_track():
         track.to_jams()
 
     path_good = track.get_path("annotation")
-    assert os.path.normpath(path_good) == os.path.normpath("tests/resources/mir_datasets/asdf/asdd")
+    assert os.path.normpath(path_good) == os.path.normpath(
+        "tests/resources/mir_datasets/asdf/asdd"
+    )
     path_none = track.get_path("audio")
     assert path_none is None
 
@@ -191,15 +193,21 @@ def test_dataset_versions():
 
     dataset = VersionTest("asdf")
     assert dataset.version == "1"
-    assert os.path.normpath(dataset.index_path) == os.path.normpath("asdf/mirdata_indexes/blah_1.json")
+    assert os.path.normpath(dataset.index_path) == os.path.normpath(
+        "asdf/mirdata_indexes/blah_1.json"
+    )
 
     dataset_default = VersionTest("asdf", version="default")
     assert dataset_default.version == "1"
-    assert os.path.normpath(dataset_default.index_path) == os.path.normpath("asdf/mirdata_indexes/blah_1.json")
+    assert os.path.normpath(dataset_default.index_path) == os.path.normpath(
+        "asdf/mirdata_indexes/blah_1.json"
+    )
 
     dataset_1 = VersionTest("asdf", version="1")
     assert dataset_1.version == "1"
-    assert os.path.normpath(dataset_1.index_path) == os.path.normpath("asdf/mirdata_indexes/blah_1.json")
+    assert os.path.normpath(dataset_1.index_path) == os.path.normpath(
+        "asdf/mirdata_indexes/blah_1.json"
+    )
     with pytest.raises(FileNotFoundError):
         dataset_1._index
 
@@ -228,7 +236,8 @@ def test_dataset_versions():
     dataset_real = VersionTest("asdf", version="real")
     assert dataset_real.version == "real"
     assert os.path.normpath(dataset_real.index_path) == os.path.join(
-        local_index_path, os.path.normpath("mirdata/datasets/indexes/beatles_index_1.2.json")
+        local_index_path,
+        os.path.normpath("mirdata/datasets/indexes/beatles_index_1.2.json"),
     )
     idx_test = dataset_real._index
     assert isinstance(idx_test, dict)
@@ -303,7 +312,9 @@ def test_multitrack():
     )
 
     path_good = mtrack.get_path("audio_master")
-    assert os.path.normpath(path_good) == os.path.normpath("tests/resources/mir_datasets/foo/bar")
+    assert os.path.normpath(path_good) == os.path.normpath(
+        "tests/resources/mir_datasets/foo/bar"
+    )
     path_none = mtrack.get_path("score")
     assert path_none is None
 

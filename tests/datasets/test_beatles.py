@@ -13,16 +13,26 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/beatles/")
-        , "audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav"),
-        "beats_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/beatles/")
-        , "annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt"),
-        "chords_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/beatles/")
-        , "annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab"),
-        "keys_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/beatles/")
-        , "annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab"),
-        "sections_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/beatles/")
-        , "annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt",
+        ),
+        "chords_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        ),
+        "keys_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        ),
         "title": "11_-_Do_You_Want_To_Know_A_Secret",
         "track_id": "0111",
     }

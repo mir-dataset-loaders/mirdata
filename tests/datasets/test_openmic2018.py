@@ -14,8 +14,14 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/openmic2018/"),"audio/000/000046_3840.ogg"),
-        "vggish_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/openmic2018/"),"vggish/000/000046_3840.json"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/openmic2018/"),
+            "audio/000/000046_3840.ogg",
+        ),
+        "vggish_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/openmic2018/"),
+            "vggish/000/000046_3840.json",
+        ),
         "track_id": "000046_3840",
         "title": "Yosemite",
         "artist": "Nicky Cook",

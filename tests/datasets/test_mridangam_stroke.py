@@ -11,8 +11,10 @@ def test_track():
     dataset = mridangam_stroke.Dataset(data_home)
     track = dataset.track(default_trackid)
     expected_attributes = {
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/mridangam_stroke/")
-        ,"mridangam_stroke_1.5/B/224030__akshaylaya__bheem-b-001.wav"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/mridangam_stroke/"),
+            "mridangam_stroke_1.5/B/224030__akshaylaya__bheem-b-001.wav",
+        ),
         "track_id": "224030",
         "stroke_name": "bheem",
         "tonic": "B",

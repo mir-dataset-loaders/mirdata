@@ -12,9 +12,18 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/beatport_key/"),"audio/100066 Lindstrom - Monsteer (Original Mix).mp3"),
-        "keys_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/beatport_key/"),"keys/100066 Lindstrom - Monsteer (Original Mix).txt"),
-        "metadata_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/beatport_key/"),"meta/100066 Lindstrom - Monsteer (Original Mix).json"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatport_key/"),
+            "audio/100066 Lindstrom - Monsteer (Original Mix).mp3",
+        ),
+        "keys_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatport_key/"),
+            "keys/100066 Lindstrom - Monsteer (Original Mix).txt",
+        ),
+        "metadata_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatport_key/"),
+            "meta/100066 Lindstrom - Monsteer (Original Mix).json",
+        ),
         "title": "100066 Lindstrom - Monsteer (Original Mix)",
         "track_id": "1",
     }

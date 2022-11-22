@@ -14,7 +14,9 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "path": os.path.normpath("tests/resources/mir_datasets/acousticbrainz_genre/acousticbrainz-mediaeval-validation/be/be9e01e5-8f93-494d-bbaa-ddcc5a52f629.json"),
+        "path": os.path.normpath(
+            "tests/resources/mir_datasets/acousticbrainz_genre/acousticbrainz-mediaeval-validation/be/be9e01e5-8f93-494d-bbaa-ddcc5a52f629.json"
+        ),
         "track_id": "tagtraum#validation#be9e01e5-8f93-494d-bbaa-ddcc5a52f629#2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960#trance########",
         "genre": ["trance"],
         "mbid": "be9e01e5-8f93-494d-bbaa-ddcc5a52f629",
@@ -39,7 +41,9 @@ def test_track():
 
 
 def test_load_extractor():
-    path = os.path.normpath("tests/resources/mir_datasets/acousticbrainz_genre/acousticbrainz-mediaeval-validation/be/be9e01e5-8f93-494d-bbaa-ddcc5a52f629.json")
+    path = os.path.normpath(
+        "tests/resources/mir_datasets/acousticbrainz_genre/acousticbrainz-mediaeval-validation/be/be9e01e5-8f93-494d-bbaa-ddcc5a52f629.json"
+    )
     extractor_data = acousticbrainz_genre.load_extractor(path)
 
     assert isinstance(extractor_data, dict)
@@ -81,14 +85,18 @@ def test_filter_index():
 
 def test_download(httpserver):
 
-    data_home = os.path.normpath("tests/resources/mir_datasets/acousticbrainz_genre_download")
+    data_home = os.path.normpath(
+        "tests/resources/mir_datasets/acousticbrainz_genre_download"
+    )
 
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
     httpserver.serve_content(
         open(
-            os.path.normpath("tests/resources/download/acousticbrainz_genre_index.json.zip"),
+            os.path.normpath(
+                "tests/resources/download/acousticbrainz_genre_index.json.zip"
+            ),
             "rb",
         ).read()
     )
@@ -112,7 +120,9 @@ def test_download(httpserver):
 
     httpserver.serve_content(
         open(
-            os.path.normpath("tests/resources/download/acousticbrainz-mediaeval-features-train-01.tar.bz2"),
+            os.path.normpath(
+                "tests/resources/download/acousticbrainz-mediaeval-features-train-01.tar.bz2"
+            ),
             "rb",
         ).read()
     )

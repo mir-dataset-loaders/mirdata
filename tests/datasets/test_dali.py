@@ -15,6 +15,7 @@ from mirdata import annotations
 from tests.test_utils import run_track_tests
 import numpy as np
 
+
 def test_track():
 
     default_trackid = "4b196e6c99574dd49ad00d56e132712b"
@@ -24,11 +25,15 @@ def test_track():
 
     expected_attributes = {
         "album": "Mezmerize",
-        "annotation_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/dali/")
-        , "annotations/4b196e6c99574dd49ad00d56e132712b.gz"),
+        "annotation_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/dali/"),
+            "annotations/4b196e6c99574dd49ad00d56e132712b.gz",
+        ),
         "artist": "System Of A Down",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/dali/")
-        , "audio/4b196e6c99574dd49ad00d56e132712b.mp3"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/dali/"),
+            "audio/4b196e6c99574dd49ad00d56e132712b.mp3",
+        ),
         "audio_url": "zUzd9KyIDrM",
         "dataset_version": 1,
         "genres": ["Pop", "Rock", "Hard Rock", "Metal"],

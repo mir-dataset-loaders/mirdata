@@ -15,22 +15,38 @@ def test_track():
     expected_attributes = {
         "track_id": "50_Irani_Bhairavi_Thumri",
         "title": "Irani Bhairavi Thumri",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/")
-        ,"saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3"),
-        "ctonic_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/")
-        , "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt"),
-        "pitch_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/")
-        , "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt"),
-        "tempo_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/")
-        , "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt"),
-        "sama_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/")
-        , "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt"),
-        "sections_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/")
-        , "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt"),
-        "phrases_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/")
-        , "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt"),
-        "metadata_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/")
-        , "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3",
+        ),
+        "ctonic_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt",
+        ),
+        "pitch_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt",
+        ),
+        "tempo_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt",
+        ),
+        "sama_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt",
+        ),
+        "phrases_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt",
+        ),
+        "metadata_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json",
+        ),
     }
 
     expected_property_types = {

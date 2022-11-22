@@ -18,12 +18,24 @@ def test_track():
     expected_attributes = {
         "artist": "Toronjo",
         "duration": 179.0,
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/cante100/"), "cante100audio/008_PacoToronjo_Fandangos.mp3"),
-        "f0_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/cante100/"),"cante100midi_f0/008_PacoToronjo_Fandangos.f0.csv"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/cante100/"),
+            "cante100audio/008_PacoToronjo_Fandangos.mp3",
+        ),
+        "f0_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/cante100/"),
+            "cante100midi_f0/008_PacoToronjo_Fandangos.f0.csv",
+        ),
         "identifier": "4eebe839-82bb-426e-914d-7c4525dd9dad",
-        "notes_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/cante100/"),"cante100_automaticTranscription/008_PacoToronjo_Fandangos.notes.csv"),
+        "notes_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/cante100/"),
+            "cante100_automaticTranscription/008_PacoToronjo_Fandangos.notes.csv",
+        ),
         "release": "Atlas del cante flamenco",
-        "spectrogram_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/cante100/"),"cante100_spectrum/008_PacoToronjo_Fandangos.spectrum.csv"),
+        "spectrogram_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/cante100/"),
+            "cante100_spectrum/008_PacoToronjo_Fandangos.spectrum.csv",
+        ),
         "title": "Huelva Como Capital",
         "track_id": "008",
     }

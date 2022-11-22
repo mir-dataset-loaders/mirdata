@@ -17,19 +17,31 @@ def test_track():
     expected_attributes = {
         "track_id": "beethoven-violin",
         "audio_paths": [
-            os.path.join(os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/")
-            , "audio/beethoven/violin1.wav"),
-            os.path.join(os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/")
-            , "audio/beethoven/violin2.wav"),
-            os.path.join(os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/")
-            , "audio/beethoven/violin3.wav"),
-            os.path.join(os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/")
-            , "audio/beethoven/violin4.wav"),
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+                "audio/beethoven/violin1.wav",
+            ),
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+                "audio/beethoven/violin2.wav",
+            ),
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+                "audio/beethoven/violin3.wav",
+            ),
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+                "audio/beethoven/violin4.wav",
+            ),
         ],
-        "notes_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/")
-        , "annotations/beethoven/violin.txt"),
-        "notes_original_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/")
-        , "annotations/beethoven/violin_o.txt"),
+        "notes_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+            "annotations/beethoven/violin.txt",
+        ),
+        "notes_original_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+            "annotations/beethoven/violin_o.txt",
+        ),
         "instrument": "violin",
         "piece": "beethoven",
         "n_voices": 4,

@@ -9,7 +9,9 @@ from smart_open import open
 
 import pytest
 
-DEFAULT_DATA_HOME = os.path.normpath(os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets"))
+DEFAULT_DATA_HOME = os.path.normpath(
+    os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
+)
 
 
 def run_track_tests(track, expected_attributes, expected_property_types):
@@ -115,10 +117,9 @@ def test_md5(mocker):
         ),
     ],
 )
-# mirdata\tests\indexes\test_index_valid.json
 def test_validate_index(test_index, expected_missing, expected_inv_checksum):
     index_path = os.path.normpath(os.path.join("tests/indexes", test_index))
-    with open(index_path,'r') as index_file:
+    with open(index_path, "r") as index_file:
         test_index = json.load(index_file)
 
     missing_files, invalid_checksums = validate.validate_index(

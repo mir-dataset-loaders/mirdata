@@ -14,14 +14,25 @@ def test_track():
 
     expected_attributes = {
         "track_id": "10161_chorus",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/ikala/")
-        , "Wavfile/10161_chorus.wav"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "Wavfile/10161_chorus.wav",
+        ),
         "song_id": "10161",
         "section": "chorus",
         "singer_id": "1",
-        "f0_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/ikala/"),"PitchLabel/10161_chorus.pv"),
-        "lyrics_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/ikala/"),"Lyrics/10161_chorus.lab"),
-        "notes_pyin_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/ikala/"),"ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv"),
+        "f0_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "PitchLabel/10161_chorus.pv",
+        ),
+        "lyrics_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "Lyrics/10161_chorus.lab",
+        ),
+        "notes_pyin_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
+        ),
     }
 
     expected_property_types = {

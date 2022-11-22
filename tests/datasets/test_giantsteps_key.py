@@ -12,9 +12,18 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/giantsteps_key/"),"audio/10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix).mp3"),
-        "keys_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/giantsteps_key/"),"keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix).txt"),
-        "metadata_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/giantsteps_key/"),"meta/10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix).json"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/giantsteps_key/"),
+            "audio/10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix).mp3",
+        ),
+        "keys_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/giantsteps_key/"),
+            "keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix).txt",
+        ),
+        "metadata_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/giantsteps_key/"),
+            "meta/10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix).json",
+        ),
         "title": "10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix)",
         "track_id": "3",
     }

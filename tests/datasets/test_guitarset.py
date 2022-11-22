@@ -16,16 +16,26 @@ def test_track():
 
     expected_attributes = {
         "track_id": "03_BN3-119-G_solo",
-        "audio_hex_cln_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/guitarset/")
-        , "audio_hex-pickup_debleeded/03_BN3-119-G_solo_hex_cln.wav"),
-        "audio_hex_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/guitarset/")
-        , "audio_hex-pickup_original/03_BN3-119-G_solo_hex.wav"),
-        "audio_mic_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/guitarset/")
-        , "audio_mono-mic/03_BN3-119-G_solo_mic.wav"),
-        "audio_mix_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/guitarset/")
-        , "audio_mono-pickup_mix/03_BN3-119-G_solo_mix.wav"),
-        "jams_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/guitarset/")
-        , "annotation/03_BN3-119-G_solo.jams"),
+        "audio_hex_cln_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/guitarset/"),
+            "audio_hex-pickup_debleeded/03_BN3-119-G_solo_hex_cln.wav",
+        ),
+        "audio_hex_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/guitarset/"),
+            "audio_hex-pickup_original/03_BN3-119-G_solo_hex.wav",
+        ),
+        "audio_mic_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/guitarset/"),
+            "audio_mono-mic/03_BN3-119-G_solo_mic.wav",
+        ),
+        "audio_mix_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/guitarset/"),
+            "audio_mono-pickup_mix/03_BN3-119-G_solo_mix.wav",
+        ),
+        "jams_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/guitarset/"),
+            "annotation/03_BN3-119-G_solo.jams",
+        ),
         "player_id": "03",
         "tempo": 119,
         "mode": "solo",

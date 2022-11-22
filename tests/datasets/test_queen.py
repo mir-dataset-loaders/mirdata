@@ -13,13 +13,22 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/queen/"),"audio/Greatest Hits I/01 Bohemian Rhapsody.flac"),
-        "chords_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/queen/")
-        ,"annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"),
-        "keys_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/queen/")
-        , "annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"),
-        "sections_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/queen/")
-        , "annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/queen/"),
+            "audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
+        ),
+        "chords_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/queen/"),
+            "annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        ),
+        "keys_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/queen/"),
+            "annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/queen/"),
+            "annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        ),
         "title": "01 Bohemian Rhapsody",
         "track_id": "0",
     }

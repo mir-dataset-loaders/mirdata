@@ -16,10 +16,19 @@ def test_track():
     expected_attributes = {
         "track_id": "Track00001-S00",
         "mtrack_id": "Track00001",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/slakh/"),"babyslakh_16k/Track00001/stems/S00.wav"),
-        "midi_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/slakh/"),"babyslakh_16k/Track00001/MIDI/S00.mid"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/slakh/"),
+            "babyslakh_16k/Track00001/stems/S00.wav",
+        ),
+        "midi_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/slakh/"),
+            "babyslakh_16k/Track00001/MIDI/S00.mid",
+        ),
         "metadata_path": (
-            os.path.join(os.path.normpath("tests/resources/mir_datasets/slakh/"),"babyslakh_16k/Track00001/metadata.yaml")
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/slakh/"),
+                "babyslakh_16k/Track00001/metadata.yaml",
+            )
         ),
         "instrument": "Guitar",
         "integrated_loudness": -12.82074180245363,
@@ -76,12 +85,21 @@ def test_track_full():
     expected_attributes = {
         "track_id": "Track00001-S00",
         "mtrack_id": "Track00001",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/slakh/"),"slakh2100_flac_redux/train/Track00001/stems/S00.flac"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/slakh/"),
+            "slakh2100_flac_redux/train/Track00001/stems/S00.flac",
+        ),
         "midi_path": (
-            os.path.join(os.path.normpath("tests/resources/mir_datasets/slakh/"),"slakh2100_flac_redux/train/Track00001/MIDI/S00.mid")
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/slakh/"),
+                "slakh2100_flac_redux/train/Track00001/MIDI/S00.mid",
+            )
         ),
         "metadata_path": (
-            os.path.join(os.path.normpath("tests/resources/mir_datasets/slakh/"),"slakh2100_flac_redux/train/Track00001/metadata.yaml")
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/slakh/"),
+                "slakh2100_flac_redux/train/Track00001/metadata.yaml",
+            )
         ),
         "instrument": "Guitar",
         "integrated_loudness": -12.82074180245363,
@@ -165,10 +183,19 @@ def test_multitrack():
 
     expected_attributes = {
         "mtrack_id": "Track00001",
-        "midi_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/slakh/"),"babyslakh_16k/Track00001/all_src.mid"),
-        "mix_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/slakh/"),"babyslakh_16k/Track00001/mix.wav"),
+        "midi_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/slakh/"),
+            "babyslakh_16k/Track00001/all_src.mid",
+        ),
+        "mix_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/slakh/"),
+            "babyslakh_16k/Track00001/mix.wav",
+        ),
         "metadata_path": (
-            os.path.join(os.path.normpath("tests/resources/mir_datasets/slakh/"),"babyslakh_16k/Track00001/metadata.yaml")
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/slakh/"),
+                "babyslakh_16k/Track00001/metadata.yaml",
+            )
         ),
         "data_split": None,
         "track_ids": [

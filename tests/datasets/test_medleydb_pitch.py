@@ -14,12 +14,18 @@ def test_track():
 
     expected_attributes = {
         "track_id": "AClassicEducation_NightOwl_STEM_08",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/")
-        , "audio/AClassicEducation_NightOwl_STEM_08.wav"),
-        "pitch_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/")
-        , "pitch/AClassicEducation_NightOwl_STEM_08.csv"),
-        "notes_pyin_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/")
-        , "medleydb-pitch-pyin-notes/AClassicEducation_NightOwl_STEM_08_vamp_pyin_pyin_notes.csv"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
+            "audio/AClassicEducation_NightOwl_STEM_08.wav",
+        ),
+        "pitch_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
+            "pitch/AClassicEducation_NightOwl_STEM_08.csv",
+        ),
+        "notes_pyin_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
+            "medleydb-pitch-pyin-notes/AClassicEducation_NightOwl_STEM_08_vamp_pyin_pyin_notes.csv",
+        ),
         "instrument": "male singer",
         "artist": "AClassicEducation",
         "title": "NightOwl",

@@ -15,11 +15,26 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),"audio/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.wav"),
-        "key_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),"keys/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.txt"),
-        "spectrum_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),"spectrums/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json"),
-        "hpcp_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),"HPCPs/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json"),
-        "musicbrainz_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),"musicbrainz_metadata/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "audio/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.wav",
+        ),
+        "key_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "keys/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.txt",
+        ),
+        "spectrum_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "spectrums/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        ),
+        "hpcp_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "HPCPs/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        ),
+        "musicbrainz_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "musicbrainz_metadata/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        ),
         "title": "01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D",
         "track_id": "0",
     }

@@ -13,12 +13,18 @@ def test_track():
     track = dataset.track(default_trackid)
     expected_attributes = {
         "genre": "country",
-        "audio_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/gtzan_genre/")
-        , "gtzan_genre/genres/country/country.00000.wav"),
-        "beats_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/gtzan_genre/")
-        , "gtzan_tempo_beat-main/beats/gtzan_country_00000.beats"),
-        "tempo_path": os.path.join(os.path.normpath("tests/resources/mir_datasets/gtzan_genre/")
-        , "gtzan_tempo_beat-main/tempo/gtzan_country_00000.bpm"),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/gtzan_genre/"),
+            "gtzan_genre/genres/country/country.00000.wav",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/gtzan_genre/"),
+            "gtzan_tempo_beat-main/beats/gtzan_country_00000.beats",
+        ),
+        "tempo_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/gtzan_genre/"),
+            "gtzan_tempo_beat-main/tempo/gtzan_country_00000.bpm",
+        ),
         "track_id": "country.00000",
     }
     expected_properties = {
