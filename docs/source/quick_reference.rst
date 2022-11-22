@@ -148,6 +148,13 @@ Musical sections, which may be "flat" or "hierarchical", typically encoded by a 
 timestamps indicating musical section boundary times. Section annotations sometimes also
 include labels for sections, which may indicate repetitions and/or the section type (e.g. Chorus, Verse).
 
+.. _segments:
+
+Segments
+^^^^^^^^
+Segments of particular musical events, e.g. segments of note stability, segments of particular melodic 
+event, and many more.
+
 .. _technique:
 
 Technique
