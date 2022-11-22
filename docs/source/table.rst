@@ -80,6 +80,19 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - .. line-block::
+
+        (CompMusic) Raga
+
+     - - audio: 🔑
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`segments`
+       - :ref:`tonic`
+     - 780
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
    * - Dagstuhl ChoirSet
      - - multitrack audio: ✅
        - annotations: ✅
