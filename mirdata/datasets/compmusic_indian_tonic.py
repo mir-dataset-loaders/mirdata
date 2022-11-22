@@ -236,7 +236,6 @@ class Dataset(core.Dataset):
         metadata = {}
         try:
             for meta in meta_files:
-                print(meta)
                 with open(meta, "r") as fhandle:
                     data = json.load(fhandle)
                     if "IITM" not in meta:
