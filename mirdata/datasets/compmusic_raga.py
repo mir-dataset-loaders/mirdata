@@ -245,7 +245,7 @@ class Track(core.Track):
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(audio_path):
-    """Load a Saraga Carnatic audio file.
+    """Load an audio file.
 
     Args:
         audio_path (str): path to audio file
