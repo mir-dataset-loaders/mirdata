@@ -119,6 +119,15 @@ class Track(core.Track):
     Cached Properties:
         beats (BeatData): beats annotation
         meter (string): meter annotation
+        mbid (string): MusicBrainz ID
+        name (string): name of the recording in the dataset
+        artist (string): artists name
+        release (string): release name
+        lead_instrument_code (string): code for the load instrument
+        taala (string): taala annotation
+        raaga (string): raaga annotation
+        num_of_beats (int): number of beats in annotation
+        num_of_samas (int): number of samas in annotation
 
     """
 
@@ -227,7 +236,7 @@ class Track(core.Track):
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(audio_path):
-    """Load a Saraga Carnatic audio file.
+    """Load an audio file.
 
     Args:
         audio_path (str): path to audio file
@@ -363,7 +372,7 @@ class Dataset(core.Dataset):
                         if cell.value:
                             columns.append(cell.value)
 
-                    for row in range(2, rows + 1):
+                    for row in range(2, rows):
                         metadata[str(reader.cell(row, 2).value)] = {
                             "mbid": reader.cell(row, 3).value,
                             "name": reader.cell(row, 4).value,
