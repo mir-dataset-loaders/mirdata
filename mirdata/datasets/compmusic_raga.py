@@ -438,15 +438,15 @@ class Dataset(core.Dataset):
                     artist_name = meta[song]["path"].split("/")[-4]
                     song_mbid = meta[song]["mbid"]
                     ragaid = meta[song]["ragaid"]
-                metadata[artist_name + "." + song_name] = {
-                    "recording": song_name,
-                    "concert": concert_name,
-                    "artist": artist_name,
-                    "mbid": song_mbid,
-                    "raga": mapping[ragaid],
-                    "ragaid": ragaid,
-                    "tradition": tradition,
-                }
+                    metadata[artist_name + "." + song_name] = {
+                        "recording": song_name,
+                        "concert": concert_name,
+                        "artist": artist_name,
+                        "mbid": song_mbid,
+                        "raga": mapping[ragaid],
+                        "ragaid": ragaid,
+                        "tradition": tradition,
+                    }
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
         return metadata
