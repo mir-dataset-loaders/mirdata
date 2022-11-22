@@ -6,12 +6,12 @@ import glob
 from mirdata.validate import md5
 
 
-RAGA_DATASET_INDEX_PATH = "../mirdata/datasets/indexes/compmusic_raga_index.json"
+RAGA_DATASET_INDEX_PATH = "../mirdata/datasets/indexes/compmusic_raga_index_1.0.json"
 
 
 def make_compmusic_raga_index(dataset_data_path):
 
-    raga_index = {"version": "1.0", "tracks": {}, "metadata": []}
+    raga_index = {"version": "1.0", "tracks": {}}
     dataset_folder = "RagaDataset"
 
     traditions = ["Carnatic", "Hindustani"]
@@ -52,7 +52,7 @@ def make_compmusic_raga_index(dataset_data_path):
                                             artist_name,
                                             concert_name,
                                             song_name,
-                                            song_name + ".wav"
+                                            song_name + ".mp3"
                                         ),
                                         md5(audio_file),
                                     )
@@ -96,7 +96,7 @@ def make_compmusic_raga_index(dataset_data_path):
                                             song_name,
                                             song_name + ".pitch"
                                         ),
-                                        md5(os.path.join(feat_basefile, song_name + ".tonic")),
+                                        md5(os.path.join(feat_basefile, song_name + ".pitch")),
                                     )
                                     #pitch postprocessed
                                     raga_index["tracks"][id]["pitch_post_processed"] = (
@@ -140,17 +140,6 @@ def make_compmusic_raga_index(dataset_data_path):
                                         ),
                                         md5(os.path.join(feat_basefile, song_name + ".taniSegKNN")),
                                     )
-
-    raga_index["metadata"] = {
-        "carnatic": [
-            os.path.join(dataset_folder, "carnatic", "_info_", "ragaId_to_ragaName_mapping.json"),
-            md5(os.path.join(dataset_data_path, "carnatic", "_info_", "ragaId_to_ragaName_mapping.json")),
-            ],
-        "hindustani": [
-            os.path.join(dataset_folder, "hindustani", "_info_", "ragaId_to_ragaName_mapping.json"),
-            md5(os.path.join(dataset_data_path, "hindustani", "_info_", "ragaId_to_ragaName_mapping.json")),
-            ]
-    }
 
     with open(RAGA_DATASET_INDEX_PATH, "w") as fhandle:
         json.dump(raga_index, fhandle, indent=2)
