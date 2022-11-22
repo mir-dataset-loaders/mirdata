@@ -372,7 +372,8 @@ class Dataset(core.Dataset):
                         if cell.value:
                             columns.append(cell.value)
 
-                    for row in range(2, rows):
+                    rows_it = range(2, rows) if rows > 2 else range(2, rows + 1)
+                    for row in rows_it:
                         metadata[str(reader.cell(row, 2).value)] = {
                             "mbid": reader.cell(row, 3).value,
                             "name": reader.cell(row, 4).value,
