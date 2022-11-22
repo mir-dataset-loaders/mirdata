@@ -69,6 +69,18 @@
    * - .. line-block::
 
         (CompMusic)
+        Hindustani Rhythm
+
+     - - audio: 🔑
+       - annotations: 🔑
+     - - :ref:`beats`
+       - :ref:`meter`
+     - 151
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - .. line-block::
+        (CompMusic)
         Indian Tonic
 
      - - audio: 🔑

@@ -100,7 +100,6 @@ Key
 ^^^
 Musical key. This can be defined globally for an audio file or as a sequence of events.
 
-
 .. _lyrics:
 
 Lyrics
