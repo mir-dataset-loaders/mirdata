@@ -14,6 +14,7 @@ DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
     "cante100": "008",
+    "compmusic_indian_tonic": "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180",
     "compmusic_jingju_acappella": "lseh-Tan_Yang_jia-Hong_yang_dong-qm",
     "compmusic_otmm_makam": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
     "compmusic_raga": "Aruna_Sairam.Valli_Kanavan",
