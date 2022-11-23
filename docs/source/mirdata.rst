@@ -52,6 +52,14 @@ cante100
    :inherited-members:
 
 
+compmusic_carnatic_rhythm
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_carnatic_rhythm
+   :members:
+   :inherited-members:
+
+
 compmusic_hindustani_rhythm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
