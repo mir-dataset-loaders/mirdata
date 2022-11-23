@@ -14,26 +14,23 @@ def test_track():
 
     expected_attributes = {
         "track_id": "csic.1995_ansina1_01",
-        "audio_path": "tests/resources/mir_datasets/candombe/" \
-            "candombe_audio/csic.1995_ansina1_01.flac",
-        "beats_path": "tests/resources/mir_datasets/candombe/" \
-            "candombe_annotations/with_bar_number/csic.1995_ansina1_01.csv",
+        "audio_path": "tests/resources/mir_datasets/candombe/"
+        "candombe_audio/csic.1995_ansina1_01.flac",
+        "beats_path": "tests/resources/mir_datasets/candombe/"
+        "candombe_annotations/with_bar_number/csic.1995_ansina1_01.csv",
     }
 
-    expected_property_types = {
-        "beats": annotations.BeatData,
-        "audio": tuple
-    }
+    expected_property_types = {"beats": annotations.BeatData, "audio": tuple}
 
     assert track._track_paths == {
-      "audio": [
-        "candombe_audio/csic.1995_ansina1_01.flac",
-        "fe9bb8edaa46892e4f094a07583ecfb7"
+        "audio": [
+            "candombe_audio/csic.1995_ansina1_01.flac",
+            "fe9bb8edaa46892e4f094a07583ecfb7",
         ],
-      "beats": [
-        "candombe_annotations/with_bar_number/csic.1995_ansina1_01.csv",
-        "3abfa7a3a13225738b39769a5ef0726a"
-        ]
+        "beats": [
+            "candombe_annotations/with_bar_number/csic.1995_ansina1_01.csv",
+            "3abfa7a3a13225738b39769a5ef0726a",
+        ],
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -70,8 +67,10 @@ def test_to_jams():
 
 def test_load_beats():
     # load a file which exists
-    beats_path = "tests/resources/mir_datasets/candombe/candombe_annotations/" \
+    beats_path = (
+        "tests/resources/mir_datasets/candombe/candombe_annotations/"
         "with_bar_number/csic.1995_ansina1_01.csv"
+    )
     beats_data = candombe.load_beats(beats_path)
 
     # check types
@@ -80,17 +79,22 @@ def test_load_beats():
     # ... etc
 
     # check values
-    assert np.array_equal(beats_data.times, np.array([
-        0.548571428,
-        0.993877551,
-        1.461405895,
-        1.895328798,
-        2.332653061,
-        2.809024943,
-        3.253650793,
-        3.684126984,
-        4.115306122,
-        4.581587301,
-        5.019863945,
-        5.473469387,
-    ]))
+    assert np.array_equal(
+        beats_data.times,
+        np.array(
+            [
+                0.548571428,
+                0.993877551,
+                1.461405895,
+                1.895328798,
+                2.332653061,
+                2.809024943,
+                3.253650793,
+                3.684126984,
+                4.115306122,
+                4.581587301,
+                5.019863945,
+                5.473469387,
+            ]
+        ),
+    )

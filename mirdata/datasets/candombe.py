@@ -45,19 +45,18 @@ INDEXES = {
 
 
 REMOTES = {
-    'annotations': download_utils.RemoteFileMetadata(
-        filename='candombe_annotations.zip',
-        url='https://zenodo.org/record/6533068/files/candombe_annotations.zip',
-        checksum='f78aff60aa413cb4960c0c77cc31c243',
-        destination_dir=None
+    "annotations": download_utils.RemoteFileMetadata(
+        filename="candombe_annotations.zip",
+        url="https://zenodo.org/record/6533068/files/candombe_annotations.zip",
+        checksum="f78aff60aa413cb4960c0c77cc31c243",
+        destination_dir=None,
     ),
-    'audio': download_utils.RemoteFileMetadata(
-        filename='candombe_audio.zip',
-        url='https://zenodo.org/record/6533068/files/candombe_audio.zip',
-        checksum='ccd7f437024807b1a52c0818aa0b7f06',
-        destination_dir=None
+    "audio": download_utils.RemoteFileMetadata(
+        filename="candombe_audio.zip",
+        url="https://zenodo.org/record/6533068/files/candombe_audio.zip",
+        checksum="ccd7f437024807b1a52c0818aa0b7f06",
+        destination_dir=None,
     ),
-
 }
 
 LICENSE_INFO = """
@@ -83,19 +82,15 @@ class Track(core.Track):
         annotation (EventData): a description of this annotation
 
     """
+
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
 
         super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
+            track_id, data_home, dataset_name, index, metadata,
         )
-        
+
         self.audio_path = self.get_path("audio")
         self.beats_path = self.get_path("beats")
-
 
     @core.cached_property
     def beats(self) -> Optional[annotations.BeatData]:
@@ -121,9 +116,7 @@ class Track(core.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, None)],
-            metadata=None
+            audio_path=self.audio_path, beat_data=[(self.beats, None)], metadata=None
         )
 
 
@@ -154,18 +147,18 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
 
 
     """
-    reader = csv.reader(fhandle, delimiter=',')
+    reader = csv.reader(fhandle, delimiter=",")
     times = []
     beats = []
     for line in reader:
         times.append(float(line[0]))
-        beats.append(int(line[1].split('.')[1]))
+        beats.append(int(line[1].split(".")[1]))
 
     beat_data = annotations.BeatData(
         times=np.array(times),
         time_unit="s",
         positions=np.array(beats),
-        position_unit="bar_index"
+        position_unit="bar_index",
     )
     return beat_data
 
