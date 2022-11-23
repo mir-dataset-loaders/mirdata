@@ -99,6 +99,12 @@ class Track(core.Track):
 
     @core.cached_property
     def beats(self) -> Optional[annotations.BeatData]:
+        """The track's beats
+
+        Returns:
+            BeatData: loaded beat data
+
+        """
         return load_beats(self.beats_path)
 
     @property
@@ -138,6 +144,16 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 @io.coerce_to_string_io
 def load_beats(fhandle: TextIO) -> annotations.BeatData:
+    """Load a candombe beats file.
+
+    Args:
+        fhandle (str or file-like): path or file-like object pointing to an audio file
+
+    Returns:
+        * BeatData: loaded beat data
+
+
+    """
     reader = csv.reader(fhandle, delimiter=',')
     times = []
     beats = []
