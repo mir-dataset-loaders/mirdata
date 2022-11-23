@@ -4,7 +4,7 @@ import json
 import os
 from mirdata.validate import md5
 
-DATASET_INDEX_PATH = "../mirdata/datasets/indexes/candombe_beat_downbeat_index_1.0.json"
+DATASET_INDEX_PATH = "../mirdata/datasets/indexes/candombe_index_1.0.json"
 
 
 def make_dataset_index(dataset_data_path):

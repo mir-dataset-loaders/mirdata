@@ -2,21 +2,21 @@
 """
 import numpy as np
 from mirdata import annotations
-from mirdata.datasets import candombe_beat_downbeat
+from mirdata.datasets import candombe
 from tests.test_utils import run_track_tests
 
 
 def test_track():
     default_trackid = "csic.1995_ansina1_01"
-    data_home = "tests/resources/mir_datasets/candombe_beat_downbeat/"
-    dataset = candombe_beat_downbeat.Dataset(data_home, version="1.0")
+    data_home = "tests/resources/mir_datasets/candombe/"
+    dataset = candombe.Dataset(data_home, version="1.0")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "csic.1995_ansina1_01",
-        "audio_path": "tests/resources/mir_datasets/candombe_beat_downbeat/" \
+        "audio_path": "tests/resources/mir_datasets/candombe/" \
             "candombe_audio/csic.1995_ansina1_01.flac",
-        "beats_path": "tests/resources/mir_datasets/candombe_beat_downbeat/" \
+        "beats_path": "tests/resources/mir_datasets/candombe/" \
             "candombe_annotations/with_bar_number/csic.1995_ansina1_01.csv",
     }
 
@@ -46,8 +46,8 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "csic.1995_ansina1_01"
-    data_home = "tests/resources/mir_datasets/candombe_beat_downbeat"
-    dataset = candombe_beat_downbeat.Dataset(data_home, version="1.0")
+    data_home = "tests/resources/mir_datasets/candombe"
+    dataset = candombe.Dataset(data_home, version="1.0")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
     beats = jam.search(namespace="beat")[0]["data"]
@@ -70,9 +70,9 @@ def test_to_jams():
 
 def test_load_beats():
     # load a file which exists
-    beats_path = "tests/resources/mir_datasets/candombe_beat_downbeat/candombe_annotations/" \
+    beats_path = "tests/resources/mir_datasets/candombe/candombe_annotations/" \
         "with_bar_number/csic.1995_ansina1_01.csv"
-    beats_data = candombe_beat_downbeat.load_beats(beats_path)
+    beats_data = candombe.load_beats(beats_path)
 
     # check types
     assert type(beats_data) == annotations.BeatData

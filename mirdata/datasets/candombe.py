@@ -1,4 +1,4 @@
-"""candombe_beat_downbeat Dataset Loader
+"""Candombe Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
@@ -40,7 +40,7 @@ BIBTEX = """
 INDEXES = {
     "default": "1.0",
     "test": "1.0",
-    "1.0": core.Index(filename="candombe_beat_downbeat_index_1.0.json"),
+    "1.0": core.Index(filename="candombe_index_1.0.json"),
 }
 
 
@@ -66,7 +66,7 @@ Creative Commons Attribution 4.0 International
 
 
 class Track(core.Track):
-    """candombe_beat_downbeat track class
+    """candombe track class
     # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
     # -- `scripts/print_track_docstring.py my_dataset`
     # -- note that you'll first need to have a test track (see "Adding tests to your dataset" below)
@@ -123,7 +123,7 @@ class Track(core.Track):
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load a candombe_beat_downbeat audio file.
+    """Load a candombe audio file.
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to an audio file
@@ -156,14 +156,14 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The candombe_beat_downbeat dataset
+    """The candombe dataset
     """
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
             version,
-            name="candombe_beat_downbeat",
+            name="candombe",
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,
