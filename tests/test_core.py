@@ -36,7 +36,9 @@ def test_track():
         track.to_jams()
 
     path_good = track.get_path("annotation")
-    assert path_good == "tests/resources/mir_datasets/asdf/asdd"
+    assert os.path.normpath(path_good) == os.path.normpath(
+        "tests/resources/mir_datasets/asdf/asdd"
+    )
     path_none = track.get_path("audio")
     assert path_none is None
 
@@ -191,23 +193,29 @@ def test_dataset_versions():
 
     dataset = VersionTest("asdf")
     assert dataset.version == "1"
-    assert dataset.index_path == "asdf/mirdata_indexes/blah_1.json"
+    assert os.path.normpath(dataset.index_path) == os.path.normpath(
+        "asdf/mirdata_indexes/blah_1.json"
+    )
 
     dataset_default = VersionTest("asdf", version="default")
     assert dataset_default.version == "1"
-    assert dataset_default.index_path == "asdf/mirdata_indexes/blah_1.json"
+    assert os.path.normpath(dataset_default.index_path) == os.path.normpath(
+        "asdf/mirdata_indexes/blah_1.json"
+    )
 
     dataset_1 = VersionTest("asdf", version="1")
     assert dataset_1.version == "1"
-    assert dataset_1.index_path == "asdf/mirdata_indexes/blah_1.json"
+    assert os.path.normpath(dataset_1.index_path) == os.path.normpath(
+        "asdf/mirdata_indexes/blah_1.json"
+    )
     with pytest.raises(FileNotFoundError):
         dataset_1._index
 
     local_index_path = os.path.dirname(os.path.realpath(__file__))[:-5]
     dataset_test = VersionTest("asdf", version="test")
     assert dataset_test.version == "0"
-    assert dataset_test.index_path == os.path.join(
-        local_index_path, "mirdata/datasets/indexes/blah_0.json"
+    assert os.path.normpath(dataset_test.index_path) == os.path.join(
+        local_index_path, os.path.normpath("mirdata/datasets/indexes/blah_0.json")
     )
 
     with pytest.raises(IOError):
@@ -215,20 +223,21 @@ def test_dataset_versions():
 
     dataset_0 = VersionTest("asdf", version="0")
     assert dataset_0.version == "0"
-    assert dataset_0.index_path == os.path.join(
-        local_index_path, "mirdata/datasets/indexes/blah_0.json"
+    assert os.path.normpath(dataset_0.index_path) == os.path.join(
+        local_index_path, os.path.normpath("mirdata/datasets/indexes/blah_0.json")
     )
 
     dataset_2 = VersionTest("asdf", version="2")
     assert dataset_2.version == "2"
-    assert dataset_2.index_path == os.path.join(
-        local_index_path, "mirdata/datasets/indexes/blah_2.json"
+    assert os.path.normpath(dataset_2.index_path) == os.path.join(
+        local_index_path, os.path.normpath("mirdata/datasets/indexes/blah_2.json")
     )
 
     dataset_real = VersionTest("asdf", version="real")
     assert dataset_real.version == "real"
-    assert dataset_real.index_path == os.path.join(
-        local_index_path, "mirdata/datasets/indexes/beatles_index_1.2.json"
+    assert os.path.normpath(dataset_real.index_path) == os.path.join(
+        local_index_path,
+        os.path.normpath("mirdata/datasets/indexes/beatles_index_1.2.json"),
     )
     idx_test = dataset_real._index
     assert isinstance(idx_test, dict)
@@ -303,7 +312,9 @@ def test_multitrack():
     )
 
     path_good = mtrack.get_path("audio_master")
-    assert path_good == "tests/resources/mir_datasets/foo/bar"
+    assert os.path.normpath(path_good) == os.path.normpath(
+        "tests/resources/mir_datasets/foo/bar"
+    )
     path_none = mtrack.get_path("score")
     assert path_none is None
 

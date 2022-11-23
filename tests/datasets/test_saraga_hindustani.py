@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from mirdata import annotations
 from mirdata.datasets import saraga_hindustani
@@ -7,29 +8,45 @@ from tests.test_utils import run_track_tests
 def test_track():
 
     default_trackid = "50_Irani_Bhairavi_Thumri"
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "50_Irani_Bhairavi_Thumri",
         "title": "Irani Bhairavi Thumri",
-        "audio_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3",
-        "ctonic_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt",
-        "pitch_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt",
-        "tempo_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt",
-        "sama_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt",
-        "sections_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt",
-        "phrases_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt",
-        "metadata_path": "tests/resources/mir_datasets/saraga_hindustani/saraga1.5_hindustani/"
-        + "New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3",
+        ),
+        "ctonic_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt",
+        ),
+        "pitch_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt",
+        ),
+        "tempo_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt",
+        ),
+        "sama_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt",
+        ),
+        "phrases_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt",
+        ),
+        "metadata_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
+            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json",
+        ),
     }
 
     expected_property_types = {

@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import rwc_popular
@@ -8,22 +9,32 @@ from tests.test_utils import run_track_tests
 def test_track():
 
     default_trackid = "RM-P001"
-    data_home = "tests/resources/mir_datasets/rwc_popular"
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_popular")
     dataset = rwc_popular.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "RM-P001",
-        "audio_path": "tests/resources/mir_datasets/rwc_popular/"
-        + "audio/rwc-p-m01/1.wav",
-        "sections_path": "tests/resources/mir_datasets/rwc_popular/"
-        + "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT",
-        "beats_path": "tests/resources/mir_datasets/rwc_popular/"
-        + "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT",
-        "chords_path": "tests/resources/mir_datasets/rwc_popular/"
-        + "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab",
-        "voca_inst_path": "tests/resources/mir_datasets/rwc_popular/"
-        + "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
+            "audio/rwc-p-m01/1.wav",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
+            "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
+            "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT",
+        ),
+        "chords_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
+            "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab",
+        ),
+        "voca_inst_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
+            "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT",
+        ),
         "piece_number": "No. 1",
         "suffix": "M01",
         "track_number": "Tr. 01",

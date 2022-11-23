@@ -1,3 +1,4 @@
+import os
 from typing import List
 
 import numpy as np
@@ -9,20 +10,35 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "1"
-    data_home = "tests/resources/mir_datasets/vocadito"
+    data_home = os.path.normpath("tests/resources/mir_datasets/vocadito")
     dataset = vocadito.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "1",
-        "audio_path": "tests/resources/mir_datasets/vocadito/Audio/vocadito_1.wav",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
+            "Audio/vocadito_1.wav",
+        ),
         "singer_id": "S1",
         "language": "Tagalog",
         "average_pitch_midi": 50,
-        "f0_path": "tests/resources/mir_datasets/vocadito/Annotations/F0/vocadito_1_f0.csv",
-        "lyrics_path": "tests/resources/mir_datasets/vocadito/Annotations/Lyrics/vocadito_1_lyrics.txt",
-        "notes_a1_path": "tests/resources/mir_datasets/vocadito/Annotations/Notes/vocadito_1_notesA1.csv",
-        "notes_a2_path": "tests/resources/mir_datasets/vocadito/Annotations/Notes/vocadito_1_notesA2.csv",
+        "f0_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
+            "Annotations/F0/vocadito_1_f0.csv",
+        ),
+        "lyrics_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
+            "Annotations/Lyrics/vocadito_1_lyrics.txt",
+        ),
+        "notes_a1_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
+            "Annotations/Notes/vocadito_1_notesA1.csv",
+        ),
+        "notes_a2_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
+            "Annotations/Notes/vocadito_1_notesA2.csv",
+        ),
     }
 
     expected_property_types = {

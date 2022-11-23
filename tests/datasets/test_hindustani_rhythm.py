@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from mirdata import annotations
 from mirdata.datasets import compmusic_hindustani_rhythm
@@ -6,18 +7,32 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "20001"
-    data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
+    data_home = os.path.normpath(
+        "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
+    )
     dataset = compmusic_hindustani_rhythm.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "20001",
-        "audio_path": "tests/resources/mir_datasets/compmusic_hindustani_rhythm/HMR_1.0/"
-        + "audio/01_20001_02_Raag_Multani.wav",
-        "beats_path": "tests/resources/mir_datasets/compmusic_hindustani_rhythm/HMR_1.0/"
-        + "annotations/beats/01_20001_02_Raag_Multani.beats",
-        "meter_path": "tests/resources/mir_datasets/compmusic_hindustani_rhythm/HMR_1.0/"
-        + "annotations/meter/01_20001_02_Raag_Multani.meter",
+        "audio_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_hindustani_rhythm/"
+            ),
+            "HMR_1.0/audio/01_20001_02_Raag_Multani.wav",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_hindustani_rhythm/"
+            ),
+            "HMR_1.0/annotations/beats/01_20001_02_Raag_Multani.beats",
+        ),
+        "meter_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_hindustani_rhythm/"
+            ),
+            "HMR_1.0/annotations/meter/01_20001_02_Raag_Multani.meter",
+        ),
     }
 
     expected_property_types = {

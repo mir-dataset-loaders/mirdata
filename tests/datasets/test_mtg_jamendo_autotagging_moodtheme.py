@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pytest
 
@@ -7,13 +8,20 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "track_0000948"
-    data_home = "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
+    data_home = os.path.normpath(
+        "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
+    )
     dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "audio_path": (
-            "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme/audios/48/948.mp3"
+            os.path.join(
+                os.path.normpath(
+                    "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme/"
+                ),
+                "audios/48/948.mp3",
+            )
         ),
         "track_id": "track_0000948",
     }

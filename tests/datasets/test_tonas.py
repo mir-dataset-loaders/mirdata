@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from tests.test_utils import run_track_tests
@@ -5,7 +6,7 @@ from tests.test_utils import run_track_tests
 from mirdata import annotations
 from mirdata.datasets import tonas
 
-TEST_DATA_HOME = "tests/resources/mir_datasets/tonas"
+TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/tonas")
 
 
 def test_track():
@@ -18,9 +19,18 @@ def test_track():
         "style": "Debla",
         "title": "Antonio Mairena",
         "tuning_frequency": 451.0654725341684,
-        "f0_path": "tests/resources/mir_datasets/tonas/Deblas/01-D_AMairena.f0.Corrected",
-        "notes_path": "tests/resources/mir_datasets/tonas/Deblas/01-D_AMairena.notes.Corrected",
-        "audio_path": "tests/resources/mir_datasets/tonas/Deblas/01-D_AMairena.wav",
+        "f0_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonas/"),
+            "Deblas/01-D_AMairena.f0.Corrected",
+        ),
+        "notes_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonas/"),
+            "Deblas/01-D_AMairena.notes.Corrected",
+        ),
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonas/"),
+            "Deblas/01-D_AMairena.wav",
+        ),
         "track_id": "01-D_AMairena",
     }
 

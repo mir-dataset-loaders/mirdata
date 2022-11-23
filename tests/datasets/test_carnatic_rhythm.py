@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from mirdata import annotations
 from mirdata.datasets import compmusic_carnatic_rhythm
@@ -6,18 +7,26 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "10003"
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    data_home = os.path.normpath(
+        "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    )
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "10003",
-        "audio_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
-        + "audio/01_10003_1-04_Shri_Visvanatham.wav",
-        "beats_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
-        + "annotations/beats/01_10003_1-04_Shri_Visvanatham.beats",
-        "meter_path": "tests/resources/mir_datasets/compmusic_carnatic_rhythm/CMR_subset_1.0/"
-        + "annotations/meter/01_10003_1-04_Shri_Visvanatham.meter",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm/"),
+            "CMR_subset_1.0/audio/01_10003_1-04_Shri_Visvanatham.wav",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm/"),
+            "CMR_subset_1.0/annotations/beats/01_10003_1-04_Shri_Visvanatham.beats",
+        ),
+        "meter_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm/"),
+            "CMR_subset_1.0/annotations/meter/01_10003_1-04_Shri_Visvanatham.meter",
+        ),
     }
 
     expected_property_types = {

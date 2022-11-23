@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import giantsteps_key
@@ -6,17 +7,23 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "3"
-    data_home = "tests/resources/mir_datasets/giantsteps_key"
+    data_home = os.path.normpath("tests/resources/mir_datasets/giantsteps_key")
     dataset = giantsteps_key.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/giantsteps_key/audio/10089 Jason Sparks - Close My Eyes feat. J. "
-        "Little (Original Mix).mp3",
-        "keys_path": "tests/resources/mir_datasets/giantsteps_key/keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. "
-        "Little (Original Mix).txt",
-        "metadata_path": "tests/resources/mir_datasets/giantsteps_key/meta/10089 Jason Sparks - Close My Eyes feat. J. "
-        "Little (Original Mix).json",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/giantsteps_key/"),
+            "audio/10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix).mp3",
+        ),
+        "keys_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/giantsteps_key/"),
+            "keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix).txt",
+        ),
+        "metadata_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/giantsteps_key/"),
+            "meta/10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix).json",
+        ),
         "title": "10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix)",
         "track_id": "3",
     }

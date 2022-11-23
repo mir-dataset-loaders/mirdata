@@ -138,7 +138,9 @@ class Track(core.Track):
         # split (train/validation/test/omitted) is part of the relative filepath in the index
         self.split = None  # for baby_slakh, there are no data splits - set to None
         if index["version"] == "2100-redux":
-            self.split = self._track_paths["metadata"][0].split(os.sep)[1]
+            self.split = os.path.normpath(self._track_paths["metadata"][0]).split(
+                os.sep
+            )[1]
             assert (
                 self.split in SPLITS
             ), "{} not a valid split - should be one of {}.".format(self.split, SPLITS)
@@ -266,7 +268,9 @@ class MultiTrack(core.MultiTrack):
         # split (train/validation/test) is determined by the relative filepath in the index
         self.split = None  # for baby_slakh, there are no data splits - set to None
         if index["version"] == "2100-redux":
-            self.split = self._multitrack_paths["mix"][0].split(os.sep)[1]
+            self.split = os.path.normpath(self._multitrack_paths["mix"][0]).split(
+                os.sep
+            )[1]
             assert self.split in SPLITS, "{} not in SPLITS".format(self.split)
 
         self.data_split = self.split  # deprecated in 0.3.6
