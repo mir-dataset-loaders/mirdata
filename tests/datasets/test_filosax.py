@@ -1,6 +1,7 @@
 """
 Tests for Filosax_Lite
 """
+import os
 import numpy as np
 import pytest
 import jams
@@ -12,18 +13,33 @@ from tests.test_utils import run_track_tests, run_multitrack_tests
 
 def test_track():
     default_trackid = "multitrack_02_sax_1"
-    data_home = "tests/resources/mir_datasets/filosax"
+    data_home = os.path.normpath("tests/resources/mir_datasets/filosax")
     dataset = filosax.Dataset(data_home, version="test")
     filosax_data = dataset.load_tracks()
     default_track = filosax_data[default_trackid]
 
     expected_attributes = {
         "track_id": "multitrack_02_sax_1",
-        "audio_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.wav",
-        "annotation_path": "tests/resources/mir_datasets/filosax/Participant 1/02/annotations.json",
-        "midi_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.mid",
-        "musicXML_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.musicxml",
-        "pdf_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.pdf",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/Sax.wav",
+        ),
+        "annotation_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/annotations.json",
+        ),
+        "midi_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/Sax.mid",
+        ),
+        "musicXML_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/Sax.musicxml",
+        ),
+        "pdf_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+            "Participant 1/02/Sax.pdf",
+        ),
     }
 
     expected_property_types = {

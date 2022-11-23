@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import medleydb_pitch
@@ -7,19 +8,24 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "AClassicEducation_NightOwl_STEM_08"
-    data_home = "tests/resources/mir_datasets/medleydb_pitch"
+    data_home = os.path.normpath("tests/resources/mir_datasets/medleydb_pitch")
     dataset = medleydb_pitch.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "AClassicEducation_NightOwl_STEM_08",
-        "audio_path": "tests/resources/mir_datasets/"
-        + "medleydb_pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",
-        "pitch_path": "tests/resources/mir_datasets/"
-        + "medleydb_pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv",
-        "notes_pyin_path": "tests/resources/mir_datasets/medleydb_pitch/"
-        + "medleydb-pitch-pyin-notes/AClassicEducation_"
-        + "NightOwl_STEM_08_vamp_pyin_pyin_notes.csv",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
+            "audio/AClassicEducation_NightOwl_STEM_08.wav",
+        ),
+        "pitch_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
+            "pitch/AClassicEducation_NightOwl_STEM_08.csv",
+        ),
+        "notes_pyin_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
+            "medleydb-pitch-pyin-notes/AClassicEducation_NightOwl_STEM_08_vamp_pyin_pyin_notes.csv",
+        ),
         "instrument": "male singer",
         "artist": "AClassicEducation",
         "title": "NightOwl",

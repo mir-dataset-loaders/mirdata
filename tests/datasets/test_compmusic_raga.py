@@ -8,33 +8,47 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "Aruna_Sairam.Valli_Kanavan"
-    data_home = "tests/resources/mir_datasets/compmusic_raga"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_raga")
     dataset = compmusic_raga.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "Aruna_Sairam.Valli_Kanavan",
-        "audio_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
-        + "audio/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
-        + "Valli_Kanavan.mp3",
-        "tonic_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
-        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
-        + "Valli_Kanavan.tonic",
-        "tonic_fine_tuned_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
-        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
-        + "Valli_Kanavan.tonicFine",
-        "pitch_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
-        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
-        + "Valli_Kanavan.pitch",
-        "pitch_post_processed_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
-        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
-        + "Valli_Kanavan.pitchSilIntrpPP",
-        "nyas_segments_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
-        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
-        + "Valli_Kanavan.flatSegNyas",
-        "tani_segments_path": "tests/resources/mir_datasets/compmusic_raga/RagaDataset/Carnatic/"
-        + "features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/"
-        + "Valli_Kanavan.taniSegKNN",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_raga/"),
+            "RagaDataset/Carnatic/audio/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/",
+            "Valli_Kanavan.mp3",
+        ),
+        "tonic_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_raga/"),
+            "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/",
+            "Valli_Kanavan.tonic",
+        ),
+        "tonic_fine_tuned_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_raga/"),
+            "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/",
+            "Valli_Kanavan.tonicFine",
+        ),
+        "pitch_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_raga/"),
+            "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/",
+            "Valli_Kanavan.pitch",
+        ),
+        "pitch_post_processed_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_raga/"),
+            "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/",
+            "Valli_Kanavan.pitchSilIntrpPP",
+        ),
+        "nyas_segments_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_raga/"),
+            "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/",
+            "Valli_Kanavan.flatSegNyas",
+        ),
+        "tani_segments_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_raga/"),
+            "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/",
+            "Valli_Kanavan.taniSegKNN",
+        ),
     }
 
     expected_property_types = {

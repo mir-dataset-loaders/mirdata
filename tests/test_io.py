@@ -68,7 +68,7 @@ def test_coerce_to_string_with_none():
 
 
 def test_coerce_to_string_io_with_path():
-    with tempfile.NamedTemporaryFile() as f:
+    with tempfile.NamedTemporaryFile(delete=False) as f:
 
         @io.coerce_to_string_io
         def func(fh):
@@ -104,7 +104,7 @@ def test_coerce_to_bytes_with_none():
 
 
 def test_coerce_to_bytes_io_with_path():
-    with tempfile.NamedTemporaryFile() as f:
+    with tempfile.NamedTemporaryFile(delete=False) as f:
 
         @io.coerce_to_bytes_io
         def func(fh):

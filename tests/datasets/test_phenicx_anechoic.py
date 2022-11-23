@@ -10,26 +10,38 @@ from tests.test_utils import run_track_tests, run_multitrack_tests
 
 def test_track():
     default_trackid = "beethoven-violin"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic")
     dataset = phenicx_anechoic.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "beethoven-violin",
         "audio_paths": [
-            "tests/resources/mir_datasets/phenicx_anechoic/"
-            + "audio/beethoven/violin1.wav",
-            "tests/resources/mir_datasets/phenicx_anechoic/"
-            + "audio/beethoven/violin2.wav",
-            "tests/resources/mir_datasets/phenicx_anechoic/"
-            + "audio/beethoven/violin3.wav",
-            "tests/resources/mir_datasets/phenicx_anechoic/"
-            + "audio/beethoven/violin4.wav",
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+                "audio/beethoven/violin1.wav",
+            ),
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+                "audio/beethoven/violin2.wav",
+            ),
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+                "audio/beethoven/violin3.wav",
+            ),
+            os.path.join(
+                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+                "audio/beethoven/violin4.wav",
+            ),
         ],
-        "notes_path": "tests/resources/mir_datasets/phenicx_anechoic/"
-        + "annotations/beethoven/violin.txt",
-        "notes_original_path": "tests/resources/mir_datasets/phenicx_anechoic/"
-        + "annotations/beethoven/violin_o.txt",
+        "notes_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+            "annotations/beethoven/violin.txt",
+        ),
+        "notes_original_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
+            "annotations/beethoven/violin_o.txt",
+        ),
         "instrument": "violin",
         "piece": "beethoven",
         "n_voices": 4,

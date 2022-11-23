@@ -1,4 +1,14 @@
-import DALI
+import logging
+import os
+
+try:
+    import DALI
+except ImportError:
+    logging.error(
+        "In order to test dali you must have dali-dataset installed. "
+        "Please reinstall mirdata using `pip install 'mirdata[dali]' and re-run the tests"
+    )
+    raise ImportError
 
 from mirdata.datasets import dali
 from mirdata import annotations
@@ -9,17 +19,21 @@ import numpy as np
 def test_track():
 
     default_trackid = "4b196e6c99574dd49ad00d56e132712b"
-    data_home = "tests/resources/mir_datasets/dali"
+    data_home = os.path.normpath("tests/resources/mir_datasets/dali")
     dataset = dali.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "album": "Mezmerize",
-        "annotation_path": "tests/resources/mir_datasets/dali/"
-        + "annotations/4b196e6c99574dd49ad00d56e132712b.gz",
+        "annotation_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/dali/"),
+            "annotations/4b196e6c99574dd49ad00d56e132712b.gz",
+        ),
         "artist": "System Of A Down",
-        "audio_path": "tests/resources/mir_datasets/dali/"
-        + "audio/4b196e6c99574dd49ad00d56e132712b.mp3",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/dali/"),
+            "audio/4b196e6c99574dd49ad00d56e132712b.mp3",
+        ),
         "audio_url": "zUzd9KyIDrM",
         "dataset_version": 1,
         "genres": ["Pop", "Rock", "Hard Rock", "Metal"],

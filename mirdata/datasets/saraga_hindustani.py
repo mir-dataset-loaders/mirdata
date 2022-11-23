@@ -294,7 +294,7 @@ def load_tempo(fhandle):
 
     sections = []
     try:
-        with open(sections_abs_path, "r") as fhandle2:
+        with open(sections_abs_path, "r", encoding="utf-8") as fhandle2:
             reader = csv.reader(fhandle2, delimiter=",")
             for line in reader:
                 if line != "\n":
@@ -379,7 +379,6 @@ def load_sections(fhandle):
     """
     intervals = []
     section_labels = []
-
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         if line:
