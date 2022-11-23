@@ -44,6 +44,14 @@ billboard
    :inherited-members:
 
 
+candombe
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.candombe
+   :members:
+   :inherited-members:
+   
+
 cante100
 ^^^^^^^^
 
