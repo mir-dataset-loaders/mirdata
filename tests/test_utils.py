@@ -107,18 +107,30 @@ def test_md5(mocker):
         ("test_index_valid.json", {"tracks": {}}, {"tracks": {}}),
         (
             "test_index_missing_file.json",
-            {"tracks": {"10161_chorus": ["tests/resources/10162_chorus.wav"]}},
+            {
+                "tracks": {
+                    "10161_chorus": [
+                        os.path.normpath("tests/resources/10162_chorus.wav")
+                    ]
+                }
+            },
             {"tracks": {}},
         ),
         (
             "test_index_invalid_checksum.json",
             {"tracks": {}},
-            {"tracks": {"10161_chorus": ["tests/resources/10161_chorus.wav"]}},
+            {
+                "tracks": {
+                    "10161_chorus": [
+                        os.path.normpath("tests/resources/10161_chorus.wav")
+                    ]
+                }
+            },
         ),
     ],
 )
 def test_validate_index(test_index, expected_missing, expected_inv_checksum):
-    index_path = os.path.normpath(os.path.join("tests/indexes", test_index))
+    index_path = os.path.join(os.path.normpath("tests/indexes"), test_index)
     with open(index_path, "r") as index_file:
         test_index = json.load(index_file)
 

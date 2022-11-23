@@ -221,7 +221,6 @@ class Dataset(core.Dataset):
         metadata = {}
         try:
             with open(metadata_path) as f:
-                # f.reconfigure(encoding="utf-8")
                 meta = json.load(f)
                 for i in meta:
                     index = i["mbid"].split("/")[-1]
