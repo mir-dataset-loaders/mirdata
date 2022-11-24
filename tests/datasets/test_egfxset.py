@@ -1,4 +1,5 @@
 import os
+from mirdata import annotations
 from mirdata.datasets import egfxset
 from tests.test_utils import run_track_tests
 
@@ -12,10 +13,10 @@ def test_track():
 
     expected_attributes = {
         "track_id": "TapeEcho_Bridge/2-0",
-        "audio_path": os.path.normpath("tests/resources/mir_datasets/egfxset/TapeEcho/Bridge/2-0.wav"),
+        "audio_path": os.path.normpath(
+            "tests/resources/mir_datasets/egfxset/TapeEcho/Bridge/2-0.wav"
+        ),
         "stringfret_tuple": [2, 0],
-        "note": "B3",
-        "midinote": 59,
         "pickup_configuration": "Bridge",
         "effect": "tape echo",
         "model": "Line 6 DL4 Delay",
@@ -34,6 +35,7 @@ def test_track():
 
     expected_property_types = {
         "audio": tuple,
+        "note": annotations.NoteData,
     }
 
     assert track._track_paths == {
@@ -44,16 +46,17 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 48000
-    assert audio.shape == (48000 * 1,)
+    assert audio.shape == (48000,)
 
-    track = dataset.track("Clean_Middle/6-22")
+    default_trackid = "Clean_Middle/6-22"
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "Clean_Middle/6-22",
-        "audio_path": os.path.normpath("tests/resources/mir_datasets/egfxset/Clean/Middle/6-22.wav"),
+        "audio_path": os.path.normpath(
+            "tests/resources/mir_datasets/egfxset/Clean/Middle/6-22.wav"
+        ),
         "stringfret_tuple": [6, 22],
-        "note": "D4",
-        "midinote": 62,
         "pickup_configuration": "Middle",
         "effect": "clean",
         "model": "None",
@@ -65,6 +68,7 @@ def test_track():
 
     expected_property_types = {
         "audio": tuple,
+        "note": annotations.NoteData,
     }
 
     assert track._track_paths == {
@@ -75,7 +79,7 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 48000
-    assert audio.shape == (48000 * 1,)
+    assert audio.shape == (48000,)
 
 
 def test_to_jams():
@@ -88,8 +92,7 @@ def test_to_jams():
     jam = track.to_jams()
 
     assert jam["sandbox"]["String-fret Tuple"] == [2, 0]
-    assert jam["sandbox"]["Note"] == "B3"
-    assert jam["sandbox"]["Midinote"] == 59
+    assert type(jam["sandbox"]["Note"]) == annotations.NoteData
     assert jam["sandbox"]["Pickup Configuration"] == "Bridge"
     assert jam["sandbox"]["Effect"] == "tape echo"
     assert jam["sandbox"]["Model"] == "Line 6 DL4 Delay"
@@ -117,8 +120,7 @@ def test_to_jams():
     jam = track.to_jams()
 
     assert jam["sandbox"]["String-fret Tuple"] == [6, 22]
-    assert jam["sandbox"]["Note"] == "D4"
-    assert jam["sandbox"]["Midinote"] == 62
+    assert type(jam["sandbox"]["Note"]) == annotations.NoteData
     assert jam["sandbox"]["Pickup Configuration"] == "Middle"
     assert jam["sandbox"]["Effect"] == "clean"
     assert jam["sandbox"]["Model"] == "None"

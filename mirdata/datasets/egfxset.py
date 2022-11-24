@@ -77,7 +77,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import core, download_utils, jams_utils, io
+from mirdata import annotations, core, download_utils, jams_utils, io
 
 BIBTEX = """
 @techreport{pedroza2022egfxset,
@@ -180,8 +180,6 @@ class Track(core.Track):
     Attributes:
         audio_path (str): path to the track's audio file
         stringfret_tuple (list): an array with the tuple of the note recorded
-        note (str): the notename of the file (i.e. D1,Eb4, etc.)
-        midinote (int): the midinote value
         pickup_configuration (string): the pickup used in the recording
         effect (str): the effect recorded
         model (str): the model of the hardware used
@@ -189,6 +187,9 @@ class Track(core.Track):
         knob_names (list): an array with the knob names of the effect used or "None" when the recording is a clean effect sound
         knob_type (list): an array with the type of knobs of the effect used or "None" when the recording is a clean effect sound
         setting (list): the setting of the effect recorded or "None" when the recording is a clean effect sound
+
+    Cached Properties:
+        notes (NoteData): the note annotation of the audio
     """
 
     def __init__(
@@ -213,13 +214,9 @@ class Track(core.Track):
     def stringfret_tuple(self):
         return self._track_metadata.get("String-fret Tuple")
 
-    @property
-    def note(self):
+    @core.cached_property
+    def note(self) -> Optional[annotations.NoteData]:
         return self._track_metadata.get("Note")
-
-    @property
-    def midinote(self):
-        return self._track_metadata.get("Midinote")
 
     @property
     def pickup_configuration(self):
@@ -323,8 +320,6 @@ class Dataset(core.Dataset):
 
             if track[:3] == "RAT":
                 trackiden = track[:3].lower()
-                trackiden = trackiden.replace(" ", "")
-                trackiden = trackiden.replace("_", "")
 
             if track[:3] != "RAT":
                 trackiden = re.findall("[A-Z][^A-Z]*", track)[0].lower()
@@ -340,10 +335,15 @@ class Dataset(core.Dataset):
                     "String-fret Tuple": [
                         int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
                     ],
-                    "Note": librosa.midi_to_note(
-                        (cuerdas[noteCord[0]] + int(float(noteCord[1])))
+                    "Note": annotations.NoteData(
+                        intervals=np.array([[0, 5]], dtype=float),
+                        interval_unit="s",
+                        pitches=np.array(
+                            [(cuerdas[noteCord[0]] + int(float(noteCord[1])))],
+                            dtype=float,
+                        ),
+                        pitch_unit="midi",
                     ),
-                    "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
                     "Pickup Configuration": track.split("_")[1].split("/")[0],
                     "Effect": "clean",
                     "Model": "None",
@@ -358,10 +358,18 @@ class Dataset(core.Dataset):
                     "String-fret Tuple": [
                         int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
                     ],
-                    "Note": librosa.midi_to_note(
-                        (cuerdas[noteCord[0]] + int(float(noteCord[1])))
+                    "Note": annotations.NoteData(
+                        intervals=np.array([[0, 5], [0, 5]], dtype=float),
+                        interval_unit="s",
+                        pitches=np.array(
+                            [
+                                (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
+                                (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
+                            ],
+                            dtype=float,
+                        ),
+                        pitch_unit="midi",
                     ),
-                    "Midinote": (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
                     "Pickup Configuration": track.split("_")[1].split("/")[0],
                     "Effect": reader[indexname.index(trackiden)]["Effect "],
                     "Model": reader[indexname.index(trackiden)]["Model"],
