@@ -259,7 +259,9 @@ def test_track():
     for dataset_name in DATASETS:
 
         dataset = mirdata.initialize(
-            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+            dataset_name,
+            os.path.normpath(os.path.join(TEST_DATA_HOME, dataset_name)),
+            version="test",
         )
 
         # if the dataset doesn't have a track object, make sure it raises a value error

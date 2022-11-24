@@ -19,7 +19,7 @@ def coerce_to_string_io(
         if not file_path_or_obj:
             return None
         if isinstance(file_path_or_obj, str):
-            with open(file_path_or_obj) as f:
+            with open(file_path_or_obj, encoding="utf-8") as f:
                 return func(f)
         elif isinstance(file_path_or_obj, io.StringIO):
             return func(file_path_or_obj)

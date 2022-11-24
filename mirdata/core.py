@@ -163,7 +163,7 @@ class Dataset(object):
     @cached_property
     def _index(self):
         try:
-            with open(self.index_path) as fhandle:
+            with open(self.index_path, encoding="utf-8") as fhandle:
                 index = json.load(fhandle)
         except FileNotFoundError:
             if self._index_data.remote:

@@ -8,14 +8,20 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "000046_3840"
-    data_home = "tests/resources/mir_datasets/openmic2018"
+    data_home = os.path.normpath("tests/resources/mir_datasets/openmic2018")
 
     dataset = openmic2018.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/openmic2018/audio/000/000046_3840.ogg",
-        "vggish_path": "tests/resources/mir_datasets/openmic2018/vggish/000/000046_3840.json",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/openmic2018/"),
+            "audio/000/000046_3840.ogg",
+        ),
+        "vggish_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/openmic2018/"),
+            "vggish/000/000046_3840.json",
+        ),
         "track_id": "000046_3840",
         "title": "Yosemite",
         "artist": "Nicky Cook",

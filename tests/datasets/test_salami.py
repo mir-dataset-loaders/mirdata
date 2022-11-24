@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from mirdata.datasets import salami
 from mirdata import annotations
@@ -7,21 +8,31 @@ from tests.test_utils import run_track_tests
 def test_track():
 
     default_trackid = "2"
-    data_home = "tests/resources/mir_datasets/salami"
+    data_home = os.path.normpath("tests/resources/mir_datasets/salami")
     dataset = salami.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "2",
-        "audio_path": "tests/resources/mir_datasets/salami/" + "audio/2.mp3",
-        "sections_annotator1_uppercase_path": "tests/resources/mir_datasets/salami/"
-        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt",
-        "sections_annotator1_lowercase_path": "tests/resources/mir_datasets/salami/"
-        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt",
-        "sections_annotator2_uppercase_path": "tests/resources/mir_datasets/salami/"
-        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt",
-        "sections_annotator2_lowercase_path": "tests/resources/mir_datasets/salami/"
-        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"), "audio/2.mp3"
+        ),
+        "sections_annotator1_uppercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt",
+        ),
+        "sections_annotator1_lowercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt",
+        ),
+        "sections_annotator2_uppercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt",
+        ),
+        "sections_annotator2_lowercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt",
+        ),
         "source": "Codaich",
         "annotator_1_id": "5",
         "annotator_2_id": "8",

@@ -1,3 +1,4 @@
+import os
 import pytest
 from tests.test_utils import run_track_tests
 
@@ -6,12 +7,14 @@ from mirdata.datasets import compmusic_indian_tonic
 
 def test_track():
     default_trackid = "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180"
-    data_home = "tests/resources/mir_datasets/compmusic_indian_tonic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_indian_tonic")
     dataset = compmusic_indian_tonic.Dataset(data_home)
     track = dataset.track(default_trackid)
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/compmusic_indian_tonic/indian_art_music_tonic_1.0/"
-        + "CM/audio/0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180.mp3",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/compmusic_indian_tonic/"),
+            "indian_art_music_tonic_1.0/CM/audio/0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180.mp3",
+        ),
         "track_id": "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180",
     }
 

@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import rwc_classical
@@ -7,18 +8,24 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "RM-C003"
-    data_home = "tests/resources/mir_datasets/rwc_classical"
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_classical")
     dataset = rwc_classical.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "RM-C003",
-        "audio_path": "tests/resources/mir_datasets/rwc_classical/"
-        + "audio/rwc-c-m01/3.wav",
-        "sections_path": "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
-        "beats_path": "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "audio/rwc-c-m01/3.wav",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+        ),
         "piece_number": "No. 3",
         "suffix": "M01",
         "track_number": "Tr. 03",

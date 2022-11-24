@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import ikala
@@ -7,20 +8,31 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "10161_chorus"
-    data_home = "tests/resources/mir_datasets/ikala"
+    data_home = os.path.normpath("tests/resources/mir_datasets/ikala")
     dataset = ikala.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "10161_chorus",
-        "audio_path": "tests/resources/mir_datasets/ikala/"
-        + "Wavfile/10161_chorus.wav",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "Wavfile/10161_chorus.wav",
+        ),
         "song_id": "10161",
         "section": "chorus",
         "singer_id": "1",
-        "f0_path": "tests/resources/mir_datasets/ikala/PitchLabel/10161_chorus.pv",
-        "lyrics_path": "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab",
-        "notes_pyin_path": "tests/resources/mir_datasets/ikala/ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
+        "f0_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "PitchLabel/10161_chorus.pv",
+        ),
+        "lyrics_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "Lyrics/10161_chorus.lab",
+        ),
+        "notes_pyin_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
+        ),
     }
 
     expected_property_types = {
