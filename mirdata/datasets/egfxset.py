@@ -14,8 +14,8 @@
     All possible 138 notes of a standard tuning 22 frets guitar were recorded in each one of the 5 pickup configurations,
     giving a total of 690 clean tone audio files ( 58 min ).
 
-    The 690 clean audio files were processed through 12 different audio effects employing actual guitar gear (no VST emulations were used),
-    summing a total of 8,280 proceed audio files ( 11 hours 30 min ).
+    The 690 clean audio (58 min) files were processed through 12 different audio effects employing actual guitar gear (no VST emulations were used),
+    summing a total of 8,280 processed audio files (11 hours 30 min).
 
     The effects employed were divided into four categories, and each category comprised three different effects.
     Sometimes there were employed more than one effect from a same guitar equipment.
@@ -48,19 +48,19 @@
 
     Annotations are labeled by a trained electric guitar musician. For each tone, we provide:
 
-    Guitar string number
-    Fret number
-    Guitar pickup configuration
-    Effect name
-    Effect type
-    Hardware modes
-    Knob names
-    Knob types
-    Knob settings
+    - Guitar string number
+    - Fret number
+    - Guitar pickup configuration
+    - Effect name
+    - Effect type
+    - Hardware modes
+    - Knob names
+    - Knob types
+    - Knob settings
 
-    The dataset website is: https://egfxset.github.io/
-    The data can be accessed here: https://zenodo.org/record/7044411#.YxKdSWzMKEI
-    An ISMIR extended abstract was presented in 2022: https://ismir2022.ismir.net/program/lbd/
+    - The dataset website is: https://egfxset.github.io/
+    - The data can be accessed here: https://zenodo.org/record/7044411#.YxKdSWzMKEI
+    - An ISMIR extended abstract was presented in 2022: https://ismir2022.ismir.net/program/lbd/
 
     This dataset was conceived during Iran Roman's "Deep Learning for Music Information Retrieval" course
     imparted in the postgraduate studies in music technology at the UNAM (Universidad Nacional Autónoma de México).
@@ -378,6 +378,3 @@ class Dataset(core.Dataset):
                 }
 
         return metadata_index
-
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
