@@ -1,16 +1,18 @@
+import os
 from mirdata.datasets import egfxset
 from tests.test_utils import run_track_tests
 
 
 def test_track():
-    data_home = "tests/resources/mir_datasets/egfxset"
+    default_trackid = "TapeEcho_Bridge/2-0"
+    data_home = os.path.normpath("tests/resources/mir_datasets/egfxset")
     dataset = egfxset.Dataset(data_home, version="test")
 
-    track = dataset.track("TapeEcho_Bridge/2-0")
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "TapeEcho_Bridge/2-0",
-        "audio_path": "tests/resources/mir_datasets/egfxset/TapeEcho/Bridge/2-0.wav",
+        "audio_path": os.path.normpath("tests/resources/mir_datasets/egfxset/TapeEcho/Bridge/2-0.wav"),
         "stringfret_tuple": [2, 0],
         "note": "B3",
         "midinote": 59,
@@ -42,13 +44,13 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 48000
-    assert audio.shape == (48000 * 5,)
+    assert audio.shape == (48000 * 1,)
 
     track = dataset.track("Clean_Middle/6-22")
 
     expected_attributes = {
         "track_id": "Clean_Middle/6-22",
-        "audio_path": "tests/resources/mir_datasets/egfxset/Clean/Middle/6-22.wav",
+        "audio_path": os.path.normpath("tests/resources/mir_datasets/egfxset/Clean/Middle/6-22.wav"),
         "stringfret_tuple": [6, 22],
         "note": "D4",
         "midinote": 62,
@@ -73,12 +75,12 @@ def test_track():
 
     audio, sr = track.audio
     assert sr == 48000
-    assert audio.shape == (48000 * 5,)
+    assert audio.shape == (48000 * 1,)
 
 
 def test_to_jams():
 
-    data_home = "tests/resources/mir_datasets/egfxset"
+    data_home = os.path.normpath("tests/resources/mir_datasets/egfxset")
     dataset = egfxset.Dataset(data_home, version="test")
 
     # Case with a TapeEcho track
