@@ -159,6 +159,14 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
+   * - EGFxSet
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`notes`
+     - 8970
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+          
    * - Filosax
      - - audio: 🔑
        - annotations: 🔑
