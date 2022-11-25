@@ -40,14 +40,14 @@
 
         Delays:
             Line6 DL-4:
-                        Digital Delay
-                        Tape Echo
+                        Digital Delay, 
+                        Tape Echo, 
                         Sweep Echo
 
         Reverb:
             Orange CR-60 Combo Amplifier:
-                                        Plate Reverb
-                                        Hall Reverb
+                                        Plate Reverb, 
+                                        Hall Reverb, 
                                         Spring Reverb
 
 
@@ -72,14 +72,11 @@
 
              - Knob settings
 
-    - The dataset website is: https://egfxset.github.io/
+    The dataset website is: https://egfxset.github.io/
 
+    The data can be accessed here: https://zenodo.org/record/7044411#.YxKdSWzMKEI
 
-    - The data can be accessed here: https://zenodo.org/record/7044411#.YxKdSWzMKEI
-
-
-    - An ISMIR extended abstract was presented in 2022: https://ismir2022.ismir.net/program/lbd/
-
+    An ISMIR extended abstract was presented in 2022: https://ismir2022.ismir.net/program/lbd/
 
     This dataset was conceived during Iran Roman's "Deep Learning for Music Information Retrieval" course
     imparted in the postgraduate studies in music technology at the UNAM (Universidad Nacional Autónoma de México).
