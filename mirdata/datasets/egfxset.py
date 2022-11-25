@@ -23,14 +23,20 @@
     Categories, Models and Effects:
 
         Distortion:
-            Boss BD-2: Blues Driver
-            Ibanez Minitube Screamer: Tube Screamer
-            ProCo RAT2: Distortion
+            Boss BD-2: 
+                       Blues Driver
+            Ibanez Minitube Screamer: 
+                       Tube Screamer
+            ProCo RAT2: 
+                       Distortion
 
         Modulation:
-            Boss CE-3: Chorus
-            MXR Phase 45: Phaser
-            Mooer E-Lady: Flanger
+            Boss CE-3: 
+                       Chorus
+            MXR Phase 45: 
+                       Phaser
+            Mooer E-Lady: 
+                       Flanger
 
         Delays:
             Line6 DL-4:
@@ -48,19 +54,32 @@
 
     Annotations are labeled by a trained electric guitar musician. For each tone, we provide:
 
-    - Guitar string number
-    - Fret number
-    - Guitar pickup configuration
-    - Effect name
-    - Effect type
-    - Hardware modes
-    - Knob names
-    - Knob types
-    - Knob settings
+             - Guitar string number
+
+             - Fret number
+
+             - Guitar pickup configuration
+
+             - Effect name
+
+             - Effect type
+
+             - Hardware modes
+    
+             - Knob names
+
+             - Knob types
+
+             - Knob settings
 
     - The dataset website is: https://egfxset.github.io/
+
+
     - The data can be accessed here: https://zenodo.org/record/7044411#.YxKdSWzMKEI
+
+
     - An ISMIR extended abstract was presented in 2022: https://ismir2022.ismir.net/program/lbd/
+
 
     This dataset was conceived during Iran Roman's "Deep Learning for Music Information Retrieval" course
     imparted in the postgraduate studies in music technology at the UNAM (Universidad Nacional Autónoma de México).
@@ -189,7 +208,8 @@ class Track(core.Track):
         setting (list): the setting of the effect recorded or "None" when the recording is a clean effect sound
 
     Cached Properties:
-        notes (NoteData): the note annotation of the audio
+        note_name (list): a list with the note name annotation of the audio file (e.g. "Ab5", "C6", etc.)
+        midinote (NoteData): the midinote annotation of the audio file
     """
 
     def __init__(
@@ -215,8 +235,12 @@ class Track(core.Track):
         return self._track_metadata.get("String-fret Tuple")
 
     @core.cached_property
-    def note(self) -> Optional[annotations.NoteData]:
-        return self._track_metadata.get("Note")
+    def note_name(self) -> Optional[annotations.NoteData]:
+        return self._track_metadata.get("Note Name")
+
+    @core.cached_property
+    def midinote(self) -> Optional[annotations.NoteData]:
+        return self._track_metadata.get("Midinote")
 
     @property
     def pickup_configuration(self):
@@ -311,7 +335,6 @@ class Dataset(core.Dataset):
 
         file_handle = open(metadata_path, "r")
         reader = list(csv.DictReader(file_handle))
-
         indexname = []
         for name in reader:
             indexname.append(name["Effect "].split(" ")[0])
@@ -335,7 +358,15 @@ class Dataset(core.Dataset):
                     "String-fret Tuple": [
                         int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
                     ],
-                    "Note": annotations.NoteData(
+                    "Note Name": annotations.convert_pitch_units(
+                        pitches=np.array(
+                            [(cuerdas[noteCord[0]] + int(float(noteCord[1])))],
+                            dtype=float,
+                        ),
+                        pitch_unit="midi",
+                        target_pitch_unit="note_name",
+                    ),
+                    "Midinote": annotations.NoteData(
                         intervals=np.array([[0, 5]], dtype=float),
                         interval_unit="s",
                         pitches=np.array(
@@ -358,14 +389,19 @@ class Dataset(core.Dataset):
                     "String-fret Tuple": [
                         int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
                     ],
-                    "Note": annotations.NoteData(
-                        intervals=np.array([[0, 5], [0, 5]], dtype=float),
+                    "Note Name": annotations.convert_pitch_units(
+                        pitches=np.array(
+                            [(cuerdas[noteCord[0]] + int(float(noteCord[1])))],
+                            dtype=float,
+                        ),
+                        pitch_unit="midi",
+                        target_pitch_unit="note_name",
+                    ),
+                    "Midinote": annotations.NoteData(
+                        intervals=np.array([[0, 5]], dtype=float),
                         interval_unit="s",
                         pitches=np.array(
-                            [
-                                (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
-                                (cuerdas[noteCord[0]] + int(float(noteCord[1]))),
-                            ],
+                            [(cuerdas[noteCord[0]] + int(float(noteCord[1])))],
                             dtype=float,
                         ),
                         pitch_unit="midi",

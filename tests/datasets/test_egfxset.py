@@ -35,12 +35,18 @@ def test_track():
 
     expected_property_types = {
         "audio": tuple,
-        "note": annotations.NoteData,
+        "note_name": list,
+        "midinote": annotations.NoteData,
     }
 
     assert track._track_paths == {
         "audio": ["TapeEcho/Bridge/2-0.wav", "bf9041e98fbc3c1145583d1601ab2d7b"]
     }
+
+    assert track.note_name == ["B3"]
+
+    assert track.midinote.pitch_unit == "midi"
+    assert track.midinote.pitches == [59]
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -68,12 +74,18 @@ def test_track():
 
     expected_property_types = {
         "audio": tuple,
-        "note": annotations.NoteData,
+        "note_name": list,
+        "midinote": annotations.NoteData,
     }
 
     assert track._track_paths == {
         "audio": ["Clean/Middle/6-22.wav", "93c580d88d65400804f5c8f88f715ec1"]
     }
+
+    assert track.note_name == ["D4"]
+
+    assert track.midinote.pitch_unit == "midi"
+    assert track.midinote.pitches == [62]
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
@@ -92,7 +104,8 @@ def test_to_jams():
     jam = track.to_jams()
 
     assert jam["sandbox"]["String-fret Tuple"] == [2, 0]
-    assert type(jam["sandbox"]["Note"]) == annotations.NoteData
+    assert jam["sandbox"]["Note Name"] == ["B3"]
+    assert type(jam["sandbox"]["Midinote"]) == annotations.NoteData
     assert jam["sandbox"]["Pickup Configuration"] == "Bridge"
     assert jam["sandbox"]["Effect"] == "tape echo"
     assert jam["sandbox"]["Model"] == "Line 6 DL4 Delay"
@@ -120,7 +133,8 @@ def test_to_jams():
     jam = track.to_jams()
 
     assert jam["sandbox"]["String-fret Tuple"] == [6, 22]
-    assert type(jam["sandbox"]["Note"]) == annotations.NoteData
+    assert jam["sandbox"]["Note Name"] == ["D4"]
+    assert type(jam["sandbox"]["Midinote"]) == annotations.NoteData
     assert jam["sandbox"]["Pickup Configuration"] == "Middle"
     assert jam["sandbox"]["Effect"] == "clean"
     assert jam["sandbox"]["Model"] == "None"
