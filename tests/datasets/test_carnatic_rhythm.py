@@ -1,7 +1,15 @@
 import os
 import numpy as np
 from mirdata import annotations
-from mirdata.datasets import compmusic_carnatic_rhythm
+
+try:
+    from mirdata.datasets import compmusic_carnatic_rhythm
+except ImportError:
+    raise ImportError(
+        "In order to use CompMusic Carnatic Music Rhythm you must have openpyxl installed. "
+        "Please reinstall mirdata using `pip install 'mirdata[compmusic_carnatic_rhythm]'"
+    )
+
 from tests.test_utils import run_track_tests
 
 

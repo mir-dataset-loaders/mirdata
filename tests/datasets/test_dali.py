@@ -4,11 +4,10 @@ import os
 try:
     import DALI
 except ImportError:
-    logging.error(
+    raise ImportError(
         "In order to test dali you must have dali-dataset installed. "
         "Please reinstall mirdata using `pip install 'mirdata[dali]' and re-run the tests"
     )
-    raise ImportError
 
 from mirdata.datasets import dali
 from mirdata import annotations
