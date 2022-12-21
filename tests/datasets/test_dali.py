@@ -5,8 +5,7 @@ try:
     import DALI
 except ImportError:
     raise ImportError(
-        "In order to test dali you must have dali-dataset installed. "
-        "Please reinstall mirdata using `pip install 'mirdata[dali]' and re-run the tests"
+        "An error occured when importing this dataset. Most likely this is due to a dependency not being installed, in this case DALI."
     )
 
 from mirdata.datasets import dali

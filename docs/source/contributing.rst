@@ -488,11 +488,10 @@ it should be imported as follows:
     try:
         import asdf
     except ImportError:
-        logging.error(
+        raise ImportError(
             "In order to use example_dataset you must have asdf installed. "
             "Please reinstall mirdata using `pip install 'mirdata[example_dataset]'"
         )
-        raise ImportError
 
 
 .. _multiple_versions:

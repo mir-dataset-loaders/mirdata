@@ -5,8 +5,7 @@ try:
     import music21
 except ImportError:
     raise ImportError(
-        "In order to test haydn_op20 you must have music21 installed. "
-        "Please reinstall mirdata using `pip install 'mirdata[haydn_op20] and re-run the tests."
+        "An error occured when importing this dataset. Most likely this is due to a dependency not being installed, in this case music21."
     )
 
 from mirdata.annotations import KeyData, ChordData
