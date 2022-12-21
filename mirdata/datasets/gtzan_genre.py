@@ -34,7 +34,7 @@ BIBTEX = """@article{tzanetakis2002gtzan,
 
 INDEXES = {
     "default": "mini",
-    "test": "1.0",
+    "test": "mini",
     "1.0": core.Index(
         filename="gtzan_genre_index_1.0.json",
         partial_download=["all", "tempo_beat_annotations"],
