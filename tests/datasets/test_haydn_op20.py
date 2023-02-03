@@ -19,7 +19,8 @@ import numpy as np
 
 def test_importError():
     with pytest.raises(ImportError):
-        raise(ImportError)
+        raise (ImportError)
+
 
 def test_track():
     default_trackid = "0"
