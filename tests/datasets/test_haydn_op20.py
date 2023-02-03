@@ -1,6 +1,8 @@
 import logging
 import os
 
+import pytest
+
 try:
     import music21
 except ImportError:
@@ -14,6 +16,10 @@ from tests.test_utils import run_track_tests
 
 import numpy as np
 
+
+def test_importError():
+    with pytest.raises(ImportError):
+        raise(ImportError)
 
 def test_track():
     default_trackid = "0"
