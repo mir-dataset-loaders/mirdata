@@ -1420,7 +1420,7 @@ def validate_array_like(array_like, expected_type, expected_dtype, none_allowed=
             f"Array should have dtype {expected_dtype} but has {array_like.dtype}"
         )
 
-    if np.asarray(array_like).size == 0:
+    if np.asarray(array_like, dtype=object).size == 0:
         raise ValueError("Object should not be empty, use None instead")
 
 
