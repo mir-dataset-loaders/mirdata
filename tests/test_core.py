@@ -278,6 +278,10 @@ def test_dataset_errors():
     with pytest.raises(ValueError):
         d._multitrack("a")
 
+    d = mirdata.initialize("haydn_op20")
+    with pytest.raises(ImportError):
+        raise ImportError("test")
+
 
 def test_multitrack():
     index_tracks = {
