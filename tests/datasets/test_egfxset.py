@@ -97,7 +97,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = os.path.normpath("tests/resources/mir_datasets/egfxset")
     dataset = egfxset.Dataset(data_home, version="test")
 

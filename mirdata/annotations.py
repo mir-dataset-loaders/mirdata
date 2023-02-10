@@ -823,7 +823,6 @@ class NoteData(Annotation):
             self.confidence = self.confidence[unq_idx]
 
     def __add__(self, other):
-
         if other is None:
             return self
 
@@ -1006,7 +1005,6 @@ class NoteData(Annotation):
         frequency_list: List[List[float]] = [[] for _ in times]
         confidence_list: List[List[float]] = [[] for _ in times]
         if self.confidence is not None:
-
             for t0, t1, pch, conf in zip(
                 intervals[:, 0], intervals[:, 1], self.pitches, self.confidence
             ):

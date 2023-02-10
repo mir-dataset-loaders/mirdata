@@ -306,7 +306,6 @@ def load_tempo(fhandle):
 
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
-
         if "NaN" in line or " NaN" in line or "NaN " in line:
             return None
 
