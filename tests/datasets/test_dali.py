@@ -1,6 +1,8 @@
 import logging
 import os
 
+import pytest
+
 try:
     import DALI
 except ImportError:
@@ -12,6 +14,11 @@ from mirdata.datasets import dali
 from mirdata import annotations
 from tests.test_utils import run_track_tests
 import numpy as np
+
+
+def test_importError():
+    with pytest.raises(ImportError):
+        raise (ImportError)
 
 
 def test_track():

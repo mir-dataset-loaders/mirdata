@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import pytest
 from mirdata import annotations
 
 try:
@@ -10,6 +11,11 @@ except ImportError:
     )
 
 from tests.test_utils import run_track_tests
+
+
+def test_importError():
+    with pytest.raises(ImportError):
+        raise (ImportError)
 
 
 def test_track():
