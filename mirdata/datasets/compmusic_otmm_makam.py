@@ -62,7 +62,9 @@ INDEXES = {
     "test": "dlfm2016-fix1",
     "old": "dlfm2016",
     "dlfm2016": core.Index(filename="compmusic_otmm_makam_index_dlfm2016.json"),
-    "dlfm2016-fix1": core.Index(filename="compmusic_otmm_makam_index_dlfm2016-fix1.json"),
+    "dlfm2016-fix1": core.Index(
+        filename="compmusic_otmm_makam_index_dlfm2016-fix1.json"
+    ),
 }
 
 REMOTES = {
@@ -99,21 +101,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         # Annotation paths
         self.pitch_path = self.get_path("pitch")
@@ -149,12 +138,12 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             f0_data=[(self.pitch, "pitch")],
             metadata={
-            "makam": self.makam,
-            "tonic": self.tonic,
-            "mbid": self.mbid,
-            "duration": self.mb_tags["duration"],
-            "metadata": self.mb_tags,
-            }
+                "makam": self.makam,
+                "tonic": self.tonic,
+                "mbid": self.mbid,
+                "duration": self.mb_tags["duration"],
+                "metadata": self.mb_tags,
+            },
         )
 
 
@@ -244,15 +233,13 @@ class Dataset(core.Dataset):
         return metadata
 
     @deprecated(
-        reason="Use mirdata.datasets.compmusic_otmm_makam.load_pitch",
-        version="0.3.4",
+        reason="Use mirdata.datasets.compmusic_otmm_makam.load_pitch", version="0.3.4"
     )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.compmusic_otmm_makam.load_mb_tags",
-        version="0.3.4",
+        reason="Use mirdata.datasets.compmusic_otmm_makam.load_mb_tags", version="0.3.4"
     )
     def load_mb_tags(self, *args, **kwargs):
         return load_mb_tags(*args, **kwargs)

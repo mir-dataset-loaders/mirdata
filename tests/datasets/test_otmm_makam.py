@@ -166,10 +166,7 @@ def test_track():
         "tonic": 260.0,
     }
 
-    expected_property_types = {
-        "pitch": annotations.F0Data,
-        "mb_tags": dict,
-    }
+    expected_property_types = {"pitch": annotations.F0Data, "mb_tags": dict}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
