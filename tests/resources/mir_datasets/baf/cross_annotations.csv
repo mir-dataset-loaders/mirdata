@@ -1,0 +1,6 @@
+query,reference,query_start,query_end,annotators,x_tag
+query_0001.wav,ref_0027.wav,40.44,59.936,"['annotator_6', 'annotator_5', 'annotator_3']",unanimity
+query_0001.wav,ref_0027.wav,40.0,40.44,"['annotator_6', 'annotator_5']",majority
+query_0001.wav,ref_1072.wav,0.0,33.0,"['annotator_6', 'annotator_5', 'annotator_3']",unanimity
+query_0001.wav,ref_1072.wav,33.0,34.49,"['annotator_5', 'annotator_3']",majority
+query_0001.wav,ref_1072.wav,34.49,34.61,['annotator_5'],single
