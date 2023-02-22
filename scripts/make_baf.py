@@ -42,14 +42,18 @@ def make_baf_index(data_path: str) -> None:
             "audio": (os.path.join(*filepath.split("/")[-3:]), md5(filepath))
         }
 
-    metadata_path = os.path.join(data_path, "queries_info.csv")
+    queries_info_path = os.path.join(data_path, "queries_info.csv")
+    xannotations_path = os.path.join(data_path, "cross_annotations.csv")
     metadata = {
         "queries_info": (
-            os.path.join(*metadata_path.split("/")[-2:]),
-            md5(metadata_path),
-        )
+            os.path.join(*queries_info_path.split("/")[-2:]),
+            md5(queries_info_path),
+        ),
+        "cross_annotations": (
+            os.path.join(*xannotations_path.split("/")[-2:]),
+            md5(xannotations_path),
+        ),
     }
-
     baf_index = {"version": "1.0", "tracks": tracks, "metadata": metadata}
     with open(BAF_INDEX_PATH, "w") as fhandle:
         json.dump(baf_index, fhandle, indent=2)
@@ -61,7 +65,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Make baf index file.")
-    parser.add_argument("baf_data_path",
-                        type=str,
-                        help="Path to baf data folder.")
+    parser.add_argument(
+        "baf_data_path", type=str, help="Path to baf data folder."
+    )
     main(parser.parse_args())
