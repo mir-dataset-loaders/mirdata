@@ -39,18 +39,18 @@ def make_baf_index(data_path: str) -> None:
     for filepath in sorted(glob.glob(queries_dir)):
         file_id = Path(filepath).stem
         tracks[file_id] = {
-            "audio": (os.path.join(*filepath.split("/")[-3:]), md5(filepath))
+            "audio": (os.path.join(*filepath.split("/")[-2:]), md5(filepath))
         }
 
     queries_info_path = os.path.join(data_path, "queries_info.csv")
     xannotations_path = os.path.join(data_path, "cross_annotations.csv")
     metadata = {
         "queries_info": (
-            os.path.join(*queries_info_path.split("/")[-2:]),
+            os.path.join(*queries_info_path.split("/")[-1:]),
             md5(queries_info_path),
         ),
         "cross_annotations": (
-            os.path.join(*xannotations_path.split("/")[-2:]),
+            os.path.join(*xannotations_path.split("/")[-1:]),
             md5(xannotations_path),
         ),
     }

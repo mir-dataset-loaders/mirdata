@@ -108,6 +108,7 @@ BAF Loader
     Universities and Research of the Department of Business and Knowledge of
     the Generalitat de Catalunya. Reference: DI46-2020.
 """
+from collections import deque
 import os
 from string import Template
 from typing import Tuple
@@ -150,40 +151,41 @@ INDEXES = {
 
 REMOTES = {}
 
-DOWNLOAD_INFO = """
-    BAF dataset is only available upon request. To download the audio request 
-    access in this link: https://doi.org/10.5281/zenodo.6868083. Then unzip the 
-    audio into the baf general dataset folder for the rest of annotations and 
-    files. Please include, in the justification field, your academic 
-    affiliation (if you have one) and a brief description of your research 
-    topics and why you would like to use this dataset.
-        baf/
-        ├── baf_datasheet.pdf
-        ├── annotations.csv
-        ├── changelog.md
-        ├── cross_annotations.csv
-        ├── queries_info.csv
-        ├── queries
-        │   ├── query_0001.wav
-        │   ├── query_0002.wav
-        │   ├── …
-        │   └── query_3425.wav
-        ├── queries_info.csv
-        └── references
-            ├── ref_0001.wav
-            ├── ref_0002.wav
-            ├── …
-            └── ref_2000.wav
-"""
+DOWNLOAD_INFO = (
+    "BAF dataset is only available upon request. To download the audio "
+    "request access in this link: https://doi.org/10.5281/zenodo.6868083. "
+    "Then unzip the audio into the baf general dataset folder for the rest of "
+    "annotations and files. Please include, in the justification field, your "
+    "academic affiliation (if you have one) and a brief description of your "
+    "research topics and why you would like to use this dataset."
+    "    baf/\n"
+    "    ├── baf_datasheet.pdf\n"
+    "    ├── annotations.csv\n"
+    "    ├── changelog.md\n"
+    "    ├── cross_annotations.csv\n"
+    "    ├── queries_info.csv\n"
+    "    ├── queries\n"
+    "    │   ├── query_0001.wav\n"
+    "    │   ├── query_0002.wav\n"
+    "    │   ├── …\n"
+    "    │   └── query_3425.wav\n"
+    "    ├── queries_info.csv\n"
+    "    └── references\n"
+    "        ├── ref_0001.wav\n"
+    "        ├── ref_0002.wav\n"
+    "        ├── …\n"
+    "        └── ref_2000.wav\n"
+)
 
-LICENSE_INFO = """
-    Given the different ownership of the elements of the dataset, the dataset is 
-    licensed under the following conditions:
-        * User's access request
-        * Research only, non-commercial purposes
-        * No adaptations nor derivative works
-        * Attribution to Epidemic Sound and the authors as it is indicated in the ”citation” section.
-"""
+LICENSE_INFO = (
+    "Given the different ownership of the elements of the dataset, the "
+    "dataset is licensed under the following conditions:\n"
+    "    * User's access request\n"
+    "    * Research only, non-commercial purposes\n"
+    "    * No adaptations nor derivative works\n"
+    "    * Attribution to Epidemic Sound and the authors as it is indicated "
+                "in the ”citation” section.\n"
+)
 
 #: Tag units
 TAG_UNITS = {"open": "no scrict schema or units"}
@@ -233,16 +235,14 @@ class Track(core.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets/baf`
 
     Attributes:
-        track_id (str): track id
-        identifier (str): musicbrainz id of the track
-        artist (str): performing artists
-        title (str): title of the track song
-        release (str): release where the track can be found
-        duration (str): duration in seconds of the track
+        audio_path (str): audio path 
 
-    Cached Properties:
-        melody (F0Data): annotated melody
-        notes (NoteData): annotated notes
+    Properties:
+        country (str): country of emission
+        channel (str): tv channel of the emission
+        datetime (str): datetime of the TV emission in YYYY-MM-DD HH:mm:ss format
+        matches (list): list of matches for a specific query
+        
 
     """
 
@@ -265,15 +265,15 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def country(self):
+    def country(self) -> str:
         return self._track_metadata.get("country")
 
     @property
-    def channel(self):
+    def channel(self) -> str:
         return self._track_metadata.get("channel")
 
     @property
-    def datetime(self):
+    def datetime(self) -> str:
         return self._track_metadata.get("datetime")
 
     @property
@@ -308,7 +308,6 @@ def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
 
 
 def load_matches(track_metadata: list) -> list:
-    # TODO load cross annotations
     """Load the matches corresponding to a query track.
 
     Args:
@@ -317,13 +316,14 @@ def load_matches(track_metadata: list) -> list:
     Returns:
         dict
     """
-    intervals = np.array([], dtype=float)
+    intervals_list = deque() #linked list
     events = []
     tags = []
-    for ann in track_metadata["anontations"]:
-        np.append(intervals, [ann["query_start"], ann["query_end"]])
+    for ann in track_metadata["annotations"]:
+        intervals_list.append([ann["query_start"], ann["query_end"]])
         events.append(ann["reference"])
         tags.append(ann["tag"])
+    intervals = np.array(intervals_list, dtype=float) #more efficient than appending to np.array
     ede = EventDataExtended(
         intervals=intervals,
         interval_unit="s",
@@ -378,21 +378,19 @@ class Dataset(core.Dataset):
         metadata = dict()
         for _, row in df.iterrows():
             identifier = row.get("query").split(".wav")[0]
-            md = metadata.get(identifier)
             reference = row.get("reference").split(".wav")[0]
+            md = metadata.get(identifier)
             if md is None:
                 metadata[identifier] = {
                     "country": row.get("country"),
                     "channel": row.get("channel"),
                     "datetime": row.get("datetime"),
-                    "annotations": list(
-                        {
+                    "annotations": [{
                             "reference": reference,
                             "query_start": row.get("query_start"),
                             "query_end": row.get("query_end"),
-                            "tag": row.get("xtag"),
-                        }
-                    ),
+                            "tag": row.get("x_tag"),
+                        }]
                 }
             else:
                 md["annotations"].append(
@@ -400,7 +398,7 @@ class Dataset(core.Dataset):
                         "reference": reference,
                         "query_start": row.get("query_start"),
                         "query_end": row.get("query_end"),
-                        "tag": row.get("xtag"),
+                        "tag": row.get("x_tag"),
                     }
                 )
         return metadata
