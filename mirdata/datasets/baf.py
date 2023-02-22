@@ -118,8 +118,9 @@ import librosa
 import numpy as np
 import pandas as pd
 
-from mirdata import core
 from mirdata import annotations
+from mirdata import core
+from mirdata import jams_utils
 
 
 BIBTEX = """@inproceedings{cortes2022BAF,
@@ -291,6 +292,17 @@ class Track(core.Track):
     def matches(self) -> dict:
         return load_matches(self._track_metadata)
 
+    def to_jams(self):
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
+        return jams_utils.jams_converter(
+            audio_path=self.audio_path,
+            metadata=self._track_metadata,
+        )
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
@@ -307,7 +319,7 @@ def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     return librosa.load(fpath, sr=8000, mono=True)
 
 
-def load_matches(track_metadata: list) -> list:
+def load_matches(track_metadata: list) -> EventDataExtended:
     """Load the matches corresponding to a query track.
 
     Args:
@@ -353,8 +365,8 @@ class Dataset(core.Dataset):
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
-
-    @core.cached_property
+        
+    @property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "queries_info.csv")
         xannotations_path = os.path.join(
