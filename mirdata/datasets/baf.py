@@ -49,7 +49,8 @@ BAF Loader
 
     Annotations mark which tracks sound (either in foreground or background) in
     each query (if any) and also the specific times where it starts and ends
-    sound in the query.
+    sound in the query. Note that there are 88 queries that doesn't have any
+    matches/annotations .
 
     For more information check the dedicated Github repository:
     https://github.com/guillemcortes/baf-dataset and the dataset datasheet
@@ -158,7 +159,7 @@ DOWNLOAD_INFO = (
     "Then unzip the audio into the baf general dataset folder for the rest of "
     "annotations and files. Please include, in the justification field, your "
     "academic affiliation (if you have one) and a brief description of your "
-    "research topics and why you would like to use this dataset."
+    "research topics and why you would like to use this dataset.\n"
     "    baf/\n"
     "    ├── baf_datasheet.pdf\n"
     "    ├── annotations.csv\n"
@@ -185,7 +186,7 @@ LICENSE_INFO = (
     "    * Research only, non-commercial purposes\n"
     "    * No adaptations nor derivative works\n"
     "    * Attribution to Epidemic Sound and the authors as it is indicated "
-                "in the ”citation” section.\n"
+    "in the ”citation” section.\n"
 )
 
 #: Tag units
@@ -233,18 +234,21 @@ class Track(core.Track):
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/baf`
+            If `None`, looks for the data in the default directory,
+            `~/mir_datasets/baf`
 
     Attributes:
-        audio_path (str): audio path 
+        audio_path (str): audio path
 
     Properties:
         country (str): country of emission
         channel (str): tv channel of the emission
-        datetime (str): datetime of the TV emission in YYYY-MM-DD HH:mm:ss format
+        datetime (str): datetime of the TV emission in YYYY-MM-DD HH:mm:ss
+            format
         matches (list): list of matches for a specific query
-        
 
+    Returns:
+        Track: BAF dataset track
     """
 
     def __init__(
@@ -304,6 +308,7 @@ class Track(core.Track):
             metadata=self._track_metadata,
         )
 
+
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a baf audio file.
@@ -319,23 +324,27 @@ def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     return librosa.load(fpath, sr=8000, mono=True)
 
 
-def load_matches(track_metadata: list) -> EventDataExtended:
+def load_matches(track_metadata: dict) -> EventDataExtended:
     """Load the matches corresponding to a query track.
 
     Args:
-        Track object
+        track_metadata (dict): track's metadata
 
     Returns:
-        dict
+        EventDataExtended: Track's annotations in EvendDataExtended format
     """
-    intervals_list = deque() #linked list
+    intervals_list = deque()  # linked list
     events = []
     tags = []
     for ann in track_metadata["annotations"]:
+        if ann["reference"] == "":  # Track without annotations
+            return None
         intervals_list.append([ann["query_start"], ann["query_end"]])
         events.append(ann["reference"])
         tags.append(ann["tag"])
-    intervals = np.array(intervals_list, dtype=float) #more efficient than appending to np.array
+    intervals = np.array(
+        intervals_list, dtype=float
+    )  # more efficient than appending to np.array
     ede = EventDataExtended(
         intervals=intervals,
         interval_unit="s",
@@ -365,9 +374,10 @@ class Dataset(core.Dataset):
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
-        
+
     @property
     def _metadata(self):
+        """Ingest dataset metadata"""
         metadata_path = os.path.join(self.data_home, "queries_info.csv")
         xannotations_path = os.path.join(
             self.data_home, "cross_annotations.csv"
@@ -385,24 +395,28 @@ class Dataset(core.Dataset):
                 FILENOTFOUND_MSG.safe_substitute(fname=not_found.filename)
             )
         metadata_df.rename(columns={"filename": "query"}, inplace=True)
-        df = pd.merge(metadata_df, xannotations_df, on="query")
-
+        df = pd.merge(metadata_df, xannotations_df, on="query", how="outer")
+        df = df.replace(np.nan, "")
         metadata = dict()
         for _, row in df.iterrows():
             identifier = row.get("query").split(".wav")[0]
-            reference = row.get("reference").split(".wav")[0]
             md = metadata.get(identifier)
+            reference = row.get("reference")
+            if row.get("reference") != "":
+                reference = reference.split(".wav")[0]
             if md is None:
                 metadata[identifier] = {
                     "country": row.get("country"),
                     "channel": row.get("channel"),
                     "datetime": row.get("datetime"),
-                    "annotations": [{
+                    "annotations": [
+                        {
                             "reference": reference,
                             "query_start": row.get("query_start"),
                             "query_end": row.get("query_end"),
                             "tag": row.get("x_tag"),
-                        }]
+                        }
+                    ],
                 }
             else:
                 md["annotations"].append(
