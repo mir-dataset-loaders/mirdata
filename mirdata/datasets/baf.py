@@ -151,8 +151,6 @@ INDEXES = {
     "1.0": core.Index(filename="baf_index_1.0.json"),
 }
 
-REMOTES = {}
-
 DOWNLOAD_INFO = (
     "BAF dataset is only available upon request. To download the audio "
     "request access in this link: https://doi.org/10.5281/zenodo.6868083. "
