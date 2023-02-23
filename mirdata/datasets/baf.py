@@ -241,6 +241,7 @@ class Track(core.Track):
         audio_path (str): audio path
 
     Properties:
+        audio (Tuple[np.ndarray, float]): audio array
         country (str): country of emission
         channel (str): tv channel of the emission
         datetime (str): datetime of the TV emission in YYYY-MM-DD HH:mm:ss
@@ -293,7 +294,7 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @property
-    def matches(self) -> dict:
+    def matches(self) -> EventDataExtended:
         return load_matches(self._track_metadata)
 
     def to_jams(self):
