@@ -341,7 +341,7 @@ def load_matches(track_metadata: dict) -> EventDataExtended:
         if ann["reference"] == "":  # Track without annotations
             return None
         intervals_list.append(
-            [round(ann["query_start"],2), round(ann["query_end"],2)])
+            [round(ann["query_start"],3), round(ann["query_end"],3)])
         events.append(ann["reference"])
         tags.append(ann["tag"])
     intervals = np.array(
@@ -414,8 +414,8 @@ class Dataset(core.Dataset):
                     "annotations": [
                         {
                             "reference": reference,
-                            "query_start": round(row.get("query_start"),2),
-                            "query_end": round(row.get("query_end"),2),
+                            "query_start": round(row.get("query_start"),3),
+                            "query_end": round(row.get("query_end"),3),
                             "tag": row.get("x_tag"),
                         }
                     ],
@@ -424,8 +424,8 @@ class Dataset(core.Dataset):
                 md["annotations"].append(
                     {
                         "reference": reference,
-                        "query_start": round(row.get("query_start"),2),
-                        "query_end": round(row.get("query_end"),2),
+                        "query_start": round(row.get("query_start"),3),
+                        "query_end": round(row.get("query_end"),3),
                         "tag": row.get("x_tag"),
                     }
                 )
