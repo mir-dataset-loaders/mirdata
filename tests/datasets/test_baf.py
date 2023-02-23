@@ -67,19 +67,21 @@ def test_load_matches():
     assert type(matches.tags) == list
     assert type(matches.tag_unit) == str
 
-    intervals_list = deque([
-                [40.44, 59.936],
-                [40.0, 40.44],
-                [0.0, 33.0],
-                [33.0, 34.49],
-                [34.49, 34.61],
-            ])
+    intervals_list = deque(
+        [
+            [40.44, 59.936],
+            [40.0, 40.44],
+            [0.0, 33.0],
+            [33.0, 34.49],
+            [34.49, 34.61],
+        ]
+    )
     intervals = np.array(intervals_list, dtype=float)
     interval_unit = "s"
     events = ["ref_0027", "ref_0027", "ref_1072", "ref_1072", "ref_1072"]
     event_unit = "open"
-    tags = ["unanimity", "majority", "unanimity", "majority", "single"] 
-    tag_unit="open"
+    tags = ["unanimity", "majority", "unanimity", "majority", "single"]
+    tag_unit = "open"
 
     assert isinstance(matches, baf.EventDataExtended)
     assert matches.intervals.all() == intervals.all()
