@@ -206,9 +206,7 @@ class EventDataExtended(annotations.EventData):
 
     """
 
-    def __init__(
-        self, intervals, interval_unit, events, event_unit, tags, tag_unit
-    ):
+    def __init__(self, intervals, interval_unit, events, event_unit, tags, tag_unit):
         super().__init__(intervals, interval_unit, events, event_unit)
         annotations.validate_array_like(intervals, np.ndarray, float)
         annotations.validate_array_like(events, list, str)
@@ -339,7 +337,8 @@ def load_matches(track_metadata: dict) -> EventDataExtended:
         if ann["reference"] == "":  # Track without annotations
             return None
         intervals_list.append(
-            [round(ann["query_start"],3), round(ann["query_end"],3)])
+            [round(ann["query_start"], 3), round(ann["query_end"], 3)]
+        )
         events.append(ann["reference"])
         tags.append(ann["tag"])
     intervals = np.array(
@@ -379,9 +378,7 @@ class Dataset(core.Dataset):
     def _metadata(self):
         """Ingest dataset metadata"""
         metadata_path = os.path.join(self.data_home, "queries_info.csv")
-        xannotations_path = os.path.join(
-            self.data_home, "cross_annotations.csv"
-        )
+        xannotations_path = os.path.join(self.data_home, "cross_annotations.csv")
         try:
             metadata_df = pd.read_csv(metadata_path)
         except FileNotFoundError as not_found:
@@ -412,8 +409,8 @@ class Dataset(core.Dataset):
                     "annotations": [
                         {
                             "reference": reference,
-                            "query_start": round(row.get("query_start"),3),
-                            "query_end": round(row.get("query_end"),3),
+                            "query_start": round(row.get("query_start"), 3),
+                            "query_end": round(row.get("query_end"), 3),
                             "tag": row.get("x_tag"),
                         }
                     ],
@@ -422,8 +419,8 @@ class Dataset(core.Dataset):
                 md["annotations"].append(
                     {
                         "reference": reference,
-                        "query_start": round(row.get("query_start"),3),
-                        "query_end": round(row.get("query_end"),3),
+                        "query_start": round(row.get("query_start"), 3),
+                        "query_end": round(row.get("query_end"), 3),
                         "tag": row.get("x_tag"),
                     }
                 )
