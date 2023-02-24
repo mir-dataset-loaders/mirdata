@@ -292,7 +292,7 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @property
-    def matches(self) -> Optional[EventDataExtended]: 
+    def matches(self) -> Optional[EventDataExtended]:
         return load_matches(self._track_metadata)
 
     def to_jams(self):
@@ -332,7 +332,7 @@ def load_matches(track_metadata: dict) -> Optional[EventDataExtended]:
     Returns:
         Optional[EventDataExtended]: Track's annotations in EvendDataExtended format
     """
-    #intervals_list = deque()  # linked list
+    # intervals_list = deque()  # linked list
     intervals_list = []
     events = []
     tags = []
@@ -404,11 +404,11 @@ class Dataset(core.Dataset):
             reference = row.get("reference")
             if row.get("reference") == "":
                 metadata[identifier] = {
-                        "country": row.get("country"),
-                        "channel": row.get("channel"),
-                        "datetime": row.get("datetime"),
-                        "annotations": []
-                } 
+                    "country": row.get("country"),
+                    "channel": row.get("channel"),
+                    "datetime": row.get("datetime"),
+                    "annotations": [],
+                }
             else:
                 reference = reference.split(".wav")[0]
                 if md is None:
@@ -429,8 +429,8 @@ class Dataset(core.Dataset):
                     md["annotations"].append(
                         {
                             "reference": reference,
-                            "query_start":  round(row.get("query_start"), 3),
-                            "query_end":  round(row.get("query_end"), 3),
+                            "query_start": round(row.get("query_start"), 3),
+                            "query_end": round(row.get("query_end"), 3),
                             "tag": row.get("x_tag"),
                         }
                     )
