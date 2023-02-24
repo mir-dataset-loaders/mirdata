@@ -112,7 +112,7 @@ BAF Loader
 from collections import deque
 import os
 from string import Template
-from typing import Tuple
+from typing import Tuple, Optional
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -292,7 +292,7 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @property
-    def matches(self) -> EventDataExtended:
+    def matches(self) -> Optional[EventDataExtended]: 
         return load_matches(self._track_metadata)
 
     def to_jams(self):
@@ -323,38 +323,39 @@ def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     return librosa.load(fpath, sr=8000, mono=True)
 
 
-def load_matches(track_metadata: dict) -> EventDataExtended:
+def load_matches(track_metadata: dict) -> Optional[EventDataExtended]:
     """Load the matches corresponding to a query track.
 
     Args:
         track_metadata (dict): track's metadata
 
     Returns:
-        EventDataExtended: Track's annotations in EvendDataExtended format
+        Optional[EventDataExtended]: Track's annotations in EvendDataExtended format
     """
-    intervals_list = deque()  # linked list
+    #intervals_list = deque()  # linked list
+    intervals_list = []
     events = []
     tags = []
-    for ann in track_metadata["annotations"]:
-        if ann["reference"] == "":  # Track without annotations
-            return None
-        intervals_list.append(
-            [round(ann["query_start"], 3), round(ann["query_end"], 3)]
+    if track_metadata["annotations"] == []:
+        return None
+    else:
+        for ann in track_metadata["annotations"]:
+            intervals_list.append(
+                [round(ann["query_start"], 3), round(ann["query_end"], 3)]
+            )
+            events.append(ann["reference"])
+            tags.append(ann["tag"])
+        intervals = np.array(
+            intervals_list, dtype=float
+        )  # more efficient than appending to np.array
+        return EventDataExtended(
+            intervals=intervals,
+            interval_unit="s",
+            events=events,
+            event_unit="open",
+            tags=tags,
+            tag_unit="open",
         )
-        events.append(ann["reference"])
-        tags.append(ann["tag"])
-    intervals = np.array(
-        intervals_list, dtype=float
-    )  # more efficient than appending to np.array
-    ede = EventDataExtended(
-        intervals=intervals,
-        interval_unit="s",
-        events=events,
-        event_unit="open",
-        tags=tags,
-        tag_unit="open",
-    )
-    return ede
 
 
 @core.docstring_inherit(core.Dataset)
@@ -376,7 +377,7 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @property
+    @core.cached_property
     def _metadata(self):
         """Ingest dataset metadata"""
         metadata_path = os.path.join(self.data_home, "queries_info.csv")
@@ -401,31 +402,38 @@ class Dataset(core.Dataset):
             identifier = row.get("query").split(".wav")[0]
             md = metadata.get(identifier)
             reference = row.get("reference")
-            if row.get("reference") != "":
-                reference = reference.split(".wav")[0]
-            if md is None:
+            if row.get("reference") == "":
                 metadata[identifier] = {
-                    "country": row.get("country"),
-                    "channel": row.get("channel"),
-                    "datetime": row.get("datetime"),
-                    "annotations": [
+                        "country": row.get("country"),
+                        "channel": row.get("channel"),
+                        "datetime": row.get("datetime"),
+                        "annotations": []
+                } 
+            else:
+                reference = reference.split(".wav")[0]
+                if md is None:
+                    metadata[identifier] = {
+                        "country": row.get("country"),
+                        "channel": row.get("channel"),
+                        "datetime": row.get("datetime"),
+                        "annotations": [
+                            {
+                                "reference": reference,
+                                "query_start": round(row.get("query_start"), 3),
+                                "query_end": round(row.get("query_end"), 3),
+                                "tag": row.get("x_tag"),
+                            }
+                        ],
+                    }
+                else:
+                    md["annotations"].append(
                         {
                             "reference": reference,
-                            "query_start": round(row.get("query_start"), 3),
-                            "query_end": round(row.get("query_end"), 3),
+                            "query_start":  round(row.get("query_start"), 3),
+                            "query_end":  round(row.get("query_end"), 3),
                             "tag": row.get("x_tag"),
                         }
-                    ],
-                }
-            else:
-                md["annotations"].append(
-                    {
-                        "reference": reference,
-                        "query_start": round(row.get("query_start"), 3),
-                        "query_end": round(row.get("query_end"), 3),
-                        "tag": row.get("x_tag"),
-                    }
-                )
+                    )
         return metadata
 
     @deprecated(
