@@ -32,7 +32,7 @@ if __name__ == "__main__":
         license="BSD-3-Clause",
         install_requires=[
             "tqdm",
-            "librosa >= 0.8.0",
+            "librosa == 0.9.2",
             "numpy>=1.16",
             "jams",
             "requests",
