@@ -135,7 +135,8 @@ def test_load_notation():
     track = dataset.track(default_trackid)
     notation_path = track.notation_path
     taala_path = track.taala_path
-    parsed_notation = compmusic_carnatic_varnam.load_notation(notation_path, taala_path)
+    structure_path = track.structure_path
+    parsed_notation = compmusic_carnatic_varnam.load_notation(notation_path, taala_path, structure_path)
 
     assert type(parsed_notation) == annotations.EventData
     assert type(parsed_notation.intervals) is np.ndarray

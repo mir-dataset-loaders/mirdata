@@ -126,6 +126,7 @@ class Track(core.Track):
         # Annotation paths
         self.taala_path =  self.get_path("taala")
         self.notation_path = self.get_path("notation")
+        self.structure_path = self.get_path("structure")
 
     @core.cached_property
     def taala(self):
@@ -253,8 +254,8 @@ def load_taala(fhandle):
     )
 
 
-# no decorator here because we need two paths
-def load_notation(note_path, taala_path):
+# no decorator here because we need three paths
+def load_notation(note_path, taala_path, structure_path):
     """Load notation (notes)
 
     Args:
@@ -286,14 +287,50 @@ def load_notation(note_path, taala_path):
         end_times.append(float(points[beat].getAttribute('frame')) / fs)
         prev_timestamp = float(points[beat].getAttribute('frame')) / fs
 
+    # Getting structure
+    with open(structure_path, "r") as fhandle:
+        structure = []
+        reader = csv.reader(fhandle, delimiter=':')
+        for row in reader:
+            if len(row) > 1:
+                ky = row[0].replace("'", "").replace(" ", "").replace(":", "")
+                vl = row[1].replace("'", "").replace(" ", "").replace(":", "")
+                if vl and len(vl) < 2:
+                    structure.append((ky, int(vl)))
+
+    # Getting notation
     with open(note_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter='-')
         for row in reader:
             events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
 
-        thr = events.index('pallavi')  # Get notation
-        events = events[thr:]
-        events = [x for x in events if len(x) < 3]  # Remove keys
+        notation_dict = {}
+        section_dict = {events.index(x): x for x in list(np.unique([x[0] for x in structure]))}
+        start_idxs = sorted(section_dict.keys())
+        end_idxs = sorted(section_dict.keys())[1:] + [len(events)]
+        for start, end in zip(start_idxs, end_idxs):
+            notation_dict[section_dict[start]] = events[start+1:end]
+
+    # Putting all together
+    events = []
+    for section in structure:
+        not_per_sec = notation_dict[section[0]]
+        if section[1] == 1:
+            events.append(not_per_sec)
+        if section[1] == 2:
+            for x in np.arange(len(not_per_sec)-1, step=2):
+                pair = [not_per_sec[x], not_per_sec[x+1]]
+                events.append(pair)
+                #events.extend(
+                #    [(not_per_sec[x], not_per_sec[x+1]) for x in np.arange(len(not_per_sec)-1, step=2)]
+                #)
+        print(len(not_per_sec))
+        print(len(events))
+        print(len(start_times))
+
+    #print(np.array([start_times, end_times]).shape)
+    #print(events)
+    #print(np.shape(events))
 
     return annotations.EventData(
         np.array(

@@ -38,6 +38,10 @@
         "carnatic_varnam_1.0/Notations_Annotations/notations/abhogi.yaml",
         "a7be6130926d26a1a3a60da5dade5a70"
       ],
+      "structure": [
+        "carnatic_varnam_1.0/Notations_Annotations/notations/abhogi/dharini.yaml",
+        "a7be6130926d26a1a3a60da5dade5a70"
+      ],
       "taala": [
         "carnatic_varnam_1.0/Notations_Annotations/annotations/taalas/abhogi/dharini.svl",
         "b88e020c86effa282804bef6eea41216"
