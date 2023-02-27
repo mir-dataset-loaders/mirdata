@@ -33,7 +33,7 @@ if __name__ == "__main__":
         install_requires=[
             "black == 22.8.0",  # last version for python3.6
             "tqdm",
-            "librosa >= 0.9.2",
+            "librosa == 0.9.2",
             "numpy>=1.16",
             "jams",
             "requests",
