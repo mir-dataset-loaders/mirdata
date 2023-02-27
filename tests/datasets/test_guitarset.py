@@ -168,18 +168,7 @@ def test_load_contours():
     )
     assert np.allclose(
         track.pitch_contours["e"].frequencies[:10],
-        [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-        ],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
     )
     assert track.pitch_contours["e"]._confidence is None
 

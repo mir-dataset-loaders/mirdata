@@ -151,16 +151,7 @@ def test_load_f0():
         np.array([0.400544218, 0.406349206, 0.412154195, 0.417959184, 0.423764172]),
     )
     assert np.array_equal(
-        f0.frequencies,
-        np.array(
-            [
-                129.387,
-                126.634,
-                125.182,
-                124.943,
-                124.491,
-            ]
-        ),
+        f0.frequencies, np.array([129.387, 126.634, 125.182, 124.943, 124.491])
     )
     assert np.array_equal(f0.voicing, np.array([1, 1, 1, 1, 1]))
 

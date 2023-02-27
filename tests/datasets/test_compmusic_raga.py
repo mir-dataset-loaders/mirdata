@@ -95,22 +95,14 @@ def test_to_jams():
     # Pitch
     pitches = jam.search(namespace="pitch_contour")[0]["data"]
     assert len(pitches) == 3
-    assert [pitch.time for pitch in pitches] == [
-        0.0000000,
-        0.0044444,
-        0.0088889,
-    ]
+    assert [pitch.time for pitch in pitches] == [0.0000000, 0.0044444, 0.0088889]
     assert [pitch.duration for pitch in pitches] == [0.0, 0.0, 0.0]
     assert [pitch.value for pitch in pitches] == [
         {"index": 0, "frequency": 290.2945557, "voiced": True},
         {"index": 0, "frequency": 0.0000000, "voiced": False},
         {"index": 0, "frequency": 290.2945557, "voiced": True},
     ]
-    assert [pitch.confidence for pitch in pitches] == [
-        None,
-        None,
-        None,
-    ]
+    assert [pitch.confidence for pitch in pitches] == [None, None, None]
 
     pitches_vocal = jam.search(namespace="pitch_contour")[1]["data"]
     assert len(pitches_vocal) == 3
@@ -119,11 +111,7 @@ def test_to_jams():
         0.0044444,
         0.0088888,
     ]
-    assert [pitch_vocal.duration for pitch_vocal in pitches_vocal] == [
-        0.0,
-        0.0,
-        0.0,
-    ]
+    assert [pitch_vocal.duration for pitch_vocal in pitches_vocal] == [0.0, 0.0, 0.0]
     assert [pitch_vocal.value for pitch_vocal in pitches_vocal] == [
         {"index": 0, "frequency": 269.3222234520231, "voiced": True},
         {"index": 0, "frequency": 0.0000000, "voiced": False},
@@ -137,40 +125,24 @@ def test_to_jams():
 
     # Nyas
     nyas_segments = jam.search(namespace="tag_open")[0]["data"]
-    assert [segment.time for segment in nyas_segments] == [
-        2.16887,
-        3.04886,
-        5.19106,
-    ]
+    assert [segment.time for segment in nyas_segments] == [2.16887, 3.04886, 5.19106]
     assert [segment.duration for segment in nyas_segments] == [
         0.45777,
         0.38666,
         0.31110999999999933,
     ]
-    assert [segment.value for segment in nyas_segments] == [
-        "nyas",
-        "nyas",
-        "nyas",
-    ]
+    assert [segment.value for segment in nyas_segments] == ["nyas", "nyas", "nyas"]
     assert [segment.confidence for segment in nyas_segments] == [None, None, None]
 
     # Tani
     tani_segments = jam.search(namespace="tag_open")[1]["data"]
-    assert [segment.time for segment in tani_segments] == [
-        2.16887,
-        3.04886,
-        5.19106,
-    ]
+    assert [segment.time for segment in tani_segments] == [2.16887, 3.04886, 5.19106]
     assert [segment.duration for segment in tani_segments] == [
         0.45777,
         0.38666,
         0.31110999999999933,
     ]
-    assert [segment.value for segment in tani_segments] == [
-        "tani",
-        "tani",
-        "tani",
-    ]
+    assert [segment.value for segment in tani_segments] == ["tani", "tani", "tani"]
     assert [segment.confidence for segment in tani_segments] == [None, None, None]
 
 
@@ -199,18 +171,10 @@ def test_load_pitch():
 
     # Check values
     assert np.array_equal(
-        parsed_pitch.times,
-        np.array([0.0000000, 0.0044444, 0.0088889]),
+        parsed_pitch.times, np.array([0.0000000, 0.0044444, 0.0088889])
     )
     assert np.array_equal(
-        parsed_pitch.frequencies,
-        np.array(
-            [
-                290.2945557,
-                0.0000000,
-                290.2945557,
-            ]
-        ),
+        parsed_pitch.frequencies, np.array([290.2945557, 0.0000000, 290.2945557])
     )
     assert np.array_equal(parsed_pitch.voicing, np.array([1.0, 0.0, 1.0]))
 
@@ -244,24 +208,12 @@ def test_load_segments():
     # Check values
     assert np.array_equal(
         parsed_nyas.intervals,
-        np.array(
-            [
-                [2.16887, 2.62664],
-                [3.04886, 3.43552],
-                [5.19106, 5.50217],
-            ]
-        ),
+        np.array([[2.16887, 2.62664], [3.04886, 3.43552], [5.19106, 5.50217]]),
     )
     assert parsed_nyas.events == ["nyas", "nyas", "nyas"]
     assert np.array_equal(
         parsed_tani.intervals,
-        np.array(
-            [
-                [2.16887, 2.62664],
-                [3.04886, 3.43552],
-                [5.19106, 5.50217],
-            ]
-        ),
+        np.array([[2.16887, 2.62664], [3.04886, 3.43552], [5.19106, 5.50217]]),
     )
     assert parsed_tani.events == ["tani", "tani", "tani"]
 

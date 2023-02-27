@@ -97,21 +97,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.f0_path = self.get_path("pitch")
         self.lyrics_path = self.get_path("lyrics")
@@ -361,10 +348,7 @@ def load_pronunciations(fhandle: TextIO) -> annotations.LyricData:
             pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T,
-        "s",
-        pronunciations,
-        "pronunciations_open",
+        np.array([start_times, end_times]).T, "s", pronunciations, "pronunciations_open"
     )
     return lyrics_data
 
@@ -404,51 +388,34 @@ class Dataset(core.Dataset):
 
         return singer_map
 
-    @deprecated(
-        reason="Use mirdata.datasets.ikala.load_vocal_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.ikala.load_vocal_audio", version="0.3.4")
     def load_vocal_audio(self, *args, **kwargs):
         return load_vocal_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.ikala.load_instrumental_audio",
-        version="0.3.4",
+        reason="Use mirdata.datasets.ikala.load_instrumental_audio", version="0.3.4"
     )
     def load_instrumental_audio(self, *args, **kwargs):
         return load_instrumental_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.ikala.load_mix_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.ikala.load_mix_audio", version="0.3.4")
     def load_mix_audio(self, *args, **kwargs):
         return load_mix_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.ikala.load_f0",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.ikala.load_f0", version="0.3.4")
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.ikala.load_notes",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.ikala.load_notes", version="0.3.4")
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.ikala.load_lyrics",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.ikala.load_lyrics", version="0.3.4")
     def load_lyrics(self, *args, **kwargs):
         return load_lyrics(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.ikala.load_pronunciations",
-        version="0.3.4",
+        reason="Use mirdata.datasets.ikala.load_pronunciations", version="0.3.4"
     )
     def load_pronunciations(self, *args, **kwargs):
         return load_pronunciations(*args, **kwargs)

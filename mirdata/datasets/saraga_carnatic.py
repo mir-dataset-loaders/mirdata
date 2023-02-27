@@ -121,21 +121,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         # Audio path
         self.audio_path = self.get_path("audio-mix")
@@ -401,12 +388,7 @@ def load_sections(fhandle):
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         if line != "\n":
-            intervals.append(
-                [
-                    float(line[0]),
-                    float(line[0]) + float(line[2]),
-                ]
-            )
+            intervals.append([float(line[0]), float(line[0]) + float(line[2])])
             section_labels.append(str(line[3]))
 
     if not intervals:
@@ -465,57 +447,49 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_carnatic.load_audio",
-        version="0.3.4",
+        reason="Use mirdata.datasets.saraga_carnatic.load_audio", version="0.3.4"
     )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_carnatic.load_tonic",
-        version="0.3.4",
+        reason="Use mirdata.datasets.saraga_carnatic.load_tonic", version="0.3.4"
     )
     def load_tonic(self, *args, **kwargs):
         return load_tonic(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_carnatic.load_pitch",
-        version="0.3.4",
+        reason="Use mirdata.datasets.saraga_carnatic.load_pitch", version="0.3.4"
     )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_carnatic.load_tempo",
-        version="0.3.4",
+        reason="Use mirdata.datasets.saraga_carnatic.load_tempo", version="0.3.4"
     )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_carnatic.load_sama",
-        version="0.3.4",
+        reason="Use mirdata.datasets.saraga_carnatic.load_sama", version="0.3.4"
     )
     def load_sama(self, *args, **kwargs):
         return load_sama(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_carnatic.load_sections",
-        version="0.3.4",
+        reason="Use mirdata.datasets.saraga_carnatic.load_sections", version="0.3.4"
     )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_carnatic.load_phrases",
-        version="0.3.4",
+        reason="Use mirdata.datasets.saraga_carnatic.load_phrases", version="0.3.4"
     )
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_carnatic.load_metadata",
-        version="0.3.4",
+        reason="Use mirdata.datasets.saraga_carnatic.load_metadata", version="0.3.4"
     )
     def load_metadata(self, *args, **kwargs):
         return load_metadata(*args, **kwargs)

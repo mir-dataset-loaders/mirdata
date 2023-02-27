@@ -91,7 +91,7 @@ REMOTES = {
         filename="openmic-2018-v1.0.0.tgz",
         url="https://zenodo.org/record/1432913/files/openmic-2018-v1.0.0.tgz?download=1",
         checksum="e4ccf187e2bb5ab2e115416e8aafe7f4",
-    ),
+    )
 }
 
 LICENSE_INFO = "Creative Commons Attribution 4.0 International"
@@ -330,11 +330,7 @@ class Dataset(core.Dataset):
         for split_file in (Path(self.data_home) / "partitions").rglob("*.csv"):
             split = split_file.stem
             with open(split_file, "r") as fdesc:
-                split_df = pd.read_csv(
-                    fdesc,
-                    header=None,
-                    index_col=0,
-                )
+                split_df = pd.read_csv(fdesc, header=None, index_col=0)
                 split_df["split"] = split
                 metadata.update(split_df)
 
