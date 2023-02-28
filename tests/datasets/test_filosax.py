@@ -26,10 +26,7 @@ def test_track():
         "pdf_path": "tests/resources/mir_datasets/filosax/Participant 1/02/Sax.pdf",
     }
 
-    expected_property_types = {
-        "notes": list,
-        "audio": tuple,
-    }
+    expected_property_types = {"notes": list, "audio": tuple}
     assert default_track._track_paths == {
         "audio": ["Participant 1/02/Sax.wav", "c62cd9d2ec8085461cb2ffc9deeda176"],
         "annotation": [
