@@ -456,9 +456,6 @@ class Dataset(core.Dataset):
     def load_notation(self, *args, **kwargs):
         return load_notation(*args, **kwargs)
 
-    def load_sections(self, *args, **kwargs):
-        return load_sections(*args, **kwargs)
-
     def load_mbid(self, *args, **kwargs):
         return load_mbid(*args, **kwargs)
 
