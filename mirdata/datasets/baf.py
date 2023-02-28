@@ -93,6 +93,7 @@ BAF Loader
     License
 
     .. code-block:: latex
+
         Given the different ownership of the elements of the dataset, the
         dataset is licensed under the following conditions:
             * User's access request
@@ -232,8 +233,7 @@ class Track(core.Track):
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory,
-            `~/mir_datasets/baf`
+            If `None`, looks for the data in the default directory, `~/mir_datasets/baf`
 
     Attributes:
         audio_path (str): audio path
@@ -242,8 +242,7 @@ class Track(core.Track):
         audio (Tuple[np.ndarray, float]): audio array
         country (str): country of emission
         channel (str): tv channel of the emission
-        datetime (str): datetime of the TV emission in YYYY-MM-DD HH:mm:ss
-            format
+        datetime (str): datetime of the TV emission in YYYY-MM-DD HH:mm:ssformat
         matches (list): list of matches for a specific query
 
     Returns:
