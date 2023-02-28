@@ -1,9 +1,10 @@
+import os
 import numpy as np
 from tests.test_utils import run_track_tests
 from mirdata import annotations
 from mirdata.datasets import gtzan_genre
 
-TEST_DATA_HOME = "tests/resources/mir_datasets/gtzan_genre"
+TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/gtzan_genre")
 
 
 def test_track():
@@ -12,12 +13,18 @@ def test_track():
     track = dataset.track(default_trackid)
     expected_attributes = {
         "genre": "country",
-        "audio_path": "tests/resources/mir_datasets/gtzan_genre/"
-        + "gtzan_genre/genres/country/country.00000.wav",
-        "beats_path": "tests/resources/mir_datasets/gtzan_genre/"
-        + "gtzan_tempo_beat-main/beats/gtzan_country_00000.beats",
-        "tempo_path": "tests/resources/mir_datasets/gtzan_genre/"
-        + "gtzan_tempo_beat-main/tempo/gtzan_country_00000.bpm",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/gtzan_genre/"),
+            "gtzan_genre/genres/country/country.00000.wav",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/gtzan_genre/"),
+            "gtzan_tempo_beat-main/beats/gtzan_country_00000.beats",
+        ),
+        "tempo_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/gtzan_genre/"),
+            "gtzan_tempo_beat-main/tempo/gtzan_country_00000.bpm",
+        ),
         "track_id": "country.00000",
     }
     expected_properties = {

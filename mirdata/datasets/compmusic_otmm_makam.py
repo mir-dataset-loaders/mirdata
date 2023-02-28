@@ -176,7 +176,6 @@ def load_mb_tags(fhandle: TextIO) -> dict:
         Dict: metadata of the track
 
     """
-
     return json.load(fhandle)
 
 
@@ -201,7 +200,7 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(
-            self.data_home,
+            os.path.normpath(self.data_home),
             "MTG-otmm_makam_recognition_dataset-f14c0d0",
             "annotations.json",
         )
@@ -220,8 +219,8 @@ class Dataset(core.Dataset):
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        temp = metadata_path.split("/")[-2]
-        data_home = metadata_path.split(temp)[0]
+        temp = os.path.split(metadata_path)[-2]
+        data_home = os.path.split(temp)[0]
         metadata["data_home"] = data_home
 
         return metadata

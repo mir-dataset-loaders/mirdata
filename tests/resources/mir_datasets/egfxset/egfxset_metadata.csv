@@ -1,0 +1,13 @@
+Effect ,Model,Effect Type,Knob Names,Knob Type,Setting 
+blues driver,Boss  BD-2 Blues Driver,distortion,"['level', 'tone', 'gain']","['volume','eq','effect amount']","[0.5,0.5,1.0]"
+tube screamer,Ibanez Mini Tube Screamer,distortion,"['tone', 'overdrive', 'level']","['eq','effect amount','volume']","[0.5,1.0,0.5]"
+distortion,Pro Co Sound RAT2 Distortion,distortion,"['distortion', 'filter', 'volume']","['effect amount','eq','volume']","[1.0, 0.5,1.0]"
+chorus,Boss CE-3 Chorus,modulation,"['rate', 'depth', 'stereo mode']","['rate','effect amount','selector']","['120 bpm', 1.0, False]"
+flanger,Mooer E-Lady ,modulation,"['color', 'type', 'range', 'rate']","['eq','selector','effect amount','rate']","[0.5, 'normal', 1.0, '120 bpm']"
+phaser,MXR Phase 45,modulation,['speed'],['rate'],['120 bpm']
+tape echo,Line 6 DL4 Delay,delay,"['effect selector', 'delay time', 'repeats', 'tweak (bass)', 'tweez (treble)', 'mix']","['selector', 'rate', 'effect decay', 'eq', 'eq', 'effect amount']","['tape echo', '120 bpm', 0.6, 0.5, 0.5, 0.5]"
+digital delay,Line 6 DL4 Delay,delay,"['effect selector', 'delay time', 'repeats', 'tweak (bass)', 'tweez (treble)', 'mix']","['selector', 'rate', 'effect decay', 'eq', 'eq', 'effect amount']","['digital delay', '120 bpm', 0.6, 0.5, 0.5, 0.5] "
+sweep echo,Line 6 DL4 Delay,delay,"['effect selector', 'delay time', 'repeats', 'tweak (sweep speed)', 'tweez (sweep depth)', 'mix']","['selector', 'rate', 'effect decay', 'rate', 'effect amount', 'effect amount']","['sweep echo', '120 bpm', 0.6, '120 bpm',1.0,0.5]"
+plate reverb,Orange CR-60 Combo Amplifier,reverb,"['volume', 'bass', 'treble', 'type', 'reverb', 'master volume', 'clean']","['volume','eq','eq','selector','effect amount', 'volume', 'selector']","[0.5, 0.5, 0.5, 'plate', 1.0, 0.2, True]"
+hall reverb,Orange CR-60 Combo Amplifier,reverb,"['volume', 'bass', 'treble', 'type', 'reverb', 'master volume', 'clean']","['volume','eq','eq','selector','effect amount', 'volume', 'selector']","[0.5, 0.5, 0.5, 'hall', 1.0, 0.2, True]"
+spring reverb,Orange CR-60 Combo Amplifier,reverb,"['volume', 'bass', 'treble', 'type', 'reverb', 'master volume', 'clean']","['volume','eq','eq','selector','effect amount', 'volume', 'selector']","[0.5, 0.5, 0.5, 'spring', 1.0, 0.2, True]"

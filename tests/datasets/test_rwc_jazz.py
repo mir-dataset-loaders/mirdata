@@ -1,3 +1,4 @@
+import os
 from mirdata.datasets import rwc_jazz
 from mirdata import annotations
 from tests.test_utils import run_track_tests
@@ -6,18 +7,24 @@ from tests.test_utils import run_track_tests
 def test_track():
 
     default_trackid = "RM-J004"
-    data_home = "tests/resources/mir_datasets/rwc_jazz"
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_jazz")
     dataset = rwc_jazz.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "RM-J004",
-        "audio_path": "tests/resources/mir_datasets/rwc_jazz/"
-        + "audio/rwc-j-m01/4.wav",
-        "sections_path": "tests/resources/mir_datasets/rwc_jazz/"
-        + "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT",
-        "beats_path": "tests/resources/mir_datasets/rwc_jazz/"
-        + "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_jazz/"),
+            "audio/rwc-j-m01/4.wav",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_jazz/"),
+            "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_jazz/"),
+            "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT",
+        ),
         "piece_number": "No. 4",
         "suffix": "M01",
         "track_number": "Tr. 04",
@@ -125,7 +132,7 @@ def test_load_metadata():
         "suffix": "M04",
         "track_number": "Tr. 09",
         "title": "Joyful, Joyful, We Adore Thee",
-        "artist": "K’s Band",
+        "artist": ("K’s Band"),
         "duration": 270,
         "variation": "Style (Free jazz)",
         "instruments": "Pf & Bs & Dr & Gt & Ts & Fl & Bar",

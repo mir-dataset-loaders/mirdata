@@ -39,6 +39,7 @@
 
 """
 import json
+import os
 
 from deprecated.sphinx import deprecated
 
@@ -191,7 +192,7 @@ class Track(core.Track):
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
 
-        self.path = self.get_path("data")
+        self.path = os.path.normpath(self.get_path("data"))
         self.genre = [genre for genre in self.track_id.split("#")[4:] if genre != ""]
         self.mbid = self.track_id.split("#")[2]
         self.mbid_group = self.track_id.split("#")[3]
@@ -350,7 +351,7 @@ class Track(core.Track):
 
     @core.cached_property
     def acousticbrainz_metadata(self):
-        return load_extractor(self.path)
+        return load_extractor(os.path.normpath(self.path))
 
     def to_jams(self):
         """the track's data in jams format
@@ -361,7 +362,7 @@ class Track(core.Track):
         """
         return jams_utils.jams_converter(
             metadata={
-                "features": load_extractor(self.path),
+                "features": load_extractor(os.path.normpath(self.path)),
                 "duration": self.acousticbrainz_metadata["metadata"][
                     "audio_properties"
                 ]["length"],

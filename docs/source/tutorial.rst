@@ -359,12 +359,12 @@ The following is a simple example of a generator that can be used to create a te
 
         import mirdata
         import numpy as np
-        import tensorflow as tf
+        import tensorflow as tf 
 
         def orchset_generator():
             # using the default data_home
             orchset = mirdata.initialize("orchset")
-            track_ids = orchset.track_ids()
+            track_ids = orchset.track_ids
             for track_id in track_ids:
                 track = orchset.track(track_id)
                 audio_signal, sample_rate = track.audio_mono

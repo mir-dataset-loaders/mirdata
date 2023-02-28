@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata import annotations
@@ -7,18 +8,27 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "0"
-    data_home = "tests/resources/mir_datasets/queen"
+    data_home = os.path.normpath("tests/resources/mir_datasets/queen")
     dataset = queen.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/queen/audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
-        "chords_path": "tests/resources/mir_datasets/queen/"
-        "annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
-        "keys_path": "tests/resources/mir_datasets/queen/"
-        + "annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
-        "sections_path": "tests/resources/mir_datasets/queen/"
-        + "annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/queen/"),
+            "audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
+        ),
+        "chords_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/queen/"),
+            "annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        ),
+        "keys_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/queen/"),
+            "annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/queen/"),
+            "annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        ),
         "title": "01 Bohemian Rhapsody",
         "track_id": "0",
     }

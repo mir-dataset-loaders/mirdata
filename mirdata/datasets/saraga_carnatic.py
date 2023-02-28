@@ -385,7 +385,6 @@ def load_sections(fhandle):
     """
     intervals = []
     section_labels = []
-
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         if line != "\n":

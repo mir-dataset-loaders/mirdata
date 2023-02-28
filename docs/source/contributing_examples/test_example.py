@@ -40,7 +40,7 @@ def test_to_jams():
 
     default_trackid = "some_id"
     data_home = "tests/resources/mir_datasets/dataset"
-    dataset = example.Dataset(data_home, version="test"
+    dataset = example.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
