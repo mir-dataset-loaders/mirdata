@@ -104,27 +104,14 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         # Audio path
         self.audio_path = self.get_path("audio")
 
         # Annotation paths
-        self.taala_path =  self.get_path("taala")
+        self.taala_path = self.get_path("taala")
         self.notation_path = self.get_path("notation")
         self.structure_path = self.get_path("structure")
 
@@ -134,11 +121,15 @@ class Track(core.Track):
 
     @core.cached_property
     def notation(self):
-        return load_notation(self.notation_path, self.taala_path)
+        return load_notation(self.notation_path, self.taala_path, self.structure_path)[
+            0
+        ]
 
     @core.cached_property
     def sections(self):
-        return load_sections(self.notation_path, self.taala_path)
+        return load_notation(self.notation_path, self.taala_path, self.structure_path)[
+            1
+        ]
 
     @core.cached_property
     def mbid(self):
@@ -153,19 +144,18 @@ class Track(core.Track):
     def avarohanam(self):
         moorchanas = load_moorchanas(self.notation_path)
         return moorchanas[1]
-        
+
     @core.cached_property
     def artist(self):
-        return self.track_id.split('_')[0]
+        return self.track_id.split("_")[0]
 
     @core.cached_property
     def raaga(self):
-        return self.track_id.split('_')[1]
+        return self.track_id.split("_")[1]
 
     @core.cached_property
     def tonic(self):
         return self._track_metadata
-
 
     @property
     def audio(self):
@@ -195,7 +185,7 @@ class Track(core.Track):
                 "raaga": self.raaga,
                 "tonic": self.tonic,
                 "arohanam": self.arohanam,
-                "avarohanam": self.avarohanam
+                "avarohanam": self.avarohanam,
             },
         )
 
@@ -231,26 +221,23 @@ def load_taala(fhandle):
     dom = minidom.parse(fhandle)
 
     # Load data
-    data = dom.getElementsByTagName('data')[0]
+    data = dom.getElementsByTagName("data")[0]
 
     # Store points and calculate total length
-    points = data.getElementsByTagName('dataset')[0].getElementsByTagName('point')
+    points = data.getElementsByTagName("dataset")[0].getElementsByTagName("point")
     num_points = len(points)
 
     # Parse sampling frequency
-    fs = float(data.getElementsByTagName('model')[0].getAttribute('sampleRate'))
+    fs = float(data.getElementsByTagName("model")[0].getAttribute("sampleRate"))
 
     beat_times = []
     beat_positions = []
     for beat in range(num_points):
-        beat_times.append(float(points[beat].getAttribute('frame')) / fs)
+        beat_times.append(float(points[beat].getAttribute("frame")) / fs)
         beat_positions.append(0)
 
     return annotations.BeatData(
-        np.array(beat_times),
-        "s",
-        np.array(beat_positions),
-        "global_index"
+        np.array(beat_times), "s", np.array(beat_positions), "global_index"
     )
 
 
@@ -276,21 +263,23 @@ def load_notation(note_path, taala_path, structure_path):
     events = []
 
     dom = minidom.parse(taala_path)
-    data = dom.getElementsByTagName('data')[0]
-    points = data.getElementsByTagName('dataset')[0].getElementsByTagName('point')
+    data = dom.getElementsByTagName("data")[0]
+    points = data.getElementsByTagName("dataset")[0].getElementsByTagName("point")
     num_points = len(points)
-    fs = float(data.getElementsByTagName('model')[0].getAttribute('sampleRate'))
+    fs = float(data.getElementsByTagName("model")[0].getAttribute("sampleRate"))
 
-    prev_timestamp = 0
-    for beat in range(num_points):
+    prev_timestamp = float(points[0].getAttribute("frame")) / fs
+    for beat in range(1, num_points):
         start_times.append(prev_timestamp)
-        end_times.append(float(points[beat].getAttribute('frame')) / fs)
-        prev_timestamp = float(points[beat].getAttribute('frame')) / fs
+        end_times.append(float(points[beat].getAttribute("frame")) / fs)
+        prev_timestamp = float(points[beat].getAttribute("frame")) / fs
+    start_times.append(prev_timestamp)
+    end_times.append(prev_timestamp + (end_times[-1] - start_times[-2]))
 
     # Getting structure
     with open(structure_path, "r") as fhandle:
         structure = []
-        reader = csv.reader(fhandle, delimiter=':')
+        reader = csv.reader(fhandle, delimiter=":")
         for row in reader:
             if len(row) > 1:
                 ky = row[0].replace("'", "").replace(" ", "").replace(":", "")
@@ -300,101 +289,51 @@ def load_notation(note_path, taala_path, structure_path):
 
     # Getting notation
     with open(note_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter='-')
+        reader = csv.reader(fhandle, delimiter="-")
         for row in reader:
             events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
 
         notation_dict = {}
-        section_dict = {events.index(x): x for x in list(np.unique([x[0] for x in structure]))}
+        section_dict = {
+            events.index(x): x for x in list(np.unique([x[0] for x in structure]))
+        }
         start_idxs = sorted(section_dict.keys())
         end_idxs = sorted(section_dict.keys())[1:] + [len(events)]
         for start, end in zip(start_idxs, end_idxs):
-            notation_dict[section_dict[start]] = events[start+1:end]
+            notation_dict[section_dict[start]] = events[start + 1 : end]
 
     # Putting all together
     events = []
+    intervals = []
+    section_labels = []
     for section in structure:
         not_per_sec = notation_dict[section[0]]
-        if section[1] == 1:
-            events.append(not_per_sec)
+        section_start = start_times[len(events)]
         if section[1] == 2:
-            for x in np.arange(len(not_per_sec)-1, step=2):
-                pair = [not_per_sec[x], not_per_sec[x+1]]
-                events.append(pair)
-                #events.extend(
-                #    [(not_per_sec[x], not_per_sec[x+1]) for x in np.arange(len(not_per_sec)-1, step=2)]
-                #)
-        print(len(not_per_sec))
-        print(len(events))
-        print(len(start_times))
+            for x in np.arange(len(not_per_sec), step=2):
+                # notes = [not_per_sec[x], not_per_sec[x+1]]
+                notes = not_per_sec[x] + not_per_sec[x + 1]
+                events.append(notes)
+        if section[1] == 4:
+            for x in np.arange(len(not_per_sec), step=4):
+                # notes = [not_per_sec[x], not_per_sec[x+1], not_per_sec[x+2], not_per_sec[x+3]]
+                notes = (
+                    not_per_sec[x]
+                    + not_per_sec[x + 1]
+                    + not_per_sec[x + 2]
+                    + not_per_sec[x + 3]
+                )
+                events.append(notes)
+        section_end = end_times[len(events) - 1]
+        intervals.append([section_start, section_end])
+        section_labels.append(section[0])
 
-    #print(np.array([start_times, end_times]).shape)
-    #print(events)
-    #print(np.shape(events))
-
-    return annotations.EventData(
-        np.array(
-            [start_times, end_times]).T,
-            "s",
-            events,
-            "open"
-        )
-
-
-# no decorator here because we need two paths
-def load_sections(note_path, taala_path):
-    """Load sections
-
-    Args:
-        notation_path (str): Local path where the phrase annotation is stored.
-            If `None`, returns None.
-        taala_path (str): Local path where the taala annotation is stored.
-            If `None`, returns None.
-
-    Returns:
-        SectionData: section annotation for track
-
-    """
-    if note_path is None or taala_path is None:
-        return None
-
-    start_times = []
-    end_times = []
-    events = []
-
-    dom = minidom.parse(taala_path)
-    data = dom.getElementsByTagName('data')[0]
-    points = data.getElementsByTagName('dataset')[0].getElementsByTagName('point')
-    num_points = len(points)
-    fs = float(data.getElementsByTagName('model')[0].getAttribute('sampleRate'))
-
-    prev_timestamp = 0
-    for beat in range(num_points):
-        start_times.append(prev_timestamp)
-        end_times.append(float(points[beat].getAttribute('frame')) / fs)
-        prev_timestamp = float(points[beat].getAttribute('frame')) / fs
-
-    intervals = []
-    section_labels = ['pallavi', 'anupallavi', 'muktayiswaram', 'charanam', 'chittiswaram']
-    with open(note_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter='-')
-        for row in reader:
-            events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
-
-        section_indexes = []
-        for section in section_labels:
-            section_indexes.append(events.index(section))
-        section_indexes.append(len(end_times)-1)  # Add last index to section indexes
-
-        for i in np.arange(1, len(section_indexes)):
-            intervals.append([start_times[section_indexes[i-1]+1], end_times[section_indexes[i]-1]])
-
-    return annotations.SectionData(
-        np.array(intervals),
-        "s",
-        section_labels,
-        "open"
+    notes = annotations.EventData(
+        np.array([start_times, end_times]).T, "s", events, "open"
     )
+    sections = annotations.SectionData(np.array(intervals), "s", section_labels, "open")
+
+    return notes, sections
 
 
 @io.coerce_to_string_io
@@ -409,9 +348,9 @@ def load_mbid(fhandle):
         string: musicbrainz id for the composition
 
     """
-    reader = csv.reader(fhandle, delimiter=':')
+    reader = csv.reader(fhandle, delimiter=":")
     for row in reader:
-        if row[0] == 'mbid':
+        if row[0] == "mbid":
             return row[-1].replace("'", "").replace(" ", "")
 
 
@@ -428,16 +367,20 @@ def load_moorchanas(fhandle):
 
     """
     notes = []
-    reader = csv.reader(fhandle, delimiter='-')
+    reader = csv.reader(fhandle, delimiter="-")
     for row in reader:
-        if row[0] == 'pallavi:':
+        if row[0] == "pallavi:":
             break
         notes.append(str(row[-1].replace(" ", "")))
 
-    arohanam_ind = notes.index('arohana:') + 1  # Get left boundary of arohanam notations
-    avarohanam_ind = notes.index('avarohana:') + 1  # Get left boundary of avarohanam notations
+    arohanam_ind = (
+        notes.index("arohana:") + 1
+    )  # Get left boundary of arohanam notations
+    avarohanam_ind = (
+        notes.index("avarohana:") + 1
+    )  # Get left boundary of avarohanam notations
 
-    arohanam = notes[arohanam_ind:avarohanam_ind-1]  # Get arohanam
+    arohanam = notes[arohanam_ind : avarohanam_ind - 1]  # Get arohanam
     avarohanam = notes[avarohanam_ind:]  # Get avarohanam
 
     return [arohanam, avarohanam]
@@ -474,17 +417,27 @@ class Dataset(core.Dataset):
             (float): tonic
 
         """
-        data_folder = self.remotes['all'].filename
+        data_folder = self.remotes["all"].filename
         tonics_dict = {}
-        tonics_path = os.path.join(self.data_home, data_folder, \
-            "Notations_Annotations", "annotations", "tonics.yaml")
-        with open(tonics_path, 'r') as f:
+        tonics_path = os.path.join(
+            self.data_home,
+            data_folder,
+            "Notations_Annotations",
+            "annotations",
+            "tonics.yaml",
+        )
+        with open(tonics_path, "r") as f:
             reader = csv.reader(f, delimiter=":")
             for line in reader:
                 tonics_dict[line[0]] = float(line[1])
 
-        taalas_path = os.path.join(self.data_home,  data_folder, \
-            "Notations_Annotations", "annotations", "taalas")
+        taalas_path = os.path.join(
+            self.data_home,
+            data_folder,
+            "Notations_Annotations",
+            "annotations",
+            "taalas",
+        )
         out_tonic = {}
         for taala in glob.glob(os.path.join(taalas_path, "*/")):
             for track in glob.glob(os.path.join(taala, "*.svl")):
@@ -492,7 +445,7 @@ class Dataset(core.Dataset):
                 artist = track.split("/")[-1].replace(".svl", "")
                 idx = artist + "_" + taala
                 out_tonic[idx] = tonics_dict[artist]
-        return out_tonic                
+        return out_tonic
 
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
