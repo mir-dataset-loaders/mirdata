@@ -33,7 +33,7 @@ if __name__ == "__main__":
         install_requires=[
             "black == 23.1.0",
             "tqdm",
-            "librosa >= 0.8.0",
+            "librosa >= 0.9.2",
             "numpy>=1.16",
             "jams",
             "requests",
