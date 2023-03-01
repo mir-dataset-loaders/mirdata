@@ -31,6 +31,7 @@ if __name__ == "__main__":
         keywords="mir dataset loader audio",
         license="BSD-3-Clause",
         install_requires=[
+            "black == 23.1.0",
             "tqdm",
             "librosa >= 0.8.0",
             "numpy>=1.16",
