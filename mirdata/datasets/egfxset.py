@@ -337,7 +337,6 @@ class Dataset(core.Dataset):
             indexname.append(name["Effect "].split(" ")[0])
 
         for track in tracknames:
-
             if track[:3] == "RAT":
                 trackiden = track[:3].lower()
 

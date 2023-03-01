@@ -70,7 +70,6 @@ def test_to_jams():
 
 
 def test_get_track_splits():
-
     dataset = mtg_jamendo_autotagging_moodtheme.Dataset(
         "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
     )

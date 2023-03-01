@@ -118,7 +118,6 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
-
         super().__init__(
             track_id=track_id,
             data_home=data_home,
@@ -265,7 +264,6 @@ class MultiTrack(core.MultiTrack):
     def __init__(
         self, mtrack_id, data_home, dataset_name, index, track_class, metadata
     ):
-
         super().__init__(
             mtrack_id=mtrack_id,
             data_home=data_home,

@@ -46,7 +46,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = "tests/resources/mir_datasets/medleydb_pitch"
     dataset = medleydb_pitch.Dataset(data_home)
     track = dataset.track("AClassicEducation_NightOwl_STEM_08")
