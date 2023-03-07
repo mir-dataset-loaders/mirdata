@@ -384,7 +384,8 @@ SKIP = {
         "load_lastfm_validation",
         "load_discogs_train",
         "load_discogs_validation",
-    ]
+    ],
+    "baf": ["load_matches"],
 }
 
 
