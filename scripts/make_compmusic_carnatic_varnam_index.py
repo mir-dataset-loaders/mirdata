@@ -3,7 +3,7 @@ import hashlib
 import json
 import os
 
-COMPMUSIC_VARNAM_INDEX_PATH = '../mirdata/datasets/indexes/compmusic_carnatic_varnam_index.json'
+COMPMUSIC_VARNAM_INDEX_PATH = './mirdata/datasets/indexes/compmusic_carnatic_varnam_index_1.1.json'
 
 
 def md5(file_path):
@@ -29,7 +29,7 @@ def md5(file_path):
 def make_compmusic_varnam_index(dataset_data_path):
 
     dataset_index = {
-        'version': 1.0,
+        'version': 1.1,
         'tracks': {},
         'metadata': {
             'annotation_metadata': []
@@ -45,23 +45,30 @@ def make_compmusic_varnam_index(dataset_data_path):
                 if '.mp3' in song:
                     idx = song.split('-')[3] + '_' + song.split('-')[5]  # Get index
                     notation_file = song.split('-')[5] + '.yaml'  # Get notation file
+                    structure_file = song.split('-')[5] + '/' + song.split('-')[3] + '.yaml'  # Get structure file
                     taala_path = os.path.join(
                         'taalas', song.split('-')[5], song.split('-')[3] + '.svl'
                     )  # Get taala file
 
                     dataset_index['tracks'][idx] = {
                         'audio': [
-                            os.path.join('carnatic_varnam_1.0', top_level, song),
+                            os.path.join('carnatic_varnam_1.1', top_level, song),
                             md5(os.path.join(dataset_data_path, top_level, song))
                         ],
                         'notation': [
-                            os.path.join('carnatic_varnam_1.0', notations_path, notation_file),
+                            os.path.join('carnatic_varnam_1.1', notations_path, notation_file),
                             md5(os.path.join(
                                 dataset_data_path, notations_path, notation_file
                             ))
                         ],
+                        'structure': [
+                            os.path.join('carnatic_varnam_1.1', notations_path, structure_file),
+                            md5(os.path.join(
+                                dataset_data_path, notations_path, structure_file
+                            ))
+                        ],
                         'taala': [
-                            os.path.join('carnatic_varnam_1.0', annotations_path, taala_path),
+                            os.path.join('carnatic_varnam_1.1', annotations_path, taala_path),
                             md5(os.path.join(
                                 dataset_data_path, annotations_path, taala_path
                             ))
@@ -69,7 +76,7 @@ def make_compmusic_varnam_index(dataset_data_path):
                     }
 
     dataset_index['metadata']['annotation_metadata'] = [
-        os.path.join('carnatic_varnam_1.0', annotations_path, 'tonics.yaml'),
+        os.path.join('carnatic_varnam_1.1', annotations_path, 'tonics.yaml'),
         md5(os.path.join(
             dataset_data_path, annotations_path, 'tonics.yaml'
         ))

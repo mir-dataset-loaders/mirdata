@@ -14,13 +14,13 @@ def test_track():
 
     expected_attributes = {
         "track_id": "dharini_abhogi",
-        "audio_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.0/"
+        "audio_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/"
         + "Audio/223578__gopalkoduri__carnatic-varnam-by-dharini-in-abhogi-raaga.mp3",
-        "taala_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.0/"
+        "taala_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/"
         + "Notations_Annotations/annotations/taalas/abhogi/dharini.svl",
-        "notation_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.0/"
+        "notation_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/"
         + "Notations_Annotations/notations/abhogi.yaml",
-        "structure_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.0/"
+        "structure_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/"
         + "Notations_Annotations/notations/abhogi/dharini.yaml",
     }
 
