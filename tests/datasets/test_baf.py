@@ -7,8 +7,13 @@ from tests.test_utils import run_track_tests
 
 from mirdata.datasets import baf
 
+import mock
+from mock import patch
+
+
 TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/baf")
 TRACK_ID = "query_0001"
+TRACK_ID2 = "query_0002"
 
 
 def test_track():
@@ -91,6 +96,9 @@ def test_load_matches():
     assert matches.tags == tags
     assert matches.tag_unit == tag_unit
 
+    track2 = dataset.track(TRACK_ID2)
+    assert baf.load_matches(track2._track_metadata) is None
+
 
 def test_metadata():
     dataset = baf.Dataset(TEST_DATA_HOME)
@@ -131,4 +139,10 @@ def test_metadata():
                 "tag": "single",
             },
         ],
+    }
+    assert metadata[TRACK_ID2] == {
+        "country": "Norway",
+        "channel": "TV2 Norway",
+        "datetime": "2021-01-09 16:08:50",
+        "annotations": [],
     }

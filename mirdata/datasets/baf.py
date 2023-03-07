@@ -434,10 +434,3 @@ class Dataset(core.Dataset):
                         }
                     )
         return metadata
-
-    @deprecated(
-        reason="Use mirdata.datasets.baf.load_audio",
-        version="0.3.4",
-    )
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
