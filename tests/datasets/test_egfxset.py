@@ -1,4 +1,5 @@
 import os
+import numpy as np
 from mirdata import annotations
 from mirdata.datasets import egfxset
 from tests.test_utils import run_track_tests
@@ -35,7 +36,7 @@ def test_track():
 
     expected_property_types = {
         "audio": tuple,
-        "note_name": list,
+        "note_name": np.ndarray,
         "midinote": annotations.NoteData,
     }
 
@@ -74,7 +75,7 @@ def test_track():
 
     expected_property_types = {
         "audio": tuple,
-        "note_name": list,
+        "note_name": np.ndarray,
         "midinote": annotations.NoteData,
     }
 
@@ -95,7 +96,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = os.path.normpath("tests/resources/mir_datasets/egfxset")
     dataset = egfxset.Dataset(data_home, version="test")
 

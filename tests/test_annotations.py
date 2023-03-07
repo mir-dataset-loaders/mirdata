@@ -1074,7 +1074,6 @@ def test_validate_intervals():
 
 
 def test_validate_unit():
-
     annotations.validate_unit("a", {"a": "asdf", "b": "asdfd"})
     annotations.validate_unit(None, {"a": "asdf", "b": "asdfd"}, allow_none=True)
 

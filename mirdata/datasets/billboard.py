@@ -330,7 +330,6 @@ def load_named_sections(fpath: str):
 
 
 def _load_sections(fpath: str, section_type: str):
-
     timed_sections = _parse_timed_sections(fpath)
     assert timed_sections is not None
 

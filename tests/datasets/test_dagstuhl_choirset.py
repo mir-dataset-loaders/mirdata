@@ -166,7 +166,6 @@ def test_load_f0():
 
 
 def test_load_score():
-
     score_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv"
     score = dagstuhl_choirset.load_score(score_path)
     assert isinstance(score, annotations.NoteData)
@@ -194,7 +193,6 @@ def test_load_score():
 
 
 def test_load_beat():
-
     beat_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
     beat = dagstuhl_choirset.load_beat(beat_path)
     assert isinstance(beat, annotations.BeatData)
