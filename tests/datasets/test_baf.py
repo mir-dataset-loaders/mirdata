@@ -7,9 +7,6 @@ from tests.test_utils import run_track_tests
 
 from mirdata.datasets import baf
 
-import mock
-from mock import patch
-
 
 TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/baf")
 TRACK_ID = "query_0001"
