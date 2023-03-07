@@ -17,7 +17,6 @@ import numpy as np
 
 
 def test_track():
-
     default_trackid = "4b196e6c99574dd49ad00d56e132712b"
     data_home = os.path.normpath("tests/resources/mir_datasets/dali")
     dataset = dali.Dataset(data_home)

@@ -266,7 +266,6 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-
         predominant_inst_path = os.path.join(
             self.data_home, "Orchset - Predominant Melodic Instruments.csv"
         )

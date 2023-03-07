@@ -823,7 +823,6 @@ class NoteData(Annotation):
             self.confidence = self.confidence[unq_idx]
 
     def __add__(self, other):
-
         if other is None:
             return self
 
@@ -1006,7 +1005,6 @@ class NoteData(Annotation):
         frequency_list: List[List[float]] = [[] for _ in times]
         confidence_list: List[List[float]] = [[] for _ in times]
         if self.confidence is not None:
-
             for t0, t1, pch, conf in zip(
                 intervals[:, 0], intervals[:, 1], self.pitches, self.confidence
             ):
@@ -1288,7 +1286,9 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
             return pitches_midi
 
         if target_pitch_unit == "note_name":
-            return librosa.hz_to_note(pitches_hz)
+            # cast to np.array for compatibility with legacy python3.6 and
+            # librosa 0.9.2. It is redundant for librosa 0.10
+            return np.array(librosa.hz_to_note(pitches_hz))
 
         raise NotImplementedError
 
