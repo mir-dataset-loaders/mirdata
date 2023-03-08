@@ -51,7 +51,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = "tests/resources/mir_datasets/rwc_classical"
     dataset = rwc_classical.Dataset(data_home)
     track = dataset.track("RM-C003")

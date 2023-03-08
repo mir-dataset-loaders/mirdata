@@ -53,7 +53,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = "tests/resources/mir_datasets/medleydb_melody"
     dataset = medleydb_melody.Dataset(data_home)
     track = dataset.track("MusicDelta_Beethoven")

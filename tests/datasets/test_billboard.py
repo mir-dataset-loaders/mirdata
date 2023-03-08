@@ -5,7 +5,6 @@ from mirdata import annotations
 
 
 def test_track():
-
     default_trackid = "3"
     data_home = "tests/resources/mir_datasets/billboard"
     dataset = billboard.Dataset(data_home)
@@ -71,7 +70,6 @@ def test_track():
 
 
 def test_to_jams():
-
     default_trackid = "3"
     data_home = "tests/resources/mir_datasets/billboard"
     dataset = billboard.Dataset(data_home)

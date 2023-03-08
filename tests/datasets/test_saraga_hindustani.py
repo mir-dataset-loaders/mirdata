@@ -6,7 +6,6 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-
     default_trackid = "50_Irani_Bhairavi_Thumri"
     data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)

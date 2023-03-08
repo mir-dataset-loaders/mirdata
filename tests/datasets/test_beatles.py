@@ -61,7 +61,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = os.path.normpath("tests/resources/mir_datasets/beatles")
     dataset = beatles.Dataset(data_home)
     track = dataset.track("0111")

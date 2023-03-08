@@ -77,7 +77,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = "tests/resources/mir_datasets/ikala"
     default_trackid = "10161_chorus"
     dataset = ikala.Dataset(data_home)
