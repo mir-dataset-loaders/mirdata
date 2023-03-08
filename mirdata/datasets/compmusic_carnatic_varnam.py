@@ -42,6 +42,7 @@ import librosa
 
 import numpy as np
 from xml.dom import minidom
+from smart_open import open
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
