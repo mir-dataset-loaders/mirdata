@@ -1,6 +1,6 @@
 import os
 import numpy as np
-
+import pytest
 from collections import deque
 
 from tests.test_utils import run_track_tests
@@ -42,8 +42,6 @@ def test_to_jams():
     dataset = baf.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
     jam = track.to_jams()
-
-    # Validate cante100 jam schema
     assert jam.validate()
 
 
@@ -143,3 +141,7 @@ def test_metadata():
         "datetime": "2021-01-09 16:08:50",
         "annotations": [],
     }
+
+    with pytest.raises(FileNotFoundError):
+        dataset = baf.Dataset("/a/fake/path")
+        metadata = dataset._metadata

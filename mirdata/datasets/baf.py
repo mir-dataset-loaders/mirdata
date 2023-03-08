@@ -201,7 +201,11 @@ FILENOTFOUND_MSG = Template(
 
 @core.docstring_inherit(annotations.EventData)
 class EventDataExtended(annotations.EventData):
-    """EventDataExtended class
+    """EventDataExtended class. Inherits from annotations.EventData class. An
+    event is defined here as a match query-reference, and the time interval
+    in the query. This class adds the possibility to attach tags to each
+    event, useful if there's a need to differenciate them. In BAF, tags are
+    [single, majority, unanimity].
 
     Attributes:
         tags (list): list of tag labels (as strings)
@@ -228,7 +232,7 @@ class EventDataExtended(annotations.EventData):
 
 
 class Track(core.Track):
-    """baf track class
+    """BAF track class.
 
     Args:
         track_id (str): track id of the track
