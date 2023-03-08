@@ -387,7 +387,7 @@ SKIP = {
     ],
     "compmusic_carnatic_varnam": [
         "load_notation",
-    ]
+    ],
 }
 
 
