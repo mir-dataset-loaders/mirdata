@@ -255,6 +255,7 @@ def load_notation(note_path, taala_path, structure_path):
         EventData: melodic notation for track
 
     """
+
     if note_path is None or taala_path is None:
         return None
 
@@ -287,10 +288,6 @@ def load_notation(note_path, taala_path, structure_path):
                 if vl and len(vl) < 2:
                     structure.append((ky, int(vl)))
 
-    print("...")
-    print(structure)
-    print("...")
-
     # Getting notation
     with open(note_path, "r") as fhandle:
         reader = csv.reader(fhandle, delimiter="-")
@@ -307,9 +304,6 @@ def load_notation(note_path, taala_path, structure_path):
             notation_dict[section_dict[start]] = events[start + 1 : end]
 
     # Putting all together
-    print("get in there!!")
-    print(section_dict)
-    print(events)
     events = []
     intervals = []
     section_labels = []
@@ -339,9 +333,6 @@ def load_notation(note_path, taala_path, structure_path):
         np.array([start_times, end_times]).T, "s", events, "open"
     )
     sections = annotations.SectionData(np.array(intervals), "s", section_labels, "open")
-
-    print(note_path)
-    print("---", notes)
 
     return notes, sections
 
