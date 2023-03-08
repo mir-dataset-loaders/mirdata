@@ -31,7 +31,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = "tests/resources/mir_datasets/medley_solos_db"
     dataset = medley_solos_db.Dataset(data_home)
     track = dataset.track("d07b1fc0-567d-52c2-fef4-239f31c9d40e")

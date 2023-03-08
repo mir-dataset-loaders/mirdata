@@ -5,7 +5,6 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-
     default_trackid = "RM-J004"
     data_home = os.path.normpath("tests/resources/mir_datasets/rwc_jazz")
     dataset = rwc_jazz.Dataset(data_home)
@@ -50,7 +49,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = "tests/resources/mir_datasets/rwc_jazz"
     dataset = rwc_jazz.Dataset(data_home)
     track = dataset.track("RM-J004")
