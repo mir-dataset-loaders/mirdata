@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 import numpy as np
 import pytest
 from collections import deque
@@ -145,3 +146,18 @@ def test_metadata():
     with pytest.raises(FileNotFoundError):
         dataset = baf.Dataset("/a/fake/path")
         metadata = dataset._metadata
+
+
+def test_csv_to_pandas():
+    # Test case where queries_info file exist
+    queries_info_csv = os.path.join(TEST_DATA_HOME, "queries_info.csv")
+    queries_info_df = baf.csv_to_pandas(queries_info_csv)
+    assert type(queries_info_df) is pd.DataFrame
+    # Test case where cross_annotaitons file exist
+    xann_csv = os.path.join(TEST_DATA_HOME, "cross_annotations.csv")
+    xannotations_df = baf.csv_to_pandas(xann_csv)
+    assert type(xannotations_df) is pd.DataFrame
+    # Test case where a file doesn't exist
+    queries_info_csv = "/a/fake/path"
+    with pytest.raises(FileNotFoundError):
+        queries_info_df = baf.csv_to_pandas(queries_info_csv)

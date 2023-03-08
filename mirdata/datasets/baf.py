@@ -213,7 +213,9 @@ class EventDataExtended(annotations.EventData):
 
     """
 
-    def __init__(self, intervals, interval_unit, events, event_unit, tags, tag_unit):
+    def __init__(
+        self, intervals, interval_unit, events, event_unit, tags, tag_unit
+    ):
         super().__init__(intervals, interval_unit, events, event_unit)
         annotations.validate_array_like(intervals, np.ndarray, float)
         annotations.validate_array_like(events, list, str)
@@ -361,6 +363,16 @@ def load_matches(track_metadata: dict) -> Optional[EventDataExtended]:
         )
 
 
+def csv_to_pandas(file_path: str) -> pd.DataFrame:
+    try:
+        df = pd.read_csv(file_path)
+    except FileNotFoundError as not_found:
+        raise FileNotFoundError(
+            FILENOTFOUND_MSG.safe_substitute(fname=not_found.filename)
+        )
+    return df
+
+
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
@@ -384,19 +396,11 @@ class Dataset(core.Dataset):
     def _metadata(self):
         """Ingest dataset metadata"""
         metadata_path = os.path.join(self.data_home, "queries_info.csv")
-        xannotations_path = os.path.join(self.data_home, "cross_annotations.csv")
-        try:
-            metadata_df = pd.read_csv(metadata_path)
-        except FileNotFoundError as not_found:
-            raise FileNotFoundError(
-                FILENOTFOUND_MSG.safe_substitute(fname=not_found.filename)
-            )
-        try:
-            xannotations_df = pd.read_csv(xannotations_path)
-        except FileNotFoundError as not_found:
-            raise FileNotFoundError(
-                FILENOTFOUND_MSG.safe_substitute(fname=not_found.filename)
-            )
+        xannotations_path = os.path.join(
+            self.data_home, "cross_annotations.csv"
+        )
+        metadata_df = csv_to_pandas(metadata_path)
+        xannotations_df = csv_to_pandas(xannotations_path)
         metadata_df.rename(columns={"filename": "query"}, inplace=True)
         df = pd.merge(metadata_df, xannotations_df, on="query", how="outer")
         df = df.replace(np.nan, "")
@@ -422,7 +426,9 @@ class Dataset(core.Dataset):
                         "annotations": [
                             {
                                 "reference": reference,
-                                "query_start": round(row.get("query_start"), 3),
+                                "query_start": round(
+                                    row.get("query_start"), 3
+                                ),
                                 "query_end": round(row.get("query_end"), 3),
                                 "tag": row.get("x_tag"),
                             }
