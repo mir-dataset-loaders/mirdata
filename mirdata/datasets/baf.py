@@ -110,12 +110,10 @@ BAF Loader
     Universities and Research of the Department of Business and Knowledge of
     the Generalitat de Catalunya. Reference: DI46-2020.
 """
-from collections import deque
 import os
 from string import Template
 from typing import Tuple, Optional
 
-from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pandas as pd
