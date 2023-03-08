@@ -213,9 +213,7 @@ class EventDataExtended(annotations.EventData):
 
     """
 
-    def __init__(
-        self, intervals, interval_unit, events, event_unit, tags, tag_unit
-    ):
+    def __init__(self, intervals, interval_unit, events, event_unit, tags, tag_unit):
         super().__init__(intervals, interval_unit, events, event_unit)
         annotations.validate_array_like(intervals, np.ndarray, float)
         annotations.validate_array_like(events, list, str)
@@ -396,9 +394,7 @@ class Dataset(core.Dataset):
     def _metadata(self):
         """Ingest dataset metadata"""
         metadata_path = os.path.join(self.data_home, "queries_info.csv")
-        xannotations_path = os.path.join(
-            self.data_home, "cross_annotations.csv"
-        )
+        xannotations_path = os.path.join(self.data_home, "cross_annotations.csv")
         metadata_df = csv_to_pandas(metadata_path)
         xannotations_df = csv_to_pandas(xannotations_path)
         metadata_df.rename(columns={"filename": "query"}, inplace=True)
@@ -426,9 +422,7 @@ class Dataset(core.Dataset):
                         "annotations": [
                             {
                                 "reference": reference,
-                                "query_start": round(
-                                    row.get("query_start"), 3
-                                ),
+                                "query_start": round(row.get("query_start"), 3),
                                 "query_end": round(row.get("query_end"), 3),
                                 "tag": row.get("x_tag"),
                             }
