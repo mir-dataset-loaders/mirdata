@@ -465,18 +465,3 @@ class Dataset(core.Dataset):
                 idx = artist + "_" + taala
                 out_tonic[idx] = tonics_dict[artist]
         return out_tonic
-
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
-
-    def load_taala(self, *args, **kwargs):
-        return load_taala(*args, **kwargs)
-
-    def load_notation(self, *args, **kwargs):
-        return load_notation(*args, **kwargs)
-
-    def load_mbid(self, *args, **kwargs):
-        return load_mbid(*args, **kwargs)
-
-    def load_moorchanas(self, *args, **kwargs):
-        return load_moorchanas(*args, **kwargs)

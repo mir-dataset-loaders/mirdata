@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import pytest
 import numpy as np
 from mirdata import annotations
 from mirdata.datasets import compmusic_carnatic_varnam
@@ -246,6 +246,18 @@ def test_load_notation():
     parsed_data = compmusic_carnatic_varnam.load_notation(
         notation_path, taala_path, structure_path
     )
+    with pytest.raises(FileNotFoundError):
+        parsed_data = compmusic_carnatic_varnam.load_notation(
+            "a/fake/path", taala_path, structure_path
+        )
+    with pytest.raises(FileNotFoundError):
+        parsed_data = compmusic_carnatic_varnam.load_notation(
+            notation_path, "a/fake/path", structure_path
+        )
+    with pytest.raises(FileNotFoundError):
+        parsed_data = compmusic_carnatic_varnam.load_notation(
+            notation_path, taala_path, "a/fake/path"
+        )
     parsed_notation = parsed_data[0]
     parsed_sections = parsed_data[1]
 
