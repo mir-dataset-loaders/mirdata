@@ -244,28 +244,51 @@ def load_taala(fhandle):
 
 # no decorator here because we need three paths
 def load_notation(note_path, taala_path, structure_path):
-    """Load notation (notes)
+    """Load notation and structure
 
     Args:
-        notation_path (str): Local path where the phrase annotation is stored.
+        note_path (str): Local path where the note annotation is stored.
             If `None`, returns None.
         taala_path (str): Local path where the taala annotation is stored.
+            If `None`, returns None.
+        structure_path: (str): Local path where the structure annotation is stored.
             If `None`, returns None.
 
     Returns:
         EventData: melodic notation for track
 
     """
+    try:
+        note_file = open(note_path, "r")
+        note_reader = csv.reader(note_file, delimiter="-")
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            "note_path {} does not exist, have you run .download()?".format(note_path)
+        )
 
-    if note_path is None or taala_path is None:
-        return None
+    try:
+        taala_file = open(taala_path, "r")
+        taala_reader = minidom.parse(taala_file)
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            "taala_path {} does not exist, have you run .download()?".format(taala_path)
+        )
+
+    try:
+        structure_file = open(structure_path, "r")
+        structure_reader = csv.reader(structure_file, delimiter=":")
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            "structure_path {} does not exist, have you run .download()?".format(
+                structure_path
+            )
+        )
 
     start_times = []
     end_times = []
     events = []
 
-    dom = minidom.parse(taala_path)
-    data = dom.getElementsByTagName("data")[0]
+    data = taala_reader.getElementsByTagName("data")[0]
     points = data.getElementsByTagName("dataset")[0].getElementsByTagName("point")
     num_points = len(points)
     fs = float(data.getElementsByTagName("model")[0].getAttribute("sampleRate"))
@@ -279,30 +302,26 @@ def load_notation(note_path, taala_path, structure_path):
     end_times.append(prev_timestamp + (end_times[-1] - start_times[-2]))
 
     # Getting structure
-    with open(structure_path, "r") as fhandle:
-        structure = []
-        reader = csv.reader(fhandle, delimiter=":")
-        for row in reader:
-            if len(row) > 1:
-                ky = row[0].replace("'", "").replace(" ", "").replace(":", "")
-                vl = row[1].replace("'", "").replace(" ", "").replace(":", "")
-                if vl and len(vl) < 2:
-                    structure.append((ky, int(vl)))
+    structure = []
+    for row in structure_reader:
+        if len(row) > 1:
+            ky = row[0].replace("'", "").replace(" ", "").replace(":", "")
+            vl = row[1].replace("'", "").replace(" ", "").replace(":", "")
+            if vl and len(vl) < 2:
+                structure.append((ky, int(vl)))
 
     # Getting notation
-    with open(note_path, "r") as fhandle:
-        reader = csv.reader(fhandle, delimiter="-")
-        for row in reader:
-            events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
+    for row in note_reader:
+        events.append(row[-1].replace("'", "").replace(" ", "").replace(":", ""))
 
-        notation_dict = {}
-        section_dict = {
-            events.index(x): x for x in list(np.unique([x[0] for x in structure]))
-        }
-        start_idxs = sorted(section_dict.keys())
-        end_idxs = sorted(section_dict.keys())[1:] + [len(events)]
-        for start, end in zip(start_idxs, end_idxs):
-            notation_dict[section_dict[start]] = events[start + 1 : end]
+    notation_dict = {}
+    section_dict = {
+        events.index(x): x for x in list(np.unique([x[0] for x in structure]))
+    }
+    start_idxs = sorted(section_dict.keys())
+    end_idxs = sorted(section_dict.keys())[1:] + [len(events)]
+    for start, end in zip(start_idxs, end_idxs):
+        notation_dict[section_dict[start]] = events[start + 1 : end]
 
     # Putting all together
     events = []
@@ -334,7 +353,6 @@ def load_notation(note_path, taala_path, structure_path):
         np.array([start_times, end_times]).T, "s", events, "open"
     )
     sections = annotations.SectionData(np.array(intervals), "s", section_labels, "open")
-
     return notes, sections
 
 
