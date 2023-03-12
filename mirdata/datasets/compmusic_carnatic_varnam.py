@@ -69,7 +69,6 @@ REMOTES = {
         filename="carnatic_varnam_1.1.zip",
         url="https://zenodo.org/record/7726167/files/carnatic_varnam_1.1.zip?download=1",
         checksum="87afaf907e1fbfa5928ef4e93ead1fba",
-        destination_dir=None,
     )
 }
 
@@ -446,7 +445,7 @@ class Dataset(core.Dataset):
         except FileNotFoundError:
             raise FileNotFoundError(
                 "tonics_path {} does not exist, have you run .download()?".format(
-                    taala_path
+                    tonics_path
                 )
             )
         for line in reader:
