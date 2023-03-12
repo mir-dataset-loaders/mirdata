@@ -115,6 +115,8 @@ class Track(core.Track):
         self.taala_path = self.get_path("taala")
         self.notation_path = self.get_path("notation")
         self.structure_path = self.get_path("structure")
+        self.artist = self.track_id.split("_")[0]
+        self.raaga = self.track_id.split("_")[1]
 
     @core.cached_property
     def taala(self):
@@ -138,21 +140,11 @@ class Track(core.Track):
 
     @core.cached_property
     def arohanam(self):
-        moorchanas = load_moorchanas(self.notation_path)
-        return moorchanas[0]
+        return load_moorchanas(self.notation_path)[0]
 
     @core.cached_property
     def avarohanam(self):
-        moorchanas = load_moorchanas(self.notation_path)
-        return moorchanas[1]
-
-    @core.cached_property
-    def artist(self):
-        return self.track_id.split("_")[0]
-
-    @core.cached_property
-    def raaga(self):
-        return self.track_id.split("_")[1]
+        return load_moorchanas(self.notation_path)[1]
 
     @core.cached_property
     def tonic(self):
@@ -446,10 +438,17 @@ class Dataset(core.Dataset):
             "annotations",
             "tonics.yaml",
         )
-        with open(tonics_path, "r") as f:
+        try:
+            f = open(tonics_path, "r")
             reader = csv.reader(f, delimiter=":")
-            for line in reader:
-                tonics_dict[line[0]] = float(line[1])
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                "tonics_path {} does not exist, have you run .download()?".format(
+                    taala_path
+                )
+            )
+        for line in reader:
+            tonics_dict[line[0]] = float(line[1])
 
         taalas_path = os.path.join(
             self.data_home,

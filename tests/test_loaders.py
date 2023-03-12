@@ -372,6 +372,12 @@ EXCEPTIONS = {
         "load_chords": {"leadsheet_version": False},
     },
     "tonas": {"load_f0": {"corrected": True}},
+    "compmusic_carnatic_varnam": {
+        "load_notation": {
+            "taala_path": "a/fake/path",
+            "structure_path": "a/fake/path",
+        },
+    },
 }
 SKIP = {
     "acousticbrainz_genre": [
@@ -385,9 +391,6 @@ SKIP = {
         "load_lastfm_validation",
         "load_discogs_train",
         "load_discogs_validation",
-    ],
-    "compmusic_carnatic_varnam": [
-        "load_notation",
     ],
 }
 

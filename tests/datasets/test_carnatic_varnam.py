@@ -22,6 +22,8 @@ def test_track():
         + "Notations_Annotations/notations/abhogi.yaml",
         "structure_path": "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/"
         + "Notations_Annotations/notations/abhogi/dharini.yaml",
+        "artist": "dharini",
+        "raaga": "abhogi",
     }
 
     expected_property_types = {
@@ -33,8 +35,6 @@ def test_track():
         "arohanam": list,
         "avarohanam": list,
         "tonic": float,
-        "raaga": str,
-        "artist": str,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
