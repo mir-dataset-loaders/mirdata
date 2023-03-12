@@ -26,8 +26,10 @@
     divisions.
 
     **Sections**
-    From the information inferred from both Taala and Notations, we have included Section annotations in this loader.
-    These sections refer to the typical Carnatic Varnam structure.
+    The notation is given a single time per section, however, to align the svaras with the tala annotations, structure
+    information is given. The structure is given in yaml format, specifying the order of the sections, and how many svaras
+    are sung per each tala tick. Broadly, there are just two only cases, 2 svaras per tick, and 4 svaras per tick. 
+    The structure information has been added in the 1.1 version of the dataset.
 
     **Possible uses of the dataset**
     The distinct advantage of this dataset is the free availability of the audio content. Along with the annotations,
@@ -64,9 +66,9 @@ BIBTEX = """
 
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
-        filename="carnatic_varnam_1.1",
-        url="TODO",
-        checksum="TODO",
+        filename="carnatic_varnam_1.1.zip",
+        url="https://zenodo.org/record/7726167/files/carnatic_varnam_1.1.zip?download=1",
+        checksum="87afaf907e1fbfa5928ef4e93ead1fba",
         destination_dir=None,
     )
 }
@@ -91,11 +93,11 @@ class Track(core.Track):
             If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
-        tonic (float): float identifying the absolute tonic of the track
         artist (str): string identifying the performing artist in the track
         raaga (str): string identifying the raaga present in the track
 
     Cached Properties:
+        tonic (float): float identifying the absolute tonic of the track
         taala (BeatData): taala annotations
         notation (EventData): note notations in IAM solfège symbols representation
         sections (SectionData): track section annotations
