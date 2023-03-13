@@ -430,7 +430,7 @@ class Dataset(core.Dataset):
             (float): tonic
 
         """
-        data_folder = self.remotes["all"].filename
+        data_folder = self.remotes["all"].filename.replace(".zip", "")
         tonics_dict = {}
         tonics_path = os.path.join(
             self.data_home,
