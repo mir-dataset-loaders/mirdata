@@ -17,6 +17,14 @@
             :target: https://creativecommons.org/licenses/by-sa/4.0
        - :acousticbrainz:`\ `
 
+   * - BAF
+     - - audio: 🔑
+       - annotations: 🔑
+     - - :ref:`matches`
+     - 3425
+     - - .. image:: https://img.shields.io/badge/license-custom-orange
+            :target: https://zenodo.org/record/6868083
+
    * - Beatles
      - - audio: ❌
        - annotations: ✅
