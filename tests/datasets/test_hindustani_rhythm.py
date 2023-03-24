@@ -14,9 +14,13 @@ except ImportError:
 
 from tests.test_utils import run_track_tests
 
+@pytest.fixture
+def mock_import():
+    with mock.patch('builtins.__import__') as mock_import:
+        yield mock_import
         
 @mock.patch('builtins.__import__')
-def test_openpyxl_import(self, mock_import):
+def test_openpyxl_import(self,mock_import):
         mock_import.side_effect = ImportError("No module named 'openpyxl'")
         
         with self.assertRaises(ImportError):
