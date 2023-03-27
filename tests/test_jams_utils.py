@@ -80,10 +80,7 @@ def test_beats():
         )
     ]
     beat_data_8 = [
-        (
-            annotations.BeatData(np.array([0.2, 0.3]), "s", None, "bar_index"),
-            None,
-        )
+        (annotations.BeatData(np.array([0.2, 0.3]), "s", None, "bar_index"), None)
     ]
 
     jam_1 = jams_utils.jams_converter(beat_data=beat_data_1)

@@ -1,0 +1,27 @@
+artist: 'dharini'
+raga: 'abhogi'
+structure:
+  pallavi: 2
+  anupallavi: 2
+  muktayiswaram: 2
+  pallavi: 4
+  anupallavi: 4
+  muktayiswaram: 4
+  charanam: 2
+  firstchittiswaram: 2
+  charanam: 4
+  firstchittiswaram: 4
+  charanam: 2
+  secondchittiswaram: 2
+  charanam: 4
+  secondchittiswaram: 4
+  charanam: 2
+  thirdchittiswaram: 2
+  charanam: 4
+  thirdchittiswaram: 4
+  charanam: 2
+  fourthchittiswaram: 2
+  charanam: 4
+  charanam: 4
+  fourthchittiswaram: 4
+  charanam: 2

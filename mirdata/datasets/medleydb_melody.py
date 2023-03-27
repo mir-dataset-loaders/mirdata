@@ -82,21 +82,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.melody1_path = self.get_path("melody1")
         self.melody2_path = self.get_path("melody2")
@@ -272,22 +259,19 @@ class Dataset(core.Dataset):
         return metadata
 
     @deprecated(
-        reason="Use mirdata.datasets.medleydb_melody.load_audio",
-        version="0.3.4",
+        reason="Use mirdata.datasets.medleydb_melody.load_audio", version="0.3.4"
     )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.medleydb_melody.load_melody",
-        version="0.3.4",
+        reason="Use mirdata.datasets.medleydb_melody.load_melody", version="0.3.4"
     )
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.medleydb_melody.load_melody3",
-        version="0.3.4",
+        reason="Use mirdata.datasets.medleydb_melody.load_melody3", version="0.3.4"
     )
     def load_melody3(self, *args, **kwargs):
         return load_melody3(*args, **kwargs)
