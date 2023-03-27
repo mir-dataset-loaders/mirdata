@@ -132,21 +132,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.sections_path = self.get_path("sections")
         self.beats_path = self.get_path("beats")
@@ -274,23 +261,14 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @deprecated(
-        reason="Use mirdata.datasets.rwc_jazz.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.rwc_jazz.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.rwc_jazz.load_sections",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.rwc_jazz.load_sections", version="0.3.4")
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.rwc_jazz.load_beats",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.rwc_jazz.load_beats", version="0.3.4")
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)

@@ -169,10 +169,7 @@ def test_multitrack():
         "piece": "beethoven",
     }
 
-    expected_property_types = {
-        "tracks": dict,
-        "track_audio_property": str,
-    }
+    expected_property_types = {"tracks": dict, "track_audio_property": str}
 
     run_track_tests(mtrack, expected_attributes, expected_property_types)
     run_multitrack_tests(mtrack)

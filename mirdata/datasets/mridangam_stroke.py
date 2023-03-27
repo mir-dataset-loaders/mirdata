@@ -74,7 +74,7 @@ REMOTES = {
         filename="mridangam_stroke_1.5.zip",
         url="https://zenodo.org/record/4068196/files/mridangam_stroke_1.5.zip?download=1",
         checksum="39af55b2476b94c7946bec24331ec01a",  # the md5 checksum
-    ),
+    )
 }
 
 
@@ -112,21 +112,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_path = self.get_path("audio")
 
@@ -200,8 +187,7 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(
-        reason="Use mirdata.datasets.mridangam_stroke.load_audio",
-        version="0.3.4",
+        reason="Use mirdata.datasets.mridangam_stroke.load_audio", version="0.3.4"
     )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
