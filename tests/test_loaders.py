@@ -15,6 +15,7 @@ CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
     "cante100": "008",
     "compmusic_carnatic_rhythm": "10003",
+    "compmusic_carnatic_varnam": "dharini_abhogi",
     "compmusic_hindustani_rhythm": "20001",
     "compmusic_indian_tonic": "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180",
     "compmusic_jingju_acappella": "lseh-Tan_Yang_jia-Hong_yang_dong-qm",
@@ -371,6 +372,12 @@ EXCEPTIONS = {
         "load_chords": {"leadsheet_version": False},
     },
     "tonas": {"load_f0": {"corrected": True}},
+    "compmusic_carnatic_varnam": {
+        "load_notation": {
+            "taala_path": "a/fake/path",
+            "structure_path": "a/fake/path",
+        },
+    },
 }
 SKIP = {
     "acousticbrainz_genre": [
