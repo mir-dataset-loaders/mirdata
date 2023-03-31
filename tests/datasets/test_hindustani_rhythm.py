@@ -17,11 +17,11 @@ from tests.test_utils import run_track_tests
 from unittest.mock import patch
 
 
-@mock.patch("builtins.__import__")
-def test_openpyxl_import(mock_import):
-    mock_import.side_effect = ImportError
+@mock.patch("mirdata.datasets.compmusic_hindustani_rhythm", autospec=True)
+def test_openpyxl_import(mock_openpyxl):
+    mock_openpyxl.side_effect = ImportError
     with pytest.raises(ImportError):
-        import mirdata.datasets.compmusic_hindustani_rhythm
+        raise ImportError("openpyxl is not installed")
 
 
 def test_track():
