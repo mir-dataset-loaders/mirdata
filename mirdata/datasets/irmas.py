@@ -182,21 +182,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.annotation_path = self.get_path("annotation")
 
@@ -318,16 +305,10 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @deprecated(
-        reason="Use mirdata.datasets.irmas.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.irmas.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.irmas.load_pred_inst",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.irmas.load_pred_inst", version="0.3.4")
     def load_pred_inst(self, *args, **kwargs):
         return load_pred_inst(*args, **kwargs)

@@ -55,8 +55,7 @@ def test_load_beats():
     ), "beat_data.positions is not an np.ndarray"
 
     assert np.array_equal(
-        beat_data.times,
-        np.array([0.113, 0.829, 1.537, 2.28, 2.992]),
+        beat_data.times, np.array([0.113, 0.829, 1.537, 2.28, 2.992])
     ), "beat_data.times different than expected"
     assert np.array_equal(
         beat_data.positions, np.array([1, 2, 3, 4, 1])
@@ -72,8 +71,7 @@ def test_load_beats():
     beat_data = gtzan_genre.load_beats(beats_path)
 
     assert np.array_equal(
-        beat_data.times,
-        np.array([0.113, 0.829, 1.537, 2.28, 2.992]),
+        beat_data.times, np.array([0.113, 0.829, 1.537, 2.28, 2.992])
     ), "beat_data.times different than expected"
     assert np.array_equal(
         beat_data.positions, None

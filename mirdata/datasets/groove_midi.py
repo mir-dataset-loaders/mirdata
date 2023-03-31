@@ -224,21 +224,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.midi_path = self.get_path("midi")
 
@@ -419,30 +406,20 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @deprecated(
-        reason="Use mirdata.datasets.groove_midi.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.groove_midi.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.groove_midi.load_midi",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.groove_midi.load_midi", version="0.3.4")
     def load_midi(self, *args, **kwargs):
         return load_midi(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.groove_midi.load_beats",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.groove_midi.load_beats", version="0.3.4")
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.groove_midi.load_drum_events",
-        version="0.3.4",
+        reason="Use mirdata.datasets.groove_midi.load_drum_events", version="0.3.4"
     )
     def load_drum_events(self, *args, **kwargs):
         return load_drum_events(*args, **kwargs)

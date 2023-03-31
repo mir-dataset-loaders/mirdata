@@ -98,21 +98,8 @@ class Track(core.Track):
         sections (SectionData): section annotations
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.chords_path = self.get_path("chords")
         self.keys_path = self.get_path("keys")
@@ -264,30 +251,18 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @deprecated(
-        reason="Use mirdata.datasets.queen.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.queen.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.queen.load_key",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.queen.load_key", version="0.3.4")
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.queen.load_chords",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.queen.load_chords", version="0.3.4")
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.queen.load_sections",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.queen.load_sections", version="0.3.4")
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)

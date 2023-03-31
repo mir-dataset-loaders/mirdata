@@ -138,10 +138,7 @@ def test_load_chords():
 
     assert np.array_equal(chord_data.intervals[:, 0], np.array([0.0, 0.459, 4.122]))
     assert np.array_equal(chord_data.intervals[:, 1], np.array([0.459, 4.122, 4.911]))
-    assert np.array_equal(
-        chord_data.labels,
-        ["N", "Bb:maj6", "C:7"],
-    )
+    assert np.array_equal(chord_data.labels, ["N", "Bb:maj6", "C:7"])
 
     assert queen.load_chords(None) is None
 
@@ -153,14 +150,8 @@ def test_load_key():
     assert type(key_data) == annotations.KeyData
     assert type(key_data.intervals) == np.ndarray
 
-    assert np.array_equal(
-        key_data.intervals[:, 0],
-        np.array([0.456, 83.139]),
-    )
-    assert np.array_equal(
-        key_data.intervals[:, 1],
-        np.array([83.139, 108.519]),
-    )
+    assert np.array_equal(key_data.intervals[:, 0], np.array([0.456, 83.139]))
+    assert np.array_equal(key_data.intervals[:, 1], np.array([83.139, 108.519]))
     assert np.array_equal(key_data.keys, ["Bb", "Eb"])
 
     assert queen.load_key(None) is None
@@ -178,12 +169,10 @@ def test_load_sections():
         section_data.intervals[:, 0], np.array([0.0, 0.4, 49.072, 108.392])
     )
     assert np.array_equal(
-        section_data.intervals[:, 1],
-        np.array([0.4, 49.072, 108.392, 156.32]),
+        section_data.intervals[:, 1], np.array([0.4, 49.072, 108.392, 156.32])
     )
     assert np.array_equal(
-        section_data.labels,
-        np.array(["silence", "intro", "verse", "verse"]),
+        section_data.labels, np.array(["silence", "intro", "verse", "verse"])
     )
 
     assert queen.load_sections(None) is None

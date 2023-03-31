@@ -1,0 +1,515 @@
+{
+  "version": 1.1,
+  "tracks": {
+    "prasanna_begada": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223583__gopalkoduri__carnatic-varnam-by-prasanna-in-begada-raaga.mp3",
+        "08212dad848f87061312e71948b2b232"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/begada.yaml",
+        "f2d0e497ddb00af6a212f931fd267c49"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/begada/prasanna.yaml",
+        "03a3bfbbc18e18082de602cdd601e6a0"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/begada/prasanna.svl",
+        "5fb8f03d779cbc7fc3b367d96d6a752b"
+      ]
+    },
+    "sreevidya_abhogi": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223581__gopalkoduri__carnatic-varnam-by-sreevidya-in-abhogi-raaga.mp3",
+        "aa89d0c654528606bec4f3ef2915156d"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi.yaml",
+        "8895f8a4cd5b59df2388446831cd5a31"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi/sreevidya.yaml",
+        "a29be310b2313a6c356dd9c2b9872676"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/abhogi/sreevidya.svl",
+        "35891ae937c2ef6d52b1ff6979cc9ee0"
+      ]
+    },
+    "vignesh_kalyani": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223589__gopalkoduri__carnatic-varnam-by-vignesh-in-kalyani-raaga.mp3",
+        "b063339d45594b7b4d1704920908f66e"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/kalyani.yaml",
+        "57be6d9b63037673ae14710ad1e08578"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/kalyani/vignesh.yaml",
+        "3244e8ac4f936d39f7453a70b78ebd26"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/kalyani/vignesh.svl",
+        "9ec1e7d71f6e21df8877f6dc05b33c0d"
+      ]
+    },
+    "badrinarayanan_mohanam": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223590__gopalkoduri__carnatic-varnam-by-badrinarayanan-in-mohanam-raaga.mp3",
+        "5c9765ec3a7ba72d9ecfd59f7b3a8fde"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/mohanam.yaml",
+        "055ce98437ea7d0c525f77b8ddb87a70"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/mohanam/badrinarayanan.yaml",
+        "25496511747b8336b76a1b4ebdb58080"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/mohanam/badrinarayanan.svl",
+        "e1a7e7d2f7ae15b562ef86607ee170c6"
+      ]
+    },
+    "prasanna_kalyani": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223587__gopalkoduri__carnatic-varnam-by-prasanna-in-kalyani-raaga.mp3",
+        "9a43bc49f697635db71afb0b22bc1aca"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/kalyani.yaml",
+        "57be6d9b63037673ae14710ad1e08578"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/kalyani/prasanna.yaml",
+        "88731b1b339cc90665edcfb6fb8aa6e6"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/kalyani/prasanna.svl",
+        "4d0865198f3a5f7291ec911a9293d27a"
+      ]
+    },
+    "vignesh_sahana": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223597__gopalkoduri__carnatic-varnam-by-vignesh-in-sahana-raaga.mp3",
+        "cc647169be36c62a0df9f3b16a340cac"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sahana.yaml",
+        "deca5502bbc17a386dd725b092899011"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sahana/vignesh.yaml",
+        "466c059542c88a79b2b6da6b72a7a607"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/sahana/vignesh.svl",
+        "2eb333e149bc5d59531995437450ceca"
+      ]
+    },
+    "dharini_saveri": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223599__gopalkoduri__carnatic-varnam-by-dharini-in-saveri-raaga.mp3",
+        "d4dac25354a0d22c02b34fc9b46f99d2"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri.yaml",
+        "347ed932b581bc7b0fa416f6e8faed08"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri/dharini.yaml",
+        "b8a4945023bc8603d2824aaaaae0b245"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/saveri/dharini.svl",
+        "1a8ed78cf2f0de1aff4b9a53dd253a8b"
+      ]
+    },
+    "vignesh_abhogi": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223582__gopalkoduri__carnatic-varnam-by-vignesh-in-abhogi-raaga.mp3",
+        "f1746db21433ddcc1f8282dadba44a31"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi.yaml",
+        "8895f8a4cd5b59df2388446831cd5a31"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi/vignesh.yaml",
+        "ec1c7df48c6447154bc995211883b0c8"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/abhogi/vignesh.svl",
+        "c148349674ca00cd4e6d8d594d1349b7"
+      ]
+    },
+    "dharini_abhogi": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223578__gopalkoduri__carnatic-varnam-by-dharini-in-abhogi-raaga.mp3",
+        "27ae0b06d43c2ed6033bdf64d83f8614"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi.yaml",
+        "8895f8a4cd5b59df2388446831cd5a31"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi/dharini.yaml",
+        "9660ef6859462641744ea7e8592fd31a"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/abhogi/dharini.svl",
+        "b88e020c86effa282804bef6eea41216"
+      ]
+    },
+    "sreevidya_saveri": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223602__gopalkoduri__carnatic-varnam-by-sreevidya-in-saveri-raaga.mp3",
+        "c8be2f4ed350c55e9a3b76c4c050d09e"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri.yaml",
+        "347ed932b581bc7b0fa416f6e8faed08"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri/sreevidya.yaml",
+        "8cbf02f492ddfb96a6dfba4ade3be920"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/saveri/sreevidya.svl",
+        "4e717c12675b10eb837394dcd6ee12d6"
+      ]
+    },
+    "badrinarayanan_saveri": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223598__gopalkoduri__carnatic-varnam-by-badrinarayanan-in-saveri-raaga.mp3",
+        "48b0cd21a92390feee14b13632b6dd16"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri.yaml",
+        "347ed932b581bc7b0fa416f6e8faed08"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri/badrinarayanan.yaml",
+        "65b56f72c546a3a05a65dbe3a019a3ea"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/saveri/badrinarayanan.svl",
+        "29cb7e7cf857883d3d105ff89318a7d4"
+      ]
+    },
+    "ramakrishnamurthy_mohanam": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223593__gopalkoduri__carnatic-varnam-by-ramakrishnamurthy-in-mohanam-raaga.mp3",
+        "510e036b94877c4115ab3a4c25a6339e"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/mohanam.yaml",
+        "055ce98437ea7d0c525f77b8ddb87a70"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/mohanam/ramakrishnamurthy.yaml",
+        "5f5cab901ca7bdbe1142ae97e0f62d06"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/mohanam/ramakrishnamurthy.svl",
+        "2c000ef8ca6f62245085c8154bafd6bd"
+      ]
+    },
+    "ramakrishnamurthy_kalyani": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223588__gopalkoduri__carnatic-varnam-by-ramakrishnamurthy-in-kalyani-raaga.mp3",
+        "faffe5425283468ededc8a55d68636d8"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/kalyani.yaml",
+        "57be6d9b63037673ae14710ad1e08578"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/kalyani/ramakrishnamurthy.yaml",
+        "9aaf191202a398de12cf4818ba8a635b"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/kalyani/ramakrishnamurthy.svl",
+        "e96cacdc14fe415922deeab7e7d4488b"
+      ]
+    },
+    "prasanna_saveri": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223600__gopalkoduri__carnatic-varnam-by-prasanna-in-saveri-raaga.mp3",
+        "351e020dc90d92ecb0a1130ab8daf698"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri.yaml",
+        "347ed932b581bc7b0fa416f6e8faed08"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri/prasanna.yaml",
+        "c609c7d1e7294f7f2a3e21f15eb3077a"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/saveri/prasanna.svl",
+        "5bdec8d0cc6d8a270dc29ee0f0cbf559"
+      ]
+    },
+    "dharini_sahana": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223594__gopalkoduri__carnatic-varnam-by-dharini-in-sahana-raaga.mp3",
+        "fbe059184536458ff5453638e4557584"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sahana.yaml",
+        "deca5502bbc17a386dd725b092899011"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sahana/dharini.yaml",
+        "dba36353116dbeb8f270a9cfa98006fd"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/sahana/dharini.svl",
+        "ca1357ee2c089da8d3532578e5761f65"
+      ]
+    },
+    "ramakrishnamurthy_sri": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223604__gopalkoduri__carnatic-varnam-by-ramakrishnamurthy-in-sri-raaga.mp3",
+        "df4c02b0100de9fa4c414a27db9cbb73"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sri.yaml",
+        "84b75b81698ee80ab642585494db79a3"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sri/ramakrishnamurthy.yaml",
+        "ec146aa3c6a1960c95b643c79e1ddf2c"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/sri/ramakrishnamurthy.svl",
+        "27e8597f4a5b851028f5b96d5c4287b9"
+      ]
+    },
+    "vignesh_begada": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223585__gopalkoduri__carnatic-varnam-by-vignesh-in-begada-raaga.mp3",
+        "fcb5a044dd3e1717f2386cf3657ec678"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/begada.yaml",
+        "f2d0e497ddb00af6a212f931fd267c49"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/begada/vignesh.yaml",
+        "2debea15d50ba322ab8e22a8c3bfe506"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/begada/vignesh.svl",
+        "2e83660f2e1d9b55d94e5b53dcc21476"
+      ]
+    },
+    "sreevidya_begada": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223584__gopalkoduri__carnatic-varnam-by-sreevidya-in-begada-raaga.mp3",
+        "e538a666bfae1a212917a32ec73f434a"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/begada.yaml",
+        "f2d0e497ddb00af6a212f931fd267c49"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/begada/sreevidya.yaml",
+        "d0a464034c8f178edbd68c657585df2e"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/begada/sreevidya.svl",
+        "7816f57ec24f560d5e7b09b2db05f4be"
+      ]
+    },
+    "ramakrishnamurthy_saveri": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223601__gopalkoduri__carnatic-varnam-by-ramakrishnamurthy-in-saveri-raaga.mp3",
+        "504bd620cd55e2888d452dc50ce48b30"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri.yaml",
+        "347ed932b581bc7b0fa416f6e8faed08"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/saveri/ramakrishnamurthy.yaml",
+        "86e40f57122d734be88ead2006745aaf"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/saveri/ramakrishnamurthy.svl",
+        "8777757a5469820737ee9c6f6615d8b5"
+      ]
+    },
+    "vignesh_sri": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223605__gopalkoduri__carnatic-varnam-by-vignesh-in-sri-raaga.mp3",
+        "6ad76ad1a119a00b591b56367789d28f"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sri.yaml",
+        "84b75b81698ee80ab642585494db79a3"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sri/vignesh.yaml",
+        "0880f088a8f22e519f2929aede1aaa27"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/sri/vignesh.svl",
+        "716776e1c7fa091102f43e40618db404"
+      ]
+    },
+    "sreevidya_sahana": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223596__gopalkoduri__carnatic-varnam-by-sreevidya-in-sahana-raaga.mp3",
+        "ff8f91b7c038c1dcc2d32fac7466e4c6"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sahana.yaml",
+        "deca5502bbc17a386dd725b092899011"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sahana/sreevidya.yaml",
+        "29cfbbad812f026d227b74f27d44ef98"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/sahana/sreevidya.svl",
+        "17056acc6389763cf52d49563803c897"
+      ]
+    },
+    "dharini_mohanam": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223591__gopalkoduri__carnatic-varnam-by-dharini-in-mohanam-raaga.mp3",
+        "7e965a620d9bc60cabe12ee35e4fd4c2"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/mohanam.yaml",
+        "055ce98437ea7d0c525f77b8ddb87a70"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/mohanam/dharini.yaml",
+        "00478e5b854f0ef780dbfed368e4aa18"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/mohanam/dharini.svl",
+        "5acc6818cb1d76040fc2da052dede450"
+      ]
+    },
+    "prasanna_mohanam": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223592__gopalkoduri__carnatic-varnam-by-prasanna-in-mohanam-raaga.mp3",
+        "e2005b665b99c1c8742899bb0ad2f33f"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/mohanam.yaml",
+        "055ce98437ea7d0c525f77b8ddb87a70"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/mohanam/prasanna.yaml",
+        "4905ad48b636e5b3f6d95bfbeef4533a"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/mohanam/prasanna.svl",
+        "11e468ec2008437a828423d17b19c7c6"
+      ]
+    },
+    "prasanna_abhogi": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223579__gopalkoduri__carnatic-varnam-by-prasanna-in-abhogi-raaga.mp3",
+        "2abbec10f44c8a62b6a74334a0964f8c"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi.yaml",
+        "8895f8a4cd5b59df2388446831cd5a31"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi/prasanna.yaml",
+        "45bbd63e91563a99f6eaf608c65e8c93"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/abhogi/prasanna.svl",
+        "1e2cfda720e6d27f3e04fa1108053751"
+      ]
+    },
+    "badrinarayanan_sri": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223603__gopalkoduri__carnatic-varnam-by-badrinarayanan-in-sri-raaga.mp3",
+        "2787ac05b90e9a56c1e6ae6b29747de8"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sri.yaml",
+        "84b75b81698ee80ab642585494db79a3"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sri/badrinarayanan.yaml",
+        "ea566902f52f73f42849bbc66c86e0e6"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/sri/badrinarayanan.svl",
+        "d6c7d7ae8db50c0ab57c671840cd6bb2"
+      ]
+    },
+    "badrinarayanan_kalyani": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223586__gopalkoduri__carnatic-varnam-by-badrinarayanan-in-kalyani-raaga.mp3",
+        "5d679c5212e4d575ac3b1cf9691c523e"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/kalyani.yaml",
+        "57be6d9b63037673ae14710ad1e08578"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/kalyani/badrinarayanan.yaml",
+        "163acd2825b606a6a3542e465af7ec9c"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/kalyani/badrinarayanan.svl",
+        "dc7b9cb3137d99318194348f1d9b7866"
+      ]
+    },
+    "ramakrishnamurthy_abhogi": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223580__gopalkoduri__carnatic-varnam-by-ramakrishnamurthy-in-abhogi-raaga.mp3",
+        "ccb7f6c8e3d9bd7e8d1c313450b4c429"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi.yaml",
+        "8895f8a4cd5b59df2388446831cd5a31"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi/ramakrishnamurthy.yaml",
+        "0ac3fc45a910c6f8fb8ad2128a196b47"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/abhogi/ramakrishnamurthy.svl",
+        "f4acbb64825aa0090436f206b8b4bf51"
+      ]
+    },
+    "ramakrishnamurthy_sahana": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223595__gopalkoduri__carnatic-varnam-by-ramakrishnamurthy-in-sahana-raaga.mp3",
+        "85cc55ea464f1aa6836c6e67d5297ca7"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sahana.yaml",
+        "deca5502bbc17a386dd725b092899011"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/sahana/ramakrishnamurthy.yaml",
+        "69257071f94a079beed96ce028fb5d4f"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/sahana/ramakrishnamurthy.svl",
+        "2db7696d1d9e3ff263150a15cbd9eb9d"
+      ]
+    }
+  },
+  "metadata": {
+    "annotation_metadata": [
+      "carnatic_varnam_1.1/Notations_Annotations/annotations/tonics.yaml",
+      "e3c4b1ad9218f7982ae477478db6c4b4"
+    ]
+  }
+}

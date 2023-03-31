@@ -118,11 +118,7 @@ def test_load_melody3():
         [990.107, 997.608, 497.138],
     ]
 
-    assert melody_data.confidence_list == [
-        [1.0],
-        [1.0, 1.0, 1.0],
-        [1.0, 1.0, 1.0],
-    ]
+    assert melody_data.confidence_list == [[1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
 
 
 def test_load_metadata():

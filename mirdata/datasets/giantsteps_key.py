@@ -101,21 +101,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.keys_path = self.get_path("key")
         self.metadata_path = self.get_path("meta")
@@ -267,36 +254,29 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(
-        reason="Use mirdata.datasets.giantsteps_key.load_audio",
-        version="0.3.4",
+        reason="Use mirdata.datasets.giantsteps_key.load_audio", version="0.3.4"
     )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.giantsteps_key.load_key",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.giantsteps_key.load_key", version="0.3.4")
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.giantsteps_key.load_tempo",
-        version="0.3.4",
+        reason="Use mirdata.datasets.giantsteps_key.load_tempo", version="0.3.4"
     )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.giantsteps_key.load_genre",
-        version="0.3.4",
+        reason="Use mirdata.datasets.giantsteps_key.load_genre", version="0.3.4"
     )
     def load_genre(self, *args, **kwargs):
         return load_genre(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.giantsteps_key.load_artist",
-        version="0.3.4",
+        reason="Use mirdata.datasets.giantsteps_key.load_artist", version="0.3.4"
     )
     def load_artist(self, *args, **kwargs):
         return load_artist(*args, **kwargs)
