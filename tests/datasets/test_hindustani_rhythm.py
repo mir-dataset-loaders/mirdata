@@ -1,9 +1,10 @@
 import os
+from unittest.case import _AssertRaisesContext
 import numpy as np
 import pytest
 from mirdata import annotations
 from unittest import mock
-
+import sys
 
 try:
     from mirdata.datasets import compmusic_hindustani_rhythm
@@ -14,17 +15,17 @@ except ImportError:
 
 from tests.test_utils import run_track_tests
 
-@pytest.fixture
-def mock_import():
-    with mock.patch('builtins.__import__') as mock_import:
-        yield mock_import
-        
-@mock.patch('builtins.__import__')
-def test_openpyxl_import(self,mock_import):
-        mock_import.side_effect = ImportError("No module named 'openpyxl'")
-        
-        with self.assertRaises(ImportError):
-            import compmusic_hindustani_rhythm
+
+class MockOpenpyxl:
+    def __init__(self, *args, **kwargs):
+        raise ImportError("openpyxl is not installed")
+
+
+sys.modules["openpyxl"] = MockOpenpyxl
+
+
+def test_openpyxl_import():
+    import mirdata.datasets.compmusic_hindustani_rhythm
 
 
 def test_track():
