@@ -82,21 +82,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.melody_path = self.get_path("melody")
 
@@ -320,23 +307,16 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @deprecated(
-        reason="Use mirdata.datasets.orchset.load_audio_mono",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.orchset.load_audio_mono", version="0.3.4")
     def load_audio_mono(self, *args, **kwargs):
         return load_audio_mono(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.orchset.load_audio_stereo",
-        version="0.3.4",
+        reason="Use mirdata.datasets.orchset.load_audio_stereo", version="0.3.4"
     )
     def load_audio_stereo(self, *args, **kwargs):
         return load_audio_stereo(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.orchset.load_melody",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.orchset.load_melody", version="0.3.4")
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)

@@ -78,7 +78,7 @@ REMOTES = {
         url="https://zenodo.org/record/4618287/files/DagstuhlChoirSet_V1.2.3.zip?download=1",
         checksum="82b95faa634d0c9fc05c81e0868f0217",
         unpack_directories=["DagstuhlChoirSet_V1.2.3"],
-    ),
+    )
 }
 
 LICENSE_INFO = """
@@ -231,9 +231,7 @@ class Track(core.Track):
             audio_path = self.audio_lrx_path
 
         return jams_utils.jams_converter(
-            audio_path=audio_path,
-            f0_data=f0_data,
-            note_data=score_data,
+            audio_path=audio_path, f0_data=f0_data, note_data=score_data
         )
 
 
@@ -534,29 +532,25 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(
-        reason="Use mirdata.datasets.dagstuhl_choirset.load_audio",
-        version="0.3.4",
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_audio", version="0.3.4"
     )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.dagstuhl_choirset.load_f0",
-        version="0.3.4",
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_f0", version="0.3.4"
     )
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.dagstuhl_choirset.load_score",
-        version="0.3.4",
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_score", version="0.3.4"
     )
     def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.dagstuhl_choirset.load_beat",
-        version="0.3.4",
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_beat", version="0.3.4"
     )
     def load_beat(self, *args, **kwargs):
         return load_beat(*args, **kwargs)

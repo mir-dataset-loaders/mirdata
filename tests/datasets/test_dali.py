@@ -16,11 +16,6 @@ from tests.test_utils import run_track_tests
 import numpy as np
 
 
-def test_importError():
-    with pytest.raises(ImportError):
-        raise (ImportError)
-
-
 def test_track():
     default_trackid = "4b196e6c99574dd49ad00d56e132712b"
     data_home = os.path.normpath("tests/resources/mir_datasets/dali")

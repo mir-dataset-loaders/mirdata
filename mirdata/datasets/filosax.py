@@ -320,9 +320,7 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-        )
+        return jams_utils.jams_converter(audio_path=self.audio_path)
 
 
 class MultiTrack(core.MultiTrack):

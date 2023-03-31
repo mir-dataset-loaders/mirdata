@@ -205,7 +205,7 @@ class Track(core.Track):
         setting (list): the setting of the effect recorded or "None" when the recording is a clean effect sound
 
     Cached Properties:
-        note_name (list): a list with the note name annotation of the audio file (e.g. "Ab5", "C6", etc.)
+        note_name (ndarray): a list with the note name annotation of the audio file (e.g. "Ab5", "C6", etc.)
         midinote (NoteData): the midinote annotation of the audio file
     """
 

@@ -216,8 +216,7 @@ class Track(core.Track):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            note_data=[(self.notes, "Notes")],
+            audio_path=self.audio_path, note_data=[(self.notes, "Notes")]
         )
 
 
@@ -333,8 +332,7 @@ class MultiTrack(core.MultiTrack):
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.mix_path,
-            note_data=[(self.notes, "Notes")],
+            audio_path=self.mix_path, note_data=[(self.notes, "Notes")]
         )
 
     def get_submix_by_group(self, target_groups):
@@ -414,30 +412,18 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @deprecated(
-        reason="Use mirdata.datasets.slakh.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.slakh.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.slakh.load_midi",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.slakh.load_midi", version="0.3.4")
     def load_midi(self, *args, **kwargs):
         return io.load_midi(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.io.load_notes_from_midi",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.io.load_notes_from_midi", version="0.3.4")
     def load_notes_from_midi(self, *args, **kwargs):
         return io.load_notes_from_midi(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.io.load_multif0_from_midi",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.io.load_multif0_from_midi", version="0.3.4")
     def load_multif0_from_midi(self, *args, **kwargs):
         return io.load_multif0_from_midi(*args, **kwargs)

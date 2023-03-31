@@ -44,10 +44,7 @@ def test_track():
         "train": True,
     }
 
-    expected_property_test_types = {
-        "instrument": list,
-        "audio": tuple,
-    }
+    expected_property_test_types = {"instrument": list, "audio": tuple}
 
     run_track_tests(track, expected_attributes, expected_property_test_types)
     run_track_tests(
