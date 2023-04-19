@@ -1286,9 +1286,7 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
             return pitches_midi
 
         if target_pitch_unit == "note_name":
-            # cast to np.array for compatibility with legacy python3.6 and
-            # librosa 0.9.2. It is redundant for librosa 0.10
-            return np.array(librosa.hz_to_note(pitches_hz))
+            return librosa.hz_to_note(pitches_hz)
 
         raise NotImplementedError
 
