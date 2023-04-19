@@ -2,7 +2,7 @@ sphinx-togglebutton
 dali-dataset>=1.0
 jams
 chardet
-librosa>=0.7.0
+librosa>=0.10.0
 tqdm
 sphinx==4.2.0
 Deprecated>=1.2.13
