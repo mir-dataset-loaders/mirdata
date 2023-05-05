@@ -4,5 +4,5 @@ jams
 chardet
 librosa>=0.10.0
 tqdm
-sphinx==4.2.0
+sphinx>=4.2.0
 Deprecated>=1.2.13
