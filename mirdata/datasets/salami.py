@@ -84,16 +84,20 @@ class Track(core.Track):
         genre (str): genre of the song
         sections_annotator1_lowercase_path (str): path to annotations in hierarchy level 1 from annotator 1
         sections_annotator1_uppercase_path (str): path to annotations in hierarchy level 0 from annotator 1
+        sections_annotator1_functions_path (str): path to annotations in functions level from annotator 1
         sections_annotator2_lowercase_path (str): path to annotations in hierarchy level 1 from annotator 2
         sections_annotator2_uppercase_path (str): path to annotations in hierarchy level 0 from annotator 2
+        sections_annotator2_functions_path (str): path to annotations in functions level from annotator 2
         source (str): dataset or source of song
         title (str): title of the song
 
     Cached Properties:
         sections_annotator_1_uppercase (SectionData): annotations in hierarchy level 0 from annotator 1
         sections_annotator_1_lowercase (SectionData): annotations in hierarchy level 1 from annotator 1
+        sections_annotator_1_functions (SectionData): annotations in functions level from annotator 1
         sections_annotator_2_uppercase (SectionData): annotations in hierarchy level 0 from annotator 2
         sections_annotator_2_lowercase (SectionData): annotations in hierarchy level 1 from annotator 2
+        sections_annotator_2_functions (SectionData): annotations in functions level from annotator 2
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -101,8 +105,10 @@ class Track(core.Track):
 
         self.sections_annotator1_uppercase_path = self.get_path("annotator_1_uppercase")
         self.sections_annotator1_lowercase_path = self.get_path("annotator_1_lowercase")
+        self.sections_annotator1_functions_path = self.get_path("annotator_1_functions")
         self.sections_annotator2_uppercase_path = self.get_path("annotator_2_uppercase")
         self.sections_annotator2_lowercase_path = self.get_path("annotator_2_lowercase")
+        self.sections_annotator2_functions_path = self.get_path("annotator_2_functions")
 
         self.audio_path = self.get_path("audio")
 
@@ -155,12 +161,20 @@ class Track(core.Track):
         return load_sections(self.sections_annotator1_lowercase_path)
 
     @core.cached_property
+    def sections_annotator_1_functions(self) -> Optional[annotations.SectionData]:
+        return load_sections(self.sections_annotator1_functions_path)
+
+    @core.cached_property
     def sections_annotator_2_uppercase(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_annotator2_uppercase_path)
 
     @core.cached_property
     def sections_annotator_2_lowercase(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_annotator2_lowercase_path)
+
+    @core.cached_property
+    def sections_annotator_2_functions(self) -> Optional[annotations.SectionData]:
+        return load_sections(self.sections_annotator2_functions_path)
 
     @property
     def audio(self) -> Tuple[np.ndarray, float]:
