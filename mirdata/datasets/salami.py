@@ -241,10 +241,10 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
     return annotations.SectionData(
-        np.array([times_revised[:-1], times_revised[1:]]).T,
-        "s",
-        list(secs_revised[:-1]),
-        "open",
+        intervals=np.array([times_revised[:-1], times_revised[1:]]).T,
+        interval_unit="s",
+        labels=list(secs_revised[:-1]),
+        label_unit="open",
     )
 
 
