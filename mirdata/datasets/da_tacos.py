@@ -242,21 +242,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.track_id = track_id
         self._data_home = data_home
@@ -531,52 +518,31 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @deprecated(
-        reason="Use mirdata.datasets.da_tacos.load_cens",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.da_tacos.load_cens", version="0.3.4")
     def load_cens(self, *args, **kwargs):
         return load_cens(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.da_tacos.load_crema",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.da_tacos.load_crema", version="0.3.4")
     def load_crema(self, *args, **kwargs):
         return load_crema(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.da_tacos.load_hpcp",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.da_tacos.load_hpcp", version="0.3.4")
     def load_hpcp(self, *args, **kwargs):
         return load_hpcp(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.da_tacos.load_key",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.da_tacos.load_key", version="0.3.4")
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.da_tacos.load_mfcc",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.da_tacos.load_mfcc", version="0.3.4")
     def load_mfcc(self, *args, **kwargs):
         return load_mfcc(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.da_tacos.load_madmom",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.da_tacos.load_madmom", version="0.3.4")
     def load_madmom(self, *args, **kwargs):
         return load_madmom(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.da_tacos.load_tags",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.da_tacos.load_tags", version="0.3.4")
     def load_tags(self, *args, **kwargs):
         return load_tags(*args, **kwargs)
 

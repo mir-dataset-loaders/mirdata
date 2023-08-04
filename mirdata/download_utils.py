@@ -146,7 +146,6 @@ def downloader(
 
             if remotes[k].unpack_directories:
                 for src_dir in remotes[k].unpack_directories:
-
                     # path to destination directory
                     destination_dir = (
                         os.path.join(save_dir, remotes[k].destination_dir)

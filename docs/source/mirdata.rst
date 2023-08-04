@@ -21,6 +21,14 @@ acousticbrainz_genre
    :inherited-members:
 
 
+baf
+^^^
+
+.. automodule:: mirdata.datasets.baf
+   :members:
+   :inherited-members:
+   
+
 beatles
 ^^^^^^^
 
@@ -131,6 +139,13 @@ da_tacos
    :members:
    :inherited-members:
 
+egfxset
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.egfxset
+   :members:
+   :inherited-members:
+   
 
 filosax
 ^^^^^^^

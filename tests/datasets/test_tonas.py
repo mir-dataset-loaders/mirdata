@@ -73,12 +73,7 @@ def test_to_jams():
 
     # Validate note transciption
     notes = jam.search(namespace="note_hz")[0]["data"]
-    assert [note.time for note in notes] == [
-        0.216667,
-        0.65,
-        2.183333,
-        2.566667,
-    ]
+    assert [note.time for note in notes] == [0.216667, 0.65, 2.183333, 2.566667]
     assert [note.duration for note in notes] == [
         0.433333,
         1.016667,
@@ -117,16 +112,12 @@ def test_load_melody():
 
     # check values
     assert np.array_equal(
-        f0_data_corrected.times,
-        np.array([0.197, 0.209, 0.221, 0.232]),
+        f0_data_corrected.times, np.array([0.197, 0.209, 0.221, 0.232])
     )
     assert np.array_equal(
         f0_data_corrected.frequencies, np.array([0.000, 379.299, 379.299, 379.299])
     )
-    assert np.array_equal(
-        f0_data_corrected.voicing,
-        np.array([0.0, 1.0, 1.0, 1.0]),
-    )
+    assert np.array_equal(f0_data_corrected.voicing, np.array([0.0, 1.0, 1.0, 1.0]))
     assert np.array_equal(
         f0_data_corrected._confidence,
         np.array([3.090e-06, 0.00000286, 0.00000715, 0.00001545]),
@@ -134,24 +125,12 @@ def test_load_melody():
 
     # check values
     assert np.array_equal(
-        f0_data_automatic.times,
-        np.array([0.197, 0.209, 0.221, 0.232]),
+        f0_data_automatic.times, np.array([0.197, 0.209, 0.221, 0.232])
     )
     assert np.array_equal(
-        f0_data_automatic.frequencies,
-        np.array(
-            [
-                0.000,
-                0.000,
-                143.918,
-                143.918,
-            ]
-        ),
+        f0_data_automatic.frequencies, np.array([0.000, 0.000, 143.918, 143.918])
     )
-    assert np.array_equal(
-        f0_data_automatic.voicing,
-        np.array([0.0, 0.0, 1.0, 1.0]),
-    )
+    assert np.array_equal(f0_data_automatic.voicing, np.array([0.0, 0.0, 1.0, 1.0]))
     assert np.array_equal(
         f0_data_automatic._confidence,
         np.array([3.090e-06, 2.860e-06, 0.00000715, 0.00001545]),
@@ -190,15 +169,7 @@ def test_load_notes():
         ),
     )
     assert np.array_equal(
-        notes_data.confidence,
-        np.array(
-            [
-                0.018007,
-                0.010794,
-                0.00698,
-                0.03265,
-            ]
-        ),
+        notes_data.confidence, np.array([0.018007, 0.010794, 0.00698, 0.03265])
     )
 
 

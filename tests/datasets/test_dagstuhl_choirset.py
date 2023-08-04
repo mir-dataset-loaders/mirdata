@@ -151,22 +151,12 @@ def test_load_f0():
         np.array([0.400544218, 0.406349206, 0.412154195, 0.417959184, 0.423764172]),
     )
     assert np.array_equal(
-        f0.frequencies,
-        np.array(
-            [
-                129.387,
-                126.634,
-                125.182,
-                124.943,
-                124.491,
-            ]
-        ),
+        f0.frequencies, np.array([129.387, 126.634, 125.182, 124.943, 124.491])
     )
     assert np.array_equal(f0.voicing, np.array([1, 1, 1, 1, 1]))
 
 
 def test_load_score():
-
     score_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv"
     score = dagstuhl_choirset.load_score(score_path)
     assert isinstance(score, annotations.NoteData)
@@ -194,7 +184,6 @@ def test_load_score():
 
 
 def test_load_beat():
-
     beat_path = "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
     beat = dagstuhl_choirset.load_beat(beat_path)
     assert isinstance(beat, annotations.BeatData)

@@ -118,21 +118,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.annotation_path = self.get_path("annot")
 
@@ -340,23 +327,18 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @deprecated(
-        reason="Use mirdata.datasets.dali.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.dali.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.dali.load_annotations_granularity",
-        version="0.3.4",
+        reason="Use mirdata.datasets.dali.load_annotations_granularity", version="0.3.4"
     )
     def load_annotations_granularity(self, *args, **kwargs):
         return load_annotations_granularity(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.dali.load_annotations_class",
-        version="0.3.4",
+        reason="Use mirdata.datasets.dali.load_annotations_class", version="0.3.4"
     )
     def load_annotations_class(self, *args, **kwargs):
         return load_annotations_class(*args, **kwargs)

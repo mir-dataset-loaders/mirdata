@@ -60,7 +60,6 @@ def test_to_jams():
 
 
 def test_filter_index():
-
     data_home = os.path.normpath("tests/resources/mir_datasets/acousticbrainz_genre")
     dataset = acousticbrainz_genre.Dataset(data_home, version="test")
     index = dataset.load_all_train()
@@ -84,7 +83,6 @@ def test_filter_index():
 
 
 def test_download(httpserver):
-
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/acousticbrainz_genre_download"
     )
