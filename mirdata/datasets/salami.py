@@ -194,24 +194,24 @@ class Track(core.Track):
             jams.JAMS: the track's data in jams format
 
         """
+
+        annotations = [
+            (self.sections_annotator_1_uppercase, "annotator 1"),
+            (self.sections_annotator_1_lowercase, "annotator 1"),
+            (self.sections_annotator_1_functions, "annotator 1"),
+            (self.sections_annotator_2_uppercase, "annotator 2"),
+            (self.sections_annotator_2_lowercase, "annotator 2"),
+            (self.sections_annotator_2_functions, "annotator 2"),
+        ]
+
+        section_data = []
+        for data, description in annotations:
+            if data is not None:
+                section_data.append((data, description))
+
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            multi_section_data=[
-                (
-                    [
-                        (self.sections_annotator_1_uppercase, 0),
-                        (self.sections_annotator_1_lowercase, 1),
-                    ],
-                    "annotator_1",
-                ),
-                (
-                    [
-                        (self.sections_annotator_2_uppercase, 0),
-                        (self.sections_annotator_2_lowercase, 1),
-                    ],
-                    "annotator_2",
-                ),
-            ],
+            section_data=section_data,
             metadata=self._track_metadata,
         )
 
