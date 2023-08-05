@@ -33,7 +33,7 @@ def make_salami_index(data_path):
     )
     audio_dir = os.path.join(data_path, "Salami", "audio")
     annotations_files = os.listdir(annotations_dir)
-    track_ids = sorted([os.path.basename(f).split(".")[0] for f in annotations_files])
+    track_ids = sorted([os.path.basename(f) for f in annotations_files])
 
     salami_index = {}
     for track_id in track_ids:
