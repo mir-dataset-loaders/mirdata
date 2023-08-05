@@ -320,7 +320,12 @@ def sections_to_jams(section_data, description=None):
         jams.Annotation: jams annotation object.
 
     """
-    jannot_seg = jams.Annotation(namespace="segment_open")
+    if section_data is None:
+        namespace = "segment_open"
+    else:
+        namespace = f"segment_{section_data.label_unit}"
+
+    jannot_seg = jams.Annotation(namespace=namespace)
     jannot_seg.annotation_metadata = jams.AnnotationMetadata(data_source="mirdata")
 
     if section_data is not None:

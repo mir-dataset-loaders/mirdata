@@ -254,11 +254,23 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
+
+    # Pick label unit based on file name.
+    if "lowercase" in fhandle.name:
+        label_unit = "salami_lower"
+    elif "uppercase" in fhandle.name:
+        label_unit = "salami_upper"
+    elif "function" in fhandle.name:
+        # TODO label_unit = "salami_function"
+        label_unit = "open"
+    else:
+        raise ValueError("Unknown filename", fhandle)
+
     return annotations.SectionData(
         intervals=np.array([times_revised[:-1], times_revised[1:]]).T,
         interval_unit="s",
         labels=list(secs_revised[:-1]),
-        label_unit="open",
+        label_unit=label_unit,
     )
 
 

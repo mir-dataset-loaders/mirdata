@@ -55,7 +55,12 @@ PITCH_UNITS = {
 }
 
 #: Section units
-SECTION_UNITS = {"open": "no strict schema or units"}
+SECTION_UNITS = {
+    "open": "no strict schema or units",
+    "salami_function": "Segment annotations with functional labels from the SALAMI guidelines",
+    "salami_upper": "Segment annotations with SALAMI’s upper-case (large) label format",
+    "salami_lower": "Segment annotations with SALAMI’s lower-case (small) label format",
+}
 
 #: Tempo units
 TEMPO_UNITS = {"bpm": "beats per minute"}
