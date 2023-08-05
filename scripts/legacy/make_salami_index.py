@@ -42,7 +42,7 @@ def make_salami_index(data_path):
         annot_checksum, annot_rels = [], []
 
         # using existing annotations (version 2.0)
-        for f in ["uppercase.txt", "lowercase.txt"]:
+        for f in ["uppercase.txt", "lowercase.txt", "functions.txt"]:
             for a in ["1", "2"]:
                 if os.path.exists(
                     os.path.join(
@@ -79,8 +79,10 @@ def make_salami_index(data_path):
             "audio": (os.path.join("audio", "{}.mp3".format(track_id)), audio_checksum),
             "annotator_1_uppercase": (annot_rels[0], annot_checksum[0]),
             "annotator_1_lowercase": (annot_rels[2], annot_checksum[2]),
+            "annotator_1_functions": (annot_rels[4], annot_checksum[4]),
             "annotator_2_uppercase": (annot_rels[1], annot_checksum[1]),
             "annotator_2_lowercase": (annot_rels[3], annot_checksum[3]),
+            "annotator_2_functions": (annot_rels[5], annot_checksum[5]),
         }
 
     with open(SALAMI_INDEX_PATH, "w") as fhandle:
