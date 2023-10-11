@@ -1,35 +1,36 @@
-"""
-The IDMT-SMT-Audio-Effects dataset
+"""IDMT-SMT-Audio-Effects Dataset Loader
 
-is a large database for automatic detection of audio effects in recordings of electric guitar and bass and
-related signal processing. The overall duration of the audio material is approx. 30 hours.
+.. admonition:: Dataset Info
+    :class: dropdown
 
-The dataset consists of 55044 WAV files (44.1 kHz, 16bit, mono) with single recorded notes:
+    IDMT-SMT-Audio-Effects is a large database for automatic detection of audio effects in recordings of electric guitar and bass and
+    related signal processing. The overall duration of the audio material is approx. 30 hours.
 
-20592 monophonic bass notes
-20592 monophonic guitar notes
-13860 polyphonic guitar sounds
-Overall, 11 different audio effects are incorporated:
-feedback delay, slapback delay, reverb, chorus, flanger, phaser, tremolo, vibrato, 
-distortion, overdrive, no effect (unprocessed notes/sounds)
+    The dataset consists of 55044 WAV files (44.1 kHz, 16bit, mono) with single recorded notes:
 
-2 different electric guitars and 2 different electric bass guitars, each with two different pick-up settings and
-up to three different plucking styles (finger plucked - hard, finger plucked - soft, picked) were used for recording.
-The notes cover the common pitch range of a 4-string bass guitar from E1 (41.2 Hz) to G3 (196.0 Hz) or the common
-pitch range of a 6-string electric guitar from E2 (82.4 Hz) to E5 (659.3 Hz).
-Effects processing was performed using a digital audio workstation and a variety of mostly freely available effect
-plugins.
+    20592 monophonic bass notes
+    20592 monophonic guitar notes
+    13860 polyphonic guitar sounds
+    Overall, 11 different audio effects are incorporated:
+    feedback delay, slapback delay, reverb, chorus, flanger, phaser, tremolo, vibrato, 
+    distortion, overdrive, no effect (unprocessed notes/sounds)
 
-To organize the database, lists in XML format are used, which record all relevant information and are provided with
-the database as well as a summary of the used effect plugins and parameter settings.
+    2 different electric guitars and 2 different electric bass guitars, each with two different pick-up settings and
+    up to three different plucking styles (finger plucked - hard, finger plucked - soft, picked) were used for recording.
+    The notes cover the common pitch range of a 4-string bass guitar from E1 (41.2 Hz) to G3 (196.0 Hz) or the common
+    pitch range of a 6-string electric guitar from E2 (82.4 Hz) to E5 (659.3 Hz).
+    Effects processing was performed using a digital audio workstation and a variety of mostly freely available effect
+    plugins.
 
-In addition, most of this information is also encoded in the first part of the file name of the audio files using 
-a simple alpha-numeric encoding scheme. The second part of the file name contains unique identification numbers. 
-This provides an option for fast and flexible structuring of the data for various purposes.
+    To organize the database, lists in XML format are used, which record all relevant information and are provided with
+    the database as well as a summary of the used effect plugins and parameter settings.
 
-DOI
-10.5281/zenodo.7544032
+    In addition, most of this information is also encoded in the first part of the file name of the audio files using 
+    a simple alpha-numeric encoding scheme. The second part of the file name contains unique identification numbers. 
+    This provides an option for fast and flexible structuring of the data for various purposes.
 
+    DOI
+    10.5281/zenodo.7544032
 """
 import os
 import librosa
