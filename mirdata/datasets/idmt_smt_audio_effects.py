@@ -36,7 +36,7 @@ import librosa
 import numpy as np
 import xml.etree.ElementTree as ET
 
-from typing import BinaryIO, Tuple
+from typing import BinaryIO, Tuple, Optional
 from mirdata import download_utils, jams_utils, core, io
 
 
@@ -150,7 +150,7 @@ class Track(core.Track):
         return self._track_metadata.get("fx_setting")
 
     @property
-    def audio(self) -> Tuple[np.ndarray, float]:
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
         Returns:
             * np.ndarray - audio signal
