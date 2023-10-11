@@ -23,7 +23,9 @@ plugins.
 To organize the database, lists in XML format are used, which record all relevant information and are provided with
 the database as well as a summary of the used effect plugins and parameter settings.
 
-In addition, most of this information is also encoded in the first part of the file name of the audio files using a simple alpha-numeric encoding scheme. The second part of the file name contains unique identification numbers. This provides an option for fast and flexible structuring of the data for various purposes.
+In addition, most of this information is also encoded in the first part of the file name of the audio files using 
+a simple alpha-numeric encoding scheme. The second part of the file name contains unique identification numbers. 
+This provides an option for fast and flexible structuring of the data for various purposes.
 
 DOI
 10.5281/zenodo.7544032
@@ -56,10 +58,10 @@ INDEXES = {
 }
 
 REMOTES = {
-    'full_dataset': download_utils.RemoteFileMetadata(
-        filename='IDMT-SMT-AUDIO-EFFECTS.zip',
-        url='https://zenodo.org/record/7544032/files/IDMT-SMT-AUDIO-EFFECTS.zip?download=1',
-        checksum='91e845a1b347352993ebd5ba948d5a7c',
+    "full_dataset": download_utils.RemoteFileMetadata(
+        filename="IDMT-SMT-AUDIO-EFFECTS.zip",
+        url="https://zenodo.org/record/7544032/files/IDMT-SMT-AUDIO-EFFECTS.zip?download=1",
+        checksum="91e845a1b347352993ebd5ba948d5a7c",
     ),
 }
 
@@ -109,20 +111,14 @@ class Track(core.Track):
         fx_group (int): effect group number
         fx_type (int): effect type number
         fx_setting (int): effect setting number
-        
+
 
     Cached Properties:
         annotation (EventData): a description of this annotation
 
     """
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata
-    ):
+
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(
             track_id,
             data_home,
@@ -130,13 +126,13 @@ class Track(core.Track):
             index,
             metadata,
         )
-        
+
         self.audio_path = self.get_path("audio")
 
     @property
     def instrument(self):
         return self._track_metadata.get("instrument")
-    
+
     @property
     def midi_nr(self):
         return self._track_metadata.get("midi_nr")
@@ -144,7 +140,7 @@ class Track(core.Track):
     @property
     def fx_group(self):
         return self._track_metadata.get("fx_group")
-    
+
     @property
     def fx_type(self):
         return self._track_metadata.get("fx_type")
@@ -168,10 +164,10 @@ class Track(core.Track):
             jams.JAMS: the track's data in jams format
         """
         return jams_utils.jams_converter(
-            audio_path=self.audio_path, 
+            audio_path=self.audio_path,
             metadata=self._track_metadata,
         )
-    
+
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
@@ -206,16 +202,16 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-
         metadata_index = {
-            'fileID': {
-            'list_id': str,
-            'instrument': str,
-            'midi_nr': str,
-            'fx_group': int,
-            'fx_type': int,
-            'fx_setting': int,
-        } }
+            "fileID": {
+                "list_id": str,
+                "instrument": str,
+                "midi_nr": str,
+                "fx_group": int,
+                "fx_type": int,
+                "fx_setting": int,
+            }
+        }
 
         for root, dirs, files in os.walk(self.data_home):
             for file in files:
@@ -223,14 +219,14 @@ class Dataset(core.Dataset):
                     xml_path = os.path.join(root, file)
                     tree = ET.parse(xml_path)
                     root_xml = tree.getroot()
-                    listID = root_xml.find('listinformation/listID').text
-                    for audiofile in root_xml.findall('audiofile'):
-                        name = audiofile.find('fileID').text
-                        instrument = audiofile.find('instrument').text
-                        midinr = audiofile.find('midinr').text  
-                        fxgroup = audiofile.find('fxgroup').text
-                        fxtype = audiofile.find('fxtype').text
-                        fxsetting = audiofile.find('fxsetting').text
+                    listID = root_xml.find("listinformation/listID").text
+                    for audiofile in root_xml.findall("audiofile"):
+                        name = audiofile.find("fileID").text
+                        instrument = audiofile.find("instrument").text
+                        midinr = audiofile.find("midinr").text
+                        fxgroup = audiofile.find("fxgroup").text
+                        fxtype = audiofile.find("fxtype").text
+                        fxsetting = audiofile.find("fxsetting").text
 
                         metadata_index[name] = {
                             "list_id": listID,
@@ -241,7 +237,6 @@ class Dataset(core.Dataset):
                             "fx_setting": int(fxsetting),
                         }
         return metadata_index
-    
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=False):
         """Download the dataset
@@ -267,20 +262,20 @@ class Dataset(core.Dataset):
             force_overwrite=force_overwrite,
             cleanup=cleanup,
         )
-        
+
         download_utils.move_directory_contents(
-            os.path.join(self.data_home, "IDMT-SMT-AUDIO-EFFECTS/IDMT-SMT-AUDIO-EFFECTS"),
+            os.path.join(
+                self.data_home, "IDMT-SMT-AUDIO-EFFECTS/IDMT-SMT-AUDIO-EFFECTS"
+            ),
             self.data_home,
         )
-        
+
         # Check if the folder "IDMT-SMT-AUDIO-EFFECTS" is empty and delete it if it is
         idmt_folder = os.path.join(self.data_home, "IDMT-SMT-AUDIO-EFFECTS")
         if os.path.isdir(idmt_folder) and not os.listdir(idmt_folder):
             os.rmdir(idmt_folder)
-        
+
         for file in os.listdir(self.data_home):
             if file.endswith(".zip"):
-                    zip_path = os.path.join(self.data_home, file)
-                    download_utils.unzip(
-                        zip_path=zip_path, cleanup=cleanup
-            )
+                zip_path = os.path.join(self.data_home, file)
+                download_utils.unzip(zip_path=zip_path, cleanup=cleanup)
