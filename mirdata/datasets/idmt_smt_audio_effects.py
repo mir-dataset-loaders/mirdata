@@ -273,7 +273,7 @@ class Dataset(core.Dataset):
 
         # Check if the folder "IDMT-SMT-AUDIO-EFFECTS" is empty and delete it if it is
         idmt_folder = os.path.join(self.data_home, "IDMT-SMT-AUDIO-EFFECTS")
-        if os.path.isdir(idmt_folder) and not os.listdir(idmt_folder):
+        if os.path.exists(idmt_folder) and not os.listdir(idmt_folder):
             os.rmdir(idmt_folder)
 
         for file in os.listdir(self.data_home):
