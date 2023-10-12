@@ -63,6 +63,8 @@ REMOTES = {
         filename="IDMT-SMT-AUDIO-EFFECTS.zip",
         url="https://zenodo.org/record/7544032/files/IDMT-SMT-AUDIO-EFFECTS.zip?download=1",
         checksum="91e845a1b347352993ebd5ba948d5a7c",
+        destination_dir=".",
+        unpack_directories=["IDMT-SMT-AUDIO-EFFECTS/IDMT-SMT-AUDIO-EFFECTS"],
     ),
 }
 
@@ -239,44 +241,3 @@ class Dataset(core.Dataset):
                         }
         return metadata_index
 
-    def download(self, partial_download=None, force_overwrite=False, cleanup=False):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-        """
-        download_utils.downloader(
-            self.data_home,
-            remotes=self.remotes,
-            index=self._index_data,
-            partial_download=partial_download,
-            force_overwrite=force_overwrite,
-            cleanup=cleanup,
-        )
-
-        download_utils.move_directory_contents(
-            os.path.join(
-                self.data_home, "IDMT-SMT-AUDIO-EFFECTS/IDMT-SMT-AUDIO-EFFECTS"
-            ),
-            self.data_home,
-        )
-
-        # Check if the folder "IDMT-SMT-AUDIO-EFFECTS" is empty and delete it if it is
-        idmt_folder = os.path.join(self.data_home, "IDMT-SMT-AUDIO-EFFECTS")
-        if os.path.exists(idmt_folder) and not os.listdir(idmt_folder):
-            os.rmdir(idmt_folder)
-
-        for file in os.listdir(self.data_home):
-            if file.endswith(".zip"):
-                zip_path = os.path.join(self.data_home, file)
-                download_utils.unzip(zip_path=zip_path, cleanup=cleanup)
