@@ -39,7 +39,7 @@ import xml.etree.ElementTree as ET
 
 from typing import BinaryIO, Tuple, Optional
 from mirdata import download_utils, jams_utils, core, io
-
+from smart_open import open
 
 BIBTEX = """ @dataset{stein_michael_2023_7544032,
   author       = {Stein, Michael},
@@ -64,32 +64,18 @@ REMOTES = {
         url="https://zenodo.org/record/7544032/files/IDMT-SMT-AUDIO-EFFECTS.zip?download=1",
         checksum="91e845a1b347352993ebd5ba948d5a7c",
         destination_dir=".",
-        unpack_directories=["IDMT-SMT-AUDIO-EFFECTS/IDMT-SMT-AUDIO-EFFECTS"],
+        unpack_directories=[""],
     ),
 }
 
-DOWNLOAD_INFO = """
-zip_filenames = [
-    "Gitarre_polyphon2.zip",
-    "Gitarre polyphon2.zip",
-    "Gitarre polyphon.zip",
-    "Gitarre monophon2.zip",
-    "Gitarre monophon.zip",
-    "Bass monophon2.zip",
-    "Bass monophon.zip"
-]
-
-The zip file contains the audio files and the annotations/metadata in the following structure:
-    IDMT-SMT-AUDIO-EFFECTS/
-        bass 1/
-            lists   (each list contains metadata for multiples audio files)
-            samples
-            ...
-        guitar/
-            lists   (each list contains metadata for multiples audio files)
-            samples (here the files are organized in subfolders according to the effects)   
-            ...
-"""
+DOWNLOAD_INFO = """ 
+            "Bass monophon2",
+            "Bass monophon",
+            "Gitarre monophon",
+            "Gitarre monophon2",
+            "Gitarre polyphon",
+            "Gitarre polyphon2",
+            "Gitarre_polyphon2","""
 
 
 LICENSE_INFO = """
