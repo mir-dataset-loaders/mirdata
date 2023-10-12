@@ -240,4 +240,3 @@ class Dataset(core.Dataset):
                             "fx_setting": int(fxsetting),
                         }
         return metadata_index
-
