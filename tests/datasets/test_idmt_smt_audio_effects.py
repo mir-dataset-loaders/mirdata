@@ -7,13 +7,7 @@ from mirdata.datasets import idmt_smt_audio_effects
 
 def test_track():
     default_trackid = "G73-45200-3341-33944"
-<<<<<<< HEAD
-    data_home = os.path.normpath(
-        "tests/resources/mir_datasets/idmt_smt_audio_effects"
-    )
-=======
     data_home = os.path.normpath("tests/resources/mir_datasets/idmt_smt_audio_effects")
->>>>>>> f327b32 (added tests)
     dataset = idmt_smt_audio_effects.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
@@ -34,15 +28,10 @@ def test_track():
     }
 
     assert track._track_paths == {
-<<<<<<< HEAD
-        "audio": ["Gitarre monophon2/Samples/Tremolo/G73-45200-3341-33944.wav",
-                    "4b8c1e95cc99cd1ecd83f46ee9b604ba"]
-=======
         "audio": [
             "Gitarre monophon2/Samples/Tremolo/G73-45200-3341-33944.wav",
             "4b8c1e95cc99cd1ecd83f46ee9b604ba",
         ]
->>>>>>> f327b32 (added tests)
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
