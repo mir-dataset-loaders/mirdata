@@ -1,27 +1,22 @@
 import os
-import numpy as np
-import pytest
 
 from tests.test_utils import run_track_tests
 
-from mirdata import annotations
 from mirdata.datasets import idmt_smt_audio_effects
-from tests.test_utils import DEFAULT_DATA_HOME
 
 
 def test_track():
     default_trackid = "G73-45200-3341-33944"
-    TEST_DATA_HOME = os.path.normpath(
+    data_home = os.path.normpath(
         "tests/resources/mir_datasets/idmt_smt_audio_effects"
     )
-    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME)
+    dataset = idmt_smt_audio_effects.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "G73-45200-3341-33944",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/idmt_smt_audio_effects/"),
-            "Gitarre monophon2/Samples/Tremolo/G73-45200-3341-33944.wav",
+        "audio_path": os.path.normpath(
+            "tests/resources/mir_datasets/idmt_smt_audio_effects/Gitarre monophon2/Samples/Tremolo/G73-45200-3341-33944.wav",
         ),
     }
 
@@ -34,9 +29,13 @@ def test_track():
         "midi_nr": int,
     }
 
+    assert track._track_paths == {
+        "audio": ["Gitarre monophon2/Samples/Tremolo/G73-45200-3341-33944.wav",
+                    "4b8c1e95cc99cd1ecd83f46ee9b604ba"]
+    }
+
     run_track_tests(track, expected_attributes, expected_property_types)
 
-    # test audio loading functions
     audio, sr = track.audio
     assert sr == 44100
     assert audio.shape == (88201,)
@@ -48,6 +47,11 @@ def test_to_jams():
     dataset = idmt_smt_audio_effects.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
+
+    assert jam["sandbox"]["fx_group"] == 3
+    assert jam["sandbox"]["fx_setting"] == 1
+    assert jam["sandbox"]["instrument"] == "G"
+    assert jam["sandbox"]["midi_nr"] == 45
 
 
 def test_metadata():
