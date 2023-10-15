@@ -10,6 +10,13 @@ dependencies:
   - pandas>=1.3.5
   - requests>=2.31.0
   - tqdm>=4.65.0
+  - pretty_midi >= 0.2.8
+  - chardet
+  - pyyaml
+  - scipy
+  - h5py >= 2.10.0
+  - smart_open >= 5.0.0
+  - Deprecated >= 1.2.13
 
   # optional, but required for testing
   - pytest>=7.2.0
