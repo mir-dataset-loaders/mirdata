@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: black on soundata
+      - name: black on mirdata
         uses: psf/black@stable
         with:
             options: "--check --verbose"
-            src: "soundata"
+            src: "mirdata"
       - name: black on tests
         uses: psf/black@stable
         with:
