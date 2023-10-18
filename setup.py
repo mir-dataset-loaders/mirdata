@@ -33,7 +33,7 @@ if __name__ == "__main__":
         install_requires=[
             "tqdm",
             "librosa >= 0.8.0",
-            "numpy>=1.16",
+            "numpy>=1.16, <=1.20",
             "jams",
             "requests",
             "pretty_midi >= 0.2.8",
