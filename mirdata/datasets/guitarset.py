@@ -169,21 +169,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_hex_cln_path = self.get_path("audio_hex_cln")
         self.audio_hex_path = self.get_path("audio_hex")
@@ -237,7 +224,7 @@ class Track(core.Track):
             [
                 0 if contour_data is None else len(contour_data.times)
                 for contour_data in contours
-            ],
+            ]
         )  # type: ignore
         times = contours[max_times].times  # type: ignore
         frequency_list: List[list] = [[] for _ in times]
@@ -529,51 +516,34 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @deprecated(
-        reason="Use mirdata.datasets.guitarset.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.guitarset.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.guitarset.load_multitrack_audio",
-        version="0.3.4",
+        reason="Use mirdata.datasets.guitarset.load_multitrack_audio", version="0.3.4"
     )
     def load_multitrack_audio(self, *args, **kwargs):
         return load_multitrack_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.guitarset.load_beats",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.guitarset.load_beats", version="0.3.4")
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.guitarset.load_chords",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.guitarset.load_chords", version="0.3.4")
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.guitarset.load_key_mode",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.guitarset.load_key_mode", version="0.3.4")
     def load_key_mode(self, *args, **kwargs):
         return load_key_mode(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.guitarset.load_pitch_contour",
-        version="0.3.4",
+        reason="Use mirdata.datasets.guitarset.load_pitch_contour", version="0.3.4"
     )
     def load_pitch_contour(self, *args, **kwargs):
         return load_pitch_contour(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.guitarset.load_notes",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.guitarset.load_notes", version="0.3.4")
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

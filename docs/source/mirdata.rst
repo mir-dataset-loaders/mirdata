@@ -21,6 +21,14 @@ acousticbrainz_genre
    :inherited-members:
 
 
+baf
+^^^
+
+.. automodule:: mirdata.datasets.baf
+   :members:
+   :inherited-members:
+   
+
 beatles
 ^^^^^^^
 

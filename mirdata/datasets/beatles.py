@@ -86,21 +86,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.beats_path = self.get_path("beat")
         self.chords_path = self.get_path("chords")
@@ -310,30 +297,18 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @deprecated(
-        reason="Use mirdata.datasets.beatles.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.beatles.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.beatles.load_beats",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.beatles.load_beats", version="0.3.4")
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.beatles.load_chords",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.beatles.load_chords", version="0.3.4")
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.beatles.load_sections",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.beatles.load_sections", version="0.3.4")
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)

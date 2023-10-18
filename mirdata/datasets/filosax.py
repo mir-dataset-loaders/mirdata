@@ -281,7 +281,6 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
-
         super().__init__(
             track_id,
             data_home,
@@ -321,9 +320,7 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-        )
+        return jams_utils.jams_converter(audio_path=self.audio_path)
 
 
 class MultiTrack(core.MultiTrack):

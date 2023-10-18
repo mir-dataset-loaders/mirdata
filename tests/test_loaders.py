@@ -14,6 +14,10 @@ DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
     "cante100": "008",
+    "compmusic_carnatic_rhythm": "10003",
+    "compmusic_carnatic_varnam": "dharini_abhogi",
+    "compmusic_hindustani_rhythm": "20001",
+    "compmusic_indian_tonic": "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180",
     "compmusic_jingju_acappella": "lseh-Tan_Yang_jia-Hong_yang_dong-qm",
     "compmusic_otmm_makam": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
     "giantsteps_key": "3",
@@ -223,7 +227,6 @@ def test_load_and_trackids():
         trackid_len = len(track_ids)
         # if the dataset has tracks, test the loaders
         if dataset._track_class is not None:
-
             try:
                 choice_track = dataset.choice_track()
             except:
@@ -249,9 +252,7 @@ def test_load_and_trackids():
 
 
 def test_track():
-
     for dataset_name in DATASETS:
-
         dataset = mirdata.initialize(
             dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
         )
@@ -366,6 +367,12 @@ EXCEPTIONS = {
         "load_chords": {"leadsheet_version": False},
     },
     "tonas": {"load_f0": {"corrected": True}},
+    "compmusic_carnatic_varnam": {
+        "load_notation": {
+            "taala_path": "a/fake/path",
+            "structure_path": "a/fake/path",
+        },
+    },
 }
 SKIP = {
     "acousticbrainz_genre": [
@@ -379,7 +386,8 @@ SKIP = {
         "load_lastfm_validation",
         "load_discogs_train",
         "load_discogs_validation",
-    ]
+    ],
+    "baf": ["load_matches"],
 }
 
 
@@ -423,7 +431,6 @@ def test_multitracks():
     data_home_dir = "tests/resources/mir_datasets"
 
     for dataset_name in DATASETS:
-
         dataset = mirdata.initialize(
             dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
         )

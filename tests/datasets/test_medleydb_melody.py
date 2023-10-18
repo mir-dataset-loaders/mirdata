@@ -53,7 +53,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = "tests/resources/mir_datasets/medleydb_melody"
     dataset = medleydb_melody.Dataset(data_home)
     track = dataset.track("MusicDelta_Beethoven")
@@ -119,11 +118,7 @@ def test_load_melody3():
         [990.107, 997.608, 497.138],
     ]
 
-    assert melody_data.confidence_list == [
-        [1.0],
-        [1.0, 1.0, 1.0],
-        [1.0, 1.0, 1.0],
-    ]
+    assert melody_data.confidence_list == [[1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
 
 
 def test_load_metadata():

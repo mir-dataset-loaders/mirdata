@@ -75,7 +75,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = "tests/resources/mir_datasets/vocadito"
     default_trackid = "1"
     dataset = vocadito.Dataset(data_home)

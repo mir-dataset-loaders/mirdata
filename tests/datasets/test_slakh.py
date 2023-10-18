@@ -157,7 +157,6 @@ def test_load_tracks():
 
 
 def test_to_jams():
-
     default_trackid = "Track00001-S00"
     data_home = "tests/resources/mir_datasets/slakh"
     dataset = slakh.Dataset(data_home, version="test")
@@ -269,7 +268,6 @@ def test_multitrack():
 
 
 def test_multitrack_to_jams():
-
     default_mtrackid = "Track00001"
     data_home = "tests/resources/mir_datasets/slakh"
     dataset = slakh.Dataset(data_home, version="test")

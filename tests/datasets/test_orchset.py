@@ -58,7 +58,6 @@ def test_track():
 
 
 def test_to_jams():
-
     data_home = "tests/resources/mir_datasets/orchset"
     dataset = orchset.Dataset(data_home)
     track = dataset.track("Beethoven-S3-I-ex1")
