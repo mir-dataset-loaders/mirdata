@@ -14,7 +14,7 @@
     The files of this dataset are shared with the following license:
     Creative Commons Attribution Non Commercial Share Alike 4.0 International
 
-    Dataset compiled by: TBA
+    Dataset compiled by: Genís Plaja-Roglans, Thomas Nuttall, Lara Pearson, Xavier Serra, and Marius Miron.
 
     For more information about Saraga Carnatic please refer to https://mtg.github.io/saraga/.
 
@@ -31,7 +31,18 @@ from smart_open import open
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
-BIBTEX = None
+BIBTEX = """
+@article{Plaja-Roglans-2023,
+  author = {Plaja-Roglans, Gen{\'\i}s and Nuttall, Thomas and Pearson, Lara and Serra, Xavier and Miron, Marius},
+  doi = {10.5334/tismir.137},
+  journal = {Transactions of the International Society for Music Information Retrieval},
+  keyword = {en_US},
+  month = {Jun},
+  title = {Repertoire-Specific Vocal Pitch Data Generation for Improved Melodic Analysis of Carnatic Music},
+  year = {2023}
+}
+"""
+
 
 INDEXES = {
     "default": "1.0",
