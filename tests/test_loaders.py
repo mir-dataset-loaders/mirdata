@@ -14,8 +14,14 @@ DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
     "cante100": "008",
+    "compmusic_carnatic_rhythm": "10003",
+    "compmusic_carnatic_varnam": "dharini_abhogi",
+    "compmusic_hindustani_rhythm": "20001",
+    "compmusic_indian_tonic": "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180",
     "compmusic_jingju_acappella": "lseh-Tan_Yang_jia-Hong_yang_dong-qm",
     "compmusic_otmm_makam": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
+    "compmusic_raga": "Aruna_Sairam.Valli_Kanavan",
+    "four_way_tabla": "AHK_solo-tintal-1",
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
     "da_tacos": "coveranalysis#W_163992#P_547131",
@@ -34,7 +40,7 @@ CUSTOM_TEST_TRACKS = {
     "openmic2018": "000046_3840",
     "salami": "2",
     "saraga_carnatic": "116_Bhuvini_Dasudane",
-    "saraga_hindustani": "59_Bairagi",
+    "saraga_hindustani": "50_Irani_Bhairavi_Thumri",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
     "dagstuhl_choirset": "DCS_LI_QuartetB_Take04_B2",
     "tonas": "01-D_AMairena",
@@ -224,7 +230,6 @@ def test_load_and_trackids():
         trackid_len = len(track_ids)
         # if the dataset has tracks, test the loaders
         if dataset._track_class is not None:
-
             try:
                 choice_track = dataset.choice_track()
             except:
@@ -250,11 +255,11 @@ def test_load_and_trackids():
 
 
 def test_track():
-
     for dataset_name in DATASETS:
-
         dataset = mirdata.initialize(
-            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+            dataset_name,
+            os.path.normpath(os.path.join(TEST_DATA_HOME, dataset_name)),
+            version="test",
         )
 
         # if the dataset doesn't have a track object, make sure it raises a value error
@@ -367,6 +372,12 @@ EXCEPTIONS = {
         "load_chords": {"leadsheet_version": False},
     },
     "tonas": {"load_f0": {"corrected": True}},
+    "compmusic_carnatic_varnam": {
+        "load_notation": {
+            "taala_path": "a/fake/path",
+            "structure_path": "a/fake/path",
+        },
+    },
 }
 SKIP = {
     "acousticbrainz_genre": [
@@ -380,7 +391,8 @@ SKIP = {
         "load_lastfm_validation",
         "load_discogs_train",
         "load_discogs_validation",
-    ]
+    ],
+    "baf": ["load_matches"],
 }
 
 
@@ -424,7 +436,6 @@ def test_multitracks():
     data_home_dir = "tests/resources/mir_datasets"
 
     for dataset_name in DATASETS:
-
         dataset = mirdata.initialize(
             dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
         )

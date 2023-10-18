@@ -112,21 +112,8 @@ class Track(core.Track):
         salami_metadata (dict): Metadata of the Salami LAB file
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_path = self.get_path("audio")
         self.salami_path = self.get_path("salami")
@@ -330,7 +317,6 @@ def load_named_sections(fpath: str):
 
 
 def _load_sections(fpath: str, section_type: str):
-
     timed_sections = _parse_timed_sections(fpath)
     assert timed_sections is not None
 
@@ -517,30 +503,20 @@ class Dataset(core.Dataset):
             }
         return metadata_index
 
-    @deprecated(
-        reason="Use mirdata.datasets.billboard.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.billboard.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.billboard.load_sections",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.billboard.load_sections", version="0.3.4")
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.billboard.load_named_sections",
-        version="0.3.4",
+        reason="Use mirdata.datasets.billboard.load_named_sections", version="0.3.4"
     )
     def load_named_sections(self, *args, **kwargs):
         return load_named_sections(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.billboard.load_chords",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.billboard.load_chords", version="0.3.4")
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)

@@ -100,7 +100,6 @@ Key
 ^^^
 Musical key. This can be defined globally for an audio file or as a sequence of events.
 
-
 .. _lyrics:
 
 Lyrics
@@ -108,6 +107,21 @@ Lyrics
 Lyrics corresponding to the singing voice of the audio. These may be raw text with no time information,
 or they may be time-aligned events. They may have varying levels of granularity (paragraph, line, word,
 phoneme, character) depending on the dataset.
+
+.. _matches:
+
+Matches
+^^^^^^^
+Music identifications in a query audio. This term is used in Audio Fingerprinting to refer to
+identifications of music from a reference database. Matches include information about which reference
+audio has been identified and the start and end times of the query match.
+
+.. _meter:
+
+Meter
+^^^^^
+Rhythmic meter for each measure. A classical example of meter in Western music would be 4/4. Details how
+many subdivisions and the length of this subdivisions that we do have per each measure.
 
 .. _melody:
 
@@ -147,6 +161,13 @@ Sections
 Musical sections, which may be "flat" or "hierarchical", typically encoded by a sequence of
 timestamps indicating musical section boundary times. Section annotations sometimes also
 include labels for sections, which may indicate repetitions and/or the section type (e.g. Chorus, Verse).
+
+.. _segments:
+
+Segments
+^^^^^^^^
+Segments of particular musical events, e.g. segments of note stability, segments of particular melodic 
+event, and many more.
 
 .. _technique:
 

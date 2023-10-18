@@ -97,21 +97,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         # Annotation paths
         self.pitch_path = self.get_path("pitch")
@@ -189,7 +176,6 @@ def load_mb_tags(fhandle: TextIO) -> dict:
         Dict: metadata of the track
 
     """
-
     return json.load(fhandle)
 
 
@@ -214,7 +200,7 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(
-            self.data_home,
+            os.path.normpath(self.data_home),
             "MTG-otmm_makam_recognition_dataset-f14c0d0",
             "annotations.json",
         )
@@ -233,22 +219,20 @@ class Dataset(core.Dataset):
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        temp = metadata_path.split("/")[-2]
-        data_home = metadata_path.split(temp)[0]
+        temp = os.path.split(metadata_path)[-2]
+        data_home = os.path.split(temp)[0]
         metadata["data_home"] = data_home
 
         return metadata
 
     @deprecated(
-        reason="Use mirdata.datasets.compmusic_otmm_makam.load_pitch",
-        version="0.3.4",
+        reason="Use mirdata.datasets.compmusic_otmm_makam.load_pitch", version="0.3.4"
     )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.compmusic_otmm_makam.load_mb_tags",
-        version="0.3.4",
+        reason="Use mirdata.datasets.compmusic_otmm_makam.load_mb_tags", version="0.3.4"
     )
     def load_mb_tags(self, *args, **kwargs):
         return load_mb_tags(*args, **kwargs)

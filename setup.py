@@ -31,8 +31,9 @@ if __name__ == "__main__":
         keywords="mir dataset loader audio",
         license="BSD-3-Clause",
         install_requires=[
+            "black == 22.8.0",  # last version for python3.6
             "tqdm",
-            "librosa >= 0.8.0",
+            "librosa >= 0.9.2",
             "numpy>=1.16",
             "jams",
             "requests",
@@ -66,7 +67,9 @@ if __name__ == "__main__":
                 "sphinxcontrib-napoleon",
                 "sphinx_rtd_theme",
             ],
+            "compmusic_hindustani_rhythm": ["openpyxl==3.0.7"],
             "dali": ["dali-dataset==1.1"],
+            "compmusic_carnatic_rhythm": ["openpyxl==3.0.7"],
             "haydn_op20": ["music21==6.7.1"],
             "gcs": ["smart_open[gcs]"],
             "s3": ["smart_open[s3]"],

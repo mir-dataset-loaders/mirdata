@@ -127,21 +127,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.f0_path = self.get_path("f0")
         self.notes_path = self.get_path("notes")
@@ -380,23 +367,14 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @deprecated(
-        reason="Use mirdata.datasets.tonas.load_audio",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.tonas.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.tonas.load_f0",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.tonas.load_f0", version="0.3.4")
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.tonas.load_notes",
-        version="0.3.4",
-    )
+    @deprecated(reason="Use mirdata.datasets.tonas.load_notes", version="0.3.4")
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

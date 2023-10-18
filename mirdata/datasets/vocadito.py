@@ -48,7 +48,7 @@ REMOTES = {
         filename="Vocadito.zip",
         url="https://zenodo.org/record/5578807/files/vocadito.zip?download=1",
         checksum="dea40fd18f14d899643c4ba221b33a46",
-    ),
+    )
 }
 
 LICENSE_INFO = "Creative Commons Attribution 4.0 International"
@@ -78,21 +78,8 @@ class Track(core.Track):
         notes_a2 (NoteData): human-annotated notes by annotator A2
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.f0_path = self.get_path("f0")
         self.lyrics_path = self.get_path("lyrics")

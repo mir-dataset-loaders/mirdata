@@ -47,7 +47,7 @@ REMOTES = {
         filename="medleydb-pitch-pyin-notes.zip",
         url="https://zenodo.org/record/4728793/files/medleydb-pitch-pyin-notes.zip?download=1",
         checksum="464af0c8db7b6e70d87f833eb551a8fb",
-    ),
+    )
 }
 DOWNLOAD_INFO = """
     To download this dataset, visit:
@@ -87,21 +87,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.pitch_path = self.get_path("pitch")
         self.notes_pyin_path = self.get_path("notes_pyin")
@@ -262,22 +249,19 @@ class Dataset(core.Dataset):
         return metadata
 
     @deprecated(
-        reason="Use mirdata.datasets.medleydb_pitch.load_audio",
-        version="0.3.4",
+        reason="Use mirdata.datasets.medleydb_pitch.load_audio", version="0.3.4"
     )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.medleydb_pitch.load_pitch",
-        version="0.3.4",
+        reason="Use mirdata.datasets.medleydb_pitch.load_pitch", version="0.3.4"
     )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.medleydb_pitch.load_notes",
-        version="0.3.4",
+        reason="Use mirdata.datasets.medleydb_pitch.load_notes", version="0.3.4"
     )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

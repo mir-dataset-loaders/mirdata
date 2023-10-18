@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import tinysol
@@ -6,14 +7,16 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "Fl-ord-C4-mf-N-T14d"
-    data_home = "tests/resources/mir_datasets/tinysol"
+    data_home = os.path.normpath("tests/resources/mir_datasets/tinysol")
     dataset = tinysol.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "Fl-ord-C4-mf-N-T14d",
-        "audio_path": "tests/resources/mir_datasets/tinysol/"
-        + "audio/Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tinysol/"),
+            "audio/Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav",
+        ),
         "dynamics": "mf",
         "fold": 0,
         "family": "Winds",
@@ -30,9 +33,7 @@ def test_track():
         "split": 0,
     }
 
-    expected_property_types = {
-        "audio": tuple,
-    }
+    expected_property_types = {"audio": tuple}
 
     run_track_tests(track, expected_attributes, expected_property_types)
 

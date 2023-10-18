@@ -1,4 +1,14 @@
-import music21
+import logging
+import os
+
+try:
+    import music21
+except ImportError:
+    logging.error(
+        "In order to test haydn_op20 you must have music21 installed. "
+        "Please reinstall mirdata using `pip install 'mirdata[haydn_op20] and re-run the tests."
+    )
+    raise ImportError
 
 from mirdata.annotations import KeyData, ChordData
 from mirdata.datasets import haydn_op20
@@ -9,12 +19,15 @@ import numpy as np
 
 def test_track():
     default_trackid = "0"
-    data_home = "tests/resources/mir_datasets/haydn_op20"
+    data_home = os.path.normpath("tests/resources/mir_datasets/haydn_op20")
     dataset = haydn_op20.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "humdrum_annotated_path": "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm",
+        "humdrum_annotated_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/haydn_op20/"),
+            "op20n1-01.hrm",
+        ),
         "title": "op20n1-01",
         "track_id": "0",
     }
@@ -33,19 +46,17 @@ def test_track():
 
 
 def test_to_jam():
-    data_home = "tests/resources/mir_datasets/haydn_op20"
+    data_home = os.path.normpath("tests/resources/mir_datasets/haydn_op20")
     dataset = haydn_op20.Dataset(data_home)
     track = dataset.track("0")
     jam = track.to_jams()
     assert jam["file_metadata"]["title"] == "op20n1-01", "title does not match expected"
     assert jam["file_metadata"]["duration"] == 644, "duration does not match expected"
-    assert (
-        jam["sandbox"]["humdrum_annotated_path"]
-        == "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
+    assert jam["sandbox"]["humdrum_annotated_path"] == os.path.join(
+        os.path.normpath("tests/resources/mir_datasets/haydn_op20/"), "op20n1-01.hrm"
     ), "duration does not match expected"
-    assert (
-        jam["sandbox"]["midi_path"]
-        == "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
+    assert jam["sandbox"]["midi_path"] == os.path.join(
+        os.path.normpath("tests/resources/mir_datasets/haydn_op20/"), "op20n1-01.midi"
     ), "duration does not match expected"
     assert isinstance(jam["sandbox"]["chords_music21"], list)
     assert jam["sandbox"]["chords_music21"][0]["time"] == 0

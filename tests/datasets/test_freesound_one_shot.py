@@ -1,9 +1,12 @@
+import os
 import numpy as np
 
 from tests.test_utils import run_track_tests
 from mirdata.datasets import freesound_one_shot_percussive_sounds
 
-TEST_DATA_HOME = "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds"
+TEST_DATA_HOME = os.path.normpath(
+    "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds"
+)
 
 
 def test_track():
@@ -12,10 +15,18 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/"
-        + "one_shot_percussive_sounds/1/183.wav",
-        "file_metadata_path": "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/"
-        + "analysis/1/183_analysis.json",
+        "audio_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/"
+            ),
+            "one_shot_percussive_sounds/1/183.wav",
+        ),
+        "file_metadata_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/"
+            ),
+            "analysis/1/183_analysis.json",
+        ),
         "track_id": "183",
     }
 

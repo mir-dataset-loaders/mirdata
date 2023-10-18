@@ -146,21 +146,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_path = self.get_path("audio")
 
@@ -219,10 +206,7 @@ class Track(core.Track):
                 (self.phoneme, "phoneme"),
                 (self.syllable, "syllable"),
             ],
-            metadata={
-                "work": self.work,
-                "details": self.details,
-            },
+            metadata={"work": self.work, "details": self.details},
         )
 
 
@@ -281,7 +265,6 @@ def load_phrases(fhandle: TextIO) -> annotations.LyricData:
     start_times = []
     end_times = []
     lyrics = []
-
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start_times.append(float(line[0]))
@@ -308,7 +291,6 @@ def load_syllable(fhandle: TextIO) -> annotations.LyricData:
     start_times = []
     end_times = []
     events = []
-
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start_times.append(float(line[0]))
@@ -341,8 +323,7 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path_laosheng = os.path.join(
-            self.data_home,
-            "catalogue - laosheng.csv",
+            self.data_home, "catalogue - laosheng.csv"
         )
         # metadata_path_dan = os.path.join(
         #     self.data_home,
@@ -351,7 +332,7 @@ class Dataset(core.Dataset):
 
         metadata = {}
         try:
-            with open(metadata_path_laosheng, "r") as fhandle:
+            with open(metadata_path_laosheng, "r", encoding="utf-8") as fhandle:
                 reader = csv.reader(fhandle, delimiter=",")
                 next(reader)
                 for line in reader:
@@ -369,22 +350,19 @@ class Dataset(core.Dataset):
         return metadata
 
     @deprecated(
-        reason="Use mirdata.datasets.jingju_acapella.load_phonemes",
-        version="0.3.4",
+        reason="Use mirdata.datasets.jingju_acapella.load_phonemes", version="0.3.4"
     )
     def load_phonemes(self, *args, **kwargs):
         return load_phonemes(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.jingju_acapella.load_phrases",
-        version="0.3.4",
+        reason="Use mirdata.datasets.jingju_acapella.load_phrases", version="0.3.4"
     )
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.jingju_acapella.load_syllable",
-        version="0.3.4",
+        reason="Use mirdata.datasets.jingju_acapella.load_syllable", version="0.3.4"
     )
     def load_syllable(self, *args, **kwargs):
         return load_syllable(*args, **kwargs)
