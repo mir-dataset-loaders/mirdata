@@ -37,6 +37,7 @@ import librosa
 import numpy as np
 import xml.etree.ElementTree as ET
 
+from deprecated.sphinx import deprecated
 from typing import BinaryIO, Tuple, Optional
 from mirdata import download_utils, jams_utils, core, io
 from smart_open import open
@@ -62,21 +63,22 @@ REMOTES = {
     "full_dataset": download_utils.RemoteFileMetadata(
         filename="IDMT-SMT-AUDIO-EFFECTS.zip",
         url="https://zenodo.org/record/7544032/files/IDMT-SMT-AUDIO-EFFECTS.zip?download=1",
-        checksum="91e845a1b347352993ebd5ba948d5a7c",
-        destination_dir=".",
+        checksum="91e845a1b347352993ebd5ba948d5a7c",  # the md5 checksum
+        destination_dir=".",  # relative path for where to unzip the data, or None
         unpack_directories=[""],
     ),
 }
 
-DOWNLOAD_INFO = """ 
-            "Bass monophon2",
-            "Bass monophon",
-            "Gitarre monophon",
-            "Gitarre monophon2",
-            "Gitarre polyphon",
-            "Gitarre polyphon2",
-            "Gitarre_polyphon2","""
-
+DOWNLOAD_INFO = """
+        This loader will create the following folders in the dataset data_home path:
+            > idmt_smt_audio_effects/
+                > Bass monophon/
+                > Bass monophon2/
+                > Gitarre monophon/
+                > Gitarre monophon2/
+                > Gitarre polyphon/
+                > Gitarre polyphon2/
+"""
 
 LICENSE_INFO = """
 Creative Commons BY-NC-ND 4.0.
@@ -85,10 +87,12 @@ https://creativecommons.org/licenses/by-nc-nd/4.0/
 
 
 class Track(core.Track):
-    """IDMT-SMT-AUDIO-EFFECTS track class
+    """IDMT-SMT-Audio-Effects track class
 
     Args:
         track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored.
+            If `None`, looks for the data in the default directory, `~/mir_datasets/idmt_smt_audio_effects`
 
     Attributes:
         audio_path (str): path to audio file
@@ -100,10 +104,6 @@ class Track(core.Track):
         fx_group (int): effect group number
         fx_type (int): effect type number
         fx_setting (int): effect setting number
-
-
-    Cached Properties:
-        annotation (EventData): a description of this annotation
 
     """
 
@@ -141,6 +141,7 @@ class Track(core.Track):
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
+
         Returns:
             * np.ndarray - audio signal
             * float - sample rate
@@ -149,8 +150,10 @@ class Track(core.Track):
 
     def to_jams(self):
         """Get the track's data in jams format
+
         Returns:
             jams.JAMS: the track's data in jams format
+
         """
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
@@ -158,9 +161,9 @@ class Track(core.Track):
         )
 
 
-@io.coerce_to_bytes_io
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load an The IDMT-SMT-Audio Effect track
+    """Load a IDMT-SMT-Audio Effect track
     Args:
         fhandle (str or file-like): File-like object or path to audio file
     Returns:
@@ -206,7 +209,13 @@ class Dataset(core.Dataset):
             for file in files:
                 if file.endswith(".xml"):
                     xml_path = os.path.join(root, file)
-                    tree = ET.parse(xml_path)
+                    try:
+                        tree = ET.parse(xml_path)
+                    except FileNotFoundError:
+                        raise FileNotFoundError(
+                            "Metadata file not found. Did you run .download()?"
+                            "IDMT-SMT-Audio-Effects metadata expected at {}".format()
+                        )
                     root_xml = tree.getroot()
                     listID = root_xml.find("listinformation/listID").text
                     for audiofile in root_xml.findall("audiofile"):
@@ -226,3 +235,9 @@ class Dataset(core.Dataset):
                             "fx_setting": int(fxsetting),
                         }
         return metadata_index
+
+    @deprecated(
+        reason="Use mirdata.datasets.idmt_smt_audio_effects.load_audio", version="0.3.4"
+    )
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
