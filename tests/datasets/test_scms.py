@@ -1,3 +1,4 @@
+import pytest
 import numpy as np
 
 from mirdata.datasets import scms
@@ -122,3 +123,7 @@ def test_load_metadata():
         "gender": "female",
         "train": True,
     }
+    with pytest.raises(FileNotFoundError):
+        data_home = "a/fake/path"
+        dataset = scms.Dataset(data_home)
+        metadata = dataset._artists_to_track_mapping
