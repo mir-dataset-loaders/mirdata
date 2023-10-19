@@ -121,7 +121,7 @@ class Track(core.Track):
         return load_pitch(self.pitch_path)
 
     @core.cached_property
-    def activations(self) -> Optional[annotations.NoteData]:
+    def activations(self) -> Optional[annotations.EventData]:
         return load_activations(self.activations_path)
 
     @property
