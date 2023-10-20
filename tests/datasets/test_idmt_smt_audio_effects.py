@@ -4,11 +4,12 @@ from tests.test_utils import run_track_tests
 
 from mirdata.datasets import idmt_smt_audio_effects
 
+TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/idmt_smt_audio_effects")
+
 
 def test_track():
     default_trackid = "G73-45200-3341-33944"
-    data_home = os.path.normpath("tests/resources/mir_datasets/idmt_smt_audio_effects")
-    dataset = idmt_smt_audio_effects.Dataset(data_home, version="test")
+    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -43,10 +44,12 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "G73-45200-3341-33944"
-    data_home = os.path.normpath("tests/resources/mir_datasets/idmt_smt_audio_effects")
-    dataset = idmt_smt_audio_effects.Dataset(data_home, version="test")
+    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME)
     track = dataset.track(default_trackid)
     jam = track.to_jams()
+
+    # Validate idmt_smt_audio_effects jam schema
+    assert jam.validate()
 
     assert jam["sandbox"]["fx_group"] == 3
     assert jam["sandbox"]["fx_setting"] == 1
@@ -55,8 +58,7 @@ def test_to_jams():
 
 
 def test_metadata():
-    data_home = os.path.normpath("tests/resources/mir_datasets/idmt_smt_audio_effects")
-    dataset = idmt_smt_audio_effects.Dataset(data_home, version="test")
+    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME)
     metadata = dataset._metadata
     track_metadata = metadata["G73-45200-3341-33944"]
     assert track_metadata["fx_group"] == 3

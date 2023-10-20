@@ -214,7 +214,7 @@ class Dataset(core.Dataset):
                     except FileNotFoundError:
                         raise FileNotFoundError(
                             "Metadata file not found. Did you run .download()?"
-                            "IDMT-SMT-Audio-Effects metadata expected at {}".format()
+                            "IDMT-SMT-Audio-Effects metadata is distributed across multiple files."
                         )
                     root_xml = tree.getroot()
                     listID = root_xml.find("listinformation/listID").text
