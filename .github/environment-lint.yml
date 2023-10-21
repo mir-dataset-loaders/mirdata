@@ -19,3 +19,4 @@ dependencies:
 
   - pip:
     - jams>=0.3.4
+    - types-Deprecated
