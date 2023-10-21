@@ -89,11 +89,6 @@ https://creativecommons.org/licenses/by-nc-nd/4.0/
 class Track(core.Track):
     """IDMT-SMT-Audio-Effects track class
 
-    Args:
-        track_id (str): track id of the track
-        data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/idmt_smt_audio_effects`
-
     Attributes:
         audio_path (str): path to audio file
         annotation_path (str): path to annotation file
@@ -115,7 +110,14 @@ class Track(core.Track):
             index,
             metadata,
         )
-
+        """
+        Args:
+            track_id (str): track id of the track
+            data_home (str): Local path where the dataset is stored. If `None`, looks for the data in the default directory, `~/mir_datasets/idmt_smt_audio_effects`
+            dataset_name (str): Name of the dataset.
+            index (Dict): Index dictionary.
+            metadata (Dict): Metadata dictionary.
+        """
         self.audio_path = self.get_path("audio")
 
     @property
@@ -146,7 +148,12 @@ class Track(core.Track):
             * np.ndarray - audio signal
             * float - sample rate
         """
-        return load_audio(self.audio_path)
+        try:
+            return load_audio(self.audio_path)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                f"Audio file {self.audio_path} not found. Did you run .download?"
+            )
 
     def to_jams(self):
         """Get the track's data in jams format
@@ -163,9 +170,12 @@ class Track(core.Track):
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load a IDMT-SMT-Audio Effect track
+    """
+    Load a IDMT-SMT-Audio Effect track
+
     Args:
-        fhandle (str or file-like): File-like object or path to audio file
+        fhandle (Union[str, BinaryIO]): Path to audio file or file-like object.
+
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
@@ -176,7 +186,11 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The IDMT-SMT-Audio Effect dataset
+    The IDMT-SMT-Audio Effect dataset.
+
+    Attributes:
+        data_home (str): Directory where the dataset is located or will be downloaded.
+        version (str): Dataset version. Default is "default".
     """
 
     def __init__(self, data_home=None, version="default"):
@@ -194,7 +208,17 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_index = {
+        """
+        Returns:
+            dict: A dictionary containing metadata information parsed from XML files.
+
+        Raises:
+            FileNotFoundError: If metadata file not found.
+            ValueError: If there's an error parsing the XML file.
+            Exception: For unexpected errors during processing.
+        """
+        metadata = dict()
+        metadata = {
             "fileID": {
                 "list_id": str,
                 "instrument": str,
@@ -210,14 +234,25 @@ class Dataset(core.Dataset):
                 if file.endswith(".xml"):
                     xml_path = os.path.join(root, file)
                     try:
-                        tree = ET.parse(xml_path)
+                        with open(xml_path, "r") as fhandle:
+                            tree = ET.parse(fhandle)
                     except FileNotFoundError:
                         raise FileNotFoundError(
-                            "Metadata file not found. Did you run .download()?"
+                            "Metadata file {xml_file} not found. Did you run .download()?"
                             "IDMT-SMT-Audio-Effects metadata is distributed across multiple files."
                         )
+                    except ET.ParseError:
+                        raise ValueError(
+                            f"Error parsing XML file {xml_path}. The file may be corrupted."
+                        )
+                    except Exception as e:
+                        raise Exception(
+                            f"An unexpected error occurred while processing {xml_path}. Error: {str(e)}"
+                        )
+
                     root_xml = tree.getroot()
                     listID = root_xml.find("listinformation/listID").text
+
                     for audiofile in root_xml.findall("audiofile"):
                         name = audiofile.find("fileID").text
                         instrument = audiofile.find("instrument").text
@@ -226,7 +261,7 @@ class Dataset(core.Dataset):
                         fxtype = audiofile.find("fxtype").text
                         fxsetting = audiofile.find("fxsetting").text
 
-                        metadata_index[name] = {
+                        metadata[name] = {
                             "list_id": listID,
                             "instrument": instrument,
                             "midi_nr": int(midinr),
@@ -234,7 +269,7 @@ class Dataset(core.Dataset):
                             "fx_type": int(fxtype),
                             "fx_setting": int(fxsetting),
                         }
-        return metadata_index
+        return metadata
 
     @deprecated(
         reason="Use mirdata.datasets.idmt_smt_audio_effects.load_audio", version="0.3.4"
