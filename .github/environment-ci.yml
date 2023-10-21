@@ -17,7 +17,6 @@ dependencies:
   - h5py >= 2.10.0
   - smart_open >= 5.0.0
   - Deprecated >= 1.2.13
-  - music21
   - openpyxl
 
   # optional, but required for testing
@@ -35,3 +34,4 @@ dependencies:
     - jams>=0.3.4
     - testcontainers>=3.7.1
     - dali-dataset>=1.0
+    - music21 >= 6.7.1
