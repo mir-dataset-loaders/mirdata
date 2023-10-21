@@ -15,7 +15,7 @@ dependencies:
   - pyyaml
   - scipy
   - h5py == 2.10.0
-  - smart_open >= 5.0.0
+  - smart_open[all] >= 5.0.0
   - Deprecated >= 1.2.13
   - openpyxl
 
