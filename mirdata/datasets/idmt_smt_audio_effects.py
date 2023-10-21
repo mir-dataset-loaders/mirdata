@@ -42,7 +42,8 @@ from typing import BinaryIO, Tuple, Optional
 from mirdata import download_utils, jams_utils, core, io
 from smart_open import open
 
-BIBTEX = """ @dataset{stein_michael_2023_7544032,
+BIBTEX = """
+@dataset{stein_michael_2023_7544032,
   author       = {Stein, Michael},
   title        = {IDMT-SMT-Audio-Effects Dataset},
   month        = jan,
@@ -51,7 +52,8 @@ BIBTEX = """ @dataset{stein_michael_2023_7544032,
   version      = {1.0.0},
   doi          = {10.5281/zenodo.7544032},
   url          = {https://doi.org/10.5281/zenodo.7544032}
-}"""
+}
+"""
 
 INDEXES = {
     "default": "1.0",
@@ -87,19 +89,24 @@ https://creativecommons.org/licenses/by-nc-nd/4.0/
 
 
 class Track(core.Track):
-    """IDMT-SMT-Audio-Effects track class
+    """IDMT-SMT-Audio-Effects track class.
+
+    Args:
+        track_id (str): track id of the track.
+        data_home (str): Local path where the dataset is stored.
+        dataset_name (str): Name of the dataset.
+        index (Dict): Index dictionary.
+        metadata (Dict): Metadata dictionary.
 
     Attributes:
-        audio_path (str): path to audio file
-        annotation_path (str): path to annotation file
-        instrument (str): instrument used to record the track
-        midi_nr (int): midi number of the note
-        string (int): string number of the note
-        fret (int): fret number of the note
-        fx_group (int): effect group number
-        fx_type (int): effect type number
-        fx_setting (int): effect setting number
+        audio_path (str): path to audio file.
 
+    Cached Properties:
+        instrument (str): instrument used to record the track.
+        midi_nr (int): midi number of the note.
+        fx_group (int): effect group number.
+        fx_type (int): effect type number.
+        fx_setting (int): effect setting number.
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -170,8 +177,7 @@ class Track(core.Track):
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """
-    Load a IDMT-SMT-Audio Effect track
+    """Load a IDMT-SMT-Audio Effect track.
 
     Args:
         fhandle (Union[str, BinaryIO]): Path to audio file or file-like object.
@@ -185,12 +191,20 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """
-    The IDMT-SMT-Audio Effect dataset.
+    """The IDMT-SMT-Audio Effect dataset.
 
-    Attributes:
+    Args:
         data_home (str): Directory where the dataset is located or will be downloaded.
         version (str): Dataset version. Default is "default".
+
+    Attributes:
+        name (str): Name of the dataset.
+        track_class (Type[core.Track]): Track type.
+        bibtex (str): BibTeX citation.
+        indexes (Dict[str, core.Index]): Available versions.
+        remotes (Dict[str, download_utils.RemoteFileMetadata]): Data to be downloaded.
+        download_info (str): Instructions for downloading the dataset.
+        license_info (str): Dataset license.
     """
 
     def __init__(self, data_home=None, version="default"):
@@ -208,7 +222,8 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        """
+        """Return a dictionary containing metadata information parsed from XML files.
+
         Returns:
             dict: A dictionary containing metadata information parsed from XML files.
 
@@ -270,9 +285,3 @@ class Dataset(core.Dataset):
                             "fx_setting": int(fxsetting),
                         }
         return metadata
-
-    @deprecated(
-        reason="Use mirdata.datasets.idmt_smt_audio_effects.load_audio", version="0.3.4"
-    )
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
