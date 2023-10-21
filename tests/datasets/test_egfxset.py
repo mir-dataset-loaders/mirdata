@@ -41,7 +41,10 @@ def test_track():
     }
 
     assert track._track_paths == {
-        "audio": [os.path.normpath("TapeEcho/Bridge/2-0.wav"), "bf9041e98fbc3c1145583d1601ab2d7b"]
+        "audio": [
+            os.path.normpath("TapeEcho/Bridge/2-0.wav"),
+            "bf9041e98fbc3c1145583d1601ab2d7b",
+        ]
     }
 
     assert track.note_name == ["B3"]
@@ -80,7 +83,10 @@ def test_track():
     }
 
     assert track._track_paths == {
-        "audio": [os.path.normpath("Clean/Middle/6-22.wav"), "93c580d88d65400804f5c8f88f715ec1"]
+        "audio": [
+            os.path.normpath("Clean/Middle/6-22.wav"),
+            "93c580d88d65400804f5c8f88f715ec1",
+        ]
     }
 
     assert track.note_name == ["D4"]
