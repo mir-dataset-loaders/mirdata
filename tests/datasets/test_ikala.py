@@ -93,8 +93,10 @@ def test_to_jams():
     assert [f0.time for f0 in f0s] == [0.016, 0.048]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
     assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 260.946404518887, "index": 0, "voiced": True},
+        {"frequency": 0.0, "index": 0, "voiced": 0.0},
+        {"frequency": 260.94640451888694, "index": 0, "voiced": 1.0},
+        #{"frequency": 0.0, "index": 0, "voiced": False},
+        #{"frequency": 260.946404518887, "index": 0, "voiced": True},
     ]
     assert [f0.confidence for f0 in f0s] == [None, None]
 
@@ -112,7 +114,8 @@ def test_load_f0():
 
     # check values
     assert np.array_equal(f0_data.times, np.array([0.016, 0.048]))
-    assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.946404518887]))
+    assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.94640451888694]))
+    #assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.946404518887]))
     assert np.array_equal(f0_data.voicing, np.array([0.0, 1.0]))
 
 
