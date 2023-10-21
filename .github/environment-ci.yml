@@ -17,6 +17,10 @@ dependencies:
   - h5py >= 2.10.0
   - smart_open >= 5.0.0
   - Deprecated >= 1.2.13
+  - pretty_midi
+  - DALI
+  - music21
+  - openpyxl
 
   # optional, but required for testing
   - pytest>=7.2.0

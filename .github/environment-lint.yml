@@ -15,6 +15,7 @@ dependencies:
   - requests>=2.31.0
   - tqdm>=4.65.0
   - types-decorator>=5.1.8.3
+  - deprecated
 
   - pip:
     - jams>=0.3.4
