@@ -34,7 +34,7 @@ if __name__ == "__main__":
             "black == 22.8.0",  # last version for python3.6
             "tqdm",
             "librosa >= 0.9.2",
-            "numpy>=1.16",
+            "numpy>=1.16, <=1.20",
             "jams",
             "requests",
             "pretty_midi >= 0.2.8",
