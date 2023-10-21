@@ -6,3 +6,5 @@ librosa>=0.7.0
 tqdm
 sphinx==4.2.0
 Deprecated>=1.2.13
+numpy
+sphinx-rtd-theme
