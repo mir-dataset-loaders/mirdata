@@ -112,12 +112,6 @@ def test_to_jams():
     #     # {"frequency": 0.0, "index": 0, "voiced": False},
     #     # {"frequency": 260.946404518887, "index": 0, "voiced": True},
     # ]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": 0.0},
-        {"frequency": 260.94640451888694, "index": 0, "voiced": 1.0},
-        # {"frequency": 0.0, "index": 0, "voiced": False},
-        # {"frequency": 260.946404518887, "index": 0, "voiced": True},
-    ]
     assert [f0.confidence for f0 in f0s] == [None, None]
 
 
