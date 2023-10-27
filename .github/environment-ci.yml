@@ -1,42 +1,41 @@
-name: mirdata-dev-py310
+name: mirdata-dev
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - python==3.10
   # required
   - pip
-  - librosa #>=0.10.0
-  - numpy #>= 1.21.6
-  - pandas #>=1.3.5
-  - requests #>=2.31.0
-  - tqdm #>=4.65.0
-  - chardet
-  - pyyaml
-  - scipy
-  - h5py #== 2.10.0
-  - Deprecated #>= 1.2.13
-  - openpyxl
+  - librosa>=0.10.1
+  - numpy>=1.21.6
+  - pandas>=1.3.5
+  - requests>=2.31.0
+  - tqdm>=4.66.1
+  - chardet>=5.2.0
+  - pyyaml>=6.0.1
+  - scipy>=1.7.3
+  - h5py>=3.8.0 #== 2.10.0
+  - Deprecated>=1.2.14
+  - openpyxl>=3.1.2
   #######
   - libvorbis
 
   # optional, but required for testing
-  - pytest #>=7.2.0
-  - pytest-pep8 #>=1.0.6
-  - pytest-cov #>=4.1.0
-  - pytest-mock #>=3.10.0
-  - pytest-localserver #>=0.7.1
-  - pytest-xdist #>=2.3.0
+  - pytest>=7.4.3
+  - pytest-pep8>=1.0.6
+  - pytest-cov>=4.1.0
+  - pytest-mock>=3.11.1
+  - pytest-localserver>=0.8.1
+  - pytest-xdist>=3.3.1
 
   - pip:
-    - black #>=23.3.0
-    - coveralls #>=3.3.1
-    - future #>=0.18.3
-    - jams #>=0.3.4
-    - testcontainers #>=3.7.1
-    - dali-dataset #>=1.0
-    - music21 #== 6.7.1
-    - smart_open[all] #>= 5.0.0
-    - attrs
-    - decorator
-    - pretty_midi # >=0.2.10
+    - black>=23.3.0
+    - coveralls>=3.3.1
+    - future>=0.18.3
+    - jams>=0.3.4
+    - testcontainers>=3.7.1
+    - dali-dataset>=1.1
+    - music21>7.3.3
+    - smart_open[all]>=6.4.0
+    - attrs>=23.1.0
+    - decorator>=5.1.1
+    - pretty_midi>=0.2.10
