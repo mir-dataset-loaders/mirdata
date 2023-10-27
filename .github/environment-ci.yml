@@ -5,37 +5,37 @@ channels:
 dependencies:
   # required
   - pip
-  - librosa>=0.10.1
-  - numpy>=1.24.4
-  - pandas>=2.1.1
-  - requests>=2.31.0
-  - tqdm>=4.66.1
-  - chardet>=5.2.0
-  - pyyaml>=6.0.1
-  - scipy>=1.11.3
-  - h5py>=3.10.0
-  - Deprecated>=1.2.14
-  - openpyxl>=3.1.2
+  - librosa #>=0.10.1
+  - numpy #>=1.24.4
+  - pandas #>=2.1.1
+  - requests #>=2.31.0
+  - tqdm #>=4.66.1
+  - chardet #>=5.2.0
+  - pyyaml #>=6.0.1
+  - scipy #>=1.11.3
+  - h5py #>=3.10.0
+  - Deprecated #>=1.2.14
+  - openpyxl #>=3.1.2
   #######
   - libvorbis
 
   # optional, but required for testing
-  - pytest>=7.4.2
-  - pytest-pep8>=1.0.6
-  - pytest-cov>=4.1.0
-  - pytest-mock>=3.12.0
-  - pytest-localserver>=0.8.1
-  - pytest-xdist>=3.3.1
+  - pytest #>=7.4.2
+  - pytest-pep8 #>=1.0.6
+  - pytest-cov #>=4.1.0
+  - pytest-mock #>=3.12.0
+  - pytest-localserver #>=0.8.1
+  - pytest-xdist #>=3.3.1
 
   - pip:
-    - black>=23.10.0
-    - coveralls>=3.3.1
-    - future>=0.18.3
-    - jams>=0.3.4
-    - testcontainers>=3.7.1
-    - dali-dataset>=1.1
-    - music21>=9.0.1
-    - smart_open[all]>=6.4.0
-    - attrs>=23.1.0
-    - decorator>=5.1.1
-    - pretty_midi>=0.2.10
+    - black #>=23.10.0
+    - coveralls #>=3.3.1
+    - future #>=0.18.3
+    - jams #>=0.3.4
+    - testcontainers #>=3.7.1
+    - dali-dataset #>=1.1
+    - music21 #>=9.0.1
+    - smart_open[all] #>=6.4.0
+    - attrs #>=23.1.0
+    - decorator #>=5.1.1
+    - pretty_midi #>=0.2.10
