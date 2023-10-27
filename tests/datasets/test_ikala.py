@@ -125,7 +125,6 @@ def test_load_f0():
     assert type(f0_data.frequencies) == np.ndarray
     assert f0_data.frequencies[0] == 0.0
     assert math.isclose(f0_data.frequencies[1], 260.94640451888694, rel_tol=1e-12)
-    # assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.946404518887]))
     assert np.array_equal(f0_data.voicing, np.array([0.0, 1.0]))
 
 
