@@ -21,7 +21,7 @@ def test_track():
 
     expected_attributes = {
         "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/baf/queries/"),
+            os.path.normpath("tests/resources/mir_datasets/baf/queries"),
             TRACK_ID + ".wav",
         ),
         "track_id": TRACK_ID,

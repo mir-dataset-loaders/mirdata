@@ -1,4 +1,5 @@
 import os
+import math
 import numpy as np
 
 from mirdata.datasets import ikala
@@ -92,10 +93,19 @@ def test_to_jams():
     f0s = jam.search(namespace="pitch_contour")[0]["data"]
     assert [f0.time for f0 in f0s] == [0.016, 0.048]
     assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 260.946404518887, "index": 0, "voiced": True},
+    expected_f0s = [
+        {"frequency": 0.0, "index": 0, "voiced": 0.0},
+        {"frequency": 260.94640451888694, "index": 0, "voiced": 1.0},
     ]
+    for i, f0 in enumerate(f0s):
+        assert "frequency" in f0.value
+        assert "index" in f0.value
+        assert "voiced" in f0.value
+        assert math.isclose(
+            f0.value["frequency"], expected_f0s[i]["frequency"], rel_tol=1e-12
+        )
+        assert f0.value["index"] == expected_f0s[i]["index"]
+        assert f0.value["voiced"] == expected_f0s[i]["voiced"]
     assert [f0.confidence for f0 in f0s] == [None, None]
 
 
@@ -112,7 +122,9 @@ def test_load_f0():
 
     # check values
     assert np.array_equal(f0_data.times, np.array([0.016, 0.048]))
-    assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.946404518887]))
+    assert type(f0_data.frequencies) == np.ndarray
+    assert f0_data.frequencies[0] == 0.0
+    assert math.isclose(f0_data.frequencies[1], 260.94640451888694, rel_tol=1e-12)
     assert np.array_equal(f0_data.voicing, np.array([0.0, 1.0]))
 
 
