@@ -157,7 +157,7 @@ def _split_score_annotations(fhandle: TextIO):
     score = music21.converter.parse(fhandle.name, format="humdrum")
 
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
-    score.remove(rna, recurse=True)
+    score.remove(list(rna.values()), recurse=True)
     rna_clean = [(offset, rn) for offset, rn in rna.items() if rn]
     return score, rna_clean
 
