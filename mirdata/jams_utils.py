@@ -1,6 +1,7 @@
 """Utilities for converting mirdata Annotation classes to jams format.
 """
 import logging
+import os
 
 import jams
 import librosa
@@ -86,13 +87,9 @@ def jams_converter(
                 "mirdata does not currently support conversion of remote mp3 files to jams format"
             )
 
-        try:
-            with open(audio_path, "rb") as fhandle:
-                duration = librosa.get_duration(filename=fhandle)
-        # for local mp3s only
-        except TypeError:
-            duration = librosa.get_duration(filename=audio_path)
-        except FileNotFoundError:
+        if os.path.exists(audio_path):
+            duration = librosa.get_duration(path=audio_path)
+        else:
             raise FileNotFoundError(
                 "jams conversion failed because the audio file "
                 + "for this track cannot be found, and it is required "

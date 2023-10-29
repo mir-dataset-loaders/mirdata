@@ -39,13 +39,30 @@ To install ``mirdata`` for development purposes:
 
 
 We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
-and install all ``mirdata`` requirements. You will want to install the latest versions of Python 3.6 and 3.7.
-Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the pytest
-plugins to automatically test your code successfully. Finally, run:
+and install all ``mirdata`` requirements. You will want to install the latest supported Python versions (see README.md).
+Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the necessary pytest
+plugins to automatically test your code successfully (e.g. `pytest-cov`). Finally, run:
+
+Before running the tests, make sure to have formatted ``mirdata/`` and ``tests/`` with ``black``.
 
 .. code-block:: bash
 
-    pytest tests/ --local
+    black mirdata/ tests/
+
+
+Also, make sure that they pass flake8 and mypy tests specified in lint-python.yml github action workflow.
+
+.. code-block:: bash
+
+    flake8 mirdata --count --select=E9,F63,F7,F82 --show-source --statistics
+    python -m mypy mirdata --ignore-missing-imports --allow-subclassing-any
+
+
+Finally, run:
+
+.. code-block:: bash
+
+    pytest -vv --cov-report term-missing --cov-report=xml --cov=mirdata --black tests/ --local
 
 
 All tests should pass!
@@ -324,11 +341,26 @@ To finish your contribution, include tests that check the integrity of your load
 Running your tests locally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Before creating a PR, you should run all the tests locally like this:
+Before creating a PR, you should run all the tests. But before that, make sure to have formatted ``mirdata/`` and ``tests/`` with ``black``.
 
-::
+.. code-block:: bash
 
-    pytest tests/ --local
+    black mirdata/ tests/
+
+
+Also, make sure that they pass flake8 and mypy tests specified in lint-python.yml github action workflow.
+
+.. code-block:: bash
+
+    flake8 mirdata --count --select=E9,F63,F7,F82 --show-source --statistics
+    python -m mypy mirdata --ignore-missing-imports --allow-subclassing-any
+
+
+Finally, run all the tests locally like this:
+
+.. code-block:: bash
+
+    pytest -vv --cov-report term-missing --cov-report=xml --cov=mirdata --black tests/ --local
 
 
 The `--local` flag skips tests that are built to run only on the remote testing environment.
@@ -353,14 +385,8 @@ statments, which is useful here for seeing the download progress bar when testin
 This tests that your dataset downloads, validates, and loads properly for every track. This test takes a long time 
 for some datasets, but it's important to ensure the integrity of the library.
 
-We've added one extra convenience flag for this test, for getting the tests running when the download is very slow:
-
-::
-
-    pytest -s tests/test_full_dataset.py --local --dataset my_dataset --skip-download
-
-
-which will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually all pass without this flag.
+The ``--skip-download`` flag can be added to ``pytest`` command to run the tests skipping the download.
+This will skip the downloading step. Note that this is just for convenience during debugging - the tests should eventually all pass without this flag.
 
 
 .. _reducing_test_space:
@@ -369,7 +395,7 @@ Reducing the testing space usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We are trying to keep the test resources folder size as small as possible, because it can get really heavy as new loaders are added. We
-kindly ask the contributors to reduce the size of the testing data if possible (e.g. trimming the audio tracks, keeping just two rows for
+kindly ask the contributors to **reduce the size of the testing data** if possible (e.g. trimming the audio tracks, keeping just two rows for
 csv files).
 
 
@@ -435,14 +461,28 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
 
 ::
 
-    black --target-version py38 mirdata/ tests/
+    black mirdata/ tests/
 
-2. the test coverage is too low -- this means that there are too many new lines of code introduced that are not tested.
 
-3. the docs build has failed -- this means that one of the changes you made to the documentation has caused the build to fail. 
+2. Your code does not pass ``flake8`` test.
+
+::
+
+    flake8 mirdata --count --select=E9,F63,F7,F82 --show-source --statistics
+
+
+3. Your code does not pass ``mypy`` test.
+
+::
+
+    python -m mypy mirdata --ignore-missing-imports --allow-subclassing-any
+
+4. the test coverage is too low -- this means that there are too many new lines of code introduced that are not tested.
+
+5. the docs build has failed -- this means that one of the changes you made to the documentation has caused the build to fail. 
    Check the formatting in your changes and make sure they are consistent.
 
-4. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing. 
+6. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing. 
    If they are passing locally but failing in the check, open an `issue` and we can help debug.
 
 
