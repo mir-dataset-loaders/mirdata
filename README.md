@@ -1,7 +1,9 @@
 # mirdata
 common loaders for Music Information Retrieval (MIR) datasets. Find the API documentation [here](https://mirdata.readthedocs.io/).
 
-[![CircleCI](https://circleci.com/gh/mir-dataset-loaders/mirdata.svg?style=svg)](https://circleci.com/gh/mir-dataset-loaders/mirdata)
+![CI status](https://github.com/mirdata/mirdata/actions/workflows/ci.yml/badge.svg)
+![Formatting status](https://github.com/mirdata/mirdata/actions/workflows/formatting.yml/badge.svg)
+![Linting status](https://github.com/mirdata/mirdata/actions/workflows/lint-python.yml/badge.svg)
 [![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
 [![Documentation Status](https://readthedocs.org/projects/mirdata/badge/?version=latest)](https://mirdata.readthedocs.io/en/latest/?badge=latest)
 ![GitHub](https://img.shields.io/github/license/mir-dataset-loaders/mirdata.svg)
@@ -73,8 +75,7 @@ in International Society for Music Information Retrieval (ISMIR) Conference, 201
 }
 ```
 
-When working with datasets, please cite the version of `mirdata` that you are using (given by the `DOI` above) **AND** include the reference of the dataset,
-which can be found in the respective dataset loader using the `cite()` method. 
+When working with datasets, please cite the version of `mirdata` that you are using (given by the `DOI` above) **AND** include the reference of the dataset, which can be found in the respective dataset loader using the `cite()` method. 
 
 ### Contributing a new dataset loader
 
