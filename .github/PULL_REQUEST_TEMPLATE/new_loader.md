@@ -11,7 +11,7 @@ Please include the following information at the top level docstring for the data
 - [ ] Mention the origin of the dataset (e.g. creator, institution)
 - [ ] Describe the type of music included in the dataset
 - [ ] Indicate any relevant papers related to the dataset
-- [ ] Include a description about how the data can be accessed and the license it uses (if applicable)
+- [ ] Include a description about how the data can be accessed and the license it uses (if applicable) 
 
 #### Dataset loaders checklist:
 
