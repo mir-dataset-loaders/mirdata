@@ -146,12 +146,24 @@ def test_validate_index(test_index, expected_missing, expected_inv_checksum):
     "missing_files,invalid_checksums",
     [
         (
-            {"tracks": {"10161_chorus": ["tests/resources/10162_chorus.wav"]}},
+            {
+                "tracks": {
+                    "10161_chorus": [
+                        os.path.normpath("tests/resources/10162_chorus.wav")
+                    ]
+                }
+            },
             {"tracks": {}},
         ),
         (
             {"tracks": {}},
-            {"tracks": {"10161_chorus": ["tests/resources/10161_chorus.wav"]}},
+            {
+                "tracks": {
+                    "10161_chorus": [
+                        os.path.normpath("tests/resources/10161_chorus.wav")
+                    ]
+                }
+            },
         ),
         ({"tracks": {}}, {"tracks": {}}),
     ],

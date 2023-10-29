@@ -46,7 +46,7 @@ CUSTOM_TEST_TRACKS = {
     "tonas": "01-D_AMairena",
 }
 
-TEST_DATA_HOME = "tests/resources/mir_datasets"
+TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets")
 
 
 def test_dataset_attributes():
@@ -433,7 +433,7 @@ CUSTOM_TEST_MTRACKS = {}
 
 
 def test_multitracks():
-    data_home_dir = "tests/resources/mir_datasets"
+    data_home_dir = os.path.normpath("tests/resources/mir_datasets")
 
     for dataset_name in DATASETS:
         dataset = mirdata.initialize(
