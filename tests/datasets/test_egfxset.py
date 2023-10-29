@@ -13,7 +13,7 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "track_id": "TapeEcho_Bridge/2-0",
+        "track_id": os.path.normpath("TapeEcho_Bridge/2-0"),
         "audio_path": os.path.normpath(
             "tests/resources/mir_datasets/egfxset/TapeEcho/Bridge/2-0.wav"
         ),
@@ -41,7 +41,10 @@ def test_track():
     }
 
     assert track._track_paths == {
-        "audio": ["TapeEcho/Bridge/2-0.wav", "bf9041e98fbc3c1145583d1601ab2d7b"]
+        "audio": [
+            os.path.normpath("TapeEcho/Bridge/2-0.wav"),
+            "bf9041e98fbc3c1145583d1601ab2d7b",
+        ]
     }
 
     assert track.note_name == ["B3"]
@@ -59,7 +62,7 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "track_id": "Clean_Middle/6-22",
+        "track_id": os.path.normpath("Clean_Middle/6-22"),
         "audio_path": os.path.normpath(
             "tests/resources/mir_datasets/egfxset/Clean/Middle/6-22.wav"
         ),
@@ -80,7 +83,10 @@ def test_track():
     }
 
     assert track._track_paths == {
-        "audio": ["Clean/Middle/6-22.wav", "93c580d88d65400804f5c8f88f715ec1"]
+        "audio": [
+            os.path.normpath("Clean/Middle/6-22.wav"),
+            "93c580d88d65400804f5c8f88f715ec1",
+        ]
     }
 
     assert track.note_name == ["D4"]
@@ -100,7 +106,7 @@ def test_to_jams():
     dataset = egfxset.Dataset(data_home, version="test")
 
     # Case with a TapeEcho track
-    track = dataset.track("TapeEcho_Bridge/2-0")
+    track = dataset.track(os.path.normpath("TapeEcho_Bridge/2-0"))
     jam = track.to_jams()
 
     assert jam["sandbox"]["String-fret Tuple"] == [2, 0]
@@ -129,7 +135,7 @@ def test_to_jams():
     assert jam["sandbox"]["Setting"] == ["tape echo", "120 bpm", 0.6, 0.5, 0.5, 0.5]
 
     # Case with a Clean track
-    track = dataset.track("Clean_Middle/6-22")
+    track = dataset.track(os.path.normpath("Clean_Middle/6-22"))
     jam = track.to_jams()
 
     assert jam["sandbox"]["String-fret Tuple"] == [6, 22]
