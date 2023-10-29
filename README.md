@@ -1,5 +1,5 @@
 # mirdata
-common loaders for Music Information Retrieval (MIR) datasets. Find the API documentation [here](https://mirdata.readthedocs.io/).
+Common loaders for Music Information Retrieval (MIR) datasets. Find the API documentation [here](https://mirdata.readthedocs.io/).
 
 ![CI status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/ci.yml/badge.svg)
 ![Formatting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/formatting.yml/badge.svg)
