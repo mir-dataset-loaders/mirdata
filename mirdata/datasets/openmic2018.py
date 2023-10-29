@@ -252,8 +252,8 @@ class Track(core.Track):
 
         with open(self.vggish_path, "r") as fd:
             data = json.load(fd)
-            times = np.asarray(data["time_points"])
-            vgg = np.asarray(data["features"])
+            times = np.asarray(data["time_points"], dtype=object)
+            vgg = np.asarray(data["features"], dtype=object)
             return times, vgg
 
     # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
