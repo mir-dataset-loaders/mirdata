@@ -244,18 +244,17 @@ class Dataset(core.Dataset):
             }
         }
 
+        xml_files_count = 0
+
         for root, dirs, files in os.walk(self.data_home):
             for file in files:
                 if file.endswith(".xml"):
+                    xml_files_count += 1
                     xml_path = os.path.join(root, file)
                     try:
                         with open(xml_path, "r") as fhandle:
                             tree = ET.parse(fhandle)
-                    except FileNotFoundError:
-                        raise FileNotFoundError(
-                            "Metadata file {xml_file} not found. Did you run .download()?"
-                            "IDMT-SMT-Audio-Effects metadata is distributed across multiple files."
-                        )
+
                     except ET.ParseError:
                         raise ValueError(
                             f"Error parsing XML file {xml_path}. The file may be corrupted."
@@ -284,4 +283,9 @@ class Dataset(core.Dataset):
                             "fx_type": int(fxtype),
                             "fx_setting": int(fxsetting),
                         }
+
+        if xml_files_count == 0:
+            raise FileNotFoundError(
+                f"No XML files found in {self.data_home}. Did you run .download?"
+            )
         return metadata

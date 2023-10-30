@@ -77,6 +77,8 @@ def test_metadata():
     # Test for FileNotFoundError
     with pytest.raises(FileNotFoundError):
         dataset = idmt_smt_audio_effects.Dataset(fake_data_home)
+        if hasattr(dataset, "_metadata"):
+            del dataset._metadata
         metadata = dataset._metadata
 
     # Test for ParseError
@@ -92,4 +94,3 @@ def test_metadata():
 
     # Clean up after the test by removing the corrupted XML
     os.remove(os.path.join(corrupted_data_home, "corrupted.xml"))
-    
