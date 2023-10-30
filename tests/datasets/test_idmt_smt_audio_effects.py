@@ -68,9 +68,28 @@ def test_metadata():
     assert track_metadata["instrument"] == "G"
     assert track_metadata["midi_nr"] == 45
 
+    fake_data_home = os.path.join(TEST_DATA_HOME, "fake_directory")
+
+    # Ensure the directory exists (but it should not have any XML inside!)
+    if not os.path.exists(fake_data_home):
+        os.makedirs(fake_data_home)
+
     # Test for FileNotFoundError
     with pytest.raises(FileNotFoundError):
-        dataset = idmt_smt_audio_effects.Dataset("a/wrong/path")
+        dataset = idmt_smt_audio_effects.Dataset(fake_data_home)
         metadata = dataset._metadata
 
+    # Test for ParseError
+    corrupted_data_home = os.path.join(TEST_DATA_HOME)
+
+    # Create a fake corrupted XML file
+    with open(os.path.join(corrupted_data_home, "corrupted.xml"), "w") as f:
+        f.write("<root><corrupted>")
+
+    dataset = idmt_smt_audio_effects.Dataset(corrupted_data_home)
+    with pytest.raises(ValueError):
+        metadata = dataset._metadata
+
+    # Clean up after the test by removing the corrupted XML
+    os.remove(os.path.join(corrupted_data_home, "corrupted.xml"))
     
