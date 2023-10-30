@@ -3,12 +3,15 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The "Can I Play It?" (CIPI) dataset is a novel resource created to help determine the difficulty of piano
-    scores. It fills a crucial gap by providing a collection of piano scores with difficulty levels verified by
-    an expert pianist. It matches public scores with ratings from the reputable Henle Verlag and checks everything
-    to ensure accuracy by an expert pianist. CIPI is easy for computers to read, making it perfect for music
-    researchers and educators. We've shared the entire dataset and the embeddings of the multiple dimensions of
-    difficulty to encourage further innovation and collaboration in music education and research.
+    The "Can I Play It?" (CIPI) dataset is a specialized collection of 652 classical piano scores, provided in a
+    machine-readable MusicXML format and accompanied by integer-based difficulty levels ranging from 1 to 9, as
+    verified by expert pianists. Developed by the Music Technology Group in Barcelona, this dataset focuses
+    exclusively on classical piano music, offering a rich resource for music researchers, educators, and students.
+
+    The CIPI dataset facilitates various applications such as the study of musical complexity, the selection of
+    appropriately leveled pieces for students, and general research in music education. The dataset, alongside
+    embeddings of multiple dimensions of difficulty, has been made publicly available to encourage ongoing innovation
+    and collaboration within the music education and research communities.
 """
 import json
 import logging
@@ -17,7 +20,6 @@ import pickle
 from typing import Optional, TextIO, List
 
 from deprecated.sphinx import deprecated
-import numpy as np
 
 from mirdata import core, io, jams_utils, download_utils
 
