@@ -1,4 +1,6 @@
 import os
+import pytest
+import xml.etree.ElementTree as ET
 
 from tests.test_utils import run_track_tests
 
@@ -65,3 +67,10 @@ def test_metadata():
     assert track_metadata["fx_setting"] == 1
     assert track_metadata["instrument"] == "G"
     assert track_metadata["midi_nr"] == 45
+
+    # Test for FileNotFoundError
+    with pytest.raises(FileNotFoundError):
+        dataset = idmt_smt_audio_effects.Dataset("a/wrong/path")
+        metadata = dataset._metadata
+
+    
