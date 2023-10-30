@@ -56,6 +56,18 @@ LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
 
+DOWNLOAD_INFO = """
+    Unfortunately the files of the CIPI dataset are available
+    for download upon request. After requesting the dataset, you will receive a
+    link to download the dataset. You must download scores.zip, embeddings.zip and index.json
+    copy the files into the folder:
+        > cipi/
+            > index.json
+            > embeddings.zip
+            > scores.zip
+    unzip embedding.zip and scores.zip and copy the CIPI folder to {}
+"""
+
 
 class Track(core.Track):
     """Can I play it? (CIPI) track class
@@ -116,7 +128,10 @@ class Track(core.Track):
 
     @core.cached_property
     def fingering(self) -> tuple:
-        return _load_embedding(self.get_path("rh_fingering")), _load_embedding(self.get_path("lh_fingering"))
+        return (
+            _load_embedding(self.get_path("rh_fingering")),
+            _load_embedding(self.get_path("lh_fingering")),
+        )
 
     @core.cached_property
     def expressiviness(self) -> list[list]:
@@ -146,8 +161,6 @@ class Track(core.Track):
         )
 
 
-
-
 def _load_embedding(fpath):
     """Get the track's data in jams format
 
@@ -158,10 +171,9 @@ def _load_embedding(fpath):
         jams.JAMS: the track's data in jams format
 
     """
-    with open(fpath, 'rb') as f:
+    with open(fpath, "rb") as f:
         embedding = pickle.load(f)
     return embedding
-
 
 
 def load_score(fhandle: TextIO):
@@ -175,9 +187,6 @@ def load_score(fhandle: TextIO):
     """
     score = music21.converter.parse(fhandle.name)
     return score
-
-
-
 
 
 @deprecated(
@@ -215,6 +224,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             indexes=INDEXES,
             license_info=LICENSE_INFO,
+            download_info=DOWNLOAD_INFO,
         )
 
     @core.cached_property

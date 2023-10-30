@@ -69,13 +69,7 @@ def test_load_matches():
     assert type(matches.tag_unit) == str
 
     intervals_list = deque(
-        [
-            [40.44, 59.936],
-            [40.0, 40.44],
-            [0.0, 33.0],
-            [33.0, 34.49],
-            [34.49, 34.61],
-        ]
+        [[40.44, 59.936], [40.0, 40.44], [0.0, 33.0], [33.0, 34.49], [34.49, 34.61],]
     )
     intervals = np.array(intervals_list, dtype=float)
     interval_unit = "s"

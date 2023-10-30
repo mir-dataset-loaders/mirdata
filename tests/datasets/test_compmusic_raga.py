@@ -199,18 +199,10 @@ def test_load_pitch():
 
     # Check values
     assert np.array_equal(
-        parsed_pitch.times,
-        np.array([0.0000000, 0.0044444, 0.0088889]),
+        parsed_pitch.times, np.array([0.0000000, 0.0044444, 0.0088889]),
     )
     assert np.array_equal(
-        parsed_pitch.frequencies,
-        np.array(
-            [
-                290.2945557,
-                0.0000000,
-                290.2945557,
-            ]
-        ),
+        parsed_pitch.frequencies, np.array([290.2945557, 0.0000000, 290.2945557,]),
     )
     assert np.array_equal(parsed_pitch.voicing, np.array([1.0, 0.0, 1.0]))
 
@@ -244,24 +236,12 @@ def test_load_segments():
     # Check values
     assert np.array_equal(
         parsed_nyas.intervals,
-        np.array(
-            [
-                [2.16887, 2.62664],
-                [3.04886, 3.43552],
-                [5.19106, 5.50217],
-            ]
-        ),
+        np.array([[2.16887, 2.62664], [3.04886, 3.43552], [5.19106, 5.50217],]),
     )
     assert parsed_nyas.events == ["nyas", "nyas", "nyas"]
     assert np.array_equal(
         parsed_tani.intervals,
-        np.array(
-            [
-                [2.16887, 2.62664],
-                [3.04886, 3.43552],
-                [5.19106, 5.50217],
-            ]
-        ),
+        np.array([[2.16887, 2.62664], [3.04886, 3.43552], [5.19106, 5.50217],]),
     )
     assert parsed_tani.events == ["tani", "tani", "tani"]
 
