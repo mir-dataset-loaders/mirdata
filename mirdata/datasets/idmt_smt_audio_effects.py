@@ -259,10 +259,6 @@ class Dataset(core.Dataset):
                         raise ValueError(
                             f"Error parsing XML file {xml_path}. The file may be corrupted."
                         )
-                    except Exception as e:
-                        raise Exception(
-                            f"An unexpected error occurred while processing {xml_path}. Error: {str(e)}"
-                        )
 
                     root_xml = tree.getroot()
                     listID = root_xml.find("listinformation/listID").text
