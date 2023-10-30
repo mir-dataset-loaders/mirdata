@@ -284,16 +284,16 @@
     * - IDMT-SMT-Audio Effects
       - - audio: ✅
         - annotations: ✅
-      - - global :ref: `instrument`
-        - global :ref: `midi_nr`
-        - global :ref: `string`
-        - global :ref: `fret`
-        - global :ref: `fx_group`
-        - global :ref: `fx_type`
-        - global :ref: `fx_setting`
-      - 55044
-      - .. image:: https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png
-            :target: https://creativecommons.org/licenses/by-nc-nd/4.0/
+      - - :ref:`instrument`
+       - :ref:`midi_nr`
+       - :ref:`string`
+       - :ref:`fret`
+       - :ref:`fx_group`
+       - :ref:`fx_type`
+       - :ref:`fx_setting`
+     - 55044
+     - .. image:: https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-nd/4.0/
             
    * - IRMAS
      - - audio: ✅

@@ -129,23 +129,23 @@ class Track(core.Track):
 
     @property
     def instrument(self):
-        return self._track_metadata.get("instrument")
+        return self._track_metadata["instrument"]
 
     @property
     def midi_nr(self):
-        return self._track_metadata.get("midi_nr")
+        return self._track_metadata["midi_nr"]
 
     @property
     def fx_group(self):
-        return self._track_metadata.get("fx_group")
+        return self._track_metadata["fx_group"]
 
     @property
     def fx_type(self):
-        return self._track_metadata.get("fx_type")
+        return self._track_metadata["fx_type"]
 
     @property
     def fx_setting(self):
-        return self._track_metadata.get("fx_setting")
+        return self._track_metadata["fx_setting"]
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
