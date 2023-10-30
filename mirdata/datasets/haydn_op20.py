@@ -88,6 +88,15 @@ class Track(core.Track):
         self.title = os.path.splitext(self._track_paths["annotations"][0])[0]
 
     @core.cached_property
+    def _metadata(self):
+        data = self._track_metadata()
+        return
+
+    @core.cached_property
+    def _metadata(self):
+        return self._track_metadata()
+
+    @core.cached_property
     def score(self) -> music21.stream.Score:
         return load_score(self.humdrum_annotated_path)
 
