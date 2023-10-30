@@ -284,13 +284,9 @@
    * - IDMT-SMT-Audio Effects
      - - audio: ✅
        - annotations: ✅
-     - - :ref:`instrument`
-       - :ref:`midi_nr`
-       - :ref:`string`
-       - :ref:`fret`
-       - :ref:`fx_group`
-       - :ref:`fx_type`
-       - :ref:`fx_setting`
+     - - instrument :ref:`instruments`
+       - midi nr :ref:`notes`
+       - metadata :ref:`fx`
      - 55044
      - .. image:: https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-nd/4.0/

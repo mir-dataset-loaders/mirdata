@@ -222,7 +222,7 @@ haydn_op20
 idmt_smt_audio_effects
 ^^^^^^^^^^^^^^^^^^^^^^
 
-..automodule:: mirdata.datasets.idmt_smt_audio_effects
+.. automodule:: mirdata.datasets.idmt_smt_audio_effects
    :members:
    :inherited-members:
 
