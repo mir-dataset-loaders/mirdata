@@ -98,7 +98,7 @@ dataset which is necessary for the loading and validating functionalities of ``m
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
 1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
-2. Then run the script on the the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index_<version>.json``.
+2. Then run the script on the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index_<version>.json``.
    where <version> indicates which version of the dataset was used (e.g. 1.0).
 
 
@@ -380,7 +380,7 @@ Finally, there is one local test you should run, which we can't easily run in ou
 
 
 Where ``dataset`` is the name of the module of the dataset you added. The ``-s`` tells pytest not to skip print
-statments, which is useful here for seeing the download progress bar when testing the download function.
+statements, which is useful here for seeing the download progress bar when testing the download function.
 
 This tests that your dataset downloads, validates, and loads properly for every track. This test takes a long time
 for some datasets, but it's important to ensure the integrity of the library.
@@ -447,7 +447,7 @@ Docs
 ^^^^
 
 Staged docs for every new PR are built, and you can look at them by clicking on the "readthedocs" test in a PR.
-To quickly troubleshoot any issues, you can build the docs locally by nagivating to the ``docs`` folder, and running
+To quickly troubleshoot any issues, you can build the docs locally by navigating to the ``docs`` folder, and running
 ``make html`` (note, you must have ``sphinx`` installed). Then open the generated ``_build/source/index.html``
 file in your web browser to view.
 
@@ -515,12 +515,12 @@ In general, if the new library will be useful for many future datasets, we will 
 dependency. If it is specific to one dataset, we will add it as an optional dependency.
 
 To add an optional dependency, add the dataset name as a key in `extras_require` in setup.py,
-and list any additional dependencies. Additionally, mock the dependecies in docs/conf.py
+and list any additional dependencies. Additionally, mock the dependencies in docs/conf.py
 by adding it to the `autodoc_mock_imports` list.
 
 When importing these optional dependencies in the dataset
 module, use a try/except clause and log instructions if the user hasn't installed the extra
-requriements.
+requirements.
 
 For example, if a module called `example_dataset` requires a module called `asdf`,
 it should be imported as follows:
