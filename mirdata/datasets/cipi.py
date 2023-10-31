@@ -85,9 +85,9 @@ class Track(core.Track):
         difficulty annotation (str): annotated difficulty
 
     Cached Properties:
-        Fingering (tuple): fingering features from technique dimension computed with ArGNN fingering model. Return of two elements the embeddings of the right hand and the ones of the left hand.
-        Expressiviness (list): expressiviness features from sound dimension computed with virtuosoNet model.
-        Notes (list): note features from notation dimension.
+        Fingering path (str): Path of fingering features from technique dimension computed with ArGNN fingering model. Return of two paths, embeddings of the right hand and the ones of the left hand. Use torch.load(...) for loading the embeddings.
+        Expressiviness path (str): Path of expressiviness features from sound dimension computed with virtuosoNet model.Use torch.load(...) for loading the embeddings.
+        Notes path (str): Path of note features from notation dimension. Use torch.load(...) for loading the embeddings.
         scores (list[music21.stream.Score]): music21 scores. If the work is splited in several movements the list will contain multiple scores.
     """
 
@@ -111,12 +111,8 @@ class Track(core.Track):
         return self._track_metadata.get("composer")
 
     @property
-    def track_id(self) -> str:
-        return self._track_metadata.get("track_id")
-
-    @property
     def musicxml_paths(self) -> List[str]:
-        return list(self._track_metadata.get("musicxml_paths").values())
+        return list(self._track_metadata.get("path").values())
 
     @property
     def difficulty_annotation(self) -> str:
@@ -129,17 +125,17 @@ class Track(core.Track):
     @core.cached_property
     def fingering(self) -> tuple:
         return (
-            _load_embedding(self.get_path("rh_fingering")),
-            _load_embedding(self.get_path("lh_fingering")),
+            self.get_path("rh_fingering"),
+            self.get_path("lh_fingering"),
         )
 
     @core.cached_property
     def expressiviness(self) -> list:
-        return _load_embedding(self.get_path("expressiviness"))
+        return self.get_path("expressiviness")
 
     @core.cached_property
     def notes(self) -> list:
-        return _load_embedding(self.get_path("notes"))
+        return self.get_path("notes")
 
     def to_jams(self):
         """Get the track's data in jams format
@@ -159,22 +155,6 @@ class Track(core.Track):
                 "difficulty_annotation": self.difficulty_annotation,
             }
         )
-
-
-def _load_embedding(fpath):
-    """Get the track's data in jams format
-
-    Args:
-        fpath (str or file-like): path to score file
-
-    Returns:
-        jams.JAMS: the track's data in jams format
-
-    """
-    with open(fpath, "rb") as f:
-        embedding = pickle.load(f)
-    return embedding
-
 
 def load_score(fhandle: str):
     """Load cipi score in music21 stream
