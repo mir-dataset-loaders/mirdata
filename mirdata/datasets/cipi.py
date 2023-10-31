@@ -96,7 +96,7 @@ class Track(core.Track):
 
     @property
     def title(self) -> str:
-        return self._track_metadata.get("title")
+        return self._track_metadata.get("work_name")
 
     @property
     def book(self) -> str:
@@ -116,7 +116,7 @@ class Track(core.Track):
 
     @property
     def difficulty_annotation(self) -> str:
-        return self._track_metadata.get("difficulty_annotation")
+        return self._track_metadata.get("henle")
 
     @core.cached_property
     def scores(self) -> music21.stream.Score:
@@ -147,6 +147,7 @@ class Track(core.Track):
         return jams_utils.jams_converter(
             metadata={
                 "title": self.title,
+                "artist": self.composer,
                 "book": self.book,
                 "URI": self.URI,
                 "composer": self.composer,
