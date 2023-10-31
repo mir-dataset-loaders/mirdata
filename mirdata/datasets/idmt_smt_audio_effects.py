@@ -100,8 +100,6 @@ class Track(core.Track):
 
     Attributes:
         audio_path (str): path to audio file.
-
-    Cached Properties:
         instrument (str): instrument used to record the track.
         midi_nr (int): midi number of the note.
         fx_group (int): effect group number.
@@ -246,7 +244,7 @@ class Dataset(core.Dataset):
 
         xml_files_count = 0
 
-        for root, dirs, files in os.walk(self.data_home):
+        for root, _, files in os.walk(self.data_home):
             for file in files:
                 if file.endswith(".xml"):
                     xml_files_count += 1
@@ -257,7 +255,7 @@ class Dataset(core.Dataset):
 
                     except ET.ParseError:
                         raise ValueError(
-                            f"Error parsing XML file {xml_path}. The file may be corrupted."
+                            f"Error parsing XML file {xml_path}. The file may be corrupted or not abailable, make sure you have all files."
                         )
 
                     root_xml = tree.getroot()
@@ -279,9 +277,3 @@ class Dataset(core.Dataset):
                             "fx_type": int(fxtype),
                             "fx_setting": int(fxsetting),
                         }
-
-        if xml_files_count == 0:
-            raise FileNotFoundError(
-                f"No XML files found in {self.data_home}. Did you run .download?"
-            )
-        return metadata
