@@ -84,7 +84,6 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
-
         super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_path = self.get_path("audio")
@@ -163,8 +162,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The candombe dataset
-    """
+    """The candombe dataset"""
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
