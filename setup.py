@@ -50,7 +50,7 @@ if __name__ == "__main__":
         ],
         extras_require={
             "tests": [
-                "decorator>=5.1.1"
+                "decorator>=5.1.1",
                 "pytest>=4.4.0",
                 "pytest-cov>=2.6.1",
                 "pytest-pep8>=1.0.0",
