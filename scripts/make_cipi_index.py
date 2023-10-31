@@ -9,33 +9,29 @@ def make_cipi_indexes(args):
     version = args.full_version
     cipi_index = {
         "version": version,
-        "tracks": {},
-        "metadata": [
-            "index.json",
-            md5(args.path + "/index.json"),
-        ]
+        "tracks": {}
     }
     # load json /home/mir_datasets/cipi/index.json
     data = json.load(open(args.path + "/index.json", "r"))
     for k, track in data.items():
-        cipi_index["tracks"]["cipi_{}".format(k)] = {"annotations": {}}
-        cipi_index["tracks"]["cipi_{}".format(k)]["annotations"]["lh_fingering"] = [
+        cipi_index["tracks"][k] = {}
+        cipi_index["tracks"][k]["lh_fingering"] = [
             f"ArGNNThumb-s/lh/{k}.pt",
             md5(args.path + f"/ArGNNThumb-s/lh/{k}.pt"),
         ]
-        cipi_index["tracks"]["cipi_{}".format(k)]["annotations"]["rh_fingering"] = [
+        cipi_index["tracks"][k]["rh_fingering"] = [
             f"ArGNNThumb-s/rh/{k}.pt",
             md5(args.path + f"/ArGNNThumb-s/rh/{k}.pt"),
         ]
-        cipi_index["tracks"]["cipi_{}".format(k)]["annotations"]["expressiviness"] = [
+        cipi_index["tracks"][k]["expressiviness"] = [
             f"virtuoso/{k}.pt",
             md5(args.path + f"/virtuoso/{k}.pt"),
         ]
-        cipi_index["tracks"]["cipi_{}".format(k)]["annotations"]["notes"] = [
+        cipi_index["tracks"][k]["notes"] = [
             f"k/{k}.pt",
             md5(args.path + f"/k/{k}.pt"),
         ]
-        cipi_index["tracks"]["cipi_{}".format(k)]["annotations"]["notes"] = [
+        cipi_index["tracks"][k]["notes"] = [
             f"k/{k}.pt",
             md5(args.path + f"/k/{k}.pt"),
         ]

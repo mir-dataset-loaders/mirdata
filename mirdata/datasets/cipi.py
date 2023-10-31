@@ -48,7 +48,7 @@ BIBTEX = """
 INDEXES = {
     "default": "1.0",
     "test": "1.0",
-    "1.0": core.Index(filename="cipi_1.0.json"),
+    "1.0": core.Index(filename="cipi_index_1.0.json"),
 }
 
 
@@ -134,11 +134,11 @@ class Track(core.Track):
         )
 
     @core.cached_property
-    def expressiviness(self) -> list[list]:
+    def expressiviness(self) -> list:
         return _load_embedding(self.get_path("expressiviness"))
 
     @core.cached_property
-    def notes(self) -> list[list]:
+    def notes(self) -> list:
         return _load_embedding(self.get_path("notes"))
 
     def to_jams(self):
@@ -176,16 +176,16 @@ def _load_embedding(fpath):
     return embedding
 
 
-def load_score(fhandle: TextIO):
+def load_score(fhandle: str):
     """Load cipi score in music21 stream
 
     Args:
-        fhandle (str or file-like): path to MusicXML score
+        fhandle (str): path to MusicXML score
 
     Returns:
         music21.stream.Score: score in music21 format
     """
-    score = music21.converter.parse(fhandle.name)
+    score = music21.converter.parse(fhandle)
     return score
 
 
@@ -219,6 +219,7 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version,
             name="cipi",
             track_class=Track,
             bibtex=BIBTEX,
@@ -232,6 +233,7 @@ class Dataset(core.Dataset):
         metadata_path = os.path.join(self.data_home, "index.json")
         try:
             with open(metadata_path, "r") as fhandle:
-                return json.load(fhandle)
+                metadata_index = json.load(fhandle)
         except FileNotFoundError:
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
+            raise FileNotFoundError("Metadata not found. Did you download the files?")
+        return dict(metadata_index)

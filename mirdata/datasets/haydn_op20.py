@@ -90,11 +90,7 @@ class Track(core.Track):
     @core.cached_property
     def _metadata(self):
         data = self._track_metadata()
-        return
-
-    @core.cached_property
-    def _metadata(self):
-        return self._track_metadata()
+        return data
 
     @core.cached_property
     def score(self) -> music21.stream.Score:
