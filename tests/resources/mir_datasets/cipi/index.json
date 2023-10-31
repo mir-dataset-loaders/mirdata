@@ -1,0 +1,12 @@
+{
+  "c-189": {
+        "URI": "https://www.henle.de/en/detail/?Title=Selected+Piano+Sonatas%2C+Volume+III_476",
+        "book": "Selected Piano Sonatas, Volume III",
+        "composer": "DOMENICO SCARLATTI",
+        "henle": 7,
+        "path": {
+            "1": "craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml"
+        },
+        "work_name": "Piano Sonata D major K. 122"
+    }
+}
