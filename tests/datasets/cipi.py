@@ -26,23 +26,16 @@ def test_track():
         "annotations": {
             "lh_fingering": [
                 "ArGNNThumb-s/lh/c-1.pt",
-                "ecb8a0dcb70a4331708baf9141cedfd1"
+                "ecb8a0dcb70a4331708baf9141cedfd1",
             ],
             "rh_fingering": [
                 "ArGNNThumb-s/rh/c-1.pt",
-                "cdb1ba84bc21572c35d299291fca8442"
+                "cdb1ba84bc21572c35d299291fca8442",
             ],
-            "expressiviness": [
-                "virtuoso/c-1.pt",
-                "fb6eb47c9ee21051559325e217b9b0a1"
-            ],
-            "notes": [
-                "k/c-1.pt",
-                "9816f5c88488925c019283e29f00b536"
-            ]
-        }
+            "expressiviness": ["virtuoso/c-1.pt", "fb6eb47c9ee21051559325e217b9b0a1"],
+            "notes": ["k/c-1.pt", "9816f5c88488925c019283e29f00b536"],
+        },
     }
-
 
     expected_property_types = {
         "title": str,
@@ -73,7 +66,9 @@ def test_to_jam():
     assert (
         jam["sandbox"]["composer"] == "LUDWIG VAN BEETHOVEN"
     ), "composer does not match expected"
-    assert jam["sandbox"]["book"] == "Piano Sonatas, Volume I", "book does not match expected"
+    assert (
+        jam["sandbox"]["book"] == "Piano Sonatas, Volume I"
+    ), "book does not match expected"
     assert (
         jam["sandbox"]["URI"]
         == "https://www.henle.de/en/detail/?Title=Piano+Sonatas%2C+Volume+I_32"
@@ -83,10 +78,10 @@ def test_to_jam():
     ), "difficulty_annotation does not match expected"
     assert jam["file_metadata"]["duration"] == 0, "duration does not match expected"
     assert jam["sandbox"]["musicxml_paths"] == [
-      "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.musicxml",
-      "craig_files/beethoven-piano-sonatas-master/kern/sonata01-2.musicxml",
-      "craig_files/beethoven-piano-sonatas-master/kern/sonata01-3.musicxml",
-      "craig_files/beethoven-piano-sonatas-master/kern/sonata01-4.musicxml"
+        "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.musicxml",
+        "craig_files/beethoven-piano-sonatas-master/kern/sonata01-2.musicxml",
+        "craig_files/beethoven-piano-sonatas-master/kern/sonata01-3.musicxml",
+        "craig_files/beethoven-piano-sonatas-master/kern/sonata01-4.musicxml",
     ], "musicxml_paths does not match expected"
 
 
@@ -107,7 +102,6 @@ def test_load_midi_path():
     data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
     midi_path = cipi.convert_and_save_to_midi(os.path.join(data_home, path))
     assert isinstance(midi_path, str)
-    assert (
-        midi_path
-        == os.path.join(data_home, "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.mid")
+    assert midi_path == os.path.join(
+        data_home, "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.mid"
     )

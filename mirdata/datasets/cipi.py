@@ -236,6 +236,7 @@ class Dataset(core.Dataset):
     """
     The Can I play it? (CIPI) dataset
     """
+
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
