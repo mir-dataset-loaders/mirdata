@@ -252,10 +252,19 @@ class Track(core.Track):
     """
 
     def __init__(
-        self, track_id, data_home, dataset_name, index, metadata,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
     ):
         super().__init__(
-            track_id, data_home, dataset_name, index, metadata,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
 
         self.audio_path = self.get_path("audio")
@@ -295,7 +304,8 @@ class Track(core.Track):
 
         """
         return jams_utils.jams_converter(
-            audio_path=self.audio_path, metadata=self._track_metadata,
+            audio_path=self.audio_path,
+            metadata=self._track_metadata,
         )
 
 

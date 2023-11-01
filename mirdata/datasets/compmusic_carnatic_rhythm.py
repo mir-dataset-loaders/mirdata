@@ -132,10 +132,19 @@ class Track(core.Track):
     """
 
     def __init__(
-        self, track_id, data_home, dataset_name, index, metadata,
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
     ):
         super().__init__(
-            track_id, data_home, dataset_name, index, metadata,
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
         )
 
         # Audio path

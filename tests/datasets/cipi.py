@@ -26,20 +26,17 @@ def test_track():
             "annotations": {
                 "lh_fingering": [
                     "ArGNNThumb-s/lh/c-181.pt",
-                    "90fe1f62d8f3dc191569336e7e4faefd"
+                    "90fe1f62d8f3dc191569336e7e4faefd",
                 ],
                 "rh_fingering": [
                     "ArGNNThumb-s/rh/c-181.pt",
-                    "72a0c575c2883826a2dbfa7d609071e3"
+                    "72a0c575c2883826a2dbfa7d609071e3",
                 ],
                 "expressiviness": [
                     "virtuoso/c-181.pt",
-                    "6ab15c794356bc3bd58c1fb089455f03"
+                    "6ab15c794356bc3bd58c1fb089455f03",
                 ],
-                "notes": [
-                    "k/c-181.pt",
-                    "b34227117c32a4b78a2255fdd9d5fa9f"
-                ]
+                "notes": ["k/c-181.pt", "b34227117c32a4b78a2255fdd9d5fa9f"],
             }
         }
     }
@@ -65,16 +62,26 @@ def test_to_jam():
     dataset = cipi.Dataset(data_home)
     track = dataset.track("c_181")
     jam = track.to_jams()
-    assert jam["file_metadata"]["title"] == "12 Piano Variations on a Minuet KV 179 (189a)", "title does not match expected"
-    assert jam["file_metadata"]["artist"] == "WOLFGANG AMADEUS MOZART", "artist does not match expected"
-    assert jam["file_metadata"]["composer"] == "WOLFGANG AMADEUS MOZART", "composer does not match expected"
-    assert jam["sandbox"]["book"] == "Piano Variations",  "book does not match expected"
-    assert jam["sandbox"]["URI"] == "https://www.henle.de/en/detail/?Title=Piano+Variations_116",  \
-        "book does not match expected"
-    assert jam["sandbox"]["difficulty_annotation"] == 5,  "difficulty_annotation does not match expected"
+    assert (
+        jam["file_metadata"]["title"] == "12 Piano Variations on a Minuet KV 179 (189a)"
+    ), "title does not match expected"
+    assert (
+        jam["file_metadata"]["artist"] == "WOLFGANG AMADEUS MOZART"
+    ), "artist does not match expected"
+    assert (
+        jam["file_metadata"]["composer"] == "WOLFGANG AMADEUS MOZART"
+    ), "composer does not match expected"
+    assert jam["sandbox"]["book"] == "Piano Variations", "book does not match expected"
+    assert (
+        jam["sandbox"]["URI"]
+        == "https://www.henle.de/en/detail/?Title=Piano+Variations_116"
+    ), "book does not match expected"
+    assert (
+        jam["sandbox"]["difficulty_annotation"] == 5
+    ), "difficulty_annotation does not match expected"
     assert jam["sandbox"]["musicxml_paths"] == [
-      "craig_files/TAVERN-master/Mozart/K179/Krn/K179.musicxml"
-    ],  "musicxml_paths does not match expected"
+        "craig_files/TAVERN-master/Mozart/K179/Krn/K179.musicxml"
+    ], "musicxml_paths does not match expected"
 
 
 def test_load_score():
@@ -82,7 +89,6 @@ def test_load_score():
     score = cipi.load_score(path)
     assert isinstance(score, music21.stream.Score)
     assert len(score.parts) == 2
-
 
 
 def test_load_midi_path():

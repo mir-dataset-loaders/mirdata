@@ -536,7 +536,6 @@ class Track(object):
         self._data_home = data_home
         self._track_paths = index["tracks"][track_id]
 
-
     @cached_property
     def _track_metadata(self):
         metadata = self._metadata()

@@ -157,6 +157,7 @@ class Track(core.Track):
             }
         )
 
+
 def load_score(fhandle: str):
     """Load cipi score in music21 stream
 
