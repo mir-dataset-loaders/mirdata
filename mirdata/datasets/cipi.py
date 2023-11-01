@@ -152,7 +152,7 @@ class Track(core.Track):
         embedding_path = os.path.join(
             self._data_home,
             fpath,
-            f"{self.track_id}_{file_type}.ext",
+            f"{self.track_id}_{file_type}.pt",
         )  # Adjust the path and extension as necessary
         try:
             with smart_open.open(embedding_path):
