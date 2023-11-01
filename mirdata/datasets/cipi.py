@@ -149,17 +149,12 @@ class Track(core.Track):
         Raises:
             FileNotFoundError: If the embedding file does not exist.
         """
-        embedding_path = os.path.join(
-            self._data_home,
-            fpath,
-            f"{self.track_id}_{file_type}.pt",
-        )  # Adjust the path and extension as necessary
         try:
-            with smart_open.open(embedding_path):
-                return embedding_path
+            with smart_open.open(fpath):
+                return fpath
         except FileNotFoundError:
             raise FileNotFoundError(
-                f"{file_type} embedding {embedding_path} for track {self.track_id} not found. "
+                f"{file_type} embedding {fpath} for track {self.track_id} not found. "
                 "Did you run .download()?"
             )
 
