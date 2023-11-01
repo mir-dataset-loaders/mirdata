@@ -34,7 +34,6 @@ except ImportError:
     )
     raise ImportError
 
-
 BIBTEX = """
 @article{Ramoneda2024,
   author    = {Pedro Ramoneda and Dasaem Jeong and Vsevolod Eremenko and Nazif Can Tamer and Marius Miron and Xavier Serra},
@@ -52,7 +51,6 @@ INDEXES = {
     "test": "1.0",
     "1.0": core.Index(filename="cipi_index_1.0.json"),
 }
-
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
@@ -99,7 +97,11 @@ class Track(core.Track):
 
     @property
     def title(self) -> str:
-        return self._track_metadata["work_name"] if "work_name" in self._track_metadata else None
+        return (
+            self._track_metadata["work_name"]
+            if "work_name" in self._track_metadata
+            else None
+        )
 
     @property
     def book(self) -> str:
@@ -111,15 +113,25 @@ class Track(core.Track):
 
     @property
     def composer(self) -> str:
-        return self._track_metadata["composer"] if "composer" in self._track_metadata else None
+        return (
+            self._track_metadata["composer"]
+            if "composer" in self._track_metadata
+            else None
+        )
 
     @property
     def musicxml_paths(self) -> List[str]:
-        return list(self._track_metadata["path"].values())
+        return (
+            list(self._track_metadata["path"].values())
+            if "path" in self._track_metadata
+            else []
+        )
 
     @property
     def difficulty_annotation(self) -> str:
-        return self._track_metadata["henle"] if "henle" in self._track_metadata else None
+        return (
+            self._track_metadata["henle"] if "henle" in self._track_metadata else None
+        )
 
     @core.cached_property
     def scores(self) -> list:
@@ -162,11 +174,14 @@ class Track(core.Track):
         )
 
 
-def load_score(fhandle: str, data_home) -> music21.stream.Score:
+def load_score(
+    fhandle: str, data_home: str = "tests/resources/mir_datasets/cipi"
+) -> music21.stream.Score:
     """Load cipi score in music21 stream
 
     Args:
         fhandle (str): path to MusicXML score
+        data_home (str): path to cipi dataset
 
     Returns:
         music21.stream.Score: score in music21 format

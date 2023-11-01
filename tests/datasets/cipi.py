@@ -86,7 +86,9 @@ def test_to_jam():
 
 
 def test_load_score():
-    path = os.path.normpath("craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml")
+    path = os.path.normpath(
+        "craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml"
+    )
     data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
     score = cipi.load_score(path, data_home)
     assert isinstance(score, music21.stream.Score)
@@ -94,7 +96,9 @@ def test_load_score():
 
 
 def test_load_midi_path():
-    path = os.path.normpath("craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml")
+    path = os.path.normpath(
+        "craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml"
+    )
     data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
     midi_path = cipi.convert_and_save_to_midi(path, data_home)
     assert isinstance(midi_path, str)
