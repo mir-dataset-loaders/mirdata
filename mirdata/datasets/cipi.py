@@ -103,15 +103,15 @@ class Track(core.Track):
 
     @property
     def book(self) -> str:
-        return self._track_metadata["book"]
+        return self._track_metadata["book"] if "book" in self._track_metadata else None
 
     @property
     def URI(self) -> str:
-        return self._track_metadata["URI"]
+        return self._track_metadata["URI"] if "URI" in self._track_metadata else None
 
     @property
     def composer(self) -> str:
-        return self._track_metadata["composer"]
+        return self._track_metadata["composer"] if "composer" in self._track_metadata else None
 
     @property
     def musicxml_paths(self) -> List[str]:

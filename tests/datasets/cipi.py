@@ -18,7 +18,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "cipi_c-181"
     data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
-    dataset = haydn_op20.Dataset(data_home)
+    dataset = cipi.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -86,15 +86,17 @@ def test_to_jam():
 
 
 def test_load_score():
-    path = "craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml"
-    score = cipi.load_score(path, "tests/resources/mir_datasets/cipi")
+    path = os.path.normpath("craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml")
+    data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
+    score = cipi.load_score(path, data_home)
     assert isinstance(score, music21.stream.Score)
     assert len(score.parts) == 2
 
 
 def test_load_midi_path():
-    path = "craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml"
-    midi_path = cipi.convert_and_save_to_midi(path, "tests/resources/mir_datasets/cipi")
+    path = os.path.normpath("craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml")
+    data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
+    midi_path = cipi.convert_and_save_to_midi(path, data_home)
     assert isinstance(midi_path, str)
     assert (
         midi_path
