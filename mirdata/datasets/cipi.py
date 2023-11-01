@@ -150,6 +150,7 @@ class Track(core.Track):
             metadata={
                 "title": self.title,
                 "artist": self.composer,
+                "duration": 0.,
                 "book": self.book,
                 "URI": self.URI,
                 "composer": self.composer,

@@ -79,6 +79,9 @@ def test_to_jam():
     assert (
         jam["sandbox"]["difficulty_annotation"] == 5
     ), "difficulty_annotation does not match expected"
+    assert (
+            jam["sandbox"]["duration"] == 0
+    ), "duration does not match expected"
     assert jam["sandbox"]["musicxml_paths"] == [
         "craig_files/TAVERN-master/Mozart/K179/Krn/K179.musicxml"
     ], "musicxml_paths does not match expected"
@@ -86,14 +89,14 @@ def test_to_jam():
 
 def test_load_score():
     path = "craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml"
-    score = cipi.load_score(path)
+    score = cipi.load_score(path, "tests/resources/mir_datasets/cipi")
     assert isinstance(score, music21.stream.Score)
     assert len(score.parts) == 2
 
 
 def test_load_midi_path():
     path = "craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.musicxml"
-    midi_path = cipi.convert_and_save_to_midi(path)
+    midi_path = cipi.convert_and_save_to_midi(path, "tests/resources/mir_datasets/cipi")
     assert isinstance(midi_path, str)
     assert (midi_path ==
             "tests/resources/mir_datasets/cipi/craig_files/scarlatti-keyboard-sonatas-master/kern/L334K122.mid")
