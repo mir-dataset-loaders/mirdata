@@ -75,6 +75,7 @@ if __name__ == "__main__":
             "dali": ["dali-dataset==1.1"],
             "compmusic_carnatic_rhythm": ["openpyxl==3.0.10"],
             "haydn_op20": ["music21==6.7.1"],
+            "cipi": ["music21==6.7.1"],
             "gcs": ["smart_open[gcs]"],
             "s3": ["smart_open[s3]"],
             "http": ["smart_open[http]"],
