@@ -19,6 +19,8 @@ import os
 import pdb
 import pickle
 from typing import Optional, TextIO, List
+
+import smart_open
 from smart_open import open
 
 from deprecated.sphinx import deprecated
@@ -133,13 +135,28 @@ class Track(core.Track):
             self._track_metadata["henle"] if "henle" in self._track_metadata else None
         )
 
-    def _check_embedding(self, path: str, file_type: str):
-        if not os.path.exists(path):
-            raise IOError(
-                "{} embedding {} for track {} not found. "
-                "Did you run .download()?".format(file_type, path, self.track_id)
+    def _check_embedding(self, file_type: str) -> str:
+        """
+        Verifies the existence of an embedding file and returns its path.
+
+        Args:
+            file_type (str): The type of the embedding file.
+
+        Returns:
+            str: The path to the embedding file.
+
+        Raises:
+            FileNotFoundError: If the embedding file does not exist.
+        """
+        embedding_path = os.path.join(self._data_home, 'path_to_your_embeddings', f"{self.track_id}_{file_type}.ext")  # Adjust the path and extension as necessary
+        try:
+            with smart_open.open(embedding_path):
+                return embedding_path
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                f"{file_type} embedding {embedding_path} for track {self.track_id} not found. "
+                "Did you run .download()?"
             )
-        return path
 
     @core.cached_property
     def fingering(self) -> tuple:
