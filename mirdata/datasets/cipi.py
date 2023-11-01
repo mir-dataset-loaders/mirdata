@@ -94,6 +94,7 @@ class Track(core.Track):
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
+        self._data_home = data_home
 
     @property
     def title(self) -> str:
@@ -120,8 +121,8 @@ class Track(core.Track):
         return self._track_metadata.get("henle")
 
     @core.cached_property
-    def scores(self) -> music21.stream.Score:
-        return [load_score(path) for path in self.musicxml_paths]
+    def scores(self) -> list:
+        return [load_score(path, self._data_home) for path in self.musicxml_paths]
 
     @core.cached_property
     def fingering(self) -> tuple:
@@ -159,7 +160,7 @@ class Track(core.Track):
         )
 
 
-def load_score(fhandle: str):
+def load_score(fhandle: str, data_home) -> music21.stream.Score:
     """Load cipi score in music21 stream
 
     Args:
@@ -168,7 +169,7 @@ def load_score(fhandle: str):
     Returns:
         music21.stream.Score: score in music21 format
     """
-    score = music21.converter.parse(fhandle)
+    score = music21.converter.parse(os.path.join(data_home, fhandle))
     return score
 
 
