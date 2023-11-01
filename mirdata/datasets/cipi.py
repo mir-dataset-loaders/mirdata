@@ -99,7 +99,7 @@ class Track(core.Track):
 
     @property
     def title(self) -> str:
-        return self._track_metadata["work_name"]
+        return self._track_metadata["work_name"] if "work_name" in self._track_metadata else None
 
     @property
     def book(self) -> str:
@@ -119,7 +119,7 @@ class Track(core.Track):
 
     @property
     def difficulty_annotation(self) -> str:
-        return self._track_metadata["henle"]
+        return self._track_metadata["henle"] if "henle" in self._track_metadata else None
 
     @core.cached_property
     def scores(self) -> list:
