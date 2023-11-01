@@ -94,14 +94,3 @@ def test_load_score():
     assert isinstance(score, music21.stream.Score)
     assert len(score.parts) == 2
 
-
-def test_load_midi_path():
-    path = os.path.normpath(
-        "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.musicxml"
-    )
-    data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
-    midi_path = cipi.convert_and_save_to_midi(os.path.join(data_home, path))
-    assert isinstance(midi_path, str)
-    assert midi_path == os.path.join(
-        data_home, "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.mid"
-    )

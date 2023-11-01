@@ -228,26 +228,6 @@ def load_score(
     return score
 
 
-@deprecated(
-    reason="convert_and_save_to_midi is deprecated and will be removed in a future version",
-    version="0.3.4",
-)
-def convert_and_save_to_midi(fpath: str):
-    """convert to midi file and return the midi path
-
-    Args:
-        fpath (str): path to score file
-
-    Returns:
-        str: midi file path
-
-    """
-    midi_path = os.path.splitext(fpath)[0] + ".mid"
-    score = music21.converter.parse(fpath)
-    score.write("midi", fp=midi_path)
-    return midi_path
-
-
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
