@@ -186,9 +186,10 @@ def load_score(
     Returns:
         music21.stream.Score: score in music21 format
     """
-    if not os.path.exists(fhandle):
-        raise IOError("file {} does not exist".format(fhandle))
-    score = music21.converter.parse(os.path.join(data_home, fhandle))
+    try:
+        score = music21.converter.parse(os.path.join(data_home, fhandle))
+    except:
+        raise FileNotFoundError("File {} not found.".format(fhandle))
     return score
 
 
