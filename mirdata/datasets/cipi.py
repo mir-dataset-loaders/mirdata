@@ -133,24 +133,43 @@ class Track(core.Track):
             self._track_metadata["henle"] if "henle" in self._track_metadata else None
         )
 
-    @core.cached_property
-    def scores(self) -> list:
-        return [load_score(path, self._data_home) for path in self.musicxml_paths]
+    def _check_embedding(self, path: str, file_type: str):
+        full_path = os.path.join(self._data_home, path)
+        if not os.path.exists(full_path):
+            raise IOError(
+                "{} embedding {} for track {} not found. "
+                "Did you run .download()?".format(file_type, path, self.track_id)
+            )
+        return full_path
 
     @core.cached_property
     def fingering(self) -> tuple:
-        return (
-            self.get_path("rh_fingering"),
-            self.get_path("lh_fingering"),
+        path_rh = self.get_path("rh_fingering")
+        path_lh = self.get_path("lh_fingering")
+        return self._check_embedding(path_rh, "Fingering"), self._check_embedding(
+            path_lh, "Fingering"
         )
 
     @core.cached_property
-    def expressiviness(self) -> list:
-        return self.get_path("expressiviness")
+    def expressiviness(self) -> str:
+        path = self.get_path("expressiviness")
+        return self._check_embedding(path, "Expressiviness")
 
     @core.cached_property
-    def notes(self) -> list:
-        return self.get_path("notes")
+    def notes(self) -> str:
+        path = self.get_path("notes")
+        return self._check_embedding(path, "Expressiviness")
+
+    @core.cached_property
+    def scores(self) -> list:
+        try:
+            scores = [load_score(path, self._data_home) for path in self.musicxml_paths]
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                "MusicXML file {} for track {} not found. "
+                "Did you run .download()?".format(self.musicxml_paths, self.track_id)
+            )
+        return scores
 
     def to_jams(self):
         """Get the track's data in jams format
