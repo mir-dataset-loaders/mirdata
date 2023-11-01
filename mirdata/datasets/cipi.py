@@ -135,11 +135,12 @@ class Track(core.Track):
             self._track_metadata["henle"] if "henle" in self._track_metadata else None
         )
 
-    def _check_embedding(self, file_type: str) -> str:
+    def _check_embedding(self, fpath, file_type: str) -> str:
         """
         Verifies the existence of an embedding file and returns its path.
 
         Args:
+            fpaths (str): The path to the embedding file.
             file_type (str): The type of the embedding file.
 
         Returns:
@@ -150,7 +151,7 @@ class Track(core.Track):
         """
         embedding_path = os.path.join(
             self._data_home,
-            "path_to_your_embeddings",
+            fpath,
             f"{self.track_id}_{file_type}.ext",
         )  # Adjust the path and extension as necessary
         try:
