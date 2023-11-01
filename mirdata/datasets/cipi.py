@@ -134,13 +134,12 @@ class Track(core.Track):
         )
 
     def _check_embedding(self, path: str, file_type: str):
-        full_path = os.path.join(self._data_home, path)
-        if not os.path.exists(full_path):
+        if not os.path.exists(path):
             raise IOError(
                 "{} embedding {} for track {} not found. "
                 "Did you run .download()?".format(file_type, path, self.track_id)
             )
-        return full_path
+        return path
 
     @core.cached_property
     def fingering(self) -> tuple:
@@ -216,19 +215,18 @@ def load_score(
     reason="convert_and_save_to_midi is deprecated and will be removed in a future version",
     version="0.3.4",
 )
-@io.coerce_to_string_io
-def convert_and_save_to_midi(fpath: TextIO):
+def convert_and_save_to_midi(fpath: str):
     """convert to midi file and return the midi path
 
     Args:
-        fpath (str or file-like): path to score file
+        fpath (str): path to score file
 
     Returns:
         str: midi file path
 
     """
-    midi_path = os.path.splitext(fpath.name)[0] + ".midi"
-    score, _ = music21.converter.parse(fpath)
+    midi_path = os.path.splitext(fpath)[0] + ".mid"
+    score = music21.converter.parse(fpath)
     score.write("midi", fp=midi_path)
     return midi_path
 
@@ -238,7 +236,6 @@ class Dataset(core.Dataset):
     """
     The Can I play it? (CIPI) dataset
     """
-
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
