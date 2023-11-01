@@ -148,7 +148,11 @@ class Track(core.Track):
         Raises:
             FileNotFoundError: If the embedding file does not exist.
         """
-        embedding_path = os.path.join(self._data_home, 'path_to_your_embeddings', f"{self.track_id}_{file_type}.ext")  # Adjust the path and extension as necessary
+        embedding_path = os.path.join(
+            self._data_home,
+            "path_to_your_embeddings",
+            f"{self.track_id}_{file_type}.ext",
+        )  # Adjust the path and extension as necessary
         try:
             with smart_open.open(embedding_path):
                 return embedding_path
