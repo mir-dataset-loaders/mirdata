@@ -19,6 +19,7 @@ import os
 import pdb
 import pickle
 from typing import Optional, TextIO, List
+from smart_open import open
 
 from deprecated.sphinx import deprecated
 
