@@ -99,27 +99,27 @@ class Track(core.Track):
 
     @property
     def title(self) -> str:
-        return self._track_metadata.get("work_name")
+        return self._track_metadata["work_name"]
 
     @property
     def book(self) -> str:
-        return self._track_metadata.get("book")
+        return self._track_metadata["book"]
 
     @property
     def URI(self) -> str:
-        return self._track_metadata.get("URI")
+        return self._track_metadata["URI"]
 
     @property
     def composer(self) -> str:
-        return self._track_metadata.get("composer")
+        return self._track_metadata["composer"]
 
     @property
     def musicxml_paths(self) -> List[str]:
-        return list(self._track_metadata.get("path").values())
+        return list(self._track_metadata["path"].values())
 
     @property
     def difficulty_annotation(self) -> str:
-        return self._track_metadata.get("henle")
+        return self._track_metadata["henle"]
 
     @core.cached_property
     def scores(self) -> list:
