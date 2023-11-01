@@ -277,3 +277,9 @@ class Dataset(core.Dataset):
                             "fx_type": int(fxtype),
                             "fx_setting": int(fxsetting),
                         }
+
+        if xml_files_count == 0:
+            raise FileNotFoundError(
+                f"No XML files found in {self.data_home}. Did you run .download?"
+            )
+        return metadata

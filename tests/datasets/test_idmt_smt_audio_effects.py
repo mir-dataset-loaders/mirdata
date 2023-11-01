@@ -68,6 +68,19 @@ def test_metadata():
     assert track_metadata["instrument"] == "G"
     assert track_metadata["midi_nr"] == 45
 
+    fake_data_home = os.path.join(TEST_DATA_HOME, "fake_directory")
+
+    # Ensure the directory exists (but it should not have any XML inside!)
+    if not os.path.exists(fake_data_home):
+        os.makedirs(fake_data_home)
+
+    # Test for FileNotFoundError
+    with pytest.raises(FileNotFoundError):
+        dataset = idmt_smt_audio_effects.Dataset(fake_data_home)
+        if hasattr(dataset, "_metadata"):
+            del dataset._metadata
+        metadata = dataset._metadata
+
     # Test for ParseError
     corrupted_data_home = os.path.join(TEST_DATA_HOME)
 
