@@ -16,6 +16,7 @@
 import json
 import logging
 import os
+import pdb
 import pickle
 from typing import Optional, TextIO, List
 
@@ -217,5 +218,5 @@ class Dataset(core.Dataset):
             with open(metadata_path, "r") as fhandle:
                 metadata_index = json.load(fhandle)
         except FileNotFoundError:
-            raise FileNotFoundError("Metadata not found. Did you download the files?")
+            raise FileNotFoundError(f"Metadata {metadata_path} not found. Did you download the files?")
         return dict(metadata_index)
