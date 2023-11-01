@@ -93,4 +93,3 @@ def test_load_score():
     score = cipi.load_score(path, data_home)
     assert isinstance(score, music21.stream.Score)
     assert len(score.parts) == 2
-
