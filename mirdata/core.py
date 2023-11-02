@@ -529,13 +529,12 @@ class Track(object):
             raise ValueError(
                 "{} is not a valid track_id in {}".format(track_id, dataset_name)
             )
-
+        self._metadata = metadata
         self.track_id = track_id
         self._dataset_name = dataset_name
 
         self._data_home = data_home
         self._track_paths = index["tracks"][track_id]
-        self._metadata = metadata
 
     @cached_property
     def _track_metadata(self):
