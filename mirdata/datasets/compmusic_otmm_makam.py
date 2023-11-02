@@ -3,6 +3,11 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
+    **NOTE**: From mirdata v0.3.8 on, the only version available of this dataset is dlfm2016-fix1, which is
+    basically the same as dlfm2016, but with a few fixes in some annotations. The original dlfm2016 version
+    is still available in mirdata versions <=0.3.7. Note that from dlfm2016 to dlfm2016-fix1, no new recordings
+    or annotation were added, only a few annotation files were fixed.
+
     This dataset is designed to test makam recognition methodologies on Ottoman-Turkish makam music.
     It is composed of 50 recording from each of the 20 most common makams in CompMusic Project's Dunya Ottoman-Turkish
     Makam Music collection. Currently the dataset is the largest makam recognition dataset.
@@ -58,16 +63,18 @@ BIBTEX = """
 """
 
 INDEXES = {
-    "default": "dlfm2016",
-    "test": "dlfm2016",
-    "dlfm2016": core.Index(filename="compmusic_otmm_makam_index_dlfm2016.json"),
+    "default": "dlfm2016-fix1",
+    "test": "dlfm2016-fix1",
+    "dlfm2016-fix1": core.Index(
+        filename="compmusic_otmm_makam_index_dlfm2016-fix1.json"
+    ),
 }
 
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
-        filename="otmm_makam_recognition_dataset-dlfm2016.zip",
-        url="https://zenodo.org/record/58413/files/otmm_makam_recognition_dataset-dlfm2016.zip?download=1",
-        checksum="c2b9c8bdcbdcf15745b245adfc793145",
+        filename="otmm_makam_recognition_dataset-dlfm2016-fix1.zip",
+        url="https://zenodo.org/record/4883680/files/MTG/otmm_makam_recognition_dataset-dlfm2016-fix1.zip?download=1",
+        checksum="83724c889d36f684cff3f15f20ce0d34",
     )
 }
 
@@ -176,7 +183,10 @@ def load_mb_tags(fhandle: TextIO) -> dict:
         Dict: metadata of the track
 
     """
-    return json.load(fhandle)
+    mb_tags = json.load(fhandle)
+    if "duration" not in mb_tags.keys():
+        mb_tags["duration"] = 0.0  # Few tracks have no duration information
+    return mb_tags
 
 
 @core.docstring_inherit(core.Dataset)
@@ -201,7 +211,7 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(
             os.path.normpath(self.data_home),
-            "MTG-otmm_makam_recognition_dataset-f14c0d0",
+            "MTG-otmm_makam_recognition_dataset-55ce75a",
             "annotations.json",
         )
 
