@@ -219,6 +219,14 @@ haydn_op20
    :inherited-members:
 
 
+idmt_smt_audio_effects
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.idmt_smt_audio_effects
+   :members:
+   :inherited-members:
+
+   
 ikala
 ^^^^^
 
